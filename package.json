@@ -18,8 +18,7 @@
     "core-js": "^3.6.5",
     "highcharts": "^8.1.2",
     "mapbox-gl": "^1.10.1",
-    "moment": "^2.27.0",
-    "vue": "^2.6.11"
+    "moment": "^2.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
@@ -37,6 +36,7 @@
     "sass-export": "^1.0.6",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
+    "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
   }
 }
