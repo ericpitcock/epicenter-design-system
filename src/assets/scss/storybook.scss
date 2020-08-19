@@ -1,0 +1,23 @@
+@import './reset';
+
+@font-face {
+  font-family: 'GT America Condensed Regular';
+  src: url('../fonts/GT-America-Condensed-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'GT America Condensed Regular Italic';
+  src: url('../fonts/GT-America-Condensed-Regular-Italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'GT America Condensed Medium';
+  src: url('../fonts/GT-America-Condensed-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'GT America Condensed Medium Italic';
+  src: url('../fonts/GT-America-Condensed-Medium-Italic.woff2') format('woff2');
+}
+
+body {
+  font-family: 'GT America Condensed Regular';
+  font-size: 14px;
+}

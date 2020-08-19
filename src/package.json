@@ -1,0 +1,37 @@
+{
+  "name": "design-system",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "scss-export": "sass-export src/components/EpIcon/tokens/*.scss -o src/components/EpIcon/tokens.json"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "highcharts": "^8.1.2",
+    "mapbox-gl": "^1.10.1",
+    "moment": "^2.27.0",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/vue": "^5.3.19",
+    "@vue/cli-plugin-babel": "^4.4.0",
+    "@vue/cli-service": "^4.4.0",
+    "babel-loader": "^8.1.0",
+    "babel-preset-vue": "^2.0.2",
+    "css-loader": "^3.6.0",
+    "node-sass": "^4.12.0",
+    "sass-export": "^1.0.6",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "vue-template-compiler": "^2.6.11"
+  }
+}

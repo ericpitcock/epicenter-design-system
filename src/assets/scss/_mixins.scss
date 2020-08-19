@@ -1,0 +1,6 @@
+@mixin scrollable-container {
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

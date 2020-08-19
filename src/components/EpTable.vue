@@ -1,0 +1,220 @@
+<template>
+  <div>
+    <table
+      :class="[
+        'table',
+        { 'table--selectable': selectable },
+        { 'table--sticky': stickyHeader },
+        { 'table--striped': striped }
+      ]"
+    >
+      <thead>
+        <tr>
+          <th v-for="(label, key) in columns"
+          :key="key"
+          @click="sort(key)"
+          :class="headClasses(key)"
+          >
+            <div>
+              <span class="label">{{ label }}</span>
+              <EpIcon :name="arrowIcon()" />
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="row in filteredData"
+          :key="row.id"
+          @click="$emit('row-click', row.id)"
+          :class="{
+            'table-row--selected': isSelected(row.id),
+            'table-row--empty': row.empty
+          }"
+        >
+          <td
+            v-for="(value, key) in row.data"
+            :key="key"
+          >
+            {{ (value.value != null) ? value.template || value.value : '' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script>
+  import EpIcon from './EpIcon/EpIcon'
+
+  export default {
+    data() {
+      return {
+        currentSort: 'start_date',
+        currentSortDir: 'desc',
+        // using the spread clones the arrray, making it non-reactive
+        // as I don't want the sort function mutating the data being sent the charts, etc
+        // no longer using, but keeping so I nevar forget
+        // tableData: [...this.data]
+      }
+    },
+    components: {
+      EpIcon
+    },
+    props: {
+      columns: {
+        type: Object,
+        required: true
+      },
+      data: {
+        type: Array,
+        required: true
+      },
+      dateFilter: {
+        type: Object,
+        default: null
+      },
+      hideEmpty: {
+        type: Boolean,
+        default: false
+      },
+      selectable: {
+        type: Boolean,
+        default: false
+      },
+      selected: {
+        type: Number,
+        default: null
+      },
+      stickyHeader: {
+        type: Boolean,
+        default: false
+      },
+      striped: {
+        type: Boolean,
+        default: false
+      }
+    },
+    methods: {
+      arrowIcon() {
+        return (this.currentSortDir == 'desc') ? 'arrow-up' : 'arrow-down'
+      },
+      headClasses(key) {
+        return (key == this.currentSort) ? ['active', `active--${this.currentSortDir}`] : null
+      },
+      // isHidden(rowHidden) {
+      //   return (this.hideEmpty && rowHidden)
+      // },
+      isSelected(rowID) {
+        return (rowID === null) ? false : rowID == this.selected
+      },
+      sort:function(s) {
+        if (s === this.currentSort) {
+          this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc'
+        }
+        this.currentSort = s
+      }
+    },
+    computed: {
+      filteredData() {
+        return (this.hideEmpty) ? this.sortedData.filter(row => !row.empty) : this.sortedData
+      },
+      sortedData() {
+        return this.data.sort((a, b) => {
+          let modifier = 1
+          if (this.currentSortDir === 'desc') modifier = -1
+          if (a.data[this.currentSort].value < b.data[this.currentSort].value) return -1 * modifier
+          if (a.data[this.currentSort].value > b.data[this.currentSort].value) return 1 * modifier
+          return 0
+        })
+      }
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  .table {
+    width: 100%;
+    thead {
+      th {
+        text-align: left;
+        background: $white;
+        z-index: 10;
+        &:hover {
+          color: red;
+          cursor: pointer;
+        }
+        &.active {
+          color: red;
+          .ep-icon {
+            visibility: visible;
+          }
+        }
+        div {
+          position: relative;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          padding: 14px;
+          border-bottom: 1px solid $gray;
+          span.label {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            flex: 1;
+          }
+          .ep-icon {
+            visibility: hidden;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        &:not(:first-child) {
+          border-top: 1px solid $medium-gray;
+        }
+        &.table-row--empty {
+          background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e1e1e1' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+          background-color: $white !important;
+          td {
+            color: $gray;
+            padding: 7px 14px;
+            pointer-events: none;
+          }
+        }
+        // &.table-row--hidden {
+        //   display: none;
+        // }
+        td {
+          padding: 14px;
+          vertical-align: middle;
+        }
+      }
+    }
+    &--selectable {
+      tbody {
+        tr:not(.table-row--empty):not(.table-row--selected):hover {
+          cursor: pointer;
+          td { background: rgb(255, 250, 238); }
+        }
+        tr.table-row--selected {
+          td { background: rgb(255, 240, 198); } 
+        }
+      }
+    }
+    &--sticky {
+      thead {
+        th {
+          position: sticky;
+          top: -1px; // fixes wierd 1px gap exposes tbody contents as they scroll
+        }
+      }
+    }
+    &--striped {
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+    }
+  }
+</style>
