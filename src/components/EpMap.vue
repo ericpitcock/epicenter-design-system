@@ -162,7 +162,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../../node_modules/mapbox-gl/dist/mapbox-gl.css';
+  @import '../node_modules/mapbox-gl/dist/mapbox-gl.css';
   
   .map-container, #map {
     width: 100%;
