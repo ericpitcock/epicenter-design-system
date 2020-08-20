@@ -5,12 +5,12 @@
     :class="buttonClasses"
     :disabled="disabled"
   >
-    <div v-if="icon" class="button__icon-container">
+    <div v-if="icon" class="ep-button__icon-container">
       <div class="icon">
         <EpIcon :name="iconSource" />
       </div>
     </div>
-    <div v-if="label" class="button__text">{{ labelText }}</div>
+    <div v-if="label" class="ep-button__text">{{ labelText }}</div>
   </component>
 </template>
 
@@ -38,11 +38,11 @@
       },
       label: {
         type: Boolean,
-        default: false
+        default: true
       },
       labelText: {
         type: String,
-        default: undefined
+        default: 'Default button text'
       },
       icon: {
         type: Boolean,
@@ -78,19 +78,19 @@
     },
     computed: {
       buttonClasses() {
-        let classes = ['button']
+        let classes = ['ep-button']
         // kind
-        classes.push(`button--${this.kind}`)
+        classes.push(`ep-button--${this.kind}`)
         // size
-        if (this.size != 'default') classes.push(`button--${this.kind}`)
+        if (this.size != 'default') classes.push(`ep-button--${this.size}`)
         // icon
         if (this.icon) {
-          classes.push('button--icon')
-          classes.push(`button--icon-${this.iconSource}`)
-          if (this.iconAlignRight) classes.push(`button--icon-right`)
+          classes.push('ep-button--icon')
+          classes.push(`ep-button--icon-${this.iconSource}`)
+          if (this.iconAlignRight) classes.push(`ep-button--icon-right`)
         }
         // disabled
-        if (this.disabled) classes.push(`button--disabled`)
+        if (this.disabled) classes.push(`ep-button--disabled`)
 
         return classes.join(' ')
       }
@@ -132,7 +132,7 @@
     // }
   }
 
-  .button {
+  .ep-button {
     display: inline-flex;
     align-items: center;
     padding: 9px 14px 9px 14px;
@@ -240,10 +240,9 @@
       );
     }
     // size
-    &--large {
-      height: 40px;
-      padding: 0 20px;
-      font-size: 14px;
+    &--small {
+      padding: 7.5px 12px 7.5px 12px;
+      font-size: 12px;
     }
     // disabled
     &:disabled {
@@ -272,10 +271,10 @@
       // vertical-align: text-top;
       position: relative;
       top: -1px;
-      .button--icon & {
+      .ep-button--icon & {
         margin-left: 8px;
       }
-      .button--icon-right & {
+      .ep-button--icon-right & {
         margin-right: 8px;
         margin-left: 0;
       }

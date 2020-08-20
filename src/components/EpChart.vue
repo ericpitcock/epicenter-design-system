@@ -8,6 +8,7 @@
   import Highcharts from 'highcharts/highstock'
 
   export default {
+    name: 'EpChart',
     data() {
       return {
         chart: null

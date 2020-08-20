@@ -29,7 +29,7 @@ const buttonKinds = {
 
 const buttonSizes = {
   Default: 'default',
-  Large: 'large'
+  Small: 'small'
 }
 
 const elements = {

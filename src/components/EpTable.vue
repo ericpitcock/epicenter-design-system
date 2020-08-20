@@ -2,10 +2,10 @@
   <div>
     <table
       :class="[
-        'table',
-        { 'table--selectable': selectable },
-        { 'table--sticky': stickyHeader },
-        { 'table--striped': striped }
+        'ep-table',
+        { 'ep-table--selectable': selectable },
+        { 'ep-table--sticky': stickyHeader },
+        { 'ep-table--striped': striped }
       ]"
     >
       <thead>
@@ -28,8 +28,8 @@
           :key="row.id"
           @click="$emit('row-click', row.id)"
           :class="{
-            'table-row--selected': isSelected(row.id),
-            'table-row--empty': row.empty
+            'ep-table-row--selected': isSelected(row.id),
+            'ep-table-row--empty': row.empty
           }"
         >
           <td
@@ -48,6 +48,7 @@
   import EpIcon from './EpIcon/EpIcon'
 
   export default {
+    name: 'EpTable',
     data() {
       return {
         currentSort: 'start_date',
@@ -133,7 +134,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .table {
+  .ep-table {
     width: 100%;
     thead {
       th {
@@ -174,7 +175,7 @@
         &:not(:first-child) {
           border-top: 1px solid $medium-gray;
         }
-        &.table-row--empty {
+        &.ep-table-row--empty {
           background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e1e1e1' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
           background-color: $white !important;
           td {
@@ -194,11 +195,11 @@
     }
     &--selectable {
       tbody {
-        tr:not(.table-row--empty):not(.table-row--selected):hover {
+        tr:not(.ep-table-row--empty):not(.ep-table-row--selected):hover {
           cursor: pointer;
           td { background: rgb(255, 250, 238); }
         }
-        tr.table-row--selected {
+        tr.ep-table-row--selected {
           td { background: rgb(255, 240, 198); } 
         }
       }

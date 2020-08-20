@@ -1,6 +1,6 @@
 <template>
-  <div class="map-container">
-    <div id="map"></div>
+  <div class="ep-map-container">
+    <div id="ep-map"></div>
   </div>
 </template>
 
@@ -54,7 +54,7 @@
         return new Promise(resolve => {
           mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpY3BpdGNvY2siLCJhIjoia29WT3AzOCJ9.YTnpZdWBqPD4cH6mlnZoYQ'
           this.map = new mapboxgl.Map({
-            container: 'map',
+            container: 'ep-map',
             center: this.getMapCenter(),
             zoom: this.mapZoom,
             style: this.mapStyle
@@ -164,13 +164,11 @@
 <style lang="scss" scoped>
   @import '~mapbox-gl/dist/mapbox-gl.css';
   
-  .map-container, #map {
+  .ep-map-container, #ep-map {
     width: 100%;
     height: 100%;
   }
-  .map-container {
+  .ep-map-container {
     position: relative;
-    // border-radius: 3px;
-    overflow: hidden;
   }
 </style>
