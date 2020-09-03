@@ -78,21 +78,15 @@
     },
     computed: {
       buttonClasses() {
-        let classes = ['ep-button']
-        // kind
-        classes.push(`ep-button--${this.kind}`)
-        // size
-        if (this.size != 'default') classes.push(`ep-button--${this.size}`)
-        // icon
-        if (this.icon) {
-          classes.push('ep-button--icon')
-          classes.push(`ep-button--icon-${this.iconSource}`)
-          if (this.iconAlignRight) classes.push(`ep-button--icon-right`)
-        }
-        // disabled
-        if (this.disabled) classes.push(`ep-button--disabled`)
-
-        return classes.join(' ')
+        return [
+          'ep-button',
+          `ep-button--${this.kind}`,
+          { [`ep-button--${this.size}`]: this.size != 'default' },
+          { 'ep-button--icon': this.icon },
+          { [`ep-button--icon-${this.iconSource}`]: this.icon },
+          { 'ep-button--icon-right': this.icon && this.iconAlignRight },
+          { 'ep-button--disabled': this.disabled }
+        ]
       }
     }
   }
