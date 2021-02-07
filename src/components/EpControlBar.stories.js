@@ -1,7 +1,3 @@
-import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
-import { withKnobs } from '@storybook/addon-knobs'
-
 import EpControlBar from './EpControlBar'
 
 const container = () => {
@@ -11,16 +7,20 @@ const container = () => {
 }
 
 export default {
-  title: 'Components/EpControlBar',
+  title: 'Components/Control Bar',
   component: EpControlBar,
-  decorators: [withKnobs, container]
+  decorators: [container],
+  argTypes: {
+
+  }
 }
 
-export const ControlBar = () => ({
+const Template = (args, { argTypes }) => ({
   components: { EpControlBar },
-  template: '<EpControlBar />',
-  props: {
-
-  },
-  methods: {}
+  props: Object.keys(argTypes),
+  template: `
+  <EpControlBar />
+  `
 })
+
+export const ControlBar = Template.bind({})

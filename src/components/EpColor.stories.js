@@ -1,18 +1,36 @@
-import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
-import { withKnobs, text, boolean, select, radios } from '@storybook/addon-knobs'
-
 import EpColor from './EpColor'
 
 export default {
-  title: 'Style/EpColor',
+  title: 'Style/Color',
   component: EpColor,
-  decorators: [withKnobs]
+  argTypes: {
+
+  },
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+  }
 }
 
-export const Palette = () => ({
+const Template = (args, { argTypes }) => ({
   components: { EpColor },
-  template: '<EpColor />',
-  props: { },
-  methods: { }
+  props: Object.keys(argTypes),
+  template: `
+  <EpColor />
+  `
 })
+
+export const Color = Template.bind({})
+
+//OLD
+// export default {
+//   title: 'Style/EpColor',
+//   component: EpColor,
+//   decorators: [withKnobs]
+// }
+
+// export const Palette = () => ({
+//   components: { EpColor },
+//   template: '<EpColor />',
+//   props: { },
+//   methods: { }
+// })

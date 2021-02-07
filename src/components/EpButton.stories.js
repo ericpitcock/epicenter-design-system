@@ -4,7 +4,7 @@ import EpButton from './EpButton'
 const icons = svgIcons.map(icon => icon.name.slice(2, -4))
 
 export default {
-  title: 'Components/EpButton',
+  title: 'Components/Button',
   component: EpButton,
   argTypes: {
     disabled: {
@@ -71,7 +71,10 @@ export default {
       control: {
         type: 'boolean'
       },
-      defaultValue: false
+      defaultValue: false,
+      table: {
+        category: 'Icon'
+      }
     },
     iconSource: {
       name: 'Icon Source',
@@ -79,14 +82,20 @@ export default {
         type: 'select',
         options: icons
       },
-      defaultValue: 'refresh'
+      defaultValue: 'refresh',
+      table: {
+        category: 'Icon'
+      }
     },
     iconAlignRight: {
       name: 'Alight Icon Right',
       control: {
         type: 'boolean'
       },
-      defaultValue: false
+      defaultValue: false,
+      table: {
+        category: 'Icon'
+      }
     }
   }
 }
@@ -110,7 +119,7 @@ const Template = (args, { argTypes }) => ({
   `
 })
 
-export const Basic = Template.bind({});
+export const Button = Template.bind({})
 // Basic.args = {
 //   labelText: 'Butthole'
 // }

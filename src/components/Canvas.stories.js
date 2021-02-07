@@ -1,8 +1,3 @@
-import svgIcons from './EpIcon/load-icons'
-import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
-import { withKnobs } from '@storybook/addon-knobs'
-
 import Canvas from './Canvas'
 
 const container = () => {
@@ -12,15 +7,38 @@ const container = () => {
 }
 
 export default {
-  title: 'Components/Canvas',
+  title: 'Components/Ccanvas',
   component: Canvas,
-  decorators: [withKnobs, container]
+  decorators: [container],
+  argTypes: {
+
+  },
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+  }
 }
 
-export const Basic = () => ({
+const Template = (args, { argTypes }) => ({
   components: { Canvas },
-  template: '<Canvas />',
-  props: {
-  },
-  methods: {}
+  props: Object.keys(argTypes),
+  template: `
+  <Canvas />
+  `
 })
+
+export const Ccanvas = Template.bind({})
+
+// OLD
+// export default {
+//   title: 'Components/Canvas',
+//   component: Canvas,
+//   decorators: [withKnobs, container]
+// }
+
+// export const Basic = () => ({
+//   components: { Canvas },
+//   template: '<Canvas />',
+//   props: {
+//   },
+//   methods: {}
+// })

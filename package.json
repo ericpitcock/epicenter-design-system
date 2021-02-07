@@ -4,7 +4,7 @@
   "description": "Ep Design System",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 --no-manager-cache",
     "build-storybook": "build-storybook",
     "scss-export": "sass-export src/components/EpIcon/tokens/*.scss -o src/components/EpIcon/tokens.json"
   },
@@ -28,6 +28,7 @@
     "@storybook/addon-knobs": "^6.1.17",
     "@storybook/addon-links": "^6.1.17",
     "@storybook/addons": "^6.1.17",
+    "@storybook/theming": "^6.1.17",
     "@storybook/vue": "^6.1.17",
     "@vue/cli-plugin-babel": "^4.4.0",
     "@vue/cli-service": "^4.4.0",

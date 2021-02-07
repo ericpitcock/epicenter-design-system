@@ -1,6 +1,3 @@
-import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
-import { withKnobs, object } from '@storybook/addon-knobs'
 import moment from 'moment'
 
 import EpChart from './EpChart'
@@ -9,12 +6,6 @@ const container = () => {
   return {
     template: '<div style="padding: 30px;"><story/></div>'
   }
-}
-
-export default {
-  title: 'Components/EpChart',
-  component: EpChart,
-  decorators: [withKnobs, container]
 }
 
 const chartData = [
@@ -289,16 +280,60 @@ const extremes = {
   max: new Date().getTime()
 }
 
-export const Column = () => ({
-  components: { EpChart },
-  template: '<EpChart :options="options" />',
-  props: {
+export default {
+  title: 'Components/Chart',
+  component: EpChart,
+  decorators: [container],
+  argTypes: {
     options: {
-      default: () => options
+      defaultValue: options,
+      table: {
+        disable: true
+      }
     },
     extremes: {
-      default: () => extremes
+      defaultValue: extremes,
+      table: {
+        disable: true
+      }
     }
   },
-  methods: {}
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+  }
+}
+
+const Template = (args, { argTypes }) => ({
+  components: { EpChart },
+  props: Object.keys(argTypes),
+  template: `
+  <EpChart :options="options" />
+  `
 })
+
+export const Chart = Template.bind({})
+
+
+
+// OLD
+
+
+// export default {
+//   title: 'Components/EpChart',
+//   component: EpChart,
+//   decorators: [withKnobs, container]
+// }
+
+// export const Column = () => ({
+//   components: { EpChart },
+//   template: '<EpChart :options="options" />',
+//   props: {
+//     options: {
+//       default: () => options
+//     },
+//     extremes: {
+//       default: () => extremes
+//     }
+//   },
+//   methods: {}
+// })

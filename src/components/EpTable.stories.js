@@ -1,20 +1,4 @@
-import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
-import { withKnobs, boolean, number } from '@storybook/addon-knobs'
-
 import EpTable from './EpTable'
-
-const container = () => {
-  return {
-    template: '<div style="padding: 30px;"><story/></div>'
-  }
-}
-
-export default {
-  title: 'Components/EpTable',
-  component: EpTable,
-  decorators: [withKnobs, container]
-}
 
 const columns = {
   start_date: 'Date',
@@ -2158,23 +2142,112 @@ const data = [
   }
 ]
 
-export const Basic = () => ({
-  components: { EpTable },
-  template: '<EpTable :columns="columns" :data="data" :hideEmpty="hideEmpty" :selectable="selectable" :selected="selected" :stickyHeader="stickyHeader" :striped="striped" />',
-  props: {
-    // columns: { default: object('Columns', columns) },
+const container = () => {
+  return {
+    template: '<div style="padding: 30px;"><story/></div>'
+  }
+}
+
+export default {
+  title: 'Components/Table',
+  component: EpTable,
+  decorators: [container],
+  argTypes: {
     columns: {
-      default: () => columns,
+      defaultValue: columns,
+      table: {
+        disable: true
+      }
     },
-    // data: { default: array('Data', data) },
     data: {
-      default: () => data,
+      defaultValue: data,
+      table: {
+        disable: true
+      }
     },
-    selectable: { default: boolean('Selectable', false) },
-    selected: { default: number('Selected ID', 3899513739) },
-    hideEmpty: { default: boolean('Hide empty', false) },
-    stickyHeader: { default: boolean('Sticky header', true) },
-    striped: { default: boolean('Striped', false) }
-  },
-  methods: {}
+    selectable: {
+      name: 'Selectable',
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false
+    },
+    selected: {
+      name: 'Selected ID',
+      control: {
+        type: 'number',
+      },
+      defaultValue: 3899513739
+    },
+    hideEmpty: {
+      name: 'Hide Empty',
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false
+    },
+    stickyHeader: { 
+      name: 'Sticky Header',
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: true
+    },
+    striped: {
+      name: 'Striped',
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false
+    }
+  }
+}
+
+const Template = (args, { argTypes }) => ({
+  components: { EpTable },
+  props: Object.keys(argTypes),
+  template: `
+  <EpTable
+    :columns="columns"
+    :data="data"
+    :hideEmpty="hideEmpty"
+    :selectable="selectable"
+    :selected="selected"
+    :stickyHeader="stickyHeader"
+    :striped="striped"
+  />
+  `
 })
+
+export const Table = Template.bind({})
+
+
+// OLD
+// export default {
+//   title: 'Components/EpTable',
+//   component: EpTable,
+//   decorators: [withKnobs, container]
+// }
+
+
+
+// export const Basic = () => ({
+//   components: { EpTable },
+//   template: '<EpTable :columns="columns" :data="data" :hideEmpty="hideEmpty" :selectable="selectable" :selected="selected" :stickyHeader="stickyHeader" :striped="striped" />',
+//   props: {
+//     // columns: { default: object('Columns', columns) },
+//     columns: {
+//       default: () => columns,
+//     },
+//     // data: { default: array('Data', data) },
+//     data: {
+//       default: () => data,
+//     },
+//     selectable: { default: boolean('Selectable', false) },
+//     selected: { default: number('Selected ID', 3899513739) },
+//     hideEmpty: { default: boolean('Hide empty', false) },
+//     stickyHeader: { default: boolean('Sticky header', true) },
+//     striped: { default: boolean('Striped', false) }
+//   },
+//   methods: {}
+// })
