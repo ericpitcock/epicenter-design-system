@@ -7,9 +7,16 @@ const names = svgIcons.map(icon => icon.name.slice(2, -4))
 const iconSizes = getTokenGroup('icon-sizes')
 const colors = getTokensByType('color')
 
+const container = () => {
+  return {
+    template: '<div style="padding: 30px; display:flex; justify-content: center;"><story/></div>'
+  }
+}
+
 export default {
   title: 'Components/Icon',
   component: EpIcon,
+  decorators: [container],
   argTypes: {
     name: {
       name: 'Name',

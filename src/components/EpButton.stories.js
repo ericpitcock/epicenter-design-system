@@ -17,7 +17,7 @@ export default {
     kind: {
       name: 'Button Kind',
       control: {
-        type: 'select',
+        type: 'radio',
         options: {
           Primary: 'primary',
           Secondary: 'secondary',
@@ -33,7 +33,7 @@ export default {
     element: {
       name: 'HTML Element',
       control: {
-        type: 'select',
+        type: 'radio',
         options: {
           Button: 'button',
           Link: 'a'
@@ -44,7 +44,7 @@ export default {
     size: {
       name: 'Button Size',
       control: {
-        type: 'select',
+        type: 'radio',
         options: {
           Default: 'default',
           Small: 'small'
