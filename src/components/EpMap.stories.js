@@ -33,7 +33,7 @@ export default {
     mapStyle: {
       name: 'Map Style',
       control: {
-        type: 'select',
+        type: 'radio',
         options: mapStyles
       },
       defaultValue: 'mapbox://styles/mapbox/streets-v11'

@@ -4,9 +4,9 @@ const rootPath = path.resolve(__dirname, '../src')
 module.exports = {
   stories: ['../src/components/**/*.stories.js'],
   addons: [
-    '@storybook/addon-actions',
-    '@storybook/addon-links',
-    '@storybook/addon-controls'
+    '@storybook/addon-controls',
+    // '@storybook/addon-actions',
+    '@storybook/addon-links'
     // '@storybook/addon-knobs/register'
   ],
   webpackFinal: async (config, { configType }) => {

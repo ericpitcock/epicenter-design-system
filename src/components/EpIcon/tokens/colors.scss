@@ -1,33 +1,29 @@
-/**
- * @tokens Colors
- * @presenter Color
- */
 //neutral colors
-$color-black: #202427; /* Цвет основного текста */
-$color-dark-gray: #5C6670; /* Иконки, доп.текст, менее активные эл-ты */
-$color-gray: #8F99A3; /* Для плашек, хорошо держит форму */
-$color-outline-gray: #C7CCD1; /* Для обводок */
-$color-hover-gray: #EDF0F3; /* Ховеры и неактивные эл-ты */
-$color-white: #FFFFFF; /* Основной фон */
+$color-black: #202427;
+$color-dark-gray: #5C6670;
+$color-gray: #8F99A3;
+$color-outline-gray: #C7CCD1;
+$color-hover-gray: #EDF0F3;
+$color-white: #FFFFFF;
 //main colors
-$color-hover-blue: #0A54C2; /* Кнопки, ссылки, выделение активных элементов */
-$color-blue: #2578F4; /* Кнопки, ссылки, выделение активных элементов и иконки */
-$color-light-blue: #92BBFA; /* Текст на accent blue */
-$color-lighter-blue: #E1EDFF; /* Выбранные элементы */
+$color-hover-blue: #0A54C2;
+$color-blue: #2578F4;
+$color-light-blue: #92BBFA;
+$color-lighter-blue: #E1EDFF;
 //additional colors
-$color-dark-orange: #BD8400; /* Кнопки, статус данных */
-$color-orange: #FCB100; /* Кнопки, статус данных */
-$color-dark-red: #D5260B; /* Красные кнопки отмены */
-$color-red: #F5563D; /* Красные кнопки отмены */
-$color-dark-green: #218321; /* Цифры и положительные действия */
-$color-green: #4DCB4D; /* Зелёные кнопки */
-$color-toxic: #E8F443; /* Кнопки, статус данных */
-$color-purple: #7835FF; /* Статус данных */
-$color-ultraviolet: #C41CFD; /* Статус данных */
-$color-pinkish: #F073B1; /* Статус данных */
-$color-azure: #0A85C2; /* Статус данных */
+$color-dark-orange: #BD8400;
+$color-orange: #FCB100;
+$color-dark-red: #D5260B;
+$color-red: #F5563D;
+$color-dark-green: #218321;
+$color-green: #4DCB4D;
+$color-toxic: #E8F443;
+$color-purple: #7835FF;
+$color-ultraviolet: #C41CFD;
+$color-pinkish: #F073B1;
+$color-azure: #0A85C2;
 
-$color-transparent: transparent; /* Прозрачный фон */
+$color-transparent: transparent; 
 
 $token-colors: (
   "black": $color-black,

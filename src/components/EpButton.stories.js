@@ -105,7 +105,6 @@ const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   template: `
   <EpButton
-    @click="action"
     :kind="kind"
     :element="element"
     :size="size"

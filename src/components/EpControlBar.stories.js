@@ -12,6 +12,9 @@ export default {
   decorators: [container],
   argTypes: {
 
+  },
+  parameters: {
+    controls: { hideNoControlsWarning: true },
   }
 }
 

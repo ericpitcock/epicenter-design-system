@@ -3,8 +3,15 @@ import { addons } from '@storybook/addons'
 import themeEp from './themeEp'
 
 addons.setConfig({
+  isFullscreen: false,
+  showNav: true,
+  showPanel: true,
+  panelPosition: 'right',
+  sidebarAnimations: true,
+  enableShortcuts: true,
+  isToolshown: true,
   theme: themeEp,
-});
-// addons.setConfig({
-//   theme: themes.dark,
-// })
+  selectedPanel: undefined,
+  initialActive: 'sidebar',
+  showRoots: false,
+})
