@@ -1,11 +1,5 @@
 import EpMap from './EpMap'
 
-const container = () => {
-  return {
-    template: '<div style="height: 100vh;"><story/></div>'
-  }
-}
-
 const mapStyles = {
   Basic: 'mapbox://styles/mapbox/streets-v11',
   Ep: 'mapbox://styles/ericpitcock/ckba479fv065v1in6pmfm6hz2'
@@ -14,7 +8,6 @@ const mapStyles = {
 export default {
   title: 'Components/Map',
   component: EpMap,
-  decorators: [container],
   argTypes: {
     mapCenter: {
       name: 'Map Center',

@@ -1,11 +1,18 @@
 import svgIcons from './EpIcon/load-icons'
 import EpButton from './EpButton'
 
+const container = () => {
+  return {
+    template: '<div style="display: flex; justify-content: center; padding-top: 20%;"><story/></div>'
+  }
+}
+
 const icons = svgIcons.map(icon => icon.name.slice(2, -4))
 
 export default {
   title: 'Components/Button',
   component: EpButton,
+  decorators: [container],
   argTypes: {
     disabled: {
       name: 'Disabled',
@@ -119,6 +126,6 @@ const Template = (args, { argTypes }) => ({
 })
 
 export const Button = Template.bind({})
-// Basic.args = {
-//   labelText: 'Butthole'
+// Button.args = {
+//   labelText: 'Button Text'
 // }

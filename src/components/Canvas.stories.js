@@ -7,7 +7,7 @@ const container = () => {
 }
 
 export default {
-  title: 'Components/Ccanvas',
+  title: 'Components/Playground',
   component: Canvas,
   decorators: [container],
   argTypes: {
@@ -26,19 +26,4 @@ const Template = (args, { argTypes }) => ({
   `
 })
 
-export const Ccanvas = Template.bind({})
-
-// OLD
-// export default {
-//   title: 'Components/Canvas',
-//   component: Canvas,
-//   decorators: [withKnobs, container]
-// }
-
-// export const Basic = () => ({
-//   components: { Canvas },
-//   template: '<Canvas />',
-//   props: {
-//   },
-//   methods: {}
-// })
+export const Playground = Template.bind({})

@@ -1,3 +1,52 @@
+// NEW
+// :root {
+//   // Ep's truest grayscale
+//   --white: #fff;
+//   --lightest-gray: #f9f9f9;
+//   --mid-light-gray: #f0f0f0;
+//   --light-gray: #eee;
+//   --medium-gray: #e3e3e3;
+//   --gray: #bdbdbd;
+//   --dark-gray: #757575;
+//   --darkest-gray: #424242;
+//   --text-black: #303030;
+//   --black: #000;
+// }
+
+$grayscale-map: (
+  'white': #fff,
+  'lightest-gray': #f9f9f9,
+  'mid-light-gray': #f0f0f0,
+  'light-gray': #eee,
+  'medium-gray': #e3e3e3,
+  'gray': #bdbdbd,
+  'dark-gray': #757575,
+  'darkest-gray': #424242,
+  'text-black': #303030,
+  'black': #000
+);
+
+:root {
+  // this will compile to CSS variables
+  // --<color-name>: <hex-value>
+  @each $name, $color in $grayscale-map {
+    --color-#{$name}: $color;
+  }
+}
+// $grayscale-map: (
+//   'white': var(--white),
+//   'lightest-gray': var(--lightest-gray),
+//   'mid-light-gray': var(--mid-light-gray),
+//   'light-gray': var(--light-gray),
+//   'medium-gray': var(--medium-gray),
+//   'gray': var(--gray),
+//   'dark-gray': var(--dark-gray),
+//   'darkest-gray': var(--darkest-gray),
+//   'text-black': var(--text-black),
+//   'black': var(--black)
+// );
+
+// OLD
 // grayscale
 $white: #fff;
 $lightest-gray: #f9f9f9;

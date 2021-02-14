@@ -2,7 +2,10 @@ const path = require('path')
 const rootPath = path.resolve(__dirname, '../src')
 
 module.exports = {
-  stories: ['../src/components/**/*.stories.js'],
+  stories: [
+    '../src/components/**/*.stories.js',
+    '../src/style/**/*.stories.js'
+  ],
   addons: [
     '@storybook/addon-controls',
     // '@storybook/addon-actions',
