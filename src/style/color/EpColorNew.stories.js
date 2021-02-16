@@ -1,8 +1,15 @@
 import EpColorNew from './EpColorNew'
 
+const container = () => {
+  return {
+    template: '<div style="padding: 30px;"><story/></div>'
+  }
+}
+
 export default {
   title: 'Style/Color New',
   component: EpColorNew,
+  decorators: [container],
   argTypes: {
 
   },

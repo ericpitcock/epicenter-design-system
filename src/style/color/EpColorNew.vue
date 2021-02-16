@@ -1,15 +1,21 @@
 <template>
   <div class="colors">
-    <div v-for="(colors, name) in colors" :key="name">
-      <h1>{{ name }}</h1>
-      <div class="swatches">
+    <div
+      v-for="(colors, name) in colors"
+      :key="name"
+      class="category spaced--large"
+    >
+      <div class="category__label">
+        <h1>{{ name }}</h1>
+      </div>
+      <div class="category__swatches">
           <div
             v-for="(value, name) in colors"
             :key="name"
             class="swatch"
           >
-            <div class="chip" :style="{ background: value }"></div>
-            <div class="name">{{ name.replaceAll('-', ' ') }}</div>
+            <div class="swatch__chip" :style="{ background: value }"></div>
+            <div class="swatch__name">{{ name.replaceAll('-', ' ') }}</div>
           </div>
       </div>
     </div>
@@ -28,37 +34,35 @@
 </script>
 
 <style lang="scss" scoped>
-  .colors {
-    padding: 30px;
-  }
-  // .hue {
-  //   display: flex;
-  //   justify-content: center;
-  //   width: 100%;
-  //   & + .hue {
-  //     margin-top: 30px;
-  //   }
-  // }
-  .swatches {
+  .category {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    &__label {
+      flex: 0 0 140px;
+      h1 {
+        text-transform: capitalize;
+      }
+    }
+    &__swatches {
+      flex: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 10px;
+    }
   }
   .swatch {
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    // margin: 0 10px;
     background: $white;
     overflow: hidden;
-  }
-  .chip {
-    width: 100px;
-    height: 100px;
-  }
-  .name {
-    text-transform: capitalize;
-    font-size: 12px;
-    padding: 5px 0 10px 0;
+    &__chip {
+      width: 100px;
+      height: 100px;
+    }
+    &__name {
+      text-transform: capitalize;
+      font-size: 12px;
+      padding: 5px 0 10px 0;
+    }
   }
 </style>

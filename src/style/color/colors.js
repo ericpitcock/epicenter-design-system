@@ -12,7 +12,8 @@ export const colors = {
     'black': '#000'
   },
   primary: {
-    'blue': '#0889F4'
+    'blue': '#0889F4',
+    'green': '#2DB390'
   },
   utility: {
     'danger-red': '#ff5b52',
