@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../storefront-ui"
+    },
+    {
+      "path": "../E"
+    },
+    {
+      "path": "../Design System/Examples/primevue"
+    },
+    {
+      "path": "../Design System/Examples/mcui-master"
+    },
+    {
+      "path": "../base-vue-3-install"
+    }
+  ],
+  "settings": {}
+}

@@ -10,10 +10,11 @@
     >
       <thead>
         <tr>
-          <th v-for="(label, key) in columns"
-          :key="key"
-          @click="sort(key)"
-          :class="headClasses(key)"
+          <th
+            v-for="(label, key) in columns"
+            :key="key"
+            @click="sort(key)"
+            :class="headClasses(key)"
           >
             <div>
               <span class="label">{{ label }}</span>
@@ -32,11 +33,8 @@
             'ep-table-row--empty': row.empty
           }"
         >
-          <td
-            v-for="(value, key) in row.data"
-            :key="key"
-          >
-            {{ (value.value != null) ? value.template || value.value : '' }}
+          <td v-for="(value, key) in row.data" :key="key">
+            {{ value.value != null ? value.template || value.value : '' }}
           </td>
         </tr>
       </tbody>
@@ -52,7 +50,7 @@
     data() {
       return {
         currentSort: 'start_date',
-        currentSortDir: 'desc',
+        currentSortDir: 'desc'
         // using the spread clones the arrray, making it non-reactive
         // as I don't want the sort function mutating the data being sent the charts, etc
         // no longer using, but keeping so I nevar forget
@@ -98,18 +96,20 @@
     },
     methods: {
       arrowIcon() {
-        return (this.currentSortDir == 'desc') ? 'arrow-up' : 'arrow-down'
+        return this.currentSortDir == 'desc' ? 'arrow-up' : 'arrow-down'
       },
       headClasses(key) {
-        return (key == this.currentSort) ? ['active', `active--${this.currentSortDir}`] : null
+        return key == this.currentSort
+          ? ['active', `active--${this.currentSortDir}`]
+          : null
       },
       // isHidden(rowHidden) {
       //   return (this.hideEmpty && rowHidden)
       // },
       isSelected(rowID) {
-        return (rowID === null) ? false : rowID == this.selected
+        return rowID === null ? false : rowID == this.selected
       },
-      sort:function(s) {
+      sort: function(s) {
         if (s === this.currentSort) {
           this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc'
         }
@@ -118,14 +118,18 @@
     },
     computed: {
       filteredData() {
-        return (this.hideEmpty) ? this.sortedData.filter(row => !row.empty) : this.sortedData
+        return this.hideEmpty
+          ? this.sortedData.filter(row => !row.empty)
+          : this.sortedData
       },
       sortedData() {
         return this.data.sort((a, b) => {
           let modifier = 1
           if (this.currentSortDir === 'desc') modifier = -1
-          if (a.data[this.currentSort].value < b.data[this.currentSort].value) return -1 * modifier
-          if (a.data[this.currentSort].value > b.data[this.currentSort].value) return 1 * modifier
+          if (a.data[this.currentSort].value < b.data[this.currentSort].value)
+            return -1 * modifier
+          if (a.data[this.currentSort].value > b.data[this.currentSort].value)
+            return 1 * modifier
           return 0
         })
       }
@@ -197,10 +201,14 @@
       tbody {
         tr:not(.ep-table-row--empty):not(.ep-table-row--selected):hover {
           cursor: pointer;
-          td { background: rgb(255, 250, 238); }
+          td {
+            background: rgb(255, 250, 238);
+          }
         }
         tr.ep-table-row--selected {
-          td { background: rgb(255, 240, 198); } 
+          td {
+            background: rgb(255, 240, 198);
+          }
         }
       }
     }
