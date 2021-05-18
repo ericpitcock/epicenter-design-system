@@ -1,8 +1,14 @@
 <template>
-  <div>
+  <div
+    :class="[
+      'ep-table-container',
+      { 'ep-table-container--full-width': fullWidth }
+    ]"
+  >
     <table
       :class="[
         'ep-table',
+        { 'ep-table--full-width': fullWidth },
         { 'ep-table--selectable': selectable },
         { 'ep-table--sticky': stickyHeader },
         { 'ep-table--striped': striped }
@@ -73,6 +79,10 @@
         type: Object,
         default: null
       },
+      fullWidth: {
+        type: Boolean,
+        default: false
+      },
       hideEmpty: {
         type: Boolean,
         default: false
@@ -138,9 +148,25 @@
 </script>
 
 <style lang="scss" scoped>
+  .ep-table-container {
+    display: inline-block;
+    background: $white;
+    border-radius: 6px;
+    border: 1px solid $medium-gray;
+    &--full-width {
+      display: block;
+      // width: 100%;
+    }
+  }
   .ep-table {
-    width: 100%;
+    // width: 100%;
     thead {
+      th:first-child {
+        border-top-left-radius: 6px;
+      }
+      th:last-child {
+        border-top-right-radius: 6px;
+      }
       th {
         text-align: left;
         background: $white;
@@ -197,6 +223,9 @@
         }
       }
     }
+    &--full-width {
+      width: 100%;
+    }
     &--selectable {
       tbody {
         tr:not(.ep-table-row--empty):not(.ep-table-row--selected):hover {
@@ -222,7 +251,7 @@
     }
     &--striped {
       tbody tr:nth-child(even) {
-        background-color: #fbfbfb;
+        background-color: #f9f9f9;
       }
     }
   }
