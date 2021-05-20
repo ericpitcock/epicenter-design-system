@@ -2154,16 +2154,18 @@ export default {
   decorators: [container],
   argTypes: {
     columns: {
-      defaultValue: columns,
-      table: {
-        disable: true
-      }
+      name: 'Columns',
+      control: {
+        type: 'object'
+      },
+      defaultValue: columns
     },
     data: {
-      defaultValue: data,
-      table: {
-        disable: true
-      }
+      name: 'Data',
+      control: {
+        type: 'array'
+      },
+      defaultValue: data
     },
     fullWidth: {
       name: 'Full Width',

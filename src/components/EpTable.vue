@@ -161,6 +161,9 @@
   .ep-table {
     // width: 100%;
     thead {
+      // these two could probably move to classes
+      font-family: 'GT America Condensed Medium';
+      user-select: none;
       th:first-child {
         border-top-left-radius: 6px;
       }
@@ -188,7 +191,7 @@
           width: 100%;
           height: 100%;
           padding: 14px;
-          border-bottom: 1px solid $gray;
+          border-bottom: 1px solid $medium-gray;
           span.label {
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -201,6 +204,12 @@
       }
     }
     tbody {
+      tr:last-child td:first-child {
+        border-bottom-left-radius: 6px;
+      }
+      tr:last-child td:last-child {
+        border-bottom-right-radius: 6px;
+      }
       tr {
         &:not(:first-child) {
           border-top: 1px solid $medium-gray;
