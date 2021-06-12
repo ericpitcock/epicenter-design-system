@@ -9,7 +9,8 @@ module.exports = {
   addons: [
     '@storybook/addon-controls',
     // '@storybook/addon-actions',
-    '@storybook/addon-links'
+    '@storybook/addon-links',
+    'storybook-theme-toggle'
     // '@storybook/addon-knobs/register'
   ],
   webpackFinal: async (config, { configType }) => {
@@ -21,11 +22,12 @@ module.exports = {
         {
           loader: 'sass-loader',
           options: {
-            prependData: `@import "@/assets/scss/_variables.scss";
-                          @import '@/assets/scss/_functions.scss';`
+            prependData: `@import '@/assets/scss/_variables.scss';
+                          @import '@/assets/scss/_functions.scss';
+                          @import '@/assets/scss/_global.scss';`
           }
         }
-      ],
+      ]
     })
     config.resolve.alias['@'] = rootPath
     config.resolve.alias['~'] = rootPath

@@ -21,3 +21,11 @@ body {
   font-family: 'GT America Condensed Regular';
   font-size: 14px;
 }
+
+:root {
+  --background-color: #f9f9f9;
+}
+
+html[data-color-theme='dark'] {
+  --background-color: #1e2329;
+}

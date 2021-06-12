@@ -9,7 +9,8 @@ const colors = getTokensByType('color')
 
 const container = () => {
   return {
-    template: '<div style="padding: 30px; display:flex; justify-content: center;"><story/></div>'
+    template:
+      '<div style="padding: 30px; display:flex; justify-content: center;"><story/></div>'
   }
 }
 
@@ -47,7 +48,8 @@ export default {
         type: 'select',
         options: iconSizes
       },
-      defaultValue: '200'
+      // 300 == 1.5
+      defaultValue: '300'
     }
   }
 }

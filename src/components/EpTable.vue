@@ -1,4 +1,5 @@
 <template>
+  <container>
   <div
     :class="[
       'ep-table-container',
@@ -46,9 +47,11 @@
       </tbody>
     </table>
   </div>
+  </container>
 </template>
 
 <script>
+  import Container from './Container'
   import EpIcon from './EpIcon/EpIcon'
 
   export default {
@@ -64,6 +67,7 @@
       }
     },
     components: {
+      Container,
       EpIcon
     },
     props: {
@@ -150,9 +154,9 @@
 <style lang="scss" scoped>
   .ep-table-container {
     display: inline-block;
-    background: $white;
-    border-radius: 6px;
-    border: 1px solid $medium-gray;
+    // background: $white;
+    // border-radius: 6px;
+    // border: 1px solid $medium-gray;
     &--full-width {
       display: block;
       // width: 100%;
@@ -172,7 +176,7 @@
       }
       th {
         text-align: left;
-        background: $white;
+        background: var(--color-bg-container);
         z-index: 10;
         &:hover {
           color: red;
@@ -191,7 +195,7 @@
           width: 100%;
           height: 100%;
           padding: 14px;
-          border-bottom: 1px solid $medium-gray;
+          border-bottom: 1px solid var(--color-border-container);
           span.label {
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -212,11 +216,12 @@
       }
       tr {
         &:not(:first-child) {
-          border-top: 1px solid $medium-gray;
+          // border-top: 1px solid $medium-gray;
+          border-top: 1px solid var(--color-border-container);
         }
         &.ep-table-row--empty {
           background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e1e1e1' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-          background-color: $white !important;
+          // background-color: $white !important;
           td {
             color: $gray;
             padding: 7px 14px;
