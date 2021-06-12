@@ -1,15 +1,8 @@
 <template>
-  <container>
-  <div
-    :class="[
-      'ep-table-container',
-      { 'ep-table-container--full-width': fullWidth }
-    ]"
-  >
+  <container :fullWidth="false">
     <table
       :class="[
         'ep-table',
-        { 'ep-table--full-width': fullWidth },
         { 'ep-table--selectable': selectable },
         { 'ep-table--sticky': stickyHeader },
         { 'ep-table--striped': striped }
@@ -46,7 +39,6 @@
         </tr>
       </tbody>
     </table>
-  </div>
   </container>
 </template>
 
@@ -82,10 +74,6 @@
       dateFilter: {
         type: Object,
         default: null
-      },
-      fullWidth: {
-        type: Boolean,
-        default: false
       },
       hideEmpty: {
         type: Boolean,
@@ -152,16 +140,16 @@
 </script>
 
 <style lang="scss" scoped>
-  .ep-table-container {
-    display: inline-block;
-    // background: $white;
-    // border-radius: 6px;
-    // border: 1px solid $medium-gray;
-    &--full-width {
-      display: block;
-      // width: 100%;
-    }
-  }
+  // .ep-table-container {
+  //   display: inline-block;
+  //   // background: $white;
+  //   // border-radius: 6px;
+  //   // border: 1px solid $medium-gray;
+  //   &--full-width {
+  //     display: block;
+  //     // width: 100%;
+  //   }
+  // }
   .ep-table {
     // width: 100%;
     thead {
@@ -236,9 +224,6 @@
           vertical-align: middle;
         }
       }
-    }
-    &--full-width {
-      width: 100%;
     }
     &--selectable {
       tbody {

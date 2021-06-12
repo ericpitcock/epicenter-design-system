@@ -2167,13 +2167,6 @@ export default {
       },
       defaultValue: data
     },
-    fullWidth: {
-      name: 'Full Width',
-      control: {
-        type: 'boolean'
-      },
-      defaultValue: false
-    },
     selectable: {
       name: 'Selectable',
       control: {
@@ -2219,7 +2212,6 @@ const Template = (args, { argTypes }) => ({
   <EpTable
     :columns="columns"
     :data="data"
-    :fullWidth="fullWidth"
     :hideEmpty="hideEmpty"
     :selectable="selectable"
     :selected="selected"
