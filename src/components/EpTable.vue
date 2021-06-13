@@ -151,7 +151,7 @@
   //   }
   // }
   .ep-table {
-    // width: 100%;
+    width: 100%;
     thead {
       // these two could probably move to classes
       font-family: 'GT America Condensed Medium';
@@ -167,11 +167,11 @@
         background: var(--color-bg-container);
         z-index: 10;
         &:hover {
-          color: red;
+          color: var(--theme-primary);
           cursor: pointer;
         }
         &.active {
-          color: red;
+          color: var(--theme-primary);
           .ep-icon {
             visibility: visible;
           }
@@ -190,6 +190,7 @@
             flex: 1;
           }
           .ep-icon {
+            margin-left: 10px;
             visibility: hidden;
           }
         }
@@ -208,7 +209,7 @@
           border-top: 1px solid var(--color-border-container);
         }
         &.ep-table-row--empty {
-          background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e1e1e1' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+          background-color: var(--lightest-gray) ;
           // background-color: $white !important;
           td {
             color: $gray;
@@ -230,12 +231,12 @@
         tr:not(.ep-table-row--empty):not(.ep-table-row--selected):hover {
           cursor: pointer;
           td {
-            background: rgb(255, 250, 238);
+            background: var(--theme-primary);
           }
         }
         tr.ep-table-row--selected {
           td {
-            background: rgb(255, 240, 198);
+            background: var(--theme-primary);
           }
         }
       }

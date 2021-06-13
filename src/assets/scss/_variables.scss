@@ -220,7 +220,6 @@
   --gray-800: #27272a;
   --gray-900: #18181b;
 
-
   --coolGray-50: #f9fafb;
   --coolGray-100: #f3f4f6;
   --coolGray-200: #e5e7eb;
@@ -231,7 +230,6 @@
   --coolGray-700: #374151;
   --coolGray-800: #1f2937;
   --coolGray-900: #111827;
-
 
   --blueGray-50: #f8fafc;
   --blueGray-100: #f1f5f9;
@@ -256,6 +254,7 @@
   --text-black: #303030;
   --black: #000;
 
+  --theme-primary: var(--sky-500);
   --background-color: var(--lightest-gray);
   --color-bg-container: var(--white);
   --color-border-container: var(--medium-gray);
