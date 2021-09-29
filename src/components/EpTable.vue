@@ -164,7 +164,7 @@
       }
       th {
         text-align: left;
-        background: var(--color-bg-container);
+        background: var(--background-level-2);
         z-index: 10;
         &:hover {
           color: var(--theme-primary);
@@ -183,7 +183,7 @@
           width: 100%;
           height: 100%;
           padding: 14px;
-          border-bottom: 1px solid var(--color-border-container);
+          border-bottom: 1px solid var(--border-color);
           span.label {
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -206,10 +206,10 @@
       tr {
         &:not(:first-child) {
           // border-top: 1px solid $medium-gray;
-          border-top: 1px solid var(--color-border-container);
+          border-top: 1px solid var(--border-color);
         }
         &.ep-table-row--empty {
-          background-color: var(--lightest-gray) ;
+          background-color: var(--lightest-gray);
           // background-color: $white !important;
           td {
             color: $gray;

@@ -255,17 +255,62 @@
   --black: #000;
 
   --theme-primary: var(--sky-500);
-  --background-color: var(--lightest-gray);
-  --color-bg-container: var(--white);
-  --color-border-container: var(--medium-gray);
-  --color-text: var(--text-black);
-}
+  // --background-color: var(--lightest-gray);
+  // --color-bg-container: var(--white);
+  // --color-border-container: var(--medium-gray);
+  // --color-text: var(--text-black);
 
+  // NEW this is light mode
+  // background
+  --white: white;
+  // --background-color: --background-level-1;
+  --background-level-1: #f0f0f0;
+  --background-level-1-lighter: var(--white);
+  --background-level-2: #f9f9f9;
+  --background-level-3: var(--white);
+  --background-level-3-lighter: var(--white);
+  // foreground
+  --foreground-level-1: yellow;
+  // border for everything
+  --border-color: #dadada;
+  // button
+  // --button-hover: var(--background-level-2);
+  // --button-active: #21476B;
+  // text and icons
+  --main-text: var(--dark-text);
+  --dark-text: #141414;
+  --icon-color: var(--main-text);
+  --icon-color-dark: var(--dark-text);
+}
+// OLD
 html[data-color-theme='dark'] {
   --background-color: #1e2329;
-  --color-bg-container: #22272E;
-  --color-border-container: #444C56;
+  --color-bg-container: #22272e;
+  --color-border-container: #444c56;
   --color-text: var(--gray);
+}
+
+// NEW
+html[data-color-theme='dark'] {
+  // background
+  // --background-color: --background-level-1;
+  --background-level-1: #1f1f1f;
+  --background-level-1-lighter: #292929;
+  --background-level-2: #262626;
+  --background-level-3: #2b2b2b;
+  --background-level-3-lighter: #2e2e2e;
+  // foreground
+  --foreground-level-1: yellow;
+  // border for everything
+  --border-color: #454545;
+  // button
+  // --button-hover: var(--background-level-2);
+  // --button-active: #21476B;
+  // text and icons
+  --main-text: #dedede;
+  --dark-text: #141414;
+  --icon-color: var(--main-text);
+  --icon-color-dark: var(--dark-text);
 }
 
 $grayscale-map: (
@@ -282,11 +327,11 @@ $grayscale-map: (
 );
 
 // :root {
-  // // this will compile to CSS variables
-  // // --<color-name>: <hex-value>
-  // @each $name, $color in $grayscale-map {
-  //   --color-#{$name}: $color;
-  // }
+// // this will compile to CSS variables
+// // --<color-name>: <hex-value>
+// @each $name, $color in $grayscale-map {
+//   --color-#{$name}: $color;
+// }
 // }
 // $grayscale-map: (
 //   'white': var(--white),

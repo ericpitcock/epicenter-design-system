@@ -95,7 +95,7 @@ export default {
       }
     },
     iconAlignRight: {
-      name: 'Alight Icon Right',
+      name: 'Align Icon Right',
       control: {
         type: 'boolean'
       },

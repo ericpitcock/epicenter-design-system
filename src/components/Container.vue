@@ -1,9 +1,5 @@
 <template>
-  <div :class="[
-      'ep-container',
-      { 'ep-container--full-width': fullWidth }
-    ]"
-  >
+  <div :class="['ep-container', { 'ep-container--full-width': fullWidth }]">
     <slot></slot>
   </div>
 </template>
@@ -23,8 +19,8 @@
   .ep-container {
     display: inline-block;
     border-radius: 6px;
-    background-color: var(--color-bg-container);
-    border: 1px solid var(--color-border-container);
+    background-color: var(--background-level-2);
+    border: 1px solid var(--border-color);
     &--full-width {
       display: block;
     }
