@@ -104,7 +104,7 @@
     },
     data() {
       return {
-        hasHero: false,
+        hasHero: true,
         sidebar: true,
         navItems: [
           {
@@ -368,7 +368,7 @@
   display: block;
 } */
   .nav-item {
-    height: 40px;
+    height: 41px;
     display: flex;
     align-items: center;
     padding-left: 30px;
@@ -425,8 +425,8 @@
       }
     }
     &__icon {
-      width: 16px;
-      height: 16px;
+      width: 17px;
+      height: 17px;
       border: 1px solid var(--icon-color);
       .active & {
         border-color: var(--icon-color-dark);
