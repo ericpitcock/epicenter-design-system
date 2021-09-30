@@ -3,7 +3,8 @@ import EpButton from './EpButton'
 
 const container = () => {
   return {
-    template: '<div style="display: flex; justify-content: center; padding-top: 20%;"><story/></div>'
+    template:
+      '<div style="display: flex; justify-content: center; padding-top: 20%;"><story/></div>'
   }
 }
 
@@ -28,12 +29,8 @@ export default {
         options: {
           Primary: 'primary',
           Secondary: 'secondary',
-          Tertiary: 'tertiary',
-          Naked: 'naked',
-          Danger: 'danger',
-          Warning: 'warning',
-          Success: 'success'
-        },
+          Naked: 'naked'
+        }
       },
       defaultValue: 'primary'
     },

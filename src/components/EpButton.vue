@@ -97,8 +97,8 @@
     $bg-color,
     // $border-color,
     $font-color,
-    $hover-bg-color,
-    $active-color
+    // $hover-bg-color,
+    // $active-color
   ) {
     background-color: $bg-color;
     // border-width: $button-outline-width;
@@ -107,7 +107,7 @@
     color: $font-color;
 
     &:hover {
-      background-color: $hover-bg-color;
+      // background-color: $hover-bg-color;
     }
 
     &:focus {
@@ -117,7 +117,7 @@
     }
 
     &:active {
-      background-color: $active-color;
+      // background-color: $active-color;
     }
 
     // .#{$prefix}--btn__icon,
@@ -146,93 +146,42 @@
     }
     // kind
     &--primary {
-      $primary-button-color: $blue;
+      // $primary-button-color: var(--theme-primary);
       @include button-theme(
         // $bg-color
-        $primary-button-color,
-        // $font-color
-        $white,
-        // $hover-bg-color
-        darken($primary-button-color, 5%),
-        // $active-color
-        lighten($primary-button-color, 5%)
+        var(--theme-primary),
+        //$font-color
+        var(--main-text)
       );
     }
     &--secondary {
-      $secondary-button-color: $medium-gray;
+      // $secondary-button-color: $medium-gray;
       @include button-theme(
         // $bg-color
-        $secondary-button-color,
+        var(--theme-primary),
         // $font-color
-        $black,
-        // $hover-bg-color
-        darken($secondary-button-color, 5%),
-        // $active-color
-        lighten($secondary-button-color, 5%)
+        var(--main-text),
+        // $hover-bg-color darken($secondary-button-color, 5%),
+        // $active-color lighten($secondary-button-color, 5%)
       );
     }
-    &--tertiary {
-      $tertiary-button-color: rgb(133, 228, 223);
-      @include button-theme(
-        // $bg-color
-        $tertiary-button-color,
-        // $font-color
-        $black,
-        // $hover-bg-color
-        darken($tertiary-button-color, 6%),
-        // $active-color
-        lighten($tertiary-button-color, 5%)
-      );
-    }
+
+    // tertiary is not a button kind, removing all together
+
     &--naked {
       $naked-button-color: transparent;
       @include button-theme(
         // $bg-color
-        $naked-button-color,
+          $naked-button-color,
         // $font-color
-        $black,
-        // $hover-bg-color
-        $light-gray,
-        // $active-color
-        #f4f4f4
+          var(--main-text),
+        // $hover-bg-color $light-gray,
+        // $active-color #f4f4f4
       );
     }
-    &--danger {
-      @include button-theme(
-        // $bg-color
-        $danger-red,
-        // $font-color
-        $black,
-        // $hover-bg-color
-        darken($danger-red, 6%),
-        // $active-color
-        lighten($danger-red, 5%)
-      );
-    }
-    &--warning {
-      @include button-theme(
-        // $bg-color
-        $warning-yellow,
-        // $font-color
-        $black,
-        // $hover-bg-color
-        darken($warning-yellow, 6%),
-        // $active-color
-        lighten($warning-yellow, 5%)
-      );
-    }
-    &--success {
-      @include button-theme(
-        // $bg-color
-        $success-green,
-        // $font-color
-        $black,
-        // $hover-bg-color
-        darken($success-green, 6%),
-        // $active-color
-        lighten($success-green, 5%)
-      );
-    }
+
+    // TODO move 'danger', 'warning', and 'success' to 'button appearance, not button kind
+
     // size
     &--small {
       padding: 7.5px 12px 7.5px 12px;

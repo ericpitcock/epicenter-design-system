@@ -213,7 +213,7 @@
           background-color: var(--lightest-gray);
           // background-color: $white !important;
           td {
-            color: $gray;
+            color: var(--background-level-1-lighter);
             padding: 7px 14px;
             pointer-events: none;
           }
