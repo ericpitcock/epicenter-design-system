@@ -1,9 +1,6 @@
 <template>
   <div
-    :class="[
-      'ep-control-bar__segment',
-      { 'align-right': false }
-    ]"
+    :class="['ep-control-bar__segment', { 'align-right': false }]"
     :style="{ justifyContent: justifyContent }"
   >
     <slot />
@@ -29,7 +26,7 @@
     flex: 1;
     display: flex;
     & + & {
-      border-left: 1px solid $light-gray;
+      border-left: 1px solid var(--border-color);
     }
     &.align-right {
       justify-content: flex-end;
