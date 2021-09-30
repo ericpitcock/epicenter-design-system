@@ -493,7 +493,7 @@
     border-radius: 6px 6px 0 0;
     &--content-header {
       position: sticky;
-      top: 41px;
+      top: 40px;
     }
     &--component-header {
       background: var(--background-level-3-lighter);
