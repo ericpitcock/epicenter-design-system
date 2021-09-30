@@ -1,6 +1,6 @@
 <template>
   <div class="colors">
-    <div
+    <container
       v-for="(hue, index) in hues"
       :key="index"
       class="category spaced--large"
@@ -19,12 +19,13 @@
           </div>
         </div>
       </div>
-    </div>
+    </container>
   </div>
 </template>
 
 <script>
   import { colors } from './colors'
+  import Container from '../../components/Container'
 
   export default {
     name: 'EpColor',
@@ -67,7 +68,10 @@
         '900',
         '1000'
       ]
-    })
+    }),
+    components: {
+      Container
+    }
   }
 </script>
 
@@ -75,7 +79,7 @@
   .category {
     display: flex;
     & + & {
-      margin-top: 100px;
+      margin-top: 20px;
     }
     &__label {
       flex: 0 0 140px;

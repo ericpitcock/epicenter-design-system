@@ -1,4 +1,4 @@
-import EpColorNew from './EpColorNew'
+import EpColor from './EpColor'
 
 const container = () => {
   return {
@@ -7,26 +7,24 @@ const container = () => {
 }
 
 export default {
-  title: 'Style/Color New',
-  component: EpColorNew,
+  title: 'Style/Color',
+  component: EpColor,
   decorators: [container],
-  argTypes: {
-
-  },
+  argTypes: {},
   parameters: {
-    controls: { hideNoControlsWarning: true },
+    controls: { hideNoControlsWarning: true }
   }
 }
 
 const Template = (args, { argTypes }) => ({
-  components: { EpColorNew },
+  components: { EpColor },
   props: Object.keys(argTypes),
   template: `
-  <EpColorNew />
+  <EpColor />
   `
 })
 
-export const ColorNew = Template.bind({})
+export const Color = Template.bind({})
 
 //OLD
 // export default {

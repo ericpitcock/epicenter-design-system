@@ -1,5 +1,8 @@
 <template>
-  <div :class="['ep-container', { 'ep-container--full-width': fullWidth }]">
+  <div
+    :class="['ep-container', { 'ep-container--full-width': fullWidth }]"
+    :style="{ padding: padding }"
+  >
     <slot></slot>
   </div>
 </template>
@@ -10,6 +13,10 @@
       fullWidth: {
         type: Boolean,
         default: false
+      },
+      padding: {
+        type: String,
+        default: '30px'
       }
     }
   }
