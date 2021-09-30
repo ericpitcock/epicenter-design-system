@@ -40,16 +40,14 @@
   --dark-text: #141414;
   --icon-color: var(--main-text);
   --icon-color-dark: var(--dark-text);
-}
-// OLD
-html[data-color-theme='dark'] {
-  --background-color: #1e2329;
-  --color-bg-container: #22272e;
-  --color-border-container: #444c56;
-  --color-text: var(--gray);
+
+  // utility
+  --danger-red: #ff5b52;
+  --warning-yellow: #ffcd03;
+  --success-green: #98db75;
 }
 
-// NEW
+// dark
 html[data-color-theme='dark'] {
   // background
   // --background-color: --background-level-1;
@@ -71,75 +69,3 @@ html[data-color-theme='dark'] {
   --icon-color: var(--main-text);
   --icon-color-dark: var(--dark-text);
 }
-
-$grayscale-map: (
-  'white': #fff,
-  'lightest-gray': #f9f9f9,
-  'mid-light-gray': #f0f0f0,
-  'light-gray': #eee,
-  'medium-gray': #e3e3e3,
-  'gray': #bdbdbd,
-  'dark-gray': #757575,
-  'darkest-gray': #424242,
-  'text-black': #303030,
-  'black': #000
-);
-
-// :root {
-// // this will compile to CSS variables
-// // --<color-name>: <hex-value>
-// @each $name, $color in $grayscale-map {
-//   --color-#{$name}: $color;
-// }
-// }
-// $grayscale-map: (
-//   'white': var(--white),
-//   'lightest-gray': var(--lightest-gray),
-//   'mid-light-gray': var(--mid-light-gray),
-//   'light-gray': var(--light-gray),
-//   'medium-gray': var(--medium-gray),
-//   'gray': var(--gray),
-//   'dark-gray': var(--dark-gray),
-//   'darkest-gray': var(--darkest-gray),
-//   'text-black': var(--text-black),
-//   'black': var(--black)
-// );
-
-// OLD
-// grayscale
-$white: #fff;
-$lightest-gray: #f9f9f9;
-$light-gray: #eee;
-$medium-gray: #e3e3e3;
-$gray: #bdbdbd;
-$dark-gray: #757575;
-$darkest-gray: #424242;
-$black: #000;
-
-// dark theme
-$dark-theme-background: #302e2b;
-$dark-theme-component-background: #292829;
-$dark-theme-component-border: #3f403f;
-$dark-theme-text-primary: #d5d5d6;
-$dark-theme-text-muted: #787878;
-$dark-theme-medium-gray: #616361;
-$dark-theme-primary-color: #2db390;
-
-$danger-red: #ff5b52;
-$warning-yellow: #ffcd03;
-$success-green: #98db75;
-
-$blue: #0889f4;
-$green: #15ca7e;
-
-$base-colors: (
-  'red': #f56565,
-  'orange': #ed8936,
-  'yellow': #ecc94b,
-  'green': #48bb78,
-  'teal': #38b2ac,
-  'blue': #4299e1,
-  'indigo': #667eea,
-  'purple': #9f7aea,
-  'pink': #ed64a6
-);
