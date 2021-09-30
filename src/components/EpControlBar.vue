@@ -23,8 +23,8 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    background-attachment: $white;
+    background-attachment: var(--background-level-2);
     padding: 0 30px;
-    border: 1px solid $light-gray;
+    border: 1px solid var(--border-color);
   }
 </style>

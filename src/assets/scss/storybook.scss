@@ -1,4 +1,4 @@
-@import './reset';
+@import './minireset';
 
 @font-face {
   font-family: 'GT America Condensed Regular';
@@ -22,10 +22,10 @@ body {
   font-size: 14px;
 }
 
-:root {
-  --background-level-1: #f0f0f0;
-}
+// :root {
+//   --background-level-1: #f0f0f0;
+// }
 
-html[data-color-theme='dark'] {
-  --background-level-1: #1f1f1f;
-}
+// html[data-color-theme='dark'] {
+//   --background-level-1: #1f1f1f;
+// }

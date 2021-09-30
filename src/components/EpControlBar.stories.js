@@ -3,11 +3,9 @@ import EpControlBar from './EpControlBar'
 export default {
   title: 'Components/Control Bar',
   component: EpControlBar,
-  argTypes: {
-
-  },
+  argTypes: {},
   parameters: {
-    controls: { hideNoControlsWarning: true },
+    controls: { hideNoControlsWarning: true }
   }
 }
 

@@ -154,7 +154,8 @@
     width: 100%;
     thead {
       // these two could probably move to classes
-      font-family: 'GT America Condensed Medium';
+      // font-family: 'GT America Condensed Medium';
+      font-variation-settings: 'wght' 500, 'wdth' 80, 'opsz' 11;
       user-select: none;
       th:first-child {
         border-top-left-radius: 6px;

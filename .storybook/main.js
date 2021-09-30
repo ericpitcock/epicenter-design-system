@@ -4,8 +4,8 @@ const rootPath = path.resolve(__dirname, '../src')
 module.exports = {
   stories: [
     '../src/components/**/*.stories.js',
-    '../src/style/**/*.stories.js',
-    '../node_modules/buefy/src/components/**/*.stories.js'
+    '../src/style/**/*.stories.js'
+    // '../node_modules/buefy/src/components/**/*.stories.js'
   ],
   addons: [
     '@storybook/addon-controls',
