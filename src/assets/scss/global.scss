@@ -1,5 +1,8 @@
 @import './minireset';
+@import './color';
+@import './themes';
 @import './type';
+
 
 body {
   font-size: var(--font-size--default);

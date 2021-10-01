@@ -24,7 +24,7 @@
       },
       gap: {
         type: String,
-        default: '10px'
+        default: '0'
       },
       padding: {
         type: String,

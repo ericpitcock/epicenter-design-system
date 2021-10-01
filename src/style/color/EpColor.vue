@@ -1,24 +1,25 @@
 <template>
   <div class="colors">
     <ep-container
+      :fullWidth="true"
       :connected="true"
-      :gap="'0'"
       :padding="'60px'"
       v-for="(hue, index) in hues"
       :key="index"
-      class="category spaced--large"
     >
-      <div class="category__label">
-        <h1>{{ hue.replaceAll('-', ' ') }}</h1>
-      </div>
-      <div class="category__swatches">
-        <div v-for="(level, index) in levels" :key="index" class="swatch">
-          <div
-            class="swatch__chip"
-            :style="{ background: `var(--${hue}-${level})` }"
-          ></div>
-          <div class="swatch__name">
-            {{ `--${hue}-${level}`.replaceAll('-', ' ') }}
+      <div class="category">
+        <div class="category__label">
+          <h1>{{ hue.replaceAll('-', ' ') }}</h1>
+        </div>
+        <div class="category__swatches">
+          <div v-for="(level, index) in levels" :key="index" class="swatch">
+            <div
+              class="swatch__chip"
+              :style="{ background: `var(--${hue}-${level})` }"
+            ></div>
+            <div class="swatch__name">
+              {{ `--${hue}-${level}`.replaceAll('-', ' ') }}
+            </div>
           </div>
         </div>
       </div>
@@ -100,19 +101,20 @@
     display: flex;
     flex-direction: column;
     background: var(--background-level-2);
-    padding: 10px;
-    border-radius: 3px;
-    border: 1px solid var(--border-color);
+    // padding: 10px;
+    // border-radius: 3px;
+    // border: 1px solid var(--border-color);
     // box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     &__chip {
       width: 100px;
       height: 100px;
+      border-radius: 3px;
     }
     &__name {
       text-transform: capitalize;
       font-size: 12px;
-      padding: 5px 0 10px 0;
+      padding: 5px 0 0 0;
     }
   }
 </style>

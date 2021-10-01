@@ -1,5 +1,5 @@
 // global styles
-import '!style-loader!css-loader!sass-loader!../src/assets/scss/_global.scss'
+import '!style-loader!css-loader!sass-loader!../src/assets/scss/global.scss'
 
 export const parameters = {
   layout: 'fullscreen'

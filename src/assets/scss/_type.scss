@@ -25,6 +25,11 @@ html {
   --font-size--large: 2rem; // 20px
 }
 
+.font-size--small { font-size: var(--font-size--small); }
+.font-size--default { font-size: var(--font-size--default); }
+.font-size--body { font-size: var(--font-size--body); }
+.font-size--large { font-size: var(--font-size--large); }
+
 p.read-me {
   font-size: var(--font-size--body);
   line-height: 1.5em;
