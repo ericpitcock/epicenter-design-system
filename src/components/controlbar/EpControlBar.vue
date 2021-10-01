@@ -5,8 +5,8 @@
 </template>
 
 <script>
-  import EpControlBarSegment from './EpControlBarSegment'
-  import EpButton from './EpButton'
+  import EpControlBarSegment from '@/components/controlbar/EpControlBarSegment'
+  import EpButton from '@/components/button/EpButton'
 
   export default {
     name: 'EpControlBar',

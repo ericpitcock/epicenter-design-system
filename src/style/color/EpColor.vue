@@ -29,7 +29,7 @@
 
 <script>
   import { colors } from './colors'
-  import EpContainer from '../../components/EpContainer'
+  import EpContainer from '@/components/container/EpContainer'
 
   export default {
     name: 'EpColor',

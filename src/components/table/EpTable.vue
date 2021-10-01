@@ -43,8 +43,8 @@
 </template>
 
 <script>
-  import EpContainer from './EpContainer'
-  import EpIcon from './EpIcon/EpIcon'
+  import EpContainer from '@/components/container/EpContainer'
+  import EpIcon from '@/style/icons/EpIcon'
 
   export default {
     name: 'EpTable',

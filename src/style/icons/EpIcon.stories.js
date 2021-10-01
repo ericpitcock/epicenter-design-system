@@ -15,7 +15,7 @@ const container = () => {
 }
 
 export default {
-  title: 'Components/Icon',
+  title: 'Style/Icons',
   component: EpIcon,
   decorators: [container],
   argTypes: {
@@ -67,4 +67,4 @@ const Template = (args, { argTypes }) => ({
   `
 })
 
-export const Icon = Template.bind({})
+export const Icons = Template.bind({})

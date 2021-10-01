@@ -8,7 +8,7 @@
 
 <script>
   import Highcharts from 'highcharts/highstock'
-  import EpContainer from './EpContainer'
+  import EpContainer from '@/components/container/EpContainer'
 
   export default {
     components: { EpContainer },

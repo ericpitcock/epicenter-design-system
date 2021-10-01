@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import EpIcon from './EpIcon/EpIcon'
+  import EpIcon from '@/style/icons/EpIcon'
 
   export default {
     name: 'EpButton',

@@ -17,10 +17,10 @@
 </template>
 
 <script>
-  import EpButton from './EpButton'
-  import EpControlBar from './EpControlBar'
-  import EpControlBarSegment from './EpControlBarSegment'
-  import EpMap from './EpMap'
+  import EpButton from '@/components/button/EpButton'
+  import EpControlBar from '@/components/controlbar/EpControlBar'
+  import EpControlBarSegment from '@/components/controlbar/EpControlBarSegment'
+  import EpMap from '@/components/map/EpMap'
 
   export default {
     name: 'Canvas',
