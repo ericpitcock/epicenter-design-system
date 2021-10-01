@@ -67,7 +67,7 @@
           </div>
           <div class="component-container">
             <div class="component-body">
-              <p v-for="(n, index) of 20" :key="index">
+              <p class="read-me" v-for="(n, index) of 20" :key="index">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
                 at porttitor sem. Aliquam erat volutpat. Donec placerat nisl
                 magna, et faucibus arcu condimentum sed.Lorem ipsum dolor sit
@@ -396,7 +396,7 @@
         border-radius: 3px;
         background: var(--background-level-1);
         border: 1px solid var(--border-color);
-        font-size: 12px;
+        font-size: var(--font-size--small);
         color: var(--main-text);
         white-space: nowrap;
       }

@@ -1,13 +1,17 @@
 <template>
   <div>
-    <div id="container"></div>
+    <ep-container :fullWidth="true">
+      <div id="container"></div>
+    </ep-container>
   </div>
 </template>
 
 <script>
   import Highcharts from 'highcharts/highstock'
+  import EpContainer from './EpContainer'
 
   export default {
+    components: { EpContainer },
     name: 'EpChart',
     data() {
       return {

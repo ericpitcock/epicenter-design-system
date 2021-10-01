@@ -1,5 +1,5 @@
 <template>
-  <container :fullWidth="false">
+  <ep-container :fullWidth="false">
     <table
       :class="[
         'ep-table',
@@ -39,11 +39,11 @@
         </tr>
       </tbody>
     </table>
-  </container>
+  </ep-container>
 </template>
 
 <script>
-  import Container from './Container'
+  import EpContainer from './EpContainer'
   import EpIcon from './EpIcon/EpIcon'
 
   export default {
@@ -59,7 +59,7 @@
       }
     },
     components: {
-      Container,
+      EpContainer,
       EpIcon
     },
     props: {

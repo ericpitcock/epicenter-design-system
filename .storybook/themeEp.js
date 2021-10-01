@@ -2,6 +2,9 @@ import { create } from '@storybook/theming'
 
 export default create({
   base: 'light',
+  brandTitle: 'Ep Design System',
+  // brandUrl: 'https://example.com',
+  brandImage: 'https://drive.google.com/uc?id=1_iOVR9bIOlvMgC9JEpUyFF8-plnGXwwT',
 
   // colorPrimary: 'hotpink',
   // colorSecondary: 'deepskyblue',

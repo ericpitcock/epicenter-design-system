@@ -1,6 +1,9 @@
 <template>
   <div class="colors">
-    <container
+    <ep-container
+      :connected="true"
+      :gap="'0'"
+      :padding="'60px'"
       v-for="(hue, index) in hues"
       :key="index"
       class="category spaced--large"
@@ -19,13 +22,13 @@
           </div>
         </div>
       </div>
-    </container>
+    </ep-container>
   </div>
 </template>
 
 <script>
   import { colors } from './colors'
-  import Container from '../../components/Container'
+  import EpContainer from '../../components/EpContainer'
 
   export default {
     name: 'EpColor',
@@ -66,11 +69,12 @@
         '700',
         '800',
         '900',
-        '1000'
+        // excluding 1000 as the easy fix for grays that lack is
+        // '1000'
       ]
     }),
     components: {
-      Container
+      EpContainer
     }
   }
 </script>
@@ -78,9 +82,6 @@
 <style lang="scss" scoped>
   .category {
     display: flex;
-    & + & {
-      margin-top: 20px;
-    }
     &__label {
       flex: 0 0 140px;
       h1 {
