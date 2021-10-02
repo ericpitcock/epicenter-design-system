@@ -6,6 +6,7 @@
   "scripts": {
     "storybook": "start-storybook -p 6006 --no-manager-cache",
     "build-storybook": "build-storybook",
+    "build-static-webapp":"expo build:web",
     "scss-export": "sass-export src/components/EpIcon/tokens/*.scss -o src/components/EpIcon/tokens.json"
   },
   "repository": {
