@@ -28,13 +28,11 @@
 </template>
 
 <script>
-  import { colors } from './colors'
   import EpContainer from '@/components/container/EpContainer'
 
   export default {
     name: 'EpColor',
     data: () => ({
-      colors,
       hues: [
         'red',
         'orange',
@@ -100,12 +98,6 @@
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    background: var(--background-level-2);
-    // padding: 10px;
-    // border-radius: 3px;
-    // border: 1px solid var(--border-color);
-    // box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
     &__chip {
       width: 100px;
       height: 100px;
@@ -114,7 +106,7 @@
     &__name {
       text-transform: capitalize;
       font-size: 12px;
-      padding: 5px 0 0 0;
+      padding-top: 10px;
     }
   }
 </style>

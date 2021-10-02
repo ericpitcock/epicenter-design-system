@@ -1,7 +1,7 @@
 import svgIcons from './load-icons'
 import { getTokensByType, getTokenGroup } from './getTokens'
 
-import EpIcon from './EpIcon'
+import EpIcon from './EpIcons'
 
 const names = svgIcons.map(icon => icon.name.slice(2, -4))
 const iconSizes = getTokenGroup('icon-sizes')
