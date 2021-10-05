@@ -5,12 +5,12 @@
     :class="buttonClasses"
     :disabled="disabled"
   >
-    <div v-if="icon" class="ep-button__icon-container">
-      <div class="icon">
+    <span v-if="icon" class="ep-button__icon">
+      <!-- <span class="icon"> -->
         <EpIcon :name="iconSource" />
-      </div>
-    </div>
-    <div v-if="label" class="ep-button__text">{{ labelText }}</div>
+      <!-- </span> -->
+    </span>
+    <span v-if="label" class="ep-button__text">{{ labelText }}</span>
   </component>
 </template>
 
@@ -119,73 +119,62 @@
     &:active {
       // background-color: $active-color;
     }
-
-    // .#{$prefix}--btn__icon,
-    // .#{$prefix}--btn__icon path {
-    //   fill: $icon-color;
-    // }
   }
 
   .ep-button {
     display: inline-flex;
     align-items: center;
-    padding: 9px 14px 9px 14px;
-    // height: 31px;
+    // vertical-align: bottom;
+    padding: 0.9rem 1.4rem; //9px 14px
     border: 0;
     border-radius: 3px;
-    font-size: 14px;
-    line-height: normal;
+    font-size: inherit;
+    line-height: 1;
     appearance: none;
     text-decoration: none;
     cursor: pointer;
-    &:focus {
-      outline: none;
-    }
-    &::-moz-focus-inner {
-      border: 0;
-    }
+    user-select: none;
+    
+    // @TODO figure out accessibility here
+    // &:focus {
+    //   outline: none;
+    // }
+    // &::-moz-focus-inner {
+    //   border: 0;
+    // }
     // kind
     &--primary {
-      // $primary-button-color: var(--theme-primary);
       @include button-theme(
         // $bg-color
-        var(--theme-primary),
-        //$font-color
-        var(--main-text)
+        var(--primary-color),
+        // $font-color
+        var(--primary-color-text)
       );
     }
     &--secondary {
-      // $secondary-button-color: $medium-gray;
       @include button-theme(
         // $bg-color
-        var(--theme-primary),
+        var(--primary-color),
         // $font-color
         var(--main-text),
         // $hover-bg-color darken($secondary-button-color, 5%),
         // $active-color lighten($secondary-button-color, 5%)
       );
     }
-
-    // tertiary is not a button kind, removing all together
-
     &--naked {
-      $naked-button-color: transparent;
       @include button-theme(
         // $bg-color
-          $naked-button-color,
+        transparent,
         // $font-color
-          var(--main-text),
+        var(--main-text),
         // $hover-bg-color $light-gray,
         // $active-color #f4f4f4
       );
     }
-
-    // TODO move 'danger', 'warning', and 'success' to 'button appearance, not button kind
-
     // size
     &--small {
-      padding: 7.5px 12px 7.5px 12px;
-      font-size: 12px;
+      padding: 0.75rem 1.2rem; //7.5px 12px
+      font-size: var(--font-size--small)
     }
     // disabled
     &:disabled {
@@ -197,28 +186,28 @@
       flex-direction: row-reverse;
     }
     &__icon-container {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      // height: 31px;
-      .icon {
-        display: inline-block;
-        width: 17px;
-        height: 17px;
-        // background: rgba(0,0,0,0.15);
-      }
+      // .icon {
+      //   display: inline-block;
+      //   width: 17px;
+      //   height: 17px;
+      // }
+    }
+    &__icon {
+      display: inline-block;
+      line-height: 1;
+      // width: 17px;
+      // height: 17px;
     }
     &__text {
-      // line-height: 30px;
-      // display: inline;
-      // vertical-align: text-top;
-      position: relative;
-      top: -1px;
+      padding: 0.3rem 0;
       .ep-button--icon & {
-        margin-left: 8px;
+        margin-left: 0.8rem;
       }
       .ep-button--icon-right & {
-        margin-right: 8px;
+        margin-right: 0.8rem;
         margin-left: 0;
       }
     }
