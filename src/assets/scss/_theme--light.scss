@@ -1,0 +1,23 @@
+:root {
+  // background
+  --background-level-1: #f0f0f0;
+  --background-level-1-lighter: var(--white);
+  --background-level-2: #f9f9f9;
+  --background-level-3: var(--white);
+  --background-level-3-lighter: var(--white);
+  
+  // foreground
+  --foreground-level-1: yellow;
+  
+  // border (for everything)
+  --border-color: #dadada;
+  
+  // button
+  // --button-hover: var(--background-level-2);
+  // --button-active: #21476B;
+  // text and icons
+  --main-text: var(--dark-text);
+  --dark-text: #141414;
+  --icon-color: var(--main-text);
+  --icon-color-dark: var(--dark-text);
+}

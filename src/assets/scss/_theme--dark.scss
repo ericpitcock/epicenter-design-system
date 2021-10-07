@@ -1,0 +1,23 @@
+html[data-color-theme='dark'] {
+  // background
+  --background-level-1: #1f1f1f;
+  --background-level-1-lighter: #292929;
+  --background-level-2: #262626;
+  --background-level-3: #2b2b2b;
+  --background-level-3-lighter: #2e2e2e;
+  
+  // foreground
+  --foreground-level-1: yellow;
+  
+  // border (for everything)
+  --border-color: #454545;
+  
+  // button
+  // --button-hover: var(--background-level-2);
+  // --button-active: #21476B;
+  // text and icons
+  --main-text: #dedede;
+  --dark-text: #141414;
+  --icon-color: var(--main-text);
+  --icon-color-dark: var(--dark-text);
+}

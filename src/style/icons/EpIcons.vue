@@ -2,7 +2,7 @@
   <ep-container :fullWidth="true" class="icons">
     <div v-for="icon in svgIcons" :key="icon" class="icon-container">
       <EpIcon :name="icon.name.slice(2, -4)" />
-      <div>{{ icon.name.slice(2, -4) }}</div>
+      <div class="text--subtle">{{ icon.name.slice(2, -4) }}</div>
     </div>
   </ep-container>
 </template>
@@ -26,17 +26,17 @@
 <style lang="scss" scoped>
   .icons {
     display: flex;
-    gap: 20px 20px;
+    // gap: 20px 20px;
     flex-wrap: wrap;
   }
   .icon-container {
-    flex: 1;
+    // flex: 0 0 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px 0;
-    padding: 20px;
+    gap: 20px 0;
+    padding: 40px;
     // border: 1px solid var(--border-color);
   }
 </style>
