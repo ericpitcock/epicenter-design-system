@@ -37,6 +37,6 @@
     justify-content: center;
     gap: 10px 0;
     padding: 20px;
-    border: 1px solid var(--border-color);
+    // border: 1px solid var(--border-color);
   }
 </style>
