@@ -1,10 +1,27 @@
 html[data-color-theme='dark'] {
   // background
-  --background-level-1: #1f1f1f;
-  --background-level-1-lighter: #292929;
-  --background-level-2: #262626;
-  --background-level-3: #2b2b2b;
-  --background-level-3-lighter: #2e2e2e;
+  // --background: #1f1f1f;
+  // NEED TO BUILD A FUNCTION THAT OUTPUTS THESE AT SPECIFIC INTERVALS
+  --background: hsl(0, 0%, 12%);
+  
+  $root: 12%;
+  $steps: 10;
+  $index: 10;
+  
+  @each $step in $steps {
+    @while $index > 0 {
+      --background-#{$index}: hsl(0, 0%, #{($root + 3 * $index)});
+      $index: $index - 1;
+    }
+  }
+
+  
+  // component
+  --component-background-level-1-lighter: #292929;
+  --component-background-level-2: #262626;
+  // --component-background-level-3: #2b2b2b;
+  --component-background-level-3: var(--background-8);
+  --component-background-level-3-lighter: #2e2e2e;
   
   // foreground
   --foreground-level-1: yellow;
@@ -13,7 +30,7 @@ html[data-color-theme='dark'] {
   --border-color: #454545;
   
   // button
-  // --button-hover: var(--background-level-2);
+  // --button-hover: var(--component-background-level-2);
   // --button-active: #21476B;
   // text and icons
   --main-text: #dedede;

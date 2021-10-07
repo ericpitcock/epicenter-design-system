@@ -165,7 +165,7 @@
       }
       th {
         text-align: left;
-        background: var(--background-level-2);
+        background: var(--component-background-level-2);
         z-index: 10;
         &:hover {
           color: var(--primary-color);
@@ -213,7 +213,7 @@
           background-color: var(--lightest-gray);
           // background-color: $white !important;
           td {
-            color: var(--background-level-1-lighter);
+            color: var(--component-background-level-1-lighter);
             padding: 7px 14px;
             pointer-events: none;
           }

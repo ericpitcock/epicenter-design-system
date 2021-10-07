@@ -194,18 +194,18 @@
     // this is light mode
     // background
     // --white: white;
-    // --background-color: --background-level-1;
-    // --background-level-1: #f0f0f0;
-    // --background-level-1-lighter: var(--white);
-    // --background-level-2: #f9f9f9;
-    // --background-level-3: var(--white);
-    // --background-level-3-lighter: var(--white);
+    // --background-color: --component-background-level-1;
+    // --component-background-level-1: #f0f0f0;
+    // --component-background-level-1-lighter: var(--white);
+    // --component-background-level-2: #f9f9f9;
+    // --component-background-level-3: var(--white);
+    // --component-background-level-3-lighter: var(--white);
     // // foreground
     // --foreground-level-1: yellow;
     // // border for everything
     // --border-color: #dadada;
     // // button
-    // // --button-hover: var(--background-level-2);
+    // // --button-hover: var(--component-background-level-2);
     // // --button-active: #21476B;
     // // text and icons
     // --main-text: var(--dark-text);
@@ -216,18 +216,18 @@
   // // this is dark mode
   // html[data-color-theme='dark'] {
   //   // background
-  //   --background-color: --background-level-1;
-  //   --background-level-1: #1f1f1f;
-  //   --background-level-1-lighter: #292929;
-  //   --background-level-2: #262626;
-  //   --background-level-3: #2b2b2b;
-  //   --background-level-3-lighter: #2e2e2e;
+  //   --background-color: --component-background-level-1;
+  //   --component-background-level-1: #1f1f1f;
+  //   --component-background-level-1-lighter: #292929;
+  //   --component-background-level-2: #262626;
+  //   --component-background-level-3: #2b2b2b;
+  //   --component-background-level-3-lighter: #2e2e2e;
   //   // foreground
   //   --foreground-level-1: yellow;
   //   // border for everything
   //   --border-color: #454545;
   //   // button
-  //   // --button-hover: var(--background-level-2);
+  //   // --button-hover: var(--component-background-level-2);
   //   // --button-active: #21476B;
   //   // text and icons
   //   --main-text: #dedede;
@@ -253,7 +253,7 @@
   // }
   // body {
   //   height: 100%;
-  //   background: var(--background-level-1);
+  //   background: var(--component-background-level-1);
   //   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   //   scrollbar-width: none; /* for Firefox */
   //   &::-webkit-scrollbar {
@@ -276,7 +276,7 @@
   // }
   #app {
     // /* height: 100%; */
-    // /* background: var(--background-level-1); */
+    // /* background: var(--component-background-level-1); */
   }
   .grid {
     display: grid;
@@ -297,7 +297,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 30px 0 5px;
-    background: var(--background-level-1);
+    background: var(--background);
     border-bottom: 1px solid var(--border-color);
     &__button {
       display: flex;
@@ -394,7 +394,7 @@
         left: 42px;
         padding: 4px 10px;
         border-radius: 3px;
-        background: var(--background-level-1);
+        background: var(--component-background-level-1);
         border: 1px solid var(--border-color);
         font-size: var(--font-size--small);
         color: var(--main-text);
@@ -402,7 +402,7 @@
       }
     }
     &:not(.active):hover {
-      background: var(--background-level-3);
+      background: var(--component-background-level-3);
       // border-color: var(--border-color);
       cursor: pointer;
     }
@@ -461,7 +461,7 @@
     // flex: 1;
     max-width: 1320px;
     height: auto;
-    background: var(--background-level-2);
+    background: var(--component-background-level-2);
     border: 1px solid var(--border-color);
     border-radius: 8px;
   }
@@ -488,7 +488,7 @@
     display: flex;
     align-items: center;
     padding: 0 40px;
-    background: var(--background-level-2);
+    background: var(--component-background-level-2);
     border-bottom: 1px solid var(--border-color);
     border-radius: 6px 6px 0 0;
     &--content-header {
@@ -496,7 +496,7 @@
       top: 40px;
     }
     &--component-header {
-      background: var(--background-level-3-lighter);
+      background: var(--component-background-level-3-lighter);
       // border-radius: 6px 6px 0 0;
     }
   }
@@ -514,7 +514,7 @@
     }
   }
   .component-container {
-    background: var(--background-level-3);
+    background: var(--component-background-level-3);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     & + & {
@@ -522,7 +522,7 @@
     }
     // .component-header {
     // height: 60px;
-    // background: var(--background-level-3-lighter);
+    // background: var(--component-background-level-3-lighter);
     // border-bottom: 1px solid var(--border-color);
     // }
     .component-body {

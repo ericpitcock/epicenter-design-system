@@ -23,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    background-attachment: var(--background-level-2);
+    background-attachment: var(--component-background-level-2);
     padding: 0 30px;
     border: 1px solid var(--border-color);
   }
