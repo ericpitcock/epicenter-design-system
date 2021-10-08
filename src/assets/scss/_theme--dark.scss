@@ -1,33 +1,59 @@
 html[data-color-theme='dark'] {
   // background
-  // --background: #1f1f1f;
-  // NEED TO BUILD A FUNCTION THAT OUTPUTS THESE AT SPECIFIC INTERVALS
-  --background: hsl(0, 0%, 12%);
   
-  $root: 12%;
+  $root: 9%;
   $steps: 10;
   $index: 10;
-  
+
   @each $step in $steps {
     @while $index > 0 {
-      --background-#{$index}: hsl(0, 0%, #{($root + 3 * $index)});
+      --gray-#{$index}: hsl(0, 0%, #{$root + (3 * $index)});
       $index: $index - 1;
     }
   }
 
-  
-  // component
+  // outputs
+  // --gray-10: hsl(0, 0%, 39%);
+  // --gray-9: hsl(0, 0%, 36%);
+  // --gray-8: hsl(0, 0%, 33%);
+  // --gray-7: hsl(0, 0%, 30%);
+  // --gray-6: hsl(0, 0%, 27%);
+  // --gray-5: hsl(0, 0%, 24%);
+  // --gray-4: hsl(0, 0%, 21%);
+  // --gray-3: hsl(0, 0%, 18%);
+  // --gray-2: hsl(0, 0%, 15%);
+  // --gray-1: hsl(0, 0%, 12%);
+  // hex
+  // --gray-10: #636363;
+  // --gray-9: #5c5c5c;
+  // --gray-8: #545454;
+  // --gray-7: #4d4d4d;
+  // --gray-6: #454545;
+  // --gray-5: #3d3d3d;
+  // --gray-4: #363636;
+  // --gray-3: #2e2e2e;
+  // --gray-2: #262626;
+  // --gray-1: #1f1f1f;
+
+  // background
+  --background: var(--gray-1);
+
+  // dunno
   --component-background-level-1-lighter: #292929;
-  --component-background-level-2: #262626;
-  // --component-background-level-3: #2b2b2b;
-  --component-background-level-3: var(--background-8);
+  
+  // container
+  --component-background-level-2: var(--gray-2);
+  
+  // components
+  --component-background-level-3: var(--gray-3);
+  
   --component-background-level-3-lighter: #2e2e2e;
   
-  // foreground
-  --foreground-level-1: yellow;
+  // foreground (menus, modals, etc)
+  --foreground-level-1: var(--gray-4);
   
   // border (for everything)
-  --border-color: #454545;
+  --border-color: var(--gray-6);
   
   // button
   // --button-hover: var(--component-background-level-2);
