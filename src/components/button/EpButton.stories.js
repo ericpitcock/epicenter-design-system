@@ -57,13 +57,6 @@ export default {
       },
       defaultValue: 'default'
     },
-    // label: {
-    //   name: 'Use Button Label',
-    //   control: {
-    //     type: 'boolean'
-    //   },
-    //   defaultValue: true
-    // },
     label: {
       name: 'Label',
       control: {

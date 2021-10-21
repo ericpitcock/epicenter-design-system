@@ -34,10 +34,6 @@
         type: String,
         default: 'default'
       },
-      // label: {
-      //   type: Boolean,
-      //   default: true
-      // },
       label: {
         type: String,
         default: 'Default button text'
@@ -46,10 +42,6 @@
         type: String,
         default: undefined
       },
-      // iconSource: {
-      //   type: String,
-      //   default: undefined
-      // },
       iconAlignment: {
         type: String,
         default: 'left'
@@ -57,24 +49,22 @@
       disabled: {
         type: Boolean,
         default: false
-      },
-      // tipLabel: {
-      //   type: String,
-      //   default: undefined
-      // },
-      // tipPosition: {
-      //   type: String,
-      //   default: undefined
-      // },
-      // tipAlignment: {
-      //   type: String,
-      //   default: undefined
-      // }
+      }
     },
     components: {
       EpIcon
     },
     computed: {
+      // element() {
+      //   const attrs = this.$attrs;
+      //   if (attrs && this.to) {
+      //     return 'RouterLink'
+      //   }
+      //   if (attrs && attrs.href) {
+      //     return 'a'
+      //   }
+      //   return 'button'
+      // },
       buttonClasses() {
         return [
           'ep-button',
@@ -185,19 +175,30 @@
       justify-content: center;
       align-items: center;
       line-height: 1;
-      padding: 0.55rem 0.8rem;
-      height: 100%;
+      padding: 0.4rem 0.8rem;
+      // height: 100%;
+      // .ep-icon {
+      //   width: 18px;
+      //   height: 18px;
+      // }
     }
     &__label {
-      line-height: 17px;
-      padding: 0.55rem 1.2rem;
+      padding: 0.8rem 1.2rem;
+      // padding-right: 1.2rem;
+      // padding-bottom: 0.8rem;
+      // padding-left: 1.2rem;
+      .ep-button--icon-right &,
+      .ep-button--icon-left & {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
       .ep-button--icon-right & {
-        padding-left: 1.2rem;
+        // padding-left: 1.2rem;
         padding-right: 0;
       }
       .ep-button--icon-left & {
         padding-left: 0;
-        padding-right: 1.2rem;
+        // padding-right: 1.2rem;
       }
     }
   }
