@@ -7,10 +7,10 @@
   >
     <span v-if="icon" class="ep-button__icon">
       <!-- <span class="icon"> -->
-        <EpIcon :name="iconSource" />
+      <EpIcon :name="iconSource" />
       <!-- </span> -->
     </span>
-    <span v-if="label" class="ep-button__text">{{ labelText }}</span>
+    <span v-if="label" class="ep-button__label">{{ labelText }}</span>
   </component>
 </template>
 
@@ -95,15 +95,15 @@
 <style lang="scss" scoped>
   @mixin button-theme(
     $bg-color,
-    // $border-color,
+    $border-color,
     $font-color,
     // $hover-bg-color,
     // $active-color
   ) {
     background-color: $bg-color;
-    // border-width: $button-outline-width;
-    // border-style: solid;
-    // border-color: $border-color;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $border-color;
     color: $font-color;
 
     &:hover {
@@ -124,17 +124,23 @@
   .ep-button {
     display: inline-flex;
     align-items: center;
+    padding: 0;
     // vertical-align: bottom;
-    padding: 0.9rem 1.4rem; //9px 14px
-    border: 0;
+    // padding-top: 0.45rem; // 6px
+    // padding-right: 1.2rem; // 12px
+    // padding-bottom: 0.45rem; // 6px
+    // padding-left: 0;
+    // border: 1px solid ;
     border-radius: 3px;
-    font-size: inherit;
+    // font-size: inherit;
+    font-size: var(--font-size--small);
     line-height: 1;
     appearance: none;
     text-decoration: none;
     cursor: pointer;
     user-select: none;
-    
+    white-space: nowrap;
+
     // @TODO figure out accessibility here
     // &:focus {
     //   outline: none;
@@ -142,39 +148,39 @@
     // &::-moz-focus-inner {
     //   border: 0;
     // }
-    // kind
+
+    // kind template
+    // $bg-color,
+    // $border-color,
+    // $font-color,
+    // $hover-bg-color,
+    // $active-color
     &--primary {
       @include button-theme(
-        // $bg-color
         var(--primary-color),
-        // $font-color
+        var(--primary-color-border),
         var(--primary-color-text)
       );
     }
     &--secondary {
       @include button-theme(
-        // $bg-color
-        var(--primary-color),
-        // $font-color
-        var(--main-text),
-        // $hover-bg-color darken($secondary-button-color, 5%),
-        // $active-color lighten($secondary-button-color, 5%)
+        // chamge these
+        var(--gray-4),
+        var(--gray-7),
+        var(--primary-color-text)
       );
     }
     &--naked {
       @include button-theme(
-        // $bg-color
         transparent,
-        // $font-color
-        var(--main-text),
-        // $hover-bg-color $light-gray,
-        // $active-color #f4f4f4
+        transparent,
+        var(--main-text)
       );
     }
     // size
     &--small {
-      padding: 0.75rem 1.2rem; //7.5px 12px
-      font-size: var(--font-size--small)
+      padding: 0.4rem 1rem; //7.5px 12px
+      font-size: var(--font-size--small);
     }
     // disabled
     &:disabled {
@@ -196,20 +202,33 @@
       // }
     }
     &__icon {
-      display: inline-block;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       line-height: 1;
+      // background: red;
+      // width: 4rem;
+      padding: 0.55rem 0.8rem; //0.55rem 1rem;
+      height: 100%;
       // width: 17px;
       // height: 17px;
     }
-    &__text {
-      padding: 0.3rem 0;
-      .ep-button--icon & {
-        margin-left: 0.8rem;
-      }
+    &__label {
+      // padding: 0.8rem 0; // 8px
+      padding-left: 0;
+      padding-right: 1.2rem;
       .ep-button--icon-right & {
-        margin-right: 0.8rem;
-        margin-left: 0;
+        padding-left: 1.2rem;
+        padding-right: 0;
       }
+      // background: green;
+      // .ep-button--icon & {
+      //   margin-left: 0.8rem;
+      // }
+      // .ep-button--icon-right & {
+      //   margin-right: 0.8rem;
+      //   margin-left: 0;
+      // }
     }
   }
 </style>
