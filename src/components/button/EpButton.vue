@@ -158,8 +158,12 @@
     }
     // size
     &--small {
-      padding: 0.4rem 1rem;
-      font-size: var(--font-size--small);
+      .ep-button__icon {
+        padding: 0 0.3rem;
+      }
+      .ep-button__label {
+        padding: 0.5rem 0.6rem;
+      }
     }
     // disabled
     &:disabled {
@@ -176,29 +180,19 @@
       align-items: center;
       line-height: 1;
       padding: 0.4rem 0.8rem;
-      // height: 100%;
-      // .ep-icon {
-      //   width: 18px;
-      //   height: 18px;
-      // }
     }
     &__label {
       padding: 0.8rem 1.2rem;
-      // padding-right: 1.2rem;
-      // padding-bottom: 0.8rem;
-      // padding-left: 1.2rem;
       .ep-button--icon-right &,
       .ep-button--icon-left & {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
       }
       .ep-button--icon-right & {
-        // padding-left: 1.2rem;
         padding-right: 0;
       }
       .ep-button--icon-left & {
         padding-left: 0;
-        // padding-right: 1.2rem;
       }
     }
   }
