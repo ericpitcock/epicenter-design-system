@@ -6,9 +6,7 @@
     :disabled="disabled"
   >
     <span v-if="icon" class="ep-button__icon">
-      <!-- <span class="icon"> -->
       <EpIcon :name="iconSource" />
-      <!-- </span> -->
     </span>
     <span v-if="label" class="ep-button__label">{{ labelText }}</span>
   </component>
@@ -82,10 +80,8 @@
           'ep-button',
           `ep-button--${this.kind}`,
           { [`ep-button--${this.size}`]: this.size != 'default' },
-          { 'ep-button--icon': this.icon },
-          { [`ep-button--icon-${this.iconSource}`]: this.icon },
           { 'ep-button--icon-right': this.icon && this.iconAlignRight },
-          { 'ep-button--disabled': this.disabled }
+          { 'ep-button--icon-left': this.icon && !this.iconAlignRight }
         ]
       }
     }
@@ -125,14 +121,7 @@
     display: inline-flex;
     align-items: center;
     padding: 0;
-    // vertical-align: bottom;
-    // padding-top: 0.45rem; // 6px
-    // padding-right: 1.2rem; // 12px
-    // padding-bottom: 0.45rem; // 6px
-    // padding-left: 0;
-    // border: 1px solid ;
     border-radius: 3px;
-    // font-size: inherit;
     font-size: var(--font-size--small);
     line-height: 1;
     appearance: none;
@@ -179,7 +168,7 @@
     }
     // size
     &--small {
-      padding: 0.4rem 1rem; //7.5px 12px
+      padding: 0.4rem 1rem;
       font-size: var(--font-size--small);
     }
     // disabled
@@ -191,44 +180,25 @@
     &--icon-right {
       flex-direction: row-reverse;
     }
-    &__icon-container {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      // .icon {
-      //   display: inline-block;
-      //   width: 17px;
-      //   height: 17px;
-      // }
-    }
     &__icon {
       display: inline-flex;
       justify-content: center;
       align-items: center;
       line-height: 1;
-      // background: red;
-      // width: 4rem;
-      padding: 0.55rem 0.8rem; //0.55rem 1rem;
+      padding: 0.55rem 0.8rem;
       height: 100%;
-      // width: 17px;
-      // height: 17px;
     }
     &__label {
-      // padding: 0.8rem 0; // 8px
-      padding-left: 0;
-      padding-right: 1.2rem;
+      line-height: 17px;
+      padding: 0.55rem 1.2rem;
       .ep-button--icon-right & {
         padding-left: 1.2rem;
         padding-right: 0;
       }
-      // background: green;
-      // .ep-button--icon & {
-      //   margin-left: 0.8rem;
-      // }
-      // .ep-button--icon-right & {
-      //   margin-right: 0.8rem;
-      //   margin-left: 0;
-      // }
+      .ep-button--icon-left & {
+        padding-left: 0;
+        padding-right: 1.2rem;
+      }
     }
   }
 </style>
