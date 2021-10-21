@@ -9,6 +9,7 @@ const container = () => {
 }
 
 const icons = svgIcons.map(icon => icon.name.slice(2, -4))
+icons.push(undefined)
 
 export default {
   title: 'Components/Button',
@@ -23,7 +24,7 @@ export default {
       defaultValue: false
     },
     kind: {
-      name: 'Button Kind',
+      name: 'Kind',
       control: {
         type: 'radio',
         options: {
@@ -35,7 +36,7 @@ export default {
       defaultValue: 'primary'
     },
     element: {
-      name: 'HTML Element',
+      name: 'Element',
       control: {
         type: 'radio',
         options: {
@@ -46,7 +47,7 @@ export default {
       defaultValue: 'button'
     },
     size: {
-      name: 'Button Size',
+      name: 'Size',
       control: {
         type: 'radio',
         options: {
@@ -56,47 +57,41 @@ export default {
       },
       defaultValue: 'default'
     },
+    // label: {
+    //   name: 'Use Button Label',
+    //   control: {
+    //     type: 'boolean'
+    //   },
+    //   defaultValue: true
+    // },
     label: {
-      name: 'Use Button Label',
-      control: {
-        type: 'boolean'
-      },
-      defaultValue: true
-    },
-    labelText: {
-      name: 'Button Label',
+      name: 'Label',
       control: {
         type: 'text'
       },
       defaultValue: 'Download'
     },
     icon: {
-      name: 'Use Icon',
-      control: {
-        type: 'boolean'
-      },
-      defaultValue: false,
-      table: {
-        category: 'Icon'
-      }
-    },
-    iconSource: {
       name: 'Icon Source',
       control: {
         type: 'select',
         options: icons
       },
-      defaultValue: 'refresh',
+      defaultValue: undefined,
       table: {
         category: 'Icon'
       }
     },
-    iconAlignRight: {
-      name: 'Align Icon Right',
+    iconAlignment: {
+      name: 'Icon Alignment',
       control: {
-        type: 'boolean'
+        type: 'radio',
+        options: {
+          Left: 'left',
+          Right: 'right'
+        }
       },
-      defaultValue: false,
+      defaultValue: 'left',
       table: {
         category: 'Icon'
       }
@@ -113,10 +108,8 @@ const Template = (args, { argTypes }) => ({
     :element="element"
     :size="size"
     :label="label"
-    :labelText="labelText"
     :icon="icon"
-    :iconSource="iconSource"
-    :iconAlignRight="iconAlignRight"
+    :iconAlignment="iconAlignment"
     :disabled="disabled"
   />
   `

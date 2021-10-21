@@ -6,9 +6,9 @@
     :disabled="disabled"
   >
     <span v-if="icon" class="ep-button__icon">
-      <EpIcon :name="iconSource" />
+      <EpIcon :name="icon" />
     </span>
-    <span v-if="label" class="ep-button__label">{{ labelText }}</span>
+    <span v-if="label" class="ep-button__label">{{ label }}</span>
   </component>
 </template>
 
@@ -34,42 +34,42 @@
         type: String,
         default: 'default'
       },
+      // label: {
+      //   type: Boolean,
+      //   default: true
+      // },
       label: {
-        type: Boolean,
-        default: true
-      },
-      labelText: {
         type: String,
         default: 'Default button text'
       },
       icon: {
-        type: Boolean,
-        default: false
-      },
-      iconSource: {
         type: String,
         default: undefined
       },
-      iconAlignRight: {
-        type: Boolean,
-        default: false
+      // iconSource: {
+      //   type: String,
+      //   default: undefined
+      // },
+      iconAlignment: {
+        type: String,
+        default: 'left'
       },
       disabled: {
         type: Boolean,
         default: false
       },
-      tipLabel: {
-        type: String,
-        default: undefined
-      },
-      tipPosition: {
-        type: String,
-        default: undefined
-      },
-      tipAlignment: {
-        type: String,
-        default: undefined
-      }
+      // tipLabel: {
+      //   type: String,
+      //   default: undefined
+      // },
+      // tipPosition: {
+      //   type: String,
+      //   default: undefined
+      // },
+      // tipAlignment: {
+      //   type: String,
+      //   default: undefined
+      // }
     },
     components: {
       EpIcon
@@ -80,8 +80,8 @@
           'ep-button',
           `ep-button--${this.kind}`,
           { [`ep-button--${this.size}`]: this.size != 'default' },
-          { 'ep-button--icon-right': this.icon && this.iconAlignRight },
-          { 'ep-button--icon-left': this.icon && !this.iconAlignRight }
+          { 'ep-button--icon-right': this.icon && this.iconAlignment == 'right' },
+          { 'ep-button--icon-left': this.icon && this.iconAlignment == 'left'}
         ]
       }
     }
