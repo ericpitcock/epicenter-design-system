@@ -1,9 +1,9 @@
 import svgIcons from './load-icons'
 import { getTokensByType, getTokenGroup } from './getTokens'
 
-import EpIcon from './EpIcons'
+import EpIcon from './EpIcon'
 
-const names = svgIcons.map(icon => icon.name.slice(2, -4))
+const names = svgIcons.map(icon => icon.name)
 const iconSizes = getTokenGroup('icon-sizes')
 const colors = getTokensByType('color')
 
@@ -15,7 +15,7 @@ const container = () => {
 }
 
 export default {
-  title: 'Style/Icons',
+  title: 'Style/Icon',
   component: EpIcon,
   decorators: [container],
   argTypes: {
@@ -42,8 +42,8 @@ export default {
       },
       defaultValue: 'currentColor'
     },
-    size: {
-      name: 'Size',
+    weight: {
+      name: 'Weight',
       control: {
         type: 'select',
         options: iconSizes
@@ -67,4 +67,4 @@ const Template = (args, { argTypes }) => ({
   `
 })
 
-export const Icons = Template.bind({})
+export const Icon = Template.bind({})

@@ -88,13 +88,16 @@
     },
     methods: {
       updateIcon() {
-        const icon = svgIcons.find(icon => icon.name.slice(2, -4) === this.name)
+        const icon = svgIcons.find(icon => icon.name === this.name)
         if (icon && icon.content) {
           this.svg = icon.content
             .replace(/stroke=\S+/g, `fill="none" stroke="${this.fill}"`)
             .replace(/stroke-width=\S+/g, `stroke-width="${this.computedWeight}"`)
         }
       }
+    },
+    mounted() {
+      // console.log(svgIcons)
     }
   }
 </script>

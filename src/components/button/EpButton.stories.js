@@ -98,12 +98,12 @@ const Template = (args, { argTypes }) => ({
   template: `
   <EpButton
     :kind="kind"
-    :element="element"
     :size="size"
     :label="label"
     :icon="icon"
     :iconAlignment="iconAlignment"
     :disabled="disabled"
+    :to="'/fart'"
   />
   `
 })

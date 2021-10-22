@@ -1,8 +1,8 @@
 <template>
   <ep-container :fullWidth="true" class="icons">
     <div v-for="icon in svgIcons" :key="icon" class="icon-container">
-      <EpIcon :name="icon.name.slice(2, -4)" />
-      <div class="text--subtle">{{ icon.name.slice(2, -4) }}</div>
+      <EpIcon :name="icon.name" />
+      <div class="text--subtle">{{ icon.name }}</div>
     </div>
   </ep-container>
 </template>

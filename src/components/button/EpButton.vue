@@ -22,10 +22,10 @@
         type: String,
         required: true
       },
-      element: {
-        type: String,
-        default: 'button'
-      },
+      // element: {
+      //   type: String,
+      //   default: 'button'
+      // },
       link: {
         type: String,
         default: null
@@ -33,6 +33,10 @@
       size: {
         type: String,
         default: 'default'
+      },
+      to: {
+        type: [String, Object],
+        default: '',
       },
       label: {
         type: String,
@@ -55,16 +59,16 @@
       EpIcon
     },
     computed: {
-      // element() {
-      //   const attrs = this.$attrs;
-      //   if (attrs && this.to) {
-      //     return 'RouterLink'
-      //   }
-      //   if (attrs && attrs.href) {
-      //     return 'a'
-      //   }
-      //   return 'button'
-      // },
+      element() {
+        const attrs = this.$attrs
+        if (attrs && this.to) {
+          return 'RouterLink'
+        }
+        if (attrs && attrs.href) {
+          return 'a'
+        }
+        return 'button'
+      },
       buttonClasses() {
         return [
           'ep-button',
