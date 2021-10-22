@@ -14,23 +14,23 @@
       },
       color: {
         type: String,
-        default: ''
-      },
-      fill: {
-        type: String,
         default: 'currentColor'
       },
-      size: {
+      weight: {
         type: String,
-        default: '300'
+        default: 'regular'
       },
+      // fill: {
+      //   type: String,
+      //   default: 'currentColor'
+      // },
+      // size: {
+      //   type: String,
+      //   default: '300'
+      // },
       type: {
         type: String,
         default: 'span'
-      },
-      weight: {
-        type: Number,
-        default: 0
       }
     },
     data() {
@@ -45,19 +45,19 @@
         },
         immediate: true
       },
-      fill: {
-        handler() {
-          this.updateIcon()
-        },
-        immediate: true
-      },
+      // fill: {
+      //   handler() {
+      //     this.updateIcon()
+      //   },
+      //   immediate: true
+      // },
       color: {
         handler() {
           this.updateIcon()
         },
         immediate: true
       },
-      size: {
+      weight: {
         handler() {
           this.updateIcon()
         },
@@ -67,22 +67,20 @@
     computed: {
       classes() {
         return {
-          [`ep-icon--size-${this.size}`]: !!this.size,
+          [`ep-icon--weight-${this.weight}`]: !!this.weight,
           [`ep-icon--color-${this.color}`]: !!this.color,
         }
       },
       computedWeight() {
-        if (this.weight) {
-          return this.weight
-        }
-        switch (parseInt(this.size)) {
-          case 200:
-            return 1.2
-          case 300:
-          case 400:
+        switch (this.weight) {
+          case 'light':
+            return 1
+          case 'regular':
             return 1.5
-          default:
+          case 'bold':
             return 2
+          default:
+            return 1.5
         }
       }
     },
@@ -91,13 +89,10 @@
         const icon = svgIcons.find(icon => icon.name === this.name)
         if (icon && icon.content) {
           this.svg = icon.content
-            .replace(/stroke=\S+/g, `fill="none" stroke="${this.fill}"`)
+            .replace(/stroke=\S+/g, `fill="none" stroke="${this.color}"`)
             .replace(/stroke-width=\S+/g, `stroke-width="${this.computedWeight}"`)
         }
       }
-    },
-    mounted() {
-      // console.log(svgIcons)
     }
   }
 </script>

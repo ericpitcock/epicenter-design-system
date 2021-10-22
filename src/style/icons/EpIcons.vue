@@ -1,6 +1,6 @@
 <template>
   <ep-container :fullWidth="true" class="icons">
-    <div v-for="icon in svgIcons" :key="icon" class="icon-container">
+    <div v-for="(icon, index) in svgIcons" :key="index" class="icon-container">
       <EpIcon :name="icon.name" />
       <div class="text--subtle">{{ icon.name }}</div>
     </div>

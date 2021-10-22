@@ -4,7 +4,6 @@ import { getTokensByType, getTokenGroup } from './getTokens'
 import EpIcon from './EpIcon'
 
 const names = svgIcons.map(icon => icon.name)
-const iconSizes = getTokenGroup('icon-sizes')
 const colors = getTokensByType('color')
 
 const container = () => {
@@ -27,16 +26,16 @@ export default {
       },
       defaultValue: 'arrow-up'
     },
+    // color: {
+    //   name: 'Color',
+    //   control: {
+    //     type: 'select',
+    //     options: colors
+    //   },
+    //   defaultValue: 'black'
+    // },
     color: {
       name: 'Color',
-      control: {
-        type: 'select',
-        options: colors
-      },
-      defaultValue: 'black'
-    },
-    fill: {
-      name: 'Fill Color',
       control: {
         type: 'text'
       },
@@ -46,10 +45,9 @@ export default {
       name: 'Weight',
       control: {
         type: 'select',
-        options: iconSizes
+        options: ['light', 'regular', 'bold']
       },
-      // 300 == 1.5
-      defaultValue: '300'
+      defaultValue: 'regular'
     }
   }
 }
@@ -60,9 +58,8 @@ const Template = (args, { argTypes }) => ({
   template: `
   <EpIcon
     :name="name"
-    :size="size"
-    :fill="fill"
     :color="color"
+    :weight="weight"
   />
   `
 })
