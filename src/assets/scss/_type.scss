@@ -19,6 +19,7 @@ html {
 :root {
   font-family: 'Inter var', sans-serif;
   font-size: 62.5%; // (62.5/100) * 16px = 10px
+  --font-size--tiny: 1rem; // 10px
   --font-size--small: 1.2rem; // 12px
   --font-size--default: 1.3rem; // 13px
   --font-size--body: 1.5rem; // 15px

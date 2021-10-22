@@ -163,6 +163,7 @@
       }
       .ep-button__label {
         padding: 0.5rem 0.6rem;
+        font-size: var(--font-size--tiny);
       }
     }
     // disabled
