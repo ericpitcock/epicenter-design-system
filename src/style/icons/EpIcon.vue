@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="ep-icon" :class="classes" v-html="svg" />
+  <component :is="type" class="ep-icon" v-html="svg" />
 </template>
 
 <script>
@@ -20,14 +20,6 @@
         type: String,
         default: 'regular'
       },
-      // fill: {
-      //   type: String,
-      //   default: 'currentColor'
-      // },
-      // size: {
-      //   type: String,
-      //   default: '300'
-      // },
       type: {
         type: String,
         default: 'span'
@@ -45,12 +37,6 @@
         },
         immediate: true
       },
-      // fill: {
-      //   handler() {
-      //     this.updateIcon()
-      //   },
-      //   immediate: true
-      // },
       color: {
         handler() {
           this.updateIcon()
@@ -65,12 +51,6 @@
       }
     },
     computed: {
-      classes() {
-        return {
-          [`ep-icon--weight-${this.weight}`]: !!this.weight,
-          [`ep-icon--color-${this.color}`]: !!this.color,
-        }
-      },
       computedWeight() {
         switch (this.weight) {
           case 'light':
@@ -89,7 +69,7 @@
         const icon = svgIcons.find(icon => icon.name === this.name)
         if (icon && icon.content) {
           this.svg = icon.content
-            .replace(/stroke=\S+/g, `fill="none" stroke="${this.color}"`)
+            .replace(/stroke=\S+/g, `stroke="${this.color}"`)
             .replace(/stroke-width=\S+/g, `stroke-width="${this.computedWeight}"`)
         }
       }
