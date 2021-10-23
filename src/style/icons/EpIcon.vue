@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="ep-icon" v-html="svg" />
+  <component :is="type" class="ep-icon" v-html="icon" />
 </template>
 
 <script>
@@ -25,31 +25,6 @@
         default: 'span'
       }
     },
-    data() {
-      return {
-        svg: null
-      }
-    },
-    watch: {
-      name: {
-        handler() {
-          this.updateIcon()
-        },
-        immediate: true
-      },
-      color: {
-        handler() {
-          this.updateIcon()
-        },
-        immediate: true
-      },
-      weight: {
-        handler() {
-          this.updateIcon()
-        },
-        immediate: true
-      }
-    },
     computed: {
       computedWeight() {
         switch (this.weight) {
@@ -62,13 +37,11 @@
           default:
             return 1.5
         }
-      }
-    },
-    methods: {
-      updateIcon() {
+      },
+      icon() {
         const icon = svgIcons.find(icon => icon.name === this.name)
         if (icon && icon.content) {
-          this.svg = icon.content
+          return icon.content
             .replace(/stroke=\S+/g, `stroke="${this.color}"`)
             .replace(/stroke-width=\S+/g, `stroke-width="${this.computedWeight}"`)
         }
@@ -78,18 +51,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import './tokens/sizes.scss';
-  @import './tokens/colors.scss';
-
   .ep-icon {
     display: inline-flex;
-
-    &--color {
-      @each $color, $value in $token-colors {
-        &-#{$color} {
-          color: $value;
-        }
-      }
-    }
   }
 </style>
