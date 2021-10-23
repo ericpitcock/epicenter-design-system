@@ -62,7 +62,7 @@
       element() {
         const attrs = this.$attrs
         if (attrs && this.to) {
-          return 'RouterLink'
+          return 'router-link'
         }
         if (attrs && attrs.href) {
           return 'a'

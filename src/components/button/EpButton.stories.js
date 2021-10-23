@@ -1,3 +1,10 @@
+// import `action` to log router changes (this can be used by this addon to log router events)
+// https://storybook.js.org/addons/storybook-vue3-router
+// import { action } from '@storybook/addon-actions';
+
+// import Storybook addon (decorator for Vue Router)
+// import vueRouter from 'storybook-vue3-router'
+
 import svgIcons from '@/style/icons/load-icons'
 import EpButton from './EpButton'
 
@@ -8,7 +15,7 @@ const container = () => {
   }
 }
 
-const icons = svgIcons.map(icon => icon.name.slice(2, -4))
+const icons = svgIcons.map(icon => icon.name)
 icons.push(undefined)
 
 export default {
@@ -109,6 +116,7 @@ const Template = (args, { argTypes }) => ({
 })
 
 export const Button = Template.bind({})
-// Button.args = {
-//   labelText: 'Button Text'
-// }
+
+// Button.decorators = [
+//   vueRouter()
+// ]
