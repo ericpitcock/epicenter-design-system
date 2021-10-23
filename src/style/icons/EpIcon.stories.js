@@ -1,5 +1,4 @@
 import svgIcons from './load-icons'
-
 import EpIcon from './EpIcon'
 
 const names = svgIcons.map(icon => icon.name)
@@ -24,14 +23,6 @@ export default {
       },
       defaultValue: 'arrow-up'
     },
-    // color: {
-    //   name: 'Color',
-    //   control: {
-    //     type: 'select',
-    //     options: colors
-    //   },
-    //   defaultValue: 'black'
-    // },
     color: {
       name: 'Color',
       control: {

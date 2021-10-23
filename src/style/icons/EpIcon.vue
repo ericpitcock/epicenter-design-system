@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="ep-icon" v-html="icon" />
+  <component :is="type" class="ep-icon" v-html="svg" />
 </template>
 
 <script>
@@ -7,6 +7,13 @@
 
   export default {
     name: 'EpIcon',
+    data: () => ({
+      weights: {
+        'light': 1,
+        'regular': 1.5,
+        'bold': 2,
+      }
+    }),
     props: {
       name: {
         type: String,
@@ -26,24 +33,12 @@
       }
     },
     computed: {
-      computedWeight() {
-        switch (this.weight) {
-          case 'light':
-            return 1
-          case 'regular':
-            return 1.5
-          case 'bold':
-            return 2
-          default:
-            return 1.5
-        }
-      },
-      icon() {
+      svg() {
         const icon = svgIcons.find(icon => icon.name === this.name)
         if (icon && icon.content) {
           return icon.content
             .replace(/stroke=\S+/g, `stroke="${this.color}"`)
-            .replace(/stroke-width=\S+/g, `stroke-width="${this.computedWeight}"`)
+            .replace(/stroke-width=\S+/g, `stroke-width="${this.weights[this.weight]}"`)
         }
       }
     }

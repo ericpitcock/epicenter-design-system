@@ -18,7 +18,7 @@
               :style="{ background: `var(--${hue}-${level})` }"
             ></div>
             <div class="swatch__name">
-              {{ `--${hue}-${level}`.replaceAll('-', ' ') }}
+              {{ `${hue} ${level}` }}
             </div>
           </div>
         </div>
