@@ -1,10 +1,8 @@
 import svgIcons from './load-icons'
-import { getTokensByType, getTokenGroup } from './getTokens'
 
 import EpIcon from './EpIcon'
 
 const names = svgIcons.map(icon => icon.name)
-const colors = getTokensByType('color')
 
 const container = () => {
   return {
