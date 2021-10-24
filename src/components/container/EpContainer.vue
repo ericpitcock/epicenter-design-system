@@ -38,7 +38,7 @@
   .ep-container {
     display: inline-block;
     border-radius: 6px;
-    background-color: var(--component-background-level-2);
+    background-color: var(--component-background);
     border: 1px solid var(--border-color);
     &:first-child {
       margin-top: 0 !important;

@@ -62,7 +62,7 @@
       element() {
         const attrs = this.$attrs
         if (attrs && this.to) {
-          return 'router-link'
+          return 'RouterLink'
         }
         if (attrs && attrs.href) {
           return 'a'
@@ -148,16 +148,16 @@
     &--secondary {
       @include button-theme(
         // chamge these
-        var(--gray-4),
-        var(--gray-7),
-        var(--primary-color-text)
+        var(--foreground),
+        var(--foreground-border),
+        var(--text-color)
       );
     }
     &--naked {
       @include button-theme(
         transparent,
         transparent,
-        var(--main-text)
+        var(--text-color)
       );
     }
     // size

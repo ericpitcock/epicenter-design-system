@@ -1,66 +1,20 @@
 html[data-color-theme='dark'] {
   // background
-  
-  $root: 9%;
-  $steps: 10;
-  $index: 10;
+  --background: var(--test-gray-440);
 
-  @each $step in $steps {
-    @while $index > 0 {
-      --gray-#{$index}: hsl(0, 0%, #{$root + (3 * $index)});
-      $index: $index - 1;
-    }
-  }
-
-  // outputs
-  // --gray-10: hsl(0, 0%, 39%);
-  // --gray-9: hsl(0, 0%, 36%);
-  // --gray-8: hsl(0, 0%, 33%);
-  // --gray-7: hsl(0, 0%, 30%);
-  // --gray-6: hsl(0, 0%, 27%);
-  // --gray-5: hsl(0, 0%, 24%);
-  // --gray-4: hsl(0, 0%, 21%);
-  // --gray-3: hsl(0, 0%, 18%);
-  // --gray-2: hsl(0, 0%, 15%);
-  // --gray-1: hsl(0, 0%, 12%);
-  // hex
-  // --gray-10: #636363;
-  // --gray-9: #5c5c5c;
-  // --gray-8: #545454;
-  // --gray-7: #4d4d4d;
-  // --gray-6: #454545;
-  // --gray-5: #3d3d3d;
-  // --gray-4: #363636;
-  // --gray-3: #2e2e2e;
-  // --gray-2: #262626;
-  // --gray-1: #1f1f1f;
-
-  // background
-  --background: var(--gray-1);
-
-  // dunno
-  --component-background-level-1-lighter: #292929;
-  
-  // container
-  --component-background-level-2: var(--gray-2);
-  
   // components
-  --component-background-level-3: var(--gray-3);
-  
-  --component-background-level-3-lighter: #2e2e2e;
-  
-  // foreground (menus, modals, etc)
-  --foreground-level-1: var(--gray-4);
-  
-  // border (for everything)
-  --border-color: var(--gray-6);
-  
-  // button
-  // --button-hover: var(--component-background-level-2);
-  // --button-active: #21476B;
-  // text and icons
-  --main-text: #dedede;
-  --dark-text: #141414;
-  --icon-color: var(--main-text);
-  --icon-color-dark: var(--dark-text);
+  --component-background: var(--test-gray-410);
+  --component-background--darker: var(--test-gray-420);
+  --component-background--lighter: var(--test-gray-400);
+
+  // borders
+  --border-color: var(--test-gray-360);
+
+  // foreground elements: buttons, menus, tooltips, etc
+  --foreground: var(--test-gray-390);
+  --foreground-border: var(--test-gray-300);
+
+  // text
+  --text-color: var(--test-gray-50);
+  --text-color-inverse: var(--background);
 }

@@ -1,25 +1,19 @@
 :root {
   // background
-  --background: #fff;
-  
-  // component
-  --component-background-level-1-lighter: var(--white);
-  --component-background-level-2: #f9f9f9;
-  --component-background-level-3: var(--white);
-  --component-background-level-3-lighter: var(--white);
-  
-  // foreground
-  --foreground-level-1: yellow;
-  
-  // border (for everything)
-  --border-color: #dadada;
-  
-  // button
-  // --button-hover: var(--component-background-level-2);
-  // --button-active: #21476B;
-  // text and icons
-  --main-text: var(--dark-text);
-  --dark-text: #141414;
-  --icon-color: var(--main-text);
-  --icon-color-dark: var(--dark-text);
+  --background: var(--test-gray-10);
+
+  // components
+  --component-background: var(--test-gray-0);
+  --component-background--lighter: #fff;
+
+  // borders
+  --border-color: var(--test-gray-70);
+
+  // foreground elements
+  --foreground: var(--test-gray-0);
+  --foreground-border: var(--border-color);
+
+  // text
+  --text-color: var(--test-gray-410);
+  --text-color-inverse: var(--test-gray-460);
 }

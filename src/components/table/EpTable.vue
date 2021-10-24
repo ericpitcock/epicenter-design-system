@@ -165,7 +165,7 @@
       }
       th {
         text-align: left;
-        background: var(--component-background-level-2);
+        background: var(--component-background);
         z-index: 10;
         &:hover {
           color: var(--primary-color);
@@ -210,10 +210,10 @@
           border-top: 1px solid var(--border-color);
         }
         &.ep-table-row--empty {
-          background-color: var(--lightest-gray);
+          background-color: var(--component-background--lighter);
           // background-color: $white !important;
           td {
-            color: var(--component-background-level-1-lighter);
+            color: var(--component-background--lighter);
             padding: 7px 14px;
             pointer-events: none;
           }
