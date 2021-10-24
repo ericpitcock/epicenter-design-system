@@ -151,9 +151,9 @@
       @include button-theme(
         var(--foreground),
         var(--foreground-border),
-        var(--secondary--text),
-        var(--secondary--hover),
-        var(--secondary--active)
+        var(--text-color),
+        var(--button-secondary--hover),
+        var(--button-secondary--active)
       );
     }
     &--danger {
@@ -187,7 +187,7 @@
       @include button-theme(
         transparent,
         transparent,
-        var(--text-color),
+        var(--button-naked--text),
         var(--button-naked--hover),
         var(--button-naked--active)
       );

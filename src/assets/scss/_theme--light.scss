@@ -18,7 +18,10 @@
   --text-color-inverse: var(--gray-0);
 
   // buttons
+  --button-secondary--hover: var(--gray-40);
+  --button-secondary--active: var(--gray-60);
+
   --button-naked--hover: var(--gray-40);
   --button-naked--active: var(--gray-60);
-  --button-naked--text: var(--white);
+  --button-naked--text: var(--text-color);
 }

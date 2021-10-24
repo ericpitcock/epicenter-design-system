@@ -17,4 +17,12 @@ html[data-color-theme='dark'] {
   // text
   --text-color: var(--gray-50);
   --text-color-inverse: var(--background);
+
+  // buttons
+  --button-secondary--hover: var(--gray-410);
+  --button-secondary--active: var(--gray-500);
+
+  --button-naked--hover: var(--gray-410);
+  --button-naked--active: var(--gray-500);
+  --button-naked--text: var(--text-color);
 }
