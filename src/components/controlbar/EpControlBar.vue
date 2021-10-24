@@ -25,6 +25,6 @@
     height: 100%;
     background-attachment: var(--component-background-level-2);
     padding: 0 30px;
-    border: 1px solid var(--border-color);
+    // border: 1px solid var(--border-color);
   }
 </style>

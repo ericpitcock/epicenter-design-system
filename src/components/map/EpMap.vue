@@ -49,6 +49,12 @@
         map: null
       }
     },
+    computed: {
+      theme() {
+        let theme = document.documentElement.getAttribute('data-color-theme')
+        console.log(theme)
+      }
+    },
     methods: {
       loadMap() {
         return new Promise(resolve => {
@@ -124,6 +130,7 @@
         }
         this.init = false
       })
+      console.log(this.theme)
       // this.map.on('click', function(event) {
       //   // console.log('A click event has occurred at ' + event.lngLat)
       //   console.log(event)
@@ -167,6 +174,7 @@
   .ep-map-container, #ep-map {
     width: 100%;
     height: 100%;
+    padding: 0 10px 10px 10px;
   }
   .ep-map-container {
     position: relative;

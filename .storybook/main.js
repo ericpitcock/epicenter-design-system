@@ -5,14 +5,12 @@ module.exports = {
   stories: [
     '../src/components/**/*.stories.js',
     '../src/style/**/*.stories.js'
-    // '../node_modules/buefy/src/components/**/*.stories.js'
   ],
   addons: [
     '@storybook/addon-controls',
     // '@storybook/addon-actions',
     '@storybook/addon-links',
     'storybook-theme-toggle'
-    // '@storybook/addon-knobs/register'
   ],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({

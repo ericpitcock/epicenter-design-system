@@ -3,6 +3,8 @@
     :class="[
       'ep-container',
       { 'ep-container--full-width': fullWidth },
+      { 'ep-container--full-height': fullHeight },
+      { 'ep-container--flex-col': flexCol },
       { 'ep-container--connected': connected }
     ]"
     :style="{ padding: padding, marginTop: gap }"
@@ -22,6 +24,14 @@
         type: Boolean,
         default: false
       },
+      fullHeight: {
+        type: Boolean,
+        default: false
+      },
+      flexCol: {
+        type: Boolean,
+        default: false
+      },
       gap: {
         type: String,
         default: '0'
@@ -36,10 +46,11 @@
 
 <style lang="scss">
   .ep-container {
-    display: inline-block;
+    display: inline-flex;
     border-radius: 6px;
     background-color: var(--component-background);
     border: 1px solid var(--border-color);
+    overflow: hidden;
     &:first-child {
       margin-top: 0 !important;
     }
@@ -60,8 +71,13 @@
       }
     }
     &--full-width {
-      // display: block;
       width: 100%;
+    }
+    &--full-height {
+      height: 100%;
+    }
+    &--flex-col {
+      flex-direction: column;
     }
   }
 </style>

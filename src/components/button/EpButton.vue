@@ -216,7 +216,7 @@
       justify-content: center;
       align-items: center;
       line-height: 1;
-      padding: 0.4rem 0.8rem;
+      padding: 0.4rem 0.6rem 0.4rem 0.8rem;
     }
     &__label {
       padding: 0.8rem 1.2rem;
