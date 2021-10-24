@@ -1,20 +1,20 @@
 html[data-color-theme='dark'] {
   // background
-  --background: var(--test-gray-440);
+  --background: var(--gray-440);
 
   // components
-  --component-background: var(--test-gray-410);
-  --component-background--darker: var(--test-gray-420);
-  --component-background--lighter: var(--test-gray-400);
+  --component-background: var(--gray-410);
+  --component-background--darker: var(--gray-420);
+  --component-background--lighter: var(--gray-400);
 
   // borders
-  --border-color: var(--test-gray-360);
+  --border-color: var(--gray-360);
 
   // foreground elements: buttons, menus, tooltips, etc
-  --foreground: var(--test-gray-390);
-  --foreground-border: var(--test-gray-300);
+  --foreground: var(--gray-390);
+  --foreground-border: var(--gray-300);
 
   // text
-  --text-color: var(--test-gray-50);
+  --text-color: var(--gray-50);
   --text-color-inverse: var(--background);
 }

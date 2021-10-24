@@ -87,8 +87,8 @@
     $bg-color,
     $border-color,
     $font-color,
-    // $hover-bg-color,
-    // $active-color
+    $hover-bg-color,
+    $active-color
   ) {
     background-color: $bg-color;
     border-width: 1px;
@@ -97,7 +97,7 @@
     color: $font-color;
 
     &:hover {
-      // background-color: $hover-bg-color;
+      background-color: $hover-bg-color;
     }
 
     &:focus {
@@ -107,7 +107,7 @@
     }
 
     &:active {
-      // background-color: $active-color;
+      background-color: $active-color;
     }
   }
 
@@ -140,24 +140,56 @@
     // $active-color
     &--primary {
       @include button-theme(
-        var(--primary-color),
-        var(--primary-color-border),
-        var(--primary-color-text)
+        var(--primary-color--base),
+        var(--primary-color--border),
+        var(--primary-color--text),
+        var(--primary-color--hover),
+        var(--primary-color--active),
       );
     }
     &--secondary {
       @include button-theme(
-        // chamge these
         var(--foreground),
         var(--foreground-border),
-        var(--text-color)
+        var(--secondary--text),
+        var(--secondary--hover),
+        var(--secondary--active)
+      );
+    }
+    &--danger {
+      @include button-theme(
+        var(--danger-red--base),
+        var(--danger-red--border),
+        var(--danger-red--text),
+        var(--danger-red--hover),
+        var(--danger-red--active)
+      );
+    }
+    &--warning {
+      @include button-theme(
+        var(--warning-yellow--base),
+        var(--warning-yellow--border),
+        var(--warning-yellow--text),
+        var(--warning-yellow--hover),
+        var(--warning-yellow--active)
+      );
+    }
+    &--success {
+      @include button-theme(
+        var(--success-green--base),
+        var(--success-green--border),
+        var(--success-green--text),
+        var(--success-green--hover),
+        var(--success-green--active)
       );
     }
     &--naked {
       @include button-theme(
         transparent,
         transparent,
-        var(--text-color)
+        var(--text-color),
+        var(--button-naked--hover),
+        var(--button-naked--active)
       );
     }
     // size

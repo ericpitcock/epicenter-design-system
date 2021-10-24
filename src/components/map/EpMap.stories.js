@@ -1,8 +1,9 @@
 import EpMap from './EpMap'
 
 const mapStyles = {
-  Basic: 'mapbox://styles/mapbox/streets-v11',
-  Ep: 'mapbox://styles/ericpitcock/ckba479fv065v1in6pmfm6hz2'
+  Default: 'mapbox://styles/mapbox/streets-v11',
+  Dark: 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',
+  Borders: 'mapbox://styles/ericpitcock/ckba479fv065v1in6pmfm6hz2'
 }
 
 export default {

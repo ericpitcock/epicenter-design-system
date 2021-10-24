@@ -30,7 +30,10 @@ export default {
         options: {
           Primary: 'primary',
           Secondary: 'secondary',
-          Naked: 'naked'
+          Naked: 'naked',
+          Danger: 'danger',
+          Warning: 'warning',
+          Success: 'success'
         }
       },
       defaultValue: 'primary'

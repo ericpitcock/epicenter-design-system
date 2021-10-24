@@ -1,19 +1,24 @@
 :root {
   // background
-  --background: var(--test-gray-10);
+  --background: var(--gray-10);
 
   // components
-  --component-background: var(--test-gray-0);
+  --component-background: var(--gray-0);
   --component-background--lighter: #fff;
 
   // borders
-  --border-color: var(--test-gray-70);
+  --border-color: var(--gray-70);
 
   // foreground elements
-  --foreground: var(--test-gray-0);
+  --foreground: var(--gray-0);
   --foreground-border: var(--border-color);
 
   // text
-  --text-color: var(--test-gray-410);
-  --text-color-inverse: var(--test-gray-460);
+  --text-color: var(--gray-410);
+  --text-color-inverse: var(--gray-0);
+
+  // buttons
+  --button-naked--hover: var(--gray-40);
+  --button-naked--active: var(--gray-60);
+  --button-naked--text: var(--white);
 }
