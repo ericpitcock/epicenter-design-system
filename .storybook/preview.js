@@ -1,3 +1,11 @@
+// vuex
+import Vue from 'vue'
+import Vuex from 'vuex'
+import store from '../src/store'
+
+Vue.use(Vuex)
+Vue.prototype.$store = store
+
 // global styles
 import '!style-loader!css-loader!sass-loader!../src/assets/scss/global.scss'
 

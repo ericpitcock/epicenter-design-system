@@ -6,6 +6,7 @@
 
 <script>
   import mapboxgl from 'mapbox-gl'
+  import { mapState } from 'vuex'
   
   export default {
     name: 'EpMap',
@@ -50,12 +51,28 @@
       }
     },
     computed: {
-      theme() {
-        let theme = document.documentElement.getAttribute('data-color-theme')
-        console.log(theme)
-      }
+      ...mapState(['theme']),
+      // theme() {
+      //   let theme = document.documentElement.getAttribute('data-color-theme')
+      //   console.log(theme)
+      // },
+      // computedMapStyle() {
+      //   switch (this.theme) {
+      //     case 'dark':
+      //       'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph'
+      //       break;
+      //     case 'light':
+      //       'mapbox://styles/mapbox/streets-v11'
+      //       break;
+      //     default:
+      //       'mapbox://styles/mapbox/streets-v11'
+      //   }
+      // }
     },
     methods: {
+      computedMapStyle() {
+        return this.theme == 'dark' ? 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph' : 'mapbox://styles/mapbox/streets-v11'
+      },
       loadMap() {
         return new Promise(resolve => {
           mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpY3BpdGNvY2siLCJhIjoia29WT3AzOCJ9.YTnpZdWBqPD4cH6mlnZoYQ'
@@ -63,7 +80,7 @@
             container: 'ep-map',
             center: this.getMapCenter(),
             zoom: this.mapZoom,
-            style: this.mapStyle
+            style: this.computedMapStyle()
           })
           // various options
           // scroll zoom
