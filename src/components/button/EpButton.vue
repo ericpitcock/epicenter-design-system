@@ -213,6 +213,9 @@
     }
     &--icon-right {
       flex-direction: row-reverse;
+      .ep-button__icon {
+        padding: 0.4rem 0.8rem 0.4rem 0.6rem;
+      }
     }
     &__icon {
       display: inline-flex;

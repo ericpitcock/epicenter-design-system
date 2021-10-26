@@ -3,7 +3,8 @@
     <ep-control-bar :style="{ flex: '0 0 61px' }">
       <ep-control-bar-segment>
         <ep-button kind="primary" label="Primary" />
-        <ep-button kind="secondary" label="Secondary" icon="support" />
+        <!-- <ep-button kind="secondary" label="Secondary" icon="chevron-down" iconAlignment="right" /> -->
+        <ep-dropdown />
         <ep-button kind="naked" label="Naked" icon="arrow-down" />
         <ep-button kind="danger" label="Danger" />
         <ep-button kind="warning" label="Warning" />
@@ -23,17 +24,19 @@
 
 <script>
   import EpButton from '@/components/button/EpButton'
+  import EpDropdown from '@/components/dropdown/EpDropdown'
   import EpControlBar from '@/components/controlbar/EpControlBar'
   import EpControlBarSegment from '@/components/controlbar/EpControlBarSegment'
   import EpMap from '@/components/map/EpMap'
   import EpContainer from '@/components/container/EpContainer'
 
   export default {
-    name: 'Canvas',
+    name: 'Playground',
     components: {
       EpButton,
       EpControlBar,
       EpControlBarSegment,
+      EpDropdown,
       EpMap,
       EpContainer
     }
@@ -46,7 +49,9 @@
     flex-direction: column;
     height: 100%;
   }
-  button + button {
-    margin-left: 10px;
+  .ep-control-bar {
+    * + * {
+      margin-left: 10px;
+    }
   }
 </style>

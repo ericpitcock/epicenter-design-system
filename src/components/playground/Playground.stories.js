@@ -1,4 +1,4 @@
-import Canvas from './Canvas'
+import Playground from './Playground'
 
 // const container = () => {
 //   return {
@@ -7,8 +7,8 @@ import Canvas from './Canvas'
 // }
 
 export default {
-  title: 'Components/Playground',
-  component: Canvas,
+  title: 'Sandbox',
+  component: Playground,
   // decorators: [container],
   argTypes: {
 
@@ -19,11 +19,11 @@ export default {
 }
 
 const Template = (args, { argTypes }) => ({
-  components: { Canvas },
+  components: { Playground },
   props: Object.keys(argTypes),
   template: `
-  <Canvas />
+  <Playground />
   `
 })
 
-export const Playground = Template.bind({})
+export const Sandbox = Template.bind({})
