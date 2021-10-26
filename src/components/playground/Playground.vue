@@ -5,6 +5,7 @@
         <ep-button kind="primary" label="Primary" />
         <!-- <ep-button kind="secondary" label="Secondary" icon="chevron-down" iconAlignment="right" /> -->
         <ep-dropdown />
+        <ep-dropdown />
         <ep-button kind="naked" label="Naked" icon="arrow-down" />
         <ep-button kind="danger" label="Danger" />
         <ep-button kind="warning" label="Warning" />

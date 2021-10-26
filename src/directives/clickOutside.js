@@ -1,31 +1,33 @@
-const events = ['click'];
+// https://gist.github.com/disgusting-dev/8d45aebff8a536af1cba39b0fcd203e3
+
+const events = ['click']
 
 function onClickOutside({ event, el, handler, middleware }) {
   const isClickOutside =
     event.target !== el
-    && !el.contains(event.target);
+    && !el.contains(event.target)
 
   if (!isClickOutside || !middleware(event, el)) {
-    return null;
+    return null
   }
 
-  return handler(event, el);
+  return handler(event, el)
 }
 
-const instances = new Map();
+const instances = new Map()
 
 //Requires loop to toggle events for several listeners of an element
 function toggleEventListeners(eventHandlers) {
   return (action) => {
     eventHandlers.forEach(({ event, handler }) => {
-      document[`${action}EventListener`](event, handler, true);
+      document[`${action}EventListener`](event, handler, true)
     })
   }
 }
 
 //Validator function
 function processArgs(value) {
-  const isFunction = typeof value === 'function';
+  const isFunction = typeof value === 'function'
 
   if (!isFunction && typeof value !== 'object') {
       throw new Error(`v-click-outside: Binding value should be a function or an object, ${typeof bindingValue} given`)
@@ -42,32 +44,32 @@ function eventAdapter(events, { el, handler, middleware }) {
   return events.map((eventName) => ({
     event: eventName,
     handler: (event) => onClickOutside({ event, el, handler, middleware })
-  }));
+  }))
 }
 
 function bind(el, { value }) {
-  const { handler, middleware } = processArgs(value);
-  const eventHandlers = eventAdapter(events, { el, handler, middleware });
+  const { handler, middleware } = processArgs(value)
+  const eventHandlers = eventAdapter(events, { el, handler, middleware })
 
   instances.set(
     el,
     eventHandlers,
-  );
+  )
 
-  toggleEventListeners(eventHandlers)('add');
+  toggleEventListeners(eventHandlers)('add')
 }
 
 function unbind(el) {
-  const eventHandlers = instances.get(el);
+  const eventHandlers = instances.get(el)
 
-  toggleEventListeners(eventHandlers)('remove');
+  toggleEventListeners(eventHandlers)('remove')
 
-  instances.delete(el);
+  instances.delete(el)
 }
 
 const directive = {
   bind,
   unbind,
-};
+}
 
-export default directive;
+export default directive
