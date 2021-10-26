@@ -127,8 +127,9 @@
       mapStyle(newStyle, oldStyle) {
         this.map.setStyle(newStyle)
       },
-      getTheme() {
-        this.loadMap()
+      getTheme(newTheme, oldTheme) {
+        // this.loadMap()
+        this.map.setStyle(this.computedMapStyle())
       }
       // moved to created
       // mapSource(newSource, oldSource) {
@@ -194,7 +195,6 @@
   .ep-map-container, #ep-map {
     width: 100%;
     height: 100%;
-    padding: 0 10px 10px 10px;
   }
   .ep-map-container {
     position: relative;

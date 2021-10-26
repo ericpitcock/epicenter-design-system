@@ -5,15 +5,8 @@
 </template>
 
 <script>
-  import EpControlBarSegment from '@/components/controlbar/EpControlBarSegment'
-  import EpButton from '@/components/button/EpButton'
-
   export default {
-    name: 'EpControlBar',
-    components: {
-      EpControlBarSegment,
-      EpButton
-    }
+    name: 'EpControlBar'
   }
 </script>
 
@@ -23,8 +16,8 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    background-attachment: var(--component-background-level-2);
+    // background: var(--component-background);
     padding: 0 30px;
-    // border: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
   }
 </style>

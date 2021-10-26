@@ -1,15 +1,15 @@
 import EpType from './EpType'
 
-const container = () => {
-  return {
-    template: '<div style="height: 100%; padding: 30px;"><story/></div>'
-  }
-}
+// const container = () => {
+//   return {
+//     template: '<div style="height: 100%; padding: 30px;"><story/></div>'
+//   }
+// }
 
 export default {
   title: 'Style/Type',
   component: EpType,
-  decorators: [container],
+  // decorators: [container],
   argTypes: {
 
   },

@@ -50,7 +50,8 @@
     border-radius: 6px;
     background-color: var(--component-background);
     border: 1px solid var(--border-color);
-    overflow: hidden;
+    // this kills the sticky header on the table
+    // overflow: hidden;
     &:first-child {
       margin-top: 0 !important;
     }

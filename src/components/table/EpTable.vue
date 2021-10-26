@@ -168,11 +168,11 @@
         background: var(--component-background);
         z-index: 10;
         &:hover {
-          color: var(--primary-color);
+          color: var(--primary-color--base);
           cursor: pointer;
         }
         &.active {
-          color: var(--primary-color);
+          color: var(--primary-color--base);
           .ep-icon {
             visibility: visible;
           }
@@ -232,12 +232,12 @@
         tr:not(.ep-table-row--empty):not(.ep-table-row--selected):hover {
           cursor: pointer;
           td {
-            background: var(--primary-color);
+            background: var(--primary-color--base);
           }
         }
         tr.ep-table-row--selected {
           td {
-            background: var(--primary-color);
+            background: var(--primary-color--base);
           }
         }
       }

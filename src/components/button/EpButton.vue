@@ -4,9 +4,10 @@
     :href="link"
     :class="buttonClasses"
     :disabled="disabled"
+    :title="title"
   >
     <span v-if="icon" class="ep-button__icon">
-      <EpIcon :name="icon" />
+      <ep-icon :name="icon" />
     </span>
     <span v-if="label" class="ep-button__label">{{ label }}</span>
   </component>
@@ -20,7 +21,7 @@
     props: {
       kind: {
         type: String,
-        required: true
+        default: 'secondary'
       },
       // element: {
       //   type: String,
@@ -34,13 +35,15 @@
         type: String,
         default: 'default'
       },
+      title: {
+        type: String
+      },
       to: {
         type: [String, Object],
         default: '',
       },
       label: {
-        type: String,
-        default: 'Default button text'
+        type: String
       },
       icon: {
         type: String,
@@ -150,7 +153,7 @@
     &--secondary {
       @include button-theme(
         var(--foreground),
-        var(--foreground-border),
+        var(--border-color),
         var(--text-color),
         var(--button-secondary--hover),
         var(--button-secondary--active)
@@ -217,6 +220,10 @@
       align-items: center;
       line-height: 1;
       padding: 0.4rem 0.6rem 0.4rem 0.8rem;
+      // when just an icon button, even out the padding
+      &:only-child {
+        padding-right: 0.8rem;
+      }
     }
     &__label {
       padding: 0.8rem 1.2rem;

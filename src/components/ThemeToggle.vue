@@ -1,11 +1,15 @@
 <template>
-  <div class="theme-toggle" @click="toggleTheme()">Toggle theme</div>
+  <ep-button kind="naked" :icon="buttonIcon" title="Toggle theme" class="theme-toggle" @click.native="toggleTheme()" />
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
+  import EpButton from './button/EpButton'
 
   export default {
+    components: {
+      EpButton
+    },
     methods: {
       ...mapActions(['doTheme']),
       toggleTheme() {
@@ -14,16 +18,22 @@
       }
     },
     computed: {
-      ...mapGetters(['getTheme'])
+      ...mapGetters(['getTheme']),
+      buttonLabel() {
+        return this.getTheme == 'dark' ? 'Light theme' : 'Dark theme'
+      },
+      buttonIcon() {
+        return this.getTheme == 'dark' ? 'light-mode' : 'dark-mode'
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
   .theme-toggle {
-    position: absolute;
+    position: fixed;
     top: 10px;
-    right: 10px;
+    left: 10px;
     cursor: pointer;
   }
 </style>

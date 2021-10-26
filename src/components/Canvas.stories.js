@@ -1,15 +1,15 @@
 import Canvas from './Canvas'
 
-const container = () => {
-  return {
-    template: '<div style="height: 100%; padding: 30px;"><story/></div>'
-  }
-}
+// const container = () => {
+//   return {
+//     template: '<div style="height: 100%; padding: 30px;"><story/></div>'
+//   }
+// }
 
 export default {
   title: 'Components/Playground',
   component: Canvas,
-  decorators: [container],
+  // decorators: [container],
   argTypes: {
 
   },

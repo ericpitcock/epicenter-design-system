@@ -60,6 +60,13 @@ export default {
       },
       defaultValue: 'default'
     },
+    title: {
+      name: 'Title(Tooltip)',
+      control: {
+        type: 'text'
+      },
+      defaultValue: 'This is the tooltip'
+    },
     label: {
       name: 'Label',
       control: {
@@ -102,6 +109,7 @@ const Template = (args, { argTypes }) => ({
   <EpButton
     :kind="kind"
     :size="size"
+    :title="title"
     :label="label"
     :icon="icon"
     :iconAlignment="iconAlignment"

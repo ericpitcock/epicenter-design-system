@@ -19,7 +19,7 @@ export const parameters = {
 // global decorators
 export const decorators = [(story) => ({
   components: { ThemeToggle, story },
-  template: `<div style="height: 100vh;">
+  template: `<div style="height: 100vh; padding: 10px 10px 10px 60px;">
               <theme-toggle />
               <story />
              </div>`
