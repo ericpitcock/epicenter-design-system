@@ -6,7 +6,7 @@
 
 <script>
   import mapboxgl from 'mapbox-gl'
-  import { mapState } from 'vuex'
+  import { mapGetters } from 'vuex'
   
   export default {
     name: 'EpMap',
@@ -51,7 +51,7 @@
       }
     },
     computed: {
-      ...mapState(['theme']),
+      ...mapGetters(['getTheme'])
       // theme() {
       //   let theme = document.documentElement.getAttribute('data-color-theme')
       //   console.log(theme)
@@ -71,7 +71,7 @@
     },
     methods: {
       computedMapStyle() {
-        return this.theme == 'dark' ? 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph' : 'mapbox://styles/mapbox/streets-v11'
+        return this.getTheme == 'dark' ? 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph' : 'mapbox://styles/mapbox/streets-v11'
       },
       loadMap() {
         return new Promise(resolve => {
@@ -127,6 +127,9 @@
       mapStyle(newStyle, oldStyle) {
         this.map.setStyle(newStyle)
       },
+      getTheme() {
+        this.loadMap()
+      }
       // moved to created
       // mapSource(newSource, oldSource) {
       //   if (this.init) return
@@ -147,7 +150,7 @@
         }
         this.init = false
       })
-      console.log(this.theme)
+      // console.log(this.theme)
       // this.map.on('click', function(event) {
       //   // console.log('A click event has occurred at ' + event.lngLat)
       //   console.log(event)
