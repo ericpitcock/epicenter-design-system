@@ -21,12 +21,14 @@
 
 <script>
   import clickOutside from '@/directives/clickOutside'
+  // import clickout from '@/directives/clickout'
   import EpButton from '@/components/button/EpButton'
 
   export default {
     name: 'EpDropdown',
     directives: {
       clickOutside
+      // clickout
     },
     components: {
       EpButton

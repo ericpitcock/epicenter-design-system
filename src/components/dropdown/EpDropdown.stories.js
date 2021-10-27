@@ -41,8 +41,8 @@ const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   template: `
   <EpDropdown
-    :buttonKind="kind"
-    :buttonLabel="label"
+    :buttonKind="buttonKind"
+    :buttonLabel="buttonLabel"
   />
   `
 })
