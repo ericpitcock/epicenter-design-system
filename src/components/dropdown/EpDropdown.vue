@@ -1,5 +1,8 @@
 <template>
-  <div class="ep-dropdown">
+  <div
+    class="ep-dropdown"
+    v-click-outside="closeDropdown"
+  >
     <ep-button
       @click.native="toggleDropdown"
       :kind="buttonKind"
@@ -10,7 +13,6 @@
     <div
       v-show="dropdownVisible"
       class="ep-dropdown__menu"
-      v-click-outside="closeDropdown"
     >
       <div class="ep-dropdown__content"></div>
     </div>
@@ -45,7 +47,7 @@
         type: String,
         default: 'secondary'
       },
-      label: {
+      buttonLabel: {
         type: String
       },
       menuItems: {
