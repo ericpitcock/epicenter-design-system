@@ -7,7 +7,7 @@
         <ep-dropdown :menuItems="fakeMenuItems" />
         <ep-dropdown
           buttonKind="naked"
-          :menuItems="fakeMenuItems"
+          :menuItems="fakeMenuItemsMore"
         />
         <ep-button kind="naked" label="Naked" icon="arrow-down" />
         <ep-button kind="danger" label="Danger" />
@@ -51,6 +51,26 @@
         },
         {
           text: 'Upload sex tape'
+        }
+      ],
+      fakeMenuItemsMore: [
+        {
+          text: 'Don’t do anything'
+        },
+        {
+          text: 'Use both hands'
+        },
+        {
+          text: 'Dance yourself clean'
+        },
+        {
+          text: 'Making the time'
+        },
+        {
+          text: 'La Isla Bonita'
+        },
+        {
+          text: 'That’s Madonna'
         }
       ]
     })

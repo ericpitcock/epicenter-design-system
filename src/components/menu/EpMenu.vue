@@ -30,7 +30,6 @@
 
 <style lang="scss" scoped>
   .ep-menu {
-    height: 300px;
     background: var(--foreground);
     padding: 10px 0;
     border: 1px solid var(--border-color);
