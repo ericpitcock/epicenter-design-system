@@ -14,24 +14,24 @@
       v-show="dropdownVisible"
       class="ep-dropdown__menu"
     >
-      <div class="ep-dropdown__content"></div>
+      <ep-menu :menuItems="menuItems" />
     </div>
   </div>
 </template>
 
 <script>
   import clickOutside from '@/directives/clickOutside'
-  // import clickout from '@/directives/clickout'
   import EpButton from '@/components/button/EpButton'
+  import EpMenu from '@/components/menu/EpMenu'
 
   export default {
     name: 'EpDropdown',
     directives: {
       clickOutside
-      // clickout
     },
     components: {
-      EpButton
+      EpButton,
+      EpMenu
     },
     data: () => ({
       dropdownVisible: false
@@ -53,7 +53,7 @@
         type: String
       },
       menuItems: {
-        type: Object
+        type: Array
       }
     }
   }
@@ -69,13 +69,6 @@
       min-width: 200px;
       padding-top: 4px;
       z-index: 10;
-      .ep-dropdown__content {
-        background: var(--foreground);
-        border: 1px solid var(--border-color);
-        border-radius: 3px;
-        box-shadow: 0 5px 8px hsla(0,0,0,0.1);
-        height: 300px;
-      }
     }
   }
 </style>

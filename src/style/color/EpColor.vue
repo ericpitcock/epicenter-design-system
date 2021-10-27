@@ -81,6 +81,7 @@
 <style lang="scss" scoped>
   .category {
     display: flex;
+    flex-direction: column;
     &__label {
       flex: 0 0 140px;
       h1 {
