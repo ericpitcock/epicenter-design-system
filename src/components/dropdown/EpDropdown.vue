@@ -6,15 +6,17 @@
     <ep-button
       @click.native="toggleDropdown"
       :kind="buttonKind"
-      label="Secondary"
+      :label="buttonLabel"
       icon="chevron-down"
       iconAlignment="right"
     />
     <div
       v-show="dropdownVisible"
-      class="ep-dropdown__menu"
+      class="ep-dropdown__menu-container"
     >
-      <ep-menu :menuItems="menuItems" />
+      <div class="ep-dropdown__menu-content">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +24,6 @@
 <script>
   import clickOutside from '@/directives/clickOutside'
   import EpButton from '@/components/button/EpButton'
-  import EpMenu from '@/components/menu/EpMenu'
 
   export default {
     name: 'EpDropdown',
@@ -30,8 +31,7 @@
       clickOutside
     },
     components: {
-      EpButton,
-      EpMenu
+      EpButton
     },
     data: () => ({
       dropdownVisible: false
@@ -51,9 +51,6 @@
       },
       buttonLabel: {
         type: String
-      },
-      menuItems: {
-        type: Array
       }
     }
   }
@@ -62,13 +59,20 @@
 <style lang="scss" scoped>
   .ep-dropdown {
     position: relative;
-    &__menu {
+    &__menu-container {
       position: absolute;
       top: 100%;
       left: 0;
       min-width: 200px;
       padding-top: 4px;
       z-index: 10;
+    }
+    &__menu-content {
+      background: var(--foreground);
+      padding: 10px 0;
+      border: 1px solid var(--border-color);
+      border-radius: 3px;
+      box-shadow: 0 5px 8px hsla(0,0,0,0.1);
     }
   }
 </style>

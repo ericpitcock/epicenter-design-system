@@ -195,6 +195,17 @@
         var(--button-naked--active)
       );
     }
+    &--menu-item {
+      @include button-theme(
+        transparent,
+        transparent,
+        var(--button-naked--text),
+        var(--button-naked--hover),
+        var(--button-naked--active)
+      );
+      width: 100%;
+      border-radius: 0;
+    }
     // size
     &--small {
       .ep-button__icon {

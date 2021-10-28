@@ -3,24 +3,20 @@
     <ep-control-bar :style="{ flex: '0 0 61px' }">
       <ep-control-bar-segment>
         <ep-button kind="primary" label="Primary" />
-        <!-- <ep-button kind="secondary" label="Secondary" icon="chevron-down" iconAlignment="right" /> -->
-        <ep-dropdown :menuItems="fakeMenuItems" />
-        <ep-dropdown
-          buttonKind="naked"
-          :menuItems="fakeMenuItemsMore"
-        />
         <ep-button kind="naked" label="Naked" icon="arrow-down" />
         <ep-button kind="danger" label="Danger" />
         <ep-button kind="warning" label="Warning" />
         <ep-button kind="success" label="Success" icon="star" />
+        <ep-dropdown buttonKind="naked" buttonLabel="Dropdown">
+          <ep-button
+            v-for="(item, index) in fakeMenuItems"
+            :key="index"
+            :label="item.label"
+            kind="menu-item"
+            @click.native="onClick(item.action)"
+          />
+        </ep-dropdown>
       </ep-control-bar-segment>
-      <!-- <EpControlBarSegment :justifyContent="'center'">
-        <EpButton :kind="'naked'" :label="'Zoom in'" />
-        <EpButton :kind="'naked'" :label="'Zoom out'" />
-      </EpControlBarSegment>
-      <EpControlBarSegment :justifyContent="'flex-end'">
-        <EpButton :kind="'naked'" :label="'Sign in'" />
-      </EpControlBarSegment> -->
     </ep-control-bar>
     <ep-map mapStyle="mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph" />
   </ep-container>
@@ -47,43 +43,51 @@
     data: () => ({
       fakeMenuItems: [
         {
-          text: 'Download sex tapesss'
+          label: 'Go to internal page',
+          action: {
+            type: 'router-link',
+            path: '/fart'
+          }
         },
         {
-          text: 'Upload sex tape'
-        }
-      ],
-      fakeMenuItemsMore: [
-        {
-          text: 'Don’t do anything'
+          label: 'Run a method',
+          action: {
+            type: 'method',
+            method: 'methodName'
+          }
         },
         {
-          text: 'Use both hands'
-        },
-        {
-          text: 'Dance yourself clean'
-        },
-        {
-          text: 'Making the time'
-        },
-        {
-          text: 'La Isla Bonita'
-        },
-        {
-          text: 'That’s Madonna'
+          label: 'Link to internet',
+          action: {
+            type: 'link',
+            href: 'https://www.google.com/maps'
+          }
         }
       ]
-    })
+    }),
+    methods: {
+      onClick(action, event) {
+        if (this.disabled) return
+        let actionType = action.type
+        if (actionType == 'router-link') {
+          // router.push
+          console.log('this is a router link')
+        }
+        if (actionType == 'method') {
+          // this[functionName](event)
+          console.log('this is a method')
+        }
+        if (actionType == 'link') {
+          console.log('this is a link')
+        }
+      }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
-  .canvas-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  .ep-control-bar {
+  // this is temporary
+  .ep-control-bar__segment > {
     * + * {
       margin-left: 10px;
     }
