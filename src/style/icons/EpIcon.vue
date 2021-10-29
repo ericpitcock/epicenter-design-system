@@ -27,6 +27,10 @@
         type: String,
         default: 'regular'
       },
+      size: {
+        type: Number,
+        default: 20
+      },
       type: {
         type: String,
         default: 'span'
@@ -39,6 +43,8 @@
           return icon.content
             .replace(/stroke=\S+/g, `stroke="${this.color}"`)
             .replace(/stroke-width=\S+/g, `stroke-width="${this.weights[this.weight]}"`)
+            .replace(/[^-]width=\S+/g, `width="${this.size}"`)
+            .replace(/height=\S+/g, `height="${this.size}"`)
         }
       }
     }

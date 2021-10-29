@@ -8,13 +8,16 @@
         <ep-button kind="warning" label="Warning" />
         <ep-button kind="success" label="Success" icon="star" />
         <ep-dropdown buttonKind="naked" buttonLabel="Dropdown">
-          <ep-button
-            v-for="(item, index) in fakeMenuItems"
-            :key="index"
-            :label="item.label"
-            kind="menu-item"
-            @click.native="onClick(item.action)"
-          />
+          <template v-for="(item, index) in fakeDropdownItems">
+            <ep-button
+              :key="`item-${index}`"
+              :label="item.label"
+              kind="menu-item"
+              @click.native="onClick(item.action, $event)"
+            />
+            <div v-if="index == 0" :key="`divider-${index}`">--------------------</div>
+            <!-- using a template allows you to put dividers and labels and shit in the menu too -->
+          </template>
         </ep-dropdown>
       </ep-control-bar-segment>
     </ep-control-bar>
@@ -41,7 +44,7 @@
       EpContainer
     },
     data: () => ({
-      fakeMenuItems: [
+      fakeDropdownItems: [
         {
           label: 'Go to internal page',
           action: {
@@ -53,7 +56,7 @@
           label: 'Run a method',
           action: {
             type: 'method',
-            method: 'methodName'
+            method: 'fakeMethod'
           }
         },
         {
@@ -74,12 +77,17 @@
           console.log('this is a router link')
         }
         if (actionType == 'method') {
-          // this[functionName](event)
-          console.log('this is a method')
+          this[action.method](event)
         }
         if (actionType == 'link') {
-          console.log('this is a link')
+          // .top is used to target the parent in an iframe situation
+          // probably don't need it outside of Storybook
+          window.top.location.href = action.href
         }
+      },
+      fakeMethod(event) {
+        alert('this is a fake method')
+        console.log(event)
       }
     }
   }

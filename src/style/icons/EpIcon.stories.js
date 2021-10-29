@@ -37,6 +37,14 @@ export default {
         options: ['light', 'regular', 'bold']
       },
       defaultValue: 'regular'
+    },
+    size: {
+      name: 'Size',
+      control: {
+        type: 'range',
+        min: 20, max: 60, step: 1
+      },
+      defaultValue: 20
     }
   }
 }
@@ -49,6 +57,7 @@ const Template = (args, { argTypes }) => ({
     :name="name"
     :color="color"
     :weight="weight"
+    :size="size"
   />
   `
 })

@@ -1,10 +1,10 @@
 <template>
-  <ep-container :fullWidth="true" class="icons">
-    <div v-for="(icon, index) in svgIcons" :key="index" class="icon-container">
-      <EpIcon :name="icon.name" />
+  <div class="icons">
+    <ep-container v-for="(icon, index) in svgIcons" :key="index" class="icon-container">
+      <ep-icon :name="icon.name" />
       <div class="text--subtle">{{ icon.name }}</div>
-    </div>
-  </ep-container>
+    </ep-container>
+  </div>
 </template>
 
 <script>
@@ -26,17 +26,16 @@
 <style lang="scss" scoped>
   .icons {
     display: flex;
-    // gap: 20px 20px;
+    gap: 10px;
     flex-wrap: wrap;
   }
   .icon-container {
-    // flex: 0 0 1;
+    flex: 0 0 170px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px 0;
     padding: 40px;
-    // border: 1px solid var(--border-color);
+    gap: 20px 0;
   }
 </style>
