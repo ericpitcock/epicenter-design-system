@@ -10,13 +10,13 @@
         <ep-dropdown buttonKind="naked" buttonLabel="Dropdown">
           <template v-for="(item, index) in fakeDropdownItems">
             <ep-button
+              v-if="!item.divider"
               :key="`item-${index}`"
               :label="item.label"
               kind="menu-item"
               @click.native="onClick(item.action, $event)"
             />
-            <div v-if="index == 0" :key="`divider-${index}`">--------------------</div>
-            <!-- using a template allows you to put dividers and labels and shit in the menu too -->
+            <ep-divider v-else :key="`divider-${index}`" />
           </template>
         </ep-dropdown>
       </ep-control-bar-segment>
@@ -28,6 +28,7 @@
 <script>
   import EpButton from '@/components/button/EpButton'
   import EpDropdown from '@/components/dropdown/EpDropdown'
+  import EpDivider from '@/components/dropdown/EpDivider'
   import EpControlBar from '@/components/controlbar/EpControlBar'
   import EpControlBarSegment from '@/components/controlbar/EpControlBarSegment'
   import EpMap from '@/components/map/EpMap'
@@ -40,6 +41,7 @@
       EpControlBar,
       EpControlBarSegment,
       EpDropdown,
+      EpDivider,
       EpMap,
       EpContainer
     },
@@ -51,6 +53,9 @@
             type: 'router-link',
             path: '/fart'
           }
+        },
+        {
+          divider: true
         },
         {
           label: 'Run a method',
@@ -71,6 +76,7 @@
     methods: {
       onClick(action, event) {
         if (this.disabled) return
+        this.$emit('click')
         let actionType = action.type
         if (actionType == 'router-link') {
           // router.push

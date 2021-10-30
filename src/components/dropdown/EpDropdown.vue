@@ -69,7 +69,7 @@
     }
     &__menu-content {
       background: var(--foreground);
-      padding: 10px 0;
+      padding: 1rem 0;
       border: 1px solid var(--border-color);
       border-radius: 3px;
       box-shadow: 0 5px 8px hsla(0,0,0,0.1);

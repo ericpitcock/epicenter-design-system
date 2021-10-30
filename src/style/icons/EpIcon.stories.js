@@ -42,7 +42,7 @@ export default {
       name: 'Size',
       control: {
         type: 'range',
-        min: 20, max: 60, step: 1
+        min: 20, max: 60, step: 2
       },
       defaultValue: 20
     }
