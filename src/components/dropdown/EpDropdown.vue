@@ -68,6 +68,8 @@
       z-index: 10;
     }
     &__menu-content {
+      display: flex;
+      flex-direction: column;
       background: var(--foreground);
       padding: 1rem 0;
       border: 1px solid var(--border-color);
