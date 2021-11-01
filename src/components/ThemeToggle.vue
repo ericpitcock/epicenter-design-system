@@ -11,10 +11,10 @@
       EpButton
     },
     methods: {
-      ...mapActions(['doTheme']),
+      ...mapActions(['updateTheme']),
       toggleTheme() {
         let newTheme = this.getTheme == 'dark' ? 'light' : 'dark'
-        this.doTheme(newTheme)
+        this.updateTheme(newTheme)
       }
     },
     computed: {
