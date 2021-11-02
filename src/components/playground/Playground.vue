@@ -13,6 +13,7 @@
               v-if="!item.divider"
               :key="`item-${index}`"
               :label="item.label"
+              :icon="item.icon"
               kind="menu-item"
               @click.native="onClick(item.action, $event)"
             />
@@ -49,6 +50,7 @@
       fakeDropdownItems: [
         {
           label: 'Go to internal page',
+          icon: 'arrow-right',
           action: {
             type: 'router-link',
             path: '/fart'
@@ -59,6 +61,7 @@
         },
         {
           label: 'Run a method',
+          icon: 'circle',
           action: {
             type: 'method',
             method: 'fakeMethod'
@@ -66,6 +69,7 @@
         },
         {
           label: 'Link to internet',
+          icon: 'export',
           action: {
             type: 'link',
             href: 'https://www.google.com/maps'
