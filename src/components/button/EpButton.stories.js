@@ -1,4 +1,5 @@
 import svgIcons from '@/style/icons/load-icons'
+import ThemeToggle from '@/components/ThemeToggle'
 import EpButton from './EpButton'
 
 const container = () => {
@@ -106,7 +107,7 @@ const Template = (args, { argTypes }) => ({
   components: { EpButton },
   props: Object.keys(argTypes),
   template: `
-  <EpButton
+  <ep-button
     :kind="kind"
     :size="size"
     :title="title"

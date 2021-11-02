@@ -2145,7 +2145,7 @@ const data = [
 const container = () => {
   return {
     template:
-      '<div style="background: var(--background); padding: 30px;"><story/></div>'
+      '<div style="padding: 30px;"><story/></div>'
   }
 }
 

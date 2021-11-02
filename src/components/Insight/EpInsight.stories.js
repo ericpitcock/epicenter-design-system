@@ -1,4 +1,5 @@
-import AppFrameSidebar from './AppFrameSidebar'
+import store from '@/store'
+import EpInsight from './EpInsight'
 
 const container = () => {
   return {
@@ -7,21 +8,21 @@ const container = () => {
 }
 
 export default {
-  title: 'App Frames/Sidebar',
-  component: AppFrameSidebar,
+  title: 'Insight/App',
+  component: EpInsight,
   // decorators: [container],
   argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true }
-  }
+  },
+  store
 }
 
 const Template = (args, { argTypes }) => ({
-  components: { AppFrameSidebar },
+  components: { EpInsight },
   props: Object.keys(argTypes),
-  template: `
-  <AppFrameSidebar />
-  `
+  template: '<ep-insight />',
+  store
 })
 
-// export const Sidebar = Template.bind({})
+export const App = Template.bind({})

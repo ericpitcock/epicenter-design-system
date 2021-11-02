@@ -1,15 +1,15 @@
 import EpColor from './EpColor'
 
-// const container = () => {
-//   return {
-//     template: '<div style="padding: 30px;"><story/></div>'
-//   }
-// }
+const container = () => {
+  return {
+    template: '<div style="padding: 30px;"><story/></div>'
+  }
+}
 
 export default {
   title: 'Style/Color',
   component: EpColor,
-  // decorators: [container],
+  decorators: [container],
   argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true }

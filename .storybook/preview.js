@@ -4,8 +4,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import store from '../src/store'
 
-import ThemeToggle from '../src/components/ThemeToggle'
-
 Vue.use(Vuex)
 Vue.prototype.$store = store
 
@@ -18,9 +16,8 @@ export const parameters = {
 
 // global decorators
 export const decorators = [(story) => ({
-  components: { ThemeToggle, story },
-  template: `<div style="height: 100vh; padding: 10px 10px 10px 60px;">
-              <theme-toggle />
+  components: { story },
+  template: `<div style="height: 100vh;">
               <story />
              </div>`
 })]

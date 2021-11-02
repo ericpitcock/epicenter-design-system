@@ -41,7 +41,7 @@
         const icon = svgIcons.find(icon => icon.name === this.name)
         if (icon && icon.content) {
           return icon.content
-            .replace(/stroke=\S+/g, `stroke="${this.color}"`)
+            // .replace(/stroke=\S+/g, `stroke="var(${this.color})"`)
             .replace(/stroke-width=\S+/g, `stroke-width="${this.weights[this.weight]}"`)
             .replace(/[^-]width=\S+/g, `width="${this.size}"`)
             .replace(/height=\S+/g, `height="${this.size}"`)
@@ -54,5 +54,6 @@
 <style lang="scss" scoped>
   .ep-icon {
     display: inline-flex;
+    color: inherit;
   }
 </style>

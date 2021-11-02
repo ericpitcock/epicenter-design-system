@@ -9,7 +9,8 @@ module.exports = {
   addons: [
     '@storybook/addon-controls',
     // '@storybook/addon-actions',
-    '@storybook/addon-links'
+    '@storybook/addon-links',
+    'storybook-theme-toggle'
   ],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({

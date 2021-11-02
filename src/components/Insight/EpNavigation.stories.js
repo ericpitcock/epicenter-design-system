@@ -1,4 +1,5 @@
-import AppFrameSidebar from './AppFrameSidebar'
+import store from '@/store'
+import EpNavigation from './EpNavigation'
 
 const container = () => {
   return {
@@ -7,21 +8,21 @@ const container = () => {
 }
 
 export default {
-  title: 'App Frames/Sidebar',
-  component: AppFrameSidebar,
+  title: 'Insight/Navigation',
+  component: EpNavigation,
   // decorators: [container],
   argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true }
-  }
+  },
+  store
 }
 
 const Template = (args, { argTypes }) => ({
-  components: { AppFrameSidebar },
+  components: { EpNavigation },
   props: Object.keys(argTypes),
-  template: `
-  <AppFrameSidebar />
-  `
+  template: '<ep-navigation />',
+  store
 })
 
-// export const Sidebar = Template.bind({})
+export const Navigation = Template.bind({})
