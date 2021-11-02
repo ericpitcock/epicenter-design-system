@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     theme: 'light',
-    sidebar: false
+    sidebar: true
   },
   getters: {
     getTheme: state => state.theme,
@@ -21,21 +21,13 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    toggleTheme({ state, commit }, data) {
-      // let htmlElement = document.getElementsByTagName('html')[0]
-      // htmlElement.setAttribute('data-color-theme', data)
-      // document.documentElement.setAttribute('data-color-theme', data)
-      // commit('setTheme', data)
-      // let currentTheme = document.documentElement.getAttribute('data-color-theme')
+    toggleTheme({ state, commit }) {
       let newTheme = state.theme == 'dark' ? 'light' : 'dark'
       document.documentElement.setAttribute('data-color-theme', newTheme)
       commit('setTheme', newTheme)
-      console.log('updateTheme')
-      // this.theme = newTheme
     },
     toggleSidebar({ state, commit }) {
       commit('setSidebarState')
-      console.log('toggleSidebar')
     }
   }
 })

@@ -1,4 +1,3 @@
-import store from '@/store'
 import EpNavigation from './EpNavigation'
 
 const container = () => {
@@ -14,15 +13,13 @@ export default {
   argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true }
-  },
-  store
+  }
 }
 
 const Template = (args, { argTypes }) => ({
   components: { EpNavigation },
   props: Object.keys(argTypes),
-  template: '<ep-navigation />',
-  store
+  template: '<ep-navigation />'
 })
 
 export const Navigation = Template.bind({})

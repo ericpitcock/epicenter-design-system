@@ -145,7 +145,6 @@
     border: 1px solid transparent;
     border-radius: 3px;
     user-select: none;
-    // color: red;
     & + & {
       margin-top: 2px;
     }
@@ -168,27 +167,21 @@
         background: var(--foreground);
         border: 1px solid var(--foreground-border);
         font-size: 12px;
-        color: var(--text-color);
+        color: var(--text-color) !important;
         white-space: nowrap;
       }
     }
     &:not(.active):hover {
       background: var(--foreground);
-      // border-color: var(--border-color);
       cursor: pointer;
     }
     &.active {
-      // background: var(--button-active);
       background-image: linear-gradient(45deg, #3ba7ff 4%, #9084e3 100% );
-      // border: 1px solid var(--border-color);
       .nav-item__name { color: var(--text-color-inverse) !important; }
       .ep-icon {
         color: var(--text-color-inverse) !important;
       }
     }
-    /* &:first-child {
-      margin-bottom: 20px;
-    } */
     &__divider {
       align-self: center;
       width: 160px;

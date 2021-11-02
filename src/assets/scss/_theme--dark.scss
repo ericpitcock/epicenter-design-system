@@ -3,9 +3,9 @@ html[data-color-theme='dark'] {
   --background: var(--gray-440);
 
   // components
-  --component-background: var(--gray-410);
-  --component-background--darker: var(--gray-420);
-  --component-background--lighter: var(--gray-400);
+  --content-background: var(--gray-420);
+  --content-background--darker: var(--gray-440);
+  --content-background--lighter: var(--gray-400);
 
   // borders
   --border-color: var(--gray-360);
@@ -22,7 +22,7 @@ html[data-color-theme='dark'] {
   --button-secondary--hover: var(--gray-410);
   --button-secondary--active: var(--gray-500);
 
-  --button-naked--hover: var(--gray-440);
+  --button-naked--hover: var(--gray-390);
   --button-naked--active: var(--gray-500);
   --button-naked--text: var(--text-color);
 
