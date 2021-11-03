@@ -27,7 +27,8 @@ html[data-color-theme='dark'] {
   --button-naked--text: var(--text-color);
 
   --button-menu-item--hover: hsl(228, 68%, 60%);
-  --button-menu-item--active: var(--primary-color--base);
+  --button-menu-item--active: hsl(228, 68%, 55%);
+  --button-menu-item-text-hover: var(--text-color);
 
   // navigation
   --nav-link-hover-bg-color: var(--button-secondary--hover);

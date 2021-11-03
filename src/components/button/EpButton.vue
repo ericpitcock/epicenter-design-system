@@ -91,6 +91,7 @@
     $border-color,
     $font-color,
     $hover-bg-color,
+    $hover-font-color,
     $active-color
   ) {
     background-color: $bg-color;
@@ -100,6 +101,7 @@
     color: $font-color;
 
     &:hover {
+      color: $hover-font-color;
       background-color: $hover-bg-color;
     }
 
@@ -147,6 +149,7 @@
         var(--primary-color--border),
         var(--primary-color--text),
         var(--primary-color--hover),
+        var(--primary-color--text),
         var(--primary-color--active),
       );
     }
@@ -156,6 +159,7 @@
         var(--border-color),
         var(--text-color),
         var(--button-secondary--hover),
+        var(--text-color),
         var(--button-secondary--active)
       );
     }
@@ -165,6 +169,7 @@
         var(--danger-red--border),
         var(--danger-red--text),
         var(--danger-red--hover),
+        var(--danger-red--text),
         var(--danger-red--active)
       );
     }
@@ -174,6 +179,7 @@
         var(--warning-yellow--border),
         var(--warning-yellow--text),
         var(--warning-yellow--hover),
+        var(--warning-yellow--text),
         var(--warning-yellow--active)
       );
     }
@@ -183,6 +189,7 @@
         var(--success-green--border),
         var(--success-green--text),
         var(--success-green--hover),
+        var(--success-green--text),
         var(--success-green--active)
       );
     }
@@ -192,6 +199,7 @@
         transparent,
         var(--button-naked--text),
         var(--button-naked--hover),
+        var(--text-color),
         var(--button-naked--active)
       );
     }
@@ -201,6 +209,7 @@
         transparent,
         var(--button-naked--text),
         var(--button-menu-item--hover),
+        var(--button-menu-item-text-hover),
         var(--button-menu-item--active)
       );
       width: 100%;
