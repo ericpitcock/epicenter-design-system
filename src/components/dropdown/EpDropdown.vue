@@ -7,14 +7,17 @@
       @click.native="toggleDropdown"
       :kind="buttonKind"
       :label="buttonLabel"
-      icon="chevron-down"
+      :icon="icon"
       iconAlignment="right"
     />
     <div
       v-show="dropdownVisible"
-      class="ep-dropdown__menu-container"
+      :class="[
+        'ep-dropdown__container',
+        { 'ep-dropdown__container--align-right': alignRight }
+      ]"
     >
-      <div class="ep-dropdown__menu-content">
+      <div class="ep-dropdown__content">
         <slot />
       </div>
     </div>
@@ -36,6 +39,11 @@
     data: () => ({
       dropdownVisible: false
     }),
+    computed: {
+      icon() {
+        return this.chevron ? 'chevron-down' : this.buttonIcon
+      }
+    },
     methods: {
       toggleDropdown() {
         this.dropdownVisible = !this.dropdownVisible
@@ -51,6 +59,17 @@
       },
       buttonLabel: {
         type: String
+      },
+      buttonIcon: {
+        type: String
+      },
+      chevron: {
+        type: Boolean,
+        default: true
+      },
+      alignRight: {
+        type: Boolean,
+        default: false
       }
     }
   }
@@ -59,15 +78,19 @@
 <style lang="scss" scoped>
   .ep-dropdown {
     position: relative;
-    &__menu-container {
+    &__container {
       position: absolute;
       top: 100%;
       left: 0;
       min-width: 200px;
       padding-top: 4px;
       z-index: 10;
+      &--align-right {
+        right: 0;
+        left: auto;
+      }
     }
-    &__menu-content {
+    &__content {
       display: flex;
       flex-direction: column;
       background: var(--foreground);

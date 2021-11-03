@@ -2,7 +2,7 @@
   <div class="nav-container">
     <div class="nav">
       <div class="nav-item nav-item__logo">
-        <esentire-logo :type="logoType()" />
+        <esentire-logo :type="logoType" />
       </div>
       <template v-for="(navItem, index) in navItems">
         <div
@@ -39,67 +39,46 @@
         {
           name: 'Summary',
           icon: 'dashboard',
-          iconColor: '--primary-color--base',
           active: true
         },
         {
           name: 'Assets',
           icon: 'display',
-          iconColor: '--primary-color--base',
           active: false
         },
         {
           name: 'Investigations',
           icon: 'target',
-          iconColor: '--primary-color--base',
           active: false
         },
         {
           name: 'Risk Rating',
           icon: 'star',
-          iconColor: '--primary-color--base',
           active: false
         },
         {
           name: 'Service Info',
           icon: 'info',
-          iconColor: '--primary-color--base',
           active: false
         },
         {
           name: 'Reports',
           icon: 'report',
-          iconColor: '--primary-color--base',
           active: false
         },
         {
           name: 'Files',
           icon: 'file',
-          iconColor: '--primary-color--base',
           active: false
         },
-        // {
-        //   name: 'Insight Tutorial',
-        //   icon: 'help',
-        //   active: false
-        // },
-        // {
-        //   name: 'User Guide',
-        //   icon: 'support',
-        //   active: false
-        // },
         {
           name: 'Settings',
           icon: 'settings',
-          iconColor: '--primary-color--base',
           active: false
         }
       ]
     }),
     methods: {
-      logoType() {
-        return this.sidebar ? 'full' : 'icon'
-      },
       updateActiveNavItem(index) {
         // for demo purposes only
         this.navItems.forEach((item) => {
@@ -110,6 +89,9 @@
     },
     computed: {
       ...mapGetters({ sidebar: 'getSidebarState'}),
+      logoType() {
+        return this.sidebar ? 'full' : 'icon'
+      }
     }
   }
 </script>

@@ -36,7 +36,7 @@
   import EpContainer from '@/components/container/EpContainer'
 
   export default {
-    name: 'Playground',
+    name: 'Sandbox',
     components: {
       EpButton,
       EpControlBar,

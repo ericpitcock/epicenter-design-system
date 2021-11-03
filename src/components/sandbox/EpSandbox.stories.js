@@ -1,4 +1,4 @@
-import Playground from './Playground'
+import EpSandbox from './EpSandbox'
 
 const container = () => {
   return {
@@ -8,21 +8,19 @@ const container = () => {
 
 export default {
   title: 'Sandbox',
-  component: Playground,
+  component: EpSandbox,
   decorators: [container],
-  argTypes: {
-
-  },
+  argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true },
   }
 }
 
 const Template = (args, { argTypes }) => ({
-  components: { Playground },
+  components: { EpSandbox },
   props: Object.keys(argTypes),
   template: `
-  <Playground />
+  <ep-sandbox />
   `
 })
 

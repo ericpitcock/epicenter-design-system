@@ -4,12 +4,23 @@
       <div class="app-controls app-controls--left">
         <ep-button kind="naked" icon="menu" @click.native="toggleSidebar" />
         <ep-button kind="naked" icon="notifications" />
-        <ep-button kind="naked" icon="user" />
+        <ep-dropdown buttonKind="naked" buttonIcon="user" :chevron="false">
+          <ep-button kind="menu-item" label="User Settings" icon="settings" />
+          <ep-button kind="menu-item" label="Logout" icon="arrow-right" />
+        </ep-dropdown>
         <ep-button kind="naked" label="Dunder Mifflin" />
       </div>
       <div class="app-controls app-controls--right">
-        <ep-button kind="naked" :icon="themeIcon()" @click.native="toggleTheme"/>
-        <ep-button kind="naked" icon="help" />
+        <ep-button kind="naked" :icon="themeIcon" @click.native="toggleTheme"/>
+        <ep-dropdown
+          buttonKind="naked"
+          buttonIcon="help"
+          :chevron="false"
+          :alignRight="true"
+        >
+          <ep-button kind="menu-item" label="Insight Manual" icon="help" />
+          <ep-button kind="menu-item" label="Help" icon="support" />
+        </ep-dropdown>
       </div>
     </div>
     <ep-navigation />
@@ -20,9 +31,9 @@
             <div>Content header. It's for titles, tabs, buttons, etc. Can be sticky.</div>
           </div>
           <div class="content-controls content-controls--right">
-            <ep-button :kind="secondary" icon="location" label="Alexandrinestad" />
-            <ep-button :kind="secondary" icon="calendar" label="Date Picker" />
-            <ep-button :kind="secondary" icon="full-width" @click.native="fullWidthContent = !fullWidthContent" />
+            <ep-button kind="secondary" icon="location" label="Alexandrinestad" />
+            <ep-button kind="secondary" icon="calendar" label="Date Picker" />
+            <ep-button kind="secondary" icon="full-width" @click.native="fullWidthContent = !fullWidthContent" />
           </div>
         </div>
         <div class="content-body">
@@ -58,6 +69,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 import EpNavigation from './EpNavigation'
 import EpButton from '@/components/button/EpButton'
+import EpDropdown from '@/components/dropdown/EpDropdown'
 import EpIcon from '@/style/icons/EpIcon'
 
 export default {
@@ -65,6 +77,7 @@ export default {
   components: {
     EpNavigation,
     EpButton,
+    EpDropdown,
     EpIcon
   },
   data: () => ({
@@ -72,41 +85,16 @@ export default {
   }),
   methods: {
     ...mapActions(['toggleTheme', 'toggleSidebar']),
-    // kebab(string) {
-    //   let kebabString = _.kebabCase(string)
-    //   return `nav-item--${kebabString}`
-    // },
-    // logoType() {
-    //   return this.sidebar ? 'full' : 'icon'
-    //   // return 'icon'
-    // },
-    // onResize() {
-    //   this.sidebar = window.innerWidth > 1590
-    // },
-    // toggleTheme() {
-    //   let currentTheme = document.documentElement.getAttribute('data-color-theme')
-    //   let newTheme = currentTheme == 'dark' ? 'light' : 'dark'
-    //   this.theme = newTheme
-    //   document.documentElement.setAttribute('data-color-theme', newTheme)
-    // },
-    themeIcon() {
-      return this.theme == 'dark' ? 'light-mode' : 'dark-mode'
-    }
   },
   computed: {
     ...mapGetters({
       sidebar: 'getSidebarState',
       theme: 'getTheme'
     }),
+    themeIcon() {
+      return this.theme == 'dark' ? 'light-mode' : 'dark-mode'
+    }
   }
-  // mounted() {
-  //   this.onResize()
-  //   window.addEventListener('resize', this.onResize, { passive: true })
-  // },
-  // beforeUnmount() {
-  //   if (typeof window === 'undefined') return
-  //   window.removeEventListener('resize', this.onResize, { passive: true })
-  // }
 }
 </script>
 
@@ -123,7 +111,6 @@ export default {
   }
   .grid {
     display: grid;
-    // height: 100vh;
     grid-template-columns: 240px 1fr;
     grid-template-rows: 41px 1fr;
     &--collapsed {
@@ -133,7 +120,6 @@ export default {
   .app-header {
     position: fixed;
     width: 100%;
-    // height: 40px;
     grid-column: 1 / 3;
     grid-row: 1 / 1;
     display: flex;
@@ -143,32 +129,6 @@ export default {
     background: var(--background);
     border-bottom: 1px solid var(--border-color);
     z-index: 1;
-    // &__button {
-    //   display: flex;
-    //   justify-content: center;
-    //   align-items: center;
-    //   width: 40px;
-    //   height: 40px;
-    //   cursor: pointer;
-    //   &:hover {
-    //     background: var(--foreground);
-    //     // color: var();
-    //   }
-    //   // background: red;
-    //   &--flexible-width {
-    //     width: auto;
-    //     padding: 0 10px;
-    //     // background: red;
-    //   }
-    //   & + & {
-    //     // add any margin here
-    //   }
-    //   .icon {
-    //     width: 20px;
-    //     height: 20px;
-    //     // border: 1px solid var(--icon-color);
-    //   }
-    // }
   }
   .app-controls {
     display: flex;
@@ -189,7 +149,6 @@ export default {
     padding: 30px 30px 30px 0;
     
     @media (min-width: 1830px) {
-      /* background: red; */
       padding-right: 240px;
       &--full-width {
         padding-right: 50px;
@@ -202,7 +161,6 @@ export default {
     }
   }
   .content-container {
-    // flex: 1;
     max-width: 1320px;
     height: auto;
     background: var(--content-background);
@@ -213,11 +171,9 @@ export default {
     }
   }
   .footer {
-    // max-width: 1320px;
     height: 300px;
     padding: 40px;
     border-top: 1px solid var(--border-color);
-    // background: red;
   }
   .header {
     height: 60px;
@@ -235,7 +191,6 @@ export default {
     }
     &--component-header {
       background: var(--component-background--lighter);
-      // border-radius: 6px 6px 0 0;
     }
   }
   .content-controls {
@@ -257,11 +212,6 @@ export default {
     & + & {
       margin-top: 10px;
     }
-    // .component-header {
-      // height: 60px;
-      // background: var(--background-level-3-lighter);
-      // border-bottom: 1px solid var(--border-color);
-    // }
     .component-body {
       padding: 40px;
     }
