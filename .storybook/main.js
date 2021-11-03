@@ -21,7 +21,7 @@ module.exports = {
         {
           loader: 'sass-loader',
           options: {
-            // prependData: `@import '@/assets/scss/_variables.scss';`
+            // prependData: `@import '@/assets/scss/global.scss';`
             // apparently I don't need this, as preview.js imports it all from global
           }
         }

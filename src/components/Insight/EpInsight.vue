@@ -32,7 +32,7 @@
           </div>
           <div class="content-controls content-controls--right">
             <ep-button kind="secondary" icon="location" label="Alexandrinestad" />
-            <ep-button kind="secondary" icon="calendar" label="Date Picker" />
+            <ep-button kind="secondary" icon="calendar" label="11/01/2021 – 11/30/2021" />
             <ep-button kind="secondary" icon="full-width" @click.native="fullWidthContent = !fullWidthContent" />
           </div>
         </div>
@@ -179,8 +179,7 @@ export default {
     height: 60px;
     display: flex;
     align-items: center;
-    padding: 0 40px;
-    
+    padding: 0 20px 0 40px;
     border-bottom: 1px solid var(--border-color);
     border-radius: 6px 6px 0 0;
     &--content-header {
@@ -195,6 +194,7 @@ export default {
   }
   .content-controls {
     display: flex;
+    gap: 0 10px;
     &--left {
       
     }

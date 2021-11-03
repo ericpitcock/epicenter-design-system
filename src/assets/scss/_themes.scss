@@ -1,7 +1,7 @@
 @import './theme--light';
 @import './theme--dark';
 
-// global theme colors (works no matter the theme)
+// global theme colors (included no matter the theme)
 :root {
   // buttons
   --primary-color--base: hsl(199, 89%, 48%);

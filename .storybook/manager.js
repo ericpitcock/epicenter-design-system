@@ -1,19 +1,24 @@
-import { addons } from '@storybook/addons'
-// import { themes } from '@storybook/theming'
-import themeEp from './themeEp'
+import { addons } from '@storybook/addons';
 
 addons.setConfig({
   isFullscreen: false,
   showNav: true,
   showPanel: true,
   panelPosition: 'right',
-  sidebarAnimations: true,
   enableShortcuts: true,
   isToolshown: true,
-  theme: themeEp,
+  theme: undefined,
   selectedPanel: undefined,
   initialActive: 'sidebar',
   sidebar: {
-    showRoots: false
+    showRoots: false,
+    // collapsedRoots: ['other'],
+  },
+  toolbar: {
+    title: { hidden: false, },
+    zoom: { hidden: false, },
+    eject: { hidden: false, },
+    copy: { hidden: false, },
+    fullscreen: { hidden: false, },
   }
 })

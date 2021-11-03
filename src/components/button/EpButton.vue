@@ -200,8 +200,8 @@
         transparent,
         transparent,
         var(--button-naked--text),
-        var(--button-naked--hover),
-        var(--button-naked--active)
+        var(--button-menu-item--hover),
+        var(--button-menu-item--active)
       );
       width: 100%;
       border-radius: 0;

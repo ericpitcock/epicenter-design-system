@@ -9,7 +9,7 @@
   // borders
   --border-color: var(--gray-70);
 
-  // foreground elements
+  // foreground elements: buttons, menus, tooltips, etc
   --foreground: var(--gray-0);
   --foreground-border: var(--border-color);
 
@@ -25,6 +25,13 @@
   --button-naked--active: var(--gray-60);
   --button-naked--text: var(--text-color);
 
-  // menu
-  --menu-item-hover-color: var(--sky-100);
+  --button-menu-item--hover: hsl(228, 68%, 60%);
+  --button-menu-item--active: var(--primary-color--base);
+
+  // navigation
+  --nav-link-hover-bg-color: var(--button-secondary--hover);
+  --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%);
+  --nav-link-icon-color: hsl(228, 68%, 60%);
+  --nav-link-active-icon-color: var(--text-color-inverse);
+  --nav-link-active-text-color: var(--text-color-inverse);
 }
