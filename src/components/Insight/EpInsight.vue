@@ -10,8 +10,6 @@
         </ep-dropdown>
         <ep-button kind="naked" label="Dunder Mifflin" />
       </div>
-      {{ `Sidebar: ${sidebar}` }}
-      {{ `SidebarUSer: ${sidebarUser}` }}
       <div class="app-controls app-controls--right">
         <ep-button kind="naked" :icon="themeIcon" @click.native="toggleTheme"/>
         <ep-dropdown
