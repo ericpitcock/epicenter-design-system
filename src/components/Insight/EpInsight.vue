@@ -122,6 +122,7 @@ export default {
   .app-header {
     position: fixed;
     width: 100%;
+    height: 41px;
     grid-column: 1 / 3;
     grid-row: 1 / 1;
     display: flex;
@@ -148,17 +149,14 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 30px 30px 0;
+    padding: 20px 10px 30px 0;
     
-    @media (min-width: 1830px) {
-      padding-right: 240px;
-      &--full-width {
-        padding-right: 50px;
-      }
-    }
-    @media (min-width: 1640px) {
-      .grid--collapsed & {
-        padding-right: 50px;
+    @media (min-width: 1800px) {
+      &:not(.content-wrapper--full-width) {
+        padding-right: 240px;
+        .grid--collapsed & {
+          padding-right: 50px;
+        }
       }
     }
   }
