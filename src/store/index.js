@@ -6,17 +6,30 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     theme: 'light',
-    sidebar: true
+    sidebar: true,
+    sidebarUser: null,
+    fullWidthContent: false
   },
   getters: {
     getTheme: state => state.theme,
-    getSidebarState: state => state.sidebar
+    getSidebarState: state => state.sidebar,
+    getSidebarUserState: state => state.sidebarUser,
+    getContentWidth: state => state.fullWidthContent
   },
   mutations: {
     setTheme: (state, data) => {
       state.theme = data
     },
-    setSidebarState: (state) => {
+    setSidebarState: (state, boolean) => {
+      state.sidebar = boolean
+    },
+    setSidebarUserState: (state, boolean) => {
+      state.sidebarUser = boolean
+    },
+    setContentWidth: (state) => {
+      state.fullWidthContent = !state.fullWidthContent
+    },
+    toggleSidebar: (state) => {
       state.sidebar = !state.sidebar
     }
   },
@@ -26,8 +39,23 @@ export default new Vuex.Store({
       document.documentElement.setAttribute('data-color-theme', newTheme)
       commit('setTheme', newTheme)
     },
-    toggleSidebar({ state, commit }) {
-      commit('setSidebarState')
+    toggleSidebar({ state, commit, getters }) {
+      // when user toggles the sidebar, record it as the opposite of the current state
+      commit('setSidebarUserState', !getters.getSidebarState)
+      // then actually toggle the sidebar
+      commit('toggleSidebar')
+    },
+    toggleContentWidth({ state, commit, getters, dispatch }) {
+      // if it's maximized
+      if (getters.getContentWidth) {
+        // this is what happens when you minimize it
+        const newState = (getters.getSidebarUserState === null) ? true : getters.getSidebarUserState
+        commit('setSidebarState', newState)
+      } else {
+        // this is what happens when you maximize it
+        commit('setSidebarState', false)
+      }
+      commit('setContentWidth')
     }
   }
 })

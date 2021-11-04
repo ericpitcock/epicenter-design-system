@@ -10,6 +10,8 @@
         </ep-dropdown>
         <ep-button kind="naked" label="Dunder Mifflin" />
       </div>
+      {{ `Sidebar: ${sidebar}` }}
+      {{ `SidebarUSer: ${sidebarUser}` }}
       <div class="app-controls app-controls--right">
         <ep-button kind="naked" :icon="themeIcon" @click.native="toggleTheme"/>
         <ep-dropdown
@@ -33,7 +35,7 @@
           <div class="content-controls content-controls--right">
             <ep-button kind="secondary" icon="location" label="Alexandrinestad" />
             <ep-button kind="secondary" icon="calendar" label="11/01/2021 – 11/30/2021" />
-            <ep-button kind="secondary" icon="full-width" @click.native="fullWidthContent = !fullWidthContent" />
+            <ep-button kind="secondary" icon="full-width" @click.native="toggleContentWidth" />
           </div>
         </div>
         <div class="content-body">
@@ -80,16 +82,18 @@ export default {
     EpDropdown,
     EpIcon
   },
-  data: () => ({
-    fullWidthContent: false
-  }),
+  // data: () => ({
+  //   fullWidthContent: false
+  // }),
   methods: {
-    ...mapActions(['toggleTheme', 'toggleSidebar']),
+    ...mapActions(['toggleTheme', 'toggleSidebar', 'toggleContentWidth']),
   },
   computed: {
     ...mapGetters({
       sidebar: 'getSidebarState',
-      theme: 'getTheme'
+      sidebarUser: 'getSidebarUserState',
+      theme: 'getTheme',
+      fullWidthContent: 'getContentWidth'
     }),
     themeIcon() {
       return this.theme == 'dark' ? 'light-mode' : 'dark-mode'
