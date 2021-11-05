@@ -1,15 +1,8 @@
 <template>
-  <div
-    class="ep-dropdown"
-    v-click-outside="closeDropdown"
-  >
-    <ep-button
-      @click.native="toggleDropdown"
-      :kind="buttonKind"
-      :label="buttonLabel"
-      :icon="icon"
-      iconAlignment="right"
-    />
+  <div class="ep-dropdown" v-click-outside="closeDropdown">
+    <div @click="onClick">
+      <slot name="trigger" />
+    </div>
     <div
       v-show="dropdownVisible"
       :class="[
@@ -45,6 +38,9 @@
       }
     },
     methods: {
+      onClick() {
+        this.toggleDropdown()
+      },
       toggleDropdown() {
         this.dropdownVisible = !this.dropdownVisible
       },
@@ -53,16 +49,16 @@
       }
     },
     props: {
-      buttonKind: {
-        type: String,
-        default: 'secondary'
-      },
-      buttonLabel: {
-        type: String
-      },
-      buttonIcon: {
-        type: String
-      },
+      // buttonKind: {
+      //   type: String,
+      //   default: 'secondary'
+      // },
+      // buttonLabel: {
+      //   type: String
+      // },
+      // buttonIcon: {
+      //   type: String
+      // },
       chevron: {
         type: Boolean,
         default: true
@@ -97,7 +93,7 @@
       padding: 1rem 0;
       border: 1px solid var(--border-color);
       border-radius: 3px;
-      box-shadow: 0 5px 8px hsla(0,0,0,0.1);
+      box-shadow: var(--default-drop-shadow);
     }
   }
 </style>
