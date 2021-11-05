@@ -3,21 +3,44 @@
     <div class="app-header">
       <div class="app-controls app-controls--left">
         <ep-button kind="naked" icon="menu" @click.native="toggleSidebar" />
-        <ep-button kind="naked" icon="notifications" />
-        <ep-dropdown buttonKind="naked" buttonIcon="user" :chevron="false">
+        <ep-dropdown :chevron="false">
+          <template #trigger>
+            <ep-button
+              kind="naked"
+              icon="notifications"
+            />
+          </template>
+          <div class="placeholder-dropdown" style="width: 400px; height: 200px; padding: 30px;">"Notification center"</div>
+        </ep-dropdown>
+        <ep-dropdown :chevron="false">
+          <template #trigger>
+            <ep-button
+              kind="naked"
+              icon="user"
+            />
+          </template>
           <ep-button kind="menu-item" label="User Settings" icon="settings" />
           <ep-button kind="menu-item" label="Logout" icon="arrow-right" />
         </ep-dropdown>
-        <ep-button kind="naked" label="Dunder Mifflin" />
+        <ep-dropdown :chevron="false">
+          <template #trigger>
+            <ep-button
+              kind="naked"
+              label="Dunder Mifflin"
+            />
+          </template>
+          <div class="placeholder-dropdown" style="width: 400px; height: 200px; padding: 30px;">Customer picker</div>
+        </ep-dropdown>
       </div>
       <div class="app-controls app-controls--right">
         <ep-button kind="naked" :icon="themeIcon" @click.native="toggleTheme"/>
-        <ep-dropdown
-          buttonKind="naked"
-          buttonIcon="help"
-          :chevron="false"
-          :alignRight="true"
-        >
+        <ep-dropdown :chevron="false" :alignRight="true">
+          <template #trigger>
+            <ep-button
+              kind="naked"
+              icon="help"
+            />
+          </template>
           <ep-button kind="menu-item" label="Insight Manual" icon="help" />
           <ep-button kind="menu-item" label="Help" icon="support" />
         </ep-dropdown>
@@ -28,7 +51,9 @@
       <div class="content-container">
         <div class="header header--content-header">
           <div class="content-controls content-controls--left">
-            <div>Content header. It's for titles, tabs, buttons, etc. Can be sticky.</div>
+            <div>API access</div>
+            <!-- <div>Future thing</div>
+            <div>Another future thing</div> -->
           </div>
           <div class="content-controls content-controls--right">
             <ep-button kind="secondary" icon="location" label="Alexandrinestad" />
@@ -39,10 +64,10 @@
         <div class="content-body">
           <div class="component-container">
             <div class="header header--component-header">
-              Component header. It's also for titles, tabs, buttons, etc. Can also be sticky.
+              <!-- Component header. It's also for titles, tabs, buttons, etc. Can also be sticky. -->
             </div>
-            <div class="component-body">
-              <p v-for="(n, index) of 20" :key="index">
+            <div class="component-body" style="color: var(--gray-350)">
+              <p v-for="(n, index) of 20" :key="index" style="visibility: hidden; padding-right: 25%;">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
                 porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et
                 faucibus arcu condimentum sed.Lorem ipsum dolor sit amet,
@@ -129,7 +154,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     padding: 0 30px 0 5px;
-    background: var(--background);
+    background: var(--app-header-background);
     border-bottom: 1px solid var(--border-color);
     z-index: 1;
   }

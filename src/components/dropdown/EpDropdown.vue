@@ -49,16 +49,6 @@
       }
     },
     props: {
-      // buttonKind: {
-      //   type: String,
-      //   default: 'secondary'
-      // },
-      // buttonLabel: {
-      //   type: String
-      // },
-      // buttonIcon: {
-      //   type: String
-      // },
       chevron: {
         type: Boolean,
         default: true

@@ -2,6 +2,9 @@ html[data-color-theme='dark'] {
   // background
   --background: var(--gray-440);
 
+  // app header
+  --app-header-background: var(--gray-450);
+
   // components
   --content-background: var(--gray-430);
   --content-background--darker: var(--gray-440);
