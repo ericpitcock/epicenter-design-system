@@ -3,7 +3,7 @@ html[data-color-theme='dark'] {
   --background: var(--gray-440);
 
   // components
-  --content-background: var(--gray-420);
+  --content-background: var(--gray-430);
   --content-background--darker: var(--gray-440);
   --content-background--lighter: var(--gray-400);
 
@@ -16,6 +16,7 @@ html[data-color-theme='dark'] {
 
   // text
   --text-color: var(--gray-50);
+  --text-color--disabled: var(--gray-130);
   --text-color-inverse: var(--background);
 
   // buttons

@@ -33,7 +33,7 @@
           <div class="content-controls content-controls--right">
             <ep-button kind="secondary" icon="location" label="Alexandrinestad" />
             <ep-button kind="secondary" icon="calendar" label="11/01/2021 – 11/30/2021" />
-            <ep-button kind="secondary" icon="full-width" @click.native="toggleContentWidth" />
+            <ep-button kind="naked" icon="full-width" @click.native="toggleContentWidth" />
           </div>
         </div>
         <div class="content-body">
