@@ -8,6 +8,14 @@
         <ep-button kind="warning" label="Warning" />
         <ep-button kind="success" label="Success" icon="star" />
         <ep-dropdown buttonKind="naked" buttonLabel="Dropdown">
+          <template #trigger>
+            <ep-button
+              kind="secondary"
+              label="Dropdown"
+              icon="chevron-down"
+              iconAlignment="right"
+            />
+          </template>
           <template v-for="(item, index) in fakeDropdownItems">
             <ep-button
               v-if="!item.divider"
