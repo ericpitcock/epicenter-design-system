@@ -1,21 +1,23 @@
 html[data-color-theme='dark'] {
   // background
   --background: var(--gray-440);
+  --background-image: url('../../components/Insight/background-dark.jpg');
 
   // app header
   --app-header-background: var(--gray-450);
 
   // components
-  --content-background: var(--gray-430);
+  // --content-background: var(--gray-430);
+  --content-background: var(--gray-440);
   --content-background--darker: var(--gray-440);
   --content-background--lighter: var(--gray-400);
 
   // borders
-  --border-color: var(--gray-360);
+  --border-color: var(--gray-380);
 
   // foreground elements: buttons, menus, tooltips, etc
   --foreground: var(--gray-390);
-  --foreground-border: var(--gray-300);
+  --foreground-border: var(--gray-340);
 
   // text
   --text-color: var(--gray-50);

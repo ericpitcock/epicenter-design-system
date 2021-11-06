@@ -7,7 +7,7 @@
         <ep-button kind="danger" label="Danger" />
         <ep-button kind="warning" label="Warning" />
         <ep-button kind="success" label="Success" icon="star" />
-        <ep-dropdown buttonKind="naked" buttonLabel="Dropdown">
+        <ep-dropdown>
           <template #trigger>
             <ep-button
               kind="secondary"
@@ -61,7 +61,7 @@
           icon: 'arrow-right',
           action: {
             type: 'router-link',
-            path: '/fart'
+            path: '/path'
           }
         },
         {

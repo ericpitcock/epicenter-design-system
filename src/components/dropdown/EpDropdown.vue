@@ -49,10 +49,6 @@
       }
     },
     props: {
-      chevron: {
-        type: Boolean,
-        default: true
-      },
       alignRight: {
         type: Boolean,
         default: false
@@ -81,7 +77,7 @@
       flex-direction: column;
       background: var(--foreground);
       padding: 1rem 0;
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--foreground-border);
       border-radius: 3px;
       box-shadow: var(--default-drop-shadow);
     }

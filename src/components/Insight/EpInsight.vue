@@ -140,6 +140,8 @@ export default {
     display: grid;
     grid-template-columns: 240px 1fr;
     grid-template-rows: 41px 1fr;
+    background: var(--background-image) left top no-repeat;
+    background-attachment: fixed;
     &--collapsed {
       grid-template-columns: 50px 1fr;
     }

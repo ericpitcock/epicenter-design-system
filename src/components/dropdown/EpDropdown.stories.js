@@ -12,9 +12,10 @@ const container = () => {
 const fakeDropdownItems = [
   {
     label: 'Go to internal page',
+    icon: 'arrow-right',
     action: {
       type: 'router-link',
-      path: '/fart'
+      path: '/path'
     }
   },
   {
@@ -22,6 +23,7 @@ const fakeDropdownItems = [
   },
   {
     label: 'Run a method',
+    icon: 'circle',
     action: {
       type: 'method',
       method: 'fakeMethod'
@@ -29,6 +31,7 @@ const fakeDropdownItems = [
   },
   {
     label: 'Link to internet',
+    icon: 'export',
     action: {
       type: 'link',
       href: 'https://www.google.com/maps'
@@ -42,32 +45,17 @@ export default {
   subcomponents: { EpButton, EpDivider },
   decorators: [container],
   argTypes: {
-    buttonKind: {
-      name: 'Button Kind',
+    alignRight: {
+      name: 'Align right',
       control: {
-        type: 'radio',
-        options: {
-          Primary: 'primary',
-          Secondary: 'secondary',
-          Naked: 'naked',
-          Danger: 'danger',
-          Warning: 'warning',
-          Success: 'success'
-        }
+        type: 'boolean'
       },
-      defaultValue: 'secondary'
-    },
-    buttonLabel: {
-      name: 'Label',
-      control: {
-        type: 'text'
-      },
-      defaultValue: 'Dropdown'
+      defaultValue: false
     },
     menuItems: {
-      name: 'Menu Items',
+      name: 'Menu items',
       control: {
-        type: 'array',
+        type: 'array'
       },
       defaultValue: fakeDropdownItems
     }
@@ -78,15 +66,21 @@ const Template = (args, { argTypes }) => ({
   components: { EpDropdown, EpButton, EpDivider },
   props: Object.keys(argTypes),
   template: `
-  <ep-dropdown
-    :buttonKind="buttonKind"
-    :buttonLabel="buttonLabel"
-  >
+  <ep-dropdown>
+    <template #trigger>
+      <ep-button
+        kind="secondary"
+        label="Dropdown"
+        icon="chevron-down"
+        iconAlignment="right"
+      />
+    </template>
     <template v-for="(item, index) in menuItems">
       <ep-button
         v-if="!item.divider"
-        :label="item.label"
         kind="menu-item"
+        :label="item.label"
+        :icon="item.icon"
       />
       <ep-divider v-else />
     </template>
