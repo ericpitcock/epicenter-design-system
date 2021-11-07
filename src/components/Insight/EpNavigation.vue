@@ -1,24 +1,24 @@
 <template>
   <div class="nav-container">
-    <div class="nav">
-      <div class="nav-item nav-item__logo">
+    <nav class="main-nav">
+      <div class="main-nav__item main-nav__item--logo">
         <esentire-logo :type="logoType" />
       </div>
       <template v-for="(navItem, index) in navItems">
         <div
           :class="[
-            'nav-item',
-            { active: navItem.active }
+            'main-nav__item',
+            { 'main-nav__item--active': navItem.active }
           ]"
           @click="updateActiveNavItem(index)"
           :key="index"
         >
           <ep-icon :name="navItem.icon" />
-          <div class="nav-item__name">{{ navItem.name }}</div>
+          <div class="main-nav__item__name">{{ navItem.name }}</div>
         </div>
-        <div v-if="index === 2" class="nav-item__divider" :key="`divider${index}`"></div>
+        <div v-if="index === 2" class="main-nav__item__divider" :key="`divider${index}`"></div>
       </template>
-    </div>
+    </nav>
   </div>
 </template>
 
@@ -79,8 +79,8 @@
       ]
     }),
     methods: {
+      // for demo purposes only
       updateActiveNavItem(index) {
-        // for demo purposes only
         this.navItems.forEach((item) => {
           item.active = false
         })
@@ -101,7 +101,7 @@
     grid-column: 1 / 1;
     grid-row: 2 / 2;
     padding: 30px 20px;
-    .grid--collapsed & {
+    .grid--nav-collapsed & {
       padding-left: 0;
       padding-right: 0;
     }
@@ -109,77 +109,77 @@
       // display: none;
     }
   }
-  .nav {
+  .main-nav {
     position: fixed;
     width: 200px;
     display: flex;
     flex-direction: column;
-    .grid--collapsed & {
+    .grid--nav-collapsed & {
       width: 50px;
       align-items: center;
     }
-  }
-  .nav-item {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    user-select: none;
-    & + & {
-      margin-top: 2px;
-    }
-    &__logo {
-      margin-bottom: 30px;
-      &:hover {
-        background: transparent !important;
+    &__item {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding-left: 30px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      user-select: none;
+      & + & {
+        margin-top: 2px;
       }
-    }
-    .grid--collapsed & {
-      justify-content: center;
-      width: 40px;
-      padding: 0;
-      &:hover .nav-item__name {
-        display: block;
-        position: absolute;
-        left: 42px;
-        padding: 4px 10px;
-        border-radius: 3px;
-        background: var(--foreground);
-        border: 1px solid var(--foreground-border);
-        font-size: 12px;
-        color: var(--text-color) !important;
-        white-space: nowrap;
+      &--logo {
+        margin-bottom: 30px;
+        &:hover {
+          background: transparent !important;
+        }
       }
-    }
-    &:not(.active):hover {
-      background: var(--nav-link-hover-bg-color);
-      cursor: pointer;
-    }
-    &.active {
-      background-image: var(--nav-link-active-bg-color);
-      .nav-item__name { color: var(--nav-link-active-text-color) !important; }
-      .ep-icon { color: var(--nav-link-active-icon-color) !important; }
-    }
-    &__divider {
-      align-self: center;
-      width: 160px;
-      margin: 30px 0;
-      border-bottom: 1px solid var(--border-color);
-      .grid--collapsed & {
-        width: 30px;
+      .grid--nav-collapsed & {
+        justify-content: center;
+        width: 40px;
+        padding: 0;
+        &:hover .nav-item__name {
+          display: block;
+          position: absolute;
+          left: 42px;
+          padding: 4px 10px;
+          border-radius: 3px;
+          background: var(--foreground);
+          border: 1px solid var(--foreground-border);
+          font-size: 12px;
+          color: var(--text-color) !important;
+          white-space: nowrap;
+        }
       }
-    }
-    .ep-icon {
-      color: var(--nav-link-icon-color);
-    }
-    &__name {
-      margin-left: 13px;
-      font-weight: 600;
-      color: var(--text-color);
-      .grid--collapsed & {
-        display: none;
+      &:not(.main-nav__item--active):hover {
+        background: var(--nav-link-hover-bg-color);
+        cursor: pointer;
+      }
+      &--active {
+        background-image: var(--nav-link-active-bg-color);
+        .main-nav__item__name { color: var(--nav-link-active-text-color) !important; }
+        .ep-icon { color: var(--nav-link-active-icon-color) !important; }
+      }
+      &__divider {
+        align-self: center;
+        width: 160px;
+        margin: 30px 0;
+        border-bottom: 1px solid var(--border-color);
+        .grid--nav-collapsed & {
+          width: 30px;
+        }
+      }
+      .ep-icon {
+        color: var(--nav-link-icon-color);
+      }
+      &__name {
+        margin-left: 13px;
+        font-weight: 600;
+        color: var(--text-color);
+        .grid--nav-collapsed & {
+          display: none;
+        }
       }
     }
   }

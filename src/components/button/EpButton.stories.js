@@ -24,6 +24,13 @@ export default {
       },
       defaultValue: false
     },
+    outlined: {
+      name: 'Outlined',
+      control: {
+        type: 'boolean'
+      },
+      defaultValue: false
+    },
     kind: {
       name: 'Kind',
       control: {

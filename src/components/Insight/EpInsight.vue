@@ -1,5 +1,5 @@
 <template>
-  <div :class="['grid', { 'grid--collapsed': !sidebar }]">
+  <div :class="['grid', { 'grid--nav-collapsed': !sidebar }]">
     <div class="app-header">
       <div class="app-controls app-controls--left">
         <ep-button kind="naked" icon="menu" @click.native="toggleSidebar" />
@@ -145,7 +145,7 @@ export default {
     grid-template-rows: 41px 1fr;
     background: var(--background-image) left top no-repeat;
     background-attachment: fixed;
-    &--collapsed {
+    &--nav-collapsed {
       grid-template-columns: 50px 1fr;
     }
   }
@@ -184,18 +184,20 @@ export default {
     @media (min-width: 1800px) {
       &:not(.content-wrapper--full-width) {
         padding-right: 240px;
-        .grid--collapsed & {
+        .grid--nav-collapsed & {
           padding-right: 50px;
         }
       }
     }
   }
   .content-container {
-    max-width: 1320px;
     height: auto;
     background: var(--content-background);
     border: 1px solid var(--border-color);
     border-radius: 8px;
+    @media (min-width: 1380px) {
+      max-width: 1320px;
+    }
     .content-wrapper--full-width &  {
       max-width: none;
     }

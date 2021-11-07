@@ -48,7 +48,7 @@
   .ep-container {
     display: inline-flex;
     border-radius: 6px;
-    background-color: var(--component-background);
+    background-color: var(--content-background);
     border: 1px solid var(--border-color);
     // this kills the sticky header on the table
     // overflow: hidden;

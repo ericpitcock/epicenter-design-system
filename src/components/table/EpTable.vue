@@ -165,7 +165,7 @@
       }
       th {
         text-align: left;
-        background: var(--component-background);
+        background: var(--content-background);
         z-index: 10;
         &:hover {
           color: var(--primary-color--base);
