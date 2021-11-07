@@ -51,7 +51,8 @@
       <div class="content-container">
         <div class="header header--content-header">
           <div class="content-controls content-controls--left">
-            <div>API access</div>
+            <ep-tabs></ep-tabs>
+            <!-- <div>API access</div> -->
             <!-- <div>Future thing</div>
             <div>Another future thing</div> -->
           </div>
@@ -95,6 +96,7 @@ import { mapGetters, mapActions } from 'vuex'
 import EpNavigation from './EpNavigation'
 import EpButton from '@/components/button/EpButton'
 import EpDropdown from '@/components/dropdown/EpDropdown'
+import EpTabs from '@/components/tabs/EpTabs'
 import EpIcon from '@/style/icons/EpIcon'
 
 export default {
@@ -103,6 +105,7 @@ export default {
     EpNavigation,
     EpButton,
     EpDropdown,
+    EpTabs,
     EpIcon
   },
   // data: () => ({
@@ -221,7 +224,9 @@ export default {
   }
   .content-controls {
     display: flex;
-    gap: 0 10px;
+    align-items: center;
+    gap: 0 1rem;
+    height: 100%;
     &--left {
       
     }

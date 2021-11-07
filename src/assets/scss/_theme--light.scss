@@ -16,6 +16,7 @@
   // foreground elements: buttons, menus, tooltips, etc
   --foreground: var(--gray-0);
   --foreground-border: var(--border-color);
+  --drop-shadow: 0 5px 8px rgba(0,0,0,0.05);
 
   // text
   --text-color: var(--gray-410);
@@ -35,7 +36,7 @@
   --button-menu-item-text-hover: var(--text-color-inverse);
 
   // navigation
-  --nav-link-hover-bg-color: var(--button-secondary--hover);
+  --nav-link-hover-bg-color: var(--gray-0);
   --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%);
   --nav-link-icon-color: hsl(228, 68%, 60%);
   --nav-link-active-icon-color: var(--text-color-inverse);

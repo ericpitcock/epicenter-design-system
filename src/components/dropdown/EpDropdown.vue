@@ -79,7 +79,7 @@
       padding: 1rem 0;
       border: 1px solid var(--foreground-border);
       border-radius: 3px;
-      box-shadow: var(--default-drop-shadow);
+      box-shadow: var(--drop-shadow);
     }
   }
 </style>

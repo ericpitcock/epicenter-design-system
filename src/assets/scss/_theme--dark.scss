@@ -18,6 +18,7 @@ html[data-color-theme='dark'] {
   // foreground elements: buttons, menus, tooltips, etc
   --foreground: var(--gray-390);
   --foreground-border: var(--gray-340);
+  --drop-shadow: 0 5px 8px rgba(0,0,0,0.2);
 
   // text
   --text-color: var(--gray-50);
@@ -37,7 +38,7 @@ html[data-color-theme='dark'] {
   --button-menu-item-text-hover: var(--text-color);
 
   // navigation
-  --nav-link-hover-bg-color: var(--button-secondary--hover);
+  --nav-link-hover-bg-color: var(--gray-440);
   --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%); // same as light mode
   --nav-link-icon-color: hsl(228, 68%, 70%);
   --nav-link-active-icon-color: var(--text-color);
