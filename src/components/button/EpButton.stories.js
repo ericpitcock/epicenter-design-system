@@ -1,5 +1,4 @@
 import svgIcons from '@/style/icons/load-icons'
-import ThemeToggle from '@/components/ThemeToggle'
 import EpButton from './EpButton'
 
 const container = () => {
@@ -46,17 +45,17 @@ export default {
       },
       defaultValue: 'primary'
     },
-    element: {
-      name: 'Element',
-      control: {
-        type: 'radio',
-        options: {
-          Button: 'button',
-          Link: 'a'
-        }
-      },
-      defaultValue: 'button'
-    },
+    // element: {
+    //   name: 'Element',
+    //   control: {
+    //     type: 'radio',
+    //     options: {
+    //       Button: 'button',
+    //       Link: 'a'
+    //     }
+    //   },
+    //   defaultValue: 'button'
+    // },
     size: {
       name: 'Size',
       control: {
@@ -74,6 +73,13 @@ export default {
         type: 'text'
       },
       defaultValue: 'This is the tooltip'
+    },
+    to: {
+      name: 'Router Link Path',
+      control: {
+        type: 'text'
+      },
+      defaultValue: '/path'
     },
     label: {
       name: 'Label',
@@ -115,13 +121,7 @@ const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   template: `
   <ep-button
-    :kind="kind"
-    :size="size"
-    :title="title"
-    :label="label"
-    :icon="icon"
-    :iconAlignment="iconAlignment"
-    :disabled="disabled"
+    v-bind="$props"
   />
   `
 })

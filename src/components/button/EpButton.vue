@@ -5,6 +5,8 @@
     :class="buttonClasses"
     :disabled="disabled"
     :title="title"
+    v-bind="$attrs"
+    :to="to"
   >
     <span v-if="icon" class="ep-button__icon">
       <ep-icon :name="icon" />
@@ -65,7 +67,7 @@
       element() {
         const attrs = this.$attrs
         if (attrs && this.to) {
-          return 'RouterLink'
+          return 'router-link'
         }
         if (attrs && attrs.href) {
           return 'a'

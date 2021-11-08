@@ -8,7 +8,8 @@ module.exports = {
   ],
   addons: [
     '@storybook/addon-controls',
-    // '@storybook/addon-actions',
+    '@storybook/addon-docs',
+    '@storybook/addon-actions',
     '@storybook/addon-links',
     'storybook-theme-toggle'
   ],
