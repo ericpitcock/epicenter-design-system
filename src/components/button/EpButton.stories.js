@@ -75,11 +75,18 @@ export default {
       defaultValue: 'This is the tooltip'
     },
     to: {
-      name: 'Router Link Path',
+      name: 'to (Router Link Path)',
       control: {
         type: 'text'
       },
-      defaultValue: '/path'
+      defaultValue: ''
+    },
+    href: {
+      name: 'href',
+      control: {
+        type: 'text'
+      },
+      defaultValue: ''
     },
     label: {
       name: 'Label',
@@ -119,11 +126,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   components: { EpButton },
   props: Object.keys(argTypes),
-  template: `
-  <ep-button
-    v-bind="$props"
-  />
-  `
+  template: '<ep-button v-bind="$props" />'
 })
 
 export const Button = Template.bind({})

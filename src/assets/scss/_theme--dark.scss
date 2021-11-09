@@ -27,6 +27,10 @@ html[data-color-theme='dark'] {
   --text-color-inverse: var(--background);
 
   // buttons
+  --button-disabled--bg-color: var(--gray-400);
+  --button-disabled--border-color: var(--button-disabled--bg-color);
+  --button-disabled--text: var(--gray-270);
+
   --button-secondary--hover: var(--gray-410);
   --button-secondary--active: var(--gray-500);
 

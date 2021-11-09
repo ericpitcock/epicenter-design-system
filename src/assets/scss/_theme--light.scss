@@ -24,6 +24,10 @@
   --text-color-inverse: var(--gray-0);
 
   // buttons
+  --button-disabled--bg-color: var(--gray-40);
+  --button-disabled--border-color: var(--button-disabled--bg-color);
+  --button-disabled--text: var(--gray-150);
+
   --button-secondary--hover: var(--gray-40);
   --button-secondary--active: var(--gray-60);
 

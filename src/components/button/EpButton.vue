@@ -1,12 +1,9 @@
 <template>
   <component
     :is="element"
-    :href="link"
     :class="buttonClasses"
-    :disabled="disabled"
     :title="title"
     v-bind="$attrs"
-    :to="to"
   >
     <span v-if="icon" class="ep-button__icon">
       <ep-icon :name="icon" />
@@ -25,14 +22,10 @@
         type: String,
         default: 'secondary'
       },
-      // element: {
+      // href: {
       //   type: String,
-      //   default: 'button'
+      //   default: null
       // },
-      link: {
-        type: String,
-        default: null
-      },
       size: {
         type: String,
         default: 'default'
@@ -40,10 +33,10 @@
       title: {
         type: String
       },
-      to: {
-        type: [String, Object],
-        default: '',
-      },
+      // to: {
+      //   type: [String, Object],
+      //   default: '',
+      // },
       label: {
         type: String
       },
@@ -55,10 +48,10 @@
         type: String,
         default: 'left'
       },
-      disabled: {
-        type: Boolean,
-        default: false
-      }
+      // disabled: {
+      //   type: Boolean,
+      //   default: false
+      // }
     },
     components: {
       EpIcon
@@ -66,7 +59,8 @@
     computed: {
       element() {
         const attrs = this.$attrs
-        if (attrs && this.to) {
+        // return (attrs && this.to ? 'router-link' : (attrs && attrs.href ? 'a' : 'button'))
+        if (attrs.to) {
           return 'router-link'
         }
         if (attrs && attrs.href) {
@@ -144,6 +138,7 @@
     // $border-color,
     // $font-color,
     // $hover-bg-color,
+    // $hover-font-color,
     // $active-color
     &--primary {
       @include button-theme(
@@ -227,10 +222,15 @@
         font-size: var(--font-size--tiny);
       }
     }
-    // disabled
-    &:disabled {
-      background: rgb(219, 219, 219);
-      color: rgb(182, 182, 182);
+    &[disabled] {
+      @include button-theme(
+        var(--button-disabled--bg-color),
+        var(--button-disabled--border-color),
+        var(--button-disabled--text),
+        var(--button-disabled--bg-color),
+        var(--button-disabled--text),
+        var(--button-disabled--bg-color)
+      );
       cursor: not-allowed;
     }
     &--icon-right {

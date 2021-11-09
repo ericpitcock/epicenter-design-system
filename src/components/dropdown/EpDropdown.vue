@@ -1,6 +1,6 @@
 <template>
   <div class="ep-dropdown" v-click-outside="closeDropdown">
-    <div @click="onClick">
+    <div @click="toggleDropdown">
       <slot name="trigger" />
     </div>
     <div
@@ -19,39 +19,27 @@
 
 <script>
   import clickOutside from '@/directives/clickOutside'
-  import EpButton from '@/components/button/EpButton'
 
   export default {
     name: 'EpDropdown',
     directives: {
       clickOutside
     },
-    components: {
-      EpButton
-    },
     data: () => ({
       dropdownVisible: false
     }),
-    computed: {
-      icon() {
-        return this.chevron ? 'chevron-down' : this.buttonIcon
+    props: {
+      alignRight: {
+        type: Boolean,
+        default: false
       }
     },
     methods: {
-      onClick() {
-        this.toggleDropdown()
-      },
       toggleDropdown() {
         this.dropdownVisible = !this.dropdownVisible
       },
       closeDropdown() {
         this.dropdownVisible = false
-      }
-    },
-    props: {
-      alignRight: {
-        type: Boolean,
-        default: false
       }
     }
   }

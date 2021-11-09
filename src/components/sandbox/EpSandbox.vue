@@ -3,6 +3,11 @@
     <ep-control-bar :style="{ flex: '0 0 61px' }">
       <ep-control-bar-segment>
         <ep-button kind="primary" label="Primary" />
+        <ep-button kind="primary" label="Primary" disabled />
+        <ep-button kind="primary" label="Primary" @click.native="testMethod" />
+        <ep-button kind="secondary" label="Button" />
+        <ep-button to="/" kind="secondary" label="Router Link" />
+        <ep-button href="https://www.google.com/maps" kind="secondary" label="Link" />
         <ep-button kind="naked" label="Naked" icon="arrow-down" />
         <ep-button kind="danger" label="Danger" />
         <ep-button kind="warning" label="Warning" />
@@ -23,7 +28,8 @@
               :label="item.label"
               :icon="item.icon"
               kind="menu-item"
-              @click.native="onClick(item.action, $event)"
+              v-bind="item.bind"
+              v-on="item.on"
             />
             <ep-divider v-else :key="`divider-${index}`" />
           </template>
@@ -59,9 +65,8 @@
         {
           label: 'Go to internal page',
           icon: 'arrow-right',
-          action: {
-            type: 'router-link',
-            path: '/path'
+          bind: {
+            to: '/'
           }
         },
         {
@@ -70,43 +75,45 @@
         {
           label: 'Run a method',
           icon: 'circle',
-          action: {
-            type: 'method',
-            method: 'fakeMethod'
+          on: {
+            click: () => console.log('click')
           }
         },
         {
           label: 'Link to internet',
           icon: 'export',
-          action: {
-            type: 'link',
+          bind: {
             href: 'https://www.google.com/maps'
           }
         }
       ]
     }),
     methods: {
-      onClick(action, event) {
-        if (this.disabled) return
-        this.$emit('click')
-        let actionType = action.type
-        if (actionType == 'router-link') {
-          // router.push
-          console.log('this is a router link')
-        }
-        if (actionType == 'method') {
-          this[action.method](event)
-        }
-        if (actionType == 'link') {
-          // .top is used to target the parent in an iframe situation
-          // probably don't need it outside of Storybook
-          window.top.location.href = action.href
-        }
-      },
-      fakeMethod(event) {
-        alert('this is a fake method')
-        console.log(event)
-      }
+      // onClick(action, event) {
+      //   if (this.disabled) return
+      //   this.$emit('click')
+      //   let actionType = action.type
+      //   if (actionType == 'router-link') {
+      //     // router.push
+      //     console.log('this is a router link')
+      //   }
+      //   if (actionType == 'method') {
+      //     this[action.method](event)
+      //   }
+      //   if (actionType == 'link') {
+      //     // .top is used to target the parent in an iframe situation
+      //     // probably don't need it outside of Storybook
+      //     window.top.location.href = action.href
+      //   }
+      // },
+      // methodRunner(name, event) {
+      //   this[name](event)
+      //   console.log(event)
+      // },
+      // testMethod() {
+      //   alert('You did it')
+      //   // console.log(event)
+      // }
     }
   }
 </script>
