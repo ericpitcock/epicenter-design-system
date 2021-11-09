@@ -1,6 +1,6 @@
 import EpDropdown from './EpDropdown'
+import EpDropdownItem from './EpDropdownItem'
 import EpButton from '../button/EpButton'
-import EpDivider from './EpDivider'
 
 const container = () => {
   return {
@@ -13,9 +13,8 @@ const fakeDropdownItems = [
   {
     label: 'Go to internal page',
     icon: 'arrow-right',
-    action: {
-      type: 'router-link',
-      path: '/path'
+    bind: {
+      to: '/'
     }
   },
   {
@@ -24,16 +23,14 @@ const fakeDropdownItems = [
   {
     label: 'Run a method',
     icon: 'circle',
-    action: {
-      type: 'method',
-      method: 'fakeMethod'
+    on: {
+      click: () => console.log('click')
     }
   },
   {
     label: 'Link to internet',
     icon: 'export',
-    action: {
-      type: 'link',
+    bind: {
       href: 'https://www.google.com/maps'
     }
   }
@@ -42,7 +39,7 @@ const fakeDropdownItems = [
 export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
-  subcomponents: { EpButton, EpDivider },
+  subcomponents: { EpDropdownItem, EpButton },
   decorators: [container],
   argTypes: {
     alignRight: {
@@ -63,7 +60,7 @@ export default {
 }
 
 const Template = (args, { argTypes }) => ({
-  components: { EpDropdown, EpButton, EpDivider },
+  components: { EpDropdown, EpButton, EpDropdownItem },
   props: Object.keys(argTypes),
   template: `
   <ep-dropdown>
@@ -76,13 +73,12 @@ const Template = (args, { argTypes }) => ({
       />
     </template>
     <template v-for="(item, index) in menuItems">
-      <ep-button
-        v-if="!item.divider"
-        kind="menu-item"
-        :label="item.label"
-        :icon="item.icon"
+      <ep-dropdown-item
+        :item="item"
+        :index="index"
+        :key="index"
+        v-on="item.on"
       />
-      <ep-divider v-else />
     </template>
   </ep-dropdown>
   `
