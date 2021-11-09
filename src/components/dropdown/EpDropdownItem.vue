@@ -33,8 +33,6 @@
     },
     methods: {
       onClick(event) {
-        // this.$emit('row-click', event) // if you need the event
-        // this.$emit('click')
         this.$parent.closeDropdown()
         this.$emit('click')
       }
