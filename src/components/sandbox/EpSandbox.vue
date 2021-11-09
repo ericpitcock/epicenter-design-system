@@ -81,7 +81,7 @@
           divider: true
         },
         {
-          label: 'Run a method',
+          label: 'Log click',
           icon: 'circle',
           on: {
             click: () => console.log('click')
@@ -118,10 +118,10 @@
       //   this[name](event)
       //   console.log(event)
       // },
-      // testMethod() {
-      //   alert('You did it')
-      //   // console.log(event)
-      // }
+      testMethod() {
+        alert('Received "select" event from DropdownItem')
+        // console.log(event)
+      }
     }
   }
 </script>

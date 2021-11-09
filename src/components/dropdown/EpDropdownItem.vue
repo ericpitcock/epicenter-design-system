@@ -35,7 +35,7 @@
       onClick(event) {
         // this.$emit('row-click', event) // if you need the event
         // this.$emit('click')
-        // this.parent.selectItem(this.value)
+        this.$parent.closeDropdown()
         this.$emit('click')
       }
     }
