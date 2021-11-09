@@ -1,12 +1,12 @@
 import svgIcons from '@/style/icons/load-icons'
 import EpButton from './EpButton'
 
-const container = () => {
-  return {
-    template:
-      '<div style="display: flex; justify-content: center; padding-top: 20%;"><story/></div>'
-  }
-}
+// const container = () => {
+//   return {
+//     template:
+//       '<div style="display: flex; justify-content: center; padding-top: 20%;"><story/></div>'
+//   }
+// }
 
 const icons = svgIcons.map(icon => icon.name)
 icons.push(undefined)
@@ -14,7 +14,7 @@ icons.push(undefined)
 export default {
   title: 'Components/Button',
   component: EpButton,
-  decorators: [container],
+  // decorators: [container],
   argTypes: {
     disabled: {
       name: 'Disabled',
