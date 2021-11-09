@@ -22,6 +22,6 @@ export const parameters = {
 // global decorators
 export const decorators = [(story) => ({
   components: { story },
-  template: '<div style="height: 100vh;"><story /></div>',
+  template: '<story />',
   router: new VueRouter()
 })]
