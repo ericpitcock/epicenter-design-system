@@ -19,11 +19,15 @@
 
 <script>
   import clickOutside from '@/directives/clickOutside'
+  // import EpDropdownItem from './EpDropdownItem'
 
   export default {
     name: 'EpDropdown',
     directives: {
       clickOutside
+    },
+    components: {
+      // EpDropdownItem
     },
     data: () => ({
       dropdownVisible: false
@@ -40,6 +44,10 @@
       },
       closeDropdown() {
         this.dropdownVisible = false
+      },
+      selectItem(item) {
+        this.$emit('select', item)
+        this.closeDropdown()
       }
     }
   }

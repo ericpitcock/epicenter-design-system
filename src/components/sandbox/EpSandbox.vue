@@ -22,16 +22,22 @@
             />
           </template>
           <template v-for="(item, index) in fakeDropdownItems">
-            <ep-button
+            <ep-dropdown-item
+              :item="item"
+              :index="index"
+              :key="`item-${index}`"
+              v-on="item.on"
+            />
+            <!-- <ep-button
               v-if="!item.divider"
               :key="`item-${index}`"
               :label="item.label"
               :icon="item.icon"
-              kind="menu-item"
+              
               v-bind="item.bind"
               v-on="item.on"
             />
-            <ep-divider v-else :key="`divider-${index}`" />
+            <ep-divider v-else :key="`divider-${index}`" /> -->
           </template>
         </ep-dropdown>
       </ep-control-bar-segment>
@@ -43,7 +49,8 @@
 <script>
   import EpButton from '@/components/button/EpButton'
   import EpDropdown from '@/components/dropdown/EpDropdown'
-  import EpDivider from '@/components/dropdown/EpDivider'
+  import EpDropdownItem from '@/components/dropdown/EpDropdownItem'
+  // import EpDivider from '@/components/dropdown/EpDivider'
   import EpControlBar from '@/components/controlbar/EpControlBar'
   import EpControlBarSegment from '@/components/controlbar/EpControlBarSegment'
   import EpMap from '@/components/map/EpMap'
@@ -56,7 +63,8 @@
       EpControlBar,
       EpControlBarSegment,
       EpDropdown,
-      EpDivider,
+      EpDropdownItem,
+      // EpDivider,
       EpMap,
       EpContainer
     },

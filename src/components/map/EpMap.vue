@@ -177,7 +177,6 @@
         if (this.map.getLayer('test')) this.map.removeLayer('test')
         if (this.map.getSource('test')) this.map.removeSource('test')
         this.map.remove()
-        console.log('map removed (beforeDestroy)')
       }
     },
     // from https://github.com/soal/vue-mapbox/blob/5a37e7a8bd2fdb8776350e66a00e23b47ec5ad0c/src/components/map/GlMap.vue
