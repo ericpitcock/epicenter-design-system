@@ -2,12 +2,12 @@ import EpDropdown from './EpDropdown'
 import EpDropdownItem from './EpDropdownItem'
 import EpButton from '../button/EpButton'
 
-const container = () => {
-  return {
-    template:
-      '<div style="display: flex; justify-content: center; padding-top: 20%;"><story/></div>'
-  }
-}
+// const container = () => {
+//   return {
+//     template:
+//       '<div style="display: flex; justify-content: center; padding-top: 20%;"><story/></div>'
+//   }
+// }
 
 const fakeDropdownItems = [
   {
@@ -40,7 +40,7 @@ export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
   subcomponents: { EpDropdownItem, EpButton },
-  decorators: [container],
+  // decorators: [container],
   argTypes: {
     alignRight: {
       name: 'Align right',

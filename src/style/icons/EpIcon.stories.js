@@ -3,17 +3,17 @@ import EpIcon from './EpIcon'
 
 const names = svgIcons.map(icon => icon.name)
 
-const container = () => {
-  return {
-    template:
-      '<div style="padding: 30px; display:flex; justify-content: center;"><story/></div>'
-  }
-}
+// const container = () => {
+//   return {
+//     template:
+//       '<div style="padding: 30px; display:flex; justify-content: center;"><story/></div>'
+//   }
+// }
 
 export default {
   title: 'Style/Icon',
   component: EpIcon,
-  decorators: [container],
+  // decorators: [container],
   argTypes: {
     name: {
       name: 'Name',
