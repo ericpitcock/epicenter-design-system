@@ -4,21 +4,19 @@
       :fullWidth="true"
       :connected="true"
       :padding="'30px 40px 40px'"
-      v-for="(hue, index) in hues"
-      :key="index"
     >
       <div class="category">
         <div class="category__label">
-          <h1>{{ hue.replaceAll('-', ' ') }}</h1>
+          <h1>Ep Grayscale</h1>
         </div>
         <div class="category__swatches">
           <div v-for="(level, index) in levels" :key="index" class="swatch">
             <div
               class="swatch__chip"
-              :style="{ background: `var(--${hue}-${level})` }"
+              :style="{ background: `var(--gray-${level})` }"
             ></div>
             <div class="swatch__name">
-              {{ `${hue.replaceAll('-', ' ')} ${level}` }}
+              {{ `Gray ${level}` }}
             </div>
           </div>
         </div>
@@ -33,43 +31,58 @@
   export default {
     name: 'EpColor',
     data: () => ({
-      hues: [
-        'red',
-        'orange',
-        'amber',
-        'yellow',
-        'lime',
-        'green',
-        'emerald',
-        'teal',
-        'cyan',
-        'sky',
-        'blue',
-        'indigo',
-        'violet',
-        'purple',
-        'fuchsia',
-        'pink',
-        'rose',
-        // 'blue-gray',
-        // 'cool-gray',
-        // 'neutral-gray',
-        // 'true-gray',
-        // 'warm-gray'
-      ],
       levels: [
+        '0',
+        '10',
+        '20',
+        '30',
+        '40',
         '50',
+        '60',
+        '70',
+        '80',
+        '90',
         '100',
+        '110',
+        '120',
+        '130',
+        '140',
+        '150',
+        '160',
+        '170',
+        '180',
+        '190',
         '200',
+        '210',
+        '220',
+        '230',
+        '240',
+        '250',
+        '260',
+        '270',
+        '280',
+        '290',
         '300',
+        '310',
+        '320',
+        '330',
+        '340',
+        '350',
+        '360',
+        '370',
+        '380',
+        '390',
         '400',
-        '500',
-        '600',
-        '700',
-        '800',
-        '900',
-        // excluding 1000 as the easy fix for grays that lack is
-        // '1000'
+        '410',
+        '420',
+        '430',
+        '440',
+        '450',
+        '460',
+        '470',
+        '480',
+        '490',
+        '500'
       ]
     }),
     components: {

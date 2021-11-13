@@ -19,9 +19,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   components: { EpMapApp },
   props: Object.keys(argTypes),
-  template: `
-  <ep-map-app />
-  `
+  template: '<ep-map-app />'
 })
 
 export const MapApp = Template.bind({})
