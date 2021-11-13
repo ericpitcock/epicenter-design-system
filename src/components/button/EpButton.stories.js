@@ -1,4 +1,4 @@
-import svgIcons from '@/style/icons/load-icons'
+import svgIcons from '@/components/icon/load-icons'
 import EpButton from './EpButton'
 
 // const container = () => {

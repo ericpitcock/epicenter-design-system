@@ -97,7 +97,7 @@ import EpNavigation from './EpNavigation'
 import EpButton from '@/components/button/EpButton'
 import EpDropdown from '@/components/dropdown/EpDropdown'
 import EpTabs from '@/components/tabs/EpTabs'
-import EpIcon from '@/style/icons/EpIcon'
+import EpIcon from '@/components/icon/EpIcon'
 
 export default {
   name: 'App',

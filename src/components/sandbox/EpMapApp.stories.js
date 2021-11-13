@@ -1,14 +1,14 @@
-import EpSandbox from './EpSandbox'
+import EpMapApp from './EpMapApp'
 
 const container = () => {
   return {
-    template: '<div style="height: 100%; padding: 30px;"><story/></div>'
+    template: '<div style="height: 100vh; padding: 30px;"><story/></div>'
   }
 }
 
 export default {
-  title: 'Sandbox',
-  component: EpSandbox,
+  title: 'Sandbox/Map App',
+  component: EpMapApp,
   decorators: [container],
   argTypes: {},
   parameters: {
@@ -17,11 +17,11 @@ export default {
 }
 
 const Template = (args, { argTypes }) => ({
-  components: { EpSandbox },
+  components: { EpMapApp },
   props: Object.keys(argTypes),
   template: `
-  <ep-sandbox />
+  <ep-map-app />
   `
 })
 
-export const Sandbox = Template.bind({})
+export const MapApp = Template.bind({})

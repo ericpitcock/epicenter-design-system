@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import EpIcon from '@/style/icons/EpIcon'
+  import EpIcon from '@/components/icon/EpIcon'
 
   export default {
     name: 'EpButton',

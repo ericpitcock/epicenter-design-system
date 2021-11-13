@@ -44,7 +44,7 @@
 
 <script>
   import EpContainer from '@/components/container/EpContainer'
-  import EpIcon from '@/style/icons/EpIcon'
+  import EpIcon from '@/components/icon/EpIcon'
 
   export default {
     name: 'EpTable',

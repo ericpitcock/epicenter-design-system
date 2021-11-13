@@ -25,7 +25,7 @@
 <script>
   import { mapGetters } from 'vuex'
 
-  import EpIcon from '@/style/icons/EpIcon'
+  import EpIcon from '@/components/icon/EpIcon'
   import EsentireLogo from './EsentireLogo'
   
   export default {
