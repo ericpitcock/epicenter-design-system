@@ -1,3 +1,4 @@
+import EpContainer from '@/components/container/EpContainer.vue'
 import svgIcons from './load-icons'
 import EpIcon from './EpIcon'
 
@@ -6,7 +7,9 @@ const names = svgIcons.map(icon => icon.name)
 // const container = () => {
 //   return {
 //     template:
-//       '<div style="padding: 30px; display:flex; justify-content: center;"><story/></div>'
+//       `<div style="padding: 30px; display:flex; justify-content: center; gap: 10px; flex-wrap: wrap;>
+//         <story/>
+//       </div>`
 //   }
 // }
 
@@ -50,15 +53,32 @@ export default {
 }
 
 const Template = (args, { argTypes }) => ({
-  components: { EpIcon },
+  components: { EpContainer, EpIcon },
+  data: () => ({ svgIcons }),
   props: Object.keys(argTypes),
   template: `
-  <EpIcon
-    :name="name"
-    :color="color"
-    :weight="weight"
-    :size="size"
-  />
+  <div style="padding: 30px; display:flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+  <template v-for="(icon, index) in svgIcons">
+  <ep-container
+    :key="index"
+    style="flex: 0 0 170px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      gap: 20px 0;"
+    >
+      <EpIcon
+        :name="icon.name"
+        :color="color"
+        :weight="weight"
+        :size="size"
+      />
+      <div class="text--subtle">{{ icon.name }}</div>
+    </ep-container>
+    </template>
+  </div>
   `
 })
 
