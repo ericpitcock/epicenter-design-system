@@ -14,7 +14,7 @@ const names = svgIcons.map(icon => icon.name)
 // }
 
 export default {
-  title: 'Style/Icon',
+  title: 'Components/Icon',
   component: EpIcon,
   // decorators: [container],
   argTypes: {
@@ -37,7 +37,7 @@ export default {
       name: 'Weight',
       control: {
         type: 'select',
-        options: ['light', 'regular', 'bold']
+        options: ['extra-light', 'light', 'regular', 'bold']
       },
       defaultValue: 'regular'
     },
@@ -57,9 +57,13 @@ const Template = (args, { argTypes }) => ({
   data: () => ({ svgIcons }),
   props: Object.keys(argTypes),
   template: `
-  <div style="padding: 30px; display:flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-  <template v-for="(icon, index) in svgIcons">
-  <ep-container
+  <div style="padding: 30px;
+    display:flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;"
+  >
+  <ep-container v-for="(icon, index) in svgIcons"
     :key="index"
     style="flex: 0 0 170px;
       display: flex;
@@ -77,7 +81,6 @@ const Template = (args, { argTypes }) => ({
       />
       <div class="text--subtle">{{ icon.name }}</div>
     </ep-container>
-    </template>
   </div>
   `
 })
