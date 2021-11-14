@@ -2,7 +2,7 @@
   <div :class="['grid', { 'grid--nav-collapsed': !sidebar }]">
     <div class="app-header">
       <div class="app-controls app-controls--left">
-        <ep-button kind="naked" icon="menu" @click.native="toggleSidebar" />
+        <ep-button kind="naked" icon="menu" @click="toggleSidebar" />
         <ep-dropdown :chevron="false">
           <template #trigger>
             <ep-button
@@ -33,7 +33,7 @@
         </ep-dropdown>
       </div>
       <div class="app-controls app-controls--right">
-        <ep-button kind="naked" :icon="themeIcon" @click.native="toggleTheme"/>
+        <ep-button kind="naked" :icon="themeIcon" @click="toggleTheme"/>
         <ep-dropdown :chevron="false" :alignRight="true">
           <template #trigger>
             <ep-button
@@ -59,7 +59,7 @@
           <div class="content-controls content-controls--right">
             <ep-button kind="secondary" icon="location" label="Alexandrinestad" />
             <ep-button kind="secondary" icon="calendar" label="11/01/2021 – 11/30/2021" />
-            <ep-button kind="naked" icon="full-width" @click.native="toggleContentWidth" />
+            <ep-button kind="naked" icon="full-width" @click="toggleContentWidth" />
           </div>
         </div>
         <div class="content-body">

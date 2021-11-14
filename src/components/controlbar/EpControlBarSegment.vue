@@ -1,9 +1,18 @@
 <template>
   <div
-    :class="['ep-control-bar__segment', { 'align-right': false }]"
-    :style="{ justifyContent: justifyContent }"
+    class="ep-control-bar__segment"
+    :style="{ gap }"
+    v-bind="$attrs"
   >
+    <div
+      v-if="divideLeft"
+      class="ep-control-bar__divider"
+    ></div>
     <slot />
+    <div
+      v-if="divideRight"
+      class="ep-control-bar__divider"
+    ></div>
   </div>
 </template>
 
@@ -11,25 +20,28 @@
   export default {
     name: 'EpControlBarSegment',
     props: {
-      justifyContent: {
+      gap: {
         type: String,
-        default: undefined
-      }
+        default: '10px',
+      },
+      divideRight: {
+        type: Boolean
+      },
+      divideLeft: {
+        type: Boolean
+      },
     }
   }
 </script>
 
 <style lang="scss" scoped>
   .ep-control-bar__segment {
-    // height: 100%;
-    // background: lightblue;
-    flex: 1;
     display: flex;
-    & + & {
-      border-left: 1px solid var(--border-color);
-    }
-    &.align-right {
-      justify-content: flex-end;
-    }
+    align-items: center;
+  }
+  .ep-control-bar__divider {
+    width: 1px;
+    height: 24px;
+    background-color: var(--border-color);
   }
 </style>

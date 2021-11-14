@@ -1,5 +1,5 @@
 <template>
-  <ep-button kind="naked" :icon="buttonIcon" title="Toggle theme" class="theme-toggle" @click.native="toggleTheme()" />
+  <ep-button kind="naked" :icon="buttonIcon" title="Toggle theme" class="theme-toggle" @click="toggleTheme()" />
 </template>
 
 <script>

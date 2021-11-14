@@ -1,13 +1,18 @@
 <template>
   <ep-container :fullWidth="true" :fullHeight="true" :flexCol="true" padding="0">
-    <ep-control-bar :style="{ flex: '0 0 61px' }">
-      <ep-control-bar-segment>
-        <ep-button kind="primary" label="Primary" />
+    <ep-control-bar justifyContent="space-between" gap="">
+      <ep-control-bar-segment divideRight divideLeft>
+        <ep-button kind="secondary" label="Zoom in" @click="mapZoom++" />
+        <ep-button kind="secondary" label="Zoom out" @click="mapZoom--" />
+      </ep-control-bar-segment>
+      <!-- <ep-control-bar-segment>
         <ep-button kind="primary" label="Primary" disabled />
-        <ep-button kind="primary" label="Primary" @click.native="testMethod" />
+        <ep-button kind="primary" label="Test method" @click="testMethod" />
         <ep-button kind="secondary" label="Button" />
         <ep-button to="/" kind="secondary" label="Router Link" />
         <ep-button href="https://www.google.com/maps" kind="secondary" label="Link" />
+      </ep-control-bar-segment> -->
+      <ep-control-bar-segment justifySelf="flex-end">
         <ep-button kind="naked" label="Naked" icon="arrow-down" />
         <ep-button kind="danger" label="Danger" />
         <ep-button kind="warning" label="Warning" />
@@ -32,7 +37,7 @@
         </ep-dropdown>
       </ep-control-bar-segment>
     </ep-control-bar>
-    <ep-map mapStyle="mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph" />
+    <ep-map :mapZoom="mapZoom" />
   </ep-container>
 </template>
 
@@ -82,16 +87,16 @@
             href: 'https://www.google.com/maps'
           }
         }
-      ]
-    })
+      ],
+      mapZoom: 14
+    }),
+    methods: {
+      testMethod() {
+        console.log('test method')
+      }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
-  // this is temporary
-  .ep-control-bar__segment > {
-    * + * {
-      margin-left: 10px;
-    }
-  }
 </style>

@@ -21,7 +21,7 @@
       },
       mapStyle: {
         type: String,
-        default: 'mapbox://styles/mapbox/streets-v11'
+        // default: 'mapbox://styles/mapbox/streets-v11'
       },
       mapSource: {
         type: Object,
@@ -71,7 +71,11 @@
     },
     methods: {
       computedMapStyle() {
-        return this.getTheme == 'dark' ? 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph' : 'mapbox://styles/mapbox/streets-v11'
+        if (this.mapStyle) {
+          return this.mapStyle
+        } else {
+          return this.getTheme == 'dark' ? 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph' : 'mapbox://styles/mapbox/streets-v11'
+        }
       },
       loadMap() {
         return new Promise(resolve => {

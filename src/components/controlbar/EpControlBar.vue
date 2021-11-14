@@ -1,22 +1,39 @@
 <template>
-  <div class="ep-control-bar">
+  <div
+    :class="[ 'ep-control-bar', classes ]"
+    :style="{ flexBasis, justifyContent, gap }"
+  >
     <slot />
   </div>
 </template>
 
 <script>
   export default {
-    name: 'EpControlBar'
+    name: 'EpControlBar',
+    props: {
+      flexBasis: {
+        type: String,
+        default: '61px'
+      },
+      justifyContent: {
+        type: String,
+        default: 'flex-start'
+        //flex-start, flex-end, space-between, space-around, space-evenly
+      },
+      gap: {
+        type: String,
+        default: '20px'
+      }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
   .ep-control-bar {
     display: flex;
-    justify-content: space-between;
+    flex-grow: 0;
+    flex-shrink: 0;
     align-items: center;
-    height: 100%;
-    // background: var(--component-background);
     padding: 0 30px;
     border-bottom: 1px solid var(--border-color);
   }

@@ -4,6 +4,7 @@
     :class="buttonClasses"
     :title="title"
     v-bind="$attrs"
+    @click="$emit('click')"
   >
     <span v-if="icon" class="ep-button__icon">
       <ep-icon :name="icon" />
@@ -22,10 +23,6 @@
         type: String,
         default: 'secondary'
       },
-      // href: {
-      //   type: String,
-      //   default: null
-      // },
       size: {
         type: String,
         default: 'default'
@@ -33,10 +30,6 @@
       title: {
         type: String
       },
-      // to: {
-      //   type: [String, Object],
-      //   default: '',
-      // },
       label: {
         type: String
       },
@@ -47,11 +40,7 @@
       iconAlignment: {
         type: String,
         default: 'left'
-      },
-      // disabled: {
-      //   type: Boolean,
-      //   default: false
-      // }
+      }
     },
     components: {
       EpIcon
@@ -124,14 +113,6 @@
     cursor: pointer;
     user-select: none;
     white-space: nowrap;
-
-    // @TODO figure out accessibility here
-    // &:focus {
-    //   outline: none;
-    // }
-    // &::-moz-focus-inner {
-    //   border: 0;
-    // }
 
     // kind template
     // $bg-color,
