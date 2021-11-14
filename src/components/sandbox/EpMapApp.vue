@@ -4,6 +4,8 @@
       <ep-control-bar-segment divideRight divideLeft>
         <ep-button kind="secondary" label="Zoom in" @click="mapZoom++" />
         <ep-button kind="secondary" label="Zoom out" @click="mapZoom--" />
+        <ep-button kind="secondary" label="IconLeft" iconLeft="arrow-left" />
+        <ep-button kind="secondary" label="IconRight" iconRight="arrow-right" />
       </ep-control-bar-segment>
       <!-- <ep-control-bar-segment>
         <ep-button kind="primary" label="Primary" disabled />
@@ -17,13 +19,13 @@
         <ep-button kind="danger" label="Danger" />
         <ep-button kind="warning" label="Warning" />
         <ep-button kind="success" label="Success" icon="star" />
-        <ep-dropdown>
+        <ep-dropdown alignRight>
           <template #trigger>
             <ep-button
               kind="secondary"
-              label="Dropdown"
-              icon="chevron-down"
-              iconAlignment="right"
+              label="Settings"
+              iconLeft="settings"
+              iconRight="chevron-down"
             />
           </template>
           <template v-for="(item, index) in fakeDropdownItems">

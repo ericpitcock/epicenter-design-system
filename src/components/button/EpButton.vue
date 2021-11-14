@@ -1,15 +1,18 @@
 <template>
   <component
     :is="element"
-    :class="buttonClasses"
+    :class="classes"
     :title="title"
     v-bind="$attrs"
     @click="$emit('click')"
   >
-    <span v-if="icon" class="ep-button__icon">
-      <ep-icon :name="icon" />
+    <span v-if="iconLeft" class="ep-button__icon ep-button__icon--left">
+      <ep-icon :name="iconLeft" />
     </span>
     <span v-if="label" class="ep-button__label">{{ label }}</span>
+    <span v-if="iconRight" class="ep-button__icon ep-button__icon--right">
+      <ep-icon :name="iconRight" />
+    </span>
   </component>
 </template>
 
@@ -33,14 +36,14 @@
       label: {
         type: String
       },
-      icon: {
+      iconRight: {
         type: String,
         default: undefined
       },
-      iconAlignment: {
+      iconLeft: {
         type: String,
-        default: 'left'
-      }
+        default: undefined
+      },
     },
     components: {
       EpIcon
@@ -57,13 +60,13 @@
         }
         return 'button'
       },
-      buttonClasses() {
+      classes() {
         return [
           'ep-button',
           `ep-button--${this.kind}`,
           { [`ep-button--${this.size}`]: this.size != 'default' },
-          { 'ep-button--icon-right': this.icon && this.iconAlignment == 'right' },
-          { 'ep-button--icon-left': this.icon && this.iconAlignment == 'left'}
+          { 'ep-button--icon-right': this.iconRight },
+          { 'ep-button--icon-left': this.iconLeft}
         ]
       }
     }
@@ -215,9 +218,9 @@
       cursor: not-allowed;
     }
     &--icon-right {
-      flex-direction: row-reverse;
+      // flex-direction: row-reverse;
       .ep-button__icon {
-        padding: 0.4rem 0.8rem 0.4rem 0.6rem;
+        // padding: 0.4rem 0.8rem 0.4rem 0.6rem;
       }
     }
     &__icon {
@@ -225,8 +228,14 @@
       justify-content: center;
       align-items: center;
       line-height: 1;
-      padding: 0.4rem 0.6rem 0.4rem 0.8rem;
+
       // when just an icon button, even out the padding
+      &--left {
+        padding: 0.4rem 0.6rem 0.4rem 0.8rem;
+      }
+      &--right {
+        padding: 0.4rem 0.8rem 0.4rem 0.6rem;
+      }
       &:only-child {
         padding-right: 0.8rem;
       }

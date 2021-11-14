@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[ 'ep-control-bar', classes ]"
+    class="ep-control-bar"
     :style="{ flexBasis, justifyContent, gap }"
   >
     <slot />

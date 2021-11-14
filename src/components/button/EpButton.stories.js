@@ -95,8 +95,8 @@ export default {
       },
       defaultValue: 'Download'
     },
-    icon: {
-      name: 'Icon Source',
+    iconRight: {
+      name: 'Icon Right',
       control: {
         type: 'select',
         options: icons
@@ -106,20 +106,31 @@ export default {
         category: 'Icon'
       }
     },
-    iconAlignment: {
-      name: 'Icon Alignment',
+    iconLeft: {
+      name: 'Icon Left',
       control: {
-        type: 'radio',
-        options: {
-          Left: 'left',
-          Right: 'right'
-        }
+        type: 'select',
+        options: icons
       },
-      defaultValue: 'left',
+      defaultValue: undefined,
       table: {
         category: 'Icon'
       }
-    }
+    },
+    // iconAlignment: {
+    //   name: 'Icon Alignment',
+    //   control: {
+    //     type: 'radio',
+    //     options: {
+    //       Left: 'left',
+    //       Right: 'right'
+    //     }
+    //   },
+    //   defaultValue: 'left',
+    //   table: {
+    //     category: 'Icon'
+    //   }
+    // }
   }
 }
 
