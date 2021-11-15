@@ -155,6 +155,9 @@
         }
         this.init = false
       })
+      this.map.on('zoom', () => {
+        console.log('A zoom event occurred.')
+      })
       // console.log(this.theme)
       // this.map.on('click', function(event) {
       //   // console.log('A click event has occurred at ' + event.lngLat)
