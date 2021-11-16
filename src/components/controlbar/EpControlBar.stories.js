@@ -9,12 +9,12 @@ export default {
   }
 }
 
-const Template = (args, { argTypes }) => ({
+const Template = (args) => ({
   components: { EpControlBar },
-  props: Object.keys(argTypes),
-  template: `
-  <EpControlBar />
-  `
+  setup() {
+    return { args }
+  },
+  template: '<ep-control-bar />'
 })
 
 export const ControlBar = Template.bind({})

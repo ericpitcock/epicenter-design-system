@@ -4,7 +4,7 @@
       v-if="!item.divider"
       kind="menu-item"
       :label="item.label"
-      :icon="item.icon"
+      :iconLeft="item.icon"
       v-bind="item.bind"
     />
     <ep-divider v-else :key="`divider-${index}`" />

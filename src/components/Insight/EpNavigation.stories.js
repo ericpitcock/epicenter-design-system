@@ -16,9 +16,11 @@ export default {
   }
 }
 
-const Template = (args, { argTypes }) => ({
+const Template = (args) => ({
   components: { EpNavigation },
-  props: Object.keys(argTypes),
+  setup() {
+    return { args }
+  },
   template: '<ep-navigation />'
 })
 

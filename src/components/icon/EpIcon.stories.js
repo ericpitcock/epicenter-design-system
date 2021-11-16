@@ -52,10 +52,12 @@ export default {
   }
 }
 
-const Template = (args, { argTypes }) => ({
+const Template = (args) => ({
   components: { EpContainer, EpIcon },
   data: () => ({ svgIcons }),
-  props: Object.keys(argTypes),
+  setup() {
+    return { args }
+  },
   template: `
   <div style="padding: 30px;
     display:flex;
@@ -75,9 +77,9 @@ const Template = (args, { argTypes }) => ({
     >
       <EpIcon
         :name="icon.name"
-        :color="color"
-        :weight="weight"
-        :size="size"
+        :color="args.color"
+        :weight="args.weight"
+        :size="args.size"
       />
       <div class="text--subtle">{{ icon.name }}</div>
     </ep-container>

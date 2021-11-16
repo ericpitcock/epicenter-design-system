@@ -61,7 +61,6 @@ export default {
 
 const Template = (args) => ({
   components: { EpDropdown, EpButton, EpDropdownItem },
-  // props: Object.keys(argTypes),
   data: () => ({ menuItems: fakeDropdownItems }),
   setup() {
     return { args };

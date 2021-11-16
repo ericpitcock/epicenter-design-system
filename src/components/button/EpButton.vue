@@ -229,8 +229,9 @@
       justify-content: center;
       align-items: center;
       line-height: 1;
-
-      // when just an icon button, even out the padding
+      & + & {
+        padding-left: 0rem;
+      }
       &--left {
         padding: 0.4rem 0.6rem 0.4rem 0.8rem;
       }

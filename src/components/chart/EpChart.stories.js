@@ -305,36 +305,10 @@ export default {
 
 const Template = (args) => ({
   components: { EpChart },
-  // props: Object.keys(argTypes),
   setup() {
-    return { args };
+    return { chartData, options, args };
   },
-  template: '<EpChart v-bind="args" />'
+  template: '<ep-chart v-bind="args" />'
 })
 
 export const Chart = Template.bind({})
-
-
-
-// OLD
-
-
-// export default {
-//   title: 'Components/EpChart',
-//   component: EpChart,
-//   decorators: [withKnobs, container]
-// }
-
-// export const Column = () => ({
-//   components: { EpChart },
-//   template: '<EpChart :options="options" />',
-//   props: {
-//     options: {
-//       default: () => options
-//     },
-//     extremes: {
-//       default: () => extremes
-//     }
-//   },
-//   methods: {}
-// })

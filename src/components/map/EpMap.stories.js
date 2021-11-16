@@ -42,9 +42,11 @@ export default {
   }
 }
 
-const Template = (args, { argTypes }) => ({
+const Template = (args) => ({
   components: { EpMap },
-  props: Object.keys(argTypes),
+  setup() {
+    return { args }
+  },
   template: `
   <EpMap
     :mapCenter="mapCenter"

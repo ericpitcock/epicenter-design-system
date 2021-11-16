@@ -2206,48 +2206,12 @@ export default {
   }
 }
 
-const Template = (args, { argTypes }) => ({
+const Template = (args) => ({
   components: { EpTable },
-  props: Object.keys(argTypes),
-  template: `
-  <EpTable
-    :columns="columns"
-    :data="data"
-    :hideEmpty="hideEmpty"
-    :selectable="selectable"
-    :selected="selected"
-    :stickyHeader="stickyHeader"
-    :striped="striped"
-  />
-  `
+  setup() {
+    return { args, columns, data }
+  },
+  template: '<ep-table v-bind="args" />'
 })
 
 export const Table = Template.bind({})
-
-// OLD
-// export default {
-//   title: 'Components/EpTable',
-//   component: EpTable,
-//   decorators: [withKnobs, container]
-// }
-
-// export const Basic = () => ({
-//   components: { EpTable },
-//   template: '<EpTable :columns="columns" :data="data" :hideEmpty="hideEmpty" :selectable="selectable" :selected="selected" :stickyHeader="stickyHeader" :striped="striped" />',
-//   props: {
-//     // columns: { default: object('Columns', columns) },
-//     columns: {
-//       default: () => columns,
-//     },
-//     // data: { default: array('Data', data) },
-//     data: {
-//       default: () => data,
-//     },
-//     selectable: { default: boolean('Selectable', false) },
-//     selected: { default: number('Selected ID', 3899513739) },
-//     hideEmpty: { default: boolean('Hide empty', false) },
-//     stickyHeader: { default: boolean('Sticky header', true) },
-//     striped: { default: boolean('Striped', false) }
-//   },
-//   methods: {}
-// })

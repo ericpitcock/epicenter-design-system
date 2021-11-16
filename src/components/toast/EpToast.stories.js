@@ -21,9 +21,11 @@ export default {
   }
 }
 
-const Template = (args, { argTypes }) => ({
+const Template = (args) => ({
   components: { EpToast },
-  props: Object.keys(argTypes),
+  setup() {
+    return { args }
+  },
   template: '<EpToast :message="message" :dissmissable="dissmissable" />'
 })
 

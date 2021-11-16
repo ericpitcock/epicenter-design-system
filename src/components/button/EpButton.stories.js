@@ -1,20 +1,12 @@
 import svgIcons from '@/components/icon/load-icons'
 import EpButton from './EpButton'
 
-// const container = () => {
-//   return {
-//     template:
-//       '<div style="display: flex; justify-content: center; padding-top: 20%;"><story/></div>'
-//   }
-// }
-
 const icons = svgIcons.map(icon => icon.name)
 icons.push(undefined)
 
 export default {
   title: 'Components/Button',
   component: EpButton,
-  // decorators: [container],
   argTypes: {
     disabled: {
       name: 'Disabled',
@@ -45,17 +37,6 @@ export default {
       },
       defaultValue: 'primary'
     },
-    // element: {
-    //   name: 'Element',
-    //   control: {
-    //     type: 'radio',
-    //     options: {
-    //       Button: 'button',
-    //       Link: 'a'
-    //     }
-    //   },
-    //   defaultValue: 'button'
-    // },
     size: {
       name: 'Size',
       control: {
@@ -95,17 +76,6 @@ export default {
       },
       defaultValue: 'Download'
     },
-    iconRight: {
-      name: 'Icon Right',
-      control: {
-        type: 'select',
-        options: icons
-      },
-      defaultValue: undefined,
-      table: {
-        category: 'Icon'
-      }
-    },
     iconLeft: {
       name: 'Icon Left',
       control: {
@@ -117,27 +87,24 @@ export default {
         category: 'Icon'
       }
     },
-    // iconAlignment: {
-    //   name: 'Icon Alignment',
-    //   control: {
-    //     type: 'radio',
-    //     options: {
-    //       Left: 'left',
-    //       Right: 'right'
-    //     }
-    //   },
-    //   defaultValue: 'left',
-    //   table: {
-    //     category: 'Icon'
-    //   }
-    // }
+    iconRight: {
+      name: 'Icon Right',
+      control: {
+        type: 'select',
+        options: icons
+      },
+      defaultValue: undefined,
+      table: {
+        category: 'Icon'
+      }
+    }
   }
 }
 
 const Template = (args) => ({
   components: { EpButton },
   setup() {
-    return { args };
+    return { args }
   },
   template: '<ep-button v-bind="args" />'
 })
