@@ -1,9 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+// import Vue from 'vue'
+// import Vuex from 'vuex'
 
-Vue.use(Vuex)
+// Vue.use(Vuex)
+import { createStore } from 'vuex'
 
-export default new Vuex.Store({
+export default createStore({
   state: {
     theme: 'light',
     sidebar: true,

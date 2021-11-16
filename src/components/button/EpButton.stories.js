@@ -134,10 +134,12 @@ export default {
   }
 }
 
-const Template = (args, { argTypes }) => ({
+const Template = (args) => ({
   components: { EpButton },
-  props: Object.keys(argTypes),
-  template: '<ep-button v-bind="$props" />'
+  setup() {
+    return { args };
+  },
+  template: '<ep-button v-bind="args" />'
 })
 
 export const Button = Template.bind({})

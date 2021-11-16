@@ -110,6 +110,7 @@
     padding: 0;
     border-radius: 3px;
     font-size: var(--font-size--small);
+    // LINE-HEIGHT MIGHT KILL SHIT 
     line-height: 1;
     appearance: none;
     text-decoration: none;

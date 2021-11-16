@@ -59,17 +59,20 @@ export default {
   }
 }
 
-const Template = (args, { argTypes }) => ({
+const Template = (args) => ({
   components: { EpDropdown, EpButton, EpDropdownItem },
-  props: Object.keys(argTypes),
+  // props: Object.keys(argTypes),
+  data: () => ({ menuItems: fakeDropdownItems }),
+  setup() {
+    return { args };
+  },
   template: `
   <ep-dropdown>
     <template #trigger>
       <ep-button
         kind="secondary"
         label="Dropdown"
-        icon="chevron-down"
-        iconAlignment="right"
+        iconRight="chevron-down"
       />
     </template>
     <template v-for="(item, index) in menuItems">

@@ -4,14 +4,13 @@
       <div class="main-nav__item main-nav__item--logo">
         <esentire-logo :type="logoType" />
       </div>
-      <template v-for="(navItem, index) in navItems">
+      <template v-for="(navItem, index) in navItems" :key="index">
         <div
           :class="[
             'main-nav__item',
             { 'main-nav__item--active': navItem.active }
           ]"
           @click="updateActiveNavItem(index)"
-          :key="index"
         >
           <ep-icon :name="navItem.icon" />
           <div class="main-nav__item__name">{{ navItem.name }}</div>

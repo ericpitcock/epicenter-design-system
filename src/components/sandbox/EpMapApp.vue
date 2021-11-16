@@ -7,18 +7,18 @@
         <ep-button kind="secondary" label="IconLeft" iconLeft="arrow-left" />
         <ep-button kind="secondary" label="IconRight" iconRight="arrow-right" />
       </ep-control-bar-segment>
-      <!-- <ep-control-bar-segment>
+      <ep-control-bar-segment>
         <ep-button kind="primary" label="Primary" disabled />
         <ep-button kind="primary" label="Test method" @click="testMethod" />
         <ep-button kind="secondary" label="Button" />
         <ep-button to="/" kind="secondary" label="Router Link" />
         <ep-button href="https://www.google.com/maps" kind="secondary" label="Link" />
-      </ep-control-bar-segment> -->
+      </ep-control-bar-segment>
       <ep-control-bar-segment justifySelf="flex-end">
-        <ep-button kind="naked" label="Naked" icon="arrow-down" />
+        <!-- <ep-button kind="naked" label="Naked" icon="arrow-down" />
         <ep-button kind="danger" label="Danger" />
         <ep-button kind="warning" label="Warning" />
-        <ep-button kind="success" label="Success" icon="star" />
+        <ep-button kind="success" label="Success" icon="star" /> -->
         <ep-dropdown alignRight>
           <template #trigger>
             <ep-button
@@ -28,11 +28,27 @@
               iconRight="chevron-down"
             />
           </template>
-          <template v-for="(item, index) in fakeDropdownItems">
+          <template v-for="(item, index) in fakeDropdownItems" :key="`item-${index}`">
             <ep-dropdown-item
               :item="item"
               :index="index"
-              :key="`item-${index}`"
+              v-on="item.on"
+            />
+          </template>
+        </ep-dropdown>
+        <ep-dropdown alignRight>
+          <template #trigger>
+            <ep-button
+              kind="secondary"
+              label="Dropdown 2"
+              iconLeft="settings"
+              iconRight="chevron-down"
+            />
+          </template>
+          <template v-for="(item, index) in fakeDropdownItems" :key="`item-${index}`">
+            <ep-dropdown-item
+              :item="item"
+              :index="index"
               v-on="item.on"
             />
           </template>
