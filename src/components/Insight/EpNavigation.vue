@@ -144,8 +144,8 @@
           left: 42px;
           padding: 4px 10px;
           border-radius: 3px;
-          background: var(--foreground);
-          border: 1px solid var(--foreground-border);
+          background: var(--background-4);
+          border: 1px solid var(--border-color--lighter);
           font-size: 12px;
           color: var(--text-color) !important;
           white-space: nowrap;

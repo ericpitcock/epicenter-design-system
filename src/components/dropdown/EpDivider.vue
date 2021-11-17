@@ -12,7 +12,7 @@
   .ep-divider {
     display: block;
     height: 1px;
-    background-color: var(--foreground-border);
+    background-color: var(--border-color--lighter);
     border: none;
     margin: 0.5rem 0;
   }

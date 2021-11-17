@@ -67,9 +67,9 @@
     &__content {
       display: flex;
       flex-direction: column;
-      background: var(--foreground);
+      background: var(--background-4);
       padding: 1rem 0;
-      border: 1px solid var(--foreground-border);
+      border: 1px solid var(--border-color--lighter);
       border-radius: 3px;
       box-shadow: var(--drop-shadow);
     }

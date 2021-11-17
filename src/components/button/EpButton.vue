@@ -52,7 +52,7 @@
       element() {
         const attrs = this.$attrs
         // return (attrs && this.to ? 'router-link' : (attrs && attrs.href ? 'a' : 'button'))
-        if (attrs.to) {
+        if (attrs && attrs.to) {
           return 'router-link'
         }
         if (attrs && attrs.href) {
@@ -137,7 +137,7 @@
     }
     &--secondary {
       @include button-theme(
-        var(--foreground),
+        var(--background-4),
         var(--border-color),
         var(--text-color),
         var(--button-secondary--hover),

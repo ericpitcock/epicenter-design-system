@@ -1,34 +1,28 @@
 html[data-color-theme='dark'] {
   // background
-  --background: var(--gray-440);
-  --background-image: url('../../components/Insight/background-dark.jpg');
+  --background-1: var(--gray-440);
+  --background-2: var(--gray-430);
+  --background-3: var(--gray-420);
+  --background-4: var(--gray-390);
 
   // app header
-  --app-header-background: var(--gray-430);
-  // --app-header-background: #1c1f28;
-
-  // components
-  // --content-background: var(--gray-430);
-  --content-background: var(--gray-430);
-  --content-background--darker: var(--gray-440);
-  --content-background--lighter: var(--gray-400);
+  --app-header-background: var(--background-1);
 
   // borders
   --border-color: var(--gray-380);
+  --border-color--lighter: var(--gray-340);
 
-  // foreground elements: buttons, menus, tooltips, etc
-  --foreground: var(--gray-390);
-  --foreground-border: var(--gray-340);
+  // shadow
   --drop-shadow: 0 5px 8px rgba(0,0,0,0.2);
 
   // text
   --text-color: var(--gray-50);
   --text-color--disabled: var(--gray-130);
-  --text-color-inverse: var(--background);
+  --text-color-inverse: var(--background-1);
 
   // buttons
   --button-disabled--bg-color: var(--gray-400);
-  --button-disabled--border-color: var(--button-disabled--bg-color);
+  --button-disabled--border-color: var(--4utton-disabled--bg-color);
   --button-disabled--text: var(--gray-270);
 
   --button-secondary--hover: var(--gray-410);

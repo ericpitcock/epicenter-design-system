@@ -2,12 +2,12 @@
   <div :class="['grid', { 'grid--nav-collapsed': !sidebar }]">
     <div class="app-header">
       <div class="app-controls app-controls--left">
-        <ep-button kind="naked" icon="menu" @click="toggleSidebar" />
+        <ep-button kind="naked" iconLeft="menu" @click="toggleSidebar" />
         <ep-dropdown :chevron="false">
           <template #trigger>
             <ep-button
               kind="naked"
-              icon="notifications"
+              iconLeft="notifications"
             />
           </template>
           <div class="placeholder-dropdown" style="width: 400px; height: 200px; padding: 30px;">"Notification center"</div>
@@ -16,11 +16,11 @@
           <template #trigger>
             <ep-button
               kind="naked"
-              icon="user"
+              iconLeft="user"
             />
           </template>
-          <ep-button kind="menu-item" label="User Settings" icon="settings" />
-          <ep-button kind="menu-item" label="Logout" icon="arrow-right" />
+          <ep-button kind="menu-item" label="User Settings" iconLeft="settings" />
+          <ep-button kind="menu-item" label="Logout" iconLeft="arrow-right" />
         </ep-dropdown>
         <ep-dropdown :chevron="false">
           <template #trigger>
@@ -33,16 +33,16 @@
         </ep-dropdown>
       </div>
       <div class="app-controls app-controls--right">
-        <ep-button kind="naked" :icon="themeIcon" @click="toggleTheme"/>
+        <ep-button kind="naked" :iconLeft="themeIcon" @click="toggleTheme"/>
         <ep-dropdown :chevron="false" :alignRight="true">
           <template #trigger>
             <ep-button
               kind="naked"
-              icon="help"
+              iconLeft="help"
             />
           </template>
-          <ep-button kind="menu-item" label="Insight Manual" icon="help" />
-          <ep-button kind="menu-item" label="Help" icon="support" />
+          <ep-button kind="menu-item" label="Insight Manual" iconLeft="help" />
+          <ep-button kind="menu-item" label="Help" iconLeft="support" />
         </ep-dropdown>
       </div>
     </div>
@@ -57,9 +57,9 @@
             <div>Another future thing</div> -->
           </div>
           <div class="content-controls content-controls--right">
-            <ep-button kind="secondary" icon="location" label="Alexandrinestad" />
-            <ep-button kind="secondary" icon="calendar" label="11/01/2021 – 11/30/2021" />
-            <ep-button kind="naked" icon="full-width" @click="toggleContentWidth" />
+            <ep-button kind="secondary" iconLeft="location" label="Alexandrinestad" />
+            <ep-button kind="secondary" iconLeft="calendar" label="11/01/2021 – 11/30/2021" />
+            <ep-button kind="naked" iconLeft="full-width" @click="toggleContentWidth" />
           </div>
         </div>
         <div class="content-body">
@@ -143,8 +143,6 @@ export default {
     display: grid;
     grid-template-columns: 240px 1fr;
     grid-template-rows: 41px 1fr;
-    background: var(--background-image) left top no-repeat;
-    background-attachment: fixed;
     &--nav-collapsed {
       grid-template-columns: 50px 1fr;
     }
@@ -192,7 +190,7 @@ export default {
   }
   .content-container {
     height: auto;
-    background: var(--content-background);
+    background: var(--background-2);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     @media (min-width: 1380px) {
@@ -218,7 +216,7 @@ export default {
       position: sticky;
       top: 39px;
       justify-content: space-between;
-      background: var(--content-background);
+      background: var(--background-2);
     }
     &--component-header {
       background: var(--component-background--lighter);

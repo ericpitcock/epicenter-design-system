@@ -1,49 +1,46 @@
 <template>
-  <ep-container :fullWidth="false">
-    <table
-      :class="[
-        'ep-table',
-        { 'ep-table--selectable': selectable },
-        { 'ep-table--sticky': stickyHeader },
-        { 'ep-table--striped': striped }
-      ]"
-    >
-      <thead>
-        <tr>
-          <th
-            v-for="(label, key) in columns"
-            :key="key"
-            @click="sort(key)"
-            :class="headClasses(key)"
-          >
-            <div>
-              <span class="label">{{ label }}</span>
-              <EpIcon :name="arrowIcon()" />
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="row in filteredData"
-          :key="row.id"
-          @click="$emit('row-click', row.id)"
-          :class="{
-            'ep-table-row--selected': isSelected(row.id),
-            'ep-table-row--empty': row.empty
-          }"
+  <table
+    :class="[
+      'ep-table',
+      { 'ep-table--selectable': selectable },
+      { 'ep-table--sticky': stickyHeader },
+      { 'ep-table--striped': striped }
+    ]"
+  >
+    <thead>
+      <tr>
+        <th
+          v-for="(label, key) in columns"
+          :key="key"
+          @click="sort(key)"
+          :class="headClasses(key)"
         >
-          <td v-for="(value, key) in row.data" :key="key">
-            {{ value.value != null ? value.template || value.value : '' }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </ep-container>
+          <div>
+            <span class="label">{{ label }}</span>
+            <EpIcon :name="arrowIcon()" />
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        v-for="row in filteredData"
+        :key="row.id"
+        @click="$emit('row-click', row.id)"
+        :class="{
+          'ep-table-row--selected': isSelected(row.id),
+          'ep-table-row--empty': row.empty
+        }"
+      >
+        <td v-for="(value, key) in row.data" :key="key">
+          {{ value.value != null ? value.template || value.value : '' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
-  import EpContainer from '@/components/container/EpContainer'
   import EpIcon from '@/components/icon/EpIcon'
 
   export default {
@@ -59,7 +56,6 @@
       }
     },
     components: {
-      EpContainer,
       EpIcon
     },
     props: {
@@ -140,16 +136,6 @@
 </script>
 
 <style lang="scss" scoped>
-  // .ep-table-container {
-  //   display: inline-block;
-  //   // background: $white;
-  //   // border-radius: 6px;
-  //   // border: 1px solid $medium-gray;
-  //   &--full-width {
-  //     display: block;
-  //     // width: 100%;
-  //   }
-  // }
   .ep-table {
     width: 100%;
     thead {
@@ -165,7 +151,7 @@
       }
       th {
         text-align: left;
-        background: var(--content-background);
+        background: var(--background-2);
         z-index: 10;
         &:hover {
           color: var(--primary-color--base);
@@ -246,7 +232,7 @@
       thead {
         th {
           position: sticky;
-          top: -1px; // fixes wierd 1px gap exposes tbody contents as they scroll
+          top: -1px; // fixes wierd 1px gap that exposes tbody contents during scroll
         }
       }
     }

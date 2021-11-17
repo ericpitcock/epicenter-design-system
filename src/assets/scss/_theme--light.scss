@@ -1,21 +1,18 @@
 :root {
   // background
-  --background: var(--gray-10);
-  --background-image: url('../../components/Insight/background-light.jpg');
+  --background-1: var(--gray-10);
+  --background-2: var(--white);
+  --background-3: var(--white);
+  --background-4: var(--white);
 
   // app header
   --app-header-background: #f0f4f8;
 
-  // components
-  --content-background: var(--gray-0);
-  --content-background--lighter: #fff;
-
   // borders
   --border-color: var(--gray-70);
+  --border-color--lighter: var(--border-color);
 
-  // foreground elements: buttons, menus, tooltips, etc
-  --foreground: var(--gray-0);
-  --foreground-border: var(--border-color);
+  // shadow
   --drop-shadow: 0 5px 8px rgba(0,0,0,0.05);
 
   // text

@@ -11,7 +11,7 @@
         <ep-button kind="primary" label="Primary" disabled />
         <ep-button kind="primary" label="Test method" @click="testMethod" />
         <ep-button kind="secondary" label="Button" />
-        <ep-button to="/" kind="secondary" label="Router Link" />
+        <ep-button to="/home" kind="secondary" label="Router Link" />
         <ep-button href="https://www.google.com/maps" kind="secondary" label="Link" />
       </ep-control-bar-segment>
       <ep-control-bar-segment justifySelf="flex-end">

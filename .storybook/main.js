@@ -7,8 +7,8 @@ module.exports = {
     '../src/style/**/*.stories.js'
   ],
   addons: [
-    '@storybook/addon-controls',
     '@storybook/addon-docs',
+    '@storybook/addon-controls',
     '@storybook/addon-actions',
     '@storybook/addon-links',
     'storybook-theme-toggle'
@@ -16,17 +16,7 @@ module.exports = {
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
       test: /\.scss$/,
-      use: [
-        'style-loader',
-        'css-loader',
-        {
-          loader: 'sass-loader',
-          options: {
-            // prependData: `@import '@/assets/scss/global.scss';`
-            // apparently I don't need this, as preview.js imports it all from global
-          }
-        }
-      ]
+      use: [ 'style-loader', 'css-loader', 'sass-loader' ]
     })
     config.resolve.alias['@'] = rootPath
     config.resolve.alias['~'] = rootPath
