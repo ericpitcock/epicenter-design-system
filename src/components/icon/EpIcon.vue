@@ -11,14 +11,16 @@
 
   export default {
     name: 'EpIcon',
-    data: () => ({
-      weights: {
-        'extra-light': 0.5,
-        'light': 1,
-        'regular': 1.5,
-        'bold': 2,
+    data() {
+      return {
+        weights: {
+          'extra-light': 0.5,
+          'light': 1,
+          'regular': 1.5,
+          'bold': 2,
+        }
       }
-    }),
+    },
     props: {
       name: {
         type: String,

@@ -4,7 +4,6 @@
     :class="classes"
     :title="title"
     v-bind="$attrs"
-    @click="$emit('click')"
   >
     <span v-if="iconLeft" class="ep-button__icon ep-button__icon--left">
       <ep-icon :name="iconLeft" />

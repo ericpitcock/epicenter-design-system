@@ -1,7 +1,8 @@
 <template>
   <div class="ep-dropdown" v-click-outside="closeDropdown">
     <div @click="toggleDropdown">
-      <slot name="trigger" />
+      <slot v-if="hasTrigger" name="trigger" />
+      <ep-button v-bind="button" />
     </div>
     <div
       v-show="dropdownVisible"
@@ -11,7 +12,8 @@
       ]"
     >
       <div class="ep-dropdown__content">
-        <slot />
+        <slot v-if="hasContent" name="content" />
+        <ep-menu v-else :model="model" isDropdown />
       </div>
     </div>
   </div>
@@ -19,19 +21,54 @@
 
 <script>
   import clickOutside from '@/directives/clickOutside'
+  import EpButton from '@/components/button/EpButton'
+  import EpMenu from '@/components/menu/EpMenu'
 
   export default {
     name: 'EpDropdown',
+    components: {
+      EpButton,
+      EpMenu
+    },
     directives: {
       clickOutside
     },
-    data: () => ({
-      dropdownVisible: false
-    }),
+    data() {
+      return {
+        dropdownVisible: false
+      }
+    },
     props: {
+      button: {
+        type: Object,
+        default: {
+          kind: 'secondary',
+          size: 'default',
+          title: 'Default Dropdown',
+          label: 'Default Dropdown',
+          iconRight: 'chevron-down',
+          iconLeft: undefined
+        }
+      },
+      label: {
+        type: String,
+        default: 'Dropdown'
+      },
+      model: {
+        type: Array,
+        default: () => []
+      },
       alignRight: {
         type: Boolean,
         default: false
+      }
+    },
+    computed: {
+      hasTrigger() {
+        return !!this.$slots.trigger
+      },
+      hasContent() {
+        return !!this.$slots.content
       }
     },
     methods: {
@@ -44,6 +81,7 @@
       selectItem(item) {
         this.$emit('select', item)
         this.closeDropdown()
+        console.log('selectItem')
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="ep-dropdown-item" @click="onClick">
+  <div class="ep-dropdown-item" @click="selectItem">
     <ep-button
       v-if="!item.divider"
       kind="menu-item"
@@ -32,8 +32,8 @@
       }
     },
     methods: {
-      onClick(event) {
-        this.$parent.closeDropdown()
+      selectItem() {
+        this.$parent.selectItem()
         this.$emit('click')
       }
     }

@@ -108,9 +108,6 @@ export default {
     EpTabs,
     EpIcon
   },
-  // data: () => ({
-  //   fullWidthContent: false
-  // }),
   methods: {
     ...mapActions(['toggleTheme', 'toggleSidebar', 'toggleContentWidth']),
   },

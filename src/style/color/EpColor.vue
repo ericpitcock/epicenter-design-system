@@ -32,46 +32,48 @@
 
   export default {
     name: 'EpColor',
-    data: () => ({
-      hues: [
-        'red',
-        'orange',
-        'amber',
-        'yellow',
-        'lime',
-        'green',
-        'emerald',
-        'teal',
-        'cyan',
-        'sky',
-        'blue',
-        'indigo',
-        'violet',
-        'purple',
-        'fuchsia',
-        'pink',
-        'rose',
-        // 'blue-gray',
-        // 'cool-gray',
-        // 'neutral-gray',
-        // 'true-gray',
-        // 'warm-gray'
-      ],
-      levels: [
-        '50',
-        '100',
-        '200',
-        '300',
-        '400',
-        '500',
-        '600',
-        '700',
-        '800',
-        '900',
-        // excluding 1000 as the easy fix for grays that lack is
-        // '1000'
-      ]
-    }),
+    ddata() {
+      return {
+        hues: [
+          'red',
+          'orange',
+          'amber',
+          'yellow',
+          'lime',
+          'green',
+          'emerald',
+          'teal',
+          'cyan',
+          'sky',
+          'blue',
+          'indigo',
+          'violet',
+          'purple',
+          'fuchsia',
+          'pink',
+          'rose',
+          // 'blue-gray',
+          // 'cool-gray',
+          // 'neutral-gray',
+          // 'true-gray',
+          // 'warm-gray'
+        ],
+        levels: [
+          '50',
+          '100',
+          '200',
+          '300',
+          '400',
+          '500',
+          '600',
+          '700',
+          '800',
+          '900',
+          // excluding 1000 as the easy fix for grays that lack is
+          // '1000'
+        ]
+      }
+    },
     components: {
       EpContainer
     }

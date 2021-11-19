@@ -33,50 +33,52 @@
       EpIcon,
       EsentireLogo
     },
-    data: () => ({
-      navItems: [
-        {
-          name: 'Summary',
-          icon: 'dashboard',
-          active: true
-        },
-        {
-          name: 'Assets',
-          icon: 'display',
-          active: false
-        },
-        {
-          name: 'Investigations',
-          icon: 'target',
-          active: false
-        },
-        {
-          name: 'Risk Rating',
-          icon: 'star',
-          active: false
-        },
-        {
-          name: 'Service Info',
-          icon: 'info',
-          active: false
-        },
-        {
-          name: 'Reports',
-          icon: 'report',
-          active: false
-        },
-        {
-          name: 'Files',
-          icon: 'file',
-          active: false
-        },
-        {
-          name: 'Settings',
-          icon: 'settings',
-          active: false
-        }
-      ]
-    }),
+    data() {
+      return {
+        navItems: [
+          {
+            name: 'Summary',
+            icon: 'dashboard',
+            active: true
+          },
+          {
+            name: 'Assets',
+            icon: 'display',
+            active: false
+          },
+          {
+            name: 'Investigations',
+            icon: 'target',
+            active: false
+          },
+          {
+            name: 'Risk Rating',
+            icon: 'star',
+            active: false
+          },
+          {
+            name: 'Service Info',
+            icon: 'info',
+            active: false
+          },
+          {
+            name: 'Reports',
+            icon: 'report',
+            active: false
+          },
+          {
+            name: 'Files',
+            icon: 'file',
+            active: false
+          },
+          {
+            name: 'Settings',
+            icon: 'settings',
+            active: false
+          }
+        ]
+      }
+    },
     methods: {
       // for demo purposes only
       updateActiveNavItem(index) {
