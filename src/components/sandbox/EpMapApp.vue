@@ -1,7 +1,5 @@
 <template>
-  <ep-container
-    :flexCol="true"
-  >
+  <ep-container :flexCol="true">
     <ep-control-bar justifyContent="space-between" gap="">
       <ep-control-bar-segment>
         <ep-button kind="secondary" label="Zoom in" iconLeft="zoom-in" @click="mapZoom++" />
@@ -11,7 +9,7 @@
         Future search goes here
       </ep-control-bar-segment>
       <ep-control-bar-segment justifySelf="flex-end">
-        <ep-dropdown :model="seattleRecordStores" label="Great Seattle Record Stores" alignRight />
+        <ep-dropdown :button="{ label: 'Seattle Record Stores' }" :menuItems="seattleRecordStores" alignRight />
       </ep-control-bar-segment>
     </ep-control-bar>
     <ep-map

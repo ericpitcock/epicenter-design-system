@@ -13,7 +13,7 @@
     >
       <div class="ep-dropdown__content">
         <slot v-if="hasContent" name="content" />
-        <ep-menu v-else :model="model" isDropdown />
+        <ep-menu v-else :menuItems="menuItems" isDropdown />
       </div>
     </div>
   </div>
@@ -35,26 +35,23 @@
     },
     data() {
       return {
-        dropdownVisible: false
+        dropdownVisible: false,
+        buttonDefaults: {
+          kind: 'secondary',
+          size: 'default',
+          title: 'Default Dropdown',
+          label: 'Default Dropdown',
+          iconRight: 'chevron-down',
+          iconLeft: undefined
+        }
       }
     },
     props: {
       button: {
         type: Object,
-        default: () => ({
-          kind: 'secondary',
-          size: 'default',
-          title: 'Default Dropdown',
-          // label: 'Default Dropdown',
-          iconRight: 'chevron-down',
-          iconLeft: undefined
-        })
+        default: () => ({})
       },
-      label: {
-        type: String,
-        default: 'Dropdown'
-      },
-      model: {
+      menuItems: {
         type: Array,
         default: () => []
       },
@@ -66,8 +63,8 @@
     computed: {
       buttonProps() {
         return {
-          ...this.button,
-          label: this.label
+          ...this.buttonDefaults,
+          ...this.button
         }
       },
       hasTrigger() {

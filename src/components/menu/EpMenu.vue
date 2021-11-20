@@ -1,6 +1,6 @@
 <template>
   <div class="ep-menu">
-    <template v-for="(item, index) of model" :key="item.label + index.toString()">
+    <template v-for="(item, index) of menuItems" :key="item.label + index.toString()">
       <ep-divider v-if="item.divider" />
       <ep-button
         v-else
@@ -30,7 +30,7 @@
         type: Boolean,
         default: false
       },
-      model: {
+      menuItems: {
         type: Array,
         default: () => []
       }
