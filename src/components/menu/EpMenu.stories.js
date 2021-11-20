@@ -1,9 +1,10 @@
+import EpContainer from '../container/EpContainer'
 import EpMenu from './EpMenu'
 
 const fakeDropdownItems = [
   {
     label: 'Go to internal page',
-    icon: 'arrow-right',
+    iconLeft: 'arrow-right',
     bind: {
       to: '/'
     }
@@ -12,19 +13,45 @@ const fakeDropdownItems = [
     divider: true
   },
   {
-    label: 'Run a method',
-    icon: 'circle',
-    on: {
-      click: () => console.log('click')
+    label: 'Log click',
+    iconLeft: 'circle',
+    command: () => {
+      console.log('click')
     }
   },
   {
-    label: 'Link to internet',
-    icon: 'export',
+    label: 'Google Maps',
+    iconLeft: 'export',
     bind: {
       href: 'https://www.google.com/maps'
     }
-  }
+  },
+  {
+    label: 'Sub-menu',
+    iconLeft: 'menu',
+    iconRight: 'chevron-right'
+  },
+  {
+    label: 'This is a menu item'
+  },
+  {
+    label: 'Another menu item'
+  },
+  {
+    label: 'The menuiest item'
+  },
+  {
+    divider: true
+  },
+  {
+    label: 'Go back'
+  },
+  {
+    label: 'Two steps forward'
+  },
+  {
+    label: 'Internet!'
+  },
 ]
 
 export default {
@@ -34,13 +61,15 @@ export default {
 }
 
 const Template = args => ({
-  components: { EpMenu },
+  components: { EpContainer, EpMenu },
   data: () => ({ menuItems: fakeDropdownItems }),
   setup() {
     return { args }
   },
   template: `
-  <ep-menu />
+  <ep-container width="200px" padding="10px 0">
+    <ep-menu :model="menuItems" />
+  </ep-container>
   `
 })
 

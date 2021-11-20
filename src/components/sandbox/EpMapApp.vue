@@ -3,36 +3,25 @@
     :fullWidth="true"
     :fullHeight="true"
     :flexCol="true"
-    padding="0"
+    padding=""
   >
     <ep-control-bar justifyContent="space-between" gap="">
-      <ep-control-bar-segment divideRight divideLeft>
-        <ep-button kind="secondary" label="Zoom in" @click="mapZoom++" />
-        <ep-button kind="secondary" label="Zoom out" @click="mapZoom--" />
-        <ep-button kind="secondary" label="IconLeft" iconLeft="arrow-left" />
-        <ep-button kind="secondary" label="IconRight" iconRight="arrow-right" />
+      <ep-control-bar-segment>
+        <ep-button kind="secondary" label="Zoom in" iconLeft="zoom-in" @click="mapZoom++" />
+        <ep-button kind="secondary" label="Zoom out" iconLeft="zoom-out" @click="mapZoom--" />
       </ep-control-bar-segment>
       <ep-control-bar-segment>
-        <ep-button kind="primary" label="Primary" disabled />
-        <ep-button kind="primary" label="Test method" @click="testMethod" />
-        <ep-button kind="secondary" label="Button" />
-        <ep-button to="/" kind="secondary" label="Router Link" />
-        <ep-button
-          href="https://www.google.com/maps"
-          kind="secondary"
-          label="Link"
-        />
+        Future search goes here
       </ep-control-bar-segment>
       <ep-control-bar-segment justifySelf="flex-end">
-        <!-- <ep-button kind="naked" label="Naked" icon="arrow-down" />
-        <ep-button kind="danger" label="Danger" />
-        <ep-button kind="warning" label="Warning" />
-        <ep-button kind="success" label="Success" icon="star" /> -->
-        <ep-dropdown :model="newMenuItems" label="New Dropdown" alignRight />
+        <ep-dropdown :model="seattleRecordStores" label="Great Seattle Record Stores" alignRight />
       </ep-control-bar-segment>
     </ep-control-bar>
-    <ep-menu :model="newMenuItems" />
-    <ep-map :mapZoom="mapZoom" />
+    <ep-map
+      :mapCenter="mapCenter"
+      :mapZoom="mapZoom"
+      :navigationControl="false"
+    />
   </ep-container>
 </template>
 
@@ -44,7 +33,6 @@
   import EpControlBarSegment from '@/components/controlbar/EpControlBarSegment'
   import EpMap from '@/components/map/EpMap'
   import EpContainer from '@/components/container/EpContainer'
-  import EpMenu from '@/components/menu/EpMenu'
 
   export default {
     name: 'Sandbox',
@@ -55,8 +43,7 @@
       EpDropdown,
       EpDropdownItem,
       EpMap,
-      EpContainer,
-      EpMenu
+      EpContainer
     },
     data() {
       return {
@@ -86,6 +73,18 @@
             }
           }
         ],
+        seattleRecordStores: [
+          {
+            label: 'Sonic Boom Records',
+            command: () => { 
+              this.flyTo([-122.38514205300778, 47.66850341509612], 20)
+              // this.flyTo({
+              //   center: [-122.38514205300778, 47.66850341509612],
+              //   zoom: 20
+              // })
+            }
+          }
+        ],
         fakeDropdownItems: [
           {
             label: 'Go to internal page',
@@ -112,12 +111,17 @@
             }
           }
         ],
+        mapCenter: undefined,
         mapZoom: 14
       }
     },
     methods: {
       testMethod() {
         console.log('test method')
+      },
+      flyTo(latlng, zoom) {
+        this.mapCenter = latlng
+        // this.mapZoom = zoom
       }
     }
   }

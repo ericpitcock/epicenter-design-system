@@ -7,7 +7,7 @@
       { 'ep-container--flex-col': flexCol },
       { 'ep-container--connected': connected }
     ]"
-    :style="{ padding: padding, marginTop: gap }"
+    :style="{ width: width, padding: padding, marginTop: gap }"
   >
     <slot></slot>
   </div>
@@ -39,6 +39,10 @@
       padding: {
         type: String,
         default: '30px'
+      },
+      width: {
+        type: String,
+        default: '100%'
       }
     }
   }

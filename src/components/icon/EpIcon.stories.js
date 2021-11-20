@@ -63,7 +63,8 @@ const Template = (args) => ({
     display:flex;
     justify-content: center;
     gap: 10px;
-    flex-wrap: wrap;"
+    flex-wrap: wrap;
+    justify-content: flex-start;"
   >
   <ep-container v-for="(icon, index) in svgIcons"
     :key="index"

@@ -2,7 +2,7 @@
   <div class="ep-dropdown" v-click-outside="closeDropdown">
     <div @click="toggleDropdown">
       <slot v-if="hasTrigger" name="trigger" />
-      <ep-button v-bind="button" />
+      <ep-button v-bind="buttonProps" />
     </div>
     <div
       v-show="dropdownVisible"
@@ -45,7 +45,7 @@
           kind: 'secondary',
           size: 'default',
           title: 'Default Dropdown',
-          label: 'Default Dropdown',
+          // label: 'Default Dropdown',
           iconRight: 'chevron-down',
           iconLeft: undefined
         }
@@ -64,6 +64,12 @@
       }
     },
     computed: {
+      buttonProps() {
+        return {
+          ...this.button,
+          label: this.label
+        }
+      },
       hasTrigger() {
         return !!this.$slots.trigger
       },

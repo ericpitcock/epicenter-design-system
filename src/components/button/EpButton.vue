@@ -105,6 +105,7 @@
 
   .ep-button {
     display: inline-flex;
+    justify-content: space-between;
     align-items: center;
     padding: 0;
     border-radius: 3px;
@@ -242,6 +243,9 @@
       }
     }
     &__label {
+      flex: 1;
+      text-align: left;
+      // background: red;
       padding: 0.8rem 1.2rem;
       .ep-button--icon-right &,
       .ep-button--icon-left & {

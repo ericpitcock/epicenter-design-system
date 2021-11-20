@@ -2,17 +2,10 @@ import EpDropdown from './EpDropdown'
 import EpDropdownItem from './EpDropdownItem'
 import EpButton from '../button/EpButton'
 
-// const container = () => {
-//   return {
-//     template:
-//       '<div style="display: flex; justify-content: center; padding-top: 20%;"><story/></div>'
-//   }
-// }
-
 const fakeDropdownItems = [
   {
     label: 'Go to internal page',
-    icon: 'arrow-right',
+    iconLeft: 'arrow-right',
     bind: {
       to: '/'
     }
@@ -21,15 +14,15 @@ const fakeDropdownItems = [
     divider: true
   },
   {
-    label: 'Run a method',
-    icon: 'circle',
-    on: {
-      click: () => console.log('click')
+    label: 'Log click',
+    iconLeft: 'circle',
+    command: () => {
+      console.log('click')
     }
   },
   {
     label: 'Link to internet',
-    icon: 'export',
+    iconLeft: 'export',
     bind: {
       href: 'https://www.google.com/maps'
     }
@@ -40,7 +33,6 @@ export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
   subcomponents: { EpDropdownItem, EpButton },
-  // decorators: [container],
   argTypes: {
     alignRight: {
       name: 'Align right',
@@ -65,25 +57,7 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  template: `
-  <ep-dropdown>
-    <template #trigger>
-      <ep-button
-        kind="secondary"
-        label="Dropdown"
-        iconRight="chevron-down"
-      />
-    </template>
-    <template v-for="(item, index) in menuItems">
-      <ep-dropdown-item
-        :item="item"
-        :index="index"
-        :key="index"
-        v-on="item.on"
-      />
-    </template>
-  </ep-dropdown>
-  `
+  template: '<ep-dropdown :model="menuItems" v-bind="args" >'
 })
 
 export const Dropdown = Template.bind({})

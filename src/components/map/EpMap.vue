@@ -123,7 +123,11 @@
     },
     watch: {
       mapCenter(newCenter, oldCenter) {
-        this.map.setCenter(newCenter)
+        // this.map.setCenter(newCenter)
+        this.map.flyTo({
+          center: newCenter,
+          zoom: this.mapZoom
+        })
       },
       mapZoom(newZoom, oldZoom) {
         this.map.zoomTo(newZoom)
