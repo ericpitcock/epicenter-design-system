@@ -6,7 +6,7 @@
 
 <script>
   import mapboxgl from 'mapbox-gl'
-  import { mapGetters } from 'vuex'
+  import { mapState } from 'vuex'
   
   export default {
     name: 'EpMap',
@@ -51,7 +51,7 @@
       }
     },
     computed: {
-      ...mapGetters(['getTheme'])
+      ...mapState(['theme'])
       // theme() {
       //   let theme = document.documentElement.getAttribute('data-color-theme')
       //   console.log(theme)
@@ -74,7 +74,7 @@
         if (this.mapStyle) {
           return this.mapStyle
         } else {
-          return this.getTheme == 'dark' ? 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph' : 'mapbox://styles/mapbox/streets-v11'
+          return this.theme == 'dark' ? 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph' : 'mapbox://styles/mapbox/streets-v11'
         }
       },
       loadMap() {
@@ -135,18 +135,10 @@
       mapStyle(newStyle, oldStyle) {
         this.map.setStyle(newStyle)
       },
-      getTheme(newTheme, oldTheme) {
+      theme(newTheme, oldTheme) {
         // this.loadMap()
         this.map.setStyle(this.computedMapStyle())
       }
-      // moved to created
-      // mapSource(newSource, oldSource) {
-      //   if (this.init) return
-      //   if (this.map.getLayer('test')) this.map.removeLayer('test')
-      //   this.map.removeSource('test')
-      //   this.addSource(this.mapSource, this.mapLayer)
-      //   this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
-      // }
     },
     mounted() {
       this.loadMap().then(() => {
@@ -155,18 +147,15 @@
         // fit to bounds
         if (this.fitToBounds) {
           this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
-          // console.log(this.getBounds(this.mapSource.source.data.geometry.coordinates))
         }
         this.init = false
       })
       this.map.on('zoom', () => {
-        console.log('A zoom event occurred.')
+        // console.log('A zoom event occurred.')
       })
-      // console.log(this.theme)
-      // this.map.on('click', function(event) {
-      //   // console.log('A click event has occurred at ' + event.lngLat)
-      //   console.log(event)
-      // })
+      this.map.on('click', (event) => {
+        // console.log('A click event has occurred at ' + event.lngLat)
+      })
     },
     created() {
       // selectively create watchers if features exist

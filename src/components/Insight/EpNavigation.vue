@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapState } from 'vuex'
 
   import EpIcon from '@/components/icon/EpIcon'
   import EsentireLogo from './EsentireLogo'
@@ -89,7 +89,7 @@
       }
     },
     computed: {
-      ...mapGetters({ sidebar: 'getSidebarState'}),
+      ...mapState(['sidebar']),
       logoType() {
         return this.sidebar ? 'full' : 'icon'
       }

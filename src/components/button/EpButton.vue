@@ -110,7 +110,6 @@
     padding: 0;
     border-radius: 3px;
     font-size: var(--font-size--small);
-    // LINE-HEIGHT MIGHT KILL SHIT 
     line-height: 1;
     appearance: none;
     text-decoration: none;
@@ -218,12 +217,12 @@
       );
       cursor: not-allowed;
     }
-    &--icon-right {
-      // flex-direction: row-reverse;
-      .ep-button__icon {
-        // padding: 0.4rem 0.8rem 0.4rem 0.6rem;
-      }
-    }
+    // &--icon-right {
+    //   // flex-direction: row-reverse;
+    //   .ep-button__icon {
+    //     // padding: 0.4rem 0.8rem 0.4rem 0.6rem;
+    //   }
+    // }
     &__icon {
       display: inline-flex;
       justify-content: center;
@@ -245,7 +244,6 @@
     &__label {
       flex: 1;
       text-align: left;
-      // background: red;
       padding: 0.8rem 1.2rem;
       .ep-button--icon-right &,
       .ep-button--icon-left & {

@@ -1,21 +1,11 @@
-// import Vue from 'vue'
-// import Vuex from 'vuex'
-
-// Vue.use(Vuex)
 import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    theme: 'light',
+    fullWidthContent: false,
     sidebar: true,
     sidebarUser: null,
-    fullWidthContent: false
-  },
-  getters: {
-    getTheme: state => state.theme,
-    getSidebarState: state => state.sidebar,
-    getSidebarUserState: state => state.sidebarUser,
-    getContentWidth: state => state.fullWidthContent
+    theme: 'light'
   },
   mutations: {
     setTheme: (state, data) => {

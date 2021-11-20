@@ -3,27 +3,66 @@
     <div class="app-header">
       <div class="app-controls app-controls--left">
         <ep-button kind="naked" iconLeft="menu" @click="toggleSidebar" />
-        <ep-dropdown label="" :button="{ kind: 'naked', iconLeft: 'notifications' }">
+        <ep-dropdown
+          :button="{
+            kind: 'naked',
+            label: '',
+            iconRight: '',
+            iconLeft: 'notifications'
+          }"
+        >
           <template #content>
-          <div
-            class="placeholder-dropdown"
-            style="width: 400px; height: 200px; padding: 30px;"
-          >
+          <div style="width: 400px; height: 200px; padding: 30px;">
             Notification center
           </div>
           </template>
         </ep-dropdown>
-        <ep-dropdown label="" :model="[{ label: 'User Settings', iconLeft: 'settings' },{ label: 'Logout', iconLeft: 'arrow-right' }]" :button="{ kind: 'naked', iconLeft: 'user' }">
+        <ep-dropdown
+          :menuItems="[{
+            label: 'User Settings',
+            iconLeft: 'settings'
+          },{
+            label: 'Logout',
+            iconLeft: 'arrow-right'
+          }]"
+          :button="{
+            kind: 'naked',
+            label: '',
+            iconRight: '',
+            iconLeft: 'user'
+          }"
+        >
         </ep-dropdown>
-        <ep-dropdown label="Dunder Mifflin" :button="{ kind: 'naked' }">
+        <ep-dropdown
+          :button="{
+            kind: 'naked',
+            label: 'Dunder Mifflin',
+            iconRight: ''
+          }"
+        >
           <template #content>
-          <div class="placeholder-dropdown" style="width: 400px; height: 200px; padding: 30px;">Customer picker</div>
+          <div style="width: 400px; height: 200px; padding: 30px;">Customer picker</div>
           </template>
         </ep-dropdown>
       </div>
       <div class="app-controls app-controls--right">
         <ep-button kind="naked" :iconLeft="themeIcon" @click="toggleTheme"/>
-        <ep-dropdown label="" :model="[{ label: 'Insight Manual', iconLeft: 'help' },{ label: 'Help', iconLeft: 'support' }]" :button="{ kind: 'naked', iconLeft: 'help' }" :alignRight="true">
+        <ep-dropdown
+          :menuItems="[{
+            label: 'Insight Manual',
+            iconLeft: 'help'
+          },{
+            label: 'Help',
+            iconLeft: 'support'
+          }]"
+          :button="{
+            kind: 'naked',
+            label: '',
+            iconRight: '',
+            iconLeft: 'help'
+          }"
+          alignRight
+        >
         </ep-dropdown>
       </div>
     </div>
@@ -72,7 +111,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 import EpNavigation from './EpNavigation'
 import EpButton from '@/components/button/EpButton'
@@ -93,12 +132,12 @@ export default {
     ...mapActions(['toggleTheme', 'toggleSidebar', 'toggleContentWidth']),
   },
   computed: {
-    ...mapGetters({
-      sidebar: 'getSidebarState',
-      sidebarUser: 'getSidebarUserState',
-      theme: 'getTheme',
-      fullWidthContent: 'getContentWidth'
-    }),
+    ...mapState([
+      'fullWidthContent',
+      'sidebar',
+      'sidebarUser',
+      'theme'
+    ]),
     themeIcon() {
       return this.theme == 'dark' ? 'light-mode' : 'dark-mode'
     }
