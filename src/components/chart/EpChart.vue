@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ep-container :fullWidth="true">
+    <ep-container>
       <div id="container"></div>
     </ep-container>
   </div>

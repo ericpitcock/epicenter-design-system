@@ -2,12 +2,10 @@
   <div
     :class="[
       'ep-container',
-      { 'ep-container--full-width': fullWidth },
-      { 'ep-container--full-height': fullHeight },
       { 'ep-container--flex-col': flexCol },
       { 'ep-container--connected': connected }
     ]"
-    :style="{ width: width, padding: padding, marginTop: gap }"
+    :style="{ width: width, height: height, padding: padding, marginTop: gap }"
   >
     <slot></slot>
   </div>
@@ -41,6 +39,10 @@
         default: '30px'
       },
       width: {
+        type: String,
+        default: '100%'
+      },
+      height: {
         type: String,
         default: '100%'
       }

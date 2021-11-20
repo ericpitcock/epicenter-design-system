@@ -3,46 +3,27 @@
     <div class="app-header">
       <div class="app-controls app-controls--left">
         <ep-button kind="naked" iconLeft="menu" @click="toggleSidebar" />
-        <ep-dropdown :chevron="false">
-          <template #trigger>
-            <ep-button
-              kind="naked"
-              iconLeft="notifications"
-            />
+        <ep-dropdown label="" :button="{ kind: 'naked', iconLeft: 'notifications' }">
+          <template #content>
+          <div
+            class="placeholder-dropdown"
+            style="width: 400px; height: 200px; padding: 30px;"
+          >
+            Notification center
+          </div>
           </template>
-          <div class="placeholder-dropdown" style="width: 400px; height: 200px; padding: 30px;">"Notification center"</div>
         </ep-dropdown>
-        <ep-dropdown :chevron="false">
-          <template #trigger>
-            <ep-button
-              kind="naked"
-              iconLeft="user"
-            />
-          </template>
-          <ep-button kind="menu-item" label="User Settings" iconLeft="settings" />
-          <ep-button kind="menu-item" label="Logout" iconLeft="arrow-right" />
+        <ep-dropdown label="" :model="[{ label: 'User Settings', iconLeft: 'settings' },{ label: 'Logout', iconLeft: 'arrow-right' }]" :button="{ kind: 'naked', iconLeft: 'user' }">
         </ep-dropdown>
-        <ep-dropdown :chevron="false">
-          <template #trigger>
-            <ep-button
-              kind="naked"
-              label="Dunder Mifflin"
-            />
-          </template>
+        <ep-dropdown label="Dunder Mifflin" :button="{ kind: 'naked' }">
+          <template #content>
           <div class="placeholder-dropdown" style="width: 400px; height: 200px; padding: 30px;">Customer picker</div>
+          </template>
         </ep-dropdown>
       </div>
       <div class="app-controls app-controls--right">
         <ep-button kind="naked" :iconLeft="themeIcon" @click="toggleTheme"/>
-        <ep-dropdown :chevron="false" :alignRight="true">
-          <template #trigger>
-            <ep-button
-              kind="naked"
-              iconLeft="help"
-            />
-          </template>
-          <ep-button kind="menu-item" label="Insight Manual" iconLeft="help" />
-          <ep-button kind="menu-item" label="Help" iconLeft="support" />
+        <ep-dropdown label="" :model="[{ label: 'Insight Manual', iconLeft: 'help' },{ label: 'Help', iconLeft: 'support' }]" :button="{ kind: 'naked', iconLeft: 'help' }" :alignRight="true">
         </ep-dropdown>
       </div>
     </div>

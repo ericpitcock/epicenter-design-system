@@ -1,3 +1,4 @@
+import EpContainer from '@/components/container/EpContainer'
 import EpTable from './EpTable'
 
 const columns = {
@@ -2207,11 +2208,15 @@ export default {
 }
 
 const Template = (args) => ({
-  components: { EpTable },
+  components: { EpContainer, EpTable },
   setup() {
     return { args, columns, data }
   },
-  template: '<ep-table v-bind="args" />'
+  template: `
+  <ep-container>
+    <ep-table v-bind="args" />
+  </ep-container>
+  `
 })
 
 export const Table = Template.bind({})

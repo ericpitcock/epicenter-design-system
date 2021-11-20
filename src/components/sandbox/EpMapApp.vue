@@ -1,9 +1,6 @@
 <template>
   <ep-container
-    :fullWidth="true"
-    :fullHeight="true"
     :flexCol="true"
-    padding=""
   >
     <ep-control-bar justifyContent="space-between" gap="">
       <ep-control-bar-segment>

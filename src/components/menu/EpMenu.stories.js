@@ -67,7 +67,7 @@ const Template = args => ({
     return { args }
   },
   template: `
-  <ep-container width="200px" padding="10px 0">
+  <ep-container width="200px" height="auto" padding="10px 0">
     <ep-menu :model="menuItems" />
   </ep-container>
   `

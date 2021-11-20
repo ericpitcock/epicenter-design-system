@@ -1,10 +1,11 @@
+import EpContainer from '@/components/container/EpContainer'
 import EpMap from './EpMap'
 
-const container = () => {
-  return {
-    template: '<div style="height: 100vh; padding: 30px;"><story/></div>'
-  }
-}
+// const container = () => {
+//   return {
+//     template: '<div style="height: 100vh; padding: 30px;"><story/></div>'
+//   }
+// }
 
 const mapStyles = {
   Default: 'mapbox://styles/mapbox/streets-v11',
@@ -15,7 +16,7 @@ const mapStyles = {
 export default {
   title: 'Components/Map',
   component: EpMap,
-  decorators: [container],
+  // decorators: [container],
   argTypes: {
     mapCenter: {
       name: 'Map Center',
@@ -43,16 +44,18 @@ export default {
 }
 
 const Template = (args) => ({
-  components: { EpMap },
+  components: { EpContainer, EpMap },
   setup() {
     return { args }
   },
   template: `
-  <EpMap
-    :mapCenter="mapCenter"
-    :mapZoom="mapZoom"
-    :mapStyle="mapStyle"
-  />
+  <ep-container>
+    <ep-map
+      :mapCenter="mapCenter"
+      :mapZoom="mapZoom"
+      :mapStyle="mapStyle"
+    />
+  </ep-container>
   `
 })
 

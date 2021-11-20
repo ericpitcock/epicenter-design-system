@@ -2,7 +2,7 @@ import EpMapApp from './EpMapApp'
 
 const container = () => {
   return {
-    template: '<div style="height: 100vh; padding: 30px;"><story/></div>'
+    template: '<div style="height: 100vh; width: 100%; padding: 30px;"><story/></div>'
   }
 }
 
