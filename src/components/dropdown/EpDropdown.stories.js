@@ -57,7 +57,7 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  template: '<ep-dropdown :model="menuItems" v-bind="args" >'
+  template: '<ep-dropdown :model="menuItems" v-bind="args" />'
 })
 
 export const Dropdown = Template.bind({})

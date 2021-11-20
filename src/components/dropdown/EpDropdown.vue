@@ -41,14 +41,14 @@
     props: {
       button: {
         type: Object,
-        default: {
+        default: () => ({
           kind: 'secondary',
           size: 'default',
           title: 'Default Dropdown',
           // label: 'Default Dropdown',
           iconRight: 'chevron-down',
           iconLeft: undefined
-        }
+        })
       },
       label: {
         type: String,

@@ -36,7 +36,7 @@
       },
       padding: {
         type: String,
-        default: '30px'
+        default: '0'
       },
       width: {
         type: String,

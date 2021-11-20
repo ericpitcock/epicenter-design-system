@@ -31,7 +31,7 @@
 
   export default {
     name: 'EpColor',
-    ddata() {
+    data() {
       return {
         hues: [
           'red',
