@@ -73,7 +73,7 @@ const Template = (args) => ({
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px;
+      padding: 20px;
       gap: 20px 0;"
     >
       <EpIcon

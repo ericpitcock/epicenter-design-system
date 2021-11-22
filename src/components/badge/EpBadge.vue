@@ -1,6 +1,6 @@
 <template>
   <div class="ep-badge">
-    Badge
+    {{ text }}
   </div>
 </template>
 
@@ -10,39 +10,19 @@
     props: {
       text: {
         type: String,
-        default: '',
+        default: 'Badge'
       },
       color: {
         type: String,
-        default: '',
+        default: ''
       },
       size: {
         type: String,
-        default: '',
-      },
-      shape: {
-        type: String,
-        default: '',
+        default: ''
       },
       icon: {
         type: String,
-        default: '',
-      },
-      iconColor: {
-        type: String,
-        default: '',
-      },
-      iconSize: {
-        type: String,
-        default: '',
-      },
-      iconShape: {
-        type: String,
-        default: '',
-      },
-      iconPosition: {
-        type: String,
-        default: '',
+        default: ''
       }
     }
   }

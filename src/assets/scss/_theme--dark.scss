@@ -36,6 +36,9 @@ html[data-color-theme='dark'] {
   --button-menu-item--active: hsl(228, 68%, 55%);
   --button-menu-item-text-hover: var(--text-color);
 
+  // table
+  --table-stripe-color: var(--gray-410);
+
   // navigation
   --nav-link-hover-bg-color: var(--gray-440);
   --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%); // same as light mode

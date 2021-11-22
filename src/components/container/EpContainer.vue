@@ -5,24 +5,32 @@
       { 'ep-container--flex-col': flexCol },
       { 'ep-container--connected': connected }
     ]"
-    :style="{ width: width, height: height, padding: padding, marginTop: gap }"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
   export default {
+    name: 'EpContainer',
     props: {
+      width: {
+        type: String,
+        default: '100%'
+      },
+      height: {
+        type: String,
+        default: '100%'
+      },
+      padding: {
+        type: String,
+        default: '0'
+      },
+      margin: {
+        type: String,
+        default: '0'
+      },
       connected: {
-        type: Boolean,
-        default: false
-      },
-      fullWidth: {
-        type: Boolean,
-        default: false
-      },
-      fullHeight: {
         type: Boolean,
         default: false
       },
@@ -33,18 +41,6 @@
       gap: {
         type: String,
         default: '0'
-      },
-      padding: {
-        type: String,
-        default: '0'
-      },
-      width: {
-        type: String,
-        default: '100%'
-      },
-      height: {
-        type: String,
-        default: '100%'
       }
     }
   }
@@ -52,6 +48,10 @@
 
 <style lang="scss">
   .ep-container {
+    width: v-bind(width);
+    height: v-bind(height);
+    padding: v-bind(padding);
+    margin: v-bind(margin);
     display: inline-flex;
     border-radius: 6px;
     background-color: var(--background-2);
@@ -76,12 +76,6 @@
         border-top-left-radius: 0;
         border-top-right-radius: 0;
       }
-    }
-    &--full-width {
-      width: 100%;
-    }
-    &--full-height {
-      height: 100%;
     }
     &--flex-col {
       flex-direction: column;

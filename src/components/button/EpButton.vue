@@ -50,7 +50,6 @@
     computed: {
       element() {
         const attrs = this.$attrs
-        // return (attrs && this.to ? 'router-link' : (attrs && attrs.href ? 'a' : 'button'))
         if (attrs && attrs.to) {
           return 'router-link'
         }

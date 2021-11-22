@@ -57,7 +57,15 @@ const fakeDropdownItems = [
 export default {
   title: 'Components/Menu',
   component: EpMenu,
-  argTypes: {}
+  argTypes: {
+    menuItems: {
+      name: 'Menu items',
+      control: {
+        type: 'array'
+      },
+      defaultValue: fakeDropdownItems
+    }
+  }
 }
 
 const Template = args => ({
@@ -68,7 +76,7 @@ const Template = args => ({
   },
   template: `
   <ep-container width="200px" height="auto" padding="10px 0">
-    <ep-menu :model="menuItems" />
+    <ep-menu :menuItems="menuItems" />
   </ep-container>
   `
 })
