@@ -2,8 +2,7 @@
   <div
     :class="[
       'ep-container',
-      { 'ep-container--flex-col': flexCol },
-      { 'ep-container--connected': connected }
+      { 'ep-container--flex-col': flexCol }
     ]"
   >
     <slot />
@@ -14,6 +13,10 @@
   export default {
     name: 'EpContainer',
     props: {
+      display: {
+        type: String,
+        default: 'block'
+      },
       width: {
         type: String,
         default: '100%'
@@ -30,13 +33,41 @@
         type: String,
         default: '0'
       },
-      connected: {
-        type: Boolean,
-        default: false
+      backgroundColor: {
+        type: String,
+        default: 'var(--background-2)'
       },
-      flexCol: {
-        type: Boolean,
-        default: false
+      borderRadius: {
+        type: String,
+        default: 'var(--border-radius--large)'
+      },
+      borderWidth: {
+        type: String,
+        default: '0'
+      },
+      borderColor: {
+        type: String,
+        default: 'var(--border-color)'
+      },
+      flexDirection: {
+        type: String,
+        default: 'row'
+      },
+      flexWrap: {
+        type: String,
+        default: 'nowrap'
+      },
+      justifyContent: {
+        type: String,
+        default: 'flex-start'
+      },
+      alignItems: {
+        type: String,
+        default: 'flex-start'
+      },
+      alignContent: {
+        type: String,
+        default: 'flex-start'
       },
       gap: {
         type: String,
@@ -46,39 +77,21 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .ep-container {
+    display: v-bind(display);
+    flex-direction: v-bind(flexDirection);
+    flex-wrap: v-bind(flexWrap);
+    justify-content: v-bind(justifyContent);
+    align-items: v-bind(alignItems);
+    align-content: v-bind(alignContent);
+    gap: v-bind(gap);
     width: v-bind(width);
     height: v-bind(height);
     padding: v-bind(padding);
     margin: v-bind(margin);
-    display: inline-flex;
-    border-radius: 6px;
-    background-color: var(--background-2);
-    border: 1px solid var(--border-color);
-    // this kills the sticky header on the table
-    // overflow: hidden;
-    &:first-child {
-      margin-top: 0 !important;
-    }
-    &--connected {
-      border-radius: 0;
-      &:first-child {
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
-      }
-      &:last-child {
-        border-bottom-right-radius: 6px;
-        border-bottom-left-radius: 6px;
-      }
-      & + & {
-        border-top: none;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-      }
-    }
-    &--flex-col {
-      flex-direction: column;
-    }
+    border-radius: v-bind(borderRadius);
+    background-color: v-bind(backgroundColor);
+    border: v-bind(borderWidth) solid v-bind(borderColor);
   }
 </style>
