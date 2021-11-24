@@ -93,6 +93,7 @@
 <style lang="scss" scoped>
   .ep-dropdown {
     position: relative;
+    width: fit-content;
     &__container {
       position: absolute;
       top: 100%;

@@ -2,6 +2,20 @@ import EpDropdown from './EpDropdown'
 import EpDropdownItem from './EpDropdownItem'
 import EpButton from '../button/EpButton'
 
+const container = () => {
+  return {
+    template: '<div style="display: grid; height: 100%; place-content: center;"><story/></div>'
+  }
+}
+
+const buttonDefaults = {
+  kind: 'secondary',
+  size: 'default',
+  title: 'Default Dropdown',
+  label: 'Default Dropdown',
+  iconRight: 'chevron-down',
+  iconLeft: undefined
+}
 const fakeDropdownItems = [
   {
     label: 'Go to internal page',
@@ -32,6 +46,7 @@ const fakeDropdownItems = [
 export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
+  decorators: [container],
   subcomponents: { EpDropdownItem, EpButton },
   argTypes: {
     alignRight: {
@@ -40,6 +55,13 @@ export default {
         type: 'boolean'
       },
       defaultValue: false
+    },
+    button: {
+      name: 'Button',
+      control: {
+        type: 'object'
+      },
+      defaultValue: buttonDefaults
     },
     menuItems: {
       name: 'Menu items',
@@ -57,7 +79,7 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  template: '<ep-dropdown :model="menuItems" v-bind="args" />'
+  template: '<ep-dropdown :button="buttonDefaults" :menuItems="menuItems" v-bind="args" />'
 })
 
 export const Dropdown = Template.bind({})
