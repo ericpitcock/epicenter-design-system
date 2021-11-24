@@ -3,6 +3,10 @@
 
 // global theme stuff (included no matter the theme)
 :root {
+  // border radius
+  --border-radius: 0.3rem;
+  --border-radius--large: 0.6rem;
+
   // buttons
   --primary-color--base: hsl(199, 89%, 48%);
   --primary-color--hover: hsl(199, 89%, 43%);

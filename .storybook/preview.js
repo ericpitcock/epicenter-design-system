@@ -9,7 +9,7 @@ import '!style-loader!css-loader!sass-loader!../src/assets/scss/global.scss'
 import '!style-loader!css-loader!sass-loader!../src/assets/scss/storybook.scss'
 
 export const parameters = {
-  layout: 'centered'
+  layout: 'fullscreen'
 }
 
 // global decorators

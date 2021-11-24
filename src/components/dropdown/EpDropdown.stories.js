@@ -2,11 +2,11 @@ import EpDropdown from './EpDropdown'
 import EpDropdownItem from './EpDropdownItem'
 import EpButton from '../button/EpButton'
 
-const container = () => {
-  return {
-    template: '<div style="display: grid; height: 100%; place-content: center;"><story/></div>'
-  }
-}
+// const container = () => {
+//   return {
+//     template: '<div style="display: grid; height: 100%; place-content: center;"><story/></div>'
+//   }
+// }
 
 const buttonDefaults = {
   kind: 'secondary',
@@ -46,7 +46,7 @@ const fakeDropdownItems = [
 export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
-  decorators: [container],
+  // decorators: [container],
   subcomponents: { EpDropdownItem, EpButton },
   argTypes: {
     alignRight: {

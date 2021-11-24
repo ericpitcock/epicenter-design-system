@@ -1,5 +1,5 @@
 <template>
-  <ep-container :flexCol="true">
+  <ep-container>
     <ep-control-bar justifyContent="space-between" gap="">
       <ep-control-bar-segment>
         <ep-button kind="secondary" label="Zoom in" iconLeft="zoom-in" @click="mapZoom++" />
