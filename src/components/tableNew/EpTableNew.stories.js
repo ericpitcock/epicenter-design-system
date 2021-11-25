@@ -1,6 +1,6 @@
 import EpContainer from '@/components/container/EpContainer'
 import EpTableNew from './EpTableNew'
-import { columns, data } from './data'
+import { columns, fakeArray } from './data'
 
 const container = () => {
   return {
@@ -26,7 +26,14 @@ export default {
       control: {
         type: 'array'
       },
-      defaultValue: data
+      defaultValue: fakeArray(30)
+    },
+    exclude: {
+      name: 'Exclude',
+      control: {
+        type: 'array'
+      },
+      defaultValue: ['id']
     },
     selectable: {
       name: 'Selectable',
@@ -41,13 +48,6 @@ export default {
         type: 'number'
       },
       defaultValue: 3899513739
-    },
-    hideEmpty: {
-      name: 'Hide Empty',
-      control: {
-        type: 'boolean'
-      },
-      defaultValue: false
     },
     stickyHeader: {
       name: 'Sticky Header',
@@ -69,7 +69,7 @@ export default {
 const Template = (args) => ({
   components: { EpContainer, EpTableNew },
   setup() {
-    return { args, columns, data }
+    return { args, columns, fakeArray }
   },
   template: `
   <ep-container padding="1rem 2rem">

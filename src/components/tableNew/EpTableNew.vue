@@ -9,9 +9,12 @@
   >
     <thead>
       <tr>
-        <th
+        <template
           v-for="(column, index) in columns"
           :key="index"
+        >
+        <th
+          v-if="!excluded(column.key)"
           @click="sort(column.key)"
           :class="headClasses(column.key)"
         >
@@ -20,19 +23,18 @@
             <EpIcon :name="arrowIcon()" />
           </div>
         </th>
+        </template>
       </tr>
     </thead>
     <tbody>
       <tr
-        v-for="row in data"
+        v-for="row in filteredData"
         :key="row.id"
         @click="$emit('row-click', row.id)"
         :class="{ 'ep-table-row--selected': isSelected(row.id) }"
       >
         <template v-for="(value, key) in row" :key="key">
-        <td v-if="key != 'id'">
-          <!-- {{ value != null ? value || value : '' }} -->
-          <!-- {{ column[index].formatter(value) }} -->
+        <td v-if="!excluded(key)" :class="cellStyle(key)">
           {{ formatCell(value, key) }}
         </td>
         </template>
@@ -72,9 +74,9 @@
         type: Object,
         default: null
       },
-      hideEmpty: {
-        type: Boolean,
-        default: false
+      exclude: {
+        type: Array,
+        default: () => []
       },
       selectable: {
         type: Boolean,
@@ -97,18 +99,22 @@
       arrowIcon() {
         return this.currentSortDir == 'desc' ? 'arrow-up' : 'arrow-down'
       },
+      cellStyle(key) {
+        const style = this.columns.find(column => column.key == key)?.style
+        return style ? style : ''
+      },
       headClasses(key) {
         return key == this.currentSort
           ? ['active', `active--${this.currentSortDir}`]
           : null
       },
+      excluded(key) {
+        return this.exclude.includes(key)
+      },
       formatCell(value, key) {
-        const formatter = this.columns.find(column => column.key == key).formatter
+        const formatter = this.columns.find(column => column.key == key)?.formatter
         return formatter ? formatter(value) : value
       },
-      // isHidden(rowHidden) {
-      //   return (this.hideEmpty && rowHidden)
-      // },
       isSelected(rowID) {
         return rowID === null ? false : rowID == this.selected
       },
@@ -127,9 +133,9 @@
         return this.data.sort((a, b) => {
           let modifier = 1
           if (this.currentSortDir === 'desc') modifier = -1
-          if (a[this.currentSort].value < b[this.currentSort].value)
+          if (a[this.currentSort] < b[this.currentSort])
             return -1 * modifier
-          if (a[this.currentSort].value > b[this.currentSort].value)
+          if (a[this.currentSort] > b[this.currentSort])
             return 1 * modifier
           return 0
         })
@@ -241,7 +247,7 @@
     }
     &--striped {
       tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
+        background-color: var(--table-stripe-color);
       }
     }
   }

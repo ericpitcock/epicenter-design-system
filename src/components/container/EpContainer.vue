@@ -1,10 +1,5 @@
 <template>
-  <div
-    :class="[
-      'ep-container',
-      { 'ep-container--flex-col': flexCol }
-    ]"
-  >
+  <div class="ep-container">
     <slot />
   </div>
 </template>

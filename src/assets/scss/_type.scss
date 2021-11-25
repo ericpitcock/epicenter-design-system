@@ -42,3 +42,11 @@ p.read-me {
 .text--subtle {
   color: var(--text-subtle);
 }
+
+.tabular-numbers {
+  font-feature-settings: "tnum";
+}
+
+.text-align--right {
+  text-align: right;
+}
