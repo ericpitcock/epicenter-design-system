@@ -68,17 +68,4 @@ const fakeArray = (length) => {
   return arr
 }
 
-// const data = [
-//   {
-//     id: faker.datatype.uuid(),
-//     start_date: faker.date.past().toISOString(),
-//     name: faker.address.city(),
-//     distance: faker.datatype.number({ min: 10000, max: 100000 }),
-//     total_elevation_gain: faker.datatype.number({ min: 100, max: 800 }),
-//     type: faker.random.arrayElement(['VirtualRide', 'Ride']),
-//     average_speed: faker.datatype.number({ min: 8, max: 10, precision: .1 }),
-//     average_watts: faker.datatype.number({ min: 80, max: 200, precision: .1 })
-//   }
-// ]
-
 export { columns, fakeArray }
