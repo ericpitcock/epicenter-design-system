@@ -2,7 +2,10 @@
   <table
     :class="[
       'ep-table',
+      { 'ep-table--full-width': fullWidth },
       { 'ep-table--selectable': selectable },
+      { 'ep-table--bordered': bordered },
+      { 'ep-table--compact': compact },
       { 'ep-table--sticky': stickyHeader },
       { 'ep-table--striped': striped }
     ]"
@@ -20,7 +23,7 @@
         >
           <div>
             <span class="label">{{ column.header }}</span>
-            <EpIcon :name="arrowIcon()" />
+            <ep-icon :name="arrowIcon" />
           </div>
         </th>
         </template>
@@ -52,9 +55,9 @@
       return {
         currentSort: 'start_date',
         currentSortDir: 'desc'
-        // using the spread clones the arrray, making it non-reactive
-        // as I don't want the sort function mutating the data being sent the charts, etc
-        // no longer using, but keeping so I nevar forget
+        // the spread operator clones the arrray, making it non-reactive
+        // so when you mutate the data (sort function, etc)
+        // it won't affect other components
         // tableData: [...this.data]
       }
     },
@@ -70,13 +73,25 @@
         type: Array,
         required: true
       },
-      dateFilter: {
-        type: Object,
-        default: null
-      },
+      // dateFilter: {
+      //   type: Object,
+      //   default: null
+      // },
       exclude: {
         type: Array,
         default: () => []
+      },
+      fullWidth: {
+        type: Boolean,
+        default: false
+      },
+      bordered: {
+        type: Boolean,
+        default: false
+      },
+      compact: {
+        type: Boolean,
+        default: false
       },
       selectable: {
         type: Boolean,
@@ -96,9 +111,9 @@
       }
     },
     methods: {
-      arrowIcon() {
-        return this.currentSortDir == 'desc' ? 'arrow-up' : 'arrow-down'
-      },
+      // arrowIcon() {
+      //   return this.currentSortDir == 'desc' ? 'arrow-up' : 'arrow-down'
+      // },
       cellStyle(key) {
         const style = this.columns.find(column => column.key == key)?.style
         return style ? style : ''
@@ -126,6 +141,9 @@
       }
     },
     computed: {
+      arrowIcon() {
+        return this.currentSortDir == 'desc' ? 'arrow-up' : 'arrow-down'
+      },
       filteredData() {
         return this.sortedData
       },
@@ -146,11 +164,8 @@
 
 <style lang="scss" scoped>
   .ep-table {
-    width: 100%;
     thead {
-      // these two could probably move to classes
-      // font-family: 'GT America Condensed Medium';
-      font-variation-settings: 'wght' 500, 'wdth' 80, 'opsz' 11;
+      font-variation-settings: 'wght' 600, 'wdth' 80, 'opsz' 11;
       user-select: none;
       th {
         text-align: left;
@@ -172,7 +187,7 @@
           align-items: center;
           width: 100%;
           height: 100%;
-          padding: 14px;
+          padding: 1.4rem;
           border-bottom: 1px solid var(--border-color);
           span.label {
             white-space: nowrap;
@@ -189,13 +204,29 @@
     tbody {
       tr {
         position: relative;
+        &:first-child {
+          border-top: 0;
+        }
+        td {
+          padding: 1.4rem;
+          vertical-align: middle;
+        }
+      }
+    }
+    &--full-width {
+      width: 100%;
+    }
+    &--bordered {
+      tbody tr {
         border: 1px solid var(--border-color);
         border-right: 0;
         border-left: 0;
-        td {
-          padding: 14px;
-          vertical-align: middle;
-        }
+      }
+    }
+    &--compact {
+      thead tr th div,
+      tbody tr td {
+        padding: 0.8rem 1.2rem;
       }
     }
     &--selectable {

@@ -19,14 +19,20 @@ export default {
       control: {
         type: 'object'
       },
-      defaultValue: columns
+      defaultValue: columns,
+      table: {
+        category: 'Data'
+      }
     },
     data: {
       name: 'Data',
       control: {
         type: 'array'
       },
-      defaultValue: fakeArray(30)
+      defaultValue: fakeArray(30),
+      table: {
+        category: 'Data'
+      }
     },
     exclude: {
       name: 'Exclude',
@@ -42,12 +48,29 @@ export default {
       },
       defaultValue: false
     },
-    selected: {
-      name: 'Selected ID',
+    fullWidth: {
+      name: 'Full Width',
       control: {
-        type: 'number'
+        type: 'boolean'
       },
-      defaultValue: 3899513739
+      defaultValue: false
+    },
+    bordered: {
+      name: 'Bordered',
+      control: {
+        type: 'boolean'
+      },
+      defaultValue: false
+    },
+    compact: {
+      name: 'Compact',
+      control: {
+        type: 'boolean'
+      },
+      defaultValue: false
+    },
+    selected: {
+      table: { disable: true }
     },
     stickyHeader: {
       name: 'Sticky Header',
@@ -72,7 +95,7 @@ const Template = (args) => ({
     return { args, columns, fakeArray }
   },
   template: `
-  <ep-container padding="1rem 2rem">
+  <ep-container padding="1rem 2rem 2rem">
     <ep-table-new v-bind="args" />
   </ep-container>
   `
