@@ -14,6 +14,13 @@ const columns = [
     key: 'name'
   },
   {
+    header: 'Ride Type',
+    key: 'type',
+    formatter: (value) => {
+      return value
+    }
+  },
+  {
     header: 'Distance (mi)',
     key: 'distance',
     formatter: (value) => {
@@ -28,13 +35,6 @@ const columns = [
       return (value * 3.28084).toFixed(2)
     },
     style: 'tabular-numbers'
-  },
-  {
-    header: 'Ride Type',
-    key: 'type',
-    formatter: (value) => {
-      return value
-    }
   },
   {
     header: 'Avg Speed (mph)',
@@ -58,12 +58,12 @@ const fakeArray = (length) => {
       id: faker.datatype.uuid(),
       start_date: faker.date.past().toISOString(),
       name: faker.address.city(),
+      type: faker.random.arrayElement(['VirtualRide', 'Ride']),
       distance: faker.datatype.number({ min: 10000, max: 100000 }),
       total_elevation_gain: faker.datatype.number({ min: 100, max: 800 }),
-      type: faker.random.arrayElement(['VirtualRide', 'Ride']),
       average_speed: faker.datatype.number({ min: 20, max: 30, precision: .1 }),
       average_watts: faker.datatype.number({ min: 80, max: 200, precision: .1 })
-  })
+    })
   }
   return arr
 }

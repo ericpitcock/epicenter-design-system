@@ -95,7 +95,7 @@ const Template = (args) => ({
     return { args, columns, fakeArray }
   },
   template: `
-  <ep-container padding="1rem 2rem 2rem">
+  <ep-container width="fit-content" padding="0.4rem 2rem 2rem">
     <ep-table-new v-bind="args" />
   </ep-container>
   `

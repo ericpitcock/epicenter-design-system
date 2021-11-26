@@ -165,7 +165,7 @@
 <style lang="scss" scoped>
   .ep-table {
     thead {
-      font-variation-settings: 'wght' 600, 'wdth' 80, 'opsz' 11;
+      font-variation-settings: 'wght' 600;
       user-select: none;
       th {
         text-align: left;

@@ -48,6 +48,9 @@ export default {
         min: 20, max: 60, step: 2
       },
       defaultValue: 20
+    },
+    type: {
+      table: { disable: true }
     }
   }
 }

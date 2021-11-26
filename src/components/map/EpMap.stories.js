@@ -39,7 +39,42 @@ export default {
         options: mapStyles
       },
       defaultValue: 'mapbox://styles/mapbox/streets-v11'
-    }
+    },
+    mapSource: {
+      name: 'Map Source',
+      control: {
+        type: 'object'
+      },
+      defaultValue: {}
+    },
+    mapLayer: {
+      name: 'Map Layer',
+      control: {
+        type: 'object'
+      },
+      defaultValue: {}
+    },
+    scrollZoom: {
+      name: 'Scroll Zoom',
+      control: {
+        type: 'boolean'
+      },
+      defaultValue: false
+    },
+    navigationControl: {
+      name: 'Navigation Control',
+      control: {
+        type: 'boolean'
+      },
+      defaultValue: false
+    },
+    fitToBounds: {
+      name: 'Fit Bounds',
+      control: {
+        type: 'boolean'
+      },
+      defaultValue: false
+    },
   }
 }
 
@@ -49,12 +84,8 @@ const Template = (args) => ({
     return { args }
   },
   template: `
-  <ep-container>
-    <ep-map
-      :mapCenter="mapCenter"
-      :mapZoom="mapZoom"
-      :mapStyle="mapStyle"
-    />
+  <ep-container height="100vh">
+    <ep-map v-bind="args" />
   </ep-container>
   `
 })
