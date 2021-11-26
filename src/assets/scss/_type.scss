@@ -9,11 +9,11 @@ html {
 
 @font-face {
   font-family: 'Inter var';
-  font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('../fonts/Inter-roman.var.woff2?v=3.19') format('woff2');
+  font-style: normal;
   font-named-instance: 'Regular';
+  src: url('../fonts/Inter-roman.var.woff2?v=3.19') format('woff2');
 }
 
 :root {
@@ -24,20 +24,40 @@ html {
   --font-size--default: 1.3rem; // 13px
   --font-size--body: 1.5rem; // 15px
   --font-size--large: 2rem; // 20px
+  --font-size--jumbo: 2.6rem; // 26px
 }
 
-.font-size--small { font-size: var(--font-size--small); }
-.font-size--default { font-size: var(--font-size--default); }
-.font-size--body { font-size: var(--font-size--body); }
-.font-size--large { font-size: var(--font-size--large); }
-
-p.read-me {
+.font-size--tiny {
+  font-size: var(--font-size--tiny);
+  font-variation-settings: 'wght' 600;
+}
+.font-size--small {
+  font-size: var(--font-size--small);
+  font-variation-settings: 'wght' 540;
+}
+.font-size--default {
+  font-size: var(--font-size--default);
+}
+.font-size--body {
   font-size: var(--font-size--body);
-  line-height: 1.5em;
-  & + & {
-    margin-top: 20px;
-  }
+  font-variation-settings: 'wght' 500;
 }
+.font-size--large {
+  font-size: var(--font-size--large);
+  font-variation-settings: 'wght' 400;
+}
+.font-size--jumbo {
+  font-size: var(--font-size--jumbo);
+  font-variation-settings: 'wght' 300;
+}
+
+// p.read-me {
+//   font-size: var(--font-size--body);
+//   line-height: 1.5em;
+//   & + & {
+//     margin-top: 20px;
+//   }
+// }
 
 .text--subtle {
   color: var(--text-subtle);
