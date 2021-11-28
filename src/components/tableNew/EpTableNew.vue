@@ -133,11 +133,11 @@
       isSelected(rowID) {
         return rowID === null ? false : rowID == this.selected
       },
-      sort: function(s) {
-        if (s === this.currentSort) {
+      sort(key) {
+        if (key === this.currentSort) {
           this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc'
         }
-        this.currentSort = s
+        this.currentSort = key
       }
     },
     computed: {
