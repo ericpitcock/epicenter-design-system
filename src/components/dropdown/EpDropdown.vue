@@ -114,6 +114,7 @@
       border: 1px solid var(--border-color--lighter);
       border-radius: 3px;
       box-shadow: var(--drop-shadow);
+      z-index: 20;
     }
   }
 </style>

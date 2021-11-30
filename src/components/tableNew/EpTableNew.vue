@@ -38,7 +38,7 @@
       >
         <template v-for="(value, key) in row" :key="key">
         <td v-if="!excluded(key)" :class="cellStyle(key)">
-          {{ formatCell(value, key) }}
+          <span v-on="cellAction(key)">{{ formatCell(value, key) }}</span>
         </td>
         </template>
       </tr>
@@ -111,9 +111,10 @@
       }
     },
     methods: {
-      // arrowIcon() {
-      //   return this.currentSortDir == 'desc' ? 'arrow-up' : 'arrow-down'
-      // },
+      cellAction(key) {
+        const column = this.columns.find(column => column.key === key)?.on
+        return column ? column : {}
+      },
       cellStyle(key) {
         const style = this.columns.find(column => column.key == key)?.style
         return style ? style : ''
@@ -131,7 +132,9 @@
         return formatter ? formatter(value) : value
       },
       isSelected(rowID) {
-        return rowID === null ? false : rowID == this.selected
+        // return rowID === null ? false : rowID == this.selected
+        // FIX THIS
+        return false
       },
       sort: function(s) {
         if (s === this.currentSort) {
@@ -208,8 +211,13 @@
           border-top: 0;
         }
         td {
+          width: 100%;
+          min-width: 1px;
           padding: 1.4rem;
           vertical-align: middle;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
     }

@@ -7,6 +7,9 @@ const columns = [
     key: 'start_date',
     formatter: (value) => {
       return value.split('T')[0].replaceAll('-', '/')
+    },
+    on: {
+      click: () => console.log('click')
     }
   },
   {

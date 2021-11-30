@@ -1,6 +1,4 @@
 import EpDropdown from './EpDropdown'
-import EpDropdownItem from './EpDropdownItem'
-import EpButton from '../button/EpButton'
 
 // const container = () => {
 //   return {
@@ -47,7 +45,6 @@ export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
   // decorators: [container],
-  subcomponents: { EpDropdownItem, EpButton },
   argTypes: {
     alignRight: {
       name: 'Align right',
@@ -74,7 +71,7 @@ export default {
 }
 
 const Template = (args) => ({
-  components: { EpDropdown, EpButton, EpDropdownItem },
+  components: { EpDropdown },
   data: () => ({ menuItems: fakeDropdownItems }),
   setup() {
     return { args };
