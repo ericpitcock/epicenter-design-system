@@ -136,11 +136,11 @@
         // FIX THIS
         return false
       },
-      sort: function(s) {
-        if (s === this.currentSort) {
+      sort(key) {
+        if (key === this.currentSort) {
           this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc'
         }
-        this.currentSort = s
+        this.currentSort = key
       }
     },
     computed: {
