@@ -1,12 +1,5 @@
 import moment from 'moment'
-
 import EpChart from './EpChart'
-
-const container = () => {
-  return {
-    template: '<div style="padding: 30px;"><story/></div>'
-  }
-}
 
 const chartData = [
   {
@@ -283,7 +276,7 @@ const extremes = {
 export default {
   title: 'Components/Chart',
   component: EpChart,
-  decorators: [container],
+  // decorators: [container],
   argTypes: {
     options: {
       defaultValue: options,

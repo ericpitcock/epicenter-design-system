@@ -84,103 +84,6 @@ export default {
         type: 'text',
       },
       defaultValue: 'var(--border-color)'
-    },
-    flexDirection: {
-      name: 'Flex Direction',
-      control: {
-        type: 'select',
-        options: [
-          'row',
-          'row-reverse',
-          'column',
-          'column-reverse'
-        ]
-      },
-      defaultValue: 'row',
-      table: {
-        category: 'Flexbox'
-      }
-    },
-    flexWrap: {
-      name: 'Flex Wrap',
-      control: {
-        type: 'select',
-        options: [
-          'nowrap',
-          'wrap',
-          'wrap-reverse'
-        ]
-      },
-      defaultValue: 'nowrap',
-      table: {
-        category: 'Flexbox'
-      }
-    },
-    justifyContent: {
-      name: 'Justify Content',
-      control: {
-        type: 'select',
-        options: [
-          'flex-start',
-          'flex-end',
-          'center',
-          'space-between',
-          'space-around',
-          'space-evenly',
-          'stretch',
-          'start',
-          'end'
-        ]
-      },
-      defaultValue: 'flex-start',
-      table: {
-        category: 'Flexbox'
-      }
-    },
-    alignItems: {
-      name: 'Align Items',
-      control: {
-        type: 'select',
-        options: [
-          'flex-start',
-          'flex-end',
-          'center',
-          'baseline',
-          'stretch'
-        ]
-      },
-      defaultValue: 'flex-start',
-      table: {
-        category: 'Flexbox'
-      }
-    },
-    alignContent: {
-      name: 'Align Content',
-      control: {
-        type: 'select',
-        options: [
-          'flex-start',
-          'flex-end',
-          'center',
-          'space-between',
-          'space-around',
-          'stretch'
-        ]
-      },
-      defaultValue: 'flex-start',
-      table: {
-        category: 'Flexbox'
-      }
-    },
-    gap: {
-      name: 'Gap',
-      control: {
-        type: 'text',
-      },
-      defaultValue: '0',
-      table: {
-        category: 'Flexbox'
-      }
     }
   }
 }
@@ -190,22 +93,7 @@ const Template = (args) => ({
   setup() {
     return { args }
   },
-  template: `
-  <ep-container v-bind="args">
-    <div
-      v-for="n of 8"
-      style="
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100px;
-        height: 100px;
-        border: 1px solid var(--border-color)
-      ">
-      {{ n }}
-    </div>
-  </ep-container>
-  `
+  template: '<ep-container v-bind="args" />'
 })
 
 export const Container = Template.bind({})

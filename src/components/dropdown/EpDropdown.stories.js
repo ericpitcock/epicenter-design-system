@@ -1,10 +1,5 @@
+import { centered } from '@/helpers/decorators'
 import EpDropdown from './EpDropdown'
-
-// const container = () => {
-//   return {
-//     template: '<div style="display: grid; height: 100%; place-content: center;"><story/></div>'
-//   }
-// }
 
 const buttonDefaults = {
   kind: 'secondary',
@@ -44,7 +39,7 @@ const fakeDropdownItems = [
 export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
-  // decorators: [container],
+  decorators: [centered],
   argTypes: {
     alignRight: {
       name: 'Align right',
@@ -72,7 +67,7 @@ export default {
 
 const Template = (args) => ({
   components: { EpDropdown },
-  data: () => ({ menuItems: fakeDropdownItems }),
+  data: () => ({ buttonDefaults, menuItems: fakeDropdownItems }),
   setup() {
     return { args };
   },

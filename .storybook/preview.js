@@ -1,5 +1,4 @@
 import { app } from '@storybook/vue3'
-import vueRouter from 'storybook-vue3-router'
 import store from '../src/store'
 
 app.use(store)
@@ -12,7 +11,7 @@ export const parameters = {
   layout: 'fullscreen'
 }
 
-// global decorators
-export const decorators = [
-  vueRouter()
-]
+// export const decorators = [(story) => ({
+//   components: { story },
+//   template: '<div style="display: grid; place-content: center; width: 100vw; height: 100vh;"><story /></div>'
+// })]

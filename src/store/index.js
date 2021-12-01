@@ -30,17 +30,17 @@ export default createStore({
       document.documentElement.setAttribute('data-color-theme', newTheme)
       commit('setTheme', newTheme)
     },
-    toggleSidebar({ state, commit, getters }) {
+    toggleSidebar({ state, commit }) {
       // when user toggles the sidebar, record it as the opposite of the current state
-      commit('setSidebarUserState', !getters.getSidebarState)
+      commit('setSidebarUserState', !state.sidebar)
       // then actually toggle the sidebar
       commit('toggleSidebar')
     },
-    toggleContentWidth({ state, commit, getters, dispatch }) {
+    toggleContentWidth({ state, commit }) {
       // if it's maximized
-      if (getters.getContentWidth) {
+      if (state.fullWidthContent) {
         // this is what happens when you minimize it
-        const newState = (getters.getSidebarUserState === null) ? true : getters.getSidebarUserState
+        const newState = (state.sidebarUser === null) ? true : state.sidebarUser
         commit('setSidebarState', newState)
       } else {
         // this is what happens when you maximize it

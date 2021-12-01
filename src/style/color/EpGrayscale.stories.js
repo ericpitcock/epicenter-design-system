@@ -1,15 +1,10 @@
+import { padded } from '@/helpers/decorators'
 import EpGrayscale from './EpGrayscale'
-
-const container = () => {
-  return {
-    template: '<div style="padding: 30px;"><story/></div>'
-  }
-}
 
 export default {
   title: 'Style/Grayscale',
   component: EpGrayscale,
-  decorators: [container],
+  decorators: [padded],
   argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true }
@@ -27,17 +22,3 @@ const Template = (args) => ({
 })
 
 export const Grayscale = Template.bind({})
-
-//OLD
-// export default {
-//   title: 'Style/EpColor',
-//   component: EpColor,
-//   decorators: [withKnobs]
-// }
-
-// export const Palette = () => ({
-//   components: { EpColor },
-//   template: '<EpColor />',
-//   props: { },
-//   methods: { }
-// })

@@ -2,14 +2,14 @@ import EpInsight from './EpInsight'
 
 const container = () => {
   return {
-    template: '<div style="height: 100%; padding: 30px;"><story/></div>'
+    template: '<div style="display: block; width: 100vw; height: 100vh;"><story/></div>'
   }
 }
 
 export default {
   title: 'Insight/App',
   component: EpInsight,
-  // decorators: [container],
+  decorators: [container],
   argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true }

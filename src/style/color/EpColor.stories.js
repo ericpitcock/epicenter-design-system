@@ -1,15 +1,10 @@
+import { padded } from '@/helpers/decorators'
 import EpColor from './EpColor'
-
-const container = () => {
-  return {
-    template: '<div style="padding: 30px;"><story/></div>'
-  }
-}
 
 export default {
   title: 'Style/Color',
   component: EpColor,
-  decorators: [container],
+  decorators: [padded],
   argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true }

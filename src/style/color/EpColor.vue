@@ -1,7 +1,6 @@
 <template>
   <div class="colors">
     <ep-container
-      :connected="true"
       :padding="'30px 40px 40px'"
       v-for="(hue, index) in hues"
       :key="index"

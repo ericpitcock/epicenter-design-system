@@ -59,7 +59,7 @@ export default {
       control: {
         type: 'boolean'
       },
-      defaultValue: false
+      defaultValue: true
     },
     navigationControl: {
       name: 'Navigation Control',

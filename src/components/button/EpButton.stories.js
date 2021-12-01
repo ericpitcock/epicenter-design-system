@@ -1,3 +1,5 @@
+import vueRouter from 'storybook-vue3-router'
+import { centered } from '@/helpers/decorators'
 import svgIcons from '@/components/icon/load-icons'
 import EpButton from './EpButton'
 
@@ -7,6 +9,7 @@ icons.push(undefined)
 export default {
   title: 'Components/Button',
   component: EpButton,
+  decorators: [centered],
   argTypes: {
     disabled: {
       name: 'Disabled',
@@ -110,3 +113,7 @@ const Template = (args) => ({
 })
 
 export const Button = Template.bind({})
+
+Button.decorators = [
+  vueRouter()
+]

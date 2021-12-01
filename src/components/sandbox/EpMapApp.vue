@@ -1,73 +1,73 @@
 <template>
   <ep-container>
-    <ep-control-bar justifyContent="space-between" gap="">
-      <ep-control-bar-segment>
-        <ep-button kind="secondary" label="Zoom in" iconLeft="zoom-in" @click="mapZoom++" />
-        <ep-button kind="secondary" label="Zoom out" iconLeft="zoom-out" @click="mapZoom--" />
-      </ep-control-bar-segment>
-      <ep-control-bar-segment>
-        Future search goes here
-      </ep-control-bar-segment>
-      <ep-control-bar-segment justifySelf="flex-end">
-        <ep-dropdown :button="{ label: 'Seattle Record Stores' }" :menuItems="seattleRecordStores" alignRight />
-      </ep-control-bar-segment>
-    </ep-control-bar>
-    <ep-map
-      :mapCenter="mapCenter"
-      :mapZoom="mapZoom"
-      :navigationControl="false"
-    />
+    <ep-gridd
+      style="height: 100%"
+      rowGap="30px"
+      gridTempColumns="1fr"
+      gridTemplateRows="60px 1fr"
+    >
+      <div>
+        <ep-button
+          kind="secondary"
+          label="Zoom in"
+          iconLeft="zoom-in"
+          @click="mapZoom++"
+        />
+        <ep-button
+          kind="secondary"
+          label="Zoom out"
+          iconLeft="zoom-out"
+          @click="mapZoom--"
+        />
+        <ep-dropdown
+          :button="{ label: 'Seattle Record Stores' }"
+          :menuItems="seattleRecordStores"
+          alignRight
+        />
+      </div>
+      <div style="background: red;">
+        shit
+        <!-- <ep-map
+          :mapCenter="mapCenter"
+          :mapZoom="mapZoom"
+          :navigationControl="false"
+        /> -->
+      </div>
+      <!-- <ep-table-new
+        :columns="tableColumns"
+        :data="tableData(20)"
+        fullWidth
+        compact
+        striped
+        selectable
+        stickyHeader
+      /> -->
+    </ep-gridd>
   </ep-container>
 </template>
 
 <script>
+  import faker from 'faker';
+
+  import EpContainer from '@/components/container/EpContainer'
+  import EpGridd from '@/components/grid/EpGridd'
   import EpButton from '@/components/button/EpButton'
   import EpDropdown from '@/components/dropdown/EpDropdown'
-  import EpDropdownItem from '@/components/dropdown/EpDropdownItem'
-  import EpControlBar from '@/components/controlbar/EpControlBar'
-  import EpControlBarSegment from '@/components/controlbar/EpControlBarSegment'
   import EpMap from '@/components/map/EpMap'
-  import EpContainer from '@/components/container/EpContainer'
+  import EpTableNew from '@/components/tableNew/EpTableNew'
 
   export default {
     name: 'Sandbox',
     components: {
+      EpContainer,
+      EpGridd,
       EpButton,
-      EpControlBar,
-      EpControlBarSegment,
       EpDropdown,
-      EpDropdownItem,
       EpMap,
-      EpContainer
+      EpTableNew
     },
     data() {
       return {
-        newMenuItems: [
-          {
-            label: 'Go to internal page',
-            iconLeft: 'arrow-right',
-            bind: {
-              to: '/'
-            }
-          },
-          {
-            divider: true
-          },
-          {
-            label: 'Log click',
-            iconLeft: 'circle',
-            command: () => {
-              this.testMethod()
-            }
-          },
-          {
-            label: 'Link to internet',
-            iconLeft: 'export',
-            bind: {
-              href: 'https://www.google.com/maps'
-            }
-          }
-        ],
         seattleRecordStores: [
           {
             label: 'Sonic Boom Records',
@@ -80,39 +80,57 @@
             }
           }
         ],
-        fakeDropdownItems: [
+        mapCenter: undefined,
+        mapZoom: 14,
+        tableColumns: [
           {
-            label: 'Go to internal page',
-            icon: 'arrow-right',
-            bind: {
-              to: '/'
-            }
+            header: 'Name',
+            key: 'name'
           },
           {
-            divider: true
+            header: 'Address',
+            key: 'address'
           },
           {
-            label: 'Log click',
-            icon: 'circle',
-            on: {
-              click: () => console.log('click')
-            }
+            header: 'City',
+            key: 'city'
           },
           {
-            label: 'Link to internet',
-            icon: 'export',
-            bind: {
-              href: 'https://www.google.com/maps'
-            }
+            header: 'State',
+            key: 'state'
+          },
+          {
+            header: 'Zip',
+            key: 'zip'
           }
         ],
-        mapCenter: undefined,
-        mapZoom: 14
+        // tableData: [
+        //   {
+        //     name: 'Sonic Boom Records',
+        //     address: '1501 4th Ave',
+        //     city: 'Seattle',
+        //     state: 'WA',
+        //     zip: '98101'
+        //   }
+        // ]
       }
     },
     methods: {
       testMethod() {
         console.log('test method')
+      },
+      tableData(length) {
+        let arr = []
+        for (let i = 0; i < length; i++) {
+          arr.push({
+            name: faker.company.companyName(),
+            address: faker.address.streetAddress(),
+            city: faker.address.city(),
+            state: faker.address.state(),
+            zip: faker.address.zipCode()
+          })
+        }
+        return arr
       },
       flyTo(latlng, zoom) {
         this.mapCenter = latlng
@@ -122,4 +140,6 @@
   }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

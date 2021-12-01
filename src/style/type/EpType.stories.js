@@ -1,15 +1,10 @@
+import { padded } from '@/helpers/decorators'
 import EpType from './EpType'
-
-const container = () => {
-  return {
-    template: '<div style="height: 100%; padding: 30px;"><story/></div>'
-  }
-}
 
 export default {
   title: 'Style/Type',
   component: EpType,
-  decorators: [container],
+  decorators: [padded],
   argTypes: {
 
   },
@@ -23,9 +18,7 @@ const Template = (args) => ({
   setup() {
     return { args }
   },
-  template: `
-  <EpType />
-  `
+  template: '<ep-type />'
 })
 
 export const Type = Template.bind({})
