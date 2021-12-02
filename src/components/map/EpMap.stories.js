@@ -45,14 +45,14 @@ export default {
       control: {
         type: 'object'
       },
-      defaultValue: {}
+      defaultValue: null
     },
     mapLayer: {
       name: 'Map Layer',
       control: {
         type: 'object'
       },
-      defaultValue: {}
+      defaultValue: null
     },
     scrollZoom: {
       name: 'Scroll Zoom',
