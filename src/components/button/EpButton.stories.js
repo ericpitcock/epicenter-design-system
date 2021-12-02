@@ -9,7 +9,7 @@ icons.push(undefined)
 export default {
   title: 'Components/Button',
   component: EpButton,
-  decorators: [centered],
+  // decorators: [centered],
   argTypes: {
     disabled: {
       name: 'Disabled',

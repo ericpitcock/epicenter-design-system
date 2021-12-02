@@ -58,7 +58,7 @@ const fakeDropdownItems = [
 export default {
   title: 'Components/Menu',
   component: EpMenu,
-  decorators: [centered],
+  // decorators: [centered],
   argTypes: {
     menuItems: {
       name: 'Menu items',

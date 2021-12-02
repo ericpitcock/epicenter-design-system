@@ -4,7 +4,7 @@ import EpGrayscale from './EpGrayscale'
 export default {
   title: 'Style/Grayscale',
   component: EpGrayscale,
-  decorators: [padded],
+  // decorators: [padded],
   argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true }

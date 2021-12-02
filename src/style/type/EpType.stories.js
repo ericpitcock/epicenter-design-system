@@ -4,7 +4,7 @@ import EpType from './EpType'
 export default {
   title: 'Style/Type',
   component: EpType,
-  decorators: [padded],
+  // decorators: [padded],
   argTypes: {
 
   },

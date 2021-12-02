@@ -39,7 +39,7 @@ const fakeDropdownItems = [
 export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
-  decorators: [centered],
+  // decorators: [centered],
   argTypes: {
     alignRight: {
       name: 'Align right',
