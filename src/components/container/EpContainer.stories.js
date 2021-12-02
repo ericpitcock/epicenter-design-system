@@ -3,7 +3,7 @@ import EpContainer from '@/components/container/EpContainer'
 const container = () => {
   return {
     template:
-      '<div style="padding: 30px;"><story/></div>'
+      '<div style="height: 100%; padding: 30px;"><story/></div>'
   }
 }
 
@@ -48,7 +48,7 @@ export default {
       control: {
         type: 'text',
       },
-      defaultValue: '0'
+      defaultValue: ''
     },
     margin: {
       name: 'Margin',
@@ -93,7 +93,21 @@ const Template = (args) => ({
   setup() {
     return { args }
   },
-  template: '<ep-container v-bind="args" />'
+  template: `
+    <ep-container v-bind="args">
+      <div
+        v-if="args.padding != '' && args.padding != undefined"
+        style="
+          height: 100%;
+          display: grid;
+          place-content: center;
+          border: 1px dashed var(--green-400)
+        "
+      >
+        Inner content
+      </div>
+    </ep-container>
+  `
 })
 
 export const Container = Template.bind({})
