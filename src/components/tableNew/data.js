@@ -1,5 +1,6 @@
 // https://fakerjsdocs.netlify.app/#browser-demo
-import faker from 'faker'
+// import faker from 'faker'
+const faker = require('faker')
 
 const columns = [
   {
