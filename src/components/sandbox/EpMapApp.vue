@@ -1,11 +1,11 @@
 <template>
   <ep-container>
-    <ep-gridd
+    <!-- <ep-gridd
       style="height: 100%"
       rowGap="30px"
       gridTempColumns="1fr"
       gridTemplateRows="60px 1fr"
-    >
+    > -->
       <div>
         <ep-button
           kind="secondary"
@@ -42,7 +42,7 @@
         selectable
         stickyHeader
       /> -->
-    </ep-gridd>
+    <!-- </ep-gridd> -->
   </ep-container>
 </template>
 
@@ -50,7 +50,7 @@
   // import faker from 'faker';
 
   import EpContainer from '@/components/container/EpContainer'
-  import EpGridd from '@/components/grid/EpGridd'
+  // import EpGridd from '@/components/grid/EpGridd'
   import EpButton from '@/components/button/EpButton'
   import EpDropdown from '@/components/dropdown/EpDropdown'
   import EpMap from '@/components/map/EpMap'
@@ -60,7 +60,7 @@
     name: 'Sandbox',
     components: {
       EpContainer,
-      EpGridd,
+      // EpGridd,
       EpButton,
       EpDropdown,
       EpMap,
