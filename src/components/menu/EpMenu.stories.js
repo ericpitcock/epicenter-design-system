@@ -1,4 +1,4 @@
-import { centered } from '@/helpers/decorators'
+// import { centered } from '@/helpers/decorators'
 import EpContainer from '../container/EpContainer'
 import EpMenu from './EpMenu'
 

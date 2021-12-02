@@ -1,5 +1,5 @@
 import vueRouter from 'storybook-vue3-router'
-import { centered } from '@/helpers/decorators'
+// import { centered } from '@/helpers/decorators'
 import svgIcons from '@/components/icon/load-icons'
 import EpButton from './EpButton'
 
