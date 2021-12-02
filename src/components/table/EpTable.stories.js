@@ -1,5 +1,5 @@
 import EpContainer from '@/components/container/EpContainer'
-import EpTableNew from './EpTableNew'
+import EpTable from './EpTable'
 import { columns, fakeArray } from './data'
 
 const container = () => {
@@ -10,8 +10,8 @@ const container = () => {
 }
 
 export default {
-  title: 'Components/Table New',
-  component: EpTableNew,
+  title: 'Components/Table',
+  component: EpTable,
   decorators: [container],
   argTypes: {
     columns: {
@@ -90,15 +90,15 @@ export default {
 }
 
 const Template = (args) => ({
-  components: { EpContainer, EpTableNew },
+  components: { EpContainer, EpTable },
   setup() {
     return { args, columns, fakeArray }
   },
   template: `
   <ep-container width="fit-content" padding="0.4rem 2rem 2rem">
-    <ep-table-new v-bind="args" />
+    <ep-table v-bind="args" />
   </ep-container>
   `
 })
 
-export const TableNew = Template.bind({})
+export const Table = Template.bind({})

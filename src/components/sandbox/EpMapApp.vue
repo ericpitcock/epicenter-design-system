@@ -33,7 +33,7 @@
           :navigationControl="false"
         /> -->
       </div>
-      <!-- <ep-table-new
+      <!-- <ep-table
         :columns="tableColumns"
         :data="tableData(20)"
         fullWidth
@@ -54,7 +54,7 @@
   import EpButton from '@/components/button/EpButton'
   import EpDropdown from '@/components/dropdown/EpDropdown'
   import EpMap from '@/components/map/EpMap'
-  import EpTableNew from '@/components/tableNew/EpTableNew'
+  import EpTable from '@/components/table/EpTable'
 
   export default {
     name: 'Sandbox',
@@ -64,7 +64,7 @@
       EpButton,
       EpDropdown,
       EpMap,
-      EpTableNew
+      EpTable
     },
     data() {
       return {
