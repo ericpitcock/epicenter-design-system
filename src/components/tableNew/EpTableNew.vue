@@ -211,13 +211,9 @@
           border-top: 0;
         }
         td {
-          width: 100%;
           min-width: 1px;
           padding: 1.4rem;
           vertical-align: middle;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
       }
     }
