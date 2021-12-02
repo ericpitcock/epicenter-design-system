@@ -43,6 +43,10 @@
         type: String,
         default: undefined
       },
+      disabled: {
+        type: Boolean,
+        default: false
+      }
     },
     components: {
       EpIcon
@@ -64,7 +68,8 @@
           `ep-button--${this.kind}`,
           { [`ep-button--${this.size}`]: this.size != 'default' },
           { 'ep-button--icon-right': this.iconRight },
-          { 'ep-button--icon-left': this.iconLeft}
+          { 'ep-button--icon-left': this.iconLeft},
+          { 'ep-button--disabled': this.disabled}
         ]
       }
     }
@@ -205,7 +210,7 @@
         font-size: var(--font-size--tiny);
       }
     }
-    &[disabled] {
+    &--disabled {
       @include button-theme(
         var(--button-disabled--bg-color),
         var(--button-disabled--border-color),
@@ -214,7 +219,8 @@
         var(--button-disabled--text),
         var(--button-disabled--bg-color)
       );
-      cursor: not-allowed;
+      pointer-events: none;
+      cursor: default;
     }
     // &--icon-right {
     //   // flex-direction: row-reverse;
