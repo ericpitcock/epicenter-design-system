@@ -1,4 +1,4 @@
-import vueRouter from 'storybook-vue3-router'
+// import vueRouter from 'storybook-vue3-router'
 // import { centered } from '@/helpers/decorators'
 import svgIcons from '@/components/icon/load-icons'
 import EpButton from './EpButton'
@@ -114,6 +114,6 @@ const Template = (args) => ({
 
 export const Button = Template.bind({})
 
-Button.decorators = [
-  vueRouter()
-]
+// Button.decorators = [
+//   vueRouter()
+// ]
