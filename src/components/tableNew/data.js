@@ -1,6 +1,5 @@
 // https://fakerjsdocs.netlify.app/#browser-demo
-// import faker from 'faker'
-// const faker = require('faker')
+import faker from 'faker'
 
 const columns = [
   {
@@ -59,14 +58,14 @@ const fakeArray = (length) => {
   let arr = []
   for (let i = 0; i < length; i++) {
     arr.push({
-      // id: faker.datatype.uuid(),
-      // start_date: faker.date.past().toISOString(),
-      // name: faker.address.city(),
-      // type: faker.random.arrayElement(['VirtualRide', 'Ride']),
-      // distance: faker.datatype.number({ min: 10000, max: 100000 }),
-      // total_elevation_gain: faker.datatype.number({ min: 100, max: 800 }),
-      // average_speed: faker.datatype.number({ min: 20, max: 30, precision: .1 }),
-      // average_watts: faker.datatype.number({ min: 80, max: 200, precision: .1 })
+      id: faker.datatype.uuid(),
+      start_date: faker.date.past().toISOString(),
+      name: faker.address.city(),
+      type: faker.random.arrayElement(['VirtualRide', 'Ride']),
+      distance: faker.datatype.number({ min: 10000, max: 100000 }),
+      total_elevation_gain: faker.datatype.number({ min: 100, max: 800 }),
+      average_speed: faker.datatype.number({ min: 20, max: 30, precision: .1 }),
+      average_watts: faker.datatype.number({ min: 80, max: 200, precision: .1 })
     })
   }
   return arr

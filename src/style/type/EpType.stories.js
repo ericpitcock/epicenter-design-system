@@ -1,10 +1,10 @@
-// import { padded } from '@/helpers/decorators'
+import { padded } from '@/helpers/decorators'
 import EpType from './EpType'
 
 export default {
   title: 'Style/Type',
   component: EpType,
-  // decorators: [padded],
+  decorators: [padded],
   argTypes: {
 
   },

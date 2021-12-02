@@ -1,4 +1,4 @@
-// import { centered } from '@/helpers/decorators'
+import { centered } from '@/helpers/decorators'
 import EpDropdown from './EpDropdown'
 
 const buttonDefaults = {
@@ -39,7 +39,7 @@ const fakeDropdownItems = [
 export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
-  // decorators: [centered],
+  decorators: [centered],
   argTypes: {
     alignRight: {
       name: 'Align right',

@@ -1,10 +1,10 @@
-// import { padded } from '@/helpers/decorators'
+import { padded } from '@/helpers/decorators'
 import EpColor from './EpColor'
 
 export default {
   title: 'Style/Color',
   component: EpColor,
-  // decorators: [padded],
+  decorators: [padded],
   argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true }

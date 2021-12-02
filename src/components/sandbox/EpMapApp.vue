@@ -47,7 +47,7 @@
 </template>
 
 <script>
-  // import faker from 'faker';
+  import faker from 'faker';
 
   import EpContainer from '@/components/container/EpContainer'
   // import EpGridd from '@/components/grid/EpGridd'
@@ -119,19 +119,19 @@
       testMethod() {
         console.log('test method')
       },
-      // tableData(length) {
-      //   let arr = []
-      //   for (let i = 0; i < length; i++) {
-      //     arr.push({
-      //       name: faker.company.companyName(),
-      //       address: faker.address.streetAddress(),
-      //       city: faker.address.city(),
-      //       state: faker.address.state(),
-      //       zip: faker.address.zipCode()
-      //     })
-      //   }
-      //   return arr
-      // },
+      tableData(length) {
+        let arr = []
+        for (let i = 0; i < length; i++) {
+          arr.push({
+            name: faker.company.companyName(),
+            address: faker.address.streetAddress(),
+            city: faker.address.city(),
+            state: faker.address.state(),
+            zip: faker.address.zipCode()
+          })
+        }
+        return arr
+      },
       flyTo(latlng, zoom) {
         this.mapCenter = latlng
         // this.mapZoom = zoom
