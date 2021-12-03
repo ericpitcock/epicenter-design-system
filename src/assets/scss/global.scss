@@ -1,8 +1,8 @@
-@import './minireset';
-@import './mixins';
-@import './color';
-@import './themes';
-@import './type';
+@use './minireset';
+@use './mixins';
+@use './color';
+@use './themes';
+@use './type';
 
 
 body {
