@@ -1,12 +1,10 @@
 <template>
   <div :class="['nav-container', { 'nav-container--minimized': minimized }]">
     <nav class="main-nav">
-      <div class="main-nav__item main-nav__item--logo">
-        <!-- <esentire-logo :type="logoType" /> -->
-        Logo
-      </div>
       <template v-for="(navItem, index) in navItems" :key="index">
+        <ep-divider v-if="navItem.divider" class="main-nav__item__divider" />
         <div
+          v-else
           :class="[
             'main-nav__item',
             { 'main-nav__item--active': navItem.active }
@@ -16,25 +14,26 @@
           <ep-icon :name="navItem.icon" />
           <div class="main-nav__item__name">{{ navItem.name }}</div>
         </div>
-        <div v-if="index === 2" class="main-nav__item__divider" :key="`divider${index}`"></div>
       </template>
     </nav>
   </div>
 </template>
 
 <script>
-  // import { mapState } from 'vuex'
-
+  import EpDivider from '@/components/divider/EpDivider'
   import EpIcon from '@/components/icon/EpIcon'
-  // import EsentireLogo from './EsentireLogo'
   
   export default {
     name: 'EpSidebar',
     components: {
-      EpIcon,
-      // EsentireLogo
+      EpDivider,
+      EpIcon
     },
     props: {
+      navItems: {
+        type: Array,
+        required: true
+      },
       minimized: {
         type: Boolean,
         default: false
@@ -42,57 +41,12 @@
     },
     data() {
       return {
-        navItems: [
-          {
-            name: 'Summary',
-            icon: 'dashboard',
-            active: true
-          },
-          {
-            name: 'Assets',
-            icon: 'display',
-            active: false
-          },
-          {
-            name: 'Investigations',
-            icon: 'target',
-            active: false
-          },
-          {
-            name: 'Risk Rating',
-            icon: 'star',
-            active: false
-          },
-          {
-            name: 'Service Info',
-            icon: 'info',
-            active: false
-          },
-          {
-            name: 'Reports',
-            icon: 'report',
-            active: false
-          },
-          {
-            name: 'Files',
-            icon: 'file',
-            active: false
-          },
-          {
-            name: 'Settings',
-            icon: 'settings',
-            active: false
-          }
-        ]
+        
       }
     },
     methods: {
-      // for demo purposes only
       onClick(index) {
-        this.navItems.forEach((item) => {
-          item.active = false
-        })
-        this.navItems[index].active = true
+        this.$emit('nav-item-clicked', index)
       }
     },
     // computed: {
@@ -106,8 +60,6 @@
 
 <style lang="scss" scoped>
   .nav-container {
-    // grid-column: 1 / 1;
-    // grid-row: 2 / 2;
     padding: 30px 20px;
     &--minimized{
       padding-left: 0;
@@ -135,12 +87,12 @@
       & + & {
         margin-top: 2px;
       }
-      &--logo {
-        margin-bottom: 30px;
-        &:hover {
-          background: transparent !important;
-        }
-      }
+      // &--logo {
+      //   margin-bottom: 30px;
+      //   &:hover {
+      //     background: transparent !important;
+      //   }
+      // }
       .nav-container--minimized & {
         justify-content: center;
         width: 40px;
@@ -171,7 +123,6 @@
         align-self: center;
         width: 160px;
         margin: 30px 0;
-        border-bottom: 1px solid var(--border-color);
         .nav-container--minimized & {
           width: 30px;
         }
