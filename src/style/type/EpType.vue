@@ -6,7 +6,7 @@
     <p class="font-size--default">This is a font size default</p>
     <p class="font-size--small">This is a font size small</p>
     <p class="font-size--tiny">This is a font size tiny</p>
-    <p class="font-size--body">{{ faker.lorem.paragraph(4) }}</p>
+    <p class="special font-size--body">{{ faker.lorem.paragraph(4) }}</p>
   </ep-container>
 </template>
 
@@ -27,8 +27,11 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   div > p + p {
     margin-top: 3rem;
+  }
+  .special {
+    // @extend .font-size--jumbo;
   }
 </style>

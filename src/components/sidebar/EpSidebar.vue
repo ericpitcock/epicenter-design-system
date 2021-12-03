@@ -1,6 +1,6 @@
 <template>
-  <div :class="['nav-container', { 'nav-container--minimized': minimized }]">
-    <nav class="main-nav">
+  <!-- <div :class="['nav-container', { 'nav-container--minimized': minimized }]"> -->
+    <nav :class="['main-nav', { 'nav-container--minimized': minimized }]">
       <template v-for="(navItem, index) in navItems" :key="index">
         <ep-divider v-if="navItem.divider" class="main-nav__item__divider" />
         <div
@@ -16,7 +16,7 @@
         </div>
       </template>
     </nav>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -48,23 +48,13 @@
       onClick(index) {
         this.$emit('nav-item-clicked', index)
       }
-    },
-    // computed: {
-    //   ...mapState(['sidebar']),
-    //   logoType() {
-    //     return this.sidebar ? 'full' : 'icon'
-    //   }
-    // }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
   .nav-container {
-    padding: 30px 20px;
-    &--minimized{
-      padding-left: 0;
-      padding-right: 0;
-    }
+
   }
   .main-nav {
     // let this be set by the parent element
@@ -87,12 +77,6 @@
       & + & {
         margin-top: 2px;
       }
-      // &--logo {
-      //   margin-bottom: 30px;
-      //   &:hover {
-      //     background: transparent !important;
-      //   }
-      // }
       .nav-container--minimized & {
         justify-content: center;
         width: 40px;

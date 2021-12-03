@@ -1,10 +1,5 @@
+import { padded } from '@/helpers/decorators'
 import EpSidebar from './EpSidebar'
-
-const container = () => {
-  return {
-    template: '<div style="height: 100%; padding: 30px;"><story/></div>'
-  }
-}
 
 const navItems = [
   {
@@ -55,7 +50,7 @@ const navItems = [
 export default {
   title: 'Components/Sidebar',
   component: EpSidebar,
-  // decorators: [container],
+  decorators: [padded],
   argTypes: {
     navItems: {
       name: 'Nav Items',
