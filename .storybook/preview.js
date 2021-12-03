@@ -8,9 +8,15 @@ import '!style-loader!css-loader!sass-loader!../src/assets/scss/global.scss'
 import '!style-loader!css-loader!sass-loader!../src/assets/scss/storybook.scss'
 
 export const parameters = {
-  layout: 'fullscreen'
+  layout: 'fullscreen',
+  options: {
+    storySort: {
+      order: ['Intro', 'Components', 'Style', 'Insight', 'Sandbox'],
+    },
+  }
 }
 
+// global decorators
 // export const decorators = [(story) => ({
 //   components: { story },
 //   template: '<div style="display: grid; place-content: center; width: 100vw; height: 100vh;"><story /></div>'

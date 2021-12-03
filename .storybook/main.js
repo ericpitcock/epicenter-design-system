@@ -5,8 +5,7 @@ const rootPath = path.resolve(__dirname, '../src')
 
 module.exports = {
   stories: [
-    '../src/components/**/*.stories.js',
-    '../src/style/**/*.stories.js'
+    '../src/**/**/*.stories.js'
   ],
   addons: [
     '@storybook/addon-docs',
