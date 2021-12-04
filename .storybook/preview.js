@@ -11,7 +11,7 @@ export const parameters = {
   layout: 'fullscreen',
   options: {
     storySort: {
-      order: ['Intro', 'Components', 'Style', 'Insight', 'Sandbox'],
+      order: ['Intro', 'Components', 'Style', 'Layouts', 'Sandbox'],
     },
   }
 }

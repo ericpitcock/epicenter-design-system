@@ -105,6 +105,10 @@
         type: Boolean,
         default: false
       },
+      stickyTop: {
+        type: String,
+        default: '0'
+      },
       striped: {
         type: Boolean,
         default: false
@@ -252,7 +256,8 @@
       thead {
         th {
           position: sticky;
-          top: -1px; // fixes wierd 1px gap that exposes tbody contents during scroll
+          top: v-bind(stickyTop);
+          // top: -1px; // fixes wierd 1px gap that exposes tbody contents during scroll
         }
       }
     }

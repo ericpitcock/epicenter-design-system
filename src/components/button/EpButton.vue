@@ -232,7 +232,7 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      line-height: 1;
+      // line-height: 1;
       & + & {
         padding-left: 0rem;
       }
