@@ -1,6 +1,6 @@
 <template>
-  <div class="ep-badge">
-    {{ text }}
+  <div :class="['ep-badge', { 'ep-badge--uppercase': uppercase }]">
+    {{ label }}
   </div>
 </template>
 
@@ -8,21 +8,25 @@
   export default {
     name: 'EpBadge',
     props: {
-      text: {
+      label: {
         type: String,
         default: 'Badge'
       },
-      color: {
+      backgroundColor: {
         type: String,
-        default: ''
+        default: 'var(--background-3)'
       },
-      size: {
+      borderColor: {
         type: String,
-        default: ''
+        default: 'var(--border-color)'
       },
-      icon: {
+      textColor: {
         type: String,
-        default: ''
+        default: 'var(--text-color)'
+      },
+      uppercase: {
+        type: Boolean,
+        default: false
       }
     }
   }
@@ -32,8 +36,10 @@
   .ep-badge {
     display: inline-block;
     padding: 0.4rem 0.8rem;
-    border-radius: 3px;
-    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    border: 1px solid v-bind(borderColor);
+    background-color: v-bind(backgroundColor);
+    color: v-bind(textColor);
     font-size: var(--font-size--tiny);
     font-variation-settings: 'wght' 600;
     user-select: none;

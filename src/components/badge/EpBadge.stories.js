@@ -6,6 +6,41 @@ export default {
   component: EpBadge,
   decorators: [centered],
   argTypes: {
+    label: {
+      name: 'Label',
+      control: {
+        type: 'text',
+      },
+      defaultValue: 'Badge',
+    },
+    backgroundColor: {
+      name: 'Background Color',
+      control: {
+        type: 'text',
+      },
+      defaultValue: 'var(--background-2)'
+    },
+    borderColor: {
+      name: 'Border Color',
+      control: {
+        type: 'text',
+      },
+      defaultValue: 'var(--border-color)'
+    },
+    textColor: {
+      name: 'Text Color',
+      control: {
+        type: 'text',
+      },
+      defaultValue: 'var(--text-color)'
+    },
+    uppercase: {
+      name: 'Uppercase',
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false
+    }
   }
 }
 
