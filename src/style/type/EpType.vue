@@ -1,12 +1,18 @@
 <template>
   <ep-container padding="30px">
-    <p class="font-size--jumbo">This is font size jumbo</p>
-    <p class="font-size--large">This is font size large</p>
-    <p class="font-size--body">This is a font size body</p>
-    <p class="font-size--default">This is a font size default</p>
-    <p class="font-size--small">This is a font size small</p>
-    <p class="font-size--tiny">This is a font size tiny</p>
-    <p class="special font-size--body">{{ faker.lorem.paragraph(4) }}</p>
+    Talk about the inter font
+  </ep-container>
+  <ep-container padding="30px">
+    <div class="type-style" v-for="(typeStyle, index) in typeStyles" :key="index">
+      <div class="type-style__desc">
+        <div :class="['type-style__name', `font-size--${typeStyle.name.toLowerCase()}`]">{{ typeStyle.name }}</div>
+        <div>{{ typeStyle.desc }}</div>
+      </div>
+      <div class="type-style__size">{{ typeStyle.size }}</div>
+      <div class="type-style__weight">{{ typeStyle.weight }}</div>
+    </div>
+    
+    <!-- <p class="special font-size--body">{{ faker.lorem.paragraph(4) }}</p> -->
   </ep-container>
 </template>
 
@@ -14,24 +20,85 @@
   import faker from 'faker'
 
   import EpContainer from '@/components/container/EpContainer'
+  import EpDivider from '@/components/divider/EpDivider'
 
   export default {
     components: {
-      EpContainer
+      EpContainer,
+      EpDivider
     },
     data() {
       return {
-        faker
+        faker,
+        typeStyles: [
+          {
+            name: 'Jumbo',
+            desc: 'Page headers',
+            size: '2.6rem(26px)',
+            weight: '300 (light)',
+          },
+          {
+            name: 'Large',
+            desc: 'Section/component headers',
+            size: '1.8rem(18px)',
+            weight: '400 (regular)',
+          },
+          {
+            name: 'Body',
+            desc: 'Blocks of text you expect people to read',
+            size: '1.4rem(14px)',
+            weight: '400 (regular)',
+          },
+          {
+            name: 'Default',
+            desc: 'UI controls and labels',
+            size: '1.2rem(12px)',
+            weight: '400 (regular)',
+          },
+          {
+            name: 'Small',
+            desc: 'UI controls and labels, only smaller',
+            size: '1rem(10px)',
+            weight: '400 (regular)',
+          },
+          {
+            name: 'Tiny',
+            desc: 'Things should be there, but "not there"',
+            size: '0.8rem(8px)',
+            weight: '400 (regular)',
+          },
+        ]
       }
     } 
   }
 </script>
 
 <style lang="scss">
-  div > p + p {
-    margin-top: 3rem;
+  .ep-container + .ep-container {
+    margin-top: 10px;
   }
-  .special {
-    // @extend .font-size--jumbo;
+  .type-style {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      padding-bottom: 0;
+    }
+    &__desc {
+      flex: 3;
+    }
+    &__size {
+      flex: 1;
+    }
+    &__weight {
+      flex: 1;
+    }
+    & + & {
+      // margin-top: 30px;
+      border-top: 1px solid var(--border-color);
+    }
   }
 </style>

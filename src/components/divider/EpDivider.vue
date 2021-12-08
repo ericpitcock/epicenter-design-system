@@ -4,7 +4,13 @@
 
 <script>
   export default {
-    name: 'EpDivider'
+    name: 'EpDivider',
+    props: {
+      margin: {
+        type: String,
+        default: '0'
+      }
+    }
   }
 </script>
 
@@ -14,6 +20,6 @@
     height: 1px;
     background-color: var(--border-color--lighter);
     border: none;
-    margin: 0.5rem 0;
+    margin: v-bind(margin);
   }
 </style>

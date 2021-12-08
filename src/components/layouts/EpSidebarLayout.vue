@@ -45,6 +45,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     padding: 20px 10px 30px 0;
+    z-index: 10;
     
     @media (min-width: 1800px) {
       &:not(.content-wrapper--full-width) {

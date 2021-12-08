@@ -1,13 +1,13 @@
 <template>
   <div class="colors">
     <ep-container
-      :fullWidth="true"
+      width="fit-content"
       :connected="true"
       :padding="'30px 40px 40px'"
     >
       <div class="category">
         <div class="category__label">
-          <h1>Ep Grayscale</h1>
+          <h1 class="font-size--large">Ep Grayscale</h1>
         </div>
         <div class="category__swatches">
           <div v-for="(level, index) in levels" :key="index" class="swatch">

@@ -30,11 +30,7 @@ const fullscreen = () => {
 const padded = () => {
   return {
     template: `
-      <div style="
-        width: 100vw;
-        height: 100vh;
-        padding: 30px;"
-      >
+      <div style="padding: 30px;">
         <story />
       </div>
     `

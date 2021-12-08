@@ -1,11 +1,5 @@
 <template>
-  <ep-container>
-    <!-- <ep-gridd
-      style="height: 100%"
-      rowGap="30px"
-      gridTempColumns="1fr"
-      gridTemplateRows="60px 1fr"
-    > -->
+  <ep-container height="100%">
       <div>
         <ep-button
           kind="secondary"
@@ -26,14 +20,13 @@
         />
       </div>
       <div style="background: red;">
-        shit
-        <!-- <ep-map
+        <ep-map
           :mapCenter="mapCenter"
           :mapZoom="mapZoom"
           :navigationControl="false"
-        /> -->
+        />
       </div>
-      <!-- <ep-table
+      <ep-table
         :columns="tableColumns"
         :data="tableData(20)"
         fullWidth
@@ -41,8 +34,7 @@
         striped
         selectable
         stickyHeader
-      /> -->
-    <!-- </ep-gridd> -->
+      />
   </ep-container>
 </template>
 
@@ -50,7 +42,6 @@
   import faker from 'faker';
 
   import EpContainer from '@/components/container/EpContainer'
-  // import EpGridd from '@/components/grid/EpGridd'
   import EpButton from '@/components/button/EpButton'
   import EpDropdown from '@/components/dropdown/EpDropdown'
   import EpMap from '@/components/map/EpMap'
@@ -60,7 +51,6 @@
     name: 'Sandbox',
     components: {
       EpContainer,
-      // EpGridd,
       EpButton,
       EpDropdown,
       EpMap,

@@ -18,7 +18,7 @@
       },
       height: {
         type: String,
-        default: '100%'
+        default: 'auto'
       },
       padding: {
         type: String,

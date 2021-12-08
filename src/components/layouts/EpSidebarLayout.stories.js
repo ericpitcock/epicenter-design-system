@@ -184,7 +184,7 @@ const Template = (args) => ({
         <ep-sidebar style="position: fixed;" :navItems="navItems" />
       </template>
       <template #content>
-        <ep-container padding="0.4rem 2rem 2rem">
+        <ep-container width="fit-content" padding="0.4rem 2rem 2rem">
           <ep-table :columns="columns" :data="fakeArray(30)" :exclude="['id']" bordered striped stickyHeader stickyTop="41px" />
         </ep-container>
       </template>

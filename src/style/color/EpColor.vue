@@ -1,13 +1,14 @@
 <template>
   <div class="colors">
     <ep-container
+      width="fit-content"
       :padding="'30px 40px 40px'"
       v-for="(hue, index) in hues"
       :key="index"
     >
       <div class="category">
         <div class="category__label">
-          <h1>{{ hue.replaceAll('-', ' ') }}</h1>
+          <h1 class="font-size--large">{{ hue.replaceAll('-', ' ') }}</h1>
         </div>
         <div class="category__swatches">
           <div v-for="(level, index) in levels" :key="index" class="swatch">
@@ -49,7 +50,7 @@
           'purple',
           'fuchsia',
           'pink',
-          'rose',
+          'rose'
           // 'blue-gray',
           // 'cool-gray',
           // 'neutral-gray',
@@ -66,7 +67,7 @@
           '600',
           '700',
           '800',
-          '900',
+          '900'
           // excluding 1000 as the easy fix for grays that lack is
           // '1000'
         ]

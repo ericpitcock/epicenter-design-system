@@ -2,7 +2,6 @@
   <table
     :class="[
       'ep-table',
-      { 'ep-table--full-width': fullWidth },
       { 'ep-table--selectable': selectable },
       { 'ep-table--bordered': bordered },
       { 'ep-table--compact': compact },
@@ -80,10 +79,6 @@
       exclude: {
         type: Array,
         default: () => []
-      },
-      fullWidth: {
-        type: Boolean,
-        default: false
       },
       bordered: {
         type: Boolean,
@@ -220,9 +215,6 @@
           vertical-align: middle;
         }
       }
-    }
-    &--full-width {
-      width: 100%;
     }
     &--bordered {
       tbody tr {
