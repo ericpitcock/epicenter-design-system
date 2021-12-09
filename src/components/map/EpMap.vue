@@ -21,16 +21,16 @@
       },
       mapStyle: {
         type: String,
-        // default: 'mapbox://styles/mapbox/streets-v11'
+        default: 'mapbox://styles/mapbox/streets-v11'
       },
-      mapSource: {
-        type: Object,
-        default: null
-      },
-      mapLayer: {
-        type: Object,
-        default: null
-      },
+      // mapSource: {
+      //   type: Object,
+      //   default: null
+      // },
+      // mapLayer: {
+      //   type: Object,
+      //   default: null
+      // },
       scrollZoom: {
         type: Boolean,
         default: true
@@ -42,7 +42,11 @@
       fitToBounds: {
         type: Boolean,
         default: false
-      }
+      },
+      // flyTo: {
+      //   type: Array,
+      //   default: null
+      // }
     },
     data() {
       return {
@@ -77,12 +81,20 @@
           return this.theme == 'dark' ? 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph' : 'mapbox://styles/mapbox/streets-v11'
         }
       },
+      flyTo() {
+        // console.log('flyTo')
+        // this.map.setCenter(this.mapCenter)
+        // console.log('flyTo (map comp)', this.mapCenter)
+        this.map.flyTo({
+          center: this.mapCenter
+        })
+      },
       loadMap() {
         return new Promise(resolve => {
           mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpY3BpdGNvY2siLCJhIjoia29WT3AzOCJ9.YTnpZdWBqPD4cH6mlnZoYQ'
           this.map = new mapboxgl.Map({
             container: 'ep-map',
-            center: this.getMapCenter(),
+            center: this.mapCenter,
             zoom: this.mapZoom,
             style: this.computedMapStyle()
           })
@@ -122,12 +134,12 @@
       }
     },
     watch: {
+      // init(val) {
+      //   console.log('map has initialized')
+      // },
       mapCenter(newCenter, oldCenter) {
         // this.map.setCenter(newCenter)
-        this.map.flyTo({
-          center: newCenter,
-          zoom: this.mapZoom
-        })
+        this.flyTo(newCenter)
       },
       mapZoom(newZoom, oldZoom) {
         this.map.zoomTo(newZoom)
@@ -150,17 +162,16 @@
         }
         this.init = false
       })
-      this.map.on('zoom', (event) => {
+      // this.map.on('zoom', (event) => {
         // console.log(event)
-      })
-      this.map.on('click', (event) => {
+      // })
+      // this.map.on('click', (event) => {
         // console.log('A click event has occurred at ' + event.lngLat)
-      })
+      // })
     },
     created() {
       // selectively create watchers if features exist
-      // do this for everything
-
+      // do this for everything that is not required
       if (this.mapSource) {
         this.$watch('mapSource', function(newSource, oldSource) {
           if (this.init) return

@@ -1,6 +1,6 @@
 <template>
-  <ep-container height="100%">
-      <div>
+  <ep-container style="display: flex; flex-direction: column;" height="100%">
+      <div class="header">
         <ep-button
           kind="secondary"
           label="Zoom in"
@@ -19,14 +19,16 @@
           alignRight
         />
       </div>
-      <div style="background: red;">
+      <div style="flex: 1">
+        <!-- v10 doesn't have the error message when you try to use the map -->
         <ep-map
           :mapCenter="mapCenter"
+          mapStyle="mapbox://styles/mapbox/streets-v10"
           :mapZoom="mapZoom"
           :navigationControl="false"
         />
       </div>
-      <ep-table
+      <!-- <ep-table
         :columns="tableColumns"
         :data="tableData(20)"
         fullWidth
@@ -34,7 +36,7 @@
         striped
         selectable
         stickyHeader
-      />
+      /> -->
   </ep-container>
 </template>
 
@@ -62,11 +64,19 @@
           {
             label: 'Sonic Boom Records',
             command: () => { 
-              this.flyTo([-122.38514205300778, 47.66850341509612], 20)
-              // this.flyTo({
-              //   center: [-122.38514205300778, 47.66850341509612],
-              //   zoom: 20
-              // })
+              this.setMapCenter([-122.38514205300778, 47.66850341509612])
+            }
+          },
+          {
+            label: 'Jive Time Records',
+            command: () => { 
+              this.setMapCenter([-122.34959506262331, 47.65081209155994])
+            }
+          },
+          {
+            label: 'Silver Platters SoDo',
+            command: () => { 
+              this.setMapCenter([-122.33381836999745, 47.5774458190115])
             }
           }
         ],
@@ -122,14 +132,21 @@
         }
         return arr
       },
-      flyTo(latlng, zoom) {
+      setMapCenter(latlng) {
+        // console.log('setMapCenter', latlng)
         this.mapCenter = latlng
-        // this.mapZoom = zoom
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-
+  .header {
+    flex: 0 0 61px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    border-bottom: 1px solid var(--border-color);
+  }
 </style>
