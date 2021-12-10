@@ -1,7 +1,7 @@
 import EpColumnChart from './EpColumnChart'
 
 export default {
-  title: 'Components/Charts/Column Chart',
+  title: 'Components/Charts/Chart.js/Column Chart',
   component: EpColumnChart,
   argTypes: {
   }

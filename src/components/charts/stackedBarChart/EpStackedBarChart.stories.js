@@ -103,7 +103,7 @@ const options = {
 }
 
 export default {
-  title: 'Components/Charts/Stacked Bar Chart',
+  title: 'Components/Charts/Highcharts/Stacked Bar Chart',
   component: EpStackedBarChart,
   decorators: [container],
   argTypes: {

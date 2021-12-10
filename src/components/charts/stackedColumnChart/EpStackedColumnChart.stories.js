@@ -127,7 +127,7 @@ const options = {
 }
 
 export default {
-  title: 'Components/Charts/Stacked Column Chart',
+  title: 'Components/Charts/Highcharts/Stacked Column Chart',
   component: EpStackedColumnChart,
   decorators: [container],
   argTypes: {
