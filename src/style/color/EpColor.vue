@@ -102,8 +102,8 @@
     display: flex;
     flex-direction: column;
     &__chip {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: 3px;
     }
     &__name {

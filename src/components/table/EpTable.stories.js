@@ -35,11 +35,8 @@ export default {
       }
     },
     exclude: {
-      name: 'Exclude',
-      control: {
-        type: 'array'
-      },
-      defaultValue: ['id']
+      defaultValue: ['id'],
+      table: { disable: true }
     },
     selectable: {
       name: 'Selectable',

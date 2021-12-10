@@ -2,12 +2,11 @@
   <div class="colors">
     <ep-container
       width="fit-content"
-      :connected="true"
       :padding="'30px 40px 40px'"
     >
       <div class="category">
         <div class="category__label">
-          <h1 class="font-size--large">Ep Grayscale</h1>
+          <h1 class="font-size--large">Grayscale</h1>
         </div>
         <div class="category__swatches">
           <div v-for="(level, index) in levels" :key="index" class="swatch">
@@ -116,8 +115,8 @@
     display: flex;
     flex-direction: column;
     &__chip {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: 3px;
     }
     &__name {
