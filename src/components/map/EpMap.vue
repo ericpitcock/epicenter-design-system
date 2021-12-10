@@ -51,7 +51,8 @@
     data() {
       return {
         init: true,
-        map: null
+        map: null,
+        markers: [],
       }
     },
     computed: {
@@ -80,6 +81,12 @@
         } else {
           return this.theme == 'dark' ? 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph' : 'mapbox://styles/mapbox/streets-v11'
         }
+      },
+      dropPin(lngLat) {
+        this.markers.push(new mapboxgl.Marker()
+          .setLngLat(lngLat)
+          .addTo(this.map))
+        this.$emit('dropPin', lngLat)
       },
       flyTo() {
         // console.log('flyTo')

@@ -20,12 +20,12 @@
         />
       </div>
       <div style="flex: 1">
-        <!-- v10 doesn't have the error message when you try to use the map -->
         <ep-map
           :mapCenter="mapCenter"
-          mapStyle="mapbox://styles/mapbox/streets-v10"
+          mapStyle="mapbox://styles/mapbox/streets-v11"
           :mapZoom="mapZoom"
           :navigationControl="false"
+          ref="map"
         />
       </div>
       <!-- <ep-table
@@ -116,6 +116,9 @@
       }
     },
     methods: {
+      // dropPin(location) {
+      //   this.$refs.map.dropPin(location)
+      // },
       testMethod() {
         console.log('test method')
       },
@@ -135,6 +138,7 @@
       setMapCenter(latlng) {
         // console.log('setMapCenter', latlng)
         this.mapCenter = latlng
+        this.$refs.map.dropPin(latlng)
       }
     }
   }

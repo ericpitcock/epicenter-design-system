@@ -20,7 +20,7 @@
       //   required: true
       // }
     },
-    data () {
+    data() {
       return {
         chart: null,
         data: [{
@@ -42,7 +42,7 @@
         }
       }
     },
-    mounted () {
+    mounted() {
       this.chart = new Chart(this.$refs.myChart, {
         type: 'bar',
         data: {
@@ -72,7 +72,7 @@
         options: this.options
       })
     },
-    beforeDestroy () {
+    beforeDestroy() {
       this.chart.destroy()
     }
   }
