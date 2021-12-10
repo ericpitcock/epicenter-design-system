@@ -45,4 +45,36 @@ html[data-color-theme='dark'] {
   --nav-link-icon-color: hsl(228, 68%, 70%);
   --nav-link-active-icon-color: var(--text-color);
   --nav-link-active-text-color: var(--text-color);
+
+  // IBM chart sequence for dark mode
+  // --chart-sequence-00: #8a3ffc;
+  // --chart-sequence-01: #33b1ff;
+  // --chart-sequence-02: #007d79;
+  // --chart-sequence-03: #ff7eb6;
+  // --chart-sequence-04: #fa4d56;
+  // --chart-sequence-05: #fff1f1;
+  // --chart-sequence-06: #6fdc8c;
+  // --chart-sequence-07: #4589ff;
+  // --chart-sequence-08: #d12771;
+  // --chart-sequence-09: #d2a106;
+  // --chart-sequence-10: #08bdba;
+  // --chart-sequence-11: #bae6ff;
+  // --chart-sequence-12: #ba4e00;
+  // --chart-sequence-13: #d4bbff;
+  
+  // Tailwind chart sequence for dark mode
+  --chart-sequence-00 : var(--violet-600);
+  --chart-sequence-01 : var(--sky-500);
+  --chart-sequence-02 : var(--teal-700);
+  --chart-sequence-03 : var(--pink-400);
+  --chart-sequence-04 : var(--red-500);
+  --chart-sequence-05 : var(--red-50);
+  --chart-sequence-06 : var(--green-400);
+  --chart-sequence-07 : var(--blue-500);
+  --chart-sequence-08 : var(--pink-600);
+  --chart-sequence-09 : var(--yellow-500);
+  --chart-sequence-10 : var(--teal-500);
+  --chart-sequence-11 : var(--sky-200);
+  --chart-sequence-12 : var(--amber-700);
+  --chart-sequence-13 : var(--purple-300);
 }
