@@ -70,11 +70,13 @@
         return [
           'ep-button',
           `ep-button--${this.kind}`,
-          { [`ep-button--${this.size}`]: this.size != 'default' },
-          { 'ep-button--icon-right': this.iconRight },
-          { 'ep-button--icon-left': this.iconLeft},
-          { 'ep-button--disabled': this.disabled},
-          { 'ep-button--outlined': this.outlined }
+          { 
+            [`ep-button--${this.size}`]: this.size != 'default',
+            'ep-button--icon-right': this.iconRight,
+            'ep-button--icon-left': this.iconLeft,
+            'ep-button--disabled': this.disabled,
+            'ep-button--outlined': this.outlined
+          }
         ]
       }
     }

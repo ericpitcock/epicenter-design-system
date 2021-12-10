@@ -6,10 +6,7 @@
     </div>
     <div
       v-show="dropdownVisible"
-      :class="[
-        'ep-dropdown__container',
-        { 'ep-dropdown__container--align-right': alignRight }
-      ]"
+      :class="classes"
     >
       <div class="ep-dropdown__content">
         <slot v-if="hasContent" name="content" />
@@ -67,6 +64,12 @@
           ...this.button
         }
       },
+      classes() {
+        return [
+          'ep-dropdown__container',
+          { 'ep-dropdown__container--align-right': this.alignRight }
+        ]
+      },
       hasTrigger() {
         return !!this.$slots.trigger
       },
@@ -84,7 +87,6 @@
       selectItem(item) {
         this.$emit('select', item)
         this.closeDropdown()
-        console.log('selectItem')
       }
     }
   }

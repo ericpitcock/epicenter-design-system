@@ -1,14 +1,5 @@
 <template>
-  <table
-    :class="[
-      'ep-table',
-      { 'ep-table--selectable': selectable },
-      { 'ep-table--bordered': bordered },
-      { 'ep-table--compact': compact },
-      { 'ep-table--sticky': stickyHeader },
-      { 'ep-table--striped': striped }
-    ]"
-  >
+  <table :class="classes">
     <thead>
       <tr>
         <template
@@ -145,6 +136,18 @@
     computed: {
       arrowIcon() {
         return this.currentSortDir == 'desc' ? 'arrow-up' : 'arrow-down'
+      },
+      classes() {
+        return [
+          'ep-table',
+          {
+           'ep-table--selectable': this.selectable,
+           'ep-table--bordered': this.bordered,
+           'ep-table--compact': this.compact,
+           'ep-table--sticky': this.stickyHeader,
+           'ep-table--striped': this.striped
+          }
+        ]
       },
       filteredData() {
         return this.sortedData
