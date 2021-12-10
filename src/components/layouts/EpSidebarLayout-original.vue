@@ -2,10 +2,10 @@
   <div :class="['grid', { 'grid--nav-collapsed': !sidebar }]">
     <div class="app-header">
       <div class="app-controls app-controls--left">
-        <ep-button kind="naked" iconLeft="menu" @click="toggleSidebar" />
+        <ep-button kind="ghost" iconLeft="menu" @click="toggleSidebar" />
         <ep-dropdown
           :button="{
-            kind: 'naked',
+            kind: 'ghost',
             label: '',
             iconRight: '',
             iconLeft: 'notifications'
@@ -26,7 +26,7 @@
             iconLeft: 'arrow-right'
           }]"
           :button="{
-            kind: 'naked',
+            kind: 'ghost',
             label: '',
             iconRight: '',
             iconLeft: 'user'
@@ -35,7 +35,7 @@
         </ep-dropdown>
         <ep-dropdown
           :button="{
-            kind: 'naked',
+            kind: 'ghost',
             label: 'Dunder Mifflin',
             iconRight: ''
           }"
@@ -46,7 +46,7 @@
         </ep-dropdown>
       </div>
       <div class="app-controls app-controls--right">
-        <ep-button kind="naked" :iconLeft="themeIcon" @click="toggleTheme"/>
+        <ep-button kind="ghost" :iconLeft="themeIcon" @click="toggleTheme"/>
         <ep-dropdown
           :menuItems="[{
             label: 'Insight Manual',
@@ -56,7 +56,7 @@
             iconLeft: 'support'
           }]"
           :button="{
-            kind: 'naked',
+            kind: 'ghost',
             label: '',
             iconRight: '',
             iconLeft: 'help'
@@ -79,7 +79,7 @@
           <div class="content-controls content-controls--right">
             <ep-button kind="secondary" iconLeft="location" label="Alexandrinestad" />
             <ep-button kind="secondary" iconLeft="calendar" label="11/01/2021 – 11/30/2021" />
-            <ep-button kind="naked" iconLeft="full-width" @click="toggleContentWidth" />
+            <ep-button kind="ghost" iconLeft="full-width" @click="toggleContentWidth" />
           </div>
         </div>
         <div class="content-body">

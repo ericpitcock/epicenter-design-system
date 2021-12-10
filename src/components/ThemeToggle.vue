@@ -1,5 +1,5 @@
 <template>
-  <ep-button kind="naked" :icon="buttonIcon" title="Toggle theme" class="theme-toggle" @click="toggleTheme()" />
+  <ep-button kind="ghost" :icon="buttonIcon" title="Toggle theme" class="theme-toggle" @click="toggleTheme()" />
 </template>
 
 <script>

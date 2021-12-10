@@ -32,7 +32,7 @@ export default {
         options: {
           Primary: 'primary',
           Secondary: 'secondary',
-          Naked: 'naked',
+          Ghost: 'ghost',
           Danger: 'danger',
           Warning: 'warning',
           Success: 'success'

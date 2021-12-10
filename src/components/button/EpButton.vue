@@ -46,6 +46,10 @@
       disabled: {
         type: Boolean,
         default: false
+      },
+      outlined: {
+        type: Boolean,
+        default: false
       }
     },
     components: {
@@ -69,7 +73,8 @@
           { [`ep-button--${this.size}`]: this.size != 'default' },
           { 'ep-button--icon-right': this.iconRight },
           { 'ep-button--icon-left': this.iconLeft},
-          { 'ep-button--disabled': this.disabled}
+          { 'ep-button--disabled': this.disabled},
+          { 'ep-button--outlined': this.outlined }
         ]
       }
     }
@@ -178,27 +183,31 @@
         var(--success-green--active)
       );
     }
-    &--naked {
+    &--ghost {
       @include button-theme(
         transparent,
         transparent,
-        var(--button-naked--text),
-        var(--button-naked--hover),
+        var(--button-ghost--text),
+        var(--button-ghost--hover),
         var(--text-color),
-        var(--button-naked--active)
+        var(--button-ghost--active)
       );
     }
     &--menu-item {
       @include button-theme(
         transparent,
         transparent,
-        var(--button-naked--text),
+        var(--button-ghost--text),
         var(--button-menu-item--hover),
         var(--button-menu-item-text-hover),
         var(--button-menu-item--active)
       );
       width: 100%;
       border-radius: 0;
+    }
+    &--outlined {
+      background-color: transparent;
+      color: var(--text-color);
     }
     // size
     &--small {
