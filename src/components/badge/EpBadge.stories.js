@@ -18,14 +18,14 @@ export default {
       control: {
         type: 'text',
       },
-      defaultValue: 'var(--background-2)'
+      defaultValue: 'var(--background-4)'
     },
     borderColor: {
       name: 'Border Color',
       control: {
         type: 'text',
       },
-      defaultValue: 'var(--border-color)'
+      defaultValue: 'var(--border-color--lighter)'
     },
     textColor: {
       name: 'Text Color',

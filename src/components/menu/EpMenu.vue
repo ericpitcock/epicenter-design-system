@@ -1,7 +1,7 @@
 <template>
   <div class="ep-menu">
     <template v-for="(item, index) of menuItems" :key="item.label + index.toString()">
-      <ep-divider v-if="item.divider" />
+      <ep-divider v-if="item.divider" margin="1rem 0" />
       <ep-button
         v-else
         kind="menu-item"

@@ -14,11 +14,11 @@
       },
       backgroundColor: {
         type: String,
-        default: 'var(--background-3)'
+        default: 'var(--background-4)'
       },
       borderColor: {
         type: String,
-        default: 'var(--border-color)'
+        default: 'var(--border-color--lighter)'
       },
       textColor: {
         type: String,
