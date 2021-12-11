@@ -34,82 +34,99 @@
   }
 </script>
 
-<style lang="scss">
-  @import '../../../../node_modules/highcharts/css/highcharts.css';
+<style lang="scss" scoped>
+  $colors: (
+    var(--chart-sequence-00),
+    var(--chart-sequence-01),
+    var(--chart-sequence-02),
+    var(--chart-sequence-03),
+    var(--chart-sequence-04),
+    var(--chart-sequence-05),
+    var(--chart-sequence-06),
+    var(--chart-sequence-07),
+    var(--chart-sequence-08),
+    var(--chart-sequence-09),
+    var(--chart-sequence-10),
+    var(--chart-sequence-11),
+    var(--chart-sequence-12),
+    var(--chart-sequence-13)
+  );
+
+  @use '../../../../node_modules/highcharts/css/highcharts.scss';
   
-  .highcharts-axis-labels,
-  .highcharts-axis-title,
-  .highcharts-legend-item > text {
-    fill: var(--text-color);
-  }
-  .highcharts-container {
-    font-family: inherit;
-    font-size: var(--font-size--default);
-  }
-  .highcharts-background {
-    fill: transparent;
-  }
-  .highcharts-axis-line,
-  .highcharts-grid-line {
-    fill: none;
-    stroke: var(--border-color);
-  }
-  .highcharts-color-0 {
-    fill: var(--chart-sequence-00) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-1 {
-    fill: var(--chart-sequence-01) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-2 {
-    fill: var(--chart-sequence-02) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-3 {
-    fill: var(--chart-sequence-03) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-4 {
-    fill: var(--chart-sequence-04) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-5 {
-    fill: var(--chart-sequence-05) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-6 {
-    fill: var(--chart-sequence-06) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-7 {
-    fill: var(--chart-sequence-07) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-8 {
-    fill: var(--chart-sequence-08) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-9 {
-    fill: var(--chart-sequence-09) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-10 {
-    fill: var(--chart-sequence-10) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-11 {
-    fill: var(--chart-sequence-11) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-12 {
-    fill: var(--chart-sequence-12) !important;
-    stroke: var(--background-2) !important;
-  }
-  .highcharts-color-13 {
-    fill: var(--chart-sequence-13) !important;
-    stroke: var(--background-2) !important;
-  }
+  // .highcharts-axis-labels,
+  // .highcharts-axis-title,
+  // .highcharts-legend-item > text {
+  //   fill: var(--text-color);
+  // }
+  // .highcharts-container {
+  //   font-family: inherit;
+  //   font-size: var(--font-size--default);
+  // }
+  // .highcharts-background {
+  //   fill: transparent;
+  // }
+  // .highcharts-axis-line,
+  // .highcharts-grid-line {
+  //   fill: none;
+  //   stroke: var(--border-color);
+  // }
+  // .highcharts-color-0 {
+  //   fill: var(--chart-sequence-00) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-1 {
+  //   fill: var(--chart-sequence-01) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-2 {
+  //   fill: var(--chart-sequence-02) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-3 {
+  //   fill: var(--chart-sequence-03) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-4 {
+  //   fill: var(--chart-sequence-04) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-5 {
+  //   fill: var(--chart-sequence-05) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-6 {
+  //   fill: var(--chart-sequence-06) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-7 {
+  //   fill: var(--chart-sequence-07) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-8 {
+  //   fill: var(--chart-sequence-08) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-9 {
+  //   fill: var(--chart-sequence-09) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-10 {
+  //   fill: var(--chart-sequence-10) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-11 {
+  //   fill: var(--chart-sequence-11) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-12 {
+  //   fill: var(--chart-sequence-12) !important;
+  //   stroke: var(--background-2) !important;
+  // }
+  // .highcharts-color-13 {
+  //   fill: var(--chart-sequence-13) !important;
+  //   stroke: var(--background-2) !important;
+  // }
   // .highcharts-figure,
   // .highcharts-data-table table {
   //   min-width: 310px;

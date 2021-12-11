@@ -275,7 +275,7 @@ const extremes = {
 }
 
 export default {
-  title: 'Components/Chart',
+  title: 'Components/Charts/Highcharts/Highstock',
   component: EpChart,
   // decorators: [container],
   argTypes: {
@@ -305,4 +305,4 @@ const Template = args => ({
   template: '<ep-chart v-bind="args" />'
 })
 
-export const Chart = Template.bind({})
+export const Highstock = Template.bind({})

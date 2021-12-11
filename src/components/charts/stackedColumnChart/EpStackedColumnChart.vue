@@ -34,8 +34,8 @@
   }
 </script>
 
-<style lang="scss">
-  @import '../../../../node_modules/highcharts/css/highcharts.css';
+<style lang="scss" scoped>
+  // @import '../../../../node_modules/highcharts/css/highcharts.css';
   
   .highcharts-axis-labels,
   .highcharts-axis-title,

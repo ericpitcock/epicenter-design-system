@@ -35,14 +35,14 @@ const options = {
     styledMode: true,
     type: 'bar'
   },
-  colors: [
-    '#915ce0',
-    '#ec93b8',
-    '#7fcc93',
-    '#b29124',
-    '#9c511c',
-    '#52aae0'
-  ],
+  // colors: [
+  //   '#915ce0',
+  //   '#ec93b8',
+  //   '#7fcc93',
+  //   '#b29124',
+  //   '#9c511c',
+  //   '#52aae0'
+  // ],
   credits: {
     enabled: false
   },
