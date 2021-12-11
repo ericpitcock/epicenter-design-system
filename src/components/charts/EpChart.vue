@@ -75,6 +75,11 @@
   );
   
   $background-color: var(--background-2);
+  
+  // .highcharts-grid-line
+  $neutral-color-10: var(--border-color);
+  // .highcharts-axis-line
+  $highlight-color-20: var(--border-color);
 
   $tooltip-background: var(--background-2);
   // $tooltip-border: var(--border-color--lighter);
@@ -99,6 +104,9 @@
     }
     .highcharts-halo {
       fill-opacity: 0;
+    }
+    .highcharts-bar-series rect.highcharts-point {
+      stroke: $background-color;
     }
   }
   
