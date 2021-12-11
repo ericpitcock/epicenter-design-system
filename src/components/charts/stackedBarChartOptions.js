@@ -1,22 +1,14 @@
 import faker from 'faker'
-import EpContainer from '@/components/container/EpContainer'
-import EpStackedBarChart from './EpStackedBarChart'
 
-const container = () => {
-  return {
-    template: '<div style="padding: 30px;"><story/></div>'
-  }
-}
-
-const fakeArray = (length) => {
+const fakeArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
-    arr.push(faker.datatype.number({ min: 0, max: 10000, precision: .1 }))
+    arr.push(faker.datatype.number({ min: 0, max: 10000, precision: 0.1 }))
   }
   return arr
 }
 
-const fakeCitiesArray = (length) => {
+const fakeCitiesArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
     arr.push(faker.address.city())
@@ -24,9 +16,11 @@ const fakeCitiesArray = (length) => {
   return arr
 }
 
-const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color')
+const textColor = getComputedStyle(document.documentElement).getPropertyValue(
+  '--text-color'
+)
 
-const options = {
+const stackedBarChartOptions = {
   chart: {
     backgroundColor: undefined,
     style: {
@@ -51,22 +45,28 @@ const options = {
       stacking: 'normal'
     }
   },
-  series: [{
+  series: [
+    {
       name: 'Security Incidents',
       data: fakeArray(12)
-    },{
+    },
+    {
       name: 'Unusual Activity',
       data: fakeArray(12)
-    },{
+    },
+    {
       name: 'Policy',
       data: fakeArray(12)
-    },{
+    },
+    {
       name: 'Recon',
       data: fakeArray(12)
-    },{
+    },
+    {
       name: 'Service',
       data: fakeArray(12)
-    },{
+    },
+    {
       name: 'Other',
       data: fakeArray(12)
     }
@@ -102,33 +102,4 @@ const options = {
   }
 }
 
-export default {
-  title: 'Components/Charts/Highcharts/Stacked Bar Chart',
-  component: EpStackedBarChart,
-  decorators: [container],
-  argTypes: {
-    options: {
-      defaultValue: options,
-      table: {
-        disable: true
-      }
-    }
-  },
-  parameters: {
-    controls: { hideNoControlsWarning: true },
-  }
-}
-
-const Template = args => ({
-  components: { EpContainer, EpStackedBarChart },
-  setup() {
-    return { args }
-  },
-  template: `
-    <ep-container padding="30px">
-      <ep-stacked-bar-chart v-bind="args" />
-    </ep-container>
-  `
-})
-
-export const stackedBarChart = Template.bind({})
+export default stackedBarChartOptions

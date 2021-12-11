@@ -1,12 +1,4 @@
 import faker from 'faker'
-import EpContainer from '@/components/container/EpContainer'
-import EpStackedColumnChart from './EpStackedColumnChart'
-
-const container = () => {
-  return {
-    template: '<div style="padding: 30px;"><story/></div>'
-  }
-}
 
 const categories = [
   'Mobile Adware',
@@ -47,7 +39,7 @@ const stackedColumnSeries = () => {
 
 const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color')
 
-const options = {
+const stackedColumnChartOptions = {
   chart: {
     backgroundColor: undefined,
     style: {
@@ -56,14 +48,7 @@ const options = {
     styledMode: true,
     type: 'column'
   },
-  colors: [
-    '#915ce0',
-    '#ec93b8',
-    '#7fcc93',
-    '#b29124',
-    '#9c511c',
-    '#52aae0'
-  ],
+  colors: ['#915ce0', '#ec93b8', '#7fcc93', '#b29124', '#9c511c', '#52aae0'],
   credits: {
     enabled: false
   },
@@ -78,7 +63,7 @@ const options = {
     },
     series: {
       groupPadding: 0.2,
-      stacking: 'normal',
+      stacking: 'normal'
       // dataLabels: {
       //   enabled: true // IT'S HERE
       // }
@@ -91,7 +76,7 @@ const options = {
   xAxis: {
     categories: fakeArrayOfDates(30),
     labels: {
-      formatter: function() {
+      formatter: function () {
         // let value = this.value
         var value = new Date(this.value)
         return value.toLocaleDateString({
@@ -126,33 +111,4 @@ const options = {
   }
 }
 
-export default {
-  title: 'Components/Charts/Highcharts/Stacked Column Chart',
-  component: EpStackedColumnChart,
-  decorators: [container],
-  argTypes: {
-    options: {
-      defaultValue: options,
-      table: {
-        disable: true
-      }
-    }
-  },
-  parameters: {
-    controls: { hideNoControlsWarning: true },
-  }
-}
-
-const Template = args => ({
-  components: { EpContainer, EpStackedColumnChart },
-  setup() {
-    return { args }
-  },
-  template: `
-    <ep-container padding="30px">
-      <ep-stacked-column-chart v-bind="args" />
-    </ep-container>
-  `
-})
-
-export const stackedColumnChart = Template.bind({})
+export default stackedColumnChartOptions
