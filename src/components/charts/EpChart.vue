@@ -52,129 +52,47 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  @import '../../../node_modules/highcharts/css/highcharts.css';
+<style lang="scss">
+  $colors: (
+    var(--chart-sequence-00),
+    var(--chart-sequence-01),
+    var(--chart-sequence-02),
+    var(--chart-sequence-03),
+    var(--chart-sequence-04),
+    var(--chart-sequence-05),
+    var(--chart-sequence-06),
+    var(--chart-sequence-07),
+    var(--chart-sequence-08),
+    var(--chart-sequence-09),
+    var(--chart-sequence-10),
+    var(--chart-sequence-11),
+    var(--chart-sequence-12),
+    var(--chart-sequence-13)
+  );
+  
+  $background-color: var(--background-2);
 
-  ::v-deep {
-    .highcharts-container {
+  $tooltip-background: var(--background-2);
+  $tooltip-border: var(--border-color--lighter);
+
+  $font-family: 'Inter var', sans-serif;
+  $title-font-size: var(--font-size--default);
+  $subtitle-font-size: var(--font-size--default);
+  $legend-font-size: var(--font-size--default);
+  $axis-labels-font-size: var(--font-size--default);
+
+  @import '../../../node_modules/highcharts/css/highcharts.scss';
+
+  .highcharts-container {
+    font-family: $font-family;
+    font-size: var(--font-size--default);
+    * {
       font-family: inherit;
-      font-size: var(--font-size--default);
+      font-size: inherit;
     }
-    .highcharts-background {
-      fill: transparent;
-    }
-    .highcharts-axis-labels,
-    .highcharts-axis-title,
-    .highcharts-data-label > text,
-    .highcharts-legend-item > text {
+    text {
       fill: var(--text-color);
     }
-    .highcharts-axis-line,
-    .highcharts-grid-line {
-      fill: none;
-      stroke: var(--border-color);
-    }
-    .highcharts-point {
-      &.highcharts-color-0 {
-        fill: var(--chart-sequence-00);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-1 {
-        fill: var(--chart-sequence-01);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-2 {
-        fill: var(--chart-sequence-02);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-3 {
-        fill: var(--chart-sequence-03);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-4 {
-        fill: var(--chart-sequence-04);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-5 {
-        fill: var(--chart-sequence-05);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-6 {
-        fill: var(--chart-sequence-06);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-7 {
-        fill: var(--chart-sequence-07);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-8 {
-        fill: var(--chart-sequence-08);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-9 {
-        fill: var(--chart-sequence-09);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-10 {
-        fill: var(--chart-sequence-10);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-11 {
-        fill: var(--chart-sequence-11);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-12 {
-        fill: var(--chart-sequence-12);
-        stroke: var(--background-2);
-      }
-      &.highcharts-color-13 {
-        fill: var(--chart-sequence-13);
-        stroke: var(--background-2);
-      }
-    }
-    .highcharts-data-label-connector {
-      &.highcharts-color-0 {
-        stroke: var(--chart-sequence-00);
-      }
-      &.highcharts-color-1 {
-        stroke: var(--chart-sequence-01);
-      }
-      &.highcharts-color-2 {
-        stroke: var(--chart-sequence-02);
-      }
-      &.highcharts-color-3 {
-        stroke: var(--chart-sequence-03);
-      }
-      &.highcharts-color-4 {
-        stroke: var(--chart-sequence-04);
-      }
-      &.highcharts-color-5 {
-        stroke: var(--chart-sequence-05);
-      }
-      &.highcharts-color-6 {
-        stroke: var(--chart-sequence-06);
-      }
-      &.highcharts-color-7 {
-        stroke: var(--chart-sequence-07);
-      }
-      &.highcharts-color-8 {
-        stroke: var(--chart-sequence-08);
-      }
-      &.highcharts-color-9 {
-        stroke: var(--chart-sequence-09);
-      }
-      &.highcharts-color-10 {
-        stroke: var(--chart-sequence-10);
-      }
-      &.highcharts-color-11 {
-        stroke: var(--chart-sequence-11);
-      }
-      &.highcharts-color-12 {
-        stroke: var(--chart-sequence-12);
-      }
-      &.highcharts-color-13 {
-        stroke: var(--chart-sequence-13);
-      }
-    }
   }
+  
 </style>

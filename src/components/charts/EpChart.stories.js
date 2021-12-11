@@ -33,6 +33,7 @@ const options = {
     // plotBackgroundColor: null,
     // plotBorderWidth: null,
     // plotShadow: false,
+    colorCount: 14,
     styledMode: true,
     type: 'pie'
   },
@@ -40,7 +41,7 @@ const options = {
     text: undefined
   },
   tooltip: {
-    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    enabled: true
   },
   accessibility: {
     point: {
@@ -64,9 +65,7 @@ const options = {
       data: [
         {
           name: 'Chrome',
-          y: 61.41,
-          // sliced: true,
-          // selected: true
+          y: 61.41
         },
         {
           name: 'Internet Explorer',
@@ -98,7 +97,27 @@ const options = {
         },
         {
           name: 'Other',
-          y: 2.61
+          y: 1
+        },
+        {
+          name: 'Farts',
+          y: 1
+        },
+        {
+          name: 'Poop',
+          y: 1
+        },
+        {
+          name: 'Butt',
+          y: 1
+        },
+        {
+          name: 'PeePee',
+          y: 1
+        },
+        {
+          name: 'Hershey',
+          y: 1
         }
       ]
     }
