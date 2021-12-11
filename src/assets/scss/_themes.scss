@@ -1,5 +1,5 @@
-@import './theme--light';
-@import './theme--dark';
+@use './theme--light';
+@use './theme--dark';
 
 // global theme stuff (included no matter the theme)
 :root {

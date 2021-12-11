@@ -22,7 +22,7 @@ module.exports = {
               {
                 loader: 'sass-loader',
                 options: {
-                  prependData: '@import "@/assets/scss/_mixins.scss";'
+                  prependData: '@use "@/assets/scss/_mixins.scss";'
                 }
               }
             ]
