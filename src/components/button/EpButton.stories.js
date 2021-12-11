@@ -27,26 +27,38 @@ export default {
     },
     kind: {
       name: 'Kind',
+      options: [
+        'primary',
+        'secondary',
+        'ghost',
+        'danger',
+        'warning',
+        'success'
+      ],
       control: {
         type: 'radio',
-        options: {
-          Primary: 'primary',
-          Secondary: 'secondary',
-          Ghost: 'ghost',
-          Danger: 'danger',
-          Warning: 'warning',
-          Success: 'success'
+        labels: {
+          primary: 'Primary',
+          secondary: 'Secondary',
+          ghost: 'Ghost',
+          danger: 'Danger',
+          warning: 'Warning',
+          success: 'Success'
         }
       },
       defaultValue: 'primary'
     },
     size: {
       name: 'Size',
+      options: [
+        'default',
+        'small'
+      ],
       control: {
         type: 'radio',
-        options: {
-          Default: 'default',
-          Small: 'small'
+        labels: {
+          default: 'Default',
+          small: 'Small'
         }
       },
       defaultValue: 'default'
