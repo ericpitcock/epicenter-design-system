@@ -1,7 +1,5 @@
 <template>
-  <div class="ep-chart">
-    <div id="container"></div>
-  </div>
+  <div id="ep-chart"></div>
 </template>
 
 <script>
@@ -12,7 +10,7 @@
     props: {
       options: {
         type: Object,
-        required: true
+        default: () => ({})
       }
     },
     data() {
@@ -24,6 +22,12 @@
           },
           credits: {
             enabled: false
+          },
+          title: {
+            text: undefined
+          },
+          tooltip: {
+            enabled: false
           }
         }
       }
@@ -32,7 +36,7 @@
       drawChart() {
         // can dynamically change type with
         // this.chart = Highcharts['stockChart']('container', {
-        this.chart = Highcharts.chart('container', this.chartOptions)
+        this.chart = Highcharts.chart('ep-chart', this.chartOptions)
       }
     },
     computed: {
@@ -73,7 +77,7 @@
   $background-color: var(--background-2);
 
   $tooltip-background: var(--background-2);
-  $tooltip-border: var(--border-color--lighter);
+  // $tooltip-border: var(--border-color--lighter);
 
   $font-family: 'Inter var', sans-serif;
   $title-font-size: var(--font-size--default);
@@ -92,6 +96,9 @@
     }
     text {
       fill: var(--text-color);
+    }
+    .highcharts-halo {
+      fill-opacity: 0;
     }
   }
   

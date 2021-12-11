@@ -24,44 +24,22 @@ const fakeCitiesArray = length => {
   return arr
 }
 
-// const textColor = getComputedStyle(document.documentElement).getPropertyValue(
-//   '--text-color'
-// )
-
-const options = {
+const pieOptions = {
   chart: {
-    // plotBackgroundColor: null,
-    // plotBorderWidth: null,
-    // plotShadow: false,
     colorCount: 14,
     styledMode: true,
     type: 'pie'
   },
-  title: {
-    text: undefined
-  },
-  tooltip: {
-    enabled: true
-  },
-  accessibility: {
-    point: {
-      valueSuffix: '%'
-    }
-  },
   plotOptions: {
     pie: {
-      allowPointSelect: true,
-      cursor: 'pointer',
       dataLabels: {
-        enabled: true,
         format: '<b>{point.name}</b>: {point.percentage:.1f} %'
       }
     }
   },
   series: [
     {
-      name: 'Brands',
-      colorByPoint: true,
+      name: 'Browsers',
       data: [
         {
           name: 'Chrome',
@@ -130,7 +108,7 @@ export default {
   decorators: [container],
   argTypes: {
     options: {
-      defaultValue: options,
+      defaultValue: pieOptions,
       table: {
         disable: true
       }
