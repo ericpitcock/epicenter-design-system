@@ -24,9 +24,9 @@ const fakeCitiesArray = length => {
   return arr
 }
 
-const textColor = getComputedStyle(document.documentElement).getPropertyValue(
-  '--text-color'
-)
+// const textColor = getComputedStyle(document.documentElement).getPropertyValue(
+//   '--text-color'
+// )
 
 const options = {
   chart: {
