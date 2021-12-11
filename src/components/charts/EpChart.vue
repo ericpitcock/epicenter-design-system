@@ -80,6 +80,7 @@
   ::v-deep {
     .highcharts-axis-labels,
     .highcharts-axis-title,
+    .highcharts-data-label > text,
     .highcharts-legend-item > text {
       fill: var(--text-color);
     }
