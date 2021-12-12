@@ -51,13 +51,14 @@ html {
   font-variation-settings: 'wght' 300;
 }
 
-// p.read-me {
-//   font-size: var(--font-size--body);
-//   line-height: 1.5em;
-//   & + & {
-//     margin-top: 20px;
-//   }
-// }
+p {
+  font-size: var(--font-size--body);
+  line-height: 1.6em;
+  max-width: 60rem;
+  & + & {
+    margin-top: 2rem;
+  }
+}
 
 .text--subtle {
   color: var(--text-subtle);
@@ -69,9 +70,4 @@ html {
 
 .text-align--right {
   text-align: right;
-}
-
-p {
-  max-width: 60rem;
-  line-height: 1.6em;
 }
