@@ -18,6 +18,11 @@
           :menuItems="seattleRecordStores"
           alignRight
         />
+        <ep-input
+          label="Search"
+          placeholder="Search"
+          @input="search"
+        />
       </div>
       <div style="flex: 1">
         <ep-map
@@ -43,18 +48,20 @@
 <script>
   import faker from 'faker';
 
-  import EpContainer from '@/components/container/EpContainer'
   import EpButton from '@/components/button/EpButton'
+  import EpContainer from '@/components/container/EpContainer'
   import EpDropdown from '@/components/dropdown/EpDropdown'
+  import EpInput from '@/components/input/EpInput'
   import EpMap from '@/components/map/EpMap'
   import EpTable from '@/components/table/EpTable'
 
   export default {
     name: 'Sandbox',
     components: {
-      EpContainer,
       EpButton,
+      EpContainer,
       EpDropdown,
+      EpInput,
       EpMap,
       EpTable
     },
@@ -119,6 +126,9 @@
       // dropPin(location) {
       //   this.$refs.map.dropPin(location)
       // },
+      search() {
+        console.log('youre searching')
+      },
       testMethod() {
         console.log('test method')
       },
