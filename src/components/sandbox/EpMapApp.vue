@@ -2,26 +2,24 @@
   <ep-container style="display: flex; flex-direction: column;" height="100%">
       <div class="header">
         <ep-button
-          kind="secondary"
-          label="Zoom in"
+          kind="ghost"
           iconLeft="zoom-in"
           @click="mapZoom++"
         />
         <ep-button
-          kind="secondary"
-          label="Zoom out"
+          kind="ghost"
           iconLeft="zoom-out"
           @click="mapZoom--"
         />
         <ep-dropdown
           :button="{ label: 'Seattle Record Stores' }"
           :menuItems="seattleRecordStores"
-          alignRight
         />
         <ep-input
           label="Search"
           placeholder="Search"
           @input="search"
+          style="flex: 1;"
         />
       </div>
       <div style="flex: 1">
@@ -159,8 +157,8 @@
     flex: 0 0 61px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 0 10px;
+    // gap: 1rem;
+    padding: 0 1.5rem;
     border-bottom: 1px solid var(--border-color);
   }
 </style>

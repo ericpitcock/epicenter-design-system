@@ -12,7 +12,7 @@
       </div>
       <div class="type-style__sample">
         <div :class="['type-style__name', `font-size--${typeStyle.name.toLowerCase()}`]">
-          {{ typeStyle.sample }}
+          <p>{{ typeStyle.sample }}</p>
         </div>
       </div>
       <!-- <div class="type-style__size">{{ typeStyle.size }}</div>
@@ -43,21 +43,21 @@
             desc: 'Page headers',
             size: '2.6rem (26px)',
             weight: '300 (light)',
-            sample: faker.lorem.word()
+            sample: faker.random.word()
           },
           {
             name: 'Large',
             desc: 'Section/component headers',
             size: '1.8rem (18px)',
             weight: '400 (regular)',
-            sample: faker.lorem.word()
+            sample: faker.random.word()
           },
           {
             name: 'Body',
             desc: 'Blocks of text you expect people to read',
             size: '1.4rem (14px)',
             weight: '400 (regular)',
-            sample: faker.lorem.word()
+            sample: faker.lorem.sentences(10)
           },
           {
             name: 'Default',
@@ -86,13 +86,12 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .ep-container + .ep-container {
     margin-top: 10px;
   }
   .type-style {
     display: flex;
-    align-items: center;
     padding: 30px 0;
     &:first-child {
       padding-top: 0;
