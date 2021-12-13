@@ -12,7 +12,7 @@
       @keydown="onKeyDown"
     />
     <ep-button
-      v-if="value !== ''"
+      v-if="true"
       @click="clear()"
       kind="ghost"
       iconLeft="close"
@@ -77,16 +77,29 @@
 
 <style lang="scss" scoped>
   .ep-input-container {
-    display: flex;
+    display: inline-flex;
+    position: relative;
     align-items: center;
-    background: var(--background-4);
-    padding: 0.4rem 0.8rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
+    // background: var(--background-4);
+    // padding: 0.4rem 0.8rem;
+    // border: 1px solid var(--border-color);
+    // border-radius: var(--border-radius);
+    .ep-icon {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
     .ep-input {
+      -webkit-appearance: none;
       width: 100%;
-      padding-left: 0.6rem;
+      padding: 0.65rem 0;
       font-size: var(--font-size--small);
+      background: var(--background-4);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      vertical-align: top;
+      text-indent: 3.2rem;
       &::placeholder {
         color: var(--text-color);
       }
@@ -95,7 +108,14 @@
       }
       &--invalid {
         border-color: var(--error-color);
+        border-color: red;
       }
+    }
+    .ep-button {
+      position: absolute;
+      right: 0;
+      // top: 50%;
+      // transform: translateY(-50%);
     }
   }
 </style>

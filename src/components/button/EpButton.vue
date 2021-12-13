@@ -127,6 +127,7 @@
     cursor: pointer;
     user-select: none;
     white-space: nowrap;
+    vertical-align: top;
 
     // kind template
     // $bg-color,
