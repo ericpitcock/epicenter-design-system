@@ -31,7 +31,7 @@ html {
   font-size: var(--font-size--tiny);
   font-variation-settings: 'wght' 600;
 }
-.font-size--small {
+.font-size--small, small {
   font-size: var(--font-size--small);
   font-variation-settings: 'wght' 540;
 }
@@ -42,16 +42,16 @@ html {
   font-size: var(--font-size--body);
   font-variation-settings: 'wght' 500;
 }
-.font-size--large {
+.font-size--large, h2 {
   font-size: var(--font-size--large);
   font-variation-settings: 'wght' 400;
 }
-.font-size--jumbo {
+.font-size--jumbo, h1 {
   font-size: var(--font-size--jumbo);
   font-variation-settings: 'wght' 300;
 }
 
-p {
+p.read-me {
   font-size: var(--font-size--body);
   line-height: 1.6em;
   max-width: 60rem;

@@ -5,21 +5,18 @@
   <ep-container padding="30px">
     <div class="type-style" v-for="(typeStyle, index) in typeStyles" :key="index">
       <div class="type-style__desc">
-        <div class="type-style__name font-size--large">{{ typeStyle.name }}</div>
-        <!-- <div>{{ typeStyle.desc }}</div> -->
-        <div>{{ typeStyle.size }}</div>
-        <div>{{ typeStyle.weight }}</div>
+        <div class="font-size--body">{{ typeStyle.name }}</div>
+        <div class="meta font-size--small">{{ typeStyle.size }}</div>
+        <div class="meta font-size--small">{{ typeStyle.weight }}</div>
       </div>
       <div class="type-style__sample">
-        <div :class="['type-style__name', `font-size--${typeStyle.name.toLowerCase()}`]">
-          <p>{{ typeStyle.sample }}</p>
+        <div
+          :class="`font-size--${typeStyle.name.toLowerCase()}`"
+          v-html="typeStyle.sample"
+        >
         </div>
       </div>
-      <!-- <div class="type-style__size">{{ typeStyle.size }}</div>
-      <div class="type-style__weight">{{ typeStyle.weight }}</div> -->
     </div>
-    
-    <!-- <p class="special font-size--body">{{ faker.lorem.paragraph(4) }}</p> -->
   </ep-container>
 </template>
 
@@ -36,28 +33,27 @@
     },
     data() {
       return {
-        // faker,
         typeStyles: [
           {
             name: 'Jumbo',
             desc: 'Page headers',
             size: '2.6rem (26px)',
             weight: '300 (light)',
-            sample: faker.random.word()
+            sample: '<h1>Download the internet</h1>'
           },
           {
             name: 'Large',
             desc: 'Section/component headers',
             size: '1.8rem (18px)',
             weight: '400 (regular)',
-            sample: faker.random.word()
+            sample: '<h2>Large</h2>'
           },
           {
             name: 'Body',
             desc: 'Blocks of text you expect people to read',
             size: '1.4rem (14px)',
             weight: '400 (regular)',
-            sample: faker.lorem.sentences(10)
+            sample: `<p class="read-me">${faker.lorem.sentences(10)}</p>`
           },
           {
             name: 'Default',
@@ -78,7 +74,7 @@
             desc: 'Things should be there, but "not there"',
             size: '0.8rem (8px)',
             weight: '400 (regular)',
-            sample: faker.lorem.word()
+            sample: '<p>Made in China</p>'
           },
         ]
       }
@@ -92,7 +88,8 @@
   }
   .type-style {
     display: flex;
-    padding: 30px 0;
+    align-items: center;
+    padding: 2.6rem 0 3rem;
     &:first-child {
       padding-top: 0;
     }
@@ -101,15 +98,16 @@
     }
     &__desc {
       flex: 1;
+      * + * {
+        margin-top: 0.5rem;
+      }
+      .meta {
+        // color: var(--gray-300);
+        color: #595959
+      }
     }
     &__sample {
-      flex: 3;
-    }
-    &__size {
-      flex: 1;
-    }
-    &__weight {
-      flex: 1;
+      flex: 6;
     }
     & + & {
       // margin-top: 30px;
