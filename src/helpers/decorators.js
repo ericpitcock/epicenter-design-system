@@ -4,8 +4,8 @@ const centered = () => {
       <div style="
         display: grid;
         place-content: center;
-        width: 100vw;
-        height: 100vh;"
+        width: 100%;
+        height: 100%;"
       >
         <story />
       </div>
@@ -18,8 +18,8 @@ const fullscreen = () => {
     template: `
       <div style="
         display: block;
-        width: 100vw;
-        height: 100vh;"
+        width: 100%;
+        height: 100%;"
       >
         <story />
       </div>

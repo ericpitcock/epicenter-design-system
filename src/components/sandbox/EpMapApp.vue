@@ -1,14 +1,14 @@
 <template>
-  <ep-container style="display: flex; flex-direction: column;" height="100%">
-      <div class="header">
+  <ep-container height="100%" class="app">
+      <div class="app-header">
         <ep-button
           kind="ghost"
-          iconLeft="zoom-in"
+          iconLeft="plus"
           @click="mapZoom++"
         />
         <ep-button
           kind="ghost"
-          iconLeft="zoom-out"
+          iconLeft="minus"
           @click="mapZoom--"
         />
         <ep-dropdown
@@ -22,7 +22,7 @@
           style="flex: 1;"
         />
       </div>
-      <div style="flex: 1">
+      <div class="app-content">
         <ep-map
           :mapCenter="mapCenter"
           mapStyle="mapbox://styles/mapbox/streets-v11"
@@ -30,16 +30,16 @@
           :navigationControl="false"
           ref="map"
         />
+        <ep-table
+          :columns="tableColumns"
+          :data="tableData(20)"
+          fullWidth
+          compact
+          striped
+          selectable
+          stickyHeader
+        />
       </div>
-      <!-- <ep-table
-        :columns="tableColumns"
-        :data="tableData(20)"
-        fullWidth
-        compact
-        striped
-        selectable
-        stickyHeader
-      /> -->
   </ep-container>
 </template>
 
@@ -153,12 +153,21 @@
 </script>
 
 <style lang="scss" scoped>
-  .header {
+  .app {
+    display: flex;
+    flex-direction: column; 
+  }
+  .app-header {
     flex: 0 0 61px;
     display: flex;
     align-items: center;
     // gap: 1rem;
     padding: 0 1.5rem;
     border-bottom: 1px solid var(--border-color);
+  }
+  .app-content {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
   }
 </style>

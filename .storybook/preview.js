@@ -8,7 +8,7 @@ import '!style-loader!css-loader!sass-loader!../src/assets/scss/global.scss'
 import '!style-loader!css-loader!sass-loader!../src/assets/scss/storybook.scss'
 
 export const parameters = {
-  layout: 'fullscreen',
+  layout: 'centered',
   options: {
     storySort: {
       order: ['Intro', 'Components', 'Style', 'Layouts', 'Sandbox'],

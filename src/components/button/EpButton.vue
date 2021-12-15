@@ -216,6 +216,9 @@
     &--small {
       .ep-button__icon {
         padding: 0 0.3rem;
+        &:only-child {
+          padding-right: 0.3rem;
+        }
       }
       .ep-button__label {
         padding: 0.5rem 0.6rem;
