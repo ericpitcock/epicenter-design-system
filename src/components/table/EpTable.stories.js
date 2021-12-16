@@ -62,6 +62,13 @@ export default {
     selected: {
       table: { disable: true }
     },
+    sortable: {
+      name: 'Sortable',
+      control: {
+        type: 'boolean'
+      },
+      defaultValue: false
+    },
     stickyHeader: {
       name: 'Sticky Header',
       control: {

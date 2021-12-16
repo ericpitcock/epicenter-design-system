@@ -27,9 +27,13 @@
         :class="{ 'ep-table-row--selected': isSelected(row.id) }"
       >
         <template v-for="(value, key) in row" :key="key">
-        <td v-if="!excluded(key)" :class="cellStyle(key)">
+        <td v-if="!excluded(key)">
           <!-- <span v-on="cellAction(key)">{{ formatCell(value, key) }}</span> -->
-          <span v-on="cellAction(key)" v-html="formatCell(value, key)"></span>
+          <span
+            v-on="cellAction(key)"
+            v-html="formatCell(value, key)"
+            :class="cellStyle(key)"
+          ></span>
         </td>
         </template>
       </tr>

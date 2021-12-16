@@ -72,6 +72,13 @@ p.read-me {
   text-transform: capitalize;
 }
 
+.clickable {
+  cursor: pointer;
+  &:hover {
+    background-color: var(--primary-color--base);
+  }
+}
+
 .text-align--right {
   text-align: right;
 }
