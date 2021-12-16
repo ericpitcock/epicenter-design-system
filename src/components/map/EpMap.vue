@@ -56,32 +56,12 @@
       }
     },
     computed: {
-      ...mapState(['theme'])
-      // theme() {
-      //   let theme = document.documentElement.getAttribute('data-color-theme')
-      //   console.log(theme)
-      // },
-      // computedMapStyle() {
-      //   switch (this.theme) {
-      //     case 'dark':
-      //       'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph'
-      //       break;
-      //     case 'light':
-      //       'mapbox://styles/mapbox/streets-v11'
-      //       break;
-      //     default:
-      //       'mapbox://styles/mapbox/streets-v11'
-      //   }
-      // }
+      ...mapState(['theme']),
+      computedMapStyle() {
+        return this.theme == 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/streets-v11'
+      }
     },
     methods: {
-      computedMapStyle() {
-        // if (this.mapStyle) {
-        //   return this.mapStyle
-        // } else {
-          return this.theme == 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/streets-v11'
-        // }
-      },
       dropPin(lngLat) {
         this.markers.push(new mapboxgl.Marker()
           .setLngLat(lngLat)
@@ -89,9 +69,6 @@
         this.$emit('dropPin', lngLat)
       },
       flyTo() {
-        // console.log('flyTo')
-        // this.map.setCenter(this.mapCenter)
-        // console.log('flyTo (map comp)', this.mapCenter)
         this.map.flyTo({
           center: this.mapCenter
         })
@@ -103,7 +80,7 @@
             container: 'ep-map',
             center: this.mapCenter,
             zoom: this.mapZoom,
-            style: this.computedMapStyle()
+            style: this.computedMapStyle
           })
           // various options
           // scroll zoom
@@ -153,14 +130,6 @@
       },
       mapStyle(newStyle, oldStyle) {
         this.map.setStyle(newStyle)
-      },
-      theme: {
-        handler: function(newTheme, oldTheme) {
-          // this.loadMap()
-          console.log('theme changed in map')
-          // this.map.setStyle(this.computedMapStyle())
-        },
-        immediate: true
       }
     },
     mounted() {
@@ -172,7 +141,6 @@
           this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
         }
         this.init = false
-        console.log('map has loaded')
       })
       // console.log(this.theme)
       // this.map.on('zoom', (event) => {
@@ -185,10 +153,7 @@
     created() {
       // selectively create watchers if features exist
       // do this for everything that is not required
-      // this.$watch('this.$store.state.theme', (newTheme, oldTheme) => {
-      //   console.log('theme changed in map')
-      //   // this.map.setStyle(this.computedMapStyle())
-      // })
+
       if (this.mapSource) {
         this.$watch('mapSource', function(newSource, oldSource) {
           if (this.init) return

@@ -22,7 +22,7 @@ export const globalTypes = {
     description: 'Global theme for components',
     defaultValue: 'light',
     toolbar: {
-      // icon: 'circlehollow',
+      icon: '',
       // Array of plain string values or MenuItem shape (see below)
       items: ['light', 'dark'],
       // Property that specifies if the name of the item will be displayed
@@ -38,7 +38,6 @@ export const decorators = [
       theme: {
         handler() {
           if (context.globals.theme === store.state.theme) return
-          // console.log('theme changed')
           store.dispatch('toggleTheme')
         },
         immediate: true
