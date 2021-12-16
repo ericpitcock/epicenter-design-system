@@ -76,11 +76,11 @@
     },
     methods: {
       computedMapStyle() {
-        if (this.mapStyle) {
-          return this.mapStyle
-        } else {
-          return this.theme == 'dark' ? 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph' : 'mapbox://styles/mapbox/streets-v11'
-        }
+        // if (this.mapStyle) {
+        //   return this.mapStyle
+        // } else {
+          return this.theme == 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/streets-v11'
+        // }
       },
       dropPin(lngLat) {
         this.markers.push(new mapboxgl.Marker()
@@ -154,9 +154,13 @@
       mapStyle(newStyle, oldStyle) {
         this.map.setStyle(newStyle)
       },
-      theme(newTheme, oldTheme) {
-        // this.loadMap()
-        this.map.setStyle(this.computedMapStyle())
+      theme: {
+        handler: function(newTheme, oldTheme) {
+          // this.loadMap()
+          console.log('theme changed in map')
+          // this.map.setStyle(this.computedMapStyle())
+        },
+        immediate: true
       }
     },
     mounted() {
@@ -168,7 +172,9 @@
           this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
         }
         this.init = false
+        console.log('map has loaded')
       })
+      // console.log(this.theme)
       // this.map.on('zoom', (event) => {
         // console.log(event)
       // })
@@ -179,6 +185,10 @@
     created() {
       // selectively create watchers if features exist
       // do this for everything that is not required
+      // this.$watch('this.$store.state.theme', (newTheme, oldTheme) => {
+      //   console.log('theme changed in map')
+      //   // this.map.setStyle(this.computedMapStyle())
+      // })
       if (this.mapSource) {
         this.$watch('mapSource', function(newSource, oldSource) {
           if (this.init) return

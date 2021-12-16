@@ -9,7 +9,7 @@ module.exports = {
       backgrounds: false,
       measure: false,
       outline: false,
-      toolbars: false,
+      // toolbars: false,
       viewport: false
     }
   },

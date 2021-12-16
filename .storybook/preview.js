@@ -18,11 +18,11 @@ export const parameters = {
 
 export const globalTypes = {
   theme: {
-    name: 'Theme',
+    name: 'Choose Theme',
     description: 'Global theme for components',
     defaultValue: 'light',
     toolbar: {
-      icon: 'circlehollow',
+      // icon: 'circlehollow',
       // Array of plain string values or MenuItem shape (see below)
       items: ['light', 'dark'],
       // Property that specifies if the name of the item will be displayed
@@ -38,7 +38,7 @@ export const decorators = [
       theme: {
         handler() {
           if (context.globals.theme === store.state.theme) return
-          console.log('theme changed')
+          // console.log('theme changed')
           store.dispatch('toggleTheme')
         },
         immediate: true
