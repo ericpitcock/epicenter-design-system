@@ -28,7 +28,8 @@
       >
         <template v-for="(value, key) in row" :key="key">
         <td v-if="!excluded(key)" :class="cellStyle(key)">
-          <span v-on="cellAction(key)">{{ formatCell(value, key) }}</span>
+          <!-- <span v-on="cellAction(key)">{{ formatCell(value, key) }}</span> -->
+          <span v-on="cellAction(key)" v-html="formatCell(value, key)"></span>
         </td>
         </template>
       </tr>
@@ -87,6 +88,10 @@
         type: Number,
         default: null
       },
+      sortable: {
+        type: Boolean,
+        default: false
+      },
       stickyHeader: {
         type: Boolean,
         default: false
@@ -106,13 +111,15 @@
         return column ? column : {}
       },
       cellStyle(key) {
-        const style = this.columns.find(column => column.key == key)?.style
+        const style = this.columns.find(column => column.key === key)?.style
         return style ? style : ''
       },
       headClasses(key) {
-        return key == this.currentSort
-          ? ['active', `active--${this.currentSortDir}`]
-          : null
+        if (this.sortable && key === this.currentSort) {
+          return key === this.currentSort
+            ? ['active', `active--${this.currentSortDir}`]
+            : null
+        }
       },
       excluded(key) {
         return this.exclude.includes(key)
@@ -127,6 +134,7 @@
         return false
       },
       sort(key) {
+        if (!this.sortable) return
         if (key === this.currentSort) {
           this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc'
         }
@@ -145,7 +153,8 @@
            'ep-table--bordered': this.bordered,
            'ep-table--compact': this.compact,
            'ep-table--sticky': this.stickyHeader,
-           'ep-table--striped': this.striped
+           'ep-table--striped': this.striped,
+           'ep-table--sortable': this.sortable
           }
         ]
       },
@@ -153,6 +162,7 @@
         return this.sortedData
       },
       sortedData() {
+        if (!this.sortable) this.data
         return this.data.sort((a, b) => {
           let modifier = 1
           if (this.currentSortDir === 'desc') modifier = -1
@@ -176,16 +186,16 @@
         text-align: left;
         background: var(--background-2);
         z-index: 10;
-        &:hover {
-          color: var(--primary-color--base);
-          cursor: pointer;
-        }
-        &.active {
-          color: var(--primary-color--base);
-          .ep-icon {
-            visibility: visible;
-          }
-        }
+        // &:hover {
+        //   color: var(--primary-color--base);
+        //   cursor: pointer;
+        // }
+        // &.active {
+        //   color: var(--primary-color--base);
+        //   .ep-icon {
+        //     visibility: visible;
+        //   }
+        // }
         div {
           position: relative;
           display: flex;
@@ -243,6 +253,20 @@
         tr.ep-table-row--selected {
           td {
             background: var(--primary-color--light);
+          }
+        }
+      }
+    }
+    &--sortable {
+      thead th {
+        &:hover {
+          color: var(--primary-color--base);
+          cursor: pointer;
+        }
+        &.active {
+          color: var(--primary-color--base);
+          .ep-icon {
+            visibility: visible;
           }
         }
       }
