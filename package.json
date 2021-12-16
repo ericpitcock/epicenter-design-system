@@ -40,7 +40,6 @@
     "raw-loader": "^4.0.2",
     "sass": "^1.44.0",
     "sass-loader": "^8.0.2",
-    "storybook-theme-toggle": "^0.1.2",
     "storybook-vue3-router": "^1.0.5",
     "style-loader": "^1.2.1"
   }
