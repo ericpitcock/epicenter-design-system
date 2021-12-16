@@ -2,7 +2,7 @@ import { padded } from '@/helpers/decorators'
 import EpColorNew from './EpColorNew'
 
 export default {
-  title: 'Style/ColorNew',
+  title: 'Style/Color New',
   component: EpColorNew,
   decorators: [padded],
   argTypes: {},

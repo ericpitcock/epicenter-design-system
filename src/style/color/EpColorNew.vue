@@ -2,7 +2,7 @@
   <div class="colors">
     <ep-container
       width="fit-content"
-      :padding="'30px 40px 40px'"
+      padding="0.4rem 2rem 2rem"
     >
       <ep-table :columns="tableColumns" :data="tableData" bordered stickyHeader />
     </ep-container>
@@ -23,7 +23,13 @@
             header: 'Sample',
             key: 'sample',
             formatter: (value) => {
-              return `<div class="color-sample" style="width: 50px; height: 50px; background-color: ${value};" />`
+              return `<div
+                        class="color-sample"
+                        style="width: 50px;
+                        height: 50px;
+                        background-color: ${value};
+                        border-radius: var(--border-radius);"
+                      />`
             }
           },
           {
@@ -33,11 +39,16 @@
           },
           {
             header: 'CSS Custom Property',
-            key: 'css'
+            key: 'css',
+            on: {
+              click: () => console.log('click')
+            },
+            style: 'clickable'
           },
           {
             header: 'Hex',
-            key: 'hex'
+            key: 'hex',
+            style: 'clickable'
           }
         ],
         hues: Object.keys(colors),
@@ -50,14 +61,10 @@
     },
     computed: {
       tableData() {
-        // const hues = Object.keys(colors)
-        // const levels = Object.keys(colors.red)
         let data = []
         for (const huee in colors) {
           for (const level in colors[huee]) {
             data.push({
-              // level,
-              // huee,
               sample: colors[huee][level],
               color: `${huee} ${level}`,
               css: `var(--${huee}-${level})`,
@@ -66,25 +73,7 @@
           }
         }
         return data
-        // let data = []
-        // colors.forEach((level, index) => {
-        //   // levels.forEach((level) => {
-        //     data.push({
-        //       color: index + ' ' + level,
-        //       css: `--${index}-${level}`,
-        //       hex: colors[index][level]
-        //       // color: {
-        //       //   hue,
-        //       //   level
-        //       // }
-        //     })
-        //   // })
-        // })
-        // return data
       }
-    },
-    created () {
-      console.log(this.tableData)
     }
   }
 </script>
