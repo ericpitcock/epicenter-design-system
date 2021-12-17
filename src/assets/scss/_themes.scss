@@ -35,17 +35,17 @@
   // primary color tints
   --primary-color--light: hsl(199, 89%, 80%);
 
-
+  // css now generated from tokens with style dictionary
   // neutral gray
-  $root: 100%;
-  $index: 0;
-  @while $index < 51 {
-    --gray-#{$index * 10}: hsl(0, 0%, #{$root - (2 * $index)});
-    $index: $index + 1;
-  }
+  // $root: 100%;
+  // $index: 0;
+  // @while $index < 51 {
+  //   --gray-#{$index * 10}: hsl(0, 0%, #{$root - (2 * $index)});
+  //   $index: $index + 1;
+  // }
 
-  --white: var(--gray-0);
-  --black: var(--gray-500);
+  // --white: var(--gray-0);
+  // --black: var(--gray-500);
 
   // outputs
   // --gray-0: hsl(0, 0%, 100%);
