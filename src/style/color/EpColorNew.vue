@@ -247,7 +247,8 @@
   .ep-table {
     // flex: 4;
   }
-  .clickable:hover {
+  // need ::v-deep when using scoped styles
+  ::v-deep .clickable:hover {
     position: relative;
     background-color: var(--background-4);
     outline: 6px solid var(--background-4);
