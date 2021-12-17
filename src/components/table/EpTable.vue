@@ -21,16 +21,19 @@
     </thead>
     <tbody>
       <tr
-        v-for="row in filteredData"
+        v-for="(row, index) in filteredData"
         :key="row.id"
-        @click="$emit('row-click', row.id)"
+        @click="rowClick(row)"
         :class="{ 'ep-table-row--selected': isSelected(row.id) }"
+        :ref="`row-${index}`"
       >
         <template v-for="(value, key) in row" :key="key">
         <td v-if="!excluded(key)">
           <!-- <span v-on="cellAction(key)">{{ formatCell(value, key) }}</span> -->
           <span
-            v-on="cellAction(key)"
+            @mouseover="cellMouseover(`row-${index}`)"
+            @mouseleave="cellMouseleave(`row-${index}`)"
+            @click.stop="cellClick(value, key)"
             v-html="formatCell(value, key)"
             :class="cellStyle(key)"
           ></span>
@@ -110,6 +113,28 @@
       }
     },
     methods: {
+      rowClick(row) {
+        this.$emit('row-click', row)
+        console.log('row-click')
+      },
+      cellMouseover(rowID) {
+        this.$refs[rowID].classList.add('click-disabled')
+        // console.log(this.$refs[rowID])
+        // console.log(rowID)
+      },
+      cellMouseleave(rowID) {
+        this.$refs[rowID].classList.remove('click-disabled')
+      },
+      cellClick(value, key) {
+        const command = this.columns.find(column => column.key === key)?.command
+        const to = this.columns.find(column => column.key === key)?.to
+        if (command) {
+          command(value)
+        }
+        if (to) {
+          this.$router.push(to)
+        }
+      },
       cellAction(key) {
         const column = this.columns.find(column => column.key === key)?.on
         return column ? column : {}
@@ -230,6 +255,13 @@
           min-width: 1px;
           padding: 1.4rem;
           vertical-align: middle;
+        }
+        &.click-disabled {
+          cursor: default;
+          pointer-events: none;
+          td span {
+            pointer-events: all;
+          }
         }
       }
     }
