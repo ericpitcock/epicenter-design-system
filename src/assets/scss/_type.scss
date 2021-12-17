@@ -74,9 +74,7 @@ p.read-me {
 
 .clickable {
   cursor: pointer;
-  &:hover {
-    background-color: var(--primary-color--base);
-  }
+  user-select: none;
 }
 
 .text-align--right {

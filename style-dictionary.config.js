@@ -1,5 +1,5 @@
 module.exports = {
-  source: ['src/style/tokens/color/color.json'],
+  source: ['src/style/tokens/**/*.json'],
   platforms: {
     css: {
       transformGroup: 'css',

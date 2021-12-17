@@ -12,7 +12,7 @@
 <script>
   import EpContainer from '@/components/container/EpContainer'
   import EpTable from '@/components/table/EpTable'
-  import colors from './colors'
+  import colors from '@/style/tokens/color/color'
 
   export default {
     name: 'EpColor',
@@ -50,9 +50,7 @@
             key: 'hex',
             style: 'clickable'
           }
-        ],
-        hues: Object.keys(colors),
-        levels: Object.keys(colors.red)
+        ]
       }
     },
     components: {
@@ -62,13 +60,13 @@
     computed: {
       tableData() {
         let data = []
-        for (const huee in colors) {
-          for (const level in colors[huee]) {
+        for (const hue in colors) {
+          for (const level in colors[hue]) {
             data.push({
-              sample: colors[huee][level],
-              color: `${huee} ${level}`,
-              css: `var(--${huee}-${level})`,
-              hex: colors[huee][level]
+              sample: colors[hue][level].value,
+              color: `${hue} ${level}`,
+              css: `var(--${hue}-${level})`,
+              hex: colors[hue][level].value
             })
           }
         }
@@ -78,9 +76,23 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  .color-sample {
-    width: 50px;
-    height: 50px;
+<style lang="scss">
+  .clickable:hover {
+    position: relative;
+    background-color: var(--background-4);
+    outline: 6px solid var(--background-4);
+    &::before {
+      content: "Click to copy";
+      position: absolute;
+      top: -150%;
+      margin-left: -50%;
+      width: 200%;
+      height: 100%;
+      color: white;
+      font-size: var(--font-size--tiny);
+      text-align: center;
+      pointer-events: none;
+      white-space: nowrap;
+    }
   }
 </style>

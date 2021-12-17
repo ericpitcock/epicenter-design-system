@@ -47,23 +47,7 @@
   --nav-link-active-icon-color: var(--text-color-inverse);
   --nav-link-active-text-color: var(--text-color-inverse);
 
-  // IBM chart sequence for light mode
-  // --chart-sequence-00: #6929c4;
-  // --chart-sequence-01: #1192e8;
-  // --chart-sequence-02: #005d5d;
-  // --chart-sequence-03: #9f1853;
-  // --chart-sequence-04: #fa4d56;
-  // --chart-sequence-05: #570408;
-  // --chart-sequence-06: #198038;
-  // --chart-sequence-07: #002d9c;
-  // --chart-sequence-08: #ee538b;
-  // --chart-sequence-09: #b28600;
-  // --chart-sequence-10: #009d9a;
-  // --chart-sequence-11: #012749;
-  // --chart-sequence-12: #8a3800;
-  // --chart-sequence-13: #a56eff;
-
-  // Tailwind chart sequence for light mode
+  // chart sequence
   --chart-sequence-00: var(--violet-700);
   --chart-sequence-01: var(--sky-500);
   --chart-sequence-02: var(--teal-800);
