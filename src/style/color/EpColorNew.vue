@@ -19,122 +19,91 @@
   import EpMenu from '@/components/menu/EpMenu'
   import EpTable from '@/components/table/EpTable'
   import colors from '@/style/tokens/color/color'
+  import grayscale from '@/style/tokens/color/grayscale'
 
   export default {
     name: 'EpColor',
     data() {
       return {
-        colors,
+        // colors,
         filter: '',
         tableHeight: '',
         menuItems: [
           {
             label: 'All',
-            command: () => {
-              this.filter = ''
-            }
+            command: () => this.filter = ''
+          },
+          {
+            label: 'Grayscale',
+            command: () => this.filter = 'gray'
           },
           {
             label: 'Red',
-            command: () => {
-              this.filter = 'red'
-            }
+            command: () => this.filter = 'red'
           },
           {
             label: 'Orange',
-            command: () => {
-              this.filter = 'orange'
-            }
+            command: () => this.filter = 'orange'
           },
           {
             label: 'Amber',
-            command: () => {
-              this.filter = 'amber'
-            }
+            command: () => this.filter = 'amber'
           },
           {
             label: 'Yellow',
-            command: () => {
-              this.filter = 'yellow'
-            }
+            command: () => this.filter = 'yellow'
           },
           {
             label: 'Lime',
-            command: () => {
-              this.filter = 'lime'
-            }
+            command: () => this.filter = 'lime'
           },
           {
             label: 'Green',
-            command: () => {
-              this.filter = 'green'
-            }
+            command: () => this.filter = 'green'
           },
           {
             label: 'Emerald',
-            command: () => {
-              this.filter = 'emerald'
-            }
+            command: () => this.filter = 'emerald'
           },
           {
             label: 'Teal',
-            command: () => {
-              this.filter = 'teal'
-            }
+            command: () => this.filter = 'teal'
           },
           {
             label: 'Cyan',
-            command: () => {
-              this.filter = 'cyan'
-            }
+            command: () => this.filter = 'cyan'
           },
           {
             label: 'Sky',
-            command: () => {
-              this.filter = 'sky'
-            }
+            command: () => this.filter = 'sky'
           },
           {
             label: 'Blue',
-            command: () => {
-              this.filter = 'blue'
-            }
+            command: () => this.filter = 'blue'
           },
           {
             label: 'Indigo',
-            command: () => {
-              this.filter = 'indigo'
-            }
+            command: () => this.filter = 'indigo'
           },
           {
             label: 'Violet',
-            command: () => {
-              this.filter = 'violet'
-            }
+            command: () => this.filter = 'violet'
           },
           {
             label: 'Purple',
-            command: () => {
-              this.filter = 'purple'
-            }
+            command: () => this.filter = 'purple'
           },
           {
             label: 'Fuchsia',
-            command: () => {
-              this.filter = 'fuchsia'
-            }
+            command: () => this.filter = 'fuchsia'
           },
           {
             label: 'Pink',
-            command: () => {
-              this.filter = 'pink'
-            }
+            command: () => this.filter = 'pink'
           },
           {
             label: 'Rose',
-            command: () => {
-              this.filter = 'rose'
-            }
+            command: () => this.filter = 'rose'
           }
         ],
         tableColumns: [
@@ -197,6 +166,16 @@
               color: `${hue} ${level}`,
               css: `var(--${hue}-${level})`,
               hex: colors[hue][level].value
+            })
+          }
+        }
+        for (const gray in grayscale) {
+          for (const level in grayscale[gray]) {
+            data.push({
+              sample: grayscale[gray][level].value,
+              color: `${gray} ${level}`,
+              css: `var(--${gray}-${level})`,
+              hex: grayscale[gray][level].value
             })
           }
         }
