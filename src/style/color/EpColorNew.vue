@@ -159,14 +159,17 @@
           {
             header: 'CSS Custom Property',
             key: 'css',
-            on: {
-              click: () => console.log('click')
+            command: (value, key) => {
+              this.copyToClipboard(value)
             },
             style: 'clickable'
           },
           {
             header: 'Hex',
             key: 'hex',
+            command: (value, key) => {
+              this.copyToClipboard(value)
+            },
             style: 'clickable'
           }
         ]
@@ -178,9 +181,6 @@
       EpTable
     },
     computed: {
-      // calculateHeight() {
-      //   return `${window.innerHeight - 60}px`
-      // },
       filteredData() {
         if (this.filter === '') {
           return this.tableData
@@ -206,6 +206,16 @@
     methods: {
       calculateHeight() {
         this.tableHeight = `${window.innerHeight - 60}px`
+      },
+      copyToClipboard(value) {
+        // console.log('copy', value)
+        navigator.clipboard.writeText(value)
+          .then(() => {
+          // console.log("Text copied to clipboard...")
+        })
+          .catch(err => {
+          console.log('Something went wrong', err);
+        })
       }
     },
     mounted() {
@@ -228,26 +238,10 @@
       top: 3rem;
     }
     &__table {
-      // flex: 1 1 auto;
-      overflow-y: auto;
-      // height: v-bind(calculateHeight);
+      overflow-y: scroll;
     }
   }
-  // .ep-container {
-  //   display: flex;
-  //   width: calc(100vw - 60px);
-  //   height: calc(100vh - 60px);
-  //   overflow: scroll;
-  // }
-  .ep-menu {
-    flex: 0 0 200px;
-    position: sticky;
-    top: 0;
-  }
-  .ep-table {
-    // flex: 4;
-  }
-  // need ::v-deep when using scoped styles
+  // need ::v-deep to affect children when using scoped styles
   ::v-deep .clickable:hover {
     position: relative;
     background-color: var(--background-4);
@@ -259,7 +253,7 @@
       margin-left: -50%;
       width: 200%;
       height: 100%;
-      color: white;
+      color: var(--text-color);
       font-size: var(--font-size--tiny);
       text-align: center;
       pointer-events: none;

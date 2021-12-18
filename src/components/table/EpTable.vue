@@ -29,7 +29,6 @@
       >
         <template v-for="(value, key) in row" :key="key">
         <td v-if="!excluded(key)">
-          <!-- <span v-on="cellAction(key)">{{ formatCell(value, key) }}</span> -->
           <span
             @mouseover="cellMouseover(`row-${index}`)"
             @mouseleave="cellMouseleave(`row-${index}`)"
@@ -115,7 +114,7 @@
     methods: {
       rowClick(row) {
         this.$emit('row-click', row)
-        console.log('row-click')
+        // console.log('row-click')
       },
       cellMouseover(rowID) {
         this.$refs[rowID].classList.add('click-disabled')
