@@ -9,7 +9,6 @@ module.exports = {
       backgrounds: false,
       measure: false,
       outline: false,
-      // toolbars: false,
       viewport: false
     }
   },
@@ -24,7 +23,7 @@ module.exports = {
         {
           loader: 'sass-loader',
           options: {
-            prependData: '@use "@/assets/scss/_mixins.scss";'
+            prependData: '@import "@/assets/scss/_mixins.scss";'
           }
         }
       ]

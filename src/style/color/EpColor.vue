@@ -1,9 +1,20 @@
 <template>
   <div class="colors">
-    <ep-container class="colors__menu" width="fit-content" height="fit-content" padding="1rem 0">
+    <ep-container
+      class="colors__menu"
+      width="fit-content"
+      height="fit-content"
+      padding="1rem 0"
+    >
       <ep-menu :menuItems="menuItems" />
     </ep-container>
-    <ep-container class="colors__table" width="542px" :height="tableHeight" padding="0 2rem 2rem">
+    <ep-container
+      id="colors__table"
+      class="colors__table"
+      width="542px"
+      :height="tableHeight"
+      padding="0 2rem 2rem"
+    >
       <ep-table
         :columns="tableColumns"
         :data="filteredData"
@@ -25,7 +36,6 @@
     name: 'EpColor',
     data() {
       return {
-        // colors,
         filter: '',
         tableHeight: '',
         menuItems: [
@@ -197,6 +207,13 @@
         })
       }
     },
+    watch: {
+      filteredData() {
+        // scroll color table to the top when filter changes
+        const colorTableContainer = document.getElementById('colors__table')
+        colorTableContainer.scrollTop = 0
+      }
+    },
     mounted() {
       this.calculateHeight()
       window.addEventListener('resize', this.calculateHeight)
@@ -217,11 +234,11 @@
       top: 3rem;
     }
     &__table {
-      overflow-y: scroll;
+      @include scrollable-container;
     }
   }
-  // need ::v-deep to affect children when using scoped styles
-  ::v-deep .clickable:hover {
+  // need :deep to affect children when using scoped styles
+  :deep(.clickable:hover) {
     position: relative;
     background-color: var(--text-color--highlight);
     outline: 6px solid var(--text-color--highlight);
