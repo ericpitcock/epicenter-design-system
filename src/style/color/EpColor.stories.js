@@ -1,9 +1,9 @@
 import { padded } from '@/helpers/decorators'
-import EpColorNew from './EpColorNew'
+import EpColor from './EpColor'
 
 export default {
-  title: 'Style/Color New',
-  component: EpColorNew,
+  title: 'Style/Color',
+  component: EpColor,
   decorators: [padded],
   argTypes: {},
   parameters: {
@@ -12,11 +12,11 @@ export default {
 }
 
 const Template = (args) => ({
-  components: { EpColorNew },
+  components: { EpColor },
   setup() {
     return { args }
   },
-  template: '<ep-color-new />'
+  template: '<ep-color />'
 })
 
-export const ColorNew = Template.bind({})
+export const Color = Template.bind({})

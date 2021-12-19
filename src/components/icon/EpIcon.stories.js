@@ -36,7 +36,7 @@ export default {
     weight: {
       name: 'Weight',
       control: {
-        type: 'select',
+        type: 'radio',
         options: ['extra-light', 'light', 'regular', 'bold']
       },
       defaultValue: 'regular'
@@ -55,11 +55,18 @@ export default {
   }
 }
 
-const Template = (args) => ({
-  components: { EpContainer, EpIcon },
-  data: () => ({ svgIcons }),
+export const Icon = args => ({
+  components: { EpIcon },
   setup() {
     return { args }
+  },
+  template: '<ep-icon v-bind="args" />'
+})
+
+export const IconLibrary = args => ({
+  components: { EpContainer, EpIcon },
+  setup() {
+    return { args, svgIcons }
   },
   template: `
   <div style="padding: 30px;
@@ -79,7 +86,7 @@ const Template = (args) => ({
       padding: 20px;
       gap: 20px 0;"
     >
-      <EpIcon
+      <ep-icon
         :name="icon.name"
         :color="args.color"
         :weight="args.weight"
@@ -90,5 +97,3 @@ const Template = (args) => ({
   </div>
   `
 })
-
-export const Icon = Template.bind({})

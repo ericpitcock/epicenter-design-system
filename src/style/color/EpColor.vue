@@ -223,8 +223,8 @@
   // need ::v-deep to affect children when using scoped styles
   ::v-deep .clickable:hover {
     position: relative;
-    background-color: var(--background-4);
-    outline: 6px solid var(--background-4);
+    background-color: var(--text-color--highlight);
+    outline: 6px solid var(--text-color--highlight);
     &::before {
       content: 'Click to copy';
       position: absolute;

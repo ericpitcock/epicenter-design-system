@@ -1,4 +1,3 @@
-import faker from 'faker'
 import pieChartOptions from './pieChartOptions'
 import stackedBarChartOptions from './stackedBarChartOptions'
 import stackedColumnChartOptions from './stackedColumnChartOptions'
@@ -9,22 +8,6 @@ const container = () => {
   return {
     template: '<div style="padding: 30px;"><story/></div>'
   }
-}
-
-const fakeArray = length => {
-  let arr = []
-  for (let i = 0; i < length; i++) {
-    arr.push(faker.datatype.number({ min: 0, max: 10000, precision: 0.1 }))
-  }
-  return arr
-}
-
-const fakeCitiesArray = length => {
-  let arr = []
-  for (let i = 0; i < length; i++) {
-    arr.push(faker.address.city())
-  }
-  return arr
 }
 
 export default {

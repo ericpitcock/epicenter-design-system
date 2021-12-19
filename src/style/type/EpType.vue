@@ -102,15 +102,13 @@
         margin-top: 0.5rem;
       }
       .meta {
-        // color: var(--gray-300);
-        color: #595959
+        color: var(--text-color--subtle);
       }
     }
     &__sample {
       flex: 6;
     }
     & + & {
-      // margin-top: 30px;
       border-top: 1px solid var(--border-color);
     }
   }

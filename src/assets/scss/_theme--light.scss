@@ -18,7 +18,10 @@
   // text
   --text-color: var(--gray-410);
   --text-color--disabled: var(--gray-270);
-  --text-color-inverse: var(--gray-0);
+  --text-color--inverse: var(--gray-0);
+  --text-color--highlight: var(--yellow-300);
+  // find closes match for this
+  --text-color--subtle: #595959;
 
   // buttons
   --button-disabled--bg-color: var(--gray-40);
@@ -34,7 +37,7 @@
 
   --button-menu-item--hover: hsl(228, 68%, 60%);
   --button-menu-item--active: hsl(228, 68%, 55%);
-  --button-menu-item-text-hover: var(--text-color-inverse);
+  --button-menu-item-text-hover: var(--text-color--inverse);
 
   // table
   // --table-stripe-color: var(--gray-10);
@@ -44,8 +47,8 @@
   --nav-link-hover-bg-color: var(--gray-0);
   --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%);
   --nav-link-icon-color: hsl(228, 68%, 60%);
-  --nav-link-active-icon-color: var(--text-color-inverse);
-  --nav-link-active-text-color: var(--text-color-inverse);
+  --nav-link-active-icon-color: var(--text-color--inverse);
+  --nav-link-active-text-color: var(--text-color--inverse);
 
   // chart sequence
   --chart-sequence-00: var(--violet-700);

@@ -18,7 +18,10 @@ html[data-color-theme='dark'] {
   // text
   --text-color: var(--gray-50);
   --text-color--disabled: var(--gray-130);
-  --text-color-inverse: var(--background-1);
+  --text-color--inverse: var(--background-1);
+  --text-color--highlight: var(--yellow-600);
+  // find closes match for this
+  --text-color--subtle: #B0B0B0;
 
   // buttons
   --button-disabled--bg-color: var(--gray-400);
