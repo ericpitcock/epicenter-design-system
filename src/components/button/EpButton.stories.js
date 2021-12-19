@@ -1,10 +1,9 @@
 import vueRouter from 'storybook-vue3-router'
 import { centered } from '@/helpers/decorators'
-import svgIcons from '@/components/icon/load-icons'
+import { iconNames } from '@/components/icon/load-icons'
 import EpButton from './EpButton'
 
-const icons = svgIcons.map(icon => icon.name)
-icons.push(undefined)
+iconNames.push(undefined)
 
 export default {
   title: 'Components/Button',
@@ -50,10 +49,7 @@ export default {
     },
     size: {
       name: 'Size',
-      options: [
-        'default',
-        'small'
-      ],
+      options: ['default', 'small'],
       control: {
         type: 'radio',
         labels: {
@@ -95,7 +91,7 @@ export default {
       name: 'Icon Left',
       control: {
         type: 'select',
-        options: icons
+        options: iconNames
       },
       defaultValue: undefined,
       table: {
@@ -106,7 +102,7 @@ export default {
       name: 'Icon Right',
       control: {
         type: 'select',
-        options: icons
+        options: iconNames
       },
       defaultValue: undefined,
       table: {

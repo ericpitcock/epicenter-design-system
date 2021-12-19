@@ -114,12 +114,9 @@
     methods: {
       rowClick(row) {
         this.$emit('row-click', row)
-        // console.log('row-click')
       },
       cellMouseover(rowID) {
         this.$refs[rowID].classList.add('click-disabled')
-        // console.log(this.$refs[rowID])
-        // console.log(rowID)
       },
       cellMouseleave(rowID) {
         this.$refs[rowID].classList.remove('click-disabled')
@@ -134,10 +131,10 @@
           this.$router.push(to)
         }
       },
-      cellAction(key) {
-        const column = this.columns.find(column => column.key === key)?.on
-        return column ? column : {}
-      },
+      // cellAction(key) {
+      //   const column = this.columns.find(column => column.key === key)?.on
+      //   return column ? column : {}
+      // },
       cellStyle(key) {
         const style = this.columns.find(column => column.key === key)?.style
         return style ? style : ''
@@ -320,5 +317,25 @@
         background-color: var(--table-stripe-color);
       }
     }
+    // tr td span.text--copyable:hover {
+    //   position: relative;
+    //   background-color: var(--text-color--highlight);
+    //   outline: 6px solid var(--text-color--highlight);
+    //   &::before {
+    //     content: 'Click to copy';
+    //     position: absolute;
+    //     top: -150%;
+    //     margin-left: -50%;
+    //     width: 200%;
+    //     height: 100%;
+    //     background-color: var(--background-4);
+    //     border: 1px solid var(--border-color);
+    //     color: var(--text-color);
+    //     font-size: var(--font-size--tiny);
+    //     text-align: center;
+    //     pointer-events: none;
+    //     white-space: nowrap;
+    //   }
+    // }
   }
 </style>

@@ -72,9 +72,32 @@ p.read-me {
   text-transform: capitalize;
 }
 
-.clickable {
+.text--copyable {
+  position: relative;
   cursor: pointer;
   user-select: none;
+  text-decoration: underline;
+  &:hover {
+    background-color: var(--text-color--highlight);
+    outline: 2px solid var(--text-color--highlight);
+    &::before {
+      content: "Copy to clipboard";
+      position: absolute;
+      bottom: calc(100% + 5px);
+      margin-left: -2px;
+      background-color: var(--background-4);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      font-size: var(--font-size--tiny);
+      text-align: center;
+      pointer-events: none;
+      white-space: nowrap;
+      padding: 5px;
+      border-radius: 3px;
+      z-index: 10;
+      box-shadow: var(--drop-shadow);
+    }
+  }
 }
 
 .text-align--right {

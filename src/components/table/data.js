@@ -5,11 +5,11 @@ const columns = [
   {
     header: 'Date',
     key: 'start_date',
-    formatter: (value) => {
+    formatter: value => {
       return value.split('T')[0].replaceAll('-', '/')
     },
-    on: {
-      click: () => console.log('click')
+    command: () => {
+      console.log('click')
     }
   },
   {
@@ -19,14 +19,14 @@ const columns = [
   {
     header: 'Ride Type',
     key: 'type',
-    formatter: (value) => {
+    formatter: value => {
       return value
     }
   },
   {
     header: 'Distance (mi)',
     key: 'distance',
-    formatter: (value) => {
+    formatter: value => {
       return (value / 1609.344).toFixed(2)
     },
     style: 'tabular-numbers'
@@ -34,7 +34,7 @@ const columns = [
   {
     header: 'Elevation (ft)',
     key: 'total_elevation_gain',
-    formatter: (value) => {
+    formatter: value => {
       return (value * 3.28084).toFixed(2)
     },
     style: 'tabular-numbers'
@@ -42,7 +42,7 @@ const columns = [
   {
     header: 'Avg Speed (mph)',
     key: 'average_speed',
-    formatter: (value) => {
+    formatter: value => {
       return (value * 0.621371).toFixed(1)
     },
     style: 'tabular-numbers'

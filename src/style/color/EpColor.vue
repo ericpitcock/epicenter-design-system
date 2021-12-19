@@ -31,9 +31,11 @@
   import EpTable from '@/components/table/EpTable'
   import colors from '@/style/tokens/color/color'
   import grayscale from '@/style/tokens/color/grayscale'
+  import copyToClipboard from '@/mixins/copyToClipboard'
 
   export default {
     name: 'EpColor',
+    mixins: [copyToClipboard],
     data() {
       return {
         filter: '',
@@ -141,7 +143,7 @@
             command: (value, key) => {
               this.copyToClipboard(value)
             },
-            style: 'clickable'
+            style: 'text--copyable'
           },
           {
             header: 'Hex',
@@ -149,7 +151,7 @@
             command: (value, key) => {
               this.copyToClipboard(value)
             },
-            style: 'clickable'
+            style: 'text--copyable'
           }
         ]
       }
@@ -196,16 +198,16 @@
       calculateHeight() {
         this.tableHeight = `${window.innerHeight - 60}px`
       },
-      copyToClipboard(value) {
-        // console.log('copy', value)
-        navigator.clipboard.writeText(value)
-          .then(() => {
-          // console.log("Text copied to clipboard...")
-        })
-          .catch(err => {
-          console.log('Something went wrong', err);
-        })
-      }
+      // copyToClipboard(value) {
+      //   // console.log('copy', value)
+      //   navigator.clipboard.writeText(value)
+      //     .then(() => {
+      //     // console.log("Text copied to clipboard...")
+      //   })
+      //     .catch(err => {
+      //     console.log('Something went wrong', err);
+      //   })
+      // }
     },
     watch: {
       filteredData() {
@@ -235,25 +237,6 @@
     }
     &__table {
       @include scrollable-container;
-    }
-  }
-  // need :deep to affect children when using scoped styles
-  :deep(.clickable:hover) {
-    position: relative;
-    background-color: var(--text-color--highlight);
-    outline: 6px solid var(--text-color--highlight);
-    &::before {
-      content: 'Click to copy';
-      position: absolute;
-      top: -150%;
-      margin-left: -50%;
-      width: 200%;
-      height: 100%;
-      color: var(--text-color);
-      font-size: var(--font-size--tiny);
-      text-align: center;
-      pointer-events: none;
-      white-space: nowrap;
     }
   }
 </style>

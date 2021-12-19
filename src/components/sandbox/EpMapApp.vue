@@ -38,6 +38,7 @@
           striped
           selectable
           stickyHeader
+          @rowClick="rowClick"
         />
       </div>
   </ep-container>
@@ -52,9 +53,11 @@
   import EpInput from '@/components/input/EpInput'
   import EpMap from '@/components/map/EpMap'
   import EpTable from '@/components/table/EpTable'
+  import copyToClipboard from '@/mixins/copyToClipboard'
 
   export default {
     name: 'Sandbox',
+    mixins: [copyToClipboard],
     components: {
       EpButton,
       EpContainer,
@@ -90,23 +93,42 @@
         tableColumns: [
           {
             header: 'Name',
-            key: 'name'
+            key: 'name',
+            command: (value, key) => {
+              this.copyToClipboard(value)
+            }
           },
           {
             header: 'Address',
-            key: 'address'
+            key: 'address',
+            command: (value, key) => {
+              this.copyToClipboard(value)
+            },
+            style: 'text--copyable'
           },
           {
             header: 'City',
-            key: 'city'
+            key: 'city',
+            command: (value, key) => {
+              this.copyToClipboard(value)
+            },
+            style: 'text--copyable'
           },
           {
             header: 'State',
-            key: 'state'
+            key: 'state',
+            command: (value, key) => {
+              this.copyToClipboard(value)
+            },
+            style: 'text--copyable'
           },
           {
             header: 'Zip',
-            key: 'zip'
+            key: 'zip',
+            command: (value, key) => {
+              this.copyToClipboard(value)
+            },
+            style: 'text--copyable'
           }
         ],
         // tableData: [
@@ -124,6 +146,9 @@
       // dropPin(location) {
       //   this.$refs.map.dropPin(location)
       // },
+      rowClick(row) {
+        console.log(row)
+      },
       search() {
         console.log('youre searching')
       },

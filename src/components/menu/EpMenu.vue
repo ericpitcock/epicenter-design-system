@@ -41,7 +41,7 @@
         //   return
         // }
         if (item.command) {
-          item.command()
+          item.command(item)
         }
         if (item.to) {
           this.$router.push(item.to)
