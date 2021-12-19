@@ -3,16 +3,16 @@ const rootPath = path.resolve(__dirname, '../src')
 
 module.exports = {
   stories: ['../src/**/**/*.stories.js'],
-  addons: [{
-    name: '@storybook/addon-essentials',
-    options: {
-      backgrounds: false,
-      measure: false,
-      outline: false,
-      viewport: false
+  addons: [
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false,
+        measure: false,
+        outline: false,
+        viewport: false
+      }
     }
-  },
-    'storybook-theme-toggle'
   ],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
