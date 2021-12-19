@@ -6,7 +6,7 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "style-dictionary:build": "style-dictionary build --config ./style-dictionary.config.js"
+    "style-dictionary:build": "style-dictionary build --config ./sd.config.js"
   },
   "repository": {
     "type": "git",
