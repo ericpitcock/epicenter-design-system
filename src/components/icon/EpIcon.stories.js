@@ -1,28 +1,16 @@
 import EpContainer from '@/components/container/EpContainer.vue'
-import svgIcons from './load-icons'
+import { svgIcons, iconNames } from './load-icons'
 import EpIcon from './EpIcon'
-
-const names = svgIcons.map(icon => icon.name)
-
-// const container = () => {
-//   return {
-//     template:
-//       `<div style="padding: 30px; display:flex; justify-content: center; gap: 10px; flex-wrap: wrap;>
-//         <story/>
-//       </div>`
-//   }
-// }
 
 export default {
   title: 'Components/Icon',
   component: EpIcon,
-  // decorators: [container],
   argTypes: {
     name: {
       name: 'Name',
       control: {
         type: 'select',
-        options: names
+        options: iconNames
       },
       defaultValue: 'arrow-up'
     },
@@ -45,7 +33,9 @@ export default {
       name: 'Size',
       control: {
         type: 'range',
-        min: 20, max: 60, step: 2
+        min: 20,
+        max: 60,
+        step: 2
       },
       defaultValue: 20
     },
