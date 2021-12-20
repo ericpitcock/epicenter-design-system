@@ -45,7 +45,7 @@ const Template = args => ({
   },
   template: `
     <ep-container width="fit-content" height="fit-content" padding="0.4rem 2rem 2rem">
-      <ep-table :columns="columns" :data="fakeArray(7)" exclude="['id']"  />
+      <ep-table :columns="columns" :data="fakeArray(7)" :exclude="['id']"  />
       <ep-loading v-if="args.loading" v-bind="args" />
     </ep-container>
   `

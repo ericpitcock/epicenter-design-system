@@ -12,23 +12,25 @@
         type: String,
         default: 'transparent'
       },
-      loading: {
-        type: Boolean,
-        default: true
-      },
+      // loading: {
+      //   type: Boolean,
+      //   default: true
+      // },
       messages: {
         type: Array,
-        default: 'Loading…'
+        default: () => ['Loading...']
       }
     },
     data () {
       return {
+        loading: false,
         message: ''
       }
     },
     methods: {
       displayMessages() {
-        if (!this.loading) return
+        // if (!this.loading) return
+        this.loading = true
         for (let index = 0; index < this.messages.length; index++) {
           setTimeout(() => {
             this.message = this.messages[index]
