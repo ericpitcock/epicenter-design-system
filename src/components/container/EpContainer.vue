@@ -8,6 +8,10 @@
   export default {
     name: 'EpContainer',
     props: {
+      // position: {
+      //   type: String,
+      //   default: 'static'
+      // },
       display: {
         type: String,
         default: 'block'
@@ -50,6 +54,7 @@
 
 <style lang="scss" scoped>
   .ep-container {
+    position: relative;
     display: v-bind(display);
     width: v-bind(width);
     height: v-bind(height);
