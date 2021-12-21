@@ -12,6 +12,9 @@ html[data-color-theme='dark'] {
   --border-color: var(--gray-380);
   --border-color--lighter: var(--gray-340);
 
+  // overlay
+  --overlay-color: rgba(36, 36, 36, 0.85);
+
   // shadow
   --drop-shadow: 0 5px 8px rgba(0,0,0,0.2);
 
@@ -35,9 +38,9 @@ html[data-color-theme='dark'] {
   --button-ghost--active: var(--gray-500);
   --button-ghost--text: var(--text-color);
 
-  --button-menu-item--hover: hsl(228, 68%, 60%);
-  --button-menu-item--active: hsl(228, 68%, 55%);
-  --button-menu-item-text-hover: var(--text-color);
+  --button-menu-item--hover: var(--primary-color--base);
+  --button-menu-item--active: var(--primary-color--active);
+  --button-menu-item-text-hover: var(--text-color--inverse);
 
   // table
   --table-stripe-color: var(--gray-410);

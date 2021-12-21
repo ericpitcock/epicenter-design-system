@@ -30,8 +30,6 @@
         <template v-for="(value, key) in row" :key="key">
         <td v-if="!excluded(key)">
           <span
-            @mouseover="cellMouseover(`row-${index}`)"
-            @mouseleave="cellMouseleave(`row-${index}`)"
             @click.stop="cellClick(value, key)"
             v-html="formatCell(value, key)"
             :class="cellStyle(key)"
@@ -114,12 +112,7 @@
     methods: {
       rowClick(row) {
         this.$emit('row-click', row)
-      },
-      cellMouseover(rowID) {
-        this.$refs[rowID].classList.add('click-disabled')
-      },
-      cellMouseleave(rowID) {
-        this.$refs[rowID].classList.remove('click-disabled')
+        console.log('row-click')
       },
       cellClick(value, key) {
         const command = this.columns.find(column => column.key === key)?.command
@@ -252,13 +245,6 @@
           padding: 1.4rem;
           vertical-align: middle;
         }
-        &.click-disabled {
-          cursor: default;
-          pointer-events: none;
-          td span {
-            pointer-events: all;
-          }
-        }
       }
     }
     &--bordered {
@@ -279,12 +265,14 @@
         tr:not(.ep-table-row--selected):hover {
           cursor: pointer;
           td {
-            background: var(--primary-color--light);
+            background: var(--primary-color--base);
+            color: var(--text-color--inverse);
           }
         }
         tr.ep-table-row--selected {
           td {
-            background: var(--primary-color--light);
+            background: var(--primary-color--base);
+            color: var(--text-color--inverse);
           }
         }
       }
@@ -317,25 +305,5 @@
         background-color: var(--table-stripe-color);
       }
     }
-    // tr td span.text--copyable:hover {
-    //   position: relative;
-    //   background-color: var(--text-color--highlight);
-    //   outline: 6px solid var(--text-color--highlight);
-    //   &::before {
-    //     content: 'Click to copy';
-    //     position: absolute;
-    //     top: -150%;
-    //     margin-left: -50%;
-    //     width: 200%;
-    //     height: 100%;
-    //     background-color: var(--background-4);
-    //     border: 1px solid var(--border-color);
-    //     color: var(--text-color);
-    //     font-size: var(--font-size--tiny);
-    //     text-align: center;
-    //     pointer-events: none;
-    //     white-space: nowrap;
-    //   }
-    // }
   }
 </style>

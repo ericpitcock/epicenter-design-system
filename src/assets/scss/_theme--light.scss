@@ -12,6 +12,9 @@
   --border-color: var(--gray-70);
   --border-color--lighter: var(--border-color);
 
+  // overlay
+  --overlay-color: rgba(255, 255, 255, 0.85);
+
   // shadow
   --drop-shadow: 0 5px 8px rgba(0,0,0,0.05);
 
@@ -35,8 +38,8 @@
   --button-ghost--active: var(--gray-60);
   --button-ghost--text: var(--text-color);
 
-  --button-menu-item--hover: hsl(228, 68%, 60%);
-  --button-menu-item--active: hsl(228, 68%, 55%);
+  --button-menu-item--hover: var(--primary-color--base);
+  --button-menu-item--active: var(--primary-color--active);
   --button-menu-item-text-hover: var(--text-color--inverse);
 
   // table

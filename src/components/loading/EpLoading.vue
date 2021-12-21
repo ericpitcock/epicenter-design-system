@@ -10,12 +10,12 @@
     props: {
       backgroundColor: {
         type: String,
-        default: 'transparent'
+        default: 'var(--overlay-color)'
       },
-      // loading: {
-      //   type: Boolean,
-      //   default: true
-      // },
+      loading: {
+        type: Boolean,
+        default: true
+      },
       messages: {
         type: Array,
         default: () => ['Loading...']
@@ -23,20 +23,17 @@
     },
     data () {
       return {
-        loading: false,
         message: ''
       }
     },
     methods: {
       displayMessages() {
         // if (!this.loading) return
-        this.loading = true
         for (let index = 0; index < this.messages.length; index++) {
           setTimeout(() => {
             this.message = this.messages[index]
             if (index === this.messages.length - 1) {
               setTimeout(() => {
-                this.loading = false
                 this.$emit('done')
               }, 3000)
             }

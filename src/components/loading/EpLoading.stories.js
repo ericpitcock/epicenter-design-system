@@ -14,14 +14,14 @@ export default {
       control: {
         type: 'text'
       },
-      defaultValue: 'rgba(255, 255, 255, 0.85)'
+      defaultValue: 'var(--overlay-color)'
     },
     loading: {
       name: 'Loading',
       control: {
         type: 'boolean'
       },
-      defaultValue: false
+      defaultValue: true
     },
     messages: {
       name: 'Message',

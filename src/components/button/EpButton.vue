@@ -207,9 +207,8 @@
       );
       width: 100%;
       border-radius: 0;
-      .ep-button__label {
-        padding: 0.8rem 2.2rem;
-      }
+      padding-right: 1rem;
+      padding-left: 1rem;
     }
     &--outlined {
       background-color: transparent;
