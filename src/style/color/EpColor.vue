@@ -12,8 +12,8 @@
       id="colors__table"
       class="colors__table"
       width="542px"
-      :height="tableHeight"
       padding="0 2rem 2rem"
+      calculateHeight
     >
       <ep-table
         :columns="tableColumns"
@@ -39,11 +39,14 @@
     data() {
       return {
         filter: '',
-        tableHeight: '',
+        // tableHeight: '',
         menuItems: [
           {
             label: 'All',
             command: () => this.filter = ''
+          },
+          {
+            divider: true
           },
           {
             label: 'Grayscale',
@@ -116,6 +119,13 @@
           {
             label: 'Rose',
             command: () => this.filter = 'rose'
+          },
+          {
+            divider: true
+          },
+          {
+            label: 'Chart Sequence',
+            command: () => this.filter = 'chart-sequence'
           }
         ],
         tableColumns: [
@@ -194,21 +204,11 @@
         return data
       }
     },
-    methods: {
-      calculateHeight() {
-        this.tableHeight = `${window.innerHeight - 60}px`
-      },
-      // copyToClipboard(value) {
-      //   // console.log('copy', value)
-      //   navigator.clipboard.writeText(value)
-      //     .then(() => {
-      //     // console.log("Text copied to clipboard...")
-      //   })
-      //     .catch(err => {
-      //     console.log('Something went wrong', err);
-      //   })
-      // }
-    },
+    // methods: {
+    //   calculateHeight() {
+    //     this.tableHeight = `${window.innerHeight - 60}px`
+    //   }
+    // },
     watch: {
       filteredData() {
         // scroll color table to the top when filter changes
@@ -216,13 +216,13 @@
         colorTableContainer.scrollTop = 0
       }
     },
-    mounted() {
-      this.calculateHeight()
-      window.addEventListener('resize', this.calculateHeight)
-    },
-    beforeDestroy() {
-      window.removeEventListener('resize', this.calculateHeight)
-    }
+    // mounted() {
+    //   this.calculateHeight()
+    //   window.addEventListener('resize', this.calculateHeight)
+    // },
+    // beforeDestroy() {
+    //   window.removeEventListener('resize', this.calculateHeight)
+    // }
   }
 </script>
 

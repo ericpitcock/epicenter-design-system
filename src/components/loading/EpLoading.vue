@@ -35,9 +35,9 @@
             if (index === this.messages.length - 1) {
               setTimeout(() => {
                 this.$emit('done')
-              }, 3000)
+              }, 2000)
             }
-          }, index * 3000)
+          }, index * 2000)
         }
       }
     },
