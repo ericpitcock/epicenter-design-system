@@ -39,14 +39,10 @@
     data() {
       return {
         filter: '',
-        // tableHeight: '',
         menuItems: [
           {
             label: 'All',
             command: () => this.filter = ''
-          },
-          {
-            divider: true
           },
           {
             label: 'Grayscale',
@@ -125,7 +121,7 @@
           },
           {
             label: 'Chart Sequence',
-            command: () => this.filter = 'chart-sequence'
+            command: () => this.filter = 'Chart'
           }
         ],
         tableColumns: [
@@ -201,28 +197,42 @@
             })
           }
         }
+        const htmlStyles = window.getComputedStyle(document.querySelector('html'))
+        for (let index = 0; index < 14; index++) {
+          const cssVar = (index < 10) ? `--chart-sequence-0${index}` : `--chart-sequence-${index}`
+          const hexValue = htmlStyles.getPropertyValue(cssVar)
+          data.push({
+            sample: hexValue,
+            color: `Chart Sequence ${index}`,
+            css: cssVar,
+            hex: hexValue
+          })
+        }
         return data
-      }
+      },
+      // chartSequence() {
+      //   let data = []
+      //   const htmlStyles = window.getComputedStyle(document.querySelector('html'))
+      //   for (let index = 0; index < 14; index++) {
+      //     const cssVar = `--chart-sequence-${index}`
+      //     const hexValue = htmlStyles.getPropertyValue('--chart-sequence-' + index)
+      //     data.push({
+      //       sample: hexValue,
+      //       color: `Chart Sequence ${index}`,
+      //       css: cssVar,
+      //       hex: hexValue
+      //     })
+      //   }
+      //   return data
+      // }
     },
-    // methods: {
-    //   calculateHeight() {
-    //     this.tableHeight = `${window.innerHeight - 60}px`
-    //   }
-    // },
     watch: {
       filteredData() {
         // scroll color table to the top when filter changes
         const colorTableContainer = document.getElementById('colors__table')
         colorTableContainer.scrollTop = 0
       }
-    },
-    // mounted() {
-    //   this.calculateHeight()
-    //   window.addEventListener('resize', this.calculateHeight)
-    // },
-    // beforeDestroy() {
-    //   window.removeEventListener('resize', this.calculateHeight)
-    // }
+    }
   }
 </script>
 
