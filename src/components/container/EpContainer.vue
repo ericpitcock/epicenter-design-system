@@ -60,11 +60,12 @@
     },
     methods: {
       calculatedHeight() {
-        if (this.calculateHeight) {
-          this.tableHeight = `${window.innerHeight - 60}px`
-        } else if (!this.calculateHeight) {
-          this.tableHeight = 'fit-content'
-        }
+        // if (this.calculateHeight) {
+        //   this.tableHeight = `${window.innerHeight - 60}px`
+        // } else if (!this.calculateHeight) {
+        //   this.tableHeight = this.height
+        // }
+        this.tableHeight = (this.calculateHeight) ? `${window.innerHeight - 60}px` : this.height
       }
     },
     mounted() {
@@ -72,7 +73,6 @@
       if (this.calculateHeight) {
         window.addEventListener('resize', this.calculatedHeight)
       }
-      console.log(this.height)
     },
     beforeDestroy() {
       if (this.calculateHeight) {
