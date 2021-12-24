@@ -2,8 +2,9 @@
   <div class="ep-menu">
     <template v-for="(item, index) of menuItems" :key="item.label + index.toString()">
       <ep-divider v-if="item.divider" margin="1rem 0" />
+      <div v-if="item.section" class="ep-menu__section font-size--tiny">{{ item.label }}</div>
       <ep-button
-        v-else
+        v-if="!item.divider && !item.section"
         kind="menu-item"
         :label="item.label"
         :iconRight="item.iconRight"
@@ -55,6 +56,11 @@
 </script>
 
 <style lang="scss" scoped>
-  .ep-menu {
+  .ep-menu__section {
+    color: var(--color--primary);
+    padding: 0.8rem 0 0.8rem 2.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    user-select: none;
   }
 </style>

@@ -120,6 +120,10 @@
             divider: true
           },
           {
+            section: true,
+            label: 'Special Use'
+          },
+          {
             label: 'Chart Sequence',
             command: () => this.filter = 'Chart'
           }

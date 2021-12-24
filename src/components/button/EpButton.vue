@@ -138,7 +138,7 @@
     // $active-color
     &--primary {
       @include button-theme(
-        var(--primary-color--base),
+        var(--color--primary),
         var(--primary-color--border),
         var(--primary-color--text),
         var(--primary-color--hover),

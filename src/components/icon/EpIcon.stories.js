@@ -1,6 +1,7 @@
 import EpContainer from '@/components/container/EpContainer.vue'
 import { svgIcons, iconNames } from './load-icons'
 import EpIcon from './EpIcon'
+import { centered } from '@/helpers/decorators.js'
 
 export default {
   title: 'Components/Icon',
@@ -52,6 +53,7 @@ export const Icon = args => ({
   },
   template: '<ep-icon v-bind="args" />'
 })
+Icon.decorators = [centered]
 
 export const IconLibrary = args => ({
   components: { EpContainer, EpIcon },

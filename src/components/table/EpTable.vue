@@ -205,11 +205,11 @@
         background: var(--background-2);
         z-index: 10;
         // &:hover {
-        //   color: var(--primary-color--base);
+        //   color: var(--color--primary);
         //   cursor: pointer;
         // }
         // &.active {
-        //   color: var(--primary-color--base);
+        //   color: var(--color--primary);
         //   .ep-icon {
         //     visibility: visible;
         //   }
@@ -265,13 +265,13 @@
         tr:not(.ep-table-row--selected):hover {
           cursor: pointer;
           td {
-            background: var(--primary-color--base);
+            background: var(--color--primary);
             color: var(--text-color--inverse);
           }
         }
         tr.ep-table-row--selected {
           td {
-            background: var(--primary-color--base);
+            background: var(--color--primary);
             color: var(--text-color--inverse);
           }
         }
@@ -280,11 +280,11 @@
     &--sortable {
       thead th {
         &:hover {
-          color: var(--primary-color--base);
+          color: var(--color--primary);
           cursor: pointer;
         }
         &.active {
-          color: var(--primary-color--base);
+          color: var(--color--primary);
           .ep-icon {
             visibility: visible;
           }

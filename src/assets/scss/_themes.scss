@@ -3,12 +3,16 @@
 
 // global theme stuff (included no matter the theme)
 :root {
+  // colors
+  --color--primary: var(--sky-500);
+
   // border radius
   --border-radius: 0.3rem;
   --border-radius--large: 0.6rem;
 
   // buttons
-  --primary-color--base: hsl(199, 89%, 48%);
+  // --primary-color--base: hsl(199, 89%, 48%);
+  --primary-color--base: var(--color--primary);
   --primary-color--hover: hsl(199, 89%, 43%);
   --primary-color--active: hsl(199, 89%, 40%);
   --primary-color--border: hsl(199, 89%, 32%);

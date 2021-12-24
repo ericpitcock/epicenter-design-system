@@ -38,7 +38,7 @@
   --button-ghost--active: var(--gray-60);
   --button-ghost--text: var(--text-color);
 
-  --button-menu-item--hover: var(--primary-color--base);
+  --button-menu-item--hover: var(--color--primary);
   --button-menu-item--active: var(--primary-color--active);
   --button-menu-item-text-hover: var(--text-color--inverse);
 
@@ -47,9 +47,9 @@
   --table-stripe-color: #f9f9f9;
 
   // navigation
-  --nav-link-hover-bg-color: var(--gray-0);
+  --nav-link-hover-bg-color: var(--gray-20);
   --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%);
-  --nav-link-icon-color: hsl(228, 68%, 60%);
+  --nav-link-icon-color: var(--color--primary);
   --nav-link-active-icon-color: var(--text-color--inverse);
   --nav-link-active-text-color: var(--text-color--inverse);
 

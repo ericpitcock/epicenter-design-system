@@ -14,6 +14,10 @@ const fakeDropdownItems = [
     divider: true
   },
   {
+    section: true,
+    label: 'Section'
+  },
+  {
     label: 'Log click',
     iconLeft: 'circle',
     command: () => {
@@ -33,6 +37,10 @@ const fakeDropdownItems = [
     iconRight: 'chevron-right'
   },
   {
+    section: true,
+    label: 'Section'
+  },
+  {
     label: 'This is a menu item'
   },
   {
@@ -45,6 +53,10 @@ const fakeDropdownItems = [
     divider: true
   },
   {
+    section: true,
+    label: 'Section'
+  },
+  {
     label: 'Go back'
   },
   {
@@ -52,7 +64,7 @@ const fakeDropdownItems = [
   },
   {
     label: 'Internet!'
-  },
+  }
 ]
 
 export default {

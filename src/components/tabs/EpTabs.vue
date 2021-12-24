@@ -46,7 +46,7 @@
         cursor: pointer;
       }
       &--active {
-        border-bottom-color: var(--primary-color--base);
+        border-bottom-color: var(--color--primary);
       }
     }
   }

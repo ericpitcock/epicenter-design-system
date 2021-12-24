@@ -1,11 +1,5 @@
-import EpContainer from '@/components/container/EpContainer'
 import EpMap from './EpMap'
-
-// const container = () => {
-//   return {
-//     template: '<div style="height: 100vh; padding: 30px;"><story/></div>'
-//   }
-// }
+import { padded } from '@/helpers/decorators'
 
 const mapStyles = {
   // Default: 'mapbox://styles/mapbox/streets-v11',
@@ -24,7 +18,7 @@ const mapStyles = {
 export default {
   title: 'Components/Map',
   component: EpMap,
-  // decorators: [container],
+  decorators: [padded],
   argTypes: {
     mapCenter: {
       name: 'Map Center',
@@ -111,15 +105,11 @@ export default {
 }
 
 const Template = (args) => ({
-  components: { EpContainer, EpMap },
+  components: { EpMap },
   setup() {
     return { args }
   },
-  template: `
-  <ep-container height="100vh">
-    <ep-map v-bind="args" />
-  </ep-container>
-  `
+  template: '<ep-map v-bind="args" />'
 })
 
 export const Map = Template.bind({})
