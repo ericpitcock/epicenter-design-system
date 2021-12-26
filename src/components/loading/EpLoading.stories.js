@@ -34,21 +34,31 @@ export default {
         'Refreshing the data in our system…',
         'Finishing up…'
       ]
-    }
+    },
+    messageDelay: {
+      name: 'Message Delay (ms)',
+      control: {
+        type: 'number'
+      },
+      defaultValue: 2000
+    },
   }
 }
 
-const Template = args => ({
+export const Loading = args => ({
   components: { EpContainer, EpTable, EpLoading },
   setup() {
     return { args, columns, fakeArray }
   },
+  data() {
+    return {
+      loading: args.loading
+    }
+  },
   template: `
     <ep-container width="fit-content" height="fit-content" padding="0.4rem 2rem 2rem">
+      <ep-loading v-show="loading" @done="loading = false" v-bind="args" />
       <ep-table :columns="columns" :data="fakeArray(7)" :exclude="['id']"  />
-      <ep-loading v-if="args.loading" v-bind="args" />
     </ep-container>
   `
 })
-
-export const Loading = Template.bind({})

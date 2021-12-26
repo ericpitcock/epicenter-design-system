@@ -1,7 +1,9 @@
 <template>
+  <transition name="fade">
   <div class="ep-loading">
     {{ message }}
   </div>
+  </transition>
 </template>
 
 <script>
@@ -19,7 +21,11 @@
       messages: {
         type: Array,
         default: () => ['Loading...']
-      }
+      },
+      messageDelay: {
+        type: Number,
+        default: 2000
+      },
     },
     data () {
       return {
@@ -28,16 +34,15 @@
     },
     methods: {
       displayMessages() {
-        // if (!this.loading) return
         for (let index = 0; index < this.messages.length; index++) {
           setTimeout(() => {
             this.message = this.messages[index]
             if (index === this.messages.length - 1) {
               setTimeout(() => {
                 this.$emit('done')
-              }, 2000)
+              }, this.messageDelay)
             }
-          }, index * 2000)
+          }, index * this.messageDelay)
         }
       }
     },
@@ -60,5 +65,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>
