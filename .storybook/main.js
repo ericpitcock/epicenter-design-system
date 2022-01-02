@@ -14,6 +14,7 @@ module.exports = {
       }
     }
   ],
+  staticDirs: ['../public'],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
       test: /\.scss$/,
