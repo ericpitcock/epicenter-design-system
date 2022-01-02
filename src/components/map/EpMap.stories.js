@@ -1,18 +1,30 @@
 import EpMap from './EpMap'
 import { padded } from '@/helpers/decorators'
+import store from '@/store'
 
-const mapStyles = {
+const mapStyles = (store) => {
+  if (store.state.theme === 'light') {
+    return {
+      'Mapbox Streets': 'mapbox://styles/mapbox/streets-v11',
+      'Mapbox Light': 'mapbox://styles/mapbox/light-v10'
+    }
+  }
+  if (store.state.theme === 'dark') {
+    return {
+      'Mapbox Dark': 'mapbox://styles/mapbox/dark-v10'
+    }
+  }
   // Default: 'mapbox://styles/mapbox/streets-v11',
   // Dark: 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',
   // Borders: 'mapbox://styles/ericpitcock/ckba479fv065v1in6pmfm6hz2',
-  'Mapbox Streets': 'mapbox://styles/mapbox/streets-v11',
-  'Mapbox Outdoors': 'mapbox://styles/mapbox/outdoors-v11',
-  'Mapbox Light': 'mapbox://styles/mapbox/light-v10',
-  'Mapbox Dark': 'mapbox://styles/mapbox/dark-v10',
-  'Mapbox Satellite': 'mapbox://styles/mapbox/satellite-v9',
-  'Mapbox Satellite Streets': 'mapbox://styles/mapbox/satellite-streets-v11',
-  'Mapbox Navigation Day': 'mapbox://styles/mapbox/navigation-day-v1',
-  'Mapbox Navigation Night': 'mapbox://styles/mapbox/navigation-night-v1'
+  // 'Mapbox Streets': 'mapbox://styles/mapbox/streets-v11',
+  // 'Mapbox Outdoors': 'mapbox://styles/mapbox/outdoors-v11',
+  // 'Mapbox Light': 'mapbox://styles/mapbox/light-v10',
+  // 'Mapbox Dark': 'mapbox://styles/mapbox/dark-v10',
+  // 'Mapbox Satellite': 'mapbox://styles/mapbox/satellite-v9',
+  // 'Mapbox Satellite Streets': 'mapbox://styles/mapbox/satellite-streets-v11',
+  // 'Mapbox Navigation Day': 'mapbox://styles/mapbox/navigation-day-v1',
+  // 'Mapbox Navigation Night': 'mapbox://styles/mapbox/navigation-night-v1'
 }
 
 export default {
@@ -59,7 +71,7 @@ export default {
       name: 'Map Style',
       control: {
         type: 'radio',
-        options: mapStyles
+        options: mapStyles(store)
       },
       defaultValue: 'mapbox://styles/mapbox/streets-v11'
     },
@@ -104,12 +116,10 @@ export default {
   }
 }
 
-const Template = (args) => ({
+export const Map = args => ({
   components: { EpMap },
   setup() {
     return { args }
   },
   template: '<ep-map v-bind="args" />'
 })
-
-export const Map = Template.bind({})
