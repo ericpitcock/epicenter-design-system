@@ -6,7 +6,7 @@
       height="fit-content"
       padding="1rem 0"
     >
-      <ep-menu :menuItems="menuItems" />
+      <ep-menu :menuItems="menuItems" :activeItem="filter" />
     </ep-container>
     <ep-container
       id="colors__table"

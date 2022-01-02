@@ -11,6 +11,7 @@
         :iconLeft="item.iconLeft"
         @click="itemClick(item)"
         v-bind="item.bind"
+        :class="{ 'active': item.label === activeItem }"
       />
     </template>
   </div>
@@ -27,6 +28,10 @@
       EpButton
     },
     props: {
+      activeItem: {
+        type: String,
+        default: ''
+      },
       isDropdown: {
         type: Boolean,
         default: false
