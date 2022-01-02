@@ -29,10 +29,22 @@ export default {
         type: 'array'
       },
       defaultValue: [
-        'Downloading the internet…',
-        'Rearranging things…',
-        'Refreshing the data in our system…',
-        'Finishing up…'
+        { 
+          icon: 'oval', 
+          message: 'Downloading the entire internet…'
+        },
+        { 
+          icon: 'bars', 
+          message: 'Rearranging things…'
+        },
+        { 
+          icon: null, 
+          message: 'Refreshing the data in our system…'
+        },
+        { 
+          icon: null, 
+          message: 'Finishing up…'
+        }
       ]
     },
     messageDelay: {
@@ -55,9 +67,15 @@ export const Loading = args => ({
       loading: args.loading
     }
   },
+  methods: {
+    done() {
+      this.loading = false
+      console.log('done')
+    }
+  },
   template: `
     <ep-container width="fit-content" height="fit-content" padding="0.4rem 2rem 2rem">
-      <ep-loading v-show="loading" @done="loading = false" v-bind="args" />
+      <ep-loading v-show="loading" @done="done" v-bind="args" />
       <ep-table :columns="columns" :data="fakeArray(7)" :exclude="['id']"  />
     </ep-container>
   `

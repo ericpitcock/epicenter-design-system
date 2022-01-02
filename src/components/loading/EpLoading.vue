@@ -1,7 +1,8 @@
 <template>
   <transition name="fade">
   <div class="ep-loading">
-    {{ message }}
+    <img v-if="icon" :src="`${icon}.svg`" />
+    <div>{{ message }}</div>
   </div>
   </transition>
 </template>
@@ -16,11 +17,14 @@
       },
       loading: {
         type: Boolean,
-        default: true
+        default: false
       },
       messages: {
         type: Array,
-        default: () => ['Loading...']
+        default: () => [{
+          icon: '',
+          message: 'Loading...'
+        }]
       },
       messageDelay: {
         type: Number,
@@ -29,25 +33,65 @@
     },
     data () {
       return {
-        message: ''
+        icon: '',
+        message: '',
       }
     },
     methods: {
       displayMessages() {
-        for (let index = 0; index < this.messages.length; index++) {
+        const icons = this.messages.map(message => message.icon)
+        const firstIcon = icons[0]
+        this.messages.forEach((message, index) => {
           setTimeout(() => {
-            this.message = this.messages[index]
+            this.icon = message.icon === null ? firstIcon : message.icon
+            this.message = message.message
             if (index === this.messages.length - 1) {
               setTimeout(() => {
                 this.$emit('done')
               }, this.messageDelay)
             }
-          }, index * this.messageDelay)
-        }
+          }, this.messageDelay * index)
+        })
+      },
+      displayIcons() {
+        const icons = this.messages.map(message => message.icon)
+        console.log(icons)
+        // this.running = true
+        // this.messages.forEach((message, index) => {
+        //   setTimeout(() => {
+        //     this.icon = message.icon
+        //     if (index === this.messages.length - 1) {
+        //       setTimeout(() => {
+        //         this.running = false
+        //         this.$emit('done')
+        //       }, this.messageDelay)
+        //     }
+        //   }, this.messageDelay * index)
+        // })
       }
+      // displayMessages() {
+      //   for (const item in this.messages) {
+      //     setTimeout(() => {
+      //       this.icon = this.messages[item].icon
+      //       this.message = this.messages[item].message
+
+      //     }, this.messageDelay * item)
+      //   }
+      //   for (let index = 0; index < this.messages.length; index++) {
+      //     setTimeout(() => {
+      //       this.message = this.messages[index]
+      //       if (index === this.messages.length - 1) {
+      //         setTimeout(() => {
+      //           this.$emit('done')
+      //         }, this.messageDelay)
+      //       }
+      //     }, index * this.messageDelay)
+      //   }
+      // }
     },
     mounted() {
       this.displayMessages()
+      this.displayIcons()
     }
   }
 </script>
@@ -63,6 +107,8 @@
     background-color: v-bind(backgroundColor);
     backdrop-filter: blur(4px);
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
     justify-content: center;
     align-items: center;
   }
