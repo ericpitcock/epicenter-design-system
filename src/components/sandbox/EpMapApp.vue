@@ -3,17 +3,17 @@
       <div class="app-header">
         <ep-button
           kind="ghost"
-          iconLeft="plus"
+          icon-left="plus"
           @click="mapZoom++"
         />
         <ep-button
           kind="ghost"
-          iconLeft="minus"
+          icon-left="minus"
           @click="mapZoom--"
         />
         <ep-dropdown
           :button="{ label: 'Seattle Record Stores' }"
-          :menuItems="seattleRecordStores"
+          :menu-items="seattleRecordStores"
         />
         <ep-input
           label="Search"
@@ -24,21 +24,21 @@
       </div>
       <div class="app-content">
         <ep-map
-          :mapCenter="mapCenter"
-          mapStyle="mapbox://styles/mapbox/streets-v11"
-          :mapZoom="mapZoom"
-          :navigationControl="false"
+          :map-center="mapCenter"
+          map-style="mapbox://styles/mapbox/streets-v11"
+          :map-zoom="mapZoom"
+          :navigation-control="false"
           ref="map"
         />
         <ep-table
           :columns="tableColumns"
           :data="tableData(20)"
-          fullWidth
+          full-width
           compact
           striped
           selectable
-          stickyHeader
-          @rowClick="rowClick"
+          sticky-header
+          @row-click="rowClick"
         />
       </div>
   </ep-container>

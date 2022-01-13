@@ -15,7 +15,7 @@
       v-if="true"
       @click="clear()"
       kind="ghost"
-      iconLeft="close"
+      icon-left="close"
     />
   </div>
 </template>

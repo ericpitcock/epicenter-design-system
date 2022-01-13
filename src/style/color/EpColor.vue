@@ -6,20 +6,20 @@
       height="fit-content"
       padding="1rem 0"
     >
-      <ep-menu :menuItems="menuItems" :activeItem="filter" />
+      <ep-menu :menu-items="menuItems" :active-item="filter" />
     </ep-container>
     <ep-container
       id="colors__table"
       class="colors__table"
       width="542px"
       padding="0 2rem 2rem"
-      calculateHeight
+      calculate-height
     >
       <ep-table
         :columns="tableColumns"
         :data="filteredData"
         bordered
-        stickyHeader
+        sticky-header
       />
     </ep-container>
   </div>
