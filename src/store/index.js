@@ -5,7 +5,7 @@ export default createStore({
     fullWidthContent: false,
     sidebar: true,
     sidebarUser: null,
-    theme: 'light'
+    theme: 'dark'
   },
   mutations: {
     setTheme: (state, data) => {
