@@ -76,7 +76,6 @@ p.read-me {
   position: relative;
   cursor: pointer;
   user-select: none;
-  text-decoration: underline;
   &:hover {
     background-color: var(--text-color--highlight);
     outline: 2px solid var(--text-color--highlight);
