@@ -44,35 +44,35 @@
           {
             name: 'Large',
             desc: 'Section/component headers',
-            size: '1.8rem (18px)',
+            size: '2rem (20px)',
             weight: '400 (regular)',
             sample: '<h2>Large</h2>'
           },
           {
             name: 'Body',
             desc: 'Blocks of text you expect people to read',
-            size: '1.4rem (14px)',
+            size: '1.5rem (15px)',
             weight: '400 (regular)',
             sample: `<p class="read-me">${faker.lorem.sentences(10)}</p>`
           },
           {
             name: 'Default',
             desc: 'UI controls and labels',
-            size: '1.2rem (12px)',
+            size: '1.3rem (13px)',
             weight: '400 (regular)',
             sample: faker.lorem.word()
           },
           {
             name: 'Small',
             desc: 'UI controls and labels, only smaller',
-            size: '1rem (10px)',
+            size: '1.2rem (12px)',
             weight: '400 (regular)',
             sample: faker.lorem.word()
           },
           {
             name: 'Tiny',
             desc: 'Things should be there, but "not there"',
-            size: '0.8rem (8px)',
+            size: '1rem (10px)',
             weight: '400 (regular)',
             sample: '<p>Made in China</p>'
           },
