@@ -114,10 +114,10 @@
 import { mapState, mapActions } from 'vuex'
 
 import EpSidebar from '@/components/sidebar/EpSidebar'
-import EpButton from '@/components/button/EpButton'
+import EpButton from '@/atoms/button/EpButton'
 import EpDropdown from '@/components/dropdown/EpDropdown'
 import EpTabs from '@/components/tabs/EpTabs'
-import EpIcon from '@/components/icon/EpIcon'
+import EpIcon from '@/atoms/icon/EpIcon'
 
 export default {
   name: 'App',

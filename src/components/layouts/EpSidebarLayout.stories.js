@@ -3,7 +3,7 @@ import faker from 'faker'
 import EpSidebarLayout from './EpSidebarLayout'
 import EpSidebar from '@/components/sidebar/EpSidebar'
 import EpContainer from '@/components/container/EpContainer'
-import EpTable from '@/components/table/EpTable'
+import EpTable from '@/organisms/table/EpTable'
 
 const container = () => {
   return {

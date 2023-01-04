@@ -4,7 +4,7 @@ import EpIcon from './EpIcon'
 import { centered } from '@/helpers/decorators.js'
 
 export default {
-  title: 'Components/Icon',
+  title: 'Atoms/Icon',
   component: EpIcon,
   argTypes: {
     name: {

@@ -6,7 +6,7 @@ import EpButton from './EpButton'
 iconNames.push(undefined)
 
 export default {
-  title: 'Components/Button',
+  title: 'Atoms/Button',
   component: EpButton,
   decorators: [centered],
   argTypes: {

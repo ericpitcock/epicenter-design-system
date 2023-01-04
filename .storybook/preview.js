@@ -11,7 +11,18 @@ export const parameters = {
   layout: 'centered',
   options: {
     storySort: {
-      order: ['Intro', 'Components', 'Style', 'Layouts', 'Sandbox'],
+      order: [
+        'Intro',
+        'Atoms',
+        'Molecules',
+        'Organisms',
+        'Templates',
+        'Pages',
+        'Components',
+        'Style',
+        'Layouts',
+        'Sandbox'
+      ],
     },
   }
 }

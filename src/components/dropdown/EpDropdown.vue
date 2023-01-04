@@ -18,8 +18,8 @@
 
 <script>
   import clickOutside from '@/directives/clickOutside'
-  import EpButton from '@/components/button/EpButton'
-  import EpMenu from '@/components/menu/EpMenu'
+  import EpButton from '@/atoms/button/EpButton'
+  import EpMenu from '@/molecules/menu/EpMenu'
 
   export default {
     name: 'EpDropdown',

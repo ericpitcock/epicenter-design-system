@@ -47,12 +47,12 @@
 <script>
   import faker from 'faker';
 
-  import EpButton from '@/components/button/EpButton'
+  import EpButton from '@/atoms/button/EpButton'
   import EpContainer from '@/components/container/EpContainer'
   import EpDropdown from '@/components/dropdown/EpDropdown'
-  import EpInput from '@/components/input/EpInput'
+  import EpInput from '@/atoms/input/EpInput'
   import EpMap from '@/components/map/EpMap'
-  import EpTable from '@/components/table/EpTable'
+  import EpTable from '@/organisms/table/EpTable'
   import copyToClipboard from '@/mixins/copyToClipboard'
 
   export default {

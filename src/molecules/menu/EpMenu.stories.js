@@ -1,5 +1,5 @@
 import { centered } from '@/helpers/decorators'
-import EpContainer from '../container/EpContainer'
+import EpContainer from '@/components/container/EpContainer'
 import EpMenu from './EpMenu'
 
 const fakeDropdownItems = [
@@ -68,7 +68,7 @@ const fakeDropdownItems = [
 ]
 
 export default {
-  title: 'Components/Menu',
+  title: 'Molecules/Menu',
   component: EpMenu,
   decorators: [centered],
   argTypes: {

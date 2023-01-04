@@ -21,8 +21,8 @@
 </template>
 
 <script>
-  import EpButton from '@/components/button/EpButton'
-  import EpIcon from '@/components/icon/EpIcon'
+  import EpButton from '@/atoms/button/EpButton'
+  import EpIcon from '@/atoms/icon/EpIcon'
 
   export default {
     name: 'EpInput',

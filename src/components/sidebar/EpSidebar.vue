@@ -21,7 +21,7 @@
 
 <script>
   import EpDivider from '@/components/divider/EpDivider'
-  import EpIcon from '@/components/icon/EpIcon'
+  import EpIcon from '@/atoms/icon/EpIcon'
   
   export default {
     name: 'EpSidebar',

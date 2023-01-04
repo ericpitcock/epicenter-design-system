@@ -1,9 +1,9 @@
 import { centered } from '@/helpers/decorators'
 import EpInput from './EpInput'
-import EpButton from '@/components/button/EpButton'
+import EpButton from '@/atoms/button/EpButton'
 
 export default {
-  title: 'Components/Input',
+  title: 'Atoms/Input',
   component: EpInput,
   decorators: [centered],
   argTypes: {
