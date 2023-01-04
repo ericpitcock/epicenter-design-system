@@ -2,7 +2,7 @@ import { padded } from '@/helpers/decorators'
 import EpContainer from '@/components/container/EpContainer'
 import EpTable from '@/organisms/table/EpTable'
 import EpLoading from './EpLoading.vue'
-import { columns, fakeArray } from '@/components/table/data'
+import { columns, fakeArray } from '@/organisms/table/data'
 
 export default {
   title: 'Molecules/Loading',
