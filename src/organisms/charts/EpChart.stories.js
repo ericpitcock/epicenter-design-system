@@ -1,7 +1,7 @@
 import pieChartOptions from './pieChartOptions'
 import stackedBarChartOptions from './stackedBarChartOptions'
 import stackedColumnChartOptions from './stackedColumnChartOptions'
-import EpContainer from '@/components/container/EpContainer'
+import EpContainer from '@/atoms/container/EpContainer'
 import EpChart from './EpChart'
 
 const container = () => {
@@ -11,7 +11,7 @@ const container = () => {
 }
 
 export default {
-  title: 'Components/Charts',
+  title: 'Organisms/Charts',
   component: EpChart,
   decorators: [container],
   parameters: {

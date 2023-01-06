@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import EpDivider from '@/components/divider/EpDivider'
+  import EpDivider from '@/atoms/divider/EpDivider'
   import EpIcon from '@/atoms/icon/EpIcon'
   
   export default {

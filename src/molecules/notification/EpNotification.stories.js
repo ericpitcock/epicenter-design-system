@@ -8,7 +8,7 @@ import EpNotification from './EpNotification'
 // }
 
 export default {
-  title: 'Components/Notification',
+  title: 'Molecules/Notification',
   component: EpNotification,
   // decorators: [container],
   argTypes: {

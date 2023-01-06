@@ -23,8 +23,8 @@
 <script>
   import faker from 'faker'
 
-  import EpContainer from '@/components/container/EpContainer'
-  import EpDivider from '@/components/divider/EpDivider'
+  import EpContainer from '@/atoms/container/EpContainer'
+  import EpDivider from '@/atoms/divider/EpDivider'
 
   export default {
     components: {

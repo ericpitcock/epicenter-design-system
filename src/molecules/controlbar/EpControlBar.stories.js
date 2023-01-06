@@ -1,7 +1,7 @@
 import EpControlBar from './EpControlBar'
 
 export default {
-  title: 'Components/Control Bar',
+  title: 'Molecules/Control Bar',
   component: EpControlBar,
   argTypes: {},
   parameters: {

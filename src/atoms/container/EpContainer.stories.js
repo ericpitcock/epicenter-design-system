@@ -1,4 +1,4 @@
-import EpContainer from '@/components/container/EpContainer'
+import EpContainer from './EpContainer'
 
 const container = () => {
   return {
@@ -8,7 +8,7 @@ const container = () => {
 }
 
 export default {
-  title: 'Components/Container',
+  title: 'Atoms/Container',
   component: EpContainer,
   decorators: [container],
   argTypes: {

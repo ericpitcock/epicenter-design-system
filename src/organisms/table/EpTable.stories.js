@@ -1,4 +1,4 @@
-import EpContainer from '@/components/container/EpContainer'
+import EpContainer from '@/atoms/container/EpContainer'
 import EpTable from './EpTable'
 import { columns, fakeArray } from './data'
 

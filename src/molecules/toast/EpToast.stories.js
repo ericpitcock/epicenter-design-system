@@ -1,7 +1,7 @@
 import EpToast from './EpToast.vue'
 
 export default {
-  title: 'Components/Toast',
+  title: 'Molecules/Toast',
   component: EpToast,
   argTypes: {
     message: {

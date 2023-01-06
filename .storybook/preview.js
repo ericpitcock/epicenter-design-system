@@ -18,7 +18,6 @@ export const parameters = {
         'Organisms',
         'Templates',
         'Pages',
-        'Components',
         'Style',
         'Layouts',
         'Sandbox'

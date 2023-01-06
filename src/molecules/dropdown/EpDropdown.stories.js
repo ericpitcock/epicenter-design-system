@@ -37,7 +37,7 @@ const fakeDropdownItems = [
 ]
 
 export default {
-  title: 'Components/Dropdown',
+  title: 'Molecules/Dropdown',
   component: EpDropdown,
   decorators: [centered],
   argTypes: {

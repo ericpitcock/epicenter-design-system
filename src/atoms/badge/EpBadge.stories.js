@@ -2,7 +2,7 @@ import { centered } from '@/helpers/decorators'
 import EpBadge from './EpBadge'
 
 export default {
-  title: 'Components/Badge',
+  title: 'Atoms/Badge',
   component: EpBadge,
   decorators: [centered],
   argTypes: {

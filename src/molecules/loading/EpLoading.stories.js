@@ -1,5 +1,5 @@
 import { padded } from '@/helpers/decorators'
-import EpContainer from '@/components/container/EpContainer'
+import EpContainer from '@/atoms/container/EpContainer'
 import EpTable from '@/organisms/table/EpTable'
 import EpLoading from './EpLoading.vue'
 import { columns, fakeArray } from '@/organisms/table/data'

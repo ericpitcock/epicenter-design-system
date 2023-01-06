@@ -13,7 +13,7 @@
 
 <script>
   import EpButton from '@/atoms/button/EpButton'
-  import EpDivider from '@/components/divider/EpDivider'
+  import EpDivider from '@/atoms/divider/EpDivider'
 
   export default {
     name: 'EpDropdownItem',

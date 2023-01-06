@@ -1,5 +1,5 @@
 import { centered } from '@/helpers/decorators'
-import EpContainer from '@/components/container/EpContainer'
+import EpContainer from '@/atoms/container/EpContainer'
 import EpMenu from './EpMenu'
 
 const fakeDropdownItems = [

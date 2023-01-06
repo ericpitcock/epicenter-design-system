@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import EpContainer from '@/components/container/EpContainer'
+  import EpContainer from '@/atoms/container/EpContainer'
   import EpMenu from '@/molecules/menu/EpMenu'
   import EpTable from '@/organisms/table/EpTable'
   import colors from '@/style/tokens/color/color'

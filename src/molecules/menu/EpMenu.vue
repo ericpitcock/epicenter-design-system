@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import EpDivider from '@/components/divider/EpDivider'
+  import EpDivider from '@/atoms/divider/EpDivider'
   import EpButton from '@/atoms/button/EpButton'
 
   export default {
