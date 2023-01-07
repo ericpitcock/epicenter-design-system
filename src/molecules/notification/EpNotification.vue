@@ -1,6 +1,18 @@
 <template>
   <div class="ep-notification">
-    <ep-container :width="'30rem'" :padding="'2rem'">
+    <ep-container
+      :width="'30rem'"
+      :padding="'2rem'"
+      :backgroundColor="'var(--background-4)'"
+      :borderColor="'var(--border-color--lighter)'"
+    >
+      <ep-button
+        v-if="dismissable"
+        @click="closeNotification"
+        class="dismiss-button"
+        kind="ghost"
+        iconRight="close"
+      />
       {{ message }}
     </ep-container>
   </div>
@@ -8,6 +20,7 @@
 
 <script>
   import EpContainer from '@/atoms/container/EpContainer'
+  import EpButton from '@/atoms/button/EpButton'
 
   export default {
     name: 'EpNotification',
@@ -16,38 +29,20 @@
         type: String,
         required: true
       },
-      // type: {
-      //   type: String,
-      //   required: true
-      // },
       dismissable: {
         type: Boolean,
         default: false
-      },
-      duration: {
-        type: Number,
-        default: 3000
       }
     },
     components: {
-      EpContainer
+      EpContainer,
+      EpButton
     },
-    data() {
-      return {
-        show: false
+    methods: {
+      closeNotification() {
+        this.$emit('close')
       }
-    },
-    // methods: {
-    //   showNotification() {
-    //     this.show = true
-    //     setTimeout(() => {
-    //       this.show = false
-    //     }, this.duration)
-    //   }
-    // },
-    // mounted() {
-    //   this.showNotification()
-    // }
+    }
   }
 </script>
 
@@ -56,5 +51,10 @@
     position: absolute;
     top: 2rem;
     right: 2rem;
+    .dismiss-button {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+    }
   }
 </style>
