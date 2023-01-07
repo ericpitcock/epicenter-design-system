@@ -51,14 +51,21 @@ html {
   font-variation-settings: 'wght' 300;
 }
 
-p.read-me {
-  font-size: var(--font-size--body);
-  line-height: 1.6em;
-  max-width: 60rem;
-  & + & {
-    margin-top: 2rem;
+.copy-block {
+  * + * {
+    margin-top: 1rem;
+  }
+  p {
+    font-size: var(--font-size--body);
+    line-height: 1.6em;
+    max-width: 60rem;
+  }
+  a {
+    color: var(--color--primary);
+    cursor: pointer;
   }
 }
+
 
 .text--subtle {
   color: var(--text-subtle);

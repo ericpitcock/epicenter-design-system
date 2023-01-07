@@ -6,7 +6,10 @@
       height="fit-content"
       padding="1rem 0"
     >
-      <ep-menu :menu-items="menuItems" :active-item="filter" />
+      <ep-menu
+        :menu-items="menuItems"
+        :isNavMenu="true"
+      />
     </ep-container>
     <ep-container
       id="colors__table"
@@ -121,7 +124,7 @@
           },
           {
             section: true,
-            label: 'Special Use'
+            label: 'Specific Use'
           },
           {
             label: 'Chart Sequence',

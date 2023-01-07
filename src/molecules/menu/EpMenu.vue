@@ -9,9 +9,9 @@
         :label="item.label"
         :icon-right="item.iconRight"
         :icon-left="item.iconLeft"
+        :is-active-menu-item="item.label == activeItem"
         @click="itemClick(item)"
         v-bind="item.bind"
-        :class="{ 'active': item.label === activeItem }"
       />
     </template>
   </div>
@@ -23,16 +23,25 @@
 
   export default {
     name: 'EpMenu',
+    data() {
+      return {
+        activeItem: {
+          type: String,
+          default: ''
+        },
+      }
+    },
     components: {
       EpDivider,
       EpButton
     },
     props: {
-      activeItem: {
-        type: String,
-        default: ''
-      },
       isDropdown: {
+        type: Boolean,
+        default: false
+      },
+      // if nav menu, active state set on clicked items
+      isNavMenu: {
         type: Boolean,
         default: false
       },
@@ -54,6 +63,11 @@
         }
         if (this.isDropdown) {
           this.$parent.closeDropdown()
+        }
+        if (this.isNavMenu) {
+          // make active
+          console.log(item.label)
+          this.activeItem = item.label
         }
       }
     }

@@ -50,6 +50,10 @@
       outlined: {
         type: Boolean,
         default: false
+      },
+      isActiveMenuItem: {
+        type: Boolean,
+        default: false
       }
     },
     components: {
@@ -75,7 +79,8 @@
             'ep-button--icon-right': this.iconRight,
             'ep-button--icon-left': this.iconLeft,
             'ep-button--disabled': this.disabled,
-            'ep-button--outlined': this.outlined
+            'ep-button--outlined': this.outlined,
+            'ep-button--menu-item--active': this.isActiveMenuItem
           }
         ]
       }
@@ -209,6 +214,9 @@
       border-radius: 0;
       padding-right: 1rem;
       padding-left: 1rem;
+      &--active {
+        background: var(--button-menu-item--active);
+      }
     }
     &--outlined {
       background-color: transparent;
