@@ -2,6 +2,7 @@ import { centered } from '@/helpers/decorators'
 import EpContainer from '@/atoms/container/EpContainer'
 import EpButton from '@/atoms/button/EpButton'
 import EpNotification from './EpNotification'
+import store from '@/store'
 
 export default {
   title: 'Molecules/Notification',
@@ -18,7 +19,7 @@ export default {
     dismissable: {
       name: 'Dismissable',
       control: {
-        type: 'boolean',
+        type: 'boolean'
       },
       defaultValue: false
     }
@@ -27,11 +28,13 @@ export default {
 
 const Template = args => ({
   components: { EpButton, EpContainer, EpNotification },
-  data: () => ({
-    show: true
-  }),
+  // data: () => ({
+  //   // show: true
+  //   store
+  // }),
+  // store,
   setup() {
-    return { args }
+    return { args, store }
   },
   methods: {
     showNotification() {
@@ -43,10 +46,10 @@ const Template = args => ({
   },
   template: `
     <ep-container :width="'30rem'" :height="'50rem'">
-      <ep-button :label="'Send Message'" @click="showNotification" />
+      <ep-button :label="'Send Message'" @click="store.state.showNotification = true" />
     </ep-container>
     <Teleport to="body">
-      <ep-notification v-if="show" v-bind="args" @close="this.show = false" />
+      <ep-notification v-if="store.state.showNotification" v-bind="args" @close="store.state.showNotification = false" />
     </Teleport>
   `
 })

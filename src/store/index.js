@@ -3,6 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     fullWidthContent: false,
+    showNotification: false,
     sidebar: true,
     sidebarUser: null,
     theme: 'dark'
