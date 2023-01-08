@@ -61,14 +61,10 @@ export default createStore({
         }, notification.duration)
       }
       // add the notification to the array
-      commit('addNotification', notification)
+      commit('addNotificationToNotificationsCenter', notification)
     },
-    removeNotification({ state, commit }, notification) {
-      // if visible, remove it from view
-      if (state.visibleNotification && state.visibleNotification.id === notification.id) {
-        state.visibleNotification = null
-      }
-      commit('removeNotification', notification)
+    removeNotification({ state, commit }) {
+      state.visibleNotification = null
     },
     toggleTheme({ state, commit }) {
       let newTheme = state.theme == 'dark' ? 'light' : 'dark'

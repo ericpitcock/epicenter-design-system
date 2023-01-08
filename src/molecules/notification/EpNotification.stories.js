@@ -2,10 +2,11 @@ import { centered } from '@/helpers/decorators'
 import EpContainer from '@/atoms/container/EpContainer'
 import EpButton from '@/atoms/button/EpButton'
 import EpNotification from './EpNotification'
+import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
 import store from '@/store'
 
 export default {
-  title: 'Molecules/Notification',
+  title: 'Molecules/Notifications',
   component: EpNotification,
   decorators: [centered],
   argTypes: {
@@ -30,30 +31,60 @@ export default {
       },
       defaultValue: {
         id: 1,
-        duration: 5000,
+        duration: null,
         message: 'Your message was sent successfully'
       }
     }
   }
 }
 
+const temporaryNotification = {
+  id: 1,
+  duration: 5000,
+  message: 'Your message was sent successfully'
+}
+
+const permanentNotification = {
+  id: 2,
+  duration: null,
+  message: 'Your message was sent successfully'
+}
+
 const Template = args => ({
-  components: { EpButton, EpContainer, EpNotification },
+  components: {
+    EpButton,
+    EpContainer,
+    EpFlexContainer,
+    EpNotification
+  },
   setup() {
-    return { args, store }
+    return {
+      args,
+      store,
+      temporaryNotification,
+      permanentNotification
+    }
   },
   template: `
-    <ep-container :width="'30rem'" :height="'50rem'">
+    <ep-container width="30rem" height="50rem">
+      <ep-flex-container
+        flex-flow="column nowrap"
+        align-items="center"
+        justify-content="center"
+        gap="2rem"
+      >
       <ep-button
-        :label="'Send Message'"
-        @click="store.dispatch('showNotification', args.notification)"
+        :label="'Temporary Message'"
+        @click="store.dispatch('showNotification', temporaryNotification)"
       />
+      <ep-button
+        :label="'Permanent Message'"
+        @click="store.dispatch('showNotification', permanentNotification)"
+      />
+      </ep-flex-container>
     </ep-container>
-    <ep-notification
-      v-bind="args"
-      @dismiss="store.dispatch('removeNotification', args.notification)"
-    />
+    <ep-notification @dismiss="store.dispatch('removeNotification')" />
   `
 })
 
-export const Notification = Template.bind({})
+export const Notifications = Template.bind({})
