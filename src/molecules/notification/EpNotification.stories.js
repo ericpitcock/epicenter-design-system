@@ -9,19 +9,30 @@ export default {
   component: EpNotification,
   decorators: [centered],
   argTypes: {
-    message: {
-      name: 'Message',
+    // message: {
+    //   name: 'Message',
+    //   control: {
+    //     type: 'text'
+    //   },
+    //   defaultValue: 'Your message was sent successfully'
+    // },
+    // permanent: {
+    //   name: 'Permanent',
+    //   control: {
+    //     type: 'boolean'
+    //   },
+    //   defaultValue: false
+    // },
+    notification: {
+      name: 'Notification',
       control: {
-        type: 'text'
+        type: 'object'
       },
-      defaultValue: 'Your message was sent successfully'
-    },
-    permanent: {
-      name: 'Permanent',
-      control: {
-        type: 'boolean'
-      },
-      defaultValue: false
+      defaultValue: {
+        id: 1,
+        duration: 5000,
+        message: 'Your message was sent successfully'
+      }
     }
   }
 }
@@ -33,11 +44,15 @@ const Template = args => ({
   },
   template: `
     <ep-container :width="'30rem'" :height="'50rem'">
-      <ep-button :label="'Default Notification'" @click="store.state.showNotification = true" />
+      <ep-button
+        :label="'Send Message'"
+        @click="store.dispatch('showNotification', args.notification)"
+      />
     </ep-container>
-
-      <ep-notification v-bind="args" @dismiss="store.state.showNotification = false" />
-
+    <ep-notification
+      v-bind="args"
+      @dismiss="store.dispatch('removeNotification', args.notification)"
+    />
   `
 })
 

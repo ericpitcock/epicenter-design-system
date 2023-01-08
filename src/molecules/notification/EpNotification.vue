@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
     <Transition name="notification">
-    <div v-if="showNotification" class="ep-notification">
+    <div v-if="visibleNotification" class="ep-notification">
       <ep-container
         :width="'30rem'"
         :padding="'2rem'"
@@ -9,7 +9,7 @@
         :borderColor="'var(--border-color--lighter)'"
       >
         <div class="ep-notification__message">
-          {{ message }}
+          {{ visibleNotification.message }}
         </div>
         <ep-button
           @click="dismissNotification"
@@ -31,38 +31,33 @@
   export default {
     name: 'EpNotification',
     emits: ['dismiss'],
-    props: {
-      message: {
-        type: String,
-        required: true
-      },
-      permanent: {
-        type: Boolean,
-        default: false
-      },
-    },
+    // props: {
+    //   message: {
+    //     type: String,
+    //     required: true
+    //   },
+    //   duration: {
+    //     type: Number
+    //   }
+    // },
     components: {
       EpContainer,
       EpButton
     },
     computed: {
-      ...mapState(['showNotification'])
+      ...mapState(['visibleNotification'])
     },
     methods: {
       dismissNotification() {
         this.$emit('dismiss')
-      },
-      autoDismiss() {
-        setTimeout(() => {
-          this.$emit('dismiss')
-        }, 5000)
-      }
-    },
-    mounted() {
-      if (!this.permanent) {
-        this.autoDismiss()
       }
     }
+    // mounted() {
+    //   console.log('mounted')
+    //   if (!this.duration) {
+    //     this.autoDismiss()
+    //   }
+    // }
   }
 </script>
 
@@ -83,6 +78,6 @@
     transition: transform .5s;
   }
   .notification-enter, .notification-leave-to {
-    transform: translateY(-100%);
+    transform: translateY(-200%);
   }
 </style>
