@@ -16,8 +16,8 @@ export default {
       },
       defaultValue: 'Your message was sent successfully'
     },
-    dismissable: {
-      name: 'Dismissable',
+    permanent: {
+      name: 'Permanent',
       control: {
         type: 'boolean'
       },
@@ -28,29 +28,16 @@ export default {
 
 const Template = args => ({
   components: { EpButton, EpContainer, EpNotification },
-  // data: () => ({
-  //   // show: true
-  //   store
-  // }),
-  // store,
   setup() {
     return { args, store }
   },
-  methods: {
-    showNotification() {
-      this.show = true
-      setTimeout(() => {
-        this.show = false
-      }, 5000)
-    }
-  },
   template: `
     <ep-container :width="'30rem'" :height="'50rem'">
-      <ep-button :label="'Send Message'" @click="store.state.showNotification = true" />
+      <ep-button :label="'Default Notification'" @click="store.state.showNotification = true" />
     </ep-container>
-    <Teleport to="body">
-      <ep-notification v-if="store.state.showNotification" v-bind="args" @close="store.state.showNotification = false" />
-    </Teleport>
+
+      <ep-notification v-bind="args" @dismiss="store.state.showNotification = false" />
+
   `
 })
 
