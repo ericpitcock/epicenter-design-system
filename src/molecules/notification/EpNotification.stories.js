@@ -1,14 +1,16 @@
-import { centered } from '@/helpers/decorators'
+// import { centered } from '@/helpers/decorators'
 import EpContainer from '@/atoms/container/EpContainer'
 import EpButton from '@/atoms/button/EpButton'
 import EpNotifications from './EpNotifications'
 import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
+import EpAppHeader from '@/organisms/app-header/EpAppHeader'
+import EpSidebarLayout from '@/templates/sidebar/EpSidebarLayout'
 import store from '@/store'
 
 export default {
   title: 'Molecules/Notifications',
   component: EpNotifications,
-  decorators: [centered],
+  // decorators: [centered],
   argTypes: {
     // message: {
     //   name: 'Message',
@@ -55,7 +57,9 @@ const Template = args => ({
     EpButton,
     EpContainer,
     EpFlexContainer,
-    EpNotifications
+    EpNotifications,
+    EpAppHeader,
+    EpSidebarLayout
   },
   setup() {
     return {
@@ -66,24 +70,38 @@ const Template = args => ({
     }
   },
   template: `
-    <ep-container width="30rem" height="50rem">
-      <ep-flex-container
-        flex-flow="column nowrap"
-        align-items="center"
-        justify-content="center"
-        gap="2rem"
-      >
-      <ep-button
-        label="Temporary Message"
-        @click="store.dispatch('addNotification', temporaryNotification)"
-      />
-      <ep-button
-        label="Permanent Message"
-        @click="store.dispatch('addNotification', permanentNotification)"
-      />
-      </ep-flex-container>
-    </ep-container>
-    <ep-notifications />
+    <ep-notifications top="5rem" right="1rem" />
+    <ep-sidebar-layout>
+      <template #app-header>
+      <ep-app-header>
+        app header
+      </ep-app-header>
+      </template>
+      
+      <template #sidebar>
+      sidebar
+      </template>
+      
+      <template #content>
+      <ep-container width="30rem" height="50rem">
+        <ep-flex-container
+          flex-flow="column nowrap"
+          align-items="center"
+          justify-content="center"
+          gap="2rem"
+        >
+        <ep-button
+          label="Temporary Message"
+          @click="store.dispatch('addNotification', temporaryNotification)"
+        />
+        <ep-button
+          label="Permanent Message"
+          @click="store.dispatch('addNotification', permanentNotification)"
+        />
+        </ep-flex-container>
+      </ep-container>
+      </template>
+    </ep-sidebar-layout>
   `
 })
 

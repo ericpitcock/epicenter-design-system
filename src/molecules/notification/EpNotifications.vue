@@ -1,7 +1,11 @@
 <template>
   <Teleport to="body">
-  <div class="ep-notifications">
-    <transition-group name="ep-notification" tag="div">
+  <div class="ep-notifications" :style="position">
+    <ep-flex-container
+      flexFlow="column nowrap"
+      gap="1rem"
+    >
+    <transition-group name="fade">
       <EpNotification
         v-for="notification in notifications"
         :key="notification.id"
@@ -11,21 +15,50 @@
         @dismiss="removeNotification(notification)"
       />
     </transition-group>
+    </ep-flex-container>
   </div>
   </Teleport>
 </template>
 
 <script>
+  import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
   import EpNotification from '@/molecules/notification/EpNotification'
   import { mapState } from 'vuex'
 
   export default {
     name: 'EpNotifications',
     components: {
+      EpFlexContainer,
       EpNotification
     },
+    props: {
+      top: {
+        type: String,
+        default: 'auto'
+      },
+      right: {
+        type: String,
+        default: 'auto'
+      },
+      bottom: {
+        type: String,
+        default: 'auto'
+      },
+      left: {
+        type: String,
+        default: 'auto'
+      }
+    },
     computed: {
-      ...mapState(['notifications'])
+      ...mapState(['notifications']),
+      position() {
+        return {
+          top: this.top,
+          right: this.right,
+          bottom: this.bottom,
+          left: this.left
+        }
+      }
     },
     methods: {
       removeNotification(notification) {
@@ -38,29 +71,15 @@
 <style lang="scss" scoped>
   .ep-notifications {
     position: fixed;
-    top: 0;
-    right: 0;
     z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: flex-end;
   }
-  // .ep-notification {
-  //   position: relative;
-  //   margin: 1rem;
-  //   padding: 1rem;
-  //   background-color: #fff;
-  //   border: 1px solid #ccc;
-  //   border-radius: 4px;
-  //   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  //   &-enter-active,
-  //   &-leave-active {
-  //     transition: all 0.5s;
-  //   }
-  //   &-enter,
-  //   &-leave-to {
-  //     opacity: 0;
-  //     transform: translateY(30px);
-  //   }
-  // }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter-from, .fade-leave-to {
+    opacity: 0;
+  }
 </style>

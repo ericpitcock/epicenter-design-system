@@ -1,24 +1,24 @@
 <template>
   <div
-    class="ep-control-bar__segment"
+    class="ep-app-header__segment"
     :style="{ gap }"
     v-bind="$attrs"
   >
     <div
       v-if="divideLeft"
-      class="ep-control-bar__divider"
+      class="ep-app-header__divider"
     ></div>
     <slot />
     <div
       v-if="divideRight"
-      class="ep-control-bar__divider"
+      class="ep-app-header__divider"
     ></div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'EpControlBarSegment',
+    name: 'EpAppHeaderSegment',
     props: {
       gap: {
         type: String,
@@ -35,11 +35,11 @@
 </script>
 
 <style lang="scss" scoped>
-  .ep-control-bar__segment {
+  .ep-app-header__segment {
     display: flex;
     align-items: center;
   }
-  .ep-control-bar__divider {
+  .ep-app-header__divider {
     width: 1px;
     height: 24px;
     background-color: var(--border-color);

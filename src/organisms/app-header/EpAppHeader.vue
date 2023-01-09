@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ep-control-bar"
+    class="ep-app-header"
     :style="{ flexBasis, justifyContent, gap }"
   >
     <slot />
@@ -9,7 +9,7 @@
 
 <script>
   export default {
-    name: 'EpControlBar',
+    name: 'EpAppHeader',
     props: {
       flexBasis: {
         type: String,
@@ -29,8 +29,9 @@
 </script>
 
 <style lang="scss" scoped>
-  .ep-control-bar {
+  .ep-app-header {
     display: flex;
+    height: 100%;
     flex-grow: 0;
     flex-shrink: 0;
     align-items: center;

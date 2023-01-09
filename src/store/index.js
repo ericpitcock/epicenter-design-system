@@ -37,11 +37,21 @@ export default createStore({
     toggleSidebar: state => {
       state.sidebar = !state.sidebar
     },
-    addNotification: (state, notification) => {
-      state.notifications.push({
-        ...notification, // using spread syntax breaks the object reference
-        id: generateID() // so I can get unique IDs each time
-      })
+    addNotification: (state, newNotification) => {
+      // const newNotification = {
+      //   ...notification, // using spread syntax breaks the object reference
+      //   id: generateID() // so I can get unique IDs each time
+      // }
+      state.notifications.push(newNotification)
+      console.log('addNotification mutation', newNotification)
+
+      // // if the notification has a duration,
+      // // move it to the notifications center after that duration
+      // if (newNotification.duration) {
+      //   setTimeout(() => {
+      //     commit('removeNotification', newNotification)
+      //   }, newNotification.duration)
+      // }
     },
     removeNotification: (state, notification) => {
       console.log('removing notification', notification)
@@ -52,16 +62,19 @@ export default createStore({
   },
   actions: {
     addNotification: ({ state, commit }, notification) => {
-      // add the notification to the array
-      commit('addNotification', notification)
-
+      const newNotification = {
+        ...notification, // using spread syntax breaks the object reference
+        id: generateID() // so I can get unique IDs each time
+      }
       // if the notification has a duration,
       // move it to the notifications center after that duration
-      if (notification.duration) {
+      if (newNotification.duration) {
         setTimeout(() => {
-          commit('removeNotification', notification)
-        }, notification.duration)
+          commit('removeNotification', newNotification)
+        }, newNotification.duration)
       }
+      // add the notification to the array
+      commit('addNotification', newNotification)
     },
     removeNotification({ state, commit }, notification) {
       commit('removeNotification', notification)

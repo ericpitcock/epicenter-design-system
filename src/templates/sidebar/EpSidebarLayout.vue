@@ -15,9 +15,14 @@
 </template>
 
 <script>
-export default {
-  name: 'EpLayoutSidebar'
-}
+  import { mapState } from 'vuex'
+
+  export default {
+    name: 'EpLayoutSidebar',
+    computed: {
+      ...mapState(['fullWidthContent'])
+    }
+  }
 </script>
 
 <style lang="scss">
