@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import generateID from '@/helpers/generateID'
 
 export default createStore({
   state: {
@@ -30,38 +31,42 @@ export default createStore({
     setSidebarUserState: (state, boolean) => {
       state.sidebarUser = boolean
     },
-    setContentWidth: (state) => {
+    setContentWidth: state => {
       state.fullWidthContent = !state.fullWidthContent
     },
-    toggleSidebar: (state) => {
+    toggleSidebar: state => {
       state.sidebar = !state.sidebar
     },
     // addNotification: (state, notification) => {
     //   state.notifications.push(notification)
     // },
     removeNotification: (state, notification) => {
-      state.notifications = state.notifications.filter(n => n.id !== notification.id)
+      state.notifications = state.notifications.filter(
+        n => n.id !== notification.id
+      )
     },
     // removeVisibleNotification: (state) => {
     //   state.visibleNotification = null
     // },
     addNotification: (state, notification) => {
-      state.notifications.push(notification)
+      state.notifications.push({
+        ...notification, // using spread syntax breaks the object reference
+        id: generateID() // so I can get unique IDs each time
+      })
     }
   },
   actions: {
-    addNotification({ state, commit }, notification) {
-      console.log(notification)
-      // show the notification
-      // state.visibleNotification = notification
-      // if the notification has a duration, move it to the notifications center after that duration
-      if (notification.duration) {
-        setTimeout(() => {
-          commit('removeNotification')
-        }, notification.duration)
-      }
+    addNotification: ({ state, commit }, notification) => {
       // add the notification to the array
       commit('addNotification', notification)
+
+      // if the notification has a duration,
+      // move it to the notifications center after that duration
+      if (notification.duration) {
+        setTimeout(() => {
+          commit('removeNotification', notification)
+        }, notification.duration)
+      }
     },
     removeNotification({ state, commit }) {
       commit('removeNotification')
@@ -81,7 +86,7 @@ export default createStore({
       // if it's maximized
       if (state.fullWidthContent) {
         // this is what happens when you minimize it
-        const newState = (state.sidebarUser === null) ? true : state.sidebarUser
+        const newState = state.sidebarUser === null ? true : state.sidebarUser
         commit('setSidebarState', newState)
       } else {
         // this is what happens when you maximize it

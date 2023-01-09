@@ -4,7 +4,6 @@ import EpButton from '@/atoms/button/EpButton'
 import EpNotifications from './EpNotifications'
 import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
 import store from '@/store'
-import generateID from '@/helpers/generateID'
 
 export default {
   title: 'Molecules/Notifications',
@@ -40,13 +39,13 @@ export default {
 }
 
 const temporaryNotification = {
-  id: generateID(),
+  id: null,
   duration: 5000,
   message: 'Your message was sent successfully'
 }
 
 const permanentNotification = {
-  id: generateID(),
+  id: null,
   duration: null,
   message: 'Your message was sent successfully'
 }
