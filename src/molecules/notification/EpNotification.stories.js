@@ -1,13 +1,13 @@
 import { centered } from '@/helpers/decorators'
 import EpContainer from '@/atoms/container/EpContainer'
 import EpButton from '@/atoms/button/EpButton'
-import EpNotification from './EpNotification'
+import EpNotifications from './EpNotifications'
 import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
 import store from '@/store'
 
 export default {
   title: 'Molecules/Notifications',
-  component: EpNotification,
+  component: EpNotifications,
   decorators: [centered],
   argTypes: {
     // message: {
@@ -55,7 +55,7 @@ const Template = args => ({
     EpButton,
     EpContainer,
     EpFlexContainer,
-    EpNotification
+    EpNotifications
   },
   setup() {
     return {
@@ -74,16 +74,16 @@ const Template = args => ({
         gap="2rem"
       >
       <ep-button
-        :label="'Temporary Message'"
-        @click="store.dispatch('showNotification', temporaryNotification)"
+        label="Temporary Message"
+        @click="store.dispatch('addNotification', temporaryNotification)"
       />
       <ep-button
-        :label="'Permanent Message'"
-        @click="store.dispatch('showNotification', permanentNotification)"
+        label="Permanent Message"
+        @click="store.dispatch('addNotification', permanentNotification)"
       />
       </ep-flex-container>
     </ep-container>
-    <ep-notification @dismiss="store.dispatch('removeNotification')" />
+    <ep-notifications />
   `
 })
 

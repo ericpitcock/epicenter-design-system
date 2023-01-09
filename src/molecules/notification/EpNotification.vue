@@ -1,15 +1,17 @@
 <template>
-  <Teleport to="body">
-    <Transition name="notification">
-    <div v-if="visibleNotification" class="ep-notification">
-      <ep-container
-        :width="'30rem'"
-        :padding="'2rem'"
-        :backgroundColor="'var(--background-4)'"
-        :borderColor="'var(--border-color--lighter)'"
+  <div class="ep-notification">
+    <ep-container
+      :width="'30rem'"
+      :padding="'2rem'"
+      :backgroundColor="'var(--background-4)'"
+      :borderColor="'var(--border-color--lighter)'"
+    >
+      <ep-flex-container
+        justifyContent="space-between"
+        alignItems="center"
       >
         <div class="ep-notification__message">
-          {{ visibleNotification.message }}
+          {{ message }}
         </div>
         <ep-button
           @click="dismissNotification"
@@ -17,36 +19,41 @@
           kind="ghost"
           iconRight="close"
         />
-      </ep-container>
-    </div>
-    </Transition>
-  </Teleport>
+      </ep-flex-container>
+    </ep-container>
+  </div>
 </template>
 
 <script>
-  import EpContainer from '@/atoms/container/EpContainer'
   import EpButton from '@/atoms/button/EpButton'
-  import { mapState } from 'vuex'
+  import EpContainer from '@/atoms/container/EpContainer'
+  import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
 
   export default {
     name: 'EpNotification',
     emits: ['dismiss'],
-    // props: {
-    //   message: {
-    //     type: String,
-    //     required: true
-    //   },
-    //   duration: {
-    //     type: Number
-    //   }
-    // },
+    props: {
+      duration: {
+        type: Number,
+        default: null
+      },
+      id: {
+        type: Number,
+        required: true
+      },
+      message: {
+        type: String,
+        required: true
+      }
+    },
     components: {
+      EpButton,
       EpContainer,
-      EpButton
+      EpFlexContainer
     },
-    computed: {
-      ...mapState(['visibleNotification'])
-    },
+    // computed: {
+    //   ...mapState(['visibleNotification'])
+    // },
     methods: {
       dismissNotification() {
         this.$emit('dismiss')
@@ -63,9 +70,6 @@
 
 <style lang="scss" scoped>
   .ep-notification {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
     &__message {
     }
     &__dismiss-button {
