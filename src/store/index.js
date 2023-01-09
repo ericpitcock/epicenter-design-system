@@ -37,22 +37,17 @@ export default createStore({
     toggleSidebar: state => {
       state.sidebar = !state.sidebar
     },
-    // addNotification: (state, notification) => {
-    //   state.notifications.push(notification)
-    // },
-    removeNotification: (state, notification) => {
-      state.notifications = state.notifications.filter(
-        n => n.id !== notification.id
-      )
-    },
-    // removeVisibleNotification: (state) => {
-    //   state.visibleNotification = null
-    // },
     addNotification: (state, notification) => {
       state.notifications.push({
         ...notification, // using spread syntax breaks the object reference
         id: generateID() // so I can get unique IDs each time
       })
+    },
+    removeNotification: (state, notification) => {
+      console.log('removing notification', notification)
+      state.notifications = state.notifications.filter(
+        n => n.id !== notification.id
+      )
     }
   },
   actions: {
@@ -68,8 +63,8 @@ export default createStore({
         }, notification.duration)
       }
     },
-    removeNotification({ state, commit }) {
-      commit('removeNotification')
+    removeNotification({ state, commit }, notification) {
+      commit('removeNotification', notification)
     },
     toggleTheme({ state, commit }) {
       let newTheme = state.theme == 'dark' ? 'light' : 'dark'

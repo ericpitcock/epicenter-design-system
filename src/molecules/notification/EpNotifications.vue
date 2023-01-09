@@ -6,9 +6,9 @@
         v-for="notification in notifications"
         :key="notification.id"
         :id="notification.id"
-        :message="notification.message"
+        :message="`${notification.message} ${notification.id}`"
         :duration="notification.duration"
-        @dismiss="dismissNotification(notification.id)"
+        @dismiss="removeNotification(notification)"
       />
     </transition-group>
   </div>
@@ -28,8 +28,8 @@
       ...mapState(['notifications'])
     },
     methods: {
-      dismissNotification(id) {
-        this.$store.dispatch('removeNotification', id)
+      removeNotification(notification) {
+        this.$store.dispatch('removeNotification', notification)
       }
     }
   }
