@@ -51,6 +51,7 @@ export default createStore({
   },
   actions: {
     addNotification({ state, commit }, notification) {
+      console.log(notification)
       // show the notification
       // state.visibleNotification = notification
       // if the notification has a duration, move it to the notifications center after that duration

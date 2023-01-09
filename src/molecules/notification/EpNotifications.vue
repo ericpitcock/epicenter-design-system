@@ -29,7 +29,7 @@
     },
     methods: {
       dismissNotification(id) {
-        this.$store.dispatch('dismissNotification', id)
+        this.$store.dispatch('removeNotification', id)
       }
     }
   }
