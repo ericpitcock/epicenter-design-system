@@ -1,5 +1,6 @@
 import EpContainer from '@/atoms/container/EpContainer'
 import EpButton from '@/atoms/button/EpButton'
+import EpDropdown from '@/molecules/dropdown/EpDropdown'
 import EpNotifications from './EpNotifications'
 import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
 import EpAppHeader from '@/organisms/app-header/EpAppHeader'
@@ -27,6 +28,7 @@ const Template = args => ({
     EpAppHeader,
     EpButton,
     EpContainer,
+    EpDropdown,
     EpFlexContainer,
     EpNotifications,
     EpSidebarLayout
@@ -44,7 +46,20 @@ const Template = args => ({
     <ep-sidebar-layout>
       <template #app-header>
       <ep-app-header>
-        <ep-button kind="ghost" iconRight="notifications" />
+        <ep-dropdown
+          :button="{
+            kind: 'ghost',
+            iconRight: 'notifications',
+            label: ''
+          }"
+          :alignRight="true"
+        >
+          <template #content>
+            <div class="notification-center">
+              notifications center
+            </div>
+          </template>
+        </ep-dropdown>
       </ep-app-header>
       </template>
       
@@ -60,12 +75,13 @@ const Template = args => ({
           justify-content="center"
           gap="2rem"
         >
+        <h1>Notification Types</h1>
         <ep-button
-          label="Temporary Notification"
+          label="Temporary"
           @click="store.dispatch('addNotification', temporaryNotification)"
         />
         <ep-button
-          label="Permanent Notification"
+          label="Permanent"
           @click="store.dispatch('addNotification', permanentNotification)"
         />
         </ep-flex-container>
