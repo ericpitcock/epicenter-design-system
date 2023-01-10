@@ -38,20 +38,8 @@ export default createStore({
       state.sidebar = !state.sidebar
     },
     addNotification: (state, newNotification) => {
-      // const newNotification = {
-      //   ...notification, // using spread syntax breaks the object reference
-      //   id: generateID() // so I can get unique IDs each time
-      // }
-      state.notifications.push(newNotification)
       console.log('addNotification mutation', newNotification)
-
-      // // if the notification has a duration,
-      // // move it to the notifications center after that duration
-      // if (newNotification.duration) {
-      //   setTimeout(() => {
-      //     commit('removeNotification', newNotification)
-      //   }, newNotification.duration)
-      // }
+      state.notifications.push(newNotification)
     },
     removeNotification: (state, notification) => {
       console.log('removing notification', notification)
