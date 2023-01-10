@@ -25,9 +25,9 @@
 </template>
 
 <script>
-  import EpButton from '@/atoms/button/EpButton'
-  import EpContainer from '@/atoms/container/EpContainer'
-  import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
+  import EpButton from '@/components/button/EpButton'
+  import EpContainer from '@/components/container/EpContainer'
+  import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
 
   export default {
     name: 'EpNotification',

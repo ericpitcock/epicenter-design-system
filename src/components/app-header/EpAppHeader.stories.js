@@ -2,7 +2,7 @@ import EpAppHeader from './EpAppHeader'
 import EpSidebarLayout from '@/templates/sidebar/EpSidebarLayout'
 
 export default {
-  title: 'Organisms/App Header',
+  title: 'App Header',
   component: EpAppHeader,
   argTypes: {},
   parameters: {

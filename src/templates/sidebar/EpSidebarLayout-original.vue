@@ -113,11 +113,11 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 
-import EpSidebar from '@/molecules/sidebar/EpSidebar'
-import EpButton from '@/atoms/button/EpButton'
-import EpDropdown from '@/molecules/dropdown/EpDropdown'
-import EpTabs from '@/atoms/tabs/EpTabs'
-import EpIcon from '@/atoms/icon/EpIcon'
+import EpSidebar from '@/components/sidebar/EpSidebar'
+import EpButton from '@/components/button/EpButton'
+import EpDropdown from '@/components/dropdown/EpDropdown'
+import EpTabs from '@/components/tabs/EpTabs'
+import EpIcon from '@/components/icon/EpIcon'
 
 export default {
   name: 'App',

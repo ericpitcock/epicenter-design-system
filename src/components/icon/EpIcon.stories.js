@@ -1,10 +1,10 @@
-import EpContainer from '@/atoms/container/EpContainer.vue'
+import EpContainer from '@/components/container/EpContainer.vue'
 import { svgIcons, iconNames } from './load-icons'
 import EpIcon from './EpIcon'
 import { centered } from '@/helpers/decorators.js'
 
 export default {
-  title: 'Atoms/Icon',
+  title: 'Icon',
   component: EpIcon,
   argTypes: {
     name: {

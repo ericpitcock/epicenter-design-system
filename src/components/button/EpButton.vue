@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import EpIcon from '@/atoms/icon/EpIcon'
+  import EpIcon from '@/components/icon/EpIcon'
 
   export default {
     name: 'EpButton',

@@ -8,7 +8,7 @@ const container = () => {
 }
 
 export default {
-  title: 'Atoms/Container',
+  title: 'Container',
   component: EpContainer,
   decorators: [container],
   argTypes: {

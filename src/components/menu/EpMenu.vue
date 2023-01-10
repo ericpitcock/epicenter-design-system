@@ -18,8 +18,8 @@
 </template>
 
 <script>
-  import EpDivider from '@/atoms/divider/EpDivider'
-  import EpButton from '@/atoms/button/EpButton'
+  import EpDivider from '@/components/divider/EpDivider'
+  import EpButton from '@/components/button/EpButton'
 
   export default {
     name: 'EpMenu',

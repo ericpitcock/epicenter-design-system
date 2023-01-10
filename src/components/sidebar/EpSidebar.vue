@@ -20,8 +20,8 @@
 </template>
 
 <script>
-  import EpDivider from '@/atoms/divider/EpDivider'
-  import EpIcon from '@/atoms/icon/EpIcon'
+  import EpDivider from '@/components/divider/EpDivider'
+  import EpIcon from '@/components/icon/EpIcon'
   
   export default {
     name: 'EpSidebar',

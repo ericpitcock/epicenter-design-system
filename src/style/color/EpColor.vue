@@ -29,9 +29,9 @@
 </template>
 
 <script>
-  import EpContainer from '@/atoms/container/EpContainer'
-  import EpMenu from '@/molecules/menu/EpMenu'
-  import EpTable from '@/organisms/table/EpTable'
+  import EpContainer from '@/components/container/EpContainer'
+  import EpMenu from '@/components/menu/EpMenu'
+  import EpTable from '@/components/table/EpTable'
   import colors from '@/style/tokens/color/color'
   import grayscale from '@/style/tokens/color/grayscale'
   import copyToClipboard from '@/mixins/copyToClipboard'

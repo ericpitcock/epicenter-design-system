@@ -21,8 +21,8 @@
 </template>
 
 <script>
-  import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
-  import EpNotification from '@/molecules/notification/EpNotification'
+  import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
+  import EpNotification from '@/components/notification/EpNotification'
   import { mapState } from 'vuex'
 
   export default {

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
+  import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
 
   export default {
     name: 'EpAppHeader',

@@ -48,7 +48,7 @@ const navItems = [
 ]
 
 export default {
-  title: 'Molecules/Sidebar',
+  title: 'Sidebar',
   component: EpSidebar,
   decorators: [padded],
   argTypes: {

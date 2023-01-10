@@ -1,14 +1,14 @@
-import EpContainer from '@/atoms/container/EpContainer'
-import EpButton from '@/atoms/button/EpButton'
-import EpDropdown from '@/molecules/dropdown/EpDropdown'
+import EpContainer from '@/components/container/EpContainer'
+import EpButton from '@/components/button/EpButton'
+import EpDropdown from '@/components/dropdown/EpDropdown'
 import EpNotifications from './EpNotifications'
-import EpFlexContainer from '@/atoms/flexbox/EpFlexContainer'
-import EpAppHeader from '@/organisms/app-header/EpAppHeader'
+import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
+import EpAppHeader from '@/components/app-header/EpAppHeader'
 import EpSidebarLayout from '@/templates/sidebar/EpSidebarLayout'
 import store from '@/store'
 
 export default {
-  title: 'Molecules/Notifications',
+  title: 'Notifications',
   component: EpNotifications,
   argTypes: {
   }

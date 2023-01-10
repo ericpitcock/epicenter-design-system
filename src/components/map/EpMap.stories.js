@@ -28,7 +28,7 @@ const mapStyles = (store) => {
 }
 
 export default {
-  title: 'Organisms/Map',
+  title: 'Map',
   component: EpMap,
   decorators: [padded],
   argTypes: {

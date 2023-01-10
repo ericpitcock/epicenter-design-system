@@ -1,4 +1,4 @@
-import EpContainer from '@/atoms/container/EpContainer'
+import EpContainer from '@/components/container/EpContainer'
 import EpTable from './EpTable'
 import { columns, fakeArray } from './data'
 
@@ -10,7 +10,7 @@ const container = () => {
 }
 
 export default {
-  title: 'Organisms/Table',
+  title: 'Table',
   component: EpTable,
   decorators: [container],
   argTypes: {

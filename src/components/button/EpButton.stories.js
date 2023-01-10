@@ -1,12 +1,12 @@
 import vueRouter from 'storybook-vue3-router'
 import { centered } from '@/helpers/decorators'
-import { iconNames } from '@/atoms/icon/load-icons'
+import { iconNames } from '@/components/icon/load-icons'
 import EpButton from './EpButton'
 
 iconNames.push(undefined)
 
 export default {
-  title: 'Atoms/Button',
+  title: 'Button',
   component: EpButton,
   decorators: [centered],
   argTypes: {

@@ -1,9 +1,9 @@
 import faker from 'faker'
 // import { columns, fakeArray } from '@/components/table/data'
 import EpSidebarLayout from './EpSidebarLayout'
-import EpSidebar from '@/molecules/sidebar/EpSidebar'
-import EpContainer from '@/atoms/container/EpContainer'
-import EpTable from '@/organisms/table/EpTable'
+import EpSidebar from '@/components/sidebar/EpSidebar'
+import EpContainer from '@/components/container/EpContainer'
+import EpTable from '@/components/table/EpTable'
 
 const container = () => {
   return {
