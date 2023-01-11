@@ -37,48 +37,53 @@
     props: {
       outline: {
         type: Boolean,
-        default: false
+        default: true
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  $gold: #f99d1c;
-  $yellow: #fdb913;
-  $gray: #414141;
-  $white: #fff;
-
   svg {
     display: block;
     // scales with container
     width: 100%;
-    height: auto;
+    height: 100%;
   }
   polygon,
   path {
-    stroke: $white;
+    stroke: var(--logo-white);
     stroke-width: 3;
     stroke-linejoin: round;
     stroke-miterlimit: 5;
   }
   .shadow {
-    fill: $gray;
+    fill: var(--logo-gray);
   }
   .highlight {
-    fill: $yellow;
+    fill: var(--logo-yellow);
   }
   .face {
-    fill: $gold;
+    fill: var(--logo-gold);
   }
   svg.outline {
-    position: absolute;
     .shadow,
     .highlight,
     .face {
-      fill: none;
-      stroke: #4f80ff;
-      stroke-width: 1;
+      fill: var(--background-1);
+      // stroke: #4f80ff;
+      stroke: var(--color--primary);
+      stroke-width: 2;
     }
   }
+  // svg.outline {
+  //   position: absolute;
+  //   .shadow,
+  //   .highlight,
+  //   .face {
+  //     fill: none;
+  //     stroke: #4f80ff;
+  //     stroke-width: 1;
+  //   }
+  // }
 </style>

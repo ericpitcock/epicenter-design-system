@@ -5,14 +5,14 @@
     </div>
     <div class="copy-block">
       <h1>E Design System</h1>
-      <p>A design system built by <a href="https://www.ericpitcock.com">Eric Pitcock</a>.</p>
-      <p>All components are built from scratch in Vue 3. Check out the code on <a href="https://github.com/ericpitcock/ep-design-system">GitHub</a>.</p>
+      <p>Vue 3 components designed and built by <a href="https://www.ericpitcock.com">Eric Pitcock</a>.</p>
+      <p>Check out the code on <a href="https://github.com/ericpitcock/ep-design-system">GitHub</a>.</p>
     </div>
   </div>
 </template>
 
 <script>
-  import E from './E'
+  import E from '@/components/logo/E'
 
   export default {
     name: 'Intro',

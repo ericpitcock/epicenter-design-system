@@ -16,6 +16,13 @@ export default {
       },
       defaultValue: 'var(--overlay-color)'
     },
+    borderRadius: {
+      name: 'Border Radius',
+      control: {
+        type: 'text'
+      },
+      defaultValue: 'var(--border-radius--large)'
+    },
     loading: {
       name: 'Loading',
       control: {
@@ -29,20 +36,20 @@ export default {
         type: 'array'
       },
       defaultValue: [
-        { 
-          icon: 'oval', 
+        {
+          icon: 'oval',
           message: 'Downloading the entire internet…'
         },
-        { 
-          icon: 'bars', 
+        {
+          icon: 'bars',
           message: 'Rearranging things…'
         },
-        { 
-          icon: null, 
+        {
+          icon: null,
           message: 'Refreshing the data in our system…'
         },
-        { 
-          icon: null, 
+        {
+          icon: null,
           message: 'Finishing up…'
         }
       ]
@@ -53,7 +60,7 @@ export default {
         type: 'number'
       },
       defaultValue: 2000
-    },
+    }
   }
 }
 

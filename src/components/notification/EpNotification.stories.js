@@ -5,6 +5,7 @@ import EpNotifications from './EpNotifications'
 import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
 import EpAppHeader from '@/components/app-header/EpAppHeader'
 import EpSidebarLayout from '@/templates/sidebar/EpSidebarLayout'
+import E from '@/components/logo/E'
 import store from '@/store'
 
 export default {
@@ -25,6 +26,7 @@ const permanentNotification = {
 
 const Template = args => ({
   components: {
+    E,
     EpAppHeader,
     EpButton,
     EpContainer,
@@ -46,6 +48,7 @@ const Template = args => ({
     <ep-sidebar-layout>
       <template #app-header>
       <ep-app-header>
+        <e />
         <ep-dropdown
           :button="{
             kind: 'ghost',

@@ -4,7 +4,20 @@
 // global theme stuff (included no matter the theme)
 :root {
   // colors
-  --color--primary: var(--sky-500);
+  // --color--primary: var(--sky-500);
+  --color--primary: hsl(220, 100%, 60%);
+
+  // tints and shades of hsl(223, 100%, 65%)
+  --color--primary--lightest: hsl(223, 100%, 71%);
+  --color--primary--lighter: hsl(223, 100%, 69%);
+  --color--primary--light: hsl(223, 100%, 67%);
+  --color--primary: hsl(223, 100%, 65%);
+  --color--primary--dark: hsl(223, 100%, 63%);
+  --color--primary--darker: hsl(223, 100%, 61%);
+  --color--primary--darkest: hsl(223, 100%, 59%);
+
+  // primary color tints
+  // --primary-color--light: hsl(199, 89%, 80%);
 
   // border radius
   --border-radius: 0.3rem;
@@ -36,8 +49,11 @@
   --success-green--border: hsl(99, 59%, 46%);
   --success-green--text: hsl(99, 59%, 10%);
 
-  // primary color tints
-  --primary-color--light: hsl(199, 89%, 80%);
+  // logo colors
+  --logo-gold: #f99d1c;
+  --logo-yellow: #fdb913;
+  --logo-gray: #414141;
+  --logo-white: #fff;
 
   // css now generated from tokens with style dictionary
   // neutral gray

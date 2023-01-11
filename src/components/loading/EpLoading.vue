@@ -15,6 +15,10 @@
         type: String,
         default: 'var(--overlay-color)'
       },
+      borderRadius: {
+        type: String,
+        default: 'var(--border-radius--large)'
+      },
       loading: {
         type: Boolean,
         default: false
@@ -105,6 +109,7 @@
     bottom: 0;
     z-index: 9999;
     background-color: v-bind(backgroundColor);
+    border-radius: v-bind(borderRadius);
     backdrop-filter: blur(4px);
     display: flex;
     flex-direction: column;
