@@ -1,26 +1,19 @@
 <template>
   <div class="ep-notification">
-    <ep-container
-      :width="'30rem'"
-      :padding="'2rem'"
-      :backgroundColor="'var(--background-4)'"
-      :borderColor="'var(--border-color--lighter)'"
-    >
-      <ep-flex-container
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <div class="ep-notification__message">
-          {{ message }}
-        </div>
+    <div class="ep-notification__color-strip"></div>
+    <div class="ep-notification__body">
+      <div class="message">
+        {{ message }}
+      </div>
+      <div class="dismiss-button">
         <ep-button
           @click="dismissNotification"
           class="dismiss-button"
           kind="ghost"
           iconRight="close"
         />
-      </ep-flex-container>
-    </ep-container>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -44,6 +37,10 @@
       message: {
         type: String,
         required: true
+      },
+      type: {
+        type: String,
+        default: 'info' // info, success, warning, error
       }
     },
     components: {
@@ -70,12 +67,31 @@
 
 <style lang="scss" scoped>
   .ep-notification {
-    &__message {
+    display: flex;
+    align-items: stretch;
+    width: 30rem;
+    height: 7rem;
+    &__color-strip {
+      width: .5rem;
+      height: 100%;
+      border-radius: var(--border-radius--large) 0 0 var(--border-radius--large);
+      background-color: red;
     }
-    &__dismiss-button {
-      position: absolute;
-      top: .5rem;
-      right: .5rem;
+    &__body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      background-color: var(--background-4);
+      padding: 0 2rem;
+      border: 1px solid var(--border-color--lighter);
+      border-left: none;
+      border-radius: 0 var(--border-radius--large) var(--border-radius--large) 0;
+      .message {
+      }
+      .dismiss-button {
+      }
     }
   }
   .notification-enter-active, .notification-leave-active {

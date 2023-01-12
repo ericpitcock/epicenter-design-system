@@ -11,7 +11,6 @@
       :outlined="true"
       :style="{ borderColor: primaryColor }"
     />
-    <!-- short lorem ipsum paragraph block with a link -->
     <div class="copy-block">
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod

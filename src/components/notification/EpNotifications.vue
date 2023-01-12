@@ -5,6 +5,13 @@
       flexFlow="column nowrap"
       gap="1rem"
     >
+    <div
+      class="ep-notifications--empty"
+      v-if="isNotificationsEmpty"
+    >
+      <p>You have no notifications</p>
+    </div>
+    <template v-else>
     <transition-group name="fade">
       <EpNotification
         v-for="notification in notifications"
@@ -15,6 +22,7 @@
         @dismiss="removeNotification(notification)"
       />
     </transition-group>
+    </template>
     </ep-flex-container>
   </div>
   </Teleport>
@@ -58,6 +66,9 @@
           bottom: this.bottom,
           left: this.left
         }
+      },
+      isNotificationsEmpty() {
+        return this.notifications.length === 0
       }
     },
     methods: {

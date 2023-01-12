@@ -48,6 +48,10 @@
         type: String,
         default: '0.1rem'
       },
+      borderStyle: {
+        type: String,
+        default: 'solid'
+      },
       borderColor: {
         type: String,
         default: 'var(--border-color)'
@@ -92,6 +96,8 @@
     margin: v-bind(margin);
     border-radius: v-bind(borderRadius);
     background-color: v-bind(backgroundColor);
-    border: v-bind(borderWidth) solid v-bind(borderColor);
+    border-width: v-bind(borderWidth);
+    border-style: v-bind(borderStyle);
+    border-color: v-bind(borderColor);
   }
 </style>

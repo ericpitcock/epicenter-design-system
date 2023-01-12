@@ -78,6 +78,27 @@ export default {
       },
       defaultValue: '0.1rem'
     },
+    borderStyle: {
+      name: 'Border Style',
+      control: {
+        type: 'select',
+        options: [
+          'none',
+          'hidden',
+          'dotted',
+          'dashed',
+          'solid',
+          'double',
+          'groove',
+          'ridge',
+          'inset',
+          'outset',
+          'initial',
+          'inherit'
+        ]
+      },
+      defaultValue: 'solid'
+    },
     borderColor: {
       name: 'Border Color',
       control: {

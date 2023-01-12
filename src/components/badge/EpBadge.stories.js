@@ -11,7 +11,7 @@ export default {
       control: {
         type: 'text',
       },
-      defaultValue: 'Badge',
+      defaultValue: 'Subscribed',
     },
     backgroundColor: {
       name: 'Background Color',
