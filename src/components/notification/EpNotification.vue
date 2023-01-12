@@ -10,7 +10,7 @@
           @click="dismissNotification"
           class="dismiss-button"
           kind="ghost"
-          iconRight="close"
+          :iconRight="{ name: 'close' }"
         />
       </div>
     </div>

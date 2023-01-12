@@ -15,7 +15,7 @@
       v-if="true"
       @click="clear()"
       kind="ghost"
-      icon-left="close"
+      :icon-left="{ name: 'close' }"
     />
   </div>
 </template>
@@ -91,7 +91,8 @@
       transform: translateY(-50%);
     }
     .ep-input {
-      -webkit-appearance: none;
+      // -webkit-appearance: none;
+      appearance: none;
       width: 100%;
       padding: 0.65rem 0;
       font-size: var(--font-size--small);

@@ -90,25 +90,39 @@ export default {
     iconLeft: {
       name: 'Icon Left',
       control: {
-        type: 'select',
-        options: iconNames
+        type: 'object',
+        // options: iconNames
       },
       defaultValue: undefined,
       table: {
         category: 'Icon'
       }
     },
+    // iconLeftColor: {
+    //   name: 'Icon Left Color',
+    //   control: {
+    //     type: 'color'
+    //   },
+    //   defaultValue: undefined
+    // },
     iconRight: {
       name: 'Icon Right',
       control: {
-        type: 'select',
-        options: iconNames
+        type: 'object',
+        // options: iconNames
       },
       defaultValue: undefined,
       table: {
         category: 'Icon'
       }
-    }
+    },
+    // iconRightColor: {
+    //   name: 'Icon Right Color',
+    //   control: {
+    //     type: 'color'
+    //   },
+    //   defaultValue: undefined
+    // }
   }
 }
 

@@ -62,7 +62,7 @@ const Template = args => ({
         <ep-dropdown
           :button="{
             kind: 'ghost',
-            iconRight: 'notifications',
+            iconRight: { name: 'notifications' },
             label: ''
           }"
           :alignRight="true"

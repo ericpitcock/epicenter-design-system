@@ -38,7 +38,7 @@
           size: 'default',
           title: 'Default Dropdown',
           label: 'Default Dropdown',
-          iconRight: 'chevron-down',
+          iconRight: { name: 'chevron-down' },
           iconLeft: undefined
         }
       }

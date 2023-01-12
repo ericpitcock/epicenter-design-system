@@ -3,12 +3,12 @@
       <div class="app-header">
         <ep-button
           kind="ghost"
-          icon-left="plus"
+          :icon-left="{ name: 'plus' }"
           @click="mapZoom++"
         />
         <ep-button
           kind="ghost"
-          icon-left="minus"
+          :icon-left="{ name: 'minus' }"
           @click="mapZoom--"
         />
         <ep-dropdown

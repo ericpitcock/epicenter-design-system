@@ -6,11 +6,11 @@
     v-bind="$attrs"
   >
     <span v-if="iconLeft" class="ep-button__icon ep-button__icon--left">
-      <ep-icon :name="iconLeft" />
+      <ep-icon v-bind="iconLeft" />
     </span>
     <span v-if="label" class="ep-button__label">{{ label }}</span>
     <span v-if="iconRight" class="ep-button__icon ep-button__icon--right">
-      <ep-icon :name="iconRight" />
+      <ep-icon v-bind="iconRight" />
     </span>
   </component>
 </template>
@@ -35,12 +35,12 @@
       label: {
         type: String
       },
-      iconRight: {
-        type: String,
+      iconLeft: {
+        type: Object,
         default: undefined
       },
-      iconLeft: {
-        type: String,
+      iconRight: {
+        type: Object,
         default: undefined
       },
       disabled: {

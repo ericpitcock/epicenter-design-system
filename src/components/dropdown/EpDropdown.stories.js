@@ -6,13 +6,13 @@ const buttonDefaults = {
   size: 'default',
   title: 'Default Dropdown',
   label: 'Default Dropdown',
-  iconRight: 'chevron-down',
+  iconRight: { name: 'chevron-down' },
   iconLeft: undefined
 }
 const fakeDropdownItems = [
   {
     label: 'Go to internal page',
-    iconLeft: 'arrow-right',
+    iconLeft: { name: 'arrow-right' },
     bind: {
       to: '/'
     }
@@ -22,14 +22,14 @@ const fakeDropdownItems = [
   },
   {
     label: 'Log click',
-    iconLeft: 'circle',
+    iconLeft: { name: 'circle' },
     command: () => {
       console.log('click')
     }
   },
   {
     label: 'Link to internet',
-    iconLeft: 'export',
+    iconLeft: { name: 'export' },
     bind: {
       href: 'https://www.google.com/maps'
     }

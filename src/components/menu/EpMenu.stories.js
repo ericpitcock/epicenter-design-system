@@ -5,7 +5,7 @@ import EpMenu from './EpMenu'
 const fakeDropdownItems = [
   {
     label: 'Go to internal page',
-    iconLeft: 'arrow-right',
+    iconLeft: { name: 'arrow-right' },
     bind: {
       to: '/'
     }
@@ -19,22 +19,22 @@ const fakeDropdownItems = [
   },
   {
     label: 'Log click',
-    iconLeft: 'circle',
+    iconLeft: { name: 'circle' },
     command: () => {
       console.log('click')
     }
   },
   {
     label: 'Google Maps',
-    iconLeft: 'export',
+    iconLeft: { name: 'export' },
     bind: {
       href: 'https://www.google.com/maps'
     }
   },
   {
     label: 'Sub-menu',
-    iconLeft: 'menu',
-    iconRight: 'chevron-right'
+    iconLeft: { name: 'menu' },
+    iconRight: { name: 'chevron-right' }
   },
   {
     section: true,
