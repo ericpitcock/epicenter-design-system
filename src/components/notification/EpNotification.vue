@@ -40,7 +40,17 @@
       },
       type: {
         type: String,
-        default: 'info' // info, success, warning, error
+        default: 'success' // info, success, warning, error
+      }
+    },
+    data() {
+      return {
+        colors: {
+          info: 'var(--color--primary)',
+          success: 'var(--color-success)',
+          warning: 'var(--color-warning)',
+          error: 'var(--color-error)'
+        }
       }
     },
     components: {
@@ -48,9 +58,12 @@
       EpContainer,
       EpFlexContainer
     },
-    // computed: {
-    //   ...mapState(['visibleNotification'])
-    // },
+    computed: {
+      // ...mapState(['visibleNotification'])
+      colorStrip() {
+        return this.colors[this.type]
+      }
+    },
     methods: {
       dismissNotification() {
         this.$emit('dismiss')
@@ -75,7 +88,7 @@
       width: .5rem;
       height: 100%;
       border-radius: var(--border-radius--large) 0 0 var(--border-radius--large);
-      background-color: red;
+      background: v-bind(colorStrip);
     }
     &__body {
       display: flex;

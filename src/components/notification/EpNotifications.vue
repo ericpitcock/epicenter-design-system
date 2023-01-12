@@ -19,6 +19,7 @@
         :id="notification.id"
         :message="`${notification.message} ${notification.id}`"
         :duration="notification.duration"
+        :type="notification.type"
         @dismiss="removeNotification(notification)"
       />
     </transition-group>

@@ -23,6 +23,10 @@
   --border-radius: 0.3rem;
   --border-radius--large: 0.6rem;
 
+  --color-success: hsl(99, 59%, 66%);
+  --color-warning: hsl(48, 100%, 51%);
+  --color-error: hsl(3, 100%, 70%);
+
   // buttons
   // --primary-color--base: hsl(199, 89%, 48%);
   --primary-color--base: var(--color--primary);

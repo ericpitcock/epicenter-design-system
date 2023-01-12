@@ -15,13 +15,35 @@ export default {
   }
 }
 
+// return random item from array
+const types = [
+  'info',
+  'success',
+  'warning',
+  'error'
+]
+// return random item from types array
+const randomType = () => types[Math.floor(Math.random() * types.length)]
+
 const temporaryNotification = {
   duration: 5000,
-  message: 'Your message was sent successfully'
+  message: 'Your message was sent successfully',
+  type: randomType()
 }
 
 const permanentNotification = {
-  message: 'Your message was sent successfully'
+  message: 'Your message was sent successfully',
+  type: randomType()
+}
+
+// build notification object with random type and message and dispatch to store
+const buildNotification = (duration) => {
+  const notification = {
+    duration,
+    message: 'Your message was sent successfully',
+    type: randomType()
+  }
+  store.dispatch('addNotification', notification)
 }
 
 const Template = args => ({
@@ -38,6 +60,7 @@ const Template = args => ({
   setup() {
     return {
       args,
+      buildNotification,
       store,
       temporaryNotification,
       permanentNotification
@@ -81,11 +104,11 @@ const Template = args => ({
         <h1>Notification Types</h1>
         <ep-button
           label="Temporary"
-          @click="store.dispatch('addNotification', temporaryNotification)"
+          @click="buildNotification(5000)"
         />
         <ep-button
           label="Permanent"
-          @click="store.dispatch('addNotification', permanentNotification)"
+          @click="buildNotification()"
         />
         </ep-flex-container>
       </ep-container>
