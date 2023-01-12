@@ -13,11 +13,6 @@ export const parameters = {
     storySort: {
       order: [
         'Intro',
-        'Atoms',
-        'Molecules',
-        'Organisms',
-        'Templates',
-        'Pages',
         'Style',
         'Layouts',
         'Sandbox'

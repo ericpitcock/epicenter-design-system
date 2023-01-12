@@ -25,17 +25,6 @@ const types = [
 // return random item from types array
 const randomType = () => types[Math.floor(Math.random() * types.length)]
 
-const temporaryNotification = {
-  duration: 5000,
-  message: 'Your message was sent successfully',
-  type: randomType()
-}
-
-const permanentNotification = {
-  message: 'Your message was sent successfully',
-  type: randomType()
-}
-
 // build notification object with random type and message and dispatch to store
 const buildNotification = (duration) => {
   const notification = {
@@ -61,9 +50,7 @@ const Template = args => ({
     return {
       args,
       buildNotification,
-      store,
-      temporaryNotification,
-      permanentNotification
+      store
     }
   },
   template: `
