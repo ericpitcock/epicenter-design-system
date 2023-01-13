@@ -90,7 +90,7 @@ const Template = args => ({
   },
   template: `
   <ep-container width="20rem" height="auto" padding="1rem 0">
-    <ep-menu :menuItems="menuItems" :isNavMenu="true" />
+    <ep-menu :menuItems="menuItems" />
   </ep-container>
   `
 })

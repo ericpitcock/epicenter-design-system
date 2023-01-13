@@ -10,7 +10,7 @@
     >
       <div class="ep-dropdown__content">
         <slot v-if="hasContent" name="content" />
-        <ep-menu v-else :menuItems="menuItems" isDropdown />
+        <ep-menu v-else :menuItems="menuItems" :menuType="dropdown" />
       </div>
     </div>
   </div>

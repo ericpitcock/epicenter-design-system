@@ -9,7 +9,7 @@
         :label="item.label"
         :icon-right="item.iconRight"
         :icon-left="item.iconLeft"
-        :is-active-menu-item="item.label == activeItem"
+        :is-active-menu-item="menuType === 'nav' && item.label == activeItem"
         @click="itemClick(item)"
         v-bind="item.bind"
       />
@@ -23,31 +23,27 @@
 
   export default {
     name: 'EpMenu',
-    data() {
-      return {
-        activeItem: {
-          type: String,
-          default: ''
-        },
-      }
-    },
+    // data() {
+    //   return {
+    //     activeItem: ''
+    //   }
+    // },
     components: {
       EpDivider,
       EpButton
     },
     props: {
-      isDropdown: {
-        type: Boolean,
-        default: false
-      },
-      // if nav menu, active state set on clicked items
-      isNavMenu: {
-        type: Boolean,
-        default: false
+      menuType: {
+        type: String,
+        default: 'default' // default, dropdown, nav
       },
       menuItems: {
         type: Array,
         default: () => []
+      },
+      activeItem: {
+        type: String,
+        default: ''
       }
     },
     methods: {
@@ -55,19 +51,20 @@
         // if (item.disabled) {
         //   return
         // }
+        this.$emit('item-click', item)
         if (item.command) {
           item.command(item)
         }
         if (item.to) {
           this.$router.push(item.to)
         }
-        if (this.isDropdown) {
+        if (this.menuType === 'dropdown') {
           this.$parent.closeDropdown()
         }
-        if (this.isNavMenu) {
+        if (this.menuType === 'nav') {
           // make active
           console.log(item.label)
-          this.activeItem = item.label
+          // this.activeItem = item.label
         }
       }
     }

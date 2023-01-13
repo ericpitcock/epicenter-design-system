@@ -8,7 +8,9 @@
     >
       <ep-menu
         :menu-items="menuItems"
-        :isNavMenu="true"
+        menuType="nav"
+        :activeItem="activeItem"
+        @item-click="item => activeItem = item.label"
       />
     </ep-container>
     <ep-container
@@ -41,6 +43,7 @@
     mixins: [copyToClipboard],
     data() {
       return {
+        activeItem: 'All',
         filter: '',
         menuItems: [
           {

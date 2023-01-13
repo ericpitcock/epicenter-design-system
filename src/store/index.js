@@ -15,6 +15,7 @@ export default createStore({
       //   id: 1,
       //   duration: 5000,
       //   message: 'Your message was sent successfully'
+      //   type: 'success'
       // },
     ],
     sidebar: true,
