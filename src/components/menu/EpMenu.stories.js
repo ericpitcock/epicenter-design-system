@@ -84,13 +84,13 @@ export default {
 
 const Template = args => ({
   components: { EpContainer, EpMenu },
-  data: () => ({ menuItems: fakeDropdownItems }),
+  // data: () => ({ menuItems: fakeDropdownItems }),
   setup() {
     return { args }
   },
   template: `
   <ep-container width="20rem" height="auto" padding="1rem 0">
-    <ep-menu :menuItems="menuItems" />
+    <ep-menu v-bind="args" />
   </ep-container>
   `
 })

@@ -96,7 +96,7 @@ export default {
 const Template = (args) => ({
   components: { EpContainer, EpTable },
   setup() {
-    return { args, columns, fakeArray }
+    return { args }
   },
   template: `
   <ep-container width="fit-content" padding="0.4rem 2rem 2rem">
