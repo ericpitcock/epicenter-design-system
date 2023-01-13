@@ -1,9 +1,9 @@
 <template>
   <div class="intro">
-    <div class="logo-container">
-      <e />
-    </div>
     <div class="copy-block">
+      <div class="logo-container">
+        <e />
+      </div>
       <h1>E Design System</h1>
       <p>Vue 3 components designed and built by <a href="https://www.ericpitcock.com">Eric Pitcock</a>.</p>
       <p>Check out the code on <a href="https://github.com/ericpitcock/ep-design-system">GitHub</a>.</p>
@@ -26,7 +26,7 @@
   .intro {
     padding: 8rem 10rem;
     .logo-container {
-      width: 10rem;
+      width: 8rem;
     }
   }
 </style>
