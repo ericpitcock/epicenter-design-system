@@ -69,15 +69,10 @@ export default createStore({
         id: generateID() // so I can get unique IDs each time
       }
 
-      // add notification object to notifications array
-      // state.notifications.push(newNotification)
-
-      // add the notification to the array
+      // add the notification object to the array
       commit('addNotification', newNotification)
 
-      // if it's a banner notification,
-      // move it to the notifications center after 5 seconds
-      // if (newNotification.type != 'alert') {
+      // if it hasn't been dismissed, move it to the notifications center after 5 seconds
       setTimeout(() => {
         // if newNotification is not in the array, return
         if (!state.notifications.includes(newNotification)) return
@@ -89,7 +84,6 @@ export default createStore({
         // active to false
         state.notifications[index].active = false
       }, 5000)
-      // }
     },
     toggleNotificationCenter({ state, commit }) {
       commit('toggleNotificationCenter')

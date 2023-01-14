@@ -14,7 +14,7 @@
     <template v-else>
     <transition-group name="fade">
       <EpNotification
-        v-for="notification in notifications"
+        v-for="notification in filteredNotifications"
         :key="notification.id"
         :id="notification.id"
         :message="`${notification.message} ${notification.id}`"
@@ -67,6 +67,13 @@
           right: this.right,
           bottom: this.bottom,
           left: this.left
+        }
+      },
+      filteredNotifications() {
+        if (this.hasActiveNotifications) {
+          return this.notifications.filter(notification => notification.active)
+        } else {
+          return this.notifications
         }
       },
       isNotificationsEmpty() {
