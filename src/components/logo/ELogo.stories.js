@@ -20,6 +20,16 @@ export default {
       },
       defaultValue: 'default'
     },
+    strokeWidth: {
+      name: 'Stroke width',
+      control: {
+        type: 'range',
+        min: 1,
+        max: 10,
+        step: 1
+      },
+      defaultValue: 3
+    },
     size: {
       name: 'Size',
       control: {

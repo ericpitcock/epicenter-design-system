@@ -66,7 +66,7 @@
   polygon,
   path {
     stroke: var(--logo-white);
-    stroke-width: 3;
+    stroke-width: v-bind(strokeWidth);
     stroke-linejoin: round;
     stroke-miterlimit: 5;
   }
@@ -86,7 +86,7 @@
       fill: var(--background-1);
       // stroke: #4f80ff;
       stroke: var(--color--primary);
-      stroke-width: 2;
+      stroke-width: v-bind(strokeWidth);
     }
   }
   // svg.outline {
