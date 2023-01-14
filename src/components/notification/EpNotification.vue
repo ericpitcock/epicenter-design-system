@@ -34,7 +34,7 @@
         type: String,
         required: true
       },
-      style: {
+      type: {
         type: String,
         default: 'info' // info, success, warning, error
       }
@@ -57,7 +57,7 @@
     computed: {
       // ...mapState(['visibleNotification'])
       colorStrip() {
-        return this.colors[this.style]
+        return this.colors[this.type]
       }
     },
     methods: {

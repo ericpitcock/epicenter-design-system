@@ -15,10 +15,10 @@ export default {
 }
 
 // build notification object and dispatch to store
-const buildNotification = (style) => {
+const buildNotification = (type) => {
   const notification = {
     message: 'Your message was sent successfully',
-    style
+    type
   }
   store.dispatch('addNotification', notification)
 }

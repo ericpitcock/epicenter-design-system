@@ -18,7 +18,7 @@
         :key="notification.id"
         :id="notification.id"
         :message="`${notification.message} ${notification.id}`"
-        :style="notification.style"
+        :type="notification.type"
         @dismiss="removeNotification(notification)"
       />
     </transition-group>
