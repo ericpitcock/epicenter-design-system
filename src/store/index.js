@@ -77,16 +77,19 @@ export default createStore({
 
       // if it's a banner notification,
       // move it to the notifications center after 5 seconds
-      if (newNotification.type != 'alert') {
-        setTimeout(() => {
-          // find newNotification in the array
-          const index = state.notifications.findIndex(
-            n => n.id === newNotification.id
-          )
-          // active to false
-          state.notifications[index].active = false
-        }, 5000)
-      }
+      // if (newNotification.type != 'alert') {
+      setTimeout(() => {
+        // if newNotification is not in the array, return
+        if (!state.notifications.includes(newNotification)) return
+
+        // find newNotification in the array
+        const index = state.notifications.findIndex(
+          n => n.id === newNotification.id
+        )
+        // active to false
+        state.notifications[index].active = false
+      }, 5000)
+      // }
     },
     toggleNotificationCenter({ state, commit }) {
       commit('toggleNotificationCenter')

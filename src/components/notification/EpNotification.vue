@@ -34,13 +34,9 @@
         type: String,
         required: true
       },
-      type: {
-        type: String,
-        default: 'banner' // banner, alert
-      },
       style: {
         type: String,
-        default: 'success' // info, success, warning, error
+        default: 'info' // info, success, warning, error
       }
     },
     data() {
