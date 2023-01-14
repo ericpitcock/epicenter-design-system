@@ -67,7 +67,7 @@ const Template = args => ({
           justify-content="center"
           gap="2rem"
         >
-        <h1>Notification Types</h1>
+        <h1>Notification Styles</h1>
         <ep-button
           label="Success"
           @click="buildNotification('success')"

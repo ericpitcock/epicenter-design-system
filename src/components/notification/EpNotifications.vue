@@ -6,8 +6,8 @@
       gap="1rem"
     >
     <div
-      class="ep-notifications--empty"
       v-if="isNotificationsEmpty"
+      class="ep-notifications--empty"
     >
       <p>You have no notifications</p>
     </div>
@@ -18,7 +18,6 @@
         :key="notification.id"
         :id="notification.id"
         :message="`${notification.message} ${notification.id}`"
-        :duration="notification.duration"
         :style="notification.style"
         @dismiss="removeNotification(notification)"
       />
@@ -70,11 +69,9 @@
         }
       },
       filteredNotifications() {
-        if (this.hasActiveNotifications) {
-          return this.notifications.filter(notification => notification.active)
-        } else {
-          return this.notifications
-        }
+        return this.hasActiveNotifications
+          ? this.notifications.filter(notification => notification.active)
+          : this.notifications
       },
       isNotificationsEmpty() {
         return this.notifications.length === 0
@@ -92,9 +89,6 @@
   .ep-notifications {
     position: fixed;
     z-index: 1000;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: flex-end;
   }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
