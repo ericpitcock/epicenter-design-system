@@ -5,7 +5,7 @@
     width="160.7px"
     height="215.9px"
     viewBox="0 0 160.7 215.9"
-    :class="{ outline }"
+    :class="style"
   >
     <polygon
       class="shadow"
@@ -35,9 +35,22 @@
   export default {
     name: 'E',
     props: {
-      outline: {
-        type: Boolean,
-        default: true
+      style: {
+        type: String,
+        default: 'outline'
+      },
+      strokeWidth: {
+        type: Number,
+        default: 3
+      },
+      // outline: {
+      //   type: Boolean,
+      //   default: true
+      // }
+    },
+    computed: {
+      styleClass() {
+        return this.outline ? 'outline' : ''
       }
     }
   }
