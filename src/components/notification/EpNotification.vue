@@ -26,10 +26,6 @@
     name: 'EpNotification',
     emits: ['dismiss'],
     props: {
-      duration: {
-        type: Number,
-        default: null
-      },
       id: {
         type: String,
         required: true
@@ -39,6 +35,10 @@
         required: true
       },
       type: {
+        type: String,
+        default: 'banner' // banner, alert
+      },
+      style: {
         type: String,
         default: 'success' // info, success, warning, error
       }
@@ -61,7 +61,7 @@
     computed: {
       // ...mapState(['visibleNotification'])
       colorStrip() {
-        return this.colors[this.type]
+        return this.colors[this.style]
       }
     },
     methods: {

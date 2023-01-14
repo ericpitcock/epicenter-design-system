@@ -1,6 +1,5 @@
 import EpContainer from '@/components/container/EpContainer'
 import EpButton from '@/components/button/EpButton'
-import EpDropdown from '@/components/dropdown/EpDropdown'
 import EpNotifications from './EpNotifications'
 import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
 import EpAppHeader from '@/components/app-header/EpAppHeader'
@@ -23,14 +22,14 @@ const types = [
   'error'
 ]
 // return random item from types array
-const randomType = () => types[Math.floor(Math.random() * types.length)]
+const randomStyle = () => types[Math.floor(Math.random() * types.length)]
 
 // build notification object with random type and message and dispatch to store
-const buildNotification = (duration) => {
+const buildNotification = (type) => {
   const notification = {
-    duration,
     message: 'Your message was sent successfully',
-    type: randomType()
+    style: randomStyle(),
+    type
   }
   store.dispatch('addNotification', notification)
 }
@@ -41,7 +40,6 @@ const Template = args => ({
     EpAppHeader,
     EpButton,
     EpContainer,
-    EpDropdown,
     EpFlexContainer,
     EpNotifications,
     EpSidebarLayout
@@ -59,20 +57,12 @@ const Template = args => ({
       <template #app-header>
       <ep-app-header>
         <e />
-        <ep-dropdown
-          :button="{
-            kind: 'ghost',
-            iconRight: { name: 'notifications' },
-            label: ''
-          }"
-          :alignRight="true"
-        >
-          <template #content>
-            <div class="notification-center">
-              notifications center
-            </div>
-          </template>
-        </ep-dropdown>
+        <ep-button
+          kind="ghost"
+          :iconRight="{ name: 'notifications' }"
+          label=""
+          @click="store.dispatch('toggleNotificationCenter')"
+        />
       </ep-app-header>
       </template>
       
@@ -91,11 +81,11 @@ const Template = args => ({
         <h1>Notification Types</h1>
         <ep-button
           label="Temporary"
-          @click="buildNotification(5000)"
+          @click="buildNotification()"
         />
         <ep-button
           label="Permanent"
-          @click="buildNotification()"
+          @click="buildNotification('alert')"
         />
         </ep-flex-container>
       </ep-container>

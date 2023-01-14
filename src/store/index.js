@@ -13,14 +13,22 @@ export default createStore({
     notifications: [
       // {
       //   id: 1,
-      //   duration: 5000,
+      //   active: true,
       //   message: 'Your message was sent successfully'
-      //   type: 'success'
+      //   style: 'success', // info, success, warning, error
+      //   type: 'banner'  // banner, alert
       // },
     ],
+    notificationCenterOpen: false,
     sidebar: true,
     sidebarUser: null,
     theme: 'dark'
+  },
+  getters: {
+    // has active notifications
+    hasActiveNotifications: state => {
+      return state.notifications.some(n => n.active)
+    }
   },
   mutations: {
     setTheme: (state, data) => {
@@ -47,23 +55,41 @@ export default createStore({
       state.notifications = state.notifications.filter(
         n => n.id !== notification.id
       )
+    },
+    toggleNotificationCenter: state => {
+      state.notificationCenterOpen = !state.notificationCenterOpen
     }
   },
   actions: {
     addNotification: ({ state, commit }, notification) => {
+      // build new notification object
       const newNotification = {
         ...notification, // using spread syntax breaks the object reference
+        active: true,
         id: generateID() // so I can get unique IDs each time
       }
-      // if the notification has a duration,
-      // move it to the notifications center after that duration
-      if (newNotification.duration) {
-        setTimeout(() => {
-          commit('removeNotification', newNotification)
-        }, newNotification.duration)
-      }
+
+      // add notification object to notifications array
+      // state.notifications.push(newNotification)
+
       // add the notification to the array
       commit('addNotification', newNotification)
+
+      // if it's a banner notification,
+      // move it to the notifications center after 5 seconds
+      if (newNotification.type != 'alert') {
+        setTimeout(() => {
+          // find newNotification in the array
+          const index = state.notifications.findIndex(
+            n => n.id === newNotification.id
+          )
+          // active to false
+          state.notifications[index].active = false
+        }, 5000)
+      }
+    },
+    toggleNotificationCenter({ state, commit }) {
+      commit('toggleNotificationCenter')
     },
     removeNotification({ state, commit }, notification) {
       commit('removeNotification', notification)

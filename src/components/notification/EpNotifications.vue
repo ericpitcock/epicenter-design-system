@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-  <div class="ep-notifications" :style="position">
+  <div v-if="notificationCenterOpen || hasActiveNotifications" class="ep-notifications" :style="position">
     <ep-flex-container
       flexFlow="column nowrap"
       gap="1rem"
@@ -32,7 +32,7 @@
 <script>
   import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
   import EpNotification from '@/components/notification/EpNotification'
-  import { mapState } from 'vuex'
+  import { mapState, mapGetters } from 'vuex'
 
   export default {
     name: 'EpNotifications',
@@ -59,7 +59,8 @@
       }
     },
     computed: {
-      ...mapState(['notifications']),
+      ...mapState(['notifications', 'notificationCenterOpen']),
+      ...mapGetters(['hasActiveNotifications']),
       position() {
         return {
           top: this.top,
