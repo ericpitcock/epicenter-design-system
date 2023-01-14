@@ -8,17 +8,15 @@ export default {
   argTypes: {
     style: {
       name: 'Style',
+      options: ['outline', 'full-color'],
       control: {
         type: 'select',
-        options: ['outline', 'full-color']
-      },
-      table: {
         labels: {
           outline: 'Outline',
-          'full-color': 'Full color'
+          'full-color': 'Full Color'
         }
       },
-      defaultValue: 'default'
+      defaultValue: 'outline'
     },
     strokeWidth: {
       name: 'Stroke width',

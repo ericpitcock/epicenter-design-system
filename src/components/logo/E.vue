@@ -84,19 +84,8 @@
     .highlight,
     .face {
       fill: var(--background-1);
-      // stroke: #4f80ff;
       stroke: var(--color--primary);
       stroke-width: v-bind(strokeWidth);
     }
   }
-  // svg.outline {
-  //   position: absolute;
-  //   .shadow,
-  //   .highlight,
-  //   .face {
-  //     fill: none;
-  //     stroke: #4f80ff;
-  //     stroke-width: 1;
-  //   }
-  // }
 </style>
