@@ -106,8 +106,6 @@
         } else {
           this.activeItemIndex = null
         }
-
-        // this.activeItemIndex = null
       },
       menuLeave() {
         this.activeItemIndex = null
@@ -142,7 +140,7 @@
       &__sub-menu {
         position: absolute;
         top: -1rem;
-        left: 100%;
+        left: calc(100% - 1rem);
         width: 100%;
       }
     }
