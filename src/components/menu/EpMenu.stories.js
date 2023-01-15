@@ -102,6 +102,17 @@ export default {
   component: EpMenu,
   decorators: [centered],
   argTypes: {
+    containerProps: {
+      name: 'Container Props',
+      control: {
+        type: 'object'
+      },
+      defaultValue: {
+        width: '20rem',
+        height: 'auto',
+        padding: '1rem 0'
+      }
+    },
     menuItems: {
       name: 'Menu items',
       control: {

@@ -1,4 +1,5 @@
 <template>
+  <ep-container v-bind="containerProps">
   <div class="ep-menu">
     <template
       v-for="(item, index) of menuItems"
@@ -33,16 +34,12 @@
           v-show="activeItemIndex === index"
           class="ep-menu__item__sub-menu"
         >
-          <!-- <div class="child"> -->
-            <ep-menu
-              :menu-items="item.children"
-              @item-click="itemClick"
-            />
-          <!-- </div> -->
+          <ep-menu :container-props="containerProps" :menu-items="item.children" />
         </div>
       </div>
     </template>
   </div>
+  </ep-container>
 </template>
 
 <script>
