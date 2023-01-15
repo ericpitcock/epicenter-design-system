@@ -131,7 +131,12 @@ const Template = (args) => ({
   setup() {
     return { args }
   },
-  template: '<ep-button v-bind="args" />'
+  methods: {
+    onClick() {
+      console.log('click')
+    }
+  },
+  template: '<ep-button @click="onClick" v-bind="args" />'
 })
 
 export const Button = Template.bind({})

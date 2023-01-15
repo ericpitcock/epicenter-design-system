@@ -257,6 +257,7 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
+      pointer-events: none;
       // line-height: 1;
       & + & {
         padding-left: 0rem;
@@ -275,6 +276,7 @@
       flex: 1;
       text-align: left;
       padding: 0.8rem 1.2rem;
+      pointer-events: none;
       .ep-button--icon-right &,
       .ep-button--icon-left & {
         padding-top: 0.5rem;

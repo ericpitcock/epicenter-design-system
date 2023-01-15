@@ -53,6 +53,7 @@ export const Icon = args => ({
   },
   template: '<ep-icon v-bind="args" />'
 })
+
 Icon.decorators = [centered]
 
 export const IconLibrary = args => ({

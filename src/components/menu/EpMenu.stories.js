@@ -34,7 +34,16 @@ const fakeDropdownItems = [
   {
     label: 'Sub-menu',
     iconLeft: { name: 'menu' },
-    iconRight: { name: 'chevron-right' }
+    iconRight: { name: 'chevron-right' },
+    children: [
+      {
+        label: 'Sub-menu item 1',
+        iconLeft: { name: 'circle' },
+        command: () => {
+          console.log('click')
+        }
+      }
+    ]
   },
   {
     section: true,

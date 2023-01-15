@@ -1,4 +1,6 @@
 import { centered } from '@/helpers/decorators'
+import EpContainer from '@/components/container/EpContainer'
+import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
 import EpBadge from './EpBadge'
 
 export default {
@@ -44,12 +46,27 @@ export default {
   }
 }
 
-const Template = (args) => ({
-  components: { EpBadge },
+const Template = args => ({
+  components: {
+    EpBadge,
+    EpContainer,
+    EpFlexContainer
+  },
   setup() {
     return { args }
   },
-  template: '<ep-badge v-bind="args" />'
+  template: `
+  <ep-container width="30rem" height="50rem">
+    <ep-flex-container
+      flex-flow="column nowrap"
+      align-items="center"
+      justify-content="center"
+      gap="2rem"
+    >
+      <ep-badge v-bind="args" />
+    </ep-flex-container>
+  </ep-container>
+  `
 })
 
 export const Badge = Template.bind({})
