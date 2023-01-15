@@ -59,12 +59,14 @@ const fakeDropdownItems = [
       },
       {
         label: 'Sub-menu item 4',
-        iconLeft: { name: 'circle' },
         command: () => {
           console.log('click')
         }
       }
     ]
+  },
+  {
+    divider: true
   },
   {
     section: true,
@@ -94,6 +96,18 @@ const fakeDropdownItems = [
   },
   {
     label: 'Internet!'
+  },
+  {
+    label: 'Another sub-menu',
+    iconRight: { name: 'chevron-right' },
+    children: [
+      {
+        label: 'Sub-menu item 1',
+        command: () => {
+          console.log('click')
+        }
+      }
+    ]
   }
 ]
 

@@ -1,5 +1,5 @@
 <template>
-  <ep-container v-bind="containerProps">
+  <ep-container v-bind="containerProps" @mouseleave="menuLeave()">
   <div class="ep-menu">
     <template
       v-for="(item, index) of menuItems"
@@ -33,8 +33,12 @@
           v-if="item.children"
           v-show="activeItemIndex === index"
           class="ep-menu__item__sub-menu"
+          @mouseleave="itemLeave(item, index)"
         >
-          <ep-menu :container-props="containerProps" :menu-items="item.children" />
+          <ep-menu
+            :container-props="containerProps"
+            :menu-items="item.children"
+          />
         </div>
       </div>
     </template>
@@ -88,7 +92,9 @@
       },
       itemLeave(item, index) {
         this.activeItemIndex = null
-        // console.log('itemLeave', index)
+      },
+      menuLeave() {
+        this.activeItemIndex = null
       },
       itemClick(item) {
         this.$emit('item-click', item)
@@ -119,7 +125,7 @@
       position: relative;
       &__sub-menu {
         position: absolute;
-        top: 0;
+        top: -1rem;
         left: 100%;
         width: 100%;
       }
