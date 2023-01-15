@@ -33,15 +33,12 @@
           v-show="activeItemIndex === index"
           class="ep-menu__item__sub-menu"
         >
-          <div v-for="child in item.children" class="child">
-            <ep-button
-              kind="menu-item"
-              :label="child.label"
-              :is-active-menu-item="menuType === 'nav' && child.label == activeItem"
-              @click="itemClick(child)"
-              v-bind="child.bind"
+          <!-- <div class="child"> -->
+            <ep-menu
+              :menu-items="item.children"
+              @item-click="itemClick"
             />
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </template>
@@ -49,12 +46,14 @@
 </template>
 
 <script>
+  import EpContainer from '@/components/container/EpContainer'
   import EpDivider from '@/components/divider/EpDivider'
   import EpButton from '@/components/button/EpButton'
 
   export default {
     name: 'EpMenu',
     components: {
+      EpContainer,
       EpDivider,
       EpButton
     },
@@ -72,6 +71,10 @@
         type: Array,
         default: () => []
       },
+      containerProps: {
+        type: Object,
+        default: () => {}
+      },
       activeItem: {
         type: String,
         default: ''
@@ -83,17 +86,12 @@
     },
     methods: {
       itemHover(item, index) {
-        // this.$emit('item-hover', item)
-        // if (item.children) {
-          // this.$emit('item-hover-children', item.children)
-          // show sub-menu
-          this.activeItemIndex = index
-          console.log('itemHover', index)
-        // }
+        this.activeItemIndex = index
+        // console.log('itemHover', index)
       },
       itemLeave(item, index) {
-          this.activeItemIndex = null
-          console.log('itemLeave', index)
+        this.activeItemIndex = null
+        // console.log('itemLeave', index)
       },
       itemClick(item) {
         this.$emit('item-click', item)

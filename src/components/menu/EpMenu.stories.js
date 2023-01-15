@@ -38,6 +38,27 @@ const fakeDropdownItems = [
     children: [
       {
         label: 'Sub-menu item 1',
+        command: () => {
+          console.log('click')
+        }
+      },
+      {
+        label: 'Sub-menu item 2',
+        command: () => {
+          console.log('click')
+        }
+      },
+      {
+        divider: true
+      },
+      {
+        label: 'Sub-menu item 3',
+        command: () => {
+          console.log('click')
+        }
+      },
+      {
+        label: 'Sub-menu item 4',
         iconLeft: { name: 'circle' },
         command: () => {
           console.log('click')
@@ -98,9 +119,7 @@ const Template = args => ({
     return { args }
   },
   template: `
-  <ep-container width="20rem" height="auto" padding="1rem 0">
     <ep-menu v-bind="args" />
-  </ep-container>
   `
 })
 
