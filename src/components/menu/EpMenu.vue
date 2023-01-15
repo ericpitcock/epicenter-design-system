@@ -91,7 +91,23 @@
         // console.log('itemHover', index)
       },
       itemLeave(item, index) {
-        this.activeItemIndex = null
+        // if item has children, only close if you're not hovering those children
+        if (item.children) {
+          // check if the mouse is hovering the children
+          const children = document.querySelector(`[data-item="${index}"] .ep-menu__item__sub-menu`)
+          const rect = children.getBoundingClientRect()
+          // get mouse position
+          const event = window.event
+          const x = event.clientX
+          const y = event.clientY
+          if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
+            this.activeItemIndex = null
+          }
+        } else {
+          this.activeItemIndex = null
+        }
+
+        // this.activeItemIndex = null
       },
       menuLeave() {
         this.activeItemIndex = null
