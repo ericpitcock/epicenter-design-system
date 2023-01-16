@@ -106,6 +106,18 @@ const fakeDropdownItems = [
         command: () => {
           console.log('click')
         }
+      },
+      {
+        label: 'Sub-menu item 2',
+        command: () => {
+          console.log('click')
+        }
+      },
+      {
+        label: 'Sub-menu item 3',
+        command: () => {
+          console.log('click')
+        }
       }
     ]
   }

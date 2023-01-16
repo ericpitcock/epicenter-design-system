@@ -42,7 +42,7 @@ const Template = args => ({
   setup() {
     return { args }
   },
-  template: '<div><ep-input v-bind="args" /><ep-button label="Submit" /></div>'
+  template: '<div style="width: 300px;"><ep-input v-bind="args" /></div>'
 })
 
 export const Input = Template.bind({})

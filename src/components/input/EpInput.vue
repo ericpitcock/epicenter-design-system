@@ -1,9 +1,16 @@
 <template>
-  <div class="ep-input-container">
-    <ep-icon name="zoom-in" />
+  <div class="ep-input">
+    <label
+      v-show="isFocused"
+      :for="id"
+      class="ep-input__label"
+    >
+      {{ label }}
+    </label>
     <input
-      :class="['ep-input', { 'is-invalid': error }]"
-      :placeholder="placeholder"
+      :id="id"
+      :class="['ep-input__input', { 'is-invalid': error }]"
+      :placeholder="label"
       :type="type"
       :value="value"
       @input="onInput"
@@ -11,26 +18,17 @@
       @blur="onBlur"
       @keydown="onKeyDown"
     />
-    <ep-button
-      v-if="true"
-      @click="clear()"
-      kind="ghost"
-      :icon-left="{ name: 'close' }"
-    />
   </div>
 </template>
 
 <script>
-  import EpButton from '@/components/button/EpButton'
-  import EpIcon from '@/components/icon/EpIcon'
-
   export default {
     name: 'EpInput',
-    components: {
-      EpButton,
-      EpIcon
-    },
     props: {
+      id: {
+        type: String,
+        default: 'ep-input'
+      },
       error: {
         type: Boolean,
         default: false
@@ -46,11 +44,20 @@
       value: {
         type: String,
         default: ''
-      }
+      },
+      label: {
+        type: String,
+        default: 'Default Label'
+      },
     },
     data () {
       return {
         isFocused: false
+      }
+    },
+    computed: {
+      hasInput() {
+        return this.value.length > 0
       }
     },
     methods: {
@@ -58,17 +65,21 @@
         this.$emit('input', '')
       },
       onInput(event) {
+        console.log('input')
         this.$emit('input', event.target.value)
       },
       onFocus() {
+        console.log('focus')
         this.isFocused = true
         this.$emit('focus')
       },
       onBlur() {
+        console.log('blur')
         this.isFocused = false
         this.$emit('blur')
       },
       onKeyDown(event) {
+        console.log('keydown')
         this.$emit('keydown', event)
       }
     }
@@ -76,31 +87,34 @@
 </script>
 
 <style lang="scss" scoped>
-  .ep-input-container {
-    display: inline-flex;
+  .ep-input {
     position: relative;
-    align-items: center;
-    // background: var(--background-4);
-    // padding: 0.4rem 0.8rem;
-    // border: 1px solid var(--border-color);
-    // border-radius: var(--border-radius);
-    .ep-icon {
+    display: block;
+    &__label {
       position: absolute;
-      left: 0.8rem;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 0;
+      left: 0;
+      // padding: 0.4rem 0.8rem;
+      font-size: var(--font-size--tiny);
+      color: var(--text-color--subtle);
+      pointer-events: none;
+      transition: all 0.2s ease;
     }
-    .ep-input {
+    &__input {
       // -webkit-appearance: none;
       appearance: none;
       width: 100%;
-      padding: 0.65rem 0;
+      padding: 1.2rem;
       font-size: var(--font-size--small);
       background: var(--background-4);
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius);
-      vertical-align: top;
-      text-indent: 3.2rem;
+      // vertical-align: top;
+      // text-indent: 3.2rem;
+      // on focus show label
+      // &:focus + .ep-input__label {
+      //   display: block;
+      // }
       &::placeholder {
         color: var(--text-color);
       }
@@ -111,12 +125,6 @@
         border-color: var(--error-color);
         border-color: red;
       }
-    }
-    .ep-button {
-      position: absolute;
-      right: 0;
-      // top: 50%;
-      // transform: translateY(-50%);
     }
   }
 </style>

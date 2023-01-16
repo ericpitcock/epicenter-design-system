@@ -1,8 +1,12 @@
 <template>
   <transition name="fade">
   <div class="ep-loading">
-    <img v-if="icon" :src="`${icon}.svg`" />
-    <div>{{ message }}</div>
+    <div class="ep-loading__icon-container">
+      <img v-if="icon" :src="`${icon}.svg`" />
+    </div>
+    <div class="ep-loading__message-container">
+      <p>{{ message }}</p>
+    </div>
   </div>
   </transition>
 </template>
@@ -116,6 +120,26 @@
     gap: 2rem;
     justify-content: center;
     align-items: center;
+    &__icon-container {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: flex-end;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 40px;
+      }
+    }
+    &__message-container {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      height: 100%;
+    }
   }
   .fade-enter-active,
   .fade-leave-active {
