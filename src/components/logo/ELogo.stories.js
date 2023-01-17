@@ -6,17 +6,15 @@ export default {
   component: E,
   decorators: [centered],
   argTypes: {
-    style: {
-      name: 'Style',
-      options: ['outline', 'full-color'],
+    size: {
+      name: 'Size',
       control: {
-        type: 'select',
-        labels: {
-          outline: 'Outline',
-          'full-color': 'Full Color'
-        }
+        type: 'range',
+        min: 20,
+        max: 200,
+        step: 1
       },
-      defaultValue: 'outline'
+      defaultValue: 100
     },
     strokeWidth: {
       name: 'Stroke width',
@@ -28,15 +26,33 @@ export default {
       },
       defaultValue: 3
     },
-    size: {
-      name: 'Size',
+    strokeColor: {
+      name: 'Stroke Color',
       control: {
-        type: 'range',
-        min: 20,
-        max: 200,
-        step: 1
+        type: 'color'
       },
-      defaultValue: 100
+      defaultValue: 'var(--logo-white)'
+    },
+    faceColor: {
+      name: 'Face Color',
+      control: {
+        type: 'color'
+      },
+      defaultValue: 'var(--logo-gold)'
+    },
+    highlightColor: {
+      name: 'Highlight Color',
+      control: {
+        type: 'color'
+      },
+      defaultValue: 'var(--logo-yellow)'
+    },
+    shadowColor: {
+      name: 'Shadow Color',
+      control: {
+        type: 'color'
+      },
+      defaultValue: 'var(--logo-gray)'
     }
   }
 }
