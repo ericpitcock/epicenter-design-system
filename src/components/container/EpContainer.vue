@@ -55,6 +55,10 @@
       borderColor: {
         type: String,
         default: 'var(--border-color)'
+      },
+      overflow: {
+        type: String,
+        default: 'visible'
       }
     },
     data() {
@@ -99,5 +103,6 @@
     border-width: v-bind(borderWidth);
     border-style: v-bind(borderStyle);
     border-color: v-bind(borderColor);
+    overflow: v-bind(overflow);
   }
 </style>

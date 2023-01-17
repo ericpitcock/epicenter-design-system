@@ -1,6 +1,6 @@
 <template>
   <div class="intro">
-    <ep-container height="100%">
+    <ep-container height="100%" overflow="hidden">
       <div class="hero">
         <div class="logo-container">
           <e

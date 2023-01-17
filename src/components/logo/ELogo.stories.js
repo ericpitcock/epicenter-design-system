@@ -14,7 +14,7 @@ export default {
         max: 200,
         step: 1
       },
-      defaultValue: 100
+      defaultValue: 200
     },
     strokeWidth: {
       name: 'Stroke width',

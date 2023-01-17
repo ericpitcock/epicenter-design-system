@@ -105,7 +105,24 @@ export default {
         type: 'text',
       },
       defaultValue: 'var(--border-color)'
-    }
+    },
+    overflow: {
+      name: 'Overflow',
+      control: {
+        type: 'select',
+        options: [
+          'visible',
+          'hidden',
+          'scroll',
+          'auto',
+          'overlay',
+          'inherit',
+          'initial',
+          'unset'
+        ]
+      },
+      defaultValue: 'hidden'
+    },
   }
 }
 
