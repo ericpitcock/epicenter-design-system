@@ -1,13 +1,13 @@
 <template>
   <div class="intro">
-    <ep-container height="100%" overflow="hidden">
+    <!-- <ep-container height="100%" overflow="hidden"> -->
       <div class="hero">
         <div class="logo-container">
           <e
-            faceColor="transparent"
-            highlightColor="rgba(255, 255, 255, 0.1)"
-            shadowColor="rgba(0, 0, 0, 0.1)"
-            strokeColor="var(--gray-440)"
+            faceColor="#fff16c"
+            highlightColor="white"
+            shadowColor="var(--gray-500)"
+            strokeColor="var(--gray-500)"
           />
         </div>
         <h1>E Design System</h1>
@@ -15,10 +15,10 @@
         <div class="purple-circle"></div>
       </div>
       <div class="copy-block">
-        <p>Vue 3 components designed and built by <a href="https://www.ericpitcock.com">Eric Pitcock</a>.</p>
+        <p>Vue components designed and built by <a href="https://www.ericpitcock.com">Eric Pitcock</a>.</p>
         <p>Check out the code on <a href="https://github.com/ericpitcock/ep-design-system">GitHub</a>.</p>
       </div>
-    </ep-container>
+    <!-- </ep-container> -->
   </div>
 </template>
 
@@ -41,14 +41,18 @@
     padding: 3rem;
     .hero {
       position: relative;
-      padding: 8rem 10rem;
+      padding: 8rem;
       background: linear-gradient(
         130deg,
         #0af6b7 0%,
         var(--color--primary) 89%
       );
       color: var(--gray-440);
+      border-radius: var(--border-radius--large) var(--border-radius--large) 0 0;
       overflow: hidden;
+      .logo-container {
+        width: 8rem;
+      }
       h1 {
         margin-top: 3rem;
       }
@@ -76,10 +80,11 @@
       }
     }
     .copy-block {
-      padding: 4rem 10rem;
-    }
-    .logo-container {
-      width: 8rem;
+      padding: 4rem 8rem;
+      background: var(--background-3);
+      border-radius: 0 0 var(--border-radius--large) var(--border-radius--large);
+      border: 1px solid var(--border-color);
+      border-top: none;
     }
   }
 </style>
