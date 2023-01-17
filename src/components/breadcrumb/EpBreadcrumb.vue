@@ -1,0 +1,42 @@
+<template>
+  <div class="ep-breadcrumb">
+    <div class="ep-breadcrumb__item" v-for="(item, index) in items" :key="index">
+      <span class="ep-breadcrumb__item__text">{{ item.text }}</span>
+      <span class="ep-breadcrumb__item__separator" v-if="index < items.length - 1">/</span>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'EpBreadcrumb',
+  props: {
+    items: {
+      type: Array,
+      default: () => []
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.ep-breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-color);
+  .ep-breadcrumb__item {
+    display: flex;
+    align-items: center;
+    .ep-breadcrumb__item__text {
+      cursor: pointer;
+      &:hover {
+        color: var(--color--primary);
+      }
+    }
+    .ep-breadcrumb__item__separator {
+      margin: 0 8px;
+    }
+  }
+}
+</style>
