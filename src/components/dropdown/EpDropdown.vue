@@ -15,6 +15,7 @@
           :menuItems="menuItems"
           menuType="dropdown"
           dividerColor="var(--border-color--lighter)"
+          :containerProps="containerProps"
         />
       </div>
     </div>
@@ -50,6 +51,10 @@
     },
     props: {
       button: {
+        type: Object,
+        default: () => ({})
+      },
+      containerProps: {
         type: Object,
         default: () => ({})
       },
@@ -113,15 +118,15 @@
         left: auto;
       }
     }
-    &__content {
-      display: flex;
-      flex-direction: column;
-      background: var(--background-4);
-      padding: 1rem 0;
-      border: 1px solid var(--border-color--lighter);
-      border-radius: 3px;
-      box-shadow: var(--drop-shadow);
-      z-index: 20;
-    }
+    // &__content {
+    //   display: flex;
+    //   flex-direction: column;
+    //   background: var(--background-4);
+    //   padding: 1rem 0;
+    //   border: 1px solid var(--border-color--lighter);
+    //   border-radius: 3px;
+    //   box-shadow: var(--drop-shadow);
+    //   z-index: 20;
+    // }
   }
 </style>

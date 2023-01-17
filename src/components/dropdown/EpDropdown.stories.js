@@ -9,6 +9,12 @@ const buttonDefaults = {
   iconRight: { name: 'chevron-down' },
   iconLeft: undefined
 }
+const containerProps = {
+  backgroundColor: 'var(--background-4)',
+  padding: '1rem 0',
+  borderRadius: 'var(--border-radius)',
+  borderColor: 'var(--border-color--lighter)'
+}
 const fakeDropdownItems = [
   {
     label: 'Go to internal page',
@@ -55,6 +61,13 @@ export default {
       },
       defaultValue: buttonDefaults
     },
+    containerProps: {
+      name: 'Container props',
+      control: {
+        type: 'object'
+      },
+      defaultValue: containerProps
+    },
     menuItems: {
       name: 'Menu items',
       control: {
@@ -67,11 +80,11 @@ export default {
 
 const Template = (args) => ({
   components: { EpDropdown },
-  data: () => ({ buttonDefaults, menuItems: fakeDropdownItems }),
+  // data: () => ({ buttonDefaults, menuItems: fakeDropdownItems }),
   setup() {
     return { args };
   },
-  template: '<ep-dropdown :button="buttonDefaults" :menuItems="menuItems" v-bind="args" />'
+  template: '<ep-dropdown v-bind="args" />'
 })
 
 export const Dropdown = Template.bind({})
