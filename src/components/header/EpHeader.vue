@@ -1,12 +1,11 @@
-<!-- vue header component -->
 <template>
   <div class="ep-header">
     <div class="ep-header__content">
       <div class="ep-header__content__left">
-        <slot name="left"></slot>
+        <slot name="left" />
       </div>
       <div class="ep-header__content__right">
-        <slot name="right"></slot>
+        <slot name="right" />
       </div>
     </div>
   </div>

@@ -1,5 +1,7 @@
-// storybook for EpActionBar.vue
+import { padded } from '@/helpers/decorators'
 import EpActionBar from './EpActionBar'
+import EpContainer from '@/components/container/EpContainer'
+import EpHeader from '@/components/header/EpHeader'
 
 const fakeItems = [
   {
@@ -13,6 +15,7 @@ const fakeItems = [
   },
   {
     type: 'dropdown', // button or dropdown
+    alignRight: true,
     button: {
       kind: 'ghost',
       label: '',
@@ -55,6 +58,7 @@ const fakeItems = [
 export default {
   title: 'Components/Action Bar',
   component: EpActionBar,
+  decorators: [padded],
   argTypes: {
     items: {
       control: {
@@ -65,12 +69,29 @@ export default {
   }
 }
 
-const Template = (args) => ({
-  components: { EpActionBar },
+const Template = args => ({
+  components: {
+    EpActionBar,
+    EpContainer,
+    EpHeader
+  },
   setup() {
     return { args }
   },
-  template: '<ep-action-bar v-bind="args" />'
+  template: `
+    <ep-container :useHeader="true" height="100%">
+      <template #header>
+      <ep-header>
+        <template #left>
+          <h1>Action Bar</h1>
+        </template>
+        <template #right>
+          <ep-action-bar v-bind="args" />
+        </template>
+      </ep-header>
+      </template>
+    </ep-container>
+  `
 })
 
 export const ActionBar = Template.bind({})

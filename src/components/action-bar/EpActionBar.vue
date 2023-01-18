@@ -12,8 +12,7 @@
       <ep-dropdown
         v-else-if="item.type === 'dropdown'"
         :key="`dropdown-${item.id}`"
-        :menu-items="item.menuItems"
-        :button="item.button"
+        v-bind="item"
       />
     </template>
   </div>
