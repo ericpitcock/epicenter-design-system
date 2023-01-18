@@ -3,7 +3,7 @@ import EpInput from './EpInput'
 import EpButton from '@/components/button/EpButton'
 
 export default {
-  title: 'Input',
+  title: 'Components/Input',
   component: EpInput,
   decorators: [centered],
   argTypes: {

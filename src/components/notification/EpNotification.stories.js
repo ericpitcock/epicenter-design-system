@@ -8,7 +8,7 @@ import E from '@/components/logo/E'
 import store from '@/store'
 
 export default {
-  title: 'Notifications',
+  title: 'Components/Notifications',
   component: EpNotifications,
   argTypes: {
   }

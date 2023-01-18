@@ -1,6 +1,11 @@
 <template>
   <div class="ep-container" :style="{ height: tableHeight }">
-    <slot />
+    <div v-if="header" class="ep-contaniner__header">
+      <slot name="header" />
+    </div>
+    <div class="ep-container__content">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -12,6 +17,10 @@
       //   type: String,
       //   default: 'static'
       // },
+      header: {
+        type: Boolean,
+        default: false
+      },
       calculateHeight: {
         type: Boolean,
         default: false

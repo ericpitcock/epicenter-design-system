@@ -4,7 +4,7 @@ import EpDropdown from './EpDropdown'
 const buttonDefaults = {
   kind: 'secondary',
   size: 'default',
-  title: 'Default Dropdown',
+  title: 'Components/Default Dropdown',
   label: 'Default Dropdown',
   iconRight: { name: 'chevron-down' },
   iconLeft: undefined
@@ -43,7 +43,7 @@ const fakeDropdownItems = [
 ]
 
 export default {
-  title: 'Dropdown',
+  title: 'Components/Dropdown',
   component: EpDropdown,
   decorators: [centered],
   argTypes: {

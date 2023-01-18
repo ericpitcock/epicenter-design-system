@@ -1,0 +1,84 @@
+<!-- vue header component -->
+<template>
+  <div class="ep-header">
+    <div class="ep-header__content">
+      <div class="ep-header__content__left">
+        <slot name="left"></slot>
+      </div>
+      <div class="ep-header__content__right">
+        <slot name="right"></slot>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'EpHeader',
+  props: {
+    width: {
+      type: String,
+      default: '100%'
+    },
+    height: {
+      type: String,
+      default: '6.1rem'
+    },
+    padding: {
+      type: String,
+      default: '0 3rem'
+    },
+    margin: {
+      type: String,
+      default: '0'
+    },
+    backgroundColor: {
+      type: String,
+      default: 'var(--background-2)'
+    },
+    borderRadius: {
+      type: String,
+      default: 'var(--border-radius--large)'
+    },
+    borderWidth: {
+      type: String,
+      default: '0.1rem'
+    },
+    borderStyle: {
+      type: String,
+      default: 'solid'
+    },
+    borderColor: {
+      type: String,
+      default: 'var(--border-color)'
+    },
+    overflow: {
+      type: String,
+      default: 'hidden'
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+  .ep-header {
+    width: 100%;
+    height: v-bind(height);
+    padding: v-bind(padding);
+    border-bottom: v-bind(borderWidth) v-bind(borderStyle) v-bind(borderColor);
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      &__left {
+        display: flex;
+        align-items: center;
+      }
+      &__right {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+</style>

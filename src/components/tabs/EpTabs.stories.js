@@ -1,7 +1,7 @@
 import EpTabs from './EpTabs'
 
 export default {
-  title: 'Tabs',
+  title: 'Components/Tabs',
   component: EpTabs,
   argTypes: {
     

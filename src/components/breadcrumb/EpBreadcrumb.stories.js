@@ -3,7 +3,7 @@ import { centered } from '@/helpers/decorators'
 import EpBreadcrumb from './EpBreadcrumb'
 
 export default {
-  title: 'Breadcrumb',
+  title: 'Components/Breadcrumb',
   component: EpBreadcrumb,
   decorators: [centered],
   argTypes: {

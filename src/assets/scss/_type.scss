@@ -42,11 +42,11 @@ html {
   font-size: var(--font-size--body);
   font-variation-settings: 'wght' 500;
 }
-.font-size--large, h2 {
+.font-size--large, .copy-block > h2 {
   font-size: var(--font-size--large);
   font-variation-settings: 'wght' 400;
 }
-.font-size--jumbo, h1 {
+.font-size--jumbo, .copy-block > h1 {
   font-size: var(--font-size--jumbo);
   font-variation-settings: 'wght' 300;
 }
@@ -68,7 +68,6 @@ html {
     cursor: pointer;
   }
 }
-
 
 .text--subtle {
   color: var(--text-color--subtle);

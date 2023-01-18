@@ -53,7 +53,7 @@
             desc: 'Blocks of text you expect people to read',
             size: '1.5rem (15px)',
             weight: '400 (regular)',
-            sample: `<p class="read-me">${faker.lorem.sentences(10)}</p>`
+            sample: `<div class="copy-block"><p>Use me for copy blocks to provide a nice, comfortable reading experience. ${faker.lorem.sentences(6)}</p></div>`
           },
           {
             name: 'Default',
@@ -74,7 +74,7 @@
             desc: 'Things should be there, but "not there"',
             size: '1rem (10px)',
             weight: '400 (regular)',
-            sample: '<p>Made in China</p>'
+            sample: '<p>Made in the USA</p>'
           },
         ]
       }

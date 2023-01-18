@@ -10,7 +10,7 @@ const container = () => {
 }
 
 export default {
-  title: 'Table',
+  title: 'Components/Table',
   component: EpTable,
   decorators: [container],
   argTypes: {

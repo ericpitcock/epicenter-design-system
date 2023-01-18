@@ -11,7 +11,7 @@ const container = () => {
 }
 
 export default {
-  title: 'Charts',
+  title: 'Components/Charts',
   component: EpChart,
   decorators: [container],
   parameters: {

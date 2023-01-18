@@ -2,7 +2,7 @@ import { centered } from '@/helpers/decorators'
 import EpCheckbox from './EpCheckbox'
 
 export default {
-  title: 'Checkbox',
+  title: 'Components/Checkbox',
   component: EpCheckbox,
   decorators: [centered]
 }

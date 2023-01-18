@@ -4,7 +4,7 @@ import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
 import EpBadge from './EpBadge'
 
 export default {
-  title: 'Badge',
+  title: 'Components/Badge',
   component: EpBadge,
   decorators: [centered],
   argTypes: {

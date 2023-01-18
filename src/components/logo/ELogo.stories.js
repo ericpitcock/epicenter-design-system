@@ -2,7 +2,7 @@ import { centered } from '@/helpers/decorators'
 import E from './E.vue'
 
 export default {
-  title: 'Logo',
+  title: 'Components/Logo',
   component: E,
   decorators: [centered],
   argTypes: {

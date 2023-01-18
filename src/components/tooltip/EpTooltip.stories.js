@@ -3,7 +3,7 @@ import { centered } from '@/helpers/decorators'
 import EpTooltip from './EpTooltip'
 
 export default {
-  title: 'Tooltip',
+  title: 'Components/Tooltip',
   component: EpTooltip,
   decorators: [centered],
   argTypes: {

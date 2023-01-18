@@ -1,4 +1,5 @@
 import EpContainer from './EpContainer'
+import EpHeader from '@/components/header/EpHeader'
 
 const container = () => {
   return {
@@ -8,10 +9,17 @@ const container = () => {
 }
 
 export default {
-  title: 'Container',
+  title: 'Components/Container',
   component: EpContainer,
   decorators: [container],
   argTypes: {
+    header: {
+      name: 'Header',
+      control: {
+        type: 'boolean'
+      },
+      defaultValue: true
+    },
     display: {
       name: 'Display',
       control: {
@@ -126,13 +134,21 @@ export default {
   }
 }
 
-const Template = (args) => ({
-  components: { EpContainer },
+const Template = args => ({
+  components: {
+    EpContainer,
+    EpHeader
+  },
   setup() {
     return { args }
   },
   template: `
     <ep-container v-bind="args">
+      <ep-header v-if="args.header">
+        <template #left>
+          Header
+        </template>
+      </ep-header>
       <div
         v-if="args.padding != '' && args.padding != undefined"
         style="

@@ -5,7 +5,7 @@ import EpLoading from './EpLoading.vue'
 import { columns, fakeArray } from '@/components/table/data'
 
 export default {
-  title: 'Loading',
+  title: 'Components/Loading',
   component: EpLoading,
   decorators: [padded],
   argTypes: {

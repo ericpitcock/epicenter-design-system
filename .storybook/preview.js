@@ -13,8 +13,9 @@ export const parameters = {
     storySort: {
       order: [
         'Intro',
+        'Components',
         'Style',
-        'Layouts',
+        'Templates',
         'Sandbox'
       ],
     },

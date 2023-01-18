@@ -3,7 +3,7 @@ import EpDatePicker from './EpDatePicker'
 import { centered } from '@/helpers/decorators'
 
 export default {
-  title: 'Date Picker',
+  title: 'Components/Date Picker',
   component: EpDatePicker,
   // decorators: [centered],
   argTypes: {

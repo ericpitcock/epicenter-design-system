@@ -48,7 +48,7 @@ const navItems = [
 ]
 
 export default {
-  title: 'Sidebar',
+  title: 'Components/Sidebar',
   component: EpSidebar,
   decorators: [padded],
   argTypes: {
