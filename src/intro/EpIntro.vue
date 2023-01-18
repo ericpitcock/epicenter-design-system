@@ -10,7 +10,7 @@
             strokeColor="var(--gray-500)"
           />
         </div>
-        <h1>E Design System</h1>
+        <h1 class="font-size--jumbo">E Design System</h1>
         <div class="yellow-circle"></div>
         <div class="purple-circle"></div>
       </div>
@@ -58,8 +58,8 @@
       }
       .yellow-circle {
         position: absolute;
-        top: -50%;
-        left: -40%;
+        top: -17rem;
+        left: -40rem;
         width: 60rem;
         height: 30rem;
         border-radius: 50%;
