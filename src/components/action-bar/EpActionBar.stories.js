@@ -16,14 +16,14 @@ const fakeItems = [
     button: {
       kind: 'ghost',
       label: '',
-      iconLeft: { name: 'circle' },
+      iconLeft: { name: 'user' },
       iconRight: null,
       title: 'This is the tooltip'
     },
     menuItems: [
       {
-        label: 'Go to internal page',
-        iconLeft: { name: 'arrow-right' },
+        label: 'Profile',
+        // iconLeft: { name: 'arrow-right' },
         bind: {
           to: '/'
         }
@@ -32,15 +32,15 @@ const fakeItems = [
         divider: true
       },
       {
-        label: 'Log click',
-        iconLeft: { name: 'circle' },
+        label: 'Switch account',
+        // iconLeft: { name: 'circle' },
         command: () => {
           console.log('click')
         }
       },
       {
-        label: 'Link to internet',
-        iconLeft: { name: 'export' },
+        label: 'Sign out',
+        // iconLeft: { name: 'export' },
         bind: {
           href: 'https://www.google.com/maps'
         }
