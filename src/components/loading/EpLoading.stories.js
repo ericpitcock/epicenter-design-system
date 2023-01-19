@@ -1,5 +1,7 @@
 import { padded } from '@/helpers/decorators'
+import EpButton from '@/components/button/EpButton'
 import EpContainer from '@/components/container/EpContainer'
+import EpHeader from '@/components/header/EpHeader'
 import EpTable from '@/components/table/EpTable'
 import EpLoading from './EpLoading.vue'
 import { columns, fakeArray } from '@/components/table/data'
@@ -65,7 +67,13 @@ export default {
 }
 
 export const Loading = args => ({
-  components: { EpContainer, EpTable, EpLoading },
+  components: {
+    EpButton,
+    EpContainer,
+    EpHeader,
+    EpTable,
+    EpLoading
+  },
   setup() {
     return { args, columns, fakeArray }
   },
@@ -78,12 +86,41 @@ export const Loading = args => ({
     done() {
       this.loading = false
       console.log('done')
+    },
+    refresh() {
+      this.loading = true
+      // set timeout to stop loading after 5 seconds
+      setTimeout(() => {
+        this.loading = false
+      }, 5000)
     }
   },
   template: `
-    <ep-container width="fit-content" height="fit-content" padding="0.4rem 2rem 2rem">
-      <ep-loading v-show="loading" @done="done" v-bind="args" />
-      <ep-table :columns="columns" :data="fakeArray(7)" :exclude="['id']"  />
+    <ep-container :useHeader="true" height="100%">
+      <template #header>
+      <ep-header>
+        <template #left>
+          <ep-button
+            @click="refresh"
+            kind="primary"
+            label="Refresh"
+            :iconLeft="{ name: 'refresh' }"
+          />
+          <ep-button
+            @click="refresh"
+            label="Extra Refresh"
+            :iconLeft="{ name: 'refresh' }"
+          />
+        </template>
+        <template #right>
+          <ep-dropdown v-bind="args" />
+        </template>
+      </ep-header>
+      </template>
+      <template #default>
+        <ep-loading v-show="loading" @done="done" v-bind="args" />
+        <ep-table :columns="columns" :data="fakeArray(7)" :exclude="['id']"  />
+      </template>
     </ep-container>
   `
 })

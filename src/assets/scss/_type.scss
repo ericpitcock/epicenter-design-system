@@ -65,7 +65,12 @@ html {
   }
   a {
     color: var(--color--primary);
-    cursor: pointer;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    a:hover {
+      color: var(--sky-300);
+      cursor: pointer;
+    }
   }
 }
 

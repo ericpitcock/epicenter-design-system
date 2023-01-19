@@ -1,3 +1,4 @@
+import EpBadge from '@/components/badge/EpBadge'
 import EpContainer from '@/components/container/EpContainer'
 import EpTable from './EpTable'
 import { columns, fakeArray } from './data'
@@ -93,8 +94,8 @@ export default {
   }
 }
 
-const Template = (args) => ({
-  components: { EpContainer, EpTable },
+const Template = args => ({
+  components: { EpBadge, EpContainer, EpTable },
   setup() {
     return { args }
   },

@@ -1,18 +1,19 @@
 <template>
   <div class="colors">
-    <ep-container
+    <!-- <ep-container
       class="colors__menu"
       width="fit-content"
       height="fit-content"
       padding="1rem 0"
-    >
+    > -->
       <ep-menu
         :menu-items="menuItems"
         menuType="nav"
         :activeItem="activeItem"
+        :containerProps="containerProps"
         @item-click="item => activeItem = item.label"
       />
-    </ep-container>
+    <!-- </ep-container> -->
     <ep-container
       id="colors__table"
       class="colors__table"
@@ -169,7 +170,12 @@
             },
             style: 'text--copyable'
           }
-        ]
+        ],
+        containerProps: {
+          width: 'fit-content',
+          height: 'fit-content',
+          padding: '1rem 0'
+        }
       }
     },
     components: {

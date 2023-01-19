@@ -5,8 +5,12 @@ import EpHeader from '@/components/header/EpHeader'
 
 const fakeItems = [
   {
+    type: 'button',
+    iconLeft: { name: 'help' },
+  },
+  {
     type: 'button', // button or dropdown
-    iconLeft: { name: 'circle' },
+    iconLeft: { name: 'notifications' },
     iconRight: null,
     title: 'This is the tooltip',
     command: () => {

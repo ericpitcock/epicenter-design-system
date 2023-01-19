@@ -11,6 +11,11 @@
       :outlined="true"
       :style="{ borderColor: primaryColor }"
     />
+    <ep-badge
+      label="Badge"
+      backgroundColor=""
+      :borderColor="primaryColor"
+    />
     <div class="copy-block">
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod
@@ -29,6 +34,7 @@
 </template>
 
 <script>
+  import EpBadge from '@/components/badge/EpBadge'
   import EpButton from '@/components/button/EpButton'
 
   export default {
@@ -60,6 +66,7 @@
       }
     },
     components: {
+      EpBadge,
       EpButton
     },
     computed: {

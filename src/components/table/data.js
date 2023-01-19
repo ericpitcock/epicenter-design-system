@@ -3,8 +3,14 @@ import faker from 'faker'
 
 const columns = [
   {
+    header: 'Status',
+    key: 'status',
+    cellType: 'component'
+  },
+  {
     header: 'Date',
     key: 'start_date',
+    cellType: 'string',
     formatter: value => {
       return value.split('T')[0].replaceAll('-', '/')
     },
@@ -14,11 +20,13 @@ const columns = [
   },
   {
     header: 'Name',
-    key: 'name'
+    key: 'name',
+    cellType: 'string'
   },
   {
     header: 'Ride Type',
     key: 'type',
+    cellType: 'string',
     formatter: value => {
       return value
     }
@@ -26,6 +34,7 @@ const columns = [
   {
     header: 'Distance (mi)',
     key: 'distance',
+    cellType: 'string',
     formatter: value => {
       return (value / 1609.344).toFixed(2)
     },
@@ -34,6 +43,7 @@ const columns = [
   {
     header: 'Elevation (ft)',
     key: 'total_elevation_gain',
+    cellType: 'string',
     formatter: value => {
       return (value * 3.28084).toFixed(2)
     },
@@ -42,14 +52,10 @@ const columns = [
   {
     header: 'Avg Speed (mph)',
     key: 'average_speed',
+    cellType: 'string',
     formatter: value => {
       return (value * 0.621371).toFixed(1)
     },
-    style: 'tabular-numbers'
-  },
-  {
-    header: 'Avg Watts',
-    key: 'average_watts',
     style: 'tabular-numbers'
   }
 ]
@@ -59,13 +65,21 @@ const fakeArray = (length) => {
   for (let i = 0; i < length; i++) {
     arr.push({
       id: faker.datatype.uuid(),
+      status: {
+        component: 'ep-badge',
+        props: {
+          label: faker.random.arrayElement(['Completed', 'Cancelled']),
+          backgroundColor: 'lightgreen',
+          borderColor: 'green',
+          textColor: 'var(--text-color--inverse)',
+        }
+      },
       start_date: faker.date.past().toISOString(),
       name: faker.address.city(),
       type: faker.random.arrayElement(['VirtualRide', 'Ride']),
       distance: faker.datatype.number({ min: 10000, max: 100000 }),
       total_elevation_gain: faker.datatype.number({ min: 100, max: 800 }),
-      average_speed: faker.datatype.number({ min: 20, max: 30, precision: .1 }),
-      average_watts: faker.datatype.number({ min: 80, max: 200, precision: .1 })
+      average_speed: faker.datatype.number({ min: 20, max: 30, precision: 0.1 })
     })
   }
   return arr

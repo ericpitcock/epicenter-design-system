@@ -28,12 +28,15 @@
         :ref="`row-${index}`"
       >
         <template v-for="(value, key) in row" :key="key">
-        <td v-if="!excluded(key)">
+        <td v-if="!excluded(key) && !isComponent(key)">
           <span
             @click.stop="cellClick(value, key)"
             v-html="formatCell(value, key)"
             :class="cellStyle(key)"
           ></span>
+        </td>
+        <td v-else-if="isComponent(key)">
+          <component :is="value.component" v-bind="value.props" />
         </td>
         </template>
       </tr>
@@ -43,6 +46,7 @@
 
 <script>
   import EpIcon from '@/components/icon/EpIcon'
+  import EpBadge from '@/components/badge/EpBadge'
 
   export default {
     name: 'EpTable',
@@ -57,7 +61,8 @@
       }
     },
     components: {
-      EpIcon
+      EpIcon,
+      EpBadge
     },
     props: {
       columns: {
@@ -113,6 +118,10 @@
       rowClick(row) {
         this.$emit('row-click', row)
         console.log('row-click')
+      },
+      isComponent(key) {
+        // if column cellType is component, return true
+        return this.columns.find(column => column.key === key)?.cellType === 'component'
       },
       cellClick(value, key) {
         const command = this.columns.find(column => column.key === key)?.command

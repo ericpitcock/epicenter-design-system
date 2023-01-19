@@ -1,13 +1,15 @@
-import { centered } from '@/helpers/decorators'
+import { padded } from '@/helpers/decorators'
 import EpDropdown from './EpDropdown'
+import EpContainer from '@/components/container/EpContainer'
+import EpHeader from '@/components/header/EpHeader'
 
 const buttonDefaults = {
   kind: 'secondary',
   size: 'default',
   title: 'Components/Default Dropdown',
-  label: 'Default Dropdown',
+  label: 'Export',
   iconRight: { name: 'chevron-down' },
-  iconLeft: undefined
+  iconLeft: { name: 'export' }
 }
 const containerProps = {
   backgroundColor: 'var(--background-4)',
@@ -17,42 +19,37 @@ const containerProps = {
 }
 const fakeDropdownItems = [
   {
-    label: 'Go to internal page',
-    iconLeft: { name: 'arrow-right' },
-    bind: {
-      to: '/'
-    }
+    label: 'PDF',
+    iconLeft: { name: 'file' }
+  },
+  {
+    label: 'JPG',
+    iconLeft: { name: 'file' }
   },
   {
     divider: true
   },
   {
-    label: 'Log click',
-    iconLeft: { name: 'circle' },
-    command: () => {
-      console.log('click')
-    }
+    label: 'CSV',
+    iconLeft: { name: 'file' }
   },
   {
-    label: 'Link to internet',
-    iconLeft: { name: 'export' },
-    bind: {
-      href: 'https://www.google.com/maps'
-    }
+    label: 'JSON',
+    iconLeft: { name: 'file' }
   }
 ]
 
 export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
-  decorators: [centered],
+  decorators: [padded],
   argTypes: {
     alignRight: {
       name: 'Align right',
       control: {
         type: 'boolean'
       },
-      defaultValue: false
+      defaultValue: true
     },
     button: {
       name: 'Button',
@@ -78,13 +75,27 @@ export default {
   }
 }
 
-const Template = (args) => ({
-  components: { EpDropdown },
+const Template = args => ({
+  components: { EpDropdown, EpContainer, EpHeader },
   // data: () => ({ buttonDefaults, menuItems: fakeDropdownItems }),
   setup() {
-    return { args };
+    return { args }
   },
-  template: '<ep-dropdown v-bind="args" />'
+  // template: '<ep-dropdown v-bind="args" />'
+  template: `
+    <ep-container :useHeader="true" height="100%">
+      <template #header>
+      <ep-header>
+        <template #left>
+          <h1>Dropdown</h1>
+        </template>
+        <template #right>
+          <ep-dropdown v-bind="args" />
+        </template>
+      </ep-header>
+      </template>
+    </ep-container>
+  `
 })
 
 export const Dropdown = Template.bind({})

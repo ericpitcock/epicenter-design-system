@@ -1,4 +1,6 @@
 import EpMap from './EpMap'
+import EpContainer from '@/components/container/EpContainer'
+import EpHeader from '@/components/header/EpHeader'
 import { padded } from '@/helpers/decorators'
 import store from '@/store'
 
@@ -117,9 +119,32 @@ export default {
 }
 
 export const Map = args => ({
-  components: { EpMap },
+  components: {
+    EpMap,
+    EpContainer,
+    EpHeader
+  },
   setup() {
     return { args }
   },
-  template: '<ep-map v-bind="args" />'
+  // template: '<ep-map v-bind="args" />'
+  template: `
+    <ep-container :useHeader="true" height="100%">
+      <template #header>
+      <ep-header>
+        <template #left>
+          <h1>Map</h1>
+        </template>
+        <template #right>
+          <ep-dropdown v-bind="args" />
+        </template>
+      </ep-header>
+      </template>
+      <template #default>
+        <div style="height: 100%; width: 100%;">
+        <ep-map v-bind="args" />
+        </div>
+      </template>
+    </ep-container>
+  `
 })
