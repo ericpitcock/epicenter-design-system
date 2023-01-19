@@ -30,31 +30,14 @@ export default {
       control: {
         type: 'boolean'
       },
-      defaultValue: true
+      defaultValue: false
     },
     messages: {
       name: 'Message',
       control: {
         type: 'array'
       },
-      defaultValue: [
-        {
-          icon: 'oval',
-          message: 'Downloading the entire internet…'
-        },
-        {
-          icon: 'bars',
-          message: 'Rearranging things…'
-        },
-        {
-          icon: null,
-          message: 'Refreshing the data in our system…'
-        },
-        {
-          icon: null,
-          message: 'Finishing up…'
-        }
-      ]
+      defaultValue: defaultMessage
     },
     messageDelay: {
       name: 'Message Delay (ms)',
@@ -65,6 +48,32 @@ export default {
     }
   }
 }
+
+const defaultMessage = [
+  {
+    icon: 'oval',
+    message: 'Loading…'
+  }
+]
+
+const extra = [
+  {
+    icon: 'oval',
+    message: 'Downloading the entire internet…'
+  },
+  {
+    icon: 'bars',
+    message: 'Rearranging things…'
+  },
+  {
+    icon: null,
+    message: 'Refreshing the data in our system…'
+  },
+  {
+    icon: null,
+    message: 'Finishing up…'
+  }
+]
 
 export const Loading = args => ({
   components: {
@@ -79,7 +88,8 @@ export const Loading = args => ({
   },
   data() {
     return {
-      loading: args.loading
+      loading: args.loading,
+      messages: args.messages
     }
   },
   methods: {
@@ -88,6 +98,12 @@ export const Loading = args => ({
       console.log('done')
     },
     refresh() {
+      // load default messages
+      args.messages = defaultMessage
+      this.loading = true
+    },
+    extraRefresh() {
+      args.messages = extra
       this.loading = true
       // set timeout to stop loading after 5 seconds
       setTimeout(() => {
@@ -107,13 +123,13 @@ export const Loading = args => ({
             :iconLeft="{ name: 'refresh' }"
           />
           <ep-button
-            @click="refresh"
+            @click="extraRefresh"
             label="Extra Refresh"
             :iconLeft="{ name: 'refresh' }"
           />
         </template>
         <template #right>
-          <ep-dropdown v-bind="args" />
+
         </template>
       </ep-header>
       </template>

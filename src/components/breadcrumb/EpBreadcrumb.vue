@@ -23,7 +23,6 @@ export default {
 .ep-breadcrumb {
   display: flex;
   align-items: center;
-  font-size: 14px;
   color: var(--text-color);
   .ep-breadcrumb__item {
     display: flex;

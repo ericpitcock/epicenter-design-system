@@ -66,16 +66,15 @@ export default {
 .ep-checkbox {
   display: inline-block;
   vertical-align: middle;
-  font-size: 14px;
   line-height: 1.5;
   cursor: pointer;
   user-select: none;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  // transition: all 0.3s;
+  // -webkit-tap-highlight-color: transparent;
+  // -webkit-touch-callout: none;
+  // -webkit-user-select: none;
+  // -moz-user-select: none;
+  // -ms-user-select: none;
   input {
     position: absolute;
     left: -9999px;

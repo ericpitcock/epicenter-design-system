@@ -25,6 +25,8 @@ html[data-color-theme='light'] {
   --text-color--highlight: var(--yellow-300);
   // find closes match for this
   --text-color--subtle: #595959;
+  // links
+  --text-color--link: var(--sky-600);
 
   // buttons
   --button-disabled--bg-color: var(--gray-40);

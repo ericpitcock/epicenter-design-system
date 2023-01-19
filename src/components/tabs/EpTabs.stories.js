@@ -12,7 +12,7 @@ export default {
   }
 }
 
-const Template = (args) => ({
+const Template = args => ({
   components: { EpTabs, EpContainer, EpHeader },
   setup() {
     return { args }
@@ -23,10 +23,10 @@ const Template = (args) => ({
       <template #header>
       <ep-header>
         <template #left>
-          <h1>Tabs</h1>
+          <ep-tabs v-bind="args" />
         </template>
         <template #right>
-          <ep-tabs v-bind="args" />
+          
         </template>
       </ep-header>
       </template>

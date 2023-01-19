@@ -64,11 +64,11 @@ html {
     max-width: 60rem;
   }
   a {
-    color: var(--color--primary);
+    color: var(--text-color--link);
   }
   @media (hover: hover) and (pointer: fine) {
     a:hover {
-      color: var(--sky-300);
+      color: var(--text-color--link);
       cursor: pointer;
     }
   }
