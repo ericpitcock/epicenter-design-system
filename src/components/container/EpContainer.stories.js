@@ -1,5 +1,6 @@
 import EpContainer from './EpContainer'
 import EpHeader from '@/components/header/EpHeader'
+import EpFooter from '@/components/footer/EpFooter'
 
 const container = () => {
   return {
@@ -137,7 +138,8 @@ export default {
 const Template = args => ({
   components: {
     EpContainer,
-    EpHeader
+    EpHeader,
+    EpFooter
   },
   setup() {
     return { args }
@@ -160,6 +162,9 @@ const Template = args => ({
       >
         Inner content
       </div>
+      <template #footer>
+        <ep-footer>
+      </template>
     </ep-container>
   `
 })

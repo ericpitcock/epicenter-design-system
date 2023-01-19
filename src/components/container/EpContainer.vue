@@ -6,6 +6,9 @@
     <div class="ep-container__content">
       <slot />
     </div>
+    <div v-if="useFooter" class="ep-contaniner__footer">
+      <slot name="footer" />
+    </div>
   </div>
 </template>
 
@@ -18,6 +21,10 @@
       //   default: 'static'
       // },
       useHeader: {
+        type: Boolean,
+        default: false
+      },
+      useFooter: {
         type: Boolean,
         default: false
       },
@@ -102,7 +109,9 @@
 <style lang="scss" scoped>
   .ep-container {
     position: relative;
-    display: v-bind(display);
+    // display: v-bind(display);
+    display: flex;
+    flex-flow: column nowrap;
     width: v-bind(width);
     // height: v-bind(height);
     padding: v-bind(padding);
@@ -113,5 +122,15 @@
     border-style: v-bind(borderStyle);
     border-color: v-bind(borderColor);
     overflow: v-bind(overflow);
+    &__header {
+      flex: 0 0 auto;
+    }
+    &__content {
+      flex: 1 1 auto;
+      overflow: auto;
+    }
+    &__footer {
+      flex: 0 0 auto;
+    }
   }
 </style>

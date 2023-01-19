@@ -2,6 +2,7 @@ import { padded } from '@/helpers/decorators'
 import EpBreadcrumb from './EpBreadcrumb'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
+import EpFooter from '@/components/footer/EpFooter'
 
 export default {
   title: 'Components/Breadcrumb',
@@ -32,13 +33,23 @@ export default {
 }
 
 const Template = args => ({
-  components: { EpBreadcrumb, EpContainer, EpHeader },
+  components: {
+    EpBreadcrumb,
+    EpContainer,
+    EpHeader,
+    EpFooter
+  },
   setup() {
     return { args }
   },
   // template: '<ep-breadcrumb v-bind="args" />'
   template: `
-    <ep-container :useHeader="true" height="100%">
+    <ep-container
+      useHeader
+      useFooter
+      height="100%"
+      overflow="hidden"
+    >
       <template #header>
       <ep-header>
         <template #left>
@@ -47,6 +58,9 @@ const Template = args => ({
         <template #right>
         </template>
       </ep-header>
+      </template>
+      <template #footer>
+        <ep-footer>
       </template>
     </ep-container>
   `

@@ -2,6 +2,7 @@ import { padded } from '@/helpers/decorators'
 import EpDropdown from './EpDropdown'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
+import EpFooter from '@/components/footer/EpFooter'
 
 const buttonDefaults = {
   kind: 'secondary',
@@ -76,14 +77,24 @@ export default {
 }
 
 const Template = args => ({
-  components: { EpDropdown, EpContainer, EpHeader },
+  components: {
+    EpDropdown,
+    EpContainer,
+    EpHeader,
+    EpFooter
+  },
   // data: () => ({ buttonDefaults, menuItems: fakeDropdownItems }),
   setup() {
     return { args }
   },
   // template: '<ep-dropdown v-bind="args" />'
   template: `
-    <ep-container :useHeader="true" height="100%">
+    <ep-container
+      useHeader
+      useFooter
+      height="100%"
+      overflow="hidden"
+    >
       <template #header>
       <ep-header>
         <template #left>
@@ -93,6 +104,9 @@ const Template = args => ({
           <ep-dropdown v-bind="args" />
         </template>
       </ep-header>
+      </template>
+      <template #footer>
+        <ep-footer>
       </template>
     </ep-container>
   `

@@ -2,6 +2,7 @@ import { padded } from '@/helpers/decorators'
 import EpActionBar from './EpActionBar'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
+import EpFooter from '@/components/footer/EpFooter'
 
 const fakeItems = [
   {
@@ -77,13 +78,19 @@ const Template = args => ({
   components: {
     EpActionBar,
     EpContainer,
-    EpHeader
+    EpHeader,
+    EpFooter
   },
   setup() {
     return { args }
   },
   template: `
-    <ep-container :useHeader="true" height="100%">
+    <ep-container
+      useHeader
+      useFooter
+      height="100%"
+      overflow="hidden"
+    >
       <template #header>
       <ep-header>
         <template #left>
@@ -93,6 +100,9 @@ const Template = args => ({
           <ep-action-bar v-bind="args" />
         </template>
       </ep-header>
+      </template>
+      <template #footer>
+        <ep-footer>
       </template>
     </ep-container>
   `

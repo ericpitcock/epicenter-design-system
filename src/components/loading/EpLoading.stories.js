@@ -2,6 +2,7 @@ import { padded } from '@/helpers/decorators'
 import EpButton from '@/components/button/EpButton'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
+import EpFooter from '@/components/footer/EpFooter'
 import EpTable from '@/components/table/EpTable'
 import EpLoading from './EpLoading.vue'
 import { columns, fakeArray } from '@/components/table/data'
@@ -80,6 +81,7 @@ export const Loading = args => ({
     EpButton,
     EpContainer,
     EpHeader,
+    EpFooter,
     EpTable,
     EpLoading
   },
@@ -112,7 +114,12 @@ export const Loading = args => ({
     }
   },
   template: `
-    <ep-container :useHeader="true" height="100%">
+    <ep-container
+      useHeader
+      useFooter
+      height="100%"
+      overflow="hidden"
+    >
       <template #header>
       <ep-header>
         <template #left>
@@ -136,6 +143,9 @@ export const Loading = args => ({
       <template #default>
         <ep-loading v-show="loading" @done="done" v-bind="args" />
         <ep-table :columns="columns" :data="fakeArray(7)" :exclude="['id']"  />
+      </template>
+      <template #footer>
+        <ep-footer>
       </template>
     </ep-container>
   `

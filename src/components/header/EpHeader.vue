@@ -64,6 +64,7 @@ export default {
     width: 100%;
     height: v-bind(height);
     padding: v-bind(padding);
+    background-color: v-bind(backgroundColor);
     border-bottom: v-bind(borderWidth) v-bind(borderStyle) v-bind(borderColor);
     &__content {
       display: flex;
