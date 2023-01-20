@@ -3,6 +3,7 @@ import EpActionBar from './EpActionBar'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
+import E from '@/components/logo/E'
 
 const fakeItems = [
   {
@@ -27,6 +28,12 @@ const fakeItems = [
       iconLeft: { name: 'user' },
       iconRight: null,
       title: 'This is the tooltip'
+    },
+    containerProps: {
+      backgroundColor: 'var(--background-4)',
+      padding: '1rem 0',
+      borderRadius: 'var(--border-radius)',
+      borderColor: 'var(--border-color--lighter)'
     },
     menuItems: [
       {
@@ -79,7 +86,8 @@ const Template = args => ({
     EpActionBar,
     EpContainer,
     EpHeader,
-    EpFooter
+    EpFooter,
+    E
   },
   setup() {
     return { args }
@@ -94,12 +102,26 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
-          <h1>Action Bar</h1>
+          <div style="height: 3.5rem;">
+            <e
+              faceColor="transparent"
+              highlightColor="transparent"
+              shadowColor="transparent"
+              strokeWidth="6"
+              strokeColor="var(--sky-300)"
+            />
+          </div>
         </template>
         <template #right>
           <ep-action-bar v-bind="args" />
         </template>
       </ep-header>
+      </template>
+      <template #default>
+        <div class="copy-block">
+          <h1>Action Bar</h1>
+          <p>Default content</p>
+        </div>
       </template>
       <template #footer>
         <ep-footer>

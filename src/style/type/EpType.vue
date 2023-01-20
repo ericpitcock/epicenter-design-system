@@ -1,16 +1,25 @@
 <template>
-  <ep-container padding="30px">
-    <p class="font-size--large">Inter Variable</p>
-  </ep-container>
-  <ep-container padding="30px">
+  <ep-container use-header overflow="hidden" padding="3rem">
+    <template #header>
+      <ep-header>
+        <template #left>
+          <ep-tabs :items="tabs" @tab-click="tabClick" />
+        </template>
+        <template #right>
+          <ep-button
+            label="Google Fonts"
+            href="https://fonts.google.com/specimen/Inter"
+          />
+        </template>
+      </ep-header>
+    </template>
+    <template v-if="activeTab === 0">
     <div class="type-style" v-for="(typeStyle, index) in typeStyles" :key="index">
       <div class="type-style__desc">
         <div class="font-size--body">{{ typeStyle.name }}</div>
         <template v-for="item in typeStyle.meta">
           <div class="meta font-size--small">{{ item }}</div>
         </template> 
-        <!-- <div class="meta font-size--small">{{ typeStyle.size }}</div>
-        <div class="meta font-size--small">{{ typeStyle.weight }}</div> -->
       </div>
       <div class="type-style__sample">
         <div
@@ -20,22 +29,43 @@
         </div>
       </div>
     </div>
+    </template>
+    <template v-else="activeTab === 1">
+      <div>
+        Fira Code
+      </div>
+    </template>
   </ep-container>
 </template>
 
 <script>
   import faker from 'faker'
 
+  import EpButton from '@/components/button/EpButton'
   import EpContainer from '@/components/container/EpContainer'
   import EpDivider from '@/components/divider/EpDivider'
+  import EpHeader from '@/components/header/EpHeader'
+  import EpTabs from '@/components/tabs/EpTabs'
 
   export default {
     components: {
+      EpButton,
       EpContainer,
-      EpDivider
+      EpDivider,
+      EpHeader,
+      EpTabs
     },
     data() {
       return {
+        activeTab: 0,
+        tabs: [
+          {
+            label: 'Inter Variable'
+          },
+          {
+            label: 'Fira Code Variable'
+          }
+        ],
         typeStyles: [
           {
             name: 'Jumbo',
@@ -60,11 +90,11 @@
             desc: 'Blocks of text you expect people to read',
             meta: [
               'font-size: 1.5rem (15px)',
-              'line-height: 1.6em',
+              'line-height: 1.6em (16px)',
               'font-weight: 400 (regular)',
-              'max-width: 60rem'
+              'max-width: 60rem (600px)'
             ],
-            sample: `<div class="copy-block"><p>Use me for larger copy blocks to provide a nice, comfortable reading experience. ${faker.lorem.sentences(6)}</p></div>`
+            sample: `<div class="copy-block"><p>Used for larger copy blocks to provide a nice, comfortable reading experience. ${faker.lorem.sentences(6)}</p></div>`
           },
           {
             name: 'Default',
@@ -95,7 +125,13 @@
           },
         ]
       }
-    } 
+    },
+    methods: {
+      tabClick(index) {
+        console.log('tabClick', index)
+        this.activeTab = index
+      }
+    }
   }
 </script>
 

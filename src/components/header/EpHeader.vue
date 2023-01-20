@@ -71,12 +71,9 @@ export default {
       justify-content: space-between;
       align-items: center;
       height: 100%;
-      &__left {
+      &__left, &__right {
         display: flex;
-        align-items: center;
-      }
-      &__right {
-        display: flex;
+        height: 100%;
         align-items: center;
       }
     }

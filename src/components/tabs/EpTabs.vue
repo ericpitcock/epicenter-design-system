@@ -1,10 +1,12 @@
 <template>
   <div class="ep-tabs">
-    <div class="ep-tabs__tab-item ep-tabs__tab-item--active">
-      <span>API access</span>
-    </div>
-    <div class="ep-tabs__tab-item">
-      <span>Asset integrations</span>
+    <div
+      v-for="(item, index) in items"
+      class="ep-tabs__tab-item"
+      :class="{ 'ep-tabs__tab-item--active': index === activeTab }"
+      @click="setActiveTab(index)"
+    >
+      <span>{{ item.label }}</span>
     </div>
   </div>
 </template>
@@ -13,39 +15,50 @@
   export default {
     name: 'EpTabs',
     props: {
-      vertical: {
-        type: Boolean,
-        default: false
+      items: {
+        type: Array,
+        default: () => []
       },
-      activeTab: {
-        type: Number,
-        default: 0
+      // initialActiveTab: {
+      //   type: Number,
+      //   default: 0
+      // }
+    },
+    data() {
+      return {
+        activeTab: 0
       }
     },
+    methods: {
+      setActiveTab(index) {
+        this.activeTab = index
+        console.log('setActiveTab', index)
+        this.$emit('tab-click', index)
+      }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
   .ep-tabs {
     display: flex;
-    align-self: stretch;
+    height: 100%;
     gap: 0 3rem;
     user-select: none;
     &__tab-item {
       display: inline-flex;
-      padding: 0 0.5rem;
-      border-bottom: 3px solid transparent;
-      
       span {
-        align-self: center;
         position: relative;
-        top: 2px;
+        border-bottom: 3px solid transparent;
+        top: 1px;
+        display: inline-flex;
+        align-items: center;
       }
-      &:not(.ep-tabs__tab-item--active):hover {
-        border-bottom-color: var(--primary-color--hover);
+      &:not(.ep-tabs__tab-item--active):hover span {
+        border-bottom-color: var(--gray-200);
         cursor: pointer;
       }
-      &--active {
+      &--active span {
         border-bottom-color: var(--color--primary);
       }
     }

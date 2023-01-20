@@ -14,3 +14,8 @@ body {
   background: var(--background-1);
   color: var(--text-color);
 }
+
+// text selection color
+::selection {
+  background: var(--text-selection);
+}

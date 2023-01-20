@@ -114,7 +114,6 @@
     flex-flow: column nowrap;
     width: v-bind(width);
     // height: v-bind(height);
-    padding: v-bind(padding);
     margin: v-bind(margin);
     border-radius: v-bind(borderRadius);
     background-color: v-bind(backgroundColor);
@@ -127,7 +126,7 @@
     }
     &__content {
       flex: 1 1 auto;
-      overflow: auto;
+      padding: v-bind(padding);
     }
     &__footer {
       flex: 0 0 auto;

@@ -28,6 +28,9 @@ html[data-color-theme='light'] {
   // links
   --text-color--link: var(--sky-600);
 
+  // text selection color
+  --text-selection: var(--yellow-300);
+
   // buttons
   --button-disabled--bg-color: var(--gray-40);
   --button-disabled--border-color: var(--button-disabled--bg-color);

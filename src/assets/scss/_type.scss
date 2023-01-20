@@ -16,6 +16,14 @@ html {
   src: url('../fonts/Inter-roman.var.woff2?v=3.19') format('woff2');
 }
 
+@font-face {
+  font-family: 'Fira Code';
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+}
+
 :root {
   font-family: 'Inter var', sans-serif;
   font-size: 62.5%; // (62.5/100) * 16px = 10px
@@ -115,4 +123,9 @@ html {
 
 .text-align--right {
   text-align: right;
+}
+
+.monospace {
+  font-family: 'Fira Code', monospace;
+  font-variation-settings: 'wght' 500;
 }
