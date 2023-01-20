@@ -163,7 +163,7 @@ const Template = args => ({
         Inner content
       </div>
       <template #footer>
-        <ep-footer>
+        <ep-footer />
       </template>
     </ep-container>
   `

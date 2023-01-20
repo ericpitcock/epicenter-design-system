@@ -107,7 +107,7 @@ const Template = args => ({
               faceColor="transparent"
               highlightColor="transparent"
               shadowColor="transparent"
-              strokeWidth="6"
+              :strokeWidth="6"
               strokeColor="var(--sky-300)"
             />
           </div>
@@ -124,7 +124,7 @@ const Template = args => ({
         </div>
       </template>
       <template #footer>
-        <ep-footer>
+        <ep-footer />
       </template>
     </ep-container>
   `

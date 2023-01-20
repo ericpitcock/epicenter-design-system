@@ -142,7 +142,7 @@ export const Map = args => ({
           <h1>Map</h1>
         </template>
         <template #right>
-          <ep-dropdown v-bind="args" />
+          
         </template>
       </ep-header>
       </template>
@@ -152,7 +152,7 @@ export const Map = args => ({
         </div>
       </template>
       <template #footer>
-        <ep-footer>
+        <ep-footer />
       </template>
     </ep-container>
   `

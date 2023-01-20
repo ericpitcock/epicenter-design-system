@@ -9,7 +9,25 @@ export default {
   component: EpTabs,
   decorators: [padded],
   argTypes: {
-    
+    items: {
+      control: {
+        type: 'array'
+      },
+      defaultValue: [
+        {
+          label: 'Tab 1',
+          value: 'tab1'
+        },
+        {
+          label: 'Tab 2',
+          value: 'tab2'
+        },
+        {
+          label: 'Tab 3',
+          value: 'tab3'
+        }
+      ]
+    }
   }
 }
 
@@ -41,7 +59,7 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #footer>
-        <ep-footer>
+        <ep-footer />
       </template>
     </ep-container>
   `

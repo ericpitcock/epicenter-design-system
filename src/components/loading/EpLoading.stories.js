@@ -145,7 +145,7 @@ export const Loading = args => ({
         <ep-table :columns="columns" :data="fakeArray(7)" :exclude="['id']"  />
       </template>
       <template #footer>
-        <ep-footer>
+        <ep-footer />
       </template>
     </ep-container>
   `

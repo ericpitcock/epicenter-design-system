@@ -60,7 +60,7 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #footer>
-        <ep-footer>
+        <ep-footer />
       </template>
     </ep-container>
   `
