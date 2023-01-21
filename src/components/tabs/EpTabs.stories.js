@@ -46,6 +46,7 @@ const Template = args => ({
       useHeader
       useFooter
       height="100%"
+      padding="3rem"
       overflow="hidden"
     >
       <template #header>
@@ -57,6 +58,12 @@ const Template = args => ({
           
         </template>
       </ep-header>
+      </template>
+      <template #default>
+        <div class="copy-block">
+          <h1>Tabs</h1>
+          <p>Tabs are commonly used in user interface design as a way to organize and navigate multiple sections of content within a single interface. They allow users to easily switch between different sections of content, providing a clear and efficient way to access and interact with the information they need.</p>
+        </div>
       </template>
       <template #footer>
         <ep-footer />

@@ -4,20 +4,20 @@
 // global theme stuff (included no matter the theme)
 :root {
   // colors
-  // --color--primary: var(--sky-500);
-  --color--primary: hsl(220, 100%, 60%);
+  --color--primary: hsl(214, 91%, 55%);
+  // --color--primary: hsl(220, 100%, 60%);
 
-  // tints and shades of hsl(223, 100%, 65%)
-  --color--primary--lightest: hsl(223, 100%, 71%);
-  --color--primary--lighter: hsl(223, 100%, 69%);
-  --color--primary--light: hsl(223, 100%, 67%);
-  --color--primary: hsl(223, 100%, 65%);
-  --color--primary--dark: hsl(223, 100%, 63%);
-  --color--primary--darker: hsl(223, 100%, 61%);
-  --color--primary--darkest: hsl(223, 100%, 59%);
+  // // tints and shades of hsl(223, 100%, 65%)
+  // --color--primary--lightest: hsl(223, 100%, 71%);
+  // --color--primary--lighter: hsl(223, 100%, 69%);
+  // --color--primary--light: hsl(223, 100%, 67%);
+  // --color--primary: hsl(223, 100%, 65%);
+  // --color--primary--dark: hsl(223, 100%, 63%);
+  // --color--primary--darker: hsl(223, 100%, 61%);
+  // --color--primary--darkest: hsl(223, 100%, 59%);
 
-  // primary color tints
-  // --primary-color--light: hsl(199, 89%, 80%);
+  // // primary color tints
+  // // --primary-color--light: hsl(199, 89%, 80%);
 
   // border radius
   --border-radius: 0.3rem;
@@ -28,11 +28,10 @@
   --color-error: hsl(3, 100%, 70%);
 
   // buttons
-  // --primary-color--base: hsl(199, 89%, 48%);
   --primary-color--base: var(--color--primary);
-  --primary-color--hover: hsl(199, 89%, 43%);
-  --primary-color--active: hsl(199, 89%, 40%);
-  --primary-color--border: hsl(199, 89%, 32%);
+  --primary-color--hover: hsl(214, 91%, 52%);
+  --primary-color--active: hsl(214, 91%, 60%);
+  --primary-color--border: var(--color--primary);
   --primary-color--text: var(--gray-0);
 
   --danger-red--base: hsl(3, 100%, 70%);

@@ -75,6 +75,7 @@ export default {
         display: flex;
         height: 100%;
         align-items: center;
+        gap: 1rem;
       }
     }
   }

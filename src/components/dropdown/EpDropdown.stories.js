@@ -93,6 +93,7 @@ const Template = args => ({
       useHeader
       useFooter
       height="100%"
+      padding="3rem"
       overflow="hidden"
     >
       <template #header>
@@ -104,6 +105,12 @@ const Template = args => ({
           <ep-dropdown v-bind="args" />
         </template>
       </ep-header>
+      </template>
+      <template #default>
+        <div class="copy-block">
+          <h1>Dropdown</h1>
+          <p>Dropdowns are used in user interface design as a way to present a list of options to the user, while taking up minimal space on the screen. They are typically used to present a list of options that the user can select from, and are often used in navigation menus, forms, and other parts of the user interface where space is limited. They can also be used to save screen space and make the interface look cleaner. They are also used to group related options together.</p>
+        </div>
       </template>
       <template #footer>
         <ep-footer />

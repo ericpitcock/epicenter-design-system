@@ -97,6 +97,7 @@ const Template = args => ({
       useHeader
       useFooter
       height="100%"
+      padding="3rem"
       overflow="hidden"
     >
       <template #header>
@@ -120,7 +121,7 @@ const Template = args => ({
       <template #default>
         <div class="copy-block">
           <h1>Action Bar</h1>
-          <p>Default content</p>
+          <p>An action bar is a graphical control element that provides a set of commonly used actions within a web application. It is typically displayed as a horizontal row of icon buttons and dropdown menus, allowing users to easily access and perform specific actions within the app.</p>
         </div>
       </template>
       <template #footer>

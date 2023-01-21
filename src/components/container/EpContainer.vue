@@ -109,11 +109,9 @@
 <style lang="scss" scoped>
   .ep-container {
     position: relative;
-    // display: v-bind(display);
     display: flex;
     flex-flow: column nowrap;
     width: v-bind(width);
-    // height: v-bind(height);
     margin: v-bind(margin);
     border-radius: v-bind(borderRadius);
     background-color: v-bind(backgroundColor);
@@ -125,6 +123,7 @@
       flex: 0 0 auto;
     }
     &__content {
+      position: relative;
       flex: 1 1 auto;
       padding: v-bind(padding);
     }

@@ -4,6 +4,7 @@
     :class="classes"
     :title="title"
     v-bind="$attrs"
+    @click="handleClick"
   >
     <span v-if="iconLeft" class="ep-button__icon ep-button__icon--left">
       <ep-icon v-bind="iconLeft" />
@@ -54,10 +55,22 @@
       isActiveMenuItem: {
         type: Boolean,
         default: false
+      },
+      command: {
+        type: Function,
+        default: undefined
       }
     },
     components: {
       EpIcon
+    },
+    methods: {
+      handleClick() {
+        this.$emit('click')
+        if (this.command) {
+          this.command()
+        }
+      }
     },
     computed: {
       element() {
@@ -143,7 +156,7 @@
     // $active-color
     &--primary {
       @include button-theme(
-        var(--color--primary),
+        var(--primary-color--base),
         var(--primary-color--border),
         var(--primary-color--text),
         var(--primary-color--hover),

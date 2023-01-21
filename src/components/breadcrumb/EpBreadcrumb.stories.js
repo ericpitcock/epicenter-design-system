@@ -48,6 +48,7 @@ const Template = args => ({
       useHeader
       useFooter
       height="100%"
+      padding="3rem"
       overflow="hidden"
     >
       <template #header>
@@ -58,6 +59,12 @@ const Template = args => ({
         <template #right>
         </template>
       </ep-header>
+      </template>
+      <template #default>
+        <div class="copy-block">
+          <h1>Breadcrumb</h1>
+          <p>Breadcrumbs are used in user interface design as a way to provide users with a clear and intuitive navigation path, indicating their current location within a website or application. They can also help users understand the relationship between different pages, and quickly navigate back to higher-level sections of the site. This allows for a better user experience and increase the usability of the website.</p>
+        </div>
       </template>
       <template #footer>
         <ep-footer />

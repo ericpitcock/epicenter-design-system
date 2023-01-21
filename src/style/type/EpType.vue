@@ -90,7 +90,7 @@
             desc: 'Blocks of text you expect people to read',
             meta: [
               'font-size: 1.5rem (15px)',
-              'line-height: 1.6em (16px)',
+              'line-height: 2.4rem (24px)',
               'font-weight: 400 (regular)',
               'max-width: 60rem (600px)'
             ],
