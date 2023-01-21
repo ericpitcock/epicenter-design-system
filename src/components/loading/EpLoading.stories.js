@@ -26,19 +26,12 @@ export default {
       },
       defaultValue: 'var(--border-radius--large)'
     },
-    // loading: {
-    //   name: 'Loading',
-    //   control: {
-    //     type: 'boolean'
-    //   },
-    //   defaultValue: true
-    // },
     messages: {
       name: 'Message',
       control: {
         type: 'array'
       },
-      defaultValue: defaultMessage
+      defaultValue: refresh
     },
     messageDelay: {
       name: 'Message Delay (ms)',
@@ -50,29 +43,21 @@ export default {
   }
 }
 
-const defaultMessage = [
+const refresh = [
   {
     icon: 'oval',
-    message: 'Loading…'
+    message: 'Refreshing data…'
   }
 ]
 
-const extra = [
+const clearAndRefresh = [
   {
     icon: 'oval',
-    message: 'Downloading the entire internet…'
+    message: 'Clearing local data…'
   },
   {
-    icon: 'bars',
-    message: 'Rearranging things…'
-  },
-  {
-    icon: null,
-    message: 'Refreshing the data in our system…'
-  },
-  {
-    icon: null,
-    message: 'Finishing up…'
+    icon: 'oval',
+    message: 'Fetching new data from our servers…'
   }
 ]
 
@@ -91,21 +76,22 @@ export const Loading = args => ({
   data() {
     return {
       loading: false,
-      messages: args.messages
+      messages: null
     }
   },
   methods: {
     done() {
       this.loading = false
+      this.messages = null
       console.log('done')
     },
     refresh() {
       // load default messages
-      this.messages = defaultMessage
+      this.messages = refresh
       this.loading = true
     },
     extraRefresh() {
-      this.messages = extra
+      this.messages = clearAndRefresh
       this.loading = true
       // set timeout to stop loading after 5 seconds
       // setTimeout(() => {

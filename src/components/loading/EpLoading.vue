@@ -23,10 +23,6 @@
         type: String,
         default: 'var(--border-radius--large)'
       },
-      // loading: {
-      //   type: Boolean,
-      //   default: false
-      // },
       messages: {
         type: Array,
         default: () => [{
@@ -51,24 +47,10 @@
       }
     },
     methods: {
-      // displayMessages() {
-      //   const icons = this.messages.map(message => message.icon)
-      //   const firstIcon = icons[0]
-      //   this.messages.forEach((message, index) => {
-      //     setTimeout(() => {
-      //       this.icon = message.icon === null ? firstIcon : message.icon
-      //       this.message = message.message
-      //       if (index === this.messages.length - 1) {
-      //         setTimeout(() => {
-      //           this.$emit('done')
-      //         }, this.messageDelay)
-      //       }
-      //     }, this.messageDelay * index)
-      //   })
-      // },
       cycleMessages() {
         // every set duration, display the next message and icon by loading them into data
         // when the last message is displayed, emit a done event
+        if (this.messages === null) return
         
         this.messages.forEach((message, index) => {
           setTimeout(() => {
@@ -81,47 +63,8 @@
             }
           }, this.messageDelay * index)
         })
-      },
-      displayIcons() {
-        const icons = this.messages.map(message => message.icon)
-        console.log(icons)
-        // this.running = true
-        // this.messages.forEach((message, index) => {
-        //   setTimeout(() => {
-        //     this.icon = message.icon
-        //     if (index === this.messages.length - 1) {
-        //       setTimeout(() => {
-        //         this.running = false
-        //         this.$emit('done')
-        //       }, this.messageDelay)
-        //     }
-        //   }, this.messageDelay * index)
-        // })
       }
-      // displayMessages() {
-      //   for (const item in this.messages) {
-      //     setTimeout(() => {
-      //       this.icon = this.messages[item].icon
-      //       this.message = this.messages[item].message
-
-      //     }, this.messageDelay * item)
-      //   }
-      //   for (let index = 0; index < this.messages.length; index++) {
-      //     setTimeout(() => {
-      //       this.message = this.messages[index]
-      //       if (index === this.messages.length - 1) {
-      //         setTimeout(() => {
-      //           this.$emit('done')
-      //         }, this.messageDelay)
-      //       }
-      //     }, index * this.messageDelay)
-      //   }
-      // }
-    },
-    // mounted() {
-    //   this.displayMessages()
-    //   this.displayIcons()
-    // }
+    }
   }
 </script>
 
