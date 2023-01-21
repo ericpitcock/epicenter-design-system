@@ -149,7 +149,10 @@
           {
             header: 'Color',
             key: 'color',
-            style: 'capitalize'
+            style: 'capitalize',
+            formatter: (value, key, row) => {
+              return `<span style="color: ${row.hex};">${value}</span>`
+            }
           },
           {
             header: 'CSS Custom Property',
@@ -265,7 +268,7 @@
               color: `${hue} ${level}`,
               css: `var(--${hue}-${level})`,
               hex: colors[hue][level].value,
-              style: { color: colors[hue][level].value },
+              // style: { color: colors[hue][level].value },
               contrast: this.contrast(colors[hue][level].value)
             })
           }
@@ -278,7 +281,7 @@
               color: `${gray} ${level}`,
               css: `var(--${gray}-${level})`,
               hex: grayscale[gray][level].value,
-              style: { color: grayscale[gray][level].value },
+              // style: { color: grayscale[gray][level].value },
               contrast: this.contrast(grayscale[gray][level].value)
             })
           }
@@ -293,7 +296,7 @@
             color: `Chart Sequence ${index}`,
             css: cssVar,
             hex: hexValue,
-            style: { color: hexValue },
+            // style: { color: hexValue },
             contrast: this.contrast(hexValue)
           })
         }

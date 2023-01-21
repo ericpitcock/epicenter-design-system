@@ -32,7 +32,7 @@
         <td v-if="!excluded(key) && !isComponent(key)">
           <span
             @click.stop="cellClick(value, key)"
-            v-html="formatCell(value, key)"
+            v-html="formatCell(value, key, row)"
             :class="cellStyle(key)"
           ></span>
         </td>
@@ -156,9 +156,9 @@
       excluded(key) {
         return this.exclude.includes(key)
       },
-      formatCell(value, key) {
+      formatCell(value, key, row) {
         const formatter = this.columns.find(column => column.key == key)?.formatter
-        return formatter ? formatter(value) : value
+        return formatter ? formatter(value, key, row) : value
       },
       isSelected(rowID) {
         // return rowID === null ? false : rowID == this.selected
