@@ -66,7 +66,7 @@
     },
     methods: {
       handleClick() {
-        this.$emit('click')
+        // this.$emit('click')
         if (this.command) {
           this.command()
         }

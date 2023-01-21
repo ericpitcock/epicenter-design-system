@@ -31,28 +31,28 @@ export default {
       control: {
         type: 'color'
       },
-      defaultValue: 'var(--logo-white)'
+      defaultValue: '#fff'
     },
     faceColor: {
       name: 'Face Color',
       control: {
         type: 'color'
       },
-      defaultValue: 'var(--logo-gold)'
+      defaultValue: '#f99d1c'
     },
     highlightColor: {
       name: 'Highlight Color',
       control: {
         type: 'color'
       },
-      defaultValue: 'var(--logo-yellow)'
+      defaultValue: '#fdb913'
     },
     shadowColor: {
       name: 'Shadow Color',
       control: {
         type: 'color'
       },
-      defaultValue: 'var(--logo-gray)'
+      defaultValue: '#414141'
     }
   }
 }

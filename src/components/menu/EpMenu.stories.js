@@ -1,5 +1,4 @@
 import { centered } from '@/helpers/decorators'
-import EpContainer from '@/components/container/EpContainer'
 import EpMenu from './EpMenu'
 
 const fakeDropdownItems = [
@@ -20,9 +19,7 @@ const fakeDropdownItems = [
   {
     label: 'Log click',
     iconLeft: { name: 'circle' },
-    command: () => {
-      console.log('click')
-    }
+    command: () => console.log('click')
   },
   {
     label: 'Google Maps',
@@ -38,30 +35,20 @@ const fakeDropdownItems = [
     children: [
       {
         label: 'Sub-menu item 1',
-        command: () => {
-          console.log('click')
-        }
+        command: () => console.log('click')
       },
       {
         label: 'Sub-menu item 2',
-        command: () => {
-          console.log('click')
-        }
+        command: () => console.log('click')
       },
-      {
-        divider: true
-      },
+      { divider: true },
       {
         label: 'Sub-menu item 3',
-        command: () => {
-          console.log('click')
-        }
+        command: () => console.log('click')
       },
       {
         label: 'Sub-menu item 4',
-        command: () => {
-          console.log('click')
-        }
+        command: () => console.log('click')
       }
     ]
   },
@@ -81,9 +68,7 @@ const fakeDropdownItems = [
   {
     label: 'The menuiest item'
   },
-  {
-    divider: true
-  },
+  { divider: true },
   {
     section: true,
     label: 'Section'
@@ -103,21 +88,15 @@ const fakeDropdownItems = [
     children: [
       {
         label: 'Sub-menu item 1',
-        command: () => {
-          console.log('click')
-        }
+        command: () => console.log('click')
       },
       {
         label: 'Sub-menu item 2',
-        command: () => {
-          console.log('click')
-        }
+        command: () => console.log('click')
       },
       {
         label: 'Sub-menu item 3',
-        command: () => {
-          console.log('click')
-        }
+        command: () => console.log('click')
       }
     ]
   }
@@ -150,14 +129,11 @@ export default {
 }
 
 const Template = args => ({
-  components: { EpContainer, EpMenu },
-  // data: () => ({ menuItems: fakeDropdownItems }),
+  components: { EpMenu },
   setup() {
     return { args }
   },
-  template: `
-    <ep-menu v-bind="args" />
-  `
+  template: '<ep-menu v-bind="args" />'
 })
 
 export const Menu = Template.bind({})

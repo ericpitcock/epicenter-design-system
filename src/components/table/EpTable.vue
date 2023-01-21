@@ -25,6 +25,7 @@
         :key="row.id"
         @click="rowClick(row)"
         :class="{ 'ep-table-row--selected': isSelected(row.id) }"
+        :style="row.style"
         :ref="`row-${index}`"
       >
         <template v-for="(value, key) in row" :key="key">
@@ -72,6 +73,10 @@
       data: {
         type: Array,
         required: true
+      },
+      width: {
+        type: String,
+        default: '100%'
       },
       // dateFilter: {
       //   type: Object,
@@ -206,6 +211,7 @@
 
 <style lang="scss" scoped>
   .ep-table {
+    width: v-bind(width);
     thead {
       font-variation-settings: 'wght' 600;
       user-select: none;

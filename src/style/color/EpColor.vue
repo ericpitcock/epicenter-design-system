@@ -1,29 +1,24 @@
 <template>
   <div class="colors">
-    <!-- <ep-container
-      class="colors__menu"
-      width="fit-content"
-      height="fit-content"
-      padding="1rem 0"
-    > -->
-      <ep-menu
-        :menu-items="menuItems"
-        menuType="nav"
-        :activeItem="activeItem"
-        :containerProps="containerProps"
-        @item-click="item => activeItem = item.label"
-      />
-    <!-- </ep-container> -->
+    <ep-menu
+      :menu-items="menuItems"
+      menuType="nav"
+      :activeItem="activeItem"
+      :containerProps="containerProps"
+      @item-click="item => activeItem = item.label"
+    />
     <ep-container
       id="colors__table"
       class="colors__table"
-      width="542px"
+      width="100%"
       padding="0 2rem 2rem"
       calculate-height
+      style="overscroll-behavior: contain;"
     >
       <ep-table
         :columns="tableColumns"
         :data="filteredData"
+        :exclude="['style']"
         bordered
         sticky-header
       />
@@ -32,12 +27,14 @@
 </template>
 
 <script>
+  import EpBadge from '@/components/badge/EpBadge'
   import EpContainer from '@/components/container/EpContainer'
   import EpMenu from '@/components/menu/EpMenu'
   import EpTable from '@/components/table/EpTable'
   import colors from '@/style/tokens/color/color'
   import grayscale from '@/style/tokens/color/grayscale'
   import copyToClipboard from '@/mixins/copyToClipboard'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'EpColor',
@@ -157,18 +154,23 @@
           {
             header: 'CSS Custom Property',
             key: 'css',
-            command: (value, key) => {
-              this.copyToClipboard(value)
-            },
+            command: (value, key) => this.copyToClipboard(value),
             style: 'text--copyable'
           },
           {
             header: 'Hex',
             key: 'hex',
-            command: (value, key) => {
-              this.copyToClipboard(value)
-            },
+            command: (value, key) =>  this.copyToClipboard(value),
             style: 'text--copyable'
+          },
+          {
+            header: 'Contrast',
+            key: 'contrast',
+            formatter: value => {
+              return value === 'AAA &check;' || value === 'AA &check;'
+                ? `<span class="ep-badge" style="color: var(--green-500);">${value}</span>`
+                : `<span class="ep-badge" style="color: var(--red-500);">${value}</span>`
+            }
           }
         ],
         containerProps: {
@@ -179,11 +181,73 @@
       }
     },
     components: {
+      EpBadge,
       EpContainer,
       EpMenu,
       EpTable
     },
+    methods: {
+      contrast(color) {
+        // const background = window.getComputedStyle(document.querySelector('html')).getPropertyValue('--background-1')
+        const background = this.backgroundColor
+        var rgb = function (color) {
+            if (color.indexOf('rgb') === 0) {
+                var arr = color.match(/\d+/g);
+                return {
+                    r: arr[0],
+                    g: arr[1],
+                    b: arr[2]
+                };
+            } else if (color.indexOf('#') === 0) {
+                var hex = color.length === 4 ? color.replace(/#([0-9a-f])([0-9a-f])([0-9a-f])/i, '#$1$1$2$2$3$3') : color;
+                return {
+                    r: parseInt(hex.substr(1, 2), 16),
+                    g: parseInt(hex.substr(3, 2), 16),
+                    b: parseInt(hex.substr(5, 2), 16)
+                };
+            } else {
+                return {
+                    r: 0,
+                    g: 0,
+                    b: 0
+                };
+            }
+        };
+        var luminance = function (color) {
+            var c = rgb(color);
+            var r = c.r / 255;
+            var g = c.g / 255;
+            var b = c.b / 255;
+            var R = r <= 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4);
+            var G = g <= 0.03928 ? g / 12.92 : Math.pow((g + 0.055) / 1.055, 2.4);
+            var B = b <= 0.03928 ? b / 12.92 : Math.pow((b + 0.055) / 1.055, 2.4);
+            return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+        };
+        var contrast = function (color, background) {
+            var l1 = luminance(color);
+            var l2 = luminance(background);
+            return l1 > l2 ? (l1 + 0.05) / (l2 + 0.05) : (l2 + 0.05) / (l1 + 0.05);
+        };
+        var c = contrast(color, background);
+        if (c < 4.5) {
+            return '&#x26A0;'
+        }
+        // if c is greater than or equal to 4.5 but less than 7, return 'AA'
+        else if (c >= 4.5 && c < 7) {
+            return 'AA &check;'
+        }
+        else if (c >= 7) {
+            return 'AAA &check;'
+        }
+        // return false;
+    }
+    },
     computed: {
+      ...mapState(['theme']),
+      backgroundColor() {
+        // return window.getComputedStyle(document.querySelector('html')).getPropertyValue('--background-2')
+        return this.theme === 'dark' ? '#242424' : '#fff'
+      },
       filteredData() {
         if (this.filter === '') {
           return this.tableData
@@ -193,26 +257,33 @@
       },
       tableData() {
         let data = []
+        // get colors from tokens
         for (const hue in colors) {
           for (const level in colors[hue]) {
             data.push({
               sample: colors[hue][level].value,
               color: `${hue} ${level}`,
               css: `var(--${hue}-${level})`,
-              hex: colors[hue][level].value
+              hex: colors[hue][level].value,
+              style: { color: colors[hue][level].value },
+              contrast: this.contrast(colors[hue][level].value)
             })
           }
         }
+        // get grayscale colors from tokens
         for (const gray in grayscale) {
           for (const level in grayscale[gray]) {
             data.push({
               sample: grayscale[gray][level].value,
               color: `${gray} ${level}`,
               css: `var(--${gray}-${level})`,
-              hex: grayscale[gray][level].value
+              hex: grayscale[gray][level].value,
+              style: { color: grayscale[gray][level].value },
+              contrast: this.contrast(grayscale[gray][level].value)
             })
           }
         }
+        // get chart sequence colors from css variables
         const htmlStyles = window.getComputedStyle(document.querySelector('html'))
         for (let index = 0; index < 14; index++) {
           const cssVar = (index < 10) ? `--chart-sequence-0${index}` : `--chart-sequence-${index}`
@@ -221,7 +292,9 @@
             sample: hexValue,
             color: `Chart Sequence ${index}`,
             css: cssVar,
-            hex: hexValue
+            hex: hexValue,
+            style: { color: hexValue },
+            contrast: this.contrast(hexValue)
           })
         }
         return data
@@ -243,6 +316,17 @@
       // }
     },
     watch: {
+      // watch theme from mapState
+      // $theme() {
+      //   this.tableData()
+      //   console.log('theme changed')
+      // },
+
+
+      // theme() {
+      //   this.tableData()
+      //   console.log('theme changed')
+      // },
       filteredData() {
         // scroll color table to the top when filter changes
         const colorTableContainer = document.getElementById('colors__table')
