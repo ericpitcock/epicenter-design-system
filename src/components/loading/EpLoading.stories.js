@@ -26,13 +26,13 @@ export default {
       },
       defaultValue: 'var(--border-radius--large)'
     },
-    loading: {
-      name: 'Loading',
-      control: {
-        type: 'boolean'
-      },
-      defaultValue: false
-    },
+    // loading: {
+    //   name: 'Loading',
+    //   control: {
+    //     type: 'boolean'
+    //   },
+    //   defaultValue: true
+    // },
     messages: {
       name: 'Message',
       control: {
@@ -90,7 +90,7 @@ export const Loading = args => ({
   },
   data() {
     return {
-      loading: args.loading,
+      loading: false,
       messages: args.messages
     }
   },
@@ -101,16 +101,16 @@ export const Loading = args => ({
     },
     refresh() {
       // load default messages
-      args.messages = defaultMessage
+      this.messages = defaultMessage
       this.loading = true
     },
     extraRefresh() {
-      args.messages = extra
+      this.messages = extra
       this.loading = true
       // set timeout to stop loading after 5 seconds
-      setTimeout(() => {
-        this.loading = false
-      }, 5000)
+      // setTimeout(() => {
+      //   this.loading = false
+      // }, 5000)
     }
   },
   template: `
@@ -118,6 +118,7 @@ export const Loading = args => ({
       useHeader
       useFooter
       height="100%"
+      padding="1rem 2rem"
       overflow="hidden"
     >
       <template #header>
@@ -131,7 +132,7 @@ export const Loading = args => ({
           />
           <ep-button
             @click="extraRefresh"
-            label="Extra Refresh"
+            label="Clear & Refresh"
             :iconLeft="{ name: 'refresh' }"
           />
         </template>
@@ -141,8 +142,16 @@ export const Loading = args => ({
       </ep-header>
       </template>
       <template #default>
-        <ep-loading v-show="loading" @done="done" v-bind="args" />
-        <ep-table :columns="columns" :data="fakeArray(7)" :exclude="['id']"  />
+        <ep-loading
+          v-show="loading"
+          @done="done"
+          :messages="messages"
+        />
+        <ep-table
+          :columns="columns"
+          :data="fakeArray(7)"
+          :exclude="['id']"
+        />
       </template>
       <template #footer>
         <ep-footer />

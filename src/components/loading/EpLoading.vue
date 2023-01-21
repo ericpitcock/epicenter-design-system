@@ -23,10 +23,10 @@
         type: String,
         default: 'var(--border-radius--large)'
       },
-      loading: {
-        type: Boolean,
-        default: false
-      },
+      // loading: {
+      //   type: Boolean,
+      //   default: false
+      // },
       messages: {
         type: Array,
         default: () => [{
@@ -45,13 +45,34 @@
         message: '',
       }
     },
+    watch: {
+      messages() {
+        this.cycleMessages()
+      }
+    },
     methods: {
-      displayMessages() {
-        const icons = this.messages.map(message => message.icon)
-        const firstIcon = icons[0]
+      // displayMessages() {
+      //   const icons = this.messages.map(message => message.icon)
+      //   const firstIcon = icons[0]
+      //   this.messages.forEach((message, index) => {
+      //     setTimeout(() => {
+      //       this.icon = message.icon === null ? firstIcon : message.icon
+      //       this.message = message.message
+      //       if (index === this.messages.length - 1) {
+      //         setTimeout(() => {
+      //           this.$emit('done')
+      //         }, this.messageDelay)
+      //       }
+      //     }, this.messageDelay * index)
+      //   })
+      // },
+      cycleMessages() {
+        // every set duration, display the next message and icon by loading them into data
+        // when the last message is displayed, emit a done event
+        
         this.messages.forEach((message, index) => {
           setTimeout(() => {
-            this.icon = message.icon === null ? firstIcon : message.icon
+            this.icon = message.icon
             this.message = message.message
             if (index === this.messages.length - 1) {
               setTimeout(() => {
@@ -97,10 +118,10 @@
       //   }
       // }
     },
-    mounted() {
-      this.displayMessages()
-      this.displayIcons()
-    }
+    // mounted() {
+    //   this.displayMessages()
+    //   this.displayIcons()
+    // }
   }
 </script>
 
