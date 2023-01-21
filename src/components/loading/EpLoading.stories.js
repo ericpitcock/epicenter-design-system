@@ -86,17 +86,12 @@ export const Loading = args => ({
       console.log('done')
     },
     refresh() {
-      // load default messages
       this.messages = refresh
       this.loading = true
     },
     extraRefresh() {
       this.messages = clearAndRefresh
       this.loading = true
-      // set timeout to stop loading after 5 seconds
-      // setTimeout(() => {
-      //   this.loading = false
-      // }, 5000)
     }
   },
   template: `
