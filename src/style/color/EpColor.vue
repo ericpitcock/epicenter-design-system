@@ -155,6 +155,15 @@
             }
           },
           {
+            header: 'Contrast',
+            key: 'contrast',
+            formatter: value => {
+              return value === 'AAA &check;' || value === 'AA &check;'
+                ? `<span class="ep-badge" style="color: var(--green-500);">${value}</span>`
+                : `<span class="ep-badge" style="color: var(--red-500);">${value}</span>`
+            }
+          },
+          {
             header: 'CSS Custom Property',
             key: 'css',
             command: (value, key) => this.copyToClipboard(value),
@@ -165,15 +174,6 @@
             key: 'hex',
             command: (value, key) =>  this.copyToClipboard(value),
             style: 'text--copyable'
-          },
-          {
-            header: 'Contrast',
-            key: 'contrast',
-            formatter: value => {
-              return value === 'AAA &check;' || value === 'AA &check;'
-                ? `<span class="ep-badge" style="color: var(--green-500);">${value}</span>`
-                : `<span class="ep-badge" style="color: var(--red-500);">${value}</span>`
-            }
           }
         ],
         containerProps: {
@@ -266,10 +266,10 @@
             data.push({
               sample: colors[hue][level].value,
               color: `${hue} ${level}`,
+              contrast: this.contrast(colors[hue][level].value),
               css: `var(--${hue}-${level})`,
-              hex: colors[hue][level].value,
+              hex: colors[hue][level].value
               // style: { color: colors[hue][level].value },
-              contrast: this.contrast(colors[hue][level].value)
             })
           }
         }
@@ -279,10 +279,10 @@
             data.push({
               sample: grayscale[gray][level].value,
               color: `${gray} ${level}`,
+              contrast: this.contrast(grayscale[gray][level].value),
               css: `var(--${gray}-${level})`,
-              hex: grayscale[gray][level].value,
+              hex: grayscale[gray][level].value
               // style: { color: grayscale[gray][level].value },
-              contrast: this.contrast(grayscale[gray][level].value)
             })
           }
         }
@@ -294,10 +294,10 @@
           data.push({
             sample: hexValue,
             color: `Chart Sequence ${index}`,
+            contrast: this.contrast(hexValue),
             css: cssVar,
-            hex: hexValue,
+            hex: hexValue
             // style: { color: hexValue },
-            contrast: this.contrast(hexValue)
           })
         }
         return data
