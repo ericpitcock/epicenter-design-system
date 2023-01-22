@@ -1,21 +1,21 @@
-import EpContainer from '@/components/container/EpContainer'
-import EpButton from '@/components/button/EpButton'
-import EpNotifications from './EpNotifications'
-import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
-import EpAppHeader from '@/components/app-header/EpAppHeader'
-import EpSidebarLayout from '@/templates/sidebar/EpSidebarLayout'
+import { padded } from '@/helpers/decorators'
 import E from '@/components/logo/E'
+import EpButton from '@/components/button/EpButton'
+import EpContainer from '@/components/container/EpContainer'
+import EpFooter from '@/components/footer/EpFooter'
+import EpHeader from '@/components/header/EpHeader'
+import EpNotifications from './EpNotifications'
 import store from '@/store'
 
 export default {
   title: 'Components/Notifications',
   component: EpNotifications,
-  argTypes: {
-  }
+  decorators: [padded],
+  argTypes: {}
 }
 
 // build notification object and dispatch to store
-const buildNotification = (type) => {
+const buildNotification = type => {
   const notification = {
     message: 'Your message was sent successfully',
     type
@@ -26,12 +26,11 @@ const buildNotification = (type) => {
 const Template = args => ({
   components: {
     E,
-    EpAppHeader,
     EpButton,
     EpContainer,
-    EpFlexContainer,
-    EpNotifications,
-    EpSidebarLayout
+    EpFooter,
+    EpHeader,
+    EpNotifications
   },
   setup() {
     return {
@@ -42,44 +41,44 @@ const Template = args => ({
   },
   template: `
     <ep-notifications top="5rem" right="1rem" />
-    <ep-sidebar-layout>
-      <template #app-header>
-      <ep-app-header>
-        <e />
-        <ep-button
-          kind="ghost"
-          :iconRight="{ name: 'notifications' }"
-          label=""
-          @click="store.dispatch('toggleNotificationCenter')"
-        />
-      </ep-app-header>
+    <ep-container
+      useHeader
+      useFooter
+      height="100%"
+      padding="3rem"
+      overflow="hidden"
+    >
+      <template #header>
+      <ep-header>
+        <template #left>
+          <div style="height: 3.5rem;">
+            <e
+              faceColor="transparent"
+              highlightColor="transparent"
+              shadowColor="transparent"
+              :strokeWidth="6"
+              strokeColor="var(--sky-300)"
+            />
+          </div>
+        </template>
+        <template #right>
+          <ep-button
+            label="Submit"
+            @click="buildNotification('success')"
+          />
+          <ep-button
+            label="Info"
+            @click="buildNotification('info')"
+          />
+        </template>
+      </ep-header>
       </template>
-      
-      <template #sidebar>
-      sidebar
+      <template #default>
       </template>
-      
-      <template #content>
-      <ep-container width="30rem" height="50rem">
-        <ep-flex-container
-          flex-flow="column nowrap"
-          align-items="center"
-          justify-content="center"
-          gap="2rem"
-        >
-        <h1>Notification Styles</h1>
-        <ep-button
-          label="Success"
-          @click="buildNotification('success')"
-        />
-        <ep-button
-          label="Info"
-          @click="buildNotification('info')"
-        />
-        </ep-flex-container>
-      </ep-container>
+      <template #footer>
+        <ep-footer />
       </template>
-    </ep-sidebar-layout>
+    </ep-container>
   `
 })
 

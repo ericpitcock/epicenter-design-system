@@ -1,4 +1,5 @@
 import { padded } from '@/helpers/decorators'
+import EpActionBar from '@/components/action-bar/EpActionBar'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
@@ -72,12 +73,36 @@ const destroyAndFetch = [
   },
   {
     icon: 'oval',
-    message: ''
+    message: 'Thinking about what we’ve done…'
   }
 ]
 
+const actionBarProps = {
+  items: [
+    {
+      type: 'button',
+      kind: 'ghost',
+      label: '',
+      iconLeft: { name: 'help' }
+    },
+    {
+      type: 'button',
+      kind: 'ghost',
+      label: '',
+      iconLeft: { name: 'notifications' }
+    },
+    {
+      type: 'button',
+      kind: 'ghost',
+      label: '',
+      iconLeft: { name: 'user' }
+    }
+  ]
+}
+
 export const Loading = args => ({
   components: {
+    EpActionBar,
     EpContainer,
     EpHeader,
     EpFooter,
@@ -86,7 +111,12 @@ export const Loading = args => ({
     EpLoading
   },
   setup() {
-    return { args, columns, fakeArray }
+    return {
+      args,
+      actionBarProps,
+      columns,
+      fakeArray
+    }
   },
   data() {
     return {
@@ -155,7 +185,9 @@ export const Loading = args => ({
             }"
           />
         </template>
-        <template #right></template>
+        <template #right>
+          <ep-action-bar v-bind="actionBarProps" />
+        </template>
       </ep-header>
       </template>
       <template #default>

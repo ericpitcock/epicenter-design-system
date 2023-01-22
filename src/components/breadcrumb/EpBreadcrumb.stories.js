@@ -1,4 +1,5 @@
 import { padded } from '@/helpers/decorators'
+import EpActionBar from '@/components/action-bar/EpActionBar'
 import EpBreadcrumb from './EpBreadcrumb'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
@@ -32,15 +33,42 @@ export default {
   }
 }
 
+const actionBarProps = {
+  items: [
+    {
+      type: 'button',
+      kind: 'ghost',
+      label: '',
+      iconLeft: { name: 'help' }
+    },
+    {
+      type: 'button',
+      kind: 'ghost',
+      label: '',
+      iconLeft: { name: 'notifications' }
+    },
+    {
+      type: 'button',
+      kind: 'ghost',
+      label: '',
+      iconLeft: { name: 'user' }
+    }
+  ]
+}
+
 const Template = args => ({
   components: {
+    EpActionBar,
     EpBreadcrumb,
     EpContainer,
     EpHeader,
     EpFooter
   },
   setup() {
-    return { args }
+    return {
+      actionBarProps,
+      args
+    }
   },
   // template: '<ep-breadcrumb v-bind="args" />'
   template: `
@@ -57,6 +85,7 @@ const Template = args => ({
           <ep-breadcrumb v-bind="args" />
         </template>
         <template #right>
+          <ep-action-bar v-bind="actionBarProps" />
         </template>
       </ep-header>
       </template>

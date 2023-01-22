@@ -23,115 +23,149 @@ export default {
     },
     display: {
       name: 'Display',
+      options: [
+        'block',
+        'inline',
+        'inline-block',
+        'flex',
+        'inline-flex',
+        'grid',
+        'inline-grid',
+        'flow-root'
+      ],
       control: {
         type: 'select',
-        options: [
-          'block',
-          'inline',
-          'inline-block',
-          'flex',
-          'inline-flex',
-          'grid',
-          'inline-grid',
-          'flow-root'
-        ]
+        labels: {
+          block: 'Block',
+          inline: 'Inline',
+          'inline-block': 'Inline Block',
+          flex: 'Flex',
+          'inline-flex': 'Inline Flex',
+          grid: 'Grid',
+          'inline-grid': 'Inline Grid',
+          'flow-root': 'Flow Root'
+        }
       },
       defaultValue: 'block'
     },
     width: {
       name: 'Width',
       control: {
-        type: 'text',
+        type: 'text'
       },
       defaultValue: '100%'
     },
     height: {
       name: 'Height',
       control: {
-        type: 'text',
+        type: 'text'
       },
       defaultValue: '100%'
     },
     padding: {
       name: 'Padding',
       control: {
-        type: 'text',
+        type: 'text'
       },
       defaultValue: ''
     },
     margin: {
       name: 'Margin',
       control: {
-        type: 'text',
+        type: 'text'
       },
       defaultValue: '0'
     },
     backgroundColor: {
       name: 'Background Color',
       control: {
-        type: 'text',
+        type: 'text'
       },
       defaultValue: 'var(--background-2)'
     },
     borderRadius: {
       name: 'Border Radius',
       control: {
-        type: 'text',
+        type: 'text'
       },
       defaultValue: 'var(--border-radius--large)'
     },
     borderWidth: {
       name: 'Border Width',
       control: {
-        type: 'text',
+        type: 'text'
       },
       defaultValue: '0.1rem'
     },
     borderStyle: {
       name: 'Border Style',
+      options: [
+        'none',
+        'hidden',
+        'dotted',
+        'dashed',
+        'solid',
+        'double',
+        'groove',
+        'ridge',
+        'inset',
+        'outset',
+        'initial',
+        'inherit'
+      ],
       control: {
         type: 'select',
-        options: [
-          'none',
-          'hidden',
-          'dotted',
-          'dashed',
-          'solid',
-          'double',
-          'groove',
-          'ridge',
-          'inset',
-          'outset',
-          'initial',
-          'inherit'
-        ]
+        labels: {
+          none: 'None',
+          hidden: 'Hidden',
+          dotted: 'Dotted',
+          dashed: 'Dashed',
+          solid: 'Solid',
+          double: 'Double',
+          groove: 'Groove',
+          ridge: 'Ridge',
+          inset: 'Inset',
+          outset: 'Outset',
+          initial: 'Initial',
+          inherit: 'Inherit'
+        }
       },
       defaultValue: 'solid'
     },
     borderColor: {
       name: 'Border Color',
       control: {
-        type: 'text',
+        type: 'text'
       },
       defaultValue: 'var(--border-color)'
     },
     overflow: {
       name: 'Overflow',
+      options: [
+        'visible',
+        'hidden',
+        'scroll',
+        'auto',
+        'overlay',
+        'inherit',
+        'initial',
+        'unset'
+      ],
       control: {
         type: 'select',
-        options: [
-          'visible',
-          'hidden',
-          'scroll',
-          'auto',
-          'overlay',
-          'inherit',
-          'initial',
-          'unset'
-        ]
+        labels: {
+          visible: 'Visible',
+          hidden: 'Hidden',
+          scroll: 'Scroll',
+          auto: 'Auto',
+          overlay: 'Overlay',
+          inherit: 'Inherit',
+          initial: 'Initial',
+          unset: 'Unset'
+        }
       },
-      defaultValue: 'hidden'
-    },
+      defaultValue: 'visible'
+    }
   }
 }
 
