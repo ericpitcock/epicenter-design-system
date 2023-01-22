@@ -83,7 +83,7 @@
       dividerColor: {
         type: String,
         default: 'var(--border-color)'
-      },
+      }
     },
     methods: {
       itemHover(item, index) {

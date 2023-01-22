@@ -7,27 +7,13 @@ import E from '@/components/logo/E'
 
 const fakeItems = [
   {
-    type: 'button',
-    iconLeft: { name: 'help' },
-  },
-  {
-    type: 'button', // button or dropdown
-    iconLeft: { name: 'notifications' },
-    iconRight: null,
-    title: 'This is the tooltip',
-    command: () => {
-      console.log('action bar clicked')
-    }
-  },
-  {
-    type: 'dropdown', // button or dropdown
+    type: 'dropdown',
     alignRight: true,
     button: {
       kind: 'ghost',
       label: '',
-      iconLeft: { name: 'user' },
-      iconRight: null,
-      title: 'This is the tooltip'
+      iconLeft: { name: 'help' },
+      iconRight: null
     },
     containerProps: {
       backgroundColor: 'var(--background-4)',
@@ -36,34 +22,42 @@ const fakeItems = [
       borderColor: 'var(--border-color--lighter)'
     },
     menuItems: [
-      {
-        label: 'Profile',
-        // iconLeft: { name: 'arrow-right' },
-        bind: {
-          to: '/'
-        }
-      },
-      {
-        divider: true
-      },
-      {
-        label: 'Switch account',
-        // iconLeft: { name: 'circle' },
-        command: () => {
-          console.log('click')
-        }
-      },
-      {
-        label: 'Sign out',
-        // iconLeft: { name: 'export' },
-        bind: {
-          href: 'https://www.google.com/maps'
-        }
-      }
-    ],
+      { label: 'Documentation' },
+      { label: 'API Reference' },
+      { divider: true },
+      { label: 'Contact Us' }
+    ]
+  },
+  {
+    type: 'button',
+    iconLeft: { name: 'notifications' },
+    // emit event to parent
     command: () => {
-      console.log('action bar clicked')
+      console.log('notifications clicked')
     }
+  },
+  {
+    type: 'dropdown',
+    alignRight: true,
+    button: {
+      kind: 'ghost',
+      label: '',
+      iconLeft: { name: 'user' },
+      iconRight: null
+    },
+    containerProps: {
+      backgroundColor: 'var(--background-4)',
+      padding: '1rem 0',
+      borderRadius: 'var(--border-radius)',
+      borderColor: 'var(--border-color--lighter)'
+    },
+    menuItems: [
+      { label: 'Profile' },
+      { label: 'Switch account' },
+      { label: 'Settings' },
+      { divider: true },
+      { label: 'Sign out' }
+    ]
   }
 ]
 

@@ -16,15 +16,15 @@ export default {
       },
       defaultValue: [
         {
-          text: 'Home',
+          text: 'Music Library',
           href: '#'
         },
         {
-          text: 'Library',
+          text: 'Hip Hop',
           href: '#'
         },
         {
-          text: 'Data',
+          text: 'Jay-Z',
           href: '#'
         }
       ]
