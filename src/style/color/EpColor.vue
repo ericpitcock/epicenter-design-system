@@ -5,7 +5,7 @@
       menuType="nav"
       :activeItem="activeItem"
       :containerProps="containerProps"
-      @item-click="item => activeItem = item.label"
+      @item-click="item => (activeItem = item.label)"
     />
     <ep-container
       id="colors__table"
@@ -13,15 +13,9 @@
       width="100%"
       padding="0 2rem 2rem"
       calculate-height
-      style="overscroll-behavior: contain;"
+      style="overscroll-behavior: contain"
     >
-      <ep-table
-        :columns="tableColumns"
-        :data="filteredData"
-        :exclude="['style']"
-        bordered
-        sticky-header
-      />
+      <ep-table :columns="tableColumns" :data="filteredData" :exclude="['style']" bordered sticky-header />
     </ep-container>
   </div>
 </template>
@@ -46,79 +40,79 @@
         menuItems: [
           {
             label: 'All',
-            command: () => this.filter = ''
+            command: () => (this.filter = '')
           },
           {
             label: 'Grayscale',
-            command: () => this.filter = 'gray'
+            command: () => (this.filter = 'gray')
           },
           {
             label: 'Red',
-            command: () => this.filter = 'red'
+            command: () => (this.filter = 'red')
           },
           {
             label: 'Orange',
-            command: () => this.filter = 'orange'
+            command: () => (this.filter = 'orange')
           },
           {
             label: 'Amber',
-            command: () => this.filter = 'amber'
+            command: () => (this.filter = 'amber')
           },
           {
             label: 'Yellow',
-            command: () => this.filter = 'yellow'
+            command: () => (this.filter = 'yellow')
           },
           {
             label: 'Lime',
-            command: () => this.filter = 'lime'
+            command: () => (this.filter = 'lime')
           },
           {
             label: 'Green',
-            command: () => this.filter = 'green'
+            command: () => (this.filter = 'green')
           },
           {
             label: 'Emerald',
-            command: () => this.filter = 'emerald'
+            command: () => (this.filter = 'emerald')
           },
           {
             label: 'Teal',
-            command: () => this.filter = 'teal'
+            command: () => (this.filter = 'teal')
           },
           {
             label: 'Cyan',
-            command: () => this.filter = 'cyan'
+            command: () => (this.filter = 'cyan')
           },
           {
             label: 'Sky',
-            command: () => this.filter = 'sky'
+            command: () => (this.filter = 'sky')
           },
           {
             label: 'Blue',
-            command: () => this.filter = 'blue'
+            command: () => (this.filter = 'blue')
           },
           {
             label: 'Indigo',
-            command: () => this.filter = 'indigo'
+            command: () => (this.filter = 'indigo')
           },
           {
             label: 'Violet',
-            command: () => this.filter = 'violet'
+            command: () => (this.filter = 'violet')
           },
           {
             label: 'Purple',
-            command: () => this.filter = 'purple'
+            command: () => (this.filter = 'purple')
           },
           {
             label: 'Fuchsia',
-            command: () => this.filter = 'fuchsia'
+            command: () => (this.filter = 'fuchsia')
           },
           {
             label: 'Pink',
-            command: () => this.filter = 'pink'
+            command: () => (this.filter = 'pink')
           },
           {
             label: 'Rose',
-            command: () => this.filter = 'rose'
+            command: () => (this.filter = 'rose')
           },
           {
             divider: true
@@ -129,7 +123,7 @@
           },
           {
             label: 'Chart Sequence',
-            command: () => this.filter = 'Chart'
+            command: () => (this.filter = 'Chart')
           }
         ],
         tableColumns: [
@@ -155,7 +149,7 @@
             }
           },
           {
-            header: 'Contrast',
+            header: 'Text Contrast',
             key: 'contrast',
             formatter: value => {
               return value === 'AAA &check;' || value === 'AA &check;'
@@ -172,7 +166,7 @@
           {
             header: 'Hex',
             key: 'hex',
-            command: (value, key) =>  this.copyToClipboard(value),
+            command: (value, key) => this.copyToClipboard(value),
             style: 'text--copyable'
           }
         ],
@@ -194,56 +188,55 @@
         // const background = window.getComputedStyle(document.querySelector('html')).getPropertyValue('--background-1')
         const background = this.backgroundColor
         var rgb = function (color) {
-            if (color.indexOf('rgb') === 0) {
-                var arr = color.match(/\d+/g);
-                return {
-                    r: arr[0],
-                    g: arr[1],
-                    b: arr[2]
-                };
-            } else if (color.indexOf('#') === 0) {
-                var hex = color.length === 4 ? color.replace(/#([0-9a-f])([0-9a-f])([0-9a-f])/i, '#$1$1$2$2$3$3') : color;
-                return {
-                    r: parseInt(hex.substr(1, 2), 16),
-                    g: parseInt(hex.substr(3, 2), 16),
-                    b: parseInt(hex.substr(5, 2), 16)
-                };
-            } else {
-                return {
-                    r: 0,
-                    g: 0,
-                    b: 0
-                };
+          if (color.indexOf('rgb') === 0) {
+            var arr = color.match(/\d+/g)
+            return {
+              r: arr[0],
+              g: arr[1],
+              b: arr[2]
             }
-        };
+          } else if (color.indexOf('#') === 0) {
+            var hex = color.length === 4 ? color.replace(/#([0-9a-f])([0-9a-f])([0-9a-f])/i, '#$1$1$2$2$3$3') : color
+            return {
+              r: parseInt(hex.substr(1, 2), 16),
+              g: parseInt(hex.substr(3, 2), 16),
+              b: parseInt(hex.substr(5, 2), 16)
+            }
+          } else {
+            return {
+              r: 0,
+              g: 0,
+              b: 0
+            }
+          }
+        }
         var luminance = function (color) {
-            var c = rgb(color);
-            var r = c.r / 255;
-            var g = c.g / 255;
-            var b = c.b / 255;
-            var R = r <= 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4);
-            var G = g <= 0.03928 ? g / 12.92 : Math.pow((g + 0.055) / 1.055, 2.4);
-            var B = b <= 0.03928 ? b / 12.92 : Math.pow((b + 0.055) / 1.055, 2.4);
-            return 0.2126 * R + 0.7152 * G + 0.0722 * B;
-        };
+          var c = rgb(color)
+          var r = c.r / 255
+          var g = c.g / 255
+          var b = c.b / 255
+          var R = r <= 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4)
+          var G = g <= 0.03928 ? g / 12.92 : Math.pow((g + 0.055) / 1.055, 2.4)
+          var B = b <= 0.03928 ? b / 12.92 : Math.pow((b + 0.055) / 1.055, 2.4)
+          return 0.2126 * R + 0.7152 * G + 0.0722 * B
+        }
         var contrast = function (color, background) {
-            var l1 = luminance(color);
-            var l2 = luminance(background);
-            return l1 > l2 ? (l1 + 0.05) / (l2 + 0.05) : (l2 + 0.05) / (l1 + 0.05);
-        };
-        var c = contrast(color, background);
+          var l1 = luminance(color)
+          var l2 = luminance(background)
+          return l1 > l2 ? (l1 + 0.05) / (l2 + 0.05) : (l2 + 0.05) / (l1 + 0.05)
+        }
+        var c = contrast(color, background)
         if (c < 4.5) {
-            return '&#x26A0;'
+          return '&#x26A0;'
         }
         // if c is greater than or equal to 4.5 but less than 7, return 'AA'
         else if (c >= 4.5 && c < 7) {
-            return 'AA &check;'
-        }
-        else if (c >= 7) {
-            return 'AAA &check;'
+          return 'AA &check;'
+        } else if (c >= 7) {
+          return 'AAA &check;'
         }
         // return false;
-    }
+      }
     },
     computed: {
       ...mapState(['theme']),
@@ -289,7 +282,7 @@
         // get chart sequence colors from css variables
         const htmlStyles = window.getComputedStyle(document.querySelector('html'))
         for (let index = 0; index < 14; index++) {
-          const cssVar = (index < 10) ? `--chart-sequence-0${index}` : `--chart-sequence-${index}`
+          const cssVar = index < 10 ? `--chart-sequence-0${index}` : `--chart-sequence-${index}`
           const hexValue = htmlStyles.getPropertyValue(cssVar)
           data.push({
             sample: hexValue,
@@ -301,7 +294,7 @@
           })
         }
         return data
-      },
+      }
       // chartSequence() {
       //   let data = []
       //   const htmlStyles = window.getComputedStyle(document.querySelector('html'))
@@ -324,7 +317,6 @@
       //   this.tableData()
       //   console.log('theme changed')
       // },
-
 
       // theme() {
       //   this.tableData()

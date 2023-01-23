@@ -1,4 +1,4 @@
-import faker from 'faker'
+import airports from './airports'
 import { padded } from '@/helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import EpAutocomplete from './EpAutocomplete.vue'
@@ -6,17 +6,6 @@ import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
 import E from '@/components/logo/E'
-
-const fakeArray = (length) => {
-  let arr = []
-  for (let i = 0; i < length; i++) {
-    arr.push({
-      id: faker.datatype.uuid(),
-      name: faker.address.city(),
-    })
-  }
-  return arr
-}
 
 export default {
   title: 'Components/Autocomplete',
@@ -26,10 +15,18 @@ export default {
     items: {
       name: 'Items',
       control: {
-        type: 'object'
+        type: 'array'
       },
       table: { disable: true },
-      defaultValue: fakeArray(100)
+      defaultValue: airports
+    },
+    searchableKeys: {
+      name: 'Searchable Keys',
+      control: {
+        type: 'array'
+      },
+      table: { disable: true },
+      defaultValue: ['name', 'city', 'iata_code']
     },
     placeholder: {
       name: 'Placeholder',
@@ -50,8 +47,18 @@ export default {
       },
       defaultValue: 'contains'
     }
+    // labelFormatter: {
+    //   name: 'Label Formatter',
+    //   control: {
+    //     type: 'function'
+    //   },
+    //   table: { disable: true },
+    //   defaultValue: formatAirport
+    // }
   }
 }
+
+// const formatAirport = item => `${item.name} (${item.iata_code})`
 
 const Template = args => ({
   components: {
@@ -64,6 +71,9 @@ const Template = args => ({
   },
   setup() {
     return { args }
+  },
+  mounted() {
+    // focus input on mount
   },
   template: `
     <ep-container
@@ -94,7 +104,8 @@ const Template = args => ({
       <template #default>
         <div class="copy-block">
           <h1>Autocomplete</h1>
-          <p>Autocomplete is useful in user interface design because it can save users time and effort by providing suggested completions for their input, reducing the need for typing and increasing the speed of task completion. Additionally, autocomplete can help reduce errors by providing suggestions that are likely to be correct, increasing the overall usability of the interface.</p>
+          <p>Autocomplete is a powerful tool in user interface design that enhances the user experience by providing suggestions as the user types, reducing the need for typing and increasing efficiency. It helps users find the information they need quickly and easily, making it an essential feature for any user-friendly interface.</p>
+          <p>Do fake flight number, city, airline code search like https://www.torontopearson.com/en/</p>
         </div>
       </template>
       <template #footer>

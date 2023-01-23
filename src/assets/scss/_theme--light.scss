@@ -16,20 +16,31 @@ html[data-color-theme='light'] {
   --overlay-color: rgba(255, 255, 255, 0.85);
 
   // shadow
-  --drop-shadow: 0 5px 8px rgba(0,0,0,0.05);
+  --drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.05);
 
   // text
   --text-color: var(--gray-410);
   --text-color--disabled: var(--gray-270);
   --text-color--inverse: var(--gray-0);
   --text-color--highlight: var(--yellow-300);
+
   // find closes match for this
-  --text-color--subtle: #595959;
+  --text-color--subtle: var(--gray-270);
+
   // links
   --text-color--link: var(--sky-600);
 
+  // danger
+  --text-color--danger: var(--red-600);
+
+  // warning
+  --text-color--warning: var(--amber-600);
+
+  // success
+  --text-color--success: var(--green-700);
+
   // text selection color
-  --text-selection: var(--yellow-300);
+  --text-selection: var(--orange-700);
 
   // buttons
   --button-disabled--bg-color: var(--gray-40);

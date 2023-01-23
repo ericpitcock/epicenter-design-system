@@ -5,8 +5,7 @@ import { columns, fakeArray } from './data'
 
 const container = () => {
   return {
-    template:
-      '<div style="padding: 30px;"><story/></div>'
+    template: '<div style="padding: 30px;"><story/></div>'
   }
 }
 
@@ -22,6 +21,7 @@ export default {
       },
       defaultValue: columns,
       table: {
+        disable: true,
         category: 'Data'
       }
     },
@@ -32,6 +32,7 @@ export default {
       },
       defaultValue: fakeArray(30),
       table: {
+        disable: true,
         category: 'Data'
       }
     },

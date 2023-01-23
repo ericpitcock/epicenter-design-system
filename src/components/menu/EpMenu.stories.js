@@ -115,7 +115,8 @@ export default {
       defaultValue: {
         width: '20rem',
         height: 'auto',
-        padding: '1rem 0'
+        padding: '1rem 0',
+        borderRadius: 'var(--border-radius)'
       }
     },
     menuItems: {

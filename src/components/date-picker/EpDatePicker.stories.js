@@ -1,11 +1,10 @@
-// storybook for EpDatePicker
 import EpDatePicker from './EpDatePicker'
-import { centered } from '@/helpers/decorators'
+import { padded } from '@/helpers/decorators'
 
 export default {
   title: 'Components/Date Picker',
   component: EpDatePicker,
-  // decorators: [centered],
+  decorators: [padded],
   argTypes: {
     disabled: {
       name: 'Disabled',
@@ -23,14 +22,7 @@ export default {
     },
     kind: {
       name: 'Kind',
-      options: [
-        'primary',
-        'secondary',
-        'ghost',
-        'danger',
-        'warning',
-        'success'
-      ],
+      options: ['primary', 'secondary', 'ghost', 'danger', 'warning', 'success'],
       control: {
         type: 'radio',
         labels: {
@@ -475,9 +467,9 @@ export default {
         type: 'text'
       },
       defaultValue: '23:59:59'
-    },
+    }
   }
-};
+}
 
 const Template = args => ({
   components: { EpDatePicker },
@@ -487,4 +479,4 @@ const Template = args => ({
   template: '<ep-date-picker />'
 })
 
-export const DatePicker = Template.bind({});
+export const DatePicker = Template.bind({})

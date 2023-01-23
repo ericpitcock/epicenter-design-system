@@ -60,7 +60,7 @@ const columns = [
   }
 ]
 
-const fakeArray = (length) => {
+const fakeArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
     arr.push({
@@ -69,9 +69,9 @@ const fakeArray = (length) => {
         component: 'ep-badge',
         props: {
           label: faker.random.arrayElement(['Completed', 'Cancelled']),
-          backgroundColor: 'lightgreen',
-          borderColor: 'green',
-          textColor: 'var(--text-color--inverse)',
+          backgroundColor: 'var(--background-1)',
+          borderColor: 'var(--green-600)',
+          textColor: 'var(--text-color)'
         }
       },
       start_date: faker.date.past().toISOString(),

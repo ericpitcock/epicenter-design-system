@@ -63,21 +63,18 @@ export const IconLibrary = args => ({
   },
   template: `
   <div style="padding: 30px;
-    display:flex;
+    display: flex;
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
     justify-content: flex-start;"
   >
-  <ep-container v-for="(icon, index) in svgIcons"
-    :key="index"
-    style="flex: 0 0 170px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      gap: 20px 0;"
+    <ep-container
+      v-for="(icon, index) in svgIcons"
+      useFooter
+      :key="index"
+      padding="2rem"
+      style="flex: 0 0 170px;"
     >
       <ep-icon
         :name="icon.name"
@@ -85,7 +82,9 @@ export const IconLibrary = args => ({
         :weight="args.weight"
         :size="args.size"
       />
-      <div class="text--subtle">{{ icon.name }}</div>
+      <template #footer>
+      <div class="font-size--small text--subtle">{{ icon.name }}</div>
+      </template>
     </ep-container>
   </div>
   `

@@ -38,8 +38,8 @@
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
-    // gotta use v-deep to override the dropdown's scoped styles
-    .ep-dropdown::v-deep .ep-button {
+    // gotta use :deep() to override the dropdown's scoped styles
+    .ep-dropdown :deep(.ep-button) {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
