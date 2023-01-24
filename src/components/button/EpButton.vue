@@ -228,6 +228,7 @@
       padding-right: 1rem;
       padding-left: 1rem;
       &--active {
+        color: var(--button-menu-item-text-active);
         background: var(--color--primary);
       }
     }
@@ -248,14 +249,20 @@
         font-size: var(--font-size--tiny);
       }
     }
+    // $bg-color,
+    // $border-color,
+    // $font-color,
+    // $hover-bg-color,
+    // $hover-font-color,
+    // $active-color
     &--disabled {
       @include button-theme(
-        var(--button-disabled--bg-color),
-        var(--button-disabled--border-color),
-        var(--button-disabled--text),
-        var(--button-disabled--bg-color),
-        var(--button-disabled--text),
-        var(--button-disabled--bg-color)
+        var(--background-2),
+        var(--border-color),
+        var(--text-color--disabled),
+        var(--background-2),
+        var(--text-color--subtle),
+        var(--background-2)
       );
       pointer-events: none;
       cursor: default;

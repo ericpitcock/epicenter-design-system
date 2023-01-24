@@ -129,7 +129,8 @@
 <style lang="scss" scoped>
   .ep-menu {
     &__section {
-      color: var(--color--primary);
+      // color: var(--color--primary);
+      color: var(--text-color--primary);
       padding: 0.8rem 0 0.8rem 2.2rem;
       text-transform: uppercase;
       letter-spacing: 0.1rem;

@@ -24,8 +24,14 @@
   --text-color--inverse: var(--background-1);
   --text-color--highlight: var(--yellow-600);
 
-  // find closes match for this
+  // text color
+  --text-color--primary: var(--blue-400);
+
+  // subtle text
   --text-color--subtle: var(--gray-220);
+
+  // text color disabled
+  --text-color--disabled: var(--gray-300);
 
   // links
   --text-color--link: var(--sky-300);
@@ -57,6 +63,7 @@
   --button-menu-item--hover: var(--color--primary);
   --button-menu-item--active: var(--primary-color--active);
   --button-menu-item-text-hover: var(--text-color);
+  --button-menu-item-text-active: var(--text-color);
 
   // table
   --table-stripe-color: var(--gray-410);

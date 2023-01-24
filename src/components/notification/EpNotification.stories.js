@@ -2,6 +2,7 @@ import { padded } from '@/helpers/decorators'
 import E from '@/components/logo/E'
 import EpButton from '@/components/button/EpButton'
 import EpContainer from '@/components/container/EpContainer'
+import EpFeedbackCard from '@/components/notification/EpFeedbackCard'
 import EpFooter from '@/components/footer/EpFooter'
 import EpHeader from '@/components/header/EpHeader'
 import EpNotifications from './EpNotifications'
@@ -29,6 +30,7 @@ const Template = args => ({
     EpButton,
     EpContainer,
     EpFooter,
+    EpFeedbackCard,
     EpHeader,
     EpNotifications
   },
@@ -74,6 +76,7 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #default>
+        <ep-feedback-card />
       </template>
       <template #footer>
         <ep-footer />
