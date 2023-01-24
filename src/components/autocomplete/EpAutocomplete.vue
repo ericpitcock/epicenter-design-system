@@ -2,6 +2,7 @@
   <div class="ep-autocomplete">
     <input
       class="ep-autocomplete__input"
+      :style="inputStyle"
       type="text"
       :placeholder="placeholder"
       v-model="search"
@@ -34,6 +35,10 @@
   export default {
     name: 'EpAutocomplete',
     props: {
+      inputStyle: {
+        type: Object,
+        default: () => {}
+      },
       items: {
         type: Array,
         required: true
@@ -116,6 +121,7 @@
         }
       },
       onEnter() {
+        this.$emit('selected', this.filteredItems[this.currentIndex])
         this.search = this.filteredItems[this.currentIndex].name
         this.showDropdown = false
         // blur the input
@@ -144,7 +150,7 @@
 <style lang="scss" scoped>
   .ep-autocomplete {
     position: relative;
-    width: 30rem;
+    // width: 30rem;
     margin: 0 auto;
     input {
       width: 100%;

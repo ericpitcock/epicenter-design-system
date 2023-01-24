@@ -1,6 +1,7 @@
-import airports from './airports'
+// import airports from './airports'
 import { padded } from '@/helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
+import AirportSearch from './AirportSearch.vue'
 import EpAutocomplete from './EpAutocomplete.vue'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
@@ -18,7 +19,7 @@ export default {
         type: 'array'
       },
       table: { disable: true },
-      defaultValue: airports
+      defaultValue: []
     },
     searchableKeys: {
       name: 'Searchable Keys',
@@ -64,6 +65,7 @@ const Template = args => ({
   components: {
     EpAutocomplete,
     EpActionBar,
+    AirportSearch,
     EpContainer,
     EpHeader,
     EpFooter,
@@ -80,33 +82,19 @@ const Template = args => ({
       useHeader
       useFooter
       height="100%"
-      padding="3rem"
       overflow="hidden"
     >
       <template #header>
       <ep-header>
         <template #left>
-          <div style="height: 3.5rem;">
-            <e
-              faceColor="transparent"
-              highlightColor="transparent"
-              shadowColor="transparent"
-              :strokeWidth="6"
-              strokeColor="var(--sky-300)"
-            />
-          </div>
+          <p>Airport Search</p>
         </template>
         <template #right>
-          <ep-autocomplete v-bind="args" />
         </template>
       </ep-header>
       </template>
       <template #default>
-        <div class="copy-block">
-          <h1>Autocomplete</h1>
-          <p>Autocomplete is a powerful tool in user interface design that enhances the user experience by providing suggestions as the user types, reducing the need for typing and increasing efficiency. It helps users find the information they need quickly and easily, making it an essential feature for any user-friendly interface.</p>
-          <p>Do fake flight number, city, airline code search like https://www.torontopearson.com/en/</p>
-        </div>
+        <airport-search />
       </template>
       <template #footer>
         <ep-footer />
