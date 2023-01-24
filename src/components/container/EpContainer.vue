@@ -89,7 +89,7 @@
         // } else if (!this.calculateHeight) {
         //   this.tableHeight = this.height
         // }
-        this.tableHeight = (this.calculateHeight) ? `${window.innerHeight - 60}px` : this.height
+        this.tableHeight = this.calculateHeight ? `${window.innerHeight - 60}px` : this.height
       }
     },
     mounted() {
@@ -126,6 +126,7 @@
       position: relative;
       flex: 1 1 auto;
       padding: v-bind(padding);
+      overflow: auto;
     }
     &__footer {
       flex: 0 0 auto;

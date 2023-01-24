@@ -112,21 +112,17 @@
       left: 0;
       min-width: 200px;
       padding-top: 4px;
-      z-index: 10;
+      box-shadow: var(--drop-shadow);
+      z-index: 20;
       &--align-right {
         right: 0;
         left: auto;
       }
     }
     // &__content {
-    //   display: flex;
-    //   flex-direction: column;
-    //   background: var(--background-4);
-    //   padding: 1rem 0;
-    //   border: 1px solid var(--border-color--lighter);
-    //   border-radius: 3px;
+    //   position: relative;
     //   box-shadow: var(--drop-shadow);
-    //   z-index: 20;
+    //   z-index: 2;
     // }
   }
 </style>

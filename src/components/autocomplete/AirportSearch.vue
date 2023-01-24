@@ -32,12 +32,15 @@
         airports,
         inputStyle: {
           width: '50rem',
+          height: '5rem',
           backgroundColor: '#FFF',
           color: '#000',
           border: 'none',
-          borderRadius: '30px'
+          // perfect border radius for the input
+          borderRadius: '5rem',
+          boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)'
         },
-        mapCenter: [-122.3321, 47.6062]
+        mapCenter: [-122.309306, 47.449]
       }
     },
     methods: {
@@ -65,7 +68,6 @@
     }
     .map {
       flex: 1;
-      background-color: red;
     }
   }
 </style>

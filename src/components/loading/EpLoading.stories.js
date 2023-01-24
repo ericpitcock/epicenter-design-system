@@ -121,7 +121,8 @@ export const Loading = args => ({
   data() {
     return {
       loading: false,
-      messages: null
+      messages: null,
+      tableData: this.fakeArray(7)
     }
   },
   methods: {
@@ -148,7 +149,7 @@ export const Loading = args => ({
       useHeader
       useFooter
       height="100%"
-      padding="1rem 2rem"
+      padding="0 2rem"
       overflow="hidden"
     >
       <template #header>
@@ -197,9 +198,11 @@ export const Loading = args => ({
           :messages="messages"
         />
         <ep-table
+          v-show="!loading"
           :columns="columns"
-          :data="fakeArray(7)"
+          :data="fakeArray(50)"
           :exclude="['id']"
+          stickyHeader
         />
       </template>
       <template #footer>

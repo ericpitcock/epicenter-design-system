@@ -131,7 +131,9 @@
         this.showDropdown = false
       },
       onFocus() {
-        // this.showDropdown = true;
+        this.currentIndex = -1
+        // if there's a value in the input, select it
+        if (this.search !== '') this.$el.querySelector('input').select()
       },
       onBlur() {
         this.showDropdown = false
@@ -150,16 +152,19 @@
 <style lang="scss" scoped>
   .ep-autocomplete {
     position: relative;
-    // width: 30rem;
-    margin: 0 auto;
     input {
       width: 100%;
       padding: 10px;
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius);
       outline: none;
+      font-size: var(--font-size--body);
       &:focus {
         border-color: var(--color--primary);
+      }
+      &::selection {
+        background-color: var(--color--primary);
+        color: var(--gray-0);
       }
     }
     &__dropdown {

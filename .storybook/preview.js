@@ -32,7 +32,10 @@ export const globalTypes = {
       // Array of plain string values or MenuItem shape (see below)
       items: ['light', 'dark'],
       // Property that specifies if the name of the item will be displayed
-      showName: true
+      showName: true,
+      // Change title based on selected value
+      // only works in 6.5
+      dynamicTitle: true
     }
   }
 }
