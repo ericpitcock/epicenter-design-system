@@ -150,7 +150,7 @@ export const Loading = args => ({
       useFooter
       height="100%"
       padding="0 2rem"
-      overflow="hidden"
+      overflow="auto"
     >
       <template #header>
       <ep-header>

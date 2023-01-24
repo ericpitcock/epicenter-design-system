@@ -228,7 +228,7 @@
       padding-right: 1rem;
       padding-left: 1rem;
       &--active {
-        background: var(--button-menu-item--active);
+        background: var(--color--primary);
       }
     }
     &--outlined {
