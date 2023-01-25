@@ -37,6 +37,13 @@ export default {
       },
       defaultValue: true
     },
+    disabled: {
+      name: 'Disabled',
+      control: {
+        type: 'boolean'
+      },
+      defaultValue: false
+    },
     autofocus: {
       name: 'Autofocus',
       control: {

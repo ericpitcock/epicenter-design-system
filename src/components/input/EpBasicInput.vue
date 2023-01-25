@@ -1,9 +1,5 @@
 <template>
-  <div :class="[
-    'ep-input',
-    { 'ep-input--focus': hasFocus },
-    { 'ep-input--disabled': disabled }
-  ]">
+  <div :class="['ep-input', classes]">
     <div class="ep-input__icon">
       <ep-icon v-if="icon" v-bind="icon" />
     </div>
@@ -11,6 +7,7 @@
       ref="input"
       :type="type"
       :placeholder="placeholder"
+      :disabled="disabled"
       v-model="value"
       @input="onInput"
       @focus="onFocus"
@@ -60,6 +57,10 @@
       clearable: {
         type: Boolean,
         default: true
+      },
+      disabled: {
+        type: Boolean,
+        default: false
       },
       autofocus: {
         type: Boolean,
@@ -116,9 +117,20 @@
         this.$emit('enter', event.target.value)
       },
       onClear() {
-        this.$emit('clear', '')
         this.value = ''
         this.$refs.input.focus()
+        this.$emit('clear', '')
+      }
+    },
+    computed: {
+      classes() {
+        return {
+          'ep-input--focus': this.hasFocus,
+          'ep-input--disabled': this.disabled,
+          'ep-input--error': this.error,
+          'ep-input--success': this.success,
+          'ep-input--warning': this.warning
+        }
       }
     }
   }
@@ -139,6 +151,13 @@
     &--focus {
       border-color: var(--color--primary);
     }
+    &--disabled {
+      color: var(--text-color--disabled);
+      border-color: var(--border-color--disabled);
+      input::placeholder {
+        opacity: 0.3;
+      }
+    }
     &__icon, &__clear {
       flex: 0 0 v-bind(height);
       display: flex;
@@ -153,17 +172,11 @@
       &::placeholder {
         color: var(--text-color);
       }
-      &.ep-input--focus {
+      &:focus {
         &::placeholder {
           color: transparent;
         }
       }
-      // input focus style
-      // &:focus {
-      //   &::placeholder {
-      //     color: transparent;
-      //   }
-      // }
     }
     &__clear {
       &--disabled {

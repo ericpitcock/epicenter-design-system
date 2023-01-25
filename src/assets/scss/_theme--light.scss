@@ -11,6 +11,7 @@ html[data-color-theme='light'] {
   // borders
   --border-color: var(--gray-70);
   --border-color--lighter: var(--border-color);
+  --border-color--disabled: var(--gray-70);
 
   // overlay
   --overlay-color: rgba(255, 255, 255, 0.85);
