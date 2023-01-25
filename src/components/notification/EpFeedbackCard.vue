@@ -12,7 +12,7 @@
         height="4rem"
       >
         <template #left>
-          <p>E Design System Feedback</p>
+          <p>Ep Design System Feedback</p>
         </template>
       </ep-header>
     </template>
@@ -43,7 +43,7 @@
       </div>
     </template>
     <template #footer>
-    <ep-footer>
+    <ep-footer padding="0 3rem">
       <ep-button
         kind="primary"
         label="Submit"
@@ -92,10 +92,10 @@
         type: Function,
         default: () => {}
       },
-      submit: {
-        type: Function,
-        default: () => {}
-      }
+      // submit: {
+      //   type: Function,
+      //   default: () => {}
+      // }
     },
     data() {
       return {
@@ -107,6 +107,9 @@
     methods: {
       setRating(index) {
         this.rating = index + 1
+      },
+      submit() {
+        this.$emit('submit')
       }
     }
   }

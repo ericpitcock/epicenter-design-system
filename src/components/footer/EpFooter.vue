@@ -55,6 +55,10 @@
 <style lang="scss" scoped>
   .ep-footer {
     // display: block;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
     width: 100%;
     height: v-bind(height);
     padding: v-bind(padding);

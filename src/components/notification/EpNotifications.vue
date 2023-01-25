@@ -17,7 +17,7 @@
         v-for="notification in filteredNotifications"
         :key="notification.id"
         :id="notification.id"
-        :message="`${notification.message} ${notification.id}`"
+        :message="`${notification.message}`"
         :type="notification.type"
         @dismiss="removeNotification(notification)"
       />

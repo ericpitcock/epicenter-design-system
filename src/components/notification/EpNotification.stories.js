@@ -18,7 +18,7 @@ export default {
 // build notification object and dispatch to store
 const buildNotification = type => {
   const notification = {
-    message: 'Your message was sent successfully',
+    message: 'Thank you for your feedback!',
     type
   }
   store.dispatch('addNotification', notification)
@@ -42,7 +42,6 @@ const Template = args => ({
     }
   },
   template: `
-    <ep-notifications top="5rem" right="1rem" />
     <ep-container
       useHeader
       useFooter
@@ -65,22 +64,12 @@ const Template = args => ({
           </div>
         </template>
         <template #right>
-          <ep-button
-            label="Submit"
-            @click="buildNotification('success')"
-          />
-          <ep-button
-            label="Info"
-            @click="buildNotification('info')"
-          />
         </template>
       </ep-header>
       </template>
       <template #default>
-        <ep-feedback-card />
-      </template>
-      <template #footer>
-        <ep-footer />
+        <ep-notifications top="5rem" right="1rem" />
+        <ep-feedback-card @submit="buildNotification('success')" />
       </template>
     </ep-container>
   `
