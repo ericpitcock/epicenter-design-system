@@ -98,7 +98,7 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
-          <div style="width: 27px; height: 3.5rem;">
+          <div style="width: 27px;">
             <e
               faceColor="transparent"
               highlightColor="transparent"
