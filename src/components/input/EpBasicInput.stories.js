@@ -26,9 +26,8 @@ export default {
       control: {
         type: 'object'
       },
-      defaultValue: {
-        name: 'search'
-      }
+      // defaultValue: { name: 'search' }
+      defaultValue: null
     },
     clearable: {
       name: 'Clearable',

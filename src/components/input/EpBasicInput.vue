@@ -1,7 +1,7 @@
 <template>
   <div :class="['ep-input', classes]">
-    <div class="ep-input__icon">
-      <ep-icon v-if="icon" v-bind="icon" />
+    <div v-if="icon" class="ep-input__icon">
+      <ep-icon v-bind="icon" />
     </div>
     <input
       ref="input"
@@ -13,6 +13,7 @@
       @focus="onFocus"
       @blur="onBlur"
       @keydown="onKeyDown"
+      @keydown.esc="onEsc"
     />
     <div
       v-if="clearable"
@@ -37,6 +38,7 @@
     },
     data() {
       return {
+        hasError: false,
         hasFocus: false,
         value: ''
       }
@@ -99,10 +101,14 @@
         default: 'var(--text-color)'
       }
     },
-    emits: ['input', 'focus', 'blur', 'enter', 'clear'],
+    emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear'],
     methods: {
       onInput(event) {
         this.$emit('input', event.target.value)
+      },
+      onEsc(event) {
+        this.$refs.input.blur()
+        this.$emit('esc', event.target.value)
       },
       onFocus(event) {
         this.hasFocus = true
@@ -125,6 +131,7 @@
     computed: {
       classes() {
         return {
+          'ep-input--has-icon': this.icon,
           'ep-input--focus': this.hasFocus,
           'ep-input--disabled': this.disabled,
           'ep-input--error': this.error,
@@ -148,6 +155,22 @@
     background-color: v-bind(backgroundColor);
     color: v-bind(color);
     overflow: hidden;
+    input {
+      flex: 1;
+      height: 100%;
+      padding: 0 1.2rem;
+      &::placeholder {
+        color: var(--text-color);
+      }
+      &:focus {
+        &::placeholder {
+          color: transparent;
+        }
+      }
+    }
+    &--has-icon input {
+      padding-left: 0;
+    }
     &--focus {
       border-color: var(--color--primary);
     }
@@ -164,67 +187,12 @@
       justify-content: center;
       align-items: center;
       height: v-bind(height);
-      // background-color: red;
-    }
-    input {
-      flex: 1;
-      height: 100%;
-      &::placeholder {
-        color: var(--text-color);
-      }
-      &:focus {
-        &::placeholder {
-          color: transparent;
-        }
-      }
     }
     &__clear {
+      cursor: pointer;
       &--disabled {
-        // normal cursor
         cursor: default;
       }
-      cursor: pointer;
-      // width: v-bind(height);
-      // background-color: blue;
     }
   }
-  // .ep-input {
-  //   display: flex;
-  //   flex-flow: row nowrap;
-  //   align-items: center;
-  //   width: 100%;
-  //   height: 5rem;
-  //   background-color: #fff;
-  //   color: #000;
-  //   border: none;
-  //   border-radius: 5rem;
-  //   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  //   .ep-input__left-icon,
-  //   .ep-input__right-icon {
-  //     display: flex;
-  //     flex-flow: row nowrap;
-  //     align-items: center;
-  //     justify-content: center;
-  //     width: 5rem;
-  //     height: 100%;
-  //     color: #000;
-  //     background-color: red;
-  //     border: none;
-  //     border-radius: 5rem;
-  //     svg {
-  //       width: 2rem;
-  //       height: 2rem;
-  //     }
-  //   }
-  //   input {
-  //     flex: 1;
-  //     height: 100%;
-  //     background-color: transparent;
-  //     border: none;
-  //     outline: none;
-  //     font-size: 2rem;
-  //     padding: 0 2rem;
-  //     background-color: green;
-  //   }
-  // }
 </style>
