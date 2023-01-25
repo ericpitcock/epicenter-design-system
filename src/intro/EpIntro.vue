@@ -4,13 +4,18 @@
       <div class="logo-container">
         <e faceColor="#fff16c" highlightColor="white" shadowColor="var(--gray-500)" strokeColor="var(--gray-500)" />
       </div>
-      <h1 class="font-size--jumbo">E Design System</h1>
+      <div class="copy-block">
+        <h1 class="font-size--jumbo">Ep Design System</h1>
+        <p>Vue components designed and built by <a class="text-link--underlined--inverse" href="https://www.ericpitcock.com">Eric Pitcock</a>.</p>
+      </div>  
       <div class="yellow-circle"></div>
       <div class="purple-circle"></div>
     </div>
-    <div class="copy-block">
-      <p>Vue components designed and built by <a href="https://www.ericpitcock.com">Eric Pitcock</a>.</p>
-      <p>Check out the code on <a href="https://github.com/ericpitcock/ep-design-system">GitHub</a>.</p>
+    <div class="content">
+      <div class="copy-block">
+        <p>This project began as a way to design and build reusable components for my own projects, but it has since evolved into a comprehensive learning experience. Through researching, designing, building, and testing components, I’ve gained a deeper understanding of how design systems can be used to create user-friendly and accessible experiences for all users.</p>
+        <p>This is a forever project, and probably being worked on as you read this, so expect some pieces to be in a non-working state.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -72,7 +77,7 @@
         filter: blur(150px);
       }
     }
-    .copy-block {
+    .content {
       padding: 4rem 8rem;
       background: var(--background-3);
       border-radius: 0 0 var(--border-radius--large) var(--border-radius--large);

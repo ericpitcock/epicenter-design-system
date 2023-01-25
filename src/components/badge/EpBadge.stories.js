@@ -127,7 +127,6 @@ const Template = args => ({
       <ep-badge v-bind="args" />
     </ep-flex-container>
   </ep-container>
-  <ep-table :columns="columns" :data="data" />
   `
 })
 

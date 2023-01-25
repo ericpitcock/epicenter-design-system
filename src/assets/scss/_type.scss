@@ -74,6 +74,14 @@ html {
   a {
     color: var(--text-color--link);
   }
+  .text-link--underlined--inverse {
+    color: var(--text-color--inverse);
+    text-decoration: underline;
+    &:hover {
+      color: var(--text-color--inverse);
+      text-decoration: none;
+    }
+  }
   @media (hover: hover) and (pointer: fine) {
     a:hover {
       color: var(--text-color--link);
@@ -102,7 +110,7 @@ html {
     background-color: var(--text-color--highlight);
     outline: 2px solid var(--text-color--highlight);
     &::before {
-      content: 'Copy to clipboard';
+      content: 'Click to copy';
       position: absolute;
       bottom: calc(100% + 5px);
       margin-left: -2px;

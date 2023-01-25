@@ -1,0 +1,18 @@
+import EpNavigation from './EpNavigation'
+
+export default {
+  title: 'Insight/Navigation',
+  component: EpNavigation,
+  argTypes: {},
+  parameters: {
+    controls: { hideNoControlsWarning: true }
+  }
+}
+
+const Template = (args, { argTypes }) => ({
+  components: { EpNavigation },
+  props: Object.keys(argTypes),
+  template: '<ep-navigation />'
+})
+
+export const Navigation = Template.bind({})

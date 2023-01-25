@@ -152,11 +152,14 @@
     position: relative;
     input {
       width: 100%;
-      padding: 10px;
+      padding: 10px 10px 10px 80px;
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius);
       outline: none;
       font-size: var(--font-size--body);
+      background-image: url('/airplane.svg');
+      background-repeat: no-repeat;
+      background-position: 14px 50%;
       &:focus {
         border-color: var(--color--primary);
       }

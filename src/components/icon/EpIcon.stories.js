@@ -83,7 +83,10 @@ export const IconLibrary = args => ({
         :size="args.size"
       />
       <template #footer>
-      <div class="font-size--small text--subtle">{{ icon.name }}</div>
+      <div
+        class="font-size--small text--subtle"
+        style="padding: 1rem 2rem; border-top: 1px solid var(--border-color);"
+      >{{ icon.name }}</div>
       </template>
     </ep-container>
   </div>

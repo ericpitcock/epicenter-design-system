@@ -1,0 +1,174 @@
+<template>
+  <div class="nav-container">
+    <nav class="main-nav">
+      <div class="main-nav__item main-nav__item--logo">
+        <esentire-logo :type="logoType" />
+      </div>
+      <template v-for="(navItem, index) in navItems" :key="index">
+        <router-link
+          :to="navItem.path"
+          class="main-nav__item"
+        >
+          <ep-icon :name="navItem.icon" />
+          <div class="main-nav__item__name">{{ navItem.name }}</div>
+        </router-link>
+        <div v-if="index === 2" class="main-nav__item__divider" :key="`divider${index}`"></div>
+      </template>
+    </nav>
+  </div>
+</template>
+
+<script>
+  import { mapState } from 'vuex'
+
+  import EpIcon from '@/components/icon/EpIcon'
+  import EsentireLogo from './EsentireLogo'
+  
+  export default {
+    name: 'Navigation',
+    components: {
+      EpIcon,
+      EsentireLogo
+    },
+    data: () => ({
+      navItems: [
+        {
+          name: 'Summary',
+          icon: 'dashboard',
+          path: '/'
+        },
+        {
+          name: 'Assets',
+          icon: 'display',
+          path: '/assets'
+        },
+        {
+          name: 'Investigations',
+          icon: 'target',
+          path: '/investigations'
+        },
+        {
+          name: 'Risk Rating',
+          icon: 'star',
+          path: '/risk'
+        },
+        {
+          name: 'Service Info',
+          icon: 'info',
+          path: '/services'
+        },
+        {
+          name: 'Reports',
+          icon: 'report',
+          path: '/reports'
+        },
+        {
+          name: 'Files',
+          icon: 'file',
+          path: '/files'
+        },
+        {
+          name: 'Settings',
+          icon: 'settings',
+          path: '/settings'
+        }
+      ]
+    }),
+    computed: {
+      ...mapState(['sidebar']),
+      logoType() {
+        return this.sidebar ? 'full' : 'icon'
+      }
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  .nav-container {
+    grid-column: 1 / 1;
+    grid-row: 2 / 2;
+    padding: 30px 20px;
+    .grid--nav-collapsed & {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @media (max-width: 1024px) {
+      // display: none;
+    }
+  }
+  .main-nav {
+    position: fixed;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    .grid--nav-collapsed & {
+      width: 50px;
+      align-items: center;
+    }
+    &__item {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding-left: 30px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      text-decoration: none;
+      user-select: none;
+      & + & {
+        margin-top: 2px;
+      }
+      &--logo {
+        margin-bottom: 30px;
+        &:hover {
+          background: transparent !important;
+        }
+      }
+      .grid--nav-collapsed & {
+        justify-content: center;
+        width: 40px;
+        padding: 0;
+        &:hover .main-nav__item__name {
+          display: block;
+          position: absolute;
+          left: 42px;
+          padding: 4px 10px;
+          border-radius: 3px;
+          background: var(--background-4);
+          border: 1px solid var(--border-color--lighter);
+          font-size: var(--font-size--small);
+          color: var(--text-color) !important;
+          white-space: nowrap;
+        }
+      }
+      &:not(.router-link-exact-active):hover {
+        background: var(--nav-link-hover-bg-color);
+        cursor: pointer;
+      }
+      &.router-link-exact-active {
+        background-image: var(--nav-link-active-bg-color);
+        .main-nav__item__name { color: var(--nav-link-active-text-color) !important; }
+        .ep-icon { color: var(--nav-link-active-icon-color) !important; }
+      }
+      &__divider {
+        align-self: center;
+        width: 160px;
+        margin: 30px 0;
+        border-bottom: 1px solid var(--border-color);
+        .grid--nav-collapsed & {
+          width: 30px;
+        }
+      }
+      .ep-icon {
+        color: var(--nav-link-icon-color);
+      }
+      &__name {
+        margin-left: 13px;
+        font-weight: 600;
+        color: var(--text-color);
+        .grid--nav-collapsed & {
+          display: none;
+        }
+      }
+    }
+  }
+</style>

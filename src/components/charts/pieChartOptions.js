@@ -48,27 +48,27 @@ const pieChartOptions = {
           y: 1.2
         },
         {
-          name: 'Other',
+          name: 'Netscape',
           y: 1
         },
         {
-          name: 'Farts',
+          name: 'Brave',
           y: 1
         },
         {
-          name: 'Poop',
+          name: 'DuckDuckGo',
           y: 1
         },
         {
-          name: 'Butt',
+          name: 'Yandex',
           y: 1
         },
         {
-          name: 'PeePee',
+          name: 'Vivaldi',
           y: 1
         },
         {
-          name: 'Hershey',
+          name: 'Samsung Internet',
           y: 1
         }
       ]

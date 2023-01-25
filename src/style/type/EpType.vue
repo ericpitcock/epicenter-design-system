@@ -32,7 +32,7 @@
     </template>
     <template v-else="activeTab === 1">
       <div>
-        Fira Code
+        Fira Code info coming soon
       </div>
     </template>
   </ep-container>
