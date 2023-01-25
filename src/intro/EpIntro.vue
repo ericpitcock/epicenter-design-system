@@ -44,6 +44,10 @@
       color: var(--gray-440);
       border-radius: var(--border-radius--large) var(--border-radius--large) 0 0;
       overflow: hidden;
+      .copy-block {
+        position: relative;
+        z-index: 1;
+      }
       .logo-container {
         position: relative;
         z-index: 1;
