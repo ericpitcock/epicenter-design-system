@@ -133,6 +133,7 @@ export const Map = args => ({
     <ep-container
       useHeader
       useFooter
+      max-width="120rem"
       height="100%"
       overflow="hidden"
     >

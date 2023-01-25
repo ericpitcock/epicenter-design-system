@@ -132,8 +132,6 @@
       },
       onFocus() {
         this.currentIndex = -1
-        // if there's a value in the input, select it
-        if (this.search !== '') this.$el.querySelector('input').select()
       },
       onBlur() {
         this.showDropdown = false

@@ -55,6 +55,13 @@ export default {
       },
       defaultValue: '100%'
     },
+    maxWidth: {
+      name: 'Max Width',
+      control: {
+        type: 'text'
+      },
+      defaultValue: '100%'
+    },
     height: {
       name: 'Height',
       control: {

@@ -40,6 +40,10 @@
         type: String,
         default: '100%'
       },
+      maxWidth: {
+        type: String,
+        default: '100%'
+      },
       height: {
         type: String,
         default: 'auto'
@@ -113,6 +117,7 @@
     flex-flow: column nowrap;
     width: v-bind(width);
     margin: v-bind(margin);
+    max-width: v-bind(maxWidth);
     border-radius: v-bind(borderRadius);
     background-color: v-bind(backgroundColor);
     border-width: v-bind(borderWidth);

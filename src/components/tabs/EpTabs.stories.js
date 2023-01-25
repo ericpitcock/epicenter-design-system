@@ -45,6 +45,7 @@ const Template = args => ({
     <ep-container
       useHeader
       useFooter
+      max-width="120rem"
       height="100%"
       padding="3rem"
       overflow="hidden"

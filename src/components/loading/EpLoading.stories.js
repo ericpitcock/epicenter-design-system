@@ -73,7 +73,7 @@ const destroyAndFetch = [
   },
   {
     icon: 'oval',
-    message: 'Thinking about what we’ve done…'
+    message: 'Considering the repercussions of this action…'
   }
 ]
 
@@ -148,6 +148,7 @@ export const Loading = args => ({
     <ep-container
       useHeader
       useFooter
+      max-width="120rem"
       height="100%"
       padding="0 2rem"
       overflow="auto"

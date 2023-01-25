@@ -1,9 +1,10 @@
-<!-- vue 3 options api feedback component with 5 start rating using EpIcon, textarea, and submit EpButton -->
 <template>
   <ep-container
     use-header
     use-footer
+    width="40rem"
     padding="3rem"
+    backgroundColor="var(--background-1)"
     overflow="hidden"
   >
     <template #header>
@@ -26,13 +27,18 @@
           }"
           @click="setRating(index)"
         >
-          <ep-icon name="star" />
+          <ep-icon
+            name="star"
+            :size="24"
+            weight="light"
+            :class="{ 'gold': (index + 1) <= rating }"
+          />
         </div>
       </div>
       <div class="ep-feedback-card__body__textarea">
         <textarea
           v-model="feedback"
-          placeholder="What do you think about this design system?"
+          placeholder="Any additional comments?"
         />
       </div>
     </template>
@@ -41,7 +47,7 @@
       <ep-button
         kind="primary"
         label="Submit"
-        :disabled="!feedback"
+        :disabled="!rating"
         @click="submit"
       />
     </ep-footer>
@@ -100,7 +106,7 @@
     },
     methods: {
       setRating(index) {
-        this.rating = index
+        this.rating = index + 1
       }
     }
   }
@@ -165,7 +171,7 @@
 
         textarea {
           width: 100%;
-          height: 100%;
+          height: 10rem;
           padding: 0.5rem;
           border: 1px solid var(--border-color);
           border-radius: 0.25rem;
@@ -178,6 +184,11 @@
       display: flex;
       justify-content: flex-end;
     }
+  }
+
+  :deep(.gold svg path) {
+    fill: gold;
+    stroke: gold;
   }
 
 </style>
