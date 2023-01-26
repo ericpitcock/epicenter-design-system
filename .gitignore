@@ -1,7 +1,2 @@
-.DS_Store
-node_modules
-node_modules (working)
-storybook-static
-_temp
-src/components/test-stories
-publishing
+node_modules/
+storybook-static/
