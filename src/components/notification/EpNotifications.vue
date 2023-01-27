@@ -2,6 +2,9 @@
   <!-- <Teleport to="body"> -->
   <!-- <div v-if="hasActiveNotifications" class="ep-notifications" :style="position"> -->
   <div class="ep-notifications" :style="position">
+    <div class="ep-notifications__header">
+      <p class="font-size--small text--subtle">Notifications Center</p>
+    </div>
     <ep-flex-container
       flexFlow="column nowrap"
       gap="1rem"
@@ -90,7 +93,31 @@
   .ep-notifications {
     // position: fixed;
     // z-index: 1000;
-    padding: 1rem;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    // stretch children to fill the container
+    align-items: stretch;
+    justify-content: center;
+    padding: 0 2rem 2rem 2rem;
+    &__header {
+      display: flex;
+      align-items: center;
+      height: 4.1rem;
+      // background: var(--background-2);
+      // padding: 0 2rem;
+      // border-bottom: 1px solid var(--border-color);
+      // margin-bottom: 1rem;
+    }
+  }
+  .ep-notifications--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: var(--background-2);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
   }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
