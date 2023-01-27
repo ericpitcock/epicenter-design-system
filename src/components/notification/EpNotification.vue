@@ -69,7 +69,7 @@
       }
     },
     mounted() {
-      console.log(this.alertstyle)
+      // console.log(this.alertstyle)
     }
   }
 </script>

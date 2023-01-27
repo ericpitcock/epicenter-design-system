@@ -58,11 +58,11 @@
             icon: 'target',
             path: '/investigations'
           },
-          {
-            name: 'Risk Rating',
-            icon: 'star',
-            path: '/risk'
-          },
+          // {
+          //   name: 'Risk Rating',
+          //   icon: 'star',
+          //   path: '/risk'
+          // },
           {
             name: 'Service Info',
             icon: 'info',

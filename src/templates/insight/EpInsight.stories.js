@@ -7,13 +7,6 @@ export default {
   title: 'Templates/Sidebar',
   component: EpInsight,
   argTypes: {
-    layoutOption: {
-      name: 'Full Screen Content',
-      control: {
-        type: 'boolean'
-      },
-      defaultValue: true
-    }
   },
   parameters: {
     controls: { hideNoControlsWarning: true }

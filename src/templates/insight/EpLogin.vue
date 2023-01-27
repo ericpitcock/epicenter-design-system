@@ -1,146 +1,131 @@
 <template>
-  <div class="login">
-    <div class="login__container">
-      <div class="login__container__header">
-        <h1 class="login__container__header__title">Login</h1>
-        <p class="login__container__header__subtitle">Please login to your account</p>
-      </div>
-      <div class="login__container__form">
+  <div class="ep-login">
+    <ep-container
+      width="400px"
+      padding="0 3rem 6rem 3rem"
+      use-header
+      use-footer
+      style="box-shadow: var(--drop-shadow);"
+    >
+      <template #header>
+        <div class="ep-login__header">
+          <acme-logo :type="full" />
+        </div>
+      </template>
+      <div class="ep-login__form">
         <form @submit.prevent="login">
-          <div class="login__container__form__input">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              v-model="email"
-              placeholder="Enter your email"
-              required
-            />
-          </div>
-          <div class="login__container__form__input">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              v-model="password"
-              placeholder="Enter your password"
-              required
-            />
-          </div>
-          <div class="login__container__form__input">
-            <button type="submit" class="login__container__form__input__button">
-              Login
-            </button>
-          </div>
+          <ep-basic-input
+            type="email"
+            id="email"
+            v-model="email"
+            placeholder="Enter your email"
+            background-color="var(--background-1)"
+            required
+          />
+          <ep-basic-input
+            type="password"
+            id="password"
+            v-model="password"
+            placeholder="Enter your password"
+            background-color="var(--background-1)"
+            required
+          />
+          <ep-button
+            type="submit"
+            label="Sign In"
+            kind="primary"
+          />
         </form>
       </div>
-      <div class="login__container__footer">
-        <p class="login__container__footer__text">
-          Don't have an account? <router-link to="/register">Register</router-link>
-        </p>
-        <p class="login__container__footer__text">
-          <router-link to="/forgot-password">Forgot password?</router-link>
-        </p>
-      </div>
-    </div>
+      <template #footer>
+        <div class="ep-login__footer">
+          <p class="text--subtle">You can just click Sign In :-)</p>
+        </div>
+      </template>
+    </ep-container>
   </div>
 </template>
 
 <script>
-export default {
-  name: "Login",
-  data() {
-    return {
-      email: "",
-      password: "",
-    };
-  },
-  methods: {
-    login() {
-      this.$store.dispatch("auth/login", {
-        email: this.email,
-        password: this.password,
-      });
+  import AcmeLogo from './AcmeLogo'
+  import EpBasicInput from '@/components/input/EpBasicInput'
+  import EpButton from '@/components/button/EpButton'
+  import EpContainer from '@/components/container/EpContainer'
+
+  export default {
+    name: 'EpLogin',
+    components: {
+      AcmeLogo,
+      EpBasicInput,
+      EpButton,
+      EpContainer,
+      EpBasicInput
     },
-  },
-};
+    data() {
+      return {
+        email: '',
+        password: '',
+      };
+    },
+    methods: {
+      login() {
+        // this.$store.dispatch('auth/login', {
+        //   email: this.email,
+        //   password: this.password,
+        // })
+        // send to route /
+        this.$router.push('/')
+      },
+    },
+  }
 </script>
 
 <style lang="scss" scoped>
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: var(--color-background);
-  .login__container {
-    width: 400px;
-    background-color: var(--color-white);
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    .login__container__header {
-      text-align: center;
-      .login__container__header__title {
-        font-size: 2rem;
-        font-weight: 600;
-        color: var(--color-primary);
-      }
-      .login__container__header__subtitle {
-        font-size: 1rem;
-        color: var(--color-text);
-      }
+  .ep-login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background: var(--background-1);
+    // a beautiful gradient with purples and blues
+    // background: linear-gradient(135deg, #5f2c82, #49a09d);
+    // that but darker
+    background: linear-gradient(135deg, #3d0c40, #2a7e5b);
+    // give it one more step in between to smooth it out
+    // background: linear-gradient(135deg, #310c40, #2a7e5b, #1d93b4);
+    &__header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6rem;
+      // background: green;
     }
-    .login__container__form {
-      margin-top: 30px;
-      .login__container__form__input {
-        margin-bottom: 20px;
-        label {
-          display: block;
-          font-size: 1rem;
-          color: var(--color-text);
-        }
-        input {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid var(--color-border);
-          border-radius: 5px;
-          outline: none;
-          &:focus {
-            border-color: var(--color-primary);
-          }
-        }
-      }
-      .login__container__form__input__button {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: var(--color-primary);
-        color: var(--color-white);
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        &:hover {
-          background-color: var(--color-primary-dark);
+    &__form {
+      display: flex;
+      flex-direction: column;
+      // justify-content: center;
+      // align-items: center;
+      // background: red;
+      & > form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        & > * + * {
+          margin-top: 2rem;
         }
       }
     }
-    .login__container__footer {
-      margin-top: 30px;
-      text-align: center;
-      .login__container__footer__text {
-        font-size: 1rem;
-        color: var(--color-text);
-        a {
-          color: var(--color-primary);
-          text-decoration: none;
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
+    &__footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      padding: 2rem;
     }
   }
-}
 </style>

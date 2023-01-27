@@ -2,7 +2,6 @@
   <ep-app-grid v-bind="gridProps" >
     <template #header>
       <ep-insight-app-header
-        style=""
         @menuButtonClicked="toggleLeftPanel"
         @notificationsButtonClicked="toggleRightPanel"
       />

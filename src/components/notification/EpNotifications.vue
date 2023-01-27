@@ -72,7 +72,7 @@
         // return this.hasActiveNotifications
         //   ? this.notifications.filter(notification => notification.active)
         //   : this.notifications
-        console.log('filteredNotifications', this.notifications)
+        // console.log('filteredNotifications', this.notifications)
         return this.notifications
       },
       isNotificationsEmpty() {

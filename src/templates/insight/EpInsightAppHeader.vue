@@ -17,7 +17,7 @@
           label: 'User Settings',
           iconLeft: { name: 'settings' }
         },{
-          label: 'Logout',
+          label: 'Sign Out',
           iconLeft: { name: 'arrow-right' },
           bind: {
             to: '/login'

@@ -116,6 +116,7 @@
     display: flex;
     flex-flow: column nowrap;
     width: v-bind(width);
+    height: v-bind(height);
     margin: v-bind(margin);
     max-width: v-bind(maxWidth);
     border-radius: v-bind(borderRadius);
