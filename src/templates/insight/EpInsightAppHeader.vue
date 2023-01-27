@@ -18,7 +18,10 @@
           iconLeft: { name: 'settings' }
         },{
           label: 'Logout',
-          iconLeft: { name: 'arrow-right' }
+          iconLeft: { name: 'arrow-right' },
+          bind: {
+            to: '/login'
+          }
         }]"
         :button="{
           kind: 'ghost',
@@ -101,7 +104,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px 0 5px;
+    padding: 0 30px 0 6px;
     background: var(--app-header-background);
     border-bottom: 1px solid var(--border-color);
     z-index: 20;

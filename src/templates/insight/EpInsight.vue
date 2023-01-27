@@ -14,7 +14,9 @@
       <router-view />
     </template>
     <template #right-panel>
-      <ep-notifications />
+      <div class="right-panel__container">
+        <ep-notifications />
+      </div>
     </template>
   </ep-app-grid>
 </template>
@@ -68,4 +70,8 @@
 </script>
 
 <style lang="scss" scoped>
+  .right-panel__container {
+    height: 100%;
+    border-left: 1px solid var(--border-color);
+  }
 </style>

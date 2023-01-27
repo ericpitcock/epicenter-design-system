@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="content-body">
-      <p v-for="(n, index) of 20" :key="index">
+      <p v-for="(n, index) of 60" :key="index">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
         porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et
         faucibus arcu condimentum sed.Lorem ipsum dolor sit amet,
@@ -53,7 +53,9 @@
 <style lang="scss" scoped>
   .content-container {
     // max-width: 120rem;
+    height: fit-content;
     padding: 4rem;
     background: var(--background-2);
+    border-left: 1px solid var(--border-color);
   }
 </style>

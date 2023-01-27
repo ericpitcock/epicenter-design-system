@@ -1,9 +1,8 @@
 <template>
-  <!-- <Teleport to="body"> -->
-  <!-- <div v-if="hasActiveNotifications" class="ep-notifications" :style="position"> -->
   <div class="ep-notifications" :style="position">
-    <div class="ep-notifications__header">
-      <p class="font-size--small text--subtle">Notifications Center</p>
+    <div class="ep-notifications__header font-size--small">
+      <p class="text--subtle">Notification Center</p>
+      <p class="text--link">Clear all</p>
     </div>
     <ep-flex-container
       flexFlow="column nowrap"
@@ -27,7 +26,6 @@
     </template>
     </ep-flex-container>
   </div>
-  <!-- </Teleport> -->
 </template>
 
 <script>
@@ -102,6 +100,7 @@
     padding: 0 2rem 2rem 2rem;
     &__header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       height: 4.1rem;
       // background: var(--background-2);

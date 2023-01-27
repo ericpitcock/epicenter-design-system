@@ -90,6 +90,15 @@ html {
   }
 }
 
+.text--link {
+  color: var(--text-color--link);
+  &:hover {
+    color: var(--text-color--link);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
 .text--subtle {
   color: var(--text-color--subtle);
 }

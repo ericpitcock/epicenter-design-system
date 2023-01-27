@@ -59,19 +59,24 @@ export default {
         flex: 1;
         display: flex;
         overflow: scroll;
+        // hide scrollbars
+        &::-webkit-scrollbar {
+          display: none;
+        }
         .left-panel {
           position: sticky;
           top: 0;
         }
         .content {
-          height: fit-content;
-          border-left: 1px solid var(--border-color);
+          // height: fit-content;
+          height: 100%;
+          // border-left: 1px solid var(--border-color);
         }
       }
     }
     .right-panel {
-      flex: 0 0 300px;
-      border-left: 1px solid var(--border-color);
+      flex: 0 0 341px;
+      // border-left: 1px solid var(--border-color);
     }
   }
 </style>

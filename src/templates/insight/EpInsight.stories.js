@@ -1,5 +1,6 @@
 import vueRouter from 'storybook-vue3-router'
 import EpInsight from './EpInsight'
+import EpLogin from './EpLogin'
 import Dashboard from './Dashboard'
 
 export default {
@@ -36,11 +37,11 @@ const customRoutes = [
     name: 'dashboard',
     component: Dashboard
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   component: AboutComponent
-  // }
+  {
+    path: '/login',
+    name: 'login',
+    component: EpLogin
+  }
 ]
 
 Sidebar.decorators = [
