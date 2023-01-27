@@ -100,6 +100,7 @@
     // grid-column: 1 / 1;
     // grid-row: 2 / 2;
     padding: 30px 20px;
+    background: var(--background-1);
     &--collapsed {
       padding-left: 0;
       padding-right: 0;

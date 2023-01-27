@@ -6,7 +6,13 @@
   --background-4: var(--gray-390);
 
   // app header
-  --app-header-background: var(--background-1);
+  // --app-header-background: var(--background-1);
+  // gradient from deep purple to deep blue
+  --app-header-background: linear-gradient(
+    45deg,
+    hsl(240, 11%, 12%) 50%,
+    hsl(246, 47%, 29%) 100%
+  );
 
   // borders
   --border-color: var(--gray-380);

@@ -90,6 +90,7 @@
   .ep-notifications {
     // position: fixed;
     // z-index: 1000;
+    padding: 1rem;
   }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
