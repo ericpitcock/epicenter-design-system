@@ -13,8 +13,7 @@ export default {
         min: 0,
         max: 360,
         step: 1
-      },
-      defaultValue: 220
+      }
     },
     saturation: {
       name: 'Saturation',
@@ -23,8 +22,7 @@ export default {
         min: 0,
         max: 100,
         step: 1
-      },
-      defaultValue: 100
+      }
     },
     lightness: {
       name: 'Lightness',
@@ -33,8 +31,7 @@ export default {
         min: 0,
         max: 100,
         step: 1
-      },
-      defaultValue: 60
+      }
     }
   },
   parameters: {
@@ -51,3 +48,9 @@ const Template = args => ({
 })
 
 export const ColorTest = Template.bind({})
+
+ColorTest.args = {
+  hue: 220,
+  saturation: 100,
+  lightness: 60
+}

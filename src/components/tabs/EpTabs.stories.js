@@ -12,21 +12,7 @@ export default {
     items: {
       control: {
         type: 'array'
-      },
-      defaultValue: [
-        {
-          label: 'Tab 1',
-          value: 'tab1'
-        },
-        {
-          label: 'Tab 2',
-          value: 'tab2'
-        },
-        {
-          label: 'Tab 3',
-          value: 'tab3'
-        }
-      ]
+      }
     }
   }
 }
@@ -74,3 +60,20 @@ const Template = args => ({
 })
 
 export const Tabs = Template.bind({})
+
+Tabs.args = {
+  items: [
+    {
+      label: 'Tab 1',
+      value: 'tab1'
+    },
+    {
+      label: 'Tab 2',
+      value: 'tab2'
+    },
+    {
+      label: 'Tab 3',
+      value: 'tab3'
+    }
+  ]
+}

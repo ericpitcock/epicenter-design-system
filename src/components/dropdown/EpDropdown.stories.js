@@ -49,29 +49,25 @@ export default {
       name: 'Align right',
       control: {
         type: 'boolean'
-      },
-      defaultValue: true
+      }
     },
     button: {
       name: 'Button',
       control: {
         type: 'object'
-      },
-      defaultValue: buttonDefaults
+      }
     },
     containerProps: {
       name: 'Container props',
       control: {
         type: 'object'
-      },
-      defaultValue: containerProps
+      }
     },
     menuItems: {
       name: 'Menu items',
       control: {
         type: 'array'
-      },
-      defaultValue: fakeDropdownItems
+      }
     }
   }
 }
@@ -121,3 +117,10 @@ const Template = args => ({
 })
 
 export const Dropdown = Template.bind({})
+
+Dropdown.args = {
+  alignRight: true,
+  button: buttonDefaults,
+  containerProps,
+  menuItems: fakeDropdownItems
+}

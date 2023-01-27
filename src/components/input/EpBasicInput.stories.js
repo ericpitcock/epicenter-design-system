@@ -11,100 +11,85 @@ export default {
       control: {
         type: 'select',
         options: ['text', 'password', 'email', 'number', 'tel', 'url']
-      },
-      defaultValue: 'text'
+      }
     },
     placeholder: {
       name: 'Placeholder',
       control: {
         type: 'text'
-      },
-      defaultValue: 'Placeholder'
+      }
     },
     icon: {
       name: 'Icon',
       control: {
         type: 'object'
-      },
-      // defaultValue: { name: 'search' }
-      defaultValue: null
+      }
     },
     clearable: {
       name: 'Clearable',
       control: {
         type: 'boolean'
-      },
-      defaultValue: true
+      }
     },
     disabled: {
       name: 'Disabled',
       control: {
         type: 'boolean'
-      },
-      defaultValue: false
+      }
     },
     autofocus: {
       name: 'Autofocus',
       control: {
         type: 'boolean'
-      },
-      defaultValue: false
+      }
     },
     width: {
       name: 'Width',
       control: {
         type: 'text'
-      },
-      defaultValue: '100%'
+      }
     },
     height: {
       name: 'Height',
       control: {
         type: 'text'
-      },
-      defaultValue: '40px'
+      }
     },
     borderWidth: {
       name: 'Border Width',
       control: {
         type: 'text'
-      },
-      defaultValue: '0.1rem'
+      }
     },
     borderStyle: {
       name: 'Border Style',
       control: {
         type: 'text'
-      },
-      defaultValue: 'solid'
+      }
     },
     borderColor: {
       name: 'Border Color',
       control: {
         type: 'text'
-      },
-      defaultValue: 'var(--border-color)'
+      }
     },
     borderRadius: {
       name: 'Border Radius',
       control: {
         type: 'text'
-      },
-      defaultValue: 'var(--border-radius)'
+      }
     },
     backgroundColor: {
       name: 'Background Color',
       control: {
         type: 'text'
-      },
-      defaultValue: 'var(--background-2)'
+      }
     },
     color: {
       name: 'Color',
       control: {
         type: 'text'
-      },
-      defaultValue: 'var(--text-color)'
+      }
     }
   }
 }
@@ -122,3 +107,20 @@ const Template = args => ({
 })
 
 export const BasicInput = Template.bind({})
+
+BasicInput.args = {
+  type: 'text',
+  placeholder: 'Placeholder',
+  icon: null,
+  clearable: true,
+  disabled: false,
+  autofocus: false,
+  width: '100%',
+  height: '40px',
+  borderWidth: '0.1rem',
+  borderStyle: 'solid',
+  borderColor: 'var(--border-color)',
+  borderRadius: 'var(--border-radius)',
+  backgroundColor: 'var(--background-2)',
+  color: 'var(--text-color)'
+}

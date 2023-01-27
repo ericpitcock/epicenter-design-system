@@ -14,21 +14,7 @@ export default {
       name: 'Items',
       control: {
         type: 'array'
-      },
-      defaultValue: [
-        {
-          text: 'Music Library',
-          href: '#'
-        },
-        {
-          text: 'Hip Hop',
-          href: '#'
-        },
-        {
-          text: 'Jay-Z',
-          href: '#'
-        }
-      ]
+      }
     }
   }
 }
@@ -104,3 +90,20 @@ const Template = args => ({
 })
 
 export const Breadcrumb = Template.bind({})
+
+Breadcrumb.args = {
+  items: [
+    {
+      text: 'Music Library',
+      href: '#'
+    },
+    {
+      text: 'Hip Hop',
+      href: '#'
+    },
+    {
+      text: 'Jay-Z',
+      href: '#'
+    }
+  ]
+}

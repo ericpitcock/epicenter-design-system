@@ -17,29 +17,25 @@ export default {
       name: 'Background Color',
       control: {
         type: 'text'
-      },
-      defaultValue: 'var(--overlay-color)'
+      }
     },
     borderRadius: {
       name: 'Border Radius',
       control: {
         type: 'text'
-      },
-      defaultValue: 'var(--border-radius--large)'
+      }
     },
     messages: {
       name: 'Message',
       control: {
         type: 'array'
-      },
-      defaultValue: refresh
+      }
     },
     messageDelay: {
       name: 'Message Delay (ms)',
       control: {
         type: 'number'
-      },
-      defaultValue: 2000
+      }
     }
   }
 }
@@ -212,3 +208,10 @@ export const Loading = args => ({
     </ep-container>
   `
 })
+
+Loading.args = {
+  backgroundColor: 'var(--overlay-color)',
+  borderRadius: 'var(--border-radius--large)',
+  messages: refresh,
+  messageDelay: 2000
+}

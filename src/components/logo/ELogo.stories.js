@@ -13,8 +13,7 @@ export default {
         min: 20,
         max: 200,
         step: 1
-      },
-      defaultValue: 200
+      }
     },
     strokeWidth: {
       name: 'Stroke width',
@@ -23,36 +22,31 @@ export default {
         min: 1,
         max: 10,
         step: 1
-      },
-      defaultValue: 3
+      }
     },
     strokeColor: {
       name: 'Stroke Color',
       control: {
         type: 'color'
-      },
-      defaultValue: '#fff'
+      }
     },
     faceColor: {
       name: 'Face Color',
       control: {
         type: 'color'
-      },
-      defaultValue: '#f99d1c'
+      }
     },
     highlightColor: {
       name: 'Highlight Color',
       control: {
         type: 'color'
-      },
-      defaultValue: '#fdb913'
+      }
     },
     shadowColor: {
       name: 'Shadow Color',
       control: {
         type: 'color'
-      },
-      defaultValue: '#414141'
+      }
     }
   }
 }
@@ -70,3 +64,12 @@ const Template = args => ({
 })
 
 export const Logo = Template.bind({})
+
+Logo.args = {
+  size: 200,
+  strokeWidth: 3,
+  strokeColor: '#fff',
+  faceColor: '#f99d1c',
+  highlightColor: '#fdb913',
+  shadowColor: '#414141'
+}

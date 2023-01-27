@@ -18,23 +18,20 @@ export default {
       control: {
         type: 'array'
       },
-      table: { disable: true },
-      defaultValue: []
+      table: { disable: true }
     },
     searchableKeys: {
       name: 'Searchable Keys',
       control: {
         type: 'array'
       },
-      table: { disable: true },
-      defaultValue: ['name', 'city', 'iata_code']
+      table: { disable: true }
     },
     placeholder: {
       name: 'Placeholder',
       control: {
         type: 'text'
-      },
-      defaultValue: 'Search'
+      }
     },
     queryType: {
       name: 'Query Type',
@@ -45,16 +42,14 @@ export default {
           contains: 'Contains',
           startsWith: 'Starts With'
         }
-      },
-      defaultValue: 'contains'
+      }
     }
     // labelFormatter: {
     //   name: 'Label Formatter',
     //   control: {
     //     type: 'function'
     //   },
-    //   table: { disable: true },
-    //   defaultValue: formatAirport
+    //   table: { disable: true }
     // }
   }
 }
@@ -105,3 +100,11 @@ const Template = args => ({
 })
 
 export const Autocomplete = Template.bind({})
+
+Autocomplete.args = {
+  items: [],
+  searchableKeys: ['name', 'city', 'iata_code'],
+  placeholder: 'Search',
+  queryType: 'contains'
+}
+

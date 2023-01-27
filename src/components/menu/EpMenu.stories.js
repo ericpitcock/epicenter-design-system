@@ -111,20 +111,13 @@ export default {
       name: 'Container Props',
       control: {
         type: 'object'
-      },
-      defaultValue: {
-        width: '20rem',
-        height: 'auto',
-        padding: '1rem 0',
-        borderRadius: 'var(--border-radius)'
       }
     },
     menuItems: {
       name: 'Menu items',
       control: {
         type: 'array'
-      },
-      defaultValue: fakeDropdownItems
+      }
     }
   }
 }
@@ -138,3 +131,13 @@ const Template = args => ({
 })
 
 export const Menu = Template.bind({})
+
+Menu.args = {
+  containerProps: {
+    width: '20rem',
+    height: 'auto',
+    padding: '1rem 0',
+    borderRadius: 'var(--border-radius)'
+  },
+  menuItems: fakeDropdownItems
+}

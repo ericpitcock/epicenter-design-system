@@ -14,36 +14,31 @@ export default {
       name: 'Label',
       control: {
         type: 'text',
-      },
-      defaultValue: 'Subscribed',
+      }
     },
     backgroundColor: {
       name: 'Background Color',
       control: {
         type: 'text',
-      },
-      defaultValue: 'var(--background-4)'
+      }
     },
     borderColor: {
       name: 'Border Color',
       control: {
         type: 'text',
-      },
-      defaultValue: 'var(--border-color--lighter)'
+      }
     },
     textColor: {
       name: 'Text Color',
       control: {
         type: 'text',
-      },
-      defaultValue: 'var(--text-color)'
+      }
     },
     uppercase: {
       name: 'Uppercase',
       control: {
         type: 'boolean',
-      },
-      defaultValue: false
+      }
     }
   }
 }
@@ -131,3 +126,11 @@ const Template = args => ({
 })
 
 export const Badge = Template.bind({})
+
+Badge.args = {
+  label: 'Subscribed',
+  backgroundColor: 'var(--background-4)',
+  borderColor: 'var(--border-color--lighter)',
+  textColor: 'var(--text-color)',
+  uppercase: false
+}

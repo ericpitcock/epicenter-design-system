@@ -12,23 +12,20 @@ export default {
       control: {
         type: 'select',
         options: iconNames
-      },
-      defaultValue: 'arrow-up'
+      }
     },
     color: {
       name: 'Color',
       control: {
         type: 'text'
-      },
-      defaultValue: 'currentColor'
+      }
     },
     weight: {
       name: 'Weight',
       control: {
         type: 'radio',
         options: ['extra-light', 'light', 'regular', 'bold']
-      },
-      defaultValue: 'regular'
+      }
     },
     size: {
       name: 'Size',
@@ -37,8 +34,7 @@ export default {
         min: 20,
         max: 60,
         step: 2
-      },
-      defaultValue: 20
+      }
     },
     type: {
       table: { disable: true }
@@ -53,6 +49,13 @@ export const Icon = args => ({
   },
   template: '<ep-icon v-bind="args" />'
 })
+
+Icon.args = {
+  name: 'arrow-up',
+  color: 'currentColor',
+  weight: 'regular',
+  size: 20
+}
 
 Icon.decorators = [centered]
 
@@ -93,3 +96,9 @@ export const IconLibrary = args => ({
   </div>
   `
 })
+
+IconLibrary.args = {
+  color: 'currentColor',
+  weight: 'regular',
+  size: 20
+}

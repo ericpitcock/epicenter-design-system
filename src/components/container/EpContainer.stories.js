@@ -18,8 +18,7 @@ export default {
       name: 'Header',
       control: {
         type: 'boolean'
-      },
-      defaultValue: true
+      }
     },
     display: {
       name: 'Display',
@@ -45,64 +44,55 @@ export default {
           'inline-grid': 'Inline Grid',
           'flow-root': 'Flow Root'
         }
-      },
-      defaultValue: 'block'
+      }
     },
     width: {
       name: 'Width',
       control: {
         type: 'text'
-      },
-      defaultValue: '100%'
+      }
     },
     maxWidth: {
       name: 'Max Width',
       control: {
         type: 'text'
-      },
-      defaultValue: '100%'
+      }
     },
     height: {
       name: 'Height',
       control: {
         type: 'text'
-      },
-      defaultValue: '100%'
+      }
     },
     padding: {
       name: 'Padding',
       control: {
         type: 'text'
-      },
-      defaultValue: ''
+      }
     },
     margin: {
       name: 'Margin',
       control: {
         type: 'text'
-      },
-      defaultValue: '0'
+      }
     },
     backgroundColor: {
       name: 'Background Color',
       control: {
         type: 'text'
-      },
-      defaultValue: 'var(--background-2)'
+      }
     },
     borderRadius: {
       name: 'Border Radius',
       control: {
         type: 'text'
-      },
-      defaultValue: 'var(--border-radius--large)'
+      }
     },
     borderWidth: {
       name: 'Border Width',
       control: {
         type: 'text'
-      },
-      defaultValue: '0.1rem'
+      }
     },
     borderStyle: {
       name: 'Border Style',
@@ -136,15 +126,13 @@ export default {
           initial: 'Initial',
           inherit: 'Inherit'
         }
-      },
-      defaultValue: 'solid'
+      }
     },
     borderColor: {
       name: 'Border Color',
       control: {
         type: 'text'
-      },
-      defaultValue: 'var(--border-color)'
+      }
     },
     overflow: {
       name: 'Overflow',
@@ -170,8 +158,7 @@ export default {
           initial: 'Initial',
           unset: 'Unset'
         }
-      },
-      defaultValue: 'visible'
+      }
     }
   }
 }
@@ -211,3 +198,19 @@ const Template = args => ({
 })
 
 export const Container = Template.bind({})
+
+Container.args = {
+  header: true,
+  display: 'block',
+  width: '100%',
+  maxWidth: '120rem',
+  height: '100%',
+  padding: '',
+  margin: '0',
+  backgroundColor: 'var(--background-2)',
+  borderRadius: 'var(--border-radius--large)',
+  borderWidth: '0.1rem',
+  borderStyle: 'solid',
+  borderColor: 'var(--border-color)',
+  overflow: 'hidden'
+}

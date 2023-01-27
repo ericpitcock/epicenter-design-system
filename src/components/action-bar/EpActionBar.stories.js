@@ -69,8 +69,7 @@ export default {
     items: {
       control: {
         type: 'array'
-      },
-      defaultValue: fakeItems
+      }
     }
   }
 }
@@ -127,3 +126,7 @@ const Template = args => ({
 })
 
 export const ActionBar = Template.bind({})
+
+ActionBar.args = {
+  items: fakeItems
+}

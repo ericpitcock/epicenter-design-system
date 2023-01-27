@@ -19,7 +19,6 @@ export default {
       control: {
         type: 'object'
       },
-      defaultValue: columns,
       table: {
         disable: true,
         category: 'Data'
@@ -30,36 +29,31 @@ export default {
       control: {
         type: 'array'
       },
-      defaultValue: fakeArray(30),
       table: {
         disable: true,
         category: 'Data'
       }
     },
     exclude: {
-      defaultValue: ['id'],
       table: { disable: true }
     },
     selectable: {
       name: 'Selectable',
       control: {
         type: 'boolean'
-      },
-      defaultValue: false
+      }
     },
     bordered: {
       name: 'Bordered',
       control: {
         type: 'boolean'
-      },
-      defaultValue: false
+      }
     },
     compact: {
       name: 'Compact',
       control: {
         type: 'boolean'
-      },
-      defaultValue: false
+      }
     },
     selected: {
       table: { disable: true }
@@ -68,29 +62,25 @@ export default {
       name: 'Sortable',
       control: {
         type: 'boolean'
-      },
-      defaultValue: false
+      }
     },
     stickyHeader: {
       name: 'Sticky Header',
       control: {
         type: 'boolean'
-      },
-      defaultValue: true
+      }
     },
     stickyTop: {
       name: 'Sticky Top',
       control: {
         type: 'text'
-      },
-      defaultValue: '0'
+      }
     },
     striped: {
       name: 'Striped',
       control: {
         type: 'boolean'
-      },
-      defaultValue: false
+      }
     }
   }
 }
@@ -108,3 +98,17 @@ const Template = args => ({
 })
 
 export const Table = Template.bind({})
+
+Table.args = {
+  columns: columns,
+  data: fakeArray(30),
+  exclude: ['id'],
+  selectable: false,
+  bordered: false,
+  compact: false,
+  selected: [],
+  sortable: false,
+  stickyHeader: true,
+  stickyTop: '0',
+  striped: false
+}

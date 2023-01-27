@@ -46,8 +46,7 @@ export default {
           'London': [-0.1278, 51.5074],
           'Paris': [2.3522, 48.8566]
         }
-      },
-      defaultValue: [-122.3321, 47.6062]
+      }
     },
     // flyTo: {
     //   name: 'Fly To',
@@ -60,61 +59,53 @@ export default {
     //       'London': [-0.1278, 51.5074],
     //       'Paris': [2.3522, 48.8566]
     //     }
-    //   },
-    //   defaultValue: null
+    //   }
     // },
     mapZoom: {
       name: 'Map Zoom',
       control: {
         type: 'number'
-      },
-      defaultValue: 12
+      }
     },
     mapStyle: {
       name: 'Map Style',
       control: {
         type: 'radio',
         options: mapStyles(store)
-      },
-      defaultValue: 'mapbox://styles/mapbox/streets-v11'
+      }
     },
     mapSource: {
       table: { disable: true }
       // name: 'Map Source',
       // control: {
       //   type: 'object'
-      // },
-      // defaultValue: null
+      // }
     },
     mapLayer: {
       table: { disable: true }
       // name: 'Map Layer',
       // control: {
       //   type: 'object'
-      // },
-      // defaultValue: null
+      // }
     },
     scrollZoom: {
       name: 'Scroll Zoom',
       control: {
         type: 'boolean'
-      },
-      defaultValue: true
+      }
     },
     navigationControl: {
       name: 'Navigation Control',
       control: {
         type: 'boolean'
-      },
-      defaultValue: false
+      }
     },
     fitToBounds: {
       table: { disable: true }
       // name: 'Fit Bounds',
       // control: {
       //   type: 'boolean'
-      // },
-      // defaultValue: false
+      // }
     },
   }
 }
@@ -158,3 +149,14 @@ export const Map = args => ({
     </ep-container>
   `
 })
+
+Map.args = {
+  mapCenter: [-122.3321, 47.6062],
+  mapZoom: 12,
+  mapStyle: 'mapbox://styles/mapbox/streets-v11',
+  mapSource: null,
+  mapLayer: null,
+  scrollZoom: true,
+  navigationControl: false,
+  fitToBounds: false
+}

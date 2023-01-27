@@ -14,15 +14,13 @@ export default {
       name: 'Disabled',
       control: {
         type: 'boolean'
-      },
-      defaultValue: false
+      }
     },
     outlined: {
       name: 'Outlined',
       control: {
         type: 'boolean'
-      },
-      defaultValue: false
+      }
     },
     kind: {
       name: 'Kind',
@@ -44,8 +42,7 @@ export default {
           warning: 'Warning',
           success: 'Success'
         }
-      },
-      defaultValue: 'primary'
+      }
     },
     size: {
       name: 'Size',
@@ -56,36 +53,31 @@ export default {
           default: 'Default',
           small: 'Small'
         }
-      },
-      defaultValue: 'default'
+      }
     },
     title: {
       name: 'Title(Tooltip)',
       control: {
         type: 'text'
-      },
-      defaultValue: 'This is the tooltip'
+      }
     },
     to: {
       name: 'to (Router Link Path)',
       control: {
         type: 'text'
-      },
-      defaultValue: ''
+      }
     },
     href: {
       name: 'href',
       control: {
         type: 'text'
-      },
-      defaultValue: ''
+      }
     },
     label: {
       name: 'Label',
       control: {
         type: 'text'
-      },
-      defaultValue: 'Download'
+      }
     },
     iconLeft: {
       name: 'Icon Left',
@@ -93,36 +85,20 @@ export default {
         type: 'object',
         // options: iconNames
       },
-      defaultValue: undefined,
       table: {
         category: 'Icon'
       }
     },
-    // iconLeftColor: {
-    //   name: 'Icon Left Color',
-    //   control: {
-    //     type: 'color'
-    //   },
-    //   defaultValue: undefined
-    // },
     iconRight: {
       name: 'Icon Right',
       control: {
         type: 'object',
         // options: iconNames
       },
-      defaultValue: undefined,
       table: {
         category: 'Icon'
       }
-    },
-    // iconRightColor: {
-    //   name: 'Icon Right Color',
-    //   control: {
-    //     type: 'color'
-    //   },
-    //   defaultValue: undefined
-    // }
+    }
   }
 }
 
@@ -140,6 +116,19 @@ const Template = (args) => ({
 })
 
 export const Button = Template.bind({})
+
+Button.args = {
+  disabled: false,
+  outlined: false,
+  kind: 'primary',
+  size: 'default',
+  title: 'This is the tooltip',
+  to: '',
+  href: '',
+  label: 'Download',
+  iconLeft: undefined,
+  iconRight: undefined
+}
 
 Button.decorators = [
   vueRouter()
