@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import generateID from '@/helpers/generateID'
+import faker from 'faker'
 
 export default createStore({
   state: {
@@ -16,7 +17,7 @@ export default createStore({
         active: false,
         message: 'App version 1.0.3 is now available',
         alertstyle: 'info',
-        timestamp: 1620000000000
+        timestamp: faker.date.recent()
       },
       // give me three more with unique IDs
       {
@@ -24,21 +25,21 @@ export default createStore({
         active: false,
         message: 'Your message was sent successfully',
         alertstyle: 'success',
-        timestamp: 1620000000000
+        timestamp: faker.date.recent()
       },
       {
         id: '3',
         active: false,
         message: 'You’re running low on storage',
         alertstyle: 'warning',
-        timestamp: 1620000000000
+        timestamp: faker.date.past()
       },
       {
         id: '4',
         active: false,
         message: 'Your account has been suspended',
         alertstyle: 'error',
-        timestamp: 1620000000000
+        timestamp: faker.date.past()
       }
     ],
     notificationCenterOpen: false,

@@ -43,16 +43,12 @@
       }
     },
     methods: {
-      toggleContentWidth() {
-        this.layoutOption = !this.layoutOption
-      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
   .content-container {
-    // max-width: 120rem;
     height: fit-content;
     padding: 4rem;
     background: var(--background-2);

@@ -1,7 +1,8 @@
 import vueRouter from 'storybook-vue3-router'
 import EpInsight from './EpInsight'
 import EpLogin from './EpLogin'
-import Dashboard from './Dashboard'
+import Dashboard from './views/Dashboard'
+import Assets from './views/Assets'
 
 export default {
   title: 'Templates/Sidebar',
@@ -29,6 +30,11 @@ const customRoutes = [
     path: '/',
     name: 'dashboard',
     component: Dashboard
+  },
+  {
+    path: '/assets',
+    name: 'assets',
+    component: Assets
   },
   {
     path: '/login',
