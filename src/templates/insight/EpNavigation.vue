@@ -2,16 +2,16 @@
   <div class="nav-container">
     <nav class="main-nav">
       <div class="main-nav__item main-nav__item--logo">
-        <esentire-logo :type="logoType" />
+        <acme-logo :type="logoType" />
       </div>
       <template v-for="(navItem, index) in navItems" :key="index">
-        <router-link
+        <a
           :to="navItem.path"
           class="main-nav__item"
         >
           <ep-icon :name="navItem.icon" />
           <div class="main-nav__item__name">{{ navItem.name }}</div>
-        </router-link>
+        </a>
         <div v-if="index === 2" class="main-nav__item__divider" :key="`divider${index}`"></div>
       </template>
     </nav>
@@ -22,18 +22,18 @@
   import { mapState } from 'vuex'
 
   import EpIcon from '@/components/icon/EpIcon'
-  import EsentireLogo from './EsentireLogo'
+  import AcmeLogo from './AcmeLogo'
   
   export default {
     name: 'Navigation',
     components: {
       EpIcon,
-      EsentireLogo
+      AcmeLogo
     },
     data: () => ({
       navItems: [
         {
-          name: 'Summary',
+          name: 'Dashboard',
           icon: 'dashboard',
           path: '/'
         },
@@ -85,8 +85,8 @@
 
 <style lang="scss" scoped>
   .nav-container {
-    grid-column: 1 / 1;
-    grid-row: 2 / 2;
+    // grid-column: 1 / 1;
+    // grid-row: 2 / 2;
     padding: 30px 20px;
     .grid--nav-collapsed & {
       padding-left: 0;

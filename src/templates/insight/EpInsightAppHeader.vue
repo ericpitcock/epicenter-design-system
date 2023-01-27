@@ -3,20 +3,12 @@
     <div class="app-controls app-controls--left">
       <ep-button kind="ghost" :iconLeft="{ name: 'menu' }" @click="toggleSidebar" />
       <ep-dropdown
-        :button="{
-          kind: 'ghost',
-          label: '',
-          iconRight: null,
-          iconLeft: { name: 'notifications' }
+        :containerProps="{
+          backgroundColor: 'var(--background-4)',
+          padding: '1rem 0',
+          borderRadius: 'var(--border-radius)',
+          borderColor: 'var(--border-color--lighter)'
         }"
-      >
-        <template #content>
-        <div style="width: 400px; height: 200px; padding: 30px;">
-          Notification center
-        </div>
-        </template>
-      </ep-dropdown>
-      <ep-dropdown
         :menuItems="[{
           label: 'User Settings',
           iconLeft: { name: 'settings' }
@@ -32,7 +24,7 @@
         }"
       >
       </ep-dropdown>
-      <ep-dropdown
+      <!-- <ep-dropdown
         :button="{
           kind: 'ghost',
           label: 'Dunder Mifflin',
@@ -42,16 +34,22 @@
         <template #content>
         <div style="width: 400px; height: 200px; padding: 30px;">Customer picker</div>
         </template>
-      </ep-dropdown>
+      </ep-dropdown> -->
     </div>
     <div class="app-controls app-controls--right">
       <ep-button kind="ghost" :iconLeft="themeIcon" @click="toggleTheme"/>
       <ep-dropdown
+        :containerProps="{
+          backgroundColor: 'var(--background-4)',
+          padding: '1rem 0',
+          borderRadius: 'var(--border-radius)',
+          borderColor: 'var(--border-color--lighter)'
+        }"
         :menuItems="[{
-          label: 'Insight Manual',
+          label: 'Documentation',
           iconLeft: { name: 'help' }
         },{
-          label: 'Help',
+          label: 'Contact Support',
           iconLeft: { name: 'support' }
         }]"
         :button="{
@@ -63,6 +61,13 @@
         alignRight
       >
       </ep-dropdown>
+      <ep-button
+        kind="ghost"
+        :label="''"
+        :iconRight="null"
+        :iconLeft="{ name: 'notifications' }"
+        @click="this.$emit('notificationsButtonClicked')"
+      />
     </div>
   </div>
 </template>
@@ -72,12 +77,14 @@
 
   import EpButton from '@/components/button/EpButton'
   import EpDropdown from '@/components/dropdown/EpDropdown'
+  import EpNotifications from '@/components/notification/EpNotifications'
 
   export default {
     name: 'EpInsightAppHeader',
     components: {
       EpButton,
-      EpDropdown
+      EpDropdown,
+      EpNotifications
     },
     methods: {
       ...mapActions(['toggleTheme', 'toggleSidebar']),
@@ -93,11 +100,11 @@
 
 <style lang="scss" scoped>
   .app-header {
-    position: fixed;
+    // position: fixed;
     width: 100%;
     height: 41px;
-    grid-column: 1 / 3;
-    grid-row: 1 / 1;
+    // grid-column: 1 / 3;
+    // grid-row: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: space-between;

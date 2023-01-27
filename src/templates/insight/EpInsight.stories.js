@@ -5,11 +5,11 @@ export default {
   component: EpInsight,
   argTypes: {
     layoutOption: {
-      name: 'Layout option',
+      name: 'Full Screen Content',
       control: {
         type: 'boolean'
       },
-      defaultValue: false
+      defaultValue: true
     }
   },
   parameters: {
@@ -17,10 +17,12 @@ export default {
   }
 }
 
-const Template = (args, { argTypes }) => ({
+const Template = args => ({
   components: { EpInsight },
-  props: Object.keys(argTypes),
-  template: '<ep-insight v-bind="$props" />'
+  setup() {
+    return { args }
+  },
+  template: '<ep-insight v-bind="args" />'
 })
 
 export const Sidebar = Template.bind({})

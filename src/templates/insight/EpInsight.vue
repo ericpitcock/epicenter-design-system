@@ -1,17 +1,12 @@
 <template>
-  <div :class="[
-    'grid',
-    { 'grid--nav-collapsed': !sidebar },
-    { 'layout-option': layoutOption }
-    ]"
-  >
-    <ep-insight-app-header />
-    <ep-navigation />
-    <div :class="['content-wrapper', { 'content-wrapper--full-width': fullWidthContent }]">
+  <div :class="['grid', gridClasses]">
+    <ep-insight-app-header @notificationsButtonClicked="rightPanelOpen = !rightPanelOpen" />
+    <ep-navigation v-show="sidebar" />
+    <div class="content-wrapper">
       <div class="content-container">
         <div class="header header--content-header">
           <div class="content-controls content-controls--left">
-            <ep-tabs></ep-tabs>
+            <ep-tabs :items="[{ label: 'Year to Date' }, { label: 'Historical' }]"></ep-tabs>
           </div>
           <div class="content-controls content-controls--right">
             <ep-button kind="secondary" :iconLeft="{ name: 'location' }" label="Alexandrinestad" />
@@ -21,7 +16,7 @@
         </div>
         <div class="content-body">
           <!-- <slot /> -->
-          <p v-for="(n, index) of 20" :key="index" style="opacity: 0; padding-right: 25%;">
+          <p v-for="(n, index) of 20" :key="index" style="padding-right: 25%;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
             porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et
             faucibus arcu condimentum sed.Lorem ipsum dolor sit amet,
@@ -38,6 +33,9 @@
         <div class="footer">Content footer</div>
       </div>
     </div>
+    <div v-show="rightPanelOpen" class="right-panel">
+      <ep-notifications />
+    </div>
   </div>
 </template>
 
@@ -49,18 +47,25 @@
   import EpButton from '@/components/button/EpButton'
   import EpDropdown from '@/components/dropdown/EpDropdown'
   import EpTabs from '@/components/tabs/EpTabs'
+  import EpNotifications from '@/components/notification/EpNotifications'
 
   export default {
     name: 'App',
     props: {
       layoutOption: Boolean,
     },
+    data() {
+      return {
+        rightPanelOpen: false,
+      }
+    },
     components: {
       EpInsightAppHeader,
       EpNavigation,
       EpButton,
       EpDropdown,
-      EpTabs
+      EpTabs,
+      EpNotifications
     },
     methods: {
       ...mapActions(['toggleTheme', 'toggleSidebar', 'toggleContentWidth']),
@@ -71,7 +76,15 @@
         'sidebarUser',
         'theme',
         'fullWidthContent'
-      ])
+      ]),
+      gridClasses() {
+        return {
+          // 'left-panel-open': this.sidebar,
+          'left-panel-closed': !this.sidebar,
+          // 'right-panel-open': this.rightPanelOpen,
+          'right-panel-closed': !this.rightPanelOpen
+        }
+      }
     }
   }
 </script>
@@ -80,58 +93,101 @@
   .grid {
     display: grid;
     height: 100vh;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 240px 1fr 300px;
     grid-template-rows: 41px 1fr;
+    grid-template-areas:
+      "header header right"
+      "left main right";
     background-color: var(--background-1);
-    &--nav-collapsed {
-      grid-template-columns: 50px 1fr;
+    &.left-panel-closed {
+      grid-template-areas:
+        "header header right"
+        "main main right";
     }
+    &.right-panel-closed {
+      grid-template-areas:
+        "header header header"
+        "left main main";
+    }
+    &.left-panel-closed.right-panel-closed {
+      grid-template-areas:
+        "header header header"
+        "main main main";
+    }
+    .app-header {
+      grid-area: header;
+      background: var(--background-1);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .content-wrapper {
+      grid-area: main;
+    }
+    .right-panel {
+      // grid-column: 3 / 3;
+      // grid-row: 1 / 3;
+      grid-area: right;
+      background: var(--background-1);
+      border-left: 1px solid var(--border-color);
+    }
+    .nav-container {
+      grid-area: left;
+      background: var(--background-1);
+      border-right: 1px solid var(--border-color);
+    }
+    // &--nav-collapsed {
+    //   grid-template-columns: 50px 1fr;
+    // }
+    // &--right-panel-open {
+    //   grid-template-columns: 240px 1fr 300px;
+    // }
   }
+
   .content-wrapper {
-    grid-column: 2 / 2;
-    grid-row: 2 / 2;
+    // grid-column: 2 / 2;
+    // grid-row: 2 / 2;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px 10px 30px 0;
-    @media (min-width: 1800px) {
-      &:not(.content-wrapper--full-width) {
-        padding-right: 240px;
-        .grid--nav-collapsed & {
-          padding-right: 50px;
-        }
-      }
-    }
+    align-items: flex-start;
+    padding: 0;
+    // @media (min-width: 1800px) {
+    //   &:not(.content-wrapper--full-width) {
+    //     padding-right: 240px;
+    //     .grid--nav-collapsed & {
+    //       padding-right: 50px;
+    //     }
+    //   }
+    // }
     // temp styles for layout option
-    .layout-option & {
-      align-items: flex-start;
-      padding: 0 !important;
-    }
+    // .layout-option & {
+    //   align-items: flex-start;
+    //   padding: 0 !important;
+    // }
   }
   .content-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     background: var(--background-2);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    &--fixed-width {
-      min-width: 1320px;
-    }
-    @media (min-width: 1380px) {
-      max-width: 1320px;
-    }
-    .content-wrapper--full-width &  {
-      max-width: none;
-    }
-    // temp styles for layout option
-    .layout-option & {
-      border: 0;
-      border-left: 1px solid var(--border-color);
-      border-radius: 0;
-      min-width: none;
-      max-width: none;
-    }
+    // border: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    // border-radius: 8px;
+    // &--fixed-width {
+    //   min-width: 1320px;
+    // }
+    // @media (min-width: 1380px) {
+    //   max-width: 1320px;
+    // }
+    // .content-wrapper--full-width &  {
+    //   max-width: none;
+    // }
+    // // temp styles for layout option
+    // .layout-option & {
+    //   border: 0;
+    //   border-left: 1px solid var(--border-color);
+    //   border-radius: 0;
+    //   min-width: none;
+    //   max-width: none;
+    // }
   }
   .footer {
     flex: 0 0 300px;
