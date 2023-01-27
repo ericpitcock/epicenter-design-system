@@ -1,7 +1,11 @@
 <template>
   <div class="app-header">
     <div class="app-controls app-controls--left">
-      <ep-button kind="ghost" :iconLeft="{ name: 'menu' }" @click="toggleSidebar" />
+      <ep-button
+        kind="ghost"
+        :iconLeft="{ name: 'menu' }"
+        @click="this.$emit('menuButtonClicked')"
+      />
       <ep-dropdown
         :containerProps="{
           backgroundColor: 'var(--background-4)',
@@ -24,17 +28,6 @@
         }"
       >
       </ep-dropdown>
-      <!-- <ep-dropdown
-        :button="{
-          kind: 'ghost',
-          label: 'Dunder Mifflin',
-          iconRight: null
-        }"
-      >
-        <template #content>
-        <div style="width: 400px; height: 200px; padding: 30px;">Customer picker</div>
-        </template>
-      </ep-dropdown> -->
     </div>
     <div class="app-controls app-controls--right">
       <ep-button kind="ghost" :iconLeft="themeIcon" @click="toggleTheme"/>

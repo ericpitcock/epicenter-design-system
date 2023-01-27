@@ -1,8 +1,8 @@
 <template>
-  <!-- need to accept props in ep-app-grid from children -->
   <ep-app-grid v-bind="gridProps" >
     <template #header>
       <ep-insight-app-header
+        @menuButtonClicked="toggleLeftPanel"
         @notificationsButtonClicked="toggleRightPanel"
       />
     </template>
@@ -10,37 +10,37 @@
       <ep-navigation />
     </template>
     <template #content>
-    <div class="content-wrapper">
-      <div class="content-container">
-        <div class="header header--content-header">
-          <div class="content-controls content-controls--left">
-            <ep-tabs :items="[{ label: 'Year to Date' }, { label: 'Historical' }]"></ep-tabs>
+      <div class="content-wrapper">
+        <div class="content-container">
+          <div class="header header--content-header">
+            <div class="content-controls content-controls--left">
+              <ep-tabs :items="[{ label: 'Year to Date' }, { label: 'Historical' }]"></ep-tabs>
+            </div>
+            <div class="content-controls content-controls--right">
+              <ep-button kind="secondary" :iconLeft="{ name: 'location' }" label="Alexandrinestad" />
+              <ep-button kind="secondary" :iconLeft="{ name: 'calendar' }" label="11/01/2021 – 11/30/2021" />
+              <ep-button v-if="!layoutOption" kind="ghost" :iconLeft="{ name: 'full-width' }" @click="toggleContentWidth" />
+            </div>
           </div>
-          <div class="content-controls content-controls--right">
-            <ep-button kind="secondary" :iconLeft="{ name: 'location' }" label="Alexandrinestad" />
-            <ep-button kind="secondary" :iconLeft="{ name: 'calendar' }" label="11/01/2021 – 11/30/2021" />
-            <ep-button v-if="!layoutOption" kind="ghost" :iconLeft="{ name: 'full-width' }" @click="toggleContentWidth" />
+          <div class="content-body">
+            <!-- <slot /> -->
+            <p v-for="(n, index) of 20" :key="index" style="padding-right: 25%;">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
+              porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et
+              faucibus arcu condimentum sed.Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat
+              volutpat. Donec placerat nisl magna, et faucibus arcu condimentum
+              sed.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+              at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna,
+              et faucibus arcu condimentum sed.Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat
+              volutpat. Donec placerat nisl magna, et faucibus arcu condimentum
+              sed.
+            </p>
           </div>
+          <div class="footer">Content footer</div>
         </div>
-        <div class="content-body">
-          <!-- <slot /> -->
-          <p v-for="(n, index) of 20" :key="index" style="padding-right: 25%;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
-            porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et
-            faucibus arcu condimentum sed.Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat
-            volutpat. Donec placerat nisl magna, et faucibus arcu condimentum
-            sed.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-            at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna,
-            et faucibus arcu condimentum sed.Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat
-            volutpat. Donec placerat nisl magna, et faucibus arcu condimentum
-            sed.
-          </p>
-        </div>
-        <div class="footer">Content footer</div>
       </div>
-    </div>
     </template>
     <template #right-panel>
       <ep-notifications style="height: 100%; border-left: 1px solid var(--border-color);" />
