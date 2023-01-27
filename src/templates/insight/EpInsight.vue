@@ -2,12 +2,13 @@
   <ep-app-grid v-bind="gridProps" >
     <template #header>
       <ep-insight-app-header
+        style=""
         @menuButtonClicked="toggleLeftPanel"
         @notificationsButtonClicked="toggleRightPanel"
       />
     </template>
     <template #left-panel>
-      <ep-navigation />
+      <ep-navigation v-bind="navProps" />
     </template>
     <template #content>
       <div class="content-wrapper">
@@ -43,7 +44,7 @@
       </div>
     </template>
     <template #right-panel>
-      <ep-notifications style="height: 100%; border-left: 1px solid var(--border-color);" />
+      <ep-notifications />
     </template>
   </ep-app-grid>
 </template>
@@ -70,6 +71,9 @@
         gridProps: {
           leftPanelOpen: true,
           rightPanelOpen: true,
+        },
+        navProps: {
+          collapsed: false,
         }
       }
     },
@@ -85,7 +89,7 @@
     methods: {
       ...mapActions(['toggleTheme', 'toggleSidebar', 'toggleContentWidth']),
       toggleLeftPanel() {
-        this.gridProps.leftPanelOpen = !this.gridProps.leftPanelOpen
+        this.navProps.collapsed = !this.navProps.collapsed
       },
       toggleRightPanel() {
         this.gridProps.rightPanelOpen = !this.gridProps.rightPanelOpen

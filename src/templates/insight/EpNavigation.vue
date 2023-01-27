@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-container">
+  <div :class="['nav-container', { 'nav-container--collapsed': collapsed }]">
     <nav class="main-nav">
       <div class="main-nav__item main-nav__item--logo">
         <acme-logo :type="logoType" />
@@ -30,54 +30,66 @@
       EpIcon,
       AcmeLogo
     },
-    data: () => ({
-      navItems: [
-        {
-          name: 'Dashboard',
-          icon: 'dashboard',
-          path: '/'
-        },
-        {
-          name: 'Assets',
-          icon: 'display',
-          path: '/assets'
-        },
-        {
-          name: 'Investigations',
-          icon: 'target',
-          path: '/investigations'
-        },
-        {
-          name: 'Risk Rating',
-          icon: 'star',
-          path: '/risk'
-        },
-        {
-          name: 'Service Info',
-          icon: 'info',
-          path: '/services'
-        },
-        {
-          name: 'Reports',
-          icon: 'report',
-          path: '/reports'
-        },
-        {
-          name: 'Files',
-          icon: 'file',
-          path: '/files'
-        },
-        {
-          name: 'Settings',
-          icon: 'settings',
-          path: '/settings'
-        }
-      ]
-    }),
+    props: {
+      collapsed: {
+        type: Boolean,
+        default: false
+      },
+      // logoType: {
+      //   type: String,
+      //   default: 'default' // default, white
+      // }
+    },
+    data() {
+      return {
+        navItems: [
+          {
+            name: 'Dashboard',
+            icon: 'dashboard',
+            path: '/'
+          },
+          {
+            name: 'Assets',
+            icon: 'display',
+            path: '/assets'
+          },
+          {
+            name: 'Investigations',
+            icon: 'target',
+            path: '/investigations'
+          },
+          {
+            name: 'Risk Rating',
+            icon: 'star',
+            path: '/risk'
+          },
+          {
+            name: 'Service Info',
+            icon: 'info',
+            path: '/services'
+          },
+          {
+            name: 'Reports',
+            icon: 'report',
+            path: '/reports'
+          },
+          {
+            name: 'Files',
+            icon: 'file',
+            path: '/files'
+          },
+          {
+            name: 'Settings',
+            icon: 'settings',
+            path: '/settings'
+          }
+        ]
+      }
+    },
     computed: {
       ...mapState(['sidebar']),
       logoType() {
-        return this.sidebar ? 'full' : 'icon'
+        return this.collapsed ? 'icon' : 'full'
       }
     }
   }
@@ -88,7 +100,7 @@
     // grid-column: 1 / 1;
     // grid-row: 2 / 2;
     padding: 30px 20px;
-    .grid--nav-collapsed & {
+    .nav-container--collapsed & {
       padding-left: 0;
       padding-right: 0;
     }
@@ -97,11 +109,11 @@
     }
   }
   .main-nav {
-    position: fixed;
+    // position: fixed;
     width: 200px;
     display: flex;
     flex-direction: column;
-    .grid--nav-collapsed & {
+    .nav-container--collapsed & {
       width: 50px;
       align-items: center;
     }
@@ -123,7 +135,7 @@
           background: transparent !important;
         }
       }
-      .grid--nav-collapsed & {
+      .nav-container--collapsed & {
         justify-content: center;
         width: 40px;
         padding: 0;
@@ -154,7 +166,7 @@
         width: 160px;
         margin: 30px 0;
         border-bottom: 1px solid var(--border-color);
-        .grid--nav-collapsed & {
+        .nav-container--collapsed & {
           width: 30px;
         }
       }
@@ -165,7 +177,7 @@
         margin-left: 13px;
         font-weight: 600;
         color: var(--text-color);
-        .grid--nav-collapsed & {
+        .nav-container--collapsed & {
           display: none;
         }
       }

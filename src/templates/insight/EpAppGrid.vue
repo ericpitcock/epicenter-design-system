@@ -1,13 +1,17 @@
 <template>
-  <div :class="[ 'grid', gridClasses ]">
-    <div class="header">
-      <slot name="header" />
-    </div>
-    <div v-show="leftPanelOpen" class="left-panel">
-      <slot name="left-panel" />
-    </div>
-    <div class="content">
-      <slot name="content" />
+  <div class="app-layout">
+    <div class="left">
+      <div class="header">
+        <slot name="header" />
+      </div>
+      <div class="grid">
+        <div v-show="leftPanelOpen" class="left-panel">
+          <slot name="left-panel" />
+        </div>
+        <div class="content">
+          <slot name="content" />
+        </div>
+      </div>
     </div>
     <div v-show="rightPanelOpen" class="right-panel">
       <slot name="right-panel" />
@@ -28,14 +32,6 @@ export default {
       default: true
     }
   },
-  methods: {
-    // toggleLeftPanel() {
-    //   this.leftPanelOpen = !this.leftPanelOpen
-    // },
-    // toggleRightPanel() {
-    //   this.rightPanelOpen = !this.rightPanelOpen
-    // }
-  },
   computed: {
     gridClasses() {
       return {
@@ -48,60 +44,76 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.grid {
-  display: grid;
-  grid-template-areas:
-    'header header right-panel'
-    'left-panel content right-panel';
-  grid-template-columns: 240px 1fr 300px;
-  grid-template-rows: 41px 1fr;
-  width: 100vw;
-  height: 100vh;
-  &.left-panel-closed {
-    grid-template-areas:
-      'header header right-panel'
-      'content content right-panel';
+  .app-layout {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    // overflow: hidden;
+    .left {
+      flex: 1;
+      display: flex;
+      flex-flow: column nowrap;
+      .header {
+        flex: 0 0 41px;
+      }
+      .grid {
+        flex: 1;
+        display: flex;
+        overflow: scroll;
+        .left-panel {
+          position: sticky;
+          top: 0;
+        }
+      }
+    }
+    .right-panel {
+      flex: 0 0 300px;
+      // position: fixed;
+      // top: 0;
+      // right: 0;
+      // height: 100%;
+      // background: var(--background-1);
+      border-left: 1px solid var(--border-color);
+    }
   }
-  &.right-panel-closed {
-    grid-template-areas:
-      'header header header'
-      'left-panel content content';
-  }
-  &.left-panel-closed.right-panel-closed {
-    grid-template-areas:
-      'header header header'
-      'content content content';
-  }
-  .header {
-    grid-area: header;
-    // background-color: var(--color--primary);
-    // color: var(--color--primary-text);
-    // display: flex;
-    // align-items: center;
-    // justify-content: space-between;
-    // padding: 0 1rem;
-    // height: 3rem;
-  }
-  .left-panel {
-    grid-area: left-panel;
-    // background-color: var(--color--primary);
-    // color: var(--color--primary-text);
-    // padding: 1rem;
-    // height: 100%;
-  }
-  .content {
-    grid-area: content;
-    // background-color: var(--color--primary);
-    // color: var(--color--primary-text);
-    // padding: 1rem;
-    // height: 100%;
-  }
-  .right-panel {
-    grid-area: right-panel;
-    // background-color: var(--color--primary);
-    // color: var(--color--primary-text);
-    // padding: 1rem;
-    // height: 100%;
-  }
-}
+  // .grid {
+  //   display: grid;
+  //   grid-template-areas:
+  //     'header header right-panel'
+  //     'left-panel content right-panel';
+  //   grid-template-columns: 240px 1fr 300px;
+  //   grid-template-rows: 41px 1fr;
+  //   width: 100vw;
+  //   height: 100vh;
+  //   &.left-panel-closed {
+  //     grid-template-areas:
+  //       'header header right-panel'
+  //       'content content right-panel';
+  //   }
+  //   &.right-panel-closed {
+  //     grid-template-areas:
+  //       'header header header'
+  //       'left-panel content content';
+  //   }
+  //   &.left-panel-closed.right-panel-closed {
+  //     grid-template-areas:
+  //       'header header header'
+  //       'content content content';
+  //   }
+  //   .header {
+  //     grid-area: header;
+  //   }
+  //   .left-panel {
+  //     grid-area: left-panel;
+  //   }
+  //   .content {
+  //     grid-area: content;
+  //   }
+  //   .right-panel {
+  //     grid-area: right-panel;
+  //     // > * {
+  //     //   position: fixed;
+  //     // }
+  //   }
+  // }
 </style>
