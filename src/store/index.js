@@ -11,13 +11,35 @@ export default createStore({
     // if a notification has a duration, it will be removed from view after that duration and will be stored in the array (notifications center)
     // when the user dismisses a notification, it will be removed from the array
     notifications: [
-      // {
-      //   id: 1,
-      //   active: true,
-      //   message: 'Your message was sent successfully'
-      //   style: 'success', // info, success, warning, error
-      //   type: 'banner'  // banner, alert
-      // },
+      {
+        id: '1',
+        active: false,
+        message: 'App version 1.0.3 is now available',
+        alertstyle: 'info',
+        timestamp: 1620000000000
+      },
+      // give me three more with unique IDs
+      {
+        id: '2',
+        active: false,
+        message: 'Your message was sent successfully',
+        alertstyle: 'success',
+        timestamp: 1620000000000
+      },
+      {
+        id: '3',
+        active: false,
+        message: 'You’re running low on storage',
+        alertstyle: 'warning',
+        timestamp: 1620000000000
+      },
+      {
+        id: '4',
+        active: false,
+        message: 'Your account has been suspended',
+        alertstyle: 'error',
+        timestamp: 1620000000000
+      }
     ],
     notificationCenterOpen: false,
     sidebar: true,
@@ -64,9 +86,10 @@ export default createStore({
     addNotification: ({ state, commit }, notification) => {
       // build new notification object
       const newNotification = {
-        ...notification, // using spread syntax breaks the object reference
-        active: true,
-        id: generateID() // so I can get unique IDs each time
+        ...notification, // using spread syntax breaks the object reference, recevies message and alertstyle (success, info, warning, error)
+        active: true, // add active property
+        id: generateID(), // adds unique ID each time
+        timestamp: Date.now() // adds timestamp
       }
 
       // add the notification object to the array

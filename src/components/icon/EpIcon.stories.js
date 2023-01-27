@@ -74,6 +74,7 @@ export const IconLibrary = args => ({
       useFooter
       :key="index"
       padding="2rem"
+      borderRadius="var(--border-radius)"
       style="flex: 0 0 170px;"
     >
       <ep-icon

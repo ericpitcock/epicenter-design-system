@@ -16,10 +16,10 @@ export default {
 }
 
 // build notification object and dispatch to store
-const buildNotification = type => {
+const buildNotification = style => {
   const notification = {
     message: 'Thank you for your feedback!',
-    type
+    style
   }
   store.dispatch('addNotification', notification)
 }

@@ -3,7 +3,7 @@
     <div class="ep-notification__color-strip"></div>
     <div class="ep-notification__body">
       <div class="message">
-        {{ message }}
+        {{ message }} {{ timestamp }}
       </div>
       <div class="dismiss-button">
         <ep-button
@@ -34,9 +34,12 @@
         type: String,
         required: true
       },
-      type: {
+      alertstyle: {
         type: String,
         default: 'info' // info, success, warning, error
+      },
+      timestamp: {
+        type: Number,
       }
     },
     data() {
@@ -57,20 +60,17 @@
     computed: {
       // ...mapState(['visibleNotification'])
       colorStrip() {
-        return this.colors[this.type]
+        return this.colors[this.alertstyle]
       }
     },
     methods: {
       dismissNotification() {
         this.$emit('dismiss')
       }
+    },
+    mounted() {
+      console.log(this.alertstyle)
     }
-    // mounted() {
-    //   console.log('mounted')
-    //   if (!this.duration) {
-    //     this.autoDismiss()
-    //   }
-    // }
   }
 </script>
 

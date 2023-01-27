@@ -1,6 +1,7 @@
 <template>
-  <Teleport to="body">
-  <div v-if="notificationCenterOpen || hasActiveNotifications" class="ep-notifications" :style="position">
+  <!-- <Teleport to="body"> -->
+  <!-- <div v-if="hasActiveNotifications" class="ep-notifications" :style="position"> -->
+  <div class="ep-notifications" :style="position">
     <ep-flex-container
       flexFlow="column nowrap"
       gap="1rem"
@@ -16,16 +17,14 @@
       <EpNotification
         v-for="notification in filteredNotifications"
         :key="notification.id"
-        :id="notification.id"
-        :message="`${notification.message}`"
-        :type="notification.type"
+        v-bind="notification"
         @dismiss="removeNotification(notification)"
       />
     </transition-group>
     </template>
     </ep-flex-container>
   </div>
-  </Teleport>
+  <!-- </Teleport> -->
 </template>
 
 <script>
@@ -69,9 +68,11 @@
         }
       },
       filteredNotifications() {
-        return this.hasActiveNotifications
-          ? this.notifications.filter(notification => notification.active)
-          : this.notifications
+        // return this.hasActiveNotifications
+        //   ? this.notifications.filter(notification => notification.active)
+        //   : this.notifications
+        console.log('filteredNotifications', this.notifications)
+        return this.notifications
       },
       isNotificationsEmpty() {
         return this.notifications.length === 0
@@ -87,8 +88,8 @@
 
 <style lang="scss" scoped>
   .ep-notifications {
-    position: fixed;
-    z-index: 1000;
+    // position: fixed;
+    // z-index: 1000;
   }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
