@@ -1,4 +1,6 @@
+import vueRouter from 'storybook-vue3-router'
 import EpInsight from './EpInsight'
+import Dashboard from './Dashboard'
 
 export default {
   title: 'Templates/Sidebar',
@@ -26,3 +28,21 @@ const Template = args => ({
 })
 
 export const Sidebar = Template.bind({})
+
+const customRoutes = [
+  // import all components that are used in the routes
+  {
+    path: '/',
+    name: 'dashboard',
+    component: Dashboard
+  },
+  // {
+  //   path: '/about',
+  //   name: 'about',
+  //   component: AboutComponent
+  // }
+]
+
+Sidebar.decorators = [
+  vueRouter(customRoutes)
+]

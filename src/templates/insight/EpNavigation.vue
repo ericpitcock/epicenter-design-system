@@ -5,13 +5,13 @@
         <acme-logo :type="logoType" />
       </div>
       <template v-for="(navItem, index) in navItems" :key="index">
-        <a
+        <router-link
           :to="navItem.path"
           class="main-nav__item"
         >
           <ep-icon :name="navItem.icon" />
           <div class="main-nav__item__name">{{ navItem.name }}</div>
-        </a>
+        </router-link>
         <div v-if="index === 2" class="main-nav__item__divider" :key="`divider${index}`"></div>
       </template>
     </nav>
@@ -100,7 +100,7 @@
     // grid-column: 1 / 1;
     // grid-row: 2 / 2;
     padding: 30px 20px;
-    .nav-container--collapsed & {
+    &--collapsed {
       padding-left: 0;
       padding-right: 0;
     }
