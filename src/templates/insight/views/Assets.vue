@@ -10,6 +10,7 @@
           :icon="{ name: 'search' }"
           placeholder='Search (use "quotes" for exact match)'
           @enter="debounceSearch"
+          @query-close="queryClose"
           @clear=""
         />
       </template>
@@ -79,6 +80,11 @@
         //   // add to search array
         //   this.search.push(event.target.value)
         // }, 600)
+      },
+      queryClose(query) {
+        console.log('queryClose', query)
+        // remove query from search array
+        this.search = this.search.filter(item => item !== query)
       },
       tabClick(item, index) {
         if (item.label === 'All Assets') {

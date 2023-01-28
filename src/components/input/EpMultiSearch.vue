@@ -13,7 +13,7 @@
         <ep-icon
           name="close"
           class="query__close"
-          @click="onQueryClose(index)"
+          @click="onQueryClose(query, index)"
         />
       </div>
     </div>
@@ -116,7 +116,7 @@
         default: 'var(--text-color)'
       }
     },
-    emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear'],
+    emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear', 'query-close'],
     methods: {
       onInput(event) {
         this.$emit('input', event.target.value)
@@ -144,6 +144,10 @@
         this.value = ''
         this.$refs.input.focus()
         this.$emit('clear', '')
+      },
+      onQueryClose(query, index) {
+        this.query.splice(index, 1)
+        this.$emit('query-close', query)
       }
     },
     computed: {
