@@ -5,6 +5,17 @@
         <ep-tabs :items="tabs"></ep-tabs>
       </template>
       <template #right>
+        <ep-basic-input
+          width="30rem"
+          :icon="{ name: 'search' }"
+          placeholder="Search"
+          @keydown="debounceSearch"
+          @clear="debounceSearch"
+        />
+        <ep-button
+          :iconLeft="{ name: 'file' }"
+          @click=""
+        />
       </template>
     </ep-header>
     <div style="padding: 0 1.6rem 10rem 1.6rem;">
@@ -12,6 +23,7 @@
         :columns="columns"
         :data="data"
         :exclude="['id']"
+        :search="search"
         sticky-header
         sortable
         striped
@@ -22,6 +34,7 @@
 </template>
 
 <script>
+  import EpBasicInput from '@/components/input/EpBasicInput'
   import EpButton from '@/components/button/EpButton'
   import EpHeader from '@/components/header/EpHeader'
   import EpTable from '@/components/table/EpTable'
@@ -31,6 +44,7 @@
   export default {
     name: 'Assets',
     components: {
+      EpBasicInput,
       EpButton,
       EpHeader,
       EpTable,
@@ -40,6 +54,8 @@
       return {
         columns,
         data: merged,
+        search: '',
+        debounce: null,
         tabs: [
           { label: 'All Assets' },
           { label: 'Active' },
@@ -49,15 +65,18 @@
       }
     },
     methods: {
-      // function to find the highest total in data.vulnerabilities array
-      // then return the highest total index
-      findHighestVulnerabilityIndex() {
-        const totals = this.data.map((asset) => {
-          return asset.vulnerabilities.reduce((acc, curr) => {
-            return acc + curr.total
-          }, 0)
-        })
-        return totals.indexOf(Math.max(...totals))
+      runSearch(event) {
+        // debounce search
+      },
+      debounceSearch(event) {
+        this.search = ''
+        // this.typing = 'You are typing'
+        clearTimeout(this.debounce)
+        this.debounce = setTimeout(() => {
+          this.search = event.target.value
+          // this.typing = null
+          // this.message = event.target.value
+        }, 600)
       }
     }
   }

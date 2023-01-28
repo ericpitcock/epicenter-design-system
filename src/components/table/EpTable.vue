@@ -121,6 +121,10 @@
       striped: {
         type: Boolean,
         default: false
+      },
+      search: {
+        type: String,
+        default: ''
       }
     },
     methods: {
@@ -195,7 +199,14 @@
         ]
       },
       filteredData() {
-        return this.sortedData
+        if (!this.search) return this.sortedData
+        return this.sortedData.filter(row => {
+          return Object.keys(row).some(key => {
+            return String(row[key])
+              .toLowerCase()
+              .includes(this.search.toLowerCase())
+          })
+        })
       },
       sortedData() {
         if (!this.sortable) this.data

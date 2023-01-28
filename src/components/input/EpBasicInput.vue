@@ -134,9 +134,9 @@
           'ep-input--has-icon': this.icon,
           'ep-input--focus': this.hasFocus,
           'ep-input--disabled': this.disabled,
-          'ep-input--error': this.error,
-          'ep-input--success': this.success,
-          'ep-input--warning': this.warning
+          // 'ep-input--error': this.error,
+          // 'ep-input--success': this.success,
+          // 'ep-input--warning': this.warning
         }
       }
     }

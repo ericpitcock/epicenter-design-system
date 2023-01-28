@@ -73,7 +73,8 @@
 <style lang="scss" scoped>
   .content-container {
     min-width: fit-content;
-    height: fit-content;
+    height: auto;
+    min-height: 100%;
     background: var(--background-2);
     border-left: 1px solid var(--border-color);
   }
