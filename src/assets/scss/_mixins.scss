@@ -6,8 +6,3 @@
     display: none; // Chrome, Safari, Opera
   }
 }
-
-// not currently using - kill if you don't add to it
-@mixin control-defaults {
-  user-select: none;
-}
