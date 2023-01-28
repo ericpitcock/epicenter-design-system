@@ -59,7 +59,7 @@ const columns = [
 const vulnArray = () => {
   let arr = []
   for (let i = 0; i < 4; i++) {
-    arr.push(faker.random.number({ min: 0, max: 100 }))
+    arr.push(faker.datatype.number({ min: 0, max: 100 }))
   }
   return arr
 }

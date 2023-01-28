@@ -26,7 +26,6 @@ const Template = args => ({
 export const Sidebar = Template.bind({})
 
 const customRoutes = [
-  // import all components that are used in the routes
   {
     path: '/',
     name: 'dashboard',

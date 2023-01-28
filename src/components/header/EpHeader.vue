@@ -54,6 +54,10 @@ export default {
     overflow: {
       type: String,
       default: 'hidden'
+    },
+    itemGap: {
+      type: String,
+      default: '3rem'
     }
   }
 }
@@ -75,7 +79,7 @@ export default {
         display: flex;
         height: 100%;
         align-items: center;
-        gap: 1rem;
+        gap: v-bind(itemGap);
       }
     }
   }

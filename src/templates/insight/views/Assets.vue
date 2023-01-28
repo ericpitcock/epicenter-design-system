@@ -3,15 +3,17 @@
     <ep-header>
       <template #left>
         <ep-tabs :items="tabs" @tab-click="tabClick" />
-      </template>
-      <template #right>
         <ep-basic-input
           width="50rem"
+          height="4rem"
+          backgroundColor="var(--background-1)"
           :icon="{ name: 'search' }"
           placeholder='Search (use "quotes" for exact match)'
           @keydown="debounceSearch"
           @clear="debounceSearch"
         />
+      </template>
+      <template #right>
         <ep-button
           :iconLeft="{ name: 'file' }"
           @click=""
@@ -26,6 +28,7 @@
         :search="search"
         sticky-header
         sortable
+        sortDir="asc"
         striped
         bordered
       />
