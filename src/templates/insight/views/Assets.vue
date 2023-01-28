@@ -1,12 +1,10 @@
 <template>
-  <div class="content-container">
+  <div class="assets">
     <ep-header>
       <template #left>
         <ep-tabs :items="tabs"></ep-tabs>
       </template>
       <template #right>
-        <ep-button kind="secondary" :iconLeft="{ name: 'location' }" label="Alexandrinestad" />
-        <ep-button kind="secondary" :iconLeft="{ name: 'calendar' }" label="11/01/2021 – 11/30/2021" />
       </template>
     </ep-header>
     <div style="padding: 0 1.6rem 10rem 1.6rem;">
@@ -28,7 +26,7 @@
   import EpHeader from '@/components/header/EpHeader'
   import EpTable from '@/components/table/EpTable'
   import EpTabs from '@/components/tabs/EpTabs'
-  import { columns, fakeArray } from './assetData'
+  import { columns, merged } from './assetData'
 
   export default {
     name: 'Assets',
@@ -41,7 +39,7 @@
     data() {
       return {
         columns,
-        data: fakeArray(100),
+        data: merged,
         tabs: [
           { label: 'All Assets' },
           { label: 'Active' },
@@ -51,6 +49,19 @@
       }
     },
     methods: {
+      // function to find the highest total in data.vulnerabilities array
+      // then return the highest total index
+      findHighestVulnerabilityIndex() {
+        const totals = this.data.map((asset) => {
+          return asset.vulnerabilities.reduce((acc, curr) => {
+            return acc + curr.total
+          }, 0)
+        })
+        return totals.indexOf(Math.max(...totals))
+      }
+    },
+    mounted() {
+      console.log(this.findHighestVulnerabilityIndex())
     }
   }
 </script>

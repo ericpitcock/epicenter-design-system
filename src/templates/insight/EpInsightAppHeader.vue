@@ -15,7 +15,10 @@
         }"
         :menuItems="[{
           label: 'User Settings',
-          iconLeft: { name: 'settings' }
+          iconLeft: { name: 'settings' },
+          bind: {
+            to: '/settings'
+          }
         },{
           label: 'Sign Out',
           iconLeft: { name: 'arrow-right' },

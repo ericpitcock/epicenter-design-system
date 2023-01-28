@@ -39,7 +39,6 @@
         default: 'info' // info, success, warning, error
       },
       timestamp: {
-        type: Number,
       }
     },
     data() {

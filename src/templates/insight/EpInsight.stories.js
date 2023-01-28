@@ -3,6 +3,7 @@ import EpInsight from './EpInsight'
 import EpLogin from './EpLogin'
 import Dashboard from './views/Dashboard'
 import Assets from './views/Assets'
+import UserSettings from './views/UserSettings'
 
 export default {
   title: 'Templates/Sidebar',
@@ -35,6 +36,11 @@ const customRoutes = [
     path: '/assets',
     name: 'assets',
     component: Assets
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    component: UserSettings
   },
   {
     path: '/login',

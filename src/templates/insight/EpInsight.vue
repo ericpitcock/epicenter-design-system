@@ -10,7 +10,9 @@
       <ep-navigation v-bind="navProps" />
     </template>
     <template #content>
-      <router-view />
+      <div class="content-container">
+        <router-view />
+      </div>
     </template>
     <template #right-panel>
       <div class="right-panel__container">
@@ -69,6 +71,11 @@
 </script>
 
 <style lang="scss" scoped>
+  .content-container {
+    height: fit-content;
+    background: var(--background-2);
+    border-left: 1px solid var(--border-color);
+  }
   .right-panel__container {
     height: 100%;
     border-left: 1px solid var(--border-color);

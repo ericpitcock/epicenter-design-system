@@ -78,11 +78,11 @@
             icon: 'file',
             path: '/files'
           },
-          {
-            name: 'Settings',
-            icon: 'settings',
-            path: '/settings'
-          }
+          // {
+          //   name: 'Settings',
+          //   icon: 'settings',
+          //   path: '/settings'
+          // }
         ]
       }
     },

@@ -7,16 +7,28 @@ const columns = [
     key: 'id'
   },
   {
+    header: 'Status',
+    key: 'status',
+    formatter: (value, row) => {
+      let circleColor = ''
+      if (value === 'Active') {
+        circleColor = 'var(--text-color--success)'
+      } else if (value === 'Inactive') {
+        circleColor = 'var(--text-color--danger)'
+      } else if (value === 'Archived') {
+        circleColor = 'var(--text-color--subtle)'
+      }
+      return `<span style="color: ${circleColor}">${value}</span>`
+    }
+  },
+  {
     header: 'IP Address',
-    key: 'ip_address'
+    key: 'ip_address',
+    style: 'tabular-numbers'
   },
   {
-    header: 'IPv6 Address',
-    key: 'ipv6_address'
-  },
-  {
-    header: 'MAC Address',
-    key: 'mac_address'
+    header: 'Vulnerabilities',
+    key: 'vulnerabilities'
   },
   {
     header: 'Location',
@@ -27,25 +39,96 @@ const columns = [
     key: 'operating_system'
   },
   {
-    header: 'Vulnerabilities',
-    key: 'vulnerabilities',
+    header: 'IPv6 Address',
+    key: 'ipv6_address',
+    style: 'tabular-numbers'
+  },
+  {
+    header: 'MAC Address',
+    key: 'mac_address',
+    style: 'tabular-numbers'
   }
 ]
+
+// create array with four random numbers using faker.random.number({ min: 0, max: 100 })
+
+const vulnArray = () => {
+  let arr = []
+  for (let i = 0; i < 4; i++) {
+    arr.push(faker.random.number({ min: 0, max: 100 }))
+  }
+  return arr
+}
+
+// create a new array from vulnArray that adds the sum of the array to the end
+const vulnArraySum = () => {
+  let arr = vulnArray()
+  let sum = arr.reduce((a, b) => a + b, 0)  // sum of array
+  arr.push(sum)
+  return arr
+}
 
 const fakeArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
     arr.push({
       id: faker.datatype.uuid(),
+      status: faker.random.arrayElement(['Active', 'Inactive', 'Archived']),
       ip_address: faker.internet.ip(),
-      ipv6_address: faker.internet.ipv6(),
-      mac_address: faker.internet.mac(),
+      // vulnerabilities: faker.random.arrayElement(['Critical', 'High', 'Medium', 'Low', 'None']),
+      // vulnerabilities: vulnArraySum(),
       location: faker.random.arrayElement(['New York City', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose', 'Austin', 'Jacksonville', 'San Francisco', 'Indianapolis']),
       operating_system: faker.random.arrayElement(['Windows', 'macOS', 'Linux']),
-      vulnerabilities: faker.random.arrayElement(['Critical', 'High', 'Medium', 'Low', 'None'])
+      ipv6_address: faker.internet.ipv6(),
+      mac_address: faker.internet.mac()
     })
   }
   return arr
 }
 
-export { columns, fakeArray }
+const fakeVulnArray = length => {
+  let arr = []
+  for (let i = 0; i < length; i++) {
+    arr.push({
+      vulnerabilities: vulnArraySum()
+    })
+  }
+  return arr
+}
+
+const fakeData = fakeVulnArray(100)
+
+// find the index of the array with the highest sum of vulnerabilities, which is the last element in the vulnerabilities property
+const maxVulnIndex = fakeData.reduce((iMax, x, i, arr) => x.vulnerabilities[4] > arr[iMax].vulnerabilities[4] ? i : iMax, 0)
+
+// append 'highest' value to the vulnerabilities array with the highest sum of vulnerabilities
+// don't really need this, but it's here for reference
+// fakeData[maxVulnIndex].vulnerabilities.push('highest')
+
+// find the actual value of the highest sum of vulnerabilities
+const maxVuln = fakeData[maxVulnIndex].vulnerabilities[4]
+
+// for each in fakedata, what percentage of the maxVuln is the sum of vulnerabilities
+fakeData.forEach((item, index) => {
+  fakeData[index].vulnerabilities[5] = Math.round((item.vulnerabilities[4] / maxVuln) * 100)
+})
+
+const fakeData2 = fakeArray(100)
+
+// merge the two arrays with fakeData into fakeData2 at a specific index
+const vulnIndex = 2
+fakeData2.forEach((item, index) => {
+  fakeData2[index].vulnerabilities = fakeData[index].vulnerabilities
+})
+
+const merged = fakeData2
+
+// const merged = fakeData2.map((item, index) => Object.assign({}, item, fakeData[index]))
+
+// const merged = fakeData.map((item, index) => ({ ...item, ...fakeData2[index] }))
+
+
+
+// const merged = fakeData.map((item, index) => Object.assign({}, item, fakeData2[index]))
+
+export { columns, merged }

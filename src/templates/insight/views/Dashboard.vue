@@ -1,5 +1,5 @@
 <template>
-  <div class="content-container">
+  <div class="dashboard">
     <div class="header header--content-header">
       <div class="content-controls content-controls--left">
         <ep-tabs :items="[{ label: 'Year to Date' }, { label: 'Historical' }]"></ep-tabs>
@@ -49,9 +49,9 @@
 
 <style lang="scss" scoped>
   .content-container {
-    height: fit-content;
-    padding: 4rem;
-    background: var(--background-2);
-    border-left: 1px solid var(--border-color);
+    // height: fit-content;
+    // padding: 4rem;
+    // background: var(--background-2);
+    // border-left: 1px solid var(--border-color);
   }
 </style>

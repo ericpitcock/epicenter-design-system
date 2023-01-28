@@ -95,6 +95,7 @@
     // background: linear-gradient(135deg, #5f2c82, #49a09d);
     // that but darker
     background: linear-gradient(135deg, #3d0c40, #2a7e5b);
+    z-index: 2;
     // give it one more step in between to smooth it out
     // background: linear-gradient(135deg, #310c40, #2a7e5b, #1d93b4);
     &__header {
