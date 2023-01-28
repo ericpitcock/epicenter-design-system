@@ -28,7 +28,8 @@ const columns = [
   },
   {
     header: 'Vulnerabilities',
-    key: 'vulnerabilities'
+    key: 'vulnerabilities',
+    cellType: 'component'
   },
   {
     header: 'Location',
@@ -77,7 +78,12 @@ const fakeArray = length => {
       ip_address: faker.internet.ip(),
       // vulnerabilities: faker.random.arrayElement(['Critical', 'High', 'Medium', 'Low', 'None']),
       // vulnerabilities: vulnArraySum(),
-      vulnerabilities: [],
+      vulnerabilities: {
+        component: 'ep-spark-bar',
+        props: {
+          bar: []
+        }
+      },
       location: faker.random.arrayElement(['New York City', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose', 'Austin', 'Jacksonville', 'San Francisco', 'Indianapolis']),
       operating_system: faker.random.arrayElement(['Windows', 'macOS', 'Linux']),
       ipv6_address: faker.internet.ipv6(),
@@ -118,7 +124,7 @@ const fakeData2 = fakeArray(100)
 
 // merge the two arrays with fakeData into fakeData2 at a specific index
 fakeData2.forEach((item, index) => {
-  fakeData2[index].vulnerabilities = fakeData[index].vulnerabilities
+  fakeData2[index].vulnerabilities.props.bar = fakeData[index].vulnerabilities
 })
 
 const merged = fakeData2

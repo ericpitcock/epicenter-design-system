@@ -48,6 +48,7 @@
 <script>
   import EpIcon from '@/components/icon/EpIcon'
   import EpBadge from '@/components/badge/EpBadge'
+  import EpSparkBar from '@/templates/insight/components/EpSparkBar'
 
   export default {
     name: 'EpTable',
@@ -63,7 +64,8 @@
     },
     components: {
       EpIcon,
-      EpBadge
+      EpBadge,
+      EpSparkBar
     },
     props: {
       columns: {
