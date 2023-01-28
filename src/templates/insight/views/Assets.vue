@@ -3,14 +3,14 @@
     <ep-header>
       <template #left>
         <ep-tabs :items="tabs" @tab-click="tabClick" />
-        <ep-basic-input
+        <ep-multi-search
           width="50rem"
           height="4rem"
           backgroundColor="var(--background-1)"
           :icon="{ name: 'search' }"
           placeholder='Search (use "quotes" for exact match)'
-          @keydown="debounceSearch"
-          @clear="debounceSearch"
+          @enter="debounceSearch"
+          @clear=""
         />
       </template>
       <template #right>
@@ -37,9 +37,9 @@
 </template>
 
 <script>
-  import EpBasicInput from '@/components/input/EpBasicInput'
   import EpButton from '@/components/button/EpButton'
   import EpHeader from '@/components/header/EpHeader'
+  import EpMultiSearch from '@/components/input/EpMultiSearch'
   import EpTable from '@/components/table/EpTable'
   import EpTabs from '@/components/tabs/EpTabs'
   import { columns, merged } from './assetData'
@@ -47,9 +47,9 @@
   export default {
     name: 'Assets',
     components: {
-      EpBasicInput,
       EpButton,
       EpHeader,
+      EpMultiSearch,
       EpTable,
       EpTabs
     },
@@ -57,7 +57,7 @@
       return {
         columns,
         data: merged,
-        search: '',
+        search: [],
         debounce: null,
         tabs: [
           { label: 'All Assets' },
@@ -68,21 +68,31 @@
       }
     },
     methods: {
-      debounceSearch(event) {
-        this.search = ''
-        clearTimeout(this.debounce)
-        this.debounce = setTimeout(() => {
-          this.search = event.target.value
-        }, 600)
+      debounceSearch(value) {
+        console.log('debounceSearch', value)
+        // add value to search array
+        this.search.push(value)
+        // this.search = ''
+        // clearTimeout(this.debounce)
+        // this.debounce = setTimeout(() => {
+        //   // this.search = event.target.value
+        //   // add to search array
+        //   this.search.push(event.target.value)
+        // }, 600)
       },
       tabClick(item, index) {
         if (item.label === 'All Assets') {
           this.search = ''
           return
         }
-        this.search = `"${item.label}"`
+        this.search.push(`"${item.label}"`)
       }
-    }
+    },
+    // watch: {
+    //   search() {
+    //     console.log(this.search)
+    //   }
+    // }
   }
 </script>
 
