@@ -199,6 +199,16 @@
         ]
       },
       filteredData() {
+        // if this.search is in quotes, search for exact match
+        if (this.search.startsWith('"') && this.search.endsWith('"')) {
+          const search = this.search.replace(/"/g, '')
+          return this.sortedData.filter(row => {
+            return Object.keys(row).some(key => {
+              return String(row[key]).toLowerCase() === search.toLowerCase()
+            })
+          })
+        }
+
         if (!this.search) return this.sortedData
         return this.sortedData.filter(row => {
           return Object.keys(row).some(key => {

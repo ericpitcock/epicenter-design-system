@@ -2,13 +2,13 @@
   <div class="assets">
     <ep-header>
       <template #left>
-        <ep-tabs :items="tabs"></ep-tabs>
+        <ep-tabs :items="tabs" @tab-click="tabClick" />
       </template>
       <template #right>
         <ep-basic-input
-          width="30rem"
+          width="50rem"
           :icon="{ name: 'search' }"
-          placeholder="Search"
+          placeholder='Search (use "quotes" for exact match)'
           @keydown="debounceSearch"
           @clear="debounceSearch"
         />
@@ -65,29 +65,23 @@
       }
     },
     methods: {
-      runSearch(event) {
-        // debounce search
-      },
       debounceSearch(event) {
         this.search = ''
-        // this.typing = 'You are typing'
         clearTimeout(this.debounce)
         this.debounce = setTimeout(() => {
           this.search = event.target.value
-          // this.typing = null
-          // this.message = event.target.value
         }, 600)
+      },
+      tabClick(item, index) {
+        if (item.label === 'All Assets') {
+          this.search = ''
+          return
+        }
+        this.search = `"${item.label}"`
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  .content-container {
-    // width: 100%;
-    // height: fit-content;
-    // // padding: 4rem;
-    // background: var(--background-2);
-    // border-left: 1px solid var(--border-color);
-  }
 </style>

@@ -51,8 +51,7 @@ const columns = [
   }
 ]
 
-// create array with four random numbers using faker.random.number({ min: 0, max: 100 })
-
+// create array with four random numbers [0, 0, 0, 0]
 const vulnArray = () => {
   let arr = []
   for (let i = 0; i < 4; i++) {
@@ -61,7 +60,7 @@ const vulnArray = () => {
   return arr
 }
 
-// create a new array from vulnArray that adds the sum of the array to the end
+// add the sum to the end of the array [0, 0, 0, 0, sum] — combine these two functions
 const vulnArraySum = () => {
   let arr = vulnArray()
   let sum = arr.reduce((a, b) => a + b, 0)  // sum of array
@@ -69,6 +68,7 @@ const vulnArraySum = () => {
   return arr
 }
 
+// this function creates an array of objects with random data, placeholder for vulnerabilities
 const fakeArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
@@ -76,8 +76,6 @@ const fakeArray = length => {
       id: faker.datatype.uuid(),
       status: faker.random.arrayElement(['Active', 'Inactive', 'Archived']),
       ip_address: faker.internet.ip(),
-      // vulnerabilities: faker.random.arrayElement(['Critical', 'High', 'Medium', 'Low', 'None']),
-      // vulnerabilities: vulnArraySum(),
       vulnerabilities: {
         component: 'ep-spark-bar',
         props: {
@@ -93,6 +91,7 @@ const fakeArray = length => {
   return arr
 }
 
+// create array of vulnerability objects
 const fakeVulnArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
@@ -120,6 +119,7 @@ fakeData.forEach((item, index) => {
   fakeData[index].vulnerabilities[5] = Math.round((item.vulnerabilities[4] / maxVuln) * 100)
 })
 
+// create the array of objects with random data
 const fakeData2 = fakeArray(100)
 
 // merge the two arrays with fakeData into fakeData2 at a specific index
@@ -128,13 +128,5 @@ fakeData2.forEach((item, index) => {
 })
 
 const merged = fakeData2
-
-// const merged = fakeData2.map((item, index) => Object.assign({}, item, fakeData[index]))
-
-// const merged = fakeData.map((item, index) => ({ ...item, ...fakeData2[index] }))
-
-
-
-// const merged = fakeData.map((item, index) => Object.assign({}, item, fakeData2[index]))
 
 export { columns, merged }
