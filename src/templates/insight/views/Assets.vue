@@ -65,10 +65,10 @@
 
 <style lang="scss" scoped>
   .content-container {
-    width: 100%;
-    height: fit-content;
-    // padding: 4rem;
-    background: var(--background-2);
-    border-left: 1px solid var(--border-color);
+    // width: 100%;
+    // height: fit-content;
+    // // padding: 4rem;
+    // background: var(--background-2);
+    // border-left: 1px solid var(--border-color);
   }
 </style>

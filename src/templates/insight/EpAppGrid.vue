@@ -52,6 +52,7 @@ export default {
       flex: 1;
       display: flex;
       flex-flow: column nowrap;
+      overflow: auto;
       .header {
         flex: 0 0 41px;
       }
@@ -72,6 +73,7 @@ export default {
           // height: fit-content;
           width: 100%;
           height: 100%;
+          overflow: auto;
           // border-left: 1px solid var(--border-color);
         }
       }

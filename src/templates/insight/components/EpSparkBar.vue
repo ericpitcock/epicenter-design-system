@@ -5,6 +5,7 @@
       class="ep-spark-bar__segment"
       :style="{ width: `${segment}%` }"
     ></div>
+    <p class="ep-spark-bar__label font-size--tiny">{{ bar[4] }}</p>
   </div>
 </template>
 
@@ -42,17 +43,18 @@ export default {
 .ep-spark-bar {
   display: flex;
   flex-direction: row;
+  gap: 2px;
   align-items: center;
-  justify-content: center;
   height: 0.8rem;
   width: 100px;
   &__segment {
     height: 100%;
     // width: 1px;
-    margin: 0 1px;
+    // margin: 0 1px;
     // color each segment by selecting child index
     &:nth-child(1) {
       background-color: gray;
+      border-radius: 0.4rem 0 0 0.4rem;
     }
     &:nth-child(2) {
       background-color: yellow;
@@ -62,7 +64,11 @@ export default {
     }
     &:nth-child(4) {
       background-color: red;
+      border-radius: 0 0.4rem 0.4rem 0;
     }
+  }
+  &__label {
+    margin-left: 0.5rem;
   }
 }
 </style>

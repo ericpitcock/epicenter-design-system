@@ -48,9 +48,9 @@
 </script>
 
 <style lang="scss" scoped>
-  .content-container {
+  .dashboard {
     // height: fit-content;
-    // padding: 4rem;
+    padding: 4rem;
     // background: var(--background-2);
     // border-left: 1px solid var(--border-color);
   }

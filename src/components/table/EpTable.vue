@@ -1,4 +1,5 @@
 <template>
+  <div class="ep-table-container">
   <table :class="classes">
     <thead>
       <tr>
@@ -43,6 +44,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </template>
 
 <script>
@@ -78,7 +80,7 @@
       },
       width: {
         type: String,
-        default: '100%'
+        default: 'auto'
       },
       // dateFilter: {
       //   type: Object,
@@ -213,7 +215,7 @@
 
 <style lang="scss" scoped>
   .ep-table {
-    width: v-bind(width);
+    // width: v-bind(width);
     thead {
       font-variation-settings: 'wght' 600;
       user-select: none;
