@@ -111,6 +111,11 @@ html {
   text-transform: capitalize;
 }
 
+// text selection color
+::selection {
+  background: var(--text-selection);
+}
+
 .text--copyable {
   position: relative;
   cursor: pointer;

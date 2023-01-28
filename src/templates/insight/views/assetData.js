@@ -22,6 +22,10 @@ const columns = [
     }
   },
   {
+    header: 'User',
+    key: 'user'
+  },
+  {
     header: 'IP Address',
     key: 'ip_address',
     style: 'tabular-numbers'
@@ -75,6 +79,7 @@ const fakeArray = length => {
     arr.push({
       id: faker.datatype.uuid(),
       status: faker.random.arrayElement(['Active', 'Inactive', 'Archived']),
+      user: `${faker.name.firstName()}.${faker.name.lastName()}@acme.io`,
       ip_address: faker.internet.ip(),
       vulnerabilities: {
         component: 'ep-spark-bar',

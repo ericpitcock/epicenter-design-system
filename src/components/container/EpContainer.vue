@@ -133,10 +133,7 @@
       flex: 1 1 auto;
       padding: v-bind(padding);
       overflow: v-bind(overflow);
-      // hide the scrollbar
-      &::-webkit-scrollbar {
-        display: none;
-      }
+      @include scrollable-container;
     }
     &__footer {
       flex: 0 0 auto;

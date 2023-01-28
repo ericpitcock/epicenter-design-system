@@ -1,6 +1,6 @@
 <template>
   <div class="ep-table-container">
-  <table :class="classes">
+  <table :class="['ep-table', classes]">
     <thead>
       <tr>
         <template
@@ -186,17 +186,14 @@
         return this.currentSortDir == 'desc' ? 'arrow-up' : 'arrow-down'
       },
       classes() {
-        return [
-          'ep-table',
-          {
-           'ep-table--selectable': this.selectable,
-           'ep-table--bordered': this.bordered,
-           'ep-table--compact': this.compact,
-           'ep-table--sticky': this.stickyHeader,
-           'ep-table--striped': this.striped,
-           'ep-table--sortable': this.sortable
-          }
-        ]
+        return {
+          'ep-table--selectable': this.selectable,
+          'ep-table--bordered': this.bordered,
+          'ep-table--compact': this.compact,
+          'ep-table--sticky': this.stickyHeader,
+          'ep-table--striped': this.striped,
+          'ep-table--sortable': this.sortable
+        }
       },
       filteredData() {
         // if this.search is in quotes, search for exact match
@@ -320,11 +317,11 @@
     &--sortable {
       thead th {
         &:hover {
-          color: var(--color--primary);
+          color: var(--text-color--link);
           cursor: pointer;
         }
         &.active {
-          color: var(--color--primary);
+          color: var(--text-color--link);
           .ep-icon {
             visibility: visible;
           }
