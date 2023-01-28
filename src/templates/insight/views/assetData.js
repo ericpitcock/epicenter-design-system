@@ -77,6 +77,7 @@ const fakeArray = length => {
       ip_address: faker.internet.ip(),
       // vulnerabilities: faker.random.arrayElement(['Critical', 'High', 'Medium', 'Low', 'None']),
       // vulnerabilities: vulnArraySum(),
+      vulnerabilities: [],
       location: faker.random.arrayElement(['New York City', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose', 'Austin', 'Jacksonville', 'San Francisco', 'Indianapolis']),
       operating_system: faker.random.arrayElement(['Windows', 'macOS', 'Linux']),
       ipv6_address: faker.internet.ipv6(),
@@ -116,7 +117,6 @@ fakeData.forEach((item, index) => {
 const fakeData2 = fakeArray(100)
 
 // merge the two arrays with fakeData into fakeData2 at a specific index
-const vulnIndex = 2
 fakeData2.forEach((item, index) => {
   fakeData2[index].vulnerabilities = fakeData[index].vulnerabilities
 })

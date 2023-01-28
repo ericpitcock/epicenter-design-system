@@ -59,9 +59,6 @@
         })
         return totals.indexOf(Math.max(...totals))
       }
-    },
-    mounted() {
-      console.log(this.findHighestVulnerabilityIndex())
     }
   }
 </script>
