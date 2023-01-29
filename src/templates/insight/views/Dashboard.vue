@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="content-body">
-      <p v-for="(n, index) of 60" :key="index">
+      <p v-for="(n, index) of 60" :key="index" style="opacity: 0;">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
         porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et
         faucibus arcu condimentum sed.Lorem ipsum dolor sit amet,
