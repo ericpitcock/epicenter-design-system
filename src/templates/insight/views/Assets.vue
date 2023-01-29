@@ -1,8 +1,8 @@
 <template>
   <div class="assets">
-    <ep-header leftFlex="2">
+    <ep-header leftFlex="1" rightFlex="0">
       <template #left>
-        <ep-tabs :items="tabs" @tab-click="tabClick" />
+        <!-- <ep-tabs :items="tabs" @tab-click="tabClick" /> -->
         <ep-multi-search
           height="4rem"
           backgroundColor="var(--background-1)"
@@ -10,14 +10,16 @@
           placeholder='Multi Search - Hit enter to add to search'
           @enter="debounceSearch"
           @query-close="queryClose"
+          @query-delete="queryDelete"
           @clear=""
         />
-      </template>
-      <template #right>
         <ep-button
           :iconLeft="{ name: 'file' }"
           @click=""
         />
+      </template>
+      <template #right>
+        
       </template>
     </ep-header>
     <div style="padding: 0 1.6rem 10rem 1.6rem;">
@@ -83,6 +85,11 @@
       },
       queryClose(query) {
         console.log('queryClose', query)
+        // remove query from search array
+        this.search = this.search.filter(item => item !== query)
+      },
+      queryDelete(query) {
+        console.log('queryDelete', query)
         // remove query from search array
         this.search = this.search.filter(item => item !== query)
       },

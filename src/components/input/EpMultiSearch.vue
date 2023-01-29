@@ -9,7 +9,7 @@
         :key="index"
         class="query"
       >
-        <span class="query__text">{{ query }}</span>
+        <span class="query__text font-size--small">{{ query }}</span>
         <ep-icon
           name="close"
           class="query__close"
@@ -27,6 +27,7 @@
       @focus="onFocus"
       @blur="onBlur"
       @keydown.enter="onKeyDown"
+      @keydown.delete="onDelete"
       @keydown.esc="onEsc"
     />
     <div
@@ -116,8 +117,20 @@
         default: 'var(--text-color)'
       }
     },
-    emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear', 'query-close'],
+    emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear', 'query-close', 'query-delete'],
     methods: {
+      onDelete(event) {
+        // make sure there's nothing in the input
+        if (event.target.value === '') {
+          const query = this.query.pop()
+          this.query.pop()
+          this.$emit('query-delete', query)
+        }
+      },
+      onQueryClose(query, index) {
+        this.query.splice(index, 1)
+        this.$emit('query-close', query)
+      },
       onInput(event) {
         this.$emit('input', event.target.value)
       },
@@ -144,10 +157,6 @@
         this.value = ''
         this.$refs.input.focus()
         this.$emit('clear', '')
-      },
-      onQueryClose(query, index) {
-        this.query.splice(index, 1)
-        this.$emit('query-close', query)
       }
     },
     computed: {
@@ -161,7 +170,12 @@
           // 'ep-input--warning': this.warning
         }
       }
-    }
+    },
+    watch: {
+      query() {
+        console.log('query', this.query)
+      }
+    },
   }
 </script>
 
@@ -181,13 +195,14 @@
       display: flex;
       flex-flow: row wrap;
       align-items: center;
-      padding: 0 1.2rem;
+      gap: 0.3rem;
+      padding-right: 0.6rem;
       .query {
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
         height: 100%;
-        padding: 0 1.2rem;
+        padding: 0 1rem;
         background-color: var(--color--primary);
         border-radius: var(--border-radius);
         .query__text {
