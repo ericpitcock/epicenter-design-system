@@ -15,7 +15,13 @@
       calculate-height
       style="overscroll-behavior: contain"
     >
-      <ep-table :columns="tableColumns" :data="filteredData" :exclude="['style']" bordered sticky-header />
+      <ep-table
+        :columns="tableColumns"
+        :data="filteredData"
+        :exclude="['style']"
+        bordered
+        sticky-header
+      />
     </ep-container>
   </div>
 </template>

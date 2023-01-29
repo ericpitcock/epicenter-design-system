@@ -33,6 +33,10 @@
         type: Array,
         required: true,
       },
+      justifyContent: {
+        type: String,
+        default: 'flex-end'
+      }
     },
     methods: {
       itemClick(item) {
@@ -66,7 +70,7 @@
   .ep-action-bar {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: v-bind(justifyContent);
     align-items: center;
     width: 100%;
     height: 100%;

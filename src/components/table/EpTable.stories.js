@@ -106,7 +106,7 @@ Table.args = {
   selectable: false,
   bordered: false,
   compact: false,
-  selected: [],
+  selected: null,
   sortable: false,
   stickyHeader: true,
   stickyTop: '0',

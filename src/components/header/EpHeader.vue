@@ -92,9 +92,11 @@ export default {
       }
       &__left {
         flex: v-bind(leftFlex);
+        justify-content: flex-start;
       }
       &__right {
         flex: v-bind(rightFlex);
+        justify-content: flex-end;
       }
     }
   }

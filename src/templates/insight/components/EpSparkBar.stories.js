@@ -2,7 +2,7 @@ import EpSparkBar from './EpSparkBar.vue'
 import { centered } from '@/helpers/decorators'
 
 export default {
-  title: 'Spark Bar',
+  title: 'Components/Spark Bar',
   component: EpSparkBar,
   decorators: [centered],
   argTypes: {

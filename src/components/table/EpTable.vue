@@ -56,8 +56,10 @@
     name: 'EpTable',
     data() {
       return {
-        currentSort: this.sortKey || this.getInitialSort(),
-        currentSortDir: this.sortDir,
+        // currentSort: this.sortKey || this.getInitialSort(),
+        // currentSortDir: this.sortDir,
+        currentSort: 'start_date',
+        currentSortDir: 'desc'
         // the spread operator clones the arrray, making it non-reactive
         // so when you mutate the data (sort function, etc)
         // it won't affect other components
@@ -107,6 +109,10 @@
         default: null
       },
       sortable: {
+        type: Boolean,
+        default: false
+      },
+      searchable: {
         type: Boolean,
         default: false
       },
@@ -210,6 +216,9 @@
         }
       },
       filteredData() {
+        // if not searchable return
+        if (!this.searchable) return this.sortedData
+
         // if there are no search terms, return the data
         if (!this.search.length) return this.sortedData
 
