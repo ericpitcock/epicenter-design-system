@@ -87,10 +87,12 @@
       },
       tabClick(item, index) {
         if (item.label === 'All Assets') {
-          this.search = ''
+          this.search = []
           return
         }
-        this.search.push(`"${item.label}"`)
+        // add item.label to search array while removing any existing tabs
+        this.search = this.search.filter(item => item !== 'All Assets' && item !== 'Active' && item !== 'Inactive' && item !== 'Archived')
+        this.search.push(item.label)
       }
     },
     // watch: {
