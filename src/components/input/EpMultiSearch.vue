@@ -26,7 +26,7 @@
       @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
-      @keydown.enter="onKeyDown"
+      @keydown.enter="onEnter"
       @keydown.delete="onDelete"
       @keydown.esc="onEsc"
     />
@@ -55,7 +55,9 @@
       return {
         hasError: false,
         hasFocus: false,
+        // value is the value of the input
         value: '',
+        // query is the array of values that have been added to the search
         query: []
       }
     },
@@ -117,16 +119,8 @@
         default: 'var(--text-color)'
       }
     },
-    emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear', 'query-close', 'query-delete'],
+    emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear', 'query-close', 'delete'],
     methods: {
-      onDelete(event) {
-        // make sure there's nothing in the input
-        if (event.target.value === '') {
-          const query = this.query.pop()
-          this.query.pop()
-          this.$emit('query-delete', query)
-        }
-      },
       onQueryClose(query, index) {
         this.query.splice(index, 1)
         this.$emit('query-close', query)
@@ -146,12 +140,22 @@
         this.hasFocus = false
         this.$emit('blur', event.target.value)
       },
-      onKeyDown() {
-        // use event.key
-        console.log('onkeydown', this.value)
+      onEnter() {
+        // on enter, add the value to the query array
         this.query.push(this.value)
-        this.$emit('enter', this.value)
+        // then emit the query array
+        this.$emit('enter', this.query)
+        // then clear the input
         this.value = ''
+      },
+      onDelete(event) {
+        // make sure there's nothing in the input
+        if (event.target.value === '') {
+          // find the last element in the query array and remove it
+          this.query.splice(this.query.length - 1, 1)
+          // then emit the query array
+          this.$emit('delete', this.query)
+        }
       },
       onClear() {
         this.value = ''

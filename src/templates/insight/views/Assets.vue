@@ -8,9 +8,9 @@
           backgroundColor="var(--background-1)"
           :icon="{ name: 'search' }"
           placeholder='Multi Search - Hit enter to add to search'
-          @enter="debounceSearch"
+          @enter="updateSearch"
+          @delete="updateSearch"
           @query-close="queryClose"
-          @query-delete="queryDelete"
           @clear=""
         />
         <ep-button
@@ -83,6 +83,10 @@
         //   this.search.push(event.target.value)
         // }, 600)
       },
+      updateSearch(value) {
+        // update search array
+        this.search = value
+      },
       queryClose(query) {
         console.log('queryClose', query)
         // remove query from search array
@@ -91,7 +95,7 @@
       queryDelete(query) {
         console.log('queryDelete', query)
         // remove query from search array
-        this.search = this.search.filter(item => item !== query)
+        this.search = query
       },
       tabClick(item, index) {
         if (item.label === 'All Assets') {
