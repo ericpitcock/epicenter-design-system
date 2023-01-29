@@ -75,7 +75,7 @@
       },
       loadMap() {
         return new Promise(resolve => {
-          mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_TOKEN
+          mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpY3BpdGNvY2siLCJhIjoia29WT3AzOCJ9.YTnpZdWBqPD4cH6mlnZoYQ'
           this.map = new mapboxgl.Map({
             container: 'ep-map',
             center: this.mapCenter,
