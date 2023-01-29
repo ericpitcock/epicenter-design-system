@@ -8,12 +8,14 @@
         v-for="(query, index) in query"
         :key="index"
         class="query"
+        @click="onQueryClose(query, index)"
       >
         <span class="query__text font-size--small">{{ query }}</span>
         <ep-icon
           name="close"
+          weight="bold"
+          size="16"
           class="query__close"
-          @click="onQueryClose(query, index)"
         />
       </div>
     </div>
@@ -76,7 +78,7 @@
       },
       clearable: {
         type: Boolean,
-        default: true
+        default: false
       },
       disabled: {
         type: Boolean,
@@ -205,15 +207,21 @@
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
+        gap: 0.3rem;
         height: 100%;
-        padding: 0 1rem;
+        padding: 0 0.6rem 0 1rem;
         background-color: var(--color--primary);
         border-radius: var(--border-radius);
+        &:hover {
+          background-color: var(--primary-color--hover);
+          cursor: pointer;
+        }
         .query__text {
-          color: var(--text-color--light);
+          line-height: 2rem;
         }
         .query__close {
-          margin-left: 0.8rem;
+          // background-color: red;
+          // margin-left: 0.8rem;
           cursor: pointer;
         }
       }
