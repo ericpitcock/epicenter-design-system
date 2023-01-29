@@ -66,7 +66,7 @@
           {
             name: 'Service Info',
             icon: 'info',
-            path: '/services'
+            path: '/service-info'
           },
           {
             name: 'Reports',

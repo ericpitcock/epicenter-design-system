@@ -58,6 +58,14 @@ export default {
     itemGap: {
       type: String,
       default: '3rem'
+    },
+    leftFlex: {
+      type: String,
+      default: '1'
+    },
+    rightFlex: {
+      type: String,
+      default: '1'
     }
   }
 }
@@ -74,12 +82,19 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: v-bind(itemGap);
       height: 100%;
       &__left, &__right {
         display: flex;
         height: 100%;
         align-items: center;
         gap: v-bind(itemGap);
+      }
+      &__left {
+        flex: v-bind(leftFlex);
+      }
+      &__right {
+        flex: v-bind(rightFlex);
       }
     }
   }

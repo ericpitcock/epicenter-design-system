@@ -49,6 +49,7 @@
         top: 1px;
         display: inline-flex;
         align-items: center;
+        white-space: nowrap;
       }
       &:not(.ep-tabs__tab-item--active):hover span {
         border-bottom-color: var(--gray-200);

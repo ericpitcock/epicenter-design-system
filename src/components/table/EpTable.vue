@@ -56,8 +56,8 @@
     name: 'EpTable',
     data() {
       return {
-        currentSort: 'start_date',
-        currentSortDir: 'desc'
+        currentSort: this.sortKey || this.getInitialSort(),
+        currentSortDir: this.sortDir,
         // the spread operator clones the arrray, making it non-reactive
         // so when you mutate the data (sort function, etc)
         // it won't affect other components
@@ -110,6 +110,14 @@
         type: Boolean,
         default: false
       },
+      sortKey: {
+        type: String,
+        default: ''
+      },
+      sortDir: {
+        type: String,
+        default: 'desc'
+      },
       stickyHeader: {
         type: Boolean,
         default: false
@@ -123,8 +131,8 @@
         default: false
       },
       search: {
-        type: String,
-        default: ''
+        type: Array,
+        default: () => []
       }
     },
     methods: {
@@ -164,6 +172,12 @@
       excluded(key) {
         return this.exclude.includes(key)
       },
+      getInitialSort() {
+        // if the column isn't excluded, return the first column
+        // otherwise, return the next column
+        const column = this.columns.find(column => !this.exclude.includes(column.key))
+        return column ? column.key : this.columns[1].key
+      },
       formatCell(value, key, row) {
         const formatter = this.columns.find(column => column.key == key)?.formatter
         return formatter ? formatter(value, key, row) : value
@@ -196,22 +210,17 @@
         }
       },
       filteredData() {
-        // if this.search is in quotes, search for exact match
-        if (this.search.startsWith('"') && this.search.endsWith('"')) {
-          const search = this.search.replace(/"/g, '')
-          return this.sortedData.filter(row => {
-            return Object.keys(row).some(key => {
-              return String(row[key]).toLowerCase() === search.toLowerCase()
-            })
-          })
-        }
+        // if there are no search terms, return the data
+        if (!this.search.length) return this.sortedData
 
-        if (!this.search) return this.sortedData
+        // otherwise, filter the data
         return this.sortedData.filter(row => {
-          return Object.keys(row).some(key => {
-            return String(row[key])
-              .toLowerCase()
-              .includes(this.search.toLowerCase())
+          return this.search.every(search => {
+            return Object.keys(row).some(key => {
+              return String(row[key])
+                .toLowerCase()
+                .includes(search.toLowerCase())
+            })
           })
         })
       },

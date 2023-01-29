@@ -1,14 +1,13 @@
 <template>
   <div class="assets">
-    <ep-header>
+    <ep-header leftFlex="2">
       <template #left>
         <ep-tabs :items="tabs" @tab-click="tabClick" />
         <ep-multi-search
-          width="50rem"
           height="4rem"
           backgroundColor="var(--background-1)"
           :icon="{ name: 'search' }"
-          placeholder='Search (use "quotes" for exact match)'
+          placeholder='Multi Search - Hit enter to add to search'
           @enter="debounceSearch"
           @query-close="queryClose"
           @clear=""
