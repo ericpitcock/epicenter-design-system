@@ -31,6 +31,7 @@
         sortDir="asc"
         striped
         bordered
+        searchable
       />
     </div>
   </div>
