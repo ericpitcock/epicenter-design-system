@@ -11,7 +11,7 @@
           @enter="updateSearch"
           @delete="updateSearch"
           @query-close="queryClose"
-          @clear=""
+          @clear="updateSearch"
         />
         <ep-button
           :iconLeft="{ name: 'file' }"

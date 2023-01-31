@@ -7,7 +7,9 @@
       />
     </template>
     <template #left-panel>
-      <ep-navigation v-bind="navProps" />
+      <div class="left-panel__container">
+        <ep-navigation v-bind="navProps" />
+      </div>
     </template>
     <template #content>
       <div class="content-container">
@@ -76,7 +78,11 @@
     height: auto;
     min-height: 100%;
     background: var(--background-2);
-    border-left: 1px solid var(--border-color);
+    // border-left: 1px solid var(--border-color);
+  }
+  .left-panel__container {
+    height: 100%;
+    border-right: 1px solid var(--border-color);
   }
   .right-panel__container {
     height: 100%;

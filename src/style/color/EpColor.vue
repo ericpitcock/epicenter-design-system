@@ -10,7 +10,7 @@
     <ep-container
       id="colors__table"
       class="colors__table"
-      width="100%"
+      width="fit-content"
       padding="0 2rem 2rem"
       calculate-height
       style="overscroll-behavior: contain"

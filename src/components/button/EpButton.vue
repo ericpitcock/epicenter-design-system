@@ -1,6 +1,7 @@
 <template>
   <component
     :is="element"
+    :type="type"
     :class="classes"
     :title="title"
     v-bind="$attrs"
@@ -59,6 +60,10 @@
       command: {
         type: Function,
         default: undefined
+      },
+      type: {
+        type: String,
+        default: 'button'
       }
     },
     components: {

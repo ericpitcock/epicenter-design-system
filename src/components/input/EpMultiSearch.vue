@@ -21,8 +21,8 @@
     </div>
     <input
       ref="input"
-      :type="type"
-      :placeholder="placeholder"
+      type="text"
+      :placeholder="placeholderValue"
       :disabled="disabled"
       v-model="value"
       @input="onInput"
@@ -34,13 +34,10 @@
     />
     <div
       v-if="clearable"
-      :class="[
-        'ep-input__clear',
-        { 'ep-input__clear--disabled': !value }
-      ]"
+      class="ep-input__clear"
       @click="onClear"
     >
-      <ep-icon v-show="value" name="close" />
+      <ep-icon name="close" />
     </div>
   </div>
 </template>
@@ -60,14 +57,10 @@
         // value is the value of the input
         value: '',
         // query is the array of values that have been added to the search
-        query: []
+        query: [],
       }
     },
     props: {
-      type: {
-        type: String,
-        default: 'text'
-      },
       placeholder: {
         type: String,
         default: ''
@@ -75,10 +68,6 @@
       icon: {
         type: Object,
         default: () => {}
-      },
-      clearable: {
-        type: Boolean,
-        default: false
       },
       disabled: {
         type: Boolean,
@@ -160,9 +149,10 @@
         }
       },
       onClear() {
+        this.query = []
         this.value = ''
         this.$refs.input.focus()
-        this.$emit('clear', '')
+        this.$emit('clear', this.query)
       }
     },
     computed: {
@@ -175,6 +165,18 @@
           // 'ep-input--success': this.success,
           // 'ep-input--warning': this.warning
         }
+      },
+      clearable() {
+        // if value and query is not empty, then clearable is true
+        // if value is empty and query is not empty, then clearable is true
+        // if value is not empty and query is empty, then clearable is true
+        // if value and query is empty, then clearable is false
+        return (this.value && this.query.length > 0) || (!this.value && this.query.length > 0) || (this.value && this.query.length === 0)
+      },
+      placeholderValue() {
+        // if the input is empty, no value and no query, show the prop placeholder
+        // if the query isn't empty, show "add to your search"
+        return this.value === '' && this.query.length === 0 ? this.placeholder : 'Add to your search'
       }
     },
     watch: {
@@ -261,9 +263,6 @@
     }
     &__clear {
       cursor: pointer;
-      &--disabled {
-        cursor: default;
-      }
     }
   }
 </style>

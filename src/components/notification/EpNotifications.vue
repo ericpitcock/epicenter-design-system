@@ -2,7 +2,7 @@
   <div class="ep-notifications" :style="position">
     <div class="ep-notifications__header font-size--small">
       <p class="text--subtle">Notification Center</p>
-      <p class="text--link">Clear all</p>
+      <p class="text--link" @click="clearNotifications">Clear all</p>
     </div>
     <ep-flex-container
       flexFlow="column nowrap"
@@ -82,6 +82,9 @@
     methods: {
       removeNotification(notification) {
         this.$store.dispatch('removeNotification', notification)
+      },
+      clearNotifications() {
+        this.$store.dispatch('clearNotifications')
       }
     }
   }

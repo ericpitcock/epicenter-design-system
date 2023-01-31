@@ -87,7 +87,22 @@ const fakeArray = length => {
           bar: []
         }
       },
-      location: faker.random.arrayElement(['New York City', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose', 'Austin', 'Jacksonville', 'San Francisco', 'Indianapolis']),
+      location: faker.random.arrayElement([
+        'New York City',
+        'Los Angeles',
+        'Chicago',
+        'Houston',
+        'Phoenix',
+        'Philadelphia',
+        'San Antonio',
+        'San Diego',
+        'Dallas',
+        'Seattle',
+        'Austin',
+        'Jacksonville',
+        'San Francisco',
+        'Indianapolis'
+      ]),
       operating_system: faker.random.arrayElement(['Windows', 'macOS', 'Linux']),
       ipv6_address: faker.internet.ipv6(),
       mac_address: faker.internet.mac()

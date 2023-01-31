@@ -73,6 +73,9 @@ export default createStore({
       console.log('addNotification mutation', newNotification)
       state.notifications.push(newNotification)
     },
+    clearNotifications: state => {
+      state.notifications = []
+    },
     removeNotification: (state, notification) => {
       console.log('removing notification', notification)
       state.notifications = state.notifications.filter(
@@ -108,6 +111,9 @@ export default createStore({
         // active to false
         state.notifications[index].active = false
       }, 5000)
+    },
+    clearNotifications: ({ state, commit }) => {
+      commit('clearNotifications')      
     },
     toggleNotificationCenter({ state, commit }) {
       commit('toggleNotificationCenter')
