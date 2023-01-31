@@ -1,8 +1,10 @@
 import { padded } from '@/helpers/decorators'
-import EpTabs from './EpTabs'
+import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpContainer from '@/components/container/EpContainer'
-import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
+import EpHeader from '@/components/header/EpHeader'
+import EpTabs from './EpTabs'
 
 export default {
   title: 'Components/Tabs',
@@ -19,13 +21,14 @@ export default {
 
 const Template = args => ({
   components: {
-    EpTabs,
+    EpActionBar,
     EpContainer,
+    EpFooter,
     EpHeader,
-    EpFooter
+    EpTabs
   },
   setup() {
-    return { args }
+    return { args, commonActionBarArgs }
   },
   template: `
     <ep-container
@@ -42,7 +45,7 @@ const Template = args => ({
           <ep-tabs v-bind="args" />
         </template>
         <template #right>
-          
+          <ep-action-bar v-bind="commonActionBarArgs" />
         </template>
       </ep-header>
       </template>

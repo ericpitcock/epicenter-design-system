@@ -1,5 +1,6 @@
 import { padded } from '@/helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpBreadcrumb from './EpBreadcrumb'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
@@ -19,29 +20,6 @@ export default {
   }
 }
 
-const actionBarProps = {
-  items: [
-    {
-      type: 'button',
-      kind: 'ghost',
-      label: '',
-      iconLeft: { name: 'help' }
-    },
-    {
-      type: 'button',
-      kind: 'ghost',
-      label: '',
-      iconLeft: { name: 'notifications' }
-    },
-    {
-      type: 'button',
-      kind: 'ghost',
-      label: '',
-      iconLeft: { name: 'user' }
-    }
-  ]
-}
-
 const Template = args => ({
   components: {
     EpActionBar,
@@ -52,8 +30,8 @@ const Template = args => ({
   },
   setup() {
     return {
-      actionBarProps,
-      args
+      args,
+      commonActionBarArgs
     }
   },
   // template: '<ep-breadcrumb v-bind="args" />'
@@ -72,7 +50,7 @@ const Template = args => ({
           <ep-breadcrumb v-bind="args" />
         </template>
         <template #right>
-          <ep-action-bar v-bind="actionBarProps" />
+          <ep-action-bar v-bind="commonActionBarArgs" />
         </template>
       </ep-header>
       </template>

@@ -1,3 +1,5 @@
+import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpContainer from './EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
@@ -165,18 +167,22 @@ export default {
 
 const Template = args => ({
   components: {
+    EpActionBar,
     EpContainer,
     EpHeader,
     EpFooter
   },
   setup() {
-    return { args }
+    return { args,commonActionBarArgs }
   },
   template: `
     <ep-container v-bind="args">
       <ep-header v-if="args.header">
         <template #left>
           Header
+        </template>
+        <template #right>
+          <ep-action-bar v-bind="commonActionBarArgs" />
         </template>
       </ep-header>
       <div

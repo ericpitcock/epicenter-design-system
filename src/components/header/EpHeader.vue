@@ -1,10 +1,10 @@
 <template>
   <div class="ep-header">
     <div class="ep-header__content">
-      <div class="ep-header__content__left">
+      <div v-if="hasLeftContent" class="ep-header__content__left">
         <slot name="left" />
       </div>
-      <div class="ep-header__content__right">
+      <div v-if="hasRightContent" class="ep-header__content__right">
         <slot name="right" />
       </div>
     </div>
@@ -66,6 +66,14 @@ export default {
     rightFlex: {
       type: String,
       default: '1'
+    }
+  },
+  computed: {
+    hasLeftContent() {
+      return !!this.$slots.left
+    },
+    hasRightContent() {
+      return !!this.$slots.right
     }
   }
 }

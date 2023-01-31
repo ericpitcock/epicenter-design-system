@@ -1,65 +1,10 @@
 import { padded } from '@/helpers/decorators'
 import EpActionBar from './EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
 import E from '@/components/logo/E'
-
-const fakeItems = [
-  {
-    type: 'dropdown',
-    alignRight: true,
-    button: {
-      kind: 'ghost',
-      label: '',
-      iconLeft: { name: 'help' },
-      iconRight: null
-    },
-    containerProps: {
-      backgroundColor: 'var(--background-4)',
-      padding: '1rem 0',
-      borderRadius: 'var(--border-radius)',
-      borderColor: 'var(--border-color--lighter)'
-    },
-    menuItems: [
-      { label: 'Documentation' },
-      { label: 'API Reference' },
-      { divider: true },
-      { label: 'Contact Us' }
-    ]
-  },
-  {
-    type: 'button',
-    iconLeft: { name: 'notifications' },
-    // emit event to parent
-    command: () => {
-      console.log('notifications clicked')
-    }
-  },
-  {
-    type: 'dropdown',
-    alignRight: true,
-    button: {
-      kind: 'ghost',
-      label: '',
-      iconLeft: { name: 'user' },
-      iconRight: null
-    },
-    containerProps: {
-      backgroundColor: 'var(--background-4)',
-      padding: '1rem 0',
-      borderRadius: 'var(--border-radius)',
-      borderColor: 'var(--border-color--lighter)'
-    },
-    menuItems: [
-      { label: 'Profile' },
-      { label: 'Switch account' },
-      { label: 'Settings' },
-      { divider: true },
-      { label: 'Sign out' }
-    ]
-  }
-]
 
 export default {
   title: 'Components/Action Bar',
@@ -83,7 +28,7 @@ const Template = args => ({
     E
   },
   setup() {
-    return { args }
+    return { args, commonActionBarArgs }
   },
   template: `
     <ep-container
@@ -127,6 +72,4 @@ const Template = args => ({
 
 export const ActionBar = Template.bind({})
 
-ActionBar.args = {
-  items: fakeItems
-}
+ActionBar.args = commonActionBarArgs

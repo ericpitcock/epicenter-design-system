@@ -1,5 +1,10 @@
-import EpDatePicker from './EpDatePicker'
 import { padded } from '@/helpers/decorators'
+import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
+import EpContainer from '@/components/container/EpContainer'
+import EpDatePicker from './EpDatePicker'
+import EpFooter from '@/components/footer/EpFooter'
+import EpHeader from '@/components/header/EpHeader'
 
 export default {
   title: 'Components/Date Picker',
@@ -10,11 +15,42 @@ export default {
 }
 
 const Template = args => ({
-  components: { EpDatePicker },
-  setup() {
-    return { args }
+  components: {
+    EpActionBar,
+    EpContainer,
+    EpDatePicker,
+    EpFooter,
+    EpHeader
   },
-  template: '<ep-date-picker />'
+  setup() {
+    return { args, commonActionBarArgs }
+  },
+  // template: '<ep-date-picker />'
+  template: `
+    <ep-container
+      useHeader
+      useFooter
+      max-width="120rem"
+      height="100%"
+      overflow="hidden"
+    >
+      <template #header>
+      <ep-header>
+        <template #left>
+          <ep-date-picker />
+        </template>
+        <template #right>
+          <ep-action-bar v-bind="commonActionBarArgs" />
+        </template>
+      </ep-header>
+      </template>
+      <template #default>
+      </template>
+      <template #footer>
+        <ep-footer />
+      </template>
+    </ep-container>
+  `
 })
 
 export const DatePicker = Template.bind({})

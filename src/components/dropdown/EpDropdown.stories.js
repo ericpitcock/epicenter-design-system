@@ -1,8 +1,10 @@
 import { padded } from '@/helpers/decorators'
+import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpDropdown from './EpDropdown'
 import EpContainer from '@/components/container/EpContainer'
-import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
+import EpHeader from '@/components/header/EpHeader'
 
 const buttonDefaults = {
   kind: 'secondary',
@@ -74,14 +76,15 @@ export default {
 
 const Template = args => ({
   components: {
+    EpActionBar,
     EpDropdown,
     EpContainer,
-    EpHeader,
-    EpFooter
+    EpFooter,
+    EpHeader
   },
   // data: () => ({ buttonDefaults, menuItems: fakeDropdownItems }),
   setup() {
-    return { args }
+    return { args, commonActionBarArgs }
   },
   // template: '<ep-dropdown v-bind="args" />'
   template: `
@@ -96,10 +99,10 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
-          <h1>Dropdown</h1>
+          <ep-dropdown v-bind="args" />
         </template>
         <template #right>
-          <ep-dropdown v-bind="args" />
+          <ep-action-bar v-bind="commonActionBarArgs" />
         </template>
       </ep-header>
       </template>
@@ -119,7 +122,6 @@ const Template = args => ({
 export const Dropdown = Template.bind({})
 
 Dropdown.args = {
-  alignRight: true,
   button: buttonDefaults,
   containerProps,
   menuItems: fakeDropdownItems

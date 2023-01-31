@@ -1,5 +1,7 @@
 import { padded } from '@/helpers/decorators'
 import E from '@/components/logo/E'
+import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpButton from '@/components/button/EpButton'
 import EpContainer from '@/components/container/EpContainer'
 import EpFeedbackCard from '@/components/notification/EpFeedbackCard'
@@ -27,6 +29,7 @@ const buildNotification = style => {
 const Template = args => ({
   components: {
     E,
+    EpActionBar,
     EpButton,
     EpContainer,
     EpFooter,
@@ -38,6 +41,7 @@ const Template = args => ({
     return {
       args,
       buildNotification,
+      commonActionBarArgs,
       store
     }
   },
@@ -64,11 +68,12 @@ const Template = args => ({
           </div>
         </template>
         <template #right>
+          <ep-action-bar v-bind="commonActionBarArgs" />
         </template>
       </ep-header>
       </template>
       <template #default>
-        <ep-notifications top="5rem" right="1rem" />
+        
         <ep-feedback-card @submit="buildNotification('success')" />
       </template>
     </ep-container>

@@ -1,8 +1,10 @@
 import { padded } from '@/helpers/decorators'
+import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpCheckbox from './EpCheckbox'
 import EpContainer from '@/components/container/EpContainer'
-import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
+import EpHeader from '@/components/header/EpHeader'
 
 export default {
   title: 'Components/Checkbox',
@@ -12,13 +14,14 @@ export default {
 
 const Template = args => ({
   components: {
+    EpActionBar,
     EpCheckbox,
     EpContainer,
-    EpHeader,
-    EpFooter
+    EpFooter,
+    EpHeader
   },
   setup() {
-    return { args }
+    return { args, commonActionBarArgs }
   },
   // template: '<ep-checkbox v-bind="args">Checkbox</ep-checkbox>',
   template: `
@@ -35,9 +38,12 @@ const Template = args => ({
           <h1>Fonts</h1>
         </template>
         <template #right>
-          <ep-checkbox v-bind="args">Checkbox</ep-checkbox>
+          <ep-action-bar v-bind="commonActionBarArgs" />
         </template>
       </ep-header>
+      </template>
+      <template #default>
+      <ep-checkbox v-bind="commonActionBarArgs">Checkbox</ep-checkbox>
       </template>
       <template #footer>
         <ep-footer />

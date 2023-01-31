@@ -1,5 +1,6 @@
 import { padded } from '@/helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
@@ -73,29 +74,6 @@ const destroyAndFetch = [
   }
 ]
 
-const actionBarProps = {
-  items: [
-    {
-      type: 'button',
-      kind: 'ghost',
-      label: '',
-      iconLeft: { name: 'help' }
-    },
-    {
-      type: 'button',
-      kind: 'ghost',
-      label: '',
-      iconLeft: { name: 'notifications' }
-    },
-    {
-      type: 'button',
-      kind: 'ghost',
-      label: '',
-      iconLeft: { name: 'user' }
-    }
-  ]
-}
-
 export const Loading = args => ({
   components: {
     EpActionBar,
@@ -109,7 +87,7 @@ export const Loading = args => ({
   setup() {
     return {
       args,
-      actionBarProps,
+      commonActionBarArgs,
       columns,
       fakeArray
     }
@@ -184,7 +162,7 @@ export const Loading = args => ({
           />
         </template>
         <template #right>
-          <ep-action-bar v-bind="actionBarProps" />
+          <ep-action-bar v-bind="commonActionBarArgs" />
         </template>
       </ep-header>
       </template>

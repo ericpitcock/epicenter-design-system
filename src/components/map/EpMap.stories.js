@@ -1,7 +1,9 @@
-import EpMap from './EpMap'
+import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpContainer from '@/components/container/EpContainer'
-import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
+import EpHeader from '@/components/header/EpHeader'
+import EpMap from './EpMap'
 import { padded } from '@/helpers/decorators'
 import store from '@/store'
 
@@ -112,13 +114,14 @@ export default {
 
 export const Map = args => ({
   components: {
-    EpMap,
+    EpActionBar,
     EpContainer,
+    EpFooter,
     EpHeader,
-    EpFooter
+    EpMap
   },
   setup() {
-    return { args }
+    return { args, commonActionBarArgs }
   },
   template: `
     <ep-container
@@ -134,7 +137,7 @@ export const Map = args => ({
           <h1>Map</h1>
         </template>
         <template #right>
-          
+          <ep-action-bar v-bind="commonActionBarArgs" />
         </template>
       </ep-header>
       </template>
