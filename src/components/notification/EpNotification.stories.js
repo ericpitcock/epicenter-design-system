@@ -8,6 +8,7 @@ import EpFeedbackCard from '@/components/notification/EpFeedbackCard'
 import EpFooter from '@/components/footer/EpFooter'
 import EpHeader from '@/components/header/EpHeader'
 import EpNotifications from './EpNotifications'
+import EpTempNotification from '@/components/notification/EpTempNotification'
 import store from '@/store'
 
 export default {
@@ -18,10 +19,10 @@ export default {
 }
 
 // build notification object and dispatch to store
-const buildNotification = style => {
+const buildNotification = alertstyle => {
   const notification = {
     message: 'Thank you for your feedback!',
-    style
+    alertstyle
   }
   store.dispatch('addNotification', notification)
 }
@@ -35,7 +36,8 @@ const Template = args => ({
     EpFooter,
     EpFeedbackCard,
     EpHeader,
-    EpNotifications
+    EpNotifications,
+    EpTempNotification
   },
   setup() {
     return {
@@ -46,6 +48,7 @@ const Template = args => ({
     }
   },
   template: `
+    <ep-temp-notification />
     <ep-container
       useHeader
       useFooter
@@ -73,7 +76,6 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #default>
-        
         <ep-feedback-card @submit="buildNotification('success')" />
       </template>
     </ep-container>

@@ -2,8 +2,9 @@
   <div class="ep-notification">
     <div class="ep-notification__color-strip"></div>
     <div class="ep-notification__body">
-      <div class="message">
-        {{ message }} {{ relativeTime(timestamp) }}
+      <div class="ep-notification__body__message">
+        <p class="ep-notification__body__message__text">{{ message }}</p>
+        <p class="ep-notification__body__message__timestamp">{{ relativeTime(timestamp) }}</p>
       </div>
       <div class="dismiss-button">
         <ep-button
@@ -120,7 +121,18 @@
       border: 1px solid var(--border-color--lighter);
       border-left: none;
       border-radius: 0 var(--border-radius--large) var(--border-radius--large) 0;
-      .message {
+      &__message {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: .5rem;
+        height: 100%;
+        &__text {
+        }
+        &__timestamp {
+          font-size: var(--font-size--tiny);
+          color: var(--text-color--subtle);
+        }
       }
       .dismiss-button {
       }
