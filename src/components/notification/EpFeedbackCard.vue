@@ -110,6 +110,8 @@
       },
       submit() {
         this.$emit('submit')
+        this.rating = 0
+        this.feedback = ''
       }
     }
   }

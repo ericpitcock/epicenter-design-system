@@ -1,11 +1,13 @@
 <template>
   <Teleport to="body">
+    <transition name="fade">
     <div
       v-if="hasActiveNotifications"
       class="ep-temp-notification"
     >
       <EpNotification v-bind="getActiveNotifications[0]" />
     </div>
+    </transition>
   </Teleport>
 </template>
 
@@ -18,24 +20,6 @@
     components: {
       EpNotification,
     },
-    // props: {
-    //   type: {
-    //     type: String,
-    //     default: 'success',
-    //   },
-    //   message: {
-    //     type: String,
-    //     default: '',
-    //   },
-    //   duration: {
-    //     type: Number,
-    //     default: 3000,
-    //   },
-    //   onClose: {
-    //     type: Function,
-    //     default: () => {},
-    //   },
-    // },
     computed: {
       ...mapGetters([
         'getActiveNotifications',
@@ -43,22 +27,24 @@
       ]),
       ...mapState(['notifications']),
     }
-    // data() {
-    //   return {
-    //     show: false,
-    //   };
-    // },
-    // mounted() {
-    //   this.show = true
-    // }
   }
 </script>
 
 <style lang="scss" scoped>
   .ep-temp-notification {
     position: fixed;
-    top: 0;
-    right: 0;
+    top: 1rem;
+    right: 1rem;
     z-index: 9999;
+    // deep selector to override EpNotification styles
+    :deep(.ep-notification) {
+      box-shadow: var(--drop-shadow);
+    }
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
   }
 </style>
