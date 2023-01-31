@@ -177,6 +177,7 @@ export const Loading = args => ({
           :columns="columns"
           :data="fakeArray(50)"
           :exclude="['id']"
+          width="100%"
           stickyHeader
         />
       </template>

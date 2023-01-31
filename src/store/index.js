@@ -48,7 +48,9 @@ export default createStore({
     theme: 'dark'
   },
   getters: {
-    // has active notifications
+    getActiveNotifications: state => {
+      return state.notifications.filter(n => n.active)
+    },
     hasActiveNotifications: state => {
       return state.notifications.some(n => n.active)
     }

@@ -8,7 +8,7 @@ export default {
   argTypes: {
     bar: {
       control: {
-        type: 'text'
+        type: 'array'
       }
     }
   }

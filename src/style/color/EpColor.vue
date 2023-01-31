@@ -128,8 +128,14 @@
             label: 'Specific Use'
           },
           {
+            label: 'Alert (Coming Soon)',
+          },
+          {
             label: 'Chart Sequence',
             command: () => (this.filter = 'Chart')
+          },
+          {
+            label: 'Chart Sequence Expanded (Coming Soon)',
           }
         ],
         tableColumns: [
