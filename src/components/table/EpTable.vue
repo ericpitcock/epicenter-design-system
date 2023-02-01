@@ -48,9 +48,10 @@
 </template>
 
 <script>
+  import { defineAsyncComponent } from 'vue'
   import EpIcon from '@/components/icon/EpIcon'
-  import EpBadge from '@/components/badge/EpBadge'
-  import EpSparkBar from '@/templates/insight/components/EpSparkBar'
+  // import EpBadge from '@/components/badge/EpBadge'
+  // import EpSparkBar from '@/components/spark-bar/EpSparkBar'
 
   export default {
     name: 'EpTable',
@@ -67,9 +68,10 @@
       }
     },
     components: {
+      // dynamic components
+      EpBadge: defineAsyncComponent(() => import('@/components/badge/EpBadge')),
+      EpSparkBar: defineAsyncComponent(() => import('@/components/spark-bar/EpSparkBar')),
       EpIcon,
-      EpBadge,
-      EpSparkBar
     },
     props: {
       columns: {
