@@ -121,11 +121,7 @@
         }
       },
       onEnter() {
-        this.$emit('selected', this.filteredItems[this.currentIndex])
-        this.search = this.filteredItems[this.currentIndex].name
-        this.showDropdown = false
-        // blur the input
-        this.$el.querySelector('input').blur()
+        this.selectItem()
       },
       onEsc() {
         this.showDropdown = false
@@ -140,8 +136,13 @@
         this.currentIndex = index
       },
       onMouseDown() {
+        this.selectItem()
+      },
+      selectItem() {
+        this.$emit('selected', this.filteredItems[this.currentIndex])
         this.search = this.filteredItems[this.currentIndex].name
         this.showDropdown = false
+        this.$el.querySelector('input').blur()
       }
     }
   }
