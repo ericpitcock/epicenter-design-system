@@ -2,7 +2,7 @@
   <div class="assets">
     <ep-header leftFlex="1" rightFlex="0">
       <template #left>
-        <!-- <ep-tabs :items="tabs" @tab-click="tabClick" /> -->
+        <p>{{ assetCount }} assets</p>
         <ep-multi-search
           height="4rem"
           backgroundColor="var(--background-1)"
@@ -34,6 +34,7 @@
         striped
         bordered
         searchable
+        @data-changed="handleDataChanged"
       />
     </div>
   </div>
@@ -44,7 +45,6 @@
   import EpHeader from '@/components/header/EpHeader'
   import EpMultiSearch from '@/components/input/EpMultiSearch'
   import EpTable from '@/components/table/EpTable'
-  import EpTabs from '@/components/tabs/EpTabs'
   import { columns, merged } from './assetData'
 
   export default {
@@ -53,11 +53,11 @@
       EpButton,
       EpHeader,
       EpMultiSearch,
-      EpTable,
-      EpTabs
+      EpTable
     },
     data() {
       return {
+        assetCount: merged.length,
         columns,
         data: merged,
         search: [],
@@ -71,6 +71,9 @@
       }
     },
     methods: {
+      handleDataChanged(data) {
+        this.assetCount = data.length
+      },
       debounceSearch(value) {
         console.log('debounceSearch', value)
         // add value to search array

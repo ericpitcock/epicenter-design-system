@@ -12,6 +12,7 @@ import { columns, fakeArray } from '@/components/table/data'
 export default {
   title: 'Components/Loading',
   component: EpLoading,
+  // the padded decorator affects the table's sticky header
   decorators: [padded],
   argTypes: {
     backgroundColor: {
@@ -120,8 +121,8 @@ export const Loading = args => ({
   },
   template: `
     <ep-container
-      useHeader
-      useFooter
+      use-header
+      use-footer
       max-width="120rem"
       height="100%"
       padding="0 2rem"
@@ -178,7 +179,7 @@ export const Loading = args => ({
           :data="fakeArray(50)"
           :exclude="['id']"
           width="100%"
-          stickyHeader
+          sticky-header
         />
       </template>
       <template #footer>

@@ -7,6 +7,12 @@
         @click="this.$emit('menuButtonClicked')"
       />
       <ep-dropdown
+      :button="{
+          kind: 'ghost',
+          label: '',
+          iconRight: null,
+          iconLeft: { name: 'user' }
+        }"
         :containerProps="{
           backgroundColor: 'var(--background-4)',
           padding: '1rem 0',
@@ -14,24 +20,30 @@
           borderColor: 'var(--border-color--lighter)'
         }"
         :menuItems="[{
-          label: 'User Settings',
-          iconLeft: { name: 'settings' },
+          label: 'User Profile',
+          iconLeft: { name: 'user' },
           bind: {
             to: '/settings'
           }
-        },{
+        },
+        {
+          label: 'Service Settings',
+          iconLeft: { name: 'settings' },
+          bind: {
+            to: '/service-settings'
+          }
+        },
+        {
+          divider: true
+        },
+        {
           label: 'Sign Out',
           iconLeft: { name: 'arrow-right' },
           bind: {
             to: '/login'
           }
-        }]"
-        :button="{
-          kind: 'ghost',
-          label: '',
-          iconRight: null,
-          iconLeft: { name: 'user' }
-        }"
+        },
+        ]"
       >
       </ep-dropdown>
     </div>

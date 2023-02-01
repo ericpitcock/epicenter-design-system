@@ -1,14 +1,13 @@
-import vueRouter from '../../decorators/storybook-vue3-router'
+import vueRouter from 'storybook-vue3-router'
 import EpInsight from './EpInsight'
 import EpLogin from './EpLogin'
-// import Dashboard from './views/Dashboard'
+import Dashboard from './views/Dashboard'
 import Assets from './views/Assets'
-// import Investigations from './views/Investigations'
-// import ServiceInfo from './views/ServiceInfo'
-// import Reports from './views/Reports'
-// import Files from './views/Files'
+import Investigations from './views/Investigations'
+import ServiceInfo from './views/ServiceInfo'
+import Reports from './views/Reports'
+import Files from './views/Files'
 import UserSettings from './views/UserSettings'
-import Temp from './views/Temp'
 
 export default {
   title: 'Templates/Sidebar',
@@ -34,7 +33,7 @@ const customRoutes = [
   {
     path: '/',
     name: 'dashboard',
-    component: Temp
+    component: Dashboard
   },
   {
     path: '/assets',
@@ -44,22 +43,22 @@ const customRoutes = [
   {
     path: '/investigations',
     name: 'investigations',
-    component: Temp
+    component: Investigations
   },
   {
     path: '/service-info',
     name: 'service-info',
-    component: Temp
+    component: ServiceInfo
   },
   {
     path: '/reports',
     name: 'reports',
-    component: Temp
+    component: Reports
   },
   {
     path: '/files',
     name: 'files',
-    component: Temp
+    component: Files
   },
   {
     path: '/settings',

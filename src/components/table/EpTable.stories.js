@@ -1,18 +1,23 @@
-import EpBadge from '@/components/badge/EpBadge'
+import { padded } from '@/helpers/decorators'
+import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpContainer from '@/components/container/EpContainer'
+import EpHeader from '@/components/header/EpHeader'
+import EpFooter from '@/components/footer/EpFooter'
 import EpTable from './EpTable'
 import { columns, fakeArray } from './data'
 
-const container = () => {
-  return {
-    template: '<div style="padding: 30px;"><story/></div>'
-  }
-}
+// const container = () => {
+//   return {
+//     template: '<div style="padding: 30px;"><story/></div>'
+//   }
+// }
 
 export default {
   title: 'Components/Table',
   component: EpTable,
-  decorators: [container],
+  // the padded decorator affects the table's sticky header
+  decorators: [padded],
   argTypes: {
     columns: {
       name: 'Columns',
@@ -34,14 +39,14 @@ export default {
         category: 'Data'
       }
     },
+    width: {
+      name: 'Width',
+      control: {
+        type: 'text'
+      }
+    },
     exclude: {
       table: { disable: true }
-    },
-    selectable: {
-      name: 'Selectable',
-      control: {
-        type: 'boolean'
-      }
     },
     bordered: {
       name: 'Bordered',
@@ -55,11 +60,23 @@ export default {
         type: 'boolean'
       }
     },
+    selectable: {
+      name: 'Selectable',
+      control: {
+        type: 'boolean'
+      }
+    },
     selected: {
       table: { disable: true }
     },
     sortable: {
       name: 'Sortable',
+      control: {
+        type: 'boolean'
+      }
+    },
+    searchable: {
+      name: 'Searchable',
       control: {
         type: 'boolean'
       }
@@ -81,17 +98,44 @@ export default {
       control: {
         type: 'boolean'
       }
-    }
+    },
+    search: {
+      name: 'Search',
+      control: {
+        type: 'array'
+      }
+    },
   }
 }
 
 const Template = args => ({
-  components: { EpBadge, EpContainer, EpTable },
+  components: {
+    EpActionBar,
+    EpContainer,
+    EpHeader,
+    EpFooter,
+    EpTable },
   setup() {
-    return { args }
+    return { args, commonActionBarArgs }
   },
   template: `
-  <ep-container width="fit-content" padding="0.4rem 2rem 2rem">
+  <ep-container
+    use-header
+    use-footer
+    max-width="120rem"
+    height="100%"
+    padding="0 2rem"
+    overflow="auto"
+  >
+    <template #header>
+      <ep-header>
+        <template #left>
+        </template>
+        <template #right>
+          <ep-action-bar v-bind="commonActionBarArgs" />
+        </template>
+      </ep-header>
+      </template>
     <ep-table v-bind="args" />
   </ep-container>
   `
@@ -102,6 +146,7 @@ export const Table = Template.bind({})
 Table.args = {
   columns: columns,
   data: fakeArray(30),
+  width: '100%',
   exclude: ['id'],
   selectable: false,
   bordered: false,

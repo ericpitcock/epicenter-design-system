@@ -247,6 +247,11 @@
           return 0
         })
       }
+    },
+    watch: {
+      filteredData() {
+        this.$emit('data-changed', this.filteredData)
+      },  
     }
   }
 </script>
