@@ -45,6 +45,23 @@
         filter: '',
         menuItems: [
           {
+            section: true,
+            label: 'Specific Use'
+          },
+          {
+            label: 'Alert (Coming Soon)',
+          },
+          {
+            label: 'Chart Sequence',
+            command: () => (this.filter = 'Chart')
+          },
+          {
+            label: 'Chart Sequence Expanded (Coming Soon)',
+          },
+          {
+            divider: true
+          },
+          {
             label: 'All',
             command: () => (this.filter = '')
           },
@@ -119,23 +136,6 @@
           {
             label: 'Rose',
             command: () => (this.filter = 'rose')
-          },
-          {
-            divider: true
-          },
-          {
-            section: true,
-            label: 'Specific Use'
-          },
-          {
-            label: 'Alert (Coming Soon)',
-          },
-          {
-            label: 'Chart Sequence',
-            command: () => (this.filter = 'Chart')
-          },
-          {
-            label: 'Chart Sequence Expanded (Coming Soon)',
           }
         ],
         tableColumns: [
