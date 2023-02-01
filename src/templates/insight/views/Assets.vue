@@ -2,7 +2,7 @@
   <div class="assets">
     <ep-header leftFlex="1" rightFlex="0">
       <template #left>
-        <p>{{ assetCount }} assets</p>
+        <p class="text--subtle">{{ assetCount }} assets</p>
         <ep-multi-search
           height="4rem"
           backgroundColor="var(--background-1)"

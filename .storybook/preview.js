@@ -15,8 +15,8 @@ export const parameters = {
         'Intro',
         'Components',
         'Style',
-        'Templates',
-        'Sandbox'
+        'App Examples',
+        'Docs'
       ],
     },
   }

@@ -1,14 +1,14 @@
 <template>
   <ep-app-grid v-bind="gridProps" >
     <template #header>
-      <ep-insight-app-header
+      <ep-acme-asset-explorer-header
         @menuButtonClicked="toggleLeftPanel"
         @notificationsButtonClicked="toggleRightPanel"
       />
     </template>
     <template #left-panel>
       <div class="left-panel__container">
-        <ep-navigation v-bind="navProps" />
+        <ep-acme-asset-explorer-main-nav v-bind="navProps" />
       </div>
     </template>
     <template #content>
@@ -28,15 +28,15 @@
   import { mapState, mapActions } from 'vuex'
 
   import EpAppGrid from './EpAppGrid'
-  import EpInsightAppHeader from './EpInsightAppHeader'
-  import EpNavigation from './EpNavigation'
+  import EpAcmeAssetExplorerHeader from './EpAcmeAssetExplorerHeader'
+  import EpAcmeAssetExplorerMainNav from './EpAcmeAssetExplorerMainNav'
   import EpButton from '@/components/button/EpButton'
   import EpDropdown from '@/components/dropdown/EpDropdown'
   import EpTabs from '@/components/tabs/EpTabs'
   import EpNotifications from '@/components/notification/EpNotifications'
 
   export default {
-    name: 'App',
+    name: 'AcmeAssetExplorer',
     data() {
       return {
         gridProps: {
@@ -50,8 +50,8 @@
     },
     components: {
       EpAppGrid,
-      EpInsightAppHeader,
-      EpNavigation,
+      EpAcmeAssetExplorerHeader,
+      EpAcmeAssetExplorerMainNav,
       EpButton,
       EpDropdown,
       EpTabs,
@@ -78,7 +78,6 @@
     height: auto;
     min-height: 100%;
     background: var(--background-2);
-    // border-left: 1px solid var(--border-color);
   }
   .left-panel__container {
     height: 100%;

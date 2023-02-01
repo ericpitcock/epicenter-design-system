@@ -61,10 +61,10 @@
     gap: 2px;
     align-items: center;
     height: 0.8rem;
-    background-color: var(--background-2);
     transition: transform 0.2s ease-in-out;
     transform-origin: left 50%;
     &:hover {
+      background-color: var(--background-2);
       transform: scale(4);
       gap: 0.5px;
       .ep-spark-bar__label {

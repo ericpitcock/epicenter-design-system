@@ -53,7 +53,7 @@
   import EpContainer from '@/components/container/EpContainer'
 
   export default {
-    name: 'EpLogin',
+    name: 'EpAcmeAssetExplorerLogin',
     components: {
       AcmeLogo,
       EpBasicInput,

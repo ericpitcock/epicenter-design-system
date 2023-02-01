@@ -1,6 +1,6 @@
 import vueRouter from 'storybook-vue3-router'
-import EpInsight from './EpInsight'
-import EpLogin from './EpLogin'
+import EpAcmeAssetExplorer from './EpAcmeAssetExplorer'
+import EpAcmeAssetExplorerLogin from './EpAcmeAssetExplorerLogin'
 import Dashboard from './views/Dashboard'
 import Assets from './views/Assets'
 import Investigations from './views/Investigations'
@@ -10,8 +10,8 @@ import Files from './views/Files'
 import UserSettings from './views/UserSettings'
 
 export default {
-  title: 'Templates/Sidebar',
-  component: EpInsight,
+  title: 'App Examples/Acme Asset Explorer',
+  component: EpAcmeAssetExplorer,
   argTypes: {
   },
   parameters: {
@@ -20,14 +20,14 @@ export default {
 }
 
 const Template = args => ({
-  components: { EpInsight },
+  components: { EpAcmeAssetExplorer },
   setup() {
     return { args }
   },
-  template: '<ep-insight v-bind="args" />'
+  template: '<ep-acme-asset-explorer v-bind="args" />'
 })
 
-export const Sidebar = Template.bind({})
+export const AcmeAssetExplorer = Template.bind({})
 
 const customRoutes = [
   {
@@ -68,10 +68,10 @@ const customRoutes = [
   {
     path: '/login',
     name: 'login',
-    component: EpLogin
+    component: EpAcmeAssetExplorerLogin
   }
 ]
 
-Sidebar.decorators = [
+AcmeAssetExplorer.decorators = [
   vueRouter(customRoutes)
 ]
