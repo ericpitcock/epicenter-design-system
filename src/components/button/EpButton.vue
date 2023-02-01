@@ -121,15 +121,10 @@
     border-color: $border-color;
     color: $font-color;
 
-    // &:hover {
-    //   color: $hover-font-color;
-    //   background-color: $hover-bg-color;
-    // }
-
     @media (hover: hover) {
       &:hover {
         color: $hover-font-color;
-      background-color: $hover-bg-color;
+        background-color: $hover-bg-color;
       }
     }
 

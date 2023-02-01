@@ -1,4 +1,4 @@
-import vueRouter from 'storybook-vue3-router'
+import vueRouter from '../../decorators/storybook-vue3-router'
 import EpInsight from './EpInsight'
 import EpLogin from './EpLogin'
 // import Dashboard from './views/Dashboard'

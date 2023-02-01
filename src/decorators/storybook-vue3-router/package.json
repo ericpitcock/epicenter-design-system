@@ -1,0 +1,88 @@
+{
+  "name": "storybook-vue3-router",
+  "version": "1.0.8",
+  "description": "A Storybook decorator that allows you to build stories for your routing-aware components.",
+  "keywords": [
+    "storybook-addons",
+    "vue",
+    "vue-router"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NickMcBurney/storybook-vue-router"
+  },
+  "author": "Nick McBurney",
+  "license": "MIT",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/ts/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "buildBabel": "concurrently \"yarn buildBabel:cjs\" \"yarn buildBabel:esm\"",
+    "buildBabel:cjs": "babel ./src -d ./dist/cjs --extensions \".js,.jsx,.ts,.tsx\"",
+    "buildBabel:esm": "babel ./src -d ./dist/esm --env-name esm --extensions \".js,.jsx,.ts,.tsx\"",
+    "buildTsc": "tsc --declaration --emitDeclarationOnly --outDir ./dist/ts",
+    "prebuild": "yarn clean",
+    "build": "concurrently \"yarn buildBabel\" \"yarn buildTsc\"",
+    "build:watch": "concurrently \"yarn buildBabel:esm -- --watch\" \"yarn buildTsc -- --watch\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "start": "concurrently \"yarn build:watch\" \"yarn storybook -- --no-manager-cache --quiet\"",
+    "build-storybook": "build-storybook",
+    "prerelease": "zx scripts/prepublish-checks.mjs",
+    "release": "yarn build && auto shipit",
+    "eject-ts": "zx scripts/eject-typescript.mjs"
+  },
+  "dependencies": {
+    "vue-router": "^4.0.11"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-typescript": "^7.13.0",
+    "@storybook/addon-essentials": "^6.3.6",
+    "@storybook/vue3": "^6.3.7",
+    "auto": "^10.3.0",
+    "babel-loader": "^8.1.0",
+    "boxen": "^5.0.1",
+    "concurrently": "^6.2.0",
+    "dedent": "^0.7.0",
+    "prettier": "^2.3.1",
+    "prop-types": "^15.7.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.2.4",
+    "vue": "^3.2.4",
+    "zx": "^1.14.1"
+  },
+  "peerDependencies": {
+    "@storybook/addons": "^6.3.6",
+    "@storybook/vue3": "6.x",
+    "vue": "3.x",
+    "vue-router": "4.x"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    },
+    "vue-router": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "storybook": {
+    "displayName": "Vue 3 Router",
+    "supportedFrameworks": [
+      "vue"
+    ],
+    "icon": "https://github.com/NickMcBurney/storybook-vue3-router/blob/main/vue-logo.png?raw=true"
+  }
+}
