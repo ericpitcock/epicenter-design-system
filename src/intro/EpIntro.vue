@@ -6,15 +6,15 @@
       </div>
       <div class="copy-block">
         <h1 class="font-size--jumbo">Ep Design System</h1>
-        <p>Vue components designed and built by <a class="text-link--underlined--inverse" href="https://www.ericpitcock.com">Eric Pitcock</a>.</p>
+        <p>Vue components designed and built by <a class="hero-link" href="https://www.ericpitcock.com">Eric Pitcock</a>.</p>
       </div>  
       <div class="yellow-circle"></div>
       <div class="purple-circle"></div>
     </div>
     <div class="content">
       <div class="copy-block">
-        <p>This project began as a way to design and build reusable components for my own projects, but it has since evolved into a comprehensive learning experience. Through researching, designing, building, and testing components, I’ve gained a deeper understanding of how design systems can be used to create user-friendly and accessible experiences for all users.</p>
-        <p>This is a forever project, and probably being worked on as you read this, so expect some pieces to be in a non-working state.</p>
+        <p>This project began as a way to design and build reusable components for my own projects, but it has since evolved into a comprehensive learning experience. Through the process of creating these components, I’ve gained a deeper understanding of how design systems can be used to create user-friendly and accessible experiences for all users.</p>
+        <p>This is a forever project, and probably being worked on as you read this, so you may experience bugs or inconsistencies.</p>
       </div>
     </div>
   </div>
@@ -34,6 +34,12 @@
 </script>
 
 <style lang="scss" scoped>
+  :root {
+    --intro-hero-link-color: var(--text-color--inverse);
+  }
+  html[data-color-theme='light'] {
+    --intro-hero-link-color: var(--text-color);
+  }
   .intro {
     height: 100%;
     padding: 3rem;
@@ -57,6 +63,14 @@
         position: relative;
         z-index: 1;
         margin-top: 3rem;
+      }
+      .hero-link {
+        color: var(--intro-hero-link-color);
+        text-decoration: underline;
+        &:hover {
+          color: var(--gray-440);
+          text-decoration: none;
+        }
       }
       .yellow-circle {
         position: absolute;

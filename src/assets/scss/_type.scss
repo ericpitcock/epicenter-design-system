@@ -74,14 +74,6 @@ html {
   a {
     color: var(--text-color--link);
   }
-  .text-link--underlined--inverse {
-    color: var(--text-color--inverse);
-    text-decoration: underline;
-    &:hover {
-      color: var(--text-color--inverse);
-      text-decoration: none;
-    }
-  }
   @media (hover: hover) and (pointer: fine) {
     a:hover {
       color: var(--text-color--link);
