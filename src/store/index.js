@@ -37,7 +37,7 @@ export default createStore({
       {
         id: '4',
         active: false,
-        message: 'Your account has been suspended',
+        message: 'Your organization has 34 assets with new critical vulnerabilities',
         alertstyle: 'error',
         timestamp: faker.date.past()
       }

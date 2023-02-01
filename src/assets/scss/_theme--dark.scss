@@ -103,4 +103,10 @@
   --chart-sequence-11: var(--sky-200);
   --chart-sequence-12: var(--amber-700);
   --chart-sequence-13: var(--purple-300);
+
+  // alert colors
+  --bg-color--alert-low: var(--gray-300);
+  --bg-color--alert-medium: var(--yellow-400);
+  --bg-color--alert-high: var(--amber-500);
+  --bg-color--alert-critical: var(--red-500);
 }

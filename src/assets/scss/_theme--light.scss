@@ -93,4 +93,10 @@ html[data-color-theme='light'] {
   --chart-sequence-11: var(--sky-900);
   --chart-sequence-12: var(--amber-800);
   --chart-sequence-13: var(--violet-400);
+
+  // alert colors
+  --bg-color--alert-low: var(--gray-130);
+  --bg-color--alert-medium: var(--yellow-400);
+  --bg-color--alert-high: var(--amber-500);
+  --bg-color--alert-critical: var(--red-500);
 }
