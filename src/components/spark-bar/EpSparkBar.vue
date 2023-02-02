@@ -64,9 +64,11 @@
     transition: transform 0.2s ease-in-out;
     transform-origin: left 50%;
     &:hover {
+      position: relative;
       background-color: var(--background-2);
       transform: scale(4);
       gap: 0.5px;
+      z-index: 20;
       .ep-spark-bar__label {
         display: none;
       }

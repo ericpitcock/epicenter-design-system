@@ -36,6 +36,10 @@ const columns = [
     key: 'operating_system'
   },
   {
+    header: 'Last Seen',
+    key: 'last_seen'
+  },
+  {
     header: 'IPv6 Address',
     key: 'ipv6_address',
     style: 'tabular-numbers'
@@ -96,6 +100,7 @@ const fakeArray = length => {
         'Indianapolis'
       ]),
       operating_system: faker.random.arrayElement(['Windows', 'macOS', 'Linux']),
+      last_seen: faker.date.recent(10).toLocaleDateString(),
       ipv6_address: faker.internet.ipv6(),
       mac_address: faker.internet.mac()
     })
