@@ -101,12 +101,9 @@
 <style lang="scss" scoped>
   .ep-notification {
     display: flex;
-    align-items: stretch;
     width: 30rem;
-    height: 7rem;
     &__color-strip {
       width: .5rem;
-      height: 100%;
       border-radius: var(--border-radius--large) 0 0 var(--border-radius--large);
       background: v-bind(colorStrip);
     }
@@ -117,7 +114,7 @@
       width: 100%;
       height: 100%;
       background-color: var(--background-4);
-      padding: 0 2rem;
+      padding: 1.2rem 2rem;
       border: 1px solid var(--border-color--lighter);
       border-left: none;
       border-radius: 0 var(--border-radius--large) var(--border-radius--large) 0;
@@ -127,6 +124,7 @@
         justify-content: center;
         gap: .5rem;
         height: 100%;
+        line-height: var(--text-line-height--normal);
         &__text {
         }
         &__timestamp {

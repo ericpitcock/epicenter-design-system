@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import generateID from '@/helpers/generateID'
+// import generateID from '@/helpers/generateID'
 import faker from 'faker'
 
 export default createStore({
@@ -13,33 +13,39 @@ export default createStore({
     // when the user dismisses a notification, it will be removed from the array
     notifications: [
       {
-        id: '1',
+        id: faker.datatype.uuid(),
+        active: false,
+        message: 'Welcome to Acme Asset Explorer! You just unlocked new levels of visibility into your assets and vulnerabilities.',
+        alertstyle: 'info',
+        timestamp: faker.date.past()
+      },
+      {
+        id: faker.datatype.uuid(),
         active: false,
         message: 'App version 1.0.3 is now available',
         alertstyle: 'info',
-        timestamp: faker.date.recent()
+        timestamp: faker.date.past()
       },
-      // give me three more with unique IDs
       {
-        id: '2',
+        id: faker.datatype.uuid(),
         active: false,
-        message: 'Your message was sent successfully',
+        message: 'Your support request was sent successfully',
         alertstyle: 'success',
         timestamp: faker.date.recent()
       },
       {
-        id: '3',
+        id: faker.datatype.uuid(),
         active: false,
-        message: 'You’re running low on storage',
+        message: 'You’re running low on endpoint licenses',
         alertstyle: 'warning',
-        timestamp: faker.date.past()
+        timestamp: faker.date.recent()
       },
       {
-        id: '4',
+        id: faker.datatype.uuid(),
         active: false,
         message: 'Your organization has 34 assets with new critical vulnerabilities',
         alertstyle: 'error',
-        timestamp: faker.date.past()
+        timestamp: faker.date.recent()
       }
     ],
     notificationCenterOpen: false,
@@ -94,7 +100,7 @@ export default createStore({
       const newNotification = {
         ...notification, // using spread syntax breaks the object reference, recevies message and alertstyle (success, info, warning, error)
         active: true, // add active property
-        id: generateID(), // adds unique ID each time
+        id: faker.datatype.uuid(), // adds unique ID each time
         timestamp: Date.now() // adds timestamp
       }
 

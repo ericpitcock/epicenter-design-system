@@ -21,7 +21,7 @@ export default {
 // build notification object and dispatch to store
 const buildNotification = alertstyle => {
   const notification = {
-    message: 'Thank you for your feedback!',
+    message: 'Thanks for the feedback!',
     alertstyle
   }
   store.dispatch('addNotification', notification)
