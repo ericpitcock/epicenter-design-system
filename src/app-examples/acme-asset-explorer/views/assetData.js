@@ -10,15 +10,7 @@ const columns = [
     header: 'Status',
     key: 'status',
     formatter: (value, row) => {
-      let circleColor = ''
-      if (value === 'Active') {
-        circleColor = 'var(--text-color--success)'
-      } else if (value === 'Inactive') {
-        circleColor = 'var(--text-color--danger)'
-      } else if (value === 'Archived') {
-        circleColor = 'var(--text-color--subtle)'
-      }
-      return `<span style="color: ${circleColor}">${value}</span>`
+      return `<div class="status-dot status-dot--${value.toLowerCase()}">${value}</div>`
     }
   },
   {

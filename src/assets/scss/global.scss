@@ -3,7 +3,8 @@
 @use './color';
 @use './themes';
 @use './type';
-@import './mixins';
+@use './mixins';
+@use './components';
 
 
 body {

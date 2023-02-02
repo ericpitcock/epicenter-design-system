@@ -1,0 +1,17 @@
+.status-dot {
+  position: relative;
+  padding-left: 1.4rem;
+  &::before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 0.8rem;
+    height: 0.8rem;
+    top: calc(50% - 0.4rem);
+    left: 0;
+    border-radius: 50%;
+  }
+  &--active::before { background: var(--green-300); }
+  &--inactive::before { background: var(--bg-color--alert-medium); }
+  &--archived::before { background: var(--bg-color--alert-low); }
+}
