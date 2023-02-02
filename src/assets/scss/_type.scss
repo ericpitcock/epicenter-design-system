@@ -82,6 +82,24 @@ html {
   }
 }
 
+:root {
+  --text-line-height--tight: 1.6rem;
+  --text-line-height--normal: 1.8rem;
+  --text-line-height--loose: 2rem;
+}
+
+.text--uppercase {
+  text-transform: uppercase;
+}
+
+.text--lowercase {
+  text-transform: lowercase;
+}
+
+.text--capitalize {
+  text-transform: capitalize;
+}
+
 .text--link {
   color: var(--text-color--link);
   &:hover {

@@ -29,9 +29,9 @@
         {
           label: 'Service Settings',
           iconLeft: { name: 'settings' },
-          bind: {
-            to: '/service-settings'
-          }
+          // bind: {
+          //   to: '/service-settings'
+          // }
         },
         {
           divider: true

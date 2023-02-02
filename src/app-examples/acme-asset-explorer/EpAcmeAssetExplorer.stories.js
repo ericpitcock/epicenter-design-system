@@ -3,7 +3,7 @@ import EpAcmeAssetExplorer from './EpAcmeAssetExplorer'
 import EpAcmeAssetExplorerLogin from './EpAcmeAssetExplorerLogin'
 import Dashboard from './views/Dashboard'
 import Assets from './views/Assets'
-import Investigations from './views/Investigations'
+import Vulnerabilities from './views/Vulnerabilities'
 import ServiceInfo from './views/ServiceInfo'
 import Reports from './views/Reports'
 import Files from './views/Files'
@@ -41,9 +41,9 @@ const customRoutes = [
     component: Assets
   },
   {
-    path: '/investigations',
-    name: 'investigations',
-    component: Investigations
+    path: '/vulnerabilities',
+    name: 'vulnerabilities',
+    component: Vulnerabilities
   },
   {
     path: '/service-info',

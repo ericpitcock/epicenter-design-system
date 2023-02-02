@@ -54,15 +54,10 @@
             path: '/assets'
           },
           {
-            name: 'Investigations',
+            name: 'Vulnerabilities',
             icon: 'target',
-            path: '/investigations'
+            path: '/vulnerabilities'
           },
-          // {
-          //   name: 'Risk Rating',
-          //   icon: 'star',
-          //   path: '/risk'
-          // },
           {
             name: 'Service Info',
             icon: 'info',
