@@ -3,7 +3,7 @@
     <div class="ep-notification__color-strip"></div>
     <div class="ep-notification__body">
       <div class="ep-notification__body__message">
-        <p class="ep-notification__body__message__text">{{ message }}</p>
+        <p class="ep-notification__body__message__text font-size--small">{{ message }}</p>
         <p class="ep-notification__body__message__timestamp">{{ relativeTime(timestamp) }}</p>
       </div>
       <div class="dismiss-button">
@@ -58,7 +58,6 @@
       EpFlexContainer
     },
     computed: {
-      // ...mapState(['visibleNotification'])
       colorStrip() {
         return this.colors[this.alertstyle]
       }
@@ -91,9 +90,6 @@
         const date = new Date(ms)
         return getRelativeTime(date)
       }
-    },
-    mounted() {
-      // console.log(this.alertstyle)
     }
   }
 </script>
@@ -124,8 +120,8 @@
         justify-content: center;
         gap: .5rem;
         height: 100%;
-        line-height: var(--text-line-height--normal);
         &__text {
+          line-height: var(--text-line-height--tight);
         }
         &__timestamp {
           font-size: var(--font-size--tiny);

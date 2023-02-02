@@ -23,6 +23,7 @@ const buildNotification = alertstyle => {
   const notification = {
     message: 'Thanks for the feedback!',
     alertstyle
+    // store will append active: true, id, and timestamp
   }
   store.dispatch('addNotification', notification)
 }

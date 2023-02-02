@@ -1,5 +1,4 @@
 import { createStore } from 'vuex'
-// import generateID from '@/helpers/generateID'
 import faker from 'faker'
 
 export default createStore({
@@ -57,6 +56,9 @@ export default createStore({
     getActiveNotifications: state => {
       return state.notifications.filter(n => n.active)
     },
+    getInactiveNotifications: state => {
+      return state.notifications.filter(n => !n.active)
+    },
     hasActiveNotifications: state => {
       return state.notifications.some(n => n.active)
     }
@@ -107,7 +109,7 @@ export default createStore({
       // add the notification object to the array
       commit('addNotification', newNotification)
 
-      // if it hasn't been dismissed, move it to the notifications center after 5 seconds
+      // if it hasn't been dismissed, move it to the notifications center (active: false) after 5 seconds
       setTimeout(() => {
         // if newNotification is not in the array, return
         if (!state.notifications.includes(newNotification)) return

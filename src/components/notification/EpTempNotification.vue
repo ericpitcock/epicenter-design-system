@@ -5,7 +5,10 @@
       v-if="hasActiveNotifications"
       class="ep-temp-notification"
     >
-      <EpNotification v-bind="getActiveNotifications[0]" />
+      <EpNotification
+        v-bind="getActiveNotifications[0]"
+        @dismiss="removeNotification(getActiveNotifications[0])"
+      />
     </div>
     </transition>
   </Teleport>
@@ -26,7 +29,12 @@
         'hasActiveNotifications'
       ]),
       ...mapState(['notifications']),
-    }
+    },
+    methods: {
+      removeNotification(notification) {
+        this.$store.dispatch('removeNotification', notification)
+      },
+    },
   }
 </script>
 

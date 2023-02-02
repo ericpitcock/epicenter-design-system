@@ -17,7 +17,7 @@
     <template v-else>
     <transition-group name="fade">
       <EpNotification
-        v-for="notification in filteredNotifications"
+        v-for="notification in getInactiveNotifications"
         :key="notification.id"
         v-bind="notification"
         @dismiss="removeNotification(notification)"
@@ -58,8 +58,14 @@
       }
     },
     computed: {
-      ...mapState(['notifications', 'notificationCenterOpen']),
-      ...mapGetters(['hasActiveNotifications']),
+      ...mapState([
+        'notifications',
+        'notificationCenterOpen'
+      ]),
+      ...mapGetters([
+        'hasActiveNotifications',
+        'getInactiveNotifications'
+      ]),
       position() {
         return {
           top: this.top,
@@ -67,13 +73,6 @@
           bottom: this.bottom,
           left: this.left
         }
-      },
-      filteredNotifications() {
-        // return this.hasActiveNotifications
-        //   ? this.notifications.filter(notification => notification.active)
-        //   : this.notifications
-        // console.log('filteredNotifications', this.notifications)
-        return this.notifications
       },
       isNotificationsEmpty() {
         return this.notifications.length === 0
@@ -92,12 +91,9 @@
 
 <style lang="scss" scoped>
   .ep-notifications {
-    // position: fixed;
-    // z-index: 1000;
     height: 100%;
     display: flex;
     flex-flow: column nowrap;
-    // stretch children to fill the container
     align-items: stretch;
     justify-content: center;
     padding: 0 2rem 2rem 2rem;
@@ -106,10 +102,6 @@
       justify-content: space-between;
       align-items: center;
       height: 4.1rem;
-      // background: var(--background-2);
-      // padding: 0 2rem;
-      // border-bottom: 1px solid var(--border-color);
-      // margin-bottom: 1rem;
     }
   }
   .ep-notifications--empty {
