@@ -218,19 +218,22 @@
         }
       },
       filteredData() {
-        // if not searchable return
-        if (!this.searchable) return this.sortedData
+        if (!this.searchable || !this.search.length) return this.sortedData
 
-        // if there are no search terms, return the data
-        if (!this.search.length) return this.sortedData
-
-        // otherwise, filter the data
+        // this.sortedData is the data to search
+        // this.search is an array of values to search for
+        // values surrounded by double quotes, search for an exact match
+        // otherwise, search for any match
+        // use and logic to filter the data
+        // if the search array is empty, return the sorted data
         return this.sortedData.filter(row => {
           return this.search.every(search => {
-            return Object.keys(row).some(key => {
-              return String(row[key])
-                .toLowerCase()
-                .includes(search.toLowerCase())
+            return Object.values(row).some(value => {
+              if (search.startsWith('"') && search.endsWith('"')) {
+                return value.toString().toLowerCase() === search.slice(1, -1).toLowerCase()
+              } else {
+                return value.toString().toLowerCase().includes(search.toLowerCase())
+              }
             })
           })
         })

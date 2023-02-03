@@ -13,7 +13,7 @@
           height="4rem"
           backgroundColor="var(--background-1)"
           :icon="{ name: 'search' }"
-          placeholder='Multi Search - Hit enter to add to search'
+          placeholder='Multi Search - Enter to search - Use quotes for exact match, e.g. "active"'
           @enter="updateSearch"
           @delete="updateSearch"
           @query-close="queryClose"
