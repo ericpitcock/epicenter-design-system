@@ -98,7 +98,7 @@
       EpNotifications
     },
     methods: {
-      ...mapActions(['toggleTheme', 'toggleSidebar']),
+      ...mapActions(['toggleTheme']),
     },
     computed: {
       ...mapState(['theme']),
