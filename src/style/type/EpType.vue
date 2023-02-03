@@ -1,5 +1,10 @@
 <template>
-  <ep-container use-header overflow="hidden" padding="3rem">
+  <ep-container
+    max-width="120rem"
+    padding="3rem"
+    overflow="hidden"
+    use-header
+  >
     <template #header>
       <ep-header>
         <template #left>
@@ -72,7 +77,7 @@
             desc: 'Page headers',
             meta: [
               'font-size: 2.6rem (26px)',
-              'font-weight: 300 (light)'
+              'font-weight: 300'
             ],
             sample: '<h1>Download the internet</h1>'
           },
@@ -81,7 +86,7 @@
             desc: 'headers',
             meta: [
               'font-size: 2rem (20px)',
-              'font-weight: 400 (regular)'
+              'font-weight: 300'
             ],
             sample: '<h2>Large</h2>'
           },
@@ -91,7 +96,7 @@
             meta: [
               'font-size: 1.5rem (15px)',
               'line-height: 2.4rem (24px)',
-              'font-weight: 400 (regular)',
+              'font-weight: 500',
               'max-width: 60rem (600px)'
             ],
             sample: `<div class="copy-block"><p>Used for larger copy blocks to provide a nice, comfortable reading experience. ${faker.lorem.sentences(6)}</p></div>`
@@ -101,7 +106,7 @@
             desc: 'UI controls and labels',
             meta: [
               'font-size: 1.3rem (13px)',
-              'font-weight: 400 (regular)'
+              'font-weight: 500'
             ],
             sample: 'For buttons and most UI controls and elements'
           },
@@ -110,7 +115,7 @@
             desc: 'UI controls and labels, only smaller',
             meta: [
               'font-size: 1.2rem (12px)',
-              'font-weight: 400 (regular)'
+              'font-weight: 540'
             ],
             sample: 'UI controls and labels, only smaller'
           },
@@ -119,7 +124,7 @@
             desc: 'Things should be there, but "not there"',
             meta: [
               'font-size: 1rem (10px)',
-              'font-weight: 400 (regular)'
+              'font-weight: 600'
             ],
             sample: '<p>Made in the USA</p>'
           },
