@@ -4,6 +4,9 @@
       <div v-if="hasLeftContent" class="ep-header__content__left">
         <slot name="left" />
       </div>
+      <div v-if="hasCenterContent" class="ep-header__content__center">
+        <slot name="center" />
+      </div>
       <div v-if="hasRightContent" class="ep-header__content__right">
         <slot name="right" />
       </div>
@@ -63,6 +66,10 @@ export default {
       type: String,
       default: '1'
     },
+    centerFlex: {
+      type: String,
+      default: '1'
+    },
     rightFlex: {
       type: String,
       default: '1'
@@ -71,6 +78,9 @@ export default {
   computed: {
     hasLeftContent() {
       return !!this.$slots.left
+    },
+    hasCenterContent() {
+      return !!this.$slots.center
     },
     hasRightContent() {
       return !!this.$slots.right
@@ -92,7 +102,7 @@ export default {
       align-items: center;
       gap: v-bind(itemGap);
       height: 100%;
-      &__left, &__right {
+      &__left, &__center, &__right {
         display: flex;
         height: 100%;
         align-items: center;
@@ -101,6 +111,10 @@ export default {
       &__left {
         flex: v-bind(leftFlex);
         justify-content: flex-start;
+      }
+      &__center {
+        flex: v-bind(centerFlex);
+        justify-content: center;
       }
       &__right {
         flex: v-bind(rightFlex);

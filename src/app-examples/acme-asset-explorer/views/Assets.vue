@@ -1,8 +1,14 @@
 <template>
   <div class="assets">
-    <ep-header leftFlex="1" rightFlex="0">
+    <ep-header
+      leftFlex="0 0 10rem"
+      centerFlex="1"
+      rightFlex="0 0 10rem"
+    >
       <template #left>
         <p class="text--subtle">{{ assetCount }} assets</p>
+      </template>
+      <template #center>
         <ep-multi-search
           height="4rem"
           backgroundColor="var(--background-1)"
@@ -13,13 +19,13 @@
           @query-close="queryClose"
           @clear="updateSearch"
         />
+      </template>
+      <template #right>
         <ep-button
+          kind="ghost"
           :iconLeft="{ name: 'file' }"
           @click=""
         />
-      </template>
-      <template #right>
-        
       </template>
     </ep-header>
     <div style="padding: 0 1.6rem 10rem 1.6rem;">

@@ -70,12 +70,16 @@
       gap: 0.5px;
       z-index: 20;
       .ep-spark-bar__label {
-        display: none;
+        transform: scale(0.25, 0.25);
+        transform-origin: left;
+        font-size: var(--font-size--tiny);
+        opacity: 1;
+        margin-left: 0.2rem;
       }
       .ep-spark-bar__segment {
         border-radius: 0;
       }
-      & > :not(:hover) {
+      & > .ep-spark-bar__segment:not(:hover) {
         opacity: 0.5;
       }
     } 

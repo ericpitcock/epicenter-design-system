@@ -14,7 +14,7 @@
         <ep-icon
           name="close"
           weight="bold"
-          size="16"
+          :size="16"
           class="query__close"
         />
       </div>
@@ -139,9 +139,9 @@
         // then clear the input
         this.value = ''
       },
-      onDelete(event) {
+      onDelete() {
         // make sure there's nothing in the input
-        if (event.target.value === '') {
+        if (this.value === '') {
           // find the last element in the query array and remove it
           this.query.splice(this.query.length - 1, 1)
           // then emit the query array

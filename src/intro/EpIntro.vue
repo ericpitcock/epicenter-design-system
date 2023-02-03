@@ -5,7 +5,7 @@
         <e faceColor="#fff16c" highlightColor="white" shadowColor="var(--gray-500)" strokeColor="var(--gray-500)" />
       </div>
       <div class="copy-block">
-        <h1 class="font-size--jumbo">Ep Design System</h1>
+        <h1 class="font-size--jumbo">Epicenter Design System</h1>
         <p>Vue components designed and built by <a class="hero-link" href="https://www.ericpitcock.com">Eric Pitcock</a>.</p>
       </div>  
       <div class="yellow-circle"></div>
