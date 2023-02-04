@@ -59,13 +59,16 @@ export default {
       .grid {
         flex: 1;
         display: flex;
+        // need to addresss this overflow issue
+        // the mixin also has overflow:-y: scroll
         overflow: scroll;
         @include scrollable-container;
         .left-panel {
           // flex: 0 0 241px;
           // position: sticky;
           // top: 0;
-          // z-index: 1;
+          overflow: auto;
+          z-index: 1;
         }
         .content {
           flex: 1;
@@ -80,6 +83,7 @@ export default {
     }
     .right-panel {
       flex: 0 0 341px;
+      overflow: auto;
       // border-left: 1px solid var(--border-color);
     }
   }

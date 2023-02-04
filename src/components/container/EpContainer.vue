@@ -87,6 +87,7 @@
       }
     },
     methods: {
+      // this needs to move to the table component
       calculatedHeight() {
         // if (this.calculateHeight) {
         //   this.tableHeight = `${window.innerHeight - 60}px`

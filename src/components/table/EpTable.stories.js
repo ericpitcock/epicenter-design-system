@@ -155,5 +155,6 @@ Table.args = {
   sortable: false,
   stickyHeader: true,
   stickyTop: '0',
-  striped: false
+  striped: false,
+  calculateHeight: true
 }

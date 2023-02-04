@@ -1,11 +1,5 @@
 <template>
-  <div
-    class="ep-table-container"
-    :style="{
-      height: tableHeight,
-      padding: '0 1.6rem 10rem 1.6rem'
-    }"
-  >
+  <div class="ep-table-container">
   <table :class="['ep-table', classes]">
     <thead>
       <tr>
@@ -96,6 +90,10 @@
       calculateHeight: {
         type: Boolean,
         default: false
+      },
+      padding: {
+        type: String,
+        default: '0'
       },
       // dateFilter: {
       //   type: Object,
@@ -288,7 +286,15 @@
 
 <style lang="scss" scoped>
   .ep-table-container {
+    height: v-bind(tableHeight);
+    padding: v-bind(padding);
     overflow: auto;
+    // remove scrollbar from table container
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .ep-table {
     width: v-bind(width);
@@ -339,6 +345,7 @@
           min-width: 1px;
           padding: 1.4rem;
           vertical-align: middle;
+          white-space: nowrap;
         }
       }
     }

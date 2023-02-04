@@ -20,6 +20,7 @@
         :map-center="[-40.954169, 38.298895]"
         :map-zoom="2"
         :navigation-control="false"
+        :scroll-zoom="false"
       />
     </ep-container>
   </div>
