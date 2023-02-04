@@ -11,7 +11,8 @@
       options: {
         type: Object,
         default: () => ({})
-      }
+      },
+      chartColors: []
     },
     data() {
       return {
@@ -107,6 +108,9 @@
     }
     .highcharts-bar-series rect.highcharts-point {
       stroke: $background-color;
+    }
+    .highcharts-color-0 {
+      // need to figure out how to style this with props
     }
   }
   
