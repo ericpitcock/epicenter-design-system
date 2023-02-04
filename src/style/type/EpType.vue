@@ -8,7 +8,7 @@
     <template #header>
       <ep-header>
         <template #left>
-          <ep-tabs :items="tabs" @tab-click="tabClick" />
+          <ep-tabs :items="tabs" @tab-click="handleClick" />
         </template>
         <template #right>
           <ep-button
@@ -18,27 +18,29 @@
         </template>
       </ep-header>
     </template>
-    <template v-if="activeTab === 0">
-    <div class="type-style" v-for="(typeStyle, index) in typeStyles" :key="index">
-      <div class="type-style__desc">
-        <div class="font-size--body">{{ typeStyle.name }}</div>
-        <template v-for="item in typeStyle.meta">
-          <div class="meta font-size--small">{{ item }}</div>
-        </template> 
-      </div>
-      <div class="type-style__sample">
-        <div
-          :class="`font-size--${typeStyle.name.toLowerCase()}`"
-          v-html="typeStyle.sample"
-        >
+    <template #default>
+      <template v-if="activeTab === 0">
+      <div class="type-style" v-for="(typeStyle, index) in typeStyles" :key="index">
+        <div class="type-style__desc">
+          <div class="font-size--body">{{ typeStyle.name }}</div>
+          <template v-for="item in typeStyle.meta">
+            <div class="meta font-size--small">{{ item }}</div>
+          </template> 
+        </div>
+        <div class="type-style__sample">
+          <div
+            :class="`font-size--${typeStyle.name.toLowerCase()}`"
+            v-html="typeStyle.sample"
+          >
+          </div>
         </div>
       </div>
-    </div>
-    </template>
-    <template v-else="activeTab === 1">
-      <div>
-        Fira Code info coming soon
-      </div>
+      </template>
+      <template v-else-if="activeTab === 1">
+        <div>
+          Fira Code info coming soon
+        </div>
+      </template>
     </template>
   </ep-container>
 </template>
@@ -132,8 +134,8 @@
       }
     },
     methods: {
-      tabClick(index) {
-        console.log('tabClick', index)
+      handleClick(index) {
+        console.log('handleClick', index)
         this.activeTab = index
       }
     }

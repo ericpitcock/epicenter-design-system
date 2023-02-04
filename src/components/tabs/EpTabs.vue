@@ -4,7 +4,7 @@
       v-for="(item, index) in items"
       class="ep-tabs__tab-item"
       :class="{ 'ep-tabs__tab-item--active': index === activeTab }"
-      @click="handleClick(item, index)"
+      @click="tabClick(item, index)"
     >
       <span>{{ item.label }}</span>
     </div>
@@ -26,10 +26,10 @@
       }
     },
     methods: {
-      handleClick(item, index) {
+      tabClick(item, index) {
+        this.$emit('tabClick', index)
         this.activeTab = index
-        console.log('handleClick', index)
-        this.$emit('tab-click', item, index)
+        console.log('tabClick', index)
       }
     }
   }
