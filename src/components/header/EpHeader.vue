@@ -73,6 +73,18 @@ export default {
     rightFlex: {
       type: String,
       default: '1'
+    },
+    sticky: {
+      type: Boolean,
+      default: false
+    },
+    stickyTop: {
+      type: String,
+      default: '0'
+    },
+    zIndex: {
+      type: String,
+      default: '1'
     }
   },
   computed: {
@@ -84,6 +96,9 @@ export default {
     },
     hasRightContent() {
       return !!this.$slots.right
+    },
+    headerPosition() {
+      return this.sticky ? 'sticky' : 'relative'
     }
   }
 }
@@ -91,11 +106,14 @@ export default {
 
 <style lang="scss" scoped>
   .ep-header {
+    position: v-bind(headerPosition);
+    top: v-bind(stickyTop);
     width: 100%;
     height: v-bind(height);
     padding: v-bind(padding);
     background-color: v-bind(backgroundColor);
     border-bottom: v-bind(borderWidth) v-bind(borderStyle) v-bind(borderColor);
+    z-index: v-bind(zIndex);
     &__content {
       display: flex;
       justify-content: space-between;

@@ -4,6 +4,9 @@
       leftFlex="0 0 10rem"
       centerFlex="1"
       rightFlex="0 0 10rem"
+      sticky
+      stickyTop="0"
+      z-index="30"
     >
       <template #left>
         <p class="text--subtle">{{ assetCount }} assets</p>
@@ -28,18 +31,21 @@
         />
       </template>
     </ep-header>
-    <div style="padding: 0 1.6rem 10rem 1.6rem;">
+    <!-- <div style="padding: 0 1.6rem 10rem 1.6rem;"> -->
+    <div>
       <ep-table
         :columns="columns"
         :data="data"
         :exclude="['id']"
         :search="search"
         sticky-header
+        sticky-top="0"
         sortable
         sortDir="asc"
         striped
         bordered
         searchable
+        calculate-height
         @data-changed="handleDataChanged"
       />
     </div>
@@ -67,7 +73,6 @@
         columns,
         data: merged,
         search: [],
-        debounce: null,
         tabs: [
           { label: 'All Assets' },
           { label: 'Active' },
@@ -80,47 +85,16 @@
       handleDataChanged(data) {
         this.assetCount = data.length
       },
-      debounceSearch(value) {
-        console.log('debounceSearch', value)
-        // add value to search array
-        this.search.push(value)
-        // this.search = ''
-        // clearTimeout(this.debounce)
-        // this.debounce = setTimeout(() => {
-        //   // this.search = event.target.value
-        //   // add to search array
-        //   this.search.push(event.target.value)
-        // }, 600)
-      },
       updateSearch(value) {
-        // update search array
         this.search = value
       },
       queryClose(query) {
-        console.log('queryClose', query)
-        // remove query from search array
         this.search = this.search.filter(item => item !== query)
       },
       queryDelete(query) {
-        console.log('queryDelete', query)
-        // remove query from search array
         this.search = query
-      },
-      tabClick(item, index) {
-        if (item.label === 'All Assets') {
-          this.search = []
-          return
-        }
-        // add item.label to search array while removing any existing tabs
-        this.search = this.search.filter(item => item !== 'All Assets' && item !== 'Active' && item !== 'Inactive' && item !== 'Archived')
-        this.search.push(item.label)
       }
-    },
-    // watch: {
-    //   search() {
-    //     console.log(this.search)
-    //   }
-    // }
+    }
   }
 </script>
 

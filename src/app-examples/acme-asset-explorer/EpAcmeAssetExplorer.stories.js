@@ -32,7 +32,8 @@ export const AcmeAssetExplorer = Template.bind({})
 const customRoutes = [
   {
     path: '/',
-    redirect: '/assets'
+    name: 'dashboard',
+    component: Dashboard
   },
   {
     path: '/assets',

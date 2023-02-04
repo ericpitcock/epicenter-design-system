@@ -1,5 +1,5 @@
 <template>
-  <div class="ep-table-container">
+  <div class="ep-table-container" :style="{ height: tableHeight }">
   <table :class="['ep-table', classes]">
     <thead>
       <tr>
@@ -60,7 +60,8 @@
         // currentSort: this.sortKey || this.getInitialSort(),
         // currentSortDir: this.sortDir,
         currentSort: 'start_date',
-        currentSortDir: 'desc'
+        currentSortDir: 'desc',
+        tableHeight: '',
         // the spread operator clones the arrray, making it non-reactive
         // so when you mutate the data (sort function, etc)
         // it won't affect other components
@@ -85,6 +86,10 @@
       width: {
         type: String,
         default: 'auto'
+      },
+      calculateHeight: {
+        type: Boolean,
+        default: false
       },
       // dateFilter: {
       //   type: Object,
@@ -151,6 +156,11 @@
       isComponent(key) {
         // if column cellType is component, return true
         return this.columns.find(column => column.key === key)?.cellType === 'component'
+      },
+      calculatedHeight() {
+        // calculate height of table-container parent based on bottom of viewport
+        // helpful for sticky situations - dad joke
+        this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.parentElement.getBoundingClientRect().top}px` : 'auto'
       },
       cellClick(value, key) {
         const command = this.columns.find(column => column.key === key)?.command
@@ -251,6 +261,17 @@
         })
       }
     },
+    mounted() {
+      this.calculatedHeight()
+      if (this.calculateHeight) {
+        window.addEventListener('resize', this.calculatedHeight)
+      }
+    },
+    beforeDestroy() {
+      if (this.calculateHeight) {
+        window.removeEventListener('resize', this.calculatedHeight)
+      }
+    },
     watch: {
       filteredData() {
         this.$emit('data-changed', this.filteredData)
@@ -260,6 +281,9 @@
 </script>
 
 <style lang="scss" scoped>
+  .ep-table-container {
+    overflow: auto;
+  }
   .ep-table {
     width: v-bind(width);
     thead {

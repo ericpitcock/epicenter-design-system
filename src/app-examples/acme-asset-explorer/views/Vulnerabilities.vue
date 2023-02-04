@@ -8,7 +8,10 @@
         date range picker
       </template>
     </ep-header>
-    <ep-chart :options="vulnChartOptions"/>
+    <ep-chart
+      :options="vulnChartOptions"
+      :chartColors="null"
+    />
   </div>
 </template>
 

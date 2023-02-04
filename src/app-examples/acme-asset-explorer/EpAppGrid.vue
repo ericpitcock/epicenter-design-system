@@ -62,16 +62,19 @@ export default {
         overflow: scroll;
         @include scrollable-container;
         .left-panel {
-          position: sticky;
-          top: 0;
-          z-index: 1;
+          flex: 0 0 241px;
+          // position: sticky;
+          // top: 0;
+          // z-index: 1;
         }
         .content {
-          // height: fit-content;
-          width: 100%;
-          height: 100%;
+          flex: 1;
           overflow: auto;
-          @include scrollable-container;
+          // height: fit-content;
+          // width: 100%;
+          height: 100%;
+          // overflow: auto;
+          // @include scrollable-container;
         }
       }
     }
