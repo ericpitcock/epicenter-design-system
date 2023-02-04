@@ -1,5 +1,11 @@
 <template>
-  <div class="ep-table-container" :style="{ height: tableHeight }">
+  <div
+    class="ep-table-container"
+    :style="{
+      height: tableHeight,
+      padding: '0 1.6rem 10rem 1.6rem'
+    }"
+  >
   <table :class="['ep-table', classes]">
     <thead>
       <tr>
@@ -160,7 +166,7 @@
       calculatedHeight() {
         // calculate height of table-container parent based on bottom of viewport
         // helpful for sticky situations - dad joke
-        this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.parentElement.getBoundingClientRect().top}px` : 'auto'
+        this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top}px` : 'auto'
       },
       cellClick(value, key) {
         const command = this.columns.find(column => column.key === key)?.command

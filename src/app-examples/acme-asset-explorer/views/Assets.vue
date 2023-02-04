@@ -31,8 +31,7 @@
         />
       </template>
     </ep-header>
-    <!-- <div style="padding: 0 1.6rem 10rem 1.6rem;"> -->
-    <div>
+    <!-- <div> -->
       <ep-table
         :columns="columns"
         :data="data"
@@ -48,7 +47,7 @@
         calculate-height
         @data-changed="handleDataChanged"
       />
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 

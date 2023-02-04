@@ -62,7 +62,7 @@ export default {
         overflow: scroll;
         @include scrollable-container;
         .left-panel {
-          flex: 0 0 241px;
+          // flex: 0 0 241px;
           // position: sticky;
           // top: 0;
           // z-index: 1;
