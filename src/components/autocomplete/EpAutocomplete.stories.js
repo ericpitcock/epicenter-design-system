@@ -78,6 +78,8 @@ const Template = args => ({
       useFooter
       max-width="120rem"
       height="100%"
+      calculate-height
+      :calculate-height-offset="30"
       overflow="hidden"
     >
       <template #header>

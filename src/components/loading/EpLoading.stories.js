@@ -126,7 +126,7 @@ export const Loading = args => ({
       max-width="120rem"
       height="100%"
       padding="0 2rem"
-      overflow="auto"
+      overflow="hidden"
     >
       <template #header>
       <ep-header>
@@ -180,6 +180,8 @@ export const Loading = args => ({
           :exclude="['id']"
           width="100%"
           sticky-header
+          calculate-height
+          :calculate-height-offset="81"
         />
       </template>
       <template #footer>

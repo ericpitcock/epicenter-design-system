@@ -12,8 +12,10 @@
       class="colors__table"
       width="fit-content"
       padding="0 2rem 2rem"
-      calculate-height
       style="overscroll-behavior: contain"
+      calculate-height
+      :calculate-height-offset="30"
+      overflow="hidden"
     >
       <ep-table
         :columns="tableColumns"
@@ -21,6 +23,8 @@
         :exclude="['style']"
         bordered
         sticky-header
+        calculate-height
+        :calculate-height-offset="50"
       />
     </ep-container>
   </div>

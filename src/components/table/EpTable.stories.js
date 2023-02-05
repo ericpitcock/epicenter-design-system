@@ -125,7 +125,7 @@ const Template = args => ({
     max-width="120rem"
     height="100%"
     padding="0 2rem"
-    overflow="auto"
+    overflow="hidden"
   >
     <template #header>
       <ep-header>
@@ -156,5 +156,6 @@ Table.args = {
   stickyHeader: true,
   stickyTop: '0',
   striped: false,
-  calculateHeight: true
+  calculateHeight: true,
+  calculateHeightOffset: 30
 }

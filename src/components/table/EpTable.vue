@@ -91,6 +91,10 @@
         type: Boolean,
         default: false
       },
+      calculateHeightOffset: {
+        type: Number,
+        default: 0
+      },
       padding: {
         type: String,
         default: '0'
@@ -164,7 +168,10 @@
       calculatedHeight() {
         // calculate height of table-container parent based on bottom of viewport
         // helpful for sticky situations - dad joke
-        this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top}px` : 'auto'
+        // this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top}px` : 'auto'
+        const offsetBottom = this.calculateHeightOffset || 0
+        // revise above code to account for offsetBottom if set
+        this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top - offsetBottom}px` : 'auto'
       },
       cellClick(value, key) {
         const command = this.columns.find(column => column.key === key)?.command
@@ -304,7 +311,7 @@
       th {
         text-align: left;
         background: var(--background-2);
-        z-index: 10;
+        // z-index: var(--z-index--sticky);
         // &:hover {
         //   color: var(--color--primary);
         //   cursor: pointer;
@@ -398,6 +405,7 @@
         th {
           position: sticky;
           top: v-bind(stickyTop);
+          z-index: var(--z-index--sticky);
           // top: -1px; // fixes wierd 1px gap that exposes tbody contents during scroll
         }
       }

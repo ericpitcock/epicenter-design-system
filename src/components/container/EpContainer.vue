@@ -32,6 +32,10 @@
         type: Boolean,
         default: false
       },
+      calculateHeightOffset: {
+        type: Number,
+        default: 0
+      },
       display: {
         type: String,
         default: 'block'
@@ -87,19 +91,22 @@
       }
     },
     methods: {
-      // this needs to move to the table component
+      // this should be a mixin, shared with table, etc
       calculatedHeight() {
-        // if (this.calculateHeight) {
-        //   this.tableHeight = `${window.innerHeight - 60}px`
-        // } else if (!this.calculateHeight) {
-        //   this.tableHeight = this.height
-        // }
-        this.tableHeight = this.calculateHeight ? `${window.innerHeight - 60}px` : this.height
+        const offsetBottom = this.calculateHeightOffset || 0
+        this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top - offsetBottom}px` : 'auto'
+
+        // clean up the above code
+        // const offsetBottom = this.calculateHeightOffset || 0
+        // const offsetTop = this.$el.getBoundingClientRect().top
+        // const windowHeight = window.innerHeight
+        // const tableHeight = windowHeight - offsetTop - offsetBottom
+        // this.tableHeight = this.calculateHeight ? `${tableHeight}px` : this.height
       }
     },
     mounted() {
-      this.calculatedHeight()
       if (this.calculateHeight) {
+        this.calculatedHeight()
         window.addEventListener('resize', this.calculatedHeight)
       }
     },
@@ -128,6 +135,7 @@
     overflow: v-bind(overflow);
     &__header {
       flex: 0 0 auto;
+      z-index: var(--z-index--fixed);
     }
     &__content {
       position: relative;
@@ -138,6 +146,8 @@
       &::-webkit-scrollbar {
         display: none;
       }
+      // so that dropdowns overlap sticky table headers
+      z-index: var(--z-index--default);
     }
     &__footer {
       flex: 0 0 auto;

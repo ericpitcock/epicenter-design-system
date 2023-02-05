@@ -143,7 +143,7 @@
         this.init = false
         //resize map to fit height
         // flashes at 300px height, fix later
-        this.map.resize()
+        // this.map.resize()
       })
       // console.log(this.theme)
       // this.map.on('zoom', (event) => {
