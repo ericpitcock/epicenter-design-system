@@ -2,15 +2,17 @@
   <div class="dashboard">
     <ep-container
       class="dashboard__summary"
+      padding="3rem"
       v-bind="commonContainerProps"
     >
-      <h1>Summary Stuff</h1>
+      <h1>Summary (TBD)</h1>
     </ep-container>
     <ep-container
       class="dashboard__vulnerabilities"
+      padding="3rem"
       v-bind="commonContainerProps"
     >
-      <h1>Vulnerabilty summary</h1>
+      <h1>Vulnerabilty summary (TBD)</h1>
     </ep-container>
     <ep-container
       class="dashboard__asset-map"
