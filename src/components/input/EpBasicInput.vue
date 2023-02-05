@@ -109,33 +109,33 @@
     methods: {
       onInput(event) {
         this.$emit('input', event.target.value)
-        console.log('onInput', event.target.value)
+        // console.log('onInput', event.target.value)
       },
       onEsc(event) {
         this.$refs.input.blur()
         this.$emit('esc', event.target.value)
-        console.log('onEsc', event.target.value)
+        // console.log('onEsc', event.target.value)
       },
       onFocus(event) {
         this.hasFocus = true
         this.$emit('focus', event.target.value)
-        console.log('onFocus', event.target.value)
+        // console.log('onFocus', event.target.value)
       },
       onBlur(event) {
-        // this.hasFocus = false
-        // this.$emit('blur', event.target.value)
+        this.hasFocus = false
+        this.$emit('blur', event.target.value)
         // console.log('onBlur', event.target.value)
       },
       onKeyDown(event) {
         // use event.key
         this.$emit('enter', event.target.value)
-        console.log('onKeyDown', event.target.value)
+        // console.log('onKeyDown', event.target.value)
       },
       onClear() {
         this.currentValue = ''
         this.$refs.input.focus()
         this.$emit('clear', '')
-        console.log('onClear')
+        // console.log('onClear')
       }
     },
     computed: {

@@ -18,6 +18,10 @@ export default {
       type: String,
       default: 'm/d/Y'
     },
+    mode: {
+      type: String,
+      default: 'single' // single, multiple, range
+    },
   },
   components: {
     EpBasicInput
@@ -61,7 +65,7 @@ export default {
         // time_24hr: this.time_24hr,
         // enable: this.enable,
         // disable: this.disable,
-        // mode: this.mode,
+        mode: this.mode,
         // inline: this.inline,
         // wrap: this.wrap,
         // clickOpens: this.clickOpens,

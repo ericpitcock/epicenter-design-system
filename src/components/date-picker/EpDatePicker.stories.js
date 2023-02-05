@@ -11,6 +11,24 @@ export default {
   component: EpDatePicker,
   decorators: [padded],
   argTypes: {
+    dateFormat: {
+      name: 'Date Format',
+      control: {
+        type: 'text'
+      }
+    },
+    mode: {
+      name: 'Mode',
+      options: ['single', 'multiple', 'range'],
+      control: {
+        type: 'select',
+        labels: {
+          single: 'Single',
+          multiple: 'Multiple',
+          range: 'Range'
+        }
+      }
+    }
   }
 }
 
@@ -37,7 +55,7 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
-          <ep-date-picker />
+          <ep-date-picker v-bind="args" />
         </template>
         <template #right>
           <ep-action-bar v-bind="commonActionBarArgs" />
