@@ -67,7 +67,7 @@
       background: linear-gradient(34deg, rgba(0, 255, 255, 1) 0%, var(--color--primary) 50%);
       // a nice subtle drop shadow
       box-shadow: var(--drop-shadow--large);
-      z-index: 1;
+      z-index: var(--z-index--fixed);
     }
     .map {
       flex: 1;

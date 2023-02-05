@@ -68,7 +68,7 @@
       background-color: var(--background-2);
       transform: scale(4);
       gap: 0.5px;
-      z-index: 20;
+      z-index: var(--z-index--tooltip);
       .ep-spark-bar__label {
         transform: scale(0.25, 0.25);
         transform-origin: left;
@@ -97,7 +97,8 @@
         border: 1px solid var(--border-color--lighter);
         border-radius: var(--border-radius);
         font-size: var(--font-size--tiny);
-        z-index: 1;
+        z-index: var(--z-index--tooltip);
+        white-space: normal;
       }
       &:hover > .ep-spark-bar__segment__info {
         display: block;

@@ -6,7 +6,6 @@
 @use './mixins';
 @use './components';
 
-
 body {
   font-size: var(--font-size--default);
   font-variation-settings: 'wght' 500;
@@ -14,4 +13,24 @@ body {
   // font-feature-settings: 'ss02';
   background: var(--background-1);
   color: var(--text-color);
+}
+
+// z-index
+// Modals: z-index: 100000
+// Tooltips: z-index: 99999
+// Dropdowns and popovers: z-index: 99998
+// Fixed position elements, such as headers and footers: z-index: 999
+// Sticky elements: z-index: 998
+// Overlapping elements, just things you want to bump up over absolute positioned items, etc: z-index: 1
+// Scrollable backgrounds: z-index: -1
+// Default elements: z-index: 0
+:root {
+  --z-index--modal: 100000;
+  --z-index--tooltip: 99999;
+  --z-index--dropdown: 99998;
+  --z-index--fixed: 999;
+  --z-index--sticky: 998;
+  --z-index--overlap: 1;
+  --z-index--default: 0;
+  --z-index--negative: -1;
 }

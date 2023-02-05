@@ -122,7 +122,7 @@
     padding: 0 30px 0 6px;
     background: var(--app-header-background);
     border-bottom: 1px solid var(--border-color);
-    z-index: 20;
+    z-index: var(--z-index--fixed);
   }
   .app-controls {
     display: flex;

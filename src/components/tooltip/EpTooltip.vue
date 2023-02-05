@@ -128,7 +128,7 @@ export default {
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    z-index: 9999;
+    z-index: var(--z-index--tooltip);
     background-color: var(--color--primary);
     color: var(--color--white);
     text-align: center;

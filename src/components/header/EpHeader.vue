@@ -113,6 +113,7 @@ export default {
     padding: v-bind(padding);
     background-color: v-bind(backgroundColor);
     border-bottom: v-bind(borderWidth) v-bind(borderStyle) v-bind(borderColor);
+    // might be able to use var(--z-index--fixed)
     z-index: v-bind(zIndex);
     &__content {
       display: flex;

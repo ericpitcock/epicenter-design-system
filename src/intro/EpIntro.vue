@@ -52,16 +52,16 @@
       overflow: hidden;
       .copy-block {
         position: relative;
-        z-index: 1;
+        z-index: var(--z-index--overlap);
       }
       .logo-container {
         position: relative;
-        z-index: 1;
+        z-index: var(--z-index--overlap);
         width: 8rem;
       }
       h1 {
         position: relative;
-        z-index: 1;
+        z-index: var(--z-index--overlap);
         margin-top: 3rem;
       }
       .hero-link {

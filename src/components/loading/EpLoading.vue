@@ -75,7 +75,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 9999;
+    z-index: var(--z-index--modal);
     background-color: v-bind(backgroundColor);
     border-radius: v-bind(borderRadius);
     backdrop-filter: blur(4px);

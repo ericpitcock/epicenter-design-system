@@ -113,16 +113,15 @@
       min-width: 200px;
       padding-top: 4px;
       box-shadow: var(--drop-shadow);
-      z-index: 20;
+      z-index: var(--z-index--dropdown);
       &--align-right {
         right: 0;
         left: auto;
       }
     }
-    // &__content {
-    //   position: relative;
-    //   box-shadow: var(--drop-shadow);
-    //   z-index: 2;
-    // }
+    &__content {
+      position: relative;
+      z-index: var(--z-index--dropdown);
+    }
   }
 </style>

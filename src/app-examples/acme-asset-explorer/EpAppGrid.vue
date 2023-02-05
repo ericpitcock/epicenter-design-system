@@ -68,7 +68,8 @@ export default {
           // position: sticky;
           // top: 0;
           overflow: auto;
-          z-index: 1;
+          // might be able to add this directly to the nav iteams causing the issue
+          z-index: var(--z-index--fixed);
         }
         .content {
           flex: 1;
@@ -78,6 +79,9 @@ export default {
           height: 100%;
           // overflow: auto;
           // @include scrollable-container;
+          &::-webkit-scrollbar {
+            display: none;
+          }
         }
       }
     }

@@ -43,7 +43,7 @@
     position: fixed;
     top: 1rem;
     right: 1rem;
-    z-index: 9999;
+    z-index: var(--z-index--modal);
     // deep selector to override EpNotification styles
     :deep(.ep-notification) {
       box-shadow: var(--drop-shadow);

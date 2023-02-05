@@ -6,7 +6,7 @@
       rightFlex="0 0 10rem"
       sticky
       stickyTop="0"
-      z-index="30"
+      z-index="var(--z-index--fixed)"
     >
       <template #left>
         <p class="text--subtle">{{ assetCount }} assets</p>

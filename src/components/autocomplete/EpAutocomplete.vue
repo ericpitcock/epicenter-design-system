@@ -180,7 +180,7 @@
       background-color: var(--background-4);
       border: 1px solid var(--border-color--lighter);
       border-radius: var(--border-radius);
-      z-index: 1;
+      z-index: var(--z-index--dropdown);
       &__item {
         font-size: var(--font-size--small);
         line-height: 1;

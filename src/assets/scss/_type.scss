@@ -147,7 +147,7 @@ html {
       white-space: nowrap;
       padding: 5px;
       border-radius: 3px;
-      z-index: 10;
+      z-index: var(--z-index--tooltip);
       box-shadow: var(--drop-shadow);
     }
   }
