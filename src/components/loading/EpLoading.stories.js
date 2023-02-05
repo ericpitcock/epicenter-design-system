@@ -181,7 +181,7 @@ export const Loading = args => ({
           width="100%"
           sticky-header
           calculate-height
-          :calculate-height-offset="101"
+          :calculate-height-offset="81"
           bordered
         />
       </template>

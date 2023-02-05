@@ -3,7 +3,7 @@
   <div class="ep-loading">
     <div class="ep-loading__icon-container">
       <!-- <img v-if="icon" :src="`${icon}.svg`" /> -->
-      <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+      <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="currentcolor">
           <g fill="none" fill-rule="evenodd">
               <g transform="translate(1 1)" stroke-width="2">
                   <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>

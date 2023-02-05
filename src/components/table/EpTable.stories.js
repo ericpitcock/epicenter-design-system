@@ -157,5 +157,5 @@ Table.args = {
   stickyTop: '0',
   striped: false,
   calculateHeight: true,
-  calculateHeightOffset: 50
+  calculateHeightOffset: 30
 }

@@ -16,10 +16,26 @@ export default {
   component: EpContainer,
   decorators: [container],
   argTypes: {
-    header: {
+    useHeader: {
       name: 'Header',
       control: {
         type: 'boolean'
+      }
+    },
+    useFooter: {
+      name: 'Footer',
+      control: {
+        type: 'boolean'
+      }
+    },
+    calculateHeight: {
+      table: {
+        disable: true
+      }
+    },
+    calculateHeightOffset: {
+      table: {
+        disable: true
       }
     },
     display: {
@@ -173,18 +189,21 @@ const Template = args => ({
     EpFooter
   },
   setup() {
-    return { args,commonActionBarArgs }
+    return { args, commonActionBarArgs }
   },
   template: `
     <ep-container v-bind="args">
-      <ep-header v-if="args.header">
-        <template #left>
-          Header
-        </template>
-        <template #right>
-          <ep-action-bar v-bind="commonActionBarArgs" />
-        </template>
-      </ep-header>
+      <template #header>
+        <ep-header v-if="args.useHeader">
+          <template #left>
+            Header
+          </template>
+          <template #right>
+            <ep-action-bar v-bind="commonActionBarArgs" />
+          </template>
+        </ep-header>
+      </template>
+      <template #default>
       <div
         v-if="args.padding != '' && args.padding != undefined"
         style="
@@ -196,8 +215,9 @@ const Template = args => ({
       >
         Inner content
       </div>
+      </template>
       <template #footer>
-        <ep-footer />
+        <ep-footer v-if="args.useFooter" />
       </template>
     </ep-container>
   `
@@ -206,7 +226,8 @@ const Template = args => ({
 export const Container = Template.bind({})
 
 Container.args = {
-  header: true,
+  useHeader: true,
+  useFooter: true,
   display: 'block',
   width: '100%',
   maxWidth: '120rem',
