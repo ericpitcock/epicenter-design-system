@@ -1,8 +1,19 @@
 <template>
   <div class="ep-breadcrumb">
-    <div class="ep-breadcrumb__item" v-for="(item, index) in items" :key="index">
-      <span class="ep-breadcrumb__item__text">{{ item.text }}</span>
-      <span class="ep-breadcrumb__item__separator" v-if="index < items.length - 1">/</span>
+    <div
+      v-for="(item, index) in items" :key="index"
+      class="ep-breadcrumb__item"
+    >
+      <span
+        class="ep-breadcrumb__item__text"
+        @click="handleClick(item, index)"
+      >
+        {{ item.text }}
+      </span>
+      <span
+        v-if="index < items.length - 1"
+        class="ep-breadcrumb__item__separator"
+      >/</span>
     </div>
   </div>
 </template>
@@ -14,6 +25,11 @@
       items: {
         type: Array,
         default: () => []
+      }
+    },
+    methods: {
+      handleClick (item, index) {
+        this.$emit('crumb-click', item, index)
       }
     }
   }

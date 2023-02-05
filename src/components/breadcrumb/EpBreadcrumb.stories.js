@@ -1,4 +1,5 @@
 import { padded } from '@/helpers/decorators'
+import AlbumsOfTheYear from '@/components/breadcrumb/AlbumsOfTheYear'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpBreadcrumb from './EpBreadcrumb'
@@ -20,8 +21,13 @@ export default {
   }
 }
 
+// const handleCrumbClick = (item, index) => {
+//   console.log('crumb clicked', item, index)
+// }
+
 const Template = args => ({
   components: {
+    AlbumsOfTheYear,
     EpActionBar,
     EpBreadcrumb,
     EpContainer,
@@ -34,7 +40,22 @@ const Template = args => ({
       commonActionBarArgs
     }
   },
-  // template: '<ep-breadcrumb v-bind="args" />'
+  data() {
+    return {
+      crumbs: [
+        {
+          text: 'Albums of the Year'
+        }
+      ],
+      filter: ''
+    }
+  },
+  methods: {
+    handleCrumbClick(item, index) {
+      this.crumbs.push(item)
+      this.filter = item.text
+    }
+  },
   template: `
     <ep-container
       useHeader
@@ -47,7 +68,7 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
-          <ep-breadcrumb v-bind="args" />
+          <ep-breadcrumb v-bind="args" @crumb-click="handleCrumbClick" />
         </template>
         <template #right>
           <ep-action-bar v-bind="commonActionBarArgs" />
@@ -55,10 +76,7 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #default>
-        <div class="copy-block">
-          <h1>Breadcrumb</h1>
-          <p>Breadcrumbs are used in user interface design as a way to provide users with a clear and intuitive navigation path, indicating their current location within a website or application. They can also help users understand the relationship between different pages, and quickly navigate back to higher-level sections of the site. This allows for a better user experience and increase the usability of the website.</p>
-        </div>
+        <albums-of-the-year :filter="filter" />
       </template>
       <template #footer>
         <ep-footer />
@@ -72,16 +90,7 @@ export const Breadcrumb = Template.bind({})
 Breadcrumb.args = {
   items: [
     {
-      text: 'Music Library',
-      href: '#'
-    },
-    {
-      text: 'Hip Hop',
-      href: '#'
-    },
-    {
-      text: 'Jay-Z',
-      href: '#'
+      text: 'Albums of the Year'
     }
   ]
 }
