@@ -8,7 +8,7 @@
       :type="type"
       :placeholder="placeholder"
       :disabled="disabled"
-      v-model="currentvalue"
+      v-model="currentValue"
       @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
@@ -19,11 +19,11 @@
       v-if="clearable"
       :class="[
         'ep-input__clear',
-        { 'ep-input__clear--disabled': !currentvalue }
+        { 'ep-input__clear--disabled': !currentValue }
       ]"
       @click="onClear"
     >
-      <ep-icon v-show="currentvalue" name="close" />
+      <ep-icon v-show="currentValue" name="close" />
     </div>
   </div>
 </template>
@@ -39,7 +39,8 @@
     data() {
       return {
         hasError: false,
-        hasFocus: false
+        hasFocus: false,
+        currentValue: this.value
       }
     },
     props: {
@@ -121,9 +122,9 @@
         console.log('onFocus', event.target.value)
       },
       onBlur(event) {
-        this.hasFocus = false
-        this.$emit('blur', event.target.value)
-        console.log('onBlur', event.target.value)
+        // this.hasFocus = false
+        // this.$emit('blur', event.target.value)
+        // console.log('onBlur', event.target.value)
       },
       onKeyDown(event) {
         // use event.key
@@ -148,8 +149,13 @@
           // 'ep-input--warning': this.warning
         }
       },
-      currentvalue() {
-        return this.value
+      // currentValue() {
+      //   return this.value
+      // }
+    },
+    watch: {
+      value(val) {
+        this.currentValue = val
       }
     }
   }

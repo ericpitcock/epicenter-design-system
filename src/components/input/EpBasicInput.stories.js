@@ -8,13 +8,27 @@ export default {
   argTypes: {
     type: {
       name: 'Type',
+      options: ['text', 'password', 'email', 'number', 'tel', 'url'],
       control: {
         type: 'select',
-        options: ['text', 'password', 'email', 'number', 'tel', 'url']
+        labels: {
+          text: 'Text',
+          password: 'Password',
+          email: 'Email',
+          number: 'Number',
+          tel: 'Telephone',
+          url: 'URL'
+        }
       }
     },
     placeholder: {
       name: 'Placeholder',
+      control: {
+        type: 'text'
+      }
+    },
+    value: {
+      name: 'Value',
       control: {
         type: 'text'
       }
@@ -111,6 +125,7 @@ export const BasicInput = Template.bind({})
 BasicInput.args = {
   type: 'text',
   placeholder: 'Placeholder',
+  value: '',
   icon: null,
   clearable: true,
   disabled: false,
