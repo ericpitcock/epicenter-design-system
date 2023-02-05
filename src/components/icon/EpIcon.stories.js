@@ -52,7 +52,7 @@ export const Icon = args => ({
 
 Icon.args = {
   name: 'arrow-up',
-  color: 'currentColor',
+  color: 'currentcolor',
   weight: 'regular',
   size: 20
 }
@@ -98,7 +98,7 @@ export const IconLibrary = args => ({
 })
 
 IconLibrary.args = {
-  color: 'currentColor',
-  weight: 'regular',
-  size: 20
+  color: 'currentcolor',
+  weight: 'light',
+  size: 34
 }

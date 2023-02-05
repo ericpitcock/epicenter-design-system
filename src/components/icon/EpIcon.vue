@@ -28,7 +28,7 @@
       },
       color: {
         type: String,
-        default: 'currentColor'
+        default: 'currentcolor'
       },
       weight: {
         type: String,
