@@ -8,7 +8,7 @@
       :type="type"
       :placeholder="placeholder"
       :disabled="disabled"
-      v-model="value"
+      v-model="currentvalue"
       @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
@@ -19,11 +19,11 @@
       v-if="clearable"
       :class="[
         'ep-input__clear',
-        { 'ep-input__clear--disabled': !value }
+        { 'ep-input__clear--disabled': !currentvalue }
       ]"
       @click="onClear"
     >
-      <ep-icon v-show="value" name="close" />
+      <ep-icon v-show="currentvalue" name="close" />
     </div>
   </div>
 </template>
@@ -39,8 +39,7 @@
     data() {
       return {
         hasError: false,
-        hasFocus: false,
-        value: ''
+        hasFocus: false
       }
     },
     props: {
@@ -49,6 +48,10 @@
         default: 'text'
       },
       placeholder: {
+        type: String,
+        default: ''
+      },
+      value: {
         type: String,
         default: ''
       },
@@ -105,27 +108,33 @@
     methods: {
       onInput(event) {
         this.$emit('input', event.target.value)
+        console.log('onInput', event.target.value)
       },
       onEsc(event) {
         this.$refs.input.blur()
         this.$emit('esc', event.target.value)
+        console.log('onEsc', event.target.value)
       },
       onFocus(event) {
         this.hasFocus = true
         this.$emit('focus', event.target.value)
+        console.log('onFocus', event.target.value)
       },
       onBlur(event) {
         this.hasFocus = false
         this.$emit('blur', event.target.value)
+        console.log('onBlur', event.target.value)
       },
       onKeyDown(event) {
         // use event.key
         this.$emit('enter', event.target.value)
+        console.log('onKeyDown', event.target.value)
       },
       onClear() {
-        this.value = ''
+        this.currentValue = ''
         this.$refs.input.focus()
         this.$emit('clear', '')
+        console.log('onClear')
       }
     },
     computed: {
@@ -138,6 +147,9 @@
           // 'ep-input--success': this.success,
           // 'ep-input--warning': this.warning
         }
+      },
+      currentvalue() {
+        return this.value
       }
     }
   }
