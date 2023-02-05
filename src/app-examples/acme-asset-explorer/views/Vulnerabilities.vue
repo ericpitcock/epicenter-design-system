@@ -5,7 +5,7 @@
         <h1 class="font-size--large">Vulnerabilities</h1>
       </template>
       <template #right>
-        date range picker
+        <ep-date-picker mode="range" />
       </template>
     </ep-header>
     <ep-chart
@@ -13,23 +13,70 @@
       :chartColors="null"
     />
   </div>
+  <div>
+    <ep-table
+      :columns="tableColumns"
+      :data="vulnData"
+    />
+  </div>
 </template>
 
 <script>
   import vulnChartOptions from './vulnChartOptions'
   import EpChart from '@/components/charts/EpChart'
+  import EpDatePicker from '@/components/date-picker/EpDatePicker'
   import EpHeader from '@/components/header/EpHeader'
+  import EpTable from '@/components/table/EpTable'
+  import * as vulnData from './vulnerabilities'
 
   export default {
     name: 'Vulnerabilities',
     components: {
       EpChart,
-      EpHeader
+      EpDatePicker,
+      EpHeader,
+      EpTable
     },
     data() {
       return {
-        vulnChartOptions
+        vulnChartOptions,
+        vulnData: vulnData.default,
+        tableColumns: [
+          {
+            header: 'ID',
+            key: 'id'
+          },
+          {
+            header: 'Description',
+            key: 'description',
+            // formatter: (value) => {
+            //   return value.substring(0, 100)
+            // }
+          },
+          {
+            header: 'Base Score',
+            key: 'baseScore'
+          },
+          {
+            header: 'Base Severity',
+            key: 'baseSeverity'
+          },
+          {
+            header: 'Published Date',
+            key: 'publishedDate'
+          },
+          {
+            header: 'Last Modified Date',
+            key: 'lastModifiedDate'
+          }
+        ]
       }
+    },
+    methods: {
+      
+    },
+    mounted() {
+
     }
   }
 </script>

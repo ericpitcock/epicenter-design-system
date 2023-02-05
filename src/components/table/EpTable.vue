@@ -352,7 +352,7 @@
           min-width: 1px;
           padding: 1.4rem;
           vertical-align: middle;
-          white-space: nowrap;
+          // white-space: nowrap;
         }
       }
     }

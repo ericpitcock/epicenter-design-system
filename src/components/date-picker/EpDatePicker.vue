@@ -285,8 +285,8 @@ export default {
           user-select: none;
   text-decoration: none;
   cursor: pointer;
-  position: absolute;
-  top: 0;
+  // position: absolute;
+  // top: 0;
   height: 34px;
   padding: 10px;
   z-index: 3;
@@ -303,36 +303,12 @@ export default {
 }
 .flatpickr-months .flatpickr-prev-month.flatpickr-prev-month,
 .flatpickr-months .flatpickr-next-month.flatpickr-prev-month {
-/*
-      /*rtl:begin:ignore*/
-/*
-      */
   left: 0;
-/*
-      /*rtl:end:ignore*/
-/*
-      */
 }
-/*
-      /*rtl:begin:ignore*/
-/*
-      /*rtl:end:ignore*/
 .flatpickr-months .flatpickr-prev-month.flatpickr-next-month,
 .flatpickr-months .flatpickr-next-month.flatpickr-next-month {
-/*
-      /*rtl:begin:ignore*/
-/*
-      */
   right: 0;
-/*
-      /*rtl:end:ignore*/
-/*
-      */
 }
-/*
-      /*rtl:begin:ignore*/
-/*
-      /*rtl:end:ignore*/
 .flatpickr-months .flatpickr-prev-month:hover,
 .flatpickr-months .flatpickr-next-month:hover {
   color: var(--text-color);
