@@ -47,12 +47,11 @@ const Template = args => ({
           text: 'Albums of the Year'
         }
       ],
-      filter: ''
+      year: '2020'
     }
   },
   methods: {
     handleCrumbClick(item, index) {
-      this.crumbs.push(item)
       this.filter = item.text
     }
   },
@@ -68,7 +67,7 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
-          <ep-breadcrumb v-bind="args" @crumb-click="handleCrumbClick" />
+          <ep-breadcrumb :items="crumbs" @crumb-click="handleCrumbClick" />
         </template>
         <template #right>
           <ep-action-bar v-bind="commonActionBarArgs" />
@@ -76,7 +75,7 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #default>
-        <albums-of-the-year :filter="filter" />
+        <albums-of-the-year :year="'2020'" />
       </template>
       <template #footer>
         <ep-footer />
@@ -87,10 +86,10 @@ const Template = args => ({
 
 export const Breadcrumb = Template.bind({})
 
-Breadcrumb.args = {
-  items: [
-    {
-      text: 'Albums of the Year'
-    }
-  ]
-}
+// Breadcrumb.args = {
+//   items: [
+//     {
+//       text: 'Albums of the Year'
+//     }
+//   ]
+// }
