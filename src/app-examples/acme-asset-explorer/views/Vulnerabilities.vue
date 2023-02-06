@@ -28,7 +28,7 @@
   import EpDatePicker from '@/components/date-picker/EpDatePicker'
   import EpHeader from '@/components/header/EpHeader'
   import EpTable from '@/components/table/EpTable'
-  import * as vulnData from './vulnerabilities'
+  import * as vulnData from './vulnData'
 
   export default {
     name: 'Vulnerabilities',
