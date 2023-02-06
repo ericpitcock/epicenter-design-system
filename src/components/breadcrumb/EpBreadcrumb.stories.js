@@ -52,7 +52,7 @@ const Template = args => ({
   },
   methods: {
     handleCrumbClick(item, index) {
-      this.filter = item.text
+      console.log('crumb clicked', item, index)
     },
     addYear(year) {
       this.year = year

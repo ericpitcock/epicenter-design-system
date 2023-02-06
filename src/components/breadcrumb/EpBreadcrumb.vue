@@ -44,8 +44,8 @@
       display: flex;
       align-items: center;
       .ep-breadcrumb__item__text {
-        cursor: pointer;
-        &:hover {
+        &:not(:last-child):hover {
+          cursor: pointer;
           color: var(--text-color--link);
         }
       }
