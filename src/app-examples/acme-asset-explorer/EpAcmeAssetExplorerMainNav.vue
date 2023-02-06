@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  // import { mapState } from 'vuex'
 
   import EpIcon from '@/components/icon/EpIcon'
   import AcmeLogo from './AcmeLogo'
@@ -34,11 +34,7 @@
       collapsed: {
         type: Boolean,
         default: false
-      },
-      // logoType: {
-      //   type: String,
-      //   default: 'default' // default, white
-      // }
+      }
     },
     data() {
       return {
@@ -72,17 +68,12 @@
             name: 'Files',
             icon: 'file',
             path: '/files'
-          },
-          // {
-          //   name: 'Settings',
-          //   icon: 'settings',
-          //   path: '/settings'
-          // }
+          }
         ]
       }
     },
     computed: {
-      ...mapState(['sidebar']),
+      // ...mapState(['sidebar']),
       logoType() {
         return this.collapsed ? 'icon' : 'full'
       }
@@ -148,7 +139,7 @@
           white-space: nowrap;
         }
       }
-      &:not(.router-link-exact-active):hover {
+      &:not(.router-link-exact-active):not(.main-nav__item--logo):hover {
         background: var(--nav-link-hover-bg-color);
         cursor: pointer;
       }

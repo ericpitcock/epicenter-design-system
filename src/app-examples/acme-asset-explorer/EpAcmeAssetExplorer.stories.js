@@ -29,7 +29,7 @@ const Template = args => ({
 
 export const AcmeAssetExplorer = Template.bind({})
 
-const customRoutes = [
+const routes = [
   {
     path: '/',
     name: 'dashboard',
@@ -72,6 +72,4 @@ const customRoutes = [
   }
 ]
 
-AcmeAssetExplorer.decorators = [
-  vueRouter(customRoutes)
-]
+AcmeAssetExplorer.decorators = [vueRouter(routes)]

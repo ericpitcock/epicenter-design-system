@@ -9,7 +9,7 @@
     >
       <template #header>
         <div class="ep-login__header">
-          <acme-logo :type="full" />
+          <acme-logo />
         </div>
       </template>
       <div class="ep-login__form">

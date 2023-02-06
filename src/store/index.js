@@ -41,7 +41,7 @@ export default createStore({
       }
     ],
     notificationCenterOpen: false,
-    sidebar: false,
+    // sidebar: false,
     theme: 'dark'
   },
   getters: {
