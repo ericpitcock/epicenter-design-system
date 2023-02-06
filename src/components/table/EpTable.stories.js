@@ -72,8 +72,8 @@ export default {
     },
     sortDir: {
       name: 'Sort Direction',
+      options: ['asc', 'desc'],
       control: {
-        options: ['asc', 'desc'],
         type: 'select'
       },
       table: {
@@ -103,8 +103,8 @@ export default {
     },
     verticalAlign: {
       name: 'Vertical Align',
+      options: ['top', 'middle', 'bottom'],
       control: {
-        options: ['top', 'middle', 'bottom'],
         type: 'select'
       },
       table: {
@@ -117,8 +117,8 @@ export default {
     },
     whiteSpace: {
       name: 'White Space',
+      options: ['normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap'],
       control: {
-        options: ['normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap'],
         type: 'select'
       },
       table: {
@@ -181,7 +181,7 @@ Table.args = {
   data: fakeArray(30),
   exclude: ['id'],
   padding: '0 0 10rem 0',
-  search: '',
+  search: [],
   selectable: false,
   selected: null,
   sortable: true,

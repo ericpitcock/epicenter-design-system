@@ -1,3 +1,4 @@
+import vueRouter from 'storybook-vue3-router'
 import { padded } from '@/helpers/decorators'
 import AlbumsOfTheYear from '@/components/breadcrumb/AlbumsOfTheYear'
 import EpActionBar from '@/components/action-bar/EpActionBar'
@@ -44,25 +45,61 @@ const Template = args => ({
     return {
       crumbs: [
         {
-          text: 'Albums of the Year'
-        }
+          text: 'Albums of the Year',
+          view: 'years'
+        },
+        // {
+        //   text: null,
+        //   view: 'year'
+        // },
+        // {
+        //   text: null,
+        //   view: 'album'
+        // }
       ],
-      year: '2020'
+      aotyProps: {
+        year: null,
+        album: null,
+        view: 'years'
+      }
     }
   },
   methods: {
     handleCrumbClick(item, index) {
       console.log('crumb clicked', item, index)
+      
+      // if index is 0, you clicked on "Albums of the Year", remove all crumbs after index 0 and set view to "years
+      if (index === 0) {
+        this.crumbs = [this.crumbs[0]]
+        this.aotyProps = {
+          year: null,
+          album: null,
+          view: 'years'
+        }
+      }
+      // if index is 1, you clicked on a year, remove all crumbs after index 1 and set view to "year"
+      if (index === 1) {
+        this.crumbs = this.crumbs.slice(0, 2)
+        this.aotyProps = {
+          year: item.text,
+          album: null,
+          view: 'year'
+        }
+      }
+
     },
     addYear(year) {
       this.year = year
       this.crumbs.push({
-        text: year
+        text: year,
+        view: 'year'
       })
     },
     addAlbum(album) {
+      this.album = album.title
       this.crumbs.push({
-        text: album.title
+        text: album.title,
+        view: 'album'
       })
     }
   },
@@ -89,7 +126,7 @@ const Template = args => ({
         <albums-of-the-year
           @year-click="addYear"
           @album-click="addAlbum"
-          :year="year"
+          v-bind="aotyProps"
         />
       </template>
       <template #footer>
@@ -108,3 +145,24 @@ export const Breadcrumb = Template.bind({})
 //     }
 //   ]
 // }
+
+// dynamic routes for breadcrumbs
+const routes = [
+  {
+    path: '/albums-of-the-year',
+    name: 'Albums of the Year',
+    component: AlbumsOfTheYear
+  },
+  {
+    path: '/albums-of-the-year/:year',
+    name: 'Year',
+    component: AlbumsOfTheYear
+  },
+  {
+    path: '/albums-of-the-year/:year/:album',
+    name: 'Album',
+    component: AlbumsOfTheYear
+  }
+]
+
+Breadcrumb.decorators = [vueRouter(routes)]

@@ -49,12 +49,16 @@
       album: {
         type: String,
         default: ''
+      },
+      view: {
+        type: String,
+        default: ''
       }
     },
     data () {
       return {
         albumsOfTheYear: albumsOfTheYear.default,
-        currentView: 'years',
+        currentView: this.view,
         currentYear: this.year,
         currentAlbum: this.album
       }
@@ -103,10 +107,13 @@
       }
     },
     watch: {
-      filter() {
-        this.currentView = 'years'
-        this.filterAlbumsOfTheYear()
-      }
+      // filter() {
+      //   this.currentView = 'years'
+      //   this.filterAlbumsOfTheYear()
+      // }
+      year() {
+        // this.selectYear(this.year)
+      },
     }
   }
 </script>

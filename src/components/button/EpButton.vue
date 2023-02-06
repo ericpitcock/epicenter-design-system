@@ -256,6 +256,18 @@
         font-size: var(--font-size--tiny);
       }
     }
+    &--large {
+      .ep-button__icon {
+        padding: 0 0.6rem;
+        &:only-child {
+          padding-right: 0.6rem;
+        }
+      }
+      .ep-button__label {
+        padding: 1.15rem 1.5rem;
+        font-size: var(--font-size--default);
+      }
+    }
     // $bg-color,
     // $border-color,
     // $font-color,

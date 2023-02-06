@@ -1,9 +1,7 @@
 import vueRouter from 'storybook-vue3-router'
 import { centered } from '@/helpers/decorators'
-import { iconNames } from '@/components/icon/load-icons'
+// import { iconNames } from '@/components/icon/load-icons'
 import EpButton from './EpButton'
-
-iconNames.push(undefined)
 
 export default {
   title: 'Components/Button',
@@ -46,12 +44,13 @@ export default {
     },
     size: {
       name: 'Size',
-      options: ['default', 'small'],
+      options: ['small', 'default', 'large'],
       control: {
         type: 'radio',
         labels: {
+          small: 'Small',
           default: 'Default',
-          small: 'Small'
+          large: 'Large'
         }
       }
     },
@@ -62,16 +61,19 @@ export default {
       }
     },
     to: {
-      name: 'to (Router Link Path)',
-      control: {
-        type: 'text'
-      }
+      table: { disable: true }
     },
     href: {
-      name: 'href',
-      control: {
-        type: 'text'
-      }
+      table: { disable: true }
+    },
+    isActiveMenuItem: {
+      table: { disable: true }
+    },
+    type: {
+      table: { disable: true }
+    },
+    command: {
+      table: { disable: true }
     },
     label: {
       name: 'Label',
@@ -82,8 +84,7 @@ export default {
     iconLeft: {
       name: 'Icon Left',
       control: {
-        type: 'object',
-        // options: iconNames
+        type: 'object'
       },
       table: {
         category: 'Icon'
@@ -92,8 +93,7 @@ export default {
     iconRight: {
       name: 'Icon Right',
       control: {
-        type: 'object',
-        // options: iconNames
+        type: 'object'
       },
       table: {
         category: 'Icon'
