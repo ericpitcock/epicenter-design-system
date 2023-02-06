@@ -1,7 +1,7 @@
 <!-- vue options api breadcrumb component that uses vue-router for dynamic breadcrumbs -->
 <template>
   <div class="breadcrumb">
-    <router-link :to="{ name: 'home' }">Home</router-link>
+    <router-link :to="{ name: 'Years' }">Albums of the year</router-link>
     <span v-for="(item, index) in breadcrumbs" :key="index">
       <span class="divider">/</span>
       <router-link :to="item.to" v-if="item.to">{{ item.text }}</router-link>
@@ -12,7 +12,13 @@
 
 <script>
   export default {
-    name: 'Breadcrumb',
+    name: 'CpBreadcrumb',
+    props: {
+      items: {
+        type: Array,
+        default: () => [],
+      },
+    },
     data() {
       return {
         breadcrumbs: [],
@@ -21,6 +27,8 @@
     watch: {
       $route: {
         handler() {
+          console.log('cp-breadcrumb route changed');
+          console.log(this.$route);
           this.breadcrumbs = [];
           this.setBreadcrumbs(this.$route);
         },
@@ -38,6 +46,7 @@
         if (route.matched.length > 1) {
           this.setBreadcrumbs(route.matched[route.matched.length - 2]);
         }
+        console.log('this.breadcrumbs', this.breadcrumbs);
       },
     },
   };

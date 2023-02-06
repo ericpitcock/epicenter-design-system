@@ -1,12 +1,17 @@
 import vueRouter from 'storybook-vue3-router'
 import { padded } from '@/helpers/decorators'
-import AlbumsOfTheYear from '@/components/breadcrumb/AlbumsOfTheYear'
+// import AlbumsOfTheYear from '@/components/breadcrumb/AlbumsOfTheYear'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpBreadcrumb from './EpBreadcrumb'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
+
+import CpBreadcrumb from './copilot.vue'
+import Years from './views/Years.vue'
+import Year from './views/Year.vue'
+import Album from './views/Album.vue'
 
 export default {
   title: 'Components/Breadcrumb',
@@ -28,7 +33,8 @@ export default {
 
 const Template = args => ({
   components: {
-    AlbumsOfTheYear,
+    // AlbumsOfTheYear,
+    CpBreadcrumb,
     EpActionBar,
     EpBreadcrumb,
     EpContainer,
@@ -115,7 +121,7 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
-          <ep-breadcrumb :items="crumbs" @crumb-click="handleCrumbClick" />
+          <cp-breadcrumb />
         </template>
         <template #right>
           <ep-action-bar v-bind="commonActionBarArgs" />
@@ -123,14 +129,12 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #default>
-        <albums-of-the-year
-          @year-click="addYear"
-          @album-click="addAlbum"
-          v-bind="aotyProps"
-        />
+        <router-view />
       </template>
       <template #footer>
-        <ep-footer />
+        <ep-footer>
+        Route: {{ $route.fullPath }}
+        </ep-footer>
       </template>
     </ep-container>
   `
@@ -149,19 +153,67 @@ export const Breadcrumb = Template.bind({})
 // dynamic routes for breadcrumbs
 const routes = [
   {
-    path: '/albums-of-the-year',
-    name: 'Albums of the Year',
-    component: AlbumsOfTheYear
+    path: '/',
+    name: 'Years',
+    component: Years,
+    meta: {
+      breadcrumb: [
+        { text: 'Albums of the Yearzzzz' }
+      ]
+    }
   },
   {
-    path: '/albums-of-the-year/:year',
+    path: '/:year',
     name: 'Year',
-    component: AlbumsOfTheYear
+    component: Year,
+    // params: {
+    //   year: '2020'
+    // },
+    // meta: {
+    //   breadcrumb: {
+    //     to: '/albums-of-the-year/:year',
+    //     text: null
+    //   }
+    // },
+    meta: {
+      breadcrumb(route) {
+        const { year } = route.params
+        return [
+          {
+            text: 'Albums of the Yearzzzz',
+            to: { name: 'Year', params: { year }}
+          },
+          { text: year }
+        ]
+        // to: '/albums-of-the-year/:year',
+        // text: route.params.year,
+      }
+    },
+    // use props to pass route params to component
+    props: (route) => ({ year: route.params.year })
   },
   {
-    path: '/albums-of-the-year/:year/:album',
+    path: '/:year/:album',
     name: 'Album',
-    component: AlbumsOfTheYear
+    component: Album,
+    meta: {
+      breadcrumb(route) {
+        const { year, album } = route.params
+        return [
+          {
+            text: 'Albums of the Yearzzzz',
+            to: { name: 'Year', params: { year }}
+          },
+          {
+            text: year,
+            to: { name: 'Album', params: { album }}
+          },
+          { text: album }
+        ]
+      }
+    },
+    // use props to pass route params to component
+    props: (route) => ({ album: route.params.album })
   }
 ]
 

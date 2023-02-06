@@ -1,38 +1,37 @@
 <template>
   <div class="aoty">
-    <template v-if="currentView == 'years'">
-      <div class="years">
+    <!-- <template> -->
+      years
+      <div v-if="$route " class="years">
         <div
           v-for="year in getYears"
           class="year"
           @click="selectYear(year)"
         >
-          {{ year }}
+          <router-link :to="{ name: 'Albums of the Year', params: { year: year } }">{{ year }}</router-link>
         </div>
       </div>
-    </template>
-    <template v-else-if="currentView == 'albums'">
+    <!-- </template> -->
+    <!-- <template>
       albums
       <div
         v-for="album in filterAlbumsByYear"
         class="album"
         @click="selectAlbum(album)"
       >
-        
-        <!-- {{ item }} -->
         {{ album.title }}
         {{ album.artist }}
         {{ album.year }}
       </div>
     </template>
-    <template v-else-if="currentView == 'album'">
+    <template v-if="false">
       {{ getAlbum[0].title }}
       {{ getAlbum[0].artist }}
       {{ getAlbum[0].year }}
       {{ getAlbum[0].description }}
       {{ getAlbum[0].link }}
       <img :src="getAlbum[0].cover" style="width: 300px; height: auto;" />
-    </template>
+    </template> -->
   </div>
 </template>
 
@@ -107,6 +106,11 @@
       }
     },
     watch: {
+      $route(to, from) {
+        this.currentView = to.params.view
+        this.currentYear = to.params.year
+        this.currentAlbum = to.params.album
+      },
       // filter() {
       //   this.currentView = 'years'
       //   this.filterAlbumsOfTheYear()
