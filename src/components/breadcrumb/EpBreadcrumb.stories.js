@@ -53,6 +53,17 @@ const Template = args => ({
   methods: {
     handleCrumbClick(item, index) {
       this.filter = item.text
+    },
+    addYear(year) {
+      this.year = year
+      this.crumbs.push({
+        text: year
+      })
+    },
+    addAlbum(album) {
+      this.crumbs.push({
+        text: album.title
+      })
     }
   },
   template: `
@@ -75,7 +86,11 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #default>
-        <albums-of-the-year :year="'2020'" />
+        <albums-of-the-year
+          @year-click="addYear"
+          @album-click="addAlbum"
+          :year="year"
+        />
       </template>
       <template #footer>
         <ep-footer />

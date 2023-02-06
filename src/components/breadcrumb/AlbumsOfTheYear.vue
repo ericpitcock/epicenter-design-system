@@ -60,15 +60,17 @@
       }
     },
     methods: {
-      selectAlbum(album) {
-        this.currentView = 'album'
-        this.currentAlbum = album.title
-      },
       selectYear(year) {
         this.currentView = 'albums'
         this.currentYear = year
         console.log(year)
+        this.$emit('year-click', year)
       },
+      selectAlbum(album) {
+        this.currentView = 'album'
+        this.currentAlbum = album.title
+        this.$emit('album-click', album)
+      }
       // filterAlbumsByYear() {
       //   return this.albumsOfTheYear.filter(album => {
       //     return album.year === "2019"

@@ -119,11 +119,11 @@
     "year": "2020"
   },
   {
-    "Title": "The Ascension",
-    "Artist": "Sufjan Stevens",
-    "Cover": "https://is2-ssl.mzstatic.com/image/thumb/Music113/v4/30/4a/61/304a6104-0371-4865-eb0b-7e01f5ce84db/729920164301.jpg/1000x1000bb-60.jpg",
-    "Songs": "Make Me An Offer I Cannot Refuse, Run Away With Me, Video Game, Lamentations, Ursa Major, America",
-    "Year": "2020"
+    "title": "The Ascension",
+    "artist": "Sufjan Stevens",
+    "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music113/v4/30/4a/61/304a6104-0371-4865-eb0b-7e01f5ce84db/729920164301.jpg/1000x1000bb-60.jpg",
+    "songs": "Make Me An Offer I Cannot Refuse, Run Away With Me, Video Game, Lamentations, Ursa Major, America",
+    "year": "2020"
   },
   {
     "title": "George Clanton & Nick Hexum",
