@@ -7,27 +7,31 @@ import EpFooter from '@/components/footer/EpFooter'
 import EpTable from './EpTable'
 import { columns, fakeArray } from './data'
 
-// const container = () => {
-//   return {
-//     template: '<div style="padding: 30px;"><story/></div>'
-//   }
-// }
-
 export default {
   title: 'Components/Table',
   component: EpTable,
-  // the padded decorator affects the table's sticky header
   decorators: [padded],
   argTypes: {
-    columns: {
-      name: 'Columns',
+    bordered: {
+      name: 'Bordered',
       control: {
-        type: 'object'
+        type: 'boolean'
       },
-      table: {
-        disable: true,
-        category: 'Data'
-      }
+    },
+    calculateHeight: {
+      table: { disable: true }
+    },
+    calculateHeightOffset: {
+      table: { disable: true }
+    },
+    columns: {
+      table: { disable: true }
+    },
+    compact: {
+      name: 'Compact',
+      control: {
+        type: 'boolean'
+      },
     },
     data: {
       name: 'Data',
@@ -35,36 +39,27 @@ export default {
         type: 'array'
       },
       table: {
-        disable: true,
-        category: 'Data'
-      }
-    },
-    width: {
-      name: 'Width',
-      control: {
-        type: 'text'
+        category: 'Data',
+        disable: true
       }
     },
     exclude: {
       table: { disable: true }
     },
-    bordered: {
-      name: 'Bordered',
-      control: {
-        type: 'boolean'
-      }
+    padding: {
+      table: { disable: true }
     },
-    compact: {
-      name: 'Compact',
-      control: {
-        type: 'boolean'
-      }
+    search: {
+      table: { disable: true }
+    },
+    searchable: {
+      table: { disable: true }
     },
     selectable: {
       name: 'Selectable',
       control: {
         type: 'boolean'
-      }
+      },
     },
     selected: {
       table: { disable: true }
@@ -73,38 +68,72 @@ export default {
       name: 'Sortable',
       control: {
         type: 'boolean'
+      },
+    },
+    sortDir: {
+      name: 'Sort Direction',
+      control: {
+        options: ['asc', 'desc'],
+        type: 'select'
+      },
+      table: {
+        labels: {
+          asc: 'Ascending',
+          desc: 'Descending'
+        }
       }
     },
-    searchable: {
-      name: 'Searchable',
-      control: {
-        type: 'boolean'
-      }
+    sortKey: {
+      table: { disable: true }
     },
     stickyHeader: {
       name: 'Sticky Header',
       control: {
         type: 'boolean'
-      }
+      },
     },
     stickyTop: {
-      name: 'Sticky Top',
-      control: {
-        type: 'text'
-      }
+      table: { disable: true }
     },
     striped: {
       name: 'Striped',
       control: {
         type: 'boolean'
-      }
+      },
     },
-    search: {
-      name: 'Search',
+    verticalAlign: {
+      name: 'Vertical Align',
       control: {
-        type: 'array'
+        options: ['top', 'middle', 'bottom'],
+        type: 'select'
+      },
+      table: {
+        labels: {
+          bottom: 'Bottom',
+          middle: 'Middle',
+          top: 'Top'
+        }
       }
     },
+    whiteSpace: {
+      name: 'White Space',
+      control: {
+        options: ['normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap'],
+        type: 'select'
+      },
+      table: {
+        labels: {
+          normal: 'Normal',
+          nowrap: 'No Wrap',
+          pre: 'Pre',
+          'pre-line': 'Pre Line',
+          'pre-wrap': 'Pre Wrap'
+        }
+      }
+    },
+    width: {
+      table: { disable: true }
+    }
   }
 }
 
@@ -144,18 +173,24 @@ const Template = args => ({
 export const Table = Template.bind({})
 
 Table.args = {
+  bordered: true,
+  calculateHeight: true,
+  calculateHeightOffset: 30,
   columns: columns,
-  data: fakeArray(30),
-  width: '100%',
-  exclude: ['id'],
-  selectable: false,
-  bordered: false,
   compact: false,
+  data: fakeArray(30),
+  exclude: ['id'],
+  padding: '0 0 10rem 0',
+  search: '',
+  selectable: false,
   selected: null,
-  sortable: false,
+  sortable: true,
+  sortKey: 'start_date',
+  sortDir: 'asc',
   stickyHeader: true,
   stickyTop: '0',
-  striped: false,
-  calculateHeight: true,
-  calculateHeightOffset: 30
+  striped: true,
+  verticalAlign: 'middle',
+  whiteSpace: 'normal',
+  width: '100%'
 }

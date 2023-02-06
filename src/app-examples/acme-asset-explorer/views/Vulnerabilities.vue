@@ -17,6 +17,7 @@
     <ep-table
       :columns="tableColumns"
       :data="vulnData"
+      v-bind="tableProps"
     />
   </div>
 </template>
@@ -49,9 +50,9 @@
           {
             header: 'Description',
             key: 'description',
-            // formatter: (value) => {
-            //   return value.substring(0, 100)
-            // }
+            formatter: (value) => {
+              return value.substring(0, 300)
+            }
           },
           {
             header: 'Base Score',
@@ -69,7 +70,11 @@
             header: 'Last Modified Date',
             key: 'lastModifiedDate'
           }
-        ]
+        ],
+        tableProps: {
+          bordered: true,
+          verticalAlign: 'top',
+        }
       }
     },
     methods: {

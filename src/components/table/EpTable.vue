@@ -50,22 +50,14 @@
 <script>
   import { defineAsyncComponent } from 'vue'
   import EpIcon from '@/components/icon/EpIcon'
-  // import EpBadge from '@/components/badge/EpBadge'
-  // import EpSparkBar from '@/components/spark-bar/EpSparkBar'
 
   export default {
     name: 'EpTable',
     data() {
       return {
-        // currentSort: this.sortKey || this.getInitialSort(),
-        // currentSortDir: this.sortDir,
-        currentSort: 'start_date',
-        currentSortDir: 'desc',
+        currentSort: this.getSortKey(),
+        currentSortDir: this.getSortDir(),
         tableHeight: '',
-        // the spread operator clones the arrray, making it non-reactive
-        // so when you mutate the data (sort function, etc)
-        // it won't affect other components
-        // tableData: [...this.data]
       }
     },
     components: {
@@ -75,17 +67,9 @@
       EpIcon,
     },
     props: {
-      columns: {
-        type: Array,
-        required: true
-      },
-      data: {
-        type: Array,
-        required: true
-      },
-      width: {
-        type: String,
-        default: 'auto'
+      bordered: {
+        type: Boolean,
+        default: false
       },
       calculateHeight: {
         type: Boolean,
@@ -95,23 +79,31 @@
         type: Number,
         default: 0
       },
-      padding: {
-        type: String,
-        default: '0'
+      columns: {
+        type: Array,
+        required: true
       },
-      // dateFilter: {
-      //   type: Object,
-      //   default: null
-      // },
+      compact: {
+        type: Boolean,
+        default: false
+      },
+      data: {
+        type: Array,
+        required: true
+      },
       exclude: {
         type: Array,
         default: () => []
       },
-      bordered: {
-        type: Boolean,
-        default: false
+      padding: {
+        type: String,
+        default: '0'
       },
-      compact: {
+      search: {
+        type: Array,
+        default: () => []
+      },
+      searchable: {
         type: Boolean,
         default: false
       },
@@ -127,17 +119,13 @@
         type: Boolean,
         default: false
       },
-      searchable: {
-        type: Boolean,
-        default: false
+      sortDir: {
+        type: String,
+        default: 'desc'
       },
       sortKey: {
         type: String,
         default: ''
-      },
-      sortDir: {
-        type: String,
-        default: 'desc'
       },
       stickyHeader: {
         type: Boolean,
@@ -151,9 +139,17 @@
         type: Boolean,
         default: false
       },
-      search: {
-        type: Array,
-        default: () => []
+      verticalAlign: {
+        type: String,
+        default: 'middle'
+      },
+      whiteSpace: {
+        type: String,
+        default: 'normal'
+      },
+      width: {
+        type: String,
+        default: 'auto'
       }
     },
     methods: {
@@ -166,11 +162,9 @@
         return this.columns.find(column => column.key === key)?.cellType === 'component'
       },
       calculatedHeight() {
-        // calculate height of table-container parent based on bottom of viewport
+        // calculate height of table-container so sticky header works
         // helpful for sticky situations - dad joke
-        // this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top}px` : 'auto'
         const offsetBottom = this.calculateHeightOffset || 0
-        // revise above code to account for offsetBottom if set
         this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top - offsetBottom}px` : 'auto'
       },
       cellClick(value, key) {
@@ -201,11 +195,15 @@
       excluded(key) {
         return this.exclude.includes(key)
       },
-      getInitialSort() {
-        // if the column isn't excluded, return the first column
-        // otherwise, return the next column
-        const column = this.columns.find(column => !this.exclude.includes(column.key))
-        return column ? column.key : this.columns[1].key
+      getSortDir() {
+        // return the sortDir if it's set, otherwise return the default
+        return this.sortDir ? this.sortDir : 'desc'
+      },
+      getSortKey() {
+        // find the first column that isn't excluded or cellType component
+        const column = this.columns.find(column => !this.exclude.includes(column.key) && column.cellType !== 'component')
+        // return the sortKey if it's set, otherwise return the column found above
+        return this.sortKey ? this.sortKey : column.key
       },
       formatCell(value, key, row) {
         const formatter = this.columns.find(column => column.key == key)?.formatter
@@ -260,7 +258,8 @@
         })
       },
       sortedData() {
-        if (!this.sortable) this.data
+        if (!this.sortable) return this.data
+
         return this.data.sort((a, b) => {
           let modifier = 1
           if (this.currentSortDir === 'desc') modifier = -1
@@ -351,8 +350,8 @@
         td {
           min-width: 1px;
           padding: 1.4rem;
-          vertical-align: middle;
-          // white-space: nowrap;
+          vertical-align: v-bind(verticalAlign);
+          white-space: v-bind(whiteSpace);
         }
       }
     }

@@ -183,6 +183,7 @@ export const Loading = args => ({
           calculate-height
           :calculate-height-offset="81"
           bordered
+          padding="0 0 10rem 0"
         />
       </template>
       <template #footer>
