@@ -137,7 +137,8 @@ const Template = args => ({
         <router-view />
       </template>
       <template #footer>
-        <ep-footer>
+        <ep-footer style="justify-content: center;">
+        <p>Currently under construction</p>
         </ep-footer>
       </template>
     </ep-container>

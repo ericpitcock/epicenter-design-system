@@ -43,27 +43,17 @@ export default {
         overflow: 'hidden',
       },
       currentIndices: {
-        2022: 0,
-        2021: 0,
-        2020: 0,
-        2019: 0,
-        2018: 0,
-        2017: 0,
-        2016: 0,
-        2015: 0,
-        2014: 0,
+        2022: 10,
+        2021: 4,
+        2020: 1,
+        2019: 10,
+        2018: 8,
+        2017: 5,
+        2016: 8,
+        2015: 5,
+        2014: 2,
       },
-      intervalIds: {
-        2022: null,
-        2021: null,
-        2020: null,
-        2019: null,
-        2018: null,
-        2017: null,
-        2016: null,
-        2015: null,
-        2014: null,
-      }
+      intervalIds: {}
     }
   },
   computed: {
@@ -78,26 +68,18 @@ export default {
       return albums.map(album => album.cover)
     },
     startCycling(length, year) {
-      console.log('start cycling', length, year)
-      // this.currentIndices[year] = 0;
-      // this.intervalIds[year] = setInterval(() => {
-      //   this.currentIndices[year] = this.currentIndices[year] + 1;
-      // }, 500);
-
       // cycle through all the covers, when the end is reached, start over
       this.intervalIds[year] = setInterval(() => {
         this.currentIndices[year] = this.currentIndices[year] + 1;
         if (this.currentIndices[year] >= length) {
           this.currentIndices[year] = 0;
         }
-      }, 250);
-      
+      }, 350);
     },
     stopCycling(year) {
       clearInterval(this.intervalIds[year]);
-      // this.currentIndices[year] = 0;
     }
-  }
+  },
 }
 </script>
 
