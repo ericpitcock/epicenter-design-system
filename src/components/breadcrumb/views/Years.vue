@@ -1,14 +1,12 @@
 <template>
   <div class="years">
-    <div class="years__year" v-for="year in getYears" :key="year">
-      <router-link :to="{
-          name: 'Year',
-          params: { year }
-        }
-      ">
-        {{ year }}
+    <template v-for="year in getYears" :key="year">
+      <router-link class="years__year" :to="{ name: 'Year', params: { year } }">
+        <div class="covers">
+          <img v-for="(cover, index) in getAlbumCovers(year)" :key="index" :src="cover" :alt="year" />
+        </div>
       </router-link>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -17,49 +15,54 @@ import * as albumsOfTheYear from '../aoty.json'
 
 export default {
   name: 'Years',
-  // props: {
-  //   year: {
-  //     type: String,
-  //     default: ''
-  //   },
-  //   album: {
-  //     type: String,
-  //     default: ''
-  //   },
-  //   view: {
-  //     type: String,
-  //     default: ''
-  //   }
-  // },
   data () {
     return {
       albumsOfTheYear: albumsOfTheYear.default,
-      // currentView: this.view,
-      // currentYear: this.year,
-      // currentAlbum: this.album
     }
   },
   computed: {
     getYears() {
-        // get unique years in the albumsOfTheYear array
-        return [...new Set(this.albumsOfTheYear.map(album => album.year))]
-      },
-    // filterAlbumsByYear () {
-    //   return this.albumsOfTheYear.filter(album => album.year === this.currentYear)
-    // },
-    // getAlbum () {
-    //   return this.albumsOfTheYear.filter(album => album.title === this.currentAlbum)
-    // }
+      // get unique years in the albumsOfTheYear array
+      return [...new Set(this.albumsOfTheYear.map(album => album.year))]
+    }
   },
   methods: {
-    // selectYear (year) {
-    //   this.currentYear = year
-    //   this.currentView = 'albums'
-    // },
-    // selectAlbum (album) {
-    //   this.currentAlbum = album.title
-    //   this.currentView = 'album'
-    // }
+    getAlbumCovers(year) {
+      const albums = this.albumsOfTheYear.filter(album => album.year === year)
+      return albums.map(album => album.cover)
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .years {
+    // display flex and fit all children in the space, wrapping if necessary
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    &__year {
+      display: flex;
+      background: red;
+    }
+  }
+  .covers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    img {
+      width: 50px;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+</style>
