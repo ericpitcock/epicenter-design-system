@@ -132,7 +132,6 @@ const Template = args => ({
       </template>
       <template #default>
         <router-view />
-        <pre>{{ $route.meta.breadcrumb }}</pre>
       </template>
       <template #footer>
         <ep-footer>

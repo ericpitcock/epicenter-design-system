@@ -39,3 +39,30 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.ep-breadcrumbs {
+  display: flex;
+  a {
+    // color: #333;
+    // text-decoration: none;
+    &:hover {
+      // color: #333;
+      // text-decoration: underline;
+    }
+  }
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    .divider {
+      margin: 0 0.5rem;
+    }
+  }
+}
+</style>
