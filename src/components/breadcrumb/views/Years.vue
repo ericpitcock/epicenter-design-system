@@ -7,8 +7,14 @@
       style="flex: 0 1 200px; display: flex; flex-direction: column;"
     >
       <router-link :to="{ name: 'Year', params: { year } }">
-        <div class="covers">
-          <img v-for="(cover, index) in getAlbumCovers(year)" :key="index" :src="cover" :alt="year" />
+        <div class="covers" @mouseover="startCycling(getAlbumCovers(year).length, year)" @mouseout="stopCycling(year)">
+          <img
+            v-for="(cover, index) in getAlbumCovers(year)"
+            :key="index"
+            :src="cover"
+            :alt="year"
+            :style="{ display: index === currentIndices[year] ? 'block' : 'none' }"
+          />
         </div>
         <div class="meta">
           <p>{{ year }}</p>
@@ -35,6 +41,28 @@ export default {
         backgroundColor: 'var(--background-1)',
         borderRadius: 'var(--border-radius)',
         overflow: 'hidden',
+      },
+      currentIndices: {
+        2022: 0,
+        2021: 0,
+        2020: 0,
+        2019: 0,
+        2018: 0,
+        2017: 0,
+        2016: 0,
+        2015: 0,
+        2014: 0,
+      },
+      intervalIds: {
+        2022: null,
+        2021: null,
+        2020: null,
+        2019: null,
+        2018: null,
+        2017: null,
+        2016: null,
+        2015: null,
+        2014: null,
       }
     }
   },
@@ -48,6 +76,26 @@ export default {
     getAlbumCovers(year) {
       const albums = this.albumsOfTheYear.filter(album => album.year === year)
       return albums.map(album => album.cover)
+    },
+    startCycling(length, year) {
+      console.log('start cycling', length, year)
+      // this.currentIndices[year] = 0;
+      // this.intervalIds[year] = setInterval(() => {
+      //   this.currentIndices[year] = this.currentIndices[year] + 1;
+      // }, 500);
+
+      // cycle through all the covers, when the end is reached, start over
+      this.intervalIds[year] = setInterval(() => {
+        this.currentIndices[year] = this.currentIndices[year] + 1;
+        if (this.currentIndices[year] >= length) {
+          this.currentIndices[year] = 0;
+        }
+      }, 250);
+      
+    },
+    stopCycling(year) {
+      clearInterval(this.intervalIds[year]);
+      // this.currentIndices[year] = 0;
     }
   }
 }
