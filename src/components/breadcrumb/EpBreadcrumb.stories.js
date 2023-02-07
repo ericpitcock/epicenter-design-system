@@ -161,38 +161,24 @@ const routes = [
     path: '/',
     name: 'Years',
     component: Years,
-    // meta: {
-    //   breadcrumb: [
-    //     { text: 'Albums of the Yearzzzz' }
-    //   ]
-    // }
+    meta: {
+      breadcrumb: [
+        {
+          to: { name: 'Years' }, 
+          text: 'Albums of the Yearzzzz'
+        }
+      ]
+    }
   },
   {
     path: '/:year',
     name: 'Year',
     component: Year,
-    // params: {
-    //   year: '2020'
-    // },
-    // meta: {
-    //   breadcrumb: {
-    //     to: '/albums-of-the-year/:year',
-    //     text: null
-    //   }
-    // },
     meta: {
-      breadcrumb(route) {
-        const { year } = route.params
-        return [
-          {
-            text: 'Albums of the Yearzzzz',
-            to: { name: 'Year', params: { year }}
-          },
-          { text: params => params.year }
-        ]
-        // to: '/albums-of-the-year/:year',
-        // text: route.params.year,
-      }
+      breadcrumb: (route) => ({
+        to: { name: 'Years', params: { year: route.params.year } },
+        text: route.params.year
+      })
     },
     // use props to pass route params to component
     props: (route) => ({ year: route.params.year })
@@ -202,20 +188,10 @@ const routes = [
     name: 'Album',
     component: Album,
     meta: {
-      breadcrumb(route) {
-        const { year, album } = route.params
-        return [
-          {
-            text: 'Albums of the Yearzzzz',
-            to: { name: 'Year', params: { year }}
-          },
-          {
-            text: year,
-            to: { name: 'Album', params: { album }}
-          },
-          { text: params => params.album }
-        ]
-      }
+      breadcrumb: (route) => ({
+        to: { name: 'Year', params: { album: route.params.album } },
+        text: route.params.album
+      })
     },
     // use props to pass route params to component
     // props: (route) => ({ album: route.params.album })

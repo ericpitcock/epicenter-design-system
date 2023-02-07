@@ -33,19 +33,37 @@
         handler() {
           // console.log('cp-breadcrumb route changed');
           // console.log(this.$route);
-          this.breadcrumbs = [];
+          // this.breadcrumbs = [];
           this.setBreadcrumbs(this.$route);
+          console.log('this.breadcrumbs', this.breadcrumbs);
         },
         immediate: true,
       },
     },
     methods: {
+      // setBreadcrumbs(route) {
+      //   console.log('setBreadcrumbs', route);
+      //   if (route.meta && route.meta.breadcrumb) {
+      //     this.breadcrumbs.unshift({
+      //       to: route.meta.breadcrumb.to,
+      //       text: route.meta.breadcrumb.text,
+      //     });
+      //   }
+      //   if (route.matched.length > 1) {
+      //     this.setBreadcrumbs(route.matched[route.matched.length - 2]);
+      //   }
+      //   // console.log('this.breadcrumbs', this.breadcrumbs);
+      // },
+      // update the above method considering that route.meta.breadcrumb may be a function
       setBreadcrumbs(route) {
         console.log('setBreadcrumbs', route);
         if (route.meta && route.meta.breadcrumb) {
+          const breadcrumb = typeof route.meta.breadcrumb === 'function' 
+            ? route.meta.breadcrumb(this.$route) 
+            : route.meta.breadcrumb || route.name
           this.breadcrumbs.unshift({
-            to: route.meta.breadcrumb.to,
-            text: route.meta.breadcrumb.text,
+            to: breadcrumb.to,
+            text: breadcrumb.text,
           });
         }
         if (route.matched.length > 1) {
