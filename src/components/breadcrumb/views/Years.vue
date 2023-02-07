@@ -1,23 +1,40 @@
 <template>
   <div class="years">
-    <template v-for="year in getYears" :key="year">
-      <router-link class="years__year" :to="{ name: 'Year', params: { year } }">
+    <ep-container
+      v-for="year in getYears"
+      :key="year"
+      v-bind="containerProps"
+      style="flex: 0 1 200px; display: flex; flex-direction: column;"
+    >
+      <router-link :to="{ name: 'Year', params: { year } }">
         <div class="covers">
           <img v-for="(cover, index) in getAlbumCovers(year)" :key="index" :src="cover" :alt="year" />
         </div>
+        <div class="meta">
+          {{ year }}
+        </div>
       </router-link>
-    </template>
+    </ep-container>
   </div>
 </template>
 
 <script>
 import * as albumsOfTheYear from '../aoty.json'
+import EpContainer from '@/components/container/EpContainer'
 
 export default {
   name: 'Years',
+  components: {
+    EpContainer
+  },
   data () {
     return {
       albumsOfTheYear: albumsOfTheYear.default,
+      containerProps: {
+        backgroundColor: 'var(--background-1)',
+        borderRadius: 'var(--border-radius)',
+        overflow: 'hidden',
+      }
     }
   },
   computed: {
@@ -39,30 +56,59 @@ export default {
   .years {
     // display flex and fit all children in the space, wrapping if necessary
     display: flex;
-    flex-direction: row;
+    // flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    gap: 2rem;
+    // justify-content: flex-start;
+    // align-items: center;
+    // width: 100%;
+    // height: 100%;
     overflow: hidden;
-    &__year {
+    a {
+      // flex: 0 1 200px;
       display: flex;
-      background: red;
+      flex-direction: column;
+      // display: block;
+      height: 100%;
+      cursor: pointer;
+      // background: red;
     }
-  }
-  .covers {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    img {
-      width: 50px;
-      height: auto;
-      object-fit: cover;
+    .covers {
+      // fill width but keep aspect ratio and height to contents
+      // flex: 1 1 auto;
+      display: flex;
+      // position: relative;
+      // // display: flex;
+      // flex-direction: row;
+      // justify-content: space-between;
+      // align-items: center;
+      // // width: 100%;
+      // // height: 100%;
+      // overflow: hidden;
+      background: red;
+      img {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // width: 50px;
+        // height: auto;
+        object-fit: cover;
+        // keep aspect ratio and fill width
+        width: 100%;
+        height: auto;
+      }
+    }
+    .meta {
+      flex: 0 1 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 0 2rem;
+      border-top: 1px solid var(--border-color);
+      // background: blue;
     }
   }
 </style>
