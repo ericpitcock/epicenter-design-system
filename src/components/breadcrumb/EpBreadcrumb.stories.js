@@ -8,7 +8,8 @@ import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
 
-import CpBreadcrumb from './copilot.vue'
+// import CpBreadcrumb from './copilot.vue'
+import EpBreadcrumbTwo from './EpBreadcrumbTwo.vue'
 import Years from './views/Years.vue'
 import Year from './views/Year.vue'
 import Album from './views/Album.vue'
@@ -34,7 +35,8 @@ export default {
 const Template = args => ({
   components: {
     // AlbumsOfTheYear,
-    CpBreadcrumb,
+    // CpBreadcrumb,
+    EpBreadcrumbTwo,
     EpActionBar,
     EpBreadcrumb,
     EpContainer,
@@ -121,12 +123,7 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
-          <cp-breadcrumb
-            :initialRoute="{
-              to: { name: 'Years' },
-              text: 'Albums of the year'
-            }"
-          />
+          <ep-breadcrumb-two />
         </template>
         <template #right>
           <ep-action-bar v-bind="commonActionBarArgs" />
@@ -135,10 +132,11 @@ const Template = args => ({
       </template>
       <template #default>
         <router-view />
+        <pre>{{ $route.meta.breadcrumb }}</pre>
       </template>
       <template #footer>
         <ep-footer>
-        Route: {{ $route.fullPath.replace('%20', ' ') }}
+        
         </ep-footer>
       </template>
     </ep-container>
@@ -176,7 +174,7 @@ const routes = [
     component: Year,
     meta: {
       breadcrumb: (route) => ({
-        to: { name: 'Years', params: { year: route.params.year } },
+        to: { name: 'Year', params: { year: route.params.year } },
         text: route.params.year
       })
     },
@@ -189,7 +187,7 @@ const routes = [
     component: Album,
     meta: {
       breadcrumb: (route) => ({
-        to: { name: 'Year', params: { album: route.params.album } },
+        to: { name: 'Album', params: { album: route.params.album } },
         text: route.params.album
       })
     },
