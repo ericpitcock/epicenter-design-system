@@ -123,7 +123,10 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
-          <ep-breadcrumb-two />
+          <ep-breadcrumb-two :initial-route="{
+            to: { name: 'Years' },
+            text: 'Albums of the Year'
+          }" />
         </template>
         <template #right>
           <ep-action-bar v-bind="commonActionBarArgs" />
