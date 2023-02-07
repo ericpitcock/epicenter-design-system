@@ -121,7 +121,12 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
-          <cp-breadcrumb />
+          <cp-breadcrumb
+            :initialRoute="{
+              to: { name: 'Years' },
+              text: 'Albums of the year'
+            }"
+          />
         </template>
         <template #right>
           <ep-action-bar v-bind="commonActionBarArgs" />
@@ -133,7 +138,7 @@ const Template = args => ({
       </template>
       <template #footer>
         <ep-footer>
-        Route: {{ $route.fullPath }}
+        Route: {{ $route.fullPath.replace('%20', ' ') }}
         </ep-footer>
       </template>
     </ep-container>
@@ -156,11 +161,11 @@ const routes = [
     path: '/',
     name: 'Years',
     component: Years,
-    meta: {
-      breadcrumb: [
-        { text: 'Albums of the Yearzzzz' }
-      ]
-    }
+    // meta: {
+    //   breadcrumb: [
+    //     { text: 'Albums of the Yearzzzz' }
+    //   ]
+    // }
   },
   {
     path: '/:year',

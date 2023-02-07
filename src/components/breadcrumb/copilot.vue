@@ -1,7 +1,7 @@
 <!-- vue options api breadcrumb component that uses vue-router for dynamic breadcrumbs -->
 <template>
   <div class="breadcrumb">
-    <router-link :to="{ name: 'Years' }">Albums of the year</router-link>
+    <router-link :to="initialRoute.to">{{ initialRoute.text }}</router-link>
     <span v-for="(item, index) in breadcrumbs" :key="index">
       <span class="divider">/</span>
       <router-link :to="item.to" v-if="item.to">{{ item.text }}</router-link>
@@ -14,9 +14,13 @@
   export default {
     name: 'CpBreadcrumb',
     props: {
-      items: {
-        type: Array,
-        default: () => [],
+      // items: {
+      //   type: Array,
+      //   default: () => [],
+      // },
+      initialRoute: {
+        type: Object,
+        default: () => {},
       },
     },
     data() {
@@ -27,8 +31,8 @@
     watch: {
       $route: {
         handler() {
-          console.log('cp-breadcrumb route changed');
-          console.log(this.$route);
+          // console.log('cp-breadcrumb route changed');
+          // console.log(this.$route);
           this.breadcrumbs = [];
           this.setBreadcrumbs(this.$route);
         },
@@ -37,6 +41,7 @@
     },
     methods: {
       setBreadcrumbs(route) {
+        console.log('setBreadcrumbs', route);
         if (route.meta && route.meta.breadcrumb) {
           this.breadcrumbs.unshift({
             to: route.meta.breadcrumb.to,
@@ -46,8 +51,16 @@
         if (route.matched.length > 1) {
           this.setBreadcrumbs(route.matched[route.matched.length - 2]);
         }
-        console.log('this.breadcrumbs', this.breadcrumbs);
+        // console.log('this.breadcrumbs', this.breadcrumbs);
       },
     },
   };
 </script>
+
+<style lang="scss" scoped>
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+</style>

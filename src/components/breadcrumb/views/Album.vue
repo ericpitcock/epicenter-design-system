@@ -1,10 +1,12 @@
 <template>
   <div class="album">Album
-    {{ album.title }}
+    {{ getAlbum.title }}
+    {{ this.$route.params.album }}
   </div>
 </template>
 
 <script>
+import * as albumsOfTheYear from '../aoty.json'
 export default {
   name: 'Album',
   props: {
@@ -23,7 +25,7 @@ export default {
   },
   data () {
     return {
-      // albumsOfTheYear: albumsOfTheYear.default,
+      albumsOfTheYear: albumsOfTheYear.default,
       // currentView: this.view,
       // currentYear: this.year,
       // currentAlbum: this.album
@@ -36,9 +38,9 @@ export default {
     // filterAlbumsByYear () {
     //   return this.albumsOfTheYear.filter(album => album.year === this.currentYear)
     // },
-    // getAlbum () {
-    //   return this.albumsOfTheYear.filter(album => album.title === this.currentAlbum)
-    // }
+    getAlbum() {
+      return this.albumsOfTheYear.filter(album => album.title === this.$route.params.album)
+    }
   },
   methods: {
     // selectYear (year) {

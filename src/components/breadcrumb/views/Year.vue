@@ -7,7 +7,7 @@
     >
       <router-link :to="{
           name: 'Album',
-          params: { album }
+          params: { year, album: album.title }
         }
       ">
        {{ album.artist }} - {{ album.title }}
