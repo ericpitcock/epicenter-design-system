@@ -188,7 +188,7 @@ const routes = [
             text: 'Albums of the Yearzzzz',
             to: { name: 'Year', params: { year }}
           },
-          { text: year }
+          { text: params => params.year }
         ]
         // to: '/albums-of-the-year/:year',
         // text: route.params.year,
@@ -213,12 +213,12 @@ const routes = [
             text: year,
             to: { name: 'Album', params: { album }}
           },
-          { text: album }
+          { text: params => params.album }
         ]
       }
     },
     // use props to pass route params to component
-    props: (route) => ({ album: route.params.album })
+    // props: (route) => ({ album: route.params.album })
   }
 ]
 
