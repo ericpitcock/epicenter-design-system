@@ -11,7 +11,8 @@
           <img v-for="(cover, index) in getAlbumCovers(year)" :key="index" :src="cover" :alt="year" />
         </div>
         <div class="meta">
-          {{ year }}
+          <p>{{ year }}</p>
+          <p class="text--subtle font-size--tiny">{{ getAlbumCovers(year).length }} albums</p>
         </div>
       </router-link>
     </ep-container>
@@ -101,12 +102,12 @@ export default {
     .meta {
       flex: 0 1 4rem;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      // align-items: center;
+      // flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
       width: 100%;
-      height: 100%;
-      padding: 0 2rem;
+      // height: 100%;
+      padding: 1rem 2rem;
       border-top: 1px solid var(--border-color);
       // background: blue;
     }
