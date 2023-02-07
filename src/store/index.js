@@ -8,35 +8,35 @@ export default createStore({
         id: faker.datatype.uuid(),
         active: false,
         message: 'Welcome to Acme Asset Explorer! You just unlocked new levels of visibility into your assets and vulnerabilities.',
-        alertstyle: 'info',
+        alertStyle: 'info',
         timestamp: faker.date.past()
       },
       {
         id: faker.datatype.uuid(),
         active: false,
         message: 'App version 1.0.3 is now available',
-        alertstyle: 'info',
+        alertStyle: 'info',
         timestamp: faker.date.past()
       },
       {
         id: faker.datatype.uuid(),
         active: false,
         message: 'Your support request was sent successfully',
-        alertstyle: 'success',
+        alertStyle: 'success',
         timestamp: faker.date.recent()
       },
       {
         id: faker.datatype.uuid(),
         active: false,
         message: 'You’re running low on endpoint licenses',
-        alertstyle: 'warning',
+        alertStyle: 'warning',
         timestamp: faker.date.recent()
       },
       {
         id: faker.datatype.uuid(),
         active: false,
         message: 'Your organization has 34 assets with new critical vulnerabilities',
-        alertstyle: 'error',
+        alertStyle: 'error',
         timestamp: faker.date.recent()
       }
     ],
@@ -80,7 +80,7 @@ export default createStore({
     addNotification: ({ state, commit }, notification) => {
       // build new notification object
       const newNotification = {
-        ...notification, // using spread syntax breaks the object reference, recevies message and alertstyle (success, info, warning, error)
+        ...notification, // using spread syntax breaks the object reference, recevies message and alertStyle (success, info, warning, error)
         active: true, // add active property
         id: faker.datatype.uuid(), // adds unique ID each time
         timestamp: Date.now() // adds timestamp

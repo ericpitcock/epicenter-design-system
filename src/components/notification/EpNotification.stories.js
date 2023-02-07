@@ -19,10 +19,10 @@ export default {
 }
 
 // build notification object and dispatch to store
-const buildNotification = alertstyle => {
+const buildNotification = alertStyle => {
   const notification = {
     message: 'Thanks for the feedback!',
-    alertstyle
+    alertStyle
     // store will append active: true, id, and timestamp
   }
   store.dispatch('addNotification', notification)
