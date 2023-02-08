@@ -75,7 +75,7 @@ const Template = args => ({
     EpHeader
   },
   setup() {
-    const checkboxes = [
+    const checkboxes = ref([
       {
         id: faker.datatype.uuid(),
         name: 'font-style',
@@ -124,11 +124,11 @@ const Template = args => ({
         label: 'Monospace',
         command: () => console.log('check change')
       }
-    ]
+    ])
 
     const selectAll = () => {
-      console.log('select all')
-      checkboxes.forEach(checkbox => {
+      // toggle all checkboxes
+      checkboxes.value.forEach(checkbox => {
         checkbox.checked = !checkbox.checked
       })
     }
