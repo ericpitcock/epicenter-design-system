@@ -6,6 +6,7 @@ import EpCheckbox from './EpCheckbox'
 import EpContainer from '@/components/container/EpContainer'
 import EpFooter from '@/components/footer/EpFooter'
 import EpHeader from '@/components/header/EpHeader'
+import GoogleFonts from './GoogleFonts'
 import { ref } from 'vue'
 
 export default {
@@ -72,7 +73,8 @@ const Template = args => ({
     EpCheckbox,
     EpContainer,
     EpFooter,
-    EpHeader
+    EpHeader,
+    GoogleFonts
   },
   setup() {
     const checkboxes = ref([
@@ -135,53 +137,32 @@ const Template = args => ({
       }
     })
 
-    const toggleAll = () => {
-      // toggle all checkboxes
-      checkboxes.value.forEach(checkbox => {
-        checkbox.checked = !checkbox.checked
-      })
-    }
+    // const toggleAll = () => {
+    //   // toggle all checkboxes
+    //   checkboxes.value.forEach(checkbox => {
+    //     checkbox.checked = !checkbox.checked
+    //   })
+    // }
 
     const checkChange = (index) => {
-      // toggle the checkbox that was clicked
-      checkboxes.value[index].checked = !checkboxes.value[index].checked
-
-      // if select all checkbox was clicked, toggle all checkboxes
+      // toggle the clicked checkbox
+      checkboxes.value[index].checked = !checkboxes.value[index].checked;
+    
+      // check/uncheck all checkboxes based on index 0
       if (index === 0) {
-        // if select all checkbox is checked, check all unchecked checkboxes
-        if (checkboxes.value[0].checked) {
-          checkboxes.value.forEach(checkbox => {
-            checkbox.checked = true
-          })
-        // if select all checkbox is not checked, uncheck all checked checkboxes
-        } else {
-          checkboxes.value.forEach(checkbox => {
-            checkbox.checked = false
-          })
-        }
+        checkboxes.value.forEach(checkbox => checkbox.checked = checkboxes.value[0].checked);
+      } else if (checkboxes.value.some(checkbox => !checkbox.checked)) {
+        checkboxes.value[0].checked = false;
+      } else if (checkboxes.value.slice(1).every(checkbox => checkbox.checked)) {
+        checkboxes.value[0].checked = true;
       }
-
-      // uncheck select all checkbox if any other checkbox is unchecked
-      if (checkboxes.value.some(checkbox => !checkbox.checked)) {
-        checkboxes.value[0].checked = false
-      }
-      // if select all checkbox is not checked and every checkbox after index 0 is checked, check select all checkbox
-      if (!checkboxes.value[0].checked && checkboxes.value.slice(1).every(checkbox => checkbox.checked)) {
-        checkboxes.value[0].checked = true
-      }
-
-      // if select all checkbox is checked, add all styles to selectedStyles
-      if (checkboxes.value[0].checked) {
-        selectedStyles.value = ['sans-serif', 'serif', 'display', 'handwriting', 'monospace']
-      // if select all checkbox is not checked, add all checked styles to selectedStyles
-      } else {
-        selectedStyles.value = []
-        checkboxes.value.forEach(checkbox => {
-          if (checkbox.checked && checkbox.value !== 'all') {
-            selectedStyles.value.push(checkbox.value)
-          }
-        })
-      }
+    
+      // update selectedStyles based on checkbox states
+      selectedStyles.value = checkboxes.value[0].checked ? 
+        ['sans-serif', 'serif', 'display', 'handwriting', 'monospace'] :
+        checkboxes.value
+          .filter(checkbox => checkbox.checked && checkbox.value !== 'all')
+          .map(checkbox => checkbox.value);
     }
 
     return {
@@ -189,7 +170,7 @@ const Template = args => ({
       checkboxes,
       commonActionBarArgs,
       checkChange,
-      toggleAll,
+      // toggleAll,
       selectedStyles
     }
   },
@@ -199,12 +180,12 @@ const Template = args => ({
       useFooter
       max-width="120rem"
       height="100%"
-      overflow="hidden"
+      overflow="auto"
     >
       <template #header>
       <ep-header>
         <template #left>
-          <h1>Fonts</h1>
+          <h1>Google Fonts</h1>
         </template>
         <template #right>
           <ep-action-bar v-bind="commonActionBarArgs" />
@@ -212,17 +193,21 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #default>
-        <div style="display: flex; flex-direction: column;">
-        <ep-checkbox
-          v-for="(checkbox, index) in checkboxes"
-          v-bind="checkbox"
-          @checkchange="checkChange(index)"
-        />
-        {{ selectedStyles }}
+        <div style="display: flex; height: 100%;">
+          <div style="flex: 0 0 20rem; display: flex; flex-direction: column; gap: 1rem; padding: 3rem;">
+            <ep-checkbox
+              v-for="(checkbox, index) in checkboxes"
+              v-bind="checkbox"
+              @checkchange="checkChange(index)"
+            />
+          </div>
+          <div style="flex: 1 1 auto; overflow: auto; padding: 3rem 0;">
+            <google-fonts :filter="selectedStyles" />
+          </div>
         </div>
       </template>
       <template #footer>
-        <ep-footer />
+        <ep-footer>{{ selectedStyles }}</ep-footer>
       </template>
     </ep-container>
   `

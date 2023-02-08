@@ -87,6 +87,7 @@
 <style lang="scss" scoped>
   .ep-checkbox {
     display: inline-flex;
+    width: fit-content;
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
