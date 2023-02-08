@@ -2,10 +2,12 @@
   <div :class="['ep-checkbox', classes]">
     <input
       type="checkbox"
+      ref="input"
       :id="id"
       :name="name"
       :value="value"
       :checked="checked"
+      :indeterminate="indeterminate"
       :disabled="disabled"
       :required="required"
       :readonly="readonly"
@@ -36,11 +38,11 @@
         type: Boolean,
         default: false
       },
-      disabled: {
+      indeterminate: {
         type: Boolean,
         default: false
       },
-      indeterminate: {
+      disabled: {
         type: Boolean,
         default: false
       },
@@ -70,6 +72,11 @@
         return {
           'ep-checkbox--disabled': this.disabled
         }
+      }
+    },
+    watch: {
+      indeterminate() {
+        this.$refs.input.indeterminate = this.indeterminate
       }
     },
     methods: {

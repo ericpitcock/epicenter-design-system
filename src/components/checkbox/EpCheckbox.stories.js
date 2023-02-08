@@ -15,19 +15,13 @@ export default {
   decorators: [padded],
   argTypes: {
     id: {
-      control: {
-        type: 'text'
-      }
+      table: { disable: true }
     },
     name: {
-      control: {
-        type: 'text'
-      }
+      table: { disable: true }
     },
     value: {
-      control: {
-        type: 'text'
-      }
+      table: { disable: true }
     },
     checked: {
       control: {
@@ -50,24 +44,47 @@ export default {
       }
     },
     required: {
-      control: {
-        type: 'boolean'
-      }
+      table: { disable: true }
     },
     readonly: {
-      control: {
-        type: 'boolean'
-      }
+      table: { disable: true }
     },
     tabindex: {
-      control: {
-        type: 'number'
-      }
+      table: { disable: true }
+    },
+    command: {
+      table: { disable: true }
     }
   }
 }
+// bare component
+const Bare = args => ({
+  components: {
+    EpCheckbox,
+  },
+  setup() {
+    return { args }
+  },
+  template: '<ep-checkbox v-bind="args" />'
+})
 
-const Template = args => ({
+export const Checkbox = Bare.bind({})
+
+Checkbox.args = {
+  id: 'checkbox',
+  name: 'checkbox',
+  value: 'checkbox',
+  checked: false,
+  disabled: false,
+  indeterminate: false,
+  label: 'Checkbox',
+  required: false,
+  readonly: false,
+  tabindex: 0
+}
+
+// component in context
+const Example = args => ({
   components: {
     EpActionBar,
     EpCheckbox,
@@ -148,13 +165,24 @@ const Template = args => ({
       // toggle the clicked checkbox
       checkboxes.value[index].checked = !checkboxes.value[index].checked;
     
-      // check/uncheck all checkboxes based on index 0
+      // if index is 0 (that is "All" ) toggle all checkboxes to the same state
       if (index === 0) {
         checkboxes.value.forEach(checkbox => checkbox.checked = checkboxes.value[0].checked);
-      } else if (checkboxes.value.some(checkbox => !checkbox.checked)) {
-        checkboxes.value[0].checked = false;
-      } else if (checkboxes.value.slice(1).every(checkbox => checkbox.checked)) {
-        checkboxes.value[0].checked = true;
+      // if a different checkbox is clicked
+      } else {
+        // if some checkboxes are checked and some are not
+        if (checkboxes.value.some(checkbox => checkbox.checked) && 
+            checkboxes.value.some(checkbox => !checkbox.checked)) {
+          checkboxes.value[0].indeterminate = true;
+          checkboxes.value[0].checked = false;
+        // if all checkboxes, except "All" are checked
+        } else if (checkboxes.value.slice(1).every(checkbox => checkbox.checked)) {
+          checkboxes.value[0].checked = true;
+          checkboxes.value[0].indeterminate = false;
+        // all other cases
+        } else {
+          checkboxes.value[0].indeterminate = false;
+        }
       }
     
       // update selectedStyles based on checkbox states
@@ -164,6 +192,7 @@ const Template = args => ({
           .filter(checkbox => checkbox.checked && checkbox.value !== 'all')
           .map(checkbox => checkbox.value);
     }
+
 
     return {
       args,
@@ -213,17 +242,12 @@ const Template = args => ({
   `
 })
 
-export const Checkbox = Template.bind({})
+export const CheckboxInContext = Example.bind({})
 
-Checkbox.args = {
-  id: 'checkbox',
-  name: 'checkbox',
-  value: 'checkbox',
-  checked: false,
-  disabled: false,
-  indeterminate: false,
-  label: 'Checkbox',
-  required: false,
-  readonly: false,
-  tabindex: 0
+CheckboxInContext.parameters = {
+  controls: {
+    // exclude all using regex
+    exclude: /.*$/,
+    hideNoControlsWarning: true,
+  }
 }
