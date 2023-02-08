@@ -146,11 +146,21 @@ const Template = args => ({
       // toggle the checkbox that was clicked
       checkboxes.value[index].checked = !checkboxes.value[index].checked
 
+      // if select all checkbox was clicked, toggle all checkboxes
       if (index === 0) {
-        toggleAll()
+        // if select all checkbox is checked, check all unchecked checkboxes
+        if (checkboxes.value[0].checked) {
+          checkboxes.value.forEach(checkbox => {
+            checkbox.checked = true
+          })
+        // if select all checkbox is not checked, uncheck all checked checkboxes
+        } else {
+          checkboxes.value.forEach(checkbox => {
+            checkbox.checked = false
+          })
+        }
       }
-      
-      console.log('change')
+
       // uncheck select all checkbox if any other checkbox is unchecked
       if (checkboxes.value.some(checkbox => !checkbox.checked)) {
         checkboxes.value[0].checked = false
@@ -172,22 +182,6 @@ const Template = args => ({
           }
         })
       }
-
-      // // if select all checkbox is unchecked, remove all styles from selectedStyles
-      // if (index === 0 && !checkboxes.value[0].checked) {
-      //   selectedStyles.value = []
-      // // if select all checkbox is checked, add all styles to selectedStyles
-      // } else {
-      //   selectedStyles.value = ['sans-serif', 'serif', 'display', 'handwriting', 'monospace']
-      // }
-
-      // updatte selectedStyles
-      // selectedStyles.value = []
-      // checkboxes.value.forEach(checkbox => {
-      //   if (checkbox.checked && checkbox.value !== 'all') {
-      //     selectedStyles.value.push(checkbox.value)
-      //   }
-      // })
     }
 
     return {
