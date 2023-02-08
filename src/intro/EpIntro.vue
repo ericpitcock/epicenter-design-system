@@ -13,21 +13,24 @@
     </div>
     <div class="content">
       <div class="copy-block">
-        <p>This project began as a way to design and build reusable components for my own projects, but it has since evolved into a comprehensive learning experience. Through the process of creating these components, I’ve gained a deeper understanding of how design systems can be used to create user-friendly and accessible experiences for all users.</p>
-        <p>This is a forever project, and probably being worked on as you read this, so you may experience bugs or inconsistencies.</p>
+        <p>This design system is being created for use in my personal projects and serves as a training ground to stay current on best practices for creating inclusive and user-friendly experiences for all.</p>
+        <p>The aim of this Storybook is to showcase these components in their raw form and in the context of a website or application.</p>
       </div>
+      <ep-banner :iconProps="{ name: 'info' }" message="This is a forever project, and probably being worked on as you read this, so you may experience bugs or inconsistencies." />
     </div>
   </div>
 </template>
 
 <script>
   import E from '@/components/logo/E'
+  import EpBanner from '@/components/banner/EpBanner'
   import EpContainer from '@/components/container/EpContainer'
 
   export default {
     name: 'Intro',
     components: {
       E,
+      EpBanner,
       EpContainer
     }
   }
@@ -41,6 +44,7 @@
     --intro-hero-link-color: var(--text-color);
   }
   .intro {
+    max-width: 120rem;
     height: 100%;
     padding: 3rem;
     .hero {
@@ -101,6 +105,10 @@
       border-radius: 0 0 var(--border-radius--large) var(--border-radius--large);
       border: 1px solid var(--border-color);
       border-top: none;
+      // all children except the first get a top margin
+      > *:not(:first-child) {
+        margin-top: 2rem;
+      }
     }
   }
 </style>
