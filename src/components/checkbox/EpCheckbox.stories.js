@@ -170,15 +170,16 @@ const Example = args => ({
         checkboxes.value.forEach(checkbox => checkbox.checked = checkboxes.value[0].checked);
       // if a different checkbox is clicked
       } else {
+        // if all checkboxes, except "All" are checked
+        if (checkboxes.value.slice(1).every(checkbox => checkbox.checked)) {
+        checkboxes.value[0].checked = true;
+        checkboxes.value[0].indeterminate = false;
+        }
         // if some checkboxes are checked and some are not
         if (checkboxes.value.some(checkbox => checkbox.checked) && 
             checkboxes.value.some(checkbox => !checkbox.checked)) {
           checkboxes.value[0].indeterminate = true;
           checkboxes.value[0].checked = false;
-        // if all checkboxes, except "All" are checked
-        } else if (checkboxes.value.slice(1).every(checkbox => checkbox.checked)) {
-          checkboxes.value[0].checked = true;
-          checkboxes.value[0].indeterminate = false;
         // all other cases
         } else {
           checkboxes.value[0].indeterminate = false;
