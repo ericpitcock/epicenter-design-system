@@ -9,7 +9,59 @@ import EpHeader from '@/components/header/EpHeader'
 export default {
   title: 'Components/Checkbox',
   component: EpCheckbox,
-  decorators: [padded]
+  decorators: [padded],
+  argTypes: {
+    id: {
+      control: {
+        type: 'text'
+      }
+    },
+    name: {
+      control: {
+        type: 'text'
+      }
+    },
+    value: {
+      control: {
+        type: 'text'
+      }
+    },
+    checked: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    disabled: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    indeterminate: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    label: {
+      control: {
+        type: 'text'
+      }
+    },
+    required: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    readonly: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    tabindex: {
+      control: {
+        type: 'number'
+      }
+    }
+  }
 }
 
 const Template = args => ({
@@ -43,7 +95,7 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #default>
-      <ep-checkbox v-bind="commonActionBarArgs">Checkbox</ep-checkbox>
+      <ep-checkbox v-bind="args" />
       </template>
       <template #footer>
         <ep-footer />
@@ -53,3 +105,16 @@ const Template = args => ({
 })
 
 export const Checkbox = Template.bind({})
+
+Checkbox.args = {
+  id: 'checkbox',
+  name: 'checkbox',
+  value: 'checkbox',
+  checked: false,
+  disabled: false,
+  indeterminate: false,
+  label: 'Checkbox',
+  required: false,
+  readonly: false,
+  tabindex: 0
+}
