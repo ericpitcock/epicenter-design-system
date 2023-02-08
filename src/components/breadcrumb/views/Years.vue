@@ -6,7 +6,7 @@
       v-bind="containerProps"
       style="flex: 0 1 200px; display: flex; flex-direction: column;"
     >
-      <router-link :to="{ name: 'Year', params: { year } }">
+      <a :to="{ name: 'Year', params: { year } }">
         <div class="covers" @mouseover="startCycling(getAlbumCovers(year).length, year)" @mouseout="stopCycling(year)">
           <img
             v-for="(cover, index) in getAlbumCovers(year)"
@@ -20,7 +20,7 @@
           <p>{{ year }}</p>
           <p class="text--subtle font-size--tiny">{{ getAlbumCovers(year).length }} albums</p>
         </div>
-      </router-link>
+      </a>
     </ep-container>
   </div>
 </template>
