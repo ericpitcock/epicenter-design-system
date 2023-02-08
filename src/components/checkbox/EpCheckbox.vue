@@ -1,5 +1,5 @@
 <template>
-  <div class="ep-checkbox">
+  <div :class="['ep-checkbox', classes]">
     <input
       type="checkbox"
       :id="id"
@@ -10,7 +10,7 @@
       :required="required"
       :readonly="readonly"
       :tabindex="tabindex"
-      @change="onChange"
+      @change="onChange(command, $event)"
     >
     <label :for="id">{{ label }}</label>
   </div>
@@ -59,30 +59,49 @@
       tabindex: {
         type: Number,
         default: null
+      },
+      command: {
+        type: Function,
+        default: null
+      }
+    },
+    computed: {
+      classes() {
+        return {
+          'ep-checkbox--disabled': this.disabled
+        }
       }
     },
     methods: {
-      onChange(event) {
+      onChange(command, event) {
+        // console.log('onChange', event.target.checked)
         this.$emit('change', event.target.checked)
+        if (command) {
+          command(event.target.checked)
+        }
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-.ep-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  user-select: none;
-
-  input {
-    appearance: auto;
+  .ep-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    &--disabled {
+      color: var(--text-color--disabled);
+      cursor: default;
+    }
+    input {
+      appearance: auto;
+      cursor: inherit;
+    }
+    label {
+      color: inherit;
+      cursor: inherit;
+    }
   }
-
-  label {
-
-  }
-}
 </style>

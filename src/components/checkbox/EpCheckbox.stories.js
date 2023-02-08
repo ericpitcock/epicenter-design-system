@@ -1,3 +1,4 @@
+import faker from 'faker'
 import { padded } from '@/helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
@@ -5,6 +6,7 @@ import EpCheckbox from './EpCheckbox'
 import EpContainer from '@/components/container/EpContainer'
 import EpFooter from '@/components/footer/EpFooter'
 import EpHeader from '@/components/header/EpHeader'
+import { ref } from 'vue'
 
 export default {
   title: 'Components/Checkbox',
@@ -73,9 +75,71 @@ const Template = args => ({
     EpHeader
   },
   setup() {
-    return { args, commonActionBarArgs }
+    const checkboxes = [
+      {
+        id: faker.datatype.uuid(),
+        name: 'font-style',
+        value: 'all',
+        checked: true,
+        label: 'All',
+        command: () => selectAll(),
+      },
+      {
+        id: faker.datatype.uuid(),
+        name: 'font-style',
+        value: 'sans-serif',
+        checked: true,
+        label: 'Sans Serif',
+        command: () => console.log('check change')
+      },
+      {
+        id: faker.datatype.uuid(),
+        name: 'font-style',
+        value: 'serif',
+        checked: true,
+        label: 'Serif',
+        command: () => console.log('check change')
+      },
+      {
+        id: faker.datatype.uuid(),
+        name: 'font-style',
+        value: 'display',
+        checked: true,
+        label: 'Display',
+        command: () => console.log('check change')
+      },
+      {
+        id: faker.datatype.uuid(),
+        name: 'font-style',
+        value: 'handwriting',
+        checked: true,
+        label: 'Handwritng',
+        command: () => console.log('check change')
+      },
+      {
+        id: faker.datatype.uuid(),
+        name: 'font-style',
+        value: 'monospace',
+        checked: true,
+        label: 'Monospace',
+        command: () => console.log('check change')
+      }
+    ]
+
+    const selectAll = () => {
+      console.log('select all')
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = !checkbox.checked
+      })
+    }
+
+    return {
+      args,
+      checkboxes,
+      commonActionBarArgs,
+      selectAll
+    }
   },
-  // template: '<ep-checkbox v-bind="args">Checkbox</ep-checkbox>',
   template: `
     <ep-container
       useHeader
@@ -95,7 +159,12 @@ const Template = args => ({
       </ep-header>
       </template>
       <template #default>
-      <ep-checkbox v-bind="args" />
+        <div style="display: flex; flex-direction: column;">
+        <ep-checkbox
+          v-for="checkbox in checkboxes"
+          v-bind="checkbox"
+        />
+        </div>
       </template>
       <template #footer>
         <ep-footer />
