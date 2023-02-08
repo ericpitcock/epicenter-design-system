@@ -82,6 +82,7 @@ const Template = args => ({
         value: 'all',
         checked: true,
         label: 'All',
+        indeterminate: false,
         command: () => selectAll(),
       },
       {
@@ -90,7 +91,7 @@ const Template = args => ({
         value: 'sans-serif',
         checked: true,
         label: 'Sans Serif',
-        command: () => console.log('check change')
+        // command: () => console.log('check change')
       },
       {
         id: faker.datatype.uuid(),
@@ -98,7 +99,7 @@ const Template = args => ({
         value: 'serif',
         checked: true,
         label: 'Serif',
-        command: () => console.log('check change')
+        // command: () => console.log('check change')
       },
       {
         id: faker.datatype.uuid(),
@@ -106,7 +107,7 @@ const Template = args => ({
         value: 'display',
         checked: true,
         label: 'Display',
-        command: () => console.log('check change')
+        // command: () => console.log('check change')
       },
       {
         id: faker.datatype.uuid(),
@@ -114,7 +115,7 @@ const Template = args => ({
         value: 'handwriting',
         checked: true,
         label: 'Handwritng',
-        command: () => console.log('check change')
+        // command: () => console.log('check change')
       },
       {
         id: faker.datatype.uuid(),
@@ -122,7 +123,7 @@ const Template = args => ({
         value: 'monospace',
         checked: true,
         label: 'Monospace',
-        command: () => console.log('check change')
+        // command: () => console.log('check change')
       }
     ])
 
@@ -133,10 +134,28 @@ const Template = args => ({
       })
     }
 
+    // if some checkboxes are checked, set the select all checkbox to indeterminate
+    const checkChange = (index) => {
+      // using index, change checked value of that checkbox
+      checkboxes.value[index].checked = !checkboxes.value[index].checked
+      console.log('change')
+      // uncheck select all checkbox if any other checkbox is unchecked
+      if (checkboxes.value.some(checkbox => !checkbox.checked)) {
+        checkboxes.value[0].checked = false
+      }
+      // if select all checkbox is not checked and every checkbox after index 0 is checked, check select all checkbox
+      if (!checkboxes.value[0].checked && checkboxes.value.slice(1).every(checkbox => checkbox.checked)) {
+        checkboxes.value[0].checked = true
+      }
+      
+      console.log(checkboxes.value)
+    }
+
     return {
       args,
       checkboxes,
       commonActionBarArgs,
+      checkChange,
       selectAll
     }
   },
@@ -161,8 +180,9 @@ const Template = args => ({
       <template #default>
         <div style="display: flex; flex-direction: column;">
         <ep-checkbox
-          v-for="checkbox in checkboxes"
+          v-for="(checkbox, index) in checkboxes"
           v-bind="checkbox"
+          @checkchange="checkChange(index)"
         />
         </div>
       </template>

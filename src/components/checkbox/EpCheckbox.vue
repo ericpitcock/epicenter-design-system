@@ -75,7 +75,7 @@
     methods: {
       onChange(command, event) {
         // console.log('onChange', event.target.checked)
-        this.$emit('change', event.target.checked)
+        this.$emit('checkchange', event.target.checked)
         if (command) {
           command(event.target.checked)
         }
