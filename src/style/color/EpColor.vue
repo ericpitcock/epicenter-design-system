@@ -11,7 +11,7 @@
       id="colors__table"
       class="colors__table"
       width="fit-content"
-      padding="0 2rem 2rem"
+      padding="0 2rem"
       style="overscroll-behavior: contain"
       calculate-height
       :calculate-height-offset="30"
@@ -24,7 +24,8 @@
         bordered
         sticky-header
         calculate-height
-        :calculate-height-offset="50"
+        :calculate-height-offset="30"
+        padding="0 0 10rem 0"
       />
     </ep-container>
   </div>
@@ -340,7 +341,7 @@
       // },
       filteredData() {
         // scroll color table to the top when filter changes
-        const colorTableContainer = document.getElementById('colors__table')
+        const colorTableContainer = document.querySelector('.ep-table-container')
         colorTableContainer.scrollTop = 0
       }
     }
