@@ -83,7 +83,7 @@ const Template = args => ({
         checked: true,
         label: 'All',
         indeterminate: false,
-        command: () => selectAll(),
+        // command: () => toggleAll(),
       },
       {
         id: faker.datatype.uuid(),
@@ -127,17 +127,29 @@ const Template = args => ({
       }
     ])
 
-    const selectAll = () => {
+    const selectedStyles = ref([])
+    // when mounted, add all checked values to selectedStyles
+    checkboxes.value.forEach(checkbox => {
+      if (checkbox.checked && checkbox.value !== 'all') {
+        selectedStyles.value.push(checkbox.value)
+      }
+    })
+
+    const toggleAll = () => {
       // toggle all checkboxes
       checkboxes.value.forEach(checkbox => {
         checkbox.checked = !checkbox.checked
       })
     }
 
-    // if some checkboxes are checked, set the select all checkbox to indeterminate
     const checkChange = (index) => {
-      // using index, change checked value of that checkbox
+      // toggle the checkbox that was clicked
       checkboxes.value[index].checked = !checkboxes.value[index].checked
+
+      if (index === 0) {
+        toggleAll()
+      }
+      
       console.log('change')
       // uncheck select all checkbox if any other checkbox is unchecked
       if (checkboxes.value.some(checkbox => !checkbox.checked)) {
@@ -147,8 +159,35 @@ const Template = args => ({
       if (!checkboxes.value[0].checked && checkboxes.value.slice(1).every(checkbox => checkbox.checked)) {
         checkboxes.value[0].checked = true
       }
-      
-      console.log(checkboxes.value)
+
+      // if select all checkbox is checked, add all styles to selectedStyles
+      if (checkboxes.value[0].checked) {
+        selectedStyles.value = ['sans-serif', 'serif', 'display', 'handwriting', 'monospace']
+      // if select all checkbox is not checked, add all checked styles to selectedStyles
+      } else {
+        selectedStyles.value = []
+        checkboxes.value.forEach(checkbox => {
+          if (checkbox.checked && checkbox.value !== 'all') {
+            selectedStyles.value.push(checkbox.value)
+          }
+        })
+      }
+
+      // // if select all checkbox is unchecked, remove all styles from selectedStyles
+      // if (index === 0 && !checkboxes.value[0].checked) {
+      //   selectedStyles.value = []
+      // // if select all checkbox is checked, add all styles to selectedStyles
+      // } else {
+      //   selectedStyles.value = ['sans-serif', 'serif', 'display', 'handwriting', 'monospace']
+      // }
+
+      // updatte selectedStyles
+      // selectedStyles.value = []
+      // checkboxes.value.forEach(checkbox => {
+      //   if (checkbox.checked && checkbox.value !== 'all') {
+      //     selectedStyles.value.push(checkbox.value)
+      //   }
+      // })
     }
 
     return {
@@ -156,7 +195,8 @@ const Template = args => ({
       checkboxes,
       commonActionBarArgs,
       checkChange,
-      selectAll
+      toggleAll,
+      selectedStyles
     }
   },
   template: `
@@ -184,6 +224,7 @@ const Template = args => ({
           v-bind="checkbox"
           @checkchange="checkChange(index)"
         />
+        {{ selectedStyles }}
         </div>
       </template>
       <template #footer>
