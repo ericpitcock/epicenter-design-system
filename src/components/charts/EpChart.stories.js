@@ -25,7 +25,7 @@ const Template = args => ({
     return { args }
   },
   template: `
-    <ep-container padding="30px">
+    <ep-container maxWidth="120rem" padding="30px">
       <ep-chart v-bind="args" />
     </ep-container>
   `

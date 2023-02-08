@@ -3,6 +3,7 @@ import { padded } from '@/helpers/decorators'
 // import AlbumsOfTheYear from '@/components/breadcrumb/AlbumsOfTheYear'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
+import EpBadge from '@/components/badge/EpBadge'
 import EpBreadcrumb from './EpBreadcrumb'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
@@ -36,6 +37,7 @@ const Template = args => ({
   components: {
     // AlbumsOfTheYear,
     // CpBreadcrumb,
+    EpBadge,
     EpBreadcrumbTwo,
     EpActionBar,
     EpBreadcrumb,
@@ -123,6 +125,7 @@ const Template = args => ({
       <template #header>
       <ep-header>
         <template #left>
+          <ep-badge label="Work in progress" borderColor="var(--bg-color--alert-high)" />
           <ep-breadcrumb-two :initial-route="{
             to: { name: 'Years' },
             text: 'Albums of the Year'
@@ -137,9 +140,7 @@ const Template = args => ({
         <router-view />
       </template>
       <template #footer>
-        <ep-footer style="justify-content: center;">
-        <p>Currently under construction</p>
-        </ep-footer>
+        <ep-footer />
       </template>
     </ep-container>
   `

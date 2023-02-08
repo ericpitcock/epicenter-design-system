@@ -3,11 +3,11 @@
     <nav>
       <ol>
         <li>
-          <router-link :to="initialRoute.to">{{ initialRoute.text }}</router-link>
+          <router-link class="text--link" :to="initialRoute.to">{{ initialRoute.text }}</router-link>
         </li>
         <li v-for="(item, index) in breadcrumbs" :key="index">
           <span class="divider">/</span>
-          <router-link :to="item.to" v-if="item.to">{{ item.text }}</router-link>
+          <router-link class="text--link" :to="item.to" v-if="item.to">{{ item.text }}</router-link>
           <span v-else>{{ item.text }}</span>
         </li>
       </ol>

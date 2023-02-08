@@ -2,6 +2,7 @@ import faker from 'faker'
 import { padded } from '@/helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
+import EpBadge from '@/components/badge/EpBadge'
 import EpCheckbox from './EpCheckbox'
 import EpContainer from '@/components/container/EpContainer'
 import EpFooter from '@/components/footer/EpFooter'
@@ -87,6 +88,7 @@ Checkbox.args = {
 const Example = args => ({
   components: {
     EpActionBar,
+    EpBadge,
     EpCheckbox,
     EpContainer,
     EpFooter,
@@ -215,6 +217,7 @@ const Example = args => ({
       <template #header>
       <ep-header>
         <template #left>
+          <ep-badge label="Work in progress" borderColor="var(--bg-color--alert-high)" />
           <h1>Google Fonts</h1>
         </template>
         <template #right>
