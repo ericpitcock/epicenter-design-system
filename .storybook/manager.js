@@ -1,4 +1,5 @@
 import { addons } from '@storybook/addons';
+import EpTheme from './EpTheme';
 
 addons.setConfig({
   isFullscreen: false,
@@ -7,7 +8,7 @@ addons.setConfig({
   panelPosition: 'right',
   enableShortcuts: true,
   isToolshown: true,
-  theme: undefined,
+  theme: EpTheme,
   selectedPanel: undefined,
   initialActive: 'sidebar',
   sidebar: {
