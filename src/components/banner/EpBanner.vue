@@ -39,7 +39,7 @@
       },
       iconProps: {
         type: Object,
-        default: { name: 'circle' }
+        default: () => ({})
       },
       message: {
         type: String,
