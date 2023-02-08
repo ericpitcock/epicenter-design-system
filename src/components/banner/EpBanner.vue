@@ -2,7 +2,7 @@
   <div class="ep-banner">
     <div class="ep-banner__color-strip"></div>
     <div class="ep-banner__body">
-      <div class="ep-banner__body__icon">
+      <div v-if="iconProps.name" class="ep-banner__body__icon">
         <ep-icon v-bind="iconProps" />
       </div>
       <div class="ep-banner__body__message">

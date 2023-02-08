@@ -65,7 +65,7 @@ export const Banner = Template.bind({})
 Banner.args = {
   bannerStyle: 'warning',
   dissmissable: false,
-  iconProps: { name: 'info' },
+  iconProps: { name: 'f/alert-triangle' },
   message: 'Version 2.0 will end support for JavaDabbles and Interquibbles',
   subtext: 'Our boss made us do it'
 }
