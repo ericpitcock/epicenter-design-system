@@ -72,4 +72,4 @@ const routes = [
   }
 ]
 
-AcmeAssetExplorer.decorators = [vueRouter(routes)]
+AcmeAssetExplorer.decorators = [vueRouter(routes, { beforeEach: (to, from, next) => { console.log('beforeEach', to, from); next() } })]

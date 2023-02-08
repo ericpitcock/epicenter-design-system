@@ -198,4 +198,4 @@ const routes = [
   }
 ]
 
-Breadcrumb.decorators = [vueRouter(routes)]
+Breadcrumb.decorators = [vueRouter(routes, { beforeEach: (to, from, next) => { console.log('beforeEach', to, from); next() } })]
