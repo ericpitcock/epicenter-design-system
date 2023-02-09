@@ -5,13 +5,9 @@
       v-for="album in getAlbumsByYear"
       class="album"
     >
-      <router-link :to="{
-          name: 'Album',
-          params: { year, album: album.title }
-        }
-      ">
+      <a class="text--link" @click="albumClick(album)">
        {{ album.artist }} - {{ album.title }}
-      </router-link>
+      </a>
     </div>
   </div>
 </template>
@@ -55,6 +51,9 @@
       // }
     },
     methods: {
+      albumClick (album) {
+        this.$emit('album-click', 'Album', null, album)
+      },
       getAlbum(title) {
         return this.albumsOfTheYear.filter(album => album.title === title)
       }

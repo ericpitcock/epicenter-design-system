@@ -6,7 +6,8 @@
       v-bind="containerProps"
       style="flex: 0 1 200px; display: flex; flex-direction: column;"
     >
-      <a :to="{ name: 'Year', params: { year } }">
+      <!-- can convert a to div -->
+      <a class="link-wrapper" @click="yearClick(year)">
         <div class="covers" @mouseover="startCycling(getAlbumCovers(year).length, year)" @mouseout="stopCycling(year)">
           <img
             v-for="(cover, index) in getAlbumCovers(year)"
@@ -78,6 +79,9 @@ export default {
     },
     stopCycling(year) {
       clearInterval(this.intervalIds[year]);
+    },
+    yearClick(year) {
+      this.$emit('year-click', 'Year', year, null)
     }
   },
 }
@@ -95,7 +99,7 @@ export default {
     // width: 100%;
     // height: 100%;
     overflow: hidden;
-    a {
+    a.link-wrapper {
       // flex: 0 1 200px;
       display: flex;
       flex-direction: column;

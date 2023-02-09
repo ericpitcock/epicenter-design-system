@@ -20,7 +20,9 @@
       </ep-header>
       </template>
       <template #default>
-        <component :is="currentView" />
+        <Years v-if="currentView === 'Years'" @year-click="updateView" />
+        <Year v-else-if="currentView === 'Year'" :year="currentYear" @album-click="updateView" />
+        <Album v-else-if="currentView === 'Album'" :album="currentAlbum" />
       </template>
       <template #footer>
         <ep-footer />
@@ -75,8 +77,8 @@
         albumsOfTheYear: albumsOfTheYear.default,
         commonActionBarArgs,
         currentView: 'Years',
-        currentYear: '2020',
-        currentAlbum: 'Balls'
+        currentYear: '',
+        currentAlbum: ''
       }
     },
     methods: {
@@ -92,6 +94,11 @@
         // } else if (crumb === 'Album') {
         //   this.currentView = 'Album'
         // }
+      },
+      updateView(view, year, album) {
+        this.currentView = view
+        this.currentYear = year
+        this.currentAlbum = album
       }
     },
     computed: {

@@ -1,7 +1,6 @@
 <template>
   <div class="album">Album
     {{ getAlbum.title }}
-    {{ this.$route.params.album }}
   </div>
 </template>
 
@@ -39,7 +38,7 @@ export default {
     //   return this.albumsOfTheYear.filter(album => album.year === this.currentYear)
     // },
     getAlbum() {
-      return this.albumsOfTheYear.filter(album => album.title === this.$route.params.album)
+      return this.albumsOfTheYear.filter(album => album.title === this.album.title)
     }
   },
   methods: {
