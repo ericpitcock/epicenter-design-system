@@ -1,6 +1,9 @@
 <template>
   <div :class="['ep-input', classes]">
-    <div v-if="icon" class="ep-input__icon">
+    <div
+      v-if="icon"
+      class="ep-input__icon"
+    >
       <ep-icon v-bind="icon" />
     </div>
     <div class="queries">
@@ -43,8 +46,8 @@
 </template>
 
 <script>
-  import EpIcon from '@/components/icon/EpIcon'
-  
+  import EpIcon from '../icon/EpIcon'
+
   export default {
     name: 'EpMultiSearch',
     components: {
@@ -67,7 +70,7 @@
       },
       icon: {
         type: Object,
-        default: () => {}
+        default: () => { }
       },
       disabled: {
         type: Boolean,

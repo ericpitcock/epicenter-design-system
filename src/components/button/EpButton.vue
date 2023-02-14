@@ -7,18 +7,27 @@
     v-bind="$attrs"
     @click="handleClick"
   >
-    <span v-if="iconLeft" class="ep-button__icon ep-button__icon--left">
+    <span
+      v-if="iconLeft"
+      class="ep-button__icon ep-button__icon--left"
+    >
       <ep-icon v-bind="iconLeft" />
     </span>
-    <span v-if="label" class="ep-button__label">{{ label }}</span>
-    <span v-if="iconRight" class="ep-button__icon ep-button__icon--right">
+    <span
+      v-if="label"
+      class="ep-button__label"
+    >{{ label }}</span>
+    <span
+      v-if="iconRight"
+      class="ep-button__icon ep-button__icon--right"
+    >
       <ep-icon v-bind="iconRight" />
     </span>
   </component>
 </template>
 
 <script>
-  import EpIcon from '@/components/icon/EpIcon'
+  import EpIcon from '../icon/EpIcon'
 
   export default {
     name: 'EpButton',
@@ -92,7 +101,7 @@
         return [
           'ep-button',
           `ep-button--${this.kind}`,
-          { 
+          {
             [`ep-button--${this.size}`]: this.size != 'default',
             'ep-button--icon-right': this.iconRight,
             'ep-button--icon-left': this.iconLeft,
@@ -107,38 +116,32 @@
 </script>
 
 <style lang="scss" scoped>
-  @mixin button-theme(
-    $bg-color,
+  @mixin button-theme($bg-color,
     $border-color,
     $font-color,
     $hover-bg-color,
     $hover-font-color,
-    $active-color
-  ) {
+    $active-color ) {
     background-color: $bg-color;
     border-width: 1px;
     border-style: solid;
     border-color: $border-color;
     color: $font-color;
-
     @media (hover: hover) {
       &:hover {
         color: $hover-font-color;
         background-color: $hover-bg-color;
       }
     }
-
     &:focus {
       // border-color: ;
       // box-shadow: inset 0 0 0 $button-border-width $focus,
       //   inset 0 0 0 ($button-border-width + $button-outline-width) $ui-02;
     }
-
     &:active {
       background-color: $active-color;
     }
   }
-
   .ep-button {
     display: inline-flex;
     justify-content: space-between;
@@ -153,7 +156,6 @@
     user-select: none;
     white-space: nowrap;
     vertical-align: top;
-
     // kind template
     // $bg-color,
     // $border-color,
@@ -162,8 +164,7 @@
     // $hover-font-color,
     // $active-color
     &--primary {
-      @include button-theme(
-        var(--primary-color--base),
+      @include button-theme(var(--primary-color--base),
         var(--primary-color--border),
         var(--primary-color--text),
         var(--primary-color--hover),
@@ -172,64 +173,52 @@
       );
     }
     &--secondary {
-      @include button-theme(
-        var(--background-4),
+      @include button-theme(var(--background-4),
         var(--border-color),
         var(--text-color),
         var(--button-secondary--hover),
         var(--text-color),
-        var(--button-secondary--active)
-      );
+        var(--button-secondary--active));
     }
     &--danger {
-      @include button-theme(
-        var(--danger-red--base),
+      @include button-theme(var(--danger-red--base),
         var(--danger-red--border),
         var(--danger-red--text),
         var(--danger-red--hover),
         var(--danger-red--text),
-        var(--danger-red--active)
-      );
+        var(--danger-red--active));
     }
     &--warning {
-      @include button-theme(
-        var(--warning-yellow--base),
+      @include button-theme(var(--warning-yellow--base),
         var(--warning-yellow--border),
         var(--warning-yellow--text),
         var(--warning-yellow--hover),
         var(--warning-yellow--text),
-        var(--warning-yellow--active)
-      );
+        var(--warning-yellow--active));
     }
     &--success {
-      @include button-theme(
-        var(--success-green--base),
+      @include button-theme(var(--success-green--base),
         var(--success-green--border),
         var(--success-green--text),
         var(--success-green--hover),
         var(--success-green--text),
-        var(--success-green--active)
-      );
+        var(--success-green--active));
     }
     &--ghost {
-      @include button-theme(
-        transparent,
+      @include button-theme(transparent,
         transparent,
         var(--button-ghost--text),
         var(--button-ghost--hover),
         var(--text-color),
-        var(--button-ghost--active)
-      );
+        var(--button-ghost--active));
     }
     &--menu-item {
-      @include button-theme(
-        transparent,
+      @include button-theme(transparent,
         transparent,
         var(--button-ghost--text),
         var(--button-menu-item--hover),
         var(--button-menu-item-text-hover),
-        var(--button-menu-item--active)
-      );
+        var(--button-menu-item--active));
       width: 100%;
       border-radius: 0;
       padding-right: 1rem;
@@ -275,14 +264,12 @@
     // $hover-font-color,
     // $active-color
     &--disabled {
-      @include button-theme(
-        var(--background-2),
+      @include button-theme(var(--background-2),
         var(--border-color),
         var(--text-color--disabled),
         var(--background-2),
         var(--text-color--subtle),
-        var(--background-2)
-      );
+        var(--background-2));
       pointer-events: none;
       cursor: default;
     }

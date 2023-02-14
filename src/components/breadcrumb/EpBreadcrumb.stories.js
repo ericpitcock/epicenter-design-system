@@ -1,25 +1,51 @@
-import { padded } from '@/helpers/decorators'
-import AlbumsOfTheYear from '@/components/breadcrumb/AlbumsOfTheYear'
+import vueRouter from 'storybook-vue3-router'
+import { padded } from '../../helpers/decorators'
+import EpBreadcrumb from './EpBreadcrumb.vue'
 
 export default {
   title: 'Components/Breadcrumb',
-  component: AlbumsOfTheYear,
+  component: EpBreadcrumb,
   decorators: [padded],
-  argTypes: {}
+  argTypes: {
+    staticBreadcrumbs: { table: { disable: true } },
+    type: { table: { disable: true } }
+  }
 }
 
 const Template = args => ({
   components: {
-    AlbumsOfTheYear
+    EpBreadcrumb
   },
   setup() {
     return { args }
   },
-  template: '<albums-of-the-year />'
+  template: '<ep-breadcrumb v-bind="args" />'
 })
 
 export const Breadcrumb = Template.bind({})
 
+Breadcrumb.args = {
+  staticBreadcrumbs: [
+    {
+      text: 'Home',
+      href: '#'
+    },
+    {
+      text: 'Library',
+      href: '#'
+    },
+    {
+      text: 'Data',
+      href: '#'
+    }
+  ],
+  type: 'static'
+}
+
 Breadcrumb.parameters = {
   controls: { hideNoControlsWarning: true }
 }
+
+Breadcrumb.decorators = [
+  vueRouter()
+]

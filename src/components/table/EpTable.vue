@@ -1,49 +1,55 @@
 <template>
   <div class="ep-table-container">
-  <table :class="['ep-table', classes]">
-    <thead>
-      <tr>
-        <template
-          v-for="(column, index) in columns"
-          :key="index"
+    <table :class="['ep-table', classes]">
+      <thead>
+        <tr>
+          <template
+            v-for="(column, index) in columns"
+            :key="index"
+          >
+            <th
+              v-if="!excluded(column.key)"
+              @click="sort(column.key)"
+              :class="headClasses(column.key)"
+            >
+              <div>
+                <span class="label">{{ column.header }}</span>
+                <ep-icon :name="arrowIcon" />
+              </div>
+            </th>
+          </template>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(row, index) in filteredData"
+          :key="row.id"
+          @click="rowClick(row)"
+          :class="{ 'ep-table-row--selected': isSelected(row.id) }"
+          :style="row.style"
+          :ref="`row-${index}`"
         >
-        <th
-          v-if="!excluded(column.key)"
-          @click="sort(column.key)"
-          :class="headClasses(column.key)"
-        >
-          <div>
-            <span class="label">{{ column.header }}</span>
-            <ep-icon :name="arrowIcon" />
-          </div>
-        </th>
-        </template>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        v-for="(row, index) in filteredData"
-        :key="row.id"
-        @click="rowClick(row)"
-        :class="{ 'ep-table-row--selected': isSelected(row.id) }"
-        :style="row.style"
-        :ref="`row-${index}`"
-      >
-        <template v-for="(value, key) in row" :key="key">
-        <td v-if="!excluded(key) && !isComponent(key)">
-          <span
-            @click.stop="cellClick(value, key)"
-            v-html="formatCell(value, key, row)"
-            :class="cellStyle(key)"
-          ></span>
-        </td>
-        <td v-else-if="isComponent(key)">
-          <component :is="value.component" v-bind="value.props" />
-        </td>
-        </template>
-      </tr>
-    </tbody>
-  </table>
+          <template
+            v-for="(value, key) in row"
+            :key="key"
+          >
+            <td v-if="!excluded(key) && !isComponent(key)">
+              <span
+                @click.stop="cellClick(value, key)"
+                v-html="formatCell(value, key, row)"
+                :class="cellStyle(key)"
+              ></span>
+            </td>
+            <td v-else-if="isComponent(key)">
+              <component
+                :is="value.component"
+                v-bind="value.props"
+              />
+            </td>
+          </template>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -285,7 +291,7 @@
     watch: {
       filteredData() {
         this.$emit('data-changed', this.filteredData)
-      },  
+      },
     }
   }
 </script>

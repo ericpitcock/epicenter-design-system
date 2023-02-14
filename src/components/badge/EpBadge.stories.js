@@ -1,14 +1,10 @@
-import { padded } from '@/helpers/decorators'
-import EpContainer from '@/components/container/EpContainer'
-import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
+import { centered } from '@/helpers/decorators'
 import EpBadge from './EpBadge'
-import EpTable from '@/components/table/EpTable'
-import { h } from 'vue'
 
 export default {
   title: 'Components/Badge',
   component: EpBadge,
-  decorators: [padded],
+  decorators: [centered],
   argTypes: {
     label: {
       name: 'Label',
@@ -43,86 +39,14 @@ export default {
   }
 }
 
-const columns = [
-  {
-    header: 'Date',
-    key: 'start_date',
-    formatter: value => {
-      return value.split('T')[0].replaceAll('-', '/')
-    },
-    command: () => {
-      console.log('click')
-    }
-  },
-  {
-    header: 'Name',
-    key: 'name'
-  },
-  {
-    header: 'Status',
-    key: 'status'
-  },
-  {
-    header: 'Actions',
-    key: 'component',
-    // use vue component as cell
-    command: value => {
-      return h(EpBadge, {
-        props: {
-          label: value,
-          // backgroundColor: 'var(--background-4)',
-          // borderColor: 'var(--border-color--lighter)',
-          // textColor: 'var(--text-color)',
-          // uppercase: false
-        }
-      })
-    }
-  }
-]
-
-const data = [
-  {
-    start_date: '2021-01-01T00:00:00.000Z',
-    name: 'John Doe',
-    status: 'Subscribed',
-    component: 'Click'
-  },
-  {
-    start_date: '2021-01-01T00:00:00.000Z',
-    name: 'Jane Doe',
-    status: 'Subscribed',
-    component: 'Click'
-  },
-  {
-    start_date: '2021-01-01T00:00:00.000Z',
-    name: 'John Doe',
-    status: 'Subscribed',
-    component: 'Click'
-  },
-]
-
 const Template = args => ({
   components: {
-    EpBadge,
-    EpContainer,
-    EpFlexContainer,
-    EpTable
+    EpBadge
   },
   setup() {
-    return { args, columns, data }
+    return { args }
   },
-  template: `
-  <ep-container width="30rem" height="50rem">
-    <ep-flex-container
-      flex-flow="column nowrap"
-      align-items="center"
-      justify-content="center"
-      gap="2rem"
-    >
-      <ep-badge v-bind="args" />
-    </ep-flex-container>
-  </ep-container>
-  `
+  template: '<ep-badge v-bind="args" />'
 })
 
 export const Badge = Template.bind({})

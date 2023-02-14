@@ -1,7 +1,7 @@
 import { padded } from '@/helpers/decorators'
 import EpActionBar from './EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
-import EpContainer from '@/components/container/EpContainer'
+import EpContainer from '../container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
 import E from '@/components/logo/E'

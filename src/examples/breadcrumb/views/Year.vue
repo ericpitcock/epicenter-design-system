@@ -1,34 +1,28 @@
 <template>
-  <div class="years">
+  <div class="year">
+    <!-- {{ year }} -->
     <ep-container
-      v-for="year in getYears"
-      :key="year"
+      v-for="(album, index) in getAlbumsByYear"
+      :key="index"
       v-bind="containerProps"
       style="flex: 0 1 200px; display: flex; flex-direction: column;"
     >
       <!-- can convert a to div -->
       <a
         class="link-wrapper"
-        @click="yearClick(year)"
+        @click="albumClick(album)"
       >
-        <div
-          class="covers"
-          @mouseover="startCycling(getAlbumCovers(year).length, year)"
-          @mouseout="stopCycling(year)"
-        >
+        <div class="covers">
           <img
-            v-for="(cover, index) in getAlbumCovers(year)"
-            :key="index"
-            :src="cover"
-            :alt="year"
-            :style="{ display: index === currentIndices[year] ? 'block' : 'none' }"
+            :src="album.cover"
+            :alt="`${album.title} cover`"
           />
         </div>
         <div class="meta">
-          <p>{{ year }}</p>
-          <p class="text--subtle font-size--tiny">{{
-            getAlbumCovers(year).length
-          }} albums</p>
+          {{ album.title }}
+          <p class="text--subtle font-size--tiny">
+            {{ album.artist }}
+          </p>
         </div>
       </a>
     </ep-container>
@@ -37,12 +31,26 @@
 
 <script>
   import * as albumsOfTheYear from '../aoty.json'
-  import EpContainer from '@/components/container/EpContainer'
+  import EpContainer from '../../../components/container/EpContainer'
 
   export default {
-    name: 'Years',
+    name: 'Year',
     components: {
       EpContainer
+    },
+    props: {
+      year: {
+        type: String,
+        default: ''
+      },
+      // album: {
+      //   type: String,
+      //   default: ''
+      // },
+      // view: {
+      //   type: String,
+      //   default: ''
+      // }
     },
     data() {
       return {
@@ -51,60 +59,51 @@
           backgroundColor: 'var(--background-1)',
           borderRadius: 'var(--border-radius)',
           overflow: 'hidden',
-        },
-        currentIndices: {
-          2022: 10,
-          2021: 4,
-          2020: 1,
-          2019: 10,
-          2018: 8,
-          2017: 5,
-          2016: 8,
-          2015: 5,
-          2014: 2,
-        },
-        intervalIds: {}
+        }
+        // currentView: this.view,
+        // currentYear: this.year,
+        // currentAlbum: this.album
       }
     },
     computed: {
-      getYears() {
-        // get unique years in the albumsOfTheYear array
-        return [...new Set(this.albumsOfTheYear.map(album => album.year))]
-      }
+      // getYears () {
+      //   return this.albumsOfTheYear.map(album => album.year)
+      // },
+      getAlbumsByYear() {
+        return this.albumsOfTheYear.filter(album => album.year === this.year)
+      },
+      // getAlbum(title) {
+      //   return this.albumsOfTheYear.filter(album => album.title === title)
+      // }
     },
     methods: {
-      getAlbumCovers(year) {
-        const albums = this.albumsOfTheYear.filter(album => album.year === year)
-        return albums.map(album => album.cover)
+      albumClick(album) {
+        this.$emit('album-click', 'Album', null, album)
       },
-      startCycling(length, year) {
-        // cycle through all the covers, when the end is reached, start over
-        this.intervalIds[year] = setInterval(() => {
-          this.currentIndices[year] = this.currentIndices[year] + 1
-          if (this.currentIndices[year] >= length) {
-            this.currentIndices[year] = 0
-          }
-        }, 350)
-      },
-      stopCycling(year) {
-        clearInterval(this.intervalIds[year])
-      },
-      yearClick(year) {
-        this.$emit('year-click', 'Year', year, null)
+      getAlbum(title) {
+        return this.albumsOfTheYear.filter(album => album.title === title)
       }
-    },
+      // selectYear (year) {
+      //   this.currentYear = year
+      //   this.currentView = 'albums'
+      // },
+      // selectAlbum (album) {
+      //   this.currentAlbum = album.title
+      //   this.currentView = 'album'
+      // }
+    }
   }
 </script>
 
 <style lang="scss" scoped>
-  .years {
+  .year {
     // display flex and fit all children in the space, wrapping if necessary
     display: flex;
     // flex-direction: row;
     flex-wrap: wrap;
     gap: 2rem;
     // justify-content: flex-start;
-    // align-items: center;
+    align-items: flex-start;
     // width: 100%;
     // height: 100%;
     overflow: hidden;
@@ -144,12 +143,13 @@
     .meta {
       flex: 0 1 4rem;
       display: flex;
-      // flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      // justify-content: space-between;
+      // align-items: center;
       width: 100%;
       // height: 100%;
-      padding: 1rem 2rem;
+      padding: 1.6rem 2rem;
       border-top: 1px solid var(--border-color);
       // background: blue;
     }

@@ -44,13 +44,13 @@
 </template>
 
 <script>
-  import EpActionBar from '@/components/action-bar/EpActionBar'
-  import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
-  import EpBadge from '@/components/badge/EpBadge'
-  import EpBreadcrumbStatic from '@/components/breadcrumb/EpBreadcrumbStatic'
-  import EpContainer from '@/components/container/EpContainer'
-  import EpHeader from '@/components/header/EpHeader'
-  import EpFooter from '@/components/footer/EpFooter'
+  import EpActionBar from '../../components/action-bar/EpActionBar'
+  import commonActionBarArgs from '../../components/action-bar/commonActionBarArgs'
+  import EpBadge from '../../components/badge/EpBadge'
+  import EpBreadcrumbStatic from '../../components/breadcrumb/EpBreadcrumbStatic'
+  import EpContainer from '../../components/container/EpContainer'
+  import EpHeader from '../../components/header/EpHeader'
+  import EpFooter from '../../components/footer/EpFooter'
   import Years from './views/Years'
   import Year from './views/Year'
   import Album from './views/Album'

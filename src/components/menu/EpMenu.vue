@@ -1,55 +1,61 @@
 <template>
-  <ep-container v-bind="containerProps" @mouseleave="menuLeave()">
-  <div class="ep-menu">
-    <template
-      v-for="(item, index) of menuItems"
-      :key="item.label + index.toString()"
-    >
-      <ep-divider
-        v-if="item.divider"
-        :color="dividerColor"
-        margin="1rem 0"
-      />
-      <div
-        v-if="item.section"
-        class="ep-menu__section font-size--tiny"
+  <ep-container
+    v-bind="containerProps"
+    @mouseleave="menuLeave()"
+  >
+    <div class="ep-menu">
+      <template
+        v-for="(item, index) of menuItems"
+        :key="item.label + index.toString()"
       >
-        {{ item.label }}
-      </div>
-      <div class="ep-menu__item" :data-item="index" >
-        <ep-button
-          v-if="!item.divider && !item.section"
-          kind="menu-item"
-          :label="item.label"
-          :icon-right="item.iconRight"
-          :icon-left="item.iconLeft"
-          :is-active-menu-item="menuType === 'nav' && item.label == activeItem"
-          @mouseover="itemHover(item, index)"
-          @mouseleave="itemLeave(item, index)"
-          @click="itemClick(item)"
-          v-bind="item.bind"
+        <ep-divider
+          v-if="item.divider"
+          :color="dividerColor"
+          margin="1rem 0"
         />
         <div
-          v-if="item.children"
-          v-show="activeItemIndex === index"
-          class="ep-menu__item__sub-menu"
-          @mouseleave="itemLeave(item, index)"
+          v-if="item.section"
+          class="ep-menu__section font-size--tiny"
         >
-          <ep-menu
-            :container-props="containerProps"
-            :menu-items="item.children"
-          />
+          {{ item.label }}
         </div>
-      </div>
-    </template>
-  </div>
+        <div
+          class="ep-menu__item"
+          :data-item="index"
+        >
+          <ep-button
+            v-if="!item.divider && !item.section"
+            kind="menu-item"
+            :label="item.label"
+            :icon-right="item.iconRight"
+            :icon-left="item.iconLeft"
+            :is-active-menu-item="menuType === 'nav' && item.label == activeItem"
+            @mouseover="itemHover(item, index)"
+            @mouseleave="itemLeave(item, index)"
+            @click="itemClick(item)"
+            v-bind="item.bind"
+          />
+          <div
+            v-if="item.children"
+            v-show="activeItemIndex === index"
+            class="ep-menu__item__sub-menu"
+            @mouseleave="itemLeave(item, index)"
+          >
+            <ep-menu
+              :container-props="containerProps"
+              :menu-items="item.children"
+            />
+          </div>
+        </div>
+      </template>
+    </div>
   </ep-container>
 </template>
 
 <script>
-  import EpContainer from '@/components/container/EpContainer'
-  import EpDivider from '@/components/divider/EpDivider'
-  import EpButton from '@/components/button/EpButton'
+  import EpContainer from '../container/EpContainer'
+  import EpDivider from '../divider/EpDivider'
+  import EpButton from '../button/EpButton'
 
   export default {
     name: 'EpMenu',
@@ -74,7 +80,7 @@
       },
       containerProps: {
         type: Object,
-        default: () => {}
+        default: () => { }
       },
       activeItem: {
         type: String,

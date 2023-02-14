@@ -1,5 +1,8 @@
 <template>
-  <div class="ep-dropdown-item" @click="selectItem">
+  <div
+    class="ep-dropdown-item"
+    @click="selectItem"
+  >
     <ep-button
       v-if="!item.divider"
       kind="menu-item"
@@ -7,13 +10,16 @@
       :icon-left="item.icon"
       v-bind="item.bind"
     />
-    <ep-divider v-else :key="`divider-${index}`" />
+    <ep-divider
+      v-else
+      :key="`divider-${index}`"
+    />
   </div>
 </template>
 
 <script>
-  import EpButton from '@/components/button/EpButton'
-  import EpDivider from '@/components/divider/EpDivider'
+  import EpButton from '../button/EpButton'
+  import EpDivider from '../divider/EpDivider'
 
   export default {
     name: 'EpDropdownItem',

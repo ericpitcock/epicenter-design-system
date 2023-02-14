@@ -8,9 +8,7 @@
     overflow="hidden"
   >
     <template #header>
-      <ep-header
-        height="4rem"
-      >
+      <ep-header height="4rem">
         <template #left>
           <p>Ep Design System Feedback</p>
         </template>
@@ -43,24 +41,24 @@
       </div>
     </template>
     <template #footer>
-    <ep-footer padding="0 3rem">
-      <ep-button
-        kind="primary"
-        label="Submit"
-        :disabled="!rating"
-        @click="submit"
-      />
-    </ep-footer>
+      <ep-footer padding="0 3rem">
+        <ep-button
+          kind="primary"
+          label="Submit"
+          :disabled="!rating"
+          @click="submit"
+        />
+      </ep-footer>
     </template>
   </ep-container>
 </template>
 
 <script>
-  import EpContainer from '@/components/container/EpContainer'
-  import EpButton from '@/components/button/EpButton'
-  import EpFooter from '@/components/footer/EpFooter'
-  import EpHeader from '@/components/header/EpHeader'
-  import EpIcon from '@/components/icon/EpIcon'
+  import EpContainer from '../container/EpContainer'
+  import EpButton from '../button/EpButton'
+  import EpFooter from '../footer/EpFooter'
+  import EpHeader from '../header/EpHeader'
+  import EpIcon from '../icon/EpIcon'
 
   export default {
     name: 'EpFeedbackCard',
@@ -90,7 +88,7 @@
       },
       close: {
         type: Function,
-        default: () => {}
+        default: () => { }
       },
       // submit: {
       //   type: Function,
@@ -118,7 +116,6 @@
 </script>
 
 <style lang="scss" scoped>
-
   .ep-feedback-card {
     display: flex;
     flex-direction: column;
@@ -134,46 +131,37 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
-
       &__title {
         display: flex;
         align-items: center;
-
         &__text {
           margin-left: 0.5rem;
           font-size: 1.25rem;
           font-weight: 500;
         }
       }
-
       &__close {
         cursor: pointer;
       }
     }
-
     &__body {
       display: flex;
       flex-direction: column;
       flex: 1;
       margin-bottom: 1rem;
-
       &__rating {
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
-
         &__star {
           cursor: pointer;
-
           &--active {
             color: var(--primary-color);
           }
         }
       }
-
       &__textarea {
         flex: 1;
-
         textarea {
           width: 100%;
           height: 10rem;
@@ -184,16 +172,13 @@
         }
       }
     }
-
     &__footer {
       display: flex;
       justify-content: flex-end;
     }
   }
-
   :deep(.gold svg path) {
     fill: gold;
     stroke: gold;
   }
-
 </style>

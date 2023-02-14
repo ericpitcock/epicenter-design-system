@@ -1,28 +1,34 @@
 <template>
   <!-- <div :class="['nav-container', { 'nav-container--minimized': minimized }]"> -->
-    <nav :class="['main-nav', { 'nav-container--minimized': minimized }]">
-      <template v-for="(navItem, index) in navItems" :key="index">
-        <ep-divider v-if="navItem.divider" class="main-nav__item__divider" />
-        <div
-          v-else
-          :class="[
-            'main-nav__item',
-            { 'main-nav__item--active': navItem.active }
-          ]"
-          @click="onClick(index)"
-        >
-          <ep-icon :name="navItem.icon" />
-          <div class="main-nav__item__name">{{ navItem.name }}</div>
-        </div>
-      </template>
-    </nav>
+  <nav :class="['main-nav', { 'nav-container--minimized': minimized }]">
+    <template
+      v-for="(navItem, index) in navItems"
+      :key="index"
+    >
+      <ep-divider
+        v-if="navItem.divider"
+        class="main-nav__item__divider"
+      />
+      <div
+        v-else
+        :class="[
+          'main-nav__item',
+          { 'main-nav__item--active': navItem.active }
+        ]"
+        @click="onClick(index)"
+      >
+        <ep-icon :name="navItem.icon" />
+        <div class="main-nav__item__name">{{ navItem.name }}</div>
+      </div>
+    </template>
+  </nav>
   <!-- </div> -->
 </template>
 
 <script>
-  import EpDivider from '@/components/divider/EpDivider'
-  import EpIcon from '@/components/icon/EpIcon'
-  
+  import EpDivider from '../divider/EpDivider'
+  import EpIcon from '../icon/EpIcon'
+
   export default {
     name: 'EpSidebar',
     components: {
@@ -41,7 +47,7 @@
     },
     data() {
       return {
-        
+
       }
     },
     methods: {
@@ -53,9 +59,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .nav-container {
-
-  }
+  .nav-container {}
   .main-nav {
     // let this be set by the parent element
     // position: fixed;
@@ -100,8 +104,12 @@
       }
       &--active {
         background-image: var(--nav-link-active-bg-color);
-        .main-nav__item__name { color: var(--nav-link-active-text-color) !important; }
-        .ep-icon { color: var(--nav-link-active-icon-color) !important; }
+        .main-nav__item__name {
+          color: var(--nav-link-active-text-color) !important;
+        }
+        .ep-icon {
+          color: var(--nav-link-active-icon-color) !important;
+        }
       }
       &__divider {
         align-self: center;

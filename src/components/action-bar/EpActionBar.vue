@@ -19,8 +19,8 @@
 </template>
 
 <script>
-  import EpButton from '@/components/button/EpButton'
-  import EpDropdown from '@/components/dropdown/EpDropdown'
+  import EpButton from '../button/EpButton'
+  import EpDropdown from '../dropdown/EpDropdown'
 
   export default {
     name: 'EpActionBar',

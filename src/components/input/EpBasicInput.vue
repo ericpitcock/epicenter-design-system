@@ -1,6 +1,9 @@
 <template>
   <div :class="['ep-input', classes]">
-    <div v-if="icon" class="ep-input__icon">
+    <div
+      v-if="icon"
+      class="ep-input__icon"
+    >
       <ep-icon v-bind="icon" />
     </div>
     <input
@@ -23,14 +26,17 @@
       ]"
       @click="onClear"
     >
-      <ep-icon v-show="currentValue" name="close" />
+      <ep-icon
+        v-show="currentValue"
+        name="close"
+      />
     </div>
   </div>
 </template>
 
 <script>
-  import EpIcon from '@/components/icon/EpIcon'
-  
+  import EpIcon from '../icon/EpIcon'
+
   export default {
     name: 'EpBasicInput',
     components: {
@@ -58,7 +64,7 @@
       },
       icon: {
         type: Object,
-        default: () => {}
+        default: () => { }
       },
       clearable: {
         type: Boolean,

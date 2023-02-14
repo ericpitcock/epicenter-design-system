@@ -17,9 +17,9 @@
 </template>
 
 <script>
-  import EpAutocomplete from '@/components/autocomplete/EpAutocomplete'
-  import EpMap from '@/components/map/EpMap'
-  import airports from './airports'
+  import EpAutocomplete from '../../components/autocomplete/EpAutocomplete'
+  import EpMap from '../../components/map/EpMap'
+  import airports from '../../data/airports'
 
   export default {
     name: 'AirportSearch',

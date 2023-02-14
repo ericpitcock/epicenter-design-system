@@ -1,12 +1,6 @@
-// import airports from './airports'
-import { padded } from '@/helpers/decorators'
-import EpActionBar from '@/components/action-bar/EpActionBar'
-import AirportSearch from './AirportSearch.vue'
+import { padded } from '../../helpers/decorators'
+import airports from '../../data/airports'
 import EpAutocomplete from './EpAutocomplete.vue'
-import EpContainer from '@/components/container/EpContainer'
-import EpHeader from '@/components/header/EpHeader'
-import EpFooter from '@/components/footer/EpFooter'
-import E from '@/components/logo/E'
 
 export default {
   title: 'Components/Autocomplete',
@@ -54,57 +48,20 @@ export default {
   }
 }
 
-// const formatAirport = item => `${item.name} (${item.iata_code})`
-
 const Template = args => ({
   components: {
-    EpAutocomplete,
-    EpActionBar,
-    AirportSearch,
-    EpContainer,
-    EpHeader,
-    EpFooter,
-    E
+    EpAutocomplete
   },
   setup() {
     return { args }
   },
-  mounted() {
-    // focus input on mount
-  },
-  template: `
-    <ep-container
-      useHeader
-      useFooter
-      max-width="120rem"
-      height="100%"
-      calculate-height
-      :calculate-height-offset="30"
-      overflow="hidden"
-    >
-      <template #header>
-      <ep-header>
-        <template #left>
-          <p>Airport Search</p>
-        </template>
-        <template #right>
-        </template>
-      </ep-header>
-      </template>
-      <template #default>
-        <airport-search />
-      </template>
-      <template #footer>
-        <ep-footer />
-      </template>
-    </ep-container>
-  `
+  template: '<ep-autocomplete v-bind="args" />'
 })
 
 export const Autocomplete = Template.bind({})
 
 Autocomplete.args = {
-  items: [],
+  items: airports,
   searchableKeys: ['name', 'city', 'iata_code'],
   placeholder: 'Search',
   queryType: 'contains'

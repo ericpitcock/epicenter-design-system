@@ -3,8 +3,12 @@
     <div class="ep-notification__color-strip"></div>
     <div class="ep-notification__body">
       <div class="ep-notification__body__message">
-        <p class="ep-notification__body__message__text font-size--small">{{ message }}</p>
-        <p class="ep-notification__body__message__timestamp">{{ relativeTime(timestamp) }}</p>
+        <p class="ep-notification__body__message__text font-size--small">{{
+          message
+        }}</p>
+        <p class="ep-notification__body__message__timestamp">{{
+          relativeTime(timestamp)
+        }}</p>
       </div>
       <div class="dismiss-button">
         <ep-button
@@ -19,7 +23,7 @@
 </template>
 
 <script>
-  import EpButton from '@/components/button/EpButton'
+  import EpButton from '../button/EpButton'
 
   export default {
     name: 'EpNotification',
@@ -65,10 +69,10 @@
       relativeTime(ms) {
         // in miliseconds
         var units = {
-          year  : 24 * 60 * 60 * 1000 * 365,
-          month : 24 * 60 * 60 * 1000 * 365/12,
-          day   : 24 * 60 * 60 * 1000,
-          hour  : 60 * 60 * 1000,
+          year: 24 * 60 * 60 * 1000 * 365,
+          month: 24 * 60 * 60 * 1000 * 365 / 12,
+          day: 24 * 60 * 60 * 1000,
+          hour: 60 * 60 * 1000,
           minute: 60 * 1000,
           second: 1000
         }
@@ -79,9 +83,9 @@
           var elapsed = d1 - d2
 
           // "Math.abs" accounts for both "past" & "future" scenarios
-          for (var u in units) 
-            if (Math.abs(elapsed) > units[u] || u == 'second') 
-              return rtf.format(Math.round(elapsed/units[u]), u)
+          for (var u in units)
+            if (Math.abs(elapsed) > units[u] || u == 'second')
+              return rtf.format(Math.round(elapsed / units[u]), u)
         }
         const date = new Date(ms)
         return getRelativeTime(date)
@@ -124,8 +128,7 @@
           color: var(--text-color--subtle);
         }
       }
-      .dismiss-button {
-      }
+      .dismiss-button {}
     }
   }
   .notification-enter-active, .notification-leave-active {

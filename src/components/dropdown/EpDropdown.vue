@@ -1,7 +1,13 @@
 <template>
-  <div class="ep-dropdown" v-click-outside="closeDropdown">
+  <div
+    class="ep-dropdown"
+    v-click-outside="closeDropdown"
+  >
     <div @click="toggleDropdown">
-      <slot v-if="hasTrigger" name="trigger" />
+      <slot
+        v-if="hasTrigger"
+        name="trigger"
+      />
       <ep-button v-bind="buttonProps" />
     </div>
     <div
@@ -9,7 +15,10 @@
       :class="classes"
     >
       <div class="ep-dropdown__content">
-        <slot v-if="hasContent" name="content" />
+        <slot
+          v-if="hasContent"
+          name="content"
+        />
         <ep-menu
           v-else
           :menuItems="menuItems"
@@ -24,8 +33,8 @@
 
 <script>
   import clickOutside from '@/directives/clickOutside'
-  import EpButton from '@/components/button/EpButton'
-  import EpMenu from '@/components/menu/EpMenu'
+  import EpButton from '../button/EpButton'
+  import EpMenu from '../menu/EpMenu'
 
   export default {
     name: 'EpDropdown',

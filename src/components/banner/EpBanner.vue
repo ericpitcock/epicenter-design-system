@@ -2,14 +2,24 @@
   <div class="ep-banner">
     <div class="ep-banner__color-strip"></div>
     <div class="ep-banner__body">
-      <div v-if="iconProps.name" class="ep-banner__body__icon">
+      <div
+        v-if="iconProps.name"
+        class="ep-banner__body__icon"
+      >
         <ep-icon v-bind="iconProps" />
       </div>
       <div class="ep-banner__body__message">
-        <p class="ep-banner__body__message__text font-size--small">{{ message }}</p>
-        <p v-if="subtext" class="ep-banner__body__message__subtext">{{ subtext }}</p>
+        <p class="ep-banner__body__message__text font-size--small">{{ message }}
+        </p>
+        <p
+          v-if="subtext"
+          class="ep-banner__body__message__subtext"
+        >{{ subtext }}</p>
       </div>
-      <div v-if="dissmissable" class="dismiss-button">
+      <div
+        v-if="dissmissable"
+        class="dismiss-button"
+      >
         <ep-button
           @click="dismissNotification"
           class="dismiss-button"
@@ -22,8 +32,8 @@
 </template>
 
 <script>
-  import EpButton from '@/components/button/EpButton'
-  import EpIcon from '@/components/icon/EpIcon'
+  import EpButton from '../button/EpButton'
+  import EpIcon from '../icon/EpIcon'
 
   export default {
     name: 'EpBanner',
