@@ -9,20 +9,32 @@
       overflow="hidden"
     >
       <template #header>
-      <ep-header>
-        <template #left>
-          <ep-badge label="Work in progress" borderColor="var(--bg-color--alert-high)" />
-          <ep-breadcrumb-static :crumbs="breadcrumbs" @crumb-click="crumbClick" />
-        </template>
-        <template #right>
-          <ep-action-bar v-bind="commonActionBarArgs" />
-        </template>
-      </ep-header>
+        <ep-header>
+          <template #left>
+            <ep-breadcrumb-static
+              :crumbs="breadcrumbs"
+              @crumb-click="crumbClick"
+            />
+          </template>
+          <template #right>
+            <ep-action-bar v-bind="commonActionBarArgs" />
+          </template>
+        </ep-header>
       </template>
       <template #default>
-        <Years v-if="currentView === 'Years'" @year-click="updateView" />
-        <Year v-else-if="currentView === 'Year'" :year="currentYear" @album-click="updateView" />
-        <Album v-else-if="currentView === 'Album'" :album="currentAlbum" />
+        <Years
+          v-if="currentView === 'Years'"
+          @year-click="updateView"
+        />
+        <Year
+          v-if="currentView === 'Year'"
+          :year="currentYear"
+          @album-click="updateView"
+        />
+        <Album
+          v-if="currentView === 'Album'"
+          :album="currentAlbum"
+        />
       </template>
       <template #footer>
         <ep-footer />
@@ -42,7 +54,7 @@
   import Years from './views/Years'
   import Year from './views/Year'
   import Album from './views/Album'
-  
+
   import * as albumsOfTheYear from './aoty.json'
 
   export default {
@@ -72,7 +84,7 @@
     //     default: 'Years'
     //   }
     // },
-    data () {
+    data() {
       return {
         albumsOfTheYear: albumsOfTheYear.default,
         commonActionBarArgs,
@@ -82,23 +94,21 @@
       }
     },
     methods: {
-      crumbClick(crumb) {
-        console.log(crumb)
-        // if (crumb === 'Years') {
-        //   this.currentView = 'Years'
-        //   this.currentYear = ''
-        //   this.currentAlbum = ''
-        // } else if (crumb === 'Year') {
-        //   this.currentView = 'Year'
-        //   this.currentAlbum = ''
-        // } else if (crumb === 'Album') {
-        //   this.currentView = 'Album'
-        // }
+      crumbClick(item) {
+        console.log(item.text)
+        if (item.text === 'Albums of the Year') {
+          this.updateView('Years', null, null)
+        } else if (item.text === this.currentYear) {
+          this.updateView('Year', this.currentYear, null)
+        } else if (item.text === this.currentAlbum.title) {
+          this.updateView('Album', this.currentYear, this.currentAlbum)
+        }
       },
       updateView(view, year, album) {
-        this.currentView = view
-        this.currentYear = year
-        this.currentAlbum = album
+        console.log(view, year, album)
+        this.currentView = view ? view : this.currentView
+        this.currentYear = year ? year : this.currentYear
+        this.currentAlbum = album ? album : this.currentAlbum
       }
     },
     computed: {
@@ -119,14 +129,14 @@
             // command: () => crumbClick('Year')
           },
           {
-            text: this.currentAlbum,
+            text: this.currentAlbum.title,
             // command: () => crumbClick('Album')
           }
         ]
 
-        if (!this.currentYear) return [routes[0]]
-        if (!this.currentAlbum) return [routes[0], routes[1]]
-        return [routes[0], routes[1], routes[2]]
+        if (this.currentView === 'Years') return [routes[0]]
+        if (this.currentView === 'Year') return [routes[0], routes[1]]
+        if (this.currentView === 'Album') return [routes[0], routes[1], routes[2]]
       },
       // filterAlbumsByYear() {
       //   return this.albumsOfTheYear.filter(album => {
@@ -148,8 +158,8 @@
       //   })
       // },
       // getYears() {
-        // get unique years in the albumsOfTheYear array
-        // return [...new Set(this.albumsOfTheYear.map(album => album.year))]
+      // get unique years in the albumsOfTheYear array
+      // return [...new Set(this.albumsOfTheYear.map(album => album.year))]
       // }
     }
   }

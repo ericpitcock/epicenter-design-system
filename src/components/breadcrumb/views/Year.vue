@@ -5,8 +5,11 @@
       v-for="album in getAlbumsByYear"
       class="album"
     >
-      <a class="text--link" @click="albumClick(album)">
-       {{ album.artist }} - {{ album.title }}
+      <a
+        class="text--link"
+        @click="albumClick(album)"
+      >
+        {{ album.artist }} - {{ album.title }}
       </a>
     </div>
   </div>
@@ -31,7 +34,7 @@
       //   default: ''
       // }
     },
-    data () {
+    data() {
       return {
         albumsOfTheYear: albumsOfTheYear.default,
         // currentView: this.view,
@@ -43,7 +46,7 @@
       // getYears () {
       //   return this.albumsOfTheYear.map(album => album.year)
       // },
-      getAlbumsByYear () {
+      getAlbumsByYear() {
         return this.albumsOfTheYear.filter(album => album.year === this.year)
       },
       // getAlbum(title) {
@@ -51,7 +54,7 @@
       // }
     },
     methods: {
-      albumClick (album) {
+      albumClick(album) {
         this.$emit('album-click', 'Album', null, album)
       },
       getAlbum(title) {
