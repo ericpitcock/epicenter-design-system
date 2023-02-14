@@ -7,8 +7,15 @@
       style="flex: 0 1 200px; display: flex; flex-direction: column;"
     >
       <!-- can convert a to div -->
-      <a class="link-wrapper" @click="yearClick(year)">
-        <div class="covers" @mouseover="startCycling(getAlbumCovers(year).length, year)" @mouseout="stopCycling(year)">
+      <a
+        class="link-wrapper"
+        @click="yearClick(year)"
+      >
+        <div
+          class="covers"
+          @mouseover="startCycling(getAlbumCovers(year).length, year)"
+          @mouseout="stopCycling(year)"
+        >
           <img
             v-for="(cover, index) in getAlbumCovers(year)"
             :key="index"
@@ -19,7 +26,9 @@
         </div>
         <div class="meta">
           <p>{{ year }}</p>
-          <p class="text--subtle font-size--tiny">{{ getAlbumCovers(year).length }} albums</p>
+          <p class="text--subtle font-size--tiny">{{
+            getAlbumCovers(year).length
+          }} albums</p>
         </div>
       </a>
     </ep-container>
@@ -27,64 +36,64 @@
 </template>
 
 <script>
-import * as albumsOfTheYear from '../aoty.json'
-import EpContainer from '@/components/container/EpContainer'
+  import * as albumsOfTheYear from '../aoty.json'
+  import EpContainer from '@/components/container/EpContainer'
 
-export default {
-  name: 'Years',
-  components: {
-    EpContainer
-  },
-  data () {
-    return {
-      albumsOfTheYear: albumsOfTheYear.default,
-      containerProps: {
-        backgroundColor: 'var(--background-1)',
-        borderRadius: 'var(--border-radius)',
-        overflow: 'hidden',
+  export default {
+    name: 'Years',
+    components: {
+      EpContainer
+    },
+    data() {
+      return {
+        albumsOfTheYear: albumsOfTheYear.default,
+        containerProps: {
+          backgroundColor: 'var(--background-1)',
+          borderRadius: 'var(--border-radius)',
+          overflow: 'hidden',
+        },
+        currentIndices: {
+          2022: 10,
+          2021: 4,
+          2020: 1,
+          2019: 10,
+          2018: 8,
+          2017: 5,
+          2016: 8,
+          2015: 5,
+          2014: 2,
+        },
+        intervalIds: {}
+      }
+    },
+    computed: {
+      getYears() {
+        // get unique years in the albumsOfTheYear array
+        return [...new Set(this.albumsOfTheYear.map(album => album.year))]
+      }
+    },
+    methods: {
+      getAlbumCovers(year) {
+        const albums = this.albumsOfTheYear.filter(album => album.year === year)
+        return albums.map(album => album.cover)
       },
-      currentIndices: {
-        2022: 10,
-        2021: 4,
-        2020: 1,
-        2019: 10,
-        2018: 8,
-        2017: 5,
-        2016: 8,
-        2015: 5,
-        2014: 2,
+      startCycling(length, year) {
+        // cycle through all the covers, when the end is reached, start over
+        this.intervalIds[year] = setInterval(() => {
+          this.currentIndices[year] = this.currentIndices[year] + 1
+          if (this.currentIndices[year] >= length) {
+            this.currentIndices[year] = 0
+          }
+        }, 350)
       },
-      intervalIds: {}
-    }
-  },
-  computed: {
-    getYears() {
-      // get unique years in the albumsOfTheYear array
-      return [...new Set(this.albumsOfTheYear.map(album => album.year))]
-    }
-  },
-  methods: {
-    getAlbumCovers(year) {
-      const albums = this.albumsOfTheYear.filter(album => album.year === year)
-      return albums.map(album => album.cover)
+      stopCycling(year) {
+        clearInterval(this.intervalIds[year])
+      },
+      yearClick(year) {
+        this.$emit('year-click', 'Year', year, null)
+      }
     },
-    startCycling(length, year) {
-      // cycle through all the covers, when the end is reached, start over
-      this.intervalIds[year] = setInterval(() => {
-        this.currentIndices[year] = this.currentIndices[year] + 1;
-        if (this.currentIndices[year] >= length) {
-          this.currentIndices[year] = 0;
-        }
-      }, 350);
-    },
-    stopCycling(year) {
-      clearInterval(this.intervalIds[year]);
-    },
-    yearClick(year) {
-      this.$emit('year-click', 'Year', year, null)
-    }
-  },
-}
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -120,7 +129,6 @@ export default {
       // // width: 100%;
       // // height: 100%;
       // overflow: hidden;
-      background: red;
       img {
         // position: absolute;
         // top: 0;

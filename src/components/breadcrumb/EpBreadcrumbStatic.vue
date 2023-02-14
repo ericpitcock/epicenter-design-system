@@ -11,7 +11,7 @@
             class="divider"
           >/</span>
           <span
-            class="text--link"
+            :class="crumbClass(index)"
             @click="itemClick(item)"
           >{{ item.text }}</span>
         </li>
@@ -30,6 +30,9 @@
       }
     },
     methods: {
+      crumbClass(index) {
+        return index < this.crumbs.length - 1 ? 'text--link' : ''
+      },
       itemClick(item) {
         this.$emit('crumb-click', item)
         // if (item.command) {
