@@ -103,7 +103,7 @@
     flex-wrap: wrap;
     gap: 2rem;
     // justify-content: flex-start;
-    // align-items: center;
+    align-items: flex-start;
     // width: 100%;
     // height: 100%;
     overflow: hidden;
@@ -149,7 +149,7 @@
       // align-items: center;
       width: 100%;
       // height: 100%;
-      padding: 1rem 2rem;
+      padding: 1.6rem 2rem;
       border-top: 1px solid var(--border-color);
       // background: blue;
     }
