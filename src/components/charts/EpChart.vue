@@ -18,7 +18,7 @@
       return {
         chart: null,
         chartDefaults: {
-          chart:{
+          chart: {
             styledMode: true,
           },
           credits: {
@@ -58,8 +58,7 @@
 </script>
 
 <style lang="scss">
-  $colors: (
-    var(--chart-sequence-00),
+  $colors: (var(--chart-sequence-00),
     var(--chart-sequence-01),
     var(--chart-sequence-02),
     var(--chart-sequence-03),
@@ -72,27 +71,20 @@
     var(--chart-sequence-10),
     var(--chart-sequence-11),
     var(--chart-sequence-12),
-    var(--chart-sequence-13)
-  );
-  
+    var(--chart-sequence-13));
   $background-color: var(--background-2);
-  
   // .highcharts-grid-line
   $neutral-color-10: var(--border-color);
   // .highcharts-axis-line
   $highlight-color-20: var(--border-color);
-
   $tooltip-background: var(--background-2);
   // $tooltip-border: var(--border-color--lighter);
-
   $font-family: 'Inter var', sans-serif;
   $title-font-size: var(--font-size--default);
   $subtitle-font-size: var(--font-size--default);
   $legend-font-size: var(--font-size--default);
   $axis-labels-font-size: var(--font-size--default);
-
-  @import '../../../node_modules/highcharts/css/highcharts.scss';
-
+  @import 'highcharts/css/highcharts.scss';
   .highcharts-container {
     font-family: $font-family;
     font-size: var(--font-size--default);
@@ -113,5 +105,4 @@
       // need to figure out how to style this with props
     }
   }
-  
 </style>

@@ -14,7 +14,10 @@
       @focus="onFocus"
       @blur="onBlur"
     />
-    <div class="ep-autocomplete__dropdown" v-show="showDropdown">
+    <div
+      class="ep-autocomplete__dropdown"
+      v-show="showDropdown"
+    >
       <div
         class="ep-autocomplete__dropdown__item"
         v-for="(item, index) in filteredItems"
@@ -37,7 +40,7 @@
     props: {
       inputStyle: {
         type: Object,
-        default: () => {}
+        default: () => { }
       },
       items: {
         type: Array,
@@ -68,17 +71,17 @@
         // filter items by search query using the searchableKeys if they are provided
         return this.searchableKeys.length
           ? this.items.filter(item => {
-              const search = this.search.toLowerCase()
-              return this.searchableKeys.some(field => {
-                const itemField = item[field].toLowerCase()
-                return this.queryType === 'contains' ? itemField.includes(search) : itemField.startsWith(search)
-              })
+            const search = this.search.toLowerCase()
+            return this.searchableKeys.some(field => {
+              const itemField = item[field].toLowerCase()
+              return this.queryType === 'contains' ? itemField.includes(search) : itemField.startsWith(search)
             })
+          })
           : this.items.filter(item => {
-              const itemName = item.name.toLowerCase()
-              const search = this.search.toLowerCase()
-              return this.queryType === 'contains' ? itemName.includes(search) : itemName.startsWith(search)
-            })
+            const itemName = item.name.toLowerCase()
+            const search = this.search.toLowerCase()
+            return this.queryType === 'contains' ? itemName.includes(search) : itemName.startsWith(search)
+          })
       }
     },
     methods: {
@@ -158,7 +161,7 @@
       border-radius: var(--border-radius);
       outline: none;
       font-size: var(--font-size--body);
-      background-image: url('/airplane.svg');
+      background-image: url('../../../static/airplane.svg');
       background-repeat: no-repeat;
       background-position: 14px 50%;
       &:focus {

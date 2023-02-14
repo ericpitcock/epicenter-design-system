@@ -2,7 +2,7 @@
 you can use the require.context function in Webpack. Here's an example of how to use it:
 */
 
-const files = require.context('./components', true, /\.vue$/i)
+const files = require.context('./src/components', true, /\.vue$/i)
 const components = {}
 
 files.keys().forEach(key => {

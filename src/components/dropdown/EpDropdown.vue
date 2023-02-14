@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import clickOutside from '@/directives/clickOutside'
+  import clickOutside from '../../directives/clickOutside'
   import EpButton from '../button/EpButton'
   import EpMenu from '../menu/EpMenu'
 

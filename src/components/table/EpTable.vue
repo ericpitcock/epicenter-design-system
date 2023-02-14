@@ -55,7 +55,7 @@
 
 <script>
   import { defineAsyncComponent } from 'vue'
-  import EpIcon from '@/components/icon/EpIcon'
+  import EpIcon from '../icon/EpIcon'
 
   export default {
     name: 'EpTable',
@@ -68,8 +68,8 @@
     },
     components: {
       // dynamic components
-      EpBadge: defineAsyncComponent(() => import('@/components/badge/EpBadge')),
-      EpSparkBar: defineAsyncComponent(() => import('@/components/spark-bar/EpSparkBar')),
+      EpBadge: defineAsyncComponent(() => import('../badge/EpBadge')),
+      EpSparkBar: defineAsyncComponent(() => import('../spark-bar/EpSparkBar')),
       EpIcon,
     },
     props: {

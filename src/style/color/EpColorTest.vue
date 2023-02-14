@@ -1,6 +1,9 @@
 <template>
   <div class="color-test">
-    <div class="color-chip" :style="`background-color: ${primaryColor};`"></div>
+    <div
+      class="color-chip"
+      :style="`background-color: ${primaryColor};`"
+    ></div>
     <ep-button
       label="Button"
       kind="primary"
@@ -17,12 +20,16 @@
       :borderColor="primaryColor"
     />
     <div class="copy-block">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod
-      <a :style="{ color: primaryColor }" href="#">ligula in lacus.</a> Nulla facilisi. In hac habitasse platea dictumst.
-      Aliquam eu nunc. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti
-      sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-    </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod
+        <a
+          :style="{ color: primaryColor }"
+          href="#"
+        >ligula in lacus.</a> Nulla facilisi. In hac habitasse platea dictumst.
+        Aliquam eu nunc. Nullam ut libero. Integer dignissim consequat lectus.
+        Class aptent taciti
+        sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+      </p>
     </div>
 
 
@@ -34,8 +41,8 @@
 </template>
 
 <script>
-  import EpBadge from '@/components/badge/EpBadge'
-  import EpButton from '@/components/button/EpButton'
+  import EpBadge from '../../components/badge/EpBadge'
+  import EpButton from '../../components/button/EpButton'
 
   export default {
     name: 'EpColorTest',

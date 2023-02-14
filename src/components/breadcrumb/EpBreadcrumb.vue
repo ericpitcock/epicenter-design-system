@@ -72,9 +72,6 @@
         //   item.command(item)
         // }
       }
-    },
-    mounted() {
-      console.log(this.type)
     }
   }
 </script>

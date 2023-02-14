@@ -4,7 +4,10 @@
       <div class="main-nav__item main-nav__item--logo">
         <acme-logo :type="logoType" />
       </div>
-      <template v-for="(navItem, index) in navItems" :key="index">
+      <template
+        v-for="(navItem, index) in navItems"
+        :key="index"
+      >
         <router-link
           :to="navItem.path"
           class="main-nav__item"
@@ -12,7 +15,11 @@
           <ep-icon :name="navItem.icon" />
           <div class="main-nav__item__name">{{ navItem.name }}</div>
         </router-link>
-        <div v-if="index === 2" class="main-nav__item__divider" :key="`divider${index}`"></div>
+        <div
+          v-if="index === 2"
+          class="main-nav__item__divider"
+          :key="`divider${index}`"
+        ></div>
       </template>
     </nav>
   </div>
@@ -21,9 +28,9 @@
 <script>
   // import { mapState } from 'vuex'
 
-  import EpIcon from '@/components/icon/EpIcon'
+  import EpIcon from '../../components/icon/EpIcon'
   import AcmeLogo from './AcmeLogo'
-  
+
   export default {
     name: 'Navigation',
     components: {
@@ -145,8 +152,12 @@
       }
       &.router-link-exact-active {
         background-image: var(--nav-link-active-bg-color);
-        .main-nav__item__name { color: var(--nav-link-active-text-color) !important; }
-        .ep-icon { color: var(--nav-link-active-icon-color) !important; }
+        .main-nav__item__name {
+          color: var(--nav-link-active-text-color) !important;
+        }
+        .ep-icon {
+          color: var(--nav-link-active-icon-color) !important;
+        }
       }
       &__divider {
         align-self: center;
