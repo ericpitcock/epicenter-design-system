@@ -1,5 +1,8 @@
 <template>
-  <span class="ep-icon" />
+  <span
+    class="ep-icon"
+    v-html="svgContent"
+  />
 </template>
 
 <script>
@@ -7,6 +10,7 @@
     name: 'EpIcon',
     data() {
       return {
+        svgContent: '',
         weights: {
           'extra-light': 0.5,
           'light': 1,
@@ -31,10 +35,6 @@
       size: {
         type: Number,
         default: 20
-      },
-      type: {
-        type: String,
-        default: 'span'
       }
     },
     mounted() {
@@ -43,9 +43,9 @@
     methods: {
       async loadIcon(name) {
         try {
-          const icon = await import(`./icons/${name}.svg`)
-          const svg = icon.default
-          this.$el.innerHTML = svg
+          const response = await fetch(`./icons/${name}.svg`)
+          const svg = await response.text()
+          this.svgContent = svg
             .replace(/stroke=\S+/g, `stroke="${this.color}"`)
             .replace(/stroke-width=\S+/g, `stroke-width="${this.weights[this.weight]}"`)
             .replace(/[^-]width=\S+/g, `width="${this.size}"`)
