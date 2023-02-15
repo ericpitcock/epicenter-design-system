@@ -1,4 +1,3 @@
-<!-- vue 3 options api select input component -->
 <template>
   <div :class="['ep-select', classes]">
     <div class="ep-select__inner">
@@ -9,7 +8,6 @@
         <ep-icon v-bind="iconLeft" />
       </div>
       <label
-        v-if="!selected"
         :for="id"
         class="ep-select__inner__label"
       >{{ label }}</label>
@@ -19,7 +17,7 @@
     </div>
     <select
       :id="id"
-      class="ep-select__input"
+      :class="['ep-select__input', selectClasses]"
       v-model="selected"
       @change="onChange"
     >
@@ -55,7 +53,8 @@
         required: true,
       },
       label: {
-        type: String
+        type: String,
+        required: true,
       },
       options: {
         type: Array,
@@ -77,7 +76,13 @@
     computed: {
       classes() {
         return {
-          'ep-select--has-icon': this.iconLeft
+          'ep-select--has-icon': this.iconLeft,
+          'ep-select--has-value': this.selected,
+        }
+      },
+      selectClasses() {
+        return {
+          'select--has-icon': this.iconLeft
         }
       }
     }
@@ -96,6 +101,7 @@
     &__inner {
       position: absolute;
       display: flex;
+      justify-content: flex-end;
       width: 100%;
       height: 100%;
       pointer-events: none;
@@ -118,6 +124,9 @@
         line-height: 1.1;
         // pointer-events: none;
         // background: blue;
+        .ep-select--has-value & {
+          visibility: hidden;
+        }
         .ep-select--has-icon & {
           padding-left: 0;
         }
@@ -127,9 +136,8 @@
       padding: 1.25rem 1.2rem;
       border: 1px solid var(--border-color);
       border-radius: var(--border-radius);
-      // font-size: var(--font-size--tiny);
-      &:focus {
-        outline: none;
+      &.select--has-icon {
+        padding-left: 4rem;
       }
     }
   }
