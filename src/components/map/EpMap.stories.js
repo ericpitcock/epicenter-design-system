@@ -70,11 +70,12 @@ export default {
       }
     },
     mapStyle: {
-      name: 'Map Style',
-      control: {
-        type: 'radio',
-        options: mapStyles(store)
-      }
+      table: { disable: true }
+      // name: 'Map Style',
+      // control: {
+      //   type: 'radio',
+      //   options: mapStyles(store)
+      // }
     },
     mapSource: {
       table: { disable: true }

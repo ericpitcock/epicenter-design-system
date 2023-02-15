@@ -1,5 +1,5 @@
 import { centered } from '@/helpers/decorators'
-import EpEmptyState from './EpEmptyState.vue';
+import EpEmptyState from './EpEmptyState.vue'
 
 export default {
   title: 'Components/Empty State',
@@ -48,7 +48,7 @@ EmptyState.args = {
   direction: 'column',
   image: {
     src: '/happy-dog.png',
-    alt: 'Placeholder image'
+    alt: 'A happy dog'
   },
   message: 'You finished all your tasks!',
   subtext: 'More tasks will appear here soon',
