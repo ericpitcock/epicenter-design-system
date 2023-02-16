@@ -19,6 +19,8 @@
       :id="id"
       :class="['ep-select__input', selectClasses]"
       v-model="selected"
+      @focus="onFocus"
+      @blur="hasFocus = false"
       @change="onChange"
     >
       <option
@@ -64,18 +66,25 @@
     },
     data() {
       return {
+        hasFocus: false,
         selected: '',
       }
     },
     methods: {
       onChange() {
+        this.hasFocus = false
         this.$emit('input', this.selected)
         console.log(this.selected)
+      },
+      onFocus() {
+        this.hasFocus = true
+        this.$emit('focus')
       }
     },
     computed: {
       classes() {
         return {
+          'ep-select--has-focus': this.hasFocus,
           'ep-select--has-icon': this.iconLeft,
           'ep-select--has-value': this.selected,
         }
@@ -97,7 +106,12 @@
     // font-size: var(--font-size--small);
     line-height: 1;
     background: var(--background-2);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
     cursor: pointer;
+    &--has-focus {
+      border-color: var(--color--primary);
+    }
     &__inner {
       position: absolute;
       display: flex;
@@ -120,8 +134,11 @@
         // width: 100%;
         // height: 100%;
         flex: 1;
-        padding: 1.3rem 1.2rem;
-        line-height: 1.1;
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        padding: 1.2rem;
+        // line-height: 1.1;
         // pointer-events: none;
         // background: blue;
         .ep-select--has-value & {
@@ -134,8 +151,9 @@
     }
     select {
       padding: 1.25rem 1.2rem;
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
+      &:focus {
+        outline: none;
+      }
       &.select--has-icon {
         padding-left: 4rem;
       }

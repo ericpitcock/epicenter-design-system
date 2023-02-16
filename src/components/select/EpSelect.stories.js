@@ -49,7 +49,6 @@ const Template = args => ({
 export const Select = Template.bind({})
 
 Select.args = {
-  iconLeft: { name: 'circle' },
   id: 'select',
   label: 'Placeholder',
   options: [
