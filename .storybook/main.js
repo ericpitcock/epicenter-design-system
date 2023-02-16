@@ -1,8 +1,8 @@
 const path = require('path')
-const rootPath = path.resolve(__dirname, '../../packages/epicenter-design-system/src')
+const rootPath = path.resolve(__dirname, '../packages/epicenter-design-system/src')
 
 module.exports = {
-  stories: ['../stories/**/*.stories.js'],
+  stories: ['../storybook/stories/**/*.stories.js'],
   addons: [
     {
       name: '@storybook/addon-essentials',
@@ -14,7 +14,7 @@ module.exports = {
       }
     }
   ],
-  staticDirs: ['../../static'],
+  staticDirs: ['../static'],
   webpackFinal: async (config, { configType }) => {
     // Add SCSS support
     config.module.rules.push({

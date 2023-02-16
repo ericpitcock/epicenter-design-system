@@ -1,11 +1,11 @@
 import { app } from '@storybook/vue3'
-import store from '../store'
+import store from '../storybook/store'
 
 app.use(store)
 
 // global styles
-import '!style-loader!css-loader!sass-loader!../../packages/epicenter-design-system/src/assets/scss/global.scss'
-import '!style-loader!css-loader!sass-loader!../storybook.scss'
+import '!style-loader!css-loader!sass-loader!../packages/epicenter-design-system/src/assets/scss/global.scss'
+import '!style-loader!css-loader!sass-loader!../storybook/storybook.scss'
 
 export const parameters = {
   layout: 'centered',
