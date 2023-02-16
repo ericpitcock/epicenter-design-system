@@ -5,7 +5,7 @@ import EpFooter from '@/components/footer/EpFooter'
 import EpHeader from '@/components/header/EpHeader'
 import EpMap from '@/components/map/EpMap'
 import { padded } from '@/helpers/decorators'
-import store from '@/store'
+import store from '../../store'
 
 const mapStyles = (store) => {
   if (store.state.theme === 'light') {

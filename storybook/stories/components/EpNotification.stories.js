@@ -9,7 +9,7 @@ import EpFooter from '@/components/footer/EpFooter'
 import EpHeader from '@/components/header/EpHeader'
 import EpNotifications from '@/components/notification/EpNotifications'
 import EpTempNotification from '@/components/notification/EpTempNotification'
-import store from '@/store'
+import store from '../../store'
 
 export default {
   title: 'Components/Notifications',

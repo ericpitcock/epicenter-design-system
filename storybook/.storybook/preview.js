@@ -1,5 +1,5 @@
 import { app } from '@storybook/vue3'
-import store from '../../packages/epicenter-design-system/src/store'
+import store from '../store'
 
 app.use(store)
 
