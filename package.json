@@ -2,6 +2,9 @@
   "name": "ep-design-system",
   "version": "1.0.2",
   "description": "Epicenter Design System",
+  "scripts": {
+    "build-storybook": "vue-cli-service build-storybook -c storybook/.storybook -o storybook/storybook-static"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ericpitcock/ep-design-system.git"
@@ -9,5 +12,7 @@
   "author": "Eric Pitcock",
   "license": "ISC",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@vue/cli-service": "~4.5.0"
+  }
 }
