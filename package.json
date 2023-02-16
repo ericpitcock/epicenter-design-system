@@ -3,7 +3,8 @@
   "version": "1.0.2",
   "description": "Epicenter Design System",
   "scripts": {
-    "build-storybook": "vue-cli-service build-storybook -c storybook/.storybook -o storybook/storybook-static"
+    "storybook": "start-storybook -p 6006 --no-version-updates",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -11,8 +12,35 @@
   },
   "author": "Eric Pitcock",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "flatpickr": "^4.6.13",
+    "highcharts": "^8.1.2",
+    "raw-loader": "^4.0.2",
+    "mapbox-gl": "^1.10.1",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0"
+  },
   "devDependencies": {
-    "@vue/cli-service": "~4.5.0"
+    "@babel/core": "^7.16.0",
+    "@storybook/addon-essentials": "6.4.9",
+    "@storybook/vue3": "6.4.9",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "babel-loader": "^8.2.3",
+    "babel-preset-vue": "^2.0.2",
+    "css-loader": "^3.6.0",
+    "dart-sass": "^1.25.0",
+    "faker": "^5.5.3",
+    "jsonc-parser": "^3.0.0",
+    "raw-loader": "^4.0.2",
+    "sass": "^1.44.0",
+    "sass-loader": "^8.0.2",
+    "storybook-vue3-router": "^2.3.1",
+    "style-loader": "^1.2.1"
   }
 }
