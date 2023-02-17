@@ -1,17 +1,15 @@
 .sb-show-main {
+  overflow-y: scroll;
   -ms-overflow-style: none; // Internet Explorer, Edge
   scrollbar-width: none; // Firefox
-  overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none; // Chrome, Safari, Opera
   }
 }
-
 #storybook-preview-iframe {
   height: 100vh;
   width: 100vw;
 }
-
 .sb-show-main {
   height: 100vh;
   width: 100vw;
@@ -20,10 +18,8 @@
     width: 100vw;
   }
 }
-
 // .sb-show-main.sb-main-fullscreen {
 // }
-
 .sb-show-main.sb-main-centered {
   // margin: 0;
   // padding: 0;

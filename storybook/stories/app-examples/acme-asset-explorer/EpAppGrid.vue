@@ -65,41 +65,25 @@
       .grid {
         flex: 1;
         display: flex;
-        // need to addresss this overflow issue
-        // the mixin also has overflow:-y: scroll
-        overflow: scroll;
-        // @include scrollable-container;
-        -ms-overflow-style: none; // Internet Explorer, Edge
-        scrollbar-width: none; // Firefox
         overflow-y: scroll;
-        &::-webkit-scrollbar {
-          display: none; // Chrome, Safari, Opera
-        }
+        @include hide-scrollbar;
         .left-panel {
-          // flex: 0 0 241px;
-          // position: sticky;
-          // top: 0;
           overflow: auto;
-          // might be able to add this directly to the nav iteams causing the issue
+          @include hide-scrollbar;
           z-index: var(--z-index--fixed);
         }
         .content {
           flex: 1;
-          overflow: auto;
-          // height: fit-content;
-          // width: 100%;
           height: 100%;
-          // overflow: auto;
-          // @include scrollable-container;
-          &::-webkit-scrollbar {
-            display: none;
-          }
+          overflow: auto;
+          @include hide-scrollbar;
         }
       }
     }
     .right-panel {
       flex: 0 0 341px;
       overflow: auto;
+      @include hide-scrollbar;
       // border-left: 1px solid var(--border-color);
     }
   }

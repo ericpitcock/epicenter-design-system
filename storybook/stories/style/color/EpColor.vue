@@ -358,13 +358,8 @@
       top: 3rem;
     }
     &__table {
-      // @include scrollable-container;
-      -ms-overflow-style: none; // Internet Explorer, Edge
-      scrollbar-width: none; // Firefox
       overflow-y: scroll;
-      &::-webkit-scrollbar {
-        display: none; // Chrome, Safari, Opera
-      }
+      @include hide-scrollbar;
     }
   }
 </style>

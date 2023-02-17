@@ -1,10 +1,9 @@
-// @use './minireset';
 @use './new-reset';
 @use './color';
 @use './themes';
 @use './type';
-// @use './mixins';
 @use './components';
+@import './mixins';
 body {
   font-size: var(--font-size--default);
   font-variation-settings: 'wght' 500;

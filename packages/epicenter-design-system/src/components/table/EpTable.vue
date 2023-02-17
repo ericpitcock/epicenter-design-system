@@ -301,12 +301,7 @@
     height: v-bind(tableHeight);
     padding: v-bind(padding);
     overflow: auto;
-    // remove scrollbar from table container
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    @include hide-scrollbar;
   }
   .ep-table {
     width: v-bind(width);

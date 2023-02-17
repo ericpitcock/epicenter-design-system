@@ -1,12 +1,21 @@
 <template>
-  <div class="ep-container" :style="{ height: tableHeight }">
-    <div v-if="useHeader" class="ep-contaniner__header">
+  <div
+    class="ep-container"
+    :style="{ height: tableHeight }"
+  >
+    <div
+      v-if="useHeader"
+      class="ep-contaniner__header"
+    >
       <slot name="header" />
     </div>
     <div class="ep-container__content">
       <slot />
     </div>
-    <div v-if="useFooter" class="ep-contaniner__footer">
+    <div
+      v-if="useFooter"
+      class="ep-contaniner__footer"
+    >
       <slot name="footer" />
     </div>
   </div>
@@ -142,10 +151,7 @@
       flex: 1 1 auto;
       padding: v-bind(padding);
       overflow: v-bind(overflow);
-      // hide the scrollbar
-      &::-webkit-scrollbar {
-        display: none;
-      }
+      @include hide-scrollbar;
       // so that dropdowns overlap sticky table headers
       z-index: var(--z-index--default);
     }
