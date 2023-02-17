@@ -54,19 +54,6 @@ export default {
         }
       }
     },
-    // flyTo: {
-    //   name: 'Fly To',
-    //   control: {
-    //     type: 'select',
-    //     options: {
-    //       'Seattle': [-122.3321, 47.6062],
-    //       'San Francisco': [-122.4194, 37.7749],
-    //       'New York': [-74.0060, 40.7128],
-    //       'London': [-0.1278, 51.5074],
-    //       'Paris': [2.3522, 48.8566]
-    //     }
-    //   }
-    // },
     mapZoom: {
       name: 'Map Zoom',
       control: {
@@ -82,20 +69,8 @@ export default {
       //   type: 'radio',
       // }
     },
-    mapSource: {
-      table: { disable: true }
-      // name: 'Map Source',
-      // control: {
-      //   type: 'object'
-      // }
-    },
-    mapLayer: {
-      table: { disable: true }
-      // name: 'Map Layer',
-      // control: {
-      //   type: 'object'
-      // }
-    },
+    mapSource: { table: { disable: true } },
+    mapLayer: { table: { disable: true } },
     scrollZoom: {
       name: 'Scroll Zoom',
       control: {
@@ -108,13 +83,7 @@ export default {
         type: 'boolean'
       }
     },
-    fitToBounds: {
-      table: { disable: true }
-      // name: 'Fit Bounds',
-      // control: {
-      //   type: 'boolean'
-      // }
-    },
+    fitToBounds: { table: { disable: true } }
   }
 }
 
@@ -164,8 +133,8 @@ Map.args = {
   mapCenter: [-122.3321, 47.6062],
   mapZoom: 12,
   // mapStyle: defaultMapStyle,
-  mapSource: null,
-  mapLayer: null,
+  // mapSource: null,
+  // mapLayer: null,
   scrollZoom: true,
   navigationControl: false,
   fitToBounds: false
