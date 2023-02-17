@@ -7,7 +7,7 @@
 <script>
   import mapboxgl from 'mapbox-gl'
   import { mapState } from 'vuex'
-  
+
   export default {
     name: 'EpMap',
     props: {
@@ -21,7 +21,7 @@
       },
       mapStyle: {
         type: String,
-        default: 'mapbox://styles/mapbox/streets-v11'
+        default: ''
       },
       // mapSource: {
       //   type: Object,
@@ -58,6 +58,7 @@
     computed: {
       ...mapState(['theme']),
       computedMapStyle() {
+        if (this.mapStyle) return this.mapStyle
         return this.theme == 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/streets-v11'
       }
     },
@@ -100,7 +101,7 @@
         }
       },
       getBounds(coordinates) {
-        let bounds = coordinates.reduce(function(bounds, coord) {
+        let bounds = coordinates.reduce(function (bounds, coord) {
           return bounds.extend(coord)
         }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]))
         return bounds
@@ -147,10 +148,10 @@
       })
       // console.log(this.theme)
       // this.map.on('zoom', (event) => {
-        // console.log(event)
+      // console.log(event)
       // })
       // this.map.on('click', (event) => {
-        // console.log('A click event has occurred at ' + event.lngLat)
+      // console.log('A click event has occurred at ' + event.lngLat)
       // })
     },
     created() {
@@ -158,7 +159,7 @@
       // do this for everything that is not required
 
       if (this.mapSource) {
-        this.$watch('mapSource', function(newSource, oldSource) {
+        this.$watch('mapSource', function (newSource, oldSource) {
           if (this.init) return
           console.log('map source changed (mapSource watcher)')
           if (this.map.getLayer('test')) this.map.removeLayer('test')
@@ -186,13 +187,12 @@
 
 <style lang="scss" scoped>
   @import '~mapbox-gl/dist/mapbox-gl.css';
-  
   .ep-map-container {
     position: relative;
     width: 100%;
     height: 100%;
   }
-  #ep-map  {
+  #ep-map {
     position: absolute;
     top: 0;
     right: 0;
