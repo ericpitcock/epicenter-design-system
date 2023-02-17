@@ -1,4 +1,6 @@
 {
-  "name": "@ericpitcock/ep-design-system",
-  "description": "For testing with npm link"
+  "name": "@ericpitcock/epicenter-design-system",
+  "version": "1.0.2",
+  "description": "Epicenter Design System",
+  "main": "index.js"
 }
