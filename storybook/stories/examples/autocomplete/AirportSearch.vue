@@ -1,4 +1,3 @@
-<!-- airport search vue 3 options api component using EpAutocomplete.vue -->
 <template>
   <div class="airport-search">
     <div class="search-bar">

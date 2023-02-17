@@ -7,12 +7,10 @@ export default {
   decorators: [centered],
   argTypes: {
     bannerStyle: {
-      name: 'Banner Style',
+      name: 'Style',
       options: ['info', 'success', 'warning', 'error'],
       control: {
-        type: 'select',
-      },
-      table: {
+        type: 'radio',
         labels: {
           info: 'Info',
           success: 'Success',
