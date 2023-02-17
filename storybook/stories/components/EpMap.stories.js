@@ -5,24 +5,28 @@ import EpFooter from '@/components/footer/EpFooter'
 import EpHeader from '@/components/header/EpHeader'
 import EpMap from '@/components/map/EpMap'
 import { padded } from '@/helpers/decorators'
-import store from '../../store'
+// import store from '../../store'
 
 const mapStyles = {
+  'Dark (Ep)': 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',
+  'Borders (Ep)': 'mapbox://styles/ericpitcock/ckba479fv065v1in6pmfm6hz2',
   'Mapbox Streets': 'mapbox://styles/mapbox/streets-v11',
+  'Mapbox Outdoors': 'mapbox://styles/mapbox/outdoors-v11',
   'Mapbox Light': 'mapbox://styles/mapbox/light-v10',
-  'Mapbox Dark': 'mapbox://styles/mapbox/dark-v10'
+  'Mapbox Dark': 'mapbox://styles/mapbox/dark-v10',
+  'Mapbox Satellite': 'mapbox://styles/mapbox/satellite-v9',
+  'Mapbox Satellite Streets': 'mapbox://styles/mapbox/satellite-streets-v11',
+  'Mapbox Navigation Day': 'mapbox://styles/mapbox/navigation-day-v1',
+  'Mapbox Navigation Night': 'mapbox://styles/mapbox/navigation-night-v1'
 }
-// Default: 'mapbox://styles/mapbox/streets-v11',
-// Dark: 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',
-// Borders: 'mapbox://styles/ericpitcock/ckba479fv065v1in6pmfm6hz2',
-// 'Mapbox Streets': 'mapbox://styles/mapbox/streets-v11',
-// 'Mapbox Outdoors': 'mapbox://styles/mapbox/outdoors-v11',
-// 'Mapbox Light': 'mapbox://styles/mapbox/light-v10',
-// 'Mapbox Dark': 'mapbox://styles/mapbox/dark-v10',
-// 'Mapbox Satellite': 'mapbox://styles/mapbox/satellite-v9',
-// 'Mapbox Satellite Streets': 'mapbox://styles/mapbox/satellite-streets-v11',
-// 'Mapbox Navigation Day': 'mapbox://styles/mapbox/navigation-day-v1',
-// 'Mapbox Navigation Night': 'mapbox://styles/mapbox/navigation-night-v1'
+// console.log('store.state.theme', store.state.theme)
+const defaultMapStyle = (theme) => {
+  if (theme === 'light') {
+    return mapStyles['Mapbox Streets']
+  } else {
+    return mapStyles['Dark (Ep)']
+  }
+}
 
 export default {
   title: 'Components/Map',
@@ -70,14 +74,13 @@ export default {
       }
     },
     mapStyle: {
-      // table: { disable: true }
-      name: 'Map Style',
-      // object keys from mapStyles(store)
-      options: Object.keys(mapStyles),
-      mapping: mapStyles,
-      control: {
-        type: 'radio',
-      }
+      table: { disable: true }
+      // name: 'Map Style',
+      // options: Object.keys(mapStyles),
+      // mapping: mapStyles,
+      // control: {
+      //   type: 'radio',
+      // }
     },
     mapSource: {
       table: { disable: true }
@@ -115,7 +118,7 @@ export default {
   }
 }
 
-export const Map = args => ({
+export const Map = (args, { globals: { theme } }) => ({
   components: {
     EpActionBar,
     EpContainer,
@@ -124,7 +127,8 @@ export const Map = args => ({
     EpMap
   },
   setup() {
-    return { args, commonActionBarArgs }
+    const currentMapStyle = defaultMapStyle(theme)
+    return { args, commonActionBarArgs, currentMapStyle }
   },
   template: `
     <ep-container
@@ -146,7 +150,7 @@ export const Map = args => ({
       </template>
       <template #default>
         <div style="height: 100%; width: 100%;">
-        <ep-map v-bind="args" />
+        <ep-map v-bind="args" :mapStyle="currentMapStyle" />
         </div>
       </template>
       <template #footer>
@@ -159,7 +163,7 @@ export const Map = args => ({
 Map.args = {
   mapCenter: [-122.3321, 47.6062],
   mapZoom: 12,
-  // mapStyle: 'mapbox://styles/mapbox/dark-v10',
+  // mapStyle: defaultMapStyle,
   mapSource: null,
   mapLayer: null,
   scrollZoom: true,
