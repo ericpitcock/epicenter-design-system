@@ -57,10 +57,10 @@
     },
     computed: {
       ...mapState(['theme']),
-      // computedMapStyle() {
-      //   if (this.mapStyle) return this.mapStyle
-      //   return this.theme == 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/streets-v11'
-      // }
+      computedMapStyle() {
+        if (this.mapStyle) return this.mapStyle
+        return this.theme == 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/streets-v11'
+      }
     },
     methods: {
       dropPin(lngLat) {
@@ -81,7 +81,7 @@
             container: 'ep-map',
             center: this.mapCenter,
             zoom: this.mapZoom,
-            style: this.mapStyle,
+            style: this.computedMapStyle,
           })
           // various options
           // scroll zoom
