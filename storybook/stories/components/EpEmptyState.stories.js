@@ -1,4 +1,4 @@
-import { centered } from '@/helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
 
 export default {

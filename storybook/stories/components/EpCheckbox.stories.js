@@ -1,4 +1,4 @@
-import { padded } from '@/helpers/decorators'
+import { padded } from '../../helpers/decorators'
 import EpCheckbox from '@/components/checkbox/EpCheckbox'
 
 export default {

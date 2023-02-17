@@ -1,4 +1,4 @@
-import { centered } from '@/helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import E from '@/components/logo/E.vue'
 
 export default {

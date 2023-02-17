@@ -1,4 +1,4 @@
-import { padded } from '@/helpers/decorators'
+import { padded } from '../../helpers/decorators'
 import airports from '../../data/airports'
 import EpAutocomplete from '@/components/autocomplete/EpAutocomplete.vue'
 

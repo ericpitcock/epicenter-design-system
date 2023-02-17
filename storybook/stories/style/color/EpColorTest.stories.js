@@ -1,4 +1,4 @@
-import { padded } from '@/helpers/decorators'
+import { padded } from '../../../helpers/decorators'
 import EpColorTest from './EpColorTest'
 
 export default {

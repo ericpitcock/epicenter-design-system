@@ -1,4 +1,4 @@
-import { centered } from '@/helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpBadge from '@/components/badge/EpBadge'
 
 export default {

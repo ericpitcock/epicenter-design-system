@@ -1,4 +1,4 @@
-import { centered } from '@/helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpBasicInput from '@/components/input/EpBasicInput.vue'
 
 export default {

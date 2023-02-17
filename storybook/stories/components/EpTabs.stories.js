@@ -1,4 +1,4 @@
-import { padded } from '@/helpers/decorators'
+import { padded } from '../../helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpContainer from '@/components/container/EpContainer'

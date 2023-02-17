@@ -1,4 +1,4 @@
-import { centered } from '@/helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpMenu from '@/components/menu/EpMenu'
 
 const fakeDropdownItems = [

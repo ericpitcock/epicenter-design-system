@@ -1,5 +1,5 @@
 import faker from 'faker'
-import { padded } from '@/helpers/decorators'
+import { padded } from '../../../helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpBadge from '@/components/badge/EpBadge'

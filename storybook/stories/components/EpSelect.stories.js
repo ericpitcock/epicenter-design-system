@@ -1,4 +1,4 @@
-import { centered } from '@/helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpSelect from '@/components/select/EpSelect'
 
 export default {

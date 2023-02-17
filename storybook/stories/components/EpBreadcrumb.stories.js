@@ -1,5 +1,5 @@
 import vueRouter from 'storybook-vue3-router'
-import { padded } from '@/helpers/decorators'
+import { padded } from '../../helpers/decorators'
 import EpBreadcrumb from '@/components/breadcrumb/EpBreadcrumb.vue'
 
 export default {

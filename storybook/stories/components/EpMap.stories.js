@@ -4,7 +4,7 @@ import EpContainer from '@/components/container/EpContainer'
 import EpFooter from '@/components/footer/EpFooter'
 import EpHeader from '@/components/header/EpHeader'
 import EpMap from '@/components/map/EpMap'
-import { padded } from '@/helpers/decorators'
+import { padded } from '../../helpers/decorators'
 // import store from '../../store'
 
 const mapStyles = {

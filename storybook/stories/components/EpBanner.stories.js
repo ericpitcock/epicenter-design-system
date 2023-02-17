@@ -1,4 +1,4 @@
-import { centered } from '@/helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpBanner from '@/components/banner/EpBanner.vue'
 
 export default {

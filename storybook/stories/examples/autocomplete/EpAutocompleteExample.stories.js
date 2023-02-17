@@ -1,5 +1,5 @@
 // import airports from './airports'
-import { padded } from '@/helpers/decorators'
+import { padded } from '../../../helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import AirportSearch from './AirportSearch.vue'
 import EpAutocomplete from '@/components/autocomplete/EpAutocomplete.vue'

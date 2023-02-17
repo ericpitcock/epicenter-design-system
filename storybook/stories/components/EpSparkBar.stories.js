@@ -1,4 +1,4 @@
-import { centered } from '@/helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpSparkBar from '@/components/spark-bar/EpSparkBar.vue'
 
 export default {
