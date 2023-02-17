@@ -234,9 +234,7 @@ const Example = args => ({
               @checkchange="checkChange(index)"
             />
           </div>
-          <div style="flex: 1 1 auto; overflow: auto; padding: 3rem 0;">
-            <google-fonts :filter="selectedStyles" />
-          </div>
+          <google-fonts :filter="selectedStyles" />
         </div>
       </template>
       <template #footer>
