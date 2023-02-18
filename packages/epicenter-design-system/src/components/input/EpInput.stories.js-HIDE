@@ -1,4 +1,4 @@
-import { centered } from '@/helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpInput from './EpInput'
 import EpButton from '@/components/button/EpButton'
 

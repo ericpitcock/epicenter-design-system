@@ -54,36 +54,64 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+
     .left {
       flex: 1;
       display: flex;
       flex-flow: column nowrap;
       overflow: auto;
+
       .header {
         flex: 0 0 41px;
       }
+
       .grid {
         flex: 1;
         display: flex;
         overflow-y: scroll;
-        @include hide-scrollbar;
+        -ms-overflow-style: none; // Internet Explorer, Edge
+        scrollbar-width: none; // Firefox
+
+        &::-webkit-scrollbar {
+          display: none; // Chrome, Safari, Opera
+        }
+
         .left-panel {
           overflow: auto;
-          @include hide-scrollbar;
+          -ms-overflow-style: none; // Internet Explorer, Edge
+          scrollbar-width: none; // Firefox
+
+          &::-webkit-scrollbar {
+            display: none; // Chrome, Safari, Opera
+          }
+
           z-index: var(--z-index--fixed);
         }
+
         .content {
           flex: 1;
           height: 100%;
           overflow: auto;
-          @include hide-scrollbar;
+          -ms-overflow-style: none; // Internet Explorer, Edge
+          scrollbar-width: none; // Firefox
+
+          &::-webkit-scrollbar {
+            display: none; // Chrome, Safari, Opera
+          }
         }
       }
     }
+
     .right-panel {
       flex: 0 0 341px;
       overflow: auto;
-      @include hide-scrollbar;
+      -ms-overflow-style: none; // Internet Explorer, Edge
+      scrollbar-width: none; // Firefox
+
+      &::-webkit-scrollbar {
+        display: none; // Chrome, Safari, Opera
+      }
+
       // border-left: 1px solid var(--border-color);
     }
   }

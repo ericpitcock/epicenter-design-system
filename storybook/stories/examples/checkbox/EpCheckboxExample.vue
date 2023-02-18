@@ -50,6 +50,11 @@
     flex: 1 1 auto;
     overflow: auto;
     padding: 3rem 0;
-    @include hide-scrollbar;
+    -ms-overflow-style: none; // Internet Explorer, Edge
+    scrollbar-width: none; // Firefox
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
   }
 </style>

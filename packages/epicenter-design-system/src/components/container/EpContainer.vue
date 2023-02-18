@@ -142,21 +142,29 @@
     border-style: v-bind(borderStyle);
     border-color: v-bind(borderColor);
     overflow: v-bind(overflow);
+
     &__header {
       flex: 0 0 auto;
       z-index: var(--z-index--fixed);
     }
+
     &__content {
       position: relative;
       flex: 1 1 auto;
       padding: v-bind(padding);
       overflow: v-bind(overflow);
-      @include hide-scrollbar;
+      -ms-overflow-style: none; // Internet Explorer, Edge
+      scrollbar-width: none; // Firefox
+
+      &::-webkit-scrollbar {
+        display: none; // Chrome, Safari, Opera
+      }
+
       // so that dropdowns overlap sticky table headers
       z-index: var(--z-index--default);
     }
+
     &__footer {
       flex: 0 0 auto;
-    }
   }
-</style>
+}</style>

@@ -4,90 +4,66 @@
   --background-2: var(--gray-430);
   --background-3: var(--gray-420);
   --background-4: var(--gray-390);
-
   // app header
   // --app-header-background: var(--background-1);
   // gradient from deep purple to deep blue
-  --app-header-background: linear-gradient(
-    45deg,
-    hsl(240, 11%, 12%) 50%,
-    hsl(246, 47%, 29%) 100%
-  );
-
+  --app-header-background: linear-gradient(45deg,
+      hsl(240, 11%, 12%) 50%,
+      hsl(246, 47%, 29%) 100%);
   // borders
   --border-color: var(--gray-380);
   --border-color--lighter: var(--gray-340);
   --border-color--disabled: var(--gray-400);
-
   // overlay
   --overlay-color: rgba(36, 36, 36, 0.85);
-
   // shadow
   --drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
   --drop-shadow--large: 0 2px 20px rgba(0, 0, 0, 0.5);
-
   // text
   --text-color: var(--gray-50);
   --text-color--disabled: var(--gray-130);
   --text-color--inverse: var(--background-1);
   --text-color--highlight: var(--yellow-600);
-
   // text color
   --text-color--primary: var(--blue-400);
-
   // subtle text
   --text-color--subtle: var(--gray-220);
-
   // text color disabled
   --text-color--disabled: var(--gray-300);
-
   // links
   --text-color--link: var(--sky-300);
-
   // danger
   --text-color--danger: var(--red-400);
-
   // warning
   --text-color--warning: var(--amber-500);
-
   // success
   --text-color--success: var(--green-600);
   // --text-color--success: var(--lime-500);
-
   // text selection color
   --text-selection: var(--yellow-600);
-
   // buttons
   --button-disabled--bg-color: var(--gray-400);
   --button-disabled--border-color: var(--4utton-disabled--bg-color);
   --button-disabled--text: var(--gray-270);
-
   --button-secondary--hover: var(--gray-410);
   --button-secondary--active: var(--gray-500);
-
   --button-ghost--hover: var(--gray-390);
   --button-ghost--active: var(--gray-500);
   --button-ghost--text: var(--text-color);
-
   --button-menu-item--hover: var(--color--primary);
   --button-menu-item--active: var(--primary-color--active);
   --button-menu-item-text-hover: var(--text-color);
   --button-menu-item-text-active: var(--text-color);
-
   // table
   --table-stripe-color: var(--gray-420);
-
   // navigation
   --nav-link-hover-bg-color: var(--gray-420);
-  --nav-link-active-bg-color: linear-gradient(
-    45deg,
-    hsl(228, 68%, 60%) 50%,
-    hsl(199, 77%, 55%) 100%
-  ); // same as light mode
+  --nav-link-active-bg-color: linear-gradient(45deg,
+      hsl(228, 68%, 60%) 50%,
+      hsl(199, 77%, 55%) 100%); // same as light mode
   --nav-link-icon-color: var(--sky-300);
   --nav-link-active-icon-color: var(--text-color);
   --nav-link-active-text-color: var(--text-color);
-
   // chart sequence
   --chart-sequence-00: var(--violet-600);
   --chart-sequence-01: var(--sky-500);
@@ -103,7 +79,6 @@
   --chart-sequence-11: var(--sky-200);
   --chart-sequence-12: var(--amber-700);
   --chart-sequence-13: var(--purple-300);
-
   // alert colors
   --bg-color--alert-low: var(--gray-300);
   --bg-color--alert-medium: var(--yellow-400);

@@ -149,12 +149,12 @@
             key: 'sample',
             formatter: value => {
               return `<div
-                        class="color-sample"
-                        style="width: 50px;
-                        height: 50px;
-                        background-color: ${value};
-                        border-radius: var(--border-radius);"
-                      />`
+                          class="color-sample"
+                          style="width: 50px;
+                          height: 50px;
+                          background-color: ${value};
+                          border-radius: var(--border-radius);"
+                        />`
             }
           },
           {
@@ -352,14 +352,20 @@
   .colors {
     display: flex;
     gap: 2rem;
+
     &__menu {
       flex: 0 0 20rem;
       position: sticky;
       top: 3rem;
     }
+
     &__table {
       overflow-y: scroll;
-      @include hide-scrollbar;
+      -ms-overflow-style: none; // Internet Explorer, Edge
+      scrollbar-width: none; // Firefox
+
+      &::-webkit-scrollbar {
+        display: none; // Chrome, Safari, Opera
+      }
     }
-  }
-</style>
+  }</style>

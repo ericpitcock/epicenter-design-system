@@ -1,6 +1,7 @@
 .status-dot {
   position: relative;
   padding-left: 1.4rem;
+
   &::before {
     position: absolute;
     display: block;
@@ -11,7 +12,16 @@
     left: 0;
     border-radius: 50%;
   }
-  &--active::before { background: var(--green-300); }
-  &--inactive::before { background: var(--bg-color--alert-medium); }
-  &--archived::before { background: var(--bg-color--alert-low); }
+
+  &--active::before {
+    background: var(--green-300);
+  }
+
+  &--inactive::before {
+    background: var(--bg-color--alert-medium);
+  }
+
+  &--archived::before {
+    background: var(--bg-color--alert-low);
+  }
 }

@@ -296,11 +296,9 @@ textarea {
   --background-2: var(--gray-430);
   --background-3: var(--gray-420);
   --background-4: var(--gray-390);
-  --app-header-background: linear-gradient(
-    45deg,
-    hsl(240, 11%, 12%) 50%,
-    hsl(246, 47%, 29%) 100%
-  );
+  --app-header-background: linear-gradient(45deg,
+      hsl(240, 11%, 12%) 50%,
+      hsl(246, 47%, 29%) 100%);
   --border-color: var(--gray-380);
   --border-color--lighter: var(--gray-340);
   --border-color--disabled: var(--gray-400);
@@ -333,11 +331,9 @@ textarea {
   --button-menu-item-text-active: var(--text-color);
   --table-stripe-color: var(--gray-420);
   --nav-link-hover-bg-color: var(--gray-420);
-  --nav-link-active-bg-color: linear-gradient(
-    45deg,
-    hsl(228, 68%, 60%) 50%,
-    hsl(199, 77%, 55%) 100%
-  );
+  --nav-link-active-bg-color: linear-gradient(45deg,
+      hsl(228, 68%, 60%) 50%,
+      hsl(199, 77%, 55%) 100%);
   --nav-link-icon-color: var(--sky-300);
   --nav-link-active-icon-color: var(--text-color);
   --nav-link-active-text-color: var(--text-color);
@@ -424,6 +420,8 @@ html[data-color-theme=light] {
 }
 
 :root {
+  --text--black: var(--gray-410);
+  --text--white: var(--gray-50);
   --color--primary: hsl(214, 91%, 55%);
   --border-radius: 0.3rem;
   --border-radius--large: 0.6rem;
@@ -471,6 +469,11 @@ html[data-color-theme=light] {
   font-display: swap;
   src: url("../fonts/FiraCode-VariableFont_wght.ttf") format("truetype");
 }
+.monospace {
+  font-family: "Fira Code", monospace;
+  font-variation-settings: "wght" 500;
+}
+
 :root {
   font-family: "Inter var", sans-serif;
   font-size: 62.5%;
@@ -547,6 +550,14 @@ html[data-color-theme=light] {
   text-transform: capitalize;
 }
 
+.tabular-numbers {
+  font-feature-settings: "tnum";
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
 .text--link {
   color: var(--text-color--link);
 }
@@ -558,14 +569,6 @@ html[data-color-theme=light] {
 
 .text--subtle {
   color: var(--text-color--subtle);
-}
-
-.tabular-numbers {
-  font-feature-settings: "tnum";
-}
-
-.capitalize {
-  text-transform: capitalize;
 }
 
 ::selection {
@@ -601,11 +604,6 @@ html[data-color-theme=light] {
 
 .text-align--right {
   text-align: right;
-}
-
-.monospace {
-  font-family: "Fira Code", monospace;
-  font-variation-settings: "wght" 500;
 }
 
 .status-dot {

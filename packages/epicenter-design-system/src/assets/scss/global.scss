@@ -3,7 +3,7 @@
 @use './themes';
 @use './type';
 @use './components';
-@import './mixins';
+
 body {
   font-size: var(--font-size--default);
   font-variation-settings: 'wght' 500;
@@ -12,6 +12,7 @@ body {
   background: var(--background-1);
   color: var(--text-color);
 }
+
 // z-index
 // Modals: z-index: 100000
 // Tooltips: z-index: 99999

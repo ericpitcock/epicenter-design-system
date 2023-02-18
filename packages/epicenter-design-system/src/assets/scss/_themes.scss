@@ -1,12 +1,13 @@
 @use './theme--dark';
 @use './theme--light';
-
 // global theme stuff (included no matter the theme)
 :root {
-  // colors
+  // text basics
+  --text--black: var(--gray-410);
+  --text--white: var(--gray-50);
+  // primary color
   --color--primary: hsl(214, 91%, 55%);
   // --color--primary: hsl(220, 100%, 60%);
-
   // // tints and shades of hsl(223, 100%, 65%)
   // --color--primary--lightest: hsl(223, 100%, 71%);
   // --color--primary--lighter: hsl(223, 100%, 69%);
@@ -15,49 +16,40 @@
   // --color--primary--dark: hsl(223, 100%, 63%);
   // --color--primary--darker: hsl(223, 100%, 61%);
   // --color--primary--darkest: hsl(223, 100%, 59%);
-
   // // primary color tints
   // // --primary-color--light: hsl(199, 89%, 80%);
-
   // border radius
   --border-radius: 0.3rem;
   --border-radius--large: 0.6rem;
-
   --color-success: hsl(99, 59%, 66%);
   --color-warning: hsl(48, 100%, 51%);
   --color-error: hsl(3, 100%, 70%);
-
   // buttons
   --primary-color--base: var(--color--primary);
   --primary-color--hover: hsl(214, 91%, 52%);
   --primary-color--active: hsl(214, 91%, 60%);
   --primary-color--border: var(--color--primary);
   --primary-color--text: var(--gray-0);
-
   --danger-red--base: hsl(3, 100%, 70%);
   --danger-red--hover: hsl(3, 90%, 65%);
   --danger-red--active: hsl(3, 90%, 56%);
   --danger-red--border: hsl(3, 100%, 44%);
   --danger-red--text: hsl(3, 100%, 6%);
-
   --warning-yellow--base: hsl(48, 100%, 51%);
   --warning-yellow--hover: hsl(46, 100%, 49%);
   --warning-yellow--active: hsl(46, 100%, 41%);
   --warning-yellow--border: hsl(48, 100%, 42%);
   --warning-yellow--text: hsl(48, 100%, 10%);
-  
   --success-green--base: hsl(99, 59%, 66%);
   --success-green--hover: hsl(99, 59%, 60%);
   --success-green--active: hsl(99, 59%, 52%);
   --success-green--border: hsl(99, 59%, 46%);
   --success-green--text: hsl(99, 59%, 10%);
-
   // logo colors
   --logo-gold: #f99d1c;
   --logo-yellow: #fdb913;
   --logo-gray: #414141;
   --logo-white: #fff;
-
   // css now generated from tokens with style dictionary
   // neutral gray
   // $root: 100%;
@@ -66,10 +58,8 @@
   //   --gray-#{$index * 10}: hsl(0, 0%, #{$root - (2 * $index)});
   //   $index: $index + 1;
   // }
-
   // --white: var(--gray-0);
   // --black: var(--gray-500);
-
   // outputs
   // --gray-0: hsl(0, 0%, 100%);
   // --gray-10: hsl(0, 0%, 98%);
@@ -175,4 +165,3 @@
   // --gray-490: #050505;
   // --gray-500: #000000;
 }
-

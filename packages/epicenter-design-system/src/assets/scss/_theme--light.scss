@@ -4,80 +4,60 @@ html[data-color-theme='light'] {
   --background-2: var(--gray-0);
   --background-3: var(--gray-0);
   --background-4: var(--gray-0);
-
   // app header
   --app-header-background: #f0f4f8;
-
   // borders
   --border-color: var(--gray-70);
   --border-color--lighter: var(--border-color);
   --border-color--disabled: var(--gray-70);
-
   // overlay
   --overlay-color: rgba(255, 255, 255, 0.85);
-
   // shadow
   --drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.05);
   --drop-shadow--large: 0 2px 20px rgba(0, 0, 0, 0.15);
-
   // text
   --text-color: var(--gray-410);
   --text-color--disabled: var(--gray-270);
   --text-color--inverse: var(--gray-0);
   --text-color--highlight: var(--yellow-300);
-
   // text color
   --text-color--primary: var(--blue-600);
-
   // subtle text
   --text-color--subtle: var(--gray-270);
-
   // text color disabled
   --text-color--disabled: var(--gray-170);
-
   // links
   --text-color--link: var(--sky-600);
-
   // danger
   --text-color--danger: var(--red-600);
-
   // warning
   --text-color--warning: var(--amber-600);
-
   // success
   --text-color--success: var(--green-700);
-
   // text selection color
   --text-selection: var(--yellow-300);
-
   // buttons
   --button-disabled--bg-color: var(--gray-40);
   --button-disabled--border-color: var(--button-disabled--bg-color);
   --button-disabled--text: var(--gray-150);
-
   --button-secondary--hover: var(--gray-40);
   --button-secondary--active: var(--gray-60);
-
   --button-ghost--hover: var(--gray-40);
   --button-ghost--active: var(--gray-60);
   --button-ghost--text: var(--text-color);
-
   --button-menu-item--hover: var(--color--primary);
   --button-menu-item--active: var(--primary-color--active);
   --button-menu-item-text-hover: var(--text-color--inverse);
   --button-menu-item-text-active: var(--text-color--inverse);
-
   // table
   // --table-stripe-color: var(--gray-10);
   --table-stripe-color: #f9f9f9;
-
   // navigation
   --nav-link-hover-bg-color: var(--gray-20);
   --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%);
   --nav-link-icon-color: var(--color--primary);
   --nav-link-active-icon-color: var(--text-color--inverse);
   --nav-link-active-text-color: var(--text-color--inverse);
-
   // chart sequence
   --chart-sequence-00: var(--violet-700);
   --chart-sequence-01: var(--sky-500);
@@ -93,7 +73,6 @@ html[data-color-theme='light'] {
   --chart-sequence-11: var(--sky-900);
   --chart-sequence-12: var(--amber-800);
   --chart-sequence-13: var(--violet-400);
-
   // alert colors
   --bg-color--alert-low: var(--gray-130);
   --bg-color--alert-medium: var(--yellow-400);
