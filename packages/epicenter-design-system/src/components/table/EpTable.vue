@@ -245,12 +245,10 @@
       filteredData() {
         if (!this.searchable || !this.search.length) return this.sortedData
 
-        // this.sortedData is the data to search
-        // this.search is an array of values to search for
-        // values surrounded by double quotes, search for an exact match
-        // otherwise, search for any match
-        // use and logic to filter the data
-        // if the search array is empty, return the sorted data
+        /*
+        search for an exact match of values surrounded by quotes
+        otherwise, search for any match
+        */
         return this.sortedData.filter(row => {
           return this.search.every(search => {
             return Object.values(row).some(value => {
@@ -266,6 +264,19 @@
       sortedData() {
         if (!this.sortable) return this.data
 
+        /* 
+        Consider using return this.data.slice().sort((a, b)...
+        The slice() method creates a shallow copy of an array from a
+        start index to an end index.In this case, we don't pass any 
+        arguments to .slice(), which means it will create a copy of 
+        the entire filteredPersons array.
+        
+        By creating a copy of the array, we can sort it without 
+        affecting the original filteredPersons array.This ensures 
+        that any other parts of the application that rely on the 
+        original order of the filteredPersons array are 
+        not affected by the sorting operation.
+        */
         return this.data.sort((a, b) => {
           let modifier = 1
           if (this.currentSortDir === 'desc') modifier = -1
@@ -424,20 +435,21 @@
       }
     }
 
-  &--sticky {
-    thead {
-      th {
-        position: sticky;
-        top: v-bind(stickyTop);
-        z-index: var(--z-index--sticky);
-        // top: -1px; // fixes wierd 1px gap that exposes tbody contents during scroll
+    &--sticky {
+      thead {
+        th {
+          position: sticky;
+          top: v-bind(stickyTop);
+          z-index: var(--z-index--sticky);
+          // top: -1px; // fixes wierd 1px gap that exposes tbody contents during scroll
+        }
+      }
+    }
+
+    &--striped {
+      tbody tr:nth-child(even) {
+        background-color: var(--table-stripe-color);
       }
     }
   }
-
-  &--striped {
-    tbody tr:nth-child(even) {
-      background-color: var(--table-stripe-color);
-    }
-  }
-}</style>
+</style>
