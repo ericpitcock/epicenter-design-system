@@ -8,6 +8,7 @@
         <ep-icon v-bind="iconLeft" />
       </div>
       <label
+        v-if="label"
         :for="id"
         class="ep-select__inner__label"
       >{{ label }}</label>
@@ -18,11 +19,15 @@
     <select
       :id="id"
       :class="['ep-select__input', selectClasses]"
-      v-model="selected"
+      :value="modelValue"
       @focus="onFocus"
       @blur="hasFocus = false"
-      @change="onChange"
+      @change="$emit('update:modelValue', $event.target.value)"
     >
+      <option
+        disabled
+        value=""
+      >{{ placeholder }}</option>
       <option
         v-for="option in options"
         :key="option.value"
@@ -57,14 +62,23 @@
       },
       label: {
         type: String,
-        required: true,
+        // required: true,
       },
       options: {
         type: Array,
         required: true,
-      }
+      },
+      modelValue: {
+        type: String,
+        default: ''
+      },
+      placeholder: {
+        type: String,
+        default: 'Select an option'
+      },
       // [label, value]
     },
+    emits: ['update:modelValue'],
     data() {
       return {
         hasFocus: false,
@@ -93,6 +107,14 @@
       selectClasses() {
         return {
           'select--has-icon': this.iconLeft
+        }
+      }
+    },
+    watch: {
+      modelValue: {
+        immediate: true,
+        handler(value) {
+          this.selected = value
         }
       }
     }
