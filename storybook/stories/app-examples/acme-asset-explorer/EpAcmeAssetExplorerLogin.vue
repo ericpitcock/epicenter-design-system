@@ -3,8 +3,6 @@
     <ep-container
       width="400px"
       padding="0 3rem 6rem 3rem"
-      use-header
-      use-footer
       style="box-shadow: var(--drop-shadow);"
     >
       <template #header>
@@ -65,7 +63,7 @@
       return {
         email: '',
         password: '',
-      };
+      }
     },
     methods: {
       login() {
@@ -97,6 +95,7 @@
     background: linear-gradient(135deg, #3d0c40, #2a7e5b);
     // because I'm faking the login view as essentially a modal
     z-index: var(--z-index--modal);
+
     // give it one more step in between to smooth it out
     // background: linear-gradient(135deg, #310c40, #2a7e5b, #1d93b4);
     &__header {
@@ -106,9 +105,11 @@
       padding: 6rem;
       // background: green;
     }
+
     &__form {
       display: flex;
       flex-direction: column;
+
       // justify-content: center;
       // align-items: center;
       // background: red;
@@ -117,17 +118,18 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
         & > * + * {
           margin-top: 2rem;
         }
       }
     }
+
     &__footer {
       display: flex;
       justify-content: center;
       align-items: center;
       border-top: 1px solid var(--border-color);
-      padding: 2rem;
-    }
+    padding: 2rem;
   }
-</style>
+}</style>

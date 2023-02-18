@@ -6,12 +6,12 @@ import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
 import EpSplitButton from '@/components/split-button/EpSplitButton'
 import EpTable from '@/components/table/EpTable'
-import EpLoading from '@/components/loading/EpLoading.vue'
+import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
 import { columns, fakeArray } from '@/components/table/data'
 
 export default {
-  title: 'Components/Loading',
-  component: EpLoading,
+  title: 'Components/Loading State',
+  component: EpLoadingState,
   // the padded decorator affects the table's sticky header
   decorators: [padded],
   argTypes: {
@@ -75,7 +75,7 @@ const destroyAndFetch = [
   }
 ]
 
-export const Loading = args => ({
+export const LoadingState = args => ({
   components: {
     EpActionBar,
     EpContainer,
@@ -83,7 +83,7 @@ export const Loading = args => ({
     EpFooter,
     EpSplitButton,
     EpTable,
-    EpLoading
+    EpLoadingState
   },
   setup() {
     return {
@@ -121,8 +121,6 @@ export const Loading = args => ({
   },
   template: `
     <ep-container
-      use-header
-      use-footer
       max-width="120rem"
       height="100%"
       padding="0 2rem"
@@ -168,7 +166,7 @@ export const Loading = args => ({
       </ep-header>
       </template>
       <template #default>
-        <ep-loading
+        <ep-loading-state
           v-show="loading"
           @done="done"
           :messages="messages"
@@ -193,7 +191,7 @@ export const Loading = args => ({
   `
 })
 
-Loading.args = {
+LoadingState.args = {
   backgroundColor: 'var(--overlay-color)',
   borderRadius: 'var(--border-radius--large)',
   messages: refresh,

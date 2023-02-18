@@ -150,8 +150,6 @@ const Template = args => ({
   },
   template: `
   <ep-container
-    use-header
-    use-footer
     max-width="120rem"
     height="100%"
     padding="0 2rem"

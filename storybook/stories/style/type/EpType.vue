@@ -3,12 +3,14 @@
     max-width="120rem"
     padding="3rem"
     overflow="hidden"
-    use-header
   >
     <template #header>
       <ep-header>
         <template #left>
-          <ep-tabs :items="tabs" @tab-click="handleClick" />
+          <ep-tabs
+            :items="tabs"
+            @tab-click="handleClick"
+          />
         </template>
         <template #right>
           <ep-button
@@ -20,21 +22,25 @@
     </template>
     <template #default>
       <template v-if="activeTab === 0">
-      <div class="type-style" v-for="(typeStyle, index) in typeStyles" :key="index">
-        <div class="type-style__desc">
-          <div class="font-size--body">{{ typeStyle.name }}</div>
-          <template v-for="item in typeStyle.meta">
-            <div class="meta font-size--small">{{ item }}</div>
-          </template> 
-        </div>
-        <div class="type-style__sample">
-          <div
-            :class="`font-size--${typeStyle.name.toLowerCase()}`"
-            v-html="typeStyle.sample"
-          >
+        <div
+          class="type-style"
+          v-for="(typeStyle, index) in typeStyles"
+          :key="index"
+        >
+          <div class="type-style__desc">
+            <div class="font-size--body">{{ typeStyle.name }}</div>
+            <template v-for="item in typeStyle.meta">
+              <div class="meta font-size--small">{{ item }}</div>
+            </template>
+          </div>
+          <div class="type-style__sample">
+            <div
+              :class="`font-size--${typeStyle.name.toLowerCase()}`"
+              v-html="typeStyle.sample"
+            >
+            </div>
           </div>
         </div>
-      </div>
       </template>
       <template v-else-if="activeTab === 1">
         <div>
@@ -146,30 +152,37 @@
   .ep-container + .ep-container {
     margin-top: 10px;
   }
+
   .type-style {
     display: flex;
     align-items: center;
     padding: 2.6rem 0 3rem;
+
     &:first-child {
       padding-top: 0;
     }
+
     &:last-child {
       padding-bottom: 0;
     }
+
     &__desc {
       flex: 2;
+
       * + * {
         margin-top: 0.5rem;
       }
-      .meta {
-        color: var(--text-color--subtle);
-      }
-    }
-    &__sample {
-      flex: 6;
-    }
-    & + & {
-      border-top: 1px solid var(--border-color);
+
+    .meta {
+      color: var(--text-color--subtle);
     }
   }
-</style>
+
+  &__sample {
+    flex: 6;
+  }
+
+  & + & {
+    border-top: 1px solid var(--border-color);
+  }
+}</style>

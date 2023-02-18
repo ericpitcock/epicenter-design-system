@@ -4,7 +4,7 @@
     :style="{ height: tableHeight }"
   >
     <div
-      v-if="useHeader"
+      v-if="$slots.header"
       class="ep-contaniner__header"
     >
       <slot name="header" />
@@ -13,7 +13,7 @@
       <slot />
     </div>
     <div
-      v-if="useFooter"
+      v-if="$slots.footer"
       class="ep-contaniner__footer"
     >
       <slot name="footer" />
@@ -25,18 +25,6 @@
   export default {
     name: 'EpContainer',
     props: {
-      // position: {
-      //   type: String,
-      //   default: 'static'
-      // },
-      useHeader: {
-        type: Boolean,
-        default: false
-      },
-      useFooter: {
-        type: Boolean,
-        default: false
-      },
       calculateHeight: {
         type: Boolean,
         default: false
@@ -166,5 +154,6 @@
 
     &__footer {
       flex: 0 0 auto;
+    }
   }
-}</style>
+</style>

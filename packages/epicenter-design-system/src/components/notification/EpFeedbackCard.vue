@@ -1,7 +1,5 @@
 <template>
   <ep-container
-    use-header
-    use-footer
     width="40rem"
     padding="3rem"
     backgroundColor="var(--background-1)"
@@ -126,42 +124,52 @@
     padding: 1rem;
     background-color: var(--background-color);
     border-radius: 0.5rem;
+
     &__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
+
       &__title {
         display: flex;
         align-items: center;
+
         &__text {
           margin-left: 0.5rem;
           font-size: 1.25rem;
           font-weight: 500;
         }
       }
+
       &__close {
         cursor: pointer;
       }
     }
+
     &__body {
       display: flex;
       flex-direction: column;
       flex: 1;
       margin-bottom: 1rem;
+
       &__rating {
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
+
         &__star {
           cursor: pointer;
+
           &--active {
             color: var(--primary-color);
           }
         }
       }
+
       &__textarea {
         flex: 1;
+
         textarea {
           width: 100%;
           height: 10rem;
@@ -172,13 +180,14 @@
         }
       }
     }
-    &__footer {
-      display: flex;
-      justify-content: flex-end;
-    }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
   }
-  :deep(.gold svg path) {
-    fill: gold;
-    stroke: gold;
-  }
-</style>
+}
+
+:deep(.gold svg path) {
+  fill: gold;
+  stroke: gold;
+}</style>
