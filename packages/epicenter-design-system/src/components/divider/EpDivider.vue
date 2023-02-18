@@ -17,13 +17,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-divider {
-    display: block;
-    height: 1px;
-    background-color: v-bind(color);
-    border: none;
-    margin: v-bind(margin);
-  }
-</style>

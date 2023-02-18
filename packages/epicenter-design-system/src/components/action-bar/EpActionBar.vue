@@ -65,15 +65,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-action-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: v-bind(justifyContent);
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-  }
-</style>

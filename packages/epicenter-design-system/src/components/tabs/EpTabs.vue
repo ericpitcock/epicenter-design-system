@@ -34,30 +34,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-tabs {
-    display: flex;
-    height: 100%;
-    gap: 0 3rem;
-    user-select: none;
-    &__tab-item {
-      display: inline-flex;
-      span {
-        position: relative;
-        border-bottom: 3px solid transparent;
-        top: 1px;
-        display: inline-flex;
-        align-items: center;
-        white-space: nowrap;
-      }
-      &:not(.ep-tabs__tab-item--active):hover span {
-        border-bottom-color: var(--gray-200);
-        cursor: pointer;
-      }
-      &--active span {
-        border-bottom-color: var(--color--primary);
-      }
-    }
-  }
-</style>

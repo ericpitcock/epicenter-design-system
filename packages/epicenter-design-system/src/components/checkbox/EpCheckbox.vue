@@ -90,26 +90,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-checkbox {
-    display: inline-flex;
-    width: fit-content;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    user-select: none;
-    &--disabled {
-      color: var(--text-color--disabled);
-      cursor: default;
-    }
-    input {
-      appearance: auto;
-      cursor: inherit;
-    }
-    label {
-      color: inherit;
-      cursor: inherit;
-    }
-  }
-</style>

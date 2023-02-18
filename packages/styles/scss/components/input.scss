@@ -1,0 +1,62 @@
+.ep-input {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: v-bind(width);
+  height: v-bind(height);
+  border: v-bind(borderWidth) v-bind(borderStyle) v-bind(borderColor);
+  border-radius: v-bind(borderRadius);
+  background-color: v-bind(backgroundColor);
+  color: v-bind(color);
+  overflow: hidden;
+
+  input {
+    flex: 1;
+    height: 100%;
+    padding: 0 1.2rem;
+
+    &::placeholder {
+      color: var(--text-color);
+    }
+
+    &:focus {
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
+
+  &--has-icon input {
+    padding-left: 0;
+  }
+
+  &--focus {
+    border-color: var(--color--primary);
+  }
+
+  &--disabled {
+    color: var(--text-color--disabled);
+    border-color: var(--border-color--disabled);
+
+    input::placeholder {
+      opacity: 0.3;
+    }
+  }
+
+  &__icon,
+  &__clear {
+    flex: 0 0 v-bind(height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: v-bind(height);
+  }
+
+  &__clear {
+    cursor: pointer;
+
+    &--disabled {
+      cursor: default;
+    }
+  }
+}

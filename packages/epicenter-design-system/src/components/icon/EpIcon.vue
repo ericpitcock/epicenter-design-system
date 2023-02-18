@@ -57,10 +57,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-icon {
-    display: inline-flex;
-    color: inherit;
-  }
-</style>

@@ -1,130 +1,168 @@
 <template>
-  <div class="ep-input">
-    <label
-      v-show="isFocused"
-      :for="id"
-      class="ep-input__label"
+  <div :class="['ep-input', classes]">
+    <div
+      v-if="icon"
+      class="ep-input__icon"
     >
-      {{ label }}
-    </label>
+      <ep-icon v-bind="icon" />
+    </div>
     <input
-      :id="id"
-      :class="['ep-input__input', { 'is-invalid': error }]"
-      :placeholder="label"
+      ref="input"
       :type="type"
-      :value="value"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      v-model="currentValue"
       @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
       @keydown="onKeyDown"
+      @keydown.esc="onEsc"
     />
+    <div
+      v-if="clearable"
+      :class="[
+        'ep-input__clear',
+        { 'ep-input__clear--disabled': !currentValue }
+      ]"
+      @click="onClear"
+    >
+      <ep-icon
+        v-show="currentValue"
+        name="close"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+  import EpIcon from '../icon/EpIcon'
+
   export default {
-    name: 'EpInput',
+    name: 'EpBasicInput',
+    components: {
+      EpIcon
+    },
+    data() {
+      return {
+        hasError: false,
+        hasFocus: false,
+        currentValue: this.value
+      }
+    },
     props: {
-      id: {
+      type: {
         type: String,
-        default: 'ep-input'
-      },
-      error: {
-        type: Boolean,
-        default: false
+        default: 'text'
       },
       placeholder: {
         type: String,
         default: ''
       },
-      type: {
-        type: String,
-        default: 'text'
-      },
       value: {
         type: String,
         default: ''
       },
-      label: {
-        type: String,
-        default: 'Default Label'
+      icon: {
+        type: Object,
+        default: () => { }
       },
+      clearable: {
+        type: Boolean,
+        default: true
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      autofocus: {
+        type: Boolean,
+        default: false
+      },
+      width: {
+        type: String,
+        default: '100%'
+      },
+      height: {
+        type: String,
+        default: '5rem'
+      },
+      borderWidth: {
+        type: String,
+        default: '0.1rem'
+      },
+      borderStyle: {
+        type: String,
+        default: 'solid'
+      },
+      borderColor: {
+        type: String,
+        default: 'var(--border-color)'
+      },
+      borderRadius: {
+        type: String,
+        default: 'var(--border-radius)'
+      },
+      backgroundColor: {
+        type: String,
+        default: 'var(--background-2)'
+      },
+      color: {
+        type: String,
+        default: 'var(--text-color)'
+      }
     },
-    data () {
-      return {
-        isFocused: false
+    emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear'],
+    methods: {
+      onInput(event) {
+        this.$emit('input', event.target.value)
+        // console.log('onInput', event.target.value)
+      },
+      onEsc(event) {
+        this.$refs.input.blur()
+        this.$emit('esc', event.target.value)
+        // console.log('onEsc', event.target.value)
+      },
+      onFocus(event) {
+        this.hasFocus = true
+        this.$emit('focus', event.target.value)
+        // console.log('onFocus', event.target.value)
+      },
+      onBlur(event) {
+        this.hasFocus = false
+        this.$emit('blur', event.target.value)
+        // console.log('onBlur', event.target.value)
+      },
+      onKeyDown(event) {
+        // use event.key
+        this.$emit('enter', event.target.value)
+        // console.log('onKeyDown', event.target.value)
+      },
+      onClear() {
+        this.currentValue = ''
+        this.$refs.input.focus()
+        this.$emit('clear', '')
+        // console.log('onClear')
       }
     },
     computed: {
-      hasInput() {
-        return this.value.length > 0
-      }
+      classes() {
+        return {
+          'ep-input--has-icon': this.icon,
+          'ep-input--focus': this.hasFocus,
+          'ep-input--disabled': this.disabled,
+          // 'ep-input--error': this.error,
+          // 'ep-input--success': this.success,
+          // 'ep-input--warning': this.warning
+        }
+      },
+      // currentValue() {
+      //   return this.value
+      // }
     },
-    methods: {
-      clear() {
-        this.$emit('input', '')
-      },
-      onInput(event) {
-        console.log('input')
-        this.$emit('input', event.target.value)
-      },
-      onFocus() {
-        console.log('focus')
-        this.isFocused = true
-        this.$emit('focus')
-      },
-      onBlur() {
-        console.log('blur')
-        this.isFocused = false
-        this.$emit('blur')
-      },
-      onKeyDown(event) {
-        console.log('keydown')
-        this.$emit('keydown', event)
+    watch: {
+      value(val) {
+        this.currentValue = val
       }
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-input {
-    position: relative;
-    display: block;
-    &__label {
-      position: absolute;
-      top: 0;
-      left: 0;
-      // padding: 0.4rem 0.8rem;
-      font-size: var(--font-size--tiny);
-      color: var(--text-color--subtle);
-      pointer-events: none;
-      transition: all 0.2s ease;
-    }
-    &__input {
-      // -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      padding: 1.2rem;
-      font-size: var(--font-size--small);
-      background: var(--background-4);
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
-      // vertical-align: top;
-      // text-indent: 3.2rem;
-      // on focus show label
-      // &:focus + .ep-input__label {
-      //   display: block;
-      // }
-      &::placeholder {
-        color: var(--text-color);
-      }
-      &:focus::placeholder {
-        color: transparent;
-      }
-      &--invalid {
-        border-color: var(--error-color);
-        border-color: red;
-      }
-    }
-  }
-</style>

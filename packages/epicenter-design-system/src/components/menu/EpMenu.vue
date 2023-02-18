@@ -131,25 +131,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-menu {
-    &__section {
-      // color: var(--color--primary);
-      color: var(--text-color--primary);
-      padding: 0.8rem 0 0.8rem 2.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-      user-select: none;
-    }
-    &__item {
-      position: relative;
-      &__sub-menu {
-        position: absolute;
-        top: -1rem;
-        left: calc(100% - 1rem);
-        width: 100%;
-      }
-    }
-  }
-</style>

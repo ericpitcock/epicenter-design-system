@@ -31,21 +31,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-badge {
-    display: inline-block;
-    padding: 0.4rem 0.8rem;
-    border-radius: var(--border-radius);
-    border: 1px solid v-bind(borderColor);
-    background-color: v-bind(backgroundColor);
-    color: v-bind(textColor);
-    font-size: var(--font-size--tiny);
-    font-variation-settings: 'wght' 600;
-    user-select: none;
-    &--uppercase {
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-    }
-  }
-</style>

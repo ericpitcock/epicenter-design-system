@@ -1,0 +1,8 @@
+{
+  "name": "@ericpitcock/epicenter-design-system-styles",
+  "version": "1.0.2",
+  "description": "Epicenter Design System Styles",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {}
+}

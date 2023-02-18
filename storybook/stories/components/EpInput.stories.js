@@ -1,9 +1,9 @@
 import { centered } from '../../helpers/decorators'
-import EpBasicInput from '@/components/input/EpBasicInput.vue'
+import EpInput from '@/components/input/EpInput.vue'
 
 export default {
-  title: 'Components/Basic Input',
-  component: EpBasicInput,
+  title: 'Components/Input',
+  component: EpInput,
   decorators: [centered],
   argTypes: {
     type: {
@@ -109,7 +109,7 @@ export default {
 }
 
 const Template = args => ({
-  components: { EpBasicInput },
+  components: { EpInput },
   setup() {
     return { args }
   },
@@ -120,9 +120,9 @@ const Template = args => ({
   `
 })
 
-export const BasicInput = Template.bind({})
+export const Input = Template.bind({})
 
-BasicInput.args = {
+Input.args = {
   type: 'text',
   placeholder: 'Placeholder',
   value: '',

@@ -42,13 +42,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-breadcrumbs {
-    ol, li {
-      display: flex;
-      gap: 0.5rem;
-      white-space: nowrap;
-    }
-  }
-</style>
