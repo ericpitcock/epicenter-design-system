@@ -27,6 +27,7 @@
         v-for="option in options"
         :key="option.value"
         :value="option.value"
+        :disabled="option.disabled"
       >
         {{ option.label }}
       </option>
@@ -109,9 +110,11 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     cursor: pointer;
+
     &--has-focus {
       border-color: var(--color--primary);
     }
+
     &__inner {
       position: absolute;
       display: flex;
@@ -119,8 +122,10 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
+
       // background: red;
-      &__icon-left, &__icon-right {
+      &__icon-left,
+      &__icon-right {
         flex: 0 0 v-bind(height);
         display: flex;
         justify-content: center;
@@ -129,6 +134,7 @@
         // background: black;
         // pointer-events: none;
       }
+
       &__label {
         // position: absolute;
         // width: 100%;
@@ -138,22 +144,27 @@
         // justify-content: center;
         align-items: center;
         padding: 1.2rem;
+
         // line-height: 1.1;
         // pointer-events: none;
         // background: blue;
         .ep-select--has-value & {
           visibility: hidden;
         }
+
         .ep-select--has-icon & {
           padding-left: 0;
         }
       }
     }
+
     select {
       padding: 1.25rem 1.2rem;
+
       &:focus {
         outline: none;
       }
+
       &.select--has-icon {
         padding-left: 4rem;
       }
