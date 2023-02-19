@@ -53,8 +53,8 @@ export const Icon = args => ({
 Icon.args = {
   name: 'arrow-up',
   color: 'currentcolor',
-  weight: 'regular',
-  size: 20
+  weight: 'light',
+  size: 60
 }
 
 Icon.decorators = [centered]
