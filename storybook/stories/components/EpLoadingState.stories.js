@@ -12,7 +12,6 @@ import { columns, fakeArray } from '@/components/table/data'
 export default {
   title: 'Components/Loading State',
   component: EpLoadingState,
-  // the padded decorator affects the table's sticky header
   decorators: [padded],
   argTypes: {
     backgroundColor: {
@@ -95,7 +94,7 @@ export const LoadingState = args => ({
   },
   data() {
     return {
-      loading: false,
+      loading: true,
       messages: null,
       tableData: this.fakeArray(7)
     }
@@ -104,7 +103,6 @@ export const LoadingState = args => ({
     done() {
       this.loading = false
       this.messages = null
-      console.log('done')
     },
     refresh() {
       this.messages = refresh
@@ -118,6 +116,11 @@ export const LoadingState = args => ({
       this.messages = destroyAndFetch
       this.loading = true
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false
+    }, 2000)
   },
   template: `
     <ep-container
