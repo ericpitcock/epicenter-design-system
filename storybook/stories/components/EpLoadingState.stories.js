@@ -96,13 +96,14 @@ export const LoadingState = args => ({
     return {
       loading: true,
       messages: null,
-      tableData: this.fakeArray(7)
+      tableData: this.fakeArray(30)
     }
   },
   methods: {
     done() {
       this.loading = false
       this.messages = null
+      this.tableData = this.fakeArray(30)
     },
     refresh() {
       this.messages = refresh
@@ -175,9 +176,8 @@ export const LoadingState = args => ({
           :messages="messages"
         />
         <ep-table
-          v-show="!loading"
           :columns="columns"
-          :data="fakeArray(50)"
+          :data="tableData"
           :exclude="['id']"
           width="100%"
           sticky-header
