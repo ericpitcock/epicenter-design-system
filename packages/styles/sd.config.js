@@ -1,9 +1,9 @@
 module.exports = {
-  source: ['src/style/tokens/**/*.json'],
+  source: ['./tokens/**/*.json'],
   platforms: {
     css: {
       transformGroup: 'css',
-      buildPath: 'src/assets/scss/',
+      buildPath: './scss/color/',
       files: [
         {
           destination: '_color.scss',

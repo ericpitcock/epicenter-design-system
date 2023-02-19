@@ -89,8 +89,6 @@ const Template = args => ({
   // template: '<ep-dropdown v-bind="args" />'
   template: `
     <ep-container
-      useHeader
-      useFooter
       max-width="120rem"
       height="100%"
       padding="3rem"

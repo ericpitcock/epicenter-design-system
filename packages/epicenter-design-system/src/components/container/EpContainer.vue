@@ -1,7 +1,7 @@
 <template>
   <div
     class="ep-container"
-    :style="{ height: tableHeight }"
+    :style="containerStyles"
   >
     <div
       v-if="$slots.header"
@@ -9,7 +9,10 @@
     >
       <slot name="header" />
     </div>
-    <div class="ep-container__content">
+    <div
+      class="ep-container__content"
+      :style="contentStyles"
+    >
       <slot />
     </div>
     <div
@@ -22,21 +25,12 @@
 </template>
 
 <script>
+  import calculateHeight from '@/mixins/calculateHeight'
+
   export default {
     name: 'EpContainer',
+    mixins: [calculateHeight],
     props: {
-      calculateHeight: {
-        type: Boolean,
-        default: false
-      },
-      calculateHeightOffset: {
-        type: Number,
-        default: 0
-      },
-      display: {
-        type: String,
-        default: 'block'
-      },
       width: {
         type: String,
         default: '100%'
@@ -82,78 +76,25 @@
         default: 'visible'
       }
     },
-    data() {
-      return {
-        tableHeight: ''
-      }
-    },
-    methods: {
-      // this should be a mixin, shared with table, etc
-      calculatedHeight() {
-        const offsetBottom = this.calculateHeightOffset || 0
-        this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top - offsetBottom}px` : 'auto'
-
-        // clean up the above code
-        // const offsetBottom = this.calculateHeightOffset || 0
-        // const offsetTop = this.$el.getBoundingClientRect().top
-        // const windowHeight = window.innerHeight
-        // const tableHeight = windowHeight - offsetTop - offsetBottom
-        // this.tableHeight = this.calculateHeight ? `${tableHeight}px` : this.height
-      }
-    },
-    mounted() {
-      if (this.calculateHeight) {
-        this.calculatedHeight()
-        window.addEventListener('resize', this.calculatedHeight)
-      }
-    },
-    beforeDestroy() {
-      if (this.calculateHeight) {
-        window.removeEventListener('resize', this.calculatedHeight)
+    computed: {
+      containerStyles() {
+        return {
+          width: this.width,
+          maxWidth: this.maxWidth,
+          height: this.dynamicHeight || this.height,
+          margin: this.margin,
+          backgroundColor: this.backgroundColor,
+          borderRadius: this.borderRadius,
+          border: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
+          overflow: this.overflow
+        }
+      },
+      contentStyles() {
+        return {
+          padding: this.padding,
+          overflow: this.overflow
+        }
       }
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-container {
-    position: relative;
-    display: flex;
-    flex-flow: column nowrap;
-    width: v-bind(width);
-    height: v-bind(height);
-    margin: v-bind(margin);
-    max-width: v-bind(maxWidth);
-    border-radius: v-bind(borderRadius);
-    background-color: v-bind(backgroundColor);
-    border-width: v-bind(borderWidth);
-    border-style: v-bind(borderStyle);
-    border-color: v-bind(borderColor);
-    overflow: v-bind(overflow);
-
-    &__header {
-      flex: 0 0 auto;
-      z-index: var(--z-index--fixed);
-    }
-
-    &__content {
-      position: relative;
-      flex: 1 1 auto;
-      padding: v-bind(padding);
-      overflow: v-bind(overflow);
-      -ms-overflow-style: none; // Internet Explorer, Edge
-      scrollbar-width: none; // Firefox
-
-      &::-webkit-scrollbar {
-        display: none; // Chrome, Safari, Opera
-      }
-
-      // so that dropdowns overlap sticky table headers
-      z-index: var(--z-index--default);
-    }
-
-    &__footer {
-      flex: 0 0 auto;
-    }
-  }
-</style>

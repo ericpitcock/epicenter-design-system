@@ -1,0 +1,28 @@
+.ep-container {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+
+  &__header {
+    flex: 0 0 auto;
+    z-index: var(--z-index--fixed);
+  }
+
+  &__content {
+    position: relative;
+    flex: 1 1 auto;
+    -ms-overflow-style: none; // Internet Explorer, Edge
+    scrollbar-width: none; // Firefox
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+
+    // so that dropdowns overlap sticky table headers
+    z-index: var(--z-index--default);
+  }
+
+  &__footer {
+    flex: 0 0 auto;
+  }
+}

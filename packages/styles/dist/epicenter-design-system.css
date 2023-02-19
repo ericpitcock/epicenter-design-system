@@ -83,9 +83,27 @@ textarea {
 
 /**
  * Do not edit directly
- * Generated on Fri, 17 Dec 2021 01:00:36 GMT
+ * Generated on Sun, 19 Feb 2023 16:46:41 GMT
  */
 :root {
+  --chart-sequence-1: #7c63b6;
+  --chart-sequence-2: #51b1c2;
+  --chart-sequence-3: #99bee6;
+  --chart-sequence-4: #6d7a83;
+  --chart-sequence-5: #c68cce;
+  --chart-sequence-6: #4880e0;
+  --chart-sequence-7: #edba21;
+  --chart-sequence-8: #a4978e;
+  --chart-sequence-9: #00767a;
+  --chart-sequence-10: #f3701a;
+  --chart-sequence-11: #c94185;
+  --chart-sequence-12: #c6c258;
+  --chart-sequence-13: #8a6e38;
+  --chart-sequence-14: #7ab800;
+  --chart-sequence-15: #ffb48f;
+  --chart-sequence-16: #f5f5f5;
+  --chart-sequence-17: #61d3ef;
+  --chart-sequence-16-light: #474747;
   --red-50: #fef2f2;
   --red-100: #fee2e2;
   --red-200: #fecaca;
@@ -1979,6 +1997,29 @@ text.highcharts-drilldown-data-label,
   cursor: inherit;
 }
 
+.ep-container {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.ep-container__header {
+  flex: 0 0 auto;
+  z-index: var(--z-index--fixed);
+}
+.ep-container__content {
+  position: relative;
+  flex: 1 1 auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: var(--z-index--default);
+}
+.ep-container__content::-webkit-scrollbar {
+  display: none;
+}
+.ep-container__footer {
+  flex: 0 0 auto;
+}
+
 .flatpickr-calendar {
   background: transparent;
   opacity: 0;
@@ -3025,6 +3066,41 @@ span.flatpickr-weekday {
 .notification-enter,
 .notification-leave-to {
   transform: translateY(-200%);
+}
+
+.ep-notifications {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0 2rem 2rem 2rem;
+}
+.ep-notifications__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.1rem;
+}
+
+.ep-notifications--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: var(--background-2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 .ep-select {

@@ -4,9 +4,7 @@
   "description": "Epicenter Design System",
   "scripts": {
     "storybook": "start-storybook -p 6006 --no-version-updates",
-    "build-storybook": "build-storybook",
-    "style-dictionary:build": "style-dictionary build --config ./sd.config.js",
-    "build-css": "sass ./packages/epicenter-design-system/src/assets/scss/global.scss ./packages/epicenter-design-system/dist/assets/css/ep-design-system.css"
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",

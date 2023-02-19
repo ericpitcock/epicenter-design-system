@@ -1,7 +1,7 @@
 {
-  "name": "@ericpitcock/epicenter-design-system",
+  "name": "@ericpitcock/epicenter-vue-components",
   "version": "1.0.2",
-  "description": "Epicenter Design System",
+  "description": "Epicenter Design System - Vue Components",
   "main": "index.js",
   "dependencies": {
     "flatpickr": "^4.6.13",

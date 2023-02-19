@@ -65,15 +65,17 @@
 
 <script>
   import { defineAsyncComponent } from 'vue'
+  import calculateHeight from '@/mixins/calculateHeight'
   import EpIcon from '../icon/EpIcon'
 
   export default {
     name: 'EpTable',
+    mixins: [calculateHeight],
     data() {
       return {
         currentSort: this.getSortKey(),
         currentSortDir: this.getSortDir(),
-        tableHeight: '',
+        // tableHeight: '',
       }
     },
     components: {
@@ -87,14 +89,14 @@
         type: Boolean,
         default: false
       },
-      calculateHeight: {
-        type: Boolean,
-        default: false
-      },
-      calculateHeightOffset: {
-        type: Number,
-        default: 0
-      },
+      // calculateHeight: {
+      //   type: Boolean,
+      //   default: false
+      // },
+      // calculateHeightOffset: {
+      //   type: Number,
+      //   default: 0
+      // },
       columns: {
         type: Array,
         required: true
@@ -177,12 +179,12 @@
         // if column cellType is component, return true
         return this.columns.find(column => column.key === key)?.cellType === 'component'
       },
-      calculatedHeight() {
-        // calculate height of table-container so sticky header works
-        // helpful for sticky situations - dad joke
-        const offsetBottom = this.calculateHeightOffset || 0
-        this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top - offsetBottom}px` : 'auto'
-      },
+      // calculatedHeight() {
+      //   // calculate height of table-container so sticky header works
+      //   // helpful for sticky situations - dad joke
+      //   const offsetBottom = this.calculateHeightOffset || 0
+      //   this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top - offsetBottom}px` : 'auto'
+      // },
       cellClick(value, key) {
         const command = this.columns.find(column => column.key === key)?.command
         const to = this.columns.find(column => column.key === key)?.to
@@ -254,7 +256,7 @@
       },
       containerStyles() {
         return {
-          height: this.tableHeight,
+          height: this.dynamicHeight,
           padding: this.padding,
         }
       },
@@ -319,17 +321,17 @@
         }
       },
     },
-    mounted() {
-      this.calculatedHeight()
-      if (this.calculateHeight) {
-        window.addEventListener('resize', this.calculatedHeight)
-      }
-    },
-    beforeDestroy() {
-      if (this.calculateHeight) {
-        window.removeEventListener('resize', this.calculatedHeight)
-      }
-    },
+    // mounted() {
+    //   this.calculatedHeight()
+    //   if (this.calculateHeight) {
+    //     window.addEventListener('resize', this.calculatedHeight)
+    //   }
+    // },
+    // beforeDestroy() {
+    //   if (this.calculateHeight) {
+    //     window.removeEventListener('resize', this.calculatedHeight)
+    //   }
+    // },
     watch: {
       filteredData() {
         this.$emit('data-changed', this.filteredData)

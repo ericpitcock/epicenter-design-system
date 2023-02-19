@@ -32,8 +32,6 @@ const Template = args => ({
   },
   template: `
     <ep-container
-      useHeader
-      useFooter
       max-width="120rem"
       height="100%"
       padding="3rem"

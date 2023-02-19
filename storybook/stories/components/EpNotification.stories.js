@@ -51,8 +51,6 @@ const Template = args => ({
   template: `
     <ep-temp-notification />
     <ep-container
-      useHeader
-      useFooter
       max-width="120rem"
       height="100%"
       padding="3rem"

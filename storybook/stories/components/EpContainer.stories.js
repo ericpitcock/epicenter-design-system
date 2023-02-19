@@ -16,18 +16,6 @@ export default {
   component: EpContainer,
   decorators: [container],
   argTypes: {
-    useHeader: {
-      name: 'Header',
-      control: {
-        type: 'boolean'
-      }
-    },
-    useFooter: {
-      name: 'Footer',
-      control: {
-        type: 'boolean'
-      }
-    },
     calculateHeight: {
       table: {
         disable: true
@@ -194,7 +182,7 @@ const Template = args => ({
   template: `
     <ep-container v-bind="args">
       <template #header>
-        <ep-header v-if="args.useHeader">
+        <ep-header>
           <template #left>
             Header
           </template>
@@ -217,7 +205,7 @@ const Template = args => ({
       </div>
       </template>
       <template #footer>
-        <ep-footer v-if="args.useFooter" />
+        <ep-footer />
       </template>
     </ep-container>
   `
@@ -226,9 +214,6 @@ const Template = args => ({
 export const Container = Template.bind({})
 
 Container.args = {
-  useHeader: true,
-  useFooter: true,
-  display: 'block',
   width: '100%',
   maxWidth: '120rem',
   height: '100%',

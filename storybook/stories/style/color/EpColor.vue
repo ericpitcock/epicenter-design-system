@@ -36,8 +36,8 @@
   import EpContainer from '@/components/container/EpContainer'
   import EpMenu from '@/components/menu/EpMenu'
   import EpTable from '@/components/table/EpTable'
-  import colors from '../../style/tokens/color/color'
-  import grayscale from '../../style/tokens/color/grayscale'
+  import colors from '../../../../packages/styles/tokens/color/color'
+  import grayscale from '../../../../packages/styles/tokens/color/grayscale'
   import copyToClipboard from '@/mixins/copyToClipboard'
   import { mapState } from 'vuex'
 
@@ -149,12 +149,12 @@
             key: 'sample',
             formatter: value => {
               return `<div
-                          class="color-sample"
-                          style="width: 50px;
-                          height: 50px;
-                          background-color: ${value};
-                          border-radius: var(--border-radius);"
-                        />`
+                            class="color-sample"
+                            style="width: 50px;
+                            height: 50px;
+                            background-color: ${value};
+                            border-radius: var(--border-radius);"
+                          />`
             }
           },
           {
@@ -368,4 +368,5 @@
         display: none; // Chrome, Safari, Opera
       }
     }
-  }</style>
+  }
+</style>

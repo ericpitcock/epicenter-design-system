@@ -94,35 +94,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-notifications {
-    height: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: stretch;
-    justify-content: center;
-    padding: 0 2rem 2rem 2rem;
-    &__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 4.1rem;
-    }
-  }
-  .ep-notifications--empty {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    background: var(--background-2);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-  }
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-  }
-  .fade-enter-from, .fade-leave-to {
-    opacity: 0;
-  }
-</style>
