@@ -16,11 +16,11 @@
 .sb-show-main {
   height: 100vh;
   width: 100vw;
+  background-color: var(--background-1);
 
   #root {
     height: 100vh;
     width: 100vw;
-    background-color: var(--background-1);
   }
 }
 

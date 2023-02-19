@@ -3,6 +3,9 @@
   flex-flow: row nowrap;
   align-items: center;
   overflow: hidden;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color);
 
   input {
     flex: 1;

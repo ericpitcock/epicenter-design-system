@@ -2867,6 +2867,9 @@ span.flatpickr-weekday {
   flex-flow: row nowrap;
   align-items: center;
   overflow: hidden;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color);
 }
 .ep-input input {
   flex: 1;

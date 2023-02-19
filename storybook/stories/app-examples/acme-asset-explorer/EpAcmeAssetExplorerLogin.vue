@@ -12,7 +12,7 @@
       </template>
       <div class="ep-login__form">
         <form @submit.prevent="login">
-          <ep-basic-input
+          <ep-input
             type="email"
             id="email"
             v-model="email"
@@ -20,7 +20,7 @@
             background-color="var(--background-1)"
             required
           />
-          <ep-basic-input
+          <ep-input
             type="password"
             id="password"
             v-model="password"

@@ -164,7 +164,6 @@
         return {
           width: this.width,
           height: this.height,
-          border: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
           borderRadius: this.borderRadius,
           backgroundColor: this.backgroundColor,
           color: this.color

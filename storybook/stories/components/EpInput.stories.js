@@ -115,7 +115,7 @@ const Template = args => ({
   },
   template: `
     <div style="width: 300px;">
-      <ep-basic-input v-bind="args" />
+      <ep-input v-bind="args" />
     </div>
   `
 })
