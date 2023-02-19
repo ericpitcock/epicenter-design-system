@@ -1,19 +1,10 @@
 .ep-header {
-  position: v-bind(headerPosition);
-  top: v-bind(stickyTop);
   width: 100%;
-  height: v-bind(height);
-  padding: v-bind(padding);
-  background-color: v-bind(backgroundColor);
-  border-bottom: v-bind(borderWidth) v-bind(borderStyle) v-bind(borderColor);
-  // might be able to use var(--z-index--fixed)
-  z-index: v-bind(zIndex);
 
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: v-bind(itemGap);
     height: 100%;
 
     &__left,
@@ -22,21 +13,17 @@
       display: flex;
       height: 100%;
       align-items: center;
-      gap: v-bind(itemGap);
     }
 
     &__left {
-      flex: v-bind(leftFlex);
       justify-content: flex-start;
     }
 
     &__center {
-      flex: v-bind(centerFlex);
       justify-content: center;
     }
 
     &__right {
-      flex: v-bind(rightFlex);
       justify-content: flex-end;
     }
   }

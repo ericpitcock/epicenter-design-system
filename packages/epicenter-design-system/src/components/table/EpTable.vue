@@ -1,6 +1,12 @@
 <template>
-  <div class="ep-table-container">
-    <table :class="['ep-table', classes]">
+  <div
+    class="ep-table-container"
+    :style="containerStyles"
+  >
+    <table
+      :class="['ep-table', classes]"
+      :style="tableClasses"
+    >
       <thead>
         <tr>
           <template
@@ -11,6 +17,7 @@
               v-if="!excluded(column.key)"
               @click="sort(column.key)"
               :class="headClasses(column.key)"
+              :style="stickyHeaderTop"
             >
               <div>
                 <span class="label">{{ column.header }}</span>
@@ -33,7 +40,10 @@
             v-for="(value, key) in row"
             :key="key"
           >
-            <td v-if="!excluded(key) && !isComponent(key)">
+            <td
+              v-if="!excluded(key) && !isComponent(key)"
+              :style="tdStyles"
+            >
               <span
                 @click.stop="cellClick(value, key)"
                 v-html="formatCell(value, key, row)"
@@ -242,6 +252,12 @@
           'ep-table--sortable': this.sortable
         }
       },
+      containerStyles() {
+        return {
+          height: this.tableHeight,
+          padding: this.padding,
+        }
+      },
       filteredData() {
         if (!this.searchable || !this.search.length) return this.sortedData
 
@@ -286,7 +302,22 @@
             return 1 * modifier
           return 0
         })
-      }
+      },
+      stickyHeaderTop() {
+        const top = this.stickyHeader ? this.stickyTop : '0'
+        return { top: `${top}px` }
+      },
+      tableClasses() {
+        return {
+          width: this.width,
+        }
+      },
+      tdStyles() {
+        return {
+          verticalAlign: this.verticalAlign,
+          whiteSpace: this.whiteSpace,
+        }
+      },
     },
     mounted() {
       this.calculatedHeight()

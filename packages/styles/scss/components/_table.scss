@@ -1,6 +1,4 @@
 .ep-table-container {
-  height: v-bind(tableHeight);
-  padding: v-bind(padding);
   overflow: auto;
   -ms-overflow-style: none; // Internet Explorer, Edge
   scrollbar-width: none; // Firefox
@@ -11,8 +9,6 @@
 }
 
 .ep-table {
-  width: v-bind(width);
-
   thead {
     font-variation-settings: 'wght' 600;
     user-select: none;
@@ -66,8 +62,6 @@
       td {
         min-width: 1px;
         padding: 1.4rem;
-        vertical-align: v-bind(verticalAlign);
-        white-space: v-bind(whiteSpace);
       }
     }
   }
@@ -129,7 +123,6 @@
     thead {
       th {
         position: sticky;
-        top: v-bind(stickyTop);
         z-index: var(--z-index--sticky);
         // top: -1px; // fixes wierd 1px gap that exposes tbody contents during scroll
       }

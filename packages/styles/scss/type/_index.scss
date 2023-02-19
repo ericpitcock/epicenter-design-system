@@ -8,6 +8,14 @@ html {
   }
 }
 
+body {
+  font-size: var(--font-size--default);
+  font-variation-settings: 'wght' 500;
+  // Stylistic set 2: Disambiguation
+  // font-feature-settings: 'ss02';
+  color: var(--text-color);
+}
+
 // Font families
 @font-face {
   font-family: 'Inter var';
@@ -15,7 +23,7 @@ html {
   font-display: swap;
   font-style: normal;
   font-named-instance: 'Regular';
-  src: url('../fonts/Inter-roman.var.woff2?v=3.19') format('woff2');
+  src: url('./fonts/Inter-roman.var.woff2?v=3.19') format('woff2');
 }
 
 @font-face {
@@ -23,7 +31,7 @@ html {
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
-  src: url('../fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+  src: url('./fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
 }
 
 .monospace {

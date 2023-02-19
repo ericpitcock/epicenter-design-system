@@ -4,6 +4,7 @@
       <div
         v-if="iconLeft"
         class="ep-select__inner__icon-left"
+        :style="iconStyles"
       >
         <ep-icon v-bind="iconLeft" />
       </div>
@@ -12,7 +13,10 @@
         :for="id"
         class="ep-select__inner__label"
       >{{ label }}</label>
-      <div class="ep-select__inner__icon-right">
+      <div
+        class="ep-select__inner__icon-right"
+        :style="iconStyles"
+      >
         <ep-icon name="chevron-down" />
       </div>
     </div>
@@ -97,6 +101,12 @@
       }
     },
     computed: {
+      iconStyles() {
+        return {
+          flex: `0 0 ${this.height}`,
+          height: this.height,
+        }
+      },
       classes() {
         return {
           'ep-select--has-focus': this.hasFocus,

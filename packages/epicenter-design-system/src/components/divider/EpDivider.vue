@@ -1,5 +1,8 @@
 <template>
-  <hr class="ep-divider" />
+  <hr
+    class="ep-divider"
+    :style="dividerStyles"
+  />
 </template>
 
 <script>
@@ -13,6 +16,14 @@
       margin: {
         type: String,
         default: '0'
+      }
+    },
+    computed: {
+      dividerStyles() {
+        return {
+          backgroundColor: this.color,
+          margin: this.margin
+        }
       }
     }
   }

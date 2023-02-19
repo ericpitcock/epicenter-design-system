@@ -46,7 +46,7 @@
 
 <script>
   import AcmeLogo from './AcmeLogo'
-  import EpBasicInput from '@/components/input/EpBasicInput'
+  import EpInput from '@/components/input/EpInput'
   import EpButton from '@/components/button/EpButton'
   import EpContainer from '@/components/container/EpContainer'
 
@@ -54,10 +54,10 @@
     name: 'EpAcmeAssetExplorerLogin',
     components: {
       AcmeLogo,
-      EpBasicInput,
+      EpInput,
       EpButton,
       EpContainer,
-      EpBasicInput
+      EpInput
     },
     data() {
       return {
@@ -130,6 +130,7 @@
       justify-content: center;
       align-items: center;
       border-top: 1px solid var(--border-color);
-    padding: 2rem;
+      padding: 2rem;
+    }
   }
-}</style>
+</style>

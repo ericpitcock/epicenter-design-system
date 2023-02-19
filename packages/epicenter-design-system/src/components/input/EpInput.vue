@@ -1,8 +1,12 @@
 <template>
-  <div :class="['ep-input', classes]">
+  <div
+    :class="['ep-input', inputClasses]"
+    :style="inputStyles"
+  >
     <div
       v-if="icon"
       class="ep-input__icon"
+      :style="iconStyles"
     >
       <ep-icon v-bind="icon" />
     </div>
@@ -24,6 +28,7 @@
         'ep-input__clear',
         { 'ep-input__clear--disabled': !currentValue }
       ]"
+      :style="iconStyles"
       @click="onClear"
     >
       <ep-icon
@@ -38,7 +43,7 @@
   import EpIcon from '../icon/EpIcon'
 
   export default {
-    name: 'EpBasicInput',
+    name: 'EpInput',
     components: {
       EpIcon
     },
@@ -145,7 +150,7 @@
       }
     },
     computed: {
-      classes() {
+      inputClasses() {
         return {
           'ep-input--has-icon': this.icon,
           'ep-input--focus': this.hasFocus,
@@ -155,6 +160,22 @@
           // 'ep-input--warning': this.warning
         }
       },
+      inputStyles() {
+        return {
+          width: this.width,
+          height: this.height,
+          border: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
+          borderRadius: this.borderRadius,
+          backgroundColor: this.backgroundColor,
+          color: this.color
+        }
+      },
+      iconStyles() {
+        return {
+          flex: `0 0 ${this.height}`,
+          height: this.height,
+        }
+      }
       // currentValue() {
       //   return this.value
       // }

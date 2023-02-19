@@ -2,12 +2,6 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  width: v-bind(width);
-  height: v-bind(height);
-  border: v-bind(borderWidth) v-bind(borderStyle) v-bind(borderColor);
-  border-radius: v-bind(borderRadius);
-  background-color: v-bind(backgroundColor);
-  color: v-bind(color);
   overflow: hidden;
 
   input {
@@ -45,11 +39,9 @@
 
   &__icon,
   &__clear {
-    flex: 0 0 v-bind(height);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: v-bind(height);
   }
 
   &__clear {

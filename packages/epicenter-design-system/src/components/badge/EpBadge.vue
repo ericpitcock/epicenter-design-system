@@ -1,5 +1,8 @@
 <template>
-  <div :class="['ep-badge', { 'ep-badge--uppercase': uppercase }]">
+  <div
+    :class="['ep-badge', { 'ep-badge--uppercase': uppercase }]"
+    :style="badgeStyles"
+  >
     {{ label }}
   </div>
 </template>
@@ -27,6 +30,15 @@
       uppercase: {
         type: Boolean,
         default: false
+      }
+    },
+    computed: {
+      badgeStyles() {
+        return {
+          backgroundColor: this.backgroundColor,
+          borderColor: this.borderColor,
+          color: this.textColor
+        }
       }
     }
   }

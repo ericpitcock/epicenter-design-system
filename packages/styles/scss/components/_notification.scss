@@ -5,7 +5,6 @@
   &__color-strip {
     width: .5rem;
     border-radius: var(--border-radius--large) 0 0 var(--border-radius--large);
-    background: v-bind(colorStrip);
   }
 
   &__body {

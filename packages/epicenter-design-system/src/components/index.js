@@ -15,7 +15,7 @@ import EpFlexContainer from './flexbox/EpFlexContainer.vue'
 import EpFooter from './footer/EpFooter.vue'
 import EpHeader from './header/EpHeader.vue'
 import EpIcon from './icon/EpIcon.vue'
-import EpBasicInput from './input/EpBasicInput.vue'
+import EpInput from './input/EpInput.vue'
 import EpLoading from './loading/EpLoading.vue'
 import EpMap from './map/EpMap.vue'
 import EpMenu from './menu/EpMenu.vue'
@@ -44,7 +44,7 @@ export default {
   EpFooter,
   EpHeader,
   EpIcon,
-  EpBasicInput,
+  EpInput,
   EpLoading,
   EpMap,
   EpMenu,

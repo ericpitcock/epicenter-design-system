@@ -24,11 +24,9 @@
     // background: red;
     &__icon-left,
     &__icon-right {
-      flex: 0 0 v-bind(height);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: v-bind(height);
       // background: black;
       // pointer-events: none;
     }

@@ -1,6 +1,9 @@
 <template>
   <div class="ep-notification">
-    <div class="ep-notification__color-strip"></div>
+    <div
+      class="ep-notification__color-strip"
+      :style="colorStrip"
+    ></div>
     <div class="ep-notification__body">
       <div class="ep-notification__body__message">
         <p class="ep-notification__body__message__text font-size--small">{{
@@ -59,7 +62,7 @@
     },
     computed: {
       colorStrip() {
-        return this.colors[this.alertStyle]
+        return `background: ${this.colors[this.alertStyle]}`
       }
     },
     methods: {
@@ -91,5 +94,5 @@
         return getRelativeTime(date)
       }
     }
-  }
+}
 </script>

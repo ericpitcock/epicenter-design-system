@@ -24,9 +24,9 @@ module.exports = {
         'css-loader',
         {
           loader: 'sass-loader',
-          options: {
-            prependData: '@import "@/assets/scss/_mixins.scss";'
-          }
+          // options: {
+          //   prependData: '@import "@/assets/scss/_mixins.scss";'
+          // }
         }
       ]
     })

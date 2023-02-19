@@ -26,7 +26,7 @@ $title-font-size: var(--font-size--default);
 $subtitle-font-size: var(--font-size--default);
 $legend-font-size: var(--font-size--default);
 $axis-labels-font-size: var(--font-size--default);
-@import 'highcharts/css/highcharts.scss';
+@import '../../../../node_modules/highcharts/css/highcharts.scss';
 
 .highcharts-container {
   font-family: $font-family;

@@ -8,10 +8,10 @@
     border-radius: var(--border-radius);
     outline: none;
     font-size: var(--font-size--body);
-    background-image: url('../../../../../static/airplane.svg');
-    background-repeat: no-repeat;
-    background-position: 14px 50%;
 
+    // background-image: url('../../../../../static/airplane.svg');
+    // background-repeat: no-repeat;
+    // background-position: 14px 50%;
     &:focus {
       border-color: var(--color--primary);
     }

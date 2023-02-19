@@ -1,6 +1,9 @@
 <template>
   <div class="ep-banner">
-    <div class="ep-banner__color-strip"></div>
+    <div
+      class="ep-banner__color-strip"
+      :style="colorStrip"
+    ></div>
     <div class="ep-banner__body">
       <div
         v-if="iconProps.name"
@@ -76,7 +79,7 @@
     },
     computed: {
       colorStrip() {
-        return this.colors[this.bannerStyle]
+        return `background: ${this.colors[this.bannerStyle]}`
       }
     },
     methods: {
@@ -84,5 +87,5 @@
         this.$emit('dismiss')
       }
     }
-  }
+}
 </script>

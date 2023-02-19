@@ -1,6 +1,6 @@
 <template>
   <div class="ep-date-picker">
-    <ep-basic-input
+    <ep-input
       id="dp"
       v-bind="inputProps"
     />
@@ -9,7 +9,7 @@
 
 <script>
   import flatpickr from 'flatpickr'
-  import EpBasicInput from '../input/EpBasicInput'
+  import EpInput from '../input/EpInput'
 
   export default {
     name: 'EpDatePicker',
@@ -24,7 +24,7 @@
       },
     },
     components: {
-      EpBasicInput
+      EpInput
     },
     data() {
       return {

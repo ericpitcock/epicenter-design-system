@@ -1,6 +1,9 @@
 <template>
   <transition name="fade">
-    <div class="ep-loading">
+    <div
+      class="ep-loading"
+      :style="loadingStateStyles"
+    >
       <div class="ep-loading__icon-container">
         <!-- <img v-if="icon" :src="`${icon}.svg`" /> -->
         <svg
@@ -80,24 +83,32 @@
         this.cycleMessages()
       }
     },
+    computed: {
+      loadingStateStyles() {
+        return {
+          backgroundColor: this.backgroundColor,
+          borderRadius: this.borderRadius
+        }
+      }
+    },
     methods: {
       cycleMessages() {
         // every set duration, display the next message and icon by loading them into data
         // when the last message is displayed, emit a done event
-      if (this.messages === null) return
+        if (this.messages === null) return
 
-      this.messages.forEach((message, index) => {
-        setTimeout(() => {
-          this.icon = message.icon
-          this.message = message.message
-          if (index === this.messages.length - 1) {
-            setTimeout(() => {
-              this.$emit('done')
-            }, this.messageDelay)
-          }
-        }, this.messageDelay * index)
-      })
+        this.messages.forEach((message, index) => {
+          setTimeout(() => {
+            this.icon = message.icon
+            this.message = message.message
+            if (index === this.messages.length - 1) {
+              setTimeout(() => {
+                this.$emit('done')
+              }, this.messageDelay)
+            }
+          }, this.messageDelay * index)
+        })
+      }
     }
-  }
 }
 </script>

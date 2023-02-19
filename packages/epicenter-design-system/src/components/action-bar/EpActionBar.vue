@@ -1,6 +1,9 @@
 <!-- vue action bar component with horizontally aligned EpIcon components -->
 <template>
-  <div class="ep-action-bar">
+  <div
+    class="ep-action-bar"
+    :style="actionBarStyles"
+  >
     <template v-for="item in items">
       <ep-button
         v-if="item.type === 'button'"
@@ -47,6 +50,11 @@
       }
     },
     computed: {
+      actionBarStyles() {
+        return {
+          justifyContent: this.justifyContent
+        }
+      },
       buttonDefaults() {
         return {
           kind: 'ghost',

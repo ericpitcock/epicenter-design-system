@@ -1,5 +1,8 @@
 <template>
-  <footer class="ep-footer">
+  <footer
+    class="ep-footer"
+    :style="footerStyles"
+  >
     <slot />
   </footer>
 </template>
@@ -8,14 +11,6 @@
   export default {
     name: 'EpFooter',
     props: {
-      // display: {
-      //   type: String,
-      //   default: 'block'
-      // },
-      width: {
-        type: String,
-        default: '100%'
-      },
       height: {
         type: String,
         default: '5.1rem'
@@ -32,10 +27,6 @@
         type: String,
         default: 'var(--background-2)'
       },
-      borderRadius: {
-        type: String,
-        default: 'var(--border-radius--large)'
-      },
       borderWidth: {
         type: String,
         default: '0.1rem'
@@ -47,6 +38,17 @@
       borderColor: {
         type: String,
         default: 'var(--border-color)'
+      }
+    },
+    computed: {
+      footerStyles() {
+        return {
+          height: this.height,
+          padding: this.padding,
+          margin: this.margin,
+          backgroundColor: this.backgroundColor,
+          borderTop: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`
+        }
       }
     }
   }

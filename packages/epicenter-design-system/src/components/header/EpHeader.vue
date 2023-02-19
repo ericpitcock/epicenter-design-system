@@ -1,21 +1,30 @@
 <template>
-  <div class="ep-header">
-    <div class="ep-header__content">
+  <div
+    class="ep-header"
+    :style="containerStyles"
+  >
+    <div
+      class="ep-header__content"
+      :style="contentStyles"
+    >
       <div
-        v-if="hasLeftContent"
+        v-if="$slots.left"
         class="ep-header__content__left"
+        :style="leftStyles"
       >
         <slot name="left" />
       </div>
       <div
-        v-if="hasCenterContent"
+        v-if="$slots.center"
         class="ep-header__content__center"
+        :style="centerStyles"
       >
         <slot name="center" />
       </div>
       <div
-        v-if="hasRightContent"
+        v-if="$slots.right"
         class="ep-header__content__right"
+        :style="rightStyles"
       >
         <slot name="right" />
       </div>
@@ -97,18 +106,45 @@
       }
     },
     computed: {
-      hasLeftContent() {
-        return !!this.$slots.left
+      containerStyles() {
+        return {
+          position: this.headerPosition,
+          top: this.stickyTop,
+          height: this.height,
+          padding: this.padding,
+          backgroundColor: this.backgroundColor,
+          borderBottom: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
+          // might be able to use var(--z-index--fixed)
+          zIndex: this.zIndex
+        }
       },
-      hasCenterContent() {
-        return !!this.$slots.center
+      contentStyles() {
+        return {
+          gap: this.itemGap,
+        }
       },
-      hasRightContent() {
-      return !!this.$slots.right
-    },
-    headerPosition() {
-      return this.sticky ? 'sticky' : 'relative'
+      leftStyles() {
+        return {
+          flex: this.leftFlex,
+          gap: this.itemGap,
+        }
+      },
+      centerStyles() {
+        return {
+          flex: this.centerFlex,
+          gap: this.itemGap,
+        }
+      },
+      rightStyles() {
+        return {
+          flex: this.rightFlex,
+          gap: this.itemGap,
+        }
+      },
+      // need to address this
+      headerPosition() {
+        return this.sticky ? 'sticky' : 'relative'
+      }
     }
-  }
 }
 </script>
