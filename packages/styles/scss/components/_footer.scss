@@ -1,7 +1,30 @@
 .ep-footer {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-end;
-  align-items: center;
   width: 100%;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+    &__left,
+    &__center,
+    &__right {
+      display: flex;
+      height: 100%;
+      align-items: center;
+    }
+
+    &__left {
+      justify-content: flex-start;
+    }
+
+    &__center {
+      justify-content: center;
+    }
+
+    &__right {
+      justify-content: flex-end;
+    }
+  }
 }

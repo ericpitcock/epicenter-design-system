@@ -8,11 +8,6 @@
       >
         <ep-icon v-bind="iconLeft" />
       </div>
-      <label
-        v-if="label"
-        :for="id"
-        class="ep-select__inner__label"
-      >{{ label }}</label>
       <div
         class="ep-select__inner__icon-right"
         :style="iconStyles"
@@ -63,10 +58,6 @@
       id: {
         type: String,
         required: true,
-      },
-      label: {
-        type: String,
-        // required: true,
       },
       options: {
         type: Array,

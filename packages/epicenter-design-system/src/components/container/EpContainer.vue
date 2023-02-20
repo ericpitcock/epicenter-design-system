@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import calculateHeight from '@/mixins/calculateHeight'
+  import calculateHeight from '../../mixins/calculateHeight'
 
   export default {
     name: 'EpContainer',

@@ -2867,11 +2867,27 @@ span.flatpickr-weekday {
 }
 
 .ep-footer {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-end;
-  align-items: center;
   width: 100%;
+}
+.ep-footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.ep-footer__content__left, .ep-footer__content__center, .ep-footer__content__right {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.ep-footer__content__left {
+  justify-content: flex-start;
+}
+.ep-footer__content__center {
+  justify-content: center;
+}
+.ep-footer__content__right {
+  justify-content: flex-end;
 }
 
 .ep-header {
@@ -2916,6 +2932,7 @@ span.flatpickr-weekday {
   flex: 1;
   height: 100%;
   padding: 0 1.2rem;
+  caret-color: var(--color--primary);
 }
 .ep-input input::placeholder {
   color: var(--text-color);
@@ -3124,22 +3141,17 @@ span.flatpickr-weekday {
   height: 100%;
   pointer-events: none;
 }
+.ep-select--has-icon .ep-select__inner {
+  justify-content: space-between;
+}
 .ep-select__inner__icon-left, .ep-select__inner__icon-right {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.ep-select__inner__label {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  padding: 1.2rem;
-}
-.ep-select--has-value .ep-select__inner__label {
-  visibility: hidden;
-}
-.ep-select--has-icon .ep-select__inner__label {
-  padding-left: 0;
+.ep-select__inner__icon-right {
+  position: relative;
+  top: -2px;
 }
 .ep-select select {
   padding: 1.25rem 1.2rem;

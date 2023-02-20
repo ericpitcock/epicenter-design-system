@@ -65,7 +65,7 @@
 
 <script>
   import { defineAsyncComponent } from 'vue'
-  import calculateHeight from '@/mixins/calculateHeight'
+  import calculateHeight from '../../mixins/calculateHeight'
   import EpIcon from '../icon/EpIcon'
 
   export default {

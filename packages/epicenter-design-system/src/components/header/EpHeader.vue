@@ -7,27 +7,16 @@
       class="ep-header__content"
       :style="contentStyles"
     >
-      <div
-        v-if="$slots.left"
-        class="ep-header__content__left"
-        :style="leftStyles"
-      >
-        <slot name="left" />
-      </div>
-      <div
-        v-if="$slots.center"
-        class="ep-header__content__center"
-        :style="centerStyles"
-      >
-        <slot name="center" />
-      </div>
-      <div
-        v-if="$slots.right"
-        class="ep-header__content__right"
-        :style="rightStyles"
-      >
-        <slot name="right" />
-      </div>
+      <template v-for="slotName in ['left', 'center', 'right']">
+        <div
+          v-if="$slots[slotName]"
+          :key="slotName"
+          :class="`ep-header__content__${slotName}`"
+          :style="getStyles(slotName)"
+        >
+          <slot :name="slotName" />
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -110,12 +99,11 @@
         return {
           position: this.headerPosition,
           top: this.stickyTop,
+          width: this.width,
           height: this.height,
           padding: this.padding,
           backgroundColor: this.backgroundColor,
-          borderBottom: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
-          // might be able to use var(--z-index--fixed)
-          zIndex: this.zIndex
+          borderBottom: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`
         }
       },
       contentStyles() {
@@ -145,6 +133,11 @@
       headerPosition() {
         return this.sticky ? 'sticky' : 'relative'
       }
+    },
+    methods: {
+      getStyles(slotName) {
+        return this[`${slotName}Styles`]
+      }
     }
-}
+  }
 </script>

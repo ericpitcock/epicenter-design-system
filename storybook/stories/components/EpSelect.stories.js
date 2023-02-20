@@ -21,14 +21,15 @@ export default {
         type: 'text'
       }
     },
-    label: {
-      control: {
-        type: 'text'
-      }
-    },
     options: {
       control: {
         type: 'array'
+      }
+    },
+    modelValue: { table: { disable: true } },
+    placeholder: {
+      control: {
+        type: 'text'
       }
     }
   }
@@ -50,7 +51,8 @@ export const Select = Template.bind({})
 
 Select.args = {
   id: 'select',
-  label: 'Placeholder',
+  iconLeft: { name: 'search' },
+  placeholder: 'Make a selection…',
   options: [
     {
       label: 'Option 1',
