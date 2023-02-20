@@ -4,7 +4,7 @@ import store from '../storybook/store'
 app.use(store)
 
 // global styles
-import '!style-loader!css-loader!sass-loader!../packages/styles/dist/epicenter-design-system.css'
+import '!style-loader!css-loader!sass-loader!../packages/epicenter-styles/dist/epicenter-design-system.css'
 import '!style-loader!css-loader!sass-loader!../storybook/storybook.scss'
 
 export const parameters = {

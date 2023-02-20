@@ -1,5 +1,5 @@
 const path = require('path')
-const rootPath = path.resolve(__dirname, '../packages/epicenter-design-system/src')
+const rootPath = path.resolve(__dirname, '../packages/epicenter-vue-components/src')
 
 module.exports = {
   stories: ['../storybook/stories/**/*.stories.js'],
