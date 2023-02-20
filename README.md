@@ -1,1 +1,1 @@
-# ep-design-system
+# Epicenter Design System

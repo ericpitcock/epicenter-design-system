@@ -23,13 +23,11 @@ module.exports = {
         'style-loader',
         'css-loader',
         {
-          loader: 'sass-loader',
-          // options: {
-          //   prependData: '@import "@/assets/scss/_mixins.scss";'
-          // }
+          loader: 'sass-loader'
         }
       ]
     })
+
     config.resolve.alias['@'] = rootPath
     config.resolve.alias['~'] = rootPath
 
