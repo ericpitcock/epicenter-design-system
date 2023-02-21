@@ -40,12 +40,14 @@
     </template>
     <template #footer>
       <ep-footer padding="0 3rem">
-        <ep-button
-          kind="primary"
-          label="Submit"
-          :disabled="!rating"
-          @click="submit"
-        />
+        <template #right>
+          <ep-button
+            kind="primary"
+            label="Submit"
+            :disabled="!rating"
+            @click="submit"
+          />
+        </template>
       </ep-footer>
     </template>
   </ep-container>
@@ -181,13 +183,14 @@
       }
     }
 
-  &__footer {
-    display: flex;
-    justify-content: flex-end;
+    &__footer {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
-}
 
-:deep(.gold svg path) {
-  fill: gold;
-  stroke: gold;
-}</style>
+  :deep(.gold svg path) {
+    fill: gold;
+    stroke: gold;
+  }
+</style>
