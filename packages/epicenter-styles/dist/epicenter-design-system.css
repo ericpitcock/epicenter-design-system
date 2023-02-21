@@ -3041,6 +3041,77 @@ span.flatpickr-weekday {
   width: 100%;
 }
 
+.ep-multi-search {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  overflow: hidden;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color);
+}
+.ep-multi-search .queries {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 0.3rem;
+  padding-right: 0.6rem;
+}
+.ep-multi-search .queries .query {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 0.3rem;
+  height: 100%;
+  padding: 0 0.6rem 0 1rem;
+  background-color: var(--color--primary);
+  border-radius: var(--border-radius);
+  color: var(--text--white);
+}
+.ep-multi-search .queries .query:hover {
+  background-color: var(--primary-color--hover);
+  cursor: pointer;
+}
+.ep-multi-search .queries .query .query__text {
+  line-height: 2rem;
+}
+.ep-multi-search .queries .query .query__close {
+  cursor: pointer;
+}
+.ep-multi-search input {
+  flex: 1;
+  height: 100%;
+  padding: 0 1.2rem;
+  caret-color: var(--color--primary);
+}
+.ep-multi-search input::placeholder {
+  color: var(--text-color);
+}
+.ep-multi-search input:focus::placeholder {
+  color: transparent;
+}
+.ep-multi-search--has-icon input {
+  padding-left: 0;
+}
+.ep-multi-search--focus {
+  border-color: var(--color--primary);
+}
+.ep-multi-search--disabled {
+  color: var(--text-color--disabled);
+  border-color: var(--border-color--disabled);
+}
+.ep-multi-search--disabled input::placeholder {
+  opacity: 0.3;
+}
+.ep-multi-search__icon, .ep-multi-search__clear {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ep-multi-search__clear {
+  cursor: pointer;
+}
+
 .ep-notification {
   display: flex;
   width: 30rem;

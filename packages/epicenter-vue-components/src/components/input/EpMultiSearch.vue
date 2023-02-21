@@ -1,8 +1,12 @@
 <template>
-  <div :class="['ep-input', classes]">
+  <div
+    :class="['ep-multi-search', classes]"
+    :style="inputStyles"
+  >
     <div
       v-if="icon"
-      class="ep-input__icon"
+      class="ep-multi-search__icon"
+      :style="iconStyles"
     >
       <ep-icon v-bind="icon" />
     </div>
@@ -37,7 +41,8 @@
     />
     <div
       v-if="clearable"
-      class="ep-input__clear"
+      class="ep-multi-search__clear"
+      :style="iconStyles"
       @click="onClear"
     >
       <ep-icon name="close" />
@@ -161,9 +166,9 @@
     computed: {
       classes() {
         return {
-          'ep-input--has-icon': this.icon,
-          'ep-input--focus': this.hasFocus,
-          'ep-input--disabled': this.disabled,
+          'ep-multi-search--has-icon': this.icon,
+          'ep-multi-search--focus': this.hasFocus,
+          'ep-multi-search--disabled': this.disabled,
           // 'ep-input--error': this.error,
           // 'ep-input--success': this.success,
           // 'ep-input--warning': this.warning
@@ -175,6 +180,21 @@
         // if value is not empty and query is empty, then clearable is true
         // if value and query is empty, then clearable is false
         return (this.value && this.query.length > 0) || (!this.value && this.query.length > 0) || (this.value && this.query.length === 0)
+      },
+      iconStyles() {
+        return {
+          flex: `0 0 ${this.height}`,
+          height: this.height,
+        }
+      },
+      inputStyles() {
+        return {
+          width: this.width,
+          height: this.height,
+          borderRadius: this.borderRadius,
+          backgroundColor: this.backgroundColor,
+          color: this.color
+        }
       },
       placeholderValue() {
         // if the input is empty, no value and no query, show the prop placeholder
@@ -190,82 +210,4 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  .ep-input {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    width: v-bind(width);
-    height: v-bind(height);
-    border: v-bind(borderWidth) v-bind(borderStyle) v-bind(borderColor);
-    border-radius: v-bind(borderRadius);
-    background-color: v-bind(backgroundColor);
-    color: v-bind(color);
-    overflow: hidden;
-    .queries {
-      display: flex;
-      flex-flow: row wrap;
-      align-items: center;
-      gap: 0.3rem;
-      padding-right: 0.6rem;
-      .query {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        gap: 0.3rem;
-        height: 100%;
-        padding: 0 0.6rem 0 1rem;
-        background-color: var(--color--primary);
-        border-radius: var(--border-radius);
-        &:hover {
-          background-color: var(--primary-color--hover);
-          cursor: pointer;
-        }
-        .query__text {
-          line-height: 2rem;
-        }
-        .query__close {
-          // background-color: red;
-          // margin-left: 0.8rem;
-          cursor: pointer;
-        }
-      }
-    }
-    input {
-      flex: 1;
-      height: 100%;
-      padding: 0 1.2rem;
-      &::placeholder {
-        color: var(--text-color);
-      }
-      &:focus {
-        &::placeholder {
-          color: transparent;
-        }
-      }
-    }
-    &--has-icon input {
-      padding-left: 0;
-    }
-    &--focus {
-      border-color: var(--color--primary);
-    }
-    &--disabled {
-      color: var(--text-color--disabled);
-      border-color: var(--border-color--disabled);
-      input::placeholder {
-        opacity: 0.3;
-      }
-    }
-    &__icon, &__clear {
-      flex: 0 0 v-bind(height);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: v-bind(height);
-    }
-    &__clear {
-      cursor: pointer;
-    }
-  }
-</style>
+<style lang="scss" scoped></style>
