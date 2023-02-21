@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "Epicenter Design System",
   "scripts": {
+    "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-vue-components && npm install && cd .. && npm install && npm run build-storybook",
     "storybook": "start-storybook -p 6006 --no-version-updates",
     "build-storybook": "build-storybook"
   },
