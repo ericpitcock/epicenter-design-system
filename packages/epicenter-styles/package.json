@@ -3,10 +3,19 @@
   "version": "1.0.2",
   "description": "Epicenter Design System - Styles",
   "scripts": {
-    "style-dictionary:build": "style-dictionary build --config ./sd.config.js"
+    "style-dictionary:build": "style-dictionary build --config ./sd.config.js",
+    "sass-watch": "sass --watch ./index.scss ./dist/epicenter-design-system.css"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericpitcock/ep-design-system.git"
+  },
+  "author": "Eric Pitcock",
   "dependencies": {},
   "devDependencies": {
+    "highcharts": "^8.1.2",
+    "mapbox-gl": "^1.10.1",
+    "sass": "^1.44.0",
     "style-dictionary": "^3.1.0"
   }
 }

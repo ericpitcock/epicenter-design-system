@@ -3,6 +3,11 @@
   "version": "1.0.2",
   "description": "Epicenter Design System - Vue Components",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericpitcock/ep-design-system.git"
+  },
+  "author": "Eric Pitcock",
   "dependencies": {
     "flatpickr": "^4.6.13",
     "highcharts": "^8.1.2",
