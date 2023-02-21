@@ -124,6 +124,10 @@
         }
       },
       onEnter() {
+        // if currentIndex is -1, the user has not selected an item from the dropdown
+        if (this.currentIndex === -1) {
+          return
+        }
         this.selectItem()
       },
       onEsc() {
