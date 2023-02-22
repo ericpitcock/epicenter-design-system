@@ -1,4 +1,3 @@
-<!-- vue action bar component with horizontally aligned EpIcon components -->
 <template>
   <div
     class="ep-action-bar"
@@ -22,8 +21,8 @@
 </template>
 
 <script>
-  import EpButton from '../button/EpButton'
-  import EpDropdown from '../dropdown/EpDropdown'
+  import EpButton from '../button/EpButton.vue'
+  import EpDropdown from '../dropdown/EpDropdown.vue'
 
   export default {
     name: 'EpActionBar',

@@ -54,11 +54,11 @@
 </template>
 
 <script>
-  import EpContainer from '../container/EpContainer'
-  import EpButton from '../button/EpButton'
-  import EpFooter from '../footer/EpFooter'
-  import EpHeader from '../header/EpHeader'
-  import EpIcon from '../icon/EpIcon'
+  import EpContainer from '../container/EpContainer.vue'
+  import EpButton from '../button/EpButton.vue'
+  import EpFooter from '../footer/EpFooter.vue'
+  import EpHeader from '../header/EpHeader.vue'
+  import EpIcon from '../icon/EpIcon.vue'
 
   export default {
     name: 'EpFeedbackCard',

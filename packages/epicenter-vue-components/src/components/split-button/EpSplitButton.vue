@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  import EpButton from '../button/EpButton'
-  import EpDropdown from '../dropdown/EpDropdown'
+  import EpButton from '../button/EpButton.vue'
+  import EpDropdown from '../dropdown/EpDropdown.vue'
 
   export default {
     name: 'EpSplitButton',

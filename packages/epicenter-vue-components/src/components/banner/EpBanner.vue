@@ -35,8 +35,8 @@
 </template>
 
 <script>
-  import EpButton from '../button/EpButton'
-  import EpIcon from '../icon/EpIcon'
+  import EpButton from '../button/EpButton.vue'
+  import EpIcon from '../icon/EpIcon.vue'
 
   export default {
     name: 'EpBanner',
@@ -87,5 +87,5 @@
         this.$emit('dismiss')
       }
     }
-}
+  }
 </script>

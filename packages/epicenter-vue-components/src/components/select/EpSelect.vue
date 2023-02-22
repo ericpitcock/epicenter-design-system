@@ -40,7 +40,7 @@
 </template>
 
 <script>
-  import EpIcon from '../icon/EpIcon'
+  import EpIcon from '../icon/EpIcon.vue'
   export default {
     name: "EpSelect",
     components: {

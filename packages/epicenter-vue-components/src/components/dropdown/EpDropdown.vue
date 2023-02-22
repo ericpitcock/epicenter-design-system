@@ -33,8 +33,8 @@
 
 <script>
   import clickOutside from '../../directives/clickOutside'
-  import EpButton from '../button/EpButton'
-  import EpMenu from '../menu/EpMenu'
+  import EpButton from '../button/EpButton.vue'
+  import EpMenu from '../menu/EpMenu.vue'
 
   export default {
     name: 'EpDropdown',

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import EpButton from '../button/EpButton'
+  import EpButton from '../button/EpButton.vue'
 
   export default {
     name: 'EpNotification',
@@ -94,5 +94,5 @@
         return getRelativeTime(date)
       }
     }
-}
+  }
 </script>

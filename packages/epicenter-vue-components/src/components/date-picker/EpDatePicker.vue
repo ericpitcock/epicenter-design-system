@@ -9,7 +9,7 @@
 
 <script>
   import flatpickr from 'flatpickr'
-  import EpInput from '../input/EpInput'
+  import EpInput from '../input/EpInput.vue'
 
   export default {
     name: 'EpDatePicker',

@@ -66,7 +66,7 @@
 <script>
   import { defineAsyncComponent } from 'vue'
   import calculateHeight from '../../mixins/calculateHeight'
-  import EpIcon from '../icon/EpIcon'
+  import EpIcon from '../icon/EpIcon.vue'
 
   export default {
     name: 'EpTable',
@@ -288,7 +288,7 @@
         start index to an end index.In this case, we don't pass any 
         arguments to .slice(), which means it will create a copy of 
         the entire filteredPersons array.
-        
+      
         By creating a copy of the array, we can sort it without 
         affecting the original filteredPersons array.This ensures 
         that any other parts of the application that rely on the 

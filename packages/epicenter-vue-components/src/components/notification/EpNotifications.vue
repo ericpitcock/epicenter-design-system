@@ -35,8 +35,8 @@
 </template>
 
 <script>
-  import EpFlexContainer from '../flexbox/EpFlexContainer'
-  import EpNotification from '../notification/EpNotification'
+  import EpFlexContainer from '../flexbox/EpFlexContainer.vue'
+  import EpNotification from '../notification/EpNotification.vue'
   import { mapState, mapGetters } from 'vuex'
 
   export default {

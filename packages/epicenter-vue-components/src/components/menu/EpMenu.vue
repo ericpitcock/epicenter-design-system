@@ -53,9 +53,9 @@
 </template>
 
 <script>
-  import EpContainer from '../container/EpContainer'
-  import EpDivider from '../divider/EpDivider'
-  import EpButton from '../button/EpButton'
+  import EpContainer from '../container/EpContainer.vue'
+  import EpDivider from '../divider/EpDivider.vue'
+  import EpButton from '../button/EpButton.vue'
 
   export default {
     name: 'EpMenu',
