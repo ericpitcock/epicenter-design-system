@@ -1,10 +1,27 @@
 <template>
   <div class="album">
-    <img :src="album.cover" />
-    {{ album.title }}
-    {{ album.artist }}
-    {{ album.year }}
-    {{ album.songs }}
+    <div class="album__cover">
+      <img
+        :src="album.cover"
+        :alt="`${album.artist} - ${album.title} album cover`"
+      />
+    </div>
+    <div class="album__info copy-block">
+      <h2>{{ album.title }}</h2>
+      <p class="text--subtle">{{ album.artist }} • {{ album.year }}</p>
+      <div
+        v-if="album.songs"
+        class="album__songs copy-block"
+      >
+        <h3 class="font-size--body">Liked Songs:</h3>
+        <ul>
+          <li
+            v-for="song in album.songs"
+            :key="song"
+          >{{ song }}</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -57,3 +74,32 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .album {
+    display: flex;
+    gap: 3rem;
+
+    &__cover {
+      border-radius: var(--border-radius);
+      box-shadow: var(--drop-shadow);
+      overflow: hidden;
+      // rotate the image 90deg
+      transform: rotate(-2deg);
+
+      img {
+        vertical-align: middle;
+      }
+    }
+
+    &__songs {
+      margin-top: 2rem;
+
+      ul {
+        li {
+          margin-top: 0.5rem;
+        }
+      }
+    }
+  }
+</style>

@@ -7,6 +7,13 @@
     "year": "2022"
   },
   {
+    "title": "Face The Wall",
+    "artist": "Jordana",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/0c/4e/f9/0c4ef95d-dd18-bba6-a14a-555608dccf2a/196292641318.jpg/296x296bb-60.jpg",
+    "songs": "",
+    "year": "2022"
+  },
+  {
     "title": "GOD CMPLX",
     "artist": "Sol Messiah",
     "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music112/v4/42/70/58/427058ab-2b39-5cc6-0c4a-20e02f0b2588/34328.jpg/296x296bf-60.jpg",
@@ -77,6 +84,13 @@
     "year": "2022"
   },
   {
+    "title": "Apt. 505",
+    "artist": "Coast Contra",
+    "cover": "https://is4-ssl.mzstatic.com/image/thumb/Music126/v4/75/36/c6/7536c657-be62-1065-d0af-5dea9a940ca2/22UMGIM22184.rgb.jpg/296x296bf-60.jpg",
+    "songs": "",
+    "year": "2022"
+  },
+  {
     "title": "Super What?",
     "artist": "Czarface",
     "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/dd/97/50/dd975062-f5ac-386b-faec-2d69a6d218ac/706091201035.jpg/296x296bb-60.jpg",
@@ -115,21 +129,37 @@
     "title": "Impossible Weight",
     "artist": "Deep Sea Diver",
     "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/85/43/e5/8543e5fc-8cda-2afa-f559-230e2c6f06af/20UMGIM60543.rgb.jpg/296x296bb-60.jpg",
-    "songs": "Impossible Weight, Switchblade, Hurricane, Eyes Are Red (Don't Be Afraid), People Come People Go, Lightning Bolts",
+    "songs": [
+      "Impossible Weight",
+      "Switchblade",
+      "Hurricane",
+      "Eyes Are Red (Don't Be Afraid)",
+      "People Come People Go",
+      "Lightning Bolts"
+    ],
     "year": "2020"
   },
   {
     "title": "The Ascension",
     "artist": "Sufjan Stevens",
     "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music113/v4/30/4a/61/304a6104-0371-4865-eb0b-7e01f5ce84db/729920164301.jpg/296x296bb-60.jpg",
-    "songs": "Make Me An Offer I Cannot Refuse, Run Away With Me, Video Game, Lamentations, Ursa Major, America",
+    "songs": [
+      "Make Me An Offer I Cannot Refuse",
+      "Run Away With Me",
+      "Video Game",
+      "Lamentations",
+      "Ursa Major",
+      "America"
+    ],
     "year": "2020"
   },
   {
     "title": "George Clanton & Nick Hexum",
     "artist": "George Clanton & Nick Hexum",
     "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/c5/d7/f7/c5d7f7fd-a57c-3f70-0ae2-c4fcc9051861/artwork.jpg/296x296bb-60.jpg",
-    "songs": "Aurora Summer",
+    "songs": [
+      "Aurora Summer"
+    ],
     "year": "2020"
   },
   {
@@ -150,7 +180,9 @@
     "title": "Set My Heart On Fire Immediately",
     "artist": "Perfume Genius",
     "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music124/v4/82/12/3d/82123d78-73d0-1f37-a63d-d6a53fda7732/cover.jpg/296x296bb-60.jpg",
-    "songs": "Describe, On the Floor",
+    "songs": [
+      "Describe, On the Floor"
+    ],
     "year": "2020"
   },
   {
@@ -178,21 +210,29 @@
     "title": "Ricky Music",
     "artist": "Porches",
     "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/ad/33/cc/ad33cc99-b2d5-0801-3c20-d33f74be33fa/887828045969.png/296x296bb-60.jpg",
-    "songs": "Lipstick Song, rangerover",
+    "songs": [
+      "Lipstick Song",
+      "rangerover"
+    ],
     "year": "2020"
   },
   {
     "title": "Miss Anthropocene",
     "artist": "Grimes",
     "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music123/v4/2c/6b/17/2c6b17a3-da97-e67e-268c-e6bdfb81348c/19UM1IM03979.rgb.jpg/296x296bb-60.jpg",
-    "songs": "You’ll miss me when I’m not around",
+    "songs": [
+      "You’ll miss me when I’m not around"
+    ],
     "year": "2020"
   },
   {
     "title": "Superstar",
     "artist": "Caroline Rose",
     "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music123/v4/18/cd/f1/18cdf164-0ad2-2dae-db33-ed4382f4ac56/607396646135.png/296x296bb-60.jpg",
-    "songs": "Do You Think We'll Last Forever?, Feel The Way I Want, Back At The Beginning",
+    "songs": [
+      "Do You Think We'll Last Forever?",
+      "Feel The Way I Want, Back At The Beginning"
+    ],
     "year": "2020"
   },
   {
@@ -206,7 +246,9 @@
     "title": "Swimmer",
     "artist": "Tennis",
     "cover": "https://is4-ssl.mzstatic.com/image/thumb/Music123/v4/ce/c3/53/cec35339-01b9-c5df-8f69-9a23e7fbf6ba/194491744830.jpg/296x296bb-60.jpg",
-    "songs": "Runner",
+    "songs": [
+      "Runner"
+    ],
     "year": "2020"
   },
   {
@@ -248,7 +290,9 @@
     "title": "Lux Prima",
     "artist": "Karen O & Danger Mouse",
     "cover": "https://is4-ssl.mzstatic.com/image/thumb/Music114/v4/6c/39/5c/6c395c03-a6c4-d20b-6a5b-3208bfa7370b/4050538470222.jpg/296x296bb-60.jpg",
-    "songs": "Turn The Light",
+    "songs": [
+      "Turn The Light"
+    ],
     "year": "2019"
   },
   {
@@ -290,42 +334,59 @@
     "title": "Happy to Be Here",
     "artist": "Barrie",
     "cover": "https://is4-ssl.mzstatic.com/image/thumb/Music114/v4/7f/fd/b7/7ffdb770-f409-73dd-9959-973e4817a67f/704751183608.jpg/296x296bb-60.jpg",
-    "songs": "Clovers, Saturated",
+    "songs": [
+      "Clovers",
+      "Saturated"
+    ],
     "year": "2019"
   },
   {
     "title": "GINGER",
     "artist": "Brockhampton",
     "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music123/v4/b3/35/6d/b3356d32-8d22-0b4b-a2b3-1eedb671cded/886447853481.jpg/296x296bb-60.jpg",
-    "songs": "HEAVEN BELONGS TO YOU",
+    "songs": [
+      "HEAVEN BELONGS TO YOU"
+    ],
     "year": "2019"
   },
   {
     "title": "uknowhatimsayin¿",
     "artist": "Danny Brown",
     "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music123/v4/3d/fe/e7/3dfee71d-4161-f7b4-b77d-4ec104d2fac0/0801061030735.jpg/296x296bb-60.jpg",
-    "songs": "Change Up",
+    "songs": [
+      "Change Up"
+    ],
     "year": "2019"
   },
   {
     "title": "All Mirrors",
     "artist": "Angel Olsen",
     "cover": "https://is4-ssl.mzstatic.com/image/thumb/Music123/v4/62/d4/61/62d46112-fd6a-39f3-86fe-8ca39bc3c446/656605234465.jpg/296x296bb-60.jpg",
-    "songs": "All Mirrors",
+    "songs": [
+      "All Mirrors"
+    ],
     "year": "2019"
   },
   {
     "title": "Silver Eater",
     "artist": "Grace Lightman",
     "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music113/v4/5f/1f/19/5f1f19ee-64e3-98fe-2055-62a9bb5d0478/5054526891494_1.jpg/296x296bb-60.jpg",
-    "songs": "Silver Eater, Exoskelton, Faultless",
+    "songs": [
+      "Silver Eater",
+      "Exoskelton",
+      "Faultless"
+    ],
     "year": "2019"
   },
   {
     "title": "The Juice, Vol. I",
     "artist": "Emotional Oranges",
     "cover": "https://is3-ssl.mzstatic.com/image/thumb/Music123/v4/d0/73/db/d073dbdf-a530-1e2c-c11a-19ecf808d1dc/19UMGIM35280.rgb.jpg/296x296bb-60.jpg",
-    "songs": "Built That Way, Someone Else, Good To Me",
+    "songs": [
+      "Built That Way",
+      "Someone Else",
+      "Good To Me"
+    ],
     "year": "2019"
   },
   {
@@ -339,14 +400,23 @@
     "title": "Tallies",
     "artist": "Tallies",
     "cover": "https://is4-ssl.mzstatic.com/image/thumb/Music123/v4/cb/92/e7/cb92e7ca-c83a-3d3e-8669-aaf32e711b87/cover.jpg/296x296bb-60.jpg",
-    "songs": "Mother, Have You, Not So Proud, Beat the Heart, Easy Enough",
+    "songs": [
+      "Mother, Have You",
+      "Not So Proud",
+      "Beat the Heart",
+      "Easy Enough"
+    ],
     "year": "2019"
   },
   {
     "title": "Free Spirit",
     "artist": "Khalid",
     "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/36/94/0e/36940e23-2d97-a7e3-f6e6-a2d365346f6a/886447501610.jpg/296x296bb-60.jpg",
-    "songs": "Hundred, Better, Talk, Saturday Nights",
+    "songs": [
+      "Hundred, Better",
+      "Talk",
+      "Saturday Nights"
+    ],
     "year": "2019"
   },
   {
@@ -360,7 +430,10 @@
     "title": "Tasmania",
     "artist": "Pond",
     "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music114/v4/51/8a/40/518a406d-1a5e-e411-3bd6-ee4b37ac246c/00602577339288.rgb.jpg/296x296bb-60.jpg",
-    "songs": "Daisy, Selené",
+    "songs": [
+      "Daisy",
+      "Selené"
+    ],
     "year": "2019"
   },
   {
@@ -395,7 +468,9 @@
     "title": "MASTERS OF THE SUN VOL. 1",
     "artist": "Black Eyed Peas",
     "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music128/v4/bc/c5/4e/bcc54e5d-6dda-9cfc-2418-184955bf14a6/00602577096310.rgb.jpg/296x296bb-60.jpg",
-    "songs": "4EVER",
+    "songs": [
+      "4EVER"
+    ],
     "year": "2018"
   },
   {
@@ -423,7 +498,9 @@
     "title": "Little Dark Age",
     "artist": "MGMT",
     "cover": "https://is4-ssl.mzstatic.com/image/thumb/Music128/v4/2f/25/a0/2f25a056-dc32-f22a-cf9c-dcd4a9cdf5d7/886446696393.jpg/296x296bb-60.jpg",
-    "songs": "Little Dark Age",
+    "songs": [
+      "Little Dark Age"
+    ],
     "year": "2018"
   },
   {
@@ -521,7 +598,9 @@
     "title": "The Weather",
     "artist": "Pond",
     "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music128/v4/39/c1/28/39c1282d-ecef-69dd-b7c7-719d36c854a7/00602567315995.rgb.jpg/296x296bb-60.jpg",
-    "songs": "Sweep Me Off My Feet",
+    "songs": [
+      "Sweep Me Off My Feet"
+    ],
     "year": "2017"
   },
   {
@@ -591,7 +670,9 @@
     "title": "Freetown Sound",
     "artist": "Blood Orange",
     "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music18/v4/3c/b5/b7/3cb5b746-7474-beb1-4327-0940e69ba5fd/887828036967.png/296x296bb-60.jpg",
-    "songs": "Best to you",
+    "songs": [
+      "Best to you"
+    ],
     "year": "2016"
   },
   {
@@ -626,7 +707,9 @@
     "title": "In Colour",
     "artist": "Jamie xx",
     "cover": "https://is3-ssl.mzstatic.com/image/thumb/Music124/v4/90/c0/83/90c08389-f594-2071-5ade-5449a13d269b/cover.jpg/296x296bb-60.jpg",
-    "songs": "I Know There's Gonna Be (Good Times)",
+    "songs": [
+      "I Know There's Gonna Be (Good Times)"
+    ],
     "year": "2015"
   },
   {
@@ -661,7 +744,9 @@
     "title": "Currents",
     "artist": "Tame Impala",
     "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music114/v4/ef/25/7e/ef257e7d-2795-eaa2-9aed-7369c1d30eb4/15UMGIM23316.rgb.jpg/296x296bb-60.jpg",
-    "songs": "Let it Happen",
+    "songs": [
+      "Let it Happen"
+    ],
     "year": "2015"
   },
   {

@@ -53,7 +53,7 @@
           overflow: 'hidden',
         },
         currentIndices: {
-          2022: 10,
+          2022: 11,
           2021: 4,
           2020: 1,
           2019: 10,
@@ -108,6 +108,7 @@
     // width: 100%;
     // height: 100%;
     overflow: hidden;
+
     a.link-wrapper {
       // flex: 0 1 200px;
       display: flex;
@@ -117,10 +118,12 @@
       cursor: pointer;
       // background: red;
     }
+
     .covers {
       // fill width but keep aspect ratio and height to contents
       // flex: 1 1 auto;
       display: flex;
+
       // position: relative;
       // // display: flex;
       // flex-direction: row;
@@ -141,6 +144,7 @@
         height: auto;
       }
     }
+
     .meta {
       flex: 0 1 4rem;
       display: flex;
@@ -152,6 +156,5 @@
       padding: 1rem 2rem;
       border-top: 1px solid var(--border-color);
       // background: blue;
-    }
   }
-</style>
+}</style>
