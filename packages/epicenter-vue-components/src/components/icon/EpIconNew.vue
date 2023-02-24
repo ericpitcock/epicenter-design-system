@@ -46,7 +46,7 @@
             this.svg = svgCode
           }
         }
-        xhr.open('GET', `./icons/${this.name}.svg`, true)
+        xhr.open('GET', require(`./icons/${this.name}.svg`), true)
         xhr.send()
       }
     },
