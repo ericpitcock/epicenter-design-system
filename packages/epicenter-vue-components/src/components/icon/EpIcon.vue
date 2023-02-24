@@ -1,5 +1,9 @@
 <template>
-  <div v-html="svg" />
+  <component
+    :is="type"
+    class="ep-icon"
+    v-html="svg"
+  />
 </template>
 
 <script>
@@ -20,6 +24,10 @@
       size: {
         type: Number,
         default: 20
+      },
+      type: {
+        type: String,
+        default: 'span'
       }
     },
     data() {
@@ -48,6 +56,14 @@
         }
         xhr.open('GET', require(`./icons/${this.name}.svg`), true)
         xhr.send()
+      }
+    },
+    watch: {
+      name: {
+        immediate: true,
+        handler() {
+          this.loadIcon()
+        }
       }
     },
     created() {
