@@ -80,8 +80,8 @@
     },
     components: {
       // dynamic components
-      EpBadge: defineAsyncComponent(() => import('../badge/EpBadge')),
-      EpSparkBar: defineAsyncComponent(() => import('../spark-bar/EpSparkBar')),
+      EpBadge: defineAsyncComponent(() => import('../badge/EpBadge.vue')),
+      EpSparkBar: defineAsyncComponent(() => import('../spark-bar/EpSparkBar.vue')),
       EpIcon,
     },
     props: {
@@ -288,7 +288,7 @@
         start index to an end index.In this case, we don't pass any 
         arguments to .slice(), which means it will create a copy of 
         the entire filteredPersons array.
-      
+    
         By creating a copy of the array, we can sort it without 
         affecting the original filteredPersons array.This ensures 
         that any other parts of the application that rely on the 

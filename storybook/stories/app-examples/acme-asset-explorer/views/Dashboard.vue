@@ -29,8 +29,8 @@
 </template>
 
 <script>
-  import EpContainer from '@/components/container/EpContainer'
-  import EpMap from '@/components/map/EpMap'
+  import EpContainer from '@/components/container/EpContainer.vue'
+  import EpMap from '@/components/map/EpMap.vue'
 
   export default {
     name: 'Dashboard',
@@ -62,12 +62,15 @@
     width: 100%;
     padding: 3rem;
     gap: 3rem;
+
     &__summary {
       grid-area: top;
     }
+
     &__vulnerabilities {
       grid-area: middle;
     }
+
     &__asset-map {
       grid-area: bottom;
     }

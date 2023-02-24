@@ -51,7 +51,7 @@
     mounted() {
       this.drawChart()
     },
-    beforeDestroy() {
+    beforeUnmount() {
       this.chart.destroy()
     }
   }

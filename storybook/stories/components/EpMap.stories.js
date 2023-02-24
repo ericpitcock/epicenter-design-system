@@ -5,7 +5,6 @@ import EpFooter from '@/components/footer/EpFooter'
 import EpHeader from '@/components/header/EpHeader'
 import EpMap from '@/components/map/EpMap'
 import { padded } from '../../helpers/decorators'
-// import store from '../../store'
 
 const mapStyles = {
   'Dark (Ep)': 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',
@@ -19,7 +18,7 @@ const mapStyles = {
   'Mapbox Navigation Day': 'mapbox://styles/mapbox/navigation-day-v1',
   'Mapbox Navigation Night': 'mapbox://styles/mapbox/navigation-night-v1'
 }
-// console.log('store.state.theme', store.state.theme)
+
 const defaultMapStyle = (theme) => {
   if (theme === 'light') {
     return mapStyles['Mapbox Streets']
