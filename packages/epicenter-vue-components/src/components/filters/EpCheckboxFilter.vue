@@ -3,12 +3,14 @@
     <ep-checkbox
       v-if="allOption"
       v-bind="allOption"
+      :checked="checked.length === items.length"
       @change="onAllChange($event)"
     />
     <ep-checkbox
       v-for="item in items"
       :key="item.value"
       v-bind="item"
+      :checked="checked.includes(item.id)"
       @change="onChange($event)"
     />
     {{ checked }}
