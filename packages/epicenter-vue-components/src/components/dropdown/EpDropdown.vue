@@ -5,7 +5,7 @@
   >
     <div @click="toggleDropdown">
       <slot
-        v-if="hasTrigger"
+        v-if="$slots.trigger"
         name="trigger"
       />
       <ep-button v-bind="buttonProps" />
@@ -16,7 +16,7 @@
     >
       <div class="ep-dropdown__content">
         <slot
-          v-if="hasContent"
+          v-if="$slots.content"
           name="content"
         />
         <ep-menu
@@ -88,12 +88,6 @@
           'ep-dropdown__container',
           { 'ep-dropdown__container--align-right': this.alignRight }
         ]
-      },
-      hasTrigger() {
-        return !!this.$slots.trigger
-      },
-      hasContent() {
-        return !!this.$slots.content
       }
     },
     methods: {

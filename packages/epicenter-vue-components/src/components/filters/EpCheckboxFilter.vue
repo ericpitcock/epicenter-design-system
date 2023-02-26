@@ -4,16 +4,17 @@
       v-if="allOption"
       v-bind="allOption"
       :checked="checked.length === items.length"
-      @change="onAllChange($event)"
+      @change="handleSelectAll($event)"
     />
     <ep-checkbox
       v-for="item in items"
       :key="item.value"
       v-bind="item"
       :checked="checked.includes(item.id)"
-      @change="onChange($event)"
+      @change="handleChange($event)"
     />
     {{ checked }}
+    {{ unchecked }}
   </div>
 </template>
 
@@ -39,29 +40,30 @@
         default: 'vertical'
       }
     },
+    emits: ['selection-change'],
     data() {
       return {
         checked: this.items.map(item => item.value)
       }
     },
     methods: {
-      onAllChange(event) {
-        const { checked } = event.target
-        if (checked) {
-          this.checked = this.items.map(item => item.value)
-        } else {
-          this.checked = []
-        }
-        this.$emit('change', this.checked)
-      },
-      onChange(event) {
+      handleChange(event) {
         const { value, checked } = event.target
         if (checked) {
           this.checked.push(value)
         } else {
           this.checked = this.checked.filter(item => item !== value)
         }
-        this.$emit('change', this.checked)
+        this.$emit('selection-change', this.checked, this.unchecked)
+      },
+      handleSelectAll(event) {
+        const { checked } = event.target
+        if (checked) {
+          this.checked = this.items.map(item => item.value)
+        } else {
+          this.checked = []
+        }
+        this.$emit('selection-change', this.checked, this.unchecked)
       }
     },
     computed: {
@@ -69,6 +71,12 @@
         return {
           'ep-checkbox-filter--horizontal': this.orientation === 'horizontal'
         }
+      },
+      unchecked() {
+        // this.items.key that's not in this.checked
+        return this.items
+          .map(item => item.value)
+          .filter(item => !this.checked.includes(item))
       }
     }
   }

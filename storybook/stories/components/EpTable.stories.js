@@ -1,7 +1,7 @@
 import { padded } from '../../helpers/decorators'
-import EpActionBar from '@/components/action-bar/EpActionBar'
-import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
+import EpCheckboxFilter from '@/components/filters/EpCheckboxFilter'
 import EpContainer from '@/components/container/EpContainer'
+import EpDropdown from '@/components/dropdown/EpDropdown'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
 import EpTable from '@/components/table/EpTable'
@@ -45,6 +45,12 @@ export default {
     },
     exclude: {
       table: { disable: true }
+    },
+    hiddenColumns: {
+      name: 'Hidden Columns',
+      control: {
+        type: 'array'
+      }
     },
     padding: {
       table: { disable: true }
@@ -137,16 +143,51 @@ export default {
   }
 }
 
+const filters = columns.map(column => {
+  return {
+    id: column.key,
+    name: '',
+    value: column.key,
+    // checked: true,
+    indeterminate: false,
+    disabled: false,
+    label: column.header,
+    required: false,
+    readonly: false,
+    tabindex: 1,
+    commmand: null
+  }
+})
+
+// let hiddenColumns = []
+
+// const handleFilter = (checked, unchecked) => {
+//   hiddenColumns = unchecked
+// }
+
 const Template = args => ({
   components: {
-    EpActionBar,
     EpContainer,
+    EpCheckboxFilter,
+    EpDropdown,
     EpHeader,
     EpFooter,
     EpTable
   },
-  setup() {
-    return { args, commonActionBarArgs }
+  // setup() {
+  //   return { args, filters, handleFilter }
+  // },
+  data() {
+    return {
+      args,
+      filters,
+      hiddenColumns: []
+    }
+  },
+  methods: {
+    handleFilter(checked, unchecked) {
+      this.hiddenColumns = unchecked
+    }
   },
   template: `
   <ep-container
@@ -160,11 +201,17 @@ const Template = args => ({
         <template #left>
         </template>
         <template #right>
-          <ep-action-bar v-bind="commonActionBarArgs" />
+          <ep-dropdown align-right>
+            <template #content>
+              <ep-container padding="3rem">
+                <ep-checkbox-filter :items="filters" @selection-change="handleFilter" />
+              </ep-container>
+            </template>
+          </ep-dropdown>
         </template>
       </ep-header>
       </template>
-    <ep-table v-bind="args" />
+    <ep-table v-bind="args" :hiddenColumns="hiddenColumns" />
   </ep-container>
   `
 })
@@ -179,6 +226,7 @@ Table.args = {
   compact: false,
   data: fakeArray(30),
   exclude: ['id'],
+  // hiddenColumns: hiddenColumns,
   padding: '0 0 10rem 0',
   search: [],
   selectable: false,

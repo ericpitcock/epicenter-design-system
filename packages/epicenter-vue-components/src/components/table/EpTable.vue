@@ -50,7 +50,7 @@
                 :class="cellStyle(key)"
               ></span>
             </td>
-            <td v-else-if="isComponent(key)">
+            <td v-else-if="!excluded(key) && isComponent(key)">
               <component
                 :is="value.component"
                 v-bind="value.props"
@@ -74,29 +74,20 @@
     data() {
       return {
         currentSort: this.getSortKey(),
-        currentSortDir: this.getSortDir(),
-        // tableHeight: '',
+        currentSortDir: this.getSortDir()
       }
     },
     components: {
       // dynamic components
       EpBadge: defineAsyncComponent(() => import('../badge/EpBadge.vue')),
       EpSparkBar: defineAsyncComponent(() => import('../spark-bar/EpSparkBar.vue')),
-      EpIcon,
+      EpIcon
     },
     props: {
       bordered: {
         type: Boolean,
         default: false
       },
-      // calculateHeight: {
-      //   type: Boolean,
-      //   default: false
-      // },
-      // calculateHeightOffset: {
-      //   type: Number,
-      //   default: 0
-      // },
       columns: {
         type: Array,
         required: true
@@ -110,6 +101,10 @@
         required: true
       },
       exclude: {
+        type: Array,
+        default: () => []
+      },
+      hiddenColumns: {
         type: Array,
         default: () => []
       },
@@ -179,12 +174,6 @@
         // if column cellType is component, return true
         return this.columns.find(column => column.key === key)?.cellType === 'component'
       },
-      // calculatedHeight() {
-      //   // calculate height of table-container so sticky header works
-      //   // helpful for sticky situations - dad joke
-      //   const offsetBottom = this.calculateHeightOffset || 0
-      //   this.tableHeight = this.calculateHeight ? `${window.innerHeight - this.$el.getBoundingClientRect().top - offsetBottom}px` : 'auto'
-      // },
       cellClick(value, key) {
         const command = this.columns.find(column => column.key === key)?.command
         const to = this.columns.find(column => column.key === key)?.to
@@ -211,10 +200,10 @@
         }
       },
       excluded(key) {
-        return this.exclude.includes(key)
+        const hiddenColumns = [...this.exclude, ...this.hiddenColumns]
+        return hiddenColumns.includes(key)
       },
       getSortDir() {
-        // return the sortDir if it's set, otherwise return the default
         return this.sortDir ? this.sortDir : 'desc'
       },
       getSortKey() {
@@ -288,7 +277,7 @@
         start index to an end index.In this case, we don't pass any 
         arguments to .slice(), which means it will create a copy of 
         the entire filteredPersons array.
-    
+ 
         By creating a copy of the array, we can sort it without 
         affecting the original filteredPersons array.This ensures 
         that any other parts of the application that rely on the 
@@ -319,7 +308,7 @@
           verticalAlign: this.verticalAlign,
           whiteSpace: this.whiteSpace,
         }
-      },
+      }
     },
     // mounted() {
     //   this.calculatedHeight()
