@@ -1,0 +1,33 @@
+<template>
+  <ep-button
+    kind="ghost"
+    :iconLeft="{ name: buttonIcon }"
+    title="Toggle theme"
+    class="theme-toggle"
+    @click="toggleTheme"
+  />
+</template>
+
+<script>
+  import { mapActions, mapState } from 'vuex'
+  import EpButton from '../button/EpButton'
+
+  export default {
+    components: {
+      EpButton
+    },
+    methods: {
+      ...mapActions(['toggleTheme']),
+      // toggleTheme() {
+      //   let newTheme = this.getTheme == 'dark' ? 'light' : 'dark'
+      //   this.updateTheme(newTheme)
+      // }
+    },
+    computed: {
+      ...mapState(['theme']),
+      buttonIcon() {
+        return this.theme == 'dark' ? 'light-mode' : 'dark-mode'
+      }
+    }
+  }
+</script>
