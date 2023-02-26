@@ -9,9 +9,9 @@ export default {
   argTypes: {
     name: {
       name: 'Name',
+      options: iconNames,
       control: {
-        type: 'select',
-        options: iconNames
+        type: 'select'
       }
     },
     color: {
@@ -22,9 +22,9 @@ export default {
     },
     weight: {
       name: 'Weight',
+      options: ['extra-light', 'light', 'regular', 'bold'],
       control: {
-        type: 'radio',
-        options: ['extra-light', 'light', 'regular', 'bold']
+        type: 'radio'
       }
     },
     size: {
