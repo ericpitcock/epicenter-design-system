@@ -201,17 +201,35 @@ const Template = args => ({
         <template #left>
         </template>
         <template #right>
-          <ep-dropdown align-right>
+          <ep-dropdown
+            :button="{
+              kind: 'ghost',
+              label: '',
+              iconRight: { name: 'f/columns' }
+            }"
+            align-right
+          >
             <template #content>
-              <ep-container padding="3rem">
-                <ep-checkbox-filter :items="filters" @selection-change="handleFilter" />
+              <ep-container
+                backgroundColor="var(--background-4)"
+                borderColor="var(--border-color--lighter)"
+                borderRadius="var(--border-radius)"
+                padding="3rem"
+              >
+                <ep-checkbox-filter
+                  :items="filters"
+                  @selection-change="handleFilter"
+                />
               </ep-container>
             </template>
           </ep-dropdown>
         </template>
       </ep-header>
       </template>
-    <ep-table v-bind="args" :hiddenColumns="hiddenColumns" />
+    <ep-table
+      v-bind="args"
+      :hiddenColumns="hiddenColumns"
+    />
   </ep-container>
   `
 })
@@ -226,7 +244,7 @@ Table.args = {
   compact: false,
   data: fakeArray(30),
   exclude: ['id'],
-  // hiddenColumns: hiddenColumns,
+  hiddenColumns: [],
   padding: '0 0 10rem 0',
   search: [],
   selectable: false,
