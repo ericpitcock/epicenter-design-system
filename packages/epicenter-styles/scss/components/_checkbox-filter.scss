@@ -1,0 +1,10 @@
+.ep-checkbox-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &--horizontal {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+}
