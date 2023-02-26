@@ -1,6 +1,6 @@
 {
   "name": "@ericpitcock/epicenter-styles",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "Epicenter Design System - Styles",
   "scripts": {
     "style-dictionary:build": "style-dictionary build --config ./sd.config.js",
