@@ -14,7 +14,7 @@ export default {
   }
 }
 
-const Template = args => ({
+export const SparkBar = args => ({
   components: { EpSparkBar },
   setup() {
     return { args }
@@ -25,8 +25,6 @@ const Template = args => ({
     </div>
   `
 })
-
-export const SparkBar = Template.bind({})
 
 SparkBar.args = {
   bar: [12, 30, 29, 10, 81, 89]

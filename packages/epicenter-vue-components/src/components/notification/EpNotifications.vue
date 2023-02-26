@@ -6,6 +6,7 @@
     <div class="ep-notifications__header font-size--small">
       <p class="text--subtle">Notification Center</p>
       <p
+        v-show="!isNotificationsEmpty"
         class="text--link"
         @click="clearNotifications"
       >Clear all</p>
