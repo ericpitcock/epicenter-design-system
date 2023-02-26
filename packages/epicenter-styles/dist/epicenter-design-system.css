@@ -2004,7 +2004,7 @@ text.highcharts-drilldown-data-label,
 }
 .ep-checkbox-filter--horizontal {
   flex-direction: row;
-  gap: 0.5rem;
+  gap: 2rem;
 }
 
 .ep-container {

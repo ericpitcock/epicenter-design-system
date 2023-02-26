@@ -13,8 +13,6 @@
       :checked="checked.includes(item.id)"
       @change="handleChange($event)"
     />
-    {{ checked }}
-    {{ unchecked }}
   </div>
 </template>
 
@@ -73,7 +71,6 @@
         }
       },
       unchecked() {
-        // this.items.key that's not in this.checked
         return this.items
           .map(item => item.value)
           .filter(item => !this.checked.includes(item))

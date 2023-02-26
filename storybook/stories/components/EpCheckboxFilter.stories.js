@@ -27,8 +27,8 @@ export default {
     }
   }
 }
-// bare component
-const Bare = args => ({
+
+export const CheckboxFilter = args => ({
   components: {
     EpCheckboxFilter,
   },
@@ -38,14 +38,11 @@ const Bare = args => ({
   template: '<ep-checkbox-filter v-bind="args" />'
 })
 
-export const CheckboxFilter = Bare.bind({})
-
 CheckboxFilter.args = {
   allOption: {
     id: 'all',
-    name: '',
+    name: 'desserts',
     value: 'all',
-    // checked: true,
     indeterminate: false,
     disabled: false,
     label: 'Select All',
@@ -57,56 +54,52 @@ CheckboxFilter.args = {
   items: [
     {
       id: 'cookies',
-      name: '',
+      name: 'desserts',
       value: 'cookies',
-      // checked: true,
       indeterminate: false,
       disabled: false,
       label: 'Cookies',
       required: false,
       readonly: false,
-      tabindex: 1,
+      tabindex: 2,
       commmand: null
     },
     {
       id: 'cake',
-      name: '',
+      name: 'desserts',
       value: 'cake',
-      // checked: true,
       indeterminate: false,
       disabled: false,
       label: 'Cake',
       required: false,
       readonly: false,
-      tabindex: 1,
+      tabindex: 3,
       commmand: null
     },
     {
       id: 'brownies',
-      name: '',
+      name: 'desserts',
       value: 'brownies',
-      // checked: true,
       indeterminate: false,
       disabled: false,
       label: 'Brownies',
       required: false,
       readonly: false,
-      tabindex: 1,
+      tabindex: 4,
       commmand: null
     },
     {
       id: 'donuts',
-      name: '',
+      name: 'desserts',
       value: 'donuts',
-      // checked: true,
       indeterminate: false,
       disabled: false,
       label: 'Donuts',
       required: false,
       readonly: false,
-      tabindex: 1,
+      tabindex: 5,
       commmand: null
     }
   ],
-  orientation: 'horizontal'
+  orientation: 'vertical'
 }
