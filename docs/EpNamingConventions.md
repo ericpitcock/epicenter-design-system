@@ -1,7 +1,4 @@
-<!-- vue 3 template with EpMenu on the left and a content body on the right -->
-<template>
-  <div>
-    # Naming Conventions
+# Naming Conventions
 
 ## Components
 
@@ -95,12 +92,5 @@ Utilities should be suffixed with the type of utility it is. For example, a resi
 ### Prefix
 
 All CSS classes should be prefixed with `ep` (for `epicenter`).
-  </div>
-</template>
 
-<script>
-  export default {
-    name: 'Naming Conventions'
-  }
-</script>
  
