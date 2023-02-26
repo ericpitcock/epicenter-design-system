@@ -5,8 +5,9 @@
 </template>
 
 <script>
+  import 'mapbox-gl/dist/mapbox-gl.css'
   import mapboxgl from 'mapbox-gl'
-  import { mapState } from 'vuex'
+  // import { mapState } from 'vuex'
 
   export default {
     name: 'EpMap',
@@ -21,7 +22,7 @@
       },
       mapStyle: {
         type: String,
-        default: ''
+        default: 'mapbox://styles/mapbox/streets-v11'
       },
       // mapSource: {
       //   type: Object,
@@ -56,11 +57,11 @@
       }
     },
     computed: {
-      ...mapState(['theme']),
-      computedMapStyle() {
-        if (this.mapStyle) return this.mapStyle
-        return this.theme == 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/streets-v11'
-      }
+      // ...mapState(['theme']),
+      // computedMapStyle() {
+      //   if (this.mapStyle) return this.mapStyle
+      //   return this.theme == 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/streets-v11'
+      // }
     },
     methods: {
       dropPin(lngLat) {
@@ -81,7 +82,7 @@
             container: 'ep-map',
             center: this.mapCenter,
             zoom: this.mapZoom,
-            style: this.computedMapStyle,
+            style: this.mapStyle,
           })
           // various options
           // scroll zoom

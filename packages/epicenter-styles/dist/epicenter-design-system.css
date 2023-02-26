@@ -1,4 +1,4 @@
-@import '~mapbox-gl/dist/mapbox-gl.css'; /*** The new CSS Reset - version 1.4.2 (last updated 30.11.2021) ***/
+/*** The new CSS Reset - version 1.4.2 (last updated 30.11.2021) ***/
 /*
     Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
     - The "symbol *" part is to solve Firefox SVG sprite bug
@@ -1995,6 +1995,16 @@ text.highcharts-drilldown-data-label,
 .ep-checkbox label {
   color: inherit;
   cursor: inherit;
+}
+
+.ep-checkbox-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.ep-checkbox-filter--horizontal {
+  flex-direction: row;
+  gap: 0.5rem;
 }
 
 .ep-container {

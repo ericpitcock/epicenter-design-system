@@ -53,6 +53,7 @@
           overflow: 'hidden',
         },
         currentIndices: {
+          2023: 0,
           2022: 11,
           2021: 4,
           2020: 1,
@@ -156,5 +157,6 @@
       padding: 1rem 2rem;
       border-top: 1px solid var(--border-color);
       // background: blue;
+    }
   }
-}</style>
+</style>

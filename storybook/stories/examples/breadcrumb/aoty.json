@@ -1,5 +1,19 @@
 [
   {
+    "title": "Pollen",
+    "artist": "Tennis",
+    "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music112/v4/f6/97/7b/f6977bd9-4b2b-12f0-bd0c-7b451a7429dd/197187247981.jpg/296x296bb-60.jpg",
+    "songs": "",
+    "year": "2023"
+  },
+  {
+    "title": "To What End",
+    "artist": "Oddisee",
+    "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music112/v4/be/7e/be/be7ebefe-7613-2483-d309-b7e8fe83bce2/197187238095.jpg/296x296bb-60.jpg",
+    "songs": "",
+    "year": "2023"
+  },
+  {
     "title": "Deliver Me From Even Caring",
     "artist": "Grace Lightman",
     "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music122/v4/db/44/84/db4484de-e832-10fb-df3c-55267359235f/artwork.jpg/296x296bb-60.jpg",
@@ -10,6 +24,27 @@
     "title": "Face The Wall",
     "artist": "Jordana",
     "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/0c/4e/f9/0c4ef95d-dd18-bba6-a14a-555608dccf2a/196292641318.jpg/296x296bb-60.jpg",
+    "songs": "",
+    "year": "2022"
+  },
+  {
+    "title": "Butterfly Blue",
+    "artist": "Mallrat",
+    "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music122/v4/51/85/cd/5185cdf5-1e1d-981f-7174-9d395a3e3c5b/067003374361.png/296x296bb-60.jpg",
+    "songs": "",
+    "year": "2022"
+  },
+  {
+    "title": "Crybaby",
+    "artist": "Tegan and Sara",
+    "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music112/v4/e6/a5/cb/e6a5cb0f-2f9f-0f98-e556-b6c2d617a8cc/810090092317.png/296x296bb-60.jpg",
+    "songs": "",
+    "year": "2022"
+  },
+  {
+    "title": "Hideous Bastard",
+    "artist": "Oliver Sim",
+    "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music112/v4/5a/cf/4b/5acf4b6c-846d-9daa-eba2-2408fdf5d66a/889030030771.png/296x296bb-60.jpg",
     "songs": "",
     "year": "2022"
   },
@@ -98,6 +133,13 @@
     "year": "2021"
   },
   {
+    "title": "Long Lost",
+    "artist": "Lord Huron",
+    "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music124/v4/7f/18/82/7f188215-c2bf-2662-b2db-5e66545a94b3/21UMGIM06680.rgb.jpg/296x296bb-60.jpg",
+    "songs": "",
+    "year": "2021"
+  },
+  {
     "title": "KIDS",
     "artist": "Noga Erez",
     "cover": "https://is4-ssl.mzstatic.com/image/thumb/Music116/v4/24/2f/c7/242fc782-c15d-5fcf-36a7-f022f96f45b6/075679758019.jpg/296x296bf-60.jpg",
@@ -108,6 +150,20 @@
     "title": "MP On the MP: The Beat Tape Vol. 1",
     "artist": "Marco Polo",
     "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music124/v4/fe/82/fb/fe82fb8d-38df-559e-8c7a-68d471a94a8f/6350.jpg/296x296bf-60.jpg",
+    "songs": "",
+    "year": "2021"
+  },
+  {
+    "title": "Valentine",
+    "artist": "Snail Mail",
+    "cover": "https://is2-ssl.mzstatic.com/image/thumb/Music112/v4/59/da/e6/59dae647-caa2-d928-0019-6cf060af0622/191401178570.png/296x296bf-60.jpg",
+    "songs": "",
+    "year": "2021"
+  },
+  {
+    "title": "UNLOCKED 1.5",
+    "artist": "Denzel Curry, Kenny Beats",
+    "cover": "https://is4-ssl.mzstatic.com/image/thumb/Music114/v4/3c/c2/99/3cc29904-b645-0866-8e4e-9e41af3d94fb/21CRGIM26288.rgb.jpg/296x296bf-60.jpg",
     "songs": "",
     "year": "2021"
   },
@@ -231,7 +287,8 @@
     "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music123/v4/18/cd/f1/18cdf164-0ad2-2dae-db33-ed4382f4ac56/607396646135.png/296x296bb-60.jpg",
     "songs": [
       "Do You Think We'll Last Forever?",
-      "Feel The Way I Want, Back At The Beginning"
+      "Feel The Way I Want,",
+      "Back At The Beginning"
     ],
     "year": "2020"
   },
@@ -239,6 +296,13 @@
     "title": "I Think I’m Good",
     "artist": "Kassa Overall",
     "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music123/v4/45/3b/51/453b515b-a437-5049-e235-441fb02fbcae/5060180324247.jpg/296x296bb-60.jpg",
+    "songs": "",
+    "year": "2020"
+  },
+  {
+    "title": "Late Checkout",
+    "artist": "Dent May",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/f4/3b/37/f43b3741-8017-efde-d806-191f808d7d23/CAK145_DentMay_LateCheckout_1500.jpg/296x296bb-60.jpg",
     "songs": "",
     "year": "2020"
   },
@@ -262,6 +326,13 @@
     "title": "BUBBA",
     "artist": "Kaytranada",
     "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/44/2e/e7/442ee7fc-bc42-5da4-3ad2-49afc6fd1cd2/886448119760.jpg/296x296bb-60.jpg",
+    "songs": "",
+    "year": "2019"
+  },
+  {
+    "title": "Girl",
+    "artist": "Girl Ray",
+    "cover": "https://is3-ssl.mzstatic.com/image/thumb/Music113/v4/b7/a2/4c/b7a24cab-b8dd-b4d0-05fb-7597cb89756d/5060164957188.jpg/296x296bb-60.jpg",
     "songs": "",
     "year": "2019"
   },
@@ -563,6 +634,13 @@
     "title": "Run the Jewels 3",
     "artist": "Run the Jewels",
     "cover": "https://is4-ssl.mzstatic.com/image/thumb/Music124/v4/6d/60/18/6d60185e-1da6-ac00-e911-1a241285f7f5/886446293240.jpg/296x296bb-60.jpg",
+    "songs": "",
+    "year": "2017"
+  },
+  {
+    "title": "Across The Multiverse",
+    "artist": "Dent May",
+    "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/9c/b4/82/9cb48237-d4e8-c968-e811-d7d4f0be4917/677517012354.png/296x296bb-60.jpg",
     "songs": "",
     "year": "2017"
   },

@@ -19,7 +19,9 @@ import EpInput from './input/EpInput.vue'
 import EpLoading from './loading-state/EpLoadingState.vue'
 import EpMap from './map/EpMap.vue'
 import EpMenu from './menu/EpMenu.vue'
+import EpMultiSearch from './input/EpMultiSearch.vue'
 import EpNotification from './notification/EpNotification.vue'
+import EpNotifications from './notification/EpNotifications.vue'
 import EpSelect from './select/EpSelect.vue'
 import EpSparkBar from './spark-bar/EpSparkBar.vue'
 import EpSplitButton from './split-button/EpSplitButton.vue'
@@ -48,7 +50,9 @@ export default {
   EpLoading,
   EpMap,
   EpMenu,
+  EpMultiSearch,
   EpNotification,
+  EpNotifications,
   EpSelect,
   EpSparkBar,
   EpSplitButton,

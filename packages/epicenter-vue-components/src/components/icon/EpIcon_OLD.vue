@@ -10,7 +10,7 @@
   import { svgIcons } from './load-icons'
 
   export default {
-    name: 'EpIcon',
+    name: 'EpIconOLD',
     data() {
       return {
         weights: {

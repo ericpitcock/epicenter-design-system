@@ -8,6 +8,18 @@
 
 <script>
   export default {
+    name: 'EpIcon',
+    data() {
+      return {
+        svg: '',
+        weights: {
+          'extra-light': 0.5,
+          'light': 1,
+          'regular': 1.5,
+          'bold': 2,
+        }
+      }
+    },
     props: {
       name: {
         type: String,
@@ -28,17 +40,6 @@
       type: {
         type: String,
         default: 'span'
-      }
-    },
-    data() {
-      return {
-        svg: '',
-        weights: {
-          'extra-light': 0.5,
-          'light': 1,
-          'regular': 1.5,
-          'bold': 2,
-        }
       }
     },
     methods: {
