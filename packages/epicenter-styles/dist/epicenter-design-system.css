@@ -584,11 +584,11 @@ small {
   line-height: 2.4rem;
   max-width: 60rem;
 }
-.copy-block a {
+.copy-block a:not(.ep-button) {
   color: var(--text-color--link);
 }
 @media (hover: hover) and (pointer: fine) {
-  .copy-block a:hover {
+  .copy-block a:hover:not(.ep-button) {
     color: var(--text-color--link);
     cursor: pointer;
   }

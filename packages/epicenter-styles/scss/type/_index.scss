@@ -103,12 +103,12 @@ small {
     max-width: 60rem;
   }
 
-  a {
+  a:not(.ep-button) {
     color: var(--text-color--link);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    a:hover {
+    a:hover:not(.ep-button) {
       color: var(--text-color--link);
       cursor: pointer;
     }
