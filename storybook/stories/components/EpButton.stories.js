@@ -1,7 +1,18 @@
 import vueRouter from 'storybook-vue3-router'
 import { centered } from '../../helpers/decorators'
-// import { iconNames } from '@/components/icon/load-icons'
+import { iconNames } from '@/components/icon/load-icons'
 import EpButton from '@/components/button/EpButton'
+
+// add 'none' option to iconNames
+iconNames.unshift('none')
+
+// map iconNames to an object with the values as keys and { name: value } as values
+const iconNamesMapping = iconNames.reduce((acc, name) => {
+  acc[name] = { name }
+  return acc
+}, {})
+
+iconNamesMapping.none = undefined
 
 export default {
   title: 'Components/Button',
@@ -83,8 +94,10 @@ export default {
     },
     iconLeft: {
       name: 'Icon Left',
+      options: iconNames,
+      mapping: iconNamesMapping,
       control: {
-        type: 'object'
+        type: 'select'
       },
       table: {
         category: 'Icon'
@@ -92,8 +105,10 @@ export default {
     },
     iconRight: {
       name: 'Icon Right',
+      options: iconNames,
+      mapping: iconNamesMapping,
       control: {
-        type: 'object'
+        type: 'select'
       },
       table: {
         category: 'Icon'
@@ -102,20 +117,13 @@ export default {
   }
 }
 
-const Template = (args) => ({
+export const Button = args => ({
   components: { EpButton },
   setup() {
     return { args }
   },
-  methods: {
-    onClick() {
-      console.log('click')
-    }
-  },
-  template: '<ep-button @click="onClick" v-bind="args" />'
+  template: '<ep-button v-bind="args" />'
 })
-
-export const Button = Template.bind({})
 
 Button.args = {
   disabled: false,
@@ -126,8 +134,8 @@ Button.args = {
   to: '',
   href: '',
   label: 'Download',
-  iconLeft: undefined,
-  iconRight: undefined
+  iconLeft: 'none',
+  iconRight: 'none'
 }
 
 Button.decorators = [

@@ -790,7 +790,7 @@ small {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0;
+  gap: 0.8rem;
   border-radius: 3px;
   font-size: var(--font-size--small);
   line-height: 1;
@@ -905,8 +905,8 @@ small {
   color: var(--button-ghost--text);
   width: 100%;
   border-radius: 0;
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 2rem !important;
+  padding-left: 2rem !important;
 }
 @media (hover: hover) {
   .ep-button--menu-item:hover {
@@ -924,26 +924,6 @@ small {
 .ep-button--outlined {
   background-color: transparent;
   color: var(--text-color);
-}
-.ep-button--small .ep-button__icon {
-  padding: 0 0.3rem;
-}
-.ep-button--small .ep-button__icon:only-child {
-  padding-right: 0.3rem;
-}
-.ep-button--small .ep-button__label {
-  padding: 0.5rem 0.6rem;
-  font-size: var(--font-size--tiny);
-}
-.ep-button--large .ep-button__icon {
-  padding: 0 0.6rem;
-}
-.ep-button--large .ep-button__icon:only-child {
-  padding-right: 0.6rem;
-}
-.ep-button--large .ep-button__label {
-  padding: 1.15rem 1.5rem;
-  font-size: var(--font-size--default);
 }
 .ep-button--disabled {
   background-color: var(--background-2);
@@ -969,33 +949,65 @@ small {
   align-items: center;
   pointer-events: none;
 }
-.ep-button__icon + .ep-button__icon {
-  padding-left: 0rem;
-}
-.ep-button__icon--left {
-  padding: 0.4rem 0.6rem 0.4rem 0.8rem;
-}
-.ep-button__icon--right {
-  padding: 0.4rem 0.8rem 0.4rem 0.6rem;
-}
-.ep-button__icon:only-child {
-  padding-right: 0.8rem;
-}
 .ep-button__label {
   flex: 1;
   text-align: left;
-  padding: 0.8rem 1.2rem;
   pointer-events: none;
+  line-height: 2rem;
 }
-.ep-button--icon-right .ep-button__label, .ep-button--icon-left .ep-button__label {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+.ep-button:has(:only-child):has(.ep-button__icon) {
+  padding: 0.4rem 0.8rem;
 }
-.ep-button--icon-right .ep-button__label {
-  padding-right: 0;
+.ep-button:has(:only-child):has(.ep-button__label) {
+  padding: 0.4rem 1.2rem;
 }
-.ep-button--icon-left .ep-button__label {
-  padding-left: 0;
+.ep-button:has(.ep-button__icon--left):has(.ep-button__label) {
+  padding: 0.4rem 1.2rem 0.4rem 0.8rem;
+}
+.ep-button:has(.ep-button__icon--right):has(.ep-button__label) {
+  padding: 0.4rem 0.8rem 0.4rem 1.2rem;
+}
+.ep-button:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+  padding: 0.4rem 0.8rem;
+}
+.ep-button--small {
+  gap: 0.4rem;
+}
+.ep-button--small .ep-button__label {
+  font-size: var(--font-size--tiny);
+}
+.ep-button--small:has(:only-child):has(.ep-button__icon) {
+  padding: 0 0.3rem;
+}
+.ep-button--small:has(:only-child):has(.ep-button__label) {
+  padding: 0 0.6rem;
+}
+.ep-button--small:has(.ep-button__icon--left):has(.ep-button__label) {
+  padding: 0 0.6rem 0 0.3rem;
+}
+.ep-button--small:has(.ep-button__icon--right):has(.ep-button__label) {
+  padding: 0 0.3rem 0 0.6rem;
+}
+.ep-button--small:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+  padding: 0 0.6rem;
+}
+.ep-button--large .ep-button__label {
+  font-size: var(--font-size--default);
+}
+.ep-button--large:has(:only-child):has(.ep-button__icon) {
+  padding: 0.8rem 1rem;
+}
+.ep-button--large:has(:only-child):has(.ep-button__label) {
+  padding: 0.8rem 1.5rem;
+}
+.ep-button--large:has(.ep-button__icon--left):has(.ep-button__label) {
+  padding: 0.8rem 1.5rem 0.8rem 1rem;
+}
+.ep-button--large:has(.ep-button__icon--right):has(.ep-button__label) {
+  padding: 0.8rem 0.8rem 0.8rem 1.5rem;
+}
+.ep-button--large:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+  padding: 0.8rem;
 }
 
 /**
