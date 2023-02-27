@@ -19,7 +19,7 @@
           label="View on GitHub"
           kind="primary"
           :iconLeft="{ name: 'f/github' }"
-          href="https://github.com/ericpitcock/ep-design-system"
+          href="https://github.com/ericpitcock/epicenter-design-system"
         />
       </div>
       <div class="yellow-circle"></div>

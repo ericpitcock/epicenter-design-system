@@ -1,13 +1,25 @@
 <template>
   <div class="color-test">
+    <div class="copy-block">
+      <p>
+        A color that works for a large background or button doesn't always work
+        for borders or
+        <a
+          :style="{ color: primaryColor }"
+          href="#"
+        >Text links</a>, especially across dark and light themes. When you want to
+        keep the colors in the same family, but
+        adjust for a particualar use case, this tool will help with that.
+      </p>
+    </div>
     <div
       class="color-chip"
-      :style="`background-color: ${primaryColor};`"
+      :style="`background: ${primaryColor};`"
     ></div>
     <ep-button
       label="Button"
       kind="primary"
-      :style="{ backgroundColor: primaryColor }"
+      :style="{ background: primaryColor, borderColor: primaryColor }"
     />
     <ep-button
       label="Button"
@@ -19,20 +31,6 @@
       backgroundColor=""
       :borderColor="primaryColor"
     />
-    <div class="copy-block">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod
-        <a
-          :style="{ color: primaryColor }"
-          href="#"
-        >ligula in lacus.</a> Nulla facilisi. In hac habitasse platea dictumst.
-        Aliquam eu nunc. Nullam ut libero. Integer dignissim consequat lectus.
-        Class aptent taciti
-        sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-      </p>
-    </div>
-
-
     <!-- <div class="primary-color" v-for="variant in variants" :key="variant">
       <div class="color" :style="`background-color: var(--color--primary--${variant})`"></div>
       <div class="name">{{ variant }}</div>
@@ -92,10 +90,12 @@
     width: 100px;
     height: 100px;
   }
+
   .color-test {
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-start;
+
     * + * {
       margin-top: 2rem;
     }
