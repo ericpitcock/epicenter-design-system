@@ -116,12 +116,12 @@
           },
           {
             label: 'Blue',
-            command: () => (this.filter = 'blue')
-          },
-          {
-            label: 'Indigo',
-            command: () => (this.filter = 'indigo')
-          },
+          command: () => (this.filter = 'blue')
+        },
+        {
+          label: 'Indigo',
+          command: () => (this.filter = 'indigo')
+        },
           {
             label: 'Violet',
             command: () => (this.filter = 'violet')
@@ -149,12 +149,12 @@
             key: 'sample',
             formatter: value => {
               return `<div
-                              class="color-sample"
-                              style="width: 50px;
-                              height: 50px;
-                              background-color: ${value};
-                              border-radius: var(--border-radius);"
-                            />`
+                                class="color-sample"
+                                style="width: 50px;
+                                height: 50px;
+                                background-color: ${value};
+                                border-radius: var(--border-radius);"
+                              />`
             }
           },
           {
@@ -277,7 +277,7 @@
               sample: colors[hue][level].value,
               color: `${hue} ${level}`,
               contrast: this.contrast(colors[hue][level].value),
-              css: `var(--${hue}-${level})`,
+              css: `--${hue}-${level}`,
               hex: colors[hue][level].value
               // style: { color: colors[hue][level].value },
             })
@@ -290,7 +290,7 @@
               sample: grayscale[gray][level].value,
               color: `${gray} ${level}`,
               contrast: this.contrast(grayscale[gray][level].value),
-              css: `var(--${gray}-${level})`,
+              css: `--${gray}-${level}`,
               hex: grayscale[gray][level].value
               // style: { color: grayscale[gray][level].value },
             })
