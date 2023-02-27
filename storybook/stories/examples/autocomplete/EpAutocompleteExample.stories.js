@@ -80,15 +80,6 @@ const Template = args => ({
       :calculate-height-offset="30"
       overflow="hidden"
     >
-      <template #header>
-      <ep-header>
-        <template #left>
-          <p>Airport Search</p>
-        </template>
-        <template #right>
-        </template>
-      </ep-header>
-      </template>
       <template #default>
         <airport-search />
       </template>

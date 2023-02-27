@@ -17,11 +17,7 @@
       EpButton
     },
     methods: {
-      ...mapActions(['toggleTheme']),
-      // toggleTheme() {
-      //   let newTheme = this.getTheme == 'dark' ? 'light' : 'dark'
-      //   this.updateTheme(newTheme)
-      // }
+      ...mapActions(['toggleTheme'])
     },
     computed: {
       ...mapState(['theme']),

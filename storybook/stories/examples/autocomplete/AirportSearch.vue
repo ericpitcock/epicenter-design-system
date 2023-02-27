@@ -5,7 +5,7 @@
         :input-style="inputStyle"
         :items="airports"
         :searchable-keys="['name', 'city', 'iata_code']"
-        placeholder="Search for an airport"
+        placeholder="Find an airport"
         @selected="onSelect"
       />
     </div>
@@ -57,6 +57,7 @@
     flex-flow: column nowrap;
     width: 100%;
     height: 100%;
+
     .search-bar {
       display: flex;
       justify-content: center;
@@ -68,6 +69,7 @@
       box-shadow: var(--drop-shadow--large);
       z-index: var(--z-index--fixed);
     }
+
     .map {
       flex: 1;
     }

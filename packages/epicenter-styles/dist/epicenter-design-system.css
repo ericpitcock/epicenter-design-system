@@ -345,6 +345,8 @@ textarea {
 }
 
 :root {
+  --black: #000;
+  --white: #fff;
   --text--black: var(--gray-410);
   --text--white: var(--gray-50);
   --color--primary: hsl(214, 91%, 55%);
@@ -353,25 +355,28 @@ textarea {
   --color-success: hsl(99, 59%, 66%);
   --color-warning: hsl(48, 100%, 51%);
   --color-error: hsl(3, 100%, 70%);
-  --primary-color--base: var(--color--primary);
-  --primary-color--hover: hsl(214, 91%, 52%);
+  --primary-color--gradient: linear-gradient(140deg,
+      var(--color--primary) 30%,
+      hsl(204, 91%, 60%));
+  --primary-color--base: var(--primary-color--gradient);
+  --primary-color--hover: var(--color--primary);
   --primary-color--active: hsl(214, 91%, 60%);
   --primary-color--border: var(--color--primary);
   --primary-color--text: var(--gray-0);
   --danger-red--base: hsl(3, 100%, 70%);
   --danger-red--hover: hsl(3, 90%, 65%);
   --danger-red--active: hsl(3, 90%, 56%);
-  --danger-red--border: hsl(3, 100%, 44%);
+  --danger-red--border: var(--danger-red--base);
   --danger-red--text: hsl(3, 100%, 6%);
   --warning-yellow--base: hsl(48, 100%, 51%);
   --warning-yellow--hover: hsl(46, 100%, 49%);
   --warning-yellow--active: hsl(46, 100%, 41%);
-  --warning-yellow--border: hsl(48, 100%, 42%);
+  --warning-yellow--border: var(--warning-yellow--base);
   --warning-yellow--text: hsl(48, 100%, 10%);
   --success-green--base: hsl(99, 59%, 66%);
   --success-green--hover: hsl(99, 59%, 60%);
   --success-green--active: hsl(99, 59%, 52%);
-  --success-green--border: hsl(99, 59%, 46%);
+  --success-green--border: var(--success-green--base);
   --success-green--text: hsl(99, 59%, 10%);
   --logo-gold: #f99d1c;
   --logo-yellow: #fdb913;
@@ -802,7 +807,7 @@ small {
   vertical-align: top;
 }
 .ep-button--primary {
-  background-color: var(--primary-color--base);
+  background: var(--primary-color--base);
   border-width: 1px;
   border-style: solid;
   border-color: var(--primary-color--border);
@@ -811,14 +816,14 @@ small {
 @media (hover: hover) {
   .ep-button--primary:hover {
     color: var(--primary-color--text);
-    background-color: var(--primary-color--hover);
+    background: var(--primary-color--hover);
   }
 }
 .ep-button--primary:active {
-  background-color: var(--primary-color--active);
+  background: var(--primary-color--active);
 }
 .ep-button--secondary {
-  background-color: var(--background-4);
+  background: var(--background-4);
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-color);
@@ -827,14 +832,14 @@ small {
 @media (hover: hover) {
   .ep-button--secondary:hover {
     color: var(--text-color);
-    background-color: var(--button-secondary--hover);
+    background: var(--button-secondary--hover);
   }
 }
 .ep-button--secondary:active {
-  background-color: var(--button-secondary--active);
+  background: var(--button-secondary--active);
 }
 .ep-button--danger {
-  background-color: var(--danger-red--base);
+  background: var(--danger-red--base);
   border-width: 1px;
   border-style: solid;
   border-color: var(--danger-red--border);
@@ -843,14 +848,14 @@ small {
 @media (hover: hover) {
   .ep-button--danger:hover {
     color: var(--danger-red--text);
-    background-color: var(--danger-red--hover);
+    background: var(--danger-red--hover);
   }
 }
 .ep-button--danger:active {
-  background-color: var(--danger-red--active);
+  background: var(--danger-red--active);
 }
 .ep-button--warning {
-  background-color: var(--warning-yellow--base);
+  background: var(--warning-yellow--base);
   border-width: 1px;
   border-style: solid;
   border-color: var(--warning-yellow--border);
@@ -859,14 +864,14 @@ small {
 @media (hover: hover) {
   .ep-button--warning:hover {
     color: var(--warning-yellow--text);
-    background-color: var(--warning-yellow--hover);
+    background: var(--warning-yellow--hover);
   }
 }
 .ep-button--warning:active {
-  background-color: var(--warning-yellow--active);
+  background: var(--warning-yellow--active);
 }
 .ep-button--success {
-  background-color: var(--success-green--base);
+  background: var(--success-green--base);
   border-width: 1px;
   border-style: solid;
   border-color: var(--success-green--border);
@@ -875,14 +880,14 @@ small {
 @media (hover: hover) {
   .ep-button--success:hover {
     color: var(--success-green--text);
-    background-color: var(--success-green--hover);
+    background: var(--success-green--hover);
   }
 }
 .ep-button--success:active {
-  background-color: var(--success-green--active);
+  background: var(--success-green--active);
 }
 .ep-button--ghost {
-  background-color: transparent;
+  background: transparent;
   border-width: 1px;
   border-style: solid;
   border-color: transparent;
@@ -891,14 +896,14 @@ small {
 @media (hover: hover) {
   .ep-button--ghost:hover {
     color: var(--text-color);
-    background-color: var(--button-ghost--hover);
+    background: var(--button-ghost--hover);
   }
 }
 .ep-button--ghost:active {
-  background-color: var(--button-ghost--active);
+  background: var(--button-ghost--active);
 }
 .ep-button--menu-item {
-  background-color: transparent;
+  background: transparent;
   border-width: 1px;
   border-style: solid;
   border-color: transparent;
@@ -911,11 +916,11 @@ small {
 @media (hover: hover) {
   .ep-button--menu-item:hover {
     color: var(--button-menu-item-text-hover);
-    background-color: var(--button-menu-item--hover);
+    background: var(--button-menu-item--hover);
   }
 }
 .ep-button--menu-item:active {
-  background-color: var(--button-menu-item--active);
+  background: var(--button-menu-item--active);
 }
 .ep-button--menu-item--active {
   color: var(--button-menu-item-text-active);
@@ -926,7 +931,7 @@ small {
   color: var(--text-color);
 }
 .ep-button--disabled {
-  background-color: var(--background-2);
+  background: var(--background-2);
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-color);
@@ -937,11 +942,11 @@ small {
 @media (hover: hover) {
   .ep-button--disabled:hover {
     color: var(--text-color--subtle);
-    background-color: var(--background-2);
+    background: var(--background-2);
   }
 }
 .ep-button--disabled:active {
-  background-color: var(--background-2);
+  background: var(--background-2);
 }
 .ep-button__icon {
   display: inline-flex;
@@ -3088,7 +3093,7 @@ span.flatpickr-weekday {
   padding: 0 0.6rem 0 1rem;
   background-color: var(--color--primary);
   border-radius: var(--border-radius);
-  color: var(--text--white);
+  color: var(--white);
 }
 .ep-multi-search .queries .query:hover {
   background-color: var(--primary-color--hover);

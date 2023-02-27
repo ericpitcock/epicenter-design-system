@@ -4,7 +4,7 @@
   $hover-bg-color,
   $hover-font-color,
   $active-color ) {
-  background-color: $bg-color;
+  background: $bg-color;
   border-width: 1px;
   border-style: solid;
   border-color: $border-color;
@@ -13,7 +13,7 @@
   @media (hover: hover) {
     &:hover {
       color: $hover-font-color;
-      background-color: $hover-bg-color;
+      background: $hover-bg-color;
     }
   }
 
@@ -24,7 +24,7 @@
   }
 
   &:active {
-    background-color: $active-color;
+    background: $active-color;
   }
 }
 
@@ -128,12 +128,6 @@
     color: var(--text-color);
   }
 
-  // $bg-color,
-  // $border-color,
-  // $font-color,
-  // $hover-bg-color,
-  // $hover-font-color,
-  // $active-color
   &--disabled {
     @include button-theme(var(--background-2),
       var(--border-color),
