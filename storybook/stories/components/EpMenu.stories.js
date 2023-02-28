@@ -122,15 +122,13 @@ export default {
   }
 }
 
-const Template = args => ({
+export const Menu = args => ({
   components: { EpMenu },
   setup() {
     return { args }
   },
   template: '<ep-menu v-bind="args" />'
 })
-
-export const Menu = Template.bind({})
 
 Menu.args = {
   containerProps: {
