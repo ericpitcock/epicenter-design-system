@@ -6,19 +6,23 @@
         :alt="image.alt"
         class="ep-empty-state__cover"
         :src="image.src"
-      />
+      >
     </div>
     <div class="ep-empty-state__body">
-      <h2 class="font-size--large">{{ message }}</h2>
+      <h2 class="font-size--large">
+        {{ message }}
+      </h2>
       <p
         v-if="subtext"
         class="text--subtle font-size--small"
-      >{{ subtext }}</p>
+      >
+        {{ subtext }}
+      </p>
       <div
         v-if="$slots.cta"
         class="ep-empty-state__body__cta"
       >
-        <slot name="cta"></slot>
+        <slot name="cta" />
       </div>
     </div>
   </div>

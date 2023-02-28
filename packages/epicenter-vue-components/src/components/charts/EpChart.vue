@@ -1,5 +1,5 @@
 <template>
-  <div id="ep-chart"></div>
+  <div id="ep-chart" />
 </template>
 
 <script>
@@ -12,7 +12,10 @@
         type: Object,
         default: () => ({})
       },
-      chartColors: []
+      chartColors: {
+        type: Array,
+        default: () => []
+      }
     },
     data() {
       return {
@@ -33,13 +36,6 @@
         }
       }
     },
-    methods: {
-      drawChart() {
-        // can dynamically change type with
-        // this.chart = Highcharts['stockChart']('container', {
-        this.chart = Highcharts.chart('ep-chart', this.chartOptions)
-      }
-    },
     computed: {
       chartOptions() {
         return {
@@ -53,6 +49,13 @@
     },
     beforeUnmount() {
       this.chart.destroy()
+    },
+    methods: {
+      drawChart() {
+        // can dynamically change type with
+        // this.chart = Highcharts['stockChart']('container', {
+        this.chart = Highcharts.chart('ep-chart', this.chartOptions)
+      }
     }
   }
 </script>

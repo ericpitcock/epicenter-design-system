@@ -1,9 +1,9 @@
 <template>
   <div :class="['ep-checkbox', classes]">
     <input
-      type="checkbox"
-      ref="input"
       :id="id"
+      ref="input"
+      type="checkbox"
       :name="name"
       :value="value"
       :checked="checked"
@@ -67,6 +67,7 @@
         default: null
       }
     },
+    emits: ['checkchange'],
     computed: {
       classes() {
         return {

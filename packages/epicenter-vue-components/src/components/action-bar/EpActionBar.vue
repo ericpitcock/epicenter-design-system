@@ -40,14 +40,7 @@
         default: 'flex-end'
       }
     },
-    methods: {
-      itemClick(item) {
-        this.$emit('action bar click', item)
-        if (item.command) {
-          item.command(item)
-        }
-      }
-    },
+    emits: ['action bar click'],
     computed: {
       actionBarStyles() {
         return {
@@ -59,16 +52,15 @@
           kind: 'ghost',
           label: ''
         }
-      },
-      // dropdownDefaults() {
-      //   return {
-      //     button: {
-      //       kind: 'ghost',
-      //       label: ''
-      //     },
-      //     items: [],
-      //   }
-      // }
+      }
+    },
+    methods: {
+      itemClick(item) {
+        this.$emit('action bar click', item)
+        if (item.command) {
+          item.command(item)
+        }
+      }
     }
   }
 </script>

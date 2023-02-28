@@ -1,9 +1,9 @@
 import { centered } from '../../helpers/decorators'
-import E from '@/components/logo/E.vue'
+import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
 
 export default {
   title: 'Components/Logo',
-  component: E,
+  component: EpicenterLogo,
   decorators: [centered],
   argTypes: {
     size: {
@@ -52,13 +52,13 @@ export default {
 }
 
 const Template = args => ({
-  components: { E },
+  components: { EpicenterLogo },
   setup() {
     return { args }
   },
   template: `
   <div class="bounding-box" :style="{ width: args.size + 'px' }">
-    <e v-bind="args" />
+    <epicenter-logo v-bind="args" />
   </div>
   `
 })

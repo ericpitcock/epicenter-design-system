@@ -2,7 +2,7 @@
   <ep-container
     width="40rem"
     padding="3rem"
-    backgroundColor="var(--background-1)"
+    background-color="var(--background-1)"
     overflow="hidden"
   >
     <template #header>
@@ -95,6 +95,7 @@
       //   default: () => {}
       // }
     },
+    emits: ['submit'],
     data() {
       return {
         stars: [1, 2, 3, 4, 5],

@@ -15,9 +15,9 @@
           >
             <th
               v-if="!excluded(column.key)"
-              @click="sort(column.key)"
               :class="headClasses(column.key)"
               :style="stickyHeaderTop"
+              @click="sort(column.key)"
             >
               <div>
                 <span class="label">{{ column.header }}</span>
@@ -31,10 +31,10 @@
         <tr
           v-for="(row, index) in filteredData"
           :key="row.id"
-          @click="rowClick(row)"
+          :ref="`row-${index}`"
           :class="{ 'ep-table-row--selected': isSelected(row.id) }"
           :style="row.style"
-          :ref="`row-${index}`"
+          @click="rowClick(row)"
         >
           <template
             v-for="(value, key) in row"
@@ -70,19 +70,13 @@
 
   export default {
     name: 'EpTable',
-    mixins: [calculateHeight],
-    data() {
-      return {
-        currentSort: this.getSortKey(),
-        currentSortDir: this.getSortDir()
-      }
-    },
     components: {
       // dynamic components
       EpBadge: defineAsyncComponent(() => import('../badge/EpBadge.vue')),
       EpSparkBar: defineAsyncComponent(() => import('../spark-bar/EpSparkBar.vue')),
       EpIcon
     },
+    mixins: [calculateHeight],
     props: {
       bordered: {
         type: Boolean,
@@ -165,6 +159,86 @@
         default: 'auto'
       }
     },
+    emits: ['data-changed', 'row-click'],
+    data() {
+      return {
+        currentSort: this.getSortKey(),
+        currentSortDir: this.getSortDir()
+      }
+    },
+    computed: {
+      arrowIcon() {
+        return this.currentSortDir == 'desc' ? 'arrow-up' : 'arrow-down'
+      },
+      classes() {
+        return {
+          'ep-table--selectable': this.selectable,
+          'ep-table--bordered': this.bordered,
+          'ep-table--compact': this.compact,
+          'ep-table--sticky': this.stickyHeader,
+          'ep-table--striped': this.striped,
+          'ep-table--sortable': this.sortable
+        }
+      },
+      containerStyles() {
+        return {
+          height: this.dynamicHeight,
+          padding: this.padding,
+        }
+      },
+      filteredData() {
+        if (!this.searchable || !this.search.length) return this.sortedData
+
+        /*
+        search for an exact match of values surrounded by quotes
+        otherwise, search for any match
+        */
+        return this.sortedData.filter(row => {
+          return this.search.every(search => {
+            return Object.values(row).some(value => {
+              if (search.startsWith('"') && search.endsWith('"')) {
+                return value.toString().toLowerCase() === search.slice(1, -1).toLowerCase()
+              } else {
+                return value.toString().toLowerCase().includes(search.toLowerCase())
+              }
+            })
+          })
+        })
+      },
+      sortedData() {
+        if (!this.sortable) return this.data
+
+        return this.data.slice().sort((a, b) => {
+          let modifier = 1
+          if (this.currentSortDir === 'desc') modifier = -1
+          if (a[this.currentSort] < b[this.currentSort])
+            return -1 * modifier
+          if (a[this.currentSort] > b[this.currentSort])
+            return 1 * modifier
+          return 0
+        })
+      },
+      stickyHeaderTop() {
+        const top = this.stickyHeader ? this.stickyTop : '0'
+        return { top: `${top}px` }
+      },
+      tableClasses() {
+        return {
+          width: this.width,
+        }
+      },
+      tdStyles() {
+        return {
+          verticalAlign: this.verticalAlign,
+          whiteSpace: this.whiteSpace,
+        }
+      }
+    },
+    watch: {
+      filteredData() {
+        this.$emit('data-changed', this.filteredData)
+      },
+    },
     methods: {
       rowClick(row) {
         this.$emit('row-click', row)
@@ -228,103 +302,6 @@
         }
         this.currentSort = key
       }
-    },
-    computed: {
-      arrowIcon() {
-        return this.currentSortDir == 'desc' ? 'arrow-up' : 'arrow-down'
-      },
-      classes() {
-        return {
-          'ep-table--selectable': this.selectable,
-          'ep-table--bordered': this.bordered,
-          'ep-table--compact': this.compact,
-          'ep-table--sticky': this.stickyHeader,
-          'ep-table--striped': this.striped,
-          'ep-table--sortable': this.sortable
-        }
-      },
-      containerStyles() {
-        return {
-          height: this.dynamicHeight,
-          padding: this.padding,
-        }
-      },
-      filteredData() {
-        if (!this.searchable || !this.search.length) return this.sortedData
-
-        /*
-        search for an exact match of values surrounded by quotes
-        otherwise, search for any match
-        */
-        return this.sortedData.filter(row => {
-          return this.search.every(search => {
-            return Object.values(row).some(value => {
-              if (search.startsWith('"') && search.endsWith('"')) {
-                return value.toString().toLowerCase() === search.slice(1, -1).toLowerCase()
-              } else {
-                return value.toString().toLowerCase().includes(search.toLowerCase())
-              }
-            })
-          })
-        })
-      },
-      sortedData() {
-        if (!this.sortable) return this.data
-
-        /* 
-        Consider using return this.data.slice().sort((a, b)...
-        The slice() method creates a shallow copy of an array from a
-        start index to an end index.In this case, we don't pass any 
-        arguments to .slice(), which means it will create a copy of 
-        the entire filteredPersons array.
- 
-        By creating a copy of the array, we can sort it without 
-        affecting the original filteredPersons array.This ensures 
-        that any other parts of the application that rely on the 
-        original order of the filteredPersons array are 
-        not affected by the sorting operation.
-        */
-        return this.data.sort((a, b) => {
-          let modifier = 1
-          if (this.currentSortDir === 'desc') modifier = -1
-          if (a[this.currentSort] < b[this.currentSort])
-            return -1 * modifier
-          if (a[this.currentSort] > b[this.currentSort])
-            return 1 * modifier
-          return 0
-        })
-      },
-      stickyHeaderTop() {
-        const top = this.stickyHeader ? this.stickyTop : '0'
-        return { top: `${top}px` }
-      },
-      tableClasses() {
-        return {
-          width: this.width,
-        }
-      },
-      tdStyles() {
-        return {
-          verticalAlign: this.verticalAlign,
-          whiteSpace: this.whiteSpace,
-        }
-      }
-    },
-    // mounted() {
-    //   this.calculatedHeight()
-    //   if (this.calculateHeight) {
-    //     window.addEventListener('resize', this.calculatedHeight)
-    //   }
-    // },
-    // beforeDestroy() {
-    //   if (this.calculateHeight) {
-    //     window.removeEventListener('resize', this.calculatedHeight)
-    //   }
-    // },
-    watch: {
-      filteredData() {
-        this.$emit('data-changed', this.filteredData)
-      },
     }
   }
 </script>

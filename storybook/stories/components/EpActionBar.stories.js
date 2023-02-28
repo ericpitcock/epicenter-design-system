@@ -4,7 +4,7 @@ import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
-import E from '@/components/logo/E'
+import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
 
 export default {
   title: 'Components/Action Bar',
@@ -25,7 +25,7 @@ const Template = args => ({
     EpContainer,
     EpHeader,
     EpFooter,
-    E
+    EpicenterLogo
   },
   setup() {
     return { args, commonActionBarArgs }
@@ -41,7 +41,7 @@ const Template = args => ({
       <ep-header>
         <template #left>
           <div style="width: 27px;">
-            <e
+            <epicenter-logo
               faceColor="transparent"
               highlightColor="transparent"
               shadowColor="transparent"

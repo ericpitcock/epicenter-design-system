@@ -23,7 +23,7 @@
 
 <script>
   export default {
-    name: 'E',
+    name: 'EpicenterLogo',
     props: {
       strokeWidth: {
         type: Number,
@@ -56,6 +56,7 @@
     width: 100%;
     height: 100%;
   }
+
   polygon,
   path {
     stroke: v-bind(strokeColor);
@@ -63,13 +64,15 @@
     stroke-linejoin: round;
     stroke-miterlimit: 5;
   }
+
   .shadow {
     fill: v-bind(shadowColor);
   }
+
   .highlight {
     fill: v-bind(highlightColor);
   }
+
   .face {
     fill: v-bind(faceColor);
-  }
-</style>
+}</style>

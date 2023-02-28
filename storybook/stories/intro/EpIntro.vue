@@ -2,7 +2,7 @@
   <div class="intro">
     <div class="hero">
       <div class="logo-container">
-        <e
+        <epicenter-logo
           faceColor="#fff16c"
           highlightColor="white"
           shadowColor="var(--gray-500)"
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-  import E from '@/components/logo/E'
+  import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
   import EpBanner from '@/components/banner/EpBanner'
   import EpButton from '@/components/button/EpButton'
   import EpContainer from '@/components/container/EpContainer'
@@ -67,7 +67,7 @@
   export default {
     name: 'Intro',
     components: {
-      E,
+      EpicenterLogo,
       EpBanner,
       EpButton,
       EpContainer

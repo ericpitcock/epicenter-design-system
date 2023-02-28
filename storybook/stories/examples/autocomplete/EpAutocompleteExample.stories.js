@@ -6,7 +6,6 @@ import EpAutocomplete from '@/components/autocomplete/EpAutocomplete.vue'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
-import E from '@/components/logo/E'
 
 export default {
   title: 'Components/Autocomplete',
@@ -63,8 +62,7 @@ const Template = args => ({
     AirportSearch,
     EpContainer,
     EpHeader,
-    EpFooter,
-    E
+    EpFooter
   },
   setup() {
     return { args }

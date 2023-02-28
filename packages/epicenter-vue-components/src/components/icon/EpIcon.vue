@@ -9,17 +9,6 @@
 <script>
   export default {
     name: 'EpIcon',
-    data() {
-      return {
-        svg: '',
-        weights: {
-          'extra-light': 0.5,
-          'light': 1,
-          'regular': 1.5,
-          'bold': 2,
-        }
-      }
-    },
     props: {
       name: {
         type: String,
@@ -42,6 +31,28 @@
         default: 'span'
       }
     },
+    data() {
+      return {
+        svg: '',
+        weights: {
+          'extra-light': 0.5,
+          'light': 1,
+          'regular': 1.5,
+          'bold': 2,
+        }
+      }
+    },
+    watch: {
+      name: {
+        immediate: true,
+        handler() {
+          this.loadIcon()
+        }
+      }
+    },
+    created() {
+      this.loadIcon()
+    },
     methods: {
       loadIcon() {
         const xhr = new XMLHttpRequest()
@@ -58,17 +69,6 @@
         xhr.open('GET', require(`./icons/${this.name}.svg`), true)
         xhr.send()
       }
-    },
-    watch: {
-      name: {
-        immediate: true,
-        handler() {
-          this.loadIcon()
-        }
-      }
-    },
-    created() {
-      this.loadIcon()
     }
   }
 </script>

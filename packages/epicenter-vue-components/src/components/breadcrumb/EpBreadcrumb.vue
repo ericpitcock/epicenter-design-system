@@ -15,7 +15,9 @@
             :class="crumbClass(index)"
             :to="item.to"
             @click="itemClick(item)"
-          >{{ item.text }}</component>
+          >
+            {{ item.text }}
+          </component>
         </li>
       </ol>
     </nav>
@@ -35,18 +37,15 @@
         default: 'static' // static, dynamic
       }
     },
+    emits: ['crumb-click'],
     computed: {
       element() {
-        if (this.type === 'static') {
-          return 'a'
-        } else if (this.type === 'dynamic') {
-          return 'router-link'
-        }
+        return (this.type === 'static') ? 'a' : 'router-link'
       },
       items() {
         if (this.type === 'static') {
           return this.staticBreadcrumbs
-        } else if (this.type === 'dynamic') {
+        } else {
           let items = []
           // return breadcrumbs from $route.fullPath
           const path = this.$route.fullPath
@@ -79,18 +78,22 @@
 <style lang="scss" scoped>
   .ep-breadcrumbs {
     display: flex;
+
     a {
       &:hover {}
     }
+
     ol {
       margin: 0;
       padding: 0;
       list-style: none;
     }
+
     li {
       display: inline-block;
       margin: 0;
       padding: 0;
+
       .divider {
         margin: 0 0.5rem;
       }

@@ -26,7 +26,9 @@
       <option
         disabled
         value=""
-      >{{ placeholder }}</option>
+      >
+        {{ placeholder }}
+      </option>
       <option
         v-for="option in options"
         :key="option.value"
@@ -73,22 +75,11 @@
       },
       // [label, value]
     },
-    emits: ['update:modelValue'],
+    emits: ['update:modelValue', 'input', 'focus'],
     data() {
       return {
         hasFocus: false,
         selected: '',
-      }
-    },
-    methods: {
-      onChange() {
-        this.hasFocus = false
-        this.$emit('input', this.selected)
-        console.log(this.selected)
-      },
-      onFocus() {
-        this.hasFocus = true
-        this.$emit('focus')
       }
     },
     computed: {
@@ -117,6 +108,17 @@
         handler(value) {
           this.selected = value
         }
+      }
+    },
+    methods: {
+      onChange() {
+        this.hasFocus = false
+        this.$emit('input', this.selected)
+        console.log(this.selected)
+      },
+      onFocus() {
+        this.hasFocus = true
+        this.$emit('focus')
       }
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div
-    class="ep-dropdown"
     v-click-outside="closeDropdown"
+    class="ep-dropdown"
   >
     <div @click="toggleDropdown">
       <slot
@@ -21,10 +21,10 @@
         />
         <ep-menu
           v-else
-          :menuItems="menuItems"
-          menuType="dropdown"
-          dividerColor="var(--border-color--lighter)"
-          :containerProps="containerProps"
+          :menu-items="menuItems"
+          menu-type="dropdown"
+          divider-color="var(--border-color--lighter)"
+          :container-props="containerProps"
         />
       </div>
     </div>
@@ -45,19 +45,6 @@
     directives: {
       clickOutside
     },
-    data() {
-      return {
-        dropdownVisible: false,
-        buttonDefaults: {
-          kind: 'secondary',
-          size: 'default',
-          title: 'Default Dropdown',
-          label: 'Default Dropdown',
-          iconRight: { name: 'chevron-down' },
-          iconLeft: undefined
-        }
-      }
-    },
     props: {
       button: {
         type: Object,
@@ -74,6 +61,20 @@
       alignRight: {
         type: Boolean,
         default: false
+      }
+    },
+    emits: ['select'],
+    data() {
+      return {
+        dropdownVisible: false,
+        buttonDefaults: {
+          kind: 'secondary',
+          size: 'default',
+          title: 'Default Dropdown',
+          label: 'Default Dropdown',
+          iconRight: { name: 'chevron-down' },
+          iconLeft: undefined
+        }
       }
     },
     computed: {

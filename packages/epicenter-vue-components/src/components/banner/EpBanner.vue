@@ -3,7 +3,7 @@
     <div
       class="ep-banner__color-strip"
       :style="colorStrip"
-    ></div>
+    />
     <div class="ep-banner__body">
       <div
         v-if="iconProps.name"
@@ -12,22 +12,25 @@
         <ep-icon v-bind="iconProps" />
       </div>
       <div class="ep-banner__body__message">
-        <p class="ep-banner__body__message__text font-size--small">{{ message }}
+        <p class="ep-banner__body__message__text font-size--small">
+          {{ message }}
         </p>
         <p
           v-if="subtext"
           class="ep-banner__body__message__subtext"
-        >{{ subtext }}</p>
+        >
+          {{ subtext }}
+        </p>
       </div>
       <div
         v-if="dissmissable"
         class="dismiss-button"
       >
         <ep-button
-          @click="dismissNotification"
           class="dismiss-button"
           kind="ghost"
-          :iconRight="{ name: 'close' }"
+          :icon-right="{ name: 'close' }"
+          @click="dismissNotification"
         />
       </div>
     </div>
@@ -40,7 +43,10 @@
 
   export default {
     name: 'EpBanner',
-    emits: ['dismiss'],
+    components: {
+      EpButton,
+      EpIcon
+    },
     props: {
       bannerStyle: {
         type: String,
@@ -63,6 +69,7 @@
         default: ''
       },
     },
+    emits: ['dismiss'],
     data() {
       return {
         colors: {
@@ -72,10 +79,6 @@
           error: 'var(--color-error)'
         }
       }
-    },
-    components: {
-      EpButton,
-      EpIcon
     },
     computed: {
       colorStrip() {

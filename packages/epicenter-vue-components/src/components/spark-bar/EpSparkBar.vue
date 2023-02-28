@@ -5,6 +5,7 @@
   >
     <div
       v-for="(segment, index) in segmentWidth"
+      :key="index"
       class="ep-spark-bar__segment"
       :style="{ width: `${segment}%` }"
     >
@@ -12,7 +13,9 @@
         {{ segmentHoverInfo(index) }}
       </span>
     </div>
-    <p class="ep-spark-bar__label font-size--tiny">{{ bar[4] }}</p>
+    <p class="ep-spark-bar__label font-size--tiny">
+      {{ bar[4] }}
+    </p>
   </div>
 </template>
 
@@ -54,8 +57,8 @@
             return `${this.segments[index]} high vulnerabilities`
           case 3:
             return `${this.segments[index]} critical vulnerabilities`
+        }
       }
     }
   }
-}
 </script>

@@ -1,11 +1,11 @@
 <template>
   <div class="ep-autocomplete">
     <input
+      v-model="search"
       class="ep-autocomplete__input"
       :style="inputStyle"
       type="text"
       :placeholder="placeholder"
-      v-model="search"
       @input="onInput"
       @keydown.down="onKeyDown"
       @keydown.up="onKeyUp"
@@ -13,15 +13,15 @@
       @keydown.esc="onEsc"
       @focus="onFocus"
       @blur="onBlur"
-    />
+    >
     <div
-      class="ep-autocomplete__dropdown"
       v-show="showDropdown"
+      class="ep-autocomplete__dropdown"
     >
       <div
-        class="ep-autocomplete__dropdown__item"
         v-for="(item, index) in filteredItems"
         :key="item.id"
+        class="ep-autocomplete__dropdown__item"
         :class="{
           'ep-autocomplete__dropdown__item--active': index === currentIndex
         }"
@@ -59,6 +59,7 @@
         default: 'startsWith' // contains, startsWith
       }
     },
+    emits: ['selected'],
     data() {
       return {
         search: '',

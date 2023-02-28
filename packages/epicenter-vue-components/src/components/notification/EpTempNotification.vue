@@ -1,15 +1,15 @@
 <template>
   <Teleport to="body">
     <transition name="fade">
-    <div
-      v-if="hasActiveNotifications"
-      class="ep-temp-notification"
-    >
-      <EpNotification
-        v-bind="getActiveNotifications[0]"
-        @dismiss="removeNotification(getActiveNotifications[0])"
-      />
-    </div>
+      <div
+        v-if="hasActiveNotifications"
+        class="ep-temp-notification"
+      >
+        <EpNotification
+          v-bind="getActiveNotifications[0]"
+          @dismiss="removeNotification(getActiveNotifications[0])"
+        />
+      </div>
     </transition>
   </Teleport>
 </template>

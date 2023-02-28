@@ -12,12 +12,12 @@
     </div>
     <div class="queries">
       <div
-        v-for="(query, index) in query"
+        v-for="(item, index) in query"
         :key="index"
         class="query"
-        @click="onQueryClose(query, index)"
+        @click="onQueryClose(item, index)"
       >
-        <span class="query__text font-size--small">{{ query }}</span>
+        <span class="query__text font-size--small">{{ item }}</span>
         <ep-icon
           name="close"
           weight="bold"
@@ -28,17 +28,17 @@
     </div>
     <input
       ref="input"
+      v-model="value"
       type="text"
       :placeholder="placeholderValue"
       :disabled="disabled"
-      v-model="value"
       @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
       @keydown.enter="onEnter"
       @keydown.delete="onDelete"
       @keydown.esc="onEsc"
-    />
+    >
     <div
       v-if="clearable"
       class="ep-multi-search__clear"
@@ -57,16 +57,6 @@
     name: 'EpMultiSearch',
     components: {
       EpIcon
-    },
-    data() {
-      return {
-        hasError: false,
-        hasFocus: false,
-        // value is the value of the input
-        value: '',
-        // query is the array of values that have been added to the search
-        query: [],
-      }
     },
     props: {
       placeholder: {
@@ -119,48 +109,14 @@
       }
     },
     emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear', 'query-close', 'delete'],
-    methods: {
-      onQueryClose(query, index) {
-        this.query.splice(index, 1)
-        this.$emit('query-close', query)
-      },
-      onInput(event) {
-        this.$emit('input', event.target.value)
-      },
-      onEsc(event) {
-        this.$refs.input.blur()
-        this.$emit('esc', event.target.value)
-      },
-      onFocus(event) {
-        this.hasFocus = true
-        this.$emit('focus', event.target.value)
-      },
-      onBlur(event) {
-        this.hasFocus = false
-        this.$emit('blur', event.target.value)
-      },
-      onEnter() {
-        // on enter, add the value to the query array
-        this.query.push(this.value)
-        // then emit the query array
-        this.$emit('enter', this.query)
-        // then clear the input
-        this.value = ''
-      },
-      onDelete() {
-        // make sure there's nothing in the input
-        if (this.value === '') {
-          // find the last element in the query array and remove it
-          this.query.splice(this.query.length - 1, 1)
-          // then emit the query array
-          this.$emit('delete', this.query)
-        }
-      },
-      onClear() {
-        this.query = []
-        this.value = ''
-        this.$refs.input.focus()
-        this.$emit('clear', this.query)
+    data() {
+      return {
+        hasError: false,
+        hasFocus: false,
+        // value is the value of the input
+        value: '',
+        // query is the array of values that have been added to the search
+        query: [],
       }
     },
     computed: {
@@ -205,6 +161,50 @@
     watch: {
       query() {
         console.log('query', this.query)
+      }
+    },
+    methods: {
+      onQueryClose(query, index) {
+        this.query.splice(index, 1)
+        this.$emit('query-close', query)
+      },
+      onInput(event) {
+        this.$emit('input', event.target.value)
+      },
+      onEsc(event) {
+        this.$refs.input.blur()
+        this.$emit('esc', event.target.value)
+      },
+      onFocus(event) {
+        this.hasFocus = true
+        this.$emit('focus', event.target.value)
+      },
+      onBlur(event) {
+        this.hasFocus = false
+        this.$emit('blur', event.target.value)
+      },
+      onEnter() {
+        // on enter, add the value to the query array
+        this.query.push(this.value)
+        // then emit the query array
+        this.$emit('enter', this.query)
+        // then clear the input
+        this.value = ''
+      },
+      onDelete() {
+        // make sure there's nothing in the input
+        if (this.value === '') {
+          // find the last element in the query array and remove it
+          this.query.splice(this.query.length - 1, 1)
+          // then emit the query array
+          this.$emit('delete', this.query)
+        }
+      },
+      onClear() {
+        this.query = []
+        this.value = ''
+        this.$refs.input.focus()
+        this.$emit('clear', this.query)
       }
     },
   }

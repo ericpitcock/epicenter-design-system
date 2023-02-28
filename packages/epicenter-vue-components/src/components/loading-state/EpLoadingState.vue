@@ -72,15 +72,11 @@
         default: 2000
       },
     },
+    emits: ['done'],
     data() {
       return {
         icon: '',
         message: '',
-      }
-    },
-    watch: {
-      messages() {
-        this.cycleMessages()
       }
     },
     computed: {
@@ -89,6 +85,11 @@
           backgroundColor: this.backgroundColor,
           borderRadius: this.borderRadius
         }
+      }
+    },
+    watch: {
+      messages() {
+        this.cycleMessages()
       }
     },
     methods: {
@@ -110,5 +111,5 @@
         })
       }
     }
-}
+  }
 </script>

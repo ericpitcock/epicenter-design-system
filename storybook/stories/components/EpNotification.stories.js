@@ -1,5 +1,5 @@
 import { padded } from '../../helpers/decorators'
-import E from '@/components/logo/E'
+import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpButton from '@/components/button/EpButton'
@@ -30,7 +30,7 @@ const buildNotification = alertStyle => {
 
 const Template = args => ({
   components: {
-    E,
+    EpicenterLogo,
     EpActionBar,
     EpButton,
     EpContainer,
@@ -60,7 +60,7 @@ const Template = args => ({
       <ep-header>
         <template #left>
           <div style="width: 27px;">
-            <e
+            <epicenter-logo
               faceColor="transparent"
               highlightColor="transparent"
               shadowColor="transparent"

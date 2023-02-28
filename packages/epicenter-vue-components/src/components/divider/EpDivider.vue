@@ -2,7 +2,7 @@
   <hr
     class="ep-divider"
     :style="dividerStyles"
-  />
+  >
 </template>
 
 <script>

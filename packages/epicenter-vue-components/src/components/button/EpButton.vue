@@ -31,6 +31,9 @@
 
   export default {
     name: 'EpButton',
+    components: {
+      EpIcon
+    },
     props: {
       kind: {
         type: String,
@@ -41,10 +44,12 @@
         default: 'default'
       },
       title: {
-        type: String
+        type: String,
+        default: undefined
       },
       label: {
-        type: String
+        type: String,
+        default: ''
       },
       iconLeft: {
         type: Object,
@@ -75,17 +80,6 @@
         default: 'button'
       }
     },
-    components: {
-      EpIcon
-    },
-    methods: {
-      handleClick() {
-        // this.$emit('click')
-        if (this.command) {
-          this.command()
-        }
-      }
-    },
     computed: {
       element() {
         const attrs = this.$attrs
@@ -110,6 +104,14 @@
             'ep-button--menu-item--active': this.isActiveMenuItem
           }
         ]
+      }
+    },
+    methods: {
+      handleClick() {
+        // this.$emit('click')
+        if (this.command) {
+          this.command()
+        }
       }
     }
   }

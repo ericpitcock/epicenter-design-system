@@ -1,6 +1,6 @@
 <template>
   <div class="ep-map-container">
-    <div id="ep-map"></div>
+    <div id="ep-map" />
   </div>
 </template>
 
@@ -49,6 +49,7 @@
       //   default: null
       // }
     },
+    emits: ['dropPin'],
     data() {
       return {
         init: true,
@@ -62,6 +63,61 @@
       //   if (this.mapStyle) return this.mapStyle
       //   return this.theme == 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/streets-v11'
       // }
+    },
+    watch: {
+      // init(val) {
+      //   console.log('map has initialized')
+      // },
+      mapCenter(newCenter, oldCenter) {
+        // this.map.setCenter(newCenter)
+        this.flyTo(newCenter)
+      },
+      mapZoom(newZoom, oldZoom) {
+        this.map.zoomTo(newZoom)
+      },
+      mapStyle(newStyle, oldStyle) {
+        this.map.setStyle(newStyle)
+      }
+    },
+    mounted() {
+      this.loadMap().then(() => {
+        // map layer
+        if (this.mapSource) this.addSource(this.mapSource, this.mapLayer)
+        // fit to bounds
+        if (this.fitToBounds) {
+          this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
+        }
+        this.init = false
+      })
+      // console.log(this.theme)
+      // this.map.on('zoom', (event) => {
+      // console.log(event)
+      // })
+      // this.map.on('click', (event) => {
+      // console.log('A click event has occurred at ' + event.lngLat)
+      // })
+    },
+    created() {
+      // selectively create watchers if features exist
+      // do this for everything that is not required
+
+      if (this.mapSource) {
+        this.$watch('mapSource', function (newSource, oldSource) {
+          if (this.init) return
+          console.log('map source changed (mapSource watcher)')
+          if (this.map.getLayer('test')) this.map.removeLayer('test')
+          if (this.map.getSource('test')) this.map.removeSource('test')
+          this.addSource(this.mapSource, this.mapLayer)
+          this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
+        })
+      }
+    },
+    beforeUnmount() {
+      if (this.map) {
+        if (this.map.getLayer('test')) this.map.removeLayer('test')
+        if (this.map.getSource('test')) this.map.removeSource('test')
+        this.map.remove()
+      }
     },
     methods: {
       dropPin(lngLat) {
@@ -117,61 +173,6 @@
       addSource(source, layer) {
         this.map.addSource(source.id, source.source)
         this.map.addLayer(layer)
-      }
-    },
-    watch: {
-      // init(val) {
-      //   console.log('map has initialized')
-      // },
-      mapCenter(newCenter, oldCenter) {
-        // this.map.setCenter(newCenter)
-        this.flyTo(newCenter)
-      },
-      mapZoom(newZoom, oldZoom) {
-        this.map.zoomTo(newZoom)
-      },
-      mapStyle(newStyle, oldStyle) {
-        this.map.setStyle(newStyle)
-      }
-    },
-    mounted() {
-      this.loadMap().then(() => {
-        // map layer
-        if (this.mapSource) this.addSource(this.mapSource, this.mapLayer)
-        // fit to bounds
-        if (this.fitToBounds) {
-          this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
-        }
-        this.init = false
-      })
-      // console.log(this.theme)
-      // this.map.on('zoom', (event) => {
-      // console.log(event)
-      // })
-      // this.map.on('click', (event) => {
-      // console.log('A click event has occurred at ' + event.lngLat)
-      // })
-    },
-    created() {
-      // selectively create watchers if features exist
-      // do this for everything that is not required
-
-      if (this.mapSource) {
-        this.$watch('mapSource', function (newSource, oldSource) {
-          if (this.init) return
-          console.log('map source changed (mapSource watcher)')
-          if (this.map.getLayer('test')) this.map.removeLayer('test')
-          if (this.map.getSource('test')) this.map.removeSource('test')
-          this.addSource(this.mapSource, this.mapLayer)
-          this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
-        })
-      }
-    },
-    beforeDestroy() {
-      if (this.map) {
-        if (this.map.getLayer('test')) this.map.removeLayer('test')
-        if (this.map.getSource('test')) this.map.removeSource('test')
-        this.map.remove()
       }
     },
     // from https://github.com/soal/vue-mapbox/blob/5a37e7a8bd2fdb8776350e66a00e23b47ec5ad0c/src/components/map/GlMap.vue

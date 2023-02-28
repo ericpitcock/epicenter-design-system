@@ -51,20 +51,36 @@ export const Select = Template.bind({})
 
 Select.args = {
   id: 'select',
-  iconLeft: { name: 'search' },
-  placeholder: 'Make a selection…',
+  iconLeft: { name: 'f/coffee' },
+  placeholder: 'Select your coffee type…',
   options: [
     {
-      label: 'Option 1',
-      value: 'option-1'
+      label: 'Drip Coffee',
+      value: 'drip'
     },
     {
-      label: 'Option 2',
-      value: 'option-2'
+      label: 'Espresso',
+      value: 'espresso'
     },
     {
-      label: 'Option 3',
-      value: 'option-3'
+      label: 'Cold Brew',
+      value: 'cold-brew'
+    },
+    {
+      label: 'French Press',
+      value: 'french-press'
+    },
+    {
+      label: 'Pour Over',
+      value: 'pour-over'
+    },
+    {
+      label: 'Chemex',
+      value: 'chemex'
+    },
+    {
+      label: 'Aeropress',
+      value: 'aeropress'
     }
   ]
 }

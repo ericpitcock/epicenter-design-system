@@ -1,7 +1,7 @@
 <template>
   <ep-button
     kind="ghost"
-    :iconLeft="{ name: buttonIcon }"
+    :icon-left="{ name: buttonIcon }"
     title="Toggle theme"
     class="theme-toggle"
     @click="toggleTheme"
@@ -16,14 +16,14 @@
     components: {
       EpButton
     },
-    methods: {
-      ...mapActions(['toggleTheme'])
-    },
     computed: {
       ...mapState(['theme']),
       buttonIcon() {
         return this.theme == 'dark' ? 'light-mode' : 'dark-mode'
       }
+    },
+    methods: {
+      ...mapActions(['toggleTheme'])
     }
   }
 </script>

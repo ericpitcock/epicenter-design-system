@@ -2,6 +2,7 @@
   <div class="ep-tabs">
     <div
       v-for="(item, index) in items"
+      :key="index"
       class="ep-tabs__tab-item"
       :class="{ 'ep-tabs__tab-item--active': index === activeTab }"
       @click="tabClick(item, index)"
@@ -20,6 +21,7 @@
         default: () => []
       }
     },
+    emits: ['tabClick'],
     data() {
       return {
         activeTab: 0

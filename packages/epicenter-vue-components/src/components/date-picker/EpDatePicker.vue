@@ -13,6 +13,9 @@
 
   export default {
     name: 'EpDatePicker',
+    components: {
+      EpInput
+    },
     props: {
       dateFormat: {
         type: String,
@@ -23,9 +26,7 @@
         default: 'single' // single, multiple, range
       },
     },
-    components: {
-      EpInput
-    },
+    emits: ['input', 'change', 'focus', 'blur', 'keydown'],
     data() {
       return {
         flatpickr: null,

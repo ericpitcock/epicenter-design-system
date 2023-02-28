@@ -1,8 +1,5 @@
 <template>
-  <ep-container
-    v-bind="containerProps"
-    @mouseleave="menuLeave()"
-  >
+  <ep-container v-bind="containerProps">
     <div class="ep-menu">
       <template
         v-for="(item, index) of menuItems"
@@ -22,6 +19,8 @@
         <div
           class="ep-menu__item"
           :data-item="index"
+          @mouseover="showSubmenu(item, index)"
+          @mouseleave="hideSubmenu(item)"
         >
           <ep-button
             v-if="!item.divider && !item.section"
@@ -30,16 +29,13 @@
             :icon-right="item.iconRight"
             :icon-left="item.iconLeft"
             :is-active-menu-item="menuType === 'nav' && item.label == activeItem"
-            @mouseover="itemHover(item, index)"
-            @mouseleave="itemLeave(item, index)"
-            @click="itemClick(item)"
             v-bind="item.bind"
+            @click="itemClick(item)"
           />
           <div
             v-if="item.children"
             v-show="activeItemIndex === index"
             class="ep-menu__item__sub-menu"
-            @mouseleave="itemLeave(item, index)"
           >
             <ep-menu
               :container-props="containerProps"
@@ -64,11 +60,6 @@
       EpDivider,
       EpButton
     },
-    data() {
-      return {
-        activeItemIndex: null
-      }
-    },
     props: {
       menuType: {
         type: String,
@@ -91,30 +82,22 @@
         default: 'var(--border-color)'
       }
     },
+    emits: ['item-click'],
+    data() {
+      return {
+        activeItemIndex: null
+      }
+    },
     methods: {
-      itemHover(item, index) {
-        this.activeItemIndex = index
-        // console.log('itemHover', index)
-      },
-      itemLeave(item, index) {
-        // if item has children, only close if you're not hovering those children
+      showSubmenu(item, index) {
         if (item.children) {
-          // check if the mouse is hovering the children
-          const children = document.querySelector(`[data-item="${index}"] .ep-menu__item__sub-menu`)
-          const rect = children.getBoundingClientRect()
-          // get mouse position
-          const event = window.event
-          const x = event.clientX
-          const y = event.clientY
-          if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
-            this.activeItemIndex = null
-          }
-        } else {
-          this.activeItemIndex = null
+          this.activeItemIndex = index
         }
       },
-      menuLeave() {
-        this.activeItemIndex = null
+      hideSubmenu(item) {
+        if (item.children) {
+          this.activeItemIndex = null
+        }
       },
       itemClick(item) {
         this.$emit('item-click', item)

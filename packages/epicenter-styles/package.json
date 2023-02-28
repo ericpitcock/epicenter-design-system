@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ericpitcock/ep-design-system.git"
+    "url": "git+https://github.com/ericpitcock/epicenter-design-system.git"
   },
   "author": "Eric Pitcock",
   "dependencies": {},

@@ -44,6 +44,18 @@
         checked: this.items.map(item => item.value)
       }
     },
+    computed: {
+      classes() {
+        return {
+          'ep-checkbox-filter--horizontal': this.orientation === 'horizontal'
+        }
+      },
+      unchecked() {
+        return this.items
+          .map(item => item.value)
+          .filter(item => !this.checked.includes(item))
+      }
+    },
     methods: {
       handleChange(event) {
         const { value, checked } = event.target
@@ -62,18 +74,6 @@
           this.checked = []
         }
         this.$emit('selection-change', this.checked, this.unchecked)
-      }
-    },
-    computed: {
-      classes() {
-        return {
-          'ep-checkbox-filter--horizontal': this.orientation === 'horizontal'
-        }
-      },
-      unchecked() {
-        return this.items
-          .map(item => item.value)
-          .filter(item => !this.checked.includes(item))
       }
     }
   }

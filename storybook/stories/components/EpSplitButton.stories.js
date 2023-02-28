@@ -32,9 +32,7 @@ export const SplitButton = args => ({
 SplitButton.args = {
   buttonProps: {
     kind: 'primary',
-    label: 'Refresh',
-    iconLeft: { name: 'refresh' },
-    // command: () => refresh()
+    label: 'Download 1.2 (Latest)'
   },
   dropdownProps: {
     button: {
@@ -49,12 +47,16 @@ SplitButton.args = {
     },
     menuItems: [
       {
-        label: 'Clear & Fetch',
-        // command: () => clearAndFetch()
+        label: 'Download 1.1'
       },
       {
-        label: 'Destroy & Fetch',
-        // command: () => destroyAndFetch()
+        label: 'Download 1.0.1'
+      },
+      {
+        label: 'Download 1.0'
+      },
+      {
+        label: 'Download 0.9'
       }
     ]
   }

@@ -29,6 +29,7 @@
         default: () => []
       }
     },
+    emits: ['crumb-click'],
     methods: {
       crumbClass(index) {
         return index < this.crumbs.length - 1 ? 'text--link' : ''

@@ -3,22 +3,26 @@
     <div
       class="ep-notification__color-strip"
       :style="colorStrip"
-    ></div>
+    />
     <div class="ep-notification__body">
       <div class="ep-notification__body__message">
-        <p class="ep-notification__body__message__text font-size--small">{{
-          message
-        }}</p>
-        <p class="ep-notification__body__message__timestamp">{{
-          relativeTime(timestamp)
-        }}</p>
+        <p class="ep-notification__body__message__text font-size--small">
+          {{
+            message
+          }}
+        </p>
+        <p class="ep-notification__body__message__timestamp">
+          {{
+            relativeTime(timestamp)
+          }}
+        </p>
       </div>
       <div class="dismiss-button">
         <ep-button
-          @click="dismissNotification"
           class="dismiss-button"
           kind="ghost"
-          :iconRight="{ name: 'close' }"
+          :icon-right="{ name: 'close' }"
+          @click="dismissNotification"
         />
       </div>
     </div>
@@ -30,7 +34,9 @@
 
   export default {
     name: 'EpNotification',
-    emits: ['dismiss'],
+    components: {
+      EpButton
+    },
     props: {
       id: {
         type: String,
@@ -45,8 +51,11 @@
         default: 'info' // info, success, warning, error
       },
       timestamp: {
+        type: Number,
+        default: Date.now()
       }
     },
+    emits: ['dismiss'],
     data() {
       return {
         colors: {
@@ -56,9 +65,6 @@
           error: 'var(--color-error)'
         }
       }
-    },
-    components: {
-      EpButton
     },
     computed: {
       colorStrip() {

@@ -3,9 +3,15 @@
     <table>
       <thead>
         <tr>
-          <th @click="sortTable('id')">ID</th>
-          <th @click="sortTable('name')">Name</th>
-          <th @click="sortTable('age')">Age</th>
+          <th @click="sortTable('id')">
+            ID
+          </th>
+          <th @click="sortTable('name')">
+            Name
+          </th>
+          <th @click="sortTable('age')">
+            Age
+          </th>
         </tr>
       </thead>
       <tbody>

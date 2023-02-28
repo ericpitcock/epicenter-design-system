@@ -11,16 +11,6 @@
 
   export default {
     name: 'EpIconOLD',
-    data() {
-      return {
-        weights: {
-          'extra-light': 0.5,
-          'light': 1,
-          'regular': 1.5,
-          'bold': 2,
-        }
-      }
-    },
     props: {
       name: {
         type: String,
@@ -41,6 +31,16 @@
       type: {
         type: String,
         default: 'span'
+      }
+    },
+    data() {
+      return {
+        weights: {
+          'extra-light': 0.5,
+          'light': 1,
+          'regular': 1.5,
+          'bold': 2,
+        }
       }
     },
     computed: {
