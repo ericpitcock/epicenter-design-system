@@ -149,12 +149,12 @@
             key: 'sample',
             formatter: value => {
               return `<div
-                                    class="color-sample"
-                                    style="width: 50px;
-                                    height: 50px;
-                                    background-color: ${value};
-                                    border-radius: var(--border-radius);"
-                                  />`
+                                      class="color-sample"
+                                      style="width: 50px;
+                                      height: 50px;
+                                      background-color: ${value};
+                                      border-radius: var(--border-radius);"
+                                    />`
             }
           },
           {
@@ -190,7 +190,7 @@
         containerProps: {
           width: 'fit-content',
           height: 'fit-content',
-          padding: '1rem 0'
+          containerPadding: '1rem 0'
         }
       }
     },

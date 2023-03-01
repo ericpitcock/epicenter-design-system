@@ -1,7 +1,8 @@
 <template>
   <ep-container
     max-width="120rem"
-    content-padding="3rem"
+    container-padding="0 3rem"
+    content-padding="3rem 0"
     overflow="hidden"
   >
     <template #header>
@@ -21,32 +22,37 @@
       </ep-header>
     </template>
     <template #default>
-      <template v-if="activeTab === 0">
-        <div
-          class="type-style"
-          v-for="(typeStyle, index) in typeStyles"
-          :key="index"
-        >
-          <div class="type-style__desc">
-            <div class="font-size--body">{{ typeStyle.name }}</div>
-            <template v-for="item in typeStyle.meta">
-              <div class="meta font-size--small">{{ item }}</div>
-            </template>
-          </div>
-          <div class="type-style__sample">
-            <div
-              :class="`font-size--${typeStyle.name.toLowerCase()}`"
-              v-html="typeStyle.sample"
-            >
+      <ep-tab-content
+        :items="tabs"
+        :active-tab="activeTab"
+      >
+        <template #tab-0>
+          <div
+            class="type-style"
+            v-for="(typeStyle, index) in typeStyles"
+            :key="index"
+          >
+            <div class="type-style__desc">
+              <div class="font-size--body">{{ typeStyle.name }}</div>
+              <template v-for="item in typeStyle.meta">
+                <div class="meta font-size--small">{{ item }}</div>
+              </template>
+            </div>
+            <div class="type-style__sample">
+              <div
+                :class="`font-size--${typeStyle.name.toLowerCase()}`"
+                v-html="typeStyle.sample"
+              >
+              </div>
             </div>
           </div>
-        </div>
-      </template>
-      <template v-else-if="activeTab === 1">
-        <div>
-          Fira Code info coming soon
-        </div>
-      </template>
+        </template>
+        <template #tab-1>
+          <div>
+            Fira Code info coming soon
+          </div>
+        </template>
+      </ep-tab-content>
     </template>
   </ep-container>
 </template>
@@ -59,6 +65,7 @@
   import EpDivider from '@/components/divider/EpDivider'
   import EpHeader from '@/components/header/EpHeader'
   import EpTabs from '@/components/tabs/EpTabs'
+  import EpTabContent from '@/components/tabs/EpTabContent'
 
   export default {
     components: {
@@ -66,19 +73,13 @@
       EpContainer,
       EpDivider,
       EpHeader,
-      EpTabs
+      EpTabs,
+      EpTabContent
     },
     data() {
       return {
         activeTab: 0,
-        tabs: [
-          {
-            label: 'Inter Variable'
-          },
-          {
-            label: 'Fira Code Variable'
-          }
-        ],
+        tabs: ['Inter Variable', 'Fira Code Variable'],
         typeStyles: [
           {
             name: 'Jumbo',
@@ -185,5 +186,4 @@
     & + & {
       border-top: 1px solid var(--border-color);
     }
-  }
-</style>
+}</style>

@@ -11,7 +11,7 @@
       </div>
       <div class="copy-block">
         <h1 class="font-size--jumbo">Epicenter Design System</h1>
-        <p>Vue components designed and built by <a
+        <p>Vue components for apps. Designed and built by <a
             class="hero-link"
             href="https://www.ericpitcock.com"
           >Eric Pitcock</a>.</p>
