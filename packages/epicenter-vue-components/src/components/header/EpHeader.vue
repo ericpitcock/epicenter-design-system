@@ -35,7 +35,7 @@
       },
       padding: {
         type: String,
-        default: '0 3rem'
+        default: '0'
       },
       margin: {
         type: String,

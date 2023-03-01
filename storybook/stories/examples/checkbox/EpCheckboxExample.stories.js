@@ -210,6 +210,8 @@ const Example = args => ({
     <ep-container
       max-width="120rem"
       height="100%"
+      container-padding="0 3rem"
+      content-padding="3rem 0"
       overflow="auto"
     >
       <template #header>
@@ -225,7 +227,7 @@ const Example = args => ({
       </template>
       <template #default>
         <div style="display: flex; height: 100%;">
-          <div style="flex: 0 0 20rem; display: flex; flex-direction: column; gap: 1rem; padding: 3rem;">
+          <div style="flex: 0 0 20rem; display: flex; flex-direction: column; gap: 1rem;">
             <ep-checkbox
               v-for="(checkbox, index) in checkboxes"
               v-bind="checkbox"

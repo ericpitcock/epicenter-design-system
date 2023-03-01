@@ -1,7 +1,7 @@
 <template>
   <ep-container
     width="40rem"
-    padding="3rem"
+    content-padding="3rem"
     background-color="var(--background-1)"
     overflow="hidden"
   >

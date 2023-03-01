@@ -3,7 +3,8 @@
     <ep-container
       max-width="120rem"
       height="100%"
-      padding="3rem"
+      container-padding="0 3rem"
+      content-padding="3rem 0"
       overflow="hidden"
     >
       <template #header>

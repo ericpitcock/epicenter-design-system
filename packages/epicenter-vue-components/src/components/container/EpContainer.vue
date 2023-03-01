@@ -43,7 +43,11 @@
         type: String,
         default: 'auto'
       },
-      padding: {
+      containerPadding: {
+        type: String,
+        default: '0'
+      },
+      contentPadding: {
         type: String,
         default: '0'
       },
@@ -84,6 +88,7 @@
           height: this.dynamicHeight || this.height,
           margin: this.margin,
           backgroundColor: this.backgroundColor,
+          padding: this.containerPadding,
           borderRadius: this.borderRadius,
           border: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
           overflow: this.overflow
@@ -91,7 +96,7 @@
       },
       contentStyles() {
         return {
-          padding: this.padding,
+          padding: this.contentPadding,
           overflow: this.overflow
         }
       }

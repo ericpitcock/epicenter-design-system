@@ -26,15 +26,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-tab-content {
-    &__tab-item {
-      display: none;
-
-      &--active {
-        display: block;
-      }
-    }
-  }
-</style>

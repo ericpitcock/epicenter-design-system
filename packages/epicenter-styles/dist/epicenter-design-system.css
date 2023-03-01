@@ -3452,4 +3452,11 @@ span.flatpickr-weekday {
   border-bottom-color: var(--color--primary);
 }
 
+.ep-tab-content__tab-item {
+  display: none;
+}
+.ep-tab-content__tab-item--active {
+  display: block;
+}
+
 /*# sourceMappingURL=epicenter-design-system.css.map */

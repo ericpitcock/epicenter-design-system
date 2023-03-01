@@ -1,0 +1,9 @@
+.ep-tab-content {
+  &__tab-item {
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+}

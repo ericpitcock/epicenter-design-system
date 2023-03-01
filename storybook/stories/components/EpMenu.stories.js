@@ -134,7 +134,7 @@ Menu.args = {
   containerProps: {
     width: '20rem',
     height: 'auto',
-    padding: '1rem 0',
+    containerPadding: '1rem 0',
     borderRadius: 'var(--border-radius)'
   },
   menuItems: fakeDropdownItems

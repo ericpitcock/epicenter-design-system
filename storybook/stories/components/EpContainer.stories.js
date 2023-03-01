@@ -70,6 +70,18 @@ export default {
         type: 'text'
       }
     },
+    containerPadding: {
+      name: 'Container Padding',
+      control: {
+        type: 'text'
+      }
+    },
+    contentPadding: {
+      name: 'Content Padding',
+      control: {
+        type: 'text'
+      }
+    },
     padding: {
       name: 'Padding',
       control: {
@@ -182,7 +194,7 @@ const Template = args => ({
   template: `
     <ep-container v-bind="args">
       <template #header>
-        <ep-header>
+        <ep-header padding="0">
           <template #left>
             Header
           </template>
@@ -192,17 +204,6 @@ const Template = args => ({
         </ep-header>
       </template>
       <template #default>
-      <div
-        v-if="args.padding != '' && args.padding != undefined"
-        style="
-          height: 100%;
-          display: grid;
-          place-content: center;
-          border: 1px dashed var(--green-400)
-        "
-      >
-        Inner content
-      </div>
       </template>
       <template #footer>
         <ep-footer />
@@ -217,7 +218,9 @@ Container.args = {
   width: '100%',
   maxWidth: '120rem',
   height: '100%',
-  padding: '',
+  containerPadding: '0 3rem',
+  contentPadding: '0',
+  padding: '0',
   margin: '0',
   backgroundColor: 'var(--background-2)',
   borderRadius: 'var(--border-radius--large)',

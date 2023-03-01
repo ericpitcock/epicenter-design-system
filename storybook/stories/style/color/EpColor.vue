@@ -149,12 +149,12 @@
             key: 'sample',
             formatter: value => {
               return `<div
-                                class="color-sample"
-                                style="width: 50px;
-                                height: 50px;
-                                background-color: ${value};
-                                border-radius: var(--border-radius);"
-                              />`
+                                    class="color-sample"
+                                    style="width: 50px;
+                                    height: 50px;
+                                    background-color: ${value};
+                                    border-radius: var(--border-radius);"
+                                  />`
             }
           },
           {

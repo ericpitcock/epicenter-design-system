@@ -18,6 +18,7 @@
         <ep-button
           label="View on GitHub"
           kind="primary"
+          size="large"
           :iconLeft="{ name: 'f/github' }"
           href="https://github.com/ericpitcock/epicenter-design-system"
         />
@@ -44,7 +45,7 @@
       <div class="test-sites">
         <ep-container
           width="100%"
-          padding="3rem"
+          content-padding="3rem"
         >
           <div class="copy-block">
             <h3 class="text--subtle">Built with Epicenter</h3>

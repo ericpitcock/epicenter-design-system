@@ -127,7 +127,7 @@ export const LoadingState = args => ({
     <ep-container
       max-width="120rem"
       height="100%"
-      padding="0 2rem"
+      container-padding="0 3rem"
       overflow="hidden"
     >
       <template #header>

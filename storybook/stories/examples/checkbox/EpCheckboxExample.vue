@@ -49,7 +49,6 @@
   .google-fonts {
     flex: 1 1 auto;
     overflow: auto;
-    padding: 3rem 0;
     -ms-overflow-style: none; // Internet Explorer, Edge
     scrollbar-width: none; // Firefox
 

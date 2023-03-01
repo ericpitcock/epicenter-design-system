@@ -1,7 +1,7 @@
 <template>
   <ep-container
     max-width="120rem"
-    padding="3rem"
+    content-padding="3rem"
     overflow="hidden"
   >
     <template #header>
@@ -173,16 +173,17 @@
         margin-top: 0.5rem;
       }
 
-    .meta {
-      color: var(--text-color--subtle);
+      .meta {
+        color: var(--text-color--subtle);
+      }
+    }
+
+    &__sample {
+      flex: 6;
+    }
+
+    & + & {
+      border-top: 1px solid var(--border-color);
     }
   }
-
-  &__sample {
-    flex: 6;
-  }
-
-  & + & {
-    border-top: 1px solid var(--border-color);
-  }
-}</style>
+</style>

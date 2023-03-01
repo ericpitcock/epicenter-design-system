@@ -105,7 +105,7 @@ export const Map = (args, { globals: { theme } }) => ({
       overflow="hidden"
     >
       <template #header>
-      <ep-header>
+      <ep-header padding="0 3rem">
         <template #left>
           <h1>Map</h1>
         </template>
