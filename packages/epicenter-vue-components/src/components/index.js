@@ -27,6 +27,7 @@ import EpSparkBar from './spark-bar/EpSparkBar.vue'
 import EpSplitButton from './split-button/EpSplitButton.vue'
 import EpTable from './table/EpTable.vue'
 import EpTabs from './tabs/EpTabs.vue'
+import EpTabContent from './tabs/EpTabContent.vue'
 
 export default {
   EpActionBar,
@@ -57,5 +58,6 @@ export default {
   EpSparkBar,
   EpSplitButton,
   EpTable,
-  EpTabs
+  EpTabs,
+  EpTabContent
 }

@@ -5,9 +5,9 @@
       :key="index"
       class="ep-tabs__tab-item"
       :class="{ 'ep-tabs__tab-item--active': index === activeTab }"
-      @click="tabClick(item, index)"
+      @click="tabClick(index)"
     >
-      <span>{{ item.label }}</span>
+      <span>{{ item }}</span>
     </div>
   </div>
 </template>
@@ -21,17 +21,16 @@
         default: () => []
       }
     },
-    emits: ['tabClick'],
+    emits: ['tab-click'],
     data() {
       return {
         activeTab: 0
       }
     },
     methods: {
-      tabClick(item, index) {
-        this.$emit('tabClick', index)
+      tabClick(index) {
+        this.$emit('tab-click', index)
         this.activeTab = index
-        console.log('tabClick', index)
       }
     }
   }
