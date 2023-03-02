@@ -1,10 +1,4 @@
-import EpActionBar from '@/components/action-bar/EpActionBar'
-import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
-import EpContainer from '@/components/container/EpContainer'
-import EpFooter from '@/components/footer/EpFooter'
-import EpHeader from '@/components/header/EpHeader'
 import EpMap from '@/components/map/EpMap'
-import { padded } from '../../helpers/decorators'
 
 const mapStyles = {
   'Dark (Ep)': 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',
@@ -30,7 +24,6 @@ const defaultMapStyle = (theme) => {
 export default {
   title: 'Components/Map',
   component: EpMap,
-  decorators: [padded],
   argTypes: {
     mapCenter: {
       name: 'Map Center',
@@ -88,42 +81,13 @@ export default {
 
 export const Map = (args, { globals: { theme } }) => ({
   components: {
-    EpActionBar,
-    EpContainer,
-    EpFooter,
-    EpHeader,
     EpMap
   },
   setup() {
     const currentMapStyle = defaultMapStyle(theme)
-    return { args, commonActionBarArgs, currentMapStyle }
+    return { args, currentMapStyle }
   },
-  template: `
-    <ep-container
-      max-width="120rem"
-      height="100%"
-      overflow="hidden"
-    >
-      <template #header>
-      <ep-header padding="0 3rem">
-        <template #left>
-          <h1>Map</h1>
-        </template>
-        <template #right>
-          <ep-action-bar v-bind="commonActionBarArgs" />
-        </template>
-      </ep-header>
-      </template>
-      <template #default>
-        <div style="height: 100%; width: 100%;">
-        <ep-map v-bind="args" :mapStyle="currentMapStyle" />
-        </div>
-      </template>
-      <template #footer>
-        <ep-footer />
-      </template>
-    </ep-container>
-  `
+  template: '<ep-map v-bind="args" :mapStyle="currentMapStyle" />'
 })
 
 Map.args = {

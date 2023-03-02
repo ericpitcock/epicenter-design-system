@@ -88,12 +88,6 @@ export default {
         type: 'text'
       }
     },
-    margin: {
-      name: 'Margin',
-      control: {
-        type: 'text'
-      }
-    },
     backgroundColor: {
       name: 'Background Color',
       control: {
@@ -221,7 +215,6 @@ Container.args = {
   containerPadding: '0 3rem',
   contentPadding: '0',
   padding: '0',
-  margin: '0',
   backgroundColor: 'var(--background-2)',
   borderRadius: 'var(--border-radius--large)',
   borderWidth: '0.1rem',

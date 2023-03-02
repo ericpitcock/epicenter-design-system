@@ -51,10 +51,6 @@
         type: String,
         default: '0'
       },
-      margin: {
-        type: String,
-        default: '0'
-      },
       backgroundColor: {
         type: String,
         default: 'var(--background-2)'
@@ -86,7 +82,6 @@
           width: this.width,
           maxWidth: this.maxWidth,
           height: this.dynamicHeight || this.height,
-          margin: this.margin,
           backgroundColor: this.backgroundColor,
           padding: this.containerPadding,
           borderRadius: this.borderRadius,

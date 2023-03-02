@@ -70,6 +70,16 @@ textarea {
   background: var(--bg-color--alert-low);
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 :root {
   --z-index--modal: 100000;
   --z-index--tooltip: 99999;
@@ -1057,7 +1067,7 @@ small {
 }
 
 .highcharts-background {
-  fill: var(--background-2);
+  fill: transparent;
 }
 
 .highcharts-plot-border, .highcharts-plot-background {
@@ -1323,7 +1333,7 @@ g.highcharts-series,
 
 .highcharts-markers {
   stroke-width: 1px;
-  stroke: var(--background-2);
+  stroke: transparent;
 }
 
 .highcharts-a11y-markers-hidden .highcharts-point:not(.highcharts-point-hover):not(.highcharts-a11y-marker-visible),
@@ -1373,7 +1383,7 @@ g.highcharts-series,
 }
 
 .highcharts-column-series rect.highcharts-point {
-  stroke: var(--background-2);
+  stroke: transparent;
 }
 
 .highcharts-column-series .highcharts-point {
@@ -1387,7 +1397,7 @@ g.highcharts-series,
 
 .highcharts-pie-series .highcharts-point {
   stroke-linejoin: round;
-  stroke: var(--background-2);
+  stroke: transparent;
 }
 
 .highcharts-pie-series .highcharts-point-hover {
@@ -1397,7 +1407,7 @@ g.highcharts-series,
 
 .highcharts-funnel-series .highcharts-point {
   stroke-linejoin: round;
-  stroke: var(--background-2);
+  stroke: transparent;
 }
 
 .highcharts-funnel-series .highcharts-point-hover {
@@ -1412,7 +1422,7 @@ g.highcharts-series,
 
 .highcharts-pyramid-series .highcharts-point {
   stroke-linejoin: round;
-  stroke: var(--background-2);
+  stroke: transparent;
 }
 
 .highcharts-pyramid-series .highcharts-point-hover {
@@ -1539,7 +1549,7 @@ circle.highcharts-legend-nav-active, circle.highcharts-legend-nav-inactive { /* 
 /* Loading */
 .highcharts-loading {
   position: absolute;
-  background-color: var(--background-2);
+  background-color: transparent;
   opacity: 0.5;
   text-align: center;
   z-index: 10;
@@ -1573,7 +1583,7 @@ circle.highcharts-legend-nav-active, circle.highcharts-legend-nav-inactive { /* 
 
 /* Highcharts More and modules */
 .highcharts-boxplot-box {
-  fill: var(--background-2);
+  fill: transparent;
 }
 
 .highcharts-boxplot-median {
@@ -1785,7 +1795,7 @@ input.highcharts-range-selector {
 }
 
 .highcharts-crosshair-label text {
-  fill: var(--background-2);
+  fill: transparent;
   font-size: 1.1em;
 }
 
@@ -1799,7 +1809,7 @@ input.highcharts-range-selector {
 }
 
 .highcharts-candlestick-series .highcharts-point-up {
-  fill: var(--background-2);
+  fill: transparent;
 }
 
 .highcharts-ohlc-series .highcharts-point-hover {
@@ -1808,7 +1818,7 @@ input.highcharts-range-selector {
 
 .highcharts-flags-series .highcharts-point .highcharts-label-box {
   stroke: #999999;
-  fill: var(--background-2);
+  fill: transparent;
   transition: fill 250ms;
 }
 
@@ -1868,7 +1878,7 @@ input.highcharts-range-selector {
 
 /* Exporting module */
 .highcharts-contextbutton {
-  fill: var(--background-2); /* needed to capture hover */
+  fill: transparent; /* needed to capture hover */
   stroke: none;
   stroke-linecap: round;
 }
@@ -1885,7 +1895,7 @@ input.highcharts-range-selector {
 
 .highcharts-menu {
   border: 1px solid #999999;
-  background: var(--background-2);
+  background: transparent;
   padding: 5px 0;
   box-shadow: 3px 3px 10px #888;
 }
@@ -1900,7 +1910,7 @@ input.highcharts-range-selector {
 
 .highcharts-menu-item:hover {
   background: #335cad;
-  color: var(--background-2);
+  color: transparent;
 }
 
 /* Drilldown module */
@@ -1991,7 +2001,7 @@ text.highcharts-drilldown-data-label,
   fill-opacity: 0;
 }
 .highcharts-container .highcharts-bar-series rect.highcharts-point {
-  stroke: var(--background-2);
+  stroke: transparent;
 }
 .ep-checkbox {
   display: inline-flex;
@@ -3027,16 +3037,6 @@ span.flatpickr-weekday {
   height: 100%;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 .ep-map-container {
   position: relative;
   width: 100%;
@@ -3206,16 +3206,6 @@ span.flatpickr-weekday {
   background: var(--background-2);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 
 .ep-select {

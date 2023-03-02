@@ -11,7 +11,7 @@
       id="colors__table"
       class="colors__table"
       width="fit-content"
-      padding="0 2rem"
+      container-padding="0 3rem"
       style="overscroll-behavior: contain"
       calculate-height
       :calculate-height-offset="30"
@@ -149,12 +149,12 @@
             key: 'sample',
             formatter: value => {
               return `<div
-                                      class="color-sample"
-                                      style="width: 50px;
-                                      height: 50px;
-                                      background-color: ${value};
-                                      border-radius: var(--border-radius);"
-                                    />`
+                                          class="color-sample"
+                                          style="width: 50px;
+                                          height: 50px;
+                                          background-color: ${value};
+                                          border-radius: var(--border-radius);"
+                                        />`
             }
           },
           {

@@ -50,35 +50,7 @@ const Template = args => ({
   },
   template: `
     <ep-temp-notification />
-    <ep-container
-      max-width="120rem"
-      height="100%"
-      container-padding="0 3rem"
-      content-padding="3rem 0"
-      overflow="hidden"
-    >
-      <template #header>
-      <ep-header>
-        <template #left>
-          <div style="width: 27px;">
-            <epicenter-logo
-              faceColor="transparent"
-              highlightColor="transparent"
-              shadowColor="transparent"
-              :strokeWidth="6"
-              strokeColor="var(--sky-300)"
-            />
-          </div>
-        </template>
-        <template #right>
-          <ep-action-bar v-bind="commonActionBarArgs" />
-        </template>
-      </ep-header>
-      </template>
-      <template #default>
-        <ep-feedback-card @submit="buildNotification('success')" />
-      </template>
-    </ep-container>
+    <ep-feedback-card @submit="buildNotification('success')" />
   `
 })
 

@@ -214,7 +214,7 @@ const Template = args => ({
                 backgroundColor="var(--background-4)"
                 borderColor="var(--border-color--lighter)"
                 borderRadius="var(--border-radius)"
-                padding="3rem"
+                container-padding="2rem"
               >
                 <ep-checkbox-filter
                   :items="filters"

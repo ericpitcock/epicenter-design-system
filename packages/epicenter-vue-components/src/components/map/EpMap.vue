@@ -7,7 +7,6 @@
 <script>
   import 'mapbox-gl/dist/mapbox-gl.css'
   import mapboxgl from 'mapbox-gl'
-  // import { mapState } from 'vuex'
 
   export default {
     name: 'EpMap',
@@ -24,14 +23,14 @@
         type: String,
         default: 'mapbox://styles/mapbox/streets-v11'
       },
-      // mapSource: {
-      //   type: Object,
-      //   default: null
-      // },
-      // mapLayer: {
-      //   type: Object,
-      //   default: null
-      // },
+      mapSource: {
+        type: Object,
+        default: null
+      },
+      mapLayer: {
+        type: Object,
+        default: null
+      },
       scrollZoom: {
         type: Boolean,
         default: true
@@ -43,11 +42,7 @@
       fitToBounds: {
         type: Boolean,
         default: false
-      },
-      // flyTo: {
-      //   type: Array,
-      //   default: null
-      // }
+      }
     },
     emits: ['dropPin'],
     data() {
@@ -57,19 +52,8 @@
         markers: [],
       }
     },
-    computed: {
-      // ...mapState(['theme']),
-      // computedMapStyle() {
-      //   if (this.mapStyle) return this.mapStyle
-      //   return this.theme == 'dark' ? 'mapbox://styles/mapbox/dark-v10' : 'mapbox://styles/mapbox/streets-v11'
-      // }
-    },
     watch: {
-      // init(val) {
-      //   console.log('map has initialized')
-      // },
       mapCenter(newCenter, oldCenter) {
-        // this.map.setCenter(newCenter)
         this.flyTo(newCenter)
       },
       mapZoom(newZoom, oldZoom) {
@@ -89,13 +73,6 @@
         }
         this.init = false
       })
-      // console.log(this.theme)
-      // this.map.on('zoom', (event) => {
-      // console.log(event)
-      // })
-      // this.map.on('click', (event) => {
-      // console.log('A click event has occurred at ' + event.lngLat)
-      // })
     },
     created() {
       // selectively create watchers if features exist
@@ -174,12 +151,6 @@
         this.map.addSource(source.id, source.source)
         this.map.addLayer(layer)
       }
-    },
-    // from https://github.com/soal/vue-mapbox/blob/5a37e7a8bd2fdb8776350e66a00e23b47ec5ad0c/src/components/map/GlMap.vue
-    // beforeDestroy() {
-    //   this.$nextTick(() => {
-    //     if (this.map) this.map.remove()
-    //   })
-    // }
+    }
   }
 </script>

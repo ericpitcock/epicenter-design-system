@@ -3,12 +3,16 @@
     width="40rem"
     content-padding="3rem"
     background-color="var(--background-1)"
+    border-radius="var(--border-radius)"
     overflow="hidden"
   >
     <template #header>
-      <ep-header height="4rem">
+      <ep-header
+        height="4rem"
+        padding="0 2rem"
+      >
         <template #left>
-          <p>Ep Design System Feedback</p>
+          <p>Epicenter Design System Feedback</p>
         </template>
       </ep-header>
     </template>
