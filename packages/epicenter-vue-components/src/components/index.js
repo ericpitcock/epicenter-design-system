@@ -22,6 +22,7 @@ import EpMenu from './menu/EpMenu.vue'
 import EpMultiSearch from './input/EpMultiSearch.vue'
 import EpNotification from './notification/EpNotification.vue'
 import EpNotifications from './notification/EpNotifications.vue'
+import EpSearch from './search/EpSearch.vue'
 import EpSelect from './select/EpSelect.vue'
 import EpSparkBar from './spark-bar/EpSparkBar.vue'
 import EpSplitButton from './split-button/EpSplitButton.vue'
@@ -54,6 +55,7 @@ export default {
   EpMultiSearch,
   EpNotification,
   EpNotifications,
+  EpSearch,
   EpSelect,
   EpSparkBar,
   EpSplitButton,

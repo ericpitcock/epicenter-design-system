@@ -5,7 +5,7 @@ import EpFooter from '@/components/footer/EpFooter.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpInput from '@/components/input/EpInput.vue'
 import EpMap from '@/components/map/EpMap.vue'
-import EpAutocompleteNew from '@/components/autocomplete/EpAutocompleteNew.vue'
+import EpSearch from '@/components/search/EpSearch.vue'
 import { padded } from '../../../helpers/decorators'
 import { ref } from 'vue'
 
@@ -97,7 +97,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
     EpHeader,
     EpInput,
     EpMap,
-    EpAutocompleteNew
+    EpSearch
   },
   setup() {
     const currentMapStyle = defaultMapStyle(theme)
@@ -117,7 +117,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
     }
 
     const updateMapCenter = (result) => {
-      currentMapCenter.value = result.center
+      currentMapCenter.value = result
     }
 
     return {
@@ -139,9 +139,12 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       <template #header>
       <ep-header padding="0 3rem">
         <template #left>
-          <ep-autocomplete-new
+          <ep-search
           :search-results="searchResults"
+          results-label="place_name"
+          results-value="center"
           @search="searchLocation"
+          @selection="updateMapCenter"
         />
         </template>
         <template #right>

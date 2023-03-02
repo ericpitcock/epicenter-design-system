@@ -701,7 +701,6 @@ small {
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   outline: none;
-  font-size: var(--font-size--body);
 }
 .ep-autocomplete input:focus {
   border-color: var(--color--primary);
