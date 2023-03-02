@@ -1,0 +1,177 @@
+import EpActionBar from '@/components/action-bar/EpActionBar.vue'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
+import EpContainer from '@/components/container/EpContainer.vue'
+import EpFooter from '@/components/footer/EpFooter.vue'
+import EpHeader from '@/components/header/EpHeader.vue'
+import EpInput from '@/components/input/EpInput.vue'
+import EpMap from '@/components/map/EpMap.vue'
+import EpAutocompleteNew from '@/components/autocomplete/EpAutocompleteNew.vue'
+import { padded } from '../../../helpers/decorators'
+import { ref } from 'vue'
+
+const mapStyles = {
+  'Dark (Ep)': 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',
+  'Borders (Ep)': 'mapbox://styles/ericpitcock/ckba479fv065v1in6pmfm6hz2',
+  'Mapbox Streets': 'mapbox://styles/mapbox/streets-v11',
+  'Mapbox Outdoors': 'mapbox://styles/mapbox/outdoors-v11',
+  'Mapbox Light': 'mapbox://styles/mapbox/light-v10',
+  'Mapbox Dark': 'mapbox://styles/mapbox/dark-v10',
+  'Mapbox Satellite': 'mapbox://styles/mapbox/satellite-v9',
+  'Mapbox Satellite Streets': 'mapbox://styles/mapbox/satellite-streets-v11',
+  'Mapbox Navigation Day': 'mapbox://styles/mapbox/navigation-day-v1',
+  'Mapbox Navigation Night': 'mapbox://styles/mapbox/navigation-night-v1'
+}
+
+const defaultMapStyle = (theme) => {
+  if (theme === 'light') {
+    return mapStyles['Mapbox Streets']
+  } else {
+    return mapStyles['Dark (Ep)']
+  }
+}
+
+export default {
+  title: 'Components/Map',
+  component: EpMap,
+  decorators: [padded],
+  argTypes: {
+    mapCenter: {
+      name: 'Map Center',
+      options: ['Seattle', 'San Francisco', 'New York', 'London', 'Paris'],
+      mapping: {
+        'Seattle': [-122.3321, 47.6062],
+        'San Francisco': [-122.4194, 37.7749],
+        'New York': [-74.0060, 40.7128],
+        'London': [-0.1278, 51.5074],
+        'Paris': [2.3522, 48.8566]
+      },
+      control: {
+        type: 'select',
+        labels: {
+          'Seattle': 'Seattle',
+          'San Francisco': 'San Francisco',
+          'New York': 'New York',
+          'London': 'London',
+          'Paris': 'Paris'
+        }
+      }
+    },
+    mapZoom: {
+      name: 'Map Zoom',
+      control: {
+        type: 'number'
+      }
+    },
+    mapStyle: {
+      table: { disable: true }
+      // name: 'Map Style',
+      // options: Object.keys(mapStyles),
+      // mapping: mapStyles,
+      // control: {
+      //   type: 'radio',
+      // }
+    },
+    mapSource: { table: { disable: true } },
+    mapLayer: { table: { disable: true } },
+    scrollZoom: {
+      name: 'Scroll Zoom',
+      control: {
+        type: 'boolean'
+      }
+    },
+    navigationControl: {
+      name: 'Navigation Control',
+      control: {
+        type: 'boolean'
+      }
+    },
+    fitToBounds: { table: { disable: true } }
+  }
+}
+
+export const MapInContext = (args, { globals: { theme } }) => ({
+  components: {
+    EpActionBar,
+    EpContainer,
+    EpFooter,
+    EpHeader,
+    EpInput,
+    EpMap,
+    EpAutocompleteNew
+  },
+  setup() {
+    const currentMapStyle = defaultMapStyle(theme)
+
+    const currentMapCenter = ref([-122.3321, 47.6062])
+
+    const searchResults = ref([])
+
+    const searchLocation = async query => {
+      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=pk.eyJ1IjoiZXJpY3BpdGNvY2siLCJhIjoia29WT3AzOCJ9.YTnpZdWBqPD4cH6mlnZoYQ`
+
+      const response = await fetch(url)
+      const data = await response.json()
+
+      // this.results = data.features
+      searchResults.value = data.features
+    }
+
+    const updateMapCenter = (result) => {
+      currentMapCenter.value = result.center
+    }
+
+    return {
+      args,
+      commonActionBarArgs,
+      currentMapCenter,
+      currentMapStyle,
+      updateMapCenter,
+      searchLocation,
+      searchResults
+    }
+  },
+  template: `
+    <ep-container
+      max-width="120rem"
+      height="100%"
+      overflow="hidden"
+    >
+      <template #header>
+      <ep-header padding="0 3rem">
+        <template #left>
+          <ep-autocomplete-new
+          :search-results="searchResults"
+          @search="searchLocation"
+        />
+        </template>
+        <template #right>
+          <ep-action-bar v-bind="commonActionBarArgs" />
+        </template>
+      </ep-header>
+      </template>
+      <template #default>
+        <div style="height: 100%; width: 100%;">
+        <ep-map
+          v-bind="args"
+          :mapStyle="currentMapStyle"
+          :mapCenter="currentMapCenter"
+        />
+        </div>
+      </template>
+      <template #footer>
+        <ep-footer />
+      </template>
+    </ep-container>
+  `
+})
+
+MapInContext.args = {
+  // mapCenter: [-122.3321, 47.6062],
+  mapZoom: 12,
+  // mapStyle: defaultMapStyle,
+  // mapSource: null,
+  // mapLayer: null,
+  scrollZoom: true,
+  navigationControl: false,
+  fitToBounds: false
+}

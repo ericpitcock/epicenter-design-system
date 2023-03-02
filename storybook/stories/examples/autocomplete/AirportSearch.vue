@@ -44,7 +44,6 @@
     },
     methods: {
       onSelect(item) {
-        console.log(item._geoloc.lat, item._geoloc.lng)
         this.mapCenter = [item._geoloc.lng, item._geoloc.lat]
       }
     }
