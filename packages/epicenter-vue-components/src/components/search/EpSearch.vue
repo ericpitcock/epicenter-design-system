@@ -1,18 +1,19 @@
 <template>
-  <div class="ep-search" style="width: 600px">
+  <div class="ep-search">
     <ep-input
       height="4rem"
-      placeholder="Search…"
+      :placeholder="placeholder"
       :icon="{ name: 'search' }"
       v-model="searchQuery"
       @input="handleInput"
+      @clear="handleClear"
     />
-    <div v-show="searching" class="ep-autocomplete__dropdown">
+    <div v-show="searching" class="ep-search__dropdown">
       <ul>
         <li
           v-for="(result, index) in searchResults"
           :key="index"
-          class="ep-autocomplete__dropdown__item"
+          class="ep-search__dropdown__item"
           @click="handleSelection(result)"
         >
           {{ result[resultsLabel] }}
@@ -33,6 +34,10 @@
       EpInput,
     },
     props: {
+      placeholder: {
+        type: String,
+        default: 'Search…',
+      },
       resultsLabel: {
         type: String,
         default: '',
@@ -53,6 +58,10 @@
       }
     },
     methods: {
+      handleClear() {
+        this.searchQuery = ''
+        this.$emit('clear')
+      },
       handleInput() {
         if (this.searchQuery === '') {
           this.searching = false

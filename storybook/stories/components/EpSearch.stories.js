@@ -1,20 +1,50 @@
 import EpSearch from '@/components/search/EpSearch.vue'
-import { padded } from '../../helpers/decorators'
+import webColors from '../../data/webColors.json'
+import { ref } from 'vue'
 
 export default {
   title: 'Components/Search',
   component: EpSearch,
-  decorators: [padded]
+  argTypes: {
+    searchResults: { table: { disable: true } },
+  },
 }
 
 export const Search = args => ({
   components: { EpSearch },
   setup() {
-    return { args }
-  },
-  template: '<ep-search v-bind="args" />'
-})
+    const searchResults = ref([])
+    const bg = ref('var(--background-1)')
 
-Search.args = {
-  placeholder: 'Search'
-}
+    const setBackground = color => {
+      bg.value = `#${color}`
+    }
+
+    const searchWebColors = query => {
+      const results = webColors.filter(color =>
+        color.name.toLowerCase().includes(query.toLowerCase())
+      )
+      searchResults.value = results
+    }
+    return {
+      args,
+      bg,
+      searchResults,
+      searchWebColors,
+      setBackground,
+    }
+  },
+  template: `
+    <div :style="{ height: '100%', background: bg, padding: '3rem'}">
+      <ep-search
+        placeholder="Find your background color…"
+        :search-results="searchResults"
+        results-label="name"
+        results-value="hex"
+        @search="searchWebColors"
+        @selection="setBackground"
+        @clear="bg = 'var(--background-1)'"
+      />
+    </div>
+  `,
+})
