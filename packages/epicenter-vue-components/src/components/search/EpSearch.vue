@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="ep-search"
-    style="width: 600px;"
-  >
+  <div class="ep-search" style="width: 600px">
     <ep-input
       height="4rem"
       placeholder="Search…"
@@ -10,10 +7,7 @@
       v-model="searchQuery"
       @input="handleInput"
     />
-    <div
-      v-show="searching"
-      class="ep-autocomplete__dropdown"
-    >
+    <div v-show="searching" class="ep-autocomplete__dropdown">
       <ul>
         <li
           v-for="(result, index) in searchResults"
@@ -50,7 +44,7 @@
       searchResults: {
         type: Array,
         required: true,
-      }
+      },
     },
     data() {
       return {
@@ -60,7 +54,6 @@
     },
     methods: {
       handleInput() {
-        console.log('handleInput')
         if (this.searchQuery === '') {
           this.searching = false
           return
@@ -73,10 +66,9 @@
         this.searchQuery = result[this.resultsLabel]
       },
       async search() {
-        console.log('search')
         this.searching = true
         this.debounce(this.$emit('search', this.searchQuery), 500)
-      }
-    }
+      },
+    },
   }
 </script>

@@ -72,8 +72,7 @@
       placeholder: {
         type: String,
         default: 'Select an option'
-      },
-      // [label, value]
+      }
     },
     emits: ['update:modelValue', 'input', 'focus'],
     data() {

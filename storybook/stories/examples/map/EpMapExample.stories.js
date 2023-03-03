@@ -35,56 +35,13 @@ export default {
   component: EpMap,
   decorators: [padded],
   argTypes: {
-    mapCenter: {
-      name: 'Map Center',
-      options: ['Seattle', 'San Francisco', 'New York', 'London', 'Paris'],
-      mapping: {
-        'Seattle': [-122.3321, 47.6062],
-        'San Francisco': [-122.4194, 37.7749],
-        'New York': [-74.0060, 40.7128],
-        'London': [-0.1278, 51.5074],
-        'Paris': [2.3522, 48.8566]
-      },
-      control: {
-        type: 'select',
-        labels: {
-          'Seattle': 'Seattle',
-          'San Francisco': 'San Francisco',
-          'New York': 'New York',
-          'London': 'London',
-          'Paris': 'Paris'
-        }
-      }
-    },
-    mapZoom: {
-      name: 'Map Zoom',
-      control: {
-        type: 'number'
-      }
-    },
-    mapStyle: {
-      table: { disable: true }
-      // name: 'Map Style',
-      // options: Object.keys(mapStyles),
-      // mapping: mapStyles,
-      // control: {
-      //   type: 'radio',
-      // }
-    },
+    mapCenter: { table: { disable: true } },
+    mapZoom: { table: { disable: true } },
+    mapStyle: { table: { disable: true } },
     mapSource: { table: { disable: true } },
     mapLayer: { table: { disable: true } },
-    scrollZoom: {
-      name: 'Scroll Zoom',
-      control: {
-        type: 'boolean'
-      }
-    },
-    navigationControl: {
-      name: 'Navigation Control',
-      control: {
-        type: 'boolean'
-      }
-    },
+    scrollZoom: { table: { disable: true } },
+    navigationControl: { table: { disable: true } },
     fitToBounds: { table: { disable: true } }
   }
 }
@@ -112,7 +69,6 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       const response = await fetch(url)
       const data = await response.json()
 
-      // this.results = data.features
       searchResults.value = data.features
     }
 
@@ -169,11 +125,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
 })
 
 MapInContext.args = {
-  // mapCenter: [-122.3321, 47.6062],
   mapZoom: 12,
-  // mapStyle: defaultMapStyle,
-  // mapSource: null,
-  // mapLayer: null,
   scrollZoom: true,
   navigationControl: false,
   fitToBounds: false
