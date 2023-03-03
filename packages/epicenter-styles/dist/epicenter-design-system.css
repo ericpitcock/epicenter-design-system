@@ -3176,7 +3176,6 @@ span.flatpickr-weekday {
   top: calc(100% + 0.4rem);
   left: 0;
   width: 100%;
-  max-height: 200px;
   padding: 1rem 0;
   overflow-y: auto;
   background-color: var(--background-4);

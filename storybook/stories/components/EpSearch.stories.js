@@ -37,6 +37,8 @@ export const Autocomplete = args => ({
   template: `
     <div :style="{ height: '100%', background: bg, padding: '3rem'}">
       <ep-search
+        calculateHeight
+        :calculateHeightOffset="74"
         placeholder="Find your background color…"
         :search-results="searchResults"
         results-label="name"

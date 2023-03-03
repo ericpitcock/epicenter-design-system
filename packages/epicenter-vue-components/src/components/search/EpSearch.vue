@@ -1,18 +1,24 @@
 <template>
   <div class="ep-search">
     <ep-input
+      v-model="searchQuery"
       height="4rem"
       :placeholder="placeholder"
       :icon="{ name: 'search' }"
-      v-model="searchQuery"
       @input="handleInput"
       @clear="handleClear"
-      @keydown.down="handleKeyDown"
-      @keydown.up="handleKeyUp"
+      @keydown.prevent.down="handleKeyDown"
+      @keydown.prevent.up="handleKeyUp"
       @keydown.enter="handleEnter"
       @keydown.esc="handleEsc"
     />
-    <div v-show="searching" class="ep-search__dropdown">
+    <div
+      v-show="searching"
+      ref="resultsList"
+      v-click-outside="handleClickOutside"
+      class="ep-search__dropdown"
+      :style="{ maxHeight: dynamicHeight }"
+    >
       <ul>
         <li
           v-for="(result, index) in searchResults"
@@ -33,14 +39,19 @@
 
 <script>
   import EpInput from '../input/EpInput.vue'
+  import calculateHeight from '../../mixins/calculateHeight'
+  import clickOutside from '../../directives/clickOutside'
   import debounceMixin from '../../mixins/debounce'
 
   export default {
     name: 'EpSearch',
-    mixins: [debounceMixin],
     components: {
       EpInput,
     },
+    directives: {
+      clickOutside,
+    },
+    mixins: [calculateHeight, debounceMixin],
     props: {
       placeholder: {
         type: String,
@@ -59,9 +70,10 @@
         required: true,
       },
     },
+    emits: ['clear', 'search', 'selection'],
     data() {
       return {
-        currentIndex: -1,
+        currentIndex: 0,
         searchQuery: '',
         searching: false,
       }
@@ -72,6 +84,9 @@
         this.searching = false
         this.$emit('clear')
       },
+      handleClickOutside() {
+        this.searching = false
+      },
       handleInput() {
         if (this.searchQuery === '') {
           this.searching = false
@@ -79,24 +94,45 @@
         }
         this.search()
       },
+      getItemOffsetTop(index) {
+        const selectedItem = this.$refs.resultsList.children[0].children[index]
+        return selectedItem.offsetTop
+      },
       handleKeyDown() {
-        if (this.searchResults.length === 0) {
+        if (this.searchResults.length === 0 || this.currentIndex === this.searchResults.length - 1) {
           return
         }
-        if (this.currentIndex === this.searchResults.length - 1) {
-          this.currentIndex = 0
-        } else {
-          this.currentIndex++
+
+        this.currentIndex++
+
+        // get the selected item element and its offset from the top of the dropdown container
+        const list = this.$refs.resultsList.children[0]
+        let selectedItem
+        if (list.children[this.currentIndex]) {
+          selectedItem = list.children[this.currentIndex]
+        }
+
+        if (selectedItem && selectedItem.offsetTop + selectedItem.offsetHeight > this.$refs.resultsList.scrollTop + this.$refs.resultsList.offsetHeight) {
+          // Scroll the container down to bring the selected item into view
+          this.$refs.resultsList.scrollTop = selectedItem.offsetTop + selectedItem.offsetHeight - this.$refs.resultsList.offsetHeight
         }
       },
       handleKeyUp() {
-        if (this.searchResults.length === 0) {
+        if (this.searchResults.length === 0 || this.currentIndex === 0) {
           return
         }
-        if (this.currentIndex === 0) {
-          this.currentIndex = this.searchResults.length - 1
-        } else {
-          this.currentIndex--
+        this.currentIndex--
+
+        // get the selected item element and its offset from the top of the dropdown container
+        const list = this.$refs.resultsList.children[0]
+        let selectedItem
+        if (list.children[this.currentIndex]) {
+          selectedItem = list.children[this.currentIndex]
+        }
+
+        if (selectedItem && selectedItem.offsetTop < this.$refs.resultsList.scrollTop) {
+          // Scroll the container up to bring the selected item into view
+          this.$refs.resultsList.scrollTop = selectedItem.offsetTop
         }
       },
       handleEnter() {
