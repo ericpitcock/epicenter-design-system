@@ -10,7 +10,7 @@ export default {
   },
 }
 
-export const Search = args => ({
+export const Autocomplete = args => ({
   components: { EpSearch },
   setup() {
     const searchResults = ref([])

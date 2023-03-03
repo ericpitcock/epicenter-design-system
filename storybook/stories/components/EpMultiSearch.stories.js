@@ -1,84 +1,84 @@
-import { centered } from '../../helpers/decorators'
-import EpMultiSearch from '@/components/input/EpMultiSearch'
+import { padded } from '../../helpers/decorators'
+import EpMultiSearch from '@/components/search/EpMultiSearch'
 
 export default {
-  title: 'Components/Multi Search',
+  title: 'Components/Search',
   component: EpMultiSearch,
-  decorators: [centered],
+  decorators: [padded],
   argTypes: {
     placeholder: {
       name: 'Placeholder',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     icon: {
       name: 'Icon',
       control: {
-        type: 'object'
-      }
+        type: 'object',
+      },
     },
     disabled: {
       name: 'Disabled',
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     autofocus: {
       name: 'Autofocus',
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     width: {
       name: 'Width',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     height: {
       name: 'Height',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     borderWidth: {
       name: 'Border Width',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     borderStyle: {
       name: 'Border Style',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     borderColor: {
       name: 'Border Color',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     borderRadius: {
       name: 'Border Radius',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     backgroundColor: {
       name: 'Background Color',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     color: {
       name: 'Color',
       control: {
-        type: 'text'
-      }
-    }
-  }
+        type: 'text',
+      },
+    },
+  },
 }
 
 export const MultiSearch = args => ({
@@ -86,11 +86,11 @@ export const MultiSearch = args => ({
   setup() {
     return { args }
   },
-  template: `<ep-multi-search v-bind="args" />`
+  template: `<ep-multi-search v-bind="args" />`,
 })
 
 MultiSearch.args = {
   placeholder: 'Search',
-  width: '50rem',
-  icon: { name: 'search' }
+  height: '4rem',
+  icon: { name: 'search' },
 }

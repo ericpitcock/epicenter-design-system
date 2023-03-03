@@ -1,5 +1,4 @@
 import EpActionBar from './action-bar/EpActionBar.vue'
-import EpAutocomplete from './autocomplete/EpAutocomplete.vue'
 import EpBadge from './badge/EpBadge.vue'
 import EpBanner from './banner/EpBanner.vue'
 import EpBreadcrumb from './breadcrumb/EpBreadcrumb.vue'
@@ -19,7 +18,7 @@ import EpInput from './input/EpInput.vue'
 import EpLoading from './loading-state/EpLoadingState.vue'
 import EpMap from './map/EpMap.vue'
 import EpMenu from './menu/EpMenu.vue'
-import EpMultiSearch from './input/EpMultiSearch.vue'
+import EpMultiSearch from './search/EpMultiSearch.vue'
 import EpNotification from './notification/EpNotification.vue'
 import EpNotifications from './notification/EpNotifications.vue'
 import EpSearch from './search/EpSearch.vue'
@@ -32,7 +31,6 @@ import EpTabContent from './tabs/EpTabContent.vue'
 
 export default {
   EpActionBar,
-  EpAutocomplete,
   EpBadge,
   EpBanner,
   EpBreadcrumb,
@@ -61,5 +59,5 @@ export default {
   EpSplitButton,
   EpTable,
   EpTabs,
-  EpTabContent
+  EpTabContent,
 }

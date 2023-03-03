@@ -7,6 +7,10 @@
       v-model="searchQuery"
       @input="handleInput"
       @clear="handleClear"
+      @keydown.down="handleKeyDown"
+      @keydown.up="handleKeyUp"
+      @keydown.enter="handleEnter"
+      @keydown.esc="handleEsc"
     />
     <div v-show="searching" class="ep-search__dropdown">
       <ul>
@@ -14,7 +18,11 @@
           v-for="(result, index) in searchResults"
           :key="index"
           class="ep-search__dropdown__item"
+          :class="{
+            'ep-search__dropdown__item--active': index === currentIndex,
+          }"
           @click="handleSelection(result)"
+          @mouseenter="handleMouseEnter(index)"
         >
           {{ result[resultsLabel] }}
         </li>
@@ -53,6 +61,7 @@
     },
     data() {
       return {
+        currentIndex: -1,
         searchQuery: '',
         searching: false,
       }
@@ -60,6 +69,7 @@
     methods: {
       handleClear() {
         this.searchQuery = ''
+        this.searching = false
         this.$emit('clear')
       },
       handleInput() {
@@ -68,6 +78,38 @@
           return
         }
         this.search()
+      },
+      handleKeyDown() {
+        if (this.searchResults.length === 0) {
+          return
+        }
+        if (this.currentIndex === this.searchResults.length - 1) {
+          this.currentIndex = 0
+        } else {
+          this.currentIndex++
+        }
+      },
+      handleKeyUp() {
+        if (this.searchResults.length === 0) {
+          return
+        }
+        if (this.currentIndex === 0) {
+          this.currentIndex = this.searchResults.length - 1
+        } else {
+          this.currentIndex--
+        }
+      },
+      handleEnter() {
+        if (this.searchResults.length === 0) {
+          return
+        }
+        this.handleSelection(this.searchResults[this.currentIndex])
+      },
+      handleEsc() {
+        this.searching = false
+      },
+      handleMouseEnter(index) {
+        this.currentIndex = index
       },
       handleSelection(result) {
         this.searching = false

@@ -98,7 +98,6 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       <ep-header padding="0 3rem">
         <template #left>
           <ep-search
-            suggestions
             :search-results="searchResults"
             results-label="place_name"
             results-value="center"
