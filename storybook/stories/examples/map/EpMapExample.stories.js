@@ -19,10 +19,10 @@ const mapStyles = {
   'Mapbox Satellite': 'mapbox://styles/mapbox/satellite-v9',
   'Mapbox Satellite Streets': 'mapbox://styles/mapbox/satellite-streets-v11',
   'Mapbox Navigation Day': 'mapbox://styles/mapbox/navigation-day-v1',
-  'Mapbox Navigation Night': 'mapbox://styles/mapbox/navigation-night-v1'
+  'Mapbox Navigation Night': 'mapbox://styles/mapbox/navigation-night-v1',
 }
 
-const defaultMapStyle = (theme) => {
+const defaultMapStyle = theme => {
   if (theme === 'light') {
     return mapStyles['Mapbox Streets']
   } else {
@@ -42,8 +42,8 @@ export default {
     mapLayer: { table: { disable: true } },
     scrollZoom: { table: { disable: true } },
     navigationControl: { table: { disable: true } },
-    fitToBounds: { table: { disable: true } }
-  }
+    fitToBounds: { table: { disable: true } },
+  },
 }
 
 export const MapInContext = (args, { globals: { theme } }) => ({
@@ -54,7 +54,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
     EpHeader,
     EpInput,
     EpMap,
-    EpSearch
+    EpSearch,
   },
   setup() {
     const currentMapStyle = defaultMapStyle(theme)
@@ -64,7 +64,9 @@ export const MapInContext = (args, { globals: { theme } }) => ({
     const searchResults = ref([])
 
     const searchLocation = async query => {
-      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=pk.eyJ1IjoiZXJpY3BpdGNvY2siLCJhIjoia29WT3AzOCJ9.YTnpZdWBqPD4cH6mlnZoYQ`
+      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+        query
+      )}.json?access_token=pk.eyJ1IjoiZXJpY3BpdGNvY2siLCJhIjoia29WT3AzOCJ9.YTnpZdWBqPD4cH6mlnZoYQ`
 
       const response = await fetch(url)
       const data = await response.json()
@@ -72,7 +74,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       searchResults.value = data.features
     }
 
-    const updateMapCenter = (result) => {
+    const updateMapCenter = result => {
       currentMapCenter.value = result
     }
 
@@ -83,7 +85,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       currentMapStyle,
       updateMapCenter,
       searchLocation,
-      searchResults
+      searchResults,
     }
   },
   template: `
@@ -96,12 +98,13 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       <ep-header padding="0 3rem">
         <template #left>
           <ep-search
-          :search-results="searchResults"
-          results-label="place_name"
-          results-value="center"
-          @search="searchLocation"
-          @selection="updateMapCenter"
-        />
+            suggestions
+            :search-results="searchResults"
+            results-label="place_name"
+            results-value="center"
+            @search="searchLocation"
+            @selection="updateMapCenter"
+          />
         </template>
         <template #right>
           <ep-action-bar v-bind="commonActionBarArgs" />
@@ -121,12 +124,12 @@ export const MapInContext = (args, { globals: { theme } }) => ({
         <ep-footer />
       </template>
     </ep-container>
-  `
+  `,
 })
 
 MapInContext.args = {
   mapZoom: 12,
   scrollZoom: true,
   navigationControl: false,
-  fitToBounds: false
+  fitToBounds: false,
 }

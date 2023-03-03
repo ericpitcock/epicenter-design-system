@@ -3207,6 +3207,32 @@ span.flatpickr-weekday {
   border-radius: var(--border-radius);
 }
 
+.ep-search {
+  position: relative;
+}
+.ep-search__dropdown {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  padding: 1rem 0;
+  overflow-y: auto;
+  background-color: var(--background-4);
+  border: 1px solid var(--border-color--lighter);
+  border-radius: var(--border-radius);
+  z-index: var(--z-index--dropdown);
+}
+.ep-search__dropdown__item {
+  font-size: var(--font-size--small);
+  line-height: 1;
+  padding: 0.9rem 2.2rem;
+  cursor: pointer;
+}
+.ep-search__dropdown__item--active {
+  background-color: var(--color--primary);
+}
+
 .ep-select {
   position: relative;
   display: flex;

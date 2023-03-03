@@ -17,7 +17,7 @@ export const Search = args => ({
     const bg = ref('var(--background-1)')
 
     const setBackground = color => {
-      bg.value = `#${color}`
+      bg.value = color
     }
 
     const searchWebColors = query => {
