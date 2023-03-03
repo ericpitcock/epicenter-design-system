@@ -1,5 +1,3 @@
-// storybook story for EpSearch component
-
 import EpSearch from '@/components/search/EpSearch.vue'
 import { padded } from '../../helpers/decorators'
 

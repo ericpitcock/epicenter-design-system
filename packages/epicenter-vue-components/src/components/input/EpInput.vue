@@ -12,7 +12,7 @@
     </div>
     <input
       ref="input"
-      v-model="currentValue"
+      v-model="value"
       :type="type"
       :placeholder="placeholder"
       :disabled="disabled"
@@ -26,13 +26,13 @@
       v-if="clearable"
       :class="[
         'ep-input__clear',
-        { 'ep-input__clear--disabled': !currentValue }
+        { 'ep-input__clear--disabled': !value }
       ]"
       :style="iconStyles"
       @click="onClear"
     >
       <ep-icon
-        v-show="currentValue"
+        v-show="value"
         name="close"
       />
     </div>
@@ -56,7 +56,7 @@
         type: String,
         default: ''
       },
-      value: {
+      modelValue: {
         type: String,
         default: ''
       },
@@ -109,12 +109,11 @@
         default: 'var(--text-color)'
       }
     },
-    emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear'],
+    emits: ['update:modelValue', 'focus', 'esc', 'blur', 'enter', 'clear'],
     data() {
       return {
         hasError: false,
-        hasFocus: false,
-        currentValue: this.value
+        hasFocus: false
       }
     },
     computed: {
@@ -142,19 +141,19 @@
           flex: `0 0 ${this.height}`,
           height: this.height,
         }
-      }
-      // currentValue() {
-      //   return this.value
-      // }
-    },
-    watch: {
-      value(val) {
-        this.currentValue = val
+      },
+      value: {
+        get() {
+          return this.modelValue
+        },
+        set(value) {
+          this.$emit('update:modelValue', value)
+        }
       }
     },
     methods: {
       onInput(event) {
-        this.$emit('input', event.target.value)
+        this.$emit('update:modelValue', event.target.value)
         // console.log('onInput', event.target.value)
       },
       onEsc(event) {
@@ -178,7 +177,7 @@
         // console.log('onKeyDown', event.target.value)
       },
       onClear() {
-        this.currentValue = ''
+        this.value = ''
         this.$refs.input.focus()
         this.$emit('clear', '')
         // console.log('onClear')

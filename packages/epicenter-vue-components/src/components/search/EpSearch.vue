@@ -1,11 +1,12 @@
 <template>
   <div
-    class="ep-autocomplete"
+    class="ep-search"
     style="width: 600px;"
   >
-    <input
-      class="ep-input"
-      type="text"
+    <ep-input
+      height="4rem"
+      placeholder="Search…"
+      :icon="{ name: 'search' }"
       v-model="searchQuery"
       @input="handleInput"
     />
@@ -28,11 +29,15 @@
 </template>
 
 <script>
+  import EpInput from '../input/EpInput.vue'
   import debounceMixin from '../../mixins/debounce'
 
   export default {
     name: 'EpSearch',
     mixins: [debounceMixin],
+    components: {
+      EpInput,
+    },
     props: {
       resultsLabel: {
         type: String,
@@ -55,6 +60,7 @@
     },
     methods: {
       handleInput() {
+        console.log('handleInput')
         if (this.searchQuery === '') {
           this.searching = false
           return
@@ -67,6 +73,7 @@
         this.searchQuery = result[this.resultsLabel]
       },
       async search() {
+        console.log('search')
         this.searching = true
         this.debounce(this.$emit('search', this.searchQuery), 500)
       }
