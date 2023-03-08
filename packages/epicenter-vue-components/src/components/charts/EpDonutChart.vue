@@ -20,7 +20,7 @@
     methods: {
       drawChart() {
         // Set up the data
-        var data = [20, 30, 40, 50]
+        var data = [28, 33, 44, 51]
         var labels = ['Label 1', 'Label 2', 'Label 3', 'Label 4']
         var total = d3.sum(data)
 
@@ -91,11 +91,11 @@
           .attr('text-anchor', 'middle')
           .text(total)
           .attr('fill', 'var(--text-color)')
-          .attr('font-size', '3rem')
           .attr('font-family', 'Inter var, sans-serif')
           .attr('font-weight', '300')
+          .attr('class', 'font-size--jumbo')
           // move text down a bit
-          .attr('dy', '0.3em')
+          .attr('dy', '4%')
         // css class
         // .attr('class', '.font-size--large')
         // animate the total
