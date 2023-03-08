@@ -3,42 +3,48 @@
     <div class="hero">
       <div class="logo-container">
         <epicenter-logo
-          faceColor="#fff16c"
-          highlightColor="white"
-          shadowColor="var(--gray-500)"
-          strokeColor="var(--gray-500)"
+          face-color="#fff16c"
+          highlight-color="white"
+          shadow-color="var(--gray-500)"
+          stroke-color="var(--gray-500)"
         />
       </div>
       <div class="copy-block">
-        <h1 class="font-size--jumbo">Epicenter Design System</h1>
-        <p>Vue components for apps. Designed and built by <a
+        <h1 class="font-size--jumbo">
+          Epicenter Design system
+        </h1>
+        <p>
+          Vue components for apps. <a
             class="hero-link"
             href="https://www.ericpitcock.com"
-          >Eric Pitcock</a>.</p>
+          >Eric</a> doesn’t do websites.
+        </p>
         <ep-button
           label="View on GitHub"
           kind="primary"
           size="large"
-          :iconLeft="{ name: 'f/github' }"
+          :icon-left="{ name: 'f/github' }"
           href="https://github.com/ericpitcock/epicenter-design-system"
         />
       </div>
-      <div class="yellow-circle"></div>
-      <div class="purple-circle"></div>
+      <div class="yellow-circle" />
+      <div class="purple-circle" />
     </div>
     <div class="content">
       <div class="main">
         <div class="copy-block">
-          <p>This design system is being created for use in my personal projects
-            and
-            serves as a training ground to stay current on best practices for
-            creating inclusive and user-friendly experiences for all.</p>
-          <p>The aim of this Storybook is to showcase these components in their
-            raw
-            form and in the context of a website or application.</p>
+          <p>
+            This design system is being created for use in my personal projects
+            and serves as a training ground to stay current on best practices for
+            creating inclusive and user-friendly experiences for all.
+          </p>
+          <p>
+            The aim of this Storybook is to showcase these components in their raw
+            form and in the context of a website or application.
+          </p>
         </div>
         <ep-banner
-          :iconProps="{ name: 'info' }"
+          :icon-props="{ name: 'info' }"
           message="This is a forever project, and probably being worked on as you read this, so you may experience bugs or inconsistencies."
         />
       </div>
@@ -48,10 +54,14 @@
           content-padding="3rem"
         >
           <div class="copy-block">
-            <h3 class="text--subtle">Built with Epicenter</h3>
-            <p><a href="https://aae.ericpitcock.com/">Acme Asset Explorer (WIP
+            <h3 class="text--subtle">
+              Built with EpicenterLogo
+            </h3>
+            <p>
+              <a href="https://aae.ericpitcock.com/">Acme Asset Explorer (WIP
                 test
-                app)</a></p>
+                app)</a>
+            </p>
           </div>
         </ep-container>
       </div>
@@ -66,7 +76,7 @@
   import EpContainer from '@/components/container/EpContainer'
 
   export default {
-    name: 'Intro',
+    name: 'IntroView',
     components: {
       EpicenterLogo,
       EpBanner,
@@ -163,7 +173,6 @@
       border: 1px solid var(--border-color);
       border-top: none;
 
-      // all children except the first get a top margin
       > *:not(:first-child) {
         margin-top: 2rem;
       }
@@ -171,7 +180,6 @@
       .main {
         flex: 3;
 
-        // background: red;
         .copy-block {
           margin-bottom: 2rem;
         }

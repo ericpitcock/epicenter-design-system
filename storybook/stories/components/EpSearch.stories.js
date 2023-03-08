@@ -6,6 +6,15 @@ export default {
   title: 'Components/Search',
   component: EpSearch,
   argTypes: {
+    calculateHeight: { table: { disable: true } },
+    calculateHeightOffset: { table: { disable: true } },
+    placeholder: {
+      control: {
+        type: 'text',
+      },
+    },
+    resultsLabel: { table: { disable: true } },
+    resultsValue: { table: { disable: true } },
     searchResults: { table: { disable: true } },
   },
 }
@@ -39,7 +48,6 @@ export const Autocomplete = args => ({
       <ep-search
         calculateHeight
         :calculateHeightOffset="74"
-        placeholder="Find your background color…"
         :search-results="searchResults"
         results-label="name"
         results-value="hex"
@@ -50,3 +58,7 @@ export const Autocomplete = args => ({
     </div>
   `,
 })
+
+Autocomplete.args = {
+  placeholder: 'Find your background color…',
+}

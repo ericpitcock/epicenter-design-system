@@ -48,25 +48,25 @@ export default {
   decorators: [padded],
   argTypes: {
     alignRight: {
-      name: 'Align right',
+      name: 'Align Right',
       control: {
         type: 'boolean'
       }
     },
     button: {
-      name: 'Button',
+      name: 'Button Props',
       control: {
         type: 'object'
       }
     },
     containerProps: {
-      name: 'Container props',
+      name: 'Container Props',
       control: {
         type: 'object'
       }
     },
     menuItems: {
-      name: 'Menu items',
+      name: 'Menu Items',
       control: {
         type: 'array'
       }
@@ -74,7 +74,7 @@ export default {
   }
 }
 
-const Template = args => ({
+export const Dropdown = args => ({
   components: {
     EpActionBar,
     EpDropdown,
@@ -82,11 +82,9 @@ const Template = args => ({
     EpFooter,
     EpHeader
   },
-  // data: () => ({ buttonDefaults, menuItems: fakeDropdownItems }),
   setup() {
     return { args, commonActionBarArgs }
   },
-  // template: '<ep-dropdown v-bind="args" />'
   template: `
     <ep-container
       max-width="120rem"
@@ -118,9 +116,8 @@ const Template = args => ({
   `
 })
 
-export const Dropdown = Template.bind({})
-
 Dropdown.args = {
+  alignRight: false,
   button: buttonDefaults,
   containerProps,
   menuItems: fakeDropdownItems
