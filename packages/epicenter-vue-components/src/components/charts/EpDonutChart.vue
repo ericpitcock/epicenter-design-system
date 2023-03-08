@@ -1,6 +1,12 @@
 <template>
-  <div id="app">
-    <div id="chart" />
+  <div
+    class="ep-donut-chart"
+    :style="containerStyles"
+  >
+    <div id="donut" />
+    <div :class="['ep-donut-chart__value', valueTextClass]">
+      {{ value }}
+    </div>
   </div>
 </template>
 
@@ -9,9 +15,46 @@
 
   export default {
     name: 'EpDonutChart',
-    data() {
-      return {
-        chart: null
+    props: {
+      animate: {
+        type: Boolean,
+        default: true
+      },
+      width: {
+        type: Number,
+        default: 200
+      },
+      height: {
+        type: Number,
+        default: 200
+      },
+      margin: {
+        type: Number,
+        default: 0
+      },
+      data: {
+        type: Array,
+        required: true
+      },
+      labels: {
+        type: Array,
+        required: true
+      },
+      value: {
+        type: String,
+        default: 'Value'
+      },
+      valueTextClass: {
+        type: String,
+        default: 'font-size--jumbo'
+      }
+    },
+    computed: {
+      containerStyles() {
+        return {
+          width: this.width + 'px',
+          height: this.height + 'px'
+        }
       }
     },
     mounted() {
@@ -25,15 +68,15 @@
         var total = d3.sum(data)
 
         // Set up the dimensions and margins of the chart
-        var width = 200
-        var height = 200
-        var margin = 10
+        var width = this.width
+        var height = this.height
+        var margin = this.margin
 
         // Calculate the radius of the chart
         var radius = Math.min(width, height) / 2 - margin
 
         // Select the SVG element and set its dimensions
-        var svg = d3.select('#chart')
+        var svg = d3.select('#donut')
           .append('svg')
           .attr('width', width)
           .attr('height', height)
@@ -70,15 +113,19 @@
           .attr('stroke', 'var(--background-1)')
           .attr('stroke-width', '0.3rem')
         // animate the arcs
-        // .transition()
-        // .duration(2000) // Set the duration of the animation to 2 seconds
-        // .attrTween('d', function (d) {
-        //   var interpolate = d3.interpolate(d.startAngle, d.endAngle)
-        //   return function (t) {
-        //     d.endAngle = interpolate(t)
-        //     return arc(d)
-        //   }
-        // })
+        if (this.animate) {
+          arcs.select('path')
+            .attr('d', arc)
+            .transition()
+            .duration(700)
+            .attrTween('d', function (d) {
+              var interpolate = d3.interpolate(d.startAngle, d.endAngle)
+              return function (t) {
+                d.endAngle = interpolate(t)
+                return arc(d)
+              }
+            })
+        }
 
         // Add the labels to the arcs
         // arcs.append('text')
@@ -87,27 +134,28 @@
         //   .text(function (d, i) { return labels[i] })
 
         // Add the total value to the center of the chart
-        g.append('text')
-          .attr('text-anchor', 'middle')
-          .text(total)
-          .attr('fill', 'var(--text-color)')
-          .attr('font-family', 'Inter var, sans-serif')
-          .attr('font-weight', '300')
-          .attr('class', 'font-size--jumbo')
-          // move text down a bit
-          .attr('dy', '4%')
-        // css class
-        // .attr('class', '.font-size--large')
-        // animate the total
-        // .text(0)
-        // .transition()
-        // .duration(2000) // Set the duration of the animation to 2 seconds
-        // .tween('text', function (d) {
-        //   var i = d3.interpolate(0, total)
-        //   return function (t) {
-        //     d3.select(this).text(Math.round(i(t)))
-        //   }
-        // })
+        // g.append('text')
+        //   .attr('text-anchor', 'middle')
+        //   .text(total)
+        //   .attr('fill', 'var(--text-color)')
+        //   .attr('font-family', 'Inter var, sans-serif')
+        //   .attr('font-weight', '300')
+        //   .attr('class', 'font-size--jumbo')
+        //   // move text down a bit
+        //   .attr('dy', '0.95rem')
+        // if (this.animate) {
+        //   // animate the total
+        //   g.select('text')
+        //     .text(0)
+        //     .transition()
+        //     .duration(700)
+        //     .tween('text', function (d) {
+        //       var i = d3.interpolate(0, total)
+        //       return function (t) {
+        //         d3.select(this).text(Math.round(i(t)))
+        //       }
+        //     })
+        // }
       }
     }
   }
