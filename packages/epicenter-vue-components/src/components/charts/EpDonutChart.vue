@@ -1,10 +1,12 @@
 <template>
   <div
+    ref="container"
     class="ep-donut-chart"
     :style="containerStyles"
   >
     <div
       v-show="tooltipVisible"
+      ref="tooltip"
       class="ep-donut-chart__tooltip"
       :style="tooltipStyles"
     >
@@ -83,16 +85,35 @@
     },
     methods: {
       handleMouseOver(event, d) {
-        console.log('handleMouseOver', d)
         this.tooltipVisible = true
-        const [x, y] = d3.pointer(event)
-        this.tooltipStyles = {
-          top: y + 'px',
-          left: x + 'px'
+        // position the tooltip relative to the element being hovered over
+        // always outside the chart
+        // if element is in the top left quadrant, position the tooltip in the top left, etc
+        var container = this.$refs.container
+        var tooltip = this.$refs.tooltip
+        var containerRect = container.getBoundingClientRect()
+        var tooltipRect = tooltip.getBoundingClientRect()
+        var x = event.clientX - containerRect.left
+        var y = event.clientY - containerRect.top
+        var tooltipX = x + 10
+        var tooltipY = y + 10
+        if (x > containerRect.width / 2) {
+          tooltipX = x + 10
+        } else {
+          tooltipX = x - tooltipRect.width - 10
         }
+        if (y > containerRect.height / 2) {
+          tooltipY = y + 10
+        } else {
+          tooltipY = y - tooltipRect.height - 10
+        }
+        this.tooltipStyles = {
+          top: tooltipY + 'px',
+          left: tooltipX + 'px'
+        }
+        this.tooltipText = d.data
       },
       handleMouseOut() {
-        console.log('handleMouseOut')
         this.tooltipVisible = false
       },
       drawChart() {

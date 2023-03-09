@@ -2837,6 +2837,9 @@ span.flatpickr-weekday {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--background-4);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color--lighter);
 }
 
 .ep-dropdown {
