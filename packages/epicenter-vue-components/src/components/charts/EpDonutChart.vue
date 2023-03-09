@@ -3,7 +3,14 @@
     class="ep-donut-chart"
     :style="containerStyles"
   >
-    <div id="donut" />
+    <div
+      v-show="tooltipVisible"
+      class="ep-donut-chart__tooltip"
+      :style="tooltipStyles"
+    >
+      {{ tooltipText }}
+    </div>
+    <div id="ep-donut" />
     <div :class="['ep-donut-chart__value', valueTextClass]">
       {{ value }}
     </div>
@@ -40,6 +47,10 @@
         type: Array,
         required: true
       },
+      // tooltipText: {
+      //   type: String,
+      //   default: 'Tooltip'
+      // },
       value: {
         type: String,
         default: 'Value'
@@ -47,6 +58,16 @@
       valueTextClass: {
         type: String,
         default: 'font-size--jumbo'
+      }
+    },
+    data() {
+      return {
+        tooltipVisible: false,
+        tooltipStyles: {
+          top: 0,
+          left: 0
+        },
+        tooltipText: 'tooltip'
       }
     },
     computed: {
@@ -61,11 +82,23 @@
       this.drawChart()
     },
     methods: {
+      handleMouseOver(event, d) {
+        console.log('handleMouseOver', d)
+        this.tooltipVisible = true
+        const [x, y] = d3.pointer(event)
+        this.tooltipStyles = {
+          top: y + 'px',
+          left: x + 'px'
+        }
+      },
+      handleMouseOut() {
+        console.log('handleMouseOut')
+        this.tooltipVisible = false
+      },
       drawChart() {
         // Set up the data
-        var data = [28, 33, 44, 51]
-        var labels = ['Label 1', 'Label 2', 'Label 3', 'Label 4']
-        var total = d3.sum(data)
+        var data = this.data
+        var labels = this.labels
 
         // Set up the dimensions and margins of the chart
         var width = this.width
@@ -76,7 +109,7 @@
         var radius = Math.min(width, height) / 2 - margin
 
         // Select the SVG element and set its dimensions
-        var svg = d3.select('#donut')
+        var svg = d3.select('#ep-donut')
           .append('svg')
           .attr('width', width)
           .attr('height', height)
@@ -109,9 +142,15 @@
         // Draw the paths for the arcs
         arcs.append('path')
           .attr('d', arc)
-          .attr('fill', function (d) { return color(d.data) })
+          .attr('fill', function (d) {
+            return color(d.data)
+          })
           .attr('stroke', 'var(--background-1)')
           .attr('stroke-width', '0.3rem')
+          .on('mouseover', this.handleMouseOver)
+          .on('mousemove', this.handleMouseOver)
+          .on('mouseout', this.handleMouseOut)
+
         // animate the arcs
         if (this.animate) {
           arcs.select('path')
@@ -126,36 +165,6 @@
               }
             })
         }
-
-        // Add the labels to the arcs
-        // arcs.append('text')
-        //   .attr('transform', function (d) { return 'translate(' + arc.centroid(d) + ')' })
-        //   .attr('text-anchor', 'middle')
-        //   .text(function (d, i) { return labels[i] })
-
-        // Add the total value to the center of the chart
-        // g.append('text')
-        //   .attr('text-anchor', 'middle')
-        //   .text(total)
-        //   .attr('fill', 'var(--text-color)')
-        //   .attr('font-family', 'Inter var, sans-serif')
-        //   .attr('font-weight', '300')
-        //   .attr('class', 'font-size--jumbo')
-        //   // move text down a bit
-        //   .attr('dy', '0.95rem')
-        // if (this.animate) {
-        //   // animate the total
-        //   g.select('text')
-        //     .text(0)
-        //     .transition()
-        //     .duration(700)
-        //     .tween('text', function (d) {
-        //       var i = d3.interpolate(0, total)
-        //       return function (t) {
-        //         d3.select(this).text(Math.round(i(t)))
-        //       }
-        //     })
-        // }
       }
     }
   }
