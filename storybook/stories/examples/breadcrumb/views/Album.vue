@@ -26,7 +26,9 @@
 </template>
 
 <script>
+  import colors from '../../../../../packages/epicenter-styles/tokens/color/color'
   import * as albumsOfTheYear from '../aoty.json'
+
   export default {
     name: 'Album',
     props: {
@@ -58,6 +60,14 @@
       // filterAlbumsByYear () {
       //   return this.albumsOfTheYear.filter(album => album.year === this.currentYear)
       // },
+      randomBrightColor() {
+        // for each key, get the child key 500 value
+        const colorKeys = Object.keys(colors)
+        const randomColorKey = colorKeys[Math.floor(Math.random() * colorKeys.length)]
+        const randomColor = colors[randomColorKey]['500'].value
+        const randomColorLighter = colors[randomColorKey]['300'].value
+        return `linear-gradient(${randomColor} 50%, ${randomColorLighter} 100%)`
+      },
       getAlbum() {
         return this.albumsOfTheYear.filter(album => album.title === this.album.title)
       }
@@ -78,17 +88,42 @@
 <style lang="scss" scoped>
   .album {
     display: flex;
-    gap: 3rem;
+    gap: 8rem;
 
     &__cover {
       border-radius: var(--border-radius);
-      box-shadow: var(--drop-shadow);
-      overflow: hidden;
-      // rotate the image 90deg
       transform: rotate(-2deg);
+      padding-left: 0.7rem;
 
       img {
         vertical-align: middle;
+        border-radius: var(--border-radius);
+        box-shadow: var(--drop-shadow);
+        z-index: 1;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 98%;
+        height: 98%;
+        top: 0.5%;
+        right: -18.5%;
+        border-radius: 50%;
+        border: 0.1rem double rgba(255, 255, 255, 0.18);
+        z-index: -1;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 99%;
+        height: 99%;
+        background: v-bind(randomBrightColor);
+        right: -20%;
+        border-radius: 50%;
+        box-shadow: var(--drop-shadow);
+        z-index: -2;
       }
     }
 

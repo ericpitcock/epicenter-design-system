@@ -2,10 +2,11 @@
   <div class="aoty">
     <ep-container
       max-width="120rem"
-      height="100%"
+      calculate-height
+      :calculate-height-offset="30"
       container-padding="0 3rem"
       content-padding="3rem 0"
-      overflow="hidden"
+      overflow="auto"
     >
       <template #header>
         <ep-header>
@@ -14,9 +15,6 @@
               :crumbs="breadcrumbs"
               @crumb-click="crumbClick"
             />
-          </template>
-          <template #right>
-            <ep-action-bar v-bind="commonActionBarArgs" />
           </template>
         </ep-header>
       </template>
@@ -43,9 +41,6 @@
 </template>
 
 <script>
-  import EpActionBar from '@/components/action-bar/EpActionBar'
-  import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
-  import EpBadge from '@/components/badge/EpBadge'
   import EpBreadcrumbStatic from '@/components/breadcrumb/EpBreadcrumbStatic'
   import EpContainer from '@/components/container/EpContainer'
   import EpHeader from '@/components/header/EpHeader'
@@ -59,8 +54,6 @@
   export default {
     name: 'AlbumsOfTheYear',
     components: {
-      EpActionBar,
-      EpBadge,
       EpBreadcrumbStatic,
       EpContainer,
       EpHeader,
@@ -86,28 +79,9 @@
     data() {
       return {
         albumsOfTheYear: albumsOfTheYear.default,
-        commonActionBarArgs,
         currentView: 'Years',
         currentYear: '',
         currentAlbum: ''
-      }
-    },
-    methods: {
-      crumbClick(item) {
-        console.log(item.text)
-        if (item.text === 'Albums of the Year') {
-          this.updateView('Years', null, null)
-        } else if (item.text === this.currentYear) {
-          this.updateView('Year', this.currentYear, null)
-        } else if (item.text === this.currentAlbum.title) {
-          this.updateView('Album', this.currentYear, this.currentAlbum)
-        }
-      },
-      updateView(view, year, album) {
-        console.log(view, year, album)
-        this.currentView = view ? view : this.currentView
-        this.currentYear = year ? year : this.currentYear
-        this.currentAlbum = album ? album : this.currentAlbum
       }
     },
     computed: {
@@ -136,6 +110,7 @@
         if (this.currentView === 'Years') return [routes[0]]
         if (this.currentView === 'Year') return [routes[0], routes[1]]
         if (this.currentView === 'Album') return [routes[0], routes[1], routes[2]]
+        return false
       },
       // filterAlbumsByYear() {
       //   return this.albumsOfTheYear.filter(album => {
@@ -160,6 +135,24 @@
       // get unique years in the albumsOfTheYear array
       // return [...new Set(this.albumsOfTheYear.map(album => album.year))]
       // }
-    }
+    },
+    methods: {
+      crumbClick(item) {
+        console.log(item.text)
+        if (item.text === 'Albums of the Year') {
+          this.updateView('Years', null, null)
+        } else if (item.text === this.currentYear) {
+          this.updateView('Year', this.currentYear, null)
+        } else if (item.text === this.currentAlbum.title) {
+          this.updateView('Album', this.currentYear, this.currentAlbum)
+        }
+      },
+      updateView(view, year, album) {
+        console.log(view, year, album)
+        this.currentView = view ? view : this.currentView
+        this.currentYear = year ? year : this.currentYear
+        this.currentAlbum = album ? album : this.currentAlbum
+      }
+    },
   }
 </script>
