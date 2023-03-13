@@ -14,10 +14,7 @@
           Epicenter Design system
         </h1>
         <p>
-          Vue components for apps. <a
-            class="hero-link"
-            href="https://www.ericpitcock.com"
-          >Eric</a> doesn’t do websites.
+          Vue components for apps
         </p>
         <ep-button
           label="View on GitHub"
@@ -40,7 +37,7 @@
           </p>
           <p>
             The aim of this Storybook is to showcase these components in their raw
-            form and in the context of a website or application.
+            form and in the context of an app.
           </p>
         </div>
         <ep-banner
@@ -55,7 +52,7 @@
         >
           <div class="copy-block">
             <h3 class="text--subtle">
-              Built with EpicenterLogo
+              Built with Epicenter
             </h3>
             <p>
               <a href="https://aae.ericpitcock.com/">Acme Asset Explorer (WIP
@@ -113,6 +110,7 @@
         z-index: var(--z-index--overlap);
 
         p {
+          font-variation-settings: "wght" 430;
           margin-bottom: 2rem;
         }
       }
