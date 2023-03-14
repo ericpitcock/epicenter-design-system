@@ -88,7 +88,7 @@
               'font-size: 2.6rem (26px)',
               'font-weight: 300'
             ],
-            sample: '<h1>Download the internet</h1>'
+            sample: '<h1>Man walks on the moon</h1>'
           },
           {
             name: 'Large',
@@ -97,7 +97,7 @@
               'font-size: 2rem (20px)',
               'font-weight: 300'
             ],
-            sample: '<h2>Large</h2>'
+            sample: '<h2>Millions watch from around the world</h2>'
           },
           {
             name: 'Body',
@@ -186,4 +186,5 @@
     & + & {
       border-top: 1px solid var(--border-color);
     }
-}</style>
+  }
+</style>

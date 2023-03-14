@@ -22,7 +22,7 @@
             :src="cover"
             :alt="year"
             :style="{ display: index === currentIndices[year] ? 'block' : 'none' }"
-          />
+          >
         </div>
         <div class="meta">
           <p>{{ year }}</p>
@@ -99,48 +99,23 @@
 
 <style lang="scss" scoped>
   .years {
-    // display flex and fit all children in the space, wrapping if necessary
     display: flex;
-    // flex-direction: row;
     flex-wrap: wrap;
     gap: 2rem;
-    // justify-content: flex-start;
-    // align-items: center;
-    // width: 100%;
-    // height: 100%;
     overflow: hidden;
 
     a.link-wrapper {
-      // flex: 0 1 200px;
       display: flex;
       flex-direction: column;
-      // display: block;
       height: 100%;
       cursor: pointer;
-      // background: red;
     }
 
     .covers {
-      // fill width but keep aspect ratio and height to contents
-      // flex: 1 1 auto;
       display: flex;
 
-      // position: relative;
-      // // display: flex;
-      // flex-direction: row;
-      // justify-content: space-between;
-      // align-items: center;
-      // // width: 100%;
-      // // height: 100%;
-      // overflow: hidden;
       img {
-        // position: absolute;
-        // top: 0;
-        // left: 0;
-        // width: 50px;
-        // height: auto;
         object-fit: cover;
-        // keep aspect ratio and fill width
         width: 100%;
         height: auto;
       }
@@ -149,14 +124,11 @@
     .meta {
       flex: 0 1 4rem;
       display: flex;
-      // flex-direction: column;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      // height: 100%;
       padding: 1rem 2rem;
       border-top: 1px solid var(--border-color);
-      // background: blue;
     }
   }
 </style>

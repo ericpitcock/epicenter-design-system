@@ -62,20 +62,6 @@
       Year,
       Album
     },
-    // props: {
-    //   year: {
-    //     type: String,
-    //     default: ''
-    //   },
-    //   album: {
-    //     type: String,
-    //     default: ''
-    //   },
-    //   view: {
-    //     type: String,
-    //     default: 'Years'
-    //   }
-    // },
     data() {
       return {
         albumsOfTheYear: albumsOfTheYear.default,
@@ -86,12 +72,6 @@
     },
     computed: {
       breadcrumbs() {
-        // breadcrumb trail made up of "Albums of the Year" / this.currentYear / this.currentAlbum
-        // this will be an array of objects with a label and an action
-        // if this.currentYear is empty, return only "Albums of the Year"
-        // if this.currentAlbum is empty, return "Albums of the Year" and this.currentYear
-        // if both are filled, return "Albums of the Year", this.currentYear, and this.currentAlbum
-        // if neither are filled, return "Albums of the Year"
         const routes = [
           {
             text: 'Albums of the Year',
@@ -112,29 +92,6 @@
         if (this.currentView === 'Album') return [routes[0], routes[1], routes[2]]
         return false
       },
-      // filterAlbumsByYear() {
-      //   return this.albumsOfTheYear.filter(album => {
-      //     return album.year === this.currentYear
-      //   })
-      // },
-      // getAlbum() {
-      //   return this.albumsOfTheYear.filter(album => {
-      //     return album.title === this.currentAlbum
-      //   })
-      // },
-      // filterAlbumsOfTheYear() {
-      //   if (!this.currentYear) return this.albumsOfTheYear
-      //   // return the albums that include the filter string in any value
-      //   return this.albumsOfTheYear.filter(album => {
-      //     return Object.values(album).some(value => {
-      //       return value.toString().toLowerCase().includes(this.currentYear.toLowerCase())
-      //     })
-      //   })
-      // },
-      // getYears() {
-      // get unique years in the albumsOfTheYear array
-      // return [...new Set(this.albumsOfTheYear.map(album => album.year))]
-      // }
     },
     methods: {
       crumbClick(item) {
