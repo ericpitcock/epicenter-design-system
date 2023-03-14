@@ -76,7 +76,7 @@ export const IconLibrary = args => ({
       v-for="(icon, index) in svgIcons"
       useFooter
       :key="index"
-      padding="2rem"
+      content-padding="2rem"
       borderRadius="var(--border-radius)"
       style="flex: 0 0 170px;"
     >
