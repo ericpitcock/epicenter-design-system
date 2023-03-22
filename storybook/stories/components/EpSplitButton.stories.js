@@ -7,8 +7,20 @@ export default {
   component: EpSplitButton,
   decorators: [centered],
   argTypes: {
-    buttonProps: { table: { disable: true } },
-    dropdownProps: { table: { disable: true } },
+    buttonProps: {
+      name: 'Button Props',
+      control: {
+        type: 'object'
+      },
+      table: { category: 'Config' }
+    },
+    dropdownProps: {
+      name: 'Dropdown Props',
+      control: {
+        type: 'object'
+      },
+      table: { category: 'Config' }
+    },
     'buttonProps.label': {
       name: 'Label',
       control: {
@@ -43,7 +55,7 @@ export default {
         type: 'select'
       }
     },
-    'dropdownProps.button.iconLeft': {
+    'dropdownProps.button.iconRight': {
       name: 'Dropdown Icon',
       options: iconNames,
       mapping: iconNamesMapping,
@@ -69,7 +81,7 @@ export const SplitButton = args => ({
         kind: 'primary',
         size: args['buttonProps.size'],
         label: '',
-        iconRight: args['dropdownProps.button.iconLeft'],
+        iconRight: args['dropdownProps.button.iconRight'],
       },
       containerProps: {
         backgroundColor: 'var(--background-4)',
@@ -97,5 +109,5 @@ export const SplitButton = args => ({
 SplitButton.args = {
   'buttonProps.label': 'Download Latest (v1.2)',
   'buttonProps.size': 'default',
-  'dropdownProps.button.iconLeft': 'chevron-down',
+  'dropdownProps.button.iconRight': 'chevron-down',
 }
