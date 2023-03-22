@@ -13,8 +13,8 @@
         <h1 class="font-size--jumbo">
           Epicenter Design system
         </h1>
-        <p>
-          Vue components for apps
+        <p class="monospace">
+          { Vue, React } = componentsForApps
         </p>
         <ep-button
           label="View on GitHub"
