@@ -1,5 +1,8 @@
 <template>
-  <div class="ep-map-container">
+  <div
+    ref="ep-map-container"
+    class="ep-map-container"
+  >
     <div id="ep-map" />
   </div>
 </template>
@@ -73,6 +76,19 @@
         }
         this.init = false
       })
+      // get a reference to the parent container
+      const container = this.$refs['ep-map-container']
+
+      // create a new ResizeObserver instance
+      const observer = new ResizeObserver(entries => {
+        // the size of the container has changed, redraw the map
+        this.$nextTick(() => {
+          this.map.resize()
+        })
+      })
+
+      // attach the observer to the container
+      observer.observe(container)
     },
     created() {
       // selectively create watchers if features exist
