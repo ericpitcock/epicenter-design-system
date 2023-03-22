@@ -1,12 +1,6 @@
 import { centered } from '../../helpers/decorators'
-import { iconNames } from '@/components/icon/load-icons'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpBanner from '@/components/banner/EpBanner.vue'
-
-// map iconNames to an object with the values as keys and { name: value } as values
-const iconNamesMapping = iconNames.reduce((acc, name) => {
-  acc[name] = { name }
-  return acc
-}, {})
 
 export default {
   title: 'Components/Banner',

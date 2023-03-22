@@ -1,18 +1,7 @@
 import vueRouter from 'storybook-vue3-router'
 import { centered } from '../../helpers/decorators'
-import { iconNames } from '@/components/icon/load-icons'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpButton from '@/components/button/EpButton'
-
-// add 'none' option to iconNames
-iconNames.unshift('none')
-
-// map iconNames to an object with the values as keys and { name: value } as values
-const iconNamesMapping = iconNames.reduce((acc, name) => {
-  acc[name] = { name }
-  return acc
-}, {})
-
-iconNamesMapping.none = undefined
 
 export default {
   title: 'Components/Button',
@@ -100,7 +89,7 @@ export default {
         type: 'select'
       },
       table: {
-        category: 'Icon'
+        category: 'Icons'
       }
     },
     iconRight: {
@@ -111,7 +100,7 @@ export default {
         type: 'select'
       },
       table: {
-        category: 'Icon'
+        category: 'Icons'
       }
     }
   }

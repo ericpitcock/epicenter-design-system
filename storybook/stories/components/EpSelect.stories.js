@@ -1,4 +1,5 @@
 import { centered } from '../../helpers/decorators'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpSelect from '@/components/select/EpSelect'
 
 export default {
@@ -12,8 +13,11 @@ export default {
       }
     },
     iconLeft: {
+      name: 'Icon',
+      options: iconNames,
+      mapping: iconNamesMapping,
       control: {
-        type: 'object'
+        type: 'select'
       }
     },
     id: {

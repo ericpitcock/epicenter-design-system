@@ -896,7 +896,7 @@ small {
   background: var(--color--primary);
 }
 .ep-button--outlined {
-  background-color: transparent;
+  background: transparent;
   color: var(--text-color);
 }
 .ep-button--disabled {

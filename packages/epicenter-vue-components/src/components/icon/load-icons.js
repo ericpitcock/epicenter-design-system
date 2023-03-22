@@ -7,4 +7,13 @@ const svgIcons = svgIconsReq.keys().map(name => ({
 
 const iconNames = svgIcons.map(icon => icon.name)
 
-export { svgIcons, iconNames }
+iconNames.unshift('none')
+
+const iconNamesMapping = iconNames.reduce((acc, name) => {
+  acc[name] = { name }
+  return acc
+}, {})
+
+iconNamesMapping.none = undefined
+
+export { svgIcons, iconNames, iconNamesMapping }
