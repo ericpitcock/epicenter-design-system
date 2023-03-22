@@ -50,7 +50,10 @@
                 :class="cellStyle(key)"
               ></span>
             </td>
-            <td v-else-if="!excluded(key) && isComponent(key)">
+            <td
+              v-else-if="!excluded(key) && isComponent(key)"
+              :style="tdStyles"
+            >
               <component
                 :is="value.component"
                 v-bind="value.props"
@@ -303,5 +306,5 @@
         this.currentSort = key
       }
     }
-  }
+}
 </script>
