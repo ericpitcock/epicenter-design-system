@@ -1,4 +1,5 @@
 import { centered } from '../../helpers/decorators'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 
 export default {
@@ -6,16 +7,48 @@ export default {
   component: EpSplitButton,
   decorators: [centered],
   argTypes: {
-    buttonProps: {
-      name: 'Button Props',
+    buttonProps: { table: { disable: true } },
+    dropdownProps: { table: { disable: true } },
+    'buttonProps.label': {
+      name: 'Label',
       control: {
-        type: 'object'
+        type: 'text'
       }
     },
-    dropdownProps: {
-      name: 'Dropdown Props',
+    'buttonProps.size': {
+      name: 'Size',
+      options: ['small', 'default', 'large'],
       control: {
-        type: 'object'
+        type: 'radio',
+        labels: {
+          small: 'Small',
+          default: 'Default',
+          large: 'Large'
+        }
+      }
+    },
+    'buttonProps.iconLeft': {
+      name: 'Button Icon (Left)',
+      options: iconNames,
+      mapping: iconNamesMapping,
+      control: {
+        type: 'select'
+      }
+    },
+    'buttonProps.iconRight': {
+      name: 'Button Icon (Right)',
+      options: iconNames,
+      mapping: iconNamesMapping,
+      control: {
+        type: 'select'
+      }
+    },
+    'dropdownProps.button.iconLeft': {
+      name: 'Dropdown Icon',
+      options: iconNames,
+      mapping: iconNamesMapping,
+      control: {
+        type: 'select'
       }
     },
   }
@@ -24,40 +57,45 @@ export default {
 export const SplitButton = args => ({
   components: { EpSplitButton },
   setup() {
-    return { args }
+    const buttonProps = {
+      kind: 'primary',
+      size: args['buttonProps.size'],
+      label: args['buttonProps.label'],
+      iconLeft: args['buttonProps.iconLeft'],
+      iconRight: args['buttonProps.iconRight'],
+    }
+    const dropdownProps = {
+      button: {
+        kind: 'primary',
+        size: args['buttonProps.size'],
+        label: '',
+        iconRight: args['dropdownProps.button.iconLeft'],
+      },
+      containerProps: {
+        backgroundColor: 'var(--background-4)',
+        containerPadding: '1rem 0',
+        borderRadius: 'var(--border-radius)',
+        borderColor: 'var(--border-color--lighter)',
+      },
+      menuItems: [
+        { label: 'Download v1.1' },
+        { label: 'Download v1.0.1' },
+        { label: 'Download v1.0' },
+        { label: 'Download v0.9'  }
+      ]
+    }
+    return { args, buttonProps, dropdownProps }
   },
-  template: `<ep-split-button v-bind="args" />`
+  template: `
+    <ep-split-button
+      :buttonProps="buttonProps"
+      :dropdownProps="dropdownProps"
+    />
+  `
 })
 
 SplitButton.args = {
-  buttonProps: {
-    kind: 'primary',
-    label: 'Download 1.2 (Latest)'
-  },
-  dropdownProps: {
-    button: {
-      kind: 'primary',
-      label: ''
-    },
-    containerProps: {
-      backgroundColor: 'var(--background-4)',
-      containerPadding: '1rem 0',
-      borderRadius: 'var(--border-radius)',
-      borderColor: 'var(--border-color--lighter)',
-    },
-    menuItems: [
-      {
-        label: 'Download 1.1'
-      },
-      {
-        label: 'Download 1.0.1'
-      },
-      {
-        label: 'Download 1.0'
-      },
-      {
-        label: 'Download 0.9'
-      }
-    ]
-  }
+  'buttonProps.label': 'Download Latest (v1.2)',
+  'buttonProps.size': 'default',
+  'dropdownProps.button.iconLeft': 'chevron-down',
 }
