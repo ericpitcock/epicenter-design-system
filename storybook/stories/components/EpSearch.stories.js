@@ -51,6 +51,7 @@ export const Autocomplete = args => ({
         :search-results="searchResults"
         results-label="name"
         results-value="hex"
+        placeholder="Find your background color…"
         @search="searchWebColors"
         @selection="setBackground"
         @clear="bg = 'var(--background-1)'"
@@ -58,7 +59,3 @@ export const Autocomplete = args => ({
     </div>
   `,
 })
-
-Autocomplete.args = {
-  placeholder: 'Find your background color…',
-}
