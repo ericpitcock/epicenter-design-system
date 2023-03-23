@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-percent"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <path d="m14.38,5.62L5.62,14.38m-.62-7.81c0,.86.7,1.56,1.56,1.56s1.56-.7,1.56-1.56-.7-1.56-1.56-1.56-1.56.7-1.56,1.56Zm6.88,6.88c0,.86.7,1.56,1.56,1.56s1.56-.7,1.56-1.56-.7-1.56-1.56-1.56-1.56.7-1.56,1.56Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+</svg>

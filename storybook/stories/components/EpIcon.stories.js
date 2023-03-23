@@ -102,3 +102,9 @@ IconLibrary.args = {
   weight: 'light',
   size: 34
 }
+
+IconLibrary.argTypes = {
+  name: { 
+    table: { disable: true } 
+  }
+}
