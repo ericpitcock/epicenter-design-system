@@ -8,7 +8,10 @@
     <template #header>
       <ep-header>
         <template #left>
-          Font sample editor
+          <ep-input
+            v-model="typeSample"
+            :placeholder="typeSample"
+          />
         </template>
       </ep-header>
     </template>
@@ -31,7 +34,10 @@
             <div class="font__name text--subtle">
               {{ font.family }}
             </div>
-            <font-container :font="font" />
+            <font-container
+              :font="font"
+              :sample="typeSample"
+            />
           </div>
         </div>
       </div>
@@ -44,6 +50,7 @@
   import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
   import EpContainer from '@/components/container/EpContainer.vue'
   import EpHeader from '@/components/header/EpHeader.vue'
+  import EpInput from '@/components/input/EpInput.vue'
   import FontContainer from './FontContainer.vue'
 
   export default {
@@ -52,6 +59,7 @@
       EpCheckbox,
       EpContainer,
       EpHeader,
+      EpInput,
       FontContainer,
     },
     data() {
@@ -109,6 +117,7 @@
         ],
         fonts: [],
         selectedStyles: [],
+        typeSample: 'The quick brown fox jumps over the lazy dog',
       }
     },
     computed: {
