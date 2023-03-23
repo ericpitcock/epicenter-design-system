@@ -2,7 +2,7 @@ import { padded } from '../../helpers/decorators'
 import EpCheckboxFilter from '@/components/filters/EpCheckboxFilter'
 
 export default {
-  title: 'Components/Checkbox Filter',
+  title: 'Components/Checkbox/Checkbox Filter',
   component: EpCheckboxFilter,
   decorators: [padded],
   argTypes: {
