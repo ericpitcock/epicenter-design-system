@@ -39,7 +39,7 @@ export default {
   }
 }
 
-const Template = args => ({
+export const Select = args => ({
   components: { EpSelect },
   setup() {
     return { args }
@@ -50,8 +50,6 @@ const Template = args => ({
     </div>
     `
 })
-
-export const Select = Template.bind({})
 
 Select.args = {
   id: 'select',
