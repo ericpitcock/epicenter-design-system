@@ -19,9 +19,9 @@
       :id="id"
       :class="['ep-select__input', selectClasses]"
       :value="modelValue"
+      @blur="onBlur"
       @focus="onFocus"
-      @blur="hasFocus = false"
-      @change="$emit('update:modelValue', $event.target.value)"
+      @change="onChange"
     >
       <option
         disabled
@@ -74,10 +74,9 @@
         default: 'Select an option'
       }
     },
-    emits: ['update:modelValue', 'input', 'focus'],
+    emits: ['update:modelValue', 'blur', 'input', 'focus'],
     data() {
       return {
-        hasFocus: false,
         selected: '',
       }
     },
@@ -90,9 +89,7 @@
       },
       classes() {
         return {
-          'ep-select--has-focus': this.hasFocus,
           'ep-select--has-icon': this.iconLeft,
-          'ep-select--has-value': this.selected,
         }
       },
       selectClasses() {
@@ -110,13 +107,14 @@
       }
     },
     methods: {
-      onChange() {
-        this.hasFocus = false
-        this.$emit('input', this.selected)
-        console.log(this.selected)
+      onBlur() {
+        this.$emit('blur')
+      },
+      onChange(event) {
+        event.target.blur()
+        this.$emit('update:modelValue', event.target.value)
       },
       onFocus() {
-        this.hasFocus = true
         this.$emit('focus')
       }
     }
