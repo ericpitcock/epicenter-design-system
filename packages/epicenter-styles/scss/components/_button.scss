@@ -33,6 +33,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 0.8rem;
+  max-height: 3rem;
   border-radius: 3px;
   font-size: var(--font-size--small);
   line-height: 1;
@@ -185,6 +186,7 @@
   // small 22px height
   &--small {
     gap: 0.4rem;
+    max-height: 2.2rem;
 
     .ep-button__label {
       font-size: var(--font-size--tiny);
@@ -219,6 +221,7 @@
 
   // large 38px height
   &--large {
+    max-height: 3.8rem;
     .ep-button__label {
       font-size: var(--font-size--default);
     }

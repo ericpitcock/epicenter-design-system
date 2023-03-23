@@ -20,7 +20,7 @@
           label="View on GitHub"
           kind="primary"
           size="large"
-          :icon-left="{ name: 'f/github' }"
+          :icon-left="{ name: 'f/github', size: 30, weight: 'light' }"
           href="https://github.com/ericpitcock/epicenter-design-system"
         />
       </div>

@@ -765,6 +765,7 @@ small {
   justify-content: space-between;
   align-items: center;
   gap: 0.8rem;
+  max-height: 3rem;
   border-radius: 3px;
   font-size: var(--font-size--small);
   line-height: 1;
@@ -946,6 +947,7 @@ small {
 }
 .ep-button--small {
   gap: 0.4rem;
+  max-height: 2.2rem;
 }
 .ep-button--small .ep-button__label {
   font-size: var(--font-size--tiny);
@@ -964,6 +966,9 @@ small {
 }
 .ep-button--small:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
   padding: 0 0.6rem;
+}
+.ep-button--large {
+  max-height: 3.8rem;
 }
 .ep-button--large .ep-button__label {
   font-size: var(--font-size--default);
@@ -3224,13 +3229,7 @@ span.flatpickr-weekday {
   display: flex;
   flex-direction: column;
   line-height: 1;
-  background: var(--background-2);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
   cursor: pointer;
-}
-.ep-select--has-focus {
-  border-color: var(--color--primary);
 }
 .ep-select__inner {
   position: absolute;
@@ -3248,15 +3247,15 @@ span.flatpickr-weekday {
   justify-content: center;
   align-items: center;
 }
-.ep-select__inner__icon-right {
-  position: relative;
-  top: -2px;
-}
 .ep-select select {
+  background: var(--background-2);
   padding: 1.25rem 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  user-select: none;
 }
 .ep-select select:focus {
-  outline: none;
+  border-color: var(--color--primary);
 }
 .ep-select select.select--has-icon {
   padding-left: 4rem;

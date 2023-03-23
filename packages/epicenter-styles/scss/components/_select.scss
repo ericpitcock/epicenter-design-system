@@ -2,16 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  // font-size: var(--font-size--small);
   line-height: 1;
-  background: var(--background-2);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
   cursor: pointer;
-
-  &--has-focus {
-    border-color: var(--color--primary);
-  }
 
   &__inner {
     position: absolute;
@@ -25,27 +17,26 @@
       justify-content: space-between;
     }
 
-    // background: red;
     &__icon-left,
     &__icon-right {
       display: flex;
       justify-content: center;
       align-items: center;
-      // background: black;
-      // pointer-events: none;
     }
 
     &__icon-right {
-      position: relative;
-      top: -2px;
     }
   }
 
   select {
+    background: var(--background-2);
     padding: 1.25rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    user-select: none;
 
     &:focus {
-      outline: none;
+      border-color: var(--color--primary);
     }
 
     &.select--has-icon {
