@@ -21,7 +21,21 @@
     <template #default>
       <div class="container">
         <div class="filters">
-          <ep-checkbox
+          <template
+            v-for="(filterSet, category) in checkboxes"
+            :key="category"
+          >
+            <p>
+              {{ category }}
+            </p>
+            <ep-checkbox
+              v-for="(checkbox, index) in filterSet"
+              :key="checkbox.label"
+              v-bind="checkbox"
+              @checkchange="checkChange(index, category)"
+            />
+          </template>
+          <!-- <ep-checkbox
             v-model="recommendedOnly"
             :checked="recommendedOnly"
             label="Top Picks"
@@ -32,7 +46,7 @@
             :key="checkbox.label"
             v-bind="checkbox"
             @checkchange="checkChange(index)"
-          />
+          /> -->
         </div>
         <div class="google-fonts">
           <div
@@ -85,57 +99,67 @@
     },
     data() {
       return {
-        checkboxes: [
-          {
-            id: faker.datatype.uuid(),
-            name: 'font-style',
-            value: 'all',
-            checked: true,
-            label: 'All',
-            indeterminate: false,
-            // command: () => toggleAll(),
-          },
-          {
-            id: faker.datatype.uuid(),
-            name: 'font-style',
-            value: 'sans-serif',
-            checked: true,
-            label: 'Sans Serif',
-            // command: () => console.log('check change')
-          },
-          {
-            id: faker.datatype.uuid(),
-            name: 'font-style',
-            value: 'serif',
-            checked: true,
-            label: 'Serif',
-            // command: () => console.log('check change')
-          },
-          {
-            id: faker.datatype.uuid(),
-            name: 'font-style',
-            value: 'display',
-            checked: true,
-            label: 'Display',
-            // command: () => console.log('check change')
-          },
-          {
-            id: faker.datatype.uuid(),
-            name: 'font-style',
-            value: 'handwriting',
-            checked: true,
-            label: 'Handwritng',
-            // command: () => console.log('check change')
-          },
-          {
-            id: faker.datatype.uuid(),
-            name: 'font-style',
-            value: 'monospace',
-            checked: true,
-            label: 'Monospace',
-            // command: () => console.log('check change')
-          }
-        ],
+        checkboxes: {
+          category: [
+            // {
+            //   id: faker.datatype.uuid(),
+            //   name: 'category',
+            //   value: 'all',
+            //   checked: true,
+            //   label: 'All',
+            //   indeterminate: false,
+            // },
+            {
+              id: faker.datatype.uuid(),
+              name: 'category',
+              value: 'sans-serif',
+              checked: true,
+              label: 'Sans Serif',
+            },
+            {
+              id: faker.datatype.uuid(),
+              name: 'category',
+              value: 'serif',
+              checked: true,
+              label: 'Serif',
+            },
+            {
+              id: faker.datatype.uuid(),
+              name: 'category',
+              value: 'display',
+              checked: true,
+              label: 'Display',
+            },
+            {
+              id: faker.datatype.uuid(),
+              name: 'category',
+              value: 'handwriting',
+              checked: true,
+              label: 'Handwritng',
+            },
+            {
+              id: faker.datatype.uuid(),
+              name: 'category',
+              value: 'monospace',
+              checked: true,
+              label: 'Monospace',
+            }
+          ],
+          recommendations: [
+            {
+              id: faker.datatype.uuid(),
+              name: 'top-picks',
+              value: 'top-picks',
+              checked: true,
+              label: 'Top Picks',
+            }
+          ]
+        },
+        filters: {
+          category: [],
+          // characterSets: [],
+          recommendedOnly: false,
+        },
         fonts: [],
         recommendedOnly: true,
         recommendedFonts: [
@@ -218,27 +242,49 @@
     },
     computed: {
       filteredFonts() {
-        // filter this.fonts by selectedStyles array
-        // then if recommendedOnly is true fitler again using recommendedFonts array
-        if (this.selectedStyles.length > 0) {
-          return this.fonts.filter(font => {
-            if (this.recommendedOnly) {
-              return this.recommendedFonts.includes(font.family) && this.selectedStyles.includes(font.category)
-            } else {
-              return this.selectedStyles.includes(font.category)
-            }
-          })
-        } else {
-          return this.fonts.filter(font => {
-            if (this.recommendedOnly) {
-              return this.recommendedFonts.includes(font.family) && this.selectedStyles.includes(font.category)
-            } else {
-              return this.fonts
-              // return this.selectedStyles.includes(font.category)
-            }
-          })
+        let filtered = this.fonts
+        if (this.filters.category.length > 0) {
+          filtered = filtered.filter(font => this.filters.category.includes(font.category))
         }
+        if (this.filters.recommendedOnly) {
+          filtered = filtered.filter(font => this.recommendedFonts.includes(font.family))
+        }
+        // if (this.filters.width.length > 0) {
+        //   filtered = filtered.filter(font => this.filters.width.includes(font.width))
+        // }
+        // if (this.filters.variants.length > 0) {
+        //   filtered = filtered.filter(font => this.filters.variants.includes(font.variants))
+        // }
+        // if (this.filters.characters.length > 0) {
+        //   filtered = filtered.filter(font => {
+        //     const characters = font.characters.split(",")
+        //     return this.filters.characters.every(filter => characters.includes(filter))
+        //   })
+        // }
+        return filtered
       },
+      // filteredFonts() {
+      //   // filter this.fonts by selectedStyles array
+      //   // then if recommendedOnly is true fitler again using recommendedFonts array
+      //   if (this.selectedStyles.length > 0) {
+      //     return this.fonts.filter(font => {
+      //       if (this.recommendedOnly) {
+      //         return this.recommendedFonts.includes(font.family) && this.selectedStyles.includes(font.category)
+      //       } else {
+      //         return this.selectedStyles.includes(font.category)
+      //       }
+      //     })
+      //   } else {
+      //     return this.fonts.filter(font => {
+      //       if (this.recommendedOnly) {
+      //         return this.recommendedFonts.includes(font.family) && this.selectedStyles.includes(font.category)
+      //       } else {
+      //         return this.fonts
+      //         // return this.selectedStyles.includes(font.category)
+      //       }
+      //     })
+      //   }
+      // },
     },
     watch: {
       recommendedOnly() {
@@ -249,45 +295,53 @@
       this.getFonts()
       console.log(this.fonts)
       // add all checked values to selectedStyles
-      this.checkboxes.forEach(checkbox => {
-        if (checkbox.checked && checkbox.value !== 'all') {
-          this.selectedStyles.push(checkbox.value)
-        }
-      })
+      // this.checkboxes.forEach(checkbox => {
+      //   if (checkbox.checked && checkbox.value !== 'all') {
+      //     this.filters.category.push(checkbox.value)
+      //   }
+      // })
       console.log(this.selectedStyles)
     },
     methods: {
-      checkChange(index) {
+      checkChange(index, category) {
         // toggle the clicked checkbox
-        this.checkboxes[index].checked = !this.checkboxes[index].checked
+        this.checkboxes[category][index].checked = !this.checkboxes[category][index].checked
 
-        // if index is 0 (that is "All" ) toggle all checkboxes to the same state
-        if (index === 0) {
-          this.checkboxes.forEach(checkbox => checkbox.checked = this.checkboxes[0].checked)
-          // if a different checkbox is clicked
+        // add to filters if checked
+        if (this.checkboxes[category][index].checked) {
+          this.filters.category.push(this.checkboxes[category][index].value)
         } else {
-          // if all checkboxes, except "All" are checked
-          if (this.checkboxes.slice(1).every(checkbox => checkbox.checked)) {
-            this.checkboxes[0].checked = true
-            this.checkboxes[0].indeterminate = false
-          }
-          // if some checkboxes are checked and some are not
-          if (this.checkboxes.some(checkbox => checkbox.checked) &&
-            this.checkboxes.some(checkbox => !checkbox.checked)) {
-            this.checkboxes[0].indeterminate = true
-            this.checkboxes[0].checked = false
-            // all other cases
-          } else {
-            this.checkboxes[0].indeterminate = false
-          }
+          // remove from filters if unchecked
+          this.filters.category = this.filters.category.filter(filter => filter !== this.checkboxes[category][index].value)
         }
 
-        // update selectedStyles based on checkbox states
-        this.selectedStyles = this.checkboxes[0].checked ?
-          ['sans-serif', 'serif', 'display', 'handwriting', 'monospace'] :
-          this.checkboxes
-            .filter(checkbox => checkbox.checked && checkbox.value !== 'all')
-            .map(checkbox => checkbox.value)
+        // if index is 0 (that is "All" ) toggle all checkboxes to the same state
+        // if (index === 0) {
+        //   this.checkboxes[category].forEach(checkbox => checkbox.checked = this.checkboxes[category][0].checked)
+        //   // if a different checkbox is clicked
+        // } else {
+        // if all checkboxes, except "All" are checked
+        //   if (this.checkboxes.slice(1).every(checkbox => checkbox.checked)) {
+        //     this.checkboxes[0].checked = true
+        //     this.checkboxes[0].indeterminate = false
+        //   }
+        //   // if some checkboxes are checked and some are not
+        //   if (this.checkboxes.some(checkbox => checkbox.checked) &&
+        //     this.checkboxes.some(checkbox => !checkbox.checked)) {
+        //     this.checkboxes[0].indeterminate = true
+        //     this.checkboxes[0].checked = false
+        //     // all other cases
+        //   } else {
+        //     this.checkboxes[0].indeterminate = false
+        //   }
+        // // }
+
+        // // update selectedStyles based on checkbox states
+        // this.selectedStyles = this.checkboxes[0].checked ?
+        //   ['sans-serif', 'serif', 'display', 'handwriting', 'monospace'] :
+        //   this.checkboxes
+        //     .filter(checkbox => checkbox.checked && checkbox.value !== 'all')
+        //     .map(checkbox => checkbox.value)
       },
       fontInfo(font) {
         let label = font.variants.length > 1 ? 'weights' : 'weight'
