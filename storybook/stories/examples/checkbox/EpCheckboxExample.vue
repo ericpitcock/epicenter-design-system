@@ -43,15 +43,19 @@
           </template>
         </div>
         <div class="google-fonts">
-          <div
-            v-if="fontsLoaded && filteredFonts.length === 0"
-            class="empty-state"
+          <ep-empty-state
+            v-if="ready && filteredFonts.length === 0"
+            message="No fonts found"
           >
-            <p>No fonts found.</p>
-            <p>
-              Try adding a category or turning off Top Picks
-            </p>
-          </div>
+            <template #cta>
+              <p>
+                Try adding a category or <span
+                  class="text--link"
+                  @click="recommendedOnly = !recommendedOnly"
+                >turning off Top Picks</span>
+              </p>
+            </template>
+          </ep-empty-state>
           <div
             v-for="font in filteredFonts"
             :key="font.family"
@@ -60,6 +64,7 @@
             <font-container
               :font="font"
               :sample="typeSample"
+              @font-loaded="onFontLoaded(index)"
             />
             <div class="font__meta">
               <p>{{ font.family }}</p>
@@ -77,6 +82,7 @@
   import faker from 'faker'
   import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
   import EpContainer from '@/components/container/EpContainer.vue'
+  import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
   import EpHeader from '@/components/header/EpHeader.vue'
   import EpInput from '@/components/input/EpInput.vue'
   import FontContainer from './FontContainer.vue'
@@ -86,6 +92,7 @@
     components: {
       EpCheckbox,
       EpContainer,
+      EpEmptyState,
       EpHeader,
       EpInput,
       FontContainer,
@@ -93,24 +100,7 @@
     data() {
       return {
         checkboxes: {
-          // recommendations: [
-          //   {
-          //     id: faker.datatype.uuid(),
-          //     name: 'top-picks',
-          //     value: 'top-picks',
-          //     checked: true,
-          //     label: 'Top Picks',
-          //   }
-          // ],
           category: [
-            // {
-            //   id: faker.datatype.uuid(),
-            //   name: 'category',
-            //   value: 'all',
-            //   checked: true,
-            //   label: 'All',
-            //   indeterminate: false,
-            // },
             {
               id: faker.datatype.uuid(),
               name: 'category',
@@ -153,7 +143,8 @@
           // characterSets: [],
         },
         fonts: [],
-        fontsLoaded: false,
+        fontsLoaded: 0,
+        ready: false,
         recommendedOnly: true,
         recommendedFonts: [
           // sans-serif 39
@@ -247,47 +238,9 @@
         if (this.recommendedOnly) {
           filtered = filtered.filter(font => this.recommendedFonts.includes(font.family))
         }
-        // if (this.filters.width.length > 0) {
-        //   filtered = filtered.filter(font => this.filters.width.includes(font.width))
-        // }
-        // if (this.filters.variants.length > 0) {
-        //   filtered = filtered.filter(font => this.filters.variants.includes(font.variants))
-        // }
-        // if (this.filters.characters.length > 0) {
-        //   filtered = filtered.filter(font => {
-        //     const characters = font.characters.split(",")
-        //     return this.filters.characters.every(filter => characters.includes(filter))
-        //   })
-        // }
+
         return filtered
       },
-      // filteredFonts() {
-      //   // filter this.fonts by selectedStyles array
-      //   // then if recommendedOnly is true fitler again using recommendedFonts array
-      //   if (this.selectedStyles.length > 0) {
-      //     return this.fonts.filter(font => {
-      //       if (this.recommendedOnly) {
-      //         return this.recommendedFonts.includes(font.family) && this.selectedStyles.includes(font.category)
-      //       } else {
-      //         return this.selectedStyles.includes(font.category)
-      //       }
-      //     })
-      //   } else {
-      //     return this.fonts.filter(font => {
-      //       if (this.recommendedOnly) {
-      //         return this.recommendedFonts.includes(font.family) && this.selectedStyles.includes(font.category)
-      //       } else {
-      //         return this.fonts
-      //         // return this.selectedStyles.includes(font.category)
-      //       }
-      //     })
-      //   }
-      // },
-    },
-    watch: {
-      // recommendedOnly() {
-      //   console.log(this.recommendedOnly)
-      // }
     },
     mounted() {
       this.getFonts()
@@ -312,34 +265,6 @@
           // remove from filters if unchecked
           this.filters.category = this.filters.category.filter(filter => filter !== this.checkboxes[category][index].value)
         }
-
-        // if index is 0 (that is "All" ) toggle all checkboxes to the same state
-        // if (index === 0) {
-        //   this.checkboxes[category].forEach(checkbox => checkbox.checked = this.checkboxes[category][0].checked)
-        //   // if a different checkbox is clicked
-        // } else {
-        // if all checkboxes, except "All" are checked
-        //   if (this.checkboxes.slice(1).every(checkbox => checkbox.checked)) {
-        //     this.checkboxes[0].checked = true
-        //     this.checkboxes[0].indeterminate = false
-        //   }
-        //   // if some checkboxes are checked and some are not
-        //   if (this.checkboxes.some(checkbox => checkbox.checked) &&
-        //     this.checkboxes.some(checkbox => !checkbox.checked)) {
-        //     this.checkboxes[0].indeterminate = true
-        //     this.checkboxes[0].checked = false
-        //     // all other cases
-        //   } else {
-        //     this.checkboxes[0].indeterminate = false
-        //   }
-        // // }
-
-        // // update selectedStyles based on checkbox states
-        // this.selectedStyles = this.checkboxes[0].checked ?
-        //   ['sans-serif', 'serif', 'display', 'handwriting', 'monospace'] :
-        //   this.checkboxes
-        //     .filter(checkbox => checkbox.checked && checkbox.value !== 'all')
-        //     .map(checkbox => checkbox.value)
       },
       fontInfo(font) {
         let label = font.variants.length > 1 ? 'weights' : 'weight'
@@ -358,8 +283,13 @@
         const response = await fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC4LPtjlhXImnuIBnGbYCgwRLYoXDZ2i8c')
           .then(response => response.json())
           .then(data => this.fonts = data.items)
-          .then(this.fontsLoaded = true)
-      }
+      },
+      onFontLoaded(index) {
+        this.fontsLoaded++
+        if (this.fontsLoaded > 10) {
+          this.ready = true
+        }
+      },
     },
   }
 </script>

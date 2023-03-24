@@ -39,6 +39,7 @@
         default: 'The quick brown fox jumps over the lazy dog'
       },
     },
+    emits: ['font-loaded'],
     data() {
       return {
         loading: true,
@@ -85,6 +86,7 @@
           },
           fontactive: (familyName, fvd) => {
             this.loading = false
+            this.$emit('font-loaded', familyName)
           },
           fontinactive: (familyName, fvd) => {
             this.loading = false
