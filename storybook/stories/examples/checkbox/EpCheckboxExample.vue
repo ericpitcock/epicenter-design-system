@@ -21,11 +21,17 @@
     <template #default>
       <div class="container">
         <div class="filters">
+          <p>Recommendations</p>
+          <ep-checkbox
+            v-model="recommendedOnly"
+            :checked="recommendedOnly"
+            label="Top Picks"
+          />
           <template
             v-for="(filterSet, category) in checkboxes"
             :key="category"
           >
-            <p>
+            <p class="capitalize">
               {{ category }}
             </p>
             <ep-checkbox
@@ -35,28 +41,15 @@
               @checkchange="checkChange(index, category)"
             />
           </template>
-          <!-- <ep-checkbox
-            v-model="recommendedOnly"
-            :checked="recommendedOnly"
-            label="Top Picks"
-          />
-          <p>Styles</p>
-          <ep-checkbox
-            v-for="(checkbox, index) in checkboxes"
-            :key="checkbox.label"
-            v-bind="checkbox"
-            @checkchange="checkChange(index)"
-          /> -->
         </div>
         <div class="google-fonts">
           <div
-            v-if="filteredFonts.length === 0"
+            v-if="fontsLoaded && filteredFonts.length === 0"
             class="empty-state"
           >
             <p>No fonts found.</p>
-            <p v-if="recommendedOnly">
-              Try <span @click="recommendedOnly = !recommendedOnly">turning off
-                Top Picks</span>
+            <p>
+              Try adding a category or turning off Top Picks
             </p>
           </div>
           <div
@@ -100,6 +93,15 @@
     data() {
       return {
         checkboxes: {
+          // recommendations: [
+          //   {
+          //     id: faker.datatype.uuid(),
+          //     name: 'top-picks',
+          //     value: 'top-picks',
+          //     checked: true,
+          //     label: 'Top Picks',
+          //   }
+          // ],
           category: [
             // {
             //   id: faker.datatype.uuid(),
@@ -145,22 +147,13 @@
               label: 'Monospace',
             }
           ],
-          recommendations: [
-            {
-              id: faker.datatype.uuid(),
-              name: 'top-picks',
-              value: 'top-picks',
-              checked: true,
-              label: 'Top Picks',
-            }
-          ]
         },
         filters: {
           category: [],
           // characterSets: [],
-          recommendedOnly: false,
         },
         fonts: [],
+        fontsLoaded: false,
         recommendedOnly: true,
         recommendedFonts: [
           // sans-serif 39
@@ -242,11 +235,16 @@
     },
     computed: {
       filteredFonts() {
+        // if there are no filters, return nothing
+        if (this.filters.category.length === 0) {
+          return []
+        }
+
         let filtered = this.fonts
         if (this.filters.category.length > 0) {
           filtered = filtered.filter(font => this.filters.category.includes(font.category))
         }
-        if (this.filters.recommendedOnly) {
+        if (this.recommendedOnly) {
           filtered = filtered.filter(font => this.recommendedFonts.includes(font.family))
         }
         // if (this.filters.width.length > 0) {
@@ -287,19 +285,19 @@
       // },
     },
     watch: {
-      recommendedOnly() {
-        console.log(this.recommendedOnly)
-      }
+      // recommendedOnly() {
+      //   console.log(this.recommendedOnly)
+      // }
     },
     mounted() {
       this.getFonts()
       console.log(this.fonts)
       // add all checked values to selectedStyles
-      // this.checkboxes.forEach(checkbox => {
-      //   if (checkbox.checked && checkbox.value !== 'all') {
-      //     this.filters.category.push(checkbox.value)
-      //   }
-      // })
+      this.checkboxes.category.forEach(checkbox => {
+        if (checkbox.checked && checkbox.value !== 'all') {
+          this.filters.category.push(checkbox.value)
+        }
+      })
       console.log(this.selectedStyles)
     },
     methods: {
@@ -360,6 +358,7 @@
         const response = await fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC4LPtjlhXImnuIBnGbYCgwRLYoXDZ2i8c')
           .then(response => response.json())
           .then(data => this.fonts = data.items)
+          .then(this.fontsLoaded = true)
       }
     },
   }
