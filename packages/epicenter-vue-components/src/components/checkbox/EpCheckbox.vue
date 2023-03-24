@@ -5,7 +5,7 @@
       ref="input"
       type="checkbox"
       :name="name"
-      :value="value"
+      :value="modelValue"
       :checked="checked"
       :indeterminate="indeterminate"
       :disabled="disabled"
@@ -30,10 +30,10 @@
         type: String,
         default: null
       },
-      value: {
-        type: String,
-        default: null
-      },
+      // value: {
+      //   type: String,
+      //   default: null
+      // },
       checked: {
         type: Boolean,
         default: false
@@ -54,6 +54,10 @@
         type: Boolean,
         default: false
       },
+      modelValue: {
+        type: Boolean,
+        default: false
+      },
       readonly: {
         type: Boolean,
         default: false
@@ -67,7 +71,7 @@
         default: null
       }
     },
-    emits: ['checkchange'],
+    emits: ['update:modelValue', 'checkchange'],
     computed: {
       classes() {
         return {
@@ -83,6 +87,7 @@
     methods: {
       onChange(command, event) {
         // console.log('onChange', event.target.checked)
+        this.$emit('update:modelValue', event.target.checked)
         this.$emit('checkchange', event.target.checked)
         if (command) {
           command(event.target.checked)

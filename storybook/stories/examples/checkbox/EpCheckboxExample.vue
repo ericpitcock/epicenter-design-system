@@ -10,14 +10,23 @@
         <template #left>
           <ep-input
             v-model="typeSample"
-            :placeholder="typeSample"
+            height="3.8rem"
+            background-color="var(--background-1)"
+            placeholder="Enter your sample text here"
           />
+          {{ filteredFonts.length }} fonts
         </template>
       </ep-header>
     </template>
     <template #default>
       <div class="container">
         <div class="filters">
+          <ep-checkbox
+            v-model="recommendedOnly"
+            :checked="recommendedOnly"
+            label="Top Picks"
+          />
+          <p>Styles</p>
           <ep-checkbox
             v-for="(checkbox, index) in checkboxes"
             :key="checkbox.label"
@@ -27,17 +36,29 @@
         </div>
         <div class="google-fonts">
           <div
+            v-if="filteredFonts.length === 0"
+            class="empty-state"
+          >
+            <p>No fonts found.</p>
+            <p v-if="recommendedOnly">
+              Try <span @click="recommendedOnly = !recommendedOnly">turning off
+                Top Picks</span>
+            </p>
+          </div>
+          <div
             v-for="font in filteredFonts"
             :key="font.family"
             class="font"
           >
-            <div class="font__name text--subtle">
-              {{ font.family }}
-            </div>
             <font-container
               :font="font"
               :sample="typeSample"
             />
+            <div class="font__meta">
+              <p>{{ font.family }}</p>
+              <p class="capitalize">{{ font.category }}</p>
+              <p>{{ fontInfo(font) }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -116,14 +137,112 @@
           }
         ],
         fonts: [],
+        recommendedOnly: true,
+        recommendedFonts: [
+          // sans-serif 39
+          'Archivo',
+          'Archivo Narrow',
+          'Asap',
+          'Asap Condensed',
+          'Bai Jamjuree',
+          'Barlow',
+          'Barlow Condensed',
+          'Barlow Semi Condensed',
+          'Be Vietnam',
+          'Chivo',
+          'DM Sans',
+          'Exo 2',
+          'Fira Sans',
+          'Fira Sans Condensed',
+          'Fira Sans Extra Condensed',
+          'Gudea',
+          'IBM Plex Sans',
+          'IBM Plex Sans Condensed',
+          'Karla',
+          'Lato',
+          'Lekton',
+          'Libre Franklin',
+          'M PLUS 1p',
+          'M PLUS Rounded 1c',
+          'Mada',
+          'News Cycle',
+          'Nunito',
+          'Nunito Sans',
+          'Open Sans',
+          'Open Sans Condensed',
+          'Oswald',
+          'Pragati Narrow',
+          'Public Sans',
+          'Quattrocento Sans',
+          'Quicksand',
+          'Roboto',
+          'Roboto Condensed',
+          'Sarabun',
+          'Source Sans Pro',
+          'Work Sans',
+          'Yantramanav',
+          // serif 28
+          'Abhaya Libre',
+          'Adamina',
+          'Aleo',
+          'Alice',
+          'Alike',
+          'Alike Angular',
+          'Amethysta',
+          'Amiri',
+          'Andada',
+          'Arbutus Slab',
+          'Asar',
+          'Brawler',
+          'Buenard',
+          'Cambo',
+          'Copse',
+          'Crimson Pro',
+          'Crimson Text',
+          'Domine',
+          'Donegal One',
+          'Esteban',
+          'Fjord One',
+          'Gelasio',
+          'IBM Plex Serif',
+          'Petrona',
+          'Solway',
+          'Source Serif Pro',
+          'Spectral',
+          'Trocchi',
+          'Zilla Slab'
+        ],
         selectedStyles: [],
         typeSample: 'The quick brown fox jumps over the lazy dog',
       }
     },
     computed: {
       filteredFonts() {
-        return this.fonts.filter(font => this.selectedStyles.includes(font.category))
-        // return this.fonts
+        // filter this.fonts by selectedStyles array
+        // then if recommendedOnly is true fitler again using recommendedFonts array
+        if (this.selectedStyles.length > 0) {
+          return this.fonts.filter(font => {
+            if (this.recommendedOnly) {
+              return this.recommendedFonts.includes(font.family) && this.selectedStyles.includes(font.category)
+            } else {
+              return this.selectedStyles.includes(font.category)
+            }
+          })
+        } else {
+          return this.fonts.filter(font => {
+            if (this.recommendedOnly) {
+              return this.recommendedFonts.includes(font.family) && this.selectedStyles.includes(font.category)
+            } else {
+              return this.fonts
+              // return this.selectedStyles.includes(font.category)
+            }
+          })
+        }
+      },
+    },
+    watch: {
+      recommendedOnly() {
+        console.log(this.recommendedOnly)
       }
     },
     mounted() {
@@ -170,6 +289,19 @@
             .filter(checkbox => checkbox.checked && checkbox.value !== 'all')
             .map(checkbox => checkbox.value)
       },
+      fontInfo(font) {
+        let label = font.variants.length > 1 ? 'weights' : 'weight'
+        // if it doesn't have italics
+        if (!font.variants.includes('italic')) {
+          return `${font.variants.length} ${label}`
+        } else {
+          let italicCount = 0
+          font.variants.forEach(variant => {
+            if (variant.includes('italic')) { italicCount++ }
+          })
+          return `${font.variants.length - italicCount} ${label} w/ italics`
+        }
+      },
       async getFonts() {
         const response = await fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC4LPtjlhXImnuIBnGbYCgwRLYoXDZ2i8c')
           .then(response => response.json())
@@ -193,18 +325,41 @@
     padding-top: 3rem;
   }
 
+  // this is the container
   .google-fonts {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding-top: 3rem;
+    padding: 3rem 0 10rem 0;
     overflow: auto;
     -ms-overflow-style: none; // Internet Explorer, Edge
     scrollbar-width: none; // Firefox
 
     &::-webkit-scrollbar {
       display: none; // Chrome, Safari, Opera
+    }
+
+    .font {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 1rem;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:not(:first-child) {
+        border-top: 1px solid var(--border-color);
+      }
+
+      &__meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: right;
+        color: var(--text-color--subtle);
+      }
     }
   }
 </style>
