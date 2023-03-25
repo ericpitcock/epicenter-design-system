@@ -16,7 +16,7 @@
     >
       <div
         class="font__sample"
-        :style="{ fontFamily: font.family, fontSize: `${getGlobalFontSize}px` }"
+        :style="{ fontFamily: font.family, fontSize: `${fontSize}px` }"
       >
         {{ sample }}
       </div>
@@ -34,6 +34,10 @@
         type: Object,
         default: () => { }
       },
+      fontSize: {
+        type: Number,
+        default: 32
+      },
       sample: {
         type: String,
         default: 'The quick brown fox jumps over the lazy dog'
@@ -45,7 +49,7 @@
         loading: true,
         error: false,
         observer: null,
-        getGlobalFontSize: 32,
+        // getGlobalFontSize: 32,
       }
     },
     mounted() {

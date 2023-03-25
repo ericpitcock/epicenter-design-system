@@ -1,6 +1,6 @@
 import { padded } from '../../../helpers/decorators'
 import EpCheckbox from '@/components/checkbox/EpCheckbox'
-import GoogleFonts from './EpCheckboxExample'
+import EpCheckboxExample from './EpCheckboxExample'
 
 export default {
   title: 'Components/Checkbox',
@@ -53,12 +53,12 @@ export default {
 
 export const CheckboxInContext = args => ({
   components: {
-    GoogleFonts
+    EpCheckboxExample
   },
   setup() {
     return { args }
   },
-  template: '<google-fonts />'
+  template: '<ep-checkbox-example />'
 })
 
 CheckboxInContext.parameters = {

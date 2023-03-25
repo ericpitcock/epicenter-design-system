@@ -73,13 +73,25 @@
         type: String,
         default: '1'
       },
+      leftGap: {
+        type: String,
+        default: '3rem'
+      },
       centerFlex: {
         type: String,
         default: '1'
       },
+      centerGap: {
+        type: String,
+        default: '3rem'
+      },
       rightFlex: {
         type: String,
         default: '1'
+      },
+      rightGap: {
+        type: String,
+        default: '3rem'
       },
       sticky: {
         type: Boolean,
@@ -114,19 +126,19 @@
       leftStyles() {
         return {
           flex: this.leftFlex,
-          gap: this.itemGap,
+          gap: this.leftGap,
         }
       },
       centerStyles() {
         return {
           flex: this.centerFlex,
-          gap: this.itemGap,
+          gap: this.centerGap,
         }
       },
       rightStyles() {
         return {
           flex: this.rightFlex,
-          gap: this.itemGap,
+          gap: this.rightGap,
         }
       },
       // need to address this
