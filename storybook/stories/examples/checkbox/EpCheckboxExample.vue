@@ -188,7 +188,7 @@
         },
         fonts: [],
         fontsLoaded: 0,
-        fontSize: 32,
+        fontSize: '32',
         ready: false,
         recommendedOnly: true,
         recommendedFonts: [

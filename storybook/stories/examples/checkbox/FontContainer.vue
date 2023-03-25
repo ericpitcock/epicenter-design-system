@@ -35,8 +35,8 @@
         default: () => { }
       },
       fontSize: {
-        type: Number,
-        default: 32
+        type: String,
+        default: '32'
       },
       sample: {
         type: String,
