@@ -17,7 +17,8 @@ This design system is being created for use in [Eric’s](https://www.ericpitcoc
 ### Install
 
 ```
-npm install @ericpitcock/epicenter-design-system
+npm install @ericpitcock/epicenter-vue-components
+npm install @ericpitcock/epicenter-styles
 ```
 
 ### Vue 3
