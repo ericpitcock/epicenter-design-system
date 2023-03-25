@@ -2871,6 +2871,8 @@ span.flatpickr-weekday {
 
 .ep-empty-state {
   display: flex;
+  width: 100%;
+  height: 100%;
   gap: 3rem;
 }
 .ep-empty-state img {
@@ -3141,10 +3143,11 @@ span.flatpickr-weekday {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   width: 100%;
   height: 100%;
   background-color: var(--background-4);
-  padding: 1.2rem 2rem;
+  padding: 1.2rem 0.5rem 1.2rem 2rem;
   border: 1px solid var(--border-color--lighter);
   border-left: none;
   border-radius: 0 var(--border-radius--large) var(--border-radius--large) 0;
@@ -3186,16 +3189,6 @@ span.flatpickr-weekday {
   justify-content: space-between;
   align-items: center;
   height: 4.1rem;
-}
-
-.ep-notifications--empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  background: var(--background-2);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
 }
 
 .ep-search {

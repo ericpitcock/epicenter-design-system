@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="ep-notifications"
-    :style="position"
-  >
+  <div class="ep-notifications">
     <div class="ep-notifications__header font-size--small">
       <p class="text--subtle">
         Notification Center
@@ -19,12 +16,10 @@
       flex-flow="column nowrap"
       gap="1rem"
     >
-      <div
+      <ep-empty-state
         v-if="isNotificationsEmpty"
-        class="ep-notifications--empty"
-      >
-        <p>You have no notifications</p>
-      </div>
+        message="You’re all caught up!"
+      />
       <template v-else>
         <transition-group name="fade">
           <EpNotification
@@ -40,6 +35,7 @@
 </template>
 
 <script>
+  import EpEmptyState from '../empty-state/EpEmptyState.vue'
   import EpFlexContainer from '../flexbox/EpFlexContainer.vue'
   import EpNotification from '../notification/EpNotification.vue'
   import { mapState, mapGetters } from 'vuex'
@@ -47,26 +43,9 @@
   export default {
     name: 'EpNotifications',
     components: {
+      EpEmptyState,
       EpFlexContainer,
       EpNotification
-    },
-    props: {
-      top: {
-        type: String,
-        default: 'auto'
-      },
-      right: {
-        type: String,
-        default: 'auto'
-      },
-      bottom: {
-        type: String,
-        default: 'auto'
-      },
-      left: {
-        type: String,
-        default: 'auto'
-      }
     },
     computed: {
       ...mapState([
@@ -77,14 +56,6 @@
         'hasActiveNotifications',
         'getInactiveNotifications'
       ]),
-      position() {
-        return {
-          top: this.top,
-          right: this.right,
-          bottom: this.bottom,
-          left: this.left
-        }
-      },
       isNotificationsEmpty() {
         return this.notifications.length === 0
       }

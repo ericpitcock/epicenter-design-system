@@ -9,7 +9,7 @@ export default {
     direction: {
       options: ['row', 'column'],
       control: {
-        type: 'select',
+        type: 'radio',
         labels: {
           row: 'Horizontal',
           column: 'Vertical'

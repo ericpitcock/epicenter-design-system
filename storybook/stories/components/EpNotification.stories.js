@@ -1,57 +1,59 @@
-import { padded } from '../../helpers/decorators'
-import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
-import EpActionBar from '@/components/action-bar/EpActionBar'
-import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
-import EpButton from '@/components/button/EpButton'
-import EpContainer from '@/components/container/EpContainer'
-import EpFeedbackCard from '@/components/notification/EpFeedbackCard'
-import EpFooter from '@/components/footer/EpFooter'
-import EpHeader from '@/components/header/EpHeader'
-import EpNotifications from '@/components/notification/EpNotifications'
-import EpTempNotification from '@/components/notification/EpTempNotification'
+import { centered } from '../../helpers/decorators'
+import EpNotification from '@/components/notification/EpNotification'
 import store from '../../store'
 
 export default {
-  title: 'Components/Notifications',
-  component: EpNotifications,
-  decorators: [padded],
-  argTypes: {}
-}
-
-// build notification object and dispatch to store
-const buildNotification = alertStyle => {
-  const notification = {
-    message: 'Thanks for the feedback!',
-    alertStyle
-    // store will append active: true, id, and timestamp
+  title: 'Components/Notifications/Notification',
+  component: EpNotification,
+  decorators: [centered],
+  argTypes: {
+    id: { table: { disable: true } },
+    message: {
+      name: 'Message',
+      control: {
+        type: 'text'
+      }
+    },
+    alertStyle: {
+      name: 'Style',
+      options: [
+        'info',
+        'success',
+        'warning',
+        'error'
+      ],
+      control: {
+        type: 'radio',
+        labels: {
+        info: 'Info',
+        success: 'Success',
+        warning: 'Warning',
+        error: 'Error'
+      },
+      }
+    },
+    timestamp: {
+      name: 'Timestamp',
+      control: {
+        type: 'number'
+      }
+    },
   }
-  store.dispatch('addNotification', notification)
 }
 
-const Template = args => ({
+export const Notification = args => ({
   components: {
-    EpicenterLogo,
-    EpActionBar,
-    EpButton,
-    EpContainer,
-    EpFooter,
-    EpFeedbackCard,
-    EpHeader,
-    EpNotifications,
-    EpTempNotification
+    EpNotification
   },
   setup() {
-    return {
-      args,
-      buildNotification,
-      commonActionBarArgs,
-      store
-    }
+    return { args }
   },
-  template: `
-    <ep-temp-notification />
-    <ep-feedback-card @submit="buildNotification('success')" />
-  `
+  template: '<ep-notification v-bind="args" />'
 })
 
-export const Notifications = Template.bind({})
+Notification.args = {
+  id: '1',
+  message: 'The future is bright!',
+  alertStyle: 'success',
+  timestamp: 16729161111113
+}

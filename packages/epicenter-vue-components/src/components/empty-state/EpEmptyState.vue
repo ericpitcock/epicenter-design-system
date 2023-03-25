@@ -9,7 +9,7 @@
       >
     </div>
     <div class="ep-empty-state__body">
-      <h2 class="font-size--large">
+      <h2 class="font-size--body">
         {{ message }}
       </h2>
       <p
@@ -49,13 +49,13 @@
         default: ''
       }
     },
-  computed: {
-    classes() {
-      return {
-        'ep-empty-state--column': this.direction === 'column',
-        'ep-empty-state--row': this.direction === 'row'
+    computed: {
+      classes() {
+        return {
+          'ep-empty-state--column': this.direction === 'column',
+          'ep-empty-state--row': this.direction === 'row'
+        }
       }
     }
   }
-}
 </script>

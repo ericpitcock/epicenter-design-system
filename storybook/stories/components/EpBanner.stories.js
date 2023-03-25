@@ -9,7 +9,12 @@ export default {
   argTypes: {
     bannerStyle: {
       name: 'Style',
-      options: ['info', 'success', 'warning', 'error'],
+      options: [
+        'info',
+        'success',
+        'warning',
+        'error'
+      ],
       control: {
         type: 'radio',
         labels: {
