@@ -4,7 +4,6 @@
     :type="type"
     :class="classes"
     :title="title"
-    v-bind="$attrs"
     @click="handleClick"
   >
     <span

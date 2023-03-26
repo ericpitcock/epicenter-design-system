@@ -1,0 +1,33 @@
+.ep-button-group {
+  display: flex;
+  .ep-button {
+    border-color: var(--border-color--lighter);
+    
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-right: -0.1rem;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      margin-left: -0.1rem;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+
+    &:not(.ep-button-group--active) {
+      color: var(--text-color--subtle);
+    }
+  }
+  
+  &--active {
+    background-color: var(--color-primary);
+    &:hover {
+      background-color: var(--color-primary);
+    }
+  }
+}

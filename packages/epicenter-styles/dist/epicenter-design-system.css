@@ -989,6 +989,35 @@ small {
   padding: 0.8rem;
 }
 
+.ep-button-group {
+  display: flex;
+}
+.ep-button-group .ep-button {
+  border-color: var(--border-color--lighter);
+}
+.ep-button-group .ep-button:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: -0.1rem;
+}
+.ep-button-group .ep-button:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -0.1rem;
+}
+.ep-button-group .ep-button:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.ep-button-group .ep-button:not(.ep-button-group--active) {
+  color: var(--text-color--subtle);
+}
+.ep-button-group--active {
+  background-color: var(--color-primary);
+}
+.ep-button-group--active:hover {
+  background-color: var(--color-primary);
+}
+
 /**
  * @license Highcharts
  *

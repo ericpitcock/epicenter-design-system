@@ -102,10 +102,10 @@
                 <p>{{ font.family }}</p>
                 <p class="capitalize">{{ font.category }}</p>
                 <p>{{ fontInfo(font) }}</p>
-                <p
+                <!-- <p
                   v-if="isTopPick(font.family)"
                   style="color: red;"
-                >Pick</p>
+                >Pick</p> -->
               </div>
               <div class="font__samples">
                 <font-container
@@ -126,6 +126,7 @@
                   :columns="tableColumns"
                   :data="tableData"
                   bordered
+                  striped
                   :style="{ fontFamily: font.family }"
                 />
               </div>
@@ -649,6 +650,10 @@
         gap: 0.5rem;
         padding-top: 0.5rem;
         color: var(--text-color--subtle);
+
+        p:first-child {
+          margin-bottom: 1rem;
+        }
       }
 
       &__samples {

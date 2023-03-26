@@ -9,8 +9,16 @@
       outlined
     />
     <ep-dropdown
-      :button="{ outlined: true }"
-      :container-props="{ contentPadding: '1rem 0' }"
+      :button="{
+        label: 'Dropdown',
+        outlined: true
+      }"
+      :container-props="{
+        contentPadding: '1rem 0',
+        backgroundColor: 'var(--background-4)',
+        borderColor: 'var(--border-color--lighter)',
+        borderRadius: 'var(--border-radius)',
+      }"
       :menu-items="[
         { label: 'Item 1' },
         { label: 'Item 2' },
@@ -45,6 +53,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem;
   }
 </style>
