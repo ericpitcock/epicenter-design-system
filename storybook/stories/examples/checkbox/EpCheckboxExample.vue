@@ -36,10 +36,6 @@
               class="ep-range"
             >
           </div>
-          <!-- <input
-            v-model="bgColor"
-            type="color"
-          > -->
         </template>
         <template #right>
           <ep-theme-toggle />
@@ -49,14 +45,15 @@
     <template #default>
       <div class="container">
         <div class="filters">
-          <p class="text--subtle">{{ filteredFonts.length }} Fonts</p>
+          <p class="text--subtle">
+            {{ filteredFonts.length }} fonts
+          </p>
           <h3>Currated</h3>
           <ep-checkbox
-            v-for="(checkbox, index) in currated"
+            v-for="checkbox in currated"
             :key="checkbox.label"
             v-bind="checkbox"
             v-model="checkbox.checked"
-            @checkchange="checkChange(index, 'currated')"
           />
           <template
             v-for="(filterSet, category) in filters"
@@ -207,16 +204,10 @@
             }
           ],
         },
-        // filters: {
-        //   category: [],
-        //   // characterSets: [],
-        // },
         fonts: [],
         fontsLoaded: 0,
         fontSize: '32',
         ready: false,
-        // recommendedOnly: true,
-        // uiFontsFilter: false,
         topPicks: [
           'Archivo',
           'Archivo Narrow',
@@ -313,12 +304,6 @@
           'Archivo',
           'Archivo Narrow',
         ],
-        //   'serif': [],
-        //   'display': [],
-        //   'handwriting': [],
-        //   'monospace': []
-        // },
-        // selectedStyles: [],
         typeSample: 'The quick brown fox jumps over the lazy dog',
         defaultTypeSample: 'The quick brown fox jumps over the lazy dog',
       }
@@ -375,121 +360,13 @@
           }
         })
 
-
-        // if (this.filters.category.length > 0) {
-        //   filtered = filtered.filter(font => this.filters.category.includes(font.category))
-        // }
-        // if (this.recommendedOnly) {
-        //   filtered = filtered.filter(font => this.flattenedRecommendedFonts.includes(font.family))
-        // }
-        // if (this.uiFontsFilter) {
-        //   filtered = filtered.filter(font => this.flattenedUiFonts.includes(font.family))
-        // }
-
         return filtered
       },
     },
-    watch: {
-      // filteredFonts() {
-      //   // existing categories in the filtered list
-      //   const existingCategories = this.filteredFonts.map(font => font.category)
-      //   // for each available category
-      //   this.filters.category.forEach(checkbox => {
-      //     const category = checkbox.value
-      //     // if the category exists in the filtered list, enable the checkbox
-      //     if (existingCategories.includes(category)) {
-      //       checkbox.disabled = false
-      //       // if it's in selectedStyles, check it
-      //       if (this.getCurrentlyCheckedCategories.includes(category)) {
-      //         checkbox.checked = true
-      //       }
-      //       // checkbox.checked = true
-      //       // if the category doesn't exist in the filtered list, but not in currently checked, disable the checkbox
-      //     } else {
-      //       checkbox.disabled = true
-      //       // checkbox.checked = false
-      //     }
-      //   })
-
-      // if there are no fonts in the filtered list, disable all the checkboxes
-      // if (this.filteredFonts.length === 0) {
-      //   this.checkboxes.category.forEach(checkbox => {
-      //     checkbox.disabled = true
-      //     checkbox.checked = false
-      //   })
-      // }
-      // },
-      // recommendedOnly: {
-      //   handler() {
-      //     // when true, disable and uncheck all the categories that don't have a recommended font
-      //     if (this.recommendedOnly) {
-      //       this.checkboxes.category.forEach(checkbox => {
-      //         const category = checkbox.value
-      //         // if there are no recommended fonts for this category, disable it
-      //         if (this.recommendedFonts[category].length === 0) {
-      //           checkbox.disabled = true
-      //           checkbox.checked = false
-      //         } else {
-      //           checkbox.disabled = false
-      //         }
-      //       })
-      //     } else {
-      //       // when false, enable all the categories
-      //       this.checkboxes.category.forEach(checkbox => {
-      //         checkbox.disabled = false
-      //         // checkbox.checked = true
-      //       })
-      //     }
-      //   },
-      //   immediate: true,
-      // },
-      // uiFontsFilter: {
-      //   handler() {
-      //     // when true, disable and uncheck all the categories that don't have a recommended font
-      //     if (this.uiFontsFilter) {
-      //       this.checkboxes.category.forEach(checkbox => {
-      //         const category = checkbox.value
-      //         // if there are no recommended fonts for this category, disable it
-      //         if (this.uiFonts[category].length === 0) {
-      //           checkbox.disabled = true
-      //           checkbox.checked = false
-      //         } else {
-      //           checkbox.disabled = false
-      //         }
-      //       })
-      //     } else {
-      //       // when false, enable all the categories
-      //       this.checkboxes.category.forEach(checkbox => {
-      //         checkbox.disabled = false
-      //         // checkbox.checked = true
-      //       })
-      //     }
-      //   },
-      //   immediate: true,
-      // },
-    },
     mounted() {
       this.getFonts()
-      // add all checked values to selectedStyles
-      // this.checkboxes.category.forEach(checkbox => {
-      //   if (checkbox.checked) {
-      //     this.filters.category.push(checkbox.value)
-      //   }
-      // })
     },
     methods: {
-      checkChange(index, category) {
-        // toggle the clicked checkbox
-        // this.filters[category][index].checked = !this.filters[category][index].checked
-
-        // add to filters if checked
-        // if (this.checkboxes[category][index].checked) {
-        //   this.filters.category.push(this.checkboxes[category][index].value)
-        // } else {
-        //   // remove from filters if unchecked
-        //   this.filters.category = this.filters.category.filter(filter => filter !== this.checkboxes[category][index].value)
-        // }
-      },
       fontInfo(font) {
         let label = font.variants.length > 1 ? 'weights' : 'weight'
         // if it doesn't have italics

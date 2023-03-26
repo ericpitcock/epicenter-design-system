@@ -166,6 +166,7 @@
     &__sample {
       flex: 1 1 auto;
       align-self: stretch;
+      line-height: 1.2;
 
       // padding: 60px 30px;
       // margin-left: 30px;
