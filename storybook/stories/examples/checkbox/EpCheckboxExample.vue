@@ -47,18 +47,11 @@
           <p class="text--subtle">
             {{ filteredFonts.length }} fonts
           </p>
-          <!-- <h3>Currated</h3>
-          <ep-checkbox
-            v-for="checkbox in currated"
-            :key="checkbox.label"
-            v-bind="checkbox"
-            v-model="checkbox.checked"
-          /> -->
           <template
             v-for="(filterSet, category) in filters"
             :key="category"
           >
-            <h3 class="capitalize">
+            <h3>
               {{ category }}
             </h3>
             <ep-checkbox
@@ -68,6 +61,13 @@
               v-model="checkbox.checked"
             />
           </template>
+          <h3>Sample</h3>
+          <ep-checkbox
+            v-for="checkbox in samples"
+            :key="checkbox.label"
+            v-bind="checkbox"
+            v-model="checkbox.checked"
+          />
         </div>
         <div class="font-list-container">
           <ep-empty-state
@@ -98,12 +98,6 @@
               :key="font.family"
               class="font"
             >
-              <font-container
-                :font="font"
-                :font-size="fontSize"
-                :sample="typeSample"
-                @font-loaded="onFontLoaded"
-              />
               <div class="font__meta">
                 <p>{{ font.family }}</p>
                 <p class="capitalize">{{ font.category }}</p>
@@ -112,6 +106,28 @@
                   v-if="isTopPick(font.family)"
                   style="color: red;"
                 >Pick</p>
+              </div>
+              <div class="font__samples">
+                <font-container
+                  v-if="sampleVisible('text')"
+                  :font="font"
+                  :font-size="fontSize"
+                  :sample="typeSample"
+                  @font-loaded="onFontLoaded"
+                />
+
+                <ui-elements
+                  v-if="sampleVisible('ui-elements')"
+                  :font-family="font.family"
+                />
+                <ep-table
+                  v-if="sampleVisible('table')"
+                  width="100%"
+                  :columns="tableColumns"
+                  :data="tableData"
+                  bordered
+                  :style="{ fontFamily: font.family }"
+                />
               </div>
             </div>
           </div>
@@ -128,8 +144,10 @@
   import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
   import EpHeader from '@/components/header/EpHeader.vue'
   import EpInput from '@/components/input/EpInput.vue'
+  import EpTable from '@/components/table/EpTable.vue'
   import EpThemeToggle from '@/components/theme-toggle/EpThemeToggle.vue'
   import FontContainer from './FontContainer.vue'
+  import UiElements from './UiElements.vue'
 
   export default {
     name: 'EpCheckboxExample',
@@ -139,8 +157,10 @@
       EpEmptyState,
       EpHeader,
       EpInput,
+      EpTable,
       EpThemeToggle,
       FontContainer,
+      UiElements
     },
     data() {
       return {
@@ -286,26 +306,105 @@
           'Trocchi',
           'Zilla Slab'
         ],
-        uiFonts: [
-          'Inter',
-          'Roboto',
-          'Open Sans',
-          'Source Sans Pro',
-          'Fira Sans',
-          'Lato',
-          'Nunito',
-          'M PLUS 1p',
-          'M PLUS Rounded 1c',
-          'IBM Plex Sans',
-          'Barlow',
-          'DM Sans',
-          'Work Sans',
-          'Karla',
-          'Quicksand',
-          'Exo 2',
-          'Asap',
-          'Archivo',
-          'Archivo Narrow',
+        uiFonts: {
+          'sans-serif': [
+            'Inter',
+            'Roboto',
+            'Open Sans',
+            'Source Sans Pro',
+            'Fira Sans',
+            'Lato',
+            'Nunito',
+            'M PLUS 1p',
+            'M PLUS Rounded 1c',
+            'IBM Plex Sans',
+            'Barlow',
+            'DM Sans',
+            'Work Sans',
+            'Karla',
+            'Quicksand',
+            'Exo 2',
+            'Asap',
+            'Archivo',
+            'Archivo Narrow',
+          ],
+          'monospace': [
+            'IBM Plex Mono',
+            'Fira Code',
+            // google fonts monospace
+            'Anonymous Pro',
+            'Cousine',
+            'Inconsolata',
+            'Liberation Mono',
+            'Monoid',
+            'Roboto Mono',
+            'Source Code Pro',
+            'Space Mono',
+            'Ubuntu Mono',
+            'VT323',
+            'Overpass Mono',
+            'Cutive Mono',
+            'Fira Mono',
+            'Inknut Antiqua',
+          ]
+        },
+        samples: [
+          {
+            id: faker.datatype.uuid(),
+            name: 'samples',
+            value: 'text',
+            checked: true,
+            label: 'Text',
+            disabled: false
+          },
+          {
+            id: faker.datatype.uuid(),
+            name: 'samples',
+            value: 'ui-elements',
+            checked: true,
+            label: 'UI Elements',
+            disabled: false
+          },
+          {
+            id: faker.datatype.uuid(),
+            name: 'samples',
+            value: 'table',
+            checked: true,
+            label: 'Table',
+            disabled: false
+          },
+        ],
+        tableColumns: [
+          {
+            id: faker.datatype.uuid(),
+            header: 'Name',
+            key: 'name',
+          },
+          {
+            id: faker.datatype.uuid(),
+            header: 'Category',
+            key: 'category',
+          },
+          {
+            id: faker.datatype.uuid(),
+            header: 'Variants',
+            key: 'variants',
+          },
+          {
+            id: faker.datatype.uuid(),
+            header: 'Subsets',
+            key: 'subsets',
+          },
+          {
+            id: faker.datatype.uuid(),
+            header: 'Version',
+            key: 'version',
+          },
+          {
+            id: faker.datatype.uuid(),
+            header: 'Last Modified',
+            key: 'LastModified',
+          },
         ],
         typeSample: 'The quick brown fox jumps over the lazy dog',
         defaultTypeSample: 'The quick brown fox jumps over the lazy dog',
@@ -332,7 +431,10 @@
         filtered = filtered.filter(font => font.variants.length > 1)
 
         // include only good fonts
-        filtered = filtered.filter(font => this.topPicks.includes(font.family))
+        // flatten uiFonts
+        const uiFonts = Object.values(this.uiFonts).flat()
+
+        filtered = filtered.filter(font => uiFonts.includes(font.family))
 
         // filter out fonts in filters.category with checked false
         filtered = filtered.filter(font => {
@@ -349,6 +451,20 @@
         // })
 
         return filtered
+      },
+      tableData() {
+        const mappedData = this.fonts.map(font => {
+          return {
+            name: font.family,
+            category: font.category,
+            variants: font.variants.length,
+            subsets: font.subsets.length,
+            version: font.version,
+            lastModified: font.lastModified,
+          }
+        })
+        // return 10 items
+        return mappedData.slice(0, 5)
       },
     },
     watch: {
@@ -386,6 +502,10 @@
         if (this.fontsLoaded > 10) {
           this.ready = true
         }
+      },
+      sampleVisible(value) {
+        const sample = this.samples.find(filter => filter.value === value)
+        return sample.checked
       },
     },
   }
@@ -512,7 +632,6 @@
     .font {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding: 3rem 1rem;
 
       &:first-child {
@@ -528,8 +647,21 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        text-align: right;
+        padding-top: 0.5rem;
         color: var(--text-color--subtle);
+      }
+
+      &__samples {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3rem;
+        padding: 0 1rem;
+        // set all chidlren to flex 1 1 auto
+        // & > *:not(:last-child) {
+        //   flex: 1;
+        // }
       }
     }
   }

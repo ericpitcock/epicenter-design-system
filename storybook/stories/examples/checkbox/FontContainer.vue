@@ -3,24 +3,24 @@
     :id="font.family.toLowerCase().split(' ').join('-')"
     class="font-container"
   >
-    <!-- <ep-loading v-show="loading" /> -->
     <div
       v-if="error"
       class="error"
     >
       <p>There was an error loading this font</p>
     </div>
-    <div
+    <!-- <div
       v-if="!loading"
       class="font"
+    > -->
+    <div
+      v-if="!loading"
+      class="font__sample"
+      :style="{ fontFamily: font.family, fontSize: `${fontSize}px` }"
     >
-      <div
-        class="font__sample"
-        :style="{ fontFamily: font.family, fontSize: `${fontSize}px` }"
-      >
-        {{ sample }}
-      </div>
+      {{ sample }}
     </div>
+    <!-- </div> -->
   </div>
 </template>
 

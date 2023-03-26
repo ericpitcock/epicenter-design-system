@@ -1,10 +1,10 @@
-import { padded } from '../../helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpCheckbox from '@/components/checkbox/EpCheckbox'
 
 export default {
   title: 'Components/Checkbox',
   component: EpCheckbox,
-  decorators: [padded],
+  decorators: [centered],
   argTypes: {
     id: {
       table: { disable: true }
@@ -16,24 +16,31 @@ export default {
       table: { disable: true }
     },
     checked: {
+      name: 'Checked',
       control: {
         type: 'boolean'
       }
     },
     disabled: {
+      name: 'Disabled',
       control: {
         type: 'boolean'
       }
     },
     indeterminate: {
+      name: 'Indeterminate',
       control: {
         type: 'boolean'
       }
     },
     label: {
+      name: 'Label',
       control: {
         type: 'text'
       }
+    },
+    modelValue: {
+      table: { disable: true }
     },
     required: {
       table: { disable: true }
