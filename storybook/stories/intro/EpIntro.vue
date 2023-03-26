@@ -2,12 +2,7 @@
   <div class="intro">
     <div class="hero">
       <div class="logo-container">
-        <epicenter-logo
-          face-color="#fff16c"
-          highlight-color="white"
-          shadow-color="var(--gray-500)"
-          stroke-color="var(--gray-500)"
-        />
+        <epicenter-logo />
       </div>
       <div class="copy-block">
         <h1 class="font-size--jumbo">

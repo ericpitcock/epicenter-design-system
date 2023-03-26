@@ -31,19 +31,19 @@
       },
       strokeColor: {
         type: String,
-        default: 'var(--logo-white)'
+        default: 'var(--logo-stroke)'
       },
       faceColor: {
         type: String,
-        default: 'var(--logo-gold)'
+        default: 'var(--logo-face)'
       },
       highlightColor: {
         type: String,
-        default: 'var(--logo-yellow)'
+        default: 'var(--logo-hightlight)'
       },
       shadowColor: {
         type: String,
-        default: 'var(--logo-gray)'
+        default: 'var(--logo-shadow)'
       }
     }
   }
@@ -75,4 +75,5 @@
 
   .face {
     fill: v-bind(faceColor);
-}</style>
+  }
+</style>
