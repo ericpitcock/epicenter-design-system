@@ -4,7 +4,6 @@
     height="100%"
     container-padding="0 3rem"
     overflow="auto"
-    :background-color="bgColor"
   >
     <template #header>
       <ep-header
@@ -141,7 +140,6 @@
     },
     data() {
       return {
-        bgColor: 'var(--background-2)',
         currated: [
           {
             id: faker.datatype.uuid(),
@@ -361,6 +359,18 @@
         })
 
         return filtered
+      },
+    },
+    watch: {
+      filteredFonts() {
+        // if any category is not in the filtered fonts, uncheck it
+        this.filters.category.forEach(filter => {
+          if (!this.filteredFonts.find(font => font.category === filter.value)) {
+            filter.disabled = true
+          } else {
+            filter.disabled = false
+          }
+        })
       },
     },
     mounted() {
