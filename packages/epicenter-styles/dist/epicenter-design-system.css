@@ -1008,7 +1008,7 @@ small {
 .ep-button-group .ep-button:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
-.ep-button-group .ep-button:not(.ep-button-group--active) {
+.ep-button-group .ep-button:not(.ep-button--disabled):not(.ep-button-group--active) {
   color: var(--text-color--subtle);
 }
 .ep-button-group--active {

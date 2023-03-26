@@ -19,7 +19,7 @@
       border-radius: 0;
     }
 
-    &:not(.ep-button-group--active) {
+    &:not(.ep-button--disabled):not(.ep-button-group--active) {
       color: var(--text-color--subtle);
     }
   }

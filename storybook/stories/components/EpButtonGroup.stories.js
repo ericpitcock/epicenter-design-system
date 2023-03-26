@@ -6,25 +6,31 @@ export default {
   component: EpButtonGroup,
   decorators: [centered],
   argTypes: {
-    items: {
-      control: {
-        type: 'array',
-      }
-    },
-    selected: {
-      control: {
-        type: 'number',
-      }
-    },
     disabled: {
       control: {
         type: 'boolean',
       }
     },
     size: {
-      options: ['small', 'medium', 'large'],
+      name: 'Size',
+      options: ['small', 'default', 'large'],
       control: {
-        type: 'select',
+        type: 'radio',
+        labels: {
+          small: 'Small',
+          default: 'Default',
+          large: 'Large'
+        }
+      }
+    },
+    items: {
+      table: {
+        disable: true
+      }
+    },
+    active: {
+      table: {
+        disable: true
       }
     },
   }
@@ -46,5 +52,5 @@ ButtonGroup.args = {
   ],
   selected: 0,
   disabled: false,
-  size: 'default',
+  size: 'large',
 }

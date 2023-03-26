@@ -4,7 +4,9 @@
       v-for="(item, index) in items"
       :key="item.label"
       v-bind="item"
-      :class="{ 'ep-button-group--active': index === activeButton }"
+      :size="size"
+      :disabled="disabled"
+      :class="{ 'ep-button-group--active': index === activeButton && !disabled }"
       @click="onClick(item, index)"
     />
   </div>
