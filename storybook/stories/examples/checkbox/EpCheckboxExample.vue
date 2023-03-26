@@ -50,31 +50,26 @@
       <div class="container">
         <div class="filters">
           <p class="text--subtle">{{ filteredFonts.length }} Fonts</p>
-          <h3>Recommendations</h3>
+          <h3>Currated</h3>
           <ep-checkbox
-            id="recommended-only"
-            v-model="recommendedOnly"
-            :checked="recommendedOnly"
-            label="Top Picks"
-          />
-          <ep-checkbox
-            id="ui-fonts"
-            v-model="uiFontsFilter"
-            :checked="uiFontsFilter"
-            label="UI Fonts"
+            v-for="(checkbox, index) in currated"
+            :key="checkbox.label"
+            v-bind="checkbox"
+            v-model="checkbox.checked"
+            @checkchange="checkChange(index, 'currated')"
           />
           <template
-            v-for="(filterSet, category) in checkboxes"
+            v-for="(filterSet, category) in filters"
             :key="category"
           >
             <h3 class="capitalize">
               {{ category }}
             </h3>
             <ep-checkbox
-              v-for="(checkbox, index) in filterSet"
+              v-for="checkbox in filterSet"
               :key="checkbox.label"
               v-bind="checkbox"
-              @checkchange="checkChange(index, category)"
+              v-model="checkbox.checked"
             />
           </template>
         </div>
@@ -150,7 +145,25 @@
     data() {
       return {
         bgColor: 'var(--background-2)',
-        checkboxes: {
+        currated: [
+          {
+            id: faker.datatype.uuid(),
+            name: 'currated',
+            value: 'topPicks',
+            checked: false,
+            label: 'Top Picks',
+            disabled: false
+          },
+          {
+            id: faker.datatype.uuid(),
+            name: 'currated',
+            value: 'uiFonts',
+            checked: false,
+            label: 'UI Fonts',
+            disabled: false
+          }
+        ],
+        filters: {
           category: [
             {
               id: faker.datatype.uuid(),
@@ -194,127 +207,118 @@
             }
           ],
         },
-        filters: {
-          category: [],
-          // characterSets: [],
-        },
+        // filters: {
+        //   category: [],
+        //   // characterSets: [],
+        // },
         fonts: [],
         fontsLoaded: 0,
         fontSize: '32',
         ready: false,
-        recommendedOnly: true,
-        uiFontsFilter: false,
-        recommendedFonts: {
-          // sans-serif 39
-          'sans-serif': [
-            'Archivo',
-            'Archivo Narrow',
-            'Asap',
-            'Asap Condensed',
-            'Bai Jamjuree',
-            'Barlow',
-            'Barlow Condensed',
-            'Barlow Semi Condensed',
-            'Be Vietnam',
-            'Chivo',
-            'DM Sans',
-            'Exo 2',
-            'Fira Sans',
-            'Fira Sans Condensed',
-            'Fira Sans Extra Condensed',
-            'Gudea',
-            'IBM Plex Sans',
-            'IBM Plex Sans Condensed',
-            'Inter',
-            'Inter Tight',
-            'Karla',
-            'Lato',
-            'Lekton',
-            'Libre Franklin',
-            'M PLUS 1p',
-            'M PLUS Rounded 1c',
-            'Mada',
-            'News Cycle',
-            'Nunito',
-            'Nunito Sans',
-            'Open Sans',
-            'Open Sans Condensed',
-            'Oswald',
-            'Pragati Narrow',
-            'Public Sans',
-            'Quattrocento Sans',
-            'Quicksand',
-            'Roboto',
-            'Roboto Condensed',
-            'Sarabun',
-            'Source Sans Pro',
-            'Work Sans',
-            'Yantramanav',
-          ],
+        // recommendedOnly: true,
+        // uiFontsFilter: false,
+        topPicks: [
+          'Archivo',
+          'Archivo Narrow',
+          'Asap',
+          'Asap Condensed',
+          'Bai Jamjuree',
+          'Barlow',
+          'Barlow Condensed',
+          'Barlow Semi Condensed',
+          'Be Vietnam',
+          'Chivo',
+          'DM Sans',
+          'Exo 2',
+          'Fira Sans',
+          'Fira Sans Condensed',
+          'Fira Sans Extra Condensed',
+          'Gudea',
+          'IBM Plex Sans',
+          'IBM Plex Sans Condensed',
+          'Inter',
+          'Inter Tight',
+          'Karla',
+          'Lato',
+          'Lekton',
+          'Libre Franklin',
+          'M PLUS 1p',
+          'M PLUS Rounded 1c',
+          'Mada',
+          'News Cycle',
+          'Nunito',
+          'Nunito Sans',
+          'Open Sans',
+          'Open Sans Condensed',
+          'Oswald',
+          'Pragati Narrow',
+          'Public Sans',
+          'Quattrocento Sans',
+          'Quicksand',
+          'Roboto',
+          'Roboto Condensed',
+          'Sarabun',
+          'Source Sans Pro',
+          'Work Sans',
+          'Yantramanav',
           // serif 28
-          'serif': [
-            'Abhaya Libre',
-            'Adamina',
-            'Aleo',
-            'Alice',
-            'Alike',
-            'Alike Angular',
-            'Amethysta',
-            'Amiri',
-            'Andada',
-            'Arbutus Slab',
-            'Asar',
-            'Brawler',
-            'Buenard',
-            'Cambo',
-            'Copse',
-            'Crimson Pro',
-            'Crimson Text',
-            'Domine',
-            'Donegal One',
-            'Esteban',
-            'Fjord One',
-            'Gelasio',
-            'IBM Plex Serif',
-            'Petrona',
-            'Solway',
-            'Source Serif Pro',
-            'Spectral',
-            'Trocchi',
-            'Zilla Slab'
-          ],
-          'display': [],
-          'handwriting': [],
-          'monospace': []
-        },
-        uiFonts: {
-          'sans-serif': [
-            'Inter',
-            'Roboto',
-            'Open Sans',
-            'Source Sans Pro',
-            'Fira Sans',
-            'Lato',
-            'Nunito',
-            'M PLUS 1p',
-            'M PLUS Rounded 1c',
-            'IBM Plex Sans',
-            'Barlow',
-            'DM Sans',
-            'Work Sans',
-            'Karla',
-            'Quicksand',
-            'Exo 2',
-            'Asap',
-            'Archivo',
-            'Archivo Narrow',
-          ],
-          'serif': [],
-          'display': [],
-          'handwriting': [],
-          'monospace': []
-        },
-        selectedStyles: [],
+          'Abhaya Libre',
+          'Adamina',
+          'Aleo',
+          'Alice',
+          'Alike',
+          'Alike Angular',
+          'Amethysta',
+          'Amiri',
+          'Andada',
+          'Arbutus Slab',
+          'Asar',
+          'Brawler',
+          'Buenard',
+          'Cambo',
+          'Copse',
+          'Crimson Pro',
+          'Crimson Text',
+          'Domine',
+          'Donegal One',
+          'Esteban',
+          'Fjord One',
+          'Gelasio',
+          'IBM Plex Serif',
+          'Petrona',
+          'Solway',
+          'Source Serif Pro',
+          'Spectral',
+          'Trocchi',
+          'Zilla Slab'
+        ],
+        uiFonts: [
+          'Inter',
+          'Roboto',
+          'Open Sans',
+          'Source Sans Pro',
+          'Fira Sans',
+          'Lato',
+          'Nunito',
+          'M PLUS 1p',
+          'M PLUS Rounded 1c',
+          'IBM Plex Sans',
+          'Barlow',
+          'DM Sans',
+          'Work Sans',
+          'Karla',
+          'Quicksand',
+          'Exo 2',
+          'Asap',
+          'Archivo',
+          'Archivo Narrow',
+        ],
+        //   'serif': [],
+        //   'display': [],
+        //   'handwriting': [],
+        //   'monospace': []
+        // },
+        // selectedStyles: [],
         typeSample: 'The quick brown fox jumps over the lazy dog',
         defaultTypeSample: 'The quick brown fox jumps over the lazy dog',
       }
@@ -335,6 +339,9 @@
       // getMonospaceFonts() {
       //   return this.fonts.filter(font => font.category === 'monospace')
       // },
+      getCurrentlyCheckedCategories() {
+        return this.checkboxes.category.filter(checkbox => checkbox.checked)
+      },
       flattenedRecommendedFonts() {
         return Object.values(this.recommendedFonts).flat()
       },
@@ -352,53 +359,66 @@
         }
       },
       filteredFonts() {
-        // if there are no filters, return nothing
-        if (this.filters.category.length === 0) {
-          return []
-        }
-
         let filtered = this.fonts
-        if (this.filters.category.length > 0) {
-          filtered = filtered.filter(font => this.filters.category.includes(font.category))
-        }
-        if (this.recommendedOnly) {
-          filtered = filtered.filter(font => this.flattenedRecommendedFonts.includes(font.family))
-        }
-        if (this.uiFontsFilter) {
-          filtered = filtered.filter(font => this.flattenedUiFonts.includes(font.family))
-        }
+
+        // filter out fonts in filters.category with checked false
+        filtered = filtered.filter(font => {
+          const category = font.category
+          const checked = this.filters.category.find(filter => filter.value === category).checked
+          return checked
+        })
+
+        // find items in currated array with checked true
+        this.currated.forEach(currated => {
+          if (currated.checked) {
+            filtered = filtered.filter(font => this[currated.value].includes(font.family))
+          }
+        })
+
+
+        // if (this.filters.category.length > 0) {
+        //   filtered = filtered.filter(font => this.filters.category.includes(font.category))
+        // }
+        // if (this.recommendedOnly) {
+        //   filtered = filtered.filter(font => this.flattenedRecommendedFonts.includes(font.family))
+        // }
+        // if (this.uiFontsFilter) {
+        //   filtered = filtered.filter(font => this.flattenedUiFonts.includes(font.family))
+        // }
 
         return filtered
       },
     },
     watch: {
-      filteredFonts() {
-        // find all the fonts that are in the filtered list and get their category
-        // then disable all the checkboxes that don't have any fonts in the filtered list
-        const currentCategories = this.filteredFonts.map(font => font.category)
-        this.checkboxes.category.forEach(checkbox => {
-          const category = checkbox.value
-          if (currentCategories.includes(category)) {
-            checkbox.disabled = false
-            // if it's in selectedStyles, check it
-            if (this.filters.category.includes(category)) {
-              checkbox.checked = true
-            }
-            // checkbox.checked = true
-          } else {
-            checkbox.disabled = true
-            // checkbox.checked = false
-          }
-        })
+      // filteredFonts() {
+      //   // existing categories in the filtered list
+      //   const existingCategories = this.filteredFonts.map(font => font.category)
+      //   // for each available category
+      //   this.filters.category.forEach(checkbox => {
+      //     const category = checkbox.value
+      //     // if the category exists in the filtered list, enable the checkbox
+      //     if (existingCategories.includes(category)) {
+      //       checkbox.disabled = false
+      //       // if it's in selectedStyles, check it
+      //       if (this.getCurrentlyCheckedCategories.includes(category)) {
+      //         checkbox.checked = true
+      //       }
+      //       // checkbox.checked = true
+      //       // if the category doesn't exist in the filtered list, but not in currently checked, disable the checkbox
+      //     } else {
+      //       checkbox.disabled = true
+      //       // checkbox.checked = false
+      //     }
+      //   })
 
-        // if there are no fonts in the filtered list, disable all the checkboxes
-        // if (this.filteredFonts.length === 0) {
-        //   this.checkboxes.category.forEach(checkbox => {
-        //     checkbox.disabled = true
-        //     checkbox.checked = false
-        //   })
-        // }
-      },
+      // if there are no fonts in the filtered list, disable all the checkboxes
+      // if (this.filteredFonts.length === 0) {
+      //   this.checkboxes.category.forEach(checkbox => {
+      //     checkbox.disabled = true
+      //     checkbox.checked = false
+      //   })
+      // }
+      // },
       // recommendedOnly: {
       //   handler() {
       //     // when true, disable and uncheck all the categories that don't have a recommended font
@@ -451,24 +471,24 @@
     mounted() {
       this.getFonts()
       // add all checked values to selectedStyles
-      this.checkboxes.category.forEach(checkbox => {
-        if (checkbox.checked) {
-          this.filters.category.push(checkbox.value)
-        }
-      })
+      // this.checkboxes.category.forEach(checkbox => {
+      //   if (checkbox.checked) {
+      //     this.filters.category.push(checkbox.value)
+      //   }
+      // })
     },
     methods: {
       checkChange(index, category) {
         // toggle the clicked checkbox
-        this.checkboxes[category][index].checked = !this.checkboxes[category][index].checked
+        // this.filters[category][index].checked = !this.filters[category][index].checked
 
         // add to filters if checked
-        if (this.checkboxes[category][index].checked) {
-          this.filters.category.push(this.checkboxes[category][index].value)
-        } else {
-          // remove from filters if unchecked
-          this.filters.category = this.filters.category.filter(filter => filter !== this.checkboxes[category][index].value)
-        }
+        // if (this.checkboxes[category][index].checked) {
+        //   this.filters.category.push(this.checkboxes[category][index].value)
+        // } else {
+        //   // remove from filters if unchecked
+        //   this.filters.category = this.filters.category.filter(filter => filter !== this.checkboxes[category][index].value)
+        // }
       },
       fontInfo(font) {
         let label = font.variants.length > 1 ? 'weights' : 'weight'
