@@ -1,8 +1,9 @@
 import { padded } from '../../helpers/decorators'
-import EpCheckboxFilter from '@/components/filters/EpCheckboxFilter'
+import EpCheckbox from '@/components/checkbox/EpCheckbox'
 import EpContainer from '@/components/container/EpContainer'
 import EpDropdown from '@/components/dropdown/EpDropdown'
 import EpHeader from '@/components/header/EpHeader'
+import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
 import EpFooter from '@/components/footer/EpFooter'
 import EpTable from '@/components/table/EpTable'
 import { columns, fakeArray } from '@/components/table/data'
@@ -146,16 +147,16 @@ export default {
 const filters = columns.map(column => {
   return {
     id: column.key,
-    name: '',
+    name: 'columns',
     value: column.key,
-    // checked: true,
-    indeterminate: false,
-    disabled: false,
+    checked: true,
+    // indeterminate: false,
     label: column.header,
-    required: false,
-    readonly: false,
-    tabindex: 1,
-    commmand: null
+    disabled: false,
+    // required: false,
+    // readonly: false,
+    // tabindex: 1,
+    // commmand: null
   }
 })
 
@@ -168,9 +169,10 @@ const filters = columns.map(column => {
 const Template = args => ({
   components: {
     EpContainer,
-    EpCheckboxFilter,
+    EpCheckbox,
     EpDropdown,
     EpHeader,
+    EpFlexContainer,
     EpFooter,
     EpTable
   },
@@ -185,8 +187,15 @@ const Template = args => ({
     }
   },
   methods: {
-    handleFilter(checked, unchecked) {
-      this.hiddenColumns = unchecked
+    handleFilter(event) {
+      // if unchecked, add to hiddenColumns
+      if (event.target.checked === false) {
+        this.hiddenColumns.push(event.target.id)
+      } else {
+        // if checked, remove from hiddenColumns
+        this.hiddenColumns = this.hiddenColumns.filter(column => column !== event.target.id)
+      }
+      console.log(event)
     }
   },
   template: `
@@ -216,10 +225,17 @@ const Template = args => ({
                 borderRadius="var(--border-radius)"
                 container-padding="2rem"
               >
-                <ep-checkbox-filter
-                  :items="filters"
-                  @selection-change="handleFilter"
-                />
+                <ep-flex-container
+                  flex-flow="column nowrap"
+                  gap="1rem"
+                >
+                  <ep-checkbox
+                    v-for="filter in filters"
+                    :key="filter.id"
+                    v-bind="filter"
+                    @checkchange="handleFilter"
+                  />
+                </ep-flex-container>
               </ep-container>
             </template>
           </ep-dropdown>

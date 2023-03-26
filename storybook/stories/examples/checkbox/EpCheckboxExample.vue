@@ -14,7 +14,7 @@
         background-color="transparent"
       >
         <template #left>
-          <h1>Font Finder</h1>
+          <h1>UI Font Finder</h1>
         </template>
         <template #center>
           <ep-input
@@ -47,13 +47,13 @@
           <p class="text--subtle">
             {{ filteredFonts.length }} fonts
           </p>
-          <h3>Currated</h3>
+          <!-- <h3>Currated</h3>
           <ep-checkbox
             v-for="checkbox in currated"
             :key="checkbox.label"
             v-bind="checkbox"
             v-model="checkbox.checked"
-          />
+          /> -->
           <template
             v-for="(filterSet, category) in filters"
             :key="category"
@@ -108,6 +108,10 @@
                 <p>{{ font.family }}</p>
                 <p class="capitalize">{{ font.category }}</p>
                 <p>{{ fontInfo(font) }}</p>
+                <p
+                  v-if="isTopPick(font.family)"
+                  style="color: red;"
+                >Pick</p>
               </div>
             </div>
           </div>
@@ -168,30 +172,30 @@
               label: 'Sans Serif',
               disabled: false
             },
-            {
-              id: faker.datatype.uuid(),
-              name: 'category',
-              value: 'serif',
-              checked: true,
-              label: 'Serif',
-              disabled: false
-            },
-            {
-              id: faker.datatype.uuid(),
-              name: 'category',
-              value: 'display',
-              checked: true,
-              label: 'Display',
-              disabled: false
-            },
-            {
-              id: faker.datatype.uuid(),
-              name: 'category',
-              value: 'handwriting',
-              checked: true,
-              label: 'Handwritng',
-              disabled: false
-            },
+            // {
+            //   id: faker.datatype.uuid(),
+            //   name: 'category',
+            //   value: 'serif',
+            //   checked: true,
+            //   label: 'Serif',
+            //   disabled: false
+            // },
+            // {
+            //   id: faker.datatype.uuid(),
+            //   name: 'category',
+            //   value: 'display',
+            //   checked: true,
+            //   label: 'Display',
+            //   disabled: false
+            // },
+            // {
+            //   id: faker.datatype.uuid(),
+            //   name: 'category',
+            //   value: 'handwriting',
+            //   checked: true,
+            //   label: 'Handwritng',
+            //   disabled: false
+            // },
             {
               id: faker.datatype.uuid(),
               name: 'category',
@@ -205,13 +209,13 @@
         fonts: [],
         fontsLoaded: 0,
         fontSize: '32',
+        oneWeightOnly: false,
         ready: false,
         topPicks: [
           'Archivo',
           'Archivo Narrow',
           'Asap',
           'Asap Condensed',
-          'Bai Jamjuree',
           'Barlow',
           'Barlow Condensed',
           'Barlow Semi Condensed',
@@ -274,6 +278,7 @@
           'Fjord One',
           'Gelasio',
           'IBM Plex Serif',
+          'Ovo',
           'Petrona',
           'Solway',
           'Source Serif Pro',
@@ -307,30 +312,6 @@
       }
     },
     computed: {
-      // getSansSerifFonts() {
-      //   return this.fonts.filter(font => font.category === 'sans-serif')
-      // },
-      // getSerifFonts() {
-      //   return this.fonts.filter(font => font.category === 'serif')
-      // },
-      // getDisplayFonts() {
-      //   return this.fonts.filter(font => font.category === 'display')
-      // },
-      // getHandwritingFonts() {
-      //   return this.fonts.filter(font => font.category === 'handwriting')
-      // },
-      // getMonospaceFonts() {
-      //   return this.fonts.filter(font => font.category === 'monospace')
-      // },
-      getCurrentlyCheckedCategories() {
-        return this.checkboxes.category.filter(checkbox => checkbox.checked)
-      },
-      flattenedRecommendedFonts() {
-        return Object.values(this.recommendedFonts).flat()
-      },
-      flattenedUiFonts() {
-        return Object.values(this.uiFonts).flat()
-      },
       emptyStateMessage() {
         switch (true) {
           case this.filteredFonts.length === 0:
@@ -344,6 +325,15 @@
       filteredFonts() {
         let filtered = this.fonts
 
+        // include only sans-serif and monospace
+        filtered = filtered.filter(font => font.category === 'sans-serif' || font.category === 'monospace')
+
+        // include only fonts with more than one weight
+        filtered = filtered.filter(font => font.variants.length > 1)
+
+        // include only good fonts
+        filtered = filtered.filter(font => this.topPicks.includes(font.family))
+
         // filter out fonts in filters.category with checked false
         filtered = filtered.filter(font => {
           const category = font.category
@@ -352,26 +342,19 @@
         })
 
         // find items in currated array with checked true
-        this.currated.forEach(currated => {
-          if (currated.checked) {
-            filtered = filtered.filter(font => this[currated.value].includes(font.family))
-          }
-        })
+        // this.currated.forEach(currated => {
+        //   if (currated.checked) {
+        //     filtered = filtered.filter(font => this[currated.value].includes(font.family))
+        //   }
+        // })
 
         return filtered
       },
     },
     watch: {
-      filteredFonts() {
-        // if any category is not in the filtered fonts, uncheck it
-        this.filters.category.forEach(filter => {
-          if (!this.filteredFonts.find(font => font.category === filter.value)) {
-            filter.disabled = true
-          } else {
-            filter.disabled = false
-          }
-        })
-      },
+      // filteredFonts() {
+
+      // },
     },
     mounted() {
       this.getFonts()
@@ -394,6 +377,9 @@
         const response = await fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC4LPtjlhXImnuIBnGbYCgwRLYoXDZ2i8c')
           .then(response => response.json())
           .then(data => this.fonts = data.items)
+      },
+      isTopPick(family) {
+        return this.topPicks.includes(family)
       },
       onFontLoaded() {
         this.fontsLoaded++

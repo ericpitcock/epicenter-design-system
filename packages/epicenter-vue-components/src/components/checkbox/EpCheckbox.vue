@@ -88,7 +88,7 @@
       onChange(command, event) {
         // console.log('onChange', event.target.checked)
         this.$emit('update:modelValue', event.target.checked)
-        this.$emit('checkchange', event.target.checked)
+        this.$emit('checkchange', event)
         if (command) {
           command(event.target.checked)
         }

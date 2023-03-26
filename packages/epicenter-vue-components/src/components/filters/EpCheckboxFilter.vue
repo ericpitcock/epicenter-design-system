@@ -10,8 +10,7 @@
       v-for="item in items"
       :key="item.value"
       v-bind="item"
-      :checked="checked.includes(item.id)"
-      @change="handleChange($event)"
+      v-model="item.checked"
     />
   </div>
 </template>
@@ -38,16 +37,28 @@
         default: 'vertical'
       }
     },
-    emits: ['selection-change'],
+    emits: ['filter-change'],
     data() {
       return {
-        checked: this.items.map(item => item.value)
+        // checked: this.items.map(item => item.value)
       }
     },
     computed: {
       classes() {
         return {
           'ep-checkbox-filter--horizontal': this.orientation === 'horizontal'
+        }
+      },
+      checked: {
+        get() {
+          return this.items
+            .map(item => item.value)
+            .filter(item => this.items.find(i => i.value === item).checked)
+        },
+        set(value) {
+          this.items.forEach(item => {
+            item.checked = value.includes(item.value)
+          })
         }
       },
       unchecked() {
@@ -64,7 +75,7 @@
         } else {
           this.checked = this.checked.filter(item => item !== value)
         }
-        this.$emit('selection-change', this.checked, this.unchecked)
+        this.$emit('filter-change', this.checked, this.unchecked)
       },
       handleSelectAll(event) {
         const { checked } = event.target
@@ -73,7 +84,7 @@
         } else {
           this.checked = []
         }
-        this.$emit('selection-change', this.checked, this.unchecked)
+        this.$emit('filter-change', this.checked, this.unchecked)
       }
     }
   }
