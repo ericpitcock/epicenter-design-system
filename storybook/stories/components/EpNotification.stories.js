@@ -1,3 +1,4 @@
+import faker from 'faker'
 import { centered } from '../../helpers/decorators'
 import EpNotification from '@/components/notification/EpNotification'
 import store from '../../store'
@@ -55,5 +56,5 @@ Notification.args = {
   id: '1',
   message: 'The future is bright!',
   alertStyle: 'success',
-  timestamp: 16729161111113
+  timestamp: faker.date.future(100).toISOString()
 }

@@ -51,8 +51,8 @@
         default: 'info' // info, success, warning, error
       },
       timestamp: {
-        type: Number,
-        default: Date.now()
+        type: String,
+        default: new Date().toISOString()
       }
     },
     emits: ['dismiss'],
@@ -75,8 +75,7 @@
       dismissNotification() {
         this.$emit('dismiss')
       },
-      relativeTime(ms) {
-        // in miliseconds
+      relativeTime(dateString) {
         var units = {
           year: 24 * 60 * 60 * 1000 * 365,
           month: 24 * 60 * 60 * 1000 * 365 / 12,
@@ -92,11 +91,14 @@
           var elapsed = d1 - d2
 
           // "Math.abs" accounts for both "past" & "future" scenarios
-          for (var u in units)
-            if (Math.abs(elapsed) > units[u] || u == 'second')
+          for (var u in units) {
+            if (Math.abs(elapsed) > units[u] || u === 'second') {
               return rtf.format(Math.round(elapsed / units[u]), u)
+            }
+          }
         }
-        const date = new Date(ms)
+
+        const date = new Date(Date.parse(dateString))
         return getRelativeTime(date)
       }
     }
