@@ -1,0 +1,38 @@
+.ep-input-styler__container {
+  position: relative;
+}
+
+.ep-input-styler__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  pointer-events: none;
+
+  &:has(.ep-input-styler__inner__icon-left):has(.ep-input-styler__inner__icon-right) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &:has(.ep-input-styler__inner__icon-left) {
+    justify-content: flex-start;
+  }
+
+  &:has(.ep-input-styler__inner__icon-right) {
+    justify-content: flex-end;
+  }
+
+  &__icon-left,
+  &__icon-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+  }
+
+  &__icon-right {
+    pointer-events: auto;
+  }
+}

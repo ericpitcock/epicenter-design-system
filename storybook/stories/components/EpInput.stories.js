@@ -1,4 +1,5 @@
 import { centered } from '../../helpers/decorators'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpInput from '@/components/input/EpInput.vue'
 
 export default {
@@ -33,10 +34,26 @@ export default {
         type: 'text'
       }
     },
-    icon: {
-      name: 'Icon',
+    iconLeft: {
+      name: 'Icon Left',
+      options: iconNames,
+      mapping: iconNamesMapping,
       control: {
-        type: 'object'
+        type: 'select'
+      },
+      table: {
+        category: 'Icons'
+      }
+    },
+    iconRight: {
+      name: 'Icon Right',
+      options: iconNames,
+      mapping: iconNamesMapping,
+      control: {
+        type: 'select'
+      },
+      table: {
+        category: 'Icons'
       }
     },
     clearable: {
@@ -63,10 +80,11 @@ export default {
         type: 'text'
       }
     },
-    height: {
-      name: 'Height',
+    size: {
+      name: 'Size',
+      options: ['small', 'default', 'large', 'xlarge'],
       control: {
-        type: 'text'
+        type: 'radio'
       }
     },
     borderWidth: {
@@ -124,12 +142,13 @@ Input.args = {
   type: 'text',
   placeholder: 'Placeholder',
   value: '',
-  icon: null,
+  iconLeft: null,
+  iconRight: { name: 'close' },
   clearable: true,
   disabled: false,
   autofocus: false,
   width: '100%',
-  height: '40px',
+  size: 'default',
   borderWidth: '0.1rem',
   borderStyle: 'solid',
   borderColor: 'var(--border-color)',

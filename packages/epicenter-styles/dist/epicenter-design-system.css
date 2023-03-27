@@ -2977,50 +2977,55 @@ span.flatpickr-weekday {
   color: inherit;
 }
 
-.ep-input {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  overflow: hidden;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-color);
-}
-.ep-input input {
-  flex: 1;
+input.ep-input {
+  width: 100%;
   height: 100%;
   padding: 0 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
   caret-color: var(--color--primary);
 }
-.ep-input input::placeholder {
+input.ep-input::placeholder {
   color: var(--text-color);
 }
-.ep-input input:focus::placeholder {
-  color: transparent;
-}
-.ep-input--has-icon input {
-  padding-left: 0;
-}
-.ep-input--focus {
+input.ep-input:focus {
   border-color: var(--color--primary);
 }
-.ep-input--disabled {
-  color: var(--text-color--disabled);
-  border-color: var(--border-color--disabled);
+input.ep-input.ep-input--has-icon-left {
+  padding-left: 3.2rem;
 }
-.ep-input--disabled input::placeholder {
-  opacity: 0.3;
+
+.ep-input-styler__container {
+  position: relative;
 }
-.ep-input__icon, .ep-input__clear {
+
+.ep-input-styler__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
+  pointer-events: none;
+}
+.ep-input-styler__inner:has(.ep-input-styler__inner__icon-left):has(.ep-input-styler__inner__icon-right) {
+  display: flex;
+  justify-content: space-between;
+}
+.ep-input-styler__inner:has(.ep-input-styler__inner__icon-left) {
+  justify-content: flex-start;
+}
+.ep-input-styler__inner:has(.ep-input-styler__inner__icon-right) {
+  justify-content: flex-end;
+}
+.ep-input-styler__inner__icon-left, .ep-input-styler__inner__icon-right {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  background: red;
 }
-.ep-input__clear {
-  cursor: pointer;
-}
-.ep-input__clear--disabled {
-  cursor: default;
+.ep-input-styler__inner__icon-right {
+  pointer-events: auto;
 }
 
 .ep-loading {

@@ -1,10 +1,18 @@
 <template>
-  <ep-input-styler v-bind="stylerProps">
+  <div
+    :class="['ep-input', inputClasses]"
+    :style="inputStyles"
+  >
+    <div
+      v-if="icon"
+      class="ep-input__icon"
+      :style="iconStyles"
+    >
+      <ep-icon v-bind="icon" />
+    </div>
     <input
       ref="input"
       v-model="value"
-      :class="['ep-input', inputClasses]"
-      :style="inputStyles"
       :type="type"
       :placeholder="placeholder"
       :disabled="disabled"
@@ -14,16 +22,30 @@
       @keydown="onKeyDown"
       @keydown.esc="onEsc"
     >
-  </ep-input-styler>
+    <div
+      v-if="clearable"
+      :class="[
+        'ep-input__clear',
+        { 'ep-input__clear--disabled': !value }
+      ]"
+      :style="iconStyles"
+      @click="onClear"
+    >
+      <ep-icon
+        v-show="value"
+        name="close"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-  import EpInputStyler from '../input-styler/EpInputStyler.vue'
+  import EpIcon from '../icon/EpIcon.vue'
 
   export default {
     name: 'EpInput',
     components: {
-      EpInputStyler
+      EpIcon
     },
     props: {
       type: {
@@ -38,11 +60,7 @@
         type: String,
         default: ''
       },
-      iconLeft: {
-        type: Object,
-        default: () => { }
-      },
-      iconRight: {
+      icon: {
         type: Object,
         default: () => { }
       },
@@ -62,13 +80,9 @@
         type: String,
         default: '100%'
       },
-      // height: {
-      //   type: String,
-      //   default: '5rem'
-      // },
-      size: {
+      height: {
         type: String,
-        default: 'default'
+        default: '5rem'
       },
       borderWidth: {
         type: String,
@@ -103,19 +117,10 @@
       }
     },
     computed: {
-      stylerProps() {
-        return {
-          size: this.size,
-          iconLeft: this.iconLeft,
-          iconRight: this.iconRight,
-        }
-      },
       inputClasses() {
         return {
-          [`ep-input--${this.size}`]: this.size,
-          'ep-input--has-icon-left': this.iconLeft,
-          'ep-input--has-icon-right': this.iconRight,
-          // 'ep-input--focus': this.hasFocus,
+          'ep-input--has-icon': this.icon,
+          'ep-input--focus': this.hasFocus,
           'ep-input--disabled': this.disabled,
           // 'ep-input--error': this.error,
           // 'ep-input--success': this.success,
@@ -125,20 +130,18 @@
       inputStyles() {
         return {
           width: this.width,
-          // borderWidth: this.borderWidth,
-          // borderStyle: this.borderStyle,
-          // borderColor: this.borderColor,
+          height: this.height,
           borderRadius: this.borderRadius,
           backgroundColor: this.backgroundColor,
           color: this.color
         }
       },
-      // iconStyles() {
-      //   return {
-      //     flex: `0 0 ${this.height}`,
-      //     height: this.height,
-      //   }
-      // },
+      iconStyles() {
+        return {
+          flex: `0 0 ${this.height}`,
+          height: this.height,
+        }
+      },
       value: {
         get() {
           return this.modelValue
@@ -159,12 +162,12 @@
         // console.log('onEsc', event.target.value)
       },
       onFocus(event) {
-        // this.hasFocus = true
+        this.hasFocus = true
         this.$emit('focus', event.target.value)
         // console.log('onFocus', event.target.value)
       },
       onBlur(event) {
-        // this.hasFocus = false
+        this.hasFocus = false
         this.$emit('blur', event.target.value)
         // console.log('onBlur', event.target.value)
       },
