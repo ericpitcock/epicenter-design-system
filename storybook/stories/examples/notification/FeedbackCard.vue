@@ -92,11 +92,11 @@
       },
       close: {
         type: Function,
-        default: () => { }
+        default: () => ({})
       },
       // submit: {
       //   type: Function,
-      //   default: () => {}
+      //   default: () => ({})
       // }
     },
     emits: ['submit'],

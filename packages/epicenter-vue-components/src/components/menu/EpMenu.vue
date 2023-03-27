@@ -71,7 +71,7 @@
       },
       containerProps: {
         type: Object,
-        default: () => { }
+        default: () => ({})
       },
       activeItem: {
         type: String,

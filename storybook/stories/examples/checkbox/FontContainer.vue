@@ -32,7 +32,7 @@
     props: {
       font: {
         type: Object,
-        default: () => { }
+        default: () => ({})
       },
       fontSize: {
         type: String,

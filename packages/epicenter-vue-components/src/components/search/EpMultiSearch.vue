@@ -65,7 +65,7 @@
       },
       icon: {
         type: Object,
-        default: () => { }
+        default: () => ({})
       },
       disabled: {
         type: Boolean,
