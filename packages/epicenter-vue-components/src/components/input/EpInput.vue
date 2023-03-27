@@ -136,7 +136,7 @@
           size: this.size,
           iconLeft: this.iconLeft,
           iconRight: this.clearable ? { ...this.iconRight, ...{ name: 'close' } } : this.iconRight,
-          iconRightVisible: this.clearable && this.hasInput,
+          iconRightVisible: this.clearable && this.hasInput || this.iconRight,
         }
       },
       inputClasses() {

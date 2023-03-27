@@ -2985,6 +2985,9 @@ input.ep-input {
   font-size: var(--font-size--small);
   color: var(--text-color);
 }
+input.ep-input.ep-input--has-icon-left {
+  padding-left: 2.8rem;
+}
 input.ep-input::placeholder {
   color: var(--text-color--subtle);
 }
@@ -2992,16 +2995,34 @@ input.ep-input:focus {
   border-color: var(--color--primary) !important;
 }
 input.ep-input--small {
-  padding: 0 1.2rem;
+  padding: 0 0.8rem;
   font-size: var(--font-size--tiny);
+}
+input.ep-input--small.ep-input--has-icon-left {
+  padding-left: 2.5rem;
+}
+input.ep-input--small.ep-input--has-icon-right {
+  padding-right: 2.5rem;
 }
 input.ep-input--large {
   padding: 0 1.6rem;
   font-size: var(--font-size--default);
 }
+input.ep-input--large.ep-input--has-icon-left {
+  padding-left: 3.6rem;
+}
+input.ep-input--large.ep-input--has-icon-right {
+  padding-right: 3.6rem;
+}
 input.ep-input--xlarge {
   padding: 0 1.8rem;
   font-size: var(--font-size--body);
+}
+input.ep-input--xlarge.ep-input--has-icon-left {
+  padding-left: 4.4rem;
+}
+input.ep-input--xlarge.ep-input--has-icon-right {
+  padding-right: 4.4rem;
 }
 input.ep-input--disabled {
   color: var(--text-color--disabled);
@@ -3010,9 +3031,6 @@ input.ep-input--disabled {
 }
 input.ep-input--disabled::placeholder {
   color: var(--text-color--disabled);
-}
-input.ep-input.ep-input--has-icon-left {
-  padding-left: 3.2rem;
 }
 
 .ep-input-styler__container {
