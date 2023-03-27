@@ -43,11 +43,11 @@
       },
       iconLeft: {
         type: Object,
-        default: () => { }
+        default: null
       },
       iconRight: {
         type: Object,
-        default: () => { }
+        default: null
       },
       clearable: {
         type: Boolean,
@@ -65,10 +65,6 @@
         type: String,
         default: '100%'
       },
-      // height: {
-      //   type: String,
-      //   default: '5rem'
-      // },
       size: {
         type: String,
         default: 'default'
@@ -93,25 +89,53 @@
         type: String,
         default: 'var(--background-2)'
       },
-      color: {
-        type: String,
-        default: 'var(--text-color)'
-      }
+      // color: {
+      //   type: String,
+      //   default: 'var(--text-color)'
+      // }
     },
     emits: ['update:modelValue', 'focus', 'esc', 'blur', 'enter', 'clear'],
     data() {
       return {
         hasError: false,
+        // hasFocus: false,
         hasInput: false,
-        // hasFocus: false
+        hasWarning: false,
+        hasSuccess: false,
       }
     },
     computed: {
+      computedBackgroundColor() {
+        if (this.disabled) {
+          return 'transparent'
+        }
+        return this.backgroundColor
+      },
+      computedBorderColor() {
+        if (this.hasError) {
+          return 'red'
+        }
+        if (this.hasWarning) {
+          return 'yellow'
+        }
+        if (this.hasSuccess) {
+          return 'green'
+        }
+        // if (this.hasFocus) {
+        //   return 'var(--color--primary)'
+        // }
+        if (this.disabled) {
+          return 'var(--border-color--disabled)'
+        }
+        return this.borderColor || 'var(--border-color)'
+      },
       stylerProps() {
         return {
+          disabled: this.disabled,
+          width: this.width,
           size: this.size,
           iconLeft: this.iconLeft,
-          iconRight: this.iconRight,
+          iconRight: this.clearable ? { ...this.iconRight, ...{ name: 'close' } } : this.iconRight,
           iconRightVisible: this.clearable && this.hasInput,
         }
       },
@@ -120,30 +144,24 @@
           [`ep-input--${this.size}`]: this.size,
           'ep-input--has-icon-left': this.iconLeft,
           'ep-input--has-icon-right': this.iconRight,
-          // 'ep-input--focus': this.hasFocus,
           'ep-input--disabled': this.disabled,
-          // 'ep-input--error': this.error,
-          // 'ep-input--success': this.success,
-          // 'ep-input--warning': this.warning
+          // 'ep-input--focus': this.hasFocus,
+          'ep-input--error': this.hasError,
+          'ep-input--success': this.hasSuccess,
+          'ep-input--warning': this.hasWarning,
         }
       },
       inputStyles() {
         return {
-          width: this.width,
-          // borderWidth: this.borderWidth,
-          // borderStyle: this.borderStyle,
-          // borderColor: this.borderColor,
+          // width: this.width,
+          borderStyle: this.borderStyle,
+          borderWidth: this.borderWidth,
+          borderColor: this.computedBorderColor,
           borderRadius: this.borderRadius,
-          backgroundColor: this.backgroundColor,
-          color: this.color
+          backgroundColor: this.computedBackgroundColor,
+          // color: this.color
         }
       },
-      // iconStyles() {
-      //   return {
-      //     flex: `0 0 ${this.height}`,
-      //     height: this.height,
-      //   }
-      // },
       value: {
         get() {
           return this.modelValue
@@ -165,22 +183,18 @@
       onEsc(event) {
         this.$refs.input.blur()
         this.$emit('esc', event.target.value)
-        // console.log('onEsc', event.target.value)
       },
       onFocus(event) {
         // this.hasFocus = true
         this.$emit('focus', event.target.value)
-        // console.log('onFocus', event.target.value)
       },
       onBlur(event) {
         // this.hasFocus = false
         this.$emit('blur', event.target.value)
-        // console.log('onBlur', event.target.value)
       },
       onKeyDown(event) {
         // use event.key
         this.$emit('enter', event.target.value)
-        // console.log('onKeyDown', event.target.value)
       },
       onClear() {
         this.$refs.input.value = ''

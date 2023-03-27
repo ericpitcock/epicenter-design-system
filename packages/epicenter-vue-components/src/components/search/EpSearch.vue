@@ -2,9 +2,7 @@
   <div class="ep-search">
     <ep-input
       v-model="searchQuery"
-      height="4rem"
-      :placeholder="placeholder"
-      :icon="{ name: 'search' }"
+      v-bind="computedInputProps"
       @input="handleInput"
       @clear="handleClear"
       @keydown.prevent.down="handleKeyDown"
@@ -53,10 +51,6 @@
     },
     mixins: [calculateHeight, debounceMixin],
     props: {
-      placeholder: {
-        type: String,
-        default: 'Search…',
-      },
       resultsLabel: {
         type: String,
         default: '',
@@ -69,14 +63,32 @@
         type: Array,
         required: true,
       },
+      inputProps: {
+        type: Object,
+        default: () => ({}),
+      },
     },
     emits: ['clear', 'search', 'selection'],
     data() {
       return {
         currentIndex: 0,
+        inputPropDefaults: {
+          size: 'default',
+          placeholder: 'Search…',
+          iconLeft: { name: 'search' },
+          clearable: true
+        },
         searchQuery: '',
         searching: false,
       }
+    },
+    computed: {
+      computedInputProps() {
+        return {
+          ...this.inputPropDefaults,
+          ...this.inputProps,
+        }
+      },
     },
     methods: {
       handleClear() {

@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.ep-input-styler__container--disabled {
+  pointer-events: none;
+}
+
 .ep-input-styler__inner {
   position: absolute;
   top: 0;
@@ -32,7 +36,7 @@
     // background: red;
   }
 
-  &__icon-right {
+  &__icon-right--active {
     pointer-events: auto;
   }
 }

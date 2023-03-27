@@ -2981,16 +2981,15 @@ input.ep-input {
   width: 100%;
   height: 100%;
   padding: 0 1.4rem;
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
   caret-color: var(--color--primary);
   font-size: var(--font-size--small);
+  color: var(--text-color);
 }
 input.ep-input::placeholder {
   color: var(--text-color--subtle);
 }
 input.ep-input:focus {
-  border-color: var(--color--primary);
+  border-color: var(--color--primary) !important;
 }
 input.ep-input--small {
   padding: 0 1.2rem;
@@ -3004,12 +3003,24 @@ input.ep-input--xlarge {
   padding: 0 1.8rem;
   font-size: var(--font-size--body);
 }
+input.ep-input--disabled {
+  color: var(--text-color--disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+input.ep-input--disabled::placeholder {
+  color: var(--text-color--disabled);
+}
 input.ep-input.ep-input--has-icon-left {
   padding-left: 3.2rem;
 }
 
 .ep-input-styler__container {
   position: relative;
+}
+
+.ep-input-styler__container--disabled {
+  pointer-events: none;
 }
 
 .ep-input-styler__inner {
@@ -3036,7 +3047,7 @@ input.ep-input.ep-input--has-icon-left {
   align-items: center;
   justify-content: center;
 }
-.ep-input-styler__inner__icon-right {
+.ep-input-styler__inner__icon-right--active {
   pointer-events: auto;
 }
 

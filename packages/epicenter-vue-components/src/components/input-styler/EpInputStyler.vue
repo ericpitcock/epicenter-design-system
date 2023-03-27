@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ep-input-styler__container"
+    :class="['ep-input-styler__container', { 'ep-input-styler__container--disabled': disabled }]"
     :style="containerStyles"
   >
     <div
@@ -16,7 +16,7 @@
       </div>
       <div
         v-if="iconRight"
-        class="ep-input-styler__inner__icon-right"
+        :class="['ep-input-styler__inner__icon-right', { 'ep-input-styler__inner__icon-right--active': iconRightVisible }]"
         :style="iconStyles"
         @click="onClick"
       >
@@ -39,6 +39,10 @@
       EpIcon
     },
     props: {
+      disabled: {
+        type: Boolean,
+        default: false
+      },
       width: {
         type: String,
         default: '100%'
@@ -49,11 +53,11 @@
       },
       iconLeft: {
         type: Object,
-        default: () => { }
+        default: () => ({})
       },
       iconRight: {
         type: Object,
-        default: () => { }
+        default: () => ({})
       },
       iconRightVisible: {
         type: Boolean,
@@ -95,6 +99,7 @@
     },
     methods: {
       onClick() {
+        if (!this.iconRightVisible) return
         console.log('click')
         this.$emit('click')
       }

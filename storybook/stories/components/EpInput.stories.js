@@ -28,10 +28,9 @@ export default {
         type: 'text'
       }
     },
-    value: {
-      name: 'Value',
-      control: {
-        type: 'text'
+    modelValue: {
+      table: {
+        disable: true
       }
     },
     iconLeft: {
@@ -117,12 +116,6 @@ export default {
         type: 'text'
       }
     },
-    color: {
-      name: 'Color',
-      control: {
-        type: 'text'
-      }
-    }
   }
 }
 
@@ -131,28 +124,20 @@ export const Input = args => ({
   setup() {
     return { args }
   },
-  template: `
-    <div style="width: 300px;">
-      <ep-input v-bind="args" />
-    </div>
-  `
+  template: '<ep-input v-bind="args" />'
 })
 
 Input.args = {
   type: 'text',
   placeholder: 'Placeholder',
-  value: '',
-  iconLeft: null,
-  iconRight: { name: 'close' },
   clearable: true,
   disabled: false,
   autofocus: false,
-  width: '100%',
+  width: '400px',
   size: 'xlarge',
   borderWidth: '0.1rem',
   borderStyle: 'solid',
   borderColor: 'var(--border-color)',
-  borderRadius: 'var(--border-radius)',
+  borderRadius: '0.3rem',
   backgroundColor: 'var(--background-2)',
-  color: 'var(--text-color)'
 }

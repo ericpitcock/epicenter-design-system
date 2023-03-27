@@ -98,6 +98,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       <ep-header padding="0 3rem">
         <template #left>
           <ep-search
+            :input-props="{ placeholder: 'Search for a location…', size: 'large' }"
             :search-results="searchResults"
             results-label="place_name"
             results-value="center"
