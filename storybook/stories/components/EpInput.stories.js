@@ -108,7 +108,7 @@ export default {
   }
 }
 
-const Template = args => ({
+export const Input = args => ({
   components: { EpInput },
   setup() {
     return { args }
@@ -119,8 +119,6 @@ const Template = args => ({
     </div>
   `
 })
-
-export const Input = Template.bind({})
 
 Input.args = {
   type: 'text',

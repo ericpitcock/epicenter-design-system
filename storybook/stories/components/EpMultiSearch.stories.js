@@ -86,7 +86,7 @@ export const MultiSearch = args => ({
   setup() {
     return { args }
   },
-  template: `<ep-multi-search v-bind="args" />`,
+  template: '<ep-multi-search v-bind="args" />',
 })
 
 MultiSearch.args = {
