@@ -102,6 +102,7 @@
     data() {
       return {
         hasError: false,
+        hasInput: false,
         // hasFocus: false
       }
     },
@@ -111,7 +112,7 @@
           size: this.size,
           iconLeft: this.iconLeft,
           iconRight: this.iconRight,
-          iconRightVisible: this.clearable,
+          iconRightVisible: this.clearable && this.hasInput,
         }
       },
       inputClasses() {
@@ -155,6 +156,11 @@
     methods: {
       onInput(event) {
         this.$emit('update:modelValue', event.target.value)
+        if (event.target.value) {
+          this.hasInput = true
+        } else {
+          this.hasInput = false
+        }
       },
       onEsc(event) {
         this.$refs.input.blur()
@@ -178,6 +184,7 @@
       },
       onClear() {
         this.$refs.input.value = ''
+        this.hasInput = false
         this.$refs.input.focus()
         this.$emit('clear', '')
       }
