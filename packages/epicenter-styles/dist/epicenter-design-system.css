@@ -2980,16 +2980,29 @@ span.flatpickr-weekday {
 input.ep-input {
   width: 100%;
   height: 100%;
-  padding: 0 1.2rem;
+  padding: 0 1.4rem;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   caret-color: var(--color--primary);
+  font-size: var(--font-size--small);
 }
 input.ep-input::placeholder {
-  color: var(--text-color);
+  color: var(--text-color--subtle);
 }
 input.ep-input:focus {
   border-color: var(--color--primary);
+}
+input.ep-input--small {
+  padding: 0 1.2rem;
+  font-size: var(--font-size--tiny);
+}
+input.ep-input--large {
+  padding: 0 1.6rem;
+  font-size: var(--font-size--default);
+}
+input.ep-input--xlarge {
+  padding: 0 1.8rem;
+  font-size: var(--font-size--body);
 }
 input.ep-input.ep-input--has-icon-left {
   padding-left: 3.2rem;
@@ -3022,7 +3035,6 @@ input.ep-input.ep-input--has-icon-left {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: red;
 }
 .ep-input-styler__inner__icon-right {
   pointer-events: auto;

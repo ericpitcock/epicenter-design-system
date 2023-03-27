@@ -20,7 +20,10 @@
         :style="iconStyles"
         @click="onClick"
       >
-        <ep-icon v-bind="iconRight" />
+        <ep-icon
+          v-show="iconRightVisible"
+          v-bind="iconRight"
+        />
       </div>
     </div>
     <slot />
@@ -51,7 +54,11 @@
       iconRight: {
         type: Object,
         default: () => { }
-      }
+      },
+      iconRightVisible: {
+        type: Boolean,
+        default: false
+      },
     },
     emits: ['click'],
     data() {

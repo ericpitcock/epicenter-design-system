@@ -1,5 +1,8 @@
 <template>
-  <ep-input-styler v-bind="stylerProps">
+  <ep-input-styler
+    v-bind="stylerProps"
+    @click="onClear"
+  >
     <input
       ref="input"
       v-model="value"
@@ -99,7 +102,7 @@
     data() {
       return {
         hasError: false,
-        hasFocus: false
+        // hasFocus: false
       }
     },
     computed: {
@@ -108,6 +111,7 @@
           size: this.size,
           iconLeft: this.iconLeft,
           iconRight: this.iconRight,
+          iconRightVisible: this.clearable,
         }
       },
       inputClasses() {
@@ -151,7 +155,6 @@
     methods: {
       onInput(event) {
         this.$emit('update:modelValue', event.target.value)
-        // console.log('onInput', event.target.value)
       },
       onEsc(event) {
         this.$refs.input.blur()
@@ -174,10 +177,9 @@
         // console.log('onKeyDown', event.target.value)
       },
       onClear() {
-        this.value = ''
+        this.$refs.input.value = ''
         this.$refs.input.focus()
         this.$emit('clear', '')
-        // console.log('onClear')
       }
     }
   }

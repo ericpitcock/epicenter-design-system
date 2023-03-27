@@ -148,7 +148,7 @@ Input.args = {
   disabled: false,
   autofocus: false,
   width: '100%',
-  size: 'default',
+  size: 'xlarge',
   borderWidth: '0.1rem',
   borderStyle: 'solid',
   borderColor: 'var(--border-color)',
