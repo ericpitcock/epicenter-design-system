@@ -2,8 +2,12 @@
   <div
     v-click-outside="closeDropdown"
     class="ep-dropdown"
+    @mouseleave="onMouseleave"
   >
-    <div @click="toggleDropdown">
+    <div
+      @click="toggleDropdown"
+      @mouseover="onMouseover"
+    >
       <slot
         v-if="$slots.trigger"
         name="trigger"
@@ -61,6 +65,10 @@
       alignRight: {
         type: Boolean,
         default: false
+      },
+      showOnHover: {
+        type: Boolean,
+        default: false
       }
     },
     emits: ['select'],
@@ -93,6 +101,9 @@
     },
     methods: {
       toggleDropdown() {
+        if (this.showOnHover) {
+          return
+        }
         this.dropdownVisible = !this.dropdownVisible
       },
       closeDropdown() {
@@ -101,6 +112,16 @@
       selectItem(item) {
         this.$emit('select', item)
         this.closeDropdown()
+      },
+      onMouseover() {
+        if (this.showOnHover) {
+          this.dropdownVisible = true
+        }
+      },
+      onMouseleave() {
+        if (this.showOnHover) {
+          this.dropdownVisible = false
+        }
       }
     }
   }

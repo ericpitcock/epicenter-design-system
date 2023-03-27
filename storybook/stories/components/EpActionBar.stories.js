@@ -1,74 +1,33 @@
-import { padded } from '../../helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
-import EpContainer from '@/components/container/EpContainer'
-import EpHeader from '@/components/header/EpHeader'
-import EpFooter from '@/components/footer/EpFooter'
-import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
 
 export default {
   title: 'Components/Action Bar',
   component: EpActionBar,
-  decorators: [padded],
+  decorators: [centered],
   argTypes: {
     items: {
+      table: {
+        disable: true
+      }
+    },
+    showDropdownOnHover: {
       control: {
-        type: 'array'
+        type: 'boolean'
       }
     }
   }
 }
 
-const Template = args => ({
+export const ActionBar = args => ({
   components: {
-    EpActionBar,
-    EpContainer,
-    EpHeader,
-    EpFooter,
-    EpicenterLogo
+    EpActionBar
   },
   setup() {
-    return { args, commonActionBarArgs }
+    return { args }
   },
-  template: `
-    <ep-container
-      max-width="120rem"
-      height="100%"
-      container-padding="0 3rem"
-      content-padding="3rem 0"
-      overflow="hidden"
-    >
-      <template #header>
-      <ep-header>
-        <template #left>
-          <div style="width: 27px;">
-            <epicenter-logo
-              faceColor="transparent"
-              highlightColor="transparent"
-              shadowColor="transparent"
-              :strokeWidth="6"
-              strokeColor="var(--sky-300)"
-            />
-          </div>
-        </template>
-        <template #right>
-          <ep-action-bar v-bind="args" />
-        </template>
-      </ep-header>
-      </template>
-      <template #default>
-        <div class="copy-block">
-          <h1>Action Bar</h1>
-          <p>An action bar is a graphical control element that provides a set of commonly used actions within a web application. It is typically displayed as a horizontal row of icon buttons and dropdown menus, allowing users to easily access and perform specific actions within the app.</p>
-        </div>
-      </template>
-      <template #footer>
-        <ep-footer />
-      </template>
-    </ep-container>
-  `
+  template: '<ep-action-bar v-bind="args" />'
 })
 
-export const ActionBar = Template.bind({})
-
-ActionBar.args = commonActionBarArgs
+ActionBar.args = { showDropdownOnHover: true, ...commonActionBarArgs }

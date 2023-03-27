@@ -60,7 +60,8 @@ const Template = args => ({
       placeContent: 'center',
       width: '100%',
       height: '100%',
-      background: 'linear-gradient(130deg, #0af6b7 0%, var(--color--primary) 89%)'
+      background: 'linear-gradient(130deg, #0af6b7 0%, var(--color--primary) 89%)',
+      overflow: 'hidden'
     }
     const yellowCircle = {
       position: 'absolute',

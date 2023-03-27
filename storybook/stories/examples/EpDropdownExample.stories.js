@@ -1,5 +1,10 @@
-import { centered } from '../../helpers/decorators'
+import { padded } from '../../helpers/decorators'
+import EpActionBar from '@/components/action-bar/EpActionBar'
+import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpDropdown from '@/components/dropdown/EpDropdown'
+import EpContainer from '@/components/container/EpContainer'
+import EpFooter from '@/components/footer/EpFooter'
+import EpHeader from '@/components/header/EpHeader'
 
 const buttonDefaults = {
   kind: 'secondary',
@@ -38,9 +43,9 @@ const fakeDropdownItems = [
 ]
 
 export default {
-  title: 'Components/Dropdown',
+  title: 'Components/Dropdown/Dropdown In Context',
   component: EpDropdown,
-  decorators: [centered],
+  decorators: [padded],
   argTypes: {
     alignRight: {
       name: 'Align Right',
@@ -65,29 +70,51 @@ export default {
       control: {
         type: 'array'
       }
-    },
-    showOnHover: {
-      name: 'Show On Hover',
-      control: {
-        type: 'boolean'
-      }
-    },
+    }
   }
 }
 
-export const Dropdown = args => ({
+export const DropdownInContext = args => ({
   components: {
-    EpDropdown
+    EpActionBar,
+    EpDropdown,
+    EpContainer,
+    EpFooter,
+    EpHeader
   },
   setup() {
-    return { args }
+    return { args, commonActionBarArgs }
   },
-  template: '<ep-dropdown v-bind="args" />'
+  template: `
+    <ep-container
+      max-width="120rem"
+      height="100%"
+      container-padding="0 3rem"
+      content-padding="3rem 0"
+      overflow="hidden"
+    >
+      <template #header>
+      <ep-header>
+        <template #left>
+          <ep-dropdown v-bind="args" />
+        </template>
+        <template #right>
+          <ep-action-bar v-bind="commonActionBarArgs" />
+        </template>
+      </ep-header>
+      </template>
+      <template #default>
+      </template>
+      <template #footer>
+        <ep-footer />
+      </template>
+    </ep-container>
+  `
 })
 
-Dropdown.args = {
+DropdownInContext.args = {
+  alignRight: false,
   button: buttonDefaults,
   containerProps,
-  menuItems: fakeDropdownItems,
-  showOnHover: true
+  menuItems: fakeDropdownItems
 }

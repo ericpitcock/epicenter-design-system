@@ -3,18 +3,19 @@
     class="ep-action-bar"
     :style="actionBarStyles"
   >
-    <template v-for="item in items">
+    <template v-for="(item, index) in items">
       <ep-button
         v-if="item.type === 'button'"
         :key="`button-${item.id}`"
         v-bind="buttonDefaults"
         :icon-left="item.iconLeft"
-        @click="itemClick(item)"
+        @click="onClick(item, index)"
       />
       <ep-dropdown
         v-else-if="item.type === 'dropdown'"
         :key="`dropdown-${item.id}`"
         v-bind="item"
+        :show-on-hover="showDropdownOnHover"
       />
     </template>
   </div>
@@ -38,9 +39,13 @@
       justifyContent: {
         type: String,
         default: 'flex-end'
+      },
+      showDropdownOnHover: {
+        type: Boolean,
+        default: false
       }
     },
-    emits: ['action bar click'],
+    emits: ['click'],
     computed: {
       actionBarStyles() {
         return {
@@ -55,12 +60,14 @@
       }
     },
     methods: {
-      itemClick(item) {
-        this.$emit('action bar click', item)
-        if (item.command) {
-          item.command(item)
-        }
-      }
+      onClick(item, index) {
+        this.$emit('click', { item, index })
+      },
+      // onMouseover(item, index) {
+      //   if (this.showDropdownOnHover) {
+      //     this.$emit('click', { item, index })
+      //   }
+      // }
     }
   }
 </script>
