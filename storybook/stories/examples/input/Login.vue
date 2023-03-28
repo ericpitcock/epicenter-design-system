@@ -46,7 +46,7 @@
             @clear="email = ''"
           />
           <ep-input
-            v-if="state === 'login' || state === 'loading'"
+            v-if="state != 'reset'"
             id="password"
             v-model="password"
             type="password"
@@ -54,6 +54,7 @@
             placeholder="Password"
             background-color="var(--background-1)"
             required
+            :icon-right="{ name: 'f/eye' }"
             @clear="password = ''"
           />
           <ep-button
@@ -147,6 +148,10 @@
       onFooterClick() {
         this.state = this.state === 'login' ? 'reset' : 'login'
       },
+      validateEmail(email) {
+        const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+        return emailRegex.test(email)
+      }
     },
   }
 </script>
