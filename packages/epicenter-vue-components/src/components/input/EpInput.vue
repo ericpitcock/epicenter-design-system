@@ -51,7 +51,7 @@
       },
       clearable: {
         type: Boolean,
-        default: true
+        default: false
       },
       disabled: {
         type: Boolean,
@@ -89,16 +89,11 @@
         type: String,
         default: 'var(--background-2)'
       },
-      // color: {
-      //   type: String,
-      //   default: 'var(--text-color)'
-      // }
     },
     emits: ['update:modelValue', 'focus', 'esc', 'blur', 'enter', 'clear'],
     data() {
       return {
         hasError: false,
-        // hasFocus: false,
         hasInput: false,
         hasWarning: false,
         hasSuccess: false,
@@ -121,9 +116,6 @@
         if (this.hasSuccess) {
           return 'green'
         }
-        // if (this.hasFocus) {
-        //   return 'var(--color--primary)'
-        // }
         if (this.disabled) {
           return 'var(--border-color--disabled)'
         }
@@ -145,7 +137,6 @@
           'ep-input--has-icon-left': this.iconLeft,
           'ep-input--has-icon-right': this.iconRight,
           'ep-input--disabled': this.disabled,
-          // 'ep-input--focus': this.hasFocus,
           'ep-input--error': this.hasError,
           'ep-input--success': this.hasSuccess,
           'ep-input--warning': this.hasWarning,
@@ -153,13 +144,11 @@
       },
       inputStyles() {
         return {
-          // width: this.width,
           borderStyle: this.borderStyle,
           borderWidth: this.borderWidth,
           borderColor: this.computedBorderColor,
           borderRadius: this.borderRadius,
           backgroundColor: this.computedBackgroundColor,
-          // color: this.color
         }
       },
       value: {
@@ -185,11 +174,9 @@
         this.$emit('esc', event.target.value)
       },
       onFocus(event) {
-        // this.hasFocus = true
         this.$emit('focus', event.target.value)
       },
       onBlur(event) {
-        // this.hasFocus = false
         this.$emit('blur', event.target.value)
       },
       onKeyDown(event) {
