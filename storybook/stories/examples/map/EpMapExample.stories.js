@@ -1,3 +1,4 @@
+import AppTitle from '../components/AppTitle.vue'
 import EpActionBar from '@/components/action-bar/EpActionBar.vue'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpContainer from '@/components/container/EpContainer.vue'
@@ -48,6 +49,7 @@ export default {
 
 export const MapInContext = (args, { globals: { theme } }) => ({
   components: {
+    AppTitle,
     EpActionBar,
     EpContainer,
     EpFooter,
@@ -97,8 +99,13 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       <template #header>
       <ep-header padding="0 3rem">
         <template #left>
+          <app-title title="Place Finder" />
           <ep-search
-            :input-props="{ placeholder: 'Search for a location…', size: 'large' }"
+            :input-props="{
+              placeholder: 'Find your place…',
+              width: '40rem',
+              size: 'large'
+            }"
             :search-results="searchResults"
             results-label="place_name"
             results-value="center"

@@ -24,6 +24,11 @@
   --text-color--disabled: var(--gray-130);
   --text-color--inverse: var(--background-1);
   --text-color--highlight: var(--yellow-600);
+  // text gradient
+  --text-gradient: linear-gradient(to right,
+    hsl(17, 88%, 60%),
+    hsl(275, 92%, 70%),
+    hsl(180, 100%, 50%));
   // text color
   --text-color--primary: var(--blue-400);
   // subtle text

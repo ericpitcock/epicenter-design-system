@@ -14,14 +14,15 @@
         background-color="transparent"
       >
         <template #left>
-          <h1>UI Font Finder</h1>
+          <app-title title="UI Font Finder" />
         </template>
         <template #center>
           <ep-input
             v-model="typeSample"
-            height="3.8rem"
+            size="large"
             background-color="var(--background-1)"
             placeholder="Enter your sample text here"
+            @clear="typeSample = ''"
           />
           <div class="font-size-control">
             <p class="font-size--tiny text--subtle">
@@ -70,6 +71,7 @@
           />
         </div>
         <div class="font-list-container">
+          <ep-loading-state v-if="!ready" />
           <ep-empty-state
             v-if="ready && filteredFonts.length === 0 || ready && typeSample.length === 0"
             :message="emptyStateMessage"
@@ -101,11 +103,29 @@
               <div class="font__meta">
                 <p>{{ font.family }}</p>
                 <p class="capitalize">{{ font.category }}</p>
-                <p>{{ fontInfo(font) }}</p>
-                <!-- <p
-                  v-if="isTopPick(font.family)"
-                  style="color: red;"
-                >Pick</p> -->
+                <!-- <p>{{ fontInfo(font) }}</p> -->
+                <div class="variant-list">
+                  <div
+                    v-for="variant in stripItalicVariants(font.variants)"
+                    :key="`${font.family}${variant}`"
+                    class="ep-radio"
+                  >
+                    <input
+                      :id="`${font.family.replace(' ', '')}-${variant}`"
+                      v-model="font.variant"
+                      class="ep-radio__input"
+                      type="radio"
+                      :name="font.family"
+                      :value="variant"
+                    >
+                    <label
+                      :for="`${font.family.replace(' ', '')}-${variant}`"
+                      class="ep-radio__label"
+                    >
+                      {{ fontWeightMap[variant] }}
+                    </label>
+                  </div>
+                </div>
               </div>
               <div class="font__samples">
                 <font-container
@@ -115,14 +135,12 @@
                   :sample="typeSample"
                   @font-loaded="onFontLoaded"
                 />
-
                 <ui-elements
                   v-if="sampleVisible('ui-elements')"
                   :font-family="font.family"
                 />
                 <ep-table
                   v-if="sampleVisible('table')"
-                  width="100%"
                   :columns="tableColumns"
                   :data="tableData"
                   bordered
@@ -140,11 +158,13 @@
 
 <script>
   import faker from 'faker'
+  import AppTitle from '../components/AppTitle.vue'
   import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
   import EpContainer from '@/components/container/EpContainer.vue'
   import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
   import EpHeader from '@/components/header/EpHeader.vue'
   import EpInput from '@/components/input/EpInput.vue'
+  import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
   import EpTable from '@/components/table/EpTable.vue'
   import EpThemeToggle from '@/components/theme-toggle/EpThemeToggle.vue'
   import FontContainer from './FontContainer.vue'
@@ -153,11 +173,13 @@
   export default {
     name: 'EpCheckboxExample',
     components: {
+      AppTitle,
       EpCheckbox,
       EpContainer,
       EpEmptyState,
       EpHeader,
       EpInput,
+      EpLoadingState,
       EpTable,
       EpThemeToggle,
       FontContainer,
@@ -230,6 +252,18 @@
         fonts: [],
         fontsLoaded: 0,
         fontSize: '32',
+        fontWeightMap: {
+          '100': 'Thin',
+          '200': 'Extra Light',
+          '300': 'Light',
+          'regular': 'Regular',
+          '400': 'Regular',
+          '500': 'Medium',
+          '600': 'Semi Bold',
+          '700': 'Bold',
+          '800': 'Extra Bold',
+          '900': 'Black'
+        },
         oneWeightOnly: false,
         ready: false,
         topPicks: [
@@ -407,8 +441,8 @@
             key: 'LastModified',
           },
         ],
-        typeSample: 'The quick brown fox jumps over the lazy dog',
-        defaultTypeSample: 'The quick brown fox jumps over the lazy dog',
+        typeSample: 'How vexingly quick daft zebras jump',
+        defaultTypeSample: 'How vexingly quick daft zebras jump',
       }
     },
     computed: {
@@ -507,6 +541,9 @@
       sampleVisible(value) {
         const sample = this.samples.find(filter => filter.value === value)
         return sample.checked
+      },
+      stripItalicVariants(variants) {
+        return variants.filter(variant => !variant.includes('italic'))
       },
     },
   }
@@ -622,7 +659,7 @@
     display: flex;
     flex-direction: column;
     padding: 3rem 0 10rem 0;
-    overflow: auto;
+    overflow-x: auto;
     -ms-overflow-style: none; // Internet Explorer, Edge
     scrollbar-width: none; // Firefox
 
@@ -632,8 +669,10 @@
 
     .font {
       display: flex;
-      justify-content: space-between;
-      padding: 3rem 1rem;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      gap: 3rem;
+      padding: 3rem 0;
 
       &:first-child {
         padding-top: 0;
@@ -644,15 +683,36 @@
       }
 
       &__meta {
-        flex: 0 0 20rem;
+        flex: 0 0 15rem;
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
         padding-top: 0.5rem;
         color: var(--text-color--subtle);
 
-        p:first-child {
-          margin-bottom: 1rem;
+        // p:first-child {
+        //   margin-bottom: 1rem;
+        // }
+        .variant-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.8rem;
+          margin-top: 2rem;
+
+          .ep-radio {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+
+            input[type="radio"] {
+              all: revert;
+              margin: 0;
+            }
+
+            &__label {
+              cursor: pointer;
+            }
+          }
         }
       }
 
@@ -662,7 +722,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 3rem;
-        padding: 0 1rem;
+        // padding: 0 1rem;
         // set all chidlren to flex 1 1 auto
         // & > *:not(:last-child) {
         //   flex: 1;

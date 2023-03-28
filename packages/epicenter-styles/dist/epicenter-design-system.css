@@ -412,6 +412,10 @@ textarea {
   --text-color--disabled: var(--gray-130);
   --text-color--inverse: var(--background-1);
   --text-color--highlight: var(--yellow-600);
+  --text-gradient: linear-gradient(to right,
+    hsl(17, 88%, 60%),
+    hsl(275, 92%, 70%),
+    hsl(180, 100%, 50%));
   --text-color--primary: var(--blue-400);
   --text-color--subtle: var(--gray-220);
   --text-color--disabled: var(--gray-300);
@@ -476,6 +480,10 @@ html[data-color-theme=light] {
   --text-color--disabled: var(--gray-270);
   --text-color--inverse: var(--gray-0);
   --text-color--highlight: var(--yellow-300);
+  --text-gradient: linear-gradient(to right,
+    hsl(17, 90%, 56%),
+    hsl(275, 93%, 61%),
+    hsl(205, 97%, 49%));
   --text-color--primary: var(--blue-600);
   --text-color--subtle: var(--gray-270);
   --text-color--disabled: var(--gray-170);
@@ -3268,7 +3276,7 @@ input.ep-input--disabled::placeholder {
 
 .ep-search {
   position: relative;
-  width: 100%;
+  width: fit-content;
 }
 .ep-search__dropdown {
   position: absolute;

@@ -75,6 +75,7 @@
         const routes = [
           {
             text: 'Albums of the Year',
+            className: 'app-title',
             // command: () => crumbClick('Years')
           },
           {
@@ -113,3 +114,18 @@
     },
   }
 </script>
+
+<style lang="scss">
+  .aoty {
+    .app-title {
+      background: var(--text-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+</style>

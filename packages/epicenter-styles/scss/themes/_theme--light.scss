@@ -20,6 +20,11 @@ html[data-color-theme='light'] {
   --text-color--disabled: var(--gray-270);
   --text-color--inverse: var(--gray-0);
   --text-color--highlight: var(--yellow-300);
+  // text gradient
+  --text-gradient: linear-gradient(to right,
+    hsl(17, 90%, 56%),
+    hsl(275, 93%, 61%),
+    hsl(205, 97%, 49%));
   // text color
   --text-color--primary: var(--blue-600);
   // subtle text

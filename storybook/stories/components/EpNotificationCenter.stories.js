@@ -20,10 +20,6 @@ export const NotificationCenter = args => ({
   setup() {
     return { args }
   },
-  template: `
-    <ep-container width="342px" height="100%">
-      <ep-notifications />
-    </ep-container>
-  `
+  template: '<div style="width: 362px; height: 100%;"><ep-notifications /></div>'
 })
 

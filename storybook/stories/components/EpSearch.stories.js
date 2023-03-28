@@ -51,7 +51,7 @@ export const Autocomplete = args => ({
         :search-results="searchResults"
         results-label="name"
         results-value="hex"
-        placeholder="Find your background color…"
+        :input-props="{ width: '60rem', placeholder: 'Find your favorite color…', size: 'xlarge' }"
         @search="searchWebColors"
         @selection="setBackground"
         @clear="bg = 'var(--background-1)'"

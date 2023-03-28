@@ -1,17 +1,29 @@
 <template>
-  <div class="ep-notifications">
-    <div class="ep-notifications__header font-size--small">
-      <p class="text--subtle">
-        Notification Center
-      </p>
-      <p
-        v-show="!isNotificationsEmpty"
-        class="text--link"
-        @click="clearNotifications"
-      >
-        Clear all
-      </p>
-    </div>
+  <ep-container
+    width="100%"
+    height="100%"
+    container-padding="0 3rem"
+    content-padding="2rem 0 3rem"
+    overflow="auto"
+  >
+    <template #header>
+      <ep-header>
+        <template #left>
+          <p>
+            Notification Center
+          </p>
+        </template>
+        <template #right>
+          <p
+            v-show="!isNotificationsEmpty"
+            class="text--link"
+            @click="clearNotifications"
+          >
+            Clear all
+          </p>
+        </template>
+      </ep-header>
+    </template>
     <ep-flex-container
       flex-flow="column nowrap"
       gap="1rem"
@@ -31,20 +43,24 @@
         </transition-group>
       </template>
     </ep-flex-container>
-  </div>
+  </ep-container>
 </template>
 
 <script>
+  import EpContainer from '../container/EpContainer.vue'
   import EpEmptyState from '../empty-state/EpEmptyState.vue'
   import EpFlexContainer from '../flexbox/EpFlexContainer.vue'
+  import EpHeader from '../header/EpHeader.vue'
   import EpNotification from '../notification/EpNotification.vue'
   import { mapState, mapGetters } from 'vuex'
 
   export default {
     name: 'EpNotifications',
     components: {
+      EpContainer,
       EpEmptyState,
       EpFlexContainer,
+      EpHeader,
       EpNotification
     },
     computed: {

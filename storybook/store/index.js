@@ -41,7 +41,6 @@ export default createStore({
       }
     ],
     notificationCenterOpen: false,
-    // sidebar: false,
     theme: 'dark'
   },
   getters: {
@@ -60,14 +59,12 @@ export default createStore({
       state.theme = data
     },
     addNotification: (state, newNotification) => {
-      console.log('addNotification mutation', newNotification)
       state.notifications.push(newNotification)
     },
     clearNotifications: state => {
       state.notifications = []
     },
     removeNotification: (state, notification) => {
-      console.log('removing notification', notification)
       state.notifications = state.notifications.filter(
         n => n.id !== notification.id
       )
