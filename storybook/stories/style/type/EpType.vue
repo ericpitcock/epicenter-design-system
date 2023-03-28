@@ -28,13 +28,16 @@
       >
         <template #tab-0>
           <div
-            class="type-style"
             v-for="(typeStyle, index) in typeStyles"
             :key="index"
+            class="type-style"
           >
             <div class="type-style__desc">
               <div class="font-size--body">{{ typeStyle.name }}</div>
-              <template v-for="item in typeStyle.meta">
+              <template
+                v-for="(item, index) in typeStyle.meta"
+                :key="index"
+              >
                 <div class="meta font-size--small">{{ item }}</div>
               </template>
             </div>
@@ -48,7 +51,7 @@
           </div>
         </template>
         <template #tab-1>
-          <div>
+          <div class="monospace">
             Fira Code info coming soon
           </div>
         </template>
@@ -62,7 +65,6 @@
 
   import EpButton from '@/components/button/EpButton'
   import EpContainer from '@/components/container/EpContainer'
-  import EpDivider from '@/components/divider/EpDivider'
   import EpHeader from '@/components/header/EpHeader'
   import EpTabs from '@/components/tabs/EpTabs'
   import EpTabContent from '@/components/tabs/EpTabContent'
@@ -71,7 +73,6 @@
     components: {
       EpButton,
       EpContainer,
-      EpDivider,
       EpHeader,
       EpTabs,
       EpTabContent

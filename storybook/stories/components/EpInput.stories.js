@@ -83,7 +83,13 @@ export default {
       name: 'Size',
       options: ['small', 'default', 'large', 'xlarge'],
       control: {
-        type: 'radio'
+        type: 'radio',
+        labels: {
+          small: 'Small',
+          default: 'Default',
+          large: 'Large',
+          xlarge: 'X-Large'
+        }
       }
     },
     borderWidth: {

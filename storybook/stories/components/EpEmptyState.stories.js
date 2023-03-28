@@ -7,6 +7,7 @@ export default {
   decorators: [centered],
   argTypes: {
     direction: {
+      name: 'Direction',
       options: ['row', 'column'],
       control: {
         type: 'radio',
@@ -17,16 +18,19 @@ export default {
       }
     },
     image: {
+      name: 'Image',
       control: {
         type: 'object'
       }
     },
     message: {
+      name: 'Message',
       control: {
         type: 'text'
       }
     },
     subtext: {
+      name: 'Subtext',
       control: {
         type: 'text'
       }
@@ -34,15 +38,13 @@ export default {
   }
 }
 
-const Template = args => ({
+export const EmptyState = args => ({
   components: { EpEmptyState },
   setup() {
     return { args }
   },
   template: '<ep-empty-state v-bind="args" />'
 })
-
-export const EmptyState = Template.bind({})
 
 EmptyState.args = {
   direction: 'column',

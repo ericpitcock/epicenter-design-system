@@ -108,6 +108,6 @@ export const SplitButton = args => ({
 
 SplitButton.args = {
   'buttonProps.label': 'Download Latest (v1.2)',
-  'buttonProps.size': 'default',
+  'buttonProps.size': 'large',
   'dropdownProps.button.iconRight': 'chevron-down',
 }

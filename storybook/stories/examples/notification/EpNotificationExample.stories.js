@@ -1,4 +1,4 @@
-import { padded } from '../../../helpers/decorators'
+import { centered } from '../../../helpers/decorators'
 import EpTempNotification from '@/components/notification/EpTempNotification'
 import FeedbackCard from './FeedbackCard'
 import store from '../../../store'
@@ -6,7 +6,7 @@ import store from '../../../store'
 export default {
   title: 'Components/Notifications/Notifications In Context',
   component: EpTempNotification,
-  decorators: [padded],
+  decorators: [centered],
   argTypes: {},
   parameters: {
     controls: { hideNoControlsWarning: true }

@@ -34,15 +34,14 @@
           backgroundColor: 'var(--background-1)',
           type: 'text',
           width: '300px',
-          height: '40px',
+          size: 'large',
           placeholder: 'Select a date',
-          icon: {
+          iconLeft: {
             name: 'calendar',
           },
           clearable: false,
           value: ''
         },
-        // value: 'butt'
       }
     },
     mounted() {

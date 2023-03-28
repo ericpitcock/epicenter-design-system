@@ -691,6 +691,10 @@ small {
   text-align: right;
 }
 
+.text-align--center {
+  text-align: center;
+}
+
 .ep-action-bar {
   display: flex;
   flex-direction: row;
