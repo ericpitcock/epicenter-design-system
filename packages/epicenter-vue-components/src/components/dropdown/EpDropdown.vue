@@ -78,7 +78,7 @@
         buttonDefaults: {
           kind: 'secondary',
           size: 'default',
-          title: 'Default Dropdown',
+          title: '',
           label: 'Default Dropdown',
           iconRight: { name: 'chevron-down' },
           iconLeft: undefined

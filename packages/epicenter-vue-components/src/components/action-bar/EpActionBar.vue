@@ -55,7 +55,8 @@
       buttonDefaults() {
         return {
           kind: 'ghost',
-          label: ''
+          label: '',
+          title: '',
         }
       }
     },
