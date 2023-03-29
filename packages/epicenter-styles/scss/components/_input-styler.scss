@@ -3,6 +3,7 @@
 }
 
 .ep-input-styler__container--disabled {
+  color: var(--text-color--disabled);
   pointer-events: none;
 }
 
