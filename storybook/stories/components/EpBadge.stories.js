@@ -39,7 +39,7 @@ export default {
   }
 }
 
-const Template = args => ({
+export const Badge = args => ({
   components: {
     EpBadge
   },
@@ -48,8 +48,6 @@ const Template = args => ({
   },
   template: '<ep-badge v-bind="args" />'
 })
-
-export const Badge = Template.bind({})
 
 Badge.args = {
   label: 'Subscribed',

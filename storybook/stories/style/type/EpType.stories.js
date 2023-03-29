@@ -13,12 +13,10 @@ export default {
   }
 }
 
-const Template = (args) => ({
+export const Type = (args) => ({
   components: { EpType },
   setup() {
     return { args }
   },
   template: '<ep-type />'
 })
-
-export const Type = Template.bind({})

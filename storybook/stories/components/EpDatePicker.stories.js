@@ -32,7 +32,7 @@ export default {
   }
 }
 
-const Template = args => ({
+export const DatePicker = args => ({
   components: {
     EpActionBar,
     EpContainer,
@@ -43,7 +43,6 @@ const Template = args => ({
   setup() {
     return { args, commonActionBarArgs }
   },
-  // template: '<ep-date-picker />'
   template: `
     <ep-container
       max-width="120rem"
@@ -69,5 +68,3 @@ const Template = args => ({
     </ep-container>
   `
 })
-
-export const DatePicker = Template.bind({})

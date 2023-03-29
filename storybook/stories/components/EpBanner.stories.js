@@ -54,7 +54,7 @@ export default {
   }
 }
 
-const Template = args => ({
+export const Banner = args => ({
   components: {
     EpBanner
   },
@@ -65,8 +65,6 @@ const Template = args => ({
   },
   template: '<ep-banner v-bind="args" />'
 })
-
-export const Banner = Template.bind({})
 
 Banner.args = {
   bannerStyle: 'warning',

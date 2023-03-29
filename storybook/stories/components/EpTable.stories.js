@@ -166,7 +166,7 @@ const filters = columns.map(column => {
 //   hiddenColumns = unchecked
 // }
 
-const Template = args => ({
+export const Table = args => ({
   components: {
     EpContainer,
     EpCheckbox,
@@ -249,8 +249,6 @@ const Template = args => ({
   </ep-container>
   `
 })
-
-export const Table = Template.bind({})
 
 Table.args = {
   bordered: true,

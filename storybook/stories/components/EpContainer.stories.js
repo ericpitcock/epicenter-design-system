@@ -175,7 +175,7 @@ export default {
   }
 }
 
-const Template = args => ({
+export const Container = args => ({
   components: {
     EpActionBar,
     EpContainer,
@@ -205,8 +205,6 @@ const Template = args => ({
     </ep-container>
   `
 })
-
-export const Container = Template.bind({})
 
 Container.args = {
   width: '100%',

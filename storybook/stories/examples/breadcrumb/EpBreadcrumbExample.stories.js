@@ -8,7 +8,7 @@ export default {
   argTypes: {}
 }
 
-const Template = args => ({
+export const BreadcrumbInContext = args => ({
   components: {
     AlbumsOfTheYear
   },
@@ -17,8 +17,6 @@ const Template = args => ({
   },
   template: '<albums-of-the-year />'
 })
-
-export const BreadcrumbInContext = Template.bind({})
 
 BreadcrumbInContext.parameters = {
   controls: { hideNoControlsWarning: true }

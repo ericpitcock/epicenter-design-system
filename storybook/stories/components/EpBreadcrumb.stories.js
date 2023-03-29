@@ -12,7 +12,7 @@ export default {
   }
 }
 
-const Template = args => ({
+export const Breadcrumb = args => ({
   components: {
     EpBreadcrumb
   },
@@ -21,8 +21,6 @@ const Template = args => ({
   },
   template: '<ep-breadcrumb v-bind="args" />'
 })
-
-export const Breadcrumb = Template.bind({})
 
 Breadcrumb.args = {
   staticBreadcrumbs: [

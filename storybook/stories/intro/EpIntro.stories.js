@@ -8,12 +8,10 @@ export default {
   }
 }
 
-const Template = (args) => ({
+export const Intro = (args) => ({
   components: { EpIntro },
   setup() {
     return { args }
   },
   template: '<ep-intro />'
 })
-
-export const Intro = Template.bind({})

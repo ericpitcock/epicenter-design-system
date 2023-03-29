@@ -11,12 +11,10 @@ export default {
   }
 }
 
-const Template = (args) => ({
+export const Color = (args) => ({
   components: { EpColor },
   setup() {
     return { args }
   },
   template: '<ep-color />'
 })
-
-export const Color = Template.bind({})

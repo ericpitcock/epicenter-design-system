@@ -39,15 +39,13 @@ export default {
   }
 }
 
-const Template = args => ({
+export const ColorTest = args => ({
   components: { EpColorTest },
   setup() {
     return { args }
   },
   template: '<ep-color-test v-bind="args" />'
 })
-
-export const ColorTest = Template.bind({})
 
 ColorTest.args = {
   hue: 220,

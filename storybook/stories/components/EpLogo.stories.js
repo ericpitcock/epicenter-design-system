@@ -51,7 +51,7 @@ export default {
   }
 }
 
-const Template = args => ({
+export const Logo = args => ({
   components: { EpicenterLogo },
   setup() {
     const containerStyle = {
@@ -99,8 +99,6 @@ const Template = args => ({
     </div>
   `
 })
-
-export const Logo = Template.bind({})
 
 Logo.args = {
   size: 200,
