@@ -103,6 +103,13 @@ export default {
   component: EpMenu,
   decorators: [centered],
   argTypes: {
+    size: {
+      name: 'Size',
+      options: ['small', 'default', 'large', 'xlarge (coming soon)'],
+      control: {
+        type: 'radio',
+      }
+    },
     containerProps: {
       name: 'Container Props',
       control: {
@@ -127,8 +134,9 @@ export const Menu = args => ({
 })
 
 Menu.args = {
+  size: 'large',
   containerProps: {
-    width: '20rem',
+    width: 'fit-content',
     height: 'auto',
     containerPadding: '1rem 0',
     borderRadius: 'var(--border-radius)'

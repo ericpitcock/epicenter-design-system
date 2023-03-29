@@ -24,12 +24,7 @@
         >
           <ep-button
             v-if="!item.divider && !item.section"
-            kind="menu-item"
-            :label="item.label"
-            :icon-right="item.iconRight"
-            :icon-left="item.iconLeft"
-            :is-active-menu-item="menuType === 'nav' && item.label == activeItem"
-            v-bind="item.bind"
+            v-bind="buttonProps(item)"
             @click="itemClick(item)"
           />
           <div
@@ -38,6 +33,7 @@
             class="ep-menu__item__sub-menu"
           >
             <ep-menu
+              :size="size"
               :container-props="containerProps"
               :menu-items="item.children"
             />
@@ -69,6 +65,10 @@
         type: Array,
         default: () => []
       },
+      size: {
+        type: String,
+        default: 'default'
+      },
       containerProps: {
         type: Object,
         default: () => ({})
@@ -89,6 +89,17 @@
       }
     },
     methods: {
+      buttonProps(item) {
+        return {
+          kind: 'menu-item',
+          size: this.size,
+          label: item.label,
+          iconRight: item.iconRight,
+          iconLeft: item.iconLeft,
+          isActiveMenuItem: this.menuType === 'nav' && item.label == this.activeItem,
+          ...item.bind
+        }
+      },
       showSubmenu(item, index) {
         if (item.children) {
           this.activeItemIndex = index

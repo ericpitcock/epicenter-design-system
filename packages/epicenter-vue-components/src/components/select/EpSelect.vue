@@ -49,6 +49,14 @@
         type: Boolean,
         default: false
       },
+      readonly: {
+        type: Boolean,
+        default: false
+      },
+      required: {
+        type: Boolean,
+        default: false
+      },
       width: {
         type: String,
         default: '100%'
