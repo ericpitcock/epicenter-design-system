@@ -16,7 +16,6 @@
       :autocomplete="autocomplete"
       :spellcheck="spellcheck"
       :wrap="wrap"
-      :class="classes"
       @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
@@ -87,10 +86,6 @@
       wrap: {
         type: String,
         default: 'soft',
-      },
-      classes: {
-        type: String,
-        default: null,
       },
     },
     emits: ['input', 'focus', 'blur'],

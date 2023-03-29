@@ -1,4 +1,3 @@
-// storybook story for EpTextarea
 import { padded } from '../../helpers/decorators'
 import EpTextarea from '@/components/textarea/EpTextarea.vue'
 
@@ -7,6 +6,96 @@ export default {
   component: EpTextarea,
   decorators: [padded],
   argTypes: {
+    id: {
+      name: 'id',
+      control: {
+        type: 'text',
+      }
+    },
+    name: {
+      name: 'name',
+      control: {
+        type: 'text',
+      }
+    },
+    value: {
+      name: 'value',
+      control: {
+        type: 'text',
+      }
+    },
+    placeholder: {
+      name: 'placeholder',
+      control: {
+        type: 'text',
+      }
+    },
+    disabled: {
+      name: 'disabled',
+      control: {
+        type: 'boolean',
+      }
+    },
+    required: {
+      name: 'required',
+      control: {
+        type: 'boolean',
+      }
+    },
+    rows: {
+      name: 'rows',
+      control: {
+        type: 'number',
+      }
+    },
+    cols: {
+      name: 'cols',
+      control: {
+        type: 'number',
+      }
+    },
+    maxlength: {
+      name: 'maxlength',
+      control: {
+        type: 'number',
+      }
+    },
+    minlength: {
+      name: 'minlength',
+      control: {
+        type: 'number',
+      }
+    },
+    readonly: {
+      name: 'readonly',
+      control: {
+        type: 'boolean',
+      }
+    },
+    autofocus: {
+      name: 'autofocus',
+      control: {
+        type: 'boolean',
+      }
+    },
+    autocomplete: {
+      name: 'autocomplete',
+      control: {
+        type: 'string',
+      }
+    },
+    spellcheck: {
+      name: 'spellcheck',
+      control: {
+        type: 'boolean',
+      }
+    },
+    wrap: {
+      name: 'wrap',
+      control: {
+        type: 'string',
+      }
+    },
   }
 }
 
@@ -15,5 +104,25 @@ export const Textarea = args => ({
   setup() {
     return { args }
   },
-  template: '<ep-textarea v-bind="args" />'
+  template: `
+    <div style="width: 60rem; height: 30rem;">
+      <ep-textarea v-bind="args" />
+    </div>
+  `
 })
+
+Textarea.args = {
+  id: 'textarea',
+  name: 'textarea',
+  value: '',
+  placeholder: 'Placeholder',
+  disabled: false,
+  required: false,
+  rows: 20,
+  cols: 50,
+  readonly: false,
+  autofocus: false,
+  autocomplete: 'on',
+  spellcheck: false,
+  wrap: 'soft',
+}
