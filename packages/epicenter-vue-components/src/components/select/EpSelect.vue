@@ -1,26 +1,13 @@
 <template>
-  <!-- <div :class="['ep-select', classes]"> -->
-  <!-- <div class="ep-select__inner">
-      <div
-        v-if="iconLeft"
-        class="ep-select__inner__icon-left"
-        :style="iconStyles"
-      >
-        <ep-icon v-bind="iconLeft" />
-      </div>
-      <div
-        class="ep-select__inner__icon-right"
-        :style="iconStyles"
-      >
-        <ep-icon name="chevron-down" />
-      </div>
-    </div> -->
   <ep-input-styler v-bind="stylerProps">
     <select
       :id="id"
       :class="['ep-select', selectClasses]"
       :style="selectStyles"
       :value="modelValue"
+      :disabled="disabled"
+      :autofocus="autofocus"
+      :required="required"
       @blur="onBlur"
       @focus="onFocus"
       @change="onChange"
@@ -41,7 +28,6 @@
       </option>
     </select>
   </ep-input-styler>
-  <!-- </div> -->
 </template>
 
 <script>
@@ -59,14 +45,14 @@
         type: Boolean,
         default: false
       },
+      autofocus: {
+        type: Boolean,
+        default: false
+      },
       width: {
         type: String,
         default: '100%'
       },
-      // size: {
-      //   type: String,
-      //   default: 'default'
-      // },
       iconLeft: {
         type: Object,
         default: null
@@ -146,11 +132,6 @@
           height: this.height,
         }
       },
-      // classes() {
-      //   return {
-      //     'ep-select--has-icon': this.iconLeft,
-      //   }
-      // },
       selectClasses() {
         return {
           [`ep-select--${this.size}`]: this.size,

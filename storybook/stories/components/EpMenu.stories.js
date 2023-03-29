@@ -1,7 +1,7 @@
 import { centered } from '../../helpers/decorators'
 import EpMenu from '@/components/menu/EpMenu'
 
-const fakeDropdownItems = [
+const fakeMenuItems = [
   {
     label: 'Go to internal page',
     iconLeft: { name: 'arrow-right' },
@@ -9,9 +9,7 @@ const fakeDropdownItems = [
       to: '/'
     }
   },
-  {
-    divider: true
-  },
+  { divider: true },
   {
     section: true,
     label: 'Section'
@@ -52,9 +50,7 @@ const fakeDropdownItems = [
       }
     ]
   },
-  {
-    divider: true
-  },
+  { divider: true },
   {
     section: true,
     label: 'Section'
@@ -137,5 +133,5 @@ Menu.args = {
     containerPadding: '1rem 0',
     borderRadius: 'var(--border-radius)'
   },
-  menuItems: fakeDropdownItems
+  menuItems: fakeMenuItems
 }

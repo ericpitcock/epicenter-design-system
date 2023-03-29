@@ -55,6 +55,12 @@ export default {
         type: 'boolean'
       }
     },
+    autofocus: {
+      name: 'Autofocus',
+      control: {
+        type: 'boolean'
+      }
+    },
   }
 }
 
@@ -73,6 +79,7 @@ Select.args = {
   size: 'xlarge',
   placeholder: 'Select your coffee type…',
   disabled: false,
+  autofocus: false,
   options: [
     {
       label: 'Drip Coffee',
