@@ -105,9 +105,15 @@ export default {
   argTypes: {
     size: {
       name: 'Size',
-      options: ['small', 'default', 'large', 'xlarge (coming soon)'],
+      options: ['small', 'default', 'large', 'xlarge'],
       control: {
         type: 'radio',
+        labels: {
+          small: 'Small',
+          default: 'Default',
+          large: 'Large',
+          xlarge: 'X-Large (coming soon)'
+        }
       }
     },
     containerProps: {
@@ -134,9 +140,9 @@ export const Menu = args => ({
 })
 
 Menu.args = {
-  size: 'large',
+  size: 'default',
   containerProps: {
-    width: 'fit-content',
+    width: '200px',
     height: 'auto',
     containerPadding: '1rem 0',
     borderRadius: 'var(--border-radius)'

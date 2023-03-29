@@ -115,7 +115,17 @@
     "title": "Pompeii",
     "artist": "Cate Le Bon",
     "cover": "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/78/f4/a5/78f4a5d8-7345-67da-35fe-85ab971cc4ec/184923131567.png/296x296bf-60.jpg",
-    "songs": "",
+    "songs": [
+      "Dirt on the Bed",
+      "Moderation",
+      "French Boys",
+      "Pompeii",
+      "Harbour",
+      "Running Away",
+      "Cry Me Old Trouble",
+      "Remembering Me",
+      "Wheel"
+    ],
     "year": "2022"
   },
   {

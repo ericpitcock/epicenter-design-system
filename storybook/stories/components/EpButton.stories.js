@@ -44,13 +44,14 @@ export default {
     },
     size: {
       name: 'Size',
-      options: ['small', 'default', 'large'],
+      options: ['small', 'default', 'large', 'xlarge'],
       control: {
         type: 'radio',
         labels: {
           small: 'Small',
           default: 'Default',
-          large: 'Large'
+          large: 'Large',
+          xlarge: 'X-Large (coming soon)'
         }
       }
     },

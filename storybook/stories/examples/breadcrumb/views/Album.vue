@@ -60,7 +60,7 @@
 <style lang="scss" scoped>
   .album {
     display: flex;
-    gap: 8rem;
+    gap: 10rem;
 
     &__cover {
       border-radius: var(--border-radius);
