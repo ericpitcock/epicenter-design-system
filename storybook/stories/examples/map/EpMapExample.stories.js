@@ -104,7 +104,8 @@ export const MapInContext = (args, { globals: { theme } }) => ({
             :input-props="{
               placeholder: 'Find your place…',
               width: '40rem',
-              size: 'large'
+              size: 'large',
+              backgroundColor: 'var(--background-1)',
             }"
             :search-results="searchResults"
             results-label="place_name"
