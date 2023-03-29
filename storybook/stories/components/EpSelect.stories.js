@@ -12,6 +12,19 @@ export default {
         type: 'text'
       }
     },
+    size: {
+      name: 'Size',
+      options: ['small', 'default', 'large', 'xlarge'],
+      control: {
+        type: 'radio',
+        labels: {
+          small: 'Small',
+          default: 'Default',
+          large: 'Large',
+          xlarge: 'X-Large'
+        }
+      }
+    },
     iconLeft: {
       name: 'Icon',
       options: iconNames,
@@ -35,7 +48,13 @@ export default {
       control: {
         type: 'text'
       }
-    }
+    },
+    disabled: {
+      name: 'Disabled',
+      control: {
+        type: 'boolean'
+      }
+    },
   }
 }
 
@@ -44,17 +63,16 @@ export const Select = args => ({
   setup() {
     return { args }
   },
-  template: `
-    <div style="width: 300px">
-      <ep-select v-bind="args" />
-    </div>
-    `
+  template: '<ep-select v-bind="args" />'
 })
 
 Select.args = {
   id: 'select',
   iconLeft: { name: 'f/coffee' },
+  width: '400px',
+  size: 'xlarge',
   placeholder: 'Select your coffee type…',
+  disabled: false,
   options: [
     {
       label: 'Drip Coffee',

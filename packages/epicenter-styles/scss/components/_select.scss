@@ -1,46 +1,58 @@
-.ep-select {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
+select.ep-select {
+  width: 100%;
+  height: 100%;
+  background: var(--background-2);
+  padding: 0 2.8rem 0 1.4rem;
+  // border: 1px solid var(--border-color);
+  // border-radius: var(--border-radius);
+  // line-height: 1;
   cursor: pointer;
+  user-select: none;
 
-  &__inner {
-    position: absolute;
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-
-    .ep-select--has-icon & {
-      justify-content: space-between;
-    }
-
-    &__icon-left,
-    &__icon-right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    &__icon-right {
-    }
+  &.ep-select--has-icon {
+    padding-left: 2.8rem;
   }
 
-  select {
-    background: var(--background-2);
-    padding: 1.25rem 1.2rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    user-select: none;
+  &:focus {
+    border-color: var(--color--primary) !important;
+  }
 
-    &:focus {
-      border-color: var(--color--primary);
+  &--small {
+    padding: 0 2.5rem 0 0.8rem;
+    font-size: var(--font-size--tiny);
+    &.ep-select--has-icon {
+      padding-left: 2.5rem;
     }
+    // &.ep-select--has-icon-right {
+    //   padding-right: 2.5rem;
+    // }
+  }
 
-    &.select--has-icon {
-      padding-left: 4rem;
+  &--large {
+    padding: 0 3.6rem 0 1.6rem;
+    font-size: var(--font-size--default);
+    &.ep-select--has-icon {
+      padding-left: 3.6rem;
     }
+    // &.ep-select--has-icon-right {
+    //   padding-right: 3.6rem;
+    // }
+  }
+
+  &--xlarge {
+    padding: 0 4.4rem 0 1.8rem;
+    font-size: var(--font-size--body);
+    &.ep-select--has-icon {
+      padding-left: 4.4rem;
+    }
+    // &.ep-select--has-icon-right {
+    //   padding-right: 4.4rem;
+    // }
+  }
+
+  &--disabled {
+    color: var(--text-color--disabled);
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }

@@ -12,17 +12,21 @@
         class="ep-input-styler__inner__icon-left"
         :style="iconStyles"
       >
-        <ep-icon v-bind="iconLeft" />
+        <ep-icon
+          v-bind="iconLeft"
+          :style="{ color: disabled ? 'var(--text-color--disabled)' : iconRight.color }"
+        />
       </div>
       <div
         v-if="iconRight"
-        :class="['ep-input-styler__inner__icon-right', { 'ep-input-styler__inner__icon-right--active': iconRightVisible }]"
+        :class="['ep-input-styler__inner__icon-right', { 'ep-input-styler__inner__icon-right--clickable': iconRightClickable }]"
         :style="iconStyles"
         @click="onClick"
       >
         <ep-icon
           v-show="iconRightVisible"
           v-bind="iconRight"
+          :style="{ color: disabled ? 'var(--text-color--disabled)' : iconRight.color }"
         />
       </div>
     </div>
@@ -31,6 +35,7 @@
 </template>
 
 <script>
+  import inputMixin from '../../mixins/inputMixin.js'
   import EpIcon from '../icon/EpIcon.vue'
 
   export default {
@@ -38,6 +43,7 @@
     components: {
       EpIcon
     },
+    mixins: [inputMixin],
     props: {
       disabled: {
         type: Boolean,
@@ -47,10 +53,10 @@
         type: String,
         default: '100%'
       },
-      size: {
-        type: String,
-        default: 'default'
-      },
+      // size: {
+      //   type: String,
+      //   default: 'default'
+      // },
       iconLeft: {
         type: Object,
         default: () => ({})
@@ -59,28 +65,32 @@
         type: Object,
         default: () => ({})
       },
+      iconRightClickable: {
+        type: Boolean,
+        default: false
+      },
       iconRightVisible: {
         type: Boolean,
         default: false
       },
     },
     emits: ['click'],
-    data() {
-      return {
-        sizes: {
-          small: '22px',
-          default: '30px',
-          large: '38px',
-          xlarge: '46px'
-        }
-      }
-    },
+    // data() {
+    //   return {
+    //     sizes: {
+    //       small: '22px',
+    //       default: '30px',
+    //       large: '38px',
+    //       xlarge: '46px'
+    //     }
+    //   }
+    // },
     computed: {
       containerStyles() {
         return {
           width: this.width,
           // height is small 22px, default 30px, large 38px
-          height: this.sizes[this.size]
+          height: `${this.sizes[this.size]}px`
         }
       },
       innerStyles() {
@@ -91,8 +101,8 @@
       },
       iconStyles() {
         return {
-          width: this.sizes[this.size],
-          height: this.sizes[this.size],
+          width: `${this.sizes[this.size]}px`,
+          height: `${this.sizes[this.size]}px`,
           cursor: 'pointer'
         }
       }
@@ -103,6 +113,6 @@
         console.log('click')
         this.$emit('click')
       }
-    },
-  }
+  },
+}
 </script>

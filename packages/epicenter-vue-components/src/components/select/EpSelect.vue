@@ -1,6 +1,6 @@
 <template>
-  <div :class="['ep-select', classes]">
-    <div class="ep-select__inner">
+  <!-- <div :class="['ep-select', classes]"> -->
+  <!-- <div class="ep-select__inner">
       <div
         v-if="iconLeft"
         class="ep-select__inner__icon-left"
@@ -14,10 +14,12 @@
       >
         <ep-icon name="chevron-down" />
       </div>
-    </div>
+    </div> -->
+  <ep-input-styler v-bind="stylerProps">
     <select
       :id="id"
-      :class="['ep-select__input', selectClasses]"
+      :class="['ep-select', selectClasses]"
+      :style="selectStyles"
       :value="modelValue"
       @blur="onBlur"
       @focus="onFocus"
@@ -38,25 +40,36 @@
         {{ option.label }}
       </option>
     </select>
-  </div>
+  </ep-input-styler>
+  <!-- </div> -->
 </template>
 
 <script>
-  import EpIcon from '../icon/EpIcon.vue'
+  import inputMixin from '../../mixins/inputMixin.js'
+  import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   export default {
     name: "EpSelect",
     components: {
-      EpIcon
+      EpInputStyler
     },
+    mixins: [inputMixin],
     props: {
-      height: {
-        type: String,
-        default: '4rem'
+      disabled: {
+        type: Boolean,
+        default: false
       },
+      width: {
+        type: String,
+        default: '100%'
+      },
+      // size: {
+      //   type: String,
+      //   default: 'default'
+      // },
       iconLeft: {
         type: Object,
-        default: undefined
+        default: null
       },
       id: {
         type: String,
@@ -73,31 +86,102 @@
       placeholder: {
         type: String,
         default: 'Select an option'
-      }
+      },
+      borderWidth: {
+        type: String,
+        default: '0.1rem'
+      },
+      borderStyle: {
+        type: String,
+        default: 'solid'
+      },
+      borderColor: {
+        type: String,
+        default: 'var(--border-color)'
+      },
+      borderRadius: {
+        type: String,
+        default: 'var(--border-radius)'
+      },
+      backgroundColor: {
+        type: String,
+        default: 'var(--background-2)'
+      },
     },
     emits: ['update:modelValue', 'blur', 'input', 'focus'],
     data() {
       return {
         selected: '',
+        hasError: false,
+        hasInput: false,
+        hasWarning: false,
+        hasSuccess: false,
       }
     },
     computed: {
+      computedBackgroundColor() {
+        if (this.disabled) {
+          return 'transparent'
+        }
+        return this.backgroundColor
+      },
+      computedBorderColor() {
+        if (this.hasError) {
+          return 'red'
+        }
+        if (this.hasWarning) {
+          return 'yellow'
+        }
+        if (this.hasSuccess) {
+          return 'green'
+        }
+        if (this.disabled) {
+          return 'var(--border-color--disabled)'
+        }
+        return this.borderColor || 'var(--border-color)'
+      },
       iconStyles() {
         return {
           flex: `0 0 ${this.height}`,
           height: this.height,
         }
       },
-      classes() {
-        return {
-          'ep-select--has-icon': this.iconLeft,
-        }
-      },
+      // classes() {
+      //   return {
+      //     'ep-select--has-icon': this.iconLeft,
+      //   }
+      // },
       selectClasses() {
         return {
-          'select--has-icon': this.iconLeft
+          [`ep-select--${this.size}`]: this.size,
+          'ep-select--has-icon': this.iconLeft,
+          'ep-select--disabled': this.disabled,
+          'ep-select--error': this.hasError,
+          'ep-select--success': this.hasSuccess,
+          'ep-select--warning': this.hasWarning,
         }
-      }
+      },
+      selectStyles() {
+        return {
+          borderStyle: this.borderStyle,
+          borderWidth: this.borderWidth,
+          borderColor: this.computedBorderColor,
+          borderRadius: this.borderRadius,
+          backgroundColor: this.computedBackgroundColor,
+          lineHeight: `${this.sizes[this.size] - 2}px`,
+        }
+      },
+      stylerProps() {
+        return {
+          disabled: this.disabled,
+          width: this.width,
+          size: this.size,
+          iconLeft: this.iconLeft,
+          iconRight: { name: 'chevron-down' },
+          iconRightClickable: false,
+          iconRightVisible: true,
+        }
+      },
     },
     watch: {
       modelValue: {
