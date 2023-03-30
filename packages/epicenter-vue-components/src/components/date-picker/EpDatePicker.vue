@@ -3,6 +3,7 @@
     <ep-input
       id="dp"
       v-bind="inputProps"
+      v-model="inputProps.value"
     />
   </div>
 </template>
@@ -33,7 +34,7 @@
         inputProps: {
           backgroundColor: 'var(--background-1)',
           type: 'text',
-          width: '300px',
+          width: '200px',
           size: 'large',
           placeholder: 'Select a date',
           iconLeft: {

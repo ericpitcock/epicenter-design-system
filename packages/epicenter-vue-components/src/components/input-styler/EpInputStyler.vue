@@ -3,10 +3,7 @@
     :class="['ep-input-styler__container', { 'ep-input-styler__container--disabled': disabled }]"
     :style="containerStyles"
   >
-    <div
-      class="ep-input-styler__inner"
-      :style="innerStyles"
-    >
+    <div class="ep-input-styler__inner">
       <div
         v-if="iconLeft"
         class="ep-input-styler__inner__icon-left"
