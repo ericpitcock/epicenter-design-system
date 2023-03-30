@@ -60,7 +60,7 @@ This will make all components available globally — no need to import indivdual
     components: {
       EpButton
     },
-    methods: {
+    computed: {
       buttonProps() {
         return {
           label: 'Click me'
