@@ -23,7 +23,7 @@
         >
           <ep-icon
             name="f/mail"
-            size="60px"
+            :size="60"
             weight="extra-light"
             color="var(--color--primary)"
           />
