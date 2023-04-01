@@ -57,19 +57,13 @@
             section: true,
             label: 'Specific Use'
           },
-          {
-            label: 'Alert (Coming Soon)',
-          },
+          { label: 'Alert (Coming Soon)', },
           {
             label: 'Chart Sequence',
             command: () => (this.filter = 'Chart')
           },
-          {
-            label: 'Chart Sequence Expanded (Coming Soon)',
-          },
-          {
-            divider: true
-          },
+          { label: 'Chart Sequence Expanded (Coming Soon)', },
+          { divider: true },
           {
             label: 'All',
             command: () => (this.filter = '')
@@ -120,14 +114,14 @@
           },
           {
             label: 'Blue',
-          command: () => (this.filter = 'blue')
-        },
-        {
-          label: 'Indigo',
-          command: () => (this.filter = 'indigo')
-        },
-        {
-          label: 'Violet',
+            command: () => (this.filter = 'blue')
+          },
+          {
+            label: 'Indigo',
+            command: () => (this.filter = 'indigo')
+          },
+          {
+            label: 'Violet',
             command: () => (this.filter = 'violet')
           },
           {
@@ -152,15 +146,7 @@
             header: 'Sample',
             key: 'sample',
             formatter: value => {
-              return `
-                  <div
-                    class="color-sample"
-                    style="width: 50px;
-                    height: 50px;
-                    background-color: ${value};
-                    border-radius: var(--border-radius);"
-                  />
-                `
+              return `<div class="color-sample" style="background-color: ${value};" />`
             }
           },
           {
@@ -176,7 +162,7 @@
             key: 'contrast',
             formatter: value => {
               return value === 'AAA &check;' || value === 'AA &check;'
-                ? `<span class="ep-badge" style="color: var(--green-500);">${value}</span>`
+                ? `<span class="ep-badge" style="color: var(--emerald-500);">${value}</span>`
                 : `<span class="ep-badge" style="color: var(--red-500);">${value}</span>`
             }
           },
@@ -198,6 +184,94 @@
           height: 'fit-content',
           containerPadding: '1rem 0'
         }
+      }
+    },
+    computed: {
+      ...mapState(['theme']),
+      backgroundColor() {
+        return this.theme === 'dark' ? '#242424' : '#fff'
+      },
+      filteredData() {
+        if (this.filter === '') {
+          return this.tableData
+        } else {
+          return this.tableData.filter(item => item.color.includes(this.filter))
+        }
+      },
+      tableData() {
+        let data = []
+        // get colors from tokens
+        for (const hue in colors) {
+          for (const level in colors[hue]) {
+            data.push({
+              sample: colors[hue][level].value,
+              color: `${hue} ${level}`,
+              contrast: this.contrast(colors[hue][level].value),
+              css: `--${hue}-${level}`,
+              hex: colors[hue][level].value
+            })
+          }
+        }
+        // get grayscale colors from tokens
+        for (const gray in grayscale) {
+          for (const level in grayscale[gray]) {
+            data.push({
+              sample: grayscale[gray][level].value,
+              color: `${gray} ${level}`,
+              contrast: this.contrast(grayscale[gray][level].value),
+              css: `--${gray}-${level}`,
+              hex: grayscale[gray][level].value
+            })
+          }
+        }
+        // get chart sequence colors from css variables
+        const htmlStyles = window.getComputedStyle(document.querySelector('html'))
+        for (let index = 0; index < 14; index++) {
+          const cssVar = index < 10 ? `--chart-sequence-0${index}` : `--chart-sequence-${index}`
+          let hexValue = htmlStyles.getPropertyValue(cssVar)
+          // strip spaces from hex value
+          hexValue = hexValue.replace(/\s/g, '')
+          data.push({
+            sample: hexValue,
+            color: `Chart Sequence ${index}`,
+            contrast: this.contrast(hexValue),
+            css: cssVar,
+            hex: hexValue
+          })
+        }
+        return data
+      }
+      // chartSequence() {
+      //   let data = []
+      //   const htmlStyles = window.getComputedStyle(document.querySelector('html'))
+      //   for (let index = 0; index < 14; index++) {
+      //     const cssVar = `--chart-sequence-${index}`
+      //     const hexValue = htmlStyles.getPropertyValue('--chart-sequence-' + index)
+      //     data.push({
+      //       sample: hexValue,
+      //       color: `Chart Sequence ${index}`,
+      //       css: cssVar,
+      //       hex: hexValue
+      //     })
+      //   }
+      //   return data
+      // }
+    },
+    watch: {
+      // watch theme from mapState
+      // $theme() {
+      //   this.tableData()
+      //   console.log('theme changed')
+      // },
+
+      // theme() {
+      //   this.tableData()
+      //   console.log('theme changed')
+      // },
+      filteredData() {
+        // scroll color table to the top when filter changes
+        const colorTableContainer = document.querySelector('.ep-table-container')
+        colorTableContainer.scrollTop = 0
       }
     },
     methods: {
@@ -255,96 +329,6 @@
         // return false;
       }
     },
-    computed: {
-      ...mapState(['theme']),
-      backgroundColor() {
-        // return window.getComputedStyle(document.querySelector('html')).getPropertyValue('--background-2')
-        return this.theme === 'dark' ? '#242424' : '#fff'
-      },
-      filteredData() {
-        if (this.filter === '') {
-          return this.tableData
-        } else {
-          return this.tableData.filter(item => item.color.includes(this.filter))
-        }
-      },
-      tableData() {
-        let data = []
-        // get colors from tokens
-        for (const hue in colors) {
-          for (const level in colors[hue]) {
-            data.push({
-              sample: colors[hue][level].value,
-              color: `${hue} ${level}`,
-              contrast: this.contrast(colors[hue][level].value),
-              css: `--${hue}-${level}`,
-              hex: colors[hue][level].value
-              // style: { color: colors[hue][level].value },
-            })
-          }
-        }
-        // get grayscale colors from tokens
-        for (const gray in grayscale) {
-          for (const level in grayscale[gray]) {
-            data.push({
-              sample: grayscale[gray][level].value,
-              color: `${gray} ${level}`,
-              contrast: this.contrast(grayscale[gray][level].value),
-              css: `--${gray}-${level}`,
-              hex: grayscale[gray][level].value
-              // style: { color: grayscale[gray][level].value },
-            })
-          }
-        }
-        // get chart sequence colors from css variables
-        const htmlStyles = window.getComputedStyle(document.querySelector('html'))
-        for (let index = 0; index < 14; index++) {
-          const cssVar = index < 10 ? `--chart-sequence-0${index}` : `--chart-sequence-${index}`
-          const hexValue = htmlStyles.getPropertyValue(cssVar)
-          data.push({
-            sample: hexValue,
-            color: `Chart Sequence ${index}`,
-            contrast: this.contrast(hexValue),
-            css: cssVar,
-            hex: hexValue
-            // style: { color: hexValue },
-          })
-        }
-        return data
-      }
-      // chartSequence() {
-      //   let data = []
-      //   const htmlStyles = window.getComputedStyle(document.querySelector('html'))
-      //   for (let index = 0; index < 14; index++) {
-      //     const cssVar = `--chart-sequence-${index}`
-      //     const hexValue = htmlStyles.getPropertyValue('--chart-sequence-' + index)
-      //     data.push({
-      //       sample: hexValue,
-      //       color: `Chart Sequence ${index}`,
-      //       css: cssVar,
-      //       hex: hexValue
-      //     })
-      //   }
-      //   return data
-      // }
-    },
-    watch: {
-      // watch theme from mapState
-      // $theme() {
-      //   this.tableData()
-      //   console.log('theme changed')
-      // },
-
-      // theme() {
-      //   this.tableData()
-      //   console.log('theme changed')
-      // },
-      filteredData() {
-        // scroll color table to the top when filter changes
-        const colorTableContainer = document.querySelector('.ep-table-container')
-        colorTableContainer.scrollTop = 0
-      }
-    }
   }
 </script>
 
@@ -368,5 +352,13 @@
         display: none; // Chrome, Safari, Opera
       }
     }
+  }
+</style>
+
+<style>
+  .color-sample {
+    width: 5rem;
+    height: 5rem;
+    border-radius: var(--border-radius);
   }
 </style>
