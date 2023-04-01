@@ -2160,8 +2160,8 @@ text.highcharts-drilldown-data-label,
 }
 
 .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+2) .flatpickr-day.inRange:nth-child(7n+1) {
-  -webkit-box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;
-  box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;
+  -webkit-box-shadow: -2px 0 0 var(--color--primary), 5px 0 0 var(--color--primary);
+  box-shadow: -2px 0 0 var(--color--primary), 5px 0 0 var(--color--primary);
 }
 
 .flatpickr-calendar .hasWeeks .dayContainer,
@@ -2680,8 +2680,8 @@ span.flatpickr-weekday {
 
 .flatpickr-day.inRange {
   border-radius: 0;
-  -webkit-box-shadow: -5px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;
-  box-shadow: -5px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;
+  -webkit-box-shadow: -5px 0 0 var(--color--primary), 5px 0 0 var(--color--primary);
+  box-shadow: -5px 0 0 var(--color--primary), 5px 0 0 var(--color--primary);
 }
 
 .flatpickr-day.flatpickr-disabled,
