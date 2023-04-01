@@ -34,7 +34,7 @@
         inputProps: {
           backgroundColor: 'var(--background-1)',
           type: 'text',
-          width: '200px',
+          width: '250px',
           size: 'large',
           placeholder: 'Select a date',
           iconLeft: {

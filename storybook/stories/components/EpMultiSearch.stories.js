@@ -2,7 +2,7 @@ import { padded } from '../../helpers/decorators'
 import EpMultiSearch from '@/components/search/EpMultiSearch'
 
 export default {
-  title: 'Components/Search',
+  title: 'Components/Search/Multisearch',
   component: EpMultiSearch,
   decorators: [padded],
   argTypes: {
@@ -81,7 +81,7 @@ export default {
   },
 }
 
-export const MultiSearch = args => ({
+export const Multisearch = args => ({
   components: { EpMultiSearch },
   setup() {
     return { args }
@@ -89,7 +89,7 @@ export const MultiSearch = args => ({
   template: '<ep-multi-search v-bind="args" />',
 })
 
-MultiSearch.args = {
+Multisearch.args = {
   placeholder: 'Search for several things…',
   height: '4rem',
   icon: { name: 'search' },

@@ -2,10 +2,10 @@
   <div class="colors">
     <ep-menu
       :menu-items="menuItems"
-      menuType="nav"
-      :activeItem="activeItem"
-      :containerProps="containerProps"
-      @item-click="item => (activeItem = item.label)"
+      menu-type="nav"
+      :active-item="activeItem"
+      :container-props="containerProps"
+      @click="item => (activeItem = item.label)"
     />
     <ep-container
       id="colors__table"
@@ -32,7 +32,6 @@
 </template>
 
 <script>
-  import EpBadge from '@/components/badge/EpBadge'
   import EpContainer from '@/components/container/EpContainer'
   import EpMenu from '@/components/menu/EpMenu'
   import EpTable from '@/components/table/EpTable'
@@ -43,6 +42,11 @@
 
   export default {
     name: 'EpColor',
+    components: {
+      EpContainer,
+      EpMenu,
+      EpTable
+    },
     mixins: [copyToClipboard],
     data() {
       return {
@@ -122,8 +126,8 @@
           label: 'Indigo',
           command: () => (this.filter = 'indigo')
         },
-          {
-            label: 'Violet',
+        {
+          label: 'Violet',
             command: () => (this.filter = 'violet')
           },
           {
@@ -148,13 +152,15 @@
             header: 'Sample',
             key: 'sample',
             formatter: value => {
-              return `<div
-                                          class="color-sample"
-                                          style="width: 50px;
-                                          height: 50px;
-                                          background-color: ${value};
-                                          border-radius: var(--border-radius);"
-                                        />`
+              return `
+                  <div
+                    class="color-sample"
+                    style="width: 50px;
+                    height: 50px;
+                    background-color: ${value};
+                    border-radius: var(--border-radius);"
+                  />
+                `
             }
           },
           {
@@ -193,12 +199,6 @@
           containerPadding: '1rem 0'
         }
       }
-    },
-    components: {
-      EpBadge,
-      EpContainer,
-      EpMenu,
-      EpTable
     },
     methods: {
       contrast(color) {

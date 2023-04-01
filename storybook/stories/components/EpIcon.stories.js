@@ -17,7 +17,7 @@ export default {
     color: {
       name: 'Color',
       control: {
-        type: 'text'
+        type: 'color'
       }
     },
     weight: {

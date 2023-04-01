@@ -42,7 +42,6 @@
             size="xlarge"
             placeholder="Email"
             background-color="var(--background-1)"
-            required
             @clear="email = ''"
           />
           <ep-input
@@ -53,7 +52,6 @@
             size="xlarge"
             placeholder="Password"
             background-color="var(--background-1)"
-            required
             :icon-right="{ name: 'f/eye' }"
             @clear="password = ''"
           />

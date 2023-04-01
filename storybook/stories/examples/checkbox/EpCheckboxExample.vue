@@ -22,6 +22,7 @@
             size="large"
             background-color="var(--background-1)"
             placeholder="Enter your sample text here"
+            clearable
             @clear="typeSample = ''"
           />
           <div class="font-size-control">

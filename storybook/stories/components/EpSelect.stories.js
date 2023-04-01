@@ -74,7 +74,7 @@ export const Select = args => ({
 
 Select.args = {
   id: 'select',
-  iconLeft: { name: 'f/coffee' },
+  iconLeft: 'f/coffee',
   width: '400px',
   size: 'xlarge',
   placeholder: 'Select your coffee type…',
