@@ -4,7 +4,7 @@
   "description": "Epicenter Design System - Styles",
   "scripts": {
     "style-dictionary:build": "style-dictionary build --config ./sd.config.js",
-    "sass-watch": "sass --watch ./index.scss ./dist/epicenter-design-system.css"
+    "sass:watch": "sass --watch ./index.scss ./dist/epicenter-design-system.css"
   },
   "repository": {
     "type": "git",
