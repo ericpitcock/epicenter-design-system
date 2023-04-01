@@ -252,4 +252,38 @@
       padding: 0.8rem;
     }
   }
+
+  // xlarge 46px height
+  &--xlarge {
+    max-height: 4.6rem;
+    .ep-button__label {
+      font-size: var(--font-size--default);
+    }
+
+    // padding
+    // has only one child and it's an icon
+    &:has(:only-child):has(.ep-button__icon) {
+      padding: 1.2rem 1.2rem;
+    }
+
+    // has only one child and it's a label
+    &:has(:only-child):has(.ep-button__label) {
+      padding: 1.2rem 1.8rem;
+    }
+
+    // has two children, one icon left and one label
+    &:has(.ep-button__icon--left):has(.ep-button__label) {
+      padding: 1.2rem 1.8rem 1.2rem 1.2rem;
+    }
+
+    // has two children, one icon right and one label
+    &:has(.ep-button__icon--right):has(.ep-button__label) {
+      padding: 1.2rem 1.2rem 1.2rem 1.8rem;
+    }
+
+    // has icon left, icon right, and label
+    &:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+      padding: 1.2rem 1.8rem;
+    }
+  }
 }

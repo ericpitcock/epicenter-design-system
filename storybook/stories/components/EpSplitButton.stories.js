@@ -3,7 +3,7 @@ import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 
 export default {
-  title: 'Components/Split Button',
+  title: 'Components/Button/Split Button',
   component: EpSplitButton,
   decorators: [centered],
   argTypes: {
@@ -29,13 +29,14 @@ export default {
     },
     'buttonProps.size': {
       name: 'Size',
-      options: ['small', 'default', 'large'],
+      options: ['small', 'default', 'large', 'xlarge'],
       control: {
         type: 'radio',
         labels: {
           small: 'Small',
           default: 'Default',
-          large: 'Large'
+          large: 'Large',
+          xlarge: 'X-Large'
         }
       }
     },

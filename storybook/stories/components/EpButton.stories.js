@@ -51,7 +51,7 @@ export default {
           small: 'Small',
           default: 'Default',
           large: 'Large',
-          xlarge: 'X-Large (coming soon)'
+          xlarge: 'X-Large'
         }
       }
     },
@@ -119,7 +119,7 @@ Button.args = {
   disabled: false,
   outlined: false,
   kind: 'primary',
-  size: 'default',
+  size: 'large',
   title: 'This is the tooltip',
   to: '',
   href: '',

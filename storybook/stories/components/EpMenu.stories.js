@@ -112,7 +112,7 @@ export default {
           small: 'Small',
           default: 'Default',
           large: 'Large',
-          xlarge: 'X-Large (coming soon)'
+          xlarge: 'X-Large'
         }
       }
     },

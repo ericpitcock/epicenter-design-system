@@ -36,11 +36,30 @@
     props: {
       kind: {
         type: String,
-        default: 'secondary'
+        default: 'secondary',
+        validator: value => {
+          return [
+            'primary',
+            'secondary',
+            'ghost',
+            'danger',
+            'warning',
+            'success',
+            'menu-item'
+          ].includes(value)
+        }
       },
       size: {
         type: String,
-        default: 'default'
+        default: 'default',
+        validator: value => {
+          return [
+            'small',
+            'default',
+            'large',
+            'xlarge'
+          ].includes(value)
+        }
       },
       title: {
         type: String,
@@ -76,7 +95,10 @@
       },
       type: {
         type: String,
-        default: 'button'
+        default: 'button',
+        validator: value => {
+          return ['button', 'submit'].includes(value)
+        }
       }
     },
     computed: {
