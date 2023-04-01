@@ -63,6 +63,15 @@ html[data-color-theme='light'] {
   --nav-link-icon-color: var(--color--primary);
   --nav-link-active-icon-color: var(--text-color--inverse);
   --nav-link-active-text-color: var(--text-color--inverse);
+  // toggle
+  --toggle-track: var(--gray-80);
+  --toggle-track-border: var(--border-color);
+  --toggle-track--active: var(--emerald-500);
+  --toggle-track-border--active: var(--emerald-500);
+  --toggle-track--disabled: var(--gray-400);
+  --toggle-thumb: var(--gray-0);
+  --toggle-thumb--active: var(--gray-50);
+  --toggle-thumb--disabled: var(--gray-50);
   // chart sequence
   --chart-sequence-00: var(--violet-700);
   --chart-sequence-01: var(--sky-500);

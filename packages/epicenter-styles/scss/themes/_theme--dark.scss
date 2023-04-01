@@ -51,7 +51,7 @@
   --button-disabled--border-color: var(--4utton-disabled--bg-color);
   --button-disabled--text: var(--gray-270);
   --button-secondary--hover: var(--gray-410);
-  --button-secondary--active: var(--gray-500);
+  --button-secondary--active: var(--gray-430);
   --button-ghost--hover: var(--gray-390);
   --button-ghost--active: var(--gray-500);
   --button-ghost--text: var(--text-color);
@@ -69,6 +69,15 @@
   --nav-link-icon-color: var(--sky-300);
   --nav-link-active-icon-color: var(--text-color);
   --nav-link-active-text-color: var(--text-color);
+  // toggle
+  --toggle-track: var(--gray-400);
+  --toggle-track-border: var(--border-color);
+  --toggle-track--active: var(--emerald-500);
+  --toggle-track-border--active: var(--emerald-500);
+  --toggle-track--disabled: var(--gray-420);
+  --toggle-thumb: var(--gray-50);
+  --toggle-thumb--active: var(--gray-50);
+  --toggle-thumb--disabled: var(--gray-380);
   // chart sequence
   --chart-sequence-00: var(--violet-600);
   --chart-sequence-01: var(--sky-500);
