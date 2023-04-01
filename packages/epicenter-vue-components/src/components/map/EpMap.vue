@@ -34,6 +34,10 @@
         type: Object,
         default: null
       },
+      pinLocations: {
+        type: Array,
+        default: () => []
+      },
       scrollZoom: {
         type: Boolean,
         default: true
@@ -47,7 +51,7 @@
         default: false
       }
     },
-    emits: ['dropPin'],
+    emits: ['centerChange', 'dropPin', 'zoomChange'],
     data() {
       return {
         init: true,
@@ -57,13 +61,19 @@
     },
     watch: {
       mapCenter(newCenter, oldCenter) {
+        this.$emit('centerChange', newCenter)
         this.flyTo(newCenter)
       },
       mapZoom(newZoom, oldZoom) {
+        this.$emit('zoomChange', newZoom)
         this.map.zoomTo(newZoom)
       },
       mapStyle(newStyle, oldStyle) {
         this.map.setStyle(newStyle)
+      },
+      pinLocations() {
+        this.removeMarkers()
+        this.addMarkers()
       }
     },
     mounted() {
@@ -113,11 +123,15 @@
       }
     },
     methods: {
-      dropPin(lngLat) {
-        this.markers.push(new mapboxgl.Marker()
-          .setLngLat(lngLat)
-          .addTo(this.map))
-        this.$emit('dropPin', lngLat)
+      addMarkers() {
+        this.pinLocations.forEach((location) => {
+          const marker = new mapboxgl.Marker().setLngLat(location).addTo(this.map)
+          this.markers.push(marker)
+        })
+      },
+      removeMarkers() {
+        this.markers.forEach((marker) => marker.remove())
+        this.markers = []
       },
       flyTo() {
         this.map.flyTo({
@@ -140,7 +154,12 @@
           if (this.navigationControl) this.map.addControl(new mapboxgl.NavigationControl())
 
           this.map.on('load', () => resolve())
+          this.map.on('dragend', this.onDragEnd)
         })
+      },
+      onDragEnd() {
+        const center = this.map.getCenter()
+        this.$emit('centerChange', [center.lng, center.lat])
       },
       getMapCenter() {
         if (this.fitToBounds) {

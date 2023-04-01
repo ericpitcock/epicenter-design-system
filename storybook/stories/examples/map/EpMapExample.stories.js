@@ -78,16 +78,120 @@ export const MapInContext = (args, { globals: { theme } }) => ({
 
     const updateMapCenter = result => {
       currentMapCenter.value = result
+      currentMapPin.value = []
+      currentMapPin.value.push(result)
+    }
+
+    const containerProps = {
+      backgroundColor: 'var(--background-4)',
+      containerPadding: '1rem 0',
+      borderRadius: 'var(--border-radius)',
+      borderColor: 'var(--border-color--lighter)'
+    }
+
+    const actionBarArgs = {
+      justifyContent: 'flex-start',
+      showDropdownOnHover: true,
+      items: [
+        {
+          type: 'dropdown',
+          button: {
+            kind: 'ghost',
+            label: '',
+            iconLeft: { name: 'f/coffee' },
+            iconRight: null
+          },
+          containerProps,
+          menuItems: [
+            {
+              section: true,
+              label: 'Seattle Coffee Shops'
+            },
+            {
+              label: 'Starbucks Reserve Roastery',
+              value: [-122.3283, 47.6155]
+            },
+            {
+              label: 'Cafe Allegro',
+              value: [-122.3168, 47.6593]
+            },
+            {
+              label: 'Victrola Coffee Roasters',
+              value: [-122.3193, 47.6148]
+            },
+            {
+              label: 'Caffe Vita',
+              value: [-122.3164, 47.6144]
+            },
+            {
+              label: 'Storyville Coffee Company',
+              value: [-122.3407, 47.6084]
+            }
+          ]
+        },
+        {
+          type: 'dropdown',
+          button: {
+            kind: 'ghost',
+            label: '',
+            iconLeft: { name: 'f/shopping-bag' },
+            iconRight: null
+          },
+          containerProps,
+          menuItems: [
+            {
+              section: true,
+              label: 'Seattle Shopping'
+            },
+            {
+              label: 'Nordstrom',
+              value: [-122.3366, 47.6138]
+            },
+            {
+              label: 'Pike Place Market',
+              value: [-122.3401, 47.6098]
+            },
+            {
+              label: 'University Village',
+              value: [-122.2986, 47.6627]
+            },
+            {
+              label: 'Pacific Place',
+              value: [-122.3352, 47.6119]
+            },
+            {
+              label: 'Westlake Center',
+              value: [-122.3375, 47.6113]
+            }
+          ]
+        }
+      ]
+    }
+
+    const currentMapPin = ref([])
+
+    const onClick = item => {
+      currentMapCenter.value = item.value
+      // clear currentMapPin and then add new pin
+      currentMapPin.value = []
+      currentMapPin.value.push(item.value)
+    }
+
+    const centerChanged = center => {
+      currentMapCenter.value = center
     }
 
     return {
       args,
-      commonActionBarArgs,
+      actionBarArgs,
+      centerChanged,
       currentMapCenter,
+      currentMapPin,
       currentMapStyle,
       updateMapCenter,
       searchLocation,
       searchResults,
+      onClick
     }
   },
   template: `
@@ -113,9 +217,10 @@ export const MapInContext = (args, { globals: { theme } }) => ({
             @search="searchLocation"
             @selection="updateMapCenter"
           />
-        </template>
-        <template #right>
-          <ep-action-bar v-bind="commonActionBarArgs" />
+          <ep-action-bar
+            v-bind="actionBarArgs"
+            @click="onClick"
+          />
         </template>
       </ep-header>
       </template>
@@ -123,8 +228,10 @@ export const MapInContext = (args, { globals: { theme } }) => ({
         <div style="height: 100%; width: 100%;">
         <ep-map
           v-bind="args"
-          :mapStyle="currentMapStyle"
-          :mapCenter="currentMapCenter"
+          :map-style="currentMapStyle"
+          :map-center="currentMapCenter"
+          :pin-locations="currentMapPin"
+          @center-change="centerChanged"
         />
         </div>
       </template>
