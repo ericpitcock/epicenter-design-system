@@ -8,6 +8,43 @@
   border-width: 1px;
   border-style: solid;
 
+  // 'Primary', 'Secondary', 'Success', 'Warning', 'Danger'
+
+  &--primary {
+    background-color: var(--bg-color--primary);
+    color: var(--text-color);
+    border-color: var(--color--primary);
+  }
+
+  &--secondary {
+    background-color: var(--bg-color--secondary);
+    color: var(--text-color);
+    border-color: var(--border-color--secondary);
+  }
+
+  &--success {
+    background-color: var(--bg-color--success);
+    color: var(--text-color--inverse);
+    border-color: var(--border-color--success);
+  }
+
+  &--warning {
+    background-color: var(--bg-color--warning);
+    color: var(--text-color--inverse);
+    border-color: var(--border-color--warning);
+  }
+
+  &--danger {
+    background-color: var(--bg-color--danger);
+    color: var(--text-color--inverse);
+    border-color: var(--border-color--danger);
+  }
+
+  &--outlined {
+    background-color: transparent;
+    color: var(--text-color);
+  }
+
   &--uppercase {
     text-transform: uppercase;
     letter-spacing: 0.1rem;

@@ -1,4 +1,5 @@
 import { centered } from '../../helpers/decorators'
+import { colorNames, colorValues } from '../../helpers/colorHelper'
 import EpBadge from '@/components/badge/EpBadge'
 
 export default {
@@ -12,22 +13,61 @@ export default {
         type: 'text',
       }
     },
+    variant: {
+      name: 'Variant',
+      options: ['Primary', 'Secondary', 'Success', 'Warning', 'Danger'],
+      mapping: {
+        'Primary': 'primary',
+        'Secondary': 'secondary',
+        'Success': 'success',
+        'Warning': 'warning',
+        'Danger': 'danger'
+      },
+      control: {
+        type: 'radio',
+      }
+    },
+    outlined: {
+      name: 'Outlined',
+      control: {
+        type: 'boolean',
+      }
+    },
     backgroundColor: {
       name: 'Background Color',
+      options: colorNames,
+      mapping: colorValues,
       control: {
-        type: 'text',
+        type: 'select',
+      },
+      table: {
+        category: 'Overrides'
       }
     },
     borderColor: {
       name: 'Border Color',
+      options: colorNames,
+      mapping: colorValues,
       control: {
-        type: 'text',
+        type: 'select',
+      },
+      table: {
+        category: 'Overrides'
       }
     },
     textColor: {
       name: 'Text Color',
+      options: ['None', 'var(--text-color)', 'var(--text-color--inverse)'],
+      mapping: {
+        'None': '',
+        'var(--text-color)': 'var(--text-color)',
+        'var(--text-color--inverse)': 'var(--text-color--inverse)'
+      },
       control: {
-        type: 'text',
+        type: 'select',
+      },
+      table: {
+        category: 'Overrides'
       }
     },
     uppercase: {
@@ -51,8 +91,10 @@ export const Badge = args => ({
 
 Badge.args = {
   label: 'Subscribed',
-  backgroundColor: 'var(--background-4)',
-  borderColor: 'var(--border-color--lighter)',
-  textColor: 'var(--text-color)',
+  variant: 'Secondary',
+  outlined: false,
+  backgroundColor: 'None',
+  borderColor: 'None',
+  textColor: 'None',
   uppercase: false
 }

@@ -470,6 +470,16 @@ textarea {
   --bg-color--alert-medium: var(--yellow-400);
   --bg-color--alert-high: var(--amber-500);
   --bg-color--alert-critical: var(--red-500);
+  --bg-color--primary: var(--color--primary);
+  --bg-color--secondary: var(--background-4);
+  --bg-color--success: var(--emerald-500);
+  --bg-color--warning: var(--yellow-500);
+  --bg-color--danger: var(--rose-400);
+  --border-color--primary: var(--bg-color--primary);
+  --border-color--secondary: var(--bg-color--secondary);
+  --border-color--success: var(--bg-color--success);
+  --border-color--warning: var(--bg-color--warning);
+  --border-color--danger: var(--bg-color--danger);
 }
 
 html[data-color-theme=light] {
@@ -729,6 +739,35 @@ small {
   user-select: none;
   border-width: 1px;
   border-style: solid;
+}
+.ep-badge--primary {
+  background-color: var(--bg-color--primary);
+  color: var(--text-color);
+  border-color: var(--color--primary);
+}
+.ep-badge--secondary {
+  background-color: var(--bg-color--secondary);
+  color: var(--text-color);
+  border-color: var(--border-color--secondary);
+}
+.ep-badge--success {
+  background-color: var(--bg-color--success);
+  color: var(--text-color--inverse);
+  border-color: var(--border-color--success);
+}
+.ep-badge--warning {
+  background-color: var(--bg-color--warning);
+  color: var(--text-color--inverse);
+  border-color: var(--border-color--warning);
+}
+.ep-badge--danger {
+  background-color: var(--bg-color--danger);
+  color: var(--text-color--inverse);
+  border-color: var(--border-color--danger);
+}
+.ep-badge--outlined {
+  background-color: transparent;
+  color: var(--text-color);
 }
 .ep-badge--uppercase {
   text-transform: uppercase;

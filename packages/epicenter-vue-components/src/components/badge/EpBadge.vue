@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['ep-badge', { 'ep-badge--uppercase': uppercase }]"
+    :class="['ep-badge', classes]"
     :style="badgeStyles"
   >
     {{ label }}
@@ -11,21 +11,29 @@
   export default {
     name: 'EpBadge',
     props: {
+      variant: {
+        type: String,
+        default: 'secondary'
+      },
+      outlined: {
+        type: Boolean,
+        default: false
+      },
       label: {
         type: String,
         default: 'Badge'
       },
       backgroundColor: {
         type: String,
-        default: 'var(--background-4)'
+        default: ''
       },
       borderColor: {
         type: String,
-        default: 'var(--border-color--lighter)'
+        default: ''
       },
       textColor: {
         type: String,
-        default: 'var(--text-color)'
+        default: ''
       },
       uppercase: {
         type: Boolean,
@@ -33,12 +41,29 @@
       }
     },
     computed: {
-      badgeStyles() {
+      classes() {
         return {
-          backgroundColor: this.backgroundColor,
-          borderColor: this.borderColor,
-          color: this.textColor
+          'ep-badge--primary': this.variant === 'primary',
+          'ep-badge--secondary': this.variant === 'secondary',
+          'ep-badge--success': this.variant === 'success',
+          'ep-badge--warning': this.variant === 'warning',
+          'ep-badge--danger': this.variant === 'danger',
+          'ep-badge--outlined': this.outlined,
+          'ep-badge--uppercase': this.uppercase
         }
+      },
+      badgeStyles() {
+        const styles = {}
+        if (this.backgroundColor) {
+          styles.backgroundColor = this.backgroundColor
+        }
+        if (this.borderColor) {
+          styles.borderColor = this.borderColor
+        }
+        if (this.textColor) {
+          styles.color = this.textColor
+        }
+        return styles
       }
     }
   }
