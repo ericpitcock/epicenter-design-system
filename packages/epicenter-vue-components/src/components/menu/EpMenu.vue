@@ -25,7 +25,7 @@
           <ep-button
             v-if="!item.divider && !item.section"
             v-bind="buttonProps(item)"
-            @click="itemClick(item)"
+            @click="onClick(item)"
           />
           <div
             v-if="item.children"
@@ -82,7 +82,7 @@
         default: 'var(--border-color)'
       }
     },
-    emits: ['item-click'],
+    emits: ['click'],
     data() {
       return {
         activeItemIndex: null
@@ -110,8 +110,11 @@
           this.activeItemIndex = null
         }
       },
-      itemClick(item) {
-        this.$emit('item-click', item)
+      onClick(item) {
+        if (item.section || item.divider) {
+          return
+        }
+        this.$emit('click', item)
         if (item.command) {
           item.command(item)
         }

@@ -29,6 +29,7 @@
           menu-type="dropdown"
           divider-color="var(--border-color--lighter)"
           :container-props="containerProps"
+          @click="onClick"
         />
       </div>
     </div>
@@ -109,9 +110,12 @@
       closeDropdown() {
         this.dropdownVisible = false
       },
-      selectItem(item) {
+      // selectItem(item) {
+      //   this.$emit('select', item)
+      //   this.closeDropdown()
+      // },
+      onClick(item) {
         this.$emit('select', item)
-        this.closeDropdown()
       },
       onMouseover() {
         if (this.showOnHover) {

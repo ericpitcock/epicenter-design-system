@@ -16,6 +16,7 @@
         :key="`dropdown-${item.id}`"
         v-bind="item"
         :show-on-hover="showDropdownOnHover"
+        @select="onClick"
       />
     </template>
   </div>
@@ -61,8 +62,8 @@
       }
     },
     methods: {
-      onClick(item, index) {
-        this.$emit('click', { item, index })
+      onClick(item) {
+        this.$emit('click', item)
       },
       // onMouseover(item, index) {
       //   if (this.showDropdownOnHover) {
