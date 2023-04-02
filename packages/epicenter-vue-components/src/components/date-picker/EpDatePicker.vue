@@ -32,10 +32,10 @@
       return {
         flatpickr: null,
         inputProps: {
-          backgroundColor: 'var(--background-1)',
+          backgroundColor: 'var(--background-2)',
           type: 'text',
           width: '250px',
-          size: 'large',
+          size: 'xlarge',
           placeholder: 'Select a date',
           iconLeft: {
             name: 'calendar',

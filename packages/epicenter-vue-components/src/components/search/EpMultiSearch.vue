@@ -116,7 +116,7 @@
         // value is the value of the input
         value: '',
         // query is the array of values that have been added to the search
-        query: [],
+        query: ['taco', 'burrito', 'enchilada'],
       }
     },
     computed: {
@@ -153,9 +153,7 @@
         }
       },
       placeholderValue() {
-        // if the input is empty, no value and no query, show the prop placeholder
-        // if the query isn't empty, show "add to your search"
-        return this.value === '' && this.query.length === 0 ? this.placeholder : 'Add to your search'
+        return this.value === '' && this.query.length === 0 ? this.placeholder : '+ Add to your search'
       }
     },
     watch: {

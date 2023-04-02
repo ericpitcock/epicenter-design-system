@@ -129,6 +129,7 @@ export const Dropdown = args => ({
       :button="buttonDefaults"
       :containerProps="containerProps"
       :menuItems="args.menuItems"
+      v-bind="args"
     />
   `
 })
@@ -138,7 +139,6 @@ Dropdown.args = {
   'button.size': 'large',
   'button.iconLeft': 'file',
   alignRight: false,
-  // button: buttonDefaults,
   menuItems: fakeDropdownItems,
   showOnHover: true
 }

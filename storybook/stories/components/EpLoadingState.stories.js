@@ -1,6 +1,4 @@
 import { padded } from '../../helpers/decorators'
-import EpActionBar from '@/components/action-bar/EpActionBar'
-import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 import EpContainer from '@/components/container/EpContainer'
 import EpHeader from '@/components/header/EpHeader'
 import EpFooter from '@/components/footer/EpFooter'
@@ -76,7 +74,6 @@ const destroyAndFetch = [
 
 export const LoadingState = args => ({
   components: {
-    EpActionBar,
     EpContainer,
     EpHeader,
     EpFooter,
@@ -87,7 +84,6 @@ export const LoadingState = args => ({
   setup() {
     return {
       args,
-      commonActionBarArgs,
       columns,
       fakeArray
     }
@@ -135,14 +131,14 @@ export const LoadingState = args => ({
         <template #left>
           <ep-split-button
             :buttonProps="{
-              kind: 'primary',
+              variant: 'primary',
               label: 'Refresh',
               iconLeft: { name: 'refresh' },
               command: () => refresh()
             }"
             :dropdownProps="{
               button: {
-                kind: 'primary',
+                variant: 'primary',
                 label: ''
               },
               containerProps: {
@@ -165,7 +161,6 @@ export const LoadingState = args => ({
           />
         </template>
         <template #right>
-          <ep-action-bar v-bind="commonActionBarArgs" />
         </template>
       </ep-header>
       </template>
