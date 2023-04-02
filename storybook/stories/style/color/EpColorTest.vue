@@ -15,10 +15,10 @@
     <div
       class="color-chip"
       :style="`background: ${primaryColor};`"
-    ></div>
+    />
     <ep-button
       label="Button"
-      kind="primary"
+      variant="primary"
       :style="{ background: primaryColor, borderColor: primaryColor }"
     />
     <ep-button
@@ -28,8 +28,8 @@
     />
     <ep-badge
       label="Badge"
-      backgroundColor=""
-      :borderColor="primaryColor"
+      background-color=""
+      :border-color="primaryColor"
     />
     <!-- <div class="primary-color" v-for="variant in variants" :key="variant">
       <div class="color" :style="`background-color: var(--color--primary--${variant})`"></div>
@@ -44,17 +44,9 @@
 
   export default {
     name: 'EpColorTest',
-    data() {
-      return {
-        variants: [
-          'lightest',
-          'lighter',
-          'light',
-          'dark',
-          'darker',
-          'darkest'
-        ]
-      }
+    components: {
+      EpBadge,
+      EpButton
     },
     props: {
       hue: {
@@ -70,9 +62,17 @@
         default: 65
       }
     },
-    components: {
-      EpBadge,
-      EpButton
+    data() {
+      return {
+        variants: [
+          'lightest',
+          'lighter',
+          'light',
+          'dark',
+          'darker',
+          'darkest'
+        ]
+      }
     },
     computed: {
       primaryColor() {

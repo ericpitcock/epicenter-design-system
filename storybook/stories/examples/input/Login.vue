@@ -58,7 +58,7 @@
           <ep-button
             type="submit"
             :label="buttonLabel"
-            kind="primary"
+            variant="primary"
             @click="onButtonClick"
           />
         </form>

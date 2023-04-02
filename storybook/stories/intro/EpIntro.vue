@@ -13,7 +13,7 @@
         </p>
         <ep-button
           label="View on GitHub"
-          kind="primary"
+          variant="primary"
           size="large"
           :icon-left="{ name: 'f/github', size: 30, weight: 'light' }"
           href="https://github.com/ericpitcock/epicenter-design-system"

@@ -1,6 +1,6 @@
 <template>
   <ep-button
-    kind="ghost"
+    variant="ghost"
     :icon-left="{ name: buttonIcon }"
     title="Toggle theme"
     class="theme-toggle"

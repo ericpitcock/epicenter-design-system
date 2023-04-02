@@ -77,7 +77,7 @@
       return {
         dropdownVisible: false,
         buttonDefaults: {
-          kind: 'secondary',
+          variant: 'secondary',
           size: 'default',
           title: '',
           label: 'Default Dropdown',

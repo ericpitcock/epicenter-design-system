@@ -55,7 +55,7 @@
       },
       buttonDefaults() {
         return {
-          kind: 'ghost',
+          variant: 'ghost',
           label: '',
           title: '',
         }

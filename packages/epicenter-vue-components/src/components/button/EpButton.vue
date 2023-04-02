@@ -2,9 +2,10 @@
   <component
     :is="element"
     :type="type"
-    :class="classes"
+    :class="['ep-button', classes]"
+    :style="buttonStyles"
     :title="title"
-    @click="handleClick"
+    @click="onClick"
   >
     <span
       v-if="iconLeft"
@@ -34,7 +35,7 @@
       EpIcon
     },
     props: {
-      kind: {
+      variant: {
         type: String,
         default: 'secondary',
         validator: value => {
@@ -99,8 +100,21 @@
         validator: value => {
           return ['button', 'submit'].includes(value)
         }
-      }
+      },
+      backgroundColor: {
+        type: String,
+        default: ''
+      },
+      borderColor: {
+        type: String,
+        default: ''
+      },
+      textColor: {
+        type: String,
+        default: ''
+      },
     },
+    emits: ['click'],
     computed: {
       element() {
         const attrs = this.$attrs
@@ -114,8 +128,7 @@
       },
       classes() {
         return [
-          'ep-button',
-          `ep-button--${this.kind}`,
+          `ep-button--${this.variant}`,
           {
             [`ep-button--${this.size}`]: this.size != 'default',
             'ep-button--icon-right': this.iconRight,
@@ -125,11 +138,24 @@
             'ep-button--menu-item--active': this.isActiveMenuItem
           }
         ]
+      },
+      buttonStyles() {
+        const styles = {}
+        if (this.backgroundColor) {
+          styles.background = this.backgroundColor
+        }
+        if (this.borderColor) {
+          styles.borderColor = this.borderColor
+        }
+        if (this.textColor) {
+          styles.color = this.textColor
+        }
+        return styles
       }
     },
     methods: {
-      handleClick() {
-        // this.$emit('click')
+      onClick() {
+        this.$emit('click')
         if (this.command) {
           this.command()
         }

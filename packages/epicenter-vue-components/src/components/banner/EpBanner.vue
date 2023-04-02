@@ -28,7 +28,7 @@
       >
         <ep-button
           class="dismiss-button"
-          kind="ghost"
+          variant="ghost"
           :icon-right="{ name: 'close' }"
           @click="dismissNotification"
         />

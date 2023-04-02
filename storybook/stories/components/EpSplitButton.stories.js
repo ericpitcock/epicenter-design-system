@@ -21,6 +21,28 @@ export default {
       },
       table: { category: 'Config' }
     },
+    'buttonProps.variant': {
+      name: 'Variant',
+      options: [
+        'primary',
+        'secondary',
+        'ghost',
+        'danger',
+        'warning',
+        'success'
+      ],
+      control: {
+        type: 'radio',
+        labels: {
+          primary: 'Primary',
+          secondary: 'Secondary',
+          ghost: 'Ghost',
+          danger: 'Danger',
+          warning: 'Warning',
+          success: 'Success'
+        }
+      }
+    },
     'buttonProps.label': {
       name: 'Label',
       control: {
@@ -71,7 +93,7 @@ export const SplitButton = args => ({
   components: { EpSplitButton },
   setup() {
     const buttonProps = {
-      kind: 'primary',
+      variant: args['buttonProps.variant'],
       size: args['buttonProps.size'],
       label: args['buttonProps.label'],
       iconLeft: args['buttonProps.iconLeft'],
@@ -79,7 +101,7 @@ export const SplitButton = args => ({
     }
     const dropdownProps = {
       button: {
-        kind: 'primary',
+        variant: args['buttonProps.variant'],
         size: args['buttonProps.size'],
         label: '',
         iconRight: args['dropdownProps.button.iconRight'],
@@ -109,6 +131,7 @@ export const SplitButton = args => ({
 
 SplitButton.args = {
   'buttonProps.label': 'Download Latest (v1.2)',
+  'buttonProps.variant': 'primary',
   'buttonProps.size': 'large',
   'dropdownProps.button.iconRight': 'chevron-down',
 }

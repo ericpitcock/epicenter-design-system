@@ -1,5 +1,6 @@
 import vueRouter from 'storybook-vue3-router'
 import { centered } from '../../helpers/decorators'
+import { colorNames, colorValues } from '../../helpers/colorHelper'
 import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpButton from '@/components/button/EpButton'
 
@@ -20,8 +21,8 @@ export default {
         type: 'boolean'
       }
     },
-    kind: {
-      name: 'Kind',
+    variant: {
+      name: 'Variant',
       options: [
         'primary',
         'secondary',
@@ -103,7 +104,44 @@ export default {
       table: {
         category: 'Icons'
       }
-    }
+    },
+    backgroundColor: {
+      name: 'Background Color',
+      options: colorNames,
+      mapping: colorValues,
+      control: {
+        type: 'select',
+      },
+      table: {
+        category: 'Overrides'
+      }
+    },
+    borderColor: {
+      name: 'Border Color',
+      options: colorNames,
+      mapping: colorValues,
+      control: {
+        type: 'select',
+      },
+      table: {
+        category: 'Overrides'
+      }
+    },
+    textColor: {
+      name: 'Text Color',
+      options: ['None', 'var(--text-color)', 'var(--text-color--inverse)'],
+      mapping: {
+        'None': '',
+        'var(--text-color)': 'var(--text-color)',
+        'var(--text-color--inverse)': 'var(--text-color--inverse)'
+      },
+      control: {
+        type: 'select',
+      },
+      table: {
+        category: 'Overrides'
+      }
+    },
   }
 }
 
@@ -117,15 +155,18 @@ export const Button = args => ({
 
 Button.args = {
   disabled: false,
+  label: 'Download',
+  variant: 'primary',
   outlined: false,
-  kind: 'primary',
   size: 'large',
   title: 'This is the tooltip',
   to: '',
   href: '',
-  label: 'Download',
   iconLeft: 'none',
-  iconRight: 'none'
+  iconRight: 'none',
+  backgroundColor: 'None',
+  borderColor: 'None',
+  textColor: 'None',
 }
 
 Button.decorators = [

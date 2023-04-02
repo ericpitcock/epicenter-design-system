@@ -46,7 +46,7 @@
       <ep-footer padding="0 3rem">
         <template #right>
           <ep-button
-            kind="primary"
+            variant="primary"
             label="Submit"
             :disabled="!rating"
             @click="submit"

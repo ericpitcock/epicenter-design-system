@@ -91,7 +91,7 @@
     methods: {
       buttonProps(item) {
         return {
-          kind: 'menu-item',
+          variant: 'menu-item',
           size: this.size,
           label: item.label,
           iconRight: item.iconRight,

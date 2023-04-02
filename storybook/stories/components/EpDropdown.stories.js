@@ -3,7 +3,7 @@ import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpDropdown from '@/components/dropdown/EpDropdown'
 
 // const buttonDefaults = {
-//   kind: 'secondary',
+//   variant: 'secondary',
 //   size: 'default',
 //   title: 'Components/Default Dropdown',
 //   label: 'Export',
@@ -19,22 +19,22 @@ import EpDropdown from '@/components/dropdown/EpDropdown'
 const fakeDropdownItems = [
   {
     label: 'PDF',
-    iconLeft: { name: 'file' }
+    iconLeft: { name: 'f/file' }
   },
   {
     label: 'JPG',
-    iconLeft: { name: 'file' }
+    iconLeft: { name: 'f/file' }
   },
   {
     divider: true
   },
   {
     label: 'CSV',
-    iconLeft: { name: 'file' }
+    iconLeft: { name: 'f/file' }
   },
   {
     label: 'JSON',
-    iconLeft: { name: 'file' }
+    iconLeft: { name: 'f/file' }
   }
 ]
 
@@ -43,8 +43,8 @@ export default {
   component: EpDropdown,
   decorators: [centered],
   argTypes: {
-    'button.kind': {
-      name: 'Kind',
+    'button.variant': {
+      name: 'Variant',
       options: [
         'primary',
         'secondary',
@@ -110,7 +110,7 @@ export const Dropdown = args => ({
   },
   setup() {
     const buttonDefaults = {
-      kind: args['button.kind'],
+      variant: args['button.variant'],
       size: args['button.size'],
       label: 'Export Data',
       iconRight: { name: 'chevron-down' },
@@ -134,9 +134,9 @@ export const Dropdown = args => ({
 })
 
 Dropdown.args = {
-  'button.kind': 'primary',
+  'button.variant': 'primary',
   'button.size': 'large',
-  'button.iconLeft': 'export',
+  'button.iconLeft': 'file',
   alignRight: false,
   // button: buttonDefaults,
   menuItems: fakeDropdownItems,

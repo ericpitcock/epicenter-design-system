@@ -63,6 +63,8 @@ export const MapInContext = (args, { globals: { theme } }) => ({
 
     const currentMapCenter = ref([-122.3321, 47.6062])
 
+    const currentMapZoom = ref(12)
+
     const searchResults = ref([])
 
     const searchLocation = async query => {
@@ -96,7 +98,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
         {
           type: 'dropdown',
           button: {
-            kind: 'ghost',
+            variant: 'ghost',
             label: '',
             iconLeft: { name: 'f/coffee' },
             iconRight: null
@@ -132,7 +134,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
         {
           type: 'dropdown',
           button: {
-            kind: 'ghost',
+            variant: 'ghost',
             label: '',
             iconLeft: { name: 'f/shopping-bag' },
             iconRight: null
@@ -175,6 +177,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       // clear currentMapPin and then add new pin
       currentMapPin.value = []
       currentMapPin.value.push(item.value)
+      currentMapZoom.value = 30
     }
 
     const centerChanged = center => {
@@ -188,6 +191,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       currentMapCenter,
       currentMapPin,
       currentMapStyle,
+      currentMapZoom,
       updateMapCenter,
       searchLocation,
       searchResults,
@@ -230,6 +234,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
           v-bind="args"
           :map-style="currentMapStyle"
           :map-center="currentMapCenter"
+          :map-zoom="currentMapZoom"
           :pin-locations="currentMapPin"
           @center-change="centerChanged"
         />
