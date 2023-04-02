@@ -5,8 +5,11 @@ import EpDropdown from '@/components/dropdown/EpDropdown'
 import EpHeader from '@/components/header/EpHeader'
 import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
 import EpFooter from '@/components/footer/EpFooter'
+import EpSearch from '@/components/search/EpSearch'
 import EpTable from '@/components/table/EpTable'
 import { columns, fakeArray } from '@/components/table/data'
+
+const tableData = fakeArray(30)
 
 export default {
   title: 'Components/Table',
@@ -174,6 +177,7 @@ export const Table = args => ({
     EpHeader,
     EpFlexContainer,
     EpFooter,
+    EpSearch,
     EpTable
   },
   // setup() {
@@ -183,7 +187,8 @@ export const Table = args => ({
     return {
       args,
       filters,
-      hiddenColumns: []
+      hiddenColumns: [],
+      tableData
     }
   },
   methods: {
@@ -196,6 +201,10 @@ export const Table = args => ({
         this.hiddenColumns = this.hiddenColumns.filter(column => column !== event.target.id)
       }
       console.log(event)
+    },
+    onSearch(value) {
+      // filter tableData
+      this.tableData = tableData.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
     }
   },
   template: `
@@ -208,11 +217,25 @@ export const Table = args => ({
     <template #header>
       <ep-header>
         <template #left>
+          <ep-search
+            calculateHeight
+            :calculateHeightOffset="74"
+            :search-results="tableData"
+            results-value="name"
+            results-label="name"
+            :input-props="{
+              width: '40rem',
+              size: 'large',
+              backgroundColor: 'var(--background-1)',
+              placeholder: 'Search by Name (currently half-baked)'
+            }"
+            @search="onSearch"
+          />
         </template>
         <template #right>
           <ep-dropdown
             :button="{
-              kind: 'ghost',
+              variant: 'ghost',
               label: '',
               iconRight: { name: 'f/columns' }
             }"
@@ -256,7 +279,7 @@ Table.args = {
   calculateHeightOffset: 30,
   columns: columns,
   compact: false,
-  data: fakeArray(30),
+  data: tableData,
   exclude: ['id'],
   hiddenColumns: [],
   padding: '0 0 10rem 0',

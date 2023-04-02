@@ -15,16 +15,22 @@ export default {
     },
     variant: {
       name: 'Variant',
-      options: ['Primary', 'Secondary', 'Success', 'Warning', 'Danger'],
-      mapping: {
-        'Primary': 'primary',
-        'Secondary': 'secondary',
-        'Success': 'success',
-        'Warning': 'warning',
-        'Danger': 'danger'
-      },
+      options: [
+        'primary',
+        'secondary',
+        'success',
+        'warning',
+        'danger',
+      ],
       control: {
         type: 'radio',
+        labels: {
+          primary: 'Primary',
+          secondary: 'Secondary',
+          success: 'Success',
+          warning: 'Warning',
+          danger: 'Danger',
+        }
       }
     },
     outlined: {
@@ -91,7 +97,7 @@ export const Badge = args => ({
 
 Badge.args = {
   label: 'Subscribed',
-  variant: 'Secondary',
+  variant: 'success',
   outlined: false,
   backgroundColor: 'None',
   borderColor: 'None',

@@ -1,10 +1,5 @@
 import { padded } from '../../helpers/decorators'
-import EpActionBar from '@/components/action-bar/EpActionBar'
-import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
-import EpContainer from '@/components/container/EpContainer'
 import EpDatePicker from '@/components/date-picker/EpDatePicker'
-import EpFooter from '@/components/footer/EpFooter'
-import EpHeader from '@/components/header/EpHeader'
 
 export default {
   title: 'Components/Date Picker',
@@ -21,7 +16,7 @@ export default {
       name: 'Mode',
       options: ['single', 'multiple', 'range'],
       control: {
-        type: 'select',
+        type: 'radio',
         labels: {
           single: 'Single',
           multiple: 'Multiple',
@@ -34,37 +29,15 @@ export default {
 
 export const DatePicker = args => ({
   components: {
-    EpActionBar,
-    EpContainer,
-    EpDatePicker,
-    EpFooter,
-    EpHeader
+    EpDatePicker
   },
   setup() {
-    return { args, commonActionBarArgs }
+    return { args }
   },
-  template: `
-    <ep-container
-      max-width="120rem"
-      height="100%"
-      container-padding="0 3rem"
-      overflow="hidden"
-    >
-      <template #header>
-      <ep-header>
-        <template #left>
-          <ep-date-picker v-bind="args" />
-        </template>
-        <template #right>
-          <ep-action-bar v-bind="commonActionBarArgs" />
-        </template>
-      </ep-header>
-      </template>
-      <template #default>
-      </template>
-      <template #footer>
-        <ep-footer />
-      </template>
-    </ep-container>
-  `
+  template: '<ep-date-picker v-bind="args" />'
 })
+
+DatePicker.args = {
+  dateFormat: 'm/d/Y',
+  mode: 'single'
+}

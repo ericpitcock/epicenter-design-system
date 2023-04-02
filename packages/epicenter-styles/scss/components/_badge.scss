@@ -11,33 +11,33 @@
   // 'Primary', 'Secondary', 'Success', 'Warning', 'Danger'
 
   &--primary {
-    background-color: var(--bg-color--primary);
+    background-color: var(--color--primary);
     color: var(--text-color);
     border-color: var(--color--primary);
   }
 
   &--secondary {
-    background-color: var(--bg-color--secondary);
+    background-color: var(--background-4);
     color: var(--text-color);
-    border-color: var(--border-color--secondary);
+    border-color: var(--background-4);
   }
 
   &--success {
-    background-color: var(--bg-color--success);
-    color: var(--text-color--inverse);
-    border-color: var(--border-color--success);
+    background-color: var(--success-green--base);
+    color: var(--success-green--text);
+    border-color: var(--success-green--base);
   }
 
   &--warning {
-    background-color: var(--bg-color--warning);
-    color: var(--text-color--inverse);
-    border-color: var(--border-color--warning);
+    background-color: var(--warning-yellow--base);
+    color: var(--warning-yellow--text);
+    border-color: var(--warning-yellow--base);
   }
 
   &--danger {
-    background-color: var(--bg-color--danger);
-    color: var(--text-color--inverse);
-    border-color: var(--border-color--danger);
+    background-color: var(--danger-red--base);
+    color: var(--danger-red--text);
+    border-color: var(--danger-red--base);
   }
 
   &--outlined {

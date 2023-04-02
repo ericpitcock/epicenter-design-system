@@ -5,7 +5,11 @@ const columns = [
   {
     header: 'Status',
     key: 'status',
-    cellType: 'component'
+    formatter: value => {
+      return value === 'Completed'
+        ? `<span class="ep-badge" style="border-color: var(--success-green--border);">${value}</span>`
+        : `<span class="ep-badge" style="border-color: var(--danger-red--border);">${value}</span>`
+    }
   },
   {
     header: 'Date',
@@ -65,15 +69,7 @@ const fakeArray = length => {
   for (let i = 0; i < length; i++) {
     arr.push({
       id: faker.datatype.uuid(),
-      status: {
-        component: 'ep-badge',
-        props: {
-          label: faker.random.arrayElement(['Completed', 'Cancelled']),
-          backgroundColor: 'var(--background-1)',
-          borderColor: 'var(--green-600)',
-          textColor: 'var(--text-color)'
-        }
-      },
+      status: faker.random.arrayElement(['Completed', 'Cancelled']),
       start_date: faker.date.past().toISOString(),
       name: faker.address.city(),
       type: faker.random.arrayElement(['VirtualRide', 'Ride']),

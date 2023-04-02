@@ -7,6 +7,7 @@ export default {
   decorators: [centered],
   argTypes: {
     disabled: {
+      name: 'Disabled',
       control: {
         type: 'boolean',
       }
@@ -51,7 +52,6 @@ ButtonGroup.args = {
     { label: 'Button 2' },
     { label: 'Button 3' }
   ],
-  selected: 0,
   disabled: false,
   size: 'large',
 }

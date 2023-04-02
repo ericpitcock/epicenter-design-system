@@ -42,15 +42,13 @@
     },
     computed: {
       classes() {
-        return {
-          'ep-badge--primary': this.variant === 'primary',
-          'ep-badge--secondary': this.variant === 'secondary',
-          'ep-badge--success': this.variant === 'success',
-          'ep-badge--warning': this.variant === 'warning',
-          'ep-badge--danger': this.variant === 'danger',
-          'ep-badge--outlined': this.outlined,
-          'ep-badge--uppercase': this.uppercase
-        }
+        return [
+          `ep-badge--${this.variant}`,
+          {
+            'ep-badge--outlined': this.outlined,
+            'ep-badge--uppercase': this.uppercase
+          }
+        ]
       },
       badgeStyles() {
         const styles = {}

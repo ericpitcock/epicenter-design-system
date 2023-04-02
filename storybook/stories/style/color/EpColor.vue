@@ -162,8 +162,8 @@
             key: 'contrast',
             formatter: value => {
               return value === 'AAA &check;' || value === 'AA &check;'
-                ? `<span class="ep-badge" style="color: var(--emerald-500);">${value}</span>`
-                : `<span class="ep-badge" style="color: var(--red-500);">${value}</span>`
+                ? `<span class="ep-badge" style="color: var(--success-green--border);">${value}</span>`
+                : `<span class="ep-badge" style="color: var(--danger-red--border);">${value}</span>`
             }
           },
           {

@@ -373,21 +373,21 @@ textarea {
   --primary-color--active: hsl(214, 91%, 60%);
   --primary-color--border: var(--color--primary);
   --primary-color--text: var(--gray-0);
-  --danger-red--base: hsl(3, 100%, 70%);
-  --danger-red--hover: hsl(3, 90%, 65%);
-  --danger-red--active: hsl(3, 90%, 56%);
-  --danger-red--border: var(--danger-red--base);
-  --danger-red--text: hsl(3, 100%, 6%);
-  --warning-yellow--base: hsl(48, 100%, 51%);
-  --warning-yellow--hover: hsl(46, 100%, 49%);
-  --warning-yellow--active: hsl(46, 100%, 41%);
-  --warning-yellow--border: var(--warning-yellow--base);
-  --warning-yellow--text: hsl(48, 100%, 10%);
   --success-green--base: hsl(99, 59%, 66%);
   --success-green--hover: hsl(99, 59%, 60%);
   --success-green--active: hsl(99, 59%, 52%);
   --success-green--border: var(--success-green--base);
   --success-green--text: hsl(99, 59%, 10%);
+  --warning-yellow--base: hsl(48, 100%, 51%);
+  --warning-yellow--hover: hsl(46, 100%, 49%);
+  --warning-yellow--active: hsl(46, 100%, 41%);
+  --warning-yellow--border: var(--warning-yellow--base);
+  --warning-yellow--text: hsl(48, 100%, 10%);
+  --danger-red--base: hsl(3, 100%, 70%);
+  --danger-red--hover: hsl(3, 90%, 65%);
+  --danger-red--active: hsl(3, 90%, 56%);
+  --danger-red--border: var(--danger-red--base);
+  --danger-red--text: hsl(3, 100%, 6%);
   --logo-face: #fff16c;
   --logo-hightlight: var(--white);
   --logo-shadow: var(--black);
@@ -470,16 +470,6 @@ textarea {
   --bg-color--alert-medium: var(--yellow-400);
   --bg-color--alert-high: var(--amber-500);
   --bg-color--alert-critical: var(--red-500);
-  --bg-color--primary: var(--color--primary);
-  --bg-color--secondary: var(--background-4);
-  --bg-color--success: var(--emerald-500);
-  --bg-color--warning: var(--yellow-500);
-  --bg-color--danger: var(--rose-400);
-  --border-color--primary: var(--bg-color--primary);
-  --border-color--secondary: var(--bg-color--secondary);
-  --border-color--success: var(--bg-color--success);
-  --border-color--warning: var(--bg-color--warning);
-  --border-color--danger: var(--bg-color--danger);
 }
 
 html[data-color-theme=light] {
@@ -741,29 +731,29 @@ small {
   border-style: solid;
 }
 .ep-badge--primary {
-  background-color: var(--bg-color--primary);
+  background-color: var(--color--primary);
   color: var(--text-color);
   border-color: var(--color--primary);
 }
 .ep-badge--secondary {
-  background-color: var(--bg-color--secondary);
+  background-color: var(--background-4);
   color: var(--text-color);
-  border-color: var(--border-color--secondary);
+  border-color: var(--background-4);
 }
 .ep-badge--success {
-  background-color: var(--bg-color--success);
-  color: var(--text-color--inverse);
-  border-color: var(--border-color--success);
+  background-color: var(--success-green--base);
+  color: var(--success-green--text);
+  border-color: var(--success-green--base);
 }
 .ep-badge--warning {
-  background-color: var(--bg-color--warning);
-  color: var(--text-color--inverse);
-  border-color: var(--border-color--warning);
+  background-color: var(--warning-yellow--base);
+  color: var(--warning-yellow--text);
+  border-color: var(--warning-yellow--base);
 }
 .ep-badge--danger {
-  background-color: var(--bg-color--danger);
-  color: var(--text-color--inverse);
-  border-color: var(--border-color--danger);
+  background-color: var(--danger-red--base);
+  color: var(--danger-red--text);
+  border-color: var(--danger-red--base);
 }
 .ep-badge--outlined {
   background-color: transparent;
