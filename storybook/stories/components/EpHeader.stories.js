@@ -190,15 +190,15 @@ export const Header = args => ({
   template: `
     <ep-header v-bind="args">
       <template #left>
-        <div style=" display: grid; place-content: center; width: 150px; height: 100%; border: 1px dashed skyblue">Left Item</div>
+        <div style="display: grid; place-content: center; width: 150px; height: 100%; border: 1px dashed skyblue;">Left Item</div>
       </template>
       <template #center>
-        <div style=" display: grid; place-content: center; width: 100%; height: 100%; border: 1px dashed skyblue">Center Item</div>
+        <div style="display: grid; place-content: center; width: 100%; height: 100%; border: 1px dashed skyblue;">Center Item</div>
       </template>
       <template #right>
-        <div style=" display: grid; place-content: center; width: 125px; height: 100%; border: 1px dashed skyblue">Right Item</div>
-        <div style=" display: grid; place-content: center; width: 125px; height: 100%; border: 1px dashed skyblue">Right Item</div>
-        <div style=" display: grid; place-content: center; width: 125px; height: 100%; border: 1px dashed skyblue">Right Item</div>
+        <div style="display: grid; place-content: center; width: 125px; height: 100%; border: 1px dashed skyblue;">Right Item</div>
+        <div style="display: grid; place-content: center; width: 125px; height: 100%; border: 1px dashed skyblue;">Right Item</div>
+        <div style="display: grid; place-content: center; width: 125px; height: 100%; border: 1px dashed skyblue;">Right Item</div>
       </template>
     </ep-header>
   `
