@@ -73,14 +73,38 @@
         type: String,
         default: '1'
       },
+      leftGap: {
+        type: String,
+        default: '3rem'
+      },
+      leftJustify: {
+        type: String,
+        default: 'flex-start'
+      },
       centerFlex: {
         type: String,
         default: '1'
       },
+      centerGap: {
+        type: String,
+        default: '3rem'
+      },
+      centerJustify: {
+        type: String,
+        default: 'center'
+      },
       rightFlex: {
         type: String,
         default: '1'
-      }
+      },
+      rightGap: {
+        type: String,
+        default: '3rem'
+      },
+      rightJustify: {
+        type: String,
+        default: 'flex-end'
+      },
     },
     computed: {
       // footerStyles() {
@@ -110,18 +134,21 @@
         return {
           flex: this.leftFlex,
           gap: this.itemGap,
+          justifyContent: this.leftJustify,
         }
       },
       centerStyles() {
         return {
           flex: this.centerFlex,
           gap: this.itemGap,
+          justifyContent: this.centerJustify,
         }
       },
       rightStyles() {
         return {
           flex: this.rightFlex,
           gap: this.itemGap,
+          justifyContent: this.rightJustify,
         }
       }
     },

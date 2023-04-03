@@ -77,6 +77,10 @@
         type: String,
         default: '3rem'
       },
+      leftJustify: {
+        type: String,
+        default: 'flex-start'
+      },
       centerFlex: {
         type: String,
         default: '1'
@@ -85,6 +89,10 @@
         type: String,
         default: '3rem'
       },
+      centerJustify: {
+        type: String,
+        default: 'center'
+      },
       rightFlex: {
         type: String,
         default: '1'
@@ -92,6 +100,10 @@
       rightGap: {
         type: String,
         default: '3rem'
+      },
+      rightJustify: {
+        type: String,
+        default: 'flex-end'
       },
       sticky: {
         type: Boolean,
@@ -127,18 +139,21 @@
         return {
           flex: this.leftFlex,
           gap: this.leftGap,
+          justifyContent: this.leftJustify
         }
       },
       centerStyles() {
         return {
           flex: this.centerFlex,
           gap: this.centerGap,
+          justifyContent: this.centerJustify
         }
       },
       rightStyles() {
         return {
           flex: this.rightFlex,
           gap: this.rightGap,
+          justifyContent: this.rightJustify
         }
       },
       // need to address this
