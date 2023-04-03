@@ -20,6 +20,7 @@ html[data-color-theme='light'] {
   --text-color--disabled: var(--gray-270);
   --text-color--inverse: var(--gray-0);
   --text-color--highlight: var(--yellow-300);
+  --text-color--placeholder: var(--text-color--subtle);
   // text gradient
   --text-gradient: linear-gradient(to right,
     hsl(17, 90%, 56%),
@@ -68,7 +69,6 @@ html[data-color-theme='light'] {
   --toggle-track-border: var(--border-color);
   --toggle-track--active: var(--emerald-500);
   --toggle-track-border--active: var(--emerald-500);
-  --toggle-track--disabled: var(--gray-400);
   --toggle-thumb: var(--gray-0);
   --toggle-thumb--active: var(--gray-50);
   --toggle-thumb--disabled: var(--gray-50);

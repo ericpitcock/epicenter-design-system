@@ -137,7 +137,7 @@ export const LoadingState = args => ({
               command: () => refresh()
             }"
             :dropdownProps="{
-              button: {
+              buttonProps: {
                 variant: 'primary',
                 label: ''
               },
@@ -179,6 +179,8 @@ export const LoadingState = args => ({
           calculate-height
           :calculate-height-offset="81"
           bordered
+          sortable
+          striped
           padding="0 0 10rem 0"
         />
       </template>

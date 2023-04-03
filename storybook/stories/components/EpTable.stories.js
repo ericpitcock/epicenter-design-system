@@ -200,7 +200,6 @@ export const Table = args => ({
         // if checked, remove from hiddenColumns
         this.hiddenColumns = this.hiddenColumns.filter(column => column !== event.target.id)
       }
-      console.log(event)
     },
     onSearch(value) {
       // filter tableData

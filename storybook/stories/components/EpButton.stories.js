@@ -155,7 +155,7 @@ export const Button = args => ({
 
 Button.args = {
   disabled: false,
-  label: 'Download',
+  label: 'Download the Internet',
   variant: 'primary',
   outlined: false,
   size: 'large',

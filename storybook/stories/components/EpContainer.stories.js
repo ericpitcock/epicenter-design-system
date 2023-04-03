@@ -12,7 +12,7 @@ const container = () => {
 }
 
 export default {
-  title: 'Components/Container',
+  title: 'Components/Container/Container',
   component: EpContainer,
   decorators: [container],
   argTypes: {

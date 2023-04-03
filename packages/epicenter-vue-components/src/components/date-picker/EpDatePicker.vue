@@ -37,6 +37,7 @@
           width: '250px',
           size: 'xlarge',
           placeholder: 'Select a date',
+          placeholderColor: 'var(--text-color)',
           iconLeft: {
             name: 'calendar',
           },

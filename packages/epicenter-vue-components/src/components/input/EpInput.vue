@@ -40,6 +40,10 @@
         type: String,
         default: ''
       },
+      placeholderColor: {
+        type: String,
+        default: ''
+      },
       modelValue: {
         type: String,
         default: ''
@@ -155,13 +159,18 @@
         }
       },
       inputStyles() {
-        return {
+        const styles = {
           borderStyle: this.borderStyle,
           borderWidth: this.borderWidth,
           borderColor: this.computedBorderColor,
           borderRadius: this.borderRadius,
           backgroundColor: this.computedBackgroundColor,
+          '--text-color--placeholder': this.placeholderColor,
         }
+        // if (this.placeholderColor) {
+        //   styles['--text-color--placeholder'] = this.placeholderColor
+        // }
+        return styles
       },
       value: {
         get() {

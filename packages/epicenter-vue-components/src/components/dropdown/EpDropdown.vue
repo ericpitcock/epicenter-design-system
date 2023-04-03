@@ -12,7 +12,7 @@
         v-if="$slots.trigger"
         name="trigger"
       />
-      <ep-button v-bind="buttonProps" />
+      <ep-button v-bind="computedButtonProps" />
     </div>
     <div
       v-show="dropdownVisible"
@@ -51,7 +51,25 @@
       clickOutside
     },
     props: {
+      disabled: {
+        type: Boolean,
+        default: false
+      },
       button: {
+        type: Object,
+        default: () => ({}),
+        // Add a warning message to the console whenever the "button" prop is used
+        // informing the user that it will be deprecated in a future version
+        // and recommending that they switch to the "buttonProps" prop.
+        // Also keep the "button" prop for backwards compatibility.
+        validator: (value, props) => {
+          if (value) {
+            console.warn('[EpDropdown] The "button" prop has been deprecated. Use "buttonProps" instead.')
+          }
+          return true
+        }
+      },
+      buttonProps: {
         type: Object,
         default: () => ({})
       },
@@ -87,9 +105,12 @@
       }
     },
     computed: {
-      buttonProps() {
+      computedButtonProps() {
         return {
+          ...this.disabled && { disabled: true },
           ...this.buttonDefaults,
+          ...this.buttonProps,
+          // For backwards compatibility, merge the "button" prop with the "buttonProps" prop
           ...this.button
         }
       },
@@ -102,12 +123,15 @@
     },
     methods: {
       toggleDropdown() {
-        if (this.showOnHover) {
+        if (this.disabled || this.showOnHover) {
           return
         }
         this.dropdownVisible = !this.dropdownVisible
       },
       closeDropdown() {
+        if (this.disabled) {
+          return
+        }
         this.dropdownVisible = false
       },
       // selectItem(item) {
@@ -118,11 +142,17 @@
         this.$emit('select', item)
       },
       onMouseover() {
+        if (this.disabled) {
+          return
+        }
         if (this.showOnHover) {
           this.dropdownVisible = true
         }
       },
       onMouseleave() {
+        if (this.disabled) {
+          return
+        }
         if (this.showOnHover) {
           this.dropdownVisible = false
         }

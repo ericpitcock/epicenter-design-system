@@ -43,7 +43,13 @@ export default {
   component: EpDropdown,
   decorators: [centered],
   argTypes: {
-    'button.variant': {
+    disabled: {
+      name: 'Disabled',
+      control: {
+        type: 'boolean'
+      }
+    },
+    'buttonProps.variant': {
       name: 'Variant',
       options: [
         'primary',
@@ -65,7 +71,7 @@ export default {
         }
       }
     },
-    'button.size': {
+    'buttonProps.size': {
       name: 'Size',
       options: ['small', 'default', 'large', 'xlarge'],
       control: {
@@ -78,7 +84,7 @@ export default {
         }
       }
     },
-    'button.iconLeft': {
+    'buttonProps.iconLeft': {
       name: 'Icon (Left)',
       options: iconNames,
       mapping: iconNamesMapping,
@@ -93,6 +99,7 @@ export default {
       }
     },
     button: { table: { disable: true } },
+    buttonProps: { table: { disable: true } },
     containerProps: { table: { disable: true } },
     menuItems: { table: { disable: true } },
     showOnHover: {
@@ -109,12 +116,12 @@ export const Dropdown = args => ({
     EpDropdown
   },
   setup() {
-    const buttonDefaults = {
-      variant: args['button.variant'],
-      size: args['button.size'],
+    const buttonProps = {
+      variant: args['buttonProps.variant'],
+      size: args['buttonProps.size'],
       label: 'Export Data',
-      iconRight: { name: 'chevron-down' },
-      iconLeft: args['button.iconLeft']
+      // iconRight: { name: 'chevron-down' },
+      iconLeft: args['buttonProps.iconLeft']
     }
     const containerProps = {
       backgroundColor: 'var(--background-4)',
@@ -122,11 +129,11 @@ export const Dropdown = args => ({
       borderRadius: 'var(--border-radius)',
       borderColor: 'var(--border-color--lighter)'
     }
-    return { args, buttonDefaults, containerProps }
+    return { args, buttonProps, containerProps }
   },
   template: `
     <ep-dropdown
-      :button="buttonDefaults"
+      :buttonProps="buttonProps"
       :containerProps="containerProps"
       :menuItems="args.menuItems"
       v-bind="args"
@@ -135,9 +142,10 @@ export const Dropdown = args => ({
 })
 
 Dropdown.args = {
-  'button.variant': 'primary',
-  'button.size': 'large',
-  'button.iconLeft': 'file',
+  disabled: false,
+  'buttonProps.variant': 'primary',
+  'buttonProps.size': 'large',
+  'buttonProps.iconLeft': 'file',
   alignRight: false,
   menuItems: fakeDropdownItems,
   showOnHover: true

@@ -3,7 +3,7 @@ const commonActionBarArgs = {
     {
       type: 'dropdown',
       alignRight: true,
-      button: {
+      buttonProps: {
         variant: 'ghost',
         label: '',
         iconLeft: { name: 'help' },
@@ -25,7 +25,7 @@ const commonActionBarArgs = {
     {
       type: 'dropdown',
       alignRight: true,
-      button: {
+      buttonProps: {
         variant: 'ghost',
         label: '',
         iconLeft: { name: 'notifications' },
@@ -48,7 +48,7 @@ const commonActionBarArgs = {
     {
       type: 'dropdown',
       alignRight: true,
-      button: {
+      buttonProps: {
         variant: 'ghost',
         label: '',
         iconLeft: { name: 'user' },

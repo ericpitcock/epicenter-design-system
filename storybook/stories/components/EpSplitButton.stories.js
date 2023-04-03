@@ -7,6 +7,12 @@ export default {
   component: EpSplitButton,
   decorators: [centered],
   argTypes: {
+    disabled: {
+      name: 'Disabled',
+      control: {
+        type: 'boolean'
+      },
+    },
     buttonProps: {
       name: 'Button Props',
       control: {
@@ -78,7 +84,7 @@ export default {
         type: 'select'
       }
     },
-    'dropdownProps.button.iconRight': {
+    'dropdownProps.buttonProps.iconRight': {
       name: 'Dropdown Icon',
       options: iconNames,
       mapping: iconNamesMapping,
@@ -100,11 +106,11 @@ export const SplitButton = args => ({
       iconRight: args['buttonProps.iconRight'],
     }
     const dropdownProps = {
-      button: {
+      buttonProps: {
         variant: args['buttonProps.variant'],
         size: args['buttonProps.size'],
         label: '',
-        iconRight: args['dropdownProps.button.iconRight'],
+        iconRight: args['dropdownProps.buttonProps.iconRight'],
       },
       containerProps: {
         backgroundColor: 'var(--background-4)',
@@ -125,13 +131,15 @@ export const SplitButton = args => ({
     <ep-split-button
       :buttonProps="buttonProps"
       :dropdownProps="dropdownProps"
+      v-bind="args"
     />
   `
 })
 
 SplitButton.args = {
+  disabled: false,
   'buttonProps.label': 'Download Latest (v1.2)',
   'buttonProps.variant': 'primary',
   'buttonProps.size': 'large',
-  'dropdownProps.button.iconRight': 'chevron-down',
+  'dropdownProps.buttonProps.iconRight': 'chevron-down',
 }

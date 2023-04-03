@@ -412,6 +412,7 @@ textarea {
   --text-color--disabled: var(--gray-130);
   --text-color--inverse: var(--background-1);
   --text-color--highlight: var(--yellow-600);
+  --text-color--placeholder: var(--text-color--subtle);
   --text-gradient: linear-gradient(to right,
     hsl(17, 88%, 60%),
     hsl(275, 92%, 70%),
@@ -448,7 +449,6 @@ textarea {
   --toggle-track-border: var(--border-color);
   --toggle-track--active: var(--emerald-500);
   --toggle-track-border--active: var(--emerald-500);
-  --toggle-track--disabled: var(--gray-420);
   --toggle-thumb: var(--gray-50);
   --toggle-thumb--active: var(--gray-50);
   --toggle-thumb--disabled: var(--gray-380);
@@ -488,6 +488,7 @@ html[data-color-theme=light] {
   --text-color--disabled: var(--gray-270);
   --text-color--inverse: var(--gray-0);
   --text-color--highlight: var(--yellow-300);
+  --text-color--placeholder: var(--text-color--subtle);
   --text-gradient: linear-gradient(to right,
     hsl(17, 90%, 56%),
     hsl(275, 93%, 61%),
@@ -522,7 +523,6 @@ html[data-color-theme=light] {
   --toggle-track-border: var(--border-color);
   --toggle-track--active: var(--emerald-500);
   --toggle-track-border--active: var(--emerald-500);
-  --toggle-track--disabled: var(--gray-400);
   --toggle-thumb: var(--gray-0);
   --toggle-thumb--active: var(--gray-50);
   --toggle-thumb--disabled: var(--gray-50);
@@ -740,6 +740,9 @@ small {
   color: var(--text-color);
   border-color: var(--background-4);
 }
+.ep-badge--secondary.ep-badge--outlined {
+  border-color: var(--border-color--lighter);
+}
 .ep-badge--success {
   background-color: var(--success-green--base);
   color: var(--success-green--text);
@@ -760,8 +763,8 @@ small {
   color: var(--text-color);
 }
 .ep-badge--uppercase {
-  text-transform: uppercase;
   letter-spacing: 0.1rem;
+  text-transform: uppercase;
 }
 
 .ep-banner {
@@ -958,7 +961,7 @@ small {
   color: var(--text-color);
 }
 .ep-button--disabled {
-  background: var(--background-2);
+  background: transparent;
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-color);
@@ -3067,7 +3070,7 @@ input.ep-input.ep-input--has-icon-left {
   padding-left: 2.8rem;
 }
 input.ep-input::placeholder {
-  color: var(--text-color--subtle);
+  color: var(--text-color--placeholder);
 }
 input.ep-input:focus {
   border-color: var(--color--primary) !important;
@@ -3673,7 +3676,7 @@ select.ep-select--disabled {
   cursor: not-allowed;
 }
 .toggle--disabled .toggle__track {
-  background-color: var(--toggle-track--disabled);
+  background-color: transparent;
 }
 .toggle--disabled .toggle__thumb {
   background-color: var(--toggle-thumb--disabled);

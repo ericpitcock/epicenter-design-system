@@ -28,6 +28,12 @@ export default {
         type: 'text'
       }
     },
+    placeholderColor: {
+      name: 'Placeholder Color',
+      control: {
+        type: 'color'
+      }
+    },
     modelValue: {
       table: {
         disable: true
@@ -136,6 +142,7 @@ export const Input = args => ({
 Input.args = {
   type: 'text',
   placeholder: 'Placeholder',
+  placeholderColor: '',
   clearable: true,
   disabled: false,
   autofocus: false,

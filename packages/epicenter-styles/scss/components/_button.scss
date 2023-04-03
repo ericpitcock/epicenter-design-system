@@ -144,7 +144,7 @@
 
   &--disabled {
     @include button-theme(
-      var(--background-2),
+      transparent,
       var(--border-color),
       var(--text-color--disabled),
       var(--background-2),

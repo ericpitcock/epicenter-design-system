@@ -20,6 +20,10 @@
     background-color: var(--background-4);
     color: var(--text-color);
     border-color: var(--background-4);
+
+    &.ep-badge--outlined {
+      border-color: var(--border-color--lighter);
+    }
   }
 
   &--success {
@@ -46,7 +50,7 @@
   }
 
   &--uppercase {
-    text-transform: uppercase;
     letter-spacing: 0.1rem;
+    text-transform: uppercase;
   }
 }
