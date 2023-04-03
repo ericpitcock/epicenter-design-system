@@ -62,11 +62,16 @@
     watch: {
       mapCenter(newCenter, oldCenter) {
         this.$emit('centerChange', newCenter)
-        this.flyTo(newCenter)
+        this.flyTo(newCenter, this.mapZoom)
       },
       mapZoom(newZoom, oldZoom) {
         this.$emit('zoomChange', newZoom)
-        this.map.zoomTo(newZoom)
+        // this.map.zoomTo(newZoom)
+
+        // set the zoom level
+        this.flyTo(this.mapCenter, newZoom)
+
+        console.log('zoom changed', newZoom)
       },
       mapStyle(newStyle, oldStyle) {
         this.map.setStyle(newStyle)
@@ -133,9 +138,10 @@
         this.markers.forEach((marker) => marker.remove())
         this.markers = []
       },
-      flyTo() {
+      flyTo(center = this.mapCenter, zoom = this.mapZoom) {
         this.map.flyTo({
-          center: this.mapCenter
+          center,
+          zoom
         })
       },
       loadMap() {

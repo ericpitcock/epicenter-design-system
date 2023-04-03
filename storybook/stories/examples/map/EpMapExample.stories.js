@@ -96,7 +96,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       items: [
         {
           type: 'dropdown',
-          button: {
+          buttonProps: {
             variant: 'ghost',
             label: '',
             iconLeft: { name: 'f/coffee' },
@@ -132,7 +132,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
         },
         {
           type: 'dropdown',
-          button: {
+          buttonProps: {
             variant: 'ghost',
             label: '',
             iconLeft: { name: 'f/shopping-bag' },
@@ -173,20 +173,20 @@ export const MapInContext = (args, { globals: { theme } }) => ({
 
     const onClick = item => {
       currentMapCenter.value = item.value
+      currentMapZoom.value = 18
       // clear currentMapPin and then add new pin
       currentMapPin.value = []
       currentMapPin.value.push(item.value)
-      currentMapZoom.value = 30
     }
 
-    const centerChanged = center => {
-      currentMapCenter.value = center
-    }
+    // const centerChanged = center => {
+    //   currentMapCenter.value = center
+    // }
 
     return {
       args,
       actionBarArgs,
-      centerChanged,
+      // centerChanged,
       currentMapCenter,
       currentMapPin,
       currentMapStyle,
@@ -235,7 +235,6 @@ export const MapInContext = (args, { globals: { theme } }) => ({
           :map-center="currentMapCenter"
           :map-zoom="currentMapZoom"
           :pin-locations="currentMapPin"
-          @center-change="centerChanged"
         />
         </div>
       </template>
