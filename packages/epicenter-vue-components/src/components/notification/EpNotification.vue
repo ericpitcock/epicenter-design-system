@@ -46,7 +46,7 @@
         type: String,
         required: true
       },
-      alertStyle: {
+      variant: {
         type: String,
         default: 'info' // info, success, warning, error
       },
@@ -68,7 +68,7 @@
     },
     computed: {
       colorStrip() {
-        return `background: ${this.colors[this.alertStyle]}`
+        return `background: ${this.colors[this.variant]}`
       }
     },
     methods: {

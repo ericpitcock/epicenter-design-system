@@ -15,8 +15,8 @@ export default {
         type: 'text'
       }
     },
-    alertStyle: {
-      name: 'Style',
+    variant: {
+      name: 'Variant',
       options: [
         'info',
         'success',
@@ -55,6 +55,6 @@ export const Notification = args => ({
 Notification.args = {
   id: '1',
   message: 'The future is bright!',
-  alertStyle: 'success',
+  variant: 'success',
   timestamp: faker.date.future(100).toISOString()
 }
