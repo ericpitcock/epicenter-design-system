@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Epicenter Design System - Styles",
   "scripts": {
-    "style-dictionary:build": "style-dictionary build --config ./sd.config.js",
+    "sd:build": "style-dictionary build --config ./sd.config.js",
+    "sd:test": "style-dictionary build --config ./sd.config.test.js",
     "sass:watch": "sass --watch ./index.scss ./dist/epicenter-design-system.css"
   },
   "repository": {

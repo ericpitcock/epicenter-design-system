@@ -7,7 +7,8 @@ export default {
   component: EpSelect,
   decorators: [centered],
   argTypes: {
-    height: {
+    width: {
+      name: 'Width',
       control: {
         type: 'text'
       }
@@ -34,17 +35,20 @@ export default {
       }
     },
     id: {
+      name: 'ID',
       control: {
         type: 'text'
       }
     },
     options: {
+      name: 'Options',
       control: {
         type: 'array'
       }
     },
     modelValue: { table: { disable: true } },
     placeholder: {
+      name: 'Placeholder',
       control: {
         type: 'text'
       }
@@ -61,6 +65,38 @@ export default {
         type: 'boolean'
       }
     },
+    borderWidth: {
+      name: 'Border Width',
+      control: {
+        type: 'text'
+      }
+    },
+    borderStyle: {
+      name: 'Border Style',
+      control: {
+        type: 'text'
+      }
+    },
+    borderColor: {
+      name: 'Border Color',
+      control: {
+        type: 'text'
+      }
+    },
+    borderRadius: {
+      name: 'Border Radius',
+      control: {
+        type: 'text'
+      }
+    },
+    backgroundColor: {
+      name: 'Background Color',
+      control: {
+        type: 'text'
+      }
+    },
+    readonly: { table: { disable: true } },
+    required: { table: { disable: true } },
   }
 }
 
@@ -109,5 +145,10 @@ Select.args = {
       label: 'Aeropress',
       value: 'aeropress'
     }
-  ]
+  ],
+  borderWidth: '0.1rem',
+  borderStyle: 'solid',
+  borderColor: 'var(--border-color)',
+  borderRadius: 'var(--border-radius)',
+  backgroundColor: 'var(--background-2)'
 }
