@@ -7,7 +7,7 @@ import EpFlexContainer from '@/components/flexbox/EpFlexContainer'
 import EpFooter from '@/components/footer/EpFooter'
 import EpSearch from '@/components/search/EpSearch'
 import EpTable from '@/components/table/EpTable'
-import { columns, fakeArray } from '@/components/table/data'
+import { columns, fakeArray } from '../../data/tableData'
 
 const tableData = fakeArray(30)
 

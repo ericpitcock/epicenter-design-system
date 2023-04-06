@@ -5,7 +5,7 @@ import EpFooter from '@/components/footer/EpFooter'
 import EpSplitButton from '@/components/split-button/EpSplitButton'
 import EpTable from '@/components/table/EpTable'
 import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
-import { columns, fakeArray } from '@/components/table/data'
+import { columns, fakeArray } from '../../data/tableData'
 
 export default {
   title: 'Components/Loading State',
