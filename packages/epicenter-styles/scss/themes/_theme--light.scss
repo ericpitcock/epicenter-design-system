@@ -58,6 +58,7 @@ html[data-color-theme='light'] {
   // table
   // --table-stripe-color: var(--gray-10);
   --table-stripe-color: #f9f9f9;
+  --table-overflow-shadow: inset -20px 0 20px -10px rgba(0, 0, 0, 0.1);
   // navigation
   --nav-link-hover-bg-color: var(--gray-20);
   --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%);

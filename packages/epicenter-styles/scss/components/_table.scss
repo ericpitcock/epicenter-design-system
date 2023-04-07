@@ -6,6 +6,10 @@
   &::-webkit-scrollbar {
     display: none; // Chrome, Safari, Opera
   }
+
+  &--overflow-x {
+    box-shadow: var(--table-overflow-shadow);
+  }
 }
 
 .ep-table {
@@ -124,7 +128,6 @@
       th {
         position: sticky;
         z-index: var(--z-index--sticky);
-        // top: -1px; // fixes wierd 1px gap that exposes tbody contents during scroll
       }
     }
   }
@@ -132,6 +135,7 @@
   &--striped {
     tbody tr:nth-child(even) {
       background-color: var(--table-stripe-color);
+      z-index: var(--z-index--negative);
     }
   }
 }
