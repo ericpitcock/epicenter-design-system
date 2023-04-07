@@ -1,12 +1,10 @@
 <template>
   <div
-    ref="tableContainer"
-    :class="['ep-table-container', { 'ep-table-container--overflow-x': hasOverflowX }]"
+    class="ep-table-container"
     :style="containerStyles"
     @scroll="handleScroll"
   >
     <table
-      ref="table"
       :class="['ep-table', classes]"
       :style="tableClasses"
     >
@@ -170,7 +168,6 @@
       return {
         currentSort: this.getSortKey(),
         currentSortDir: this.getSortDir(),
-        hasOverflowX: false,
       }
     },
     computed: {
@@ -246,26 +243,10 @@
         this.$emit('data-changed', this.filteredData)
       },
     },
-    mounted() {
-      window.addEventListener('resize', this.handleResize)
-      this.checkOverflow()
-    },
-    beforeUnmount() {
-      window.removeEventListener('resize', this.handleResize)
-    },
     methods: {
-      checkOverflow() {
-        this.hasOverflowX = this.$refs.table.offsetWidth > this.$refs.tableContainer.offsetWidth
-      },
       rowClick(row) {
         this.$emit('row-click', row)
         console.log('row-click')
-      },
-      handleResize() {
-        this.checkOverflow()
-      },
-      handleScroll() {
-        this.checkOverflow()
       },
       isComponent(key) {
         // if column cellType is component, return true
