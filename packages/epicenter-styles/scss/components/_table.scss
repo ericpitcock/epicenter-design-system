@@ -135,7 +135,7 @@
   &--striped {
     tbody tr:nth-child(even) {
       background-color: var(--table-stripe-color);
-      z-index: var(--z-index--negative);
+      // z-index: var(--z-index--negative);
     }
   }
 }
