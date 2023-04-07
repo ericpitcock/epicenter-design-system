@@ -5,6 +5,9 @@
     :class="['ep-button', classes]"
     :style="buttonStyles"
     :title="title"
+    role="button"
+    :tabindex="tabindex"
+    :aria-label="label ? undefined : ariaLabel"
     @click="onClick"
   >
     <span
@@ -64,7 +67,15 @@
       },
       title: {
         type: String,
-        default: undefined
+        default: ''
+      },
+      ariaLabel: {
+        type: String,
+        default: ''
+      },
+      tabindex: {
+        type: Number,
+        default: -1
       },
       label: {
         type: String,

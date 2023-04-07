@@ -1,0 +1,72 @@
+{
+  "font-size": {
+    "sm": {
+      "value": "14px",
+      "comment": "10px equivalent"
+    },
+    "md": {
+      "value": "16px",
+      "comment": "12px equivalent"
+    },
+    "lg": {
+      "value": "20px",
+      "comment": "14px equivalent"
+    },
+    "xl": {
+      "value": "24px",
+      "comment": "16px equivalent"
+    }
+  },
+
+  "font-weight": {
+    "light": {
+      "value": 300,
+      "comment": "Light font weight"
+    },
+    "regular": {
+      "value": 400,
+      "comment": "Regular font weight"
+    },
+    "medium": {
+      "value": 500,
+      "comment": "Medium font weight"
+    },
+    "bold": {
+      "value": 700,
+      "comment": "Bold font weight"
+    }
+  },
+
+  "line-height": {
+    "default": {
+      "value": 1.5,
+      "comment": "Line height for most text"
+    },
+    "heading": {
+      "value": 1.2,
+      "comment": "Line height for headings"
+    }
+  },
+
+  "letter-spacing": {
+    "normal": {
+      "value": "normal",
+      "comment": "Normal letter spacing"
+    },
+    "wide": {
+      "value": "1rem",
+      "comment": "Wide letter spacing"
+    }
+  },
+
+  "font-style": {
+    "normal": {
+      "value": "normal",
+      "comment": "Normal font style"
+    },
+    "italic": {
+      "value": "italic",
+      "comment": "Italic font style"
+    }
+  }
+}

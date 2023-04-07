@@ -3,7 +3,9 @@
     max-width="120rem"
     container-padding="0 3rem"
     content-padding="3rem 0"
-    overflow="hidden"
+    calculate-height
+    :calculate-height-offset="30"
+    overflow="auto"
   >
     <template #header>
       <ep-header>
@@ -84,7 +86,7 @@
         typeStyles: [
           {
             name: 'Jumbo',
-            desc: 'Page headers',
+            // desc: 'Page headers',
             meta: [
               'font-size: 2.6rem (26px)',
               'font-weight: 300'
@@ -93,7 +95,7 @@
           },
           {
             name: 'Large',
-            desc: 'headers',
+            // desc: 'headers',
             meta: [
               'font-size: 2rem (20px)',
               'font-weight: 300'
@@ -102,7 +104,7 @@
           },
           {
             name: 'Body',
-            desc: 'Blocks of text you expect people to read',
+            // desc: 'Blocks of text you expect people to read',
             meta: [
               'font-size: 1.5rem (15px)',
               'line-height: 2.4rem (24px)',
@@ -113,25 +115,25 @@
           },
           {
             name: 'Default',
-            desc: 'UI controls and labels',
+            // desc: 'Default UI text for ',
             meta: [
               'font-size: 1.3rem (13px)',
               'font-weight: 500'
             ],
-            sample: 'For buttons and most UI controls and elements'
+            sample: '<div style="max-width: 350px; line-height: 1.4;">Default for most UI text strings, like tables and form fields. Also used for larger button and input variants.</div>'
           },
           {
             name: 'Small',
-            desc: 'UI controls and labels, only smaller',
+            // desc: 'For most UI controls and labels',
             meta: [
               'font-size: 1.2rem (12px)',
               'font-weight: 540'
             ],
-            sample: 'UI controls and labels, only smaller'
+            sample: 'UI controls and labels, like buttons and menu items'
           },
           {
             name: 'Tiny',
-            desc: 'Things should be there, but "not there"',
+            // desc: 'Things should be there, but "not there"',
             meta: [
               'font-size: 1rem (10px)',
               'font-weight: 600'

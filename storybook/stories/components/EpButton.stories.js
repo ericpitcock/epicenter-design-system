@@ -3,11 +3,19 @@ import { centered } from '../../helpers/decorators'
 import { colorNames, colorValues } from '../../helpers/colorHelper'
 import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpButton from '@/components/button/EpButton'
+import markdown from '../../../docs/EpButton.md'
 
 export default {
   title: 'Components/Button',
   component: EpButton,
   decorators: [centered],
+  parameters: {
+    docs: {
+      description: {
+        component: markdown
+      }
+    }
+  },
   argTypes: {
     disabled: {
       name: 'Disabled',
@@ -60,6 +68,18 @@ export default {
       name: 'Title(Tooltip)',
       control: {
         type: 'text'
+      }
+    },
+    ariaLabel: {
+      name: 'Aria Label',
+      control: {
+        type: 'text'
+      }
+    },
+    tabindex: {
+      name: 'Tabindex',
+      control: {
+        type: 'number'
       }
     },
     to: {
@@ -160,6 +180,8 @@ Button.args = {
   outlined: false,
   size: 'large',
   title: 'This is the tooltip',
+  ariaLabel: 'This is the aria label',
+  tabindex: 0,
   to: '',
   href: '',
   iconLeft: 'none',

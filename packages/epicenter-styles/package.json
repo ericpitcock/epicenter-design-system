@@ -12,11 +12,11 @@
     "url": "git+https://github.com/ericpitcock/epicenter-design-system.git"
   },
   "author": "Eric Pitcock",
-  "dependencies": {},
   "devDependencies": {
     "highcharts": "^8.1.2",
     "mapbox-gl": "^1.10.1",
     "sass": "^1.44.0",
-    "style-dictionary": "^3.1.0"
+    "style-dictionary": "^3.1.0",
+    "tinycolor2": "^1.6.0"
   }
 }

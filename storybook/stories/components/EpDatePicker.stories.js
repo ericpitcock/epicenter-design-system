@@ -1,11 +1,17 @@
-import { padded } from '../../helpers/decorators'
+import { centered } from '../../helpers/decorators'
 import EpDatePicker from '@/components/date-picker/EpDatePicker'
 
 export default {
   title: 'Components/Date Picker',
   component: EpDatePicker,
-  decorators: [padded],
+  decorators: [centered],
   argTypes: {
+    inputProps: {
+      name: 'Input Props',
+      control: {
+        type: 'object'
+      }
+    },
     dateFormat: {
       name: 'Date Format',
       control: {
@@ -23,7 +29,31 @@ export default {
           range: 'Range'
         }
       }
-    }
+    },
+    positionX: {
+      name: 'Position X',
+      options: ['left', 'center', 'right'],
+      control: {
+        type: 'radio',
+        labels: {
+          left: 'Left',
+          center: 'Center',
+          right: 'Right'
+        }
+      }
+    },
+    positionY: {
+      name: 'Position Y',
+      options: ['auto', 'above', 'below'],
+      control: {
+        type: 'radio',
+        labels: {
+          auto: 'Auto',
+          above: 'Above',
+          below: 'Below'
+        }
+      }
+    },
   }
 }
 
@@ -38,6 +68,11 @@ export const DatePicker = args => ({
 })
 
 DatePicker.args = {
+  inputProps: {
+    size: 'xlarge',
+  },
   dateFormat: 'm/d/Y',
-  mode: 'single'
+  mode: 'single',
+  positionX: 'left',
+  positionY: 'auto',
 }

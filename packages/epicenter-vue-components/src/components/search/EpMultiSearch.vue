@@ -116,7 +116,7 @@
         // value is the value of the input
         value: '',
         // query is the array of values that have been added to the search
-        query: ['taco', 'burrito', 'enchilada'],
+        query: [],
       }
     },
     computed: {

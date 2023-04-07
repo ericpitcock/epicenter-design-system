@@ -2,8 +2,8 @@
   <div class="ep-date-picker">
     <ep-input
       id="dp"
-      v-bind="inputProps"
-      v-model="inputProps.value"
+      v-bind="computedInputProps"
+      v-model="value"
     />
   </div>
 </template>
@@ -18,9 +18,21 @@
       EpInput
     },
     props: {
+      positionX: {
+        type: String,
+        default: 'left' // left, center, right
+      },
+      positionY: {
+        type: String,
+        default: 'auto' // auto, above, below
+      },
       dateFormat: {
         type: String,
         default: 'm/d/Y'
+      },
+      inputProps: {
+        type: Object,
+        default: () => ({})
       },
       mode: {
         type: String,
@@ -31,19 +43,28 @@
     data() {
       return {
         flatpickr: null,
-        inputProps: {
-          backgroundColor: 'var(--background-2)',
+        value: '',
+        inputDefaults: {
           type: 'text',
-          width: '250px',
-          size: 'xlarge',
+          width: '30rem',
           placeholder: 'Select a date',
           placeholderColor: 'var(--text-color)',
           iconLeft: {
             name: 'calendar',
           },
-          clearable: false,
-          value: ''
         },
+      }
+    },
+    computed: {
+      computedInputProps() {
+        return {
+          ...this.inputDefaults,
+          ...this.inputProps,
+          // onInput: this.onInput,
+          // onFocus: this.onFocus,
+          // onBlur: this.onBlur,
+          // onKeydown: this.onKeydown,
+        }
       }
     },
     mounted() {
@@ -85,6 +106,7 @@
           // onReady: this.onReady,
           // onValueUpdate: this.onValueUpdate,
           // onDayCreate: this.onDayCreate
+          position: `${this.positionY} ${this.positionX}`,
         })
       },
       onInput(event) {
@@ -93,10 +115,10 @@
         console.log('onInput', event.target.value)
       },
       onChange(selectedDates, dateStr) {
-        this.inputProps.value = dateStr
+        this.value = dateStr
         this.$emit('change', selectedDates, dateStr)
         console.log('onChange', dateStr)
-        console.log('inputProps.value', this.inputProps.value)
+        console.log('inputProps.value', this.value)
       },
       onFocus(event) {
         this.$emit('focus', event)
@@ -111,7 +133,7 @@
         console.log('onKeydown', event)
       },
       onOpen(selectedDates, dateStr) {
-        this.inputProps.value = ''
+        this.value = ''
         console.log('onOpen', dateStr)
       },
     }

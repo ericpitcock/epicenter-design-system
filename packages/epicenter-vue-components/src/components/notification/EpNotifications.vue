@@ -1,11 +1,5 @@
 <template>
-  <ep-container
-    width="100%"
-    height="100%"
-    container-padding="0 3rem"
-    content-padding="2rem 0 3rem"
-    overflow="auto"
-  >
+  <ep-container v-bind="computedContainerProps">
     <template #header>
       <ep-header>
         <template #left>
@@ -63,6 +57,23 @@
       EpHeader,
       EpNotification
     },
+    props: {
+      containerProps: {
+        type: Object,
+        default: () => ({})
+      }
+    },
+    data() {
+      return {
+        defaultContainerProps: {
+          width: '100%',
+          height: '100%',
+          containerPadding: '0 3rem',
+          contentPadding: '2rem 0 3rem',
+          overflow: 'auto'
+        }
+      }
+    },
     computed: {
       ...mapState([
         'notifications',
@@ -72,6 +83,12 @@
         'hasActiveNotifications',
         'getInactiveNotifications'
       ]),
+      computedContainerProps() {
+        return {
+          ...this.defaultContainerProps,
+          ...this.containerProps
+        }
+      },
       isNotificationsEmpty() {
         return this.notifications.length === 0
       }
