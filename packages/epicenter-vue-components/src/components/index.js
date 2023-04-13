@@ -6,6 +6,7 @@ import EpButton from './button/EpButton.vue'
 import EpButtonGroup from './button-group/EpButtonGroup.vue'
 import EpChart from './charts/EpChart.vue'
 import EpCheckbox from './checkbox/EpCheckbox.vue'
+import EpCodeView from './code-view/EpCodeView.vue'
 import EpContainer from './container/EpContainer.vue'
 import EpDatePicker from './date-picker/EpDatePicker.vue'
 import EpDivider from './divider/EpDivider.vue'
@@ -43,6 +44,7 @@ export default {
   EpButtonGroup,
   EpChart,
   EpCheckbox,
+  EpCodeView,
   EpContainer,
   EpDatePicker,
   EpDivider,
