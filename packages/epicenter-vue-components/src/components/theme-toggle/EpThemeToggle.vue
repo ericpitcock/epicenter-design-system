@@ -13,6 +13,7 @@
   import EpButton from '../button/EpButton'
 
   export default {
+    name: 'EpThemeToggle',
     components: {
       EpButton
     },
