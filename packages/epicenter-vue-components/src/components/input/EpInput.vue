@@ -4,12 +4,13 @@
     @click="onClear"
   >
     <input
+      :id="inputId"
       ref="input"
-      v-model="value"
       :class="['ep-input', inputClasses]"
+      :value="modelValue"
       :style="inputStyles"
       :type="type"
-      :placeholder="placeholder"
+      :placeholder="computedPlaceholder"
       :disabled="disabled"
       :autofocus="autofocus"
       :readonly="readonly"
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+  import uuidMixin from '../../mixins/uuidMixin.js'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   export default {
@@ -31,7 +33,16 @@
     components: {
       EpInputStyler
     },
+    mixins: [uuidMixin],
     props: {
+      id: {
+        type: String,
+        default: ''
+      },
+      label: {
+        type: String,
+        default: ''
+      },
       type: {
         type: String,
         default: 'text'
@@ -109,6 +120,7 @@
     data() {
       return {
         hasError: false,
+        hasFocus: false,
         hasInput: false,
         hasWarning: false,
         hasSuccess: false,
@@ -120,6 +132,9 @@
           return 'transparent'
         }
         return this.backgroundColor
+      },
+      computedPlaceholder() {
+        return this.placeholder || this.label
       },
       computedBorderColor() {
         if (this.hasError) {
@@ -138,6 +153,10 @@
       },
       stylerProps() {
         return {
+          id: this.inputId,
+          hasFocus: this.hasFocus,
+          hasInput: this.hasInput,
+          label: this.label,
           disabled: this.disabled,
           width: this.width,
           size: this.size,
@@ -158,6 +177,9 @@
           'ep-input--warning': this.hasWarning,
         }
       },
+      inputId() {
+        return this.id || `input-${this.generateUUID()}`
+      },
       inputStyles() {
         const styles = {
           borderStyle: this.borderStyle,
@@ -167,9 +189,7 @@
           backgroundColor: this.computedBackgroundColor,
           '--text-color--placeholder': this.placeholderColor,
         }
-        // if (this.placeholderColor) {
-        //   styles['--text-color--placeholder'] = this.placeholderColor
-        // }
+
         return styles
       },
       value: {
@@ -195,9 +215,11 @@
         this.$emit('esc', event.target.value)
       },
       onFocus(event) {
+        this.hasFocus = true
         this.$emit('focus', event.target.value)
       },
       onBlur(event) {
+        this.hasFocus = false
         this.$emit('blur', event.target.value)
       },
       onKeyDown(event) {

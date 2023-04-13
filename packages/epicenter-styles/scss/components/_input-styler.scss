@@ -16,6 +16,12 @@
   display: flex;
   pointer-events: none;
 
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   &:has(.ep-input-styler__inner__icon-left):has(.ep-input-styler__inner__icon-right) {
     display: flex;
     justify-content: space-between;

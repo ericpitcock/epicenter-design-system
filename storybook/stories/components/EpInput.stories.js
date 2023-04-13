@@ -1,12 +1,25 @@
 import { centered } from '../../helpers/decorators'
 import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpInput from '@/components/input/EpInput.vue'
+import { ref } from 'vue'
 
 export default {
   title: 'Components/Input',
   component: EpInput,
   decorators: [centered],
   argTypes: {
+    id: {
+      name: 'ID',
+      control: {
+        type: 'text'
+      }
+    },
+    label: {
+      name: 'Label',
+      control: {
+        type: 'text'
+      }
+    },
     type: {
       name: 'Type',
       options: ['text', 'password', 'email', 'number', 'tel', 'url'],
@@ -134,15 +147,24 @@ export default {
 export const Input = args => ({
   components: { EpInput },
   setup() {
-    return { args }
+    const modelValue = ref(args.modelValue)
+
+    const clear = () => {
+      modelValue.value = ''
+    }
+    
+    return { args, modelValue, clear }
   },
-  template: '<ep-input v-bind="args" />'
+  template: '<ep-input v-bind="args" v-model="modelValue" @clear="clear" />'
 })
 
 Input.args = {
+  id: '',
+  label: 'This is the label and placeholder',
   type: 'text',
-  placeholder: 'Placeholder',
+  placeholder: '',
   placeholderColor: '',
+  modelValue: '',
   clearable: true,
   disabled: false,
   autofocus: false,

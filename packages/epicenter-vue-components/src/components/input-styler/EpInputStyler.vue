@@ -23,6 +23,13 @@
         />
       </div>
     </div>
+    <label
+      v-show="label && hasInput || hasFocus"
+      class="ep-input-styler__inner__label"
+      :for="id"
+    >
+      {{ label }}
+    </label>
     <slot />
   </div>
 </template>
@@ -38,6 +45,22 @@
     },
     mixins: [inputMixin],
     props: {
+      id: {
+        type: String,
+        default: ''
+      },
+      hasFocus: {
+        type: Boolean,
+        default: false
+      },
+      hasInput: {
+        type: Boolean,
+        default: false
+      },
+      label: {
+        type: String,
+        default: ''
+      },
       disabled: {
         type: Boolean,
         default: false
@@ -64,6 +87,11 @@
       },
     },
     emits: ['click'],
+    data() {
+      return {
+        showLabel: false,
+      }
+    },
     computed: {
       containerStyles() {
         return {
@@ -80,11 +108,30 @@
         }
       }
     },
+    // mounted() {
+    //   // listen for focus event on the input in the slot
+    //   const slot = this.$slots.default()
+    //   if (slot && slot[0]) {
+    //     slot[0].elm.addEventListener('focus', () => {
+    //       this.showLabel = true
+    //     })
+    //   }
+    // },
+    mounted() {
+      // const childComponentInstance = this.$slots.default()[0].componentInstance
+      // childComponentInstance.$on('focus', this.onFocus)
+      // console.log('mounted', this.$slots.default()[0])
+      // this.$refs.childComponent.$on('focus', this.onFocus)
+    },
     methods: {
       onClick() {
         if (!this.iconRightVisible) return
         this.$emit('click')
-      }
+      },
+      onFocus() {
+        this.showLabel = true
+        console.log('focus')
+      },
     },
   }
 </script>

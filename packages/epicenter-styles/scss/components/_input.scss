@@ -2,8 +2,6 @@ input.ep-input {
   width: 100%;
   height: 100%;
   padding: 0 1.4rem;
-  // border-width: 1px;
-  // border-style: solid;
   caret-color: var(--color--primary);
   font-size: var(--font-size--small);
   color: var(--text-color);
@@ -18,6 +16,10 @@ input.ep-input {
 
   &:focus {
     border-color: var(--color--primary) !important;
+
+    &::placeholder {
+      color: transparent;
+    }
   }
 
   &--small {
