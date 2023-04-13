@@ -1,6 +1,6 @@
 <template>
   <hr
-    class="ep-divider"
+    :class="['ep-divider', { 'ep-divider--vertical': vertical }]"
     :style="dividerStyles"
   >
 </template>
@@ -16,14 +16,33 @@
       margin: {
         type: String,
         default: '0'
+      },
+      vertical: {
+        type: Boolean,
+        default: false
+      },
+      verticalWidth: {
+        type: String,
+        default: '1px'
+      },
+      verticalHeight: {
+        type: String,
+        default: '100%'
       }
     },
     computed: {
       dividerStyles() {
-        return {
-          backgroundColor: this.color,
-          margin: this.margin
-        }
+        return this.vertical
+          ? {
+            width: this.verticalWidth,
+            height: this.verticalHeight,
+            backgroundColor: this.color,
+            margin: this.margin
+          }
+          : {
+            backgroundColor: this.color,
+            margin: this.margin
+          }
       }
     }
   }
