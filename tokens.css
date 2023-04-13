@@ -1,0 +1,11 @@
+
+:root {
+  --colors-primary: #000000;
+  --colors-secondary: #333333;
+  --colors-tertiary: #666666;
+}
+html[data-color-theme="light"] {
+  --colors-primary: #111111;
+  --colors-secondary: #444444;
+  --colors-tertiary: #777777;
+}
