@@ -1,44 +1,23 @@
 {
   "spacing": {
-    "1": {
-      "value": "1rem",
-      "description": "10px equivalent - Extra-tight spacing for very compact layouts"
-    },
-    "2": {
-      "value": "2rem",
-      "description": "20px equivalent - Tight spacing for elements that need to be positioned closely together"
-    },
-    "3": {
-      "value": "3rem",
-      "description": "30px equivalent - Default spacing for most elements"
-    },
-    "4": {
-      "value": "4rem",
-      "description": "40px equivalent - Moderate spacing for elements that need a bit more breathing room"
-    },
-    "5": {
-      "value": "5rem",
-      "description": "50px equivalent - Large spacing for section breaks or more spacious elements"
-    },
-    "6": {
-      "value": "6rem",
-      "description": "60px equivalent - Extra-large spacing for especially prominent elements"
-    },
-    "7": {
-      "value": "7rem",
-      "description": "70px equivalent - Very large spacing for elements that need a lot of breathing room"
-    },
-    "8": {
-      "value": "8rem",
-      "description": "80px equivalent - Enormous spacing for elements that need to be extremely spaced apart"
-    },
-    "9": {
-      "value": "9rem",
-      "description": "90px equivalent - Huge spacing for massive section breaks or very spacious elements"
-    },
-    "10": {
-      "value": "10rem",
-      "description": "100px equivalent - Gigantic spacing for elements that need to be extremely spaced apart"
-    }
+    "10": { "value": "1rem" },
+    "15": { "value": "1.5rem" },
+    "20": { "value": "2rem" },
+    "25": { "value": "2.5rem" },
+    "30": { "value": "3rem" },
+    "35": { "value": "3.5rem" },
+    "40": { "value": "4rem" },
+    "45": { "value": "4.5rem" },
+    "50": { "value": "5rem" },
+    "55": { "value": "5.5rem" },
+    "60": { "value": "6rem" },
+    "65": { "value": "6.5rem" },
+    "70": { "value": "7rem" },
+    "75": { "value": "7.5rem" },
+    "80": { "value": "8rem" },
+    "85": { "value": "8.5rem" },
+    "90": { "value": "9rem" },
+    "95": { "value": "9.5rem" },
+    "100": { "value": "10rem" }
   }
 }

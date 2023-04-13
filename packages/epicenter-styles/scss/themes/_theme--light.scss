@@ -15,6 +15,7 @@ html[data-color-theme='light'] {
   // shadow
   --drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.05);
   --drop-shadow--large: 0 2px 20px rgba(0, 0, 0, 0.15);
+  --drop-shadow--large--north: 0 -10px 10px rgba(0,0,0,0.15);
   // text
   --text-color: var(--gray-410);
   --text-color--disabled: var(--gray-270);
