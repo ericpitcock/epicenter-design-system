@@ -1,0 +1,35 @@
+:root {
+  --box-shadow-color: #333;
+}
+
+.box-shadow--north {
+  box-shadow: 0 -10px 10px 0 var(--box-shadow-color);
+}
+
+.box-shadow--north--large {
+  box-shadow: 0 -20px 20px 0 var(--box-shadow-color);
+}
+
+.box-shadow--east {
+  box-shadow: 10px 0 10px 0 var(--box-shadow-color);
+}
+
+.box-shadow--east--large {
+  box-shadow: 20px 0 20px 0 var(--box-shadow-color);
+}
+
+.box-shadow--south {
+  box-shadow: 0 10px 10px 0 var(--box-shadow-color);
+}
+
+.box-shadow--south--large {
+  box-shadow: 0 20px 20px 0 var(--box-shadow-color);
+}
+
+.box-shadow--west {
+  box-shadow: -10px 0 10px 0 var(--box-shadow-color);
+}
+
+.box-shadow--west--large {
+  box-shadow: -20px 0 20px 0 var(--box-shadow-color);
+}
