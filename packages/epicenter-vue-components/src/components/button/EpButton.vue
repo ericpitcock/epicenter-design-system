@@ -116,7 +116,15 @@
         type: String,
         default: ''
       },
+      backgroundHoverColor: {
+        type: String,
+        default: 'var(--gray-410)'
+      },
       borderColor: {
+        type: String,
+        default: ''
+      },
+      borderRadius: {
         type: String,
         default: ''
       },
@@ -158,8 +166,14 @@
         if (this.borderColor) {
           styles.borderColor = this.borderColor
         }
+        if (this.borderRadius) {
+          styles.borderRadius = this.borderRadius
+        }
         if (this.textColor) {
           styles.color = this.textColor
+        }
+        if (this.backgroundHoverColor) {
+          styles['--button-hover-color'] = this.backgroundHoverColor
         }
         return styles
       }

@@ -51,6 +51,17 @@ export default {
         }
       }
     },
+    backgroundHoverColor: {
+      name: 'Background Hover Color',
+      options: colorNames,
+      mapping: colorValues,
+      control: {
+        type: 'select',
+      },
+      table: {
+        category: 'Overrides'
+      }
+    },
     size: {
       name: 'Size',
       options: ['small', 'default', 'large', 'xlarge'],
@@ -147,6 +158,21 @@ export default {
         category: 'Overrides'
       }
     },
+    borderRadius: {
+      name: 'Border Radius',
+      options: ['None', 'var(--border-radius)', 'var(--border-radius--large)'],
+      mapping: {
+        'None': '0',
+        'var(--border-radius)': 'var(--border-radius)',
+        'var(--border-radius--large)': 'var(--border-radius--large)'
+      },
+      control: {
+        type: 'select',
+      },
+      table: {
+        category: 'Overrides'
+      }
+    },
     textColor: {
       name: 'Text Color',
       options: ['None', 'var(--text-color)', 'var(--text-color--inverse)'],
@@ -177,6 +203,7 @@ Button.args = {
   disabled: false,
   label: 'Download the Internet',
   variant: 'primary',
+  backgroundHoverColor: 'var(--color-primary)',
   outlined: false,
   size: 'large',
   title: 'This is the tooltip',
@@ -188,6 +215,7 @@ Button.args = {
   iconRight: 'none',
   backgroundColor: 'None',
   borderColor: 'None',
+  borderRadius: 'var(--border-radius)',
   textColor: 'None',
 }
 

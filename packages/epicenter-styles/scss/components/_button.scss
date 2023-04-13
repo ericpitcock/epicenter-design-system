@@ -115,6 +115,9 @@
       var(--text-color),
       var(--button-ghost--active)
     );
+    &:hover {
+      background-color: var(--button-hover-color);
+    }
   }
 
   &--menu-item {
