@@ -118,7 +118,11 @@
       },
       backgroundHoverColor: {
         type: String,
-        default: 'var(--gray-410)'
+        default: ''
+      },
+      textHoverColor: {
+        type: String,
+        default: ''
       },
       borderColor: {
         type: String,
@@ -174,6 +178,9 @@
         }
         if (this.backgroundHoverColor) {
           styles['--button-hover-color'] = this.backgroundHoverColor
+        }
+        if (this.textHoverColor) {
+          styles['--button-text-hover-color'] = this.textHoverColor
         }
         return styles
       }

@@ -117,6 +117,7 @@
     );
     &:hover {
       background-color: var(--button-hover-color);
+      color: var(--button-text-hover-color);
     }
   }
 

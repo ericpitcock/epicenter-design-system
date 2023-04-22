@@ -62,6 +62,17 @@ export default {
         category: 'Overrides'
       }
     },
+    textHoverColor: {
+      name: 'Text Hover Color',
+      options: colorNames,
+      mapping: colorValues,
+      control: {
+        type: 'select',
+      },
+      table: {
+        category: 'Overrides'
+      }
+    },
     size: {
       name: 'Size',
       options: ['small', 'default', 'large', 'xlarge'],
@@ -203,7 +214,8 @@ Button.args = {
   disabled: false,
   label: 'Download the Internet',
   variant: 'primary',
-  backgroundHoverColor: 'var(--color-primary)',
+  backgroundHoverColor: '',
+  textHoverColor: '',
   outlined: false,
   size: 'large',
   title: 'This is the tooltip',
