@@ -58,6 +58,12 @@ export default {
         type: 'text'
       }
     },
+    minWidth: {
+      name: 'Min Width',
+      control: {
+        type: 'text'
+      }
+    },
     maxWidth: {
       name: 'Max Width',
       control: {
@@ -66,6 +72,18 @@ export default {
     },
     height: {
       name: 'Height',
+      control: {
+        type: 'text'
+      }
+    },
+    minHeight: {
+      name: 'Min Height',
+      control: {
+        type: 'text'
+      }
+    },
+    maxHeight: {
+      name: 'Max Height',
       control: {
         type: 'text'
       }
@@ -208,8 +226,11 @@ export const Container = args => ({
 
 Container.args = {
   width: '100%',
+  minWidth: '0',
   maxWidth: '120rem',
   height: '100%',
+  minHeight: 'auto',
+  maxHeight: 'none',
   containerPadding: '0 3rem',
   contentPadding: '0',
   padding: '0',

@@ -35,13 +35,25 @@
         type: String,
         default: '100%'
       },
+      minWidth: {
+        type: String,
+        default: '0'
+      },
       maxWidth: {
         type: String,
-        default: '100%'
+        default: 'none'
       },
       height: {
         type: String,
         default: 'auto'
+      },
+      minHeight: {
+        type: String,
+        default: 'auto'
+      },
+      maxHeight: {
+        type: String,
+        default: 'none'
       },
       containerPadding: {
         type: String,
@@ -80,8 +92,11 @@
       containerStyles() {
         return {
           width: this.width,
+          minWidth: this.minWidth,
           maxWidth: this.maxWidth,
           height: this.dynamicHeight || this.height,
+          minHeight: this.minHeight,
+          maxHeight: this.maxHeight,
           backgroundColor: this.backgroundColor,
           padding: this.containerPadding,
           borderRadius: this.borderRadius,
