@@ -1,8 +1,0 @@
-{
-  "text": {
-    "color": {
-      "default": "var(--gray-20)",
-      "light": "var(--gray-50)"
-    }
-  }
-}
