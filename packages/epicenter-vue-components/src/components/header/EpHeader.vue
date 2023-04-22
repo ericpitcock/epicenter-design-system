@@ -127,7 +127,8 @@
           height: this.height,
           padding: this.padding,
           backgroundColor: this.backgroundColor,
-          borderBottom: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`
+          borderBottom: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
+          zIndex: this.zIndex
         }
       },
       contentStyles() {
