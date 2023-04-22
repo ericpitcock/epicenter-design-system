@@ -1,17 +1,31 @@
 <template>
   <div
     class="browser-frame"
-    :style="{ width: `${bigness}px` }"
+    :style="{ width: `${width}px` }"
   >
-    <header>
-      <div class="search-bar">
-        <input
-          type="text"
-          placeholder="Search"
-        >
-        <button>Go</button>
-      </div>
-    </header>
+    <ep-header
+      padding="0 2rem"
+      style="flex: 1 1 5rem; max-height: 5rem;"
+      left-flex="0"
+      center-flex="3"
+      right-flex="0"
+    >
+      <template #left>
+        <div class="window-buttons">
+          <div class="window-button window-button--close" />
+          <div class="window-button window-button--minimize" />
+          <div class="window-button window-button--maximize" />
+        </div>
+      </template>
+      <template #center>
+        <div class="search">
+          {{ url }}
+        </div>
+      </template>
+      <template #right>
+        <ep-icon name="user" />
+      </template>
+    </ep-header>
     <div class="image-container">
       <!-- <img
         :src="imageUrl"
@@ -26,13 +40,24 @@
 </template>
 
 <script>
+  import EpHeader from '../header/EpHeader.vue'
+  import EpIcon from '../icon/EpIcon.vue'
+
   export default {
-    name: 'BrowserFrame',
+    name: 'EpBrowserFrame',
+    components: {
+      EpHeader,
+      EpIcon
+    },
     props: {
-      bigness: {
-        type: Number,
-        default: 1200
+      width: {
+        type: String,
+        default: '100%'
       },
+      url: {
+        type: String,
+        default: 'http://website.com'
+      }
       // imageUrl: {
       //   type: String,
       //   default: ''
@@ -41,7 +66,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   .browser-frame {
     height: auto;
     display: flex;
@@ -51,22 +76,44 @@
     overflow: hidden;
   }
 
-  header {
-    height: 8%;
-    background-color: var(--background-2);
-    padding: 10px;
+  .window-buttons {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: flex-start;
+    gap: 0.7rem;
+    width: 100%;
+    height: 100%;
+
+    .window-button {
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+
+      &--close {
+        background: #ff5f57;
+      }
+
+      &--minimize {
+        background: #febc2e;
+      }
+
+      &--maximize {
+        background: #28c840;
+      }
+    }
   }
 
-  .search-bar {
+  .search {
     display: flex;
-  }
-
-  .search-bar input {
-    flex-grow: 1;
-    margin-right: 10px;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    padding-left: 1.5rem;
+    background: var(--background-1);
+    border: 1px solid var(--border-color);
+    border-radius: 1.5rem;
+    color: var(--text-color--subtle);
+    cursor: default;
   }
 
   .image-container {
@@ -75,6 +122,7 @@
   }
 
   img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;

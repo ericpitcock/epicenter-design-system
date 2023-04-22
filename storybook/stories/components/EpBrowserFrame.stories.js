@@ -6,13 +6,16 @@ export default {
   component: EpBrowserFrame,
   decorators: [centered],
   argTypes: {
-    bigness: {
-      name: 'bigness',
+    width: {
+      name: 'Width',
       control: {
-        type: 'range',
-        min: 100,
-        max: 1500,
-        step: 10
+        type: 'text',
+      }
+    },
+    url: {
+      name: 'URL',
+      control: {
+        type: 'text',
       }
     },
     // imageUrl: {
@@ -33,5 +36,5 @@ export const BrowserFrame = args => ({
 })
 
 BrowserFrame.args = {
-  bigness: 1200,
+  width: '1200',
 }
