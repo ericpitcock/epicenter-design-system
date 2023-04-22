@@ -8,6 +8,17 @@ export default {
   argTypes: {
     isActive: { control: 'boolean' },
     disabled: { control: 'boolean' },
+    label: {
+      name: 'Label',
+      control: 'text'
+    },
+    size: {
+      name: 'Size',
+      options: ['small', 'default', 'large'],
+      control: {
+        type: 'select',
+      }
+    },
   }
 }
 
@@ -22,4 +33,6 @@ export const Toggle = args => ({
 Toggle.args = {
   isActive: false,
   disabled: false,
+  label: 'Toggle',
+  size: 'default'
 }

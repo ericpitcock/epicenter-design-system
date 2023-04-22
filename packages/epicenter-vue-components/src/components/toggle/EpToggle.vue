@@ -6,6 +6,9 @@
     <div class="toggle__track">
       <div class="toggle__thumb" />
     </div>
+    <div class="toggle__label">
+      {{ label }}
+    </div>
   </div>
 </template>
 
@@ -20,6 +23,14 @@
       disabled: {
         type: Boolean,
         default: false,
+      },
+      label: {
+        type: String,
+        default: '',
+      },
+      size: {
+        type: String,
+        default: 'default',
       },
     },
     emits: ['toggle'],
