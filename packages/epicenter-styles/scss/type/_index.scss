@@ -159,6 +159,7 @@ small {
 // text selection color
 ::selection {
   background: var(--text-selection);
+  color: var(--text-black);
 }
 
 .text--copyable {

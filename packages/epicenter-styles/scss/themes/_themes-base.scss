@@ -5,8 +5,8 @@
   // text basics
   --text--black: var(--gray-410);
   --text--white: var(--gray-50);
-  // primary color
-  --color--primary: hsl(214, 91%, 55%);
+  // primary color backwards compatibility
+  --color--primary: var(--primary-color-base);
   // border radius
   --border-radius: 0.3rem;
   --border-radius--large: 0.6rem;
@@ -15,8 +15,9 @@
   --color-error: hsl(3, 100%, 70%);
   // primary button
   --primary-color--gradient: linear-gradient(140deg,
-      var(--color--primary) 30%,
-      hsl(204, 91%, 60%));
+    var(--primary-color-base) 30%,
+    var(--primary-color-down-10-base) 70%
+  );
   --primary-color--base: var(--primary-color--gradient);
   --primary-color--hover: var(--color--primary);
   --primary-color--active: hsl(214, 91%, 60%);
