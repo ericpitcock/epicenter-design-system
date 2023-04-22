@@ -2,6 +2,7 @@ import EpActionBar from './action-bar/EpActionBar.vue'
 import EpBadge from './badge/EpBadge.vue'
 import EpBanner from './banner/EpBanner.vue'
 import EpBreadcrumb from './breadcrumb/EpBreadcrumb.vue'
+import EpBrowserFrame from './browser-frame/EpBrowserFrame.vue'
 import EpButton from './button/EpButton.vue'
 import EpButtonGroup from './button-group/EpButtonGroup.vue'
 import EpChart from './charts/EpChart.vue'
@@ -17,6 +18,7 @@ import EpFooter from './footer/EpFooter.vue'
 import EpHeader from './header/EpHeader.vue'
 import EpIcon from './icon/EpIcon.vue'
 import EpInput from './input/EpInput.vue'
+import EpKeyValueTable from './key-value-table/EpKeyValueTable.vue'
 import EpLoading from './loading-state/EpLoadingState.vue'
 import EpMap from './map/EpMap.vue'
 import EpMenu from './menu/EpMenu.vue'
@@ -40,6 +42,7 @@ export default {
   EpBadge,
   EpBanner,
   EpBreadcrumb,
+  EpBrowserFrame,
   EpButton,
   EpButtonGroup,
   EpChart,
@@ -55,6 +58,7 @@ export default {
   EpHeader,
   EpIcon,
   EpInput,
+  EpKeyValueTable,
   EpLoading,
   EpMap,
   EpMenu,
