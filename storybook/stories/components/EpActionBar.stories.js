@@ -1,11 +1,11 @@
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import EpActionBar from '@/components/action-bar/EpActionBar'
 import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs'
 
 export default {
   title: 'Components/Action Bar',
   component: EpActionBar,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     items: {
       table: {

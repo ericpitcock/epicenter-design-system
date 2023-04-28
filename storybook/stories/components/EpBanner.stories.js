@@ -1,11 +1,11 @@
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpBanner from '@/components/banner/EpBanner.vue'
 
 export default {
   title: 'Components/Banner',
   component: EpBanner,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     bannerStyle: {
       name: 'Style',

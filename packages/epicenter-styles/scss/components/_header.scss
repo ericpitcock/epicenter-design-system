@@ -1,6 +1,10 @@
 .ep-header {
   width: 100%;
 
+  &--shadowed {
+    box-shadow: var(--box-shadow--sticky);
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;

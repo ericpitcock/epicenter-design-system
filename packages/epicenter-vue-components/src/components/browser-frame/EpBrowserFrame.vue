@@ -9,6 +9,7 @@
       left-flex="0"
       center-flex="3"
       right-flex="0"
+      background-color="var(--interface-foreground)"
     >
       <template #left>
         <div class="window-buttons">
@@ -109,8 +110,8 @@
     width: 100%;
     height: 3rem;
     padding-left: 1.5rem;
-    background: var(--background-1);
-    border: 1px solid var(--border-color);
+    background: var(--interface-overlay);
+    border: 1px solid var(--border-color--lighter);
     border-radius: 1.5rem;
     color: var(--text-color--subtle);
     cursor: default;

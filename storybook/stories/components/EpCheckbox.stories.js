@@ -1,10 +1,10 @@
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import EpCheckbox from '@/components/checkbox/EpCheckbox'
 
 export default {
   title: 'Components/Checkbox',
   component: EpCheckbox,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     id: {
       table: { disable: true }

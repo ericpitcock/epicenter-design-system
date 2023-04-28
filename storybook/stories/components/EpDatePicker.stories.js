@@ -1,10 +1,10 @@
-import { centered } from '../../helpers/decorators'
+import { paddedSurface } from '../../helpers/decorators'
 import EpDatePicker from '@/components/date-picker/EpDatePicker'
 
 export default {
   title: 'Components/Date Picker',
   component: EpDatePicker,
-  decorators: [centered],
+  decorators: [paddedSurface],
   argTypes: {
     inputProps: {
       name: 'Input Props',

@@ -48,7 +48,7 @@
       return {
         albumsOfTheYear: albumsOfTheYear.default,
         containerProps: {
-          backgroundColor: 'var(--background-1)',
+          backgroundColor: 'var(--interface-foreground)',
           borderRadius: 'var(--border-radius)',
           overflow: 'hidden',
         }
@@ -103,5 +103,6 @@
       width: 100%;
       padding: 1.6rem 2rem;
       border-top: 1px solid var(--border-color);
+    }
   }
-}</style>
+</style>

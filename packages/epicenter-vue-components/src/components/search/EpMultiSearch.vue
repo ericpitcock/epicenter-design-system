@@ -101,7 +101,7 @@
       },
       backgroundColor: {
         type: String,
-        default: 'var(--background-2)'
+        default: 'var(--interface-foreground)'
       },
       color: {
         type: String,

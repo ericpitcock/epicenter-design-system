@@ -1,4 +1,4 @@
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpDropdown from '@/components/dropdown/EpDropdown'
 
@@ -11,7 +11,7 @@ import EpDropdown from '@/components/dropdown/EpDropdown'
 //   iconLeft: { name: 'export' }
 // }
 // const containerProps = {
-//   backgroundColor: 'var(--background-4)',
+//   backgroundColor: 'var(--interface-overlay)',
 //   containerPadding: '1rem 0',
 //   borderRadius: 'var(--border-radius)',
 //   borderColor: 'var(--border-color--lighter)'
@@ -41,7 +41,7 @@ const fakeDropdownItems = [
 export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     disabled: {
       name: 'Disabled',
@@ -124,7 +124,7 @@ export const Dropdown = args => ({
       iconLeft: args['buttonProps.iconLeft']
     }
     const containerProps = {
-      backgroundColor: 'var(--background-4)',
+      backgroundColor: 'var(--interface-overlay)',
       containerPadding: '1rem 0',
       borderRadius: 'var(--border-radius)',
       borderColor: 'var(--border-color--lighter)'

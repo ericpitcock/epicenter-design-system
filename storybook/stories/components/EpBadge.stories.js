@@ -1,11 +1,11 @@
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import { colorNames, colorValues } from '../../helpers/colorHelper'
 import EpBadge from '@/components/badge/EpBadge'
 
 export default {
   title: 'Components/Badge',
   component: EpBadge,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     label: {
       name: 'Label',

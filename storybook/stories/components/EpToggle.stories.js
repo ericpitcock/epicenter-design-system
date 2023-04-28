@@ -1,10 +1,10 @@
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import EpToggle from '@/components/toggle/EpToggle.vue'
 
 export default {
   title: 'Components/Toggle',
   component: EpToggle,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     isActive: { control: 'boolean' },
     disabled: { control: 'boolean' },

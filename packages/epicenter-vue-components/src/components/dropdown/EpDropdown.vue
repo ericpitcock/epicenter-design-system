@@ -28,7 +28,7 @@
           :menu-items="menuItems"
           menu-type="dropdown"
           divider-color="var(--border-color--lighter)"
-          :container-props="containerProps"
+          :container-props="computedContainerProps"
           @click="onClick"
         />
       </div>
@@ -112,6 +112,13 @@
           ...this.buttonProps,
           // For backwards compatibility, merge the "button" prop with the "buttonProps" prop
           ...this.button
+        }
+      },
+      computedContainerProps() {
+        return {
+          backgroundColor: 'var(--interface-overlay)',
+          minWidth: '15rem',
+          ...this.containerProps,
         }
       },
       classes() {

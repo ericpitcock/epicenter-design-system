@@ -64,7 +64,7 @@
 
   &--secondary {
     @include button-theme(
-      var(--background-4),
+      var(--interface-foreground),
       var(--border-color),
       var(--text-color),
       var(--button-secondary--hover),
@@ -157,6 +157,10 @@
     );
     pointer-events: none;
     cursor: default;
+
+    &.ep-button--ghost, &.ep-button--menu-item {
+      border-color: transparent;
+    }
   }
 
   &__icon {

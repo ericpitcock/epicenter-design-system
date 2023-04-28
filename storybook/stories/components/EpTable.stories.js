@@ -50,6 +50,12 @@ export default {
     exclude: {
       table: { disable: true }
     },
+    headerBackgroundColor: {
+      name: 'Header Background Color',
+      control: {
+        type: 'color'
+      }
+    },
     hiddenColumns: {
       name: 'Hidden Columns',
       control: {
@@ -225,7 +231,7 @@ export const Table = args => ({
             :input-props="{
               width: '40rem',
               size: 'large',
-              backgroundColor: 'var(--background-1)',
+              backgroundColor: 'var(--interface-foreground)',
               placeholder: 'Search by Name (currently half-baked)'
             }"
             @search="onSearch"
@@ -242,7 +248,7 @@ export const Table = args => ({
           >
             <template #content>
               <ep-container
-                backgroundColor="var(--background-4)"
+                backgroundColor="var(--interface-overlay)"
                 borderColor="var(--border-color--lighter)"
                 borderRadius="var(--border-radius)"
                 container-padding="2rem"
@@ -280,6 +286,7 @@ Table.args = {
   compact: false,
   data: tableData,
   exclude: ['id'],
+  headerBackgroundColor: 'var(--interface-surface)',
   hiddenColumns: [],
   padding: '0 0 10rem 0',
   search: [],

@@ -113,7 +113,7 @@
       },
       backgroundColor: {
         type: String,
-        default: 'var(--background-2)'
+        default: 'var(--interface-foreground)'
       },
     },
     emits: ['update:modelValue', 'focus', 'esc', 'blur', 'enter', 'clear'],

@@ -47,39 +47,11 @@ textarea {
 }
 
 :root {
-  --box-shadow-color: #333;
-}
-
-.box-shadow--north {
-  box-shadow: 0 -10px 10px 0 var(--box-shadow-color);
-}
-
-.box-shadow--north--large {
-  box-shadow: 0 -20px 20px 0 var(--box-shadow-color);
-}
-
-.box-shadow--east {
-  box-shadow: 10px 0 10px 0 var(--box-shadow-color);
-}
-
-.box-shadow--east--large {
-  box-shadow: 20px 0 20px 0 var(--box-shadow-color);
-}
-
-.box-shadow--south {
-  box-shadow: 0 10px 10px 0 var(--box-shadow-color);
-}
-
-.box-shadow--south--large {
-  box-shadow: 0 20px 20px 0 var(--box-shadow-color);
-}
-
-.box-shadow--west {
-  box-shadow: -10px 0 10px 0 var(--box-shadow-color);
-}
-
-.box-shadow--west--large {
-  box-shadow: -20px 0 20px 0 var(--box-shadow-color);
+  --box-shadow--modal: 0 10px 10px var(--box-shadow-color);
+  --box-shadow--tooltip: 0 5px 10px var(--box-shadow-color);
+  --box-shadow--dropdown: 0 5px 10px var(--box-shadow-color);
+  --box-shadow--sticky: 0 2px 10px var(--box-shadow-color);
+  --box-shadow--overlap: 0 2px 5px var(--box-shadow-color);
 }
 
 .status-dot {
@@ -479,6 +451,10 @@ textarea {
 }
 
 :root {
+  --background-1: red;
+  --background-2: green;
+  --background-3: blue;
+  --background-4: orange;
   --black: #000;
   --white: #fff;
   --text--black: var(--gray-410);
@@ -520,10 +496,14 @@ textarea {
 }
 
 :root {
-  --background-1: var(--gray-440);
-  --background-2: var(--gray-430);
-  --background-3: var(--gray-420);
-  --background-4: var(--gray-390);
+  --interface-bg: var(--gray-430);
+  --interface-bg--accent: var(--gray-420);
+  --interface-surface: var(--gray-440);
+  --interface-surface--accent: var(--gray-420);
+  --interface-foreground: var(--gray-430);
+  --interface-foreground--accent: var(--gray-420);
+  --interface-overlay: var(--gray-390);
+  --interface-overlay--accent: var(--gray-380);
   --app-header-background: linear-gradient(45deg,
       hsl(240, 11%, 12%) 50%,
       hsl(246, 47%, 29%) 100%);
@@ -531,6 +511,7 @@ textarea {
   --border-color--lighter: var(--gray-340);
   --border-color--disabled: var(--gray-400);
   --overlay-color: rgba(36, 36, 36, 0.85);
+  --box-shadow-color: rgba(0,0,0,0.3);
   --drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
   --drop-shadow--large: 0 2px 20px rgba(0, 0, 0, 0.5);
   --drop-shadow--large--north: 0 -10px 10px rgba(0,0,0,0.25);
@@ -563,7 +544,7 @@ textarea {
   --button-menu-item--active: var(--primary-color--active);
   --button-menu-item-text-hover: var(--text-color);
   --button-menu-item-text-active: var(--text-color);
-  --table-stripe-color: var(--gray-420);
+  --table-stripe-color: var(--interface-foreground);
   --nav-link-hover-bg-color: var(--gray-420);
   --nav-link-active-bg-color: linear-gradient(45deg,
       hsl(228, 68%, 60%) 50%,
@@ -599,15 +580,20 @@ textarea {
 }
 
 html[data-color-theme=light] {
-  --background-1: var(--gray-10);
-  --background-2: var(--gray-0);
-  --background-3: var(--gray-0);
-  --background-4: var(--gray-0);
+  --interface-bg: var(--gray-60);
+  --interface-bg--accent: var(--gray-50);
+  --interface-surface: var(--gray-40);
+  --interface-surface--accent: var(--gray-60);
+  --interface-foreground: var(--gray-30);
+  --interface-foreground--accent: var(--gray-20);
+  --interface-overlay: var(--gray-20);
+  --interface-overlay--accent: var(--gray-10);
   --app-header-background: #f0f4f8;
-  --border-color: var(--gray-70);
+  --border-color: hsl(0, 0%, 75%);
   --border-color--lighter: var(--border-color);
   --border-color--disabled: var(--gray-70);
   --overlay-color: rgba(255, 255, 255, 0.85);
+  --box-shadow-color: rgba(0,0,0,0.1);
   --drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.05);
   --drop-shadow--large: 0 2px 20px rgba(0, 0, 0, 0.15);
   --drop-shadow--large--north: 0 -10px 10px rgba(0,0,0,0.15);
@@ -640,7 +626,7 @@ html[data-color-theme=light] {
   --button-menu-item--active: var(--primary-color--active);
   --button-menu-item-text-hover: var(--text-color--inverse);
   --button-menu-item-text-active: var(--text-color--inverse);
-  --table-stripe-color: #f9f9f9;
+  --table-stripe-color: var(--interface-foreground);
   --nav-link-hover-bg-color: var(--gray-20);
   --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%);
   --nav-link-icon-color: var(--color--primary);
@@ -818,7 +804,7 @@ small {
   position: absolute;
   bottom: calc(100% + 5px);
   margin-left: -2px;
-  background-color: var(--background-4);
+  background-color: var(--interface-overlay);
   border: 1px solid var(--border-color--lighter);
   color: var(--text-color);
   font-size: var(--font-size--tiny);
@@ -864,9 +850,9 @@ small {
   border-color: var(--color--primary);
 }
 .ep-badge--secondary {
-  background-color: var(--background-4);
+  background-color: var(--interface-overlay);
   color: var(--text-color);
-  border-color: var(--background-4);
+  border-color: var(--interface-overlay);
 }
 .ep-badge--secondary.ep-badge--outlined {
   border-color: var(--border-color--lighter);
@@ -911,7 +897,7 @@ small {
   gap: 1.5rem;
   width: 100%;
   height: 100%;
-  background-color: var(--background-4);
+  background-color: var(--interface-overlay);
   padding: 1.2rem 2rem;
   border: 1px solid var(--border-color--lighter);
   border-left: none;
@@ -981,7 +967,7 @@ small {
   background: var(--primary-color--active);
 }
 .ep-button--secondary {
-  background: var(--background-4);
+  background: var(--interface-foreground);
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-color);
@@ -1109,6 +1095,9 @@ small {
 }
 .ep-button--disabled:active {
   background: var(--background-2);
+}
+.ep-button--disabled.ep-button--ghost, .ep-button--disabled.ep-button--menu-item {
+  border-color: transparent;
 }
 .ep-button__icon {
   display: inline-flex;
@@ -2273,7 +2262,7 @@ text.highcharts-drilldown-data-label,
   -webkit-animation: none;
   animation: none;
   direction: ltr;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color--lighter);
   line-height: 24px;
   border-radius: var(--border-radius);
   position: absolute;
@@ -2282,7 +2271,7 @@ text.highcharts-drilldown-data-label,
   box-sizing: border-box;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  background: var(--background-1);
+  background: var(--interface-overlay);
 }
 
 .flatpickr-calendar.open,
@@ -3087,7 +3076,7 @@ span.flatpickr-weekday {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--background-4);
+  background: var(--interface-overlay);
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color--lighter);
 }
@@ -3101,7 +3090,7 @@ span.flatpickr-weekday {
   top: 100%;
   left: 0;
   padding-top: 4px;
-  box-shadow: var(--drop-shadow);
+  box-shadow: var(--box-shadow--dropdown);
   z-index: var(--z-index--dropdown);
 }
 .ep-dropdown__container--align-right {
@@ -3109,6 +3098,7 @@ span.flatpickr-weekday {
   left: auto;
 }
 .ep-dropdown__content {
+  width: max-content;
   position: relative;
   z-index: var(--z-index--dropdown);
 }
@@ -3165,6 +3155,9 @@ span.flatpickr-weekday {
 
 .ep-header {
   width: 100%;
+}
+.ep-header--shadowed {
+  box-shadow: var(--box-shadow--sticky);
 }
 .ep-header__content {
   display: flex;
@@ -3445,7 +3438,7 @@ input.ep-input--disabled::placeholder {
   gap: 1rem;
   width: 100%;
   height: 100%;
-  background-color: var(--background-4);
+  background-color: var(--interface-overlay);
   padding: 1.2rem 0.5rem 1.2rem 2rem;
   border: 1px solid var(--border-color--lighter);
   border-left: none;
@@ -3501,7 +3494,7 @@ input.ep-input--disabled::placeholder {
   width: 100%;
   padding: 1rem 0;
   overflow-y: auto;
-  background-color: var(--background-4);
+  background-color: var(--interface-overlay);
   border: 1px solid var(--border-color--lighter);
   border-radius: var(--border-radius);
   z-index: var(--z-index--dropdown);
@@ -3597,7 +3590,7 @@ select.ep-select--disabled {
   transform-origin: left top;
   display: none;
   padding: 0.4rem 0.6rem;
-  background: var(--background-4);
+  background: var(--interface-overlay);
   border: 1px solid var(--border-color--lighter);
   border-radius: var(--border-radius);
   font-size: var(--font-size--tiny);
@@ -3655,7 +3648,6 @@ select.ep-select--disabled {
 }
 .ep-table thead th {
   text-align: left;
-  background: var(--background-2);
 }
 .ep-table thead th div {
   position: relative;
@@ -3765,7 +3757,7 @@ select.ep-select--disabled {
   height: 100%;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  background-color: var(--background-2);
+  background-color: var(--interface-foreground);
   color: var(--text-color);
   padding: 1.6rem 2rem;
   line-height: 1.5;
@@ -3785,6 +3777,7 @@ select.ep-select--disabled {
   height: 2rem;
   border-radius: 2rem;
   cursor: pointer;
+  user-select: none;
   transition: background-color 0.1s ease;
 }
 .toggle__track {

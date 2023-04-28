@@ -1,10 +1,10 @@
-import { padded } from '../../helpers/decorators'
+import { paddedSurface } from '../../helpers/decorators'
 import EpTextarea from '@/components/textarea/EpTextarea.vue'
 
 export default {
   title: 'Components/Textarea',
   component: EpTextarea,
-  decorators: [padded],
+  decorators: [paddedSurface],
   argTypes: {
     id: {
       name: 'id',

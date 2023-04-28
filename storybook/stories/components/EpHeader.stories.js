@@ -179,6 +179,12 @@ export default {
         type: 'text'
       }
     },
+    shadowed: {
+      name: 'Shadowed',
+      control: {
+        type: 'boolean'
+      }
+    },
   }
 }
 
@@ -228,4 +234,5 @@ Header.args = {
   sticky: false,
   stickyTop: '0',
   zIndex: '1',
+  shadowed: false,
 }

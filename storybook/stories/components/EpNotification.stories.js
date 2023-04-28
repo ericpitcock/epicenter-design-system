@@ -1,12 +1,12 @@
 import faker from 'faker'
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import EpNotification from '@/components/notification/EpNotification'
 import store from '../../store'
 
 export default {
   title: 'Components/Notifications/Notification',
   component: EpNotification,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     id: { table: { disable: true } },
     message: {

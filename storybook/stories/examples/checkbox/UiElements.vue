@@ -15,7 +15,7 @@
       }"
       :container-props="{
         contentPadding: '1rem 0',
-        backgroundColor: 'var(--background-4)',
+        backgroundColor: 'var(--interface-overlay)',
         borderColor: 'var(--border-color--lighter)',
         borderRadius: 'var(--border-radius)',
       }"

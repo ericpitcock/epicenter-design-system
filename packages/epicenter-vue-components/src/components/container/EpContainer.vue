@@ -65,7 +65,7 @@
       },
       backgroundColor: {
         type: String,
-        default: 'var(--background-2)'
+        default: 'var(--interface-surface)'
       },
       borderRadius: {
         type: String,

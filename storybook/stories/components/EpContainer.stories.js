@@ -234,7 +234,7 @@ Container.args = {
   containerPadding: '0 3rem',
   contentPadding: '0',
   padding: '0',
-  backgroundColor: 'var(--background-2)',
+  backgroundColor: 'var(--interface-surface)',
   borderRadius: 'var(--border-radius--large)',
   borderWidth: '0.1rem',
   borderStyle: 'solid',

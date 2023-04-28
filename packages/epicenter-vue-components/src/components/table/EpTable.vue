@@ -17,7 +17,7 @@
             <th
               v-if="!excluded(column.key)"
               :class="headClasses(column.key)"
-              :style="stickyHeaderTop"
+              :style="{ background: headerBackgroundColor, ...stickyHeaderTop }"
               @click="sort(column.key)"
             >
               <div>
@@ -101,6 +101,10 @@
       exclude: {
         type: Array,
         default: () => []
+      },
+      headerBackgroundColor: {
+        type: String,
+        default: 'var(--interface-surface)'
       },
       hiddenColumns: {
         type: Array,

@@ -10,7 +10,7 @@ const commonActionBarArgs = {
         iconRight: null
       },
       containerProps: {
-        backgroundColor: 'var(--background-4)',
+        backgroundColor: 'var(--interface-overlay)',
         containerPadding: '1rem 0',
         borderRadius: 'var(--border-radius)',
         borderColor: 'var(--border-color--lighter)'
@@ -32,7 +32,7 @@ const commonActionBarArgs = {
         iconRight: null
       },
       containerProps: {
-        backgroundColor: 'var(--background-4)',
+        backgroundColor: 'var(--interface-overlay)',
         containerPadding: '1rem 0',
         borderRadius: 'var(--border-radius)',
         borderColor: 'var(--border-color--lighter)'
@@ -55,7 +55,7 @@ const commonActionBarArgs = {
         iconRight: null
       },
       containerProps: {
-        backgroundColor: 'var(--background-4)',
+        backgroundColor: 'var(--interface-overlay)',
         containerPadding: '1rem 0',
         borderRadius: 'var(--border-radius)',
         borderColor: 'var(--border-color--lighter)'

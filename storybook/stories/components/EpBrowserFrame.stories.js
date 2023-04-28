@@ -1,10 +1,10 @@
-import { centered } from '../../helpers/decorators'
+import { padded } from '../../helpers/decorators'
 import EpBrowserFrame from '@/components/browser-frame/EpBrowserFrame.vue'
 
 export default {
   title: 'Components/Browser Frame',
   component: EpBrowserFrame,
-  decorators: [centered],
+  decorators: [padded],
   argTypes: {
     width: {
       name: 'Width',
@@ -32,9 +32,13 @@ export const BrowserFrame = args => ({
   setup() {
     return { args }
   },
-  template: '<ep-browser-frame v-bind="args" />',
+  template: `
+  <div style="max-width: 1200px;">
+    <ep-browser-frame v-bind="args" />
+  </div>
+  `
 })
 
 BrowserFrame.args = {
-  width: '1200',
+  width: '100%',
 }

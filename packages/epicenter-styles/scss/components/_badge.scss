@@ -17,9 +17,9 @@
   }
 
   &--secondary {
-    background-color: var(--background-4);
+    background-color: var(--interface-overlay);
     color: var(--text-color);
-    border-color: var(--background-4);
+    border-color: var(--interface-overlay);
 
     &.ep-badge--outlined {
       border-color: var(--border-color--lighter);

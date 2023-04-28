@@ -2,7 +2,7 @@
   <ep-container
     width="40rem"
     content-padding="3rem"
-    background-color="var(--background-1)"
+    background-color="var(--interface-surface)"
     border-radius="var(--border-radius)"
     overflow="hidden"
   >

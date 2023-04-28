@@ -10,7 +10,7 @@
   -webkit-animation: none;
   animation: none;
   direction: ltr;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color--lighter);
   // font-size: 14px;
   line-height: 24px;
   border-radius: var(--border-radius);
@@ -20,7 +20,7 @@
   box-sizing: border-box;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  background: var(--background-1);
+  background: var(--interface-overlay);
   // -webkit-box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0,0,0,0.08);
   //         box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0,0,0,0.08);
 }

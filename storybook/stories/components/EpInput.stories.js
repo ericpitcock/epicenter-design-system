@@ -1,4 +1,4 @@
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpInput from '@/components/input/EpInput.vue'
 import { ref } from 'vue'
@@ -6,7 +6,7 @@ import { ref } from 'vue'
 export default {
   title: 'Components/Input',
   component: EpInput,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     id: {
       name: 'ID',
@@ -174,5 +174,5 @@ Input.args = {
   borderStyle: 'solid',
   borderColor: 'var(--border-color)',
   borderRadius: '0.3rem',
-  backgroundColor: 'var(--background-2)',
+  backgroundColor: 'var(--interface-foreground)',
 }

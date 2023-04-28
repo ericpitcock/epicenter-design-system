@@ -1,5 +1,6 @@
 import { padded } from '../../helpers/decorators'
 import EpCodeView from '@/components/code-view/EpCodeView.vue'
+import EpContainer from '@/components/container/EpContainer.vue'
 
 const codeExamples = {
   javascript: `function myFunction(name, age) {
@@ -112,12 +113,20 @@ export default {
 }
 
 export const CodeView = args => ({
-  components: { EpCodeView },
+  components: { EpCodeView, EpContainer },
   setup() {
     const code = codeExamples[args.language]
     return { args, code }
   },
-  template: '<ep-code-view :code="code" v-bind="args" />'
+  template: `
+  <ep-container
+    width="fit-content"
+    content-padding="2rem"
+    border-radius="var(--border-radius)"
+  >
+    <ep-code-view :code="code" v-bind="args" />
+  </ep-container>
+  `
 })
 
 CodeView.args = {

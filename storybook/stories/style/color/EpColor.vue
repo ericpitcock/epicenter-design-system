@@ -189,7 +189,7 @@
     computed: {
       ...mapState(['theme']),
       backgroundColor() {
-        return this.theme === 'dark' ? '#242424' : '#fff'
+        return this.theme === 'dark' ? '#1f1f1f' : '#ebebeb'
       },
       filteredData() {
         if (this.filter === '') {

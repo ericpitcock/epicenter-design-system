@@ -161,7 +161,7 @@
       display: flex;
       gap: 3rem;
       padding: 4rem 8rem;
-      background: var(--background-3);
+      background: var(--interface-surface);
       border-radius: 0 0 var(--border-radius--large) var(--border-radius--large);
       border: 1px solid var(--border-color);
       border-top: none;

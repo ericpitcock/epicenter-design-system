@@ -23,7 +23,7 @@ export const Autocomplete = args => ({
   components: { EpSearch },
   setup() {
     const searchResults = ref([])
-    const bg = ref('var(--background-1)')
+    const bg = ref('var(--interface-surface)')
 
     const setBackground = color => {
       bg.value = color
@@ -54,7 +54,7 @@ export const Autocomplete = args => ({
         :input-props="{ width: '60rem', placeholder: 'Find your favorite color…', size: 'xlarge' }"
         @search="searchWebColors"
         @selection="setBackground"
-        @clear="bg = 'var(--background-1)'"
+        @clear="bg = 'var(--interface-surface)'"
       />
     </div>
   `,

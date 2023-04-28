@@ -84,7 +84,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
     }
 
     const containerProps = {
-      backgroundColor: 'var(--background-4)',
+      backgroundColor: 'var(--interface-overlay)',
       containerPadding: '1rem 0',
       borderRadius: 'var(--border-radius)',
       borderColor: 'var(--border-color--lighter)'
@@ -212,7 +212,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
               placeholder: 'Find your place…',
               width: '40rem',
               size: 'large',
-              backgroundColor: 'var(--background-1)',
+              backgroundColor: 'var(--interface-foreground)',
             }"
             :search-results="searchResults"
             results-label="place_name"

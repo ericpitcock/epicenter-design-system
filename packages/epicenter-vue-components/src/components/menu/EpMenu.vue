@@ -91,6 +91,7 @@
     methods: {
       buttonProps(item) {
         return {
+          disabled: item.disabled,
           variant: 'menu-item',
           size: this.size,
           label: item.label,

@@ -1,9 +1,10 @@
-// storybook story for EpRadioButton
+import { centeredSurface } from '../../helpers/decorators'
 import EpRadioButton from '@/components/radio-button/EpRadioButton.vue'
 
 export default {
   title: 'Components/Radio Button',
   component: EpRadioButton,
+  decorators: [centeredSurface],
   argTypes: {
     label: {
       control: {

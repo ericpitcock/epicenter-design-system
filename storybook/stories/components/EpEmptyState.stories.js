@@ -1,10 +1,10 @@
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
 
 export default {
   title: 'Components/Empty State',
   component: EpEmptyState,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     direction: {
       name: 'Direction',

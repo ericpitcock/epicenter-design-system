@@ -20,7 +20,7 @@
           <ep-input
             v-model="typeSample"
             size="large"
-            background-color="var(--background-1)"
+            background-color="var(--interface-foreground)"
             placeholder="Enter your sample text here"
             clearable
             @clear="typeSample = ''"

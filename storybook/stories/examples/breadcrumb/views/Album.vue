@@ -92,6 +92,7 @@
         width: 99%;
         height: 99%;
         background: v-bind(randomBrightColor);
+        top: 0.5%;
         right: -20%;
         border-radius: 50%;
         box-shadow: var(--drop-shadow);

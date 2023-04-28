@@ -1,11 +1,11 @@
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
 import EpSelect from '@/components/select/EpSelect'
 
 export default {
   title: 'Components/Select',
   component: EpSelect,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     width: {
       name: 'Width',
@@ -150,5 +150,5 @@ Select.args = {
   borderStyle: 'solid',
   borderColor: 'var(--border-color)',
   borderRadius: 'var(--border-radius)',
-  backgroundColor: 'var(--background-2)'
+  backgroundColor: 'var(--interface-foreground)'
 }

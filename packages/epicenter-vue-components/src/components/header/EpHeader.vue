@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ep-header"
+    :class="['ep-header', { 'ep-header--shadowed': shadowed }]"
     :style="containerStyles"
   >
     <div
@@ -43,7 +43,7 @@
       },
       backgroundColor: {
         type: String,
-        default: 'var(--background-2)'
+        default: 'var(--interface-surface)'
       },
       borderRadius: {
         type: String,
@@ -116,6 +116,10 @@
       zIndex: {
         type: String,
         default: '1'
+      },
+      shadowed: {
+        type: Boolean,
+        default: false
       }
     },
     computed: {

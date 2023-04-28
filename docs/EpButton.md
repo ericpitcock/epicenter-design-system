@@ -164,7 +164,7 @@ To use **`EpButton`** in your Vue.js application, simply import the component an
 
   &--secondary {
     @include button-theme(
-      var(--background-4),
+      var(--interface-overlay),
       var(--border-color),
       var(--text-color),
       var(--button-secondary--hover),

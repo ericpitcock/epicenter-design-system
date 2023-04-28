@@ -1,10 +1,10 @@
-import { centered } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators'
 import EpSparkBar from '@/components/spark-bar/EpSparkBar.vue'
 
 export default {
   title: 'Components/Spark Bar',
   component: EpSparkBar,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
     bar: {
       control: {
