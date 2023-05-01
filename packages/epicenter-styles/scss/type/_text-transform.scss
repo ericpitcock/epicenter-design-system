@@ -1,0 +1,16 @@
+// Transformations
+.text--capitalize {
+  text-transform: capitalize;
+}
+
+.text--lowercase {
+  text-transform: lowercase;
+}
+
+.text--uppercase {
+  text-transform: uppercase;
+}
+
+.tabular-numbers {
+  font-feature-settings: 'tnum';
+}

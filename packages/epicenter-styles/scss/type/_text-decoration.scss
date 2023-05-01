@@ -1,0 +1,6 @@
+// disambiguation changes characters to be more distinct,
+// like a 0 with a slash through it
+.text-disamb {
+  // Stylistic set 2: Disambiguation
+  font-feature-settings: 'ss02';
+}

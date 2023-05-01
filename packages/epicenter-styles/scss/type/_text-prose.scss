@@ -1,0 +1,22 @@
+.copy-block {
+  & > * + * {
+    margin-top: 1rem;
+  }
+
+  p {
+    font-size: var(--font-size--body);
+    line-height: 2.4rem;
+    max-width: 60rem;
+  }
+
+  a:not(.ep-button) {
+    color: var(--text-color--link);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    a:hover:not(.ep-button) {
+      color: var(--text-color--link);
+      cursor: pointer;
+    }
+  }
+}

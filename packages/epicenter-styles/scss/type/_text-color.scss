@@ -1,0 +1,5 @@
+// deprecate .text--subtle in favor of .text-color--subtle
+.text--subtle,
+.text-color--subtle {
+  color: var(--text-color--subtle);
+}
