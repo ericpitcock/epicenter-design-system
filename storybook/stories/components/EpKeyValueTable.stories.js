@@ -51,9 +51,8 @@ export default {
   decorators: [padded],
   argTypes: {
     data: {
-      name: 'Data',
-      control: {
-        type: 'object'
+      table: {
+        disable: true
       }
     },
     width: {
@@ -69,9 +68,8 @@ export default {
       }
     },
     acronyms: {
-      name: 'Acronyms',
-      control: {
-        type: 'array'
+      table: {
+        disable: true
       }
     },
     sectionHeaders: {
@@ -106,6 +104,6 @@ KeyValueTable.args = {
   width: '100%',
   commonKeyWidth: true,
   acronyms: ['IP', 'DNS', 'HTTP', 'XFF'],
-  sectionHeaders: true,
+  sectionHeaders: false,
   striped: true,
 }

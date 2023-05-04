@@ -166,7 +166,7 @@
           .attr('fill', function (d) {
             return color(d.data)
           })
-          .attr('stroke', 'var(--background-1)')
+          .attr('stroke', 'var(--interface-bg)')
           .attr('stroke-width', '0.3rem')
           .on('mouseover', this.handleMouseOver)
           .on('mousemove', this.handleMouseOver)

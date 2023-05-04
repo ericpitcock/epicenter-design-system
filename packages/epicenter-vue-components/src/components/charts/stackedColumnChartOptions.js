@@ -31,7 +31,7 @@ const stackedColumnSeries = () => {
   categories.forEach((category, index) => {
     array.push({
       name: category,
-      data: fakeArrayOfNumbers(30)
+      data: fakeArrayOfNumbers(8)
     })
   })
   return array
@@ -74,7 +74,7 @@ const stackedColumnChartOptions = {
     text: undefined
   },
   xAxis: {
-    categories: fakeArrayOfDates(30),
+    categories: fakeArrayOfDates(8),
     labels: {
       formatter: function () {
         // let value = this.value

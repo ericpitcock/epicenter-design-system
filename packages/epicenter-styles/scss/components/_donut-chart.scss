@@ -1,5 +1,6 @@
 .ep-donut-chart {
   position: relative;
+  z-index: var(--z-index--overlap);
   &__value {
     position: absolute;
     top: 0;
@@ -21,6 +22,7 @@
     background: var(--interface-overlay);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color--lighter);
+    z-index: var(--z-index--tooltip);
     // &--visible {
     //   opacity: 1;
     // }

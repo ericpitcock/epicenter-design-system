@@ -9,7 +9,7 @@
 
   &:hover {
     position: relative;
-    background-color: var(--background-2);
+    background-color: var(--interface--surface);
     transform: scale(4);
     gap: 0.5px;
     z-index: var(--z-index--tooltip);

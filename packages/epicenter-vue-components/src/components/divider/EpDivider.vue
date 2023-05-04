@@ -17,6 +17,10 @@
         type: String,
         default: '0'
       },
+      width: {
+        type: String,
+        default: '100%'
+      },
       vertical: {
         type: Boolean,
         default: false
@@ -40,6 +44,7 @@
             margin: this.margin
           }
           : {
+            width: this.width,
             backgroundColor: this.color,
             margin: this.margin
           }

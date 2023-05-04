@@ -9,7 +9,7 @@ import EpSearch from '@/components/search/EpSearch'
 import EpTable from '@/components/table/EpTable'
 import { columns, fakeArray } from '../../data/tableData'
 
-const tableData = fakeArray(30)
+const tableData = fakeArray(10)
 
 export default {
   title: 'Components/Table',
@@ -232,7 +232,7 @@ export const Table = args => ({
               width: '40rem',
               size: 'large',
               backgroundColor: 'var(--interface-foreground)',
-              placeholder: 'Search by Name (currently half-baked)'
+              placeholder: 'Search by Name'
             }"
             @search="onSearch"
           />
@@ -280,7 +280,7 @@ export const Table = args => ({
 
 Table.args = {
   bordered: true,
-  calculateHeight: true,
+  calculateHeight: false,
   calculateHeightOffset: 30,
   columns: columns,
   compact: false,

@@ -6,6 +6,7 @@ import EpSplitButton from '@/components/split-button/EpSplitButton'
 import EpTable from '@/components/table/EpTable'
 import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
 import { columns, fakeArray } from '../../data/tableData'
+import { ref, onMounted } from 'vue'
 
 export default {
   title: 'Components/Loading State',
@@ -39,39 +40,6 @@ export default {
   }
 }
 
-const refresh = [
-  {
-    icon: 'oval',
-    message: 'Refreshing data…'
-  }
-]
-
-const clearAndFetch = [
-  {
-    icon: 'oval',
-    message: 'Clearing local data…'
-  },
-  {
-    icon: 'oval',
-    message: 'Fetching new data from our servers…'
-  }
-]
-
-const destroyAndFetch = [
-  {
-    icon: 'oval',
-    message: 'Destroying everything…'
-  },
-  {
-    icon: 'oval',
-    message: 'Fetching new data from our servers…'
-  },
-  {
-    icon: 'oval',
-    message: 'Considering the repercussions of this action…'
-  }
-]
-
 export const LoadingState = args => ({
   components: {
     EpContainer,
@@ -82,42 +50,82 @@ export const LoadingState = args => ({
     EpLoadingState
   },
   setup() {
+    const refreshConfig = [
+      {
+        icon: 'oval',
+        message: 'Refreshing data…'
+      }
+    ]
+
+    const clearAndFetchConfig = [
+      {
+        icon: 'oval',
+        message: 'Clearing local data…'
+      },
+      {
+        icon: 'oval',
+        message: 'Fetching new data from our servers…'
+      }
+    ]
+
+    const destroyAndFetchConfig = [
+      {
+        icon: 'oval',
+        message: 'Destroying everything…'
+      },
+      {
+        icon: 'oval',
+        message: 'Fetching new data from our servers…'
+      },
+      {
+        icon: 'oval',
+        message: 'Considering the repercussions of this action…'
+      }
+    ]
+
+    const loading = ref(true)
+    const messages = ref(null)
+    const tableData = ref(fakeArray(30))
+
+    const done = () => {
+      loading.value = false
+      messages.value = null
+      tableData.value = fakeArray(30)
+    }
+
+    const refresh = () => {
+      messages.value = refreshConfig
+      loading.value = true
+    }
+
+    const clearAndFetch = () => {
+      messages.value = clearAndFetchConfig
+      loading.value = true
+    }
+
+    const destroyAndFetch = () => {
+      messages.value = destroyAndFetchConfig
+      loading.value = true
+    }
+
+    onMounted(() => {
+      setTimeout(() => {
+        loading.value = false
+      }, 2000)
+    })
+
     return {
       args,
       columns,
-      fakeArray
+      fakeArray,
+      done,
+      refresh,
+      clearAndFetch,
+      destroyAndFetch,
+      tableData,
+      loading,
+      messages
     }
-  },
-  data() {
-    return {
-      loading: true,
-      messages: null,
-      tableData: this.fakeArray(30)
-    }
-  },
-  methods: {
-    done() {
-      this.loading = false
-      this.messages = null
-      this.tableData = this.fakeArray(30)
-    },
-    refresh() {
-      this.messages = refresh
-      this.loading = true
-    },
-    clearAndFetch() {
-      this.messages = clearAndFetch
-      this.loading = true
-    },
-    destroyAndFetch() {
-      this.messages = destroyAndFetch
-      this.loading = true
-    }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.loading = false
-    }, 2000)
   },
   template: `
     <ep-container
@@ -166,9 +174,10 @@ export const LoadingState = args => ({
       </template>
       <template #default>
         <ep-loading-state
+          v-bind="args"
+          :messages="messages"
           v-show="loading"
           @done="done"
-          :messages="messages"
         />
         <ep-table
           :columns="columns"
@@ -192,8 +201,8 @@ export const LoadingState = args => ({
 })
 
 LoadingState.args = {
-  backgroundColor: 'var(--overlay-color)',
+  backgroundColor: 'var(--interface-surface)',
   borderRadius: 'var(--border-radius--large)',
-  messages: refresh,
+  // messages: messages,
   messageDelay: 2000
 }

@@ -54,7 +54,7 @@
     props: {
       backgroundColor: {
         type: String,
-        default: 'var(--overlay-color)'
+        default: 'var(--interface-surface)'
       },
       borderRadius: {
         type: String,

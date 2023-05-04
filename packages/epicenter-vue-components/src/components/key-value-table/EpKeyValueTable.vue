@@ -3,7 +3,10 @@
     v-for="(rows, section) in data"
     :key="section"
   >
-    <h3 v-if="sectionHeaders">
+    <h3
+      v-if="sectionHeaders"
+      :class="['section-headers', sectionHeaderClass]"
+    >
       {{ section }}
     </h3>
     <table
@@ -50,6 +53,10 @@
         type: Boolean,
         default: false
       },
+      sectionHeaderClass: {
+        type: String,
+        default: ''
+      },
       striped: {
         type: Boolean,
         default: false
@@ -87,6 +94,10 @@
     },
     methods: {
       camelCaseToTitleCase(str) {
+        // if not a string, return
+        if (typeof str !== 'string') {
+          return str
+        }
         return str
           .replace(/([A-Z])/g, ' $1')
           .replace(/^./, function (str) {

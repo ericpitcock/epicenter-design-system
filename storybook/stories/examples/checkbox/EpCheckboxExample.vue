@@ -53,7 +53,7 @@
             v-for="(filterSet, category) in filters"
             :key="category"
           >
-            <h3>
+            <h3 class="text-style--section">
               {{ category }}
             </h3>
             <ep-checkbox
@@ -63,7 +63,7 @@
               v-model="checkbox.checked"
             />
           </template>
-          <h3>Sample</h3>
+          <h3 class="text-style--section">Sample</h3>
           <ep-checkbox
             v-for="checkbox in samples"
             :key="checkbox.label"
@@ -103,7 +103,7 @@
             >
               <div class="font__meta">
                 <p>{{ font.family }}</p>
-                <p class="capitalize">{{ font.category }}</p>
+                <p class="text--capitalize">{{ font.category }}</p>
                 <!-- <p>{{ fontInfo(font) }}</p> -->
                 <div class="variant-list">
                   <div
@@ -647,10 +647,10 @@
     h3 {
       padding-bottom: 0.5rem;
       margin: 2rem 0 0 0;
-      color: var(--text-color--primary);
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-      font-size: var(--font-size--tiny);
+      // color: var(--text-color--primary);
+      // text-transform: uppercase;
+      // letter-spacing: 0.1rem;
+      // font-size: var(--font-size--tiny);
     }
   }
 

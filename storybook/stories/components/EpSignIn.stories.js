@@ -1,10 +1,10 @@
-import { centeredSurface } from '../../helpers/decorators'
+import { centeredCyanBlueGradient } from '../../helpers/decorators'
 import EpSignIn from '@/components/sign-in/EpSignIn.vue'
 
 export default {
   title: 'Components/Sign In',
   component: EpSignIn,
-  decorators: [centeredSurface],
+  decorators: [centeredCyanBlueGradient],
   parameters: {
     controls: { hideNoControlsWarning: true }
   },

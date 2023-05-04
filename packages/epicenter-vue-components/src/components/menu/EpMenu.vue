@@ -12,7 +12,7 @@
         />
         <div
           v-if="item.section"
-          class="ep-menu__section font-size--tiny"
+          class="ep-menu__section text-style--section"
         >
           {{ item.label }}
         </div>

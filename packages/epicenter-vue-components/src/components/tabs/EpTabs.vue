@@ -4,7 +4,7 @@
       v-for="(item, index) in items"
       :key="index"
       class="ep-tabs__tab-item"
-      :class="{ 'ep-tabs__tab-item--active': index === activeTab }"
+      :class="{ 'ep-tabs__tab-item--active': index === activeTabIndex }"
       @click="tabClick(index)"
     >
       <span>{{ item }}</span>
@@ -16,6 +16,10 @@
   export default {
     name: 'EpTabs',
     props: {
+      externalActiveTab: {
+        type: Number,
+        default: null
+      },
       items: {
         type: Array,
         default: () => []
@@ -25,6 +29,12 @@
     data() {
       return {
         activeTab: 0
+      }
+    },
+    computed: {
+      activeTabIndex() {
+        // if this.externalActiveTab is null, return this.activeTab else return this.externalActiveTab
+        return this.externalActiveTab === null ? this.activeTab : this.externalActiveTab
       }
     },
     methods: {

@@ -28,13 +28,9 @@
       </template>
     </ep-header>
     <div class="image-container">
-      <!-- <img
-        :src="imageUrl"
-        alt="Static Image"
-      > -->
       <img
-        src="./color-desktop.png"
-        alt="Static Image"
+        :src="imageUrl"
+        alt="ui mockup"
       >
     </div>
   </div>
@@ -58,16 +54,16 @@
       url: {
         type: String,
         default: 'http://website.com'
+      },
+      imageUrl: {
+        type: String,
+        default: './color-desktop.png'
       }
-      // imageUrl: {
-      //   type: String,
-      //   default: ''
-      // }
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .browser-frame {
     height: auto;
     display: flex;

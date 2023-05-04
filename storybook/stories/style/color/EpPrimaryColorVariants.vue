@@ -1,12 +1,10 @@
 <template>
   <div class="primary-color-variants">
-    <color-chips :colors="getPropertyValues('up15')" />
-    <color-chips :colors="getPropertyValues('up10')" />
-    <color-chips :colors="getPropertyValues('up5')" />
-    <color-chips :colors="getPropertyValues('base')" />
-    <color-chips :colors="getPropertyValues('down5')" />
-    <color-chips :colors="getPropertyValues('down10')" />
-    <color-chips :colors="getPropertyValues('down15')" />
+    <color-chips
+      v-for="variant in variantKeys"
+      :key="variant"
+      :colors="variant"
+    />
   </div>
 </template>
 
@@ -126,23 +124,24 @@
     //   },
     // }
     methods: {
-      getPropertyValues(variant) {
-        // take in variantKeys.up15, for example, and return an object with the name and value
-        return this.variantKeys[variant].map(variant => {
-          return {
-            name: variant,
-            value: getComputedStyle(document.documentElement).getPropertyValue(variant)
-          }
-        })
-      }
+      // getPropertyValues(variant) {
+      //   // take in variantKeys.up15, for example, and return an object with the name and value
+      //   return this.variantKeys[variant].map(variant => {
+      //     return {
+      //       name: variant,
+      //       value: getComputedStyle(document.documentElement).getPropertyValue(variant)
+      //     }
+      //   })
+      // }
     }
   }
 </script>
 
 <style lang="scss" scoped>
   .primary-color-variants {
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: space-between;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 </style>
