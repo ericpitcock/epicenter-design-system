@@ -18,12 +18,12 @@ export default {
         type: 'text',
       }
     },
-    // imageUrl: {
-    //   name: 'Image URL',
-    //   control: {
-    //     type: 'text',
-    //   }
-    // },
+    imageUrl: {
+      name: 'Image URL',
+      control: {
+        type: 'text',
+      }
+    },
   },
 }
 
@@ -41,4 +41,6 @@ export const BrowserFrame = args => ({
 
 BrowserFrame.args = {
   width: '100%',
+  url: 'https://color.ericpitcock.com',
+  imageUrl: './color-desktop.png',
 }

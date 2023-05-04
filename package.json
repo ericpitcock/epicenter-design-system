@@ -1,6 +1,6 @@
 {
   "name": "@ericpitcock/ep-design-system",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Epicenter Design System",
   "scripts": {
     "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-vue-components && npm install && cd .. && npm install && npm run build-storybook",
