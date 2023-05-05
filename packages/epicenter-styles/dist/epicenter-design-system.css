@@ -1133,16 +1133,31 @@ body {
 .ep-button:has(:only-child):has(.ep-button__icon) {
   padding: 0.4rem 0.8rem;
 }
+.ep-button.ep-button--icon-only {
+  padding: 0.4rem 0.8rem;
+}
 .ep-button:has(:only-child):has(.ep-button__label) {
+  padding: 0.4rem 1.2rem;
+}
+.ep-button.ep-button--label-only {
   padding: 0.4rem 1.2rem;
 }
 .ep-button:has(.ep-button__icon--left):has(.ep-button__label) {
   padding: 0.4rem 1.2rem 0.4rem 0.8rem;
 }
+.ep-button.ep-button--icon-left {
+  padding: 0.4rem 1.2rem 0.4rem 0.8rem;
+}
 .ep-button:has(.ep-button__icon--right):has(.ep-button__label) {
   padding: 0.4rem 0.8rem 0.4rem 1.2rem;
 }
+.ep-button.ep-button--icon-right {
+  padding: 0.4rem 0.8rem 0.4rem 1.2rem;
+}
 .ep-button:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+  padding: 0.4rem 0.8rem;
+}
+.ep-button.ep-button--icon-left-right {
   padding: 0.4rem 0.8rem;
 }
 .ep-button--small {
@@ -1155,16 +1170,31 @@ body {
 .ep-button--small:has(:only-child):has(.ep-button__icon) {
   padding: 0 0.3rem;
 }
+.ep-button--small.ep-button--icon-only {
+  padding: 0 0.3rem;
+}
 .ep-button--small:has(:only-child):has(.ep-button__label) {
+  padding: 0 0.6rem;
+}
+.ep-button--small.ep-button--label-only {
   padding: 0 0.6rem;
 }
 .ep-button--small:has(.ep-button__icon--left):has(.ep-button__label) {
   padding: 0 0.6rem 0 0.3rem;
 }
+.ep-button--small.ep-button--icon-left {
+  padding: 0 0.6rem 0 0.3rem;
+}
 .ep-button--small:has(.ep-button__icon--right):has(.ep-button__label) {
   padding: 0 0.3rem 0 0.6rem;
 }
+.ep-button--small.ep-button--icon-right {
+  padding: 0 0.3rem 0 0.6rem;
+}
 .ep-button--small:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+  padding: 0 0.6rem;
+}
+.ep-button--small.ep-button--icon-left-right {
   padding: 0 0.6rem;
 }
 .ep-button--large {
@@ -1176,16 +1206,31 @@ body {
 .ep-button--large:has(:only-child):has(.ep-button__icon) {
   padding: 0.8rem 1rem;
 }
+.ep-button--large.ep-button--icon-only {
+  padding: 0.8rem 1rem;
+}
 .ep-button--large:has(:only-child):has(.ep-button__label) {
+  padding: 0.8rem 1.5rem;
+}
+.ep-button--large.ep-button--label-only {
   padding: 0.8rem 1.5rem;
 }
 .ep-button--large:has(.ep-button__icon--left):has(.ep-button__label) {
   padding: 0.8rem 1.5rem 0.8rem 1rem;
 }
+.ep-button--large.ep-button--icon-left {
+  padding: 0.8rem 1.5rem 0.8rem 1rem;
+}
 .ep-button--large:has(.ep-button__icon--right):has(.ep-button__label) {
   padding: 0.8rem 0.8rem 0.8rem 1.5rem;
 }
+.ep-button--large.ep-button--icon-right {
+  padding: 0.8rem 0.8rem 0.8rem 1.5rem;
+}
 .ep-button--large:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+  padding: 0.8rem;
+}
+.ep-button--large.ep-button--icon-left-right {
   padding: 0.8rem;
 }
 .ep-button--xlarge {
@@ -1197,16 +1242,31 @@ body {
 .ep-button--xlarge:has(:only-child):has(.ep-button__icon) {
   padding: 1.2rem 1.2rem;
 }
+.ep-button--xlarge.ep-button--icon-only {
+  padding: 1.2rem 1.2rem;
+}
 .ep-button--xlarge:has(:only-child):has(.ep-button__label) {
+  padding: 1.2rem 1.8rem;
+}
+.ep-button--xlarge.ep-button--label-only {
   padding: 1.2rem 1.8rem;
 }
 .ep-button--xlarge:has(.ep-button__icon--left):has(.ep-button__label) {
   padding: 1.2rem 1.8rem 1.2rem 1.2rem;
 }
+.ep-button--xlarge.ep-button--icon-left {
+  padding: 1.2rem 1.8rem 1.2rem 1.2rem;
+}
 .ep-button--xlarge:has(.ep-button__icon--right):has(.ep-button__label) {
   padding: 1.2rem 1.2rem 1.2rem 1.8rem;
 }
+.ep-button--xlarge.ep-button--icon-right {
+  padding: 1.2rem 1.2rem 1.2rem 1.8rem;
+}
 .ep-button--xlarge:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+  padding: 1.2rem 1.8rem;
+}
+.ep-button--xlarge.ep-button--icon-left-right {
   padding: 1.2rem 1.8rem;
 }
 

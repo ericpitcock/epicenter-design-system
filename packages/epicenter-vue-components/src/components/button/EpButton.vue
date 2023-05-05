@@ -158,7 +158,16 @@
             'ep-button--icon-left': this.iconLeft,
             'ep-button--disabled': this.disabled,
             'ep-button--outlined': this.outlined,
-            'ep-button--menu-item--active': this.isActiveMenuItem
+            'ep-button--menu-item--active': this.isActiveMenuItem,
+            // firefox only
+            // label only
+            'ep-button--label-only': !this.iconLeft && !this.iconRight && this.label,
+            // left icon and label
+            'ep-button--icon-left': this.iconLeft && !this.iconRight && this.label,
+            // right icon and label
+            'ep-button--icon-right': !this.iconLeft && this.iconRight && this.label,
+            // left and right icon and label
+            'ep-button--icon-left-right': this.iconLeft && this.iconRight && this.label,
           }
         ]
       },

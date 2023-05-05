@@ -182,9 +182,17 @@
   &:has(:only-child):has(.ep-button__icon) {
     padding: 0.4rem 0.8rem;
   }
+  // firefox doesn't support :has
+  &.ep-button--icon-only {
+    padding: 0.4rem 0.8rem;
+  }
 
   // has only one child and it's a label
   &:has(:only-child):has(.ep-button__label) {
+    padding: 0.4rem 1.2rem;
+  }
+  // firefox doesn't support :has
+  &.ep-button--label-only {
     padding: 0.4rem 1.2rem;
   }
 
@@ -192,14 +200,26 @@
   &:has(.ep-button__icon--left):has(.ep-button__label) {
     padding: 0.4rem 1.2rem 0.4rem 0.8rem;
   }
+  // firefox doesn't support :has
+  &.ep-button--icon-left {
+    padding: 0.4rem 1.2rem 0.4rem 0.8rem;
+  }
 
   // has two children, one icon right and one label
   &:has(.ep-button__icon--right):has(.ep-button__label) {
     padding: 0.4rem 0.8rem 0.4rem 1.2rem;
   }
+  // firefox doesn't support :has
+  &.ep-button--icon-right {
+    padding: 0.4rem 0.8rem 0.4rem 1.2rem;
+  }
 
   // has icon left, icon right, and label
   &:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+    padding: 0.4rem 0.8rem;
+  }
+  // firefox doesn't support :has
+  &.ep-button--icon-left-right {
     padding: 0.4rem 0.8rem;
   }
 
@@ -220,9 +240,17 @@
     &:has(:only-child):has(.ep-button__icon) {
       padding: 0 0.3rem;
     }
+    // firefox doesn't support :has
+    &.ep-button--icon-only {
+      padding: 0 0.3rem;
+    }
 
     // has only one child and it's a label
     &:has(:only-child):has(.ep-button__label) {
+      padding: 0 0.6rem;
+    }
+    // firefox doesn't support :has
+    &.ep-button--label-only {
       padding: 0 0.6rem;
     }
 
@@ -230,14 +258,26 @@
     &:has(.ep-button__icon--left):has(.ep-button__label) {
       padding: 0 0.6rem 0 0.3rem;
     }
+    // firefox doesn't support :has
+    &.ep-button--icon-left {
+      padding: 0 0.6rem 0 0.3rem;
+    }
 
     // has two children, one icon right and one label
     &:has(.ep-button__icon--right):has(.ep-button__label) {
       padding: 0 0.3rem 0 0.6rem;
     }
+    // firefox doesn't support :has
+    &.ep-button--icon-right {
+      padding: 0 0.3rem 0 0.6rem;
+    }
 
     // has icon left, icon right, and label
     &:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+      padding: 0 0.6rem;
+    }
+    // firefox doesn't support :has
+    &.ep-button--icon-left-right {
       padding: 0 0.6rem;
     }
   }
@@ -254,9 +294,17 @@
     &:has(:only-child):has(.ep-button__icon) {
       padding: 0.8rem 1rem;
     }
+    // firefox doesn't support :has
+    &.ep-button--icon-only {
+      padding: 0.8rem 1rem;
+    }
 
     // has only one child and it's a label
     &:has(:only-child):has(.ep-button__label) {
+      padding: 0.8rem 1.5rem;
+    }
+    // firefox doesn't support :has
+    &.ep-button--label-only {
       padding: 0.8rem 1.5rem;
     }
 
@@ -264,14 +312,26 @@
     &:has(.ep-button__icon--left):has(.ep-button__label) {
       padding: 0.8rem 1.5rem 0.8rem 1rem;
     }
+    // firefox doesn't support :has
+    &.ep-button--icon-left {
+      padding: 0.8rem 1.5rem 0.8rem 1rem;
+    }
 
     // has two children, one icon right and one label
     &:has(.ep-button__icon--right):has(.ep-button__label) {
       padding: 0.8rem 0.8rem 0.8rem 1.5rem;
     }
+    // firefox doesn't support :has
+    &.ep-button--icon-right {
+      padding: 0.8rem 0.8rem 0.8rem 1.5rem;
+    }
 
     // has icon left, icon right, and label
     &:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+      padding: 0.8rem;
+    }
+    // firefox doesn't support :has
+    &.ep-button--icon-left-right {
       padding: 0.8rem;
     }
   }
@@ -288,9 +348,17 @@
     &:has(:only-child):has(.ep-button__icon) {
       padding: 1.2rem 1.2rem;
     }
+    // firefox doesn't support :has
+    &.ep-button--icon-only {
+      padding: 1.2rem 1.2rem;
+    }
 
     // has only one child and it's a label
     &:has(:only-child):has(.ep-button__label) {
+      padding: 1.2rem 1.8rem;
+    }
+    // firefox doesn't support :has
+    &.ep-button--label-only {
       padding: 1.2rem 1.8rem;
     }
 
@@ -298,14 +366,26 @@
     &:has(.ep-button__icon--left):has(.ep-button__label) {
       padding: 1.2rem 1.8rem 1.2rem 1.2rem;
     }
+    // firefox doesn't support :has
+    &.ep-button--icon-left {
+      padding: 1.2rem 1.8rem 1.2rem 1.2rem;
+    }
 
     // has two children, one icon right and one label
     &:has(.ep-button__icon--right):has(.ep-button__label) {
       padding: 1.2rem 1.2rem 1.2rem 1.8rem;
     }
+    // firefox doesn't support :has
+    &.ep-button--icon-right {
+      padding: 1.2rem 1.2rem 1.2rem 1.8rem;
+    }
 
     // has icon left, icon right, and label
     &:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
+      padding: 1.2rem 1.8rem;
+    }
+    // firefox doesn't support :has
+    &.ep-button--icon-left-right {
       padding: 1.2rem 1.8rem;
     }
   }
