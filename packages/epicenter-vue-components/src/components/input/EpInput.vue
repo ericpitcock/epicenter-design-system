@@ -4,7 +4,7 @@
     @click="onClear"
   >
     <input
-      :id="inputId"
+      :id="computedId"
       ref="input"
       :class="['ep-input', inputClasses]"
       :value="modelValue"
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import inputMixin from '../../mixins/inputMixin.js'
   import uuidMixin from '../../mixins/uuidMixin.js'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
@@ -33,11 +34,20 @@
     components: {
       EpInputStyler
     },
-    mixins: [uuidMixin],
+    mixins: [inputMixin, uuidMixin],
     props: {
-      id: {
+      inputId: {
         type: String,
         default: ''
+      },
+      // backwards compatibility
+      id: {
+        type: String,
+        default: '',
+        validator: () => {
+          console.warn('EpInput: The prop "id" is deprecated. Please use "inputId" instead.')
+          return true
+        }
       },
       label: {
         type: String,
@@ -91,10 +101,10 @@
         type: String,
         default: '100%'
       },
-      size: {
-        type: String,
-        default: 'default'
-      },
+      // size: {
+      //   type: String,
+      //   default: 'default'
+      // },
       borderWidth: {
         type: String,
         default: '0.1rem'
@@ -151,9 +161,12 @@
         }
         return this.borderColor || 'var(--border-color)'
       },
+      computedId() {
+        return this.inputId || `input-${this.generateUUID()}`
+      },
       stylerProps() {
         return {
-          id: this.inputId,
+          id: this.computedId,
           hasFocus: this.hasFocus,
           hasInput: this.hasInput,
           label: this.label,
@@ -176,9 +189,6 @@
           'ep-input--success': this.hasSuccess,
           'ep-input--warning': this.hasWarning,
         }
-      },
-      inputId() {
-        return this.id || `input-${this.generateUUID()}`
       },
       inputStyles() {
         const styles = {

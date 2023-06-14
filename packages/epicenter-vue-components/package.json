@@ -1,6 +1,6 @@
 {
   "name": "@ericpitcock/epicenter-vue-components",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Epicenter Design System - Vue Components",
   "main": "index.js",
   "repository": {

@@ -7,5 +7,6 @@ module.exports = {
   ],
   rules: {
     'vue/return-in-computed-property': 'off',
+    'vue/no-v-html': 'off',
   }
 }

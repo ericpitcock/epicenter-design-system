@@ -11,9 +11,20 @@ export default {
   component: EpTabs,
   decorators: [padded],
   argTypes: {
+    activeTabIndex: {
+      control: {
+        type: 'number'
+      }
+    },
     items: {
       control: {
         type: 'array'
+      }
+    },
+    variant: {
+      control: {
+        type: 'radio',
+        options: ['default', 'classic']
       }
     }
   }
@@ -36,9 +47,20 @@ export const Tabs = args => ({
       activeTab.value = index
     }
 
+    const containerPadding = args.variant === 'classic' ? '0' : '0 3rem'
+    const contentPadding = args.variant === 'classic' ? '3rem' :  '3rem 0'
+    const headerBgColor = args.variant === 'classic' ? 'var(--interface-foreground)' : 'transparent'
+    const headerHeight = args.variant === 'classic' ? '5.1rem' : '6.1rem'
+    const headerPadding = args.variant === 'classic' ? '0 3rem' : '0'
+
     return {
       activeTab,
       args,
+      containerPadding,
+      contentPadding,
+      headerBgColor,
+      headerHeight,
+      headerPadding,
       setActiveTab,
       tabItems
     }
@@ -47,19 +69,31 @@ export const Tabs = args => ({
     <ep-container
       max-width="120rem"
       height="100%"
-      container-padding="0 3rem"
-      content-padding="3rem 0"
+      :container-padding="containerPadding"
+      :content-padding="contentPadding"
       overflow="hidden"
     >
       <template #header>
-      <ep-header padding="0">
+      <ep-header
+        :padding="headerPadding"
+        :height="headerHeight"
+        :background-color="headerBgColor"
+      >
         <template #left>
-          <ep-tabs v-bind="args" @tab-click="setActiveTab" />
+          <ep-tabs
+            v-bind="args"
+            :items="tabItems"
+            :active-tab-index="activeTab"
+            @tab-click="setActiveTab"
+          />
         </template>
       </ep-header>
       </template>
       <template #default>
-        <ep-tab-content :items="tabItems" :active-tab="activeTab">
+        <ep-tab-content
+          :items="tabItems"
+          :active-tab-index="activeTab"
+        >
         <template #tab-0>
           <div class="copy-block">
             <h1>{{ tabItems[0] }}</h1>
@@ -91,5 +125,7 @@ export const Tabs = args => ({
 })
 
 Tabs.args = {
-  items: tabItems
+  activeTabIndex: 0,
+  items: tabItems,
+  variant: 'default'
 }

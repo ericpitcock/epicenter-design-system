@@ -1,47 +1,54 @@
 import { padded } from '../../helpers/decorators'
 import EpContainer from '@/components/container/EpContainer.vue'
+import EpHeader from '@/components/header/EpHeader.vue'
 import EpKeyValueTable from '@/components/key-value-table/EpKeyValueTable.vue'
 
-const data = {
-  primary: {
-    applicationProtocol: 'https',
-    port: 49582,
-    timestamp: '2023-04-20T07:43:47.170Z',
-    transportProtocol: 'TCP',
-    ipAddress: '175.130.222.219',
-    transportHostType: 'Virtual',
-    applicationHostType: 'Virtual',
-    connectionDisrupted: false,
-    customerAsset: 'No',
-    xffIpAddress: '43.101.194.54',
-    xffAmpStatus: 'Enabled',
-    dnsType: 'CNAME',
-    dnsResourceName: 'dark-terrace.org',
-    dnsResourceType: 'A',
-    dnsResourceData: '164.221.252.124',
-    city: 'Tremblayborough'
+const fakeData = {
+  data: {
+    'primary': {
+      'Application Protocol': 'HTTPS',
+      'Port': 49582,
+      'Timestamp': '2023-04-20T07:43:47.170Z',
+      'Transport Protocol': 'TCP',
+      'IP Address': '175.130.222.219',
+      'Transport Host Type': 'Virtual',
+      'Application Host Type': 'Virtual',
+      'Connection Disrupted': false,
+      'Customer Asset': 'No',
+      'XFF IP Address': '43.101.194.54',
+      'XFF AMP Status': 'Enabled',
+      'DNS Type': 'CNAME',
+      'DNS Resource Name': 'dark-terrace.org',
+      'DNS Resource Type': 'A',
+      'DNS Resource Data': '164.221.252.124',
+      'City': 'Tremblayborough'
+    },
+    'secondary': {
+      'HTTP Hostname': 'juicy-jewel.name',
+      'HTTP URL': 'https://strict-tabby.name',
+      'HTTP Content Type': 'application/tamp-apex-update',
+      'HTTP User Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; .NET CLR 1.4.41485.2)',
+      'HTTP Referrer': 'http://upbeat-face.org',
+      'HTTP Method': 'DELETE',
+      'Hostname': 'live-lens.name',
+      'Domain': 'finished-passion.name',
+      'MAC Address': '43:6e:97:4d:87:e1',
+      'Country': 'Guam',
+      'Company': 'Jones Inc',
+      'AMP Status': 'Enabled',
+      'AMP Comment': 'Placeat blanditiis perferendis enim.',
+      'XFF Hostname': 'worthwhile-wasabi.com',
+      'XFF Domain': 'brown-squash.biz',
+      'XFF Country': 'Costa Rica',
+      'XFF Region': 'Cambridgeshire',
+      'XFF City': 'Jerrodbury',
+      'XFF Company': 'Langosh, Heidenreich and Fadel',
+      'XFF AMP Comment': 'Occaecati in ratione modi perferendis accusantium porro suscipit quo doloremque.'
+    }
   },
-  secondary: {
-    httpHostname: 'juicy-jewel.name',
-    httpUrl: 'https://strict-tabby.name',
-    httpContentType: 'application/tamp-apex-update',
-    httpUserAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; .NET CLR 1.4.41485.2)',
-    httpReferrer: 'http://upbeat-face.org',
-    httpMethod: 'DELETE',
-    hostname: 'live-lens.name',
-    domain: 'finished-passion.name',
-    macAddress: '43:6e:97:4d:87:e1',
-    country: 'Guam',
-    company: 'Jones Inc',
-    ampStatus: 'Enabled',
-    ampComment: 'Placeat blanditiis perferendis enim.',
-    xffHostname: 'worthwhile-wasabi.com',
-    xffDomain: 'brown-squash.biz',
-    xffCountry: 'Costa Rica',
-    xffRegion: 'Cambridgeshire',
-    xffCity: 'Jerrodbury',
-    xffCompany: 'Langosh, Heidenreich and Fadel',
-    xffAmpComment: 'Occaecati in ratione modi perferendis accusantium porro suscipit quo doloremque.'
+  formatter: {
+    applicationProtocol: value => `${value} years old`,
+    port: value => `<span @click="test">${value}</span>`
   }
 }
 
@@ -67,11 +74,11 @@ export default {
         type: 'boolean'
       }
     },
-    acronyms: {
-      table: {
-        disable: true
-      }
-    },
+    // acronyms: {
+    //   table: {
+    //     disable: true
+    //   }
+    // },
     sectionHeaders: {
       name: 'Section Headers',
       control: {
@@ -88,22 +95,35 @@ export default {
 }
 
 export const KeyValueTable = (args) => ({
-  components: { EpContainer, EpKeyValueTable },
+  components: { EpContainer, EpHeader, EpKeyValueTable },
   setup () {
-    return { args }
+    // test function
+    const test = () => {
+      console.log('test')
+    }
+    return { args, test }
   },
   template: `
-  <ep-container content-padding="3rem">
+  <ep-container
+    container-padding="0 3rem"
+    content-padding="3rem 0 10rem 0"
+    calculateHeight
+    :calculateHeightOffset="30"
+    overflow="auto"
+  >
+    <template #header>
+      <ep-header />
+    </template>
     <ep-key-value-table v-bind="args" />
   </ep-container>
   `
 })
 
 KeyValueTable.args = {
-  data: data,
+  data: fakeData,
   width: '100%',
   commonKeyWidth: true,
-  acronyms: ['IP', 'DNS', 'HTTP', 'XFF'],
+  // acronyms: ['IP', 'DNS', 'HTTP', 'XFF'],
   sectionHeaders: false,
   striped: true,
 }

@@ -1,7 +1,7 @@
 <template>
   <ep-button
     variant="ghost"
-    :icon-left="{ name: buttonIcon }"
+    :icon-left="{ name: buttonIcon, color: iconColor }"
     title="Toggle theme"
     class="theme-toggle"
     @click="toggleTheme"
@@ -16,6 +16,12 @@
     name: 'EpThemeToggle',
     components: {
       EpButton
+    },
+    props: {
+      iconColor: {
+        type: String,
+        default: 'currentColor'
+      }
     },
     computed: {
       ...mapState(['theme']),

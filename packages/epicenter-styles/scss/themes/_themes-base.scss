@@ -51,4 +51,12 @@
   --logo-hightlight: var(--white);
   --logo-shadow: var(--black);
   --logo-stroke: var(--black);
+  // tabs
+  --tab-hover-border-color: var(--border-color--lighter);
+  --tab-hover-text-color: var(--text-color);
+  --tab-active-border-color: var(--color--primary);
+  --tab-active-text-color: var(--text-color);
+
+  // table
+  --table-border-color: var(--border-color);
 }

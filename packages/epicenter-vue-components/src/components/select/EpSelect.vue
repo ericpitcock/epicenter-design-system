@@ -1,7 +1,7 @@
 <template>
   <ep-input-styler v-bind="stylerProps">
     <select
-      :id="id"
+      :id="computedId"
       :class="['ep-select', selectClasses]"
       :style="selectStyles"
       :value="modelValue"
@@ -32,6 +32,7 @@
 
 <script>
   import inputMixin from '../../mixins/inputMixin.js'
+  import uuidMixin from '../../mixins/uuidMixin.js'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   export default {
@@ -39,7 +40,7 @@
     components: {
       EpInputStyler
     },
-    mixins: [inputMixin],
+    mixins: [inputMixin, uuidMixin],
     props: {
       disabled: {
         type: Boolean,
@@ -65,9 +66,18 @@
         type: Object,
         default: null
       },
-      id: {
+      selectId: {
         type: String,
         required: true,
+      },
+      // backwards compatibility
+      id: {
+        type: String,
+        default: '',
+        validator: () => {
+          console.warn('EpSelect: The prop "id" is deprecated. Please use "selectId" instead.')
+          return true
+        }
       },
       options: {
         type: Array,
@@ -99,7 +109,7 @@
       },
       backgroundColor: {
         type: String,
-        default: 'var(--background-2)'
+        default: 'var(--interface-foreground)'
       },
     },
     emits: ['update:modelValue', 'blur', 'input', 'focus'],
@@ -134,6 +144,9 @@
         }
         return this.borderColor || 'var(--border-color)'
       },
+      computedId() {
+        return this.selectId || `input-${this.generateUUID()}`
+      },
       iconStyles() {
         return {
           flex: `0 0 ${this.height}`,
@@ -162,6 +175,7 @@
       },
       stylerProps() {
         return {
+          id: this.computedId,
           disabled: this.disabled,
           width: this.width,
           size: this.size,

@@ -46,10 +46,10 @@
               :style="tdStyles"
             >
               <span
+                :class="cellStyle(key)"
                 @click.stop="cellClick(value, key)"
                 v-html="formatCell(value, key, row)"
-                :class="cellStyle(key)"
-              ></span>
+              />
             </td>
             <td
               v-else-if="!excluded(key) && isComponent(key)"
@@ -85,6 +85,10 @@
       bordered: {
         type: Boolean,
         default: false
+      },
+      borderColor: {
+        type: String,
+        default: 'var(--border-color)'
       },
       columns: {
         type: Array,
@@ -232,6 +236,7 @@
       },
       tableClasses() {
         return {
+          '--table-border-color': this.borderColor,
           width: this.width,
         }
       },

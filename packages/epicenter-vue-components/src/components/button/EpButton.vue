@@ -168,6 +168,8 @@
             'ep-button--icon-right': !this.iconLeft && this.iconRight && this.label,
             // left and right icon and label
             'ep-button--icon-left-right': this.iconLeft && this.iconRight && this.label,
+            // icon right or left and no label
+            'ep-button--icon-only': (this.iconLeft || this.iconRight) && !this.label
           }
         ]
       },

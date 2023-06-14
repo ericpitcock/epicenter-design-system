@@ -17,12 +17,40 @@
     }
 
     &:not(.ep-tabs__tab-item--active):hover span {
-      border-bottom-color: var(--gray-200);
+      border-bottom-color: var(--tab-hover-border-color);
+      color: var(--tab-hover-text-color);
       cursor: pointer;
     }
 
     &--active span {
-      border-bottom-color: var(--color--primary);
+      border-bottom-color: var(--tab-active-border-color);
+      color: var(--tab-active-text-color);
+    }
+  }
+
+  &--classic {
+    align-items: end;
+    gap: 0;
+
+    .ep-tabs__tab-item {
+      span {
+        padding: 1rem 1.5rem;
+        height: 4rem;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        border-top-right-radius: var(--border-radius);
+        border-top-left-radius: var(--border-radius);
+      }
+
+      &:not(.ep-tabs__tab-item--active):hover span {
+        border-bottom-color: transparent;
+      }
+
+      &--active span {
+        border-bottom-color: transparent;
+        background: var(--interface-surface);
+        border-color: var(--border-color);
+      }
     }
   }
 }

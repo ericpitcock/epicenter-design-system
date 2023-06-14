@@ -1,6 +1,6 @@
-$base-hue: 214;
-$base-saturation: 91%;
-$base-lightness: 55%;
+$base-hue: 214 !default;
+$base-saturation: 91% !default;
+$base-lightness: 55% !default;
 
 :root {
   // tints in 5% increments

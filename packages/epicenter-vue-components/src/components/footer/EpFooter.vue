@@ -133,21 +133,21 @@
       leftStyles() {
         return {
           flex: this.leftFlex,
-          gap: this.itemGap,
+          gap: this.leftGap,
           justifyContent: this.leftJustify,
         }
       },
       centerStyles() {
         return {
           flex: this.centerFlex,
-          gap: this.itemGap,
+          gap: this.centerGap,
           justifyContent: this.centerJustify,
         }
       },
       rightStyles() {
         return {
           flex: this.rightFlex,
-          gap: this.itemGap,
+          gap: this.rightGap,
           justifyContent: this.rightJustify,
         }
       }

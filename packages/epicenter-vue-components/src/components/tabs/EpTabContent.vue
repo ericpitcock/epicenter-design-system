@@ -4,7 +4,7 @@
       v-for="(item, index) in items"
       :key="index"
       class="ep-tab-content__tab-item"
-      :class="{ 'ep-tab-content__tab-item--active': index === activeTab }"
+      :class="{ 'ep-tab-content__tab-item--active': index === activeTabIndex }"
     >
       <slot :name="`tab-${index}`" />
     </div>
@@ -15,7 +15,7 @@
   export default {
     name: 'EpTabContent',
     props: {
-      activeTab: {
+      activeTabIndex: {
         type: Number,
         default: 0
       },

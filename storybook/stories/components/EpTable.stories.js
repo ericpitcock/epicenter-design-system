@@ -9,7 +9,7 @@ import EpSearch from '@/components/search/EpSearch'
 import EpTable from '@/components/table/EpTable'
 import { columns, fakeArray } from '../../data/tableData'
 
-const tableData = fakeArray(10)
+const tableData = fakeArray(30)
 
 export default {
   title: 'Components/Table',
@@ -21,6 +21,12 @@ export default {
       control: {
         type: 'boolean'
       },
+    },
+    borderColor: {
+      name: 'Border Color',
+      control: {
+        type: 'text'
+      }
     },
     calculateHeight: {
       table: { disable: true }
@@ -218,13 +224,13 @@ export const Table = args => ({
     height="100%"
     container-padding="0 3rem"
     overflow="hidden"
+    calculateHeight
+    :calculateHeightOffset="30"
   >
     <template #header>
       <ep-header>
         <template #left>
           <ep-search
-            calculateHeight
-            :calculateHeightOffset="74"
             :search-results="tableData"
             results-value="name"
             results-label="name"
@@ -280,7 +286,8 @@ export const Table = args => ({
 
 Table.args = {
   bordered: true,
-  calculateHeight: false,
+  borderColor: 'var(--border-color)',
+  calculateHeight: true,
   calculateHeightOffset: 30,
   columns: columns,
   compact: false,

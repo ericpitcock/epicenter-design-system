@@ -1,11 +1,11 @@
 <template>
-  <div class="ep-tabs">
+  <div :class="['ep-tabs', { 'ep-tabs--classic': variant === 'classic' }]">
     <div
       v-for="(item, index) in items"
       :key="index"
       class="ep-tabs__tab-item"
       :class="{ 'ep-tabs__tab-item--active': index === activeTabIndex }"
-      @click="tabClick(index)"
+      @click="onClick(index)"
     >
       <span>{{ item }}</span>
     </div>
@@ -16,32 +16,49 @@
   export default {
     name: 'EpTabs',
     props: {
-      externalActiveTab: {
+      activeTabIndex: {
         type: Number,
         default: null
       },
       items: {
         type: Array,
         default: () => []
+      },
+      variant: {
+        type: String,
+        default: 'default' // default, classic
       }
     },
     emits: ['tab-click'],
-    data() {
-      return {
-        activeTab: 0
-      }
-    },
-    computed: {
-      activeTabIndex() {
-        // if this.externalActiveTab is null, return this.activeTab else return this.externalActiveTab
-        return this.externalActiveTab === null ? this.activeTab : this.externalActiveTab
-      }
-    },
+    // data() {
+    //   return {
+    //     activeTab: undefined
+    //   }
+    // },
+    // computed: {
+    //   activeTabIndex() {
+    //     if (this.activeTab) {
+    //       return this.activeTab
+    //     }
+    //     // if this.externalActiveTab is null, return this.activeTab
+    //     // if this.externalActiveTab is undefined, return undefined
+    //     // if this.externalActiveTab is a number, return this.externalActiveTab
+    //     return this.externalActiveTab ?? this.activeTab
+    //   }
+    // },
+    // watch: {
+    //   externalActiveTab: {
+    //     handler(newValue) {
+    //       this.activeTab = undefined
+    //     },
+    //     immediate: true
+    //   }
+    // },
     methods: {
-      tabClick(index) {
+      onClick(index) {
         this.$emit('tab-click', index)
-        this.activeTab = index
+        // this.activeTab = index
       }
-    }
+    },
   }
 </script>

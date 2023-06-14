@@ -89,6 +89,8 @@
         if (this.fitToBounds) {
           this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
         }
+        // if pin locations exist, add them
+        if (this.pinLocations.length) this.addMarkers()
         this.init = false
       })
       // get a reference to the parent container
