@@ -872,6 +872,8 @@ body {
   user-select: none;
   border-width: 1px;
   border-style: solid;
+  border-color: var(--border-color--lighter);
+  background-color: var(--interface-overlay);
 }
 .ep-badge--primary {
   background-color: var(--color--primary);
@@ -3852,6 +3854,7 @@ select.ep-select--disabled {
 
 .ep-tab-content__tab-item {
   display: none;
+  height: 100%;
 }
 .ep-tab-content__tab-item--active {
   display: block;

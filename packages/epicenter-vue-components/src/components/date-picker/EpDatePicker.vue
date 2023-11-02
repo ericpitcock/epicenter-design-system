@@ -1,7 +1,6 @@
 <template>
   <div class="ep-date-picker">
     <ep-input
-      id="dp"
       v-bind="computedInputProps"
       v-model="value"
     />
@@ -20,7 +19,7 @@
     props: {
       positionX: {
         type: String,
-        default: 'left' // left, center, right
+        default: 'left' // left, center, righ
       },
       positionY: {
         type: String,
@@ -45,6 +44,7 @@
         flatpickr: null,
         value: '',
         inputDefaults: {
+          inputId: 'dp',
           type: 'text',
           width: '30rem',
           placeholder: 'Select a date',

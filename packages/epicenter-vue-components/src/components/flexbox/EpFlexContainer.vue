@@ -42,7 +42,11 @@
       gap: {
         type: String,
         default: '0'
-      }
+      },
+      padding: {
+        type: String,
+        default: '0'
+      },
     },
     computed: {
       flexContainerStyle() {
@@ -54,7 +58,8 @@
           justifyContent: this.justifyContent,
           alignItems: this.alignItems,
           alignContent: this.alignContent,
-          gap: this.gap
+          gap: this.gap,
+          padding: this.padding
         }
       }
     }

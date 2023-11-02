@@ -63,10 +63,7 @@ export default {
       }
     },
     hiddenColumns: {
-      name: 'Hidden Columns',
-      control: {
-        type: 'array'
-      }
+      table: { disable: true }
     },
     padding: {
       table: { disable: true }
@@ -96,14 +93,12 @@ export default {
       name: 'Sort Direction',
       options: ['asc', 'desc'],
       control: {
-        type: 'select'
-      },
-      table: {
+        type: 'radio',
         labels: {
           asc: 'Ascending',
           desc: 'Descending'
         }
-      }
+      },
     },
     sortKey: {
       table: { disable: true }

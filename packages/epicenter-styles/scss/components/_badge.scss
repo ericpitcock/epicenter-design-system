@@ -7,6 +7,8 @@
   user-select: none;
   border-width: 1px;
   border-style: solid;
+  border-color: var(--border-color--lighter);
+  background-color: var(--interface-overlay);
 
   // 'Primary', 'Secondary', 'Success', 'Warning', 'Danger'
 

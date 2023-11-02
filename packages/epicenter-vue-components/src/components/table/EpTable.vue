@@ -41,25 +41,20 @@
             v-for="(value, key) in row"
             :key="key"
           >
-            <td
-              v-if="!excluded(key) && !isComponent(key)"
-              :style="tdStyles"
-            >
-              <span
-                :class="cellStyle(key)"
-                @click.stop="cellClick(value, key)"
-                v-html="formatCell(value, key, row)"
-              />
-            </td>
-            <td
-              v-else-if="!excluded(key) && isComponent(key)"
-              :style="tdStyles"
-            >
-              <component
-                :is="value.component"
-                v-bind="value.props"
-              />
-            </td>
+            <template v-if="!excluded(key)">
+              <td :style="tdStyles">
+                <component
+                  :is="value.component"
+                  v-if="isComponent(key)"
+                  v-bind="value.props"
+                />
+                <span
+                  :class="cellStyle(key)"
+                  @click.stop="cellClick(value, key)"
+                  v-html="formatCell(value, key, row)"
+                />
+              </td>
+            </template>
           </template>
         </tr>
       </tbody>

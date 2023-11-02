@@ -1,6 +1,7 @@
 .ep-tab-content {
   &__tab-item {
     display: none;
+    height: 100%;
 
     &--active {
       display: block;
