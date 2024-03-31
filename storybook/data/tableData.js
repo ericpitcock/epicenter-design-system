@@ -71,9 +71,12 @@ const fakeArray = length => {
     arr.push({
       id: faker.datatype.uuid(),
       status: {
-        label,
-        variant,
-        outlined: true
+        props: {
+          label,
+          variant,
+          outlined: true
+        },
+        value: label
       },
       start_date: faker.date.past().toISOString(),
       name: faker.address.city(),

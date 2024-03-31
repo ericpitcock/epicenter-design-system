@@ -49,8 +49,8 @@
                   v-bind="value.props"
                 />
                 <span
+                  v-else
                   :class="cellClasses(key)"
-                  :style="cellStyles(key)"
                   @click.stop="cellClick(value, key)"
                   v-html="formatCell(value, key, row)"
                 />
@@ -277,10 +277,6 @@
       cellClasses(key) {
         const style = this.columns.find(column => column.key === key)?.style
         return style ? style : ''
-      },
-      cellStyles(key) {
-        if (!this.isComponent(key)) return
-        return 'display: none;'
       },
       headClasses(key) {
         if (this.sortable && key === this.currentSort) {
