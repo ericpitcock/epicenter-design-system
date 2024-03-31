@@ -17,7 +17,7 @@
     background: var(--green-300);
   }
 
-  &--inactive::before {
+  &--inactive::before, &--deactivated::before {
     background: var(--bg-color--alert-medium);
   }
 

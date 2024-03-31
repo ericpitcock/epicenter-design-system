@@ -71,7 +71,7 @@ textarea {
 .status-dot--active::before {
   background: var(--green-300);
 }
-.status-dot--inactive::before {
+.status-dot--inactive::before, .status-dot--deactivated::before {
   background: var(--bg-color--alert-medium);
 }
 .status-dot--archived::before {
