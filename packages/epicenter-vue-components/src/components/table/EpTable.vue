@@ -212,26 +212,19 @@
       sortedData() {
         if (!this.sortable) return this.data
 
-        // if this.currentSort is cellType component add .value to the sort
-        if (this.isComponent(this.currentSort)) {
-          return this.data.slice().sort((a, b) => {
-            let modifier = 1
-            if (this.currentSortDir === 'desc') modifier = -1
-            if (a[this.currentSort].value < b[this.currentSort].value)
-              return -1 * modifier
-            if (a[this.currentSort].value > b[this.currentSort].value)
-              return 1 * modifier
-            return 0
-          })
-        }
-
+        const modifier = this.currentSortDir === 'desc' ? -1 : 1
 
         return this.data.slice().sort((a, b) => {
-          let modifier = 1
-          if (this.currentSortDir === 'desc') modifier = -1
-          if (a[this.currentSort] < b[this.currentSort])
+          const aValue = this.isComponent(this.currentSort)
+            ? a[this.currentSort].value
+            : a[this.currentSort]
+          const bValue = this.isComponent(this.currentSort)
+            ? b[this.currentSort].value
+            : b[this.currentSort]
+
+          if (aValue < bValue)
             return -1 * modifier
-          if (a[this.currentSort] > b[this.currentSort])
+          if (aValue > bValue)
             return 1 * modifier
           return 0
         })
