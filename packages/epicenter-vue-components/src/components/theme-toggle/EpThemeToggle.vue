@@ -10,7 +10,7 @@
 
 <script>
   import { mapActions, mapState } from 'vuex'
-  import EpButton from '../button/EpButton'
+  import EpButton from '../button/EpButton.vue'
 
   export default {
     name: 'EpThemeToggle',
