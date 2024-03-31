@@ -44,12 +44,13 @@
             <template v-if="!excluded(key)">
               <td :style="tdStyles">
                 <component
-                  :is="value.component"
+                  :is="columns.find(column => column.key === key).component"
                   v-if="isComponent(key)"
                   v-bind="value.props"
                 />
                 <span
-                  :class="cellStyle(key)"
+                  :class="cellClasses(key)"
+                  :style="cellStyles(key)"
                   @click.stop="cellClick(value, key)"
                   v-html="formatCell(value, key, row)"
                 />
@@ -63,16 +64,12 @@
 </template>
 
 <script>
-  import { defineAsyncComponent } from 'vue'
   import calculateHeight from '../../mixins/calculateHeight'
   import EpIcon from '../icon/EpIcon.vue'
 
   export default {
     name: 'EpTable',
     components: {
-      // dynamic components
-      EpBadge: defineAsyncComponent(() => import('../badge/EpBadge.vue')),
-      EpSparkBar: defineAsyncComponent(() => import('../spark-bar/EpSparkBar.vue')),
       EpIcon
     },
     mixins: [calculateHeight],
@@ -215,6 +212,20 @@
       sortedData() {
         if (!this.sortable) return this.data
 
+        // if this.currentSort is cellType component add .value to the sort
+        if (this.isComponent(this.currentSort)) {
+          return this.data.slice().sort((a, b) => {
+            let modifier = 1
+            if (this.currentSortDir === 'desc') modifier = -1
+            if (a[this.currentSort].value < b[this.currentSort].value)
+              return -1 * modifier
+            if (a[this.currentSort].value > b[this.currentSort].value)
+              return 1 * modifier
+            return 0
+          })
+        }
+
+
         return this.data.slice().sort((a, b) => {
           let modifier = 1
           if (this.currentSortDir === 'desc') modifier = -1
@@ -270,9 +281,13 @@
       //   const column = this.columns.find(column => column.key === key)?.on
       //   return column ? column : {}
       // },
-      cellStyle(key) {
+      cellClasses(key) {
         const style = this.columns.find(column => column.key === key)?.style
         return style ? style : ''
+      },
+      cellStyles(key) {
+        if (!this.isComponent(key)) return
+        return 'display: none;'
       },
       headClasses(key) {
         if (this.sortable && key === this.currentSort) {
@@ -289,12 +304,13 @@
         return this.sortDir ? this.sortDir : 'desc'
       },
       getSortKey() {
-        // find the first column that isn't excluded or cellType component
-        const column = this.columns.find(column => !this.exclude.includes(column.key) && column.cellType !== 'component')
+        // find the first column that isn't excluded
+        const column = this.columns.find(column => !this.exclude.includes(column.key))
         // return the sortKey if it's set, otherwise return the column found above
         return this.sortKey ? this.sortKey : column.key
       },
       formatCell(value, key, row) {
+        if (this.isComponent(key)) return value.value
         const formatter = this.columns.find(column => column.key == key)?.formatter
         return formatter ? formatter(value, key, row) : value
       },
