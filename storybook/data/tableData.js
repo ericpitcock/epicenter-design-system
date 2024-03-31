@@ -1,15 +1,13 @@
 // https://fakerjsdocs.netlify.app/#browser-demo
 import faker from 'faker'
+import EpBadge from '../../packages/epicenter-vue-components/src/components/badge/EpBadge.vue'
 
 const columns = [
   {
     header: 'Status',
     key: 'status',
-    formatter: value => {
-      return value === 'Completed'
-        ? `<span class="ep-badge" style="border-color: var(--success-green--border);">${value}</span>`
-        : `<span class="ep-badge" style="border-color: var(--danger-red--border);">${value}</span>`
-    }
+    cellType: 'component',
+    component: EpBadge,
   },
   {
     header: 'Date',
@@ -67,9 +65,16 @@ const columns = [
 const fakeArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
+    // create status badge label and variant
+    const label = faker.random.arrayElement(['Completed', 'Cancelled'])
+    const variant = label === 'Completed' ? 'success' : 'danger'
     arr.push({
       id: faker.datatype.uuid(),
-      status: faker.random.arrayElement(['Completed', 'Cancelled']),
+      status: {
+        label,
+        variant,
+        outlined: true
+      },
       start_date: faker.date.past().toISOString(),
       name: faker.address.city(),
       type: faker.random.arrayElement(['VirtualRide', 'Ride']),
