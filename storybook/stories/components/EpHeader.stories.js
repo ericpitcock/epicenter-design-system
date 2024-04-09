@@ -109,6 +109,12 @@ export default {
         type: 'select'
       }
     },
+    leftPadding: {
+      name: 'Left Padding',
+      control: {
+        type: 'text'
+      }
+    },
     centerFlex: {
       name: 'Center Flex',
       control: {
@@ -135,6 +141,12 @@ export default {
         type: 'select'
       }
     },
+    centerPadding: {
+      name: 'Center Padding',
+      control: {
+        type: 'text'
+      }
+    },
     rightFlex: {
       name: 'Right Flex',
       control: {
@@ -159,6 +171,12 @@ export default {
       ],
       control: {
         type: 'select'
+      }
+    },
+    rightPadding: {
+      name: 'Right Padding',
+      control: {
+        type: 'text'
       }
     },
     sticky: {
@@ -225,12 +243,15 @@ Header.args = {
   leftFlex: '1',
   leftGap: '3rem',
   leftJustify: 'flex-start',
+  leftPadding: '0',
   centerFlex: '1',
   centerGap: '3rem',
   centerJustify: 'center',
+  centerPadding: '0',
   rightFlex: '1',
   rightGap: '3rem',
   rightJustify: 'flex-end',
+  rightPadding: '0',
   sticky: false,
   stickyTop: '0',
   zIndex: '1',

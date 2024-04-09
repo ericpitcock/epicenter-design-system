@@ -30,7 +30,13 @@ export default {
   }
 }
 
-const tabItems = ['Overview', 'Features', 'Pricing']
+const tabItems = ['Overviewzzzz', 'Features', 'Pricing']
+
+const routerLinkItems = [
+  { label: 'Overviewwww', to: '/overview' },
+  { label: 'Features', to: '/features' },
+  { label: 'Pricing', to: '/pricing' }
+]
 
 export const Tabs = args => ({
   components: {
@@ -48,7 +54,7 @@ export const Tabs = args => ({
     }
 
     const containerPadding = args.variant === 'classic' ? '0' : '0 3rem'
-    const contentPadding = args.variant === 'classic' ? '3rem' :  '3rem 0'
+    const contentPadding = args.variant === 'classic' ? '3rem' : '3rem 0'
     const headerBgColor = args.variant === 'classic' ? 'var(--interface-foreground)' : 'transparent'
     const headerHeight = args.variant === 'classic' ? '5.1rem' : '6.1rem'
     const headerPadding = args.variant === 'classic' ? '0 3rem' : '0'
@@ -62,7 +68,8 @@ export const Tabs = args => ({
       headerHeight,
       headerPadding,
       setActiveTab,
-      tabItems
+      tabItems,
+      routerLinkItems
     }
   },
   template: `
@@ -82,7 +89,7 @@ export const Tabs = args => ({
         <template #left>
           <ep-tabs
             v-bind="args"
-            :items="tabItems"
+            :items="routerLinkItems"
             :active-tab-index="activeTab"
             @tab-click="setActiveTab"
           />
@@ -91,7 +98,7 @@ export const Tabs = args => ({
       </template>
       <template #default>
         <ep-tab-content
-          :items="tabItems"
+          :items="routerLinkItems"
           :active-tab-index="activeTab"
         >
         <template #tab-0>
@@ -126,6 +133,6 @@ export const Tabs = args => ({
 
 Tabs.args = {
   activeTabIndex: 0,
-  items: tabItems,
+  items: routerLinkItems,
   variant: 'default'
 }

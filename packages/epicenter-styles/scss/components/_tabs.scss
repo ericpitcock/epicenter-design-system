@@ -6,6 +6,7 @@
 
   &__tab-item {
     display: inline-flex;
+    cursor: default;
 
     span {
       position: relative;
@@ -16,13 +17,14 @@
       white-space: nowrap;
     }
 
-    &:not(.ep-tabs__tab-item--active):hover span {
+    &:not(.ep-tabs__tab-item--active):not(.router-link-active):hover span {
       border-bottom-color: var(--tab-hover-border-color);
       color: var(--tab-hover-text-color);
       cursor: pointer;
     }
 
-    &--active span {
+    &--active span,
+    &.router-link-active span {
       border-bottom-color: var(--tab-active-border-color);
       color: var(--tab-active-text-color);
     }
@@ -42,11 +44,13 @@
         border-top-left-radius: var(--border-radius);
       }
 
-      &:not(.ep-tabs__tab-item--active):hover span {
+      &:not(.ep-tabs__tab-item--active):not(.router-link-active):hover span {
         border-bottom-color: transparent;
+        color: var(--tab-hover-text-color);
       }
 
-      &--active span {
+      &--active span,
+      &.router-link-active span {
         border-bottom-color: transparent;
         background: var(--interface-surface);
         border-color: var(--border-color);

@@ -6,7 +6,20 @@ export default {
   title: 'Components/Notifications/Notification Center',
   component: EpNotifications,
   decorators: [padded],
-  argTypes: {},
+  argTypes: {
+    emptyStateMessage: {
+      name: 'Empty State Message',
+      control: {
+        type: 'text'
+      }
+    },
+    notificationsTitle: {
+      name: 'Notifications Title',
+      control: {
+        type: 'text'
+      }
+    },
+  },
   parameters: {
     controls: { hideNoControlsWarning: true }
   }
@@ -20,6 +33,11 @@ export const NotificationCenter = args => ({
   setup() {
     return { args }
   },
-  template: '<div style="width: 362px; height: 100%;"><ep-notifications /></div>'
+  template: '<div style="width: 362px; height: 100%;"><ep-notifications v-bind="args" /></div>'
 })
+
+NotificationCenter.args = {
+  emptyStateMessage: 'No notifications to display',
+  notificationsTitle: 'Notifications'
+}
 

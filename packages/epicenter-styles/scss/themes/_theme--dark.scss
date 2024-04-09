@@ -8,10 +8,6 @@
   --interface-foreground--accent: var(--gray-420);
   --interface-overlay: var(--gray-390);
   --interface-overlay--accent: var(--gray-380);
-  // header
-  --app-header-background: linear-gradient(45deg,
-      hsl(240, 11%, 12%) 50%,
-      hsl(246, 47%, 29%) 100%);
   // borders
   --border-color: var(--gray-380);
   --border-color--lighter: var(--gray-340);
@@ -26,8 +22,13 @@
   --drop-shadow--large: 0 2px 20px rgba(0, 0, 0, 0.5);
   --drop-shadow--large--north: 0 -10px 10px rgba(0,0,0,0.25);
   // text
-  --text-color: var(--gray-50);
+  // --text-color: var(--gray-50);
+  // new decreased contrast
+  // --text-color: hsl(0 0% 67% / 1);
+  // closest match for above
+  --text-color: var(--gray-150);
   --text-color--disabled: var(--gray-130);
+  --text-color--loud: var(--gray-50);
   --text-color--inverse: var(--background-1);
   --text-color--highlight: var(--yellow-600);
   --text-color--placeholder: var(--text-color--subtle);
@@ -65,18 +66,10 @@
   --button-ghost--text: var(--text-color);
   --button-menu-item--hover: var(--color--primary);
   --button-menu-item--active: var(--primary-color--active);
-  --button-menu-item-text-hover: var(--text-color);
-  --button-menu-item-text-active: var(--text-color);
+  --button-menu-item-text-hover: var(--text--white);
+  --button-menu-item-text-active: var(--text--white);
   // table
   --table-stripe-color: var(--interface-foreground);
-  // navigation
-  --nav-link-hover-bg-color: var(--gray-420);
-  --nav-link-active-bg-color: linear-gradient(45deg,
-      hsl(228, 68%, 60%) 50%,
-      hsl(199, 77%, 55%) 100%); // same as light mode
-  --nav-link-icon-color: var(--sky-300);
-  --nav-link-active-icon-color: var(--text-color);
-  --nav-link-active-text-color: var(--text-color);
   // toggle
   --toggle-track: var(--gray-400);
   --toggle-track-border: var(--border-color);

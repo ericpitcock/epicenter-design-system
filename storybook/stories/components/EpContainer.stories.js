@@ -189,7 +189,13 @@ export default {
           unset: 'Unset'
         }
       }
-    }
+    },
+    stickyHeader: {
+      name: 'Sticky Header',
+      control: {
+        type: 'boolean'
+      }
+    },
   }
 }
 
@@ -239,5 +245,6 @@ Container.args = {
   borderWidth: '0.1rem',
   borderStyle: 'solid',
   borderColor: 'var(--border-color)',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  stickyHeader: false
 }

@@ -8,8 +8,6 @@ html[data-color-theme='light'] {
   --interface-foreground--accent: var(--gray-20);
   --interface-overlay: var(--gray-20);
   --interface-overlay--accent: var(--gray-10);
-  // header
-  --app-header-background: #f0f4f8;
   // borders
   --border-color: hsl(0, 0%, 75%);
   --border-color--lighter: var(--border-color);
@@ -26,6 +24,7 @@ html[data-color-theme='light'] {
   // text
   --text-color: var(--gray-410);
   --text-color--disabled: var(--gray-270);
+  --text-color--loud: var(--gray-500);
   --text-color--inverse: var(--gray-0);
   --text-color--highlight: var(--yellow-300);
   --text-color--placeholder: var(--text-color--subtle);
@@ -66,12 +65,6 @@ html[data-color-theme='light'] {
   // table
   // --table-stripe-color: var(--gray-10);
   --table-stripe-color: var(--interface-foreground);
-  // navigation
-  --nav-link-hover-bg-color: var(--gray-20);
-  --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%);
-  --nav-link-icon-color: var(--color--primary);
-  --nav-link-active-icon-color: var(--text-color--inverse);
-  --nav-link-active-text-color: var(--text-color--inverse);
   // toggle
   --toggle-track: var(--gray-80);
   --toggle-track-border: var(--border-color);

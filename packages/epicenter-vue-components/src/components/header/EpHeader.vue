@@ -81,6 +81,10 @@
         type: String,
         default: 'flex-start'
       },
+      leftPadding: {
+        type: String,
+        default: '0'
+      },
       centerFlex: {
         type: String,
         default: '1'
@@ -93,6 +97,10 @@
         type: String,
         default: 'center'
       },
+      centerPadding: {
+        type: String,
+        default: '0'
+      },
       rightFlex: {
         type: String,
         default: '1'
@@ -104,6 +112,10 @@
       rightJustify: {
         type: String,
         default: 'flex-end'
+      },
+      rightPadding: {
+        type: String,
+        default: '0'
       },
       sticky: {
         type: Boolean,
@@ -130,6 +142,7 @@
           width: this.width,
           height: this.height,
           padding: this.padding,
+          margin: this.margin,
           backgroundColor: this.backgroundColor,
           borderBottom: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
           zIndex: this.zIndex
@@ -144,21 +157,24 @@
         return {
           flex: this.leftFlex,
           gap: this.leftGap,
-          justifyContent: this.leftJustify
+          justifyContent: this.leftJustify,
+          padding: this.leftPadding,
         }
       },
       centerStyles() {
         return {
           flex: this.centerFlex,
           gap: this.centerGap,
-          justifyContent: this.centerJustify
+          justifyContent: this.centerJustify,
+          padding: this.centerPadding,
         }
       },
       rightStyles() {
         return {
           flex: this.rightFlex,
           gap: this.rightGap,
-          justifyContent: this.rightJustify
+          justifyContent: this.rightJustify,
+          padding: this.rightPadding,
         }
       },
       // need to address this

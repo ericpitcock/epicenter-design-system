@@ -19,8 +19,8 @@
           href="https://github.com/ericpitcock/epicenter-design-system"
         />
       </div>
-      <div class="yellow-circle" />
-      <div class="purple-circle" />
+      <!-- <div class="yellow-circle" />
+      <div class="purple-circle" /> -->
     </div>
     <div class="content">
       <div class="main">
@@ -35,27 +35,6 @@
             form and in the context of an app.
           </p>
         </div>
-        <ep-banner
-          :icon-props="{ name: 'info' }"
-          message="This is a forever project, and probably being worked on as you read this, so you may experience bugs or inconsistencies."
-        />
-      </div>
-      <div class="test-sites">
-        <ep-container
-          width="100%"
-          content-padding="3rem"
-        >
-          <div class="copy-block">
-            <h3 class="text--subtle">
-              Built with Epicenter
-            </h3>
-            <p>
-              <a href="https://aae.ericpitcock.com/">Acme Asset Explorer (WIP
-                test
-                app)</a>
-            </p>
-          </div>
-        </ep-container>
       </div>
     </div>
   </div>
@@ -63,17 +42,13 @@
 
 <script>
   import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
-  import EpBanner from '@/components/banner/EpBanner'
   import EpButton from '@/components/button/EpButton'
-  import EpContainer from '@/components/container/EpContainer'
 
   export default {
     name: 'IntroView',
     components: {
       EpicenterLogo,
-      EpBanner,
       EpButton,
-      EpContainer
     }
   }
 </script>
@@ -95,7 +70,9 @@
     .hero {
       position: relative;
       padding: 8rem 8rem 4rem 8rem;
-      background: linear-gradient(130deg, #0af6b7 0%, var(--color--primary) 89%);
+      background:
+        radial-gradient(circle 200px at -5% -10%, hsl(60, 100%, 50%), transparent),
+        linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--color--primary) 79%);
       color: var(--gray-440);
       border-radius: var(--border-radius--large) var(--border-radius--large) 0 0;
       overflow: hidden;

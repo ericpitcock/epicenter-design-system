@@ -1,5 +1,5 @@
 <template>
-  <div id="ep-chart" />
+  <div :id="chartId" />
 </template>
 
 <script>
@@ -33,7 +33,8 @@
           tooltip: {
             enabled: false
           }
-        }
+        },
+        chartId: `chart-${Math.random().toString(36).substring(7)}`
       }
     },
     computed: {
@@ -52,9 +53,7 @@
     },
     methods: {
       drawChart() {
-        // can dynamically change type with
-        // this.chart = Highcharts['stockChart']('container', {
-        this.chart = Highcharts.chart('ep-chart', this.chartOptions)
+        this.chart = Highcharts.chart(this.chartId, this.chartOptions)
       }
     }
   }

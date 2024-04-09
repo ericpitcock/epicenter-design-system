@@ -526,7 +526,7 @@
         }
       },
       async getFonts() {
-        const response = await fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC4LPtjlhXImnuIBnGbYCgwRLYoXDZ2i8c')
+        const response = await fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBzv-7Gpdhl2bu1f6ysL-S4Kk7s4x7NpSs')
           .then(response => response.json())
           .then(data => this.fonts = data.items)
       },
@@ -534,10 +534,10 @@
         return this.topPicks.includes(family)
       },
       onFontLoaded() {
-        this.fontsLoaded++
-        if (this.fontsLoaded > 10) {
-          this.ready = true
-        }
+        // this.fontsLoaded++
+        // if (this.fontsLoaded > 10) {
+        this.ready = true
+        // }
       },
       sampleVisible(value) {
         const sample = this.samples.find(filter => filter.value === value)

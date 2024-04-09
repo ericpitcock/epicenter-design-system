@@ -1,14 +1,18 @@
 <template>
   <div :class="['ep-tabs', { 'ep-tabs--classic': variant === 'classic' }]">
-    <div
-      v-for="(item, index) in items"
+    <component
+      :is="item.to ? 'router-link' : 'div'"
+      v-for="(item, index) in tabs"
       :key="index"
-      class="ep-tabs__tab-item"
-      :class="{ 'ep-tabs__tab-item--active': index === activeTabIndex }"
+      :class="[
+        'ep-tabs__tab-item',
+        { 'ep-tabs__tab-item--active': index === activeTabIndex }
+      ]"
+      :to="item.to ? item.to : undefined"
       @click="onClick(index)"
     >
-      <span>{{ item }}</span>
-    </div>
+      <span>{{ item.label }}</span>
+    </component>
   </div>
 </template>
 
@@ -30,34 +34,16 @@
       }
     },
     emits: ['tab-click'],
-    // data() {
-    //   return {
-    //     activeTab: undefined
-    //   }
-    // },
-    // computed: {
-    //   activeTabIndex() {
-    //     if (this.activeTab) {
-    //       return this.activeTab
-    //     }
-    //     // if this.externalActiveTab is null, return this.activeTab
-    //     // if this.externalActiveTab is undefined, return undefined
-    //     // if this.externalActiveTab is a number, return this.externalActiveTab
-    //     return this.externalActiveTab ?? this.activeTab
-    //   }
-    // },
-    // watch: {
-    //   externalActiveTab: {
-    //     handler(newValue) {
-    //       this.activeTab = undefined
-    //     },
-    //     immediate: true
-    //   }
-    // },
+    computed: {
+      // items will support a simple array of strings or an array of objects with a label property
+      // need to handle both. If it's an array of objects, we'll map over the array and return the label property
+      tabs() {
+        return this.items.map(item => (typeof item === 'object' ? item : { label: item }))
+      },
+    },
     methods: {
       onClick(index) {
         this.$emit('tab-click', index)
-        // this.activeTab = index
       }
     },
   }

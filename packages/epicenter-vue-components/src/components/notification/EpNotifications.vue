@@ -4,7 +4,7 @@
       <ep-header>
         <template #left>
           <p>
-            Notification Center
+            {{ notificationsTitle }}
           </p>
         </template>
         <template #right>
@@ -24,7 +24,7 @@
     >
       <ep-empty-state
         v-if="isNotificationsEmpty"
-        message="You’re all caught up!"
+        :message="emptyStateMessage"
       />
       <template v-else>
         <transition-group name="fade">
@@ -61,6 +61,14 @@
       containerProps: {
         type: Object,
         default: () => ({})
+      },
+      emptyStateMessage: {
+        type: String,
+        default: 'You’re all caught up!'
+      },
+      notificationsTitle: {
+        type: String,
+        default: 'Notifications'
       }
     },
     data() {

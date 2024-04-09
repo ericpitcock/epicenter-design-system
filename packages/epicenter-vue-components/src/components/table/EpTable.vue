@@ -1,10 +1,12 @@
 <template>
   <div
+    ref="tableContainer"
     class="ep-table-container"
     :style="containerStyles"
     @scroll="handleScroll"
   >
     <table
+      ref="table"
       :class="['ep-table', classes]"
       :style="tableClasses"
     >
@@ -168,6 +170,7 @@
       return {
         currentSort: this.getSortKey(),
         currentSortDir: this.getSortDir(),
+        layoutFixed: false
       }
     },
     computed: {
@@ -181,7 +184,8 @@
           'ep-table--compact': this.compact,
           'ep-table--sticky': this.stickyHeader,
           'ep-table--striped': this.striped,
-          'ep-table--sortable': this.sortable
+          'ep-table--sortable': this.sortable,
+          'ep-table--layout-fixed': this.layoutFixed,
         }
       },
       containerStyles() {
@@ -251,10 +255,34 @@
         this.$emit('data-changed', this.filteredData)
       },
     },
+    mounted() {
+      const table = this.$refs.table
+      const tableContainer = this.$refs.tableContainer
+
+      const debounceResize = (callback, delay) => {
+        let timeoutId
+        return (...args) => {
+          clearTimeout(timeoutId)
+          timeoutId = setTimeout(() => {
+            timeoutId = null
+            callback(...args)
+          }, delay)
+        }
+      }
+
+      const handleResize = () => {
+        if (table && tableContainer) {
+          this.layoutFixed = table.offsetWidth > tableContainer.offsetWidth
+        }
+      }
+
+      const debouncedHandleResize = debounceResize(handleResize, 250) // Adjust the delay as needed
+
+      window.addEventListener('resize', debouncedHandleResize)
+    },
     methods: {
       rowClick(row) {
         this.$emit('row-click', row)
-        console.log('row-click')
       },
       isComponent(key) {
         // if column cellType is component, return true

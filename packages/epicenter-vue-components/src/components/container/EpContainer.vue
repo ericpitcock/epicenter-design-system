@@ -1,11 +1,11 @@
 <template>
   <div
-    class="ep-container"
+    :class="['ep-container', containerClasses]"
     :style="containerStyles"
   >
     <div
       v-if="$slots.header"
-      class="ep-contaniner__header"
+      class="ep-container__header"
     >
       <slot name="header" />
     </div>
@@ -17,7 +17,7 @@
     </div>
     <div
       v-if="$slots.footer"
-      class="ep-contaniner__footer"
+      class="ep-container__footer"
     >
       <slot name="footer" />
     </div>
@@ -86,9 +86,18 @@
       overflow: {
         type: String,
         default: 'visible'
+      },
+      stickyHeader: {
+        type: Boolean,
+        default: false
       }
     },
     computed: {
+      containerClasses() {
+        return {
+          'ep-container--sticky-header': this.stickyHeader
+        }
+      },
       containerStyles() {
         return {
           width: this.width,
@@ -107,7 +116,7 @@
       contentStyles() {
         return {
           padding: this.contentPadding,
-          overflow: this.overflow
+          // overflow: this.overflow
         }
       }
     }

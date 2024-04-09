@@ -12,6 +12,7 @@
   thead {
     font-variation-settings: 'wght' 600;
     user-select: none;
+    color: var(--text-color--loud);
 
     th {
       text-align: left;
@@ -81,14 +82,22 @@
     }
   }
 
+  &--layout-fixed {
+    table-layout: fixed;
+  }
+
   &--selectable {
     tbody {
+      tr td span {
+        pointer-events: none;
+      }
+
       tr:not(.ep-table-row--selected):hover {
         cursor: pointer;
 
         td {
-          background: var(--color--primary);
-          color: var(--text-color--inverse);
+          background: var(--interface-overlay);
+          // color: var(--text-color--inverse);
         }
       }
 
