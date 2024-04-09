@@ -71,7 +71,7 @@ textarea {
 .status-dot--active::before {
   background: var(--green-300);
 }
-.status-dot--inactive::before, .status-dot--deactivated::before {
+.status-dot--inactive::before {
   background: var(--bg-color--alert-medium);
 }
 .status-dot--archived::before {
@@ -496,7 +496,7 @@ textarea {
   --tab-hover-border-color: var(--border-color--lighter);
   --tab-hover-text-color: var(--text-color);
   --tab-active-border-color: var(--color--primary);
-  --tab-active-text-color: var(--text-color--loud);
+  --tab-active-text-color: var(--text-color);
   --table-border-color: var(--border-color);
 }
 
@@ -509,6 +509,9 @@ textarea {
   --interface-foreground--accent: var(--gray-420);
   --interface-overlay: var(--gray-390);
   --interface-overlay--accent: var(--gray-380);
+  --app-header-background: linear-gradient(45deg,
+      hsl(240, 11%, 12%) 50%,
+      hsl(246, 47%, 29%) 100%);
   --border-color: var(--gray-380);
   --border-color--lighter: var(--gray-340);
   --border-color--disabled: var(--gray-400);
@@ -517,10 +520,9 @@ textarea {
   --drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
   --drop-shadow--large: 0 2px 20px rgba(0, 0, 0, 0.5);
   --drop-shadow--large--north: 0 -10px 10px rgba(0,0,0,0.25);
-  --text-color: var(--gray-150);
+  --text-color: var(--gray-50);
   --text-color--disabled: var(--gray-130);
-  --text-color--loud: var(--gray-50);
-  --text-color--inverse: var(--interface-bg);
+  --text-color--inverse: var(--background-1);
   --text-color--highlight: var(--yellow-600);
   --text-color--placeholder: var(--text-color--subtle);
   --text-gradient: linear-gradient(to right,
@@ -545,9 +547,16 @@ textarea {
   --button-ghost--text: var(--text-color);
   --button-menu-item--hover: var(--color--primary);
   --button-menu-item--active: var(--primary-color--active);
-  --button-menu-item-text-hover: var(--text--white);
-  --button-menu-item-text-active: var(--text--white);
+  --button-menu-item-text-hover: var(--text-color);
+  --button-menu-item-text-active: var(--text-color);
   --table-stripe-color: var(--interface-foreground);
+  --nav-link-hover-bg-color: var(--gray-420);
+  --nav-link-active-bg-color: linear-gradient(45deg,
+      hsl(228, 68%, 60%) 50%,
+      hsl(199, 77%, 55%) 100%);
+  --nav-link-icon-color: var(--sky-300);
+  --nav-link-active-icon-color: var(--text-color);
+  --nav-link-active-text-color: var(--text-color);
   --toggle-track: var(--gray-400);
   --toggle-track-border: var(--border-color);
   --toggle-track--active: var(--emerald-500);
@@ -584,6 +593,7 @@ html[data-color-theme=light] {
   --interface-foreground--accent: var(--gray-20);
   --interface-overlay: var(--gray-20);
   --interface-overlay--accent: var(--gray-10);
+  --app-header-background: #f0f4f8;
   --border-color: hsl(0, 0%, 75%);
   --border-color--lighter: var(--border-color);
   --border-color--disabled: var(--gray-70);
@@ -594,7 +604,6 @@ html[data-color-theme=light] {
   --drop-shadow--large--north: 0 -10px 10px rgba(0,0,0,0.15);
   --text-color: var(--gray-410);
   --text-color--disabled: var(--gray-270);
-  --text-color--loud: var(--gray-500);
   --text-color--inverse: var(--gray-0);
   --text-color--highlight: var(--yellow-300);
   --text-color--placeholder: var(--text-color--subtle);
@@ -623,6 +632,11 @@ html[data-color-theme=light] {
   --button-menu-item-text-hover: var(--text-color--inverse);
   --button-menu-item-text-active: var(--text-color--inverse);
   --table-stripe-color: var(--interface-foreground);
+  --nav-link-hover-bg-color: var(--gray-20);
+  --nav-link-active-bg-color: linear-gradient(45deg, hsl(228, 68%, 60%) 50%, hsl(199, 77%, 55%) 100%);
+  --nav-link-icon-color: var(--color--primary);
+  --nav-link-active-icon-color: var(--text-color--inverse);
+  --nav-link-active-text-color: var(--text-color--inverse);
   --toggle-track: var(--gray-80);
   --toggle-track-border: var(--border-color);
   --toggle-track--active: var(--emerald-500);
@@ -749,10 +763,6 @@ body {
   color: var(--text-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-color--loud);
-}
-
 .text--subtle,
 .text-color--subtle {
   color: var(--text-color--subtle);
@@ -841,7 +851,7 @@ h1, h2, h3, h4, h5, h6 {
 
 ::selection {
   background: var(--text-selection);
-  color: var(--text--black);
+  color: var(--text-black);
 }
 
 .ep-action-bar {
@@ -2318,6 +2328,7 @@ text.highcharts-drilldown-data-label,
 }
 .ep-container__header {
   flex: 0 0 auto;
+  z-index: var(--z-index--fixed);
 }
 .ep-container__content {
   position: relative;
@@ -2331,18 +2342,6 @@ text.highcharts-drilldown-data-label,
 }
 .ep-container__footer {
   flex: 0 0 auto;
-}
-.ep-container--sticky-header {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.ep-container--sticky-header::-webkit-scrollbar {
-  display: none;
-}
-.ep-container--sticky-header .ep-container__header {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-index--sticky);
 }
 
 .flatpickr-calendar {
@@ -3545,7 +3544,6 @@ input.ep-input--disabled::placeholder {
 }
 .ep-notification__body__message__text {
   line-height: var(--text-line-height--tight);
-  color: var(--text-color--loud);
 }
 .ep-notification__body__message__timestamp {
   font-size: var(--font-size--tiny);
@@ -3600,7 +3598,6 @@ input.ep-input--disabled::placeholder {
 }
 .ep-search__dropdown__item--active {
   background-color: var(--color--primary);
-  color: var(--button-menu-item-text-hover);
 }
 
 select.ep-select {
@@ -3676,7 +3673,6 @@ select.ep-select--disabled {
 .ep-spark-bar__segment {
   position: relative;
   height: 100%;
-  min-width: 0.1rem;
 }
 .ep-spark-bar__segment .ep-spark-bar__segment__info {
   position: absolute;
@@ -3740,7 +3736,6 @@ select.ep-select--disabled {
 .ep-table thead {
   font-variation-settings: "wght" 600;
   user-select: none;
-  color: var(--text-color--loud);
 }
 .ep-table thead th {
   text-align: left;
@@ -3782,17 +3777,12 @@ select.ep-select--disabled {
 .ep-table--compact tbody tr td {
   padding: 0.8rem 1.2rem;
 }
-.ep-table--layout-fixed {
-  table-layout: fixed;
-}
-.ep-table--selectable tbody tr td span {
-  pointer-events: none;
-}
 .ep-table--selectable tbody tr:not(.ep-table-row--selected):hover {
   cursor: pointer;
 }
 .ep-table--selectable tbody tr:not(.ep-table-row--selected):hover td {
-  background: var(--interface-overlay);
+  background: var(--color--primary);
+  color: var(--text-color--inverse);
 }
 .ep-table--selectable tbody tr.ep-table-row--selected td {
   background: var(--color--primary);
@@ -3824,7 +3814,6 @@ select.ep-select--disabled {
 }
 .ep-tabs__tab-item {
   display: inline-flex;
-  cursor: default;
 }
 .ep-tabs__tab-item span {
   position: relative;
@@ -3834,12 +3823,12 @@ select.ep-select--disabled {
   align-items: center;
   white-space: nowrap;
 }
-.ep-tabs__tab-item:not(.ep-tabs__tab-item--active):not(.router-link-active):hover span {
+.ep-tabs__tab-item:not(.ep-tabs__tab-item--active):hover span {
   border-bottom-color: var(--tab-hover-border-color);
   color: var(--tab-hover-text-color);
   cursor: pointer;
 }
-.ep-tabs__tab-item--active span, .ep-tabs__tab-item.router-link-active span {
+.ep-tabs__tab-item--active span {
   border-bottom-color: var(--tab-active-border-color);
   color: var(--tab-active-text-color);
 }
@@ -3855,11 +3844,10 @@ select.ep-select--disabled {
   border-top-right-radius: var(--border-radius);
   border-top-left-radius: var(--border-radius);
 }
-.ep-tabs--classic .ep-tabs__tab-item:not(.ep-tabs__tab-item--active):not(.router-link-active):hover span {
+.ep-tabs--classic .ep-tabs__tab-item:not(.ep-tabs__tab-item--active):hover span {
   border-bottom-color: transparent;
-  color: var(--tab-hover-text-color);
 }
-.ep-tabs--classic .ep-tabs__tab-item--active span, .ep-tabs--classic .ep-tabs__tab-item.router-link-active span {
+.ep-tabs--classic .ep-tabs__tab-item--active span {
   border-bottom-color: transparent;
   background: var(--interface-surface);
   border-color: var(--border-color);
