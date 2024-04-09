@@ -520,7 +520,7 @@ textarea {
   --text-color: var(--gray-150);
   --text-color--disabled: var(--gray-130);
   --text-color--loud: var(--gray-50);
-  --text-color--inverse: var(--background-1);
+  --text-color--inverse: var(--interface-bg);
   --text-color--highlight: var(--yellow-600);
   --text-color--placeholder: var(--text-color--subtle);
   --text-gradient: linear-gradient(to right,
@@ -3545,6 +3545,7 @@ input.ep-input--disabled::placeholder {
 }
 .ep-notification__body__message__text {
   line-height: var(--text-line-height--tight);
+  color: var(--text-color--loud);
 }
 .ep-notification__body__message__timestamp {
   font-size: var(--font-size--tiny);

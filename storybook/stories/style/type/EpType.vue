@@ -12,6 +12,7 @@
         <template #left>
           <ep-tabs
             :items="tabs"
+            :active-tab-index="activeTab"
             @tab-click="handleClick"
           />
         </template>
@@ -26,7 +27,7 @@
     <template #default>
       <ep-tab-content
         :items="tabs"
-        :active-tab="activeTab"
+        :active-tab-index="activeTab"
       >
         <template #tab-0>
           <div

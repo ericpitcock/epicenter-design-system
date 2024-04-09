@@ -19,8 +19,6 @@
           href="https://github.com/ericpitcock/epicenter-design-system"
         />
       </div>
-      <!-- <div class="yellow-circle" />
-      <div class="purple-circle" /> -->
     </div>
     <div class="content">
       <div class="main">
@@ -34,6 +32,7 @@
             The aim of this Storybook is to showcase these components in their raw
             form and in the context of an app.
           </p>
+          <p>Note: React components in the works.</p>
         </div>
       </div>
     </div>
@@ -97,6 +96,7 @@
         position: relative;
         z-index: var(--z-index--overlap);
         margin-top: 3rem;
+        color: var(--text-color--inverse);
       }
 
       .hero-link {
@@ -107,30 +107,6 @@
           color: var(--gray-440);
           text-decoration: none;
         }
-      }
-
-      .yellow-circle {
-        position: absolute;
-        top: -17rem;
-        left: -40rem;
-        width: 60rem;
-        height: 30rem;
-        border-radius: 50%;
-        background: rgb(255, 255, 0);
-        opacity: 1;
-        filter: blur(100px);
-      }
-
-      .purple-circle {
-        position: absolute;
-        bottom: -50%;
-        right: -20%;
-        width: 60rem;
-        height: 30rem;
-        border-radius: 50%;
-        background: rgb(212, 12, 85);
-        opacity: 0.8;
-        filter: blur(150px);
       }
     }
 
