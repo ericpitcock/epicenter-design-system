@@ -1,0 +1,26 @@
+  .ep-tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: default;
+  }
+
+  .ep-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .ep-tooltip-wrapper:hover .ep-tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
