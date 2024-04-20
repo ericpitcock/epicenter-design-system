@@ -18,9 +18,9 @@
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: var(--z-index--tooltip);
-  }
 
-  .ep-tooltip-wrapper:hover .ep-tooltip {
-    visibility: visible;
-    opacity: 1;
+    &.ep-tooltip--visible {
+      visibility: visible;
+      opacity: 1;
+    }
   }
