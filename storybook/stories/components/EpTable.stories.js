@@ -221,6 +221,7 @@ export const Table = args => ({
     overflow="hidden"
     calculateHeight
     :calculateHeightOffset="30"
+    background-color="var(--interface-surface)"
   >
     <template #header>
       <ep-header>

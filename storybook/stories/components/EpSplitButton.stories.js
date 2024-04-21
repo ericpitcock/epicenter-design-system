@@ -114,7 +114,7 @@ export const SplitButton = args => ({
       },
       containerProps: {
         backgroundColor: 'var(--interface-overlay)',
-        containerPadding: '1rem 0',
+        // containerPadding: '1rem 0',
         borderRadius: 'var(--border-radius)',
         borderColor: 'var(--border-color--lighter)',
       },
@@ -122,7 +122,7 @@ export const SplitButton = args => ({
         { label: 'Download v1.1' },
         { label: 'Download v1.0.1' },
         { label: 'Download v1.0' },
-        { label: 'Download v0.9'  }
+        { label: 'Download v0.9' }
       ]
     }
     return { args, buttonProps, dropdownProps }

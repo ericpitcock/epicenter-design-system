@@ -1,11 +1,8 @@
+@use '../mixins/mixins';
+
 .ep-table-container {
   overflow: auto;
-  -ms-overflow-style: none; // Internet Explorer, Edge
-  scrollbar-width: none; // Firefox
-
-  &::-webkit-scrollbar {
-    display: none; // Chrome, Safari, Opera
-  }
+  // @include mixins.hide-scrollbar;
 }
 
 .ep-table {
@@ -17,17 +14,6 @@
     th {
       text-align: left;
 
-      // z-index: var(--z-index--sticky);
-      // &:hover {
-      //   color: var(--color--primary);
-      //   cursor: pointer;
-      // }
-      // &.active {
-      //   color: var(--color--primary);
-      //   .ep-icon {
-      //     visibility: visible;
-      //   }
-      // }
       div {
         position: relative;
         display: flex;
@@ -96,8 +82,7 @@
         cursor: pointer;
 
         td {
-          background: var(--interface-overlay);
-          // color: var(--text-color--inverse);
+          background: var(--table-row-hover-color);
         }
       }
 

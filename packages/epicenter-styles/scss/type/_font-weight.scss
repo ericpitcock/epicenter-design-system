@@ -1,0 +1,47 @@
+:root {
+  --font-weight--thin: 'wght' 100;
+  --font-weight--extra-light: 'wght' 200;
+  --font-weight--light: 'wght' 300;
+  --font-weight--regular: 'wght' 400;
+  --font-weight--medium: 'wght' 500;
+  --font-weight--semi-bold: 'wght' 600;
+  --font-weight--bold: 'wght' 700;
+  --font-weight--extra-bold: 'wght' 800;
+  --font-weight--black: 'wght' 900;
+}
+
+.font-weight--thin {
+  font-variation-settings: var(--font-weight--thin);
+}
+
+.font-weight--extra-light {
+  font-variation-settings: var(--font-weight--extra-light);
+}
+
+.font-weight--light {
+  font-variation-settings: var(--font-weight--light);
+}
+
+.font-weight--regular {
+  font-variation-settings: var(--font-weight--regular);
+}
+
+.font-weight--medium {
+  font-variation-settings: var(--font-weight--medium);
+}
+
+.font-weight--semi-bold {
+  font-variation-settings: var(--font-weight--semi-bold);
+}
+
+.font-weight--bold {
+  font-variation-settings: var(--font-weight--bold);
+}
+
+.font-weight--extra-bold {
+  font-variation-settings: var(--font-weight--extra-bold);
+}
+
+.font-weight--black {
+  font-variation-settings: var(--font-weight--black);
+}

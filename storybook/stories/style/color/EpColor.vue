@@ -16,6 +16,7 @@
       calculate-height
       :calculate-height-offset="30"
       overflow="hidden"
+      background-color="var(--interface-surface)"
     >
       <ep-table
         :columns="tableColumns"
@@ -53,16 +54,16 @@
         activeItem: 'All',
         filter: '',
         menuItems: [
-          {
-            section: true,
-            label: 'Specific Use'
-          },
-          { label: 'Alert (Coming Soon)', },
+          // {
+          //   section: true,
+          //   label: 'Specific Use'
+          // },
+          // { label: 'Alert (Coming Soon)', },
           {
             label: 'Chart Sequence',
             command: () => (this.filter = 'Chart')
           },
-          { label: 'Chart Sequence Expanded (Coming Soon)', },
+          // { label: 'Chart Sequence Expanded (Coming Soon)', },
           { divider: true },
           {
             label: 'All',
@@ -180,9 +181,9 @@
           }
         ],
         containerProps: {
-          width: 'fit-content',
+          width: '20rem',
           height: 'fit-content',
-          containerPadding: '1rem 0'
+          backgroundColor: 'var(--interface-surface)',
         }
       }
     },
@@ -278,7 +279,7 @@
       contrast(color) {
         // const background = window.getComputedStyle(document.querySelector('html')).getPropertyValue('--background-1')
         const background = this.backgroundColor
-        var rgb = function (color) {
+        var rgb = function(color) {
           if (color.indexOf('rgb') === 0) {
             var arr = color.match(/\d+/g)
             return {
@@ -301,7 +302,7 @@
             }
           }
         }
-        var luminance = function (color) {
+        var luminance = function(color) {
           var c = rgb(color)
           var r = c.r / 255
           var g = c.g / 255
@@ -311,7 +312,7 @@
           var B = b <= 0.03928 ? b / 12.92 : Math.pow((b + 0.055) / 1.055, 2.4)
           return 0.2126 * R + 0.7152 * G + 0.0722 * B
         }
-        var contrast = function (color, background) {
+        var contrast = function(color, background) {
           var l1 = luminance(color)
           var l2 = luminance(background)
           return l1 > l2 ? (l1 + 0.05) / (l2 + 0.05) : (l2 + 0.05) / (l1 + 0.05)
@@ -356,9 +357,9 @@
 </style>
 
 <style>
-  .color-sample {
-    width: 5rem;
-    height: 5rem;
-    border-radius: var(--border-radius);
-  }
+.color-sample {
+  width: 5rem;
+  height: 5rem;
+  border-radius: var(--border-radius);
+}
 </style>

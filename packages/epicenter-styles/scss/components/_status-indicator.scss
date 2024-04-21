@@ -1,31 +1,16 @@
 .ep-status-indicator {
-  position: relative;
-  padding-left: 1.4rem;
+  --ep-status-indicator-dot-bg: var(--text-color);
+  --ep-status-indicator-dot-border: var(--text-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
 
-  &::before {
-    position: absolute;
-    display: block;
-    content: '';
-    width: 0.8rem;
-    height: 0.8rem;
-    top: calc(50% - 0.4rem);
-    left: 0;
+  &__dot {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: var(--ep-status-indicator-dot-bg);
+    border: 0.1rem solid var(--ep-status-indicator-dot-border);
     border-radius: 50%;
-  }
-
-  &--success::before {
-    background: var(--green-300);
-  }
-
-  &--warning::before {
-    background: var(--bg-color--alert-medium);
-  }
-
-  &--error::before {
-    background: var(--bg-color--alert-error);
-  }
-
-  &--info::before {
-    background: var(--bg-color--alert-low);
+    box-sizing: content-box;
   }
 }

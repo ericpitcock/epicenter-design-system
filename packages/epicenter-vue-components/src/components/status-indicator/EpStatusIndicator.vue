@@ -1,18 +1,21 @@
 <template>
-  <span :class="['ep-status-indicator', `ep-status-indicator--${status}`]">
-    {{ value }}
+  <span
+    class="ep-status-indicator"
+    :style="styles"
+  >
+    <span class="ep-status-indicator__dot" />
+    <slot />
   </span>
 </template>
 
-<script setup>
-  const props = defineProps({
-    status: {
-      type: String,
-      required: true,
-    },
-    value: {
-      type: String,
-      required: true,
-    },
-  })
+<script>
+  export default {
+    name: 'EpStatusIndicator',
+    props: {
+      styles: {
+        type: Object,
+        default: () => ({}),
+      },
+    }
+  }
 </script>

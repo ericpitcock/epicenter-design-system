@@ -1,5 +1,4 @@
 import { centeredSurface } from '../../helpers/decorators'
-import { colorNames, colorValues } from '../../helpers/colorHelper'
 import EpBadge from '@/components/badge/EpBadge'
 
 export default {
@@ -13,75 +12,12 @@ export default {
         type: 'text',
       }
     },
-    variant: {
-      name: 'Variant',
-      options: [
-        'primary',
-        'secondary',
-        'success',
-        'warning',
-        'danger',
-      ],
+    styles: {
+      name: 'Styles',
       control: {
-        type: 'radio',
-        labels: {
-          primary: 'Primary',
-          secondary: 'Secondary',
-          success: 'Success',
-          warning: 'Warning',
-          danger: 'Danger',
-        }
+        type: 'object'
       }
     },
-    outlined: {
-      name: 'Outlined',
-      control: {
-        type: 'boolean',
-      }
-    },
-    backgroundColor: {
-      name: 'Background Color',
-      options: colorNames,
-      mapping: colorValues,
-      control: {
-        type: 'select',
-      },
-      table: {
-        category: 'Overrides'
-      }
-    },
-    borderColor: {
-      name: 'Border Color',
-      options: colorNames,
-      mapping: colorValues,
-      control: {
-        type: 'select',
-      },
-      table: {
-        category: 'Overrides'
-      }
-    },
-    textColor: {
-      name: 'Text Color',
-      options: ['None', 'var(--text-color)', 'var(--text-color--inverse)'],
-      mapping: {
-        'None': '',
-        'var(--text-color)': 'var(--text-color)',
-        'var(--text-color--inverse)': 'var(--text-color--inverse)'
-      },
-      control: {
-        type: 'select',
-      },
-      table: {
-        category: 'Overrides'
-      }
-    },
-    uppercase: {
-      name: 'Uppercase',
-      control: {
-        type: 'boolean',
-      }
-    }
   }
 }
 
@@ -97,10 +33,9 @@ export const Badge = args => ({
 
 Badge.args = {
   label: 'Subscribed',
-  variant: 'success',
-  outlined: false,
-  backgroundColor: 'None',
-  borderColor: 'None',
-  textColor: 'None',
-  uppercase: false
+  styles: {
+    '--ep-badge-bg-color': 'transparent',
+    '--ep-badge-border-color': 'var(--border-color--lighter)',
+    '--ep-badge-text-color': 'var(--text-color--loud)',
+  },
 }

@@ -1,23 +1,21 @@
 <template>
   <div :class="['ep-empty-state', classes]">
-    <div class="ep-empty-state__img">
-      <img
-        v-if="image.src"
-        :alt="image.alt"
-        class="ep-empty-state__cover"
-        :src="image.src"
-      >
+    <div
+      v-if="$slots.img"
+      class="ep-empty-state__img"
+    >
+      <slot name="img" />
     </div>
     <div class="ep-empty-state__body">
       <h2 class="font-size--body">
-        {{ message }}
+        <slot />
       </h2>
-      <p
-        v-if="subtext"
+      <div
+        v-if="$slots.subtext"
         class="text--subtle font-size--small"
       >
-        {{ subtext }}
-      </p>
+        <slot name="subtext" />
+      </div>
       <div
         v-if="$slots.cta"
         class="ep-empty-state__body__cta"
@@ -36,24 +34,18 @@
         type: String,
         default: 'column'
       },
-      image: {
-        type: Object,
-        default: () => ({})
-      },
-      message: {
+      justify: {
         type: String,
-        default: ''
+        default: 'center'
       },
-      subtext: {
-        type: String,
-        default: ''
-      }
     },
     computed: {
       classes() {
         return {
           'ep-empty-state--column': this.direction === 'column',
-          'ep-empty-state--row': this.direction === 'row'
+          'ep-empty-state--row': this.direction === 'row',
+          'ep-empty-state--justify-left': this.justify === 'left',
+          'ep-empty-state--justify-right': this.justify === 'right',
         }
       }
     }

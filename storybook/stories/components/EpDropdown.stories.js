@@ -125,7 +125,7 @@ export const Dropdown = args => ({
     }
     const containerProps = {
       backgroundColor: 'var(--interface-overlay)',
-      containerPadding: '1rem 0',
+      // containerPadding: '1rem 0',
       borderRadius: 'var(--border-radius)',
       borderColor: 'var(--border-color--lighter)'
     }
@@ -148,5 +148,5 @@ Dropdown.args = {
   'buttonProps.iconLeft': 'file',
   alignRight: false,
   menuItems: fakeDropdownItems,
-  showOnHover: true
+  showOnHover: false
 }

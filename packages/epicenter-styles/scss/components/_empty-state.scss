@@ -11,15 +11,33 @@
   &--column {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     .ep-empty-state__body {
       text-align: center;
+    }
+
+    &.ep-empty-state--justify-left {
+      align-items: flex-start;
+    }
+
+    &.ep-empty-state--justify-right {
+      align-items: flex-end;
     }
   }
 
   &--row {
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+
+    &.ep-empty-state--justify-left {
+      justify-content: flex-start;
+    }
+
+    &.ep-empty-state--justify-right {
+      justify-content: flex-end;
+    }
   }
 
   &__body {

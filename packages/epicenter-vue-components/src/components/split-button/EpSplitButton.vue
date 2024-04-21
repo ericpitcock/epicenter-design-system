@@ -45,12 +45,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  // gotta use :deep() to override the dropdown's scoped styles
-  // need to figure out how this works in normal CSS
-  .ep-dropdown :deep(.ep-button) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-</style>

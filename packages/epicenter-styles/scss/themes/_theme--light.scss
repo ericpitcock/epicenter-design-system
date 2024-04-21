@@ -16,11 +16,11 @@ html[data-color-theme='light'] {
   --overlay-color: rgba(255, 255, 255, 0.85);
   // shadow
   // new
-  --box-shadow-color: rgba(0,0,0,0.1);
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
   // old
   --drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.05);
   --drop-shadow--large: 0 2px 20px rgba(0, 0, 0, 0.15);
-  --drop-shadow--large--north: 0 -10px 10px rgba(0,0,0,0.15);
+  --drop-shadow--large--north: 0 -10px 10px rgba(0, 0, 0, 0.15);
   // text
   --text-color: var(--gray-410);
   --text-color--disabled: var(--gray-270);
@@ -30,9 +30,9 @@ html[data-color-theme='light'] {
   --text-color--placeholder: var(--text-color--subtle);
   // text gradient
   --text-gradient: linear-gradient(to right,
-    hsl(17, 90%, 56%),
-    hsl(275, 93%, 61%),
-    hsl(205, 97%, 49%));
+      hsl(17, 90%, 56%),
+      hsl(275, 93%, 61%),
+      hsl(205, 97%, 49%));
   // text color
   --text-color--primary: var(--blue-600);
   // subtle text
@@ -63,8 +63,8 @@ html[data-color-theme='light'] {
   --button-menu-item-text-hover: var(--text-color--inverse);
   --button-menu-item-text-active: var(--text-color--inverse);
   // table
-  // --table-stripe-color: var(--gray-10);
   --table-stripe-color: var(--interface-foreground);
+  --table-row-hover-color: var(--gray-10);
   // toggle
   --toggle-track: var(--gray-80);
   --toggle-track-border: var(--border-color);

@@ -1,47 +1,43 @@
 import { centered } from '../../helpers/decorators'
 import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator'
+import EpTooltip from '@/components/tooltip/EpTooltip'
 
 export default {
   title: 'Components/Status Indicator',
   component: EpStatusIndicator,
   decorators: [centered],
   argTypes: {
-    status: {
-      name: 'Status',
-      options: [
-        'error',
-        'info',
-        'success',
-        'warning',
-      ],
+    styles: {
+      name: 'Styles',
       control: {
-        type: 'radio',
-        labels: {
-          error: 'Error',
-          info: 'Info',
-          success: 'Success',
-          warning: 'Warning',
-        }
+        type: 'object'
       }
     },
-    value: {
-      name: 'Value',
-      control: {
-        type: 'text'
-      }
-    }
   }
 }
 
 export const StatusIndicator = args => ({
-  components: { EpStatusIndicator },
+  components: { EpStatusIndicator, EpTooltip },
   setup() {
     return { args }
   },
-  template: '<ep-status-indicator v-bind="args" />'
+  template: `
+    <ep-tooltip>
+      <template #tooltip>
+        <div>
+          <p>Last active 2 hours ago</p>
+        </div>
+      </template>
+      <ep-status-indicator v-bind="args">
+        Carlos Picah
+      </ep-status-indicator>
+    </ep-tooltip>
+  `
 })
 
 StatusIndicator.args = {
-  status: 'success',
-  value: 'Carlos Picah'
+  styles: {
+    '--ep-status-indicator-dot-bg': 'purple',
+    '--ep-status-indicator-dot-border': 'purple',
+  }
 }

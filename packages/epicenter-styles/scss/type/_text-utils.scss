@@ -27,6 +27,12 @@
   }
 }
 
+.text--overflow-hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 ::selection {
   background: var(--text-selection);
   color: var(--text--black);

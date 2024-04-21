@@ -1,6 +1,5 @@
 import { padded } from '../../helpers/decorators'
 import EpContainer from '@/components/container/EpContainer.vue'
-import EpHeader from '@/components/header/EpHeader.vue'
 import EpKeyValueTable from '@/components/key-value-table/EpKeyValueTable.vue'
 
 const fakeData = {
@@ -95,8 +94,8 @@ export default {
 }
 
 export const KeyValueTable = (args) => ({
-  components: { EpContainer, EpHeader, EpKeyValueTable },
-  setup () {
+  components: { EpContainer, EpKeyValueTable },
+  setup() {
     // test function
     const test = () => {
       console.log('test')
@@ -110,10 +109,8 @@ export const KeyValueTable = (args) => ({
     calculateHeight
     :calculateHeightOffset="30"
     overflow="auto"
+    background-color="var(--interface-surface)"
   >
-    <template #header>
-      <ep-header />
-    </template>
     <ep-key-value-table v-bind="args" />
   </ep-container>
   `

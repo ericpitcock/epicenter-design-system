@@ -1,20 +1,43 @@
+@use '../mixins/mixins';
+
 .copy-block {
   & > * + * {
     margin-top: 1rem;
   }
 
-  p {
+  > p {
     font-size: var(--font-size--body);
     line-height: 2.4rem;
     max-width: 60rem;
   }
 
-  a:not(.ep-button) {
+  > ul {
+    font-size: var(--font-size--body);
+    list-style-type: disc;
+    padding-left: 2.8rem;
+
+    li {
+      line-height: 2.4rem;
+
+      ul {
+        list-style-type: circle;
+        margin-top: 1.4rem;
+        padding-left: 2rem;
+      }
+    }
+
+    li:not(:first-child) {
+      margin-top: 0.8rem;
+    }
+  }
+
+  // not positive I need this if I just apply the text--link class
+  > a:not(.ep-button) {
     color: var(--text-color--link);
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    a:hover:not(.ep-button) {
+  @include mixins.hover {
+    > a:hover:not(.ep-button) {
       color: var(--text-color--link);
       cursor: pointer;
     }

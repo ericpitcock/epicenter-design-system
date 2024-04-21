@@ -85,7 +85,6 @@ export const MapInContext = (args, { globals: { theme } }) => ({
 
     const containerProps = {
       backgroundColor: 'var(--interface-overlay)',
-      containerPadding: '1rem 0',
       borderRadius: 'var(--border-radius)',
       borderColor: 'var(--border-color--lighter)'
     }
@@ -202,6 +201,7 @@ export const MapInContext = (args, { globals: { theme } }) => ({
       max-width="120rem"
       height="100%"
       overflow="hidden"
+      background-color="var(--interface-surface)"
     >
       <template #header>
       <ep-header padding="0 3rem">

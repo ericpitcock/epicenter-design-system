@@ -1,58 +1,14 @@
 .ep-badge {
+  --ep-badge-bg-color: var(--interface-overlay);
+  --ep-badge-border-color: var(--border-color--lighter);
+  --ep-badge-text-color: var(--text-color--loud);
   display: inline-block;
   padding: 0.4rem 0.8rem;
   border-radius: var(--border-radius);
+  background-color: var(--ep-badge-bg-color);
+  border: 0.1rem solid var(--ep-badge-border-color);
+  color: var(--ep-badge-text-color);
   font-size: var(--font-size--tiny);
   font-variation-settings: 'wght' 600;
   user-select: none;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-color--lighter);
-  background-color: var(--interface-overlay);
-
-  // 'Primary', 'Secondary', 'Success', 'Warning', 'Danger'
-
-  &--primary {
-    background-color: var(--color--primary);
-    color: var(--text-color);
-    border-color: var(--color--primary);
-  }
-
-  &--secondary {
-    background-color: var(--interface-overlay);
-    color: var(--text-color);
-    border-color: var(--interface-overlay);
-
-    &.ep-badge--outlined {
-      border-color: var(--border-color--lighter);
-    }
-  }
-
-  &--success {
-    background-color: var(--success-green--base);
-    color: var(--success-green--text);
-    border-color: var(--success-green--base);
-  }
-
-  &--warning {
-    background-color: var(--warning-yellow--base);
-    color: var(--warning-yellow--text);
-    border-color: var(--warning-yellow--base);
-  }
-
-  &--danger {
-    background-color: var(--danger-red--base);
-    color: var(--danger-red--text);
-    border-color: var(--danger-red--base);
-  }
-
-  &--outlined {
-    background-color: transparent;
-    color: var(--text-color);
-  }
-
-  &--uppercase {
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-  }
 }

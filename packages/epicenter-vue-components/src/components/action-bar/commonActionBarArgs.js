@@ -11,7 +11,6 @@ const commonActionBarArgs = {
       },
       containerProps: {
         backgroundColor: 'var(--interface-overlay)',
-        containerPadding: '1rem 0',
         borderRadius: 'var(--border-radius)',
         borderColor: 'var(--border-color--lighter)'
       },
@@ -33,7 +32,6 @@ const commonActionBarArgs = {
       },
       containerProps: {
         backgroundColor: 'var(--interface-overlay)',
-        containerPadding: '1rem 0',
         borderRadius: 'var(--border-radius)',
         borderColor: 'var(--border-color--lighter)'
       },
@@ -56,7 +54,6 @@ const commonActionBarArgs = {
       },
       containerProps: {
         backgroundColor: 'var(--interface-overlay)',
-        containerPadding: '1rem 0',
         borderRadius: 'var(--border-radius)',
         borderColor: 'var(--border-color--lighter)'
       },

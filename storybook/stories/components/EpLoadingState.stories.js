@@ -133,6 +133,7 @@ export const LoadingState = args => ({
       height="100%"
       container-padding="0 3rem"
       overflow="hidden"
+      background-color="var(--interface-surface)"
     >
       <template #header>
       <ep-header>
@@ -151,7 +152,6 @@ export const LoadingState = args => ({
               },
               containerProps: {
                 backgroundColor: 'var(--interface-overlay)',
-                containerPadding: '1rem 0',
                 borderRadius: 'var(--border-radius)',
                 borderColor: 'var(--border-color--lighter)',
               },

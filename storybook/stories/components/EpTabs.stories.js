@@ -30,10 +30,10 @@ export default {
   }
 }
 
-const tabItems = ['Overviewzzzz', 'Features', 'Pricing']
+const tabItems = ['Overview', 'Features', 'Pricing']
 
 const routerLinkItems = [
-  { label: 'Overviewwww', to: '/overview' },
+  { label: 'Overview', to: '/overview' },
   { label: 'Features', to: '/features' },
   { label: 'Pricing', to: '/pricing' }
 ]
@@ -79,6 +79,7 @@ export const Tabs = args => ({
       :container-padding="containerPadding"
       :content-padding="contentPadding"
       overflow="hidden"
+      background-color="var(--interface-surface)"
     >
       <template #header>
       <ep-header

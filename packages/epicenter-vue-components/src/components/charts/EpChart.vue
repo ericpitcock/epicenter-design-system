@@ -1,5 +1,8 @@
 <template>
-  <div :id="chartId" />
+  <div
+    :id="chartId"
+    :style="{ height: `${height}px` }"
+  />
 </template>
 
 <script>
@@ -8,19 +11,26 @@
   export default {
     name: 'EpChart',
     props: {
+      chartColors: {
+        type: Array,
+        default: () => []
+      },
+      height: {
+        type: Number,
+        default: 400
+      },
       options: {
         type: Object,
         default: () => ({})
       },
-      chartColors: {
-        type: Array,
-        default: () => []
-      }
     },
     data() {
       return {
         chart: null,
         chartDefaults: {
+          accessibility: {
+            enabled: false,
+          },
           chart: {
             styledMode: true,
           },
@@ -32,7 +42,7 @@
           },
           tooltip: {
             enabled: false
-          }
+          },
         },
         chartId: `chart-${Math.random().toString(36).substring(7)}`
       }

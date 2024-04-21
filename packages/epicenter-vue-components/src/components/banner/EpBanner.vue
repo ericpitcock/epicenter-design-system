@@ -13,13 +13,13 @@
       </div>
       <div class="ep-banner__body__message">
         <p class="ep-banner__body__message__text font-size--small">
-          {{ message }}
+          <slot name="message" />
         </p>
         <p
-          v-if="subtext"
+          v-if="$slots.subtext"
           class="ep-banner__body__message__subtext"
         >
-          {{ subtext }}
+          <slot name="subtext" />
         </p>
       </div>
       <div
@@ -60,14 +60,6 @@
         type: Object,
         default: () => ({})
       },
-      message: {
-        type: String,
-        required: true
-      },
-      subtext: {
-        type: String,
-        default: ''
-      },
     },
     emits: ['dismiss'],
     data() {
@@ -90,5 +82,5 @@
         this.$emit('dismiss')
       }
     }
-  }
+}
 </script>

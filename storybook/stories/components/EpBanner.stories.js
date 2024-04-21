@@ -39,18 +39,6 @@ export default {
         type: 'select'
       }
     },
-    message: {
-      name: 'Message',
-      control: {
-        type: 'text'
-      }
-    },
-    subtext: {
-      name: 'Subtext',
-      control: {
-        type: 'text'
-      }
-    }
   }
 }
 
@@ -63,13 +51,18 @@ export const Banner = args => ({
       args
     }
   },
-  template: '<ep-banner v-bind="args" />'
+  template: `<ep-banner v-bind="args">
+    <template #message>
+      Version 2.0 will end support for JavaDabbles and Interquibbles
+    </template>
+    <template #subtext>
+      Our boss made us do it
+    </template>
+  </ep-banner>`
 })
 
 Banner.args = {
   bannerStyle: 'warning',
   dissmissable: false,
   iconProps: 'f/alert-triangle',
-  message: 'Version 2.0 will end support for JavaDabbles and Interquibbles',
-  subtext: 'Our boss made us do it'
 }

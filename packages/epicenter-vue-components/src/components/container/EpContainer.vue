@@ -65,7 +65,7 @@
       },
       backgroundColor: {
         type: String,
-        default: 'var(--interface-surface)'
+        default: ''
       },
       borderRadius: {
         type: String,
@@ -106,7 +106,7 @@
           height: this.dynamicHeight || this.height,
           minHeight: this.minHeight,
           maxHeight: this.maxHeight,
-          backgroundColor: this.backgroundColor,
+          ...(this.backgroundColor && { background: this.backgroundColor }),
           padding: this.containerPadding,
           borderRadius: this.borderRadius,
           border: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,

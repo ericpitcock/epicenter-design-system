@@ -5,6 +5,14 @@ export default {
   title: 'Components/Tooltip',
   component: EpTooltip,
   decorators: [centered],
+  argTypes: {
+    delay: {
+      name: 'Delay',
+      control: {
+        type: 'number'
+      }
+    },
+  }
 }
 
 export const Tooltip = args => ({
@@ -13,7 +21,7 @@ export const Tooltip = args => ({
     return { args }
   },
   template: `
-    <ep-tooltip>
+    <ep-tooltip v-bind="args">
       <template #tooltip>
         <div>
           <p>Tooltip content</p>
@@ -23,3 +31,7 @@ export const Tooltip = args => ({
     </ep-tooltip>
   `
 })
+
+Tooltip.args = {
+  delay: 0
+}

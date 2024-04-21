@@ -70,6 +70,7 @@
     flex-direction: column;
     border-radius: var(--border-radius--large);
     border: 1px solid var(--border-color);
+    background: var(--interface-surface);
     overflow: hidden;
   }
 

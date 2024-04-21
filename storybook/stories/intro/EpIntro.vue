@@ -30,7 +30,10 @@
           </p>
           <p>
             The aim of this Storybook is to showcase these components in their raw
-            form and in the context of an app.
+            form and in the context of an app. <a
+              class="text--link"
+              href="https://ericpitcock.com"
+            >Learn more</a>
           </p>
           <p>Note: React components in the works.</p>
         </div>
@@ -136,5 +139,4 @@
         display: flex;
       }
     }
-  }
-</style>
+  }</style>

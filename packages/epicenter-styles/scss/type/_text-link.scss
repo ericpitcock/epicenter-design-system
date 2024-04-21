@@ -1,9 +1,13 @@
+@use '../mixins/mixins';
+
 .text--link {
   color: var(--text-color--link);
 
-  &:hover {
-    color: var(--text-color--link);
-    text-decoration: underline;
-    cursor: pointer;
+  @include mixins.hover {
+    &:hover {
+      color: var(--text-color--link);
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 }

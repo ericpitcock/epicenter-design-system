@@ -55,20 +55,6 @@
         type: Boolean,
         default: false
       },
-      button: {
-        type: Object,
-        default: () => ({}),
-        // Add a warning message to the console whenever the "button" prop is used
-        // informing the user that it will be deprecated in a future version
-        // and recommending that they switch to the "buttonProps" prop.
-        // Also keep the "button" prop for backwards compatibility.
-        validator: (value, props) => {
-          if (value) {
-            console.warn('[EpDropdown] The "button" prop has been deprecated. Use "buttonProps" instead.')
-          }
-          return true
-        }
-      },
       buttonProps: {
         type: Object,
         default: () => ({})
@@ -110,8 +96,6 @@
           ...this.disabled && { disabled: true },
           ...this.buttonDefaults,
           ...this.buttonProps,
-          // For backwards compatibility, merge the "button" prop with the "buttonProps" prop
-          ...this.button
         }
       },
       computedContainerProps() {

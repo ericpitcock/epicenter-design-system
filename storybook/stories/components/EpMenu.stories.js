@@ -144,8 +144,9 @@ Menu.args = {
   containerProps: {
     width: '200px',
     height: 'auto',
-    containerPadding: '1rem 0',
-    borderRadius: 'var(--border-radius)'
+    // containerPadding: '1rem 0',
+    borderRadius: 'var(--border-radius)',
+    backgroundColor: 'var(--interface-surface)',
   },
   menuItems: fakeMenuItems
 }

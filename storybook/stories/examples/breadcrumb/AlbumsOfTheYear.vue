@@ -7,6 +7,7 @@
       container-padding="0 3rem"
       content-padding="3rem 0"
       overflow="auto"
+      background-color="var(--interface-surface)"
     >
       <template #header>
         <ep-header>

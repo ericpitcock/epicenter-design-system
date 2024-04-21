@@ -43,7 +43,7 @@
       },
       backgroundColor: {
         type: String,
-        default: 'var(--interface-surface)'
+        default: ''
       },
       borderRadius: {
         type: String,
@@ -143,7 +143,7 @@
           height: this.height,
           padding: this.padding,
           margin: this.margin,
-          backgroundColor: this.backgroundColor,
+          ...(this.backgroundColor && { background: this.backgroundColor }),
           borderBottom: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
           zIndex: this.zIndex
         }

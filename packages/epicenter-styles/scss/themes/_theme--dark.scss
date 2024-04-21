@@ -16,11 +16,11 @@
   --overlay-color: rgba(36, 36, 36, 0.85);
   // shadow
   // new
-  --box-shadow-color: rgba(0,0,0,0.3);
+  --box-shadow-color: rgba(0, 0, 0, 0.3);
   // old
   --drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
   --drop-shadow--large: 0 2px 20px rgba(0, 0, 0, 0.5);
-  --drop-shadow--large--north: 0 -10px 10px rgba(0,0,0,0.25);
+  --drop-shadow--large--north: 0 -10px 10px rgba(0, 0, 0, 0.25);
   // text
   // --text-color: var(--gray-50);
   // new decreased contrast
@@ -35,9 +35,9 @@
   // --text-color--placeholder: red;
   // text gradient
   --text-gradient: linear-gradient(to right,
-    hsl(17, 88%, 60%),
-    hsl(275, 92%, 70%),
-    hsl(180, 100%, 50%));
+      hsl(17, 88%, 60%),
+      hsl(275, 92%, 70%),
+      hsl(180, 100%, 50%));
   // text color
   --text-color--primary: var(--blue-400);
   // subtle text
@@ -70,6 +70,7 @@
   --button-menu-item-text-active: var(--text--white);
   // table
   --table-stripe-color: var(--interface-foreground);
+  --table-row-hover-color: var(--gray-450);
   // toggle
   --toggle-track: var(--gray-400);
   --toggle-track-border: var(--border-color);

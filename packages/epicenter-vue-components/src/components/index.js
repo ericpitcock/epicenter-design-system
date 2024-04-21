@@ -28,14 +28,15 @@ import EpTempNotification from './notification/EpTempNotification.vue'
 import EpNotifications from './notification/EpNotifications.vue'
 import EpSearch from './search/EpSearch.vue'
 import EpSelect from './select/EpSelect.vue'
-import EpSparkBar from './spark-bar/EpSparkBar.vue'
 import EpSplitButton from './split-button/EpSplitButton.vue'
+import EpStatusIndicator from './status-indicator/EpStatusIndicator.vue'
 import EpTable from './table/EpTable.vue'
 import EpTabs from './tabs/EpTabs.vue'
 import EpTabContent from './tabs/EpTabContent.vue'
 import EpTextarea from './textarea/EpTextarea.vue'
 import EpThemeToggle from './theme-toggle/EpThemeToggle.vue'
 import EpToggle from './toggle/EpToggle.vue'
+import EpTooltip from './tooltip/EpTooltip.vue'
 
 export default {
   EpActionBar,
@@ -68,12 +69,13 @@ export default {
   EpNotifications,
   EpSearch,
   EpSelect,
-  EpSparkBar,
   EpSplitButton,
+  EpStatusIndicator,
   EpTable,
   EpTabs,
   EpTabContent,
   EpTextarea,
   EpThemeToggle,
-  EpToggle
+  EpToggle,
+  EpTooltip,
 }
