@@ -25,13 +25,15 @@
       </thead>
       <tbody>
         <tr
-          v-for="row in paginatedAndSearchedData"
+          v-for="row in paginatedAndFilteredData"
           :key="row.id"
         >
           <td
             v-for="column in columns"
             :key="column.key"
-          >{{ row[column.key] }}</td>
+          >
+            {{ row[column.key] }}
+          </td>
         </tr>
       </tbody>
     </table>
@@ -54,7 +56,7 @@
 </template>
 
 <script setup>
-  import { ref, defineProps } from 'vue'
+  import { ref, defineProps, watch, computed } from 'vue'
   import EpTableSearchInput from './EpTableSearchInput.vue'
   import useSorting from './useSorting'
   import usePagination from './usePagination'
@@ -69,26 +71,33 @@
       type: Array,
       required: true
     },
+    enableFilters: {
+      type: Boolean,
+      default: false
+    },
+    appliedFilters: {
+      type: Object,
+      default: () => ({})
+    },
+    enablePagination: {
+      type: Boolean,
+      default: false
+    },
     pageSize: {
       type: Number,
       default: 10
     },
-    enableSorting: {
-      type: Boolean,
-      default: true
-    },
-    enablePagination: {
-      type: Boolean,
-      default: true
-    },
     enableSearch: {
       type: Boolean,
-      default: true
-    }
+      default: false
+    },
+    enableSorting: {
+      type: Boolean,
+      default: false
+    },
   })
 
-  // Your data
-  const yourData = ref([])
+  const yourData = ref(props.data)
 
   const searchText = ref('')
   const { sortedData, sortBy, sortColumn, sortOrder } = useSorting(yourData, props.enableSorting)
@@ -98,12 +107,30 @@
 
   const { searchedData } = useSearch(paginatedData, props.enableSearch, searchText)
 
-  // Combine pagination and search
-  const paginatedAndSearchedData = computed(() => {
-    return searchedData.value.slice((currentPage - 1) * props.pageSize, currentPage * props.pageSize)
+  const appliedFilters = ref(props.appliedFilters)
+
+  watch(appliedFilters, (newFilters) => {
+    console.log("Applied filters changed:", newFilters)
+  }, { deep: true })
+
+  const paginatedAndFilteredData = computed(() => {
+    if (!props.enableFilters) {
+      return searchedData.value.slice((currentPage - 1) * props.pageSize, currentPage * props.pageSize)
+    }
+
+    let filteredData = searchedData.value
+
+    // Apply filters
+    for (const key in appliedFilters.value) {
+      const filterValue = appliedFilters.value[key]
+      filteredData = filteredData.filter(row => {
+        return row[key] === filterValue
+      })
+    }
+
+    return filteredData.slice((currentPage - 1) * props.pageSize, currentPage * props.pageSize)
   })
 
-  // Method to update search text
   const updateSearchText = (text) => {
     searchText.value = text
   }

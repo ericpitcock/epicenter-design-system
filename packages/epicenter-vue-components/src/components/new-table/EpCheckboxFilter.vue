@@ -5,9 +5,9 @@
       :key="option.value"
     >
       <input
+        v-model="selectedOptions"
         type="checkbox"
         :value="option.value"
-        v-model="selectedOptions"
         @change="applyFilter"
       >
       <label>{{ option.label }}</label>
@@ -19,9 +19,22 @@
   import { ref, defineProps } from 'vue'
 
   const props = defineProps({
-    options: Array, // Array of options for checkboxes
-    appliedFilters: Object, // Object containing the currently applied filters
-    filterKey: String // Key to identify the filter
+    options: {
+      type: Array,
+      required: true
+    },
+    appliedFilters: {
+      type: Object,
+      required: true
+    },
+    filterKey: {
+      type: String,
+      required: true
+    },
+    columnKey: {
+      type: String,
+      required: true
+    }
   })
 
   // Initialize selected options
@@ -30,6 +43,6 @@
   // Method to apply filter and emit event
   const applyFilter = () => {
     // Emit event to update applied filters in parent component
-    emit('update:appliedFilters', { [filterKey]: selectedOptions.value })
+    emit('update:appliedFilters', { [columnKey]: selectedOptions.value })
   }
 </script>

@@ -1,8 +1,5 @@
 <template>
-  <input
-    v-model="searchText"
-    placeholder="Search..."
-  >
+  <input placeholder="Search...">
 </template>
 
 <script setup>

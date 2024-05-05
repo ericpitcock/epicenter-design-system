@@ -4,28 +4,28 @@
     <YourTableComponent
       :columns="columns"
       :data="tableData"
-      :enableSorting="true"
-      :enablePagination="true"
-      :enableSearch="true"
-      :appliedFilters="appliedFilters"
-      @update:appliedFilters="updateFilters"
+      :enable-sorting="true"
+      :enable-pagination="true"
+      :enable-search="true"
+      :applied-filters="appliedFilters"
+      @update:applied-filters="updateFilters"
     />
 
     <!-- Checkbox filter -->
     <CheckboxFilter
       v-if="filterType === 'checkbox'"
       :options="checkboxOptions"
-      :appliedFilters="appliedFilters"
-      filterKey="checkboxFilter"
-      @update:appliedFilters="updateFilters"
+      :applied-filters="appliedFilters"
+      filter-key="checkboxFilter"
+      @update:applied-filters="updateFilters"
     />
 
     <!-- Date picker filter -->
     <DatePickerFilter
       v-if="filterType === 'date'"
-      :appliedFilters="appliedFilters"
-      filterKey="dateFilter"
-      @update:appliedFilters="updateFilters"
+      :applied-filters="appliedFilters"
+      filter-key="dateFilter"
+      @update:applied-filters="updateFilters"
     />
 
     <!-- Range input filter -->
@@ -33,9 +33,9 @@
       v-if="filterType === 'range'"
       :min="0"
       :max="100"
-      :appliedFilters="appliedFilters"
-      filterKey="rangeFilter"
-      @update:appliedFilters="updateFilters"
+      :applied-filters="appliedFilters"
+      filter-key="rangeFilter"
+      @update:applied-filters="updateFilters"
     />
   </div>
 </template>

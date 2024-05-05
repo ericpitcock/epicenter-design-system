@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const rootPath = path.resolve(__dirname, '../packages/epicenter-vue-components/src')
 
 module.exports = {
@@ -30,6 +31,12 @@ module.exports = {
 
     config.resolve.alias['@'] = rootPath
     config.resolve.alias['~'] = rootPath
+
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false'
+      })
+    )
 
     return config
   }

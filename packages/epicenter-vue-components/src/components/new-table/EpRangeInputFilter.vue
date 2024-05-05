@@ -1,8 +1,8 @@
 <template>
   <div>
     <input
-      type="range"
       v-model="selectedRange"
+      type="range"
       :min="min"
       :max="max"
       @input="applyFilter"
@@ -15,10 +15,26 @@
   import { ref, defineProps } from 'vue'
 
   const props = defineProps({
-    appliedFilters: Object, // Object containing the currently applied filters
-    filterKey: String, // Key to identify the filter
-    min: Number, // Minimum value for range
-    max: Number // Maximum value for range
+    appliedFilters: {
+      type: Object,
+      required: true
+    },
+    filterKey: {
+      type: String,
+      required: true
+    },
+    columnKey: {
+      type: String,
+      required: true
+    },
+    min: {
+      type: Number,
+      required: true
+    },
+    max: {
+      type: Number,
+      required: true
+    }
   })
 
   // Initialize selected range
@@ -27,6 +43,6 @@
   // Method to apply filter and emit event
   const applyFilter = () => {
     // Emit event to update applied filters in parent component
-    emit('update:appliedFilters', { [filterKey]: selectedRange.value })
+    emit('update:appliedFilters', { [columnKey]: selectedRange.value })
   }
 </script>

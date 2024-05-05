@@ -1,8 +1,8 @@
 <template>
   <div>
     <input
-      type="date"
       v-model="selectedDate"
+      type="date"
       @change="applyFilter"
     >
   </div>
@@ -12,8 +12,18 @@
   import { ref, defineProps } from 'vue'
 
   const props = defineProps({
-    appliedFilters: Object, // Object containing the currently applied filters
-    filterKey: String // Key to identify the filter
+    appliedFilters: {
+      type: Object,
+      required: true
+    },
+    filterKey: {
+      type: String,
+      required: true
+    },
+    columnKey: {
+      type: String,
+      required: true
+    }
   })
 
   // Initialize selected date
@@ -22,6 +32,6 @@
   // Method to apply filter and emit event
   const applyFilter = () => {
     // Emit event to update applied filters in parent component
-    emit('update:appliedFilters', { [filterKey]: selectedDate.value })
+    emit('update:appliedFilters', { [columnKey]: selectedDate.value })
   }
 </script>
