@@ -923,7 +923,7 @@ h1, h2, h3, h4, h5, h6 {
 .ep-badge {
   --ep-badge-bg-color: var(--interface-overlay);
   --ep-badge-border-color: var(--border-color--lighter);
-  --ep-badge-text-color: var(--text-color--loud);
+  --ep-badge-text-color: var(--text-color);
   display: inline-block;
   padding: 0.4rem 0.8rem;
   border-radius: var(--border-radius);

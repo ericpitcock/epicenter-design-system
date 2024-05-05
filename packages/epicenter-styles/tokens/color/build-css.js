@@ -3,6 +3,9 @@ const yaml = require('js-yaml')
 const chokidar = require('chokidar')
 const glob = require('glob')
 
+// capture arguments passed to the script if needed
+// const args = process.argv.slice(2)
+
 function loadYAMLFiles(pattern) {
   const yamlData = {}
   const files = glob.sync(pattern)

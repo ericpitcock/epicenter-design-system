@@ -13,7 +13,7 @@
     <div
       v-show="searching"
       ref="resultsList"
-      v-click-outside="handleClickOutside"
+      v-click-outside-next="handleClickOutside"
       class="ep-search__dropdown"
       :style="{ maxHeight: dynamicHeight }"
     >
@@ -38,7 +38,7 @@
 <script>
   import EpInput from '../input/EpInput.vue'
   import calculateHeight from '../../mixins/calculateHeight'
-  import clickOutside from '../../directives/clickOutside'
+  import clickOutsideNext from '../../directives/clickOutsideNext'
   import debounceMixin from '../../mixins/debounce'
 
   export default {
@@ -47,7 +47,7 @@
       EpInput,
     },
     directives: {
-      clickOutside,
+      clickOutsideNext,
     },
     mixins: [calculateHeight, debounceMixin],
     props: {
