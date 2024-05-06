@@ -1,6 +1,6 @@
-import { padded } from '../../helpers/decorators'
-import EpContainer from '@/components/container/EpContainer'
-import EpNotifications from '@/components/notification/EpNotifications'
+import { padded } from '../../helpers/decorators.js'
+import EpContainer from '@/components/container/EpContainer.vue'
+import EpNotifications from '@/components/notification/EpNotifications.vue'
 
 export default {
   title: 'Components/Notifications/Notification Center',

@@ -1,4 +1,4 @@
-import { centeredSurface } from '../../helpers/decorators'
+import { centeredSurface } from '../../helpers/decorators.js'
 import EpThemeToggle from '@/components/theme-toggle/EpThemeToggle.vue'
 
 export default {

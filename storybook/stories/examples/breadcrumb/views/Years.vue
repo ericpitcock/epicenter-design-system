@@ -28,7 +28,7 @@
           <p>{{ year }}</p>
           <p class="text--subtle font-size--tiny">{{
             getAlbumCovers(year).length
-          }} albums</p>
+            }} albums</p>
         </div>
       </a>
     </ep-container>
@@ -37,7 +37,7 @@
 
 <script>
   import * as albumsOfTheYear from '../aoty.json'
-  import EpContainer from '@/components/container/EpContainer'
+  import EpContainer from '@/components/container/EpContainer.vue'
 
   export default {
     name: 'Years',

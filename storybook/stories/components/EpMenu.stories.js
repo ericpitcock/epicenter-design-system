@@ -1,5 +1,5 @@
-import { centered } from '../../helpers/decorators'
-import EpMenu from '@/components/menu/EpMenu'
+import { centered } from '../../helpers/decorators.js'
+import EpMenu from '@/components/menu/EpMenu.vue'
 
 const fakeMenuItems = [
   {

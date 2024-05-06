@@ -1,5 +1,5 @@
 import EpContainer from '@/components/container/EpContainer.vue'
-import { svgIcons, iconNames } from '@/components/icon/load-icons'
+import { svgIcons, iconNames } from '@/components/icon/load-icons.js'
 import EpIcon from '@/components/icon/EpIcon.vue'
 import { centeredSurface } from '../../helpers/decorators.js'
 
@@ -104,7 +104,7 @@ IconLibrary.args = {
 }
 
 IconLibrary.argTypes = {
-  name: { 
-    table: { disable: true } 
+  name: {
+    table: { disable: true }
   }
 }

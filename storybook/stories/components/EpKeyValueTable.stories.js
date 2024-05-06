@@ -1,4 +1,4 @@
-import { padded } from '../../helpers/decorators'
+import { padded } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpKeyValueTable from '@/components/key-value-table/EpKeyValueTable.vue'
 

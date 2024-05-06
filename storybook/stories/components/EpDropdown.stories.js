@@ -1,40 +1,40 @@
-import { centeredSurface } from '../../helpers/decorators'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
-import EpDropdown from '@/components/dropdown/EpDropdown'
+import { centeredSurface } from '../../helpers/decorators.js'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
+import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 
-// const buttonDefaults = {
-//   variant: 'secondary',
-//   size: 'default',
-//   title: 'Components/Default Dropdown',
-//   label: 'Export',
-//   iconRight: { name: 'chevron-down' },
-//   iconLeft: { name: 'export' }
-// }
-// const containerProps = {
-//   backgroundColor: 'var(--interface-overlay)',
-//   containerPadding: '1rem 0',
-//   borderRadius: 'var(--border-radius)',
-//   borderColor: 'var(--border-color--lighter)'
-// }
+const buttonDefaults = {
+  variant: 'secondary',
+  size: 'default',
+  title: 'Components/Default Dropdown',
+  label: 'Export',
+  iconRight: { name: 'chevron-down' },
+  iconLeft: { name: 'export' }
+}
+const containerProps = {
+  backgroundColor: 'var(--interface-overlay)',
+  containerPadding: '1rem 0',
+  borderRadius: 'var(--border-radius)',
+  borderColor: 'var(--border-color--lighter)'
+}
 const fakeDropdownItems = [
   {
     label: 'PDF',
-    iconLeft: { name: 'f/file' }
+    iconLeft: { name: 'f-file' }
   },
   {
     label: 'JPG',
-    iconLeft: { name: 'f/file' }
+    iconLeft: { name: 'f-file' }
   },
   {
     divider: true
   },
   {
     label: 'CSV',
-    iconLeft: { name: 'f/file' }
+    iconLeft: { name: 'f-file' }
   },
   {
     label: 'JSON',
-    iconLeft: { name: 'f/file' }
+    iconLeft: { name: 'f-file' }
   }
 ]
 
@@ -120,7 +120,7 @@ export const Dropdown = args => ({
       variant: args['buttonProps.variant'],
       size: args['buttonProps.size'],
       label: 'Export Data',
-      // iconRight: { name: 'chevron-down' },
+      iconRight: { name: 'chevron-down' },
       iconLeft: args['buttonProps.iconLeft']
     }
     const containerProps = {

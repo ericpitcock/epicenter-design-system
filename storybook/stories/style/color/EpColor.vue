@@ -33,13 +33,13 @@
 </template>
 
 <script>
-  import EpContainer from '@/components/container/EpContainer'
-  import EpMenu from '@/components/menu/EpMenu'
-  import EpTable from '@/components/table/EpTable'
-  import colors from '../../../../packages/epicenter-styles/tokens/color/color'
-  import grayscale from '../../../../packages/epicenter-styles/tokens/color/grayscale'
-  import copyToClipboard from '@/mixins/copyToClipboard'
-  import { mapState } from 'vuex'
+  import EpContainer from '@/components/container/EpContainer.vue'
+  import EpMenu from '@/components/menu/EpMenu.vue'
+  import EpTable from '@/components/table/EpTable.vue'
+  import colors from '../../../../packages/epicenter-styles/tokens/color/color.json'
+  import grayscale from '../../../../packages/epicenter-styles/tokens/color/grayscale.json'
+  import copyToClipboard from '@/mixins/copyToClipboard.js'
+  // import { mapState } from 'vuex'
 
   export default {
     name: 'EpColor',
@@ -188,7 +188,7 @@
       }
     },
     computed: {
-      ...mapState(['theme']),
+      // ...mapState(['theme']),
       backgroundColor() {
         return this.theme === 'dark' ? '#1f1f1f' : '#ebebeb'
       },
@@ -357,9 +357,9 @@
 </style>
 
 <style>
-.color-sample {
-  width: 5rem;
-  height: 5rem;
-  border-radius: var(--border-radius);
-}
+  .color-sample {
+    width: 5rem;
+    height: 5rem;
+    border-radius: var(--border-radius);
+  }
 </style>

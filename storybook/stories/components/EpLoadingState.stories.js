@@ -1,11 +1,11 @@
-import { padded } from '../../helpers/decorators'
-import EpContainer from '@/components/container/EpContainer'
-import EpHeader from '@/components/header/EpHeader'
-import EpFooter from '@/components/footer/EpFooter'
-import EpSplitButton from '@/components/split-button/EpSplitButton'
-import EpTable from '@/components/table/EpTable'
+import { padded } from '../../helpers/decorators.js'
+import EpContainer from '@/components/container/EpContainer.vue'
+import EpHeader from '@/components/header/EpHeader.vue'
+import EpFooter from '@/components/footer/EpFooter.vue'
+import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
+import EpTable from '@/components/table/EpTable.vue'
 import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
-import { columns, fakeArray } from '../../data/tableData'
+import { columns, fakeArray } from '../../data/tableData.js'
 import { ref, onMounted } from 'vue'
 
 export default {

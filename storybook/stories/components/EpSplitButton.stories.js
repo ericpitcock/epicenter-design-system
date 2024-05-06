@@ -1,5 +1,5 @@
-import { centered } from '../../helpers/decorators'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
+import { centered } from '../../helpers/decorators.js'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 
 export default {

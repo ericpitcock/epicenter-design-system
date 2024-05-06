@@ -64,13 +64,13 @@
 </template>
 
 <script>
-  import faker from 'faker'
+  import { faker } from '@faker-js/faker'
 
-  import EpButton from '@/components/button/EpButton'
-  import EpContainer from '@/components/container/EpContainer'
-  import EpHeader from '@/components/header/EpHeader'
-  import EpTabs from '@/components/tabs/EpTabs'
-  import EpTabContent from '@/components/tabs/EpTabContent'
+  import EpButton from '@/components/button/EpButton.vue'
+  import EpContainer from '@/components/container/EpContainer.vue'
+  import EpHeader from '@/components/header/EpHeader.vue'
+  import EpTabs from '@/components/tabs/EpTabs.vue'
+  import EpTabContent from '@/components/tabs/EpTabContent.vue'
 
   export default {
     components: {

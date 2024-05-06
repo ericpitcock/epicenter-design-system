@@ -1,5 +1,5 @@
-import { padded } from '../../../helpers/decorators'
-import EpPrimaryColorVariants from './EpPrimaryColorVariants'
+import { padded } from '../../../helpers/decorators.js'
+import EpPrimaryColorVariants from './EpPrimaryColorVariants.vue'
 
 export default {
   title: 'Style/Primary Color Variants',

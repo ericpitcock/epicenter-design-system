@@ -1,5 +1,5 @@
-import EpTooltip from '@/components/tooltip/EpTooltip'
-import { centered } from '../../helpers/decorators'
+import EpTooltip from '@/components/tooltip/EpTooltip.vue'
+import { centered } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Tooltip',

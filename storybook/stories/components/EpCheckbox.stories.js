@@ -1,5 +1,5 @@
-import { centeredSurface } from '../../helpers/decorators'
-import EpCheckbox from '@/components/checkbox/EpCheckbox'
+import { centeredSurface } from '../../helpers/decorators.js'
+import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 
 export default {
   title: 'Components/Checkbox',

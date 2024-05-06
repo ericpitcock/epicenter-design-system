@@ -1,4 +1,4 @@
-import EpMap from '@/components/map/EpMap'
+import EpMap from '@/components/map/EpMap.vue'
 
 const mapStyles = {
   'Dark (Ep)': 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',

@@ -1,4 +1,4 @@
-import { centered } from '../../helpers/decorators'
+import { centered } from '../../helpers/decorators.js'
 import EpDonutChart from '@/components/charts/EpDonutChart.vue'
 
 export default {
@@ -47,7 +47,7 @@ export default {
       }
     },
   },
-};
+}
 
 export const DonutChart = args => ({
   components: { EpDonutChart },

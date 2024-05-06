@@ -1,21 +1,21 @@
-import vueRouter from 'storybook-vue3-router'
-import { centered } from '../../helpers/decorators'
-import { colorNames, colorValues } from '../../helpers/colorHelper'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
-import EpButton from '@/components/button/EpButton'
-import markdown from '../../../docs/EpButton.md'
+// import vueRouter from 'storybook-vue3-router'
+import { centered } from '../../helpers/decorators.js'
+import { colorNames, colorValues } from '../../helpers/colorHelper.js'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
+import EpButton from '@/components/button/EpButton.vue'
+// import markdown from '../../../docs/EpButton.md'
 
 export default {
   title: 'Components/Button',
   component: EpButton,
   decorators: [centered],
-  parameters: {
-    docs: {
-      description: {
-        component: markdown
-      }
-    }
-  },
+  // parameters: {
+  //   docs: {
+  //     description: {
+  //       component: markdown
+  //     }
+  //   }
+  // },
   argTypes: {
     disabled: {
       name: 'Disabled',
@@ -231,6 +231,6 @@ Button.args = {
   textColor: 'None',
 }
 
-Button.decorators = [
-  vueRouter()
-]
+// Button.decorators = [
+//   vueRouter()
+// ]

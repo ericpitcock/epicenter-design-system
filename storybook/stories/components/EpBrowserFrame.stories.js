@@ -1,4 +1,4 @@
-import { padded } from '../../helpers/decorators'
+import { padded } from '../../helpers/decorators.js'
 import EpBrowserFrame from '@/components/browser-frame/EpBrowserFrame.vue'
 
 export default {

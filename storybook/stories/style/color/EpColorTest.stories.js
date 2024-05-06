@@ -1,5 +1,5 @@
-import { padded } from '../../../helpers/decorators'
-import EpColorTest from './EpColorTest'
+import { padded } from '../../../helpers/decorators.js'
+import EpColorTest from './EpColorTest.vue'
 
 export default {
   title: 'Style/Color Test',

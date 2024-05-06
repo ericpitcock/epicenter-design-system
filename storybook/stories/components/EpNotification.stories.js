@@ -1,10 +1,11 @@
-import faker from 'faker'
-import { centeredSurface } from '../../helpers/decorators'
-import EpNotification from '@/components/notification/EpNotification'
-import store from '../../store'
+import { faker } from '@faker-js/faker'
+import { centeredSurface } from '../../helpers/decorators.js'
+import EpNotification from '@/components/notification/EpNotification.vue'
+// import { useStorybookStore } from '../../storybook/store'
+// const store = useStorybookStore()
 
 export default {
-  title: 'Components/Notifications/Notification',
+  title: 'Components/Notification',
   component: EpNotification,
   decorators: [centeredSurface],
   argTypes: {
@@ -26,11 +27,11 @@ export default {
       control: {
         type: 'radio',
         labels: {
-        info: 'Info',
-        success: 'Success',
-        warning: 'Warning',
-        error: 'Error'
-      },
+          info: 'Info',
+          success: 'Success',
+          warning: 'Warning',
+          error: 'Error'
+        },
       }
     },
     timestamp: {
@@ -56,5 +57,5 @@ Notification.args = {
   id: '1',
   message: 'The future is bright!',
   variant: 'success',
-  timestamp: faker.date.future(100).toISOString()
+  timestamp: faker.date.future({ days: 100 }).toISOString()
 }

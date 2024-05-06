@@ -1,4 +1,4 @@
-import { centered } from '../../helpers/decorators'
+import { centered } from '../../helpers/decorators.js'
 import EpButtonGroup from '@/components/button-group/EpButtonGroup.vue'
 
 export default {
@@ -41,7 +41,7 @@ export default {
 export const ButtonGroup = args => ({
   components: { EpButtonGroup },
   setup() {
-    return { args };
+    return { args }
   },
   template: '<ep-button-group v-bind="args" />'
 })

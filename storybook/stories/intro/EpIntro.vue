@@ -25,11 +25,13 @@
         <div class="copy-block">
           <p>
             This design system is being created for use in my personal projects
-            and serves as a training ground to stay current on best practices for
+            and serves as a training ground to stay current on best practices
+            for
             creating inclusive and user-friendly experiences for all.
           </p>
           <p>
-            The aim of this Storybook is to showcase these components in their raw
+            The aim of this Storybook is to showcase these components in their
+            raw
             form and in the context of an app. <a
               class="text--link"
               href="https://ericpitcock.com"
@@ -44,7 +46,7 @@
 
 <script>
   import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
-  import EpButton from '@/components/button/EpButton'
+  import EpButton from '@/components/button/EpButton.vue'
 
   export default {
     name: 'IntroView',
@@ -139,4 +141,5 @@
         display: flex;
       }
     }
-  }</style>
+  }
+</style>

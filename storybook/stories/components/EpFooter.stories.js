@@ -1,4 +1,4 @@
-import { padded } from '../../helpers/decorators'
+import { padded } from '../../helpers/decorators.js'
 import EpFooter from '@/components/footer/EpFooter.vue'
 
 export default {

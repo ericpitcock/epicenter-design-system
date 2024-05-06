@@ -1,5 +1,5 @@
-import { padded } from '../../../helpers/decorators'
-import AlbumsOfTheYear from './AlbumsOfTheYear'
+import { padded } from '../../../helpers/decorators.js'
+import AlbumsOfTheYear from './AlbumsOfTheYear.vue'
 
 export default {
   title: 'Components/Breadcrumb',

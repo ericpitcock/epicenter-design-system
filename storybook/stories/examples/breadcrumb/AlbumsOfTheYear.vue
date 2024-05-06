@@ -42,13 +42,13 @@
 </template>
 
 <script>
-  import EpBreadcrumbStatic from '@/components/breadcrumb/EpBreadcrumbStatic'
-  import EpContainer from '@/components/container/EpContainer'
-  import EpHeader from '@/components/header/EpHeader'
-  import EpFooter from '@/components/footer/EpFooter'
-  import Years from './views/Years'
-  import Year from './views/Year'
-  import Album from './views/Album'
+  import EpBreadcrumbStatic from '@/components/breadcrumb/EpBreadcrumbStatic.vue'
+  import EpContainer from '@/components/container/EpContainer.vue'
+  import EpHeader from '@/components/header/EpHeader.vue'
+  import EpFooter from '@/components/footer/EpFooter.vue'
+  import Years from './views/Years.vue'
+  import Year from './views/Year.vue'
+  import Album from './views/Album.vue'
 
   import * as albumsOfTheYear from './aoty.json'
 

@@ -7,7 +7,8 @@
         <a
           :style="{ color: primaryColor }"
           href="#"
-        >Text links</a>, especially across dark and light themes. When you want to
+        >Text links</a>, especially across dark and light themes. When you want
+        to
         keep the colors in the same family, but
         adjust for a particualar use case, this tool will help with that.
       </p>
@@ -39,8 +40,8 @@
 </template>
 
 <script>
-  import EpBadge from '@/components/badge/EpBadge'
-  import EpButton from '@/components/button/EpButton'
+  import EpBadge from '@/components/badge/EpBadge.vue'
+  import EpButton from '@/components/button/EpButton.vue'
 
   export default {
     name: 'EpColorTest',

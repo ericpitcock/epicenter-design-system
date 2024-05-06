@@ -1,4 +1,4 @@
-// import { centered } from '../../helpers/decorators'
+// import { centered } from '../../helpers/decorators.js'
 import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
 
 export default {

@@ -1,4 +1,4 @@
-import { centeredCyanBlueGradient } from '../../helpers/decorators'
+import { centeredCyanBlueGradient } from '../../helpers/decorators.js'
 import EpSignIn from '@/components/sign-in/EpSignIn.vue'
 
 export default {
@@ -13,7 +13,7 @@ export default {
 
 export const SignIn = args => ({
   components: { EpSignIn },
-  setup () {
+  setup() {
     return { args }
   },
   template: '<ep-sign-in v-bind="args" />'

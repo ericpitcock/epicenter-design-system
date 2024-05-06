@@ -1,4 +1,4 @@
-import { paddedSurface } from '../../helpers/decorators'
+import { paddedSurface } from '../../helpers/decorators.js'
 import EpTextarea from '@/components/textarea/EpTextarea.vue'
 
 export default {

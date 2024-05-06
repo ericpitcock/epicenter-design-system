@@ -31,7 +31,7 @@
 
 <script>
   import * as albumsOfTheYear from '../aoty.json'
-  import EpContainer from '@/components/container/EpContainer'
+  import EpContainer from '@/components/container/EpContainer.vue'
 
   export default {
     name: 'Year',

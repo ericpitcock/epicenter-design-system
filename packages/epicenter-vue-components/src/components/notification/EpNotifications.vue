@@ -46,7 +46,7 @@
   import EpFlexContainer from '../flexbox/EpFlexContainer.vue'
   import EpHeader from '../header/EpHeader.vue'
   import EpNotification from '../notification/EpNotification.vue'
-  import { mapState, mapGetters } from 'vuex'
+  // import { mapState, mapGetters } from 'vuex'
 
   export default {
     name: 'EpNotifications',
@@ -83,14 +83,14 @@
       }
     },
     computed: {
-      ...mapState([
-        'notifications',
-        'notificationCenterOpen'
-      ]),
-      ...mapGetters([
-        'hasActiveNotifications',
-        'getInactiveNotifications'
-      ]),
+      // ...mapState([
+      //   'notifications',
+      //   'notificationCenterOpen'
+      // ]),
+      // ...mapGetters([
+      //   'hasActiveNotifications',
+      //   'getInactiveNotifications'
+      // ]),
       computedContainerProps() {
         return {
           ...this.defaultContainerProps,
@@ -102,12 +102,12 @@
       }
     },
     methods: {
-      removeNotification(notification) {
-        this.$store.dispatch('removeNotification', notification)
-      },
-      clearNotifications() {
-        this.$store.dispatch('clearNotifications')
-      }
+      // removeNotification(notification) {
+      //   this.$store.dispatch('removeNotification', notification)
+      // },
+      // clearNotifications() {
+      //   this.$store.dispatch('clearNotifications')
+      // }
     }
   }
 </script>

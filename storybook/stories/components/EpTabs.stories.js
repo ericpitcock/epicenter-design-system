@@ -1,9 +1,9 @@
-import { padded } from '../../helpers/decorators'
-import EpContainer from '@/components/container/EpContainer'
-import EpFooter from '@/components/footer/EpFooter'
-import EpHeader from '@/components/header/EpHeader'
-import EpTabs from '@/components/tabs/EpTabs'
-import EpTabContent from '@/components/tabs/EpTabContent'
+import { padded } from '../../helpers/decorators.js'
+import EpContainer from '@/components/container/EpContainer.vue'
+import EpFooter from '@/components/footer/EpFooter.vue'
+import EpHeader from '@/components/header/EpHeader.vue'
+import EpTabs from '@/components/tabs/EpTabs.vue'
+import EpTabContent from '@/components/tabs/EpTabContent.vue'
 import { ref } from 'vue'
 
 export default {

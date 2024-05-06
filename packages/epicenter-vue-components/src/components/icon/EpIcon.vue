@@ -7,8 +7,10 @@
 </template>
 
 <script>
+  import { svgIcons } from './load-icons'
+
   export default {
-    name: 'EpIcon',
+    name: 'EpIconOLD',
     props: {
       name: {
         type: String,
@@ -16,7 +18,7 @@
       },
       color: {
         type: String,
-        default: 'currentColor'
+        default: 'currentcolor'
       },
       weight: {
         type: String,
@@ -33,7 +35,6 @@
     },
     data() {
       return {
-        svg: '',
         weights: {
           'extra-light': 0.5,
           'light': 1,
@@ -42,32 +43,16 @@
         }
       }
     },
-    watch: {
-      name: {
-        immediate: true,
-        handler() {
-          this.loadIcon()
+    computed: {
+      svg() {
+        const icon = svgIcons.find(icon => icon.name === this.name)
+        if (icon && icon.content) {
+          return icon.content
+            .replace(/stroke=\S+/g, `stroke="${this.color}"`)
+            .replace(/stroke-width=\S+/g, `stroke-width="${this.weights[this.weight]}"`)
+            .replace(/[^-]width=\S+/g, `width="${this.size}"`)
+            .replace(/height=\S+/g, `height="${this.size}"`)
         }
-      }
-    },
-    created() {
-      this.loadIcon()
-    },
-    methods: {
-      loadIcon() {
-        const xhr = new XMLHttpRequest()
-        xhr.onreadystatechange = () => {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            let svgCode = xhr.responseText
-            svgCode = svgCode.replace(/stroke=\S+/g, `stroke="${this.color}"`)
-              .replace(/stroke-width=\S+/g, `stroke-width="${this.weights[this.weight]}"`)
-              .replace(/[^-]width=\S+/g, `width="${this.size}"`)
-              .replace(/height=\S+/g, `height="${this.size}"`)
-            this.svg = svgCode
-          }
-        }
-        xhr.open('GET', require(`./icons/${this.name}.svg`), true)
-        xhr.send()
       }
     }
   }

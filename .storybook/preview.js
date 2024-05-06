@@ -1,54 +1,64 @@
-import { app } from '@storybook/vue3'
-import store from '../storybook/store'
+import { setup } from '@storybook/vue3'
+import { watch } from 'vue'
 
-app.use(store)
+import { createPinia } from 'pinia'
+import { useStorybookStore } from '../storybook/store'
+
+setup((app) => {
+  const pinia = createPinia()
+  app.use(pinia)
+})
 
 // global styles
-import '!style-loader!css-loader!sass-loader!../packages/epicenter-styles/dist/epicenter-design-system.css'
-import '!style-loader!css-loader!sass-loader!../storybook/storybook.scss'
+import '../packages/epicenter-styles/dist/epicenter-design-system.css'
+import '../storybook/storybook.scss'
 
-export const parameters = {
-  layout: 'centered',
-  options: {
-    storySort: {
-      order: [
-        'Intro',
-        'Components',
-        'Style',
-      ],
-    },
-  }
-}
-
-export const globalTypes = {
-  theme: {
-    name: 'Choose Theme',
-    description: 'Global theme for components',
-    defaultValue: 'dark',
-    toolbar: {
-      icon: '',
-      // Array of plain string values or MenuItem shape (see below)
-      items: ['light', 'dark'],
-      // Property that specifies if the name of the item will be displayed
-      showName: true,
-      // Change title based on selected value
-      // only works in 6.5
-      dynamicTitle: true
-    }
-  }
-}
-
-export const decorators = [
-  (story, context) => ({
-    template: '<story/>',
-    watch: {
-      theme: {
-        handler() {
-          if (context.globals.theme === store.state.theme) return
-          store.dispatch('toggleTheme')
+const preview = {
+  decorators: [
+    (story, context) => {
+      const store = useStorybookStore()
+      watch(
+        () => context.globals.theme,
+        () => {
+          const themeMap = {
+            'Light Theme': 'light',
+            'Dark Theme': 'dark'
+          }
+          if (themeMap[context.globals.theme] === store.theme) return
+          store.toggleTheme()
         },
-        immediate: true
+        { immediate: true }
+      )
+
+      return {
+        template: '<story/>',
+        setup() {
+          return { store }
+        }
       }
     }
-  })
-]
+  ],
+  globalTypes: {
+    theme: {
+      name: 'Choose Theme',
+      description: 'Global theme for components',
+      defaultValue: 'Dark Theme',
+      toolbar: {
+        icon: '',
+        items: ['Light Theme', 'Dark Theme'],
+        showName: true,
+        dynamicTitle: true
+      }
+    }
+  },
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+  },
+}
+
+export default preview

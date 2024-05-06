@@ -1,5 +1,5 @@
-import { padded } from '../../../helpers/decorators'
-import EpColor from './EpColor'
+import { padded } from '../../../helpers/decorators.js'
+import EpColor from './EpColor.vue'
 
 export default {
   title: 'Style/Color',

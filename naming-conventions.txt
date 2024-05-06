@@ -1,0 +1,9 @@
+prop names
+enable{{name}} - enable the {{name}} feature
+
+event handlers
+on{{name}} - called when the {{name}} feature is enabled
+
+composable
+use{{name}} - use the {{name}} feature
+

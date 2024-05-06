@@ -1,6 +1,6 @@
-import { centeredSurface } from '../../helpers/decorators'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
-import EpSelect from '@/components/select/EpSelect'
+import { centeredSurface } from '../../helpers/decorators.js'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
+import EpSelect from '@/components/select/EpSelect.vue'
 
 export default {
   title: 'Components/Select',
@@ -34,7 +34,7 @@ export default {
         type: 'select'
       }
     },
-    id: {
+    selectId: {
       name: 'ID',
       control: {
         type: 'text'
@@ -109,8 +109,8 @@ export const Select = args => ({
 })
 
 Select.args = {
-  id: 'select',
-  iconLeft: 'f/coffee',
+  selectId: 'select',
+  iconLeft: 'f-coffee',
   width: '400px',
   size: 'xlarge',
   placeholder: 'Select your coffee type…',

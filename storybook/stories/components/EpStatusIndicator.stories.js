@@ -1,6 +1,6 @@
-import { centered } from '../../helpers/decorators'
-import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator'
-import EpTooltip from '@/components/tooltip/EpTooltip'
+import { centered } from '../../helpers/decorators.js'
+import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.vue'
+import EpTooltip from '@/components/tooltip/EpTooltip.vue'
 
 export default {
   title: 'Components/Status Indicator',

@@ -3,6 +3,7 @@
     <ep-container
       width="400px"
       height="426px"
+      background-color="var(--interface-surface)"
       content-padding="0 3rem 6rem 3rem"
       style="box-shadow: var(--drop-shadow);"
     >

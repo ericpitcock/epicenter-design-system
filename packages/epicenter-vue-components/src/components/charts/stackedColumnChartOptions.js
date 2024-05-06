@@ -1,4 +1,4 @@
-import faker from 'faker'
+import { faker } from '@faker-js/faker'
 
 const categories = [
   'Mobile Adware',
@@ -27,7 +27,7 @@ const fakeArrayOfNumbers = (length) => {
 
 const stackedColumnSeries = () => {
   let array = []
-  
+
   categories.forEach((category, index) => {
     array.push({
       name: category,
@@ -76,7 +76,7 @@ const stackedColumnChartOptions = {
   xAxis: {
     categories: fakeArrayOfDates(8),
     labels: {
-      formatter: function () {
+      formatter: function() {
         // let value = this.value
         var value = new Date(this.value)
         return value.toLocaleDateString({

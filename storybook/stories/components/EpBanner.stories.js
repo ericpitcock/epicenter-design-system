@@ -1,5 +1,5 @@
-import { centeredSurface } from '../../helpers/decorators'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
+import { centeredSurface } from '../../helpers/decorators.js'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
 import EpBanner from '@/components/banner/EpBanner.vue'
 
 export default {
@@ -64,5 +64,5 @@ export const Banner = args => ({
 Banner.args = {
   bannerStyle: 'warning',
   dissmissable: false,
-  iconProps: 'f/alert-triangle',
+  iconProps: { name: 'f-alert-triangle' },
 }

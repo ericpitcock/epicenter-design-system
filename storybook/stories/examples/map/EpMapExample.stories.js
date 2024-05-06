@@ -6,7 +6,7 @@ import EpHeader from '@/components/header/EpHeader.vue'
 import EpInput from '@/components/input/EpInput.vue'
 import EpMap from '@/components/map/EpMap.vue'
 import EpSearch from '@/components/search/EpSearch.vue'
-import { padded } from '../../../helpers/decorators'
+import { padded } from '../../../helpers/decorators.js'
 import { ref } from 'vue'
 
 const mapStyles = {

@@ -1,5 +1,5 @@
-import { centeredSurface } from '../../helpers/decorators'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons'
+import { centeredSurface } from '../../helpers/decorators.js'
+import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
 import EpInput from '@/components/input/EpInput.vue'
 import { ref } from 'vue'
 
@@ -152,7 +152,7 @@ export const Input = args => ({
     const clear = () => {
       modelValue.value = ''
     }
-    
+
     return { args, modelValue, clear }
   },
   template: '<ep-input v-bind="args" v-model="modelValue" @clear="clear" />'

@@ -1,5 +1,5 @@
-import { padded } from '../../helpers/decorators'
-import EpMultiSearch from '@/components/search/EpMultiSearch'
+import { padded } from '../../helpers/decorators.js'
+import EpMultiSearch from '@/components/search/EpMultiSearch.vue'
 
 export default {
   title: 'Components/Search/Multisearch',

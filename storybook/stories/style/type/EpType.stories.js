@@ -1,5 +1,5 @@
-import { padded } from '../../../helpers/decorators'
-import EpType from './EpType'
+import { padded } from '../../../helpers/decorators.js'
+import EpType from './EpType.vue'
 
 export default {
   title: 'Style/Type',

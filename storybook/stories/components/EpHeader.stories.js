@@ -1,4 +1,4 @@
-import { padded } from '../../helpers/decorators'
+import { padded } from '../../helpers/decorators.js'
 import EpHeader from '@/components/header/EpHeader.vue'
 
 export default {

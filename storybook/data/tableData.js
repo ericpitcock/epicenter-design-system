@@ -1,13 +1,13 @@
-// https://fakerjsdocs.netlify.app/#browser-demo
-import faker from 'faker'
+import { faker } from '@faker-js/faker'
 import EpBadge from '../../packages/epicenter-vue-components/src/components/badge/EpBadge.vue'
+import { markRaw } from 'vue'
 
 const columns = [
   {
     header: 'Status',
     key: 'status',
     cellType: 'component',
-    component: EpBadge,
+    component: markRaw(EpBadge),
   },
   {
     header: 'Date',
@@ -66,10 +66,10 @@ const fakeArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
     // create status badge label and variant
-    const label = faker.random.arrayElement(['Completed', 'Cancelled'])
+    const label = faker.helpers.arrayElement(['Completed', 'Cancelled'])
     const variant = label === 'Completed' ? 'success' : 'danger'
     arr.push({
-      id: faker.datatype.uuid(),
+      id: faker.string.uuid(),
       status: {
         props: {
           label,
@@ -79,11 +79,11 @@ const fakeArray = length => {
         value: label
       },
       start_date: faker.date.past().toISOString(),
-      name: faker.address.city(),
-      type: faker.random.arrayElement(['VirtualRide', 'Ride']),
-      distance: faker.datatype.number({ min: 10000, max: 100000 }),
-      total_elevation_gain: faker.datatype.number({ min: 100, max: 800 }),
-      average_speed: faker.datatype.number({ min: 20, max: 30, precision: 0.1 })
+      name: faker.location.city(),
+      type: faker.helpers.arrayElement(['VirtualRide', 'Ride']),
+      distance: faker.number.int({ min: 10000, max: 100000 }),
+      total_elevation_gain: faker.number.int({ min: 100, max: 800 }),
+      average_speed: faker.number.int({ min: 20, max: 30, precision: 0.1 })
     })
   }
   return arr

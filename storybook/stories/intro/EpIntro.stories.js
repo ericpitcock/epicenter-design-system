@@ -1,4 +1,4 @@
-import EpIntro from './EpIntro'
+import EpIntro from './EpIntro.vue'
 
 export default {
   title: 'Intro',

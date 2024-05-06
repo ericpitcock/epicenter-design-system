@@ -1,8 +1,8 @@
-import pieChartOptions from '@/components/charts/pieChartOptions'
-import stackedBarChartOptions from '@/components/charts/stackedBarChartOptions'
-import stackedColumnChartOptions from '@/components/charts/stackedColumnChartOptions'
-import EpContainer from '@/components/container/EpContainer'
-import EpChart from '@/components/charts/EpChart'
+import pieChartOptions from '@/components/charts/pieChartOptions.js'
+import stackedBarChartOptions from '@/components/charts/stackedBarChartOptions.js'
+import stackedColumnChartOptions from '@/components/charts/stackedColumnChartOptions.js'
+import EpContainer from '@/components/container/EpContainer.vue'
+import EpChart from '@/components/charts/EpChart.vue'
 
 const container = () => {
   return {

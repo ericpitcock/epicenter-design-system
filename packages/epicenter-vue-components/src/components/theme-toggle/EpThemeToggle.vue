@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from 'vuex'
+  // import { mapActions, mapState } from 'vuex'
   import EpButton from '../button/EpButton.vue'
 
   export default {
@@ -24,13 +24,13 @@
       }
     },
     computed: {
-      ...mapState(['theme']),
+      // ...mapState(['theme']),
       buttonIcon() {
         return this.theme == 'dark' ? 'light-mode' : 'dark-mode'
       }
     },
     methods: {
-      ...mapActions(['toggleTheme'])
+      // ...mapActions(['toggleTheme'])
     }
   }
 </script>
