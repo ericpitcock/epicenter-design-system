@@ -1,5 +1,5 @@
-// import { addons } from '@storybook/addons';
-// import EpTheme from './EpTheme';
+// import { addons } from '@storybook/manager-api'
+// import EpTheme from './EpTheme'
 
 // addons.setConfig({
 //   isFullscreen: false,

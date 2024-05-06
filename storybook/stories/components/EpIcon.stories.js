@@ -1,6 +1,6 @@
 import EpContainer from '@/components/container/EpContainer.vue'
-import { svgIcons, iconNames } from '@/components/icon/load-icons.js'
 import EpIcon from '@/components/icon/EpIcon.vue'
+import { svgIcons, iconNames } from '@/components/icon/load-icons.js'
 import { centeredSurface } from '../../helpers/decorators.js'
 
 export default {

@@ -1,33 +1,39 @@
-// load all raw svg icons from a directory into an array using vite
-const svgIconsReq = import.meta.glob('./icons/**/*.svg', {
-  query: '?raw',
-  import: 'default',
-})
+let svgIcons
+let iconNames
+let iconNamesMapping
 
-const svgIcons = []
+async function init() {
+  const svgIconsReq = import.meta.glob('./icons/**/*.svg', {
+    query: '?raw',
+    import: 'default',
+  })
 
-for (const path in svgIconsReq) {
-  if (Object.hasOwnProperty.call(svgIconsReq, path)) {
-    // Extract the icon name from the path
-    const name = path.match(/\/([^/]+)\.svg$/)[1]
+  svgIcons = []
 
-    // Import the SVG content
-    const content = await svgIconsReq[path]()
+  for (const path in svgIconsReq) {
+    if (Object.hasOwnProperty.call(svgIconsReq, path)) {
+      // Extract the icon name from the path
+      const name = path.match(/\/([^/]+)\.svg$/)[1]
 
-    // Push the icon object to the array
-    svgIcons.push({ name, content })
+      // Import the SVG content
+      const content = await svgIconsReq[path]()
+
+      // Push the icon object to the array
+      svgIcons.push({ name, content })
+    }
   }
+
+  iconNames = svgIcons.map(icon => icon.name)
+  iconNames.unshift('none')
+
+  iconNamesMapping = iconNames.reduce((acc, name) => {
+    acc[name] = { name }
+    return acc
+  }, {})
+
+  iconNamesMapping.none = undefined
 }
 
-const iconNames = svgIcons.map(icon => icon.name)
-
-iconNames.unshift('none')
-
-const iconNamesMapping = iconNames.reduce((acc, name) => {
-  acc[name] = { name }
-  return acc
-}, {})
-
-iconNamesMapping.none = undefined
+init()
 
 export { svgIcons, iconNames, iconNamesMapping }

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import { svgIcons } from './load-icons'
+  import { svgIcons } from './load-icons.js'
 
   export default {
     name: 'EpIconOLD',
