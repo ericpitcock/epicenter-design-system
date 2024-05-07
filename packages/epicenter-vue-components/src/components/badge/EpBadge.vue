@@ -1,24 +1,21 @@
 <template>
   <div
     class="ep-badge"
-    :style="styles"
+    :style="props.styles"
   >
-    {{ label }}
+    {{ props.label }}
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'EpBadge',
-    props: {
-      label: {
-        type: String,
-        default: 'Badge'
-      },
-      styles: {
-        type: Object,
-        default: () => ({})
-      },
+<script setup>
+  const props = defineProps({
+    label: {
+      type: String,
+      default: 'Badge'
     },
-  }
+    styles: {
+      type: Object,
+      default: () => ({})
+    }
+  })
 </script>
