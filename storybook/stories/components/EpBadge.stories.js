@@ -1,7 +1,6 @@
 import { centeredSurface } from '../../helpers/decorators.js'
 import EpBadge from '@/components/badge/EpBadge.vue'
-// import ref and watch from vue
-import { ref, watch } from 'vue'
+import { computed } from 'vue'
 
 export default {
   title: 'Components/Badge',
@@ -52,23 +51,11 @@ export const Badge = args => ({
     EpBadge
   },
   setup() {
-    const styles = ref({
+    const styles = computed(() => ({
       '--ep-badge-bg-color': args.backgroundColor,
       '--ep-badge-border-color': args.borderColor,
       '--ep-badge-text-color': args.textColor,
-    })
-
-    watch(() => args.backgroundColor, (newVal) => {
-      styles.value['--ep-badge-bg-color'] = newVal
-    })
-
-    watch(() => args.borderColor, (newVal) => {
-      styles.value['--ep-badge-border-color'] = newVal
-    })
-
-    watch(() => args.textColor, (newVal) => {
-      styles.value['--ep-badge-text-color'] = newVal
-    })
+    }))
 
     return { args, styles }
   },

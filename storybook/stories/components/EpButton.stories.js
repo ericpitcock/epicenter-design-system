@@ -3,7 +3,7 @@ import { centered } from '../../helpers/decorators.js'
 import { iconOptions, iconMapping } from '@/components/icon/load-icons.js'
 import EpButton from '@/components/button/EpButton.vue'
 // import markdown from '../../../docs/EpButton.md'
-import { ref, watch } from 'vue'
+import { computed } from 'vue'
 
 export default {
   title: 'Components/Button',
@@ -214,7 +214,7 @@ export default {
 export const Button = args => ({
   components: { EpButton },
   setup() {
-    const styles = ref({
+    const styles = computed(() => ({
       '--ep-button-bg-color': args.backgroundColor,
       '--ep-button-border-color': args.borderColor,
       '--ep-button-text-color': args.textColor,
@@ -227,55 +227,7 @@ export const Button = args => ({
       '--ep-button-disabled-bg-color': args.disabledBackgroundColor,
       '--ep-button-disabled-border-color': args.disabledBorderColor,
       '--ep-button-disabled-text-color': args.disabledTextColor,
-    })
-
-    watch(() => args.backgroundColor, (newVal) => {
-      styles.value['--ep-button-bg-color'] = newVal
-    })
-
-    watch(() => args.borderColor, (newVal) => {
-      styles.value['--ep-button-border-color'] = newVal
-    })
-
-    watch(() => args.textColor, (newVal) => {
-      styles.value['--ep-button-text-color'] = newVal
-    })
-
-    watch(() => args.hoverBackgroundColor, (newVal) => {
-      styles.value['--ep-button-hover-bg-color'] = newVal
-    })
-
-    watch(() => args.hoverBorderColor, (newVal) => {
-      styles.value['--ep-button-hover-border-color'] = newVal
-    })
-
-    watch(() => args.hoverTextColor, (newVal) => {
-      styles.value['--ep-button-hover-text-color'] = newVal
-    })
-
-    watch(() => args.activeBackgroundColor, (newVal) => {
-      styles.value['--ep-button-active-bg-color'] = newVal
-    })
-
-    watch(() => args.activeBorderColor, (newVal) => {
-      styles.value['--ep-button-active-border-color'] = newVal
-    })
-
-    watch(() => args.activeTextColor, (newVal) => {
-      styles.value['--ep-button-active-text-color'] = newVal
-    })
-
-    watch(() => args.disabledBackgroundColor, (newVal) => {
-      styles.value['--ep-button-disabled-bg-color'] = newVal
-    })
-
-    watch(() => args.disabledBorderColor, (newVal) => {
-      styles.value['--ep-button-disabled-border-color'] = newVal
-    })
-
-    watch(() => args.disabledTextColor, (newVal) => {
-      styles.value['--ep-button-disabled-text-color'] = newVal
-    })
+    }))
 
     return { args, styles }
   },
