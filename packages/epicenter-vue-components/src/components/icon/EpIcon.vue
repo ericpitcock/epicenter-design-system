@@ -1,85 +1,59 @@
-<!-- eslint-disable vue/no-v-text-v-html-on-component -->
-<!-- eslint-disable vue/no-v-html -->
 <template>
   <component
     :is="type"
     class="ep-icon"
-    v-html="svgContent"
+    v-html="svg"
   />
 </template>
 
-<script setup>
-  import { ref, watchEffect } from 'vue'
+<script>
+  import { svgIcons } from './iconLoader.js'
 
-  const props = defineProps({
-    name: {
-      type: String,
-      required: true,
+  export default {
+    name: 'EpIconOLD',
+    props: {
+      name: {
+        type: String,
+        required: true
+      },
+      color: {
+        type: String,
+        default: 'currentcolor'
+      },
+      weight: {
+        type: String,
+        default: 'regular'
+      },
+      size: {
+        type: Number,
+        default: 20
+      },
+      type: {
+        type: String,
+        default: 'span'
+      }
     },
-    color: {
-      type: String,
-      default: 'currentColor',
+    data() {
+      return {
+        weights: {
+          'extra-light': 0.5,
+          'light': 1,
+          'regular': 1.5,
+          'bold': 2,
+        }
+      }
     },
-    weight: {
-      type: [String, Number],
-      default: 'regular',
-    },
-    size: {
-      type: Number,
-      default: 20,
-    },
-    type: {
-      type: String,
-      default: 'span'
+    computed: {
+      svg() {
+        const icon = svgIcons.find(icon => icon.name === this.name)
+        if (icon && icon.content) {
+          return icon.content
+            .replace(/stroke=\S+/g, `stroke="${this.color}"`)
+            .replace(/stroke-width=\S+/g, `stroke-width="${this.weights[this.weight]}"`)
+            .replace(/[^-]width=\S+/g, `width="${this.size}"`)
+            .replace(/height=\S+/g, `height="${this.size}"`)
+        }
+      }
     }
-  })
-
-  const weights = {
-    'extra-light': 0.5,
-    'light': 1,
-    'regular': 1.5,
-    'bold': 2,
   }
-
-  const processWeight = (weight) => {
-    // Check if weight is a string, if so, return the corresponding value from weights object
-    if (typeof weight === 'string') {
-      return weights[weight]
-    }
-    // If weight is a number or not recognized, return it as is
-    return weight
-  }
-
-  // Define async component with processed SVG content
-  const icon = import(`./icons/${props.name}.svg?raw`)
-
-  const processSVG = (content) => {
-    return content.replace(
-      /<svg([^>]*)width=\S+/,
-      `<svg$1width="${props.size}"`
-    ).replace(
-      /<svg([^>]*)height=\S+/,
-      `<svg$1height="${props.size}"`
-    ).replace(
-      /stroke=\S+/g,
-      `stroke="${props.color}"`
-    ).replace(
-      /stroke-width=\S+/g,
-      `stroke-width="${processWeight(props.weight)}"`
-    )
-  }
-
-  const svgContent = ref('')
-
-  watchEffect(async () => {
-    const { default: rawSvg } = await icon
-    svgContent.value = processSVG(rawSvg)
-  })
 </script>
-
-<style lang="scss" scoped>
-  .ep-icon {
-    display: inline-flex;
-    color: inherit;
-  }
-</style>

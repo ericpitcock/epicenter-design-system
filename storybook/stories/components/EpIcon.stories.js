@@ -6,6 +6,7 @@ import { iconNamesObject, iconNamesArray, iconNamesMapping } from '@/components/
 // const { iconNames } = generateIconNames(await loadIcons())
 // import { iconNames } from '../../helpers/iconHelper.js'
 import { centeredSurface } from '../../helpers/decorators.js'
+import { watch } from 'vue'
 
 console.log(iconNamesObject)
 
@@ -52,6 +53,12 @@ export default {
 export const Icon = args => ({
   components: { EpIcon },
   setup() {
+    // watch icon for changes
+
+    watch(() => args.weight, (newVal, oldVal) => {
+      console.log('weight changed', newVal, oldVal)
+    })
+
     return { args }
   },
   template: '<ep-icon v-bind="args" />'

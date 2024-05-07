@@ -1,5 +1,5 @@
 import { centeredSurface } from '../../helpers/decorators.js'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
+import { iconNamesArray, iconNamesObject, iconNamesMapping } from '@/components/icon/load-icons.js'
 import EpBanner from '@/components/banner/EpBanner.vue'
 
 export default {
@@ -33,7 +33,7 @@ export default {
     },
     iconProps: {
       name: 'Icon',
-      options: iconNames,
+      options: iconNamesArray,
       mapping: iconNamesMapping,
       control: {
         type: 'select'
