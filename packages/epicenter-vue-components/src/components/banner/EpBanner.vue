@@ -1,9 +1,9 @@
 <template>
-  <div class="ep-banner">
-    <div
-      class="ep-banner__color-strip"
-      :style="colorStrip"
-    />
+  <div
+    class="ep-banner"
+    :style="styles"
+  >
+    <div class="ep-banner__color-strip" />
     <div class="ep-banner__body">
       <div
         v-if="iconProps.name"
@@ -30,6 +30,7 @@
           class="dismiss-button"
           variant="ghost"
           :icon-right="{ name: 'close' }"
+          :styles="dissmissButtonStyles"
           @click="dismissNotification"
         />
       </div>
@@ -48,10 +49,6 @@
       EpIcon
     },
     props: {
-      bannerStyle: {
-        type: String,
-        default: 'info' // info, success, warning, error
-      },
       dissmissable: {
         type: Boolean,
         default: false
@@ -60,21 +57,25 @@
         type: Object,
         default: () => ({})
       },
+      styles: {
+        type: Object,
+        default: () => ({})
+      }
     },
     emits: ['dismiss'],
     data() {
       return {
-        colors: {
-          info: 'var(--color--primary)',
-          success: 'var(--color-success)',
-          warning: 'var(--color-warning)',
-          error: 'var(--color-error)'
-        }
-      }
-    },
-    computed: {
-      colorStrip() {
-        return `background: ${this.colors[this.bannerStyle]}`
+        dissmissButtonStyles: {
+          '--ep-button-bg-color': 'transparent',
+          '--ep-button-border-color': 'transparent',
+          '--ep-button-text-color': 'var(--ep-banner-dismiss-button-color)',
+          '--ep-button-hover-bg-color': 'var(--ep-banner-dismiss-button-hover-bg-color)',
+          '--ep-button-hover-border-color': 'transparent',
+          '--ep-button-hover-text-color': 'var(--ep-banner-dismiss-button-hover-text-color)',
+          '--ep-button-active-bg-color': 'var(--ep-banner-dismiss-button-active-bg-color)',
+          '--ep-button-active-border-color': 'transparent',
+          '--ep-button-active-text-color': 'var(--ep-banner-dismiss-button-active-text-color)',
+        },
       }
     },
     methods: {
@@ -82,5 +83,5 @@
         this.$emit('dismiss')
       }
     }
-}
+  }
 </script>
