@@ -97,6 +97,7 @@
           label: item.label,
           iconRight: item.iconRight,
           iconLeft: item.iconLeft,
+          isMenuItem: true,
           isActiveMenuItem: this.menuType === 'nav' && item.label == this.activeItem,
           ...item.bind
         }
