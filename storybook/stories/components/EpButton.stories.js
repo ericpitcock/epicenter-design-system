@@ -1,12 +1,9 @@
 // import vueRouter from 'storybook-vue3-router'
 import { centered } from '../../helpers/decorators.js'
-import { colorNames, colorValues } from '../../helpers/colorHelper.js'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
+import { iconOptions, iconMapping } from '@/components/icon/load-icons.js'
 import EpButton from '@/components/button/EpButton.vue'
 // import markdown from '../../../docs/EpButton.md'
-
-// this is undefined
-console.log(iconNames)
+import { ref, watch } from 'vue'
 
 export default {
   title: 'Components/Button',
@@ -32,50 +29,6 @@ export default {
         type: 'boolean'
       }
     },
-    variant: {
-      name: 'Variant',
-      options: [
-        'primary',
-        'secondary',
-        'ghost',
-        'danger',
-        'warning',
-        'success'
-      ],
-      control: {
-        type: 'radio',
-        labels: {
-          primary: 'Primary',
-          secondary: 'Secondary',
-          ghost: 'Ghost',
-          danger: 'Danger',
-          warning: 'Warning',
-          success: 'Success'
-        }
-      }
-    },
-    backgroundHoverColor: {
-      name: 'Background Hover Color',
-      options: colorNames,
-      mapping: colorValues,
-      control: {
-        type: 'select',
-      },
-      table: {
-        category: 'Overrides'
-      }
-    },
-    textHoverColor: {
-      name: 'Text Hover Color',
-      options: colorNames,
-      mapping: colorValues,
-      control: {
-        type: 'select',
-      },
-      table: {
-        category: 'Overrides'
-      }
-    },
     size: {
       name: 'Size',
       options: ['small', 'default', 'large', 'xlarge'],
@@ -96,16 +49,10 @@ export default {
       }
     },
     ariaLabel: {
-      name: 'Aria Label',
-      control: {
-        type: 'text'
-      }
+      table: { disable: true }
     },
     tabindex: {
-      name: 'Tabindex',
-      control: {
-        type: 'number'
-      }
+      table: { disable: true }
     },
     to: {
       table: { disable: true }
@@ -130,8 +77,8 @@ export default {
     },
     iconLeft: {
       name: 'Icon Left',
-      options: iconNames,
-      mapping: iconNamesMapping,
+      options: iconOptions,
+      mapping: iconMapping,
       control: {
         type: 'select'
       },
@@ -141,8 +88,8 @@ export default {
     },
     iconRight: {
       name: 'Icon Right',
-      options: iconNames,
-      mapping: iconNamesMapping,
+      options: iconOptions,
+      mapping: iconMapping,
       control: {
         type: 'select'
       },
@@ -152,55 +99,114 @@ export default {
     },
     backgroundColor: {
       name: 'Background Color',
-      options: colorNames,
-      mapping: colorValues,
       control: {
-        type: 'select',
+        type: 'color'
       },
       table: {
-        category: 'Overrides'
-      }
+        category: 'Base'
+      },
     },
     borderColor: {
       name: 'Border Color',
-      options: colorNames,
-      mapping: colorValues,
       control: {
-        type: 'select',
+        type: 'color'
       },
       table: {
-        category: 'Overrides'
-      }
-    },
-    borderRadius: {
-      name: 'Border Radius',
-      options: ['None', 'var(--border-radius)', 'var(--border-radius--large)'],
-      mapping: {
-        'None': '0',
-        'var(--border-radius)': 'var(--border-radius)',
-        'var(--border-radius--large)': 'var(--border-radius--large)'
+        category: 'Base'
       },
-      control: {
-        type: 'select',
-      },
-      table: {
-        category: 'Overrides'
-      }
     },
     textColor: {
       name: 'Text Color',
-      options: ['None', 'var(--text-color)', 'var(--text-color--inverse)'],
-      mapping: {
-        'None': '',
-        'var(--text-color)': 'var(--text-color)',
-        'var(--text-color--inverse)': 'var(--text-color--inverse)'
-      },
       control: {
-        type: 'select',
+        type: 'color'
       },
       table: {
-        category: 'Overrides'
-      }
+        category: 'Base'
+      },
+    },
+    hoverBackgroundColor: {
+      name: 'Background Color',
+      control: {
+        type: 'color'
+      },
+      table: {
+        category: 'Hover'
+      },
+    },
+    hoverBorderColor: {
+      name: 'Border Color',
+      control: {
+        type: 'color'
+      },
+      table: {
+        category: 'Hover'
+      },
+    },
+    hoverTextColor: {
+      name: 'Text Color',
+      control: {
+        type: 'color'
+      },
+      table: {
+        category: 'Hover'
+      },
+    },
+    activeBackgroundColor: {
+      name: 'Background Color',
+      control: {
+        type: 'color'
+      },
+      table: {
+        category: 'Active'
+      },
+    },
+    activeBorderColor: {
+      name: 'Border Color',
+      control: {
+        type: 'color'
+      },
+      table: {
+        category: 'Active'
+      },
+    },
+    activeTextColor: {
+      name: 'Text Color',
+      control: {
+        type: 'color'
+      },
+      table: {
+        category: 'Active'
+      },
+    },
+    disabledBackgroundColor: {
+      name: 'Background Color',
+      control: {
+        type: 'color'
+      },
+      table: {
+        category: 'Disabled'
+      },
+    },
+    disabledBorderColor: {
+      name: 'Border Color',
+      control: {
+        type: 'color'
+      },
+      table: {
+        category: 'Disabled'
+      },
+    },
+    disabledTextColor: {
+      name: 'Text Color',
+      control: {
+        type: 'color'
+      },
+      table: {
+        category: 'Disabled'
+      },
+    },
+    styles: {
+      table: { disable: true }
     },
   }
 }
@@ -208,17 +214,79 @@ export default {
 export const Button = args => ({
   components: { EpButton },
   setup() {
-    return { args }
+    const styles = ref({
+      '--ep-button-bg-color': args.backgroundColor,
+      '--ep-button-border-color': args.borderColor,
+      '--ep-button-text-color': args.textColor,
+      '--ep-button-hover-bg-color': args.hoverBackgroundColor,
+      '--ep-button-hover-border-color': args.hoverBorderColor,
+      '--ep-button-hover-text-color': args.hoverTextColor,
+      '--ep-button-active-bg-color': args.activeBackgroundColor,
+      '--ep-button-active-border-color': args.activeBorderColor,
+      '--ep-button-active-text-color': args.activeTextColor,
+      '--ep-button-disabled-bg-color': args.disabledBackgroundColor,
+      '--ep-button-disabled-border-color': args.disabledBorderColor,
+      '--ep-button-disabled-text-color': args.disabledTextColor,
+    })
+
+    watch(() => args.backgroundColor, (newVal) => {
+      styles.value['--ep-button-bg-color'] = newVal
+    })
+
+    watch(() => args.borderColor, (newVal) => {
+      styles.value['--ep-button-border-color'] = newVal
+    })
+
+    watch(() => args.textColor, (newVal) => {
+      styles.value['--ep-button-text-color'] = newVal
+    })
+
+    watch(() => args.hoverBackgroundColor, (newVal) => {
+      styles.value['--ep-button-hover-bg-color'] = newVal
+    })
+
+    watch(() => args.hoverBorderColor, (newVal) => {
+      styles.value['--ep-button-hover-border-color'] = newVal
+    })
+
+    watch(() => args.hoverTextColor, (newVal) => {
+      styles.value['--ep-button-hover-text-color'] = newVal
+    })
+
+    watch(() => args.activeBackgroundColor, (newVal) => {
+      styles.value['--ep-button-active-bg-color'] = newVal
+    })
+
+    watch(() => args.activeBorderColor, (newVal) => {
+      styles.value['--ep-button-active-border-color'] = newVal
+    })
+
+    watch(() => args.activeTextColor, (newVal) => {
+      styles.value['--ep-button-active-text-color'] = newVal
+    })
+
+    watch(() => args.disabledBackgroundColor, (newVal) => {
+      styles.value['--ep-button-disabled-bg-color'] = newVal
+    })
+
+    watch(() => args.disabledBorderColor, (newVal) => {
+      styles.value['--ep-button-disabled-border-color'] = newVal
+    })
+
+    watch(() => args.disabledTextColor, (newVal) => {
+      styles.value['--ep-button-disabled-text-color'] = newVal
+    })
+
+    return { args, styles }
   },
-  template: '<ep-button v-bind="args" />'
+  template: `
+    <ep-button v-bind="args" :style="styles" />
+  `
 })
 
 Button.args = {
   disabled: false,
   label: 'Download the Internet',
-  variant: 'primary',
-  backgroundHoverColor: '',
-  textHoverColor: '',
   outlined: false,
   size: 'large',
   title: 'This is the tooltip',
@@ -226,12 +294,8 @@ Button.args = {
   tabindex: 0,
   to: '',
   href: '',
-  iconLeft: 'none',
-  iconRight: 'none',
-  backgroundColor: 'None',
-  borderColor: 'None',
-  borderRadius: 'var(--border-radius)',
-  textColor: 'None',
+  iconLeft: 'None',
+  iconRight: 'None',
 }
 
 // Button.decorators = [

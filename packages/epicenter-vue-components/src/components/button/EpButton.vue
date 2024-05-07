@@ -3,7 +3,7 @@
     :is="element"
     :type="type"
     :class="['ep-button', classes]"
-    :style="buttonStyles"
+    :style="styles"
     :title="title"
     role="button"
     :tabindex="tabindex"
@@ -38,21 +38,6 @@
       EpIcon
     },
     props: {
-      variant: {
-        type: String,
-        default: 'secondary',
-        validator: value => {
-          return [
-            'primary',
-            'secondary',
-            'ghost',
-            'danger',
-            'warning',
-            'success',
-            'menu-item'
-          ].includes(value)
-        }
-      },
       size: {
         type: String,
         default: 'default',
@@ -112,29 +97,9 @@
           return ['button', 'submit'].includes(value)
         }
       },
-      backgroundColor: {
-        type: String,
-        default: ''
-      },
-      backgroundHoverColor: {
-        type: String,
-        default: ''
-      },
-      textHoverColor: {
-        type: String,
-        default: ''
-      },
-      borderColor: {
-        type: String,
-        default: ''
-      },
-      borderRadius: {
-        type: String,
-        default: ''
-      },
-      textColor: {
-        type: String,
-        default: ''
+      styles: {
+        type: Object,
+        default: () => ({})
       },
     },
     emits: ['click'],
@@ -150,51 +115,15 @@
         return 'button'
       },
       classes() {
-        return [
-          `ep-button--${this.variant}`,
-          {
-            [`ep-button--${this.size}`]: this.size != 'default',
-            'ep-button--icon-right': this.iconRight,
-            'ep-button--icon-left': this.iconLeft,
-            'ep-button--disabled': this.disabled,
-            'ep-button--outlined': this.outlined,
-            'ep-button--menu-item--active': this.isActiveMenuItem,
-            // firefox only
-            // label only
-            'ep-button--label-only': !this.iconLeft && !this.iconRight && this.label,
-            // left icon and label
-            'ep-button--icon-left': this.iconLeft && !this.iconRight && this.label,
-            // right icon and label
-            'ep-button--icon-right': !this.iconLeft && this.iconRight && this.label,
-            // left and right icon and label
-            'ep-button--icon-left-right': this.iconLeft && this.iconRight && this.label,
-            // icon right or left and no label
-            'ep-button--icon-only': (this.iconLeft || this.iconRight) && !this.label
-          }
-        ]
+        return {
+          [`ep-button--${this.size}`]: this.size != 'default',
+          'ep-button--icon-right': this.iconRight,
+          'ep-button--icon-left': this.iconLeft,
+          'ep-button--disabled': this.disabled,
+          'ep-button--outlined': this.outlined,
+          'ep-button--menu-item--active': this.isActiveMenuItem,
+        }
       },
-      buttonStyles() {
-        const styles = {}
-        if (this.backgroundColor) {
-          styles.background = this.backgroundColor
-        }
-        if (this.borderColor) {
-          styles.borderColor = this.borderColor
-        }
-        if (this.borderRadius) {
-          styles.borderRadius = this.borderRadius
-        }
-        if (this.textColor) {
-          styles.color = this.textColor
-        }
-        if (this.backgroundHoverColor) {
-          styles['--button-hover-color'] = this.backgroundHoverColor
-        }
-        if (this.textHoverColor) {
-          styles['--button-text-hover-color'] = this.textHoverColor
-        }
-        return styles
-      }
     },
     methods: {
       onClick() {
