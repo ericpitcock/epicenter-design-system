@@ -14,7 +14,7 @@ export default {
       }
     },
     backgroundColor: {
-      name: 'Background Color',
+      name: '--ep-badge-bg-color',
       control: {
         type: 'color'
       },
@@ -23,7 +23,7 @@ export default {
       },
     },
     borderColor: {
-      name: 'Border Color',
+      name: '--ep-badge-border-color',
       control: {
         type: 'color'
       },
@@ -32,7 +32,7 @@ export default {
       },
     },
     textColor: {
-      name: 'Text Color',
+      name: '--ep-badge-text-color',
       control: {
         type: 'color'
       },
@@ -61,7 +61,7 @@ export const Badge = args => ({
   },
   template: `
     <ep-badge
-      :label="args.label"
+      v-bind="args"
       :style="styles"
     />
   `

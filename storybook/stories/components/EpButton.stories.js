@@ -98,7 +98,7 @@ export default {
       }
     },
     backgroundColor: {
-      name: 'Background Color',
+      name: '--ep-button-bg-color',
       control: {
         type: 'color'
       },
@@ -107,7 +107,7 @@ export default {
       },
     },
     borderColor: {
-      name: 'Border Color',
+      name: '--ep-button-border-color',
       control: {
         type: 'color'
       },
@@ -116,7 +116,7 @@ export default {
       },
     },
     textColor: {
-      name: 'Text Color',
+      name: '--ep-button-text-color',
       control: {
         type: 'color'
       },
@@ -125,7 +125,7 @@ export default {
       },
     },
     hoverBackgroundColor: {
-      name: 'Background Color',
+      name: '--ep-button-hover-bg-color',
       control: {
         type: 'color'
       },
@@ -134,7 +134,7 @@ export default {
       },
     },
     hoverBorderColor: {
-      name: 'Border Color',
+      name: '--ep-button-hover-border-color',
       control: {
         type: 'color'
       },
@@ -143,7 +143,7 @@ export default {
       },
     },
     hoverTextColor: {
-      name: 'Text Color',
+      name: '--ep-button-hover-text-color',
       control: {
         type: 'color'
       },
@@ -152,7 +152,7 @@ export default {
       },
     },
     activeBackgroundColor: {
-      name: 'Background Color',
+      name: '--ep-button-active-bg-color',
       control: {
         type: 'color'
       },
@@ -161,7 +161,7 @@ export default {
       },
     },
     activeBorderColor: {
-      name: 'Border Color',
+      name: '--ep-button-active-border-color',
       control: {
         type: 'color'
       },
@@ -170,7 +170,7 @@ export default {
       },
     },
     activeTextColor: {
-      name: 'Text Color',
+      name: '--ep-button-active-text-color',
       control: {
         type: 'color'
       },
@@ -179,7 +179,7 @@ export default {
       },
     },
     disabledBackgroundColor: {
-      name: 'Background Color',
+      name: '--ep-button-disabled-bg-color',
       control: {
         type: 'color'
       },
@@ -188,7 +188,7 @@ export default {
       },
     },
     disabledBorderColor: {
-      name: 'Border Color',
+      name: '--ep-button-disabled-border-color',
       control: {
         type: 'color'
       },
@@ -197,7 +197,7 @@ export default {
       },
     },
     disabledTextColor: {
-      name: 'Text Color',
+      name: '--ep-button-disabled-text-color',
       control: {
         type: 'color'
       },
