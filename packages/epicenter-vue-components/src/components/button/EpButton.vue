@@ -1,13 +1,12 @@
 <template>
   <component
     :is="element"
-    :type="type"
+    :type
     :class="['ep-button', classes]"
     :style="styles"
     :title="title"
-    role="button"
-    :tabindex="tabindex"
-    :aria-label="label ? undefined : ariaLabel"
+    :aria-label="ariaLabel ? ariaLabel : label"
+    :disabled="disabled"
     @click="onClick"
   >
     <span
@@ -19,7 +18,9 @@
     <span
       v-if="label"
       class="ep-button__label"
-    >{{ label }}</span>
+    >
+      {{ label }}
+    </span>
     <span
       v-if="iconRight"
       class="ep-button__icon ep-button__icon--right"
@@ -58,10 +59,6 @@
         type: String,
         default: ''
       },
-      tabindex: {
-        type: Number,
-        default: -1
-      },
       label: {
         type: String,
         default: ''
@@ -85,10 +82,6 @@
       isActiveMenuItem: {
         type: Boolean,
         default: false
-      },
-      command: {
-        type: Function,
-        default: undefined
       },
       type: {
         type: String,
@@ -128,9 +121,6 @@
     methods: {
       onClick() {
         this.$emit('click')
-        if (this.command) {
-          this.command()
-        }
       }
     }
   }

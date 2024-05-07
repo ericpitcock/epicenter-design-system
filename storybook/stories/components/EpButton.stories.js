@@ -51,9 +51,6 @@ export default {
     ariaLabel: {
       table: { disable: true }
     },
-    tabindex: {
-      table: { disable: true }
-    },
     to: {
       table: { disable: true }
     },
@@ -242,10 +239,7 @@ Button.args = {
   outlined: false,
   size: 'large',
   title: 'This is the tooltip',
-  ariaLabel: 'This is the aria label',
-  tabindex: 0,
-  to: '',
-  href: '',
+  ariaLabel: 'This is a button in Storybook',
   iconLeft: 'None',
   iconRight: 'None',
 }
