@@ -1,7 +1,13 @@
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpIcon from '@/components/icon/EpIcon.vue'
-import { svgIcons, iconNames } from '@/components/icon/load-icons.js'
+import { iconNamesObject, iconNamesArray, iconNamesMapping } from '@/components/icon/load-icons.js'
+// const iconNames = await loadIcons()
+// import generateIconNames from '../../helpers/iconHelper.js'
+// const { iconNames } = generateIconNames(await loadIcons())
+// import { iconNames } from '../../helpers/iconHelper.js'
 import { centeredSurface } from '../../helpers/decorators.js'
+
+console.log(iconNamesObject)
 
 export default {
   title: 'Components/Icon',
@@ -9,7 +15,8 @@ export default {
   argTypes: {
     name: {
       name: 'Name',
-      options: iconNames,
+      options: iconNamesArray,
+      // mapping: iconNamesMapping,
       control: {
         type: 'select'
       }
@@ -62,7 +69,7 @@ Icon.decorators = [centeredSurface]
 export const IconLibrary = args => ({
   components: { EpContainer, EpIcon },
   setup() {
-    return { args, svgIcons }
+    return { args, iconNamesObject }
   },
   template: `
   <div style="padding: 30px;
@@ -73,7 +80,7 @@ export const IconLibrary = args => ({
     justify-content: flex-start;"
   >
     <ep-container
-      v-for="(icon, index) in svgIcons"
+      v-for="(icon, index) in iconNamesObject"
       useFooter
       :key="index"
       content-padding="2rem"

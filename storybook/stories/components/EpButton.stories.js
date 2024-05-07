@@ -5,6 +5,9 @@ import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
 import EpButton from '@/components/button/EpButton.vue'
 // import markdown from '../../../docs/EpButton.md'
 
+// this is undefined
+console.log(iconNames)
+
 export default {
   title: 'Components/Button',
   component: EpButton,
