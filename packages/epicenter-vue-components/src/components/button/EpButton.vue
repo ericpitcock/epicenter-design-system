@@ -7,6 +7,7 @@
     :title="title"
     :aria-label="ariaLabel ? ariaLabel : label"
     :disabled="disabled"
+    v-bind="$attrs"
     @click="onClick"
   >
     <span
@@ -30,98 +31,90 @@
   </component>
 </template>
 
-<script>
+<script setup>
+  import { computed, useAttrs } from 'vue'
   import EpIcon from '../icon/EpIcon.vue'
 
-  export default {
-    name: 'EpButton',
-    components: {
-      EpIcon
+  const props = defineProps({
+    size: {
+      type: String,
+      default: 'default',
+      validator: (value) => [
+        'small',
+        'default',
+        'large',
+        'xlarge'
+      ].includes(value)
     },
-    props: {
-      size: {
-        type: String,
-        default: 'default',
-        validator: value => {
-          return [
-            'small',
-            'default',
-            'large',
-            'xlarge'
-          ].includes(value)
-        }
-      },
-      title: {
-        type: String,
-        default: ''
-      },
-      ariaLabel: {
-        type: String,
-        default: ''
-      },
-      label: {
-        type: String,
-        default: ''
-      },
-      iconLeft: {
-        type: Object,
-        default: undefined
-      },
-      iconRight: {
-        type: Object,
-        default: undefined
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      outlined: {
-        type: Boolean,
-        default: false
-      },
-      isActiveMenuItem: {
-        type: Boolean,
-        default: false
-      },
-      type: {
-        type: String,
-        default: 'button',
-        validator: value => {
-          return ['button', 'submit'].includes(value)
-        }
-      },
-      styles: {
-        type: Object,
-        default: () => ({})
-      },
+    title: {
+      type: String,
+      default: ''
     },
-    emits: ['click'],
-    computed: {
-      element() {
-        const attrs = this.$attrs
-        if (attrs && attrs.to) {
-          return 'router-link'
-        }
-        if (attrs && attrs.href) {
-          return 'a'
-        }
-        return 'button'
-      },
-      classes() {
-        return {
-          [`ep-button--${this.size}`]: this.size != 'default',
-          'ep-button--icon-right': this.iconRight,
-          'ep-button--icon-left': this.iconLeft,
-          'ep-button--disabled': this.disabled,
-          'ep-button--outlined': this.outlined,
-          'ep-button--menu-item--active': this.isActiveMenuItem,
-        }
-      },
+    ariaLabel: {
+      type: String,
+      default: ''
     },
-    methods: {
-      onClick() {
-        this.$emit('click')
-      }
+    label: {
+      type: String,
+      default: ''
+    },
+    iconLeft: {
+      type: Object,
+      default: undefined
+    },
+    iconRight: {
+      type: Object,
+      default: undefined
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    outlined: {
+      type: Boolean,
+      default: false
+    },
+    isMenuItem: {
+      type: Boolean,
+      default: false
+    },
+    isActiveMenuItem: {
+      type: Boolean,
+      default: false
+    },
+    type: {
+      type: String,
+      default: 'button',
+      validator: (value) => ['button', 'submit'].includes(value)
+    },
+    styles: {
+      type: Object,
+      default: () => ({})
     }
-  }
+  })
+
+  const emits = defineEmits(['click'])
+  const onClick = () => emits('click')
+
+  const element = computed(() => {
+    const attrs = useAttrs()
+
+    if (attrs.to) {
+      return 'router-link'
+    }
+    if (attrs.href) {
+      return 'a'
+    }
+    return 'button'
+  })
+
+  const classes = computed(() => ({
+    [`ep-button--${props.size}`]: props.size != 'default',
+    'ep-button--icon-right': props.iconRight,
+    'ep-button--icon-left': props.iconLeft,
+    'ep-button--disabled': props.disabled,
+    'ep-button--outlined': props.outlined,
+    'ep-button--menu-item': props.isMenuItem,
+    'ep-button--menu-item--active': props.isActiveMenuItem
+  }))
 </script>

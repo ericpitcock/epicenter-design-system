@@ -226,10 +226,18 @@ export const Button = args => ({
       '--ep-button-disabled-text-color': args.disabledTextColor,
     }))
 
-    return { args, styles }
+    const onClick = () => {
+      console.log('Button clicked!')
+    }
+
+    return { args, styles, onClick }
   },
   template: `
-    <ep-button v-bind="args" :style="styles" />
+    <ep-button
+      v-bind="args"
+      :style="styles"
+      @click="onClick"
+    />
   `
 })
 
