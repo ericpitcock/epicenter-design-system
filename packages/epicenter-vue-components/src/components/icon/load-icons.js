@@ -26,12 +26,16 @@ async function loadIcons() {
 const iconNamesObject = await loadIcons()
 
 // 'arrow-up'
-const iconNamesArray = iconNamesObject.map(icon => icon.name)
+const iconOptions = iconNamesObject.map(icon => icon.name)
+
+iconOptions.push('None')
 
 // arrow-up: { name: 'arrow-up' } 
-const iconNamesMapping = iconNamesArray.reduce((acc, name) => {
+const iconMapping = iconOptions.reduce((acc, name) => {
   acc[name] = { name }
   return acc
 }, {})
 
-export { iconNamesObject, iconNamesArray, iconNamesMapping }
+iconMapping.None = undefined
+
+export { iconNamesObject, iconOptions, iconMapping }

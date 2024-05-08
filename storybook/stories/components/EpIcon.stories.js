@@ -1,14 +1,7 @@
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpIcon from '@/components/icon/EpIcon.vue'
-import { iconNamesObject, iconNamesArray, iconNamesMapping } from '@/components/icon/load-icons.js'
-// const iconNames = await loadIcons()
-// import generateIconNames from '../../helpers/iconHelper.js'
-// const { iconNames } = generateIconNames(await loadIcons())
-// import { iconNames } from '../../helpers/iconHelper.js'
+import { iconNamesObject, iconOptions } from '@/components/icon/load-icons.js'
 import { centeredSurface } from '../../helpers/decorators.js'
-import { watch } from 'vue'
-
-console.log(iconNamesObject)
 
 export default {
   title: 'Components/Icon',
@@ -16,8 +9,7 @@ export default {
   argTypes: {
     name: {
       name: 'Name',
-      options: iconNamesArray,
-      // mapping: iconNamesMapping,
+      options: iconOptions,
       control: {
         type: 'select'
       }
@@ -53,12 +45,6 @@ export default {
 export const Icon = args => ({
   components: { EpIcon },
   setup() {
-    // watch icon for changes
-
-    watch(() => args.weight, (newVal, oldVal) => {
-      console.log('weight changed', newVal, oldVal)
-    })
-
     return { args }
   },
   template: '<ep-icon v-bind="args" />'

@@ -10,7 +10,7 @@
   import { svgIcons } from './iconLoader.js'
 
   export default {
-    name: 'EpIconOLD',
+    name: 'EpIcon',
     props: {
       name: {
         type: String,
