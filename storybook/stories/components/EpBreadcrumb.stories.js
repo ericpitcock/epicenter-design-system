@@ -1,4 +1,3 @@
-// import vueRouter from 'storybook-vue3-router'
 import { padded } from '../../helpers/decorators.js'
 import EpBreadcrumb from '@/components/breadcrumb/EpBreadcrumb.vue'
 
@@ -43,7 +42,3 @@ Breadcrumb.args = {
 Breadcrumb.parameters = {
   controls: { hideNoControlsWarning: true }
 }
-
-// Breadcrumb.decorators = [
-//   vueRouter()
-// ]
