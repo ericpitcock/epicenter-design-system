@@ -6,14 +6,14 @@
     <template v-for="(item, index) in items">
       <ep-button
         v-if="item.type === 'button'"
-        :key="`button-${item.id}`"
+        :key="`button-${index}`"
         v-bind="buttonDefaults"
         :icon-left="item.iconLeft"
         @click="onClick(item, index)"
       />
       <ep-dropdown
         v-else-if="item.type === 'dropdown'"
-        :key="`dropdown-${item.id}`"
+        :key="`dropdown-${index}`"
         v-bind="item"
         :show-on-hover="showDropdownOnHover"
         @select="onClick"
@@ -65,11 +65,6 @@
       onClick(item) {
         this.$emit('click', item)
       },
-      // onMouseover(item, index) {
-      //   if (this.showDropdownOnHover) {
-      //     this.$emit('click', { item, index })
-      //   }
-      // }
     }
   }
 </script>

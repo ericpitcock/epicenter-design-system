@@ -1,6 +1,6 @@
 import { centeredSurface } from '../../helpers/decorators.js'
 import EpActionBar from '@/components/action-bar/EpActionBar.vue'
-import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs.js'
+import commonActionBarArgs from '../../helpers/commonActionBarArgs.js'
 
 export default {
   title: 'Components/Action Bar',
@@ -30,4 +30,7 @@ export const ActionBar = args => ({
   template: '<ep-action-bar v-bind="args" />'
 })
 
-ActionBar.args = { showDropdownOnHover: true, ...commonActionBarArgs }
+ActionBar.args = {
+  showDropdownOnHover: true,
+  ...commonActionBarArgs
+}
