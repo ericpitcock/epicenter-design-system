@@ -1,7 +1,7 @@
 import { centeredSurface } from '../../helpers/decorators.js'
-import { iconOptions, iconMapping } from '@/components/icon/load-icons.js'
+import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpBanner from '@/components/banner/EpBanner.vue'
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 
 export default {
   title: 'Components/Banner',
@@ -136,13 +136,28 @@ export const Banner = args => ({
       '--ep-banner-dismiss-button-active-text-color': args.dismissButtonActiveTextColor,
     }))
 
-    return { args, styles }
+    const showBanner = ref(true)
+
+    const onDismissed = () => {
+      showBanner.value = false
+      setTimeout(() => {
+        showBanner.value = true
+      }, 3000)
+    }
+
+    return {
+      args,
+      onDismissed,
+      showBanner,
+      styles,
+    }
   },
   template: `
     <ep-banner
+      v-show="showBanner"
       v-bind="args"
       :style="styles"
-      @dismissed="console.log('Banner dismissed!')"
+      @dismissed="onDismissed"
     >
       <template #message>
         Version 2.0 will end support for JavaDabbles and Interquibbles
@@ -156,6 +171,6 @@ export const Banner = args => ({
 
 Banner.args = {
   dissmissable: false,
-  iconProps: { name: 'f-alert-triangle' },
+  iconProps: 'f-alert-triangle',
   stripColor: '#FFC107',
 }
