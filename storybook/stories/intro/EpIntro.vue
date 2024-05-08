@@ -12,10 +12,7 @@
           { Vue, React } = componentsForApps
         </p>
         <ep-button
-          label="View on GitHub"
-          variant="primary"
-          size="large"
-          :icon-left="{ name: 'f/github', size: 30, weight: 'light' }"
+          v-bind="buttonProps"
           href="https://github.com/ericpitcock/epicenter-design-system"
         />
       </div>
@@ -29,31 +26,27 @@
             for
             creating inclusive and user-friendly experiences for all.
           </p>
-          <p>
-            The aim of this Storybook is to showcase these components in their
-            raw
-            form and in the context of an app. <a
-              class="text--link"
-              href="https://ericpitcock.com"
-            >Learn more</a>
-          </p>
-          <p>Note: React components in the works.</p>
+          <p>Note: React components are coming sometime in the future.</p>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
   import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
   import EpButton from '@/components/button/EpButton.vue'
 
-  export default {
-    name: 'IntroView',
-    components: {
-      EpicenterLogo,
-      EpButton,
-    }
+  const buttonProps = {
+    label: 'GitHub',
+    size: 'large',
+    iconLeft: { name: 'f-github', size: 26, weight: 'light' },
+    styles: {
+      '--ep-button-bg-color': 'var(--interface-foreground)',
+      '--ep-button-border-color': 'var(--interface-foreground)',
+      '--ep-button-hover-bg-color': 'black',
+      '--ep-button-hover-border-color': 'black',
+    },
   }
 </script>
 
