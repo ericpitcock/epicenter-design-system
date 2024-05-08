@@ -93,8 +93,8 @@
     }
   })
 
-  const emits = defineEmits(['click'])
-  const onClick = () => emits('click')
+  const emit = defineEmits(['click'])
+  const onClick = () => emit('click')
 
   const element = computed(() => {
     const attrs = useAttrs()

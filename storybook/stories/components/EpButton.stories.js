@@ -1,4 +1,3 @@
-// import vueRouter from 'storybook-vue3-router'
 import { centered } from '../../helpers/decorators.js'
 import { iconOptions, iconMapping } from '@/components/icon/load-icons.js'
 import EpButton from '@/components/button/EpButton.vue'
@@ -251,7 +250,3 @@ Button.args = {
   iconLeft: 'None',
   iconRight: 'None',
 }
-
-// Button.decorators = [
-//   vueRouter()
-// ]
