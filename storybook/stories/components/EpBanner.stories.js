@@ -142,6 +142,7 @@ export const Banner = args => ({
     <ep-banner
       v-bind="args"
       :style="styles"
+      @dismissed="console.log('Banner dismissed!')"
     >
       <template #message>
         Version 2.0 will end support for JavaDabbles and Interquibbles
