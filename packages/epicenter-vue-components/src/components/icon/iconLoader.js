@@ -24,4 +24,4 @@ async function loadIcons() {
 
 const svgIcons = await loadIcons()
 
-export { svgIcons }
+export { loadIcons, svgIcons }
