@@ -1,4 +1,5 @@
 import EpMap from '@/components/map/EpMap.vue'
+import { watch } from 'vue'
 
 const mapStyles = {
   'Dark (Ep)': 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',
@@ -14,7 +15,11 @@ const mapStyles = {
 }
 
 const defaultMapStyle = (theme) => {
-  if (theme === 'light') {
+  const themeMap = {
+    'Light Theme': 'light',
+    'Dark Theme': 'dark'
+  }
+  if (themeMap[theme] === 'light') {
     return mapStyles['Mapbox Streets']
   } else {
     return mapStyles['Dark (Ep)']
@@ -87,16 +92,41 @@ export const Map = (args, { globals: { theme } }) => ({
     const currentMapStyle = defaultMapStyle(theme)
     return { args, currentMapStyle }
   },
-  template: '<ep-map v-bind="args" :mapStyle="currentMapStyle" />'
+  template: '<ep-map v-bind="args" />'
 })
 
 Map.args = {
   mapCenter: [-122.3321, 47.6062],
   mapZoom: 12,
-  // mapStyle: defaultMapStyle,
+  mapStyle: 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',
   // mapSource: null,
   // mapLayer: null,
   scrollZoom: true,
   navigationControl: false,
   fitToBounds: false
 }
+
+Map.decorators = [
+  (story, context) => {
+    watch(
+      () => context.globals.theme,
+      () => {
+        console.log('theme changed', context.globals.theme)
+        // update the mapStyle prop based on the theme
+        // const currentMapStyle = defaultMapStyle(context.globals.theme)
+        const currentMapStyle = defaultMapStyle(context.globals.theme)
+        context.args.mapStyle = currentMapStyle
+        console.log('context', context)
+        console.log('currentMapStyle', currentMapStyle)
+      },
+      { immediate: true }
+    )
+
+    return {
+      // setup() {
+      //   return { currentMapStyle }
+      // },
+      template: '<story/>',
+    }
+  }
+]
