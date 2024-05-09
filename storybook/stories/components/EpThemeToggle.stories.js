@@ -14,8 +14,6 @@ export default {
   }
 }
 
-// const store = useStorybookStore()
-
 export const ThemeToggle = () => ({
   components: { EpThemeToggle },
   setup() {
@@ -36,38 +34,23 @@ export const ThemeToggle = () => ({
   `
 })
 
-// const updateGlobalTheme = (theme) => {
-//   const themeMap = {
-//     'light': 'Light Theme',
-//     'dark': 'Dark Theme'
-//   }
-
-//   const [updateGlobals] = useGlobals()
-//   updateGlobals({ theme: themeMap[theme] })
-// }
-
 ThemeToggle.decorators = [
-  (story, context) => {
+  (story) => {
     const store = useStorybookStore()
     const currentTheme = computed(() => store.theme)
     watch(
       () => currentTheme.value,
       () => {
-        // const globals = context.globals
-
         const themeMap = {
           'light': 'Light Theme',
           'dark': 'Dark Theme'
         }
 
-        channel.emit('updateGlobals', { globals: { 'theme': themeMap[currentTheme.value] } })
-        // set the theme of the storybook
-        // context.globals.theme = themeMap[currentTheme.value]
-        // const [updateGlobals] = useGlobals()
-        // updateGlobals({ theme: themeMap[currentTheme.value] })
-        // updateGlobalTheme(currentTheme.value)
-
-        console.log('themeMap[currentTheme.value]', themeMap[currentTheme.value])
+        channel.emit('updateGlobals', {
+          globals: {
+            'theme': themeMap[currentTheme.value]
+          }
+        })
       }
     )
 
