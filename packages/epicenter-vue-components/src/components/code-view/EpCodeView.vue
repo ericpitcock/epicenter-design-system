@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-  import { computed, onMounted } from 'vue'
+  import { computed, nextTick, onMounted, watch } from 'vue'
   import Prism from 'prismjs'
   import './prism-onedark.css'
   import 'prismjs/components/prism-javascript'
@@ -19,7 +19,7 @@
       type: String,
       required: true
     },
-    lineNumbers: {
+    enableLineNumbers: {
       type: Boolean,
       default: true
     }
@@ -27,10 +27,21 @@
 
   const classes = computed(() => [
     `language-${props.language}`,
-    { 'line-numbers': props.lineNumbers }
+    { 'line-numbers': props.enableLineNumbers }
   ])
+
+  // const highlightCode = () => {
+  //   Prism.highlightAll()
+  // }
 
   onMounted(() => {
     Prism.highlightAll()
   })
+
+  // watch(() => props.code, () => {
+  //   // nextTick is needed to ensure the code is updated before highlighting
+  //   nextTick(() => {
+  //     highlightCode()
+  //   })
+  // })
 </script>
