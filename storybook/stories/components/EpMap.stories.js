@@ -84,13 +84,12 @@ export default {
   }
 }
 
-export const Map = (args, { globals: { theme } }) => ({
+export const Map = args => ({
   components: {
     EpMap
   },
   setup() {
-    const currentMapStyle = defaultMapStyle(theme)
-    return { args, currentMapStyle }
+    return { args }
   },
   template: '<ep-map v-bind="args" />'
 })
@@ -111,21 +110,13 @@ Map.decorators = [
     watch(
       () => context.globals.theme,
       () => {
-        console.log('theme changed', context.globals.theme)
-        // update the mapStyle prop based on the theme
         // const currentMapStyle = defaultMapStyle(context.globals.theme)
-        const currentMapStyle = defaultMapStyle(context.globals.theme)
-        context.args.mapStyle = currentMapStyle
-        console.log('context', context)
-        console.log('currentMapStyle', currentMapStyle)
+        context.args.mapStyle = defaultMapStyle(context.globals.theme)
       },
       { immediate: true }
     )
 
     return {
-      // setup() {
-      //   return { currentMapStyle }
-      // },
       template: '<story/>',
     }
   }
