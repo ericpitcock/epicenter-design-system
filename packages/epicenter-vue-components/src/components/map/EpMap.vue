@@ -60,11 +60,11 @@
       }
     },
     watch: {
-      mapCenter(newCenter, oldCenter) {
+      mapCenter(newCenter) {
         this.$emit('centerChange', newCenter)
         this.flyTo(newCenter, this.mapZoom)
       },
-      mapZoom(newZoom, oldZoom) {
+      mapZoom(newZoom) {
         this.$emit('zoomChange', newZoom)
         // this.map.zoomTo(newZoom)
 
@@ -73,7 +73,7 @@
 
         console.log('zoom changed', newZoom)
       },
-      mapStyle(newStyle, oldStyle) {
+      mapStyle(newStyle) {
         this.map.setStyle(newStyle)
       },
       pinLocations() {
@@ -97,7 +97,7 @@
       const container = this.$refs['ep-map-container']
 
       // create a new ResizeObserver instance
-      const observer = new ResizeObserver(entries => {
+      const observer = new ResizeObserver(() => {
         // the size of the container has changed, redraw the map
         this.$nextTick(() => {
           this.map.resize()
@@ -112,7 +112,7 @@
       // do this for everything that is not required
 
       if (this.mapSource) {
-        this.$watch('mapSource', function (newSource, oldSource) {
+        this.$watch('mapSource', () => {
           if (this.init) return
           console.log('map source changed (mapSource watcher)')
           if (this.map.getLayer('test')) this.map.removeLayer('test')
@@ -148,7 +148,7 @@
       },
       loadMap() {
         return new Promise(resolve => {
-          mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpY3BpdGNvY2siLCJhIjoia29WT3AzOCJ9.YTnpZdWBqPD4cH6mlnZoYQ'
+          mapboxgl.accessToken = import.meta.env.VITE_APP_MAPBOX_TOKEN
           this.map = new mapboxgl.Map({
             container: 'ep-map',
             center: this.mapCenter,
@@ -178,7 +178,7 @@
         }
       },
       getBounds(coordinates) {
-        let bounds = coordinates.reduce(function (bounds, coord) {
+        let bounds = coordinates.reduce(function(bounds, coord) {
           return bounds.extend(coord)
         }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]))
         return bounds
