@@ -47,12 +47,21 @@ export const CodeView = args => ({
   setup() {
     const code = computed(() => codeExamples[args.language])
 
-    // watch language change
     watch(() => args.language, () => {
       nextTick(() => {
         Prism.highlightAll()
       })
-    })
+    },
+      { immediate: true }
+    )
+
+    watch(() => args.enableLineNumbers, () => {
+      nextTick(() => {
+        Prism.highlightAll()
+      })
+    },
+      { immediate: true }
+    )
 
     return { args, code }
   },
@@ -63,7 +72,7 @@ export const CodeView = args => ({
       border-radius="var(--border-radius)"
       background-color="var(--interface-surface)"
     >
-      <ep-code-view :code="code" v-bind="args" />
+      <ep-code-view v-bind="args" :code="code" />
     </ep-container>
   `
 })

@@ -1,15 +1,18 @@
+<!-- eslint-disable vue/html-closing-bracket-newline -->
 <template>
-  <pre><code :class="classes">{{ code }}</code></pre>
+  <pre
+    :class="{ 'line-numbers': enableLineNumbers }"><code :class="`language-${language}`">{{ code }}</code></pre>
 </template>
 
 <script setup>
-  import { computed, onMounted } from 'vue'
+  // eslint-disable-next-line no-unused-vars
   import Prism from 'prismjs'
   import './prism-onedark.css'
   import 'prismjs/components/prism-javascript'
   import 'prismjs/components/prism-json'
   import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js'
 
+  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     code: {
       type: String,
@@ -25,12 +28,6 @@
     }
   })
 
-  const classes = computed(() => [
-    `language-${props.language}`,
-    { 'line-numbers': props.enableLineNumbers }
-  ])
-
-  onMounted(() => {
-    Prism.highlightAll()
-  })
+  // if this somehow breaks in production,
+  // bring back Prism.highlightAll() in onMounted
 </script>
