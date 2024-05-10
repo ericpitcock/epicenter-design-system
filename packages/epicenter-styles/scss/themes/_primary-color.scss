@@ -1,145 +1,31 @@
 $base-hue: 214 !default;
 $base-saturation: 91% !default;
 $base-lightness: 55% !default;
+$modifications: (
+  color-up-5: +5,
+  color-up-10: +10,
+  color-up-15: +15,
+  color: 0,
+  color-down-5: -5,
+  color-down-10: -10,
+  color-down-15: -15,
+);
 
 :root {
-  // tints in 5% increments
-  @for $i from 1 through 5 {
-    $tint-lightness: $base-lightness + (6 - $i) * 5%;
 
-    --primary-color-#{$i}00: #{hsl($base-hue, $base-saturation, $tint-lightness)};
+  // tints and shades for all modifications
+  @each $name, $offset in $modifications {
+    $adjusted-hue: $base-hue + $offset;
+
+    @for $i from 1 through 5 {
+      $tint-lightness: $base-lightness + (6 - $i) * 5%;
+      $shade-lightness: $base-lightness - $i * 5%;
+      --primary-#{$name}-#{$i}00: #{hsl($adjusted-hue, $base-saturation, $tint-lightness)};
+      --primary-#{$name}-base: #{hsl($adjusted-hue, $base-saturation, $base-lightness)};
+      --primary-#{$name}-#{$i + 5}00: #{hsl($adjusted-hue, $base-saturation, $shade-lightness)};
+    }
   }
 
   // base color
   --primary-color-base: #{hsl($base-hue, $base-saturation, $base-lightness)};
-
-  // shades in 5% increments
-  @for $i from 1 through 5 {
-    $shade-lightness: $base-lightness - $i * 5%;
-    $shade-color: hsl($base-hue, $base-saturation, $shade-lightness);
-
-    --primary-color-#{$i + 5}00: #{hsl($base-hue, $base-saturation, $shade-lightness)};
-  }
-
-  // shift the hue by 5 degrees up
-  $up-5: $base-hue + 5;
-  // by 10 degrees up
-  $up-10: $base-hue + 10;
-  // by 15 degrees up
-  $up-15: $base-hue + 15;
-  // by 5 degrees down
-  $down-5: $base-hue - 5;
-  // by 10 degrees down
-  $down-10: $base-hue - 10;
-  // by 15 degrees down
-  $down-15: $base-hue - 15;
-
-  // $up-5
-  // tints in 5% increments
-  @for $i from 1 through 5 {
-    $tint-lightness: $base-lightness + (6 - $i) * 5%;
-
-    --primary-color-up-5-#{$i}00: #{hsl($up-5, $base-saturation, $tint-lightness)};
-  }
-
-  // base color
-  --primary-color-up-5-base: #{hsl($up-5, $base-saturation, $base-lightness)};
-
-  // shades in 5% increments
-  @for $i from 1 through 5 {
-    $shade-lightness: $base-lightness - $i * 5%;
-
-    --primary-color-up-5-#{$i + 5}00: #{hsl($up-5, $base-saturation, $shade-lightness)};
-  }
-
-  // $up-10
-  // tints in 5% increments
-  @for $i from 1 through 5 {
-    $tint-lightness: $base-lightness + (6 - $i) * 5%;
-
-    --primary-color-up-10-#{$i}00: #{hsl($up-10, $base-saturation, $tint-lightness)};
-  }
-
-  // base color
-  --primary-color-up-10-base: #{hsl($up-10, $base-saturation, $base-lightness)};
-
-  // shades in 5% increments
-  @for $i from 1 through 5 {
-    $shade-lightness: $base-lightness - $i * 5%;
-
-    --primary-color-up-10-#{$i + 5}00: #{hsl($up-10, $base-saturation, $shade-lightness)};
-  }
-
-  // $up-15
-  // tints in 5% increments
-  @for $i from 1 through 5 {
-    $tint-lightness: $base-lightness + (6 - $i) * 5%;
-
-    --primary-color-up-15-#{$i}00: #{hsl($up-15, $base-saturation, $tint-lightness)};
-  }
-
-  // base color
-  --primary-color-up-15-base: #{hsl($up-15, $base-saturation, $base-lightness)};
-
-  // shades in 5% increments
-  @for $i from 1 through 5 {
-    $shade-lightness: $base-lightness - $i * 5%;
-
-    --primary-color-up-15-#{$i + 5}00: #{hsl($up-15, $base-saturation, $shade-lightness)};
-  }
-
-  // $down-5
-  // tints in 5% increments
-  @for $i from 1 through 5 {
-    $tint-lightness: $base-lightness + (6 - $i) * 5%;
-
-    --primary-color-down-5-#{$i}00: #{hsl($down-5, $base-saturation, $tint-lightness)};
-  }
-
-  // base color
-  --primary-color-down-5-base: #{hsl($down-5, $base-saturation, $base-lightness)};
-
-  // shades in 5% increments
-  @for $i from 1 through 5 {
-    $shade-lightness: $base-lightness - $i * 5%;
-
-    --primary-color-down-5-#{$i + 5}00: #{hsl($down-5, $base-saturation, $shade-lightness)};
-  }
-
-  // $down-10
-  // tints in 5% increments
-  @for $i from 1 through 5 {
-    $tint-lightness: $base-lightness + (6 - $i) * 5%;
-
-    --primary-color-down-10-#{$i}00: #{hsl($down-10, $base-saturation, $tint-lightness)};
-  }
-
-  // base color
-  --primary-color-down-10-base: #{hsl($down-10, $base-saturation, $base-lightness)};
-
-  // shades in 5% increments
-  @for $i from 1 through 5 {
-    $shade-lightness: $base-lightness - $i * 5%;
-
-    --primary-color-down-10-#{$i + 5}00: #{hsl($down-10, $base-saturation, $shade-lightness)};
-  }
-
-  // $down-15
-  // tints in 5% increments
-  @for $i from 1 through 5 {
-    $tint-lightness: $base-lightness + (6 - $i) * 5%;
-
-    --primary-color-down-15-#{$i}00: #{hsl($down-15, $base-saturation, $tint-lightness)};
-  }
-
-  // base color
-  --primary-color-down-15-base: #{hsl($down-15, $base-saturation, $base-lightness)};
-
-  // shades in 5% increments
-  @for $i from 1 through 5 {
-    $shade-lightness: $base-lightness - $i * 5%;
-
-    --primary-color-down-15-#{$i + 5}00: #{hsl($down-15, $base-saturation, $shade-lightness)};
-  }
-
 }
