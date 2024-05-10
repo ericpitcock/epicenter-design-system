@@ -1,21 +1,8 @@
 import { centeredSurface } from '../../helpers/decorators.js'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
+import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
+import { computed } from 'vue'
 
-const buttonDefaults = {
-  variant: 'secondary',
-  size: 'default',
-  title: 'Components/Default Dropdown',
-  label: 'Export',
-  iconRight: { name: 'chevron-down' },
-  iconLeft: { name: 'export' }
-}
-const containerProps = {
-  backgroundColor: 'var(--interface-overlay)',
-  containerPadding: '1rem 0',
-  borderRadius: 'var(--border-radius)',
-  borderColor: 'var(--border-color--lighter)'
-}
 const fakeDropdownItems = [
   {
     label: 'PDF',
@@ -49,28 +36,6 @@ export default {
         type: 'boolean'
       }
     },
-    'buttonProps.variant': {
-      name: 'Variant',
-      options: [
-        'primary',
-        'secondary',
-        'ghost',
-        'danger',
-        'warning',
-        'success'
-      ],
-      control: {
-        type: 'radio',
-        labels: {
-          primary: 'Primary',
-          secondary: 'Secondary',
-          ghost: 'Ghost',
-          danger: 'Danger',
-          warning: 'Warning',
-          success: 'Success'
-        }
-      }
-    },
     'buttonProps.size': {
       name: 'Size',
       options: ['small', 'default', 'large', 'xlarge'],
@@ -85,9 +50,9 @@ export default {
       }
     },
     'buttonProps.iconLeft': {
-      name: 'Icon (Left)',
-      options: iconNames,
-      mapping: iconNamesMapping,
+      name: 'Icon Left',
+      options: iconOptions,
+      mapping: iconMapping,
       control: {
         type: 'select'
       }
@@ -116,19 +81,18 @@ export const Dropdown = args => ({
     EpDropdown
   },
   setup() {
-    const buttonProps = {
-      variant: args['buttonProps.variant'],
+    const buttonProps = computed(() => ({
       size: args['buttonProps.size'],
       label: 'Export Data',
       iconRight: { name: 'chevron-down' },
       iconLeft: args['buttonProps.iconLeft']
-    }
-    const containerProps = {
+    }))
+    const containerProps = computed(() => ({
       backgroundColor: 'var(--interface-overlay)',
-      // containerPadding: '1rem 0',
       borderRadius: 'var(--border-radius)',
       borderColor: 'var(--border-color--lighter)'
-    }
+    }))
+
     return { args, buttonProps, containerProps }
   },
   template: `
@@ -143,7 +107,6 @@ export const Dropdown = args => ({
 
 Dropdown.args = {
   disabled: false,
-  'buttonProps.variant': 'primary',
   'buttonProps.size': 'large',
   'buttonProps.iconLeft': 'file',
   alignRight: false,
