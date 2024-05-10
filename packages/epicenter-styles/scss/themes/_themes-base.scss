@@ -1,62 +1,11 @@
 // global theme colors
 :root {
-  // temp
-  --background-1: red;
-  --background-2: green;
-  --background-3: blue;
-  --background-4: orange;
+  // b&w
   --black: #000;
   --white: #fff;
-  // text basics
-  --text--black: var(--gray-410);
-  --text--white: var(--gray-50);
-  // primary color backwards compatibility
-  --color--primary: var(--primary-color-base);
   // border radius
   --border-radius: 0.3rem;
   --border-radius--large: 0.6rem;
-  --color-success: hsl(99, 59%, 66%);
-  --color-warning: hsl(48, 100%, 51%);
-  --color-error: hsl(3, 100%, 70%);
-  // primary button
-  --primary-color--gradient: linear-gradient(140deg,
-    var(--primary-color-base) 30%,
-    var(--primary-color-down-10-base) 70%
-  );
-  --primary-color--base: var(--primary-color--gradient);
-  --primary-color--hover: var(--color--primary);
-  --primary-color--active: hsl(214, 91%, 60%);
-  --primary-color--border: var(--color--primary);
-  --primary-color--text: var(--gray-0);
-  // success button
-  --success-green--base: hsl(99, 59%, 66%);
-  --success-green--hover: hsl(99, 59%, 60%);
-  --success-green--active: hsl(99, 59%, 52%);
-  --success-green--border: var(--success-green--base);
-  --success-green--text: hsl(99, 59%, 10%);
-  // warning button
-  --warning-yellow--base: hsl(48, 100%, 51%);
-  --warning-yellow--hover: hsl(46, 100%, 49%);
-  --warning-yellow--active: hsl(46, 100%, 41%);
-  --warning-yellow--border: var(--warning-yellow--base);
-  --warning-yellow--text: hsl(48, 100%, 10%);
-  // danger button
-  --danger-red--base: hsl(3, 100%, 70%);
-  --danger-red--hover: hsl(3, 90%, 65%);
-  --danger-red--active: hsl(3, 90%, 56%);
-  --danger-red--border: var(--danger-red--base);
-  --danger-red--text: hsl(3, 100%, 6%);
-  // logo colors
-  --logo-face: #fff16c;
-  --logo-hightlight: var(--white);
-  --logo-shadow: var(--black);
-  --logo-stroke: var(--black);
-  // tabs
-  --tab-hover-border-color: var(--border-color--lighter);
-  --tab-hover-text-color: var(--text-color);
-  --tab-active-border-color: var(--color--primary);
-  --tab-active-text-color: var(--text-color--loud);
-
   // table
   --table-border-color: var(--border-color);
 }

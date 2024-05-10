@@ -1,5 +1,5 @@
 import EpActionBar from '@/components/action-bar/EpActionBar.vue'
-import commonActionBarArgs from '@/components/action-bar/commonActionBarArgs.js'
+import commonActionBarArgs from '../../helpers/commonActionBarArgs.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpFooter from '@/components/footer/EpFooter.vue'

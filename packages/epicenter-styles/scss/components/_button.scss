@@ -1,3 +1,21 @@
+:root {
+  --ep-button-bg-color: var(--interface-foreground);
+  --ep-button-text-color: var(--text-color--loud);
+  --ep-button-border-width: 0.1rem;
+  --ep-button-border-style: solid;
+  --ep-button-border-color: var(--border-color);
+  --ep-button-hover-bg-color: var(--interface-foreground);
+  --ep-button-hover-text-color: var(--text-color--loud);
+  --ep-button-hover-border-color: var(--border-color);
+  --ep-button-active-bg-color: var(--interface-foreground);
+  --ep-button-active-text-color: var(--text-color);
+  --ep-button-active-border-color: var(--border-color);
+  --ep-button-disabled-bg-color: var(--interface-foreground);
+  --ep-button-disabled-text-color: var(--text-color);
+  --ep-button-disabled-border-color: var(--border-color);
+  --ep-button-menu-item-text-active: var(--text-color--loud);
+}
+
 .ep-button {
   display: inline-flex;
   justify-content: space-between;
@@ -14,17 +32,17 @@
   white-space: nowrap;
   vertical-align: top;
   // replacing all the variants with custom properties
-  background: var(--ep-button-bg-color, var(--interface-foreground));
-  color: var(--ep-button-text-color, var(--text-color));
-  border-width: var(--ep-button-border-width, 0.1rem);
-  border-style: var(--ep-button-border-style, solid);
-  border-color: var(--ep-button-border-color, var(--border-color));
+  background: var(--ep-button-bg-color);
+  color: var(--ep-button-text-color);
+  border-width: var(--ep-button-border-width);
+  border-style: var(--ep-button-border-style);
+  border-color: var(--ep-button-border-color);
 
   @media (hover: hover) {
     &:hover {
-      background: var(--ep-button-hover-bg-color, var(--interface-foreground));
-      color: var(--ep-button-hover-text-color, var(--text-color));
-      border-color: var(--ep-button-hover-border-color, var(--border-color));
+      background: var(--ep-button-hover-bg-color);
+      color: var(--ep-button-hover-text-color);
+      border-color: var(--ep-button-hover-border-color);
     }
   }
 
@@ -33,13 +51,13 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--focus-outline-color, var(--color--primary));
+    outline: 2px solid var(--focus-outline-color);
   }
 
   &:active {
-    background: var(--ep-button-active-bg-color, var(--interface-foreground));
-    color: var(--ep-button-active-text-color, var(--text-color));
-    border-color: var(--ep-button-active-border-color, var(--border-color));
+    background: var(--ep-button-active-bg-color);
+    color: var(--ep-button-active-text-color);
+    border-color: var(--ep-button-active-border-color);
   }
 
   &--menu-item {
@@ -55,14 +73,10 @@
     }
   }
 
-  &--outlined {
-    background: transparent;
-  }
-
   &--disabled {
-    background: var(--ep-button-disabled-bg-color, var(--interface-foreground));
-    color: var(--ep-button-disabled-text-color, var(--text-color));
-    border-color: var(--ep-button-disabled-border-color, var(--border-color));
+    background: var(--ep-button-disabled-bg-color);
+    color: var(--ep-button-disabled-text-color);
+    border-color: var(--ep-button-disabled-border-color);
     pointer-events: none;
     cursor: default;
 

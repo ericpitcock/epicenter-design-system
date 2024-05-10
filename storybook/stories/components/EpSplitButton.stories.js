@@ -1,5 +1,5 @@
 import { centered } from '../../helpers/decorators.js'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
+import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 
 export default {
@@ -70,24 +70,24 @@ export default {
     },
     'buttonProps.iconLeft': {
       name: 'Button Icon (Left)',
-      options: iconNames,
-      mapping: iconNamesMapping,
+      options: iconOptions,
+      mapping: iconMapping,
       control: {
         type: 'select'
       }
     },
     'buttonProps.iconRight': {
       name: 'Button Icon (Right)',
-      options: iconNames,
-      mapping: iconNamesMapping,
+      options: iconOptions,
+      mapping: iconMapping,
       control: {
         type: 'select'
       }
     },
     'dropdownProps.buttonProps.iconRight': {
       name: 'Dropdown Icon',
-      options: iconNames,
-      mapping: iconNamesMapping,
+      options: iconOptions,
+      mapping: iconMapping,
       control: {
         type: 'select'
       }

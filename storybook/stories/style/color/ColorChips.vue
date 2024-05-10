@@ -42,7 +42,7 @@
   .color-chips {
     flex: 1;
     display: flex;
-    gap: 0.5rem;
+    // gap: 0.5rem;
   }
 
   .color-chip {
@@ -52,7 +52,7 @@
     justify-content: center;
 
     &--base {
-      border-radius: 2rem;
+      // border-radius: 2rem;
     }
 
     &:hover {

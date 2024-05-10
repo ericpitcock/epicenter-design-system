@@ -2,14 +2,14 @@
   <div class="ep-sign-in">
     <ep-container
       width="400px"
-      height="426px"
+      height="475px"
       background-color="var(--interface-surface)"
       content-padding="0 3rem 6rem 3rem"
       style="box-shadow: var(--drop-shadow);"
     >
       <template #header>
         <div class="ep-sign-in__header">
-          <acme-logo />
+          <epicenter-logo style="width: 50px;" />
         </div>
       </template>
       <div class="ep-sign-in__form">
@@ -85,7 +85,7 @@
   import EpIcon from '../icon/EpIcon.vue'
   import EpInput from '../input/EpInput.vue'
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
-  import AcmeLogo from '../../../../../storybook/stories/examples/input/AcmeLogo.vue'
+  import EpicenterLogo from '../logo/EpicenterLogo.vue'
 
   export default {
     name: 'EpAcmeAssetExplorersignin',
@@ -95,7 +95,7 @@
       EpIcon,
       EpInput,
       EpLoadingState,
-      AcmeLogo
+      EpicenterLogo,
     },
     data() {
       return {

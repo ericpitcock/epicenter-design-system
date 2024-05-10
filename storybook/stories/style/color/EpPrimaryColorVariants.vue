@@ -142,6 +142,6 @@
     display: flex;
     height: 100%;
     flex-direction: column;
-    gap: 0.5rem;
+    // gap: 0.5rem;
   }
 </style>

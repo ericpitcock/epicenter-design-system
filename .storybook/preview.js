@@ -58,8 +58,8 @@ const preview = {
         date: /Date$/i,
       },
     },
+    layout: 'fullscreen',
     options: {
-      layout: 'centered',
       storySort: {
         order: [
           'Intro',

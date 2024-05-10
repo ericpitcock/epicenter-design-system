@@ -23,7 +23,7 @@ export const Autocomplete = args => ({
   components: { EpSearch },
   setup() {
     const searchResults = ref([])
-    const bg = ref('var(--interface-surface)')
+    const bg = ref('var(--interface-bg)')
 
     const setBackground = color => {
       bg.value = color

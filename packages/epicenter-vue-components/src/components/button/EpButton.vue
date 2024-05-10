@@ -70,10 +70,6 @@
       type: Boolean,
       default: false
     },
-    outlined: {
-      type: Boolean,
-      default: false
-    },
     isMenuItem: {
       type: Boolean,
       default: false
@@ -113,7 +109,6 @@
     'ep-button--icon-right': props.iconRight,
     'ep-button--icon-left': props.iconLeft,
     'ep-button--disabled': props.disabled,
-    'ep-button--outlined': props.outlined,
     'ep-button--menu-item': props.isMenuItem,
     'ep-button--menu-item--active': props.isActiveMenuItem
   }))

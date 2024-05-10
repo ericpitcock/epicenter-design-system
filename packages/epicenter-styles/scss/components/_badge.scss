@@ -1,7 +1,10 @@
-.ep-badge {
+:root {
   --ep-badge-bg-color: var(--interface-overlay);
   --ep-badge-border-color: var(--border-color--lighter);
   --ep-badge-text-color: var(--text-color);
+}
+
+.ep-badge {
   display: inline-block;
   padding: 0.4rem 0.8rem;
   border-radius: var(--border-radius);

@@ -5,6 +5,7 @@
     width="160.7px"
     height="215.87px"
     viewBox="0 0 160.7 215.87"
+    :style="styles"
   >
     <path
       class="shadow"
@@ -25,32 +26,41 @@
   export default {
     name: 'EpicenterLogo',
     props: {
-      strokeWidth: {
-        type: Number,
-        default: 3
-      },
-      strokeColor: {
-        type: String,
-        default: 'var(--logo-stroke)'
-      },
-      faceColor: {
-        type: String,
-        default: 'var(--logo-face)'
-      },
-      highlightColor: {
-        type: String,
-        default: 'var(--logo-hightlight)'
-      },
-      shadowColor: {
-        type: String,
-        default: 'var(--logo-shadow)'
+      styles: {
+        type: Object,
+        default: () => ({})
       }
+      // strokeWidth: {
+      //   type: Number,
+      //   default: 3
+      // },
+      // strokeColor: {
+      //   type: String,
+      //   default: 'var(--logo-stroke)'
+      // },
+      // faceColor: {
+      //   type: String,
+      //   default: 'var(--logo-face)'
+      // },
+      // highlightColor: {
+      //   type: String,
+      //   default: 'var(--logo-hightlight)'
+      // },
+      // shadowColor: {
+      //   type: String,
+      //   default: 'var(--logo-shadow)'
+      // }
     }
   }
 </script>
 
 <style lang="scss" scoped>
   svg {
+    --logo-face-color: #fff16c;
+    --logo-hightlight-color: var(--white);
+    --logo-shadow-color: var(--black);
+    --logo-stroke-color: var(--black);
+    --logo-stroke-width: 3;
     display: block;
     // scales with container
     width: 100%;
@@ -59,21 +69,21 @@
 
   polygon,
   path {
-    stroke: v-bind(strokeColor);
-    stroke-width: v-bind(strokeWidth);
+    stroke: var(--logo-stroke-color);
+    stroke-width: var(--logo-stroke-width);
     stroke-linejoin: round;
     stroke-miterlimit: 5;
   }
 
   .shadow {
-    fill: v-bind(shadowColor);
+    fill: var(--logo-shadow-color);
   }
 
   .highlight {
-    fill: v-bind(highlightColor);
+    fill: var(--logo-hightlight-color);
   }
 
   .face {
-    fill: v-bind(faceColor);
+    fill: var(--logo-face-color);
   }
 </style>

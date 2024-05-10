@@ -363,132 +363,10 @@ textarea {
 }
 
 :root {
-  --primary-color-100: hsl(214, 91%, 80%);
-  --primary-color-200: hsl(214, 91%, 75%);
-  --primary-color-300: hsl(214, 91%, 70%);
-  --primary-color-400: hsl(214, 91%, 65%);
-  --primary-color-500: hsl(214, 91%, 60%);
-  --primary-color-base: hsl(214, 91%, 55%);
-  --primary-color-600: hsl(214, 91%, 50%);
-  --primary-color-700: hsl(214, 91%, 45%);
-  --primary-color-800: hsl(214, 91%, 40%);
-  --primary-color-900: hsl(214, 91%, 35%);
-  --primary-color-1000: hsl(214, 91%, 30%);
-  --primary-color-up-5-100: hsl(219, 91%, 80%);
-  --primary-color-up-5-200: hsl(219, 91%, 75%);
-  --primary-color-up-5-300: hsl(219, 91%, 70%);
-  --primary-color-up-5-400: hsl(219, 91%, 65%);
-  --primary-color-up-5-500: hsl(219, 91%, 60%);
-  --primary-color-up-5-base: hsl(219, 91%, 55%);
-  --primary-color-up-5-600: hsl(219, 91%, 50%);
-  --primary-color-up-5-700: hsl(219, 91%, 45%);
-  --primary-color-up-5-800: hsl(219, 91%, 40%);
-  --primary-color-up-5-900: hsl(219, 91%, 35%);
-  --primary-color-up-5-1000: hsl(219, 91%, 30%);
-  --primary-color-up-10-100: hsl(224, 91%, 80%);
-  --primary-color-up-10-200: hsl(224, 91%, 75%);
-  --primary-color-up-10-300: hsl(224, 91%, 70%);
-  --primary-color-up-10-400: hsl(224, 91%, 65%);
-  --primary-color-up-10-500: hsl(224, 91%, 60%);
-  --primary-color-up-10-base: hsl(224, 91%, 55%);
-  --primary-color-up-10-600: hsl(224, 91%, 50%);
-  --primary-color-up-10-700: hsl(224, 91%, 45%);
-  --primary-color-up-10-800: hsl(224, 91%, 40%);
-  --primary-color-up-10-900: hsl(224, 91%, 35%);
-  --primary-color-up-10-1000: hsl(224, 91%, 30%);
-  --primary-color-up-15-100: hsl(229, 91%, 80%);
-  --primary-color-up-15-200: hsl(229, 91%, 75%);
-  --primary-color-up-15-300: hsl(229, 91%, 70%);
-  --primary-color-up-15-400: hsl(229, 91%, 65%);
-  --primary-color-up-15-500: hsl(229, 91%, 60%);
-  --primary-color-up-15-base: hsl(229, 91%, 55%);
-  --primary-color-up-15-600: hsl(229, 91%, 50%);
-  --primary-color-up-15-700: hsl(229, 91%, 45%);
-  --primary-color-up-15-800: hsl(229, 91%, 40%);
-  --primary-color-up-15-900: hsl(229, 91%, 35%);
-  --primary-color-up-15-1000: hsl(229, 91%, 30%);
-  --primary-color-down-5-100: hsl(209, 91%, 80%);
-  --primary-color-down-5-200: hsl(209, 91%, 75%);
-  --primary-color-down-5-300: hsl(209, 91%, 70%);
-  --primary-color-down-5-400: hsl(209, 91%, 65%);
-  --primary-color-down-5-500: hsl(209, 91%, 60%);
-  --primary-color-down-5-base: hsl(209, 91%, 55%);
-  --primary-color-down-5-600: hsl(209, 91%, 50%);
-  --primary-color-down-5-700: hsl(209, 91%, 45%);
-  --primary-color-down-5-800: hsl(209, 91%, 40%);
-  --primary-color-down-5-900: hsl(209, 91%, 35%);
-  --primary-color-down-5-1000: hsl(209, 91%, 30%);
-  --primary-color-down-10-100: hsl(204, 91%, 80%);
-  --primary-color-down-10-200: hsl(204, 91%, 75%);
-  --primary-color-down-10-300: hsl(204, 91%, 70%);
-  --primary-color-down-10-400: hsl(204, 91%, 65%);
-  --primary-color-down-10-500: hsl(204, 91%, 60%);
-  --primary-color-down-10-base: hsl(204, 91%, 55%);
-  --primary-color-down-10-600: hsl(204, 91%, 50%);
-  --primary-color-down-10-700: hsl(204, 91%, 45%);
-  --primary-color-down-10-800: hsl(204, 91%, 40%);
-  --primary-color-down-10-900: hsl(204, 91%, 35%);
-  --primary-color-down-10-1000: hsl(204, 91%, 30%);
-  --primary-color-down-15-100: hsl(199, 91%, 80%);
-  --primary-color-down-15-200: hsl(199, 91%, 75%);
-  --primary-color-down-15-300: hsl(199, 91%, 70%);
-  --primary-color-down-15-400: hsl(199, 91%, 65%);
-  --primary-color-down-15-500: hsl(199, 91%, 60%);
-  --primary-color-down-15-base: hsl(199, 91%, 55%);
-  --primary-color-down-15-600: hsl(199, 91%, 50%);
-  --primary-color-down-15-700: hsl(199, 91%, 45%);
-  --primary-color-down-15-800: hsl(199, 91%, 40%);
-  --primary-color-down-15-900: hsl(199, 91%, 35%);
-  --primary-color-down-15-1000: hsl(199, 91%, 30%);
-}
-
-:root {
-  --background-1: red;
-  --background-2: green;
-  --background-3: blue;
-  --background-4: orange;
   --black: #000;
   --white: #fff;
-  --text--black: var(--gray-410);
-  --text--white: var(--gray-50);
-  --color--primary: var(--primary-color-base);
   --border-radius: 0.3rem;
   --border-radius--large: 0.6rem;
-  --color-success: hsl(99, 59%, 66%);
-  --color-warning: hsl(48, 100%, 51%);
-  --color-error: hsl(3, 100%, 70%);
-  --primary-color--gradient: linear-gradient(140deg,
-    var(--primary-color-base) 30%,
-    var(--primary-color-down-10-base) 70%
-  );
-  --primary-color--base: var(--primary-color--gradient);
-  --primary-color--hover: var(--color--primary);
-  --primary-color--active: hsl(214, 91%, 60%);
-  --primary-color--border: var(--color--primary);
-  --primary-color--text: var(--gray-0);
-  --success-green--base: hsl(99, 59%, 66%);
-  --success-green--hover: hsl(99, 59%, 60%);
-  --success-green--active: hsl(99, 59%, 52%);
-  --success-green--border: var(--success-green--base);
-  --success-green--text: hsl(99, 59%, 10%);
-  --warning-yellow--base: hsl(48, 100%, 51%);
-  --warning-yellow--hover: hsl(46, 100%, 49%);
-  --warning-yellow--active: hsl(46, 100%, 41%);
-  --warning-yellow--border: var(--warning-yellow--base);
-  --warning-yellow--text: hsl(48, 100%, 10%);
-  --danger-red--base: hsl(3, 100%, 70%);
-  --danger-red--hover: hsl(3, 90%, 65%);
-  --danger-red--active: hsl(3, 90%, 56%);
-  --danger-red--border: var(--danger-red--base);
-  --danger-red--text: hsl(3, 100%, 6%);
-  --logo-face: #fff16c;
-  --logo-hightlight: var(--white);
-  --logo-shadow: var(--black);
-  --logo-stroke: var(--black);
-  --tab-hover-border-color: var(--border-color--lighter);
-  --tab-hover-text-color: var(--text-color);
-  --tab-active-border-color: var(--color--primary);
-  --tab-active-text-color: var(--text-color--loud);
   --table-border-color: var(--border-color);
 }
 
@@ -795,6 +673,11 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-color--loud);
 }
 
+:root {
+  --text--black: var(--gray-410);
+  --text--white: var(--gray-50);
+}
+
 .text--subtle,
 .text-color--subtle {
   color: var(--text-color--subtle);
@@ -920,10 +803,13 @@ h1, h2, h3, h4, h5, h6 {
   overflow: visible;
 }
 
-.ep-badge {
+:root {
   --ep-badge-bg-color: var(--interface-overlay);
   --ep-badge-border-color: var(--border-color--lighter);
   --ep-badge-text-color: var(--text-color);
+}
+
+.ep-badge {
   display: inline-block;
   padding: 0.4rem 0.8rem;
   border-radius: var(--border-radius);
@@ -935,6 +821,19 @@ h1, h2, h3, h4, h5, h6 {
   user-select: none;
 }
 
+:root {
+  --ep-banner-color-strip-bg: var(--color--primary);
+  --ep-banner-bg-color: var(--interface-overlay);
+  --ep-banner-border-color: var(--border-color--lighter);
+  --ep-banner-text-color: var(--text-color--loud);
+  --ep-banner-subtext-color: var(--text-color--subtle);
+  --ep-banner-dismiss-button-color: var(--text-color);
+  --ep-banner-dismiss-button-hover-bg-color: transparent;
+  --ep-banner-dismiss-button-hover-text-color: var(--text-color);
+  --ep-banner-dismiss-button-active-bg-color: transparent;
+  --ep-banner-dismiss-button-active-text-color: var(--text-color);
+}
+
 .ep-banner {
   display: flex;
   width: 100%;
@@ -943,6 +842,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .ep-banner__color-strip {
   width: 0.5rem;
+  background: var(--ep-banner-color-strip-bg);
   border-radius: var(--border-radius) 0 0 var(--border-radius);
 }
 .ep-banner__body {
@@ -952,9 +852,9 @@ h1, h2, h3, h4, h5, h6 {
   gap: 1.5rem;
   width: 100%;
   height: 100%;
-  background-color: var(--interface-overlay);
+  background-color: var(--ep-banner-bg-color);
   padding: 1.2rem 2rem;
-  border: 1px solid var(--border-color--lighter);
+  border: 1px solid var(--ep-banner-border-color);
   border-left: none;
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
@@ -967,27 +867,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 .ep-banner__body__message__text {
   line-height: var(--text-line-height--tight);
-  color: var(--text-color--loud);
+  color: var(--ep-banner-text-color);
 }
 .ep-banner__body__message__subtext {
   font-size: var(--font-size--tiny);
-  color: var(--text-color--subtle);
-}
-.notification-enter-active,
-.notification-leave-active {
-  transition: transform 0.5s;
+  color: var(--ep-banner-subtext-color);
 }
 
-.notification-enter,
-.notification-leave-to {
-  transform: translateY(-200%);
-}
-
-.ep-breadcrumbs ol,
-.ep-breadcrumbs li {
+.ep-breadcrumb ol {
   display: flex;
   gap: 0.5rem;
   white-space: nowrap;
+}
+
+:root {
+  --ep-button-bg-color: var(--interface-foreground);
+  --ep-button-text-color: var(--text-color--loud);
+  --ep-button-border-width: 0.1rem;
+  --ep-button-border-style: solid;
+  --ep-button-border-color: var(--border-color);
+  --ep-button-hover-bg-color: var(--interface-foreground);
+  --ep-button-hover-text-color: var(--text-color--loud);
+  --ep-button-hover-border-color: var(--border-color);
+  --ep-button-active-bg-color: var(--interface-foreground);
+  --ep-button-active-text-color: var(--text-color);
+  --ep-button-active-border-color: var(--border-color);
+  --ep-button-disabled-bg-color: var(--interface-foreground);
+  --ep-button-disabled-text-color: var(--text-color);
+  --ep-button-disabled-border-color: var(--border-color);
+  --ep-button-menu-item-text-active: var(--text-color--loud);
 }
 
 .ep-button {
@@ -996,7 +904,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.8rem;
   max-height: 3rem;
-  border-radius: 3px;
+  border-radius: var(--ep-button-border-radius, 0.3rem);
   font-size: var(--font-size--small);
   line-height: 1;
   appearance: none;
@@ -1005,151 +913,47 @@ h1, h2, h3, h4, h5, h6 {
   user-select: none;
   white-space: nowrap;
   vertical-align: top;
-}
-.ep-button--primary {
-  background: var(--primary-color--base);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--primary-color--border);
-  color: var(--primary-color--text);
+  background: var(--ep-button-bg-color);
+  color: var(--ep-button-text-color);
+  border-width: var(--ep-button-border-width);
+  border-style: var(--ep-button-border-style);
+  border-color: var(--ep-button-border-color);
 }
 @media (hover: hover) {
-  .ep-button--primary:hover {
-    color: var(--primary-color--text);
-    background: var(--primary-color--hover);
+  .ep-button:hover {
+    background: var(--ep-button-hover-bg-color);
+    color: var(--ep-button-hover-text-color);
+    border-color: var(--ep-button-hover-border-color);
   }
 }
-.ep-button--primary:active {
-  background: var(--primary-color--active);
+.ep-button:focus {
+  outline: none;
 }
-.ep-button--secondary {
-  background: var(--interface-foreground);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-color);
-  color: var(--text-color);
+.ep-button:focus-visible {
+  outline: 2px solid var(--focus-outline-color);
 }
-@media (hover: hover) {
-  .ep-button--secondary:hover {
-    color: var(--text-color);
-    background: var(--button-secondary--hover);
-  }
-}
-.ep-button--secondary:active {
-  background: var(--button-secondary--active);
-}
-.ep-button--danger {
-  background: var(--danger-red--base);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--danger-red--border);
-  color: var(--danger-red--text);
-}
-@media (hover: hover) {
-  .ep-button--danger:hover {
-    color: var(--danger-red--text);
-    background: var(--danger-red--hover);
-  }
-}
-.ep-button--danger:active {
-  background: var(--danger-red--active);
-}
-.ep-button--warning {
-  background: var(--warning-yellow--base);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--warning-yellow--border);
-  color: var(--warning-yellow--text);
-}
-@media (hover: hover) {
-  .ep-button--warning:hover {
-    color: var(--warning-yellow--text);
-    background: var(--warning-yellow--hover);
-  }
-}
-.ep-button--warning:active {
-  background: var(--warning-yellow--active);
-}
-.ep-button--success {
-  background: var(--success-green--base);
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--success-green--border);
-  color: var(--success-green--text);
-}
-@media (hover: hover) {
-  .ep-button--success:hover {
-    color: var(--success-green--text);
-    background: var(--success-green--hover);
-  }
-}
-.ep-button--success:active {
-  background: var(--success-green--active);
-}
-.ep-button--ghost {
-  background: transparent;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-  color: var(--button-ghost--text);
-}
-@media (hover: hover) {
-  .ep-button--ghost:hover {
-    color: var(--text-color);
-    background: var(--button-ghost--hover);
-  }
-}
-.ep-button--ghost:active {
-  background: var(--button-ghost--active);
-}
-.ep-button--ghost:hover {
-  background-color: var(--button-hover-color);
-  color: var(--button-text-hover-color);
+.ep-button:active {
+  background: var(--ep-button-active-bg-color);
+  color: var(--ep-button-active-text-color);
+  border-color: var(--ep-button-active-border-color);
 }
 .ep-button--menu-item {
-  background: transparent;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-  color: var(--button-ghost--text);
   width: 100%;
+  background: transparent;
+  border-color: transparent;
   padding-right: 2rem !important;
   padding-left: 2rem !important;
 }
-@media (hover: hover) {
-  .ep-button--menu-item:hover {
-    color: var(--button-menu-item-text-hover);
-    background: var(--button-menu-item--hover);
-  }
-}
-.ep-button--menu-item:active {
-  background: var(--button-menu-item--active);
-}
 .ep-button--menu-item--active {
-  color: var(--button-menu-item-text-active);
   background: var(--color--primary);
-}
-.ep-button--outlined {
-  background: transparent;
-  color: var(--text-color);
+  color: var(--ep-button-menu-item-text-active);
 }
 .ep-button--disabled {
-  background: transparent;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-color);
-  color: var(--text-color--disabled);
+  background: var(--ep-button-disabled-bg-color);
+  color: var(--ep-button-disabled-text-color);
+  border-color: var(--ep-button-disabled-border-color);
   pointer-events: none;
   cursor: default;
-}
-@media (hover: hover) {
-  .ep-button--disabled:hover {
-    color: var(--text-color--subtle);
-    background: var(--background-2);
-  }
-}
-.ep-button--disabled:active {
-  background: var(--background-2);
 }
 .ep-button--disabled.ep-button--ghost, .ep-button--disabled.ep-button--menu-item {
   border-color: transparent;
@@ -1169,31 +973,16 @@ h1, h2, h3, h4, h5, h6 {
 .ep-button:has(:only-child):has(.ep-button__icon) {
   padding: 0.4rem 0.8rem;
 }
-.ep-button.ep-button--icon-only {
-  padding: 0.4rem 0.8rem;
-}
 .ep-button:has(:only-child):has(.ep-button__label) {
-  padding: 0.4rem 1.2rem;
-}
-.ep-button.ep-button--label-only {
   padding: 0.4rem 1.2rem;
 }
 .ep-button:has(.ep-button__icon--left):has(.ep-button__label) {
   padding: 0.4rem 1.2rem 0.4rem 0.8rem;
 }
-.ep-button.ep-button--icon-left {
-  padding: 0.4rem 1.2rem 0.4rem 0.8rem;
-}
 .ep-button:has(.ep-button__icon--right):has(.ep-button__label) {
   padding: 0.4rem 0.8rem 0.4rem 1.2rem;
 }
-.ep-button.ep-button--icon-right {
-  padding: 0.4rem 0.8rem 0.4rem 1.2rem;
-}
 .ep-button:has(.ep-button__icon--left):has(.ep-button__icon--right):has(.ep-button__label) {
-  padding: 0.4rem 0.8rem;
-}
-.ep-button.ep-button--icon-left-right {
   padding: 0.4rem 0.8rem;
 }
 .ep-button--small {
@@ -3808,6 +3597,13 @@ select.ep-select--disabled {
   background-color: var(--table-stripe-color);
 }
 
+:root {
+  --ep-tabs-hover-border-color: var(--border-color--lighter);
+  --ep-tabs-hover-text-color: var(--text-color);
+  --ep-tabs-active-border-color: var(--primary-color-base);
+  --ep-tabs-active-text-color: var(--text-color--loud);
+}
+
 .ep-tabs {
   display: flex;
   height: 100%;
@@ -3827,13 +3623,13 @@ select.ep-select--disabled {
   white-space: nowrap;
 }
 .ep-tabs__tab-item:not(.ep-tabs__tab-item--active):not(.router-link-active):hover span {
-  border-bottom-color: var(--tab-hover-border-color);
-  color: var(--tab-hover-text-color);
+  border-bottom-color: var(--ep-tabs-hover-border-color);
+  color: var(--ep-tabs-hover-text-color);
   cursor: pointer;
 }
 .ep-tabs__tab-item--active span, .ep-tabs__tab-item.router-link-active span {
-  border-bottom-color: var(--tab-active-border-color);
-  color: var(--tab-active-text-color);
+  border-bottom-color: var(--ep-tabs-active-border-color);
+  color: var(--ep-tabs-active-text-color);
 }
 .ep-tabs--classic {
   align-items: end;
@@ -3849,7 +3645,7 @@ select.ep-select--disabled {
 }
 .ep-tabs--classic .ep-tabs__tab-item:not(.ep-tabs__tab-item--active):not(.router-link-active):hover span {
   border-bottom-color: transparent;
-  color: var(--tab-hover-text-color);
+  color: var(--ep-tabs-hover-text-color);
 }
 .ep-tabs--classic .ep-tabs__tab-item--active span, .ep-tabs--classic .ep-tabs__tab-item.router-link-active span {
   border-bottom-color: transparent;

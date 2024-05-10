@@ -1,5 +1,6 @@
 import { centeredSurface } from '../../helpers/decorators.js'
-import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
+// import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
+import { iconArgTypes } from '../../helpers/iconArgTypes.js'
 import EpBanner from '@/components/banner/EpBanner.vue'
 import { ref, computed } from 'vue'
 
@@ -8,6 +9,7 @@ export default {
   component: EpBanner,
   decorators: [centeredSurface],
   argTypes: {
+    ...iconArgTypes,
     dissmissable: {
       name: 'Dissmissable',
       control: {
@@ -15,12 +17,13 @@ export default {
       }
     },
     iconProps: {
-      name: 'Icon',
-      options: iconOptions,
-      mapping: iconMapping,
-      control: {
-        type: 'select'
-      }
+      table: { disable: true }
+      // name: 'Icon',
+      // options: iconOptions,
+      // mapping: iconMapping,
+      // control: {
+      //   type: 'select'
+      // }
     },
     stripColor: {
       name: '--ep-banner-color-strip-bg',
@@ -136,6 +139,15 @@ export const Banner = args => ({
       '--ep-banner-dismiss-button-active-text-color': args.dismissButtonActiveTextColor,
     }))
 
+    const iconProps = computed(() => {
+      return {
+        name: args.name,
+        color: args.color,
+        weight: args.weight,
+        size: args.size,
+      }
+    })
+
     const showBanner = ref(true)
 
     const onDismissed = () => {
@@ -150,12 +162,14 @@ export const Banner = args => ({
       onDismissed,
       showBanner,
       styles,
+      iconProps
     }
   },
   template: `
     <ep-banner
       v-show="showBanner"
       v-bind="args"
+      :icon-props="iconProps"
       :style="styles"
       @dismissed="onDismissed"
     >
@@ -171,6 +185,11 @@ export const Banner = args => ({
 
 Banner.args = {
   dissmissable: false,
-  iconProps: 'f-alert-triangle',
+  iconProps: {
+    name: 'f-alert-triangle',
+    color: 'currentColor',
+    weight: 'light',
+    size: 60
+  },
   stripColor: '#FFC107',
 }

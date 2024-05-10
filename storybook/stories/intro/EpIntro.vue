@@ -42,10 +42,12 @@
     size: 'large',
     iconLeft: { name: 'f-github', size: 26, weight: 'light' },
     styles: {
-      '--ep-button-bg-color': 'var(--interface-foreground)',
-      '--ep-button-border-color': 'var(--interface-foreground)',
+      '--ep-button-bg-color': '#242424',
+      '--ep-button-border-color': '#242424',
+      '--ep-button-text-color': '#e6e6e6',
       '--ep-button-hover-bg-color': 'black',
       '--ep-button-hover-border-color': 'black',
+      '--ep-button-hover-text-color': '#e6e6e6',
     },
   }
 </script>
@@ -66,10 +68,10 @@
 
     .hero {
       position: relative;
-      padding: 8rem 8rem 4rem 8rem;
+      padding: 6rem 6rem 4rem 6rem;
       background:
         radial-gradient(circle 200px at -5% -10%, hsl(60, 100%, 50%), transparent),
-        linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--color--primary) 79%);
+        linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--primary-color-base) 79%);
       color: var(--gray-440);
       border-radius: var(--border-radius--large) var(--border-radius--large) 0 0;
       overflow: hidden;
@@ -95,6 +97,10 @@
         z-index: var(--z-index--overlap);
         margin-top: 3rem;
         color: var(--text-color--inverse);
+
+        html[data-color-theme='light'] & {
+          color: var(--text-color);
+        }
       }
 
       .hero-link {
@@ -111,7 +117,7 @@
     .content {
       display: flex;
       gap: 3rem;
-      padding: 4rem 8rem;
+      padding: 4rem 6rem;
       background: var(--interface-surface);
       border-radius: 0 0 var(--border-radius--large) var(--border-radius--large);
       border: 1px solid var(--border-color);

@@ -15,6 +15,7 @@
       :autofocus="autofocus"
       :readonly="readonly"
       :required="required"
+      v-bind="$attrs"
       @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
@@ -35,6 +36,7 @@
       EpInputStyler
     },
     mixins: [inputMixin, uuidMixin],
+    inheritAttrs: false,
     props: {
       inputId: {
         type: String,

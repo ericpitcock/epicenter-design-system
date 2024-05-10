@@ -1,4 +1,4 @@
-.ep-banner {
+:root {
   --ep-banner-color-strip-bg: var(--color--primary);
   --ep-banner-bg-color: var(--interface-overlay);
   --ep-banner-border-color: var(--border-color--lighter);
@@ -9,6 +9,9 @@
   --ep-banner-dismiss-button-hover-text-color: var(--text-color);
   --ep-banner-dismiss-button-active-bg-color: transparent;
   --ep-banner-dismiss-button-active-text-color: var(--text-color);
+}
+
+.ep-banner {
   display: flex;
   width: 100%;
   min-width: 30rem;

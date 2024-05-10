@@ -1,5 +1,5 @@
 import { centeredSurface } from '../../helpers/decorators.js'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
+import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpSelect from '@/components/select/EpSelect.vue'
 
 export default {
@@ -28,8 +28,8 @@ export default {
     },
     iconLeft: {
       name: 'Icon',
-      options: iconNames,
-      mapping: iconNamesMapping,
+      options: iconOptions,
+      mapping: iconMapping,
       control: {
         type: 'select'
       }

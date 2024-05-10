@@ -1,12 +1,14 @@
 /** @type { import('@storybook/vue3-vite').StorybookConfig } */
 
 const config = {
-  stories: ['../storybook/stories/**/*.stories.js'],
+  stories: [
+    '../storybook/stories/**/*.mdx', // docs
+    '../storybook/stories/**/*.stories.js'
+  ],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@chromatic-com/storybook',
-    '@storybook/addon-interactions',
+    '@storybook/addon-controls',
+    '@storybook/addon-docs',
+    '@storybook/addon-toolbars',
   ],
   staticDirs: ['../static'],
   framework: {

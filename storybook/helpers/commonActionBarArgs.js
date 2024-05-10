@@ -1,13 +1,25 @@
+const buttonStyles = {
+  '--ep-button-bg-color': 'transparent',
+  '--ep-button-border-color': 'transparent',
+  '--ep-button-text-color': 'var(--text-color)',
+  '--ep-button-hover-bg-color': 'transparent',
+  '--ep-button-hover-border-color': 'transparent',
+  '--ep-button-hover-text-color': 'var(--text-color--loud)',
+  '--ep-button-active-bg-color': 'transparent',
+  '--ep-button-active-border-color': 'transparent',
+  '--ep-button-active-text-color': 'var(--color--primary)',
+}
+
 const commonActionBarArgs = {
   items: [
     {
       type: 'dropdown',
       alignRight: true,
       buttonProps: {
-        variant: 'ghost',
         label: '',
         iconLeft: { name: 'help' },
-        iconRight: null
+        iconRight: undefined,
+        styles: buttonStyles
       },
       containerProps: {
         backgroundColor: 'var(--interface-overlay)',
@@ -25,10 +37,10 @@ const commonActionBarArgs = {
       type: 'dropdown',
       alignRight: true,
       buttonProps: {
-        variant: 'ghost',
         label: '',
         iconLeft: { name: 'notifications' },
-        iconRight: null
+        iconRight: undefined,
+        styles: buttonStyles
       },
       containerProps: {
         backgroundColor: 'var(--interface-overlay)',
@@ -47,10 +59,10 @@ const commonActionBarArgs = {
       type: 'dropdown',
       alignRight: true,
       buttonProps: {
-        variant: 'ghost',
         label: '',
         iconLeft: { name: 'user' },
-        iconRight: null
+        iconRight: undefined,
+        styles: buttonStyles
       },
       containerProps: {
         backgroundColor: 'var(--interface-overlay)',

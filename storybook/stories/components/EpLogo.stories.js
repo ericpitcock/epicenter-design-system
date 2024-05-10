@@ -1,5 +1,5 @@
-// import { centered } from '../../helpers/decorators.js'
 import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
+import { computed } from 'vue'
 
 export default {
   title: 'Components/Logo',
@@ -15,8 +15,11 @@ export default {
         step: 1
       }
     },
+    styles: {
+      table: { disable: true }
+    },
     strokeWidth: {
-      name: 'Stroke width',
+      name: '--logo-stroke-width',
       control: {
         type: 'range',
         min: 1,
@@ -25,25 +28,25 @@ export default {
       }
     },
     strokeColor: {
-      name: 'Stroke Color',
+      name: '--logo-stroke-color',
       control: {
         type: 'color'
       }
     },
     faceColor: {
-      name: 'Face Color',
+      name: '--logo-face-color',
       control: {
         type: 'color'
       }
     },
     highlightColor: {
-      name: 'Highlight Color',
+      name: '--logo-hightlight-color',
       control: {
         type: 'color'
       }
     },
     shadowColor: {
-      name: 'Shadow Color',
+      name: '--logo-shadow-color',
       control: {
         type: 'color'
       }
@@ -60,51 +63,37 @@ export const Logo = args => ({
       placeContent: 'center',
       width: '100%',
       height: '100%',
-      background: 'linear-gradient(130deg, #0af6b7 0%, var(--color--primary) 89%)',
+      background: `radial-gradient(circle 200px at -5% -10%, hsl(60, 100%, 50%), transparent),
+      linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--primary-color-base) 79%)`,
       overflow: 'hidden'
     }
-    const yellowCircle = {
-      position: 'absolute',
-      top: '-17rem',
-      left: '-40rem',
-      width: '60rem',
-      height: '30rem',
-      borderRadius: '50%',
-      background: 'rgb(255, 255, 0)',
-      opacity: '1',
-      filter: 'blur(100px)',
-    }
 
-    const purpleCircle = {
-      position: 'absolute',
-      bottom: '-10%',
-      right: '-20%',
-      width: '60rem',
-      height: '30rem',
-      borderRadius: '50%',
-      background: 'rgb(212, 12, 85)',
-      opacity: '0.8',
-      filter: 'blur(150px)',
-    }
+    const styles = computed(() => {
+      return {
+        '--logo-face-color': args.faceColor,
+        '--logo-hightlight-color': args.highlightColor,
+        '--logo-shadow-color': args.shadowColor,
+        '--logo-stroke-color': args.strokeColor,
+        '--logo-stroke-width': args.strokeWidth,
+      }
+    })
 
-    return { args, containerStyle, yellowCircle, purpleCircle }
+    return { args, containerStyle, styles }
   },
   template: `
     <div :style="containerStyle">
       <div class="bounding-box" :style="{ width: args.size + 'px' }">
-        <epicenter-logo v-bind="args" />
+        <epicenter-logo v-bind="args" :styles="styles" />
       </div>
-      <div :style="yellowCircle" />
-      <div :style="purpleCircle" />
     </div>
   `
 })
 
 Logo.args = {
   size: 200,
-  strokeWidth: 3,
-  strokeColor: '#000',
+  strokeWidth: 2,
+  strokeColor: 'var(--black)',
   faceColor: '#fff16c',
-  highlightColor: '#fff',
-  shadowColor: '#000'
+  highlightColor: 'var(--white)',
+  shadowColor: 'var(--black)'
 }

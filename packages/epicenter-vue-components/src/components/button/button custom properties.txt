@@ -1,0 +1,24 @@
+button custom properties
+
+BASE
+--ep-button-border-radius
+--ep-button-bg-color
+--ep-button-border-width
+--ep-button-border-style
+--ep-button-border-color
+--ep-button-text-color
+
+HOVER
+--ep-button-hover-bg-color
+--ep-button-hover-text-color
+--ep-button-hover-border-color
+
+ACTIVE
+--ep-button-active-bg-color
+--ep-button-active-text-color
+--ep-button-active-border-color
+
+DISABLED
+--ep-button-disabled-bg-color
+--ep-button-disabled-text-color
+--ep-button-disabled-border-color

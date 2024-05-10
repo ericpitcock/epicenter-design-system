@@ -1,21 +1,18 @@
-/* The whole point of this is to specify a primary color at minimum
-and the sytem creates the variations for you. You, of course, can
-specify the variations yourself. */
 @use '../packages/epicenter-styles/scss/themes/_primary-color.scss' as *;
-$base-hue: 214;
-$base-saturation: 91%;
-$base-lightness: 55%;
-@include generate-custom-properties($base-hue, $base-saturation, $base-lightness);
+// define your primary color's hue, saturation, and lightness here
+// and variants will be generated for you
+$primary-color-hue: 214;
+$primary-color-saturation: 91%;
+$primary-color-lightness: 55%;
 
 :root {
-  --primary-color-hue: 300;
-  --primary-color-saturation: 53%;
-  --primary-color-lightness: 79%;
-  --primary-color-base: hsl(var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness));
-  // SASS FUNCTION TO CREATE VARIANTS HERE
+  @include generate-color-variants($primary-color-hue, $primary-color-saturation, $primary-color-lightness);
+  // global overrides - dark theme
+  // --ep-tabs-active-border-color: yellow;
+  // --ep-banner-color-strip-bg: orange;
+  // --ep-button-bg-color: green;
 }
 
 html[data-color-theme='light'] {
-  // if you need to override the primary color from dark theme
-  // do it here
+  // global overrides - light theme
 }

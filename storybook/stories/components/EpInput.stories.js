@@ -1,5 +1,5 @@
 import { centeredSurface } from '../../helpers/decorators.js'
-import { iconNames, iconNamesMapping } from '@/components/icon/load-icons.js'
+import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpInput from '@/components/input/EpInput.vue'
 import { ref } from 'vue'
 
@@ -54,8 +54,8 @@ export default {
     },
     iconLeft: {
       name: 'Icon Left',
-      options: iconNames,
-      mapping: iconNamesMapping,
+      options: iconOptions,
+      mapping: iconMapping,
       control: {
         type: 'select'
       },
@@ -65,8 +65,8 @@ export default {
     },
     iconRight: {
       name: 'Icon Right',
-      options: iconNames,
-      mapping: iconNamesMapping,
+      options: iconOptions,
+      mapping: iconMapping,
       control: {
         type: 'select'
       },
@@ -155,7 +155,14 @@ export const Input = args => ({
 
     return { args, modelValue, clear }
   },
-  template: '<ep-input v-bind="args" v-model="modelValue" @clear="clear" />'
+  template: `
+    <ep-input
+      v-bind="args"
+      v-model="modelValue"
+      @clear="clear"
+      data-1p-ignore
+    />
+  `
 })
 
 Input.args = {

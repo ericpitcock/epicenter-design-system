@@ -7,44 +7,28 @@ export default {
   decorators: [centered],
   argTypes: {
     animate: {
-      control: {
-        type: 'boolean'
-      }
+      table: { disable: true }
     },
     width: {
-      control: {
-        type: 'number'
-      }
+      table: { disable: true }
     },
     height: {
-      control: {
-        type: 'number'
-      }
+      table: { disable: true }
     },
     margin: {
-      control: {
-        type: 'number'
-      }
+      table: { disable: true }
     },
     data: {
-      control: {
-        type: 'object'
-      }
+      table: { disable: true }
     },
     labels: {
-      control: {
-        type: 'array'
-      }
+      table: { disable: true }
     },
     value: {
-      control: {
-        type: 'string'
-      }
+      table: { disable: true }
     },
     valueTextClass: {
-      control: {
-        type: 'string'
-      }
+      table: { disable: true }
     },
   },
 }

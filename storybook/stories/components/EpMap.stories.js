@@ -98,8 +98,6 @@ Map.args = {
   mapCenter: [-122.3321, 47.6062],
   mapZoom: 12,
   mapStyle: 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',
-  // mapSource: null,
-  // mapLayer: null,
   scrollZoom: true,
   navigationControl: false,
   fitToBounds: false
@@ -110,14 +108,11 @@ Map.decorators = [
     watch(
       () => context.globals.theme,
       () => {
-        // const currentMapStyle = defaultMapStyle(context.globals.theme)
         context.args.mapStyle = defaultMapStyle(context.globals.theme)
       },
       { immediate: true }
     )
 
-    return {
-      template: '<story/>',
-    }
+    return story()
   }
 ]

@@ -47,18 +47,20 @@ export const CodeView = args => ({
   setup() {
     const code = computed(() => codeExamples[args.language])
 
-    watch(() => args.language, () => {
+    const highlightCode = () => {
       nextTick(() => {
         Prism.highlightAll()
       })
+    }
+
+    watch(() => args.language, () => {
+      highlightCode()
     },
       { immediate: true }
     )
 
     watch(() => args.enableLineNumbers, () => {
-      nextTick(() => {
-        Prism.highlightAll()
-      })
+      highlightCode()
     },
       { immediate: true }
     )

@@ -16,7 +16,18 @@ export default {
   decorators: [container],
   parameters: {
     controls: { hideNoControlsWarning: true }
-  }
+  },
+  argTypes: {
+    options: {
+      table: { disable: true }
+    },
+    chartColors: {
+      table: { disable: true }
+    },
+    height: {
+      table: { disable: true }
+    }
+  },
 }
 
 const Template = args => ({

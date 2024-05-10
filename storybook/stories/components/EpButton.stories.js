@@ -1,5 +1,5 @@
 import { centered } from '../../helpers/decorators.js'
-import { iconOptions, iconMapping } from '@/components/icon/load-icons.js'
+import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpButton from '@/components/button/EpButton.vue'
 // import markdown from '../../../docs/EpButton.md'
 import { computed } from 'vue'
@@ -22,12 +22,6 @@ export default {
         type: 'boolean'
       }
     },
-    outlined: {
-      name: 'Outlined',
-      control: {
-        type: 'boolean'
-      }
-    },
     size: {
       name: 'Size',
       options: ['small', 'default', 'large', 'xlarge'],
@@ -42,10 +36,7 @@ export default {
       }
     },
     title: {
-      name: 'Title(Tooltip)',
-      control: {
-        type: 'text'
-      }
+      table: { disable: true }
     },
     ariaLabel: {
       table: { disable: true }
@@ -54,6 +45,9 @@ export default {
       table: { disable: true }
     },
     href: {
+      table: { disable: true }
+    },
+    isMenuItem: {
       table: { disable: true }
     },
     isActiveMenuItem: {
@@ -71,7 +65,17 @@ export default {
         type: 'text'
       }
     },
+    enabledIcons: {
+      name: 'Enable Icons',
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        category: 'Icons'
+      }
+    },
     iconLeft: {
+      if: { arg: 'enabledIcons' },
       name: 'Icon Left',
       options: iconOptions,
       mapping: iconMapping,
@@ -83,6 +87,7 @@ export default {
       }
     },
     iconRight: {
+      if: { arg: 'enabledIcons' },
       name: 'Icon Right',
       options: iconOptions,
       mapping: iconMapping,
@@ -99,7 +104,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Base'
+        category: 'Base Styles'
       },
     },
     borderColor: {
@@ -108,7 +113,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Base'
+        category: 'Base Styles'
       },
     },
     textColor: {
@@ -117,7 +122,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Base'
+        category: 'Base Styles'
       },
     },
     hoverBackgroundColor: {
@@ -126,7 +131,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Hover'
+        category: 'Hover Styles'
       },
     },
     hoverBorderColor: {
@@ -135,7 +140,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Hover'
+        category: 'Hover Styles'
       },
     },
     hoverTextColor: {
@@ -144,7 +149,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Hover'
+        category: 'Hover Styles'
       },
     },
     activeBackgroundColor: {
@@ -153,7 +158,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Active'
+        category: 'Active Styles'
       },
     },
     activeBorderColor: {
@@ -162,7 +167,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Active'
+        category: 'Active Styles'
       },
     },
     activeTextColor: {
@@ -171,7 +176,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Active'
+        category: 'Active Styles'
       },
     },
     disabledBackgroundColor: {
@@ -180,7 +185,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Disabled'
+        category: 'Disabled Styles'
       },
     },
     disabledBorderColor: {
@@ -189,7 +194,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Disabled'
+        category: 'Disabled Styles'
       },
     },
     disabledTextColor: {
@@ -198,7 +203,7 @@ export default {
         type: 'color'
       },
       table: {
-        category: 'Disabled'
+        category: 'Disabled Styles'
       },
     },
     styles: {
@@ -241,12 +246,10 @@ export const Button = args => ({
 })
 
 Button.args = {
-  disabled: false,
   label: 'Download the Internet',
-  outlined: false,
   size: 'large',
-  title: 'This is the tooltip',
-  ariaLabel: 'This is a button in Storybook',
+  disabled: false,
+  enabledIcons: false,
   iconLeft: 'None',
   iconRight: 'None',
 }

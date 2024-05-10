@@ -1,8 +1,8 @@
 <template>
   <div class="my-wrapper">
     <div class="intro">
-      <h1>{{ title }}</h1>
-      <p><code>Path: {{ fullPath }}</code></p>
+      <!-- <h1>{{ title }}</h1> -->
+      <!-- <p><code>Path: {{ fullPath }}</code></p> -->
     </div>
 
     <!-- @slot pass `<router-view>` to slot -->
@@ -11,30 +11,31 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue'
+  import { defineComponent, computed } from 'vue'
 
-import { useRoute } from 'vue-router'
+  import { useRoute } from 'vue-router'
 
-export default defineComponent({
-  name: 'RouterViewWrapper',
-  props: {
-    title: {
-      type: String,
-      default: 'Storybook Vue 3 Router'
+  export default defineComponent({
+    name: 'RouterViewWrapper',
+    props: {
+      title: {
+        type: String,
+        default: 'Storybook Vue 3 Router'
+      }
+    },
+    setup() {
+      const route = useRoute()
+      // console.log('created() route:', route.fullPath)
+      const fullPath = computed(() => route.fullPath)
+
+      return { fullPath }
     }
-  },
-  setup () {
-    const route = useRoute()
-    console.log('created() route:', route.fullPath)
-    const fullPath = computed(() => route.fullPath )
-
-    return { fullPath }
-  }
-})
+  })
 </script>
 
 
 <style lang="scss">
+
   /* router transition CSS */
   .slide-fade-enter-active {
     transition: all .5s .5s ease-out;

@@ -1,6 +1,3 @@
-$base-hue: 214 !default;
-$base-saturation: 91% !default;
-$base-lightness: 55% !default;
 $modifications: (
   color-up-5: +5,
   color-up-10: +10,
@@ -11,7 +8,11 @@ $modifications: (
   color-down-15: -15,
 );
 
-:root {
+@function generate-hsl($hue, $saturation, $lightness) {
+  @return hsl($hue, $saturation, $lightness);
+}
+
+@mixin generate-color-variants($base-hue, $base-saturation, $base-lightness) {
 
   // tints and shades for all modifications
   @each $name, $offset in $modifications {
@@ -19,13 +20,10 @@ $modifications: (
 
     @for $i from 1 through 5 {
       $tint-lightness: $base-lightness + (6 - $i) * 5%;
-      $shade-lightness: $base-lightness - $i * 5%;
-      --primary-#{$name}-#{$i}00: #{hsl($adjusted-hue, $base-saturation, $tint-lightness)};
-      --primary-#{$name}-base: #{hsl($adjusted-hue, $base-saturation, $base-lightness)};
-      --primary-#{$name}-#{$i + 5}00: #{hsl($adjusted-hue, $base-saturation, $shade-lightness)};
+      $shade-lightness: $base-lightness - $i * 7%;
+      --primary-#{$name}-#{$i}00: #{generate-hsl($adjusted-hue, $base-saturation, $tint-lightness)};
+      --primary-#{$name}-base: #{generate-hsl($adjusted-hue, $base-saturation, $base-lightness)};
+      --primary-#{$name}-#{$i + 5}00: #{generate-hsl($adjusted-hue, $base-saturation, $shade-lightness)};
     }
   }
-
-  // base color
-  --primary-color-base: #{hsl($base-hue, $base-saturation, $base-lightness)};
 }
