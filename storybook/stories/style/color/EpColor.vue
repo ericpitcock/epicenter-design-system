@@ -39,7 +39,6 @@
   import colors from './color.json'
   import grayscale from './grayscale.json'
   import copyToClipboard from '@/mixins/copyToClipboard.js'
-  // import { mapState } from 'vuex'
 
   export default {
     name: 'EpColor',
@@ -49,6 +48,12 @@
       EpTable
     },
     mixins: [copyToClipboard],
+    props: {
+      theme: {
+        type: String,
+        default: 'dark'
+      }
+    },
     data() {
       return {
         activeItem: 'All',
@@ -188,10 +193,12 @@
       }
     },
     computed: {
-      // ...mapState(['theme']),
       backgroundColor() {
         return this.theme === 'dark' ? '#1f1f1f' : '#ebebeb'
       },
+      // currentTheme() {
+      //   return this.theme === 'Dark Theme' ? 'dark' : 'light'
+      // },
       filteredData() {
         if (this.filter === '') {
           return this.tableData

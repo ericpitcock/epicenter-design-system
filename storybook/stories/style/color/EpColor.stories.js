@@ -1,5 +1,7 @@
 import { padded } from '../../../helpers/decorators.js'
 import EpColor from './EpColor.vue'
+import { useStorybookStore } from '../../../store'
+import { computed } from 'vue'
 
 export default {
   title: 'Style/Color',
@@ -14,7 +16,11 @@ export default {
 export const Color = (args) => ({
   components: { EpColor },
   setup() {
-    return { args }
+
+    const store = useStorybookStore()
+    const currentTheme = computed(() => store.theme)
+
+    return { args, currentTheme }
   },
-  template: '<ep-color />'
+  template: '<ep-color :theme="currentTheme" />'
 })
