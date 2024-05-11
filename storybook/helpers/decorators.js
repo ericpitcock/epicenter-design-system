@@ -1,4 +1,4 @@
-const centered = () => {
+const centeredBg = () => {
   return {
     template: `
       <div style="
@@ -38,7 +38,7 @@ const centeredCyanBlueGradient = () => {
         place-content: center;
         width: 100%;
         height: 100%;
-        background: linear-gradient(130deg, hsl(164 62% 56%) 0%, var(--primary-color-base);"
+        background: var(--gradient-bg);"
       >
         <story />
       </div>
@@ -46,26 +46,13 @@ const centeredCyanBlueGradient = () => {
   }
 }
 
-const fullscreen = () => {
-  return {
-    template: `
-      <div style="
-        display: block;
-        width: 100%;
-        height: 100%;"
-      >
-        <story />
-      </div>
-    `
-  }
-}
-
-const padded = () => {
+const paddedBg = () => {
   return {
     template: `
       <div style="
         height: 100%;
         padding: 30px;"
+        background-color: var(--interface-bg);"
       >
         <story />
       </div>
@@ -87,4 +74,10 @@ const paddedSurface = () => {
   }
 }
 
-export { centered, centeredCyanBlueGradient, centeredSurface, fullscreen, padded, paddedSurface }
+export {
+  centeredBg,
+  centeredSurface,
+  centeredCyanBlueGradient,
+  paddedBg,
+  paddedSurface,
+}
