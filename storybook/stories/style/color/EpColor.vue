@@ -160,7 +160,7 @@
             key: 'color',
             style: 'capitalize',
             formatter: (value, key, row) => {
-              return `<span style="color: ${row.hex};">${value}</span>`
+              return `<span style="color: ${row.hsl};">${value}</span>`
             }
           },
           {
@@ -179,8 +179,8 @@
             style: 'text--copyable'
           },
           {
-            header: 'Hex',
-            key: 'hex',
+            header: 'HSL',
+            key: 'hsl',
             command: (value) => this.copyToClipboard(value),
             style: 'text--copyable'
           }
@@ -213,7 +213,7 @@
               color: `${hue} ${level}`,
               contrast: this.contrast(colors[hue][level].value),
               css: `--${hue}-${level}`,
-              hex: colors[hue][level].value
+              hsl: chroma(colors[hue][level].value).css('hsl')
             })
           }
         }
@@ -225,23 +225,22 @@
               color: `${gray} ${level}`,
               contrast: this.contrast(grayscale[gray][level].value),
               css: `--${gray}-${level}`,
-              hex: grayscale[gray][level].value
+              hsl: chroma(grayscale[gray][level].value).css('hsl')
             })
           }
         }
         // get chart sequence colors from css variables
         const htmlStyles = window.getComputedStyle(document.querySelector('html'))
-        for (let index = 0; index < 14; index++) {
+        for (let index = 0; index < 17; index++) {
           const cssVar = index < 10 ? `--chart-sequence-0${index}` : `--chart-sequence-${index}`
           let hexValue = htmlStyles.getPropertyValue(cssVar)
-          // strip spaces from hex value
-          hexValue = hexValue.replace(/\s/g, '')
+
           data.push({
             sample: hexValue,
             color: `Chart Sequence ${index}`,
-            contrast: this.contrast(hexValue),
+            contrast: 'n/a',
             css: cssVar,
-            hex: hexValue
+            hsl: chroma(hexValue).css('hsl')
           })
         }
         return data
