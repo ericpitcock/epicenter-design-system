@@ -1,35 +1,27 @@
-// const fs = require('fs')
-// const yaml = require('js-yaml')
-// const chokidar = require('chokidar')
-// const glob = require('glob')
 import fs from 'fs'
 import yaml from 'js-yaml'
 import chokidar from 'chokidar'
 import * as glob from 'glob'
 
-// capture arguments passed to the script if needed
-// const args = process.argv.slice(2)
-
 function loadYAMLFiles(pattern) {
   const yamlData = {}
-  // console.log('loadYAMLFiles: about to glob')
   const files = glob.sync(pattern)
   files.forEach(file => {
     try {
       const data = yaml.load(fs.readFileSync(file, 'utf8'))
-      Object.assign(yamlData, data)
+      yamlData[file] = data
     } catch (error) {
       console.error('Error:', error)
     }
   })
-  // console.log('loadYAMLFiles: yamlData', yamlData)
   return yamlData
 }
 
-function writeCSS(yamlData) {
-  // console.log('writing CSS...')
+function writeCSS(filePath, yamlData) {
 
   let cssOutput = `/* DO NOT EDIT DIRECTLY */\n`
+
+  const fileName = filePath.replace('.yaml', '.scss')
 
   // check if child properties are present
   const hasChildProperties = Object.values(yamlData).some(
@@ -64,19 +56,31 @@ function writeCSS(yamlData) {
     cssOutput += `}\n`
   }
   // console.log('fs.writeFileSync', cssOutput)
-  fs.writeFileSync('_variables.css', cssOutput)
+  fs.writeFileSync(fileName, cssOutput)
 }
 
 function main() {
   console.log('Watching for changes in YAML files...')
   try {
-    // console.log('loading YAML files...')
-    const yamlData = loadYAMLFiles('./*.yaml')
-    writeCSS(yamlData)
+    const yamlFilesData = loadYAMLFiles('./*.yaml')
+    for (const [filePath, yamlData] of Object.entries(yamlFilesData)) {
+      writeCSS(filePath, yamlData)
+    }
   } catch (error) {
     console.error('Error:', error)
   }
 }
+
+// function main() {
+//   console.log('Watching for changes in YAML files...')
+//   try {
+//     // console.log('loading YAML files...')
+//     const yamlData = loadYAMLFiles('./*.yaml')
+//     writeCSS(yamlData)
+//   } catch (error) {
+//     console.error('Error:', error)
+//   }
+// }
 
 // Watch for changes in YAML files
 const watcher = chokidar.watch('./*.yaml')
