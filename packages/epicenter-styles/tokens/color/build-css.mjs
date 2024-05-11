@@ -55,7 +55,7 @@ function writeCSS(filePath, yamlData) {
 
     cssOutput += `}\n`
   }
-  // console.log('fs.writeFileSync', cssOutput)
+
   fs.writeFileSync(fileName, cssOutput)
 }
 
@@ -70,17 +70,6 @@ function main() {
     console.error('Error:', error)
   }
 }
-
-// function main() {
-//   console.log('Watching for changes in YAML files...')
-//   try {
-//     // console.log('loading YAML files...')
-//     const yamlData = loadYAMLFiles('./*.yaml')
-//     writeCSS(yamlData)
-//   } catch (error) {
-//     console.error('Error:', error)
-//   }
-// }
 
 // Watch for changes in YAML files
 const watcher = chokidar.watch('./*.yaml')
