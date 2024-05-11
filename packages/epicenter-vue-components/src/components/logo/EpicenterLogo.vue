@@ -57,9 +57,9 @@
 <style lang="scss" scoped>
   svg {
     --logo-face-color: #fff16c;
-    --logo-hightlight-color: var(--white);
-    --logo-shadow-color: var(--black);
-    --logo-stroke-color: var(--black);
+    --logo-hightlight-color: hsl(var(--gray-0));
+    --logo-shadow-color: hsl(var(--gray-500));
+    --logo-stroke-color: hsl(var(--gray-500));
     --logo-stroke-width: 3;
     display: block;
     // scales with container

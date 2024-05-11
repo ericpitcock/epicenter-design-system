@@ -2,6 +2,7 @@ import fs from 'fs'
 import yaml from 'js-yaml'
 import chokidar from 'chokidar'
 import * as glob from 'glob'
+import path from 'path' // Import the path module
 
 function loadYAMLFiles(pattern) {
   const yamlData = {}
@@ -18,17 +19,14 @@ function loadYAMLFiles(pattern) {
 }
 
 function writeCSS(filePath, yamlData) {
-
   let cssOutput = `/* DO NOT EDIT DIRECTLY */\n`
 
-  const fileName = filePath.replace('.yaml', '.scss')
+  const fileName = path.join('..', '..', 'scss', 'color', `_${path.basename(filePath).replace('.yaml', '.scss')}`) // Construct the new file path
 
-  // check if child properties are present
   const hasChildProperties = Object.values(yamlData).some(
     value => typeof value === 'object'
   )
 
-  // if there are no child properties return all values in the root
   if (!hasChildProperties) {
     cssOutput += `:root {\n`
 
@@ -38,7 +36,6 @@ function writeCSS(filePath, yamlData) {
 
     cssOutput += `}\n`
   } else {
-
     cssOutput += `:root {\n`
 
     Object.entries(yamlData).forEach(([key, value]) => {
@@ -57,6 +54,7 @@ function writeCSS(filePath, yamlData) {
   }
 
   fs.writeFileSync(fileName, cssOutput)
+  console.log(`SCSS file generated: ${fileName}`)
 }
 
 function main() {
@@ -71,13 +69,11 @@ function main() {
   }
 }
 
-// Watch for changes in YAML files
 const watcher = chokidar.watch('./*.yaml')
 
 watcher.on('change', () => {
-  console.log('YAML file changed, regenerating CSS...')
-  main() // Re-run the script to generate updated CSS
+  console.log('YAML file changed, regenerating SCSS...')
+  main() // Re-run the script to generate updated SCSS
 })
 
-// Initial run
-main()
+main() // Initial run

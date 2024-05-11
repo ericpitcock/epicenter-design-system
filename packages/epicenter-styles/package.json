@@ -13,10 +13,13 @@
   },
   "author": "Eric Pitcock",
   "devDependencies": {
+    "chokidar": "^3.6.0",
     "highcharts": "^8.1.2",
+    "js-yaml": "^4.1.0",
     "mapbox-gl": "^1.10.1",
     "sass": "^1.44.0",
     "style-dictionary": "^3.1.0",
-    "tinycolor2": "^1.6.0"
+    "tinycolor2": "^1.6.0",
+    "yaml": "^2.4.2"
   }
 }

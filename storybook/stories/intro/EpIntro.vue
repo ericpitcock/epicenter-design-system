@@ -72,7 +72,7 @@
       background:
         radial-gradient(circle 200px at -5% -10%, hsl(60, 100%, 50%), transparent),
         linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--primary-color-base) 79%);
-      color: var(--gray-440);
+      color: hsl(var(--gray-440));
       border-radius: var(--border-radius--large) var(--border-radius--large) 0 0;
       overflow: hidden;
 

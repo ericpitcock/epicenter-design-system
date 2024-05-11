@@ -1,4 +1,4 @@
-@use '../packages/epicenter-styles/scss/themes/_primary-color.scss' as *;
+@use '../packages/epicenter-styles/scss/mixins/_generate-color-variants.scss' as *;
 // define your primary color's hue, saturation, and lightness here
 // and variants will be generated for you
 $primary-color-hue: 214;

@@ -1,17 +1,17 @@
 :root {
   // interface
-  --interface-bg: var(--gray-430);
-  --interface-bg--accent: var(--gray-420);
-  --interface-surface: var(--gray-440);
-  --interface-surface--accent: var(--gray-420);
-  --interface-foreground: var(--gray-430);
-  --interface-foreground--accent: var(--gray-420);
-  --interface-overlay: var(--gray-390);
-  --interface-overlay--accent: var(--gray-380);
+  --interface-bg: hsl(var(--gray-430));
+  --interface-bg--accent: hsl(var(--gray-420));
+  --interface-surface: hsl(var(--gray-440));
+  --interface-surface--accent: hsl(var(--gray-420));
+  --interface-foreground: hsl(var(--gray-430));
+  --interface-foreground--accent: hsl(var(--gray-420));
+  --interface-overlay: hsl(var(--gray-390));
+  --interface-overlay--accent: hsl(var(--gray-380));
   // borders
-  --border-color: var(--gray-380);
-  --border-color--lighter: var(--gray-340);
-  --border-color--disabled: var(--gray-400);
+  --border-color: hsl(var(--gray-380));
+  --border-color--lighter: hsl(var(--gray-340));
+  --border-color--disabled: hsl(var(--gray-400));
   // overlay
   --overlay-color: rgba(36, 36, 36, 0.85);
   // shadow
@@ -22,13 +22,13 @@
   --drop-shadow--large: 0 2px 20px rgba(0, 0, 0, 0.5);
   --drop-shadow--large--north: 0 -10px 10px rgba(0, 0, 0, 0.25);
   // text
-  // --text-color: var(--gray-50);
+  // --text-color: hsl(var(--gray-50));
   // new decreased contrast
   // --text-color: hsl(0 0% 67% / 1);
   // closest match for above
-  --text-color: var(--gray-150);
-  --text-color--disabled: var(--gray-130);
-  --text-color--loud: var(--gray-50);
+  --text-color: hsl(var(--gray-150));
+  --text-color--disabled: hsl(var(--gray-130));
+  --text-color--loud: hsl(var(--gray-50));
   --text-color--inverse: var(--interface-bg);
   --text-color--highlight: var(--yellow-600);
   --text-color--placeholder: var(--text-color--subtle);
@@ -41,9 +41,9 @@
   // text color
   --text-color--primary: var(--blue-400);
   // subtle text
-  --text-color--subtle: var(--gray-220);
+  --text-color--subtle: hsl(var(--gray-220));
   // text color disabled
-  --text-color--disabled: var(--gray-300);
+  --text-color--disabled: hsl(var(--gray-300));
   // links
   --text-color--link: var(--sky-300);
   // danger
@@ -56,13 +56,13 @@
   // text selection color
   --text-selection: var(--yellow-600);
   // buttons
-  --button-disabled--bg-color: var(--gray-400);
+  --button-disabled--bg-color: hsl(var(--gray-400));
   --button-disabled--border-color: var(--4utton-disabled--bg-color);
-  --button-disabled--text: var(--gray-270);
-  --button-secondary--hover: var(--gray-410);
-  --button-secondary--active: var(--gray-430);
-  --button-ghost--hover: var(--gray-390);
-  --button-ghost--active: var(--gray-500);
+  --button-disabled--text: hsl(var(--gray-270));
+  --button-secondary--hover: hsl(var(--gray-410));
+  --button-secondary--active: hsl(var(--gray-430));
+  --button-ghost--hover: hsl(var(--gray-390));
+  --button-ghost--active: hsl(var(--gray-500));
   --button-ghost--text: var(--text-color);
   --button-menu-item--hover: var(--color--primary);
   --button-menu-item--active: var(--primary-color--active);
@@ -70,15 +70,15 @@
   --button-menu-item-text-active: var(--text--white);
   // table
   --table-stripe-color: var(--interface-foreground);
-  --table-row-hover-color: var(--gray-450);
+  --table-row-hover-color: hsl(var(--gray-450));
   // toggle
-  --toggle-track: var(--gray-400);
+  --toggle-track: hsl(var(--gray-400));
   --toggle-track-border: var(--border-color);
   --toggle-track--active: var(--emerald-500);
   --toggle-track-border--active: var(--emerald-500);
-  --toggle-thumb: var(--gray-50);
-  --toggle-thumb--active: var(--gray-50);
-  --toggle-thumb--disabled: var(--gray-380);
+  --toggle-thumb: hsl(var(--gray-50));
+  --toggle-thumb--active: hsl(var(--gray-50));
+  --toggle-thumb--disabled: hsl(var(--gray-380));
   // chart sequence
   --chart-sequence-00: var(--violet-600);
   --chart-sequence-01: var(--sky-500);
@@ -95,7 +95,7 @@
   --chart-sequence-12: var(--amber-700);
   --chart-sequence-13: var(--purple-300);
   // alert colors
-  --bg-color--alert-low: var(--gray-300);
+  --bg-color--alert-low: hsl(var(--gray-300));
   --bg-color--alert-medium: var(--yellow-400);
   --bg-color--alert-high: var(--amber-500);
   --bg-color--alert-critical: var(--red-500);

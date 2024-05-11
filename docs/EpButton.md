@@ -30,7 +30,7 @@ To use **`EpButton`** in your Vue.js application, simply import the component an
           label: 'Download the Internet',
           iconLeft: {
             name: 'download',
-            color: 'var(--white)',
+            color: 'hsl(var(--gray-0))',
             size: '24'
           }
         }
@@ -75,7 +75,7 @@ To use **`EpButton`** in your Vue.js application, simply import the component an
   label: 'Download the Internet',
   iconLeft: {
     name: 'download',
-    color: 'var(--white)',
+    color: 'hsl(var(--gray-0))',
     size: '24'
   }
 }

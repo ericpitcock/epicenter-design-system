@@ -1,8 +1,9 @@
-@use '../mixins/mixins';
+:root {
+  --table-border-color: var(--border-color);
+}
 
 .ep-table-container {
   overflow: auto;
-  // @include mixins.hide-scrollbar;
 }
 
 .ep-table {

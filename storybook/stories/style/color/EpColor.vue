@@ -36,8 +36,8 @@
   import EpContainer from '@/components/container/EpContainer.vue'
   import EpMenu from '@/components/menu/EpMenu.vue'
   import EpTable from '@/components/table/EpTable.vue'
-  import colors from '../../../../packages/epicenter-styles/tokens/color/color.json'
-  import grayscale from '../../../../packages/epicenter-styles/tokens/color/grayscale.json'
+  import colors from './color.json'
+  import grayscale from './grayscale.json'
   import copyToClipboard from '@/mixins/copyToClipboard.js'
   // import { mapState } from 'vuex'
 
@@ -170,13 +170,13 @@
           {
             header: 'CSS Custom Property',
             key: 'css',
-            command: (value, key) => this.copyToClipboard(value),
+            command: (value) => this.copyToClipboard(value),
             style: 'text--copyable'
           },
           {
             header: 'Hex',
             key: 'hex',
-            command: (value, key) => this.copyToClipboard(value),
+            command: (value) => this.copyToClipboard(value),
             style: 'text--copyable'
           }
         ],

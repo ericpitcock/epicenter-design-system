@@ -92,8 +92,8 @@ export const Logo = args => ({
 Logo.args = {
   size: 200,
   strokeWidth: 2,
-  strokeColor: 'var(--black)',
+  strokeColor: 'hsl(var(--gray-500))',
   faceColor: '#fff16c',
-  highlightColor: 'var(--white)',
-  shadowColor: 'var(--black)'
+  highlightColor: 'hsl(var(--gray-0))',
+  shadowColor: 'hsl(var(--gray-500))'
 }
