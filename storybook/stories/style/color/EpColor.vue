@@ -5,7 +5,7 @@
       menu-type="nav"
       :active-item="activeItem"
       :container-props="containerProps"
-      @click="item => (activeItem = item.label)"
+      @click="filterColorTable"
     />
     <ep-container
       id="colors__table"
@@ -59,93 +59,27 @@
         activeItem: 'All',
         filter: '',
         menuItems: [
-          // {
-          //   section: true,
-          //   label: 'Specific Use'
-          // },
-          // { label: 'Alert (Coming Soon)', },
-          {
-            label: 'Chart Sequence',
-            command: () => (this.filter = 'Chart')
-          },
-          // { label: 'Chart Sequence Expanded (Coming Soon)', },
+          { label: 'Chart Sequence', },
           { divider: true },
-          {
-            label: 'All',
-            command: () => (this.filter = '')
-          },
-          {
-            label: 'Grayscale',
-            command: () => (this.filter = 'gray')
-          },
-          {
-            label: 'Red',
-            command: () => (this.filter = 'red')
-          },
-          {
-            label: 'Orange',
-            command: () => (this.filter = 'orange')
-          },
-          {
-            label: 'Amber',
-            command: () => (this.filter = 'amber')
-          },
-          {
-            label: 'Yellow',
-            command: () => (this.filter = 'yellow')
-          },
-          {
-            label: 'Lime',
-            command: () => (this.filter = 'lime')
-          },
-          {
-            label: 'Green',
-            command: () => (this.filter = 'green')
-          },
-          {
-            label: 'Emerald',
-            command: () => (this.filter = 'emerald')
-          },
-          {
-            label: 'Teal',
-            command: () => (this.filter = 'teal')
-          },
-          {
-            label: 'Cyan',
-            command: () => (this.filter = 'cyan')
-          },
-          {
-            label: 'Sky',
-            command: () => (this.filter = 'sky')
-          },
-          {
-            label: 'Blue',
-            command: () => (this.filter = 'blue')
-          },
-          {
-            label: 'Indigo',
-            command: () => (this.filter = 'indigo')
-          },
-          {
-            label: 'Violet',
-            command: () => (this.filter = 'violet')
-          },
-          {
-            label: 'Purple',
-            command: () => (this.filter = 'purple')
-          },
-          {
-            label: 'Fuchsia',
-            command: () => (this.filter = 'fuchsia')
-          },
-          {
-            label: 'Pink',
-            command: () => (this.filter = 'pink')
-          },
-          {
-            label: 'Rose',
-            command: () => (this.filter = 'rose')
-          }
+          { label: 'All' },
+          { label: 'Grayscale' },
+          { label: 'Red' },
+          { label: 'Orange' },
+          { label: 'Amber' },
+          { label: 'Yellow' },
+          { label: 'Lime' },
+          { label: 'Green' },
+          { label: 'Emerald' },
+          { label: 'Teal' },
+          { label: 'Cyan' },
+          { label: 'Sky' },
+          { label: 'Blue' },
+          { label: 'Indigo' },
+          { label: 'Violet' },
+          { label: 'Purple' },
+          { label: 'Fuchsia' },
+          { label: 'Pink', },
+          { label: 'Rose' }
         ],
         tableColumns: [
           {
@@ -266,6 +200,20 @@
           return 'AAA &check;'
         }
       },
+      filterColorTable(item) {
+        console.log(item)
+        this.activeItem = item.label
+
+        let filter = item.label.toLowerCase()
+        if (item.label === 'Chart Sequence') {
+          filter = 'Chart'
+        }
+        if (item.label === 'Grayscale') {
+          filter = 'gray'
+        }
+
+        this.filter = filter
+      }
     },
   }
 </script>
