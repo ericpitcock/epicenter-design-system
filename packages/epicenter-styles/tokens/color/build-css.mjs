@@ -1,13 +1,18 @@
-const fs = require('fs')
-const yaml = require('js-yaml')
-const chokidar = require('chokidar')
-const glob = require('glob')
+// const fs = require('fs')
+// const yaml = require('js-yaml')
+// const chokidar = require('chokidar')
+// const glob = require('glob')
+import fs from 'fs'
+import yaml from 'js-yaml'
+import chokidar from 'chokidar'
+import * as glob from 'glob'
 
 // capture arguments passed to the script if needed
 // const args = process.argv.slice(2)
 
 function loadYAMLFiles(pattern) {
   const yamlData = {}
+  // console.log('loadYAMLFiles: about to glob')
   const files = glob.sync(pattern)
   files.forEach(file => {
     try {
@@ -17,10 +22,12 @@ function loadYAMLFiles(pattern) {
       console.error('Error:', error)
     }
   })
+  // console.log('loadYAMLFiles: yamlData', yamlData)
   return yamlData
 }
 
 function writeCSS(yamlData) {
+  // console.log('writing CSS...')
 
   let cssOutput = `/* DO NOT EDIT DIRECTLY */\n`
 
@@ -56,12 +63,14 @@ function writeCSS(yamlData) {
 
     cssOutput += `}\n`
   }
-
+  // console.log('fs.writeFileSync', cssOutput)
   fs.writeFileSync('_variables.css', cssOutput)
 }
 
 function main() {
+  console.log('Watching for changes in YAML files...')
   try {
+    // console.log('loading YAML files...')
     const yamlData = loadYAMLFiles('./*.yaml')
     writeCSS(yamlData)
   } catch (error) {
