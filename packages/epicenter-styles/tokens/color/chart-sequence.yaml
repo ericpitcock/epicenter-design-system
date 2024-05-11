@@ -1,0 +1,35 @@
+chart-sequence-00:
+  dark: hsl(256, 32%, 53%)
+chart-sequence-01:
+  dark: hsl(189, 43%, 56%)
+chart-sequence-02:
+  dark: hsl(212, 57%, 75%)
+chart-sequence-03:
+  dark: hsl(204, 8%, 47%)
+chart-sequence-04:
+  dark: hsl(284, 41%, 70%)
+chart-sequence-05:
+  dark: hsl(219, 69%, 55%)
+chart-sequence-06:
+  dark: hsl(46, 84%, 49%)
+chart-sequence-07:
+  dark: hsl(30, 14%, 59%)
+chart-sequence-08:
+  dark: hsl(178, 100%, 25%)
+chart-sequence-09:
+  dark: hsl(22, 89%, 45%)
+chart-sequence-10:
+  dark: hsl(320, 53%, 53%)
+chart-sequence-11:
+  dark: hsl(65, 54%, 60%)
+chart-sequence-12:
+  dark: hsl(40, 40%, 34%)
+chart-sequence-13:
+  dark: hsl(81, 100%, 37%)
+chart-sequence-14:
+  dark: hsl(28, 100%, 77%)
+chart-sequence-15:
+  dark: hsl(0, 0%, 96%)
+  light: hsl(0, 0%, 28%)
+chart-sequence-16:
+  dark: hsl(197, 74%, 68%)

@@ -106,6 +106,47 @@ textarea {
 
 /* DO NOT EDIT DIRECTLY */
 :root {
+  --chart-sequence-00: hsl(256, 32%, 53%);
+  --chart-sequence-01: hsl(189, 43%, 56%);
+  --chart-sequence-02: hsl(212, 57%, 75%);
+  --chart-sequence-03: hsl(204, 8%, 47%);
+  --chart-sequence-04: hsl(284, 41%, 70%);
+  --chart-sequence-05: hsl(219, 69%, 55%);
+  --chart-sequence-06: hsl(46, 84%, 49%);
+  --chart-sequence-07: hsl(30, 14%, 59%);
+  --chart-sequence-08: hsl(178, 100%, 25%);
+  --chart-sequence-09: hsl(22, 89%, 45%);
+  --chart-sequence-10: hsl(320, 53%, 53%);
+  --chart-sequence-11: hsl(65, 54%, 60%);
+  --chart-sequence-12: hsl(40, 40%, 34%);
+  --chart-sequence-13: hsl(81, 100%, 37%);
+  --chart-sequence-14: hsl(28, 100%, 77%);
+  --chart-sequence-15: hsl(0, 0%, 96%);
+  --chart-sequence-16: hsl(197, 74%, 68%);
+}
+
+html[data-color-theme=light] {
+  --chart-sequence-00: hsl(256, 32%, 53%);
+  --chart-sequence-01: hsl(189, 43%, 56%);
+  --chart-sequence-02: hsl(212, 57%, 75%);
+  --chart-sequence-03: hsl(204, 8%, 47%);
+  --chart-sequence-04: hsl(284, 41%, 70%);
+  --chart-sequence-05: hsl(219, 69%, 55%);
+  --chart-sequence-06: hsl(46, 84%, 49%);
+  --chart-sequence-07: hsl(30, 14%, 59%);
+  --chart-sequence-08: hsl(178, 100%, 25%);
+  --chart-sequence-09: hsl(22, 89%, 45%);
+  --chart-sequence-10: hsl(320, 53%, 53%);
+  --chart-sequence-11: hsl(65, 54%, 60%);
+  --chart-sequence-12: hsl(40, 40%, 34%);
+  --chart-sequence-13: hsl(81, 100%, 37%);
+  --chart-sequence-14: hsl(28, 100%, 77%);
+  --chart-sequence-15: hsl(0, 0%, 28%);
+  --chart-sequence-16: hsl(197, 74%, 68%);
+}
+
+/* DO NOT EDIT DIRECTLY */
+:root {
   --red-50: 0, 86%, 97%;
   --red-100: 0, 93%, 94%;
   --red-200: 0, 96%, 89%;
@@ -406,20 +447,6 @@ textarea {
   --toggle-thumb: hsl(var(--gray-50));
   --toggle-thumb--active: hsl(var(--gray-50));
   --toggle-thumb--disabled: hsl(var(--gray-380));
-  --chart-sequence-00: var(--violet-600);
-  --chart-sequence-01: var(--sky-500);
-  --chart-sequence-02: var(--teal-700);
-  --chart-sequence-03: var(--pink-400);
-  --chart-sequence-04: var(--red-500);
-  --chart-sequence-05: var(--red-50);
-  --chart-sequence-06: var(--green-400);
-  --chart-sequence-07: var(--blue-500);
-  --chart-sequence-08: var(--pink-600);
-  --chart-sequence-09: var(--yellow-500);
-  --chart-sequence-10: var(--teal-500);
-  --chart-sequence-11: var(--sky-200);
-  --chart-sequence-12: var(--amber-700);
-  --chart-sequence-13: var(--purple-300);
   --bg-color--alert-low: hsl(var(--gray-300));
   --bg-color--alert-medium: var(--yellow-400);
   --bg-color--alert-high: var(--amber-500);
@@ -482,20 +509,6 @@ html[data-color-theme=light] {
   --toggle-thumb: hsl(var(--gray-0));
   --toggle-thumb--active: hsl(var(--gray-50));
   --toggle-thumb--disabled: hsl(var(--gray-50));
-  --chart-sequence-00: var(--violet-700);
-  --chart-sequence-01: var(--sky-500);
-  --chart-sequence-02: var(--teal-800);
-  --chart-sequence-03: var(--pink-800);
-  --chart-sequence-04: var(--red-500);
-  --chart-sequence-05: var(--red-900);
-  --chart-sequence-06: var(--green-700);
-  --chart-sequence-07: var(--blue-800);
-  --chart-sequence-08: var(--pink-500);
-  --chart-sequence-09: var(--yellow-600);
-  --chart-sequence-10: var(--teal-600);
-  --chart-sequence-11: var(--sky-900);
-  --chart-sequence-12: var(--amber-800);
-  --chart-sequence-13: var(--violet-400);
   --bg-color--alert-low: hsl(var(--gray-130));
   --bg-color--alert-medium: var(--yellow-400);
   --bg-color--alert-high: var(--amber-500);
@@ -1403,6 +1416,26 @@ g.highcharts-series,
 .highcharts-color-13 {
   fill: var(--chart-sequence-13);
   stroke: var(--chart-sequence-13);
+}
+
+.highcharts-color-14 {
+  fill: var(--chart-sequence-14);
+  stroke: var(--chart-sequence-14);
+}
+
+.highcharts-color-15 {
+  fill: var(--chart-sequence-15);
+  stroke: var(--chart-sequence-15);
+}
+
+.highcharts-color-16 {
+  fill: var(--chart-sequence-16);
+  stroke: var(--chart-sequence-16);
+}
+
+.highcharts-color-17 {
+  fill: var(--chart-sequence-17);
+  stroke: var(--chart-sequence-17);
 }
 
 .highcharts-area {
