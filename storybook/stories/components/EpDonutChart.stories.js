@@ -1,10 +1,10 @@
-import { centered } from '../../helpers/decorators.js'
+import { centeredBg } from '../../helpers/decorators.js'
 import EpDonutChart from '@/components/charts/EpDonutChart.vue'
 
 export default {
   title: 'Components/Charts/Donut Chart',
   component: EpDonutChart,
-  decorators: [centered],
+  decorators: [centeredBg],
   argTypes: {
     animate: {
       table: { disable: true }

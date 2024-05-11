@@ -1,11 +1,11 @@
-import { centered } from '../../helpers/decorators.js'
+import { centeredBg } from '../../helpers/decorators.js'
 import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 
 export default {
   title: 'Components/Button/Split Button',
   component: EpSplitButton,
-  decorators: [centered],
+  decorators: [centeredBg],
   argTypes: {
     disabled: {
       name: 'Disabled',

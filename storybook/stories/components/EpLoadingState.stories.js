@@ -1,4 +1,4 @@
-import { padded } from '../../helpers/decorators.js'
+import { paddedBg } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpFooter from '@/components/footer/EpFooter.vue'
@@ -11,7 +11,7 @@ import { ref, onMounted } from 'vue'
 export default {
   title: 'Components/Loading State',
   component: EpLoadingState,
-  decorators: [padded],
+  decorators: [paddedBg],
   argTypes: {
     backgroundColor: {
       name: 'Background Color',

@@ -1,4 +1,4 @@
-import { padded } from '../../helpers/decorators.js'
+import { paddedBg } from '../../helpers/decorators.js'
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
@@ -14,7 +14,7 @@ const tableData = fakeArray(30)
 export default {
   title: 'Components/Table',
   component: EpTable,
-  decorators: [padded],
+  decorators: [paddedBg],
   argTypes: {
     bordered: {
       name: 'Bordered',

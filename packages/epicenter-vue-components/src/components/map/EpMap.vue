@@ -79,7 +79,14 @@
       pinLocations() {
         this.removeMarkers()
         this.addMarkers()
-      }
+      },
+      scrollZoom(newScrollZoom) {
+        if (newScrollZoom) {
+          this.map.scrollZoom.enable()
+        } else {
+          this.map.scrollZoom.disable()
+        }
+      },
     },
     mounted() {
       this.loadMap().then(() => {

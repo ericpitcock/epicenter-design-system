@@ -74,13 +74,9 @@ export default {
         type: 'boolean'
       }
     },
-    navigationControl: {
-      name: 'Navigation Control',
-      control: {
-        type: 'boolean'
-      }
-    },
-    fitToBounds: { table: { disable: true } }
+    navigationControl: { table: { disable: true } },
+    fitToBounds: { table: { disable: true } },
+    pinLocations: { table: { disable: true } }
   }
 }
 

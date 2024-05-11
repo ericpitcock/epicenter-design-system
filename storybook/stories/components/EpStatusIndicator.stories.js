@@ -1,25 +1,32 @@
-import { centered } from '../../helpers/decorators.js'
+import { centeredSurface } from '../../helpers/decorators.js'
 import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.vue'
 import EpTooltip from '@/components/tooltip/EpTooltip.vue'
+import { computed } from 'vue'
 
 export default {
   title: 'Components/Status Indicator',
   component: EpStatusIndicator,
-  decorators: [centered],
+  decorators: [centeredSurface],
   argTypes: {
-    styles: {
-      name: 'Styles',
+    dotColor: {
+      name: 'Dot Color',
       control: {
-        type: 'object'
+        type: 'color'
       }
     },
+    styles: { table: { disable: true } }
   }
 }
 
 export const StatusIndicator = args => ({
   components: { EpStatusIndicator, EpTooltip },
   setup() {
-    return { args }
+    const styles = computed(() => ({
+      '--ep-status-indicator-dot-bg': args.dotColor,
+      '--ep-status-indicator-dot-border': args.dotColor,
+    }))
+
+    return { args, styles }
   },
   template: `
     <ep-tooltip>
@@ -28,7 +35,7 @@ export const StatusIndicator = args => ({
           <p>Last active 2 hours ago</p>
         </div>
       </template>
-      <ep-status-indicator v-bind="args">
+      <ep-status-indicator v-bind="args" :style="styles">
         Carlos Picah
       </ep-status-indicator>
     </ep-tooltip>
@@ -36,8 +43,5 @@ export const StatusIndicator = args => ({
 })
 
 StatusIndicator.args = {
-  styles: {
-    '--ep-status-indicator-dot-bg': 'purple',
-    '--ep-status-indicator-dot-border': 'purple',
-  }
+  dotColor: '#509b0d'
 }

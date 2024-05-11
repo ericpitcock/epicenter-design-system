@@ -1,10 +1,10 @@
-import { padded } from '../../helpers/decorators.js'
+import { paddedSurface } from '../../helpers/decorators.js'
 import EpMultiSearch from '@/components/search/EpMultiSearch.vue'
 
 export default {
   title: 'Components/Search/Multisearch',
   component: EpMultiSearch,
-  decorators: [padded],
+  decorators: [paddedSurface],
   argTypes: {
     placeholder: {
       name: 'Placeholder',

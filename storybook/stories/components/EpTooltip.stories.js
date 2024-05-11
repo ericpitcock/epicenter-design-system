@@ -1,10 +1,10 @@
 import EpTooltip from '@/components/tooltip/EpTooltip.vue'
-import { centered } from '../../helpers/decorators.js'
+import { centeredBg } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Tooltip',
   component: EpTooltip,
-  decorators: [centered],
+  decorators: [centeredBg],
   argTypes: {
     delay: {
       name: 'Delay',

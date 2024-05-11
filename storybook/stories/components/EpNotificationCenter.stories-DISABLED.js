@@ -1,11 +1,11 @@
-import { padded } from '../../helpers/decorators.js'
+import { paddedBg } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpNotifications from '@/components/notification/EpNotifications.vue'
 
 export default {
   title: 'Components/Notifications/Notification Center',
   component: EpNotifications,
-  decorators: [padded],
+  decorators: [paddedBg],
   argTypes: {
     emptyStateMessage: {
       name: 'Empty State Message',

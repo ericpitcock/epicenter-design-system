@@ -1,10 +1,10 @@
-import { centered } from '../../helpers/decorators.js'
+import { centeredBg } from '../../helpers/decorators.js'
 import EpButtonGroup from '@/components/button-group/EpButtonGroup.vue'
 
 export default {
   title: 'Components/Button/Button Group',
   component: EpButtonGroup,
-  decorators: [centered],
+  decorators: [centeredBg],
   argTypes: {
     disabled: {
       name: 'Disabled',

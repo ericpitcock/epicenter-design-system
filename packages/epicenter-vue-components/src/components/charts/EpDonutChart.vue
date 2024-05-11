@@ -141,7 +141,7 @@
 
         // Set up the color scale
         var color = d3.scaleOrdinal()
-          .range(['var(--chart-sequence-1)', 'var(--chart-sequence-2)', 'var(--chart-sequence-3)', 'var(--chart-sequence-4)'])
+          .range(['var(--chart-sequence-01)', 'var(--chart-sequence-02)', 'var(--chart-sequence-03)', 'var(--chart-sequence-04)'])
 
         // Set up the arc generator
         var arc = d3.arc()
@@ -151,7 +151,7 @@
         // Set up the pie generator
         var pie = d3.pie()
           .sort(null)
-          .value(function (d) { return d })
+          .value(function(d) { return d })
 
         // Generate the arcs
         var arcs = g.selectAll('arc')
@@ -163,7 +163,7 @@
         // Draw the paths for the arcs
         arcs.append('path')
           .attr('d', arc)
-          .attr('fill', function (d) {
+          .attr('fill', function(d) {
             return color(d.data)
           })
           .attr('stroke', 'var(--interface-bg)')
@@ -178,9 +178,9 @@
             .attr('d', arc)
             .transition()
             .duration(700)
-            .attrTween('d', function (d) {
+            .attrTween('d', function(d) {
               var interpolate = d3.interpolate(d.startAngle, d.endAngle)
-              return function (t) {
+              return function(t) {
                 d.endAngle = interpolate(t)
                 return arc(d)
               }

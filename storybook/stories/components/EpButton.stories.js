@@ -1,4 +1,4 @@
-import { centered } from '../../helpers/decorators.js'
+import { centeredBg } from '../../helpers/decorators.js'
 import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpButton from '@/components/button/EpButton.vue'
 // import markdown from '../../../docs/EpButton.md'
@@ -7,7 +7,7 @@ import { computed } from 'vue'
 export default {
   title: 'Components/Button',
   component: EpButton,
-  decorators: [centered],
+  decorators: [centeredBg],
   // parameters: {
   //   docs: {
   //     description: {

@@ -1,10 +1,10 @@
-import { padded } from '../../helpers/decorators.js'
+import { paddedBg } from '../../helpers/decorators.js'
 import EpBrowserFrame from '@/components/browser-frame/EpBrowserFrame.vue'
 
 export default {
   title: 'Components/Browser Frame',
   component: EpBrowserFrame,
-  decorators: [padded],
+  decorators: [paddedBg],
   argTypes: {
     width: {
       name: 'Width',

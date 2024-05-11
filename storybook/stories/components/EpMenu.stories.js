@@ -1,4 +1,4 @@
-import { centered } from '../../helpers/decorators.js'
+import { centeredBg } from '../../helpers/decorators.js'
 import EpMenu from '@/components/menu/EpMenu.vue'
 
 const fakeMenuItems = [
@@ -101,7 +101,7 @@ const fakeMenuItems = [
 export default {
   title: 'Components/Menu',
   component: EpMenu,
-  decorators: [centered],
+  decorators: [centeredBg],
   argTypes: {
     size: {
       name: 'Size',

@@ -1,4 +1,4 @@
-import { padded } from '../../helpers/decorators.js'
+import { paddedBg } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpKeyValueTable from '@/components/key-value-table/EpKeyValueTable.vue'
 
@@ -54,7 +54,7 @@ const fakeData = {
 export default {
   title: 'Components/Table/Key Value Table',
   component: EpKeyValueTable,
-  decorators: [padded],
+  decorators: [paddedBg],
   argTypes: {
     data: {
       table: {

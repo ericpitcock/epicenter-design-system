@@ -1,7 +1,7 @@
 /* eslint-disable vue/one-component-per-file */
-import { useRoute } from 'vue-router'
-import routerViewWrapper from '../../helpers/routerViewWrapper.vue'
-import { padded } from '../../helpers/decorators.js'
+// import { useRoute } from 'vue-router'
+// import routerViewWrapper from '../../helpers/routerViewWrapper.vue'
+import { paddedBg } from '../../helpers/decorators.js'
 import EpBreadcrumb from '@/components/breadcrumb/EpBreadcrumb.vue'
 
 const Home = {
@@ -64,7 +64,7 @@ const routes = [
 export default {
   title: 'Components/Breadcrumb',
   component: routerViewWrapper,
-  decorators: [padded],
+  decorators: [paddedBg],
 }
 
 export const Breadcrumb = args => ({

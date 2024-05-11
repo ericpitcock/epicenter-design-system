@@ -1,5 +1,5 @@
 import Prism from 'prismjs'
-import { padded } from '../../helpers/decorators.js'
+import { paddedBg } from '../../helpers/decorators.js'
 import EpCodeView from '@/components/code-view/EpCodeView.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
 import { codeExamples } from '../../helpers/codeExamples.js'
@@ -8,7 +8,7 @@ import { computed, nextTick, watch } from 'vue'
 export default {
   title: 'Components/Code View',
   component: EpCodeView,
-  decorators: [padded],
+  decorators: [paddedBg],
   argTypes: {
     code: {
       table: { disable: true }

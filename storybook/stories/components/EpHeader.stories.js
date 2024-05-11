@@ -1,10 +1,10 @@
-import { padded } from '../../helpers/decorators.js'
+import { paddedBg } from '../../helpers/decorators.js'
 import EpHeader from '@/components/header/EpHeader.vue'
 
 export default {
   title: 'Components/Container/Header',
   component: EpHeader,
-  decorators: [padded],
+  decorators: [paddedBg],
   argTypes: {
     width: {
       name: 'Width',

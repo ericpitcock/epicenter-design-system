@@ -1,10 +1,10 @@
-import { padded } from '../../helpers/decorators.js'
+import { paddedBg } from '../../helpers/decorators.js'
 import EpFooter from '@/components/footer/EpFooter.vue'
 
 export default {
   title: 'Components/Container/Footer',
   component: EpFooter,
-  decorators: [padded],
+  decorators: [paddedBg],
   argTypes: {
     width: {
       name: 'Width',

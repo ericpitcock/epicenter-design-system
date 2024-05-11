@@ -1,10 +1,11 @@
+import { centeredCyanBlueGradient } from '../../helpers/decorators.js'
 import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
 import { computed } from 'vue'
 
 export default {
   title: 'Components/Logo',
   component: EpicenterLogo,
-  // decorators: [centered],
+  decorators: [centeredCyanBlueGradient],
   argTypes: {
     size: {
       name: 'Size',
@@ -57,17 +58,6 @@ export default {
 export const Logo = args => ({
   components: { EpicenterLogo },
   setup() {
-    const containerStyle = {
-      position: 'relative',
-      display: 'grid',
-      placeContent: 'center',
-      width: '100%',
-      height: '100%',
-      background: `radial-gradient(circle 200px at -5% -10%, hsl(60, 100%, 50%), transparent),
-      linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--primary-color-base) 79%)`,
-      overflow: 'hidden'
-    }
-
     const styles = computed(() => {
       return {
         '--logo-face-color': args.faceColor,
@@ -78,15 +68,9 @@ export const Logo = args => ({
       }
     })
 
-    return { args, containerStyle, styles }
+    return { args, styles }
   },
-  template: `
-    <div :style="containerStyle">
-      <div class="bounding-box" :style="{ width: args.size + 'px' }">
-        <epicenter-logo v-bind="args" :styles="styles" />
-      </div>
-    </div>
-  `
+  template: '<epicenter-logo v-bind="args" :styles="styles" />'
 })
 
 Logo.args = {
