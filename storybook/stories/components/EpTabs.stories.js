@@ -4,7 +4,7 @@ import EpFooter from '@/components/footer/EpFooter.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpTabs from '@/components/tabs/EpTabs.vue'
 import EpTabContent from '@/components/tabs/EpTabContent.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export default {
   title: 'Components/Tabs',
@@ -12,19 +12,20 @@ export default {
   decorators: [padded],
   argTypes: {
     activeTabIndex: {
-      control: {
-        type: 'number'
-      }
+      table: { disable: true }
     },
     items: {
-      control: {
-        type: 'array'
-      }
+      table: { disable: true }
     },
     variant: {
+      name: 'Variant',
+      options: ['default', 'classic'],
       control: {
         type: 'radio',
-        options: ['default', 'classic']
+        labels: {
+          default: 'Default',
+          classic: 'Classic'
+        }
       }
     }
   }
@@ -53,11 +54,11 @@ export const Tabs = args => ({
       activeTab.value = index
     }
 
-    const containerPadding = args.variant === 'classic' ? '0' : '0 3rem'
-    const contentPadding = args.variant === 'classic' ? '3rem' : '3rem 0'
-    const headerBgColor = args.variant === 'classic' ? 'var(--interface-foreground)' : 'transparent'
-    const headerHeight = args.variant === 'classic' ? '5.1rem' : '6.1rem'
-    const headerPadding = args.variant === 'classic' ? '0 3rem' : '0'
+    const containerPadding = computed(() => args.variant === 'classic' ? '0' : '0 3rem')
+    const contentPadding = computed(() => args.variant === 'classic' ? '3rem' : '3rem 0')
+    const headerBgColor = computed(() => args.variant === 'classic' ? 'var(--interface-foreground)' : 'transparent')
+    const headerHeight = computed(() => args.variant === 'classic' ? '5.1rem' : '6.1rem')
+    const headerPadding = computed(() => args.variant === 'classic' ? '0 3rem' : '0')
 
     return {
       activeTab,
