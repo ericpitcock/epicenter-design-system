@@ -74,12 +74,8 @@ export const Radio = args => ({
     >
       <h2>Hot Sauce:</h2>
       <ep-radio
-        v-for="{ id, label, name, value, disabled } in radioButtons"
-        :id
-        :label
-        :name
-        :value
-        :disabled
+        v-for="radio in radioButtons"
+        v-bind="radio"
         v-model="selectedOption"
         @update:modelValue="console.log(selectedOption)"
       />

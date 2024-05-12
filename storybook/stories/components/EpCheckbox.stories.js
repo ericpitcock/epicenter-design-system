@@ -56,30 +56,26 @@ const Bare = args => ({
     const checkboxes = ref([
       {
         id: 'checkbox1',
-        checked: true,
-        disabled: false,
-        indeterminate: false,
         label: 'Checked',
         name: 'checkboxes',
         value: 'checked',
+        checked: true,
       },
       {
         id: 'checkbox2',
-        checked: false,
-        disabled: false,
-        indeterminate: true,
         label: 'Indeterminate',
         name: 'checkboxes',
         value: 'indeterminate',
+        checked: false,
+        indeterminate: true,
       },
       {
         id: 'checkbox3',
-        checked: false,
-        disabled: true,
-        indeterminate: false,
         label: 'Disabled',
         name: 'checkboxes',
         value: 'disabled',
+        checked: false,
+        disabled: true,
       },
     ])
 
@@ -107,17 +103,11 @@ const Bare = args => ({
       style="width: 100%;"
     >
       <ep-checkbox
-        v-for="{ id, checked, disabled, indeterminate, label, name, value } in checkboxes"
-        :key="id"
-        :id="id"
-        :label="label"
-        :name="name"
-        :value="value"
-        :checked="checked"
-        :disabled="disabled"
-        :indeterminate="indeterminate"
-        v-model="checked"
-        @update:modelValue="updateChecked($event, label, id)"
+        v-for="checkbox in checkboxes"
+        :key="checkbox.id"
+        v-bind="checkbox"
+        v-model="checkbox.checked"
+        @update:modelValue="updateChecked($event, checkbox.label, checkbox.id)"
       />
     </ep-flex-container>
     {{ selectedOptions }}
