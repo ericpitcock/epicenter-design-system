@@ -66,20 +66,20 @@ const Bare = args => ({
       {
         id: 'checkbox2',
         checked: false,
-        disabled: true,
-        indeterminate: false,
-        label: 'Disabled',
-        name: 'checkboxes',
-        value: 'disabled',
-      },
-      {
-        id: 'checkbox3',
-        checked: false,
         disabled: false,
         indeterminate: true,
         label: 'Indeterminate',
         name: 'checkboxes',
         value: 'indeterminate',
+      },
+      {
+        id: 'checkbox3',
+        checked: false,
+        disabled: true,
+        indeterminate: false,
+        label: 'Disabled',
+        name: 'checkboxes',
+        value: 'disabled',
       },
     ])
 
@@ -88,8 +88,8 @@ const Bare = args => ({
       return checked.map(checkbox => checkbox.value)
     })
 
-    const updateChecked = (event, id) => {
-      // console.log(event, id)
+    const updateChecked = (event, label, id) => {
+      console.log(`${label}:`, event)
       // find the checkbox by id and update its checked property
       const checkbox = checkboxes.value.find(checkbox => checkbox.id === id)
       checkbox.checked = event
@@ -117,7 +117,7 @@ const Bare = args => ({
         :disabled="disabled"
         :indeterminate="indeterminate"
         v-model="checked"
-        @update:modelValue="updateChecked($event, id)"
+        @update:modelValue="updateChecked($event, label, id)"
       />
     </ep-flex-container>
     {{ selectedOptions }}

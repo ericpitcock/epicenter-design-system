@@ -19,7 +19,13 @@ export default {
     },
     value: {
       table: { disable: true }
-    }
+    },
+    disabled: {
+      table: { disable: true }
+    },
+    required: {
+      table: { disable: true }
+    },
   }
 }
 
@@ -75,7 +81,7 @@ export const Radio = args => ({
         :value
         :disabled
         v-model="selectedOption"
-        @update:modelValue="console.log('selectedOption:', selectedOption)"
+        @update:modelValue="console.log(selectedOption)"
       />
     </ep-flex-container>
   `
