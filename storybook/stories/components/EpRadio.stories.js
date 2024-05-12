@@ -27,9 +27,9 @@ export const Radio = args => ({
   components: { EpFlexContainer, EpRadio },
   setup() {
     const radioButtons = [
-      { id: 'radio1', label: 'Mild', name: 'radio', value: 'radio1' },
-      { id: 'radio2', label: 'Hot', name: 'radio', value: 'radio2' },
-      { id: 'radio3', label: 'Extreme', name: 'radio', value: 'radio3' }
+      { id: 'radio1', label: 'Mild', name: 'hotsauce', value: 'Mild' },
+      { id: 'radio2', label: 'Hot', name: 'hotsauce', value: 'Hot' },
+      { id: 'radio3', label: 'Extreme', name: 'hotsauce', value: 'Extreme' }
     ]
 
     const selectedOption = ref('')
@@ -41,6 +41,7 @@ export const Radio = args => ({
       flex-flow="column nowrap"
       gap="1rem"
     >
+      <h2>Hot Sauce:</h2>
       <ep-radio
         v-for="{ id, label, name, value } in radioButtons"
         :id
@@ -48,14 +49,8 @@ export const Radio = args => ({
         :name
         :value
         v-model="selectedOption"
+        @update:modelValue="console.log('selectedOption:', selectedOption)"
       />
     </ep-flex-container>
   `
 })
-
-// Radio.args = {
-//   id: 'radio',
-//   label: 'Radio',
-//   name: 'radio',
-//   value: 'radio'
-// }
