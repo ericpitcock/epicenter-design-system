@@ -1,5 +1,7 @@
 import { centeredSurface } from '../../helpers/decorators.js'
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
+import EpFlexContainer from '@/components/flexbox/EpFlexContainer.vue'
+import { ref } from 'vue'
 
 export default {
   title: 'Components/Checkbox',
@@ -60,11 +62,36 @@ export default {
 const Bare = args => ({
   components: {
     EpCheckbox,
+    EpFlexContainer
   },
   setup() {
-    return { args }
+    const checkboxes = [
+      { id: 'radio1', label: 'Mild', name: 'hotsauce', value: 'Mild' },
+      { id: 'radio2', label: 'Hot', name: 'hotsauce', value: 'Hot' },
+      { id: 'radio3', label: 'Extreme', name: 'hotsauce', value: 'Extreme' }
+    ]
+
+    const selectedOptions = ref([])
+
+    return { args, checkboxes, selectedOptions }
   },
-  template: '<ep-checkbox v-bind="args" />'
+  template: `
+    <ep-flex-container
+      flex-flow="column nowrap"
+      gap="1rem"
+    >
+      <h2>Hot Sauce:</h2>
+      <ep-checkbox
+        v-for="{ id, label, name, value } in checkboxes"
+        :id
+        :label
+        :name
+        :value
+        v-model="selectedOptions"
+        @update:modelValue="console.log('selectedOptions:', selectedOptions)"
+      />
+    </ep-flex-container>
+  `
 })
 
 export const Checkbox = Bare.bind({})

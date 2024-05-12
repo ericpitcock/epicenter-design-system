@@ -18,81 +18,72 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'EpCheckbox',
-    props: {
-      id: {
-        type: String,
-        default: 'default'
-      },
-      name: {
-        type: String,
-        default: null
-      },
-      // value: {
-      //   type: String,
-      //   default: null
-      // },
-      checked: {
-        type: Boolean,
-        default: false
-      },
-      indeterminate: {
-        type: Boolean,
-        default: false
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      label: {
-        type: String,
-        default: 'Checkbox'
-      },
-      required: {
-        type: Boolean,
-        default: false
-      },
-      modelValue: {
-        type: Boolean,
-        default: false
-      },
-      readonly: {
-        type: Boolean,
-        default: false
-      },
-      tabindex: {
-        type: Number,
-        default: null
-      },
-      command: {
-        type: Function,
-        default: null
-      }
+<script setup>
+  import { computed, watch } from 'vue'
+
+  const modelValue = defineModel({
+    type: Boolean,
+    default: false
+  })
+
+  // eslint-disable-next-line no-unused-vars
+  const props = defineProps({
+    id: {
+      type: String,
+      default: 'default'
     },
-    emits: ['update:modelValue', 'checkchange'],
-    computed: {
-      classes() {
-        return {
-          'ep-checkbox--disabled': this.disabled
-        }
-      }
+    name: {
+      type: String,
+      default: null
     },
-    watch: {
-      indeterminate() {
-        this.$refs.input.indeterminate = this.indeterminate
-      }
+    checked: {
+      type: Boolean,
+      default: false
     },
-    methods: {
-      onChange(command, event) {
-        // console.log('onChange', event.target.checked)
-        this.$emit('update:modelValue', event.target.checked)
-        this.$emit('checkchange', event)
-        if (command) {
-          command(event.target.checked)
-        }
-      }
+    indeterminate: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    label: {
+      type: String,
+      default: 'Checkbox'
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    tabindex: {
+      type: Number,
+      default: null
+    },
+    command: {
+      type: Function,
+      default: null
+    }
+  })
+
+  const classes = computed(() => ({ 'ep-checkbox--disabled': this.disabled }))
+
+  watch(() => this.indeterminate, () => {
+    this.set_indeterminate()
+  })
+  // indeterminate() {
+  //   this.$refs.input.indeterminate = this.indeterminate
+  // }
+  const onChange = (command, event) => {
+    // console.log('onChange', event.target.checked)
+    this.$emit('update:modelValue', event.target.checked)
+    this.$emit('checkchange', event)
+    if (command) {
+      command(event.target.checked)
     }
   }
 </script>
