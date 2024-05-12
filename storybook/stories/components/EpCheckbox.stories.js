@@ -1,7 +1,7 @@
 import { centeredSurface } from '../../helpers/decorators.js'
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import EpFlexContainer from '@/components/flexbox/EpFlexContainer.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 export default {
   title: 'Components/Checkbox',
@@ -58,22 +58,56 @@ export default {
     }
   }
 }
-// bare component
+
 const Bare = args => ({
   components: {
     EpCheckbox,
     EpFlexContainer
   },
   setup() {
-    const checkboxes = [
-      { id: 'radio1', label: 'Mild', name: 'hotsauce', value: 'Mild' },
-      { id: 'radio2', label: 'Hot', name: 'hotsauce', value: 'Hot' },
-      { id: 'radio3', label: 'Extreme', name: 'hotsauce', value: 'Extreme' }
-    ]
+    const checkboxes = ref([
+      {
+        id: 'checkbox1',
+        checked: true,
+        disabled: false,
+        indeterminate: false,
+        label: 'Mild',
+        name: 'hotsauce',
+        value: 'mild'
+      },
+      {
+        id: 'checkbox2',
+        checked: false,
+        disabled: false,
+        indeterminate: false,
+        label: 'Hot',
+        name: 'hotsauce',
+        value: 'hot'
+      },
+      {
+        id: 'checkbox3',
+        checked: false,
+        disabled: false,
+        indeterminate: false,
+        label: 'Extreme',
+        name: 'hotsauce',
+        value: 'extreme'
+      }
+    ])
 
-    const selectedOptions = ref([])
+    const selectedOptions = computed(() => {
+      const checked = checkboxes.value.filter(checkbox => checkbox.checked)
+      return checked.map(checkbox => checkbox.value)
+    })
 
-    return { args, checkboxes, selectedOptions }
+    const updateChecked = (event, id) => {
+      console.log(event, id)
+      // find the checkbox by id and update its checked property
+      const checkbox = checkboxes.value.find(checkbox => checkbox.id === id)
+      checkbox.checked = event
+    }
+
+    return { args, checkboxes, selectedOptions, updateChecked }
   },
   template: `
     <ep-flex-container
@@ -82,29 +116,26 @@ const Bare = args => ({
     >
       <h2>Hot Sauce:</h2>
       <ep-checkbox
-        v-for="{ id, label, name, value } in checkboxes"
-        :id
-        :label
-        :name
-        :value
-        v-model="selectedOptions"
-        @update:modelValue="console.log('selectedOptions:', selectedOptions)"
+        v-for="{ id, checked, disabled, indeterminate, label, name, value } in checkboxes"
+        :key="id"
+        :id="id"
+        :label="label"
+        :name="name"
+        :value="value"
+        :checked="checked"
+        :disabled="disabled"
+        :indeterminate="indeterminate"
+        v-model="checked"
+        @update:modelValue="updateChecked($event, id)"
       />
     </ep-flex-container>
+    {{ selectedOptions }}
   `
 })
 
 export const Checkbox = Bare.bind({})
 
 Checkbox.args = {
-  id: 'checkbox',
-  name: 'checkbox',
-  value: 'checkbox',
-  checked: false,
   disabled: false,
-  indeterminate: false,
-  label: 'Checkbox',
-  required: false,
-  readonly: false,
-  tabindex: 0
+  indeterminate: false
 }

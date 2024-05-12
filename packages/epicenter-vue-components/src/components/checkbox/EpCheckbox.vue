@@ -2,31 +2,30 @@
   <div :class="['ep-checkbox', classes]">
     <input
       :id="id"
-      ref="input"
+      ref="inputRef"
+      v-model="modelValue"
       type="checkbox"
       :name="name"
-      :value="modelValue"
+      :value="value"
       :checked="checked"
       :indeterminate="indeterminate"
       :disabled="disabled"
       :required="required"
       :readonly="readonly"
       :tabindex="tabindex"
-      @change="onChange(command, $event)"
     >
     <label :for="id">{{ label }}</label>
   </div>
 </template>
 
 <script setup>
-  import { computed, watch } from 'vue'
+  import { computed, watch, ref } from 'vue'
 
   const modelValue = defineModel({
     type: Boolean,
-    default: false
+    default: false,
   })
 
-  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     id: {
       type: String,
@@ -67,23 +66,27 @@
     command: {
       type: Function,
       default: null
+    },
+    value: {
+      type: String,
+      required: true
     }
   })
 
-  const classes = computed(() => ({ 'ep-checkbox--disabled': this.disabled }))
+  const inputRef = ref(null)
 
-  watch(() => this.indeterminate, () => {
-    this.set_indeterminate()
+  const classes = computed(() => ({ 'ep-checkbox--disabled': props.disabled }))
+
+  watch(() => props.indeterminate, (newValue) => {
+    if (newValue) {
+      inputRef.value.indeterminate = true
+    }
   })
-  // indeterminate() {
-  //   this.$refs.input.indeterminate = this.indeterminate
+
+  // const onChange = (command, event) => {
+  //   modelValue.value = event.target.checked
+  //   if (command) {
+  //     command(event.target.checked)
+  //   }
   // }
-  const onChange = (command, event) => {
-    // console.log('onChange', event.target.checked)
-    this.$emit('update:modelValue', event.target.checked)
-    this.$emit('checkchange', event)
-    if (command) {
-      command(event.target.checked)
-    }
-  }
 </script>
