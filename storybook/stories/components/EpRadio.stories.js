@@ -24,12 +24,37 @@ export default {
 }
 
 export const Radio = args => ({
-  components: { EpFlexContainer, EpRadio },
+  components: {
+    EpFlexContainer,
+    EpRadio
+  },
   setup() {
     const radioButtons = [
-      { id: 'radio1', label: 'Mild', name: 'hotsauce', value: 'Mild' },
-      { id: 'radio2', label: 'Hot', name: 'hotsauce', value: 'Hot' },
-      { id: 'radio3', label: 'Extreme', name: 'hotsauce', value: 'Extreme' }
+      {
+        id: 'radio1',
+        label: 'Mild',
+        name: 'hotsauce',
+        value: 'Mild'
+      },
+      {
+        id: 'radio2',
+        label: 'Hot',
+        name: 'hotsauce',
+        value: 'Hot'
+      },
+      {
+        id: 'radio3',
+        label: 'Extreme',
+        name: 'hotsauce',
+        value: 'Extreme'
+      },
+      {
+        id: 'radio4',
+        label: 'Absolute Fire (Sold out)',
+        name: 'hotsauce',
+        value: 'Absolute Fire (Sold out)',
+        disabled: true
+      }
     ]
 
     const selectedOption = ref('')
@@ -43,11 +68,12 @@ export const Radio = args => ({
     >
       <h2>Hot Sauce:</h2>
       <ep-radio
-        v-for="{ id, label, name, value } in radioButtons"
+        v-for="{ id, label, name, value, disabled } in radioButtons"
         :id
         :label
         :name
         :value
+        :disabled
         v-model="selectedOption"
         @update:modelValue="console.log('selectedOption:', selectedOption)"
       />

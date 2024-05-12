@@ -1,0 +1,40 @@
+.ep-radio {
+  --ep-radio-checked-color: var(--primary-color-base);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+
+  &--checked {
+    color: var(--text-color--loud);
+
+    .radio-dot {
+      background-color: var(--ep-radio-checked-color);
+      border-color: var(--ep-radio-checked-color);
+    }
+  }
+
+  &--disabled {
+    color: var(--text-color--disabled);
+    cursor: default;
+
+    .radio-dot {
+      background-color: transparent;
+      border-color: var(--border-color--disabled);
+    }
+  }
+}
+
+.ep-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-dot {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--border-color--lighter);
+  border-radius: 50%;
+}

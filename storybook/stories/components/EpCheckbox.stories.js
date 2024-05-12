@@ -59,40 +59,41 @@ const Bare = args => ({
         checked: true,
         disabled: false,
         indeterminate: false,
-        label: 'Mild',
-        name: 'hotsauce',
-        value: 'mild'
+        label: 'Checked',
+        name: 'checkboxes',
+        value: 'checked',
       },
       {
         id: 'checkbox2',
         checked: false,
         disabled: true,
         indeterminate: false,
-        label: 'Hot',
-        name: 'hotsauce',
-        value: 'hot'
+        label: 'Disabled',
+        name: 'checkboxes',
+        value: 'disabled',
       },
       {
         id: 'checkbox3',
         checked: false,
         disabled: false,
         indeterminate: true,
-        label: 'Extreme',
-        name: 'hotsauce',
-        value: 'extreme'
-      }
+        label: 'Indeterminate',
+        name: 'checkboxes',
+        value: 'indeterminate',
+      },
     ])
 
     const selectedOptions = computed(() => {
-      const checked = checkboxes.value.filter(checkbox => checkbox.checked)
+      const checked = checkboxes.value.filter(checkbox => checkbox.checked || checkbox.indeterminate)
       return checked.map(checkbox => checkbox.value)
     })
 
     const updateChecked = (event, id) => {
-      console.log(event, id)
+      // console.log(event, id)
       // find the checkbox by id and update its checked property
       const checkbox = checkboxes.value.find(checkbox => checkbox.id === id)
       checkbox.checked = event
+      checkbox.indeterminate = false
     }
 
     return { args, checkboxes, selectedOptions, updateChecked }
@@ -105,7 +106,6 @@ const Bare = args => ({
       gap="1rem"
       style="width: 100%;"
     >
-      <h2>Hot Sauce:</h2>
       <ep-checkbox
         v-for="{ id, checked, disabled, indeterminate, label, name, value } in checkboxes"
         :key="id"

@@ -1,14 +1,16 @@
 <template>
   <label
-    :class="['ep-radio', { 'ep-radio--checked': modelValue === value }]"
     :for="id"
+    :class="['ep-radio', classes]"
   >
     <input
       :id="id"
       v-model="modelValue"
-      :name="name"
-      :value="value"
       type="radio"
+      :name
+      :value
+      :disabled
+      :required
     >
     <span class="radio-dot" />
     {{ label }}
@@ -16,6 +18,8 @@
 </template>
 
 <script setup>
+  import { computed } from 'vue'
+
   const modelValue = defineModel({
     type: String,
     required: true
@@ -23,6 +27,7 @@
 
   // eslint-disable-next-line no-unused-vars
   const props = defineProps({
+    // required
     id: {
       type: String,
       required: true,
@@ -39,38 +44,19 @@
       type: String,
       required: true,
     },
+    // optional
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    required: {
+      type: Boolean,
+      default: false,
+    },
   })
+
+  const classes = computed(() => ({
+    'ep-radio--checked': modelValue.value === props.value,
+    'ep-radio--disabled': props.disabled,
+  }))
 </script>
-
-<style lang="scss" scoped>
-  .ep-radio {
-    --ep-radio-checked-color: var(--primary-color-base);
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-
-    &--checked {
-      color: var(--text-color--loud);
-
-      .radio-dot {
-        background-color: var(--ep-radio-checked-color);
-        border-color: var(--ep-radio-checked-color);
-      }
-    }
-  }
-
-  .ep-radio input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
-
-  .radio-dot {
-    width: 14px;
-    height: 14px;
-    border: 1px solid var(--border-color--lighter);
-    border-radius: 50%;
-  }
-</style>

@@ -6,7 +6,8 @@
   cursor: pointer;
   user-select: none;
 
-  &--checked {
+  &--checked,
+  &--indeterminate {
     color: var(--text-color--loud);
   }
 
