@@ -1,7 +1,7 @@
 import { paddedSurface } from '../../helpers/decorators.js'
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import EpFlexContainer from '@/components/flexbox/EpFlexContainer.vue'
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
 export default {
   title: 'Components/Checkbox',
@@ -18,28 +18,16 @@ export default {
       table: { disable: true }
     },
     checked: {
-      name: 'Checked',
-      control: {
-        type: 'boolean'
-      }
+      table: { disable: true }
     },
     disabled: {
-      name: 'Disabled',
-      control: {
-        type: 'boolean'
-      }
+      table: { disable: true }
     },
     indeterminate: {
-      name: 'Indeterminate',
-      control: {
-        type: 'boolean'
-      }
+      table: { disable: true }
     },
     label: {
-      name: 'Label',
-      control: {
-        type: 'text'
-      }
+      table: { disable: true }
     },
     modelValue: {
       table: { disable: true }
@@ -78,7 +66,7 @@ const Bare = args => ({
       {
         id: 'checkbox2',
         checked: false,
-        disabled: false,
+        disabled: true,
         indeterminate: false,
         label: 'Hot',
         name: 'hotsauce',
@@ -88,7 +76,7 @@ const Bare = args => ({
         id: 'checkbox3',
         checked: false,
         disabled: false,
-        indeterminate: false,
+        indeterminate: true,
         label: 'Extreme',
         name: 'hotsauce',
         value: 'extreme'
@@ -139,6 +127,7 @@ const Bare = args => ({
 export const Checkbox = Bare.bind({})
 
 Checkbox.args = {
+  checked: true,
   disabled: false,
   indeterminate: false
 }

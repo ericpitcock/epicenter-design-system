@@ -80,16 +80,29 @@
 
   const classes = computed(() => {
     return {
+      'ep-checkbox--checked': modelValue.value,
       'ep-checkbox--disabled': props.disabled,
-      'ep-checkbox--checked': modelValue.value
+      'ep-checkbox--indeterminate': props.indeterminate,
     }
   })
 
-  watch(() => props.indeterminate, (newValue) => {
-    if (newValue) {
-      inputRef.value.indeterminate = true
-    }
+  watch(() => props.checked, (newValue) => {
+    console.log('checked watcher', newValue)
+    // if it's not indeterminate, then set the checked property
+    inputRef.value.checked = newValue
+
+    // if it's indeterminate, then set the indeterminate property
+    // if (props.indeterminate) {
+    //   props.indeterminate = false
+    // }
   })
+
+  // watch(() => props.indeterminate, (newValue) => {
+  //   if (newValue) {
+  //     console.log('indeterminate watcher', newValue)
+  //     inputRef.value.indeterminate = newValue
+  //   }
+  // })
 
   // const onChange = (command, event) => {
   //   modelValue.value = event.target.checked
