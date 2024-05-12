@@ -1,5 +1,8 @@
 <template>
-  <div :class="['ep-checkbox', classes]">
+  <label
+    :for="id"
+    :class="['ep-checkbox', classes]"
+  >
     <input
       :id="id"
       ref="inputRef"
@@ -14,8 +17,8 @@
       :readonly="readonly"
       :tabindex="tabindex"
     >
-    <label :for="id">{{ label }}</label>
-  </div>
+    {{ label }}
+  </label>
 </template>
 
 <script setup>
@@ -75,7 +78,12 @@
 
   const inputRef = ref(null)
 
-  const classes = computed(() => ({ 'ep-checkbox--disabled': props.disabled }))
+  const classes = computed(() => {
+    return {
+      'ep-checkbox--disabled': props.disabled,
+      'ep-checkbox--checked': modelValue.value
+    }
+  })
 
   watch(() => props.indeterminate, (newValue) => {
     if (newValue) {

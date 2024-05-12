@@ -2,9 +2,13 @@
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   cursor: pointer;
   user-select: none;
+
+  &--checked {
+    color: var(--text-color--loud);
+  }
 
   &--disabled {
     color: var(--text-color--disabled);
@@ -16,8 +20,8 @@
     cursor: inherit;
   }
 
-  label {
-    color: inherit;
-    cursor: inherit;
-  }
+  // label {
+  //   color: inherit;
+  //   cursor: inherit;
+  // }
 }

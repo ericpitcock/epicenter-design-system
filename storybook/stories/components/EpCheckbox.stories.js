@@ -1,4 +1,4 @@
-import { centeredSurface } from '../../helpers/decorators.js'
+import { paddedSurface } from '../../helpers/decorators.js'
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import EpFlexContainer from '@/components/flexbox/EpFlexContainer.vue'
 import { ref, computed } from 'vue'
@@ -6,7 +6,7 @@ import { ref, computed } from 'vue'
 export default {
   title: 'Components/Checkbox',
   component: EpCheckbox,
-  decorators: [centeredSurface],
+  decorators: [paddedSurface],
   argTypes: {
     id: {
       table: { disable: true }
@@ -112,7 +112,10 @@ const Bare = args => ({
   template: `
     <ep-flex-container
       flex-flow="column nowrap"
+      align-items="flex-start"
+      justify-content="flex-start"
       gap="1rem"
+      style="width: 100%;"
     >
       <h2>Hot Sauce:</h2>
       <ep-checkbox
