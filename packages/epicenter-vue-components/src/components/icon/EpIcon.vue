@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-  import { ref, watchEffect } from 'vue'
+  import { ref, watch } from 'vue'
 
   const props = defineProps({
     name: {
@@ -27,12 +27,14 @@
     }
   })
 
-  const icon = import(`./icons/${props.name}.svg?raw`)
-
   const svgContent = ref('')
 
-  watchEffect(async () => {
-    const { default: rawSvg } = await icon
-    svgContent.value = rawSvg
-  })
+  watch(
+    () => props.name,
+    async (name) => {
+      const { default: rawSvg } = await import(`./icons/${name}.svg?raw`)
+      svgContent.value = rawSvg
+    },
+    { immediate: true }
+  )
 </script>
