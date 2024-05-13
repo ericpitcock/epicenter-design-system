@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker'
 const fakeArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
-    arr.push(faker.datatype.number({ min: 0, max: 10000, precision: 0.1 }))
+    arr.push(faker.number.int({ min: 0, max: 10000, precision: 0.1 }))
   }
   return arr
 }
@@ -11,7 +11,7 @@ const fakeArray = length => {
 const fakeCitiesArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
-    arr.push(faker.address.city())
+    arr.push(faker.location.city())
   }
   return arr
 }

@@ -20,7 +20,7 @@ const fakeArrayOfDates = (length) => {
 const fakeArrayOfNumbers = (length) => {
   let arr = []
   for (let i = 0; i < length; i++) {
-    arr.push(faker.datatype.number({ min: 0, max: 10000, precision: .1 }))
+    arr.push(faker.number.int({ min: 0, max: 10000, precision: .1 }))
   }
   return arr
 }
