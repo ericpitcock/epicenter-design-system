@@ -133,7 +133,7 @@ export const ChartPalette = (args) => ({
             v-for="(n, index) in 14"
             :key="index"
             :class="'color' + index"
-            :style="{ flex: '1', width: '50px', backgroundColor: 'var(--chart-sequence-' + (index < 10 ? '0' + index : index) + ')'}"
+            :style="{ flex: '1', width: '20px', backgroundColor: 'var(--chart-sequence-' + (index < 10 ? '0' + index : index) + ')'}"
           />
         </div>
         <div style="flex: 1; display: flex; gap: 50px;">

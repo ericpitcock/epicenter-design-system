@@ -165,7 +165,7 @@
         }
         // get chart sequence colors from css variables
         const htmlStyles = window.getComputedStyle(document.querySelector('html'))
-        for (let index = 0; index < 17; index++) {
+        for (let index = 0; index < 14; index++) {
           const cssVar = index < 10 ? `--chart-sequence-0${index}` : `--chart-sequence-${index}`
           let hexValue = htmlStyles.getPropertyValue(cssVar)
 

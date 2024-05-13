@@ -33,46 +33,46 @@
 #   light: hsl(0, 0%,, 28%)
 # chart-sequence-16:
 #   dark: hsl(197, 74%,, 68%)
+# take two
 chart-sequence-00:
-  dark: hsl(262, 83%, 58%)
-  light: hsl(263, 70%, 50%)
+  dark: hsl(262, 51%, 58%)
+  # light: hsl(263, 70%, 50%)
 chart-sequence-01:
-  dark: hsl(199, 89%, 48%)
-  light: hsl(199, 89%, 48%)
+  dark: hsl(199, 57%, 48%)
+  # light: hsl(199, 89%, 48%)
 chart-sequence-02:
-  dark: hsl(175, 77%, 26%)
-  light: hsl(176, 69%, 22%)
+  dark: hsl(175, 45%, 26%)
+  # light: hsl(176, 69%, 22%)
 chart-sequence-03:
-  dark: hsl(329, 86%, 70%)
-  light: hsl(336, 74%, 35%)
+  dark: hsl(329, 54%, 70%)
+  # light: hsl(336, 74%, 35%)
 chart-sequence-04:
-  dark: hsl(0, 84%, 60%)
-  light: hsl(0, 84%, 60%)
+  dark: hsl(0, 54%, 97%)
+  # light: hsl(0, 84%, 60%)
 chart-sequence-05:
-  dark: hsl(0, 86%, 97%)
-  light: hsl(0, 63%, 26%)
+  dark: hsl(0, 52%, 60%)
+  light: hsl(0, 0%, 35%)
 chart-sequence-06:
-  dark: hsl(142, 69%, 58%)
-  light: hsl(142, 72%, 29%)
+  dark: hsl(142, 37%, 58%)
+  # light: hsl(142, 72%, 29%)
 chart-sequence-07:
-  dark: hsl(217, 91%, 60%)
-  light: hsl(226, 71%, 40%)
+  dark: hsl(217, 59%, 60%)
+  # light: hsl(226, 71%, 40%)
 chart-sequence-08:
-  dark: hsl(333, 71%, 51%)
-  light: hsl(330, 81%, 60%)
+  dark: hsl(333, 39%, 51%)
+  # light: hsl(330, 81%, 60%)
 chart-sequence-09:
-  dark: hsl(45, 93%, 47%)
-  light: hsl(41, 96%, 40%)
+  dark: hsl(45, 61%, 47%)
+  # light: hsl(41, 96%, 40%)
 chart-sequence-10:
-  dark: hsl(173, 80%, 40%)
-  light: hsl(175, 84%, 32%)
+  dark: hsl(173, 48%, 40%)
+  # light: hsl(175, 84%, 32%)
 chart-sequence-11:
-  dark: hsl(201, 94%, 86%)
-  light: hsl(202, 80%, 24%)
+  dark: hsl(201, 62%, 86%)
+  light: hsl(202, 80%,30%)
 chart-sequence-12:
-  dark: hsl(26, 90%, 37%)
-  light: hsl(23, 82%, 31%)
+  dark: hsl(26, 58%, 37%)
+  # light: hsl(23, 82%, 31%)
 chart-sequence-13:
-  dark: hsl(269, 97%, 85%)
-  light: hsl(255, 92%, 76%)
-
+  dark: hsl(269, 65%, 85%)
+  # light: hsl(255, 92%, 76%)

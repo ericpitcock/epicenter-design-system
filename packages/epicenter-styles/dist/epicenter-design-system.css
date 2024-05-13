@@ -106,43 +106,37 @@ textarea {
 
 /* DO NOT EDIT DIRECTLY */
 :root {
-  --chart-sequence-00: hsl(256, 32%, 53%);
-  --chart-sequence-01: hsl(189, 43%, 56%);
-  --chart-sequence-02: hsl(212, 57%, 75%);
-  --chart-sequence-03: hsl(204, 8%, 47%);
-  --chart-sequence-04: hsl(284, 41%, 70%);
-  --chart-sequence-05: hsl(219, 69%, 55%);
-  --chart-sequence-06: hsl(46, 84%, 49%);
-  --chart-sequence-07: hsl(30, 14%, 59%);
-  --chart-sequence-08: hsl(178, 100%, 25%);
-  --chart-sequence-09: hsl(22, 89%, 45%);
-  --chart-sequence-10: hsl(320, 53%, 53%);
-  --chart-sequence-11: hsl(65, 54%, 60%);
-  --chart-sequence-12: hsl(40, 40%, 34%);
-  --chart-sequence-13: hsl(81, 100%, 37%);
-  --chart-sequence-14: hsl(28, 100%, 77%);
-  --chart-sequence-15: hsl(0, 0%, 96%);
-  --chart-sequence-16: hsl(197, 74%, 68%);
+  --chart-sequence-00: hsl(262, 51%, 58%);
+  --chart-sequence-01: hsl(199, 57%, 48%);
+  --chart-sequence-02: hsl(175, 45%, 26%);
+  --chart-sequence-03: hsl(329, 54%, 70%);
+  --chart-sequence-04: hsl(0, 54%, 97%);
+  --chart-sequence-05: hsl(0, 52%, 60%);
+  --chart-sequence-06: hsl(142, 37%, 58%);
+  --chart-sequence-07: hsl(217, 59%, 60%);
+  --chart-sequence-08: hsl(333, 39%, 51%);
+  --chart-sequence-09: hsl(45, 61%, 47%);
+  --chart-sequence-10: hsl(173, 48%, 40%);
+  --chart-sequence-11: hsl(201, 62%, 86%);
+  --chart-sequence-12: hsl(26, 58%, 37%);
+  --chart-sequence-13: hsl(269, 65%, 85%);
 }
 
 html[data-color-theme=light] {
-  --chart-sequence-00: hsl(256, 32%, 53%);
-  --chart-sequence-01: hsl(189, 43%, 56%);
-  --chart-sequence-02: hsl(212, 57%, 75%);
-  --chart-sequence-03: hsl(204, 8%, 47%);
-  --chart-sequence-04: hsl(284, 41%, 70%);
-  --chart-sequence-05: hsl(219, 69%, 55%);
-  --chart-sequence-06: hsl(46, 84%, 49%);
-  --chart-sequence-07: hsl(30, 14%, 59%);
-  --chart-sequence-08: hsl(178, 100%, 25%);
-  --chart-sequence-09: hsl(22, 89%, 45%);
-  --chart-sequence-10: hsl(320, 53%, 53%);
-  --chart-sequence-11: hsl(65, 54%, 60%);
-  --chart-sequence-12: hsl(40, 40%, 34%);
-  --chart-sequence-13: hsl(81, 100%, 37%);
-  --chart-sequence-14: hsl(28, 100%, 77%);
-  --chart-sequence-15: hsl(0, 0%, 28%);
-  --chart-sequence-16: hsl(197, 74%, 68%);
+  --chart-sequence-00: hsl(262, 51%, 58%);
+  --chart-sequence-01: hsl(199, 57%, 48%);
+  --chart-sequence-02: hsl(175, 45%, 26%);
+  --chart-sequence-03: hsl(329, 54%, 70%);
+  --chart-sequence-04: hsl(0, 54%, 97%);
+  --chart-sequence-05: hsl(0, 0%, 35%);
+  --chart-sequence-06: hsl(142, 37%, 58%);
+  --chart-sequence-07: hsl(217, 59%, 60%);
+  --chart-sequence-08: hsl(333, 39%, 51%);
+  --chart-sequence-09: hsl(45, 61%, 47%);
+  --chart-sequence-10: hsl(173, 48%, 40%);
+  --chart-sequence-11: hsl(202, 80%,30%);
+  --chart-sequence-12: hsl(26, 58%, 37%);
+  --chart-sequence-13: hsl(269, 65%, 85%);
 }
 
 /* DO NOT EDIT DIRECTLY */
@@ -2119,9 +2113,12 @@ text.highcharts-drilldown-data-label,
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   cursor: pointer;
   user-select: none;
+}
+.ep-checkbox--checked, .ep-checkbox--indeterminate {
+  color: var(--text-color--loud);
 }
 .ep-checkbox--disabled {
   color: var(--text-color--disabled);
@@ -2129,10 +2126,6 @@ text.highcharts-drilldown-data-label,
 }
 .ep-checkbox input {
   appearance: auto;
-  cursor: inherit;
-}
-.ep-checkbox label {
-  color: inherit;
   cursor: inherit;
 }
 
@@ -3037,7 +3030,6 @@ span.flatpickr-weekday {
   display: flex;
   width: 100%;
   height: 100%;
-  gap: 3rem;
 }
 .ep-empty-state img {
   max-width: 10rem;
@@ -3046,6 +3038,7 @@ span.flatpickr-weekday {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
 }
 .ep-empty-state--column .ep-empty-state__body {
   text-align: center;
@@ -3060,6 +3053,7 @@ span.flatpickr-weekday {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 3rem;
 }
 .ep-empty-state--row.ep-empty-state--justify-left {
   justify-content: flex-start;
@@ -3426,6 +3420,51 @@ input.ep-input--disabled::placeholder {
   justify-content: space-between;
   align-items: center;
   height: 4.1rem;
+}
+
+:root {
+  --ep-radio-checked-bg-color: var(--primary-color-base);
+  --ep-radio-checked-border-color: var(--primary-color-300);
+  --ep-radio-unchecked-bg-color: var(--interface-overlay);
+  --ep-radio-unchecked-border-color: var(--border-color--lighter);
+  --ep-radio-disabled-bg-color: transparent;
+  --ep-radio-disabled-border-color: var(--border-color--disabled);
+}
+
+.ep-radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+.ep-radio__dot {
+  width: 14px;
+  height: 14px;
+  background-color: var(--ep-radio-unchecked-bg-color);
+  border: 1px solid var(--ep-radio-unchecked-border-color);
+  border-radius: 50%;
+}
+.ep-radio--checked {
+  color: var(--text-color--loud);
+}
+.ep-radio--checked .ep-radio__dot {
+  background-color: var(--ep-radio-checked-bg-color);
+  border-color: var(--ep-radio-checked-border-color);
+}
+.ep-radio--disabled {
+  color: var(--text-color--disabled);
+  cursor: default;
+}
+.ep-radio--disabled .ep-radio__dot {
+  background-color: var(--ep-radio-disabled-bg-color);
+  border-color: var(--ep-radio-disabled-border-color);
+}
+
+.ep-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .ep-search {

@@ -7,7 +7,11 @@ export default {
   title: 'Style/Color',
   component: EpColor,
   decorators: [paddedBg],
-  argTypes: {},
+  argTypes: {
+    theme: {
+      table: { disable: true }
+    }
+  },
   parameters: {
     controls: { hideNoControlsWarning: true }
   }
