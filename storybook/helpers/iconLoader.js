@@ -1,5 +1,5 @@
 async function loadIcons() {
-  const svgIconsReq = import.meta.glob('./icons/**/*.svg', {
+  const svgIconsReq = import.meta.glob('../../packages/epicenter-vue-components/src/components/icon/icons/**/*.svg', {
     query: '?raw',
     import: 'default',
   })

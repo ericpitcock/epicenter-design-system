@@ -1,4 +1,4 @@
-import { loadIcons } from '../../packages/epicenter-vue-components/src/components/icon/iconLoader.js'
+import { loadIcons } from './iconLoader.js'
 
 const iconNamesObject = await loadIcons()
 
