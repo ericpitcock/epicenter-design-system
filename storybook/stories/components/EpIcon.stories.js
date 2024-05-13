@@ -2,19 +2,11 @@ import EpContainer from '@/components/container/EpContainer.vue'
 import EpIcon from '@/components/icon/EpIcon.vue'
 import { iconNamesObject } from '../../helpers/iconHelper.js'
 import { computed } from 'vue'
-import { iconOptions } from '../../helpers/iconHelper.js'
 
 export default {
   title: 'Components/Icon Library',
   component: EpIcon,
   argTypes: {
-    name: {
-      name: 'Name',
-      options: iconOptions,
-      control: {
-        type: 'select'
-      }
-    },
     color: {
       name: 'Color',
       control: {
