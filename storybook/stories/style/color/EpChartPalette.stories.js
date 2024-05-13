@@ -82,9 +82,6 @@ export default {
 export const ChartPalette = (args) => ({
   setup() {
     const styles = computed(() => ({
-      // '--chart-sequence-00': `hsl(${args.hue0}, ${args.saturation0}%, ${args.lightness0}%)`,
-      // '--chart-sequence-01': `hsl(${args.hue1}, ${args.saturation1}%, ${args.lightness1}%)`,
-      // '--chart-sequence-02': `hsl(${args.hue2}, ${args.saturation2}%, ${args.lightness2}%)`,
       '--chart-sequence-00': `hsl(${args.hue0 + args.globalHue}, ${args.saturation0 + args.globalSaturation}%, ${args.lightness0 + args.globalLightness}%)`,
       '--chart-sequence-01': `hsl(${args.hue1 + args.globalHue}, ${args.saturation1 + args.globalSaturation}%, ${args.lightness1 + args.globalLightness}%)`,
       '--chart-sequence-02': `hsl(${args.hue2 + args.globalHue}, ${args.saturation2 + args.globalSaturation}%, ${args.lightness2 + args.globalLightness}%)`,
@@ -104,55 +101,61 @@ export const ChartPalette = (args) => ({
     return { args, styles }
   },
   template: `
-    <div v-for="i in 14" :key="i" :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-' + (i < 10 ? '0' + i : i)] }" />
+    <div
+      v-for="(n, index) in 14"
+      :key="index"
+      :class="'color' + index"
+      :style="{ width: '50px', height: '50px', backgroundColor: 'var(--chart-sequence-' + (index < 10 ? '0' + index : index) + ')' }"
+    />
   `
+
 })
 
 ChartPalette.args = {
   globalHue: 0,
   globalSaturation: 0,
   globalLightness: 0,
-  hue0: 220,
-  saturation0: 100,
-  lightness0: 50,
-  hue1: 260,
-  saturation1: 100,
-  lightness1: 60,
-  hue2: 300,
-  saturation2: 100,
-  lightness2: 70,
-  hue3: 340,
-  saturation3: 100,
-  lightness3: 80,
-  hue4: 20,
-  saturation4: 100,
-  lightness4: 90,
-  hue5: 60,
-  saturation5: 100,
-  lightness5: 40,
-  hue6: 100,
-  saturation6: 100,
-  lightness6: 30,
-  hue7: 140,
-  saturation7: 100,
-  lightness7: 20,
-  hue8: 180,
-  saturation8: 100,
-  lightness8: 10,
-  hue9: 200,
-  saturation9: 100,
-  lightness9: 45,
-  hue10: 240,
-  saturation10: 100,
-  lightness10: 55,
-  hue11: 280,
-  saturation11: 100,
-  lightness11: 65,
-  hue12: 320,
-  saturation12: 100,
-  lightness12: 75,
-  hue13: 0,
-  saturation13: 100,
+  hue0: 262,
+  saturation0: 83,
+  lightness0: 58,
+  hue1: 199,
+  saturation1: 89,
+  lightness1: 48,
+  hue2: 175,
+  saturation2: 77,
+  lightness2: 26,
+  hue3: 329,
+  saturation3: 86,
+  lightness3: 70,
+  hue4: 0,
+  saturation4: 84,
+  lightness4: 60,
+  hue5: 0,
+  saturation5: 86,
+  lightness5: 97, // Lightness has two values
+  hue6: 142,
+  saturation6: 69,
+  lightness6: 58,
+  hue7: 217,
+  saturation7: 91,
+  lightness7: 60,
+  hue8: 333,
+  saturation8: 71,
+  lightness8: 51,
+  hue9: 45,
+  saturation9: 93,
+  lightness9: 47,
+  hue10: 173,
+  saturation10: 80,
+  lightness10: 40,
+  hue11: 201,
+  saturation11: 94,
+  lightness11: 86, // Lightness has two values
+  hue12: 26,
+  saturation12: 90,
+  lightness12: 37,
+  hue13: 269,
+  saturation13: 97,
   lightness13: 85,
 }
 
