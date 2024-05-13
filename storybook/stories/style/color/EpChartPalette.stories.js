@@ -26,12 +26,14 @@ for (let index = 0; index < 14; index++) {
   value = value.match(/\d+/g)
   const [hue, saturation, lightness] = value
 
-  data[`hue${index}`] = hue
-  data[`saturation${index}`] = saturation
-  data[`lightness${index}`] = lightness
+  data[`hue${index}`] = Number(hue)
+  data[`saturation${index}`] = Number(saturation)
+  data[`lightness${index}`] = Number(lightness)
 }
 
 console.log(data)
+// console log the type of data hue is
+console.log(typeof data.hue0)
 
 const chartSequenceColorArgTypes = (count) => {
   const argTypes = {}
@@ -179,50 +181,13 @@ ChartPalette.args = {
   globalHue: 0,
   globalSaturation: 0,
   globalLightness: 0,
+  // insert data object here
   ...data
-  // ...data
-  // hue0: 262,
-  // saturation0: 83,
-  // lightness0: 58,
-  // hue1: 199,
-  // saturation1: 89,
-  // lightness1: 48,
-  // hue2: 175,
-  // saturation2: 77,
-  // lightness2: 26,
-  // hue3: 329,
-  // saturation3: 86,
-  // lightness3: 70,
-  // hue4: 0,
-  // saturation4: 84,
-  // lightness4: 60,
-  // hue5: 0,
-  // saturation5: 86,
-  // lightness5: 97, // Lightness has two values
-  // hue6: 142,
-  // saturation6: 69,
-  // lightness6: 58,
-  // hue7: 217,
-  // saturation7: 91,
-  // lightness7: 60,
-  // hue8: 333,
-  // saturation8: 71,
-  // lightness8: 51,
-  // hue9: 45,
-  // saturation9: 93,
-  // lightness9: 47,
-  // hue10: 173,
-  // saturation10: 80,
-  // lightness10: 40,
-  // hue11: 201,
-  // saturation11: 94,
-  // lightness11: 86, // Lightness has two values
-  // hue12: 26,
-  // saturation12: 90,
-  // lightness12: 37,
-  // hue13: 269,
-  // saturation13: 97,
-  // lightness13: 85,
 }
+
+// add data object to ChartPalette.args
+// Object.assign(ChartPalette.args, data)
+
+// console.log(ChartPalette.args)
 
 
