@@ -1,12 +1,11 @@
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpIcon from '@/components/icon/EpIcon.vue'
 import { iconNamesObject } from '../../helpers/iconHelper.js'
-import { centeredSurface } from '../../helpers/decorators.js'
 import { computed } from 'vue'
 import { iconOptions } from '../../helpers/iconHelper.js'
 
 export default {
-  title: 'Components/Icon',
+  title: 'Components/Icon Library',
   component: EpIcon,
   argTypes: {
     name: {
@@ -44,14 +43,17 @@ export default {
         step: 2
       }
     },
+    styles: {
+      table: { disable: true }
+    },
     type: {
       table: { disable: true }
     }
   }
 }
 
-export const Icon = args => ({
-  components: { EpIcon },
+export const IconLibrary = args => ({
+  components: { EpContainer, EpIcon },
   setup() {
     const styles = computed(() => {
       return {
@@ -62,24 +64,7 @@ export const Icon = args => ({
       }
     })
 
-    return { args, styles }
-  },
-  template: '<ep-icon v-bind="args" :style="styles" />'
-})
-
-Icon.args = {
-  name: 'arrow-up',
-  color: 'currentColor',
-  weight: 'light',
-  size: 60
-}
-
-Icon.decorators = [centeredSurface]
-
-export const IconLibrary = args => ({
-  components: { EpContainer, EpIcon },
-  setup() {
-    return { args, iconNamesObject }
+    return { args, iconNamesObject, styles }
   },
   template: `
   <div style="padding: 30px;
@@ -103,6 +88,7 @@ export const IconLibrary = args => ({
         :color="args.color"
         :weight="args.weight"
         :size="args.size"
+        :style="styles"
       />
       <template #footer>
       <div

@@ -17,18 +17,6 @@
       type: String,
       required: true,
     },
-    color: {
-      type: String,
-      default: 'currentColor',
-    },
-    weight: {
-      type: [String, Number],
-      default: 'regular',
-    },
-    size: {
-      type: Number,
-      default: 20,
-    },
     styles: {
       type: Object,
       default: () => ({}),
@@ -39,31 +27,7 @@
     }
   })
 
-  // const weights = {
-  //   'extra-light': 0.5,
-  //   'light': 1,
-  //   'regular': 1.5,
-  //   'bold': 2,
-  // }
-
-  // const processWeight = (weight) => {
-  //   // Check if weight is a string, if so, return the corresponding value from weights object
-  //   if (typeof weight === 'string') {
-  //     return weights[weight]
-  //   }
-  //   // If weight is a number or not recognized, return it as is
-  //   return weight
-  // }
-
-  // Define async component with processed SVG content
   const icon = import(`./icons/${props.name}.svg?raw`)
-
-  // const processSVG = (content) => {
-  //   return content.replace(
-  //     /stroke-width=\S+/g,
-  //     `stroke-width="${processWeight(props.weight)}"`
-  //   )
-  // }
 
   const svgContent = ref('')
 
