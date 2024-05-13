@@ -23,12 +23,12 @@ export default {
     },
     weight: {
       name: 'Weight',
-      options: ['extra-light', 'light', 'regular', 'bold'],
+      options: ['Light', 'Regular', 'Medium', 'Bold'],
       mapping: {
-        'extra-light': 0.5,
-        'light': 1,
-        'regular': 1.5,
-        'bold': 2,
+        'Light': 0.5,
+        'Regular': 1,
+        'Medium': 1.5,
+        'Bold': 2,
       },
       control: {
         type: 'radio'
@@ -103,8 +103,8 @@ export const IconLibrary = args => ({
 
 IconLibrary.args = {
   color: 'currentColor',
-  weight: 'light',
-  size: 34
+  weight: 'Light',
+  size: 42
 }
 
 IconLibrary.argTypes = {
