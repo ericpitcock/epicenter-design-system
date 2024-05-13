@@ -131,7 +131,7 @@
         return this.theme === 'dark' ? '#1f1f1f' : '#ebebeb'
       },
       filteredData() {
-        if (this.filter === '') {
+        if (this.filter === 'all') {
           return this.tableData
         } else {
           return this.tableData.filter(item => item.color.includes(this.filter))

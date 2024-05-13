@@ -5,6 +5,7 @@
     content-padding="3rem 0"
     calculate-height
     :calculate-height-offset="30"
+    background-color="var(--interface-surface)"
     overflow="auto"
   >
     <template #header>

@@ -113,13 +113,14 @@
         }
       },
       onClick(item) {
-        if (item.section || item.divider) {
-          return
-        }
+        console.log('item', item)
+        // if (item.section || item.divider) {
+        //   return
+        // }
         this.$emit('click', item)
-        if (item.command) {
-          item.command(item)
-        }
+        // if (item.command) {
+        //   item.command(item)
+        // }
         if (item.to) {
           this.$router.push(item.to)
         }

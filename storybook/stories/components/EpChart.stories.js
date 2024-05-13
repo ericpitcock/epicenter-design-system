@@ -36,7 +36,11 @@ const Template = args => ({
     return { args }
   },
   template: `
-    <ep-container maxWidth="120rem" container-padding="3rem">
+    <ep-container
+      maxWidth="120rem"
+      container-padding="3rem"
+      background-color="var(--interface-surface)"
+    >
       <ep-chart v-bind="args" />
     </ep-container>
   `

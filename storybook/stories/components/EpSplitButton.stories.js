@@ -1,6 +1,7 @@
 import { centeredBg } from '../../helpers/decorators.js'
 import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
+import { computed } from 'vue'
 
 export default {
   title: 'Components/Button/Split Button',
@@ -26,28 +27,6 @@ export default {
         type: 'object'
       },
       table: { category: 'Config' }
-    },
-    'buttonProps.variant': {
-      name: 'Variant',
-      options: [
-        'primary',
-        'secondary',
-        'ghost',
-        'danger',
-        'warning',
-        'success'
-      ],
-      control: {
-        type: 'radio',
-        labels: {
-          primary: 'Primary',
-          secondary: 'Secondary',
-          ghost: 'Ghost',
-          danger: 'Danger',
-          warning: 'Warning',
-          success: 'Success'
-        }
-      }
     },
     'buttonProps.label': {
       name: 'Label',
@@ -98,33 +77,39 @@ export default {
 export const SplitButton = args => ({
   components: { EpSplitButton },
   setup() {
-    const buttonProps = {
-      variant: args['buttonProps.variant'],
-      size: args['buttonProps.size'],
-      label: args['buttonProps.label'],
-      iconLeft: args['buttonProps.iconLeft'],
-      iconRight: args['buttonProps.iconRight'],
-    }
-    const dropdownProps = {
-      buttonProps: {
+    const buttonProps = computed(() => {
+      return {
         variant: args['buttonProps.variant'],
         size: args['buttonProps.size'],
-        label: '',
-        iconRight: args['dropdownProps.buttonProps.iconRight'],
-      },
-      containerProps: {
-        backgroundColor: 'var(--interface-overlay)',
-        // containerPadding: '1rem 0',
-        borderRadius: 'var(--border-radius)',
-        borderColor: 'var(--border-color--lighter)',
-      },
-      menuItems: [
-        { label: 'Download v1.1' },
-        { label: 'Download v1.0.1' },
-        { label: 'Download v1.0' },
-        { label: 'Download v0.9' }
-      ]
-    }
+        label: args['buttonProps.label'],
+        iconLeft: args['buttonProps.iconLeft'],
+        iconRight: args['buttonProps.iconRight'],
+      }
+    })
+
+    const dropdownProps = computed(() => {
+      return {
+        buttonProps: {
+          variant: args['buttonProps.variant'],
+          size: args['buttonProps.size'],
+          label: '',
+          iconRight: args['dropdownProps.buttonProps.iconRight'],
+        },
+        containerProps: {
+          backgroundColor: 'var(--interface-overlay)',
+          // containerPadding: '1rem 0',
+          borderRadius: 'var(--border-radius)',
+          borderColor: 'var(--border-color--lighter)',
+        },
+        menuItems: [
+          { label: 'Download v1.1' },
+          { label: 'Download v1.0.1' },
+          { label: 'Download v1.0' },
+          { label: 'Download v0.9' }
+        ]
+      }
+    })
+
     return { args, buttonProps, dropdownProps }
   },
   template: `
@@ -139,7 +124,6 @@ export const SplitButton = args => ({
 SplitButton.args = {
   disabled: false,
   'buttonProps.label': 'Download Latest (v1.2)',
-  'buttonProps.variant': 'primary',
   'buttonProps.size': 'large',
   'dropdownProps.buttonProps.iconRight': 'chevron-down',
 }

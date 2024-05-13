@@ -2,8 +2,6 @@
   <svg
     x="0px"
     y="0px"
-    width="160.7px"
-    height="215.87px"
     viewBox="0 0 160.7 215.87"
     :style="styles"
   >
@@ -30,26 +28,6 @@
         type: Object,
         default: () => ({})
       }
-      // strokeWidth: {
-      //   type: Number,
-      //   default: 3
-      // },
-      // strokeColor: {
-      //   type: String,
-      //   default: 'var(--logo-stroke)'
-      // },
-      // faceColor: {
-      //   type: String,
-      //   default: 'var(--logo-face)'
-      // },
-      // highlightColor: {
-      //   type: String,
-      //   default: 'var(--logo-hightlight)'
-      // },
-      // shadowColor: {
-      //   type: String,
-      //   default: 'var(--logo-shadow)'
-      // }
     }
   }
 </script>

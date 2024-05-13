@@ -12,7 +12,7 @@ export default {
       control: {
         type: 'range',
         min: 20,
-        max: 200,
+        max: 500,
         step: 1
       }
     },
@@ -70,7 +70,7 @@ export const Logo = args => ({
 
     return { args, styles }
   },
-  template: '<epicenter-logo v-bind="args" :styles="styles" />'
+  template: '<epicenter-logo v-bind="args" :width="args.size" :styles="styles" />'
 })
 
 Logo.args = {

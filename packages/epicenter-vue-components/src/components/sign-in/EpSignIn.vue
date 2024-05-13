@@ -158,16 +158,6 @@
 
 <style lang="scss" scoped>
   .ep-sign-in {
-
-    // position: absolute;
-    // top: 0;
-    // right: 0;
-    // bottom: 0;
-    // left: 0;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // background: linear-gradient(130deg, #47d4af 0%, var(--color--primary) 89%);
     &__header {
       display: flex;
       justify-content: center;

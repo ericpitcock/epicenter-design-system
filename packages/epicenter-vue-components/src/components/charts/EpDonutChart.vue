@@ -141,7 +141,7 @@
 
         // Set up the color scale
         var color = d3.scaleOrdinal()
-          .range(['var(--chart-sequence-01)', 'var(--chart-sequence-02)', 'var(--chart-sequence-03)', 'var(--chart-sequence-04)'])
+          .range(['var(--chart-sequence-00)', 'var(--chart-sequence-01)', 'var(--chart-sequence-02)', 'var(--chart-sequence-03)'])
 
         // Set up the arc generator
         var arc = d3.arc()
@@ -166,7 +166,7 @@
           .attr('fill', function(d) {
             return color(d.data)
           })
-          .attr('stroke', 'var(--interface-bg)')
+          .attr('stroke', 'var(--interface-surface)')
           .attr('stroke-width', '0.3rem')
           .on('mouseover', this.handleMouseOver)
           .on('mousemove', this.handleMouseOver)
