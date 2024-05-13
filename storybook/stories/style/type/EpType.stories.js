@@ -1,10 +1,10 @@
-import { padded } from '../../../helpers/decorators.js'
+import { paddedBg } from '../../../helpers/decorators.js'
 import EpType from './EpType.vue'
 
 export default {
   title: 'Style/Type',
   component: EpType,
-  decorators: [padded],
+  decorators: [paddedBg],
   argTypes: {
 
   },

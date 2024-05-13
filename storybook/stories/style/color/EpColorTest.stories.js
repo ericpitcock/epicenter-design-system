@@ -1,10 +1,10 @@
-import { padded } from '../../../helpers/decorators.js'
+import { paddedBg } from '../../../helpers/decorators.js'
 import EpColorTest from './EpColorTest.vue'
 
 export default {
   title: 'Style/Color Test',
   component: EpColorTest,
-  decorators: [padded],
+  decorators: [paddedBg],
   argTypes: {
     hue: {
       name: 'Hue',
