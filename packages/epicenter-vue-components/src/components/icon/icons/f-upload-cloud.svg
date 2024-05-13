@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-  <path d="m7.46,12.54l2.54-2.54,2.54,2.54m-2.54-2.54v5.72m5.34-1.66c1.54-.84,2.11-2.77,1.27-4.31-.56-1.02-1.63-1.66-2.79-1.66h-.8c-.7-2.72-3.48-4.36-6.2-3.65s-4.36,3.48-3.65,6.2c.2.78.58,1.49,1.11,2.1m8.27-.19l-2.54-2.54-2.54,2.54" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+  <path d="m7.46,12.54l2.54-2.54,2.54,2.54m-2.54-2.54v5.72m5.34-1.66c1.54-.84,2.11-2.77,1.27-4.31-.56-1.02-1.63-1.66-2.79-1.66h-.8c-.7-2.72-3.48-4.36-6.2-3.65s-4.36,3.48-3.65,6.2c.2.78.58,1.49,1.11,2.1m8.27-.19l-2.54-2.54-2.54,2.54" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--ep-icon-stroke-width)"/>
 </svg>

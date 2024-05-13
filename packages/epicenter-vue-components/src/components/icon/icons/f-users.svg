@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-  <path d="m4,14.91v-1.09c0-1.2.98-2.18,2.18-2.18h4.36c1.2,0,2.18.98,2.18,2.18v1.09m-6.55-7.64c0,1.2.98,2.18,2.18,2.18s2.18-.98,2.18-2.18-.98-2.18-2.18-2.18-2.18.98-2.18,2.18Zm9.82,7.64v-1.09c0-.99-.67-1.86-1.64-2.11m-2.18-2.32c.77-.2,1.37-.8,1.57-1.57.3-1.17-.41-2.36-1.57-2.65" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+  <path d="m4,14.91v-1.09c0-1.2.98-2.18,2.18-2.18h4.36c1.2,0,2.18.98,2.18,2.18v1.09m-6.55-7.64c0,1.2.98,2.18,2.18,2.18s2.18-.98,2.18-2.18-.98-2.18-2.18-2.18-2.18.98-2.18,2.18Zm9.82,7.64v-1.09c0-.99-.67-1.86-1.64-2.11m-2.18-2.32c.77-.2,1.37-.8,1.57-1.57.3-1.17-.41-2.36-1.57-2.65" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--ep-icon-stroke-width)"/>
 </svg>
