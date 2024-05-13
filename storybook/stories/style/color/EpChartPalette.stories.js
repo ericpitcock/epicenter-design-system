@@ -1,21 +1,7 @@
 import { paddedSurface } from '../../../helpers/decorators.js'
 import { computed } from 'vue'
 import EpButton from '@/components/button/EpButton.vue'
-
-// --chart-sequence-00: hsl(262, 51%, 58%);
-// --chart-sequence-01: hsl(199, 57%, 48%);
-// --chart-sequence-02: hsl(175, 45%, 26%);
-// --chart-sequence-03: hsl(329, 54%, 70%);
-// --chart-sequence-04: hsl(0, 52%, 60%);
-// --chart-sequence-05: hsl(0, 54%, 97%);
-// --chart-sequence-06: hsl(142, 37%, 58%);
-// --chart-sequence-07: hsl(217, 59%, 60%);
-// --chart-sequence-08: hsl(333, 39%, 51%);
-// --chart-sequence-09: hsl(45, 61%, 47%);
-// --chart-sequence-10: hsl(173, 48%, 40%);
-// --chart-sequence-11: hsl(201, 62%, 86%);
-// --chart-sequence-12: hsl(26, 58%, 37%);
-// --chart-sequence-13: hsl(269, 65%, 85%);
+import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.vue'
 
 const htmlStyles = window.getComputedStyle(document.querySelector('html'))
 let data = {}
@@ -30,10 +16,6 @@ for (let index = 0; index < 14; index++) {
   data[`saturation${index}`] = Number(saturation)
   data[`lightness${index}`] = Number(lightness)
 }
-
-console.log(data)
-// console log the type of data hue is
-console.log(typeof data.hue0)
 
 const chartSequenceColorArgTypes = (count) => {
   const argTypes = {}
@@ -114,7 +96,7 @@ export default {
 }
 
 export const ChartPalette = (args) => ({
-  components: { EpButton },
+  components: { EpButton, EpStatusIndicator },
   setup() {
     const styles = computed(() => ({
       '--chart-sequence-00': `hsl(${args.hue0 + args.globalHue}, ${args.saturation0 + args.globalSaturation}%, ${args.lightness0 + args.globalLightness}%)`,
@@ -154,8 +136,8 @@ export const ChartPalette = (args) => ({
             :style="{ flex: '1', width: '50px', backgroundColor: 'var(--chart-sequence-' + (index < 10 ? '0' + index : index) + ')'}"
           />
         </div>
-        <div style="width: 300px; height: 300px;">
-          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 174.22 174.12">
+        <div style="flex: 1; display: flex; gap: 50px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="300px" height="300px" viewBox="0 0 174.22 174.12">
             <path style="fill: var(--chart-sequence-13)" d="M87.12,87.06L79.54.33c2.49-.22,5.09-.33,7.59-.33v87.06Z"/>
             <path style="fill: var(--chart-sequence-12)" d="M87.12,87.06L72.01,1.32c2.46-.43,5.04-.77,7.53-.99l7.59,86.73Z"/>
             <path style="fill: var(--chart-sequence-11)" d="M87.12,87.06L58.78,4.74c4.77-1.64,8.25-2.54,13.23-3.42l15.12,85.74Z"/>
@@ -171,6 +153,11 @@ export const ChartPalette = (args) => ({
             <path style="fill: var(--chart-sequence-01)" d="M87.12,87.06l63.67-59.38c17.25,18.5,24.94,40.22,23.18,65.45l-86.85-6.07Z"/>
             <path style="fill: var(--chart-sequence-00)" d="M87.12,87.06V0c25.29,0,46.42,9.19,63.67,27.69l-63.67,59.38Z"/>
           </svg>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <ep-status-indicator v-for="(n, index) in 14" :style="{ '--ep-status-indicator-dot-bg': 'var(--chart-sequence-' + (index < 10 ? '0' + index : index) + ')', '--ep-status-indicator-dot-border': 'var(--chart-sequence-' + (index < 10 ? '0' + index : index) + ')' }">
+              Chart Sequence {{ index }}
+            </ep-status-indicator>
+          </div>
         </div>
       </div>
     </div>
@@ -181,13 +168,7 @@ ChartPalette.args = {
   globalHue: 0,
   globalSaturation: 0,
   globalLightness: 0,
-  // insert data object here
   ...data
 }
-
-// add data object to ChartPalette.args
-// Object.assign(ChartPalette.args, data)
-
-// console.log(ChartPalette.args)
 
 
