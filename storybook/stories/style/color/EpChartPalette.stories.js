@@ -105,10 +105,9 @@ export const ChartPalette = (args) => ({
       v-for="(n, index) in 14"
       :key="index"
       :class="'color' + index"
-      :style="{ width: '50px', height: '50px', backgroundColor: 'var(--chart-sequence-' + (index < 10 ? '0' + index : index) + ')' }"
+      :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-' + (index < 10 ? '0' + index : index)] }"
     />
   `
-
 })
 
 ChartPalette.args = {
