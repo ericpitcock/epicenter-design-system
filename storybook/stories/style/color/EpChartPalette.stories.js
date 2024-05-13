@@ -48,6 +48,33 @@ export default {
   title: 'Style/Chart Palette',
   decorators: [paddedSurface],
   argTypes: {
+    globalHue: {
+      name: 'Global Hue',
+      control: {
+        type: 'range',
+        min: -180,
+        max: 180,
+        step: 1
+      }
+    },
+    globalSaturation: {
+      name: 'Global Saturation',
+      control: {
+        type: 'range',
+        min: -100,
+        max: 100,
+        step: 1
+      }
+    },
+    globalLightness: {
+      name: 'Global Lightness',
+      control: {
+        type: 'range',
+        min: -100,
+        max: 100,
+        step: 1
+      }
+    },
     ...chartSequenceColorArgTypes(14)
   },
 }
@@ -55,43 +82,36 @@ export default {
 export const ChartPalette = (args) => ({
   setup() {
     const styles = computed(() => ({
-      '--chart-sequence-00': `hsl(${args.hue0}, ${args.saturation0}%, ${args.lightness0}%)`,
-      '--chart-sequence-01': `hsl(${args.hue1}, ${args.saturation1}%, ${args.lightness1}%)`,
-      '--chart-sequence-02': `hsl(${args.hue2}, ${args.saturation2}%, ${args.lightness2}%)`,
-      '--chart-sequence-03': `hsl(${args.hue3}, ${args.saturation3}%, ${args.lightness3}%)`,
-      '--chart-sequence-04': `hsl(${args.hue4}, ${args.saturation4}%, ${args.lightness4}%)`,
-      '--chart-sequence-05': `hsl(${args.hue5}, ${args.saturation5}%, ${args.lightness5}%)`,
-      '--chart-sequence-06': `hsl(${args.hue6}, ${args.saturation6}%, ${args.lightness6}%)`,
-      '--chart-sequence-07': `hsl(${args.hue7}, ${args.saturation7}%, ${args.lightness7}%)`,
-      '--chart-sequence-08': `hsl(${args.hue8}, ${args.saturation8}%, ${args.lightness8}%)`,
-      '--chart-sequence-09': `hsl(${args.hue9}, ${args.saturation9}%, ${args.lightness9}%)`,
-      '--chart-sequence-10': `hsl(${args.hue10}, ${args.saturation10}%, ${args.lightness10}%)`,
-      '--chart-sequence-11': `hsl(${args.hue11}, ${args.saturation11}%, ${args.lightness11}%)`,
-      '--chart-sequence-12': `hsl(${args.hue12}, ${args.saturation12}%, ${args.lightness12}%)`,
-      '--chart-sequence-13': `hsl(${args.hue13}, ${args.saturation13}%, ${args.lightness13}%)`,
+      // '--chart-sequence-00': `hsl(${args.hue0}, ${args.saturation0}%, ${args.lightness0}%)`,
+      // '--chart-sequence-01': `hsl(${args.hue1}, ${args.saturation1}%, ${args.lightness1}%)`,
+      // '--chart-sequence-02': `hsl(${args.hue2}, ${args.saturation2}%, ${args.lightness2}%)`,
+      '--chart-sequence-00': `hsl(${args.hue0 + args.globalHue}, ${args.saturation0 + args.globalSaturation}%, ${args.lightness0 + args.globalLightness}%)`,
+      '--chart-sequence-01': `hsl(${args.hue1 + args.globalHue}, ${args.saturation1 + args.globalSaturation}%, ${args.lightness1 + args.globalLightness}%)`,
+      '--chart-sequence-02': `hsl(${args.hue2 + args.globalHue}, ${args.saturation2 + args.globalSaturation}%, ${args.lightness2 + args.globalLightness}%)`,
+      '--chart-sequence-03': `hsl(${args.hue3 + args.globalHue}, ${args.saturation3 + args.globalSaturation}%, ${args.lightness3 + args.globalLightness}%)`,
+      '--chart-sequence-04': `hsl(${args.hue4 + args.globalHue}, ${args.saturation4 + args.globalSaturation}%, ${args.lightness4 + args.globalLightness}%)`,
+      '--chart-sequence-05': `hsl(${args.hue5 + args.globalHue}, ${args.saturation5 + args.globalSaturation}%, ${args.lightness5 + args.globalLightness}%)`,
+      '--chart-sequence-06': `hsl(${args.hue6 + args.globalHue}, ${args.saturation6 + args.globalSaturation}%, ${args.lightness6 + args.globalLightness}%)`,
+      '--chart-sequence-07': `hsl(${args.hue7 + args.globalHue}, ${args.saturation7 + args.globalSaturation}%, ${args.lightness7 + args.globalLightness}%)`,
+      '--chart-sequence-08': `hsl(${args.hue8 + args.globalHue}, ${args.saturation8 + args.globalSaturation}%, ${args.lightness8 + args.globalLightness}%)`,
+      '--chart-sequence-09': `hsl(${args.hue9 + args.globalHue}, ${args.saturation9 + args.globalSaturation}%, ${args.lightness9 + args.globalLightness}%)`,
+      '--chart-sequence-10': `hsl(${args.hue10 + args.globalHue}, ${args.saturation10 + args.globalSaturation}%, ${args.lightness10 + args.globalLightness}%)`,
+      '--chart-sequence-11': `hsl(${args.hue11 + args.globalHue}, ${args.saturation11 + args.globalSaturation}%, ${args.lightness11 + args.globalLightness}%)`,
+      '--chart-sequence-12': `hsl(${args.hue12 + args.globalHue}, ${args.saturation12 + args.globalSaturation}%, ${args.lightness12 + args.globalLightness}%)`,
+      '--chart-sequence-13': `hsl(${args.hue13 + args.globalHue}, ${args.saturation13 + args.globalSaturation}%, ${args.lightness13 + args.globalLightness}%)`,
     }))
 
     return { args, styles }
   },
   template: `
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-00'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-01'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-02'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-03'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-04'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-05'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-06'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-07'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-08'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-09'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-10'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-11'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-12'] }" />
-    <div :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-13'] }" />
+    <div v-for="i in 14" :key="i" :style="{ width: '50px', height: '50px', backgroundColor: styles['--chart-sequence-' + (i < 10 ? '0' + i : i)] }" />
   `
 })
 
 ChartPalette.args = {
+  globalHue: 0,
+  globalSaturation: 0,
+  globalLightness: 0,
   hue0: 220,
   saturation0: 100,
   lightness0: 50,
