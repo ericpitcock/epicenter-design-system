@@ -1,4 +1,4 @@
-import { centeredSurface } from '../../helpers/decorators.js'
+import { paddedSurface } from '../../helpers/decorators.js'
 import EpFlexContainer from '@/components/flexbox/EpFlexContainer.vue'
 import EpRadio from '@/components/radio/EpRadio.vue'
 import { ref } from 'vue'
@@ -6,7 +6,7 @@ import { ref } from 'vue'
 export default {
   title: 'Components/Radio',
   component: EpRadio,
-  decorators: [centeredSurface],
+  decorators: [paddedSurface],
   argTypes: {
     id: {
       table: { disable: true }

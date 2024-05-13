@@ -12,7 +12,7 @@
       :disabled
       :required
     >
-    <span class="radio-dot" />
+    <span class="ep-radio__dot" />
     {{ label }}
   </label>
 </template>
