@@ -3,6 +3,7 @@
     <ep-input
       v-model="searchQuery"
       v-bind="computedInputProps"
+      spellcheck="false"
       @clear="handleClear"
       @keydown.prevent.down="onDownArrow"
       @keydown.prevent.up="onUpArrow"
@@ -41,6 +42,7 @@
 
   const resultsList = ref(null)
   const currentIndex = ref(0)
+  const searching = ref(false)
 
   const searchQuery = ref('')
   watch(searchQuery, () => {
@@ -49,21 +51,23 @@
       currentIndex.value = 0
       return
     }
-    search()
+    useDebounce(emit('search', searchQuery.value), 500)
+    // search()
   })
 
-  const searching = ref(false)
-
-  const inputPropDefaults = {
-    size: 'default',
-    placeholder: 'Search…',
-    iconLeft: { name: 'search' },
-    clearable: true
-  }
+  // const inputPropDefaults = {
+  //   size: 'default',
+  //   placeholder: 'Search…',
+  //   iconLeft: { name: 'search' },
+  //   clearable: true
+  // }
 
   const computedInputProps = computed(() => {
     return {
-      ...inputPropDefaults,
+      size: 'default',
+      placeholder: 'Search…',
+      iconLeft: { name: 'search' },
+      clearable: true,
       ...props.inputProps,
     }
   })
@@ -90,11 +94,13 @@
   watch(() => props.searchResults, () => {
     if (props.searchResults.length > 0) {
       searching.value = true
-    }
-
-    if (props.searchResults.length === 0) {
+    } else {
       searching.value = false
     }
+
+    // if (props.searchResults.length === 0) {
+    //   searching.value = false
+    // }
   })
 
   const emit = defineEmits(['clear', 'search', 'selection'])
@@ -167,11 +173,13 @@
     if (props.searchResults.length === 0) {
       return
     }
+    console.log('handleEnter')
     handleSelection(props.searchResults[currentIndex.value])
   }
 
   const handleEsc = () => {
     searching.value = false
+    searchQuery.value = ''
   }
 
   const handleMouseEnter = (index) => {
@@ -179,14 +187,15 @@
   }
 
   const handleSelection = (result) => {
-    searching.value = false
+    console.log('handleSelection')
     emit('selection', result[props.resultsValue])
     searchQuery.value = result[props.resultsLabel]
+    searching.value = false
   }
 
-  const search = async () => {
-    searching.value = true
-    useDebounce(emit('search', searchQuery.value), 500)
-  }
+  // const search = async () => {
+  //   searching.value = true
+  //   useDebounce(emit('search', searchQuery.value), 500)
+  // }
 
 </script>
