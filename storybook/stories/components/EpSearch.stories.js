@@ -27,17 +27,30 @@ export const Autocomplete = args => ({
 
     const setBackground = color => {
       bg.value = color
+      searchResults.value = []
+    }
+
+    const clearResults = () => {
+      bg.value = 'var(--interface-surface)'
+      searchResults.value = []
     }
 
     const searchWebColors = query => {
+      console.log('searching for:', query)
+      if (!query) {
+        searchResults.value = []
+        return
+      }
       const results = webColors.filter(color =>
         color.name.toLowerCase().includes(query.toLowerCase())
       )
       searchResults.value = results
     }
+
     return {
       args,
       bg,
+      clearResults,
       searchResults,
       searchWebColors,
       setBackground,
@@ -54,7 +67,7 @@ export const Autocomplete = args => ({
         :input-props="{ width: '60rem', placeholder: 'Find your favorite color…', size: 'xlarge' }"
         @search="searchWebColors"
         @selection="setBackground"
-        @clear="bg = 'var(--interface-surface)'"
+        @clear="clearResults"
       />
     </div>
   `,

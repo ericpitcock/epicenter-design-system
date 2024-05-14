@@ -5,7 +5,7 @@
       v-model="searchQuery"
       v-bind="computedInputProps"
       spellcheck="false"
-      @input="handleInput"
+      @update:model-value="handleInput"
       @clear="handleClear"
       @keydown.prevent.down="onDownArrow"
       @keydown.prevent.up="onUpArrow"
@@ -13,7 +13,7 @@
       @keydown.esc="handleEsc"
     />
     <div
-      v-show="searching"
+      v-if="searchResults.length"
       ref="resultsList"
       v-click-outside="handleClickOutside"
       class="ep-search__dropdown"
@@ -44,27 +44,8 @@
 
   const resultsList = ref(null)
   const searchInput = ref(null)
-  const currentIndex = ref(0)
-  const searching = ref(false)
-
-  const searchQuery = ref('')
-  watch(searchQuery, () => {
-    if (searchQuery.value === '') {
-      searching.value = false
-      currentIndex.value = 0
-      return
-    }
-  })
-
-  const computedInputProps = computed(() => {
-    return {
-      size: 'default',
-      placeholder: 'Search…',
-      iconLeft: { name: 'search' },
-      clearable: true,
-      ...props.inputProps,
-    }
-  })
+  const currentIndex = ref(-1)
+  const userIsTyping = ref(false)
 
   const props = defineProps({
     resultsLabel: {
@@ -85,39 +66,81 @@
     },
   })
 
+  // const searching = ref(false)
+  // const searchValue = ref('')
+
+  // watch currentIndex and return the value that is currently highlighted
+  const currentResult = computed(() => {
+    return props.searchResults[currentIndex.value]
+  })
+
+  watch(currentResult, (newValue, oldValue) => {
+    if (newValue) {
+      searchQuery.value = newValue[props.resultsLabel]
+    }
+  })
+
+  const debouncedSearch = useDebounce((value) => emit('search', value), 200)
+  // const search = async () => {
+  //   console.log('searching...')
+  //   debouncedSearch(searchQuery.value)
+  //   // searching.value = true
+  // }
+
+  const handleInput = () => {
+    console.log('user is typing, let’s run a query on', searchQuery.value)
+    currentIndex.value = -1
+    debouncedSearch(searchQuery.value)
+  }
+
+  const searchQuery = ref('')
+  watch(searchQuery, (newValue, oldValue) => {
+    console.log('watch:searchQuery.value', searchQuery.value)
+    // debouncedSearch(searchQuery.value)
+    // if (searchQuery.value === '') {
+    //   console.log('watch:searchQuery.value is empty')
+    //   // searching.value = false
+    //   currentIndex.value = 0
+    //   return
+    // }
+  })
+
+  const computedInputProps = computed(() => {
+    return {
+      size: 'default',
+      placeholder: 'Search…',
+      iconLeft: { name: 'search' },
+      clearable: true,
+      ...props.inputProps,
+    }
+  })
+
   watch(() => props.searchResults, () => {
-    if (props.searchResults.length > 0) {
-      searching.value = true
-    }
-    if (props.searchResults.length === 0) {
-      searching.value = false
-    }
+    console.log('watch:props.searchResults', props.searchResults)
   })
 
   const emit = defineEmits(['clear', 'search', 'selection'])
 
-  const handleInput = () => {
-    if (searchQuery.value === '') {
-      searching.value = false
-      return
-    }
-    search()
-  }
+  // const handleInput = () => {
+  //   if (searchQuery.value === '') {
+  //     searching.value = false
+  //     return
+  //   }
+  //   search()
+  // }
 
-  const debouncedSearch = useDebounce((value) => emit('search', value), 200)
-  const search = async () => {
-    debouncedSearch(searchQuery.value)
-  }
+
 
   const handleClear = () => {
     searchQuery.value = ''
-    searching.value = false
-    currentIndex.value = 0
+    // searching.value = false
+    currentIndex.value = -1
     emit('clear')
   }
 
   const handleClickOutside = () => {
-    searching.value = false
+    searchQuery.value = ''
+    // searching.value = false
   }
 
   const onDownArrow = () => {
@@ -168,7 +191,7 @@
 
   const handleEsc = () => {
     searchQuery.value = ''
-    searching.value = false
+    // searching.value = false
   }
 
   const handleMouseEnter = (index) => {
@@ -176,8 +199,9 @@
   }
 
   const handleSelection = (result) => {
-    searching.value = false
+    // searchValue.value = result[props.resultsValue]
+    // searching.value = false
     emit('selection', result[props.resultsValue])
-    searchQuery.value = result[props.resultsLabel]
+    // searchQuery.value = result[props.resultsLabel]
   }
 </script>
