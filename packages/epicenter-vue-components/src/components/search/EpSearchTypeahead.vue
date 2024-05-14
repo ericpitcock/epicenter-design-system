@@ -5,16 +5,16 @@
       v-bind="computedInputProps"
       spellcheck="false"
       @update:model-value="handleInput"
-      @clear="handleClear"
+      @clear="resetSearch"
       @keydown.prevent.down="onDownArrow"
       @keydown.prevent.up="onUpArrow"
       @keydown.enter="handleEnter"
-      @keydown.esc="handleEsc"
+      @keydown.esc="resetSearch"
     />
     <div
       v-if="searchResults.length"
       ref="resultsList"
-      v-click-outside="handleClickOutside"
+      v-click-outside="resetSearch"
       class="ep-search-typeahead__dropdown"
     >
       <ul>
@@ -95,14 +95,10 @@
 
   const emit = defineEmits(['clear', 'search', 'selection'])
 
-  const handleClear = () => {
+  const resetSearch = () => {
     searchQuery.value = ''
     currentIndex.value = -1
     emit('clear')
-  }
-
-  const handleClickOutside = () => {
-    searchQuery.value = ''
   }
 
   const onDownArrow = () => {
@@ -149,11 +145,6 @@
       return
     }
     handleSelection(props.searchResults[currentIndex.value])
-  }
-
-  const handleEsc = () => {
-    searchQuery.value = ''
-    emit('clear')
   }
 
   const handleMouseEnter = (index) => {
