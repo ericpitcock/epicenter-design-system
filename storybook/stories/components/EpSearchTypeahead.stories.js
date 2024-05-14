@@ -26,7 +26,7 @@ export const Typeahead = args => ({
     const bg = ref('var(--interface-surface)')
 
     const setBackground = color => {
-      bg.value = color
+      bg.value = color.hex
       searchResults.value = []
     }
 

@@ -6,8 +6,8 @@
       spellcheck="false"
       @update:model-value="handleInput"
       @clear="resetSearch"
-      @keydown.prevent.down="onDownArrow"
-      @keydown.prevent.up="onUpArrow"
+      @keydown.prevent.down="updateCurrentIndex(1)"
+      @keydown.prevent.up="updateCurrentIndex(-1)"
       @keydown.enter="handleEnter"
       @keydown.esc="resetSearch"
     />
@@ -15,15 +15,15 @@
       v-if="searchResults.length"
       ref="resultsList"
       v-click-outside="resetSearch"
-      class="ep-search-typeahead__dropdown"
+      class="ep-search-typeahead-dropdown"
     >
       <ul>
         <li
           v-for="(result, index) in searchResults"
           :key="index"
-          class="ep-search-typeahead__dropdown__item"
+          class="ep-search-typeahead-dropdown__item"
           :class="{
-            'ep-search-typeahead__dropdown__item--active': index === currentIndex,
+            'ep-search-typeahead-dropdown__item--active': index === currentIndex,
           }"
           @click="handleSelection(result)"
           @mouseenter="handleMouseEnter(index)"
@@ -41,6 +41,7 @@
   import { useDebounce } from '../../composables/useDebounce.js'
   import { computed, ref, watch } from 'vue'
 
+  const searchQuery = ref('')
   const resultsList = ref(null)
   const currentIndex = ref(-1)
 
@@ -81,8 +82,6 @@
     debouncedSearch(searchQuery.value)
   }
 
-  const searchQuery = ref('')
-
   const computedInputProps = computed(() => {
     return {
       size: 'default',
@@ -101,42 +100,32 @@
     emit('clear')
   }
 
-  const onDownArrow = () => {
-    if (props.searchResults.length === 0 || currentIndex.value === props.searchResults.length - 1) {
+  const updateCurrentIndex = (delta) => {
+    const newIndex = currentIndex.value + delta
+
+    if (props.searchResults.length === 0 || newIndex < 0 || newIndex >= props.searchResults.length) {
       return
     }
 
-    currentIndex.value++
+    currentIndex.value = newIndex
 
-    // get the selected item element and its offset from the top of the dropdown container
-    const list = resultsList.value.children[0]
-    let selectedItem
-    if (list.children[currentIndex.value]) {
-      selectedItem = list.children[currentIndex.value]
-    }
-
-    if (selectedItem && selectedItem.offsetTop + selectedItem.offsetHeight > resultsList.value.scrollTop + resultsList.value.offsetHeight) {
-      // Scroll the container down to bring the selected item into view
-      resultsList.value.scrollTop = selectedItem.offsetTop + selectedItem.offsetHeight - resultsList.value.offsetHeight
-    }
+    scrollToSelectedItem()
   }
 
-  const onUpArrow = () => {
-    if (props.searchResults.length === 0 || currentIndex.value === 0) {
-      return
-    }
-    currentIndex.value--
-
-    // get the selected item element and its offset from the top of the dropdown container
+  const scrollToSelectedItem = () => {
     const list = resultsList.value.children[0]
-    let selectedItem
-    if (list.children[currentIndex.value]) {
-      selectedItem = list.children[currentIndex.value]
-    }
+    const selectedItem = list.children[currentIndex.value]
 
-    if (selectedItem && selectedItem.offsetTop < resultsList.value.scrollTop) {
-      // Scroll the container up to bring the selected item into view
-      resultsList.value.scrollTop = selectedItem.offsetTop
+    if (!selectedItem) return
+
+    const dropdownHeight = resultsList.value.offsetHeight
+    const itemTop = selectedItem.offsetTop
+    const itemBottom = itemTop + selectedItem.offsetHeight
+
+    if (itemBottom > dropdownHeight + resultsList.value.scrollTop) {
+      resultsList.value.scrollTop = itemBottom - dropdownHeight
+    } else if (itemTop < resultsList.value.scrollTop) {
+      resultsList.value.scrollTop = itemTop
     }
   }
 
@@ -152,6 +141,7 @@
   }
 
   const handleSelection = (result) => {
-    emit('selection', result[props.resultsValue])
+    console.log('result', result)
+    emit('selection', result)
   }
 </script>

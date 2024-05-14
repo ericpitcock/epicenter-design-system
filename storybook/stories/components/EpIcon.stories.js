@@ -1,7 +1,7 @@
 import { paddedBg } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpIcon from '@/components/icon/EpIcon.vue'
-import EpSearch from '@/components/search/EpSearch.vue'
+import EpSearchTypeahead from '@/components/search/EpSearchTypeahead.vue'
 import { icons, iconObjects } from '../../helpers/iconHelper.js'
 import { computed, ref } from 'vue'
 
@@ -48,7 +48,7 @@ export default {
 }
 
 export const IconLibrary = args => ({
-  components: { EpContainer, EpIcon, EpSearch },
+  components: { EpContainer, EpIcon, EpSearchTypeahead },
   setup() {
     const styles = computed(() => {
       return {
@@ -72,12 +72,18 @@ export const IconLibrary = args => ({
 
     const filterIcons = query => {
       filteredIcons.value = icons.filter(icon =>
-        icon.toLowerCase().includes(query.toLowerCase())
+        icon.toLowerCase().includes(query.name.toLowerCase())
       )
+    }
+
+    const clearResults = () => {
+      searchResults.value = []
+      filteredIcons.value = icons
     }
 
     return {
       args,
+      clearResults,
       icons,
       filterIcons,
       filteredIcons,
@@ -87,21 +93,22 @@ export const IconLibrary = args => ({
     }
   },
   template: `
-  <ep-search
+  <ep-search-typeahead
     :input-props="{ width: '60rem', placeholder: 'Search icons…', size: 'xlarge' }"
     :search-results="searchResults"
     results-label="name"
     results-value="name"
     @search="searchIcons"
     @selection="filterIcons"
-    @clear="filteredIcons = icons"
+    @clear="clearResults"
     style="margin-bottom: 2rem;"
   />
   <div style="display: flex;
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-    justify-content: flex-start;"
+    justify-content: flex-start;
+    padding-bottom: 20rem;"
   >
     <ep-container
       v-for="(icon, index) in filteredIcons"
