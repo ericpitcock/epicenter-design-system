@@ -1,6 +1,6 @@
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpIcon from '@/components/icon/EpIcon.vue'
-import { iconNamesObject } from '../../helpers/iconHelper.js'
+import { icons } from '../../helpers/iconHelper.js'
 import { computed } from 'vue'
 
 export default {
@@ -56,7 +56,7 @@ export const IconLibrary = args => ({
       }
     })
 
-    return { args, iconNamesObject, styles }
+    return { args, icons, styles }
   },
   template: `
   <div style="padding: 30px;
@@ -67,7 +67,7 @@ export const IconLibrary = args => ({
     justify-content: flex-start;"
   >
     <ep-container
-      v-for="(icon, index) in iconNamesObject"
+      v-for="(icon, index) in icons"
       useFooter
       :key="index"
       content-padding="2rem"
@@ -76,7 +76,7 @@ export const IconLibrary = args => ({
       style="flex: 0 0 170px;"
     >
       <ep-icon
-        :name="icon.name"
+        :name="icon"
         :color="args.color"
         :weight="args.weight"
         :size="args.size"
@@ -86,7 +86,7 @@ export const IconLibrary = args => ({
       <div
         class="font-size--small text--subtle"
         style="padding: 1rem 2rem; border-top: 1px solid var(--border-color);"
-      >{{ icon.name }}</div>
+      >{{ icon }}</div>
       </template>
     </ep-container>
   </div>
