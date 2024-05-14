@@ -1,6 +1,7 @@
 <template>
   <div class="ep-search">
     <ep-input
+      ref="searchInput"
       v-model="searchQuery"
       v-bind="computedInputProps"
       spellcheck="false"
@@ -41,6 +42,7 @@
   import { computed, ref, watch } from 'vue'
 
   const resultsList = ref(null)
+  const searchInput = ref(null)
   const currentIndex = ref(0)
   const searching = ref(false)
 
@@ -92,6 +94,10 @@
   })
 
   watch(() => props.searchResults, () => {
+    if (props.searchResults.length === 1 && searchQuery.value === props.searchResults[0][props.resultsLabel]) {
+      searching.value = false
+      currentIndex.value = 0
+    }
     if (props.searchResults.length > 0) {
       searching.value = true
     } else {
@@ -190,6 +196,8 @@
     console.log('handleSelection')
     emit('selection', result[props.resultsValue])
     searchQuery.value = result[props.resultsLabel]
+    // set ref searchInput value to result[props.resultsLabel]
+    // searchInput.value.value = result[props.resultsLabel]
     searching.value = false
   }
 
