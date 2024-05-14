@@ -1,7 +1,8 @@
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpIcon from '@/components/icon/EpIcon.vue'
-import { icons } from '../../helpers/iconHelper.js'
-import { computed } from 'vue'
+import EpSearch from '@/components/search/EpSearch.vue'
+import { icons, iconObjects } from '../../helpers/iconHelper.js'
+import { computed, ref } from 'vue'
 
 export default {
   title: 'Components/Icon Library',
@@ -45,7 +46,7 @@ export default {
 }
 
 export const IconLibrary = args => ({
-  components: { EpContainer, EpIcon },
+  components: { EpContainer, EpIcon, EpSearch },
   setup() {
     const styles = computed(() => {
       return {
@@ -56,9 +57,42 @@ export const IconLibrary = args => ({
       }
     })
 
-    return { args, icons, styles }
+    const searchResults = ref([])
+
+    const searchIcons = query => {
+      const results = iconObjects.filter(icon =>
+        icon.name.toLowerCase().includes(query.toLowerCase())
+      )
+      searchResults.value = results
+    }
+
+    const filteredIcons = ref(icons)
+
+    const filterIcons = query => {
+      filteredIcons.value = icons.filter(icon =>
+        icon.toLowerCase().includes(query.toLowerCase())
+      )
+    }
+
+    return {
+      args,
+      icons,
+      filterIcons,
+      filteredIcons,
+      searchIcons,
+      searchResults,
+      styles
+    }
   },
   template: `
+  <ep-search
+    :input-props="{ width: '60rem', placeholder: 'Search icons…', size: 'xlarge' }"
+    :search-results="searchResults"
+    results-label="name"
+    results-value="name"
+    @search="searchIcons"
+    @selection="filterIcons"
+  />
   <div style="padding: 30px;
     display: flex;
     justify-content: center;
@@ -67,7 +101,7 @@ export const IconLibrary = args => ({
     justify-content: flex-start;"
   >
     <ep-container
-      v-for="(icon, index) in icons"
+      v-for="(icon, index) in filteredIcons"
       useFooter
       :key="index"
       content-padding="2rem"

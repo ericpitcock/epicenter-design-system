@@ -313,13 +313,18 @@ const icons = [
   'zoom-out',
 ]
 
+// array of icon objects: { name: 'icon-name' }
+const iconObjects = icons.map(icon => ({ name: icon }))
+
+// array of icon options: ['None', 'icon-name']
 const iconOptions = ['None']
 iconOptions.push(...icons)
 
+// object mapping icon names to icon objects
 const iconMapping = { None: undefined }
 icons.forEach(icon => {
   iconMapping[icon] = { name: icon }
 })
 
-export { icons, iconOptions, iconMapping }
+export { icons, iconObjects, iconOptions, iconMapping }
 
