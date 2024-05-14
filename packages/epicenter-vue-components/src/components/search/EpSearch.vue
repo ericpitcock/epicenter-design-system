@@ -3,19 +3,17 @@
     <ep-input
       v-model="searchQuery"
       v-bind="computedInputProps"
-      @input="handleInput"
       @clear="handleClear"
-      @keydown.prevent.down="handleKeyDown"
-      @keydown.prevent.up="handleKeyUp"
+      @keydown.prevent.down="onDownArrow"
+      @keydown.prevent.up="onUpArrow"
       @keydown.enter="handleEnter"
       @keydown.esc="handleEsc"
     />
     <div
       v-show="searching"
       ref="resultsList"
-      v-click-outside-next="handleClickOutside"
+      v-click-outside="handleClickOutside"
       class="ep-search__dropdown"
-      :style="{ maxHeight: dynamicHeight }"
     >
       <ul>
         <li
@@ -35,139 +33,160 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import EpInput from '../input/EpInput.vue'
-  import calculateHeight from '../../mixins/calculateHeight'
-  import clickOutsideNext from '../../directives/clickOutsideNext'
-  import debounceMixin from '../../mixins/debounce'
+  import * as vClickOutside from '../../directives/clickOutsideNext'
+  import { useDebounce } from '../../composables/useDebounce.js'
+  import { computed, ref, watch } from 'vue'
 
-  export default {
-    name: 'EpSearch',
-    components: {
-      EpInput,
-    },
-    directives: {
-      clickOutsideNext,
-    },
-    mixins: [calculateHeight, debounceMixin],
-    props: {
-      resultsLabel: {
-        type: String,
-        default: '',
-      },
-      resultsValue: {
-        type: String,
-        default: '',
-      },
-      searchResults: {
-        type: Array,
-        required: true,
-      },
-      inputProps: {
-        type: Object,
-        default: () => ({}),
-      },
-    },
-    emits: ['clear', 'search', 'selection'],
-    data() {
-      return {
-        currentIndex: 0,
-        inputPropDefaults: {
-          size: 'default',
-          placeholder: 'Search…',
-          iconLeft: { name: 'search' },
-          clearable: true
-        },
-        searchQuery: '',
-        searching: false,
-      }
-    },
-    computed: {
-      computedInputProps() {
-        return {
-          ...this.inputPropDefaults,
-          ...this.inputProps,
-        }
-      },
-    },
-    methods: {
-      handleClear() {
-        this.searchQuery = ''
-        this.searching = false
-        this.$emit('clear')
-      },
-      handleClickOutside() {
-        this.searching = false
-      },
-      handleInput() {
-        if (this.searchQuery === '') {
-          this.searching = false
-          return
-        }
-        this.search()
-      },
-      getItemOffsetTop(index) {
-        const selectedItem = this.$refs.resultsList.children[0].children[index]
-        return selectedItem.offsetTop
-      },
-      handleKeyDown() {
-        if (this.searchResults.length === 0 || this.currentIndex === this.searchResults.length - 1) {
-          return
-        }
+  const resultsList = ref(null)
+  const currentIndex = ref(0)
 
-        this.currentIndex++
+  const searchQuery = ref('')
+  watch(searchQuery, () => {
+    if (searchQuery.value === '') {
+      searching.value = false
+      currentIndex.value = 0
+      return
+    }
+    search()
+  })
 
-        // get the selected item element and its offset from the top of the dropdown container
-        const list = this.$refs.resultsList.children[0]
-        let selectedItem
-        if (list.children[this.currentIndex]) {
-          selectedItem = list.children[this.currentIndex]
-        }
+  const searching = ref(false)
 
-        if (selectedItem && selectedItem.offsetTop + selectedItem.offsetHeight > this.$refs.resultsList.scrollTop + this.$refs.resultsList.offsetHeight) {
-          // Scroll the container down to bring the selected item into view
-          this.$refs.resultsList.scrollTop = selectedItem.offsetTop + selectedItem.offsetHeight - this.$refs.resultsList.offsetHeight
-        }
-      },
-      handleKeyUp() {
-        if (this.searchResults.length === 0 || this.currentIndex === 0) {
-          return
-        }
-        this.currentIndex--
-
-        // get the selected item element and its offset from the top of the dropdown container
-        const list = this.$refs.resultsList.children[0]
-        let selectedItem
-        if (list.children[this.currentIndex]) {
-          selectedItem = list.children[this.currentIndex]
-        }
-
-        if (selectedItem && selectedItem.offsetTop < this.$refs.resultsList.scrollTop) {
-          // Scroll the container up to bring the selected item into view
-          this.$refs.resultsList.scrollTop = selectedItem.offsetTop
-        }
-      },
-      handleEnter() {
-        if (this.searchResults.length === 0) {
-          return
-        }
-        this.handleSelection(this.searchResults[this.currentIndex])
-      },
-      handleEsc() {
-        this.searching = false
-      },
-      handleMouseEnter(index) {
-        this.currentIndex = index
-      },
-      handleSelection(result) {
-        this.searching = false
-        this.$emit('selection', result[this.resultsValue])
-        this.searchQuery = result[this.resultsLabel]
-      },
-      async search() {
-        this.searching = true
-        this.debounce(this.$emit('search', this.searchQuery), 500)
-      },
-    },
+  const inputPropDefaults = {
+    size: 'default',
+    placeholder: 'Search…',
+    iconLeft: { name: 'search' },
+    clearable: true
   }
+
+  const computedInputProps = computed(() => {
+    return {
+      ...inputPropDefaults,
+      ...props.inputProps,
+    }
+  })
+
+  const props = defineProps({
+    resultsLabel: {
+      type: String,
+      default: '',
+    },
+    resultsValue: {
+      type: String,
+      default: '',
+    },
+    searchResults: {
+      type: Array,
+      required: true,
+    },
+    inputProps: {
+      type: Object,
+      default: () => ({}),
+    },
+  })
+
+  watch(() => props.searchResults, () => {
+    if (props.searchResults.length > 0) {
+      searching.value = true
+    }
+
+    if (props.searchResults.length === 0) {
+      searching.value = false
+    }
+  })
+
+  const emit = defineEmits(['clear', 'search', 'selection'])
+
+  const handleClear = () => {
+    searchQuery.value = ''
+    searching.value = false
+    currentIndex.value = 0
+    emit('clear')
+  }
+
+  const handleClickOutside = () => {
+    searching.value = false
+  }
+
+  // const handleInput = () => {
+  //   if (searchQuery.value === '') {
+  //     searching.value = false
+  //     currentIndex.value = 0
+  //     return
+  //   }
+  //   search()
+  // }
+
+  // const getItemOffsetTop = (index) => {
+  //   const selectedItem = this.resultsList.value.children[0].children[index]
+  //   return selectedItem.offsetTop
+  // }
+
+  const onDownArrow = () => {
+    if (props.searchResults.length === 0 || currentIndex.value === props.searchResults.length - 1) {
+      return
+    }
+
+    currentIndex.value++
+
+    // get the selected item element and its offset from the top of the dropdown container
+    const list = resultsList.value.children[0]
+    let selectedItem
+    if (list.children[currentIndex.value]) {
+      selectedItem = list.children[currentIndex.value]
+    }
+
+    if (selectedItem && selectedItem.offsetTop + selectedItem.offsetHeight > resultsList.value.scrollTop + resultsList.value.offsetHeight) {
+      // Scroll the container down to bring the selected item into view
+      resultsList.value.scrollTop = selectedItem.offsetTop + selectedItem.offsetHeight - resultsList.value.offsetHeight
+    }
+  }
+
+  const onUpArrow = () => {
+    if (props.searchResults.length === 0 || currentIndex.value === 0) {
+      return
+    }
+    currentIndex.value--
+
+    // get the selected item element and its offset from the top of the dropdown container
+    const list = resultsList.value.children[0]
+    let selectedItem
+    if (list.children[currentIndex.value]) {
+      selectedItem = list.children[currentIndex.value]
+    }
+
+    if (selectedItem && selectedItem.offsetTop < resultsList.value.scrollTop) {
+      // Scroll the container up to bring the selected item into view
+      resultsList.value.scrollTop = selectedItem.offsetTop
+    }
+  }
+
+  const handleEnter = () => {
+    if (props.searchResults.length === 0) {
+      return
+    }
+    handleSelection(props.searchResults[currentIndex.value])
+  }
+
+  const handleEsc = () => {
+    searching.value = false
+  }
+
+  const handleMouseEnter = (index) => {
+    currentIndex.value = index
+  }
+
+  const handleSelection = (result) => {
+    searching.value = false
+    emit('selection', result[props.resultsValue])
+    searchQuery.value = result[props.resultsLabel]
+  }
+
+  const search = async () => {
+    searching.value = true
+    useDebounce(emit('search', searchQuery.value), 500)
+  }
+
 </script>
