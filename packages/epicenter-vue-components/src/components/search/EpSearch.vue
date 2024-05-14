@@ -88,14 +88,14 @@
     },
   })
 
-  // watch(() => props.searchResults, () => {
-  //   if (props.searchResults.length > 0) {
-  //     searching.value = true
-  //   }
-  //   if (props.searchResults.length === 0) {
-  //     searching.value = false
-  //   }
-  // })
+  watch(() => props.searchResults, () => {
+    if (props.searchResults.length > 0) {
+      searching.value = true
+    }
+    if (props.searchResults.length === 0) {
+      searching.value = false
+    }
+  })
 
   const emit = defineEmits(['clear', 'search', 'selection'])
 
@@ -108,9 +108,9 @@
   }
 
   const search = async () => {
-    searching.value = true
     // this.debounce(this.$emit('search', this.searchQuery), 500)
     debouncedSearch(searchQuery.value)
+    // searching.value = true
   }
 
   const handleClear = () => {
