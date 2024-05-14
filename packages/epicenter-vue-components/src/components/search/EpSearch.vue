@@ -5,6 +5,7 @@
       v-model="searchQuery"
       v-bind="computedInputProps"
       spellcheck="false"
+      @input="handleInput"
       @clear="handleClear"
       @keydown.prevent.down="onDownArrow"
       @keydown.prevent.up="onUpArrow"
@@ -47,22 +48,16 @@
   const searching = ref(false)
 
   const searchQuery = ref('')
+  const debouncedSearch = useDebounce((value) => emit('search', value), 200)
   watch(searchQuery, () => {
     if (searchQuery.value === '') {
       searching.value = false
       currentIndex.value = 0
       return
     }
-    useDebounce(emit('search', searchQuery.value), 500)
-    // search()
+    // searching.value = true
+    // debouncedSearch(newValue)
   })
-
-  // const inputPropDefaults = {
-  //   size: 'default',
-  //   placeholder: 'Search…',
-  //   iconLeft: { name: 'search' },
-  //   clearable: true
-  // }
 
   const computedInputProps = computed(() => {
     return {
@@ -93,23 +88,30 @@
     },
   })
 
-  watch(() => props.searchResults, () => {
-    if (props.searchResults.length === 1 && searchQuery.value === props.searchResults[0][props.resultsLabel]) {
-      searching.value = false
-      currentIndex.value = 0
-    }
-    if (props.searchResults.length > 0) {
-      searching.value = true
-    } else {
-      searching.value = false
-    }
-
-    // if (props.searchResults.length === 0) {
-    //   searching.value = false
-    // }
-  })
+  // watch(() => props.searchResults, () => {
+  //   if (props.searchResults.length > 0) {
+  //     searching.value = true
+  //   }
+  //   if (props.searchResults.length === 0) {
+  //     searching.value = false
+  //   }
+  // })
 
   const emit = defineEmits(['clear', 'search', 'selection'])
+
+  const handleInput = () => {
+    if (searchQuery.value === '') {
+      searching.value = false
+      return
+    }
+    search()
+  }
+
+  const search = async () => {
+    searching.value = true
+    // this.debounce(this.$emit('search', this.searchQuery), 500)
+    debouncedSearch(searchQuery.value)
+  }
 
   const handleClear = () => {
     searchQuery.value = ''
@@ -121,20 +123,6 @@
   const handleClickOutside = () => {
     searching.value = false
   }
-
-  // const handleInput = () => {
-  //   if (searchQuery.value === '') {
-  //     searching.value = false
-  //     currentIndex.value = 0
-  //     return
-  //   }
-  //   search()
-  // }
-
-  // const getItemOffsetTop = (index) => {
-  //   const selectedItem = this.resultsList.value.children[0].children[index]
-  //   return selectedItem.offsetTop
-  // }
 
   const onDownArrow = () => {
     if (props.searchResults.length === 0 || currentIndex.value === props.searchResults.length - 1) {
@@ -179,13 +167,13 @@
     if (props.searchResults.length === 0) {
       return
     }
-    console.log('handleEnter')
+    // console.log('handleEnter')
     handleSelection(props.searchResults[currentIndex.value])
   }
 
   const handleEsc = () => {
-    searching.value = false
     searchQuery.value = ''
+    searching.value = false
   }
 
   const handleMouseEnter = (index) => {
@@ -193,17 +181,9 @@
   }
 
   const handleSelection = (result) => {
-    console.log('handleSelection')
+    searching.value = false
+    // console.log('handleSelection')
     emit('selection', result[props.resultsValue])
     searchQuery.value = result[props.resultsLabel]
-    // set ref searchInput value to result[props.resultsLabel]
-    // searchInput.value.value = result[props.resultsLabel]
-    searching.value = false
   }
-
-  // const search = async () => {
-  //   searching.value = true
-  //   useDebounce(emit('search', searchQuery.value), 500)
-  // }
-
 </script>
