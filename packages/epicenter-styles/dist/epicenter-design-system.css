@@ -3477,7 +3477,8 @@ input.ep-input--disabled::placeholder {
   position: relative;
   width: fit-content;
 }
-.ep-search-typeahead__dropdown {
+
+.ep-search-typeahead-dropdown {
   position: absolute;
   top: calc(100% + 0.4rem);
   left: 0;
@@ -3490,13 +3491,13 @@ input.ep-input--disabled::placeholder {
   border-radius: var(--border-radius);
   z-index: var(--z-index--dropdown);
 }
-.ep-search-typeahead__dropdown__item {
+.ep-search-typeahead-dropdown__item {
   font-size: var(--font-size--small);
   line-height: 1;
   padding: 0.9rem 2.2rem;
   cursor: pointer;
 }
-.ep-search-typeahead__dropdown__item--active {
+.ep-search-typeahead-dropdown__item--active {
   background-color: var(--primary-color-base);
   color: var(--text-color--loud);
 }
