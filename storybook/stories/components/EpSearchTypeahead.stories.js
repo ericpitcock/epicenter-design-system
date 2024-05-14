@@ -1,10 +1,10 @@
-import EpSearch from '@/components/search/EpSearch.vue'
+import EpSearchTypeahead from '@/components/search/EpSearchTypeahead.vue'
 import webColors from '../../data/webColors.json'
 import { ref } from 'vue'
 
 export default {
-  title: 'Components/Search',
-  component: EpSearch,
+  title: 'Components/Search/Typeahead',
+  component: EpSearchTypeahead,
   argTypes: {
     calculateHeight: { table: { disable: true } },
     calculateHeightOffset: { table: { disable: true } },
@@ -19,8 +19,8 @@ export default {
   },
 }
 
-export const Autocomplete = args => ({
-  components: { EpSearch },
+export const Typeahead = args => ({
+  components: { EpSearchTypeahead },
   setup() {
     const searchResults = ref([])
     const bg = ref('var(--interface-surface)')
@@ -36,7 +36,6 @@ export const Autocomplete = args => ({
     }
 
     const searchWebColors = query => {
-      console.log('searching for:', query)
       if (!query) {
         searchResults.value = []
         return
@@ -58,7 +57,7 @@ export const Autocomplete = args => ({
   },
   template: `
     <div :style="{ height: '100%', background: bg, padding: '3rem'}">
-      <ep-search
+      <ep-search-typeahead
         calculateHeight
         :calculateHeightOffset="74"
         :search-results="searchResults"

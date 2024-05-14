@@ -3473,15 +3473,16 @@ input.ep-input--disabled::placeholder {
   cursor: pointer;
 }
 
-.ep-search {
+.ep-search-typeahead {
   position: relative;
   width: fit-content;
 }
-.ep-search__dropdown {
+.ep-search-typeahead__dropdown {
   position: absolute;
   top: calc(100% + 0.4rem);
   left: 0;
   width: 100%;
+  max-height: 50vh;
   padding: 1rem 0;
   overflow-y: auto;
   background-color: var(--interface-overlay);
@@ -3489,15 +3490,15 @@ input.ep-input--disabled::placeholder {
   border-radius: var(--border-radius);
   z-index: var(--z-index--dropdown);
 }
-.ep-search__dropdown__item {
+.ep-search-typeahead__dropdown__item {
   font-size: var(--font-size--small);
   line-height: 1;
   padding: 0.9rem 2.2rem;
   cursor: pointer;
 }
-.ep-search__dropdown__item--active {
-  background-color: var(--color--primary);
-  color: var(--button-menu-item-text-hover);
+.ep-search-typeahead__dropdown__item--active {
+  background-color: var(--primary-color-base);
+  color: var(--text-color--loud);
 }
 
 select.ep-select {

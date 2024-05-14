@@ -26,7 +26,7 @@ import EpMultiSearch from './search/EpMultiSearch.vue'
 import EpNotification from './notification/EpNotification.vue'
 import EpTempNotification from './notification/EpTempNotification.vue'
 import EpNotifications from './notification/EpNotifications.vue'
-import EpSearch from './search/EpSearch.vue'
+import EpSearchTypeahead from './search/EpSearchTypeahead.vue.vue'
 import EpSelect from './select/EpSelect.vue'
 import EpSplitButton from './split-button/EpSplitButton.vue'
 import EpStatusIndicator from './status-indicator/EpStatusIndicator.vue'
@@ -67,7 +67,7 @@ export default {
   EpNotification,
   EpTempNotification,
   EpNotifications,
-  EpSearch,
+  EpSearchTypeahead,
   EpSelect,
   EpSplitButton,
   EpStatusIndicator,

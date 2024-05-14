@@ -1,7 +1,6 @@
 <template>
-  <div class="ep-search">
+  <div class="ep-search-typeahead">
     <ep-input
-      ref="searchInput"
       v-model="searchQuery"
       v-bind="computedInputProps"
       spellcheck="false"
@@ -16,15 +15,15 @@
       v-if="searchResults.length"
       ref="resultsList"
       v-click-outside="handleClickOutside"
-      class="ep-search__dropdown"
+      class="ep-search-typeahead__dropdown"
     >
       <ul>
         <li
           v-for="(result, index) in searchResults"
           :key="index"
-          class="ep-search__dropdown__item"
+          class="ep-search-typeahead__dropdown__item"
           :class="{
-            'ep-search__dropdown__item--active': index === currentIndex,
+            'ep-search-typeahead__dropdown__item--active': index === currentIndex,
           }"
           @click="handleSelection(result)"
           @mouseenter="handleMouseEnter(index)"
@@ -43,9 +42,7 @@
   import { computed, ref, watch } from 'vue'
 
   const resultsList = ref(null)
-  const searchInput = ref(null)
   const currentIndex = ref(-1)
-  const userIsTyping = ref(false)
 
   const props = defineProps({
     resultsLabel: {
@@ -66,44 +63,25 @@
     },
   })
 
-  // const searching = ref(false)
-  // const searchValue = ref('')
-
   // watch currentIndex and return the value that is currently highlighted
   const currentResult = computed(() => {
     return props.searchResults[currentIndex.value]
   })
 
-  watch(currentResult, (newValue, oldValue) => {
+  watch(currentResult, (newValue) => {
     if (newValue) {
       searchQuery.value = newValue[props.resultsLabel]
     }
   })
 
   const debouncedSearch = useDebounce((value) => emit('search', value), 200)
-  // const search = async () => {
-  //   console.log('searching...')
-  //   debouncedSearch(searchQuery.value)
-  //   // searching.value = true
-  // }
 
   const handleInput = () => {
-    console.log('user is typing, let’s run a query on', searchQuery.value)
     currentIndex.value = -1
     debouncedSearch(searchQuery.value)
   }
 
   const searchQuery = ref('')
-  watch(searchQuery, (newValue, oldValue) => {
-    console.log('watch:searchQuery.value', searchQuery.value)
-    // debouncedSearch(searchQuery.value)
-    // if (searchQuery.value === '') {
-    //   console.log('watch:searchQuery.value is empty')
-    //   // searching.value = false
-    //   currentIndex.value = 0
-    //   return
-    // }
-  })
 
   const computedInputProps = computed(() => {
     return {
@@ -115,32 +93,16 @@
     }
   })
 
-  watch(() => props.searchResults, () => {
-    console.log('watch:props.searchResults', props.searchResults)
-  })
-
   const emit = defineEmits(['clear', 'search', 'selection'])
-
-  // const handleInput = () => {
-  //   if (searchQuery.value === '') {
-  //     searching.value = false
-  //     return
-  //   }
-  //   search()
-  // }
-
-
 
   const handleClear = () => {
     searchQuery.value = ''
-    // searching.value = false
     currentIndex.value = -1
     emit('clear')
   }
 
   const handleClickOutside = () => {
     searchQuery.value = ''
-    // searching.value = false
   }
 
   const onDownArrow = () => {
@@ -191,7 +153,7 @@
 
   const handleEsc = () => {
     searchQuery.value = ''
-    // searching.value = false
+    emit('clear')
   }
 
   const handleMouseEnter = (index) => {
@@ -199,9 +161,6 @@
   }
 
   const handleSelection = (result) => {
-    // searchValue.value = result[props.resultsValue]
-    // searching.value = false
     emit('selection', result[props.resultsValue])
-    // searchQuery.value = result[props.resultsLabel]
   }
 </script>
