@@ -1,3 +1,4 @@
+import { paddedBg } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpIcon from '@/components/icon/EpIcon.vue'
 import EpSearch from '@/components/search/EpSearch.vue'
@@ -7,6 +8,7 @@ import { computed, ref } from 'vue'
 export default {
   title: 'Components/Icon Library',
   component: EpIcon,
+  decorators: [paddedBg],
   argTypes: {
     color: {
       name: 'Color',
@@ -92,9 +94,10 @@ export const IconLibrary = args => ({
     results-value="name"
     @search="searchIcons"
     @selection="filterIcons"
+    @clear="filteredIcons = icons"
+    style="margin-bottom: 2rem;"
   />
-  <div style="padding: 30px;
-    display: flex;
+  <div style="display: flex;
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
