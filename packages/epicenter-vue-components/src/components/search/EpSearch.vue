@@ -38,7 +38,7 @@
 
 <script setup>
   import EpInput from '../input/EpInput.vue'
-  import * as vClickOutside from '../../directives/clickOutsideNext'
+  import vClickOutside from '../../directives/clickOutsideNext'
   import { useDebounce } from '../../composables/useDebounce.js'
   import { computed, ref, watch } from 'vue'
 
@@ -48,15 +48,12 @@
   const searching = ref(false)
 
   const searchQuery = ref('')
-  const debouncedSearch = useDebounce((value) => emit('search', value), 200)
   watch(searchQuery, () => {
     if (searchQuery.value === '') {
       searching.value = false
       currentIndex.value = 0
       return
     }
-    // searching.value = true
-    // debouncedSearch(newValue)
   })
 
   const computedInputProps = computed(() => {
@@ -107,10 +104,9 @@
     search()
   }
 
+  const debouncedSearch = useDebounce((value) => emit('search', value), 200)
   const search = async () => {
-    // this.debounce(this.$emit('search', this.searchQuery), 500)
     debouncedSearch(searchQuery.value)
-    // searching.value = true
   }
 
   const handleClear = () => {
@@ -167,7 +163,6 @@
     if (props.searchResults.length === 0) {
       return
     }
-    // console.log('handleEnter')
     handleSelection(props.searchResults[currentIndex.value])
   }
 
@@ -182,7 +177,6 @@
 
   const handleSelection = (result) => {
     searching.value = false
-    // console.log('handleSelection')
     emit('selection', result[props.resultsValue])
     searchQuery.value = result[props.resultsLabel]
   }
