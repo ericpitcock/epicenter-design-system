@@ -1,5 +1,5 @@
 import { paddedSurface } from '../../helpers/decorators.js'
-import EpFlexContainer from '@/components/flexbox/EpFlexContainer.vue'
+import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpRadio from '@/components/radio/EpRadio.vue'
 import { ref } from 'vue'
 
@@ -31,7 +31,7 @@ export default {
 
 export const Radio = args => ({
   components: {
-    EpFlexContainer,
+    EpFlex,
     EpRadio
   },
   setup() {
@@ -68,10 +68,7 @@ export const Radio = args => ({
     return { args, radioButtons, selectedOption }
   },
   template: `
-    <ep-flex-container
-      flex-flow="column nowrap"
-      gap="1rem"
-    >
+    <ep-flex flex-props=",,column,,,,,1rem,">
       <h2>Hot Sauce:</h2>
       <ep-radio
         v-for="radio in radioButtons"
@@ -79,6 +76,6 @@ export const Radio = args => ({
         v-model="selectedOption"
         @update:modelValue="console.log(selectedOption)"
       />
-    </ep-flex-container>
+    </ep-flex>
   `
 })

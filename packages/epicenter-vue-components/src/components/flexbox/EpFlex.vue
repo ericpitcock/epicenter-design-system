@@ -20,7 +20,8 @@
   const [
     width,
     height,
-    flexFlow,
+    flexDirection,
+    flexWrap,
     justifyContent,
     alignItems,
     alignContent,
@@ -31,14 +32,15 @@
   const styles = computed(() => {
     return {
       display: 'flex',
-      width: width !== undefined ? width : '100%',
-      height: height !== undefined ? height : '100%',
-      flexFlow: flexFlow !== undefined ? flexFlow : 'row nowrap',
-      justifyContent: justifyContent !== undefined ? justifyContent : 'flex-start',
-      alignItems: alignItems !== undefined ? alignItems : 'stretch',
-      alignContent: alignContent !== undefined ? alignContent : 'normal',
-      gap: gap !== undefined ? gap : '0',
-      padding: padding !== undefined ? padding : '0',
+      ...width && { width },
+      ...height && { height },
+      ...flexDirection && { flexDirection },
+      ...flexWrap && { flexWrap },
+      ...justifyContent && { justifyContent },
+      ...alignItems && { alignItems },
+      ...alignContent && { alignContent },
+      ...gap && { gap },
+      ...padding && { padding },
     }
   })
 </script>

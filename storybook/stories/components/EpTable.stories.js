@@ -3,9 +3,9 @@ import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
-import EpFlexContainer from '@/components/flexbox/EpFlexContainer.vue'
+import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpFooter from '@/components/footer/EpFooter.vue'
-import EpSearch from '@/components/search/EpSearch.vue'
+import EpSearchTypeahead from '@/components/search/EpSearchTypeahead.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import { columns, fakeArray } from '../../data/tableData'
 
@@ -182,9 +182,9 @@ export const Table = args => ({
     EpCheckbox,
     EpDropdown,
     EpHeader,
-    EpFlexContainer,
+    EpFlex,
     EpFooter,
-    EpSearch,
+    EpSearchTypeahead,
     EpTable
   },
   // setup() {
@@ -226,10 +226,9 @@ export const Table = args => ({
     <template #header>
       <ep-header>
         <template #left>
-          <ep-search
-            :search-results="tableData"
-            results-value="name"
-            results-label="name"
+          <ep-search-typeahead
+            :returned-search-results="tableData"
+            results-key="name"
             :input-props="{
               width: '40rem',
               size: 'large',
@@ -255,17 +254,14 @@ export const Table = args => ({
                 borderRadius="var(--border-radius)"
                 container-padding="2rem"
               >
-                <ep-flex-container
-                  flex-flow="column nowrap"
-                  gap="1rem"
-                >
+                <ep-flex flex-props=",,column,,,,,1rem,">
                   <ep-checkbox
                     v-for="filter in filters"
                     :key="filter.id"
                     v-bind="filter"
                     @checkchange="handleFilter"
                   />
-                </ep-flex-container>
+                </ep-flex>
               </ep-container>
             </template>
           </ep-dropdown>

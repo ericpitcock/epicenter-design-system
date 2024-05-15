@@ -1,6 +1,6 @@
 import { paddedSurface } from '../../helpers/decorators.js'
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
-import EpFlexContainer from '@/components/flexbox/EpFlexContainer.vue'
+import EpFlex from '@/components/flexbox/EpFlex.vue'
 import { computed, ref } from 'vue'
 
 export default {
@@ -50,7 +50,7 @@ export default {
 const Bare = args => ({
   components: {
     EpCheckbox,
-    EpFlexContainer
+    EpFlex
   },
   setup() {
     const checkboxes = ref([
@@ -95,13 +95,7 @@ const Bare = args => ({
     return { args, checkboxes, selectedOptions, updateChecked }
   },
   template: `
-    <ep-flex-container
-      flex-flow="column nowrap"
-      align-items="flex-start"
-      justify-content="flex-start"
-      gap="1rem"
-      style="width: 100%;"
-    >
+    <ep-flex flex-props=",100%,column,,,,,1rem,">
       <ep-checkbox
         v-for="checkbox in checkboxes"
         :key="checkbox.id"
@@ -109,7 +103,7 @@ const Bare = args => ({
         v-model="checkbox.checked"
         @update:modelValue="updateChecked($event, checkbox.label, checkbox.id)"
       />
-    </ep-flex-container>
+    </ep-flex>
     {{ selectedOptions }}
   `
 })

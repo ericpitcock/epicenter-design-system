@@ -18,10 +18,7 @@
         </template>
       </ep-header>
     </template>
-    <ep-flex-container
-      flex-flow="column nowrap"
-      gap="1rem"
-    >
+    <ep-flex flex-props=",,column,,,,,1rem,">
       <ep-empty-state
         v-if="isNotificationsEmpty"
         :message="emptyStateMessage"
@@ -36,14 +33,14 @@
           />
         </transition-group>
       </template>
-    </ep-flex-container>
+    </ep-flex>
   </ep-container>
 </template>
 
 <script>
   import EpContainer from '../container/EpContainer.vue'
   import EpEmptyState from '../empty-state/EpEmptyState.vue'
-  import EpFlexContainer from '../flexbox/EpFlexContainer.vue'
+  import EpFlex from '../flexbox/EpFlex.vue'
   import EpHeader from '../header/EpHeader.vue'
   import EpNotification from '../notification/EpNotification.vue'
   // import { mapState, mapGetters } from 'vuex'
@@ -53,7 +50,7 @@
     components: {
       EpContainer,
       EpEmptyState,
-      EpFlexContainer,
+      EpFlex,
       EpHeader,
       EpNotification
     },
