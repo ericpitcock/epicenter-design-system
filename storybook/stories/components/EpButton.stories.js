@@ -28,7 +28,7 @@ export default {
         type: 'select',
       },
       table: {
-        category: 'App Specific'
+        category: 'App Defined'
       }
     },
     disabled: {

@@ -14,7 +14,7 @@
       v-if="iconLeft"
       class="ep-button__icon ep-button__icon--left"
     >
-      <ep-icon v-bind="iconLeft" />
+      <ep-icon v-bind="computedIconLeftProps" />
     </span>
     <span
       v-if="label"
@@ -26,7 +26,7 @@
       v-if="iconRight"
       class="ep-button__icon ep-button__icon--right"
     >
-      <ep-icon v-bind="iconRight" />
+      <ep-icon v-bind="computedIconRightProps" />
     </span>
   </component>
 </template>
@@ -102,6 +102,33 @@
       return 'a'
     }
     return 'button'
+  })
+
+  const defaultIconProps = {
+    styles: {
+      '--ep-icon-width': '100%',
+      '--ep-icon-height': '100%'
+    }
+  }
+
+  const computedIconLeftProps = computed(() => {
+    if (props.iconLeft) {
+      return {
+        ...defaultIconProps,
+        ...props.iconLeft
+      }
+    }
+    return undefined
+  })
+
+  const computedIconRightProps = computed(() => {
+    if (props.iconRight) {
+      return {
+        ...defaultIconProps,
+        ...props.iconRight
+      }
+    }
+    return undefined
   })
 
   const classes = computed(() => ({
