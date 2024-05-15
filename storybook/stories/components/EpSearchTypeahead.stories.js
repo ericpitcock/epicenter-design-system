@@ -6,16 +6,9 @@ export default {
   title: 'Components/Search/Typeahead',
   component: EpSearchTypeahead,
   argTypes: {
-    calculateHeight: { table: { disable: true } },
-    calculateHeightOffset: { table: { disable: true } },
-    placeholder: {
-      control: {
-        type: 'text',
-      },
-    },
-    resultsLabel: { table: { disable: true } },
-    resultsValue: { table: { disable: true } },
-    searchResults: { table: { disable: true } },
+    resultsKey: { table: { disable: true } },
+    returnedSearchResults: { table: { disable: true } },
+    inputProps: { table: { disable: true } },
   },
 }
 
@@ -60,9 +53,8 @@ export const Typeahead = args => ({
       <ep-search-typeahead
         calculateHeight
         :calculateHeightOffset="74"
-        :search-results="searchResults"
-        results-label="name"
-        results-value="hex"
+        :returned-search-results="searchResults"
+        results-key="name"
         :input-props="{ width: '60rem', placeholder: 'Find your favorite color…', size: 'xlarge' }"
         @search="searchWebColors"
         @selection="setBackground"

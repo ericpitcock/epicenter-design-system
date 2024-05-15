@@ -4,31 +4,31 @@
       v-model="searchQuery"
       v-bind="computedInputProps"
       spellcheck="false"
-      @update:model-value="handleInput"
+      @update:model-value="onInput"
       @clear="resetSearch"
-      @keydown.prevent.down="updateCurrentIndex(1)"
-      @keydown.prevent.up="updateCurrentIndex(-1)"
-      @keydown.enter="handleEnter"
+      @keydown.prevent.down="updateactiveItemIndex(1)"
+      @keydown.prevent.up="updateactiveItemIndex(-1)"
+      @keydown.enter="onEnter"
       @keydown.esc="resetSearch"
     />
     <div
-      v-if="searchResults.length"
+      v-if="returnedSearchResults.length"
       ref="resultsList"
       v-click-outside="resetSearch"
       class="ep-search-typeahead-dropdown"
     >
       <ul>
         <li
-          v-for="(result, index) in searchResults"
+          v-for="(result, index) in returnedSearchResults"
           :key="index"
-          class="ep-search-typeahead-dropdown__item"
-          :class="{
-            'ep-search-typeahead-dropdown__item--active': index === currentIndex,
-          }"
-          @click="handleSelection(result)"
-          @mouseenter="handleMouseEnter(index)"
+          :class="[
+            'ep-search-typeahead-dropdown__item',
+            { 'ep-search-typeahead-dropdown__item--active': index === activeItemIndex, }
+          ]"
+          @click="onSelection(result)"
+          @mouseenter="onMouseEnter(index)"
         >
-          {{ result[resultsLabel] }}
+          {{ result[resultsKey] }}
         </li>
       </ul>
     </div>
@@ -43,18 +43,14 @@
 
   const searchQuery = ref('')
   const resultsList = ref(null)
-  const currentIndex = ref(-1)
+  const activeItemIndex = ref(-1)
 
   const props = defineProps({
-    resultsLabel: {
+    resultsKey: {
       type: String,
       default: '',
     },
-    resultsValue: {
-      type: String,
-      default: '',
-    },
-    searchResults: {
+    returnedSearchResults: {
       type: Array,
       required: true,
     },
@@ -64,23 +60,18 @@
     },
   })
 
-  // watch currentIndex and return the value that is currently highlighted
-  const currentResult = computed(() => {
-    return props.searchResults[currentIndex.value]
+  const emit = defineEmits(['clear', 'search', 'selection'])
+
+  // watch activeItemIndex and return the value that is currently highlighted
+  const activeItem = computed(() => {
+    return props.returnedSearchResults[activeItemIndex.value]
   })
 
-  watch(currentResult, (newValue) => {
+  watch(activeItem, (newValue) => {
     if (newValue) {
-      searchQuery.value = newValue[props.resultsLabel]
+      searchQuery.value = newValue[props.resultsKey]
     }
   })
-
-  const debouncedSearch = useDebounce((value) => emit('search', value), 200)
-
-  const handleInput = () => {
-    currentIndex.value = -1
-    debouncedSearch(searchQuery.value)
-  }
 
   const computedInputProps = computed(() => {
     return {
@@ -92,29 +83,27 @@
     }
   })
 
-  const emit = defineEmits(['clear', 'search', 'selection'])
-
   const resetSearch = () => {
     searchQuery.value = ''
-    currentIndex.value = -1
+    activeItemIndex.value = -1
     emit('clear')
   }
 
-  const updateCurrentIndex = (delta) => {
-    const newIndex = currentIndex.value + delta
+  const updateactiveItemIndex = (delta) => {
+    const newIndex = activeItemIndex.value + delta
 
-    if (props.searchResults.length === 0 || newIndex < 0 || newIndex >= props.searchResults.length) {
+    if (props.returnedSearchResults.length === 0 || newIndex < 0 || newIndex >= props.returnedSearchResults.length) {
       return
     }
 
-    currentIndex.value = newIndex
+    activeItemIndex.value = newIndex
 
     scrollToSelectedItem()
   }
 
   const scrollToSelectedItem = () => {
     const list = resultsList.value.children[0]
-    const selectedItem = list.children[currentIndex.value]
+    const selectedItem = list.children[activeItemIndex.value]
 
     if (!selectedItem) return
 
@@ -129,19 +118,25 @@
     }
   }
 
-  const handleEnter = () => {
-    if (props.searchResults.length === 0) {
+  const debouncedSearch = useDebounce((value) => emit('search', value), 200)
+
+  const onInput = () => {
+    activeItemIndex.value = -1
+    debouncedSearch(searchQuery.value)
+  }
+
+  const onEnter = () => {
+    if (props.returnedSearchResults.length === 0) {
       return
     }
-    handleSelection(props.searchResults[currentIndex.value])
+    onSelection(props.returnedSearchResults[activeItemIndex.value])
   }
 
-  const handleMouseEnter = (index) => {
-    currentIndex.value = index
+  const onMouseEnter = (index) => {
+    activeItemIndex.value = index
   }
 
-  const handleSelection = (result) => {
-    console.log('result', result)
+  const onSelection = (result) => {
     emit('selection', result)
   }
 </script>
