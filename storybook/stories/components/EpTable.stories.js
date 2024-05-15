@@ -199,13 +199,14 @@ export const Table = args => ({
     }
   },
   methods: {
-    handleFilter(event) {
+    handleFilter(event, label, id) {
+      console.log('event:', event)
       // if unchecked, add to hiddenColumns
-      if (event.target.checked === false) {
-        this.hiddenColumns.push(event.target.id)
+      if (!event) {
+        this.hiddenColumns.push(id)
       } else {
         // if checked, remove from hiddenColumns
-        this.hiddenColumns = this.hiddenColumns.filter(column => column !== event.target.id)
+        this.hiddenColumns = this.hiddenColumns.filter(column => column !== id)
       }
     },
     onSearch(value) {
@@ -259,7 +260,8 @@ export const Table = args => ({
                     v-for="filter in filters"
                     :key="filter.id"
                     v-bind="filter"
-                    @checkchange="handleFilter"
+                    v-model="filter.checked"
+                    @update:modelValue="handleFilter($event, filter.label, filter.id)"
                   />
                 </ep-flex>
               </ep-container>
