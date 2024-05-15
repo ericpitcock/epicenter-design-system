@@ -1,4 +1,4 @@
-import { centeredSurface } from '../../helpers/decorators.js'
+import { paddedSurface } from '../../helpers/decorators.js'
 import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpInput from '@/components/input/EpInput.vue'
 import { ref } from 'vue'
@@ -6,7 +6,7 @@ import { ref } from 'vue'
 export default {
   title: 'Components/Input',
   component: EpInput,
-  decorators: [centeredSurface],
+  decorators: [paddedSurface],
   argTypes: {
     id: {
       name: 'ID',
