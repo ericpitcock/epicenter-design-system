@@ -17,19 +17,19 @@
     }
   })
 
-  const [
-    width,
-    height,
-    flexDirection,
-    flexWrap,
-    justifyContent,
-    alignItems,
-    alignContent,
-    gap,
-    padding
-  ] = props.flexProps.split(',')
-
   const styles = computed(() => {
+    const [
+      width,
+      height,
+      flexDirection,
+      flexWrap,
+      justifyContent,
+      alignItems,
+      alignContent,
+      gap,
+      padding
+    ] = props.flexProps.split(',')
+
     return {
       display: 'flex',
       ...width && { width },

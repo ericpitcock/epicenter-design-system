@@ -24,28 +24,25 @@ export default {
         type: 'text'
       }
     },
-    flexFlow: {
+    flexDirection: {
       name: 'Flex Flow',
       options: [
-        'row wrap',
-        'row nowrap',
-        'row-reverse wrap',
-        'row-reverse nowrap',
-        'column wrap',
-        'column nowrap',
-        'column-reverse wrap',
-        'column-reverse nowrap',
+        'row',
+        'row-reverse',
+        'column',
+        'column-reverse'
       ],
-      // mappping: {
-      //   'row wrap': 'row nowrap',
-      //   'row nowrap': 'row nowrap',
-      //   'row-reverse wrap': 'row-reverse nowrap',
-      //   'row-reverse nowrap': 'row-reverse nowrap',
-      //   'column wrap': 'column wrap',
-      //   'column nowrap': 'column nowrap',
-      //   'column-reverse nowrap': 'column-reverse nowrap',
-      //   'column-reverse wrap': 'column-reverse wrap',
-      // },
+      control: {
+        type: 'select',
+      }
+    },
+    flexWrap: {
+      name: 'Flex Wrap',
+      options: [
+        'wrap',
+        'nowrap',
+        'wrap-reverse'
+      ],
       control: {
         type: 'select',
       }
@@ -132,7 +129,7 @@ export const Flex = args => ({
   components: { EpFlex },
   setup() {
     const flexProps = computed(() => {
-      return `${args.width},${args.height},${args.flexFlow},${args.justifyContent},${args.alignItems},${args.alignContent},${args.gap},${args.padding}`
+      return `${args.width},${args.height},${args.flexDirection},${args.flexWrap},${args.justifyContent},${args.alignItems},${args.alignContent},${args.gap},${args.padding}`
     })
 
     return { args, flexProps }
@@ -162,9 +159,11 @@ export const Flex = args => ({
 Flex.args = {
   width: '100%',
   height: '100%',
-  flexFlow: 'row wrap',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
   justifyContent: 'flex-start',
   alignItems: 'stretch',
+  alignContent: 'stretch',
   gap: '1rem',
-  padding: '1rem',
+  padding: '0',
 }
