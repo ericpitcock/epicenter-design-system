@@ -6,11 +6,14 @@ export default {
   component: EpDatePicker,
   decorators: [paddedSurface],
   argTypes: {
-    inputProps: {
-      name: 'Input Props',
+    enableCloseOnSelect: {
+      name: 'Close on Select',
       control: {
-        type: 'object'
+        type: 'boolean'
       }
+    },
+    inputProps: {
+      table: { disable: true }
     },
     dateFormat: {
       name: 'Date Format',
@@ -68,6 +71,7 @@ export const DatePicker = args => ({
 })
 
 DatePicker.args = {
+  enableCloseOnSelect: false,
   inputProps: {
     size: 'xlarge',
   },

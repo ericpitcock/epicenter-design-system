@@ -7,135 +7,106 @@
   </div>
 </template>
 
-<script>
+<script setup>
+  import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
   import flatpickr from 'flatpickr'
   import EpInput from '../input/EpInput.vue'
 
-  export default {
-    name: 'EpDatePicker',
-    components: {
-      EpInput
+  const props = defineProps({
+    enableCloseOnSelect: {
+      type: Boolean,
+      default: true
     },
-    props: {
-      positionX: {
-        type: String,
-        default: 'left' // left, center, righ
-      },
-      positionY: {
-        type: String,
-        default: 'auto' // auto, above, below
-      },
-      dateFormat: {
-        type: String,
-        default: 'm/d/Y'
-      },
-      inputProps: {
-        type: Object,
-        default: () => ({})
-      },
-      mode: {
-        type: String,
-        default: 'single' // single, multiple, range
-      },
+    positionX: {
+      type: String,
+      default: 'left'
     },
-    emits: ['input', 'change', 'focus', 'blur', 'keydown'],
-    data() {
-      return {
-        flatpickr: null,
-        value: '',
-        inputDefaults: {
-          inputId: 'dp',
-          type: 'text',
-          width: '30rem',
-          placeholder: 'Select a date',
-          placeholderColor: 'var(--text-color)',
-          iconLeft: {
-            name: 'calendar',
-          },
-        },
-      }
+    positionY: {
+      type: String,
+      default: 'auto'
     },
-    computed: {
-      computedInputProps() {
-        return {
-          ...this.inputDefaults,
-          ...this.inputProps,
-          // onInput: this.onInput,
-          // onFocus: this.onFocus,
-          // onBlur: this.onBlur,
-          // onKeydown: this.onKeydown,
-        }
-      }
+    dateFormat: {
+      type: String,
+      default: 'm/d/Y'
     },
-    mounted() {
-      this.initFlatpickr()
+    inputProps: {
+      type: Object,
+      default: () => ({})
     },
-    beforeUnmount() {
-      this.flatpickr.destroy()
-    },
-    methods: {
-      initFlatpickr() {
-        this.flatpickr = flatpickr('#dp', {
-          // locale: this.locale,
-          dateFormat: this.dateFormat,
-          // altFormat: this.altFormat,
-          // altInput: this.altInput,
-          // altInputClass: this.altInputClass,
-          // allowInput: this.allowInput,
-          // enableTime: this.enableTime,
-          // noCalendar: this.noCalendar,
-          // enableSeconds: this.enableSeconds,
-          // time_24hr: this.time_24hr,
-          // enable: this.enable,
-          // disable: this.disable,
-          mode: this.mode,
-          // inline: this.inline,
-          // wrap: this.wrap,
-          // clickOpens: this.clickOpens,
-          // closeOnSelect: this.closeOnSelect,
-          // closeOnScroll: this.closeOnScroll,
-          // weekNumbers: this.weekNumbers,
-          // shorthandCurrentMonth: this.shorthandCurrentMonth,
-          // parseDate: this.parseDate,
-          // formatDate: this.formatDate,
-          onChange: this.onChange,
-          onOpen: this.onOpen,
-          // onClose: this.onClose,
-          // onMonthChange: this.onMonthChange,
-          // onYearChange: this.onYearChange,
-          // onReady: this.onReady,
-          // onValueUpdate: this.onValueUpdate,
-          // onDayCreate: this.onDayCreate
-          position: `${this.positionY} ${this.positionX}`,
-        })
-      },
-      onInput(event) {
-        this.value = event.target.value
-        this.$emit('input', event.target.value)
-        console.log('onInput', event.target.value)
-      },
-      onChange(selectedDates, dateStr) {
-        this.value = dateStr
-        this.$emit('change', selectedDates, dateStr)
-        console.log('onChange', dateStr)
-        console.log('inputProps.value', this.value)
-      },
-      onFocus(event) {
-        this.$emit('focus', event)
-        console.log('onFocus', event)
-      },
-      onBlur(event) {
-        this.$emit('blur', event)
-        console.log('onBlur', event)
-      },
-      onKeydown(event) {
-        this.$emit('keydown', event)
-        console.log('onKeydown', event)
-      },
-      onOpen(selectedDates, dateStr) {
-        this.value = ''
-        console.log('onOpen', dateStr)
-      },
+    mode: {
+      type: String,
+      default: 'single'
     }
+  })
+
+  const emit = defineEmits(['input', 'change', 'focus', 'blur', 'keydown'])
+
+  const datePickerInput = ref(null)
+  const value = ref('')
+
+  const inputDefaults = {
+    inputId: 'dp',
+    type: 'text',
+    width: '30rem',
+    placeholder: 'Select a date',
+    placeholderColor: 'var(--text-color)',
+    iconLeft: {
+      name: 'calendar',
+    },
   }
+
+  const computedInputProps = computed(() => ({
+    ...inputDefaults,
+    ...props.inputProps,
+  }))
+
+  const initFlatpickr = () => {
+    flatpickr('#dp', {
+      closeOnSelect: props.enableCloseOnSelect,
+      dateFormat: props.dateFormat,
+      mode: props.mode,
+      position: `${props.positionY} ${props.positionX}`,
+      onChange: onChange(),
+      onOpen: onOpen(),
+    })
+  }
+
+  onMounted(initFlatpickr)
+
+  watch(
+    () => [props.mode],
+    initFlatpickr
+  )
+
+  // const onInput = (event) => {
+  //   value.value = event.target.value
+  //   emit('input', event.target.value)
+  // }
+
+  const onChange = (selectedDates, dateStr) => {
+    value.value = dateStr
+    emit('change', selectedDates, dateStr)
+  }
+
+  // const onFocus = (event) => {
+  //   emit('focus', event)
+  // }
+
+  // const onBlur = (event) => {
+  //   emit('blur', event)
+  // }
+
+  // const onKeydown = (event) => {
+  //   emit('keydown', event)
+  // }
+
+  const onOpen = () => {
+    value.value = ''
+  }
+
+  onBeforeUnmount(() => {
+    if (datePickerInput.value) {
+      datePickerInput.value.flatpickrInstance.destroy()
+    }
+  })
 </script>
