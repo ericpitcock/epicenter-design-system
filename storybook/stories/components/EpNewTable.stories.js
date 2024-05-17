@@ -1,20 +1,16 @@
 import EpTable from '@/components/new-table/EpTable.vue'
+import EpTableSearchInput from '@/components/new-table/EpTableSearchInput.vue'
+import { ref } from 'vue'
 
 export default {
   title: 'Components/New Table',
   component: EpTable,
   argTypes: {
     columns: {
-      name: 'Columns',
-      control: {
-        type: 'object'
-      }
+      table: { disable: true }
     },
     data: {
-      name: 'Data',
-      control: {
-        type: 'array'
-      }
+      table: { disable: true }
     },
     enableFilters: {
       name: 'Enable Filters',
@@ -50,11 +46,22 @@ export default {
 }
 
 export const NewTable = (args) => ({
-  components: { EpTable },
+  components: { EpTable, EpTableSearchInput },
   setup() {
-    return { args }
+    const searchText = ref('')
+
+    const updateSearchText = (text) => {
+      // searchText.value = text
+      console.log('searchText:', text)
+    }
+
+    return { args, updateSearchText, searchText }
   },
   template: `
+    <ep-table-search-input
+      :search-text="searchText"
+      @update:search-text="updateSearchText"
+    />
     <ep-table v-bind="args" />
   `
 })
@@ -92,13 +99,27 @@ const tableData = [
   { id: 30, name: 'Scarlett', age: 26, city: 'Albuquerque' },
 ]
 
-// Table columns configuration
 const columns = [
-  { key: 'id', label: 'ID', sortable: true },
-  { key: 'name', label: 'Name', sortable: true },
-  { key: 'age', label: 'Age', sortable: true },
-  { key: 'city', label: 'City', sortable: true }
-  // Add more columns as needed
+  {
+    key: 'id',
+    label: 'ID',
+    sortable: true
+  },
+  {
+    key: 'name',
+    label: 'Name',
+    sortable: true
+  },
+  {
+    key: 'age',
+    label: 'Age',
+    sortable: true
+  },
+  {
+    key: 'city',
+    label: 'City',
+    sortable: true
+  }
 ]
 
 NewTable.args = {
