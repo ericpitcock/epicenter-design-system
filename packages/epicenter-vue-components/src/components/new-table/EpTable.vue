@@ -101,8 +101,7 @@
 
   const { sortedData, sortBy, sortColumn, sortOrder } = useSorting(yourData, props.enableSorting)
 
-  const { paginatedData, currentPage } = usePagination(sortedData, props.pageSize, props.enablePagination)
-  const totalPages = Math.ceil(sortedData.length / props.pageSize)
+  const { paginatedData, currentPage, totalPages } = usePagination(sortedData, props.pageSize, props.enablePagination)
 
   const searchText = ref('')
   const { searchedData } = useSearch(paginatedData, props.enableSearch, searchText)
@@ -117,7 +116,7 @@
     if (!props.enableFilters) {
       console.log("No filters applied", searchedData.value)
       console.log("Current page:", currentPage.value)
-      return searchedData.value.slice((currentPage.value - 1) * props.pageSize, currentPage.value * props.pageSize)
+      return searchedData.value
     }
 
     let filteredData = searchedData.value
