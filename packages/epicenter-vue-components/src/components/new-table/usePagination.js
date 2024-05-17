@@ -21,7 +21,5 @@ export default function usePagination(data, pageSize, enablePagination) {
     return data.value.slice(startIndex, startIndex + pageSize)
   })
 
-  console.log('paginatedData:', paginatedData.value)
-
   return { paginatedData, currentPage, totalPages }
 }

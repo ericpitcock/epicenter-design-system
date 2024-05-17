@@ -11,12 +11,10 @@
           <th
             v-for="column in columns"
             :key="column.key"
+            @click="sortBy(column.key)"
           >
             {{ column.label }}
-            <span
-              v-if="column.sortable && enableSorting"
-              @click="sortBy(column.key)"
-            >
+            <span v-if="column.sortable && enableSorting">
               {{ sortColumn === column.key ? (sortOrder === 'asc' ? '▲' : '▼') :
                 '' }}
             </span>
@@ -114,8 +112,6 @@
 
   const paginatedAndFilteredData = computed(() => {
     if (!props.enableFilters) {
-      console.log("No filters applied", searchedData.value)
-      console.log("Current page:", currentPage.value)
       return searchedData.value
     }
 
