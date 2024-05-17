@@ -5,7 +5,7 @@
       :search-text="searchText"
       @update:search-text="updateSearchText"
     />
-    <table>
+    <table class="ep-table">
       <thead>
         <tr>
           <th
@@ -99,12 +99,12 @@
 
   const yourData = ref(props.data)
 
-  const searchText = ref('')
   const { sortedData, sortBy, sortColumn, sortOrder } = useSorting(yourData, props.enableSorting)
 
   const { paginatedData, currentPage } = usePagination(sortedData, props.pageSize, props.enablePagination)
   const totalPages = Math.ceil(sortedData.length / props.pageSize)
 
+  const searchText = ref('')
   const { searchedData } = useSearch(paginatedData, props.enableSearch, searchText)
 
   const appliedFilters = ref(props.appliedFilters)
@@ -115,7 +115,9 @@
 
   const paginatedAndFilteredData = computed(() => {
     if (!props.enableFilters) {
-      return searchedData.value.slice((currentPage - 1) * props.pageSize, currentPage * props.pageSize)
+      console.log("No filters applied", searchedData.value)
+      console.log("Current page:", currentPage.value)
+      return searchedData.value.slice((currentPage.value - 1) * props.pageSize, currentPage.value * props.pageSize)
     }
 
     let filteredData = searchedData.value
@@ -128,7 +130,7 @@
       })
     }
 
-    return filteredData.slice((currentPage - 1) * props.pageSize, currentPage * props.pageSize)
+    return filteredData.slice((currentPage.value - 1) * props.pageSize, currentPage.value * props.pageSize)
   })
 
   const updateSearchText = (text) => {
