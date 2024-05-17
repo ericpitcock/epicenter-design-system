@@ -95,9 +95,18 @@
 
   const yourData = ref(props.data)
 
-  const { sortedData, sortBy, sortColumn, sortOrder } = useSorting(yourData, props.enableSorting)
+  const {
+    sortedData,
+    sortBy,
+    sortColumn,
+    sortOrder
+  } = useSorting(yourData, props.enableSorting)
 
-  const { paginatedData, currentPage, totalPages } = usePagination(sortedData, props.pageSize, props.enablePagination)
+  const {
+    paginatedData,
+    currentPage,
+    totalPages
+  } = usePagination(sortedData, props.pageSize, props.enablePagination)
 
   const searchText = ref(props.searchQuery)
   const { searchedData } = useSearch(paginatedData, props.enableSearch, searchText)
