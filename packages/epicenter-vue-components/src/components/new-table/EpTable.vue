@@ -1,10 +1,5 @@
 <template>
   <div>
-    <ep-table-search-input
-      v-if="enableSearch"
-      :search-text="searchText"
-      @update:search-text="updateSearchText"
-    />
     <table class="ep-table">
       <thead>
         <tr>
@@ -55,7 +50,6 @@
 
 <script setup>
   import { ref, defineProps, watch, computed } from 'vue'
-  import EpTableSearchInput from './EpTableSearchInput.vue'
   import useSorting from './useSorting'
   import usePagination from './usePagination'
   import useSearch from './useSearch'
@@ -89,6 +83,10 @@
       type: Boolean,
       default: false
     },
+    searchQuery: {
+      type: String,
+      default: ''
+    },
     enableSorting: {
       type: Boolean,
       default: false
@@ -101,7 +99,7 @@
 
   const { paginatedData, currentPage, totalPages } = usePagination(sortedData, props.pageSize, props.enablePagination)
 
-  const searchText = ref('')
+  const searchText = ref(props.searchQuery)
   const { searchedData } = useSearch(paginatedData, props.enableSearch, searchText)
 
   const appliedFilters = ref(props.appliedFilters)
@@ -127,8 +125,4 @@
 
     return filteredData.slice((currentPage.value - 1) * props.pageSize, currentPage.value * props.pageSize)
   })
-
-  const updateSearchText = (text) => {
-    searchText.value = text
-  }
 </script>
