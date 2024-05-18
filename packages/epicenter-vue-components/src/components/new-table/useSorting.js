@@ -1,16 +1,16 @@
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 
-export default function useSorting(data, enableSorting) {
-  const sortColumn = ref('')
-  const sortOrder = ref('desc')
+export default function useSorting(data, sortColumn, sortOrder) {
+  // const sortColumn = ref('')
+  // const sortOrder = ref('desc')
 
   const sortedData = computed(() => {
-    if (!enableSorting) return data.value
+    // if (!enableSorting) return data.value
     if (!sortColumn.value) return data.value
 
     const modifier = sortOrder.value === 'desc' ? -1 : 1
 
-    return [...data.value].sort((a, b) => {
+    return [...data].sort((a, b) => {
       const aValue = a[sortColumn.value]
       const bValue = b[sortColumn.value]
 
@@ -23,16 +23,16 @@ export default function useSorting(data, enableSorting) {
   })
 
   const sortBy = (columnKey) => {
-    console.log('sortBy', columnKey)
-    if (enableSorting) {
-      if (sortColumn.value === columnKey) {
-        sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
-      } else {
-        sortColumn.value = columnKey
-        sortOrder.value = 'asc'
-      }
+    console.log('sortBy', columnKey, sortOrder.value)
+    // if (enableSorting) {
+    if (sortColumn.value === columnKey) {
+      sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
+    } else {
+      sortColumn.value = columnKey
+      sortOrder.value = 'asc'
     }
+    // }
   }
 
-  return { sortedData, sortBy, sortColumn, sortOrder }
+  return { sortedData, sortBy }
 }

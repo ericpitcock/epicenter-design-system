@@ -1,17 +1,8 @@
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 
 export default function usePagination(data, pageSize, currentPage, totalPages, enablePagination) {
-  const currentPageRef = ref(currentPage)
-
-  // const totalPages = computed(() => {
-  //   return Math.ceil(data.value.length / pageSize)
-  // })
-
-  console.log('currentPageRef', currentPageRef)
-
   const paginatedData = computed(() => {
     if (!enablePagination) return data.value
-
     // Ensure currentPage is within bounds
     if (currentPage > totalPages) {
       currentPage = totalPages
@@ -24,6 +15,6 @@ export default function usePagination(data, pageSize, currentPage, totalPages, e
   })
 
   console.log('paginatedData:', paginatedData.value)
-  // return { paginatedData, currentPage, totalPages }
+
   return { paginatedData }
 }

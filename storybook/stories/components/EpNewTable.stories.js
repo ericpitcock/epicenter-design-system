@@ -1,7 +1,10 @@
 import EpTable from '@/components/new-table/EpTable.vue'
 import EpTableSearchInput from '@/components/new-table/EpTableSearchInput.vue'
 import EpTablePagination from '@/components/new-table/EpTablePagination.vue'
-import { computed, ref } from 'vue'
+// import usePagination from '@/components/new-table/usePagination.js'
+import EpTableSortableHeader from '@/components/new-table/EpTableSortableHeader.vue'
+import useSorting from '@/components/new-table/useSorting.js'
+import { computed, ref, watch } from 'vue'
 
 export default {
   title: 'Components/New Table',
@@ -45,62 +48,6 @@ export default {
     },
   }
 }
-
-export const NewTable = (args) => ({
-  components: { EpTable, EpTableSearchInput, EpTablePagination },
-  setup() {
-    const searchText = ref('')
-
-    const updateSearchText = (text) => {
-      // searchText.value = text
-      console.log('searchText:', text)
-    }
-
-    const currentPage = ref(1)
-    const pageSize = ref(10)
-
-    const totalPages = computed(() => {
-      return Math.ceil(tableData.length / pageSize.value)
-    })
-
-    const onPageChange = (page) => {
-      console.log('onPageChange:', page)
-      currentPage.value = page
-    }
-
-    return {
-      args,
-      updateSearchText,
-      searchText,
-      currentPage,
-      totalPages,
-      onPageChange,
-      pageSize
-    }
-  },
-  template: `
-    <ep-table-search-input
-      :search-text="searchText"
-      @update:search-text="updateSearchText"
-    />
-    <ep-table
-      :columns="args.columns"
-      :data="args.data"
-      :enable-filters="args.enableFilters"
-      :enable-pagination="args.enablePagination"
-      :enable-search="args.enableSearch"
-      :enable-sorting="args.enableSorting"
-      :current-page="currentPage"
-      :total-pages="totalPages"
-      :page-size="pageSize"
-    />
-    <ep-table-pagination
-      :current-page="currentPage"
-      :total-pages="totalPages"
-      @page-change="onPageChange"
-    />
-  `
-})
 
 const tableData = [
   { id: 1, name: 'John', age: 30, city: 'New York' },
@@ -158,12 +105,95 @@ const columns = [
   }
 ]
 
-NewTable.args = {
-  columns,
-  data: tableData,
-  enableSorting: true,
-  enablePagination: true,
-  enableSearch: true,
-  enableFilters: false,
-  pageSize: 10,
-}
+export const NewTable = (args) => ({
+  components: { EpTable, EpTableSearchInput, EpTablePagination, EpTableSortableHeader },
+  setup() {
+    const searchText = ref('')
+
+    const updateSearchText = (text) => {
+      // searchText.value = text
+      console.log('searchText:', text)
+    }
+
+    const currentPage = ref(1)
+    const pageSize = ref(10)
+
+    const totalPages = computed(() => {
+      return Math.ceil(tableData.length / pageSize.value)
+    })
+
+    const sortColumn = ref('id')
+    const sortOrder = ref('desc')
+
+    const {
+      sortedData,
+      // sortBy,
+      // sortColumn,
+      // sortOrder
+    } = useSorting(tableData, sortColumn, sortOrder)
+
+    const onSort = (columnKey) => {
+      sortColumn.value = columnKey
+      sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
+      // sortBy(columnKey)
+    }
+
+    // const { paginatedData } = usePagination(tableData, pageSize.value, currentPage.value, totalPages.value)
+    // const paginatedData = computed(() => {
+    //   console.log('paginatedData:currentPage:', currentPage.value)
+    //   // Ensure currentPage is within bounds
+    //   if (currentPage.value > totalPages.value) {
+    //     currentPage.value = totalPages
+    //   } else if (currentPage.value < 1) {
+    //     currentPage.value = 1
+    //   }
+
+    //   const startIndex = (currentPage.value - 1) * pageSize.value
+    //   console.log(startIndex, startIndex + pageSize.value)
+    //   return tableData.slice(startIndex, startIndex + pageSize.value)
+    // })
+
+    const onPageChange = (page) => {
+      console.log('onPageChange:', page)
+      currentPage.value = page
+    }
+
+    return {
+      args,
+      columns,
+      sortedData,
+      onSort,
+      sortColumn,
+      sortOrder
+    }
+  },
+  template: `
+    <!--<ep-table-search-input
+      :search-text="searchText"
+      @update:search-text="updateSearchText"
+    />-->
+    <ep-table
+      :columns="columns"
+      :data="sortedData"
+    >
+      <template #header="{ column }">
+        <ep-table-sortable-header
+          :column="column"
+          :sort-column="sortColumn"
+          :sort-order="sortOrder"
+          @sort="onSort"
+        />
+      </template>
+    </ep-table>
+    <!--<ep-table-pagination
+      :current-page="currentPage"
+      :total-pages="totalPages"
+      @page-change="onPageChange"
+    />-->
+  `
+})
+
+// NewTable.args = {
+//   columns,
+//   data: tableData,
+// }
