@@ -2,6 +2,7 @@ import EpTable from '@/components/new-table/EpTable.vue'
 import EpTableSearchInput from '@/components/new-table/EpTableSearchInput.vue'
 import EpTablePagination from '@/components/new-table/EpTablePagination.vue'
 import EpTableSortableHeader from '@/components/new-table/EpTableSortableHeader.vue'
+import useExclude from '@/components/new-table/useExclude.js'
 import useSorting from '@/components/new-table/useSorting.js'
 import usePagination from '@/components/new-table/usePagination.js'
 import useSearch from '@/components/new-table/useSearch.js'
@@ -20,7 +21,10 @@ export default {
       table: { disable: true }
     },
     exclude: {
-      table: { disable: true }
+      name: 'Exclude',
+      control: {
+        type: 'array'
+      }
     },
     bordered: {
       name: 'Bordered',
@@ -47,12 +51,18 @@ export const NewTable = (args) => ({
     EpTableSortableHeader
   },
   setup() {
+    // use exclude
+    const {
+      includedColumns,
+      includedData
+    } = useExclude(columns, tableData, args.exclude)
+
     // add search
     const {
       searchedData,
       searchText,
       updateSearchText
-    } = useSearch(tableData)
+    } = useSearch(includedData)
 
     // add sorting
     const {
@@ -68,7 +78,7 @@ export const NewTable = (args) => ({
       currentPage,
       totalPages,
       onPageChange
-    } = usePagination(sortedData)
+    } = usePagination(sortedData, 1, 10)
 
     // filtering
     // const appliedFilters = ref(props.appliedFilters)
@@ -97,7 +107,8 @@ export const NewTable = (args) => ({
 
     return {
       args,
-      columns,
+      // columns,
+      includedColumns,
       // sorting
       sortBy,
       sortColumn,
@@ -118,7 +129,7 @@ export const NewTable = (args) => ({
       @update:modelValue="updateSearchText"
     />
     <ep-table
-      :columns="columns"
+      :columns="includedColumns"
       :data="paginatedData"
       v-bind="args"
     >

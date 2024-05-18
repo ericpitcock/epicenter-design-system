@@ -1,8 +1,8 @@
 import { computed, ref } from 'vue'
 
-export default function usePagination(data) {
-  const currentPage = ref(1)
-  const pageSize = ref(10)
+export default function usePagination(data, initialPage = 1, initialPageSize = 10) {
+  const currentPage = ref(initialPage)
+  const pageSize = ref(initialPageSize)
 
   const totalPages = computed(() => {
     return Math.ceil(data.value.length / pageSize.value)

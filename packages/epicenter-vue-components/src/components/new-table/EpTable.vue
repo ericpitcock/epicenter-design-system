@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <template
-            v-for="column in filteredColumns"
+            v-for="column in columns"
             :key="column.key"
           >
             <slot
@@ -22,11 +22,11 @@
       </thead>
       <tbody>
         <tr
-          v-for="row in filteredData"
+          v-for="row in data"
           :key="row.id"
         >
           <td
-            v-for="column in filteredColumns"
+            v-for="column in columns"
             :key="column.key"
           >
             {{ row[column.key] }}
@@ -62,18 +62,6 @@
       type: Boolean,
       default: false
     },
-  })
-
-  // remove excluded columns
-  const filteredColumns = computed(() => {
-    return props.columns.filter(column => !props.exclude.includes(column.key))
-  })
-
-  // remove excluded data
-  const filteredData = computed(() => {
-    return props.data.filter(row => {
-      return props.exclude.some(key => row[key])
-    })
   })
 
   const classes = computed(() => {
