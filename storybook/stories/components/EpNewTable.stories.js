@@ -141,15 +141,11 @@ export const NewTable = (args) => ({
       currentPage.value = page
     }
 
-    // search
-    const searchText = ref('')
-
-    const { searchedData } = useSearch(paginatedData, searchText)
-
-    const updateSearchText = (text) => {
-      searchText.value = text
-      // console.log('searchText:', text)
-    }
+    const {
+      searchedData,
+      searchText,
+      updateSearchText
+    } = useSearch(paginatedData)
 
     return {
       args,
