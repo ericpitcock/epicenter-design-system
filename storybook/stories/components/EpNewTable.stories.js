@@ -109,22 +109,12 @@ const columns = [
 export const NewTable = (args) => ({
   components: { EpTable, EpTableSearchInput, EpTablePagination, EpTableSortableHeader },
   setup() {
-    // sorting
-    const sortColumn = ref('id')
-    const sortOrder = ref('desc')
-
     const {
       sortedData,
       sortBy,
-      // sortColumn,
-      // sortOrder
-    } = useSorting(tableData, sortColumn, sortOrder)
-
-    const onSort = (columnKey) => {
-      sortColumn.value = columnKey
-      // sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
-      sortBy(columnKey)
-    }
+      sortColumn,
+      sortOrder
+    } = useSorting(tableData)
 
     const {
       paginatedData,
@@ -144,7 +134,7 @@ export const NewTable = (args) => ({
       columns,
       // sortedData,
       // sorting
-      onSort,
+      sortBy,
       sortColumn,
       sortOrder,
       // pagination
@@ -172,7 +162,7 @@ export const NewTable = (args) => ({
           :column="column"
           :sort-column="sortColumn"
           :sort-order="sortOrder"
-          @sort="onSort"
+          @sort="sortBy"
         />
       </template>
     </ep-table>
