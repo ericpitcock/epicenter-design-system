@@ -4,6 +4,7 @@ import EpTablePagination from '@/components/new-table/EpTablePagination.vue'
 import EpTableSortableHeader from '@/components/new-table/EpTableSortableHeader.vue'
 import useSorting from '@/components/new-table/useSorting.js'
 import usePagination from '@/components/new-table/usePagination.js'
+import useSearch from '@/components/new-table/useSearch.js'
 import { computed, ref, watch } from 'vue'
 
 export default {
@@ -141,12 +142,14 @@ export const NewTable = (args) => ({
     }
 
     // search
-    // const searchText = ref('')
+    const searchText = ref('')
 
-    // const updateSearchText = (text) => {
-    //   // searchText.value = text
-    //   console.log('searchText:', text)
-    // }
+    const { searchedData } = useSearch(paginatedData, searchText)
+
+    const updateSearchText = (text) => {
+      searchText.value = text
+      // console.log('searchText:', text)
+    }
 
     return {
       args,
@@ -161,16 +164,20 @@ export const NewTable = (args) => ({
       totalPages,
       onPageChange,
       paginatedData,
+      // search
+      searchText,
+      searchedData,
+      updateSearchText
     }
   },
   template: `
-    <!--<ep-table-search-input
-      :search-text="searchText"
-      @update:search-text="updateSearchText"
-    />-->
+    <ep-table-search-input
+      v-model="searchText"
+      @update:modelValue="updateSearchText"
+    />
     <ep-table
       :columns="columns"
-      :data="paginatedData"
+      :data="searchedData"
     >
       <template #header="{ column }">
         <ep-table-sortable-header

@@ -1,9 +1,9 @@
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 
-export default function useSearch(data, enableSearch) {
-  const searchText = ref('')
+export default function useSearch(data, searchText) {
+  // const searchText = ref('')
   const searchedData = computed(() => {
-    if (!enableSearch || !searchText.value.trim()) return data.value
+    if (!searchText.value.trim()) return data.value
 
     const searchQuery = searchText.value.trim().toLowerCase()
     return data.value.filter((row) => {
@@ -13,5 +13,5 @@ export default function useSearch(data, enableSearch) {
     })
   })
 
-  return { searchText, searchedData }
+  return { searchedData }
 }
