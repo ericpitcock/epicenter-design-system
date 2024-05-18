@@ -1,20 +1,20 @@
 import { computed } from 'vue'
 
-export default function usePagination(data, pageSize, currentPage, totalPages, enablePagination) {
+export default function usePagination(data, pageSize, currentPage, totalPages) {
   const paginatedData = computed(() => {
-    if (!enablePagination) return data.value
+    // if (!enablePagination) return data.value
     // Ensure currentPage is within bounds
-    if (currentPage > totalPages) {
-      currentPage = totalPages
-    } else if (currentPage < 1) {
-      currentPage = 1
+    if (currentPage.value > totalPages) {
+      currentPage.value = totalPages.value
+    } else if (currentPage.value < 1) {
+      currentPage.value = 1
     }
 
-    const startIndex = (currentPage - 1) * pageSize
-    return data.value.slice(startIndex, startIndex + pageSize)
+    const startIndex = (currentPage.value - 1) * pageSize.value
+    return data.value.slice(startIndex, startIndex + pageSize.value)
   })
 
-  console.log('paginatedData:', paginatedData.value)
+  console.log(pageSize.value, currentPage.value, totalPages.value)
 
   return { paginatedData }
 }

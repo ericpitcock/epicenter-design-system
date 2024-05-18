@@ -1,9 +1,9 @@
 import EpTable from '@/components/new-table/EpTable.vue'
 import EpTableSearchInput from '@/components/new-table/EpTableSearchInput.vue'
 import EpTablePagination from '@/components/new-table/EpTablePagination.vue'
-// import usePagination from '@/components/new-table/usePagination.js'
 import EpTableSortableHeader from '@/components/new-table/EpTableSortableHeader.vue'
 import useSorting from '@/components/new-table/useSorting.js'
+import usePagination from '@/components/new-table/usePagination.js'
 import { computed, ref, watch } from 'vue'
 
 export default {
@@ -133,28 +133,34 @@ export const NewTable = (args) => ({
       return Math.ceil(tableData.length / pageSize.value)
     })
 
+    const { paginatedData } = usePagination(sortedData, pageSize, currentPage, totalPages)
+
     const onPageChange = (page) => {
       console.log('onPageChange:', page)
       currentPage.value = page
     }
 
     // search
-    const searchText = ref('')
+    // const searchText = ref('')
 
-    const updateSearchText = (text) => {
-      // searchText.value = text
-      console.log('searchText:', text)
-    }
+    // const updateSearchText = (text) => {
+    //   // searchText.value = text
+    //   console.log('searchText:', text)
+    // }
 
     return {
       args,
       columns,
-      sortedData,
+      // sortedData,
       // sorting
       onSort,
       sortColumn,
-      sortOrder
+      sortOrder,
       // pagination
+      currentPage,
+      totalPages,
+      onPageChange,
+      paginatedData,
     }
   },
   template: `
@@ -164,7 +170,7 @@ export const NewTable = (args) => ({
     />-->
     <ep-table
       :columns="columns"
-      :data="sortedData"
+      :data="paginatedData"
     >
       <template #header="{ column }">
         <ep-table-sortable-header
@@ -175,11 +181,11 @@ export const NewTable = (args) => ({
         />
       </template>
     </ep-table>
-    <!--<ep-table-pagination
+    <ep-table-pagination
       :current-page="currentPage"
       :total-pages="totalPages"
       @page-change="onPageChange"
-    />-->
+    />
   `
 })
 

@@ -32,30 +32,16 @@
         </tr>
       </tbody>
     </table>
-    <!-- <div v-if="enablePagination">
-      <button
-        :disabled="currentPage === 1"
-        @click="currentPage--"
-      >
-        Previous
-      </button>
-      <span>{{ currentPage }}</span>
-      <button
-        :disabled="currentPage === totalPages"
-        @click="currentPage++"
-      >
-        Next
-      </button>
-    </div> -->
   </div>
 </template>
 
 <script setup>
-  import { ref, defineProps, watch, computed } from 'vue'
+  // import { ref, defineProps, watch, computed } from 'vue'
   // import useSorting from './useSorting'
   // import usePagination from './usePagination'
   // import useSearch from './useSearch'
 
+  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     columns: {
       type: Array,
@@ -64,42 +50,6 @@
     data: {
       type: Array,
       required: true
-    },
-    enableFilters: {
-      type: Boolean,
-      default: false
-    },
-    appliedFilters: {
-      type: Object,
-      default: () => ({})
-    },
-    enablePagination: {
-      type: Boolean,
-      default: false
-    },
-    pageSize: {
-      type: Number,
-      default: 10
-    },
-    currentPage: {
-      type: Number,
-      default: 1
-    },
-    totalPages: {
-      type: Number,
-      default: 1
-    },
-    enableSearch: {
-      type: Boolean,
-      default: false
-    },
-    searchQuery: {
-      type: String,
-      default: ''
-    },
-    enableSorting: {
-      type: Boolean,
-      default: false
     },
   })
 
