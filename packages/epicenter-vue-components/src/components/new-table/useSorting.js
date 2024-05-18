@@ -1,8 +1,8 @@
 import { computed, ref } from 'vue'
 
-export default function useSorting(data) {
-  const sortColumn = ref('id')
-  const sortOrder = ref('desc')
+export default function useSorting(data, initialSortColumn = '', initialSortOrder = 'asc') {
+  const sortColumn = ref(initialSortColumn)
+  const sortOrder = ref(initialSortOrder)
 
   const sortedData = computed(() => {
     if (!sortColumn.value) return data.value

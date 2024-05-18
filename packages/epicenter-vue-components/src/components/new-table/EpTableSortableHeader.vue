@@ -1,10 +1,11 @@
 <template>
   <th @click="emit('sort', column.key)">
-    {{ column.label }}
-    <span v-if="column.sortable">
-      {{ sortColumn === column.key ? (sortOrder === 'asc' ? '▲' : '▼') :
-        '' }}
-    </span>
+    <div>
+      {{ column.label }}
+      <span v-if="column.sortable">
+        {{ sortColumn === column.key ? (sortOrder === 'asc' ? '▲' : '▼') : '' }}
+      </span>
+    </div>
   </th>
 </template>
 

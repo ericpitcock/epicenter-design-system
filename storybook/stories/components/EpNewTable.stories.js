@@ -5,10 +5,13 @@ import EpTableSortableHeader from '@/components/new-table/EpTableSortableHeader.
 import useSorting from '@/components/new-table/useSorting.js'
 import usePagination from '@/components/new-table/usePagination.js'
 import useSearch from '@/components/new-table/useSearch.js'
+import { paddedSurface } from '../../helpers/decorators.js'
+import { columns, fakeArray } from '../../data/tableData'
 
 export default {
   title: 'Components/New Table',
   component: EpTable,
+  decorators: [paddedSurface],
   argTypes: {
     columns: {
       table: { disable: true }
@@ -16,94 +19,25 @@ export default {
     data: {
       table: { disable: true }
     },
-    enableFilters: {
-      name: 'Enable Filters',
+    exclude: {
+      table: { disable: true }
+    },
+    bordered: {
+      name: 'Bordered',
       control: {
         type: 'boolean'
-      }
+      },
     },
-    enablePagination: {
-      name: 'Enable Pagination',
+    striped: {
+      name: 'Striped',
       control: {
         type: 'boolean'
-      }
-    },
-    pageSize: {
-      name: 'Page Size',
-      control: {
-        type: 'number'
-      }
-    },
-    enableSearch: {
-      name: 'Enable Search',
-      control: {
-        type: 'boolean'
-      }
-    },
-    enableSorting: {
-      name: 'Enable Sorting',
-      control: {
-        type: 'boolean'
-      }
+      },
     },
   }
 }
 
-const tableData = [
-  { id: 1, name: 'John', age: 30, city: 'New York' },
-  { id: 2, name: 'Alice', age: 25, city: 'Los Angeles' },
-  { id: 3, name: 'Bob', age: 35, city: 'Chicago' },
-  { id: 4, name: 'Emma', age: 28, city: 'Houston' },
-  { id: 5, name: 'David', age: 40, city: 'Phoenix' },
-  { id: 6, name: 'Sophia', age: 22, city: 'Philadelphia' },
-  { id: 7, name: 'Michael', age: 32, city: 'San Antonio' },
-  { id: 8, name: 'Olivia', age: 27, city: 'San Diego' },
-  { id: 9, name: 'James', age: 29, city: 'Dallas' },
-  { id: 10, name: 'Charlotte', age: 31, city: 'San Jose' },
-  { id: 11, name: 'Daniel', age: 26, city: 'Austin' },
-  { id: 12, name: 'Ava', age: 24, city: 'Jacksonville' },
-  { id: 13, name: 'Matthew', age: 37, city: 'Fort Worth' },
-  { id: 14, name: 'Isabella', age: 33, city: 'Columbus' },
-  { id: 15, name: 'Anthony', age: 36, city: 'Charlotte' },
-  { id: 16, name: 'Mia', age: 21, city: 'San Francisco' },
-  { id: 17, name: 'Andrew', age: 34, city: 'Indianapolis' },
-  { id: 18, name: 'Amelia', age: 30, city: 'Seattle' },
-  { id: 19, name: 'Joshua', age: 38, city: 'Denver' },
-  { id: 20, name: 'Harper', age: 23, city: 'Washington' },
-  { id: 21, name: 'Joseph', age: 28, city: 'Boston' },
-  { id: 22, name: 'Evelyn', age: 25, city: 'El Paso' },
-  { id: 23, name: 'Christopher', age: 39, city: 'Nashville' },
-  { id: 24, name: 'Abigail', age: 32, city: 'Detroit' },
-  { id: 25, name: 'Alexander', age: 29, city: 'Oklahoma City' },
-  { id: 26, name: 'Emily', age: 31, city: 'Las Vegas' },
-  { id: 27, name: 'Ryan', age: 27, city: 'Louisville' },
-  { id: 28, name: 'Elizabeth', age: 34, city: 'Baltimore' },
-  { id: 29, name: 'Ethan', age: 22, city: 'Milwaukee' },
-  { id: 30, name: 'Scarlett', age: 26, city: 'Albuquerque' },
-]
-
-const columns = [
-  {
-    key: 'id',
-    label: 'ID',
-    sortable: true
-  },
-  {
-    key: 'name',
-    label: 'Name',
-    sortable: true
-  },
-  {
-    key: 'age',
-    label: 'Age',
-    sortable: true
-  },
-  {
-    key: 'city',
-    label: 'City',
-    sortable: true
-  }
-]
+const tableData = fakeArray(30)
 
 export const NewTable = (args) => ({
   components: {
@@ -113,19 +47,22 @@ export const NewTable = (args) => ({
     EpTableSortableHeader
   },
   setup() {
+    // add search
     const {
       searchedData,
       searchText,
       updateSearchText
     } = useSearch(tableData)
 
+    // add sorting
     const {
       sortedData,
       sortBy,
       sortColumn,
       sortOrder
-    } = useSorting(searchedData)
+    } = useSorting(searchedData, 'id', 'asc')
 
+    // add pagination
     const {
       paginatedData,
       currentPage,
@@ -133,11 +70,30 @@ export const NewTable = (args) => ({
       onPageChange
     } = usePagination(sortedData)
 
-    // const {
-    //   searchedData,
-    //   searchText,
-    //   updateSearchText
-    // } = useSearch(paginatedData)
+    // filtering
+    // const appliedFilters = ref(props.appliedFilters)
+
+    // watch(appliedFilters, (newFilters) => {
+    //   console.log("Applied filters changed:", newFilters)
+    // }, { deep: true })
+
+    // const paginatedAndFilteredData = computed(() => {
+    //   if (!props.enableFilters) {
+    //     return searchedData.value
+    //   }
+
+    //   let filteredData = searchedData.value
+
+    //   // Apply filters
+    //   for (const key in appliedFilters.value) {
+    //     const filterValue = appliedFilters.value[key]
+    //     filteredData = filteredData.filter(row => {
+    //       return row[key] === filterValue
+    //     })
+    //   }
+
+    //   return filteredData.slice((props.currentPage - 1) * props.pageSize, props.currentPage * props.pageSize)
+    // })
 
     return {
       args,
@@ -153,7 +109,6 @@ export const NewTable = (args) => ({
       paginatedData,
       // search
       searchText,
-      searchedData,
       updateSearchText
     }
   },
@@ -165,6 +120,7 @@ export const NewTable = (args) => ({
     <ep-table
       :columns="columns"
       :data="paginatedData"
+      v-bind="args"
     >
       <template #header="{ column }">
         <ep-table-sortable-header
@@ -183,7 +139,8 @@ export const NewTable = (args) => ({
   `
 })
 
-// NewTable.args = {
-//   columns,
-//   data: tableData,
-// }
+NewTable.args = {
+  exclude: ['status'],
+  bordered: true,
+  striped: true
+}

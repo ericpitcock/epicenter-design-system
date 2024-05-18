@@ -20,11 +20,8 @@ export default function usePagination(data) {
   })
 
   const onPageChange = (page) => {
-    console.log('onPageChange:', page)
     currentPage.value = page
   }
-
-  console.log(pageSize.value, currentPage.value, totalPages.value)
 
   return { paginatedData, currentPage, totalPages, onPageChange }
 }

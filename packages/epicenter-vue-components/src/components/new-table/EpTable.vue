@@ -1,10 +1,10 @@
 <template>
   <div>
-    <table class="ep-table">
+    <table :class="['ep-table', classes]">
       <thead>
         <tr>
           <template
-            v-for="column in columns"
+            v-for="column in filteredColumns"
             :key="column.key"
           >
             <slot
@@ -13,18 +13,20 @@
               v-bind="{ column }"
             />
             <th v-else>
-              {{ column.label }}
+              <div>
+                <span class="label">{{ column.label }}</span>
+              </div>
             </th>
           </template>
         </tr>
       </thead>
       <tbody>
         <tr
-          v-for="row in data"
+          v-for="row in filteredData"
           :key="row.id"
         >
           <td
-            v-for="column in columns"
+            v-for="column in filteredColumns"
             :key="column.key"
           >
             {{ row[column.key] }}
@@ -36,10 +38,7 @@
 </template>
 
 <script setup>
-  // import { ref, defineProps, watch, computed } from 'vue'
-  // import useSorting from './useSorting'
-  // import usePagination from './usePagination'
-  // import useSearch from './useSearch'
+  import { computed } from 'vue'
 
   // eslint-disable-next-line no-unused-vars
   const props = defineProps({
@@ -51,45 +50,41 @@
       type: Array,
       required: true
     },
+    exclude: {
+      type: Array,
+      default: () => []
+    },
+    bordered: {
+      type: Boolean,
+      default: false
+    },
+    striped: {
+      type: Boolean,
+      default: false
+    },
   })
 
-  // const emit = defineEmits(['sort'])
+  // remove excluded columns
+  const filteredColumns = computed(() => {
+    return props.columns.filter(column => !props.exclude.includes(column.key))
+  })
 
-  // const dataRef = ref(props.data)
+  // remove excluded data
+  const filteredData = computed(() => {
+    return props.data.filter(row => {
+      return props.exclude.some(key => row[key])
+    })
+  })
 
-  // const {
-  //   sortedData,
-  //   sortBy,
-  //   sortColumn,
-  //   sortOrder
-  // } = useSorting(yourData, props.enableSorting)
-
-  // const { paginatedData } = usePagination(sortedData, props.pageSize, props.currentPage, props.totalPages, props.enablePagination)
-
-  // const searchText = ref(props.searchQuery)
-  // const { searchedData } = useSearch(paginatedData, props.enableSearch, searchText)
-
-  // const appliedFilters = ref(props.appliedFilters)
-
-  // watch(appliedFilters, (newFilters) => {
-  //   console.log("Applied filters changed:", newFilters)
-  // }, { deep: true })
-
-  // const paginatedAndFilteredData = computed(() => {
-  //   if (!props.enableFilters) {
-  //     return searchedData.value
-  //   }
-
-  //   let filteredData = searchedData.value
-
-  //   // Apply filters
-  //   for (const key in appliedFilters.value) {
-  //     const filterValue = appliedFilters.value[key]
-  //     filteredData = filteredData.filter(row => {
-  //       return row[key] === filterValue
-  //     })
-  //   }
-
-  //   return filteredData.slice((props.currentPage - 1) * props.pageSize, props.currentPage * props.pageSize)
-  // })
+  const classes = computed(() => {
+    return {
+      // 'ep-table--selectable': this.selectable,
+      'ep-table--bordered': props.bordered,
+      // 'ep-table--compact': this.compact,
+      // 'ep-table--sticky': this.stickyHeader,
+      'ep-table--striped': props.striped,
+      // 'ep-table--sortable': this.sortable,
+      // 'ep-table--layout-fixed': this.layoutFixed,
+    }
+  })
 </script>
