@@ -3,9 +3,6 @@ select.ep-select {
   height: 100%;
   background: var(--background-2);
   padding: 0 2.8rem 0 1.4rem;
-  // border: 1px solid var(--border-color);
-  // border-radius: var(--border-radius);
-  // line-height: 1;
   cursor: pointer;
   user-select: none;
 
@@ -14,7 +11,7 @@ select.ep-select {
   }
 
   &:focus {
-    border-color: var(--color--primary) !important;
+    border-color: var(--primary-color-base) !important;
   }
 
   &--small {
@@ -24,10 +21,6 @@ select.ep-select {
     &.ep-select--has-icon {
       padding-left: 2.5rem;
     }
-
-    // &.ep-select--has-icon-right {
-    //   padding-right: 2.5rem;
-    // }
   }
 
   &--large {
@@ -37,10 +30,6 @@ select.ep-select {
     &.ep-select--has-icon {
       padding-left: 3.6rem;
     }
-
-    // &.ep-select--has-icon-right {
-    //   padding-right: 3.6rem;
-    // }
   }
 
   &--xlarge {
@@ -50,10 +39,6 @@ select.ep-select {
     &.ep-select--has-icon {
       padding-left: 4.4rem;
     }
-
-    // &.ep-select--has-icon-right {
-    //   padding-right: 4.4rem;
-    // }
   }
 
   &--disabled {

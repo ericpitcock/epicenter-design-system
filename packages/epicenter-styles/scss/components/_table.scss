@@ -31,7 +31,9 @@
         }
 
         .ep-icon {
-          margin-left: 10px;
+          position: absolute;
+          right: 0;
+          // margin-left: 10px;
           visibility: hidden;
         }
       }

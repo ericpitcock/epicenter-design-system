@@ -1,3 +1,4 @@
+import { paddedSurface } from '../../helpers/decorators.js'
 import EpSearchTypeahead from '@/components/search/EpSearchTypeahead.vue'
 import webColors from '../../data/webColors.json'
 import { ref } from 'vue'
@@ -5,6 +6,7 @@ import { ref } from 'vue'
 export default {
   title: 'Components/Search/Typeahead',
   component: EpSearchTypeahead,
+  decorators: [paddedSurface],
   argTypes: {
     resultsKey: { table: { disable: true } },
     returnedSearchResults: { table: { disable: true } },
@@ -49,17 +51,17 @@ export const Typeahead = args => ({
     }
   },
   template: `
-    <div :style="{ height: '100%', background: bg, padding: '3rem'}">
-      <ep-search-typeahead
-        calculateHeight
-        :calculateHeightOffset="74"
-        :returned-search-results="searchResults"
-        results-key="name"
-        :input-props="{ width: '60rem', placeholder: 'Find your favorite color…', size: 'xlarge' }"
-        @search="searchWebColors"
-        @selection="setBackground"
-        @clear="clearResults"
-      />
-    </div>
-  `,
+    <ep-search-typeahead
+      :returned-search-results="searchResults"
+      results-key="name"
+      :input-props="{
+        width: '60rem',
+        placeholder: 'Search for your favorite color…',
+        size: 'xlarge'
+      }"
+      @search="searchWebColors"
+      @selection="setBackground"
+      @clear="clearResults"
+    />
+  `
 })

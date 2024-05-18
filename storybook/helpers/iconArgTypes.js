@@ -2,7 +2,7 @@ import { iconOptions } from './iconHelper.js'
 
 const iconArgTypes = {
   name: {
-    name: 'Name',
+    iconName: 'Name',
     options: iconOptions,
     control: {
       type: 'select'
@@ -11,7 +11,7 @@ const iconArgTypes = {
       category: 'Icon'
     }
   },
-  color: {
+  iconColor: {
     name: 'Color',
     control: {
       type: 'color'
@@ -20,7 +20,7 @@ const iconArgTypes = {
       category: 'Icon'
     }
   },
-  weight: {
+  iconWeight: {
     name: 'Weight',
     options: ['extra-light', 'light', 'regular', 'bold'],
     control: {
@@ -30,7 +30,7 @@ const iconArgTypes = {
       category: 'Icon'
     }
   },
-  size: {
+  iconSize: {
     name: 'Size',
     control: {
       type: 'range',
@@ -42,9 +42,6 @@ const iconArgTypes = {
       category: 'Icon'
     }
   },
-  type: {
-    table: { disable: true }
-  }
 }
 
 export { iconArgTypes }

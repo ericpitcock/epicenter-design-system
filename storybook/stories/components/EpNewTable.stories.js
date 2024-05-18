@@ -108,13 +108,24 @@ const columns = [
 export const NewTable = (args) => ({
   components: { EpTable, EpTableSearchInput, EpTablePagination, EpTableSortableHeader },
   setup() {
-    const searchText = ref('')
+    // sorting
+    const sortColumn = ref('id')
+    const sortOrder = ref('desc')
 
-    const updateSearchText = (text) => {
-      // searchText.value = text
-      console.log('searchText:', text)
+    const {
+      sortedData,
+      sortBy,
+      // sortColumn,
+      // sortOrder
+    } = useSorting(tableData, sortColumn, sortOrder)
+
+    const onSort = (columnKey) => {
+      sortColumn.value = columnKey
+      // sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
+      sortBy(columnKey)
     }
 
+    // pagination
     const currentPage = ref(1)
     const pageSize = ref(10)
 
@@ -122,49 +133,28 @@ export const NewTable = (args) => ({
       return Math.ceil(tableData.length / pageSize.value)
     })
 
-    const sortColumn = ref('id')
-    const sortOrder = ref('desc')
-
-    const {
-      sortedData,
-      // sortBy,
-      // sortColumn,
-      // sortOrder
-    } = useSorting(tableData, sortColumn, sortOrder)
-
-    const onSort = (columnKey) => {
-      sortColumn.value = columnKey
-      sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
-      // sortBy(columnKey)
-    }
-
-    // const { paginatedData } = usePagination(tableData, pageSize.value, currentPage.value, totalPages.value)
-    // const paginatedData = computed(() => {
-    //   console.log('paginatedData:currentPage:', currentPage.value)
-    //   // Ensure currentPage is within bounds
-    //   if (currentPage.value > totalPages.value) {
-    //     currentPage.value = totalPages
-    //   } else if (currentPage.value < 1) {
-    //     currentPage.value = 1
-    //   }
-
-    //   const startIndex = (currentPage.value - 1) * pageSize.value
-    //   console.log(startIndex, startIndex + pageSize.value)
-    //   return tableData.slice(startIndex, startIndex + pageSize.value)
-    // })
-
     const onPageChange = (page) => {
       console.log('onPageChange:', page)
       currentPage.value = page
+    }
+
+    // search
+    const searchText = ref('')
+
+    const updateSearchText = (text) => {
+      // searchText.value = text
+      console.log('searchText:', text)
     }
 
     return {
       args,
       columns,
       sortedData,
+      // sorting
       onSort,
       sortColumn,
       sortOrder
+      // pagination
     }
   },
   template: `

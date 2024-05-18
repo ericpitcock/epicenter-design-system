@@ -70,15 +70,6 @@
         type: String,
         required: true,
       },
-      // backwards compatibility
-      id: {
-        type: String,
-        default: '',
-        validator: () => {
-          console.warn('EpSelect: The prop "id" is deprecated. Please use "selectId" instead.')
-          return true
-        }
-      },
       options: {
         type: Array,
         required: true,

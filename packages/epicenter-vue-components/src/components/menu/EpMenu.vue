@@ -118,9 +118,10 @@
         //   return
         // }
         this.$emit('click', item)
-        // if (item.command) {
-        //   item.command(item)
-        // }
+        // retire this
+        if (item.command) {
+          item.command(item)
+        }
         if (item.to) {
           this.$router.push(item.to)
         }

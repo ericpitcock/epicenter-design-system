@@ -6,14 +6,18 @@
     <div class="ep-input-styler__inner">
       <div
         v-if="iconLeft"
-        class="ep-input-styler__inner__icon-left"
+        :class="['ep-input-styler__inner__icon-left', `ep-input-styler__inner__icon-left--${size}`]"
         :style="iconStyles"
       >
         <ep-icon v-bind="iconLeft" />
       </div>
       <div
         v-if="iconRight"
-        :class="['ep-input-styler__inner__icon-right', { 'ep-input-styler__inner__icon-right--clickable': iconRightClickable }]"
+        :class="[
+          'ep-input-styler__inner__icon-right',
+          `ep-input-styler__inner__icon-right--${size}`,
+          { 'ep-input-styler__inner__icon-right--clickable': iconRightClickable }
+        ]"
         :style="iconStyles"
         @click="onClick"
       >
@@ -90,6 +94,12 @@
     data() {
       return {
         showLabel: false,
+        defaultIconProps: {
+          // styles: {
+          //   '--ep-icon-width': '100%',
+          //   '--ep-icon-height': '100%'
+          // }
+        }
       }
     },
     computed: {
@@ -102,11 +112,29 @@
       },
       iconStyles() {
         return {
-          width: `${this.sizes[this.size]}px`,
-          height: `${this.sizes[this.size]}px`,
+          // width: `${this.sizes[this.size]}px`,
+          // height: `${this.sizes[this.size]}px`,
           cursor: 'pointer'
         }
-      }
+      },
+      // computedIconLeftProps() {
+      //   if (this.iconLeft) {
+      //     return {
+      //       ...this.defaultIconProps,
+      //       ...this.iconLeft
+      //     }
+      //   }
+      //   return undefined
+      // },
+      // computedIconRightProps() {
+      //   if (this.iconRight) {
+      //     return {
+      //       ...this.defaultIconProps,
+      //       ...this.iconRight
+      //     }
+      //   }
+      //   return undefined
+      // },
     },
     // mounted() {
     //   // listen for focus event on the input in the slot

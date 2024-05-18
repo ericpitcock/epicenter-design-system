@@ -16,7 +16,38 @@
   </div>
 </template>
 
-<script>
+<script setup>
+  import { computed } from 'vue'
+
+  const props = defineProps({
+    activeTabIndex: {
+      type: Number,
+      default: null
+    },
+    items: {
+      type: Array,
+      default: () => []
+    },
+    variant: {
+      type: String,
+      default: 'default' // default, classic
+    }
+  })
+
+  const emit = defineEmits(['tab-click'])
+
+  // Computed property to handle both simple array of strings and array of objects
+  const tabs = computed(() => {
+    return props.items.map(item => (typeof item === 'object' ? item : { label: item }))
+  })
+
+  // Method to emit tab-click event
+  const onClick = (index) => {
+    emit('tab-click', index)
+  }
+</script>
+
+<!-- <script>
   export default {
     name: 'EpTabs',
     props: {
@@ -47,4 +78,4 @@
       }
     },
   }
-</script>
+</script> -->

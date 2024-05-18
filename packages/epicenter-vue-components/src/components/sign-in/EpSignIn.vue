@@ -23,7 +23,7 @@
           class="ep-sign-in__form__message copy-block"
         >
           <ep-icon
-            name="f/mail"
+            name="f-mail"
             :size="60"
             weight="extra-light"
             color="var(--color--primary)"
@@ -53,7 +53,7 @@
             size="xlarge"
             placeholder="Password"
             background-color="var(--interface-foreground)"
-            :icon-right="{ name: 'f/eye' }"
+            :icon-right="{ name: 'f-eye' }"
             @clear="password = ''"
           />
           <ep-button

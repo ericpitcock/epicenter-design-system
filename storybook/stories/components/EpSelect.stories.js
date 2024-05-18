@@ -35,16 +35,10 @@ export default {
       }
     },
     selectId: {
-      name: 'ID',
-      control: {
-        type: 'text'
-      }
+      table: { disable: true }
     },
     options: {
-      name: 'Options',
-      control: {
-        type: 'array'
-      }
+      table: { disable: true }
     },
     modelValue: { table: { disable: true } },
     placeholder: {

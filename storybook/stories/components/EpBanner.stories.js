@@ -1,6 +1,5 @@
 import { centeredSurface } from '../../helpers/decorators.js'
-// import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
-import { iconArgTypes } from '../../helpers/iconArgTypes.js'
+import { iconOptions } from '../../helpers/iconHelper.js'
 import EpBanner from '@/components/banner/EpBanner.vue'
 import { ref, computed } from 'vue'
 
@@ -9,7 +8,6 @@ export default {
   component: EpBanner,
   decorators: [centeredSurface],
   argTypes: {
-    ...iconArgTypes,
     dissmissable: {
       name: 'Dissmissable',
       control: {
@@ -24,6 +22,41 @@ export default {
       // control: {
       //   type: 'select'
       // }
+    },
+    iconName: {
+      name: 'Name',
+      options: iconOptions,
+      control: {
+        type: 'select'
+      },
+      table: {
+        category: 'Icon'
+      }
+    },
+    iconColor: {
+      name: 'Color',
+      control: {
+        type: 'color'
+      },
+      table: {
+        category: 'Icon'
+      }
+    },
+    iconWeight: {
+      name: 'Weight',
+      options: ['Light', 'Regular', 'Medium', 'Bold'],
+      mapping: {
+        'Light': 0.5,
+        'Regular': 1,
+        'Medium': 1.5,
+        'Bold': 2,
+      },
+      control: {
+        type: 'radio'
+      },
+      table: {
+        category: 'Icon'
+      }
     },
     stripColor: {
       name: '--ep-banner-color-strip-bg',
@@ -141,10 +174,11 @@ export const Banner = args => ({
 
     const iconProps = computed(() => {
       return {
-        name: args.name,
-        color: args.color,
-        weight: args.weight,
-        size: args.size,
+        name: args.iconName,
+        styles: {
+          '--ep-icon-color': args.iconColor,
+          '--ep-icon-stroke-width': args.iconWeight,
+        }
       }
     })
 
@@ -185,11 +219,8 @@ export const Banner = args => ({
 
 Banner.args = {
   dissmissable: false,
-  iconProps: {
-    name: 'f-alert-triangle',
-    color: 'currentColor',
-    weight: 'light',
-    size: 60
-  },
+  iconName: 'f-alert-circle',
+  iconColor: '#FFC107',
+  iconWeight: 'Regular',
   stripColor: '#FFC107',
 }

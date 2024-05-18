@@ -95,9 +95,8 @@ export const IconLibrary = args => ({
   template: `
   <ep-search-typeahead
     :input-props="{ width: '60rem', placeholder: 'Search icons…', size: 'xlarge' }"
-    :search-results="searchResults"
-    results-label="name"
-    results-value="name"
+    :returned-search-results="searchResults"
+    results-key="name"
     @search="searchIcons"
     @selection="filterIcons"
     @clear="clearResults"
@@ -138,7 +137,7 @@ export const IconLibrary = args => ({
 })
 
 IconLibrary.args = {
-  color: 'currentColor',
+  color: 'var(--text-color--loud)',
   weight: 'Light',
   size: 42
 }

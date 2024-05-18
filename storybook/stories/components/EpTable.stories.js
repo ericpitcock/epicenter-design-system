@@ -227,7 +227,7 @@ export const Table = args => ({
     <template #header>
       <ep-header>
         <template #left>
-          <ep-search-typeahead
+          <!--<ep-search-typeahead
             :returned-search-results="tableData"
             results-key="name"
             :input-props="{
@@ -237,14 +237,19 @@ export const Table = args => ({
               placeholder: 'Search by Name'
             }"
             @search="onSearch"
-          />
+          />-->
         </template>
         <template #right>
           <ep-dropdown
-            :button="{
-              variant: 'ghost',
+            :buttonProps="{
               label: '',
-              iconRight: { name: 'f/columns' }
+              iconRight: {
+                name: 'f-columns',
+                styles: {
+                  '--ep-icon-width': '1.4em',
+                  '--ep-icon-height': '1.4em'
+                }
+              }
             }"
             align-right
           >

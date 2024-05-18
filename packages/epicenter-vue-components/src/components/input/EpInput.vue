@@ -42,15 +42,6 @@
         type: String,
         default: ''
       },
-      // backwards compatibility
-      // id: {
-      //   type: String,
-      //   default: '',
-      //   validator: () => {
-      //     console.warn('EpInput: The prop "id" is deprecated. Please use "inputId" instead.')
-      //     return true
-      //   }
-      // },
       label: {
         type: String,
         default: ''

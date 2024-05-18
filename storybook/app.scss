@@ -14,33 +14,35 @@ $primary-color-lightness: 55%;
   // --ep-banner-color-strip-bg: orange;
   // --ep-button-bg-color: green;
   // --ep-radio-checked-color: orange;
-}
-
-// custom button variants
-.button-variant-success {
-  --ep-button-bg-color: green;
-  --ep-button-border-color: green;
-  --ep-button-text-color: white;
-  --ep-button-hover-bg-color: darkgreen;
-  --ep-button-hover-border-color: darkgreen;
-  --ep-button-hover-text-color: white;
-  --ep-button-active-bg-color: rgb(0, 73, 0);
-  --ep-button-active-border-color: darkgreen;
-  --ep-button-active-text-color: white;
-}
-
-.button-variant-danger {
-  --ep-button-bg-color: red;
-  --ep-button-border-color: red;
-  --ep-button-text-color: white;
-  --ep-button-hover-bg-color: darkred;
-  --ep-button-hover-border-color: darkred;
-  --ep-button-hover-text-color: white;
-  --ep-button-active-bg-color: rgb(86, 0, 0);
-  --ep-button-active-border-color: darkred;
-  --ep-button-active-text-color: white;
+  --text-selection-bg-color: var(--primary-color-base);
+  --text-selection-text-color: hsl(var(--gray-0));
 }
 
 html[data-color-theme='light'] {
   // global overrides - light theme
+}
+
+// custom button variants
+.button-variant-success {
+  --ep-button-bg-color: hsl(var(--emerald-600));
+  --ep-button-border-color: hsl(var(--emerald-600));
+  --ep-button-text-color: white;
+  --ep-button-hover-bg-color: hsl(var(--emerald-700));
+  --ep-button-hover-border-color: hsl(var(--emerald-700));
+  --ep-button-hover-text-color: white;
+  --ep-button-active-bg-color: hsl(var(--emerald-800));
+  --ep-button-active-border-color: hsl(var(--emerald-800));
+  --ep-button-active-text-color: white;
+}
+
+.button-variant-danger {
+  --ep-button-bg-color: hsl(var(--rose-600));
+  --ep-button-border-color: hsl(var(--rose-600));
+  --ep-button-text-color: white;
+  --ep-button-hover-bg-color: hsl(var(--rose-700));
+  --ep-button-hover-border-color: hsl(var(--rose-700));
+  --ep-button-hover-text-color: white;
+  --ep-button-active-bg-color: hsl(var(--rose-800));
+  --ep-button-active-border-color: hsl(var(--rose-800));
+  --ep-button-active-text-color: white;
 }

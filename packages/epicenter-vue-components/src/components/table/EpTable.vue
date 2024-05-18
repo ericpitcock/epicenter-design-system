@@ -3,7 +3,6 @@
     ref="tableContainer"
     class="ep-table-container"
     :style="containerStyles"
-    @scroll="handleScroll"
   >
     <table
       ref="table"
@@ -24,7 +23,10 @@
             >
               <div>
                 <span class="label">{{ column.header }}</span>
-                <ep-icon :name="arrowIcon" />
+                <ep-icon
+                  :name="arrowIcon"
+                  :styles="{ '--ep-icon-height': '18px' }"
+                />
               </div>
             </th>
           </template>
@@ -331,11 +333,11 @@
         const formatter = this.columns.find(column => column.key == key)?.formatter
         return formatter ? formatter(value, key, row) : value
       },
-      isSelected(rowID) {
-        // return rowID === null ? false : rowID == this.selected
-        // FIX THIS
-        return false
-      },
+      // isSelected(rowID) {
+      //   // return rowID === null ? false : rowID == this.selected
+      //   // FIX THIS
+      //   return false
+      // },
       sort(key) {
         if (!this.sortable) return
         if (key === this.currentSort) {

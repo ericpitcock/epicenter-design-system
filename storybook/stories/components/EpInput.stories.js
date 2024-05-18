@@ -8,11 +8,14 @@ export default {
   component: EpInput,
   decorators: [paddedSurface],
   argTypes: {
-    id: {
-      name: 'ID',
-      control: {
-        type: 'text'
-      }
+    inputId: {
+      table: { disable: true }
+    },
+    required: {
+      table: { disable: true }
+    },
+    readonly: {
+      table: { disable: true }
     },
     label: {
       name: 'Label',
@@ -100,11 +103,10 @@ export default {
     },
     size: {
       name: 'Size',
-      options: ['small', 'default', 'large', 'xlarge'],
+      options: ['default', 'large', 'xlarge'],
       control: {
         type: 'radio',
         labels: {
-          small: 'Small',
           default: 'Default',
           large: 'Large',
           xlarge: 'X-Large'
