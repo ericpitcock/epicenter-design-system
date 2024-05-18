@@ -126,20 +126,12 @@ export const NewTable = (args) => ({
       sortBy(columnKey)
     }
 
-    // pagination
-    const currentPage = ref(1)
-    const pageSize = ref(10)
-
-    const totalPages = computed(() => {
-      return Math.ceil(tableData.length / pageSize.value)
-    })
-
-    const { paginatedData } = usePagination(sortedData, pageSize, currentPage, totalPages)
-
-    const onPageChange = (page) => {
-      console.log('onPageChange:', page)
-      currentPage.value = page
-    }
+    const {
+      paginatedData,
+      currentPage,
+      totalPages,
+      onPageChange
+    } = usePagination(sortedData)
 
     const {
       searchedData,

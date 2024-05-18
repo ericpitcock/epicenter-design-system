@@ -2,6 +2,7 @@ import { computed, ref } from 'vue'
 
 export default function useSearch(data) {
   const searchText = ref('')
+
   const searchedData = computed(() => {
     if (!searchText.value.trim()) return data.value
 
