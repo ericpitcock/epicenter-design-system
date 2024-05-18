@@ -1,6 +1,7 @@
 import EpTable from '@/components/new-table/EpTable.vue'
 import EpTableSearchInput from '@/components/new-table/EpTableSearchInput.vue'
-import { ref } from 'vue'
+import EpTablePagination from '@/components/new-table/EpTablePagination.vue'
+import { computed, ref } from 'vue'
 
 export default {
   title: 'Components/New Table',
@@ -46,7 +47,7 @@ export default {
 }
 
 export const NewTable = (args) => ({
-  components: { EpTable, EpTableSearchInput },
+  components: { EpTable, EpTableSearchInput, EpTablePagination },
   setup() {
     const searchText = ref('')
 
@@ -55,14 +56,49 @@ export const NewTable = (args) => ({
       console.log('searchText:', text)
     }
 
-    return { args, updateSearchText, searchText }
+    const currentPage = ref(1)
+    const pageSize = ref(10)
+
+    const totalPages = computed(() => {
+      return Math.ceil(tableData.length / pageSize.value)
+    })
+
+    const onPageChange = (page) => {
+      console.log('onPageChange:', page)
+      currentPage.value = page
+    }
+
+    return {
+      args,
+      updateSearchText,
+      searchText,
+      currentPage,
+      totalPages,
+      onPageChange,
+      pageSize
+    }
   },
   template: `
     <ep-table-search-input
       :search-text="searchText"
       @update:search-text="updateSearchText"
     />
-    <ep-table v-bind="args" />
+    <ep-table
+      :columns="args.columns"
+      :data="args.data"
+      :enable-filters="args.enableFilters"
+      :enable-pagination="args.enablePagination"
+      :enable-search="args.enableSearch"
+      :enable-sorting="args.enableSorting"
+      :current-page="currentPage"
+      :total-pages="totalPages"
+      :page-size="pageSize"
+    />
+    <ep-table-pagination
+      :current-page="currentPage"
+      :total-pages="totalPages"
+      @page-change="onPageChange"
+    />
   `
 })
 

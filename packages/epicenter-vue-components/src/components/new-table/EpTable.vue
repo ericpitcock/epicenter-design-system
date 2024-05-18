@@ -30,7 +30,7 @@
         </tr>
       </tbody>
     </table>
-    <div v-if="enablePagination">
+    <!-- <div v-if="enablePagination">
       <button
         :disabled="currentPage === 1"
         @click="currentPage--"
@@ -44,7 +44,7 @@
       >
         Next
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -79,6 +79,14 @@
       type: Number,
       default: 10
     },
+    currentPage: {
+      type: Number,
+      default: 1
+    },
+    totalPages: {
+      type: Number,
+      default: 1
+    },
     enableSearch: {
       type: Boolean,
       default: false
@@ -102,11 +110,7 @@
     sortOrder
   } = useSorting(yourData, props.enableSorting)
 
-  const {
-    paginatedData,
-    currentPage,
-    totalPages
-  } = usePagination(sortedData, props.pageSize, props.enablePagination)
+  const { paginatedData } = usePagination(sortedData, props.pageSize, props.currentPage, props.totalPages, props.enablePagination)
 
   const searchText = ref(props.searchQuery)
   const { searchedData } = useSearch(paginatedData, props.enableSearch, searchText)
@@ -132,6 +136,6 @@
       })
     }
 
-    return filteredData.slice((currentPage.value - 1) * props.pageSize, currentPage.value * props.pageSize)
+    return filteredData.slice((props.currentPage - 1) * props.pageSize, props.currentPage * props.pageSize)
   })
 </script>
