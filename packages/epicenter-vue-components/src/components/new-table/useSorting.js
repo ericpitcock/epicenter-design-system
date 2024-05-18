@@ -9,7 +9,7 @@ export default function useSorting(data) {
 
     const modifier = sortOrder.value === 'desc' ? -1 : 1
 
-    return [...data].sort((a, b) => {
+    return [...data.value].sort((a, b) => {
       const aValue = a[sortColumn.value]
       const bValue = b[sortColumn.value]
 

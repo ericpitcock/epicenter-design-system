@@ -4,10 +4,10 @@ export default function useSearch(data) {
   const searchText = ref('')
 
   const searchedData = computed(() => {
-    if (!searchText.value.trim()) return data.value
+    if (!searchText.value.trim()) return data
 
     const searchQuery = searchText.value.trim().toLowerCase()
-    return data.value.filter((row) => {
+    return data.filter((row) => {
       return Object.values(row).some((value) => {
         return String(value).toLowerCase().includes(searchQuery)
       })

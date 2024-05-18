@@ -5,7 +5,6 @@ import EpTableSortableHeader from '@/components/new-table/EpTableSortableHeader.
 import useSorting from '@/components/new-table/useSorting.js'
 import usePagination from '@/components/new-table/usePagination.js'
 import useSearch from '@/components/new-table/useSearch.js'
-import { computed, ref, watch } from 'vue'
 
 export default {
   title: 'Components/New Table',
@@ -107,14 +106,25 @@ const columns = [
 ]
 
 export const NewTable = (args) => ({
-  components: { EpTable, EpTableSearchInput, EpTablePagination, EpTableSortableHeader },
+  components: {
+    EpTable,
+    EpTableSearchInput,
+    EpTablePagination,
+    EpTableSortableHeader
+  },
   setup() {
+    const {
+      searchedData,
+      searchText,
+      updateSearchText
+    } = useSearch(tableData)
+
     const {
       sortedData,
       sortBy,
       sortColumn,
       sortOrder
-    } = useSorting(tableData)
+    } = useSorting(searchedData)
 
     const {
       paginatedData,
@@ -123,16 +133,15 @@ export const NewTable = (args) => ({
       onPageChange
     } = usePagination(sortedData)
 
-    const {
-      searchedData,
-      searchText,
-      updateSearchText
-    } = useSearch(paginatedData)
+    // const {
+    //   searchedData,
+    //   searchText,
+    //   updateSearchText
+    // } = useSearch(paginatedData)
 
     return {
       args,
       columns,
-      // sortedData,
       // sorting
       sortBy,
       sortColumn,
@@ -155,7 +164,7 @@ export const NewTable = (args) => ({
     />
     <ep-table
       :columns="columns"
-      :data="searchedData"
+      :data="paginatedData"
     >
       <template #header="{ column }">
         <ep-table-sortable-header
