@@ -1,15 +1,12 @@
 <template>
-  <!-- <td>
-    {{ row[column.key] }}
-  </td> -->
   <td>
     <component
       :is="column.component"
-      v-if="column.component"
+      v-if="!!column.component"
       v-bind="row[column.key].props"
     />
     <template v-else>
-      {{ row[column.key] }}
+      {{ formatCell(row[column.key], column) }}
     </template>
   </td>
 </template>
@@ -26,4 +23,9 @@
       required: true
     }
   })
+
+  const formatCell = (value, column) => {
+    const formatter = column.formatter
+    return formatter ? formatter(value) : value
+  }
 </script>
