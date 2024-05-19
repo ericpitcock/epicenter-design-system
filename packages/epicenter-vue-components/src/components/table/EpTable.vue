@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div
+    ref="tableContainer"
+    class="ep-table-container"
+    :style="containerStyles"
+  >
     <table
       :class="['ep-table', classes]"
       :style="styles"
@@ -43,7 +47,8 @@
 
 <script setup>
   import EpTableCell from './EpTableCell.vue'
-  import { computed } from 'vue'
+  import useCalculatedHeight from '@/composables/useCalculatedHeight.js'
+  import { computed, ref } from 'vue'
 
   // eslint-disable-next-line no-unused-vars
   const props = defineProps({
@@ -90,6 +95,9 @@
   const onRowClick = (row) => {
     if (props.selectable) emit('row-click', row)
   }
+
+  const tableContainer = ref(null)
+  const { containerStyles } = useCalculatedHeight(tableContainer, 81)
 
   const classes = computed(() => {
     return {

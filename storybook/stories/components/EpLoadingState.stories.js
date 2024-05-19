@@ -4,6 +4,8 @@ import EpHeader from '@/components/header/EpHeader.vue'
 import EpFooter from '@/components/footer/EpFooter.vue'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 import EpTable from '@/components/table/EpTable.vue'
+import useCalculatedHeight from '@/composables/useCalculatedHeight.js'
+import useExclude from '@/components/table/useExclude.js'
 import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
 import { columns, fakeArray } from '../../data/tableData.js'
 import { ref, onMounted } from 'vue'
@@ -86,6 +88,12 @@ export const LoadingState = args => ({
     const loading = ref(true)
     const messages = ref(null)
     const tableData = ref(fakeArray(30))
+    const columnsRef = ref(columns)
+
+    const {
+      includedColumns,
+      includedData
+    } = useExclude(columnsRef, tableData, ['id'])
 
     const done = () => {
       loading.value = false
@@ -124,7 +132,9 @@ export const LoadingState = args => ({
       destroyAndFetch,
       tableData,
       loading,
-      messages
+      messages,
+      includedColumns,
+      includedData,
     }
   },
   template: `
@@ -180,17 +190,11 @@ export const LoadingState = args => ({
           @done="done"
         />
         <ep-table
-          :columns="columns"
-          :data="tableData"
-          :exclude="['id']"
-          width="100%"
+          :columns="includedColumns"
+          :data="includedData"
           sticky-header
-          calculate-height
-          :calculate-height-offset="81"
           bordered
-          sortable
           striped
-          padding="0 0 10rem 0"
         />
       </template>
       <template #footer>

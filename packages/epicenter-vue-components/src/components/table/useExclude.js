@@ -9,11 +9,11 @@ export default function useExclude(columns, data, exclude = []) {
   }
 
   const includedColumns = computed(() => {
-    return columns.filter(column => !excludeRef.value.includes(column.key))
+    return columns.value.filter(column => !excludeRef.value.includes(column.key))
   })
 
   const includedData = computed(() => {
-    return data.filter(row => {
+    return data.value.filter(row => {
       return excludeRef.value.some(key => row[key])
     })
   })
