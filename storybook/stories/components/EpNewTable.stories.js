@@ -86,7 +86,7 @@ export const NewTable = (args) => ({
       sortBy,
       sortColumn,
       sortOrder
-    } = useSorting(searchedData, 'start_date', 'asc')
+    } = useSorting(searchedData, 'status', 'asc')
 
     // add pagination
     const {

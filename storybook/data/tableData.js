@@ -80,6 +80,11 @@ const fakeArray = length => {
       status: {
         props: {
           label,
+          styles: {
+            '--ep-badge-bg-color': 'transparent',
+            '--ep-badge-border-color': label === 'Completed' ? 'green' : 'red',
+            '--ep-badge-text-color': 'var(--text-color--loud)'
+          }
         },
         value: label
       },
