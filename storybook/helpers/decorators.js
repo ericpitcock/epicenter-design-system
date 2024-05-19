@@ -5,7 +5,7 @@ const createContainer = (centered, backgroundColor, padding, gradientBackground)
         ${centered ? `display: grid;
         place-content: center;` : ''}
         width: 100%;
-        height: 100%;
+        height: fit-content;
         padding: ${padding};
         background-color: ${backgroundColor};
         ${gradientBackground ? `background: ${gradientBackground};` : ''}

@@ -28,12 +28,12 @@
           v-for="row in data"
           :key="row.id"
         >
-          <td
+          <ep-table-cell
             v-for="column in columns"
             :key="column.key"
-          >
-            {{ row[column.key] }}
-          </td>
+            :row="row"
+            :column="column"
+          />
         </tr>
       </tbody>
     </table>
@@ -41,6 +41,7 @@
 </template>
 
 <script setup>
+  import EpTableCell from './EpTableCell.vue'
   import { computed } from 'vue'
 
   // eslint-disable-next-line no-unused-vars

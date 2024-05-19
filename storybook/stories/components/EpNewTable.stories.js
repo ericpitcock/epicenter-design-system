@@ -51,10 +51,13 @@ export default {
         type: 'boolean'
       }
     },
+    styles: {
+      table: { disable: true }
+    }
   }
 }
 
-const tableData = fakeArray(30)
+const tableData = fakeArray(100)
 
 export const NewTable = (args) => ({
   components: {
@@ -91,7 +94,7 @@ export const NewTable = (args) => ({
       currentPage,
       totalPages,
       onPageChange
-    } = usePagination(sortedData, 1, 10)
+    } = usePagination(sortedData, 1, 30)
 
     // filtering
     // const appliedFilters = ref(props.appliedFilters)
@@ -172,7 +175,7 @@ export const NewTable = (args) => ({
 })
 
 NewTable.args = {
-  exclude: ['status'],
+  exclude: [],
   bordered: true,
   striped: true,
   width: '100%',

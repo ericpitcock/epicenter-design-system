@@ -2,12 +2,12 @@ import { faker } from '@faker-js/faker'
 import EpBadge from '../../packages/epicenter-vue-components/src/components/badge/EpBadge.vue'
 import { markRaw } from 'vue'
 
+// header is deprecated, use label instead
 const columns = [
   {
     header: 'Status',
     label: 'Status',
     key: 'status',
-    cellType: 'component',
     component: markRaw(EpBadge),
     sortable: true,
   },
@@ -15,7 +15,6 @@ const columns = [
     header: 'Date',
     label: 'Date',
     key: 'start_date',
-    cellType: 'string',
     formatter: value => {
       return value.split('T')[0].replaceAll('-', '/')
     },
@@ -28,14 +27,12 @@ const columns = [
     header: 'Name',
     label: 'Name',
     key: 'name',
-    cellType: 'string',
     sortable: true,
   },
   {
     header: 'Ride Type',
     label: 'Ride Type',
     key: 'type',
-    cellType: 'string',
     formatter: value => {
       return value
     },
@@ -45,7 +42,6 @@ const columns = [
     header: 'Distance (mi)',
     label: 'Distance (mi)',
     key: 'distance',
-    cellType: 'string',
     formatter: value => {
       return (value / 1609.344).toFixed(2)
     },
@@ -56,7 +52,6 @@ const columns = [
     header: 'Elevation (ft)',
     label: 'Elevation (ft)',
     key: 'total_elevation_gain',
-    cellType: 'string',
     formatter: value => {
       return (value * 3.28084).toFixed(2)
     },
@@ -67,7 +62,6 @@ const columns = [
     header: 'Avg Speed (mph)',
     label: 'Avg Speed (mph)',
     key: 'average_speed',
-    cellType: 'string',
     formatter: value => {
       return (value * 0.621371).toFixed(1)
     },
