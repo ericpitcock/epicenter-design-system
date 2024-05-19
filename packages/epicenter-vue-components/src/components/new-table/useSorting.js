@@ -10,8 +10,9 @@ export default function useSorting(data, initialSortColumn = '', initialSortOrde
     const modifier = sortOrder.value === 'desc' ? -1 : 1
 
     return [...data.value].sort((a, b) => {
-      const aValue = a[sortColumn.value]
-      const bValue = b[sortColumn.value]
+      // component cells are sorted by .value property
+      const aValue = a[sortColumn.value]?.value
+      const bValue = b[sortColumn.value]?.value
 
       if (aValue < bValue)
         return -1 * modifier

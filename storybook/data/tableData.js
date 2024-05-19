@@ -75,14 +75,11 @@ const fakeArray = length => {
   for (let i = 0; i < length; i++) {
     // create status badge label and variant
     const label = faker.helpers.arrayElement(['Completed', 'Cancelled'])
-    const variant = label === 'Completed' ? 'success' : 'danger'
     arr.push({
       id: faker.string.uuid(),
       status: {
         props: {
           label,
-          variant,
-          outlined: true
         },
         value: label
       },
