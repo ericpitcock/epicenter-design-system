@@ -1,15 +1,19 @@
 <template>
   <th @click="emit('sort', column.key)">
-    <div>
+    <div class="ep-table-sortable-header">
       {{ column.label }}
-      <span v-if="column.sortable">
-        {{ sortColumn === column.key ? (sortOrder === 'asc' ? '▲' : '▼') : '' }}
-      </span>
+      <ep-icon
+        v-if="column.sortable && props.sortColumn === props.column.key"
+        v-bind="iconProps"
+      />
     </div>
   </th>
 </template>
 
 <script setup>
+  import EpIcon from '../icon/EpIcon.vue'
+  import { computed } from 'vue'
+
   // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     column: {
@@ -27,4 +31,13 @@
   })
 
   const emit = defineEmits(['sort'])
+
+  const iconProps = computed(() => {
+    return {
+      name: props.sortOrder === 'asc' ? 'arrow-up' : 'arrow-down',
+      styles: {
+        '--ep-icon-height': '17px',
+      }
+    }
+  })  
 </script>

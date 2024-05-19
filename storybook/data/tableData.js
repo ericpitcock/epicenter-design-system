@@ -9,6 +9,7 @@ const columns = [
     key: 'status',
     cellType: 'component',
     component: markRaw(EpBadge),
+    sortable: true,
   },
   {
     header: 'Date',
@@ -20,13 +21,15 @@ const columns = [
     },
     command: () => {
       console.log('click')
-    }
+    },
+    sortable: true,
   },
   {
     header: 'Name',
     label: 'Name',
     key: 'name',
-    cellType: 'string'
+    cellType: 'string',
+    sortable: true,
   },
   {
     header: 'Ride Type',
@@ -35,7 +38,8 @@ const columns = [
     cellType: 'string',
     formatter: value => {
       return value
-    }
+    },
+    sortable: true,
   },
   {
     header: 'Distance (mi)',
@@ -45,7 +49,8 @@ const columns = [
     formatter: value => {
       return (value / 1609.344).toFixed(2)
     },
-    style: 'tabular-numbers'
+    style: 'tabular-numbers',
+    sortable: true,
   },
   {
     header: 'Elevation (ft)',
@@ -55,7 +60,8 @@ const columns = [
     formatter: value => {
       return (value * 3.28084).toFixed(2)
     },
-    style: 'tabular-numbers'
+    style: 'tabular-numbers',
+    sortable: true,
   },
   {
     header: 'Avg Speed (mph)',
@@ -65,7 +71,8 @@ const columns = [
     formatter: value => {
       return (value * 0.621371).toFixed(1)
     },
-    style: 'tabular-numbers'
+    style: 'tabular-numbers',
+    sortable: true,
   }
 ]
 

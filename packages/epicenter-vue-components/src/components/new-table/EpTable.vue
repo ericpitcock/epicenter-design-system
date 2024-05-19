@@ -1,6 +1,9 @@
 <template>
   <div>
-    <table :class="['ep-table', classes]">
+    <table
+      :class="['ep-table', classes]"
+      :style="styles"
+    >
       <thead>
         <tr>
           <template
@@ -62,6 +65,14 @@
       type: Boolean,
       default: false
     },
+    stickyHeader: {
+      type: Boolean,
+      default: false
+    },
+    styles: {
+      type: Object,
+      default: () => ({})
+    },
   })
 
   const classes = computed(() => {
@@ -69,9 +80,8 @@
       // 'ep-table--selectable': this.selectable,
       'ep-table--bordered': props.bordered,
       // 'ep-table--compact': this.compact,
-      // 'ep-table--sticky': this.stickyHeader,
+      'ep-table--sticky': props.stickyHeader,
       'ep-table--striped': props.striped,
-      // 'ep-table--sortable': this.sortable,
       // 'ep-table--layout-fixed': this.layoutFixed,
     }
   })

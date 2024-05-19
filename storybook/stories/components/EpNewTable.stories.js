@@ -8,6 +8,7 @@ import usePagination from '@/components/new-table/usePagination.js'
 import useSearch from '@/components/new-table/useSearch.js'
 import { paddedSurface } from '../../helpers/decorators.js'
 import { columns, fakeArray } from '../../data/tableData'
+import { computed } from 'vue'
 
 export default {
   title: 'Components/New Table',
@@ -37,6 +38,18 @@ export default {
       control: {
         type: 'boolean'
       },
+    },
+    width: {
+      name: 'Width',
+      control: {
+        type: 'text'
+      }
+    },
+    stickyHeader: {
+      name: 'Sticky Header',
+      control: {
+        type: 'boolean'
+      }
     },
   }
 }
@@ -70,7 +83,7 @@ export const NewTable = (args) => ({
       sortBy,
       sortColumn,
       sortOrder
-    } = useSorting(searchedData, 'id', 'asc')
+    } = useSorting(searchedData, 'start_date', 'asc')
 
     // add pagination
     const {
@@ -105,6 +118,12 @@ export const NewTable = (args) => ({
     //   return filteredData.slice((props.currentPage - 1) * props.pageSize, props.currentPage * props.pageSize)
     // })
 
+    const styles = computed(() => {
+      return {
+        '--ep-table-width': args.width
+      }
+    })
+
     return {
       args,
       // columns,
@@ -120,7 +139,8 @@ export const NewTable = (args) => ({
       paginatedData,
       // search
       searchText,
-      updateSearchText
+      updateSearchText,
+      styles
     }
   },
   template: `
@@ -131,6 +151,7 @@ export const NewTable = (args) => ({
     <ep-table
       :columns="includedColumns"
       :data="paginatedData"
+      :style="styles"
       v-bind="args"
     >
       <template #header="{ column }">
@@ -153,5 +174,7 @@ export const NewTable = (args) => ({
 NewTable.args = {
   exclude: ['status'],
   bordered: true,
-  striped: true
+  striped: true,
+  width: '100%',
+  stickyHeader: true,
 }
