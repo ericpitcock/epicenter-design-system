@@ -22,13 +22,22 @@ export default {
       table: { disable: true }
     },
     exclude: {
-      name: 'Exclude',
+      table: { disable: true }
+    },
+    compact: {
+      name: 'Compact',
       control: {
-        type: 'array'
+        type: 'boolean'
       }
     },
     bordered: {
       name: 'Bordered',
+      control: {
+        type: 'boolean'
+      },
+    },
+    selectable: {
+      name: 'Selectable',
       control: {
         type: 'boolean'
       },
@@ -127,6 +136,10 @@ export const NewTable = (args) => ({
       }
     })
 
+    const onRowClick = (row) => {
+      console.log('Row clicked:', row)
+    }
+
     return {
       args,
       // columns,
@@ -143,7 +156,8 @@ export const NewTable = (args) => ({
       // search
       searchText,
       updateSearchText,
-      styles
+      styles,
+      onRowClick
     }
   },
   template: `
@@ -156,6 +170,7 @@ export const NewTable = (args) => ({
       :data="paginatedData"
       :style="styles"
       v-bind="args"
+      @row-click="onRowClick"
     >
       <template #header="{ column }">
         <ep-table-sortable-header
@@ -175,8 +190,10 @@ export const NewTable = (args) => ({
 })
 
 NewTable.args = {
-  exclude: [],
+  exclude: ['id'],
+  compact: false,
   bordered: true,
+  selectable: false,
   striped: true,
   width: '100%',
   stickyHeader: true,

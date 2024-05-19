@@ -19,8 +19,8 @@
       default: 'Badge'
     },
     styles: {
-      type: Object,
-      default: () => ({})
+      type: Array,
+      default: () => []
     }
   })
 </script>

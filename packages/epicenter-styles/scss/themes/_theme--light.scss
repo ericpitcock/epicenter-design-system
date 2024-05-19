@@ -49,22 +49,9 @@ html[data-color-theme='light'] {
   --text-color--success: var(--green-700);
   // text selection color
   --text-selection: var(--yellow-300);
-  // buttons
-  --button-disabled--bg-color: hsl(var(--gray-40));
-  --button-disabled--border-color: var(--button-disabled--bg-color);
-  --button-disabled--text: hsl(var(--gray-150));
-  --button-secondary--hover: hsl(var(--gray-40));
-  --button-secondary--active: hsl(var(--gray-60));
-  --button-ghost--hover: hsl(var(--gray-40));
-  --button-ghost--active: hsl(var(--gray-60));
-  --button-ghost--text: var(--text-color);
-  --button-menu-item--hover: var(--color--primary);
-  --button-menu-item--active: var(--primary-color--active);
-  --button-menu-item-text-hover: var(--text-color--inverse);
-  --button-menu-item-text-active: var(--text-color--inverse);
   // table
-  --table-stripe-color: var(--interface-foreground);
-  --table-row-hover-color: hsl(var(--gray-10));
+  --ep-table-row-stripe-color: var(--interface-foreground);
+  --ep-table-row-hover-bg-color: hsl(var(--gray-10));
   // toggle
   --toggle-track: hsl(var(--gray-80));
   --toggle-track-border: var(--border-color);

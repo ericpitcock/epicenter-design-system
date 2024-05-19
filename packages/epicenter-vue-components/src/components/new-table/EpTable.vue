@@ -27,6 +27,7 @@
         <tr
           v-for="row in data"
           :key="row.id"
+          @click="onRowClick(row)"
         >
           <ep-table-cell
             v-for="column in columns"
@@ -58,7 +59,15 @@
       type: Array,
       default: () => []
     },
+    compact: {
+      type: Boolean,
+      default: false
+    },
     bordered: {
+      type: Boolean,
+      default: false
+    },
+    selectable: {
       type: Boolean,
       default: false
     },
@@ -76,11 +85,17 @@
     },
   })
 
+  const emit = defineEmits(['row-click'])
+
+  const onRowClick = (row) => {
+    if (props.selectable) emit('row-click', row)
+  }
+
   const classes = computed(() => {
     return {
-      // 'ep-table--selectable': this.selectable,
+      'ep-table--selectable': props.selectable,
       'ep-table--bordered': props.bordered,
-      // 'ep-table--compact': this.compact,
+      'ep-table--compact': props.compact,
       'ep-table--sticky': props.stickyHeader,
       'ep-table--striped': props.striped,
       // 'ep-table--layout-fixed': this.layoutFixed,

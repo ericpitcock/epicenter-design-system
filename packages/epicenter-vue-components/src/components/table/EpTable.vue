@@ -1,6 +1,5 @@
 <template>
   <div
-    ref="tableContainer"
     class="ep-table-container"
     :style="containerStyles"
   >
@@ -257,31 +256,6 @@
         this.$emit('data-changed', this.filteredData)
       },
     },
-    // mounted() {
-    //   const table = this.$refs.table
-    //   const tableContainer = this.$refs.tableContainer
-
-    //   const debounceResize = (callback, delay) => {
-    //     let timeoutId
-    //     return (...args) => {
-    //       clearTimeout(timeoutId)
-    //       timeoutId = setTimeout(() => {
-    //         timeoutId = null
-    //         callback(...args)
-    //       }, delay)
-    //     }
-    //   }
-
-    //   const handleResize = () => {
-    //     if (table && tableContainer) {
-    //       this.layoutFixed = table.offsetWidth > tableContainer.offsetWidth
-    //     }
-    //   }
-
-    //   const debouncedHandleResize = debounceResize(handleResize, 250) // Adjust the delay as needed
-
-    //   window.addEventListener('resize', debouncedHandleResize)
-    // },
     methods: {
       rowClick(row) {
         this.$emit('row-click', row)

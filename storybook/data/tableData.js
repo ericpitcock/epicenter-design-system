@@ -4,6 +4,13 @@ import { markRaw } from 'vue'
 
 // header is deprecated, use label instead
 const columns = [
+  // id
+  {
+    header: 'ID',
+    label: 'ID',
+    key: 'id',
+    sortable: true,
+  },
   {
     header: 'Status',
     label: 'Status',

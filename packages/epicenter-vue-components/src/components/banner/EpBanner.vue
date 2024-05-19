@@ -53,8 +53,8 @@
       default: () => ({})
     },
     styles: {
-      type: Object,
-      default: () => ({})
+      type: Array,
+      default: () => []
     }
   })
 

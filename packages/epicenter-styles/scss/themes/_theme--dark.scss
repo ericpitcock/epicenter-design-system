@@ -55,22 +55,9 @@
   // --text-color--success: var(--lime-500);
   // text selection color
   --text-selection: var(--yellow-600);
-  // buttons
-  --button-disabled--bg-color: hsl(var(--gray-400));
-  --button-disabled--border-color: var(--4utton-disabled--bg-color);
-  --button-disabled--text: hsl(var(--gray-270));
-  --button-secondary--hover: hsl(var(--gray-410));
-  --button-secondary--active: hsl(var(--gray-430));
-  --button-ghost--hover: hsl(var(--gray-390));
-  --button-ghost--active: hsl(var(--gray-500));
-  --button-ghost--text: var(--text-color);
-  --button-menu-item--hover: var(--color--primary);
-  --button-menu-item--active: var(--primary-color--active);
-  --button-menu-item-text-hover: var(--text--white);
-  --button-menu-item-text-active: var(--text--white);
   // table
-  --table-stripe-color: var(--interface-foreground);
-  --table-row-hover-color: hsl(var(--gray-450));
+  // --ep-table-row-stripe-color: var(--interface-foreground);
+  // --ep-table-row-hover-bg-color: hsl(var(--gray-450));
   // toggle
   --toggle-track: hsl(var(--gray-400));
   --toggle-track-border: var(--border-color);

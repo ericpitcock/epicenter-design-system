@@ -1,5 +1,5 @@
 <template>
-  <td>
+  <td :style="styles">
     <component
       :is="column.component"
       v-if="!!column.component"
@@ -21,6 +21,10 @@
     column: {
       type: Object,
       required: true
+    },
+    styles: {
+      type: Array,
+      default: () => []
     }
   })
 

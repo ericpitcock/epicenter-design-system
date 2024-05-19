@@ -230,20 +230,20 @@ export default {
 export const Button = args => ({
   components: { EpButton },
   setup() {
-    const styles = computed(() => ({
-      '--ep-button-bg-color': args.backgroundColor,
-      '--ep-button-border-color': args.borderColor,
-      '--ep-button-text-color': args.textColor,
-      '--ep-button-hover-bg-color': args.hoverBackgroundColor,
-      '--ep-button-hover-border-color': args.hoverBorderColor,
-      '--ep-button-hover-text-color': args.hoverTextColor,
-      '--ep-button-active-bg-color': args.activeBackgroundColor,
-      '--ep-button-active-border-color': args.activeBorderColor,
-      '--ep-button-active-text-color': args.activeTextColor,
-      '--ep-button-disabled-bg-color': args.disabledBackgroundColor,
-      '--ep-button-disabled-border-color': args.disabledBorderColor,
-      '--ep-button-disabled-text-color': args.disabledTextColor,
-    }))
+    const styles = computed(() => ([
+      { '--ep-button-bg-color': args.backgroundColor },
+      { '--ep-button-border-color': args.borderColor },
+      { '--ep-button-text-color': args.textColor },
+      { '--ep-button-hover-bg-color': args.hoverBackgroundColor },
+      { '--ep-button-hover-border-color': args.hoverBorderColor },
+      { '--ep-button-hover-text-color': args.hoverTextColor },
+      { '--ep-button-active-bg-color': args.activeBackgroundColor },
+      { '--ep-button-active-border-color': args.activeBorderColor },
+      { '--ep-button-active-text-color': args.activeTextColor },
+      { '--ep-button-disabled-bg-color': args.disabledBackgroundColor },
+      { '--ep-button-disabled-border-color': args.disabledBorderColor },
+      { '--ep-button-disabled-text-color': args.disabledTextColor },
+    ]))
 
     const onClick = () => {
       console.log('Button clicked!')
