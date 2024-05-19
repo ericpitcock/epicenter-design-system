@@ -1,14 +1,19 @@
 <template>
   <div
-    class="ep-badge"
-    :style="props.styles"
+    :class="['ep-badge', classes]"
+    :style="styles"
   >
-    {{ props.label }}
+    {{ label }}
   </div>
 </template>
 
 <script setup>
+  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
+    classes: {
+      type: Object,
+      default: () => ({})
+    },
     label: {
       type: String,
       default: 'Badge'

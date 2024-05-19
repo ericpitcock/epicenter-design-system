@@ -16,13 +16,13 @@ export default {
   //   }
   // },
   argTypes: {
-    variant: {
-      name: 'Variant',
+    classes: {
+      name: 'Classes',
       options: ['None', 'Success', 'Danger'],
       mapping: {
         None: null,
-        Success: 'button-variant-success',
-        Danger: 'button-variant-danger'
+        Success: { 'button-variant-success': true },
+        Danger: { 'button-variant-danger': true }
       },
       control: {
         type: 'select',
@@ -255,14 +255,14 @@ export const Button = args => ({
     <ep-button
       v-bind="args"
       :style="styles"
-      :class="args.variant"
+      :classes="args.classes"
       @click="onClick"
     />
   `
 })
 
 Button.args = {
-  variant: 'None',
+  classes: 'None',
   label: 'Download the Internet',
   size: 'large',
   disabled: false,

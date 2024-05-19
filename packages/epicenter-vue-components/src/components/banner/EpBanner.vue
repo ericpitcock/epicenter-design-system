@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ep-banner"
+    :class="['ep-banner', classes]"
     :style="styles"
   >
     <div class="ep-banner__color-strip" />
@@ -28,7 +28,7 @@
         variant="ghost"
         :icon-right="{ name: 'close' }"
         :styles="dissmissButtonStyles"
-        @click="dismissNotification"
+        @click="dismissBanner"
       />
     </div>
   </div>
@@ -40,6 +40,10 @@
 
   // eslint-disable-next-line no-unused-vars
   const props = defineProps({
+    classes: {
+      type: Object,
+      default: () => ({})
+    },
     dissmissable: {
       type: Boolean,
       default: false
@@ -55,7 +59,7 @@
   })
 
   const emit = defineEmits(['dismissed'])
-  const dismissNotification = () => emit('dismissed')
+  const dismissBanner = () => emit('dismissed')
 
   const dissmissButtonStyles = {
     '--ep-button-bg-color': 'transparent',

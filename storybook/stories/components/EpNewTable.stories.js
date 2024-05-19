@@ -6,14 +6,14 @@ import useExclude from '@/components/new-table/useExclude.js'
 import useSorting from '@/components/new-table/useSorting.js'
 import usePagination from '@/components/new-table/usePagination.js'
 import useSearch from '@/components/new-table/useSearch.js'
-import { paddedSurface } from '../../helpers/decorators.js'
+import { paddedSurfaceOverflow } from '../../helpers/decorators.js'
 import { columns, fakeArray } from '../../data/tableData'
 import { computed } from 'vue'
 
 export default {
   title: 'Components/New Table',
   component: EpTable,
-  decorators: [paddedSurface],
+  decorators: [paddedSurfaceOverflow],
   argTypes: {
     columns: {
       table: { disable: true }

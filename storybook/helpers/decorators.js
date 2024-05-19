@@ -1,11 +1,10 @@
-const createContainer = (centered, backgroundColor, padding, gradientBackground) => {
+const createContainer = (centered, overflow, backgroundColor, padding, gradientBackground) => {
   return {
     template: `
       <div style="
-        ${centered ? `display: grid;
-        place-content: center;` : ''}
+        ${centered ? `display: grid; place-content: center; height: 100%;` : ``}
+        ${overflow ? `display: flex; flex-direction: column;` : `height: 100%;`}
         width: 100%;
-        height: fit-content;
         padding: ${padding};
         background-color: ${backgroundColor};
         ${gradientBackground ? `background: ${gradientBackground};` : ''}
@@ -17,23 +16,31 @@ const createContainer = (centered, backgroundColor, padding, gradientBackground)
 }
 
 const centeredBg = () => {
-  return createContainer(true, 'var(--interface-bg)', '0', '')
+  return createContainer(true, false, 'var(--interface-bg)', '0', '')
 }
 
 const centeredSurface = () => {
-  return createContainer(true, 'var(--interface-surface)', '0', '')
+  return createContainer(true, false, 'var(--interface-surface)', '0', '')
 }
 
 const centeredCyanBlueGradient = () => {
-  return createContainer(true, '', '0', 'var(--gradient-bg)')
+  return createContainer(true, false, '', '0', 'var(--gradient-bg)')
 }
 
 const paddedBg = () => {
-  return createContainer(false, 'var(--interface-bg)', '30px', '')
+  return createContainer(false, false, 'var(--interface-bg)', '30px', '')
+}
+
+const paddedBgOverflow = () => {
+  return createContainer(false, true, 'var(--interface-bg)', '30px', '')
 }
 
 const paddedSurface = () => {
-  return createContainer(false, 'var(--interface-surface)', '30px', '')
+  return createContainer(false, false, 'var(--interface-surface)', '30px', '')
+}
+
+const paddedSurfaceOverflow = () => {
+  return createContainer(false, true, 'var(--interface-surface)', '30px', '')
 }
 
 export {
@@ -41,5 +48,7 @@ export {
   centeredSurface,
   centeredCyanBlueGradient,
   paddedBg,
+  paddedBgOverflow,
   paddedSurface,
+  paddedSurfaceOverflow,
 }

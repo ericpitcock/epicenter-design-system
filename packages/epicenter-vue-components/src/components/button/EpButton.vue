@@ -2,7 +2,7 @@
   <component
     :is="element"
     :type
-    :class="['ep-button', classes]"
+    :class="['ep-button', computedClasses, classes]"
     :style="styles"
     :title="title"
     :aria-label="ariaLabel ? ariaLabel : label"
@@ -86,6 +86,10 @@
     styles: {
       type: Object,
       default: () => ({})
+    },
+    classes: {
+      type: Object,
+      default: () => ({})
     }
   })
 
@@ -131,7 +135,7 @@
   //   return undefined
   // })
 
-  const classes = computed(() => ({
+  const computedClasses = computed(() => ({
     [`ep-button--${props.size}`]: props.size != 'default',
     'ep-button--icon-right': props.iconRight,
     'ep-button--icon-left': props.iconLeft,

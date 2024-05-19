@@ -16,7 +16,7 @@ const columns = [
     label: 'Date',
     key: 'start_date',
     formatter: value => {
-      return new Date(value).toLocaleDateString()
+      return new Date(value).toLocaleString()
     },
     command: () => {
       console.log('click')
@@ -80,11 +80,7 @@ const fakeArray = length => {
       status: {
         props: {
           label,
-          styles: {
-            '--ep-badge-bg-color': 'transparent',
-            '--ep-badge-border-color': label === 'Completed' ? 'green' : 'red',
-            '--ep-badge-text-color': 'var(--text-color--loud)'
-          }
+          classes: { 'ep-badge--success': label === 'Completed', 'ep-badge--warning': label === 'Cancelled' }
         },
         value: label
       },

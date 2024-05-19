@@ -16,10 +16,34 @@ $primary-color-lightness: 55%;
   // --ep-radio-checked-color: orange;
   --text-selection-bg-color: var(--primary-color-base);
   --text-selection-text-color: hsl(var(--gray-0));
+
+  .ep-badge--success {
+    --ep-badge-bg-color: hsl(var(--emerald-1000));
+    --ep-badge-border-color: hsl(var(--emerald-600));
+    --ep-badge-text-color: var(--text-color--loud);
+  }
+
+  .ep-badge--warning {
+    --ep-badge-bg-color: hsl(var(--yellow-1000));
+    --ep-badge-border-color: hsl(var(--yellow-600));
+    --ep-badge-text-color: var(--text-color--loud);
+  }
 }
 
 html[data-color-theme='light'] {
+
   // global overrides - light theme
+  .ep-badge--success {
+    --ep-badge-bg-color: hsl(81, 58%, 80%);
+    --ep-badge-border-color: hsl(var(--emerald-800));
+    --ep-badge-text-color: var(--text-color--loud);
+  }
+
+  .ep-badge--warning {
+    --ep-badge-bg-color: hsl(32, 68%, 83%);
+    --ep-badge-border-color: hsl(var(--orange-800));
+    --ep-badge-text-color: var(--text-color--loud);
+  }
 }
 
 // custom button variants
