@@ -11,8 +11,12 @@ export default function useSorting(data, initialSortColumn = '', initialSortOrde
 
     return [...data.value].sort((a, b) => {
       // component cells are sorted by .value property
-      const aValue = a[sortColumn.value]?.value
-      const bValue = b[sortColumn.value]?.value
+      const aValue = typeof a[sortColumn.value] === 'object'
+        ? a[sortColumn.value].value
+        : a[sortColumn.value]
+      const bValue = typeof b[sortColumn.value] === 'object'
+        ? b[sortColumn.value].value
+        : b[sortColumn.value]
 
       if (aValue < bValue)
         return -1 * modifier
