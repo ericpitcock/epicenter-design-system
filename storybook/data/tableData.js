@@ -16,7 +16,7 @@ const columns = [
     label: 'Date',
     key: 'start_date',
     formatter: value => {
-      return value.split('T')[0].replaceAll('-', '/')
+      return new Date(value).toLocaleDateString()
     },
     command: () => {
       console.log('click')
