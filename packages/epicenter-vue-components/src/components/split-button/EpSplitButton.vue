@@ -1,7 +1,13 @@
 <template>
   <div class="ep-split-button">
-    <ep-button v-bind="computedButtonProps" />
-    <ep-dropdown v-bind="computedDropdownProps" />
+    <ep-button
+      v-bind="computedButtonProps"
+      @click="$emit('button-click')"
+    />
+    <ep-dropdown
+      v-bind="computedDropdownProps"
+      @select="$emit('dropdown-select', $event)"
+    />
   </div>
 </template>
 
@@ -29,6 +35,7 @@
         default: () => ({})
       }
     },
+    emits: ['button-click', 'dropdown-select'],
     computed: {
       computedButtonProps() {
         return {

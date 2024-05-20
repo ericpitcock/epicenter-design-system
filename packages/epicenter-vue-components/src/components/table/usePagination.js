@@ -21,6 +21,9 @@ export default function usePagination(data, initialPage = 1, initialPageSize = 1
 
   const onPageChange = (page) => {
     currentPage.value = page
+
+    const tableContainer = document.querySelector('.ep-table-container')
+    tableContainer.scrollTop = 0
   }
 
   return { paginatedData, currentPage, totalPages, onPageChange }

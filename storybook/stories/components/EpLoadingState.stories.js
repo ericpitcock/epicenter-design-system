@@ -4,7 +4,6 @@ import EpHeader from '@/components/header/EpHeader.vue'
 import EpFooter from '@/components/footer/EpFooter.vue'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 import EpTable from '@/components/table/EpTable.vue'
-import useCalculatedHeight from '@/composables/useCalculatedHeight.js'
 import useExclude from '@/components/table/useExclude.js'
 import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
 import { columns, fakeArray } from '../../data/tableData.js'
@@ -52,6 +51,35 @@ export const LoadingState = args => ({
     EpLoadingState
   },
   setup() {
+    const splitButtonProps = {
+      buttonProps: {
+        variant: 'primary',
+        label: 'Refresh',
+        iconLeft: { name: 'refresh' },
+      },
+      dropdownProps: {
+        buttonProps: {
+          variant: 'primary',
+          label: ''
+        },
+        containerProps: {
+          backgroundColor: 'var(--interface-overlay)',
+          borderRadius: 'var(--border-radius)',
+          borderColor: 'var(--border-color--lighter)',
+        },
+        menuItems: [
+          {
+            label: 'Clear & Fetch',
+            id: '1',
+          },
+          {
+            label: 'Destroy & Fetch',
+            id: '2',
+          }
+        ]
+      }
+    }
+
     const refreshConfig = [
       {
         icon: 'oval',
@@ -116,6 +144,15 @@ export const LoadingState = args => ({
       loading.value = true
     }
 
+    const onDropdownSelect = (event) => {
+      if (event.id === '1') {
+        clearAndFetch()
+      }
+      if (event.id === '2') {
+        destroyAndFetch()
+      }
+    }
+
     onMounted(() => {
       setTimeout(() => {
         loading.value = false
@@ -135,6 +172,8 @@ export const LoadingState = args => ({
       messages,
       includedColumns,
       includedData,
+      splitButtonProps,
+      onDropdownSelect
     }
   },
   template: `
@@ -149,33 +188,9 @@ export const LoadingState = args => ({
       <ep-header>
         <template #left>
           <ep-split-button
-            :buttonProps="{
-              variant: 'primary',
-              label: 'Refresh',
-              iconLeft: { name: 'refresh' },
-              command: () => refresh()
-            }"
-            :dropdownProps="{
-              buttonProps: {
-                variant: 'primary',
-                label: ''
-              },
-              containerProps: {
-                backgroundColor: 'var(--interface-overlay)',
-                borderRadius: 'var(--border-radius)',
-                borderColor: 'var(--border-color--lighter)',
-              },
-              menuItems: [
-                {
-                  label: 'Clear & Fetch',
-                  command: () => clearAndFetch()
-                },
-                {
-                  label: 'Destroy & Fetch',
-                  command: () => destroyAndFetch()
-                }
-              ]
-            }"
+            v-bind="splitButtonProps"
+            @button-click="refresh"
+            @dropdown-select="onDropdownSelect"
           />
         </template>
         <template #right>
@@ -192,6 +207,7 @@ export const LoadingState = args => ({
         <ep-table
           :columns="includedColumns"
           :data="includedData"
+          :style="{ '--ep-table-width': '100%' }"
           sticky-header
           bordered
           striped
