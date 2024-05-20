@@ -60,6 +60,18 @@ export default {
         type: 'boolean'
       }
     },
+    calculateHeight: {
+      name: 'Calculate Height',
+      control: {
+        type: 'boolean'
+      }
+    },
+    calculateHeightOffset: {
+      name: 'Calculate Height Offset',
+      control: {
+        type: 'number'
+      }
+    },
     styles: {
       table: { disable: true }
     }
@@ -197,4 +209,6 @@ Table.args = {
   striped: true,
   width: '100%',
   stickyHeader: true,
+  calculateHeight: true,
+  calculateHeightOffset: 81
 }
