@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="epContainer"
     :class="['ep-container', containerClasses]"
     :style="containerStyles"
   >
@@ -24,101 +25,105 @@
   </div>
 </template>
 
-<script>
-  import calculateHeight from '../../mixins/calculateHeight'
+<script setup>
+  import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
+  import { computed, ref } from 'vue'
 
-  export default {
-    name: 'EpContainer',
-    mixins: [calculateHeight],
-    props: {
-      width: {
-        type: String,
-        default: '100%'
-      },
-      minWidth: {
-        type: String,
-        default: '0'
-      },
-      maxWidth: {
-        type: String,
-        default: 'none'
-      },
-      height: {
-        type: String,
-        default: 'auto'
-      },
-      minHeight: {
-        type: String,
-        default: 'auto'
-      },
-      maxHeight: {
-        type: String,
-        default: 'none'
-      },
-      containerPadding: {
-        type: String,
-        default: '0'
-      },
-      contentPadding: {
-        type: String,
-        default: '0'
-      },
-      backgroundColor: {
-        type: String,
-        default: ''
-      },
-      borderRadius: {
-        type: String,
-        default: 'var(--border-radius--large)'
-      },
-      borderWidth: {
-        type: String,
-        default: '0.1rem'
-      },
-      borderStyle: {
-        type: String,
-        default: 'solid'
-      },
-      borderColor: {
-        type: String,
-        default: 'var(--border-color)'
-      },
-      overflow: {
-        type: String,
-        default: 'visible'
-      },
-      stickyHeader: {
-        type: Boolean,
-        default: false
-      }
+  const props = defineProps({
+    width: {
+      type: String,
+      default: '100%'
     },
-    computed: {
-      containerClasses() {
-        return {
-          'ep-container--sticky-header': this.stickyHeader
-        }
-      },
-      containerStyles() {
-        return {
-          width: this.width,
-          minWidth: this.minWidth,
-          maxWidth: this.maxWidth,
-          height: this.dynamicHeight || this.height,
-          minHeight: this.minHeight,
-          maxHeight: this.maxHeight,
-          ...(this.backgroundColor && { background: this.backgroundColor }),
-          padding: this.containerPadding,
-          borderRadius: this.borderRadius,
-          border: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
-          overflow: this.overflow
-        }
-      },
-      contentStyles() {
-        return {
-          padding: this.contentPadding,
-          // overflow: this.overflow
-        }
-      }
-    }
-  }
+    minWidth: {
+      type: String,
+      default: '0'
+    },
+    maxWidth: {
+      type: String,
+      default: 'none'
+    },
+    height: {
+      type: String,
+      default: 'auto'
+    },
+    minHeight: {
+      type: String,
+      default: 'auto'
+    },
+    maxHeight: {
+      type: String,
+      default: 'none'
+    },
+    containerPadding: {
+      type: String,
+      default: null
+    },
+    contentPadding: {
+      type: String,
+      default: null
+    },
+    backgroundColor: {
+      type: String,
+      default: ''
+    },
+    borderRadius: {
+      type: String,
+      default: 'var(--border-radius--large)'
+    },
+    borderWidth: {
+      type: String,
+      default: '0.1rem'
+    },
+    borderStyle: {
+      type: String,
+      default: 'solid'
+    },
+    borderColor: {
+      type: String,
+      default: 'var(--border-color)'
+    },
+    overflow: {
+      type: String,
+      default: 'visible'
+    },
+    stickyHeader: {
+      type: Boolean,
+      default: false
+    },
+    calculateHeight: {
+      type: Boolean,
+      default: false
+    },
+    calculateHeightOffset: {
+      type: Number,
+      default: 0
+    },
+  })
+
+  const containerClasses = computed(() => ({
+    'ep-container--sticky-header': props.stickyHeader
+  }))
+
+  const epContainer = ref(null)
+  const { containerHeight } = useCalculatedHeight(epContainer, props.calculateHeightOffset)
+
+  const containerStyles = computed(() => ({
+    width: props.width,
+    minWidth: props.minWidth,
+    maxWidth: props.maxWidth,
+    ...(props.calculateHeight && containerHeight.value),
+    ...(!props.calculateHeight && { height: props.height }),
+    minHeight: props.minHeight,
+    maxHeight: props.maxHeight,
+    ...(props.backgroundColor && { background: props.backgroundColor }),
+    padding: props.containerPadding,
+    borderRadius: props.borderRadius,
+    border: `${props.borderWidth} ${props.borderStyle} ${props.borderColor}`,
+    overflow: props.overflow
+  }))
+
+  const contentStyles = computed(() => ({
+    padding: props.contentPadding,
+    // overflow: props.overflow
+  }))
 </script>
