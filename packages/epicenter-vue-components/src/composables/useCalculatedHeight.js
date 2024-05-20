@@ -16,13 +16,11 @@ export default function useCalculatedHeight(element, calculateHeightOffset = 0) 
     window.removeEventListener('resize', calculatedHeight)
   })
 
-  const containerStyles = computed(() => {
+  const containerHeight = computed(() => {
     return {
       height: dynamicHeight.value
     }
   })
 
-  return {
-    containerStyles
-  }
+  return { containerHeight }
 }
