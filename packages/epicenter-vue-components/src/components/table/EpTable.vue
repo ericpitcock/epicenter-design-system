@@ -47,7 +47,7 @@
 
 <script setup>
   import EpTableCell from './EpTableCell.vue'
-  import useCalculatedHeight from '@/composables/useCalculatedHeight.js'
+  import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
   import { computed, ref } from 'vue'
 
   // eslint-disable-next-line no-unused-vars
@@ -84,6 +84,14 @@
       type: Boolean,
       default: false
     },
+    calculateHeight: {
+      type: Boolean,
+      default: false
+    },
+    calculateHeightOffset: {
+      type: Number,
+      default: 0
+    },
     styles: {
       type: Object,
       default: () => ({})
@@ -97,7 +105,13 @@
   }
 
   const tableContainer = ref(null)
-  const { containerStyles } = useCalculatedHeight(tableContainer, 81)
+  const { containerHeight } = useCalculatedHeight(tableContainer, props.calculateHeightOffset)
+
+  const containerStyles = computed(() => {
+    return {
+      ...(props.calculateHeight && containerHeight.value),
+    }
+  })
 
   const classes = computed(() => {
     return {
