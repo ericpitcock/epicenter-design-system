@@ -4,74 +4,52 @@ import { markRaw } from 'vue'
 
 // header is deprecated, use label instead
 const columns = [
-  // id
+  // options: label, key, sortable, component, formatter, style
+  // example:
+  // formatter: (value) => {
+  //   return value.toUpperCase()
+  // }
   {
-    header: 'ID',
     label: 'ID',
     key: 'id',
     sortable: true,
   },
   {
-    header: 'Status',
     label: 'Status',
     key: 'status',
     component: markRaw(EpBadge),
     sortable: true,
   },
   {
-    header: 'Date',
     label: 'Date',
     key: 'start_date',
-    formatter: value => {
-      return new Date(value).toLocaleString()
-    },
-    command: () => {
-      console.log('click')
-    },
     sortable: true,
   },
   {
-    header: 'Name',
     label: 'Name',
     key: 'name',
     sortable: true,
   },
   {
-    header: 'Ride Type',
     label: 'Ride Type',
     key: 'type',
-    formatter: value => {
-      return value
-    },
     sortable: true,
   },
   {
-    header: 'Distance (mi)',
     label: 'Distance (mi)',
     key: 'distance',
-    formatter: value => {
-      return (value / 1609.344).toFixed(2)
-    },
     style: 'tabular-numbers',
     sortable: true,
   },
   {
-    header: 'Elevation (ft)',
     label: 'Elevation (ft)',
     key: 'total_elevation_gain',
-    formatter: value => {
-      return (value * 3.28084).toFixed(2)
-    },
     style: 'tabular-numbers',
     sortable: true,
   },
   {
-    header: 'Avg Speed (mph)',
     label: 'Avg Speed (mph)',
     key: 'average_speed',
-    formatter: value => {
-      return (value * 0.621371).toFixed(1)
-    },
     style: 'tabular-numbers',
     sortable: true,
   }
@@ -82,6 +60,11 @@ const fakeArray = length => {
   for (let i = 0; i < length; i++) {
     // create status badge label and variant
     const label = faker.helpers.arrayElement(['Completed', 'Cancelled'])
+    const start_date = faker.date.past().toISOString()
+    const distance = faker.number.int({ min: 10000, max: 100000 })
+    const total_elevation_gain = faker.number.int({ min: 100, max: 800 })
+    const average_speed = faker.number.int({ min: 20, max: 30, precision: 0.1 })
+
     arr.push({
       id: faker.string.uuid(),
       status: {
@@ -91,12 +74,24 @@ const fakeArray = length => {
         },
         value: label
       },
-      start_date: faker.date.past().toISOString(),
+      start_date: {
+        raw: Date.parse(start_date),
+        value: new Date(start_date).toLocaleString()
+      },
       name: faker.location.city(),
       type: faker.helpers.arrayElement(['VirtualRide', 'Ride']),
-      distance: faker.number.int({ min: 10000, max: 100000 }),
-      total_elevation_gain: faker.number.int({ min: 100, max: 800 }),
-      average_speed: faker.number.int({ min: 20, max: 30, precision: 0.1 })
+      distance: {
+        raw: distance,
+        value: (distance / 1609.344).toFixed(2)
+      },
+      total_elevation_gain: {
+        raw: total_elevation_gain,
+        value: (total_elevation_gain * 3.28084).toFixed(2)
+      },
+      average_speed: {
+        raw: average_speed,
+        value: (average_speed * 0.621371).toFixed(1)
+      }
     })
   }
   return arr

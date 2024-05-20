@@ -6,7 +6,7 @@
       v-bind="row[column.key].props"
     />
     <template v-else>
-      {{ formatCell(row[column.key], column) }}
+      {{ formattedCell(row, column) }}
     </template>
   </td>
 </template>
@@ -28,7 +28,8 @@
     }
   })
 
-  const formatCell = (value, column) => {
+  const formattedCell = (row, column) => {
+    const value = row[column.key].value || row[column.key]
     const formatter = column.formatter
     return formatter ? formatter(value) : value
   }

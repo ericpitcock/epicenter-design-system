@@ -9,7 +9,8 @@ export default function useSearch(data) {
     const searchQuery = searchText.value.trim().toLowerCase()
     return data.value.filter((row) => {
       return Object.values(row).some((value) => {
-        return String(value).toLowerCase().includes(searchQuery)
+        const searchableValue = value.value || value
+        return String(searchableValue).toLowerCase().includes(searchQuery)
       })
     })
   })

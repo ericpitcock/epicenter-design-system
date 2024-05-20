@@ -10,13 +10,10 @@ export default function useSorting(data, initialSortColumn = '', initialSortOrde
     const modifier = sortOrder.value === 'desc' ? -1 : 1
 
     return [...data.value].sort((a, b) => {
-      // component cells are sorted by .value property
-      const aValue = typeof a[sortColumn.value] === 'object'
-        ? a[sortColumn.value].value
-        : a[sortColumn.value]
-      const bValue = typeof b[sortColumn.value] === 'object'
-        ? b[sortColumn.value].value
-        : b[sortColumn.value]
+      // raw value if it exists, otherwise value for components,
+      // otherwise basic values that had no formatting applied
+      const aValue = a[sortColumn.value].raw || a[sortColumn.value].value || a[sortColumn.value]
+      const bValue = b[sortColumn.value].raw || b[sortColumn.value].value || b[sortColumn.value]
 
       if (aValue < bValue)
         return -1 * modifier
