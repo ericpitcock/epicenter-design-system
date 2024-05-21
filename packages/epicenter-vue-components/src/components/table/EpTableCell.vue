@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <td :style="styles">
     <component
@@ -5,13 +6,16 @@
       v-if="!!column.component"
       v-bind="row[column.key].props"
     />
-    <template v-else>
-      {{ formattedCell(row, column) }}
-    </template>
+    <span
+      v-else
+      v-html="formattedCell(row, column)"
+    />
   </td>
 </template>
 
 <script setup>
+  import DOMPurify from 'dompurify'
+
   // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     row: {
@@ -31,6 +35,6 @@
   const formattedCell = (row, column) => {
     const value = row[column.key].value || row[column.key]
     const formatter = column.formatter
-    return formatter ? formatter(value) : value
+    return formatter ? DOMPurify.sanitize(formatter(value)) : value
   }
 </script>
