@@ -39,6 +39,9 @@ export default {
         type: 'boolean'
       }
     },
+    theme: {
+      table: { disable: true }
+    },
   }
 }
 
@@ -69,12 +72,13 @@ export const CodeView = args => ({
   },
   template: `
     <ep-container
-      width="fit-content"
-      content-padding="2rem"
-      border-radius="var(--border-radius)"
-      background-color="var(--interface-surface)"
+      :styles="{
+        '--ep-container-content-padding': '2rem',
+        '--ep-container-width': 'fit-content',
+        '--ep-container-bg-color': 'var(--interface-surface)',
+      }"
     >
-      <ep-code-view v-bind="args" :code="code" />
+      <ep-code-view v-bind="args" :code="code" :theme="args.theme" />
     </ep-container>
   `
 })
@@ -82,4 +86,22 @@ export const CodeView = args => ({
 CodeView.args = {
   language: 'Javascript',
   enableLineNumbers: true,
+  theme: 'dark'
 }
+
+CodeView.decorators = [
+  (story, context) => {
+    watch(
+      () => context.globals.theme,
+      () => {
+        const themeMap = {
+          'Light Theme': 'light',
+          'Dark Theme': 'dark'
+        }
+        context.args.theme = themeMap[context.globals.theme]
+      },
+      { immediate: true }
+    )
+    return story()
+  }
+]

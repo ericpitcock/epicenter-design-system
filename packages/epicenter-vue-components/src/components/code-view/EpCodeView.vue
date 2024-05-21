@@ -1,13 +1,14 @@
 <!-- eslint-disable vue/html-closing-bracket-newline -->
 <template>
+  <!-- eslint-disable-next-line vue/max-attributes-per-line -->
   <pre
-    :class="{ 'line-numbers': enableLineNumbers }"><code :class="`language-${language}`">{{ code }}</code></pre>
+    :class="[themeClass, { 'line-numbers': enableLineNumbers }]"><code :class="`language-${language}`">{{ code }}</code></pre>
 </template>
 
 <script setup>
+  import { computed } from 'vue'
   // eslint-disable-next-line no-unused-vars
   import Prism from 'prismjs'
-  // import './prism-onedark.css'
   import 'prismjs/components/prism-javascript'
   import 'prismjs/components/prism-json'
   import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js'
@@ -25,8 +26,17 @@
     enableLineNumbers: {
       type: Boolean,
       default: true
+    },
+    theme: {
+      type: String,
+      default: 'dark'
     }
   })
+
+  const themeClass = computed(() => {
+    return props.theme === 'dark' ? 'dark-theme' : 'light-theme'
+  })
+
 
   // if this somehow breaks in production,
   // bring back Prism.highlightAll() in onMounted
