@@ -1,3 +1,7 @@
+:root {
+  --ep-code-block-font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+}
+
 .dark-theme {
 
   /**
@@ -32,8 +36,8 @@
   pre[class*="language-"] {
     // background: hsl(220, 13%, 18%);
     color: hsl(220, 14%, 71%);
-    // text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-    font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-family: var(--ep-code-block-font-family);
+    font-variation-settings: 'wght' 400;
     direction: ltr;
     text-align: left;
     white-space: pre;
@@ -516,7 +520,8 @@ pre.line-numbers > code {
   pre[class*="language-"] {
     // background: hsl(230, 1%, 98%);
     color: hsl(230, 8%, 24%);
-    font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-family: var(--ep-code-block-font-family);
+    font-variation-settings: 'wght' 450;
     direction: ltr;
     text-align: left;
     white-space: pre;
