@@ -88,9 +88,8 @@ export const Dropdown = args => ({
       iconLeft: args['buttonProps.iconLeft']
     }))
     const containerProps = computed(() => ({
-      backgroundColor: 'var(--interface-overlay)',
-      borderRadius: 'var(--border-radius)',
-      borderColor: 'var(--border-color--lighter)'
+      '--ep-container-border-radius': 'var(--border-radius)',
+      '--ep-container-border-color': 'var(--border-color--lighter)'
     }))
 
     return { args, buttonProps, containerProps }

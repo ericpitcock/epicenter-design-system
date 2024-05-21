@@ -2078,9 +2078,36 @@ text.highcharts-drilldown-data-label,
 }
 
 .ep-container {
+  --ep-container-width: 100%;
+  --ep-container-min-width: 0;
+  --ep-container-max-width: none;
+  --ep-container-height: auto;
+  --ep-container-min-height: 0;
+  --ep-container-max-height: none;
+  --ep-container-padding: 0;
+  --ep-container-content-padding: 0;
+  --ep-container-bg-color: none;
+  --ep-container-border-radius: var(--border-radius--large);
+  --ep-container-border-width: 0.1rem;
+  --ep-container-border-style: solid;
+  --ep-container-border-color: var(--border-color);
+  --ep-container-overflow: visible;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
+  width: var(--ep-container-width);
+  min-width: var(--ep-container-min-width);
+  max-width: var(--ep-container-max-width);
+  height: var(--ep-container-height);
+  min-height: var(--ep-container-min-height);
+  max-height: var(--ep-container-max-height);
+  padding: var(--ep-container-padding);
+  background-color: var(--ep-container-bg-color);
+  border-radius: var(--ep-container-border-radius);
+  border-width: var(--ep-container-border-width);
+  border-style: var(--ep-container-border-style);
+  border-color: var(--ep-container-border-color);
+  overflow: var(--ep-container-overflow);
 }
 .ep-container__header {
   flex: 0 0 auto;
@@ -2088,6 +2115,7 @@ text.highcharts-drilldown-data-label,
 .ep-container__content {
   position: relative;
   flex: 1 1 auto;
+  padding: var(--ep-container-content-padding);
   -ms-overflow-style: none;
   scrollbar-width: none;
   z-index: var(--z-index--default);
@@ -2097,13 +2125,6 @@ text.highcharts-drilldown-data-label,
 }
 .ep-container__footer {
   flex: 0 0 auto;
-}
-.ep-container--sticky-header {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.ep-container--sticky-header::-webkit-scrollbar {
-  display: none;
 }
 .ep-container--sticky-header .ep-container__header {
   position: sticky;

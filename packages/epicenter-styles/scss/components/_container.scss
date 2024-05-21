@@ -1,23 +1,46 @@
+@use '../mixins/_mixins' as mixins;
+
 .ep-container {
+  --ep-container-width: 100%;
+  --ep-container-min-width: 0;
+  --ep-container-max-width: none;
+  --ep-container-height: auto;
+  --ep-container-min-height: 0;
+  --ep-container-max-height: none;
+  --ep-container-padding: 0;
+  --ep-container-content-padding: 0;
+  --ep-container-bg-color: none;
+  --ep-container-border-radius: var(--border-radius--large);
+  --ep-container-border-width: 0.1rem;
+  --ep-container-border-style: solid;
+  --ep-container-border-color: var(--border-color);
+  --ep-container-overflow: visible;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
+  width: var(--ep-container-width);
+  min-width: var(--ep-container-min-width);
+  max-width: var(--ep-container-max-width);
+  height: var(--ep-container-height);
+  min-height: var(--ep-container-min-height);
+  max-height: var(--ep-container-max-height);
+  padding: var(--ep-container-padding);
+  background-color: var(--ep-container-bg-color);
+  border-radius: var(--ep-container-border-radius);
+  border-width: var(--ep-container-border-width);
+  border-style: var(--ep-container-border-style);
+  border-color: var(--ep-container-border-color);
+  overflow: var(--ep-container-overflow);
 
   &__header {
     flex: 0 0 auto;
-    // z-index: var(--z-index--fixed);
   }
 
   &__content {
     position: relative;
     flex: 1 1 auto;
-    -ms-overflow-style: none; // Internet Explorer, Edge
-    scrollbar-width: none; // Firefox
-
-    &::-webkit-scrollbar {
-      display: none; // Chrome, Safari, Opera
-    }
-
+    padding: var(--ep-container-content-padding);
+    @include mixins.no-scrollbar;
     // so that dropdowns overlap sticky table headers
     z-index: var(--z-index--default);
   }
@@ -27,13 +50,6 @@
   }
 
   &--sticky-header {
-    -ms-overflow-style: none; // Internet Explorer, Edge
-    scrollbar-width: none; // Firefox
-
-    &::-webkit-scrollbar {
-      display: none; // Chrome, Safari, Opera
-    }
-
     .ep-container__header {
       position: sticky;
       top: 0;

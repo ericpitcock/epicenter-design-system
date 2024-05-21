@@ -3,7 +3,7 @@
     <div class="ep-menu">
       <template
         v-for="(item, index) of menuItems"
-        :key="item.label + index.toString()"
+        :key="`${item.label}${index}`"
       >
         <ep-divider
           v-if="item.divider"
@@ -113,18 +113,19 @@
         }
       },
       onClick(item) {
-        console.log('item', item)
         // if (item.section || item.divider) {
         //   return
         // }
         this.$emit('click', item)
-        // retire this
+
         if (item.command) {
           item.command(item)
         }
+
         if (item.to) {
           this.$router.push(item.to)
         }
+
         if (this.menuType === 'dropdown') {
           this.$parent.closeDropdown()
         }

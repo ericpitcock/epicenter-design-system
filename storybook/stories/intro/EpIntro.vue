@@ -2,7 +2,7 @@
   <div class="intro">
     <div class="hero">
       <div class="logo-container">
-        <epicenter-logo />
+        <epicenter-logo :styles="{ '--logo-stroke-width': 5 }" />
       </div>
       <div class="copy-block">
         <h1 class="font-size--jumbo">

@@ -59,6 +59,12 @@ export const IconLibrary = args => ({
       }
     })
 
+    const containerStyles = {
+      '--ep-container-content-padding': '2rem',
+      '--ep-container-border-radius': 'var(--border-radius)',
+      '--ep-container-bg-color': 'var(--interface-surface)'
+    }
+
     const searchResults = ref([])
 
     const searchIcons = query => {
@@ -89,7 +95,8 @@ export const IconLibrary = args => ({
       filteredIcons,
       searchIcons,
       searchResults,
-      styles
+      styles,
+      containerStyles
     }
   },
   template: `
@@ -111,11 +118,8 @@ export const IconLibrary = args => ({
   >
     <ep-container
       v-for="(icon, index) in filteredIcons"
-      useFooter
       :key="index"
-      content-padding="2rem"
-      border-radius="var(--border-radius)"
-      background-color="var(--interface-surface)"
+      :styles="containerStyles"
       style="flex: 0 0 170px;"
     >
       <ep-icon
@@ -139,7 +143,7 @@ export const IconLibrary = args => ({
 IconLibrary.args = {
   color: 'var(--text-color--loud)',
   weight: 'Light',
-  size: 42
+  size: 32
 }
 
 IconLibrary.argTypes = {

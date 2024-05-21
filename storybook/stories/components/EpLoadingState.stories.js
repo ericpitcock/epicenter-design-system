@@ -70,47 +70,35 @@ export const LoadingState = args => ({
         menuItems: [
           {
             label: 'Clear & Fetch',
-            id: '1',
+            command: () => {
+              messages.value = clearAndFetchConfig
+              loading.value = true
+            }
           },
           {
             label: 'Destroy & Fetch',
-            id: '2',
+            command: () => {
+              messages.value = destroyAndFetchConfig
+              loading.value = true
+            }
           }
         ]
       }
     }
 
     const refreshConfig = [
-      {
-        icon: 'oval',
-        message: 'Refreshing data…'
-      }
+      { icon: 'oval', message: 'Refreshing data…' }
     ]
 
     const clearAndFetchConfig = [
-      {
-        icon: 'oval',
-        message: 'Clearing local data…'
-      },
-      {
-        icon: 'oval',
-        message: 'Fetching new data from our servers…'
-      }
+      { icon: 'oval', message: 'Clearing local data…' },
+      { icon: 'oval', message: 'Fetching new data from our servers…' }
     ]
 
     const destroyAndFetchConfig = [
-      {
-        icon: 'oval',
-        message: 'Destroying everything…'
-      },
-      {
-        icon: 'oval',
-        message: 'Fetching new data from our servers…'
-      },
-      {
-        icon: 'oval',
-        message: 'Considering the repercussions of this action…'
-      }
+      { icon: 'oval', message: 'Destroying everything…' },
+      { icon: 'oval', message: 'Fetching new data from our servers…' },
+      { icon: 'oval', message: 'Considering the repercussions of this action…' }
     ]
 
     const loading = ref(true)
@@ -134,24 +122,15 @@ export const LoadingState = args => ({
       loading.value = true
     }
 
-    const clearAndFetch = () => {
-      messages.value = clearAndFetchConfig
-      loading.value = true
-    }
+    // const clearAndFetch = () => {
+    //   messages.value = clearAndFetchConfig
+    //   loading.value = true
+    // }
 
-    const destroyAndFetch = () => {
-      messages.value = destroyAndFetchConfig
-      loading.value = true
-    }
-
-    const onDropdownSelect = (event) => {
-      if (event.id === '1') {
-        clearAndFetch()
-      }
-      if (event.id === '2') {
-        destroyAndFetch()
-      }
-    }
+    // const destroyAndFetch = () => {
+    //   messages.value = destroyAndFetchConfig
+    //   loading.value = true
+    // }
 
     onMounted(() => {
       setTimeout(() => {
@@ -165,24 +144,23 @@ export const LoadingState = args => ({
       fakeArray,
       done,
       refresh,
-      clearAndFetch,
-      destroyAndFetch,
       tableData,
       loading,
       messages,
       includedColumns,
       includedData,
       splitButtonProps,
-      onDropdownSelect
     }
   },
   template: `
     <ep-container
-      max-width="120rem"
-      height="100%"
-      container-padding="0 3rem"
-      overflow="hidden"
-      background-color="var(--interface-surface)"
+      :styles="{
+        '--ep-container-max-width': '120rem',
+        '--ep-container-height': '100%',
+        '--ep-container-padding': '0 3rem',
+        '--ep-container-bg-color': 'var(--interface-surface)',
+        '--ep-container-overflow': 'hidden'
+      }"
     >
       <template #header>
       <ep-header>
@@ -190,7 +168,6 @@ export const LoadingState = args => ({
           <ep-split-button
             v-bind="splitButtonProps"
             @button-click="refresh"
-            @dropdown-select="onDropdownSelect"
           />
         </template>
         <template #right>
@@ -208,6 +185,8 @@ export const LoadingState = args => ({
           :columns="includedColumns"
           :data="includedData"
           :style="{ '--ep-table-width': '100%' }"
+          calculate-height
+          :calculate-height-offset="30"
           sticky-header
           bordered
           striped
@@ -223,6 +202,5 @@ export const LoadingState = args => ({
 LoadingState.args = {
   backgroundColor: 'var(--interface-surface)',
   borderRadius: 'var(--border-radius--large)',
-  // messages: messages,
   messageDelay: 2000
 }

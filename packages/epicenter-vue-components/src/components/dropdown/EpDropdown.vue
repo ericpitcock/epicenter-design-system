@@ -100,9 +100,11 @@
       },
       computedContainerProps() {
         return {
-          backgroundColor: 'var(--interface-overlay)',
-          minWidth: '15rem',
-          ...this.containerProps,
+          styles: {
+            '--ep-container-min-width': '15rem',
+            '--ep-container-bg-color': 'var(--interface-overlay)',
+            ...this.containerProps,
+          },
         }
       },
       classes() {

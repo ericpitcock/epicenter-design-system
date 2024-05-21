@@ -10,6 +10,12 @@ const buttonStyles = {
   '--ep-button-active-text-color': 'var(--color--primary)',
 }
 
+const containerStyles = {
+  '--ep-container-bg-color': 'var(--interface-overlay)',
+  '--ep-container-border-radius': 'var(--border-radius)',
+  '--ep-container-border-color': 'var(--border-color--lighter)',
+}
+
 const commonActionBarArgs = {
   items: [
     {
@@ -22,9 +28,7 @@ const commonActionBarArgs = {
         styles: buttonStyles
       },
       containerProps: {
-        backgroundColor: 'var(--interface-overlay)',
-        borderRadius: 'var(--border-radius)',
-        borderColor: 'var(--border-color--lighter)'
+        styles: containerStyles
       },
       menuItems: [
         { label: 'Documentation' },
@@ -43,9 +47,7 @@ const commonActionBarArgs = {
         styles: buttonStyles
       },
       containerProps: {
-        backgroundColor: 'var(--interface-overlay)',
-        borderRadius: 'var(--border-radius)',
-        borderColor: 'var(--border-color--lighter)'
+        styles: containerStyles
       },
       menuItems: [
         { label: 'Notifications' },
@@ -65,9 +67,7 @@ const commonActionBarArgs = {
         styles: buttonStyles
       },
       containerProps: {
-        backgroundColor: 'var(--interface-overlay)',
-        borderRadius: 'var(--border-radius)',
-        borderColor: 'var(--border-color--lighter)'
+        styles: containerStyles
       },
       menuItems: [
         { label: 'Profile' },
