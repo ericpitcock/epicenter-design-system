@@ -1,4 +1,6 @@
-:root {
+.ep-table-container {
+  --ep-table-container-overflow: auto;
+  --ep-table-container-padding: 0;
   --ep-table-header-bg-color: var(--interface-surface);
   --ep-table-border-color: var(--border-color);
   --ep-table-width: auto;
@@ -6,10 +8,8 @@
   --ep-table-row-hover-bg-color: hsl(var(--gray-450));
   --ep-table-cell-vertical-align: middle;
   --ep-table-cell-white-space: normal;
-}
-
-.ep-table-container {
-  overflow: auto;
+  overflow: var(--ep-table-container-overflow);
+  padding: var(--ep-table-container-padding);
 }
 
 .ep-table {

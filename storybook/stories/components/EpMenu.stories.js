@@ -142,11 +142,10 @@ export const Menu = args => ({
 Menu.args = {
   size: 'default',
   containerProps: {
-    width: '200px',
-    height: 'auto',
-    // containerPadding: '1rem 0',
-    borderRadius: 'var(--border-radius)',
-    backgroundColor: 'var(--interface-surface)',
+    styles: {
+      '--ep-container-width': '200px',
+      '--ep-container-bg-color': 'var(--interface-surface)',
+    }
   },
   menuItems: fakeMenuItems
 }

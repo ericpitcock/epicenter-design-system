@@ -1,15 +1,18 @@
 <template>
   <ep-container
-    max-width="120rem"
-    container-padding="0 3rem"
-    content-padding="3rem 0"
+    :styles="{
+      '--ep-container-max-width': '120rem',
+      '--ep-container-padding': '0 3rem',
+      '--ep-container-content-padding': '3rem 0',
+      '--ep-container-bg-color': 'var(--interface-surface)',
+      '--ep-container-overflow': 'auto'
+    }"
+    sticky-header
     calculate-height
     :calculate-height-offset="30"
-    background-color="var(--interface-surface)"
-    overflow="auto"
   >
     <template #header>
-      <ep-header>
+      <ep-header background-color="var(--interface-surface)">
         <template #left>
           <ep-tabs
             :items="tabs"
@@ -49,8 +52,7 @@
               <div
                 :class="`font-size--${typeStyle.name.toLowerCase()}`"
                 v-html="typeStyle.sample"
-              >
-              </div>
+              />
             </div>
           </div>
         </template>

@@ -159,7 +159,7 @@ export const LoadingState = args => ({
         '--ep-container-height': '100%',
         '--ep-container-padding': '0 3rem',
         '--ep-container-bg-color': 'var(--interface-surface)',
-        '--ep-container-overflow': 'hidden'
+        '--ep-container-overflow': 'auto'
       }"
     >
       <template #header>
@@ -184,16 +184,16 @@ export const LoadingState = args => ({
         <ep-table
           :columns="includedColumns"
           :data="includedData"
-          :style="{ '--ep-table-width': '100%' }"
+          :style="{
+            '--ep-table-container-overflow': 'unset',
+            '--ep-table-width': '100%'
+          }"
           calculate-height
           :calculate-height-offset="30"
           sticky-header
           bordered
           striped
         />
-      </template>
-      <template #footer>
-        <ep-footer />
       </template>
     </ep-container>
   `

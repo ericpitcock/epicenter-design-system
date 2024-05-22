@@ -1,64 +1,125 @@
 export const codeExamples = {
-  javascript: `function myFunction(name, age) {
-  // This is a comment
-  console.log('Hello, ' + name + '!');
+  javascript: `function resolveAfter2Seconds(x) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(x);
+    }, 2000);
+  });
+}
 
-  if (age >= 18) {
-    console.log('You are an adult.');
-  } else {
-    console.log('You are a minor.');
-  }
+// async function expression assigned to a variable
+const add = async function (x) {
+  const a = await resolveAfter2Seconds(20);
+  const b = await resolveAfter2Seconds(30);
+  return x + a + b;
+};
 
-  const myArray = [1, 2, 3];
-  const myObject = { name: 'John', age: 25 };
+add(10).then((v) => {
+  console.log(v); // prints 60 after 4 seconds.
+});
 
-  for (let i = 0; i < myArray.length; i++) {
-    console.log(myArray[i]);
-  }
-
-  for (const property in myObject) {
-    console.log(property + ': ' + myObject[property]);
-  }
-
-  try {
-    // Some code that might throw an error
-  } catch (error) {
-    console.error(error);
-  }
-}`,
-  html: `<html>
+// async function expression used as an IIFE
+(async function (x) {
+  const p1 = resolveAfter2Seconds(20);
+  const p2 = resolveAfter2Seconds(30);
+  return x + (await p1) + (await p2);
+})(10).then((v) => {
+  console.log(v); // prints 60 after 2 seconds.
+});`,
+  html: `<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <title>My Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>MDN Web Docs Example: Toggling full-screen mode</title>
+    <link rel="stylesheet" href="styles.css">
+    <style class="editable">
+        video::backdrop {
+          background-color: #448;
+        }
+    </style>
+
+    <!-- import the webpage's javascript file -->
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <h1>My Page</h1>
-    <p>This is my page.</p>
+    <section class="preview">
+      <video controls
+        src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+        poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+        width="620">
+
+        Sorry, your browser doesn't support embedded videos.  Time to upgrade!
+
+      </video>
+    </section>
+
+<textarea class="playable playable-css" style="height: 100px;">
+video::backdrop {
+  background-color: #448;
+}
+</textarea>
+
+<textarea class="playable playable-html" style="height: 200px;">
+<video controls
+  src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+  poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+  width="620">
+Sorry, your browser doesn't support embedded videos.  Time to upgrade!
+</video>
+</textarea>
+
+    <div class="playable-buttons">
+        <input id="reset" type="button" value="Reset" />
+      </div>
+    </body>
+    <script src="playable.js"></script>
   </body>
 </html>`,
   css:
-    `.selector {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: minmax(150px, auto);
-  grid-gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  background-image: linear-gradient(to bottom right, #000000, #ffffff);
-  color: rgba(255, 255, 255, 0.8);
-  font-family: 'Inter', sans-serif;
-  font-size: 1.5rem;
-  line-height: 1.5;
-  text-align: center;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 0.5rem;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease-in-out;
+    `html {
+	margin: 0;
+	background: black;
+	height: 100%;
 }
 
-.selector:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
+body {
+	margin: 0;
+	width: 100%;
+	height: inherit;
+}
+
+/* the three main rows going down the page */
+
+body > div {
+  height: 25%;
+}
+
+.thumb {
+	float: left;
+	width: 25%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.main {
+  display: none;
+}
+
+.blowup {
+  display: block;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.darken {
+  opacity: 0.4;
 }`,
   json: `{
   "name": "John",

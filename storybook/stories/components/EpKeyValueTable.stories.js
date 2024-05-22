@@ -73,11 +73,6 @@ export default {
         type: 'boolean'
       }
     },
-    // acronyms: {
-    //   table: {
-    //     disable: true
-    //   }
-    // },
     sectionHeaders: {
       name: 'Section Headers',
       control: {
@@ -104,12 +99,14 @@ export const KeyValueTable = (args) => ({
   },
   template: `
   <ep-container
-    container-padding="0 3rem"
-    content-padding="3rem 0 10rem 0"
+    :styles="{
+      '--ep-container-padding': '0 3rem',
+      '--ep-container-content-padding': '3rem 0 10rem 0',
+      '--ep-container-bg-color': 'var(--interface-surface)',
+      '--ep-container-overflow': 'auto',
+    }"
     calculateHeight
     :calculateHeightOffset="30"
-    overflow="auto"
-    background-color="var(--interface-surface)"
   >
     <ep-key-value-table v-bind="args" />
   </ep-container>
@@ -120,7 +117,6 @@ KeyValueTable.args = {
   data: fakeData,
   width: '100%',
   commonKeyWidth: true,
-  // acronyms: ['IP', 'DNS', 'HTTP', 'XFF'],
   sectionHeaders: false,
   striped: true,
 }

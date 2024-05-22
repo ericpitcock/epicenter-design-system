@@ -107,11 +107,9 @@
   const tableContainer = ref(null)
   const { containerHeight } = useCalculatedHeight(tableContainer, props.calculateHeightOffset)
 
-  const containerStyles = computed(() => {
-    return {
-      ...(props.calculateHeight && containerHeight.value),
-    }
-  })
+  const containerStyles = computed(() => ({
+    ...(props.calculateHeight && containerHeight.value),
+  }))
 
   const classes = computed(() => {
     return {

@@ -50,14 +50,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 
     &--base {
-      // border-radius: 2rem;
+      border: 1px solid white;
     }
 
     &:hover {
       .name {
         display: block;
+        color: white;
+        // text shadow
+        text-shadow: 0 0 0.5rem hsla(0, 0%, 0%, 0.5);
       }
     }
   }

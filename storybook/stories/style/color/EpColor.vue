@@ -10,12 +10,13 @@
     <ep-container
       id="colors__table"
       class="colors__table"
-      width="fit-content"
-      style="overscroll-behavior: contain"
+      :styles="{
+        '--ep-container-width': 'fit-content',
+        '--ep-container-bg-color': 'var(--interface-surface)',
+        '--ep-container-overflow': 'hidden',
+      }"
       calculate-height
       :calculate-height-offset="30"
-      overflow="hidden"
-      background-color="var(--interface-surface)"
     >
       <ep-table
         :columns="tableColumns"
@@ -83,22 +84,22 @@
         ],
         tableColumns: [
           {
-            header: 'Sample',
+            label: 'Sample',
             key: 'sample',
             formatter: value => {
               return `<div class="color-sample" style="background-color: ${value};" />`
             }
           },
           {
-            header: 'Color',
+            label: 'Color',
             key: 'color',
             style: 'capitalize',
-            formatter: (value, key, row) => {
-              return `<span style="color: ${row.hsl};">${value}</span>`
+            formatter: value => {
+              return `<span style="color: ${value};">${value}</span>`
             }
           },
           {
-            header: 'Text Contrast',
+            label: 'Text Contrast',
             key: 'contrast',
             formatter: value => {
               return value === 'AAA &check;' || value === 'AA &check;'
@@ -107,22 +108,24 @@
             }
           },
           {
-            header: 'CSS Custom Property',
+            label: 'CSS Custom Property',
             key: 'css',
             command: (value) => this.copyToClipboard(value),
             style: 'text--copyable'
           },
           {
-            header: 'HSL',
+            label: 'HSL',
             key: 'hsl',
             command: (value) => this.copyToClipboard(value),
             style: 'text--copyable'
           }
         ],
         containerProps: {
-          width: '20rem',
-          height: 'fit-content',
-          backgroundColor: 'var(--interface-surface)',
+          styles: {
+            '--ep-container-width': '20rem',
+            '--ep-container-bg-color': 'var(--interface-surface)',
+            '--ep-container-height': 'fit-content',
+          }
         }
       }
     },
