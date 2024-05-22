@@ -1,8 +1,5 @@
-package-prev.json
 info/
 node_modules/
 storybook-static/
 package-lock.json
-tips
 packages/epicenter-react-components
-naming-conventions.txt

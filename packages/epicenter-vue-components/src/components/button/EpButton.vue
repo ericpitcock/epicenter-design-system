@@ -108,33 +108,6 @@
     return 'button'
   })
 
-  // const defaultIconProps = {
-  //   styles: {
-  //     '--ep-icon-width': '100%',
-  //     '--ep-icon-height': '100%'
-  //   }
-  // }
-
-  // const computedIconLeftProps = computed(() => {
-  //   if (props.iconLeft) {
-  //     return {
-  //       ...defaultIconProps,
-  //       ...props.iconLeft
-  //     }
-  //   }
-  //   return undefined
-  // })
-
-  // const computedIconRightProps = computed(() => {
-  //   if (props.iconRight) {
-  //     return {
-  //       ...defaultIconProps,
-  //       ...props.iconRight
-  //     }
-  //   }
-  //   return undefined
-  // })
-
   const computedClasses = computed(() => ({
     [`ep-button--${props.size}`]: props.size != 'default',
     'ep-button--icon-right': props.iconRight,

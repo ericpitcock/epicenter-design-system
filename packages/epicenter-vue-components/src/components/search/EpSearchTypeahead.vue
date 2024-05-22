@@ -37,7 +37,7 @@
 
 <script setup>
   import EpInput from '../input/EpInput.vue'
-  import vClickOutside from '../../directives/clickOutsideNext'
+  import vClickOutside from '../../directives/clickOutside'
   import { useDebounce } from '../../composables/useDebounce.js'
   import { computed, ref, watch } from 'vue'
 

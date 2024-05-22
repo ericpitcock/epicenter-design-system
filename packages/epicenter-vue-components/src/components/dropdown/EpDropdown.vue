@@ -1,6 +1,6 @@
 <template>
   <div
-    v-click-outside-next="closeDropdown"
+    v-click-outside="closeDropdown"
     class="ep-dropdown"
     @mouseleave="onMouseleave"
   >
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-  import clickOutsideNext from '../../directives/clickOutsideNext'
+  import clickOutside from '../../directives/clickOutside.js'
   import EpButton from '../button/EpButton.vue'
   import EpMenu from '../menu/EpMenu.vue'
 
@@ -48,7 +48,7 @@
       EpMenu
     },
     directives: {
-      clickOutsideNext
+      clickOutside
     },
     props: {
       disabled: {
