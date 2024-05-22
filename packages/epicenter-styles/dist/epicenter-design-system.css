@@ -47,11 +47,6 @@ textarea {
 }
 
 :root {
-  --border-radius: 0.3rem;
-  --border-radius--large: 0.6rem;
-}
-
-:root {
   --box-shadow--modal: 0 10px 10px var(--box-shadow-color);
   --box-shadow--tooltip: 0 5px 10px var(--box-shadow-color);
   --box-shadow--dropdown: 0 5px 10px var(--box-shadow-color);
@@ -386,6 +381,136 @@ html[data-color-theme=light] {
 }
 
 :root {
+  --primary-color-100: hsl(214, 91%, 80%);
+  --primary-color-200: hsl(214, 91%, 75%);
+  --primary-color-300: hsl(214, 91%, 70%);
+  --primary-color-400: hsl(214, 91%, 65%);
+  --primary-color-500: hsl(214, 91%, 60%);
+  --primary-color-base: hsl(214, 91%, 55%);
+  --primary-color-600: hsl(214, 91%, 50%);
+  --primary-color-700: hsl(214, 91%, 45%);
+  --primary-color-800: hsl(214, 91%, 40%);
+  --primary-color-900: hsl(214, 91%, 35%);
+  --primary-color-1000: hsl(214, 91%, 30%);
+  --primary-color-up-5-100: hsl(219, 91%, 80%);
+  --primary-color-up-5-200: hsl(219, 91%, 75%);
+  --primary-color-up-5-300: hsl(219, 91%, 70%);
+  --primary-color-up-5-400: hsl(219, 91%, 65%);
+  --primary-color-up-5-500: hsl(219, 91%, 60%);
+  --primary-color-up-5-base: hsl(219, 91%, 55%);
+  --primary-color-up-5-600: hsl(219, 91%, 50%);
+  --primary-color-up-5-700: hsl(219, 91%, 45%);
+  --primary-color-up-5-800: hsl(219, 91%, 40%);
+  --primary-color-up-5-900: hsl(219, 91%, 35%);
+  --primary-color-up-5-1000: hsl(219, 91%, 30%);
+  --primary-color-up-10-100: hsl(224, 91%, 80%);
+  --primary-color-up-10-200: hsl(224, 91%, 75%);
+  --primary-color-up-10-300: hsl(224, 91%, 70%);
+  --primary-color-up-10-400: hsl(224, 91%, 65%);
+  --primary-color-up-10-500: hsl(224, 91%, 60%);
+  --primary-color-up-10-base: hsl(224, 91%, 55%);
+  --primary-color-up-10-600: hsl(224, 91%, 50%);
+  --primary-color-up-10-700: hsl(224, 91%, 45%);
+  --primary-color-up-10-800: hsl(224, 91%, 40%);
+  --primary-color-up-10-900: hsl(224, 91%, 35%);
+  --primary-color-up-10-1000: hsl(224, 91%, 30%);
+  --primary-color-up-15-100: hsl(229, 91%, 80%);
+  --primary-color-up-15-200: hsl(229, 91%, 75%);
+  --primary-color-up-15-300: hsl(229, 91%, 70%);
+  --primary-color-up-15-400: hsl(229, 91%, 65%);
+  --primary-color-up-15-500: hsl(229, 91%, 60%);
+  --primary-color-up-15-base: hsl(229, 91%, 55%);
+  --primary-color-up-15-600: hsl(229, 91%, 50%);
+  --primary-color-up-15-700: hsl(229, 91%, 45%);
+  --primary-color-up-15-800: hsl(229, 91%, 40%);
+  --primary-color-up-15-900: hsl(229, 91%, 35%);
+  --primary-color-up-15-1000: hsl(229, 91%, 30%);
+  --primary-color-down-5-100: hsl(209, 91%, 80%);
+  --primary-color-down-5-200: hsl(209, 91%, 75%);
+  --primary-color-down-5-300: hsl(209, 91%, 70%);
+  --primary-color-down-5-400: hsl(209, 91%, 65%);
+  --primary-color-down-5-500: hsl(209, 91%, 60%);
+  --primary-color-down-5-base: hsl(209, 91%, 55%);
+  --primary-color-down-5-600: hsl(209, 91%, 50%);
+  --primary-color-down-5-700: hsl(209, 91%, 45%);
+  --primary-color-down-5-800: hsl(209, 91%, 40%);
+  --primary-color-down-5-900: hsl(209, 91%, 35%);
+  --primary-color-down-5-1000: hsl(209, 91%, 30%);
+  --primary-color-down-10-100: hsl(204, 91%, 80%);
+  --primary-color-down-10-200: hsl(204, 91%, 75%);
+  --primary-color-down-10-300: hsl(204, 91%, 70%);
+  --primary-color-down-10-400: hsl(204, 91%, 65%);
+  --primary-color-down-10-500: hsl(204, 91%, 60%);
+  --primary-color-down-10-base: hsl(204, 91%, 55%);
+  --primary-color-down-10-600: hsl(204, 91%, 50%);
+  --primary-color-down-10-700: hsl(204, 91%, 45%);
+  --primary-color-down-10-800: hsl(204, 91%, 40%);
+  --primary-color-down-10-900: hsl(204, 91%, 35%);
+  --primary-color-down-10-1000: hsl(204, 91%, 30%);
+  --primary-color-down-15-100: hsl(199, 91%, 80%);
+  --primary-color-down-15-200: hsl(199, 91%, 75%);
+  --primary-color-down-15-300: hsl(199, 91%, 70%);
+  --primary-color-down-15-400: hsl(199, 91%, 65%);
+  --primary-color-down-15-500: hsl(199, 91%, 60%);
+  --primary-color-down-15-base: hsl(199, 91%, 55%);
+  --primary-color-down-15-600: hsl(199, 91%, 50%);
+  --primary-color-down-15-700: hsl(199, 91%, 45%);
+  --primary-color-down-15-800: hsl(199, 91%, 40%);
+  --primary-color-down-15-900: hsl(199, 91%, 35%);
+  --primary-color-down-15-1000: hsl(199, 91%, 30%);
+}
+
+:root {
+  --background-1: red;
+  --background-2: green;
+  --background-3: blue;
+  --background-4: orange;
+  --black: #000;
+  --white: #fff;
+  --text--black: var(--gray-410);
+  --text--white: var(--gray-50);
+  --color--primary: var(--primary-color-base);
+  --border-radius: 0.3rem;
+  --border-radius--large: 0.6rem;
+  --color-success: hsl(99, 59%, 66%);
+  --color-warning: hsl(48, 100%, 51%);
+  --color-error: hsl(3, 100%, 70%);
+  --primary-color--gradient: linear-gradient(140deg,
+    var(--primary-color-base) 30%,
+    var(--primary-color-down-10-base) 70%
+  );
+  --primary-color--base: var(--primary-color--gradient);
+  --primary-color--hover: var(--color--primary);
+  --primary-color--active: hsl(214, 91%, 60%);
+  --primary-color--border: var(--color--primary);
+  --primary-color--text: var(--gray-0);
+  --success-green--base: hsl(99, 59%, 66%);
+  --success-green--hover: hsl(99, 59%, 60%);
+  --success-green--active: hsl(99, 59%, 52%);
+  --success-green--border: var(--success-green--base);
+  --success-green--text: hsl(99, 59%, 10%);
+  --warning-yellow--base: hsl(48, 100%, 51%);
+  --warning-yellow--hover: hsl(46, 100%, 49%);
+  --warning-yellow--active: hsl(46, 100%, 41%);
+  --warning-yellow--border: var(--warning-yellow--base);
+  --warning-yellow--text: hsl(48, 100%, 10%);
+  --danger-red--base: hsl(3, 100%, 70%);
+  --danger-red--hover: hsl(3, 90%, 65%);
+  --danger-red--active: hsl(3, 90%, 56%);
+  --danger-red--border: var(--danger-red--base);
+  --danger-red--text: hsl(3, 100%, 6%);
+  --logo-face: #fff16c;
+  --logo-hightlight: var(--white);
+  --logo-shadow: var(--black);
+  --logo-stroke: var(--black);
+  --tab-hover-border-color: var(--border-color--lighter);
+  --tab-hover-text-color: var(--text-color);
+  --tab-active-border-color: var(--color--primary);
+  --tab-active-text-color: var(--text-color--loud);
+  --table-border-color: var(--border-color);
+}
+
+:root {
   --interface-bg: hsl(var(--gray-430));
   --interface-bg--accent: hsl(var(--gray-420));
   --interface-surface: hsl(var(--gray-440));
@@ -634,11 +759,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-color--loud);
 }
 
-:root {
-  --text--black: var(--gray-410);
-  --text--white: var(--gray-50);
-}
-
 .text--subtle,
 .text-color--subtle {
   color: var(--text-color--subtle);
@@ -751,8 +871,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background: var(--text-selection-bg-color);
-  color: var(--text-selection-text-color);
+  background: var(--text-selection);
+  color: var(--text--black);
 }
 
 .ep-action-bar {
