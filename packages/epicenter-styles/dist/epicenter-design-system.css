@@ -3783,12 +3783,12 @@ input.ep-input--disabled::placeholder {
   gap: 0.3rem;
   height: 100%;
   padding: 0 0.6rem 0 1rem;
-  background-color: var(--color--primary);
+  background-color: var(--primary-color-base);
   border-radius: var(--border-radius);
   color: hsl(var(--gray-0));
 }
 .ep-multi-search .queries .query:hover {
-  background-color: var(--primary-color--hover);
+  background-color: var(--primary-color-600);
   cursor: pointer;
 }
 .ep-multi-search .queries .query .query__text {
@@ -3801,7 +3801,7 @@ input.ep-input--disabled::placeholder {
   flex: 1;
   height: 100%;
   padding: 0 1.2rem;
-  caret-color: var(--color--primary);
+  caret-color: var(--primary-color-base);
 }
 .ep-multi-search input::placeholder {
   color: var(--text-color);
@@ -3813,7 +3813,7 @@ input.ep-input--disabled::placeholder {
   padding-left: 0;
 }
 .ep-multi-search--focus {
-  border-color: var(--color--primary);
+  border-color: var(--primary-color-base);
 }
 .ep-multi-search--disabled {
   color: var(--text-color--disabled);

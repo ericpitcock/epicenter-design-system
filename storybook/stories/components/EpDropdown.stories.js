@@ -86,7 +86,7 @@ export const Dropdown = args => ({
       label: 'Export Data',
       iconRight: { name: 'chevron-down' },
       iconLeft: args['buttonProps.iconLeft'],
-      classes: args['buttonProps.classes']
+      classes: { [args['buttonProps.classes']]: true }
     }))
     const containerProps = computed(() => ({
       '--ep-container-border-radius': 'var(--border-radius)',

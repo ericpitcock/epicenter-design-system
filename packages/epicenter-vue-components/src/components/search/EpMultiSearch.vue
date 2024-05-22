@@ -20,8 +20,7 @@
         <span class="query__text font-size--small">{{ item }}</span>
         <ep-icon
           name="close"
-          weight="bold"
-          :size="16"
+          :styles="{ '--ep-icon-width': '16px', '--ep-icon-stroke-width': 2 }"
           class="query__close"
         />
       </div>
@@ -45,7 +44,10 @@
       :style="iconStyles"
       @click="onClear"
     >
-      <ep-icon name="close" />
+      <ep-icon
+        name="close"
+        :styles="{ '--ep-icon-width': '24px' }"
+      />
     </div>
   </div>
 </template>

@@ -84,8 +84,8 @@
       validator: (value) => ['button', 'submit'].includes(value)
     },
     styles: {
-      type: Array,
-      default: () => []
+      type: Object,
+      default: () => ({})
     },
     classes: {
       type: Object,
