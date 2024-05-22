@@ -100,7 +100,7 @@ export const IconLibrary = args => ({
     }
   },
   template: `
-  <ep-search-typeahead
+  <!--<ep-search-typeahead
     :input-props="{ width: '60rem', placeholder: 'Search icons…', size: 'xlarge' }"
     :returned-search-results="searchResults"
     results-key="name"
@@ -108,7 +108,7 @@ export const IconLibrary = args => ({
     @selection="filterIcons"
     @clear="clearResults"
     style="margin-bottom: 2rem;"
-  />
+  />-->
   <div style="display: flex;
     justify-content: center;
     gap: 10px;

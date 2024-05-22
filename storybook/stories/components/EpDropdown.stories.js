@@ -85,7 +85,8 @@ export const Dropdown = args => ({
       size: args['buttonProps.size'],
       label: 'Export Data',
       iconRight: { name: 'chevron-down' },
-      iconLeft: args['buttonProps.iconLeft']
+      iconLeft: args['buttonProps.iconLeft'],
+      classes: args['buttonProps.classes']
     }))
     const containerProps = computed(() => ({
       '--ep-container-border-radius': 'var(--border-radius)',
@@ -107,7 +108,8 @@ export const Dropdown = args => ({
 Dropdown.args = {
   disabled: false,
   'buttonProps.size': 'large',
-  'buttonProps.iconLeft': 'file',
+  'buttonProps.iconLeft': 'None',
+  'buttonProps.classes': 'button-variant-primary',
   alignRight: false,
   menuItems: fakeDropdownItems,
   showOnHover: false

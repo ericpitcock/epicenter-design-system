@@ -1,9 +1,10 @@
-:root {
+.ep-button {
   --ep-button-bg-color: var(--interface-foreground);
   --ep-button-text-color: var(--text-color--loud);
   --ep-button-border-width: 0.1rem;
   --ep-button-border-style: solid;
   --ep-button-border-color: var(--border-color);
+  --ep-button-border-radius: 0.3rem;
   --ep-button-hover-bg-color: var(--interface-foreground);
   --ep-button-hover-text-color: var(--text-color--loud);
   --ep-button-hover-border-color: var(--border-color);
@@ -14,15 +15,12 @@
   --ep-button-disabled-text-color: var(--text-color--disabled);
   --ep-button-disabled-border-color: var(--border-color--disabled);
   --ep-button-menu-item-text-active: var(--text-color--loud);
-}
-
-.ep-button {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.8rem;
   height: 3rem;
-  border-radius: var(--ep-button-border-radius, 0.3rem);
+  border-radius: var(--ep-button-border-radius);
   font-size: var(--font-size--small);
   line-height: 1;
   appearance: none;

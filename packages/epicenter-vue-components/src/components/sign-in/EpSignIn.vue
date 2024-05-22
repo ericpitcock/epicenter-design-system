@@ -1,10 +1,12 @@
 <template>
   <div class="ep-sign-in">
     <ep-container
-      width="400px"
-      height="475px"
-      background-color="var(--interface-surface)"
-      content-padding="0 3rem 6rem 3rem"
+      :styles="{
+        '--ep-container-width': '400px',
+        '--ep-container-height': '475px',
+        '--ep-container-bg-color': 'var(--interface-surface)',
+        '--ep-container-content-padding': '0 3rem 6rem 3rem',
+      }"
       style="box-shadow: var(--drop-shadow);"
     >
       <template #header>

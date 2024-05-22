@@ -17,24 +17,35 @@ export default {
   // },
   argTypes: {
     classes: {
-      name: 'Classes',
-      options: ['None', 'Success', 'Danger'],
+      name: 'Variant',
+      options: [
+        'Custom',
+        'Primary',
+        'Success',
+        'Warning',
+        'Danger'
+      ],
       mapping: {
         None: null,
+        Primary: { 'button-variant-primary': true },
         Success: { 'button-variant-success': true },
+        Warning: { 'button-variant-warning': true },
         Danger: { 'button-variant-danger': true }
       },
       control: {
         type: 'select',
       },
       table: {
-        category: 'App Defined'
+        category: 'Styles'
       }
     },
     disabled: {
       name: 'Disabled',
       control: {
         type: 'boolean'
+      },
+      table: {
+        category: 'Base Props'
       }
     },
     size: {
@@ -48,36 +59,26 @@ export default {
           large: 'Large',
           xlarge: 'X-Large'
         }
+      },
+      table: {
+        category: 'Base Props'
       }
     },
-    title: {
-      table: { disable: true }
-    },
-    ariaLabel: {
-      table: { disable: true }
-    },
-    to: {
-      table: { disable: true }
-    },
-    href: {
-      table: { disable: true }
-    },
-    isMenuItem: {
-      table: { disable: true }
-    },
-    isActiveMenuItem: {
-      table: { disable: true }
-    },
-    type: {
-      table: { disable: true }
-    },
-    command: {
-      table: { disable: true }
-    },
+    title: { table: { disable: true } },
+    ariaLabel: { table: { disable: true } },
+    to: { table: { disable: true } },
+    href: { table: { disable: true } },
+    isMenuItem: { table: { disable: true } },
+    isActiveMenuItem: { table: { disable: true } },
+    type: { table: { disable: true } },
+    command: { table: { disable: true } },
     label: {
       name: 'Label',
       control: {
         type: 'text'
+      },
+      table: {
+        category: 'Base Props'
       }
     },
     enabledIcons: {
@@ -114,6 +115,7 @@ export default {
       }
     },
     backgroundColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-bg-color',
       control: {
         type: 'color'
@@ -123,6 +125,7 @@ export default {
       },
     },
     borderColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-border-color',
       control: {
         type: 'color'
@@ -132,6 +135,7 @@ export default {
       },
     },
     textColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-text-color',
       control: {
         type: 'color'
@@ -140,7 +144,17 @@ export default {
         category: 'Base Styles'
       },
     },
+    borderRadius: {
+      name: '--ep-button-border-radius',
+      control: {
+        type: 'number'
+      },
+      table: {
+        category: 'Base Props'
+      },
+    },
     hoverBackgroundColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-hover-bg-color',
       control: {
         type: 'color'
@@ -150,6 +164,7 @@ export default {
       },
     },
     hoverBorderColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-hover-border-color',
       control: {
         type: 'color'
@@ -159,6 +174,7 @@ export default {
       },
     },
     hoverTextColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-hover-text-color',
       control: {
         type: 'color'
@@ -168,6 +184,7 @@ export default {
       },
     },
     activeBackgroundColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-active-bg-color',
       control: {
         type: 'color'
@@ -177,6 +194,7 @@ export default {
       },
     },
     activeBorderColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-active-border-color',
       control: {
         type: 'color'
@@ -186,6 +204,7 @@ export default {
       },
     },
     activeTextColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-active-text-color',
       control: {
         type: 'color'
@@ -195,6 +214,7 @@ export default {
       },
     },
     disabledBackgroundColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-disabled-bg-color',
       control: {
         type: 'color'
@@ -204,6 +224,7 @@ export default {
       },
     },
     disabledBorderColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-disabled-border-color',
       control: {
         type: 'color'
@@ -213,6 +234,7 @@ export default {
       },
     },
     disabledTextColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-button-disabled-text-color',
       control: {
         type: 'color'
@@ -233,6 +255,7 @@ export const Button = args => ({
     const styles = computed(() => ({
       '--ep-button-bg-color': args.backgroundColor,
       '--ep-button-border-color': args.borderColor,
+      '--ep-button-border-radius': args.borderRadius + 'px',
       '--ep-button-text-color': args.textColor,
       '--ep-button-hover-bg-color': args.hoverBackgroundColor,
       '--ep-button-hover-border-color': args.hoverBorderColor,
@@ -262,11 +285,12 @@ export const Button = args => ({
 })
 
 Button.args = {
-  classes: 'None',
   label: 'Download the Internet',
   size: 'large',
   disabled: false,
+  classes: 'None',
   enabledIcons: false,
   iconLeft: 'None',
   iconRight: 'None',
+  borderRadius: 6,
 }

@@ -180,6 +180,7 @@ export const LoadingState = args => ({
           :messages="messages"
           v-show="loading"
           @done="done"
+          style="left: -30px; right: -30px;"
         />
         <ep-table
           :columns="includedColumns"
@@ -201,6 +202,6 @@ export const LoadingState = args => ({
 
 LoadingState.args = {
   backgroundColor: 'var(--interface-surface)',
-  borderRadius: 'var(--border-radius--large)',
+  borderRadius: 'none',
   messageDelay: 2000
 }

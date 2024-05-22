@@ -40,9 +40,11 @@ export const EmptyState = args => ({
   },
   template: `
     <ep-container
-      width="100%"
-      background-color="var(--interface-surface)"
-      container-padding="3rem"
+      :styles="{
+        '--ep-container-width': '100%',
+        '--ep-container-bg-color': 'var(--interface-surface)',
+        '--ep-container-padding': '3rem'
+      }"
     >
       <ep-empty-state v-bind="args">
         <template #img>

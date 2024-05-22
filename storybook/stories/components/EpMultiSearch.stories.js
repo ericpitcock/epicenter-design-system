@@ -92,5 +92,5 @@ export const Multisearch = args => ({
 Multisearch.args = {
   placeholder: 'Search for several things…',
   height: '4.6rem',
-  icon: { name: 'search' },
+  icon: { name: 'search', styles: { '--ep-icon-width': '24px' } },
 }
