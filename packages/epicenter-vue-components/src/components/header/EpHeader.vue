@@ -1,18 +1,14 @@
 <template>
   <div
-    :class="['ep-header', { 'ep-header--shadowed': shadowed }]"
-    :style="containerStyles"
+    class="ep-header"
+    :style="styles"
   >
-    <div
-      class="ep-header__content"
-      :style="contentStyles"
-    >
+    <div class="ep-header__content">
       <template v-for="slotName in ['left', 'center', 'right']">
         <div
           v-if="$slots[slotName]"
           :key="slotName"
           :class="`ep-header__content__${slotName}`"
-          :style="getStyles(slotName)"
         >
           <slot :name="slotName" />
         </div>
@@ -21,171 +17,75 @@
   </div>
 </template>
 
-<script>
-  export default {
+<script setup>
+  defineOptions({
     name: 'EpHeader',
-    props: {
-      width: {
-        type: String,
-        default: '100%'
-      },
-      height: {
-        type: String,
-        default: '6.1rem'
-      },
-      padding: {
-        type: String,
-        default: '0'
-      },
-      margin: {
-        type: String,
-        default: '0'
-      },
-      backgroundColor: {
-        type: String,
-        default: ''
-      },
-      borderRadius: {
-        type: String,
-        default: 'var(--border-radius--large)'
-      },
-      borderWidth: {
-        type: String,
-        default: '0.1rem'
-      },
-      borderStyle: {
-        type: String,
-        default: 'solid'
-      },
-      borderColor: {
-        type: String,
-        default: 'var(--border-color)'
-      },
-      overflow: {
-        type: String,
-        default: 'hidden'
-      },
-      itemGap: {
-        type: String,
-        default: '3rem'
-      },
-      leftFlex: {
-        type: String,
-        default: '1'
-      },
-      leftGap: {
-        type: String,
-        default: '3rem'
-      },
-      leftJustify: {
-        type: String,
-        default: 'flex-start'
-      },
-      leftPadding: {
-        type: String,
-        default: '0'
-      },
-      centerFlex: {
-        type: String,
-        default: '1'
-      },
-      centerGap: {
-        type: String,
-        default: '3rem'
-      },
-      centerJustify: {
-        type: String,
-        default: 'center'
-      },
-      centerPadding: {
-        type: String,
-        default: '0'
-      },
-      rightFlex: {
-        type: String,
-        default: '1'
-      },
-      rightGap: {
-        type: String,
-        default: '3rem'
-      },
-      rightJustify: {
-        type: String,
-        default: 'flex-end'
-      },
-      rightPadding: {
-        type: String,
-        default: '0'
-      },
-      sticky: {
-        type: Boolean,
-        default: false
-      },
-      stickyTop: {
-        type: String,
-        default: '0'
-      },
-      zIndex: {
-        type: String,
-        default: '1'
-      },
-      shadowed: {
-        type: Boolean,
-        default: false
-      }
+  })
+
+  const props = defineProps({
+    styles: {
+      type: Object,
+      default: () => ({})
     },
-    computed: {
-      containerStyles() {
-        return {
-          position: this.headerPosition,
-          top: this.stickyTop,
-          width: this.width,
-          height: this.height,
-          padding: this.padding,
-          margin: this.margin,
-          ...(this.backgroundColor && { background: this.backgroundColor }),
-          borderBottom: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
-          zIndex: this.zIndex
-        }
-      },
-      contentStyles() {
-        return {
-          gap: this.itemGap,
-        }
-      },
-      leftStyles() {
-        return {
-          flex: this.leftFlex,
-          gap: this.leftGap,
-          justifyContent: this.leftJustify,
-          padding: this.leftPadding,
-        }
-      },
-      centerStyles() {
-        return {
-          flex: this.centerFlex,
-          gap: this.centerGap,
-          justifyContent: this.centerJustify,
-          padding: this.centerPadding,
-        }
-      },
-      rightStyles() {
-        return {
-          flex: this.rightFlex,
-          gap: this.rightGap,
-          justifyContent: this.rightJustify,
-          padding: this.rightPadding,
-        }
-      },
-      // need to address this
-      headerPosition() {
-        return this.sticky ? 'sticky' : 'relative'
-      }
-    },
-    methods: {
-      getStyles(slotName) {
-        return this[`${slotName}Styles`]
-      }
-    }
-  }
+  })
+
+  // const containerStyles = computed(() => {
+  //   return {
+  // position: headerPosition,
+  // top: props.stickyTop,
+  // width: props.width,
+  // height: props.height,
+  // padding: props.padding,
+  // margin: props.margin,
+  // ...(props.backgroundColor && { background: props.backgroundColor }),
+  // borderBottom: `${props.borderWidth} ${props.borderStyle} ${props.borderColor}`,
+  // zIndex: props.zIndex
+  //   }
+  // })
+
+  // const contentStyles = computed(() => {
+  //   return {
+  //     gap: props.itemGap,
+  //   }
+  // })
+
+  // eslint-disable-next-line no-unused-vars
+  // const leftStyles = computed(() => {
+  //   return {
+  //     flex: props.leftFlex,
+  //     gap: props.leftGap,
+  //     justifyContent: props.leftJustify,
+  //     padding: props.leftPadding,
+  //   }
+  // })
+
+  // // eslint-disable-next-line no-unused-vars
+  // const centerStyles = computed(() => {
+  //   return {
+  //     flex: props.centerFlex,
+  //     gap: props.centerGap,
+  //     justifyContent: props.centerJustify,
+  //     padding: props.centerPadding,
+  //   }
+  // })
+
+  // // eslint-disable-next-line no-unused-vars
+  // const rightStyles = computed(() => {
+  //   return {
+  //     flex: props.rightFlex,
+  //     gap: props.rightGap,
+  //     justifyContent: props.rightJustify,
+  //     padding: props.rightPadding,
+  //   }
+  // })
+
+  // need to address this
+  // eslint-disable-next-line no-unused-vars
+  // const headerPosition = computed(() => {
+  //   return props.sticky ? 'sticky' : 'relative'
+  // })
+
+  // const getStyles = (slotName) => {
+  //   return [`${slotName}Styles`]
+  // }
 </script>
