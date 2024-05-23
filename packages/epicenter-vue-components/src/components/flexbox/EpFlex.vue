@@ -8,6 +8,9 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpFlex'
+  })
   import { computed } from 'vue'
 
   const props = defineProps({

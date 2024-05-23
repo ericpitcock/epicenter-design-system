@@ -6,6 +6,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpCodeView'
+  })
+
   import { computed } from 'vue'
   // eslint-disable-next-line no-unused-vars
   import Prism from 'prismjs'

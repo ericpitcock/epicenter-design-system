@@ -2,7 +2,6 @@ import EpActionBar from '@/components/action-bar/EpActionBar.vue'
 import commonActionBarArgs from '../../helpers/commonActionBarArgs.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
-import EpFooter from '@/components/footer/EpFooter.vue'
 import { computed } from 'vue'
 
 const container = () => {
@@ -205,26 +204,24 @@ export const Container = args => ({
     EpActionBar,
     EpContainer,
     EpHeader,
-    EpFooter
   },
   setup() {
-
-    const styles = computed(() => ([
-      { '--ep-container-width': args.width },
-      { '--ep-container-min-width': args.minWidth },
-      { '--ep-container-max-width': args.maxWidth },
-      { '--ep-container-height': args.height },
-      { '--ep-container-min-height': args.minHeight },
-      { '--ep-container-max-height': args.maxHeight },
-      { '--ep-container-padding': args.containerPadding },
-      { '--ep-container-content-padding': args.contentPadding },
-      { '--ep-container-bg-color': args.backgroundColor },
-      { '--ep-container-border-radius': args.borderRadius },
-      { '--ep-container-border-width': args.borderWidth },
-      { '--ep-container-border-style': args.borderStyle },
-      { '--ep-container-border-color': args.borderColor },
-      { '--ep-container-overflow': args.overflow },
-    ]))
+    const styles = computed(() => ({
+      '--ep-container-width': args.width,
+      '--ep-container-min-width': args.minWidth,
+      '--ep-container-max-width': args.maxWidth,
+      '--ep-container-height': args.height,
+      '--ep-container-min-height': args.minHeight,
+      '--ep-container-max-height': args.maxHeight,
+      '--ep-container-padding': args.containerPadding,
+      '--ep-container-content-padding': args.contentPadding,
+      '--ep-container-bg-color': args.backgroundColor,
+      '--ep-container-border-radius': args.borderRadius,
+      '--ep-container-border-width': args.borderWidth,
+      '--ep-container-border-style': args.borderStyle,
+      '--ep-container-border-color': args.borderColor,
+      '--ep-container-overflow': args.overflow,
+    }))
 
     return {
       args,
@@ -245,9 +242,6 @@ export const Container = args => ({
         </ep-header>
       </template>
       <template #default>
-      </template>
-      <template #footer>
-        <ep-footer />
       </template>
     </ep-container>
   `

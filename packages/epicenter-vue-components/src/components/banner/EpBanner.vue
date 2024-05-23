@@ -35,6 +35,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpBanner'
+  })
+
   import EpButton from '../button/EpButton.vue'
   import EpIcon from '../icon/EpIcon.vue'
 

@@ -32,6 +32,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpButton'
+  })
+
   import { computed, useAttrs } from 'vue'
   import EpIcon from '../icon/EpIcon.vue'
 
@@ -88,7 +92,7 @@
       default: () => ({})
     },
     classes: {
-      type: Object,
+      type: [Array, Object],
       default: () => ({})
     }
   })

@@ -14,6 +14,7 @@ $primary-color-lightness: 55%;
   // --ep-banner-color-strip-bg: orange;
   // --ep-button-bg-color: green;
   // --ep-radio-checked-color: orange;
+  --primary-gradient: linear-gradient(140deg, var(--primary-color-base) 30%, var(--primary-color-down-10-base) 70%);
   --text-selection-bg-color: var(--primary-color-base);
   --text-selection-text-color: hsl(var(--gray-0));
 
@@ -46,9 +47,33 @@ html[data-color-theme='light'] {
   }
 }
 
+.badge-variant-primary {
+  --ep-badge-bg-color: var(--primary-gradient);
+  --ep-badge-border-color: var(--primary-color-600);
+  --ep-badge-text-color: var(--text-color--loud);
+}
+
+.badge-variant-success {
+  --ep-badge-bg-color: hsl(var(--emerald-600));
+  --ep-badge-border-color: hsl(var(--emerald-600));
+  --ep-badge-text-color: var(--text-color--loud);
+}
+
+.badge-variant-warning {
+  --ep-badge-bg-color: hsl(29, 72%, 61%);
+  --ep-badge-border-color: hsl(29, 72%, 61%);
+  --ep-badge-text-color: hsl(0, 77%, 12%);
+}
+
+.badge-variant-danger {
+  --ep-badge-bg-color: hsl(var(--rose-600));
+  --ep-badge-border-color: hsl(var(--rose-600));
+  --ep-badge-text-color: var(--text-color--loud);
+}
+
 // custom button variants
 .button-variant-primary {
-  --ep-button-bg-color: linear-gradient(140deg, var(--primary-color-base) 30%, var(--primary-color-down-10-base) 70%);
+  --ep-button-bg-color: var(--primary-gradient);
   --ep-button-border-color: var(--primary-color-base);
   --ep-button-text-color: white;
   --ep-button-hover-bg-color: var(--primary-color-600);

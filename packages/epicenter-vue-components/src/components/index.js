@@ -15,7 +15,6 @@ import EpDropdown from './dropdown/EpDropdown.vue'
 import EpEmptyState from './empty-state/EpEmptyState.vue'
 import EpFlexContainer from './flexbox/EpFlexContainer.vue'
 import EpFlex from './flexbox/EpFlex.vue'
-import EpFooter from './footer/EpFooter.vue'
 import EpHeader from './header/EpHeader.vue'
 import EpIcon from './icon/EpIcon.vue'
 import EpInput from './input/EpInput.vue'
@@ -25,9 +24,8 @@ import EpMap from './map/EpMap.vue'
 import EpMenu from './menu/EpMenu.vue'
 import EpMultiSearch from './search/EpMultiSearch.vue'
 import EpNotification from './notification/EpNotification.vue'
-import EpTempNotification from './notification/EpTempNotification.vue'
 import EpNotifications from './notification/EpNotifications.vue'
-import EpSearchTypeahead from './search/EpSearchTypeahead.vue.vue'
+import EpSearchTypeahead from './search/EpSearchTypeahead.vue'
 import EpSelect from './select/EpSelect.vue'
 import EpSplitButton from './split-button/EpSplitButton.vue'
 import EpStatusIndicator from './status-indicator/EpStatusIndicator.vue'
@@ -57,7 +55,6 @@ export default {
   EpEmptyState,
   EpFlexContainer,
   EpFlex,
-  EpFooter,
   EpHeader,
   EpIcon,
   EpInput,
@@ -67,7 +64,6 @@ export default {
   EpMenu,
   EpMultiSearch,
   EpNotification,
-  EpTempNotification,
   EpNotifications,
   EpSearchTypeahead,
   EpSelect,

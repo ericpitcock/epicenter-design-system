@@ -36,6 +36,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpSearchTypeahead'
+  })
+
   import EpInput from '../input/EpInput.vue'
   import vClickOutside from '../../directives/clickOutside'
   import { useDebounce } from '../../composables/useDebounce.js'

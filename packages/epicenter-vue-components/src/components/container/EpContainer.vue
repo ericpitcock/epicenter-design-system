@@ -23,6 +23,9 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpContainer'
+  })
   import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
   import { computed, ref } from 'vue'
 

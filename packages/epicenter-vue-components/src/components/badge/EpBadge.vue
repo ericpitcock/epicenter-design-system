@@ -8,6 +8,9 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpBadge'
+  })
   // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     classes: {
@@ -19,8 +22,8 @@
       default: 'Badge'
     },
     styles: {
-      type: Array,
-      default: () => []
-    }
+      type: Object,
+      default: () => ({})
+    },
   })
 </script>

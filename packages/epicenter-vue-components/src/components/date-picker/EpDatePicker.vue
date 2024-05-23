@@ -8,6 +8,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpDatePicker'
+  })
+
   import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
   import flatpickr from 'flatpickr'
   import EpInput from '../input/EpInput.vue'

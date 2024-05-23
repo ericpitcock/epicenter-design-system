@@ -10,6 +10,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpIcon'
+  })
+
   import { ref, watch } from 'vue'
 
   const props = defineProps({

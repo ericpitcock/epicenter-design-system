@@ -288,7 +288,7 @@ Button.args = {
   label: 'Download the Internet',
   size: 'large',
   disabled: false,
-  classes: 'None',
+  classes: 'Custom',
   enabledIcons: false,
   iconLeft: 'None',
   iconRight: 'None',

@@ -1,6 +1,5 @@
 import { paddedBg } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
-import EpFooter from '@/components/footer/EpFooter.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpTabs from '@/components/tabs/EpTabs.vue'
 import EpTabContent from '@/components/tabs/EpTabContent.vue'
@@ -42,7 +41,6 @@ const routerLinkItems = [
 export const Tabs = args => ({
   components: {
     EpContainer,
-    EpFooter,
     EpHeader,
     EpTabs,
     EpTabContent
@@ -124,12 +122,6 @@ export const Tabs = args => ({
           </div>
         </template>
         </ep-tab-content>
-      </template>
-      <template #footer>
-        <ep-footer>
-          <template #left>
-          </template>
-        </ep-footer>
       </template>
     </ep-container>
   `

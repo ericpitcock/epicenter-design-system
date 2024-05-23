@@ -46,6 +46,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpTable'
+  })
+
   import EpTableCell from './EpTableCell.vue'
   import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
   import { computed, ref } from 'vue'

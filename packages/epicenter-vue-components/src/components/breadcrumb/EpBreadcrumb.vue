@@ -19,6 +19,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpBreadcrumb'
+  })
+
   import { computed } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
 

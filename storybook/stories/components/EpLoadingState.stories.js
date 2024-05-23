@@ -1,7 +1,6 @@
 import { paddedBg } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
-import EpFooter from '@/components/footer/EpFooter.vue'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import useExclude from '@/components/table/useExclude.js'
@@ -45,7 +44,6 @@ export const LoadingState = args => ({
   components: {
     EpContainer,
     EpHeader,
-    EpFooter,
     EpSplitButton,
     EpTable,
     EpLoadingState

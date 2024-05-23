@@ -7,6 +7,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpThemeToggle'
+  })
+
   import EpButton from '../button/EpButton.vue'
   import { computed } from 'vue'
 

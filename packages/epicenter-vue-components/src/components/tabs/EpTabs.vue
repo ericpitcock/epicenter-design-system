@@ -17,6 +17,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpTabs'
+  })
+
   import { computed } from 'vue'
 
   const props = defineProps({

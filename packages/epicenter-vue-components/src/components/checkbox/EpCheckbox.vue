@@ -19,6 +19,9 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpCheckbox'
+  })
   import { computed } from 'vue'
 
   const modelValue = defineModel({
