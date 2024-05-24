@@ -1,5 +1,6 @@
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
+import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpInput from '@/components/input/EpInput.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableSearchInput from '@/components/table/EpTableSearchInput.vue'
@@ -87,6 +88,7 @@ export const Table = (args) => ({
   components: {
     EpCheckbox,
     EpEmptyState,
+    EpFlex,
     EpInput,
     EpTable,
     EpTableSearchInput,
@@ -114,7 +116,7 @@ export const Table = (args) => ({
     } = useColumnFilters(includedColumns, [], includedData)
 
     onMounted(() => {
-      const columnsToFilter = ['type']
+      const columnsToFilter = ['status', 'type']
       const disabledFilters = []
 
       generateFilters(columnsToFilter, disabledFilters)
@@ -181,59 +183,67 @@ export const Table = (args) => ({
     }
   },
   template: `
-    <ep-checkbox
-      v-for="filter in columnFilters"
-      :key="filter.id"
-      v-bind="filter"
-      v-model="filter.checked"
-      @update:modelValue="handleFilter($event, filter.id)"
-    />
-    <template
-      v-for="(filterSet, category) in filters"
-      :key="category"
-    >
-      <h3 class="text-style--section">
-        {{ category.replace(/_/g, ' ') }}
-      </h3>
-      <ep-checkbox
-        v-for="checkbox in filterSet"
-        :key="checkbox.label"
-        v-bind="checkbox"
-        v-model="checkbox.checked"
-        @update:model-value="console.log('update')"
-      />
-    </template>
-    <ep-input
-      size="large"
-      placeholder="Search"
-      v-model="searchText"
-      @update:modelValue="updateSearchText"
-    />
-    <ep-empty-state v-if="!paginatedData.length">
-      No data found
-    </ep-empty-state>
-    <ep-table
-      v-else
-      :columns="visibleColumns"
-      :data="paginatedData"
-      :style="styles"
-      v-bind="args"
-      @row-click="onRowClick"
-    >
-      <template #header="{ column }">
-        <ep-table-sortable-header
-          :column="column"
-          :sort-column="sortColumn"
-          :sort-order="sortOrder"
-          @sort="sortBy"
+  <ep-flex flex-props=",,row,,,,,3rem,">
+    <div class="sidebar">
+      <ep-flex flex-props=",,column,,,,,1rem,">
+        <ep-checkbox
+          v-for="filter in columnFilters"
+          :key="filter.id"
+          v-bind="filter"
+          v-model="filter.checked"
+          @update:modelValue="handleFilter($event, filter.id)"
         />
-      </template>
-    </ep-table>
-    <ep-table-pagination
-      :current-page="currentPage"
-      :total-pages="totalPages"
-      @page-change="onPageChange"
-    />
+        <template
+          v-for="(filterSet, category) in filters"
+          :key="category"
+        >
+          <h3 class="text-style--section">
+            {{ category.replace(/_/g, ' ') }}
+          </h3>
+          <ep-checkbox
+            v-for="checkbox in filterSet"
+            :key="checkbox.label"
+            v-bind="checkbox"
+            v-model="checkbox.checked"
+            @update:model-value="console.log('update')"
+          />
+        </template>
+      </ep-flex>
+    </div>
+    <div class="content">
+      <ep-input
+        size="large"
+        placeholder="Search"
+        v-model="searchText"
+        @update:modelValue="updateSearchText"
+      />
+      <ep-empty-state v-if="!paginatedData.length">
+        No data found
+      </ep-empty-state>
+      <ep-table
+        v-else
+        :columns="visibleColumns"
+        :data="paginatedData"
+        :style="styles"
+        v-bind="args"
+        @row-click="onRowClick"
+      >
+        <template #header="{ column }">
+          <ep-table-sortable-header
+            :column="column"
+            :sort-column="sortColumn"
+            :sort-order="sortOrder"
+            @sort="sortBy"
+          />
+        </template>
+      </ep-table>
+      <ep-table-pagination
+        :current-page="currentPage"
+        :total-pages="totalPages"
+        @page-change="onPageChange"
+      />
+    </div>
+  </ep-flex>
   `
 })
 
