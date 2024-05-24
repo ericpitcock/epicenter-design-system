@@ -7,12 +7,13 @@ import EpTablePagination from '@/components/table/EpTablePagination.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
 import useExclude from '@/components/table/useExclude.js'
 import useColumnFilters from '@/components/table/useColumnFilters.js'
+import useDataFilters from '@/components/table/useDataFilters.js'
 import useSorting from '@/components/table/useSorting.js'
 import usePagination from '@/components/table/usePagination.js'
 import useSearch from '@/components/table/useSearch.js'
 import { paddedSurfaceOverflow } from '../../helpers/decorators.js'
 import { columns, fakeArray } from '../../data/tableData'
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 
 export default {
   title: 'Components/Table',
@@ -112,12 +113,21 @@ export const Table = (args) => ({
       handleFilter
     } = useColumnFilters(includedColumns, [], includedData)
 
+    onMounted(() => {
+      const columnsToFilter = ['type']
+      const disabledFilters = []
+
+      generateFilters(columnsToFilter, disabledFilters)
+    })
+
+    const { filters, generateFilters, filteredData } = useDataFilters(visibleColumns, visibleData)
+
     // add search
     const {
       searchedData,
       searchText,
       updateSearchText
-    } = useSearch(visibleData)
+    } = useSearch(filteredData)
 
     // add sorting
     const {
@@ -166,7 +176,8 @@ export const Table = (args) => ({
       visibleColumns,
       columnFilters,
       // disabledColumnsRef,
-      handleFilter
+      handleFilter,
+      filters
     }
   },
   template: `
@@ -177,6 +188,21 @@ export const Table = (args) => ({
       v-model="filter.checked"
       @update:modelValue="handleFilter($event, filter.id)"
     />
+    <template
+      v-for="(filterSet, category) in filters"
+      :key="category"
+    >
+      <h3 class="text-style--section">
+        {{ category.replace(/_/g, ' ') }}
+      </h3>
+      <ep-checkbox
+        v-for="checkbox in filterSet"
+        :key="checkbox.label"
+        v-bind="checkbox"
+        v-model="checkbox.checked"
+        @update:model-value="console.log('update')"
+      />
+    </template>
     <ep-input
       size="large"
       placeholder="Search"
