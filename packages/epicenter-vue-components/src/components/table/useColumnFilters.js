@@ -21,7 +21,6 @@ export default function useColumnFilters(columns, disabledColumns, data) {
     } else {
       disabledColumnsRef.value = disabledColumnsRef.value.filter(column => column !== filterId)
     }
-    console.log('Updated disabledColumnsRef:', disabledColumnsRef.value)
   }
 
   const { includedColumns: visibleColumns, includedData: visibleData } = useExclude(columns, data, disabledColumnsRef)

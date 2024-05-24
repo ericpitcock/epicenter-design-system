@@ -98,7 +98,7 @@ export const Table = (args) => ({
     } = useExclude(columnsRef, tableData, args.exclude)
 
 
-    const disabledColumns = ['name']
+    const disabledColumns = []
     // use column filters
     const {
       columnFilters,
