@@ -15,6 +15,7 @@ import EpDropdown from './dropdown/EpDropdown.vue'
 import EpEmptyState from './empty-state/EpEmptyState.vue'
 import EpFlexContainer from './flexbox/EpFlexContainer.vue'
 import EpFlex from './flexbox/EpFlex.vue'
+import EpFooter from './footer/EpFooter.vue'
 import EpHeader from './header/EpHeader.vue'
 import EpIcon from './icon/EpIcon.vue'
 import EpInput from './input/EpInput.vue'
@@ -55,6 +56,7 @@ export default {
   EpEmptyState,
   EpFlexContainer,
   EpFlex,
+  EpFooter,
   EpHeader,
   EpIcon,
   EpInput,

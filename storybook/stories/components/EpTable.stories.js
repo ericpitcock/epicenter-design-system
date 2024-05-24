@@ -1,8 +1,10 @@
+import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableSearchInput from '@/components/table/EpTableSearchInput.vue'
 import EpTablePagination from '@/components/table/EpTablePagination.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
 import useExclude from '@/components/table/useExclude.js'
+import useColumnFilters from '@/components/table/useColumnFilters.js'
 import useSorting from '@/components/table/useSorting.js'
 import usePagination from '@/components/table/usePagination.js'
 import useSearch from '@/components/table/useSearch.js'
@@ -80,6 +82,7 @@ export default {
 
 export const Table = (args) => ({
   components: {
+    EpCheckbox,
     EpTable,
     EpTableSearchInput,
     EpTablePagination,
@@ -94,12 +97,26 @@ export const Table = (args) => ({
       includedData
     } = useExclude(columnsRef, tableData, args.exclude)
 
+
+    const disabledColumns = [
+      'start_date',
+      // 'status',
+    ]
+    // use column filters
+    const {
+      columnFilters,
+      disabledColumnsRef,
+      visibleColumns,
+      visibleData,
+      handleFilter
+    } = useColumnFilters(includedColumns, disabledColumns, includedData)
+
     // add search
     const {
       searchedData,
       searchText,
       updateSearchText
-    } = useSearch(includedData)
+    } = useSearch(visibleData)
 
     // add sorting
     const {
@@ -169,16 +186,27 @@ export const Table = (args) => ({
       searchText,
       updateSearchText,
       styles,
-      onRowClick
+      onRowClick,
+      visibleColumns,
+      columnFilters,
+      disabledColumnsRef,
+      handleFilter
     }
   },
   template: `
+    <ep-checkbox
+      v-for="filter in columnFilters"
+      :key="filter.id"
+      v-bind="filter"
+      v-model="filter.checked"
+      @update:modelValue="handleFilter($event, filter.id)"
+    />
     <ep-table-search-input
       v-model="searchText"
       @update:modelValue="updateSearchText"
     />
     <ep-table
-      :columns="includedColumns"
+      :columns="visibleColumns"
       :data="paginatedData"
       :style="styles"
       v-bind="args"

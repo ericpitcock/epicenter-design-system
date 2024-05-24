@@ -2597,7 +2597,7 @@ pre.line-numbers > code {
   min-height: var(--ep-container-min-height);
   max-height: var(--ep-container-max-height);
   padding: var(--ep-container-padding);
-  background-color: var(--ep-container-bg-color);
+  background: var(--ep-container-bg-color);
   border-radius: var(--ep-container-border-radius);
   border-width: var(--ep-container-border-width);
   border-style: var(--ep-container-border-style);
