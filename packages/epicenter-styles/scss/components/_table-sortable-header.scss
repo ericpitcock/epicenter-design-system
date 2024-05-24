@@ -1,4 +1,10 @@
 .ep-table-sortable-header {
   justify-content: space-between;
+  white-space: nowrap;
   cursor: pointer;
+
+  .ep-icon {
+    position: absolute;
+    right: 0;
+  }
 }

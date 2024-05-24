@@ -23,7 +23,16 @@ export default function useColumnFilters(columns, disabledColumns, data) {
     }
   }
 
-  const { includedColumns: visibleColumns, includedData: visibleData } = useExclude(columns, data, disabledColumnsRef)
+  const {
+    includedColumns: visibleColumns,
+    includedData: visibleData
+  } = useExclude(columns, data, disabledColumnsRef)
 
-  return { columnFilters, disabledColumnsRef, visibleColumns, visibleData, handleFilter }
+  return {
+    columnFilters,
+    // disabledColumnsRef,
+    visibleColumns,
+    visibleData,
+    handleFilter
+  }
 }

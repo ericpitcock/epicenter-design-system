@@ -1,4 +1,6 @@
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
+import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
+import EpInput from '@/components/input/EpInput.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableSearchInput from '@/components/table/EpTableSearchInput.vue'
 import EpTablePagination from '@/components/table/EpTablePagination.vue'
@@ -83,6 +85,8 @@ export default {
 export const Table = (args) => ({
   components: {
     EpCheckbox,
+    EpEmptyState,
+    EpInput,
     EpTable,
     EpTableSearchInput,
     EpTablePagination,
@@ -98,15 +102,15 @@ export const Table = (args) => ({
     } = useExclude(columnsRef, tableData, args.exclude)
 
 
-    const disabledColumns = []
+    // const disabledColumns = []
     // use column filters
     const {
       columnFilters,
-      disabledColumnsRef,
+      // disabledColumnsRef,
       visibleColumns,
       visibleData,
       handleFilter
-    } = useColumnFilters(includedColumns, disabledColumns, includedData)
+    } = useColumnFilters(includedColumns, [], includedData)
 
     // add search
     const {
@@ -121,7 +125,7 @@ export const Table = (args) => ({
       sortBy,
       sortColumn,
       sortOrder
-    } = useSorting(searchedData, 'status', 'asc')
+    } = useSorting(searchedData, 'start_date', 'desc')
 
     // add pagination
     const {
@@ -130,31 +134,6 @@ export const Table = (args) => ({
       totalPages,
       onPageChange
     } = usePagination(sortedData, 1, 30)
-
-    // filtering
-    // const appliedFilters = ref(props.appliedFilters)
-
-    // watch(appliedFilters, (newFilters) => {
-    //   console.log("Applied filters changed:", newFilters)
-    // }, { deep: true })
-
-    // const paginatedAndFilteredData = computed(() => {
-    //   if (!props.enableFilters) {
-    //     return searchedData.value
-    //   }
-
-    //   let filteredData = searchedData.value
-
-    //   // Apply filters
-    //   for (const key in appliedFilters.value) {
-    //     const filterValue = appliedFilters.value[key]
-    //     filteredData = filteredData.filter(row => {
-    //       return row[key] === filterValue
-    //     })
-    //   }
-
-    //   return filteredData.slice((props.currentPage - 1) * props.pageSize, props.currentPage * props.pageSize)
-    // })
 
     const styles = computed(() => {
       return {
@@ -186,7 +165,7 @@ export const Table = (args) => ({
       onRowClick,
       visibleColumns,
       columnFilters,
-      disabledColumnsRef,
+      // disabledColumnsRef,
       handleFilter
     }
   },
@@ -198,11 +177,17 @@ export const Table = (args) => ({
       v-model="filter.checked"
       @update:modelValue="handleFilter($event, filter.id)"
     />
-    <ep-table-search-input
+    <ep-input
+      size="large"
+      placeholder="Search"
       v-model="searchText"
       @update:modelValue="updateSearchText"
     />
+    <ep-empty-state v-if="!paginatedData.length">
+      No data found
+    </ep-empty-state>
     <ep-table
+      v-else
       :columns="visibleColumns"
       :data="paginatedData"
       :style="styles"
