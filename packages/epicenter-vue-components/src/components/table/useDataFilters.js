@@ -45,13 +45,14 @@ export default function useDataFilters(columns, data) {
     filters.value = generatedFilters
   }
 
-  const getColumnValue = (user, key) => {
-    const column = columns.value.find(column => column.key === key)
-    if (column.cellType === 'component') {
-      return user[key].value
-    } else {
-      return user[key]
-    }
+  const getColumnValue = (item, key) => {
+    // const column = columns.value.find(column => column.key === key)
+    // if (column.cellType === 'component') {
+    //   return user[key].value
+    // } else {
+    //   return user[key]
+    // }
+    return item[key]?.raw || item[key]?.value || item[key]
   }
 
   const filteredData = computed(() => {
