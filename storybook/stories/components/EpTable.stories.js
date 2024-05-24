@@ -98,10 +98,7 @@ export const Table = (args) => ({
     } = useExclude(columnsRef, tableData, args.exclude)
 
 
-    const disabledColumns = [
-      'start_date',
-      // 'status',
-    ]
+    const disabledColumns = ['name']
     // use column filters
     const {
       columnFilters,

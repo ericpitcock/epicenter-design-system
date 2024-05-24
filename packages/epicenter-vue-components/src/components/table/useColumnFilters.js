@@ -2,10 +2,8 @@ import { ref, computed } from 'vue'
 import useExclude from './useExclude.js'
 
 export default function useColumnFilters(columns, disabledColumns, data) {
-  // these are the columns that are disabled by default
   const disabledColumnsRef = ref(disabledColumns)
 
-  // we're creating an array of objects that will be used to create checkboxes
   const columnFilters = computed(() => {
     return columns.value.map(column => ({
       id: column.key,
@@ -15,8 +13,6 @@ export default function useColumnFilters(columns, disabledColumns, data) {
       label: column.label,
       disabled: false,
     }))
-    // don't need to filter out excluded, we're doing that elsewhere
-    // .filter(filter => !tableProps.exclude.includes(filter.id))
   })
 
   const handleFilter = (event, filterId) => {
@@ -25,10 +21,10 @@ export default function useColumnFilters(columns, disabledColumns, data) {
     } else {
       disabledColumnsRef.value = disabledColumnsRef.value.filter(column => column !== filterId)
     }
+    console.log('Updated disabledColumnsRef:', disabledColumnsRef.value)
   }
 
   const { includedColumns: visibleColumns, includedData: visibleData } = useExclude(columns, data, disabledColumnsRef)
 
-  console.log('columnFilters', columnFilters.value)
   return { columnFilters, disabledColumnsRef, visibleColumns, visibleData, handleFilter }
 }
