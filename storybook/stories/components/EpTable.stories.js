@@ -105,6 +105,15 @@ export const Table = (args) => ({
     } = useExclude(columnsRef, tableData, args.exclude)
 
 
+    onMounted(() => {
+      const columnsToFilter = ['status', 'type']
+      const disabledFilters = []
+
+      generateFilters(columnsToFilter, disabledFilters)
+    })
+
+    const { filters, generateFilters, filteredData } = useDataFilters(includedColumns, includedData)
+
     // const disabledColumns = []
     // use column filters
     const {
@@ -113,23 +122,14 @@ export const Table = (args) => ({
       visibleColumns,
       visibleData,
       handleFilter
-    } = useColumnFilters(includedColumns, [], includedData)
-
-    onMounted(() => {
-      const columnsToFilter = ['status', 'type']
-      const disabledFilters = []
-
-      generateFilters(columnsToFilter, disabledFilters)
-    })
-
-    const { filters, generateFilters, filteredData } = useDataFilters(visibleColumns, visibleData)
+    } = useColumnFilters(includedColumns, [], filteredData)
 
     // add search
     const {
       searchedData,
       searchText,
       updateSearchText
-    } = useSearch(filteredData)
+    } = useSearch(visibleData)
 
     // add sorting
     const {
@@ -184,7 +184,7 @@ export const Table = (args) => ({
   },
   template: `
   <ep-flex flex-props=",,row,,,,,3rem,">
-    <div class="sidebar">
+    <div class="sidebar" style="flex: 0 0 140px">
       <ep-flex flex-props=",,column,,,,,1rem,">
         <ep-checkbox
           v-for="filter in columnFilters"
