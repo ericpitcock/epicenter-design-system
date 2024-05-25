@@ -98,12 +98,20 @@ export const Table = (args) => ({
   setup() {
     const tableData = ref(fakeArray(100))
     const columnsRef = ref(columns)
+
     // use exclude
     const {
       includedColumns,
       includedData
     } = useExclude(columnsRef, tableData, args.exclude)
 
+    // use sorting
+    const {
+      sortedData,
+      sortBy,
+      sortColumn,
+      sortOrder
+    } = useSorting(includedData, 'start_date', 'desc')
 
     onMounted(() => {
       const columnsToFilter = ['status', 'type']
@@ -112,40 +120,30 @@ export const Table = (args) => ({
       generateFilters(columnsToFilter, disabledFilters)
     })
 
-    const { filters, generateFilters, filteredData } = useDataFilters(includedColumns, includedData)
+    const { filters, generateFilters, filteredData } = useDataFilters(includedColumns, sortedData)
 
-    // const disabledColumns = []
     // use column filters
     const {
       columnFilters,
-      // disabledColumnsRef,
       visibleColumns,
       visibleData,
       handleFilter
     } = useColumnFilters(includedColumns, [], filteredData)
 
-    // add search
+    // use search
     const {
       searchedData,
       searchText,
       updateSearchText
     } = useSearch(visibleData)
 
-    // add sorting
-    const {
-      sortedData,
-      sortBy,
-      sortColumn,
-      sortOrder
-    } = useSorting(searchedData, 'start_date', 'desc')
-
-    // add pagination
+    // use pagination
     const {
       paginatedData,
       currentPage,
       totalPages,
       onPageChange
-    } = usePagination(sortedData, 1, 30)
+    } = usePagination(searchedData, 1, 30)
 
     const styles = computed(() => {
       return {
@@ -177,7 +175,6 @@ export const Table = (args) => ({
       onRowClick,
       visibleColumns,
       columnFilters,
-      // disabledColumnsRef,
       handleFilter,
       filters
     }
@@ -205,16 +202,17 @@ export const Table = (args) => ({
             :key="checkbox.label"
             v-bind="checkbox"
             v-model="checkbox.checked"
-            @update:model-value="console.log('update')"
           />
         </template>
       </ep-flex>
     </div>
-    <div class="content">
+    <div class="content" style="flex: 1; overflow: auto;">
       <ep-input
         size="large"
         placeholder="Search"
+        clearable
         v-model="searchText"
+        @clear="updateSearchText('')"
         @update:modelValue="updateSearchText"
       />
       <ep-empty-state v-if="!paginatedData.length">
