@@ -71,6 +71,18 @@ html[data-color-theme='light'] {
   --ep-badge-text-color: var(--text-color--loud);
 }
 
+.ep-button-variant-subtle-ghost {
+  --ep-button-bg-color: transparent;
+  --ep-button-border-color: transparent;
+  --ep-button-text-color: hsl(var(--gray-350));
+  --ep-button-hover-bg-color: transparent;
+  --ep-button-hover-border-color: transparent;
+  --ep-button-hover-text-color: var(--text-color--loud);
+  --ep-button-active-bg-color: transparent;
+  --ep-button-active-border-color: transparent;
+  --ep-button-active-text-color: var(--text-color--loud);
+}
+
 // custom button variants
 .button-variant-primary {
   --ep-button-bg-color: var(--primary-gradient);

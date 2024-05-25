@@ -33,14 +33,12 @@
   const prevPage = () => {
     if (props.currentPage > 1) {
       emit('pageChange', props.currentPage - 1)
-      // console.log(props.currentPage - 1)
     }
   }
 
   const nextPage = () => {
     if (props.currentPage < props.totalPages) {
       emit('pageChange', props.currentPage + 1)
-      // console.log(props.currentPage + 1)
     }
   }
 </script>

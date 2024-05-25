@@ -12,7 +12,8 @@ export default function useColumnFilters(columns, disabledColumns, data) {
       checked: !disabledColumnsRef.value.includes(column.key),
       label: column.label,
       disabled: false,
-    }))
+      filterable: column.filterable
+    })).filter(column => column.filterable)
   })
 
   const handleFilter = (event, filterId) => {
@@ -30,7 +31,6 @@ export default function useColumnFilters(columns, disabledColumns, data) {
 
   return {
     columnFilters,
-    // disabledColumnsRef,
     visibleColumns,
     visibleData,
     handleFilter

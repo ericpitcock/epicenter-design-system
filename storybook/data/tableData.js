@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker'
 import EpBadge from '../../packages/epicenter-vue-components/src/components/badge/EpBadge.vue'
+import EpDropdown from '../../packages/epicenter-vue-components/src/components/dropdown/EpDropdown.vue'
 import { markRaw } from 'vue'
 
 // header is deprecated, use label instead
@@ -13,45 +14,60 @@ const columns = [
     label: 'ID',
     key: 'id',
     sortable: true,
+    filterable: true,
   },
   {
     label: 'Status',
     key: 'status',
     component: markRaw(EpBadge),
     sortable: true,
+    filterable: true,
   },
   {
     label: 'Date',
     key: 'start_date',
     sortable: true,
+    filterable: true,
   },
   {
-    label: 'Name',
-    key: 'name',
+    label: 'Location',
+    key: 'location',
     sortable: true,
+    filterable: true,
   },
   {
     label: 'Ride Type',
     key: 'type',
     sortable: true,
+    filterable: true,
   },
   {
     label: 'Distance (mi)',
     key: 'distance',
     style: 'tabular-numbers',
     sortable: true,
+    filterable: true,
   },
   {
     label: 'Elevation (ft)',
     key: 'total_elevation_gain',
     style: 'tabular-numbers',
     sortable: true,
+    filterable: true,
   },
   {
     label: 'Avg Speed (mph)',
     key: 'average_speed',
     style: 'tabular-numbers',
     sortable: true,
+    filterable: true,
+  },
+  {
+    label: '',
+    key: 'actions',
+    component: markRaw(EpDropdown),
+    sortable: false,
+    filterable: false,
   }
 ]
 
@@ -78,7 +94,7 @@ const fakeArray = length => {
         raw: Date.parse(start_date),
         value: new Date(start_date).toLocaleString()
       },
-      name: faker.location.city(),
+      location: faker.location.city(),
       type: faker.helpers.arrayElement(['VirtualRide', 'Ride']),
       distance: {
         raw: distance,
@@ -91,6 +107,33 @@ const fakeArray = length => {
       average_speed: {
         raw: average_speed,
         value: (average_speed * 0.621371).toFixed(1)
+      },
+      actions: {
+        props: {
+          menuItems: [
+            {
+              label: 'Edit',
+              iconLeft: { name: 'f-file' }
+            },
+            {
+              label: 'Delete',
+              iconLeft: { name: 'f-trash' }
+            }
+          ],
+          containerProps: {
+            '--ep-container-border-radius': 'var(--border-radius)',
+            '--ep-container-border-color': 'var(--interface-overlay)'
+          },
+          buttonProps: {
+            label: '',
+            iconLeft: {
+              name: 'dots-vertical',
+            },
+            iconRight: null,
+            classes: ['ep-button-variant-subtle-ghost'],
+          },
+          alignRight: true,
+        }
       }
     })
   }

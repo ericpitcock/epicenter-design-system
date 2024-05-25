@@ -15,13 +15,13 @@
             :key="column.key"
           >
             <slot
-              v-if="$slots.header"
+              v-if="$slots.header && column.sortable"
               name="header"
               v-bind="{ column }"
             />
             <th v-else>
               <div>
-                <span class="label">{{ column.label }}</span>
+                <span class="label">{{ column.label || '\u00A0' }}</span>
               </div>
             </th>
           </template>
