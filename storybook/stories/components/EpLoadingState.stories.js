@@ -6,7 +6,7 @@ import EpTable from '@/components/table/EpTable.vue'
 import useExclude from '@/components/table/useExclude.js'
 import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
 import { columns, fakeArray } from '../../data/tableData.js'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 export default {
   title: 'Components/Loading State',
@@ -68,16 +68,14 @@ export const LoadingState = args => ({
         menuItems: [
           {
             label: 'Clear & Fetch',
-            command: () => {
+            onClick: () => {
               messages.value = clearAndFetchConfig
-              loading.value = true
             }
           },
           {
             label: 'Destroy & Fetch',
-            command: () => {
+            onClick: () => {
               messages.value = destroyAndFetchConfig
-              loading.value = true
             }
           }
         ]
@@ -117,18 +115,13 @@ export const LoadingState = args => ({
 
     const refresh = () => {
       messages.value = refreshConfig
-      loading.value = true
     }
 
-    // const clearAndFetch = () => {
-    //   messages.value = clearAndFetchConfig
-    //   loading.value = true
-    // }
-
-    // const destroyAndFetch = () => {
-    //   messages.value = destroyAndFetchConfig
-    //   loading.value = true
-    // }
+    watch(messages, (newVal, oldVal) => {
+      if (newVal && newVal !== oldVal) {
+        loading.value = true
+      }
+    })
 
     onMounted(() => {
       setTimeout(() => {
@@ -161,7 +154,7 @@ export const LoadingState = args => ({
       }"
     >
       <template #header>
-      <ep-header>
+      <ep-header :styles="{ '--ep-header-container-overflow': 'visible' }">
         <template #left>
           <ep-split-button
             v-bind="splitButtonProps"
@@ -175,8 +168,8 @@ export const LoadingState = args => ({
       <template #default>
         <ep-loading-state
           v-bind="args"
-          :messages="messages"
-          v-show="loading"
+          :messages
+          :loading
           @done="done"
           style="left: -30px; right: -30px;"
         />

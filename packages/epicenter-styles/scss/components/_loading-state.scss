@@ -1,4 +1,6 @@
 .ep-loading {
+  --ep-loading-state-bg-color: var(--interface-surface);
+  --ep-loading-state-border-radius: var(--border-radius--large);
   position: absolute;
   top: 0;
   left: 0;
@@ -11,6 +13,8 @@
   gap: 2rem;
   justify-content: center;
   align-items: center;
+  background: var(--ep-loading-state-bg-color);
+  border-radius: var(--ep-loading-state-border-radius);
 
   &__icon-container {
     display: flex;

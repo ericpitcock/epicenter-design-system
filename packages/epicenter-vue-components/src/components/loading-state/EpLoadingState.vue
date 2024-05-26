@@ -1,8 +1,9 @@
 <template>
   <transition name="fade">
     <div
+      v-if="loading"
       class="ep-loading"
-      :style="loadingStateStyles"
+      :style="styles"
     >
       <div class="ep-loading__icon-container">
         <!-- <img v-if="icon" :src="`${icon}.svg`" /> -->
@@ -48,68 +49,66 @@
   </transition>
 </template>
 
-<script>
-  export default {
-    name: 'EpLoading',
-    props: {
-      backgroundColor: {
-        type: String,
-        default: 'var(--interface-surface)'
-      },
-      borderRadius: {
-        type: String,
-        default: 'var(--border-radius--large)'
-      },
-      messages: {
-        type: Array,
-        default: () => [{
-          icon: '',
-          message: 'Loading...'
-        }]
-      },
-      messageDelay: {
-        type: Number,
-        default: 2000
-      },
-    },
-    emits: ['done'],
-    data() {
-      return {
-        icon: '',
-        message: '',
-      }
-    },
-    computed: {
-      loadingStateStyles() {
-        return {
-          backgroundColor: this.backgroundColor,
-          borderRadius: this.borderRadius
-        }
-      }
-    },
-    watch: {
-      messages() {
-        this.cycleMessages()
-      }
-    },
-    methods: {
-      cycleMessages() {
-        // every set duration, display the next message and icon by loading them into data
-        // when the last message is displayed, emit a done event
-        if (this.messages === null) return
+<script setup>
+  import { ref, onMounted, watch } from 'vue'
 
-        this.messages.forEach((message, index) => {
-          setTimeout(() => {
-            this.icon = message.icon
-            this.message = message.message
-            if (index === this.messages.length - 1) {
-              setTimeout(() => {
-                this.$emit('done')
-              }, this.messageDelay)
-            }
-          }, this.messageDelay * index)
-        })
-      }
+  defineOptions({
+    name: 'EpLoading',
+  })
+
+  const props = defineProps({
+    loading: {
+      type: Boolean,
+      default: true
+    },
+    messages: {
+      type: Array,
+      default: () => [{
+        icon: '',
+        message: 'Loading...'
+      }]
+    },
+    messageDelay: {
+      type: Number,
+      default: 2000
+    },
+    styles: {
+      type: Object,
+      default: () => ({})
     }
+  })
+
+  const emit = defineEmits(['done'])
+
+  const icon = ref('')
+  const message = ref('')
+
+  onMounted(() => {
+    cycleMessages()
+  })
+
+  // watch loading prop and cycle messages when loading is true
+  watch(() => props.messages, (newValue) => {
+    if (newValue) {
+      cycleMessages()
+    }
+  })
+
+  const cycleMessages = () => {
+    // every set duration, display the next message and icon by loading them into data
+    // when the last message is displayed, emit a done event
+    if (props.messages === null) return
+
+    props.messages.forEach((message, index) => {
+      setTimeout(() => {
+        icon.value = message.icon
+        message.value = message.message
+        if (index === props.messages.length - 1) {
+          setTimeout(() => {
+            emit('done')
+          }, props.messageDelay)
+        }
+      }, props.messageDelay * index)
+    })
   }
 </script>
