@@ -23,7 +23,7 @@ export default {
     backgroundColor: {
       name: '--ep-loading-state-bg-color',
       control: {
-        type: 'text'
+        type: 'color'
       }
     },
     borderRadius: {
