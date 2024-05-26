@@ -11,18 +11,19 @@
   </div>
 </template>
 
-<script>
-  export default {
+<script setup>
+  defineOptions({
     name: 'EpTabContent',
-    props: {
-      activeTabIndex: {
-        type: Number,
-        default: 0
-      },
-      items: {
-        type: Array,
-        default: () => []
-      }
+  })
+
+  const props = defineProps({
+    activeTabIndex: {
+      type: Number,
+      default: 0
+    },
+    items: {
+      type: Array,
+      default: () => []
     }
-  }
+  })
 </script>
