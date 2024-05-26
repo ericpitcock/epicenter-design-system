@@ -6,7 +6,6 @@
       :style="styles"
     >
       <div class="ep-loading__icon-container">
-        <!-- <img v-if="icon" :src="`${icon}.svg`" /> -->
         <svg
           width="38"
           height="38"
@@ -43,14 +42,14 @@
         </svg>
       </div>
       <div class="ep-loading__message-container">
-        <p>{{ message }}</p>
+        <p>{{ message.message }}</p>
       </div>
     </div>
   </transition>
 </template>
 
 <script setup>
-  import { ref, onMounted, watch } from 'vue'
+  import { watch } from 'vue'
 
   defineOptions({
     name: 'EpLoading',
@@ -61,16 +60,9 @@
       type: Boolean,
       default: true
     },
-    messages: {
-      type: Array,
-      default: () => [{
-        icon: '',
-        message: 'Loading...'
-      }]
-    },
-    messageDelay: {
-      type: Number,
-      default: 2000
+    message: {
+      type: Object,
+      default: () => ({ icon: '', message: 'Loading...' })
     },
     styles: {
       type: Object,
@@ -78,37 +70,9 @@
     }
   })
 
-  const emit = defineEmits(['done'])
-
-  const icon = ref('')
-  const message = ref('')
-
-  onMounted(() => {
-    cycleMessages()
-  })
-
-  // watch loading prop and cycle messages when loading is true
-  watch(() => props.messages, (newValue) => {
-    if (newValue) {
-      cycleMessages()
+  watch(() => props.loading, (newValue) => {
+    if (!newValue) {
+      // Handle any cleanup or state reset if needed
     }
   })
-
-  const cycleMessages = () => {
-    // every set duration, display the next message and icon by loading them into data
-    // when the last message is displayed, emit a done event
-    if (props.messages === null) return
-
-    props.messages.forEach((message, index) => {
-      setTimeout(() => {
-        icon.value = message.icon
-        message.value = message.message
-        if (index === props.messages.length - 1) {
-          setTimeout(() => {
-            emit('done')
-          }, props.messageDelay)
-        }
-      }, props.messageDelay * index)
-    })
-  }
 </script>

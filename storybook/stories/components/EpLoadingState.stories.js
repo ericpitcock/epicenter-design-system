@@ -6,7 +6,7 @@ import EpTable from '@/components/table/EpTable.vue'
 import useExclude from '@/components/table/useExclude.js'
 import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
 import { columns, fakeArray } from '../../data/tableData.js'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted } from 'vue'
 
 export default {
   title: 'Components/Loading State',
@@ -49,6 +49,16 @@ export const LoadingState = args => ({
     EpLoadingState
   },
   setup() {
+    const loading = ref(true)
+    const messages = ref(null)
+    const tableData = ref(fakeArray(30))
+    const columnsRef = ref(columns)
+
+    const {
+      includedColumns,
+      includedData
+    } = useExclude(columnsRef, tableData, ['id'])
+
     const splitButtonProps = {
       buttonProps: {
         variant: 'primary',
@@ -69,61 +79,75 @@ export const LoadingState = args => ({
           {
             label: 'Clear & Fetch',
             onClick: () => {
-              messages.value = clearAndFetchConfig
+              refresh('clearAndFetch')
             }
           },
           {
             label: 'Destroy & Fetch',
             onClick: () => {
-              messages.value = destroyAndFetchConfig
+              refresh('destroyAndFetch')
             }
           }
         ]
       }
     }
 
-    const refreshConfig = [
-      { icon: 'oval', message: 'Refreshing data…' }
-    ]
+    const refreshStates = {
+      refresh: [
+        { icon: 'oval', message: 'Refreshing data…' }
+      ],
+      clearAndFetch: [
+        { icon: 'oval', message: 'Clearing local data…' },
+        { icon: 'oval', message: 'Fetching new data from our servers…' }
+      ],
+      destroyAndFetch: [
+        { icon: 'oval', message: 'Destroying everything…' },
+        { icon: 'oval', message: 'Fetching new data from our servers…' },
+        { icon: 'oval', message: 'Considering the repercussions of this action…' }
+      ]
+    }
 
-    const clearAndFetchConfig = [
-      { icon: 'oval', message: 'Clearing local data…' },
-      { icon: 'oval', message: 'Fetching new data from our servers…' }
-    ]
-
-    const destroyAndFetchConfig = [
-      { icon: 'oval', message: 'Destroying everything…' },
-      { icon: 'oval', message: 'Fetching new data from our servers…' },
-      { icon: 'oval', message: 'Considering the repercussions of this action…' }
-    ]
-
-    const loading = ref(true)
-    const messages = ref(null)
-    const tableData = ref(fakeArray(30))
-    const columnsRef = ref(columns)
-
-    const {
-      includedColumns,
-      includedData
-    } = useExclude(columnsRef, tableData, ['id'])
+    const refresh = (state) => {
+      messages.value = refreshStates[state]
+      loading.value = true
+      cycleMessages()
+    }
 
     const done = () => {
       loading.value = false
       messages.value = null
+      // fake refresh data
       tableData.value = fakeArray(30)
     }
 
-    const refresh = () => {
-      messages.value = refreshConfig
+    const currentMessage = ref({ icon: '', message: 'Loading...' })
+
+    // watch(messages, (newVal, oldVal) => {
+    //   if (newVal && newVal !== oldVal) {
+    //     loading.value = true
+    //   }
+    // })
+
+    const cycleMessages = (index = 0) => {
+      if (!messages.value || messages.value.length === 0) return
+
+      currentMessage.value = messages.value[index]
+      const nextIndex = (index + 1) % messages.value.length
+
+      // if it's the last message, wait for the message delay and then call done
+      if (nextIndex === 0) {
+        setTimeout(() => {
+          done()
+        }, args.messageDelay)
+      }
+
+      setTimeout(() => {
+        cycleMessages(nextIndex)
+      }, 2000)
     }
 
-    watch(messages, (newVal, oldVal) => {
-      if (newVal && newVal !== oldVal) {
-        loading.value = true
-      }
-    })
-
     onMounted(() => {
+      refresh('refresh')
       setTimeout(() => {
         loading.value = false
       }, 2000)
@@ -141,6 +165,7 @@ export const LoadingState = args => ({
       includedColumns,
       includedData,
       splitButtonProps,
+      currentMessage
     }
   },
   template: `
@@ -158,7 +183,7 @@ export const LoadingState = args => ({
         <template #left>
           <ep-split-button
             v-bind="splitButtonProps"
-            @button-click="refresh"
+            @button-click="refresh('refresh')"
           />
         </template>
         <template #right>
@@ -168,7 +193,7 @@ export const LoadingState = args => ({
       <template #default>
         <ep-loading-state
           v-bind="args"
-          :messages
+          :message="currentMessage"
           :loading
           @done="done"
           style="left: -30px; right: -30px;"
