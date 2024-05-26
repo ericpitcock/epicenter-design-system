@@ -6,37 +6,33 @@ import EpTable from '@/components/table/EpTable.vue'
 import useExclude from '@/components/table/useExclude.js'
 import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
 import { columns, fakeArray } from '../../data/tableData.js'
-import { ref, onMounted } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 
 export default {
   title: 'Components/Loading State',
   component: EpLoadingState,
   decorators: [paddedBg],
   argTypes: {
-    backgroundColor: {
-      name: 'Background Color',
-      control: {
-        type: 'text'
-      }
-    },
-    borderRadius: {
-      name: 'Border Radius',
-      control: {
-        type: 'text'
-      }
-    },
-    messages: {
+    loading: { table: { disable: true } },
+    message: {
       name: 'Message',
       control: {
         type: 'array'
       }
     },
-    messageDelay: {
-      name: 'Message Delay (ms)',
+    backgroundColor: {
+      name: '--ep-loading-state-bg-color',
       control: {
-        type: 'number'
+        type: 'text'
       }
-    }
+    },
+    borderRadius: {
+      name: '--ep-loading-state-border-radius',
+      control: {
+        type: 'text'
+      }
+    },
+    styles: { table: { disable: true } }
   }
 }
 
@@ -53,6 +49,15 @@ export const LoadingState = args => ({
     const messages = ref(null)
     const tableData = ref(fakeArray(30))
     const columnsRef = ref(columns)
+
+    const styles = computed(() => {
+      return {
+        '--ep-loading-state-bg-color': args.backgroundColor,
+        '--ep-loading-state-border-radius': args.borderRadius,
+        right: '-30px',
+        left: '-30px',
+      }
+    })
 
     const {
       includedColumns,
@@ -122,12 +127,6 @@ export const LoadingState = args => ({
 
     const currentMessage = ref({ icon: '', message: 'Loading...' })
 
-    // watch(messages, (newVal, oldVal) => {
-    //   if (newVal && newVal !== oldVal) {
-    //     loading.value = true
-    //   }
-    // })
-
     const cycleMessages = (index = 0) => {
       if (!messages.value || messages.value.length === 0) return
 
@@ -138,7 +137,7 @@ export const LoadingState = args => ({
       if (nextIndex === 0) {
         setTimeout(() => {
           done()
-        }, args.messageDelay)
+        }, 2000)
       }
 
       setTimeout(() => {
@@ -165,7 +164,8 @@ export const LoadingState = args => ({
       includedColumns,
       includedData,
       splitButtonProps,
-      currentMessage
+      currentMessage,
+      styles
     }
   },
   template: `
@@ -196,7 +196,7 @@ export const LoadingState = args => ({
           :message="currentMessage"
           :loading
           @done="done"
-          style="left: -30px; right: -30px;"
+          :styles="styles"
         />
         <ep-table
           :columns="includedColumns"
@@ -219,5 +219,4 @@ export const LoadingState = args => ({
 LoadingState.args = {
   backgroundColor: 'var(--interface-surface)',
   borderRadius: 'none',
-  messageDelay: 2000
 }
