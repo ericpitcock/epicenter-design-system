@@ -26,7 +26,7 @@ export default {
         'Danger'
       ],
       mapping: {
-        Custom: null,
+        None: null,
         Primary: { 'button-variant-primary': true },
         Success: { 'button-variant-success': true },
         Warning: { 'button-variant-warning': true },
@@ -277,7 +277,7 @@ export const Button = args => ({
   template: `
     <ep-button
       v-bind="args"
-      :style="styles"
+      :styles="styles"
       :classes="args.classes"
       @click="onClick"
     />
@@ -288,7 +288,7 @@ Button.args = {
   label: 'Download the Internet',
   size: 'large',
   disabled: false,
-  classes: 'Custom',
+  classes: 'None',
   enabledIcons: false,
   iconLeft: 'None',
   iconRight: 'None',

@@ -14,7 +14,7 @@ export default {
       }
     },
     classes: {
-      name: 'Variant',
+      name: 'Style',
       options: [
         'Custom',
         'Primary',
@@ -88,12 +88,13 @@ export const Badge = args => ({
   template: `
     <ep-badge
       v-bind="args"
-      :style="styles"
       :classes="args.classes"
+      :styles="styles"
     />
   `
 })
 
 Badge.args = {
   label: 'Subscribed',
+  classes: 'None',
 }
