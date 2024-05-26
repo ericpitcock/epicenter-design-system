@@ -17,7 +17,6 @@
   import 'prismjs/components/prism-json'
   import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js'
 
-  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     code: {
       type: String,

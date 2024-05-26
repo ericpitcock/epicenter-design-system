@@ -11,7 +11,7 @@
   defineOptions({
     name: 'EpBadge'
   })
-  // eslint-disable-next-line no-unused-vars
+
   const props = defineProps({
     classes: {
       type: Object,

@@ -133,6 +133,7 @@
       // },
       onClick(item) {
         this.$emit('select', item)
+        this.closeDropdown()
       },
       onMouseover() {
         if (this.disabled) {

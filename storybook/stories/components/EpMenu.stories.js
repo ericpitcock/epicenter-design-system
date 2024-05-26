@@ -1,7 +1,7 @@
 import { centeredBg } from '../../helpers/decorators.js'
 import EpMenu from '@/components/menu/EpMenu.vue'
 
-const fakeMenuItems = [
+const menuConfig = [
   {
     label: 'Go to internal page',
     iconLeft: { name: 'arrow-right' },
@@ -17,7 +17,7 @@ const fakeMenuItems = [
   {
     label: 'Log click',
     iconLeft: { name: 'circle' },
-    command: () => console.log('click')
+    onClick: (item) => console.log('clicked', item.label)
   },
   {
     label: 'Google Maps',
@@ -33,20 +33,20 @@ const fakeMenuItems = [
     children: [
       {
         label: 'Sub-menu item 1',
-        command: () => console.log('click')
+        onClick: (item) => console.log('clicked', item.label)
       },
       {
         label: 'Sub-menu item 2',
-        command: () => console.log('click')
+        onClick: (item) => console.log('clicked', item.label)
       },
       { divider: true },
       {
         label: 'Sub-menu item 3',
-        command: () => console.log('click')
+        onClick: (item) => console.log('clicked', item.label)
       },
       {
         label: 'Sub-menu item 4',
-        command: () => console.log('click')
+        onClick: (item) => console.log('clicked', item.label)
       }
     ]
   },
@@ -56,27 +56,34 @@ const fakeMenuItems = [
     label: 'Section'
   },
   {
-    label: 'This is a menu item'
+    label: 'This is a menu item',
+    onClick: (item) => console.log('clicked', item.label)
   },
   {
-    label: 'Another menu item'
+    label: 'Another menu item',
+    onClick: (item) => console.log('clicked', item.label)
   },
   {
-    label: 'The menuiest item'
+    label: 'The menuiest item',
+    onClick: (item) => console.log('clicked', item.label)
   },
   { divider: true },
   {
     section: true,
-    label: 'Section'
+    label: 'Section',
+    onClick: (item) => console.log('clicked', item.label)
   },
   {
-    label: 'Go back'
+    label: 'Go back',
+    onClick: (item) => console.log('clicked', item.label)
   },
   {
-    label: 'Two steps forward'
+    label: 'Two steps forward',
+    onClick: (item) => console.log('clicked', item.label)
   },
   {
-    label: 'Internet!'
+    label: 'Internet!',
+    onClick: (item) => console.log('clicked', item.label)
   },
   {
     label: 'Another sub-menu',
@@ -84,15 +91,15 @@ const fakeMenuItems = [
     children: [
       {
         label: 'Sub-menu item 1',
-        command: () => console.log('click')
+        onClick: (item) => console.log('clicked', item.label)
       },
       {
         label: 'Sub-menu item 2',
-        command: () => console.log('click')
+        onClick: (item) => console.log('clicked', item.label)
       },
       {
         label: 'Sub-menu item 3',
-        command: () => console.log('click')
+        onClick: (item) => console.log('clicked', item.label)
       }
     ]
   }
@@ -116,18 +123,10 @@ export default {
         }
       }
     },
-    containerProps: {
-      name: 'Container Props',
-      control: {
-        type: 'object'
-      }
-    },
-    menuItems: {
-      name: 'Menu items',
-      control: {
-        type: 'array'
-      }
-    }
+    containerProps: { table: { disable: true } },
+    menuItems: { table: { disable: true } },
+    menuType: { table: { disable: true } },
+    activeItem: { table: { disable: true } },
   }
 }
 
@@ -147,5 +146,5 @@ Menu.args = {
       '--ep-container-bg-color': 'var(--interface-surface)',
     }
   },
-  menuItems: fakeMenuItems
+  menuItems: menuConfig
 }

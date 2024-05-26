@@ -14,7 +14,6 @@
   import EpIcon from '../icon/EpIcon.vue'
   import { computed } from 'vue'
 
-  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     column: {
       type: Object,

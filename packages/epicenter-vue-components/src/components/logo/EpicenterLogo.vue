@@ -20,16 +20,17 @@
   </svg>
 </template>
 
-<script>
-  export default {
+<script setup>
+  defineOptions({
     name: 'EpicenterLogo',
-    props: {
-      styles: {
-        type: Object,
-        default: () => ({})
-      }
-    }
-  }
+  })
+
+  const props = defineProps({
+    styles: {
+      type: Object,
+      default: () => ({})
+    },
+  })
 </script>
 
 <style lang="scss" scoped>

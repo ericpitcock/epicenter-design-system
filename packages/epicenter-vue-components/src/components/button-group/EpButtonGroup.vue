@@ -12,46 +12,42 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import EpButton from '../button/EpButton.vue'
+  import { ref } from 'vue'
 
-  export default {
-    name: 'EpButtonGroup',
-    components: {
-      EpButton
+  defineOptions({
+    name: 'EpButtonGroup'
+  })
+
+  const props = defineProps({
+    items: {
+      type: Array,
+      required: true
     },
-    props: {
-      items: {
-        type: Array,
-        required: true
-      },
-      active: {
-        type: Number,
-        default: null
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      size: {
-        type: String,
-        default: 'default'
-      }
+    active: {
+      type: Number,
+      default: null
     },
-    emits: ['click'],
-    data() {
-      return {
-        activeButton: 0
-      }
+    disabled: {
+      type: Boolean,
+      default: false
     },
-    methods: {
-      onClick(item, index) {
-        if (this.disabled) {
-          return
-        }
-        this.activeButton = index
-        this.$emit('click', item)
-      }
+    size: {
+      type: String,
+      default: 'default'
     }
+  })
+
+  const emit = defineEmits(['click'])
+
+  const activeButton = ref(0)
+
+  const onClick = (item, index) => {
+    if (props.disabled) {
+      return
+    }
+    activeButton.value = index
+    emit('click', item)
   }
 </script>

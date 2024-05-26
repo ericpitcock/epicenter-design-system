@@ -16,7 +16,6 @@
 <script setup>
   import DOMPurify from 'dompurify'
 
-  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     row: {
       type: Object,

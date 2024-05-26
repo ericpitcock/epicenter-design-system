@@ -22,49 +22,46 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import EpButton from '../button/EpButton.vue'
   import EpDropdown from '../dropdown/EpDropdown.vue'
+  import { computed } from 'vue'
 
-  export default {
-    name: 'EpActionBar',
-    components: {
-      EpButton,
-      EpDropdown
+  defineOptions({
+    name: 'EpActionBar'
+  })
+
+  const props = defineProps({
+    items: {
+      type: Array,
+      required: true,
     },
-    props: {
-      items: {
-        type: Array,
-        required: true,
-      },
-      justifyContent: {
-        type: String,
-        default: 'flex-end'
-      },
-      showDropdownOnHover: {
-        type: Boolean,
-        default: false
-      }
+    justifyContent: {
+      type: String,
+      default: 'flex-end'
     },
-    emits: ['click'],
-    computed: {
-      actionBarStyles() {
-        return {
-          justifyContent: this.justifyContent
-        }
-      },
-      buttonDefaults() {
-        return {
-          variant: 'ghost',
-          label: '',
-          title: '',
-        }
-      }
-    },
-    methods: {
-      onClick(item) {
-        this.$emit('click', item)
-      },
+    showDropdownOnHover: {
+      type: Boolean,
+      default: false
     }
+  })
+
+  const emit = defineEmits(['click'])
+
+  const actionBarStyles = computed(() => {
+    return {
+      justifyContent: props.justifyContent
+    }
+  })
+
+  const buttonDefaults = computed(() => {
+    return {
+      label: '',
+      title: '',
+    }
+  })
+
+  const onClick = (item) => {
+    emit('click', item)
   }
 </script>

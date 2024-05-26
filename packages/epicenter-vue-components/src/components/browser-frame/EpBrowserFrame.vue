@@ -4,12 +4,14 @@
     :style="{ width: `${width}px` }"
   >
     <ep-header
-      padding="0 2rem"
+      :styles="{
+        '--ep-header-container-padding': '0 2rem',
+        '--ep-header-container-bg-color': 'var(--interface-foreground)',
+        '--ep-header-left-flex': '0',
+        '--ep-header-center-flex': '3',
+        '--ep-header-right-flex': '0',
+      }"
       style="flex: 1 1 5rem; max-height: 5rem;"
-      left-flex="0"
-      center-flex="3"
-      right-flex="0"
-      background-color="var(--interface-foreground)"
     >
       <template #left>
         <div class="window-buttons">
@@ -24,7 +26,12 @@
         </div>
       </template>
       <template #right>
-        <ep-icon name="user" />
+        <ep-icon
+          name="user"
+          :styles="{
+            '--ep-icon-width': '2rem',
+          }"
+        />
       </template>
     </ep-header>
     <div class="image-container">
@@ -36,31 +43,28 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import EpHeader from '../header/EpHeader.vue'
   import EpIcon from '../icon/EpIcon.vue'
 
-  export default {
-    name: 'EpBrowserFrame',
-    components: {
-      EpHeader,
-      EpIcon
+  defineOptions({
+    name: 'EpBrowserFrame'
+  })
+
+  const props = defineProps({
+    width: {
+      type: String,
+      default: '100%'
     },
-    props: {
-      width: {
-        type: String,
-        default: '100%'
-      },
-      url: {
-        type: String,
-        default: 'http://website.com'
-      },
-      imageUrl: {
-        type: String,
-        default: './color-desktop.png'
-      }
+    url: {
+      type: String,
+      default: 'http://website.com'
+    },
+    imageUrl: {
+      type: String,
+      default: './color-desktop.png'
     }
-  }
+  })
 </script>
 
 <style lang="scss" scoped>

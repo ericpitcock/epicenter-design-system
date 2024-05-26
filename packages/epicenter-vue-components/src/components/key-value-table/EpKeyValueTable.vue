@@ -133,28 +133,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-key-value-table-container {
-    overflow: auto;
-    -ms-overflow-style: none; // Internet Explorer, Edge
-    scrollbar-width: none; // Firefox
-
-    &::-webkit-scrollbar {
-      display: none; // Chrome, Safari, Opera
-    }
-  }
-
-  .ep-key-value-table {
-    td {
-      padding: 0.5rem 1rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    &--striped {
-      tr:nth-child(even) {
-        background-color: var(--table-stripe-color);
-      }
-    }
-  }
-</style>

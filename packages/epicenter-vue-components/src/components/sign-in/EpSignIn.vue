@@ -90,7 +90,7 @@
   import EpicenterLogo from '../logo/EpicenterLogo.vue'
 
   export default {
-    name: 'EpAcmeAssetExplorersignin',
+    name: 'EpSignIn',
     components: {
       EpButton,
       EpContainer,

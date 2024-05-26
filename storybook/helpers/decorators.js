@@ -1,47 +1,61 @@
-const createContainer = (centered, overflow, backgroundColor, padding, gradientBackground) => {
+const centeredBg = () => {
   return {
     template: `
-      <div style="
-        ${centered ? `display: grid; place-content: center; height: 100%;` : ``}
-        ${overflow ? `display: flex; flex-direction: column;` : `height: 100%;`}
-        width: 100%;
-        min-height: 100%;
-        padding: ${padding};
-        background-color: ${backgroundColor};
-        ${gradientBackground ? `background: ${gradientBackground};` : ''}
-      ">
+      <div class="decorator decorator--centered decorator--bg">
         <story />
       </div>
     `
   }
 }
 
-const centeredBg = () => {
-  return createContainer(true, false, 'var(--interface-bg)', '0', '')
-}
-
 const centeredSurface = () => {
-  return createContainer(true, false, 'var(--interface-surface)', '0', '')
+  return {
+    template: `
+      <div class="decorator decorator--centered decorator--surface">
+        <story />
+      </div>
+    `
+  }
 }
 
 const centeredCyanBlueGradient = () => {
-  return createContainer(true, false, '', '0', 'var(--gradient-bg)')
+  return {
+    template: `
+      <div class="decorator decorator--centered decorator--gradient-bg">
+        <story />
+      </div>
+    `
+  }
 }
 
 const paddedBg = () => {
-  return createContainer(false, false, 'var(--interface-bg)', '30px', '')
-}
-
-const paddedBgOverflow = () => {
-  return createContainer(false, true, 'var(--interface-bg)', '30px', '')
+  return {
+    template: `
+      <div class="decorator decorator--padded decorator--bg">
+        <story />
+      </div>
+    `
+  }
 }
 
 const paddedSurface = () => {
-  return createContainer(false, false, 'var(--interface-surface)', '30px', '')
+  return {
+    template: `
+      <div class="decorator decorator--padded decorator--surface">
+        <story />
+      </div>
+    `
+  }
 }
 
 const paddedSurfaceOverflow = () => {
-  return createContainer(false, true, 'var(--interface-surface)', '30px', '')
+  return {
+    template: `
+      <div class="decorator decorator--padded decorator--surface decorator--overflow">
+        <story />
+      </div>
+    `
+  }
 }
 
 export {
@@ -49,7 +63,6 @@ export {
   centeredSurface,
   centeredCyanBlueGradient,
   paddedBg,
-  paddedBgOverflow,
   paddedSurface,
   paddedSurfaceOverflow,
 }

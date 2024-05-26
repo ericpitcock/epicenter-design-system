@@ -7,8 +7,10 @@
       >
         <ep-divider
           v-if="item.divider"
-          :color="dividerColor"
-          margin="1rem 0"
+          :styles="{
+            '--ep-divider-border-color': dividerColor,
+            '--ep-divider-margin': '1rem 0'
+          }"
         />
         <div
           v-if="item.section"
@@ -44,92 +46,74 @@
   </ep-container>
 </template>
 
-<script>
+<script setup>
   import EpContainer from '../container/EpContainer.vue'
   import EpDivider from '../divider/EpDivider.vue'
   import EpButton from '../button/EpButton.vue'
+  import { ref } from 'vue'
 
-  export default {
-    name: 'EpMenu',
-    components: {
-      EpContainer,
-      EpDivider,
-      EpButton
+  defineOptions({
+    name: 'EpMenu'
+  })
+
+  const props = defineProps({
+    menuType: {
+      type: String,
+      default: 'default' // default, dropdown, nav
     },
-    props: {
-      menuType: {
-        type: String,
-        default: 'default' // default, dropdown, nav
-      },
-      menuItems: {
-        type: Array,
-        default: () => []
-      },
-      size: {
-        type: String,
-        default: 'default'
-      },
-      containerProps: {
-        type: Object,
-        default: () => ({})
-      },
-      activeItem: {
-        type: String,
-        default: ''
-      },
-      dividerColor: {
-        type: String,
-        default: 'var(--border-color)'
-      }
+    menuItems: {
+      type: Array,
+      default: () => []
     },
-    emits: ['click'],
-    data() {
-      return {
-        activeItemIndex: null
-      }
+    size: {
+      type: String,
+      default: 'default'
     },
-    methods: {
-      buttonProps(item) {
-        return {
-          disabled: item.disabled,
-          variant: 'menu-item',
-          size: this.size,
-          label: item.label,
-          iconRight: item.iconRight,
-          iconLeft: item.iconLeft,
-          isMenuItem: true,
-          isActiveMenuItem: this.menuType === 'nav' && item.label == this.activeItem,
-          ...item.bind
-        }
-      },
-      showSubmenu(item, index) {
-        if (item.children) {
-          this.activeItemIndex = index
-        }
-      },
-      hideSubmenu(item) {
-        if (item.children) {
-          this.activeItemIndex = null
-        }
-      },
-      onClick(item) {
-        // if (item.section || item.divider) {
-        //   return
-        // }
-        this.$emit('click', item)
-
-        if (item.command) {
-          item.command(item)
-        }
-
-        if (item.to) {
-          this.$router.push(item.to)
-        }
-
-        if (this.menuType === 'dropdown') {
-          this.$parent.closeDropdown()
-        }
-      }
+    containerProps: {
+      type: Object,
+      default: () => ({})
+    },
+    activeItem: {
+      type: String,
+      default: ''
+    },
+    dividerColor: {
+      type: String,
+      default: 'var(--border-color)'
     }
+  })
+
+  const emit = defineEmits(['click'])
+
+  const activeItemIndex = ref(null)
+
+  const buttonProps = (item) => {
+    return {
+      disabled: item.disabled,
+      size: props.size,
+      label: item.label,
+      iconRight: item.iconRight,
+      iconLeft: item.iconLeft,
+      isMenuItem: true,
+      isActiveMenuItem: props.menuType === 'nav' && item.label === props.activeItem,
+      ...item.bind
+    }
+  }
+
+  const showSubmenu = (item, index) => {
+    if (item.children) {
+      activeItemIndex.value = index
+    }
+  }
+
+  const hideSubmenu = (item) => {
+    if (item.children) {
+      activeItemIndex.value = null
+    }
+  }
+
+  const onClick = (item) => {
+    emit('click', item)
+    if (item.onClick) item.onClick(item)
   }
 </script>

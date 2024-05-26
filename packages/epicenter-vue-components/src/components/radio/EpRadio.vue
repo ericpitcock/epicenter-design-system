@@ -29,7 +29,6 @@
     required: true
   })
 
-  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     // required
     id: {

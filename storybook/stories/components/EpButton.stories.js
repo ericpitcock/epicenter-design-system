@@ -26,7 +26,7 @@ export default {
         'Danger'
       ],
       mapping: {
-        None: null,
+        Custom: null,
         Primary: { 'button-variant-primary': true },
         Success: { 'button-variant-success': true },
         Warning: { 'button-variant-warning': true },

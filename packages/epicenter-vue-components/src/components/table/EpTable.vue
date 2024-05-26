@@ -54,7 +54,6 @@
   import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
   import { computed, ref } from 'vue'
 
-  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     columns: {
       type: Array,

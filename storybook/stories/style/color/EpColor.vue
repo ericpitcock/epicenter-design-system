@@ -21,12 +21,10 @@
       <ep-table
         :columns="tableColumns"
         :data="filteredData"
-        :exclude="['style']"
         bordered
         sticky-header
         calculate-height
         :calculate-height-offset="30"
-        padding="0 3rem 10rem 3rem"
       />
     </ep-container>
   </div>

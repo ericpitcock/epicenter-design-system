@@ -42,7 +42,6 @@
   import EpButton from '../button/EpButton.vue'
   import EpIcon from '../icon/EpIcon.vue'
 
-  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     classes: {
       type: Object,

@@ -110,6 +110,7 @@ const fakeArray = length => {
       },
       actions: {
         props: {
+          size: 'small',
           menuItems: [
             {
               label: 'Edit',
@@ -128,9 +129,11 @@ const fakeArray = length => {
             label: '',
             iconLeft: {
               name: 'dots-vertical',
+              styles: { '--ep-icon-stroke-width': 3 }
             },
             iconRight: null,
             classes: ['ep-button-variant-subtle-ghost'],
+            size: 'small',
           },
           alignRight: true,
         }
