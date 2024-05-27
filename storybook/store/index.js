@@ -9,36 +9,46 @@ export const useStorybookStore = defineStore({
         id: faker.string.uuid(),
         active: false,
         message: 'Welcome to Acme Asset Explorer! You just unlocked new levels of visibility into your assets and vulnerabilities.',
-        variant: 'info',
-        timestamp: faker.date.past({ years: 2 }).toISOString()
+        timestamp: faker.date.past({ years: 2 }).toISOString(),
+        styles: {
+          '--ep-notification-strip-color': '#FFD700'
+        },
       },
       {
         id: faker.string.uuid(),
         active: false,
         message: 'App version 1.0.3 is now available',
-        variant: 'info',
-        timestamp: faker.date.past({ years: 1 }).toISOString()
+        timestamp: faker.date.past({ years: 1 }).toISOString(),
+        styles: {
+          '--ep-notification-strip-color': '#FFD700'
+        },
       },
       {
         id: faker.string.uuid(),
         active: false,
         message: 'Your support request was sent successfully',
-        variant: 'success',
-        timestamp: faker.date.recent({ days: 25 }).toISOString()
+        timestamp: faker.date.recent({ days: 25 }).toISOString(),
+        styles: {
+          '--ep-notification-strip-color': '#FFD700'
+        },
       },
       {
         id: faker.string.uuid(),
         active: false,
         message: 'You’re running low on endpoint licenses',
-        variant: 'warning',
-        timestamp: faker.date.recent({ days: 15 }).toISOString()
+        timestamp: faker.date.recent({ days: 15 }).toISOString(),
+        styles: {
+          '--ep-notification-strip-color': '#FFD700'
+        },
       },
       {
         id: faker.string.uuid(),
         active: false,
         message: 'Your organization has 34 assets with new critical vulnerabilities',
-        variant: 'error',
-        timestamp: faker.date.recent({ days: 5 }).toISOString()
+        timestamp: faker.date.recent({ days: 5 }).toISOString(),
+        styles: {
+          '--ep-notification-strip-color': '#FFD700'
+        },
       }
     ],
     notificationCenterOpen: false,
@@ -87,10 +97,10 @@ export const useStorybookStore = defineStore({
     toggleNotificationCenter() {
       this.notificationCenterOpen = !this.notificationCenterOpen
     },
-    removeNotification(notification) {
-      this.notifications = this.notifications.filter(
-        n => n.id !== notification.id
-      )
+    removeNotification(id) {
+      console.log('store:Removing notification', id)
+      // filter state.notifications array to remove notification with matching id
+      this.notifications = this.notifications.filter(n => n.id !== id)
     },
     toggleTheme() {
       let newTheme = this.theme == 'dark' ? 'light' : 'dark'

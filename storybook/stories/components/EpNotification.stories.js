@@ -2,8 +2,6 @@ import { faker } from '@faker-js/faker'
 import { centeredSurface } from '../../helpers/decorators.js'
 import EpNotification from '@/components/notification/EpNotification.vue'
 import { computed } from 'vue'
-// import { useStorybookStore } from '../../storybook/store'
-// const store = useStorybookStore()
 
 export default {
   title: 'Components/Notifications/Notification',
