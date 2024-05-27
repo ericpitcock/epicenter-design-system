@@ -1,0 +1,94 @@
+{
+  "hash": "010240fc",
+  "configHash": "d2ec3534",
+  "lockfileHash": "e3b0c442",
+  "browserHash": "6f1ae7df",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "fb17fc3e",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/vitepress/node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "aeb9e97f",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../../node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "892c8b8f",
+      "needsInterop": false
+    },
+    "vue-router": {
+      "src": "../../../../node_modules/vue-router/dist/vue-router.mjs",
+      "file": "vue-router.js",
+      "fileHash": "0724af4d",
+      "needsInterop": false
+    },
+    "highcharts": {
+      "src": "../../../../packages/epicenter-vue-components/node_modules/highcharts/highcharts.js",
+      "file": "highcharts.js",
+      "fileHash": "6342a942",
+      "needsInterop": true
+    },
+    "prismjs": {
+      "src": "../../../../packages/epicenter-vue-components/node_modules/prismjs/prism.js",
+      "file": "prismjs.js",
+      "fileHash": "5b5433d6",
+      "needsInterop": true
+    },
+    "prismjs/components/prism-javascript": {
+      "src": "../../../../packages/epicenter-vue-components/node_modules/prismjs/components/prism-javascript.js",
+      "file": "prismjs_components_prism-javascript.js",
+      "fileHash": "d84d204e",
+      "needsInterop": true
+    },
+    "prismjs/components/prism-json": {
+      "src": "../../../../packages/epicenter-vue-components/node_modules/prismjs/components/prism-json.js",
+      "file": "prismjs_components_prism-json.js",
+      "fileHash": "98e4e9eb",
+      "needsInterop": true
+    },
+    "prismjs/plugins/line-numbers/prism-line-numbers.min.js": {
+      "src": "../../../../packages/epicenter-vue-components/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js",
+      "file": "prismjs_plugins_line-numbers_prism-line-numbers__min__js.js",
+      "fileHash": "2b1062a8",
+      "needsInterop": true
+    },
+    "flatpickr": {
+      "src": "../../../../packages/epicenter-vue-components/node_modules/flatpickr/dist/esm/index.js",
+      "file": "flatpickr.js",
+      "fileHash": "048b35d1",
+      "needsInterop": false
+    },
+    "uuid": {
+      "src": "../../../../packages/epicenter-vue-components/node_modules/uuid/dist/esm-browser/index.js",
+      "file": "uuid.js",
+      "fileHash": "f7e69178",
+      "needsInterop": false
+    },
+    "mapbox-gl": {
+      "src": "../../../../packages/epicenter-vue-components/node_modules/mapbox-gl/dist/mapbox-gl.js",
+      "file": "mapbox-gl.js",
+      "fileHash": "fcdfdcb8",
+      "needsInterop": true
+    },
+    "dompurify": {
+      "src": "../../../../packages/epicenter-vue-components/node_modules/dompurify/dist/purify.es.mjs",
+      "file": "dompurify.js",
+      "fileHash": "d2726b2d",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-SSC5OD6V": {
+      "file": "chunk-SSC5OD6V.js"
+    },
+    "chunk-Y2F7D3TJ": {
+      "file": "chunk-Y2F7D3TJ.js"
+    }
+  }
+}
