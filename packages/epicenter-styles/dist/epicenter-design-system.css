@@ -3921,12 +3921,14 @@ input.ep-input--disabled::placeholder {
 }
 
 .ep-notification {
+  --ep-notification-strip-color: var(--primary-color-base);
   display: flex;
   width: 30rem;
 }
 .ep-notification__color-strip {
   width: 0.5rem;
   border-radius: var(--border-radius--large) 0 0 var(--border-radius--large);
+  background: var(--ep-notification-strip-color);
 }
 .ep-notification__body {
   display: flex;
@@ -3941,21 +3943,22 @@ input.ep-input--disabled::placeholder {
   border-left: none;
   border-radius: 0 var(--border-radius--large) var(--border-radius--large) 0;
 }
-.ep-notification__body__message {
+.ep-notification__message {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
   height: 100%;
 }
-.ep-notification__body__message__text {
+.ep-notification__message__text {
   line-height: var(--text-line-height--tight);
   color: var(--text-color--loud);
 }
-.ep-notification__body__message__timestamp {
+.ep-notification__message__timestamp {
   font-size: var(--font-size--tiny);
   color: var(--text-color--subtle);
 }
+
 .notification-enter-active,
 .notification-leave-active {
   transition: transform 0.5s;

@@ -1,11 +1,12 @@
 import { faker } from '@faker-js/faker'
 import { centeredSurface } from '../../helpers/decorators.js'
 import EpNotification from '@/components/notification/EpNotification.vue'
+import { computed } from 'vue'
 // import { useStorybookStore } from '../../storybook/store'
 // const store = useStorybookStore()
 
 export default {
-  title: 'Components/Notification',
+  title: 'Components/Notifications/Notification',
   component: EpNotification,
   decorators: [centeredSurface],
   argTypes: {
@@ -16,30 +17,19 @@ export default {
         type: 'text'
       }
     },
-    variant: {
-      name: 'Variant',
-      options: [
-        'info',
-        'success',
-        'warning',
-        'error'
-      ],
-      control: {
-        type: 'radio',
-        labels: {
-          info: 'Info',
-          success: 'Success',
-          warning: 'Warning',
-          error: 'Error'
-        },
-      }
-    },
     timestamp: {
       name: 'Timestamp',
       control: {
         type: 'number'
       }
     },
+    stripColor: {
+      name: 'Strip Color',
+      control: {
+        type: 'color'
+      }
+    },
+    styles: { table: { disable: true } },
   }
 }
 
@@ -48,14 +38,19 @@ export const Notification = args => ({
     EpNotification
   },
   setup() {
-    return { args }
+    const styles = computed(() => {
+      return {
+        '--ep-notification-strip-color': args.stripColor
+      }
+    })
+    return { args, styles }
   },
-  template: '<ep-notification v-bind="args" />'
+  template: '<ep-notification v-bind="args" :styles />'
 })
 
 Notification.args = {
   id: '1',
   message: 'The future is bright!',
-  variant: 'success',
-  timestamp: faker.date.future({ days: 100 }).toISOString()
+  timestamp: faker.date.future({ days: 100 }).toISOString(),
+  stripColor: '#FFD700'
 }

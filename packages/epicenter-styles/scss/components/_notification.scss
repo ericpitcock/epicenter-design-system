@@ -1,10 +1,12 @@
 .ep-notification {
+  --ep-notification-strip-color: var(--primary-color-base);
   display: flex;
   width: 30rem;
 
   &__color-strip {
     width: .5rem;
     border-radius: var(--border-radius--large) 0 0 var(--border-radius--large);
+    background: var(--ep-notification-strip-color);
   }
 
   &__body {
@@ -19,26 +21,24 @@
     border: 1px solid var(--border-color--lighter);
     border-left: none;
     border-radius: 0 var(--border-radius--large) var(--border-radius--large) 0;
+  }
 
-    &__message {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: .5rem;
-      height: 100%;
+  &__message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+    height: 100%;
 
-      &__text {
-        line-height: var(--text-line-height--tight);
-        color: var(--text-color--loud);
-      }
-
-      &__timestamp {
-        font-size: var(--font-size--tiny);
-        color: var(--text-color--subtle);
-      }
+    &__text {
+      line-height: var(--text-line-height--tight);
+      color: var(--text-color--loud);
     }
 
-    .dismiss-button {}
+    &__timestamp {
+      font-size: var(--font-size--tiny);
+      color: var(--text-color--subtle);
+    }
   }
 }
 

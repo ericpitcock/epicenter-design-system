@@ -128,9 +128,6 @@
       'ep-multi-search--has-icon': props.icon,
       'ep-multi-search--focus': hasFocus.value,
       'ep-multi-search--disabled': props.disabled,
-      // 'ep-input--error': this.error,
-      // 'ep-input--success': this.success,
-      // 'ep-input--warning': this.warning
     }
   })
 
@@ -164,7 +161,6 @@
   })
 
   const onQueryClose = (item, index) => {
-    console.log('item', item)
     query.value.splice(index, 1)
     emit('query-close', item)
   }
@@ -189,20 +185,15 @@
   }
 
   const onEnter = () => {
-    // on enter, add the value to the query array
     query.value.push(value.value)
-    // then emit the query array
     emit('enter', query.value)
-    // then clear the input
     value.value = ''
   }
 
   const onDelete = () => {
-    // make sure there's nothing in the input
     if (value.value === '') {
       // find the last element in the query array and remove it
       query.value.splice(query.value.length - 1, 1)
-      // then emit the query array
       emit('delete', query.value)
     }
   }
