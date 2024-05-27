@@ -73,9 +73,10 @@ export const CodeView = args => ({
   template: `
     <ep-container
       :styles="{
-        '--ep-container-content-padding': '2rem',
+        '--ep-container-content-padding': '2rem 3rem',
         '--ep-container-width': 'fit-content',
         '--ep-container-bg-color': 'var(--interface-surface)',
+        '--ep-container-border-color': 'var(--interface-surface)',
       }"
     >
       <ep-code-view v-bind="args" :code="code" :theme="args.theme" />

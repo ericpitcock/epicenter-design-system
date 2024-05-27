@@ -8,7 +8,7 @@
       ref="input"
       :class="['ep-input', inputClasses]"
       :value="modelValue"
-      :style="inputStyles"
+      :style="styles"
       :type="type"
       :placeholder="computedPlaceholder"
       :disabled="disabled"
@@ -26,19 +26,18 @@
 </template>
 
 <script setup>
+  import EpInputStyler from '../input-styler/EpInputStyler.vue'
+  import { computed, ref } from 'vue'
+  import { v4 as uuidv4 } from 'uuid'
+
   defineOptions({
     name: 'EpInput',
     inheritAttrs: false,
   })
 
-  // import inputMixin from '../../mixins/inputMixin.js'
-  // import uuidMixin from '../../mixins/uuidMixin.js'
-  import EpInputStyler from '../input-styler/EpInputStyler.vue'
-  import { computed, ref } from 'vue'
-
-
-  // mixins: [inputMixin, uuidMixin], // convert to composables
-
+  const computedId = computed(() => {
+    return props.inputId || uuidv4()
+  })
 
   const props = defineProps({
     inputId: {
@@ -57,14 +56,6 @@
       type: String,
       default: ''
     },
-    placeholderColor: {
-      type: String,
-      default: ''
-    },
-    // modelValue: {
-    //   type: String,
-    //   default: ''
-    // },
     iconLeft: {
       type: Object,
       default: null
@@ -93,81 +84,36 @@
       type: Boolean,
       default: false
     },
-    width: {
-      type: String,
-      default: '100%'
-    },
     size: {
       type: String,
       default: 'default'
     },
-    borderWidth: {
-      type: String,
-      default: '0.1rem'
-    },
-    borderStyle: {
-      type: String,
-      default: 'solid'
-    },
-    borderColor: {
-      type: String,
-      default: 'var(--border-color)'
-    },
-    borderRadius: {
-      type: String,
-      default: 'var(--border-radius)'
-    },
-    backgroundColor: {
-      type: String,
-      default: 'var(--interface-foreground)'
+    styles: {
+      type: Object,
+      default: () => ({})
     },
   })
 
-  const emit = defineEmits(['update:modelValue', 'focus', 'esc', 'blur', 'enter', 'clear'])
+  const emit = defineEmits([
+    'update:modelValue',
+    'focus',
+    'esc',
+    'blur',
+    'enter',
+    'clear'
+  ])
 
-  const hasError = ref(false)
   const hasFocus = ref(false)
   const hasInput = ref(false)
-  const hasWarning = ref(false)
-  const hasSuccess = ref(false)
   const input = ref(null)
-
-
-  const computedBackgroundColor = computed(() => {
-    if (props.disabled) {
-      return 'transparent'
-    }
-    return props.backgroundColor
-  })
 
   const computedPlaceholder = computed(() => {
     return props.placeholder || props.label
   })
 
-  const computedBorderColor = computed(() => {
-    if (hasError.value) {
-      return 'red'
-    }
-    if (hasWarning.value) {
-      return 'yellow'
-    }
-    if (hasSuccess.value) {
-      return 'green'
-    }
-    if (props.disabled) {
-      return 'var(--border-color--disabled)'
-    }
-    return props.borderColor || 'var(--border-color)'
-  })
-
-  const computedId = computed(() => {
-    // return props.inputId || `input-${this.generateUUID()}`
-    return 'NEEDS_UUID'
-  })
-
   const stylerProps = computed(() => {
     return {
-      id: 'NEEDS_UUID',
+      id: computedId.value,
       hasFocus: hasFocus.value,
       hasInput: hasInput.value,
       label: props.label,
@@ -187,33 +133,11 @@
       'ep-input--has-icon-left': props.iconLeft,
       'ep-input--has-icon-right': props.iconRight,
       'ep-input--disabled': props.disabled,
-      'ep-input--error': props.hasError,
-      'ep-input--success': props.hasSuccess,
-      'ep-input--warning': props.hasWarning,
+      // 'ep-input--error': props.hasError,
+      // 'ep-input--success': props.hasSuccess,
+      // 'ep-input--warning': props.hasWarning,
     }
   })
-
-  const inputStyles = computed(() => {
-    const styles = {
-      borderStyle: props.borderStyle,
-      borderWidth: props.borderWidth,
-      borderColor: computedBorderColor,
-      borderRadius: props.borderRadius,
-      backgroundColor: computedBackgroundColor,
-      '--text-color--placeholder': props.placeholderColor,
-    }
-
-    return styles
-  })
-
-  // const value = computed({
-  //   get() {
-  //     return this.modelValue
-  //   },
-  //   set(value) {
-  //     emit('update:modelValue', value)
-  //   }
-  // })
 
   const modelValue = defineModel({
     type: String,

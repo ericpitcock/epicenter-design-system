@@ -17,7 +17,7 @@ export default {
   // },
   argTypes: {
     classes: {
-      name: 'Variant',
+      name: 'Style',
       options: [
         'Custom',
         'Primary',
