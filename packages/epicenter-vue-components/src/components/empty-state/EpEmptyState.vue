@@ -26,28 +26,30 @@
   </div>
 </template>
 
-<script>
-  export default {
+<script setup>
+  import { computed } from 'vue'
+
+  defineOptions({
     name: 'EpEmptyState',
-    props: {
-      direction: {
-        type: String,
-        default: 'column'
-      },
-      justify: {
-        type: String,
-        default: 'center'
-      },
+  })
+
+  const props = defineProps({
+    direction: {
+      type: String,
+      default: 'column'
     },
-    computed: {
-      classes() {
-        return {
-          'ep-empty-state--column': this.direction === 'column',
-          'ep-empty-state--row': this.direction === 'row',
-          'ep-empty-state--justify-left': this.justify === 'left',
-          'ep-empty-state--justify-right': this.justify === 'right',
-        }
-      }
+    justify: {
+      type: String,
+      default: 'center'
+    },
+  })
+
+  const classes = computed(() => {
+    return {
+      'ep-empty-state--column': props.direction === 'column',
+      'ep-empty-state--row': props.direction === 'row',
+      'ep-empty-state--justify-left': props.justify === 'left',
+      'ep-empty-state--justify-right': props.justify === 'right',
     }
-  }
+  })
 </script>

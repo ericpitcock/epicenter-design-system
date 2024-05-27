@@ -12,46 +12,45 @@
   </div>
 </template>
 
-<script>
-  export default {
+<script setup>
+  import { computed, ref } from 'vue'
+
+  defineOptions({
     name: 'EpToggle',
-    props: {
-      isActive: {
-        type: Boolean,
-        default: false,
-      },
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
-      label: {
-        type: String,
-        default: '',
-      },
-      size: {
-        type: String,
-        default: 'default',
-      },
+  })
+
+  const props = defineProps({
+    isActive: {
+      type: Boolean,
+      default: false,
     },
-    emits: ['toggle'],
-    data() {
-      return {
-        active: this.isActive,
-      }
+    disabled: {
+      type: Boolean,
+      default: false,
     },
-    computed: {
-      classes() {
-        return {
-          'toggle--active': this.active,
-          'toggle--disabled': this.disabled,
-        }
-      },
+    label: {
+      type: String,
+      default: '',
     },
-    methods: {
-      toggle() {
-        this.active = !this.active
-        this.$emit('toggle', this.active)
-      },
+    size: {
+      type: String,
+      default: 'default',
     },
+  })
+
+  const emit = defineEmits(['toggle'])
+
+  const active = ref(props.isActive)
+
+  const classes = computed(() => {
+    return {
+      'toggle--active': active.value,
+      'toggle--disabled': props.disabled,
+    }
+  })
+
+  const toggle = () => {
+    active.value = !active.value
+    emit('toggle', active.value)
   }
 </script>

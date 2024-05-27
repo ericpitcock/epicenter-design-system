@@ -11,34 +11,35 @@
   </div>
 </template>
 
-<script>
-  export default {
+<script setup>
+  import { onBeforeUnmount, ref } from 'vue'
+
+  defineOptions({
     name: 'EpTooltip',
-    props: {
-      delay: {
-        type: Number,
-        default: 0
-      }
-    },
-    data() {
-      return {
-        visible: false,
-        timeoutId: null
-      }
-    },
-    beforeUnmount() {
-      clearTimeout(this.timeoutId)
-    },
-    methods: {
-      showTooltip() {
-        this.timeoutId = setTimeout(() => {
-          this.visible = true
-        }, this.delay)
-      },
-      hideTooltip() {
-        clearTimeout(this.timeoutId)
-        this.visible = false
-      }
-    },
+  })
+
+  const props = defineProps({
+    delay: {
+      type: Number,
+      default: 0
+    }
+  })
+
+  const visible = ref(false)
+  const timeoutId = ref(null)
+
+  onBeforeUnmount(() => {
+    clearTimeout(timeoutId.value)
+  })
+
+  const showTooltip = () => {
+    timeoutId.value = setTimeout(() => {
+      visible.value = true
+    }, props.delay)
+  }
+
+  const hideTooltip = () => {
+    clearTimeout(timeoutId.value)
+    visible.value = false
   }
 </script>

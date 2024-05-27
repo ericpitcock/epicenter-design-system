@@ -36,121 +36,104 @@
   </div>
 </template>
 
-<script>
-  import clickOutside from '../../directives/clickOutside.js'
+<script setup>
+  import vClickOutside from '../../directives/clickOutside.js'
   import EpButton from '../button/EpButton.vue'
   import EpMenu from '../menu/EpMenu.vue'
+  import { ref, computed } from 'vue'
 
-  export default {
-    name: 'EpDropdown',
-    components: {
-      EpButton,
-      EpMenu
+  const props = defineProps({
+    disabled: {
+      type: Boolean,
+      default: false
     },
-    directives: {
-      clickOutside
+    buttonProps: {
+      type: Object,
+      default: () => ({})
     },
-    props: {
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      buttonProps: {
-        type: Object,
-        default: () => ({})
-      },
-      containerProps: {
-        type: Object,
-        default: () => ({})
-      },
-      menuItems: {
-        type: Array,
-        default: () => []
-      },
-      alignRight: {
-        type: Boolean,
-        default: false
-      },
-      showOnHover: {
-        type: Boolean,
-        default: false
-      }
+    containerProps: {
+      type: Object,
+      default: () => ({})
     },
-    emits: ['select'],
-    data() {
-      return {
-        dropdownVisible: false,
-        buttonDefaults: {
-          variant: 'secondary',
-          size: 'default',
-          title: '',
-          label: 'Default Dropdown',
-          iconRight: { name: 'chevron-down' },
-          iconLeft: undefined
-        }
-      }
+    menuItems: {
+      type: Array,
+      default: () => []
     },
-    computed: {
-      computedButtonProps() {
-        return {
-          ...this.disabled && { disabled: true },
-          ...this.buttonDefaults,
-          ...this.buttonProps,
-        }
-      },
-      computedContainerProps() {
-        return {
-          styles: {
-            '--ep-container-min-width': '15rem',
-            '--ep-container-bg-color': 'var(--interface-overlay)',
-            ...this.containerProps,
-          },
-        }
-      },
-      classes() {
-        return [
-          'ep-dropdown__container',
-          { 'ep-dropdown__container--align-right': this.alignRight }
-        ]
-      }
+    alignRight: {
+      type: Boolean,
+      default: false
     },
-    methods: {
-      toggleDropdown() {
-        if (this.disabled || this.showOnHover) {
-          return
-        }
-        this.dropdownVisible = !this.dropdownVisible
-      },
-      closeDropdown() {
-        if (this.disabled) {
-          return
-        }
-        this.dropdownVisible = false
-      },
-      // selectItem(item) {
-      //   this.$emit('select', item)
-      //   this.closeDropdown()
-      // },
-      onClick(item) {
-        this.$emit('select', item)
-        this.closeDropdown()
-      },
-      onMouseover() {
-        if (this.disabled) {
-          return
-        }
-        if (this.showOnHover) {
-          this.dropdownVisible = true
-        }
-      },
-      onMouseleave() {
-        if (this.disabled) {
-          return
-        }
-        if (this.showOnHover) {
-          this.dropdownVisible = false
-        }
-      }
+    showOnHover: {
+      type: Boolean,
+      default: false
+    }
+  })
+
+  const emit = defineEmits(['select'])
+
+  const dropdownVisible = ref(false)
+  const buttonDefaults = {
+    variant: 'secondary',
+    size: 'default',
+    title: '',
+    label: 'Default Dropdown',
+    iconRight: { name: 'chevron-down' },
+    iconLeft: undefined
+  }
+
+  const computedButtonProps = computed(() => ({
+    ...(props.disabled && { disabled: true }),
+    ...buttonDefaults,
+    ...props.buttonProps,
+  }))
+
+  const computedContainerProps = computed(() => ({
+    styles: {
+      '--ep-container-min-width': '15rem',
+      '--ep-container-bg-color': 'var(--interface-overlay)',
+      ...props.containerProps,
+    },
+  }))
+
+  const classes = computed(() => [
+    'ep-dropdown__container',
+    { 'ep-dropdown__container--align-right': props.alignRight }
+  ])
+
+  const toggleDropdown = () => {
+    if (props.disabled || props.showOnHover) {
+      return
+    }
+    dropdownVisible.value = !dropdownVisible.value
+  }
+
+  const closeDropdown = () => {
+    if (props.disabled) {
+      return
+    }
+    dropdownVisible.value = false
+  }
+
+  const onClick = (item) => {
+    emit('select', item)
+    closeDropdown()
+  }
+
+  const onMouseover = () => {
+    if (props.disabled) {
+      return
+    }
+    if (props.showOnHover) {
+      dropdownVisible.value = true
+    }
+  }
+
+  const onMouseleave = () => {
+    if (props.disabled) {
+      return
+    }
+    if (props.showOnHover) {
+      dropdownVisible.value = false
     }
   }
 </script>
