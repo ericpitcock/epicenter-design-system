@@ -1,25 +1,15 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
-layout: home
-
-hero:
-  name: Epicenter Design System Docs
-  text: 
-  tagline: Documentation for Epicenter Design System - Vue Components
-  actions:
-    - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
-
+home: true
+title: Epicenter Docs
+heroText: Epicenter Design System
+tagline: A collection of Vue components
+actionText: Get Started →
+actionLink: /components/EpActionBar
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Action Bar
+    details: A flexible action bar component.
 ---
 
+# Components
+
+- [Action Bar](./components/EpActionBar)
