@@ -53,23 +53,16 @@ This will make all components available globally — no need to import indivdual
   ...
 </template>
 
-<script>
+<script setup>
+  import { computed } from 'vue'
   import { EpButton } from '@ericpitcock/epicenter-vue-components'
 
-  export default {
-    components: {
-      EpButton
-    },
-    computed: {
-      buttonProps() {
-        return {
-          label: 'Click me'
-          size: 'large'
-          iconLeft: { name: 'circle' }
-        }
-      }
-    },
-    ...
-  }
+  const buttonProps = computed(() =>{
+    return {
+      label: 'Click me'
+      size: 'large'
+      iconLeft: { name: 'circle' }
+    }
+  })
 </script>
 ```
