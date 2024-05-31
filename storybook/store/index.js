@@ -51,55 +51,13 @@ export const useStorybookStore = defineStore({
         },
       }
     ],
-    notificationCenterOpen: false,
     theme: 'dark'
   }),
-  getters: {
-    getActiveNotifications: state => {
-      return state.notifications.filter(n => n.active)
-    },
-    getInactiveNotifications: state => {
-      return state.notifications.filter(n => !n.active)
-    },
-    hasActiveNotifications: state => {
-      return state.notifications.some(n => n.active)
-    }
-  },
   actions: {
-    addNotification(notification) {
-      // build new notification object
-      const newNotification = {
-        ...notification, // using spread syntax breaks the object reference, receives message and variant (success, info, warning, error)
-        active: true, // add active property
-        id: faker.string.uuid(), // adds unique ID each time
-        timestamp: new Date().toISOString()
-      }
-
-      // add the notification object to the array
-      this.notifications.push(newNotification)
-
-      // if it hasn't been dismissed, move it to the notifications center (active: false) after 5 seconds
-      setTimeout(() => {
-        // if newNotification is not in the array, return
-        if (!this.notifications.includes(newNotification)) return
-
-        // find newNotification in the array
-        const index = this.notifications.findIndex(
-          n => n.id === newNotification.id
-        )
-        // active to false
-        this.notifications[index].active = false
-      }, 5000)
-    },
     clearNotifications() {
       this.notifications = []
     },
-    toggleNotificationCenter() {
-      this.notificationCenterOpen = !this.notificationCenterOpen
-    },
     removeNotification(id) {
-      console.log('store:Removing notification', id)
-      // filter state.notifications array to remove notification with matching id
       this.notifications = this.notifications.filter(n => n.id !== id)
     },
     toggleTheme() {

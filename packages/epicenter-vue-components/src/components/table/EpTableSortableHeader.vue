@@ -1,6 +1,8 @@
 <template>
   <th @click="emit('sort', column.key)">
-    <div class="ep-table-sortable-header">
+    <div :class="['ep-table-sortable-header',
+      { 'ep-table-sortable-header--active': props.sortColumn === props.column.key }
+    ]">
       {{ column.label }}
       <ep-icon
         v-if="column.sortable && props.sortColumn === props.column.key"

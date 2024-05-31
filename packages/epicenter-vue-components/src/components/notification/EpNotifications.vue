@@ -11,7 +11,7 @@
           <p
             v-show="!isNotificationsEmpty"
             class="text--link"
-            @click="clearNotifications"
+            @click="$emit('clear-notifications')"
           >
             Clear all
           </p>
@@ -71,7 +71,7 @@
         default: () => []
       }
     },
-    emits: ['remove-notification'],
+    emits: ['remove-notification', 'clear-notifications'],
     data() {
       return {
         defaultContainerProps: {
@@ -87,14 +87,6 @@
       }
     },
     computed: {
-      // ...mapState([
-      //   'notifications',
-      //   'notificationCenterOpen'
-      // ]),
-      // ...mapGetters([
-      //   'hasActiveNotifications',
-      //   'getInactiveNotifications'
-      // ]),
       computedContainerProps() {
         return {
           ...this.defaultContainerProps,
@@ -105,13 +97,5 @@
         return this.notifications.length === 0
       }
     },
-    methods: {
-      // removeNotification(notification) {
-      //   this.$store.dispatch('removeNotification', notification)
-      // },
-      // clearNotifications() {
-      //   this.$store.dispatch('clearNotifications')
-      // }
-    }
   }
 </script>

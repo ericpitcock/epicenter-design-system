@@ -20,7 +20,6 @@ const commonActionBarArgs = {
   items: [
     {
       type: 'dropdown',
-      alignRight: true,
       buttonProps: {
         label: '',
         iconLeft: { name: 'help' },
@@ -39,7 +38,6 @@ const commonActionBarArgs = {
     },
     {
       type: 'dropdown',
-      alignRight: true,
       buttonProps: {
         label: '',
         iconLeft: { name: 'notifications' },
@@ -59,7 +57,6 @@ const commonActionBarArgs = {
     },
     {
       type: 'dropdown',
-      alignRight: true,
       buttonProps: {
         label: '',
         iconLeft: { name: 'user' },

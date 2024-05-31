@@ -92,8 +92,8 @@
       default: () => ({})
     },
     classes: {
-      type: [Array, Object],
-      default: () => ({})
+      type: [Array, Object, String],
+      default: ''
     }
   })
 

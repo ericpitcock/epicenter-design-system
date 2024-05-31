@@ -42,6 +42,10 @@
   import EpMenu from '../menu/EpMenu.vue'
   import { ref, computed } from 'vue'
 
+  defineOptions({
+    name: 'EpDropdown',
+  })
+
   const props = defineProps({
     disabled: {
       type: Boolean,

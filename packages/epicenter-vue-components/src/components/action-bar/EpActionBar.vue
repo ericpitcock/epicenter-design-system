@@ -1,7 +1,7 @@
 <template>
   <div
     class="ep-action-bar"
-    :style="actionBarStyles"
+    :style="styles"
   >
     <template v-for="(item, index) in items">
       <ep-button
@@ -36,23 +36,17 @@
       type: Array,
       required: true,
     },
-    justifyContent: {
-      type: String,
-      default: 'flex-end'
-    },
     showDropdownOnHover: {
       type: Boolean,
       default: false
+    },
+    styles: {
+      type: Object,
+      default: () => ({})
     }
   })
 
   const emit = defineEmits(['click'])
-
-  const actionBarStyles = computed(() => {
-    return {
-      justifyContent: props.justifyContent
-    }
-  })
 
   const buttonDefaults = computed(() => {
     return {

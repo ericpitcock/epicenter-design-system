@@ -36,14 +36,20 @@ export const NotificationCenter = args => ({
     const store = useStorybookStore()
     const notifications = computed(() => store.notifications)
 
-    // removeNotification action from store
     const removeNotification = (id) => {
-      console.log('Removing notification', id)
-      // commit mutation to remove notification
       store.removeNotification(id)
     }
 
-    return { args, notifications, removeNotification }
+    const clearNotifications = () => {
+      store.clearNotifications()
+    }
+
+    return {
+      args,
+      notifications,
+      removeNotification,
+      clearNotifications
+    }
   },
   template: `
     <div style="width: 362px; height: 100%;">
@@ -51,6 +57,7 @@ export const NotificationCenter = args => ({
         v-bind="args"
         :notifications
         @remove-notification="removeNotification"
+        @clear-notifications="clearNotifications"
       />
     </div>
   `

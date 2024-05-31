@@ -12,15 +12,15 @@
         <ep-icon v-bind="iconProps" />
       </div>
       <div class="ep-banner__body__message">
-        <p class="ep-banner__body__message__text font-size--small">
+        <div class="ep-banner__body__message__text font-size--small">
           <slot name="message" />
-        </p>
-        <p
+        </div>
+        <div
           v-if="$slots.subtext"
           class="ep-banner__body__message__subtext"
         >
           <slot name="subtext" />
-        </p>
+        </div>
       </div>
       <ep-button
         v-if="dissmissable"
@@ -44,8 +44,8 @@
 
   const props = defineProps({
     classes: {
-      type: Object,
-      default: () => ({})
+      type: [Array, Object, String],
+      default: ''
     },
     dissmissable: {
       type: Boolean,

@@ -32,6 +32,9 @@ $primary-color-lightness: 55%;
 }
 
 html[data-color-theme='light'] {
+  .ep-table {
+    --ep-table-row-hover-bg-color: hsl(var(--gray-60));
+  }
 
   // global overrides - light theme
   .ep-badge--success {

@@ -15,6 +15,7 @@
   defineOptions({
     name: 'EpMap',
   })
+
   const props = defineProps({
     mapCenter: {
       type: Array,

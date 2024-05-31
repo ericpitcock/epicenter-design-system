@@ -34,6 +34,10 @@
 <script setup>
   import { computed } from 'vue'
 
+  defineOptions({
+    name: 'EpKeyValueTable'
+  })
+
   const props = defineProps({
     data: {
       type: Object,

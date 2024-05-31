@@ -31,6 +31,9 @@ import EpSelect from './select/EpSelect.vue'
 import EpSplitButton from './split-button/EpSplitButton.vue'
 import EpStatusIndicator from './status-indicator/EpStatusIndicator.vue'
 import EpTable from './table/EpTable.vue'
+import EpTableCell from './table/EpTableCell.vue'
+import EpTablePagination from './table/EpTablePagination.vue'
+import EpTableSortableHeader from './table/EpTableSortableHeader.vue'
 import EpTabs from './tabs/EpTabs.vue'
 import EpTabContent from './tabs/EpTabContent.vue'
 import EpTextarea from './textarea/EpTextarea.vue'
@@ -72,6 +75,9 @@ export default {
   EpSplitButton,
   EpStatusIndicator,
   EpTable,
+  EpTableCell,
+  EpTablePagination,
+  EpTableSortableHeader,
   EpTabs,
   EpTabContent,
   EpTextarea,

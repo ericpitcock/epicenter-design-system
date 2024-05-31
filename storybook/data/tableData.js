@@ -17,8 +17,8 @@ const columns = [
     filterable: true,
   },
   {
-    label: 'Status',
-    key: 'status',
+    label: 'Severity',
+    key: 'severity',
     component: markRaw(EpBadge),
     sortable: true,
     filterable: true,
@@ -75,20 +75,31 @@ const fakeArray = length => {
   let arr = []
   for (let i = 0; i < length; i++) {
     // create status badge label and variant
-    const label = faker.helpers.arrayElement(['Completed', 'Cancelled'])
+    const severity = faker.helpers.arrayElement(['Critical', 'Medium', 'High', 'Low'])
     const start_date = faker.date.past().toISOString()
     const distance = faker.number.int({ min: 10000, max: 100000 })
     const total_elevation_gain = faker.number.int({ min: 100, max: 800 })
     const average_speed = faker.number.int({ min: 20, max: 30, precision: 0.1 })
 
+    const sortMap = {
+      Critical: '4',
+      High: '3',
+      Medium: '2',
+      Low: '1',
+    }
+
     arr.push({
       id: faker.string.uuid(),
-      status: {
+      severity: {
         props: {
-          label,
-          classes: { 'ep-badge--success': label === 'Completed', 'ep-badge--warning': label === 'Cancelled' }
+          label: severity,
+          classes: {
+            'ep-badge--success': severity === 'Completed',
+            'ep-badge--warning': severity === 'Cancelled'
+          }
         },
-        value: label
+        value: severity,
+        raw: sortMap[severity]
       },
       start_date: {
         raw: Date.parse(start_date),

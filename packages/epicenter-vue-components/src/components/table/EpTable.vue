@@ -4,10 +4,7 @@
     class="ep-table-container"
     :style="containerStyles"
   >
-    <table
-      :class="['ep-table', classes]"
-      :style="styles"
-    >
+    <table :class="['ep-table', classes]">
       <thead>
         <tr>
           <template
@@ -112,6 +109,7 @@
 
   const containerStyles = computed(() => ({
     ...(props.calculateHeight && containerHeight.value),
+    ...props.styles
   }))
 
   const classes = computed(() => {

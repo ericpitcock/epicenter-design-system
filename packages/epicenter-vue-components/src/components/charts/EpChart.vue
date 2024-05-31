@@ -9,6 +9,10 @@
   import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
   import Highcharts from 'highcharts'
 
+  defineOptions({
+    name: 'EpChart',
+  })
+
   const props = defineProps({
     chartColors: {
       type: Array,

@@ -14,8 +14,8 @@
 
   const props = defineProps({
     classes: {
-      type: Object,
-      default: () => ({})
+      type: [Array, Object, String],
+      default: ''
     },
     label: {
       type: String,

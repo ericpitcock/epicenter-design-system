@@ -1,10 +1,7 @@
-:root {
+.ep-badge {
   --ep-badge-bg-color: var(--interface-overlay);
   --ep-badge-border-color: var(--border-color--lighter);
   --ep-badge-text-color: var(--text-color);
-}
-
-.ep-badge {
   display: inline-block;
   padding: 0.4rem 0.8rem;
   border-radius: var(--border-radius);
@@ -13,5 +10,6 @@
   color: var(--ep-badge-text-color);
   font-size: var(--font-size--tiny);
   font-variation-settings: 'wght' 600;
+  line-height: normal;
   user-select: none;
 }

@@ -1,4 +1,6 @@
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
+import EpContainer from '@/components/container/EpContainer.vue'
+import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
 import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpInput from '@/components/input/EpInput.vue'
@@ -87,6 +89,8 @@ export default {
 export const Table = (args) => ({
   components: {
     EpCheckbox,
+    EpContainer,
+    EpDropdown,
     EpEmptyState,
     EpFlex,
     EpInput,
@@ -111,16 +115,21 @@ export const Table = (args) => ({
       sortBy,
       sortColumn,
       sortOrder
-    } = useSorting(includedData, 'start_date', 'desc')
+    } = useSorting(includedData, 'severity', 'desc')
 
     onMounted(() => {
-      const columnsToFilter = ['status', 'type']
+      const columnsToFilter = ['severity', 'type']
       const disabledFilters = []
+      const customSortOrder = { severity: ['Critical', 'High', 'Medium', 'Low'] }
 
-      generateFilters(columnsToFilter, disabledFilters)
+      generateFilters(columnsToFilter, disabledFilters, customSortOrder)
     })
 
-    const { filters, generateFilters, filteredData } = useDataFilters(includedColumns, sortedData)
+    const {
+      filters,
+      generateFilters,
+      filteredData
+    } = useDataFilters(includedColumns, sortedData)
 
     // use column filters
     const {
@@ -155,6 +164,24 @@ export const Table = (args) => ({
       console.log('Row clicked:', row)
     }
 
+    const columnFiltersDropdownProps = {
+      alignRight: true,
+      buttonProps: {
+        label: '',
+        variant: 'secondary',
+        iconLeft: { name: 'f-columns' },
+        iconRight: undefined,
+        title: 'Column Filters'
+      }
+    }
+
+    const containerStyles = {
+      '--ep-container-bg-color': 'var(--interface-overlay)',
+      '--ep-container-border-radius': 'var(--border-radius)',
+      '--ep-container-border-color': 'var(--border-color--lighter)',
+      '--ep-container-padding': '2rem',
+    }
+
     return {
       args,
       // columns,
@@ -176,20 +203,15 @@ export const Table = (args) => ({
       visibleColumns,
       columnFilters,
       handleFilter,
-      filters
+      filters,
+      columnFiltersDropdownProps,
+      containerStyles
     }
   },
   template: `
   <ep-flex flex-props=",,row,,,,,3rem,">
     <div class="sidebar" style="flex: 0 0 140px">
       <ep-flex flex-props=",,column,,,,,1rem,">
-        <ep-checkbox
-          v-for="filter in columnFilters"
-          :key="filter.id"
-          v-bind="filter"
-          v-model="filter.checked"
-          @update:modelValue="handleFilter($event, filter.id)"
-        />
         <template
           v-for="(filterSet, category) in filters"
           :key="category"
@@ -206,15 +228,32 @@ export const Table = (args) => ({
         </template>
       </ep-flex>
     </div>
-    <div class="content" style="flex: 1; overflow: auto;">
-      <ep-input
-        size="large"
-        placeholder="Search"
-        clearable
-        v-model="searchText"
-        @clear="updateSearchText('')"
-        @update:modelValue="updateSearchText"
-      />
+    <ep-flex flex-props=",,column,,,,,1rem," style="flex: 1; overflow: auto;">
+      <ep-flex flex-props=",,row,,,,,1rem,">
+        <ep-input
+          size="default"
+          placeholder="Search"
+          clearable
+          v-model="searchText"
+          @clear="updateSearchText('')"
+          @update:modelValue="updateSearchText"
+        />
+        <ep-dropdown v-bind="columnFiltersDropdownProps">
+          <template #content>
+            <ep-container :styles="containerStyles">
+              <ep-flex flex-props=",,column,,,,,1rem,">
+                <ep-checkbox
+                  v-for="filter in columnFilters"
+                  :key="filter.id"
+                  v-bind="filter"
+                  v-model="filter.checked"
+                  @update:modelValue="handleFilter($event, filter.id)"
+                />
+              </ep-flex>
+            </ep-container>
+          </template>
+        </ep-dropdown>
+      </ep-flex>
       <ep-empty-state v-if="!paginatedData.length">
         No data found
       </ep-empty-state>
@@ -240,7 +279,7 @@ export const Table = (args) => ({
         :total-pages="totalPages"
         @page-change="onPageChange"
       />
-    </div>
+    </ep-flex>
   </ep-flex>
   `
 })
@@ -253,6 +292,7 @@ Table.args = {
   striped: true,
   width: '100%',
   stickyHeader: true,
+  sticktTop: 0,
   calculateHeight: true,
   calculateHeightOffset: 81
 }

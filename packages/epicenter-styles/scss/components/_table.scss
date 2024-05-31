@@ -4,6 +4,7 @@
   --ep-table-header-bg-color: var(--interface-surface);
   --ep-table-border-color: var(--border-color);
   --ep-table-width: auto;
+  --ep-table-sticky-top: 0;
   --ep-table-row-stripe-color: var(--interface-foreground);
   --ep-table-row-hover-bg-color: hsl(var(--gray-450));
   --ep-table-cell-vertical-align: middle;
@@ -38,13 +39,6 @@
           text-overflow: ellipsis;
           flex: 1;
         }
-
-        // .ep-icon {
-        //   position: absolute;
-        //   right: 0;
-        //   // margin-left: 10px;
-        //   visibility: hidden;
-        // }
       }
     }
   }
@@ -109,25 +103,11 @@
     }
   }
 
-  // &--sortable {
-  //   thead th {
-  //     &:hover {
-  //       color: var(--text-color--link);
-  //       cursor: pointer;
-  //     }
-  //     &.active {
-  //       color: var(--text-color--link);
-  //       .ep-icon {
-  //         visibility: visible;
-  //       }
-  //     }
-  //   }
-  // }
   &--sticky {
     thead {
       th {
         position: sticky;
-        top: 0;
+        top: var(--ep-table-sticky-top);
         z-index: var(--z-index--sticky);
       }
     }

@@ -21,8 +21,12 @@ $modifications: (
     @for $i from 1 through 5 {
       $tint-lightness: $base-lightness + (6 - $i) * 5%;
       $shade-lightness: $base-lightness - $i * 7%;
+
+      @if $i ==1 {
+        --primary-#{$name}-base: #{generate-hsl($adjusted-hue, $base-saturation, $base-lightness)};
+      }
+
       --primary-#{$name}-#{$i}00: #{generate-hsl($adjusted-hue, $base-saturation, $tint-lightness)};
-      --primary-#{$name}-base: #{generate-hsl($adjusted-hue, $base-saturation, $base-lightness)};
       --primary-#{$name}-#{$i + 5}00: #{generate-hsl($adjusted-hue, $base-saturation, $shade-lightness)};
     }
   }
