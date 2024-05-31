@@ -2,8 +2,6 @@
 
 `EpBadge` is a way to emphasize a string of text, like a status or a count.
 
-<ep-badge label="Subscribed" />
-
 ## Props
 
 | Name | Description | Type | Default |
@@ -22,6 +20,10 @@
 ## Events
 
 This component does not emit any events.
+
+## Slots
+
+This component does not have any slots.
 
 ## Usage
 

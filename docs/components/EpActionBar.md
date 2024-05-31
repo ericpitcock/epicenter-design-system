@@ -3,12 +3,6 @@
 
 `EpActionBar` is a flexible action bar component that can display buttons and dropdowns.
 
-<ep-action-bar v-bind="commonActionBarArgs" />
-
-<script setup>
-  import commonActionBarArgs from '../../storybook/helpers/commonActionBarArgs.js'
-</script>
-
 ## Props
 
 | Name | Description | Type | Default |
@@ -108,10 +102,13 @@ const actionBarItems = [
 
 ## Events
 
-| Event Name  | Description                                                                                     | Arguments     |
-|-------------|-------------------------------------------------------------------------------------------------|---------------|
-| `click(item)` | Emitted when an action item is clicked. The clicked item is passed as an argument.               | `item`        |
+| Name | Description | Payload |
+|------|-------------|---------|
+| `click(item)` | Emitted when an action item is clicked. The clicked item is passed as the payload. | `item` |
 
+## Slots
+
+This component does not have any slots.
 
 ## Usage
 
