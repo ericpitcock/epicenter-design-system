@@ -31,17 +31,21 @@
           </template>
         </tr>
       </thead>
-      <tbody ref="tableBody">
+      <tbody
+        ref="tableBody"
+        :class="{ fixed: fixedHeader }"
+      >
         <tr
           v-for="row in data"
           :key="row.id"
           @click="onRowClick(row)"
         >
           <ep-table-cell
-            v-for="column in columns"
+            v-for="(column, index) in columns"
             :key="column.key"
             :row="row"
             :column="column"
+            :style="headerStyles[index]"
           />
         </tr>
       </tbody>
@@ -149,29 +153,34 @@
   }
 
   const updateHeaderWidths = () => {
-    if (tableBody.value && tableHead.value) {
-      const bodyCells = tableBody.value.querySelector('tr').children
-      headerStyles.value = Array.from(bodyCells).map(cell => ({
-        width: `${cell.clientWidth}px`
-      }))
+    // if (tableBody.value && tableHead.value) {
+    const bodyCells = tableBody.value.querySelector('tr').children
+    console.log('bodyCells', bodyCells[0].clientWidth)
+    headerStyles.value = Array.from(bodyCells).map(cell => ({
+      width: `${cell.clientWidth}px`
+    }))
 
-      // console.log('headerStyles', headerStyles.value)
-    }
+    console.log('updating header widths')
+    // }
   }
 
-  watch(() => props.fixedHeader, (fixedHeader) => {
-    if (fixedHeader) {
-      console.log('watch:props.fixedHeader:updateHeaderWidths')
-      updateHeaderWidths()
-    }
+  watch(() => props.fixedHeader, () => {
+    console.log('watch:props.fixedHeader')
+    updateHeaderWidths()
   })
 
   onMounted(() => {
-    if (props.fixedHeader) {
-      nextTick(() => {
+    // if (props.fixedHeader) {
+    nextTick(() => {
+      updateHeaderWidths()
+    })
+    // }
+    window.addEventListener('resize', () => {
+      // console.log('window:resize:updateHeaderWidths')
+      if (props.fixedHeader) {
         updateHeaderWidths()
-      })
-    }
+      }
+    })
   })
 
   watch(() => props.data, () => {
@@ -185,13 +194,13 @@
     top: 0;
     z-index: 1;
     display: table;
-    /* maintain table layout */
-    // width: auto;
-    /* let it be as wide as it needs to be */
   }
 
+  // tbody.fixed {
+  //   position: absolute;
+  //   display: table;
+  // }
   thead.fixed th {
     display: table-cell;
-    /* maintain cell layout */
   }
 </style>

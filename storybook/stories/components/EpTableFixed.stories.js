@@ -81,6 +81,7 @@ export const TableFixed = (args) => ({
     const styles = ref({
       '--ep-table-width': 'max-content',
       '--ep-table-head-width': 'max-content',
+      '--ep-table-body-width': 'max-content',
       '--ep-table-container-overflow': 'auto',
     })
 
@@ -90,17 +91,30 @@ export const TableFixed = (args) => ({
 
     onMounted(() => {
 
-      // get the width of tableRef and apply it to --ep-table-width
+      // // get the width of tableRef and apply it to --ep-table-width
       // const tableWidth = tableRef.value.$el.offsetWidth
       // styles.value['--ep-table-width'] = `${tableWidth}px`
       // styles.value['--ep-table-head-width'] = `${tableWidth}px`
+      // styles.value['--ep-table-body-width'] = `${tableWidth}px`
+
+      // // create functionn with above code and call it on window resize
+      // window.addEventListener('resize', () => {
+      //   const tableWidth = tableRef.value.$el.offsetWidth
+      //   styles.value['--ep-table-width'] = `${tableWidth}px`
+      //   styles.value['--ep-table-head-width'] = `${tableWidth}px`
+      //   styles.value['--ep-table-body-width'] = `${tableWidth}px`
+      // })
 
       window.addEventListener('scroll', () => {
+        console.log(window.scrollY)
         if (window.scrollY >= 100) {
           args.fixedHeader = true
         }
-        else if (args.fixedHeader && window.scrollY < 100) {
-          args.fixedHeader = false
+        if (args.fixedHeader) {
+          // set value to height of thead
+          if (window.scrollY <= 44.5) {
+            args.fixedHeader = false
+          }
         }
       })
     })

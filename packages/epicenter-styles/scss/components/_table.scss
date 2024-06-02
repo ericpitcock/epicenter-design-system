@@ -5,6 +5,8 @@
   --ep-table-border-color: var(--border-color);
   --ep-table-width: auto;
   --ep-table-sticky-top: 0;
+  --ep-table-head-width: auto;
+  --ep-table-body-width: auto;
   --ep-table-row-stripe-color: var(--interface-foreground);
   --ep-table-row-hover-bg-color: hsl(var(--gray-450));
   --ep-table-cell-vertical-align: middle;
@@ -17,6 +19,7 @@
   width: var(--ep-table-width);
 
   thead {
+    width: var(--ep-table-head-width);
     font-variation-settings: 'wght' 600;
     user-select: none;
     color: var(--text-color--loud);
@@ -44,6 +47,8 @@
   }
 
   tbody {
+    width: var(--ep-table-body-width);
+
     tr {
       position: relative;
 
