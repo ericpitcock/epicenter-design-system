@@ -155,17 +155,13 @@
   const updateHeaderWidths = () => {
     // if (tableBody.value && tableHead.value) {
     const bodyCells = tableBody.value.querySelector('tr').children
-    console.log('bodyCells', bodyCells[0].clientWidth)
     headerStyles.value = Array.from(bodyCells).map(cell => ({
       width: `${cell.clientWidth}px`
     }))
-
-    console.log('updating header widths')
     // }
   }
 
   watch(() => props.fixedHeader, () => {
-    console.log('watch:props.fixedHeader')
     updateHeaderWidths()
   })
 
@@ -176,7 +172,6 @@
     })
     // }
     window.addEventListener('resize', () => {
-      // console.log('window:resize:updateHeaderWidths')
       if (props.fixedHeader) {
         updateHeaderWidths()
       }
@@ -196,10 +191,6 @@
     display: table;
   }
 
-  // tbody.fixed {
-  //   position: absolute;
-  //   display: table;
-  // }
   thead.fixed th {
     display: table-cell;
   }

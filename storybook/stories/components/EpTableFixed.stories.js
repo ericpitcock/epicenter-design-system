@@ -85,28 +85,8 @@ export const TableFixed = (args) => ({
       '--ep-table-container-overflow': 'auto',
     })
 
-    const tableRef = ref(null)
-
-    // const headerFixed = ref(false)
-
     onMounted(() => {
-
-      // // get the width of tableRef and apply it to --ep-table-width
-      // const tableWidth = tableRef.value.$el.offsetWidth
-      // styles.value['--ep-table-width'] = `${tableWidth}px`
-      // styles.value['--ep-table-head-width'] = `${tableWidth}px`
-      // styles.value['--ep-table-body-width'] = `${tableWidth}px`
-
-      // // create functionn with above code and call it on window resize
-      // window.addEventListener('resize', () => {
-      //   const tableWidth = tableRef.value.$el.offsetWidth
-      //   styles.value['--ep-table-width'] = `${tableWidth}px`
-      //   styles.value['--ep-table-head-width'] = `${tableWidth}px`
-      //   styles.value['--ep-table-body-width'] = `${tableWidth}px`
-      // })
-
       window.addEventListener('scroll', () => {
-        console.log(window.scrollY)
         if (window.scrollY >= 100) {
           args.fixedHeader = true
         }
@@ -124,7 +104,6 @@ export const TableFixed = (args) => ({
       styles,
       tableColumnsRef,
       tableDataRef,
-      tableRef,
     }
   },
   template: `
@@ -133,7 +112,6 @@ export const TableFixed = (args) => ({
       this is a fake header
       </div>
       <ep-table
-        ref="tableRef"
         :columns="tableColumnsRef"
         :data="tableDataRef"
         v-bind="args"
