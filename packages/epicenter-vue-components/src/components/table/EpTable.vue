@@ -3,12 +3,16 @@
     ref="tableContainer"
     class="ep-table-container"
     :style="containerStyles"
+    @scroll="onScroll"
   >
     <table :class="['ep-table', classes]">
-      <thead>
+      <thead
+        ref="tableHead"
+        :class="{ fixed: fixedHeader }"
+      >
         <tr>
           <template
-            v-for="column in columns"
+            v-for="(column, index) in columns"
             :key="column.key"
           >
             <slot
@@ -16,7 +20,10 @@
               name="header"
               v-bind="{ column }"
             />
-            <th v-else>
+            <th
+              v-else
+              :style="headerStyles[index]"
+            >
               <div>
                 <span class="label">{{ column.label || '\u00A0' }}</span>
               </div>
@@ -24,7 +31,7 @@
           </template>
         </tr>
       </thead>
-      <tbody>
+      <tbody ref="tableBody">
         <tr
           v-for="row in data"
           :key="row.id"
@@ -43,13 +50,13 @@
 </template>
 
 <script setup>
+  import { computed, ref, onMounted, nextTick, watch } from 'vue'
+  import EpTableCell from './EpTableCell.vue'
+  import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
+
   defineOptions({
     name: 'EpTable'
   })
-
-  import EpTableCell from './EpTableCell.vue'
-  import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
-  import { computed, ref } from 'vue'
 
   const props = defineProps({
     columns: {
@@ -84,6 +91,14 @@
       type: Boolean,
       default: false
     },
+    fixedHeader: {
+      type: Boolean,
+      default: false
+    },
+    // fixedHeaderOffset: {
+    //   type: Number,
+    //   default: null
+    // },
     calculateHeight: {
       type: Boolean,
       default: false
@@ -104,7 +119,12 @@
     if (props.selectable) emit('row-click', row)
   }
 
+  const headerStyles = ref([])
+
   const tableContainer = ref(null)
+  const tableHead = ref(null)
+  const tableBody = ref(null)
+
   const { containerHeight } = useCalculatedHeight(tableContainer, props.calculateHeightOffset)
 
   const containerStyles = computed(() => ({
@@ -119,7 +139,59 @@
       'ep-table--compact': props.compact,
       'ep-table--sticky': props.stickyHeader,
       'ep-table--striped': props.striped,
-      // 'ep-table--layout-fixed': this.layoutFixed,
     }
   })
+
+  const onScroll = () => {
+    if (props.fixedHeader && tableHead.value) {
+      tableHead.value.style.left = `${-tableContainer.value.scrollLeft}px`
+    }
+  }
+
+  const updateHeaderWidths = () => {
+    if (tableBody.value && tableHead.value) {
+      const bodyCells = tableBody.value.querySelector('tr').children
+      headerStyles.value = Array.from(bodyCells).map(cell => ({
+        width: `${cell.clientWidth}px`
+      }))
+
+      // console.log('headerStyles', headerStyles.value)
+    }
+  }
+
+  watch(() => props.fixedHeader, (fixedHeader) => {
+    if (fixedHeader) {
+      console.log('watch:props.fixedHeader:updateHeaderWidths')
+      updateHeaderWidths()
+    }
+  })
+
+  onMounted(() => {
+    if (props.fixedHeader) {
+      nextTick(() => {
+        updateHeaderWidths()
+      })
+    }
+  })
+
+  watch(() => props.data, () => {
+    nextTick(updateHeaderWidths)
+  })
 </script>
+
+<style lang="scss" scoped>
+  thead.fixed {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    display: table;
+    /* maintain table layout */
+    // width: auto;
+    /* let it be as wide as it needs to be */
+  }
+
+  thead.fixed th {
+    display: table-cell;
+    /* maintain cell layout */
+  }
+</style>

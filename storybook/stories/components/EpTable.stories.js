@@ -292,7 +292,6 @@ Table.args = {
   striped: true,
   width: '100%',
   stickyHeader: true,
-  sticktTop: 0,
   calculateHeight: true,
   calculateHeightOffset: 81
 }
