@@ -87,13 +87,41 @@ export const TableFixed = (args) => ({
 
     const tableComponent = ref(null)
 
-    onMounted(() => {
-      window.addEventListener('scroll', () => {
+    // onMounted(() => {
+    //   window.addEventListener('scroll', () => {
+    //     const table = tableComponent.value.$refs.tableContainer
+    //     const tableY = table.getBoundingClientRect().top
+
+    //     // const tableHead = tableComponent.value.$refs.tableHead
+
+    //     console.log('tableY', tableY)
+
+    //     if (!args.fixedHeader && tableY < 0) {
+    //       args.fixedHeader = true
+    //       table.style.paddingTop = '44.5px'
+    //       window.scrollBy(0, 44.5)
+    //     }
+    //     if (args.fixedHeader && tableY >= 0) {
+    //       args.fixedHeader = false
+    //       table.style.paddingTop = '0'
+    //     }
+    //   })
+    // })
+
+    const debounce = (func, delay) => {
+      let timer
+      return function(...args) {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          func.apply(this, args)
+        }, delay)
+      }
+    }
+
+    const handleScroll = () => {
+      requestAnimationFrame(() => {
         const table = tableComponent.value.$refs.tableContainer
         const tableY = table.getBoundingClientRect().top
-
-        // const tableHead = tableComponent.value.$refs.tableHead
-
         console.log('tableY', tableY)
 
         if (!args.fixedHeader && tableY < 0) {
@@ -101,11 +129,18 @@ export const TableFixed = (args) => ({
           table.style.paddingTop = '44.5px'
           window.scrollBy(0, 44.5)
         }
-        if (args.fixedHeader && tableY >= 0) {
+        if (args.fixedHeader && tableY > 0) {
           args.fixedHeader = false
           table.style.paddingTop = '0'
+          // window.scrollBy(0, -44.5)
         }
       })
+    }
+
+    const debouncedHandleScroll = debounce(handleScroll, 0) // Adjust the debounce delay as needed
+
+    onMounted(() => {
+      window.addEventListener('scroll', debouncedHandleScroll)
     })
 
     return {
