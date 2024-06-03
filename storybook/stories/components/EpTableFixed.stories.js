@@ -85,16 +85,25 @@ export const TableFixed = (args) => ({
       '--ep-table-container-overflow': 'auto',
     })
 
+    const tableComponent = ref(null)
+
     onMounted(() => {
       window.addEventListener('scroll', () => {
-        if (window.scrollY >= 100) {
+        const table = tableComponent.value.$refs.tableContainer.getBoundingClientRect()
+        const tableY = table.top
+
+        const tableHead = tableComponent.value.$refs.tableHead
+
+        console.log('tableY', tableY)
+
+        if (!args.fixedHeader && tableY <= 0) {
           args.fixedHeader = true
         }
-        if (args.fixedHeader) {
-          // set value to height of thead
-          if (window.scrollY <= 44.5) {
-            args.fixedHeader = false
-          }
+        if (args.fixedHeader && tableY >= 44.5) {
+          // change top of tableHead to 0
+          args.fixedHeader = false
+          // set tableHead.style.top as distance from the top of the window
+          // tableHead.style.top = `${tableY}px`
         }
       })
     })
@@ -104,6 +113,7 @@ export const TableFixed = (args) => ({
       styles,
       tableColumnsRef,
       tableDataRef,
+      tableComponent,
     }
   },
   template: `
@@ -112,6 +122,7 @@ export const TableFixed = (args) => ({
       this is a fake header
       </div>
       <ep-table
+        ref="tableComponent"
         :columns="tableColumnsRef"
         :data="tableDataRef"
         v-bind="args"
