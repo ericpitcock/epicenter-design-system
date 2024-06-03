@@ -99,10 +99,6 @@
       type: Boolean,
       default: false
     },
-    // fixedHeaderOffset: {
-    //   type: Number,
-    //   default: null
-    // },
     calculateHeight: {
       type: Boolean,
       default: false

@@ -89,21 +89,21 @@ export const TableFixed = (args) => ({
 
     onMounted(() => {
       window.addEventListener('scroll', () => {
-        const table = tableComponent.value.$refs.tableContainer.getBoundingClientRect()
-        const tableY = table.top
+        const table = tableComponent.value.$refs.tableContainer
+        const tableY = table.getBoundingClientRect().top
 
-        const tableHead = tableComponent.value.$refs.tableHead
+        // const tableHead = tableComponent.value.$refs.tableHead
 
         console.log('tableY', tableY)
 
-        if (!args.fixedHeader && tableY <= 0) {
+        if (!args.fixedHeader && tableY < 0) {
           args.fixedHeader = true
+          table.style.paddingTop = '44.5px'
+          window.scrollBy(0, 44.5)
         }
-        if (args.fixedHeader && tableY >= 44.5) {
-          // change top of tableHead to 0
+        if (args.fixedHeader && tableY >= 0) {
           args.fixedHeader = false
-          // set tableHead.style.top as distance from the top of the window
-          // tableHead.style.top = `${tableY}px`
+          table.style.paddingTop = '0'
         }
       })
     })
