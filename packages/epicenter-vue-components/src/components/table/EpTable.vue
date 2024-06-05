@@ -12,17 +12,17 @@
       >
         <tr>
           <template
-            v-for="(column, index) in columns"
+            v-for="(column, columnIndex) in columns"
             :key="column.key"
           >
             <slot
               v-if="$slots.header && column.sortable"
               name="header"
-              v-bind="{ column }"
+              v-bind="{ column, headerStyles, columnIndex }"
             />
             <th
               v-else
-              :style="headerStyles[index]"
+              :style="headerStyles[columnIndex]"
             >
               <div>
                 <span class="label">{{ column.label || '\u00A0' }}</span>
@@ -99,6 +99,10 @@
       type: Boolean,
       default: false
     },
+    // tHeadLeft: {
+    //   type: Number,
+    //   default: 0
+    // },
     calculateHeight: {
       type: Boolean,
       default: false
@@ -142,22 +146,40 @@
     }
   })
 
+  // const tHeadLeftPosition = ref('0px')
+
+  // onMounted(() => {
+  //   const tableContainerLeft = tableContainer.value.getBoundingClientRect().left
+  //   tHeadLeftPosition.value = `${tableContainerLeft}px`
+  // })
+
   const onScroll = () => {
-    if (props.fixedHeader && tableHead.value) {
-      tableHead.value.style.left = `${-tableContainer.value.scrollLeft}px`
-    }
+    // Get the computed style of the table container
+    const computedStyle = window.getComputedStyle(tableContainer.value)
+    // Extract the padding-left value and convert it to a number
+    const paddingLeft = parseFloat(computedStyle.paddingLeft)
+
+    console.log(paddingLeft)
+
+    // Calculate the new left position considering the padding
+    const tableContainerLeft = -tableContainer.value.scrollLeft + paddingLeft + tableContainer.value.getBoundingClientRect().left
+
+    console.log('tableContainerLeft', tableContainerLeft)
+
+    tableHead.value.style.left = `${tableContainerLeft}px`
   }
 
   const updateHeaderWidths = () => {
-    // if (tableBody.value && tableHead.value) {
+    // console.log('updating header widths')
     const bodyCells = tableBody.value.querySelector('tr').children
+    // console.log(bodyCells[0].clientWidth)
     headerStyles.value = Array.from(bodyCells).map(cell => ({
       width: `${cell.clientWidth}px`
     }))
-    // }
   }
 
   watch(() => props.fixedHeader, () => {
+    // console.log('fixedHeader changed')
     updateHeaderWidths()
   })
 
@@ -180,14 +202,13 @@
 </script>
 
 <style lang="scss" scoped>
-  thead.fixed {
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    display: table;
-  }
-
-  thead.fixed th {
-    display: table-cell;
-  }
+  // thead.fixed {
+  //   position: fixed;
+  //   top: 0;
+  //   z-index: 1;
+  //   display: table;
+  // }
+  // thead.fixed th {
+  //   display: table-cell;
+  // }
 </style>
