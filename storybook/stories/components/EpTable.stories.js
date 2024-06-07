@@ -8,12 +8,14 @@ import EpTable from '@/components/table/EpTable.vue'
 import EpTableSearchInput from '@/components/table/EpTableSearchInput.vue'
 import EpTablePagination from '@/components/table/EpTablePagination.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
-import useExclude from '@/components/table/useExclude.js'
-import useColumnFilters from '@/components/table/useColumnFilters.js'
-import useDataFilters from '@/components/table/useDataFilters.js'
-import useSorting from '@/components/table/useSorting.js'
-import usePagination from '@/components/table/usePagination.js'
-import useSearch from '@/components/table/useSearch.js'
+import {
+  useExclude,
+  useColumnFilters,
+  useDataFilters,
+  useSorting,
+  usePagination,
+  useSearch
+} from '@/composables/index.js'
 import { paddedSurfaceOverflow } from '../../helpers/decorators.js'
 import { columns, fakeArray } from '../../data/tableData'
 import { computed, ref, onMounted } from 'vue'
@@ -229,7 +231,7 @@ export const Table = (args) => ({
       </ep-flex>
     </div>
     <ep-flex flex-props=",,column,,,,,1rem," style="flex: 1; overflow: auto;">
-      <ep-flex flex-props=",,row,,,,,1rem,">
+      <ep-flex flex-props=",auto,row,,,,,1rem,">
         <ep-input
           size="default"
           placeholder="Search"
@@ -265,7 +267,7 @@ export const Table = (args) => ({
         v-bind="args"
         @row-click="onRowClick"
       >
-        <template #header="{ column }">
+        <template #header="{ column, cellWidths }">
           <ep-table-sortable-header
             :column="column"
             :sort-column="sortColumn"

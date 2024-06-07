@@ -16,6 +16,10 @@
 <script setup>
   import DOMPurify from 'dompurify'
 
+  defineOptions({
+    name: 'EpTableCell'
+  })
+
   const props = defineProps({
     row: {
       type: Object,

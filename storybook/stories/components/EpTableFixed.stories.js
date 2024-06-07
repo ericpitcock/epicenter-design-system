@@ -1,4 +1,13 @@
 import EpTable from '@/components/table/EpTable.vue'
+import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
+import {
+  // useExclude,
+  // useColumnFilters,
+  // useDataFilters,
+  useSorting,
+  // usePagination,
+  // useSearch
+} from '@/composables/index.js'
 import { columns, fakeArray } from '../../data/tableData'
 import { ref, onMounted } from 'vue'
 
@@ -73,16 +82,28 @@ export default {
 export const TableFixed = (args) => ({
   components: {
     EpTable,
+    EpTableSortableHeader,
   },
   setup() {
     const tableColumnsRef = ref(columns)
     const tableDataRef = ref(fakeArray(100))
 
+    // use sorting
+    const {
+      sortedData,
+      sortBy,
+      sortColumn,
+      sortOrder
+    } = useSorting(tableDataRef, 'severity', 'desc')
+
     const styles = ref({
       '--ep-table-width': 'max-content',
       '--ep-table-head-width': 'max-content',
+      '--ep-table-header-bg-color': 'var(--interface-bg)',
       '--ep-table-body-width': 'max-content',
       '--ep-table-container-overflow': 'auto',
+      '--ep-table-container-padding': '1rem 3rem 30rem 3rem',
+      '--ep-table-fixed-top': '0',
     })
 
     const tableComponent = ref(null)
@@ -122,7 +143,7 @@ export const TableFixed = (args) => ({
       requestAnimationFrame(() => {
         const table = tableComponent.value.$refs.tableContainer
         const tableY = table.getBoundingClientRect().top
-        console.log('tableY', tableY)
+        // console.log('tableY', tableY)
 
         if (!args.fixedHeader && tableY < 0) {
           args.fixedHeader = true
@@ -132,7 +153,6 @@ export const TableFixed = (args) => ({
         if (args.fixedHeader && tableY > 0) {
           args.fixedHeader = false
           table.style.paddingTop = '0'
-          // window.scrollBy(0, -44.5)
         }
       })
     }
@@ -147,7 +167,10 @@ export const TableFixed = (args) => ({
       args,
       styles,
       tableColumnsRef,
-      tableDataRef,
+      sortedData,
+      sortBy,
+      sortColumn,
+      sortOrder,
       tableComponent,
     }
   },
@@ -159,10 +182,21 @@ export const TableFixed = (args) => ({
       <ep-table
         ref="tableComponent"
         :columns="tableColumnsRef"
-        :data="tableDataRef"
+        :data="sortedData"
         v-bind="args"
         :styles
-      />
+      >
+        <template #header="{ column, cellWidths, columnIndex }">
+          <ep-table-sortable-header
+            :column="column"
+            :sort-column="sortColumn"
+            :sort-order="sortOrder"
+            :column-index="columnIndex"
+            :cell-widths="cellWidths"
+            @sort="sortBy"
+          />
+        </template>
+      </ep-table>
     </div>
   `
 })

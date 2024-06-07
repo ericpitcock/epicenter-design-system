@@ -18,11 +18,11 @@
             <slot
               v-if="$slots.header && column.sortable"
               name="header"
-              v-bind="{ column, headerStyles, columnIndex }"
+              v-bind="{ column, cellWidths, columnIndex }"
             />
             <th
               v-else
-              :style="headerStyles[columnIndex]"
+              :style="cellWidths[columnIndex]"
             >
               <div>
                 <span class="label">{{ column.label || '\u00A0' }}</span>
@@ -45,7 +45,7 @@
             :key="column.key"
             :row="row"
             :column="column"
-            :style="headerStyles[index]"
+            :style="cellWidths[index]"
           />
         </tr>
       </tbody>
@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-  import { computed, ref, onMounted, nextTick, watch } from 'vue'
+  import { computed, ref, nextTick, onBeforeUnmount, onMounted, watch } from 'vue'
   import EpTableCell from './EpTableCell.vue'
   import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
 
@@ -99,10 +99,6 @@
       type: Boolean,
       default: false
     },
-    // tHeadLeft: {
-    //   type: Number,
-    //   default: 0
-    // },
     calculateHeight: {
       type: Boolean,
       default: false
@@ -122,8 +118,6 @@
   const onRowClick = (row) => {
     if (props.selectable) emit('row-click', row)
   }
-
-  const headerStyles = ref([])
 
   const tableContainer = ref(null)
   const tableHead = ref(null)
@@ -146,14 +140,8 @@
     }
   })
 
-  // const tHeadLeftPosition = ref('0px')
-
-  // onMounted(() => {
-  //   const tableContainerLeft = tableContainer.value.getBoundingClientRect().left
-  //   tHeadLeftPosition.value = `${tableContainerLeft}px`
-  // })
-
   const onScroll = () => {
+    // if (!props.fixedHeader) return
     // Get the computed style of the table container
     const computedStyle = window.getComputedStyle(tableContainer.value)
     // Extract the padding-left value and convert it to a number
@@ -169,46 +157,71 @@
     tableHead.value.style.left = `${tableContainerLeft}px`
   }
 
-  const updateHeaderWidths = () => {
-    // console.log('updating header widths')
-    const bodyCells = tableBody.value.querySelector('tr').children
-    // console.log(bodyCells[0].clientWidth)
-    headerStyles.value = Array.from(bodyCells).map(cell => ({
-      width: `${cell.clientWidth}px`
-    }))
+  const cellWidths = ref([])
+
+  const updateCellWidths = () => {
+    if (!props.fixedHeader) return
+
+    // need to get the widths of the tableHead cells and the tableBody cells and apply the larger of the two to cellWidths
+    const tableHeadCells = tableHead.value.querySelectorAll('th')
+    // get the first row of tableBody cells
+    const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
+
+    const newCellWidths = []
+
+    tableHeadCells.forEach((cell, index) => {
+      const width = cell.getBoundingClientRect().width
+      newCellWidths[index] = { width: `${width}px` }
+    })
+
+    console.log('tableBodyCells', tableBodyCells.length)
+    console.log('newCellWidths', newCellWidths)
+
+    tableBodyCells.forEach((cell, index) => {
+      console.log('index', index)
+      const width = cell.getBoundingClientRect().width
+      if (width > newCellWidths[index].width) {
+        newCellWidths[index] = { width: `${width}px` }
+      }
+    })
+
+    cellWidths.value = newCellWidths
+
+    console.log('cellWidths', cellWidths.value)
   }
 
   watch(() => props.fixedHeader, () => {
-    // console.log('fixedHeader changed')
-    updateHeaderWidths()
+    console.log('props.fixedHeader changed, updating cell widths')
+    updateCellWidths()
   })
 
   onMounted(() => {
-    // if (props.fixedHeader) {
     nextTick(() => {
-      updateHeaderWidths()
+      updateCellWidths()
     })
-    // }
     window.addEventListener('resize', () => {
-      if (props.fixedHeader) {
-        updateHeaderWidths()
-      }
+      updateCellWidths()
     })
   })
 
-  watch(() => props.data, () => {
-    nextTick(updateHeaderWidths)
+  // watch(() => tableBody.value, () => {
+  //   console.log('tableBody.value changed, updating cell widths')
+  //   nextTick(() => {
+  //     console.log('watch:tableBody.value:nextTick')
+  //     updateCellWidths()
+  //   })
+  // })
+
+  const observer = new MutationObserver(updateCellWidths)
+
+  onMounted(() => {
+    observer.observe(tableBody.value, {
+      childList: true,
+      subtree: true,
+    })
+  })
+
+  onBeforeUnmount(() => {
+    observer.disconnect()
   })
 </script>
-
-<style lang="scss" scoped>
-  // thead.fixed {
-  //   position: fixed;
-  //   top: 0;
-  //   z-index: 1;
-  //   display: table;
-  // }
-  // thead.fixed th {
-  //   display: table-cell;
-  // }
-</style>

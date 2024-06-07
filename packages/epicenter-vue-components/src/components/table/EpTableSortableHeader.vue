@@ -1,5 +1,8 @@
 <template>
-  <th @click="emit('sort', column.key)">
+  <th
+    :style="cellWidths[columnIndex]"
+    @click="emit('sort', column.key)"
+  >
     <div :class="['ep-table-sortable-header',
       { 'ep-table-sortable-header--active': props.sortColumn === props.column.key }
     ]">
@@ -16,10 +19,22 @@
   import EpIcon from '../icon/EpIcon.vue'
   import { computed } from 'vue'
 
+  defineOptions({
+    name: 'EpTableSortableHeader'
+  })
+
   const props = defineProps({
     column: {
       type: Object,
       required: true
+    },
+    cellWidths: {
+      type: Array,
+      default: () => []
+    },
+    columnIndex: {
+      type: Number,
+      default: null
     },
     sortColumn: {
       type: String,
@@ -40,5 +55,5 @@
         '--ep-icon-height': '17px',
       }
     }
-  })  
+  })
 </script>

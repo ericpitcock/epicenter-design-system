@@ -17,6 +17,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpTablePagination'
+  })
+
   const props = defineProps({
     currentPage: {
       type: Number,
