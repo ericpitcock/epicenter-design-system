@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-  import { computed, ref, nextTick, onBeforeUnmount, onMounted, watch } from 'vue'
+  import { computed, ref, nextTick, onMounted, watch } from 'vue'
   import EpTableCell from './EpTableCell.vue'
   import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
 
@@ -141,57 +141,93 @@
   })
 
   const onScroll = () => {
-    // if (!props.fixedHeader) return
-    // Get the computed style of the table container
     const computedStyle = window.getComputedStyle(tableContainer.value)
-    // Extract the padding-left value and convert it to a number
     const paddingLeft = parseFloat(computedStyle.paddingLeft)
-
-    console.log(paddingLeft)
 
     // Calculate the new left position considering the padding
     const tableContainerLeft = -tableContainer.value.scrollLeft + paddingLeft + tableContainer.value.getBoundingClientRect().left
-
-    console.log('tableContainerLeft', tableContainerLeft)
 
     tableHead.value.style.left = `${tableContainerLeft}px`
   }
 
   const cellWidths = ref([])
 
+  // const updateCellWidths = () => {
+  //   if (!props.fixedHeader) return
+
+  //   console.log('updateCellWidths')
+
+  //   const tableHeadCells = tableHead.value.querySelectorAll('th')
+  //   const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
+
+  //   const newCellWidths = []
+
+  //   tableHeadCells.forEach((cell, index) => {
+  //     const width = cell.getBoundingClientRect().width
+  //     newCellWidths[index] = { width: `${width}px` }
+  //   })
+
+  //   tableBodyCells.forEach((cell, index) => {
+  //     const width = cell.getBoundingClientRect().width
+  //     if (width > newCellWidths[index].width) {
+  //       newCellWidths[index] = { width: `${width}px` }
+  //     }
+  //   })
+
+  //   console.log('newCellWidths', newCellWidths)
+
+  //   cellWidths.value = newCellWidths
+  // }
+
   const updateCellWidths = () => {
     if (!props.fixedHeader) return
 
-    // need to get the widths of the tableHead cells and the tableBody cells and apply the larger of the two to cellWidths
+    console.log('updateCellWidths')
+
     const tableHeadCells = tableHead.value.querySelectorAll('th')
-    // get the first row of tableBody cells
     const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
 
     const newCellWidths = []
 
+    // Get the computed styles for white-space settings
+    const getCellComputedStyle = (cell) => {
+      return window.getComputedStyle(cell)
+    }
+
     tableHeadCells.forEach((cell, index) => {
+      const computedStyle = getCellComputedStyle(cell)
+      const whiteSpace = computedStyle.whiteSpace
+
+      // Temporarily set white-space to 'nowrap' to get the max width without wrapping
+      cell.style.whiteSpace = 'nowrap'
       const width = cell.getBoundingClientRect().width
+      // Revert back to original white-space setting
+      cell.style.whiteSpace = whiteSpace
+
       newCellWidths[index] = { width: `${width}px` }
     })
 
-    console.log('tableBodyCells', tableBodyCells.length)
-    console.log('newCellWidths', newCellWidths)
-
     tableBodyCells.forEach((cell, index) => {
-      console.log('index', index)
+      const computedStyle = getCellComputedStyle(cell)
+      const whiteSpace = computedStyle.whiteSpace
+
+      // Temporarily set white-space to 'nowrap' to get the max width without wrapping
+      cell.style.whiteSpace = 'nowrap'
       const width = cell.getBoundingClientRect().width
-      if (width > newCellWidths[index].width) {
+      // Revert back to original white-space setting
+      cell.style.whiteSpace = whiteSpace
+
+      if (width > parseFloat(newCellWidths[index].width)) {
         newCellWidths[index] = { width: `${width}px` }
       }
     })
 
-    cellWidths.value = newCellWidths
+    console.log('newCellWidths', newCellWidths)
 
-    console.log('cellWidths', cellWidths.value)
+    cellWidths.value = newCellWidths
   }
 
   watch(() => props.fixedHeader, () => {
-    console.log('props.fixedHeader changed, updating cell widths')
     updateCellWidths()
   })
 
@@ -204,24 +240,25 @@
     })
   })
 
-  // watch(() => tableBody.value, () => {
-  //   console.log('tableBody.value changed, updating cell widths')
-  //   nextTick(() => {
-  //     console.log('watch:tableBody.value:nextTick')
-  //     updateCellWidths()
-  //   })
-  // })
-
-  const observer = new MutationObserver(updateCellWidths)
-
-  onMounted(() => {
-    observer.observe(tableBody.value, {
-      childList: true,
-      subtree: true,
+  // do not change this. watch props.data only
+  watch(() => props.data, () => {
+    console.log('props.data changed, updating cell widths')
+    nextTick(() => {
+      console.log('watch:props.data:nextTick')
+      updateCellWidths()
     })
   })
 
-  onBeforeUnmount(() => {
-    observer.disconnect()
-  })
+  // const observer = new MutationObserver(updateCellWidths)
+
+  // onMounted(() => {
+  //   observer.observe(tableBody.value, {
+  //     childList: true,
+  //     subtree: true,
+  //   })
+  // })
+
+  // onBeforeUnmount(() => {
+  //   observer.disconnect()
+  // })
 </script>
