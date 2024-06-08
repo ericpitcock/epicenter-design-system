@@ -54,7 +54,14 @@
 </template>
 
 <script setup>
-  import { computed, ref, nextTick, onMounted, watch } from 'vue'
+  import {
+    computed,
+    ref,
+    nextTick,
+    onBeforeUnmount,
+    onMounted,
+    watch
+  } from 'vue'
   import EpTableCell from './EpTableCell.vue'
   import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
 
@@ -152,37 +159,8 @@
 
   const cellWidths = ref([])
 
-  // const updateCellWidths = () => {
-  //   if (!props.fixedHeader) return
-
-  //   console.log('updateCellWidths')
-
-  //   const tableHeadCells = tableHead.value.querySelectorAll('th')
-  //   const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
-
-  //   const newCellWidths = []
-
-  //   tableHeadCells.forEach((cell, index) => {
-  //     const width = cell.getBoundingClientRect().width
-  //     newCellWidths[index] = { width: `${width}px` }
-  //   })
-
-  //   tableBodyCells.forEach((cell, index) => {
-  //     const width = cell.getBoundingClientRect().width
-  //     if (width > newCellWidths[index].width) {
-  //       newCellWidths[index] = { width: `${width}px` }
-  //     }
-  //   })
-
-  //   console.log('newCellWidths', newCellWidths)
-
-  //   cellWidths.value = newCellWidths
-  // }
-
   const updateCellWidths = () => {
     if (!props.fixedHeader) return
-
-    console.log('updateCellWidths')
 
     const tableHeadCells = tableHead.value.querySelectorAll('th')
     const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
@@ -222,22 +200,11 @@
       }
     })
 
-    console.log('newCellWidths', newCellWidths)
-
     cellWidths.value = newCellWidths
   }
 
   watch(() => props.fixedHeader, () => {
     updateCellWidths()
-  })
-
-  onMounted(() => {
-    nextTick(() => {
-      updateCellWidths()
-    })
-    window.addEventListener('resize', () => {
-      updateCellWidths()
-    })
   })
 
   // do not change this. watch props.data only
@@ -249,16 +216,19 @@
     })
   })
 
-  // const observer = new MutationObserver(updateCellWidths)
+  const onResize = () => {
+    updateCellWidths()
+    onScroll()
+  }
 
-  // onMounted(() => {
-  //   observer.observe(tableBody.value, {
-  //     childList: true,
-  //     subtree: true,
-  //   })
-  // })
+  onMounted(() => {
+    nextTick(() => {
+      updateCellWidths()
+    })
+    window.addEventListener('resize', onResize)
+  })
 
-  // onBeforeUnmount(() => {
-  //   observer.disconnect()
-  // })
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', onResize)
+  })
 </script>
