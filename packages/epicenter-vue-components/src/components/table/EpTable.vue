@@ -3,7 +3,7 @@
     ref="tableContainer"
     class="ep-table-container"
     :style="containerStyles"
-    @scroll="onScroll"
+    @scroll="updateLeftPosition"
   >
     <table :class="['ep-table', classes]">
       <thead
@@ -12,8 +12,8 @@
       >
         <tr>
           <template
-            v-for="(column, columnIndex) in columns"
-            :key="column.key"
+            v-for="(column, columnIndex) in visibleColumns"
+            :key="`head-${column.key}`"
           >
             <slot
               v-if="$slots.header && column.sortable"
@@ -40,13 +40,16 @@
           :key="row.id"
           @click="onRowClick(row)"
         >
-          <ep-table-cell
-            v-for="(column, index) in columns"
-            :key="column.key"
-            :row="row"
-            :column="column"
-            :style="cellWidths[index]"
-          />
+          <template
+            v-for="(column, columnIndex) in visibleColumns"
+            :key="`body-${column.key}`"
+          >
+            <ep-table-cell
+              :row="row"
+              :column="column"
+              :style="cellWidths[columnIndex]"
+            />
+          </template>
         </tr>
       </tbody>
     </table>
@@ -78,7 +81,7 @@
       type: Array,
       required: true
     },
-    exclude: {
+    hiddenColumns: {
       type: Array,
       default: () => []
     },
@@ -147,7 +150,7 @@
     }
   })
 
-  const onScroll = () => {
+  const updateLeftPosition = () => {
     const computedStyle = window.getComputedStyle(tableContainer.value)
     const paddingLeft = parseFloat(computedStyle.paddingLeft)
 
@@ -156,6 +159,10 @@
 
     tableHead.value.style.left = `${tableContainerLeft}px`
   }
+
+  const visibleColumns = computed(() => {
+    return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
+  })
 
   const cellWidths = ref([])
 
@@ -168,39 +175,66 @@
     const newCellWidths = []
 
     // Get the computed styles for white-space settings
-    const getCellComputedStyle = (cell) => {
-      return window.getComputedStyle(cell)
+    // const getCellComputedStyle = (cell) => {
+    //   return window.getComputedStyle(cell)
+    // }
+
+    const computeCellWidths = (cell) => {
+      // const computedStyle = window.getComputedStyle(cell)
+      // const whiteSpace = computedStyle.whiteSpace
+
+      // Temporarily set white-space to 'nowrap' to get the max width without wrapping
+      // cell.style.whiteSpace = 'nowrap'
+      const width = cell.getBoundingClientRect().width
+      // Revert back to original white-space setting
+      // cell.style.whiteSpace = whiteSpace
+
+      return width
     }
 
     tableHeadCells.forEach((cell, index) => {
-      const computedStyle = getCellComputedStyle(cell)
-      const whiteSpace = computedStyle.whiteSpace
+      // if data-key is in hiddenColumns, skip
+      // if (props.hiddenColumns.includes(cell.getAttribute('data-key'))) {
+      //   return
+      // }
+      // console.log(cell)
+      // console.log(props.hiddenColumns)
+      // console.log(cell.getAttribute('data-key'))
+      // const computedStyle = getCellComputedStyle(cell)
+      // const whiteSpace = computedStyle.whiteSpace
 
-      // Temporarily set white-space to 'nowrap' to get the max width without wrapping
-      cell.style.whiteSpace = 'nowrap'
-      const width = cell.getBoundingClientRect().width
-      // Revert back to original white-space setting
-      cell.style.whiteSpace = whiteSpace
+      // // Temporarily set white-space to 'nowrap' to get the max width without wrapping
+      // cell.style.whiteSpace = 'nowrap'
+      // const width = cell.getBoundingClientRect().width
+      // // Revert back to original white-space setting
+      // cell.style.whiteSpace = whiteSpace
 
-      newCellWidths[index] = { width: `${width}px` }
+      newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
     })
 
     tableBodyCells.forEach((cell, index) => {
-      const computedStyle = getCellComputedStyle(cell)
-      const whiteSpace = computedStyle.whiteSpace
+      // if (props.hiddenColumns.includes(cell.getAttribute('data-key'))) {
+      //   return
+      // }
+      // console.log(cell)
+      // console.log(props.hiddenColumns)
+      // console.log(cell.getAttribute('data-key'))
+      // const computedStyle = getCellComputedStyle(cell)
+      // const whiteSpace = computedStyle.whiteSpace
 
-      // Temporarily set white-space to 'nowrap' to get the max width without wrapping
-      cell.style.whiteSpace = 'nowrap'
-      const width = cell.getBoundingClientRect().width
-      // Revert back to original white-space setting
-      cell.style.whiteSpace = whiteSpace
+      // // Temporarily set white-space to 'nowrap' to get the max width without wrapping
+      // cell.style.whiteSpace = 'nowrap'
+      // const width = cell.getBoundingClientRect().width
+      // // Revert back to original white-space setting
+      // cell.style.whiteSpace = whiteSpace
 
-      if (width > parseFloat(newCellWidths[index].width)) {
-        newCellWidths[index] = { width: `${width}px` }
+      if (computeCellWidths(cell) > parseFloat(newCellWidths[index].width)) {
+        newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
       }
     })
 
     cellWidths.value = newCellWidths
+    console.log(newCellWidths)
   }
 
   watch(() => props.fixedHeader, () => {
@@ -209,16 +243,14 @@
 
   // do not change this. watch props.data only
   watch(() => props.data, () => {
-    console.log('props.data changed, updating cell widths')
     nextTick(() => {
-      console.log('watch:props.data:nextTick')
       updateCellWidths()
     })
   })
 
   const onResize = () => {
     updateCellWidths()
-    onScroll()
+    updateLeftPosition()
   }
 
   onMounted(() => {
