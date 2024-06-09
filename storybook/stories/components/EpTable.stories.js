@@ -105,11 +105,13 @@ export const Table = (args) => ({
     const tableData = ref(fakeArray(100))
     const columnsRef = ref(columns)
 
+    // const hiddenColumns = ['id']
+
     // use exclude
     const {
       includedColumns,
       includedData
-    } = useExclude(columnsRef, tableData, args.exclude)
+    } = useExclude(columnsRef, tableData, [])
 
     // use sorting
     const {
@@ -287,12 +289,13 @@ export const Table = (args) => ({
 })
 
 Table.args = {
-  exclude: ['id'],
+  // exclude: ['id'],
+  hiddenColumns: ['id'],
   compact: false,
   bordered: true,
-  selectable: false,
+  selectable: true,
   striped: true,
-  width: '100%',
+  // width: '100%',
   stickyHeader: true,
   calculateHeight: true,
   calculateHeightOffset: 81

@@ -1,3 +1,4 @@
+import { surfaceOverflow } from '../../helpers/decorators.js'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
 import {
@@ -14,7 +15,7 @@ import { ref, onMounted } from 'vue'
 export default {
   title: 'Components/Table Fixed',
   component: EpTable,
-  // decorators: [centeredSurface],
+  decorators: [surfaceOverflow],
   argTypes: {
     columns: {
       table: { disable: true }
@@ -102,11 +103,11 @@ export const TableFixed = (args) => ({
       '--ep-table-header-bg-color': 'var(--interface-bg)',
       '--ep-table-body-width': 'max-content',
       '--ep-table-container-overflow': 'auto',
-      '--ep-table-container-padding': '1rem 3rem 30rem 3rem',
+      // '--ep-table-container-padding': '1rem 3rem 30rem 3rem',
       '--ep-table-fixed-top': '0',
     })
 
-    const tableComponent = ref(null)
+
 
     // onMounted(() => {
     //   window.addEventListener('scroll', () => {
@@ -139,20 +140,23 @@ export const TableFixed = (args) => ({
       }
     }
 
+    const tableComponent = ref(null)
+    const tableContainer = ref(null)
+
     const handleScroll = () => {
       requestAnimationFrame(() => {
-        const table = tableComponent.value.$refs.tableContainer
-        const tableY = table.getBoundingClientRect().top
+        // const table = tableComponent.value.$refs.tableContainer
+        const tableY = tableContainer.value.getBoundingClientRect().top
         // console.log('tableY', tableY)
 
         if (!args.fixedHeader && tableY < 0) {
           args.fixedHeader = true
-          table.style.paddingTop = '44.5px'
-          window.scrollBy(0, 44.5)
+          tableContainer.value.style.paddingTop = '44.5px'
+          // window.scrollBy(0, 44.5)
         }
         if (args.fixedHeader && tableY > 0) {
           args.fixedHeader = false
-          table.style.paddingTop = '0'
+          tableContainer.value.style.paddingTop = '0'
         }
       })
     }
@@ -160,6 +164,7 @@ export const TableFixed = (args) => ({
     const debouncedHandleScroll = debounce(handleScroll, 0) // Adjust the debounce delay as needed
 
     onMounted(() => {
+      tableContainer.value = tableComponent.value.$refs.tableContainer
       window.addEventListener('scroll', debouncedHandleScroll)
     })
 
@@ -175,7 +180,6 @@ export const TableFixed = (args) => ({
     }
   },
   template: `
-    <div style="width: 100vw; height: 100vh;">
       <div style="height: 100px; background-color: lightblue;">
       this is a fake header
       </div>
@@ -197,7 +201,6 @@ export const TableFixed = (args) => ({
           />
         </template>
       </ep-table>
-    </div>
   `
 })
 
@@ -208,6 +211,7 @@ TableFixed.args = {
   striped: true,
   stickyHeader: false,
   fixedHeader: false,
+  hiddenColumns: ['id'],
   // calculateHeight: true,
   // calculateHeightOffset: 0,
   // fixedHeaderOffset: 0,
