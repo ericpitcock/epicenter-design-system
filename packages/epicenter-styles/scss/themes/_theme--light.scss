@@ -1,15 +1,23 @@
 html[data-color-theme='light'] {
   // interface
-  --interface-bg: hsl(var(--gray-60));
-  --interface-bg--accent: hsl(var(--gray-50));
-  --interface-surface: hsl(var(--gray-40));
-  --interface-surface--accent: hsl(var(--gray-60));
-  --interface-foreground: hsl(var(--gray-30));
-  --interface-foreground--accent: hsl(var(--gray-20));
-  --interface-overlay: hsl(var(--gray-20));
-  --interface-overlay--accent: hsl(var(--gray-10));
+  // --interface-bg: hsl(var(--gray-60));
+  // --interface-bg--accent: hsl(var(--gray-50));
+  // --interface-surface: hsl(var(--gray-40));
+  // --interface-surface--accent: hsl(var(--gray-60));
+  // --interface-foreground: hsl(var(--gray-30));
+  // --interface-foreground--accent: hsl(var(--gray-20));
+  // --interface-overlay: hsl(var(--gray-20));
+  // --interface-overlay--accent: hsl(var(--gray-10));
+  --interface-bg: hsl(var(--gray-50));
+  --interface-bg--accent: hsl(var(--gray-40));
+  --interface-surface: hsl(var(--gray-30));
+  --interface-surface--accent: hsl(var(--gray-50));
+  --interface-foreground: hsl(var(--gray-20));
+  --interface-foreground--accent: hsl(var(--gray-10));
+  --interface-overlay: hsl(var(--gray-10));
+  --interface-overlay--accent: hsl(var(--gray-0));
   // borders
-  --border-color: hsl(0, 0%, 75%);
+  --border-color: hsl(0, 0%, 80%);
   --border-color--lighter: var(--border-color);
   --border-color--disabled: hsl(var(--gray-70));
   // overlay

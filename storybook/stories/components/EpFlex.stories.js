@@ -149,7 +149,8 @@ export const Flex = args => ({
 
 // width
 // height
-// flexFlow
+// flexDirection
+// flexWrap
 // justifyContent
 // alignItems
 // alignContent

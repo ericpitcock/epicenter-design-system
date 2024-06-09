@@ -7,6 +7,8 @@
       :size="size"
       :disabled="disabled"
       :class="{ 'ep-button-group--active': index === activeButton && !disabled }"
+      :classes
+      :styles
       @click="onClick(item, index)"
     />
   </div>
@@ -36,12 +38,20 @@
     size: {
       type: String,
       default: 'default'
+    },
+    styles: {
+      type: Object,
+      default: () => ({})
+    },
+    classes: {
+      type: [Array, Object, String],
+      default: ''
     }
   })
 
   const emit = defineEmits(['click'])
 
-  const activeButton = ref(0)
+  const activeButton = ref(props.active)
 
   const onClick = (item, index) => {
     if (props.disabled) {

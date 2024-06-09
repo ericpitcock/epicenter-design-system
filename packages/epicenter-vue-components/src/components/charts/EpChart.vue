@@ -1,7 +1,7 @@
 <template>
   <div
     :id="chartId"
-    :style="{ height: `${height}px` }"
+    :style="[{ height: `${height}px` }, chartColors]"
   />
 </template>
 
@@ -15,8 +15,8 @@
 
   const props = defineProps({
     chartColors: {
-      type: Array,
-      default: () => []
+      type: Object,
+      default: () => ({})
     },
     height: {
       type: Number,
@@ -56,6 +56,17 @@
   const drawChart = () => {
     chart.value = Highcharts.chart(chartId, chartOptions.value)
   }
+
+  // eslint-disable-next-line no-unused-vars
+  const reflowChart = () => {
+    if (chart.value) {
+      chart.value.reflow()
+    }
+  }
+
+  defineExpose({
+    reflowChart
+  })
 
   onMounted(() => {
     drawChart()

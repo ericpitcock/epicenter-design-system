@@ -13,8 +13,8 @@ const columns = [
   {
     label: 'ID',
     key: 'id',
-    sortable: true,
-    filterable: true,
+    sortable: false,
+    filterable: false,
   },
   {
     label: 'Severity',

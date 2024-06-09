@@ -33,8 +33,11 @@
 
 .ep-input-styler__label {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -7px;
+  left: 7px;
+  font-size: var(--font-size--small);
+  background: var(--interface-surface);
+  padding-inline: 1rem;
 }
 
 .ep-input-styler__icon-left,

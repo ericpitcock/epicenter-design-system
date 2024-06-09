@@ -8,10 +8,11 @@
 </template>
 
 <script setup>
+  import { computed } from 'vue'
+
   defineOptions({
     name: 'EpFlex'
   })
-  import { computed } from 'vue'
 
   const props = defineProps({
     flexProps: {
@@ -19,6 +20,18 @@
       required: true
     }
   })
+
+  const defaultFlexProps = {
+    width: '100%',
+    height: '100%',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    alignContent: 'normal',
+    gap: '0',
+    padding: '0'
+  }
 
   const styles = computed(() => {
     const [
@@ -35,15 +48,15 @@
 
     return {
       display: 'flex',
-      ...width && { width },
-      ...height && { height },
-      ...flexDirection && { flexDirection },
-      ...flexWrap && { flexWrap },
-      ...justifyContent && { justifyContent },
-      ...alignItems && { alignItems },
-      ...alignContent && { alignContent },
-      ...gap && { gap },
-      ...padding && { padding },
+      width: width || defaultFlexProps.width,
+      height: height || defaultFlexProps.height,
+      flexDirection: flexDirection || defaultFlexProps.flexDirection,
+      flexWrap: flexWrap || defaultFlexProps.flexWrap,
+      justifyContent: justifyContent || defaultFlexProps.justifyContent,
+      alignItems: alignItems || defaultFlexProps.alignItems,
+      alignContent: alignContent || defaultFlexProps.alignContent,
+      gap: gap || defaultFlexProps.gap,
+      padding: padding || defaultFlexProps.padding,
     }
   })
 </script>

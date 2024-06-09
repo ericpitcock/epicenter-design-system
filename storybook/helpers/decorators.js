@@ -48,10 +48,30 @@ const paddedSurface = () => {
   }
 }
 
+const surfaceOverflow = () => {
+  return {
+    template: `
+      <div class="decorator decorator--surface decorator--overflow">
+        <story />
+      </div>
+    `
+  }
+}
+
 const paddedSurfaceOverflow = () => {
   return {
     template: `
       <div class="decorator decorator--padded decorator--surface decorator--overflow">
+        <story />
+      </div>
+    `
+  }
+}
+
+const paddedBgOverflow = () => {
+  return {
+    template: `
+      <div class="decorator decorator--padded decorator--bg decorator--overflow">
         <story />
       </div>
     `
@@ -64,5 +84,7 @@ export {
   centeredCyanBlueGradient,
   paddedBg,
   paddedSurface,
+  surfaceOverflow,
   paddedSurfaceOverflow,
+  paddedBgOverflow
 }
