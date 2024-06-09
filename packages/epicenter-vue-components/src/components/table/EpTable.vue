@@ -174,74 +174,29 @@
 
     const newCellWidths = []
 
-    // Get the computed styles for white-space settings
-    // const getCellComputedStyle = (cell) => {
-    //   return window.getComputedStyle(cell)
-    // }
-
     const computeCellWidths = (cell) => {
-      // const computedStyle = window.getComputedStyle(cell)
-      // const whiteSpace = computedStyle.whiteSpace
-
-      // Temporarily set white-space to 'nowrap' to get the max width without wrapping
-      // cell.style.whiteSpace = 'nowrap'
       const width = cell.getBoundingClientRect().width
-      // Revert back to original white-space setting
-      // cell.style.whiteSpace = whiteSpace
 
       return width
     }
 
     tableHeadCells.forEach((cell, index) => {
-      // if data-key is in hiddenColumns, skip
-      // if (props.hiddenColumns.includes(cell.getAttribute('data-key'))) {
-      //   return
-      // }
-      // console.log(cell)
-      // console.log(props.hiddenColumns)
-      // console.log(cell.getAttribute('data-key'))
-      // const computedStyle = getCellComputedStyle(cell)
-      // const whiteSpace = computedStyle.whiteSpace
-
-      // // Temporarily set white-space to 'nowrap' to get the max width without wrapping
-      // cell.style.whiteSpace = 'nowrap'
-      // const width = cell.getBoundingClientRect().width
-      // // Revert back to original white-space setting
-      // cell.style.whiteSpace = whiteSpace
-
       newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
     })
 
     tableBodyCells.forEach((cell, index) => {
-      // if (props.hiddenColumns.includes(cell.getAttribute('data-key'))) {
-      //   return
-      // }
-      // console.log(cell)
-      // console.log(props.hiddenColumns)
-      // console.log(cell.getAttribute('data-key'))
-      // const computedStyle = getCellComputedStyle(cell)
-      // const whiteSpace = computedStyle.whiteSpace
-
-      // // Temporarily set white-space to 'nowrap' to get the max width without wrapping
-      // cell.style.whiteSpace = 'nowrap'
-      // const width = cell.getBoundingClientRect().width
-      // // Revert back to original white-space setting
-      // cell.style.whiteSpace = whiteSpace
-
       if (computeCellWidths(cell) > parseFloat(newCellWidths[index].width)) {
         newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
       }
     })
 
     cellWidths.value = newCellWidths
-    console.log(newCellWidths)
   }
 
   watch(() => props.fixedHeader, () => {
     updateCellWidths()
   })
 
-  // do not change this. watch props.data only
   watch(() => props.data, () => {
     nextTick(() => {
       updateCellWidths()
