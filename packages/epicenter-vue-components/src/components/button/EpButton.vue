@@ -8,7 +8,6 @@
     :aria-label="ariaLabel ? ariaLabel : label"
     :disabled="disabled"
     v-bind="$attrs"
-    @click="onClick"
   >
     <span
       v-if="iconLeft"
@@ -96,9 +95,6 @@
       default: ''
     }
   })
-
-  const emit = defineEmits(['click'])
-  const onClick = () => emit('click')
 
   const element = computed(() => {
     const attrs = useAttrs()

@@ -125,11 +125,21 @@ const fakeArray = length => {
           menuItems: [
             {
               label: 'Edit',
-              iconLeft: { name: 'f-file' }
+              iconLeft: { name: 'f-file' },
+              onClick: (payload) => {
+                console.log(payload.tableRowData.id)
+                // alert that id will be deleted
+                alert(`Edit ${payload.tableRowData.id}`)
+              }
             },
             {
               label: 'Delete',
-              iconLeft: { name: 'f-trash' }
+              iconLeft: { name: 'f-trash' },
+              onClick: (payload) => {
+                console.log(payload.tableRowData.id)
+                // alert that id will be deleted
+                alert(`Delete ${payload.tableRowData.id}`)
+              }
             }
           ],
           containerProps: {

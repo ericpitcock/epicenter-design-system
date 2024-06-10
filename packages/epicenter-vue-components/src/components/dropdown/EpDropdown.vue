@@ -5,7 +5,7 @@
     @mouseleave="onMouseleave"
   >
     <div
-      @click="toggleDropdown"
+      @click.stop="toggleDropdown"
       @mouseover="onMouseover"
     >
       <slot
@@ -40,7 +40,7 @@
   import vClickOutside from '../../directives/clickOutside.js'
   import EpButton from '../button/EpButton.vue'
   import EpMenu from '../menu/EpMenu.vue'
-  import { ref, computed } from 'vue'
+  import { computed, ref } from 'vue'
 
   defineOptions({
     name: 'EpDropdown',
@@ -119,6 +119,7 @@
   }
 
   const onClick = (item) => {
+    console.log(item)
     emit('select', item)
     closeDropdown()
   }

@@ -27,7 +27,7 @@
           <ep-button
             v-if="!item.divider && !item.section"
             v-bind="buttonProps(item)"
-            @click="onClick(item)"
+            @click.stop="onClick(item)"
           />
           <div
             v-if="item.children"
@@ -50,7 +50,7 @@
   import EpContainer from '../container/EpContainer.vue'
   import EpDivider from '../divider/EpDivider.vue'
   import EpButton from '../button/EpButton.vue'
-  import { ref } from 'vue'
+  import { inject, ref } from 'vue'
 
   defineOptions({
     name: 'EpMenu'
@@ -83,6 +83,8 @@
     }
   })
 
+  const tableRowData = inject('tableRowData', null)
+
   const emit = defineEmits(['click'])
 
   const activeItemIndex = ref(null)
@@ -113,7 +115,8 @@
   }
 
   const onClick = (item) => {
-    emit('click', item)
-    if (item.onClick) item.onClick(item)
+    const payload = tableRowData ? { item, tableRowData } : item
+    emit('click', payload)
+    if (item.onClick) item.onClick(payload)
   }
 </script>

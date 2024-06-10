@@ -14,6 +14,7 @@
 </template>
 
 <script setup>
+  import { provide } from 'vue'
   import DOMPurify from 'dompurify'
 
   defineOptions({
@@ -40,4 +41,6 @@
     const formatter = column.formatter
     return formatter ? DOMPurify.sanitize(formatter(value)) : value
   }
+
+  provide('tableRowData', props.row)
 </script>
