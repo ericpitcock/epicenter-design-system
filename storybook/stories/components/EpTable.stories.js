@@ -8,6 +8,7 @@ import EpTable from '@/components/table/EpTable.vue'
 import EpTableSearchInput from '@/components/table/EpTableSearchInput.vue'
 import EpTablePagination from '@/components/table/EpTablePagination.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
+import EpTableCheckboxFilters from '@/components/table/EpTableCheckboxFilters.vue' // Import the new component
 import {
   useExclude,
   useColumnFilters,
@@ -99,7 +100,8 @@ export const Table = (args) => ({
     EpTable,
     EpTableSearchInput,
     EpTablePagination,
-    EpTableSortableHeader
+    EpTableSortableHeader,
+    EpTableCheckboxFilters // Register the new component
   },
   setup() {
     const tableData = ref(fakeArray(100))
@@ -132,7 +134,8 @@ export const Table = (args) => ({
     const {
       filters,
       generateFilters,
-      filteredData
+      filteredData,
+      onFilterChange
     } = useDataFilters(includedColumns, sortedData)
 
     // use column filters
@@ -186,6 +189,10 @@ export const Table = (args) => ({
       '--ep-container-padding': '2rem',
     }
 
+    // const updateFilters = ({ category, label, checked }) => {
+    //   filters[category].find(checkbox => checkbox.label === label).checked = checked
+    // }
+
     return {
       args,
       // columns,
@@ -209,28 +216,14 @@ export const Table = (args) => ({
       handleFilter,
       filters,
       columnFiltersDropdownProps,
-      containerStyles
+      containerStyles,
+      onFilterChange
     }
   },
   template: `
   <ep-flex flex-props=",,row,,,,,3rem,">
-    <div class="sidebar" style="flex: 0 0 140px">
-      <ep-flex flex-props=",,column,,,,,1rem,">
-        <template
-          v-for="(filterSet, category) in filters"
-          :key="category"
-        >
-          <h3 class="text-style--section">
-            {{ category.replace(/_/g, ' ') }}
-          </h3>
-          <ep-checkbox
-            v-for="checkbox in filterSet"
-            :key="checkbox.label"
-            v-bind="checkbox"
-            v-model="checkbox.checked"
-          />
-        </template>
-      </ep-flex>
+    <div class="sidebar" style="flex: 0 0 140px;">
+      <ep-table-checkbox-filters :filters="filters" @update:filters="onFilterChange" />
     </div>
     <ep-flex flex-props=",,column,,,,,1rem," style="flex: 1; overflow: auto;">
       <ep-flex flex-props=",auto,row,,,,,1rem,">
