@@ -32,6 +32,7 @@ import EpSplitButton from './split-button/EpSplitButton.vue'
 import EpStatusIndicator from './status-indicator/EpStatusIndicator.vue'
 import EpTable from './table/EpTable.vue'
 import EpTableCell from './table/EpTableCell.vue'
+import EpTableCheckboxFilters from './table/EpTableCheckboxFilters.vue'
 import EpTablePagination from './table/EpTablePagination.vue'
 import EpTableSortableHeader from './table/EpTableSortableHeader.vue'
 import EpTabs from './tabs/EpTabs.vue'
@@ -76,6 +77,7 @@ export default {
   EpStatusIndicator,
   EpTable,
   EpTableCell,
+  EpTableCheckboxFilters,
   EpTablePagination,
   EpTableSortableHeader,
   EpTabs,

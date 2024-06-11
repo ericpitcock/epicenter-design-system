@@ -64,9 +64,14 @@ export default function useDataFilters(columns, data) {
     return filtered
   })
 
+  const onFilterChange = ({ category, label, checked }) => {
+    filters.value[category].find(filter => filter.label === label).checked = checked
+  }
+
   return {
     filters,
     generateFilters,
-    filteredData
+    filteredData,
+    onFilterChange
   }
 }

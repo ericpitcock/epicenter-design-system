@@ -4242,6 +4242,10 @@ select.ep-select--disabled {
   background-color: var(--ep-table-row-stripe-color);
 }
 
+.ep-table-checkbox-filters h3 {
+  margin-bottom: 0.5rem;
+}
+
 .ep-table thead th div.ep-table-sortable-header {
   --ep-table-sortable-header-active-text-color: var(--primary-color-200);
   justify-content: space-between;

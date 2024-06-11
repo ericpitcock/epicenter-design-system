@@ -83,8 +83,6 @@
     }
   })
 
-  const tableRowData = inject('tableRowData', null)
-
   const emit = defineEmits(['click'])
 
   const activeItemIndex = ref(null)
@@ -113,6 +111,9 @@
       activeItemIndex.value = null
     }
   }
+
+  // inject tableRowData when a menu is used in a table cell
+  const tableRowData = inject('tableRowData', null)
 
   const onClick = (item) => {
     const payload = tableRowData ? { item, tableRowData } : item
