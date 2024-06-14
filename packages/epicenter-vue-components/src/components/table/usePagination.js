@@ -26,5 +26,5 @@ export default function usePagination(data, initialPage = 1, initialPageSize = 1
     tableContainer.scrollTop = 0
   }
 
-  return { paginatedData, currentPage, totalPages, onPageChange }
+  return { paginatedData, currentPage, totalPages, onPageChange, pageSize }
 }

@@ -153,17 +153,26 @@ export const Table = (args) => ({
       updateSearchText
     } = useSearch(visibleData)
 
+    // 10, 20, 50, 100
+    // const resultsPerPage = ref(50)
+
+    const onResultsPerPageChange = (value) => {
+      pageSize.value = value
+      console.log('Results per page:', value)
+    }
     // use pagination
     const {
       paginatedData,
       currentPage,
       totalPages,
-      onPageChange
-    } = usePagination(searchedData, 1, 30)
+      onPageChange,
+      pageSize
+    } = usePagination(searchedData, 1, 20)
 
     const styles = computed(() => {
       return {
-        '--ep-table-width': args.width
+        '--ep-table-width': args.width,
+        '--ep-table-min-width': '100%',
       }
     })
 
@@ -206,6 +215,9 @@ export const Table = (args) => ({
       totalPages,
       onPageChange,
       paginatedData,
+      // resultsPerPage,
+      onResultsPerPageChange,
+      pageSize,
       // search
       searchText,
       updateSearchText,
@@ -225,7 +237,7 @@ export const Table = (args) => ({
     <div class="sidebar" style="flex: 0 0 140px;">
       <ep-table-checkbox-filters :filters="filters" @update:filters="onFilterChange" />
     </div>
-    <ep-flex flex-props=",,column,,,,,1rem," style="flex: 1; overflow: auto;">
+    <ep-flex flex-props=",,column,,,,,," style="flex: 1; overflow: auto;">
       <ep-flex flex-props=",auto,row,,,,,1rem,">
         <ep-input
           size="default"
@@ -274,7 +286,10 @@ export const Table = (args) => ({
       <ep-table-pagination
         :current-page="currentPage"
         :total-pages="totalPages"
+        :show-pages="true"
+        :results-per-page="pageSize"
         @page-change="onPageChange"
+        @update:results-per-page="onResultsPerPageChange"
       />
     </ep-flex>
   </ep-flex>
