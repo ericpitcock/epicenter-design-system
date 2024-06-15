@@ -1,9 +1,12 @@
 .ep-table-container {
+  --ep-table-container-width: auto;
+  --ep-table-container-min-width: 0;
   --ep-table-container-overflow: auto;
   --ep-table-container-padding: 0;
   --ep-table-header-bg-color: var(--interface-surface);
   --ep-table-border-color: var(--border-color);
   --ep-table-width: auto;
+  --ep-table-min-width: 0;
   --ep-table-sticky-top: 0;
   --ep-table-fixed-top: 0;
   --ep-table-head-width: auto;
@@ -12,12 +15,15 @@
   --ep-table-row-hover-bg-color: hsl(var(--gray-450));
   --ep-table-cell-vertical-align: middle;
   --ep-table-cell-white-space: normal;
+  width: var(--ep-table-container-width);
+  min-width: var(--ep-table-container-min-width);
   overflow: var(--ep-table-container-overflow);
   padding: var(--ep-table-container-padding);
 }
 
 .ep-table {
   width: var(--ep-table-width);
+  min-width: var(--ep-table-min-width);
 
   thead {
     width: var(--ep-table-head-width);

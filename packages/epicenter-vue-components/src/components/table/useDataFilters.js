@@ -68,10 +68,21 @@ export default function useDataFilters(columns, data) {
     filters.value[category].find(filter => filter.label === label).checked = checked
   }
 
+  // function to reset data to original state
+  const resetFilters = () => {
+    console.log('Resetting filters')
+    for (const key in filters.value) {
+      filters.value[key].forEach(filter => {
+        filter.checked = true
+      })
+    }
+  }
+
   return {
     filters,
     generateFilters,
     filteredData,
-    onFilterChange
+    onFilterChange,
+    resetFilters
   }
 }

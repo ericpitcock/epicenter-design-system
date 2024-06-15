@@ -75,7 +75,9 @@
         required: true,
       },
       modelValue: {
-        type: String,
+        // string or number
+        type: [String, Number],
+        // type: String,
         default: ''
       },
       placeholder: {

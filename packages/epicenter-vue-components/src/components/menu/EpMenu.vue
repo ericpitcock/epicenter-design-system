@@ -27,7 +27,7 @@
           <ep-button
             v-if="!item.divider && !item.section"
             v-bind="buttonProps(item)"
-            @click.stop="onClick(item)"
+            @click.stop="onClick(item, index)"
           />
           <div
             v-if="item.children"
@@ -112,11 +112,11 @@
     }
   }
 
-  // inject tableRowData when a menu is used in a table cell
-  const tableRowData = inject('tableRowData', null)
+  // inject contextData when a menu is used in a table cell
+  const contextData = inject('contextData', null)
 
-  const onClick = (item) => {
-    const payload = tableRowData ? { item, tableRowData } : item
+  const onClick = (item, index) => {
+    const payload = contextData ? { item, menuItemIndex: index, contextData } : { item, menuItemIndex: index }
     emit('click', payload)
     if (item.onClick) item.onClick(payload)
   }

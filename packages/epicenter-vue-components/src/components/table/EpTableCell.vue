@@ -3,11 +3,12 @@
   <td :style="styles">
     <component
       :is="column.component"
-      v-if="!!column.component"
+      v-if="column.component"
       v-bind="row[column.key].props"
     />
     <span
       v-else
+      :class="column.class"
       v-html="formattedCell(row, column)"
     />
   </td>
@@ -42,5 +43,5 @@
     return formatter ? DOMPurify.sanitize(formatter(value)) : value
   }
 
-  provide('tableRowData', props.row)
+  provide('contextData', props.row)
 </script>

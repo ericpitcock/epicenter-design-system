@@ -40,13 +40,17 @@
   import vClickOutside from '../../directives/clickOutside.js'
   import EpButton from '../button/EpButton.vue'
   import EpMenu from '../menu/EpMenu.vue'
-  import { computed, ref } from 'vue'
+  import { computed, ref, provide } from 'vue'
 
   defineOptions({
     name: 'EpDropdown',
   })
 
   const props = defineProps({
+    context: {
+      type: [String, Object, Array],
+      default: ''
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -93,7 +97,7 @@
 
   const computedContainerProps = computed(() => ({
     styles: {
-      '--ep-container-min-width': '15rem',
+      '--ep-container-min-width': 'fit-content',
       '--ep-container-bg-color': 'var(--interface-overlay)',
       ...props.containerProps,
     },
@@ -118,9 +122,12 @@
     dropdownVisible.value = false
   }
 
-  const onClick = (item) => {
-    console.log(item)
-    emit('select', item)
+  provide('contextData', props.context)
+
+  const onClick = (payload) => {
+    console.log(payload)
+    // emit('select', { payload, context: props.context })
+    emit('select', payload)
     closeDropdown()
   }
 

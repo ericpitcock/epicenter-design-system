@@ -6,7 +6,7 @@
     "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-vue-components && npm install && cd .. && npm install && npm run build-storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "yalc:push": "cd packages/epicenter-styles && yalc push && cd ../epicenter-vue-components && yalc push",
+    "yalc:push": "cd packages/epicenter-styles && yalc push --sig && cd ../epicenter-vue-components && yalc push --sig",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "repository": {

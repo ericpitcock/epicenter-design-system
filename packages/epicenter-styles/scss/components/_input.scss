@@ -3,6 +3,7 @@ input.ep-input {
   --ep-input-text-color: var(--text-color--loud);
   --ep-input-caret-color: var(--primary-color-base);
   --ep-input-border-color: var(--border-color);
+  --ep-input-bg-color: var(--interface-foreground);
   --ep-input-border-radius: var(--border-radius);
   --ep-input-placeholder-text-color: var(--text-color--placeholder);
   --ep-input-focus-border-color: var(--primary-color-base);
@@ -13,6 +14,7 @@ input.ep-input {
   caret-color: var(--ep-input-caret-color);
   font-size: var(--ep-input-font-size);
   color: var(--ep-input-text-color);
+  background: var(--ep-input-bg-color);
   border: 1px solid var(--ep-input-border-color);
   border-radius: var(--ep-input-border-radius);
 

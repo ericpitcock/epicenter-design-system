@@ -17,14 +17,14 @@ import {
   usePagination,
   useSearch
 } from '@/composables/index.js'
-import { paddedSurfaceOverflow } from '../../helpers/decorators.js'
+import { paddedSurface } from '../../helpers/decorators.js'
 import { columns, fakeArray } from '../../data/tableData'
 import { computed, ref, onMounted } from 'vue'
 
 export default {
   title: 'Components/Table',
   component: EpTable,
-  decorators: [paddedSurfaceOverflow],
+  decorators: [paddedSurface],
   argTypes: {
     columns: {
       table: { disable: true }
@@ -104,7 +104,7 @@ export const Table = (args) => ({
     EpTableCheckboxFilters // Register the new component
   },
   setup() {
-    const tableData = ref(fakeArray(100))
+    const tableData = ref(fakeArray(340))
     const columnsRef = ref(columns)
 
     // const hiddenColumns = ['id']
@@ -135,7 +135,8 @@ export const Table = (args) => ({
       filters,
       generateFilters,
       filteredData,
-      onFilterChange
+      onFilterChange,
+      resetFilters
     } = useDataFilters(includedColumns, sortedData)
 
     // use column filters
@@ -153,20 +154,18 @@ export const Table = (args) => ({
       updateSearchText
     } = useSearch(visibleData)
 
-    // 10, 20, 50, 100
-    // const resultsPerPage = ref(50)
+    // const onResultPerPageChange = ($event) => {
+    //   pageSize.value = parseInt($event)
+    // }
 
-    const onResultsPerPageChange = (value) => {
-      pageSize.value = value
-      console.log('Results per page:', value)
-    }
     // use pagination
     const {
-      paginatedData,
       currentPage,
+      pageSize,
       totalPages,
+      paginatedData,
       onPageChange,
-      pageSize
+      onPageSizeChange
     } = usePagination(searchedData, 1, 20)
 
     const styles = computed(() => {
@@ -215,9 +214,8 @@ export const Table = (args) => ({
       totalPages,
       onPageChange,
       paginatedData,
-      // resultsPerPage,
-      onResultsPerPageChange,
       pageSize,
+      onPageSizeChange,
       // search
       searchText,
       updateSearchText,
@@ -227,6 +225,7 @@ export const Table = (args) => ({
       columnFilters,
       handleFilter,
       filters,
+      resetFilters,
       columnFiltersDropdownProps,
       containerStyles,
       onFilterChange
@@ -235,7 +234,11 @@ export const Table = (args) => ({
   template: `
   <ep-flex flex-props=",,row,,,,,3rem,">
     <div class="sidebar" style="flex: 0 0 140px;">
-      <ep-table-checkbox-filters :filters="filters" @update:filters="onFilterChange" />
+      <ep-table-checkbox-filters
+        :filters="filters"
+        @update:filters="onFilterChange"
+      />
+      <p @click="resetFilters">Reset Filters</p>
     </div>
     <ep-flex flex-props=",,column,,,,,," style="flex: 1; overflow: auto;">
       <ep-flex flex-props=",auto,row,,,,,1rem,">
@@ -264,33 +267,37 @@ export const Table = (args) => ({
         </ep-dropdown>
       </ep-flex>
       <ep-empty-state v-if="!paginatedData.length">
-        No data found
+        <p>No matching data</p>
+          <template #subtext>
+            <p>Try <span class="clickable-text" @click="resetFilters">reseting</span> your filters</p>
+          </template>
       </ep-empty-state>
-      <ep-table
-        v-else
-        :columns="visibleColumns"
-        :data="paginatedData"
-        :style="styles"
-        v-bind="args"
-        @row-click="onRowClick"
-      >
-        <template #header="{ column, cellWidths }">
-          <ep-table-sortable-header
-            :column="column"
-            :sort-column="sortColumn"
-            :sort-order="sortOrder"
-            @sort="sortBy"
-          />
-        </template>
-      </ep-table>
-      <ep-table-pagination
-        :current-page="currentPage"
-        :total-pages="totalPages"
-        :show-pages="true"
-        :results-per-page="pageSize"
-        @page-change="onPageChange"
-        @update:results-per-page="onResultsPerPageChange"
-      />
+      <template v-else>
+        <ep-table
+          :columns="visibleColumns"
+          :data="paginatedData"
+          :style="styles"
+          v-bind="args"
+          @row-click="onRowClick"
+        >
+          <template #header="{ column, cellWidths }">
+            <ep-table-sortable-header
+              :column="column"
+              :sort-column="sortColumn"
+              :sort-order="sortOrder"
+              @sort="sortBy"
+            />
+          </template>
+        </ep-table>
+        <ep-table-pagination
+          :current-page="currentPage"
+          :total-pages="totalPages"
+          :show-pages="true"
+          :results-per-page="pageSize"
+          @page-change="onPageChange"
+          @update:results-per-page="onPageSizeChange"
+        />
+      </template>
     </ep-flex>
   </ep-flex>
   `

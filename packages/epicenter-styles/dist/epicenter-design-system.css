@@ -83,6 +83,19 @@ textarea {
   background: var(--bg-color--alert-low);
 }
 
+.clickable {
+  cursor: pointer;
+}
+
+.clickable-text {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.no-select {
+  user-select: none;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
@@ -2582,7 +2595,7 @@ pre.line-numbers > code {
   --ep-container-content-padding: 0;
   --ep-container-bg-color: none;
   --ep-container-border-radius: var(--border-radius--large);
-  --ep-container-border-width: 0.1rem;
+  --ep-container-border-width: 0;
   --ep-container-border-style: solid;
   --ep-container-border-color: var(--border-color);
   --ep-container-overflow: visible;
@@ -3514,8 +3527,14 @@ span.flatpickr-weekday {
 .ep-empty-state--column.ep-empty-state--justify-left {
   align-items: flex-start;
 }
+.ep-empty-state--column.ep-empty-state--justify-left .ep-empty-state__body {
+  text-align: left;
+}
 .ep-empty-state--column.ep-empty-state--justify-right {
   align-items: flex-end;
+}
+.ep-empty-state--column.ep-empty-state--justify-right .ep-empty-state__body {
+  text-align: right;
 }
 .ep-empty-state--row {
   flex-direction: row;
@@ -3647,6 +3666,7 @@ input.ep-input {
   --ep-input-text-color: var(--text-color--loud);
   --ep-input-caret-color: var(--primary-color-base);
   --ep-input-border-color: var(--border-color);
+  --ep-input-bg-color: var(--interface-foreground);
   --ep-input-border-radius: var(--border-radius);
   --ep-input-placeholder-text-color: var(--text-color--placeholder);
   --ep-input-focus-border-color: var(--primary-color-base);
@@ -3657,6 +3677,7 @@ input.ep-input {
   caret-color: var(--ep-input-caret-color);
   font-size: var(--ep-input-font-size);
   color: var(--ep-input-text-color);
+  background: var(--ep-input-bg-color);
   border: 1px solid var(--ep-input-border-color);
   border-radius: var(--ep-input-border-radius);
 }
@@ -4134,11 +4155,14 @@ select.ep-select--disabled {
 }
 
 .ep-table-container {
+  --ep-table-container-width: auto;
+  --ep-table-container-min-width: 0;
   --ep-table-container-overflow: auto;
   --ep-table-container-padding: 0;
   --ep-table-header-bg-color: var(--interface-surface);
   --ep-table-border-color: var(--border-color);
   --ep-table-width: auto;
+  --ep-table-min-width: 0;
   --ep-table-sticky-top: 0;
   --ep-table-fixed-top: 0;
   --ep-table-head-width: auto;
@@ -4147,12 +4171,15 @@ select.ep-select--disabled {
   --ep-table-row-hover-bg-color: hsl(var(--gray-450));
   --ep-table-cell-vertical-align: middle;
   --ep-table-cell-white-space: normal;
+  width: var(--ep-table-container-width);
+  min-width: var(--ep-table-container-min-width);
   overflow: var(--ep-table-container-overflow);
   padding: var(--ep-table-container-padding);
 }
 
 .ep-table {
   width: var(--ep-table-width);
+  min-width: var(--ep-table-min-width);
 }
 .ep-table thead {
   width: var(--ep-table-head-width);
@@ -4244,6 +4271,27 @@ select.ep-select--disabled {
 
 .ep-table-checkbox-filters h3 {
   margin-bottom: 0.5rem;
+}
+
+.ep-table-pagination {
+  --ep-table-pagination-padding: 0;
+  --ep-table-pagination-button-inactive-text-color: var(--text-color--subtle);
+  --ep-table-pagination-button-active-bg-color: var(--primary-color-up-15-base);
+  --ep-table-pagination-button-active-border-color: var(--primary-color-base);
+  --ep-table-pagination-button-active-text-color: var(--text-color--loud);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--ep-table-pagination-padding);
+  user-select: none;
+}
+.ep-table-pagination .ep-button:not(.active) {
+  color: var(--ep-table-pagination-button-inactive-text-color);
+}
+.ep-table-pagination .ep-button.active {
+  background: var(--ep-table-pagination-button-active-bg-color);
+  border-color: var(--ep-table-pagination-button-active-border-color);
+  color: var(--ep-table-pagination-button-active-text-color);
 }
 
 .ep-table thead th div.ep-table-sortable-header {

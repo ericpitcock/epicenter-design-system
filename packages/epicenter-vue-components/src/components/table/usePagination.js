@@ -26,5 +26,18 @@ export default function usePagination(data, initialPage = 1, initialPageSize = 1
     tableContainer.scrollTop = 0
   }
 
-  return { paginatedData, currentPage, totalPages, onPageChange, pageSize }
+  const onPageSizeChange = (size) => {
+    // console type of size is string
+    console.log(typeof size)
+    pageSize.value = parseInt(size)
+  }
+
+  return {
+    currentPage,
+    pageSize,
+    totalPages,
+    paginatedData,
+    onPageChange,
+    onPageSizeChange
+  }
 }

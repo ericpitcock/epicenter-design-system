@@ -80,6 +80,7 @@ const fakeArray = length => {
     const distance = faker.number.int({ min: 10000, max: 100000 })
     const total_elevation_gain = faker.number.int({ min: 100, max: 800 })
     const average_speed = faker.number.int({ min: 20, max: 30, precision: 0.1 })
+    const id = faker.string.uuid()
 
     const sortMap = {
       Critical: '4',
@@ -89,7 +90,7 @@ const fakeArray = length => {
     }
 
     arr.push({
-      id: faker.string.uuid(),
+      id,
       severity: {
         props: {
           label: severity,
@@ -121,24 +122,21 @@ const fakeArray = length => {
       },
       actions: {
         props: {
+          context: id,
           size: 'small',
           menuItems: [
             {
               label: 'Edit',
               iconLeft: { name: 'f-file' },
               onClick: (payload) => {
-                console.log(payload.tableRowData.id)
-                // alert that id will be deleted
-                alert(`Edit ${payload.tableRowData.id}`)
+                alert(`Edit ${payload.contextData}`)
               }
             },
             {
               label: 'Delete',
               iconLeft: { name: 'f-trash' },
               onClick: (payload) => {
-                console.log(payload.tableRowData.id)
-                // alert that id will be deleted
-                alert(`Delete ${payload.tableRowData.id}`)
+                alert(`Delete ${payload.contextData}`)
               }
             }
           ],
