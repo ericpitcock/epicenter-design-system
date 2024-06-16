@@ -19,7 +19,7 @@ import {
 } from '@/composables/index.js'
 import { paddedSurface } from '../../helpers/decorators.js'
 import { columns, fakeArray } from '../../data/tableData'
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref } from 'vue'
 
 export default {
   title: 'Components/Table',
@@ -123,21 +123,18 @@ export const Table = (args) => ({
       sortOrder
     } = useSorting(includedData, 'severity', 'desc')
 
-    onMounted(() => {
-      const columnsToFilter = ['severity', 'type']
-      const disabledFilters = []
-      const customSortOrder = { severity: ['Critical', 'High', 'Medium', 'Low'] }
-
-      generateFilters(columnsToFilter, disabledFilters, customSortOrder)
-    })
-
     const {
       filters,
-      generateFilters,
       filteredData,
       onFilterChange,
       resetFilters
-    } = useDataFilters(includedColumns, sortedData)
+    } = useDataFilters(
+      includedColumns,
+      sortedData,
+      ['severity', 'type'],
+      ['Low'],
+      { severity: ['Critical', 'High', 'Medium', 'Low'] }
+    )
 
     // use column filters
     const {
@@ -153,10 +150,6 @@ export const Table = (args) => ({
       searchText,
       updateSearchText
     } = useSearch(visibleData)
-
-    // const onResultPerPageChange = ($event) => {
-    //   pageSize.value = parseInt($event)
-    // }
 
     // use pagination
     const {
@@ -196,10 +189,6 @@ export const Table = (args) => ({
       '--ep-container-border-color': 'var(--border-color--lighter)',
       '--ep-container-padding': '2rem',
     }
-
-    // const updateFilters = ({ category, label, checked }) => {
-    //   filters[category].find(checkbox => checkbox.label === label).checked = checked
-    // }
 
     return {
       args,
@@ -304,13 +293,11 @@ export const Table = (args) => ({
 })
 
 Table.args = {
-  // exclude: ['id'],
   hiddenColumns: ['id'],
   compact: false,
   bordered: true,
   selectable: true,
   striped: true,
-  // width: '100%',
   stickyHeader: true,
   calculateHeight: true,
   calculateHeightOffset: 81

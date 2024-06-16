@@ -26,6 +26,7 @@
           />
           <span v-if="shouldShowEndEllipsis">...</span>
           <ep-button
+            v-if="totalPages > 1"
             :label="totalPages.toString()"
             :classes="{ 'active': currentPage === totalPages }"
             @click="emit('pageChange', totalPages)"

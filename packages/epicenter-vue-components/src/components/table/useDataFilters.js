@@ -1,10 +1,10 @@
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { faker } from '@faker-js/faker'
 
-export default function useDataFilters(columns, data) {
+export default function useDataFilters(columns, data, columnsToFilter, disabledFilters = [], customSortOrder = {}) {
   const filters = ref({})
 
-  const generateFilters = (columnsToFilter, disabledFilters, customSortOrder = {}) => {
+  const generateFilters = () => {
     const uniqueValues = {}
 
     // Extract unique values for specified columns
@@ -68,19 +68,21 @@ export default function useDataFilters(columns, data) {
     filters.value[category].find(filter => filter.label === label).checked = checked
   }
 
-  // function to reset data to original state
   const resetFilters = () => {
-    console.log('Resetting filters')
     for (const key in filters.value) {
       filters.value[key].forEach(filter => {
-        filter.checked = true
+        if (!disabledFilters.includes(filter.value)) {
+          filter.checked = true
+        }
       })
     }
   }
 
+  onMounted(() => generateFilters())
+
   return {
     filters,
-    generateFilters,
+    // generateFilters,
     filteredData,
     onFilterChange,
     resetFilters
