@@ -1,23 +1,25 @@
 import { computed, ref } from 'vue'
 
 export default function useSearch(data) {
-  const searchText = ref('')
+  const searchTerms = ref([])
 
   const searchedData = computed(() => {
-    if (!searchText.value.trim()) return data.value
+    if (searchTerms.value.length === 0) return data.value
 
-    const searchQuery = searchText.value.trim().toLowerCase()
     return data.value.filter((row) => {
-      return Object.values(row).some((value) => {
-        const searchableValue = value.value || value
-        return String(searchableValue).toLowerCase().includes(searchQuery)
+      return searchTerms.value.every((term) => {
+        const searchQuery = term.trim().toLowerCase()
+        return Object.values(row).some((value) => {
+          const searchableValue = value.value || value
+          return String(searchableValue).toLowerCase().includes(searchQuery)
+        })
       })
     })
   })
 
-  const updateSearchText = (text) => {
-    searchText.value = text
+  const updateSearchTerms = (terms) => {
+    searchTerms.value = terms
   }
 
-  return { searchedData, searchText, updateSearchText }
+  return { searchedData, searchTerms, updateSearchTerms }
 }
