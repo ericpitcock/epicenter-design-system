@@ -3,7 +3,6 @@
     <div
       v-if="loading"
       class="ep-loading"
-      :style="styles"
     >
       <div class="ep-loading__icon-container">
         <svg
@@ -64,10 +63,6 @@
       type: Object,
       default: () => ({ icon: '', message: 'Loading...' })
     },
-    styles: {
-      type: Object,
-      default: () => ({})
-    }
   })
 
   watch(() => props.loading, (newValue) => {

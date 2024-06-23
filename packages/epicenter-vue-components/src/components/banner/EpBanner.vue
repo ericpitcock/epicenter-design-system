@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="['ep-banner', classes]"
-    :style="styles"
-  >
+  <div class="ep-banner">
     <div class="ep-banner__color-strip" />
     <div class="ep-banner__body">
       <div
@@ -27,7 +24,7 @@
         class="dismiss-button"
         variant="ghost"
         :icon-right="{ name: 'close' }"
-        :styles="dissmissButtonStyles"
+        :style="dissmissButtonStyles"
         @click="dismissBanner"
       />
     </div>
@@ -43,10 +40,6 @@
   import EpIcon from '../icon/EpIcon.vue'
 
   const props = defineProps({
-    classes: {
-      type: [Array, Object, String],
-      default: ''
-    },
     dissmissable: {
       type: Boolean,
       default: false
@@ -55,10 +48,6 @@
       type: Object,
       default: () => ({})
     },
-    styles: {
-      type: Array,
-      default: () => []
-    }
   })
 
   const emit = defineEmits(['dismissed'])

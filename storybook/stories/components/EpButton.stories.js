@@ -277,8 +277,8 @@ export const Button = args => ({
   template: `
     <ep-button
       v-bind="args"
-      :styles
-      :classes="args.classes"
+      :style="styles"
+      :class="args.classes"
       @click="onClick"
     />
   `

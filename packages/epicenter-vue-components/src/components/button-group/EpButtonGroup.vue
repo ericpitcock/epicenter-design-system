@@ -3,12 +3,11 @@
     <ep-button
       v-for="(item, index) in items"
       :key="item.label"
-      v-bind="item"
+      :label="item.label"
       :size="size"
       :disabled="disabled"
       :class="{ 'ep-button-group--active': index === activeButton && !disabled }"
-      :classes
-      :styles
+      :style="styles"
       @click="onClick(item, index)"
     />
   </div>
@@ -42,10 +41,6 @@
     styles: {
       type: Object,
       default: () => ({})
-    },
-    classes: {
-      type: [Array, Object, String],
-      default: ''
     }
   })
 

@@ -24,13 +24,6 @@
   defineOptions({
     name: 'EpicenterLogo',
   })
-
-  const props = defineProps({
-    styles: {
-      type: Object,
-      default: () => ({})
-    },
-  })
 </script>
 
 <style lang="scss" scoped>

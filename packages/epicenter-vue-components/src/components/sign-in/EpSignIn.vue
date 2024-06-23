@@ -1,7 +1,7 @@
 <template>
   <div class="ep-sign-in">
     <ep-container
-      :styles="{
+      :style="{
         '--ep-container-width': '400px',
         '--ep-container-height': '475px',
         '--ep-container-bg-color': 'var(--interface-surface)',

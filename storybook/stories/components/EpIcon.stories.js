@@ -62,6 +62,7 @@ export const IconLibrary = args => ({
     const containerStyles = {
       '--ep-container-content-padding': '2rem',
       '--ep-container-border-radius': 'var(--border-radius)',
+      '--ep-container-border-width': '0.1rem',
       '--ep-container-bg-color': 'var(--interface-surface)'
     }
 
@@ -119,7 +120,7 @@ export const IconLibrary = args => ({
     <ep-container
       v-for="(icon, index) in filteredIcons"
       :key="index"
-      :styles="containerStyles"
+      :style="containerStyles"
       style="flex: 0 0 170px;"
     >
       <ep-icon

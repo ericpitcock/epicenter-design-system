@@ -1,14 +1,10 @@
 <template>
-  <div
-    class="ep-action-bar"
-    :style="styles"
-  >
+  <div class="ep-action-bar">
     <template v-for="(item, index) in items">
       <ep-button
         v-if="item.type === 'button'"
         :key="`button-${index}`"
-        v-bind="buttonDefaults"
-        :icon-left="item.iconLeft"
+        v-bind="{ buttonDefaults, ...item.buttonProps }"
         @click="onClick(item, index)"
       />
       <ep-dropdown
@@ -40,10 +36,6 @@
       type: Boolean,
       default: false
     },
-    styles: {
-      type: Object,
-      default: () => ({})
-    }
   })
 
   const emit = defineEmits(['click'])

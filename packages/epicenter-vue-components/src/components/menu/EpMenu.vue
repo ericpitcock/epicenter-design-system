@@ -7,7 +7,7 @@
       >
         <ep-divider
           v-if="item.divider"
-          :styles="{
+          :style="{
             '--ep-divider-border-color': dividerColor,
             '--ep-divider-margin': '1rem 0'
           }"
@@ -116,7 +116,7 @@
   const contextData = inject('contextData', null)
 
   const onClick = (item, index) => {
-    const payload = contextData ? { item, menuItemIndex: index, contextData } : { item, menuItemIndex: index }
+    const payload = contextData ? { item, menuItemIndex: index, contextData } : { ...item, menuItemIndex: index }
     emit('click', payload)
     if (item.onClick) item.onClick(payload)
   }

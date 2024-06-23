@@ -117,10 +117,6 @@
       type: Number,
       default: 0
     },
-    styles: {
-      type: Object,
-      default: () => ({})
-    },
   })
 
   const emit = defineEmits(['row-click'])
@@ -151,13 +147,15 @@
   })
 
   const updateLeftPosition = () => {
-    const computedStyle = window.getComputedStyle(tableContainer.value)
-    const paddingLeft = parseFloat(computedStyle.paddingLeft)
+    requestAnimationFrame(() => {
+      const computedStyle = window.getComputedStyle(tableContainer.value)
+      const paddingLeft = parseFloat(computedStyle.paddingLeft)
 
-    // Calculate the new left position considering the padding
-    const tableContainerLeft = -tableContainer.value.scrollLeft + paddingLeft + tableContainer.value.getBoundingClientRect().left
+      // Calculate the new left position considering the padding
+      const tableContainerLeft = -tableContainer.value.scrollLeft + paddingLeft + tableContainer.value.getBoundingClientRect().left
 
-    tableHead.value.style.left = `${tableContainerLeft}px`
+      tableHead.value.style.left = `${tableContainerLeft}px`
+    })
   }
 
   const visibleColumns = computed(() => {

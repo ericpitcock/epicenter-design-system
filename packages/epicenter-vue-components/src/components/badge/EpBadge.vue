@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="['ep-badge', classes]"
-    :style="styles"
-  >
+  <div class="ep-badge">
     {{ label }}
   </div>
 </template>
@@ -13,17 +10,9 @@
   })
 
   const props = defineProps({
-    classes: {
-      type: [Array, Object, String],
-      default: ''
-    },
     label: {
       type: String,
       default: 'Badge'
-    },
-    styles: {
-      type: Object,
-      default: () => ({})
     },
   })
 </script>

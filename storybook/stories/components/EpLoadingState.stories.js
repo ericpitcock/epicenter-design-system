@@ -170,16 +170,17 @@ export const LoadingState = args => ({
   },
   template: `
     <ep-container
-      :styles="{
+      :style="{
         '--ep-container-max-width': '120rem',
         '--ep-container-height': '100%',
         '--ep-container-padding': '0 3rem',
         '--ep-container-bg-color': 'var(--interface-surface)',
+        '--ep-container-border-width': '0.1rem',
         '--ep-container-overflow': 'auto'
       }"
     >
       <template #header>
-      <ep-header :styles="{ '--ep-header-container-overflow': 'visible' }">
+      <ep-header :style="{ '--ep-header-container-overflow': 'visible' }">
         <template #left>
           <ep-split-button
             v-bind="splitButtonProps"
@@ -196,7 +197,7 @@ export const LoadingState = args => ({
           :message="currentMessage"
           :loading
           @done="done"
-          :styles="styles"
+          :style="styles"
         />
         <ep-table
           :columns="includedColumns"

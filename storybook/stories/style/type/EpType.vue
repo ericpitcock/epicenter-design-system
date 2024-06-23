@@ -1,6 +1,6 @@
 <template>
   <ep-container
-    :styles="{
+    :style="{
       '--ep-container-max-width': '120rem',
       '--ep-container-padding': '0 3rem',
       '--ep-container-content-padding': '3rem 0',

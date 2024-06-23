@@ -8,7 +8,6 @@
       ref="input"
       :class="['ep-input', inputClasses]"
       :value="modelValue"
-      :style="styles"
       :type="type"
       :placeholder="computedPlaceholder"
       :disabled="disabled"
@@ -87,10 +86,6 @@
     size: {
       type: String,
       default: 'default'
-    },
-    styles: {
-      type: Object,
-      default: () => ({})
     },
   })
 

@@ -99,10 +99,11 @@ export const KeyValueTable = (args) => ({
   },
   template: `
   <ep-container
-    :styles="{
+    :style="{
       '--ep-container-padding': '0 3rem',
       '--ep-container-content-padding': '3rem 0 10rem 0',
       '--ep-container-bg-color': 'var(--interface-surface)',
+      '--ep-container-border-width': '0.1rem',
       '--ep-container-overflow': 'auto',
     }"
     calculateHeight

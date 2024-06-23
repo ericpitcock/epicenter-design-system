@@ -10,7 +10,7 @@
       />
     </div>
     <div class="colors__content">
-      <ep-container :styles="{
+      <ep-container :style="{
         '--ep-container-width': 'fit-content',
         '--ep-container-bg-color': 'var(--interface-surface)',
         '--ep-container-overflow': 'unset',
@@ -45,8 +45,6 @@
       default: 'dark'
     }
   })
-  const activeItem = ref('All')
-  const filter = ref('')
 
   const tableProps = {
     bordered: true,
@@ -60,11 +58,6 @@
       '--ep-table-container-overflow': 'unset',
     },
   }
-
-  // bordered
-  //       sticky-header
-  //       calculate-height
-  //       :calculate-height-offset="30"
 
   const menuItems = [
     { label: 'Chart Sequence', },
@@ -142,14 +135,6 @@
     return props.theme === 'dark' ? '#1f1f1f' : '#ebebeb'
   })
 
-  const filteredData = computed(() => {
-    if (filter.value === 'all') {
-      return tableData.value
-    } else {
-      return tableData.value.filter(item => item.color.includes(filter.value))
-    }
-  })
-
   const tableData = computed(() => {
     let data = []
     // get colors from tokens
@@ -193,10 +178,35 @@
     return data
   })
 
+  const activeItem = ref('All')
+  const filter = ref('')
+
+  const filteredData = computed(() => {
+    if (filter.value === 'all') {
+      return tableData.value
+    } else {
+      return tableData.value.filter(item => item.color.includes(filter.value))
+    }
+  })
+
   watch(() => filteredData, () => {
     const colorTableContainer = document.querySelector('.ep-table-container')
     colorTableContainer.scrollTop = 0
   })
+
+  const filterColorTable = (item) => {
+    activeItem.value = item.label
+
+    let filterr = item.label.toLowerCase()
+    if (item.label === 'Chart Sequence') {
+      filterr = 'Chart'
+    }
+    if (item.label === 'Grayscale') {
+      filterr = 'gray'
+    }
+
+    filter.value = filterr
+  }
 
   const contrast = (color) => {
     const background = backgroundColor.value
@@ -209,21 +219,6 @@
     } else if (contrast >= 7) {
       return 'AAA &check;'
     }
-  }
-
-  const filterColorTable = (item) => {
-    console.log(item)
-    activeItem.value = item.label
-
-    let filterr = item.label.toLowerCase()
-    if (item.label === 'Chart Sequence') {
-      filterr = 'Chart'
-    }
-    if (item.label === 'Grayscale') {
-      filterr = 'gray'
-    }
-
-    filter.value = filterr
   }
 </script>
 

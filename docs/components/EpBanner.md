@@ -32,7 +32,7 @@
     classes="awesome-banner"
     dismissable
     :iconProps="{ name: 'warning' }"
-    :styles="{ '--ep-banner-bg-color': 'var(--color--warning)' }"
+    :style="{ '--ep-banner-bg-color': 'var(--color--warning)' }"
     @dismissed="onDismiss"
   >
     <template #message>

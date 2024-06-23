@@ -3,16 +3,15 @@
     class="browser-frame"
     :style="{ width: `${width}px` }"
   >
-    <ep-header
-      :styles="{
-        '--ep-header-container-padding': '0 2rem',
-        '--ep-header-container-bg-color': 'var(--interface-foreground)',
-        '--ep-header-left-flex': '0',
-        '--ep-header-center-flex': '3',
-        '--ep-header-right-flex': '0',
-      }"
-      style="flex: 1 1 5rem; max-height: 5rem;"
-    >
+    <ep-header :style="{
+      '--ep-header-container-padding': '0 2rem',
+      '--ep-header-container-bg-color': 'var(--interface-foreground)',
+      '--ep-header-left-flex': '0',
+      '--ep-header-center-flex': '3',
+      '--ep-header-right-flex': '0',
+      flex: '1 1 5rem',
+      maxHeight: '5rem',
+    }">
       <template #left>
         <div class="window-buttons">
           <div class="window-button window-button--close" />
@@ -28,7 +27,7 @@
       <template #right>
         <ep-icon
           name="user"
-          :styles="{
+          :style="{
             '--ep-icon-width': '2rem',
           }"
         />

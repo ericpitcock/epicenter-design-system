@@ -32,7 +32,7 @@ This component does not have any slots.
   <ep-badge
     label="Subscribed"
     classes="most-important-badge"
-    :styles
+    :style="styles"
   />
 </template>
 

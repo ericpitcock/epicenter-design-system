@@ -8,7 +8,8 @@ import EpTable from '@/components/table/EpTable.vue'
 import EpTableSearchInput from '@/components/table/EpTableSearchInput.vue'
 import EpTablePagination from '@/components/table/EpTablePagination.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
-import EpTableCheckboxFilters from '@/components/table/EpTableCheckboxFilters.vue' // Import the new component
+import EpTableCheckboxFilters from '@/components/table/EpTableCheckboxFilters.vue'
+import EpMultiSearch from '@/components/search/EpMultiSearch.vue'
 import {
   useExclude,
   useColumnFilters,
@@ -83,9 +84,9 @@ export default {
         type: 'number'
       }
     },
-    styles: {
-      table: { disable: true }
-    }
+    // styles: {
+    //   table: { disable: true }
+    // }
   }
 }
 
@@ -101,13 +102,12 @@ export const Table = (args) => ({
     EpTableSearchInput,
     EpTablePagination,
     EpTableSortableHeader,
-    EpTableCheckboxFilters // Register the new component
+    EpTableCheckboxFilters,
+    EpMultiSearch,
   },
   setup() {
     const tableData = ref(fakeArray(340))
     const columnsRef = ref(columns)
-
-    // const hiddenColumns = ['id']
 
     // use exclude
     const {
@@ -147,8 +147,8 @@ export const Table = (args) => ({
     // use search
     const {
       searchedData,
-      searchText,
-      updateSearchText
+      searchTerms,
+      updateSearchTerms
     } = useSearch(visibleData)
 
     // use pagination
@@ -206,8 +206,8 @@ export const Table = (args) => ({
       pageSize,
       onPageSizeChange,
       // search
-      searchText,
-      updateSearchText,
+      searchTerms,
+      updateSearchTerms,
       styles,
       onRowClick,
       visibleColumns,
@@ -231,17 +231,23 @@ export const Table = (args) => ({
     </div>
     <ep-flex flex-props=",,column,,,,,," style="flex: 1; overflow: auto;">
       <ep-flex flex-props=",auto,row,,,,,1rem,">
-        <ep-input
+        <!--<ep-input
           size="default"
           placeholder="Search"
           clearable
           v-model="searchText"
           @clear="updateSearchText('')"
           @update:modelValue="updateSearchText"
+        />-->
+        <ep-multi-search
+          height="3.8rem"
+          placeholder="Search"
+          :icon="{ name: 'search', styles: { '--ep-icon-width': '24px' } }"
+          @enter="updateSearchTerms($event)"
         />
         <ep-dropdown v-bind="columnFiltersDropdownProps">
           <template #content>
-            <ep-container :styles="containerStyles">
+            <ep-container :style="containerStyles">
               <ep-flex flex-props=",,column,,,,,1rem,">
                 <ep-checkbox
                   v-for="filter in columnFilters"

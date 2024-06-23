@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="['ep-divider', `ep-divider--${direction}`]"
-    :style="styles"
-  />
+  <div :class="['ep-divider', `ep-divider--${direction}`]" />
 </template>
 
 <script setup>
@@ -15,9 +12,5 @@
       type: String,
       default: 'horizontal'
     },
-    styles: {
-      type: Object,
-      default: () => ({})
-    }
   })
 </script>

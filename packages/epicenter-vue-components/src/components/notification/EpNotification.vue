@@ -15,7 +15,7 @@
       </div>
       <ep-button
         :icon-right="{ name: 'close' }"
-        :styles="{
+        :style="{
           '--ep-button-bg-color': 'transparent',
           '--ep-button-border-color': 'transparent',
           '--ep-button-hover-bg-color': 'transparent',
@@ -54,10 +54,6 @@
         // Check if the date is valid and if the value matches the ISO format
         return !isNaN(date.getTime()) && value === date.toISOString()
       }
-    },
-    styles: {
-      type: Object,
-      default: () => ({})
     },
   })
 

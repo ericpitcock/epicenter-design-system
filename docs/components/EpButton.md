@@ -58,7 +58,7 @@ This component does not have any slots.
     :iconLeft="{ name: 'help' }"
     :iconRight="{ name: 'chevron-down' }"
     classes="most-important-button"
-    :styles="styles"
+    :style="styles"
     @click="onClick"
   />
 </template>

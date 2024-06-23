@@ -43,7 +43,7 @@ export const Notification = args => ({
     })
     return { args, styles }
   },
-  template: '<ep-notification v-bind="args" :styles />'
+  template: '<ep-notification v-bind="args" :style="styles" />'
 })
 
 Notification.args = {

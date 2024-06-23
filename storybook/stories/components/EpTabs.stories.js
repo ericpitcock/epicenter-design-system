@@ -73,7 +73,7 @@ export const Tabs = args => ({
   },
   template: `
     <ep-container
-      :styles="{
+      :style="{
         '--ep-container-max-width': '120rem',
         '--ep-container-height': '100%',
         '--ep-container-bg-color': 'var(--interface-surface)',

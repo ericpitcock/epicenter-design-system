@@ -72,7 +72,7 @@ export const CodeView = args => ({
   },
   template: `
     <ep-container
-      :styles="{
+      :style="{
         '--ep-container-content-padding': '2rem 3rem',
         '--ep-container-width': 'fit-content',
         '--ep-container-bg-color': 'var(--interface-surface)',

@@ -188,7 +188,7 @@ export const TableFixed = (args) => ({
         :columns="tableColumnsRef"
         :data="sortedData"
         v-bind="args"
-        :styles
+        :style="styles"
       >
         <template #header="{ column, cellWidths, columnIndex }">
           <ep-table-sortable-header

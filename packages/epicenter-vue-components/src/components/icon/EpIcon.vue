@@ -4,7 +4,6 @@
   <component
     :is="type"
     class="ep-icon"
-    :style="styles"
     v-html="svgContent"
   />
 </template>
@@ -20,10 +19,6 @@
     name: {
       type: String,
       required: true,
-    },
-    styles: {
-      type: Object,
-      default: () => ({}),
     },
     type: {
       type: String,

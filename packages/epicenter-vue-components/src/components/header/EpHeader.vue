@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="ep-header"
-    :style="styles"
-  >
+  <div class="ep-header">
     <div class="ep-header__content">
       <template v-for="slotName in ['left', 'center', 'right']">
         <div
@@ -20,12 +17,5 @@
 <script setup>
   defineOptions({
     name: 'EpHeader',
-  })
-
-  const props = defineProps({
-    styles: {
-      type: Object,
-      default: () => ({})
-    },
   })
 </script>

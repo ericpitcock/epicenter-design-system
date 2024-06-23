@@ -40,9 +40,10 @@ export const EmptyState = args => ({
   },
   template: `
     <ep-container
-      :styles="{
+      :style="{
         '--ep-container-width': '100%',
         '--ep-container-bg-color': 'var(--interface-surface)',
+        '--ep-container-border-width': '0.1rem',
         '--ep-container-padding': '3rem'
       }"
     >

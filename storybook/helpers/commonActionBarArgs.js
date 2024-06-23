@@ -19,22 +19,13 @@ const containerStyles = {
 const commonActionBarArgs = {
   items: [
     {
-      type: 'dropdown',
+      type: 'button',
       buttonProps: {
         label: '',
         iconLeft: { name: 'help' },
         iconRight: undefined,
-        styles: buttonStyles
+        style: buttonStyles
       },
-      containerProps: {
-        styles: containerStyles
-      },
-      menuItems: [
-        { label: 'Documentation' },
-        { label: 'API Reference' },
-        { divider: true },
-        { label: 'Contact Us' }
-      ]
     },
     {
       type: 'dropdown',
@@ -42,10 +33,10 @@ const commonActionBarArgs = {
         label: '',
         iconLeft: { name: 'notifications' },
         iconRight: undefined,
-        styles: buttonStyles
+        style: buttonStyles
       },
       containerProps: {
-        styles: containerStyles
+        style: containerStyles
       },
       menuItems: [
         { label: 'Notifications' },
@@ -61,10 +52,10 @@ const commonActionBarArgs = {
         label: '',
         iconLeft: { name: 'user' },
         iconRight: undefined,
-        styles: buttonStyles
+        style: buttonStyles
       },
       containerProps: {
-        styles: containerStyles
+        style: containerStyles
       },
       menuItems: [
         { label: 'Profile' },

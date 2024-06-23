@@ -203,7 +203,7 @@ export const Input = args => ({
   template: `
     <ep-input
       v-bind="args"
-      :styles="styles"
+      :style="styles"
       v-model="modelValue"
       @clear="clear"
       data-1p-ignore

@@ -88,8 +88,8 @@ export const Badge = args => ({
   template: `
     <ep-badge
       v-bind="args"
-      :classes="args.classes"
-      :styles
+      :class="args.classes"
+      :style="styles"
     />
   `
 })

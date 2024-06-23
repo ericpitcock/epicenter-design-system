@@ -2,12 +2,10 @@
   <component
     :is="element"
     :type
-    :class="['ep-button', computedClasses, classes]"
-    :style="styles"
-    :title="title"
+    :class="['ep-button', computedClasses]"
+    :title
     :aria-label="ariaLabel ? ariaLabel : label"
     :disabled="disabled"
-    v-bind="$attrs"
   >
     <span
       v-if="iconLeft"
@@ -86,14 +84,6 @@
       default: 'button',
       validator: (value) => ['button', 'submit'].includes(value)
     },
-    styles: {
-      type: Object,
-      default: () => ({})
-    },
-    classes: {
-      type: [Array, Object, String],
-      default: ''
-    }
   })
 
   const element = computed(() => {

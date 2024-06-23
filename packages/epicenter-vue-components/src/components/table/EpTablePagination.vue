@@ -13,7 +13,7 @@
         <template v-if="showPages">
           <ep-button
             label="1"
-            :classes="{ 'active': currentPage === 1 }"
+            :class="{ 'active': currentPage === 1 }"
             @click="emit('pageChange', 1)"
           />
           <span v-if="shouldShowStartEllipsis">...</span>
@@ -21,14 +21,14 @@
             v-for="page in pageRange"
             :key="page"
             :label="page.toString()"
-            :classes="{ 'active': currentPage === page }"
+            :class="{ 'active': currentPage === page }"
             @click="emit('pageChange', page)"
           />
           <span v-if="shouldShowEndEllipsis">...</span>
           <ep-button
             v-if="totalPages > 1"
             :label="totalPages.toString()"
-            :classes="{ 'active': currentPage === totalPages }"
+            :class="{ 'active': currentPage === totalPages }"
             @click="emit('pageChange', totalPages)"
           />
         </template>
