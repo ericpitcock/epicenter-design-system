@@ -3,11 +3,11 @@
   "version": "1.0.3",
   "description": "Epicenter Design System",
   "scripts": {
-    "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-vue-components && npm install && cd .. && npm install && npm run build-storybook",
+    "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-vue-components && npm install && cd ../epicenter-react-components && npm install && cd .. && npm install && npm run build-storybook && npm run build-storybook:react",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "storybook:react": "storybook dev -p 6007 -c .storybook-react",
-    "build-storybook:react": "storybook build -c .storybook-react",
+    "build-storybook:react": "storybook build -c .storybook-react -o storybook-react-static",
     "yalc:push": "cd packages/epicenter-styles && yalc push && cd ../epicenter-vue-components && yalc push",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
