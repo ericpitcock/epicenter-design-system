@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="ep-notification"
-    :style="styles"
-  >
+  <div class="ep-notification">
     <div class="ep-notification__color-strip" />
     <div class="ep-notification__body">
       <div class="ep-notification__message">
