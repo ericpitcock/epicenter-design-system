@@ -9,11 +9,11 @@
 </template>
 
 <script setup>
+  import { ref, watch } from 'vue'
+
   defineOptions({
     name: 'EpIcon'
   })
-
-  import { ref, watch } from 'vue'
 
   const props = defineProps({
     name: {
@@ -31,8 +31,13 @@
   watch(
     () => props.name,
     async (name) => {
-      const { default: rawSvg } = await import(`./icons/${name}.svg?raw`)
-      svgContent.value = rawSvg
+      try {
+        const { default: rawSvg } = await import(`./icons/${name}.svg?raw`)
+        svgContent.value = rawSvg
+      } catch (error) {
+        console.error(`Failed to load icon: ${name}`, error)
+        svgContent.value = ''
+      }
     },
     { immediate: true }
   )
