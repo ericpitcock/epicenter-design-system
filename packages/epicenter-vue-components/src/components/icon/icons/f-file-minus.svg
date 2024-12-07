@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-  <path d="m15,7.5v7.5c0,.69-.56,1.25-1.25,1.25h-7.5c-.69,0-1.25-.56-1.25-1.25V5c0-.69.56-1.25,1.25-1.25h5l3.75,3.75Zm-3.75-3.75v3.75h3.75m-6.88,4.38h3.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--ep-icon-stroke-width)"/>
-</svg>
