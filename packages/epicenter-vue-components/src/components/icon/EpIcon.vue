@@ -10,6 +10,7 @@
 
 <script setup>
   import { ref, watch } from 'vue'
+  import { loadIcon } from 'epicenter-icons'
 
   defineOptions({
     name: 'EpIcon'
@@ -30,15 +31,7 @@
 
   watch(
     () => props.name,
-    async (name) => {
-      try {
-        const { default: rawSvg } = await import(`./icons/${name}.svg?raw`)
-        svgContent.value = rawSvg
-      } catch (error) {
-        console.error(`Failed to load icon: ${name}`, error)
-        svgContent.value = ''
-      }
-    },
+    async (name) => svgContent.value = await loadIcon(name),
     { immediate: true }
   )
 </script>
