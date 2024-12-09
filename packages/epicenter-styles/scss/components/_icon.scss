@@ -7,4 +7,13 @@
   width: var(--ep-icon-width);
   height: var(--ep-icon-height);
   color: var(--ep-icon-color);
+
+  > svg > * {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-width: var(--ep-icon-stroke-width);
+  }
 }
