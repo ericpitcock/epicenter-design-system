@@ -4,3 +4,4 @@ storybook-static/
 storybook-react-static/
 package-lock.json
 docs/.vitepress/cache
+packages/epicenter-icons/icons/_source/

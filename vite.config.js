@@ -15,7 +15,9 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./packages/epicenter-vue-components/src', import.meta.url))
+      '@': fileURLToPath(new URL('./packages/epicenter-vue-components/src', import.meta.url)),
+      // temporary workaround until this is a proper package
+      'epicenter-icons': fileURLToPath(new URL('./packages/epicenter-icons/index.js', import.meta.url)),
     }
   },
 })
