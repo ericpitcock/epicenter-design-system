@@ -1,4 +1,5 @@
 .ep-button-group {
+  --ep-button-group-active-text-color: var(--text-color--loud);
   --ep-button-group-inactive-text-color: var(--text-color--disabled);
   display: flex;
 
@@ -28,6 +29,7 @@
 
   &--active {
     background-color: var(--color-primary);
+    color: var(--ep-button-group-active-text-color);
 
     &:hover {
       background-color: var(--color-primary);

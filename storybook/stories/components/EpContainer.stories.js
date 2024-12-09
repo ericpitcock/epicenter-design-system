@@ -237,7 +237,10 @@ export const Container = args => ({
             Header
           </template>
           <template #right>
-            <ep-action-bar v-bind="commonActionBarArgs" />
+            <ep-action-bar
+              v-bind="commonActionBarArgs"
+              :style="{'--ep-action-bar-justify-content': 'flex-end'}"
+            />
           </template>
         </ep-header>
       </template>

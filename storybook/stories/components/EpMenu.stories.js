@@ -144,6 +144,7 @@ Menu.args = {
     styles: {
       '--ep-container-width': '200px',
       '--ep-container-bg-color': 'var(--interface-surface)',
+      '--ep-container-border-width': '0.1rem',
     }
   },
   menuItems: menuConfig

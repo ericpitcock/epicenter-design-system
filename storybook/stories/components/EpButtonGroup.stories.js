@@ -47,6 +47,7 @@ export const ButtonGroup = args => ({
 })
 
 ButtonGroup.args = {
+  active: 0,
   items: [
     { label: 'Taco' },
     { label: 'Burrito' },

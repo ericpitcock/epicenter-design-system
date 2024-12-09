@@ -29,6 +29,15 @@ $primary-color-lightness: 55%;
     --ep-badge-border-color: hsl(var(--yellow-600));
     --ep-badge-text-color: var(--text-color--loud);
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--text-color--loud);
+  }
 }
 
 html[data-color-theme='light'] {
