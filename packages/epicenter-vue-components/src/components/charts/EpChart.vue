@@ -14,6 +14,8 @@
   })
 
   const props = defineProps({
+    // override or add colors beyond the default 0-13
+    // '--highcharts-color-0': 'red',
     chartColors: {
       type: Object,
       default: () => ({})
@@ -46,7 +48,7 @@
       enabled: false
     },
   }
-  const chartId = `chart-${Math.random().toString(36).substring(7)}`
+  const chartId = `ep-chart-${Math.random().toString(36).substring(7)}`
 
   const chartOptions = computed(() => ({
     ...chartDefaults,

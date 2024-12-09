@@ -1,4 +1,4 @@
-import { paddedSurface } from '../../../helpers/decorators.js'
+import { paddedBg } from '../../../helpers/decorators.js'
 import { computed } from 'vue'
 import EpButton from '@/components/button/EpButton.vue'
 import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.vue'
@@ -62,7 +62,7 @@ const chartSequenceColorArgTypes = (count) => {
 
 export default {
   title: 'Style/Chart Palette',
-  decorators: [paddedSurface],
+  decorators: [paddedBg],
   argTypes: {
     globalHue: {
       name: 'Global Hue',

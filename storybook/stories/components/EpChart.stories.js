@@ -48,7 +48,11 @@ const Template = args => ({
 
 export const PieChart = Template.bind({})
 PieChart.args = {
-  options: pieChartOptions
+  options: pieChartOptions,
+  chartColors: {
+    // override or add colors beyond the default 0-13
+    // '--highcharts-color-0': 'red',
+  }
 }
 
 export const StackedBarChart = Template.bind({})
