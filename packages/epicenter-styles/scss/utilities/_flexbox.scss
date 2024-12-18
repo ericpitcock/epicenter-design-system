@@ -1,0 +1,133 @@
+@use 'sass:list';
+
+@mixin utility-generator($property, $map, $prefix) {
+  @each $name, $value in $map {
+    &.#{$prefix}-#{$name} {
+      #{$property}: $value;
+    }
+  }
+}
+
+.ep-flex {
+  display: flex;
+  // Flex Direction
+  @include utility-generator(flex-direction,
+    (row: row, col: column, row-reverse: row-reverse, col-reverse: column-reverse),
+    flex);
+  // Flex Wrap
+  @include utility-generator(flex-wrap,
+    (wrap: wrap, nowrap: nowrap, wrap-reverse: wrap-reverse),
+    flex);
+  // Justify Content
+  @include utility-generator(justify-content,
+    (start: flex-start, center: center, end: flex-end, between: space-between, around: space-around, evenly: space-evenly),
+    justify);
+  // Align Items and Content
+  $align-map: (
+    start: flex-start,
+    center: center,
+    end: flex-end,
+    stretch: stretch
+  );
+
+@each $name, $value in $align-map {
+  &.align-#{$name} {
+    align-items: $value;
+  }
+
+  &.align-content-#{$name} {
+    align-content: $value;
+  }
+}
+
+&.align-content-between {
+  align-content: space-between;
+}
+
+&.align-content-around {
+  align-content: space-around;
+}
+
+$gap-steps: 1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  20,
+  30,
+  40,
+  50,
+  60,
+  70,
+  80,
+  90,
+  100;
+
+@each $step in $gap-steps {
+  &.gap-#{$step} {
+    gap: calc($step / 10) * 1rem;
+  }
+}
+}
+
+// .ep-flex {
+//   display: flex;
+//   @each $direction in (row, column, row-reverse, column-reverse) {
+//     &.flex-#{$direction} {
+//       flex-direction: $direction;
+//     }
+//   }
+//   @each $wrap in (wrap, nowrap, wrap-reverse) {
+//     &.flex-#{$wrap} {
+//       flex-wrap: $wrap;
+//     }
+//   }
+//   $justify-content-map: (
+//     start: flex-start,
+//     center: center,
+//     end: flex-end,
+//     between: space-between,
+//     around: space-around,
+//     evenly: space-evenly
+//   );
+// @each $name, $value in $justify-content-map {
+//   &.justify-#{$name} {
+//     justify-content: $value;
+//   }
+// }
+// $align-items-map: (
+//   start: flex-start,
+//   center: center,
+//   end: flex-end,
+//   stretch: stretch
+// );
+// @each $name, $value in $align-items-map {
+//   &.align-#{$name} {
+//     align-items: $value;
+//   }
+// }
+// $align-content-map: (
+//   start: flex-start,
+//   center: center,
+//   end: flex-end,
+//   between: space-between,
+//   around: space-around,
+//   stretch: stretch
+// );
+// @each $name, $value in $align-content-map {
+//   &.align-content-#{$name} {
+//     align-content: $value;
+//   }
+// }
+// $steps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+// @each $step in $steps {
+//   &.gap-#{$step} {
+//     gap: calc($step / 10) * 1rem;
+//   }
+// }
+// }
