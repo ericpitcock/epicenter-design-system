@@ -27,9 +27,7 @@ export default function usePagination(data, initialPage = 1, initialPageSize = 1
   }
 
   const onPageSizeChange = (size) => {
-    // console type of size is string
-    console.log(typeof size)
-    pageSize.value = parseInt(size)
+    pageSize.value = size
   }
 
   return {
