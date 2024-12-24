@@ -18,7 +18,7 @@
         </template>
       </ep-header>
     </template>
-    <ep-flex flex-props=",,column,,,,,1rem,">
+    <ep-flex class="flex-col gap-10">
       <ep-empty-state
         v-if="isNotificationsEmpty"
         :message="emptyStateMessage"

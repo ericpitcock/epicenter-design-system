@@ -2,7 +2,7 @@
   <div class="ep-table-pagination">
     <ep-footer
       left-gap="1rem"
-      right-flex="0 0 40rem"
+      right-flex="0 1 40rem"
     >
       <template #left>
         <ep-button
@@ -39,7 +39,7 @@
         />
       </template>
       <template #right>
-        <ep-flex flex-props=",,,,flex-end,center,,1rem,">
+        <ep-flex class="justify-end align-center gap-10">
           Results per page
           <ep-select
             v-model="resultsPerPage"

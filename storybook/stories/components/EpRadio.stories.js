@@ -68,7 +68,7 @@ export const Radio = args => ({
     return { args, radioButtons, selectedOption }
   },
   template: `
-    <ep-flex flex-props=",,column,,,,,1rem,">
+    <ep-flex class="flex-col gap-10">
       <h2>Hot Sauce:</h2>
       <ep-radio
         v-for="radio in radioButtons"

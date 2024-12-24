@@ -1,12 +1,15 @@
 <template>
   <div class="ep-table-checkbox-filters">
-    <ep-flex flex-props=",auto,column,,,,,3rem,">
+    <ep-flex class="flex-col gap-30">
       <ep-flex
         v-for="(filterSet, category) in filters"
         :key="category"
-        flex-props=",auto,column,,,,,1rem,"
+        class="ep-table-checkbox-filters__container flex-col"
       >
-        <h3 class="text-style--section">
+        <h3
+          v-if="sectionLabels"
+          class="text-style--section"
+        >
           {{ category.replace(/_/g, ' ') }}
         </h3>
         <ep-checkbox
@@ -35,6 +38,10 @@
       filters: {
         type: Object,
         required: true
+      },
+      sectionLabels: {
+        type: Boolean,
+        default: true
       }
     },
     emits: ['update:filters'],
