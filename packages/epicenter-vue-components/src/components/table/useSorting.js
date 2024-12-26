@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue'
 
-export default function useSorting(data, initialSortColumn = '', initialSortOrder = 'asc') {
+export default function useSorting(data, initialSortColumn = '', initialSortOrder = 'asc', columns) {
   const sortColumn = ref(initialSortColumn)
   const sortOrder = ref(initialSortOrder)
 
@@ -10,12 +10,20 @@ export default function useSorting(data, initialSortColumn = '', initialSortOrde
     const modifier = sortOrder.value === 'desc' ? -1 : 1
 
     return [...data.value].sort((a, b) => {
-      // raw value if it exists, otherwise value for components,
-      // otherwise basic values that had no formatting applied
-      const getValue = (item, column) => item[column]?.raw || item[column]?.value || item[column]
+      const column = columns.value.find((column) => column.key === sortColumn.value)
 
-      const aValue = getValue(a, sortColumn.value)
-      const bValue = getValue(b, sortColumn.value)
+      if (!column.sortable) return data.value
+
+      const sorter = column?.sorter
+
+      if (sorter) {
+        // Use custom sorter if defined
+        return sorter(a, b) * modifier
+      }
+
+      // Default sorting logic
+      const aValue = a[sortColumn.value]
+      const bValue = b[sortColumn.value]
 
       return (aValue < bValue ? -1 : aValue > bValue ? 1 : 0) * modifier
     })
