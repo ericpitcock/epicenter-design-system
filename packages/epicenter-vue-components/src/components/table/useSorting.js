@@ -5,28 +5,20 @@ export default function useSorting(data, initialSortColumn = '', initialSortOrde
   const sortOrder = ref(initialSortOrder)
 
   const sortedData = computed(() => {
-    if (!sortColumn.value) return data.value
+    if (!sortColumn.value || !data.value || !columns.value) return data.value
+
+    const column = columns.value.find((column) => column.key === sortColumn.value)
+    if (!column || !column.sortable) return data.value
 
     const modifier = sortOrder.value === 'desc' ? -1 : 1
-
-    return [...data.value].sort((a, b) => {
-      const column = columns.value.find((column) => column.key === sortColumn.value)
-
-      if (!column.sortable) return data.value
-
-      const sorter = column?.sorter
-
-      if (sorter) {
-        // Use custom sorter if defined
-        return sorter(a, b) * modifier
-      }
-
-      // Default sorting logic
-      const aValue = a[sortColumn.value]
-      const bValue = b[sortColumn.value]
-
-      return (aValue < bValue ? -1 : aValue > bValue ? 1 : 0) * modifier
+    // if a custom sorter is provided, use it, otherwise use the default sorter
+    const sorter = column.sorter || ((a, b) => {
+      const aValue = a[sortColumn.value] ?? ''
+      const bValue = b[sortColumn.value] ?? ''
+      return aValue < bValue ? -1 : aValue > bValue ? 1 : 0
     })
+
+    return [...data.value].sort((a, b) => sorter(a, b) * modifier)
   })
 
   const sortBy = (columnKey) => {

@@ -3,12 +3,10 @@
     :style="cellWidths[columnIndex]"
     @click="emit('sort', column.key)"
   >
-    <div :class="['ep-table-sortable-header',
-      { 'ep-table-sortable-header--active': props.sortColumn === props.column.key }
-    ]">
+    <div :class="headerClass">
       {{ column.label }}
       <ep-icon
-        v-if="column.sortable && props.sortColumn === props.column.key"
+        v-if="isSorted"
         v-bind="iconProps"
       />
     </div>
@@ -51,9 +49,17 @@
   const iconProps = computed(() => {
     return {
       name: props.sortOrder === 'asc' ? 'arrow-up' : 'arrow-down',
-      styles: {
-        '--ep-icon-height': '17px',
-      }
     }
+  })
+
+  const headerClass = computed(() => {
+    return [
+      'ep-table-sortable-header',
+      { 'ep-table-sortable-header--active': props.sortColumn === props.column.key }
+    ]
+  })
+
+  const isSorted = computed(() => {
+    return props.column.sortable && props.sortColumn === props.column.key
   })
 </script>

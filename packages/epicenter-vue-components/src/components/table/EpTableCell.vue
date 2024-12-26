@@ -1,21 +1,25 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <td :style="styles">
-    <component
+  <!-- <td :style="styles"> -->
+  <!-- <component
       :is="column.component"
       v-if="column.component"
       v-bind="row[column.key].props"
-    />
-    <span
-      v-else
-      :class="column.class"
-      v-html="formattedCell(row, column)"
-    />
-  </td>
+    /> -->
+  <!-- <slot
+      v-if="$slots[`cell-${column.key}`]"
+      :name="`cell-${column.key}`"
+      v-bind="{ row, column }"
+    /> -->
+  <span
+    :class="column.class || ''"
+    v-html="formattedCell(row, column)"
+  />
+  <!-- </td> -->
 </template>
 
 <script setup>
-  import { provide } from 'vue'
+  // import { provide } from 'vue'
   import DOMPurify from 'dompurify'
 
   defineOptions({
@@ -43,5 +47,5 @@
     return formatter ? DOMPurify.sanitize(formatter(value)) : value
   }
 
-  provide('contextData', props.row)
+  // provide('contextData', props.row)
 </script>

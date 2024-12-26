@@ -46,6 +46,10 @@
       text-align: left;
       background: var(--ep-table-header-bg-color);
 
+      &.ep-table__actions-menu {
+        width: 5rem;
+      }
+
       div {
         position: relative;
         display: flex;
@@ -79,6 +83,11 @@
         padding: 1.4rem;
         vertical-align: var(--ep-table-cell-vertical-align);
         white-space: var(--ep-table-cell-white-space);
+
+        &.ep-table__actions-menu {
+          width: 5rem;
+          padding: 0;
+        }
       }
     }
 

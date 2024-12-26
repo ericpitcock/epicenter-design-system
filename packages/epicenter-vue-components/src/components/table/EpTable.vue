@@ -25,10 +25,21 @@
               :style="cellWidths[columnIndex]"
             >
               <div>
-                <span class="label">{{ column.label || '\u00A0' }}</span>
+                <span class="label">{{ column.label }}</span>
               </div>
             </th>
           </template>
+
+          <th
+            v-if="showActionsMenu"
+            class="ep-table__actions-menu"
+          >
+            <div>
+              <span class="label">
+                &nbsp;
+              </span>
+            </div>
+          </th>
         </tr>
       </thead>
       <tbody
@@ -44,12 +55,29 @@
             v-for="(column, columnIndex) in visibleColumns"
             :key="`body-${column.key}`"
           >
-            <ep-table-cell
-              :row="row"
-              :column="column"
-              :style="cellWidths[columnIndex]"
-            />
+            <td :style="cellWidths[columnIndex]">
+              <slot
+                v-if="$slots[`cell-${column.key}`]"
+                :name="`cell-${column.key}`"
+                v-bind="{ row, column }"
+              />
+              <ep-table-cell
+                v-else
+                :row="row"
+                :column="column"
+              />
+            </td>
           </template>
+
+          <td
+            v-if="showActionsMenu"
+            class="ep-table__actions-menu"
+          >
+            <slot
+              name="actions-menu"
+              v-bind="{ row }"
+            />
+          </td>
         </tr>
       </tbody>
     </table>
@@ -117,6 +145,10 @@
       type: Number,
       default: 0
     },
+    showActionsMenu: {
+      type: Boolean,
+      default: false
+    },
   })
 
   const emit = defineEmits(['row-click'])
@@ -157,6 +189,10 @@
       tableHead.value.style.left = `${tableContainerLeft}px`
     })
   }
+
+  defineExpose({
+    updateLeftPosition
+  })
 
   const visibleColumns = computed(() => {
     return props.columns.filter(column => !props.hiddenColumns.includes(column.key))

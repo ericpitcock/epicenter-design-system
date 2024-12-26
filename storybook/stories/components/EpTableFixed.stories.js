@@ -95,7 +95,7 @@ export const TableFixed = (args) => ({
       sortBy,
       sortColumn,
       sortOrder
-    } = useSorting(tableDataRef, 'severity', 'desc')
+    } = useSorting(tableDataRef, 'severity', 'desc', tableColumnsRef)
 
     const styles = ref({
       '--ep-table-width': 'max-content',

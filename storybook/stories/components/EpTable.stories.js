@@ -1,3 +1,4 @@
+import EpBadge from '@/components/badge/EpBadge.vue'
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
@@ -92,6 +93,7 @@ export default {
 
 export const Table = (args) => ({
   components: {
+    EpBadge,
     EpCheckbox,
     EpContainer,
     EpDropdown,
@@ -115,13 +117,22 @@ export const Table = (args) => ({
       includedData
     } = useExclude(columnsRef, tableData, [])
 
+    // const columnSorters = {
+    //   severity: (a, b) => {
+    //     const sortMap = { Critical: 4, High: 3, Medium: 2, Low: 1 }
+    //     const aValue = sortMap[a.severity] || 0
+    //     const bValue = sortMap[b.severity] || 0
+    //     return aValue - bValue
+    //   },
+    // }
+
     // use sorting
     const {
       sortedData,
       sortBy,
       sortColumn,
       sortOrder
-    } = useSorting(includedData, 'severity', 'desc')
+    } = useSorting(includedData, 'severity', 'desc', columnsRef)
 
     const {
       filters,
@@ -176,7 +187,6 @@ export const Table = (args) => ({
       alignRight: true,
       buttonProps: {
         label: '',
-        variant: 'secondary',
         iconLeft: { name: 'f-columns' },
         iconRight: undefined,
         title: 'Column Filters'
@@ -184,11 +194,51 @@ export const Table = (args) => ({
     }
 
     const containerStyles = {
+      '--ep-container-min-width': 'max-content',
       '--ep-container-bg-color': 'var(--interface-overlay)',
       '--ep-container-border-radius': 'var(--border-radius)',
       '--ep-container-border-color': 'var(--border-color--lighter)',
       '--ep-container-padding': '2rem',
     }
+
+    const badgeClassMap = {
+      Critical: 'danger',
+      High: 'warning',
+      Medium: 'info',
+      Low: 'success',
+    }
+
+    const actionMenuProps = (id) => ({
+      size: 'small',
+      menuItems: [
+        {
+          label: 'Edit',
+          iconLeft: { name: 'f-file' },
+          onClick: () => {
+            alert(`Edit ${id}`)
+          }
+        },
+        {
+          label: 'Delete',
+          iconLeft: { name: 'f-trash' },
+          onClick: () => {
+            alert(`Delete ${id}`)
+          }
+        }
+      ],
+      menuClass: 'test-class',
+      buttonProps: {
+        label: '',
+        iconLeft: {
+          name: 'dots-vertical',
+          styles: { '--ep-icon-stroke-width': 3 }
+        },
+        iconRight: null,
+        class: ['ep-button-variant-subtle-ghost'],
+        size: 'small',
+      },
+      alignRight: true,
+    })
 
     return {
       args,
@@ -217,11 +267,13 @@ export const Table = (args) => ({
       resetFilters,
       columnFiltersDropdownProps,
       containerStyles,
-      onFilterChange
+      onFilterChange,
+      actionMenuProps,
+      badgeClassMap,
     }
   },
   template: `
-  <ep-flex flex-props=",,row,,,,,3rem,">
+  <ep-flex class="flex-row gap-30">
     <div class="sidebar" style="flex: 0 0 140px;">
       <ep-table-checkbox-filters
         :filters="filters"
@@ -229,16 +281,8 @@ export const Table = (args) => ({
       />
       <p @click="resetFilters">Reset Filters</p>
     </div>
-    <ep-flex flex-props=",,column,,,,,," style="flex: 1; overflow: auto;">
-      <ep-flex flex-props=",auto,row,,,,,1rem,">
-        <!--<ep-input
-          size="default"
-          placeholder="Search"
-          clearable
-          v-model="searchText"
-          @clear="updateSearchText('')"
-          @update:modelValue="updateSearchText"
-        />-->
+    <ep-flex class="flex-col" style="flex: 1; overflow: auto;">
+      <ep-flex class="flex-row gap-10" style="height: auto">
         <ep-multi-search
           height="3.8rem"
           placeholder="Search"
@@ -248,7 +292,7 @@ export const Table = (args) => ({
         <ep-dropdown v-bind="columnFiltersDropdownProps">
           <template #content>
             <ep-container :style="containerStyles">
-              <ep-flex flex-props=",,column,,,,,1rem,">
+              <ep-flex class="flex-col gap-10">
                 <ep-checkbox
                   v-for="filter in columnFilters"
                   :key="filter.id"
@@ -283,6 +327,12 @@ export const Table = (args) => ({
               @sort="sortBy"
             />
           </template>
+          <template #cell-severity="{ row }">
+            <ep-badge :label="row.severity" />
+          </template>
+          <template #actions-menu="{ row }">
+            <ep-dropdown v-bind="actionMenuProps(row.id)" />
+          </template>
         </ep-table>
         <ep-table-pagination
           :current-page="currentPage"
@@ -306,5 +356,6 @@ Table.args = {
   striped: true,
   stickyHeader: true,
   calculateHeight: true,
-  calculateHeightOffset: 81
+  calculateHeightOffset: 81,
+  showActionsMenu: true,
 }
