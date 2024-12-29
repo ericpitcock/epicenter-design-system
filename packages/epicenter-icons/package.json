@@ -1,7 +1,8 @@
 {
-  "name": "epicenter-icons",
+  "name": "@ericpitcock/epicenter-icons",
   "version": "1.0.0",
-  "description": "Icons for Epicenter Design System",
+  "description": "Epicenter Design System - Icons",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,12 +11,9 @@
     "url": "git+https://github.com/ericpitcock/epicenter-design-system.git"
   },
   "author": "Eric Pitcock",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ericpitcock/epicenter-design-system/issues"
   },
-  "homepage": "https://github.com/ericpitcock/epicenter-design-system#readme",
-  "dependencies": {
-    "feather-icons": "^4.29.2"
-  }
+  "homepage": "https://github.com/ericpitcock/epicenter-design-system#readme"
 }
