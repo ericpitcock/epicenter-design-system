@@ -1,14 +1,16 @@
-import Prism from 'prismjs'
-import { paddedBg } from '../../helpers/decorators.js'
-import EpCodeView from '@/components/code-view/EpCodeView.vue'
+import { ref, watch } from 'vue'
+import { surfaceOverflow } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
+import EpCodeView from '@/components/code-view/EpCodeView.vue'
+import EpHeader from '@/components/header/EpHeader.vue'
+import EpTabs from '@/components/tabs/Eptabs.vue'
+import EpTabContent from '@/components/tabs/EpTabContent.vue'
 import { codeExamples } from '../../helpers/codeExamples.js'
-import { computed, nextTick, watch } from 'vue'
 
 export default {
   title: 'Components/Code View',
   component: EpCodeView,
-  decorators: [paddedBg],
+  decorators: [surfaceOverflow],
   argTypes: {
     code: {
       table: { disable: true }
@@ -20,24 +22,17 @@ export default {
         'HTML',
         'CSS',
         'JSON',
-        // 'Markdown',
       ],
       mapping: {
         Javascript: 'javascript',
         HTML: 'html',
         CSS: 'css',
         JSON: 'json',
-        // Markdown: 'markdown',
       },
       control: {
         type: 'radio',
       },
-    },
-    enableLineNumbers: {
-      name: 'Enable Line Numbers',
-      control: {
-        type: 'boolean'
-      }
+      table: { disable: true }
     },
     theme: {
       table: { disable: true }
@@ -46,48 +41,96 @@ export default {
 }
 
 export const CodeView = args => ({
-  components: { EpCodeView, EpContainer },
+  components: {
+    EpCodeView,
+    EpTabs,
+    EpTabContent,
+    EpHeader,
+    EpContainer,
+  },
   setup() {
-    const code = computed(() => codeExamples[args.language])
+    const tabLabels = ['Javascript', 'HTML', 'CSS', 'JSON']
 
-    const highlightCode = () => {
-      nextTick(() => {
-        Prism.highlightAll()
-      })
+    const activeTab = ref(0)
+
+    const setActiveTab = index => {
+      activeTab.value = index
     }
 
-    watch(() => args.language, () => {
-      highlightCode()
-    },
-      { immediate: true }
-    )
-
-    watch(() => args.enableLineNumbers, () => {
-      highlightCode()
-    },
-      { immediate: true }
-    )
-
-    return { args, code }
+    return {
+      args,
+      tabLabels,
+      activeTab,
+      setActiveTab,
+      codeExamples
+    }
   },
   template: `
-    <ep-container
-      :style="{
-        '--ep-container-content-padding': '2rem 3rem',
-        '--ep-container-width': 'fit-content',
-        '--ep-container-bg-color': 'var(--interface-surface)',
-        '--ep-container-border-color': 'var(--interface-surface)',
-      }"
-    >
-      <ep-code-view v-bind="args" :code="code" :theme="args.theme" />
-    </ep-container>
+      <ep-container
+        sticky-header
+        :styles="{
+          '--ep-container-height': '100%',
+          '--ep-container-padding': '0 3rem 3rem',
+          '--ep-container-content-padding': '3rem 0 0',
+        }"
+      >
+        <template #header>
+          <ep-header style="--ep-header-container-bg-color: var(--interface-surface)">
+            <template #left>   
+              <ep-tabs
+                :items="tabLabels"
+                :active-tab-index="activeTab"
+                @tab-click="setActiveTab"
+              />
+            </template>
+          </ep-header>
+        </template>
+        <template #default>
+          <ep-tab-content
+            :items="tabLabels"
+            :active-tab-index="activeTab"
+          >
+            <template #tab-0>
+              <ep-code-view
+                v-bind="args"
+                :code="codeExamples['javascript']"
+                language="javascript"
+                :theme="args.theme"
+              />
+            </template>
+            <template #tab-1>
+              <ep-code-view
+                v-bind="args"
+                :code="codeExamples['html']"
+                language="html"
+                :theme="args.theme"
+              />
+            </template>
+            <template #tab-2>
+              <ep-code-view
+                v-bind="args"
+                :code="codeExamples['css']"
+                language="css"
+                :theme="args.theme"
+              />
+            </template>
+            <template #tab-3>
+              <ep-code-view
+                v-bind="args"
+                :code="codeExamples['json']"
+                language="json"
+                :theme="args.theme"
+              />
+            </template>
+          </ep-tab-content>
+        </template>
+      </ep-container>
   `
 })
 
 CodeView.args = {
   language: 'Javascript',
-  enableLineNumbers: true,
-  theme: 'dark'
+  // theme: 'dark'
 }
 
 CodeView.decorators = [
