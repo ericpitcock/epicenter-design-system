@@ -3,7 +3,8 @@ import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpTabs from '@/components/tabs/EpTabs.vue'
 import EpTabContent from '@/components/tabs/EpTabContent.vue'
-import { computed, ref } from 'vue'
+import { useTabs } from '@/composables'
+import { computed } from 'vue'
 
 export default {
   title: 'Components/Tabs',
@@ -46,11 +47,13 @@ export const Tabs = args => ({
     EpTabContent
   },
   setup() {
-    const activeTab = ref(0)
+    // const activeTab = ref(0)
 
-    const setActiveTab = index => {
-      activeTab.value = index
-    }
+    // const setActiveTab = index => {
+    //   activeTab.value = index
+    // }
+
+    const { activeTab, setActiveTab } = useTabs()
 
     const containerPadding = computed(() => args.variant === 'classic' ? '0' : '0 3rem')
     const contentPadding = computed(() => args.variant === 'classic' ? '3rem' : '3rem 0')
@@ -73,7 +76,7 @@ export const Tabs = args => ({
   },
   template: `
     <ep-container
-      :style="{
+      :styles="{
         '--ep-container-max-width': '120rem',
         '--ep-container-height': '100%',
         '--ep-container-bg-color': 'var(--interface-surface)',
@@ -83,20 +86,20 @@ export const Tabs = args => ({
       }"
     >
       <template #header>
-      <ep-header
-        :padding="headerPadding"
-        :height="headerHeight"
-        :background-color="headerBgColor"
-      >
-        <template #left>
-          <ep-tabs
-            v-bind="args"
-            :items="routerLinkItems"
-            :active-tab-index="activeTab"
-            @tab-click="setActiveTab"
-          />
-        </template>
-      </ep-header>
+        <ep-header
+          :padding="headerPadding"
+          :height="headerHeight"
+          :background-color="headerBgColor"
+        >
+          <template #left>
+            <ep-tabs
+              v-bind="args"
+              :items="routerLinkItems"
+              :active-tab-index="activeTab"
+              @tab-click="setActiveTab"
+            />
+          </template>
+        </ep-header>
       </template>
       <template #default>
         <ep-tab-content

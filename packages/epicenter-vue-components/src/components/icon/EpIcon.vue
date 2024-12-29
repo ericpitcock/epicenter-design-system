@@ -10,7 +10,7 @@
 
 <script setup>
   import { ref, watch } from 'vue'
-  import { loadIcon } from 'epicenter-icons'
+  import { loadIcon } from '@ericpitcock/epicenter-icons'
 
   defineOptions({
     name: 'EpIcon'

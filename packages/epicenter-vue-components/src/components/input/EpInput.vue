@@ -111,6 +111,7 @@
       id: computedId.value,
       hasFocus: hasFocus.value,
       hasInput: hasInput.value,
+      inputValue: modelValue.value,
       label: props.label,
       disabled: props.disabled,
       width: props.width,
@@ -128,9 +129,6 @@
       'ep-input--has-icon-left': props.iconLeft,
       'ep-input--has-icon-right': props.iconRight,
       'ep-input--disabled': props.disabled,
-      // 'ep-input--error': props.hasError,
-      // 'ep-input--success': props.hasSuccess,
-      // 'ep-input--warning': props.hasWarning,
     }
   })
 
@@ -164,7 +162,6 @@
   }
 
   const onKeyDown = (event) => {
-    // use event.key
     emit('enter', event.target.value)
   }
 

@@ -17,9 +17,9 @@ export default function useSearch(data) {
     })
   })
 
-  const updateSearchTerms = (terms) => {
+  const onSearchUpdate = (terms) => {
     searchTerms.value = terms
   }
 
-  return { searchedData, searchTerms, updateSearchTerms }
+  return { searchedData, searchTerms, onSearchUpdate }
 }

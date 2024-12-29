@@ -129,7 +129,7 @@ export const Table = (args) => ({
     // use sorting
     const {
       sortedData,
-      sortBy,
+      onSortChange,
       sortColumn,
       sortOrder
     } = useSorting(includedData, 'severity', 'desc', columnsRef)
@@ -137,14 +137,15 @@ export const Table = (args) => ({
     const {
       filters,
       filteredData,
-      onFilterChange,
+      onFilterUpdate,
       resetFilters
     } = useDataFilters(
       includedColumns,
       sortedData,
       ['severity', 'type'],
       ['Low'],
-      { severity: ['Critical', 'High', 'Medium', 'Low'] }
+      { severity: ['Critical', 'High', 'Medium', 'Low'] },
+      true
     )
 
     // use column filters
@@ -152,14 +153,14 @@ export const Table = (args) => ({
       columnFilters,
       visibleColumns,
       visibleData,
-      handleFilter
+      onFilterToggle
     } = useColumnFilters(includedColumns, [], filteredData)
 
     // use search
     const {
       searchedData,
       searchTerms,
-      updateSearchTerms
+      onSearchUpdate
     } = useSearch(visibleData)
 
     // use pagination
@@ -168,8 +169,8 @@ export const Table = (args) => ({
       pageSize,
       totalPages,
       paginatedData,
-      onPageChange,
-      onPageSizeChange
+      onPageNavigate,
+      onPageSizeUpdate
     } = usePagination(searchedData, 1, 20)
 
     const styles = computed(() => {
@@ -245,29 +246,29 @@ export const Table = (args) => ({
       // columns,
       includedColumns,
       // sorting
-      sortBy,
+      onSortChange,
       sortColumn,
       sortOrder,
       // pagination
       currentPage,
       totalPages,
-      onPageChange,
+      onPageNavigate,
       paginatedData,
       pageSize,
-      onPageSizeChange,
+      onPageSizeUpdate,
       // search
       searchTerms,
-      updateSearchTerms,
+      onSearchUpdate,
       styles,
       onRowClick,
       visibleColumns,
       columnFilters,
-      handleFilter,
+      onFilterToggle,
       filters,
       resetFilters,
       columnFiltersDropdownProps,
       containerStyles,
-      onFilterChange,
+      onFilterUpdate,
       actionMenuProps,
       badgeClassMap,
     }
@@ -277,7 +278,7 @@ export const Table = (args) => ({
     <div class="sidebar" style="flex: 0 0 140px;">
       <ep-table-checkbox-filters
         :filters="filters"
-        @update:filters="onFilterChange"
+        @update:filters="onFilterUpdate"
       />
       <p @click="resetFilters">Reset Filters</p>
     </div>
@@ -287,7 +288,7 @@ export const Table = (args) => ({
           height="3.8rem"
           placeholder="Search"
           :icon="{ name: 'search', styles: { '--ep-icon-width': '24px' } }"
-          @enter="updateSearchTerms($event)"
+          @enter="onSearchUpdate($event)"
         />
         <ep-dropdown v-bind="columnFiltersDropdownProps">
           <template #content>
@@ -298,7 +299,7 @@ export const Table = (args) => ({
                   :key="filter.id"
                   v-bind="filter"
                   v-model="filter.checked"
-                  @update:modelValue="handleFilter($event, filter.id)"
+                  @update:modelValue="onFilterToggle($event, filter.id)"
                 />
               </ep-flex>
             </ep-container>
@@ -324,7 +325,7 @@ export const Table = (args) => ({
               :column="column"
               :sort-column="sortColumn"
               :sort-order="sortOrder"
-              @sort="sortBy"
+              @sort="onSortChange"
             />
           </template>
           <template #cell-severity="{ row }">
@@ -339,8 +340,8 @@ export const Table = (args) => ({
           :total-pages="totalPages"
           :show-pages="true"
           :results-per-page="pageSize"
-          @page-change="onPageChange"
-          @update:results-per-page="onPageSizeChange"
+          @page-change="onPageNavigate"
+          @update:results-per-page="onPageSizeUpdate"
         />
       </template>
     </ep-flex>

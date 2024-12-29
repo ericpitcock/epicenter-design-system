@@ -23,11 +23,12 @@
 </template>
 
 <script setup>
+  import { useCalculatedHeight } from '../../composables'
+  import { computed, ref } from 'vue'
+
   defineOptions({
     name: 'EpContainer'
   })
-  import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
-  import { computed, ref } from 'vue'
 
   const props = defineProps({
     stickyHeader: {

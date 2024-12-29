@@ -20,7 +20,7 @@
           '--ep-button-active-bg-color': 'transparent',
           '--ep-button-active-border-color': 'transparent',
         }"
-        @click="dismissNotification"
+        @click.stop="dismissNotification"
       />
     </div>
   </div>

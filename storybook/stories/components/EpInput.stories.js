@@ -213,11 +213,11 @@ export const Input = args => ({
 
 Input.args = {
   inputId: '',
-  label: 'This is the label and placeholder',
+  label: 'What is your favorite word?',
   type: 'text',
   placeholder: '',
   placeholderColor: '',
-  modelValue: '',
+  modelValue: 'favorite',
   clearable: true,
   disabled: false,
   autofocus: false,

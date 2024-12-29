@@ -16,7 +16,7 @@ export default function useColumnFilters(columns, disabledColumns, data) {
     })).filter(column => column.filterable)
   })
 
-  const handleFilter = (event, filterId) => {
+  const onFilterToggle = (event, filterId) => {
     if (!event) {
       disabledColumnsRef.value.push(filterId)
     } else {
@@ -33,6 +33,6 @@ export default function useColumnFilters(columns, disabledColumns, data) {
     columnFilters,
     visibleColumns,
     visibleData,
-    handleFilter
+    onFilterToggle
   }
 }

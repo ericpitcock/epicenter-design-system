@@ -28,7 +28,7 @@
       </div>
     </div>
     <label
-      v-show="label && hasInput || hasFocus"
+      v-show="label && hasInput || label && inputValue || hasFocus"
       class="ep-input-styler__label"
       :for="id"
     >
@@ -46,7 +46,6 @@
     name: 'EpInputStyler',
   })
 
-
   const props = defineProps({
     id: {
       type: String,
@@ -59,6 +58,10 @@
     hasInput: {
       type: Boolean,
       default: false
+    },
+    inputValue: {
+      type: String,
+      default: ''
     },
     label: {
       type: String,
@@ -106,7 +109,6 @@
   const containerStyles = computed(() => {
     return {
       width: props.width,
-      // height is small 22px, default 30px, large 38px
       height: `${sizes.value[props.size]}px`
     }
   })

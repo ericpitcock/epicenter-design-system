@@ -105,7 +105,7 @@
   ])
 
   const buttonLabel = computed(() => {
-    return state.value === 'signin' ? 'Sign In' : 'Send Reset Email'
+    return state.value === 'signin' ? 'Sign in' : 'Send reset email'
   })
 
   const footerText = computed(() => {

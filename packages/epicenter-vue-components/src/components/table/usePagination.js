@@ -19,15 +19,17 @@ export default function usePagination(data, initialPage = 1, initialPageSize = 1
     return data.value.slice(startIndex, startIndex + pageSize.value)
   })
 
-  const onPageChange = (page) => {
+  const onPageNavigate = (page) => {
     currentPage.value = page
 
     const tableContainer = document.querySelector('.ep-table-container')
     tableContainer.scrollTop = 0
   }
 
-  const onPageSizeChange = (size) => {
-    pageSize.value = size
+  const onPageSizeUpdate = (size) => {
+    // select passes the value as a string
+    // so we need to convert it to a number
+    pageSize.value = Number(size)
   }
 
   return {
@@ -35,7 +37,7 @@ export default function usePagination(data, initialPage = 1, initialPageSize = 1
     pageSize,
     totalPages,
     paginatedData,
-    onPageChange,
-    onPageSizeChange
+    onPageNavigate,
+    onPageSizeUpdate
   }
 }

@@ -6,6 +6,13 @@ import usePagination from '../components/table/usePagination.js'
 import useSearch from '../components/table/useSearch.js'
 import useSorting from '../components/table/useSorting.js'
 
+// tabs
+import useTabs from '../components/tabs/useTabs.js'
+
+// helpers
+import useCalculatedHeight from './useCalculatedHeight.js'
+import useDebounce from './useDebounce.js'
+
 export {
   useColumnFilters,
   useDataFilters,
@@ -13,4 +20,7 @@ export {
   usePagination,
   useSearch,
   useSorting,
+  useTabs,
+  useCalculatedHeight,
+  useDebounce,
 }

@@ -1,8 +1,9 @@
 <!-- eslint-disable vue/html-closing-bracket-newline -->
 <template>
   <!-- eslint-disable-next-line vue/max-attributes-per-line -->
-  <pre
-    :class="[themeClass, { 'line-numbers': enableLineNumbers }]"><code :class="`language-${language}`">{{ code }}</code></pre>
+  <pre :class="[themeClass, { 'line-numbers': enableLineNumbers }]">
+    <code :class="`language-${language}`">{{ code }}</code>
+  </pre>
 </template>
 
 <script setup>

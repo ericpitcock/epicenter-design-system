@@ -42,7 +42,7 @@
 
   import EpInput from '../input/EpInput.vue'
   import vClickOutside from '../../directives/clickOutside'
-  import { useDebounce } from '../../composables/useDebounce.js'
+  import { useDebounce } from '../../composables'
   import { computed, ref, watch } from 'vue'
 
   const searchQuery = ref('')

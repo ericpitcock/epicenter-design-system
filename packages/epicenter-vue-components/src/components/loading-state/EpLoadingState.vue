@@ -61,7 +61,7 @@
     },
     message: {
       type: Object,
-      default: () => ({ icon: '', message: 'Loading...' })
+      default: () => ({ icon: '', message: '' })
     },
   })
 

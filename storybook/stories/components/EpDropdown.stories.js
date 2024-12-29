@@ -73,7 +73,7 @@ export default {
     },
     button: { table: { disable: true } },
     buttonProps: { table: { disable: true } },
-    containerProps: { table: { disable: true } },
+    // containerProps: { table: { disable: true } },
     menuItems: { table: { disable: true } },
     showOnHover: {
       name: 'Show On Hover',
@@ -96,18 +96,14 @@ export const Dropdown = args => ({
       iconLeft: args['buttonProps.iconLeft'],
       classes: { [args['buttonProps.classes']]: true }
     }))
-    const containerProps = computed(() => ({
-      '--ep-container-border-radius': 'var(--border-radius)',
-      '--ep-container-border-color': 'var(--border-color--lighter)'
-    }))
 
-    return { args, buttonProps, containerProps }
+    return { args, buttonProps }
   },
   template: `
     <ep-dropdown
       :buttonProps="buttonProps"
-      :containerProps="containerProps"
       :menuItems="args.menuItems"
+      menu-class="special-class"
       v-bind="args"
     />
   `

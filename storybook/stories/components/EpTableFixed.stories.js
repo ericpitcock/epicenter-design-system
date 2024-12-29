@@ -1,9 +1,11 @@
 import { surfaceOverflow } from '../../helpers/decorators.js'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
+import EpFlex from '@/components/flexbox/EpFlex.vue'
+import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import {
   // useExclude,
-  // useColumnFilters,
+  useColumnFilters,
   // useDataFilters,
   useSorting,
   // usePagination,
@@ -84,6 +86,8 @@ export const TableFixed = (args) => ({
   components: {
     EpTable,
     EpTableSortableHeader,
+    EpFlex,
+    EpCheckbox,
   },
   setup() {
     const tableColumnsRef = ref(columns)
@@ -92,10 +96,17 @@ export const TableFixed = (args) => ({
     // use sorting
     const {
       sortedData,
-      sortBy,
+      onSortChange,
       sortColumn,
       sortOrder
     } = useSorting(tableDataRef, 'severity', 'desc', tableColumnsRef)
+
+    const {
+      columnFilters,
+      visibleColumns,
+      visibleData,
+      onFilterToggle
+    } = useColumnFilters(tableColumnsRef, [], sortedData)
 
     const styles = ref({
       '--ep-table-width': 'max-content',
@@ -173,20 +184,33 @@ export const TableFixed = (args) => ({
       styles,
       tableColumnsRef,
       sortedData,
-      sortBy,
+      onSortChange,
       sortColumn,
       sortOrder,
       tableComponent,
+      columnFilters,
+      visibleColumns,
+      visibleData,
+      onFilterToggle,
     }
   },
   template: `
       <div style="height: 100px; background-color: lightblue;">
       this is a fake header
       </div>
+      <ep-flex class="flex-col gap-10" style="position: fixed; top: 140px; right: 0; z-index: 1;">
+        <ep-checkbox
+          v-for="filter in columnFilters"
+          :key="filter.id"
+          v-bind="filter"
+          v-model="filter.checked"
+          @update:modelValue="onFilterToggle($event, filter.id)"
+        />
+      </ep-flex>
       <ep-table
         ref="tableComponent"
-        :columns="tableColumnsRef"
-        :data="sortedData"
+        :columns="visibleColumns"
+        :data="visibleData"
         v-bind="args"
         :style="styles"
       >
@@ -197,7 +221,7 @@ export const TableFixed = (args) => ({
             :sort-order="sortOrder"
             :column-index="columnIndex"
             :cell-widths="cellWidths"
-            @sort="sortBy"
+            @sort="onSortChange"
           />
         </template>
       </ep-table>

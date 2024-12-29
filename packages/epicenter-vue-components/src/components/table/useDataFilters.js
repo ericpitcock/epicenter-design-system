@@ -1,7 +1,14 @@
 import { ref, computed, onMounted } from 'vue'
 import { faker } from '@faker-js/faker'
 
-export default function useDataFilters(columns, data, columnsToFilter, disabledFilters = [], customSortOrder = {}) {
+export default function useDataFilters(
+  columns,
+  data,
+  columnsToFilter,
+  disabledFilters = [],
+  customSortOrder = {},
+  showCount = false
+) {
   const filters = ref({})
 
   const generateFilters = () => {
@@ -32,13 +39,21 @@ export default function useDataFilters(columns, data, columnsToFilter, disabledF
 
     // Generate filter objects based on unique values
     for (const key in uniqueValues) {
+      const generateLabel = (value) => {
+        if (showCount) {
+          return `${value} (${data.value.filter(user => getColumnValue(user, key) === value).length})`
+        } else {
+          return value
+        }
+      }
+
       generatedFilters[key] = uniqueValues[key].map(value => ({
         id: faker.string.uuid(),
         name: key,
         value: value,
         checked: disabledFilters.includes(value) ? false : true,
-        label: value,
-        disabled: false
+        label: generateLabel(value),
+        disabled: false,
       }))
     }
 
@@ -64,7 +79,7 @@ export default function useDataFilters(columns, data, columnsToFilter, disabledF
     return filtered
   })
 
-  const onFilterChange = ({ category, label, checked }) => {
+  const onFilterUpdate = ({ category, label, checked }) => {
     filters.value[category].find(filter => filter.label === label).checked = checked
   }
 
@@ -82,9 +97,8 @@ export default function useDataFilters(columns, data, columnsToFilter, disabledF
 
   return {
     filters,
-    // generateFilters,
     filteredData,
-    onFilterChange,
+    onFilterUpdate,
     resetFilters
   }
 }

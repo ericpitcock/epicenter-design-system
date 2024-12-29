@@ -25,10 +25,9 @@
         />
         <ep-menu
           v-else
+          :class="props.menuClass"
           :menu-items="menuItems"
           menu-type="dropdown"
-          divider-color="var(--border-color--lighter)"
-          :container-props="computedContainerProps"
           @click="onClick"
         />
       </div>
@@ -40,17 +39,17 @@
   import vClickOutside from '../../directives/clickOutside.js'
   import EpButton from '../button/EpButton.vue'
   import EpMenu from '../menu/EpMenu.vue'
-  import { computed, ref, provide } from 'vue'
+  import { computed, ref } from 'vue'
 
   defineOptions({
     name: 'EpDropdown',
   })
 
   const props = defineProps({
-    context: {
-      type: [String, Object, Array],
-      default: ''
-    },
+    // context: {
+    //   type: [String, Object, Array],
+    //   default: ''
+    // },
     disabled: {
       type: Boolean,
       default: false
@@ -61,7 +60,17 @@
     },
     containerProps: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
+      validator: (value) => {
+        if (Object.keys(value).length !== 0) {
+          console.warn('containerProps is not allowed. Use menuClass instead.', value)
+        }
+        return true
+      }
+    },
+    menuClass: {
+      type: String,
+      default: ''
     },
     menuItems: {
       type: Array,
@@ -81,7 +90,6 @@
 
   const dropdownVisible = ref(false)
   const buttonDefaults = {
-    variant: 'secondary',
     size: 'default',
     title: '',
     label: 'Default Dropdown',
@@ -95,13 +103,13 @@
     ...props.buttonProps,
   }))
 
-  const computedContainerProps = computed(() => ({
-    styles: {
-      '--ep-container-min-width': 'fit-content',
-      '--ep-container-bg-color': 'var(--interface-overlay)',
-      ...props.containerProps,
-    },
-  }))
+  // const computedContainerProps = computed(() => ({
+  //   styles: {
+  //     '--ep-container-min-width': 'fit-content',
+  //     '--ep-container-bg-color': 'var(--interface-overlay)',
+  //     ...props.containerProps,
+  //   },
+  // }))
 
   const classes = computed(() => [
     'ep-dropdown__container',
@@ -122,11 +130,13 @@
     dropdownVisible.value = false
   }
 
-  provide('contextData', props.context)
+  defineExpose({
+    closeDropdown
+  })
+
+  // provide('contextData', props.context)
 
   const onClick = (payload) => {
-    console.log(payload)
-    // emit('select', { payload, context: props.context })
     emit('select', payload)
     closeDropdown()
   }

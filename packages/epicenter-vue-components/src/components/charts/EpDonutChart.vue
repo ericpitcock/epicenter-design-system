@@ -12,7 +12,7 @@
     >
       {{ tooltipText }}
     </div>
-    <div id="ep-donut" />
+    <div ref="ep-donut" />
     <div :class="['ep-donut-chart__value', valueTextClass]">
       {{ value }}
     </div>
@@ -21,11 +21,12 @@
 
 <script setup>
   import * as d3 from 'd3'
-  import { computed, ref, onMounted } from 'vue'
+  import { computed, ref, onMounted, useTemplateRef } from 'vue'
 
   defineOptions({
     name: 'EpDonutChart',
   })
+
   const props = defineProps({
     animate: {
       type: Boolean,
@@ -65,8 +66,9 @@
     }
   })
 
-  const container = ref(null)
-  const tooltip = ref(null)
+  const container = useTemplateRef('container')
+  const tooltip = useTemplateRef('tooltip')
+  const epDonut = useTemplateRef('ep-donut')
 
   const tooltipVisible = ref(false)
   const tooltipStyles = ref({
@@ -86,20 +88,17 @@
     drawChart()
   })
 
-
   const handleMouseOver = (event, d) => {
     tooltipVisible.value = true
     // position the tooltip relative to the element being hovered over
     // always outside the chart
     // if element is in the top left quadrant, position the tooltip in the top left, etc
-    var container = container.value
-    var tooltip = tooltip.value
-    var containerRect = container.getBoundingClientRect()
-    var tooltipRect = tooltip.getBoundingClientRect()
-    var x = event.clientX - containerRect.left
-    var y = event.clientY - containerRect.top
-    var tooltipX = x + 10
-    var tooltipY = y + 10
+    let containerRect = container.value.getBoundingClientRect()
+    let tooltipRect = tooltip.value.getBoundingClientRect()
+    let x = event.clientX - containerRect.left
+    let y = event.clientY - containerRect.top
+    let tooltipX = x + 10
+    let tooltipY = y + 10
     if (x > containerRect.width / 2) {
       tooltipX = x + 10
     } else {
@@ -123,43 +122,47 @@
 
   const drawChart = () => {
     // Set up the data
-    var data = props.data
-    // var labels = props.labels
+    let data = props.data
 
     // Set up the dimensions and margins of the chart
-    var width = props.width
-    var height = props.height
-    var margin = props.margin
+    let width = props.width
+    let height = props.height
+    let margin = props.margin
 
     // Calculate the radius of the chart
-    var radius = Math.min(width, height) / 2 - margin
+    let radius = Math.min(width, height) / 2 - margin
 
     // Select the SVG element and set its dimensions
-    var svg = d3.select('#ep-donut')
+    let svg = d3.select(epDonut.value)
       .append('svg')
       .attr('width', width)
       .attr('height', height)
 
     // Create a group element for the chart
-    var g = svg.append('g')
+    let g = svg.append('g')
       .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
 
     // Set up the color scale
-    var color = d3.scaleOrdinal()
-      .range(['var(--chart-sequence-00)', 'var(--chart-sequence-01)', 'var(--chart-sequence-02)', 'var(--chart-sequence-03)'])
+    let color = d3.scaleOrdinal()
+      .range([
+        'var(--chart-sequence-00)',
+        'var(--chart-sequence-01)',
+        'var(--chart-sequence-02)',
+        'var(--chart-sequence-03)'
+      ])
 
     // Set up the arc generator
-    var arc = d3.arc()
+    let arc = d3.arc()
       .innerRadius(radius - 26)
       .outerRadius(radius)
 
     // Set up the pie generator
-    var pie = d3.pie()
+    let pie = d3.pie()
       .sort(null)
       .value(function(d) { return d })
 
     // Generate the arcs
-    var arcs = g.selectAll('arc')
+    let arcs = g.selectAll('arc')
       .data(pie(data))
       .enter()
       .append('g')
@@ -184,7 +187,7 @@
         .transition()
         .duration(700)
         .attrTween('d', function(d) {
-          var interpolate = d3.interpolate(d.startAngle, d.endAngle)
+          let interpolate = d3.interpolate(d.startAngle, d.endAngle)
           return function(t) {
             d.endAngle = interpolate(t)
             return arc(d)

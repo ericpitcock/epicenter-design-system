@@ -1,4 +1,4 @@
-const useDebounce = (func, delay) => {
+export default function useDebounce(func, delay) {
   let timeoutId = null
 
   const debounceFunc = (...args) => {
@@ -10,5 +10,3 @@ const useDebounce = (func, delay) => {
 
   return debounceFunc
 }
-
-export { useDebounce }
