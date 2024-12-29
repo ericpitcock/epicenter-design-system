@@ -10,6 +10,7 @@
     "url": "git+https://github.com/ericpitcock/epicenter-design-system.git"
   },
   "author": "Eric Pitcock",
+  "license": "MIT",
   "devDependencies": {
     "chokidar": "^3.6.0",
     "highcharts": "^12.0.2",

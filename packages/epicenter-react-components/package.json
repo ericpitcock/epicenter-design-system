@@ -8,6 +8,7 @@
     "url": "git+https://github.com/ericpitcock/epicenter-design-system.git"
   },
   "author": "Eric Pitcock",
+  "license": "MIT",
   "dependencies": {
     "d3": "^7.8.2",
     "dompurify": "^3.1.4",
