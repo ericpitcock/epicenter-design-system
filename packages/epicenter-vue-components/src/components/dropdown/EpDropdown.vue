@@ -1,6 +1,6 @@
 <template>
   <div
-    v-click-outside="closeDropdown"
+    ref="dropdown"
     class="ep-dropdown"
     @mouseleave="onMouseleave"
   >
@@ -36,20 +36,16 @@
 </template>
 
 <script setup>
-  import vClickOutside from '../../directives/clickOutside.js'
+  import { onClickOutside } from '@vueuse/core'
   import EpButton from '../button/EpButton.vue'
   import EpMenu from '../menu/EpMenu.vue'
-  import { computed, ref } from 'vue'
+  import { computed, ref, useTemplateRef } from 'vue'
 
   defineOptions({
     name: 'EpDropdown',
   })
 
   const props = defineProps({
-    // context: {
-    //   type: [String, Object, Array],
-    //   default: ''
-    // },
     disabled: {
       type: Boolean,
       default: false
@@ -89,6 +85,7 @@
   const emit = defineEmits(['select'])
 
   const dropdownVisible = ref(false)
+
   const buttonDefaults = {
     size: 'default',
     title: '',
@@ -103,30 +100,18 @@
     ...props.buttonProps,
   }))
 
-  // const computedContainerProps = computed(() => ({
-  //   styles: {
-  //     '--ep-container-min-width': 'fit-content',
-  //     '--ep-container-bg-color': 'var(--interface-overlay)',
-  //     ...props.containerProps,
-  //   },
-  // }))
-
   const classes = computed(() => [
     'ep-dropdown__container',
     { 'ep-dropdown__container--align-right': props.alignRight }
   ])
 
   const toggleDropdown = () => {
-    if (props.disabled || props.showOnHover) {
-      return
-    }
+    if (props.disabled || props.showOnHover) return
     dropdownVisible.value = !dropdownVisible.value
   }
 
   const closeDropdown = () => {
-    if (props.disabled) {
-      return
-    }
+    if (props.disabled) return
     dropdownVisible.value = false
   }
 
@@ -134,7 +119,9 @@
     closeDropdown
   })
 
-  // provide('contextData', props.context)
+  const dropdownRef = useTemplateRef('dropdown')
+
+  onClickOutside(dropdownRef, closeDropdown)
 
   const onClick = (payload) => {
     emit('select', payload)
@@ -142,20 +129,12 @@
   }
 
   const onMouseover = () => {
-    if (props.disabled) {
-      return
-    }
-    if (props.showOnHover) {
-      dropdownVisible.value = true
-    }
+    if (props.disabled) return
+    if (props.showOnHover) dropdownVisible.value = true
   }
 
   const onMouseleave = () => {
-    if (props.disabled) {
-      return
-    }
-    if (props.showOnHover) {
-      dropdownVisible.value = false
-    }
+    if (props.disabled) return
+    if (props.showOnHover) dropdownVisible.value = false
   }
 </script>

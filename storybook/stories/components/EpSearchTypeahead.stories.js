@@ -59,7 +59,6 @@ export const Typeahead = args => ({
         :returned-search-results="searchResults"
         results-key="name"
         :input-props="{
-          width: '60rem',
           placeholder: 'Search for your favorite color…',
           size: 'xlarge'
         }"

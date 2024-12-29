@@ -14,7 +14,6 @@
     <div
       v-if="returnedSearchResults.length"
       ref="resultsList"
-      v-click-outside="resetSearch"
       class="ep-search-typeahead-dropdown"
     >
       <ul>
@@ -41,12 +40,11 @@
   })
 
   import EpInput from '../input/EpInput.vue'
-  import vClickOutside from '../../directives/clickOutside'
+  import { onClickOutside } from '@vueuse/core'
   import { useDebounce } from '../../composables'
-  import { computed, ref, watch } from 'vue'
+  import { computed, ref, useTemplateRef, watch } from 'vue'
 
   const searchQuery = ref('')
-  const resultsList = ref(null)
   const activeItemIndex = ref(-1)
 
   const props = defineProps({
@@ -93,6 +91,10 @@
     emit('clear')
   }
 
+  const resultsListRef = useTemplateRef('resultsList')
+
+  onClickOutside(resultsListRef, resetSearch)
+
   const updateactiveItemIndex = (delta) => {
     const newIndex = activeItemIndex.value + delta
 
@@ -106,19 +108,19 @@
   }
 
   const scrollToSelectedItem = () => {
-    const list = resultsList.value.children[0]
+    const list = resultsListRef.value.children[0]
     const selectedItem = list.children[activeItemIndex.value]
 
     if (!selectedItem) return
 
-    const dropdownHeight = resultsList.value.offsetHeight
+    const dropdownHeight = resultsListRef.value.offsetHeight
     const itemTop = selectedItem.offsetTop
     const itemBottom = itemTop + selectedItem.offsetHeight
 
-    if (itemBottom > dropdownHeight + resultsList.value.scrollTop) {
-      resultsList.value.scrollTop = itemBottom - dropdownHeight
-    } else if (itemTop < resultsList.value.scrollTop) {
-      resultsList.value.scrollTop = itemTop
+    if (itemBottom > dropdownHeight + resultsListRef.value.scrollTop) {
+      resultsListRef.value.scrollTop = itemBottom - dropdownHeight
+    } else if (itemTop < resultsListRef.value.scrollTop) {
+      resultsListRef.value.scrollTop = itemTop
     }
   }
 
