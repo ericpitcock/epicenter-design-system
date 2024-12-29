@@ -1,35 +1,45 @@
-import { computed, ref } from 'vue'
+import { ref, computed } from 'vue'
 
-export default function useSorting(data, initialSortColumn = '', initialSortOrder = 'asc', columns) {
+export default function useSorting(data, initialSortColumn, initialSortOrder = 'asc', columns) {
+  // const data = ref(data)
   const sortColumn = ref(initialSortColumn)
   const sortOrder = ref(initialSortOrder)
 
   const sortedData = computed(() => {
-    if (!sortColumn.value || !data.value || !columns.value) return data.value
+    const column = columns.value.find(column => column.key === sortColumn.value)
+    if (!column) return data.value
 
-    const column = columns.value.find((column) => column.key === sortColumn.value)
-    if (!column || !column.sortable) return data.value
+    const sorter = column.sorter || defaultSorter(column.key)
 
-    const modifier = sortOrder.value === 'desc' ? -1 : 1
-    // if a custom sorter is provided, use it, otherwise use the default sorter
-    const sorter = column.sorter || ((a, b) => {
-      const aValue = a[sortColumn.value] ?? ''
-      const bValue = b[sortColumn.value] ?? ''
-      return aValue < bValue ? -1 : aValue > bValue ? 1 : 0
+    const modifier = sortOrder.value === 'asc' ? 1 : -1
+
+    return [...data.value].sort((a, b) => {
+      const result = sorter(a, b)
+      return result * modifier
     })
-
-    return [...data.value].sort((a, b) => sorter(a, b) * modifier)
   })
 
-  const sortBy = (columnKey) => {
+  const onSortChange = (columnKey) => {
     if (sortColumn.value === columnKey) {
-      // toggle sort order when clicking on the same column
       sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
     } else {
-      // set new column and persist the sort order
       sortColumn.value = columnKey
     }
   }
 
-  return { sortedData, sortBy, sortColumn, sortOrder }
+  const defaultSorter = (key) => (a, b) => {
+    // if (a[key] < b[key]) return -1
+    // if (a[key] > b[key]) return 1
+    // return 0
+    const aValue = a[key] ?? ''
+    const bValue = b[key] ?? ''
+    return aValue < bValue ? -1 : aValue > bValue ? 1 : 0
+  }
+
+  return {
+    sortedData,
+    onSortChange,
+    sortColumn,
+    sortOrder
+  }
 }
