@@ -10,6 +10,10 @@
   import { onMounted, ref } from 'vue'
   import { codeToHtml } from 'shiki'
 
+  defineOptions({
+    name: 'EpCodeView'
+  })
+
   const props = defineProps({
     code: {
       type: String,
