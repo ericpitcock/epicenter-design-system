@@ -114,7 +114,6 @@
       inputValue: modelValue.value,
       label: props.label,
       disabled: props.disabled,
-      width: props.width,
       size: props.size,
       iconLeft: props.iconLeft,
       iconRight: props.clearable ? { ...props.iconRight, ...{ name: 'close' } } : props.iconRight,

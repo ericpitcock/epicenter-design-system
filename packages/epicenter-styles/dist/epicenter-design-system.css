@@ -4880,7 +4880,6 @@ input.ep-input--disabled::placeholder {
 
 .ep-search-typeahead {
   position: relative;
-  width: fit-content;
 }
 
 .ep-search-typeahead-dropdown {
