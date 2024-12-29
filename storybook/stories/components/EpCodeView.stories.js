@@ -1,10 +1,11 @@
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 import { surfaceOverflow } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpCodeView from '@/components/code-view/EpCodeView.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpTabs from '@/components/tabs/Eptabs.vue'
 import EpTabContent from '@/components/tabs/EpTabContent.vue'
+import useTabs from '@/components/tabs/useTabs'
 import { codeExamples } from '../../helpers/codeExamples.js'
 
 export default {
@@ -49,20 +50,17 @@ export const CodeView = args => ({
     EpContainer,
   },
   setup() {
-    const tabLabels = ['Javascript', 'HTML', 'CSS', 'JSON']
+    const tabItems = ['Javascript', 'HTML', 'CSS', 'JSON']
 
-    const activeTab = ref(0)
-
-    const setActiveTab = index => {
-      activeTab.value = index
-    }
+    const { activeTab, setActiveTab } = useTabs()
 
     return {
       args,
-      tabLabels,
+      tabItems,
       activeTab,
       setActiveTab,
-      codeExamples
+      codeExamples,
+      useTabs,
     }
   },
   template: `
@@ -78,7 +76,7 @@ export const CodeView = args => ({
           <ep-header style="--ep-header-container-bg-color: var(--interface-surface)">
             <template #left>   
               <ep-tabs
-                :items="tabLabels"
+                :items="tabItems"
                 :active-tab-index="activeTab"
                 @tab-click="setActiveTab"
               />
@@ -87,7 +85,7 @@ export const CodeView = args => ({
         </template>
         <template #default>
           <ep-tab-content
-            :items="tabLabels"
+            :items="tabItems"
             :active-tab-index="activeTab"
           >
             <template #tab-0>
