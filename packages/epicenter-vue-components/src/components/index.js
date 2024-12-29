@@ -19,6 +19,7 @@ import EpFooter from './footer/EpFooter.vue'
 import EpHeader from './header/EpHeader.vue'
 import EpIcon from './icon/EpIcon.vue'
 import EpInput from './input/EpInput.vue'
+import EpItemCount from './item-count/EpItemCount.vue'
 import EpKeyValueTable from './key-value-table/EpKeyValueTable.vue'
 import EpLoading from './loading-state/EpLoadingState.vue'
 import EpMap from './map/EpMap.vue'
@@ -64,6 +65,7 @@ export default {
   EpHeader,
   EpIcon,
   EpInput,
+  EpItemCount,
   EpKeyValueTable,
   EpLoading,
   EpMap,
