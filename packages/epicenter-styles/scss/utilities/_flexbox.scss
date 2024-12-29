@@ -48,7 +48,7 @@
   align-content: space-around;
 }
 
-$gap-steps: 1,
+$steps: 1,
   2,
   3,
   4,
@@ -68,9 +68,27 @@ $gap-steps: 1,
   90,
   100;
 
-@each $step in $gap-steps {
+@each $step in $steps {
   &.gap-#{$step} {
     gap: calc($step / 10) * 1rem;
+  }
+}
+
+@each $step in $steps {
+  &.pt-#{$step} {
+    padding-top: calc($step / 10) * 1rem;
+  }
+
+  &.pr-#{$step} {
+    padding-right: calc($step / 10) * 1rem;
+  }
+
+  &.pb-#{$step} {
+    padding-bottom: calc($step / 10) * 1rem;
+  }
+
+  &.pl-#{$step} {
+    padding-left: calc($step / 10) * 1rem;
   }
 }
 }

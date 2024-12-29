@@ -1,10 +1,11 @@
 .ep-notifications {
+  --ep-notifications-padding: 0 2rem 2rem 2rem;
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
   justify-content: center;
-  padding: 0 2rem 2rem 2rem;
+  padding: var(--ep-notifications-padding);
 
   &__header {
     display: flex;

@@ -1,8 +1,23 @@
 .ep-menu {
-  padding: 1rem 0.5rem;
+  --ep-menu-bg-color: var(--interface-surface);
+  --ep-menu-padding: 1rem 0.5rem;
+  --ep-menu-border-width: 0.1rem;
+  --ep-menu-border-style: solid;
+  --ep-menu-border-color: var(--border-color);
+  --ep-menu-border-radius: var(--border-radius);
+  --ep-menu-section-padding: 0.8rem 2.2rem;
+  --ep-menu-section-margin-top: 0;
+  --ep-menu-divider-border-color: var(--border-color);
+  background: var(--ep-menu-bg-color);
+  padding: var(--ep-menu-padding);
+  border-width: var(--ep-menu-border-width);
+  border-style: var(--ep-menu-border-style);
+  border-color: var(--ep-menu-border-color);
+  border-radius: var(--ep-menu-border-radius);
 
   &__section {
-    padding: 0.8rem 2.2rem;
+    padding: var(--ep-menu-section-padding);
+    margin-top: var(--ep-menu-section-margin-top);
     user-select: none;
   }
 
@@ -15,5 +30,10 @@
       left: calc(100% - 1rem);
       width: 100%;
     }
+  }
+
+  .ep-divider {
+    --ep-divider-border-color: var(--ep-menu-divider-border-color);
+    --ep-divider-margin: 1rem 0;
   }
 }

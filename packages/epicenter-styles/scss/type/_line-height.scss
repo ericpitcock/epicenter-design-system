@@ -3,3 +3,15 @@
   --text-line-height--normal: 1.8rem;
   --text-line-height--loose: 2rem;
 }
+
+.line-height-tight {
+  line-height: var(--text-line-height--tight);
+}
+
+.line-height-normal {
+  line-height: var(--text-line-height--normal);
+}
+
+.line-height-loose {
+  line-height: var(--text-line-height--loose);
+}

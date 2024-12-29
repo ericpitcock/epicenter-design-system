@@ -15,10 +15,12 @@
   --ep-button-disabled-text-color: var(--text-color--disabled);
   --ep-button-disabled-border-color: var(--border-color--disabled);
   --ep-button-menu-item-text-active: var(--text-color--loud);
+  --ep-button-padding-inline: 1.2rem;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.8rem;
+  max-width: max-content;
   height: 3rem;
   border-radius: var(--ep-button-border-radius);
   font-size: var(--font-size--small);
@@ -29,9 +31,9 @@
   user-select: none;
   white-space: nowrap;
   vertical-align: top;
-  // replacing all the variants with custom properties
   background: var(--ep-button-bg-color);
   color: var(--ep-button-text-color);
+  padding-inline: var(--ep-button-padding-inline);
   border-width: var(--ep-button-border-width);
   border-style: var(--ep-button-border-style);
   border-color: var(--ep-button-border-color);
@@ -60,6 +62,7 @@
 
   &--menu-item {
     width: 100%;
+    max-width: 100%;
     background: transparent;
     border-color: transparent;
     padding-right: 2rem !important;
@@ -105,28 +108,28 @@
 
     // and it's an icon
     &:has(.ep-button__icon) {
-      padding-inline: 0.8rem;
+      --ep-button-padding-inline: 0.8rem;
     }
 
     // and it's a label
     &:has(.ep-button__label) {
-      padding-inline: 1.2rem;
+      --ep-button-padding-inline: 1.2rem;
     }
   }
 
   // has two children, one icon left and one label
   &:has(.ep-button__icon--left, .ep-button__label) {
-    padding-inline: 0.8rem 1.2rem;
+    --ep-button-padding-inline: 0.8rem 1.2rem;
   }
 
   // has two children, one icon right and one label
   &:has(.ep-button__icon--right, .ep-button__label) {
-    padding-inline: 1.2rem 0.8rem;
+    --ep-button-padding-inline: 1.2rem 0.8rem;
   }
 
   // has icon left, icon right, and label
   &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
-    padding-inline: 0.8rem;
+    --ep-button-padding-inline: 0.8rem;
   }
 
   // small 22px height
@@ -144,28 +147,28 @@
 
       // and it's an icon
       &:has(.ep-button__icon) {
-        padding-inline: 0.3rem;
+        --ep-button-padding-inline: 0.3rem;
       }
 
       // and it's a label
       &:has(.ep-button__label) {
-        padding-inline: 0.6rem;
+        --ep-button-padding-inline: 0.6rem;
       }
     }
 
     // has two children, one icon left and one label
     &:has(.ep-button__icon--left, .ep-button__label) {
-      padding-inline: 0.3rem 0.6rem;
+      --ep-button-padding-inline: 0.3rem 0.6rem;
     }
 
     // has two children, one icon right and one label
     &:has(.ep-button__icon--right, .ep-button__label) {
-      padding-inline: 0.6rem 0.3rem;
+      --ep-button-padding-inline: 0.6rem 0.3rem;
     }
 
     // has icon left, icon right, and label
     &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
-      padding-inline: 0.6rem;
+      --ep-button-padding-inline: 0.6rem;
     }
   }
 
@@ -184,28 +187,28 @@
 
       // and it's an icon
       &:has(.ep-button__icon) {
-        padding-inline: 1rem;
+        --ep-button-padding-inline: 1rem;
       }
 
       // and it's a label
       &:has(.ep-button__label) {
-        padding-inline: 1.5rem;
+        --ep-button-padding-inline: 1.5rem;
       }
     }
 
     // has two children, one icon left and one label
     &:has(.ep-button__icon--left, .ep-button__label) {
-      padding-inline: 0.8rem 1.5rem;
+      --ep-button-padding-inline: 0.8rem 1.5rem;
     }
 
     // has two children, one icon right and one label
     &:has(.ep-button__icon--right, .ep-button__label) {
-      padding-inline: 1.5rem 0.8rem;
+      --ep-button-padding-inline: 1.5rem 0.8rem;
     }
 
     // has icon left, icon right, and label
     &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
-      padding-inline: 0.8rem;
+      --ep-button-padding-inline: 0.8rem;
     }
   }
 
@@ -224,28 +227,28 @@
 
       // and it's an icon
       &:has(.ep-button__icon) {
-        padding-inline: 1.2rem;
+        --ep-button-padding-inline: 1.2rem;
       }
 
       // and it's a label
       &:has(.ep-button__label) {
-        padding-inline: 1.8rem;
+        --ep-button-padding-inline: 1.8rem;
       }
     }
 
     // has two children, one icon left and one label
     &:has(.ep-button__icon--left, .ep-button__label) {
-      padding-inline: 1.2rem 1.8rem;
+      --ep-button-padding-inline: 1.2rem 1.8rem;
     }
 
     // has two children, one icon right and one label
     &:has(.ep-button__icon--right, .ep-button__label) {
-      padding-inline: 1.8rem 1.2rem;
+      --ep-button-padding-inline: 1.8rem 1.2rem;
     }
 
     // has icon left, icon right, and label
     &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
-      padding-inline: 1.8rem;
+      --ep-button-padding-inline: 1.8rem;
     }
   }
 }

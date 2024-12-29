@@ -1,4 +1,5 @@
 .ep-dropdown {
+  --ep-dropdown-padding-top: 4px;
   position: relative;
   width: fit-content;
 
@@ -7,7 +8,7 @@
     top: 100%;
     left: 0;
     min-width: 100%;
-    padding-top: 4px;
+    padding-top: var(--ep-dropdown-padding-top);
     box-shadow: var(--box-shadow--dropdown);
     z-index: var(--z-index--dropdown);
 

@@ -4,6 +4,10 @@
   --text--white: var(--gray-50);
 }
 
+.text-color--loud {
+  color: var(--text-color--loud);
+}
+
 .text--subtle,
 .text-color--subtle {
   color: var(--text-color--subtle);
