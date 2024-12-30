@@ -17,8 +17,11 @@
 
   &__section {
     padding: var(--ep-menu-section-padding);
-    margin-top: var(--ep-menu-section-margin-top);
     user-select: none;
+
+    &:not(:first-of-type) {
+      margin-top: var(--ep-menu-section-margin-top);
+    }
   }
 
   &__item {
