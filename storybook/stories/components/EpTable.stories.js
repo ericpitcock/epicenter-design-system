@@ -6,6 +6,7 @@ import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
 import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpInput from '@/components/input/EpInput.vue'
 import EpTable from '@/components/table/EpTable.vue'
+import EpTableHead from '@/components/table/EpTableHead.vue'
 import EpTableSearchInput from '@/components/table/EpTableSearchInput.vue'
 import EpTablePagination from '@/components/table/EpTablePagination.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
@@ -101,6 +102,7 @@ export const Table = (args) => ({
     EpFlex,
     EpInput,
     EpTable,
+    EpTableHead,
     EpTableSearchInput,
     EpTablePagination,
     EpTableSortableHeader,
@@ -132,7 +134,7 @@ export const Table = (args) => ({
       onSortChange,
       sortColumn,
       sortOrder
-    } = useSorting(includedData, 'severity', 'desc', columnsRef)
+    } = useSorting(columnsRef, includedData, 'severity', 'desc')
 
     const {
       filters,
@@ -154,7 +156,7 @@ export const Table = (args) => ({
       visibleColumns,
       visibleData,
       onFilterToggle
-    } = useColumnFilters(includedColumns, [], filteredData)
+    } = useColumnFilters(includedColumns, filteredData, [])
 
     // use search
     const {
@@ -320,19 +322,43 @@ export const Table = (args) => ({
           v-bind="args"
           @row-click="onRowClick"
         >
-          <template #header="{ column, cellWidths }">
-            <ep-table-sortable-header
-              :column="column"
-              :sort-column="sortColumn"
-              :sort-order="sortOrder"
-              @sort="onSortChange"
-            />
+          <template #thead="{ visibleColumns, cellWidths, showActionsMenu }">
+            <ep-table-head
+              :columns="visibleColumns"
+              :cell-widths="cellWidths"
+              :show-actions-menu="showActionsMenu"
+            >
+              <template #header="{ column, cellWidths }">
+                <ep-table-sortable-header
+                  :column="column"
+                  :sort-column="sortColumn"
+                  :sort-order="sortOrder"
+                  @sort="onSortChange"
+                />
+              </template>
+            </ep-table-head>
           </template>
           <template #cell-severity="{ row }">
             <ep-badge :label="row.severity" />
           </template>
           <template #actions-menu="{ row }">
             <ep-dropdown v-bind="actionMenuProps(row.id)" />
+          </template>
+          <template #thead-fixed="{ visibleColumns, cellWidths, showActionsMenu }">
+            <ep-table-head
+              :columns="visibleColumns"
+              :cell-widths="cellWidths"
+              :show-actions-menu="showActionsMenu"
+            >
+              <template #header="{ column, cellWidths }">
+                <ep-table-sortable-header
+                  :column="column"
+                  :sort-column="sortColumn"
+                  :sort-order="sortOrder"
+                  @sort="onSortChange"
+                />
+              </template>
+            </ep-table-head>
           </template>
         </ep-table>
         <ep-table-pagination

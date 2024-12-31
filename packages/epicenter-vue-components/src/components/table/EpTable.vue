@@ -3,59 +3,23 @@
     ref="tableContainer"
     class="ep-table-container"
     :style="containerStyles"
-    @scroll="updateLeftPosition"
   >
     <table :class="['ep-table', classes]">
-      <thead
-        ref="tableHead"
-        :class="{ fixed: fixedHeader }"
-      >
-        <tr>
-          <template
-            v-for="(column, columnIndex) in visibleColumns"
-            :key="`head-${column.key}`"
-          >
-            <slot
-              v-if="$slots.header && column.sortable"
-              name="header"
-              v-bind="{ column, cellWidths, columnIndex }"
-            />
-            <th
-              v-else
-              :style="cellWidths[columnIndex]"
-            >
-              <div>
-                <span class="label">{{ column.label }}</span>
-              </div>
-            </th>
-          </template>
-
-          <th
-            v-if="showActionsMenu"
-            class="ep-table__actions-menu"
-          >
-            <div>
-              <span class="label">
-                &nbsp;
-              </span>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody
-        ref="tableBody"
-        :class="{ fixed: fixedHeader }"
-      >
+      <slot
+        name="thead"
+        v-bind="{ visibleColumns, showActionsMenu }"
+      />
+      <tbody ref="tableBody">
         <tr
           v-for="row in data"
           :key="row.id"
           @click="onRowClick(row)"
         >
           <template
-            v-for="(column, columnIndex) in visibleColumns"
+            v-for="column in visibleColumns"
             :key="`body-${column.key}`"
           >
-            <td :style="cellWidths[columnIndex]">
+            <td>
               <slot
                 v-if="$slots[`cell-${column.key}`]"
                 :name="`cell-${column.key}`"
@@ -81,6 +45,16 @@
         </tr>
       </tbody>
     </table>
+    <!-- table for the head clone only -->
+    <table
+      v-if="fixedHeader"
+      class="ep-table ep-table--fixed-header"
+    >
+      <slot
+        name="thead-fixed"
+        v-bind="{ visibleColumns, showActionsMenu }"
+      />
+    </table>
   </div>
 </template>
 
@@ -91,8 +65,10 @@
     nextTick,
     onBeforeUnmount,
     onMounted,
+    useTemplateRef,
     watch
   } from 'vue'
+  // import EpTableHead from './EpTableHead.vue'
   import EpTableCell from './EpTableCell.vue'
   import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
 
@@ -158,7 +134,7 @@
   }
 
   const tableContainer = ref(null)
-  const tableHead = ref(null)
+  // const tableHeadRef = useTemplateRef('tableHead')
   const tableBody = ref(null)
 
   const { containerHeight } = useCalculatedHeight(tableContainer, props.calculateHeightOffset)
@@ -178,78 +154,136 @@
     }
   })
 
-  const updateLeftPosition = () => {
-    requestAnimationFrame(() => {
-      const computedStyle = window.getComputedStyle(tableContainer.value)
-      const paddingLeft = parseFloat(computedStyle.paddingLeft)
+  // const fixedHeaderVisible = ref(false)
+  // const cellWidths = ref([])
 
-      // Calculate the new left position considering the padding
-      const tableContainerLeft = -tableContainer.value.scrollLeft + paddingLeft + tableContainer.value.getBoundingClientRect().left
+  // const onScroll = () => {
+  //   // console.log('scrolling')
+  //   // console log scrol top of window
+  //   // console.log(window.scrollY)
+  //   // when scroll top is greater than 100, fixedHeaderVisible is true
+  //   fixedHeaderVisible.value = window.scrollY > 100
 
-      tableHead.value.style.left = `${tableContainerLeft}px`
-    })
-  }
+  //   if (!fixedHeaderVisible.value) return
+  //   // sync cell width with fixed header
+  //   console.log(tableHeadRef.value)
+  //   const tableHeadCells = tableHeadRef.value.querySelectorAll('th')
+  //   // const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
 
-  defineExpose({
-    updateLeftPosition
-  })
+  //   const newCellWidths = []
+
+  //   const computeCellWidths = (cell) => {
+  //     const width = cell.getBoundingClientRect().width
+
+  //     return width
+  //   }
+
+  //   tableHeadCells.forEach((cell, index) => {
+  //     // if (computeCellWidths(cell) > parseFloat(newCellWidths[index].width)) {
+  //     newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
+  //     // }
+  //   })
+
+  //   cellWidths.value = newCellWidths
+  // }
+
+  // const updateLeftPosition = () => {
+  //   if (!props.fixedHeader) return
+
+  //   requestAnimationFrame(() => {
+  //     const computedStyle = window.getComputedStyle(tableContainer.value)
+  //     const paddingLeft = parseFloat(computedStyle.paddingLeft)
+
+  //     // Calculate the new left position considering the padding
+  //     const tableContainerLeft = -tableContainer.value.scrollLeft + paddingLeft + tableContainer.value.getBoundingClientRect().left
+
+  //     tableHead.value.style.left = `${tableContainerLeft}px`
+  //   })
+  // }
+
+  // defineExpose({
+  //   updateLeftPosition
+  // })
 
   const visibleColumns = computed(() => {
     return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
   })
 
-  const cellWidths = ref([])
 
-  const updateCellWidths = () => {
-    if (!props.fixedHeader) return
 
-    const tableHeadCells = tableHead.value.querySelectorAll('th')
-    const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
+  // const updateCellWidths = () => {
+  //   if (!props.fixedHeader) return
 
-    const newCellWidths = []
+  //   const tableHeadCells = tableHead.value.querySelectorAll('th')
+  //   const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
 
-    const computeCellWidths = (cell) => {
-      const width = cell.getBoundingClientRect().width
+  //   const newCellWidths = []
 
-      return width
-    }
+  //   const computeCellWidths = (cell) => {
+  //     const width = cell.getBoundingClientRect().width
 
-    tableHeadCells.forEach((cell, index) => {
-      newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
-    })
+  //     return width
+  //   }
 
-    tableBodyCells.forEach((cell, index) => {
-      if (computeCellWidths(cell) > parseFloat(newCellWidths[index].width)) {
-        newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
-      }
-    })
+  //   tableHeadCells.forEach((cell, index) => {
+  //     newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
+  //   })
 
-    cellWidths.value = newCellWidths
-  }
+  //   tableBodyCells.forEach((cell, index) => {
+  //     if (computeCellWidths(cell) > parseFloat(newCellWidths[index].width)) {
+  //       newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
+  //     }
+  //   })
 
-  watch(() => props.fixedHeader, () => {
-    updateCellWidths()
-  })
+  //   cellWidths.value = newCellWidths
+  // }
 
-  watch(() => props.data, () => {
-    nextTick(() => {
-      updateCellWidths()
-    })
-  })
+  // watch(() => props.fixedHeader, () => {
+  //   updateCellWidths()
+  // })
 
-  const onResize = () => {
-    updateCellWidths()
-    updateLeftPosition()
-  }
+  // watch(() => props.data, () => {
+  //   nextTick(() => {
+  //     updateCellWidths()
+  //   })
+  // })
 
-  onMounted(() => {
-    nextTick(() => {
-      updateCellWidths()
-    })
-    window.addEventListener('resize', onResize)
-  })
+  // const onResize = () => {
+  //   updateCellWidths()
+  //   updateLeftPosition()
+  // }
 
-  onBeforeUnmount(() => {
-    window.removeEventListener('resize', onResize)
-  })
+  // onMounted(() => {
+  //   nextTick(() => {
+  //     updateCellWidths()
+  //   })
+  //   window.addEventListener('resize', onResize)
+  // })
+
+  // onBeforeUnmount(() => {
+  //   window.removeEventListener('resize', onResize)
+  // })
+
+  // add scroll event listener to window
+  // onMounted(() => {
+  //   if (props.fixedHeader) {
+  //     window.addEventListener('scroll', onScroll)
+  //   }
+  // })
+
+  // onBeforeUnmount(() => {
+  //   if (props.fixedHeader) {
+  //     window.removeEventListener('scroll', onScroll)
+  //   }
+  // })
 </script>
+
+<style lang="scss">
+  .ep-table--fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+  }
+</style>

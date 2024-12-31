@@ -1,5 +1,6 @@
 import { surfaceOverflow } from '../../helpers/decorators.js'
 import EpTable from '@/components/table/EpTable.vue'
+import EpTableHead from '@/components/table/EpTableHead.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
 import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
@@ -12,7 +13,7 @@ import {
   // useSearch
 } from '@/composables/index.js'
 import { columns, fakeArray } from '../../data/tableData'
-import { ref, onMounted } from 'vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 
 export default {
   title: 'Components/Table Fixed',
@@ -85,6 +86,7 @@ export default {
 export const TableFixed = (args) => ({
   components: {
     EpTable,
+    EpTableHead,
     EpTableSortableHeader,
     EpFlex,
     EpCheckbox,
@@ -99,23 +101,69 @@ export const TableFixed = (args) => ({
       onSortChange,
       sortColumn,
       sortOrder
-    } = useSorting(tableDataRef, 'severity', 'desc', tableColumnsRef)
+    } = useSorting(tableColumnsRef, tableDataRef, 'severity', 'desc')
 
     const {
       columnFilters,
       visibleColumns,
       visibleData,
       onFilterToggle
-    } = useColumnFilters(tableColumnsRef, [], sortedData)
+    } = useColumnFilters(tableColumnsRef, sortedData, [])
 
     const styles = ref({
-      '--ep-table-width': 'max-content',
+      '--ep-table-width': '100%',
       '--ep-table-head-width': 'max-content',
       '--ep-table-header-bg-color': 'var(--interface-bg)',
       '--ep-table-body-width': 'max-content',
       '--ep-table-container-overflow': 'auto',
       // '--ep-table-container-padding': '1rem 3rem 30rem 3rem',
       '--ep-table-fixed-top': '0',
+    })
+
+    // const fixedHeaderVisible = ref(false)
+    const cellWidths = ref([])
+
+    const tableHead = ref(null)
+
+    const onScroll = () => {
+      // console.log('scrolling')
+      // console log scrol top of window
+      // console.log(window.scrollY)
+      // when scroll top is greater than 100, fixedHeaderVisible is true
+      args.fixedHeader = window.scrollY > 100
+
+      if (!args.fixedHeader) return
+      // sync cell width with fixed header
+      const tableHeadCells = tableHead.value.$refs.tableHeadd.querySelectorAll('th')
+      // const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
+
+      // console.log('tableHeadCells', tableHeadCells)
+
+      const newCellWidths = []
+
+      const computeCellWidths = (cell) => {
+        const width = cell.getBoundingClientRect().width
+
+        return width
+      }
+
+      tableHeadCells.forEach((cell, index) => {
+        // if (computeCellWidths(cell) > parseFloat(newCellWidths[index].width)) {
+        newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
+        // }
+      })
+
+      // console.log('newCellWidths', newCellWidths)
+
+      cellWidths.value = newCellWidths
+    }
+
+    onMounted(() => {
+      window.addEventListener('scroll', onScroll)
+    })
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('scroll', onScroll)
     })
 
 
@@ -141,43 +189,49 @@ export const TableFixed = (args) => ({
     //   })
     // })
 
-    const debounce = (func, delay) => {
-      let timer
-      return function(...args) {
-        clearTimeout(timer)
-        timer = setTimeout(() => {
-          func.apply(this, args)
-        }, delay)
-      }
+    // const debounce = (func, delay) => {
+    //   let timer
+    //   return function(...args) {
+    //     clearTimeout(timer)
+    //     timer = setTimeout(() => {
+    //       func.apply(this, args)
+    //     }, delay)
+    //   }
+    // }
+
+    // const tableComponent = ref(null)
+    // const tableContainer = ref(null)
+
+    // const handleScroll = () => {
+    //   requestAnimationFrame(() => {
+    //     // const table = tableComponent.value.$refs.tableContainer
+    //     const tableY = tableContainer.value.getBoundingClientRect().top
+    //     // console.log('tableY', tableY)
+
+    //     if (!args.fixedHeader && tableY < 0) {
+    //       args.fixedHeader = true
+    //       tableContainer.value.style.paddingTop = '44.5px'
+    //       // window.scrollBy(0, 44.5)
+    //     }
+    //     if (args.fixedHeader && tableY > 0) {
+    //       args.fixedHeader = false
+    //       tableContainer.value.style.paddingTop = '0'
+    //     }
+    //   })
+    // }
+
+    // const debouncedHandleScroll = debounce(handleScroll, 0) // Adjust the debounce delay as needed
+
+    // onMounted(() => {
+    //   tableContainer.value = tableComponent.value.$refs.tableContainer
+    //   window.addEventListener('scroll', debouncedHandleScroll)
+    // })
+
+    const onFilterToggleLocal = (event, id) => {
+      onFilterToggle(event, id)
+      onScroll()
+      console.log('onFilterToggleLocal')
     }
-
-    const tableComponent = ref(null)
-    const tableContainer = ref(null)
-
-    const handleScroll = () => {
-      requestAnimationFrame(() => {
-        // const table = tableComponent.value.$refs.tableContainer
-        const tableY = tableContainer.value.getBoundingClientRect().top
-        // console.log('tableY', tableY)
-
-        if (!args.fixedHeader && tableY < 0) {
-          args.fixedHeader = true
-          tableContainer.value.style.paddingTop = '44.5px'
-          // window.scrollBy(0, 44.5)
-        }
-        if (args.fixedHeader && tableY > 0) {
-          args.fixedHeader = false
-          tableContainer.value.style.paddingTop = '0'
-        }
-      })
-    }
-
-    const debouncedHandleScroll = debounce(handleScroll, 0) // Adjust the debounce delay as needed
-
-    onMounted(() => {
-      tableContainer.value = tableComponent.value.$refs.tableContainer
-      window.addEventListener('scroll', debouncedHandleScroll)
-    })
 
     return {
       args,
@@ -187,11 +241,14 @@ export const TableFixed = (args) => ({
       onSortChange,
       sortColumn,
       sortOrder,
-      tableComponent,
+      // tableComponent,
       columnFilters,
       visibleColumns,
       visibleData,
       onFilterToggle,
+      cellWidths,
+      tableHead,
+      onFilterToggleLocal,
     }
   },
   template: `
@@ -204,7 +261,7 @@ export const TableFixed = (args) => ({
           :key="filter.id"
           v-bind="filter"
           v-model="filter.checked"
-          @update:modelValue="onFilterToggle($event, filter.id)"
+          @update:modelValue="onFilterToggleLocal($event, filter.id)"
         />
       </ep-flex>
       <ep-table
@@ -214,15 +271,41 @@ export const TableFixed = (args) => ({
         v-bind="args"
         :style="styles"
       >
-        <template #header="{ column, cellWidths, columnIndex }">
-          <ep-table-sortable-header
-            :column="column"
-            :sort-column="sortColumn"
-            :sort-order="sortOrder"
-            :column-index="columnIndex"
+        <template #thead="{ visibleColumns, showActionsMenu }">
+          <ep-table-head
+            ref="tableHead"
+            :columns="visibleColumns"
+            :show-actions-menu="showActionsMenu"
+          >
+            <template #header="{ column, cellWidths, columnIndex }">
+              <ep-table-sortable-header
+                :column="column"
+                :column-index="columnIndex"
+                :cell-widths="cellWidths"
+                :sort-column="sortColumn"
+                :sort-order="sortOrder"
+                @sort="onSortChange"
+              />
+            </template>
+          </ep-table-head>
+        </template>
+        <template #thead-fixed="{ visibleColumns, showActionsMenu }">
+          <ep-table-head
+            :columns="visibleColumns"
             :cell-widths="cellWidths"
-            @sort="onSortChange"
-          />
+            :show-actions-menu="showActionsMenu"
+          >
+            <template #header="{ column, cellWidths, columnIndex }">
+              <ep-table-sortable-header
+                :column="column"
+                :column-index="columnIndex"
+                :cell-widths="cellWidths"
+                :sort-column="sortColumn"
+                :sort-order="sortOrder"
+                @sort="onSortChange"
+              />
+            </template>
+          </ep-table-head>
         </template>
       </ep-table>
   `
