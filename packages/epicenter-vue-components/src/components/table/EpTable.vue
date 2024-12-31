@@ -3,7 +3,7 @@
     ref="tableContainer"
     class="ep-table-container"
     :style="containerStyles"
-    @scroll="syncTablePosition"
+    @scroll="onScroll"
   >
     <table :class="['ep-table', classes]">
       <slot
@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-  import { computed, onBeforeUnmount, onMounted, ref, } from 'vue'
+  import { computed, ref } from 'vue'
   import EpTableCell from './EpTableCell.vue'
   import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
 
@@ -137,30 +137,19 @@
     ...props.styles
   }))
 
-  const syncTablePosition = () => {
-    console.log('syncTablePosition emit')
+  const onScroll = () => {
+    console.log('EpTable:onScroll')
     emit('container-scroll', tableContainer.value.scrollLeft)
-    // console.log('syncTablePosition')
-    // if (!props.fixedHeader) return
-    // // use styles
-    // tableFixed.value.style.transform = `translateX(-${tableContainer.value.scrollLeft}px)`
-    // // sync width of tableFixed with tableBody
-    // tableFixed.value.style.width = `${tableBody.value.clientWidth}px`
   }
 
   // on window resize
-  onMounted(() => {
-    window.addEventListener('resize', syncTablePosition)
-  })
+  // onMounted(() => {
+  //   window.addEventListener('resize', onScroll)
+  // })
 
-  // on component unmount
-  onBeforeUnmount(() => {
-    window.removeEventListener('resize', syncTablePosition)
-  })
-
-  // watch fixedHeader and syncTablePosition
-  // watch(() => props.fixedHeader, () => {
-  //   syncTablePosition()
+  // // on component unmount
+  // onBeforeUnmount(() => {
+  //   window.removeEventListener('resize', onScroll)
   // })
 
   const classes = computed(() => {

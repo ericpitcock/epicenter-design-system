@@ -12,6 +12,7 @@ import {
   // usePagination,
   // useSearch
 } from '@/composables/index.js'
+import { useDebounceFn } from '@vueuse/core'
 import { columns, fakeArray } from '../../data/tableData'
 import { nextTick, onMounted, onBeforeUnmount, ref } from 'vue'
 
@@ -140,26 +141,28 @@ export const Fixed = (args) => ({
     const tableFixed = ref(null)
     const tableBody = ref(null)
 
-    const syncTablePosition = (payload) => {
-      console.log('syncTablePosition', payload)
-      console.log('tableComponent.value.$refs', tableComponent.value.$refs)
-
-
+    const syncTablePosition = () => {
+      // leftPosition is tableContainer.value.scrollLeft
       tableFixed.value.style.transform = `translateX(-${tableContainer.value.scrollLeft}px)`
       tableFixed.value.style.width = `${tableBody.value.clientWidth}px`
     }
+
+    const updateAndSync = useDebounceFn(() => {
+      updateCellWidths()
+      syncTablePosition()
+    }, 100, { maxWait: 100 })
 
     onMounted(() => {
       tableContainer.value = tableComponent.value.$refs.tableContainer
       tableFixed.value = tableComponent.value.$refs.tableFixed
       tableBody.value = tableComponent.value.$refs.tableBody
-      window.addEventListener('scroll', updateCellWidths)
-      window.addEventListener('resize', updateCellWidths)
+      window.addEventListener('scroll', updateAndSync)
+      window.addEventListener('resize', updateAndSync)
     })
 
     onBeforeUnmount(() => {
-      window.removeEventListener('scroll', updateCellWidths)
-      window.removeEventListener('resize', updateCellWidths)
+      window.removeEventListener('scroll', updateAndSync)
+      window.removeEventListener('resize', updateAndSync)
     })
 
     const onFilterToggleLocal = (event, id) => {
