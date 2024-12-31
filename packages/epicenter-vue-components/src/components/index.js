@@ -34,6 +34,7 @@ import EpStatusIndicator from './status-indicator/EpStatusIndicator.vue'
 import EpTable from './table/EpTable.vue'
 import EpTableCell from './table/EpTableCell.vue'
 import EpTableCheckboxFilters from './table/EpTableCheckboxFilters.vue'
+import EpTableHead from './table/EpTableHead.vue'
 import EpTablePagination from './table/EpTablePagination.vue'
 import EpTableSortableHeader from './table/EpTableSortableHeader.vue'
 import EpTabs from './tabs/EpTabs.vue'
@@ -80,6 +81,7 @@ export default {
   EpTable,
   EpTableCell,
   EpTableCheckboxFilters,
+  EpTableHead,
   EpTablePagination,
   EpTableSortableHeader,
   EpTabs,

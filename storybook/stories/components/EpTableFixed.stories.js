@@ -9,10 +9,11 @@ import {
   useColumnFilters,
   // useDataFilters,
   useSorting,
+  useFixedHeader,
   // usePagination,
   // useSearch
 } from '@/composables/index.js'
-import { useDebounceFn } from '@vueuse/core'
+// import { useDebounceFn } from '@vueuse/core'
 import { columns, fakeArray } from '../../data/tableData'
 import { nextTick, onMounted, onBeforeUnmount, ref } from 'vue'
 
@@ -121,55 +122,65 @@ export const Fixed = (args) => ({
       '--ep-table-fixed-top': '0',
     })
 
-    const cellWidths = ref([])
-    const tableHead = ref(null)
+    // const cellWidths = ref([])
+    // const tableHead = ref(null)
 
-    const updateCellWidths = () => {
-      args.fixedHeader = window.scrollY > 100
-      if (!args.fixedHeader) return
+    // const updateCellWidths = () => {
+    //   args.fixedHeader = window.scrollY > 100
+    //   if (!args.fixedHeader) return
 
-      const tableHeadCells = tableHead.value?.$refs.tableHeadd.querySelectorAll('th')
-      if (!tableHeadCells) return
+    //   const tableHeadCells = tableHead.value?.$refs.tableHeadd.querySelectorAll('th')
+    //   if (!tableHeadCells) return
 
-      cellWidths.value = Array.from(tableHeadCells).map((cell) => ({
-        width: `${cell.getBoundingClientRect().width}px`,
-      }))
-    }
+    //   cellWidths.value = Array.from(tableHeadCells).map((cell) => ({
+    //     width: `${cell.getBoundingClientRect().width}px`,
+    //   }))
+    // }
 
-    const tableComponent = ref(null)
-    const tableContainer = ref(null)
-    const tableFixed = ref(null)
-    const tableBody = ref(null)
+    // const tableComponent = ref(null)
+    // const tableContainer = ref(null)
+    // const tableFixed = ref(null)
+    // const tableBody = ref(null)
 
-    const syncTablePosition = () => {
-      // leftPosition is tableContainer.value.scrollLeft
-      tableFixed.value.style.transform = `translateX(-${tableContainer.value.scrollLeft}px)`
-      tableFixed.value.style.width = `${tableBody.value.clientWidth}px`
-    }
+    // const syncTablePosition = () => {
+    //   // leftPosition is tableContainer.value.scrollLeft
+    //   tableFixed.value.style.transform = `translateX(-${tableContainer.value.scrollLeft}px)`
+    //   tableFixed.value.style.width = `${tableBody.value.clientWidth}px`
+    // }
 
-    const updateAndSync = useDebounceFn(() => {
-      updateCellWidths()
-      syncTablePosition()
-    }, 100, { maxWait: 100 })
+    // const updateAndSync = useDebounceFn(() => {
+    //   updateCellWidths()
+    //   syncTablePosition()
+    // }, 100, { maxWait: 100 })
 
-    onMounted(() => {
-      tableContainer.value = tableComponent.value.$refs.tableContainer
-      tableFixed.value = tableComponent.value.$refs.tableFixed
-      tableBody.value = tableComponent.value.$refs.tableBody
-      window.addEventListener('scroll', updateAndSync)
-      window.addEventListener('resize', updateAndSync)
-    })
+    // onMounted(() => {
+    //   tableContainer.value = tableComponent.value.$refs.tableContainer
+    //   tableFixed.value = tableComponent.value.$refs.tableFixed
+    //   tableBody.value = tableComponent.value.$refs.tableBody
+    //   window.addEventListener('scroll', updateAndSync)
+    //   window.addEventListener('resize', updateAndSync)
+    // })
 
-    onBeforeUnmount(() => {
-      window.removeEventListener('scroll', updateAndSync)
-      window.removeEventListener('resize', updateAndSync)
-    })
+    // onBeforeUnmount(() => {
+    //   window.removeEventListener('scroll', updateAndSync)
+    //   window.removeEventListener('resize', updateAndSync)
+    // })
+
+    const {
+      fixedHeader,
+      cellWidths,
+      tableComponent,
+      tableHead,
+      syncTablePosition,
+      updateAndSync,
+    } = useFixedHeader(args.fixedHeader, 100)
+
+    // args.fixedHeader = fixedHeader.value
 
     const onFilterToggleLocal = (event, id) => {
       onFilterToggle(event, id)
       nextTick(() => {
-        updateCellWidths()
-        syncTablePosition()
+        updateAndSync()
       })
     }
 
@@ -190,6 +201,8 @@ export const Fixed = (args) => ({
       tableHead,
       onFilterToggleLocal,
       syncTablePosition,
+      updateAndSync,
+      fixedHeader,
     }
   },
   template: `
@@ -211,7 +224,8 @@ export const Fixed = (args) => ({
         :data="visibleData"
         v-bind="args"
         :style="styles"
-        @container-scroll="syncTablePosition"
+        :fixed-header="fixedHeader"
+        @container-scroll="updateAndSync"
       >
         <template #thead="{ visibleColumns, showActionsMenu }">
           <ep-table-head
