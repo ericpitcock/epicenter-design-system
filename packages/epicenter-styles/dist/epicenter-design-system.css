@@ -4522,7 +4522,6 @@ select.ep-select--disabled {
   --ep-table-width: auto;
   --ep-table-min-width: 0;
   --ep-table-sticky-top: 0;
-  --ep-table-fixed-top: 0;
   --ep-table-head-width: auto;
   --ep-table-body-width: auto;
   --ep-table-row-stripe-color: var(--interface-foreground);
@@ -4544,15 +4543,6 @@ select.ep-select--disabled {
   font-variation-settings: "wght" 600;
   user-select: none;
   color: var(--text-color--loud);
-}
-.ep-table thead.fixed {
-  position: fixed;
-  top: var(--ep-table-fixed-top);
-  z-index: 1;
-  display: table;
-}
-.ep-table thead.fixed th {
-  display: table-cell;
 }
 .ep-table thead th {
   text-align: left;
@@ -4593,12 +4583,6 @@ select.ep-select--disabled {
 .ep-table tbody tr td.ep-table__actions-menu {
   width: 5rem;
   padding: 0;
-}
-.ep-table tbody.fixed {
-  display: table;
-}
-.ep-table tbody.fixed th {
-  display: table-cell;
 }
 .ep-table--bordered tbody tr {
   border: 1px solid var(--ep-table-border-color);

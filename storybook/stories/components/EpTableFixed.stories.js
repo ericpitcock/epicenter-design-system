@@ -16,7 +16,7 @@ import { columns, fakeArray } from '../../data/tableData'
 import { nextTick, onMounted, onBeforeUnmount, ref } from 'vue'
 
 export default {
-  title: 'Components/Table Fixed',
+  title: 'Components/Table/Fixed',
   component: EpTable,
   decorators: [surfaceOverflow],
   argTypes: {
@@ -83,7 +83,7 @@ export default {
   }
 }
 
-export const TableFixed = (args) => ({
+export const Fixed = (args) => ({
   components: {
     EpTable,
     EpTableHead,
@@ -125,32 +125,24 @@ export const TableFixed = (args) => ({
 
     const updateCellWidths = () => {
       args.fixedHeader = window.scrollY > 100
-
       if (!args.fixedHeader) return
 
-      const tableHeadCells = tableHead.value.$refs.tableHeadd.querySelectorAll('th')
+      const tableHeadCells = tableHead.value?.$refs.tableHeadd.querySelectorAll('th')
+      if (!tableHeadCells) return
 
-      const newCellWidths = []
-
-      const computeCellWidths = (cell) => {
-        const width = cell.getBoundingClientRect().width
-
-        return width
-      }
-
-      tableHeadCells.forEach((cell, index) => {
-        newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
-      })
-
-      cellWidths.value = newCellWidths
+      cellWidths.value = Array.from(tableHeadCells).map((cell) => ({
+        width: `${cell.getBoundingClientRect().width}px`,
+      }))
     }
 
     onMounted(() => {
       window.addEventListener('scroll', updateCellWidths)
+      window.addEventListener('resize', updateCellWidths)
     })
 
     onBeforeUnmount(() => {
       window.removeEventListener('scroll', updateCellWidths)
+      window.removeEventListener('resize', updateCellWidths)
     })
 
     const onFilterToggleLocal = (event, id) => {
@@ -238,7 +230,7 @@ export const TableFixed = (args) => ({
   `
 })
 
-TableFixed.args = {
+Fixed.args = {
   compact: false,
   bordered: true,
   selectable: false,

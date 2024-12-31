@@ -8,7 +8,7 @@
   --ep-table-width: auto;
   --ep-table-min-width: 0;
   --ep-table-sticky-top: 0;
-  --ep-table-fixed-top: 0;
+  // --ep-table-fixed-top: 0;
   --ep-table-head-width: auto;
   --ep-table-body-width: auto;
   --ep-table-row-stripe-color: var(--interface-foreground);
@@ -31,17 +31,15 @@
     user-select: none;
     color: var(--text-color--loud);
 
-    &.fixed {
-      position: fixed;
-      top: var(--ep-table-fixed-top);
-      z-index: 1;
-      display: table;
-
-      th {
-        display: table-cell;
-      }
-    }
-
+    // &.fixed {
+    //   position: fixed;
+    //   top: var(--ep-table-fixed-top);
+    //   z-index: 1;
+    //   display: table;
+    //   th {
+    //     display: table-cell;
+    //   }
+    // }
     th {
       text-align: left;
       background: var(--ep-table-header-bg-color);
@@ -91,13 +89,12 @@
       }
     }
 
-    &.fixed {
-      display: table;
-
-      th {
-        display: table-cell;
-      }
-    }
+    // &.fixed {
+    //   display: table;
+    //   th {
+    //     display: table-cell;
+    //   }
+    // }
   }
 
   &--bordered {

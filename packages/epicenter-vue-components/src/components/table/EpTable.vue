@@ -3,6 +3,7 @@
     ref="tableContainer"
     class="ep-table-container"
     :style="containerStyles"
+    @scroll="syncTablePosition"
   >
     <table :class="['ep-table', classes]">
       <slot
@@ -45,9 +46,10 @@
         </tr>
       </tbody>
     </table>
-    <!-- table for the head clone only -->
+    <!-- table for fixed header -->
     <table
-      v-if="fixedHeader"
+      v-show="fixedHeader"
+      ref="tableFixed"
       class="ep-table ep-table--fixed-header"
     >
       <slot
@@ -59,7 +61,7 @@
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue'
+  import { computed, onBeforeUnmount, onMounted, ref, } from 'vue'
   import EpTableCell from './EpTableCell.vue'
   import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
 
@@ -125,8 +127,8 @@
   }
 
   const tableContainer = ref(null)
-  // const tableHeadRef = useTemplateRef('tableHead')
   const tableBody = ref(null)
+  const tableFixed = ref(null)
 
   const { containerHeight } = useCalculatedHeight(tableContainer, props.calculateHeightOffset)
 
@@ -134,6 +136,30 @@
     ...(props.calculateHeight && containerHeight.value),
     ...props.styles
   }))
+
+  const syncTablePosition = () => {
+    console.log('syncTablePosition')
+    // if (!props.fixedHeader) return
+    // use styles
+    tableFixed.value.style.transform = `translateX(-${tableContainer.value.scrollLeft}px)`
+    // sync width of tableFixed with tableBody
+    tableFixed.value.style.width = `${tableBody.value.clientWidth}px`
+  }
+
+  // on window resize
+  onMounted(() => {
+    window.addEventListener('resize', syncTablePosition)
+  })
+
+  // on component unmount
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', syncTablePosition)
+  })
+
+  // watch fixedHeader and syncTablePosition
+  // watch(() => props.fixedHeader, () => {
+  //   syncTablePosition()
+  // })
 
   const classes = computed(() => {
     return {
