@@ -33,7 +33,6 @@
               />
             </td>
           </template>
-
           <td
             v-if="showActionsMenu"
             class="ep-table__actions-menu"
@@ -63,7 +62,7 @@
 <script setup>
   import { computed, ref } from 'vue'
   import EpTableCell from './EpTableCell.vue'
-  import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
+  import useCalculatedHeight from '../../composables/useCalculatedHeight'
 
   defineOptions({
     name: 'EpTable'
@@ -120,15 +119,14 @@
     },
   })
 
-  const emit = defineEmits(['row-click', 'container-scroll'])
-
-  const onRowClick = (row) => {
-    if (props.selectable) emit('row-click', row)
-  }
+  const visibleColumns = computed(() => {
+    return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
+  })
 
   const tableContainer = ref(null)
-  const tableBody = ref(null)
-  const tableFixed = ref(null)
+  // not convinced I don't need these
+  // const tableBody = ref(null)
+  // const tableFixed = ref(null)
 
   const { containerHeight } = useCalculatedHeight(tableContainer, props.calculateHeightOffset)
 
@@ -136,21 +134,6 @@
     ...(props.calculateHeight && containerHeight.value),
     ...props.styles
   }))
-
-  const onScroll = () => {
-    console.log('EpTable:onScroll')
-    emit('container-scroll', tableContainer.value.scrollLeft)
-  }
-
-  // on window resize
-  // onMounted(() => {
-  //   window.addEventListener('resize', onScroll)
-  // })
-
-  // // on component unmount
-  // onBeforeUnmount(() => {
-  //   window.removeEventListener('resize', onScroll)
-  // })
 
   const classes = computed(() => {
     return {
@@ -162,17 +145,15 @@
     }
   })
 
-  const visibleColumns = computed(() => {
-    return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
-  })
-</script>
+  const emit = defineEmits(['row-click', 'container-scroll'])
 
-<style lang="scss">
-  .ep-table--fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 100%;
+  const onRowClick = (row) => {
+    if (!props.selectable) return
+    emit('row-click', row)
   }
-</style>
+
+  const onScroll = () => {
+    if (!props.fixedHeader) return
+    emit('container-scroll', tableContainer.value.scrollLeft)
+  }
+</script>

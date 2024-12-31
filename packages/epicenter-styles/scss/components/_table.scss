@@ -31,15 +31,6 @@
     user-select: none;
     color: var(--text-color--loud);
 
-    // &.fixed {
-    //   position: fixed;
-    //   top: var(--ep-table-fixed-top);
-    //   z-index: 1;
-    //   display: table;
-    //   th {
-    //     display: table-cell;
-    //   }
-    // }
     th {
       text-align: left;
       background: var(--ep-table-header-bg-color);
@@ -88,13 +79,6 @@
         }
       }
     }
-
-    // &.fixed {
-    //   display: table;
-    //   th {
-    //     display: table-cell;
-    //   }
-    // }
   }
 
   &--bordered {
@@ -148,6 +132,14 @@
         z-index: var(--z-index--sticky);
       }
     }
+  }
+
+  &--fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
   }
 
   &--striped {

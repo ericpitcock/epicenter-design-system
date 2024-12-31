@@ -4614,6 +4614,13 @@ select.ep-select--disabled {
   top: var(--ep-table-sticky-top);
   z-index: var(--z-index--sticky);
 }
+.ep-table--fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+}
 .ep-table--striped tbody tr:nth-child(even) {
   background-color: var(--ep-table-row-stripe-color);
 }
