@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import useExclude from './useExclude.js'
 
-export default function useColumnFilters(columns, disabledColumns, data) {
+export default function useColumnFilters(columns, data, disabledColumns) {
   const disabledColumnsRef = ref(disabledColumns)
 
   const columnFilters = computed(() => {
