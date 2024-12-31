@@ -93,7 +93,7 @@ export const Fixed = (args) => ({
   },
   setup() {
     const tableColumnsRef = ref(columns)
-    const tableDataRef = ref(fakeArray(100))
+    const tableDataRef = ref(fakeArray(20))
 
     // use sorting
     const {
@@ -135,7 +135,24 @@ export const Fixed = (args) => ({
       }))
     }
 
+    const tableComponent = ref(null)
+    const tableContainer = ref(null)
+    const tableFixed = ref(null)
+    const tableBody = ref(null)
+
+    const syncTablePosition = (payload) => {
+      console.log('syncTablePosition', payload)
+      console.log('tableComponent.value.$refs', tableComponent.value.$refs)
+
+
+      tableFixed.value.style.transform = `translateX(-${tableContainer.value.scrollLeft}px)`
+      tableFixed.value.style.width = `${tableBody.value.clientWidth}px`
+    }
+
     onMounted(() => {
+      tableContainer.value = tableComponent.value.$refs.tableContainer
+      tableFixed.value = tableComponent.value.$refs.tableFixed
+      tableBody.value = tableComponent.value.$refs.tableBody
       window.addEventListener('scroll', updateCellWidths)
       window.addEventListener('resize', updateCellWidths)
     })
@@ -149,6 +166,7 @@ export const Fixed = (args) => ({
       onFilterToggle(event, id)
       nextTick(() => {
         updateCellWidths()
+        syncTablePosition()
       })
     }
 
@@ -160,7 +178,7 @@ export const Fixed = (args) => ({
       onSortChange,
       sortColumn,
       sortOrder,
-      // tableComponent,
+      tableComponent,
       columnFilters,
       visibleColumns,
       visibleData,
@@ -168,6 +186,7 @@ export const Fixed = (args) => ({
       cellWidths,
       tableHead,
       onFilterToggleLocal,
+      syncTablePosition,
     }
   },
   template: `
@@ -189,6 +208,7 @@ export const Fixed = (args) => ({
         :data="visibleData"
         v-bind="args"
         :style="styles"
+        @container-scroll="syncTablePosition"
       >
         <template #thead="{ visibleColumns, showActionsMenu }">
           <ep-table-head

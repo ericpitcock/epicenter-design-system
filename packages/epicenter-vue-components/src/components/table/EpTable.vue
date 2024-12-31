@@ -120,7 +120,7 @@
     },
   })
 
-  const emit = defineEmits(['row-click'])
+  const emit = defineEmits(['row-click', 'container-scroll'])
 
   const onRowClick = (row) => {
     if (props.selectable) emit('row-click', row)
@@ -138,12 +138,14 @@
   }))
 
   const syncTablePosition = () => {
-    console.log('syncTablePosition')
+    console.log('syncTablePosition emit')
+    emit('container-scroll', tableContainer.value.scrollLeft)
+    // console.log('syncTablePosition')
     // if (!props.fixedHeader) return
-    // use styles
-    tableFixed.value.style.transform = `translateX(-${tableContainer.value.scrollLeft}px)`
-    // sync width of tableFixed with tableBody
-    tableFixed.value.style.width = `${tableBody.value.clientWidth}px`
+    // // use styles
+    // tableFixed.value.style.transform = `translateX(-${tableContainer.value.scrollLeft}px)`
+    // // sync width of tableFixed with tableBody
+    // tableFixed.value.style.width = `${tableBody.value.clientWidth}px`
   }
 
   // on window resize
