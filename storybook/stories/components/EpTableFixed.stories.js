@@ -123,7 +123,7 @@ export const TableFixed = (args) => ({
     const cellWidths = ref([])
     const tableHead = ref(null)
 
-    const onScroll = () => {
+    const updateCellWidths = () => {
       args.fixedHeader = window.scrollY > 100
 
       if (!args.fixedHeader) return
@@ -146,19 +146,18 @@ export const TableFixed = (args) => ({
     }
 
     onMounted(() => {
-      window.addEventListener('scroll', onScroll)
+      window.addEventListener('scroll', updateCellWidths)
     })
 
     onBeforeUnmount(() => {
-      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('scroll', updateCellWidths)
     })
 
     const onFilterToggleLocal = (event, id) => {
       onFilterToggle(event, id)
       nextTick(() => {
-        onScroll()
+        updateCellWidths()
       })
-      console.log('onFilterToggleLocal')
     }
 
     return {
