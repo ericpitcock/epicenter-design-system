@@ -13,7 +13,7 @@ import {
   // useSearch
 } from '@/composables/index.js'
 import { columns, fakeArray } from '../../data/tableData'
-import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { nextTick, onMounted, onBeforeUnmount, ref } from 'vue'
 
 export default {
   title: 'Components/Table Fixed',
@@ -120,24 +120,15 @@ export const TableFixed = (args) => ({
       '--ep-table-fixed-top': '0',
     })
 
-    // const fixedHeaderVisible = ref(false)
     const cellWidths = ref([])
-
     const tableHead = ref(null)
 
     const onScroll = () => {
-      // console.log('scrolling')
-      // console log scrol top of window
-      // console.log(window.scrollY)
-      // when scroll top is greater than 100, fixedHeaderVisible is true
       args.fixedHeader = window.scrollY > 100
 
       if (!args.fixedHeader) return
-      // sync cell width with fixed header
-      const tableHeadCells = tableHead.value.$refs.tableHeadd.querySelectorAll('th')
-      // const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
 
-      // console.log('tableHeadCells', tableHeadCells)
+      const tableHeadCells = tableHead.value.$refs.tableHeadd.querySelectorAll('th')
 
       const newCellWidths = []
 
@@ -148,12 +139,8 @@ export const TableFixed = (args) => ({
       }
 
       tableHeadCells.forEach((cell, index) => {
-        // if (computeCellWidths(cell) > parseFloat(newCellWidths[index].width)) {
         newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
-        // }
       })
-
-      // console.log('newCellWidths', newCellWidths)
 
       cellWidths.value = newCellWidths
     }
@@ -168,7 +155,9 @@ export const TableFixed = (args) => ({
 
     const onFilterToggleLocal = (event, id) => {
       onFilterToggle(event, id)
-      onScroll()
+      nextTick(() => {
+        onScroll()
+      })
       console.log('onFilterToggleLocal')
     }
 
