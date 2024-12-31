@@ -166,67 +166,6 @@ export const TableFixed = (args) => ({
       window.removeEventListener('scroll', onScroll)
     })
 
-
-
-    // onMounted(() => {
-    //   window.addEventListener('scroll', () => {
-    //     const table = tableComponent.value.$refs.tableContainer
-    //     const tableY = table.getBoundingClientRect().top
-
-    //     // const tableHead = tableComponent.value.$refs.tableHead
-
-    //     console.log('tableY', tableY)
-
-    //     if (!args.fixedHeader && tableY < 0) {
-    //       args.fixedHeader = true
-    //       table.style.paddingTop = '44.5px'
-    //       window.scrollBy(0, 44.5)
-    //     }
-    //     if (args.fixedHeader && tableY >= 0) {
-    //       args.fixedHeader = false
-    //       table.style.paddingTop = '0'
-    //     }
-    //   })
-    // })
-
-    // const debounce = (func, delay) => {
-    //   let timer
-    //   return function(...args) {
-    //     clearTimeout(timer)
-    //     timer = setTimeout(() => {
-    //       func.apply(this, args)
-    //     }, delay)
-    //   }
-    // }
-
-    // const tableComponent = ref(null)
-    // const tableContainer = ref(null)
-
-    // const handleScroll = () => {
-    //   requestAnimationFrame(() => {
-    //     // const table = tableComponent.value.$refs.tableContainer
-    //     const tableY = tableContainer.value.getBoundingClientRect().top
-    //     // console.log('tableY', tableY)
-
-    //     if (!args.fixedHeader && tableY < 0) {
-    //       args.fixedHeader = true
-    //       tableContainer.value.style.paddingTop = '44.5px'
-    //       // window.scrollBy(0, 44.5)
-    //     }
-    //     if (args.fixedHeader && tableY > 0) {
-    //       args.fixedHeader = false
-    //       tableContainer.value.style.paddingTop = '0'
-    //     }
-    //   })
-    // }
-
-    // const debouncedHandleScroll = debounce(handleScroll, 0) // Adjust the debounce delay as needed
-
-    // onMounted(() => {
-    //   tableContainer.value = tableComponent.value.$refs.tableContainer
-    //   window.addEventListener('scroll', debouncedHandleScroll)
-    // })
-
     const onFilterToggleLocal = (event, id) => {
       onFilterToggle(event, id)
       onScroll()

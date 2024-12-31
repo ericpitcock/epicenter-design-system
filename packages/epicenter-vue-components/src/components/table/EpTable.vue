@@ -59,16 +59,7 @@
 </template>
 
 <script setup>
-  import {
-    computed,
-    ref,
-    nextTick,
-    onBeforeUnmount,
-    onMounted,
-    useTemplateRef,
-    watch
-  } from 'vue'
-  // import EpTableHead from './EpTableHead.vue'
+  import { computed, ref } from 'vue'
   import EpTableCell from './EpTableCell.vue'
   import useCalculatedHeight from '../../composables/useCalculatedHeight.js'
 
@@ -154,128 +145,9 @@
     }
   })
 
-  // const fixedHeaderVisible = ref(false)
-  // const cellWidths = ref([])
-
-  // const onScroll = () => {
-  //   // console.log('scrolling')
-  //   // console log scrol top of window
-  //   // console.log(window.scrollY)
-  //   // when scroll top is greater than 100, fixedHeaderVisible is true
-  //   fixedHeaderVisible.value = window.scrollY > 100
-
-  //   if (!fixedHeaderVisible.value) return
-  //   // sync cell width with fixed header
-  //   console.log(tableHeadRef.value)
-  //   const tableHeadCells = tableHeadRef.value.querySelectorAll('th')
-  //   // const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
-
-  //   const newCellWidths = []
-
-  //   const computeCellWidths = (cell) => {
-  //     const width = cell.getBoundingClientRect().width
-
-  //     return width
-  //   }
-
-  //   tableHeadCells.forEach((cell, index) => {
-  //     // if (computeCellWidths(cell) > parseFloat(newCellWidths[index].width)) {
-  //     newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
-  //     // }
-  //   })
-
-  //   cellWidths.value = newCellWidths
-  // }
-
-  // const updateLeftPosition = () => {
-  //   if (!props.fixedHeader) return
-
-  //   requestAnimationFrame(() => {
-  //     const computedStyle = window.getComputedStyle(tableContainer.value)
-  //     const paddingLeft = parseFloat(computedStyle.paddingLeft)
-
-  //     // Calculate the new left position considering the padding
-  //     const tableContainerLeft = -tableContainer.value.scrollLeft + paddingLeft + tableContainer.value.getBoundingClientRect().left
-
-  //     tableHead.value.style.left = `${tableContainerLeft}px`
-  //   })
-  // }
-
-  // defineExpose({
-  //   updateLeftPosition
-  // })
-
   const visibleColumns = computed(() => {
     return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
   })
-
-
-
-  // const updateCellWidths = () => {
-  //   if (!props.fixedHeader) return
-
-  //   const tableHeadCells = tableHead.value.querySelectorAll('th')
-  //   const tableBodyCells = tableBody.value.querySelectorAll('tr:first-child td')
-
-  //   const newCellWidths = []
-
-  //   const computeCellWidths = (cell) => {
-  //     const width = cell.getBoundingClientRect().width
-
-  //     return width
-  //   }
-
-  //   tableHeadCells.forEach((cell, index) => {
-  //     newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
-  //   })
-
-  //   tableBodyCells.forEach((cell, index) => {
-  //     if (computeCellWidths(cell) > parseFloat(newCellWidths[index].width)) {
-  //       newCellWidths[index] = { width: `${computeCellWidths(cell)}px` }
-  //     }
-  //   })
-
-  //   cellWidths.value = newCellWidths
-  // }
-
-  // watch(() => props.fixedHeader, () => {
-  //   updateCellWidths()
-  // })
-
-  // watch(() => props.data, () => {
-  //   nextTick(() => {
-  //     updateCellWidths()
-  //   })
-  // })
-
-  // const onResize = () => {
-  //   updateCellWidths()
-  //   updateLeftPosition()
-  // }
-
-  // onMounted(() => {
-  //   nextTick(() => {
-  //     updateCellWidths()
-  //   })
-  //   window.addEventListener('resize', onResize)
-  // })
-
-  // onBeforeUnmount(() => {
-  //   window.removeEventListener('resize', onResize)
-  // })
-
-  // add scroll event listener to window
-  // onMounted(() => {
-  //   if (props.fixedHeader) {
-  //     window.addEventListener('scroll', onScroll)
-  //   }
-  // })
-
-  // onBeforeUnmount(() => {
-  //   if (props.fixedHeader) {
-  //     window.removeEventListener('scroll', onScroll)
-  //   }
-  // })
 </script>
 
 <style lang="scss">
