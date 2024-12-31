@@ -4211,8 +4211,10 @@ input.ep-input--disabled::placeholder {
 }
 .ep-menu__section {
   padding: var(--ep-menu-section-padding);
-  margin-top: var(--ep-menu-section-margin-top);
   user-select: none;
+}
+.ep-menu__section:not(:first-of-type) {
+  margin-top: var(--ep-menu-section-margin-top);
 }
 .ep-menu__item {
   position: relative;
