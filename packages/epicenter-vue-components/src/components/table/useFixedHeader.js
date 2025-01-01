@@ -7,7 +7,6 @@ export default function useFixedHeader(initialFixedHeader = false, fixedHeaderOf
   const tableFixed = ref(null)
   const tableBody = ref(null)
   const fixedHeader = ref(initialFixedHeader)
-
   const cellWidths = ref([])
   const tableHead = ref(null)
 
@@ -30,13 +29,11 @@ export default function useFixedHeader(initialFixedHeader = false, fixedHeaderOf
   }
 
   const updateAndSync = useDebounceFn(() => {
-    console.log('updateAndSync')
     updateCellWidths()
     syncTablePosition()
   }, 0, { maxWait: 100 })
 
   onMounted(() => {
-    console.log('onMounted')
     tableContainer.value = tableComponent.value.$refs.tableContainer
     tableFixed.value = tableComponent.value.$refs.tableFixed
     tableBody.value = tableComponent.value.$refs.tableBody
@@ -51,12 +48,12 @@ export default function useFixedHeader(initialFixedHeader = false, fixedHeaderOf
   })
 
   return {
-    fixedHeader, // yes
-    cellWidths, // yes
+    fixedHeader,
+    cellWidths,
     tableComponent,
     tableHead,
     updateCellWidths,
     syncTablePosition,
-    updateAndSync, // yes
+    updateAndSync,
   }
 }

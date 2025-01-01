@@ -4,18 +4,9 @@ import EpTableHead from '@/components/table/EpTableHead.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
 import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
-import {
-  // useExclude,
-  useColumnFilters,
-  // useDataFilters,
-  useSorting,
-  useFixedHeader,
-  // usePagination,
-  // useSearch
-} from '@/composables/index.js'
-// import { useDebounceFn } from '@vueuse/core'
+import { useColumnFilters, useSorting, useFixedHeader } from '@/composables/index.js'
 import { columns, fakeArray } from '../../data/tableData'
-import { nextTick, onMounted, onBeforeUnmount, ref } from 'vue'
+import { nextTick, ref } from 'vue'
 
 export default {
   title: 'Components/Table/Fixed',
@@ -97,7 +88,6 @@ export const Fixed = (args) => ({
     const tableColumnsRef = ref(columns)
     const tableDataRef = ref(fakeArray(20))
 
-    // use sorting
     const {
       sortedData,
       onSortChange,
@@ -122,50 +112,6 @@ export const Fixed = (args) => ({
       '--ep-table-fixed-top': '0',
     })
 
-    // const cellWidths = ref([])
-    // const tableHead = ref(null)
-
-    // const updateCellWidths = () => {
-    //   args.fixedHeader = window.scrollY > 100
-    //   if (!args.fixedHeader) return
-
-    //   const tableHeadCells = tableHead.value?.$refs.tableHeadd.querySelectorAll('th')
-    //   if (!tableHeadCells) return
-
-    //   cellWidths.value = Array.from(tableHeadCells).map((cell) => ({
-    //     width: `${cell.getBoundingClientRect().width}px`,
-    //   }))
-    // }
-
-    // const tableComponent = ref(null)
-    // const tableContainer = ref(null)
-    // const tableFixed = ref(null)
-    // const tableBody = ref(null)
-
-    // const syncTablePosition = () => {
-    //   // leftPosition is tableContainer.value.scrollLeft
-    //   tableFixed.value.style.transform = `translateX(-${tableContainer.value.scrollLeft}px)`
-    //   tableFixed.value.style.width = `${tableBody.value.clientWidth}px`
-    // }
-
-    // const updateAndSync = useDebounceFn(() => {
-    //   updateCellWidths()
-    //   syncTablePosition()
-    // }, 100, { maxWait: 100 })
-
-    // onMounted(() => {
-    //   tableContainer.value = tableComponent.value.$refs.tableContainer
-    //   tableFixed.value = tableComponent.value.$refs.tableFixed
-    //   tableBody.value = tableComponent.value.$refs.tableBody
-    //   window.addEventListener('scroll', updateAndSync)
-    //   window.addEventListener('resize', updateAndSync)
-    // })
-
-    // onBeforeUnmount(() => {
-    //   window.removeEventListener('scroll', updateAndSync)
-    //   window.removeEventListener('resize', updateAndSync)
-    // })
-
     const {
       fixedHeader,
       cellWidths,
@@ -174,8 +120,6 @@ export const Fixed = (args) => ({
       syncTablePosition,
       updateAndSync,
     } = useFixedHeader(args.fixedHeader, 100)
-
-    // args.fixedHeader = fixedHeader.value
 
     const onFilterToggleLocal = (event, id) => {
       onFilterToggle(event, id)
