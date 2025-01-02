@@ -67,12 +67,12 @@ export default function useFixedHeader(
     console.log('scrollTarget', scrollTarget)
     updateAndSync()
     scrollTarget.addEventListener('scroll', updateAndSync)
-    scrollTarget.addEventListener('resize', updateAndSync)
+    window.addEventListener('resize', updateAndSync)
   })
 
   onBeforeUnmount(() => {
     scrollTarget.removeEventListener('scroll', updateAndSync)
-    scrollTarget.removeEventListener('resize', updateAndSync)
+    window.removeEventListener('resize', updateAndSync)
   })
 
   return {
