@@ -26,9 +26,7 @@ export default function useFixedHeader(
 
   const updateCellWidths = () => {
     fixedHeader.value = getScrollTop() > fixedHeaderOffset
-    console.log(fixedHeader.value)
     if (!fixedHeader.value) return
-
 
     const tableHeadCells = tableHead.value?.$refs.tableHeadd.querySelectorAll('th')
     if (!tableHeadCells) return
@@ -49,22 +47,19 @@ export default function useFixedHeader(
     tableFixed.value.style.width = `${tableBody.value.clientWidth}px`
     // left - match the tableBody left position
     tableFixed.value.style.left = `${tableBody.value.getBoundingClientRect().left}px`
-    console.log('tableContainer.value.scrollLeft', tableContainer.value.scrollLeft)
     // tableFixed.value.style.transform = `translateX(-${tableContainer.value.scrollLeft}px)`
   }
 
-  const updateAndSync = useDebounceFn(() => {
-    console.log('running updateAndSync')
+  const updateAndSync = () => {
     updateCellWidths()
     syncTablePosition()
-  }, 0, { maxWait: 100 })
+  }
 
   onMounted(() => {
     tableContainer.value = tableComponent.value.$refs.tableContainer
     tableFixed.value = tableComponent.value.$refs.tableFixed
     tableBody.value = tableComponent.value.$refs.tableBody
 
-    console.log('scrollTarget', scrollTarget)
     updateAndSync()
     scrollTarget.addEventListener('scroll', updateAndSync)
     window.addEventListener('resize', updateAndSync)
