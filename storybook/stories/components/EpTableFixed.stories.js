@@ -119,7 +119,7 @@ export const Fixed = (args) => ({
       tableHead,
       syncTablePosition,
       updateAndSync,
-    } = useFixedHeader(args.fixedHeader, 100)
+    } = useFixedHeader(window, args.fixedHeader, 100, 0)
 
     const onFilterToggleLocal = (event, id) => {
       onFilterToggle(event, id)

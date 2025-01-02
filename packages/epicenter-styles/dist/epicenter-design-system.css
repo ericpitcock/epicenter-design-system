@@ -4615,6 +4615,7 @@ select.ep-select--disabled {
   z-index: var(--z-index--sticky);
 }
 .ep-table--fixed-header {
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
