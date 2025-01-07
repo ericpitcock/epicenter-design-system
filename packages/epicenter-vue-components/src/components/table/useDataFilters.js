@@ -7,7 +7,8 @@ export default function useDataFilters(
   columnsToFilter,
   disabledFilters = [],
   customSortOrder = {},
-  showCount = false
+  showCount = false,
+  columnRangeCategories = {},
 ) {
   const filters = ref({})
 
@@ -16,9 +17,18 @@ export default function useDataFilters(
 
     // Extract unique values for specified columns
     columns.value.forEach(column => {
-      if (columnsToFilter.includes(column.key)) {
-        uniqueValues[column.key] = Array.from(
-          new Set(data.value.map(user => getColumnValue(user, column.key))))
+      const columnKey = column.key
+
+      if (columnsToFilter.includes(columnKey)) {
+        if (columnRangeCategories[columnKey]) {
+          // Use ranges for category mapping
+          uniqueValues[columnKey] = Object.keys(columnRangeCategories[columnKey])
+        } else {
+          // Use raw unique values otherwise
+          uniqueValues[columnKey] = Array.from(
+            new Set(data.value.map(user => getColumnValue(user, columnKey)))
+          )
+        }
       }
     })
 
@@ -37,11 +47,16 @@ export default function useDataFilters(
 
     const generatedFilters = {}
 
-    // Generate filter objects based on unique values
+    // Generate filter objects based on unique values or ranges
     for (const key in uniqueValues) {
       const generateLabel = (value) => {
         if (showCount) {
-          return `${value} (${data.value.filter(user => getColumnValue(user, key) === value).length})`
+          const count = columnRangeCategories[key]
+            ? data.value.filter(user =>
+              columnRangeCategories[key][value](getColumnValue(user, key))
+            ).length
+            : data.value.filter(user => getColumnValue(user, key) === value).length
+          return `${value} (${count})`
         } else {
           return value
         }
@@ -71,8 +86,14 @@ export default function useDataFilters(
     for (const key in filters.value) {
       filtered = filtered.filter(user => {
         const value = getColumnValue(user, key)
-        const checked = filters.value[key].find(filter => filter.value === value).checked
-        return checked
+        const isChecked = filters.value[key].some(filter => {
+          if (columnRangeCategories[key]) {
+            return filter.checked && columnRangeCategories[key][filter.value](value)
+          } else {
+            return filter.checked && filter.value === value
+          }
+        })
+        return isChecked
       })
     }
 
