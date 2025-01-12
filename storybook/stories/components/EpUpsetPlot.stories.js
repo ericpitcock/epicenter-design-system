@@ -1,10 +1,10 @@
 import EpUpsetPlot from '@/components/upset-plot/EpUpsetPlot.vue'
-// import { centeredBg } from '../../helpers/decorators.js'
+import { paddedBg } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Upset Plot',
   component: EpUpsetPlot,
-  // decorators: [centeredBg],
+  decorators: [paddedBg],
   argTypes: {
   }
 }

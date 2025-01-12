@@ -12,14 +12,25 @@
       <div
         v-for="(adapter, index) in adapters"
         :key="index"
-        class="ep-upset-plot-matrix__row"
+        class="ep-upset-plot-adapters__row"
       >
         {{ adapter }}
       </div>
     </div>
-    <div class="
-        ep-upset-plot-matrix-plot">
-      this is the plot
+    <div class="ep-upset-plot-matrix-plot">
+      <div
+        v-for="total in chartTotals"
+        :key="total"
+        class="ep-upset-plot-matrix-plot__row"
+      >
+        <div
+          v-for="(n, index) in adapters"
+          :key="index"
+          class="ep-upset-plot-matrix-plot__cell"
+        >
+          <div class="plot-indicator" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -58,13 +69,15 @@
 
 <style lang="scss" scoped>
   .ep-upset-plot-container {
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
-    background: red;
+    background: var(--interface-surface);
     padding: 30px;
+    border: 1px solid var(--border-color);
+    user-select: none;
   }
 
   .ep-upset-plot-chart {
@@ -76,13 +89,14 @@
     align-items: flex-end;
     gap: 2rem;
     height: 20rem;
-    background: blue;
+    padding-left: 1rem;
+    border-left: 1px solid var(--border-color);
 
     &__column {
       width: 3rem;
       max-width: 3rem;
       height: 100%;
-      background-color: #000;
+      background: var(--text-color);
     }
   }
 
@@ -92,12 +106,16 @@
     grid-row: 2;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    background: green;
 
+    // gap: 2rem;
+    // background: green;
     &__row {
-      height: 30px;
-      background-color: #000;
+      height: 3rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 1rem;
+      border-bottom: 1px solid var(--border-color);
     }
   }
 
@@ -105,6 +123,32 @@
     // place in second column second row
     grid-column: 2;
     grid-row: 2;
-    background: yellow;
+    display: flex;
+    // align to bottom
+    gap: 2rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--border-color);
+
+    &__row {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__cell {
+      width: 3rem;
+      height: 3rem;
+      // background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+
+      .plot-indicator {
+        width: 0.8rem;
+        height: 0.8rem;
+        background: var(--text-color);
+        border-radius: 50%;
+      }
+    }
   }
 </style>
