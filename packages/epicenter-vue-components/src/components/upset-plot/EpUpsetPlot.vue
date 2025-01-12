@@ -19,13 +19,13 @@
     </div>
     <div class="ep-upset-plot-matrix-plot">
       <div
-        v-for="total in chartTotals"
-        :key="total"
+        v-for="(row, index) in adapters"
+        :key="index"
         class="ep-upset-plot-matrix-plot__row"
       >
         <div
-          v-for="(n, index) in adapters"
-          :key="index"
+          v-for="(cell, cellIndex) in chartTotals"
+          :key="cellIndex"
           class="ep-upset-plot-matrix-plot__cell"
         >
           <div class="plot-indicator" />
@@ -90,6 +90,7 @@
     gap: 2rem;
     height: 20rem;
     padding-left: 1rem;
+    border-bottom: 1px solid var(--border-color);
     border-left: 1px solid var(--border-color);
 
     &__column {
@@ -110,7 +111,7 @@
     // gap: 2rem;
     // background: green;
     &__row {
-      height: 3rem;
+      height: 3.1rem;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -124,14 +125,16 @@
     grid-column: 2;
     grid-row: 2;
     display: flex;
+    flex-direction: column;
     // align to bottom
-    gap: 2rem;
+    // gap: 2rem;
     padding-left: 1rem;
     border-left: 1px solid var(--border-color);
 
     &__row {
       display: flex;
-      flex-direction: column;
+      gap: 2rem;
+      border-bottom: 1px solid var(--border-color);
     }
 
     &__cell {
@@ -141,7 +144,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border-bottom: 1px solid var(--border-color);
 
       .plot-indicator {
         width: 0.8rem;
