@@ -144,10 +144,18 @@ export const Table = (args) => ({
     } = useDataFilters(
       includedColumns,
       sortedData,
-      ['severity', 'type'],
+      ['severity', 'type', 'total_elevation_gain'],
       ['Low'],
       { severity: ['Critical', 'High', 'Medium', 'Low'] },
-      true
+      true,
+      {
+        total_elevation_gain: {
+          low: value => value === 0 || (value > 0 && value < 100),
+          medium: value => value >= 300 && value < 600,
+          high: value => value >= 600 && value < 700,
+          'Hella Steep': value => value >= 700,
+        }
+      }
     )
 
     // use column filters

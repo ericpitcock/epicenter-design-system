@@ -14,7 +14,6 @@
         </router-link>
       </li>
     </ol> -->
-    {{ fullPath }}
   </nav>
 </template>
 
@@ -22,18 +21,6 @@
   defineOptions({
     name: 'EpBreadcrumb'
   })
-
-  import { computed } from 'vue'
-  import { useRoute, useRouter } from 'vue-router'
-
-  const route = useRoute()
-  // console.log('route.matched', route.matched[0].meta.breadcrumb)
-  console.log('route.matched', route.meta)
-  // eslint-disable-next-line no-unused-vars
-  const router = useRouter()
-
-  // full path of the current route
-  const fullPath = computed(() => route.meta.breadcrumb)
 
   // use fullPath to generate breadcrumbs
   // if route is / then breadcrumbs should display initial page

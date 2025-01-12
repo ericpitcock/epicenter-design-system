@@ -45,7 +45,6 @@
         </tr>
       </tbody>
     </table>
-    <!-- table for fixed header -->
     <table
       v-show="fixedHeader"
       ref="tableFixed"

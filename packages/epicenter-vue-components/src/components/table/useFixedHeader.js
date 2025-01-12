@@ -1,10 +1,9 @@
 import { ref, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
-import { useDebounceFn } from '@vueuse/core'
 
 export default function useFixedHeader(
   scrollElement = window,
   initialFixedHeader = false,
-  fixedHeaderOffset = 0,
+  initialFixedHeaderOffset = 0,
   fixedTop = 0,
 ) {
   const tableComponent = useTemplateRef('tableComponent')
@@ -12,6 +11,7 @@ export default function useFixedHeader(
   const tableFixed = ref(null)
   const tableBody = ref(null)
   const fixedHeader = ref(initialFixedHeader)
+  const fixedHeaderOffset = ref(initialFixedHeaderOffset)
   const cellWidths = ref([])
   const tableHead = ref(null)
   const scrollTarget = scrollElement === window ? window : scrollElement
@@ -25,7 +25,7 @@ export default function useFixedHeader(
   }
 
   const updateCellWidths = () => {
-    fixedHeader.value = getScrollTop() > fixedHeaderOffset
+    fixedHeader.value = getScrollTop() > fixedHeaderOffset.value
     if (!fixedHeader.value) return
 
     const tableHeadCells = tableHead.value?.$refs.tableHeadd.querySelectorAll('th')
@@ -72,6 +72,7 @@ export default function useFixedHeader(
 
   return {
     fixedHeader,
+    fixedHeaderOffset,
     cellWidths,
     tableComponent,
     tableHead,

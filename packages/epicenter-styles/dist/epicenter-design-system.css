@@ -4777,7 +4777,14 @@ select.ep-select--disabled {
   border-color: var(--ep-textarea-focus-border-color);
 }
 
-.toggle {
+.ep-toggle {
+  --ep-toggle-track-bg-color: var(--interface-overlay);
+  --ep-toggle-track-border-color: var(--border-color);
+  --ep-toggle-track-active-bg-color: green;
+  --ep-toggle-track-active-border-color: green;
+  --ep-toggle-thumb-bg-color: var(--text-color);
+  --ep-toggle-thumb-active-bg-color: white;
+  --ep-toggle-thumb-disabled-bg-color: var(--border-color);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -4788,57 +4795,58 @@ select.ep-select--disabled {
   user-select: none;
   transition: background-color 0.1s ease;
 }
-.toggle__track {
+.ep-toggle__track {
   position: relative;
   width: 3.6rem;
   height: 100%;
   border-radius: 2rem;
-  background-color: var(--toggle-track);
-  border: 1px solid var(--toggle-track-border);
+  background-color: var(--ep-toggle-track-bg-color);
+  border: 1px solid var(--ep-toggle-track-border-color);
   transition: background-color 0.1s ease;
 }
-.toggle__thumb {
+.ep-toggle__thumb {
   position: absolute;
   top: 1px;
   left: 1px;
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
-  background-color: var(--toggle-thumb);
+  background-color: var(--ep-toggle-thumb-bg-color);
   transition: transform 0.2s ease;
 }
-.toggle--active .toggle__track {
-  background-color: var(--toggle-track--active);
-  border-color: var(--toggle-track-border--active);
+.ep-toggle--active .ep-toggle__track {
+  background-color: var(--ep-toggle-track-active-bg-color);
+  border-color: var(--ep-toggle-track-active-border-color);
 }
-.toggle--active .toggle__thumb {
+.ep-toggle--active .ep-toggle__thumb {
+  background-color: var(--ep-toggle-thumb-active-bg-color);
   transform: translateX(1.6rem);
 }
-.toggle__label {
+.ep-toggle__label {
   font-size: var(--font-size--small);
 }
-.toggle--disabled {
+.ep-toggle--disabled {
   cursor: not-allowed;
 }
-.toggle--disabled .toggle__track {
+.ep-toggle--disabled .toggle__track {
   background-color: transparent;
 }
-.toggle--disabled .toggle__thumb {
-  background-color: var(--toggle-thumb--disabled);
+.ep-toggle--disabled .toggle__thumb {
+  background-color: var(--ep-toggle-thumb-disabled-bg-color);
 }
 
 .ep-tooltip-wrapper {
+  --ep-tooltip-bg-color: var(--interface-overlay);
+  --ep-tooltip-text-color: var(--text-color);
+  --ep-tooltip-offset: 0.5rem;
   position: relative;
   display: inline-block;
 }
 
 .ep-tooltip {
   position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-5px);
-  background-color: #333;
-  color: white;
+  background-color: var(--ep-tooltip-bg-color);
+  color: var(--ep-tooltip-text-color);
   padding: 5px;
   border-radius: 4px;
   font-size: 12px;
@@ -4851,6 +4859,66 @@ select.ep-select--disabled {
 .ep-tooltip.ep-tooltip--visible {
   visibility: visible;
   opacity: 1;
+}
+.ep-tooltip.ep-tooltip--top-left {
+  bottom: 100%;
+  left: 0;
+  transform: translateY(calc(-1 * var(--ep-tooltip-offset)));
+}
+.ep-tooltip.ep-tooltip--top-center {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(calc(-1 * var(--ep-tooltip-offset)));
+}
+.ep-tooltip.ep-tooltip--top-right {
+  bottom: 100%;
+  right: 0;
+  transform: translateY(calc(-1 * var(--ep-tooltip-offset)));
+}
+.ep-tooltip.ep-tooltip--right-top {
+  top: 0;
+  left: 100%;
+  transform: translateX(var(--ep-tooltip-offset));
+}
+.ep-tooltip.ep-tooltip--right-center {
+  top: 50%;
+  left: 100%;
+  transform: translateX(var(--ep-tooltip-offset)) translateY(-50%);
+}
+.ep-tooltip.ep-tooltip--right-bottom {
+  bottom: 0;
+  left: 100%;
+  transform: translateX(var(--ep-tooltip-offset));
+}
+.ep-tooltip.ep-tooltip--bottom-left {
+  top: 100%;
+  left: 0;
+  transform: translateY(var(--ep-tooltip-offset));
+}
+.ep-tooltip.ep-tooltip--bottom-center {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(var(--ep-tooltip-offset));
+}
+.ep-tooltip.ep-tooltip--bottom-right {
+  top: 100%;
+  right: 0;
+  transform: translateY(var(--ep-tooltip-offset));
+}
+.ep-tooltip.ep-tooltip--left-top {
+  top: 0;
+  right: 100%;
+  transform: translateX(calc(-1 * var(--ep-tooltip-offset)));
+}
+.ep-tooltip.ep-tooltip--left-center {
+  top: 50%;
+  right: 100%;
+  transform: translateX(calc(-1 * var(--ep-tooltip-offset))) translateY(-50%);
+}
+.ep-tooltip.ep-tooltip--left-bottom {
+  bottom: 0;
+  right: 100%;
+  transform: translateX(calc(-1 * var(--ep-tooltip-offset)));
 }
 
 /*# sourceMappingURL=epicenter-design-system.css.map */

@@ -1,12 +1,12 @@
 <template>
   <div
-    :class="['toggle', classes]"
+    :class="['ep-toggle', classes]"
     @click="toggle"
   >
-    <div class="toggle__track">
-      <div class="toggle__thumb" />
+    <div class="ep-toggle__track">
+      <div class="ep-toggle__thumb" />
     </div>
-    <div class="toggle__label">
+    <div class="ep-toggle__label">
       {{ label }}
     </div>
   </div>
@@ -44,8 +44,8 @@
 
   const classes = computed(() => {
     return {
-      'toggle--active': active.value,
-      'toggle--disabled': props.disabled,
+      'ep-toggle--active': active.value,
+      'ep-toggle--disabled': props.disabled,
     }
   })
 

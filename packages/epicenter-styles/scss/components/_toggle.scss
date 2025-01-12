@@ -1,4 +1,11 @@
-.toggle {
+.ep-toggle {
+  --ep-toggle-track-bg-color: var(--interface-overlay);
+  --ep-toggle-track-border-color: var(--border-color);
+  --ep-toggle-track-active-bg-color: green;
+  --ep-toggle-track-active-border-color: green;
+  --ep-toggle-thumb-bg-color: var(--text-color);
+  --ep-toggle-thumb-active-bg-color: white;
+  --ep-toggle-thumb-disabled-bg-color: var(--border-color);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -14,8 +21,8 @@
     width: 3.6rem;
     height: 100%;
     border-radius: 2rem;
-    background-color: var(--toggle-track);
-    border: 1px solid var(--toggle-track-border);
+    background-color: var(--ep-toggle-track-bg-color);
+    border: 1px solid var(--ep-toggle-track-border-color);
     transition: background-color 0.1s ease;
   }
 
@@ -26,17 +33,18 @@
     width: 1.6rem;
     height: 1.6rem;
     border-radius: 50%;
-    background-color: var(--toggle-thumb);
+    background-color: var(--ep-toggle-thumb-bg-color);
     transition: transform 0.2s ease;
   }
 
   &--active {
-    .toggle__track {
-      background-color: var(--toggle-track--active);
-      border-color: var(--toggle-track-border--active);
+    .ep-toggle__track {
+      background-color: var(--ep-toggle-track-active-bg-color);
+      border-color: var(--ep-toggle-track-active-border-color);
     }
 
-    .toggle__thumb {
+    .ep-toggle__thumb {
+      background-color: var(--ep-toggle-thumb-active-bg-color);
       transform: translateX(1.6rem);
     }
   }
@@ -53,7 +61,7 @@
     }
 
     .toggle__thumb {
-      background-color: var(--toggle-thumb--disabled);
+      background-color: var(--ep-toggle-thumb-disabled-bg-color);
     }
   }
 }
