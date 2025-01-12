@@ -1,4 +1,6 @@
   .ep-tooltip-wrapper {
+    --ep-tooltip-bg-color: var(--interface-overlay);
+    --ep-tooltip-text-color: var(--text-color);
     position: relative;
     display: inline-block;
   }
@@ -8,8 +10,8 @@
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%) translateY(-5px);
-    background-color: #333;
-    color: white;
+    background-color: var(--ep-tooltip-bg-color);
+    color: var(--ep-tooltip-text-color);
     padding: 5px;
     border-radius: 4px;
     font-size: 12px;
