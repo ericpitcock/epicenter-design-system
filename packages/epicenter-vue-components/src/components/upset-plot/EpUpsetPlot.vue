@@ -69,6 +69,7 @@
 
 <style lang="scss" scoped>
   .ep-upset-plot-container {
+    --ep-upset-plot-row-stripe-color: hsl(0deg 0.84% 14.37%);
     // width: 100%;
     // height: 100%;
     display: grid;
@@ -98,7 +99,7 @@
       flex: 1;
       // max-width: 3rem;
       // height: 100%;
-      background: var(--text-color);
+      background: var(--primary-color-base);
     }
   }
 
@@ -119,6 +120,10 @@
       align-items: center;
       padding-right: 1rem;
       border-bottom: 1px solid var(--border-color);
+
+      &:nth-child(even) {
+        background: var(--ep-upset-plot-row-stripe-color);
+      }
     }
   }
 
@@ -130,14 +135,18 @@
     flex-direction: column;
     // align to bottom
     // gap: 2rem;
-    padding-left: 1rem;
+    // padding-left: 1rem;
     border-left: 1px solid var(--border-color);
 
     &__row {
-      background: red;
       display: flex;
       gap: 2rem;
       border-bottom: 1px solid var(--border-color);
+      padding-left: 1rem;
+
+      &:nth-child(even) {
+        background: var(--ep-upset-plot-row-stripe-color);
+      }
     }
 
     &__cell {
@@ -152,7 +161,7 @@
       .plot-indicator {
         width: 0.8rem;
         height: 0.8rem;
-        background: var(--text-color);
+        background: var(--interface-overlay--accent);
         border-radius: 50%;
       }
     }
