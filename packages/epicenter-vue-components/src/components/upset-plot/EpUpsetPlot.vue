@@ -14,7 +14,7 @@
         v-for="(intersection, index) in sortedIntersections"
         :key="index"
         class="ep-upset-plot-chart__column"
-        :style="{ height: `${intersection.total * 10}px` }"
+        :style="{ height: `${(intersection.total / maxTotal) * 100}%` }"
         :title="`Total: ${intersection.total}`"
       />
     </div>
@@ -91,7 +91,11 @@
     ],
   })
 
-  const sortDir = ref('asc')
+  const sortDir = ref('desc')
+
+  const maxTotal = computed(() => {
+    return Math.max(...data.value.intersections.map((intersection) => intersection.total))
+  })
 
   const sortedIntersections = computed(() => {
     return [...data.value.intersections].sort((a, b) => {
