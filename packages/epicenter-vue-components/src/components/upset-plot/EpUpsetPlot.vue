@@ -5,10 +5,17 @@
       <div
         v-for="(intersection, index) in sortedIntersections"
         :key="index"
-        class="ep-upset-plot-chart__column"
-        :style="{ height: `${(intersection.total / maxTotal) * 100}%` }"
-        :title="`Total: ${intersection.total}`"
-      />
+        class="ep-upset-plot-chart__column-container"
+      >
+        <div class="ep-upset-plot-chart__count">
+          {{ intersection.total }}
+        </div>
+        <div
+          class="ep-upset-plot-chart__column"
+          :style="{ height: `${(intersection.total / maxTotal) * 100}%` }"
+          :title="`Total: ${intersection.total}`"
+        />
+      </div>
     </div>
 
     <!-- Adapter Labels -->
@@ -122,8 +129,19 @@
     border-bottom: 1px solid var(--border-color);
     border-left: 1px solid var(--border-color);
 
-    &__column {
+    &__column-container {
       flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    &__column {
+      // flex: 1;
+      width: 100%;
       background: var(--primary-color-base);
     }
   }
