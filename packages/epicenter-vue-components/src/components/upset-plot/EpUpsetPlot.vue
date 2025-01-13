@@ -44,23 +44,62 @@
           v-for="(intersection, columnIndex) in sortedIntersections"
           :key="columnIndex"
           class="ep-upset-plot-matrix-plot__cell"
-          :class="{ highlighted: isCellHighlighted(adapterIndex, columnIndex) }"
         >
-          <div
-            :class="['plot-indicator', { 'plot-indicator--included': intersection.combination[adapterIndex] === '1' }]"
-            :title="`Adapter: ${adapters[adapterIndex]}, Coverage: ${intersection.combination[adapterIndex] === '1' ? 'Included' : 'Missing'}`"
-          />
+          <!-- eslint-disable-next-line vue/first-attribute-linebreak -->
+          <div :class="[
+            'plot-indicator',
+            {
+              'plot-indicator--missing': highlightType === 'missing' && intersection.combination[adapterIndex] === '0',
+              'plot-indicator--covered': highlightType === 'covered' && intersection.combination[adapterIndex] === '1',
+            },
+          ]" />
         </div>
       </div>
+    </div>
+
+    <!-- Toggle Highlight Type -->
+    <div class="ep-upset-plot-toggle">
+      Highlight:
+      <ep-radio
+        id="missing"
+        v-model="highlightType"
+        label="Missing"
+        name="missing"
+        value="missing"
+      />
+      <ep-radio
+        id="covered"
+        v-model="highlightType"
+        label="Covered"
+        name="covered"
+        value="covered"
+      />
+      <!-- <label>
+        <input
+          v-model="highlightType"
+          type="radio"
+          value="missing"
+        >
+        Missing
+      </label>
+      <label>
+        <input
+          v-model="highlightType"
+          type="radio"
+          value="covered"
+        >
+        Covered
+      </label> -->
     </div>
   </div>
 </template>
 
 <script setup>
   import { computed, ref } from 'vue'
+  import EpRadio from '../radio/EpRadio.vue'
 
   defineOptions({
-    name: 'EpUpsetPlot',
+    name: 'EpUpSetPlot',
   })
 
   // Adapters and intersections
@@ -112,17 +151,14 @@
     highlightedIntersection.value = -1
   }
 
-  // Helper methods for conditional classes
   const isAdapterHighlighted = (adapterIndex) => {
     if (highlightedIntersection.value === -1) return false
     const combination = sortedIntersections.value[highlightedIntersection.value]?.combination
     return combination[adapterIndex] === '0' // Highlight if missing
   }
 
-  const isCellHighlighted = (adapterIndex, columnIndex) => {
-    if (highlightedIntersection.value === -1) return false
-    return highlightedIntersection.value === columnIndex
-  }
+  // Toggle for highlighting type
+  const highlightType = ref('missing') // Default: highlight missing adapters
 </script>
 
 <style lang="scss" scoped>
@@ -220,15 +256,16 @@
       .plot-indicator {
         width: 0.8rem;
         height: 0.8rem;
-        // background: var(--interface-overlay);
-        background: var(--ep-upset-plot-error-bg-color);
+        background: var(--interface-overlay);
+        // background: var(--ep-upset-plot-error-bg-color);
         border-radius: 50%;
 
-        &--included {
-          background: rgb(129, 166, 89);
-          // &.highlighted {
-          //   background: green;
-          // }
+        &--missing {
+          background: var(--ep-upset-plot-error-bg-color);
+        }
+
+        &--covered {
+          background: green;
         }
       }
     }
@@ -252,5 +289,21 @@
 
   .plot-indicator--included.highlighted {
     background: green;
+  }
+
+  .ep-upset-plot-toggle {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    // justify-content: center;
+    label {
+      cursor: pointer;
+    }
+
+    input[type='radio'] {
+      margin-right: 0.5rem;
+    }
   }
 </style>
