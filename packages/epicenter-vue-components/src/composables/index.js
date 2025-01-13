@@ -13,6 +13,7 @@ import useTabs from '../components/tabs/useTabs.js'
 // helpers
 import useCalculatedHeight from './useCalculatedHeight.js'
 import useDebounce from './useDebounce.js'
+import useActionsMenu from './useActionsMenu.js'
 
 export {
   useColumnFilters,
@@ -25,4 +26,5 @@ export {
   useTabs,
   useCalculatedHeight,
   useDebounce,
+  useActionsMenu,
 }

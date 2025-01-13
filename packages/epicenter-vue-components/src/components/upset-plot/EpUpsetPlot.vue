@@ -3,11 +3,11 @@
     <div class="ep-upset-plot-controls">
       Highlight:
       <ep-radio
-        id="missing"
+        id="uncovered"
         v-model="highlightType"
-        label="Missing"
-        name="missing"
-        value="missing"
+        label="Uncovered"
+        name="uncovered"
+        value="uncovered"
       />
       <ep-radio
         id="covered"
@@ -42,7 +42,8 @@
         :data-adapter-index="adapterIndex"
         :class="{ [`highlighted--${highlightType}`]: isAdapterHighlighted(adapterIndex) }"
       >
-        {{ adapter }}
+        <div>{{ adapter }}</div>
+        <ep-dropdown v-bind="adapterActionsMenuProps(adapter)" />
       </div>
     </div>
     <div class="ep-upset-plot-matrix-plot">
@@ -61,7 +62,7 @@
           <div :class="[
             'plot-indicator',
             {
-              'plot-indicator--missing': highlightType === 'missing' && intersection.combination[adapterIndex] === '0',
+              'plot-indicator--uncovered': highlightType === 'uncovered' && intersection.combination[adapterIndex] === '0',
               'plot-indicator--covered': highlightType === 'covered' && intersection.combination[adapterIndex] === '1',
             },
           ]" />
@@ -73,7 +74,10 @@
 
 <script setup>
   import { computed, ref } from 'vue'
+  import { faker } from '@faker-js/faker'
   import EpRadio from '../radio/EpRadio.vue'
+  import EpDropdown from '../dropdown/EpDropdown.vue'
+  import { useActionsMenu } from '../../composables'
 
   defineOptions({
     name: 'EpUpSetPlot',
@@ -93,21 +97,23 @@
     'Azure AD',
   ]
 
+  const generateAssetTotal = () => faker.number.int({ min: 10, max: 500 })
+
   const intersections = [
-    { combination: '1010101010', total: 15, missing_adapters: ['CarbonBlack Response', 'Sumo Logic'] },
-    { combination: '1101101101', total: 25, missing_adapters: ['Qualys Scans'] },
-    { combination: '0001111111', total: 10, missing_adapters: ['CrowdStrike'] },
-    { combination: '1111111110', total: 20, missing_adapters: ['Azure AD'] },
-    { combination: '1111110000', total: 18, missing_adapters: ['Tenable.io', 'Qualys Scans'] },
-    { combination: '0110111010', total: 14, missing_adapters: ['Defender ATP', 'CrowdStrike'] },
-    { combination: '1001001001', total: 9, missing_adapters: ['Sumo Logic', 'CarbonBlack Response'] },
-    { combination: '1110001111', total: 12, missing_adapters: ['CarbonBlack Defense'] },
-    { combination: '0000000000', total: 5, missing_adapters: ['All adapters'] },
-    { combination: '1111111111', total: 30, missing_adapters: [] },
-    { combination: '1100000000', total: 8, missing_adapters: ['eSentire JSON', 'Azure AD'] },
-    { combination: '1010111111', total: 17, missing_adapters: ['CarbonBlack Response'] },
-    { combination: '1001010101', total: 6, missing_adapters: ['Defender ATP', 'Sumo Logic'] },
-    { combination: '0111110001', total: 11, missing_adapters: ['CarbonBlack Defense', 'CrowdStrike'] },
+    { combination: '1010101010', total: generateAssetTotal(), uncovered_adapters: ['CarbonBlack Response', 'Sumo Logic'] },
+    { combination: '1101101101', total: generateAssetTotal(), uncovered_adapters: ['Qualys Scans'] },
+    { combination: '0001111111', total: generateAssetTotal(), uncovered_adapters: ['CrowdStrike'] },
+    { combination: '1111111110', total: generateAssetTotal(), uncovered_adapters: ['Azure AD'] },
+    { combination: '1111110000', total: generateAssetTotal(), uncovered_adapters: ['Tenable.io', 'Qualys Scans'] },
+    { combination: '0110111010', total: generateAssetTotal(), uncovered_adapters: ['Defender ATP', 'CrowdStrike'] },
+    { combination: '1001001001', total: generateAssetTotal(), uncovered_adapters: ['Sumo Logic', 'CarbonBlack Response'] },
+    { combination: '1110001111', total: generateAssetTotal(), uncovered_adapters: ['CarbonBlack Defense'] },
+    { combination: '0000000000', total: generateAssetTotal(), uncovered_adapters: ['All adapters'] },
+    { combination: '1111111111', total: 1132, uncovered_adapters: [] },
+    { combination: '1100000000', total: generateAssetTotal(), uncovered_adapters: ['eSentire JSON', 'Azure AD'] },
+    { combination: '1010111111', total: generateAssetTotal(), uncovered_adapters: ['CarbonBlack Response'] },
+    { combination: '1001010101', total: generateAssetTotal(), uncovered_adapters: ['Defender ATP', 'Sumo Logic'] },
+    { combination: '0111110001', total: generateAssetTotal(), uncovered_adapters: ['CarbonBlack Defense', 'CrowdStrike'] },
   ]
 
   const maxTotal = computed(() => Math.max(...intersections.map((i) => i.total)))
@@ -132,7 +138,7 @@
     if (highlightedIntersection.value === -1) return false
     const combination = sortedIntersections.value[highlightedIntersection.value]?.combination
     if (highlightType.value === 'covered') return combination[adapterIndex] === '1' // Highlight if covered
-    return combination[adapterIndex] === '0' // Highlight if missing
+    return combination[adapterIndex] === '0' // Highlight if uncovered
   }
 
   const isCellHighlighted = (adapterIndex, columnIndex) => {
@@ -141,14 +147,42 @@
   }
 
   // Toggle for highlighting type
-  const highlightType = ref('missing') // Default: highlight missing adapters
+  const highlightType = ref('uncovered') // Default: highlight uncovered adapters
+
+  const { generateActionMenuProps } = useActionsMenu()
+
+  const menuItems = [
+    (adapter) => ({
+      label: 'Asset report',
+      iconLeft: { name: 'f-cpu' },
+      onClick: () => {
+        console.log(adapter)
+      }
+    }),
+    {
+      divider: true
+    },
+    (adapter) => ({
+      label: 'Start new chat',
+      iconLeft: { name: 'f-cpu' },
+      onClick: () => {
+        console.log(adapter)
+      }
+    }),
+  ]
+
+  const adapterActionsMenuProps = (context) =>
+    generateActionMenuProps({
+      context,
+      menuItems,
+    })
 </script>
 
 <style lang="scss" scoped>
   .ep-upset-plot-container {
     --ep-upset-plot-row-stripe-color: hsl(0deg 0.84% 14.37%);
     --ep-upset-plot-error-bg-color: hsl(342deg 45.82% 54.76%);
-    --ep-upset-plot-covered-bg-color: rgb(35, 146, 87);
+    --ep-upset-plot-covered-bg-color: rgb(85, 170, 125);
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
@@ -199,6 +233,7 @@
       justify-content: flex-end;
       text-align: right;
       align-items: center;
+      gap: 1rem;
       padding-right: 1rem;
       border-bottom: 1px solid var(--border-color);
 
@@ -206,7 +241,7 @@
         background: var(--ep-upset-plot-row-stripe-color);
       }
 
-      &.highlighted--missing {
+      &.highlighted--uncovered {
         color: var(--ep-upset-plot-error-bg-color);
       }
 
@@ -252,7 +287,7 @@
         background: var(--interface-overlay);
         border-radius: 50%;
 
-        &--missing {
+        &--uncovered {
           background: var(--ep-upset-plot-error-bg-color);
         }
 
