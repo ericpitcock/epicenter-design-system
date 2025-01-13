@@ -40,7 +40,7 @@
         :key="adapter"
         class="ep-upset-plot-adapters__row"
         :data-adapter-index="adapterIndex"
-        :class="{ highlighted: isAdapterHighlighted(adapterIndex) }"
+        :class="{ [`highlighted--${highlightType}`]: isAdapterHighlighted(adapterIndex) }"
       >
         {{ adapter }}
       </div>
@@ -148,6 +148,7 @@
   .ep-upset-plot-container {
     --ep-upset-plot-row-stripe-color: hsl(0deg 0.84% 14.37%);
     --ep-upset-plot-error-bg-color: hsl(342deg 45.82% 54.76%);
+    --ep-upset-plot-covered-bg-color: rgb(35, 146, 87);
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
@@ -205,6 +206,14 @@
         background: var(--ep-upset-plot-row-stripe-color);
       }
 
+      &.highlighted--missing {
+        color: var(--ep-upset-plot-error-bg-color);
+      }
+
+      &.highlighted--covered {
+        color: var(--ep-upset-plot-covered-bg-color)
+      }
+
       // &.highlighted {
       //   color: green;
       // }
@@ -248,7 +257,7 @@
         }
 
         &--covered {
-          background: rgb(35, 146, 87);
+          background: var(--ep-upset-plot-covered-bg-color);
         }
       }
     }
@@ -260,11 +269,10 @@
     /* Light green highlight */
   }
 
-  .ep-upset-plot-adapters__row.highlighted {
-    // color: green;
-    color: var(--ep-upset-plot-error-bg-color);
-  }
-
+  // .ep-upset-plot-adapters__row.highlighted {
+  //   // color: green;
+  //   color: var(--ep-upset-plot-error-bg-color);
+  // }
   .ep-upset-plot-matrix-plot__cell.highlighted {
     // border: 2px solid green;
     background: var(--interface-overlay);
