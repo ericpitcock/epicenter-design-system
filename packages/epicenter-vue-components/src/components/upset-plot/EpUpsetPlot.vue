@@ -43,15 +43,10 @@
     name: 'EpUpsetPlot',
   })
 
-  // const chartTotals = [10, 20, 30, 40, 50]
-  // chartTotals is a computed property that returns an array of random numbers
-  // and then orders them in ascending order
   const chartTotals = computed(() => {
     return Array.from({ length: 14 }, () => faker.number.int({ min: 10, max: 200 }))
       .sort((a, b) => a - b)
   })
-
-
 
   const adapters = [
     'CrowdStrike',
@@ -70,8 +65,6 @@
 <style lang="scss" scoped>
   .ep-upset-plot-container {
     --ep-upset-plot-row-stripe-color: hsl(0deg 0.84% 14.37%);
-    // width: 100%;
-    // height: 100%;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
@@ -82,11 +75,9 @@
   }
 
   .ep-upset-plot-chart {
-    // place in second column first row
     grid-column: 2;
     grid-row: 1;
     display: flex;
-    // align to bottom
     align-items: flex-end;
     gap: 2rem;
     height: 20rem;
@@ -95,23 +86,17 @@
     border-left: 1px solid var(--border-color);
 
     &__column {
-      // width: 3rem;
       flex: 1;
-      // max-width: 3rem;
-      // height: 100%;
       background: var(--primary-color-base);
     }
   }
 
   .ep-upset-plot-adapters {
-    // place in first column second row
     grid-column: 1;
     grid-row: 2;
     display: flex;
     flex-direction: column;
 
-    // gap: 2rem;
-    // background: green;
     &__row {
       height: 3.1rem;
       display: flex;
@@ -128,14 +113,10 @@
   }
 
   .ep-upset-plot-matrix-plot {
-    // place in second column second row
     grid-column: 2;
     grid-row: 2;
     display: flex;
     flex-direction: column;
-    // align to bottom
-    // gap: 2rem;
-    // padding-left: 1rem;
     border-left: 1px solid var(--border-color);
 
     &__row {
@@ -150,10 +131,8 @@
     }
 
     &__cell {
-      // width: 3rem;
       flex: 1;
       height: 3rem;
-      // background-color: #000;
       display: flex;
       justify-content: center;
       align-items: center;
