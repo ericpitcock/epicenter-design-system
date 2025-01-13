@@ -44,6 +44,7 @@
           v-for="(intersection, columnIndex) in sortedIntersections"
           :key="columnIndex"
           class="ep-upset-plot-matrix-plot__cell"
+          :class="{ highlighted: isCellHighlighted(adapterIndex, columnIndex) }"
         >
           <!-- eslint-disable-next-line vue/first-attribute-linebreak -->
           <div :class="[
@@ -157,6 +158,11 @@
     return combination[adapterIndex] === '0' // Highlight if missing
   }
 
+  const isCellHighlighted = (adapterIndex, columnIndex) => {
+    if (highlightedIntersection.value === -1) return false
+    return highlightedIntersection.value === columnIndex
+  }
+
   // Toggle for highlighting type
   const highlightType = ref('missing') // Default: highlight missing adapters
 </script>
@@ -265,7 +271,7 @@
         }
 
         &--covered {
-          background: green;
+          background: rgb(35, 146, 87);
         }
       }
     }
