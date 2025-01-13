@@ -1,34 +1,51 @@
 <template>
   <div class="ep-upset-plot-container">
+    <div class="ep-upset-plot-controls">
+      <button @click="sortDir = 'asc'">
+        Sort Asc
+      </button>
+      <button @click="sortDir = 'desc'">
+        Sort Desc
+      </button>
+    </div>
+    <!-- Top Bar Chart -->
     <div class="ep-upset-plot-chart">
       <div
-        v-for="(total, index) in chartTotals"
+        v-for="(intersection, index) in sortedIntersections"
         :key="index"
         class="ep-upset-plot-chart__column"
-        :style="{ height: `${total}px` }"
+        :style="{ height: `${intersection.total * 10}px` }"
+        :title="`Total: ${intersection.total}`"
       />
     </div>
+
+    <!-- Adapter Labels -->
     <div class="ep-upset-plot-adapters">
       <div
-        v-for="(adapter, index) in adapters"
-        :key="index"
+        v-for="adapter in data.adapters"
+        :key="adapter"
         class="ep-upset-plot-adapters__row"
       >
         {{ adapter }}
       </div>
     </div>
+
+    <!-- Intersection Matrix -->
     <div class="ep-upset-plot-matrix-plot">
       <div
-        v-for="(row, index) in adapters"
-        :key="index"
+        v-for="(adapter, adapterIndex) in data.adapters"
+        :key="adapterIndex"
         class="ep-upset-plot-matrix-plot__row"
       >
         <div
-          v-for="(cell, cellIndex) in chartTotals"
-          :key="cellIndex"
+          v-for="(intersection, columnIndex) in sortedIntersections"
+          :key="columnIndex"
           class="ep-upset-plot-matrix-plot__cell"
         >
-          <div class="plot-indicator" />
+          <div
+            v-if="intersection.combination[adapterIndex] === '1'"
+            class="plot-indicator"
+          />
         </div>
       </div>
     </div>
@@ -36,30 +53,55 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue'
-  import { faker } from '@faker-js/faker'
+  import { computed, ref } from 'vue'
 
   defineOptions({
     name: 'EpUpsetPlot',
   })
 
-  const chartTotals = computed(() => {
-    return Array.from({ length: 14 }, () => faker.number.int({ min: 10, max: 200 }))
-      .sort((a, b) => a - b)
+  // Intersection-based data structure
+  const data = ref({
+    adapters: [
+      'CrowdStrike',
+      'CarbonBlack Response',
+      'CarbonBlack Defense',
+      'Defender ATP',
+      'eSentire JSON',
+      'Sumo Logic',
+      'Tenable.io',
+      'Qualys Scans',
+      'Rapid7 InsightVM',
+      'Azure AD',
+    ],
+    intersections: [
+      { combination: "1010101010", total: 15, missing_adapters: ["carbonblack_response_adapter", "sumo_logic_adapter"] },
+      { combination: "1101101101", total: 25, missing_adapters: ["qualys_scans_adapter"] },
+      { combination: "0001111111", total: 10, missing_adapters: ["crowd_strike_adapter"] },
+      { combination: "1111111110", total: 20, missing_adapters: ["azure_ad_adapter"] },
+      { combination: "1111110000", total: 18, missing_adapters: ["tenable_io_adapter", "qualys_scans_adapter"] },
+      { combination: "0110111010", total: 14, missing_adapters: ["defender_atp_adapter", "crowd_strike_adapter"] },
+      { combination: "1001001001", total: 9, missing_adapters: ["sumo_logic_adapter", "carbonblack_response_adapter"] },
+      { combination: "1110001111", total: 12, missing_adapters: ["carbonblack_defense_adapter"] },
+      { combination: "0000000000", total: 5, missing_adapters: ["All adapters"] },
+      { combination: "1111111111", total: 30, missing_adapters: [] },
+      { combination: "1100000000", total: 8, missing_adapters: ["esentire_json_adapter", "azure_ad_adapter"] },
+      { combination: "1010111111", total: 17, missing_adapters: ["carbonblack_response_adapter"] },
+      { combination: "1001010101", total: 6, missing_adapters: ["defender_atp_adapter", "sumo_logic_adapter"] },
+      { combination: "0111110001", total: 11, missing_adapters: ["carbonblack_defense_adapter", "crowd_strike_adapter"] },
+    ],
   })
 
-  const adapters = [
-    'CrowdStrike',
-    'CarbonBlack Response',
-    'CarbonBlack Defense',
-    'Defender ATP',
-    'eSentire JSON',
-    'Sumo Logic',
-    'Tenable.io',
-    'Qualys Scans',
-    'Rapid7 InsightVM',
-    'Azure AD',
-  ]
+  const sortDir = ref('asc')
+
+  const sortedIntersections = computed(() => {
+    return [...data.value.intersections].sort((a, b) => {
+      if (sortDir.value === 'asc') {
+        return a.total - b.total
+      } else {
+        return b.total - a.total
+      }
+    })
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -140,7 +182,7 @@
       .plot-indicator {
         width: 0.8rem;
         height: 0.8rem;
-        background: var(--interface-overlay--accent);
+        background: var(--primary-color-base);
         border-radius: 50%;
       }
     }
