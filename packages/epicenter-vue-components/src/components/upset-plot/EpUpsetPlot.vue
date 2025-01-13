@@ -1,12 +1,13 @@
 <template>
   <div class="ep-upset-plot-container">
+    <!-- Top Bar Chart -->
     <div class="ep-upset-plot-chart">
       <div
         v-for="(intersection, index) in sortedIntersections"
         :key="index"
         class="ep-upset-plot-chart__column-container"
-        @mouseover="highlightAdapters(index)"
-        @mouseleave="highlightAdapters(-1)"
+        @mouseover="highlightIntersection(index)"
+        @mouseleave="clearHighlights"
       >
         <div class="ep-upset-plot-chart__count">
           {{ intersection.total }}
@@ -18,16 +19,21 @@
         />
       </div>
     </div>
+
+    <!-- Adapter Labels -->
     <div class="ep-upset-plot-adapters">
       <div
         v-for="(adapter, adapterIndex) in adapters"
         :key="adapter"
         class="ep-upset-plot-adapters__row"
-        :data-index="adapterIndex"
+        :data-adapter-index="adapterIndex"
+        :class="{ highlighted: isAdapterHighlighted(adapterIndex) }"
       >
         {{ adapter }}
       </div>
     </div>
+
+    <!-- Intersection Matrix -->
     <div class="ep-upset-plot-matrix-plot">
       <div
         v-for="(adapter, adapterIndex) in adapters"
@@ -38,10 +44,11 @@
           v-for="(intersection, columnIndex) in sortedIntersections"
           :key="columnIndex"
           class="ep-upset-plot-matrix-plot__cell"
+          :class="{ highlighted: isCellHighlighted(adapterIndex, columnIndex) }"
         >
           <div
             :class="['plot-indicator', { 'plot-indicator--included': intersection.combination[adapterIndex] === '1' }]"
-            :data-index="columnIndex"
+            :title="`Adapter: ${adapters[adapterIndex]}, Coverage: ${intersection.combination[adapterIndex] === '1' ? 'Included' : 'Missing'}`"
           />
         </div>
       </div>
@@ -50,12 +57,13 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
 
   defineOptions({
     name: 'EpUpsetPlot',
   })
 
+  // Adapters and intersections
   const adapters = [
     'CrowdStrike',
     'CarbonBlack Response',
@@ -86,36 +94,41 @@
     { combination: '0111110001', total: 11, missing_adapters: ['CarbonBlack Defense', 'CrowdStrike'] },
   ]
 
-  const maxTotal = computed(() => {
-    return Math.max(...intersections.map((intersection) => intersection.total))
-  })
+  const maxTotal = computed(() => Math.max(...intersections.map((i) => i.total)))
 
-  const sortedIntersections = computed(() => {
-    return [...intersections].sort((a, b) => {
-      return b.total - a.total
-    })
-  })
+  const sortedIntersections = computed(() =>
+    [...intersections].sort((a, b) => b.total - a.total)
+  )
 
-  const highlightAdapters = (index) => {
-    if (index === -1) {
-      // remove all highlighted classes
-      const elements = document.querySelectorAll('.highlighted')
-      elements.forEach((element) => {
-        element.classList.remove('highlighted')
-      })
-      return
-    }
-    // find elemenst with data-index equal to index and add a class to it
-    const elements = document.querySelectorAll(`[data-index="${index}"]`)
-    elements.forEach((element) => {
-      element.classList.add('highlighted')
-    })
+  // State for hover highlights
+  const highlightedIntersection = ref(-1)
+
+  // Methods for hover interactions
+  const highlightIntersection = (index) => {
+    highlightedIntersection.value = index
+  }
+
+  const clearHighlights = () => {
+    highlightedIntersection.value = -1
+  }
+
+  // Helper methods for conditional classes
+  const isAdapterHighlighted = (adapterIndex) => {
+    if (highlightedIntersection.value === -1) return false
+    const combination = sortedIntersections.value[highlightedIntersection.value]?.combination
+    return combination[adapterIndex] === '0' // Highlight if missing
+  }
+
+  const isCellHighlighted = (adapterIndex, columnIndex) => {
+    if (highlightedIntersection.value === -1) return false
+    return highlightedIntersection.value === columnIndex
   }
 </script>
 
 <style lang="scss" scoped>
   .ep-upset-plot-container {
     --ep-upset-plot-row-stripe-color: hsl(0deg 0.84% 14.37%);
+    --ep-upset-plot-error-bg-color: hsl(342deg 45.82% 54.76%);
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
@@ -173,9 +186,9 @@
         background: var(--ep-upset-plot-row-stripe-color);
       }
 
-      &.highlighted {
-        color: green;
-      }
+      // &.highlighted {
+      //   color: green;
+      // }
     }
   }
 
@@ -207,17 +220,37 @@
       .plot-indicator {
         width: 0.8rem;
         height: 0.8rem;
-        background: var(--interface-overlay);
+        // background: var(--interface-overlay);
+        background: var(--ep-upset-plot-error-bg-color);
         border-radius: 50%;
 
         &--included {
-          background: var(--primary-color-base);
-
-          &.highlighted {
-            background: green;
-          }
+          background: rgb(129, 166, 89);
+          // &.highlighted {
+          //   background: green;
+          // }
         }
       }
     }
+  }
+
+  /* Add hover highlight styles */
+  .highlighted {
+    // background-color: rgba(0, 255, 0, 0.2);
+    /* Light green highlight */
+  }
+
+  .ep-upset-plot-adapters__row.highlighted {
+    // color: green;
+    color: var(--ep-upset-plot-error-bg-color);
+  }
+
+  .ep-upset-plot-matrix-plot__cell.highlighted {
+    // border: 2px solid green;
+    background: var(--interface-overlay);
+  }
+
+  .plot-indicator--included.highlighted {
+    background: green;
   }
 </style>
