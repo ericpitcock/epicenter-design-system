@@ -9,13 +9,12 @@
         @mouseover="highlightIntersection(index)"
         @mouseleave="clearHighlights"
       >
-        <div class="ep-upset-plot-chart__count">
+        <div class="ep-upset-plot-chart__count font-size--xsmall">
           {{ intersection.total }}
         </div>
         <div
           class="ep-upset-plot-chart__column"
           :style="{ height: `${(intersection.total / maxTotal) * 100}%` }"
-          :title="`Total: ${intersection.total}`"
         />
       </div>
     </div>
@@ -60,7 +59,7 @@
 
     <!-- Toggle Highlight Type -->
     <div class="ep-upset-plot-toggle">
-      Highlight:
+      Highlight
       <ep-radio
         id="missing"
         v-model="highlightType"
@@ -75,22 +74,6 @@
         name="covered"
         value="covered"
       />
-      <!-- <label>
-        <input
-          v-model="highlightType"
-          type="radio"
-          value="missing"
-        >
-        Missing
-      </label>
-      <label>
-        <input
-          v-model="highlightType"
-          type="radio"
-          value="covered"
-        >
-        Covered
-      </label> -->
     </div>
   </div>
 </template>
@@ -155,6 +138,7 @@
   const isAdapterHighlighted = (adapterIndex) => {
     if (highlightedIntersection.value === -1) return false
     const combination = sortedIntersections.value[highlightedIntersection.value]?.combination
+    if (highlightType.value === 'covered') return combination[adapterIndex] === '1' // Highlight if covered
     return combination[adapterIndex] === '0' // Highlight if missing
   }
 
@@ -189,10 +173,11 @@
     height: 20rem;
     padding-left: 1rem;
     border-bottom: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
 
+    // border-left: 1px solid var(--border-color);
     &__column-container {
       flex: 1;
+      max-width: 4rem;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -203,9 +188,8 @@
     }
 
     &__column {
-      // flex: 1;
       width: 100%;
-      background: var(--primary-color-base);
+      background: linear-gradient(0, var(--primary-color-down-15-base) 30%, var(--primary-color-base) 80%);
     }
   }
 
@@ -239,8 +223,8 @@
     grid-row: 2;
     display: flex;
     flex-direction: column;
-    border-left: 1px solid var(--border-color);
 
+    // border-left: 1px solid var(--border-color);
     &__row {
       display: flex;
       gap: 2rem;
@@ -254,6 +238,7 @@
 
     &__cell {
       flex: 1;
+      max-width: 4rem;
       height: 3rem;
       display: flex;
       justify-content: center;
