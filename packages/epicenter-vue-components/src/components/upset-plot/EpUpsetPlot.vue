@@ -94,9 +94,10 @@
     border-left: 1px solid var(--border-color);
 
     &__column {
-      width: 3rem;
-      max-width: 3rem;
-      height: 100%;
+      // width: 3rem;
+      flex: 1;
+      // max-width: 3rem;
+      // height: 100%;
       background: var(--text-color);
     }
   }
@@ -114,6 +115,7 @@
       height: 3.1rem;
       display: flex;
       justify-content: flex-end;
+      text-align: right;
       align-items: center;
       padding-right: 1rem;
       border-bottom: 1px solid var(--border-color);
@@ -132,13 +134,15 @@
     border-left: 1px solid var(--border-color);
 
     &__row {
+      background: red;
       display: flex;
       gap: 2rem;
       border-bottom: 1px solid var(--border-color);
     }
 
     &__cell {
-      width: 3rem;
+      // width: 3rem;
+      flex: 1;
       height: 3rem;
       // background-color: #000;
       display: flex;
