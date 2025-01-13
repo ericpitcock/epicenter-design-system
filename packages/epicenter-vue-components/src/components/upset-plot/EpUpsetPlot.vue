@@ -1,11 +1,12 @@
 <template>
   <div class="ep-upset-plot-container">
-    <!-- Top Bar Chart -->
     <div class="ep-upset-plot-chart">
       <div
         v-for="(intersection, index) in sortedIntersections"
         :key="index"
         class="ep-upset-plot-chart__column-container"
+        @mouseover="highlightAdapters(index)"
+        @mouseleave="highlightAdapters(-1)"
       >
         <div class="ep-upset-plot-chart__count">
           {{ intersection.total }}
@@ -17,22 +18,19 @@
         />
       </div>
     </div>
-
-    <!-- Adapter Labels -->
     <div class="ep-upset-plot-adapters">
       <div
-        v-for="adapter in data.adapters"
+        v-for="(adapter, adapterIndex) in adapters"
         :key="adapter"
         class="ep-upset-plot-adapters__row"
+        :data-index="adapterIndex"
       >
         {{ adapter }}
       </div>
     </div>
-
-    <!-- Intersection Matrix -->
     <div class="ep-upset-plot-matrix-plot">
       <div
-        v-for="(adapter, adapterIndex) in data.adapters"
+        v-for="(adapter, adapterIndex) in adapters"
         :key="adapterIndex"
         class="ep-upset-plot-matrix-plot__row"
       >
@@ -43,6 +41,7 @@
         >
           <div
             :class="['plot-indicator', { 'plot-indicator--included': intersection.combination[adapterIndex] === '1' }]"
+            :data-index="columnIndex"
           />
         </div>
       </div>
@@ -51,59 +50,67 @@
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
 
   defineOptions({
     name: 'EpUpsetPlot',
   })
 
-  // Intersection-based data structure
-  const data = ref({
-    adapters: [
-      'CrowdStrike',
-      'CarbonBlack Response',
-      'CarbonBlack Defense',
-      'Defender ATP',
-      'eSentire JSON',
-      'Sumo Logic',
-      'Tenable.io',
-      'Qualys Scans',
-      'Rapid7 InsightVM',
-      'Azure AD',
-    ],
-    intersections: [
-      { combination: '1010101010', total: 15, missing_adapters: ['CarbonBlack Response', 'Sumo Logic'] },
-      { combination: '1101101101', total: 25, missing_adapters: ['Qualys Scans'] },
-      { combination: '0001111111', total: 10, missing_adapters: ['CrowdStrike'] },
-      { combination: '1111111110', total: 20, missing_adapters: ['Azure AD'] },
-      { combination: '1111110000', total: 18, missing_adapters: ['Tenable.io', 'Qualys Scans'] },
-      { combination: '0110111010', total: 14, missing_adapters: ['Defender ATP', 'CrowdStrike'] },
-      { combination: '1001001001', total: 9, missing_adapters: ['Sumo Logic', 'CarbonBlack Response'] },
-      { combination: '1110001111', total: 12, missing_adapters: ['CarbonBlack Defense'] },
-      { combination: '0000000000', total: 5, missing_adapters: ['All adapters'] },
-      { combination: '1111111111', total: 30, missing_adapters: [] },
-      { combination: '1100000000', total: 8, missing_adapters: ['eSentire JSON', 'Azure AD'] },
-      { combination: '1010111111', total: 17, missing_adapters: ['CarbonBlack Response'] },
-      { combination: '1001010101', total: 6, missing_adapters: ['Defender ATP', 'Sumo Logic'] },
-      { combination: '0111110001', total: 11, missing_adapters: ['CarbonBlack Defense', 'CrowdStrike'] },
-    ],
-  })
+  const adapters = [
+    'CrowdStrike',
+    'CarbonBlack Response',
+    'CarbonBlack Defense',
+    'Defender ATP',
+    'eSentire JSON',
+    'Sumo Logic',
+    'Tenable.io',
+    'Qualys Scans',
+    'Rapid7 InsightVM',
+    'Azure AD',
+  ]
 
-  const sortDir = ref('desc')
+  const intersections = [
+    { combination: '1010101010', total: 15, missing_adapters: ['CarbonBlack Response', 'Sumo Logic'] },
+    { combination: '1101101101', total: 25, missing_adapters: ['Qualys Scans'] },
+    { combination: '0001111111', total: 10, missing_adapters: ['CrowdStrike'] },
+    { combination: '1111111110', total: 20, missing_adapters: ['Azure AD'] },
+    { combination: '1111110000', total: 18, missing_adapters: ['Tenable.io', 'Qualys Scans'] },
+    { combination: '0110111010', total: 14, missing_adapters: ['Defender ATP', 'CrowdStrike'] },
+    { combination: '1001001001', total: 9, missing_adapters: ['Sumo Logic', 'CarbonBlack Response'] },
+    { combination: '1110001111', total: 12, missing_adapters: ['CarbonBlack Defense'] },
+    { combination: '0000000000', total: 5, missing_adapters: ['All adapters'] },
+    { combination: '1111111111', total: 30, missing_adapters: [] },
+    { combination: '1100000000', total: 8, missing_adapters: ['eSentire JSON', 'Azure AD'] },
+    { combination: '1010111111', total: 17, missing_adapters: ['CarbonBlack Response'] },
+    { combination: '1001010101', total: 6, missing_adapters: ['Defender ATP', 'Sumo Logic'] },
+    { combination: '0111110001', total: 11, missing_adapters: ['CarbonBlack Defense', 'CrowdStrike'] },
+  ]
 
   const maxTotal = computed(() => {
-    return Math.max(...data.value.intersections.map((intersection) => intersection.total))
+    return Math.max(...intersections.map((intersection) => intersection.total))
   })
 
   const sortedIntersections = computed(() => {
-    return [...data.value.intersections].sort((a, b) => {
-      if (sortDir.value === 'asc') {
-        return a.total - b.total
-      } else {
-        return b.total - a.total
-      }
+    return [...intersections].sort((a, b) => {
+      return b.total - a.total
     })
   })
+
+  const highlightAdapters = (index) => {
+    if (index === -1) {
+      // remove all highlighted classes
+      const elements = document.querySelectorAll('.highlighted')
+      elements.forEach((element) => {
+        element.classList.remove('highlighted')
+      })
+      return
+    }
+    // find elemenst with data-index equal to index and add a class to it
+    const elements = document.querySelectorAll(`[data-index="${index}"]`)
+    elements.forEach((element) => {
+      element.classList.add('highlighted')
+    })
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -137,6 +144,7 @@
       justify-content: flex-end;
       align-items: center;
       gap: 0.5rem;
+      cursor: pointer;
     }
 
     &__column {
@@ -163,6 +171,10 @@
 
       &:nth-child(even) {
         background: var(--ep-upset-plot-row-stripe-color);
+      }
+
+      &.highlighted {
+        color: green;
       }
     }
   }
@@ -200,6 +212,10 @@
 
         &--included {
           background: var(--primary-color-base);
+
+          &.highlighted {
+            background: green;
+          }
         }
       }
     }
