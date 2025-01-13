@@ -1,6 +1,22 @@
 <template>
   <div class="ep-upset-plot-container">
-    <!-- Top Bar Chart -->
+    <div class="ep-upset-plot-controls">
+      Highlight:
+      <ep-radio
+        id="missing"
+        v-model="highlightType"
+        label="Missing"
+        name="missing"
+        value="missing"
+      />
+      <ep-radio
+        id="covered"
+        v-model="highlightType"
+        label="Covered"
+        name="covered"
+        value="covered"
+      />
+    </div>
     <div class="ep-upset-plot-chart">
       <div
         v-for="(intersection, index) in sortedIntersections"
@@ -18,8 +34,6 @@
         />
       </div>
     </div>
-
-    <!-- Adapter Labels -->
     <div class="ep-upset-plot-adapters">
       <div
         v-for="(adapter, adapterIndex) in adapters"
@@ -31,8 +45,6 @@
         {{ adapter }}
       </div>
     </div>
-
-    <!-- Intersection Matrix -->
     <div class="ep-upset-plot-matrix-plot">
       <div
         v-for="(adapter, adapterIndex) in adapters"
@@ -55,25 +67,6 @@
           ]" />
         </div>
       </div>
-    </div>
-
-    <!-- Toggle Highlight Type -->
-    <div class="ep-upset-plot-toggle">
-      Highlight
-      <ep-radio
-        id="missing"
-        v-model="highlightType"
-        label="Missing"
-        name="missing"
-        value="missing"
-      />
-      <ep-radio
-        id="covered"
-        v-model="highlightType"
-        label="Covered"
-        name="covered"
-        value="covered"
-      />
     </div>
   </div>
 </template>
@@ -248,7 +241,6 @@
         width: 0.8rem;
         height: 0.8rem;
         background: var(--interface-overlay);
-        // background: var(--ep-upset-plot-error-bg-color);
         border-radius: 50%;
 
         &--missing {
@@ -282,19 +274,11 @@
     background: green;
   }
 
-  .ep-upset-plot-toggle {
-    margin-top: 1rem;
+  .ep-upset-plot-controls {
+    grid-column: 1;
+    grid-row: 1;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-
-    // justify-content: center;
-    label {
-      cursor: pointer;
-    }
-
-    input[type='radio'] {
-      margin-right: 0.5rem;
-    }
   }
 </style>
