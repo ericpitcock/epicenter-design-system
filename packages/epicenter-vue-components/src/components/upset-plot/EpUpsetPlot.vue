@@ -1,13 +1,5 @@
 <template>
   <div class="ep-upset-plot-container">
-    <div class="ep-upset-plot-controls">
-      <button @click="sortDir = 'asc'">
-        Sort Asc
-      </button>
-      <button @click="sortDir = 'desc'">
-        Sort Desc
-      </button>
-    </div>
     <!-- Top Bar Chart -->
     <div class="ep-upset-plot-chart">
       <div
@@ -43,8 +35,7 @@
           class="ep-upset-plot-matrix-plot__cell"
         >
           <div
-            v-if="intersection.combination[adapterIndex] === '1'"
-            class="plot-indicator"
+            :class="['plot-indicator', { 'plot-indicator--included': intersection.combination[adapterIndex] === '1' }]"
           />
         </div>
       </div>
@@ -186,8 +177,12 @@
       .plot-indicator {
         width: 0.8rem;
         height: 0.8rem;
-        background: var(--primary-color-base);
+        background: var(--interface-overlay);
         border-radius: 50%;
+
+        &--included {
+          background: var(--primary-color-base);
+        }
       }
     }
   }
