@@ -16,13 +16,13 @@
     </ep-header>
     <div class="ep-upset-plot-y-axis">
       <div class="y-axis-label">
-        Total assets
+        Assets
       </div>
     </div>
     <div class="ep-upset-plot-chart">
       <ep-toggle
         :is-active="hideFullyCovered"
-        label="Hide fully covered"
+        label="Exclude 100% covered"
         @toggle="hideFullyCovered = $event"
       />
       <div
@@ -274,9 +274,9 @@
 
 <style lang="scss" scoped>
   .ep-upset-plot-container {
-    --ep-upset-plot-row-stripe-color: hsl(0deg 0.84% 14.37%);
-    --ep-upset-plot-error-bg-color: hsl(342deg 45.82% 54.76%);
-    --ep-upset-plot-covered-bg-color: hsl(148, 33%, 50%);
+    --ep-upset-plot-row-stripe-color: hsl(0 0.84% 14%);
+    --ep-upset-plot-uncovered-bg-color: hsl(342 46% 55%);
+    --ep-upset-plot-covered-bg-color: hsl(142, 21%, 51%);
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto 1fr auto;
@@ -295,13 +295,13 @@
     position: relative;
     grid-column: 1;
     grid-row: 2;
-    border-right: 1px solid hsl(0deg 0.19% 17.97%);
+    border-right: 1px solid hsl(0 0.19% 18%);
     margin-right: 2.7rem;
 
     .y-axis-label {
       position: absolute;
       top: 50%;
-      right: -3rem;
+      right: -1.5rem;
       transform: rotate(-90deg) translateY(-50%);
       transform-origin: center;
       text-align: center;
@@ -310,6 +310,8 @@
   }
 
   .ep-toggle {
+    --ep-toggle-track-active-bg-color: var(--ep-upset-plot-covered-bg-color);
+    --ep-toggle-track-active-border-color: var(--ep-toggle-track-active-bg-color);
     position: absolute;
     top: 2rem;
     right: 0;
@@ -338,11 +340,11 @@
       cursor: pointer;
 
       &--uncovered .ep-upset-plot-chart__column {
-        background: linear-gradient(0, var(--ep-upset-plot-error-bg-color) 30%, hsl(342, 45.82%, 50%) 80%);
+        background: linear-gradient(0, var(--ep-upset-plot-uncovered-bg-color) 30%, hsl(342 45.82% 50%) 80%);
       }
 
       &--covered .ep-upset-plot-chart__column {
-        background: linear-gradient(0, var(--ep-upset-plot-covered-bg-color) 30%, hsl(148, 33%, 35%) 80%);
+        background: linear-gradient(0, var(--ep-upset-plot-covered-bg-color) 30%, hsl(148 33% 47%) 80%);
       }
     }
 
@@ -374,7 +376,7 @@
       }
 
       &.highlighted--uncovered .adapter-label {
-        color: var(--ep-upset-plot-error-bg-color);
+        color: var(--ep-upset-plot-uncovered-bg-color);
       }
 
       &.highlighted--covered .adapter-label {
@@ -415,7 +417,7 @@
         border-radius: 50%;
 
         &--uncovered {
-          background: var(--ep-upset-plot-error-bg-color);
+          background: var(--ep-upset-plot-uncovered-bg-color);
         }
 
         &--covered {
@@ -432,7 +434,7 @@
   }
 
   .ep-upset-plot-matrix-plot__cell.highlighted {
-    background: hsl(0, 0%, 18%);
+    background: hsl(0 0% 18%);
   }
 
   .plot-indicator--included.highlighted {
