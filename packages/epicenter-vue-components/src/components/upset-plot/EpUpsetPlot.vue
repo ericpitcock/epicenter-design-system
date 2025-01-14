@@ -1,21 +1,44 @@
 <template>
   <div class="ep-upset-plot-container">
-    <div class="ep-upset-plot-controls">
-      Highlight:
-      <ep-radio
-        id="uncovered"
-        v-model="highlightType"
-        label="Uncovered"
-        name="uncovered"
-        value="uncovered"
-      />
-      <ep-radio
-        id="covered"
-        v-model="highlightType"
-        label="Covered"
-        name="covered"
-        value="covered"
-      />
+    <ep-header class="ep-upset-plot-header">
+      <template #left>
+        <h2>Endpoint coverage</h2>
+      </template>
+      <template #center>
+        <h2>
+          {{ percentageCovered }}% full coverage <span
+            class="text-color--subtle"
+          >(1132 / {{ totalAssets }})</span>
+        </h2>
+      </template>
+      <template #right>
+        export
+      </template>
+    </ep-header>
+    <div class="ep-upset-plot-controls ep-flex flex-col gap-30">
+      <ep-flex class="flex-col gap-10">
+        <!-- Highlight: -->
+        <ep-radio
+          id="uncovered"
+          v-model="highlightType"
+          label="Uncovered"
+          name="uncovered"
+          value="uncovered"
+        />
+        <ep-radio
+          id="covered"
+          v-model="highlightType"
+          label="Covered"
+          name="covered"
+          value="covered"
+        />
+        <!-- checkbox to hide fully covered -->
+        <ep-toggle
+          :is-active="hideFullyCovered"
+          label="Hide fully covered"
+          @toggle="hideFullyCovered = $event"
+        />
+      </ep-flex>
     </div>
     <div class="ep-upset-plot-chart">
       <div
@@ -39,10 +62,9 @@
         v-for="(adapter, adapterIndex) in adapters"
         :key="adapter"
         class="ep-upset-plot-adapters__row"
-        :data-adapter-index="adapterIndex"
         :class="{ [`highlighted--${highlightType}`]: isAdapterHighlighted(adapterIndex) }"
       >
-        <div>{{ adapter }}</div>
+        <div class="adapter-label">{{ adapter }}</div>
         <ep-dropdown v-bind="adapterActionsMenuProps(adapter)" />
       </div>
     </div>
@@ -58,14 +80,10 @@
           class="ep-upset-plot-matrix-plot__cell"
           :class="{ highlighted: isCellHighlighted(adapterIndex, columnIndex) }"
         >
-          <!-- eslint-disable-next-line vue/first-attribute-linebreak -->
-          <div :class="[
-            'plot-indicator',
-            {
-              'plot-indicator--uncovered': highlightType === 'uncovered' && intersection.combination[adapterIndex] === '0',
-              'plot-indicator--covered': highlightType === 'covered' && intersection.combination[adapterIndex] === '1',
-            },
-          ]" />
+          <div
+            class="plot-indicator"
+            :class="getPlotIndicatorClass(intersection.combination, adapterIndex)"
+          />
         </div>
       </div>
     </div>
@@ -75,21 +93,23 @@
 <script setup>
   import { computed, ref } from 'vue'
   import { faker } from '@faker-js/faker'
-  import EpRadio from '../radio/EpRadio.vue'
+  import EpFlex from '../flexbox/EpFlex.vue'
+  import EpHeader from '../header/EpHeader.vue'
   import EpDropdown from '../dropdown/EpDropdown.vue'
+  import EpRadio from '../radio/EpRadio.vue'
+  import EpToggle from '../toggle/EpToggle.vue'
   import { useActionsMenu } from '../../composables'
 
   defineOptions({
     name: 'EpUpSetPlot',
   })
 
-  // Adapters and intersections
   const adapters = [
     'CrowdStrike',
     'CarbonBlack Response',
     'CarbonBlack Defense',
     'Defender ATP',
-    'eSentire JSON',
+    'eSentire',
     'Sumo Logic',
     'Tenable.io',
     'Qualys Scans',
@@ -97,9 +117,10 @@
     'Azure AD',
   ]
 
-  const generateAssetTotal = () => faker.number.int({ min: 10, max: 500 })
+  const generateAssetTotal = () => faker.number.int({ min: 0, max: 200 })
 
   const intersections = [
+    { combination: '1111111111', total: 1132, uncovered_adapters: [] },
     { combination: '1010101010', total: generateAssetTotal(), uncovered_adapters: ['CarbonBlack Response', 'Sumo Logic'] },
     { combination: '1101101101', total: generateAssetTotal(), uncovered_adapters: ['Qualys Scans'] },
     { combination: '0001111111', total: generateAssetTotal(), uncovered_adapters: ['CrowdStrike'] },
@@ -109,23 +130,30 @@
     { combination: '1001001001', total: generateAssetTotal(), uncovered_adapters: ['Sumo Logic', 'CarbonBlack Response'] },
     { combination: '1110001111', total: generateAssetTotal(), uncovered_adapters: ['CarbonBlack Defense'] },
     { combination: '0000000000', total: generateAssetTotal(), uncovered_adapters: ['All adapters'] },
-    { combination: '1111111111', total: 1132, uncovered_adapters: [] },
-    { combination: '1100000000', total: generateAssetTotal(), uncovered_adapters: ['eSentire JSON', 'Azure AD'] },
+    { combination: '1100000000', total: generateAssetTotal(), uncovered_adapters: ['eSentire', 'Azure AD'] },
     { combination: '1010111111', total: generateAssetTotal(), uncovered_adapters: ['CarbonBlack Response'] },
     { combination: '1001010101', total: generateAssetTotal(), uncovered_adapters: ['Defender ATP', 'Sumo Logic'] },
     { combination: '0111110001', total: generateAssetTotal(), uncovered_adapters: ['CarbonBlack Defense', 'CrowdStrike'] },
   ]
 
-  const maxTotal = computed(() => Math.max(...intersections.map((i) => i.total)))
+  const totalAssets = computed(() => intersections.reduce((acc, i) => acc + i.total, 0))
 
-  const sortedIntersections = computed(() =>
-    [...intersections].sort((a, b) => b.total - a.total)
-  )
+  // get percentage that 1132 is of totalAssets
+  const percentageCovered = computed(() => (1132 / totalAssets.value) * 100).value.toFixed()
 
-  // State for hover highlights
+  const maxTotal = computed(() => Math.max(...sortedIntersections.value.map((i) => i.total)))
+
+  const hideFullyCovered = ref(false)
+
+  const sortedIntersections = computed(() => {
+    const sorted = [...intersections].sort((a, b) => b.total - a.total)
+    if (!hideFullyCovered.value) return sorted
+    // return all but first
+    return sorted.slice(1)
+  })
+
   const highlightedIntersection = ref(-1)
 
-  // Methods for hover interactions
   const highlightIntersection = (index) => {
     highlightedIntersection.value = index
   }
@@ -137,8 +165,8 @@
   const isAdapterHighlighted = (adapterIndex) => {
     if (highlightedIntersection.value === -1) return false
     const combination = sortedIntersections.value[highlightedIntersection.value]?.combination
-    if (highlightType.value === 'covered') return combination[adapterIndex] === '1' // Highlight if covered
-    return combination[adapterIndex] === '0' // Highlight if uncovered
+    if (highlightType.value === 'covered') return combination[adapterIndex] === '1'
+    return combination[adapterIndex] === '0'
   }
 
   const isCellHighlighted = (adapterIndex, columnIndex) => {
@@ -146,28 +174,93 @@
     return highlightedIntersection.value === columnIndex
   }
 
-  // Toggle for highlighting type
-  const highlightType = ref('uncovered') // Default: highlight uncovered adapters
+  const getPlotIndicatorClass = (combination, adapterIndex) => {
+    if (highlightType.value === 'uncovered' && combination[adapterIndex] === '0') {
+      return 'plot-indicator--uncovered'
+    }
+    if (highlightType.value === 'covered' && combination[adapterIndex] === '1') {
+      return 'plot-indicator--covered'
+    }
+    return ''
+  }
+
+  const highlightType = ref('uncovered')
 
   const { generateActionMenuProps } = useActionsMenu()
 
   const menuItems = [
+    // {
+    //   section: true,
+    //   label: 'Asset report',
+    // },
+    // {
+    //   divider: true,
+    // },
     (adapter) => ({
-      label: 'Asset report',
-      iconLeft: { name: 'f-cpu' },
+      label: 'Uncovered',
+      iconRight: { name: 'chevron-right' },
       onClick: () => {
         console.log(adapter)
-      }
+      },
+      children: [
+        {
+          label: 'View assets',
+          iconLeft: { name: 'f-table' },
+          onClick: () => {
+            console.log(adapter)
+          },
+        },
+        {
+          divider: true,
+        },
+        {
+          label: 'Export JSON',
+          iconLeft: { name: 'f-file-text' },
+          onClick: () => {
+            console.log(adapter)
+          },
+        },
+        {
+          label: 'Export CSV',
+          iconLeft: { name: 'f-file-text' },
+          onClick: () => {
+            console.log(adapter)
+          },
+        },
+      ],
     }),
-    {
-      divider: true
-    },
     (adapter) => ({
-      label: 'Start new chat',
-      iconLeft: { name: 'f-cpu' },
+      label: 'Covered',
+      iconRight: { name: 'chevron-right' },
       onClick: () => {
         console.log(adapter)
-      }
+      },
+      children: [
+        {
+          label: 'View assets',
+          iconLeft: { name: 'f-table' },
+          onClick: () => {
+            console.log(adapter)
+          },
+        },
+        {
+          divider: true,
+        },
+        {
+          label: 'Export JSON',
+          iconLeft: { name: 'f-file-text' },
+          onClick: () => {
+            console.log(adapter)
+          },
+        },
+        {
+          label: 'Export CSV',
+          iconLeft: { name: 'f-file-text' },
+          onClick: () => {
+            console.log(adapter)
+          },
+        },
+      ],
     }),
   ]
 
@@ -175,6 +268,7 @@
     generateActionMenuProps({
       context,
       menuItems,
+      alignRight: false,
     })
 </script>
 
@@ -185,24 +279,30 @@
     --ep-upset-plot-covered-bg-color: rgb(85, 170, 125);
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto 1fr;
     background: var(--interface-surface);
-    padding: 30px;
+    padding: 0 3rem 3rem 3rem;
     border: 1px solid var(--border-color);
     user-select: none;
   }
 
+  .ep-upset-plot-header {
+    grid-column: 1/3;
+    grid-row: 1;
+    // background: red;
+    // --ep-header-height: 3.5rem;
+  }
+
   .ep-upset-plot-chart {
     grid-column: 2;
-    grid-row: 1;
+    grid-row: 2;
     display: flex;
     align-items: flex-end;
     gap: 2rem;
     height: 20rem;
-    padding-left: 1rem;
+    padding: 3rem 0 0 1rem;
     border-bottom: 1px solid var(--border-color);
 
-    // border-left: 1px solid var(--border-color);
     &__column-container {
       flex: 1;
       max-width: 4rem;
@@ -218,12 +318,13 @@
     &__column {
       width: 100%;
       background: linear-gradient(0, var(--primary-color-down-15-base) 30%, var(--primary-color-base) 80%);
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
   }
 
   .ep-upset-plot-adapters {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 3;
     display: flex;
     flex-direction: column;
 
@@ -233,35 +334,30 @@
       justify-content: flex-end;
       text-align: right;
       align-items: center;
-      gap: 1rem;
-      padding-right: 1rem;
+      gap: 0.5rem;
+      padding-inline: 1rem;
       border-bottom: 1px solid var(--border-color);
 
       &:nth-child(even) {
         background: var(--ep-upset-plot-row-stripe-color);
       }
 
-      &.highlighted--uncovered {
+      &.highlighted--uncovered .adapter-label {
         color: var(--ep-upset-plot-error-bg-color);
       }
 
-      &.highlighted--covered {
+      &.highlighted--covered .adapter-label {
         color: var(--ep-upset-plot-covered-bg-color)
       }
-
-      // &.highlighted {
-      //   color: green;
-      // }
     }
   }
 
   .ep-upset-plot-matrix-plot {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 3;
     display: flex;
     flex-direction: column;
 
-    // border-left: 1px solid var(--border-color);
     &__row {
       display: flex;
       gap: 2rem;
@@ -298,19 +394,9 @@
     }
   }
 
-  /* Add hover highlight styles */
-  .highlighted {
-    // background-color: rgba(0, 255, 0, 0.2);
-    /* Light green highlight */
-  }
-
-  // .ep-upset-plot-adapters__row.highlighted {
-  //   // color: green;
-  //   color: var(--ep-upset-plot-error-bg-color);
-  // }
   .ep-upset-plot-matrix-plot__cell.highlighted {
-    // border: 2px solid green;
-    background: var(--interface-overlay);
+    // background: var(--interface-overlay);
+    background: hsl(0, 0%, 18%);
   }
 
   .plot-indicator--included.highlighted {
@@ -319,9 +405,10 @@
 
   .ep-upset-plot-controls {
     grid-column: 1;
-    grid-row: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    grid-row: 2;
+    padding-top: 3rem;
+    // display: flex;
+    // flex-direction: column;
+    // gap: 1rem;
   }
 </style>
