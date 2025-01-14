@@ -372,7 +372,7 @@
       }
 
       &--covered .ep-upset-plot-chart__column {
-        background: linear-gradient(0, var(--ep-upset-plot-covered-bg-color) 30%, hsl(148 33% 47%) 80%);
+        background: linear-gradient(0, hsl(142 56% 64%) 30%, hsl(167 33% 40%) 80%);
       }
     }
 
