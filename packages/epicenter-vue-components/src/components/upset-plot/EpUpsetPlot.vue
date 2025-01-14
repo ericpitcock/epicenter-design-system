@@ -14,31 +14,17 @@
         export
       </template>
     </ep-header>
-    <div class="ep-upset-plot-controls ep-flex flex-col gap-40">
-      <ep-flex class="flex-col gap-10">
-        Highlight:
-        <ep-radio
-          id="uncovered"
-          v-model="highlightType"
-          label="Uncovered"
-          name="uncovered"
-          value="uncovered"
-        />
-        <ep-radio
-          id="covered"
-          v-model="highlightType"
-          label="Covered"
-          name="covered"
-          value="covered"
-        />
-      </ep-flex>
+    <div class="ep-upset-plot-y-axis">
+      <div class="y-axis-label">
+        Total assets
+      </div>
+    </div>
+    <div class="ep-upset-plot-chart">
       <ep-toggle
         :is-active="hideFullyCovered"
         label="Hide fully covered"
         @toggle="hideFullyCovered = $event"
       />
-    </div>
-    <div class="ep-upset-plot-chart">
       <div
         v-for="(intersection, index) in sortedIntersections"
         :key="index"
@@ -85,6 +71,25 @@
         </div>
       </div>
     </div>
+    <ep-flex class="highlight-control justify-center align-center gap-20">
+      <h2>Highlight:</h2>
+      <ep-flex class="gap-20">
+        <ep-radio
+          id="uncovered"
+          v-model="highlightType"
+          label="Uncovered"
+          name="uncovered"
+          value="uncovered"
+        />
+        <ep-radio
+          id="covered"
+          v-model="highlightType"
+          label="Covered"
+          name="covered"
+          value="covered"
+        />
+      </ep-flex>
+    </ep-flex>
   </div>
 </template>
 
@@ -187,13 +192,6 @@
   const { generateActionMenuProps } = useActionsMenu()
 
   const menuItems = [
-    // {
-    //   section: true,
-    //   label: 'Asset report',
-    // },
-    // {
-    //   divider: true,
-    // },
     (adapter) => ({
       label: 'Uncovered',
       iconRight: { name: 'chevron-right' },
@@ -277,9 +275,9 @@
     --ep-upset-plot-covered-bg-color: rgb(85, 170, 125);
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto auto 1fr auto;
     background: var(--interface-surface);
-    padding: 0 3rem 3rem 3rem;
+    padding: 0 3rem 2rem 3rem;
     border: 1px solid var(--border-color);
     user-select: none;
   }
@@ -287,11 +285,34 @@
   .ep-upset-plot-header {
     grid-column: 1/3;
     grid-row: 1;
-    // background: red;
-    // --ep-header-height: 3.5rem;
+  }
+
+  .ep-upset-plot-y-axis {
+    position: relative;
+    grid-column: 1;
+    grid-row: 2;
+    border-right: 1px solid hsl(0deg 0.19% 17.97%);
+    margin-right: 2.7rem;
+
+    .y-axis-label {
+      position: absolute;
+      top: 50%;
+      right: -3rem;
+      transform: rotate(-90deg) translateY(-50%);
+      transform-origin: center;
+      text-align: center;
+      white-space: nowrap;
+    }
+  }
+
+  .ep-toggle {
+    position: absolute;
+    top: 2rem;
+    right: 0;
   }
 
   .ep-upset-plot-chart {
+    position: relative;
     grid-column: 2;
     grid-row: 2;
     display: flex;
@@ -392,8 +413,13 @@
     }
   }
 
+  .highlight-control {
+    grid-column: 1/3;
+    grid-row: 4;
+    padding-top: 2rem;
+  }
+
   .ep-upset-plot-matrix-plot__cell.highlighted {
-    // background: var(--interface-overlay);
     background: hsl(0, 0%, 18%);
   }
 
@@ -405,8 +431,5 @@
     grid-column: 1;
     grid-row: 2;
     padding-top: 3rem;
-    // display: flex;
-    // flex-direction: column;
-    // gap: 1rem;
   }
 </style>
