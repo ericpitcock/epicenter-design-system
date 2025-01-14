@@ -1,109 +1,131 @@
 <template>
-  <div class="ep-upset-plot-container">
+  <div
+    ref="container"
+    class="ep-upset-plot-container"
+  >
     <ep-header class="ep-upset-plot-header">
       <template #left>
-        <h2>Endpoint coverage</h2>
+        <h2 @click="showAssetTable = false">
+          Endpoint coverage
+        </h2>
       </template>
       <template #center>
         <h2>
-          {{ percentageCovered }}% coverage <span
-            class="text-color--subtle">(1132 / {{ totalAssets }})</span>
+          {{ percentageCovered }}% full coverage <span
+            class="text-color--subtle"
+          >(1132 / {{ totalAssets }})</span>
         </h2>
       </template>
       <template #right>
         <ep-dropdown v-bind="exportMenuProps()" />
       </template>
     </ep-header>
-    <div class="ep-upset-plot-y-axis">
-      <div class="y-axis-label">
-        Assets
-      </div>
-    </div>
-    <div class="ep-upset-plot-chart">
-      <ep-toggle
-        :is-active="hideFullyCovered"
-        label="Exclude 100% covered"
-        @toggle="hideFullyCovered = $event"
-      />
-      <div
-        v-for="(intersection, index) in sortedIntersections"
-        :key="index"
-        class="ep-upset-plot-chart__column-container"
-        :class="{
-          'ep-upset-plot-chart__column-container--uncovered': intersection.combination === '0000000000',
-          'ep-upset-plot-chart__column-container--covered': intersection.combination === '1111111111'
-        }"
-        @mouseover="highlightIntersection(index)"
-        @mouseleave="clearHighlights"
-      >
-        <div class="ep-upset-plot-chart__count font-size--xsmall">
-          {{ intersection.total }}
+    <ep-loading-state
+      v-if="loadingTable"
+      class="ep-upset-plot__loading"
+    />
+    <ep-table
+      v-else-if="showAssetTable"
+      :columns
+      :data
+    />
+    <template v-else>
+      <div class="ep-upset-plot-y-axis">
+        <div class="y-axis-label">
+          Assets
         </div>
-        <div
-          class="ep-upset-plot-chart__column"
-          :style="{ height: `${(intersection.total / maxTotal) * 100}%` }"
+      </div>
+      <div class="ep-upset-plot-chart">
+        <ep-toggle
+          :is-active="hideFullyCovered"
+          label="Exclude 100% covered"
+          @toggle="hideFullyCovered = $event"
         />
-      </div>
-    </div>
-    <div class="ep-upset-plot-adapters">
-      <div
-        v-for="(adapter, adapterIndex) in adapters"
-        :key="adapter"
-        class="ep-upset-plot-adapters__row"
-        :class="{ [`highlighted--${highlightType}`]: isAdapterHighlighted(adapterIndex) }"
-      >
-        <div class="adapter-label">{{ adapter }}</div>
-        <ep-dropdown v-bind="adapterActionsMenuProps(adapter)" />
-      </div>
-    </div>
-    <div class="ep-upset-plot-matrix-plot">
-      <div
-        v-for="(adapter, adapterIndex) in adapters"
-        :key="adapterIndex"
-        class="ep-upset-plot-matrix-plot__row"
-      >
         <div
-          v-for="(intersection, columnIndex) in sortedIntersections"
-          :key="columnIndex"
-          class="ep-upset-plot-matrix-plot__cell"
-          :class="{ highlighted: isCellHighlighted(adapterIndex, columnIndex) }"
+          v-for="(intersection, index) in sortedIntersections"
+          :key="index"
+          class="ep-upset-plot-chart__column-container"
+          :class="{
+            'ep-upset-plot-chart__column-container--uncovered': intersection.combination === '0000000000',
+            'ep-upset-plot-chart__column-container--covered': intersection.combination === '1111111111'
+          }"
+          @mouseover="highlightIntersection(index)"
+          @mouseleave="clearHighlights"
+          @click="loadTable"
         >
+          <div class="ep-upset-plot-chart__count font-size--xsmall">
+            {{ intersection.total }}
+          </div>
           <div
-            class="plot-indicator"
-            :class="getPlotIndicatorClass(intersection.combination, adapterIndex)"
+            class="ep-upset-plot-chart__column"
+            :style="{ height: `${(intersection.total / maxTotal) * 100}%` }"
           />
         </div>
       </div>
-    </div>
-    <ep-flex class="highlight-control justify-center align-center gap-20">
-      <h2>Highlight:</h2>
-      <ep-flex class="gap-20">
-        <ep-radio
-          id="uncovered"
-          v-model="highlightType"
-          label="Uncovered"
-          name="uncovered"
-          value="uncovered"
-        />
-        <ep-radio
-          id="covered"
-          v-model="highlightType"
-          label="Covered"
-          name="covered"
-          value="covered"
-        />
+      <div class="ep-upset-plot-adapters">
+        <div
+          v-for="(adapter, adapterIndex) in adapters"
+          :key="adapter"
+          class="ep-upset-plot-adapters__row"
+          :class="{ [`highlighted--${highlightType}`]: isAdapterHighlighted(adapterIndex) }"
+        >
+          <div class="adapter-label">{{ adapter }}</div>
+          <ep-dropdown v-bind="adapterActionsMenuProps(adapter)" />
+        </div>
+      </div>
+      <div class="ep-upset-plot-matrix-plot">
+        <div
+          v-for="(adapter, adapterIndex) in adapters"
+          :key="adapterIndex"
+          class="ep-upset-plot-matrix-plot__row"
+        >
+          <div
+            v-for="(intersection, columnIndex) in sortedIntersections"
+            :key="columnIndex"
+            class="ep-upset-plot-matrix-plot__cell"
+            :class="{ highlighted: isCellHighlighted(adapterIndex, columnIndex) }"
+          >
+            <div
+              class="plot-indicator"
+              :class="getPlotIndicatorClass(intersection.combination, adapterIndex)"
+            />
+          </div>
+        </div>
+      </div>
+      <ep-flex
+        class="highlight-control justify-center align-center gap-20 font-size--small"
+      >
+        <h2>Highlight:</h2>
+        <ep-flex class="gap-20">
+          <ep-radio
+            id="uncovered"
+            v-model="highlightType"
+            label="Uncovered"
+            name="uncovered"
+            value="uncovered"
+          />
+          <ep-radio
+            id="covered"
+            v-model="highlightType"
+            label="Covered"
+            name="covered"
+            value="covered"
+          />
+        </ep-flex>
       </ep-flex>
-    </ep-flex>
+    </template>
   </div>
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue'
+  import { computed, ref, useTemplateRef } from 'vue'
   import { faker } from '@faker-js/faker'
   import EpFlex from '../flexbox/EpFlex.vue'
   import EpHeader from '../header/EpHeader.vue'
   import EpDropdown from '../dropdown/EpDropdown.vue'
+  import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpRadio from '../radio/EpRadio.vue'
+  import EpTable from '../table/EpTable.vue'
   import EpToggle from '../toggle/EpToggle.vue'
   import { useActionsMenu } from '../../composables'
 
@@ -297,13 +319,47 @@
       context: null,
       menuItems: exportMenuItems,
     })
+
+  const loadingTable = ref(false)
+  const showAssetTable = ref(false)
+  const container = useTemplateRef('container')
+
+  // method that fakes loading for 1 second and then shows the table
+  const loadTable = () => {
+    // get current height of container.value and hard code it on the same element
+    container.value.style.height = `${container.value.clientHeight}px`
+    loadingTable.value = true
+    setTimeout(() => {
+      loadingTable.value = false
+      showAssetTable.value = true
+    }, 800)
+  }
+
+  // fakes asset table columns
+  const columns = [
+    { label: 'Asset ID', key: 'asset_id' },
+    { label: 'Adapter', key: 'adapter' },
+    { label: 'Status', key: 'status' },
+  ]
+
+  // fakes asset table data
+  const data = [
+    { asset_id: '1234', adapter: 'CrowdStrike', status: 'Uncovered' },
+    { asset_id: '5678', adapter: 'CarbonBlack Response', status: 'Covered' },
+    { asset_id: '91011', adapter: 'CarbonBlack Defense', status: 'Covered' },
+  ]
 </script>
 
 <style lang="scss" scoped>
+  .ep-upset-plot__loading {
+    --ep-loading-state-top: 6.1rem;
+  }
+
   .ep-upset-plot-container {
     --ep-upset-plot-row-stripe-color: hsl(0 0.84% 14%);
     --ep-upset-plot-uncovered-bg-color: hsl(342 46% 55%);
     --ep-upset-plot-covered-bg-color: hsl(142, 21%, 51%);
+    position: relative;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto 1fr auto;
