@@ -29,6 +29,10 @@
         v-for="(intersection, index) in sortedIntersections"
         :key="index"
         class="ep-upset-plot-chart__column-container"
+        :class="{
+          'ep-upset-plot-chart__column-container--uncovered': intersection.combination === '0000000000',
+          'ep-upset-plot-chart__column-container--covered': intersection.combination === '1111111111'
+        }"
         @mouseover="highlightIntersection(index)"
         @mouseleave="clearHighlights"
       >
@@ -272,7 +276,7 @@
   .ep-upset-plot-container {
     --ep-upset-plot-row-stripe-color: hsl(0deg 0.84% 14.37%);
     --ep-upset-plot-error-bg-color: hsl(342deg 45.82% 54.76%);
-    --ep-upset-plot-covered-bg-color: rgb(85, 170, 125);
+    --ep-upset-plot-covered-bg-color: hsl(148, 33%, 50%);
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto 1fr auto;
@@ -332,6 +336,14 @@
       align-items: center;
       gap: 0.5rem;
       cursor: pointer;
+
+      &--uncovered .ep-upset-plot-chart__column {
+        background: linear-gradient(0, var(--ep-upset-plot-error-bg-color) 30%, hsl(342, 45.82%, 50%) 80%);
+      }
+
+      &--covered .ep-upset-plot-chart__column {
+        background: linear-gradient(0, var(--ep-upset-plot-covered-bg-color) 30%, hsl(148, 33%, 35%) 80%);
+      }
     }
 
     &__column {
