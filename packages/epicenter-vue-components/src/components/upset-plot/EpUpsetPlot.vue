@@ -11,7 +11,7 @@
         </h2>
       </template>
       <template #right>
-        export
+        <ep-dropdown v-bind="exportMenuProps()" />
       </template>
     </ep-header>
     <div class="ep-upset-plot-y-axis">
@@ -270,6 +270,33 @@
       menuItems,
       alignRight: false,
     })
+
+  const exportMenuItems = [
+    {
+      section: true,
+      label: 'Full report',
+    },
+    {
+      label: 'Export JSON',
+      iconLeft: { name: 'f-file-text' },
+      onClick: () => {
+        console.log('export json')
+      },
+    },
+    {
+      label: 'Export CSV',
+      iconLeft: { name: 'f-file-text' },
+      onClick: () => {
+        console.log('export csv')
+      },
+    },
+  ]
+
+  const exportMenuProps = () =>
+    generateActionMenuProps({
+      context: null,
+      menuItems: exportMenuItems,
+    })
 </script>
 
 <style lang="scss" scoped>
@@ -287,6 +314,7 @@
   }
 
   .ep-upset-plot-header {
+    --ep-header-container-overflow: visible;
     grid-column: 1/3;
     grid-row: 1;
   }
