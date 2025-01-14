@@ -6,18 +6,17 @@
       </template>
       <template #center>
         <h2>
-          {{ percentageCovered }}% full coverage <span
-            class="text-color--subtle"
-          >(1132 / {{ totalAssets }})</span>
+          {{ percentageCovered }}% coverage <span
+            class="text-color--subtle">(1132 / {{ totalAssets }})</span>
         </h2>
       </template>
       <template #right>
         export
       </template>
     </ep-header>
-    <div class="ep-upset-plot-controls ep-flex flex-col gap-30">
+    <div class="ep-upset-plot-controls ep-flex flex-col gap-40">
       <ep-flex class="flex-col gap-10">
-        <!-- Highlight: -->
+        Highlight:
         <ep-radio
           id="uncovered"
           v-model="highlightType"
@@ -32,13 +31,12 @@
           name="covered"
           value="covered"
         />
-        <!-- checkbox to hide fully covered -->
-        <ep-toggle
-          :is-active="hideFullyCovered"
-          label="Hide fully covered"
-          @toggle="hideFullyCovered = $event"
-        />
       </ep-flex>
+      <ep-toggle
+        :is-active="hideFullyCovered"
+        label="Hide fully covered"
+        @toggle="hideFullyCovered = $event"
+      />
     </div>
     <div class="ep-upset-plot-chart">
       <div
