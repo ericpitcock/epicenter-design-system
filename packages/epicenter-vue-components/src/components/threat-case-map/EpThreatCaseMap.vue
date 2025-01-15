@@ -423,9 +423,8 @@
 </script>
 
 <style lang="scss">
-  @use 'sass:color';
   // @import '../assets/app.scss';
-  @import '../../../node_modules/jsplumb/css/jsplumbtoolkit-defaults.css';
+  // @import '../../../node_modules/jsplumb/css/jsplumbtoolkit-defaults.css';
   $selectedBlue: #a3edfe;
 
   .case-control-container {
@@ -448,7 +447,8 @@
     // z-index: 1;
     path:not(.jtk-connector-outline) {
       // stroke: darken($selectedBlue, 10%);
-      stroke: color.adjust($selectedBlue, $lightness: -10%);
+      // stroke: color.adjust($selectedBlue, $lightness: -10%);
+      stroke: $selectedBlue;
       cursor: pointer;
       // stroke-width: 4;
     }
@@ -462,7 +462,8 @@
     &.active {
       path:not(.jtk-connector-outline) {
         // stroke: darken($selectedBlue, 10%);
-        stroke: color.adjust($selectedBlue, $lightness: -10%);
+        // stroke: color.adjust($selectedBlue, $lightness: -10%);
+        stroke: $selectedBlue;
       }
     }
   }
