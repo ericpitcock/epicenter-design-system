@@ -36,11 +36,13 @@
         </div>
       </div>
       <div class="ep-upset-plot-chart">
-        <ep-toggle
-          :is-active="hideFullyCovered"
-          label="Exclude 100% covered"
-          @toggle="hideFullyCovered = $event"
-        />
+        <div class="ep-toggle-container">
+          <ep-toggle
+            :is-active="hideFullyCovered"
+            label="Exclude 100% covered"
+            @toggle="hideFullyCovered = $event"
+          />
+        </div>
         <div
           v-for="(intersection, index) in sortedIntersections"
           :key="index"
@@ -84,6 +86,9 @@
             :key="columnIndex"
             class="ep-upset-plot-matrix-plot__cell"
             :class="{ highlighted: isCellHighlighted(adapterIndex, columnIndex) }"
+            @mouseover="highlightIntersection(columnIndex)"
+            @mouseleave="clearHighlights"
+            @click="loadTable(columnIndex)"
           >
             <div
               class="plot-indicator"
@@ -130,13 +135,13 @@
   import { useActionsMenu } from '../../composables'
 
   defineOptions({
-    name: 'EpUpSetPlot',
+    name: 'EpUpsetPlot',
   })
 
   const adapters = [
     'CrowdStrike',
-    'CarbonBlack Response',
-    'CarbonBlack Defense',
+    'Carbon Black Response',
+    'Carbon Black Defense',
     'Defender ATP',
     'eSentire',
     'Sumo Logic',
@@ -148,8 +153,10 @@
 
   const generateAssetTotal = () => faker.number.int({ min: 0, max: 200 })
 
+  const fullCoveredCount = 1132
+
   const intersections = [
-    { combination: '1111111111', total: 1132, uncovered_adapters: [] },
+    { combination: '1111111111', total: fullCoveredCount, uncovered_adapters: [] },
     { combination: '1010101010', total: generateAssetTotal(), uncovered_adapters: ['CarbonBlack Response', 'Sumo Logic'] },
     { combination: '1101101101', total: generateAssetTotal(), uncovered_adapters: ['Qualys Scans'] },
     { combination: '0001111111', total: generateAssetTotal(), uncovered_adapters: ['CrowdStrike'] },
@@ -168,7 +175,7 @@
   const totalAssets = computed(() => intersections.reduce((acc, i) => acc + i.total, 0))
 
   // get percentage that 1132 is of totalAssets
-  const percentageCovered = computed(() => (1132 / totalAssets.value) * 100).value.toFixed()
+  const percentageCovered = computed(() => (fullCoveredCount / totalAssets.value) * 100).value.toFixed()
 
   const maxTotal = computed(() => Math.max(...sortedIntersections.value.map((i) => i.total)))
 
@@ -325,10 +332,20 @@
   const container = useTemplateRef('container')
 
   // method that fakes loading for 1 second and then shows the table
-  const loadTable = () => {
-    // get current height of container.value and hard code it on the same element
+  const loadTable = (columnIndex) => {
+    // Set loading state and show the table
     container.value.style.height = `${container.value.clientHeight}px`
     loadingTable.value = true
+
+    console.log(columnIndex)
+
+    // Example: Filter data based on the columnIndex (intersection)
+    // const selectedIntersection = sortedIntersections.value[columnIndex]
+    // const filteredData = data.filter((item) =>
+    //   selectedIntersection.uncovered_adapters.includes(item.adapter)
+    // )
+
+    // Fake loading and then display the filtered data
     setTimeout(() => {
       loadingTable.value = false
       showAssetTable.value = true
@@ -350,13 +367,28 @@
   ]
 </script>
 
+<style>
+
+  :root,
+  .dark-theme {
+    --ep-upset-plot-indicator-bg-color: var(--interface-overlay);
+    --ep-upset-plot-column-hover-bg-color: hsl(0 0% 18%);
+  }
+
+  html[data-color-theme='light'],
+  .light-theme {
+    --ep-upset-plot-indicator-bg-color: hsl(var(--gray-70));
+    --ep-upset-plot-column-hover-bg-color: hsl(0 0% 92%);
+  }
+</style>
+
 <style lang="scss" scoped>
   .ep-upset-plot__loading {
     --ep-loading-state-top: 6.1rem;
   }
 
   .ep-upset-plot-container {
-    --ep-upset-plot-row-stripe-color: hsl(0 0.84% 14%);
+    --ep-upset-plot-row-stripe-color: var(--ep-table-row-stripe-color);
     --ep-upset-plot-uncovered-bg-color: hsl(342 46% 55%);
     --ep-upset-plot-covered-bg-color: hsl(142, 21%, 51%);
     position: relative;
@@ -379,7 +411,7 @@
     position: relative;
     grid-column: 1;
     grid-row: 2;
-    border-right: 1px solid hsl(0 0.19% 18%);
+    border-right: 1px solid var(--border-color);
     margin-right: 2.7rem;
 
     .y-axis-label {
@@ -393,12 +425,15 @@
     }
   }
 
-  .ep-toggle {
-    --ep-toggle-track-active-bg-color: var(--ep-upset-plot-covered-bg-color);
-    --ep-toggle-track-active-border-color: var(--ep-toggle-track-active-bg-color);
+  .ep-toggle-container {
     position: absolute;
     top: 2rem;
     right: 0;
+  }
+
+  .ep-toggle {
+    --ep-toggle-track-active-bg-color: var(--ep-upset-plot-covered-bg-color);
+    --ep-toggle-track-active-border-color: var(--ep-toggle-track-active-bg-color);
   }
 
   .ep-upset-plot-chart {
@@ -413,6 +448,8 @@
     border-bottom: 1px solid var(--border-color);
 
     &__column-container {
+      position: relative;
+      bottom: -0.1rem;
       flex: 1;
       max-width: 4rem;
       height: 100%;
@@ -493,11 +530,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
 
       .plot-indicator {
         width: 0.8rem;
         height: 0.8rem;
-        background: var(--interface-overlay);
+        background: var(--ep-upset-plot-indicator-bg-color);
         border-radius: 50%;
 
         &--uncovered {
@@ -518,7 +556,7 @@
   }
 
   .ep-upset-plot-matrix-plot__cell.highlighted {
-    background: hsl(0 0% 18%);
+    background: var(--ep-upset-plot-column-hover-bg-color);
   }
 
   .plot-indicator--included.highlighted {
