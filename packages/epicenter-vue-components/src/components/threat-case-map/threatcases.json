@@ -1,0 +1,3455 @@
+[
+  {
+    "info": {
+      "title": "ThreatCase DEF456",
+      "dates": "XX/XX/XX–XX/XX/XX",
+      "summary": [
+        "On May 15, <span>tsmith-desktop</span> began querying a higher than expected number of machines via ICMP, PTR, and data ports.",
+        "Between May 16-20, <span>tsmith-desktop</span> and <span>eprindle-notebook</span> collected data from <span>dbserver01</span>, <span>dbserver02</span>, and <span>dbserver03</span>.",
+        "Between May 17-21, <span>tsmith-desktop</span> exfiltrated an unusual amount of data to <span>google.com</span> and <span>dropbox.com</span>."
+      ],
+      "window_start": "2018-05-15T00:00:00",
+      "window_end": "2018-07-10T00:00:00"
+    },
+    "nodes": [
+      {
+        "id": "sus1",
+        "type": "sus",
+        "labels": [
+          "tsmith-desktop",
+          "10.50.60.45"
+        ],
+        "system_type": "Desktop Computer"
+      },
+      {
+        "id": "sus2",
+        "type": "sus",
+        "labels": [
+          "eprindle-notebook",
+          "10.50.60.50"
+        ],
+        "system_type": "Notebook Computer"
+      },
+      {
+        "id": "internal1",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 6,
+        "labels": [
+          "6 Hosts"
+        ],
+        "hosts": [
+          "10.39.25.110",
+          "10.50.60.50",
+          "10.50.60.60",
+          "10.50.60.70",
+          "10.50.60.80",
+          "10.62.18.145"
+        ]
+      },
+      {
+        "id": "internal2",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 90,
+        "labels": [
+          "90 Hosts"
+        ],
+        "hosts": [
+          "10.50.60.11",
+          "10.50.60.12",
+          "10.50.60.13",
+          "10.50.60.14",
+          "10.50.60.15",
+          "10.50.60.16",
+          "10.50.60.17",
+          "10.50.60.18",
+          "10.50.60.19",
+          "10.50.60.20",
+          "10.50.60.21",
+          "10.50.60.22",
+          "10.50.60.23",
+          "10.50.60.24",
+          "10.50.60.25",
+          "10.50.60.26",
+          "10.50.60.27",
+          "10.50.60.28",
+          "10.50.60.29",
+          "10.50.60.30",
+          "10.50.60.31",
+          "10.50.60.32",
+          "10.50.60.33",
+          "10.50.60.34",
+          "10.50.60.35",
+          "10.50.60.36",
+          "10.50.60.37",
+          "10.50.60.38",
+          "10.50.60.39",
+          "10.50.60.40",
+          "10.50.60.41",
+          "10.50.60.42",
+          "10.50.60.43",
+          "10.50.60.44",
+          "10.50.60.45",
+          "10.50.60.46",
+          "10.50.60.47",
+          "10.50.60.48",
+          "10.50.60.49",
+          "10.50.60.50",
+          "10.50.60.51",
+          "10.50.60.52",
+          "10.50.60.53",
+          "10.50.60.54",
+          "10.50.60.55",
+          "10.50.60.56",
+          "10.50.60.57",
+          "10.50.60.58",
+          "10.50.60.59",
+          "10.50.60.60",
+          "10.50.60.61",
+          "10.50.60.62",
+          "10.50.60.63",
+          "10.50.60.64",
+          "10.50.60.65",
+          "10.50.60.66",
+          "10.50.60.67",
+          "10.50.60.68",
+          "10.50.60.69",
+          "10.50.60.70",
+          "10.50.60.71",
+          "10.50.60.72",
+          "10.50.60.73",
+          "10.50.60.74",
+          "10.50.60.75",
+          "10.50.60.76",
+          "10.50.60.77",
+          "10.50.60.78",
+          "10.50.60.79",
+          "10.50.60.80",
+          "10.50.60.81",
+          "10.50.60.82",
+          "10.50.60.83",
+          "10.50.60.84",
+          "10.50.60.85",
+          "10.50.60.86",
+          "10.50.60.87",
+          "10.50.60.88",
+          "10.50.60.89",
+          "10.50.60.90",
+          "10.50.60.91",
+          "10.50.60.92",
+          "10.50.60.93",
+          "10.50.60.94",
+          "10.50.60.95",
+          "10.50.60.96",
+          "10.50.60.97",
+          "10.50.60.98",
+          "10.50.60.99",
+          "10.50.60.100"
+        ]
+      },
+      {
+        "id": "internal3",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 2,
+        "labels": [
+          "2 Requests"
+        ],
+        "hosts": [
+          "10.81.24.12",
+          "10.81.25.13"
+        ]
+      },
+      {
+        "id": "internal4",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver01",
+          "10.81.25.13"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal5",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver02",
+          "10.81.24.12"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal6",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver03",
+          "10.25.14.91"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "external1",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "dropbox.com",
+          "162.125.248.1"
+        ],
+        "whois": {
+          "organization": "Dropbox, Inc.",
+          "country": "United States",
+          "state": "California",
+          "created": "1995-06-28",
+          "updated": "2017-05-26"
+        }
+      },
+      {
+        "id": "external2",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "mail.google.com",
+          "216.58.216.142"
+        ],
+        "whois": {
+          "organization": "Google LLC",
+          "country": "United States",
+          "state": "California",
+          "created": "1997-09-15",
+          "updated": "2018-02-21"
+        }
+      },
+      {
+        "id": "external3",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "drive.google.com",
+          "216.58.193.78"
+        ],
+        "whois": {
+          "organization": "Google LLC",
+          "country": "United States",
+          "state": "California",
+          "created": "1997-09-15",
+          "updated": "2018-02-21"
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "date": "15",
+        "window_start": "2018-05-15T00:00:00",
+        "window_end": "2018-05-15T00:00:00",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>tsmith-desktop</span> queried 6 hosts, including suspicious host <span>eprindle-notebook</span>, using 6 ports of interest: 22, 137, 139, 389, 443, and 445",
+        "value": "Data Ports",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ],
+        "inspector": {
+          "general": {
+            "type": {
+              "label": "Recon Type",
+              "value": "Data Ports (TCP)"
+            },
+            "data_source": {
+              "label": "Data Source",
+              "value": "Netflow"
+            }
+          },
+          "chart": {
+            "title": "Related Data Port (TCP) Activity from 5/15-5/21",
+            "file": "fpo-ev-chart-1@2x.png"
+          },
+          "reasons": {
+            "title": "Data Port (TCP) Baseline Analysis (5/15-5/21)",
+            "lists": [{
+              "title": "Timeframe: Expected Activity",
+              "bullets": [
+                "Within the 7 day window, tsmith-desktop queried 6 distinct hosts (including eprindle-notebook) using data ports 22, 137, 139, 389, 443, and 445.",
+                "tsmith-desktop typically contacts hosts on 443 only"
+              ]
+            },
+            {
+              "title": "Peer Based Explanations",
+              "bullets": [
+                "tsmith-desktop is in user VLAN segment (10.50.60.0/24)",
+                "tsmith-desktop has not communicated with any of these IP's within the previous time window"
+              ]
+            }
+            ]
+          },
+          "related": {
+            "title": "Related Recon Evidence",
+            "evidence": [
+              {
+                "desc": "tsmith-desktop spoke to 90 hosts, including suspicious host eprindle-notebook, using the ICMP protocol.",
+                "info": "EV002 – 5/ 15"
+              },
+              {
+                "desc": "tsmith-desktop made reverse DNS lookups (PTR requests) to dbserver01 and dbserver02.",
+                "info": "EV003 – 5/15"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 2,
+        "date": "15",
+        "window_start": "2018-05-15T00:00:00",
+        "window_end": "2018-05-15T00:00:00",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>tsmith-desktop</span> spoke to 90 hosts, including suspicious host <span>eprindle-notebook</span>, using the ICMP protocol.",
+        "value": "ICMP",
+        "source": "sus1",
+        "target": "internal2",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ],
+        "inspector": {
+          "general": {
+            "type": {
+              "label": "Recon Type",
+              "value": "ICMP"
+            },
+            "data_source": {
+              "label": "Data Source",
+              "value": "Netflow"
+            }
+          },
+          "chart": {
+            "title": "Related ICMP Activity from 5/15-5/21",
+            "file": "fpo-ev-chart-2@2x.png"
+          },
+          "reasons": {
+            "title": "ICMP Activity Baseline Analysis (5/15-5/21)",
+            "lists": [{
+              "title": "Timeframe Activity Baseline",
+              "bullets": [
+                "Over a 7 day window, tsmith-desktop contacted 100 distinct hosts via ICMP.",
+                "Source typically contacts 0 hosts via ICMP"
+              ]
+            },
+            {
+              "title": "Peer Activity Baseline",
+              "bullets": [
+                "tsmith-desktop is in user VLAN segment (10.50.60.0/24)",
+                "tsmith-desktop has not communicated with any of these IP's within the previous time window"
+              ]
+            }
+            ]
+          },
+          "related": {
+            "title": "Related Recon Evidence",
+            "evidence": [
+              {
+                "desc": "tsmith-desktop queried 6 hosts, including suspicious host eprindle-notebook, using 6 data ports: 22, 137, 139, 389, 443, and 445.",
+                "info": "EV001 – 5/ 15"
+              },
+              {
+                "desc": "tsmith-desktop made reverse DNS lookups (PTR requests) to dbserver01 and dbserver02.",
+                "info": "EV003 – 5/15"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 3,
+        "date": "15",
+        "window_start": "2018-05-15T00:00:00",
+        "window_end": "2018-05-15T00:00:00",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>tsmith-desktop</span> made reverse DNS lookups (PTR requests) to learn about <span>dbserver01</span> and <span>dbserver02</span>.",
+        "value": "PTR",
+        "source": "sus1",
+        "target": "internal3",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ],
+        "inspector": {
+          "general": {
+            "type": {
+              "label": "Recon Type",
+              "value": "PTR Requests (rDNS)"
+            },
+            "data_source": {
+              "label": "Data Source",
+              "value": "DNS"
+            }
+          },
+          "chart": {
+            "title": "Related PTR Activity from 5/15-5/21",
+            "file": "fpo-ev-chart-3@2x.png"
+          },
+          "reasons": {
+            "title": "PTR Baseline Analysis (5/15-5/21)",
+            "lists": [{
+              "title": "Timeframe: Expected Activity",
+              "bullets": [
+                "Within the 7 day window, tsmith-desktop made 2 PTR requests (rDNS) to dbserver01 and dbserver02.",
+                "tsmith-desktop typically conducts 0 PTR requests"
+              ]
+            },
+            {
+              "title": "Peer Based Explanations",
+              "bullets": [
+                "tsmith-desktop is in user VLAN segment (10.50.60.0/24)",
+                "tsmith-desktop has not communicated with any of these IP's within the previous time window"
+              ]
+            }
+            ]
+          },
+          "related": {
+            "title": "Related Recon Evidence",
+            "evidence": [
+              {
+                "desc": "tsmith-desktop queried 6 hosts, including suspicious host eprindle-notebook, using 6 data ports: 22, 137, 139, 389, 443, and 445.",
+                "info": "EV001 – 5/ 15"
+              },
+              {
+                "desc": "tsmith-desktop spoke to 90 hosts, including suspicious host eprindle-notebook, using the ICMP protocol.",
+                "info": "EV002 – 5/15"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 4,
+        "date": "16",
+        "window_start": "2018-05-16T00:00:00",
+        "window_end": "2018-05-16T00:00:00",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>tsmith-desktop</span> collected 113.94 MB from <span>dbserver01</span> over port 156 (SQL).",
+        "value": "113.94 MB",
+        "source": "internal4",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ],
+        "inspector": {
+          "general": {
+            "data_source": {
+              "label": "Data Source",
+              "value": "Netflow"
+            }
+          },
+          "chart": {
+            "title": "Related Collection Activity from 5/15-5/21",
+            "file": "fpo-ev-chart-4@2x.png"
+          },
+          "reasons": {
+            "title": "Collection Activity Baseline Analysis (5/15-5/21)",
+            "lists": [{
+              "title": "Timeframe: Expected Activity",
+              "bullets": [
+                "Within the 7 day window, tsmith-desktop collected 113.94 MB from dbserver01 over port 156 (SQL).",
+                "tsmith-desktop typically collects 0 MB from this host"
+              ]
+            },
+            {
+              "title": "Peer Based Explanations",
+              "bullets": [
+                "tsmith-desktop is in user VLAN segment (10.50.60.0/24)",
+                "tsmith-desktop has not communicated with dbserver01 within the previous time window"
+              ]
+            }
+            ]
+          },
+          "related": {
+            "title": "Related Collection Evidence",
+            "evidence": [
+              {
+                "desc": "tsmith-desktop collected 98.24MB from dbserver02 over port 156 (SQL).",
+                "info": "EV005 – 5/ 16"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 5,
+        "date": "16",
+        "window_start": "2018-05-16T00:00:00",
+        "window_end": "2018-05-16T00:00:00",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>tsmith-desktop</span> collected 98.24MB from <span>dbserver02</span> over port 156 (SQL).",
+        "value": "98.24 MB",
+        "source": "internal5",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ],
+        "inspector": {
+          "general": {
+            "data_source": {
+              "label": "Data Source",
+              "value": "Netflow"
+            }
+          },
+          "chart": {
+            "title": "Related Collection Activity from 5/15-5/21",
+            "file": "fpo-ev-chart-5@2x.png"
+          },
+          "reasons": {
+            "title": "Collection Activity Baseline Analysis (5/15-5/21)",
+            "lists": [{
+              "title": "Timeframe: Expected Activity",
+              "bullets": [
+                "Within the 7 day window, tsmith-desktop collected 98.24 MB from dbserver02 over port 156 (SQL).",
+                "tsmith-desktop typically collects 0 MB from this host"
+              ]
+            },
+            {
+              "title": "Peer Based Explanations",
+              "bullets": [
+                "tsmith-desktop is in user VLAN segment (10.50.60.0/24)",
+                "tsmith-desktop has not communicated with dbserver02 within the previous time window"
+              ]
+            }
+            ]
+          },
+          "related": {
+            "title": "Related Collection Evidence",
+            "evidence": [
+              {
+                "desc": "tsmith-desktop collected 113.94MB from dbserver01 over port 156 (SQL).",
+                "info": "EV004 – 5/ 16"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 6,
+        "date": "17",
+        "window_start": "2018-05-17T00:00:00",
+        "window_end": "2018-05-17T00:00:00",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>tsmith-desktop</span> exfiltrated 70.71 MB to <span>dropbox.com (162.125.248.1)</span> over port 443.",
+        "value": "70.71 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ],
+        "inspector": {
+          "general": {
+            "data_source": {
+              "label": "Data Source",
+              "value": "Proxyweb"
+            }
+          },
+          "chart": {
+            "title": "Related Exfiltration Activity from 5/15-5/21",
+            "file": "fpo-ev-chart-6@2x.png"
+          },
+          "reasons": {
+            "title": "Exfiltration Activity Baseline Analysis (5/15-5/21)",
+            "lists": [{
+              "title": "Timeframe: Expected Activity",
+              "bullets": [
+                "Within the 7 day window, tsmith-desktop exfiltrated 70.71 MB to dropbox.com (162.125.248.1).", 
+                "tsmith-desktop typically publishes 0 MB to this destination"
+              ]
+            },
+            {
+              "title": "Peer Based Explanations",
+              "bullets": [
+                "tsmith-desktop is in user VLAN segment (10.50.60.0/24)",
+                "tsmith-desktop has not communicated with dropbox.com within the previous time window"
+              ]
+            }
+            ]
+          },
+          "related": {
+            "title": "Related Exfiltration Evidence",
+            "evidence": [
+              {
+                "desc": "tsmith-desktop exfiltrated 18.84 MB to drive.google.com (216.58.193.78).",
+                "info": "EV007 – 5/ 18"
+              },
+              {
+                "desc": "tsmith-desktop exfiltrated 11.15 MB to mail.google.com (216.58.216.142).",
+                "info": "EV003 – 5/15"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 7,
+        "date": "18",
+        "window_start": "2018-05-18T00:00:00",
+        "window_end": "2018-05-18T00:00:00",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>tsmith-desktop</span> exfiltrated 18.84 MB to <span>mail.google.com (216.58.216.142)</span> over port 443.",
+        "value": "18.84 MB",
+        "source": "sus1",
+        "target": "external2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ],
+        "inspector": {
+          "general": {
+            "data_source": {
+              "label": "Data Source",
+              "value": "Proxyweb"
+            }
+          },
+          "chart": {
+            "title": "Related Exfiltration Activity from 5/15-5/21",
+            "file": "fpo-ev-chart-7@2x.png"
+          },
+          "reasons": {
+            "title": "Exfiltration Activity Baseline Analysis (5/15-5/21)",
+            "lists": [{
+              "title": "Timeframe: Expected Activity",
+              "bullets": [
+                "Within the 7 day window, tsmith-desktop exfiltrated 18.84 MB to drive.google.com (216.58.193.78).",
+                "tsmith-desktop typically publishes 0 MB to this destination"
+              ]
+            },
+            {
+              "title": "Peer Based Explanations",
+              "bullets": [
+                "tsmith-desktop is in user VLAN segment (10.50.60.0/24)",
+                "tsmith-desktop has not communicated with drive.google.com within the previous time window"
+              ]
+            }
+            ]
+          },
+          "related": {
+            "title": "Related Exfiltration Evidence",
+            "evidence": [
+              {
+                "desc": "tsmith-desktop exfiltrated 70.71 MB to dropbox.com (162.125.248.1).",
+                "info": "EV006 – 5/ 17"
+              },
+              {
+                "desc": "tsmith-desktop exfiltrated 11.15 MB to mail.google.com (216.58.216.142).",
+                "info": "EV010 – 5/21"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 8,
+        "date": "19",
+        "window_start": "2018-05-19T00:00:00",
+        "window_end": "2018-05-19T00:00:00",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>eprindle-notebook</span> collected 33.45 MB from <span>dbserver03</span> over port 21 (FTP).",
+        "value": "33.45 MB",
+        "source": "internal6",
+        "target": "sus2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ],
+        "inspector": {
+          "general": {
+            "data_source": {
+              "label": "Data Source",
+              "value": "Netflow"
+            }
+          },
+          "chart": {
+            "title": "Related Collection Activity from 5/15-5/21",
+            "file": "fpo-ev-chart-8@2x.png"
+          },
+          "reasons": {
+            "title": "Collection Activity Baseline Analysis (5/15-5/21)",
+            "lists": [{
+              "title": "Timeframe: Expected Activity",
+              "bullets": [
+                "Within the 7 day window, eprindle-notebook collected 33.45 MB from dbserver03 over port 21 (FTP).",
+                "eprindle-notebook typically collects 0 MB from this host"
+              ]
+            },
+            {
+              "title": "Peer Based Explanations",
+              "bullets": [
+                "eprindle-notebook is in user VLAN segment (10.50.60.0/24)",
+                "eprindle-notebook has communicated with dbserver03 within the previous time window"
+              ]
+            }
+            ]
+          },
+          "related": {
+            "title": "Related Collection Evidence",
+            "evidence": [
+              {
+                "desc": "n/a",
+                "info": ""
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 9,
+        "date": "20",
+        "window_start": "2018-05-20T00:00:00",
+        "window_end": "2018-05-20T00:00:00",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>tsmith-desktop</span> connected to <span>eprindle-notebook</span> on port 22 (SSH) and collected 33.45 MB",
+        "value": "33.45 MB",
+        "source": "sus2",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Top",
+          "Bottom"
+        ],
+        "inspector": {
+          "general": {
+            "data_source": {
+              "label": "Data Source",
+              "value": "Netflow"
+            }
+          },
+          "chart": {
+            "title": "Related Collection Activity from 5/15-5/21",
+            "file": "fpo-ev-chart-9@2x.png"
+          },
+          "reasons": {
+            "title": "Collection Activity Baseline Analysis (5/15-5/21)",
+            "lists": [{
+              "title": "Timeframe: Expected Activity",
+              "bullets": [
+                "Within the 7 day window, tsmith-desktop collected 33.45 MB from eprindle-notebook over port 22 (SSH).",
+                "tsmith-desktop typically collects 0 MB from this host"
+              ]
+            },
+            {
+              "title": "Peer Based Explanations",
+              "bullets": [
+                "tsmith-desktop and eprindle-notebook are in user VLAN segment (10.50.60.0/24)",
+                "tsmith-desktop has not communicated with eprindle-notebook within the previous time window"
+              ]
+            }
+            ]
+          },
+          "related": {
+            "title": "Related Collection Evidence",
+            "evidence": [
+              {
+                "desc": "tsmith-desktop collected 113.94MB from dbserver01 over port 156 (SQL).",
+                "info": "EV004 – 5/ 16"
+              },
+              {
+                "desc": "tsmith-desktop collected 98.24MB from dbserver02 over port 156 (SQL).",
+                "info": "EV005 – 5/16"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 10,
+        "date": "21",
+        "window_start": "2018-05-21T00:00:00",
+        "window_end": "2018-05-21T00:00:00",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>tsmith-desktop</span> exfiltrated 11.15 MB to <span>drive.google.com (216.58.193.78)</span> over port 443.",
+        "value": "11.15 MB",
+        "source": "sus1",
+        "target": "external3",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ],
+        "inspector": {
+          "general": {
+            "data_source": {
+              "label": "Data Source",
+              "value": "Proxyweb"
+            }
+          },
+          "chart": {
+            "title": "Related Exfiltration Activity from 5/15-5/21",
+            "file": "fpo-ev-chart-10@2x.png"
+          },
+          "reasons": {
+            "title": "Exfiltration Activity Baseline Analysis (5/15-5/21)",
+            "lists": [{
+              "title": "Timeframe: Expected Activity",
+              "bullets": [
+                "Within the 7 day window, tsmith-desktop exfiltrated 11.15 MB to mail.google.com (216.58.216.142).",
+                "tsmith-desktop typically publishes 0 MB to this destination"
+              ]
+            },
+            {
+              "title": "Peer Based Explanations",
+              "bullets": [
+                "tsmith-desktop is in user VLAN segment (10.50.60.0/24)",
+                "tsmith-desktop has not communicated with mail.google.com within the previous time window"
+              ]
+            }
+            ]
+          },
+          "related": {
+            "title": "Related Exfiltration Evidence",
+            "evidence": [
+              {
+                "desc": "tsmith-desktop exfiltrated 70.71 MB to dropbox.com (162.125.248.1).",
+                "info": "EV006 – 5/ 17"
+              },
+              {
+                "desc": "tsmith-desktop exfiltrated 18.84 MB to drive.google.com (216.58.193.78).",
+                "info": "EV007 – 5/18"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "info": {
+      "title": "ThreatCase ABC123",
+      "dates": "XX/XX/XX–XX/XX/XX",
+      "summary": [
+        "From May 12th to May 19th, <span class=\"host-identifer\">BreakRoom_PC</span> began querying more machines than normal via ICMP. Then <span class=\"host-identifer\">BsmithSpec1_PC</span> (queried by <span class=\"host-identifer\">BreakRoom_PC</span>) collected data from <span class=\"host-identifer\">OrcIDB5</span>, which resides on a separate VLAN.",
+        "Then <span class=\"host-identifer\">Acme DC03</span> sent 52.9MB of data to <span class=\"host-identifer\">Plexipr.com</span>, which has been identified as a suspicious domain."
+      ],
+      "window_start": "2018-05-12T00:00:00",
+      "window_end": "2018-07-10T00:00:00"
+    },
+    "nodes": [
+      {
+        "id": "sus1",
+        "type": "sus",
+        "labels": [
+          "BreakRoom_PC",
+          "10.10.10.40"
+        ]
+      },
+      {
+        "id": "sus2",
+        "type": "sus",
+        "labels": [
+          "BsmithSpec1_PC",
+          "10.10.10.50"
+        ]
+      },
+      {
+        "id": "sus3",
+        "type": "sus",
+        "labels": [
+          "AcmeDC03",
+          "10.10.10.60"
+        ]
+      },
+      {
+        "id": "internal1",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 6,
+        "labels": [
+          "6 Hosts"
+        ]
+      },
+      {
+        "id": "internal2",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "OrclDB5",
+          "10.22.10.117"
+        ]
+      },
+      {
+        "id": "external1",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "highmark.net",
+          "150.150.150.150"
+        ]
+      },
+      {
+        "id": "external2",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "plexipr.com",
+          "150.150.150.151"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "date": "12",
+        "window_start": "2018-05-12T00:00:00",
+        "window_end": "2018-05-21T00:00:00",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "BreakRoom_PC queried 6 hosts via ICMP.",
+        "value": "Contact",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ],
+        "related": [
+          "BreakRoom_PC subsequently received 63KB from these hosts."
+        ]
+      },
+      {
+        "id": 2,
+        "date": "12",
+        "window_start": "2018-05-12T00:00:00",
+        "window_end": "2018-05-21T00:00:00",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "BreakRoom_PC queried AcmeDC03 via port 53.",
+        "value": "Contact",
+        "source": "sus1",
+        "target": "sus3",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "TopLeft"
+        ]
+      },
+      {
+        "id": 3,
+        "date": "13",
+        "window_start": "2018-05-13T00:00:00",
+        "window_end": "2018-05-21T00:00:00",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "BreakRoom_PC collected 5.9 MB from BsmithSpec1_PC via port 445.",
+        "value": "5.9 MB",
+        "source": "sus2",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "TopLeft"
+        ]
+      },
+      {
+        "id": 4,
+        "date": "14",
+        "window_start": "2018-05-14T00:00:00",
+        "window_end": "2018-05-21T00:00:00",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "BsmithSpec1_PC collected 14 KB from BreakRoom_PC via port 139.",
+        "value": "14 KB",
+        "source": "sus1",
+        "target": "sus2",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 5,
+        "date": "17",
+        "window_start": "2018-05-17T00:00:00",
+        "window_end": "2018-05-21T00:00:00",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "BreakRoom_PC published 5.9MB to highmark.net via port 80.",
+        "value": "5.9 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 6,
+        "date": "18",
+        "window_start": "2018-05-18T00:00:00",
+        "window_end": "2018-05-21T00:00:00",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "AcmeDC03 collected 67 KB from BsmithSpec1_PC via port 139.",
+        "value": "67 KB",
+        "source": "sus2",
+        "target": "sus3",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "TopLeft"
+        ]
+      },
+      {
+        "id": 7,
+        "date": "20",
+        "window_start": "2018-05-20T00:00:00",
+        "window_end": "2018-05-21T00:00:00",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "BsmithSpec1_PC collected 25 MB from AcmeDC03 via port 445.",
+        "value": "25 MB",
+        "source": "sus3",
+        "target": "sus2",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "TopLeft"
+        ]
+      },
+      {
+        "id": 8,
+        "date": "23",
+        "window_start": "2018-05-23T00:00:00",
+        "window_end": "2018-05-21T00:00:00",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "AcmeDC03 collected 1.39 GB from OrclDB5 via port 139.",
+        "value": "1.39 GB",
+        "source": "internal2",
+        "target": "sus3",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 9,
+        "date": "24",
+        "window_start": "2018-05-24T00:00:00",
+        "window_end": "2018-05-21T00:00:00",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "AcmeDC03 published 52.9 MB to plexipr.com via port 443.",
+        "value": "52.9 MB",
+        "source": "sus3",
+        "target": "external2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      }
+    ]
+  },
+  {
+    "info": {
+      "title": "ThreatCase JKL012",
+      "dates": "2024-07-01–2024-07-03",
+      "summary": [
+        "On July 1, <span>alex-desktop</span> performed a network sweep using ICMP and identified multiple active hosts.",
+        "On July 2, <span>alex-desktop</span> and <span>mike-laptop</span> began data extraction from <span>dbserverA</span> and <span>dbserverB</span>.",
+        "On July 3, <span>alex-desktop</span> sent extracted data to <span>yahoo.com</span> and <span>amazonaws.com</span>."
+      ],
+      "window_start": "2024-07-01T00:00:00",
+      "window_end": "2024-07-03T23:59:59"
+    },
+    "nodes": [
+      {
+        "id": "sus1",
+        "type": "sus",
+        "labels": [
+          "alex-desktop",
+          "10.40.50.60"
+        ],
+        "system_type": "Desktop Computer"
+      },
+      {
+        "id": "sus2",
+        "type": "sus",
+        "labels": [
+          "mike-laptop",
+          "10.40.50.70"
+        ],
+        "system_type": "Laptop"
+      },
+      {
+        "id": "internal1",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 8,
+        "labels": [
+          "8 Hosts"
+        ],
+        "hosts": [
+          "10.40.50.61",
+          "10.40.50.62",
+          "10.40.50.63",
+          "10.40.50.64",
+          "10.40.50.65",
+          "10.40.50.66",
+          "10.40.50.67",
+          "10.40.50.68"
+        ]
+      },
+      {
+        "id": "internal2",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserverA",
+          "10.40.60.61"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal3",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserverB",
+          "10.40.60.62"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "external1",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "yahoo.com",
+          "98.137.246.7"
+        ],
+        "whois": {
+          "organization": "Yahoo!",
+          "country": "United States",
+          "state": "California",
+          "created": "1995-01-18",
+          "updated": "2017-04-24"
+        }
+      },
+      {
+        "id": "external2",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "amazonaws.com",
+          "52.216.177.85"
+        ],
+        "whois": {
+          "organization": "Amazon.com, Inc.",
+          "country": "United States",
+          "state": "Washington",
+          "created": "2004-03-01",
+          "updated": "2017-08-29"
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "date": "01",
+        "window_start": "2024-07-01T00:00:00",
+        "window_end": "2024-07-01T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>alex-desktop</span> identified 8 active hosts using ICMP sweeps.",
+        "value": "ICMP Sweep",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 2,
+        "date": "02",
+        "window_start": "2024-07-02T00:00:00",
+        "window_end": "2024-07-02T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>alex-desktop</span> collected 500 MB from <span>dbserverA</span> over port 1521 (Oracle DB).",
+        "value": "500 MB",
+        "source": "internal2",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 3,
+        "date": "02",
+        "window_start": "2024-07-02T00:00:00",
+        "window_end": "2024-07-02T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>mike-laptop</span> collected 250 MB from <span>dbserverB</span> over port 3306 (MySQL).",
+        "value": "250 MB",
+        "source": "internal3",
+        "target": "sus2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 4,
+        "date": "03",
+        "window_start": "2024-07-03T00:00:00",
+        "window_end": "2024-07-03T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>alex-desktop</span> sent 600 MB to <span>yahoo.com</span> over port 443 (HTTPS).",
+        "value": "600 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 5,
+        "date": "03",
+        "window_start": "2024-07-03T00:00:00",
+        "window_end": "2024-07-03T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>alex-desktop</span> sent 200 MB to <span>amazonaws.com</span> over port 443 (HTTPS).",
+        "value": "200 MB",
+        "source": "sus1",
+        "target": "external2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      }
+    ]
+  },
+  {
+    "info": {
+      "title": "ThreatCase MNO345",
+      "dates": "2024-08-01–2024-08-10",
+      "summary": [
+        "On August 1, <span>charlie-desktop</span> started scanning a wide range of subnets using multiple ports.",
+        "Between August 2-5, <span>charlie-desktop</span> and <span>emily-laptop</span> began transferring data from various database servers.",
+        "On August 6, <span>charlie-desktop</span> uploaded data to multiple cloud storage services."
+      ],
+      "window_start": "2024-08-01T00:00:00",
+      "window_end": "2024-08-10T23:59:59"
+    },
+    "nodes": [
+      {
+        "id": "sus1",
+        "type": "sus",
+        "labels": [
+          "charlie-desktop",
+          "10.60.70.80"
+        ],
+        "system_type": "Desktop Computer"
+      },
+      {
+        "id": "sus2",
+        "type": "sus",
+        "labels": [
+          "emily-laptop",
+          "10.60.70.90"
+        ],
+        "system_type": "Laptop"
+      },
+      {
+        "id": "internal1",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 10,
+        "labels": [
+          "10 Hosts"
+        ],
+        "hosts": [
+          "10.60.70.81",
+          "10.60.70.82",
+          "10.60.70.83",
+          "10.60.70.84",
+          "10.60.70.85",
+          "10.60.70.86",
+          "10.60.70.87",
+          "10.60.70.88",
+          "10.60.70.89",
+          "10.60.70.91"
+        ]
+      },
+      {
+        "id": "internal2",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver04",
+          "10.70.80.81"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal3",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver05",
+          "10.70.80.82"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal4",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver06",
+          "10.70.80.83"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal5",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver07",
+          "10.70.80.84"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "external1",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "dropbox.com",
+          "162.125.248.1"
+        ],
+        "whois": {
+          "organization": "Dropbox, Inc.",
+          "country": "United States",
+          "state": "California",
+          "created": "1995-06-28",
+          "updated": "2017-05-26"
+        }
+      },
+      {
+        "id": "external2",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "drive.google.com",
+          "216.58.193.78"
+        ],
+        "whois": {
+          "organization": "Google LLC",
+          "country": "United States",
+          "state": "California",
+          "created": "1997-09-15",
+          "updated": "2018-02-21"
+        }
+      },
+      {
+        "id": "external3",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "box.com",
+          "74.112.185.1"
+        ],
+        "whois": {
+          "organization": "Box, Inc.",
+          "country": "United States",
+          "state": "California",
+          "created": "1995-06-28",
+          "updated": "2017-05-26"
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "date": "01",
+        "window_start": "2024-08-01T00:00:00",
+        "window_end": "2024-08-01T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>charlie-desktop</span> started scanning 10 hosts using multiple ports.",
+        "value": "Port Scan",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 2,
+        "date": "02",
+        "window_start": "2024-08-02T00:00:00",
+        "window_end": "2024-08-02T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>charlie-desktop</span> collected 100 MB from <span>dbserver04</span> over port 3306 (MySQL).",
+        "value": "100 MB",
+        "source": "internal2",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 3,
+        "date": "03",
+        "window_start": "2024-08-03T00:00:00",
+        "window_end": "2024-08-03T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>emily-laptop</span> collected 200 MB from <span>dbserver05</span> over port 1521 (Oracle DB).",
+        "value": "200 MB",
+        "source": "internal3",
+        "target": "sus2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 4,
+        "date": "04",
+        "window_start": "2024-08-04T00:00:00",
+        "window_end": "2024-08-04T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>charlie-desktop</span> collected 300 MB from <span>dbserver06</span> over port 1433 (SQL Server).",
+        "value": "300 MB",
+        "source": "internal4",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 5,
+        "date": "05",
+        "window_start": "2024-08-05T00:00:00",
+        "window_end": "2024-08-05T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>emily-laptop</span> collected 150 MB from <span>dbserver07</span> over port 27017 (MongoDB).",
+        "value": "150 MB",
+        "source": "internal5",
+        "target": "sus2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 6,
+        "date": "06",
+        "window_start": "2024-08-06T00:00:00",
+        "window_end": "2024-08-06T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>charlie-desktop</span> uploaded 250 MB to <span>dropbox.com</span> over port 443 (HTTPS).",
+        "value": "250 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+     
+
+ {
+        "id": 7,
+        "date": "06",
+        "window_start": "2024-08-06T00:00:00",
+        "window_end": "2024-08-06T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>charlie-desktop</span> uploaded 300 MB to <span>drive.google.com</span> over port 443 (HTTPS).",
+        "value": "300 MB",
+        "source": "sus1",
+        "target": "external2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 8,
+        "date": "06",
+        "window_start": "2024-08-06T00:00:00",
+        "window_end": "2024-08-06T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>charlie-desktop</span> uploaded 150 MB to <span>box.com</span> over port 443 (HTTPS).",
+        "value": "150 MB",
+        "source": "sus1",
+        "target": "external3",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      }
+    ]
+  },
+  {
+    "info": {
+      "title": "ThreatCase PQR678",
+      "dates": "2024-09-01–2024-09-10",
+      "summary": [
+        "On September 1, <span>compromised-desktop</span> started scanning a network segment using port 80 and port 443.",
+        "Between September 2-4, <span>compromised-desktop</span> and <span>infected-laptop</span> began transferring data between themselves and multiple internal servers.",
+        "On September 5, <span>compromised-desktop</span> uploaded data to an external cloud storage service."
+      ],
+      "window_start": "2024-09-01T00:00:00",
+      "window_end": "2024-09-10T23:59:59"
+    },
+    "nodes": [
+      {
+        "id": "sus1",
+        "type": "sus",
+        "labels": [
+          "compromised-desktop",
+          "10.80.90.100"
+        ],
+        "system_type": "Desktop Computer"
+      },
+      {
+        "id": "sus2",
+        "type": "sus",
+        "labels": [
+          "infected-laptop",
+          "10.80.90.110"
+        ],
+        "system_type": "Laptop"
+      },
+      {
+        "id": "internal1",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 8,
+        "labels": [
+          "8 Hosts"
+        ],
+        "hosts": [
+          "10.80.90.101",
+          "10.80.90.102",
+          "10.80.90.103",
+          "10.80.90.104",
+          "10.80.90.105",
+          "10.80.90.106",
+          "10.80.90.107",
+          "10.80.90.108"
+        ]
+      },
+      {
+        "id": "internal2",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver09",
+          "10.90.100.101"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal3",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver10",
+          "10.90.100.102"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal4",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "appserver01",
+          "10.90.100.103"
+        ],
+        "system_type": "Application Server"
+      },
+      {
+        "id": "external1",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "cloudstorage.com",
+          "198.51.100.1"
+        ],
+        "whois": {
+          "organization": "Cloud Storage Inc.",
+          "country": "United States",
+          "state": "California",
+          "created": "2000-01-01",
+          "updated": "2020-01-01"
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "date": "01",
+        "window_start": "2024-09-01T00:00:00",
+        "window_end": "2024-09-01T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> scanned 8 hosts using ports 80 and 443.",
+        "value": "Port Scan",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 2,
+        "date": "02",
+        "window_start": "2024-09-02T00:00:00",
+        "window_end": "2024-09-02T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> collected 150 MB from <span>dbserver09</span> over port 3306 (MySQL).",
+        "value": "150 MB",
+        "source": "internal2",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 3,
+        "date": "03",
+        "window_start": "2024-09-03T00:00:00",
+        "window_end": "2024-09-03T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>infected-laptop</span> collected 200 MB from <span>dbserver10</span> over port 1521 (Oracle DB).",
+        "value": "200 MB",
+        "source": "internal3",
+        "target": "sus2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 4,
+        "date": "04",
+        "window_start": "2024-09-04T00:00:00",
+        "window_end": "2024-09-04T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> collected 100 MB from <span>appserver01</span> over port 8080 (HTTP).",
+        "value": "100 MB",
+        "source": "internal4",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 5,
+        "date": "05",
+        "window_start": "2024-09-05T00:00:00",
+        "window_end": "2024-09-05T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> transferred 50 MB to <span>infected-laptop</span> over port 22 (SSH).",
+        "value": "50 MB",
+        "source": "sus1",
+        "target": "sus2",
+        "direction": 1,
+        "anchors": [
+          "Top",
+          "Bottom"
+        ]
+      },
+      {
+        "id": 6,
+        "date": "06",
+        "window_start": "2024-09-06T00:00:00",
+        "window_end": "2024-09-06T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>compromised-desktop</span> uploaded 300 MB to <span>cloudstorage.com</span> over port 443 (HTTPS).",
+        "value": "300 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      }
+    ]
+  },
+  {
+    "info": {
+      "title": "ThreatCase STU901",
+      "dates": "2024-10-01–2024-10-10",
+      "summary": [
+        "On October 1, <span>compromised-desktop</span> and <span>infected-laptop</span> started extensive recon activities across multiple network segments.",
+        "Between October 2-9, they continued to scan and query various internal hosts using multiple ports.",
+        "On October 10, <span>compromised-desktop</span> uploaded collected data to an external cloud storage service."
+      ],
+      "window_start": "2024-10-01T00:00:00",
+      "window_end": "2024-10-10T23:59:59"
+    },
+    "nodes": [
+      {
+        "id": "sus1",
+        "type": "sus",
+        "labels": [
+          "compromised-desktop",
+          "10.100.110.120"
+        ],
+        "system_type": "Desktop Computer"
+      },
+      {
+        "id": "sus2",
+        "type": "sus",
+        "labels": [
+          "infected-laptop",
+          "10.100.110.130"
+        ],
+        "system_type": "Laptop"
+      },
+      {
+        "id": "internal1",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 10,
+        "labels": [
+          "10 Hosts"
+        ],
+        "hosts": [
+          "10.100.110.121",
+          "10.100.110.122",
+          "10.100.110.123",
+          "10.100.110.124",
+          "10.100.110.125",
+          "10.100.110.126",
+          "10.100.110.127",
+          "10.100.110.128",
+          "10.100.110.129",
+          "10.100.110.131"
+        ]
+      },
+      {
+        "id": "internal2",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 20,
+        "labels": [
+          "20 Hosts"
+        ],
+        "hosts": [
+          "10.100.110.132",
+          "10.100.110.133",
+          "10.100.110.134",
+          "10.100.110.135",
+          "10.100.110.136",
+          "10.100.110.137",
+          "10.100.110.138",
+          "10.100.110.139",
+          "10.100.110.140",
+          "10.100.110.141",
+          "10.100.110.142",
+          "10.100.110.143",
+          "10.100.110.144",
+          "10.100.110.145",
+          "10.100.110.146",
+          "10.100.110.147",
+          "10.100.110.148",
+          "10.100.110.149",
+          "10.100.110.150",
+          "10.100.110.151"
+        ]
+      },
+      {
+        "id": "internal3",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 30,
+        "labels": [
+          "30 Hosts"
+        ],
+        "hosts": [
+          "10.100.110.152",
+          "10.100.110.153",
+          "10.100.110.154",
+          "10.100.110.155",
+          "10.100.110.156",
+          "10.100.110.157",
+          "10.100.110.158",
+          "10.100.110.159",
+          "10.100.110.160",
+          "10.100.110.161",
+          "10.100.110.162",
+          "10.100.110.163",
+          "10.100.110.164",
+          "10.100.110.165",
+          "10.100.110.166",
+          "10.100.110.167",
+          "10.100.110.168",
+          "10.100.110.169",
+          "10.100.110.170",
+          "10.100.110.171",
+          "10.100.110.172",
+          "10.100.110.173",
+          "10.100.110.174",
+          "10.100.110.175",
+          "10.100.110.176",
+          "10.100.110.177",
+          "10.100.110.178",
+          "10.100.110.179",
+          "10.100.110.180",
+          "10.100.110.181"
+        ]
+      },
+      {
+        "id": "internal4",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "datastore01",
+          "10.90.100.200"
+        ],
+        "system_type": "Data Storage Server"
+      },
+      {
+        "id": "external1",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "cloudstorage.com",
+          "198.51.100.1"
+        ],
+        "whois": {
+          "organization": "Cloud Storage Inc.",
+          "country": "United States",
+          "state": "California",
+          "created": "2000-01-01",
+          "updated": "2020-01-01"
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "date": "01",
+        "window_start": "2024-10-01T00:00:00",
+        "window_end": "2024-10-01T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> scanned 10 hosts using ports 80 and 443.",
+        "value": "Port Scan",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 2,
+        "date": "02",
+        "window_start": "2024-10-02T00:00:00",
+        "window_end": "2024-10-02T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>infected-laptop</span> scanned 20 hosts using ports 22 and 3389.",
+        "value": "Port Scan",
+        "source": "sus2",
+        "target": "internal2",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 3,
+        "date": "03",
+        "window_start": "2024-10-03T00:00:00",
+        "window_end": "2024-10-03T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> queried 30 hosts using ICMP.",
+        "value": "ICMP Scan",
+        "source": "sus1",
+        "target": "internal3",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 4,
+        "date": "04",
+        "window_start": "2024-10-04T00:00:00",
+        "window_end": "2024-10-04T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>infected-laptop</span> queried 10 hosts using SMB.",
+        "value": "SMB Scan",
+        "source": "sus2",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 5,
+        "date": "05",
+        "window_start": "2024-10-05T00:00:00",
+        "window_end": "2024-10-05T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> queried 20 hosts using DNS.",
+        "value": "DNS Queries",
+        "source": "sus1",
+        "target": "internal2",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 6,
+        "date": "06",
+        "window_start": "2024-10-06T00:00:00",
+        "window_end": "2024-10-06T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>infected-laptop</span> queried 30 hosts using LDAP.",
+        "value": "LDAP Queries",
+        "source": "sus2",
+        "target": "internal3",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 7,
+        "date": "07",
+        "window_start": "2024-10-07T00:00:00",
+        "window_end": "2024-10-07T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> scanned 10 hosts using RDP.",
+        "value": "RDP Scan",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 8,
+        "date": "08",
+        "window_start": "2024-10-08T00:00:00",
+        "window_end": "2024-10-08T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>infected-laptop</span> scanned 20 hosts using SNMP.",
+        "value": "SNMP Scan",
+        "source": "sus2",
+        "target": "internal2",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 9,
+        "date": "09",
+        "window_start": "2024-10-09T00:00:00",
+        "window_end": "2024-10-09T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> queried 30 hosts using NTP.",
+        "value": "NTP Queries",
+        "source": "sus1",
+        "target": "internal3",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 10,
+        "date": "10",
+        "window_start": "2024-10-10T00:00:00",
+        "window_end": "2024-10-10T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> collected 500 MB from <span>datastore01</span> over port 445 (SMB).",
+        "value": "500 MB",
+        "source": "internal4",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 11,
+        "date": "10",
+        "window_start": "2024-10-10T00:00:00",
+        "window_end": "2024-10-10T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>compromised-desktop</span> uploaded 500 MB to <span>cloudstorage.com</span> over port 443 (HTTPS).",
+        "value": "500 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      }
+    ]
+  },
+  {
+    "info": {
+      "title": "ThreatCase VWX234",
+      "dates": "2024-11-01–2024-11-10",
+      "summary": [
+        "On November 1, <span>compromised-desktop</span> started extensive recon activities across a large group of internal hosts.",
+        "Between November 2-9, <span>compromised-desktop</span> began pulling data from multiple internal servers.",
+        "On November 10, <span>compromised-desktop</span> uploaded collected data to an external host in Russia."
+      ],
+      "window_start": "2024-11-01T00:00:00",
+      "window_end": "2024-11-10T23:59:59"
+    },
+    "nodes": [
+      {
+        "id": "sus1",
+        "type": "sus",
+        "labels": [
+          "compromised-desktop",
+          "10.200.210.220"
+        ],
+        "system_type": "Desktop Computer"
+      },
+      {
+        "id": "internal1",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 1000,
+        "labels": [
+          "1000 Hosts"
+        ],
+        "hosts": [
+          "10.200.210.1",
+          "10.200.210.2",
+          "10.200.210.3",
+          "10.200.210.4",
+          "10.200.210.5",
+          "10.200.210.6",
+          "10.200.210.1000"
+        ]
+      },
+      {
+        "id": "internal2",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver01",
+          "10.210.220.201"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal3",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver02",
+          "10.210.220.202"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal4",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "fileserver01",
+          "10.210.220.203"
+        ],
+        "system_type": "File Server"
+      },
+      {
+        "id": "internal5",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "fileserver02",
+          "10.210.220.204"
+        ],
+        "system_type": "File Server"
+      },
+      {
+        "id": "internal6",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "webserver01",
+          "10.210.220.205"
+        ],
+        "system_type": "Web Server"
+      },
+      {
+        "id": "internal7",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "webserver02",
+          "10.210.220.206"
+        ],
+        "system_type": "Web Server"
+      },
+      {
+        "id": "external1",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "malicious-server.ru",
+          "185.174.100.1"
+        ],
+        "whois": {
+          "organization": "Russian Malicious Server",
+          "country": "Russia",
+          "state": "Moscow",
+          "created": "2010-05-15",
+          "updated": "2020-08-10"
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "date": "01",
+        "window_start": "2024-11-01T00:00:00",
+        "window_end": "2024-11-01T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> started scanning 1000 hosts using multiple ports.",
+        "value": "Port Scan",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 2,
+        "date": "02",
+        "window_start": "2024-11-02T00:00:00",
+        "window_end": "2024-11-02T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> collected 200 MB from <span>dbserver01</span> over port 3306 (MySQL).",
+        "value": "200 MB",
+        "source": "internal2",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 3,
+        "date": "03",
+        "window_start": "2024-11-03T00:00:00",
+        "window_end": "2024-11-03T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> collected 250 MB from <span>dbserver02</span> over port 1521 (Oracle DB).",
+        "value": "250 MB",
+        "source": "internal3",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 4,
+        "date": "04",
+        "window_start": "2024-11-04T00:00:00",
+        "window_end": "2024-11-04T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> collected 300 MB from <span>fileserver01</span> over port 445 (SMB).",
+        "value": "300 MB",
+        "source": "internal4",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 5,
+        "date": "05",
+        "window_start": "2024-11-05T00:00:00",
+        "window_end": "2024-11-05T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> collected 350 MB from <span>fileserver02</span> over port 445 (SMB).",
+        "value": "350 MB",
+        "source": "internal5",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 6,
+        "date": "06",
+        "window_start": "2024-11-06T00:00:00",
+        "window_end": "2024-11-06T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> collected 400 MB from <span>webserver01</span> over port 8080 (HTTP).",
+        "value": "400 MB",
+        "source": "internal6",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 7,
+        "date": "07",
+        "window_start": "2024-11-07T00:00:00",
+        "window_end": "2024-11-07T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-desktop</span> collected 450 MB from <span>webserver02</span> over port 8080 (HTTP).",
+        "value": "450 MB",
+        "source": "internal7",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 8,
+        "date": "10",
+        "window_start": "2024-11-10T00:00:00",
+        "window_end": "2024-11-10T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>compromised-desktop</span> uploaded 1950 MB to <span>malicious-server.ru</span> over port 443 (HTTPS).",
+        "value": "1950 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      }
+    ]
+  },
+  {
+    "info": {
+      "title": "ThreatCase YZA345",
+      "dates": "2024-12-01–2024-12-08",
+      "summary": [
+        "On December 1, <span>employee-laptop</span> began performing network scans across internal hosts using ICMP.",
+        "Between December 2-5, <span>employee-laptop</span> collected data from several internal servers.",
+        "On December 6, <span>employee-laptop</span> began uploading the collected data to a suspicious external host."
+      ],
+      "window_start": "2024-12-01T00:00:00",
+      "window_end": "2024-12-08T23:59:59"
+    },
+    "nodes": [
+      {
+        "id": "sus1",
+        "type": "sus",
+        "labels": [
+          "employee-laptop",
+          "10.0.0.100"
+        ],
+        "system_type": "Laptop"
+      },
+      {
+        "id": "internal1",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 50,
+        "labels": [
+          "50 Hosts"
+        ],
+        "hosts": [
+          "10.0.0.101",
+          "10.0.0.102",
+          "10.0.0.103",
+          "10.0.0.104",
+          "10.0.0.105",
+          "10.0.0.106",
+          "10.0.0.107",
+          "10.0.0.108",
+          "10.0.0.109",
+          "10.0.0.110",
+          "10.0.0.111",
+          "10.0.0.112",
+          "10.0.0.113",
+          "10.0.0.114",
+          "10.0.0.115",
+          "10.0.0.116",
+          "10.0.0.117",
+          "10.0.0.118",
+          "10.0.0.119",
+          "10.0.0.120",
+          "10.0.0.121",
+          "10.0.0.122",
+          "10.0.0.123",
+          "10.0.0.124",
+          "10.0.0.125",
+          "10.0.0.126",
+          "10.0.0.127",
+          "10.0.0.128",
+          "10.0.0.129",
+          "10.0.0.130",
+          "10.0.0.131",
+          "10.0.0.132",
+          "10.0.0.133",
+          "10.0.0.134",
+          "10.0.0.135",
+          "10.0.0.136",
+          "10.0.0.137",
+          "10.0.0.138",
+          "10.0.0.139",
+          "10.0.0.140",
+          "10.0.0.141",
+          "10.0.0.142",
+          "10.0.0.143",
+          "10.0.0.144",
+          "10.0.0.145",
+          "10.0.0.146",
+          "10.0.0.147",
+          "10.0.0.148",
+          "10.0.0.149",
+          "10.0.0.150"
+        ]
+      },
+      {
+        "id": "internal2",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "fileserver01",
+          "10.0.1.200"
+        ],
+        "system_type": "File Server"
+      },
+      {
+        "id": "internal3",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver01",
+          "10.0.1.201"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal4",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "appserver01",
+          "10.0.1.202"
+        ],
+        "system_type": "Application Server"
+      },
+      {
+        "id": "external1",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "suspicious-host.com",
+          "203.0.113.1"
+        ],
+        "whois": {
+          "organization": "Suspicious Organization",
+          "country": "Unknown",
+          "state": "Unknown",
+          "created": "2019-01-01",
+          "updated": "2023-01-01"
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "date": "01",
+        "window_start": "2024-12-01T00:00:00",
+        "window_end": "2024-12-01T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>employee-laptop</span> performed network scans on 50 hosts using ICMP.",
+        "value": "ICMP Scan",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 2,
+        "date": "02",
+        "window_start": "2024-12-02T00:00:00",
+        "window_end": "2024-12-02T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>employee-laptop</span> collected 100 MB from <span>fileserver01</span> over port 445 (SMB).",
+        "value": "100 MB",
+        "source": "internal2",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 3,
+        "date": "03",
+        "window_start": "2024-12-03T00:00:00",
+        "window_end": "2024-12-03T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>employee-laptop</span> collected 150 MB from <span>dbserver01</span> over port 3306 (MySQL).",
+        "value": "150 MB",
+        "source": "internal3",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 4,
+        "date": "04",
+        "window_start": "2024-12-04T00:00:00",
+        "window_end": "2024-12-04T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>employee-laptop</span> collected 200 MB from <span>appserver01</span> over port 8080 (HTTP).",
+        "value": "200 MB",
+        "source": "internal4",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 5,
+        "date": "06",
+        "window_start": "2024-12-06T00:00:00",
+        "window_end": "2024-12-06T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>employee-laptop</span> uploaded 450 MB to <span>suspicious-host.com</span> over port 443 (HTTPS).",
+        "value": "450 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      }
+    ]
+  },
+  {
+    "info": {
+      "title": "ThreatCase BCD678",
+      "dates": "2024-11-01–2024-11-15",
+      "summary": [
+        "On November 1, <span>compromised-laptop</span> began recon activities across multiple network segments using various ports.",
+        "Between November 2-10, <span>compromised-laptop</span> collected data from several internal servers.",
+        "On November 11-14, <span>compromised-laptop</span> established multiple exfiltration channels to different external hosts."
+      ],
+      "window_start": "2024-11-01T00:00:00",
+      "window_end": "2024-11-15T23:59:59"
+    },
+    "nodes": [
+      {
+        "id": "sus1",
+        "type": "sus",
+        "labels": [
+          "compromised-laptop",
+          "10.0.0.100"
+        ],
+        "system_type": "Laptop"
+      },
+      {
+        "id": "internal1",
+        "type": "internal",
+        "stage": "recon",
+        "cluster": true,
+        "host_count": 100,
+        "labels": [
+          "100 Hosts"
+        ],
+        "hosts": [
+          "10.0.1.1",
+          "10.0.1.2",
+          "10.0.1.3",
+          "10.0.1.4",
+          "10.0.1.5",
+          "10.0.1.6",
+          "10.0.1.7",
+          "10.0.1.8",
+          "10.0.1.9",
+          "10.0.1.10",
+          "10.0.1.11",
+          "10.0.1.12",
+          "10.0.1.13",
+          "10.0.1.14",
+          "10.0.1.15",
+          "10.0.1.16",
+          "10.0.1.17",
+          "10.0.1.18",
+          "10.0.1.19",
+          "10.0.1.20",
+          "10.0.1.21",
+          "10.0.1.22",
+          "10.0.1.23",
+          "10.0.1.24",
+          "10.0.1.25",
+          "10.0.1.26",
+          "10.0.1.27",
+          "10.0.1.28",
+          "10.0.1.29",
+          "10.0.1.30",
+          "10.0.1.31",
+          "10.0.1.32",
+          "10.0.1.33",
+          "10.0.1.34",
+          "10.0.1.35",
+          "10.0.1.36",
+          "10.0.1.37",
+          "10.0.1.38",
+          "10.0.1.39",
+          "10.0.1.40",
+          "10.0.1.41",
+          "10.0.1.42",
+          "10.0.1.43",
+          "10.0.1.44",
+          "10.0.1.45",
+          "10.0.1.46",
+          "10.0.1.47",
+          "10.0.1.48",
+          "10.0.1.49",
+          "10.0.1.50",
+          "10.0.1.51",
+          "10.0.1.52",
+          "10.0.1.53",
+          "10.0.1.54",
+          "10.0.1.55",
+          "10.0.1.56",
+          "10.0.1.57",
+          "10.0.1.58",
+          "10.0.1.59",
+          "10.0.1.60",
+          "10.0.1.61",
+          "10.0.1.62",
+          "10.0.1.63",
+          "10.0.1.64",
+          "10.0.1.65",
+          "10.0.1.66",
+          "10.0.1.67",
+          "10.0.1.68",
+          "10.0.1.69",
+          "10.0.1.70",
+          "10.0.1.71",
+          "10.0.1.72",
+          "10.0.1.73",
+          "10.0.1.74",
+          "10.0.1.75",
+          "10.0.1.76",
+          "10.0.1.77",
+          "10.0.1.78",
+          "10.0.1.79",
+          "10.0.1.80",
+          "10.0.1.81",
+          "10.0.1.82",
+          "10.0.1.83",
+          "10.0.1.84",
+          "10.0.1.85",
+          "10.0.1.86",
+          "10.0.1.87",
+          "10.0.1.88",
+          "10.0.1.89",
+          "10.0.1.90",
+          "10.0.1.91",
+          "10.0.1.92",
+          "10.0.1.93",
+          "10.0.1.94",
+          "10.0.1.95",
+          "10.0.1.96",
+          "10.0.1.97",
+          "10.0.1.98",
+          "10.0.1.99",
+          "10.0.1.100"
+        ]
+      },
+      {
+        "id": "internal2",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver01",
+          "10.0.2.200"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal3",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "dbserver02",
+          "10.0.2.201"
+        ],
+        "system_type": "Database Server"
+      },
+      {
+        "id": "internal4",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "fileserver01",
+          "10.0.2.202"
+        ],
+        "system_type": "File Server"
+      },
+      {
+        "id": "internal5",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "fileserver02",
+          "10.0.2.203"
+        ],
+        "system_type": "File Server"
+      },
+      {
+        "id": "internal6",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "appserver01",
+          "10.0.2.204"
+        ],
+        "system_type": "Application Server"
+      },
+      {
+        "id": "internal7",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "webserver01",
+          "10.0.2.205"
+        ],
+        "system_type": "Web Server"
+      },
+      {
+        "id": "external1",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "suspicious-host.com",
+          "203.0.113.1"
+        ],
+        "whois": {
+          "organization": "Suspicious Organization",
+          "country": "Unknown",
+          "state": "Unknown",
+          "created": "2019-01-01",
+          "updated": "2023-01-01"
+        }
+      },
+      {
+        "id": "external2",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "malicious-site.ru",
+          "185.174.100.1"
+        ],
+        "whois": {
+          "organization": "Russian Malicious Server",
+          "country": "Russia",
+          "state": "Moscow",
+          "created": "2010-05-15",
+          "updated": "2020-08-10"
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "date": "01",
+        "window_start": "2024-11-01T00:00:00",
+        "window_end": "2024-11-01T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-laptop</span> performed network scans on 100 hosts using ICMP.",
+        "value": "ICMP Scan",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 2,
+        "date": "02",
+        "window_start": "2024-11-02T00:00:00",
+        "window_end": "2024-11-02T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-laptop</span> performed port scans on 100 hosts using ports 80 and 443.",
+        "value": "Port Scan",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 3,
+        "date": "03",
+        "window_start": "2024-11-03T00:00:00",
+        "window_end": "2024-11-03T23:59:59",
+        "stages": [
+          "recon"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-laptop</span> queried 100 hosts using SMB.",
+        "value": "SMB Scan",
+        "source": "sus1",
+        "target": "internal1",
+        "direction": 1,
+        "anchors": [
+          "Left",
+          "Right"
+        ]
+      },
+      {
+        "id": 4,
+        "date": "04",
+        "window_start": "2024-11-04T00:00:00",
+        "window_end": "2024-11-04T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-laptop</span> collected 200 MB from <span>dbserver01</span> over port 3306 (MySQL).",
+        "value": "200 MB",
+        "source": "internal2",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 5,
+        "date": "05",
+        "window_start": "2024-11-05T00:00:00",
+        "window_end": "2024-11-05T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-laptop</span> collected 300 MB from <span>dbserver02</span> over port 1521 (Oracle DB).",
+        "value": "300 MB",
+        "source": "internal3",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 6,
+        "date": "06",
+        "window_start": "2024-11-06T00:00:00",
+        "window_end": "2024-11-06T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-laptop</span> collected 400 MB from <span>fileserver01</span> over port 445 (SMB).",
+        "value": "400 MB",
+        "source": "internal4",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 7,
+        "date": "07",
+        "window_start": "2024-11-07T00:00:00",
+        "window_end": "2024-11-07T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-laptop</span> collected 500 MB from <span>fileserver02</span> over port 445 (SMB).",
+        "value": "500 MB",
+        "source": "internal5",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 8,
+        "date": "08",
+        "window_start": "2024-11-08T00:00:00",
+        "window_end": "2024-11-08T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-laptop</span> collected 600 MB from <span>appserver01</span> over port 8080 (HTTP).",
+        "value": "600 MB",
+        "source": "internal6",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 9,
+        "date": "09",
+        "window_start": "2024-11-09T00:00:00",
+        "window_end": "2024-11-09T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-laptop</span> collected 700 MB from <span>webserver01</span> over port 443 (HTTPS).",
+        "value": "700 MB",
+        "source": "internal7",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 10,
+        "date": "10",
+        "window_start": "2024-11-10T00:00:00",
+        "window_end": "2024-11-10T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>compromised-laptop</span> collected 150 MB from <span>dbserver01</span> over port 3306 (MySQL).",
+        "value": "150 MB",
+        "source": "internal2",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "BottomLeft"
+        ]
+      },
+      {
+        "id": 11,
+        "date": "11",
+        "window_start": "2024-11-11T00:00:00",
+        "window_end": "2024-11-11T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>compromised-laptop</span> uploaded 500 MB to <span>suspicious-host.com</span> over port 443 (HTTPS).",
+        "value": "500 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 12,
+        "date": "12",
+        "window_start": "2024-11-12T00:00:00",
+        "window_end": "2024-11-12T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>compromised-laptop</span> uploaded 400 MB to <span>malicious-site.ru</span> over port 443 (HTTPS).",
+        "value": "400 MB",
+        "source": "sus1",
+        "target": "external2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 13,
+        "date": "13",
+        "window_start": "2024-11-13T00:00:00",
+        "window_end": "2024-11-13T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>compromised-laptop</span> uploaded 300 MB to <span>suspicious-host.com</span> over port 443 (HTTPS).",
+        "value": "300 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 14,
+        "date": "14",
+        "window_start": "2024-11-14T00:00:00",
+        "window_end": "2024-11-14T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>compromised-laptop</span> uploaded 200 MB to <span>malicious-site.ru</span> over port 443 (HTTPS).",
+        "value": "200 MB",
+        "source": "sus1",
+        "target": "external2",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 15,
+        "date": "15",
+        "window_start": "2024-11-15T00:00:00",
+        "window_end": "2024-11-15T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>compromised-laptop</span> uploaded 250 MB to <span>suspicious-host.com</span> over port 443 (HTTPS).",
+        "value": "250 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      }
+    ]
+  },
+  {
+    "info": {
+      "title": "ThreatCase EFG789",
+      "dates": "2024-12-01–2024-12-07",
+      "summary": [
+        "An insider with access privileges, <span>malicious-employee</span>, pulled specific sensitive data from internal servers.",
+        "Between December 2-6, <span>malicious-employee</span> exfiltrated the collected data to an external shady domain."
+      ],
+      "window_start": "2024-12-01T00:00:00",
+      "window_end": "2024-12-07T23:59:59"
+    },
+    "nodes": [
+      {
+        "id": "sus1",
+        "type": "sus",
+        "labels": [
+          "malicious-employee",
+          "10.0.0.101"
+        ],
+        "system_type": "Employee Workstation"
+      },
+      {
+        "id": "internal1",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "hrserver01",
+          "10.0.2.100"
+        ],
+        "system_type": "HR Server"
+      },
+      {
+        "id": "internal2",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "financeserver01",
+          "10.0.2.101"
+        ],
+        "system_type": "Finance Server"
+      },
+      {
+        "id": "internal3",
+        "type": "internal",
+        "stage": "collection",
+        "cluster": false,
+        "labels": [
+          "legalserver01",
+          "10.0.2.102"
+        ],
+        "system_type": "Legal Server"
+      },
+      {
+        "id": "external1",
+        "type": "external",
+        "stage": "exfil",
+        "labels": [
+          "shadydomain.com",
+          "203.0.113.10"
+        ],
+        "whois": {
+          "organization": "Shady Domain Inc.",
+          "country": "Unknown",
+          "state": "Unknown",
+          "created": "2020-02-01",
+          "updated": "2024-01-01"
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": 1,
+        "date": "01",
+        "window_start": "2024-12-01T00:00:00",
+        "window_end": "2024-12-01T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>malicious-employee</span> accessed and collected 50 MB of HR data from <span>hrserver01</span> over port 1433 (SQL).",
+        "value": "50 MB",
+        "source": "internal1",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 2,
+        "date": "02",
+        "window_start": "2024-12-02T00:00:00",
+        "window_end": "2024-12-02T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>malicious-employee</span> accessed and collected 75 MB of financial data from <span>financeserver01</span> over port 1433 (SQL).",
+        "value": "75 MB",
+        "source": "internal2",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 3,
+        "date": "03",
+        "window_start": "2024-12-03T00:00:00",
+        "window_end": "2024-12-03T23:59:59",
+        "stages": [
+          "collection"
+        ],
+        "type": "internal",
+        "desc": "<span>malicious-employee</span> accessed and collected 100 MB of legal documents from <span>legalserver01</span> over port 1433 (SQL).",
+        "value": "100 MB",
+        "source": "internal3",
+        "target": "sus1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 4,
+        "date": "04",
+        "window_start": "2024-12-04T00:00:00",
+        "window_end": "2024-12-04T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>malicious-employee</span> uploaded 50 MB of HR data to <span>shadydomain.com</span> over port 443 (HTTPS).",
+        "value": "50 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 5,
+        "date": "05",
+        "window_start": "2024-12-05T00:00:00",
+        "window_end": "2024-12-05T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>malicious-employee</span> uploaded 75 MB of financial data to <span>shadydomain.com</span> over port 443 (HTTPS).",
+        "value": "75 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 6,
+        "date": "06",
+        "window_start": "2024-12-06T00:00:00",
+        "window_end": "2024-12-06T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>malicious-employee</span> uploaded 100 MB of legal documents to <span>shadydomain.com</span> over port 443 (HTTPS).",
+        "value": "100 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      },
+      {
+        "id": 7,
+        "date": "07",
+        "window_start": "2024-12-07T00:00:00",
+        "window_end": "2024-12-07T23:59:59",
+        "stages": [
+          "exfil"
+        ],
+        "type": "external",
+        "desc": "<span>malicious-employee</span> uploaded an additional 25 MB of miscellaneous data to <span>shadydomain.com</span> over port 443 (HTTPS).",
+        "value": "25 MB",
+        "source": "sus1",
+        "target": "external1",
+        "direction": 1,
+        "anchors": [
+          "Right",
+          "Left"
+        ]
+      }
+    ]
+  }
+]
