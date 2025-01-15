@@ -11,8 +11,8 @@
       >
         <option
           v-for="(threatcase, index) in threatcases.map(tc => tc.info.title)"
-          :value="index"
           :key="index"
+          :value="index"
         >
           {{ threatcase }}
         </option>
@@ -29,13 +29,14 @@
           </div>
           <div
             v-for="node in getNodesByStage('recon')"
-            class="node-container"
             :key="node.id"
+            class="node-container"
           >
             <div class="events events__int">
               <div
-                v-for="event in getEvents(node.id)"
+                v-for="(event, index) in getEvents(node.id)"
                 :id="'event' + event.id"
+                :key="index"
                 class="event"
                 @mouseenter="highlightEvent(event.id)"
                 @mouseleave="highlightEvent(null)"
@@ -67,13 +68,14 @@
         </div>
         <div
           v-for="node in getNodesByStage('collection')"
-          class="node-container"
           :key="node.id"
+          class="node-container"
         >
           <div class="events events__int">
             <div
-              v-for="event in getEvents(node.id)"
+              v-for="(event, index) in getEvents(node.id)"
               :id="'event' + event.id"
+              :key="index"
               class="event"
               @mouseenter="highlightEvent(event.id)"
               @mouseleave="highlightEvent(null)"
@@ -102,9 +104,12 @@
       </div>
 
       <div class="lane lane--two">
-        <div class="section-title">Compromised Endpoints</div>
+        <div class="section-title">
+          Compromised Endpoints
+        </div>
         <div
-          v-for="node in getNodes('sus')"
+          v-for="(node, index) in getNodes('sus')"
+          :key="index"
           class="node-container"
         >
           <div class="events">
@@ -112,8 +117,9 @@
               :class="['events__int', { 'events__int--compact': filterEvents(getEvents(node.id), 'internal').length > 3 }]"
             >
               <div
-                v-for="event in filterEvents(getEvents(node.id), 'internal')"
+                v-for="(event, intEventIndex) in filterEvents(getEvents(node.id), 'internal')"
                 :id="'event' + event.id"
+                :key="intEventIndex"
                 class="event"
                 @mouseenter="highlightEvent(event.id)"
                 @mouseleave="highlightEvent(null)"
@@ -125,8 +131,9 @@
               :class="['events__ext', { 'events__ext--compact': filterEvents(getEvents(node.id), 'external').length > 3 }]"
             >
               <div
-                v-for="event in filterEvents(getEvents(node.id), 'external')"
+                v-for="(event, extEventIndex) in filterEvents(getEvents(node.id), 'external')"
                 :id="'event' + event.id"
+                :key="extEventIndex"
                 class="event"
                 @mouseenter="highlightEvent(event.id)"
                 @mouseleave="highlightEvent(null)"
@@ -152,14 +159,15 @@
         </div>
       </div>
 
-      <div class="network-barrier"></div>
+      <div class="network-barrier" />
 
       <div class="lane lane--three">
         <div class="section-title">
           Exfiltration Destinations
         </div>
         <div
-          v-for="node in getNodes('external')"
+          v-for="(node, index) in getNodes('external')"
+          :key="index"
           class="node-container"
         >
           <div
@@ -182,244 +190,156 @@
   </div>
 </template>
 
-<script>
-  import threatcases from './threatcases.json'
+<script setup>
+  import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
   import { jsPlumb } from 'jsplumb'
-  import _ from 'lodash'
+  import threatcases from './threatcases.json'
 
-  export default {
-    name: 'EpThreatCaseMap',
-    data() {
-      return {
-        activeEvidence: null,
-        selectedThreatCase: 0,
-        stages: ['recon', 'collection', 'exfil'],
-        threatcases,
-      }
-    },
-    methods: {
-      dashStyler(stage) {
-        let dashStyle
-        switch (stage) {
-          case 'recon':
-            dashStyle = '3 5'
-            break
-          case 'collection':
-            dashStyle = null
-            break
-          case 'exfil':
-            dashStyle = null
-            break
-          default:
-        }
-        return dashStyle
-      },
-      drawConnections() {
-        let _this = this
-        this.events.forEach(function(eventObject, index) {
-          let connectorType = 'Bezier'
-          if (eventObject.id === 9) {
-            connectorType = 'Straight'
-          }
-          jsPlumb.connect({
-            source: 'event' + eventObject.id,
-            target: eventObject.target,
-            anchors: eventObject.anchors,
-            cssClass: 'event' + eventObject.id,
-            endpoint: 'Blank',
-            overlays: [
-              ['Arrow',
-                {
-                  width: 8,
-                  length: 6,
-                  location: 1,
-                  foldback: 1,
-                  direction: eventObject.direction
-                }
-              ]],
-            paintStyle: {
-              stroke: _this.strokeStyler(eventObject.stages[0]),
-              strokeWidth: 2,
-              dashstyle: _this.dashStyler(eventObject.stages[0]),
-              outlineStroke: 'var(--interface-surface)',
-              outlineWidth: 3
-            },
-            // hoverPaintStyle: {
-            //   stroke: '#71e3fd'
-            // },
-            connector: [
-              connectorType,
-              {
-                avoidOverlap: true,
-                curviness: 100
-                // gap: 10,
-                // stub: 20
-                // midpoint: eventObject.id / 10
-              }
-            ]
-          })
-        })
-        // reactivate ev if active
-        if (this.activeEvidence) { this.activateEvidence(this.activeEvidence) }
-        // bind clicks
-        jsPlumb.select().each(function(connection) {
-          connection.bind('click', function(conn) {
-            let event = conn.canvas.classList[1].replace('connector', '') - 1
-            _this.activateEvidence(_this.events[event])
-          })
-        })
-        // bind hover
-        jsPlumb.select().each(function(connection) {
-          connection.bind('mouseover', function(conn) {
-            let evTab = document.getElementById(conn.sourceId)
-            evTab.classList.toggle('event--selected')
-          })
-        })
-        jsPlumb.select().each(function(connection) {
-          connection.bind('mouseout', function(conn) {
-            let evTab = document.getElementById(conn.sourceId)
-            evTab.classList.toggle('event--selected')
-          })
-        })
-      },
-      filterEvents(events, type) {
-        return events.filter(function(obj) { return obj.type == type })
-      },
-      getEvents(id) {
-        return this.events.filter(function(obj) { return obj.source == id })
-      },
-      getNodes(type) {
-        return this.nodes.filter(function(obj) { return obj.type == type })
-      },
-      getNodesByStage(stage) {
-        return this.nodes.filter(function(obj) { return obj.stage == stage })
-      },
-      highlightEvent(id) {
-        if (id === null) {
-          // remove dimmed class from all .jtk-connector elements
-          jsPlumb.select().each(function(connection) {
-            connection.canvas.classList.remove('dimmed')
-          })
-          // remove dimmed class from all .node and .event elements
-          document.querySelectorAll('.node, .event').forEach(function(el) {
-            el.classList.remove('dimmed')
-          })
-          return
-        }
+  const selectedThreatCase = ref(0)
 
-        let event = this.events.find((obj) => obj.id == id)
+  const caseID = computed(() => {
+    const caseTitle = threatcases[selectedThreatCase.value].info.title
+    return caseTitle.slice(-6).toLowerCase()
+  })
 
-        let eventID = `event${id}`
-        let sourceID = document.getElementById(event.source).id
-        let targetID = document.getElementById(event.target).id
+  const events = computed(() => threatcases[selectedThreatCase.value].events)
+  const nodes = computed(() => threatcases[selectedThreatCase.value].nodes)
 
-        // give the dimmed class to all .jtk-connector elements that aren't `.${eventID}`
-        jsPlumb.select().each(function(connection) {
-          if (connection.canvas.classList[1] !== eventID) {
-            // delay adding class to give time for the transition
-            connection.canvas.classList.add('dimmed')
-          }
-        })
-
-        // give the dimmed class to all .node and .event elements that aren't `#${sourceID}` or `#${targetID}`
-        document.querySelectorAll('.node').forEach(function(el) {
-          if (el.id !== sourceID && el.id !== targetID) {
-            el.classList.add('dimmed')
-          }
-        })
-
-        // add .dimmed to each .event element that isn't `#${eventID}`
-        // document.querySelectorAll('.event').forEach(function(el) {
-        //   if (el.id !== eventID) {
-        //     el.classList.toggle('dimmed')
-        //   }
-        // })
-        // add .dimmed to each .event element that isn't `#${eventID}`
-        document.querySelectorAll('.event').forEach(function(el) {
-          if (el.id !== eventID) {
-            // el.style.opacity = 0.25
-            el.classList.add('dimmed')
-          }
-        })
-      },
-      strokeStyler(eventObject) {
-        switch (eventObject) {
-          case 'recon':
-            return 'hsl(var(--cyan-400))'
-          case 'collection':
-            return 'hsl(var(--orange-300))'
-          case 'exfil':
-            return 'hsl(var(--red-400))'
-          default:
-            return 'hsl(var(--gray-700))'
-        }
-      },
-    },
-    computed: {
-      caseID() {
-        const caseTitle = this.threatcases[this.selectedThreatCase].info.title
-        return caseTitle.slice(-6).toLowerCase()
-      },
-      events() {
-        return this.threatcases[this.selectedThreatCase].events
-      },
-      nodes() {
-        return this.threatcases[this.selectedThreatCase].nodes
-      },
-      nodesByStage() {
-        return _.groupBy(this.nodes, 'stage')
-      },
-      nodesByType() {
-        return _.groupBy(this.nodes, 'type')
-      },
-    },
-    watch: {
-      selectedThreatCase(newVal, oldVal) {
-        this.selectedThreatCase = newVal
-        jsPlumb.reset()
-        let _this = this
-        _.delay(function() {
-          _this.drawConnections()
-        }, 200)
-      }
-    },
-    mounted() {
-      let _this = this
-      // set up jsPlumb and draw connections
-      jsPlumb.ready(() => {
-        jsPlumb.setContainer(document.getElementById('map'))
-        this.drawConnections()
-      })
-      // responsive connections
-      window.addEventListener('resize', function() {
-        jsPlumb.reset()
-        _this.drawConnections()
-      })
-
-      // create watcher for left and right arrow keys
-      // left will decrement selectedThreatCase
-      // right will increment selectedThreatCase
-      // when the end is reached, it will loop back to the beginning
-      window.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowLeft') {
-          if (_this.selectedThreatCase === 0) {
-            _this.selectedThreatCase = _this.threatcases.length - 1
-          } else {
-            _this.selectedThreatCase--
-          }
-        } else if (e.key === 'ArrowRight') {
-          if (_this.selectedThreatCase === _this.threatcases.length - 1) {
-            _this.selectedThreatCase = 0
-          } else {
-            _this.selectedThreatCase++
-          }
-        }
-      })
-    },
-    unmounted() {
-      jsPlumb.reset()
+  const dashStyler = (stage) => {
+    switch (stage) {
+      case 'recon':
+        return '3 5'
+      case 'collection':
+      case 'exfil':
+        return null
+      default:
+        return null
     }
   }
+
+  const strokeStyler = (eventObject) => {
+    switch (eventObject) {
+      case 'recon':
+        return 'hsl(var(--cyan-400))'
+      case 'collection':
+        return 'hsl(var(--orange-300))'
+      case 'exfil':
+        return 'hsl(var(--red-400))'
+      default:
+        return 'hsl(var(--gray-700))'
+    }
+  }
+
+  const getNodesByStage = (stage) => {
+    return nodes.value.filter((node) => node.stage === stage)
+  }
+
+  const getNodes = (type) => {
+    return nodes.value.filter((node) => node.type === type)
+  }
+
+  const getEvents = (id) => {
+    return events.value.filter((event) => event.source === id)
+  }
+
+  const filterEvents = (events, type) => {
+    return events.filter((event) => event.type === type)
+  }
+
+  const highlightEvent = (id) => {
+    if (id === null) {
+      jsPlumb.select().each((connection) => {
+        connection.canvas.classList.remove('dimmed')
+      })
+      document.querySelectorAll('.node, .event').forEach((el) => {
+        el.classList.remove('dimmed')
+      })
+      return
+    }
+
+    const event = events.value.find((obj) => obj.id === id)
+    const eventID = `event${id}`
+    const sourceID = document.getElementById(event.source).id
+    const targetID = document.getElementById(event.target).id
+
+    jsPlumb.select().each((connection) => {
+      if (connection.canvas.classList[1] !== eventID) {
+        connection.canvas.classList.add('dimmed')
+      }
+    })
+
+    document.querySelectorAll('.node').forEach((el) => {
+      if (el.id !== sourceID && el.id !== targetID) {
+        el.classList.add('dimmed')
+      }
+    })
+
+    document.querySelectorAll('.event').forEach((el) => {
+      if (el.id !== eventID) {
+        el.classList.add('dimmed')
+      }
+    })
+  }
+
+  const drawConnections = () => {
+    jsPlumb.reset()
+    events.value.forEach((eventObject) => {
+      const connectorType = eventObject.id === 9 ? 'Straight' : 'Bezier'
+      jsPlumb.connect({
+        source: `event${eventObject.id}`,
+        target: eventObject.target,
+        anchors: eventObject.anchors,
+        cssClass: `event${eventObject.id}`,
+        endpoint: 'Blank',
+        overlays: [
+          ['Arrow', { width: 8, length: 6, location: 1, foldback: 1, direction: eventObject.direction }],
+        ],
+        paintStyle: {
+          stroke: strokeStyler(eventObject.stages[0]),
+          strokeWidth: 2,
+          dashstyle: dashStyler(eventObject.stages[0]),
+          outlineStroke: 'var(--interface-surface)',
+          outlineWidth: 3,
+        },
+        connector: [
+          connectorType,
+          {
+            avoidOverlap: true,
+            curviness: 100,
+          },
+        ],
+      })
+    })
+  }
+
+  watch(selectedThreatCase, () => {
+    jsPlumb.reset()
+    setTimeout(() => drawConnections(), 200)
+  })
+
+  onMounted(() => {
+    jsPlumb.ready(() => {
+      jsPlumb.setContainer(document.getElementById('map'))
+      drawConnections()
+    })
+
+    window.addEventListener('resize', () => {
+      jsPlumb.reset()
+      drawConnections()
+    })
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        selectedThreatCase.value = selectedThreatCase.value === 0 ? threatcases.length - 1 : selectedThreatCase.value - 1
+      } else if (e.key === 'ArrowRight') {
+        selectedThreatCase.value = selectedThreatCase.value === threatcases.length - 1 ? 0 : selectedThreatCase.value + 1
+      }
+    })
+  })
+
+  onUnmounted(() => {
+    jsPlumb.reset()
+  })
 </script>
 
 <style lang="scss">
