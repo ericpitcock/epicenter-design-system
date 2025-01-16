@@ -3,21 +3,6 @@
     class="map-container"
     :class="`case-${caseID}`"
   >
-    <div class="case-control-container">
-      <select
-        v-model="selectedThreatCase"
-        label="Threat Case"
-        :value="selectedThreatCase"
-      >
-        <option
-          v-for="(threatcase, index) in threatcases.map(tc => tc.info.title)"
-          :key="index"
-          :value="index"
-        >
-          {{ threatcase }}
-        </option>
-      </select>
-    </div>
     <div
       id="map"
       class="map"
@@ -195,21 +180,31 @@
     computed,
     onMounted,
     onUnmounted,
-    ref,
     watch,
   } from 'vue'
-  import { jsPlumb } from 'jsplumb'
-  import threatcases from './threatcases.json'
 
-  const selectedThreatCase = ref(0)
+  const props = defineProps({
+    selectedThreatCase: {
+      type: Number,
+      default: 0,
+    },
+    threatcases: {
+      type: Array,
+      required: true,
+    },
+  })
+
+  // const selectedThreatCase = ref(0)
 
   const caseID = computed(() => {
-    const caseTitle = threatcases[selectedThreatCase.value].info.title
+    const caseTitle = props.threatcases[props.selectedThreatCase].info.title
     return caseTitle.slice(-6).toLowerCase()
   })
 
-  const events = computed(() => threatcases[selectedThreatCase.value].events)
-  const nodes = computed(() => threatcases[selectedThreatCase.value].nodes)
+  const events = computed(() => props.threatcases[props.selectedThreatCase].events)
+  const nodes = computed(() => props.threatcases[props.selectedThreatCase].nodes)
+
+  let jsPlumbInstance = null // Reference for dynamic import
 
   const dashStyler = (stage) => {
     switch (stage) {
@@ -254,7 +249,7 @@
 
   const highlightEvent = (id) => {
     if (id === null) {
-      jsPlumb.select().each((connection) => {
+      jsPlumbInstance.select().each((connection) => {
         connection.canvas.classList.remove('dimmed')
       })
       document.querySelectorAll('.node, .event').forEach((el) => {
@@ -268,7 +263,7 @@
     const sourceID = document.getElementById(event.source).id
     const targetID = document.getElementById(event.target).id
 
-    jsPlumb.select().each((connection) => {
+    jsPlumbInstance.select().each((connection) => {
       if (connection.canvas.classList[1] !== eventID) {
         connection.canvas.classList.add('dimmed')
       }
@@ -287,11 +282,16 @@
     })
   }
 
-  const drawConnections = () => {
-    jsPlumb.reset()
+  const drawConnections = async () => {
+    if (!jsPlumbInstance) {
+      const { jsPlumb } = await import('jsplumb') // Dynamically import jsplumb
+      jsPlumbInstance = jsPlumb
+    }
+
+    jsPlumbInstance.reset()
     events.value.forEach((eventObject) => {
       const connectorType = eventObject.id === 9 ? 'Straight' : 'Bezier'
-      jsPlumb.connect({
+      jsPlumbInstance.connect({
         source: `event${eventObject.id}`,
         target: eventObject.target,
         anchors: eventObject.anchors,
@@ -318,33 +318,30 @@
     })
   }
 
-  watch(selectedThreatCase, () => {
-    jsPlumb.reset()
+  watch(() => props.selectedThreatCase, async () => {
+    jsPlumbInstance?.reset()
     setTimeout(() => drawConnections(), 200)
   })
 
-  onMounted(() => {
-    jsPlumb.ready(() => {
-      jsPlumb.setContainer(document.getElementById('map'))
+  onMounted(async () => {
+    if (!jsPlumbInstance) {
+      const { jsPlumb } = await import('jsplumb') // Dynamically import jsplumb
+      jsPlumbInstance = jsPlumb
+    }
+
+    jsPlumbInstance.ready(() => {
+      jsPlumbInstance.setContainer(document.getElementById('map'))
       drawConnections()
     })
 
     window.addEventListener('resize', () => {
-      jsPlumb.reset()
+      jsPlumbInstance.reset()
       drawConnections()
-    })
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
-        selectedThreatCase.value = selectedThreatCase.value === 0 ? threatcases.length - 1 : selectedThreatCase.value - 1
-      } else if (e.key === 'ArrowRight') {
-        selectedThreatCase.value = selectedThreatCase.value === threatcases.length - 1 ? 0 : selectedThreatCase.value + 1
-      }
     })
   })
 
   onUnmounted(() => {
-    jsPlumb.reset()
+    jsPlumbInstance?.reset()
   })
 </script>
 
@@ -352,16 +349,6 @@
   // @import '../assets/app.scss';
   // @import '../../../node_modules/jsplumb/css/jsplumbtoolkit-defaults.css';
   $selectedBlue: #a3edfe;
-
-  .case-control-container {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-
-    select {
-      all: revert;
-    }
-  }
 
   h1 {
     // font-size: $font-size-large;
@@ -420,10 +407,10 @@
     position: relative;
     flex: 1 1 75%;
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     width: 100%;
     max-width: 1400px;
-    height: 100%;
+    // height: 100%;
   }
 
   .lane {
