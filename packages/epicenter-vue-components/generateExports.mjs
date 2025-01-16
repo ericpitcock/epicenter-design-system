@@ -13,40 +13,39 @@ const componentFolders = fs.readdirSync(componentsDir).filter((folder) => {
   return fs.statSync(folderPath).isDirectory()
 })
 
-// Generate export statements for each folder
-const exportStatements = componentFolders
-  .map((folder) => {
-    const folderPath = path.join(componentsDir, folder)
+// Generate import statements and named exports for each folder
+const importStatements = []
+const exportNames = []
 
-    // Find the `.vue` file in the folder
-    const vueFile = fs.readdirSync(folderPath).find((file) => file.endsWith('.vue'))
+componentFolders.forEach((folder) => {
+  const folderPath = path.join(componentsDir, folder)
 
-    if (!vueFile) {
-      console.warn(`No .vue file found in folder: ${folder}`)
-      return null
-    }
+  // Find the `.vue` file in the folder
+  const vueFile = fs.readdirSync(folderPath).find((file) => file.endsWith('.vue'))
 
-    // Extract the component name from the `.vue` file name
-    const componentName = vueFile.replace('.vue', '')
+  if (!vueFile) {
+    console.warn(`No .vue file found in folder: ${folder}`)
+    return
+  }
 
-    return `import { default as ${componentName} } from './${folder}/${vueFile}'`
-  })
-  .filter(Boolean) // Remove null entries
+  // Extract the component name from the `.vue` file name
+  const componentName = vueFile.replace('.vue', '')
 
-// Add a default export if needed
-const defaultExport = `export default {
-  ${componentFolders
-    .map((folder) => {
-      const folderPath = path.join(componentsDir, folder)
-      const vueFile = fs.readdirSync(folderPath).find((file) => file.endsWith('.vue'))
-      return vueFile ? vueFile.replace('.vue', '') : null
-    })
-    .filter(Boolean)
-    .join(',\n  ')}
-}
-`
+  // Generate the import statement
+  importStatements.push(`import ${componentName} from './${folder}/${vueFile}'`)
+
+  // Add to named exports
+  exportNames.push(componentName)
+})
+
+// Generate the default export block
+const namedExports = `export {\n  ${exportNames.join(',\n  ')}\n}`
+const defaultExport = `export default {\n  ${exportNames.join(',\n  ')}\n}`
+
+// Combine all parts
+const outputContent = `${importStatements.join('\n')}\n\n${namedExports}\n\n${defaultExport}`
 
 // Write the output file
-fs.writeFileSync(outputFile, `${exportStatements.join('\n')}\n\n${defaultExport}`)
+fs.writeFileSync(outputFile, outputContent)
 
 console.log(`Export file generated at: ${outputFile}`)
