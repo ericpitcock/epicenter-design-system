@@ -191,7 +191,13 @@
 </template>
 
 <script setup>
-  import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+  import {
+    computed,
+    onMounted,
+    onUnmounted,
+    ref,
+    watch,
+  } from 'vue'
   import { jsPlumb } from 'jsplumb'
   import threatcases from './threatcases.json'
 
@@ -407,7 +413,7 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    background: var(--interface-bg);
+    background: var(--interface-surface);
   }
 
   .map {
@@ -415,6 +421,7 @@
     flex: 1 1 75%;
     display: flex;
     align-items: flex-start;
+    width: 100%;
     max-width: 1400px;
     height: 100%;
   }
@@ -541,8 +548,8 @@
     width: 200px;
     height: 60px;
     padding-left: 55px;
-    background-color: var(--interface-surface);
-    border: 1px solid var(--border-color);
+    background-color: var(--interface-overlay);
+    border: 1px solid var(--border-color--lighter);
     border-radius: var(--border-radius--large);
     transition: all .25s cubic-bezier(0, 0.83, 0.25, 1);
 
