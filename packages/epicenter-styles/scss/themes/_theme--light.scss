@@ -1,13 +1,6 @@
-html[data-color-theme='light'] {
+html[data-color-theme='light'],
+.light-theme {
   // interface
-  // --interface-bg: hsl(var(--gray-60));
-  // --interface-bg--accent: hsl(var(--gray-50));
-  // --interface-surface: hsl(var(--gray-40));
-  // --interface-surface--accent: hsl(var(--gray-60));
-  // --interface-foreground: hsl(var(--gray-30));
-  // --interface-foreground--accent: hsl(var(--gray-20));
-  // --interface-overlay: hsl(var(--gray-20));
-  // --interface-overlay--accent: hsl(var(--gray-10));
   --interface-bg: hsl(var(--gray-50));
   --interface-bg--accent: hsl(var(--gray-40));
   --interface-surface: hsl(var(--gray-30));

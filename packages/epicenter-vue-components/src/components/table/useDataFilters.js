@@ -1,5 +1,4 @@
 import { ref, computed, onMounted } from 'vue'
-import { faker } from '@faker-js/faker'
 
 export default function useDataFilters(
   columns,
@@ -62,8 +61,10 @@ export default function useDataFilters(
         }
       }
 
+      const generateUniqueId = () => crypto.randomUUID()
+
       generatedFilters[key] = uniqueValues[key].map(value => ({
-        id: faker.string.uuid(),
+        id: generateUniqueId(),
         name: key,
         value: value,
         checked: disabledFilters.includes(value) ? false : true,

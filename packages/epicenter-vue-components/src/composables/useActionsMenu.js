@@ -11,7 +11,7 @@ export default function useActionsMenu() {
         styles: { '--ep-icon-stroke-width': 3 },
       },
       iconRight: null,
-      class: ['ep-button-variant-subtle-ghost'],
+      class: ['ep-button--ghost'],
       size: 'small',
     },
     alignRight = true,

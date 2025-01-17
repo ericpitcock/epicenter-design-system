@@ -12,7 +12,10 @@
         v-if="$slots.trigger"
         name="trigger"
       />
-      <ep-button v-bind="computedButtonProps" />
+      <ep-button
+        v-else
+        v-bind="computedButtonProps"
+      />
     </div>
     <div
       v-show="dropdownVisible"

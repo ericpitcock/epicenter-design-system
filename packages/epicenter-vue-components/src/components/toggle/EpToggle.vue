@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
 
   defineOptions({
     name: 'EpToggle',
@@ -40,17 +40,15 @@
 
   const emit = defineEmits(['toggle'])
 
-  const active = ref(props.isActive)
-
   const classes = computed(() => {
     return {
-      'ep-toggle--active': active.value,
+      'ep-toggle--active': props.isActive,
       'ep-toggle--disabled': props.disabled,
     }
   })
 
   const toggle = () => {
-    active.value = !active.value
-    emit('toggle', active.value)
+    if (props.disabled) return
+    emit('toggle')
   }
 </script>

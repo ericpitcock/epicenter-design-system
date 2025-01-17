@@ -27,7 +27,6 @@
 <script setup>
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
   import { computed, ref } from 'vue'
-  import { v4 as uuidv4 } from 'uuid'
 
   defineOptions({
     name: 'EpInput',
@@ -35,7 +34,8 @@
   })
 
   const computedId = computed(() => {
-    return props.inputId || uuidv4()
+    const generateUniqueId = () => crypto.randomUUID()
+    return props.inputId || generateUniqueId()
   })
 
   const props = defineProps({

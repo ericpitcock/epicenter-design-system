@@ -51,6 +51,7 @@
 
   &__label {
     font-size: var(--font-size--small);
+    white-space: nowrap;
   }
 
   &--disabled {

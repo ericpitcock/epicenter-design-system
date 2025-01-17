@@ -38,9 +38,9 @@
       <div class="ep-upset-plot-chart">
         <div class="ep-toggle-container">
           <ep-toggle
+            label="Exclude fully covered"
             :is-active="hideFullyCovered"
-            label="Exclude 100% covered"
-            @toggle="hideFullyCovered = $event"
+            @toggle="toggleFullyCovered"
           />
         </div>
         <div
@@ -71,7 +71,9 @@
           class="ep-upset-plot-adapters__row"
           :class="{ [`highlighted--${highlightType}`]: isAdapterHighlighted(adapterIndex) }"
         >
-          <div class="adapter-label">{{ adapter }}</div>
+          <div class="adapter-label">
+            {{ adapter }}
+          </div>
           <ep-dropdown v-bind="adapterActionsMenuProps(adapter)" />
         </div>
       </div>
@@ -124,7 +126,6 @@
 
 <script setup>
   import { computed, ref, useTemplateRef } from 'vue'
-  import { faker } from '@faker-js/faker'
   import EpFlex from '../flexbox/EpFlex.vue'
   import EpHeader from '../header/EpHeader.vue'
   import EpDropdown from '../dropdown/EpDropdown.vue'
@@ -143,7 +144,7 @@
     'Carbon Black Response',
     'Carbon Black Defense',
     'Defender ATP',
-    'eSentire',
+    'Sentiire',
     'Sumo Logic',
     'Tenable.io',
     'Qualys Scans',
@@ -151,7 +152,7 @@
     'Azure AD',
   ]
 
-  const generateAssetTotal = () => faker.number.int({ min: 0, max: 200 })
+  const generateAssetTotal = () => Math.floor(Math.random() * 200)
 
   const fullCoveredCount = 1132
 
@@ -174,17 +175,18 @@
 
   const totalAssets = computed(() => intersections.reduce((acc, i) => acc + i.total, 0))
 
-  // get percentage that 1132 is of totalAssets
   const percentageCovered = computed(() => (fullCoveredCount / totalAssets.value) * 100).value.toFixed()
 
   const maxTotal = computed(() => Math.max(...sortedIntersections.value.map((i) => i.total)))
 
   const hideFullyCovered = ref(false)
+  const toggleFullyCovered = () => {
+    hideFullyCovered.value = !hideFullyCovered.value
+  }
 
   const sortedIntersections = computed(() => {
     const sorted = [...intersections].sort((a, b) => b.total - a.total)
     if (!hideFullyCovered.value) return sorted
-    // return all but first
     return sorted.slice(1)
   })
 
@@ -397,7 +399,6 @@
     grid-template-rows: auto auto 1fr auto;
     background: var(--interface-surface);
     padding: 0 3rem 2rem 3rem;
-    border: 1px solid var(--border-color);
     user-select: none;
   }
 

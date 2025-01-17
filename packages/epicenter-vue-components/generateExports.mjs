@@ -7,32 +7,30 @@ const componentsDir = path.resolve('src/components')
 // Output file (index.js in components directory)
 const outputFile = path.join(componentsDir, 'index.js')
 
-// Read all folders in the components directory
-const componentFolders = fs.readdirSync(componentsDir).filter((folder) => {
-  const folderPath = path.join(componentsDir, folder)
-  return fs.statSync(folderPath).isDirectory()
-})
+// Helper function to recursively find all .vue files
+const findVueFiles = (dir) => {
+  const entries = fs.readdirSync(dir, { withFileTypes: true })
+  const files = entries.flatMap((entry) => {
+    const fullPath = path.join(dir, entry.name)
+    return entry.isDirectory() ? findVueFiles(fullPath) : fullPath
+  })
+  return files.filter((file) => file.endsWith('.vue'))
+}
 
-// Generate import statements and named exports for each folder
+// Find all .vue files in the components directory
+const vueFiles = findVueFiles(componentsDir)
+
+// Generate import statements and named exports
 const importStatements = []
 const exportNames = []
 
-componentFolders.forEach((folder) => {
-  const folderPath = path.join(componentsDir, folder)
-
-  // Find the `.vue` file in the folder
-  const vueFile = fs.readdirSync(folderPath).find((file) => file.endsWith('.vue'))
-
-  if (!vueFile) {
-    console.warn(`No .vue file found in folder: ${folder}`)
-    return
-  }
-
-  // Extract the component name from the `.vue` file name
-  const componentName = vueFile.replace('.vue', '')
+vueFiles.forEach((filePath) => {
+  // Get the component name and relative path
+  const relativePath = path.relative(componentsDir, filePath)
+  const componentName = path.basename(filePath, '.vue')
 
   // Generate the import statement
-  importStatements.push(`import ${componentName} from './${folder}/${vueFile}'`)
+  importStatements.push(`import ${componentName} from './${relativePath.replace(/\\/g, '/')}'`)
 
   // Add to named exports
   exportNames.push(componentName)

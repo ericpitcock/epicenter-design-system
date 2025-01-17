@@ -1,11 +1,15 @@
 .ep-loading {
   --ep-loading-state-bg-color: var(--interface-surface);
   --ep-loading-state-border-radius: var(--border-radius--large);
+  --ep-loading-state-top: 0;
+  --ep-loading-state-right: 0;
+  --ep-loading-state-bottom: 0;
+  --ep-loading-state-left: 0;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: var(--ep-loading-state-top);
+  right: var(--ep-loading-state-right);
+  bottom: var(--ep-loading-state-bottom);
+  left: var(--ep-loading-state-left);
   z-index: var(--z-index--modal);
   backdrop-filter: blur(4px);
   display: flex;

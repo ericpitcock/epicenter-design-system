@@ -1,4 +1,5 @@
-:root {
+:root,
+.dark-theme {
   // interface
   --interface-bg: hsl(var(--gray-430));
   --interface-bg--accent: hsl(var(--gray-420));
@@ -56,7 +57,7 @@
   // text selection color
   --text-selection: var(--yellow-600);
   // table
-  // --ep-table-row-stripe-color: var(--interface-foreground);
+  --ep-table-row-stripe-color: var(--interface-foreground);
   // --ep-table-row-hover-bg-color: hsl(var(--gray-450));
   // toggle
   --toggle-track: hsl(var(--gray-400));

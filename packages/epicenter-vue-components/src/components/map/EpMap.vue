@@ -8,9 +8,8 @@
 </template>
 
 <script setup>
-  import 'mapbox-gl/dist/mapbox-gl.css'
-  import mapboxgl from 'mapbox-gl'
   import { ref, nextTick, onMounted, onBeforeUnmount, watch } from 'vue'
+  import 'mapbox-gl/dist/mapbox-gl.css'
 
   defineOptions({
     name: 'EpMap',
@@ -60,6 +59,7 @@
   const init = ref(true)
   const map = ref(null)
   const markers = ref([])
+  let mapboxgl = null // Reference for dynamic import
 
   watch(() => props.mapCenter, (newCenter) => {
     emit('centerChange', newCenter)
@@ -68,12 +68,7 @@
 
   watch(() => props.mapZoom, (newZoom) => {
     emit('zoomChange', newZoom)
-    // map.value.zoomTo(newZoom)
-
-    // set the zoom level
     flyTo(props.mapCenter, newZoom)
-
-    console.log('zoom changed', newZoom)
   })
 
   watch(() => props.mapStyle, (newStyle) => {
@@ -93,20 +88,6 @@
     }
   })
 
-  // selectively create watchers if features exist
-  // do this for everything that is not required
-
-  if (props.mapSource) {
-    watch('mapSource', () => {
-      if (init.value) return
-      console.log('map source changed (mapSource watcher)')
-      if (map.value.getLayer('test')) map.value.removeLayer('test')
-      if (map.value.getSource('test')) map.value.removeSource('test')
-      addSource(props.mapSource, props.mapLayer)
-      fitBounds(getBounds(props.mapSource.source.data.geometry.coordinates))
-    })
-  }
-
   // get a reference to the parent container
   const epMapContainer = ref(null)
 
@@ -125,10 +106,12 @@
 
     // create a new ResizeObserver instance
     const observer = new ResizeObserver(() => {
-      // the size of the container has changed, redraw the map
-      nextTick(() => {
-        map.value.resize()
-      })
+      if (map.value) {
+        // Ensure map.value is initialized before calling resize
+        nextTick(() => {
+          map.value.resize()
+        })
+      }
     })
 
     // attach the observer to the container
@@ -142,6 +125,29 @@
       map.value.remove()
     }
   })
+
+  const loadMap = () => {
+    return new Promise((resolve) => {
+      // Perform the dynamic import and other async operations
+      import('mapbox-gl').then((module) => {
+        mapboxgl = module.default
+        mapboxgl.accessToken = import.meta.env.VITE_APP_MAPBOX_TOKEN
+        map.value = new mapboxgl.Map({
+          container: 'ep-map',
+          center: props.mapCenter,
+          zoom: props.mapZoom,
+          style: props.mapStyle,
+        })
+
+        // Various options
+        if (!props.scrollZoom) map.value.scrollZoom.disable()
+        if (props.navigationControl) map.value.addControl(new mapboxgl.NavigationControl())
+
+        map.value.on('load', () => resolve())
+        map.value.on('dragend', onDragEnd)
+      })
+    })
+  }
 
   const addMarkers = () => {
     props.pinLocations.forEach((location) => {
@@ -162,45 +168,16 @@
     })
   }
 
-  const loadMap = () => {
-    return new Promise(resolve => {
-      mapboxgl.accessToken = import.meta.env.VITE_APP_MAPBOX_TOKEN
-      map.value = new mapboxgl.Map({
-        container: 'ep-map',
-        center: props.mapCenter,
-        zoom: props.mapZoom,
-        style: props.mapStyle,
-      })
-      // various options
-      // scroll zoom
-      if (!props.scrollZoom) map.value.scrollZoom.disable()
-      // Add zoom and rotation controls to the map.
-      if (props.navigationControl) map.value.addControl(new mapboxgl.NavigationControl())
-
-      map.value.on('load', () => resolve())
-      map.value.on('dragend', onDragEnd)
-    })
-  }
-
   const onDragEnd = () => {
     const center = map.value.getCenter()
     emit('centerChange', [center.lng, center.lat])
   }
 
-  // const getMapCenter = () => {
-  //   if (this.fitToBounds) {
-  //     let bounds = getBounds(this.mapSource.source.data.geometry.coordinates)
-  //     return [bounds.getCenter().lng, bounds.getCenter().lat]
-  //   } else {
-  //     return this.mapCenter
-  //   }
-  // }
-
   const getBounds = (coordinates) => {
-    let bounds = coordinates.reduce(function(bounds, coord) {
-      return bounds.extend(coord)
-    }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]))
-    return bounds
+    return coordinates.reduce(
+      (bounds, coord) => bounds.extend(coord),
+      new mapboxgl.LngLatBounds(coordinates[0], coordinates[0])
+    )
   }
 
   const fitBounds = (bounds) => {

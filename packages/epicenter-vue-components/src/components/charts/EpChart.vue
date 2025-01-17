@@ -7,7 +7,7 @@
 
 <script setup>
   import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-  import Highcharts from 'highcharts'
+  // import Highcharts from 'highcharts'
 
   defineOptions({
     name: 'EpChart',
@@ -55,7 +55,12 @@
     ...props.options
   }))
 
-  const drawChart = () => {
+  // const drawChart = () => {
+  //   chart.value = Highcharts.chart(chartId, chartOptions.value)
+  // }
+
+  const drawChart = async () => {
+    const Highcharts = (await import('highcharts')).default
     chart.value = Highcharts.chart(chartId, chartOptions.value)
   }
 

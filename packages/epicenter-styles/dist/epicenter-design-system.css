@@ -769,7 +769,8 @@ html[data-color-theme=light] {
   --gray-500: 0, 0%, 0%;
 }
 
-:root {
+:root,
+.dark-theme {
   --interface-bg: hsl(var(--gray-430));
   --interface-bg--accent: hsl(var(--gray-420));
   --interface-surface: hsl(var(--gray-440));
@@ -804,6 +805,7 @@ html[data-color-theme=light] {
   --text-color--warning: var(--amber-500);
   --text-color--success: var(--green-600);
   --text-selection: var(--yellow-600);
+  --ep-table-row-stripe-color: var(--interface-foreground);
   --toggle-track: hsl(var(--gray-400));
   --toggle-track-border: var(--border-color);
   --toggle-track--active: var(--emerald-500);
@@ -817,7 +819,8 @@ html[data-color-theme=light] {
   --bg-color--alert-critical: var(--red-500);
 }
 
-html[data-color-theme=light] {
+html[data-color-theme=light],
+.light-theme {
   --interface-bg: hsl(var(--gray-50));
   --interface-bg--accent: hsl(var(--gray-40));
   --interface-surface: hsl(var(--gray-30));
@@ -4144,11 +4147,15 @@ input.ep-input--disabled::placeholder {
 .ep-loading {
   --ep-loading-state-bg-color: var(--interface-surface);
   --ep-loading-state-border-radius: var(--border-radius--large);
+  --ep-loading-state-top: 0;
+  --ep-loading-state-right: 0;
+  --ep-loading-state-bottom: 0;
+  --ep-loading-state-left: 0;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: var(--ep-loading-state-top);
+  right: var(--ep-loading-state-right);
+  bottom: var(--ep-loading-state-bottom);
+  left: var(--ep-loading-state-left);
   z-index: var(--z-index--modal);
   backdrop-filter: blur(4px);
   display: flex;
@@ -4210,10 +4217,12 @@ input.ep-input--disabled::placeholder {
   border-style: var(--ep-menu-border-style);
   border-color: var(--ep-menu-border-color);
   border-radius: var(--ep-menu-border-radius);
+  text-align: left;
 }
 .ep-menu__section {
   padding: var(--ep-menu-section-padding);
   user-select: none;
+  white-space: nowrap;
 }
 .ep-menu__section:not(:first-of-type) {
   margin-top: var(--ep-menu-section-margin-top);
@@ -4225,7 +4234,6 @@ input.ep-input--disabled::placeholder {
   position: absolute;
   top: -1rem;
   left: calc(100% - 1rem);
-  width: 100%;
 }
 .ep-menu .ep-divider {
   --ep-divider-border-color: var(--ep-menu-divider-border-color);
@@ -4826,6 +4834,7 @@ select.ep-select--disabled {
 }
 .ep-toggle__label {
   font-size: var(--font-size--small);
+  white-space: nowrap;
 }
 .ep-toggle--disabled {
   cursor: not-allowed;

@@ -14,10 +14,12 @@
   border-style: var(--ep-menu-border-style);
   border-color: var(--ep-menu-border-color);
   border-radius: var(--ep-menu-border-radius);
+  text-align: left;
 
   &__section {
     padding: var(--ep-menu-section-padding);
     user-select: none;
+    white-space: nowrap;
 
     &:not(:first-of-type) {
       margin-top: var(--ep-menu-section-margin-top);
@@ -31,7 +33,7 @@
       position: absolute;
       top: -1rem;
       left: calc(100% - 1rem);
-      width: 100%;
+      // width: 100%;
     }
   }
 
