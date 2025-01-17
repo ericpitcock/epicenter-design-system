@@ -2920,6 +2920,7 @@ html[data-color-theme=light] {
   --ep-container-min-height: 0;
   --ep-container-max-height: none;
   --ep-container-padding: 0;
+  --ep-container-content-height: auto;
   --ep-container-content-padding: 0;
   --ep-container-bg-color: none;
   --ep-container-border-radius: var(--border-radius--large);
@@ -2950,6 +2951,7 @@ html[data-color-theme=light] {
 .ep-container__content {
   position: relative;
   flex: 1 1 auto;
+  height: var(--ep-container-content-height);
   padding: var(--ep-container-content-padding);
   -ms-overflow-style: none;
   scrollbar-width: none;
