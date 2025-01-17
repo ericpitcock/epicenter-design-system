@@ -9,7 +9,10 @@ export default {
   argTypes: {
     selectedThreatCase: {
       name: 'Selected Threat Case',
-      options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      control: {
+        type: 'radio',
+      },
     },
     threatcases: {
       table: {
