@@ -290,7 +290,6 @@
 
     jsPlumbInstance.reset()
     events.value.forEach((eventObject) => {
-      const connectorType = eventObject.id === 9 ? 'Straight' : 'Bezier'
       jsPlumbInstance.connect({
         source: `event${eventObject.id}`,
         target: eventObject.target,
@@ -308,7 +307,7 @@
           outlineWidth: 3,
         },
         connector: [
-          connectorType,
+          'Bezier',
           {
             avoidOverlap: true,
             curviness: 100,
