@@ -199,31 +199,6 @@
 
   let jsPlumbInstance = null // Reference for dynamic import
 
-  const dashStyler = (stage) => {
-    switch (stage) {
-      case 'recon':
-        return '3 5'
-      case 'collection':
-      case 'exfil':
-        return null
-      default:
-        return null
-    }
-  }
-
-  const strokeStyler = (eventObject) => {
-    switch (eventObject) {
-      case 'recon':
-        return 'hsl(var(--cyan-400))'
-      case 'collection':
-        return 'hsl(var(--orange-300))'
-      case 'exfil':
-        return 'hsl(var(--red-400))'
-      default:
-        return 'hsl(var(--gray-700))'
-    }
-  }
-
   const getNodesByStage = (stage) => {
     return nodes.value.filter((node) => node.stage === stage)
   }
@@ -294,9 +269,9 @@
           ['Arrow', { width: 8, length: 6, location: 1, foldback: 1, direction: eventObject.direction }],
         ],
         paintStyle: {
-          stroke: strokeStyler(eventObject.stages[0]),
+          stroke: `var(--ep-tcm-${eventObject.stages[0]})`,
           strokeWidth: 2,
-          dashstyle: dashStyler(eventObject.stages[0]),
+          dashstyle: eventObject.stages[0] === 'recon' ? '3 5' : null,
           outlineStroke: 'var(--interface-surface)',
           outlineWidth: 3,
         },
@@ -339,9 +314,15 @@
 </script>
 
 <style lang="scss">
-  // @import '../assets/app.scss';
-  // @import '../../../node_modules/jsplumb/css/jsplumbtoolkit-defaults.css';
-  $selectedBlue: #a3edfe;
+  :root {
+    --ep-tcm-recon: hsl(206, 66%, 65%);
+    --ep-tcm-collection: hsl(var(--orange-300));
+    --ep-tcm-exfil: hsl(var(--red-400));
+  }
+
+  html[data-color-theme='light'] {
+    // light theme
+  }
 
   h1 {
     // font-size: $font-size-large;
@@ -369,7 +350,7 @@
       path:not(.jtk-connector-outline) {
         // stroke: darken($selectedBlue, 10%);
         // stroke: color.adjust($selectedBlue, $lightness: -10%);
-        stroke: $selectedBlue;
+        stroke: var(--ep-tcm-recon);
       }
     }
   }
@@ -387,7 +368,6 @@
 
   .dimmed {
     opacity: 0.25;
-    transition: opacity 0.2s ease;
   }
 
   .map-container {
@@ -404,7 +384,6 @@
     align-items: stretch;
     width: 100%;
     max-width: 1400px;
-    // height: 100%;
   }
 
   .lane {
@@ -475,7 +454,7 @@
     flex: 0 0 20px;
     height: 100%;
     background-color: var(--interface-bg--accent);
-    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='var(--border-color--lighter)' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='hsl(0, 0%, 30%)' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
     border-right: 1px solid var(--border-color);
     border-left: 1px solid var(--border-color);
 
@@ -655,22 +634,23 @@
     border-radius: var(--border-radius);
     background-color: var(--interface-foreground);
     font-size: var(--font-size--tiny);
-    transition: background-color 0.2s ease;
+    transition: all .25s cubic-bezier(0, 0.83, 0.25, 1);
 
-    &:not(.event--selected):hover {
+    &:hover {
       cursor: pointer;
       background-color: var(--interface-surface);
+      color: var(--text-color--loud);
     }
 
     &::before {
       content: '';
       position: absolute;
-      top: -5px; // Adjust to extend hoverable area
+      top: -5px;
       bottom: -5px;
       left: -5px;
       right: -5px;
-      background: transparent; // Invisible hover buffer
-      pointer-events: all; // Enables hover detection
+      background: transparent;
+      pointer-events: all;
     }
   }
 </style>
