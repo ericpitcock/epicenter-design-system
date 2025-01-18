@@ -1,7 +1,7 @@
 <template>
   <div
     class="map-container"
-    :class="`case-${caseID}`"
+    :class="`case-${selectedThreatCase}`"
   >
     <div
       id="map"
@@ -194,13 +194,6 @@
     },
   })
 
-  // const selectedThreatCase = ref(0)
-
-  const caseID = computed(() => {
-    const caseTitle = props.threatcases[props.selectedThreatCase].info.title
-    return caseTitle.slice(-6).toLowerCase()
-  })
-
   const events = computed(() => props.threatcases[props.selectedThreatCase].events)
   const nodes = computed(() => props.threatcases[props.selectedThreatCase].nodes)
 
@@ -290,6 +283,7 @@
 
     jsPlumbInstance.reset()
     events.value.forEach((eventObject) => {
+      const connectorType = eventObject.id === 9 ? 'Straight' : 'Bezier'
       jsPlumbInstance.connect({
         source: `event${eventObject.id}`,
         target: eventObject.target,
@@ -307,7 +301,7 @@
           outlineWidth: 3,
         },
         connector: [
-          'Bezier',
+          connectorType,
           {
             avoidOverlap: true,
             curviness: 100,
@@ -427,11 +421,10 @@
     .section-title {
       font-size: var(--font-size--body);
       margin-bottom: 20px;
-      // text-align: center;
+      color: var(--text-color--loud);
     }
 
     &--one {
-      // justify-content: flex-end;
       align-items: flex-end;
 
       .section-title {
@@ -454,7 +447,7 @@
       }
 
       // hacking the sus host to sus host tab into position for case DEF456
-      .case0 & #event9 {
+      .case-0 & #event9 {
         position: absolute;
         top: -18px;
         left: 118px;
@@ -541,24 +534,13 @@
 
     &:hover {
       cursor: pointer;
-      // opacity: 1;
+      transform: scale(1.05);
     }
 
     &:not(.node--selected):hover {
-      background-color: var(--interface-surface--accent);
-      // opacity: 1;
-      // box-shadow: $box-shadow-hover;
-      // transform: scale(1.05);
+      // node hover state
     }
 
-    // &--inactive {
-    //   opacity: 0.25;
-    //   transform: scale(.75);
-    // }
-    // .host-selected &:not(.node--selected) {
-    //   opacity: 0.5;
-    //   // transform: scale(.75);
-    // }
     &--internal {
       background-image: url('./icon__host.svg');
       background-position: 10px center;
@@ -580,10 +562,9 @@
       border-radius: 50px;
       text-align: center;
       background-image: url('./icon__host.svg'),
-        url('./icon__host.svg'),
         url('./icon__host.svg');
-      background-position: 10px 37px, center 25px, 71px 37px;
-      background-size: 20px auto, auto, 20px auto;
+      background-position: 43px 30px, 21px 22px;
+      background-size: auto;
     }
 
     &--sus {
@@ -591,7 +572,6 @@
       justify-content: space-between;
       height: 120px;
       padding: 60px 0 20px 0;
-      // font-size: $font-size-medium;
       background-image: url('./icon__sus-host.svg');
       background-position: center 20px;
       background-repeat: no-repeat;
@@ -612,11 +592,7 @@
       &--primary {}
 
       &--secondary {
-        // font-family: $font-family-thin-italic;
-        // font-size: $font-size-tiny;
-        // color: $dark-gray;
         color: var(--text-color--subtle);
-        // letter-spacing: 1px;
       }
     }
   }
@@ -643,6 +619,7 @@
       &--compact {
         .event + .event {
           margin-top: -20px;
+          transition: margin-top 0.2s ease, opacity 0.2s ease;
         }
 
         &:hover {
@@ -675,27 +652,16 @@
     height: 24px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    // font-family: $font-family-medium;
-    background-color: var(--interface-surface--accent);
+    background-color: var(--interface-foreground);
     font-size: var(--font-size--tiny);
 
-    // transition: all .25s cubic-bezier(0, 0.83, 0.25, 1);
-    // opacity: 1;
-    // transform: scale(.75);
-    // & + .event {
-    //   margin-top: -20px;
-    // }
     &:not(.event--selected):hover {
       cursor: pointer;
       background-color: var(--interface-surface);
-      // border-color: $selectedBlue;
-      // box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      // opacity: 1;
-      // transform: scale(1.05);
     }
 
     .host-selected & {
-      // opacity: 0;
+      // selected event state
     }
   }
 </style>
