@@ -354,8 +354,8 @@
     path:not(.jtk-connector-outline) {
       // stroke: darken($selectedBlue, 10%);
       // stroke: color.adjust($selectedBlue, $lightness: -10%);
-      stroke: $selectedBlue;
-      cursor: pointer;
+      // stroke: $selectedBlue;
+      // cursor: pointer;
       // stroke-width: 4;
     }
   }
@@ -387,6 +387,7 @@
 
   .dimmed {
     opacity: 0.25;
+    transition: opacity 0.2s ease;
   }
 
   .map-container {
@@ -654,14 +655,22 @@
     border-radius: var(--border-radius);
     background-color: var(--interface-foreground);
     font-size: var(--font-size--tiny);
+    transition: background-color 0.2s ease;
 
     &:not(.event--selected):hover {
       cursor: pointer;
       background-color: var(--interface-surface);
     }
 
-    .host-selected & {
-      // selected event state
+    &::before {
+      content: '';
+      position: absolute;
+      top: -5px; // Adjust to extend hoverable area
+      bottom: -5px;
+      left: -5px;
+      right: -5px;
+      background: transparent; // Invisible hover buffer
+      pointer-events: all; // Enables hover detection
     }
   }
 </style>
