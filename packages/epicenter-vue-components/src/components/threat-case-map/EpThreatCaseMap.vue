@@ -177,7 +177,6 @@
 
 <script setup>
   import { computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
-  // import * as d3 from 'd3'
 
   const props = defineProps({
     selectedThreatCase: {
@@ -210,10 +209,9 @@
   }
 
   let svg = null
-  let d3 = null // Reference for dynamic import
+  let d3 = null
 
   onMounted(async () => {
-    d3 = await import('d3') // Dynamically import d3
     drawConnections()
   })
 
@@ -231,7 +229,9 @@
     d3.selectAll(`#event${id}, #${sourceID}, #${targetID}, .connection.event${id}`).classed('dimmed', false)
   }
 
-  const drawConnections = () => {
+  const drawConnections = async () => {
+    if (!d3) d3 = await import('d3')
+
     if (svg) {
       svg.selectAll('*').remove()
     } else {
