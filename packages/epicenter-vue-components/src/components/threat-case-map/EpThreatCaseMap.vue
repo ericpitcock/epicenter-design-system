@@ -176,140 +176,151 @@
 </template>
 
 <script setup>
-  import {
-    computed,
-    onMounted,
-    onUnmounted,
-    watch,
-  } from 'vue'
+  import { computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
+  import * as d3 from 'd3'
 
   const props = defineProps({
     selectedThreatCase: {
       type: Number,
-      default: 0,
+      default: 0
     },
     threatcases: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   })
 
   const events = computed(() => props.threatcases[props.selectedThreatCase].events)
   const nodes = computed(() => props.threatcases[props.selectedThreatCase].nodes)
 
-  let jsPlumbInstance = null // Reference for dynamic import
+  let svg = null
 
   const getNodesByStage = (stage) => {
-    return nodes.value.filter((node) => node.stage === stage)
+    return nodes.value.filter(node => node.stage === stage)
   }
 
   const getNodes = (type) => {
-    return nodes.value.filter((node) => node.type === type)
+    return nodes.value.filter(node => node.type === type)
   }
 
   const getEvents = (id) => {
-    return events.value.filter((event) => event.source === id)
+    return events.value.filter(event => event.source === id)
   }
 
   const filterEvents = (events, type) => {
-    return events.filter((event) => event.type === type)
+    return events.filter(event => event.type === type)
   }
 
-  const highlightEvent = (id) => {
+  const highlightEvent = id => {
     if (id === null) {
-      jsPlumbInstance.select().each((connection) => {
-        connection.canvas.classList.remove('dimmed')
-      })
-      document.querySelectorAll('.node, .event').forEach((el) => {
-        el.classList.remove('dimmed')
-      })
+      d3.selectAll('.node, .event, .connection').classed('dimmed', false)
       return
     }
 
-    const event = events.value.find((obj) => obj.id === id)
-    const eventID = `event${id}`
-    const sourceID = document.getElementById(event.source).id
-    const targetID = document.getElementById(event.target).id
+    const event = events.value.find(obj => obj.id === id)
+    const sourceID = event.source
+    const targetID = event.target
 
-    jsPlumbInstance.select().each((connection) => {
-      if (connection.canvas.classList[1] !== eventID) {
-        connection.canvas.classList.add('dimmed')
-      }
-    })
-
-    document.querySelectorAll('.node').forEach((el) => {
-      if (el.id !== sourceID && el.id !== targetID) {
-        el.classList.add('dimmed')
-      }
-    })
-
-    document.querySelectorAll('.event').forEach((el) => {
-      if (el.id !== eventID) {
-        el.classList.add('dimmed')
-      }
-    })
+    d3.selectAll('.node, .event, .connection').classed('dimmed', true)
+    d3.selectAll(`#event${id}, #${sourceID}, #${targetID}, .connection.event${id}`).classed('dimmed', false)
   }
 
-  const drawConnections = async () => {
-    if (!jsPlumbInstance) {
-      const { jsPlumb } = await import('jsplumb') // Dynamically import jsplumb
-      jsPlumbInstance = jsPlumb
+  const drawConnections = () => {
+    if (svg) {
+      svg.selectAll('*').remove()
+    } else {
+      svg = d3.select('#map').append('svg')
+        .attr('width', '100%').attr('height', '100%')
+        .attr('style', 'position: absolute; top: 0; left: 0; right: 0; bottom: 0;')
     }
 
-    jsPlumbInstance.reset()
-    events.value.forEach((eventObject) => {
-      const connectorType = eventObject.id === 9 ? 'Straight' : 'Bezier'
-      jsPlumbInstance.connect({
-        source: `event${eventObject.id}`,
-        target: eventObject.target,
-        anchors: eventObject.anchors,
-        cssClass: `event${eventObject.id}`,
-        endpoint: 'Blank',
-        overlays: [
-          ['Arrow', { width: 8, length: 6, location: 1, foldback: 1, direction: eventObject.direction }],
-        ],
-        paintStyle: {
-          stroke: `var(--ep-tcm-${eventObject.stages[0]})`,
-          strokeWidth: 2,
-          dashstyle: eventObject.stages[0] === 'recon' ? '3 5' : null,
-          outlineStroke: 'var(--interface-surface)',
-          outlineWidth: 3,
-        },
-        connector: [
-          connectorType,
-          {
-            avoidOverlap: true,
-            curviness: 100,
-          },
-        ],
-      })
+    const mapRect = document.querySelector('#map').getBoundingClientRect()
+
+    events.value.forEach(event => {
+      const sourceNode = document.getElementById(`event${event.id}`).getBoundingClientRect()
+      const targetNode = document.getElementById(event.target).getBoundingClientRect()
+
+      let sourceX = sourceNode.x + sourceNode.width / 2 - mapRect.x
+      let sourceY = sourceNode.y + sourceNode.height / 2 - mapRect.y
+      let targetX = targetNode.x + targetNode.width / 2 - mapRect.x
+      let targetY = targetNode.y + targetNode.height / 2 - mapRect.y
+
+      // Adjust source and target positions based on anchors
+      switch (event.anchors[0]) { // Source anchor
+        case 'Left':
+          sourceX = sourceNode.left - mapRect.x
+          break
+        case 'Right':
+          sourceX = sourceNode.right - mapRect.x
+          break
+        case 'Top':
+          sourceY = sourceNode.top - mapRect.y
+          break
+        case 'Bottom':
+          sourceY = sourceNode.bottom - mapRect.y
+          break
+        case 'TopLeft':
+          sourceX = sourceNode.left - mapRect.x
+          sourceY = sourceNode.top - mapRect.y
+          break
+        case 'BottomLeft':
+          sourceX = sourceNode.left - mapRect.x
+          sourceY = sourceNode.bottom - mapRect.y
+          break
+      }
+
+      switch (event.anchors[1]) { // Target anchor
+        case 'Left':
+          targetX = targetNode.left - mapRect.x
+          break
+        case 'Right':
+          targetX = targetNode.right - mapRect.x
+          break
+        case 'Top':
+          targetY = targetNode.top - mapRect.y
+          break
+        case 'Bottom':
+          targetY = targetNode.bottom - mapRect.y
+          break
+        case 'TopLeft':
+          targetX = targetNode.left - mapRect.x
+          targetY = targetNode.top - mapRect.y
+          break
+        case 'BottomLeft':
+          targetX = targetNode.left - mapRect.x
+          targetY = targetNode.bottom - mapRect.y
+          break
+      }
+
+      const midX = (sourceX + targetX) / 2
+
+      const path = svg.append('path')
+        .attr('d', `M ${sourceX},${sourceY} C ${midX},${sourceY} ${midX},${targetY} ${targetX},${targetY}`)
+        .attr('class', `connection event${event.id}`)
+        .attr('stroke', `var(--ep-tcm-${event.stages[0]})`)
+        .attr('stroke-width', 2)
+        .attr('fill', 'none')
+
+      if (event.stages[0] === 'recon') {
+        path.attr('stroke-dasharray', '3 5')
+      }
     })
   }
 
-  watch(() => props.selectedThreatCase, async () => {
-    jsPlumbInstance?.reset()
-    setTimeout(() => drawConnections(), 200)
+  watch(() => props.selectedThreatCase, () => {
+    nextTick(() => {
+      drawConnections()
+    })
   })
 
-  onMounted(async () => {
-    if (!jsPlumbInstance) {
-      const { jsPlumb } = await import('jsplumb') // Dynamically import jsplumb
-      jsPlumbInstance = jsPlumb
-    }
-
-    jsPlumbInstance.ready(() => {
-      jsPlumbInstance.setContainer(document.getElementById('map'))
-      drawConnections()
-    })
-
-    window.addEventListener('resize', () => {
-      jsPlumbInstance.reset()
-      drawConnections()
-    })
+  onMounted(() => {
+    drawConnections()
+    window.addEventListener('resize', drawConnections)
   })
 
   onUnmounted(() => {
-    jsPlumbInstance?.reset()
+    window.removeEventListener('resize', drawConnections)
+    svg.selectAll('*').remove()
   })
 </script>
 
