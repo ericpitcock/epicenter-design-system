@@ -177,7 +177,7 @@
 
 <script setup>
   import { computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
-  import * as d3 from 'd3'
+  // import * as d3 from 'd3'
 
   const props = defineProps({
     selectedThreatCase: {
@@ -192,8 +192,6 @@
 
   const events = computed(() => props.threatcases[props.selectedThreatCase].events)
   const nodes = computed(() => props.threatcases[props.selectedThreatCase].nodes)
-
-  let svg = null
 
   const getNodesByStage = (stage) => {
     return nodes.value.filter(node => node.stage === stage)
@@ -210,6 +208,14 @@
   const filterEvents = (events, type) => {
     return events.filter(event => event.type === type)
   }
+
+  let svg = null
+  let d3 = null // Reference for dynamic import
+
+  onMounted(async () => {
+    d3 = await import('d3') // Dynamically import d3
+    drawConnections()
+  })
 
   const highlightEvent = id => {
     if (id === null) {
