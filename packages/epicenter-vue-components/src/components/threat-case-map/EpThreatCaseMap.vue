@@ -147,7 +147,7 @@
       <div class="network-barrier" />
 
       <div class="lane lane--three">
-        <div class="section-title">
+        <div class="section-title section-title--exfil">
           Exfiltration Destinations
         </div>
         <div
@@ -157,7 +157,7 @@
         >
           <div
             :id="node.id"
-            class="node node--external"
+            :class="['node node--external', { 'node--exfil-anchor': index === 0 }]"
           >
             <span class="identifier identifier--primary">
               {{ node.labels[0] }}
@@ -374,6 +374,7 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    height: 100%;
     background: var(--interface-surface);
   }
 
@@ -439,6 +440,20 @@
 
       .section-title {
         align-self: center;
+
+        // hack for browsers that don't support anchors
+        @supports not (anchor-name: --exfil) {
+          display: none;
+        }
+
+        @supports (anchor-name: --exfil) {
+          &--exfil {
+            position: fixed;
+            position-anchor: --exfil;
+            top: calc(anchor(top) - 36px);
+            left: anchor(left);
+          }
+        }
       }
     }
 
@@ -531,6 +546,30 @@
       background-image: url('./icon__external-server.svg');
       background-position: 10px center;
       background-repeat: no-repeat;
+    }
+
+    // hack for browsers that don't support anchors
+    @supports not (anchor-name: --exfil) {
+      &--exfil-anchor {
+        position: relative;
+
+        &:before {
+          content: 'Exfiltration Destinations';
+          position: absolute;
+          top: -4rem;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          font-size: var(--font-size--body);
+          color: var(--text-color--loud);
+        }
+      }
+    }
+
+    @supports (anchor-name: --exfil) {
+      &--exfil-anchor {
+        anchor-name: --exfil;
+      }
     }
 
     &--cluster {
