@@ -231,7 +231,7 @@
     } else {
       svg = d3.select('#map').append('svg')
         .attr('width', '100%').attr('height', '100%')
-        .attr('style', 'position: absolute; top: 0; left: 0; right: 0; bottom: 0;')
+        .attr('style', 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;')
     }
 
     const mapRect = document.querySelector('#map').getBoundingClientRect()
@@ -301,6 +301,15 @@
         .attr('stroke-width', 2)
         .attr('fill', 'none')
 
+      // Add arrowhead as a separate path
+      svg.append('path')
+        .attr('d',
+          event.stages[0] != 'recon' // Conditional arrowhead direction
+            ? `M ${targetX - 10},${targetY - 5} L ${targetX},${targetY} L ${targetX - 10},${targetY + 5}` // Right-pointing arrowhead
+            : `M ${targetX + 10},${targetY - 5} L ${targetX},${targetY} L ${targetX + 10},${targetY + 5}` // Left-pointing arrowhead
+        )
+        .attr('fill', `var(--ep-tcm-${event.stages[0]})`)
+
       if (event.stages[0] === 'recon') {
         path.attr('stroke-dasharray', '3 5')
       }
@@ -340,43 +349,37 @@
     line-height: 28px;
   }
 
-  svg.jtk-hover {
-
-    // z-index: 1;
-    path:not(.jtk-connector-outline) {
-      // stroke: darken($selectedBlue, 10%);
-      // stroke: color.adjust($selectedBlue, $lightness: -10%);
-      // stroke: $selectedBlue;
-      // cursor: pointer;
-      // stroke-width: 4;
-    }
-  }
-
-  .jtk-connector {
-    path {
-      // use to style lines
-    }
-
-    &.active {
-      path:not(.jtk-connector-outline) {
-        // stroke: darken($selectedBlue, 10%);
-        // stroke: color.adjust($selectedBlue, $lightness: -10%);
-        stroke: var(--ep-tcm-recon);
-      }
-    }
-  }
-
-  .jtk-connector-outline {
-    path {
-      // use to style outlines
-    }
-  }
-
+  // svg.jtk-hover {
+  //   // z-index: 1;
+  //   path:not(.jtk-connector-outline) {
+  //     // stroke: darken($selectedBlue, 10%);
+  //     // stroke: color.adjust($selectedBlue, $lightness: -10%);
+  //     // stroke: $selectedBlue;
+  //     // cursor: pointer;
+  //     // stroke-width: 4;
+  //   }
+  // }
+  // .jtk-connector {
+  //   path {
+  //     // use to style lines
+  //   }
+  //   &.active {
+  //     path:not(.jtk-connector-outline) {
+  //       // stroke: darken($selectedBlue, 10%);
+  //       // stroke: color.adjust($selectedBlue, $lightness: -10%);
+  //       stroke: var(--ep-tcm-recon);
+  //     }
+  //   }
+  // }
+  // .jtk-connector-outline {
+  //   path {
+  //     // use to style outlines
+  //   }
+  // }
   // classes for lines
-  .hidden {
-    display: none;
-  }
-
+  // .hidden {
+  //   display: none;
+  // }
   .dimmed {
     opacity: 0.25;
   }
