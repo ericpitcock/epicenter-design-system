@@ -7,7 +7,6 @@
 
 <script setup>
   import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-  // import Highcharts from 'highcharts'
 
   defineOptions({
     name: 'EpChart',
@@ -55,16 +54,11 @@
     ...props.options
   }))
 
-  // const drawChart = () => {
-  //   chart.value = Highcharts.chart(chartId, chartOptions.value)
-  // }
-
   const drawChart = async () => {
     const Highcharts = (await import('highcharts')).default
     chart.value = Highcharts.chart(chartId, chartOptions.value)
   }
 
-  // eslint-disable-next-line no-unused-vars
   const reflowChart = () => {
     if (chart.value) {
       chart.value.reflow()
