@@ -177,6 +177,7 @@
 
 <script setup>
   import { computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
+  import arrowCreate, { HEAD } from 'arrows-svg'
 
   const props = defineProps({
     selectedThreatCase: {
@@ -208,117 +209,116 @@
     return events.filter(event => event.type === type)
   }
 
-  let svg = null
-  let d3 = null
+  // let svg = null
+  // let d3 = null
 
   onMounted(async () => {
     drawConnections()
   })
 
-  const highlightEvent = id => {
+  // const highlightEvent = id => {
+  //   if (id === null) {
+  //     d3.selectAll('.node, .event, .connection').classed('dimmed', false)
+  //     return
+  //   }
+
+  //   const event = events.value.find(obj => obj.id === id)
+  //   const sourceID = event.source
+  //   const targetID = event.target
+
+  //   d3.selectAll('.node, .event, .connection').classed('dimmed', true)
+  //   d3.selectAll(`#event${id}, #${sourceID}, #${targetID}, .connection.event${id}`).classed('dimmed', false)
+  // }
+
+  const highlightEvent = (id) => {
+    // Clear all highlighting if id is null
     if (id === null) {
-      d3.selectAll('.node, .event, .connection').classed('dimmed', false)
+      document.querySelectorAll('.dimmed').forEach((el) => {
+        el.classList.remove('dimmed')
+      })
       return
     }
 
-    const event = events.value.find(obj => obj.id === id)
+    const event = events.value.find((obj) => obj.id === id)
+    if (!event) return
+
     const sourceID = event.source
     const targetID = event.target
 
-    d3.selectAll('.node, .event, .connection').classed('dimmed', true)
-    d3.selectAll(`#event${id}, #${sourceID}, #${targetID}, .connection.event${id}`).classed('dimmed', false)
+    // Dim all elements
+    document.querySelectorAll('.node, .event, .connection').forEach((el) => {
+      el.classList.add('dimmed')
+    })
+
+    // Highlight the specific event, source, target, and connection
+    const highlightSelectors = [
+      `#event${id}`,
+      `#${sourceID}`,
+      `#${targetID}`,
+      `.connection.event${id}`
+    ]
+
+    highlightSelectors.forEach((selector) => {
+      document.querySelectorAll(selector).forEach((el) => {
+        el.classList.remove('dimmed')
+      })
+    })
   }
 
   const drawConnections = async () => {
-    if (!d3) d3 = await import('d3')
-
-    if (svg) {
-      svg.selectAll('*').remove()
-    } else {
-      svg = d3.select('#map').append('svg')
-        .attr('width', '100%').attr('height', '100%')
-        .attr('style', 'position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;')
+    const DIRECTION = {
+      TopLeft: 'top-left',
+      Top: 'top',
+      TopRight: 'top-right',
+      Right: 'right',
+      BottomLeft: 'bottom-left',
+      Bottom: 'bottom',
+      BottomRight: 'bottom-right',
+      Left: 'left',
     }
 
-    const mapRect = document.querySelector('#map').getBoundingClientRect()
+    const fromTranslations = {
+      TopLeft: [0.5, 0.5],
+      Top: [0, 0.5],
+      TopRight: [-0.5, 0.5],
+      Right: [-0.5, 0],
+      BottomRight: [-0.5, -0.5],
+      Bottom: [0, -0.5],
+      BottomLeft: [0.5, -0.5],
+      left: [0.5, 0],
+    }
+
+    const toTranslations = {
+      TopLeft: [-0.5, -0.5],
+      Top: [0, -0.5],
+      TopRight: [0.5, -0.5],
+      Right: [0.5, 0],
+      BottomRight: [0.5, 0.5],
+      Bottom: [0, 0.5],
+      BottomLeft: [-0.5, 0.5],
+      left: [-0.5, 0],
+    }
 
     events.value.forEach(event => {
-      const sourceNode = document.getElementById(`event${event.id}`).getBoundingClientRect()
-      const targetNode = document.getElementById(event.target).getBoundingClientRect()
+      const arrow = arrowCreate({
+        className: `ep-tcm-path--${event.stages[0]} connection event${event.id} arrow`,
+        from: {
+          direction: DIRECTION[event.anchors[0]],
+          node: document.getElementById(`event${event.id}`),
+          translation: fromTranslations[event.anchors[1]],
+        },
+        to: {
+          direction: DIRECTION[event.anchors[1]],
+          node: document.getElementById(event.target),
+          translation: toTranslations[event.anchors[1]],
+        },
+        head: {
+          func: HEAD.THIN,
+          size: 6,
+        },
+      })
 
-      let sourceX = sourceNode.x + sourceNode.width / 2 - mapRect.x
-      let sourceY = sourceNode.y + sourceNode.height / 2 - mapRect.y
-      let targetX = targetNode.x + targetNode.width / 2 - mapRect.x
-      let targetY = targetNode.y + targetNode.height / 2 - mapRect.y
-
-      // Adjust source and target positions based on anchors
-      switch (event.anchors[0]) { // Source anchor
-        case 'Left':
-          sourceX = sourceNode.left - mapRect.x
-          break
-        case 'Right':
-          sourceX = sourceNode.right - mapRect.x
-          break
-        case 'Top':
-          sourceY = sourceNode.top - mapRect.y
-          break
-        case 'Bottom':
-          sourceY = sourceNode.bottom - mapRect.y
-          break
-        case 'TopLeft':
-          sourceX = sourceNode.left - mapRect.x
-          sourceY = sourceNode.top - mapRect.y
-          break
-        case 'BottomLeft':
-          sourceX = sourceNode.left - mapRect.x
-          sourceY = sourceNode.bottom - mapRect.y
-          break
-      }
-
-      switch (event.anchors[1]) { // Target anchor
-        case 'Left':
-          targetX = targetNode.left - mapRect.x
-          break
-        case 'Right':
-          targetX = targetNode.right - mapRect.x
-          break
-        case 'Top':
-          targetY = targetNode.top - mapRect.y
-          break
-        case 'Bottom':
-          targetY = targetNode.bottom - mapRect.y
-          break
-        case 'TopLeft':
-          targetX = targetNode.left - mapRect.x
-          targetY = targetNode.top - mapRect.y
-          break
-        case 'BottomLeft':
-          targetX = targetNode.left - mapRect.x
-          targetY = targetNode.bottom - mapRect.y
-          break
-      }
-
-      const midX = (sourceX + targetX) / 2
-
-      const path = svg.append('path')
-        .attr('d', `M ${sourceX},${sourceY} C ${midX},${sourceY} ${midX},${targetY} ${targetX},${targetY}`)
-        .attr('class', `connection event${event.id}`)
-        .attr('stroke', `var(--ep-tcm-${event.stages[0]})`)
-        .attr('stroke-width', 2)
-        .attr('fill', 'none')
-
-      // Add arrowhead as a separate path
-      svg.append('path')
-        .attr('d',
-          event.stages[0] != 'recon' // Conditional arrowhead direction
-            ? `M ${targetX - 10},${targetY - 5} L ${targetX},${targetY} L ${targetX - 10},${targetY + 5}` // Right-pointing arrowhead
-            : `M ${targetX + 10},${targetY - 5} L ${targetX},${targetY} L ${targetX + 10},${targetY + 5}` // Left-pointing arrowhead
-        )
-        .attr('fill', `var(--ep-tcm-${event.stages[0]})`)
-
-      if (event.stages[0] === 'recon') {
-        path.attr('stroke-dasharray', '3 5')
-      }
+      document.getElementById('map').appendChild(arrow.node)
     })
   }
 
@@ -328,15 +328,35 @@
     })
   })
 
+  function debounce(func, wait) {
+    let timeout
+    return function(...args) {
+      const context = this
+      clearTimeout(timeout)
+      timeout = setTimeout(() => func.apply(context, args), wait)
+    }
+  }
+
+  const debouncedDrawConnections = debounce(drawConnections, 50)
+
   onMounted(() => {
     drawConnections()
-    window.addEventListener('resize', drawConnections)
+    window.addEventListener('resize', debouncedDrawConnections)
   })
 
   onUnmounted(() => {
-    window.removeEventListener('resize', drawConnections)
-    svg.selectAll('*').remove()
+    window.removeEventListener('resize', debouncedDrawConnections)
   })
+
+  // onMounted(() => {
+  //   drawConnections()
+  //   window.addEventListener('resize', drawConnections)
+  // })
+
+  // onUnmounted(() => {
+  //   window.removeEventListener('resize', drawConnections)
+  //   // svg.selectAll('*').remove()
+  // })
 </script>
 
 <style lang="scss">
@@ -353,6 +373,44 @@
   h1 {
     // font-size: $font-size-large;
     line-height: 28px;
+  }
+
+  .arrow {
+    pointer-events: none;
+  }
+
+  .arrow__path {
+    fill: transparent;
+    stroke-width: 2;
+
+    &.ep-tcm-path--recon {
+      stroke: var(--ep-tcm-recon);
+      stroke-dasharray: 3 5;
+    }
+
+    &.ep-tcm-path--collection {
+      stroke: var(--ep-tcm-collection);
+    }
+
+    &.ep-tcm-path--exfil {
+      stroke: var(--ep-tcm-exfil);
+    }
+  }
+
+  .arrow__head {
+    stroke-width: 2;
+
+    &.ep-tcm-path--recon line {
+      stroke: var(--ep-tcm-recon);
+    }
+
+    &.ep-tcm-path--collection line {
+      stroke: var(--ep-tcm-collection);
+    }
+
+    &.ep-tcm-path--exfil line {
+      stroke: var(--ep-tcm-exfil);
+    }
   }
 
   // svg.jtk-hover {
