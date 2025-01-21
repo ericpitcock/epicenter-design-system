@@ -23,7 +23,7 @@
                 :id="'event' + event.id"
                 :key="index"
                 class="event"
-                @mouseenter="highlightEvent(event.id)"
+                @mouseenter="highlightEvent(event)"
                 @mouseleave="highlightEvent(null)"
               >
                 {{ event.value }}
@@ -62,7 +62,7 @@
               :id="'event' + event.id"
               :key="index"
               class="event"
-              @mouseenter="highlightEvent(event.id)"
+              @mouseenter="highlightEvent(event)"
               @mouseleave="highlightEvent(null)"
             >
               {{ event.value }}
@@ -106,7 +106,7 @@
                 :id="'event' + event.id"
                 :key="intEventIndex"
                 class="event"
-                @mouseenter="highlightEvent(event.id)"
+                @mouseenter="highlightEvent(event)"
                 @mouseleave="highlightEvent(null)"
               >
                 {{ event.value }}
@@ -120,7 +120,7 @@
                 :id="'event' + event.id"
                 :key="extEventIndex"
                 class="event"
-                @mouseenter="highlightEvent(event.id)"
+                @mouseenter="highlightEvent(event)"
                 @mouseleave="highlightEvent(null)"
               >
                 {{ event.value }}
@@ -176,7 +176,13 @@
 </template>
 
 <script setup>
-  import { computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
+  import {
+    computed,
+    nextTick,
+    onMounted,
+    onUnmounted,
+    watch,
+  } from 'vue'
   import arrowCreate, { HEAD } from 'arrows-svg'
 
   const props = defineProps({
@@ -209,23 +215,15 @@
     return events.filter(event => event.type === type)
   }
 
-  onMounted(async () => {
-    drawConnections()
-  })
-
-  const highlightEvent = (id) => {
-    if (id === null) {
+  const highlightEvent = (event) => {
+    if (event === null) {
       document.querySelectorAll('.dimmed').forEach((el) => {
         el.classList.remove('dimmed')
       })
       return
     }
 
-    const event = events.value.find((obj) => obj.id === id)
-    if (!event) return
-
-    const sourceID = event.source
-    const targetID = event.target
+    const { id, source, target } = event
 
     document.querySelectorAll('.node, .event, .connection').forEach((el) => {
       el.classList.add('dimmed')
@@ -233,8 +231,8 @@
 
     const highlightSelectors = [
       `#event${id}`,
-      `#${sourceID}`,
-      `#${targetID}`,
+      `#${source}`,
+      `#${target}`,
       `.connection.event${id}`
     ]
 
