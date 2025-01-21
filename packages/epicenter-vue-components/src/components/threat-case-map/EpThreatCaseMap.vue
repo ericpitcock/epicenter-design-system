@@ -183,7 +183,14 @@
     onUnmounted,
     watch,
   } from 'vue'
-  import arrowCreate, { HEAD } from 'arrows-svg'
+  let arrowCreate
+  let HEAD
+
+  const loadArrowSvg = async () => {
+    const module = await import('arrows-svg')
+    arrowCreate = module.default
+    HEAD = module.HEAD
+  }
 
   const props = defineProps({
     selectedThreatCase: {
@@ -251,6 +258,10 @@
   let arrows = []
 
   const drawConnections = async () => {
+    if (!arrowCreate || !HEAD) {
+      await loadArrowSvg()
+    }
+
     clearConnections()
 
     const DIRECTION = {
@@ -456,7 +467,7 @@
       .section-title {
         align-self: center;
 
-        // hack for browsers that don't support anchors
+        // temp for browsers that don't support anchors
         @supports not (anchor-name: --exfil) {
           display: none;
         }
@@ -563,7 +574,7 @@
       background-repeat: no-repeat;
     }
 
-    // hack for browsers that don't support anchors
+    // temp for browsers that don't support anchors
     @supports not (anchor-name: --exfil) {
       &--exfil-anchor {
         position: relative;
