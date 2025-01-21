@@ -307,7 +307,7 @@
 
   const anchorOffsets = {
     'TopLeft': { x: 0, y: 0 },
-    'top': { x: 0.5, y: 0 },
+    'Top': { x: 0.5, y: 0 },
     'TopRight': { x: 1, y: 0 },
     'Right': { x: 1, y: 0.5 },
     'BottomRight': { x: 1, y: 1 },
@@ -343,13 +343,6 @@
 
     return `M ${from.x},${from.y} C ${cx1},${cy1} ${cx2},${cy2} ${to.x},${to.y}`
   }
-
-  // const applyTranslation = (point, translation = [0, 0]) => {
-  //   return {
-  //     x: point.x + translation[0],
-  //     y: point.y + translation[1]
-  //   }
-  // }
 
   let arrows = []
 
@@ -434,23 +427,6 @@
   })
 
   let resizeObs = null
-
-  // onMounted(() => {
-  //   drawConnections()
-  //   window.addEventListener('resize', drawConnections)
-
-  //   // Use a ResizeObserver so if .node or .event moves/resizes, we redraw:
-  //   resizeObs = new ResizeObserver(() => {
-  //     drawConnections()
-  //   })
-  //   // Attach to relevant elements (all .event and .node)
-  //   // (You could also re-run this logic whenever your events/nodes change)
-  //   queueMicrotask(() => {
-  //     document.querySelectorAll('.event, .node').forEach(el => {
-  //       resizeObs.observe(el)
-  //     })
-  //   })
-  // })
 
   onMounted(() => {
     drawConnections()
