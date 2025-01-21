@@ -334,7 +334,7 @@
   const makeCurvePath = (from, to) => {
     // Some quick logic for control points:
     const dx = to.x - from.x
-    const dy = to.y - from.y
+    // const dy = to.y - from.y
 
     const cx1 = from.x + dx * 0.25
     const cy1 = from.y
@@ -498,22 +498,18 @@
     }
   }
 
-  .arrow__head {
-    stroke-width: 2;
-
-    &.ep-tcm-path--recon line {
-      stroke: var(--ep-tcm-recon);
-    }
-
-    &.ep-tcm-path--collection line {
-      stroke: var(--ep-tcm-collection);
-    }
-
-    &.ep-tcm-path--exfil line {
-      stroke: var(--ep-tcm-exfil);
-    }
-  }
-
+  // .arrow__head {
+  //   stroke-width: 2;
+  //   &.ep-tcm-path--recon line {
+  //     stroke: var(--ep-tcm-recon);
+  //   }
+  //   &.ep-tcm-path--collection line {
+  //     stroke: var(--ep-tcm-collection);
+  //   }
+  //   &.ep-tcm-path--exfil line {
+  //     stroke: var(--ep-tcm-exfil);
+  //   }
+  // }
   .dimmed {
     opacity: 0.25;
   }
@@ -769,6 +765,7 @@
     position: absolute;
     top: 0;
     display: flex;
+    align-items: center;
     width: 85%;
     height: 100%;
 
@@ -778,6 +775,7 @@
 
     &__int,
     &__ext {
+      height: fit-content;
       flex: auto;
       display: flex;
       flex-direction: column;
