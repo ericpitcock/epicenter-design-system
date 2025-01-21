@@ -209,29 +209,11 @@
     return events.filter(event => event.type === type)
   }
 
-  // let svg = null
-  // let d3 = null
-
   onMounted(async () => {
     drawConnections()
   })
 
-  // const highlightEvent = id => {
-  //   if (id === null) {
-  //     d3.selectAll('.node, .event, .connection').classed('dimmed', false)
-  //     return
-  //   }
-
-  //   const event = events.value.find(obj => obj.id === id)
-  //   const sourceID = event.source
-  //   const targetID = event.target
-
-  //   d3.selectAll('.node, .event, .connection').classed('dimmed', true)
-  //   d3.selectAll(`#event${id}, #${sourceID}, #${targetID}, .connection.event${id}`).classed('dimmed', false)
-  // }
-
   const highlightEvent = (id) => {
-    // Clear all highlighting if id is null
     if (id === null) {
       document.querySelectorAll('.dimmed').forEach((el) => {
         el.classList.remove('dimmed')
@@ -245,12 +227,10 @@
     const sourceID = event.source
     const targetID = event.target
 
-    // Dim all elements
     document.querySelectorAll('.node, .event, .connection').forEach((el) => {
       el.classList.add('dimmed')
     })
 
-    // Highlight the specific event, source, target, and connection
     const highlightSelectors = [
       `#event${id}`,
       `#${sourceID}`,
@@ -265,7 +245,16 @@
     })
   }
 
+  const clearConnections = () => {
+    arrows.forEach(arrow => arrow.clear())
+    arrows = []
+  }
+
+  let arrows = []
+
   const drawConnections = async () => {
+    clearConnections()
+
     const DIRECTION = {
       TopLeft: 'top-left',
       Top: 'top',
@@ -319,6 +308,7 @@
       })
 
       document.getElementById('map').appendChild(arrow.node)
+      arrows.push(arrow)
     })
   }
 
@@ -328,35 +318,14 @@
     })
   })
 
-  function debounce(func, wait) {
-    let timeout
-    return function(...args) {
-      const context = this
-      clearTimeout(timeout)
-      timeout = setTimeout(() => func.apply(context, args), wait)
-    }
-  }
-
-  const debouncedDrawConnections = debounce(drawConnections, 50)
-
   onMounted(() => {
     drawConnections()
-    window.addEventListener('resize', debouncedDrawConnections)
+    window.addEventListener('resize', drawConnections)
   })
 
   onUnmounted(() => {
-    window.removeEventListener('resize', debouncedDrawConnections)
+    window.removeEventListener('resize', drawConnections)
   })
-
-  // onMounted(() => {
-  //   drawConnections()
-  //   window.addEventListener('resize', drawConnections)
-  // })
-
-  // onUnmounted(() => {
-  //   window.removeEventListener('resize', drawConnections)
-  //   // svg.selectAll('*').remove()
-  // })
 </script>
 
 <style lang="scss">
@@ -381,7 +350,7 @@
 
   .arrow__path {
     fill: transparent;
-    stroke-width: 2;
+    stroke-width: 3;
 
     &.ep-tcm-path--recon {
       stroke: var(--ep-tcm-recon);
@@ -413,37 +382,6 @@
     }
   }
 
-  // svg.jtk-hover {
-  //   // z-index: 1;
-  //   path:not(.jtk-connector-outline) {
-  //     // stroke: darken($selectedBlue, 10%);
-  //     // stroke: color.adjust($selectedBlue, $lightness: -10%);
-  //     // stroke: $selectedBlue;
-  //     // cursor: pointer;
-  //     // stroke-width: 4;
-  //   }
-  // }
-  // .jtk-connector {
-  //   path {
-  //     // use to style lines
-  //   }
-  //   &.active {
-  //     path:not(.jtk-connector-outline) {
-  //       // stroke: darken($selectedBlue, 10%);
-  //       // stroke: color.adjust($selectedBlue, $lightness: -10%);
-  //       stroke: var(--ep-tcm-recon);
-  //     }
-  //   }
-  // }
-  // .jtk-connector-outline {
-  //   path {
-  //     // use to style outlines
-  //   }
-  // }
-  // classes for lines
-  // .hidden {
-  //   display: none;
-  // }
   .dimmed {
     opacity: 0.25;
   }
@@ -454,6 +392,7 @@
     justify-content: center;
     height: 100%;
     background: var(--interface-surface);
+    user-select: none;
   }
 
   .map {
