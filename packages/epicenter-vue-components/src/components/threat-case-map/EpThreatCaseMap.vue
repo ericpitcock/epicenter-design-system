@@ -5,6 +5,7 @@
   >
     <div
       id="map"
+      ref="mapElement"
       class="map"
     >
       <div class="lane lane--one">
@@ -171,6 +172,29 @@
           </div>
         </div>
       </div>
+      <svg
+        ref="connectionsSvg"
+        class="map-connections"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"
+      >
+        <defs>
+          <marker
+            id="arrowhead-thin"
+            markerWidth="8"
+            markerHeight="8"
+            refX="6"
+            refY="3"
+            orient="auto"
+            markerUnits="strokeWidth"
+          >
+            <path
+              d="M0,0 L0,6 L6,3 z"
+              fill="inherit"
+              stroke="inherit"
+            />
+          </marker>
+        </defs>
+      </svg>
     </div>
   </div>
 </template>
@@ -178,19 +202,20 @@
 <script setup>
   import {
     computed,
+    ref,
     nextTick,
     onMounted,
     onUnmounted,
     watch,
   } from 'vue'
-  let arrowCreate
-  let HEAD
+  // let arrowCreate
+  // let HEAD
 
-  const loadArrowSvg = async () => {
-    const module = await import('arrows-svg')
-    arrowCreate = module.default
-    HEAD = module.HEAD
-  }
+  // const loadArrowSvg = async () => {
+  //   const module = await import('arrows-svg')
+  //   arrowCreate = module.default
+  //   HEAD = module.HEAD
+  // }
 
   const props = defineProps({
     selectedThreatCase: {
@@ -222,102 +247,183 @@
     return events.filter(event => event.type === type)
   }
 
-  const highlightEvent = (event) => {
-    if (event === null) {
-      document.querySelectorAll('.dimmed').forEach((el) => {
-        el.classList.remove('dimmed')
-      })
+  let rafId = null
+
+  const startAnimationLoop = () => {
+    // In case there's an existing loop
+    if (rafId !== null) cancelAnimationFrame(rafId)
+
+    const loop = () => {
+      drawConnections()
+      rafId = requestAnimationFrame(loop)
+    }
+    rafId = requestAnimationFrame(loop)
+  }
+
+  const stopAnimationLoop = () => {
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId)
+      rafId = null
+    }
+  }
+
+  const highlightedEventRef = ref(null)
+
+  // Then in highlightEvent():
+  function highlightEvent(event) {
+    if (!event) {
+      highlightedEventRef.value = null
+      // Clear old dimming
+      document.querySelectorAll('.dimmed').forEach(el => el.classList.remove('dimmed'))
+      // Stop the animation loop if you’re using it
+      // stopAnimationLoop()
       return
     }
 
-    const { id, source, target } = event
+    highlightedEventRef.value = event
+    startAnimationLoop()
 
-    document.querySelectorAll('.node, .event, .connection').forEach((el) => {
+    // Apply dimming
+    document.querySelectorAll('.node, .event, .connection').forEach(el => {
       el.classList.add('dimmed')
     })
-
+    // Undim relevant items
+    const { id, source, target } = event
     const highlightSelectors = [
       `#event${id}`,
       `#${source}`,
       `#${target}`,
       `.connection.event${id}`
     ]
-
-    highlightSelectors.forEach((selector) => {
-      document.querySelectorAll(selector).forEach((el) => {
+    highlightSelectors.forEach(selector => {
+      document.querySelectorAll(selector).forEach(el => {
         el.classList.remove('dimmed')
       })
     })
   }
 
-  const clearConnections = () => {
-    arrows.forEach(arrow => arrow.clear())
-    arrows = []
+  const mapElement = ref(null)
+  const connectionsSvg = ref(null)
+
+  const anchorOffsets = {
+    'TopLeft': { x: 0, y: 0 },
+    'top': { x: 0.5, y: 0 },
+    'TopRight': { x: 1, y: 0 },
+    'Right': { x: 1, y: 0.5 },
+    'BottomRight': { x: 1, y: 1 },
+    'Bottom': { x: 0.5, y: 1 },
+    'BottomLeft': { x: 0, y: 1 },
+    'Left': { x: 0, y: 0.5 },
+    'Center': { x: 0.5, y: 0.5 }
   }
+
+  const getAnchorPoint = (el, anchorDir, mapRect) => {
+    if (!el) return { x: 0, y: 0 }
+
+    const rect = el.getBoundingClientRect()
+    const offsetLeft = rect.left - mapRect.left
+    const offsetTop = rect.top - mapRect.top
+    const offset = anchorOffsets[anchorDir] || anchorOffsets.center
+
+    return {
+      x: offsetLeft + rect.width * offset.x,
+      y: offsetTop + rect.height * offset.y
+    }
+  }
+
+  const makeCurvePath = (from, to) => {
+    // Some quick logic for control points:
+    const dx = to.x - from.x
+    const dy = to.y - from.y
+
+    const cx1 = from.x + dx * 0.25
+    const cy1 = from.y
+    const cx2 = from.x + dx * 0.75
+    const cy2 = to.y
+
+    return `M ${from.x},${from.y} C ${cx1},${cy1} ${cx2},${cy2} ${to.x},${to.y}`
+  }
+
+  // const applyTranslation = (point, translation = [0, 0]) => {
+  //   return {
+  //     x: point.x + translation[0],
+  //     y: point.y + translation[1]
+  //   }
+  // }
 
   let arrows = []
 
-  const drawConnections = async () => {
-    if (!arrowCreate || !HEAD) {
-      await loadArrowSvg()
+  const clearConnections = () => {
+    if (!connectionsSvg.value) return
+    while (connectionsSvg.value.lastChild) {
+      connectionsSvg.value.removeChild(connectionsSvg.value.lastChild)
     }
+    arrows = []
+  }
+
+  const drawConnections = () => {
+    if (!mapElement.value || !connectionsSvg.value) return
 
     clearConnections()
+    const mapRect = mapElement.value.getBoundingClientRect()
 
-    const DIRECTION = {
-      TopLeft: 'top-left',
-      Top: 'top',
-      TopRight: 'top-right',
-      Right: 'right',
-      BottomLeft: 'bottom-left',
-      Bottom: 'bottom',
-      BottomRight: 'bottom-right',
-      Left: 'left',
-    }
-
-    const fromTranslations = {
-      TopLeft: [0.5, 0.5],
-      Top: [0, 0.5],
-      TopRight: [-0.5, 0.5],
-      Right: [-0.5, 0],
-      BottomRight: [-0.5, -0.5],
-      Bottom: [0, -0.5],
-      BottomLeft: [0.5, -0.5],
-      left: [0.5, 0],
-    }
-
-    const toTranslations = {
-      TopLeft: [-0.5, -0.5],
-      Top: [0, -0.5],
-      TopRight: [0.5, -0.5],
-      Right: [0.5, 0],
-      BottomRight: [0.5, 0.5],
-      Bottom: [0, 0.5],
-      BottomLeft: [-0.5, 0.5],
-      left: [-0.5, 0],
-    }
-
+    // For each event, draw a path:
     events.value.forEach(event => {
-      const arrow = arrowCreate({
-        className: `ep-tcm-path--${event.stages[0]} connection event${event.id} arrow`,
-        from: {
-          direction: DIRECTION[event.anchors[0]],
-          node: document.getElementById(`event${event.id}`),
-          translation: fromTranslations[event.anchors[1]],
-        },
-        to: {
-          direction: DIRECTION[event.anchors[1]],
-          node: document.getElementById(event.target),
-          translation: toTranslations[event.anchors[1]],
-        },
-        head: {
-          func: HEAD.THIN,
-          size: 6,
-        },
-      })
+      const fromEventEl = document.getElementById(`event${event.id}`)
+      const toNodeEl = document.getElementById(event.target)
+      if (!fromEventEl || !toNodeEl) return
 
-      document.getElementById('map').appendChild(arrow.node)
-      arrows.push(arrow)
+      const fromDir = event.anchors?.[0] || 'center'
+      const toDir = event.anchors?.[1] || 'center'
+
+      const fromPt = getAnchorPoint(fromEventEl, fromDir, mapRect)
+      const toPt = getAnchorPoint(toNodeEl, toDir, mapRect)
+
+      const pathD = makeCurvePath(fromPt, toPt)
+
+      const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+      pathEl.setAttribute('d', pathD)
+      // Classes for highlighting/dimming
+      pathEl.setAttribute(
+        'class',
+        `ep-tcm-path--${event.stages[0]} connection event${event.id} arrow__path`
+      )
+      // Attach arrowhead
+      pathEl.setAttribute('marker-end', 'url(#arrowhead-thin)')
+
+      connectionsSvg.value.appendChild(pathEl)
+      arrows.push(pathEl)
+
+      if (highlightedEventRef.value) {
+        // But be careful to skip the “startAnimationLoop()” again 
+        // if you only want that on actual hover. 
+        // You can create a helper to just apply the dimming classes:
+        reapplyHighlightClasses(highlightedEventRef.value)
+      }
+    })
+  }
+
+  const reapplyHighlightClasses = (event) => {
+    // Clear old .dimmed
+    document.querySelectorAll('.dimmed').forEach(el => el.classList.remove('dimmed'))
+
+    // Dim all
+    document.querySelectorAll('.node, .event, .connection').forEach(el => {
+      el.classList.add('dimmed')
+    })
+
+    // Then undim the relevant items
+    const { id, source, target } = event
+    const highlightSelectors = [
+      `#event${id}`,
+      `#${source}`,
+      `#${target}`,
+      `.connection.event${id}`
+    ]
+    highlightSelectors.forEach((selector) => {
+      document.querySelectorAll(selector).forEach((el) => {
+        el.classList.remove('dimmed')
+      })
     })
   }
 
@@ -327,13 +433,54 @@
     })
   })
 
+  let resizeObs = null
+
+  // onMounted(() => {
+  //   drawConnections()
+  //   window.addEventListener('resize', drawConnections)
+
+  //   // Use a ResizeObserver so if .node or .event moves/resizes, we redraw:
+  //   resizeObs = new ResizeObserver(() => {
+  //     drawConnections()
+  //   })
+  //   // Attach to relevant elements (all .event and .node)
+  //   // (You could also re-run this logic whenever your events/nodes change)
+  //   queueMicrotask(() => {
+  //     document.querySelectorAll('.event, .node').forEach(el => {
+  //       resizeObs.observe(el)
+  //     })
+  //   })
+  // })
+
   onMounted(() => {
     drawConnections()
     window.addEventListener('resize', drawConnections)
+
+    resizeObs = new ResizeObserver(() => drawConnections())
+    queueMicrotask(() => {
+      document.querySelectorAll('.event, .node').forEach(el => {
+        resizeObs.observe(el)
+
+        // Listen for transitionend
+        el.addEventListener('transitionend', () => {
+          // If there's NO highlighted event now, transitions are done
+          if (!highlightedEventRef.value) {
+            // Now that everything has settled, we can do a final draw
+            drawConnections()
+            // And finally stop the RAF
+            stopAnimationLoop()
+          }
+        })
+      })
+    })
   })
 
   onUnmounted(() => {
     window.removeEventListener('resize', drawConnections)
+    if (resizeObs) {
+      resizeObs.disconnect()
+      resizeObs = null
+    }
   })
 </script>
 
