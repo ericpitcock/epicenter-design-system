@@ -25,7 +25,7 @@
                 :key="index"
                 class="event"
                 @mouseenter="highlightEvent(event)"
-                @mouseleave="highlightEvent(null)"
+                @mouseleave="clearDimmers(true)"
               >
                 {{ event.value }}
               </div>
@@ -64,7 +64,7 @@
               :key="index"
               class="event"
               @mouseenter="highlightEvent(event)"
-              @mouseleave="highlightEvent(null)"
+              @mouseleave="clearDimmers(true)"
             >
               {{ event.value }}
             </div>
@@ -108,7 +108,7 @@
                 :key="intEventIndex"
                 class="event"
                 @mouseenter="highlightEvent(event)"
-                @mouseleave="highlightEvent(null)"
+                @mouseleave="clearDimmers(true)"
               >
                 {{ event.value }}
               </div>
@@ -122,7 +122,7 @@
                 :key="extEventIndex"
                 class="event"
                 @mouseenter="highlightEvent(event)"
-                @mouseleave="highlightEvent(null)"
+                @mouseleave="clearDimmers(true)"
               >
                 {{ event.value }}
               </div>
@@ -180,17 +180,19 @@
         <defs>
           <marker
             id="arrowhead-thin"
-            markerWidth="8"
-            markerHeight="8"
-            refX="6"
-            refY="3"
+            viewBox="0 0 30 30"
+            markerWidth="30"
+            markerHeight="30"
+            refX="30"
+            refY="30"
             orient="auto"
             markerUnits="strokeWidth"
           >
             <path
               d="M0,0 L0,6 L6,3 z"
-              fill="inherit"
-              stroke="inherit"
+              stroke="yellow"
+              fill="yellow"
+              stroke-width="1"
             />
           </marker>
         </defs>
@@ -208,14 +210,6 @@
     onUnmounted,
     watch,
   } from 'vue'
-  // let arrowCreate
-  // let HEAD
-
-  // const loadArrowSvg = async () => {
-  //   const module = await import('arrows-svg')
-  //   arrowCreate = module.default
-  //   HEAD = module.HEAD
-  // }
 
   const props = defineProps({
     selectedThreatCase: {
@@ -269,20 +263,12 @@
 
   const highlightedEventRef = ref(null)
 
-  // Then in highlightEvent():
-  function highlightEvent(event) {
-    if (!event) {
-      highlightedEventRef.value = null
-      // Clear old dimming
-      document.querySelectorAll('.dimmed').forEach(el => el.classList.remove('dimmed'))
-      // Stop the animation loop if you’re using it
-      // stopAnimationLoop()
-      return
-    }
+  const clearDimmers = (mouseleave) => {
+    if (mouseleave) highlightedEventRef.value = null
+    document.querySelectorAll('.dimmed').forEach(el => el.classList.remove('dimmed'))
+  }
 
-    highlightedEventRef.value = event
-    startAnimationLoop()
-
+  const dimEvents = (event) => {
     // Apply dimming
     document.querySelectorAll('.node, .event, .connection').forEach(el => {
       el.classList.add('dimmed')
@@ -300,6 +286,12 @@
         el.classList.remove('dimmed')
       })
     })
+  }
+
+  const highlightEvent = (event) => {
+    highlightedEventRef.value = event
+    startAnimationLoop()
+    dimEvents(event)
   }
 
   const mapElement = ref(null)
@@ -354,6 +346,44 @@
     arrows = []
   }
 
+  /**
+ * approximateCurveAngleAtEnd
+ * Approximates the angle (in degrees) of your custom cubic from "fromPt" to "toPt"
+ * given the control points (cx1, cy1), (cx2, cy2).
+ */
+  const approximateCurveAngleAtEnd = (fromPt, toPt, cx1, cy1, cx2, cy2) => {
+    // We sample two points: one very close to t=1, and t=1 exactly.
+    // Then compute atan2 of their difference.
+    const EPS = 0.0001
+    const pA = getPointOnCubic(1 - EPS, fromPt, toPt, cx1, cy1, cx2, cy2)
+    const pB = getPointOnCubic(1, fromPt, toPt, cx1, cy1, cx2, cy2)
+
+    const dx = pB.x - pA.x
+    const dy = pB.y - pA.y
+    return Math.atan2(dy, dx) * (180 / Math.PI)
+  }
+
+  /**
+   * getPointOnCubic
+   * Returns the (x, y) at parameter t for a standard cubic:
+   *    M p0  C  p1, p2, p3
+   */
+  const getPointOnCubic = (t, p0, p3, cx1, cy1, cx2, cy2) => {
+    const oneMinusT = 1 - t
+
+    const x = Math.pow(oneMinusT, 3) * p0.x
+      + 3 * Math.pow(oneMinusT, 2) * t * cx1
+      + 3 * oneMinusT * Math.pow(t, 2) * cx2
+      + Math.pow(t, 3) * p3.x
+
+    const y = Math.pow(oneMinusT, 3) * p0.y
+      + 3 * Math.pow(oneMinusT, 2) * t * cy1
+      + 3 * oneMinusT * Math.pow(t, 2) * cy2
+      + Math.pow(t, 3) * p3.y
+
+    return { x, y }
+  }
+
   const drawConnections = () => {
     if (!mapElement.value || !connectionsSvg.value) return
 
@@ -372,52 +402,62 @@
       const fromPt = getAnchorPoint(fromEventEl, fromDir, mapRect)
       const toPt = getAnchorPoint(toNodeEl, toDir, mapRect)
 
-      const pathD = makeCurvePath(fromPt, toPt)
+      // Build the cubic path (same as before)
+      const dx = toPt.x - fromPt.x
+      const cx1 = fromPt.x + dx * 0.25
+      const cy1 = fromPt.y
+      const cx2 = fromPt.x + dx * 0.75
+      const cy2 = toPt.y
+
+      const pathD = `M ${fromPt.x},${fromPt.y}
+                     C ${cx1},${cy1} ${cx2},${cy2} ${toPt.x},${toPt.y}`
 
       const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       pathEl.setAttribute('d', pathD)
-      // Classes for highlighting/dimming
       pathEl.setAttribute(
         'class',
         `ep-tcm-path--${event.stages[0]} connection event${event.id} arrow__path`
       )
-      // Attach arrowhead
-      pathEl.setAttribute('marker-end', 'url(#arrowhead-thin)')
 
       connectionsSvg.value.appendChild(pathEl)
       arrows.push(pathEl)
 
+      // 2) Compute the angle at the curve's end, then place a <polygon> arrowhead
+      const angleDeg = approximateCurveAngleAtEnd(
+        fromPt, toPt, cx1, cy1, cx2, cy2
+      )
+      // const arrowEl = document.createElementNS('http://www.w3.org/2000/svg', 'polygon')
+
+      // A simple triangle with the tip at (0,0)
+      // arrowEl.setAttribute('points', '0,0 -6,3 -6,-3')
+      // make chevron style open arrow
+      const arrowEl = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+
+      // Two subpaths: from tip to top-left, and tip to bottom-left
+      // A taller / wider open chevron
+      arrowEl.setAttribute('d', 'M -8,7 L 0,0 L -8,-7')
+      // Style to match your event color or use a class
+      // arrowEl.setAttribute('stroke', 'yellow')
+      arrowEl.setAttribute('class', `connection event${event.id} arrow__head ep-tcm-path--${event.stages[0]}`)
+
+      // Translate the tip to (toPt.x, toPt.y), then rotate
+      arrowEl.setAttribute(
+        'transform',
+        `translate(${toPt.x}, ${toPt.y}) rotate(${angleDeg})`
+      )
+
+      connectionsSvg.value.appendChild(arrowEl)
+      arrows.push(arrowEl)
+
       if (highlightedEventRef.value) {
-        // But be careful to skip the “startAnimationLoop()” again 
-        // if you only want that on actual hover. 
-        // You can create a helper to just apply the dimming classes:
         reapplyHighlightClasses(highlightedEventRef.value)
       }
     })
   }
 
   const reapplyHighlightClasses = (event) => {
-    // Clear old .dimmed
-    document.querySelectorAll('.dimmed').forEach(el => el.classList.remove('dimmed'))
-
-    // Dim all
-    document.querySelectorAll('.node, .event, .connection').forEach(el => {
-      el.classList.add('dimmed')
-    })
-
-    // Then undim the relevant items
-    const { id, source, target } = event
-    const highlightSelectors = [
-      `#event${id}`,
-      `#${source}`,
-      `#${target}`,
-      `.connection.event${id}`
-    ]
-    highlightSelectors.forEach((selector) => {
-      document.querySelectorAll(selector).forEach((el) => {
-        el.classList.remove('dimmed')
-      })
-    })
+    clearDimmers()
+    dimEvents(event)
   }
 
   watch(() => props.selectedThreatCase, () => {
@@ -480,7 +520,8 @@
     pointer-events: none;
   }
 
-  .arrow__path {
+  .arrow__path,
+  .arrow__head {
     fill: transparent;
     stroke-width: 3;
 
@@ -498,6 +539,18 @@
     }
   }
 
+  .arrow__head {
+    &.ep-tcm-path--recon {
+      stroke: var(--ep-tcm-recon);
+      stroke-dasharray: none;
+    }
+  }
+
+  // #arrowhead-thin path {
+  //   fill: var(--ep-tcm-recon); // or pick some color
+  //   stroke: yellow;
+  //   stroke-width: 1;
+  // }
   // .arrow__head {
   //   stroke-width: 2;
   //   &.ep-tcm-path--recon line {
@@ -798,6 +851,8 @@
     }
 
     &__int {
+      height: 100%;
+
       .lane--one & {
         align-items: flex-end;
       }
