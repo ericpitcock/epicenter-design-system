@@ -12,6 +12,164 @@
   letter-spacing: 0.1rem;
 }
 
+// Inter font features
+.access-all-alternates {
+  font-feature-settings: 'aalt';
+}
+
+.small-caps-from-capitals {
+  font-feature-settings: 'c2sc';
+}
+
+.contextual-alternates {
+  font-feature-settings: 'calt';
+}
+
+.case-sensitive-forms {
+  font-feature-settings: 'case';
+}
+
+.glyph-composition-decomposition {
+  font-feature-settings: 'ccmp';
+}
+
+.capital-spacing {
+  font-feature-settings: 'cpsp';
+}
+
+.alternate-one {
+  font-feature-settings: 'cv01';
+}
+
+.open-four {
+  font-feature-settings: 'cv02';
+}
+
+.open-six {
+  font-feature-settings: 'cv03';
+}
+
+.open-nine {
+  font-feature-settings: 'cv04';
+}
+
+.lowercase-l-with-tail {
+  font-feature-settings: 'cv05';
+}
+
+.simplified-u {
+  font-feature-settings: 'cv06';
+}
+
+.alternate-german-doubles {
+  font-feature-settings: 'cv07';
+}
+
+.uppercase-i-with-serif {
+  font-feature-settings: 'cv08';
+}
+
+.flat-top-three {
+  font-feature-settings: 'cv09';
+}
+
+.capital-g-with-spur {
+  font-feature-settings: 'cv10';
+}
+
+.single-story-a {
+  font-feature-settings: 'cv11';
+}
+
+.compact-f {
+  font-feature-settings: 'cv12';
+}
+
+.compact-t {
+  font-feature-settings: 'cv13';
+}
+
+.discretionary-ligatures {
+  font-feature-settings: 'dlig';
+}
+
+.denominators {
+  font-feature-settings: 'dnom';
+}
+
+.fractions {
+  font-feature-settings: 'frac';
+}
+
+.localized-forms {
+  font-feature-settings: 'locl';
+}
+
+.numerators {
+  font-feature-settings: 'numr';
+}
+
+.ordinals {
+  font-feature-settings: 'ordn';
+}
+
+.proportional-figures {
+  font-feature-settings: 'pnum';
+}
+
+.stylistic-alternates {
+  font-feature-settings: 'salt';
+}
+
+.scientific-inferiors {
+  font-feature-settings: 'sinf';
+}
+
+.open-digits {
+  font-feature-settings: 'ss01';
+}
+
+.disambiguation-with-zero {
+  font-feature-settings: 'ss02';
+}
+
+.round-quotes-commas {
+  font-feature-settings: 'ss03';
+}
+
+.disambiguation-no-zero {
+  font-feature-settings: 'ss04';
+}
+
+.circled-characters {
+  font-feature-settings: 'ss05';
+}
+
+.squared-characters {
+  font-feature-settings: 'ss06';
+}
+
+.square-punctuation {
+  font-feature-settings: 'ss07';
+}
+
+.square-quotes {
+  font-feature-settings: 'ss08';
+}
+
+.subscript {
+  font-feature-settings: 'subs';
+}
+
+.superscript {
+  font-feature-settings: 'sups';
+}
+
+.tabular-figures,
 .tabular-numbers {
   font-feature-settings: 'tnum';
+}
+
+.slashed-zero {
+  font-feature-settings: 'zero';
 }

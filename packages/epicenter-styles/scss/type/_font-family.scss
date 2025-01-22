@@ -1,10 +1,22 @@
 @font-face {
-  font-family: 'Inter var';
+  font-family: InterVariable;
+  font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  font-style: normal;
-  font-named-instance: 'Regular';
-  src: url('./fonts/Inter-roman.var.woff2?v=3.19') format('woff2');
+  src: url('./fonts/InterVariable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: InterVariable;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('./fonts/InterVariable-Italic.woff2') format('woff2');
+}
+
+:root {
+  font-family: 'InterVariable', sans-serif;
+  font-optical-sizing: auto;
 }
 
 @font-face {
@@ -13,10 +25,6 @@
   font-style: normal;
   font-display: swap;
   src: url('./fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
-}
-
-:root {
-  font-family: 'Inter var', sans-serif;
 }
 
 .monospace {
