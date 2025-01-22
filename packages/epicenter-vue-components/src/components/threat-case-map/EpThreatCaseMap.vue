@@ -323,19 +323,6 @@
     }
   }
 
-  const makeCurvePath = (from, to) => {
-    // Some quick logic for control points:
-    const dx = to.x - from.x
-    // const dy = to.y - from.y
-
-    const cx1 = from.x + dx * 0.25
-    const cy1 = from.y
-    const cx2 = from.x + dx * 0.75
-    const cy2 = to.y
-
-    return `M ${from.x},${from.y} C ${cx1},${cy1} ${cx2},${cy2} ${to.x},${to.y}`
-  }
-
   let arrows = []
 
   const clearConnections = () => {
@@ -390,7 +377,6 @@
     clearConnections()
     const mapRect = mapElement.value.getBoundingClientRect()
 
-    // For each event, draw a path:
     events.value.forEach(event => {
       const fromEventEl = document.getElementById(`event${event.id}`)
       const toNodeEl = document.getElementById(event.target)
@@ -422,23 +408,17 @@
       connectionsSvg.value.appendChild(pathEl)
       arrows.push(pathEl)
 
-      // 2) Compute the angle at the curve's end, then place a <polygon> arrowhead
       const angleDeg = approximateCurveAngleAtEnd(
         fromPt, toPt, cx1, cy1, cx2, cy2
       )
-      // const arrowEl = document.createElementNS('http://www.w3.org/2000/svg', 'polygon')
 
-      // A simple triangle with the tip at (0,0)
-      // arrowEl.setAttribute('points', '0,0 -6,3 -6,-3')
-      // make chevron style open arrow
       const arrowEl = document.createElementNS('http://www.w3.org/2000/svg', 'path')
 
-      // Two subpaths: from tip to top-left, and tip to bottom-left
-      // A taller / wider open chevron
       arrowEl.setAttribute('d', 'M -8,7 L 0,0 L -8,-7')
-      // Style to match your event color or use a class
-      // arrowEl.setAttribute('stroke', 'yellow')
-      arrowEl.setAttribute('class', `connection event${event.id} arrow__head ep-tcm-path--${event.stages[0]}`)
+      arrowEl.setAttribute(
+        'class',
+        `connection event${event.id} arrow__head ep-tcm-path--${event.stages[0]}`
+      )
 
       // Translate the tip to (toPt.x, toPt.y), then rotate
       arrowEl.setAttribute(
@@ -527,7 +507,7 @@
 
     &.ep-tcm-path--recon {
       stroke: var(--ep-tcm-recon);
-      stroke-dasharray: 3 5;
+      stroke-dasharray: 3 6;
     }
 
     &.ep-tcm-path--collection {
@@ -546,23 +526,6 @@
     }
   }
 
-  // #arrowhead-thin path {
-  //   fill: var(--ep-tcm-recon); // or pick some color
-  //   stroke: yellow;
-  //   stroke-width: 1;
-  // }
-  // .arrow__head {
-  //   stroke-width: 2;
-  //   &.ep-tcm-path--recon line {
-  //     stroke: var(--ep-tcm-recon);
-  //   }
-  //   &.ep-tcm-path--collection line {
-  //     stroke: var(--ep-tcm-collection);
-  //   }
-  //   &.ep-tcm-path--exfil line {
-  //     stroke: var(--ep-tcm-exfil);
-  //   }
-  // }
   .dimmed {
     opacity: 0.25;
   }
