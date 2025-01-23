@@ -2,24 +2,29 @@
   <div class="colors">
     <div class="colors__sidebar">
       <ep-menu
+        class="colors__menu"
         :menu-items="menuItems"
         menu-type="nav"
         :active-item="activeItem"
-        :container-props="containerProps"
         @click="filterColorTable"
       />
     </div>
     <div class="colors__content">
-      <ep-container :style="{
-        '--ep-container-width': 'fit-content',
-        '--ep-container-bg-color': 'var(--interface-surface)',
-        '--ep-container-overflow': 'unset',
-      }">
+      <ep-container>
         <ep-table
+          class="colors__table"
           :columns="tableColumns"
           :data="filteredData"
           v-bind="tableProps"
-        />
+        >
+          <template #thead="{ visibleColumns, cellWidths, showActionsMenu }">
+            <ep-table-head
+              :columns="visibleColumns"
+              :cell-widths="cellWidths"
+              :show-actions-menu="showActionsMenu"
+            />
+          </template>
+        </ep-table>
       </ep-container>
     </div>
   </div>
@@ -30,6 +35,7 @@
   import EpContainer from '@/components/container/EpContainer.vue'
   import EpMenu from '@/components/menu/EpMenu.vue'
   import EpTable from '@/components/table/EpTable.vue'
+  import EpTableHead from '@/components/table/EpTableHead.vue'
   import colors from './color.json'
   import grayscale from './grayscale.json'
   // import copyToClipboard from '@/mixins/copyToClipboard.js'
@@ -49,14 +55,6 @@
   const tableProps = {
     bordered: true,
     stickyHeader: true,
-    // calculateHeight: true,
-    // calculateHeightOffset: 30,
-    styles: {
-      '--ep-table-width': '100%',
-      '--ep-table-container-padding': '1rem 3rem 20rem 3rem',
-      '--ep-table-sticky-top': '0',
-      '--ep-table-container-overflow': 'unset',
-    },
   }
 
   const menuItems = [
@@ -122,14 +120,14 @@
     }
   ]
 
-  const containerProps = {
-    styles: {
-      '--ep-container-width': '20rem',
-      '--ep-container-bg-color': 'var(--interface-surface)',
-      '--ep-container-height': 'fit-content',
-      '--ep-container-overflow': 'unset',
-    }
-  }
+  // const containerProps = {
+  //   styles: {
+  //     '--ep-container-width': '20rem',
+  //     '--ep-container-bg-color': 'var(--interface-surface)',
+  //     '--ep-container-height': 'fit-content',
+  //     '--ep-container-overflow': 'unset',
+  //   }
+  // }
 
   const backgroundColor = computed(() => {
     return props.theme === 'dark' ? '#1f1f1f' : '#ebebeb'
@@ -235,14 +233,27 @@
       top: 3rem;
     }
 
+    &__menu {
+      --ep-menu-bg-color: var(--interface-surface);
+      --ep-menu-border-radius: var(--border-radius--large);
+    }
+
     &__content {
       flex: 1;
-      // overflow-y: scroll;
-      // -ms-overflow-style: none; // Internet Explorer, Edge
-      // scrollbar-width: none; // Firefox
-      // &::-webkit-scrollbar {
-      //   display: none; // Chrome, Safari, Opera
-      // }
+
+      .ep-container {
+        --ep-container-width: fit-content;
+        --ep-container-bg-color: var(--interface-surface);
+        --ep-container-border-width: 0.1rem;
+        --ep-container-overflow: unset;
+      }
+    }
+
+    &__table {
+      --ep-table-width: 100%;
+      --ep-table-container-padding: 1rem 3rem 20rem 3rem;
+      --ep-table-sticky-top: 0;
+      --ep-table-container-overflow: unset;
     }
   }
 </style>
