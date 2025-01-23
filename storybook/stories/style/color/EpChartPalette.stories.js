@@ -2,26 +2,33 @@ import { paddedBg } from '../../../helpers/decorators.js'
 import { computed } from 'vue'
 import EpButton from '@/components/button/EpButton.vue'
 import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.vue'
+import chartSeq from '@ericpitcock/epicenter-styles/tokens/color/chart-sequence.yaml'
 
-const htmlStyles = window.getComputedStyle(document.querySelector('html'))
 let data = {}
-for (let index = 0; index < 14; index++) {
-  const cssVar = index < 10 ? `--chart-sequence-0${index}` : `--chart-sequence-${index}`
-  let value = htmlStyles.getPropertyValue(cssVar)
-  // split the value into an array of hue, saturation, and lightness
-  value = value.match(/\d+/g)
-  const [hue, saturation, lightness] = value
 
-  data[`hue${index}`] = Number(hue)
-  data[`saturation${index}`] = Number(saturation)
-  data[`lightness${index}`] = Number(lightness)
+for (const [key, value] of Object.entries(chartSeq)) {
+  // index = last two digits of key
+  const index = key.slice(-2)
+
+  // Parse the HSL values
+  const [hue, saturation, lightness] = value.dark
+    .split(',')
+    .map((v) => v.trim().replace('%', ''))
+    .map(Number)
+
+  // Use the full index (with leading zeros) as the key
+  data[`hue${index}`] = hue
+  data[`saturation${index}`] = saturation
+  data[`lightness${index}`] = lightness
 }
 
 const chartSequenceColorArgTypes = (count) => {
   const argTypes = {}
   for (let i = 0; i < count; i++) {
-    argTypes[`hue${i}`] = {
-      name: `Hue ${i}`,
+    // if index is less than 10, add a leading zero
+    const index = i < 10 ? `0${i}` : i
+    argTypes[`hue${index}`] = {
+      name: `Hue ${index}`,
       control: {
         type: 'range',
         min: 0,
@@ -29,11 +36,11 @@ const chartSequenceColorArgTypes = (count) => {
         step: 1
       },
       table: {
-        category: `Chart Sequence ${i}`
+        category: `Chart Sequence ${index}`
       }
     }
-    argTypes[`saturation${i}`] = {
-      name: `Saturation ${i}`,
+    argTypes[`saturation${index}`] = {
+      name: `Saturation ${index}`,
       control: {
         type: 'range',
         min: 0,
@@ -41,11 +48,11 @@ const chartSequenceColorArgTypes = (count) => {
         step: 1
       },
       table: {
-        category: `Chart Sequence ${i}`
+        category: `Chart Sequence ${index}`
       }
     }
-    argTypes[`lightness${i}`] = {
-      name: `Lightness ${i}`,
+    argTypes[`lightness${index}`] = {
+      name: `Lightness ${index}`,
       control: {
         type: 'range',
         min: 0,
@@ -53,7 +60,7 @@ const chartSequenceColorArgTypes = (count) => {
         step: 1
       },
       table: {
-        category: `Chart Sequence ${i}`
+        category: `Chart Sequence ${index}`
       }
     }
   }
@@ -99,16 +106,16 @@ export const ChartPalette = (args) => ({
   components: { EpButton, EpStatusIndicator },
   setup() {
     const styles = computed(() => ({
-      '--chart-sequence-00': `hsl(${args.hue0 + args.globalHue}, ${args.saturation0 + args.globalSaturation}%, ${args.lightness0 + args.globalLightness}%)`,
-      '--chart-sequence-01': `hsl(${args.hue1 + args.globalHue}, ${args.saturation1 + args.globalSaturation}%, ${args.lightness1 + args.globalLightness}%)`,
-      '--chart-sequence-02': `hsl(${args.hue2 + args.globalHue}, ${args.saturation2 + args.globalSaturation}%, ${args.lightness2 + args.globalLightness}%)`,
-      '--chart-sequence-03': `hsl(${args.hue3 + args.globalHue}, ${args.saturation3 + args.globalSaturation}%, ${args.lightness3 + args.globalLightness}%)`,
-      '--chart-sequence-04': `hsl(${args.hue4 + args.globalHue}, ${args.saturation4 + args.globalSaturation}%, ${args.lightness4 + args.globalLightness}%)`,
-      '--chart-sequence-05': `hsl(${args.hue5 + args.globalHue}, ${args.saturation5 + args.globalSaturation}%, ${args.lightness5 + args.globalLightness}%)`,
-      '--chart-sequence-06': `hsl(${args.hue6 + args.globalHue}, ${args.saturation6 + args.globalSaturation}%, ${args.lightness6 + args.globalLightness}%)`,
-      '--chart-sequence-07': `hsl(${args.hue7 + args.globalHue}, ${args.saturation7 + args.globalSaturation}%, ${args.lightness7 + args.globalLightness}%)`,
-      '--chart-sequence-08': `hsl(${args.hue8 + args.globalHue}, ${args.saturation8 + args.globalSaturation}%, ${args.lightness8 + args.globalLightness}%)`,
-      '--chart-sequence-09': `hsl(${args.hue9 + args.globalHue}, ${args.saturation9 + args.globalSaturation}%, ${args.lightness9 + args.globalLightness}%)`,
+      '--chart-sequence-00': `hsl(${args.hue00 + args.globalHue}, ${args.saturation00 + args.globalSaturation}%, ${args.lightness00 + args.globalLightness}%)`,
+      '--chart-sequence-01': `hsl(${args.hue01 + args.globalHue}, ${args.saturation01 + args.globalSaturation}%, ${args.lightness01 + args.globalLightness}%)`,
+      '--chart-sequence-02': `hsl(${args.hue02 + args.globalHue}, ${args.saturation02 + args.globalSaturation}%, ${args.lightness02 + args.globalLightness}%)`,
+      '--chart-sequence-03': `hsl(${args.hue03 + args.globalHue}, ${args.saturation03 + args.globalSaturation}%, ${args.lightness03 + args.globalLightness}%)`,
+      '--chart-sequence-04': `hsl(${args.hue04 + args.globalHue}, ${args.saturation04 + args.globalSaturation}%, ${args.lightness04 + args.globalLightness}%)`,
+      '--chart-sequence-05': `hsl(${args.hue05 + args.globalHue}, ${args.saturation05 + args.globalSaturation}%, ${args.lightness05 + args.globalLightness}%)`,
+      '--chart-sequence-06': `hsl(${args.hue06 + args.globalHue}, ${args.saturation06 + args.globalSaturation}%, ${args.lightness06 + args.globalLightness}%)`,
+      '--chart-sequence-07': `hsl(${args.hue07 + args.globalHue}, ${args.saturation07 + args.globalSaturation}%, ${args.lightness07 + args.globalLightness}%)`,
+      '--chart-sequence-08': `hsl(${args.hue08 + args.globalHue}, ${args.saturation08 + args.globalSaturation}%, ${args.lightness08 + args.globalLightness}%)`,
+      '--chart-sequence-09': `hsl(${args.hue09 + args.globalHue}, ${args.saturation09 + args.globalSaturation}%, ${args.lightness09 + args.globalLightness}%)`,
       '--chart-sequence-10': `hsl(${args.hue10 + args.globalHue}, ${args.saturation10 + args.globalSaturation}%, ${args.lightness10 + args.globalLightness}%)`,
       '--chart-sequence-11': `hsl(${args.hue11 + args.globalHue}, ${args.saturation11 + args.globalSaturation}%, ${args.lightness11 + args.globalLightness}%)`,
       '--chart-sequence-12': `hsl(${args.hue12 + args.globalHue}, ${args.saturation12 + args.globalSaturation}%, ${args.lightness12 + args.globalLightness}%)`,
