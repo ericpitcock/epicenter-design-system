@@ -85,22 +85,22 @@
     {
       label: 'Sample',
       key: 'sample',
-      formatter: value => {
+      formatter: (value) => {
         return `<div class="color-sample" style="background-color: ${value};" />`
       }
     },
     {
       label: 'Color',
       key: 'color',
-      style: 'capitalize',
-      formatter: value => {
-        return `<span style="color: ${value};">${value}</span>`
+      class: 'text--capitalize',
+      formatter: (value, row) => {
+        return `<span style="color: hsl(var(${row.css}));">${value}</span>`
       }
     },
     {
       label: 'Text Contrast',
       key: 'contrast',
-      formatter: value => {
+      formatter: (value) => {
         return value === 'AAA &check;' || value === 'AA &check;'
           ? `<span class="ep-badge" style="color: var(--success-green--border);">${value}</span>`
           : `<span class="ep-badge" style="color: var(--danger-red--border);">${value}</span>`
@@ -110,13 +110,13 @@
       label: 'CSS Custom Property',
       key: 'css',
       // command: (value) => this.copyToClipboard(value),
-      style: 'text--copyable'
+      class: 'text--copyable'
     },
     {
       label: 'HSL',
       key: 'hsl',
       // command: (value) => this.copyToClipboard(value),
-      style: 'text--copyable'
+      class: 'text--copyable'
     }
   ]
 
