@@ -1,77 +1,36 @@
 import fs from 'fs'
 import path from 'path'
-import { fileURLToPath } from 'url'
-
-// List of .vue files
-const files = [
-  'EpActionBar.vue',
-  'EpBadge.vue',
-  'EpBanner.vue',
-  // 'EpBreadcrumb-OLD.vue',
-  // 'EpBreadcrumb.vue',
-  // 'EpBreadcrumbStatic.vue',
-  'EpBrowserFrame.vue',
-  'EpButton.vue',
-  'EpButtonGroup.vue',
-  'EpChart.vue',
-  'EpDonutChart.vue',
-  'EpCheckbox.vue',
-  'EpCodeView.vue',
-  'EpContainer.vue',
-  'EpDatePicker.vue',
-  'EpDivider.vue',
-  'EpDropdown.vue',
-  'EpEmptyState.vue',
-  'EpFlex.vue',
-  'EpFlexContainer.vue',
-  'EpFooter.vue',
-  'EpHeader.vue',
-  'EpIcon.vue',
-  'EpImage.vue',
-  'EpInput.vue',
-  'EpInputStyler.vue',
-  'EpKeyValueTable.vue',
-  'EpLoadingState.vue',
-  'EpicenterLogo.vue',
-  'EpMap.vue',
-  'EpMenu.vue',
-  'EpNotification.vue',
-  'EpNotifications.vue',
-  'EpRadio.vue',
-  'EpMultiSearch.vue',
-  'EpSearchTypeahead.vue',
-  'EpSelect.vue',
-  'EpSignIn.vue',
-  'EpSplitButton.vue',
-  'EpStatusIndicator.vue',
-  'EpCheckboxFilter.vue',
-  'EpDatePickerFilter.vue',
-  'EpRangeInputFilter.vue',
-  'EpTable.vue',
-  'EpTableCell.vue',
-  'EpTablePagination.vue',
-  'EpTableSearchInput.vue',
-  'EpTableSortableHeader.vue',
-  'EpTabContent.vue',
-  'EpTabs.vue',
-  'EpTextarea.vue',
-  'EpThemeToggle.vue',
-  'EpToggle.vue',
-  'EpTooltip.vue'
-]
+import glob from 'glob'
+import { EXCLUDED_COMPONENTS } from '../scripts/excludedComponents.js'
 
 // Resolve __dirname equivalent in ES modules
+import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// Generate sidebar items
-const sidebarItems = files.map(file => {
-  const componentName = file.replace('.vue', '')
-  return {
-    text: componentName,
-    link: `/components/${componentName}`
-  }
-})
+// Path to the components directory
+const componentsPath = path.resolve(__dirname, '../packages/epicenter-vue-components/src/components')
+
+// Find all .vue files in the components directory and subdirectories
+const vueFiles = glob.sync(`${componentsPath}/**/*.vue`)
+
+// Generate sidebar items dynamically
+const sidebarItems = vueFiles
+  .map((filePath) => {
+    const fileName = path.basename(filePath, '.vue')
+
+    // Skip excluded components
+    if (EXCLUDED_COMPONENTS.includes(fileName)) {
+      console.log(`Skipping excluded component: ${fileName}`)
+      return null
+    }
+
+    return {
+      text: fileName,
+      link: `/components/${fileName}`
+    }
+  })
+  .filter(Boolean) // Remove null values
 
 // Sidebar configuration
 const sidebarConfig = {
