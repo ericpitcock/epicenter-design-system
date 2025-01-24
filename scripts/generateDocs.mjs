@@ -2,7 +2,7 @@ import { parse } from 'vue-docgen-api'
 import fs from 'fs'
 import path from 'path'
 import glob from 'glob'
-import { EXCLUDED_COMPONENTS } from './scripts/excludedComponents.js'
+import { EXCLUDED_COMPONENTS } from './excludedComponents.js'
 
 // Resolve __dirname equivalent in ES modules
 import { fileURLToPath } from 'url'
@@ -10,8 +10,8 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 // Paths
-const COMPONENTS_DIR = path.resolve(__dirname, './packages/epicenter-vue-components/src/components') // Component directory
-const SCSS_DIR = path.resolve(__dirname, './packages/epicenter-styles/scss/components') // Styles directory
+const COMPONENTS_DIR = path.resolve(__dirname, '../packages/epicenter-vue-components/src/components') // Component directory
+const SCSS_DIR = path.resolve(__dirname, '../packages/epicenter-styles/scss/components') // Styles directory
 const OUTPUT_DIR = './docs/components' // Output directory for docs
 
 // Ensure output directory exists

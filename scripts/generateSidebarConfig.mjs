@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import glob from 'glob'
-import { EXCLUDED_COMPONENTS } from '../scripts/excludedComponents.js'
+import { EXCLUDED_COMPONENTS } from './excludedComponents.js'
 
 // Resolve __dirname equivalent in ES modules
 import { fileURLToPath } from 'url'
@@ -39,7 +39,7 @@ const sidebarConfig = {
 }
 
 // Path to the output JSON file
-const outputFilePath = path.resolve(__dirname, '.vitepress/sidebarConfig.json')
+const outputFilePath = path.resolve(__dirname, '../docs/.vitepress/sidebarConfig.json')
 
 // Write the sidebar configuration to the JSON file
 fs.writeFileSync(outputFilePath, JSON.stringify(sidebarConfig, null, 2))
