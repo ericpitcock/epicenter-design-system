@@ -10,11 +10,31 @@ const __dirname = path.dirname(__filename)
 
 // Paths
 const COMPONENTS_DIR = path.resolve(__dirname, './packages/epicenter-vue-components/src/components') // Component directory
+const SCSS_DIR = path.resolve(__dirname, './packages/epicenter-styles/scss/components') // Styles directory
 const OUTPUT_DIR = './docs/components' // Output directory for docs
 
 // Ensure output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true })
+}
+
+function toKebabCase(name) {
+  return name
+    .replace(/^Ep/, '') // Remove 'Ep' prefix
+    .replace(/([a-z])([A-Z])/g, '$1-$2') // Convert camelCase to kebab-case
+    .replace(/[\s_]+/g, '-') // Replace spaces/underscores with dashes
+    .toLowerCase()
+}
+
+// Helper: Get associated SCSS file
+function getScssContent(fileName) {
+  const scssFileName = `_${toKebabCase(fileName)}.scss`
+  const scssFilePath = path.join(SCSS_DIR, scssFileName)
+
+  if (fs.existsSync(scssFilePath)) {
+    return fs.readFileSync(scssFilePath, 'utf-8')
+  }
+  return null
 }
 
 // Find all .vue files in the components directory and subdirectories
@@ -37,6 +57,8 @@ vueFiles.forEach(async (filePath) => {
 ${customNotes}
     `
   }
+  // Try to locate the associated SCSS file
+  const scssContent = getScssContent(fileName)
 
   try {
     console.log(`Processing file: ${fileName}`) // Debugging: Show progress
@@ -61,14 +83,12 @@ ${doc.props
         .join('\n') || 'No props available.'}
 
 ## Events
-| Name | Description | Payload |
-|------|-------------|---------|
+| Name    | Description                 | Payload    |
+|---------|-----------------------------|------------|
 ${doc.events
-        ?.map(
-          (event) =>
-            `| \`${event.name}\` | ${event.description || '-'} | ${event.type?.names?.join(', ') || '-'
-            } |`
-        )
+        ?.map((event) => {
+          return `| \`${event.name}\` | ${event.description || '-'} | - |`
+        })
         .join('\n') || 'No events available.'}
 
 ## Slots
@@ -86,6 +106,14 @@ ${doc.slots
 \`\`\`vue
 ${fileContent}
 \`\`\`
+
+${scssContent ? `
+## Styles (SCSS)
+
+\`\`\`scss
+${scssContent}
+\`\`\`
+` : ''}
     `
 
     // Write the Markdown file
