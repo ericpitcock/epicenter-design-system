@@ -1,140 +1,106 @@
-
 # EpActionBar
 
-`EpActionBar` is a flexible action bar component that can display buttons and dropdowns.
+
 
 ## Props
-
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `items` | An array of config objects for each item. | Array | `[]` |
-| `showDropdownOnHover` | If true, dropdowns will be shown on hover. | Boolean | `false` |
-
-## Item Config Object
-
-| Key                  | Description                                                                                     | Type     | Default |
-|----------------------|-------------------------------------------------------------------------------------------------|----------|---------|
-| `type`               | The type of action item.                                                                       | String   | `button`|
-| `buttonProps`        | The props for the button.                                                                      | Object   | `{}`    |
-| `containerProps`     | The props for the dropdown container.                                                          | Object   | `{}`    |
-| `menuItems`          | An array of menu items for dropdowns.                                                         | Array    | `[]`    |
-
-## Item Config Object Example
-
-```js
-const buttonStyles = {
-  '--ep-button-bg-color': 'transparent',
-  '--ep-button-border-color': 'transparent',
-  '--ep-button-text-color': 'var(--text-color)',
-  '--ep-button-hover-bg-color': 'transparent',
-  '--ep-button-hover-border-color': 'transparent',
-  '--ep-button-hover-text-color': 'var(--text-color--loud)',
-  '--ep-button-active-bg-color': 'transparent',
-  '--ep-button-active-border-color': 'transparent',
-  '--ep-button-active-text-color': 'var(--color--primary)',
-}
-
-const containerStyles = {
-  '--ep-container-bg-color': 'var(--interface-overlay)',
-  '--ep-container-border-radius': 'var(--border-radius)',
-  '--ep-container-border-color': 'var(--border-color--lighter)',
-}
-
-const actionBarItems = [
-  {
-    type: 'dropdown',
-    buttonProps: {
-      label: '',
-      iconLeft: { name: 'help' },
-      iconRight: undefined,
-      styles: buttonStyles
-    },
-    containerProps: {
-      styles: containerStyles
-    },
-    menuItems: [
-      { label: 'Documentation' },
-      { label: 'API Reference' },
-      { divider: true },
-      { label: 'Contact Us' }
-    ]
-  },
-  {
-    type: 'dropdown',
-    buttonProps: {
-      label: '',
-      iconLeft: { name: 'notifications' },
-      iconRight: undefined,
-      styles: buttonStyles
-    },
-    containerProps: {
-      styles: containerStyles
-    },
-    menuItems: [
-      { label: 'Notifications' },
-      { label: 'Alerts' },
-      { label: 'Messages' },
-      { divider: true },
-      { label: 'Settings' }
-    ]
-  },
-  {
-    type: 'dropdown',
-    buttonProps: {
-      label: '',
-      iconLeft: { name: 'user' },
-      iconRight: undefined,
-      styles: buttonStyles
-    },
-    containerProps: {
-      styles: containerStyles
-    },
-    menuItems: [
-      { label: 'Profile' },
-      { label: 'Switch account' },
-      { label: 'Settings' },
-      { divider: true },
-      { label: 'Sign out' }
-    ]
-  }
-]
-```
+| `items` | The items to display in the action bar. | `array` | `-` |
+| `showDropdownOnHover` | Whether to show the dropdown on hover. | `boolean` | `false` |
 
 ## Events
-
-| Name | Description | Payload |
-|------|-------------|---------|
-| `click(item)` | Emitted when an action item is clicked. The clicked item is passed as the payload. | `item` |
+| Name    | Description                 | Payload    |
+|---------|-----------------------------|------------|
+| `click` | Emitted when an item is clicked. | - |
 
 ## Slots
+| Name | Description |
+|------|-------------|
+No slots available.
 
-This component does not have any slots.
-
-## Usage
+## Component Code
 
 ```vue
 <template>
-  <ep-action-bar
-    :items="actionBarItems"
-    @click="onClick"
-  />
+  <div class="ep-action-bar">
+    <template v-for="(item, index) in items">
+      <ep-button
+        v-if="item.type === 'button'"
+        :key="`button-${index}`"
+        v-bind="{ buttonDefaults, ...item.buttonProps }"
+        @click="onClick(item, index)"
+      />
+      <ep-dropdown
+        v-else-if="item.type === 'dropdown'"
+        :key="`dropdown-${index}`"
+        v-bind="item"
+        :show-on-hover="showDropdownOnHover"
+        @select="onClick"
+      />
+    </template>
+  </div>
 </template>
 
 <script setup>
-  const actionBarItems = [
-    { type: 'button', iconLeft: 'home' },
-    { type: 'dropdown', label: 'Options' },
-    // more items
-  ]
+  import EpButton from '../button/EpButton.vue'
+  import EpDropdown from '../dropdown/EpDropdown.vue'
+  import { computed } from 'vue'
+
+  defineOptions({
+    name: 'EpActionBar'
+  })
+
+  const props = defineProps({
+    /**
+     * The items to display in the action bar.
+     */
+    items: {
+      type: Array,
+      required: true,
+    },
+    /**
+     * Whether to show the dropdown on hover.
+     */
+    showDropdownOnHover: {
+      type: Boolean,
+      default: false
+    },
+  })
+
+  const emit = defineEmits([
+    /**
+     * Emitted when an item is clicked.
+     * @payload {Object} item - The clicked item.
+     */
+    'click'
+  ])
+
+  const buttonDefaults = computed(() => {
+    return {
+      label: '',
+      title: '',
+    }
+  })
 
   const onClick = (item) => {
-    console.log('Item clicked:', item)
+    emit('click', item)
   }
 </script>
+
 ```
 
-## Component Source
 
-```vue
-<!-- pull in component code dynamically -->
+## Styles
+
+```scss
+  .ep-action-bar {
+    --ep-action-bar-justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: var(--ep-action-bar-justify-content);
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
 ```

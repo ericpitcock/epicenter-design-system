@@ -1,52 +1,164 @@
 # EpBanner
 
-`EpBanner` is used to call attention to important information or actions. It can be used to inform users of a change in the system, or to call attention to a specific action that needs to be taken.
+
 
 ## Props
-
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `classes` | Custom classes to apply to the banner. | Array, Object, String | `''` |
-| `dismissable` | If true, a dismiss button will be shown and the banner will be user-dismissible. | Boolean | `false` |
-| `iconProps` | The props for the icon. | Object | `{}` |
-| `styles` | Custom styles to apply to the banner. | Object | `{}` |
+| `dissmissable` | - | `boolean` | `false` |
+| `iconProps` | - | `object` | `{}` |
 
 ## Events
-
-| Name | Description | Payload |
-|------|-------------|---------|
-| `dismissed` | Emitted when the banner is dismissed. | `undefined` |
+| Name    | Description                 | Payload    |
+|---------|-----------------------------|------------|
+| `dismissed` | - | - |
 
 ## Slots
-
 | Name | Description |
 |------|-------------|
-| `message` | The main message to display in the banner. |
-| `subtext` | The subtext to display in the banner. |
+| `message` | No description available. |
+| `subtext` | No description available. |
 
-## Usage
+## Component Code
 
 ```vue
 <template>
-  <ep-banner
-    classes="awesome-banner"
-    dismissable
-    :iconProps="{ name: 'warning' }"
-    :style="{ '--ep-banner-bg-color': 'var(--color--warning)' }"
-    @dismissed="onDismiss"
-  >
-    <template #message>
-      Version 2.0 will end support for JavaDabbles and Interquibbles
-    </template>
-    <template #subtext>
-      Our boss made us do it
-    </template>
-  </ep-banner>
+  <div class="ep-banner">
+    <div class="ep-banner__color-strip" />
+    <div class="ep-banner__body">
+      <div
+        v-if="iconProps.name"
+        class="ep-banner__body__icon"
+      >
+        <ep-icon v-bind="iconProps" />
+      </div>
+      <div class="ep-banner__body__message">
+        <div class="ep-banner__body__message__text font-size--small">
+          <slot name="message" />
+        </div>
+        <div
+          v-if="$slots.subtext"
+          class="ep-banner__body__message__subtext"
+        >
+          <slot name="subtext" />
+        </div>
+      </div>
+      <ep-button
+        v-if="dissmissable"
+        class="dismiss-button"
+        variant="ghost"
+        :icon-right="{ name: 'close' }"
+        :style="dissmissButtonStyles"
+        @click="dismissBanner"
+      />
+    </div>
+  </div>
 </template>
 
 <script setup>
-  const onDismiss = () => {
-    console.log('Banner dismissed')
+  defineOptions({
+    name: 'EpBanner'
+  })
+
+  import EpButton from '../button/EpButton.vue'
+  import EpIcon from '../icon/EpIcon.vue'
+
+  const props = defineProps({
+    dissmissable: {
+      type: Boolean,
+      default: false
+    },
+    iconProps: {
+      type: Object,
+      default: () => ({})
+    },
+  })
+
+  const emit = defineEmits(['dismissed'])
+  const dismissBanner = () => emit('dismissed')
+
+  const dissmissButtonStyles = {
+    '--ep-button-bg-color': 'transparent',
+    '--ep-button-border-color': 'transparent',
+    '--ep-button-text-color': 'var(--ep-banner-dismiss-button-color)',
+    '--ep-button-hover-bg-color': 'var(--ep-banner-dismiss-button-hover-bg-color)',
+    '--ep-button-hover-border-color': 'transparent',
+    '--ep-button-hover-text-color': 'var(--ep-banner-dismiss-button-hover-text-color)',
+    '--ep-button-active-bg-color': 'var(--ep-banner-dismiss-button-active-bg-color)',
+    '--ep-button-active-border-color': 'transparent',
+    '--ep-button-active-text-color': 'var(--ep-banner-dismiss-button-active-text-color)',
   }
 </script>
+
+```
+
+
+## Styles
+
+```scss
+:root {
+  --ep-banner-color-strip-bg: var(--color--primary);
+  --ep-banner-bg-color: var(--interface-overlay);
+  --ep-banner-border-color: var(--border-color--lighter);
+  --ep-banner-text-color: var(--text-color--loud);
+  --ep-banner-subtext-color: var(--text-color--subtle);
+  --ep-banner-dismiss-button-color: var(--text-color);
+  --ep-banner-dismiss-button-hover-bg-color: transparent;
+  --ep-banner-dismiss-button-hover-text-color: var(--text-color);
+  --ep-banner-dismiss-button-active-bg-color: transparent;
+  --ep-banner-dismiss-button-active-text-color: var(--text-color);
+}
+
+.ep-banner {
+  display: flex;
+  width: 100%;
+  min-width: 30rem;
+  max-width: 60rem;
+
+  &__color-strip {
+    width: .5rem;
+    background: var(--ep-banner-color-strip-bg);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+    height: 100%;
+    background-color: var(--ep-banner-bg-color);
+    padding: 1.2rem 2rem;
+    border: 1px solid var(--ep-banner-border-color);
+    border-left: none;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+
+    &__icon {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    &__message {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: .25rem;
+      height: 100%;
+
+      &__text {
+        line-height: var(--text-line-height--tight);
+        color: var(--ep-banner-text-color);
+      }
+
+      &__subtext {
+        font-size: var(--font-size--tiny);
+        color: var(--ep-banner-subtext-color);
+      }
+    }
+  }
+}
 ```

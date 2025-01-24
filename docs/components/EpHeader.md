@@ -1,1 +1,129 @@
 # EpHeader
+
+
+
+## Props
+| Name | Description | Type | Default |
+|------|-------------|------|---------|
+No props available.
+
+## Events
+| Name    | Description                 | Payload    |
+|---------|-----------------------------|------------|
+No events available.
+
+## Slots
+| Name | Description |
+|------|-------------|
+| `slotName` | No description available. |
+
+## Component Code
+
+```vue
+<template>
+  <div class="ep-header">
+    <div class="ep-header__content">
+      <template v-for="slotName in ['left', 'center', 'right']">
+        <div
+          v-if="$slots[slotName]"
+          :key="slotName"
+          :class="`ep-header__content__${slotName}`"
+        >
+          <slot :name="slotName" />
+        </div>
+      </template>
+    </div>
+  </div>
+</template>
+
+<script setup>
+  defineOptions({
+    name: 'EpHeader',
+  })
+</script>
+
+```
+
+
+## Styles
+
+```scss
+.ep-header {
+  --ep-header-container-position: relative;
+  --ep-header-container-top: 0;
+  --ep-header-container-width: 100%;
+  --ep-header-container-height: 6.1rem;
+  --ep-header-container-padding: 0;
+  --ep-header-container-margin: 0;
+  --ep-header-container-bg-color: none;
+  --ep-header-container-border-radius: 0;
+  --ep-header-container-border-width: 0.1rem;
+  --ep-header-container-border-style: solid;
+  --ep-header-container-border-color: var(--border-color);
+  --ep-header-container-box-shadow: none;
+  --ep-header-container-overflow: hidden;
+  --ep-header-container-z-index: 1;
+  --ep-header-content-gap: 3rem;
+  --ep-header-left-flex: 1;
+  --ep-header-left-gap: 3rem;
+  --ep-header-left-justify-content: flex-start;
+  --ep-header-left-padding: 0;
+  --ep-header-center-flex: 1;
+  --ep-header-center-gap: 3rem;
+  --ep-header-center-justify-content: center;
+  --ep-header-center-padding: 0;
+  --ep-header-right-flex: 1;
+  --ep-header-right-gap: 3rem;
+  --ep-header-right-justify-content: flex-end;
+  --ep-header-right-padding: 0;
+  position: var(--ep-header-container-position);
+  top: var(--ep-header-container-top);
+  width: var(--ep-header-container-width);
+  height: var(--ep-header-container-height);
+  padding: var(--ep-header-container-padding);
+  margin: var(--ep-header-container-margin);
+  border-bottom: var(--ep-header-container-border-width) var(--ep-header-container-border-style) var(--ep-header-container-border-color);
+  border-radius: var(--ep-header-container-border-radius);
+  background: var(--ep-header-container-bg-color);
+  box-shadow: var(--ep-header-container-box-shadow);
+  overflow: var(--ep-header-container-overflow);
+  z-index: var(--ep-header-container-z-index);
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--ep-header-content-gap);
+    height: 100%;
+
+    &__left,
+    &__center,
+    &__right {
+      display: flex;
+      height: 100%;
+      align-items: center;
+    }
+
+    &__left {
+      flex: var(--ep-header-left-flex);
+      gap: var(--ep-header-left-gap);
+      justify-content: var(--ep-header-left-justify-content);
+      padding: var(--ep-header-left-padding);
+    }
+
+    &__center {
+      flex: var(--ep-header-center-flex);
+      gap: var(--ep-header-center-gap);
+      justify-content: var(--ep-header-center-justify-content);
+      padding: var(--ep-header-center-padding);
+    }
+
+    &__right {
+      flex: var(--ep-header-right-flex);
+      gap: var(--ep-header-right-gap);
+      justify-content: var(--ep-header-right-justify-content);
+      padding: var(--ep-header-right-padding);
+    }
+  }
+}
+```

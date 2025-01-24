@@ -1,88 +1,406 @@
 # EpButton
 
-`EpButton` is a button.
+
+## Component Notes
+The `EpButton` component is a reusable button with various size and style options. It supports both icon and label configurations.
+    
 
 ## Props
-
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `label` | The text to display in the button. | String | `''` |
-| `iconLeft` | The icon to display on the left side of the button. | Object | `undefined` |
-| `iconRight` | The icon to display on the right side of the button. | Object | `undefined` |
-| `styles` | Custom styles to apply to the button. | Object | `{}` |
-| `classes` | Custom classes to apply to the button. | Array, Object, String | `''` |
-| `disabled` | If true, the button will be disabled. | Boolean | `false` |
-| `type` | The type of button. | String | `'button'` |
-| `isMenuItem` | If true, the button will be styled as a menu item. | Boolean | `false` |
-| `isActiveMenuItem` | If true, the button will be styled as an active menu item. | Boolean | `false` |
-| `title` | The title attribute for the button. | String | `''` |
-| `size` | The size of the button. | String | `'medium'` |
-
-## CSS Custom Properties
-
-| Name | Description | Default |
-|------|-------------|---------|
-| `--ep-button-bg-color` | The background color of the button. | `var(--interface-overlay)` |
-| `--ep-button-text-color` | The text color of the button. | `var(--text-color)` |
-| `--ep-button-border-width` | The border width of the button. | `1px` |
-| `--ep-button-border-style` | The border style of the button. | `solid` |
-| `--ep-button-border-color` | The border color of the button. | `var(--border-color--lighter)` |
-| `--ep-button-border-radius` | The border radius of the button. | `var(--border-radius)` |
-| `--ep-button-hover-bg-color` | The background color of the button on hover. | `var(--interface-overlay--lighter)` |
-| `--ep-button-hover-text-color` | The text color of the button on hover. | `var(--text-color--loud)` |
-| `--ep-button-hover-border-color` | The border color of the button on hover. | `var(--border-color--lighter)` |
-| `--ep-button-active-bg-color` | The background color of the button when active. | `var(--interface-overlay--lighter)` |
-| `--ep-button-active-text-color` | The text color of the button when active. | `var(--color--primary)` |
-| `--ep-button-active-border-color` | The border color of the button when active. | `var(--border-color--lighter)` |
-| `--ep-button-disabled-bg-color` | The background color of the button when disabled. | `var(--interface-overlay--lighter)` |
-| `--ep-button-disabled-text-color` | The text color of the button when disabled. | `var(--text-color--light)` |
-| `--ep-button-disabled-border-color` | The border color of the button when disabled. | `var(--border-color--lighter)` |
-| `--ep-button-menu-item-text-active` | The text color of the button when active as a menu item. | `var(--color--primary)` |
+| `size` | The size of the button. | `string` | `'default'` |
+| `ariaLabel` | The aria-label of the button. | `string` | `''` |
+| `label` | The label of the button. | `string` | `''` |
+| `iconLeft` | The icon to display on the left side of the button. | `object` | `undefined` |
+| `iconRight` | The icon to display on the right side of the button. | `object` | `undefined` |
+| `disabled` | If `true`, the button will be disabled. | `boolean` | `false` |
+| `type` | The  type of the button. | `string` | `'button'` |
 
 ## Events
-
-| Name | Description | Payload |
-|------|-------------|---------|
-| `click` | Emitted when the button is clicked. | `undefined` |
+| Name    | Description                 | Payload    |
+|---------|-----------------------------|------------|
+No events available.
 
 ## Slots
+| Name | Description |
+|------|-------------|
+No slots available.
 
-This component does not have any slots.
-
-## Usage
+## Component Code
 
 ```vue
 <template>
-  <ep-button
-    label="I am button"
-    :iconLeft="{ name: 'help' }"
-    :iconRight="{ name: 'chevron-down' }"
-    classes="most-important-button"
-    :style="styles"
-    @click="onClick"
-  />
+  <component
+    :is="element"
+    :type
+    :class="['ep-button', computedClasses]"
+    :aria-label="ariaLabel ? ariaLabel : label"
+    :disabled="disabled"
+  >
+    <span
+      v-if="iconLeft"
+      class="ep-button__icon ep-button__icon--left"
+    >
+      <ep-icon v-bind="iconLeft" />
+    </span>
+    <span
+      v-if="label"
+      class="ep-button__label"
+    >
+      {{ label }}
+    </span>
+    <span
+      v-if="iconRight"
+      class="ep-button__icon ep-button__icon--right"
+    >
+      <ep-icon v-bind="iconRight" />
+    </span>
+  </component>
 </template>
 
 <script setup>
-  const styles = {
-    '--ep-button-bg-color': 'var(--primary-color)',
-    '--ep-button-text-color': 'var(--text-color-white)',
-    '--ep-button-border-color': 'var(--primary-color)',
-    '--ep-button-hover-bg-color': 'var(--primary-color--lighter)',
-    '--ep-button-hover-text-color': 'var(--text-color-white)',
-    '--ep-button-hover-border-color': 'var(--primary-color--lighter)',
-    '--ep-button-active-bg-color': 'var(--primary-color--lighter)',
-    '--ep-button-active-text-color': 'var(--text-color-white)',
-    '--ep-button-active-border-color': 'var(--primary-color--lighter)',
-  }
+  import { computed, useAttrs } from 'vue'
+  import EpIcon from '../icon/EpIcon.vue'
 
-  const onClick = () => {
-    console.log('Button clicked')
-  }
+  defineOptions({
+    name: 'EpButton'
+  })
+
+  const props = defineProps({
+    /**
+     * The size of the button.
+     */
+    size: {
+      type: String,
+      default: 'default',
+      validator: (value) => [
+        'small',
+        'default',
+        'large',
+        'xlarge',
+      ].includes(value)
+    },
+    /**
+     * The aria-label of the button.
+     */
+    ariaLabel: {
+      type: String,
+      default: ''
+    },
+    /**
+     * The label of the button.
+     */
+    label: {
+      type: String,
+      default: ''
+    },
+    /**
+     * The icon to display on the left side of the button.
+     */
+    iconLeft: {
+      type: Object,
+      default: undefined
+    },
+    /**
+     * The icon to display on the right side of the button.
+     */
+    iconRight: {
+      type: Object,
+      default: undefined
+    },
+    /**
+     * If `true`, the button will be disabled.
+     */
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * The  type of the button.
+     */
+    type: {
+      type: String,
+      default: 'button',
+      validator: (value) => [
+        'button',
+        'submit',
+      ].includes(value)
+    },
+  })
+
+  const element = computed(() => {
+    const { to, href } = useAttrs()
+    return to ? 'router-link' : href ? 'a' : 'button'
+  })
+
+  const computedClasses = computed(() => ({
+    [`ep-button--${props.size}`]: props.size != 'default',
+    'ep-button--icon-right': props.iconRight,
+    'ep-button--icon-left': props.iconLeft,
+    'ep-button--disabled': props.disabled,
+  }))
 </script>
+
 ```
 
-## Components Using EpButton
-- [EpActionBar](./EpActionBar.md)
-- [EpButtonGroup](./EpButtonGroup.md)
-- [EpDropdown](./EpDropdown.md)
+
+## Styles
+
+```scss
+.ep-button {
+  --ep-button-bg-color: var(--interface-foreground);
+  --ep-button-text-color: var(--text-color--loud);
+  --ep-button-border-width: 0.1rem;
+  --ep-button-border-style: solid;
+  --ep-button-border-color: var(--border-color);
+  --ep-button-border-radius: 0.3rem;
+  --ep-button-hover-bg-color: var(--interface-foreground);
+  --ep-button-hover-text-color: var(--text-color--loud);
+  --ep-button-hover-border-color: var(--border-color);
+  --ep-button-active-bg-color: var(--interface-foreground);
+  --ep-button-active-text-color: var(--text-color);
+  --ep-button-active-border-color: var(--border-color);
+  --ep-button-disabled-bg-color: var(--interface-foreground);
+  --ep-button-disabled-text-color: var(--text-color--disabled);
+  --ep-button-disabled-border-color: var(--border-color--disabled);
+  --ep-button-menu-item-active-bg-color: var(--primary-color-base);
+  --ep-button-menu-item-active-text-color: var(--text-color--loud);
+  --ep-button-padding-inline: 1.2rem;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: max-content;
+  height: 3rem;
+  border-radius: var(--ep-button-border-radius);
+  font-size: var(--font-size--small);
+  line-height: 1;
+  appearance: none;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  vertical-align: top;
+  background: var(--ep-button-bg-color);
+  color: var(--ep-button-text-color);
+  padding-inline: var(--ep-button-padding-inline);
+  border-width: var(--ep-button-border-width);
+  border-style: var(--ep-button-border-style);
+  border-color: var(--ep-button-border-color);
+
+  @media (hover: hover) {
+    &:hover:not(.ep-button--menu-item--active):not(.ep-button--disabled) {
+      background: var(--ep-button-hover-bg-color);
+      color: var(--ep-button-hover-text-color);
+      border-color: var(--ep-button-hover-border-color);
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-outline-color);
+  }
+
+  &:active {
+    background: var(--ep-button-active-bg-color);
+    color: var(--ep-button-active-text-color);
+    border-color: var(--ep-button-active-border-color);
+  }
+
+  &--menu-item {
+    width: 100%;
+    max-width: 100%;
+    background: transparent;
+    border-color: transparent;
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
+
+    &--active {
+      background: var(--ep-button-menu-item-active-bg-color);
+      color: var(--ep-button-menu-item-active-text-color);
+      cursor: default;
+    }
+  }
+
+  &--disabled {
+    background: var(--ep-button-disabled-bg-color);
+    color: var(--ep-button-disabled-text-color);
+    border-color: var(--ep-button-disabled-border-color);
+    pointer-events: none;
+    cursor: default;
+
+    &.ep-button--menu-item {
+      border-color: transparent;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    max-height: 2.4rem;
+    pointer-events: none;
+  }
+
+  &__label {
+    flex: 1;
+    text-align: left;
+    pointer-events: none;
+    line-height: 2rem;
+  }
+
+  // default 30px height
+  // has only one child
+  &:has(:only-child) {
+
+    // and it's an icon
+    &:has(.ep-button__icon) {
+      --ep-button-padding-inline: 0.8rem;
+    }
+
+    // and it's a label
+    &:has(.ep-button__label) {
+      --ep-button-padding-inline: 1.2rem;
+    }
+  }
+
+  // has two children, one icon left and one label
+  &:has(.ep-button__icon--left, .ep-button__label) {
+    --ep-button-padding-inline: 0.8rem 1.2rem;
+  }
+
+  // has two children, one icon right and one label
+  &:has(.ep-button__icon--right, .ep-button__label) {
+    --ep-button-padding-inline: 1.2rem 0.8rem;
+  }
+
+  // has icon left, icon right, and label
+  &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
+    --ep-button-padding-inline: 0.8rem;
+  }
+
+  // small 22px height
+  &--small {
+    gap: 0.4rem;
+    height: 2.2rem;
+
+    .ep-button__label {
+      font-size: var(--font-size--tiny);
+    }
+
+    // padding
+    // has only one child
+    &:has(:only-child) {
+
+      // and it's an icon
+      &:has(.ep-button__icon) {
+        --ep-button-padding-inline: 0.3rem;
+      }
+
+      // and it's a label
+      &:has(.ep-button__label) {
+        --ep-button-padding-inline: 0.6rem;
+      }
+    }
+
+    // has two children, one icon left and one label
+    &:has(.ep-button__icon--left, .ep-button__label) {
+      --ep-button-padding-inline: 0.3rem 0.6rem;
+    }
+
+    // has two children, one icon right and one label
+    &:has(.ep-button__icon--right, .ep-button__label) {
+      --ep-button-padding-inline: 0.6rem 0.3rem;
+    }
+
+    // has icon left, icon right, and label
+    &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
+      --ep-button-padding-inline: 0.6rem;
+    }
+  }
+
+  // large 38px height
+  &--large {
+    // max-height: 3.8rem;
+    height: 3.8rem;
+
+    .ep-button__label {
+      font-size: var(--font-size--default);
+    }
+
+    // padding
+    // has only one child
+    &:has(:only-child) {
+
+      // and it's an icon
+      &:has(.ep-button__icon) {
+        --ep-button-padding-inline: 1rem;
+      }
+
+      // and it's a label
+      &:has(.ep-button__label) {
+        --ep-button-padding-inline: 1.5rem;
+      }
+    }
+
+    // has two children, one icon left and one label
+    &:has(.ep-button__icon--left, .ep-button__label) {
+      --ep-button-padding-inline: 0.8rem 1.5rem;
+    }
+
+    // has two children, one icon right and one label
+    &:has(.ep-button__icon--right, .ep-button__label) {
+      --ep-button-padding-inline: 1.5rem 0.8rem;
+    }
+
+    // has icon left, icon right, and label
+    &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
+      --ep-button-padding-inline: 0.8rem;
+    }
+  }
+
+  // xlarge 46px height
+  &--xlarge {
+    // max-height: 4.6rem;
+    height: 4.6rem;
+
+    .ep-button__label {
+      font-size: var(--font-size--default);
+    }
+
+    // padding
+    // has only one child
+    &:has(:only-child) {
+
+      // and it's an icon
+      &:has(.ep-button__icon) {
+        --ep-button-padding-inline: 1.2rem;
+      }
+
+      // and it's a label
+      &:has(.ep-button__label) {
+        --ep-button-padding-inline: 1.8rem;
+      }
+    }
+
+    // has two children, one icon left and one label
+    &:has(.ep-button__icon--left, .ep-button__label) {
+      --ep-button-padding-inline: 1.2rem 1.8rem;
+    }
+
+    // has two children, one icon right and one label
+    &:has(.ep-button__icon--right, .ep-button__label) {
+      --ep-button-padding-inline: 1.8rem 1.2rem;
+    }
+
+    // has icon left, icon right, and label
+    &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
+      --ep-button-padding-inline: 1.8rem;
+    }
+  }
+}
+```

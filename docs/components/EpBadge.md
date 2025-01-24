@@ -1,49 +1,67 @@
 # EpBadge
 
-`EpBadge` is a way to emphasize a string of text, like a status or a count.
+
 
 ## Props
-
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `label` | The text to display in the badge. | String | `''` |
-| `styles` | Custom styles to apply to the badge. | Object | `{}` |
-| `classes` | Custom classes to apply to the badge. | Array, Object, String | `''` |
-
-## CSS Custom Properties
-| Name | Description | Default |
-|------|-------------|---------|
-| `--ep-badge-bg-color` | The background color of the badge. | `var(--interface-overlay)` |
-| `--ep-badge-border-color` | The border color of the badge. | `var(--border-color--lighter)` |
-| `--ep-badge-text-color` | The text color of the badge. | `var(--text-color)` |
+| `label` | The label to display in the badge. | `string` | `'Badge'` |
 
 ## Events
-
-This component does not emit any events.
+| Name    | Description                 | Payload    |
+|---------|-----------------------------|------------|
+No events available.
 
 ## Slots
+| Name | Description |
+|------|-------------|
+No slots available.
 
-This component does not have any slots.
-
-## Usage
+## Component Code
 
 ```vue
 <template>
-  <ep-badge
-    label="Subscribed"
-    classes="most-important-badge"
-    :style="styles"
-  />
+  <div class="ep-badge">
+    {{ label }}
+  </div>
 </template>
 
 <script setup>
-  const styles = {
-    '--ep-badge-bg-color': 'var(--primary-color)',
-    '--ep-badge-border-color': 'var(--primary-color)',
-    '--ep-badge-text-color': 'var(--text-color-white)',
-  }
+  defineOptions({
+    name: 'EpBadge'
+  })
+
+  const props = defineProps({
+    /**
+     * The label to display in the badge.
+     */
+    label: {
+      type: String,
+      default: 'Badge'
+    },
+  })
 </script>
+
 ```
 
-## Component Source
 
+## Styles
+
+```scss
+.ep-badge {
+  --ep-badge-bg-color: var(--interface-overlay);
+  --ep-badge-border-color: var(--border-color--lighter);
+  --ep-badge-text-color: var(--text-color);
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius);
+  background: var(--ep-badge-bg-color);
+  border: 0.1rem solid var(--ep-badge-border-color);
+  color: var(--ep-badge-text-color);
+  font-size: var(--font-size--tiny);
+  font-variation-settings: 'wght' 600;
+  line-height: normal;
+  user-select: none;
+  white-space: nowrap;
+}
+```
