@@ -9,8 +9,8 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 // Paths
-const COMPONENTS_DIR = path.resolve(__dirname, './packages/epicenter-vue-components/src/components')
-const OUTPUT_DIR = './docs/components'
+const COMPONENTS_DIR = path.resolve(__dirname, './packages/epicenter-vue-components/src/components') // Component directory
+const OUTPUT_DIR = './docs/components' // Output directory for docs
 
 // Ensure output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
@@ -27,10 +27,15 @@ vueFiles.forEach(async (filePath) => {
 
   // Look for a custom notes file (e.g., EpButton.notes.md)
   const notesFilePath = path.join(path.dirname(filePath), `${fileName}.notes.md`)
-  let customNotes = ''
+  let customNotesSection = '' // Default to no notes section
+
   if (fs.existsSync(notesFilePath)) {
-    customNotes = fs.readFileSync(notesFilePath, 'utf-8')
+    const customNotes = fs.readFileSync(notesFilePath, 'utf-8')
     console.log(`Found custom notes for ${fileName}`)
+    customNotesSection = `
+## Component Notes
+${customNotes}
+    `
   }
 
   try {
@@ -42,10 +47,7 @@ vueFiles.forEach(async (filePath) => {
     const markdown = `
 # ${doc.displayName}
 
-${doc.description || 'No description provided.'}
-
-## Component Notes
-${customNotes || 'No additional notes provided.'}
+${doc.description || ''}${customNotesSection}
 
 ## Props
 | Name | Description | Type | Default |
