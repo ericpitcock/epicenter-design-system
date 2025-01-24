@@ -1,0 +1,1 @@
+The `EpButton` component is a reusable button with various size and style options. It supports both icon and label configurations.
