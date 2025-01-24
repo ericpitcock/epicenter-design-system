@@ -108,7 +108,7 @@ ${fileContent}
 \`\`\`
 
 ${scssContent ? `
-## Styles (SCSS)
+## Styles
 
 \`\`\`scss
 ${scssContent}
