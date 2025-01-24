@@ -25,7 +25,17 @@ vueFiles.forEach(async (filePath) => {
   const fileName = path.basename(filePath, '.vue') // Get the file name without extension
   const fileContent = fs.readFileSync(filePath, 'utf-8') // Read the .vue file content
 
+  // Look for a custom notes file (e.g., EpButton.notes.md)
+  const notesFilePath = path.join(path.dirname(filePath), `${fileName}.notes.md`)
+  let customNotes = ''
+  if (fs.existsSync(notesFilePath)) {
+    customNotes = fs.readFileSync(notesFilePath, 'utf-8')
+    console.log(`Found custom notes for ${fileName}`)
+  }
+
   try {
+    console.log(`Processing file: ${fileName}`) // Debugging: Show progress
+
     const doc = await parse(filePath)
 
     // Generate Markdown content
@@ -33,6 +43,9 @@ vueFiles.forEach(async (filePath) => {
 # ${doc.displayName}
 
 ${doc.description || 'No description provided.'}
+
+## Component Notes
+${customNotes || 'No additional notes provided.'}
 
 ## Props
 | Name | Description | Type | Default |
