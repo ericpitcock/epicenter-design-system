@@ -48,7 +48,7 @@ export const Resizable = args => ({
       @resize="newSize => console.log('Resized to:', newSize)"
     >
       <template #resizable>
-        <div style="background: lightgray; height: 100%;">Resizable Panel</div>
+        <div style="background: lightgray; width: 100%; height: 100%;">Resizable Panel</div>
       </template>
       <template #sibling>
         <div style="background: whitesmoke; height: 100%;">Sibling Panel</div>

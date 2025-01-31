@@ -4,16 +4,16 @@
       class="resizable-pane"
       :style="{ flex: computedSize }"
     >
-      <slot name="resizable"></slot>
+      <slot name="resizable" />
       <div
         class="drag-handle"
         :class="dragEdge"
         @mousedown="handleDragStart"
         @touchstart="handleDragStart"
-      ></div>
+      />
     </div>
     <div class="sibling-pane">
-      <slot name="sibling"></slot>
+      <slot name="sibling" />
     </div>
   </div>
 </template>
@@ -27,9 +27,18 @@
       required: true,
       validator: (v) => ['top', 'right', 'bottom', 'left'].includes(v)
     },
-    initialSize: { type: String, default: '300px' }, // Default size
-    minSize: { type: Number, default: 100 }, // Min size in px
-    maxSize: { type: Number, default: 800 } // Max size in px
+    initialSize: {
+      type: String,
+      default: '300px'
+    },
+    minSize: {
+      type: Number,
+      default: 100
+    },
+    maxSize: {
+      type: Number,
+      default: 800
+    }
   })
 
   const emit = defineEmits(['resize'])
@@ -38,7 +47,7 @@
   const currentSize = ref(parseInt(props.initialSize)) // Extract numeric size
   const unit = ref(props.initialSize.replace(/[0-9]/g, '').trim() || 'px') // Extract unit
 
-  const computedSize = computed(() => `1 1 ${currentSize.value}${unit.value}`)
+  const computedSize = computed(() => `0 0 ${currentSize.value}${unit.value}`)
 
   const handleDragStart = (event) => {
     isDragging.value = true
