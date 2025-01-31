@@ -1,6 +1,7 @@
 <template>
   <div class="resizable-wrapper">
     <div
+      ref="resizablePane"
       class="resizable-pane"
       :style="{ flex: computedSize }"
     >
@@ -41,15 +42,23 @@
     }
   })
 
+  const resizablePane = ref(null)
   const emit = defineEmits(['resize'])
   const isDragging = ref(false)
+  const hasBeenDragged = ref(false)
   const startPos = ref(0)
-  const currentSize = ref(parseInt(props.initialSize)) // Extract numeric size
-  const unit = ref(props.initialSize.replace(/[0-9]/g, '').trim() || 'px') // Extract unit
+  const currentSize = ref(null) // Keep as null initially
 
-  const computedSize = computed(() => `0 0 ${currentSize.value}${unit.value}`)
+  const computedSize = computed(() => hasBeenDragged.value ? `0 0 ${currentSize.value}px` : `0 0 ${props.initialSize}`)
 
   const handleDragStart = (event) => {
+    if (!hasBeenDragged.value) {
+      // Convert initialSize to px on first drag
+      const { width, height } = resizablePane.value.getBoundingClientRect()
+      currentSize.value = (props.dragEdge === 'right' || props.dragEdge === 'left') ? width : height
+    }
+
+    hasBeenDragged.value = true
     isDragging.value = true
     startPos.value = (props.dragEdge === 'right' || props.dragEdge === 'left')
       ? (event.touches ? event.touches[0].clientX : event.clientX)
@@ -77,7 +86,7 @@
     newSize = Math.max(props.minSize, Math.min(props.maxSize, newSize))
 
     currentSize.value = newSize
-    emit('resize', newSize + unit.value)
+    emit('resize', newSize)
 
     startPos.value = currentPos
   }

@@ -59,7 +59,7 @@ export const Resizable = args => ({
 
 Resizable.args = {
   dragEdge: 'right',
-  // initialSize: '50%',
+  initialSize: '50%', // percentage or pixel value
   // minSize: 200,
   // maxSize: 600,
 }
