@@ -22,11 +22,11 @@ export default {
       description: 'Initial flex-basis value (e.g., "300px", "40%").'
     },
     minSize: {
-      control: { type: 'text' },
+      control: { type: 'number' },
       description: 'Minimum size of the resizable container.'
     },
     maxSize: {
-      control: { type: 'text' },
+      control: { type: 'number' },
       description: 'Maximum size of the resizable container.'
     }
   }
@@ -60,6 +60,6 @@ export const Resizable = args => ({
 Resizable.args = {
   dragEdge: 'right',
   // initialSize: '50%',
-  // minSize: '200px',
-  // maxSize: '600px'
+  // minSize: 200,
+  // maxSize: 600,
 }
