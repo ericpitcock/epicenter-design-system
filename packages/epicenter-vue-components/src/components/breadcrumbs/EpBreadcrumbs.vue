@@ -1,13 +1,12 @@
 <template>
   <nav aria-label="Breadcrumb">
-    <ol class="breadcrumb">
+    <ol class="ep-breadcrumbs">
       <li
         v-for="(crumb, index) in breadcrumbItems"
         :key="index"
-        class="breadcrumb-item"
+        class="ep-breadcrumbs__item"
         :class="crumb.customClass"
       >
-        <!-- Use the custom "item" slot if provided -->
         <template v-if="$slots.item">
           <slot
             name="item"
@@ -16,26 +15,22 @@
             :is-last="index === breadcrumbItems.length - 1"
           />
         </template>
-        <!-- Default rendering -->
         <template v-else>
-          <!-- Render a router-link for all but the last breadcrumb -->
           <router-link
             v-if="index !== breadcrumbItems.length - 1"
             :to="crumb.to"
           >
             {{ crumb.label }}
           </router-link>
-          <!-- Last breadcrumb is non-clickable with aria-current -->
           <span
             v-else
             aria-current="page"
+            class="ep-breadcrumbs__item--current"
           >{{ crumb.label }}</span>
         </template>
-
-        <!-- Separator (only shown if not the last item) -->
         <span
           v-if="index !== breadcrumbItems.length - 1"
-          class="breadcrumb-separator"
+          class="ep-breadcrumbs__separator"
           aria-hidden="true"
         >
           <template v-if="$slots.separator">
@@ -45,8 +40,9 @@
             />
           </template>
           <template v-else>
-            <!-- Default separator -->
-            &gt;
+            <span class="ep-breadcrumbs__separator--default">
+              <ep-icon name="chevron-right" />
+            </span>
           </template>
         </span>
       </li>
@@ -57,18 +53,8 @@
 <script setup>
   import { computed } from 'vue'
   import { useRoute } from 'vue-router'
+  import EpIcon from '../icon/EpIcon.vue'
 
-  /**
-   * Props:
-   * - items: An array of breadcrumb objects.
-   *   Each object should have:
-   *     - label: String (the text to display)
-   *     - to: String or Object (the route target; note we use "to" for router-link)
-   *     - customClass: Optional string for additional CSS classes.
-   *
-   * - auto: Boolean - when true, the component will auto-generate breadcrumbs
-   *   based on the current Vue Router route.
-   */
   const props = defineProps({
     items: {
       type: Array,
@@ -82,15 +68,6 @@
 
   const route = useRoute()
 
-  /**
-   * The computed breadcrumb list is determined by:
-   * - If auto mode is enabled, deriving breadcrumbs from route.matched.
-   *   In auto mode, you can add a `meta` field to your route definitions.
-   *   For example:
-   *     meta: { breadcrumb: 'My Page', customClass: 'my-class' }
-   *   Records with meta.breadcrumb explicitly set to false will be skipped.
-   * - Otherwise, it uses the provided items prop.
-   */
   const breadcrumbItems = computed(() => {
     if (props.auto) {
       return route.matched
@@ -106,22 +83,36 @@
   })
 </script>
 
-<!-- You can add your own styling or import styles from your design system -->
-<style scoped>
-  .breadcrumb {
-    /* Your custom breadcrumb styles */
+<style lang="scss" scoped>
+  .ep-breadcrumbs {
     list-style: none;
     display: flex;
-    padding: 0;
-    margin: 0;
-  }
 
-  .breadcrumb-item {
-    display: flex;
-    align-items: center;
-  }
+    &__item {
+      display: flex;
+      align-items: center;
+      color: var(--text-color--subtle);
+      cursor: pointer;
 
-  .breadcrumb-separator {
-    margin: 0 0.5em;
+      &:hover {
+        color: var(--text-color--loud);
+      }
+
+      &--current {
+        color: var(--text-color--loud);
+        cursor: default;
+      }
+    }
+
+    &__separator {
+      padding-inline: 0.5em;
+
+      .ep-icon {
+        --ep-icon-width: 1.4em;
+        position: relative;
+        top: 0.1rem;
+        left: 0.1rem;
+      }
+    }
   }
 </style>
