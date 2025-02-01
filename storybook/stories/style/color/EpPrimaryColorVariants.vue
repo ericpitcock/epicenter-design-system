@@ -1,10 +1,19 @@
 <template>
   <div class="primary-color-variants">
-    <color-chips
-      v-for="variant in variantKeys"
-      :key="variant"
-      :colors="variant"
-    />
+    <div class="x-axis">
+      <p>Tints / Shades</p>
+    </div>
+    <div class="y-axis">
+      <p>Hue Shifts</p>
+    </div>
+    <div class="color-chips-container">
+      <color-chips
+        v-for="variant in variantKeys"
+        :key="variant"
+        :colors="variant"
+        class="color-chips"
+      />
+    </div>
   </div>
 </template>
 
@@ -113,35 +122,42 @@
         }
       }
     },
-    // computed: {
-    //   variants() {
-    //     return this.variantKeys.map(variant => {
-    //       return {
-    //         name: variant,
-    //         value: getComputedStyle(document.documentElement).getPropertyValue(variant)
-    //       }
-    //     })
-    //   },
-    // }
-    methods: {
-      // getPropertyValues(variant) {
-      //   // take in variantKeys.up15, for example, and return an object with the name and value
-      //   return this.variantKeys[variant].map(variant => {
-      //     return {
-      //       name: variant,
-      //       value: getComputedStyle(document.documentElement).getPropertyValue(variant)
-      //     }
-      //   })
-      // }
-    }
   }
 </script>
 
 <style lang="scss" scoped>
   .primary-color-variants {
-    display: flex;
+    display: grid;
     height: 100%;
-    flex-direction: column;
-    // gap: 0.5rem;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 50px 1fr;
+
+    .x-axis,
+    .y-axis {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-color--loud);
+    }
+
+    .x-axis {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    .y-axis {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      transform: rotate(-90deg);
+      white-space: nowrap;
+    }
+
+    .color-chips-container {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+    }
   }
 </style>

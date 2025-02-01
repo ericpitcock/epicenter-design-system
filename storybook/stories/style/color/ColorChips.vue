@@ -3,7 +3,7 @@
     <div
       v-for="name in colors"
       :key="name"
-      :class="['color-chip', { 'color-chip--base': isColorBase(name) }]"
+      class="color-chip"
       :style="{ backgroundColor: `var(${name})` }"
       :data-color-name="name"
     >
@@ -14,27 +14,16 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'ColorChips',
-    props: {
-      colors: {
-        type: Object,
-        required: true,
-      },
+<script setup>
+  const props = defineProps({
+    colors: {
+      type: Object,
+      required: true,
     },
-    methods: {
-      getPropertyValue(name) {
-        return getComputedStyle(document.documentElement).getPropertyValue(name)
-      },
-      isColorBase(name) {
-        return name === '--primary-color-base'
-      },
-      sanitizeColorName(name) {
-        // remove --primary-color- from name
-        return name.replace('--primary-color-', '')
-      },
-    }
+  })
+
+  const sanitizeColorName = (name) => {
+    return name.replace('--primary-color-', '')
   }
 </script>
 
@@ -42,7 +31,6 @@
   .color-chips {
     flex: 1;
     display: flex;
-    // gap: 0.5rem;
   }
 
   .color-chip {
@@ -51,16 +39,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-
-    &--base {
-      border: 1px solid white;
-    }
+    cursor: pointer;
 
     &:hover {
       .name {
         display: block;
         color: white;
-        // text shadow
         text-shadow: 0 0 0.5rem hsla(0, 0%, 0%, 0.5);
       }
     }
