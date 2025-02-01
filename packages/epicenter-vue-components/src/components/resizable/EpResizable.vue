@@ -1,5 +1,5 @@
 <template>
-  <div class="resizable-wrapper">
+  <div :class="['ep-resizable-wrapper', `ep-resizable-wrapper--${direction}`]">
     <div
       ref="resizablePane"
       class="resizable-pane"
@@ -7,8 +7,7 @@
     >
       <slot name="resizable" />
       <div
-        class="drag-handle"
-        :class="dragEdge"
+        :class="['drag-handle', dragEdge]"
         @mousedown="handleDragStart"
         @touchstart="handleDragStart"
       />
@@ -20,13 +19,18 @@
 </template>
 
 <script setup>
-  import { ref, computed } from 'vue'
+  import { computed, ref } from 'vue'
 
   const props = defineProps({
+    direction: {
+      type: String,
+      default: 'row',
+      validator: (value) => ['column', 'row'].includes(value)
+    },
     dragEdge: {
       type: String,
       required: true,
-      validator: (v) => ['top', 'right', 'bottom', 'left'].includes(v)
+      validator: (value) => ['top', 'right', 'bottom', 'left'].includes(value)
     },
     initialSize: {
       type: String,
@@ -34,7 +38,7 @@
     },
     minSize: {
       type: Number,
-      default: 100
+      default: 200
     },
     maxSize: {
       type: Number,
@@ -47,8 +51,8 @@
   const isDragging = ref(false)
   const hasBeenDragged = ref(false)
   const startPos = ref(0)
-  const currentSize = ref(null) // Keep as null initially
-
+  const currentSize = ref(null)
+  // respect initialSize, which can be px or %, until first drag, then use px
   const computedSize = computed(() => hasBeenDragged.value ? `0 0 ${currentSize.value}px` : `0 0 ${props.initialSize}`)
 
   const handleDragStart = (event) => {
@@ -100,12 +104,18 @@
   }
 </script>
 
-<style scoped>
-  .resizable-wrapper {
+<style lang="scss" scoped>
+  .ep-resizable-wrapper {
+    --ep-resizable-flex-direction: column;
     display: flex;
+    flex-direction: var(--ep-resizable-flex-direction);
     width: 100%;
     height: 100%;
     user-select: none;
+
+    &--row {
+      --ep-resizable-flex-direction: row;
+    }
   }
 
   .resizable-pane {
@@ -120,12 +130,15 @@
 
   .drag-handle {
     position: absolute;
-    background: rgba(0, 0, 0, 0.2);
-    transition: background 0.2s;
+    background: var(--interface-foreground);
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--border-color);
   }
 
   .drag-handle:hover {
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--primary-color-300);
+    border-color: var(--primary-color-300);
   }
 
   .right,
@@ -133,6 +146,8 @@
     width: 5px;
     top: 0;
     bottom: 0;
+    border-right-width: 0.1rem;
+    border-left-width: 0.1rem;
     cursor: ew-resize;
   }
 
@@ -149,6 +164,8 @@
     height: 5px;
     left: 0;
     right: 0;
+    border-top-width: 0.1rem;
+    border-bottom-width: 0.1rem;
     cursor: ns-resize;
   }
 
