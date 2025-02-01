@@ -1,12 +1,43 @@
 import { setup } from '@storybook/vue3'
+import { createRouter, createMemoryHistory } from 'vue-router'
 import { watch } from 'vue'
-
 import { createPinia } from 'pinia'
 import { useStorybookStore } from '../storybook/store'
+
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: { template: '<router-view/>' },
+    meta: { breadcrumb: 'Home' },
+    children: [
+      {
+        path: 'library',
+        name: 'Library',
+        component: { template: '<router-view/>' },
+        meta: { breadcrumb: 'Library' },
+        children: [
+          {
+            path: 'data',
+            name: 'Data',
+            component: { template: '<div>Data</div>' },
+            meta: { breadcrumb: 'Data' },
+          }
+        ]
+      }
+    ]
+  }
+]
+
+const router = createRouter({
+  history: createMemoryHistory(),
+  routes,
+})
 
 setup((app) => {
   const pinia = createPinia()
   app.use(pinia)
+  app.use(router)
 })
 
 // global styles
