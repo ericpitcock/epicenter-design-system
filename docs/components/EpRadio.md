@@ -94,7 +94,7 @@ No slots available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 :root {

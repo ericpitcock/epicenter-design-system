@@ -46,7 +46,7 @@ No events available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 .ep-status-indicator {

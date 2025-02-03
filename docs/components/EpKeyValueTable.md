@@ -138,7 +138,7 @@ No slots available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 @use '../mixins/_mixins' as mixins;

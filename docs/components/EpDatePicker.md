@@ -1,6 +1,31 @@
 # EpDatePicker
 
 
+## Description
+`EpDatePicker` wraps flatpickr. You can select so many dates. Or just one.
+
+## Usage
+```vue
+<template>
+  <ep-date-picker v-bind="datePickerProps" />
+</template>
+
+<script setup>
+import { EpDatePicker } from '@epicenter/vue-components'
+
+const datePickerProps = {
+  enableCloseOnSelect: false,
+  inputProps: {
+    size: 'xlarge',
+  },
+  dateFormat: 'm/d/Y',
+  mode: 'single',
+  positionX: 'left',
+  positionY: 'auto',
+}
+</script>
+```
+    
 
 ## Props
 | Name | Description | Type | Default |
@@ -137,7 +162,7 @@ No slots available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 // @import '~flatpickr/dist/flatpickr.css';

@@ -160,7 +160,7 @@
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 .ep-input-styler {

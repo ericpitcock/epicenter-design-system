@@ -213,7 +213,7 @@ No slots available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 input.ep-input {

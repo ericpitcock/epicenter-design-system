@@ -1,13 +1,17 @@
 # EpBrowserFrame
 
 
+## Description
+`EpBrowserFrame` displays an image in a fake browser frame. It is useful for displaying screenshots of websites or web applications.
+    
 
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `width` | - | `string` | `'100%'` |
-| `url` | - | `string` | `'http://website.com'` |
-| `imageUrl` | - | `string` | `'./color-desktop.png'` |
+| `width` | The width of the browser frame. | `string` | `'100%'` |
+| `url` | The URL to display in the browser frame. | `string` | `'http://website.com'` |
+| `imageSrc` | The source of the image to display in the browser frame. | `string` | `''` |
+| `imageAlt` | The alt text for the image. | `string` | `''` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -25,17 +29,9 @@ No slots available.
 <template>
   <div
     class="browser-frame"
-    :style="{ width: `${width}px` }"
+    :style="{ width: `${width}` }"
   >
-    <ep-header :style="{
-      '--ep-header-container-padding': '0 2rem',
-      '--ep-header-container-bg-color': 'var(--interface-foreground)',
-      '--ep-header-left-flex': '0',
-      '--ep-header-center-flex': '3',
-      '--ep-header-right-flex': '0',
-      flex: '1 1 5rem',
-      maxHeight: '5rem',
-    }">
+    <ep-header>
       <template #left>
         <div class="window-buttons">
           <div class="window-button window-button--close" />
@@ -59,8 +55,8 @@ No slots available.
     </ep-header>
     <div class="image-container">
       <img
-        :src="imageUrl"
-        alt="ui mockup"
+        :src="imageSrc"
+        :alt="imageAlt"
       >
     </div>
   </div>
@@ -75,17 +71,33 @@ No slots available.
   })
 
   const props = defineProps({
+    /**
+     * The width of the browser frame.
+     */
     width: {
       type: String,
       default: '100%'
     },
+    /**
+     * The URL to display in the browser frame.
+     */
     url: {
       type: String,
       default: 'http://website.com'
     },
-    imageUrl: {
+    /**
+     * The source of the image to display in the browser frame.
+     */
+    imageSrc: {
       type: String,
-      default: './color-desktop.png'
+      default: ''
+    },
+    /**
+     * The alt text for the image.
+     */
+    imageAlt: {
+      type: String,
+      default: ''
     }
   })
 </script>
@@ -99,6 +111,16 @@ No slots available.
     border: 1px solid var(--border-color);
     background: var(--interface-surface);
     overflow: hidden;
+
+    .ep-header {
+      flex: 1 1 5rem;
+      max-height: 5rem;
+      --ep-header-container-padding: 0 2rem;
+      --ep-header-container-bg-color: var(--interface-foreground);
+      --ep-header-left-flex: 0;
+      --ep-header-center-flex: 3;
+      --ep-header-right-flex: 0;
+    }
   }
 
   .window-buttons {

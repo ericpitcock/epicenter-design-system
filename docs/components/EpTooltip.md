@@ -95,7 +95,7 @@ No events available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 .ep-tooltip-wrapper {

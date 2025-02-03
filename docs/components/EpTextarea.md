@@ -150,7 +150,7 @@ No slots available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 .ep-textarea {

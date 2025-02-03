@@ -1,7 +1,7 @@
 # EpFooter
 
 
-## Component Notes
+## Description
 ::: warning
 This component needs to be updated to use CSS custom properties instead of props.
 :::
@@ -209,7 +209,7 @@ No events available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 .ep-footer {

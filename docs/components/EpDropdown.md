@@ -174,7 +174,7 @@
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 .ep-dropdown {

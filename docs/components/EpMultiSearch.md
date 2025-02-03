@@ -1,6 +1,11 @@
 # EpMultiSearch
 
 
+## Description
+::: warning
+This component needs to be updated to use CSS custom properties instead of props.
+:::
+    
 
 ## Props
 | Name | Description | Type | Default |
@@ -249,7 +254,7 @@ No slots available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 .ep-multi-search {

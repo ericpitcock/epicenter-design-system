@@ -92,7 +92,7 @@ No slots available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 .ep-table thead th div.ep-table-sortable-header {

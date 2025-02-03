@@ -1,7 +1,7 @@
 # EpDatePickerFilter
 
 
-## Component Notes
+## Description
 ::: warning
 This component is under development.
 :::

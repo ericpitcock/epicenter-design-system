@@ -75,7 +75,7 @@ No slots available.
 ```
 
 
-## Styles
+## Styles (SCSS)
 
 ```scss
 .ep-checkbox-filter {

@@ -1,13 +1,32 @@
 # EpCodeView
 
 
+## Description
+`EpCodeView` is a component that displays code snippets with syntax highlighting via [Shiki](https://shiki.matsu.io/).
+
+## Usage
+```vue
+  <template>
+    <ep-code-view
+      :code="codeExamples['javascript']"
+      language="javascript"
+      theme="vitesse-dark"
+    />
+  </template>
+
+  <script setup>
+    import { EpCodeView } from '@epicenter/vue-components'
+    import { codeExamples } from './EpCodeView.data'
+  </script>
+```
+    
 
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `code` | - | `string` | `-` |
-| `language` | - | `string` | `-` |
-| `theme` | - | `string` | `'vitesse-dark'` |
+| `code` | The code to display. | `string` | `-` |
+| `language` | The language of the code. | `string` | `-` |
+| `theme` | The theme to use for highlighting. | `string` | `'vitesse-dark'` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -39,14 +58,23 @@ No slots available.
   })
 
   const props = defineProps({
+    /**
+     * The code to display.
+     */
     code: {
       type: String,
       required: true
     },
+    /**
+     * The language of the code.
+     */
     language: {
       type: String,
       required: true
     },
+    /**
+     * The theme to use for highlighting.
+     */
     theme: {
       type: String,
       default: 'vitesse-dark'
