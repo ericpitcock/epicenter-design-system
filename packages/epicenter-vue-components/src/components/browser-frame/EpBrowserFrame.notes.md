@@ -1,0 +1,1 @@
+`EpBrowserFrame` displays an image in a fake browser frame. It is useful for displaying screenshots of websites or web applications.

@@ -1,0 +1,1 @@
+`EpButtonGroup` is special like `EpButton` — but even more so. It’s a group of icon buttons that can trigger an action or display a dropdown of more exciting actions. Useful in applications where you want to give users a set of actions to choose from.
