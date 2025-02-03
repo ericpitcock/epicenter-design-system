@@ -1,3 +1,4 @@
+import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vitepress'
 import sidebarConfig from './sidebarConfig.json'
 
@@ -16,5 +17,15 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/ericpitcock/epicenter-design-system' }
     ]
+  },
+  vite: {
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('../../packages/epicenter-vue-components/src', import.meta.url)),
+        // use icons directly from source
+        '@ericpitcock/epicenter-icons': fileURLToPath(new URL('../../packages/epicenter-icons/index.js', import.meta.url)),
+        '@ericpitcock/epicenter-styles': fileURLToPath(new URL('../../packages/epicenter-styles', import.meta.url)),
+      }
+    },
   }
 })

@@ -18,12 +18,12 @@
       "link": "/components/EpBrowserFrame"
     },
     {
-      "text": "EpButton",
-      "link": "/components/EpButton"
-    },
-    {
       "text": "EpButtonGroup",
       "link": "/components/EpButtonGroup"
+    },
+    {
+      "text": "EpButton",
+      "link": "/components/EpButton"
     },
     {
       "text": "EpChart",
@@ -86,12 +86,16 @@
       "link": "/components/EpImage"
     },
     {
+      "text": "EpInputStyler",
+      "link": "/components/EpInputStyler"
+    },
+    {
       "text": "EpInput",
       "link": "/components/EpInput"
     },
     {
-      "text": "EpInputStyler",
-      "link": "/components/EpInputStyler"
+      "text": "EpItemCount",
+      "link": "/components/EpItemCount"
     },
     {
       "text": "EpKeyValueTable",
@@ -170,8 +174,20 @@
       "link": "/components/EpTableCell"
     },
     {
+      "text": "EpTableCheckboxFilters",
+      "link": "/components/EpTableCheckboxFilters"
+    },
+    {
+      "text": "EpTableHead",
+      "link": "/components/EpTableHead"
+    },
+    {
       "text": "EpTablePagination",
       "link": "/components/EpTablePagination"
+    },
+    {
+      "text": "EpTableRangeFilter",
+      "link": "/components/EpTableRangeFilter"
     },
     {
       "text": "EpTableSearchInput",
