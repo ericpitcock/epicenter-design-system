@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Epicenter Design System - Styles",
   "scripts": {
-    "sass:watch": "sass --watch ./index.scss ./dist/epicenter-design-system.css"
+    "sass:watch": "sass --watch ./index.scss ./dist/epicenter-design-system.css --style compressed"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,6 @@
     "js-yaml": "^4.1.0",
     "mapbox-gl": "^1.10.1",
     "sass": "1.82.0",
-    "tinycolor2": "^1.6.0",
     "yaml": "^2.4.2"
   }
 }
