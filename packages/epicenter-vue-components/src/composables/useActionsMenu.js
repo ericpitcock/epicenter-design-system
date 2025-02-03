@@ -3,7 +3,7 @@ export default function useActionsMenu() {
     context = null,
     menuItems = [],
     size = 'small',
-    menuClass = 'in-dropdown-menu',
+    menuClass = 'ep-menu-default',
     buttonProps = {
       label: '',
       iconLeft: {
@@ -11,7 +11,7 @@ export default function useActionsMenu() {
         styles: { '--ep-icon-stroke-width': 3 },
       },
       iconRight: null,
-      class: ['ep-button--ghost'],
+      class: ['ep-button-var--ghost'],
       size: 'small',
     },
     alignRight = true,

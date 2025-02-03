@@ -4,7 +4,6 @@ const overlayState = reactive([])
 
 export function useOverlay() {
   function showOverlay({ type = 'toast', component, props = {}, options = {} }) {
-    console.log('showOverlay', { type, component, props, options })
     const id = Symbol()
     overlayState.push({ id, type, component: markRaw(component), props, options })
     return id

@@ -44,7 +44,7 @@ const columns = [
   {
     label: 'Location',
     key: 'location',
-    sortable: false,
+    sortable: true,
     filterable: true,
   },
   {
@@ -93,9 +93,9 @@ const fakeArray = length => {
       id: faker.string.uuid(),
       severity: faker.helpers.arrayElement(['Critical', 'High', 'Medium', 'Low']),
       start_date: Date.parse(faker.date.past()),
-      // location: faker.location.city(),
+      location: faker.location.city(),
       // faker paragraph
-      location: faker.lorem.paragraph(),
+      // location: faker.lorem.paragraph(),
       type: faker.helpers.arrayElement(['VirtualRide', 'Ride']),
       distance: faker.number.int({ min: 10000, max: 100000 }),
       total_elevation_gain: faker.number.int({ min: 100, max: 800 }),
