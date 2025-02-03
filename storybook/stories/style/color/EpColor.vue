@@ -17,12 +17,34 @@
           :data="filteredData"
           v-bind="tableProps"
         >
-          <template #thead="{ visibleColumns, cellWidths, showActionsMenu }">
-            <ep-table-head
-              :columns="visibleColumns"
-              :cell-widths="cellWidths"
-              :show-actions-menu="showActionsMenu"
-            />
+          <template #thead="{ visibleColumns }">
+            <ep-table-head :columns="visibleColumns" />
+          </template>
+          <template #cell-contrast="{ row }">
+            <ep-flex class="align-center gap-3">
+              <ep-icon :name="contrastIcon(row.contrast)" />
+              {{ row.contrast }}
+            </ep-flex>
+          </template>
+          <template #cell-css="{ row }">
+            <ep-tooltip>
+              <template #tooltip>
+                <span v-if="!copied">Copy</span>
+                <span v-else>Copied!</span>
+              </template>
+              <span
+                class="clickable"
+                @click="copy(`var(${row.css})`)"
+              >
+                {{ `var(${row.css})` }}
+              </span>
+            </ep-tooltip>
+          </template>
+          <template #cell-hsl="{ row }">
+            <span
+              class="text--copyable"
+              @click="copy(row.hsl)"
+            >{{ row.hsl }}</span>
           </template>
         </ep-table>
       </ep-container>
@@ -33,13 +55,17 @@
 <script setup>
   import { computed, ref, watch } from 'vue'
   import EpContainer from '@/components/container/EpContainer.vue'
+  import EpFlex from '@/components/flexbox/EpFlex.vue'
+  import EpIcon from '@/components/icon/EpIcon.vue'
   import EpMenu from '@/components/menu/EpMenu.vue'
   import EpTable from '@/components/table/EpTable.vue'
   import EpTableHead from '@/components/table/EpTableHead.vue'
-  import colors from './color.json'
-  import grayscale from './grayscale.json'
-  // import copyToClipboard from '@/mixins/copyToClipboard.js'
+  import EpTooltip from '@/components/tooltip/EpTooltip.vue'
+  import colors from '@ericpitcock/epicenter-styles/tokens/color/color.yaml'
+  import grayscale from '@ericpitcock/epicenter-styles/tokens/color/grayscale.yaml'
+  import chartSeq from '@ericpitcock/epicenter-styles/tokens/color/chart-sequence.yaml'
   import chroma from 'chroma-js'
+  import { useClipboard } from '@vueuse/core'
 
   defineOptions({
     name: 'EpColor',
@@ -100,34 +126,18 @@
     {
       label: 'Text Contrast',
       key: 'contrast',
-      formatter: (value) => {
-        return value === 'AAA &check;' || value === 'AA &check;'
-          ? `<span class="ep-badge" style="color: var(--success-green--border);">${value}</span>`
-          : `<span class="ep-badge" style="color: var(--danger-red--border);">${value}</span>`
-      }
     },
     {
       label: 'CSS Custom Property',
       key: 'css',
-      // command: (value) => this.copyToClipboard(value),
       class: 'text--copyable'
     },
     {
       label: 'HSL',
       key: 'hsl',
-      // command: (value) => this.copyToClipboard(value),
       class: 'text--copyable'
     }
   ]
-
-  // const containerProps = {
-  //   styles: {
-  //     '--ep-container-width': '20rem',
-  //     '--ep-container-bg-color': 'var(--interface-surface)',
-  //     '--ep-container-height': 'fit-content',
-  //     '--ep-container-overflow': 'unset',
-  //   }
-  // }
 
   const backgroundColor = computed(() => {
     return props.theme === 'dark' ? '#1f1f1f' : '#ebebeb'
@@ -135,42 +145,36 @@
 
   const tableData = computed(() => {
     let data = []
-    // get colors from tokens
-    for (const hue in colors) {
-      for (const level in colors[hue]) {
-        data.push({
-          sample: colors[hue][level].value,
-          color: `${hue} ${level}`,
-          contrast: contrast(colors[hue][level].value),
-          css: `--${hue}-${level}`,
-          hsl: chroma(colors[hue][level].value).css('hsl')
-        })
-      }
+
+    for (const [name, hsl] of Object.entries(colors)) {
+      data.push({
+        sample: `hsl(${hsl})`,
+        color: `${name.replace(/-/g, ' ')}`,
+        contrast: contrast(`hsl(${hsl})`),
+        css: `--${name}`,
+        hsl: `hsl(${hsl})`
+      })
     }
     // get grayscale colors from tokens
-    for (const gray in grayscale) {
-      for (const level in grayscale[gray]) {
-        data.push({
-          sample: grayscale[gray][level].value,
-          color: `${gray} ${level}`,
-          contrast: contrast(grayscale[gray][level].value),
-          css: `--${gray}-${level}`,
-          hsl: chroma(grayscale[gray][level].value).css('hsl')
-        })
-      }
-    }
-    // get chart sequence colors from css variables
-    const htmlStyles = window.getComputedStyle(document.querySelector('html'))
-    for (let index = 0; index < 14; index++) {
-      const cssVar = index < 10 ? `--chart-sequence-0${index}` : `--chart-sequence-${index}`
-      let hexValue = htmlStyles.getPropertyValue(cssVar)
-
+    for (const [name, hsl] of Object.entries(grayscale)) {
       data.push({
-        sample: hexValue,
-        color: `Chart Sequence ${index}`,
-        contrast: 'n/a',
-        css: cssVar,
-        hsl: chroma(hexValue).css('hsl')
+        sample: `hsl(${hsl})`,
+        color: `${name.replace(/-/g, ' ')}`,
+        contrast: contrast(`hsl(${hsl})`),
+        css: `--${name}`,
+        hsl: `hsl(${hsl})`
+      })
+    }
+    for (const [name, value] of Object.entries(chartSeq)) {
+      // if props.theme is light, use the light value if it exists
+      // otherwise use the dark value
+      const themeBasedValue = value[props.theme] ? value[props.theme] : value.dark
+      data.push({
+        sample: `hsl(${themeBasedValue})`,
+        color: `${name.replace(/-/g, ' ')}`,
+        contrast: contrast(`hsl(${themeBasedValue})`),
+        css: `--${name}`,
+        hsl: `hsl(${themeBasedValue})`
       })
     }
     return data
@@ -187,6 +191,9 @@
     }
   })
 
+  const source = ref('')
+  const { copy, copied } = useClipboard({ source })
+
   watch(() => filteredData, () => {
     const colorTableContainer = document.querySelector('.ep-table-container')
     colorTableContainer.scrollTop = 0
@@ -194,16 +201,18 @@
 
   const filterColorTable = (item) => {
     activeItem.value = item.label
-
     let filterr = item.label.toLowerCase()
-    if (item.label === 'Chart Sequence') {
-      filterr = 'Chart'
-    }
+
     if (item.label === 'Grayscale') {
       filterr = 'gray'
     }
 
     filter.value = filterr
+
+    const scrollableElement = document.querySelector('.sb-main-fullscreen')
+    if (scrollableElement) {
+      scrollableElement.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 
   const contrast = (color) => {
@@ -211,14 +220,24 @@
     const contrast = chroma.contrast(color, background)
 
     if (contrast < 4.5) {
-      return '&#x26A0;'
+      return ''
     } else if (contrast >= 4.5 && contrast < 7) {
-      return 'AA &check;'
+      return 'AA'
     } else if (contrast >= 7) {
-      return 'AAA &check;'
+      return 'AAA'
     }
   }
+
+  const contrastIcon = (value) => {
+    return value === '' ? 'f-alert-triangle' : 'f-check'
+  }
 </script>
+
+<style>
+  html {
+    overflow: hidden;
+  }
+</style>
 
 <style lang="scss" scoped>
   .colors {
@@ -236,22 +255,25 @@
     &__menu {
       --ep-menu-bg-color: var(--interface-surface);
       --ep-menu-border-radius: var(--border-radius--large);
+      height: calc(100vh - 60px);
+      overflow: auto;
     }
 
     &__content {
       flex: 1;
 
       .ep-container {
+        --ep-container-height: calc(100vh - 60px);
         --ep-container-width: fit-content;
         --ep-container-bg-color: var(--interface-surface);
         --ep-container-border-width: 0.1rem;
-        --ep-container-overflow: unset;
+        --ep-container-overflow: auto;
       }
     }
 
     &__table {
       --ep-table-width: 100%;
-      --ep-table-container-padding: 1rem 3rem 20rem 3rem;
+      --ep-table-container-padding: 0 3rem 20rem 3rem;
       --ep-table-sticky-top: 0;
       --ep-table-container-overflow: unset;
     }

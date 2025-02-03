@@ -6,6 +6,7 @@
       class="color-chip"
       :style="{ backgroundColor: `var(${name})` }"
       :data-color-name="name"
+      @click="console.log(name)"
     >
       <p class="name">
         {{ sanitizeColorName(name) }}
@@ -31,6 +32,7 @@
   .color-chips {
     flex: 1;
     display: flex;
+    gap: 0.5rem;
   }
 
   .color-chip {
