@@ -7,8 +7,6 @@ import { useStorybookStore } from '../storybook/store'
 import EpOverlay from '../packages/epicenter-vue-components/src/plugins/ep-overlay'
 import EpOverlayManager from '../packages/epicenter-vue-components/src/components/overlays/EpOverlayManager.vue'
 
-console.log('[Storybook] Registering EpOverlayManager and EpOverlay Plugin')
-
 const routes = [
   {
     path: '/',
