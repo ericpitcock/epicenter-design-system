@@ -1,5 +1,6 @@
 .ep-table-container {
   --ep-table-container-width: auto;
+  --ep-table-container-height: auto;
   --ep-table-container-min-width: 0;
   --ep-table-container-overflow: auto;
   --ep-table-container-padding: 0;
@@ -16,6 +17,7 @@
   --ep-table-cell-vertical-align: middle;
   --ep-table-cell-white-space: normal;
   width: var(--ep-table-container-width);
+  height: var(--ep-table-container-height);
   min-width: var(--ep-table-container-min-width);
   overflow: var(--ep-table-container-overflow);
   padding: var(--ep-table-container-padding);

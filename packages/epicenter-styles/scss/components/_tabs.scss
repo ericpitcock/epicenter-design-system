@@ -3,6 +3,7 @@
   --ep-tabs-hover-text-color: var(--text-color);
   --ep-tabs-active-border-color: var(--primary-color-base);
   --ep-tabs-active-text-color: var(--text-color--loud);
+  --ep-tabs-focus-outline-color: var(--ep-focus-outline-color);
 }
 
 .ep-tabs {
@@ -28,6 +29,11 @@
       border-bottom-color: var(--ep-tabs-hover-border-color);
       color: var(--ep-tabs-hover-text-color);
       cursor: pointer;
+    }
+
+    &:focus-visible span {
+      outline: var(--ep-focus-outline-width) solid var(--ep-tabs-focus-outline-color);
+      outline-offset: var(--ep-focus-outline-offset);
     }
 
     &--active span,

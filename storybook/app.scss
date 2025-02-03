@@ -1,12 +1,10 @@
 @use '../packages/epicenter-styles/scss/mixins/_generate-color-variants.scss' as *;
-// define your primary color's hue, saturation, and lightness here
-// and variants will be generated for you
-$primary-color-hue: 214;
-$primary-color-saturation: 91%;
-$primary-color-lightness: 55%;
+$primary-lightness: 0.60;
+$primary-chroma: 0.2;
+$primary-hue: 257deg;
 
 :root {
-  @include generate-color-variants($primary-color-hue, $primary-color-saturation, $primary-color-lightness);
+  @include generate-color-variants($primary-lightness, $primary-chroma, $primary-hue);
   --gradient-bg: radial-gradient(circle 200px at -5% -10%, hsl(60, 100%, 50%), transparent),
     linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--primary-color-base) 79%);
   // global overrides - dark theme
@@ -57,6 +55,10 @@ html[data-color-theme='light'] {
     --ep-badge-border-color: hsl(var(--orange-800));
     --ep-badge-text-color: var(--text-color--loud);
   }
+
+  .ep-button {
+    --ep-button-menu-item-active-text-color: var(--text-color--inverse);
+  }
 }
 
 .badge-variant-primary {
@@ -83,63 +85,17 @@ html[data-color-theme='light'] {
   --ep-badge-text-color: var(--text-color--loud);
 }
 
-.ep-button-variant-subtle-ghost {
-  --ep-button-bg-color: transparent;
-  --ep-button-border-color: transparent;
-  --ep-button-text-color: hsl(var(--gray-350));
-  --ep-button-hover-bg-color: transparent;
-  --ep-button-hover-border-color: transparent;
-  --ep-button-hover-text-color: var(--text-color--loud);
-  --ep-button-active-bg-color: transparent;
-  --ep-button-active-border-color: transparent;
-  --ep-button-active-text-color: var(--text-color--loud);
+.ep-container-default {
+  --ep-container-max-width: 120rem;
+  --ep-container-padding: 0 3rem;
+  --ep-container-bg-color: var(--interface-surface);
+  --ep-container-border-width: 0.1rem;
+  --ep-container-content-padding: 3rem 0;
 }
 
-// custom button variants
-.button-variant-primary {
-  --ep-button-bg-color: var(--primary-gradient);
-  --ep-button-border-color: var(--primary-color-base);
-  --ep-button-text-color: white;
-  --ep-button-hover-bg-color: var(--primary-color-600);
-  --ep-button-hover-border-color: var(--primary-color-600);
-  --ep-button-hover-text-color: white;
-  --ep-button-active-bg-color: var(--primary-color-700);
-  --ep-button-active-border-color: var(--primary-color-700);
-  --ep-button-active-text-color: white;
-}
-
-.button-variant-success {
-  --ep-button-bg-color: hsl(var(--emerald-600));
-  --ep-button-border-color: hsl(var(--emerald-600));
-  --ep-button-text-color: white;
-  --ep-button-hover-bg-color: hsl(var(--emerald-700));
-  --ep-button-hover-border-color: hsl(var(--emerald-700));
-  --ep-button-hover-text-color: white;
-  --ep-button-active-bg-color: hsl(var(--emerald-800));
-  --ep-button-active-border-color: hsl(var(--emerald-800));
-  --ep-button-active-text-color: white;
-}
-
-.button-variant-warning {
-  --ep-button-bg-color: hsl(29, 72%, 61%);
-  --ep-button-border-color: hsl(29, 72%, 61%);
-  --ep-button-text-color: hsl(0, 77%, 12%);
-  --ep-button-hover-bg-color: hsl(29, 72%, 51%);
-  --ep-button-hover-border-color: hsl(29, 72%, 51%);
-  --ep-button-hover-text-color: hsl(0, 77%, 12%);
-  --ep-button-active-bg-color: hsl(29, 72%, 41%);
-  --ep-button-active-border-color: hsl(29, 72%, 41%);
-  --ep-button-active-text-color: hsl(0, 77%, 12%);
-}
-
-.button-variant-danger {
-  --ep-button-bg-color: hsl(var(--rose-600));
-  --ep-button-border-color: hsl(var(--rose-600));
-  --ep-button-text-color: white;
-  --ep-button-hover-bg-color: hsl(var(--rose-700));
-  --ep-button-hover-border-color: hsl(var(--rose-700));
-  --ep-button-hover-text-color: white;
-  --ep-button-active-bg-color: hsl(var(--rose-800));
-  --ep-button-active-border-color: hsl(var(--rose-800));
-  --ep-button-active-text-color: white;
+.ep-menu-default {
+  --ep-menu-bg-color: var(--interface-overlay);
+  --ep-menu-border-color: var(--border-color--lighter);
+  --ep-menu-border-radius: var(--border-radius);
+  --ep-menu-divider-border-color: var(--border-color--lighter);
 }

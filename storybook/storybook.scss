@@ -69,3 +69,14 @@
     padding: 0;
   }
 }
+
+// for overlays in the EpNotificationCenter story
+#app {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 3rem;
+  z-index: var(--z-index--tooltip);
+}

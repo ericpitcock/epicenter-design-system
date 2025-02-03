@@ -14,7 +14,8 @@
   --ep-button-disabled-bg-color: var(--interface-foreground);
   --ep-button-disabled-text-color: var(--text-color--disabled);
   --ep-button-disabled-border-color: var(--border-color--disabled);
-  --ep-button-menu-item-text-active: var(--text-color--loud);
+  --ep-button-menu-item-active-bg-color: var(--primary-color-base);
+  --ep-button-menu-item-active-text-color: var(--text-color--loud);
   --ep-button-padding-inline: 1.2rem;
   display: inline-flex;
   justify-content: space-between;
@@ -39,7 +40,7 @@
   border-color: var(--ep-button-border-color);
 
   @media (hover: hover) {
-    &:hover {
+    &:hover:not(.ep-button--menu-item--active):not(.ep-button--disabled) {
       background: var(--ep-button-hover-bg-color);
       color: var(--ep-button-hover-text-color);
       border-color: var(--ep-button-hover-border-color);
@@ -69,8 +70,9 @@
     padding-left: 2rem !important;
 
     &--active {
-      background: var(--color--primary);
-      color: var(--ep-button-menu-item-text-active);
+      background: var(--ep-button-menu-item-active-bg-color);
+      color: var(--ep-button-menu-item-active-text-color);
+      cursor: default;
     }
   }
 

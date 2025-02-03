@@ -16,6 +16,7 @@
   --ep-container-border-style: solid;
   --ep-container-border-color: var(--border-color);
   --ep-container-overflow: visible;
+  --ep-container-header-bg-color: var(--interface-surface);
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -43,7 +44,6 @@
     height: var(--ep-container-content-height);
     padding: var(--ep-container-content-padding);
     @include mixins.no-scrollbar;
-    // so that dropdowns overlap sticky table headers
     z-index: var(--z-index--default);
   }
 
@@ -52,10 +52,22 @@
   }
 
   &--sticky-header {
+    --ep-container-height: unset;
+    --ep-container-min-height: unset;
+    --ep-container-overflow: unset;
+
     .ep-container__header {
       position: sticky;
       top: 0;
+      background: var(--ep-container-header-bg-color);
       z-index: var(--z-index--sticky);
     }
+  }
+
+  &--framed {
+    --ep-container-framed-height: 100vh;
+    --ep-container-framed-offset: 0;
+    --ep-container-height: calc(var(--ep-container-framed-height) - var(--ep-container-framed-offset));
+    --ep-container-overflow: auto;
   }
 }
