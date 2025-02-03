@@ -1,4 +1,3 @@
-
 const iconMap = {
   'arrow-down': () => import('./icons/arrow-down.svg?raw'),
   'arrow-left': () => import('./icons/arrow-left.svg?raw'),

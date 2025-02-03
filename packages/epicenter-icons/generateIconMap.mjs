@@ -17,8 +17,7 @@ const iconMapEntries = files
   })
 
 // Write the generated `iconMap` to the output file
-const output = `
-const iconMap = {
+const output = `const iconMap = {
   ${iconMapEntries.join(',\n  ')}
 }
 
