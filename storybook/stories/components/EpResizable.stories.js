@@ -1,5 +1,6 @@
 import EpResizable from '@/components/resizable/EpResizable.vue'
 import { computed, ref } from 'vue'
+import { faker } from '@faker-js/faker'
 
 export default {
   title: 'Components/Resizable',
@@ -12,17 +13,6 @@ export default {
       mapping: {
         Row: 'row',
         Column: 'column'
-      },
-    },
-    dragEdge: {
-      name: 'Drag Edge',
-      control: { type: 'radio' },
-      options: ['Top', 'Right', 'Bottom', 'Left'],
-      mapping: {
-        Top: 'top',
-        Right: 'right',
-        Bottom: 'bottom',
-        Left: 'left'
       },
     },
     initialSize: {
@@ -47,7 +37,6 @@ export const Resizable = args => ({
 
     const onResize = (size) => {
       currentSize.value = size
-      console.log('onResize', size)
     }
 
     const displaySize = computed(() => {
@@ -57,28 +46,23 @@ export const Resizable = args => ({
       return args.initialSize
     })
 
-    const computedDragEdge = computed(() => {
-      return args.direction === 'row' ? 'right' : 'bottom'
-    })
-
     return {
       args,
-      computedDragEdge,
       displaySize,
-      onResize
+      onResize,
+      faker,
     }
   },
   template: `
     <ep-resizable
-      :direction="args.direction"
-      :drag-edge="computedDragEdge"
-      :initial-size="args.initialSize"
-      :min-size="args.minSize"
-      :max-size="args.maxSize"
+      v-bind="args"
       @resize="onResize"
     >
       <template #resizable>
-        <div style="display: grid; place-items: center; width: 100%; height: 100%; background: var(--interface-surface); color: var(--text-color);">Resizable Panel {{ displaySize }}</div>
+        <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%; height: 100%; background: var(--interface-surface); color: var(--text-color); padding: 4rem; overflow: auto;">
+          <p>Resizable Panel {{ displaySize }}</p>
+          <p v-for="i in 100" :key="i" v-once>{{ faker.lorem.paragraph() }}</p>
+        </div>
       </template>
       <template #sibling>
         <div style="display: grid; place-items: center; width: 100%; height: 100%; background: var(--interface-bg); color: var(--text-color);">Sibling Panel</div>
@@ -89,8 +73,7 @@ export const Resizable = args => ({
 
 Resizable.args = {
   direction: 'Row',
-  dragEdge: 'Bottom',
   initialSize: '50%', // percentage or pixel value
-  minSize: undefined,
-  maxSize: undefined,
+  minSize: 200,
+  maxSize: 800,
 }

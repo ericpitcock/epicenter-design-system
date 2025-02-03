@@ -12,8 +12,8 @@
         @touchstart="handleDragStart"
       />
     </div>
-    <div class="sibling-pane">
-      <slot name="sibling" />
+    <div class="content-pane">
+      <slot name="content" />
     </div>
   </div>
 </template>
@@ -26,11 +26,6 @@
       type: String,
       default: 'row',
       validator: (value) => ['column', 'row'].includes(value)
-    },
-    dragEdge: {
-      type: String,
-      required: true,
-      validator: (value) => ['top', 'right', 'bottom', 'left'].includes(value)
     },
     initialSize: {
       type: String,
@@ -52,19 +47,23 @@
   const hasBeenDragged = ref(false)
   const startPos = ref(0)
   const currentSize = ref(null)
-  // respect initialSize, which can be px or %, until first drag, then use px
+
+  // Dynamically determine the correct drag edge
+  const dragEdge = computed(() => (props.direction === 'row' ? 'right' : 'bottom'))
+
+  // Maintain initialSize until first drag, then convert to px
   const computedSize = computed(() => hasBeenDragged.value ? `0 0 ${currentSize.value}px` : `0 0 ${props.initialSize}`)
 
   const handleDragStart = (event) => {
     if (!hasBeenDragged.value) {
       // Convert initialSize to px on first drag
       const { width, height } = resizablePane.value.getBoundingClientRect()
-      currentSize.value = (props.dragEdge === 'right' || props.dragEdge === 'left') ? width : height
+      currentSize.value = props.direction === 'row' ? width : height
     }
 
     hasBeenDragged.value = true
     isDragging.value = true
-    startPos.value = (props.dragEdge === 'right' || props.dragEdge === 'left')
+    startPos.value = props.direction === 'row'
       ? (event.touches ? event.touches[0].clientX : event.clientX)
       : (event.touches ? event.touches[0].clientY : event.clientY)
 
@@ -77,12 +76,12 @@
   const handleDragging = (event) => {
     if (!isDragging.value) return
 
-    const currentPos = (props.dragEdge === 'right' || props.dragEdge === 'left')
+    const currentPos = props.direction === 'row'
       ? (event.touches ? event.touches[0].clientX : event.clientX)
       : (event.touches ? event.touches[0].clientY : event.clientY)
 
     let delta = currentPos - startPos.value
-    if (props.dragEdge === 'left' || props.dragEdge === 'top') delta = -delta
+    if (dragEdge.value === 'left' || dragEdge.value === 'top') delta = -delta
 
     let newSize = currentSize.value + delta
 
@@ -124,7 +123,7 @@
     overflow: hidden;
   }
 
-  .sibling-pane {
+  .content-pane {
     flex: 1;
   }
 
