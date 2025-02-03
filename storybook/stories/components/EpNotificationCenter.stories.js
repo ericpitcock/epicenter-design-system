@@ -1,11 +1,10 @@
-// import { paddedBg } from '../../helpers/decorators.js'
+import EpButton from '@/components/button/EpButton.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpNotification from '@/components/notification/EpNotification.vue'
 import EpNotifications from '@/components/notification/EpNotifications.vue'
 import { useNotifications } from '@/components/notification/useNotifications.js'
 import { useOverlay } from '@/plugins/ep-overlay'
 import { faker } from '@faker-js/faker'
-import { nextTick } from 'vue'
 
 export default {
   title: 'Components/Notifications/Notification Center',
@@ -32,6 +31,7 @@ export default {
 
 export const NotificationCenter = args => ({
   components: {
+    EpButton,
     EpContainer,
     EpNotification,
     EpNotifications,
@@ -94,24 +94,14 @@ export const NotificationCenter = args => ({
     const overlay = useOverlay()
 
     function showToast() {
-      nextTick(() => {
-        if (!document.querySelector('#app')) {
-          console.error('Teleport target not found')
-          return
+      overlay.showOverlay({
+        type: 'toast',
+        component: EpNotification,
+        props: {
+          id: faker.string.uuid(),
+          message: 'This is a toast notification!',
+          timestamp: new Date().toISOString(),
         }
-        console.log('Before:', overlay.overlays)
-
-        overlay.showOverlay({
-          type: 'toast',
-          component: EpNotification,
-          props: {
-            id: faker.string.uuid(),
-            message: 'This is a toast notification!',
-            timestamp: new Date().toISOString(),
-          }
-        })
-
-        console.log('After:', overlay.overlays)
       })
     }
 
@@ -131,7 +121,7 @@ export const NotificationCenter = args => ({
         @remove-notification="removeNotification"
         @clear-notifications="clearNotifications"
       />
-      <button @click="showToast">Show Toast</button>
+      <ep-button label="Show Toast" style="margin-top: 2rem;" @click="showToast" />
     </div>
   `
 })

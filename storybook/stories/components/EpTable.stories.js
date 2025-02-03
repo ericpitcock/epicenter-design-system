@@ -13,16 +13,22 @@ import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
 import EpTableCheckboxFilters from '@/components/table/EpTableCheckboxFilters.vue'
 import EpMultiSearch from '@/components/search/EpMultiSearch.vue'
 import {
-  useExclude,
+  // useCalculatedHeight,
   useColumnFilters,
   useDataFilters,
-  useSorting,
+  useExclude,
   usePagination,
-  useSearch
+  useSearch,
+  useSorting,
 } from '@/composables/index.js'
 import { paddedSurface } from '../../helpers/decorators.js'
 import { columns, fakeArray } from '../../data/tableData'
-import { computed, ref } from 'vue'
+import {
+  computed,
+  // onMounted,
+  ref,
+  // useTemplateRef
+} from 'vue'
 
 export default {
   title: 'Components/Table',
@@ -74,21 +80,6 @@ export default {
         type: 'boolean'
       }
     },
-    calculateHeight: {
-      name: 'Calculate Height',
-      control: {
-        type: 'boolean'
-      }
-    },
-    calculateHeightOffset: {
-      name: 'Calculate Height Offset',
-      control: {
-        type: 'number'
-      }
-    },
-    // styles: {
-    //   table: { disable: true }
-    // }
   }
 }
 
@@ -118,15 +109,6 @@ export const Table = (args) => ({
       includedColumns,
       includedData
     } = useExclude(columnsRef, tableData, [])
-
-    // const columnSorters = {
-    //   severity: (a, b) => {
-    //     const sortMap = { Critical: 4, High: 3, Medium: 2, Low: 1 }
-    //     const aValue = sortMap[a.severity] || 0
-    //     const bValue = sortMap[b.severity] || 0
-    //     return aValue - bValue
-    //   },
-    // }
 
     // use sorting
     const {
@@ -183,10 +165,23 @@ export const Table = (args) => ({
       onPageSizeUpdate
     } = usePagination(searchedData, 1, 20)
 
+    // const tableComponent = useTemplateRef('table')
+    // const tableContainer = ref(null)
+
+    // onMounted(() => {
+    //   tableContainer.value = tableComponent.value.$refs.tableContainer
+    // })
+
+    // const { dynamicHeight } = useCalculatedHeight(tableContainer, 60)
+
+    // console.log(dynamicHeight.value)
+
     const styles = computed(() => {
       return {
         '--ep-table-width': args.width,
         '--ep-table-min-width': '100%',
+        // '--ep-table-container-height': `${dynamicHeight.value}px`,
+        '--ep-table-container-height': 'calc(100vh - 140px)',
       }
     })
 
@@ -212,13 +207,6 @@ export const Table = (args) => ({
       '--ep-container-padding': '2rem',
     }
 
-    const badgeClassMap = {
-      Critical: 'danger',
-      High: 'warning',
-      Medium: 'info',
-      Low: 'success',
-    }
-
     const actionMenuProps = (id) => ({
       size: 'small',
       menuItems: [
@@ -237,7 +225,7 @@ export const Table = (args) => ({
           }
         }
       ],
-      menuClass: 'test-class',
+      menuClass: 'ep-menu-default',
       buttonProps: {
         label: '',
         iconLeft: {
@@ -253,8 +241,6 @@ export const Table = (args) => ({
 
     return {
       args,
-      // columns,
-      includedColumns,
       // sorting
       onSortChange,
       sortColumn,
@@ -280,7 +266,6 @@ export const Table = (args) => ({
       containerStyles,
       onFilterUpdate,
       actionMenuProps,
-      badgeClassMap,
     }
   },
   template: `
@@ -324,6 +309,7 @@ export const Table = (args) => ({
       </ep-empty-state>
       <template v-else>
         <ep-table
+          ref="table"
           :columns="visibleColumns"
           :data="paginatedData"
           :style="styles"
@@ -390,7 +376,6 @@ Table.args = {
   selectable: true,
   striped: true,
   stickyHeader: true,
-  calculateHeight: true,
-  calculateHeightOffset: 81,
+  fixedHeader: false,
   showActionsMenu: true,
 }

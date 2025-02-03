@@ -35,8 +35,8 @@ export default {
       mapping: {
         'row': 'flex-row',
         'row-reverse': 'flex-row-reverse',
-        'column': 'flex-column',
-        'column-reverse': 'flex-column-reverse'
+        'column': 'flex-col',
+        'column-reverse': 'flex-col-reverse'
       },
       control: {
         type: 'select',

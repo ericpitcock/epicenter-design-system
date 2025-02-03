@@ -7,9 +7,7 @@ const menuConfig = [
     id: faker.string.uuid(),
     label: 'Go to internal page',
     iconLeft: { name: 'arrow-right' },
-    bind: {
-      to: '/'
-    }
+    to: '/'
   },
   { divider: true },
   {
@@ -20,15 +18,13 @@ const menuConfig = [
     id: faker.string.uuid(),
     label: 'Log click',
     iconLeft: { name: 'circle' },
-    onClick: (item) => console.log('clicked', item.label)
+    action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
     label: 'Google Maps',
     iconLeft: { name: 'export' },
-    bind: {
-      href: 'https://www.google.com/maps'
-    }
+    href: 'https://www.google.com/maps'
   },
   {
     id: faker.string.uuid(),
@@ -39,23 +35,23 @@ const menuConfig = [
       {
         id: faker.string.uuid(),
         label: 'Sub-menu item 1',
-        onClick: (item) => console.log('clicked', item.label)
+        action: (item) => console.log('clicked', item.label)
       },
       {
         id: faker.string.uuid(),
         label: 'Sub-menu item 2',
-        onClick: (item) => console.log('clicked', item.label)
+        action: (item) => console.log('clicked', item.label)
       },
       { divider: true },
       {
         id: faker.string.uuid(),
         label: 'Sub-menu item 3',
-        onClick: (item) => console.log('clicked', item.label)
+        action: (item) => console.log('clicked', item.label)
       },
       {
         id: faker.string.uuid(),
         label: 'Sub-menu item 4',
-        onClick: (item) => console.log('clicked', item.label)
+        action: (item) => console.log('clicked', item.label)
       }
     ]
   },
@@ -67,38 +63,38 @@ const menuConfig = [
   {
     id: faker.string.uuid(),
     label: 'This is a menu item',
-    onClick: (item) => console.log('clicked', item.label)
+    action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
     label: 'Another menu item',
-    onClick: (item) => console.log('clicked', item.label)
+    action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
     label: 'The menuiest item',
-    onClick: (item) => console.log('clicked', item.label)
+    action: (item) => console.log('clicked', item.label)
   },
   { divider: true },
   {
     section: true,
     label: 'Section',
-    onClick: (item) => console.log('clicked', item.label)
+    action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
     label: 'Go back',
-    onClick: (item) => console.log('clicked', item.label)
+    action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
     label: 'Two steps forward',
-    onClick: (item) => console.log('clicked', item.label)
+    action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
     label: 'Internet!',
-    onClick: (item) => console.log('clicked', item.label)
+    action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
@@ -108,17 +104,17 @@ const menuConfig = [
       {
         id: faker.string.uuid(),
         label: 'Sub-menu item 1',
-        onClick: (item) => console.log('clicked', item.label)
+        action: (item) => console.log('clicked', item.label)
       },
       {
         id: faker.string.uuid(),
         label: 'Sub-menu item 2',
-        onClick: (item) => console.log('clicked', item.label)
+        action: (item) => console.log('clicked', item.label)
       },
       {
         id: faker.string.uuid(),
         label: 'Sub-menu item 3',
-        onClick: (item) => console.log('clicked', item.label)
+        action: (item) => console.log('clicked', item.label)
       }
     ]
   }
@@ -152,9 +148,13 @@ export default {
 export const Menu = args => ({
   components: { EpMenu },
   setup() {
-    return { args }
+    const onMenuClick = item => {
+      if (item.action) item.action(item)
+    }
+
+    return { args, onMenuClick }
   },
-  template: '<ep-menu v-bind="args" />'
+  template: '<ep-menu v-bind="args" @click="onMenuClick" />'
 })
 
 Menu.args = {

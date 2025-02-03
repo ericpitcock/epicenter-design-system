@@ -16,11 +16,11 @@ export default {
     classes: {
       name: 'Style',
       options: [
-        'Custom',
         'Primary',
         'Success',
         'Warning',
-        'Danger'
+        'Danger',
+        'Custom',
       ],
       mapping: {
         None: null,
@@ -30,7 +30,7 @@ export default {
         Danger: { 'badge-variant-danger': true }
       },
       control: {
-        type: 'select',
+        type: 'radio',
       },
       table: {
         category: 'Styles'

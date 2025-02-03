@@ -76,20 +76,24 @@ export const Tabs = args => ({
   },
   template: `
     <ep-container
-      :styles="{
+      :style="{
         '--ep-container-max-width': '120rem',
         '--ep-container-height': '100%',
         '--ep-container-bg-color': 'var(--interface-surface)',
-        '--ep-container-overflow': 'hidden',
+        '--ep-container-overflow': 'visible',
         '--ep-container-padding': containerPadding,
+        '--ep-container-border-width': '0.1rem',
         '--ep-container-content-padding': contentPadding,
       }"
     >
       <template #header>
         <ep-header
-          :padding="headerPadding"
-          :height="headerHeight"
-          :background-color="headerBgColor"
+          :style="{
+            '--ep-header-container-height': headerHeight,
+            '--ep-header-container-bg-color': headerBgColor,
+            '--ep-header-container-padding': headerPadding,
+            '--ep-header-container-overflow': 'visible'
+          }"
         >
           <template #left>
             <ep-tabs
