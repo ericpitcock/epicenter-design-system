@@ -15,10 +15,11 @@
         v-else
         class="ep-menu__item"
         :data-item="index"
-        @mouseover="showSubmenu(item, index)"
-        @mouseleave="hideSubmenu(item)"
+        @mouseover="toggleSubmenu(item, index)"
+        @mouseleave="toggleSubmenu(item)"
       >
         <ep-button
+          :class="buttonClasses(item)"
           v-bind="buttonProps(item)"
           @click.stop="onClick(item)"
         />
@@ -29,7 +30,9 @@
         >
           <ep-menu
             :size="size"
+            :class="$attrs.class"
             :menu-items="item.children"
+            @click="onClick($event)"
           />
         </div>
       </div>
@@ -70,38 +73,25 @@
   const activeItemIndex = ref(null)
 
   const buttonProps = (item) => {
-    return {
-      disabled: item.disabled,
-      size: props.size,
-      label: item.label,
-      iconRight: item.iconRight,
-      iconLeft: item.iconLeft,
-      isMenuItem: true,
-      isActiveMenuItem: props.menuType === 'nav' && item.label === props.activeItem,
-      ...item.bind
-    }
+    // eslint-disable-next-line no-unused-vars
+    const { children, ...rest } = item
+    rest.size = props.size
+    return rest
   }
 
-  const showSubmenu = (item, index) => {
-    if (item.children) {
-      activeItemIndex.value = index
-    }
+  const buttonClasses = (item) => {
+    return [
+      'ep-button--menu-item',
+      { 'ep-button--menu-item--active': props.menuType === 'nav' && item.label === props.activeItem }
+    ]
   }
 
-  const hideSubmenu = (item) => {
-    if (item.children) {
-      activeItemIndex.value = null
-    }
+  const toggleSubmenu = (item, index = null) => {
+    if (!item.children) return
+    activeItemIndex.value = index
   }
-
-  // inject contextData when a menu is used in a table cell
-  // const contextData = inject('contextData', null)
 
   const onClick = (item) => {
-    // const payload = contextData
-    //   ? { item, menuItemIndex: index, contextData }
-    //   : { ...item, menuItemIndex: index }
     emit('click', item)
-    if (item.onClick) item.onClick(item)
   }
 </script>

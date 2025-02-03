@@ -2,7 +2,6 @@
   <div
     ref="tableContainer"
     class="ep-table-container"
-    :style="containerStyles"
     @scroll="onScroll"
   >
     <table :class="['ep-table', classes]">
@@ -59,59 +58,80 @@
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue'
+  import { computed, useTemplateRef } from 'vue'
   import EpTableCell from './EpTableCell.vue'
-  import useCalculatedHeight from '../../composables/useCalculatedHeight'
 
   defineOptions({
     name: 'EpTable'
   })
 
   const props = defineProps({
+    /**
+     * The columns of the table.
+     */
     columns: {
       type: Array,
       required: true
     },
+    /**
+     * The data of the table.
+     */
     data: {
       type: Array,
       required: true
     },
+    /**
+     * Columns to hide, but not filter from the data. An ID, for example, can be hidden, but still accessible to the app.
+     */
     hiddenColumns: {
       type: Array,
       default: () => []
     },
+    /**
+     * Compact rows in a single line table scenario.
+     */
     compact: {
       type: Boolean,
       default: false
     },
+    /**
+     * Gives borders to your table rows. Helpful for tables with a lot of data.
+     */
     bordered: {
       type: Boolean,
       default: false
     },
+    /**
+     * Selectable rows
+     */
     selectable: {
       type: Boolean,
       default: false
     },
+    /**
+     * Background colors for every other row. Helpful for tables with a lot of data.
+     */
     striped: {
       type: Boolean,
       default: false
     },
+    /**
+     * Sticky header or nah
+     */
     stickyHeader: {
       type: Boolean,
       default: false
     },
+    /**
+     * Whether to use a fixed header or not (requires useFixedHeader composable)
+     */
     fixedHeader: {
       type: Boolean,
       default: false
     },
-    calculateHeight: {
-      type: Boolean,
-      default: false
-    },
-    calculateHeightOffset: {
-      type: Number,
-      default: 0
-    },
+    /**
+     * Enable actions menu
+     */
     showActionsMenu: {
       type: Boolean,
       default: false
@@ -122,23 +142,13 @@
     return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
   })
 
-  const tableContainer = ref(null)
-  // not convinced I don't need these
-  // const tableBody = ref(null)
-  // const tableFixed = ref(null)
-
-  const { containerHeight } = useCalculatedHeight(tableContainer, props.calculateHeightOffset)
-
-  const containerStyles = computed(() => ({
-    ...(props.calculateHeight && containerHeight.value),
-    ...props.styles
-  }))
+  const tableContainer = useTemplateRef('tableContainer')
 
   const classes = computed(() => {
     return {
-      'ep-table--selectable': props.selectable,
       'ep-table--bordered': props.bordered,
       'ep-table--compact': props.compact,
+      'ep-table--selectable': props.selectable,
       'ep-table--sticky': props.stickyHeader,
       'ep-table--striped': props.striped,
     }

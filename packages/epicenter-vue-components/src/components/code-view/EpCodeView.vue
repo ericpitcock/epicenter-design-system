@@ -15,14 +15,23 @@
   })
 
   const props = defineProps({
+    /**
+     * The code to display.
+     */
     code: {
       type: String,
       required: true
     },
+    /**
+     * The language of the code.
+     */
     language: {
       type: String,
       required: true
     },
+    /**
+     * The theme to use for highlighting.
+     */
     theme: {
       type: String,
       default: 'vitesse-dark'

@@ -1,17 +1,9 @@
 <template>
   <div
     class="browser-frame"
-    :style="{ width: `${width}px` }"
+    :style="{ width: `${width}` }"
   >
-    <ep-header :style="{
-      '--ep-header-container-padding': '0 2rem',
-      '--ep-header-container-bg-color': 'var(--interface-foreground)',
-      '--ep-header-left-flex': '0',
-      '--ep-header-center-flex': '3',
-      '--ep-header-right-flex': '0',
-      flex: '1 1 5rem',
-      maxHeight: '5rem',
-    }">
+    <ep-header>
       <template #left>
         <div class="window-buttons">
           <div class="window-button window-button--close" />
@@ -35,8 +27,8 @@
     </ep-header>
     <div class="image-container">
       <img
-        :src="imageUrl"
-        alt="ui mockup"
+        :src="imageSrc"
+        :alt="imageAlt"
       >
     </div>
   </div>
@@ -51,17 +43,33 @@
   })
 
   const props = defineProps({
+    /**
+     * The width of the browser frame.
+     */
     width: {
       type: String,
       default: '100%'
     },
+    /**
+     * The URL to display in the browser frame.
+     */
     url: {
       type: String,
       default: 'http://website.com'
     },
-    imageUrl: {
+    /**
+     * The source of the image to display in the browser frame.
+     */
+    imageSrc: {
       type: String,
-      default: './color-desktop.png'
+      default: ''
+    },
+    /**
+     * The alt text for the image.
+     */
+    imageAlt: {
+      type: String,
+      default: ''
     }
   })
 </script>
@@ -75,6 +83,16 @@
     border: 1px solid var(--border-color);
     background: var(--interface-surface);
     overflow: hidden;
+
+    .ep-header {
+      flex: 1 1 5rem;
+      max-height: 5rem;
+      --ep-header-container-padding: 0 2rem;
+      --ep-header-container-bg-color: var(--interface-foreground);
+      --ep-header-left-flex: 0;
+      --ep-header-center-flex: 3;
+      --ep-header-right-flex: 0;
+    }
   }
 
   .window-buttons {

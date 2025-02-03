@@ -10,6 +10,9 @@
   })
 
   const props = defineProps({
+    /**
+     * The label to display in the badge.
+     */
     label: {
       type: String,
       default: 'Badge'

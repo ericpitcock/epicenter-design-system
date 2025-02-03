@@ -1,62 +1,41 @@
 <template>
   <div
     ref="epContainer"
-    :class="['ep-container', containerClasses]"
-    :style="[styles, containerStyles]"
+    class="ep-container"
   >
     <div
       v-if="$slots.header"
       class="ep-container__header"
     >
+      <!-- 
+        @slot header - The header content.
+      -->
       <slot name="header" />
     </div>
     <div class="ep-container__content">
+      <!-- 
+        @slot The content of the container.
+      -->
       <slot />
     </div>
     <div
       v-if="$slots.footer"
       class="ep-container__footer"
     >
+      <!-- 
+        @slot footer - The footer content.
+      -->
       <slot name="footer" />
     </div>
   </div>
 </template>
 
 <script setup>
-  import { useCalculatedHeight } from '../../composables'
-  import { computed, ref } from 'vue'
+  import { useTemplateRef } from 'vue'
 
   defineOptions({
     name: 'EpContainer'
   })
 
-  const props = defineProps({
-    stickyHeader: {
-      type: Boolean,
-      default: false
-    },
-    calculateHeight: {
-      type: Boolean,
-      default: false
-    },
-    calculateHeightOffset: {
-      type: Number,
-      default: 0
-    },
-    styles: {
-      type: Object,
-      default: () => ({})
-    }
-  })
-
-  const containerClasses = computed(() => ({
-    'ep-container--sticky-header': props.stickyHeader
-  }))
-
-  const epContainer = ref(null)
-  const { containerHeight } = useCalculatedHeight(epContainer, props.calculateHeightOffset)
-
-  const containerStyles = computed(() => ({
-    ...(props.calculateHeight && containerHeight.value),
-  }))
+  const epContainer = useTemplateRef('epContainer')
 </script>

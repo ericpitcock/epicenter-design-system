@@ -435,6 +435,10 @@
     })
   }
 
+  defineExpose({
+    drawConnections
+  })
+
   const reapplyHighlightClasses = (event) => {
     clearDimmers()
     dimEvents(event)
@@ -609,10 +613,12 @@
 
         @supports (anchor-name: --exfil) {
           &--exfil {
-            position: fixed;
+            position: absolute;
             position-anchor: --exfil;
             top: calc(anchor(top) - 36px);
+            right: anchor(right);
             left: anchor(left);
+            text-align: center;
           }
         }
       }
@@ -764,6 +770,7 @@
     .identifier {
       display: block;
       pointer-events: none;
+      color: var(--text-color--loud);
 
       & + .identifier {
         margin-top: 5px;

@@ -3,16 +3,18 @@
     defer
     to="#app"
   >
-    <div
-      v-for="{ id, component: Component, props } in overlays"
-      :key="id"
-    >
-      <component
-        :is="Component"
-        v-bind="props"
-        @close="removeOverlay(id)"
-      />
-      <p>This is the overlay manager</p>
+    <div class="ep-overlay-manager">
+      <div
+        v-for="{ id, component: Component, props } in overlays"
+        :key="id"
+        class="ep-overlay"
+      >
+        <component
+          :is="Component"
+          v-bind="props"
+          @close="removeOverlay(id)"
+        />
+      </div>
     </div>
   </Teleport>
 </template>
@@ -28,3 +30,14 @@
   const overlays = computed(() => overlay.overlays)
   const removeOverlay = overlay.removeOverlay
 </script>
+
+<style lang="scss" scoped>
+  .ep-overlay-manager {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>

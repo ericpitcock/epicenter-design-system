@@ -1,10 +1,10 @@
 <template>
   <div class="ep-table-pagination">
     <ep-footer
-      left-gap="1rem"
-      right-flex="0 1 40rem"
+      right-gap="1rem"
+      left-flex="0 1 40rem"
     >
-      <template #left>
+      <template #right>
         <ep-button
           :disabled="currentPage === 1"
           :icon-left="{ name: 'chevron-left' }"
@@ -38,7 +38,7 @@
           @click="nextPage"
         />
       </template>
-      <template #right>
+      <template #left>
         <ep-flex class="justify-end align-center gap-10">
           Results per page
           <ep-select
@@ -57,9 +57,9 @@
 <script setup>
   import { ref, computed } from 'vue'
   import EpButton from '../button/EpButton.vue'
-  import EpSelect from '../select/EpSelect.vue'
-  import EpFooter from '../footer/EpFooter.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
+  import EpFooter from '../footer/EpFooter.vue'
+  import EpSelect from '../select/EpSelect.vue'
 
   defineOptions({
     name: 'EpTablePagination'

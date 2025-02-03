@@ -6,7 +6,7 @@
     />
     <ep-dropdown
       v-bind="computedDropdownProps"
-      @select="$emit('dropdown-select', $event)"
+      @click="$emit('dropdown-select', $event)"
     />
   </div>
 </template>

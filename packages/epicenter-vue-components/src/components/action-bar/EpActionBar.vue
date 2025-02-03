@@ -1,51 +1,47 @@
 <template>
   <div class="ep-action-bar">
-    <template v-for="(item, index) in items">
-      <ep-button
-        v-if="item.type === 'button'"
-        :key="`button-${index}`"
-        v-bind="{ buttonDefaults, ...item.buttonProps }"
-        @click="onClick(item, index)"
-      />
-      <ep-dropdown
-        v-else-if="item.type === 'dropdown'"
-        :key="`dropdown-${index}`"
-        v-bind="item"
-        :show-on-hover="showDropdownOnHover"
-        @select="onClick"
+    <template
+      v-for="(item, index) in items"
+      :key="index"
+    >
+      <component
+        :is="componentMap[item.component]"
+        v-bind="item.props"
+        @click="onClick"
       />
     </template>
   </div>
 </template>
 
 <script setup>
-  import EpButton from '../button/EpButton.vue'
-  import EpDropdown from '../dropdown/EpDropdown.vue'
-  import { computed } from 'vue'
+  import { defineAsyncComponent } from 'vue'
+
+  const componentMap = {
+    'ep-button': defineAsyncComponent(() => import('../button/EpButton.vue')),
+    'ep-dropdown': defineAsyncComponent(() => import('../dropdown/EpDropdown.vue')),
+  }
 
   defineOptions({
     name: 'EpActionBar'
   })
 
   const props = defineProps({
+    /**
+     * The items to display in the action bar.
+     */
     items: {
       type: Array,
       required: true,
     },
-    showDropdownOnHover: {
-      type: Boolean,
-      default: false
-    },
   })
 
-  const emit = defineEmits(['click'])
-
-  const buttonDefaults = computed(() => {
-    return {
-      label: '',
-      title: '',
-    }
-  })
+  const emit = defineEmits([
+    /**
+     * Emitted when an item is clicked.
+     * @payload {Object} item - The clicked item.
+     */
+    'click'
+  ])
 
   const onClick = (item) => {
     emit('click', item)

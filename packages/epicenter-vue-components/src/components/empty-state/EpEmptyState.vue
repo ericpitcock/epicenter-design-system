@@ -7,9 +7,7 @@
       <slot name="img" />
     </div>
     <div class="ep-empty-state__body">
-      <h2 class="font-size--body">
-        <slot />
-      </h2>
+      <slot />
       <div
         v-if="$slots.subtext"
         class="text--subtle font-size--small"

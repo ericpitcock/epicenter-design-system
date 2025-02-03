@@ -10,12 +10,18 @@
       </div>
       <div class="ep-banner__body__message">
         <div class="ep-banner__body__message__text font-size--small">
+          <!--
+            @slot message - The main text of the banner.
+          -->
           <slot name="message" />
         </div>
         <div
           v-if="$slots.subtext"
           class="ep-banner__body__message__subtext"
         >
+          <!--
+            @slot subtext - The secondary text of the banner.
+          -->
           <slot name="subtext" />
         </div>
       </div>
@@ -40,17 +46,28 @@
   import EpIcon from '../icon/EpIcon.vue'
 
   const props = defineProps({
+    /**
+     * Whether the banner can be dismissed.
+     */
     dissmissable: {
       type: Boolean,
       default: false
     },
+    /**
+     * The icon properties.
+     */
     iconProps: {
       type: Object,
       default: () => ({})
     },
   })
 
-  const emit = defineEmits(['dismissed'])
+  const emit = defineEmits([
+    /**
+     * Emitted when the banner is dismissed.
+     */
+    'dismissed'
+  ])
   const dismissBanner = () => emit('dismissed')
 
   const dissmissButtonStyles = {
