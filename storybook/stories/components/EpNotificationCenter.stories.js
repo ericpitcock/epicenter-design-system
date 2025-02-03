@@ -3,13 +3,15 @@ import EpContainer from '@/components/container/EpContainer.vue'
 import EpNotification from '@/components/notification/EpNotification.vue'
 import EpNotifications from '@/components/notification/EpNotifications.vue'
 import { useNotifications } from '@/components/notification/useNotifications.js'
-import { useOverlay } from '@/plugins/ep-overlay'
+import EpOverlay from '@/components/overlays/EpOverlay.vue'
+// import { useOverlay } from '@/plugins/ep-overlay'
 import { faker } from '@faker-js/faker'
+import { ref } from 'vue'
 
 export default {
   title: 'Components/Notifications/Notification Center',
   component: EpNotifications,
-  decorators: [() => ({ template: '<div id="app"><ep-overlay-manager /><story /></div>' })],
+  decorators: [() => ({ template: '<div id="app"><story /></div>' })],
   argTypes: {
     emptyStateMessage: {
       name: 'Empty State Message',
@@ -35,6 +37,7 @@ export const NotificationCenter = args => ({
     EpContainer,
     EpNotification,
     EpNotifications,
+    EpOverlay,
   },
   setup() {
     const initNotifications = [
@@ -91,18 +94,19 @@ export const NotificationCenter = args => ({
       clearNotifications
     } = useNotifications(initNotifications)
 
-    const overlay = useOverlay()
+    // const overlay = useOverlay()
+
+    const showDialog = ref(false)
+    const dialogType = ref('toast')
 
     function showToast() {
-      overlay.showOverlay({
-        type: 'toast',
-        component: EpNotification,
-        props: {
-          id: faker.string.uuid(),
-          message: 'This is a toast notification!',
-          timestamp: new Date().toISOString(),
-        }
-      })
+      dialogType.value = 'toast'
+      showDialog.value = true
+    }
+
+    const showModal = () => {
+      dialogType.value = 'modal'
+      showDialog.value = true
     }
 
     return {
@@ -110,7 +114,10 @@ export const NotificationCenter = args => ({
       notifications,
       removeNotification,
       clearNotifications,
-      showToast
+      showDialog,
+      showModal,
+      showToast,
+      dialogType,
     }
   },
   template: `
@@ -122,6 +129,19 @@ export const NotificationCenter = args => ({
         @clear-notifications="clearNotifications"
       />
       <ep-button label="Show Toast" style="margin-top: 2rem;" @click="showToast" />
+      <ep-button label="Show Modal" style="margin-top: 2rem;" @click="showModal" />
+      <ep-overlay
+        :type="dialogType"
+        backdrop-close
+        v-model:modelValue="showDialog"
+      >
+        <ep-notification
+          id="toast"
+          message="This is a toast notification!"
+          timestamp="2021-08-25T17:00:00.000Z"
+          @dismiss="showDialog = false"
+        />
+      </ep-overlay>
     </div>
   `
 })
