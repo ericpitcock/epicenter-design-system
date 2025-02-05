@@ -1,4 +1,4 @@
-@use '../packages/epicenter-styles/scss/mixins/_generate-color-variants.scss' as *;
+@use '@ericpitcock/epicenter-styles/scss/mixins/_generate-color-variants.scss' as *;
 $primary-lightness: 0.60;
 $primary-chroma: 0.2;
 $primary-hue: 257deg;
@@ -7,11 +7,6 @@ $primary-hue: 257deg;
   @include generate-color-variants($primary-lightness, $primary-chroma, $primary-hue);
   --gradient-bg: radial-gradient(circle 200px at -5% -10%, hsl(60, 100%, 50%), transparent),
     linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--primary-color-base) 79%);
-  // global overrides - dark theme
-  // --ep-tabs-active-border-color: yellow;
-  // --ep-banner-color-strip-bg: orange;
-  // --ep-button-bg-color: green;
-  // --ep-radio-checked-color: orange;
   --primary-gradient: linear-gradient(140deg, var(--primary-color-base) 30%, var(--primary-color-down-10-base) 70%);
   --text-selection-bg-color: var(--primary-color-base);
   --text-selection-text-color: hsl(var(--gray-0));
