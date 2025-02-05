@@ -1,6 +1,6 @@
 {
   "name": "@ericpitcock/epicenter-styles",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/epicenter-design-system.css",
   "style": "dist/epicenter-design-system.css",
   "description": "Epicenter Design System - Styles",

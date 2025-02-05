@@ -1,6 +1,6 @@
 {
   "name": "@ericpitcock/epicenter-icons",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Epicenter Design System - Icons",
   "main": "index.js",
   "scripts": {
