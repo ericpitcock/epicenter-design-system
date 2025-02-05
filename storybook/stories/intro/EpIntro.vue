@@ -17,13 +17,7 @@
     <div class="content">
       <div class="main">
         <div class="copy-block">
-          <p>
-            This design system is being created for use in my personal projects
-            and serves as a training ground to stay current on best practices
-            for
-            creating inclusive and user-friendly experiences for all.
-          </p>
-          <p>Note: React components are coming sometime in the future.</p>
+          <p>Note: React components are coming in the future.</p>
         </div>
       </div>
     </div>
@@ -131,10 +125,6 @@
 
       .main {
         flex: 3;
-
-        .copy-block {
-          margin-bottom: 2rem;
-        }
       }
 
       .test-sites {
