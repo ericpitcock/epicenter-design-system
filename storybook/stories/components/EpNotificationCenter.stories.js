@@ -4,7 +4,6 @@ import EpNotification from '@/components/notification/EpNotification.vue'
 import EpNotifications from '@/components/notification/EpNotifications.vue'
 import { useNotifications } from '@/components/notification/useNotifications.js'
 import EpOverlay from '@/components/overlays/EpOverlay.vue'
-// import { useOverlay } from '@/plugins/ep-overlay'
 import { faker } from '@faker-js/faker'
 import { ref } from 'vue'
 
@@ -93,8 +92,6 @@ export const NotificationCenter = args => ({
       removeNotification,
       clearNotifications
     } = useNotifications(initNotifications)
-
-    // const overlay = useOverlay()
 
     const showOverlay = ref(false)
     const overlayType = ref('toast')

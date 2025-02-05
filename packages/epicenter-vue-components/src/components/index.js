@@ -1,6 +1,7 @@
 import EpActionBar from './action-bar/EpActionBar.vue'
 import EpBadge from './badge/EpBadge.vue'
 import EpBanner from './banner/EpBanner.vue'
+import EpBreadcrumbs from './breadcrumbs/EpBreadcrumbs.vue'
 import EpBrowserFrame from './browser-frame/EpBrowserFrame.vue'
 import EpButton from './button/EpButton.vue'
 import EpButtonGroup from './button-group/EpButtonGroup.vue'
@@ -29,7 +30,9 @@ import EpMap from './map/EpMap.vue'
 import EpMenu from './menu/EpMenu.vue'
 import EpNotification from './notification/EpNotification.vue'
 import EpNotifications from './notification/EpNotifications.vue'
+import EpOverlay from './overlays/EpOverlay.vue'
 import EpRadio from './radio/EpRadio.vue'
+import EpResizable from './resizable/EpResizable.vue'
 import EpMultiSearch from './search/EpMultiSearch.vue'
 import EpSearchTypeahead from './search/EpSearchTypeahead.vue'
 import EpSelect from './select/EpSelect.vue'
@@ -44,7 +47,6 @@ import EpTableCell from './table/EpTableCell.vue'
 import EpTableCheckboxFilters from './table/EpTableCheckboxFilters.vue'
 import EpTableHead from './table/EpTableHead.vue'
 import EpTablePagination from './table/EpTablePagination.vue'
-import EpTableRangeFilter from './table/EpTableRangeFilter.vue'
 import EpTableSearchInput from './table/EpTableSearchInput.vue'
 import EpTableSortableHeader from './table/EpTableSortableHeader.vue'
 import EpTabContent from './tabs/EpTabContent.vue'
@@ -60,6 +62,7 @@ export {
   EpActionBar,
   EpBadge,
   EpBanner,
+  EpBreadcrumbs,
   EpBrowserFrame,
   EpButton,
   EpButtonGroup,
@@ -88,7 +91,9 @@ export {
   EpMenu,
   EpNotification,
   EpNotifications,
+  EpOverlay,
   EpRadio,
+  EpResizable,
   EpMultiSearch,
   EpSearchTypeahead,
   EpSelect,
@@ -103,7 +108,6 @@ export {
   EpTableCheckboxFilters,
   EpTableHead,
   EpTablePagination,
-  EpTableRangeFilter,
   EpTableSearchInput,
   EpTableSortableHeader,
   EpTabContent,
@@ -120,6 +124,7 @@ export default {
   EpActionBar,
   EpBadge,
   EpBanner,
+  EpBreadcrumbs,
   EpBrowserFrame,
   EpButton,
   EpButtonGroup,
@@ -148,7 +153,9 @@ export default {
   EpMenu,
   EpNotification,
   EpNotifications,
+  EpOverlay,
   EpRadio,
+  EpResizable,
   EpMultiSearch,
   EpSearchTypeahead,
   EpSelect,
@@ -163,7 +170,6 @@ export default {
   EpTableCheckboxFilters,
   EpTableHead,
   EpTablePagination,
-  EpTableRangeFilter,
   EpTableSearchInput,
   EpTableSortableHeader,
   EpTabContent,
