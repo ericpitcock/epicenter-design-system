@@ -128,6 +128,11 @@ const preview = {
     },
   },
   parameters: {
+    a11y: {
+      element: '#storybook-root',
+      config: {},
+      options: {},
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

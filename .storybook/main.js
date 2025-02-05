@@ -9,6 +9,7 @@ const config = {
     '@storybook/addon-controls',
     '@storybook/addon-docs',
     '@storybook/addon-toolbars',
+    '@storybook/addon-a11y',
   ],
   staticDirs: ['../static'],
   framework: {
