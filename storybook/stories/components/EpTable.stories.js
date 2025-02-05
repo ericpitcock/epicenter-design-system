@@ -13,22 +13,17 @@ import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
 import EpTableCheckboxFilters from '@/components/table/EpTableCheckboxFilters.vue'
 import EpMultiSearch from '@/components/search/EpMultiSearch.vue'
 import {
-  // useCalculatedHeight,
   useColumnFilters,
   useDataFilters,
   useExclude,
   usePagination,
   useSearch,
   useSorting,
+  useActionsMenu,
 } from '@/composables/index.js'
 import { paddedSurface } from '../../helpers/decorators.js'
 import { columns, fakeArray } from '../../data/tableData'
-import {
-  computed,
-  // onMounted,
-  ref,
-  // useTemplateRef
-} from 'vue'
+import { computed, ref } from 'vue'
 
 export default {
   title: 'Components/Table',
@@ -165,22 +160,10 @@ export const Table = (args) => ({
       onPageSizeUpdate
     } = usePagination(searchedData, 1, 20)
 
-    // const tableComponent = useTemplateRef('table')
-    // const tableContainer = ref(null)
-
-    // onMounted(() => {
-    //   tableContainer.value = tableComponent.value.$refs.tableContainer
-    // })
-
-    // const { dynamicHeight } = useCalculatedHeight(tableContainer, 60)
-
-    // console.log(dynamicHeight.value)
-
     const styles = computed(() => {
       return {
         '--ep-table-width': args.width,
         '--ep-table-min-width': '100%',
-        // '--ep-table-container-height': `${dynamicHeight.value}px`,
         '--ep-table-container-height': 'calc(100vh - 140px)',
       }
     })
@@ -193,6 +176,7 @@ export const Table = (args) => ({
       alignRight: true,
       buttonProps: {
         label: '',
+        ariaLabel: 'Column Filters',
         iconLeft: { name: 'f-columns' },
         iconRight: undefined,
         title: 'Column Filters'
@@ -207,37 +191,31 @@ export const Table = (args) => ({
       '--ep-container-padding': '2rem',
     }
 
-    const actionMenuProps = (id) => ({
-      size: 'small',
-      menuItems: [
-        {
-          label: 'Edit',
-          iconLeft: { name: 'f-file' },
-          onClick: () => {
-            alert(`Edit ${id}`)
-          }
-        },
-        {
-          label: 'Delete',
-          iconLeft: { name: 'f-trash' },
-          onClick: () => {
-            alert(`Delete ${id}`)
-          }
+    const { generateActionMenuProps } = useActionsMenu()
+
+    const menuItems = [
+      (id) => ({
+        label: 'Edit',
+        iconLeft: { name: 'f-file' },
+        onClick: () => {
+          alert(`Edit ${id}`)
         }
-      ],
-      menuClass: 'ep-menu-default',
-      buttonProps: {
-        label: '',
-        iconLeft: {
-          name: 'dots-vertical',
-          styles: { '--ep-icon-stroke-width': 3 }
-        },
-        iconRight: null,
-        class: ['ep-button-variant-subtle-ghost'],
-        size: 'small',
-      },
-      alignRight: true,
-    })
+      }),
+      (id) => ({
+        label: 'Delete',
+        iconLeft: { name: 'f-trash' },
+        onClick: () => {
+          alert(`Delete ${id}`)
+        }
+      }),
+    ]
+
+    const tableActionsMenuProps = (context) =>
+      generateActionMenuProps({
+        context,
+        menuItems,
+        alignRight: true,
+      })
 
     return {
       args,
@@ -265,7 +243,7 @@ export const Table = (args) => ({
       columnFiltersDropdownProps,
       containerStyles,
       onFilterUpdate,
-      actionMenuProps,
+      tableActionsMenuProps
     }
   },
   template: `
@@ -336,7 +314,7 @@ export const Table = (args) => ({
             <ep-badge :label="row.severity" />
           </template>
           <template #actions-menu="{ row }">
-            <ep-dropdown v-bind="actionMenuProps(row.id)" />
+            <ep-dropdown v-bind="tableActionsMenuProps(row.id)" />
           </template>
           <template #thead-fixed="{ visibleColumns, cellWidths, showActionsMenu }">
             <ep-table-head

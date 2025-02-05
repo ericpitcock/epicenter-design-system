@@ -1,3 +1,5 @@
+import EpBadge from '@/components/badge/EpBadge.vue'
+import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpResizable from '@/components/resizable/EpResizable.vue'
 import { computed, ref } from 'vue'
 import { faker } from '@faker-js/faker'
@@ -31,7 +33,11 @@ export default {
 }
 
 export const Resizable = args => ({
-  components: { EpResizable },
+  components: {
+    EpBadge,
+    EpFlex,
+    EpResizable,
+  },
   setup() {
     const currentSize = ref(null)
 
@@ -60,7 +66,7 @@ export const Resizable = args => ({
     >
       <template #resizable>
         <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%; height: 100%; background: var(--interface-surface); color: var(--text-color); padding: 4rem; overflow: auto;">
-          <p>Resizable Panel {{ displaySize }}</p>
+          <ep-flex class="align-center gap-20"><h1 class="font-size--jumbo">Resizable</h1><ep-badge class="badge-variant-primary" :label="displaySize" /></ep-flex>
           <p v-for="i in 100" :key="i" v-once>{{ faker.lorem.paragraph() }}</p>
         </div>
       </template>
@@ -74,6 +80,6 @@ export const Resizable = args => ({
 Resizable.args = {
   direction: 'Row',
   initialSize: '50%', // percentage or pixel value
-  minSize: 200,
+  minSize: 400,
   maxSize: 800,
 }

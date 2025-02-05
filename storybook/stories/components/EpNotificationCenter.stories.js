@@ -96,17 +96,17 @@ export const NotificationCenter = args => ({
 
     // const overlay = useOverlay()
 
-    const showDialog = ref(false)
-    const dialogType = ref('toast')
+    const showOverlay = ref(false)
+    const overlayType = ref('toast')
 
     function showToast() {
-      dialogType.value = 'toast'
-      showDialog.value = true
+      overlayType.value = 'toast'
+      showOverlay.value = true
     }
 
     const showModal = () => {
-      dialogType.value = 'modal'
-      showDialog.value = true
+      overlayType.value = 'modal'
+      showOverlay.value = true
     }
 
     return {
@@ -114,10 +114,10 @@ export const NotificationCenter = args => ({
       notifications,
       removeNotification,
       clearNotifications,
-      showDialog,
+      showOverlay,
       showModal,
       showToast,
-      dialogType,
+      overlayType,
     }
   },
   template: `
@@ -131,15 +131,15 @@ export const NotificationCenter = args => ({
       <ep-button label="Show Toast" style="margin-top: 2rem;" @click="showToast" />
       <ep-button label="Show Modal" style="margin-top: 2rem;" @click="showModal" />
       <ep-overlay
-        :type="dialogType"
+        :type="overlayType"
         backdrop-close
-        v-model:modelValue="showDialog"
+        v-model:modelValue="showOverlay"
       >
         <ep-notification
           id="toast"
           message="This is a toast notification!"
           timestamp="2021-08-25T17:00:00.000Z"
-          @dismiss="showDialog = false"
+          @dismiss="showOverlay = false"
         />
       </ep-overlay>
     </div>

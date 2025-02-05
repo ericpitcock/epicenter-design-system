@@ -1,8 +1,9 @@
 import { paddedBg } from '../../../helpers/decorators.js'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import EpButton from '@/components/button/EpButton.vue'
 import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.vue'
 import chartSeq from '@ericpitcock/epicenter-styles/tokens/color/chart-sequence.yaml'
+import { useClipboard } from '@vueuse/core'
 
 let data = {}
 
@@ -122,18 +123,24 @@ export const ChartPalette = (args) => ({
       '--chart-sequence-13': `hsl(${args.hue13 + args.globalHue}, ${args.saturation13 + args.globalSaturation}%, ${args.lightness13 + args.globalLightness}%)`,
     }))
 
+    const source = ref('')
+    const {
+      copy,
+      // copied
+    } = useClipboard({ source })
+
     const copyStylesToClipboard = () => {
       const styleString = Object.entries(styles.value)
         .map(([key, value]) => `${key}: ${value};`)
         .join('\n')
-      navigator.clipboard.writeText(styleString)
+      copy(styleString)
     }
 
     return { args, styles, copyStylesToClipboard }
   },
   template: `
-    <div :style="{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '50px', height: '100%', ...styles }">
-      <ep-button label="Copy Styles" @click="copyStylesToClipboard" />
+    <div :style="{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '50px', ...styles }">
+      <ep-button class="ep-button-var--primary" label="Copy styles" @click="copyStylesToClipboard" />
       <div style="display: flex; gap: 50px; height: 100%;">
         <div style="display: flex; flex-direction: column;">
           <div

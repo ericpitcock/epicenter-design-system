@@ -5,52 +5,70 @@ import EpMenu from '@/components/menu/EpMenu.vue'
 const menuConfig = [
   {
     id: faker.string.uuid(),
-    label: 'Go to internal page',
-    iconLeft: { name: 'arrow-right' },
+    label: 'Dashboard',
+    iconLeft: {
+      name: 'dashboard',
+      style: {
+        '--ep-icon-stroke-width': 1,
+      }
+    },
     to: '/'
   },
   { divider: true },
   {
     section: true,
-    label: 'Section'
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Log click',
-    iconLeft: { name: 'circle' },
-    action: (item) => console.log('clicked', item.label)
+    label: 'Actions'
   },
   {
     id: faker.string.uuid(),
     label: 'Google Maps',
-    iconLeft: { name: 'export' },
+    iconLeft: { name: 'f-map-pin' },
+    iconRight: {
+      name: 'f-arrow-up-right',
+      style: {
+        '--ep-icon-height': '1.4rem',
+        '--ep-icon-stroke-width': 0.8,
+
+      }
+    },
     href: 'https://www.google.com/maps'
   },
   {
     id: faker.string.uuid(),
-    label: 'Sub-menu',
-    iconLeft: { name: 'menu' },
+    label: 'Track Event',
+    iconLeft: { name: 'f-activity' },
+    action: (item) => console.log('clicked', item.label)
+  },
+  {
+    id: faker.string.uuid(),
+    label: 'More Options',
+    iconLeft: {
+      name: 'menu',
+      style: {
+        '--ep-icon-stroke-width': 1,
+      }
+    },
     iconRight: { name: 'chevron-right' },
     children: [
       {
         id: faker.string.uuid(),
-        label: 'Sub-menu item 1',
+        label: 'Settings',
         action: (item) => console.log('clicked', item.label)
       },
       {
         id: faker.string.uuid(),
-        label: 'Sub-menu item 2',
+        label: 'Preferences',
         action: (item) => console.log('clicked', item.label)
       },
       { divider: true },
       {
         id: faker.string.uuid(),
-        label: 'Sub-menu item 3',
+        label: 'Help Center',
         action: (item) => console.log('clicked', item.label)
       },
       {
         id: faker.string.uuid(),
-        label: 'Sub-menu item 4',
+        label: 'About Us',
         action: (item) => console.log('clicked', item.label)
       }
     ]
@@ -58,62 +76,61 @@ const menuConfig = [
   { divider: true },
   {
     section: true,
-    label: 'Section'
+    label: 'Shortcuts'
   },
   {
     id: faker.string.uuid(),
-    label: 'This is a menu item',
+    label: 'Recent Files',
     action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
-    label: 'Another menu item',
+    label: 'Saved Items',
     action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
-    label: 'The menuiest item',
+    label: 'Notifications',
     action: (item) => console.log('clicked', item.label)
   },
   { divider: true },
   {
     section: true,
-    label: 'Section',
+    label: 'Navigation'
+  },
+  {
+    id: faker.string.uuid(),
+    label: 'Go Back',
     action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
-    label: 'Go back',
+    label: 'Next Step',
     action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
-    label: 'Two steps forward',
+    label: 'Open Web Page',
     action: (item) => console.log('clicked', item.label)
   },
   {
     id: faker.string.uuid(),
-    label: 'Internet!',
-    action: (item) => console.log('clicked', item.label)
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Another sub-menu',
+    label: 'Advanced Settings',
     iconRight: { name: 'chevron-right' },
     children: [
       {
         id: faker.string.uuid(),
-        label: 'Sub-menu item 1',
+        label: 'Security',
         action: (item) => console.log('clicked', item.label)
       },
       {
         id: faker.string.uuid(),
-        label: 'Sub-menu item 2',
+        label: 'Privacy',
         action: (item) => console.log('clicked', item.label)
       },
       {
         id: faker.string.uuid(),
-        label: 'Sub-menu item 3',
+        label: 'Developer Mode',
         action: (item) => console.log('clicked', item.label)
       }
     ]

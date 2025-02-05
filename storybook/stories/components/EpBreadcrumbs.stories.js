@@ -1,4 +1,3 @@
-// Breadcrumbs.stories.js
 import EpBreadcrumbs from '@/components/breadcrumbs/EpBreadcrumbs.vue'
 import EpButton from '@/components/button/EpButton.vue'
 import EpContainer from '@/components/container/EpContainer.vue'

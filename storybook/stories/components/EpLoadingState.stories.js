@@ -3,36 +3,23 @@ import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 import EpTable from '@/components/table/EpTable.vue'
+import EpTableHead from '@/components/table/EpTableHead.vue'
 import useExclude from '@/components/table/useExclude.js'
 import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
 import { columns, fakeArray } from '../../data/tableData.js'
-import { computed, ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
 export default {
   title: 'Components/Loading State',
   component: EpLoadingState,
   decorators: [paddedBg],
   argTypes: {
-    loading: { table: { disable: true } },
     message: {
       name: 'Message',
       control: {
         type: 'array'
       }
     },
-    backgroundColor: {
-      name: '--ep-loading-state-bg-color',
-      control: {
-        type: 'color'
-      }
-    },
-    borderRadius: {
-      name: '--ep-loading-state-border-radius',
-      control: {
-        type: 'text'
-      }
-    },
-    styles: { table: { disable: true } }
   }
 }
 
@@ -42,22 +29,14 @@ export const LoadingState = args => ({
     EpHeader,
     EpSplitButton,
     EpTable,
-    EpLoadingState
+    EpTableHead,
+    EpLoadingState,
   },
   setup() {
     const loading = ref(true)
     const messages = ref(null)
     const tableData = ref(fakeArray(30))
     const columnsRef = ref(columns)
-
-    const styles = computed(() => {
-      return {
-        '--ep-loading-state-bg-color': args.backgroundColor,
-        '--ep-loading-state-border-radius': args.borderRadius,
-        right: '-30px',
-        left: '-30px',
-      }
-    })
 
     const {
       includedColumns,
@@ -66,20 +45,17 @@ export const LoadingState = args => ({
 
     const splitButtonProps = {
       buttonProps: {
-        variant: 'primary',
         label: 'Refresh',
         iconLeft: { name: 'refresh' },
+        class: 'ep-button-var--primary',
       },
       dropdownProps: {
         buttonProps: {
-          variant: 'primary',
-          label: ''
+          label: '',
+          ariaLabel: 'Refresh',
+          class: 'ep-button-var--primary',
         },
-        containerProps: {
-          backgroundColor: 'var(--interface-overlay)',
-          borderRadius: 'var(--border-radius)',
-          borderColor: 'var(--border-color--lighter)',
-        },
+        menuClass: 'ep-menu-default',
         menuItems: [
           {
             label: 'Clear & Fetch',
@@ -165,19 +141,12 @@ export const LoadingState = args => ({
       includedData,
       splitButtonProps,
       currentMessage,
-      styles
     }
   },
   template: `
     <ep-container
-      :style="{
-        '--ep-container-max-width': '120rem',
-        '--ep-container-height': '100%',
-        '--ep-container-padding': '0 3rem',
-        '--ep-container-bg-color': 'var(--interface-surface)',
-        '--ep-container-border-width': '0.1rem',
-        '--ep-container-overflow': 'auto'
-      }"
+      class="ep-container-default ep-container--sticky-header ep-container--framed"
+      style="--ep-container-framed-offset: 60px; --ep-container-content-padding: 0 0 10rem 0;"
     >
       <template #header>
       <ep-header :style="{ '--ep-header-container-overflow': 'visible' }">
@@ -192,32 +161,33 @@ export const LoadingState = args => ({
       </ep-header>
       </template>
       <template #default>
-        <ep-loading-state
-          v-bind="args"
-          :message="currentMessage"
-          :loading
-          @done="done"
-          :style="styles"
-        />
-        <ep-table
-          :columns="includedColumns"
-          :data="includedData"
-          :style="{
-            '--ep-table-container-overflow': 'unset',
-            '--ep-table-width': '100%'
-          }"
-          calculate-height
-          :calculate-height-offset="30"
-          sticky-header
-          bordered
-          striped
-        />
+        <transition name="fade">
+          <ep-loading-state
+            v-if="loading"
+            v-bind="args"
+            :message="currentMessage"
+            :loading
+            @done="done"
+          />
+          <ep-table
+            v-else
+            :columns="includedColumns"
+            :data="includedData"
+            :style="{
+              '--ep-table-container-overflow': 'unset',
+              '--ep-table-width': '100%',
+              '--ep-table-sticky-top': '61px',
+            }"
+            sticky-header
+            bordered
+            striped
+          >
+            <template #thead="{ visibleColumns }">
+              <ep-table-head :columns="visibleColumns" />
+            </template>
+          </ep-table>
+        </transition>
       </template>
     </ep-container>
   `
 })
-
-LoadingState.args = {
-  backgroundColor: 'var(--interface-surface)',
-  borderRadius: 'none',
-}

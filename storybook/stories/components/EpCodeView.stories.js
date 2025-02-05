@@ -66,14 +66,14 @@ export const CodeView = args => ({
   template: `
       <ep-container
         sticky-header
-        :styles="{
+        :style="{
           '--ep-container-height': '100%',
           '--ep-container-padding': '0 3rem 3rem',
-          '--ep-container-content-padding': '3rem 0 0',
+          '--ep-container-content-padding': '3rem',
         }"
       >
         <template #header>
-          <ep-header style="--ep-header-container-bg-color: var(--interface-surface)">
+          <ep-header style="--ep-header-container-bg-color: var(--interface-surface);">
             <template #left>   
               <ep-tabs
                 :items="tabItems"

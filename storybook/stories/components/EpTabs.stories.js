@@ -31,12 +31,12 @@ export default {
   }
 }
 
-const tabItems = ['Overview', 'Features', 'Pricing']
+const tabItems = ['Data', 'Stats', 'Authors']
 
 const routerLinkItems = [
-  { label: 'Overview', to: '/overview' },
-  { label: 'Features', to: '/features' },
-  { label: 'Pricing', to: '/pricing' }
+  { label: 'Data', to: '/library/data' },
+  { label: 'Stats', to: '/library/data/stats' },
+  { label: 'Authors', to: '/library/authors' }
 ]
 
 export const Tabs = args => ({

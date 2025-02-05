@@ -96,5 +96,5 @@ export const Badge = args => ({
 
 Badge.args = {
   label: 'Subscribed',
-  classes: 'None',
+  classes: 'Primary',
 }
