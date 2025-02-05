@@ -19,7 +19,6 @@
     />
     <ep-button
       label="Button"
-      variant="primary"
       :style="{ background: primaryColor, borderColor: primaryColor }"
     />
     <ep-button
@@ -30,7 +29,7 @@
     <ep-badge
       label="Badge"
       background-color=""
-      :border-color="primaryColor"
+      :style="{ borderColor: primaryColor }"
     />
     <!-- <div class="primary-color" v-for="variant in variants" :key="variant">
       <div class="color" :style="`background-color: var(--color--primary--${variant})`"></div>

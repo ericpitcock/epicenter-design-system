@@ -61,7 +61,7 @@ vueFiles.forEach(async (filePath) => {
     const customNotes = fs.readFileSync(notesFilePath, 'utf-8')
     console.log(`Found custom notes for ${fileName}`)
     customNotesSection = `
-## Description
+
 ${customNotes}
     `
   }

@@ -6,6 +6,7 @@ export default function useActionsMenu() {
     menuClass = 'ep-menu-default',
     buttonProps = {
       label: '',
+      ariaLabel: 'Actions',
       iconLeft: {
         name: 'dots-vertical',
         styles: { '--ep-icon-stroke-width': 3 },

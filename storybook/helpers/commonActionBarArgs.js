@@ -6,6 +6,7 @@ const commonActionBarArgs = {
       component: 'ep-button',
       props: {
         label: '',
+        ariaLabel: 'Help',
         iconLeft: { name: 'help' },
         class: 'ep-button-var--ghost',
         action: () => console.log('the help button was clicked')
@@ -16,6 +17,7 @@ const commonActionBarArgs = {
       props: {
         buttonProps: {
           label: '',
+          ariaLabel: 'Notifications',
           iconLeft: { name: 'notifications' },
           iconRight: undefined,
           class: 'ep-button-var--ghost'
@@ -55,6 +57,7 @@ const commonActionBarArgs = {
       props: {
         buttonProps: {
           label: '',
+          ariaLabel: 'User',
           iconLeft: { name: 'user' },
           iconRight: undefined,
           class: 'ep-button-var--ghost'
