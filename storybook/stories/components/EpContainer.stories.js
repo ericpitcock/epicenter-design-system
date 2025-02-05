@@ -1,9 +1,9 @@
 import EpActionBar from '@/components/action-bar/EpActionBar.vue'
-import commonActionBarArgs from '../../helpers/commonActionBarArgs.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
-import EpFooter from '@/components/footer/EpFooter.vue'
+import commonActionBarArgs from '../../helpers/commonActionBarArgs.js'
 import { computed } from 'vue'
+import { faker } from '@faker-js/faker'
 
 const container = () => {
   return {
@@ -17,187 +17,18 @@ export default {
   component: EpContainer,
   decorators: [container],
   argTypes: {
-    calculateHeight: {
-      table: {
-        disable: true
-      }
-    },
-    calculateHeightOffset: {
-      table: {
-        disable: true
-      }
-    },
-    display: {
-      name: 'Display',
-      options: [
-        'block',
-        'inline',
-        'inline-block',
-        'flex',
-        'inline-flex',
-        'grid',
-        'inline-grid',
-        'flow-root'
-      ],
+    layout: {
+      name: 'Layout',
       control: {
-        type: 'select',
-        labels: {
-          block: 'Block',
-          inline: 'Inline',
-          'inline-block': 'Inline Block',
-          flex: 'Flex',
-          'inline-flex': 'Inline Flex',
-          grid: 'Grid',
-          'inline-grid': 'Inline Grid',
-          'flow-root': 'Flow Root'
-        }
+        type: 'radio',
+      },
+      options: ['Framed', 'Full Page'],
+      mapping: {
+        Framed: 'framed',
+        'Full Page': 'fullPage',
       }
-    },
-    width: {
-      name: 'Width',
-      control: {
-        type: 'text'
-      }
-    },
-    minWidth: {
-      name: 'Min Width',
-      control: {
-        type: 'text'
-      }
-    },
-    maxWidth: {
-      name: 'Max Width',
-      control: {
-        type: 'text'
-      }
-    },
-    height: {
-      name: 'Height',
-      control: {
-        type: 'text'
-      }
-    },
-    minHeight: {
-      name: 'Min Height',
-      control: {
-        type: 'text'
-      }
-    },
-    maxHeight: {
-      name: 'Max Height',
-      control: {
-        type: 'text'
-      }
-    },
-    containerPadding: {
-      name: 'Container Padding',
-      control: {
-        type: 'text'
-      }
-    },
-    contentPadding: {
-      name: 'Content Padding',
-      control: {
-        type: 'text'
-      }
-    },
-    padding: {
-      name: 'Padding',
-      control: {
-        type: 'text'
-      }
-    },
-    backgroundColor: {
-      name: 'Background Color',
-      control: {
-        type: 'text'
-      }
-    },
-    borderRadius: {
-      name: 'Border Radius',
-      control: {
-        type: 'text'
-      }
-    },
-    borderWidth: {
-      name: 'Border Width',
-      control: {
-        type: 'text'
-      }
-    },
-    borderStyle: {
-      name: 'Border Style',
-      options: [
-        'none',
-        'hidden',
-        'dotted',
-        'dashed',
-        'solid',
-        'double',
-        'groove',
-        'ridge',
-        'inset',
-        'outset',
-        'initial',
-        'inherit'
-      ],
-      control: {
-        type: 'select',
-        labels: {
-          none: 'None',
-          hidden: 'Hidden',
-          dotted: 'Dotted',
-          dashed: 'Dashed',
-          solid: 'Solid',
-          double: 'Double',
-          groove: 'Groove',
-          ridge: 'Ridge',
-          inset: 'Inset',
-          outset: 'Outset',
-          initial: 'Initial',
-          inherit: 'Inherit'
-        }
-      }
-    },
-    borderColor: {
-      name: 'Border Color',
-      control: {
-        type: 'text'
-      }
-    },
-    overflow: {
-      name: 'Overflow',
-      options: [
-        'visible',
-        'hidden',
-        'scroll',
-        'auto',
-        'overlay',
-        'inherit',
-        'initial',
-        'unset'
-      ],
-      control: {
-        type: 'select',
-        labels: {
-          visible: 'Visible',
-          hidden: 'Hidden',
-          scroll: 'Scroll',
-          auto: 'Auto',
-          overlay: 'Overlay',
-          inherit: 'Inherit',
-          initial: 'Initial',
-          unset: 'Unset'
-        }
-      }
-    },
-    stickyHeader: {
-      name: 'Sticky Header',
-      control: {
-        type: 'boolean'
-      }
-    },
-  }
+    }
+  },
 }
 
 export const Container = args => ({
@@ -205,69 +36,48 @@ export const Container = args => ({
     EpActionBar,
     EpContainer,
     EpHeader,
-    EpFooter
   },
   setup() {
+    const computedStyles = computed(() => {
+      if (args.layout === 'fullPage') return
 
-    const styles = computed(() => ([
-      { '--ep-container-width': args.width },
-      { '--ep-container-min-width': args.minWidth },
-      { '--ep-container-max-width': args.maxWidth },
-      { '--ep-container-height': args.height },
-      { '--ep-container-min-height': args.minHeight },
-      { '--ep-container-max-height': args.maxHeight },
-      { '--ep-container-padding': args.containerPadding },
-      { '--ep-container-content-padding': args.contentPadding },
-      { '--ep-container-bg-color': args.backgroundColor },
-      { '--ep-container-border-radius': args.borderRadius },
-      { '--ep-container-border-width': args.borderWidth },
-      { '--ep-container-border-style': args.borderStyle },
-      { '--ep-container-border-color': args.borderColor },
-      { '--ep-container-overflow': args.overflow },
-    ]))
+      return {
+        '--ep-container-height': 'calc(100vh - 60px)',
+        '--ep-container-framed-offset': '60px',
+        '--ep-container-overflow': 'auto',
+      }
+    })
 
     return {
       args,
       commonActionBarArgs,
-      styles
+      faker,
+      computedStyles,
     }
   },
   template: `
-    <ep-container :style="styles">
+    <ep-container
+      class="ep-container-default ep-container--sticky-header"
+      :style="computedStyles"
+    >
       <template #header>
-        <ep-header padding="0">
+        <ep-header>
           <template #left>
             Header
           </template>
           <template #right>
-            <ep-action-bar v-bind="commonActionBarArgs" />
+            <ep-action-bar
+              v-bind="commonActionBarArgs"
+              :style="{'--ep-action-bar-justify-content': 'flex-end'}"
+            />
           </template>
         </ep-header>
-      </template>
-      <template #default>
-      </template>
-      <template #footer>
-        <ep-footer />
-      </template>
+        </template>
+        <p v-for="i in 100" :key="i" v-once>{{ faker.lorem.paragraph() }}</p>
     </ep-container>
   `
 })
 
 Container.args = {
-  width: '100%',
-  minWidth: '0',
-  maxWidth: '120rem',
-  height: '100%',
-  minHeight: 'auto',
-  maxHeight: 'none',
-  containerPadding: '0 3rem',
-  contentPadding: '0',
-  padding: '0',
-  backgroundColor: 'var(--interface-surface)',
-  borderRadius: 'var(--border-radius--large)',
-  borderWidth: '0.1rem',
-  borderStyle: 'solid',
-  borderColor: 'var(--border-color)',
-  overflow: 'hidden',
-  stickyHeader: false
+  layout: 'Framed',
 }

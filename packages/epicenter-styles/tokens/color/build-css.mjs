@@ -1,12 +1,12 @@
 import fs from 'fs'
 import yaml from 'js-yaml'
 import chokidar from 'chokidar'
-import * as glob from 'glob'
+import glob from 'glob' // Corrected import for CommonJS module
 import path from 'path' // Import the path module
 
 function loadYAMLFiles(pattern) {
   const yamlData = {}
-  const files = glob.sync(pattern)
+  const files = glob.sync(pattern) // Correctly use glob.sync for CommonJS
   files.forEach(file => {
     try {
       const data = yaml.load(fs.readFileSync(file, 'utf8'))

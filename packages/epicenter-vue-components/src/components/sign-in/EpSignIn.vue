@@ -1,7 +1,7 @@
 <template>
   <div class="ep-sign-in">
     <ep-container
-      :styles="{
+      :style="{
         '--ep-container-width': '400px',
         '--ep-container-height': '475px',
         '--ep-container-bg-color': 'var(--interface-surface)',
@@ -59,10 +59,10 @@
             @clear="password = ''"
           />
           <ep-button
+            class="ep-button-var--primary"
             type="submit"
             size="large"
             :label="buttonLabel"
-            variant="primary"
             @click="onButtonClick"
           />
         </form>
@@ -81,81 +81,73 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import EpButton from '../button/EpButton.vue'
   import EpContainer from '../container/EpContainer.vue'
   import EpIcon from '../icon/EpIcon.vue'
   import EpInput from '../input/EpInput.vue'
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpicenterLogo from '../logo/EpicenterLogo.vue'
+  import { computed, ref } from 'vue'
 
-  export default {
-    name: 'EpAcmeAssetExplorersignin',
-    components: {
-      EpButton,
-      EpContainer,
-      EpIcon,
-      EpInput,
-      EpLoadingState,
-      EpicenterLogo,
-    },
-    data() {
-      return {
-        email: '',
-        password: '',
-        state: 'signin',
-        loadingMessages: [
-          {
-            icon: 'oval',
-            message: 'Signing in…'
-          }
-        ]
-      }
-    },
-    computed: {
-      buttonLabel() {
-        return this.state === 'signin' ? 'Sign In' : 'Send Reset Email'
-      },
-      footerText() {
-        switch (this.state) {
-          case 'signin':
-            return 'Reset your password'
-          case 'loading':
-            return 'Signing in…'
-          case 'message':
-            return '< Back to Sign In'
-          case 'reset':
-            return '< Back to Sign In'
-          default:
-            return ''
-        }
-      },
-    },
-    methods: {
-      signin() {
-        console.log('signin')
-      },
-      onButtonClick() {
-        if (this.state === 'signin') {
-          console.log('signin')
-          this.state = 'loading'
-          setTimeout(() => {
-            this.state = 'signin'
-          }, 2000)
-        } else {
-          console.log('reset')
-          this.state = 'message'
-        }
-      },
-      onFooterClick() {
-        this.state = this.state === 'signin' ? 'reset' : 'signin'
-      },
-      validateEmail(email) {
-        const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-        return emailRegex.test(email)
-      }
-    },
+  defineOptions({
+    name: 'EpSignIn',
+  })
+
+  const email = ref('')
+  const password = ref('')
+  const state = ref('signin')
+  const loadingMessages = ref([
+    {
+      icon: 'oval',
+      message: 'Signing in…'
+    }
+  ])
+
+  const buttonLabel = computed(() => {
+    return state.value === 'signin' ? 'Sign in' : 'Send reset email'
+  })
+
+  const footerText = computed(() => {
+    switch (state.value) {
+      case 'signin':
+        return 'Reset your password'
+      case 'loading':
+        return 'Signing in…'
+      case 'message':
+        return '< Back to Sign In'
+      case 'reset':
+        return '< Back to Sign In'
+      default:
+        return ''
+    }
+  })
+
+  const signin = () => {
+    console.log('signin')
   }
+
+  const onButtonClick = () => {
+    if (state.value === 'signin') {
+      console.log('signin')
+      state.value = 'loading'
+      setTimeout(() => {
+        state.value = 'signin'
+      }, 2000)
+    } else {
+      console.log('reset')
+      state.value = 'message'
+    }
+  }
+
+  const onFooterClick = () => {
+    state.value = state.value === 'signin' ? 'reset' : 'signin'
+  }
+
+  // const validateEmail = (email) => {
+  //   const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+  //   return emailRegex.test(email)
+  // }
 </script>
 
 <style lang="scss" scoped>

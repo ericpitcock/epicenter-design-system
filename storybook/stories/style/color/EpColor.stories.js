@@ -1,4 +1,4 @@
-import { paddedBg } from '../../../helpers/decorators.js'
+import { paddedBgOverflow } from '../../../helpers/decorators.js'
 import EpColor from './EpColor.vue'
 import { useStorybookStore } from '../../../store'
 import { computed } from 'vue'
@@ -6,7 +6,7 @@ import { computed } from 'vue'
 export default {
   title: 'Style/Color',
   component: EpColor,
-  decorators: [paddedBg],
+  decorators: [paddedBgOverflow],
   argTypes: {
     theme: {
       table: { disable: true }

@@ -1,7 +1,7 @@
 import { paddedSurface } from '../../helpers/decorators.js'
 import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpInput from '@/components/input/EpInput.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export default {
   title: 'Components/Input',
@@ -42,12 +42,6 @@ export default {
       name: 'Placeholder',
       control: {
         type: 'text'
-      }
-    },
-    placeholderColor: {
-      name: 'Placeholder Color',
-      control: {
-        type: 'color'
       }
     },
     modelValue: {
@@ -113,36 +107,67 @@ export default {
         }
       }
     },
-    borderWidth: {
-      name: 'Border Width',
+    // borderWidth: {
+    //   name: 'Border Width',
+    //   control: {
+    //     type: 'text'
+    //   }
+    // },
+    // borderStyle: {
+    //   name: 'Border Style',
+    //   control: {
+    //     type: 'text'
+    //   }
+    // },
+    textColor: {
+      name: 'Text Color',
       control: {
-        type: 'text'
+        type: 'color'
       }
     },
-    borderStyle: {
-      name: 'Border Style',
+    caretColor: {
+      name: 'Caret Color',
       control: {
-        type: 'text'
+        type: 'color'
       }
     },
     borderColor: {
       name: 'Border Color',
       control: {
-        type: 'text'
+        type: 'color'
+      }
+    },
+    placeholderColor: {
+      name: 'Placeholder Color',
+      control: {
+        type: 'color'
+      }
+    },
+    focusBorderColor: {
+      name: 'Focus Border Color',
+      control: {
+        type: 'color'
+      }
+    },
+    disabledTextColor: {
+      name: 'Disabled Text Color',
+      control: {
+        type: 'color'
       }
     },
     borderRadius: {
       name: 'Border Radius',
       control: {
-        type: 'text'
+        type: 'number'
       }
     },
     backgroundColor: {
       name: 'Background Color',
       control: {
-        type: 'text'
+        type: 'color'
       }
     },
+    styles: { table: { disable: true } },
   }
 }
 
@@ -155,11 +180,30 @@ export const Input = args => ({
       modelValue.value = ''
     }
 
-    return { args, modelValue, clear }
+    const styles = computed(() => {
+      return {
+        // '--ep-input-font-size': var(--font-size--default);
+        '--ep-input-text-color': args.textColor,
+        '--ep-input-caret-color': args.caretColor,
+        '--ep-input-border-color': args.borderColor,
+        '--ep-input-border-radius': args.borderRadius + 'px',
+        '--ep-input-placeholder-text-color': args.placeholderColor,
+        '--ep-input-focus-border-color': args.focusBorderColor,
+        '--ep-input-disabled-text-color': args.disabledTextColor,
+      }
+    })
+
+    return {
+      args,
+      modelValue,
+      clear,
+      styles,
+    }
   },
   template: `
     <ep-input
       v-bind="args"
+      :style="styles"
       v-model="modelValue"
       @clear="clear"
       data-1p-ignore
@@ -168,12 +212,12 @@ export const Input = args => ({
 })
 
 Input.args = {
-  id: '',
-  label: 'This is the label and placeholder',
+  inputId: '',
+  label: 'What is your favorite word?',
   type: 'text',
   placeholder: '',
   placeholderColor: '',
-  modelValue: '',
+  modelValue: 'favorite',
   clearable: true,
   disabled: false,
   autofocus: false,

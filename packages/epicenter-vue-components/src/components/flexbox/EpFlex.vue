@@ -1,46 +1,11 @@
 <template>
-  <div
-    class="ep-flex"
-    :style="styles"
-  >
+  <div class="ep-flex">
     <slot />
   </div>
 </template>
 
 <script setup>
-  import { computed } from 'vue'
-
-  const props = defineProps({
-    flexProps: {
-      type: String,
-      required: true
-    }
-  })
-
-  const styles = computed(() => {
-    const [
-      width,
-      height,
-      flexDirection,
-      flexWrap,
-      justifyContent,
-      alignItems,
-      alignContent,
-      gap,
-      padding
-    ] = props.flexProps.split(',')
-
-    return {
-      display: 'flex',
-      ...width && { width },
-      ...height && { height },
-      ...flexDirection && { flexDirection },
-      ...flexWrap && { flexWrap },
-      ...justifyContent && { justifyContent },
-      ...alignItems && { alignItems },
-      ...alignContent && { alignContent },
-      ...gap && { gap },
-      ...padding && { padding },
-    }
+  defineOptions({
+    name: 'EpFlex'
   })
 </script>

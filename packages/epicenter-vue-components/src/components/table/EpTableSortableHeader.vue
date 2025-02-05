@@ -1,9 +1,12 @@
 <template>
-  <th @click="emit('sort', column.key)">
-    <div class="ep-table-sortable-header">
+  <th
+    :style="cellWidths[columnIndex]"
+    @click="emit('sort', column.key)"
+  >
+    <div :class="headerClass">
       {{ column.label }}
       <ep-icon
-        v-if="column.sortable && props.sortColumn === props.column.key"
+        v-if="isSorted"
         v-bind="iconProps"
       />
     </div>
@@ -14,11 +17,22 @@
   import EpIcon from '../icon/EpIcon.vue'
   import { computed } from 'vue'
 
-  // eslint-disable-next-line no-unused-vars
+  defineOptions({
+    name: 'EpTableSortableHeader'
+  })
+
   const props = defineProps({
     column: {
       type: Object,
       required: true
+    },
+    cellWidths: {
+      type: Array,
+      default: () => []
+    },
+    columnIndex: {
+      type: Number,
+      default: null
     },
     sortColumn: {
       type: String,
@@ -35,9 +49,17 @@
   const iconProps = computed(() => {
     return {
       name: props.sortOrder === 'asc' ? 'arrow-up' : 'arrow-down',
-      styles: {
-        '--ep-icon-height': '17px',
-      }
     }
-  })  
+  })
+
+  const headerClass = computed(() => {
+    return [
+      'ep-table-sortable-header',
+      { 'ep-table-sortable-header--active': props.sortColumn === props.column.key }
+    ]
+  })
+
+  const isSorted = computed(() => {
+    return props.column.sortable && props.sortColumn === props.column.key
+  })
 </script>

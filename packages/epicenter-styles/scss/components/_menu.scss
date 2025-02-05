@@ -1,19 +1,69 @@
 .ep-menu {
-  padding: 1rem 0.5rem;
+  --ep-menu-bg-color: var(--interface-surface);
+  --ep-menu-padding: 1rem 0.5rem;
+  --ep-menu-border-width: 0.1rem;
+  --ep-menu-border-style: solid;
+  --ep-menu-border-color: var(--border-color);
+  --ep-menu-border-radius: var(--border-radius);
+  --ep-menu-section-padding: 0.8rem 2.2rem;
+  --ep-menu-section-margin-top: 0;
+  --ep-menu-divider-border-color: var(--border-color);
+  --ep-button-menu-item-hover-bg-color: var(--primary-color-base);
+  --ep-button-menu-item-hover-text-color: var(--text-color--loud);
+  --ep-button-menu-item-hover-border-color: var(--primary-color-base);
+  --ep-button-menu-item-active-bg-color: var(--primary-color-base);
+  --ep-button-menu-item-active-text-color: var(--text-color--loud);
+  background: var(--ep-menu-bg-color);
+  padding: var(--ep-menu-padding);
+  border-width: var(--ep-menu-border-width);
+  border-style: var(--ep-menu-border-style);
+  border-color: var(--ep-menu-border-color);
+  border-radius: var(--ep-menu-border-radius);
+  text-align: left;
 
   &__section {
-    padding: 0.8rem 2.2rem;
+    padding: var(--ep-menu-section-padding);
     user-select: none;
+    white-space: nowrap;
+
+    &:not(:first-of-type) {
+      margin-top: var(--ep-menu-section-margin-top);
+    }
   }
 
   &__item {
     position: relative;
 
+    .ep-button--menu-item {
+      width: 100%;
+      max-width: 100%;
+      background: transparent;
+      border-color: transparent;
+      padding-right: 2rem;
+      padding-left: 2rem;
+
+      &:hover:not(.ep-button--menu-item--active) {
+        background: var(--ep-button-menu-item-hover-bg-color);
+        color: var(--ep-button-menu-item-hover-text-color);
+        border-color: var(--ep-button-menu-item-hover-border-color);
+      }
+
+      &--active {
+        background: var(--ep-button-menu-item-active-bg-color);
+        color: var(--ep-button-menu-item-active-text-color);
+        cursor: default;
+      }
+    }
+
     &__sub-menu {
       position: absolute;
       top: -1rem;
       left: calc(100% - 1rem);
-      width: 100%;
     }
+  }
+
+  .ep-divider {
+    --ep-divider-border-color: var(--ep-menu-divider-border-color);
+    --ep-divider-margin: 1rem 0;
   }
 }

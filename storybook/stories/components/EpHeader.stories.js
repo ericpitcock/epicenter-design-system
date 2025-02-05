@@ -1,55 +1,95 @@
 import { paddedBg } from '../../helpers/decorators.js'
 import EpHeader from '@/components/header/EpHeader.vue'
+import { computed } from 'vue'
 
 export default {
   title: 'Components/Container/Header',
   component: EpHeader,
   decorators: [paddedBg],
   argTypes: {
-    width: {
-      name: 'Width',
+    sticky: {
+      name: '--ep-header-container-position: sticky',
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        category: 'Container'
+      },
+    },
+    stickyTop: {
+      name: '--ep-header-container-top',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Container'
+      },
+    },
+    width: {
+      name: '--ep-header-container-width',
+      control: {
+        type: 'text'
+      },
+      table: {
+        category: 'Container'
+      },
     },
     height: {
-      name: 'Height',
+      name: '--ep-header-container-height',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Container'
+      },
     },
     padding: {
-      name: 'Padding',
+      name: '--ep-header-container-padding',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Container'
+      },
     },
     margin: {
-      name: 'Margin',
+      name: '--ep-header-container-margin',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Container'
+      },
     },
     backgroundColor: {
-      name: 'Background Color',
+      name: '--ep-header-container-bg-color',
       control: {
-        type: 'text'
-      }
+        type: 'color'
+      },
+      table: {
+        category: 'Container'
+      },
     },
     borderRadius: {
-      name: 'Border Radius',
+      name: '--ep-header-container-border-radius',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Container'
+      },
     },
     borderWidth: {
-      name: 'Border Width',
+      name: '--ep-header-container-border-width',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Container'
+      },
     },
     borderStyle: {
-      name: 'Border Style',
+      name: '--ep-header-container-border-style',
       options: [
         'solid',
         'dotted',
@@ -57,16 +97,31 @@ export default {
       ],
       control: {
         type: 'select'
-      }
+      },
+      table: {
+        category: 'Container'
+      },
     },
     borderColor: {
-      name: 'Border Color',
+      name: '--ep-header-container-border-color',
       control: {
-        type: 'text'
-      }
+        type: 'color'
+      },
+      table: {
+        category: 'Container'
+      },
+    },
+    shadowed: {
+      name: '--ep-header-container-box-shadow',
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        category: 'Container'
+      },
     },
     overflow: {
-      name: 'Overflow',
+      name: '--ep-header-container-overflow',
       options: [
         'visible',
         'hidden',
@@ -75,28 +130,40 @@ export default {
       ],
       control: {
         type: 'select'
-      }
+      },
+      table: {
+        category: 'Container'
+      },
     },
     itemGap: {
-      name: 'Item Gap',
+      name: '--ep-header-content-gap',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Container'
+      },
     },
     leftFlex: {
-      name: 'Left Flex',
+      name: '--ep-header-left-flex',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Left Section'
+      },
     },
     leftGap: {
-      name: 'Left Gap',
+      name: '--ep-header-left-gap',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Left Section'
+      },
     },
     leftJustify: {
-      name: 'Left Justify',
+      name: '--ep-header-left-justify-content',
       options: [
         'flex-start',
         'center',
@@ -107,28 +174,40 @@ export default {
       ],
       control: {
         type: 'select'
-      }
+      },
+      table: {
+        category: 'Left Section'
+      },
     },
     leftPadding: {
-      name: 'Left Padding',
+      name: '--ep-header-left-padding',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Left Section'
+      },
     },
     centerFlex: {
-      name: 'Center Flex',
+      name: '--ep-header-center-flex',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Center Section'
+      },
     },
     centerGap: {
-      name: 'Center Gap',
+      name: '--ep-header-center-gap',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Center Section'
+      },
     },
     centerJustify: {
-      name: 'Center Justify',
+      name: '--ep-header-center-justify-content',
       options: [
         'flex-start',
         'center',
@@ -139,28 +218,40 @@ export default {
       ],
       control: {
         type: 'select'
-      }
+      },
+      table: {
+        category: 'Center Section'
+      },
     },
     centerPadding: {
-      name: 'Center Padding',
+      name: '--ep-header-center-padding',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Center Section'
+      },
     },
     rightFlex: {
-      name: 'Right Flex',
+      name: '--ep-header-right-flex',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Right Section'
+      },
     },
     rightGap: {
-      name: 'Right Gap',
+      name: '--ep-header-right-gap',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Right Section'
+      },
     },
     rightJustify: {
-      name: 'Right Justify',
+      name: '--ep-header-right-justify-content',
       options: [
         'flex-start',
         'center',
@@ -171,48 +262,63 @@ export default {
       ],
       control: {
         type: 'select'
-      }
+      },
+      table: {
+        category: 'Right Section'
+      },
     },
     rightPadding: {
-      name: 'Right Padding',
+      name: '--ep-header-right-padding',
       control: {
         type: 'text'
-      }
+      },
+      table: {
+        category: 'Right Section'
+      },
     },
-    sticky: {
-      name: 'Sticky',
-      control: {
-        type: 'boolean'
-      }
-    },
-    stickyTop: {
-      name: 'Sticky Top',
-      control: {
-        type: 'text'
-      }
-    },
-    zIndex: {
-      name: 'Z Index',
-      control: {
-        type: 'text'
-      }
-    },
-    shadowed: {
-      name: 'Shadowed',
-      control: {
-        type: 'boolean'
-      }
-    },
+    styles: { table: { disable: true } },
   }
 }
 
 export const Header = args => ({
   components: { EpHeader },
   setup() {
-    return { args }
+    const styles = computed(() => ({
+      '--ep-header-container-position': args.sticky ? 'sticky' : 'relative',
+      '--ep-header-container-top': args.sticky ? args.stickyTop : 'auto',
+      '--ep-header-container-width': args.width,
+      '--ep-header-container-height': args.height,
+      '--ep-header-container-padding': args.padding,
+      '--ep-header-container-margin': args.margin,
+      '--ep-header-container-bg-color': args.backgroundColor,
+      '--ep-header-container-border-radius': args.borderRadius,
+      '--ep-header-container-border-width': args.borderWidth,
+      '--ep-header-container-border-style': args.borderStyle,
+      '--ep-header-container-border-color': args.borderColor,
+      '--ep-header-container-box-shadow': args.shadowed ? '0 2px 4px rgba(0, 0, 0, 0.1)' : 'none',
+      // '--ep-header-container-z-index':
+      '--ep-header-content-gap': args.itemGap,
+      '--ep-header-left-flex': args.leftFlex,
+      '--ep-header-left-gap': args.leftGap,
+      '--ep-header-left-justify-content': args.leftJustify,
+      '--ep-header-left-padding': args.leftPadding,
+      '--ep-header-center-flex': args.centerFlex,
+      '--ep-header-center-gap': args.centerGap,
+      '--ep-header-center-justify-content': args.centerJustify,
+      '--ep-header-center-padding': args.centerPadding,
+      '--ep-header-right-flex': args.rightFlex,
+      '--ep-header-right-gap': args.rightGap,
+      '--ep-header-right-justify-content': args.rightJustify,
+      '--ep-header-right-padding': args.rightPadding,
+    }))
+
+    return { args, styles }
   },
   template: `
-    <ep-header v-bind="args">
+    <ep-header
+      v-bind="args"
+      :style="styles"
+    >
       <template #left>
         <div style="display: grid; place-content: center; width: 150px; height: 100%; border: 1px dashed skyblue;">Left Item</div>
       </template>
@@ -227,14 +333,13 @@ export const Header = args => ({
     </ep-header>
   `
 })
-
 Header.args = {
   width: '100%',
   height: '6.1rem',
   padding: '1rem',
   margin: '0',
   backgroundColor: 'transparent',
-  borderRadius: 'var(--border-radius--large)',
+  borderRadius: '0',
   borderWidth: '0.1rem',
   borderStyle: 'solid',
   borderColor: 'var(--border-color)',
@@ -254,6 +359,5 @@ Header.args = {
   rightPadding: '0',
   sticky: false,
   stickyTop: '0',
-  zIndex: '1',
   shadowed: false,
 }

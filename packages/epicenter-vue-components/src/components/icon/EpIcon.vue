@@ -4,22 +4,22 @@
   <component
     :is="type"
     class="ep-icon"
-    :style="styles"
     v-html="svgContent"
   />
 </template>
 
 <script setup>
   import { ref, watch } from 'vue'
+  import { loadIcon } from '@ericpitcock/epicenter-icons'
+
+  defineOptions({
+    name: 'EpIcon'
+  })
 
   const props = defineProps({
     name: {
       type: String,
       required: true,
-    },
-    styles: {
-      type: Object,
-      default: () => ({}),
     },
     type: {
       type: String,
@@ -31,10 +31,7 @@
 
   watch(
     () => props.name,
-    async (name) => {
-      const { default: rawSvg } = await import(`./icons/${name}.svg?raw`)
-      svgContent.value = rawSvg
-    },
+    async (name) => svgContent.value = await loadIcon(name),
     { immediate: true }
   )
 </script>

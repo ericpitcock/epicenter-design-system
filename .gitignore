@@ -1,5 +1,7 @@
 info/
 node_modules/
 storybook-static/
+storybook-react-static/
 package-lock.json
-packages/epicenter-react-components
+docs/.vitepress/cache
+packages/epicenter-icons/icons/_source/

@@ -1,34 +1,42 @@
-import { centeredSurface } from '../../helpers/decorators.js'
+import { centeredBg } from '../../helpers/decorators.js'
 import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 import { computed } from 'vue'
 
 const fakeDropdownItems = [
   {
-    label: 'PDF',
-    iconLeft: { name: 'f-file' }
+    section: true,
+    label: 'Cheap'
   },
   {
-    label: 'JPG',
-    iconLeft: { name: 'f-file' }
+    label: 'Drip',
+    // iconLeft: { name: 'f-coffee' }
+  },
+  {
+    label: 'French Press',
+    // iconLeft: { name: 'f-coffee' }
   },
   {
     divider: true
   },
   {
-    label: 'CSV',
-    iconLeft: { name: 'f-file' }
+    section: true,
+    label: 'Expensive'
   },
   {
-    label: 'JSON',
-    iconLeft: { name: 'f-file' }
+    label: 'Latte',
+    // iconLeft: { name: 'f-coffee' }
+  },
+  {
+    label: 'Espresso',
+    // iconLeft: { name: 'f-coffee' }
   }
 ]
 
 export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
-  decorators: [centeredSurface],
+  decorators: [centeredBg],
   argTypes: {
     disabled: {
       name: 'Disabled',
@@ -65,7 +73,7 @@ export default {
     },
     button: { table: { disable: true } },
     buttonProps: { table: { disable: true } },
-    containerProps: { table: { disable: true } },
+    // containerProps: { table: { disable: true } },
     menuItems: { table: { disable: true } },
     showOnHover: {
       name: 'Show On Hover',
@@ -83,23 +91,19 @@ export const Dropdown = args => ({
   setup() {
     const buttonProps = computed(() => ({
       size: args['buttonProps.size'],
-      label: 'Export Data',
+      label: 'Choose your coffee',
       iconRight: { name: 'chevron-down' },
       iconLeft: args['buttonProps.iconLeft'],
       classes: { [args['buttonProps.classes']]: true }
     }))
-    const containerProps = computed(() => ({
-      '--ep-container-border-radius': 'var(--border-radius)',
-      '--ep-container-border-color': 'var(--border-color--lighter)'
-    }))
 
-    return { args, buttonProps, containerProps }
+    return { args, buttonProps }
   },
   template: `
     <ep-dropdown
       :buttonProps="buttonProps"
-      :containerProps="containerProps"
       :menuItems="args.menuItems"
+      menu-class="special-class"
       v-bind="args"
     />
   `

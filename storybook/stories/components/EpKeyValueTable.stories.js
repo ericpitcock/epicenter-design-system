@@ -22,28 +22,28 @@ const fakeData = {
       'DNS Resource Data': '164.221.252.124',
       'City': 'Tremblayborough'
     },
-    'secondary': {
-      'HTTP Hostname': 'juicy-jewel.name',
-      'HTTP URL': 'https://strict-tabby.name',
-      'HTTP Content Type': 'application/tamp-apex-update',
-      'HTTP User Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; .NET CLR 1.4.41485.2)',
-      'HTTP Referrer': 'http://upbeat-face.org',
-      'HTTP Method': 'DELETE',
-      'Hostname': 'live-lens.name',
-      'Domain': 'finished-passion.name',
-      'MAC Address': '43:6e:97:4d:87:e1',
-      'Country': 'Guam',
-      'Company': 'Jones Inc',
-      'AMP Status': 'Enabled',
-      'AMP Comment': 'Placeat blanditiis perferendis enim.',
-      'XFF Hostname': 'worthwhile-wasabi.com',
-      'XFF Domain': 'brown-squash.biz',
-      'XFF Country': 'Costa Rica',
-      'XFF Region': 'Cambridgeshire',
-      'XFF City': 'Jerrodbury',
-      'XFF Company': 'Langosh, Heidenreich and Fadel',
-      'XFF AMP Comment': 'Occaecati in ratione modi perferendis accusantium porro suscipit quo doloremque.'
-    }
+    // 'secondary': {
+    //   'HTTP Hostname': 'juicy-jewel.name',
+    //   'HTTP URL': 'https://strict-tabby.name',
+    //   'HTTP Content Type': 'application/tamp-apex-update',
+    //   'HTTP User Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; .NET CLR 1.4.41485.2)',
+    //   'HTTP Referrer': 'http://upbeat-face.org',
+    //   'HTTP Method': 'DELETE',
+    //   'Hostname': 'live-lens.name',
+    //   'Domain': 'finished-passion.name',
+    //   'MAC Address': '43:6e:97:4d:87:e1',
+    //   'Country': 'Guam',
+    //   'Company': 'Jones Inc',
+    //   'AMP Status': 'Enabled',
+    //   'AMP Comment': 'Placeat blanditiis perferendis enim.',
+    //   'XFF Hostname': 'worthwhile-wasabi.com',
+    //   'XFF Domain': 'brown-squash.biz',
+    //   'XFF Country': 'Costa Rica',
+    //   'XFF Region': 'Cambridgeshire',
+    //   'XFF City': 'Jerrodbury',
+    //   'XFF Company': 'Langosh, Heidenreich and Fadel',
+    //   'XFF AMP Comment': 'Occaecati in ratione modi perferendis accusantium porro suscipit quo doloremque.'
+    // }
   },
   formatter: {
     applicationProtocol: value => `${value} years old`,
@@ -99,10 +99,11 @@ export const KeyValueTable = (args) => ({
   },
   template: `
   <ep-container
-    :styles="{
+    :style="{
       '--ep-container-padding': '0 3rem',
       '--ep-container-content-padding': '3rem 0 10rem 0',
       '--ep-container-bg-color': 'var(--interface-surface)',
+      '--ep-container-border-width': '0.1rem',
       '--ep-container-overflow': 'auto',
     }"
     calculateHeight

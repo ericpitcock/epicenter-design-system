@@ -12,181 +12,165 @@
     >
       {{ tooltipText }}
     </div>
-    <div id="ep-donut" />
+    <div ref="ep-donut" />
     <div :class="['ep-donut-chart__value', valueTextClass]">
       {{ value }}
     </div>
   </div>
 </template>
 
-<script>
-  import * as d3 from 'd3'
+<script setup>
+  import { computed, ref, onMounted, useTemplateRef } from 'vue'
 
-  export default {
+  defineOptions({
     name: 'EpDonutChart',
-    props: {
-      animate: {
-        type: Boolean,
-        default: true
-      },
-      width: {
-        type: Number,
-        default: 200
-      },
-      height: {
-        type: Number,
-        default: 200
-      },
-      margin: {
-        type: Number,
-        default: 0
-      },
-      data: {
-        type: Array,
-        required: true
-      },
-      labels: {
-        type: Array,
-        required: true
-      },
-      // tooltipText: {
-      //   type: String,
-      //   default: 'Tooltip'
-      // },
-      value: {
-        type: String,
-        default: 'Value'
-      },
-      valueTextClass: {
-        type: String,
-        default: 'font-size--jumbo'
-      }
+  })
+
+  const props = defineProps({
+    animate: {
+      type: Boolean,
+      default: true,
     },
-    data() {
-      return {
-        tooltipVisible: false,
-        tooltipStyles: {
-          top: 0,
-          left: 0
-        },
-        tooltipText: 'tooltip'
-      }
+    width: {
+      type: Number,
+      default: 200,
     },
-    computed: {
-      containerStyles() {
-        return {
-          width: this.width + 'px',
-          height: this.height + 'px'
-        }
-      }
+    height: {
+      type: Number,
+      default: 200,
     },
-    mounted() {
-      this.drawChart()
+    margin: {
+      type: Number,
+      default: 0,
     },
-    methods: {
-      handleMouseOver(event, d) {
-        this.tooltipVisible = true
-        // position the tooltip relative to the element being hovered over
-        // always outside the chart
-        // if element is in the top left quadrant, position the tooltip in the top left, etc
-        var container = this.$refs.container
-        var tooltip = this.$refs.tooltip
-        var containerRect = container.getBoundingClientRect()
-        var tooltipRect = tooltip.getBoundingClientRect()
-        var x = event.clientX - containerRect.left
-        var y = event.clientY - containerRect.top
-        var tooltipX = x + 10
-        var tooltipY = y + 10
-        if (x > containerRect.width / 2) {
-          tooltipX = x + 10
-        } else {
-          tooltipX = x - tooltipRect.width - 10
-        }
-        if (y > containerRect.height / 2) {
-          tooltipY = y + 10
-        } else {
-          tooltipY = y - tooltipRect.height - 10
-        }
-        this.tooltipStyles = {
-          top: tooltipY + 'px',
-          left: tooltipX + 'px'
-        }
-        this.tooltipText = d.data
-      },
-      handleMouseOut() {
-        this.tooltipVisible = false
-      },
-      drawChart() {
-        // Set up the data
-        var data = this.data
-        var labels = this.labels
+    data: {
+      type: Array,
+      required: true,
+    },
+    labels: {
+      type: Array,
+      required: true,
+    },
+    value: {
+      type: String,
+      default: 'Value',
+    },
+    valueTextClass: {
+      type: String,
+      default: 'font-size--jumbo',
+    },
+  })
 
-        // Set up the dimensions and margins of the chart
-        var width = this.width
-        var height = this.height
-        var margin = this.margin
+  const container = useTemplateRef('container')
+  const tooltip = useTemplateRef('tooltip')
+  const epDonut = useTemplateRef('ep-donut')
 
-        // Calculate the radius of the chart
-        var radius = Math.min(width, height) / 2 - margin
+  const tooltipVisible = ref(false)
+  const tooltipStyles = ref({
+    top: 0,
+    left: 0,
+  })
+  const tooltipText = ref('tooltip')
 
-        // Select the SVG element and set its dimensions
-        var svg = d3.select('#ep-donut')
-          .append('svg')
-          .attr('width', width)
-          .attr('height', height)
+  const containerStyles = computed(() => ({
+    width: `${props.width}px`,
+    height: `${props.height}px`,
+  }))
 
-        // Create a group element for the chart
-        var g = svg.append('g')
-          .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
+  let d3 = null // Reference for dynamic import
 
-        // Set up the color scale
-        var color = d3.scaleOrdinal()
-          .range(['var(--chart-sequence-00)', 'var(--chart-sequence-01)', 'var(--chart-sequence-02)', 'var(--chart-sequence-03)'])
+  onMounted(async () => {
+    d3 = await import('d3') // Dynamically import d3
+    drawChart()
+  })
 
-        // Set up the arc generator
-        var arc = d3.arc()
-          .innerRadius(radius - 26)
-          .outerRadius(radius)
+  const handleMouseOver = (event, d) => {
+    tooltipVisible.value = true
+    const containerRect = container.value.getBoundingClientRect()
+    const tooltipRect = tooltip.value.getBoundingClientRect()
+    const x = event.clientX - containerRect.left
+    const y = event.clientY - containerRect.top
+    let tooltipX = x + 10
+    let tooltipY = y + 10
+    if (x > containerRect.width / 2) {
+      tooltipX = x + 10
+    } else {
+      tooltipX = x - tooltipRect.width - 10
+    }
+    if (y > containerRect.height / 2) {
+      tooltipY = y + 10
+    } else {
+      tooltipY = y - tooltipRect.height - 10
+    }
+    tooltipStyles.value = {
+      top: `${tooltipY}px`,
+      left: `${tooltipX}px`,
+    }
+    tooltipText.value = d.data
+  }
 
-        // Set up the pie generator
-        var pie = d3.pie()
-          .sort(null)
-          .value(function(d) { return d })
+  const handleMouseOut = () => {
+    tooltipVisible.value = false
+  }
 
-        // Generate the arcs
-        var arcs = g.selectAll('arc')
-          .data(pie(data))
-          .enter()
-          .append('g')
-          .attr('class', 'arc')
+  const drawChart = () => {
+    const data = props.data
+    const width = props.width
+    const height = props.height
+    const margin = props.margin
+    const radius = Math.min(width, height) / 2 - margin
 
-        // Draw the paths for the arcs
-        arcs.append('path')
-          .attr('d', arc)
-          .attr('fill', function(d) {
-            return color(d.data)
-          })
-          .attr('stroke', 'var(--interface-surface)')
-          .attr('stroke-width', '0.3rem')
-          .on('mouseover', this.handleMouseOver)
-          .on('mousemove', this.handleMouseOver)
-          .on('mouseout', this.handleMouseOut)
+    const svg = d3.select(epDonut.value)
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height)
 
-        // animate the arcs
-        if (this.animate) {
-          arcs.select('path')
-            .attr('d', arc)
-            .transition()
-            .duration(700)
-            .attrTween('d', function(d) {
-              var interpolate = d3.interpolate(d.startAngle, d.endAngle)
-              return function(t) {
-                d.endAngle = interpolate(t)
-                return arc(d)
-              }
-            })
-        }
-      }
+    const g = svg.append('g')
+      .attr('transform', `translate(${width / 2}, ${height / 2})`)
+
+    const color = d3.scaleOrdinal()
+      .range([
+        'hsl(var(--chart-sequence-00))',
+        'hsl(var(--chart-sequence-01))',
+        'hsl(var(--chart-sequence-02))',
+        'hsl(var(--chart-sequence-03))',
+      ])
+
+    const arc = d3.arc()
+      .innerRadius(radius - 26)
+      .outerRadius(radius)
+
+    const pie = d3.pie()
+      .sort(null)
+      .value((d) => d)
+
+    const arcs = g.selectAll('arc')
+      .data(pie(data))
+      .enter()
+      .append('g')
+      .attr('class', 'arc')
+
+    arcs.append('path')
+      .attr('d', arc)
+      .attr('fill', (d) => color(d.data))
+      .attr('stroke', 'var(--interface-surface)')
+      .attr('stroke-width', '0.3rem')
+      .on('mouseover', handleMouseOver)
+      .on('mousemove', handleMouseOver)
+      .on('mouseout', handleMouseOut)
+
+    if (props.animate) {
+      arcs.select('path')
+        .attr('d', arc)
+        .transition()
+        .duration(700)
+        .attrTween('d', function(d) {
+          const interpolate = d3.interpolate(d.startAngle, d.endAngle)
+          return function(t) {
+            d.endAngle = interpolate(t)
+            return arc(d)
+          }
+        })
     }
   }
 </script>

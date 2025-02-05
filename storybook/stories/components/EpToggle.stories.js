@@ -25,9 +25,12 @@ export default {
 export const Toggle = args => ({
   components: { EpToggle },
   setup() {
-    return { args }
+    const toggle = () => {
+      args.isActive = !args.isActive
+    }
+    return { args, toggle }
   },
-  template: '<ep-toggle v-bind="args" />'
+  template: '<ep-toggle v-bind="args" @toggle="toggle" />'
 })
 
 Toggle.args = {

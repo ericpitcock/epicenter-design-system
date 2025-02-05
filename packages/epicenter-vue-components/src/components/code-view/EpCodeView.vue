@@ -1,43 +1,68 @@
-<!-- eslint-disable vue/html-closing-bracket-newline -->
+<!-- eslint-disable vue/no-v-html -->
 <template>
-  <!-- eslint-disable-next-line vue/max-attributes-per-line -->
-  <pre
-    :class="[themeClass, { 'line-numbers': enableLineNumbers }]"><code :class="`language-${language}`">{{ code }}</code></pre>
+  <div
+    class="ep-code-block"
+    v-html="highlightedCode"
+  />
 </template>
 
 <script setup>
-  import { computed } from 'vue'
-  // eslint-disable-next-line no-unused-vars
-  import Prism from 'prismjs'
-  import 'prismjs/components/prism-javascript'
-  import 'prismjs/components/prism-json'
-  import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js'
+  import { onMounted, ref } from 'vue'
+  import { codeToHtml } from 'shiki'
 
-  // eslint-disable-next-line no-unused-vars
+  defineOptions({
+    name: 'EpCodeView'
+  })
+
   const props = defineProps({
+    /**
+     * The code to display.
+     */
     code: {
       type: String,
       required: true
     },
+    /**
+     * The language of the code.
+     */
     language: {
       type: String,
       required: true
     },
-    enableLineNumbers: {
-      type: Boolean,
-      default: true
-    },
+    /**
+     * The theme to use for highlighting.
+     */
     theme: {
       type: String,
-      default: 'dark'
+      default: 'vitesse-dark'
     }
   })
 
-  const themeClass = computed(() => {
-    return props.theme === 'dark' ? 'dark-theme' : 'light-theme'
+  const highlightedCode = ref('')
+
+  const highlightCode = async () => {
+    try {
+      highlightedCode.value = await codeToHtml(props.code, {
+        lang: props.language,
+        theme: 'one-dark-pro',
+        colorReplacements: {
+          '#282c34': 'var(--interface-surface)',
+        }
+      })
+    } catch (error) {
+      console.error('Error highlighting code:', error)
+      // Fallback to plain text
+      highlightedCode.value = props.code
+    }
+  }
+
+  onMounted(() => {
+    highlightCode()
   })
-
-
-  // if this somehow breaks in production,
-  // bring back Prism.highlightAll() in onMounted
 </script>
+
+<style lang="scss">
+  .ep-code-block pre {
+    white-space: pre;
+  }
+</style>

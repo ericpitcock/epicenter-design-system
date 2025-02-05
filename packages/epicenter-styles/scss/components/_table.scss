@@ -1,21 +1,34 @@
 .ep-table-container {
+  --ep-table-container-width: auto;
+  --ep-table-container-height: auto;
+  --ep-table-container-min-width: 0;
   --ep-table-container-overflow: auto;
   --ep-table-container-padding: 0;
   --ep-table-header-bg-color: var(--interface-surface);
   --ep-table-border-color: var(--border-color);
   --ep-table-width: auto;
+  --ep-table-min-width: 0;
+  --ep-table-sticky-top: 0;
+  // --ep-table-fixed-top: 0;
+  --ep-table-head-width: auto;
+  --ep-table-body-width: auto;
   --ep-table-row-stripe-color: var(--interface-foreground);
   --ep-table-row-hover-bg-color: hsl(var(--gray-450));
   --ep-table-cell-vertical-align: middle;
   --ep-table-cell-white-space: normal;
+  width: var(--ep-table-container-width);
+  height: var(--ep-table-container-height);
+  min-width: var(--ep-table-container-min-width);
   overflow: var(--ep-table-container-overflow);
   padding: var(--ep-table-container-padding);
 }
 
 .ep-table {
   width: var(--ep-table-width);
+  min-width: var(--ep-table-min-width);
 
   thead {
+    width: var(--ep-table-head-width);
     font-variation-settings: 'wght' 600;
     user-select: none;
     color: var(--text-color--loud);
@@ -23,6 +36,10 @@
     th {
       text-align: left;
       background: var(--ep-table-header-bg-color);
+
+      &.ep-table__actions-menu {
+        width: 5rem;
+      }
 
       div {
         position: relative;
@@ -38,18 +55,13 @@
           text-overflow: ellipsis;
           flex: 1;
         }
-
-        // .ep-icon {
-        //   position: absolute;
-        //   right: 0;
-        //   // margin-left: 10px;
-        //   visibility: hidden;
-        // }
       }
     }
   }
 
   tbody {
+    width: var(--ep-table-body-width);
+
     tr {
       position: relative;
 
@@ -62,6 +74,11 @@
         padding: 1.4rem;
         vertical-align: var(--ep-table-cell-vertical-align);
         white-space: var(--ep-table-cell-white-space);
+
+        &.ep-table__actions-menu {
+          width: 5rem;
+          padding: 0;
+        }
       }
     }
   }
@@ -109,28 +126,23 @@
     }
   }
 
-  // &--sortable {
-  //   thead th {
-  //     &:hover {
-  //       color: var(--text-color--link);
-  //       cursor: pointer;
-  //     }
-  //     &.active {
-  //       color: var(--text-color--link);
-  //       .ep-icon {
-  //         visibility: visible;
-  //       }
-  //     }
-  //   }
-  // }
   &--sticky {
     thead {
       th {
         position: sticky;
-        top: 0;
+        top: var(--ep-table-sticky-top);
         z-index: var(--z-index--sticky);
       }
     }
+  }
+
+  &--fixed-header {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
   }
 
   &--striped {

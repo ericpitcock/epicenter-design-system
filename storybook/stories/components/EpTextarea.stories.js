@@ -84,6 +84,11 @@ export default {
         type: 'string',
       }
     },
+    modelValue: {
+      table: {
+        disable: true
+      }
+    },
     spellcheck: {
       name: 'spellcheck',
       control: {
@@ -106,7 +111,8 @@ export const Textarea = args => ({
   },
   template: `
     <div style="width: 60rem; height: 30rem;">
-      <ep-textarea v-bind="args" />
+      <ep-textarea v-bind="args" v-model="args.modelValue" />
+      {{ args.modelValue }}
     </div>
   `
 })
@@ -114,7 +120,7 @@ export const Textarea = args => ({
 Textarea.args = {
   id: 'textarea',
   name: 'textarea',
-  value: '',
+  // modelValue: '',
   placeholder: 'Placeholder',
   disabled: false,
   required: false,
@@ -125,4 +131,7 @@ Textarea.args = {
   autocomplete: 'on',
   spellcheck: false,
   wrap: 'soft',
+  style: {
+    '--ep-textarea-bg-color': 'var(--interface-foreground)',
+  }
 }

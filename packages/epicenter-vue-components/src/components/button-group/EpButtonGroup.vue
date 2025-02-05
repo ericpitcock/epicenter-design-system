@@ -3,55 +3,56 @@
     <ep-button
       v-for="(item, index) in items"
       :key="item.label"
-      v-bind="item"
+      :label="item.label"
       :size="size"
       :disabled="disabled"
       :class="{ 'ep-button-group--active': index === activeButton && !disabled }"
+      :style="styles"
       @click="onClick(item, index)"
     />
   </div>
 </template>
 
-<script>
+<script setup>
   import EpButton from '../button/EpButton.vue'
+  import { ref } from 'vue'
 
-  export default {
-    name: 'EpButtonGroup',
-    components: {
-      EpButton
+  defineOptions({
+    name: 'EpButtonGroup'
+  })
+
+  const props = defineProps({
+    items: {
+      type: Array,
+      required: true
     },
-    props: {
-      items: {
-        type: Array,
-        required: true
-      },
-      active: {
-        type: Number,
-        default: null
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      size: {
-        type: String,
-        default: 'default'
-      }
+    active: {
+      type: Number,
+      default: null
     },
-    emits: ['click'],
-    data() {
-      return {
-        activeButton: 0
-      }
+    disabled: {
+      type: Boolean,
+      default: false
     },
-    methods: {
-      onClick(item, index) {
-        if (this.disabled) {
-          return
-        }
-        this.activeButton = index
-        this.$emit('click', item)
-      }
+    size: {
+      type: String,
+      default: 'default'
+    },
+    styles: {
+      type: Object,
+      default: () => ({})
     }
+  })
+
+  const emit = defineEmits(['click'])
+
+  const activeButton = ref(props.active)
+
+  const onClick = (item, index) => {
+    if (props.disabled) {
+      return
+    }
+    activeButton.value = index
+    emit('click', item)
   }
 </script>

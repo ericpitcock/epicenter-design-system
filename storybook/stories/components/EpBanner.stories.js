@@ -175,7 +175,7 @@ export const Banner = args => ({
     const iconProps = computed(() => {
       return {
         name: args.iconName,
-        styles: {
+        style: {
           '--ep-icon-color': args.iconColor,
           '--ep-icon-stroke-width': args.iconWeight,
         }
@@ -219,7 +219,7 @@ export const Banner = args => ({
 
 Banner.args = {
   dissmissable: false,
-  iconName: 'f-alert-circle',
+  iconName: 'f-arrow-right',
   iconColor: '#FFC107',
   iconWeight: 'Regular',
   stripColor: '#FFC107',

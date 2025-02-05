@@ -18,8 +18,14 @@ export default {
         type: 'text',
       }
     },
-    imageUrl: {
-      name: 'Image URL',
+    imageSrc: {
+      name: 'Image Source',
+      control: {
+        type: 'text',
+      }
+    },
+    imageAlt: {
+      name: 'Image Source',
       control: {
         type: 'text',
       }
@@ -42,5 +48,6 @@ export const BrowserFrame = args => ({
 BrowserFrame.args = {
   width: '100%',
   url: 'https://color.ericpitcock.com',
-  imageUrl: './color-desktop.png',
+  imageSrc: './color-desktop.png',
+  imageAlt: 'Color Palette Generator',
 }

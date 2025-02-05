@@ -1,206 +1,195 @@
 <template>
   <div
-    ref="ep-map-container"
+    ref="epMapContainer"
     class="ep-map-container"
   >
     <div id="ep-map" />
   </div>
 </template>
 
-<script>
+<script setup>
+  import { ref, nextTick, onMounted, onBeforeUnmount, watch } from 'vue'
   import 'mapbox-gl/dist/mapbox-gl.css'
-  import mapboxgl from 'mapbox-gl'
 
-  export default {
+  defineOptions({
     name: 'EpMap',
-    props: {
-      mapCenter: {
-        type: Array,
-        default: () => [-122.3321, 47.6062]
-      },
-      mapZoom: {
-        type: Number,
-        default: 12
-      },
-      mapStyle: {
-        type: String,
-        default: 'mapbox://styles/mapbox/streets-v11'
-      },
-      mapSource: {
-        type: Object,
-        default: null
-      },
-      mapLayer: {
-        type: Object,
-        default: null
-      },
-      pinLocations: {
-        type: Array,
-        default: () => []
-      },
-      scrollZoom: {
-        type: Boolean,
-        default: true
-      },
-      navigationControl: {
-        type: Boolean,
-        default: true
-      },
-      fitToBounds: {
-        type: Boolean,
-        default: false
-      }
-    },
-    emits: ['centerChange', 'dropPin', 'zoomChange'],
-    data() {
-      return {
-        init: true,
-        map: null,
-        markers: [],
-      }
-    },
-    watch: {
-      mapCenter(newCenter) {
-        this.$emit('centerChange', newCenter)
-        this.flyTo(newCenter, this.mapZoom)
-      },
-      mapZoom(newZoom) {
-        this.$emit('zoomChange', newZoom)
-        // this.map.zoomTo(newZoom)
+  })
 
-        // set the zoom level
-        this.flyTo(this.mapCenter, newZoom)
-
-        console.log('zoom changed', newZoom)
-      },
-      mapStyle(newStyle) {
-        this.map.setStyle(newStyle)
-      },
-      pinLocations() {
-        this.removeMarkers()
-        this.addMarkers()
-      },
-      scrollZoom(newScrollZoom) {
-        if (newScrollZoom) {
-          this.map.scrollZoom.enable()
-        } else {
-          this.map.scrollZoom.disable()
-        }
-      },
+  const props = defineProps({
+    mapCenter: {
+      type: Array,
+      default: () => [-122.3321, 47.6062]
     },
-    mounted() {
-      this.loadMap().then(() => {
-        // map layer
-        if (this.mapSource) this.addSource(this.mapSource, this.mapLayer)
-        // fit to bounds
-        if (this.fitToBounds) {
-          this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
-        }
-        // if pin locations exist, add them
-        if (this.pinLocations.length) this.addMarkers()
-        this.init = false
-      })
-      // get a reference to the parent container
-      const container = this.$refs['ep-map-container']
-
-      // create a new ResizeObserver instance
-      const observer = new ResizeObserver(() => {
-        // the size of the container has changed, redraw the map
-        this.$nextTick(() => {
-          this.map.resize()
-        })
-      })
-
-      // attach the observer to the container
-      observer.observe(container)
+    mapZoom: {
+      type: Number,
+      default: 12
     },
-    created() {
-      // selectively create watchers if features exist
-      // do this for everything that is not required
-
-      if (this.mapSource) {
-        this.$watch('mapSource', () => {
-          if (this.init) return
-          console.log('map source changed (mapSource watcher)')
-          if (this.map.getLayer('test')) this.map.removeLayer('test')
-          if (this.map.getSource('test')) this.map.removeSource('test')
-          this.addSource(this.mapSource, this.mapLayer)
-          this.fitBounds(this.getBounds(this.mapSource.source.data.geometry.coordinates))
-        })
-      }
+    mapStyle: {
+      type: String,
+      default: 'mapbox://styles/mapbox/streets-v11'
     },
-    beforeUnmount() {
-      if (this.map) {
-        if (this.map.getLayer('test')) this.map.removeLayer('test')
-        if (this.map.getSource('test')) this.map.removeSource('test')
-        this.map.remove()
-      }
+    mapSource: {
+      type: Object,
+      default: null
     },
-    methods: {
-      addMarkers() {
-        this.pinLocations.forEach((location) => {
-          const marker = new mapboxgl.Marker().setLngLat(location).addTo(this.map)
-          this.markers.push(marker)
-        })
-      },
-      removeMarkers() {
-        this.markers.forEach((marker) => marker.remove())
-        this.markers = []
-      },
-      flyTo(center = this.mapCenter, zoom = this.mapZoom) {
-        this.map.flyTo({
-          center,
-          zoom
-        })
-      },
-      loadMap() {
-        return new Promise(resolve => {
-          mapboxgl.accessToken = import.meta.env.VITE_APP_MAPBOX_TOKEN
-          this.map = new mapboxgl.Map({
-            container: 'ep-map',
-            center: this.mapCenter,
-            zoom: this.mapZoom,
-            style: this.mapStyle,
-          })
-          // various options
-          // scroll zoom
-          if (!this.scrollZoom) this.map.scrollZoom.disable()
-          // Add zoom and rotation controls to the map.
-          if (this.navigationControl) this.map.addControl(new mapboxgl.NavigationControl())
-
-          this.map.on('load', () => resolve())
-          this.map.on('dragend', this.onDragEnd)
-        })
-      },
-      onDragEnd() {
-        const center = this.map.getCenter()
-        this.$emit('centerChange', [center.lng, center.lat])
-      },
-      getMapCenter() {
-        if (this.fitToBounds) {
-          let bounds = this.getBounds(this.mapSource.source.data.geometry.coordinates)
-          return [bounds.getCenter().lng, bounds.getCenter().lat]
-        } else {
-          return this.mapCenter
-        }
-      },
-      getBounds(coordinates) {
-        let bounds = coordinates.reduce(function(bounds, coord) {
-          return bounds.extend(coord)
-        }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]))
-        return bounds
-      },
-      fitBounds(bounds) {
-        this.map.fitBounds(bounds, {
-          linear: false,
-          duration: 1000,
-          padding: 60
-        })
-      },
-      addSource(source, layer) {
-        this.map.addSource(source.id, source.source)
-        this.map.addLayer(layer)
-      }
+    mapLayer: {
+      type: Object,
+      default: null
+    },
+    pinLocations: {
+      type: Array,
+      default: () => []
+    },
+    scrollZoom: {
+      type: Boolean,
+      default: true
+    },
+    navigationControl: {
+      type: Boolean,
+      default: true
+    },
+    fitToBounds: {
+      type: Boolean,
+      default: false
     }
+  })
+
+  const emit = defineEmits(['centerChange', 'dropPin', 'zoomChange'])
+
+  const init = ref(true)
+  const map = ref(null)
+  const markers = ref([])
+  let mapboxgl = null // Reference for dynamic import
+
+  watch(() => props.mapCenter, (newCenter) => {
+    emit('centerChange', newCenter)
+    flyTo(newCenter, props.mapZoom)
+  })
+
+  watch(() => props.mapZoom, (newZoom) => {
+    emit('zoomChange', newZoom)
+    flyTo(props.mapCenter, newZoom)
+  })
+
+  watch(() => props.mapStyle, (newStyle) => {
+    map.value.setStyle(newStyle)
+  })
+
+  watch(() => props.pinLocations, () => {
+    removeMarkers()
+    addMarkers()
+  })
+
+  watch(() => props.scrollZoom, (newScrollZoom) => {
+    if (newScrollZoom) {
+      map.value.scrollZoom.enable()
+    } else {
+      map.value.scrollZoom.disable()
+    }
+  })
+
+  // get a reference to the parent container
+  const epMapContainer = ref(null)
+
+  onMounted(() => {
+    loadMap().then(() => {
+      // map layer
+      if (props.mapSource) addSource(props.mapSource, props.mapLayer)
+      // fit to bounds
+      if (props.fitToBounds) {
+        fitBounds(getBounds(props.mapSource.source.data.geometry.coordinates))
+      }
+      // if pin locations exist, add them
+      if (props.pinLocations.length) addMarkers()
+      init.value = false
+    })
+
+    // create a new ResizeObserver instance
+    const observer = new ResizeObserver(() => {
+      if (map.value) {
+        // Ensure map.value is initialized before calling resize
+        nextTick(() => {
+          map.value.resize()
+        })
+      }
+    })
+
+    // attach the observer to the container
+    observer.observe(epMapContainer.value)
+  })
+
+  onBeforeUnmount(() => {
+    if (map.value) {
+      if (map.value.getLayer('test')) map.value.removeLayer('test')
+      if (map.value.getSource('test')) map.value.removeSource('test')
+      map.value.remove()
+    }
+  })
+
+  const loadMap = () => {
+    return new Promise((resolve) => {
+      // Perform the dynamic import and other async operations
+      import('mapbox-gl').then((module) => {
+        mapboxgl = module.default
+        mapboxgl.accessToken = import.meta.env.VITE_APP_MAPBOX_TOKEN
+        map.value = new mapboxgl.Map({
+          container: 'ep-map',
+          center: props.mapCenter,
+          zoom: props.mapZoom,
+          style: props.mapStyle,
+        })
+
+        // Various options
+        if (!props.scrollZoom) map.value.scrollZoom.disable()
+        if (props.navigationControl) map.value.addControl(new mapboxgl.NavigationControl())
+
+        map.value.on('load', () => resolve())
+        map.value.on('dragend', onDragEnd)
+      })
+    })
+  }
+
+  const addMarkers = () => {
+    props.pinLocations.forEach((location) => {
+      const marker = new mapboxgl.Marker().setLngLat(location).addTo(map.value)
+      markers.value.push(marker)
+    })
+  }
+
+  const removeMarkers = () => {
+    markers.value.forEach((marker) => marker.remove())
+    markers.value = []
+  }
+
+  const flyTo = (center = props.mapCenter, zoom = props.mapZoom) => {
+    map.value.flyTo({
+      center,
+      zoom
+    })
+  }
+
+  const onDragEnd = () => {
+    const center = map.value.getCenter()
+    emit('centerChange', [center.lng, center.lat])
+  }
+
+  const getBounds = (coordinates) => {
+    return coordinates.reduce(
+      (bounds, coord) => bounds.extend(coord),
+      new mapboxgl.LngLatBounds(coordinates[0], coordinates[0])
+    )
+  }
+
+  const fitBounds = (bounds) => {
+    map.value.fitBounds(bounds, {
+      linear: false,
+      duration: 1000,
+      padding: 60
+    })
+  }
+
+  const addSource = (source, layer) => {
+    map.value.addSource(source.id, source.source)
+    map.value.addLayer(layer)
   }
 </script>

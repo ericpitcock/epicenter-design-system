@@ -12,6 +12,26 @@ export default {
         type: 'number'
       }
     },
+    position: {
+      name: 'Position',
+      control: {
+        type: 'select',
+      },
+      options: [
+        'top left',
+        'top center',
+        'top right',
+        'right top',
+        'right center',
+        'right bottom',
+        'bottom left',
+        'bottom center',
+        'bottom right',
+        'left top',
+        'left center',
+        'left bottom',
+      ]
+    },
   }
 }
 
@@ -33,5 +53,6 @@ export const Tooltip = args => ({
 })
 
 Tooltip.args = {
-  delay: 0
+  delay: 0,
+  position: 'top center'
 }

@@ -1,18 +1,21 @@
 <template>
   <div
-    v-click-outside="closeDropdown"
+    ref="dropdown"
     class="ep-dropdown"
     @mouseleave="onMouseleave"
   >
     <div
-      @click="toggleDropdown"
+      @click.stop="toggleDropdown"
       @mouseover="onMouseover"
     >
       <slot
         v-if="$slots.trigger"
         name="trigger"
       />
-      <ep-button v-bind="computedButtonProps" />
+      <ep-button
+        v-else
+        v-bind="computedButtonProps"
+      />
     </div>
     <div
       v-show="dropdownVisible"
@@ -25,10 +28,9 @@
         />
         <ep-menu
           v-else
+          :class="props.menuClass"
           :menu-items="menuItems"
           menu-type="dropdown"
-          divider-color="var(--border-color--lighter)"
-          :container-props="computedContainerProps"
           @click="onClick"
         />
       </div>
@@ -36,120 +38,104 @@
   </div>
 </template>
 
-<script>
-  import clickOutside from '../../directives/clickOutside.js'
+<script setup>
+  import { onClickOutside } from '@vueuse/core'
   import EpButton from '../button/EpButton.vue'
   import EpMenu from '../menu/EpMenu.vue'
+  import { computed, ref, useTemplateRef } from 'vue'
 
-  export default {
+  defineOptions({
     name: 'EpDropdown',
-    components: {
-      EpButton,
-      EpMenu
+  })
+
+  const props = defineProps({
+    disabled: {
+      type: Boolean,
+      default: false
     },
-    directives: {
-      clickOutside
+    buttonProps: {
+      type: Object,
+      default: () => ({})
     },
-    props: {
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      buttonProps: {
-        type: Object,
-        default: () => ({})
-      },
-      containerProps: {
-        type: Object,
-        default: () => ({})
-      },
-      menuItems: {
-        type: Array,
-        default: () => []
-      },
-      alignRight: {
-        type: Boolean,
-        default: false
-      },
-      showOnHover: {
-        type: Boolean,
-        default: false
+    containerProps: {
+      type: Object,
+      default: () => ({}),
+      validator: (value) => {
+        if (Object.keys(value).length !== 0) {
+          console.warn('containerProps is not allowed. Use menuClass instead.', value)
+        }
+        return true
       }
     },
-    emits: ['select'],
-    data() {
-      return {
-        dropdownVisible: false,
-        buttonDefaults: {
-          variant: 'secondary',
-          size: 'default',
-          title: '',
-          label: 'Default Dropdown',
-          iconRight: { name: 'chevron-down' },
-          iconLeft: undefined
-        }
-      }
+    menuClass: {
+      type: String,
+      default: ''
     },
-    computed: {
-      computedButtonProps() {
-        return {
-          ...this.disabled && { disabled: true },
-          ...this.buttonDefaults,
-          ...this.buttonProps,
-        }
-      },
-      computedContainerProps() {
-        return {
-          styles: {
-            '--ep-container-min-width': '15rem',
-            '--ep-container-bg-color': 'var(--interface-overlay)',
-            ...this.containerProps,
-          },
-        }
-      },
-      classes() {
-        return [
-          'ep-dropdown__container',
-          { 'ep-dropdown__container--align-right': this.alignRight }
-        ]
-      }
+    menuItems: {
+      type: Array,
+      default: () => []
     },
-    methods: {
-      toggleDropdown() {
-        if (this.disabled || this.showOnHover) {
-          return
-        }
-        this.dropdownVisible = !this.dropdownVisible
-      },
-      closeDropdown() {
-        if (this.disabled) {
-          return
-        }
-        this.dropdownVisible = false
-      },
-      // selectItem(item) {
-      //   this.$emit('select', item)
-      //   this.closeDropdown()
-      // },
-      onClick(item) {
-        this.$emit('select', item)
-      },
-      onMouseover() {
-        if (this.disabled) {
-          return
-        }
-        if (this.showOnHover) {
-          this.dropdownVisible = true
-        }
-      },
-      onMouseleave() {
-        if (this.disabled) {
-          return
-        }
-        if (this.showOnHover) {
-          this.dropdownVisible = false
-        }
-      }
+    alignRight: {
+      type: Boolean,
+      default: false
+    },
+    showOnHover: {
+      type: Boolean,
+      default: false
     }
+  })
+
+  const emit = defineEmits(['click'])
+
+  const dropdownVisible = ref(false)
+
+  const buttonDefaults = {
+    size: 'default',
+    title: '',
+    label: 'Default Dropdown',
+    iconRight: { name: 'chevron-down' },
+    iconLeft: undefined
+  }
+
+  const computedButtonProps = computed(() => ({
+    ...(props.disabled && { disabled: true }),
+    ...buttonDefaults,
+    ...props.buttonProps,
+  }))
+
+  const classes = computed(() => [
+    'ep-dropdown__container',
+    { 'ep-dropdown__container--align-right': props.alignRight }
+  ])
+
+  const toggleDropdown = () => {
+    if (props.disabled || props.showOnHover) return
+    dropdownVisible.value = !dropdownVisible.value
+  }
+
+  const closeDropdown = () => {
+    if (props.disabled) return
+    dropdownVisible.value = false
+  }
+
+  defineExpose({ closeDropdown })
+
+  const dropdownRef = useTemplateRef('dropdown')
+
+  onClickOutside(dropdownRef, closeDropdown)
+
+  const onClick = (payload) => {
+    emit('click', payload)
+    closeDropdown()
+  }
+
+  const onMouseover = () => {
+    if (props.disabled) return
+    if (props.showOnHover) dropdownVisible.value = true
+  }
+
+  const onMouseleave = () => {
+    if (props.disabled) return
+    if (props.showOnHover) dropdownVisible.value = false
   }
 </script>

@@ -1,0 +1,14 @@
+{
+  "name": "@ericpitcock/epicenter-react-components",
+  "version": "1.0.0",
+  "description": "Epicenter Design System - React Components",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericpitcock/epicenter-design-system.git"
+  },
+  "author": "Eric Pitcock",
+  "license": "MIT",
+  "dependencies": {
+  }
+}

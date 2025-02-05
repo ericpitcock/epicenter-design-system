@@ -1,23 +1,41 @@
 .ep-textarea {
+  // width and height
+  --ep-textarea-width: 100%;
+  --ep-textarea-min-width: 20rem;
+  --ep-textarea-max-width: 70rem;
+  --ep-textarea-height: 100%;
+  --ep-textarea-min-height: none;
+  --ep-textarea-max-height: none;
+  --ep-textarea-border-color: var(--border-color);
+  --ep-textarea-border-radius: var(--border-radius);
+  --ep-textarea-bg-color: var(--interface-foreground);
+  --ep-textarea-text-color: var(--text-color);
+  --ep-textarea-font-size: var(--font-size--body);
+  --ep-textarea-padding: 1.6rem 2rem;
+  --ep-textarea-line-height: 1.5;
+  --ep-textarea-resize: both;
+  --ep-textarea-focus-border-color: var(--primary-color-base);
   width: 100%;
 
   textarea {
-    width: 100%;
-    min-width: 20rem;
-    max-width: 70rem;
-    height: 100%;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    background-color: var(--interface-foreground);
-    color: var(--text-color);
-    padding: 1.6rem 2rem;
-    line-height: 1.5;
-    font-size: var(--font-size--body);
-    resize: both;
+    width: var(--ep-textarea-width);
+    min-width: var(--ep-textarea-min-width);
+    max-width: var(--ep-textarea-max-width);
+    height: var(--ep-textarea-height);
+    min-height: var(--ep-textarea-min-height);
+    max-height: var(--ep-textarea-max-height);
+    border: 1px solid var(--ep-textarea-border-color);
+    border-radius: var(--ep-textarea-border-radius);
+    background-color: var(--ep-textarea-bg-color);
+    color: var(--ep-textarea-text-color);
+    padding: var(--ep-textarea-padding);
+    line-height: var(--ep-textarea-line-height);
+    font-size: var(--ep-textarea-font-size);
+    resize: var(--ep-textarea-resize);
 
     &:focus {
       outline: none;
-      border-color: var(--color--primary);
+      border-color: var(--ep-textarea-focus-border-color);
     }
   }
 }

@@ -79,28 +79,23 @@ export const SplitButton = args => ({
   setup() {
     const buttonProps = computed(() => {
       return {
-        variant: args['buttonProps.variant'],
         size: args['buttonProps.size'],
         label: args['buttonProps.label'],
         iconLeft: args['buttonProps.iconLeft'],
         iconRight: args['buttonProps.iconRight'],
+        class: 'ep-button-var--primary'
       }
     })
 
     const dropdownProps = computed(() => {
       return {
         buttonProps: {
-          variant: args['buttonProps.variant'],
           size: args['buttonProps.size'],
           label: '',
           iconRight: args['dropdownProps.buttonProps.iconRight'],
+          class: 'ep-button-var--primary'
         },
-        containerProps: {
-          backgroundColor: 'var(--interface-overlay)',
-          // containerPadding: '1rem 0',
-          borderRadius: 'var(--border-radius)',
-          borderColor: 'var(--border-color--lighter)',
-        },
+        menuClass: 'ep-menu-default',
         menuItems: [
           { label: 'Download v1.1' },
           { label: 'Download v1.0.1' },

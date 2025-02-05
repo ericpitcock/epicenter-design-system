@@ -1,135 +1,97 @@
 <template>
-  <ep-container v-bind="containerProps">
-    <div class="ep-menu">
-      <template
-        v-for="(item, index) of menuItems"
-        :key="`${item.label}${index}`"
+  <div class="ep-menu">
+    <template
+      v-for="(item, index) of menuItems"
+      :key="item.id || index"
+    >
+      <ep-divider v-if="item.divider" />
+      <div
+        v-else-if="item.section"
+        class="ep-menu__section text-style--section"
       >
-        <ep-divider
-          v-if="item.divider"
-          :color="dividerColor"
-          margin="1rem 0"
+        {{ item.label }}
+      </div>
+      <div
+        v-else
+        class="ep-menu__item"
+        :data-item="index"
+        @mouseover="toggleSubmenu(item, index)"
+        @mouseleave="toggleSubmenu(item)"
+      >
+        <ep-button
+          :class="buttonClasses(item)"
+          v-bind="buttonProps(item)"
+          @click.stop="onClick(item)"
         />
         <div
-          v-if="item.section"
-          class="ep-menu__section text-style--section"
+          v-if="item.children"
+          v-show="activeItemIndex === index"
+          class="ep-menu__item__sub-menu"
         >
-          {{ item.label }}
-        </div>
-        <div
-          class="ep-menu__item"
-          :data-item="index"
-          @mouseover="showSubmenu(item, index)"
-          @mouseleave="hideSubmenu(item)"
-        >
-          <ep-button
-            v-if="!item.divider && !item.section"
-            v-bind="buttonProps(item)"
-            @click="onClick(item)"
+          <ep-menu
+            :size="size"
+            :class="$attrs.class"
+            :menu-items="item.children"
+            @click="onClick($event)"
           />
-          <div
-            v-if="item.children"
-            v-show="activeItemIndex === index"
-            class="ep-menu__item__sub-menu"
-          >
-            <ep-menu
-              :size="size"
-              :container-props="containerProps"
-              :menu-items="item.children"
-            />
-          </div>
         </div>
-      </template>
-    </div>
-  </ep-container>
+      </div>
+    </template>
+  </div>
 </template>
 
-<script>
-  import EpContainer from '../container/EpContainer.vue'
+<script setup>
   import EpDivider from '../divider/EpDivider.vue'
   import EpButton from '../button/EpButton.vue'
+  import { ref } from 'vue'
 
-  export default {
-    name: 'EpMenu',
-    components: {
-      EpContainer,
-      EpDivider,
-      EpButton
+  defineOptions({
+    name: 'EpMenu'
+  })
+
+  const props = defineProps({
+    menuType: {
+      type: String,
+      default: 'default' // default, dropdown, nav
     },
-    props: {
-      menuType: {
-        type: String,
-        default: 'default' // default, dropdown, nav
-      },
-      menuItems: {
-        type: Array,
-        default: () => []
-      },
-      size: {
-        type: String,
-        default: 'default'
-      },
-      containerProps: {
-        type: Object,
-        default: () => ({})
-      },
-      activeItem: {
-        type: String,
-        default: ''
-      },
-      dividerColor: {
-        type: String,
-        default: 'var(--border-color)'
-      }
+    menuItems: {
+      type: Array,
+      default: () => []
     },
-    emits: ['click'],
-    data() {
-      return {
-        activeItemIndex: null
-      }
+    size: {
+      type: String,
+      default: 'default'
     },
-    methods: {
-      buttonProps(item) {
-        return {
-          disabled: item.disabled,
-          variant: 'menu-item',
-          size: this.size,
-          label: item.label,
-          iconRight: item.iconRight,
-          iconLeft: item.iconLeft,
-          isMenuItem: true,
-          isActiveMenuItem: this.menuType === 'nav' && item.label == this.activeItem,
-          ...item.bind
-        }
-      },
-      showSubmenu(item, index) {
-        if (item.children) {
-          this.activeItemIndex = index
-        }
-      },
-      hideSubmenu(item) {
-        if (item.children) {
-          this.activeItemIndex = null
-        }
-      },
-      onClick(item) {
-        // if (item.section || item.divider) {
-        //   return
-        // }
-        this.$emit('click', item)
+    activeItem: {
+      type: String,
+      default: ''
+    },
+  })
 
-        if (item.command) {
-          item.command(item)
-        }
+  const emit = defineEmits(['click'])
 
-        if (item.to) {
-          this.$router.push(item.to)
-        }
+  const activeItemIndex = ref(null)
 
-        if (this.menuType === 'dropdown') {
-          this.$parent.closeDropdown()
-        }
-      }
-    }
+  const buttonProps = (item) => {
+    // eslint-disable-next-line no-unused-vars
+    const { children, ...rest } = item
+    rest.size = props.size
+    return rest
+  }
+
+  const buttonClasses = (item) => {
+    return [
+      'ep-button--menu-item',
+      { 'ep-button--menu-item--active': props.menuType === 'nav' && item.label === props.activeItem }
+    ]
+  }
+
+  const toggleSubmenu = (item, index = null) => {
+    if (!item.children) return
+    activeItemIndex.value = index
+  }
+
+  const onClick = (item) => {
+    emit('click', item)
   }
 </script>

@@ -19,6 +19,9 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpCheckbox'
+  })
   import { computed } from 'vue'
 
   const modelValue = defineModel({
@@ -27,36 +30,58 @@
   })
 
   const props = defineProps({
-    // required
+    /**
+     * The ID of the checkbox.
+     */
     id: {
       type: String,
       required: true
     },
+    /**
+     * The label for the checkbox.
+     */
     label: {
       type: String,
       required: true
     },
+    /**
+     * The name of the checkbox.
+     */
     name: {
       type: String,
       required: true
     },
+    /**
+     * The value of the checkbox.
+     */
     value: {
       type: String,
       required: true
     },
-    // optional
+    /**
+     * Whether the checkbox is checked.
+     */
     checked: {
       type: Boolean,
       default: false
     },
+    /**
+     * Whether the checkbox is disabled.
+     */
     disabled: {
       type: Boolean,
       default: false
     },
+    /**
+     * Whether the checkbox is indeterminate.
+     */
     indeterminate: {
       type: Boolean,
       default: false
     },
+    /**
+     * Whether the checkbox is required.
+     */
     required: {
       type: Boolean,
       default: false

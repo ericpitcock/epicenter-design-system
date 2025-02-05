@@ -1,39 +1,37 @@
 import { centeredBg } from '../../helpers/decorators.js'
 import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpButton from '@/components/button/EpButton.vue'
-// import markdown from '../../../docs/EpButton.md'
 import { computed } from 'vue'
 
 export default {
   title: 'Components/Button',
   component: EpButton,
   decorators: [centeredBg],
-  // parameters: {
-  //   docs: {
-  //     description: {
-  //       component: markdown
-  //     }
-  //   }
-  // },
   argTypes: {
     classes: {
-      name: 'Variant',
+      name: 'Style',
       options: [
-        'Custom',
         'Primary',
+        'Secondary',
         'Success',
         'Warning',
-        'Danger'
+        'Danger',
+        'Outline',
+        'Ghost',
+        'Custom',
       ],
       mapping: {
         None: null,
-        Primary: { 'button-variant-primary': true },
-        Success: { 'button-variant-success': true },
-        Warning: { 'button-variant-warning': true },
-        Danger: { 'button-variant-danger': true }
+        Primary: { 'ep-button-var--primary': true },
+        Secondary: { 'ep-button-var--secondary': true },
+        Success: { 'ep-button-var--success': true },
+        Warning: { 'ep-button-var--warning': true },
+        Danger: { 'ep-button-var--danger': true },
+        Outline: { 'ep-button-var--outline': true },
+        Ghost: { 'ep-button-var--ghost': true },
       },
       control: {
-        type: 'select',
+        type: 'radio',
       },
       table: {
         category: 'Styles'
@@ -64,7 +62,6 @@ export default {
         category: 'Base Props'
       }
     },
-    title: { table: { disable: true } },
     ariaLabel: { table: { disable: true } },
     to: { table: { disable: true } },
     href: { table: { disable: true } },
@@ -278,7 +275,7 @@ export const Button = args => ({
     <ep-button
       v-bind="args"
       :style="styles"
-      :classes="args.classes"
+      :class="args.classes"
       @click="onClick"
     />
   `
@@ -288,7 +285,7 @@ Button.args = {
   label: 'Download the Internet',
   size: 'large',
   disabled: false,
-  classes: 'None',
+  classes: 'Primary',
   enabledIcons: false,
   iconLeft: 'None',
   iconRight: 'None',

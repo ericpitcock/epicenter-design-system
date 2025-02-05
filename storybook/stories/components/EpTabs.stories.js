@@ -1,10 +1,10 @@
 import { paddedBg } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
-import EpFooter from '@/components/footer/EpFooter.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpTabs from '@/components/tabs/EpTabs.vue'
 import EpTabContent from '@/components/tabs/EpTabContent.vue'
-import { computed, ref } from 'vue'
+import { useTabs } from '@/composables'
+import { computed } from 'vue'
 
 export default {
   title: 'Components/Tabs',
@@ -31,28 +31,29 @@ export default {
   }
 }
 
-const tabItems = ['Overview', 'Features', 'Pricing']
+const tabItems = ['Data', 'Stats', 'Authors']
 
 const routerLinkItems = [
-  { label: 'Overview', to: '/overview' },
-  { label: 'Features', to: '/features' },
-  { label: 'Pricing', to: '/pricing' }
+  { label: 'Data', to: '/library/data' },
+  { label: 'Stats', to: '/library/data/stats' },
+  { label: 'Authors', to: '/library/authors' }
 ]
 
 export const Tabs = args => ({
   components: {
     EpContainer,
-    EpFooter,
     EpHeader,
     EpTabs,
     EpTabContent
   },
   setup() {
-    const activeTab = ref(0)
+    // const activeTab = ref(0)
 
-    const setActiveTab = index => {
-      activeTab.value = index
-    }
+    // const setActiveTab = index => {
+    //   activeTab.value = index
+    // }
+
+    const { activeTab, setActiveTab } = useTabs()
 
     const containerPadding = computed(() => args.variant === 'classic' ? '0' : '0 3rem')
     const contentPadding = computed(() => args.variant === 'classic' ? '3rem' : '3rem 0')
@@ -75,30 +76,34 @@ export const Tabs = args => ({
   },
   template: `
     <ep-container
-      :styles="{
+      :style="{
         '--ep-container-max-width': '120rem',
         '--ep-container-height': '100%',
         '--ep-container-bg-color': 'var(--interface-surface)',
-        '--ep-container-overflow': 'hidden',
+        '--ep-container-overflow': 'visible',
         '--ep-container-padding': containerPadding,
+        '--ep-container-border-width': '0.1rem',
         '--ep-container-content-padding': contentPadding,
       }"
     >
       <template #header>
-      <ep-header
-        :padding="headerPadding"
-        :height="headerHeight"
-        :background-color="headerBgColor"
-      >
-        <template #left>
-          <ep-tabs
-            v-bind="args"
-            :items="routerLinkItems"
-            :active-tab-index="activeTab"
-            @tab-click="setActiveTab"
-          />
-        </template>
-      </ep-header>
+        <ep-header
+          :style="{
+            '--ep-header-container-height': headerHeight,
+            '--ep-header-container-bg-color': headerBgColor,
+            '--ep-header-container-padding': headerPadding,
+            '--ep-header-container-overflow': 'visible'
+          }"
+        >
+          <template #left>
+            <ep-tabs
+              v-bind="args"
+              :items="routerLinkItems"
+              :active-tab-index="activeTab"
+              @tab-click="setActiveTab"
+            />
+          </template>
+        </ep-header>
       </template>
       <template #default>
         <ep-tab-content
@@ -124,12 +129,6 @@ export const Tabs = args => ({
           </div>
         </template>
         </ep-tab-content>
-      </template>
-      <template #footer>
-        <ep-footer>
-          <template #left>
-          </template>
-        </ep-footer>
       </template>
     </ep-container>
   `

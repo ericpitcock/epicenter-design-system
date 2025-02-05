@@ -12,11 +12,6 @@ export default {
         disable: true
       }
     },
-    showDropdownOnHover: {
-      control: {
-        type: 'boolean'
-      }
-    }
   }
 }
 
@@ -25,12 +20,14 @@ export const ActionBar = args => ({
     EpActionBar
   },
   setup() {
-    return { args }
+    const onClick = (item) => {
+      if (item.action) item.action(item)
+    }
+    return { args, onClick }
   },
-  template: '<ep-action-bar v-bind="args" />'
+  template: '<ep-action-bar v-bind="args" @click="onClick" />'
 })
 
 ActionBar.args = {
-  showDropdownOnHover: true,
   ...commonActionBarArgs
 }

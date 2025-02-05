@@ -150,6 +150,7 @@ const icons = [
   'f-life-buoy',
   'f-link-2',
   'f-link',
+  'f-linkedin',
   'f-list',
   'f-loader',
   'f-lock',

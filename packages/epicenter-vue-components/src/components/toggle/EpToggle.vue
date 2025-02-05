@@ -1,57 +1,54 @@
 <template>
   <div
-    :class="['toggle', classes]"
+    :class="['ep-toggle', classes]"
     @click="toggle"
   >
-    <div class="toggle__track">
-      <div class="toggle__thumb" />
+    <div class="ep-toggle__track">
+      <div class="ep-toggle__thumb" />
     </div>
-    <div class="toggle__label">
+    <div class="ep-toggle__label">
       {{ label }}
     </div>
   </div>
 </template>
 
-<script>
-  export default {
+<script setup>
+  import { computed } from 'vue'
+
+  defineOptions({
     name: 'EpToggle',
-    props: {
-      isActive: {
-        type: Boolean,
-        default: false,
-      },
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
-      label: {
-        type: String,
-        default: '',
-      },
-      size: {
-        type: String,
-        default: 'default',
-      },
+  })
+
+  const props = defineProps({
+    isActive: {
+      type: Boolean,
+      default: false,
     },
-    emits: ['toggle'],
-    data() {
-      return {
-        active: this.isActive,
-      }
+    disabled: {
+      type: Boolean,
+      default: false,
     },
-    computed: {
-      classes() {
-        return {
-          'toggle--active': this.active,
-          'toggle--disabled': this.disabled,
-        }
-      },
+    label: {
+      type: String,
+      default: '',
     },
-    methods: {
-      toggle() {
-        this.active = !this.active
-        this.$emit('toggle', this.active)
-      },
+    size: {
+      type: String,
+      default: 'default',
     },
+  })
+
+  const emit = defineEmits(['toggle'])
+
+  const classes = computed(() => {
+    return {
+      'ep-toggle--active': props.isActive,
+      'ep-toggle--disabled': props.disabled,
+    }
+  })
+
+  const toggle = () => {
+    if (props.disabled) return
+    emit('toggle')
   }
 </script>

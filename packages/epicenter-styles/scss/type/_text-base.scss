@@ -1,11 +1,9 @@
 body {
   font-size: var(--font-size--default);
-  font-variation-settings: 'wght' 500;
-  // Stylistic set 2: Disambiguation
-  // font-feature-settings: 'ss02';
+  font-variation-settings: var(--font-weight--default);
   color: var(--text-color);
-}
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-color--loud);
+  @media (prefers-contrast: more) {
+    color: var(--text-color--loud);
+  }
 }

@@ -2,7 +2,7 @@
   <div class="intro">
     <div class="hero">
       <div class="logo-container">
-        <epicenter-logo :styles="{ '--logo-stroke-width': 5 }" />
+        <epicenter-logo :style="{ '--logo-stroke-width': 4 }" />
       </div>
       <div class="copy-block">
         <h1 class="font-size--jumbo">
@@ -11,10 +11,7 @@
         <p class="monospace">
           { Vue, React } = componentsForApps
         </p>
-        <ep-button
-          v-bind="buttonProps"
-          href="https://github.com/ericpitcock/epicenter-design-system"
-        />
+        <ep-button v-bind="buttonProps" />
       </div>
     </div>
     <div class="content">
@@ -38,10 +35,17 @@
   import EpButton from '@/components/button/EpButton.vue'
 
   const buttonProps = {
+    href: 'https://github.com/ericpitcock/epicenter-design-system',
+    iconLeft: {
+      name: 'f-github',
+      style: {
+        '--ep-icon-width': '2rem',
+        '--ep-icon-stroke-width': 1.5,
+      },
+    },
     label: 'GitHub',
     size: 'large',
-    iconLeft: { name: 'f-github', size: 26, weight: 'light' },
-    styles: {
+    style: {
       '--ep-button-bg-color': '#242424',
       '--ep-button-border-color': '#242424',
       '--ep-button-text-color': '#e6e6e6',

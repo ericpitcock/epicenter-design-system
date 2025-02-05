@@ -1,83 +1,98 @@
-const buttonStyles = {
-  '--ep-button-bg-color': 'transparent',
-  '--ep-button-border-color': 'transparent',
-  '--ep-button-text-color': 'var(--text-color)',
-  '--ep-button-hover-bg-color': 'transparent',
-  '--ep-button-hover-border-color': 'transparent',
-  '--ep-button-hover-text-color': 'var(--text-color--loud)',
-  '--ep-button-active-bg-color': 'transparent',
-  '--ep-button-active-border-color': 'transparent',
-  '--ep-button-active-text-color': 'var(--color--primary)',
-}
-
-const containerStyles = {
-  '--ep-container-bg-color': 'var(--interface-overlay)',
-  '--ep-container-border-radius': 'var(--border-radius)',
-  '--ep-container-border-color': 'var(--border-color--lighter)',
-}
+import { faker } from '@faker-js/faker'
 
 const commonActionBarArgs = {
   items: [
     {
-      type: 'dropdown',
-      alignRight: true,
-      buttonProps: {
+      component: 'ep-button',
+      props: {
         label: '',
+        ariaLabel: 'Help',
         iconLeft: { name: 'help' },
-        iconRight: undefined,
-        styles: buttonStyles
+        class: 'ep-button-var--ghost',
+        action: () => console.log('the help button was clicked')
       },
-      containerProps: {
-        styles: containerStyles
-      },
-      menuItems: [
-        { label: 'Documentation' },
-        { label: 'API Reference' },
-        { divider: true },
-        { label: 'Contact Us' }
-      ]
     },
     {
-      type: 'dropdown',
-      alignRight: true,
-      buttonProps: {
-        label: '',
-        iconLeft: { name: 'notifications' },
-        iconRight: undefined,
-        styles: buttonStyles
-      },
-      containerProps: {
-        styles: containerStyles
-      },
-      menuItems: [
-        { label: 'Notifications' },
-        { label: 'Alerts' },
-        { label: 'Messages' },
-        { divider: true },
-        { label: 'Settings' }
-      ]
+      component: 'ep-dropdown',
+      props: {
+        buttonProps: {
+          label: '',
+          ariaLabel: 'Notifications',
+          iconLeft: { name: 'notifications' },
+          iconRight: undefined,
+          class: 'ep-button-var--ghost'
+        },
+        menuClass: 'ep-menu-default',
+        menuItems: [
+          {
+            id: faker.string.uuid(),
+            label: 'Notifications',
+            action: (item) => console.log('clicked', item.label),
+          },
+          {
+            id: faker.string.uuid(),
+            label: 'Alerts',
+            action: (item) => console.log('clicked', item.label),
+          },
+          {
+            id: faker.string.uuid(),
+            label: 'Messages',
+            action: (item) => console.log('clicked', item.label),
+          },
+          {
+            divider: true
+          },
+          {
+            id: faker.string.uuid(),
+            label: 'Settings',
+            action: (item) => console.log('clicked', item.label),
+          }
+        ],
+        alignRight: true,
+        showOnHover: false,
+      }
     },
     {
-      type: 'dropdown',
-      alignRight: true,
-      buttonProps: {
-        label: '',
-        iconLeft: { name: 'user' },
-        iconRight: undefined,
-        styles: buttonStyles
-      },
-      containerProps: {
-        styles: containerStyles
-      },
-      menuItems: [
-        { label: 'Profile' },
-        { label: 'Switch account' },
-        { label: 'Settings' },
-        { divider: true },
-        { label: 'Sign out' }
-      ]
+      component: 'ep-dropdown',
+      props: {
+        buttonProps: {
+          label: '',
+          ariaLabel: 'User',
+          iconLeft: { name: 'user' },
+          iconRight: undefined,
+          class: 'ep-button-var--ghost'
+        },
+        menuClass: 'ep-menu-default',
+        menuItems: [
+          {
+            id: faker.string.uuid(),
+            label: 'Profile',
+            action: (item) => console.log('clicked', item.label),
+          },
+          {
+            id: faker.string.uuid(),
+            label: 'Switch account',
+            action: (item) => console.log('clicked', item.label),
+          },
+          {
+            id: faker.string.uuid(),
+            label: 'Settings',
+            action: (item) => console.log('clicked', item.label),
+          },
+          {
+            divider: true
+          },
+          {
+            id: faker.string.uuid(),
+            label: 'Sign out',
+            action: (item) => console.log('clicked', item.label),
+          }
+        ],
+        alignRight: true,
+        showOnHover: false,
+      }
     }
-  ]
+  ],
 }
 
 export default commonActionBarArgs

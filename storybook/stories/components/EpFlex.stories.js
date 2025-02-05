@@ -25,13 +25,19 @@ export default {
       }
     },
     flexDirection: {
-      name: 'Flex Flow',
+      name: 'Flex Direction',
       options: [
         'row',
         'row-reverse',
         'column',
         'column-reverse'
       ],
+      mapping: {
+        'row': 'flex-row',
+        'row-reverse': 'flex-row-reverse',
+        'column': 'flex-col',
+        'column-reverse': 'flex-col-reverse'
+      },
       control: {
         type: 'select',
       }
@@ -43,6 +49,11 @@ export default {
         'nowrap',
         'wrap-reverse'
       ],
+      mapping: {
+        'wrap': 'flex-wrap',
+        'nowrap': 'flex-nowrap',
+        'wrap-reverse': 'flex-wrap-reverse'
+      },
       control: {
         type: 'select',
       }
@@ -51,18 +62,20 @@ export default {
       name: 'Justify Content',
       options: [
         'flex-start',
-        'flex-end',
         'center',
+        'flex-end',
         'space-between',
         'space-around',
         'space-evenly',
-        'start',
-        'end',
-        'left',
-        'right',
-        'safe center',
-        'unsafe center'
       ],
+      mapping: {
+        'flex-start': 'justify-flex-start',
+        'center': 'justify-center',
+        'flex-end': 'justify-end',
+        'space-between': 'justify-between',
+        'space-around': 'justify-around',
+        'space-evenly': 'justify-evenly',
+      },
       control: {
         type: 'select',
       }
@@ -70,20 +83,17 @@ export default {
     alignItems: {
       name: 'Align Items',
       options: [
-        'stretch',
         'flex-start',
-        'flex-end',
         'center',
-        'baseline',
-        'first baseline',
-        'last baseline',
-        'start',
-        'end',
-        'self-start',
-        'self-end',
-        'safe center',
-        'unsafe center'
+        'flex-end',
+        'stretch',
       ],
+      mapping: {
+        'flex-start': 'align-start',
+        'center': 'align-center',
+        'flex-end': 'align-end',
+        'stretch': 'align-stretch',
+      },
       control: {
         type: 'select',
       }
@@ -91,37 +101,81 @@ export default {
     alignContent: {
       name: 'Align Content',
       options: [
-        'stretch',
         'flex-start',
-        'flex-end',
         'center',
+        'flex-end',
         'space-between',
         'space-around',
-        'space-evenly',
-        'start',
-        'end',
-        'baseline',
-        'first baseline',
-        'last baseline',
-        'safe center',
-        'unsafe center'
+        'stretch',
       ],
+      mapping: {
+        'flex-start': 'align-content-start',
+        'center': 'align-content-center',
+        'flex-end': 'align-content-end',
+        'space-between': 'align-content-between',
+        'space-around': 'align-content-around',
+        'stretch': 'align-content-stretch',
+      },
       control: {
         type: 'select',
       }
     },
     gap: {
       name: 'Gap',
+      options: [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
+      mapping: {
+        0: '',
+        1: 'gap-1',
+        2: 'gap-2',
+        3: 'gap-3',
+        4: 'gap-4',
+        5: 'gap-5',
+        6: 'gap-6',
+        7: 'gap-7',
+        8: 'gap-8',
+        9: 'gap-9',
+        10: 'gap-10',
+        20: 'gap-20',
+        30: 'gap-30',
+        40: 'gap-40',
+        50: 'gap-50',
+        60: 'gap-60',
+        70: 'gap-70',
+        80: 'gap-80',
+        90: 'gap-90',
+        100: 'gap-100'
+      },
       control: {
-        type: 'text'
+        type: 'select',
       }
     },
-    padding: {
-      name: 'Padding',
-      control: {
-        type: 'text'
-      }
-    }
+    // padding: {
+    //   name: 'Padding',
+    //   control: {
+    //     type: 'text'
+    //   }
+    // }
   }
 }
 
@@ -132,38 +186,32 @@ export const Flex = args => ({
       return `${args.width},${args.height},${args.flexDirection},${args.flexWrap},${args.justifyContent},${args.alignItems},${args.alignContent},${args.gap},${args.padding}`
     })
 
-    return { args, flexProps }
+    const flexClasses = computed(() => {
+      return `${args.flexDirection} ${args.flexWrap} ${args.justifyContent} ${args.alignItems} ${args.alignContent} ${args.gap}`
+    })
+
+    return { args, flexProps, flexClasses }
   },
   template: `
-    <ep-flex :flex-props="flexProps">
+    <div :class="['ep-flex', flexClasses]" style="height: 100%;">
       <div
         v-for="n in 5"
         :key="n"
-        style="width: 100px; height: 100px; background-color: #f0f0f0; color: black; padding: 10px; text-align: center;"
+        style="width: 100px; height: 100px; background-color: #f0f0f0; color: black; padding: 10px; display: grid; place-content: center;"
       >
         Item {{ n }}
       </div>
-    </ep-flex>
+    </div>
   `
 })
-
-// width
-// height
-// flexFlow
-// justifyContent
-// alignItems
-// alignContent
-// gap
-// padding
 
 Flex.args = {
   width: '100%',
   height: '100%',
   flexDirection: 'row',
-  flexWrap: 'wrap',
+  flexWrap: 'nowrap',
   justifyContent: 'flex-start',
-  alignItems: 'stretch',
-  alignContent: 'stretch',
-  gap: '1rem',
-  padding: '0',
+  alignItems: 'flex-start',
+  alignContent: 'flex-start',
+  gap: 0,
 }

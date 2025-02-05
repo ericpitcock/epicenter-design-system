@@ -13,7 +13,31 @@ export default {
         type: 'text',
       }
     },
+    classes: {
+      name: 'Style',
+      options: [
+        'Primary',
+        'Success',
+        'Warning',
+        'Danger',
+        'Custom',
+      ],
+      mapping: {
+        None: null,
+        Primary: { 'badge-variant-primary': true },
+        Success: { 'badge-variant-success': true },
+        Warning: { 'badge-variant-warning': true },
+        Danger: { 'badge-variant-danger': true }
+      },
+      control: {
+        type: 'radio',
+      },
+      table: {
+        category: 'Styles'
+      }
+    },
     backgroundColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-badge-bg-color',
       control: {
         type: 'color'
@@ -23,6 +47,7 @@ export default {
       },
     },
     borderColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-badge-border-color',
       control: {
         type: 'color'
@@ -32,6 +57,7 @@ export default {
       },
     },
     textColor: {
+      if: { arg: 'classes', eq: 'Custom' },
       name: '--ep-badge-text-color',
       control: {
         type: 'color'
@@ -62,6 +88,7 @@ export const Badge = args => ({
   template: `
     <ep-badge
       v-bind="args"
+      :class="args.classes"
       :style="styles"
     />
   `
@@ -69,4 +96,5 @@ export const Badge = args => ({
 
 Badge.args = {
   label: 'Subscribed',
+  classes: 'Primary',
 }

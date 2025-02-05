@@ -1,36 +1,45 @@
-import { computed, ref } from 'vue'
+import { ref, computed } from 'vue'
 
-export default function useSorting(data, initialSortColumn = '', initialSortOrder = 'asc') {
+export default function useSorting(columns, data, initialSortColumn, initialSortOrder = 'asc') {
+  // const data = ref(data)
   const sortColumn = ref(initialSortColumn)
   const sortOrder = ref(initialSortOrder)
 
   const sortedData = computed(() => {
-    if (!sortColumn.value) return data.value
+    const column = columns.value.find(column => column.key === sortColumn.value)
+    if (!column) return data.value
 
-    const modifier = sortOrder.value === 'desc' ? -1 : 1
+    const sorter = column.sorter || defaultSorter(column.key)
+
+    const modifier = sortOrder.value === 'asc' ? 1 : -1
 
     return [...data.value].sort((a, b) => {
-      // raw value if it exists, otherwise value for components,
-      // otherwise basic values that had no formatting applied
-      const aValue = a[sortColumn.value].raw || a[sortColumn.value].value || a[sortColumn.value]
-      const bValue = b[sortColumn.value].raw || b[sortColumn.value].value || b[sortColumn.value]
-
-      if (aValue < bValue)
-        return -1 * modifier
-      if (aValue > bValue)
-        return 1 * modifier
-      return 0
+      const result = sorter(a, b)
+      return result * modifier
     })
   })
 
-  const sortBy = (columnKey) => {
+  const onSortChange = (columnKey) => {
     if (sortColumn.value === columnKey) {
       sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
     } else {
       sortColumn.value = columnKey
-      sortOrder.value = 'asc'
     }
   }
 
-  return { sortedData, sortBy, sortColumn, sortOrder }
+  const defaultSorter = (key) => (a, b) => {
+    // if (a[key] < b[key]) return -1
+    // if (a[key] > b[key]) return 1
+    // return 0
+    const aValue = a[key] ?? ''
+    const bValue = b[key] ?? ''
+    return aValue < bValue ? -1 : aValue > bValue ? 1 : 0
+  }
+
+  return {
+    sortedData,
+    onSortChange,
+    sortColumn,
+    sortOrder
+  }
 }

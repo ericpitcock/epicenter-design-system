@@ -1,70 +1,49 @@
 <template>
-  <div
-    class="ep-action-bar"
-    :style="actionBarStyles"
-  >
-    <template v-for="(item, index) in items">
-      <ep-button
-        v-if="item.type === 'button'"
-        :key="`button-${index}`"
-        v-bind="buttonDefaults"
-        :icon-left="item.iconLeft"
-        @click="onClick(item, index)"
-      />
-      <ep-dropdown
-        v-else-if="item.type === 'dropdown'"
-        :key="`dropdown-${index}`"
-        v-bind="item"
-        :show-on-hover="showDropdownOnHover"
-        @select="onClick"
+  <div class="ep-action-bar">
+    <template
+      v-for="(item, index) in items"
+      :key="index"
+    >
+      <component
+        :is="componentMap[item.component]"
+        v-bind="item.props"
+        @click="onClick"
       />
     </template>
   </div>
 </template>
 
-<script>
-  import EpButton from '../button/EpButton.vue'
-  import EpDropdown from '../dropdown/EpDropdown.vue'
+<script setup>
+  import { defineAsyncComponent } from 'vue'
 
-  export default {
-    name: 'EpActionBar',
-    components: {
-      EpButton,
-      EpDropdown
+  const componentMap = {
+    'ep-button': defineAsyncComponent(() => import('../button/EpButton.vue')),
+    'ep-dropdown': defineAsyncComponent(() => import('../dropdown/EpDropdown.vue')),
+  }
+
+  defineOptions({
+    name: 'EpActionBar'
+  })
+
+  const props = defineProps({
+    /**
+     * The items to display in the action bar.
+     */
+    items: {
+      type: Array,
+      required: true,
     },
-    props: {
-      items: {
-        type: Array,
-        required: true,
-      },
-      justifyContent: {
-        type: String,
-        default: 'flex-end'
-      },
-      showDropdownOnHover: {
-        type: Boolean,
-        default: false
-      }
-    },
-    emits: ['click'],
-    computed: {
-      actionBarStyles() {
-        return {
-          justifyContent: this.justifyContent
-        }
-      },
-      buttonDefaults() {
-        return {
-          variant: 'ghost',
-          label: '',
-          title: '',
-        }
-      }
-    },
-    methods: {
-      onClick(item) {
-        this.$emit('click', item)
-      },
-    }
+  })
+
+  const emit = defineEmits([
+    /**
+     * Emitted when an item is clicked.
+     * @payload {Object} item - The clicked item.
+     */
+    'click'
+  ])
+
+  const onClick = (item) => {
+    emit('click', item)
   }
 </script>

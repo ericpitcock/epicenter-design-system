@@ -1,5 +1,38 @@
-// app
-@import './app.scss';
+@use './app.scss';
+
+// decorator classes
+.decorator {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+
+  &--padded {
+    padding: 3rem;
+  }
+
+  &--centered {
+    display: grid;
+    place-content: center;
+  }
+
+  &--overflow {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+  }
+
+  &--surface {
+    background: var(--interface-surface);
+  }
+
+  &--bg {
+    background: var(--interface-bg);
+  }
+
+  &--gradient-bg {
+    background: var(--gradient-bg);
+  }
+}
 
 // storybook hacks
 .sb-show-main {
@@ -34,4 +67,15 @@
     height: 100vh;
     padding: 0;
   }
+}
+
+// for overlays in the EpNotificationCenter story
+#app {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 3rem;
+  z-index: var(--z-index--tooltip);
 }

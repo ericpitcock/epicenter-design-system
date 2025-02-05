@@ -18,6 +18,10 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpRadio'
+  })
+
   import { computed } from 'vue'
 
   const modelValue = defineModel({
@@ -25,7 +29,6 @@
     required: true
   })
 
-  // eslint-disable-next-line no-unused-vars
   const props = defineProps({
     // required
     id: {

@@ -19,12 +19,25 @@ export default function usePagination(data, initialPage = 1, initialPageSize = 1
     return data.value.slice(startIndex, startIndex + pageSize.value)
   })
 
-  const onPageChange = (page) => {
+  const onPageNavigate = (page) => {
     currentPage.value = page
 
     const tableContainer = document.querySelector('.ep-table-container')
     tableContainer.scrollTop = 0
   }
 
-  return { paginatedData, currentPage, totalPages, onPageChange }
+  const onPageSizeUpdate = (size) => {
+    // select passes the value as a string
+    // so we need to convert it to a number
+    pageSize.value = Number(size)
+  }
+
+  return {
+    currentPage,
+    pageSize,
+    totalPages,
+    paginatedData,
+    onPageNavigate,
+    onPageSizeUpdate
+  }
 }

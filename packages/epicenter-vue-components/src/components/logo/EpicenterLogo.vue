@@ -3,7 +3,6 @@
     x="0px"
     y="0px"
     viewBox="0 0 160.7 215.87"
-    :style="styles"
   >
     <path
       class="shadow"
@@ -20,16 +19,10 @@
   </svg>
 </template>
 
-<script>
-  export default {
+<script setup>
+  defineOptions({
     name: 'EpicenterLogo',
-    props: {
-      styles: {
-        type: Object,
-        default: () => ({})
-      }
-    }
-  }
+  })
 </script>
 
 <style lang="scss" scoped>

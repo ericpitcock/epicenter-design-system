@@ -31,8 +31,6 @@
 </template>
 
 <script>
-  import inputMixin from '../../mixins/inputMixin.js'
-  import uuidMixin from '../../mixins/uuidMixin.js'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   export default {
@@ -40,7 +38,6 @@
     components: {
       EpInputStyler
     },
-    mixins: [inputMixin, uuidMixin],
     props: {
       disabled: {
         type: Boolean,
@@ -70,12 +67,16 @@
         type: String,
         required: true,
       },
+      size: {
+        type: String,
+        default: 'default'
+      },
       options: {
         type: Array,
         required: true,
       },
       modelValue: {
-        type: String,
+        type: [String, Number],
         default: ''
       },
       placeholder: {
@@ -111,6 +112,12 @@
         hasInput: false,
         hasWarning: false,
         hasSuccess: false,
+        sizes: {
+          small: '22',
+          default: '30',
+          large: '38',
+          xlarge: '46'
+        },
       }
     },
     computed: {
@@ -136,7 +143,8 @@
         return this.borderColor || 'var(--border-color)'
       },
       computedId() {
-        return this.selectId || `input-${this.generateUUID()}`
+        const generateUniqueId = () => crypto.randomUUID()
+        return this.selectId || generateUniqueId()
       },
       iconStyles() {
         return {

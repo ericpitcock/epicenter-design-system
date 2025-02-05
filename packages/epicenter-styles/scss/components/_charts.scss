@@ -1,44 +1,38 @@
-$colors: (
-  var(--chart-sequence-00),
-  var(--chart-sequence-01),
-  var(--chart-sequence-02),
-  var(--chart-sequence-03),
-  var(--chart-sequence-04),
-  var(--chart-sequence-05),
-  var(--chart-sequence-06),
-  var(--chart-sequence-07),
-  var(--chart-sequence-08),
-  var(--chart-sequence-09),
-  var(--chart-sequence-10),
-  var(--chart-sequence-11),
-  var(--chart-sequence-12),
-  var(--chart-sequence-13),
-  var(--chart-sequence-14),
-  var(--chart-sequence-15),
-  var(--chart-sequence-16),
-  var(--chart-sequence-17)
-);
-$background-color: transparent;
-// .highcharts-grid-line
-$neutral-color-10: var(--border-color);
-// .highcharts-axis-line
-$highlight-color-20: var(--border-color);
-$tooltip-background: var(--background-2);
-// $tooltip-border: var(--border-color--lighter);
-$font-family: 'Inter var', sans-serif;
-$title-font-size: var(--font-size--default);
-$subtitle-font-size: var(--font-size--default);
-$legend-font-size: var(--font-size--default);
-$axis-labels-font-size: var(--font-size--default);
-@import '../../node_modules/highcharts/css/highcharts.scss';
+@use '../../node_modules/highcharts/css/highcharts.css';
+
+:root {
+  --highcharts-color-0: hsl(var(--chart-sequence-00));
+  --highcharts-color-1: hsl(var(--chart-sequence-01));
+  --highcharts-color-2: hsl(var(--chart-sequence-02));
+  --highcharts-color-3: hsl(var(--chart-sequence-03));
+  --highcharts-color-4: hsl(var(--chart-sequence-04));
+  --highcharts-color-5: hsl(var(--chart-sequence-05));
+  --highcharts-color-6: hsl(var(--chart-sequence-06));
+  --highcharts-color-7: hsl(var(--chart-sequence-07));
+  --highcharts-color-8: hsl(var(--chart-sequence-08));
+  --highcharts-color-9: hsl(var(--chart-sequence-09));
+  --highcharts-color-10: hsl(var(--chart-sequence-10));
+  --highcharts-color-11: hsl(var(--chart-sequence-11));
+  --highcharts-color-12: hsl(var(--chart-sequence-12));
+  --highcharts-color-13: hsl(var(--chart-sequence-13));
+}
 
 .highcharts-container {
-  font-family: $font-family;
+  --highcharts-background-color: transparent;
+  --highcharts-font-family: 'Inter var', sans-serif;
+  --highcharts-neutral-color-10: var(--border-color);
+  --highcharts-neutral-color-80: var(--border-color);
+  --highcharts-highlight-color-20: var(--border-color);
+  --highcharts-tooltip-background: var(--interface-overlay);
+}
+
+.highcharts-container {
+  font-family: var(--highcharts-font-family);
   font-size: var(--font-size--default);
 
   * {
-    font-family: inherit;
-    font-size: inherit;
+    font-family: var(--highcharts-font-family);
+    font-size: var(--font-size--default);
   }
 
   text {
@@ -50,10 +44,22 @@ $axis-labels-font-size: var(--font-size--default);
   }
 
   .highcharts-bar-series rect.highcharts-point {
-    stroke: $background-color;
+    stroke: var(--highcharts-background-color);
   }
+}
 
-  .highcharts-color-0 {
-    // need to figure out how to style this with props
+.highcharts-color-0 {
+  fill: var(--highcharts-color-0);
+  stroke: var(--highcharts-color-0);
+}
+
+@for $i from 1 through 17 {
+  .highcharts-color-#{$i} {
+    fill: var(--highcharts-color-#{$i});
+    stroke: var(--highcharts-color-#{$i});
   }
+}
+
+.highcharts-data-label-connector {
+  fill: none;
 }

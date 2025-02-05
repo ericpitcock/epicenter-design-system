@@ -8,13 +8,15 @@
   --ep-container-min-height: 0;
   --ep-container-max-height: none;
   --ep-container-padding: 0;
+  --ep-container-content-height: auto;
   --ep-container-content-padding: 0;
   --ep-container-bg-color: none;
   --ep-container-border-radius: var(--border-radius--large);
-  --ep-container-border-width: 0.1rem;
+  --ep-container-border-width: 0;
   --ep-container-border-style: solid;
   --ep-container-border-color: var(--border-color);
   --ep-container-overflow: visible;
+  --ep-container-header-bg-color: var(--interface-surface);
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -25,7 +27,7 @@
   min-height: var(--ep-container-min-height);
   max-height: var(--ep-container-max-height);
   padding: var(--ep-container-padding);
-  background-color: var(--ep-container-bg-color);
+  background: var(--ep-container-bg-color);
   border-radius: var(--ep-container-border-radius);
   border-width: var(--ep-container-border-width);
   border-style: var(--ep-container-border-style);
@@ -39,9 +41,9 @@
   &__content {
     position: relative;
     flex: 1 1 auto;
+    height: var(--ep-container-content-height);
     padding: var(--ep-container-content-padding);
     @include mixins.no-scrollbar;
-    // so that dropdowns overlap sticky table headers
     z-index: var(--z-index--default);
   }
 
@@ -50,10 +52,22 @@
   }
 
   &--sticky-header {
+    --ep-container-height: unset;
+    --ep-container-min-height: unset;
+    --ep-container-overflow: unset;
+
     .ep-container__header {
       position: sticky;
       top: 0;
+      background: var(--ep-container-header-bg-color);
       z-index: var(--z-index--sticky);
     }
+  }
+
+  &--framed {
+    --ep-container-framed-height: 100vh;
+    --ep-container-framed-offset: 0;
+    --ep-container-height: calc(var(--ep-container-framed-height) - var(--ep-container-framed-offset));
+    --ep-container-overflow: auto;
   }
 }

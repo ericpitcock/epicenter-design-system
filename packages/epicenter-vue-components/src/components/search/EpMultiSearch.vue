@@ -20,7 +20,7 @@
         <span class="query__text font-size--small">{{ item }}</span>
         <ep-icon
           name="close"
-          :styles="{ '--ep-icon-width': '16px', '--ep-icon-stroke-width': 2 }"
+          :style="{ '--ep-icon-width': '16px', '--ep-icon-stroke-width': 2 }"
           class="query__close"
         />
       </div>
@@ -46,168 +46,162 @@
     >
       <ep-icon
         name="close"
-        :styles="{ '--ep-icon-width': '24px' }"
+        :style="{ '--ep-icon-width': '24px' }"
       />
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
   import EpIcon from '../icon/EpIcon.vue'
+  import { computed, ref, watch } from 'vue'
 
-  export default {
+  defineOptions({
     name: 'EpMultiSearch',
-    components: {
-      EpIcon
+  })
+
+  const props = defineProps({
+    placeholder: {
+      type: String,
+      default: ''
     },
-    props: {
-      placeholder: {
-        type: String,
-        default: ''
-      },
-      icon: {
-        type: Object,
-        default: () => ({})
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      autofocus: {
-        type: Boolean,
-        default: false
-      },
-      width: {
-        type: String,
-        default: '100%'
-      },
-      height: {
-        type: String,
-        default: '5rem'
-      },
-      borderWidth: {
-        type: String,
-        default: '0.1rem'
-      },
-      borderStyle: {
-        type: String,
-        default: 'solid'
-      },
-      borderColor: {
-        type: String,
-        default: 'var(--border-color)'
-      },
-      borderRadius: {
-        type: String,
-        default: 'var(--border-radius)'
-      },
-      backgroundColor: {
-        type: String,
-        default: 'var(--interface-foreground)'
-      },
-      color: {
-        type: String,
-        default: 'var(--text-color)'
-      }
+    icon: {
+      type: Object,
+      default: () => ({})
     },
-    emits: ['input', 'focus', 'esc', 'blur', 'enter', 'clear', 'query-close', 'delete'],
-    data() {
-      return {
-        hasError: false,
-        hasFocus: false,
-        // value is the value of the input
-        value: '',
-        // query is the array of values that have been added to the search
-        query: [],
-      }
+    disabled: {
+      type: Boolean,
+      default: false
     },
-    computed: {
-      classes() {
-        return {
-          'ep-multi-search--has-icon': this.icon,
-          'ep-multi-search--focus': this.hasFocus,
-          'ep-multi-search--disabled': this.disabled,
-          // 'ep-input--error': this.error,
-          // 'ep-input--success': this.success,
-          // 'ep-input--warning': this.warning
-        }
-      },
-      clearable() {
-        // if value and query is not empty, then clearable is true
-        // if value is empty and query is not empty, then clearable is true
-        // if value is not empty and query is empty, then clearable is true
-        // if value and query is empty, then clearable is false
-        return (this.value && this.query.length > 0) || (!this.value && this.query.length > 0) || (this.value && this.query.length === 0)
-      },
-      iconStyles() {
-        return {
-          flex: `0 0 ${this.height}`,
-          height: this.height,
-        }
-      },
-      inputStyles() {
-        return {
-          width: this.width,
-          height: this.height,
-          borderRadius: this.borderRadius,
-          backgroundColor: this.backgroundColor,
-          color: this.color
-        }
-      },
-      placeholderValue() {
-        return this.value === '' && this.query.length === 0 ? this.placeholder : '+ Add to your search'
-      }
+    autofocus: {
+      type: Boolean,
+      default: false
     },
-    watch: {
-      query() {
-        console.log('query', this.query)
-      }
+    width: {
+      type: String,
+      default: '100%'
     },
-    methods: {
-      onQueryClose(query, index) {
-        this.query.splice(index, 1)
-        this.$emit('query-close', query)
-      },
-      onInput(event) {
-        this.$emit('input', event.target.value)
-      },
-      onEsc(event) {
-        this.$refs.input.blur()
-        this.$emit('esc', event.target.value)
-      },
-      onFocus(event) {
-        this.hasFocus = true
-        this.$emit('focus', event.target.value)
-      },
-      onBlur(event) {
-        this.hasFocus = false
-        this.$emit('blur', event.target.value)
-      },
-      onEnter() {
-        // on enter, add the value to the query array
-        this.query.push(this.value)
-        // then emit the query array
-        this.$emit('enter', this.query)
-        // then clear the input
-        this.value = ''
-      },
-      onDelete() {
-        // make sure there's nothing in the input
-        if (this.value === '') {
-          // find the last element in the query array and remove it
-          this.query.splice(this.query.length - 1, 1)
-          // then emit the query array
-          this.$emit('delete', this.query)
-        }
-      },
-      onClear() {
-        this.query = []
-        this.value = ''
-        this.$refs.input.focus()
-        this.$emit('clear', this.query)
-      }
+    height: {
+      type: String,
+      default: '5rem'
     },
+    borderWidth: {
+      type: String,
+      default: '0.1rem'
+    },
+    borderStyle: {
+      type: String,
+      default: 'solid'
+    },
+    borderColor: {
+      type: String,
+      default: 'var(--border-color)'
+    },
+    borderRadius: {
+      type: String,
+      default: 'var(--border-radius)'
+    },
+    backgroundColor: {
+      type: String,
+      default: 'var(--interface-foreground)'
+    },
+    color: {
+      type: String,
+      default: 'var(--text-color)'
+    }
+  })
+
+  const emit = defineEmits(['input', 'focus', 'esc', 'blur', 'enter', 'clear', 'query-close', 'delete'])
+
+  const input = ref(null)
+
+  // const hasError = ref(false)
+  const hasFocus = ref(false)
+  // value is the value of the input
+  const value = ref('')
+  // query is the array of values that have been added to the search
+  const query = ref([])
+
+
+  const classes = computed(() => {
+    return {
+      'ep-multi-search--has-icon': props.icon,
+      'ep-multi-search--focus': hasFocus.value,
+      'ep-multi-search--disabled': props.disabled,
+    }
+  })
+
+  const clearable = computed(() => {
+    return (value.value && query.value.length > 0) || (!value.value && query.value.length > 0) || (value.value && query.value.length === 0)
+  })
+
+  const iconStyles = computed(() => {
+    return {
+      flex: `0 0 ${props.height}`,
+      height: props.height,
+    }
+  })
+
+  const inputStyles = computed(() => {
+    return {
+      width: props.width,
+      height: props.height,
+      borderRadius: props.borderRadius,
+      backgroundColor: props.backgroundColor,
+      color: props.color
+    }
+  })
+
+  const placeholderValue = computed(() => {
+    return value.value === '' && query.value.length === 0 ? props.placeholder : '+ Add to your search'
+  })
+
+  watch(query, () => {
+    console.log('query', query.value)
+  })
+
+  const onQueryClose = (item, index) => {
+    query.value.splice(index, 1)
+    emit('query-close', item)
+  }
+
+  const onInput = (event) => {
+    emit('input', event.target.value)
+  }
+
+  const onEsc = (event) => {
+    input.value.blur()
+    emit('esc', event.target.value)
+  }
+
+  const onFocus = (event) => {
+    hasFocus.value = true
+    emit('focus', event.target.value)
+  }
+
+  const onBlur = (event) => {
+    hasFocus.value = false
+    emit('blur', event.target.value)
+  }
+
+  const onEnter = () => {
+    query.value.push(value.value)
+    emit('enter', query.value)
+    value.value = ''
+  }
+
+  const onDelete = () => {
+    if (value.value === '') {
+      // find the last element in the query array and remove it
+      query.value.splice(query.value.length - 1, 1)
+      emit('delete', query.value)
+    }
+  }
+
+  const onClear = () => {
+    query.value = []
+    value.value = ''
+    input.value.focus()
+    emit('clear', query.value)
   }
 </script>
-
-<style lang="scss" scoped></style>

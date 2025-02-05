@@ -8,8 +8,11 @@
 </template>
 
 <script setup>
+  defineOptions({
+    name: 'EpDatePicker'
+  })
+
   import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
-  import flatpickr from 'flatpickr'
   import EpInput from '../input/EpInput.vue'
 
   const props = defineProps({
@@ -60,14 +63,21 @@
     ...props.inputProps,
   }))
 
-  const initFlatpickr = () => {
-    flatpickr('#dp', {
+  let flatpickrInstance = null // Reference for dynamic import
+
+  const initFlatpickr = async () => {
+    if (!flatpickrInstance) {
+      const { default: Flatpickr } = await import('flatpickr') // Dynamic import
+      flatpickrInstance = Flatpickr
+    }
+
+    flatpickrInstance('#dp', {
       closeOnSelect: props.enableCloseOnSelect,
       dateFormat: props.dateFormat,
       mode: props.mode,
       position: `${props.positionY} ${props.positionX}`,
-      onChange: onChange(),
-      onOpen: onOpen(),
+      onChange: onChange,
+      onOpen: onOpen,
     })
   }
 
@@ -78,27 +88,10 @@
     initFlatpickr
   )
 
-  // const onInput = (event) => {
-  //   value.value = event.target.value
-  //   emit('input', event.target.value)
-  // }
-
   const onChange = (selectedDates, dateStr) => {
     value.value = dateStr
     emit('change', selectedDates, dateStr)
   }
-
-  // const onFocus = (event) => {
-  //   emit('focus', event)
-  // }
-
-  // const onBlur = (event) => {
-  //   emit('blur', event)
-  // }
-
-  // const onKeydown = (event) => {
-  //   emit('keydown', event)
-  // }
 
   const onOpen = () => {
     value.value = ''
@@ -106,7 +99,7 @@
 
   onBeforeUnmount(() => {
     if (datePickerInput.value) {
-      datePickerInput.value.flatpickrInstance.destroy()
+      datePickerInput.value.flatpickrInstance?.destroy()
     }
   })
 </script>

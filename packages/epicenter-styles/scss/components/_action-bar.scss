@@ -1,6 +1,8 @@
   .ep-action-bar {
+    --ep-action-bar-justify-content: flex-start;
     display: flex;
     flex-direction: row;
+    justify-content: var(--ep-action-bar-justify-content);
     align-items: center;
     width: 100%;
     height: 100%;

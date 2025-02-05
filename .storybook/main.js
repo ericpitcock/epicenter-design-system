@@ -9,14 +9,12 @@ const config = {
     '@storybook/addon-controls',
     '@storybook/addon-docs',
     '@storybook/addon-toolbars',
+    '@storybook/addon-a11y',
   ],
   staticDirs: ['../static'],
   framework: {
     name: '@storybook/vue3-vite',
     options: {},
-  },
-  docs: {
-    autodocs: 'tag',
   },
 }
 export default config

@@ -1,29 +1,30 @@
 $modifications: (
-  color-up-5: +5,
-  color-up-10: +10,
-  color-up-15: +15,
-  color: 0,
-  color-down-5: -5,
-  color-down-10: -10,
-  color-down-15: -15,
+  color-up-5: 5deg,
+  color-up-10: 10deg,
+  color-up-15: 15deg,
+  color: 0deg,
+  color-down-5: -5deg,
+  color-down-10: -10deg,
+  color-down-15: -15deg
 );
 
-@function generate-hsl($hue, $saturation, $lightness) {
-  @return hsl($hue, $saturation, $lightness);
-}
-
-@mixin generate-color-variants($base-hue, $base-saturation, $base-lightness) {
-
-  // tints and shades for all modifications
+@mixin generate-color-variants($base-lightness, $base-chroma, $base-hue) {
   @each $name, $offset in $modifications {
     $adjusted-hue: $base-hue + $offset;
 
     @for $i from 1 through 5 {
-      $tint-lightness: $base-lightness + (6 - $i) * 5%;
-      $shade-lightness: $base-lightness - $i * 7%;
-      --primary-#{$name}-#{$i}00: #{generate-hsl($adjusted-hue, $base-saturation, $tint-lightness)};
-      --primary-#{$name}-base: #{generate-hsl($adjusted-hue, $base-saturation, $base-lightness)};
-      --primary-#{$name}-#{$i + 5}00: #{generate-hsl($adjusted-hue, $base-saturation, $shade-lightness)};
+      $tint-lightness: $base-lightness + (6 - $i) * 0.05; // Tints incrementally lighten the base color
+      $shade-lightness: $base-lightness - $i * 0.07; // Shades incrementally darken the base color
+
+      @if $i ==1 {
+        // Base color for each hue shift
+        --primary-#{$name}-base: #{oklch($base-lightness $base-chroma $adjusted-hue)};
+      }
+
+      // Tints (lighter colors)
+      --primary-#{$name}-#{$i}00: #{oklch($tint-lightness $base-chroma $adjusted-hue)};
+      // Shades (darker colors)
+      --primary-#{$name}-#{$i + 5}00: #{oklch($shade-lightness $base-chroma $adjusted-hue)};
     }
   }
 }

@@ -2,13 +2,9 @@
   <component
     :is="element"
     :type
-    :class="['ep-button', computedClasses, classes]"
-    :style="styles"
-    :title="title"
+    :class="['ep-button', computedClasses]"
     :aria-label="ariaLabel ? ariaLabel : label"
     :disabled="disabled"
-    v-bind="$attrs"
-    @click="onClick"
   >
     <span
       v-if="iconLeft"
@@ -35,7 +31,14 @@
   import { computed, useAttrs } from 'vue'
   import EpIcon from '../icon/EpIcon.vue'
 
+  defineOptions({
+    name: 'EpButton'
+  })
+
   const props = defineProps({
+    /**
+     * The size of the button.
+     */
     size: {
       type: String,
       default: 'default',
@@ -43,69 +46,60 @@
         'small',
         'default',
         'large',
-        'xlarge'
+        'xlarge',
       ].includes(value)
     },
-    title: {
-      type: String,
-      default: ''
-    },
+    /**
+     * The aria-label of the button.
+     */
     ariaLabel: {
       type: String,
       default: ''
     },
+    /**
+     * The label of the button.
+     */
     label: {
       type: String,
       default: ''
     },
+    /**
+     * The icon to display on the left side of the button.
+     */
     iconLeft: {
       type: Object,
       default: undefined
     },
+    /**
+     * The icon to display on the right side of the button.
+     */
     iconRight: {
       type: Object,
       default: undefined
     },
+    /**
+     * If `true`, the button will be disabled.
+     */
     disabled: {
       type: Boolean,
       default: false
     },
-    isMenuItem: {
-      type: Boolean,
-      default: false
-    },
-    isActiveMenuItem: {
-      type: Boolean,
-      default: false
-    },
+    /**
+     * The  type of the button.
+     */
     type: {
       type: String,
       default: 'button',
-      validator: (value) => ['button', 'submit'].includes(value)
+      validator: (value) => [
+        'button',
+        'submit',
+      ].includes(value)
     },
-    styles: {
-      type: Object,
-      default: () => ({})
-    },
-    classes: {
-      type: Object,
-      default: () => ({})
-    }
   })
 
-  const emit = defineEmits(['click'])
-  const onClick = () => emit('click')
-
   const element = computed(() => {
-    const attrs = useAttrs()
-
-    if (attrs.to) {
-      return 'router-link'
-    }
-    if (attrs.href) {
-      return 'a'
-    }
-    return 'button'
+    const { to, href } = useAttrs()
+    return to ? 'router-link' : href ? 'a' : 'button'
   })
 
   const computedClasses = computed(() => ({
@@ -113,7 +107,5 @@
     'ep-button--icon-right': props.iconRight,
     'ep-button--icon-left': props.iconLeft,
     'ep-button--disabled': props.disabled,
-    'ep-button--menu-item': props.isMenuItem,
-    'ep-button--menu-item--active': props.isActiveMenuItem
   }))
 </script>

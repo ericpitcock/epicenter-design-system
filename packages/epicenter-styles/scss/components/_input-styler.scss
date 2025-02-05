@@ -1,8 +1,8 @@
-.ep-input-styler__container {
+.ep-input-styler {
   position: relative;
 }
 
-.ep-input-styler__container--disabled {
+.ep-input-styler--disabled {
   color: var(--text-color--disabled);
   pointer-events: none;
 }
@@ -17,48 +17,51 @@
   align-items: center;
   pointer-events: none;
 
-  &__label {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  &:has(.ep-input-styler__inner__icon-left):has(.ep-input-styler__inner__icon-right) {
+  &:has(.ep-input-styler__icon-left):has(.ep-input-styler__icon-right) {
     display: flex;
     justify-content: space-between;
   }
 
-  &:has(.ep-input-styler__inner__icon-left) {
+  &:has(.ep-input-styler__icon-left) {
     justify-content: flex-start;
   }
 
-  &:has(.ep-input-styler__inner__icon-right) {
+  &:has(.ep-input-styler__icon-right) {
     justify-content: flex-end;
   }
+}
 
-  &__icon-left,
-  &__icon-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.8rem;
-    height: 70%;
-    max-height: 2.4rem;
+.ep-input-styler__label {
+  position: absolute;
+  top: -7px;
+  left: 7px;
+  font-size: var(--font-size--small);
+  background: var(--interface-surface);
+  padding-inline: 1rem;
+}
 
-    &--small {
-      width: 2.5rem;
-    }
+.ep-input-styler__icon-left,
+.ep-input-styler__icon-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 70%;
+  max-height: 2.4rem;
 
-    &--large {
-      width: 3.6rem;
-    }
-
-    &--xlarge {
-      width: 4.4rem;
-    }
+  &--small {
+    width: 2.5rem;
   }
 
-  &__icon-right--clickable {
-    pointer-events: auto;
+  &--large {
+    width: 3.6rem;
   }
+
+  &--xlarge {
+    width: 4.4rem;
+  }
+}
+
+.ep-input-styler__icon-right--clickable {
+  pointer-events: auto;
 }

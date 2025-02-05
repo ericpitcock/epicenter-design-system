@@ -70,7 +70,7 @@ export const Logo = args => ({
 
     return { args, styles }
   },
-  template: '<epicenter-logo v-bind="args" :width="args.size" :styles="styles" />'
+  template: '<epicenter-logo v-bind="args" :width="args.size" :style="styles" />'
 })
 
 Logo.args = {

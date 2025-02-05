@@ -1,22 +1,18 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <td :style="styles">
-    <component
-      :is="column.component"
-      v-if="!!column.component"
-      v-bind="row[column.key].props"
-    />
-    <span
-      v-else
-      v-html="formattedCell(row, column)"
-    />
-  </td>
+  <span
+    :class="column.class"
+    v-html="formattedCell(row, column)"
+  />
 </template>
 
 <script setup>
   import DOMPurify from 'dompurify'
 
-  // eslint-disable-next-line no-unused-vars
+  defineOptions({
+    name: 'EpTableCell'
+  })
+
   const props = defineProps({
     row: {
       type: Object,
@@ -35,6 +31,6 @@
   const formattedCell = (row, column) => {
     const value = row[column.key].value || row[column.key]
     const formatter = column.formatter
-    return formatter ? DOMPurify.sanitize(formatter(value)) : value
+    return formatter ? DOMPurify.sanitize(formatter(value, row)) : value
   }
 </script>

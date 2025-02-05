@@ -1,26 +1,23 @@
-import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 export default function useCalculatedHeight(element, calculateHeightOffset = 0) {
-  const dynamicHeight = ref('')
+  const dynamicHeight = ref(0)
 
-  const calculatedHeight = () => {
-    dynamicHeight.value = `${window.innerHeight - element.value.getBoundingClientRect().top - calculateHeightOffset}px`
+  const calculateHeight = () => {
+    if (element.value) {
+      dynamicHeight.value =
+        window.innerHeight - element.value.getBoundingClientRect().top - calculateHeightOffset
+    }
   }
 
   onMounted(() => {
-    calculatedHeight()
-    window.addEventListener('resize', calculatedHeight)
+    calculateHeight()
+    window.addEventListener('resize', calculateHeight)
   })
 
   onBeforeUnmount(() => {
-    window.removeEventListener('resize', calculatedHeight)
+    window.removeEventListener('resize', calculateHeight)
   })
 
-  const containerHeight = computed(() => {
-    return {
-      height: dynamicHeight.value
-    }
-  })
-
-  return { containerHeight }
+  return { dynamicHeight }
 }

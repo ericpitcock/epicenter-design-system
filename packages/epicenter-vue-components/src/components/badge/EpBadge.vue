@@ -1,26 +1,21 @@
 <template>
-  <div
-    :class="['ep-badge', classes]"
-    :style="styles"
-  >
+  <div class="ep-badge">
     {{ label }}
   </div>
 </template>
 
 <script setup>
-  // eslint-disable-next-line no-unused-vars
+  defineOptions({
+    name: 'EpBadge'
+  })
+
   const props = defineProps({
-    classes: {
-      type: Object,
-      default: () => ({})
-    },
+    /**
+     * The label to display in the badge.
+     */
     label: {
       type: String,
       default: 'Badge'
     },
-    styles: {
-      type: Array,
-      default: () => []
-    }
   })
 </script>

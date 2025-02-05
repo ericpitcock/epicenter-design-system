@@ -1,7 +1,10 @@
-// deprecate .text--subtle in favor of .text-color--subtle
 :root {
   --text--black: var(--gray-410);
   --text--white: var(--gray-50);
+}
+
+.text-color--loud {
+  color: var(--text-color--loud);
 }
 
 .text--subtle,

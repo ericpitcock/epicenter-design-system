@@ -1,16 +1,9 @@
 <template>
   <div
     class="browser-frame"
-    :style="{ width: `${width}px` }"
+    :style="{ width: `${width}` }"
   >
-    <ep-header
-      padding="0 2rem"
-      style="flex: 1 1 5rem; max-height: 5rem;"
-      left-flex="0"
-      center-flex="3"
-      right-flex="0"
-      background-color="var(--interface-foreground)"
-    >
+    <ep-header>
       <template #left>
         <div class="window-buttons">
           <div class="window-button window-button--close" />
@@ -24,43 +17,61 @@
         </div>
       </template>
       <template #right>
-        <ep-icon name="user" />
+        <ep-icon
+          name="user"
+          :style="{
+            '--ep-icon-width': '2rem',
+          }"
+        />
       </template>
     </ep-header>
     <div class="image-container">
       <img
-        :src="imageUrl"
-        alt="ui mockup"
+        :src="imageSrc"
+        :alt="imageAlt"
       >
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
   import EpHeader from '../header/EpHeader.vue'
   import EpIcon from '../icon/EpIcon.vue'
 
-  export default {
-    name: 'EpBrowserFrame',
-    components: {
-      EpHeader,
-      EpIcon
+  defineOptions({
+    name: 'EpBrowserFrame'
+  })
+
+  const props = defineProps({
+    /**
+     * The width of the browser frame.
+     */
+    width: {
+      type: String,
+      default: '100%'
     },
-    props: {
-      width: {
-        type: String,
-        default: '100%'
-      },
-      url: {
-        type: String,
-        default: 'http://website.com'
-      },
-      imageUrl: {
-        type: String,
-        default: './color-desktop.png'
-      }
+    /**
+     * The URL to display in the browser frame.
+     */
+    url: {
+      type: String,
+      default: 'http://website.com'
+    },
+    /**
+     * The source of the image to display in the browser frame.
+     */
+    imageSrc: {
+      type: String,
+      default: ''
+    },
+    /**
+     * The alt text for the image.
+     */
+    imageAlt: {
+      type: String,
+      default: ''
     }
-  }
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -72,6 +83,16 @@
     border: 1px solid var(--border-color);
     background: var(--interface-surface);
     overflow: hidden;
+
+    .ep-header {
+      flex: 1 1 5rem;
+      max-height: 5rem;
+      --ep-header-container-padding: 0 2rem;
+      --ep-header-container-bg-color: var(--interface-foreground);
+      --ep-header-left-flex: 0;
+      --ep-header-center-flex: 3;
+      --ep-header-right-flex: 0;
+    }
   }
 
   .window-buttons {

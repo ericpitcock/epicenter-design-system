@@ -1,54 +1,16 @@
 <template>
-  <hr
-    :class="['ep-divider', { 'ep-divider--vertical': vertical }]"
-    :style="dividerStyles"
-  >
+  <div :class="['ep-divider', `ep-divider--${direction}`]" />
 </template>
 
-<script>
-  export default {
-    name: 'EpDivider',
-    props: {
-      color: {
-        type: String,
-        default: 'var(--border-color)'
-      },
-      margin: {
-        type: String,
-        default: '0'
-      },
-      width: {
-        type: String,
-        default: '100%'
-      },
-      vertical: {
-        type: Boolean,
-        default: false
-      },
-      verticalWidth: {
-        type: String,
-        default: '1px'
-      },
-      verticalHeight: {
-        type: String,
-        default: '100%'
-      }
+<script setup>
+  defineOptions({
+    name: 'EpDivider'
+  })
+
+  const props = defineProps({
+    direction: {
+      type: String,
+      default: 'horizontal'
     },
-    computed: {
-      dividerStyles() {
-        return this.vertical
-          ? {
-            width: this.verticalWidth,
-            height: this.verticalHeight,
-            backgroundColor: this.color,
-            margin: this.margin
-          }
-          : {
-            width: this.width,
-            backgroundColor: this.color,
-            margin: this.margin
-          }
-      }
-    }
-  }
+  })
 </script>

@@ -1,15 +1,91 @@
 import { setup } from '@storybook/vue3'
+import { createRouter, createMemoryHistory } from 'vue-router'
 import { watch } from 'vue'
-
 import { createPinia } from 'pinia'
 import { useStorybookStore } from '../storybook/store'
+
+import EpOverlay from '../packages/epicenter-vue-components/src/plugins/ep-overlay'
+import EpOverlayManager from '../packages/epicenter-vue-components/src/components/overlays/EpOverlayManager.vue'
+
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: { template: '<router-view/>' },
+    meta: { breadcrumb: 'Home' },
+    children: [
+      {
+        path: 'library',
+        name: 'Library',
+        component: { template: '<router-view/>' },
+        meta: { breadcrumb: 'Library' },
+        children: [
+          {
+            path: 'data',
+            name: 'Data',
+            component: { template: '<router-view/>' },
+            meta: { breadcrumb: 'Data' },
+            children: [
+              {
+                path: 'reports',
+                name: 'Reports',
+                component: { template: '<router-view/>' },
+                meta: { breadcrumb: 'Reports' },
+                children: [
+                  {
+                    path: 'annual',
+                    name: 'Annual',
+                    component: { template: '<div>Annual Report Content</div>' },
+                    meta: { breadcrumb: 'Annual' },
+                  },
+                  {
+                    path: 'monthly',
+                    name: 'Monthly',
+                    component: { template: '<div>Monthly Report Content</div>' },
+                    meta: { breadcrumb: 'Monthly' },
+                  },
+                ],
+              },
+              {
+                path: 'stats',
+                name: 'Stats',
+                component: { template: '<div>Stats Content</div>' },
+                meta: { breadcrumb: 'Stats' },
+              },
+            ],
+          },
+          {
+            path: 'authors',
+            name: 'Authors',
+            component: { template: '<div>Authors Content</div>' },
+            meta: { breadcrumb: 'Authors' },
+          },
+        ],
+      },
+      {
+        path: 'contact',
+        name: 'Contact',
+        component: { template: '<div>Contact Content</div>' },
+        meta: { breadcrumb: 'Contact' },
+      },
+    ],
+  },
+]
+
+const router = createRouter({
+  history: createMemoryHistory(),
+  routes,
+})
 
 setup((app) => {
   const pinia = createPinia()
   app.use(pinia)
+  app.use(router)
+  app.use(EpOverlay)
+  app.component('EpOverlayManager', EpOverlayManager)
 })
 
-// global styles
+// Global styles
 import '../packages/epicenter-styles/dist/epicenter-design-system.css'
 import '../storybook/storybook.scss'
 
@@ -47,11 +123,16 @@ const preview = {
         icon: '',
         items: ['Light Theme', 'Dark Theme'],
         showName: true,
-        dynamicTitle: true
-      }
-    }
+        dynamicTitle: true,
+      },
+    },
   },
   parameters: {
+    a11y: {
+      element: '#storybook-root',
+      config: {},
+      options: {},
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -61,11 +142,7 @@ const preview = {
     layout: 'fullscreen',
     options: {
       storySort: {
-        order: [
-          'Intro',
-          'Components',
-          'Style',
-        ],
+        order: ['Intro', 'Components', 'Style'],
       },
     },
   },

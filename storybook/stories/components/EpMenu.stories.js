@@ -1,98 +1,137 @@
+import { faker } from '@faker-js/faker'
 import { centeredBg } from '../../helpers/decorators.js'
 import EpMenu from '@/components/menu/EpMenu.vue'
 
-const fakeMenuItems = [
+const menuConfig = [
   {
-    label: 'Go to internal page',
-    iconLeft: { name: 'arrow-right' },
-    bind: {
-      to: '/'
-    }
+    id: faker.string.uuid(),
+    label: 'Dashboard',
+    iconLeft: {
+      name: 'dashboard',
+      style: {
+        '--ep-icon-stroke-width': 1,
+      }
+    },
+    to: '/'
   },
   { divider: true },
   {
     section: true,
-    label: 'Section'
+    label: 'Actions'
   },
   {
-    label: 'Log click',
-    iconLeft: { name: 'circle' },
-    command: () => console.log('click')
-  },
-  {
+    id: faker.string.uuid(),
     label: 'Google Maps',
-    iconLeft: { name: 'export' },
-    bind: {
-      href: 'https://www.google.com/maps'
-    }
+    iconLeft: { name: 'f-map-pin' },
+    iconRight: {
+      name: 'f-arrow-up-right',
+      style: {
+        '--ep-icon-height': '1.4rem',
+        '--ep-icon-stroke-width': 0.8,
+
+      }
+    },
+    href: 'https://www.google.com/maps'
   },
   {
-    label: 'Sub-menu',
-    iconLeft: { name: 'menu' },
+    id: faker.string.uuid(),
+    label: 'Track Event',
+    iconLeft: { name: 'f-activity' },
+    action: (item) => console.log('clicked', item.label)
+  },
+  {
+    id: faker.string.uuid(),
+    label: 'More Options',
+    iconLeft: {
+      name: 'menu',
+      style: {
+        '--ep-icon-stroke-width': 1,
+      }
+    },
     iconRight: { name: 'chevron-right' },
     children: [
       {
-        label: 'Sub-menu item 1',
-        command: () => console.log('click')
+        id: faker.string.uuid(),
+        label: 'Settings',
+        action: (item) => console.log('clicked', item.label)
       },
       {
-        label: 'Sub-menu item 2',
-        command: () => console.log('click')
+        id: faker.string.uuid(),
+        label: 'Preferences',
+        action: (item) => console.log('clicked', item.label)
       },
       { divider: true },
       {
-        label: 'Sub-menu item 3',
-        command: () => console.log('click')
+        id: faker.string.uuid(),
+        label: 'Help Center',
+        action: (item) => console.log('clicked', item.label)
       },
       {
-        label: 'Sub-menu item 4',
-        command: () => console.log('click')
+        id: faker.string.uuid(),
+        label: 'About Us',
+        action: (item) => console.log('clicked', item.label)
       }
     ]
   },
   { divider: true },
   {
     section: true,
-    label: 'Section'
+    label: 'Shortcuts'
   },
   {
-    label: 'This is a menu item'
+    id: faker.string.uuid(),
+    label: 'Recent Files',
+    action: (item) => console.log('clicked', item.label)
   },
   {
-    label: 'Another menu item'
+    id: faker.string.uuid(),
+    label: 'Saved Items',
+    action: (item) => console.log('clicked', item.label)
   },
   {
-    label: 'The menuiest item'
+    id: faker.string.uuid(),
+    label: 'Notifications',
+    action: (item) => console.log('clicked', item.label)
   },
   { divider: true },
   {
     section: true,
-    label: 'Section'
+    label: 'Navigation'
   },
   {
-    label: 'Go back'
+    id: faker.string.uuid(),
+    label: 'Go Back',
+    action: (item) => console.log('clicked', item.label)
   },
   {
-    label: 'Two steps forward'
+    id: faker.string.uuid(),
+    label: 'Next Step',
+    action: (item) => console.log('clicked', item.label)
   },
   {
-    label: 'Internet!'
+    id: faker.string.uuid(),
+    label: 'Open Web Page',
+    action: (item) => console.log('clicked', item.label)
   },
   {
-    label: 'Another sub-menu',
+    id: faker.string.uuid(),
+    label: 'Advanced Settings',
     iconRight: { name: 'chevron-right' },
     children: [
       {
-        label: 'Sub-menu item 1',
-        command: () => console.log('click')
+        id: faker.string.uuid(),
+        label: 'Security',
+        action: (item) => console.log('clicked', item.label)
       },
       {
-        label: 'Sub-menu item 2',
-        command: () => console.log('click')
+        id: faker.string.uuid(),
+        label: 'Privacy',
+        action: (item) => console.log('clicked', item.label)
       },
       {
-        label: 'Sub-menu item 3',
-        command: () => console.log('click')
+        id: faker.string.uuid(),
+        label: 'Developer Mode',
+        action: (item) => console.log('clicked', item.label)
       }
     ]
   }
@@ -116,27 +155,23 @@ export default {
         }
       }
     },
-    containerProps: {
-      name: 'Container Props',
-      control: {
-        type: 'object'
-      }
-    },
-    menuItems: {
-      name: 'Menu items',
-      control: {
-        type: 'array'
-      }
-    }
+    containerProps: { table: { disable: true } },
+    menuItems: { table: { disable: true } },
+    menuType: { table: { disable: true } },
+    activeItem: { table: { disable: true } },
   }
 }
 
 export const Menu = args => ({
   components: { EpMenu },
   setup() {
-    return { args }
+    const onMenuClick = item => {
+      if (item.action) item.action(item)
+    }
+
+    return { args, onMenuClick }
   },
-  template: '<ep-menu v-bind="args" />'
+  template: '<ep-menu v-bind="args" @click="onMenuClick" />'
 })
 
 Menu.args = {
@@ -145,7 +180,8 @@ Menu.args = {
     styles: {
       '--ep-container-width': '200px',
       '--ep-container-bg-color': 'var(--interface-surface)',
+      '--ep-container-border-width': '0.1rem',
     }
   },
-  menuItems: fakeMenuItems
+  menuItems: menuConfig
 }

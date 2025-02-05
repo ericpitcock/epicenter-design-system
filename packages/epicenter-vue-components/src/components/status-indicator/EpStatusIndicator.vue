@@ -8,14 +8,15 @@
   </span>
 </template>
 
-<script>
-  export default {
+<script setup>
+  defineOptions({
     name: 'EpStatusIndicator',
-    props: {
-      styles: {
-        type: Object,
-        default: () => ({}),
-      },
-    }
-  }
+  })
+
+  const props = defineProps({
+    styles: {
+      type: Object,
+      default: () => ({}),
+    },
+  })
 </script>

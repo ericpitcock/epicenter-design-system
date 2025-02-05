@@ -1,10 +1,12 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <ep-container
-    :styles="{
+    :style="{
       '--ep-container-max-width': '120rem',
       '--ep-container-padding': '0 3rem',
-      '--ep-container-content-padding': '3rem 0',
+      '--ep-container-content-padding': '3rem 0 10rem 0',
       '--ep-container-bg-color': 'var(--interface-surface)',
+      '--ep-container-border-width': '0.1rem',
       '--ep-container-overflow': 'auto'
     }"
     sticky-header
@@ -12,7 +14,7 @@
     :calculate-height-offset="30"
   >
     <template #header>
-      <ep-header background-color="var(--interface-surface)">
+      <ep-header style="background: var(--interface-surface);">
         <template #left>
           <ep-tabs
             :items="tabs"
@@ -40,12 +42,16 @@
             class="type-style"
           >
             <div class="type-style__desc">
-              <div class="font-size--body">{{ typeStyle.name }}</div>
+              <div class="font-size--body text-color--loud">
+                {{ typeStyle.name }}
+              </div>
               <template
-                v-for="(item, index) in typeStyle.meta"
-                :key="index"
+                v-for="(item, indexx) in typeStyle.meta"
+                :key="indexx"
               >
-                <div class="meta font-size--small">{{ item }}</div>
+                <div class="meta font-size--small">
+                  {{ item }}
+                </div>
               </template>
             </div>
             <div class="type-style__sample">
@@ -68,7 +74,6 @@
 
 <script>
   import { faker } from '@faker-js/faker'
-
   import EpButton from '@/components/button/EpButton.vue'
   import EpContainer from '@/components/container/EpContainer.vue'
   import EpHeader from '@/components/header/EpHeader.vue'

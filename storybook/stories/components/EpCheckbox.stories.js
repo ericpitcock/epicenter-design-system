@@ -95,7 +95,7 @@ const Bare = args => ({
     return { args, checkboxes, selectedOptions, updateChecked }
   },
   template: `
-    <ep-flex flex-props=",100%,column,,,,,1rem,">
+    <ep-flex class="flex-col gap-10" style="height: 100%">
       <ep-checkbox
         v-for="checkbox in checkboxes"
         :key="checkbox.id"

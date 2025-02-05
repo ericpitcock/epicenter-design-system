@@ -54,24 +54,24 @@ add(10).then((v) => {
       </video>
     </section>
 
-<textarea class="playable playable-css" style="height: 100px;">
-video::backdrop {
-  background-color: #448;
-}
-</textarea>
+    <textarea class="playable playable-css" style="height: 100px;">
+      video::backdrop {
+        background-color: #448;
+      }
+    </textarea>
 
-<textarea class="playable playable-html" style="height: 200px;">
-<video controls
-  src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
-  poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
-  width="620">
-Sorry, your browser doesn't support embedded videos.  Time to upgrade!
-</video>
-</textarea>
+    <textarea class="playable playable-html" style="height: 200px;">
+      <video controls
+        src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+        poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+        width="620">
+        Sorry, your browser doesn't support embedded videos.  Time to upgrade!
+      </video>
+    </textarea>
 
     <div class="playable-buttons">
-        <input id="reset" type="button" value="Reset" />
-      </div>
+      <input id="reset" type="button" value="Reset" />
+    </div>
     </body>
     <script src="playable.js"></script>
   </body>
