@@ -9,7 +9,7 @@
 
 <script setup>
   import { ref, nextTick, onMounted, onBeforeUnmount, watch } from 'vue'
-  import mapboxgl from 'mapbox-gl'
+  import mapboxgl from 'mapbox-gl/dist/mapbox-gl'
   import 'mapbox-gl/dist/mapbox-gl.css'
 
   defineOptions({
@@ -64,7 +64,6 @@
   const init = ref(true)
   const map = ref(null)
   const markers = ref([])
-  // let mapboxgl = null // Reference for dynamic import
 
   watch(() => props.mapCenter, (newCenter) => {
     emit('centerChange', newCenter)
@@ -93,7 +92,6 @@
     }
   })
 
-  // get a reference to the parent container
   const epMapContainer = ref(null)
 
   onMounted(() => {
