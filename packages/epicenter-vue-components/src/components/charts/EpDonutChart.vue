@@ -130,10 +130,10 @@
 
     const color = d3.scaleOrdinal()
       .range([
-        'var(--chart-sequence-00)',
-        'var(--chart-sequence-01)',
-        'var(--chart-sequence-02)',
-        'var(--chart-sequence-03)',
+        'hsl(var(--chart-sequence-00))',
+        'hsl(var(--chart-sequence-01))',
+        'hsl(var(--chart-sequence-02))',
+        'hsl(var(--chart-sequence-03))',
       ])
 
     const arc = d3.arc()

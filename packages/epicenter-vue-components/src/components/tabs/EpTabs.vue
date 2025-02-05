@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="tabList"
     class="ep-tabs"
     :class="{ 'ep-tabs--classic': variant === 'classic' }"
     role="tablist"
@@ -7,7 +8,9 @@
     <component
       :is="item.to ? 'router-link' : 'button'"
       v-for="(item, index) in tabs"
+      :id="`tab-${index}`"
       :key="index"
+      :aria-controls="`tabpanel-${index}`"
       :class="[
         'ep-tabs__tab-item',
         { 'ep-tabs__tab-item--active': index === activeTabIndex }
@@ -29,7 +32,7 @@
     name: 'EpTabs'
   })
 
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
 
   const props = defineProps({
     /**
@@ -85,9 +88,15 @@
     }
   }
 
+  const tabList = ref(null)
+
   const focusTab = (index) => {
     // Programmatically move focus to the new tab
-    const tabElements = document.querySelectorAll('[role="tab"]')
+    // const tabElements = document.querySelectorAll('[role="tab"]')
+    // tabElements[index]?.focus()
+
+    // Query only within this component's tab list
+    const tabElements = tabList.value?.querySelectorAll('[role="tab"]') || []
     tabElements[index]?.focus()
   }
 </script>

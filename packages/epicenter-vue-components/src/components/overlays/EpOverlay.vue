@@ -6,6 +6,8 @@
     <dialog
       ref="dialog"
       class="ep-dialog"
+      role="dialog"
+      :aria-modal="type === 'modal' ? 'true' : undefined"
       @click.self="onBackdropClick"
     >
       <slot />

@@ -7,12 +7,14 @@
       <template #right>
         <ep-button
           :disabled="currentPage === 1"
+          aria-label="Previous page"
           :icon-left="{ name: 'chevron-left' }"
           @click="prevPage"
         />
         <template v-if="showPages">
           <ep-button
             label="1"
+            aria-label="First page"
             :class="{ 'active': currentPage === 1 }"
             @click="emit('pageChange', 1)"
           />
@@ -21,6 +23,7 @@
             v-for="page in pageRange"
             :key="page"
             :label="page.toString()"
+            aria-label="Page {{ page }}"
             :class="{ 'active': currentPage === page }"
             @click="emit('pageChange', page)"
           />
@@ -28,11 +31,13 @@
           <ep-button
             v-if="totalPages > 1"
             :label="totalPages.toString()"
+            aria-label="Last page"
             :class="{ 'active': currentPage === totalPages }"
             @click="emit('pageChange', totalPages)"
           />
         </template>
         <ep-button
+          aria-label="Next page"
           :disabled="currentPage === totalPages"
           :icon-left="{ name: 'chevron-right' }"
           @click="nextPage"

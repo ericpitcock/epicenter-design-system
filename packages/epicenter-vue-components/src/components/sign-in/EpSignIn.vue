@@ -59,10 +59,10 @@
             @clear="password = ''"
           />
           <ep-button
+            class="ep-button-var--primary"
             type="submit"
             size="large"
             :label="buttonLabel"
-            variant="primary"
             @click="onButtonClick"
           />
         </form>

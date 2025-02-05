@@ -31,7 +31,6 @@
 </template>
 
 <script>
-  import inputMixin from '../../mixins/inputMixin.js'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   export default {
@@ -39,7 +38,6 @@
     components: {
       EpInputStyler
     },
-    mixins: [inputMixin],
     props: {
       disabled: {
         type: Boolean,
@@ -68,6 +66,10 @@
       selectId: {
         type: String,
         required: true,
+      },
+      size: {
+        type: String,
+        default: 'default'
       },
       options: {
         type: Array,
@@ -110,6 +112,12 @@
         hasInput: false,
         hasWarning: false,
         hasSuccess: false,
+        sizes: {
+          small: '22',
+          default: '30',
+          large: '38',
+          xlarge: '46'
+        },
       }
     },
     computed: {
