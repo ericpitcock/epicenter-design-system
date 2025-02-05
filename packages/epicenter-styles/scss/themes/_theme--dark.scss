@@ -40,7 +40,7 @@
       hsl(275, 92%, 70%),
       hsl(180, 100%, 50%));
   // text color
-  --text-color--primary: var(--blue-400);
+  --text-color--primary: hsl(var(--blue-400));
   // subtle text
   --text-color--subtle: hsl(var(--gray-220));
   // text color disabled

@@ -35,7 +35,7 @@ html[data-color-theme='light'],
       hsl(275, 93%, 61%),
       hsl(205, 97%, 49%));
   // text color
-  --text-color--primary: var(--blue-600);
+  --text-color--primary: hsl(var(--blue-600));
   // subtle text
   --text-color--subtle: hsl(var(--gray-270));
   // text color disabled

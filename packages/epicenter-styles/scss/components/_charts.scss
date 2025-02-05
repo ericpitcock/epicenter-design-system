@@ -1,20 +1,20 @@
 @use '../../node_modules/highcharts/css/highcharts.css';
 
 :root {
-  --highcharts-color-0: var(--chart-sequence-00);
-  --highcharts-color-1: var(--chart-sequence-01);
-  --highcharts-color-2: var(--chart-sequence-02);
-  --highcharts-color-3: var(--chart-sequence-03);
-  --highcharts-color-4: var(--chart-sequence-04);
-  --highcharts-color-5: var(--chart-sequence-05);
-  --highcharts-color-6: var(--chart-sequence-06);
-  --highcharts-color-7: var(--chart-sequence-07);
-  --highcharts-color-8: var(--chart-sequence-08);
-  --highcharts-color-9: var(--chart-sequence-09);
-  --highcharts-color-10: var(--chart-sequence-10);
-  --highcharts-color-11: var(--chart-sequence-11);
-  --highcharts-color-12: var(--chart-sequence-12);
-  --highcharts-color-13: var(--chart-sequence-13);
+  --highcharts-color-0: hsl(var(--chart-sequence-00));
+  --highcharts-color-1: hsl(var(--chart-sequence-01));
+  --highcharts-color-2: hsl(var(--chart-sequence-02));
+  --highcharts-color-3: hsl(var(--chart-sequence-03));
+  --highcharts-color-4: hsl(var(--chart-sequence-04));
+  --highcharts-color-5: hsl(var(--chart-sequence-05));
+  --highcharts-color-6: hsl(var(--chart-sequence-06));
+  --highcharts-color-7: hsl(var(--chart-sequence-07));
+  --highcharts-color-8: hsl(var(--chart-sequence-08));
+  --highcharts-color-9: hsl(var(--chart-sequence-09));
+  --highcharts-color-10: hsl(var(--chart-sequence-10));
+  --highcharts-color-11: hsl(var(--chart-sequence-11));
+  --highcharts-color-12: hsl(var(--chart-sequence-12));
+  --highcharts-color-13: hsl(var(--chart-sequence-13));
 }
 
 .highcharts-container {
@@ -46,7 +46,6 @@
   .highcharts-bar-series rect.highcharts-point {
     stroke: var(--highcharts-background-color);
   }
-
 }
 
 .highcharts-color-0 {
