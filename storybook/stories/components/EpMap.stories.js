@@ -30,6 +30,9 @@ export default {
   title: 'Components/Map',
   component: EpMap,
   argTypes: {
+    mapboxToken: {
+      table: { disable: true }
+    },
     mapCenter: {
       name: 'Map Center',
       options: ['Seattle', 'San Francisco', 'New York', 'London', 'Paris'],
@@ -91,6 +94,7 @@ export const Map = args => ({
 })
 
 Map.args = {
+  mapboxToken: import.meta.env.VITE_APP_MAPBOX_TOKEN,
   mapCenter: [-122.3321, 47.6062],
   mapZoom: 12,
   mapStyle: 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',

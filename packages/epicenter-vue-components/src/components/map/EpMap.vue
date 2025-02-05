@@ -16,6 +16,10 @@
   })
 
   const props = defineProps({
+    mapboxToken: {
+      type: String,
+      required: true
+    },
     mapCenter: {
       type: Array,
       default: () => [-122.3321, 47.6062]
@@ -131,7 +135,7 @@
       // Perform the dynamic import and other async operations
       import('mapbox-gl').then((module) => {
         mapboxgl = module.default
-        mapboxgl.accessToken = import.meta.env.VITE_APP_MAPBOX_TOKEN
+        mapboxgl.accessToken = props.mapboxToken
         map.value = new mapboxgl.Map({
           container: 'ep-map',
           center: props.mapCenter,
