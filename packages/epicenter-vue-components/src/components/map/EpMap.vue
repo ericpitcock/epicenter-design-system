@@ -9,6 +9,7 @@
 
 <script setup>
   import { ref, nextTick, onMounted, onBeforeUnmount, watch } from 'vue'
+  import mapboxgl from 'mapbox-gl'
   import 'mapbox-gl/dist/mapbox-gl.css'
 
   defineOptions({
@@ -63,7 +64,7 @@
   const init = ref(true)
   const map = ref(null)
   const markers = ref([])
-  let mapboxgl = null // Reference for dynamic import
+  // let mapboxgl = null // Reference for dynamic import
 
   watch(() => props.mapCenter, (newCenter) => {
     emit('centerChange', newCenter)
@@ -131,25 +132,22 @@
   })
 
   const loadMap = () => {
-    return new Promise((resolve) => {
-      // Perform the dynamic import and other async operations
-      import('mapbox-gl').then((module) => {
-        mapboxgl = module.default
-        mapboxgl.accessToken = props.mapboxToken
-        map.value = new mapboxgl.Map({
-          container: 'ep-map',
-          center: props.mapCenter,
-          zoom: props.mapZoom,
-          style: props.mapStyle,
-        })
-
-        // Various options
-        if (!props.scrollZoom) map.value.scrollZoom.disable()
-        if (props.navigationControl) map.value.addControl(new mapboxgl.NavigationControl())
-
-        map.value.on('load', () => resolve())
-        map.value.on('dragend', onDragEnd)
+    return new Promise(resolve => {
+      mapboxgl.accessToken = props.mapboxToken
+      map.value = new mapboxgl.Map({
+        container: 'ep-map',
+        center: props.mapCenter,
+        zoom: props.mapZoom,
+        style: props.mapStyle,
       })
+      // various options
+      // scroll zoom
+      if (!props.scrollZoom) map.value.scrollZoom.disable()
+      // Add zoom and rotation controls to the map.
+      if (props.navigationControl) map.value.addControl(new mapboxgl.NavigationControl())
+
+      map.value.on('load', () => resolve())
+      map.value.on('dragend', onDragEnd)
     })
   }
 
