@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-vue-components && npm install && cd ../epicenter-react-components && npm install && cd .. && npm install && npm run build-storybook",
+    "netlify-build-docs": "npm install && cd docs && npm run docs:build",
     "install-all": "cd packages/epicenter-styles && npm install && cd ../epicenter-vue-components && npm install && cd ../epicenter-react-components && npm install && cd .. && npm install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
