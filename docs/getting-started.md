@@ -7,29 +7,69 @@ npm install @ericpitcock/epicenter-vue-components
 npm install @ericpitcock/epicenter-styles
 ```
 
-## Import components globally
+## Import _all_ components globally
 
 ```js
 // main.js
-
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import Epicenter from '@ericpitcock/epicenter-vue-components'
+
+import '@ericpitcock/epicenter-styles'
+// optionally import app variables and overrides
+import './assets/app.scss'
 
 const app = createApp(App)
 
-import Epicenter from '@ericpitcock/epicenter-vue-components/index.js'
-
 app.use(Epicenter)
-app.use(store)
-app.use(router)
 app.mount('#app')
+```
+This will make all components available globally — no need to import indivdually, but you can if you want to:
 
-import '@ericpitcock/epicenter-styles/dist/epicenter-design-system.css'
+## Import _some_ components globally
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import {
+  EpButton,
+  EpContainer,
+  EpDivider,
+  EpMap,
+  EpSelect,
+  EpThreatCaseMap,
+  EpThemeToggle,
+  EpToggle,
+  EpUpsetPlot,
+} from '@ericpitcock/epicenter-vue-components'
+
+const components = {
+  EpButton,
+  EpContainer,
+  EpDivider,
+  EpMap,
+  EpSelect,
+  EpThreatCaseMap,
+  EpThemeToggle,
+  EpToggle,
+  EpUpsetPlot,
+}
+
+Object.entries(components).forEach(([name, component]) => {
+  app.component(name, component)
+})
+
+import '@ericpitcock/epicenter-styles'
+// optionally import app variables and overrides
+import './assets/app.scss'
+
+const app = createApp(App)
+
+app.mount('#app')
 ```
 
-This will make all components available globally — no need to import indivdually, but you can if you want to:
+## Import components individually
 
 ```vue
 <!-- App.vue -->
@@ -40,15 +80,12 @@ This will make all components available globally — no need to import indivdual
 </template>
 
 <script setup>
-  import { computed } from 'vue'
   import { EpButton } from '@ericpitcock/epicenter-vue-components'
 
-  const buttonProps = computed(() =>{
-    return {
-      label: 'Click me'
-      size: 'large'
-      iconLeft: { name: 'circle' }
-    }
-  })
+  const buttonProps = {
+    label: 'Click me'
+    size: 'large'
+    iconLeft: { name: 'circle' }
+  }
 </script>
 ```
