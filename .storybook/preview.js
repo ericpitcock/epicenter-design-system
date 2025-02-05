@@ -4,9 +4,6 @@ import { watch } from 'vue'
 import { createPinia } from 'pinia'
 import { useStorybookStore } from '../storybook/store'
 
-import EpOverlay from '../packages/epicenter-vue-components/src/plugins/ep-overlay'
-import EpOverlayManager from '../packages/epicenter-vue-components/src/components/overlays/EpOverlayManager.vue'
-
 const routes = [
   {
     path: '/',
@@ -81,8 +78,6 @@ setup((app) => {
   const pinia = createPinia()
   app.use(pinia)
   app.use(router)
-  app.use(EpOverlay)
-  app.component('EpOverlayManager', EpOverlayManager)
 })
 
 // Global styles
