@@ -16,7 +16,7 @@
 ## Events
 | Name    | Description                 | Payload    |
 |---------|-----------------------------|------------|
-| `select` | - | - |
+| `click` | - | - |
 
 ## Slots
 | Name | Description |
@@ -114,7 +114,7 @@
     }
   })
 
-  const emit = defineEmits(['select'])
+  const emit = defineEmits(['click'])
 
   const dropdownVisible = ref(false)
 
@@ -147,16 +147,14 @@
     dropdownVisible.value = false
   }
 
-  defineExpose({
-    closeDropdown
-  })
+  defineExpose({ closeDropdown })
 
   const dropdownRef = useTemplateRef('dropdown')
 
   onClickOutside(dropdownRef, closeDropdown)
 
   const onClick = (payload) => {
-    emit('select', payload)
+    emit('click', payload)
     closeDropdown()
   }
 
@@ -198,7 +196,6 @@
   }
 
   &__content {
-    // width: max-content;
     position: relative;
     z-index: var(--z-index--dropdown);
   }

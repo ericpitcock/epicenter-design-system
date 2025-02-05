@@ -1,7 +1,7 @@
 # EpTable
 
 
-## Description
+
 `EpTable` is built for data-rich apps, with all the features you need: sorting, filtering, pagination, search, column visibility, and more.
 
 #### `stickyHeader` vs`fixedHeader`
@@ -168,10 +168,8 @@ The `sorter` function receives two values and should return a number: -1 for sor
 | `selectable` | Selectable rows | `boolean` | `false` |
 | `striped` | Background colors for every other row. Helpful for tables with a lot of data. | `boolean` | `false` |
 | `stickyHeader` | Sticky header or nah | `boolean` | `false` |
-| `fixedHeader` | Fixed header or nah | `boolean` | `false` |
-| `calculateHeight` | Explicitly set the height of the table | `boolean` | `false` |
-| `calculateHeightOffset` | This value is subtracted from the calculated height to account for additional spacing needs, such as margins, paddings, or any other offset you’d like to apply. | `number` | `0` |
-| `showActionsMenu` | Include an actions menu or nah | `boolean` | `false` |
+| `fixedHeader` | Whether to use a fixed header or not (requires useFixedHeader composable) | `boolean` | `false` |
+| `showActionsMenu` | Enable actions menu | `boolean` | `false` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -194,7 +192,6 @@ The `sorter` function receives two values and should return a number: -1 for sor
   <div
     ref="tableContainer"
     class="ep-table-container"
-    :style="containerStyles"
     @scroll="onScroll"
   >
     <table :class="['ep-table', classes]">
@@ -251,10 +248,8 @@ The `sorter` function receives two values and should return a number: -1 for sor
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue'
+  import { computed, useTemplateRef } from 'vue'
   import EpTableCell from './EpTableCell.vue'
-  // move this out of the component
-  import useCalculatedHeight from '../../composables/useCalculatedHeight'
 
   defineOptions({
     name: 'EpTable'
@@ -318,28 +313,14 @@ The `sorter` function receives two values and should return a number: -1 for sor
       default: false
     },
     /**
-     * Fixed header or nah
+     * Whether to use a fixed header or not (requires useFixedHeader composable)
      */
     fixedHeader: {
       type: Boolean,
       default: false
     },
     /**
-     * Explicitly set the height of the table
-     */
-    calculateHeight: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * This value is subtracted from the calculated height to account for additional spacing needs, such as margins, paddings, or any other offset you’d like to apply.
-     */
-    calculateHeightOffset: {
-      type: Number,
-      default: 0
-    },
-    /**
-     * Include an actions menu or nah
+     * Enable actions menu
      */
     showActionsMenu: {
       type: Boolean,
@@ -351,23 +332,13 @@ The `sorter` function receives two values and should return a number: -1 for sor
     return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
   })
 
-  const tableContainer = ref(null)
-  // not convinced I don't need these
-  // const tableBody = ref(null)
-  // const tableFixed = ref(null)
-
-  const { containerHeight } = useCalculatedHeight(tableContainer, props.calculateHeightOffset)
-
-  const containerStyles = computed(() => ({
-    ...(props.calculateHeight && containerHeight.value),
-    ...props.styles
-  }))
+  const tableContainer = useTemplateRef('tableContainer')
 
   const classes = computed(() => {
     return {
-      'ep-table--selectable': props.selectable,
       'ep-table--bordered': props.bordered,
       'ep-table--compact': props.compact,
+      'ep-table--selectable': props.selectable,
       'ep-table--sticky': props.stickyHeader,
       'ep-table--striped': props.striped,
     }
@@ -394,6 +365,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
 ```scss
 .ep-table-container {
   --ep-table-container-width: auto;
+  --ep-table-container-height: auto;
   --ep-table-container-min-width: 0;
   --ep-table-container-overflow: auto;
   --ep-table-container-padding: 0;
@@ -410,6 +382,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
   --ep-table-cell-vertical-align: middle;
   --ep-table-cell-white-space: normal;
   width: var(--ep-table-container-width);
+  height: var(--ep-table-container-height);
   min-width: var(--ep-table-container-min-width);
   overflow: var(--ep-table-container-overflow);
   padding: var(--ep-table-container-padding);

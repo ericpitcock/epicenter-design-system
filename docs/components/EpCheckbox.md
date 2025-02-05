@@ -1,7 +1,7 @@
 # EpCheckbox
 
 
-## Description
+
 `EpCheckbox` is my finest work. It can exist in one of two ways: checked or unchecked. Think about that.
 
 ## Usage

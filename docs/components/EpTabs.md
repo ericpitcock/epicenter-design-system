@@ -24,6 +24,7 @@ No slots available.
 ```vue
 <template>
   <div
+    ref="tabList"
     class="ep-tabs"
     :class="{ 'ep-tabs--classic': variant === 'classic' }"
     role="tablist"
@@ -31,7 +32,9 @@ No slots available.
     <component
       :is="item.to ? 'router-link' : 'button'"
       v-for="(item, index) in tabs"
+      :id="`tab-${index}`"
       :key="index"
+      :aria-controls="`tabpanel-${index}`"
       :class="[
         'ep-tabs__tab-item',
         { 'ep-tabs__tab-item--active': index === activeTabIndex }
@@ -53,7 +56,7 @@ No slots available.
     name: 'EpTabs'
   })
 
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
 
   const props = defineProps({
     /**
@@ -109,9 +112,15 @@ No slots available.
     }
   }
 
+  const tabList = ref(null)
+
   const focusTab = (index) => {
     // Programmatically move focus to the new tab
-    const tabElements = document.querySelectorAll('[role="tab"]')
+    // const tabElements = document.querySelectorAll('[role="tab"]')
+    // tabElements[index]?.focus()
+
+    // Query only within this component's tab list
+    const tabElements = tabList.value?.querySelectorAll('[role="tab"]') || []
     tabElements[index]?.focus()
   }
 </script>
@@ -148,7 +157,7 @@ No slots available.
       white-space: nowrap;
     }
 
-    &:not(.ep-tabs__tab-item--active):not(.router-link-active):hover span {
+    &:not(.ep-tabs__tab-item--active):not(.router-link-exact-active):hover span {
       border-bottom-color: var(--ep-tabs-hover-border-color);
       color: var(--ep-tabs-hover-text-color);
       cursor: pointer;
@@ -160,7 +169,7 @@ No slots available.
     }
 
     &--active span,
-    &.router-link-active span {
+    &.router-link-exact-active span {
       border-bottom-color: var(--ep-tabs-active-border-color);
       color: var(--ep-tabs-active-text-color);
     }
@@ -180,13 +189,13 @@ No slots available.
         border-top-left-radius: var(--border-radius);
       }
 
-      &:not(.ep-tabs__tab-item--active):not(.router-link-active):hover span {
+      &:not(.ep-tabs__tab-item--active):not(.router-link-exact-active):hover span {
         border-bottom-color: transparent;
         color: var(--ep-tabs-hover-text-color);
       }
 
       &--active span,
-      &.router-link-active span {
+      &.router-link-exact-active span {
         border-bottom-color: transparent;
         background: var(--interface-surface);
         border-color: var(--border-color);

@@ -1,7 +1,7 @@
 # EpDatePicker
 
 
-## Description
+
 `EpDatePicker` wraps flatpickr. You can select so many dates. Or just one.
 
 ## Usage

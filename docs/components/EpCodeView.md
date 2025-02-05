@@ -1,7 +1,7 @@
 # EpCodeView
 
 
-## Description
+
 `EpCodeView` is a component that displays code snippets with syntax highlighting via [Shiki](https://shiki.matsu.io/).
 
 ## Usage

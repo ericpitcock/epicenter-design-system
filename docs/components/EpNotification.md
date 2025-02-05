@@ -7,7 +7,7 @@
 |------|-------------|------|---------|
 | `id` | - | `string` | `-` |
 | `message` | - | `string` | `-` |
-| `timestamp` | - | `string` | `-` |
+| `timestamp` | - | `string` | `() => new Date().toISOString()` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -68,11 +68,9 @@ No slots available.
     },
     timestamp: {
       type: String,
-      required: true,
+      default: () => new Date().toISOString(),
       validator: (value) => {
-        // Attempt to parse the date string
         const date = new Date(value)
-        // Check if the date is valid and if the value matches the ISO format
         return !isNaN(date.getTime()) && value === date.toISOString()
       }
     },
@@ -99,7 +97,6 @@ No slots available.
     var getRelativeTime = (d1, d2 = new Date()) => {
       var elapsed = d1 - d2
 
-      // "Math.abs" accounts for both "past" & "future" scenarios
       for (var u in units) {
         if (Math.abs(elapsed) > units[u] || u === 'second') {
           return rtf.format(Math.round(elapsed / units[u]), u)

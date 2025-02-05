@@ -1,7 +1,7 @@
 # EpDonutChart
 
 
-## Description
+
 `EpDonutChart` is a D3-based donut chart component. Very basic. But it animates, bro.
 
 ## Usage

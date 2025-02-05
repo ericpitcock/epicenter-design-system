@@ -1,7 +1,7 @@
 # EpButton
 
 
-## Description
+
 `EpButton` is a button. It’s very exciting. It’s used in many places throughout Epicenter Design System. Okay, just a couple places. But it could be used in many places.
 
 <script setup>

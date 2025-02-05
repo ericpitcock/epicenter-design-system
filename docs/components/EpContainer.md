@@ -1,7 +1,7 @@
 # EpContainer
 
 
-## Description
+
 `EpContainer` is a funny little component. Its mystery is only exceeded by its power. And it gives you the tools to be your own boss.
 
 But seriously, I find myself creating the same component layouts often, so I created this component to help me out. It’s a container with header, body, and footer slots. The header and footer can stick while the body scrolls, or you can use it in a more static way. Use `EpHeader` and `EpFooter` components to define the header and footer content for maximum power.
@@ -55,10 +55,7 @@ Use `calculateHeight: true` to dynamically assign a height to the container. Thi
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `stickyHeader` | Whether the header should be sticky. | `boolean` | `false` |
-| `calculateHeight` | Whether to calculate the height of the container. | `boolean` | `false` |
-| `calculateHeightOffset` | calculateHeightOffset is subtracted from the remaining height to allow you to account for additional spacing needs, such as margins, paddings, or any other offset you’d like to apply. | `number` | `0` |
-| `styles` | The styles to apply to the container. | `object` | `{}` |
+No props available.
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -78,8 +75,7 @@ No events available.
 <template>
   <div
     ref="epContainer"
-    :class="['ep-container', containerClasses]"
-    :style="[styles, containerStyles]"
+    class="ep-container"
   >
     <div
       v-if="$slots.header"
@@ -109,54 +105,13 @@ No events available.
 </template>
 
 <script setup>
-  import { useCalculatedHeight } from '../../composables'
-  import { computed, ref } from 'vue'
+  import { useTemplateRef } from 'vue'
 
   defineOptions({
     name: 'EpContainer'
   })
 
-  const props = defineProps({
-    /**
-     * Whether the header should be sticky.
-     */
-    stickyHeader: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Whether to calculate the height of the container.
-     */
-    calculateHeight: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * calculateHeightOffset is subtracted from the remaining height to allow you to account for additional spacing needs, such as margins, paddings, or any other offset you’d like to apply.
-     */
-    calculateHeightOffset: {
-      type: Number,
-      default: 0
-    },
-    /**
-     * The styles to apply to the container.
-     */
-    styles: {
-      type: Object,
-      default: () => ({})
-    }
-  })
-
-  const containerClasses = computed(() => ({
-    'ep-container--sticky-header': props.stickyHeader
-  }))
-
-  const epContainer = ref(null)
-  const { containerHeight } = useCalculatedHeight(epContainer, props.calculateHeightOffset)
-
-  const containerStyles = computed(() => ({
-    ...(props.calculateHeight && containerHeight.value),
-  }))
+  const epContainer = useTemplateRef('epContainer')
 </script>
 
 ```
@@ -183,6 +138,7 @@ No events available.
   --ep-container-border-style: solid;
   --ep-container-border-color: var(--border-color);
   --ep-container-overflow: visible;
+  --ep-container-header-bg-color: var(--interface-surface);
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -210,7 +166,6 @@ No events available.
     height: var(--ep-container-content-height);
     padding: var(--ep-container-content-padding);
     @include mixins.no-scrollbar;
-    // so that dropdowns overlap sticky table headers
     z-index: var(--z-index--default);
   }
 
@@ -219,11 +174,23 @@ No events available.
   }
 
   &--sticky-header {
+    --ep-container-height: unset;
+    --ep-container-min-height: unset;
+    --ep-container-overflow: unset;
+
     .ep-container__header {
       position: sticky;
       top: 0;
+      background: var(--ep-container-header-bg-color);
       z-index: var(--z-index--sticky);
     }
+  }
+
+  &--framed {
+    --ep-container-framed-height: 100vh;
+    --ep-container-framed-offset: 0;
+    --ep-container-height: calc(var(--ep-container-framed-height) - var(--ep-container-framed-offset));
+    --ep-container-overflow: auto;
   }
 }
 ```

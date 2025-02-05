@@ -5,7 +5,6 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `containerProps` | - | `object` | `{}` |
 | `emptyStateMessage` | - | `string` | `'You’re all caught up!'` |
 | `notificationsTitle` | - | `string` | `'Notifications'` |
 | `notifications` | - | `array` | `[]` |
@@ -13,8 +12,8 @@
 ## Events
 | Name    | Description                 | Payload    |
 |---------|-----------------------------|------------|
-| `clear-notifications` | - | - |
 | `remove-notification` | - | - |
+| `clear-notifications` | - | - |
 
 ## Slots
 | Name | Description |
@@ -25,127 +24,77 @@ No slots available.
 
 ```vue
 <template>
-  <ep-container v-bind="computedContainerProps">
+  <ep-container class="ep-container-default ep-container--sticky-header">
     <template #header>
       <ep-header>
         <template #left>
-          <p>
+          <h2>
             {{ notificationsTitle }}
-          </p>
+          </h2>
         </template>
         <template #right>
-          <p
+          <ep-button
             v-show="!isNotificationsEmpty"
-            class="text--link"
-            @click="$emit('clear-notifications')"
-          >
-            Clear all
-          </p>
+            label="Clear all"
+            @click="emit('clear-notifications')"
+          />
         </template>
       </ep-header>
     </template>
-    <ep-flex class="flex-col gap-10">
-      <ep-empty-state
-        v-if="isNotificationsEmpty"
-        :message="emptyStateMessage"
-      />
-      <template v-else>
+    <ep-empty-state v-if="isNotificationsEmpty">
+      {{ emptyStateMessage }}
+    </ep-empty-state>
+    <template v-else>
+      <ep-flex class="flex-col gap-10">
         <transition-group name="fade">
           <EpNotification
             v-for="notification in notifications"
             :key="notification.id"
             v-bind="notification"
-            @dismiss="$emit('remove-notification', notification.id)"
+            @dismiss="emit('remove-notification', notification.id)"
           />
         </transition-group>
-      </template>
-    </ep-flex>
+      </ep-flex>
+    </template>
   </ep-container>
 </template>
 
-<script>
+<script setup>
+  import { computed } from 'vue'
+  import EpButton from '../button/EpButton.vue'
   import EpContainer from '../container/EpContainer.vue'
   import EpEmptyState from '../empty-state/EpEmptyState.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
   import EpHeader from '../header/EpHeader.vue'
   import EpNotification from '../notification/EpNotification.vue'
 
-  export default {
-    name: 'EpNotifications',
-    components: {
-      EpContainer,
-      EpEmptyState,
-      EpFlex,
-      EpHeader,
-      EpNotification
+  defineOptions({
+    name: 'EpNotifications'
+  })
+
+  const props = defineProps({
+    emptyStateMessage: {
+      type: String,
+      default: 'You’re all caught up!'
     },
-    props: {
-      containerProps: {
-        type: Object,
-        default: () => ({})
-      },
-      emptyStateMessage: {
-        type: String,
-        default: 'You’re all caught up!'
-      },
-      notificationsTitle: {
-        type: String,
-        default: 'Notifications'
-      },
-      notifications: {
-        type: Array,
-        default: () => []
-      }
+    notificationsTitle: {
+      type: String,
+      default: 'Notifications'
     },
-    emits: ['remove-notification', 'clear-notifications'],
-    data() {
-      return {
-        defaultContainerProps: {
-          styles: {
-            '--ep-container-width': '100%',
-            '--ep-container-height': '100%',
-            '--ep-container-padding': '0 3rem',
-            '--ep-container-bg-color': 'var(--interface-surface)',
-            '--ep-container-content-padding': '2rem 0 3rem',
-            '--ep-container-overflow': 'auto'
-          }
-        }
-      }
-    },
-    computed: {
-      computedContainerProps() {
-        return {
-          ...this.defaultContainerProps,
-          ...this.containerProps
-        }
-      },
-      isNotificationsEmpty() {
-        return this.notifications.length === 0
-      }
-    },
-  }
+    notifications: {
+      type: Array,
+      default: () => []
+    }
+  })
+
+  const emit = defineEmits([
+    'remove-notification',
+    'clear-notifications'
+  ])
+
+  const isNotificationsEmpty = computed(() => {
+    return props.notifications.length === 0
+  })
 </script>
 
-```
-
-
-## Styles (SCSS)
-
-```scss
-.ep-notifications {
-  --ep-notifications-padding: 0 2rem 2rem 2rem;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: stretch;
-  justify-content: center;
-  padding: var(--ep-notifications-padding);
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 4.1rem;
-  }
-}
 ```

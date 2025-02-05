@@ -27,18 +27,20 @@ No slots available.
 <template>
   <div class="ep-table-pagination">
     <ep-footer
-      left-gap="1rem"
-      right-flex="0 1 40rem"
+      right-gap="1rem"
+      left-flex="0 1 40rem"
     >
-      <template #left>
+      <template #right>
         <ep-button
           :disabled="currentPage === 1"
+          aria-label="Previous page"
           :icon-left="{ name: 'chevron-left' }"
           @click="prevPage"
         />
         <template v-if="showPages">
           <ep-button
             label="1"
+            aria-label="First page"
             :class="{ 'active': currentPage === 1 }"
             @click="emit('pageChange', 1)"
           />
@@ -47,6 +49,7 @@ No slots available.
             v-for="page in pageRange"
             :key="page"
             :label="page.toString()"
+            aria-label="Page {{ page }}"
             :class="{ 'active': currentPage === page }"
             @click="emit('pageChange', page)"
           />
@@ -54,17 +57,19 @@ No slots available.
           <ep-button
             v-if="totalPages > 1"
             :label="totalPages.toString()"
+            aria-label="Last page"
             :class="{ 'active': currentPage === totalPages }"
             @click="emit('pageChange', totalPages)"
           />
         </template>
         <ep-button
+          aria-label="Next page"
           :disabled="currentPage === totalPages"
           :icon-left="{ name: 'chevron-right' }"
           @click="nextPage"
         />
       </template>
-      <template #right>
+      <template #left>
         <ep-flex class="justify-end align-center gap-10">
           Results per page
           <ep-select
@@ -83,9 +88,9 @@ No slots available.
 <script setup>
   import { ref, computed } from 'vue'
   import EpButton from '../button/EpButton.vue'
-  import EpSelect from '../select/EpSelect.vue'
-  import EpFooter from '../footer/EpFooter.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
+  import EpFooter from '../footer/EpFooter.vue'
+  import EpSelect from '../select/EpSelect.vue'
 
   defineOptions({
     name: 'EpTablePagination'

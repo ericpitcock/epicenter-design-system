@@ -1,7 +1,7 @@
 # EpChart
 
 
-## Description
+
 `EpChart` is a wrapper for Highcharts. Right now it supports basic charts like bar, column, and pie charts. It’s a good starting point for adding more chart types in the future.
 
 ## Usage

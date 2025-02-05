@@ -55,6 +55,7 @@ No slots available.
         >
           <ep-menu
             :size="size"
+            :class="$attrs.class"
             :menu-items="item.children"
             @click="onClick($event)"
           />
@@ -161,7 +162,6 @@ No slots available.
       position: absolute;
       top: -1rem;
       left: calc(100% - 1rem);
-      // width: 100%;
     }
   }
 

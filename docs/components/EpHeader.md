@@ -61,7 +61,7 @@ No events available.
   --ep-header-container-border-style: solid;
   --ep-header-container-border-color: var(--border-color);
   --ep-header-container-box-shadow: none;
-  --ep-header-container-overflow: hidden;
+  --ep-header-container-overflow: visible;
   --ep-header-container-z-index: 1;
   --ep-header-content-gap: 3rem;
   --ep-header-left-flex: 1;
