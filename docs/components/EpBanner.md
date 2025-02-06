@@ -51,10 +51,8 @@
       </div>
       <ep-button
         v-if="dissmissable"
-        class="dismiss-button"
-        variant="ghost"
+        class="ep-button-var--ghost"
         :icon-right="{ name: 'close' }"
-        :style="dissmissButtonStyles"
         @click="dismissBanner"
       />
     </div>
@@ -93,18 +91,6 @@
     'dismissed'
   ])
   const dismissBanner = () => emit('dismissed')
-
-  const dissmissButtonStyles = {
-    '--ep-button-bg-color': 'transparent',
-    '--ep-button-border-color': 'transparent',
-    '--ep-button-text-color': 'var(--ep-banner-dismiss-button-color)',
-    '--ep-button-hover-bg-color': 'var(--ep-banner-dismiss-button-hover-bg-color)',
-    '--ep-button-hover-border-color': 'transparent',
-    '--ep-button-hover-text-color': 'var(--ep-banner-dismiss-button-hover-text-color)',
-    '--ep-button-active-bg-color': 'var(--ep-banner-dismiss-button-active-bg-color)',
-    '--ep-button-active-border-color': 'transparent',
-    '--ep-button-active-text-color': 'var(--ep-banner-dismiss-button-active-text-color)',
-  }
 </script>
 
 ```
@@ -113,22 +99,20 @@
 ## Styles (SCSS)
 
 ```scss
-:root {
+.ep-banner {
+  --ep-banner-width: 100%;
   --ep-banner-color-strip-bg: var(--color--primary);
   --ep-banner-bg-color: var(--interface-overlay);
   --ep-banner-border-color: var(--border-color--lighter);
   --ep-banner-text-color: var(--text-color--loud);
-  --ep-banner-subtext-color: var(--text-color--subtle);
+  --ep-banner-subtext-color: var(--text-color);
   --ep-banner-dismiss-button-color: var(--text-color);
   --ep-banner-dismiss-button-hover-bg-color: transparent;
   --ep-banner-dismiss-button-hover-text-color: var(--text-color);
   --ep-banner-dismiss-button-active-bg-color: transparent;
   --ep-banner-dismiss-button-active-text-color: var(--text-color);
-}
-
-.ep-banner {
   display: flex;
-  width: 100%;
+  width: var(--ep-banner-width);
   min-width: 30rem;
   max-width: 60rem;
 
@@ -146,7 +130,7 @@
     width: 100%;
     height: 100%;
     background-color: var(--ep-banner-bg-color);
-    padding: 1.2rem 2rem;
+    padding: 1.2rem;
     border: 1px solid var(--ep-banner-border-color);
     border-left: none;
     border-radius: 0 var(--border-radius) var(--border-radius) 0;

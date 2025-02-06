@@ -5,7 +5,6 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `size` | - | `string` | `'default'` |
 | `disabled` | - | `boolean` | `false` |
 | `autofocus` | - | `boolean` | `false` |
 | `readonly` | - | `boolean` | `false` |
@@ -13,6 +12,7 @@
 | `width` | - | `string` | `'100%'` |
 | `iconLeft` | - | `object` | `null` |
 | `selectId` | - | `string` | `-` |
+| `size` | - | `string` | `'default'` |
 | `options` | - | `array` | `-` |
 | `modelValue` | - | `string|number` | `''` |
 | `placeholder` | - | `string` | `'Select an option'` |
@@ -71,7 +71,6 @@ No slots available.
 </template>
 
 <script>
-  import inputMixin from '../../mixins/inputMixin.js'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   export default {
@@ -79,7 +78,6 @@ No slots available.
     components: {
       EpInputStyler
     },
-    mixins: [inputMixin],
     props: {
       disabled: {
         type: Boolean,
@@ -108,6 +106,10 @@ No slots available.
       selectId: {
         type: String,
         required: true,
+      },
+      size: {
+        type: String,
+        default: 'default'
       },
       options: {
         type: Array,
@@ -150,6 +152,12 @@ No slots available.
         hasInput: false,
         hasWarning: false,
         hasSuccess: false,
+        sizes: {
+          small: '22',
+          default: '30',
+          large: '38',
+          xlarge: '46'
+        },
       }
     },
     computed: {

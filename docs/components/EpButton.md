@@ -190,8 +190,6 @@ No slots available.
   --ep-button-disabled-bg-color: var(--interface-foreground);
   --ep-button-disabled-text-color: var(--text-color--disabled);
   --ep-button-disabled-border-color: var(--border-color--disabled);
-  --ep-button-menu-item-active-bg-color: var(--primary-color-base);
-  --ep-button-menu-item-active-text-color: var(--text-color--loud);
   --ep-button-padding-inline: 1.2rem;
   display: inline-flex;
   justify-content: space-between;
@@ -235,21 +233,6 @@ No slots available.
     background: var(--ep-button-active-bg-color);
     color: var(--ep-button-active-text-color);
     border-color: var(--ep-button-active-border-color);
-  }
-
-  &--menu-item {
-    width: 100%;
-    max-width: 100%;
-    background: transparent;
-    border-color: transparent;
-    padding-right: 2rem !important;
-    padding-left: 2rem !important;
-
-    &--active {
-      background: var(--ep-button-menu-item-active-bg-color);
-      color: var(--ep-button-menu-item-active-text-color);
-      cursor: default;
-    }
   }
 
   &--disabled {
