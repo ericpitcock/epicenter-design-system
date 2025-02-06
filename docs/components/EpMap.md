@@ -2,9 +2,25 @@
 
 
 
+::: warning
+In order to use `EpMap` in your Vite app, you must add this to your `vite.config.js`:
+:::
+
+```js
+optimizeDeps: {
+  include: ['mapbox-gl'],
+},
+```
+
+This is because Vite does not pre-bundle `mapbox-gl` by default, which can cause import issues*.
+
+*Headaches galore
+    
+
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
+| `accessToken` | - | `string` | `-` |
 | `mapCenter` | - | `array` | `[-122.3321, 47.6062]` |
 | `mapZoom` | - | `number` | `12` |
 | `mapStyle` | - | `string` | `'mapbox://styles/mapbox/streets-v11'` |
@@ -48,6 +64,10 @@ No slots available.
   })
 
   const props = defineProps({
+    accessToken: {
+      type: String,
+      required: true
+    },
     mapCenter: {
       type: Array,
       default: () => [-122.3321, 47.6062]
@@ -91,7 +111,7 @@ No slots available.
   const init = ref(true)
   const map = ref(null)
   const markers = ref([])
-  let mapboxgl = null // Reference for dynamic import
+  let mapboxgl = null
 
   watch(() => props.mapCenter, (newCenter) => {
     emit('centerChange', newCenter)
@@ -163,8 +183,8 @@ No slots available.
       // Perform the dynamic import and other async operations
       import('mapbox-gl').then((module) => {
         mapboxgl = module.default
-        mapboxgl.accessToken = import.meta.env.VITE_APP_MAPBOX_TOKEN
         map.value = new mapboxgl.Map({
+          accessToken: props.accessToken,
           container: 'ep-map',
           center: props.mapCenter,
           zoom: props.mapZoom,

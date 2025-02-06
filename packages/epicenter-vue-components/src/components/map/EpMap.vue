@@ -16,7 +16,7 @@
   })
 
   const props = defineProps({
-    mapboxToken: {
+    accessToken: {
       type: String,
       required: true
     },
@@ -63,7 +63,7 @@
   const init = ref(true)
   const map = ref(null)
   const markers = ref([])
-  let mapboxgl = null // Reference for dynamic import
+  let mapboxgl = null
 
   watch(() => props.mapCenter, (newCenter) => {
     emit('centerChange', newCenter)
@@ -136,7 +136,7 @@
       import('mapbox-gl').then((module) => {
         mapboxgl = module.default
         map.value = new mapboxgl.Map({
-          accessToken: props.mapboxToken,
+          accessToken: props.accessToken,
           container: 'ep-map',
           center: props.mapCenter,
           zoom: props.mapZoom,
