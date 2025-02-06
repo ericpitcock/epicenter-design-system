@@ -14,6 +14,10 @@
       "link": "/components/EpBanner"
     },
     {
+      "text": "EpBreadcrumbs",
+      "link": "/components/EpBreadcrumbs"
+    },
+    {
       "text": "EpBrowserFrame",
       "link": "/components/EpBrowserFrame"
     },
@@ -126,8 +130,16 @@
       "link": "/components/EpNotifications"
     },
     {
+      "text": "EpOverlay",
+      "link": "/components/EpOverlay"
+    },
+    {
       "text": "EpRadio",
       "link": "/components/EpRadio"
+    },
+    {
+      "text": "EpResizable",
+      "link": "/components/EpResizable"
     },
     {
       "text": "EpMultiSearch",
@@ -184,10 +196,6 @@
     {
       "text": "EpTablePagination",
       "link": "/components/EpTablePagination"
-    },
-    {
-      "text": "EpTableRangeFilter",
-      "link": "/components/EpTableRangeFilter"
     },
     {
       "text": "EpTableSearchInput",
