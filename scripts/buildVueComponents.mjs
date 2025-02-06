@@ -1,7 +1,11 @@
 import { remove, ensureDir, copy } from 'fs-extra'
 import { resolve, join } from 'path'
 import { fileURLToPath } from 'url'
-import { EXCLUDED_DIRS } from './excludedComponents.js'
+import { generateComponentExports } from './generateExports.mjs'
+// import { EXCLUDED_DIRS } from './excludedComponents.js'
+
+// generate the exports first
+generateComponentExports()
 
 // Get __dirname equivalent in ESM
 const __filename = fileURLToPath(import.meta.url)
@@ -29,13 +33,13 @@ await copy(join(srcDir, 'components'), join(distDir, 'components'), {
     const isNotesFile = src.endsWith('.notes.md')
 
     // Extract the last directory name from the path
-    const relativePath = src.replace(srcDir + '/', '') // Remove src/ prefix
-    const parts = relativePath.split('/')
-    const directoryName = parts.length > 1 ? parts[1] : ''
+    // const relativePath = src.replace(srcDir + '/', '') // Remove src/ prefix
+    // const parts = relativePath.split('/')
+    // const directoryName = parts.length > 1 ? parts[1] : ''
 
-    const isExcludedDir = EXCLUDED_DIRS.includes(directoryName)
+    // const isExcludedDir = EXCLUDED_DIRS.includes(directoryName)
 
-    return !isNotesFile && !isExcludedDir
+    return !isNotesFile
   }
 })
 

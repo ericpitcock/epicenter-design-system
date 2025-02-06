@@ -2,7 +2,7 @@ import { parse } from 'vue-docgen-api'
 import fs from 'fs'
 import path from 'path'
 import glob from 'glob'
-import { EXCLUDED_COMPONENTS } from './excludedComponents.js'
+// import { EXCLUDED_COMPONENTS } from './excludedComponents.js'
 
 // Resolve __dirname equivalent in ES modules
 import { fileURLToPath } from 'url'
@@ -46,10 +46,10 @@ vueFiles.forEach(async (filePath) => {
   const fileName = path.basename(filePath, '.vue') // Get the file name without extension
 
   // Skip excluded components
-  if (EXCLUDED_COMPONENTS.includes(fileName)) {
-    console.log(`Skipping excluded component: ${fileName}`)
-    return
-  }
+  // if (EXCLUDED_COMPONENTS.includes(fileName)) {
+  //   console.log(`Skipping excluded component: ${fileName}`)
+  //   return
+  // }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8') // Read the .vue file content
 
