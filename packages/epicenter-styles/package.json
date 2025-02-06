@@ -3,6 +3,9 @@
   "version": "1.0.4",
   "main": "dist/epicenter-design-system.css",
   "style": "dist/epicenter-design-system.css",
+  "files": [
+    "dist"
+  ],
   "description": "Epicenter Design System - Styles",
   "scripts": {
     "sass:watch": "sass --watch ./index.scss ./dist/epicenter-design-system.css --style compressed"

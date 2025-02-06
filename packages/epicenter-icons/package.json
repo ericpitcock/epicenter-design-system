@@ -3,6 +3,10 @@
   "version": "1.0.4",
   "description": "Epicenter Design System - Icons",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "icons"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

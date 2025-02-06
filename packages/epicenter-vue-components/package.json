@@ -2,7 +2,15 @@
   "name": "@ericpitcock/epicenter-vue-components",
   "version": "1.0.4",
   "description": "Epicenter Design System - Vue Components",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "exports": {
+    "import": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ericpitcock/epicenter-design-system.git"
@@ -17,5 +25,8 @@
     "highcharts": "^12.0.2",
     "mapbox-gl": "^3.9.4",
     "shiki": "^1.24.4"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
   }
 }
