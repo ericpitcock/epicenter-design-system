@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 // Path to the components directory
-const componentsDir = path.resolve('src/components')
+const componentsDir = path.resolve('../packages/epicenter-vue-components/src/components')
 
 // Output file (index.js in components directory)
 const outputFile = path.join(componentsDir, 'index.js')
