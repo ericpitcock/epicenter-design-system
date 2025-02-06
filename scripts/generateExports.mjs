@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { resolve, join } from 'path'
+import path, { resolve, join } from 'path'
 import { fileURLToPath } from 'url'
 
 // Get __dirname equivalent in ESM
@@ -40,12 +40,12 @@ export function generateComponentExports() {
 
   // Generate import statements and named exports
   const importStatements = vueFiles.map((filePath) => {
-    const relativePath = join('./', filePath.replace(componentsDir, '').replace(/\\/g, '/'))
-    const componentName = filePath.split('/').pop().replace('.vue', '')
+    const relativePath = `./${path.relative(componentsDir, filePath).replace(/\\/g, '/')}`
+    const componentName = path.basename(filePath, '.vue')
     return `import ${componentName} from '${relativePath}'`
   })
 
-  const exportNames = vueFiles.map((filePath) => filePath.split('/').pop().replace('.vue', ''))
+  const exportNames = vueFiles.map((filePath) => path.basename(filePath, '.vue'))
   const namedExports = `export {\n  ${exportNames.join(',\n  ')}\n}`
   const defaultExport = `export default {\n  ${exportNames.join(',\n  ')}\n}`
   const outputContent = `${importStatements.join('\n')}\n\n${namedExports}\n\n${defaultExport}`
