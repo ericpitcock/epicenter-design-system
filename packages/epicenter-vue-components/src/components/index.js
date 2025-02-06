@@ -53,10 +53,8 @@ import EpTabContent from './tabs/EpTabContent.vue'
 import EpTabs from './tabs/EpTabs.vue'
 import EpTextarea from './textarea/EpTextarea.vue'
 import EpThemeToggle from './theme-toggle/EpThemeToggle.vue'
-import EpThreatCaseMap from './threat-case-map/EpThreatCaseMap.vue'
 import EpToggle from './toggle/EpToggle.vue'
 import EpTooltip from './tooltip/EpTooltip.vue'
-import EpUpsetPlot from './upset-plot/EpUpsetPlot.vue'
 
 export {
   EpActionBar,
@@ -114,10 +112,8 @@ export {
   EpTabs,
   EpTextarea,
   EpThemeToggle,
-  EpThreatCaseMap,
   EpToggle,
-  EpTooltip,
-  EpUpsetPlot
+  EpTooltip
 }
 
 export default {
@@ -176,8 +172,6 @@ export default {
   EpTabs,
   EpTextarea,
   EpThemeToggle,
-  EpThreatCaseMap,
   EpToggle,
-  EpTooltip,
-  EpUpsetPlot
+  EpTooltip
 }

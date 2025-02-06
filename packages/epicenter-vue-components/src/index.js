@@ -1,4 +1,4 @@
-import components from './src/components'
+import components from './components'
 
 const Epicenter = {
   install(app) {
@@ -9,4 +9,4 @@ const Epicenter = {
 }
 
 export default Epicenter
-export * from './src/components' // For tree-shakable imports
+export * from './components' // For tree-shakable imports
