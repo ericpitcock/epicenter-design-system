@@ -13,7 +13,7 @@
       :aria-controls="`tabpanel-${index}`"
       :class="[
         'ep-tabs__tab-item',
-        { 'ep-tabs__tab-item--active': index === activeTabIndex }
+        { 'ep-tabs__tab-item--active': !item.to && index === activeTabIndex }
       ]"
       :to="item.to ? item.to : undefined"
       role="tab"
@@ -28,11 +28,11 @@
 </template>
 
 <script setup>
+  import { computed, ref } from 'vue'
+
   defineOptions({
     name: 'EpTabs'
   })
-
-  import { computed, ref } from 'vue'
 
   const props = defineProps({
     /**
