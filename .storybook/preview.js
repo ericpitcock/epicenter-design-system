@@ -81,7 +81,7 @@ setup((app) => {
 })
 
 // Global styles
-import '../packages/epicenter-styles/dist/epicenter-design-system.css'
+import '../static/epicenter-design-system.css'
 import '../storybook/storybook.scss'
 
 const preview = {

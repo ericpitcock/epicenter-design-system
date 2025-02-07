@@ -56,6 +56,40 @@ html[data-color-theme='light'] {
   }
 }
 
+@font-face {
+  font-family: InterVariable;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/InterVariable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: InterVariable;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/InterVariable-Italic.woff2') format('woff2');
+}
+
+:root {
+  font-family: 'InterVariable', sans-serif;
+  font-optical-sizing: auto;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+}
+
+.monospace {
+  font-family: 'Fira Code', monospace;
+  font-variation-settings: 'wght' 500;
+}
+
 .badge-variant-primary {
   --ep-badge-bg-color: var(--primary-gradient);
   --ep-badge-border-color: var(--primary-color-600);
