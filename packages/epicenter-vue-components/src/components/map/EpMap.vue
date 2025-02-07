@@ -95,6 +95,16 @@
   // get a reference to the parent container
   const epMapContainer = ref(null)
 
+  // create a new ResizeObserver instance
+  const observer = new ResizeObserver(() => {
+    if (map.value) {
+      // Ensure map.value is initialized before calling resize
+      nextTick(() => {
+        map.value.resize()
+      })
+    }
+  })
+
   onMounted(() => {
     loadMap().then(() => {
       // map layer
@@ -108,21 +118,13 @@
       init.value = false
     })
 
-    // create a new ResizeObserver instance
-    const observer = new ResizeObserver(() => {
-      if (map.value) {
-        // Ensure map.value is initialized before calling resize
-        nextTick(() => {
-          map.value.resize()
-        })
-      }
-    })
-
     // attach the observer to the container
     observer.observe(epMapContainer.value)
   })
 
   onBeforeUnmount(() => {
+    observer.disconnect()
+
     if (map.value) {
       if (map.value.getLayer('test')) map.value.removeLayer('test')
       if (map.value.getSource('test')) map.value.removeSource('test')
