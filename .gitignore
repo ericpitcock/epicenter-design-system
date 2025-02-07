@@ -4,6 +4,7 @@ storybook-static/
 storybook-react-static/
 package-lock.json
 docs/.vitepress/cache
-docs/.vitepress/dist
-packages/epicenter-icons/src
-packages/epicenter-vue-components/dist
+docs/.vitepress/dist/
+packages/epicenter-icons/src/
+packages/epicenter-vue-components/dist/
+packages/epicenter-styles/dist/
