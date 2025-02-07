@@ -6,7 +6,7 @@
 
 ## Epicenter Design System
 
-Epicenter Design System is a collection of Vue 3 (and soon, React) components and styles for web apps.
+A collection of Vue 3 (and soon, React) components and styles for web apps.
 
 Check out the [docs](https://docs.epicenter.design).
 
