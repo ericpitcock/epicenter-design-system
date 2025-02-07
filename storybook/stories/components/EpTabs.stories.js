@@ -4,7 +4,8 @@ import EpHeader from '@/components/header/EpHeader.vue'
 import EpTabs from '@/components/tabs/EpTabs.vue'
 import EpTabContent from '@/components/tabs/EpTabContent.vue'
 import { useTabs } from '@/composables'
-import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { computed, ref, onMounted } from 'vue'
 
 export default {
   title: 'Components/Tabs',
@@ -60,6 +61,14 @@ export const Tabs = args => ({
     const headerBgColor = computed(() => args.variant === 'classic' ? 'var(--interface-foreground)' : 'transparent')
     const headerHeight = computed(() => args.variant === 'classic' ? '5.1rem' : '6.1rem')
     const headerPadding = computed(() => args.variant === 'classic' ? '0 3rem' : '0')
+
+    const router = useRouter()
+    const ready = ref(false)
+
+    onMounted(async () => {
+      await router.push('/library/data')
+      ready.value = true
+    })
 
     return {
       activeTab,
