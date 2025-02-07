@@ -14,7 +14,8 @@
     "yalc:push": "cd packages/epicenter-styles && yalc push && cd ../epicenter-vue-components && yalc push && cd ../epicenter-icons && yalc push",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "update-docs": "node scripts/generateDocs.mjs",
-    "build-components": "node scripts/buildVueComponents.mjs"
+    "build-components": "node scripts/buildVueComponents.mjs",
+    "build-styles": "node scripts/buildStyles.mjs"
   },
   "repository": {
     "type": "git",
