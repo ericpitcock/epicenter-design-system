@@ -1,6 +1,6 @@
 <template>
   <div class="ep-table-container">
-    <table :class="tableClasses">
+    <table :class="['ep-table', classes]">
       <thead>
         <tr>
           <th
@@ -62,10 +62,9 @@
     }
   })
 
-  const tableClasses = computed(() => ({
-    'ep-table': true,
+  const classes = computed(() => ({
     'ep-table--bordered': props.bordered,
     'ep-table--compact': props.compact,
-    'ep-table--striped': props.striped
+    'ep-table--striped': props.striped,
   }))
 </script>
