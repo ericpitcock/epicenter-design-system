@@ -9,15 +9,10 @@
 | `column` | - | `object` | `-` |
 | `styles` | - | `array` | `[]` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
 
-## Slots
-| Name | Description |
-|------|-------------|
-No slots available.
+::: info
+This component does not use events, slots.
+:::
 
 ## Component Code
 

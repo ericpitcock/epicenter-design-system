@@ -8,15 +8,15 @@
 | `activeTabIndex` | - | `number` | `0` |
 | `items` | - | `array` | `[]` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
-
 ## Slots
 | Name | Description |
 |------|-------------|
 | ``tab-${index}`` | No description available. |
+
+
+::: info
+This component does not use events.
+:::
 
 ## Component Code
 
@@ -55,7 +55,6 @@ No events available.
   })
 </script>
 ```
-
 
 ## Styles (SCSS)
 

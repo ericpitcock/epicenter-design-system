@@ -162,7 +162,6 @@
 </script>
 ```
 
-
 ## Styles (SCSS)
 
 ```scss

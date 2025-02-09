@@ -359,7 +359,6 @@ The `sorter` function receives two values and should return a number: -1 for sor
 
 ```
 
-
 ## Styles (SCSS)
 
 ```scss

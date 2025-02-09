@@ -8,11 +8,6 @@
 | `direction` | - | `string` | `'column'` |
 | `justify` | - | `string` | `'center'` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
-
 ## Slots
 | Name | Description |
 |------|-------------|
@@ -20,6 +15,11 @@ No events available.
 | `default` | No description available. |
 | `subtext` | No description available. |
 | `cta` | No description available. |
+
+
+::: info
+This component does not use events.
+:::
 
 ## Component Code
 
@@ -79,7 +79,6 @@ No events available.
 </script>
 
 ```
-
 
 ## Styles (SCSS)
 

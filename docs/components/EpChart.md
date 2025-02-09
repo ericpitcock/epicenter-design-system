@@ -36,15 +36,10 @@
 | `height` | - | `number` | `400` |
 | `options` | - | `object` | `{}` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
 
-## Slots
-| Name | Description |
-|------|-------------|
-No slots available.
+::: info
+This component does not use events, slots.
+:::
 
 ## Component Code
 

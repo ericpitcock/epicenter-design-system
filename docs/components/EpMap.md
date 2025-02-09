@@ -38,10 +38,10 @@ This is because Vite does not pre-bundle `mapbox-gl` by default, which can cause
 | `dropPin` | - | - |
 | `zoomChange` | - | - |
 
-## Slots
-| Name | Description |
-|------|-------------|
-No slots available.
+
+::: info
+This component does not use slots.
+:::
 
 ## Component Code
 
@@ -143,6 +143,16 @@ No slots available.
   // get a reference to the parent container
   const epMapContainer = ref(null)
 
+  // create a new ResizeObserver instance
+  const observer = new ResizeObserver(() => {
+    if (map.value) {
+      // Ensure map.value is initialized before calling resize
+      nextTick(() => {
+        map.value.resize()
+      })
+    }
+  })
+
   onMounted(() => {
     loadMap().then(() => {
       // map layer
@@ -156,21 +166,13 @@ No slots available.
       init.value = false
     })
 
-    // create a new ResizeObserver instance
-    const observer = new ResizeObserver(() => {
-      if (map.value) {
-        // Ensure map.value is initialized before calling resize
-        nextTick(() => {
-          map.value.resize()
-        })
-      }
-    })
-
     // attach the observer to the container
     observer.observe(epMapContainer.value)
   })
 
   onBeforeUnmount(() => {
+    observer.disconnect()
+
     if (map.value) {
       if (map.value.getLayer('test')) map.value.removeLayer('test')
       if (map.value.getSource('test')) map.value.removeSource('test')
@@ -246,7 +248,6 @@ No slots available.
   }
 </script>
 ```
-
 
 ## Styles (SCSS)
 

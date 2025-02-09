@@ -2,20 +2,15 @@
 
 
 
-## Props
-| Name | Description | Type | Default |
-|------|-------------|------|---------|
-No props available.
-
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
-
 ## Slots
 | Name | Description |
 |------|-------------|
 | `slotName` | No description available. |
+
+
+::: info
+This component does not use props, events.
+:::
 
 ## Component Code
 
@@ -43,7 +38,6 @@ No events available.
 </script>
 
 ```
-
 
 ## Styles (SCSS)
 

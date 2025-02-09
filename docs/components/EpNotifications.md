@@ -15,10 +15,10 @@
 | `remove-notification` | - | - |
 | `clear-notifications` | - | - |
 
-## Slots
-| Name | Description |
-|------|-------------|
-No slots available.
+
+::: info
+This component does not use slots.
+:::
 
 ## Component Code
 

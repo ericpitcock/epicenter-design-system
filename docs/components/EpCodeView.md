@@ -28,15 +28,10 @@
 | `language` | The language of the code. | `string` | `-` |
 | `theme` | The theme to use for highlighting. | `string` | `'vitesse-dark'` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
 
-## Slots
-| Name | Description |
-|------|-------------|
-No slots available.
+::: info
+This component does not use events, slots.
+:::
 
 ## Component Code
 
@@ -50,7 +45,7 @@ No slots available.
 </template>
 
 <script setup>
-  import { onMounted, ref } from 'vue'
+  import { onMounted, ref, watch } from 'vue'
   import { codeToHtml } from 'shiki'
 
   defineOptions({
@@ -98,6 +93,10 @@ No slots available.
       highlightedCode.value = props.code
     }
   }
+
+  watch(() => props.code, () => {
+    highlightCode()
+  })
 
   onMounted(() => {
     highlightCode()

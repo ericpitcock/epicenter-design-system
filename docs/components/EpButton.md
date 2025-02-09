@@ -43,15 +43,10 @@
 | `disabled` | If `true`, the button will be disabled. | `boolean` | `false` |
 | `type` | The  type of the button. | `string` | `'button'` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
 
-## Slots
-| Name | Description |
-|------|-------------|
-No slots available.
+::: info
+This component does not use events, slots.
+:::
 
 ## Component Code
 
@@ -169,7 +164,6 @@ No slots available.
 </script>
 
 ```
-
 
 ## Styles (SCSS)
 

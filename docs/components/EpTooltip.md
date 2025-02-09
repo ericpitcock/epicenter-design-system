@@ -8,16 +8,16 @@
 | `delay` | - | `number` | `0` |
 | `position` | - | `string` | `'top center'` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
-
 ## Slots
 | Name | Description |
 |------|-------------|
 | `tooltip` | No description available. |
 | `default` | No description available. |
+
+
+::: info
+This component does not use events.
+:::
 
 ## Component Code
 
@@ -93,7 +93,6 @@ No events available.
   })
 </script>
 ```
-
 
 ## Styles (SCSS)
 

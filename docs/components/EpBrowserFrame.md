@@ -13,15 +13,10 @@
 | `imageSrc` | The source of the image to display in the browser frame. | `string` | `''` |
 | `imageAlt` | The alt text for the image. | `string` | `''` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
 
-## Slots
-| Name | Description |
-|------|-------------|
-No slots available.
+::: info
+This component does not use events, slots.
+:::
 
 ## Component Code
 

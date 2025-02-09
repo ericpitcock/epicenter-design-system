@@ -31,15 +31,15 @@ This component needs to be updated to use CSS custom properties instead of props
 | `rightGap` | - | `string` | `'3rem'` |
 | `rightJustify` | - | `string` | `'flex-end'` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
-
 ## Slots
 | Name | Description |
 |------|-------------|
 | `slotName` | No description available. |
+
+
+::: info
+This component does not use events.
+:::
 
 ## Component Code
 
@@ -207,7 +207,6 @@ No events available.
 </script>
 
 ```
-
 
 ## Styles (SCSS)
 

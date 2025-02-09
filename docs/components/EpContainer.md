@@ -52,22 +52,17 @@ Use `calculateHeight: true` to dynamically assign a height to the container. Thi
 ```
     
 
-## Props
-| Name | Description | Type | Default |
-|------|-------------|------|---------|
-No props available.
-
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
-
 ## Slots
 | Name | Description |
 |------|-------------|
 | `header` | The header content. |
 | `default` | The content of the container. |
 | `footer` | The footer content. |
+
+
+::: info
+This component does not use props, events.
+:::
 
 ## Component Code
 
@@ -115,7 +110,6 @@ No events available.
 </script>
 
 ```
-
 
 ## Styles (SCSS)
 

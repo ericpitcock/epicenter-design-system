@@ -10,15 +10,15 @@
 | `fixedHeader` | - | `boolean` | `-` |
 | `showActionsMenu` | - | `boolean` | `-` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
-
 ## Slots
 | Name | Description |
 |------|-------------|
 | `header` | No description available. |
+
+
+::: info
+This component does not use events.
+:::
 
 ## Component Code
 

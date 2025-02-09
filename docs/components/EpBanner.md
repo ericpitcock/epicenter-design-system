@@ -95,7 +95,6 @@
 
 ```
 
-
 ## Styles (SCSS)
 
 ```scss

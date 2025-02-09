@@ -12,10 +12,10 @@
 |---------|-----------------------------|------------|
 | `toggle-theme` | - | - |
 
-## Slots
-| Name | Description |
-|------|-------------|
-No slots available.
+
+::: info
+This component does not use slots.
+:::
 
 ## Component Code
 

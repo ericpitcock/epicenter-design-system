@@ -171,7 +171,6 @@
 
 ```
 
-
 ## Styles (SCSS)
 
 ```scss

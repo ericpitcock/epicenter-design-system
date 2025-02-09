@@ -8,16 +8,16 @@
 | `items` | - | `array` | `[]` |
 | `auto` | - | `boolean` | `false` |
 
-## Events
-| Name    | Description                 | Payload    |
-|---------|-----------------------------|------------|
-No events available.
-
 ## Slots
 | Name | Description |
 |------|-------------|
 | `item` | No description available. |
 | `separator` | No description available. |
+
+
+::: info
+This component does not use events.
+:::
 
 ## Component Code
 

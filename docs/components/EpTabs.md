@@ -14,10 +14,10 @@
 |---------|-----------------------------|------------|
 | `tab-click` | Emitted when a tab is clicked. | - |
 
-## Slots
-| Name | Description |
-|------|-------------|
-No slots available.
+
+::: info
+This component does not use slots.
+:::
 
 ## Component Code
 
@@ -37,7 +37,7 @@ No slots available.
       :aria-controls="`tabpanel-${index}`"
       :class="[
         'ep-tabs__tab-item',
-        { 'ep-tabs__tab-item--active': index === activeTabIndex }
+        { 'ep-tabs__tab-item--active': !item.to && index === activeTabIndex }
       ]"
       :to="item.to ? item.to : undefined"
       role="tab"
@@ -52,11 +52,11 @@ No slots available.
 </template>
 
 <script setup>
+  import { computed, ref } from 'vue'
+
   defineOptions({
     name: 'EpTabs'
   })
-
-  import { computed, ref } from 'vue'
 
   const props = defineProps({
     /**
@@ -125,7 +125,6 @@ No slots available.
   }
 </script>
 ```
-
 
 ## Styles (SCSS)
 
