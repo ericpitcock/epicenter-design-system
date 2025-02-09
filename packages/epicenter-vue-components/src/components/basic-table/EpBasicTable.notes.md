@@ -1,0 +1,1 @@
+Just a basic table when you don’t need any special features. Supports styling but no sorting, filtering, pagination, etc. If you need a feature-rich table, use [`EpTable`](./EpTable) instead.

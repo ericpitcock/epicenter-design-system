@@ -40,22 +40,37 @@
   })
 
   const props = defineProps({
+    /**
+     * The columns of the table.
+     */
     columns: {
       type: Array,
       required: true
     },
+    /**
+     * The data of the table.
+     */
     data: {
       type: Array,
       required: true
     },
+    /**
+     * Gives borders to your table rows. Helpful for tables with a lot of data.
+     */
     bordered: {
       type: Boolean,
       default: false
     },
+    /**
+     * Compact rows in a single line table scenario.
+     */
     compact: {
       type: Boolean,
       default: false
     },
+    /**
+     * Background colors for every other row. Helpful for tables with a lot of data.
+     */
     striped: {
       type: Boolean,
       default: false
