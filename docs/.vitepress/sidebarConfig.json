@@ -14,6 +14,10 @@
       "link": "/components/EpBanner"
     },
     {
+      "text": "EpBasicTable",
+      "link": "/components/EpBasicTable"
+    },
+    {
       "text": "EpBreadcrumbs",
       "link": "/components/EpBreadcrumbs"
     },

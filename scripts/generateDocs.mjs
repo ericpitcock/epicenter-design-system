@@ -2,7 +2,6 @@ import { parse } from 'vue-docgen-api'
 import fs from 'fs'
 import path from 'path'
 import glob from 'glob'
-// import { EXCLUDED_COMPONENTS } from './excludedComponents.js'
 
 // Resolve __dirname equivalent in ES modules
 import { fileURLToPath } from 'url'
@@ -45,17 +44,11 @@ const vueFiles = glob.sync(`${COMPONENTS_DIR}/**/*.vue`)
 vueFiles.forEach(async (filePath) => {
   const fileName = path.basename(filePath, '.vue') // Get the file name without extension
 
-  // Skip excluded components
-  // if (EXCLUDED_COMPONENTS.includes(fileName)) {
-  //   console.log(`Skipping excluded component: ${fileName}`)
-  //   return
-  // }
-
   const fileContent = fs.readFileSync(filePath, 'utf-8') // Read the .vue file content
 
   // Look for a custom notes file (e.g., EpButton.notes.md)
   const notesFilePath = path.join(path.dirname(filePath), `${fileName}.notes.md`)
-  let customNotesSection = '' // Default to no notes section
+  let customNotesSection = ''
 
   if (fs.existsSync(notesFilePath)) {
     const customNotes = fs.readFileSync(notesFilePath, 'utf-8')
@@ -65,6 +58,7 @@ vueFiles.forEach(async (filePath) => {
 ${customNotes}
     `
   }
+
   // Try to locate the associated SCSS file
   const scssContent = getScssContent(fileName)
 
@@ -73,56 +67,90 @@ ${customNotes}
 
     const doc = await parse(filePath)
 
-    // Generate Markdown content
-    const markdown = `
-# ${doc.displayName}
+    let markdown = `# ${doc.displayName}
 
 ${doc.description || ''}${customNotesSection}
+`
 
+    // Sections
+    let missingSections = []
+
+    if (doc.props?.length) {
+      markdown += `
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
 ${doc.props
-        ?.map(
-          (prop) =>
-            `| \`${prop.name}\` | ${prop.description || '-'} | \`${prop.type?.name || '-'
-            }\` | \`${prop.defaultValue?.value || '-'}\` |`
-        )
-        .join('\n') || 'No props available.'}
+          .map(
+            (prop) =>
+              `| \`${prop.name}\` | ${prop.description || '-'} | \`${prop.type?.name || '-'}\` | \`${prop.defaultValue?.value || '-'}\` |`
+          )
+          .join('\n')}
+`
+    } else {
+      missingSections.push('props')
+    }
 
+    if (doc.events?.length) {
+      markdown += `
 ## Events
 | Name    | Description                 | Payload    |
 |---------|-----------------------------|------------|
 ${doc.events
-        ?.map((event) => {
-          return `| \`${event.name}\` | ${event.description || '-'} | - |`
-        })
-        .join('\n') || 'No events available.'}
+          .map((event) => {
+            return `| \`${event.name}\` | ${event.description || '-'} | - |`
+          })
+          .join('\n')}
+`
+    } else {
+      missingSections.push('events')
+    }
 
+    if (doc.slots?.length) {
+      markdown += `
 ## Slots
 | Name | Description |
 |------|-------------|
 ${doc.slots
-        ?.map(
-          (slot) =>
-            `| \`${slot.name}\` | ${slot.description || 'No description available.'} |`
-        )
-        .join('\n') || 'No slots available.'}
+          .map(
+            (slot) =>
+              `| \`${slot.name}\` | ${slot.description || 'No description available.'} |`
+          )
+          .join('\n')}
+`
+    } else {
+      missingSections.push('slots')
+    }
 
+    // Add info block if any sections are missing
+    if (missingSections.length > 0) {
+      markdown += `
+
+::: info
+This component does not use ${missingSections.join(', ')}.
+:::
+`
+    }
+
+    // Component code
+    markdown += `
 ## Component Code
 
 \`\`\`vue
 ${fileContent}
 \`\`\`
+`
 
-${scssContent ? `
+    // SCSS
+    if (scssContent) {
+      markdown += `
 ## Styles (SCSS)
 
 \`\`\`scss
 ${scssContent}
 \`\`\`
-` : ''}
-    `
+`
+    }
 
     // Write the Markdown file
     const outputFile = path.join(OUTPUT_DIR, `${fileName}.md`)
