@@ -1,9 +1,11 @@
+import { faker } from '@faker-js/faker'
+import { computed } from 'vue'
+
 import EpActionBar from '@/components/action-bar/EpActionBar.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
+
 import commonActionBarArgs from '../../helpers/commonActionBarArgs.js'
-import { computed } from 'vue'
-import { faker } from '@faker-js/faker'
 
 const container = () => {
   return {

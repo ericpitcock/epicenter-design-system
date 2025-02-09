@@ -1,6 +1,7 @@
-import { centeredSurface } from '../../helpers/decorators.js'
-import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
 import EpSelect from '@/components/select/EpSelect.vue'
+
+import { centeredSurface } from '../../helpers/decorators.js'
+import { iconMapping,iconOptions } from '../../helpers/iconHelper.js'
 
 export default {
   title: 'Components/Select',

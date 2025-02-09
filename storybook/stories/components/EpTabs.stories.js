@@ -1,11 +1,13 @@
-import { paddedBg } from '../../helpers/decorators.js'
+import { computed, onMounted,ref } from 'vue'
+import { useRouter } from 'vue-router'
+
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
-import EpTabs from '@/components/tabs/EpTabs.vue'
 import EpTabContent from '@/components/tabs/EpTabContent.vue'
+import EpTabs from '@/components/tabs/EpTabs.vue'
 import { useTabs } from '@/composables'
-import { useRouter } from 'vue-router'
-import { computed, ref, onMounted } from 'vue'
+
+import { paddedBg } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Tabs',

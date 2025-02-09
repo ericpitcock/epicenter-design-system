@@ -1,8 +1,9 @@
+import { faker } from '@faker-js/faker'
+import { computed, ref } from 'vue'
+
 import EpBadge from '@/components/badge/EpBadge.vue'
 import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpResizable from '@/components/resizable/EpResizable.vue'
-import { computed, ref } from 'vue'
-import { faker } from '@faker-js/faker'
 
 export default {
   title: 'Components/Resizable',

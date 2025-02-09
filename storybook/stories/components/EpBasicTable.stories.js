@@ -1,4 +1,5 @@
 import EpBasicTable from '@/components/basic-table/EpBasicTable.vue'
+
 import { paddedSurface } from '../../helpers/decorators.js'
 
 export default {

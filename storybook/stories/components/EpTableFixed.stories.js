@@ -1,12 +1,14 @@
-import { surfaceOverflow } from '../../helpers/decorators.js'
+import { nextTick, ref } from 'vue'
+
+import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
+import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableHead from '@/components/table/EpTableHead.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
-import EpFlex from '@/components/flexbox/EpFlex.vue'
-import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
-import { useColumnFilters, useSorting, useFixedHeader } from '@/composables/index.js'
+import { useColumnFilters, useFixedHeader,useSorting } from '@/composables/index.js'
+
 import { columns, fakeArray } from '../../data/tableData'
-import { nextTick, ref } from 'vue'
+import { surfaceOverflow } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Table/Fixed',

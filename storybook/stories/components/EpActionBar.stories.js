@@ -1,6 +1,7 @@
-import { centeredSurface } from '../../helpers/decorators.js'
 import EpActionBar from '@/components/action-bar/EpActionBar.vue'
+
 import commonActionBarArgs from '../../helpers/commonActionBarArgs.js'
+import { centeredSurface } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Action Bar',

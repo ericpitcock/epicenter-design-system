@@ -1,5 +1,6 @@
-import { centeredCyanBlueGradient } from '../../helpers/decorators.js'
 import EpSignIn from '@/components/sign-in/EpSignIn.vue'
+
+import { centeredCyanBlueGradient } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Sign In',

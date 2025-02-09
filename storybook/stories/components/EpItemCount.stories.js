@@ -1,6 +1,6 @@
-import { centeredSurface } from '../../helpers/decorators.js'
-
 import EpItemCount from '@/components/item-count/EpItemCount.vue'
+
+import { centeredSurface } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Item Count',

@@ -1,11 +1,12 @@
+import { faker } from '@faker-js/faker'
+import { ref } from 'vue'
+
 import EpButton from '@/components/button/EpButton.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpNotification from '@/components/notification/EpNotification.vue'
 import EpNotifications from '@/components/notification/EpNotifications.vue'
 import { useNotifications } from '@/components/notification/useNotifications.js'
 import EpOverlay from '@/components/overlays/EpOverlay.vue'
-import { faker } from '@faker-js/faker'
-import { ref } from 'vue'
 
 export default {
   title: 'Components/Notifications/Notification Center',
@@ -135,7 +136,7 @@ export const NotificationCenter = args => ({
         <ep-notification
           id="toast"
           message="This is a toast notification!"
-          timestamp="2021-08-25T17:00:00.000Z"
+          :timestamp="new Date().toISOString()"
           @dismiss="showOverlay = false"
         />
       </ep-overlay>

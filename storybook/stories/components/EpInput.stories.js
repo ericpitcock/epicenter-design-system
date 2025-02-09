@@ -1,7 +1,9 @@
-import { paddedSurface } from '../../helpers/decorators.js'
-import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
-import EpInput from '@/components/input/EpInput.vue'
 import { computed, ref } from 'vue'
+
+import EpInput from '@/components/input/EpInput.vue'
+
+import { paddedSurface } from '../../helpers/decorators.js'
+import { iconMapping,iconOptions } from '../../helpers/iconHelper.js'
 
 export default {
   title: 'Components/Input',

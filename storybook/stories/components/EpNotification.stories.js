@@ -1,7 +1,9 @@
 import { faker } from '@faker-js/faker'
-import { centeredSurface } from '../../helpers/decorators.js'
-import EpNotification from '@/components/notification/EpNotification.vue'
 import { computed } from 'vue'
+
+import EpNotification from '@/components/notification/EpNotification.vue'
+
+import { centeredSurface } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Notifications/Notification',

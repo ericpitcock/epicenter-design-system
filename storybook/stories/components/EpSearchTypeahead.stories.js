@@ -1,6 +1,8 @@
-import EpSearchTypeahead from '@/components/search/EpSearchTypeahead.vue'
-import webColors from '../../data/webColors.json'
 import { ref } from 'vue'
+
+import EpSearchTypeahead from '@/components/search/EpSearchTypeahead.vue'
+
+import webColors from '../../data/webColors.json'
 
 export default {
   title: 'Components/Search/Typeahead',

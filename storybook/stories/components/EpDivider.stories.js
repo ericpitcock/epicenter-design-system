@@ -1,6 +1,8 @@
-import { paddedSurface } from '../../helpers/decorators.js'
-import EpDivider from '@/components/divider/EpDivider.vue'
 import { computed } from 'vue'
+
+import EpDivider from '@/components/divider/EpDivider.vue'
+
+import { paddedSurface } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Divider',

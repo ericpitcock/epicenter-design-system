@@ -1,7 +1,9 @@
+import { computed,ref } from 'vue'
+
+import EpBanner from '@/components/banner/EpBanner.vue'
+
 import { centeredSurface } from '../../helpers/decorators.js'
 import { iconOptions } from '../../helpers/iconHelper.js'
-import EpBanner from '@/components/banner/EpBanner.vue'
-import { ref, computed } from 'vue'
 
 export default {
   title: 'Components/Banner',

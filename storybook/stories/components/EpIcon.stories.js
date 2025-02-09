@@ -1,9 +1,11 @@
-import { paddedBg } from '../../helpers/decorators.js'
+import { computed, ref } from 'vue'
+
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpIcon from '@/components/icon/EpIcon.vue'
 import EpSearchTypeahead from '@/components/search/EpSearchTypeahead.vue'
-import { icons, iconObjects } from '../../helpers/iconHelper.js'
-import { computed, ref } from 'vue'
+
+import { paddedBg } from '../../helpers/decorators.js'
+import { iconObjects,icons } from '../../helpers/iconHelper.js'
 
 export default {
   title: 'Components/Icon Library',

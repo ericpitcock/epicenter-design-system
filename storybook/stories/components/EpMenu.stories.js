@@ -1,6 +1,8 @@
 import { faker } from '@faker-js/faker'
-import { centeredBg } from '../../helpers/decorators.js'
+
 import EpMenu from '@/components/menu/EpMenu.vue'
+
+import { centeredBg } from '../../helpers/decorators.js'
 
 const menuConfig = [
   {

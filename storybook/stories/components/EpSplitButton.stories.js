@@ -1,7 +1,9 @@
-import { centeredBg } from '../../helpers/decorators.js'
-import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
-import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 import { computed } from 'vue'
+
+import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
+
+import { centeredBg } from '../../helpers/decorators.js'
+import { iconMapping,iconOptions } from '../../helpers/iconHelper.js'
 
 export default {
   title: 'Components/Button/Split Button',

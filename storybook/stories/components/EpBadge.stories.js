@@ -1,6 +1,8 @@
-import { centeredSurface } from '../../helpers/decorators.js'
-import EpBadge from '@/components/badge/EpBadge.vue'
 import { computed } from 'vue'
+
+import EpBadge from '@/components/badge/EpBadge.vue'
+
+import { centeredSurface } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Badge',

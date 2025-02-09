@@ -1,4 +1,5 @@
 import EpTooltip from '@/components/tooltip/EpTooltip.vue'
+
 import { centeredBg } from '../../helpers/decorators.js'
 
 export default {

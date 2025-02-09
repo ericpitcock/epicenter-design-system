@@ -1,6 +1,7 @@
-import { paddedBg } from '../../helpers/decorators.js'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
+
+import { paddedBg } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Empty State',

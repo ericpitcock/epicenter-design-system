@@ -1,12 +1,14 @@
 import { watch } from 'vue'
-import { surfaceOverflow } from '../../helpers/decorators.js'
-import EpContainer from '@/components/container/EpContainer.vue'
+
 import EpCodeView from '@/components/code-view/EpCodeView.vue'
+import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
-import EpTabs from '@/components/tabs/EpTabs.vue'
 import EpTabContent from '@/components/tabs/EpTabContent.vue'
+import EpTabs from '@/components/tabs/EpTabs.vue'
 import useTabs from '@/components/tabs/useTabs'
+
 import { codeExamples } from '../../helpers/codeExamples.js'
+import { surfaceOverflow } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Code View',

@@ -1,8 +1,10 @@
-import { centeredSurface } from '../../helpers/decorators.js'
-import EpThemeToggle from '@/components/theme-toggle/EpThemeToggle.vue'
-import { useStorybookStore } from '../../store'
-import { computed, watch } from 'vue'
 import { addons } from '@storybook/preview-api'
+import { computed, watch } from 'vue'
+
+import EpThemeToggle from '@/components/theme-toggle/EpThemeToggle.vue'
+
+import { centeredSurface } from '../../helpers/decorators.js'
+import { useStorybookStore } from '../../store'
 const channel = addons.getChannel()
 
 export default {

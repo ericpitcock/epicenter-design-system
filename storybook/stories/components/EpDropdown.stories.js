@@ -1,7 +1,9 @@
-import { centeredBg } from '../../helpers/decorators.js'
-import { iconOptions, iconMapping } from '../../helpers/iconHelper.js'
-import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 import { computed } from 'vue'
+
+import EpDropdown from '@/components/dropdown/EpDropdown.vue'
+
+import { centeredBg } from '../../helpers/decorators.js'
+import { iconMapping,iconOptions } from '../../helpers/iconHelper.js'
 
 const fakeDropdownItems = [
   {

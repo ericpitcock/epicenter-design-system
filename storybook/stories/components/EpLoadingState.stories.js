@@ -1,13 +1,15 @@
-import { paddedBg } from '../../helpers/decorators.js'
+import { onMounted, ref } from 'vue'
+
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
+import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableHead from '@/components/table/EpTableHead.vue'
 import useExclude from '@/components/table/useExclude.js'
-import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
+
 import { columns, fakeArray } from '../../data/tableData.js'
-import { onMounted, ref } from 'vue'
+import { paddedBg } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Loading State',

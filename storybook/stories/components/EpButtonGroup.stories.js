@@ -1,5 +1,6 @@
-import { centeredBg } from '../../helpers/decorators.js'
 import EpButtonGroup from '@/components/button-group/EpButtonGroup.vue'
+
+import { centeredBg } from '../../helpers/decorators.js'
 
 export default {
   title: 'Components/Button/Button Group',
