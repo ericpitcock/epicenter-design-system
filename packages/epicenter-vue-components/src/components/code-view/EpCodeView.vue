@@ -7,8 +7,8 @@
 </template>
 
 <script setup>
-  import { onMounted, ref } from 'vue'
   import { codeToHtml } from 'shiki'
+  import { onMounted, ref, watch } from 'vue'
 
   defineOptions({
     name: 'EpCodeView'
@@ -55,6 +55,10 @@
       highlightedCode.value = props.code
     }
   }
+
+  watch(() => props.code, () => {
+    highlightCode()
+  })
 
   onMounted(() => {
     highlightCode()

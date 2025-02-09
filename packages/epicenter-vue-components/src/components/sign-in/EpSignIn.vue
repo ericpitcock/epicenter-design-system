@@ -82,13 +82,14 @@
 </template>
 
 <script setup>
+  import { computed, ref } from 'vue'
+
   import EpButton from '../button/EpButton.vue'
   import EpContainer from '../container/EpContainer.vue'
   import EpIcon from '../icon/EpIcon.vue'
   import EpInput from '../input/EpInput.vue'
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpicenterLogo from '../logo/EpicenterLogo.vue'
-  import { computed, ref } from 'vue'
 
   defineOptions({
     name: 'EpSignIn',

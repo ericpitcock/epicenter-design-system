@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
 export default function useSorting(columns, data, initialSortColumn, initialSortOrder = 'asc') {
   // const data = ref(data)

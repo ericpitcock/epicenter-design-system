@@ -18,11 +18,12 @@
 </template>
 
 <script setup>
+  import { computed } from 'vue'
+
   defineOptions({
     name: 'EpRadio'
   })
 
-  import { computed } from 'vue'
 
   const modelValue = defineModel({
     type: String,

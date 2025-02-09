@@ -39,8 +39,9 @@
 </template>
 
 <script setup>
+  import { computed, ref } from 'vue'
+
   import EpIcon from '../icon/EpIcon.vue'
-  import { ref, computed } from 'vue'
 
   defineOptions({
     name: 'EpInputStyler',

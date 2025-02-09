@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-  import { computed, ref, onMounted, useTemplateRef } from 'vue'
+  import { computed, onMounted, ref, useTemplateRef } from 'vue'
 
   defineOptions({
     name: 'EpDonutChart',

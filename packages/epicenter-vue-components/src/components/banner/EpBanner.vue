@@ -36,12 +36,12 @@
 </template>
 
 <script setup>
+  import EpButton from '../button/EpButton.vue'
+  import EpIcon from '../icon/EpIcon.vue'
+
   defineOptions({
     name: 'EpBanner'
   })
-
-  import EpButton from '../button/EpButton.vue'
-  import EpIcon from '../icon/EpIcon.vue'
 
   const props = defineProps({
     /**

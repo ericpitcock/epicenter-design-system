@@ -8,8 +8,9 @@
 </template>
 
 <script setup>
-  import { ref, nextTick, onMounted, onBeforeUnmount, watch } from 'vue'
   import 'mapbox-gl/dist/mapbox-gl.css'
+
+  import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
   defineOptions({
     name: 'EpMap',

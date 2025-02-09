@@ -7,12 +7,13 @@
 </template>
 
 <script setup>
+  import { computed } from 'vue'
+
+  import EpButton from '../button/EpButton.vue'
+
   defineOptions({
     name: 'EpThemeToggle'
   })
-
-  import EpButton from '../button/EpButton.vue'
-  import { computed } from 'vue'
 
   const props = defineProps({
     currentTheme: {

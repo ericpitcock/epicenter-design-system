@@ -35,14 +35,15 @@
 </template>
 
 <script setup>
+  import { onClickOutside } from '@vueuse/core'
+  import { computed, ref, useTemplateRef, watch } from 'vue'
+
+  import { useDebounce } from '../../composables'
+  import EpInput from '../input/EpInput.vue'
+
   defineOptions({
     name: 'EpSearchTypeahead'
   })
-
-  import EpInput from '../input/EpInput.vue'
-  import { onClickOutside } from '@vueuse/core'
-  import { useDebounce } from '../../composables'
-  import { computed, ref, useTemplateRef, watch } from 'vue'
 
   const searchQuery = ref('')
   const activeItemIndex = ref(-1)
@@ -64,7 +65,6 @@
 
   const emit = defineEmits(['clear', 'search', 'selection'])
 
-  // watch activeItemIndex and return the value that is currently highlighted
   const activeItem = computed(() => {
     return props.returnedSearchResults[activeItemIndex.value]
   })

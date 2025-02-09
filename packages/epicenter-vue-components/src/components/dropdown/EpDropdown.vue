@@ -40,9 +40,10 @@
 
 <script setup>
   import { onClickOutside } from '@vueuse/core'
+  import { computed, ref, useTemplateRef } from 'vue'
+
   import EpButton from '../button/EpButton.vue'
   import EpMenu from '../menu/EpMenu.vue'
-  import { computed, ref, useTemplateRef } from 'vue'
 
   defineOptions({
     name: 'EpDropdown',

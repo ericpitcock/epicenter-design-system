@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-  import { ref, watch } from 'vue'
   import { loadIcon } from '@ericpitcock/epicenter-icons'
+  import { ref, watch } from 'vue'
 
   defineOptions({
     name: 'EpIcon'

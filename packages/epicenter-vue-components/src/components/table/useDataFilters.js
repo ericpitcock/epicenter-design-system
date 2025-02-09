@@ -1,4 +1,4 @@
-import { ref, computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 export default function useDataFilters(
   columns,

@@ -41,9 +41,10 @@
 </template>
 
 <script setup>
-  import EpDivider from '../divider/EpDivider.vue'
-  import EpButton from '../button/EpButton.vue'
   import { ref } from 'vue'
+
+  import EpButton from '../button/EpButton.vue'
+  import EpDivider from '../divider/EpDivider.vue'
 
   defineOptions({
     name: 'EpMenu'

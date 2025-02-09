@@ -37,6 +37,7 @@
   defineOptions({
     name: 'EpTableHead'
   })
+
   const props = defineProps({
     columns: {
       type: Array,

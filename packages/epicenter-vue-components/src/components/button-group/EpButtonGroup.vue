@@ -14,8 +14,9 @@
 </template>
 
 <script setup>
-  import EpButton from '../button/EpButton.vue'
   import { ref } from 'vue'
+
+  import EpButton from '../button/EpButton.vue'
 
   defineOptions({
     name: 'EpButtonGroup'

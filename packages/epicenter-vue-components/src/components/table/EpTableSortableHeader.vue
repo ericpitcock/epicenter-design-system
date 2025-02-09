@@ -14,8 +14,9 @@
 </template>
 
 <script setup>
-  import EpIcon from '../icon/EpIcon.vue'
   import { computed } from 'vue'
+
+  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpTableSortableHeader'

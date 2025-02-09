@@ -1,4 +1,4 @@
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 export default function useCalculatedHeight(element, calculateHeightOffset = 0) {
   const dynamicHeight = ref(0)
