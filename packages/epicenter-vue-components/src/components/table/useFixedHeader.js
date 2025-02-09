@@ -1,4 +1,4 @@
-import { ref, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
+import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 
 export default function useFixedHeader(
   scrollElement = window,

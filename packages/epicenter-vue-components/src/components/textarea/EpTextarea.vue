@@ -36,10 +36,6 @@
       type: String,
       default: null,
     },
-    // value: {
-    //   type: String,
-    //   default: null,
-    // },
     placeholder: {
       type: String,
       default: null,
@@ -96,10 +92,6 @@
   })
 
   const emit = defineEmits(['update:modelValue', 'focus', 'blur'])
-
-  // const onInput = (event) => {
-  //   emit('input', event.target.value)
-  // }
 
   const onFocus = (event) => {
     emit('focus', event)
