@@ -1,8 +1,8 @@
-import { remove, ensureDir, copy } from 'fs-extra'
-import { resolve, join } from 'path'
+import { copy, ensureDir, remove } from 'fs-extra'
+import { join, resolve } from 'path'
 import { fileURLToPath } from 'url'
+
 import { generateComponentExports } from './generateExports.mjs'
-// import { EXCLUDED_DIRS } from './excludedComponents.js'
 
 // generate the exports first
 generateComponentExports()

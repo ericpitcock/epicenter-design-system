@@ -1,5 +1,5 @@
 import fs from 'fs'
-import path, { resolve, join } from 'path'
+import path, { join, resolve } from 'path'
 import { fileURLToPath } from 'url'
 
 // Get __dirname equivalent in ESM

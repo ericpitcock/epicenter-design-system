@@ -1,8 +1,8 @@
 import { exec } from 'child_process'
-import { promisify } from 'util'
+import fsExtra from 'fs-extra'
+import { join, resolve } from 'path'
 import { fileURLToPath } from 'url'
-import { resolve, join } from 'path'
-import fsExtra from 'fs-extra' // Fix for fs-extra import
+import { promisify } from 'util'
 
 const { ensureDir, copyFile } = fsExtra
 const execAsync = promisify(exec)
