@@ -53,7 +53,10 @@
 </template>
 
 <script setup>
+  import { useClipboard } from '@vueuse/core'
+  import chroma from 'chroma-js'
   import { computed, ref, watch } from 'vue'
+
   import EpContainer from '@/components/container/EpContainer.vue'
   import EpFlex from '@/components/flexbox/EpFlex.vue'
   import EpIcon from '@/components/icon/EpIcon.vue'
@@ -61,11 +64,10 @@
   import EpTable from '@/components/table/EpTable.vue'
   import EpTableHead from '@/components/table/EpTableHead.vue'
   import EpTooltip from '@/components/tooltip/EpTooltip.vue'
-  import colors from '@ericpitcock/epicenter-styles/tokens/color/color.yaml'
-  import grayscale from '@ericpitcock/epicenter-styles/tokens/color/grayscale.yaml'
-  import chartSeq from '@ericpitcock/epicenter-styles/tokens/color/chart-sequence.yaml'
-  import chroma from 'chroma-js'
-  import { useClipboard } from '@vueuse/core'
+
+  import chartSeq from '../../../../packages/epicenter-styles/tokens/color/chart-sequence.yaml'
+  import colors from '../../../../packages/epicenter-styles/tokens/color/color.yaml'
+  import grayscale from '../../../../packages/epicenter-styles/tokens/color/grayscale.yaml'
 
   defineOptions({
     name: 'EpColor',

@@ -2,9 +2,8 @@ info/
 node_modules/
 storybook-static/
 storybook-react-static/
-package-lock.json
-docs/.vitepress/cache
+docs/.vitepress/cache/
 docs/.vitepress/dist/
-packages/epicenter-icons/src/
-packages/epicenter-vue-components/dist/
+packages/epicenter-icons/dist/
 packages/epicenter-styles/dist/
+packages/epicenter-vue-components/dist/

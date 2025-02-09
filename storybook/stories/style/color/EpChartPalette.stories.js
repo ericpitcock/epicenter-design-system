@@ -1,9 +1,11 @@
-import { paddedBg } from '../../../helpers/decorators.js'
+import { useClipboard } from '@vueuse/core'
 import { computed, ref } from 'vue'
+
 import EpButton from '@/components/button/EpButton.vue'
 import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.vue'
-import chartSeq from '@ericpitcock/epicenter-styles/tokens/color/chart-sequence.yaml'
-import { useClipboard } from '@vueuse/core'
+
+import chartSeq from '../../../../packages/epicenter-styles/tokens/color/chart-sequence.yaml'
+import { paddedBg } from '../../../helpers/decorators.js'
 
 let data = {}
 
