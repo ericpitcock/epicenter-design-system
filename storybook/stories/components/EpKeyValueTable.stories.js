@@ -1,5 +1,9 @@
+import { computed } from 'vue'
+
 import EpContainer from '@/components/container/EpContainer.vue'
+import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 import EpKeyValueTable from '@/components/key-value-table/EpKeyValueTable.vue'
+import { useActionsMenu } from '@/composables/index.js'
 
 import { paddedBg } from '../../helpers/decorators.js'
 
@@ -23,28 +27,28 @@ const fakeData = {
       'DNS Resource Data': '164.221.252.124',
       'City': 'Tremblayborough'
     },
-    // 'secondary': {
-    //   'HTTP Hostname': 'juicy-jewel.name',
-    //   'HTTP URL': 'https://strict-tabby.name',
-    //   'HTTP Content Type': 'application/tamp-apex-update',
-    //   'HTTP User Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; .NET CLR 1.4.41485.2)',
-    //   'HTTP Referrer': 'http://upbeat-face.org',
-    //   'HTTP Method': 'DELETE',
-    //   'Hostname': 'live-lens.name',
-    //   'Domain': 'finished-passion.name',
-    //   'MAC Address': '43:6e:97:4d:87:e1',
-    //   'Country': 'Guam',
-    //   'Company': 'Jones Inc',
-    //   'AMP Status': 'Enabled',
-    //   'AMP Comment': 'Placeat blanditiis perferendis enim.',
-    //   'XFF Hostname': 'worthwhile-wasabi.com',
-    //   'XFF Domain': 'brown-squash.biz',
-    //   'XFF Country': 'Costa Rica',
-    //   'XFF Region': 'Cambridgeshire',
-    //   'XFF City': 'Jerrodbury',
-    //   'XFF Company': 'Langosh, Heidenreich and Fadel',
-    //   'XFF AMP Comment': 'Occaecati in ratione modi perferendis accusantium porro suscipit quo doloremque.'
-    // }
+    'secondary': {
+      'HTTP Hostname': 'juicy-jewel.name',
+      'HTTP URL': 'https://strict-tabby.name',
+      'HTTP Content Type': 'application/tamp-apex-update',
+      'HTTP User Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0; .NET CLR 1.4.41485.2)',
+      'HTTP Referrer': 'http://upbeat-face.org',
+      'HTTP Method': 'DELETE',
+      'Hostname': 'live-lens.name',
+      'Domain': 'finished-passion.name',
+      'MAC Address': '43:6e:97:4d:87:e1',
+      'Country': 'Guam',
+      'Company': 'Jones Inc',
+      'AMP Status': 'Enabled',
+      'AMP Comment': 'Placeat blanditiis perferendis enim.',
+      'XFF Hostname': 'worthwhile-wasabi.com',
+      'XFF Domain': 'brown-squash.biz',
+      'XFF Country': 'Costa Rica',
+      'XFF Region': 'Cambridgeshire',
+      'XFF City': 'Jerrodbury',
+      'XFF Company': 'Langosh, Heidenreich and Fadel',
+      'XFF AMP Comment': 'Occaecati in ratione modi perferendis accusantium porro suscipit quo doloremque.'
+    }
   },
   formatter: {
     applicationProtocol: value => `${value} years old`,
@@ -62,12 +66,6 @@ export default {
         disable: true
       }
     },
-    width: {
-      name: 'Width',
-      control: {
-        type: 'text'
-      }
-    },
     commonKeyWidth: {
       name: 'Common Key Width',
       control: {
@@ -80,8 +78,21 @@ export default {
         type: 'boolean'
       }
     },
+    // no longer a prop but can be used here to add the --striped class
     striped: {
       name: 'Striped',
+      control: {
+        type: 'boolean'
+      },
+    },
+    alignRight: {
+      name: 'Align Right',
+      control: {
+        type: 'boolean'
+      }
+    },
+    showActionsMenu: {
+      name: 'Show Actions Menu',
       control: {
         type: 'boolean'
       }
@@ -90,13 +101,63 @@ export default {
 }
 
 export const KeyValueTable = (args) => ({
-  components: { EpContainer, EpKeyValueTable },
+  components: { EpContainer, EpDropdown, EpKeyValueTable },
   setup() {
     // test function
     const test = () => {
       console.log('test')
     }
-    return { args, test }
+
+    const classes = computed(() => {
+      return {
+        'ep-key-value-table--striped': args.striped,
+        'ep-key-value-table--align-right': args.alignRight,
+      }
+    })
+
+    const { generateActionMenuProps } = useActionsMenu()
+
+    const menuItems = [
+      {
+        section: true,
+        label: 'Enrich Data',
+      },
+      (value) => ({
+        label: 'VirusTotal Lookup',
+        onClick: () => {
+          console.log('VirusTotal', value)
+        }
+      }),
+      (value) => ({
+        label: `Cloudshark: ${value}`,
+        onClick: () => {
+          console.log('Cloudshark', value)
+        }
+      }),
+    ]
+
+    const tableActionsMenuProps = (context) =>
+      generateActionMenuProps({
+        context,
+        menuItems,
+        alignRight: false,
+        buttonProps: {
+          iconLeft: {
+            name: 'dots-horizontal',
+            styles: { '--ep-icon-stroke-width': 3 },
+          },
+        }
+      })
+
+    const enrichableKeys = ['IP Address', 'XFF IP Address']
+
+    return {
+      args,
+      classes,
+      enrichableKeys,
+      tableActionsMenuProps,
+      test,
+    }
   },
   template: `
   <ep-container
@@ -107,18 +168,24 @@ export const KeyValueTable = (args) => ({
       '--ep-container-border-width': '0.1rem',
       '--ep-container-overflow': 'auto',
     }"
-    calculateHeight
-    :calculateHeightOffset="30"
   >
-    <ep-key-value-table v-bind="args" />
+    <ep-key-value-table
+      v-bind="args"
+      :class="classes"
+    >
+      <template #actions-menu="{ value, key }">
+        <ep-dropdown v-if="enrichableKeys.includes(key)" v-bind="tableActionsMenuProps(value)" />
+      </template>
+    </ep-key-value-table>
   </ep-container>
   `
 })
 
 KeyValueTable.args = {
   data: fakeData,
-  width: '100%',
   commonKeyWidth: true,
-  sectionHeaders: false,
-  striped: true,
+  sectionHeaders: true,
+  striped: false,
+  alignRight: false,
+  showActionsMenu: true,
 }
