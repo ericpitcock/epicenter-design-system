@@ -1,39 +1,46 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div class="ep-key-value-table-container">
+  <ep-flex class="ep-key-value-table flex-col gap-10">
     <template
       v-for="(rows, section) in formattedData"
       :key="section"
     >
       <h3
         v-if="sectionHeaders"
-        :class="['section-headers', sectionHeaderClass]"
+        class="text-style--section"
       >
         {{ section }}
       </h3>
-      <table
-        :class="['ep-key-value-table', classes]"
-        :style="{ width: width }"
-      >
+      <table>
         <tr
           v-for="(value, key) in rows"
           :key="key"
         >
           <td
-            class="text--subtle text-align--right"
+            class="text--subtle"
             :style="{ width: keyColumnWidth }"
           >
             {{ key }}
           </td>
-          <td v-html="value" />
+          <td :class="{ 'ep-flex gap-5': showActionsMenu }">
+            {{ value }}
+            <template v-if="showActionsMenu">
+              <slot
+                name="actions-menu"
+                v-bind="{ value, key }"
+              />
+            </template>
+          </td>
         </tr>
       </table>
     </template>
-  </div>
+  </ep-flex>
 </template>
 
 <script setup>
   import { computed } from 'vue'
+
+  import EpFlex from '../flexbox/EpFlex.vue'
 
   defineOptions({
     name: 'EpKeyValueTable'
@@ -44,10 +51,6 @@
       type: Object,
       required: true
     },
-    width: {
-      type: String,
-      default: '100%'
-    },
     commonKeyWidth: {
       type: Boolean,
       default: false
@@ -56,19 +59,11 @@
       type: Boolean,
       default: false
     },
-    sectionHeaderClass: {
-      type: String,
-      default: ''
-    },
-    striped: {
+    showActionsMenu: {
       type: Boolean,
       default: false
     }
   })
-
-  const classes = computed(() => ({
-    'ep-key-value-table--striped': props.striped
-  }))
 
   const formattedData = computed(() => {
     if (!props.data.formatter) {
