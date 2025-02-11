@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-  import { computed, onMounted } from 'vue'
+  import { computed } from 'vue'
 
   import EpFlex from '../flexbox/EpFlex.vue'
 
@@ -71,29 +71,6 @@
     }
 
     return [props.data]
-  })
-
-  // const formattedData = computed(() => {
-  //   if (!props.data.formatter) {
-  //     return props.data.data
-  //   }
-  //   const formatted = {}
-  //   for (const [key, value] of Object.entries(props.data.data)) {
-  //     formatted[key] = {}
-  //     for (const [prop, val] of Object.entries(value)) {
-  //       if (props.data.formatter[prop]) {
-  //         formatted[key][prop] = props.data.formatter[prop](val)
-  //       } else {
-  //         formatted[key][prop] = val
-  //       }
-  //     }
-  //   }
-
-  //   return formatted
-  // })
-
-  onMounted(() => {
-    console.log(props.data)
   })
 
   const keyColumnWidth = computed(() => {

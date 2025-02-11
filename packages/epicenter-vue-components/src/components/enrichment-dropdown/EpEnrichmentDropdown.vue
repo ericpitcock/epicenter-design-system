@@ -83,8 +83,16 @@
     class: 'ep-button-var--ghost'
   }
 
+  const hasBeenHovered = ref([])
+
   const handleHover = (item) => {
-    console.log(item)
+    if (hasBeenHovered.value.includes(item.label)) {
+      hoveredItem.value = item
+      showPreview.value = true
+      return
+    }
+
+    hasBeenHovered.value.push(item.label)
     hoveredItem.value = item
     showPreview.value = true
     loading.value = true

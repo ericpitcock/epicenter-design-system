@@ -184,7 +184,7 @@ const generateFakeURLhaus = (url) => ({
     'URL': url,
     'Malware Hosted': faker.helpers.arrayElement([true, false]),
     'Threat Type': faker.helpers.arrayElement(['Malware', 'Phishing', 'Botnet']),
-    'Associated IPs': Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => faker.internet.ip()),
+    'Associated IPs': Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => faker.internet.ipv4()),
     'Last Reported': faker.date.recent().toISOString()
   }
 })
@@ -235,6 +235,22 @@ const getFakeEnrichmentResponse = (property, value) => {
       return {
         'Google Safe Browsing': generateFakeGoogleSafeBrowsing(value),
         'URLhaus': generateFakeURLhaus(value)
+      }
+
+    /*** Port Enrichment ***/
+    case 'Port':
+      return {
+        'Shodan Open Ports': generateFakeShodan(value),
+        'IANA Port Info': {
+          name: 'IANA Port Info',
+          data: {
+            'Port': value,
+            'Description': faker.lorem.sentence(),
+            'Service': faker.helpers.arrayElement(['HTTP', 'SSH', 'FTP', 'RDP', 'Telnet']),
+            'Status': faker.helpers.arrayElement(['Assigned', 'Reserved', 'Available']),
+            'Assignee': faker.company.name()
+          }
+        }
       }
 
     /*** Geolocation Enrichment (Derived from IP) ***/
