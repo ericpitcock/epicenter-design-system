@@ -23,7 +23,7 @@
               class="flex-col gap-10"
             >
               <ep-key-value-table
-                :data="enrichmentData"
+                :data="enrichmentData[hoveredItem.label]"
                 section-headers
               />
               <ep-button
@@ -73,12 +73,18 @@
   const buttonProps = {
     label: props.label,
     size: 'small',
-    iconLeft: { name: 'search' },
+    iconLeft: {
+      name: 'search',
+      style: {
+        '--ep-icon-color': 'var(--primary-color-base)'
+      }
+    },
     iconRight: undefined,
     class: 'ep-button-var--ghost'
   }
 
   const handleHover = (item) => {
+    console.log(item)
     hoveredItem.value = item
     showPreview.value = true
     loading.value = true

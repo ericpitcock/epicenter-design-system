@@ -1,10 +1,8 @@
-import { faker } from '@faker-js/faker'
-
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpEnrichmentDropdown from '@/components/enrichment-dropdown/EpEnrichmentDropdown.vue'
 import EpKeyValueTable from '@/components/key-value-table/EpKeyValueTable.vue'
 
-import { getFakeEnrichmentResponse } from '../../data/enrichmentData.js'
+import { enrichmentSources, getFakeEnrichmentResponse } from '../../data/enrichmentData.js'
 import { paddedBg } from '../../helpers/decorators.js'
 
 const primaryData = [{
@@ -70,68 +68,68 @@ export default {
 export const KeyValueTable = (args) => ({
   components: { EpContainer, EpEnrichmentDropdown, EpKeyValueTable },
   setup() {
-    const enrichmentSources = {
-      'IP Address': [
-        {
-          id: faker.string.uuid(),
-          label: 'VirusTotal Lookup'
-        },
-        {
-          id: faker.string.uuid(),
-          label: 'Shodan Search'
-        },
-        {
-          id: faker.string.uuid(),
-          label: 'AbuseIPDB Check'
-        }
-      ],
-      'XFF IP Address': [
-        {
-          id: faker.string.uuid(),
-          label: 'VirusTotal Lookup'
-        },
-        {
-          id: faker.string.uuid(),
-          label: 'Shodan Search'
-        }
-      ],
-      'DNS Resource Name': [
-        {
-          id: faker.string.uuid(),
-          label: 'WHOIS Lookup'
-        },
-        {
-          id: faker.string.uuid(),
-          label: 'PassiveTotal Lookup'
-        }
-      ],
-      'Domain': [
-        {
-          id: faker.string.uuid(),
-          label: 'VirusTotal Lookup'
-        },
-        {
-          id: faker.string.uuid(),
-          label: 'Google Safe Browsing'
-        }
-      ],
-      'MAC Address': [
-        {
-          id: faker.string.uuid(),
-          label: 'OUI Lookup'
-        }
-      ],
-      'Port': [
-        {
-          id: faker.string.uuid(),
-          label: 'Shodan Open Ports'
-        },
-        {
-          id: faker.string.uuid(),
-          label: 'IANA Port Info'
-        }
-      ]
-    }
+    // const enrichmentSources = {
+    //   'IP Address': [
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'VirusTotal'
+    //     },
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'AbuseIPDB'
+    //     },
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'IPInfo.io'
+    //     }
+    //   ],
+    //   'XFF IP Address': [
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'VirusTotal Lookup'
+    //     },
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'Shodan Search'
+    //     }
+    //   ],
+    //   'DNS Resource Name': [
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'WHOIS Lookup'
+    //     },
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'PassiveTotal Lookup'
+    //     }
+    //   ],
+    //   'Domain': [
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'VirusTotal Lookup'
+    //     },
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'Google Safe Browsing'
+    //     }
+    //   ],
+    //   'MAC Address': [
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'OUI Lookup'
+    //     }
+    //   ],
+    //   'Port': [
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'Shodan Open Ports'
+    //     },
+    //     {
+    //       id: faker.string.uuid(),
+    //       label: 'IANA Port Info'
+    //     }
+    //   ]
+    // }
 
     const sourceKeys = Object.keys(enrichmentSources)
 
