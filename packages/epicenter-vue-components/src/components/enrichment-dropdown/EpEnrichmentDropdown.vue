@@ -22,7 +22,10 @@
               v-if="enrichmentData"
               class="flex-col gap-10"
             >
-              <ep-key-value-table :data="enrichmentData" />
+              <ep-key-value-table
+                :data="enrichmentData"
+                section-headers
+              />
               <ep-button
                 label="Pin in dock"
                 @click="handleDock"
@@ -70,13 +73,12 @@
   const buttonProps = {
     label: props.label,
     size: 'small',
-    iconLeft: { name: 'dots-horizontal' },
+    iconLeft: { name: 'search' },
     iconRight: undefined,
     class: 'ep-button-var--ghost'
   }
 
   const handleHover = (item) => {
-    console.log('hovered item:', item.label)
     hoveredItem.value = item
     showPreview.value = true
     loading.value = true

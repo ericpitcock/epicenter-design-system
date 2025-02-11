@@ -2,18 +2,18 @@
 <template>
   <ep-flex class="ep-key-value-table flex-col gap-10">
     <template
-      v-for="(rows, section) in formattedData"
-      :key="section"
+      v-for="section in processedData"
+      :key="section.name"
     >
       <h3
         v-if="sectionHeaders"
         class="text-style--section"
       >
-        {{ section }}
+        {{ section.name }}
       </h3>
       <table>
         <tr
-          v-for="(value, key) in rows"
+          v-for="(value, key) in section.data"
           :key="key"
         >
           <td
@@ -27,7 +27,7 @@
             <template v-if="showActionsMenu">
               <slot
                 name="actions-menu"
-                v-bind="{ value, key }"
+                v-bind="{ key, value }"
               />
             </template>
           </td>
@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue'
+  import { computed, onMounted } from 'vue'
 
   import EpFlex from '../flexbox/EpFlex.vue'
 
@@ -48,7 +48,7 @@
 
   const props = defineProps({
     data: {
-      type: Object,
+      type: [Array, Object],
       required: true
     },
     commonKeyWidth: {
@@ -65,22 +65,35 @@
     }
   })
 
-  const formattedData = computed(() => {
-    if (!props.data.formatter) {
-      return props.data.data
+  const processedData = computed(() => {
+    if (Array.isArray(props.data)) {
+      return props.data
     }
-    const formatted = {}
-    for (const [key, value] of Object.entries(props.data.data)) {
-      formatted[key] = {}
-      for (const [prop, val] of Object.entries(value)) {
-        if (props.data.formatter[prop]) {
-          formatted[key][prop] = props.data.formatter[prop](val)
-        } else {
-          formatted[key][prop] = val
-        }
-      }
-    }
-    return formatted
+
+    return [props.data]
+  })
+
+  // const formattedData = computed(() => {
+  //   if (!props.data.formatter) {
+  //     return props.data.data
+  //   }
+  //   const formatted = {}
+  //   for (const [key, value] of Object.entries(props.data.data)) {
+  //     formatted[key] = {}
+  //     for (const [prop, val] of Object.entries(value)) {
+  //       if (props.data.formatter[prop]) {
+  //         formatted[key][prop] = props.data.formatter[prop](val)
+  //       } else {
+  //         formatted[key][prop] = val
+  //       }
+  //     }
+  //   }
+
+  //   return formatted
+  // })
+
+  onMounted(() => {
+    console.log(props.data)
   })
 
   const keyColumnWidth = computed(() => {
@@ -88,7 +101,7 @@
       return 'auto'
     }
 
-    const data = formattedData.value
+    const data = props.data
     let maxKeyLength = 0
 
     for (let key of Object.keys(data)) {

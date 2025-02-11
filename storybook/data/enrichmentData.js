@@ -4,16 +4,15 @@ import { faker } from '@faker-js/faker'
  * Generate a fake IP reputation response
  */
 const generateFakeIPReputation = (ip) => ({
+  name: 'IP Reputation',
   data: {
-    'Fake Label': {
-      'IP Address': ip,
-      'Reputation Score': faker.number.int({ min: 0, max: 100 }),
-      'Threat Category': faker.helpers.arrayElement(['Malware', 'Phishing', 'Botnet', 'None']),
-      'ISP': faker.company.name(),
-      'Country': faker.location.country(),
-      'Last Seen': faker.date.past().toISOString(),
-      'Open Ports': faker.helpers.arrayElements([22, 80, 443, 3389], faker.number.int({ min: 1, max: 4 })).join(', ')
-    }
+    'IP Address': ip,
+    'Reputation Score': faker.number.int({ min: 0, max: 100 }),
+    'Threat Category': faker.helpers.arrayElement(['Malware', 'Phishing', 'Botnet', 'None']),
+    'ISP': faker.company.name(),
+    'Country': faker.location.country(),
+    'Last Seen': faker.date.past().toISOString(),
+    'Open Ports': faker.helpers.arrayElements([22, 80, 443, 3389], faker.number.int({ min: 1, max: 4 })).join(', ')
   }
 })
 
@@ -21,19 +20,18 @@ const generateFakeIPReputation = (ip) => ({
  * Generate a fake domain lookup response
  */
 const generateFakeDomainLookup = (domain) => ({
+  name: 'Domain Lookup',
   data: {
-    'Fake Label': {
-      'Domain': domain,
-      'Registrar': faker.helpers.arrayElement(['GoDaddy', 'Namecheap, Inc.', 'Google Domains', 'Cloudflare']),
-      'Creation Date': faker.date.past({ years: 5 }).toISOString().split('T')[0],
-      'Expiration Date': faker.date.future({ years: 2 }).toISOString().split('T')[0],
-      'Risk Level': faker.helpers.arrayElement(['Low', 'Medium', 'High']),
-      'Associated IPs': [
-        faker.internet.ipv4(),
-        faker.internet.ipv4(),
-        faker.internet.ipv4()
-      ].join(', ')
-    }
+    'Domain': domain,
+    'Registrar': faker.helpers.arrayElement(['GoDaddy', 'Namecheap, Inc.', 'Google Domains', 'Cloudflare']),
+    'Creation Date': faker.date.past({ years: 5 }).toISOString().split('T')[0],
+    'Expiration Date': faker.date.future({ years: 2 }).toISOString().split('T')[0],
+    'Risk Level': faker.helpers.arrayElement(['Low', 'Medium', 'High']),
+    'Associated IPs': [
+      faker.internet.ipv4(),
+      faker.internet.ipv4(),
+      faker.internet.ipv4()
+    ].join(', ')
   }
 })
 
@@ -41,13 +39,12 @@ const generateFakeDomainLookup = (domain) => ({
  * Generate a fake MAC address lookup response
  */
 const generateFakeMACLookup = (mac) => ({
+  name: 'MAC Lookup',
   data: {
-    'Fake Label': {
-      'MAC Address': mac,
-      'Vendor': faker.company.name(),
-      'Device Type': faker.helpers.arrayElement(['Router', 'Switch', 'Access Point', 'Smartphone']),
-      'Risk Assessment': faker.helpers.arrayElement(['Safe', 'Suspicious', 'Compromised'])
-    }
+    'MAC Address': mac,
+    'Vendor': faker.company.name(),
+    'Device Type': faker.helpers.arrayElement(['Router', 'Switch', 'Access Point', 'Smartphone']),
+    'Risk Assessment': faker.helpers.arrayElement(['Safe', 'Suspicious', 'Compromised'])
   }
 })
 
@@ -55,13 +52,12 @@ const generateFakeMACLookup = (mac) => ({
  * Generate a fake port scanning response
  */
 const generateFakePortScan = (port) => ({
+  name: 'Port Scan',
   data: {
-    'Fake Label': {
-      'Port': port,
-      'Service': faker.helpers.arrayElement(['HTTP', 'HTTPS', 'SSH', 'RDP', 'FTP', 'SMTP']),
-      'Status': faker.helpers.arrayElement(['Open', 'Closed', 'Filtered']),
-      'Common Exploits': faker.helpers.arrayElements(['Heartbleed', 'SMBv1 Exploit', 'CVE-2023-XYZ'], faker.number.int({ min: 0, max: 2 })).join(', ')
-    }
+    'Port': port,
+    'Service': faker.helpers.arrayElement(['HTTP', 'HTTPS', 'SSH', 'RDP', 'FTP', 'SMTP']),
+    'Status': faker.helpers.arrayElement(['Open', 'Closed', 'Filtered']),
+    'Common Exploits': faker.helpers.arrayElements(['Heartbleed', 'SMBv1 Exploit', 'CVE-2023-XYZ'], faker.number.int({ min: 0, max: 2 })).join(', ')
   }
 })
 
@@ -69,16 +65,15 @@ const generateFakePortScan = (port) => ({
  * Generate a fake WHOIS lookup response
  */
 const generateFakeWHOIS = (domain) => ({
+  name: 'WHOIS Lookup',
   data: {
-    'Fake Label': {
-      'Domain': domain,
-      'Registrar': faker.company.name(),
-      'Registrant': faker.person.fullName(),
-      'Creation Date': faker.date.past({ years: 10 }).toISOString().split('T')[0],
-      'Expiration Date': faker.date.future({ years: 3 }).toISOString().split('T')[0],
-      'Status': faker.helpers.arrayElement(['Active', 'Pending Delete', 'Suspended']),
-      'Abuse Contact': faker.internet.email()
-    }
+    'Domain': domain,
+    'Registrar': faker.company.name(),
+    'Registrant': faker.person.fullName(),
+    'Creation Date': faker.date.past({ years: 10 }).toISOString().split('T')[0],
+    'Expiration Date': faker.date.future({ years: 3 }).toISOString().split('T')[0],
+    'Status': faker.helpers.arrayElement(['Active', 'Pending Delete', 'Suspended']),
+    'Abuse Contact': faker.internet.email()
   }
 })
 

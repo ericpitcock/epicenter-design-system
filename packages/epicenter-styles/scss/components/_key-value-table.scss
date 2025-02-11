@@ -1,19 +1,35 @@
-@use '../mixins/_mixins' as mixins;
-
-.ep-key-value-table-container {
-  overflow: auto;
-  @include mixins.no-scrollbar;
-}
-
 .ep-key-value-table {
+  --ep-table-row-stripe-color: var(--interface-foreground);
+
   td {
-    padding: 0.5rem 1rem;
+    padding-block: 0.5rem;
     border-bottom: 1px solid var(--border-color);
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  // first tr td border top
+  tr:first-child td {
+    border-top: 1px solid var(--border-color);
+  }
+
+  td:first-child {
+    padding-inline-end: 2rem;
   }
 
   &--striped {
     tr:nth-child(even) {
-      background-color: var(--table-stripe-color);
+      background-color: var(--ep-table-row-stripe-color);
     }
+  }
+
+  &--align-right {
+    td:first-child {
+      text-align: right;
+    }
+  }
+
+  table + h3 {
+    margin-top: 1.5rem;
   }
 }
