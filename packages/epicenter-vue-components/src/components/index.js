@@ -1,4 +1,5 @@
 import EpActionBar from './action-bar/EpActionBar.vue'
+import EpAsyncButton from './async-button/EpAsyncButton.vue'
 import EpBadge from './badge/EpBadge.vue'
 import EpBanner from './banner/EpBanner.vue'
 import EpBasicTable from './basic-table/EpBasicTable.vue'
@@ -56,10 +57,12 @@ import EpTabs from './tabs/EpTabs.vue'
 import EpTextarea from './textarea/EpTextarea.vue'
 import EpThemeToggle from './theme-toggle/EpThemeToggle.vue'
 import EpToggle from './toggle/EpToggle.vue'
+import EpToggleButton from './toggle-button/EpToggleButton.vue'
 import EpTooltip from './tooltip/EpTooltip.vue'
 
 export {
   EpActionBar,
+  EpAsyncButton,
   EpBadge,
   EpBanner,
   EpBasicTable,
@@ -117,11 +120,13 @@ export {
   EpTextarea,
   EpThemeToggle,
   EpToggle,
+  EpToggleButton,
   EpTooltip
 }
 
 export default {
   EpActionBar,
+  EpAsyncButton,
   EpBadge,
   EpBanner,
   EpBasicTable,
@@ -179,5 +184,6 @@ export default {
   EpTextarea,
   EpThemeToggle,
   EpToggle,
+  EpToggleButton,
   EpTooltip
 }
