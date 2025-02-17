@@ -13,7 +13,7 @@
     />
     <div
       v-if="returnedSearchResults.length"
-      ref="resultsList"
+      ref="resultsListRef"
       class="ep-search-typeahead-dropdown"
     >
       <ul>
@@ -36,7 +36,7 @@
 
 <script setup>
   import { onClickOutside } from '@vueuse/core'
-  import { computed, ref, useTemplateRef, watch } from 'vue'
+  import { computed, ref, watch } from 'vue'
 
   import { useDebounce } from '../../composables'
   import EpInput from '../input/EpInput.vue'
@@ -91,7 +91,8 @@
     emit('clear')
   }
 
-  const resultsListRef = useTemplateRef('resultsList')
+  // const resultsListRef = useTemplateRef('resultsList')
+  const resultsListRef = ref(null)
 
   onClickOutside(resultsListRef, resetSearch)
 

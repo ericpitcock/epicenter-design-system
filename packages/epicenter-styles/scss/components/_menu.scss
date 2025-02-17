@@ -1,3 +1,5 @@
+@use '../mixins/_mixins' as *;
+
 .ep-menu {
   --ep-menu-bg-color: var(--interface-surface);
   --ep-menu-padding: 1rem 0.5rem;
@@ -9,10 +11,10 @@
   --ep-menu-section-margin-top: 0;
   --ep-menu-divider-border-color: var(--border-color);
   --ep-button-menu-item-hover-bg-color: var(--primary-color-base);
-  --ep-button-menu-item-hover-text-color: var(--text-color--loud);
+  --ep-button-menu-item-hover-text-color: hsl(0, 0%, 100%);
   --ep-button-menu-item-hover-border-color: var(--primary-color-base);
   --ep-button-menu-item-active-bg-color: var(--primary-color-base);
-  --ep-button-menu-item-active-text-color: var(--text-color--loud);
+  --ep-button-menu-item-active-text-color: hsl(0, 0%, 100%);
   background: var(--ep-menu-bg-color);
   padding: var(--ep-menu-padding);
   border-width: var(--ep-menu-border-width);
@@ -42,10 +44,12 @@
       padding-right: 2rem;
       padding-left: 2rem;
 
-      &:hover:not(.ep-button--menu-item--active) {
-        background: var(--ep-button-menu-item-hover-bg-color);
-        color: var(--ep-button-menu-item-hover-text-color);
-        border-color: var(--ep-button-menu-item-hover-border-color);
+      @include hover {
+        &:hover:not(.ep-button--menu-item--active) {
+          background: var(--ep-button-menu-item-hover-bg-color);
+          color: var(--ep-button-menu-item-hover-text-color);
+          border-color: var(--ep-button-menu-item-hover-border-color);
+        }
       }
 
       &--active {

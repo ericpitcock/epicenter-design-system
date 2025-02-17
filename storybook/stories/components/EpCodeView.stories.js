@@ -71,7 +71,7 @@ export const CodeView = args => ({
         :style="{
           '--ep-container-height': '100%',
           '--ep-container-padding': '0 3rem 3rem',
-          '--ep-container-content-padding': '3rem',
+          '--ep-container-content-padding': '3rem 0 0 0',
         }"
       >
         <template #header>
@@ -130,7 +130,6 @@ export const CodeView = args => ({
 
 CodeView.args = {
   language: 'Javascript',
-  // theme: 'dark'
 }
 
 CodeView.decorators = [
@@ -139,8 +138,8 @@ CodeView.decorators = [
       () => context.globals.theme,
       () => {
         const themeMap = {
-          'Light Theme': 'light',
-          'Dark Theme': 'dark'
+          'Light Theme': 'one-light',
+          'Dark Theme': 'one-dark-pro'
         }
         context.args.theme = themeMap[context.globals.theme]
       },

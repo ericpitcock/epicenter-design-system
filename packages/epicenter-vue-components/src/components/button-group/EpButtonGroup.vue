@@ -5,8 +5,8 @@
       :key="item.label"
       :label="item.label"
       :size="size"
-      :disabled="disabled"
-      :class="{ 'ep-button-group--active': index === activeButton && !disabled }"
+      :disabled="item.disabled"
+      :class="{ [`${activeClass} ep-button-group--active`]: index === activeButton && !disabled }"
       :style="styles"
       @click="onClick(item, index)"
     />
@@ -31,18 +31,14 @@
       type: Number,
       default: null
     },
-    disabled: {
-      type: Boolean,
-      default: false
+    activeClass: {
+      type: String,
+      default: ''
     },
     size: {
       type: String,
       default: 'default'
     },
-    styles: {
-      type: Object,
-      default: () => ({})
-    }
   })
 
   const emit = defineEmits(['click'])
@@ -50,9 +46,8 @@
   const activeButton = ref(props.active)
 
   const onClick = (item, index) => {
-    if (props.disabled) {
-      return
-    }
+    if (props.disabled) return
+
     activeButton.value = index
     emit('click', item)
   }

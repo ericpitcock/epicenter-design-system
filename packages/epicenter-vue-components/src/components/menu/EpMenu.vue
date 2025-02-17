@@ -2,7 +2,7 @@
   <div class="ep-menu">
     <template
       v-for="(item, index) of menuItems"
-      :key="item.id || index"
+      :key="item.id"
     >
       <ep-divider v-if="item.divider" />
       <div
@@ -15,8 +15,8 @@
         v-else
         class="ep-menu__item"
         :data-item="index"
-        @mouseover="toggleSubmenu(item, index)"
-        @mouseleave="toggleSubmenu(item)"
+        @mouseover="onMouseover(item, index)"
+        @mouseleave="onMouseleave(item)"
       >
         <ep-button
           :class="buttonClasses(item)"
@@ -33,6 +33,8 @@
             :class="$attrs.class"
             :menu-items="item.children"
             @click="onClick($event)"
+            @mouseover="onChildMouseover($event)"
+            @mouseleave="onChildMouseleave($event)"
           />
         </div>
       </div>
@@ -57,7 +59,15 @@
     },
     menuItems: {
       type: Array,
-      default: () => []
+      default: () => [],
+      validator: (value) => {
+        value.forEach((item) => {
+          if (!item.section && !item.divider && !item.id) {
+            console.warn('EpMenu: Each menu item that is not a section or divider must have an id')
+          }
+        })
+        return true
+      }
     },
     size: {
       type: String,
@@ -69,7 +79,7 @@
     },
   })
 
-  const emit = defineEmits(['click'])
+  const emit = defineEmits(['click', 'mouseover', 'mouseleave'])
 
   const activeItemIndex = ref(null)
 
@@ -87,9 +97,28 @@
     ]
   }
 
-  const toggleSubmenu = (item, index = null) => {
-    if (!item.children) return
-    activeItemIndex.value = index
+  const onMouseover = (item, index) => {
+    if (!item.id || activeItemIndex.value === index) return
+
+    if (item.children) {
+      activeItemIndex.value = index
+    }
+    emit('mouseover', item)
+  }
+
+  const onChildMouseover = (item) => {
+    emit('mouseover', item)
+  }
+
+  const onMouseleave = (item) => {
+    if (item.children) {
+      activeItemIndex.value = null
+    }
+    emit('mouseleave', null)
+  }
+
+  const onChildMouseleave = (item) => {
+    emit('mouseleave', item)
   }
 
   const onClick = (item) => {

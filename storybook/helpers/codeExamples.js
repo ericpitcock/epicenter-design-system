@@ -1,31 +1,33 @@
 export const codeExamples = {
-  javascript: `function resolveAfter2Seconds(x) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(x);
-    }, 2000);
-  });
-}
+  javascript: `import React from 'react'
 
-// async function expression assigned to a variable
-const add = async function (x) {
-  const a = await resolveAfter2Seconds(20);
-  const b = await resolveAfter2Seconds(30);
-  return x + a + b;
-};
+export default class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      count: 0
+    }
 
-add(10).then((v) => {
-  console.log(v); // prints 60 after 4 seconds.
-});
+    this.handleClick = this.handleClick.bind(this)
+  }
 
-// async function expression used as an IIFE
-(async function (x) {
-  const p1 = resolveAfter2Seconds(20);
-  const p2 = resolveAfter2Seconds(30);
-  return x + (await p1) + (await p2);
-})(10).then((v) => {
-  console.log(v); // prints 60 after 2 seconds.
-});`,
+  handleClick() {
+    this.setState(preState => {
+      return {
+        count: preState.count + 1
+      }
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+        <button onClick={this.handleClick}>Change!</button>
+      </div>
+    )
+  }
+}`,
   html: `<!DOCTYPE html>
 <html lang="en-us">
   <head>

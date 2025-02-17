@@ -22,12 +22,9 @@
       :class="classes"
     >
       <div class="ep-dropdown__content">
-        <slot
-          v-if="$slots.content"
-          name="content"
-        />
+        <slot name="content" />
         <ep-menu
-          v-else
+          v-if="!$slots.content"
           :class="props.menuClass"
           :menu-items="menuItems"
           menu-type="dropdown"
@@ -86,7 +83,7 @@
     }
   })
 
-  const emit = defineEmits(['click'])
+  const emit = defineEmits(['click', 'close'])
 
   const dropdownVisible = ref(false)
 
@@ -116,7 +113,10 @@
 
   const closeDropdown = () => {
     if (props.disabled) return
-    dropdownVisible.value = false
+    if (dropdownVisible.value) {
+      dropdownVisible.value = false
+      emit('close')
+    }
   }
 
   defineExpose({ closeDropdown })
@@ -127,7 +127,7 @@
 
   const onClick = (payload) => {
     emit('click', payload)
-    closeDropdown()
+    if (dropdownVisible.value) closeDropdown()
   }
 
   const onMouseover = () => {

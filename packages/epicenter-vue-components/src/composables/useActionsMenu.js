@@ -4,7 +4,11 @@ export default function useActionsMenu() {
     menuItems = [],
     size = 'small',
     menuClass = 'ep-menu-default',
-    buttonProps = {
+    buttonProps = {},
+    alignRight = true,
+  } = {}) => {
+    // Default buttonProps with spread merging to allow overrides
+    const defaultButtonProps = {
       label: '',
       ariaLabel: 'Actions',
       iconLeft: {
@@ -14,23 +18,28 @@ export default function useActionsMenu() {
       iconRight: null,
       class: ['ep-button-var--ghost'],
       size: 'small',
-    },
-    alignRight = true,
-  } = {}) => {
+    }
+
+    // Merge buttonProps while allowing deep override of iconLeft
+    const mergedButtonProps = {
+      ...defaultButtonProps,
+      ...buttonProps,
+      iconLeft: {
+        ...defaultButtonProps.iconLeft,
+        ...buttonProps.iconLeft, // Override only specific properties of iconLeft
+      },
+    }
+
     // Process menuItems dynamically based on context
-    const processedMenuItems = menuItems.map((item) => {
-      // If menu item is a function, pass the context to it
-      if (typeof item === 'function') {
-        return item(context)
-      }
-      return item
-    })
+    const processedMenuItems = menuItems.map((item) =>
+      typeof item === 'function' ? item(context) : item
+    )
 
     return {
       size,
       menuItems: processedMenuItems,
       menuClass,
-      buttonProps,
+      buttonProps: mergedButtonProps,
       alignRight,
     }
   }

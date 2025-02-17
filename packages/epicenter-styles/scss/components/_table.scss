@@ -1,3 +1,5 @@
+@use '../mixins/_mixins' as *;
+
 .ep-table-container {
   --ep-table-container-width: auto;
   --ep-table-container-height: auto;
@@ -109,11 +111,13 @@
         user-select: none;
       }
 
-      tr:not(.ep-table-row--selected):hover {
-        cursor: pointer;
+      @include hover {
+        tr:not(.ep-table-row--selected):hover {
+          cursor: pointer;
 
-        td {
-          background: var(--ep-table-row-hover-bg-color);
+          td {
+            background: var(--ep-table-row-hover-bg-color);
+          }
         }
       }
 

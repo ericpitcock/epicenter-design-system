@@ -156,6 +156,7 @@ export const KeyValueTable = (args) => ({
           v-if="sourceKeys.includes(key)"
           :enrichment-options="enrichmentSources[key]"
           :enrichment-data="getFakeEnrichmentResponse(key, value)"
+          align-right
         />
       </template>
     </ep-key-value-table>

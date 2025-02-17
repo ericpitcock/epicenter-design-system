@@ -1,6 +1,6 @@
 :root {
-  --text--black: var(--gray-410);
-  --text--white: var(--gray-50);
+  --text--black: hsl(var(--gray-410));
+  --text--white: hsl(var(--gray-50));
 }
 
 .text-color--loud {

@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 import EpInput from '@/components/input/EpInput.vue'
 
 import { paddedSurface } from '../../helpers/decorators.js'
-import { iconMapping,iconOptions } from '../../helpers/iconHelper.js'
+import { iconMapping, iconOptions } from '../../helpers/iconHelper.js'
 
 export default {
   title: 'Components/Input',
@@ -91,12 +91,6 @@ export default {
         type: 'boolean'
       }
     },
-    width: {
-      name: 'Width',
-      control: {
-        type: 'text'
-      }
-    },
     size: {
       name: 'Size',
       options: ['default', 'large', 'xlarge'],
@@ -109,18 +103,6 @@ export default {
         }
       }
     },
-    // borderWidth: {
-    //   name: 'Border Width',
-    //   control: {
-    //     type: 'text'
-    //   }
-    // },
-    // borderStyle: {
-    //   name: 'Border Style',
-    //   control: {
-    //     type: 'text'
-    //   }
-    // },
     textColor: {
       name: 'Text Color',
       control: {
@@ -223,7 +205,6 @@ Input.args = {
   clearable: true,
   disabled: false,
   autofocus: false,
-  width: '400px',
   size: 'xlarge',
   borderWidth: '0.1rem',
   borderStyle: 'solid',

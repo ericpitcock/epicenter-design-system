@@ -14,7 +14,7 @@
       <div
         v-for="(item, index) in query"
         :key="index"
-        class="query"
+        :class="['query', { 'query--operator': isOperator(item) }]"
         @click="onQueryClose(item, index)"
       >
         <span class="query__text font-size--small">{{ item }}</span>
@@ -53,8 +53,9 @@
 </template>
 
 <script setup>
-  import EpIcon from '../icon/EpIcon.vue'
   import { computed, ref, watch } from 'vue'
+
+  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpMultiSearch',
@@ -114,43 +115,30 @@
   const emit = defineEmits(['input', 'focus', 'esc', 'blur', 'enter', 'clear', 'query-close', 'delete'])
 
   const input = ref(null)
-
-  // const hasError = ref(false)
   const hasFocus = ref(false)
-  // value is the value of the input
   const value = ref('')
-  // query is the array of values that have been added to the search
   const query = ref([])
 
+  const classes = computed(() => ({
+    'ep-multi-search--has-icon': props.icon,
+    'ep-multi-search--focus': hasFocus.value,
+    'ep-multi-search--disabled': props.disabled,
+  }))
 
-  const classes = computed(() => {
-    return {
-      'ep-multi-search--has-icon': props.icon,
-      'ep-multi-search--focus': hasFocus.value,
-      'ep-multi-search--disabled': props.disabled,
-    }
-  })
+  const clearable = computed(() => query.value.length > 0 || value.value.length > 0)
 
-  const clearable = computed(() => {
-    return (value.value && query.value.length > 0) || (!value.value && query.value.length > 0) || (value.value && query.value.length === 0)
-  })
+  const iconStyles = computed(() => ({
+    flex: `0 0 ${props.height}`,
+    height: props.height,
+  }))
 
-  const iconStyles = computed(() => {
-    return {
-      flex: `0 0 ${props.height}`,
-      height: props.height,
-    }
-  })
-
-  const inputStyles = computed(() => {
-    return {
-      width: props.width,
-      height: props.height,
-      borderRadius: props.borderRadius,
-      backgroundColor: props.backgroundColor,
-      color: props.color
-    }
-  })
+  const inputStyles = computed(() => ({
+    width: props.width,
+    height: props.height,
+    borderRadius: props.borderRadius,
+    backgroundColor: props.backgroundColor,
+    color: props.color
+  }))
 
   const placeholderValue = computed(() => {
     return value.value === '' && query.value.length === 0 ? props.placeholder : '+ Add to your search'
@@ -160,41 +148,52 @@
     console.log('query', query.value)
   })
 
+  const isOperator = (term) => term === 'AND' || term === 'OR'
+
   const onQueryClose = (item, index) => {
     query.value.splice(index, 1)
-    emit('query-close', item)
+    emit('query-close', parseQuery(query.value))
   }
 
   const onInput = (event) => {
     emit('input', event.target.value)
   }
 
-  const onEsc = (event) => {
+  const onEsc = () => {
     input.value.blur()
-    emit('esc', event.target.value)
+    emit('esc', parseQuery(query.value))
   }
 
-  const onFocus = (event) => {
+  const onFocus = () => {
     hasFocus.value = true
-    emit('focus', event.target.value)
+    emit('focus', parseQuery(query.value))
   }
 
-  const onBlur = (event) => {
+  const onBlur = () => {
     hasFocus.value = false
-    emit('blur', event.target.value)
+    emit('blur', parseQuery(query.value))
   }
 
   const onEnter = () => {
-    query.value.push(value.value)
-    emit('enter', query.value)
+    const trimmedValue = value.value.trim()
+    if (!trimmedValue) return
+
+    const lastQueryItem = query.value[query.value.length - 1]
+
+    if (isOperator(trimmedValue)) {
+      // Prevent consecutive operators (e.g., "AND AND")
+      if (!query.value.length || isOperator(lastQueryItem)) return
+    }
+
+    query.value.push(trimmedValue)
+    emit('enter', parseQuery(query.value))
     value.value = ''
   }
 
   const onDelete = () => {
     if (value.value === '') {
-      // find the last element in the query array and remove it
-      query.value.splice(query.value.length - 1, 1)
-      emit('delete', query.value)
+      query.value.pop()
+      emit('delete', parseQuery(query.value))
     }
   }
 
@@ -202,6 +201,62 @@
     query.value = []
     value.value = ''
     input.value.focus()
-    emit('clear', query.value)
+    emit('clear', parseQuery(query.value))
+  }
+
+  /**
+   * Parses the query, ensuring AND/OR logic is correctly handled
+   */
+  const parseQuery = (queries) => {
+    const andQueries = []
+    const orQueries = []
+    let currentOperator = 'OR' // Default behavior is OR unless AND is explicitly added
+
+    queries.forEach(q => {
+      if (isOperator(q)) {
+        currentOperator = q
+      } else {
+        if (currentOperator === 'AND') {
+          andQueries.push(q)
+        } else {
+          orQueries.push(q) // Default is OR
+        }
+      }
+    })
+
+    return { and: andQueries, or: orQueries }
   }
 </script>
+
+<style lang="scss" scoped>
+  .ep-multi-search {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .queries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .query {
+    display: flex;
+    align-items: center;
+    background-color: var(--interface-surface);
+    border: 1px solid var(--border-color);
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+  }
+
+  .query--operator {
+    background-color: var(--highlight-color, #ffcc00);
+    color: black;
+    font-weight: bold;
+  }
+</style>

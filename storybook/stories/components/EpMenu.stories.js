@@ -167,13 +167,17 @@ export default {
 export const Menu = args => ({
   components: { EpMenu },
   setup() {
-    const onMenuClick = item => {
+    const onClick = (item) => {
       if (item.action) item.action(item)
     }
 
-    return { args, onMenuClick }
+    const onMouseover = (item) => {
+      console.log('onMouseover', item.label)
+    }
+
+    return { args, onClick, onMouseover }
   },
-  template: '<ep-menu v-bind="args" @click="onMenuClick" />'
+  template: '<ep-menu v-bind="args" @click="onClick" @mouseover="onMouseover" />'
 })
 
 Menu.args = {

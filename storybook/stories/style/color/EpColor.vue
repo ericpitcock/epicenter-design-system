@@ -53,6 +53,7 @@
 </template>
 
 <script setup>
+  import { faker } from '@faker-js/faker'
   import { useClipboard } from '@vueuse/core'
   import chroma from 'chroma-js'
   import { computed, ref, watch } from 'vue'
@@ -86,27 +87,27 @@
   }
 
   const menuItems = [
-    { label: 'Chart Sequence', },
+    { id: faker.string.uuid(), label: 'Chart Sequence', },
     { divider: true },
-    { label: 'All' },
-    { label: 'Grayscale' },
-    { label: 'Red' },
-    { label: 'Orange' },
-    { label: 'Amber' },
-    { label: 'Yellow' },
-    { label: 'Lime' },
-    { label: 'Green' },
-    { label: 'Emerald' },
-    { label: 'Teal' },
-    { label: 'Cyan' },
-    { label: 'Sky' },
-    { label: 'Blue' },
-    { label: 'Indigo' },
-    { label: 'Violet' },
-    { label: 'Purple' },
-    { label: 'Fuchsia' },
-    { label: 'Pink', },
-    { label: 'Rose' }
+    { id: faker.string.uuid(), label: 'All' },
+    { id: faker.string.uuid(), label: 'Grayscale' },
+    { id: faker.string.uuid(), label: 'Red' },
+    { id: faker.string.uuid(), label: 'Orange' },
+    { id: faker.string.uuid(), label: 'Amber' },
+    { id: faker.string.uuid(), label: 'Yellow' },
+    { id: faker.string.uuid(), label: 'Lime' },
+    { id: faker.string.uuid(), label: 'Green' },
+    { id: faker.string.uuid(), label: 'Emerald' },
+    { id: faker.string.uuid(), label: 'Teal' },
+    { id: faker.string.uuid(), label: 'Cyan' },
+    { id: faker.string.uuid(), label: 'Sky' },
+    { id: faker.string.uuid(), label: 'Blue' },
+    { id: faker.string.uuid(), label: 'Indigo' },
+    { id: faker.string.uuid(), label: 'Violet' },
+    { id: faker.string.uuid(), label: 'Purple' },
+    { id: faker.string.uuid(), label: 'Fuchsia' },
+    { id: faker.string.uuid(), label: 'Pink', },
+    { id: faker.string.uuid(), label: 'Rose' }
   ]
 
   const tableColumns = [

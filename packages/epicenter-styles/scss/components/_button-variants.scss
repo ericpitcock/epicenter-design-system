@@ -1,13 +1,15 @@
 .ep-button-var--primary {
-  --ep-button-primary-bg: var(--primary-gradient);
+  // define
+  --ep-button-primary-bg: var(--primary-color-base);
   --ep-button-primary-border: var(--primary-color-base);
   --ep-button-primary-text: white;
-  --ep-button-primary-hover-bg: var(--primary-color-600);
-  --ep-button-primary-hover-border: var(--primary-color-600);
+  --ep-button-primary-hover-bg: hsl(from var(--ep-button-primary-bg) h s calc(l - 5));
+  --ep-button-primary-hover-border: hsl(from var(--ep-button-primary-border) h s calc(l - 5));
   --ep-button-primary-hover-text: white;
-  --ep-button-primary-active-bg: var(--primary-color-700);
-  --ep-button-primary-active-border: var(--primary-color-700);
+  --ep-button-primary-active-bg: hsl(from var(--ep-button-primary-bg) h s calc(l - 10));
+  --ep-button-primary-active-border: hsl(from var(--ep-button-primary-border) h s calc(l - 10));
   --ep-button-primary-active-text: white;
+  // assign
   --ep-button-bg-color: var(--ep-button-primary-bg);
   --ep-button-border-color: var(--ep-button-primary-border);
   --ep-button-text-color: var(--ep-button-primary-text);
@@ -20,6 +22,7 @@
 }
 
 .ep-button-var--secondary {
+  // define
   --ep-button-secondary-bg: var(--interface-surface);
   --ep-button-secondary-border: var(--border-color);
   --ep-button-secondary-text: var(--text-color--loud);
@@ -29,6 +32,7 @@
   --ep-button-secondary-active-bg: var(--interface-surface);
   --ep-button-secondary-active-border: var(--border-color);
   --ep-button-secondary-active-text: var(--text-color);
+  // assign
   --ep-button-bg-color: var(--ep-button-secondary-bg);
   --ep-button-border-color: var(--ep-button-secondary-border);
   --ep-button-text-color: var(--ep-button-secondary-text);
@@ -41,15 +45,17 @@
 }
 
 .ep-button-var--success {
+  // define
   --ep-button-success-bg: hsl(var(--emerald-600));
   --ep-button-success-border: hsl(var(--emerald-600));
   --ep-button-success-text: white;
-  --ep-button-success-hover-bg: hsl(var(--emerald-700));
-  --ep-button-success-hover-border: hsl(var(--emerald-700));
+  --ep-button-success-hover-bg: hsl(from var(--ep-button-success-bg) h s calc(l - 5));
+  --ep-button-success-hover-border: hsl(from var(--ep-button-success-border) h s calc(l - 5));
   --ep-button-success-hover-text: white;
-  --ep-button-success-active-bg: hsl(var(--emerald-800));
-  --ep-button-success-active-border: hsl(var(--emerald-800));
+  --ep-button-success-active-bg: hsl(from var(--ep-button-success-bg) h s calc(l - 10));
+  --ep-button-success-active-border: hsl(from var(--ep-button-success-border) h s calc(l - 10));
   --ep-button-success-active-text: white;
+  // assign
   --ep-button-bg-color: var(--ep-button-success-bg);
   --ep-button-border-color: var(--ep-button-success-border);
   --ep-button-text-color: var(--ep-button-success-text);
@@ -62,15 +68,17 @@
 }
 
 .ep-button-var--warning {
+  // define
   --ep-button-warning-bg: hsl(29, 72%, 61%);
   --ep-button-warning-border: hsl(29, 72%, 61%);
   --ep-button-warning-text: hsl(0, 77%, 12%);
-  --ep-button-warning-hover-bg: hsl(29, 72%, 51%);
-  --ep-button-warning-hover-border: hsl(29, 72%, 51%);
+  --ep-button-warning-hover-bg: hsl(from var(--ep-button-warning-bg) h s calc(l - 7));
+  --ep-button-warning-hover-border: hsl(from var(--ep-button-warning-border) h s calc(l - 7));
   --ep-button-warning-hover-text: hsl(0, 77%, 12%);
-  --ep-button-warning-active-bg: hsl(29, 72%, 41%);
-  --ep-button-warning-active-border: hsl(29, 72%, 41%);
+  --ep-button-warning-active-bg: hsl(from var(--ep-button-warning-bg) h s calc(l - 14));
+  --ep-button-warning-active-border: hsl(from var(--ep-button-warning-border) h s calc(l - 14));
   --ep-button-warning-active-text: hsl(0, 77%, 12%);
+  // assign
   --ep-button-bg-color: var(--ep-button-warning-bg);
   --ep-button-border-color: var(--ep-button-warning-border);
   --ep-button-text-color: var(--ep-button-warning-text);
@@ -83,15 +91,17 @@
 }
 
 .ep-button-var--danger {
+  // define
   --ep-button-danger-bg: hsl(var(--rose-600));
   --ep-button-danger-border: hsl(var(--rose-600));
   --ep-button-danger-text: white;
-  --ep-button-danger-hover-bg: hsl(var(--rose-700));
-  --ep-button-danger-hover-border: hsl(var(--rose-700));
+  --ep-button-danger-hover-bg: hsl(from var(--ep-button-danger-bg) h s calc(l - 5));
+  --ep-button-danger-hover-border: hsl(from var(--ep-button-danger-border) h s calc(l - 5));
   --ep-button-danger-hover-text: white;
-  --ep-button-danger-active-bg: hsl(var(--rose-800));
-  --ep-button-danger-active-border: hsl(var(--rose-800));
+  --ep-button-danger-active-bg: hsl(from var(--ep-button-danger-bg) h s calc(l - 10));
+  --ep-button-danger-active-border: hsl(from var(--ep-button-danger-border) h s calc(l - 10));
   --ep-button-danger-active-text: white;
+  // assign
   --ep-button-bg-color: var(--ep-button-danger-bg);
   --ep-button-border-color: var(--ep-button-danger-border);
   --ep-button-text-color: var(--ep-button-danger-text);
@@ -104,11 +114,13 @@
 }
 
 .ep-button-var--outline {
+  // define
   --ep-button-outline-border: var(--border-color);
   --ep-button-outline-text: var(--text-color--loud);
   --ep-button-outline-hover-bg: var(--interface-surface);
   --ep-button-outline-hover-border: var(--border-color--lighter);
   --ep-button-outline-hover-text: var(--text-color--loud);
+  // assign
   --ep-button-bg-color: transparent;
   --ep-button-border-color: var(--ep-button-outline-border);
   --ep-button-text-color: var(--ep-button-outline-text);
@@ -118,6 +130,7 @@
 }
 
 .ep-button-var--ghost {
+  // define
   --ep-button-ghost-bg: transparent;
   --ep-button-ghost-border: transparent;
   --ep-button-ghost-text: var(--text-color--loud);
@@ -127,6 +140,7 @@
   --ep-button-ghost-active-bg: transparent;
   --ep-button-ghost-active-border: transparent;
   --ep-button-ghost-active-text: var(--text-color--loud);
+  // assign
   --ep-button-bg-color: var(--ep-button-ghost-bg);
   --ep-button-border-color: var(--ep-button-ghost-border);
   --ep-button-text-color: var(--ep-button-ghost-text);

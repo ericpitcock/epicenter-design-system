@@ -34,7 +34,7 @@
      */
     theme: {
       type: String,
-      default: 'vitesse-dark'
+      default: 'one-dark-pro'
     }
   })
 
@@ -44,7 +44,7 @@
     try {
       highlightedCode.value = await codeToHtml(props.code, {
         lang: props.language,
-        theme: 'one-dark-pro',
+        theme: props.theme,
         colorReplacements: {
           '#282c34': 'var(--interface-surface)',
         }
@@ -60,6 +60,14 @@
     highlightCode()
   })
 
+  watch(() => props.language, () => {
+    highlightCode()
+  })
+
+  watch(() => props.theme, () => {
+    highlightCode()
+  })
+
   onMounted(() => {
     highlightCode()
   })
@@ -68,5 +76,9 @@
 <style lang="scss">
   .ep-code-block pre {
     white-space: pre;
+
+    &.shiki.one-light {
+      background-color: var(--interface-surface) !important;
+    }
   }
 </style>

@@ -1,5 +1,4 @@
 .ep-textarea {
-  // width and height
   --ep-textarea-width: 100%;
   --ep-textarea-min-width: 20rem;
   --ep-textarea-max-width: 70rem;
@@ -32,10 +31,5 @@
     line-height: var(--ep-textarea-line-height);
     font-size: var(--ep-textarea-font-size);
     resize: var(--ep-textarea-resize);
-
-    &:focus {
-      outline: none;
-      border-color: var(--ep-textarea-focus-border-color);
-    }
   }
 }

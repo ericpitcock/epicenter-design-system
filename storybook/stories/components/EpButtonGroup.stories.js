@@ -7,11 +7,14 @@ export default {
   component: EpButtonGroup,
   decorators: [centeredBg],
   argTypes: {
-    disabled: {
-      name: 'Disabled',
-      control: {
-        type: 'boolean',
-      }
+    items: {
+      table: { disable: true }
+    },
+    active: {
+      table: { disable: true }
+    },
+    activeClass: {
+      table: { disable: true }
     },
     size: {
       name: 'Size',
@@ -26,16 +29,6 @@ export default {
         }
       }
     },
-    items: {
-      table: {
-        disable: true
-      }
-    },
-    active: {
-      table: {
-        disable: true
-      }
-    },
   }
 }
 
@@ -48,12 +41,19 @@ export const ButtonGroup = args => ({
 })
 
 ButtonGroup.args = {
-  active: 0,
   items: [
-    { label: 'Taco' },
-    { label: 'Burrito' },
-    { label: 'Enchilada' }
+    {
+      label: 'Taco'
+    },
+    {
+      label: 'Burrito',
+      disabled: true
+    },
+    {
+      label: 'Enchilada'
+    },
   ],
-  disabled: false,
+  active: 0,
+  activeClass: 'ep-button-var--primary',
   size: 'large',
 }

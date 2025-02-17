@@ -1,4 +1,4 @@
-@use '../mixins/mixins';
+@use '../mixins/mixins' as *;
 
 .copy-block {
   & > * + * {
@@ -36,7 +36,7 @@
     color: var(--text-color--link);
   }
 
-  @include mixins.hover {
+  @include hover {
     > a:hover:not(.ep-button) {
       color: var(--text-color--link);
       cursor: pointer;

@@ -1,9 +1,10 @@
+import { faker } from '@faker-js/faker'
 import { computed } from 'vue'
 
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
-import { iconMapping,iconOptions } from '../../helpers/iconHelper.js'
+import { iconMapping, iconOptions } from '../../helpers/iconHelper.js'
 
 const fakeDropdownItems = [
   {
@@ -11,12 +12,12 @@ const fakeDropdownItems = [
     label: 'Cheap'
   },
   {
+    id: faker.string.uuid(),
     label: 'Drip',
-    // iconLeft: { name: 'f-coffee' }
   },
   {
+    id: faker.string.uuid(),
     label: 'French Press',
-    // iconLeft: { name: 'f-coffee' }
   },
   {
     divider: true
@@ -26,12 +27,12 @@ const fakeDropdownItems = [
     label: 'Expensive'
   },
   {
+    id: faker.string.uuid(),
     label: 'Latte',
-    // iconLeft: { name: 'f-coffee' }
   },
   {
+    id: faker.string.uuid(),
     label: 'Espresso',
-    // iconLeft: { name: 'f-coffee' }
   }
 ]
 
@@ -99,7 +100,11 @@ export const Dropdown = args => ({
       classes: { [args['buttonProps.classes']]: true }
     }))
 
-    return { args, buttonProps }
+    const onClick = (item) => {
+      console.log('clicked:', item.label)
+    }
+
+    return { args, buttonProps, onClick }
   },
   template: `
     <ep-dropdown
@@ -107,6 +112,8 @@ export const Dropdown = args => ({
       :menuItems="args.menuItems"
       menu-class="special-class"
       v-bind="args"
+      @click="onClick"
+      @close="() => console.log('closed')"
     />
   `
 })

@@ -7,9 +7,18 @@ $primary-hue: 257deg;
   @include generate-color-variants($primary-lightness, $primary-chroma, $primary-hue);
   --gradient-bg: radial-gradient(circle 200px at -5% -10%, hsl(60, 100%, 50%), transparent),
     linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--primary-color-base) 79%);
-  --primary-gradient: linear-gradient(140deg, var(--primary-color-base) 30%, var(--primary-color-down-10-base) 70%);
   --text-selection-bg-color: var(--primary-color-base);
   --text-selection-text-color: hsl(var(--gray-0));
+
+  .ep-button-var--primary {
+    --ep-button-primary-bg: linear-gradient(140deg, var(--primary-color-base) 30%, var(--primary-color-up-15-base) 70%);
+    --ep-button-primary-hover-bg: linear-gradient(140deg, var(--primary-color-600) 30%, var(--primary-color-up-15-600) 70%);
+    --ep-button-primary-active-bg: linear-gradient(140deg, var(--primary-color-700) 30%, var(--primary-color-up-15-700) 70%);
+
+    .ep-button__label {
+      text-shadow: 0 0.1rem 0.75rem var(--primary-color-800);
+    }
+  }
 
   .ep-badge--success {
     --ep-badge-bg-color: hsl(var(--emerald-1000));
@@ -22,15 +31,6 @@ $primary-hue: 257deg;
     --ep-badge-border-color: hsl(var(--yellow-600));
     --ep-badge-text-color: var(--text-color--loud);
   }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--text-color--loud);
-  }
 }
 
 html[data-color-theme='light'] {
@@ -38,7 +38,6 @@ html[data-color-theme='light'] {
     --ep-table-row-hover-bg-color: hsl(var(--gray-60));
   }
 
-  // global overrides - light theme
   .ep-badge--success {
     --ep-badge-bg-color: hsl(81, 58%, 80%);
     --ep-badge-border-color: hsl(var(--emerald-800));
@@ -49,10 +48,6 @@ html[data-color-theme='light'] {
     --ep-badge-bg-color: hsl(32, 68%, 83%);
     --ep-badge-border-color: hsl(var(--orange-800));
     --ep-badge-text-color: var(--text-color--loud);
-  }
-
-  .ep-button {
-    --ep-button-menu-item-active-text-color: var(--text-color--inverse);
   }
 }
 
@@ -88,6 +83,15 @@ html[data-color-theme='light'] {
 .monospace {
   font-family: 'Fira Code', monospace;
   font-variation-settings: 'wght' 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-color--loud);
 }
 
 .badge-variant-primary {
@@ -127,4 +131,11 @@ html[data-color-theme='light'] {
   --ep-menu-border-color: var(--border-color--lighter);
   --ep-menu-border-radius: var(--border-radius);
   --ep-menu-divider-border-color: var(--border-color--lighter);
+}
+
+.ep-menu-subtle {
+  --ep-menu-bg-color: var(--interface-foreground);
+  --ep-menu-border-color: var(--border-color);
+  --ep-menu-border-radius: var(--border-radius);
+  --ep-menu-divider-border-color: var(--border-color);
 }

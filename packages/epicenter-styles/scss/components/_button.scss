@@ -1,3 +1,5 @@
+@use '../mixins/_mixins' as *;
+
 .ep-button {
   --ep-button-bg-color: var(--interface-foreground);
   --ep-button-text-color: var(--text-color--loud);
@@ -37,20 +39,12 @@
   border-style: var(--ep-button-border-style);
   border-color: var(--ep-button-border-color);
 
-  @media (hover: hover) {
-    &:hover:not(.ep-button--menu-item--active):not(.ep-button--disabled) {
+  @include hover {
+    &:hover:not([class$='--active']):not(.ep-button--disabled) {
       background: var(--ep-button-hover-bg-color);
       color: var(--ep-button-hover-text-color);
       border-color: var(--ep-button-hover-border-color);
     }
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--focus-outline-color);
   }
 
   &:active {

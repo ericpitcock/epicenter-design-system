@@ -1,8 +1,6 @@
-import { faker } from '@faker-js/faker'
-
 import EpEnrichmentDropdown from '@/components/enrichment-dropdown/EpEnrichmentDropdown.vue'
 
-import { getFakeEnrichmentResponse } from '../../data/enrichmentData.js'
+import { enrichmentSources, getFakeEnrichmentResponse } from '../../data/enrichmentData.js'
 import { paddedBg } from '../../helpers/decorators.js'
 
 export default {
@@ -32,31 +30,13 @@ export const EnrichmentDropdown = (args) => ({
       console.log('Docking Data:', data)
     }
 
-    return { args, enrichmentData, handleDock }
+    return { args, enrichmentData, enrichmentSources, getFakeEnrichmentResponse, handleDock }
   },
   template: `
     <ep-enrichment-dropdown
-      v-bind="args"
-      :enrichmentData="enrichmentData"
+      :enrichment-options="enrichmentSources['IP Address']"
+      :enrichmentData="getFakeEnrichmentResponse('IP Address', '192.1.1.100')"
       @dock="handleDock"
     />
   `
 })
-
-EnrichmentDropdown.args = {
-  label: '',
-  enrichmentOptions: [
-    {
-      id: faker.string.uuid(),
-      label: 'VirusTotal Lookup'
-    },
-    {
-      id: faker.string.uuid(),
-      label: 'WHOIS Lookup'
-    },
-    {
-      id: faker.string.uuid(),
-      label: 'Shodan Search'
-    }
-  ]
-}

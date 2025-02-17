@@ -2,11 +2,13 @@
   <div class="ep-enrichment-dropdown">
     <ep-dropdown
       :button-props="buttonProps"
+      v-bind="$attrs"
       @close="showPreview = false"
     >
       <template #content>
         <div class="ep-enrichment-content">
           <ep-menu
+            class="ep-menu-subtle"
             :menu-items="enrichmentOptions"
             @mouseover="handleHover"
           />
@@ -16,7 +18,7 @@
           >
             <ep-loading-state
               v-if="loading"
-              :message="{ icon: 'oval', message: 'Fetching enrichment data…' }"
+              :message="{ icon: 'oval', message: 'Fetching data…' }"
             />
             <ep-flex
               v-if="enrichmentData"
@@ -26,10 +28,23 @@
                 :data="enrichmentData[hoveredItem.label]"
                 section-headers
               />
-              <ep-button
-                label="Pin in dock"
-                @click="handleDock"
-              />
+              <ep-flex class="gap-10">
+                <ep-button
+                  label="Add to dock"
+                  @click="handleDock"
+                />
+                <ep-button
+                  label="Source"
+                  :icon-right="{
+                    name: 'f-arrow-up-right',
+                    style: {
+                      '--ep-icon-width': '1.4rem',
+                      '--ep-icon-height': '1.4rem',
+                      '--ep-icon-stroke-width': '2',
+                    }
+                  }"
+                />
+              </ep-flex>
             </ep-flex>
           </div>
         </div>
@@ -41,12 +56,12 @@
 <script setup>
   import { ref } from 'vue'
 
-  import EpButton from '@/components/button/EpButton.vue'
-  import EpDropdown from '@/components/dropdown/EpDropdown.vue'
-  import EpFlex from '@/components/flexbox/EpFlex.vue'
-  import EpKeyValueTable from '@/components/key-value-table/EpKeyValueTable.vue'
-  import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
-  import EpMenu from '@/components/menu/EpMenu.vue'
+  import EpButton from '../button/EpButton.vue'
+  import EpDropdown from '../dropdown/EpDropdown.vue'
+  import EpFlex from '../flexbox/EpFlex.vue'
+  import EpKeyValueTable from '../key-value-table/EpKeyValueTable.vue'
+  import EpLoadingState from '../loading-state/EpLoadingState.vue'
+  import EpMenu from '../menu/EpMenu.vue'
 
   const props = defineProps({
     label: {
@@ -74,7 +89,7 @@
     label: props.label,
     size: 'small',
     iconLeft: {
-      name: 'search',
+      name: 'f-download-cloud',
       style: {
         '--ep-icon-color': 'var(--primary-color-base)'
       }
@@ -86,6 +101,7 @@
   const hasBeenHovered = ref([])
 
   const handleHover = (item) => {
+    console.log(props.enrichmentData)
     if (hasBeenHovered.value.includes(item.label)) {
       hoveredItem.value = item
       showPreview.value = true
@@ -99,7 +115,7 @@
 
     setTimeout(() => {
       loading.value = false
-    }, 800)
+    }, 400)
   }
 
   const handleDock = () => {
@@ -123,8 +139,9 @@
     position: absolute;
     top: 0;
     left: calc(100% + 0.5rem);
-    background: var(--interface-surface);
+    min-width: 40rem;
     padding: 2rem;
+    background: var(--interface-foreground);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow--dropdown);

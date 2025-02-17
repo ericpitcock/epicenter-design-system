@@ -5,7 +5,7 @@ import EpIcon from '@/components/icon/EpIcon.vue'
 import EpSearchTypeahead from '@/components/search/EpSearchTypeahead.vue'
 
 import { paddedBg } from '../../helpers/decorators.js'
-import { iconObjects,icons } from '../../helpers/iconHelper.js'
+import { iconObjects, icons } from '../../helpers/iconHelper.js'
 
 export default {
   title: 'Components/Icon Library',

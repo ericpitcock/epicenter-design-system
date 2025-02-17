@@ -10,10 +10,6 @@ select.ep-select {
     padding-left: 2.8rem;
   }
 
-  &:focus {
-    border-color: var(--primary-color-base) !important;
-  }
-
   &--small {
     padding: 0 2.5rem 0 0.8rem;
     font-size: var(--font-size--tiny);
@@ -25,7 +21,6 @@ select.ep-select {
 
   &--large {
     padding: 0 3.6rem 0 1.6rem;
-    font-size: var(--font-size--default);
 
     &.ep-select--has-icon {
       padding-left: 3.6rem;
@@ -34,7 +29,6 @@ select.ep-select {
 
   &--xlarge {
     padding: 0 4.4rem 0 1.8rem;
-    font-size: var(--font-size--body);
 
     &.ep-select--has-icon {
       padding-left: 4.4rem;

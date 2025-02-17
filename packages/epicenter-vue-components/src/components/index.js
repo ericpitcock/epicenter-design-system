@@ -1,6 +1,7 @@
 import EpActionBar from './action-bar/EpActionBar.vue'
 import EpBadge from './badge/EpBadge.vue'
 import EpBanner from './banner/EpBanner.vue'
+import EpBasicTable from './basic-table/EpBasicTable.vue'
 import EpBreadcrumbs from './breadcrumbs/EpBreadcrumbs.vue'
 import EpBrowserFrame from './browser-frame/EpBrowserFrame.vue'
 import EpButton from './button/EpButton.vue'
@@ -14,6 +15,7 @@ import EpDatePicker from './date-picker/EpDatePicker.vue'
 import EpDivider from './divider/EpDivider.vue'
 import EpDropdown from './dropdown/EpDropdown.vue'
 import EpEmptyState from './empty-state/EpEmptyState.vue'
+import EpEnrichmentDropdown from './enrichment-dropdown/EpEnrichmentDropdown.vue'
 import EpFlex from './flexbox/EpFlex.vue'
 import EpFlexContainer from './flexbox/EpFlexContainer.vue'
 import EpFooter from './footer/EpFooter.vue'
@@ -60,6 +62,7 @@ export {
   EpActionBar,
   EpBadge,
   EpBanner,
+  EpBasicTable,
   EpBreadcrumbs,
   EpBrowserFrame,
   EpButton,
@@ -73,6 +76,7 @@ export {
   EpDivider,
   EpDropdown,
   EpEmptyState,
+  EpEnrichmentDropdown,
   EpFlex,
   EpFlexContainer,
   EpFooter,
@@ -120,6 +124,7 @@ export default {
   EpActionBar,
   EpBadge,
   EpBanner,
+  EpBasicTable,
   EpBreadcrumbs,
   EpBrowserFrame,
   EpButton,
@@ -133,6 +138,7 @@ export default {
   EpDivider,
   EpDropdown,
   EpEmptyState,
+  EpEnrichmentDropdown,
   EpFlex,
   EpFlexContainer,
   EpFooter,

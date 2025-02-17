@@ -15,6 +15,8 @@ const icons = [
   'display',
   'dots-horizontal',
   'dots-vertical',
+  'enrich',
+  'enrichable',
   'export',
   'f-activity',
   'f-airplay',

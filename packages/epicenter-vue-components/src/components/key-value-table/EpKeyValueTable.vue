@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-v-html -->
 <template>
   <ep-flex class="ep-key-value-table flex-col gap-10">
     <template
@@ -24,7 +23,7 @@
           </td>
           <td :class="{ 'ep-flex gap-5': showActionsMenu }">
             {{ value }}
-            <template v-if="showActionsMenu">
+            <template v-if="$slots['actions-menu']">
               <slot
                 name="actions-menu"
                 v-bind="{ key, value }"
@@ -78,14 +77,11 @@
       return 'auto'
     }
 
-    const data = props.data
     let maxKeyLength = 0
 
-    for (let key of Object.keys(data)) {
-      for (let subKey in data[key]) {
-        if (subKey.length > maxKeyLength) {
-          maxKeyLength = subKey.length
-        }
+    for (const section of processedData.value) {
+      for (const key in section.data) {
+        maxKeyLength = Math.max(maxKeyLength, key.length)
       }
     }
 

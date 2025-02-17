@@ -16,6 +16,7 @@
       :autocomplete="autocomplete"
       :spellcheck="spellcheck"
       :wrap="wrap"
+      v-bind="$attrs"
       @focus="onFocus"
       @blur="onBlur"
     />

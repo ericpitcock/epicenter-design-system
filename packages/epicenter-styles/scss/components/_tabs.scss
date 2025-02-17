@@ -1,3 +1,5 @@
+@use '../mixins/_mixins' as *;
+
 :root {
   --ep-tabs-hover-border-color: var(--border-color--lighter);
   --ep-tabs-hover-text-color: var(--text-color);
@@ -25,15 +27,12 @@
       white-space: nowrap;
     }
 
-    &:not(.ep-tabs__tab-item--active):not(.router-link-exact-active):hover span {
-      border-bottom-color: var(--ep-tabs-hover-border-color);
-      color: var(--ep-tabs-hover-text-color);
-      cursor: pointer;
-    }
-
-    &:focus-visible span {
-      outline: var(--ep-focus-outline-width) solid var(--ep-tabs-focus-outline-color);
-      outline-offset: var(--ep-focus-outline-offset);
+    @include hover {
+      &:not(.ep-tabs__tab-item--active):not(.router-link-exact-active):hover span {
+        border-bottom-color: var(--ep-tabs-hover-border-color);
+        color: var(--ep-tabs-hover-text-color);
+        cursor: pointer;
+      }
     }
 
     &--active span,
@@ -57,9 +56,11 @@
         border-top-left-radius: var(--border-radius);
       }
 
-      &:not(.ep-tabs__tab-item--active):not(.router-link-exact-active):hover span {
-        border-bottom-color: transparent;
-        color: var(--ep-tabs-hover-text-color);
+      @include hover {
+        &:not(.ep-tabs__tab-item--active):not(.router-link-exact-active):hover span {
+          border-bottom-color: transparent;
+          color: var(--ep-tabs-hover-text-color);
+        }
       }
 
       &--active span,

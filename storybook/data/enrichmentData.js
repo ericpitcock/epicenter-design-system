@@ -132,9 +132,9 @@ const generateFakeShodan = (ip) => ({
   name: 'Shodan',
   data: {
     'IP Address': ip,
-    'Open Ports': Array.from({ length: faker.number.int({ min: 1, max: 5 }) }, () => faker.internet.port()),
-    'Services': Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => faker.helpers.arrayElement(['HTTP', 'SSH', 'FTP', 'RDP', 'Telnet'])),
-    'Vulnerabilities': Array.from({ length: faker.number.int({ min: 0, max: 3 }) }, () => `CVE-${faker.number.int({ min: 2000, max: 2024 })}-${faker.number.int({ min: 1000, max: 9999 })}`),
+    'Open Ports': Array.from({ length: faker.number.int({ min: 1, max: 5 }) }, () => faker.internet.port()).join(', '),
+    'Services': Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => faker.helpers.arrayElement(['HTTP', 'SSH', 'FTP', 'RDP', 'Telnet'])).join(', '),
+    'Vulnerabilities': Array.from({ length: faker.number.int({ min: 0, max: 3 }) }, () => `CVE-${faker.number.int({ min: 2000, max: 2024 })}-${faker.number.int({ min: 1000, max: 9999 })}`).join(', '),
     'ISP': faker.company.name(),
     'Country': faker.location.country(),
     'City': faker.location.city()
@@ -149,7 +149,7 @@ const generateFakePassiveTotal = (domain) => ({
       'IP Address': faker.internet.ip(),
       'Last Seen': faker.date.past({ years: 1 }).toISOString()
     })),
-    'Associated Subdomains': Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => faker.internet.domainName()),
+    'Associated Subdomains': Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => faker.internet.domainName()).join(', '),
     'Registrant': faker.person.fullName(),
     'Registrar': faker.company.name()
   }
@@ -184,7 +184,7 @@ const generateFakeURLhaus = (url) => ({
     'URL': url,
     'Malware Hosted': faker.helpers.arrayElement([true, false]),
     'Threat Type': faker.helpers.arrayElement(['Malware', 'Phishing', 'Botnet']),
-    'Associated IPs': Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => faker.internet.ipv4()),
+    'Associated IPs': Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => faker.internet.ipv4()).join(', '),
     'Last Reported': faker.date.recent().toISOString()
   }
 })

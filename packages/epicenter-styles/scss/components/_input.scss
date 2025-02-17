@@ -26,14 +26,6 @@ input.ep-input {
     color: var(--ep-input-placeholder-text-color);
   }
 
-  &:focus {
-    border-color: var(--ep-input-focus-border-color) !important;
-
-    &::placeholder {
-      color: transparent;
-    }
-  }
-
   &--large {
     padding: 0 1.6rem;
 
