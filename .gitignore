@@ -4,5 +4,4 @@ storybook-static/
 storybook-react-static/
 docs/.vitepress/cache/
 docs/.vitepress/dist/
-packages/epicenter-icons/dist/
 packages/epicenter-vue-components/dist/
