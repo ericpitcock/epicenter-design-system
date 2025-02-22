@@ -108,6 +108,8 @@
       const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
       dot.setAttribute('r', '5')
       dot.setAttribute('fill', color)
+      dot.setAttribute('cx', '-10') // 🛠 FIX: Set an initial offscreen position
+      dot.setAttribute('cy', '-10')
       svgEl.value.appendChild(dot)
 
       let progress = 0
@@ -138,12 +140,14 @@
 
     // 🛠 FIX: Only remove outputDot if it's still in the DOM
     if (outputDot && svgEl.value.contains(outputDot)) {
-      svgEl.value.removeChild(outputDot)
+      svgEl.value.removeChild(outputDot) // Ensure the previous output dot is gone
     }
 
     outputDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
     outputDot.setAttribute('r', '5')
     outputDot.setAttribute('fill', 'white')
+    outputDot.setAttribute('cx', '-10') // 🛠 FIX: Set an initial offscreen position
+    outputDot.setAttribute('cy', '-10')
     svgEl.value.appendChild(outputDot)
 
     let progress = 0
@@ -151,7 +155,7 @@
       progress += 0.01
       if (progress > 1) {
         if (svgEl.value.contains(outputDot)) {
-          svgEl.value.removeChild(outputDot) // Remove dot only if it still exists
+          svgEl.value.removeChild(outputDot) // Remove dot after reaching output
         }
         console.log('✅ Output dot reached end, adding event')
         addOutputEvent()
