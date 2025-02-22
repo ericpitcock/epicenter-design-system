@@ -1,7 +1,7 @@
 <template>
   <div class="container">
+    <!-- eslint-disable-next-line vue/html-self-closing -->
     <svg ref="svgEl"></svg>
-
     <div class="sources">
       <div
         v-for="source in sources"
@@ -16,7 +16,9 @@
       <div
         ref="processorEl"
         class="processor"
-      >Open XDR Platform</div>
+      >
+        XDR Platform
+      </div>
     </div>
 
     <div class="output-container">
