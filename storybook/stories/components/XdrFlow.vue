@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <!-- eslint-disable-next-line vue/html-self-closing -->
-    <svg id="svg"></svg>
+    <svg ref="svgEl"></svg>
+
     <div class="sources">
       <div
         v-for="source in sources"
@@ -11,22 +11,22 @@
         {{ source }}
       </div>
     </div>
+
     <div class="processor-container">
       <div
-        id="processor"
+        ref="processorEl"
         class="processor"
-      >
-        Open XDR Platform
-      </div>
+      >Open XDR Platform</div>
     </div>
+
     <div class="output-container">
       <div
-        id="outputList"
+        ref="outputListEl"
         class="output-list"
       >
         <div
-          v-for="event in events"
-          :key="event"
+          v-for="(event, index) in events"
+          :key="index"
           class="output-item"
         >
           {{ event }}
@@ -37,111 +37,110 @@
 </template>
 
 <script setup>
-  import { onMounted, ref } from 'vue'
+  import { nextTick, onMounted, ref } from 'vue'
 
-  const sources = [
-    'Endpoint',
-    'Network',
-    'Log',
-    'Cloud',
-  ]
-
+  const sources = ['Endpoint', 'Network', 'Log', 'Cloud']
   const events = ref([])
 
-  onMounted(() => {
-    const svg = document.getElementById('svg')
-    const processorElement = document.getElementById('processor')
-    const outputList = document.getElementById('outputList')
+  const svgEl = ref(null)
+  const processorEl = ref(null)
+  const outputListEl = ref(null)
+  let outputDot = null
+
+  const getElementCenter = (el) => {
+    const rect = el.getBoundingClientRect()
+    return { x: rect.right, y: rect.top + rect.height / 2 }
+  }
+
+  const getProcessorLeftCenter = () => {
+    const rect = processorEl.value.getBoundingClientRect()
+    return { x: rect.left, y: rect.top + rect.height / 2 }
+  }
+
+  const getProcessorRightCenter = () => {
+    const rect = processorEl.value.getBoundingClientRect()
+    return { x: rect.right, y: rect.top + rect.height / 2 }
+  }
+
+  const getOutputListLeftCenter = () => {
+    const rect = outputListEl.value.getBoundingClientRect()
+    return { x: rect.left, y: rect.top + rect.height / 2 }
+  }
+
+  const createPath = (start, end, color) => {
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+    path.setAttribute('d', `M ${start.x} ${start.y} C ${start.x + 100} ${start.y}, ${end.x - 100} ${end.y}, ${end.x} ${end.y}`)
+    path.setAttribute('stroke', color)
+    path.setAttribute('fill', 'none')
+    path.setAttribute('stroke-width', '2')
+    path.setAttribute('stroke-linecap', 'round')
+    svgEl.value.appendChild(path)
+    return path
+  }
+
+  const animateDots = () => {
     const sourceElements = document.querySelectorAll('.source')
 
-    const getElementCenter = (element) => {
-      const rect = element.getBoundingClientRect()
-      return { x: rect.right, y: rect.top + rect.height / 2 }
-    }
+    sourceElements.forEach((source, index) => {
+      const color = `hsl(${index * 90}, 40%, 50%)`
+      const path = createPath(getElementCenter(source), getProcessorLeftCenter(), color)
 
-    const getProcessorLeftCenter = () => {
-      const rect = processorElement.getBoundingClientRect()
-      return { x: rect.left, y: rect.top + rect.height / 2 }
-    }
-
-    const getProcessorRightCenter = () => {
-      const rect = processorElement.getBoundingClientRect()
-      return { x: rect.right, y: rect.top + rect.height / 2 }
-    }
-
-    const getOutputListLeftCenter = () => {
-      const rect = outputList.getBoundingClientRect()
-      return { x: rect.left, y: rect.top + rect.height / 2 }
-    }
-
-    const createPath = (start, end, color) => {
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-      path.setAttribute('d', `M ${start.x} ${start.y} C ${start.x + 100} ${start.y}, ${end.x - 100} ${end.y}, ${end.x} ${end.y}`)
-      path.setAttribute('stroke', color)
-      path.setAttribute('fill', 'none')
-      path.setAttribute('stroke-width', '2')
-      path.setAttribute('stroke-linecap', 'round')
-      svg.appendChild(path)
-      return path
-    }
-
-    const animateDots = () => {
-      sourceElements.forEach((source, index) => {
-        const color = `hsl(${index * 90}, 40%, 50%)`
-        const path = createPath(getElementCenter(source), getProcessorLeftCenter(), color)
-
-        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-        dot.setAttribute('r', '5')
-        dot.setAttribute('fill', color)
-        svg.appendChild(dot)
-
-        let progress = 0
-        function moveDot() {
-          progress += 0.01
-          if (progress > 1) {
-            progress = 0
-            animateOutputDot()
-          }
-          const point = path.getPointAtLength(progress * path.getTotalLength())
-          dot.setAttribute('cx', point.x)
-          dot.setAttribute('cy', point.y)
-          requestAnimationFrame(moveDot)
-        }
-        setTimeout(moveDot, index * 200)
-      })
-    }
-
-    const animateOutputDot = () => {
-      const path = createPath(getProcessorRightCenter(), getOutputListLeftCenter(), 'white')
       const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
       dot.setAttribute('r', '5')
-      dot.setAttribute('fill', 'white')
-      svg.appendChild(dot)
+      dot.setAttribute('fill', color)
+      svgEl.value.appendChild(dot)
 
       let progress = 0
       function moveDot() {
         progress += 0.01
         if (progress > 1) {
           progress = 0
-          addOutputEvent()
+          animateOutputDot()
         }
         const point = path.getPointAtLength(progress * path.getTotalLength())
         dot.setAttribute('cx', point.x)
         dot.setAttribute('cy', point.y)
         requestAnimationFrame(moveDot)
       }
-      moveDot()
+      setTimeout(moveDot, index * 200)
+    })
+  }
+
+  const animateOutputDot = () => {
+    if (!outputDot) {
+      outputDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+      outputDot.setAttribute('r', '5')
+      outputDot.setAttribute('fill', 'white')
+      svgEl.value.appendChild(outputDot)
     }
 
-    const addOutputEvent = () => {
-      events.value.push('Processed Event')
+    const path = createPath(getProcessorRightCenter(), getOutputListLeftCenter(), 'white')
+    let progress = 0
 
-      // if more than 5 events, remove the last one
-      if (events.value.length > 5) {
-        events.value.shift()
+    function moveDot() {
+      progress += 0.01
+      if (progress > 1) {
+        progress = 0
+        addOutputEvent()
       }
+      const point = path.getPointAtLength(progress * path.getTotalLength())
+      outputDot.setAttribute('cx', point.x)
+      outputDot.setAttribute('cy', point.y)
+      requestAnimationFrame(moveDot)
     }
 
+    moveDot()
+  }
+
+  const addOutputEvent = () => {
+    events.value.push('Processed Event')
+    if (events.value.length > 5) {
+      events.value.shift()
+    }
+  }
+
+  onMounted(async () => {
+    await nextTick() // Ensures elements are fully rendered before calculations
     animateDots()
   })
 </script>
