@@ -47,10 +47,8 @@
   const svgEl = ref(null)
   const processorEl = ref(null)
   const outputListEl = ref(null)
-  let outputDot = null
   let sourcePaths = [] // Store paths for source dots
   let outputPath = null // Store single path for output dot
-  let completedDots = 0 // Track how many source dots have finished
 
   const getElementCenter = (el) => {
     const rect = el.getBoundingClientRect()
@@ -72,7 +70,10 @@
     return { x: rect.left, y: rect.top + rect.height / 2 }
   }
 
-  const createPath = (start, end, color) => {
+  // ✅ Prevent duplicate paths
+  const createPath = (start, end, color, existingPath = null) => {
+    if (existingPath) return existingPath // Reuse existing path if available
+
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
     path.setAttribute(
       'd',
@@ -97,75 +98,73 @@
     outputPath = createPath(getProcessorRightCenter(), getOutputListLeftCenter(), 'white')
   }
 
-  const animateDots = () => {
-    console.log('🔄 Restarting input dot animation')
-    completedDots = 0 // Reset at the start of each cycle
+  // ✅ More frequent input dots, independent of cycles
+  const spawnInputDot = () => {
+    const index = Math.floor(Math.random() * sources.length) // Pick a random source
+    const color = `hsl(${index * 90}, 40%, 50%)`
+    const path = sourcePaths[index]
 
-    const sourceElements = document.querySelectorAll('.source')
-
-    sourceElements.forEach((source, index) => {
-      const color = `hsl(${index * 90}, 40%, 50%)`
-      const path = sourcePaths[index]
-
-      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-      dot.setAttribute('r', '5')
-      dot.setAttribute('fill', color)
-      dot.setAttribute('cx', '-10') // 🛠 FIX: Set an initial offscreen position
-      dot.setAttribute('cy', '-10')
-      svgEl.value.appendChild(dot)
-
-      let progress = 0
-      function moveDot() {
-        progress += 0.01
-        if (progress > 1) {
-          svgEl.value.removeChild(dot) // Remove dot after reaching processor
-          completedDots++
-          console.log(`✅ Dot ${completedDots}/${sources.length} reached processor`)
-
-          if (completedDots === sources.length) {
-            console.log('🎯 All input dots reached processor, triggering output animation')
-            animateOutputDot() // When all dots reach processor, trigger output animation
-          }
-          return
-        }
-        const point = path.getPointAtLength(progress * path.getTotalLength())
-        dot.setAttribute('cx', point.x)
-        dot.setAttribute('cy', point.y)
-        requestAnimationFrame(moveDot)
-      }
-      setTimeout(moveDot, index * 200)
-    })
-  }
-
-  const animateOutputDot = () => {
-    console.log('🚀 Animating output dot')
-
-    // 🛠 FIX: Only remove outputDot if it's still in the DOM
-    if (outputDot && svgEl.value.contains(outputDot)) {
-      svgEl.value.removeChild(outputDot) // Ensure the previous output dot is gone
-    }
-
-    outputDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-    outputDot.setAttribute('r', '5')
-    outputDot.setAttribute('fill', 'white')
-    outputDot.setAttribute('cx', '-10') // 🛠 FIX: Set an initial offscreen position
-    outputDot.setAttribute('cy', '-10')
-    svgEl.value.appendChild(outputDot)
+    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+    dot.setAttribute('r', '4')
+    dot.setAttribute('fill', color)
+    dot.setAttribute('cx', '-10')
+    dot.setAttribute('cy', '-10')
+    svgEl.value.appendChild(dot)
 
     let progress = 0
     function moveDot() {
-      progress += 0.01
+      progress += 0.02 // Faster movement
       if (progress > 1) {
-        if (svgEl.value.contains(outputDot)) {
-          svgEl.value.removeChild(outputDot) // Remove dot after reaching output
-        }
-        console.log('✅ Output dot reached end, adding event')
-        addOutputEvent()
+        svgEl.value.removeChild(dot) // Remove after reaching processor
+        if (Math.random() < 0.1) spawnOutputDot() // 10% chance to trigger output dot
         return
       }
-      const point = outputPath.getPointAtLength(progress * outputPath.getTotalLength())
-      outputDot.setAttribute('cx', point.x)
-      outputDot.setAttribute('cy', point.y)
+      const point = path.getPointAtLength(progress * path.getTotalLength())
+      dot.setAttribute('cx', point.x)
+      dot.setAttribute('cy', point.y)
+      requestAnimationFrame(moveDot)
+    }
+    moveDot()
+  }
+
+  // ✅ Randomized independent output dot spawning
+  const spawnOutputDot = () => {
+    console.log('🚀 Sending output dot')
+
+    outputPath = createPath(getProcessorRightCenter(), getOutputListLeftCenter(), 'white', outputPath)
+
+    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+    dot.setAttribute('r', '5')
+    dot.setAttribute('fill', 'white')
+    dot.setAttribute('cx', '-10')
+    dot.setAttribute('cy', '-10')
+    svgEl.value.appendChild(dot)
+
+    let progress = 0
+    const totalLength = outputPath.getTotalLength()
+
+    function moveDot() {
+      progress += 0.005 * totalLength // Controlled movement
+
+      if (progress >= totalLength) {
+        progress = totalLength
+        const finalPoint = outputPath.getPointAtLength(totalLength)
+        dot.setAttribute('cx', finalPoint.x)
+        dot.setAttribute('cy', finalPoint.y)
+
+        setTimeout(() => {
+          if (svgEl.value.contains(dot)) svgEl.value.removeChild(dot)
+          console.log('✅ Output dot reached end, adding event')
+          addOutputEvent()
+        }, 300)
+
+        return
+      }
+
+      const point = outputPath.getPointAtLength(progress)
+      dot.setAttribute('cx', point.x)
+      dot.setAttribute('cy', point.y)
+
       requestAnimationFrame(moveDot)
     }
 
@@ -177,17 +176,19 @@
     if (events.value.length > 5) {
       events.value.shift()
     }
-
-    setTimeout(() => {
-      console.log('🔄 Restarting animation cycle')
-      animateDots() // Restart input animation again
-    }, 1000)
   }
 
   onMounted(async () => {
-    await nextTick() // Ensure elements are rendered before calculations
-    setupPaths() // Create paths once
-    animateDots() // Start animation
+    await nextTick()
+    setupPaths()
+
+    // ✅ Faster, more frequent input dots
+    setInterval(spawnInputDot, 150) // More frequent input
+
+    // ✅ Output dots are spawned independently, ensuring randomness
+    setInterval(() => {
+      if (Math.random() < 0.2) spawnOutputDot() // 20% chance every few seconds
+    }, 3000)
   })
 </script>
 
@@ -226,6 +227,16 @@
     position: relative;
   }
 
+  .processor {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
   .output-container {
     display: flex;
     flex-direction: column;
@@ -242,16 +253,6 @@
     border-radius: 8px;
     background: var(--interface-surface);
     text-align: center;
-    position: relative;
-  }
-
-  .processor {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
   }
 
