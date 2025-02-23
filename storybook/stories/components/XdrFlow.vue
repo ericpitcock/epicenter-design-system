@@ -76,7 +76,7 @@
     outputPath = createCurvedPath(
       getRelativePosition(processorEl.value),
       getRelativePosition(outputListEl.value),
-      'white'
+      'gold'
     )
   }
 
@@ -177,8 +177,13 @@
     moveDot()
   }
 
+  // names of types of security events in an array 
+  const eventTypes = ['Malware', 'Phishing', 'Ransomware', 'Data Leak', 'Suspicious Activity']
+
   const addOutputEvent = () => {
-    events.value.push('Processed Event')
+    const eventType = eventTypes[Math.floor(Math.random() * eventTypes.length)]
+    events.value.push(eventType)
+
     if (events.value.length > 5) {
       events.value.shift()
     }
@@ -233,13 +238,12 @@
   }
 
   .processor {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
   }
 
   .output-container {
@@ -254,18 +258,25 @@
   .source,
   .output-item,
   .processor {
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
     background: var(--interface-surface);
-    text-align: center;
+    border: 0.1rem solid var(--border-color);
     position: relative;
+    border-radius: 6px;
+    box-shadow: var(--box-shadow--tooltip);
+  }
+
+  .source {
+    align-self: flex-end;
+    text-align: right;
   }
 
   .output-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
     transition: transform 0.5s ease;
+    // padding-bottom: calc(50% + 9.2px);
   }
 </style>

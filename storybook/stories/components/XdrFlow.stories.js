@@ -1,11 +1,11 @@
-// import { paddedBg } from '../../helpers/decorators.js'
+import { paddedBg } from '../../helpers/decorators.js'
 import XdrFlow from './XdrFlow.vue'
 
 
 export default {
   title: 'Components/XDR',
   component: XdrFlow,
-  // decorators: [paddedBg],
+  decorators: [paddedBg],
   argTypes: {
   }
 }
