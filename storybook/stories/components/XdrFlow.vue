@@ -50,41 +50,15 @@
   let sourcePaths = [] // Store paths for source dots
   let outputPath = null // Store single path for output dot
 
-  const getElementCenter = (el) => {
+  // ✅ Get position relative to the SVG element (fixes padding issues)
+  const getRelativePosition = (el, align = 'center') => {
     const rect = el.getBoundingClientRect()
-    return { x: rect.right, y: rect.top + rect.height / 2 }
-  }
+    const svgRect = svgEl.value.getBoundingClientRect() // Use SVG as reference
 
-  const getProcessorLeftCenter = () => {
-    const rect = processorEl.value.getBoundingClientRect()
-    return { x: rect.left, y: rect.top + rect.height / 2 }
-  }
-
-  const getProcessorRightCenter = () => {
-    const rect = processorEl.value.getBoundingClientRect()
-    return { x: rect.right, y: rect.top + rect.height / 2 }
-  }
-
-  const getOutputListLeftCenter = () => {
-    const rect = outputListEl.value.getBoundingClientRect()
-    return { x: rect.left, y: rect.top + rect.height / 2 }
-  }
-
-  // ✅ Prevent duplicate paths
-  const createPath = (start, end, color, existingPath = null) => {
-    if (existingPath) return existingPath // Reuse existing path if available
-
-    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-    path.setAttribute(
-      'd',
-      `M ${start.x} ${start.y} C ${start.x + 100} ${start.y}, ${end.x - 100} ${end.y}, ${end.x} ${end.y}`
-    )
-    path.setAttribute('stroke', color)
-    path.setAttribute('fill', 'none')
-    path.setAttribute('stroke-width', '2')
-    path.setAttribute('stroke-linecap', 'round')
-    svgEl.value.appendChild(path)
-    return path
+    return {
+      x: align === 'right' ? rect.right - svgRect.left : rect.left - svgRect.left + rect.width / 2,
+      y: rect.top - svgRect.top + rect.height / 2
+    }
   }
 
   const setupPaths = () => {
@@ -92,10 +66,37 @@
 
     sourcePaths = sources.map((_, index) => {
       const color = `hsl(${index * 90}, 40%, 50%)`
-      return createPath(getElementCenter(sourceElements[index]), getProcessorLeftCenter(), color)
+      return createCurvedPath(
+        getRelativePosition(sourceElements[index], 'right'), // ✅ Start from the right edge
+        getRelativePosition(processorEl.value),
+        color
+      )
     })
 
-    outputPath = createPath(getProcessorRightCenter(), getOutputListLeftCenter(), 'white')
+    outputPath = createCurvedPath(
+      getRelativePosition(processorEl.value),
+      getRelativePosition(outputListEl.value),
+      'white'
+    )
+  }
+
+  // ✅ Restore curvy input paths dynamically
+  const createCurvedPath = (start, end, color, existingPath = null) => {
+    if (existingPath) return existingPath // Reuse existing path if available
+
+    const curveStrength = Math.abs(end.x - start.x) * 0.6 // Stronger curves
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+    path.setAttribute(
+      'd',
+      `M ${start.x} ${start.y} C ${start.x + curveStrength} ${start.y}, ${end.x - curveStrength} ${end.y}, ${end.x} ${end.y}`
+    )
+    path.setAttribute('stroke', color)
+    path.setAttribute('fill', 'none')
+    path.setAttribute('stroke-width', '2')
+    path.setAttribute('stroke-linecap', 'round')
+    svgEl.value.appendChild(path)
+    return path
   }
 
   // ✅ More frequent input dots, independent of cycles
@@ -131,7 +132,12 @@
   const spawnOutputDot = () => {
     console.log('🚀 Sending output dot')
 
-    outputPath = createPath(getProcessorRightCenter(), getOutputListLeftCenter(), 'white', outputPath)
+    outputPath = createCurvedPath(
+      getRelativePosition(processorEl.value),
+      getRelativePosition(outputListEl.value),
+      'white',
+      outputPath
+    )
 
     const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
     dot.setAttribute('r', '5')
@@ -207,7 +213,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
   }
 
   .sources {
