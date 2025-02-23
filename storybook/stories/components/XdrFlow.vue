@@ -17,15 +17,16 @@
         ref="processorEl"
         class="processor"
       >
-        XDR Platform
+        <div class="font-size--jumbo">XDR</div>
+        <div>Platform</div>
       </div>
     </div>
 
-    <div class="output-container">
-      <div
-        ref="outputListEl"
-        class="output-list"
-      >
+    <div
+      ref="outputListEl"
+      class="output-container"
+    >
+      <div class="output-list">
         <div
           v-for="(event, index) in events"
           :key="index"
@@ -56,7 +57,9 @@
     const svgRect = svgEl.value.getBoundingClientRect() // Use SVG as reference
 
     return {
-      x: align === 'right' ? rect.right - svgRect.left : rect.left - svgRect.left + rect.width / 2,
+      x: align === 'right' ? rect.right - svgRect.left
+        : align === 'left' ? rect.left - svgRect.left  // ✅ Now supports left alignment
+          : rect.left - svgRect.left + rect.width / 2, // Default: center
       y: rect.top - svgRect.top + rect.height / 2
     }
   }
@@ -67,7 +70,7 @@
     sourcePaths = sources.map((_, index) => {
       const color = `hsl(${index * 90}, 40%, 50%)`
       return createCurvedPath(
-        getRelativePosition(sourceElements[index], 'right'), // ✅ Start from the right edge
+        getRelativePosition(sourceElements[index], 'right'), // ✅ Start from right edge
         getRelativePosition(processorEl.value),
         color
       )
@@ -75,8 +78,8 @@
 
     outputPath = createCurvedPath(
       getRelativePosition(processorEl.value),
-      getRelativePosition(outputListEl.value),
-      'gold'
+      getRelativePosition(outputListEl.value, 'left'), // ✅ Align output to left edge
+      'orange'
     )
   }
 
@@ -184,7 +187,7 @@
     const eventType = eventTypes[Math.floor(Math.random() * eventTypes.length)]
     events.value.push(eventType)
 
-    if (events.value.length > 5) {
+    if (events.value.length > 20) {
       events.value.shift()
     }
   }
@@ -240,10 +243,24 @@
   .processor {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 120px;
     height: 120px;
+    background: linear-gradient(165deg,
+        #f4eab8 0%,
+        #f7d64a 40%,
+        #e4b91d 50%,
+        #f7d64a 75%,
+        #f6e27f 100%);
+    color: #333;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+      0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid #e0b622;
+    border-radius: var(--border-radius--large);
+    box-shadow: var(--box-shadow--tooltip);
   }
 
   .output-container {
@@ -251,13 +268,18 @@
     flex-direction: column;
     flex: 1;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
+    background: var(--interface-surface--accent);
+    padding-left: 20px;
+    border: 0.1rem solid var(--border-color);
+    border-radius: var(--border-radius--large);
+    overflow: hidden;
+    // background: red;
   }
 
   .source,
-  .output-item,
-  .processor {
+  .output-item {
     padding: 0.8rem 1.2rem;
     background: var(--interface-surface);
     border: 0.1rem solid var(--border-color);
