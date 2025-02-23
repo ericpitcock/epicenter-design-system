@@ -67,30 +67,38 @@
   import { nextTick, onMounted, ref } from 'vue'
 
   const sources = ['Endpoint', 'Network', 'Log', 'Cloud']
-  const events = ref([])
+  const events = ref([
+    { type: 'Malware', severity: 'critical' },
+    { type: 'Phishing', severity: 'high' },
+    { type: 'Ransomware', severity: 'critical' },
+    { type: 'Data Leak', severity: 'medium' },
+    { type: 'Suspicious Activity', severity: 'low' }
+  ])
 
   const svgEl = ref(null)
   const processorEl = ref(null)
   const outputListEl = ref(null)
-  let sourcePaths = [] // Store paths for source dots
-  let outputPath = null // Store single path for output dot
+  let sourcePaths = []
+  let outputPath = null
+  const dotPool = []
+  const maxDots = 30
 
   const eventTypes = [
     { type: 'Malware', severity: 'critical' },
     { type: 'Phishing', severity: 'high' },
     { type: 'Ransomware', severity: 'critical' },
     { type: 'Data Leak', severity: 'medium' },
-    { type: 'Suspicious Activity', severity: 'low' },
+    { type: 'Suspicious Activity', severity: 'low' }
   ]
 
   const getRelativePosition = (el, align = 'center') => {
     const rect = el.getBoundingClientRect()
-    const svgRect = svgEl.value.getBoundingClientRect() // Use SVG as reference
+    const svgRect = svgEl.value.getBoundingClientRect()
 
     return {
       x: align === 'right' ? rect.right - svgRect.left
         : align === 'left' ? rect.left - svgRect.left
-          : rect.left - svgRect.left + rect.width / 2, // Default: center
+          : rect.left - svgRect.left + rect.width / 2,
       y: rect.top - svgRect.top + rect.height / 2
     }
   }
@@ -101,7 +109,7 @@
     sourcePaths = sources.map((_, index) => {
       const color = `hsl(${index * 90}, 40%, 50%)`
       return createCurvedPath(
-        getRelativePosition(sourceElements[index], 'right'), // Start from right edge
+        getRelativePosition(sourceElements[index], 'right'),
         getRelativePosition(processorEl.value),
         color
       )
@@ -109,15 +117,25 @@
 
     outputPath = createCurvedPath(
       getRelativePosition(processorEl.value),
-      getRelativePosition(outputListEl.value, 'left'), // Align output to left edge
+      getRelativePosition(outputListEl.value, 'left'),
       'orange'
     )
+
+    for (let i = 0; i < maxDots; i++) {
+      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+      dot.setAttribute('r', '4')
+      dot.setAttribute('fill', 'white')
+      dot.setAttribute('cx', '-10')
+      dot.setAttribute('cy', '-10')
+      svgEl.value.appendChild(dot)
+      dotPool.push({ dot, active: false })
+    }
   }
 
   const createCurvedPath = (start, end, color, existingPath = null) => {
-    if (existingPath) return existingPath // Reuse existing path if available
+    if (existingPath) return existingPath
 
-    const curveStrength = Math.abs(end.x - start.x) * 0.6 // Stronger curves
+    const curveStrength = Math.abs(end.x - start.x) * 0.6
 
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
     path.setAttribute(
@@ -132,24 +150,21 @@
     return path
   }
 
-  const spawnInputDot = () => {
-    const index = Math.floor(Math.random() * sources.length) // Pick a random source
-    const color = `hsl(${index * 90}, 40%, 50%)`
-    const path = sourcePaths[index]
+  const getAvailableDot = () => dotPool.find(dotObj => !dotObj.active)
 
-    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-    dot.setAttribute('r', '4')
-    dot.setAttribute('fill', color)
-    dot.setAttribute('cx', '-10')
-    dot.setAttribute('cy', '-10')
-    svgEl.value.appendChild(dot)
+  const animateDot = (path, speed = 0.02, onComplete) => {
+    const dotObj = getAvailableDot()
+    if (!dotObj) return
+
+    const dot = dotObj.dot
+    dotObj.active = true
 
     let progress = 0
     function moveDot() {
-      progress += 0.02 // Faster movement
+      progress += speed
       if (progress > 1) {
-        svgEl.value.removeChild(dot) // Remove after reaching processor
-        if (Math.random() < 0.1) spawnOutputDot() // 10% chance to trigger output dot
+        dotObj.active = false
+        onComplete?.()
         return
       }
       const point = path.getPointAtLength(progress * path.getTotalLength())
@@ -160,52 +175,28 @@
     moveDot()
   }
 
+  const spawnInputDot = () => {
+    const index = Math.floor(Math.random() * sources.length)
+    const path = sourcePaths[index]
+    animateDot(path, 0.02, () => {
+      if (Math.random() < 0.1) spawnOutputDot()
+    })
+  }
+
   const spawnOutputDot = () => {
-    console.log('🚀 Sending output dot')
+    console.log('Sending output dot')
 
     outputPath = createCurvedPath(
       getRelativePosition(processorEl.value),
-      getRelativePosition(outputListEl.value),
+      getRelativePosition(outputListEl.value, 'left'),
       'white',
       outputPath
     )
 
-    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-    dot.setAttribute('r', '5')
-    dot.setAttribute('fill', 'white')
-    dot.setAttribute('cx', '-10')
-    dot.setAttribute('cy', '-10')
-    svgEl.value.appendChild(dot)
-
-    let progress = 0
-    const totalLength = outputPath.getTotalLength()
-
-    function moveDot() {
-      progress += 0.005 * totalLength // Controlled movement
-
-      if (progress >= totalLength) {
-        progress = totalLength
-        const finalPoint = outputPath.getPointAtLength(totalLength)
-        dot.setAttribute('cx', finalPoint.x)
-        dot.setAttribute('cy', finalPoint.y)
-
-        setTimeout(() => {
-          if (svgEl.value.contains(dot)) svgEl.value.removeChild(dot)
-          console.log('✅ Output dot reached end, adding event')
-          addOutputEvent()
-        }, 300)
-
-        return
-      }
-
-      const point = outputPath.getPointAtLength(progress)
-      dot.setAttribute('cx', point.x)
-      dot.setAttribute('cy', point.y)
-
-      requestAnimationFrame(moveDot)
-    }
-
-    moveDot()
+    animateDot(outputPath, 0.005, () => {
+      console.log('Output dot reached end, adding event')
+      addOutputEvent()
+    })
   }
 
   const addOutputEvent = () => {
@@ -229,13 +220,6 @@
 </script>
 
 <style lang="scss" scoped>
-  :root {
-    --color-severity--low-border: hsl(120, 6%, 43%);
-    --color-severity--medium-border: hsl(60, 40%, 45%);
-    --color-severity--high-border: hsl(31, 40%, 50%);
-    --color-severity--critical-border: hsl(341, 40%, 50%);
-  }
-
   .xdr-flow {
     --color-severity--low-border: hsl(120, 6%, 43%);
     --color-severity--medium-border: hsl(60, 40%, 45%);
@@ -248,6 +232,26 @@
     height: 400px;
     gap: 20px;
     user-select: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      background: conic-gradient(rgba(93, 133, 225, 0.99) 0deg,
+          rgba(195, 20, 222, 0.99) 69deg,
+          rgba(228, 68, 103, 0.99) 150deg,
+          rgba(250, 129, 54, 0.99) 221deg,
+          rgba(240, 30, 27, 0.99) 287deg,
+          rgba(130, 150, 18, 0.99) 360deg);
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.2;
+      transform-origin: center center;
+      transform: translate(calc(100px - 100vh), 0px) rotate(90deg);
+    }
   }
 
   svg#flow {
@@ -261,7 +265,6 @@
   .sources {
     display: flex;
     flex-direction: column;
-    // flex: 1;
     justify-content: center;
     gap: 1rem;
     position: relative;
@@ -284,16 +287,9 @@
     gap: 0.5rem;
     width: 120px;
     height: 120px;
-    background: linear-gradient(165deg,
-        #f4eab8 0%,
-        #f7d64a 40%,
-        #e4b91d 50%,
-        #f7d64a 75%,
-        #f6e27f 100%);
+    background: linear-gradient(165deg, #f4eab8 0%, #f7d64a 40%, #e4b91d 50%, #f7d64a 75%, #f6e27f 100%);
     color: #333;
-    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.2),
-      0 4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.3);
     border: 1px solid #e0b622;
     border-radius: var(--border-radius--large);
     box-shadow: var(--box-shadow--tooltip);
@@ -318,18 +314,14 @@
     border: 0.1rem solid var(--border-color);
   }
 
-  .source,
-  .output-item {
+  .source {
+    align-self: flex-end;
+    text-align: right;
+    // box-shadow: var(--box-shadow--tooltip);
     padding: 0.8rem 1.2rem;
     background: var(--interface-foreground);
     position: relative;
     border-radius: 6px;
-  }
-
-  .source {
-    align-self: flex-end;
-    text-align: right;
-    box-shadow: var(--box-shadow--tooltip);
   }
 
   .output-list {
@@ -346,6 +338,8 @@
     border: 0.1rem solid var(--border-color);
     color: var(--text-color--loud);
     opacity: 0.75;
+    padding: 0.8rem 1.2rem;
+    border-radius: 20px;
   }
 
   .severity-low {

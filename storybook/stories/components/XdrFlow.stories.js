@@ -1,16 +1,16 @@
-import { paddedBg } from '../../helpers/decorators.js'
+import { paddedSurface } from '../../helpers/decorators.js'
 import XdrFlow from './XdrFlow.vue'
 
 
 export default {
   title: 'Components/XDR',
   component: XdrFlow,
-  decorators: [paddedBg],
+  decorators: [paddedSurface],
   argTypes: {
   }
 }
 
-export const Xdr = (args) => ({
+export const XDR = (args) => ({
   components: { XdrFlow },
   setup() {
     return { args }
