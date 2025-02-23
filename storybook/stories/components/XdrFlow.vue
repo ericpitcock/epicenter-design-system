@@ -54,8 +54,9 @@
           v-for="(event, index) in events"
           :key="index"
           class="output-item"
+          :class="`severity-${event.severity}`"
         >
-          {{ event }}
+          {{ event.type }}
         </div>
       </div>
     </div>
@@ -74,14 +75,21 @@
   let sourcePaths = [] // Store paths for source dots
   let outputPath = null // Store single path for output dot
 
-  // ✅ Get position relative to the SVG element (fixes padding issues)
+  const eventTypes = [
+    { type: 'Malware', severity: 'critical' },
+    { type: 'Phishing', severity: 'high' },
+    { type: 'Ransomware', severity: 'critical' },
+    { type: 'Data Leak', severity: 'medium' },
+    { type: 'Suspicious Activity', severity: 'low' },
+  ]
+
   const getRelativePosition = (el, align = 'center') => {
     const rect = el.getBoundingClientRect()
     const svgRect = svgEl.value.getBoundingClientRect() // Use SVG as reference
 
     return {
       x: align === 'right' ? rect.right - svgRect.left
-        : align === 'left' ? rect.left - svgRect.left  // ✅ Now supports left alignment
+        : align === 'left' ? rect.left - svgRect.left
           : rect.left - svgRect.left + rect.width / 2, // Default: center
       y: rect.top - svgRect.top + rect.height / 2
     }
@@ -93,7 +101,7 @@
     sourcePaths = sources.map((_, index) => {
       const color = `hsl(${index * 90}, 40%, 50%)`
       return createCurvedPath(
-        getRelativePosition(sourceElements[index], 'right'), // ✅ Start from right edge
+        getRelativePosition(sourceElements[index], 'right'), // Start from right edge
         getRelativePosition(processorEl.value),
         color
       )
@@ -101,12 +109,11 @@
 
     outputPath = createCurvedPath(
       getRelativePosition(processorEl.value),
-      getRelativePosition(outputListEl.value, 'left'), // ✅ Align output to left edge
+      getRelativePosition(outputListEl.value, 'left'), // Align output to left edge
       'orange'
     )
   }
 
-  // ✅ Restore curvy input paths dynamically
   const createCurvedPath = (start, end, color, existingPath = null) => {
     if (existingPath) return existingPath // Reuse existing path if available
 
@@ -125,7 +132,6 @@
     return path
   }
 
-  // ✅ More frequent input dots, independent of cycles
   const spawnInputDot = () => {
     const index = Math.floor(Math.random() * sources.length) // Pick a random source
     const color = `hsl(${index * 90}, 40%, 50%)`
@@ -154,7 +160,6 @@
     moveDot()
   }
 
-  // ✅ Randomized independent output dot spawning
   const spawnOutputDot = () => {
     console.log('🚀 Sending output dot')
 
@@ -203,12 +208,9 @@
     moveDot()
   }
 
-  // names of types of security events in an array 
-  const eventTypes = ['Malware', 'Phishing', 'Ransomware', 'Data Leak', 'Suspicious Activity']
-
   const addOutputEvent = () => {
-    const eventType = eventTypes[Math.floor(Math.random() * eventTypes.length)]
-    events.value.push(eventType)
+    const event = eventTypes[Math.floor(Math.random() * eventTypes.length)]
+    events.value.push(event)
 
     if (events.value.length > 20) {
       events.value.shift()
@@ -219,21 +221,30 @@
     await nextTick()
     setupPaths()
 
-    // ✅ Faster, more frequent input dots
-    setInterval(spawnInputDot, 150) // More frequent input
-
-    // ✅ Output dots are spawned independently, ensuring randomness
+    setInterval(spawnInputDot, 150)
     setInterval(() => {
-      if (Math.random() < 0.2) spawnOutputDot() // 20% chance every few seconds
+      if (Math.random() < 0.2) spawnOutputDot()
     }, 3000)
   })
 </script>
 
 <style lang="scss" scoped>
+  :root {
+    --color-severity--low-border: hsl(120, 6%, 43%);
+    --color-severity--medium-border: hsl(60, 40%, 45%);
+    --color-severity--high-border: hsl(31, 40%, 50%);
+    --color-severity--critical-border: hsl(341, 40%, 50%);
+  }
+
   .xdr-flow {
+    --color-severity--low-border: hsl(120, 6%, 43%);
+    --color-severity--medium-border: hsl(60, 40%, 45%);
+    --color-severity--high-border: hsl(31, 40%, 50%);
+    --color-severity--critical-border: hsl(341, 40%, 50%);
     position: relative;
     display: flex;
     width: 100%;
+    max-width: 800px;
     height: 400px;
     gap: 20px;
     user-select: none;
@@ -250,7 +261,7 @@
   .sources {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    // flex: 1;
     justify-content: center;
     gap: 1rem;
     position: relative;
@@ -291,31 +302,34 @@
   .output-container {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 0 1 187px;
     justify-content: center;
     align-items: flex-start;
     gap: 1rem;
-    background: var(--interface-surface--accent);
-    padding-left: 20px;
+    // background: var(--interface-foreground);
+    padding-inline: 2rem;
+    border-left: 0.1rem solid var(--border-color);
+    // border-radius: var(--border-radius--large);
+    // box-shadow: var(--box-shadow--tooltip);
+    // overflow: hidden;
+  }
+
+  .source {
     border: 0.1rem solid var(--border-color);
-    border-radius: var(--border-radius--large);
-    overflow: hidden;
-    // background: red;
   }
 
   .source,
   .output-item {
     padding: 0.8rem 1.2rem;
-    background: var(--interface-surface);
-    border: 0.1rem solid var(--border-color);
+    background: var(--interface-foreground);
     position: relative;
     border-radius: 6px;
-    box-shadow: var(--box-shadow--tooltip);
   }
 
   .source {
     align-self: flex-end;
     text-align: right;
+    box-shadow: var(--box-shadow--tooltip);
   }
 
   .output-list {
@@ -325,5 +339,28 @@
     gap: 1rem;
     transition: transform 0.5s ease;
     // padding-bottom: calc(50% + 9.2px);
+  }
+
+  .output-item {
+    background: var(--interface-bg);
+    border: 0.1rem solid var(--border-color);
+    color: var(--text-color--loud);
+    opacity: 0.75;
+  }
+
+  .severity-low {
+    border-color: var(--color-severity--low-border);
+  }
+
+  .severity-medium {
+    border-color: var(--color-severity--medium-border);
+  }
+
+  .severity-high {
+    border-color: var(--color-severity--high-border);
+  }
+
+  .severity-critical {
+    border-color: var(--color-severity--critical-border);
   }
 </style>
