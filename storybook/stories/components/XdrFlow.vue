@@ -40,8 +40,9 @@
             />
           </g>
         </svg>
-        <div class="font-size--jumbo">XDR</div>
-        <div>Platform</div>
+        <div class="font-size--jumbo">
+          XDR
+        </div>
       </div>
       <div class="supressed-signals">
         {{ events.length - 5 }} Supressed Signals
@@ -67,7 +68,7 @@
 </template>
 
 <script setup>
-  import { nextTick, onMounted, ref } from 'vue'
+  import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 
   const sources = ['Endpoint', 'Network', 'Log', 'Cloud']
   const events = ref([
@@ -85,6 +86,8 @@
   let outputPath = null
   const dotPool = []
   const maxDots = 30
+  let inputDotInterval = null
+  let outputDotInterval = null
 
   const eventTypes = [
     { type: 'Malware', severity: 'critical' },
@@ -95,6 +98,8 @@
   ]
 
   const getRelativePosition = (el, align = 'center') => {
+    if (!el || !svgEl.value) return { x: 0, y: 0 }
+
     const rect = el.getBoundingClientRect()
     const svgRect = svgEl.value.getBoundingClientRect()
 
@@ -164,6 +169,7 @@
 
     let progress = 0
     function moveDot() {
+      if (!path || !dot) return
       progress += speed
       if (progress > 1) {
         dotObj.active = false
@@ -179,6 +185,7 @@
   }
 
   const spawnInputDot = () => {
+    if (!sourcePaths.length) return
     const index = Math.floor(Math.random() * sources.length)
     const path = sourcePaths[index]
     animateDot(path, 0.02, () => {
@@ -215,10 +222,21 @@
     await nextTick()
     setupPaths()
 
-    setInterval(spawnInputDot, 150)
-    setInterval(() => {
+    inputDotInterval = setInterval(spawnInputDot, 150)
+    outputDotInterval = setInterval(() => {
       if (Math.random() < 0.2) spawnOutputDot()
     }, 3000)
+  })
+
+  onBeforeUnmount(() => {
+    if (inputDotInterval) clearInterval(inputDotInterval)
+    if (outputDotInterval) clearInterval(outputDotInterval)
+
+    dotPool.forEach(dotObj => {
+      if (svgEl.value?.contains(dotObj.dot)) {
+        svgEl.value.removeChild(dotObj.dot)
+      }
+    })
   })
 </script>
 
@@ -277,11 +295,11 @@
     align-self: flex-end;
     text-align: right;
     padding: 0.8rem 1.2rem;
-    background: rgba(255, 255, 255, 0.8);
-    color: black;
+    background: var(--interface-bg);
+    color: var(--text-color--loud);
     position: relative;
-    // border: 0.1rem solid var(--border-color);
-    border-radius: 6px;
+    border: 0.1rem solid var(--border-color--lighter);
+    border-radius: 3px;
   }
 
   .processor-container {
@@ -301,12 +319,12 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    width: 120px;
-    height: 120px;
+    width: 12rem;
+    height: 12rem;
     background: linear-gradient(165deg, #f4eab8 0%, #f7d64a 40%, #e4b91d 50%, #f7d64a 75%, #f6e27f 100%);
-    color: #333;
+    color: var(--interface-bg);
     box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.3);
-    border: 1px solid #e0b622;
+    border: 0.1rem solid #e0b622;
     border-radius: var(--border-radius--large);
     box-shadow: var(--box-shadow--tooltip);
   }
@@ -314,7 +332,7 @@
   .supressed-signals {
     padding: 0.5rem 1rem;
     border: 0.1rem solid white;
-    border-radius: 20px;
+    border-radius: 2rem;
     color: white;
     opacity: 0.8;
   }
@@ -326,12 +344,8 @@
     justify-content: center;
     align-items: flex-start;
     gap: 1rem;
-    // background: var(--interface-foreground);
     padding-inline: 2rem;
     border-left: 0.1rem solid var(--border-color);
-    // border-radius: var(--border-radius--large);
-    // box-shadow: var(--box-shadow--tooltip);
-    // overflow: hidden;
   }
 
   .output-list {
@@ -340,7 +354,6 @@
     align-items: flex-start;
     gap: 1rem;
     transition: transform 0.5s ease;
-    // padding-bottom: calc(50% + 9.2px);
   }
 
   .output-item {
