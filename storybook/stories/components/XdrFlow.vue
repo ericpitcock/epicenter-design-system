@@ -43,6 +43,9 @@
         <div class="font-size--jumbo">XDR</div>
         <div>Platform</div>
       </div>
+      <div class="supressed-signals">
+        {{ events.length - 5 }} Supressed Signals
+      </div>
     </div>
 
     <div
@@ -229,7 +232,7 @@
     display: flex;
     width: 100%;
     max-width: 800px;
-    height: 400px;
+    height: 100%;
     gap: 20px;
     user-select: none;
 
@@ -270,11 +273,24 @@
     position: relative;
   }
 
+  .source {
+    align-self: flex-end;
+    text-align: right;
+    padding: 0.8rem 1.2rem;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    position: relative;
+    // border: 0.1rem solid var(--border-color);
+    border-radius: 6px;
+  }
+
   .processor-container {
     display: flex;
+    flex-direction: column;
     flex: 2;
     justify-content: center;
     align-items: center;
+    gap: 3rem;
     position: relative;
   }
 
@@ -295,6 +311,14 @@
     box-shadow: var(--box-shadow--tooltip);
   }
 
+  .supressed-signals {
+    padding: 0.5rem 1rem;
+    border: 0.1rem solid white;
+    border-radius: 20px;
+    color: white;
+    opacity: 0.8;
+  }
+
   .output-container {
     display: flex;
     flex-direction: column;
@@ -308,20 +332,6 @@
     // border-radius: var(--border-radius--large);
     // box-shadow: var(--box-shadow--tooltip);
     // overflow: hidden;
-  }
-
-  .source {
-    border: 0.1rem solid var(--border-color);
-  }
-
-  .source {
-    align-self: flex-end;
-    text-align: right;
-    // box-shadow: var(--box-shadow--tooltip);
-    padding: 0.8rem 1.2rem;
-    background: var(--interface-foreground);
-    position: relative;
-    border-radius: 6px;
   }
 
   .output-list {
