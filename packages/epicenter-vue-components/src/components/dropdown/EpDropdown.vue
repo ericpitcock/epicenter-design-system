@@ -8,26 +8,21 @@
       @click.stop="toggleDropdown"
       @mouseover="onMouseover"
     >
-      <slot
-        v-if="$slots.trigger"
-        name="trigger"
-      />
+      <slot name="trigger" />
       <ep-button
-        v-else
+        v-if="!$slots.trigger"
         v-bind="computedButtonProps"
       />
     </div>
     <div
       v-show="dropdownVisible"
-      :class="classes"
+      :class="containerClasses"
     >
       <div class="ep-dropdown__content">
         <slot name="content" />
         <ep-menu
           v-if="!$slots.content"
-          :class="props.menuClass"
-          :menu-items="menuItems"
-          menu-type="dropdown"
+          v-bind="computedMenuProps"
           @click="onClick"
         />
       </div>
@@ -55,23 +50,29 @@
       type: Object,
       default: () => ({})
     },
-    containerProps: {
-      type: Object,
-      default: () => ({}),
+    menuClass: {
+      type: String,
+      default: '',
       validator: (value) => {
         if (Object.keys(value).length !== 0) {
-          console.warn('containerProps is not allowed. Use menuClass instead.', value)
+          console.warn('menuClass is deprecated. Include in menuProps instead.', value)
         }
         return true
       }
     },
-    menuClass: {
-      type: String,
-      default: ''
-    },
     menuItems: {
       type: Array,
-      default: () => []
+      default: () => [],
+      validator: (value) => {
+        if (Object.keys(value).length !== 0) {
+          console.warn('menuItems is deprecated. Include in menuProps instead.', value)
+        }
+        return true
+      }
+    },
+    menuProps: {
+      type: Object,
+      default: () => ({})
     },
     alignRight: {
       type: Boolean,
@@ -89,7 +90,6 @@
 
   const buttonDefaults = {
     size: 'default',
-    title: '',
     label: 'Default Dropdown',
     iconRight: { name: 'chevron-down' },
     iconLeft: undefined
@@ -101,18 +101,33 @@
     ...props.buttonProps,
   }))
 
-  const classes = computed(() => [
+  const menuDefaults = {
+    menuType: 'dropdown',
+  }
+
+  const computedMenuProps = computed(() => ({
+    // deprecated props
+    ...(props.menuClass && { menuClass: props.menuClass }),
+    ...(props.menuItems && { menuItems: props.menuItems }),
+    // override with menuProps
+    ...menuDefaults,
+    ...props.menuProps,
+  }))
+
+  const containerClasses = computed(() => [
     'ep-dropdown__container',
     { 'ep-dropdown__container--align-right': props.alignRight }
   ])
 
   const toggleDropdown = () => {
     if (props.disabled || props.showOnHover) return
+
     dropdownVisible.value = !dropdownVisible.value
   }
 
   const closeDropdown = () => {
     if (props.disabled) return
+
     if (dropdownVisible.value) {
       dropdownVisible.value = false
       emit('close')
@@ -132,11 +147,13 @@
 
   const onMouseover = () => {
     if (props.disabled) return
+
     if (props.showOnHover) dropdownVisible.value = true
   }
 
   const onMouseleave = () => {
     if (props.disabled) return
+
     if (props.showOnHover) dropdownVisible.value = false
   }
 </script>
