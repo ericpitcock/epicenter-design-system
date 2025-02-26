@@ -1,5 +1,5 @@
 <template>
-  <div class="ep-menu">
+  <div :class="['ep-menu', `ep-menu--${menuType}`]">
     <template
       v-for="(item, index) of menuItems"
       :key="item.id"
@@ -93,7 +93,7 @@
   const buttonClasses = (item) => {
     return [
       'ep-button--menu-item',
-      { 'ep-button--menu-item--active': props.menuType === 'nav' && item.label === props.activeItem }
+      { 'ep-button--menu-item--selected': props.menuType === 'nav' && item.label === props.activeItem }
     ]
   }
 
