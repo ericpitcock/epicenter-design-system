@@ -4,13 +4,35 @@
   display: inline-flex;
   align-items: center;
   gap: 1rem;
+}
 
-  &__dot {
-    width: 0.7rem;
-    height: 0.7rem;
-    background-color: var(--ep-status-indicator-dot-bg);
-    border: 0.1rem solid var(--ep-status-indicator-dot-border);
-    border-radius: 50%;
-    box-sizing: content-box;
+.ep-status-indicator__dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: var(--ep-status-indicator-dot-bg);
+  border: 0.1rem solid var(--ep-status-indicator-dot-border);
+  border-radius: 50%;
+  box-sizing: content-box;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.ep-status-indicator__dot--pulse {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.ep-status-indicator__dot--pulse {
+  animation: pulse 1.5s infinite ease-in-out;
 }
