@@ -24,7 +24,7 @@ import {
   useSorting,
 } from '@/composables/index.js'
 
-import { columns, fakeArray } from '../../data/tableData'
+import { columns, fakeTableData } from '../../data/tableData'
 import { paddedSurface } from '../../helpers/decorators.js'
 
 export default {
@@ -98,7 +98,7 @@ export const Table = (args) => ({
     EpMultiSearch,
   },
   setup() {
-    const tableData = ref(fakeArray(340))
+    const tableData = ref(fakeTableData(340))
     const columnsRef = ref(columns)
 
     // use exclude

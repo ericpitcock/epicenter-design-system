@@ -6,12 +6,15 @@
       </div>
       <div class="copy-block">
         <h1 class="font-size--jumbo">
-          Epicenter Design system
+          Epicenter Design System
         </h1>
         <p class="monospace">
           { Vue, React } = componentsForApps
         </p>
-        <ep-button v-bind="buttonProps" />
+        <ep-flex class="gap-10">
+          <ep-button v-bind="ghButtonProps" />
+          <ep-button v-bind="docsButtonProps" />
+        </ep-flex>
       </div>
     </div>
     <div class="content">
@@ -25,10 +28,11 @@
 </template>
 
 <script setup>
-  import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
   import EpButton from '@/components/button/EpButton.vue'
+  import EpFlex from '@/components/flexbox/EpFlex.vue'
+  import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
 
-  const buttonProps = {
+  const ghButtonProps = {
     href: 'https://github.com/ericpitcock/epicenter-design-system',
     iconLeft: {
       name: 'f-github',
@@ -38,6 +42,27 @@
       },
     },
     label: 'GitHub',
+    size: 'large',
+    style: {
+      '--ep-button-bg-color': '#242424',
+      '--ep-button-border-color': '#242424',
+      '--ep-button-text-color': '#e6e6e6',
+      '--ep-button-hover-bg-color': 'black',
+      '--ep-button-hover-border-color': 'black',
+      '--ep-button-hover-text-color': '#e6e6e6',
+    },
+  }
+
+  const docsButtonProps = {
+    href: 'https://docs.epicenter.design',
+    iconLeft: {
+      name: 'f-file-text',
+      style: {
+        '--ep-icon-width': '2rem',
+        '--ep-icon-stroke-width': 1.5,
+      },
+    },
+    label: 'Docs',
     size: 'large',
     style: {
       '--ep-button-bg-color': '#242424',

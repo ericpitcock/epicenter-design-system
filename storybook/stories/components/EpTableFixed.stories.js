@@ -5,9 +5,9 @@ import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableHead from '@/components/table/EpTableHead.vue'
 import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
-import { useColumnFilters, useFixedHeader,useSorting } from '@/composables/index.js'
+import { useColumnFilters, useFixedHeader, useSorting } from '@/composables/index.js'
 
-import { columns, fakeArray } from '../../data/tableData'
+import { columns, fakeTableData } from '../../data/tableData'
 import { surfaceOverflow } from '../../helpers/decorators.js'
 
 export default {
@@ -88,7 +88,7 @@ export const Fixed = (args) => ({
   },
   setup() {
     const tableColumnsRef = ref(columns)
-    const tableDataRef = ref(fakeArray(20))
+    const tableDataRef = ref(fakeTableData(20))
 
     const {
       sortedData,

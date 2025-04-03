@@ -8,7 +8,7 @@ import EpTable from '@/components/table/EpTable.vue'
 import EpTableHead from '@/components/table/EpTableHead.vue'
 import useExclude from '@/components/table/useExclude.js'
 
-import { columns, fakeArray } from '../../data/tableData.js'
+import { columns, fakeTableData } from '../../data/tableData.js'
 import { paddedBg } from '../../helpers/decorators.js'
 
 export default {
@@ -37,7 +37,7 @@ export const LoadingState = args => ({
   setup() {
     const loading = ref(true)
     const messages = ref(null)
-    const tableData = ref(fakeArray(30))
+    const tableData = ref(fakeTableData(30))
     const columnsRef = ref(columns)
 
     const {
@@ -100,7 +100,7 @@ export const LoadingState = args => ({
       loading.value = false
       messages.value = null
       // fake refresh data
-      tableData.value = fakeArray(30)
+      tableData.value = fakeTableData(30)
     }
 
     const currentMessage = ref({ icon: '', message: 'Loading...' })
@@ -133,7 +133,7 @@ export const LoadingState = args => ({
     return {
       args,
       columns,
-      fakeArray,
+      fakeTableData,
       done,
       refresh,
       tableData,
@@ -163,7 +163,7 @@ export const LoadingState = args => ({
       </ep-header>
       </template>
       <template #default>
-        <transition name="fade">
+        <transition name="fade" mode="out-in">
           <ep-loading-state
             v-if="loading"
             v-bind="args"

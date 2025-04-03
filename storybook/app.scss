@@ -18,6 +18,10 @@ $primary-hue: 257deg;
     .ep-button__label {
       text-shadow: 0 0.1rem 0.75rem var(--primary-color-800);
     }
+
+    &.ep-button--disabled .ep-button__label {
+      text-shadow: unset;
+    }
   }
 
   .ep-badge--success {

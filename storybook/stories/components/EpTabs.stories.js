@@ -1,4 +1,4 @@
-import { computed, onMounted,ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import EpContainer from '@/components/container/EpContainer.vue'
@@ -37,9 +37,21 @@ export default {
 const tabItems = ['Data', 'Stats', 'Authors']
 
 const routerLinkItems = [
-  { label: 'Data', to: '/library/data' },
-  { label: 'Stats', to: '/library/data/stats' },
-  { label: 'Authors', to: '/library/authors' }
+  {
+    label: 'Data',
+    // to: '/library/data'
+    to: '/library/data?tab=0',
+  },
+  {
+    label: 'Stats',
+    // to: '/library/data/stats'
+    to: '/library/data?tab=1',
+  },
+  {
+    label: 'Authors',
+    // to: '/library/authors'
+    to: '/library/data?tab=2',
+  }
 ]
 
 export const Tabs = args => ({

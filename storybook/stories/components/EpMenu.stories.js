@@ -157,7 +157,6 @@ export default {
         }
       }
     },
-    containerProps: { table: { disable: true } },
     menuItems: { table: { disable: true } },
     menuType: { table: { disable: true } },
     activeItem: { table: { disable: true } },
@@ -182,12 +181,12 @@ export const Menu = args => ({
 
 Menu.args = {
   size: 'default',
-  containerProps: {
-    styles: {
-      '--ep-container-width': '200px',
-      '--ep-container-bg-color': 'var(--interface-surface)',
-      '--ep-container-border-width': '0.1rem',
-    }
-  },
+  // containerProps: {
+  //   styles: {
+  //     '--ep-container-width': '200px',
+  //     '--ep-container-bg-color': 'var(--interface-surface)',
+  //     '--ep-container-border-width': '0.1rem',
+  //   }
+  // },
   menuItems: menuConfig
 }

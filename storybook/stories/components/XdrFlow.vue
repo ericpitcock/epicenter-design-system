@@ -44,8 +44,11 @@
           XDR
         </div>
       </div>
-      <div class="supressed-signals">
-        {{ events.length - 5 }} Supressed Signals
+      <div
+        ref="supressedSignalsEl"
+        class="supressed-signals"
+      >
+        {{ suppressedEvents }} Suppressed Signals
       </div>
     </div>
 
@@ -82,8 +85,10 @@
   const svgEl = ref(null)
   const processorEl = ref(null)
   const outputListEl = ref(null)
+  const supressedSignalsEl = ref(null)
   let sourcePaths = []
   let outputPath = null
+  let suppressedPath = null
   const dotPool = []
   const maxDots = 30
   let inputDotInterval = null
@@ -128,6 +133,15 @@
       getRelativePosition(outputListEl.value, 'left'),
       'orange'
     )
+
+    // Draw suppressed signals line only once
+    if (!suppressedPath) {
+      suppressedPath = createCurvedPath(
+        getRelativePosition(processorEl.value, 'center', { yOffset: 30 }), // Bottom of processor
+        getRelativePosition(supressedSignalsEl.value, 'center', { yOffset: -20 }), // Top of suppressed signals
+        'gray'
+      )
+    }
 
     for (let i = 0; i < maxDots; i++) {
       const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
@@ -184,12 +198,28 @@
     moveDot()
   }
 
+  const suppressedEvents = ref(0) // Track suppressed signals count
+
   const spawnInputDot = () => {
     if (!sourcePaths.length) return
+
     const index = Math.floor(Math.random() * sources.length)
     const path = sourcePaths[index]
-    animateDot(path, 0.02, () => {
-      if (Math.random() < 0.1) spawnOutputDot()
+
+    animateDot(path, 0.04, () => { // Doubled speed from 0.02 to 0.04
+      const randomChance = Math.random()
+
+      if (randomChance < 0.1) {
+        spawnOutputDot()
+      } else if (randomChance < 0.3) { // Twice the probability for suppressed dots
+        spawnSuppressedDot()
+      }
+    })
+  }
+
+  const spawnSuppressedDot = () => {
+    animateDot(suppressedPath, 0.02, () => { // Slightly slower for visibility
+      suppressedEvents.value++ // Increment suppressed signals count
     })
   }
 
@@ -229,6 +259,7 @@
   })
 
   onBeforeUnmount(() => {
+    console.log('Clearing intervals and removing dots')
     if (inputDotInterval) clearInterval(inputDotInterval)
     if (outputDotInterval) clearInterval(outputDotInterval)
 
@@ -242,6 +273,11 @@
 
 <style lang="scss" scoped>
   .xdr-flow {
+    --xdr-chip-bg: var(--interface-bg);
+    --xdr-chip-color: var(--text-color--loud);
+    --xdr-chip-padding: 1rem 2rem;
+    --xdr-chip-border: 0.1rem solid rgba(255, 255, 255, 0.25);
+    --xdr-chip-border-radius: 2rem;
     --color-severity--low-border: hsl(120, 6%, 43%);
     --color-severity--medium-border: hsl(60, 40%, 45%);
     --color-severity--high-border: hsl(31, 40%, 50%);
@@ -294,12 +330,12 @@
   .source {
     align-self: flex-end;
     text-align: right;
-    padding: 0.8rem 1.2rem;
-    background: var(--interface-bg);
-    color: var(--text-color--loud);
+    padding: var(--xdr-chip-padding);
+    background: var(--xdr-chip-bg);
+    color: var(--xdr-chip-color);
     position: relative;
-    border: 0.1rem solid var(--border-color--lighter);
-    border-radius: 3px;
+    border: var(--xdr-chip-border);
+    border-radius: var(--xdr-chip-border-radius);
   }
 
   .processor-container {
@@ -330,17 +366,17 @@
   }
 
   .supressed-signals {
-    padding: 0.5rem 1rem;
-    border: 0.1rem solid white;
-    border-radius: 2rem;
-    color: white;
-    opacity: 0.8;
+    background: var(--interface-bg);
+    color: var(--xdr-chip-color);
+    padding: var(--xdr-chip-padding);
+    border: var(--xdr-chip-border);
+    border-radius: var(--xdr-chip-border-radius);
   }
 
   .output-container {
     display: flex;
     flex-direction: column;
-    flex: 0 1 187px;
+    flex: 0 1 210px;
     justify-content: center;
     align-items: flex-start;
     gap: 1rem;
@@ -357,12 +393,12 @@
   }
 
   .output-item {
-    background: var(--interface-bg);
-    border: 0.1rem solid var(--border-color);
-    color: var(--text-color--loud);
+    background: var(--xd-chip-bg);
+    border: var(--xdr-chip-border);
+    color: var(--xdr-chip-color);
     opacity: 0.75;
-    padding: 0.8rem 1.2rem;
-    border-radius: 20px;
+    padding: var(--xdr-chip-padding);
+    border-radius: var(--xdr-chip-border-radius);
   }
 
   .severity-low {

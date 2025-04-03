@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 
@@ -87,7 +87,7 @@ export default {
   }
 }
 
-export const Dropdown = args => ({
+export const DeprecatedProps = args => ({
   components: {
     EpDropdown
   },
@@ -118,12 +118,113 @@ export const Dropdown = args => ({
   `
 })
 
-Dropdown.args = {
+DeprecatedProps.args = {
   disabled: false,
   'buttonProps.size': 'large',
   'buttonProps.iconLeft': 'None',
   'buttonProps.classes': 'button-variant-primary',
   alignRight: false,
   menuItems: fakeDropdownItems,
+  showOnHover: false
+}
+
+export const Dropdown = args => ({
+  components: {
+    EpDropdown
+  },
+  setup() {
+    const buttonProps = computed(() => ({
+      size: args['buttonProps.size'],
+      label: 'Choose your coffee',
+      iconRight: { name: 'chevron-down' },
+      iconLeft: args['buttonProps.iconLeft'],
+      class: 'ep-button-var--primary'
+    }))
+
+    const menuProps = computed(() => ({
+      menuItems: fakeDropdownItems,
+      class: 'special-class',
+    }))
+
+    const onClick = (item) => {
+      console.log('clicked:', item.label)
+    }
+
+    return { args, buttonProps, menuProps, onClick }
+  },
+  template: `
+    <ep-dropdown
+      :buttonProps="buttonProps"
+      :menuProps="menuProps"
+      v-bind="args"
+      @click="onClick"
+      @close="() => console.log('closed')"
+    />
+  `
+})
+
+Dropdown.args = {
+  disabled: false,
+  'buttonProps.size': 'large',
+  'buttonProps.iconLeft': 'None',
+  alignRight: false,
+  showOnHover: false
+}
+
+export const CustomDropdown = args => ({
+  components: { EpDropdown },
+  setup() {
+    // Inject keyframes for the gradient animation if not already added
+    onMounted(() => {
+      if (!document.getElementById('gradient-keyframes')) {
+        const style = document.createElement('style')
+        style.id = 'gradient-keyframes'
+        style.innerHTML = `
+          @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `
+        document.head.appendChild(style)
+      }
+    })
+    return { args }
+  },
+  template: `
+    <ep-dropdown v-bind="args">
+      <template #trigger>
+        <!-- Custom trigger: a shiny blue triangle -->
+        <div 
+          style="
+            width: 0; 
+            height: 0; 
+            border-left: 20px solid transparent; 
+            border-right: 20px solid transparent; 
+            border-bottom: 30px solid #0063ff;
+            cursor: pointer;
+          ">
+        </div>
+      </template>
+      <template #content>
+        <!-- Custom content: a crazy animated CSS gradient -->
+        <div style="padding: 8px;">
+          <div style="
+            width: 100%; 
+            height: 200px; 
+            background: linear-gradient(135deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+            background-size: 300% 300%;
+            animation: gradientAnimation 5s ease infinite;
+          ">
+          </div>
+        </div>
+      </template>
+    </ep-dropdown>
+  `
+})
+
+CustomDropdown.args = {
+  disabled: false,
+  alignRight: false,
   showOnHover: false
 }
