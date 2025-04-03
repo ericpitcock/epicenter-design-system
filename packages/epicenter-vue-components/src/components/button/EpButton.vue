@@ -104,7 +104,7 @@
   })
 
   const computedClasses = computed(() => ({
-    [`ep-button--${props.size}`]: props.size != 'default',
+    [`ep-button--${props.size}`]: props.size !== 'default',
     'ep-button--icon-right': props.iconRight,
     'ep-button--icon-left': props.iconLeft,
     'ep-button--disabled': props.disabled,

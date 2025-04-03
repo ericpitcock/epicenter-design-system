@@ -8,17 +8,15 @@ import useSearch from '../components/table/useSearch.js'
 import useSorting from '../components/table/useSorting.js'
 // tabs
 import useTabs from '../components/tabs/useTabs.js'
-import useActionsMenu from './useActionsMenu.js'
 // helpers
+import useActionsMenu from './useActionsMenu.js'
 import useCalculatedHeight from './useCalculatedHeight.js'
-import useDebounce from './useDebounce.js'
 
 export {
   useActionsMenu,
   useCalculatedHeight,
   useColumnFilters,
   useDataFilters,
-  useDebounce,
   useExclude,
   useFixedHeader,
   usePagination,

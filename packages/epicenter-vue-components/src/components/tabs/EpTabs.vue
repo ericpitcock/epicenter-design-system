@@ -16,10 +16,11 @@
         { 'ep-tabs__tab-item--active': !item.to && index === activeTabIndex }
       ]"
       :to="item.to ? item.to : undefined"
+      :exact="item.to ? item.exact : undefined"
       role="tab"
       :aria-selected="index === activeTabIndex"
       :tabindex="index === activeTabIndex ? 0 : -1"
-      @click="onClick(index)"
+      @click="onClick({ item, index })"
       @keydown="handleKeydown(index, $event)"
     >
       <span>{{ item.label }}</span>
@@ -69,8 +70,8 @@
     return props.items.map(item => (typeof item === 'object' ? item : { label: item }))
   })
 
-  const onClick = (index) => {
-    emit('tab-click', index)
+  const onClick = ({ item, index }) => {
+    emit('tab-click', { item, index })
   }
 
   const handleKeydown = (index, event) => {

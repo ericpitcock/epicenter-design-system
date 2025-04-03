@@ -3,8 +3,8 @@ import { ref } from 'vue'
 export default function useTabs() {
   const activeTab = ref(0)
 
-  const setActiveTab = (index) => {
-    activeTab.value = index
+  const setActiveTab = (item) => {
+    activeTab.value = item.index
   }
 
   return {
