@@ -11,6 +11,7 @@ import useTabs from '../components/tabs/useTabs.js'
 // helpers
 import useActionsMenu from './useActionsMenu.js'
 import useCalculatedHeight from './useCalculatedHeight.js'
+import useTheme from './useTheme.js'
 
 export {
   useActionsMenu,
@@ -23,4 +24,5 @@ export {
   useSearch,
   useSorting,
   useTabs,
+  useTheme,
 }
