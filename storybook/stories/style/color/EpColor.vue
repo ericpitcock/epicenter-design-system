@@ -10,7 +10,7 @@
       />
     </div>
     <div class="colors__content">
-      <ep-container>
+      <ep-container ref="epContainerComponent">
         <ep-table
           class="colors__table"
           :columns="tableColumns"
@@ -19,6 +19,18 @@
         >
           <template #thead="{ visibleColumns }">
             <ep-table-head :columns="visibleColumns" />
+          </template>
+          <template #cell-sample="{ row }">
+            <div
+              class="color-sample"
+              :style="{ backgroundColor: row.sample }"
+            />
+          </template>
+          <template #cell-color="{ row }">
+            <span
+              class="text--capitalize"
+              :style="{ color: row.hsl }"
+            >{{ row.color }}</span>
           </template>
           <template #cell-contrast="{ row }">
             <ep-flex class="align-center gap-3">
@@ -114,17 +126,10 @@
     {
       label: 'Sample',
       key: 'sample',
-      formatter: (value) => {
-        return `<div class="color-sample" style="background-color: ${value};" />`
-      }
     },
     {
       label: 'Color',
       key: 'color',
-      class: 'text--capitalize',
-      formatter: (value, row) => {
-        return `<span style="color: hsl(var(${row.css}));">${value}</span>`
-      }
     },
     {
       label: 'Text Contrast',
@@ -202,6 +207,8 @@
     colorTableContainer.scrollTop = 0
   })
 
+  const epContainerComponent = ref(null)
+
   const filterColorTable = (item) => {
     activeItem.value = item.label
     let filterr = item.label.toLowerCase()
@@ -212,9 +219,9 @@
 
     filter.value = filterr
 
-    const scrollableElement = document.querySelector('.sb-main-fullscreen')
-    if (scrollableElement) {
-      scrollableElement.scrollTo({ top: 0, behavior: 'smooth' })
+    // Reset scroll to top when filtering
+    if (epContainerComponent.value?.epContainer) {
+      epContainerComponent.value.epContainer.scrollTo({ top: 0, behavior: 'instant' })
     }
   }
 
