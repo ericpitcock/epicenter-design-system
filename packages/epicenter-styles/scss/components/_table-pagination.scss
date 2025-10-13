@@ -1,24 +1,8 @@
   .ep-table-pagination {
     --ep-table-pagination-padding: 0;
-    --ep-table-pagination-button-inactive-text-color: var(--text-color--subtle);
-    --ep-table-pagination-button-active-bg-color: var(--primary-color-up-15-base);
-    --ep-table-pagination-button-active-border-color: var(--primary-color-base);
-    --ep-table-pagination-button-active-text-color: var(--text-color--loud);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: var(--ep-table-pagination-padding);
     user-select: none;
-
-    .ep-button {
-      &:not(.active) {
-        color: var(--ep-table-pagination-button-inactive-text-color);
-      }
-
-      &.active {
-        background: var(--ep-table-pagination-button-active-bg-color);
-        border-color: var(--ep-table-pagination-button-active-border-color);
-        color: var(--ep-table-pagination-button-active-text-color);
-      }
-    }
   }

@@ -127,6 +127,8 @@
     observer.disconnect()
 
     if (map.value) {
+      removeMarkers()
+
       if (map.value.getLayer('test')) map.value.removeLayer('test')
       if (map.value.getSource('test')) map.value.removeSource('test')
       map.value.remove()

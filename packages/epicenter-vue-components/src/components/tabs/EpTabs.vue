@@ -71,7 +71,9 @@
   })
 
   const onClick = ({ item, index }) => {
-    emit('tab-click', { item, index })
+    if (!item.to) {
+      emit('tab-click', { item, index })
+    }
   }
 
   const handleKeydown = (index, event) => {

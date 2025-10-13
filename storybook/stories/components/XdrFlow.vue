@@ -102,23 +102,25 @@
     { type: 'Suspicious Activity', severity: 'low' }
   ]
 
-  const getRelativePosition = (el, align = 'center') => {
+  const getRelativePosition = (el, align = 'center', options = {}) => {
     if (!el || !svgEl.value) return { x: 0, y: 0 }
 
     const rect = el.getBoundingClientRect()
     const svgRect = svgEl.value.getBoundingClientRect()
+    const { yOffset = 0, xOffset = 0 } = options
 
     return {
-      x: align === 'right' ? rect.right - svgRect.left
-        : align === 'left' ? rect.left - svgRect.left
-          : rect.left - svgRect.left + rect.width / 2,
-      y: rect.top - svgRect.top + rect.height / 2
+      x: align === 'right' ? rect.right - svgRect.left + xOffset
+        : align === 'left' ? rect.left - svgRect.left + xOffset
+          : rect.left - svgRect.left + rect.width / 2 + xOffset,
+      y: rect.top - svgRect.top + rect.height / 2 + yOffset
     }
   }
 
   const setupPaths = () => {
     const sourceElements = document.querySelectorAll('.source')
 
+    // First create all paths
     sourcePaths = sources.map((_, index) => {
       const color = `hsl(${index * 90}, 40%, 50%)`
       return createCurvedPath(
@@ -137,12 +139,13 @@
     // Draw suppressed signals line only once
     if (!suppressedPath) {
       suppressedPath = createCurvedPath(
-        getRelativePosition(processorEl.value, 'center', { yOffset: 30 }), // Bottom of processor
-        getRelativePosition(supressedSignalsEl.value, 'center', { yOffset: -20 }), // Top of suppressed signals
+        getRelativePosition(processorEl.value, 'center', { yOffset: 30 }),
+        getRelativePosition(supressedSignalsEl.value, 'center', { yOffset: -20 }),
         'gray'
       )
     }
 
+    // After creating paths, add dots that will appear above paths
     for (let i = 0; i < maxDots; i++) {
       const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
       dot.setAttribute('r', '4')
@@ -168,7 +171,12 @@
     path.setAttribute('fill', 'none')
     path.setAttribute('stroke-width', '2')
     path.setAttribute('stroke-linecap', 'round')
-    svgEl.value.appendChild(path)
+    // Insert at beginning of SVG to ensure it's below dots
+    if (svgEl.value.firstChild) {
+      svgEl.value.insertBefore(path, svgEl.value.firstChild)
+    } else {
+      svgEl.value.appendChild(path)
+    }
     return path
   }
 
@@ -248,6 +256,59 @@
     }
   }
 
+  let resizeObserver = null
+  let resizeTimeout = null
+
+  const handleResize = () => {
+    // Debounce resize events
+    clearTimeout(resizeTimeout)
+    resizeTimeout = setTimeout(() => {
+      redrawVisualization()
+    }, 250)
+  }
+
+  const redrawVisualization = () => {
+    // Clear existing paths and dots
+    clearVisualization()
+
+    // Redraw everything
+    setupPaths()
+  }
+
+  const clearVisualization = () => {
+    // Remove all paths
+    if (svgEl.value) {
+      // Remove path elements
+      if (outputPath && svgEl.value.contains(outputPath)) {
+        svgEl.value.removeChild(outputPath)
+      }
+
+      if (suppressedPath && svgEl.value.contains(suppressedPath)) {
+        svgEl.value.removeChild(suppressedPath)
+      }
+
+      sourcePaths.forEach(path => {
+        if (path && svgEl.value.contains(path)) {
+          svgEl.value.removeChild(path)
+        }
+      })
+
+      // Reset dots to default position and remove from SVG
+      dotPool.forEach(dotObj => {
+        if (dotObj.dot && svgEl.value.contains(dotObj.dot)) {
+          svgEl.value.removeChild(dotObj.dot)
+        }
+        dotObj.active = false
+      })
+    }
+
+    // Reset path references and dots array
+    outputPath = null
+    suppressedPath = null
+    sourcePaths = []
+    dotPool.length = 0
+  }
+
   onMounted(async () => {
     await nextTick()
     setupPaths()
@@ -256,18 +317,47 @@
     outputDotInterval = setInterval(() => {
       if (Math.random() < 0.2) spawnOutputDot()
     }, 3000)
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize)
+
+    // Setup ResizeObserver for container element resizing
+    resizeObserver = new ResizeObserver(handleResize)
+    if (svgEl.value?.parentElement) {
+      resizeObserver.observe(svgEl.value.parentElement)
+    }
   })
 
   onBeforeUnmount(() => {
-    console.log('Clearing intervals and removing dots')
-    if (inputDotInterval) clearInterval(inputDotInterval)
-    if (outputDotInterval) clearInterval(outputDotInterval)
+    // Clear all intervals
+    clearInterval(inputDotInterval)
+    clearInterval(outputDotInterval)
+    clearTimeout(resizeTimeout)
 
-    dotPool.forEach(dotObj => {
-      if (svgEl.value?.contains(dotObj.dot)) {
-        svgEl.value.removeChild(dotObj.dot)
-      }
-    })
+    // Remove event listeners
+    window.removeEventListener('resize', handleResize)
+
+    // Disconnect ResizeObserver
+    if (resizeObserver) {
+      resizeObserver.disconnect()
+      resizeObserver = null
+    }
+
+    // Clear visualization
+    clearVisualization()
+
+    // Clean up all SVG elements to prevent memory leaks
+    if (svgEl.value) {
+      // Remove dot elements
+      dotPool.forEach(dotObj => {
+        if (dotObj.dot && svgEl.value.contains(dotObj.dot)) {
+          svgEl.value.removeChild(dotObj.dot)
+        }
+      })
+    }
+
+    // Clear arrays
+    dotPool.length = 0
   })
 </script>
 

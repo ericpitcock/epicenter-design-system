@@ -58,6 +58,16 @@ const surfaceOverflow = () => {
   }
 }
 
+const surface = () => {
+  return {
+    template: `
+      <div class="decorator--padded decorator--surface" style="min-height: 100%;">
+        <story />
+      </div>
+    `
+  }
+}
+
 const paddedSurfaceOverflow = () => {
   return {
     template: `
@@ -80,11 +90,12 @@ const paddedBgOverflow = () => {
 
 export {
   centeredBg,
-  centeredSurface,
   centeredCyanBlueGradient,
+  centeredSurface,
   paddedBg,
+  paddedBgOverflow,
   paddedSurface,
-  surfaceOverflow,
   paddedSurfaceOverflow,
-  paddedBgOverflow
+  surface,
+  surfaceOverflow,
 }

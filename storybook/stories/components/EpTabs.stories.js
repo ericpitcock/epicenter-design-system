@@ -39,18 +39,21 @@ const tabItems = ['Data', 'Stats', 'Authors']
 const routerLinkItems = [
   {
     label: 'Data',
-    // to: '/library/data'
-    to: '/library/data?tab=0',
+    to: '/library/data',
+    // to: '/library/data?tab=0',
+    exact: true
   },
   {
     label: 'Stats',
-    // to: '/library/data/stats'
-    to: '/library/data?tab=1',
+    to: '/library/data/stats',
+    // to: '/library/data?tab=1',
+    exact: true
   },
   {
     label: 'Authors',
-    // to: '/library/authors'
-    to: '/library/data?tab=2',
+    to: '/library/authors',
+    // to: '/library/data?tab=2',
+    exact: true
   }
 ]
 
@@ -62,12 +65,6 @@ export const Tabs = args => ({
     EpTabContent
   },
   setup() {
-    // const activeTab = ref(0)
-
-    // const setActiveTab = index => {
-    //   activeTab.value = index
-    // }
-
     const { activeTab, setActiveTab } = useTabs()
 
     const containerPadding = computed(() => args.variant === 'classic' ? '0' : '0 3rem')

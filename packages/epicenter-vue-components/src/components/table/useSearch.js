@@ -1,38 +1,38 @@
 import { computed, ref } from 'vue'
 
-export default function useSearch(data) {
-  // const searchTerms = ref([])
+export default function useSearch(data, columns) {
   const searchTerms = ref({ and: [], or: [] })
-
-  // const searchedData = computed(() => {
-  //   if (searchTerms.value.length === 0) return data.value
-
-  //   return data.value.filter((row) => {
-  //     return searchTerms.value.every((term) => {
-  //       const searchQuery = term.trim().toLowerCase()
-  //       return Object.values(row).some((value) => {
-  //         const searchableValue = value.value || value
-  //         return String(searchableValue).toLowerCase().includes(searchQuery)
-  //       })
-  //     })
-  //   })
-  // })
 
   const searchedData = computed(() => {
     const { and, or } = searchTerms.value
 
     if (!and.length && !or.length) {
-      return data.value // No filtering, show all alerts
+      return data.value // No filtering, show all data
     }
 
-    return data.value.filter(alert => {
-      const alertString = JSON.stringify(alert).toLowerCase()
+    return data.value.filter(row => {
+      // Create a searchable object that contains both raw and formatted values
+      const searchableRow = { ...row }
+
+      // Add formatted values to the searchable object
+      if (columns?.value) {
+        for (const column of columns.value) {
+          if (column.formatter && row[column.key] !== undefined) {
+            const formattedValue = column.formatter(row[column.key], row)
+            // Add the formatted value with a special key to avoid conflicts
+            searchableRow[`${column.key}_formatted`] = formattedValue
+          }
+        }
+      }
+
+      // Convert the enhanced object (with both raw and formatted values) to a string for searching
+      const rowString = JSON.stringify(searchableRow).toLowerCase()
 
       // Handle AND conditions: Every term in `and` must be found
-      const matchesAllAnd = and.length === 0 || and.every(term => alertString.includes(term.toLowerCase()))
+      const matchesAllAnd = and.length === 0 || and.every(term => rowString.includes(term.toLowerCase()))
 
       // Handle OR conditions: At least one term in `or` must be found
-      const matchesAnyOr = or.length === 0 || or.some(term => alertString.includes(term.toLowerCase()))
+      const matchesAnyOr = or.length === 0 || or.some(term => rowString.includes(term.toLowerCase()))
 
       // If only terms are provided without operators, default to OR logic
       if (!and.length && or.length) return matchesAnyOr
@@ -42,8 +42,6 @@ export default function useSearch(data) {
   })
 
   const onSearchUpdate = (terms) => {
-    console.log('onSearchUpdate', terms)
-    // searchTerms.value = terms
     searchTerms.value = terms || { and: [], or: [] }
   }
 

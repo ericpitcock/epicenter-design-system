@@ -15,7 +15,7 @@
           <ep-button
             label="1"
             aria-label="First page"
-            :class="{ 'active': currentPage === 1 }"
+            :class="{ 'ep-button--selected': currentPage === 1 }"
             @click="emit('pageChange', 1)"
           />
           <span v-if="shouldShowStartEllipsis">...</span>
@@ -24,7 +24,7 @@
             :key="page"
             :label="page.toString()"
             aria-label="Page {{ page }}"
-            :class="{ 'active': currentPage === page }"
+            :class="{ 'ep-button--selected': currentPage === page }"
             @click="emit('pageChange', page)"
           />
           <span v-if="shouldShowEndEllipsis">...</span>
@@ -32,7 +32,7 @@
             v-if="totalPages > 1"
             :label="totalPages.toString()"
             aria-label="Last page"
-            :class="{ 'active': currentPage === totalPages }"
+            :class="{ 'ep-button--selected': currentPage === totalPages }"
             @click="emit('pageChange', totalPages)"
           />
         </template>
@@ -44,7 +44,7 @@
         />
       </template>
       <template #left>
-        <ep-flex class="justify-end align-center gap-10">
+        <ep-flex class="justify-end align-center gap-10 text--overflow-hidden">
           Results per page
           <ep-select
             v-model="resultsPerPage"

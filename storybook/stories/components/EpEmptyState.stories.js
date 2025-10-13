@@ -1,3 +1,4 @@
+import EpButton from '@/components/button/EpButton.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
 
@@ -35,7 +36,11 @@ export default {
 }
 
 export const EmptyState = args => ({
-  components: { EpContainer, EpEmptyState },
+  components: {
+    EpButton,
+    EpContainer,
+    EpEmptyState,
+  },
   setup() {
     return { args }
   },
@@ -45,7 +50,7 @@ export const EmptyState = args => ({
         '--ep-container-width': '100%',
         '--ep-container-bg-color': 'var(--interface-surface)',
         '--ep-container-border-width': '0.1rem',
-        '--ep-container-padding': '3rem'
+        '--ep-container-padding': '6rem'
       }"
     >
       <ep-empty-state v-bind="args">
@@ -55,6 +60,9 @@ export const EmptyState = args => ({
         <p>You finished all your tasks!</p>
         <template #subtext>
           <p>More tasks will appear here soon</p>
+        </template>
+        <template #cta>
+          <ep-button label="Go to Dashboard" />
         </template>
       </ep-empty-state>
     </ep-container>
