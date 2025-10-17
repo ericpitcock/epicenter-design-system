@@ -11,17 +11,13 @@
         </p>
       </div>
       <ep-button
-        :icon-right="{ name: 'close' }"
-        :style="{
-          '--ep-button-bg-color': 'transparent',
-          '--ep-button-border-color': 'transparent',
-          '--ep-button-hover-bg-color': 'transparent',
-          '--ep-button-hover-border-color': 'transparent',
-          '--ep-button-active-bg-color': 'transparent',
-          '--ep-button-active-border-color': 'transparent',
-        }"
+        class="ep-button-var--ghost"
         @click.stop="dismissNotification"
-      />
+      >
+        <template #icon-right>
+          <ep-icon name="close" />
+        </template>
+      </ep-button>
     </div>
   </div>
 </template>
@@ -30,6 +26,7 @@
   import { useTimeAgo } from '@vueuse/core'
 
   import EpButton from '../button/EpButton.vue'
+  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpNotification',

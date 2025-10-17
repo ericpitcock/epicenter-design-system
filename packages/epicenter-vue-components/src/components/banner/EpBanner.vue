@@ -28,9 +28,12 @@
       <ep-button
         v-if="dissmissable"
         class="ep-button-var--ghost"
-        :icon-right="{ name: 'close' }"
         @click="dismissBanner"
-      />
+      >
+        <template #icon-right>
+          <ep-icon name="close" />
+        </template>
+      </ep-button>
     </div>
   </div>
 </template>

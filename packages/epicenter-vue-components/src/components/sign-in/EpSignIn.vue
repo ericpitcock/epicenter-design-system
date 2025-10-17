@@ -62,9 +62,10 @@
             class="ep-button-var--primary"
             type="submit"
             size="large"
-            :label="buttonLabel"
             @click="onButtonClick"
-          />
+          >
+            {{ buttonLabel }}
+          </ep-button>
         </form>
       </div>
       <template #footer>

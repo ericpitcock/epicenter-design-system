@@ -10,7 +10,7 @@
           <ep-menu
             class="ep-menu-subtle"
             :menu-items="enrichmentOptions"
-            @mouseover="handleHover"
+            @mouseover="onHover"
           />
           <div
             v-if="showPreview"
@@ -29,21 +29,21 @@
                 section-headers
               />
               <ep-flex class="gap-10">
-                <ep-button
-                  label="Add to dock"
-                  @click="handleDock"
-                />
-                <ep-button
-                  label="Source"
-                  :icon-right="{
-                    name: 'f-arrow-up-right',
-                    style: {
-                      '--ep-icon-width': '1.4rem',
-                      '--ep-icon-height': '1.4rem',
-                      '--ep-icon-stroke-width': '2',
-                    }
-                  }"
-                />
+                <!-- slot for "action" button -->
+                <slot name="action" />
+                <ep-button>
+                  Source
+                  <template #icon-right>
+                    <ep-icon
+                      name="f-arrow-up-right"
+                      style="
+                        --ep-icon-width: 1.4rem;
+                        --ep-icon-height: 1.4rem;
+                        --ep-icon-stroke-width: 2;
+                      "
+                    />
+                  </template>
+                </ep-button>
               </ep-flex>
             </ep-flex>
           </div>
@@ -54,11 +54,12 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
   import EpDropdown from '../dropdown/EpDropdown.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
+  import EpIcon from '../icon/EpIcon.vue'
   import EpKeyValueTable from '../key-value-table/EpKeyValueTable.vue'
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpMenu from '../menu/EpMenu.vue'
@@ -78,37 +79,35 @@
     }
   })
 
-  const emit = defineEmits(['dock'])
-
   const hoveredItem = ref(null)
   const loading = ref(false)
-
   const showPreview = ref(false)
 
-  const buttonProps = {
-    label: props.label,
-    size: 'small',
-    iconLeft: {
-      name: 'f-download-cloud',
-      style: {
-        '--ep-icon-color': 'var(--primary-color-base)'
-      }
-    },
-    iconRight: undefined,
-    class: 'ep-button-var--ghost'
-  }
+  const buttonProps = computed(() => {
+    return {
+      label: props.label,
+      size: 'large',
+      iconLeft: {
+        name: 'f-download-cloud',
+        style: {
+          '--ep-icon-color': 'var(--primary-color-base)'
+        }
+      },
+      iconRight: undefined,
+      class: 'ep-button-var--ghost'
+    }
+  })
 
-  const hasBeenHovered = ref([])
+  const hasBeenHovered = []
 
-  const handleHover = (item) => {
-    console.log(props.enrichmentData)
-    if (hasBeenHovered.value.includes(item.label)) {
+  const onHover = (item) => {
+    if (hasBeenHovered.includes(item.label)) {
       hoveredItem.value = item
       showPreview.value = true
       return
     }
 
-    hasBeenHovered.value.push(item.label)
+    hasBeenHovered.push(item.label)
     hoveredItem.value = item
     showPreview.value = true
     loading.value = true
@@ -116,12 +115,6 @@
     setTimeout(() => {
       loading.value = false
     }, 400)
-  }
-
-  const handleDock = () => {
-    if (props.enrichmentData) {
-      emit('dock', props.enrichmentData)
-    }
   }
 </script>
 

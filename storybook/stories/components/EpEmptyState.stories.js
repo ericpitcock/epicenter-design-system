@@ -62,7 +62,9 @@ export const EmptyState = args => ({
           <p>More tasks will appear here soon</p>
         </template>
         <template #cta>
-          <ep-button label="Go to Dashboard" />
+          <ep-button size="large">
+            Go to Dashboard
+          </ep-button>
         </template>
       </ep-empty-state>
     </ep-container>

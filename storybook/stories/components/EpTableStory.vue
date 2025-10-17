@@ -3,7 +3,7 @@
   <ep-flex class="flex-row gap-30">
     <div
       class="sidebar"
-      style="position: fixed;flex: 0 0 140px;"
+      style="position: fixed; flex: 0 0 140px;"
     >
       <ep-flex class="flex-col gap-30">
         <ep-table-checkbox-filters
@@ -12,9 +12,10 @@
         />
         <ep-button
           class="ep-button-var--outline"
-          label="Reset"
           @click="resetFilters"
-        />
+        >
+          Reset
+        </ep-button>
       </ep-flex>
     </div>
     <ep-flex class="flex-col main-content">
@@ -231,7 +232,7 @@
     alignRight: true,
     buttonProps: {
       size: 'large',
-      label: '',
+      label: null,
       ariaLabel: 'Column Filters',
       iconLeft: { name: 'f-columns' },
       iconRight: undefined,
@@ -275,7 +276,7 @@
     })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .table {
     --ep-table-min-width: 100%;
     --ep-table-container-height: unset;
@@ -286,6 +287,7 @@
     --ep-container-min-width: max-content;
     --ep-container-bg-color: var(--interface-overlay);
     --ep-container-border-radius: var(--border-radius);
+    --ep-container-border-width: 0.1rem;
     --ep-container-border-color: var(--border-color--lighter);
     --ep-container-padding: 2rem;
   }

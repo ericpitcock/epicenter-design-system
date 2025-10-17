@@ -22,7 +22,21 @@
           :class="buttonClasses(item)"
           v-bind="buttonProps(item)"
           @click.stop="onClick(item)"
-        />
+        >
+          <template
+            v-if="item.iconLeft"
+            #icon-left
+          >
+            <ep-icon v-bind="item.iconLeft" />
+          </template>
+          {{ item.label }}
+          <template #icon-right>
+            <ep-icon
+              v-if="item.children"
+              name="chevron-right"
+            />
+          </template>
+        </ep-button>
         <div
           v-if="item.children"
           v-show="activeItemIndex === index"
@@ -47,6 +61,7 @@
 
   import EpButton from '../button/EpButton.vue'
   import EpDivider from '../divider/EpDivider.vue'
+  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpMenu'

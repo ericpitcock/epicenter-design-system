@@ -3,12 +3,13 @@
     <ep-button
       v-for="(item, index) in items"
       :key="item.label"
-      :label="item.label"
       :size="size"
       :disabled="item.disabled"
       :class="{ [`${activeClass} ep-button-group--selected`]: index === activeButton && !item.disabled }"
       @click="onClick(item, index)"
-    />
+    >
+      {{ item.label }}
+    </ep-button>
   </div>
 </template>
 

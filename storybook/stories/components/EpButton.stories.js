@@ -1,9 +1,10 @@
 import { computed } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
+import EpIcon from '@/components/icon/EpIcon.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
-import { iconMapping,iconOptions } from '../../helpers/iconHelper.js'
+import { iconMapping, iconOptions } from '../../helpers/iconHelper.js'
 
 export default {
   title: 'Components/Button',
@@ -65,12 +66,12 @@ export default {
       }
     },
     ariaLabel: { table: { disable: true } },
-    to: { table: { disable: true } },
-    href: { table: { disable: true } },
-    isMenuItem: { table: { disable: true } },
-    isActiveMenuItem: { table: { disable: true } },
+    // to: { table: { disable: true } },
+    // href: { table: { disable: true } },
+    // isMenuItem: { table: { disable: true } },
+    // isActiveMenuItem: { table: { disable: true } },
     type: { table: { disable: true } },
-    command: { table: { disable: true } },
+    // command: { table: { disable: true } },
     label: {
       name: 'Label',
       control: {
@@ -245,13 +246,17 @@ export default {
     styles: {
       table: { disable: true }
     },
+    // Hide Vue slots from the side panel
+    default: { table: { disable: true } },
+    'icon-left': { table: { disable: true } },
+    'icon-right': { table: { disable: true } },
   }
 }
 
 export const Button = args => ({
-  components: { EpButton },
+  components: { EpButton, EpIcon },
   setup() {
-    const styles = computed(() => ({
+    const buttonStyles = computed(() => ({
       '--ep-button-bg-color': args.backgroundColor,
       '--ep-button-border-color': args.borderColor,
       '--ep-button-border-radius': args.borderRadius + 'px',
@@ -267,24 +272,48 @@ export const Button = args => ({
       '--ep-button-disabled-text-color': args.disabledTextColor,
     }))
 
+    const buttonProps = computed(() => {
+      const props = {}
+      if (args.size && args.size !== 'default') props.size = args.size
+      if (args.ariaLabel) props.ariaLabel = args.ariaLabel
+      if (args.disabled) props.disabled = args.disabled
+      return props
+    })
+
     const onClick = () => {
       console.log('Button clicked!')
     }
 
-    return { args, styles, onClick }
+    return { args, buttonProps, buttonStyles, onClick }
   },
   template: `
     <ep-button
-      v-bind="args"
-      :style="styles"
+      v-bind="buttonProps"
+      :style="buttonStyles"
       :class="args.classes"
       @click="onClick"
-    />
+    >
+      <template
+        v-if="args.enabledIcons && args.iconLeft"
+        #icon-left
+      >
+        <ep-icon v-bind="args.iconLeft" />
+      </template>
+
+      {{ args.label }}
+      
+      <template
+        v-if="args.enabledIcons && args.iconRight"
+        #icon-right
+      >
+        <ep-icon v-bind="args.iconRight" />
+      </template>
+    </ep-button>
   `
 })
 
 Button.args = {
-  label: 'Download the Internet',
+  label: 'Receive taco',
   size: 'large',
   disabled: false,
   classes: 'Primary',

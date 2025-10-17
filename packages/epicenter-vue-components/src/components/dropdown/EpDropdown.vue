@@ -13,7 +13,26 @@
           v-bind="computedButtonProps"
           aria-haspopup="menu"
           :aria-expanded="dropdownVisible"
-        />
+        >
+          <template
+            v-if="computedButtonProps.iconLeft"
+            #icon-left
+          >
+            <ep-icon v-bind="computedButtonProps.iconLeft" />
+          </template>
+          <template
+            v-if="computedButtonProps.label"
+            #default
+          >
+            {{ computedButtonProps.label }}
+          </template>
+          <template
+            v-if="computedButtonProps.iconRight"
+            #icon-right
+          >
+            <ep-icon v-bind="computedButtonProps.iconRight" />
+          </template>
+        </ep-button>
       </slot>
     </div>
     <div
@@ -37,6 +56,7 @@
   import { computed, ref, useTemplateRef } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
+  import EpIcon from '../icon/EpIcon.vue'
   import EpMenu from '../menu/EpMenu.vue'
 
   defineOptions({
