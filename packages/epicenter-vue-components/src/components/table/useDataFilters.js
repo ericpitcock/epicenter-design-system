@@ -12,6 +12,7 @@ export default function useDataFilters(
   const filters = ref({})
 
   const generateFilters = () => {
+    const previous = filters.value || {}
     const uniqueValues = {}
 
     // Extract unique values for specified columns
@@ -73,6 +74,16 @@ export default function useDataFilters(
       }))
     }
 
+    // Preserve checked state and ids per value
+    for (const key in generatedFilters) {
+      const prevList = previous[key] || []
+      const prevByValue = new Map(prevList.map(f => [String(f.value), f]))
+      generatedFilters[key] = generatedFilters[key].map(f => {
+        const prev = prevByValue.get(String(f.value))
+        return prev ? { ...f, checked: prev.checked, id: prev.id } : f
+      })
+    }
+
     filters.value = generatedFilters
   }
 
@@ -117,10 +128,14 @@ export default function useDataFilters(
 
   onMounted(() => generateFilters())
 
+  // Expose a lightweight manual refresh
+  const refreshFilters = () => generateFilters()
+
   return {
     filters,
     filteredData,
     onFilterUpdate,
-    resetFilters
+    resetFilters,
+    refreshFilters,
   }
 }

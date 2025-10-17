@@ -78,12 +78,13 @@
 
   function onClick() {
     if (props.disabled) return
+
     model.value = !model.value
   }
 
   const computedClasses = computed(() => ({
     [`ep-button--${props.size}`]: props.size !== 'default',
-    [`${props.activeClass} ep-button--active`]: model.value && !props.disabled,
+    [`${props.activeClass} ep-button--selected`]: model.value && !props.disabled,
     'ep-button--disabled': props.disabled,
   }))
 </script>

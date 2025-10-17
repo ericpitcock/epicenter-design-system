@@ -2,53 +2,42 @@
   <button
     ref="buttonEl"
     class="ep-button"
-    :disabled="status === 'loading'"
-    :style="{ width: buttonWidth }"
-    @click="handleClick"
+    :disabled="disabledDuringLoading && status === 'loading'"
+    :style="preserveWidth ? { width: buttonWidth } : undefined"
+    :aria-busy="status === 'loading' ? 'true' : 'false'"
+    @click="onClick"
   >
     <transition
       name="fade"
       mode="out-in"
     >
-      <!-- Use the status as the key to trigger transitions -->
-      <span :key="status">
+      <span
+        :key="status"
+        :aria-live="status === 'loading' ? 'polite' : 'off'"
+      >
         <template v-if="status === 'loading'">
-          Loading…
-          <!-- Loader SVG completely replaces the text -->
-          <!-- <svg
-            width="38"
-            height="38"
-            viewBox="0 0 38 38"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="currentcolor"
-          >
-            <g
-              fill="none"
-              fill-rule="evenodd"
+          <template v-if="loadingIndicator === 'text'">
+            {{ loadingText }}
+          </template>
+          <template v-else>
+            <svg
+              class="ep-spinner"
+              viewBox="0 0 50 50"
+              role="img"
+              aria-hidden="true"
             >
-              <g
-                transform="translate(1 1)"
-                stroke-width="2"
-              >
-                <circle
-                  stroke-opacity=".5"
-                  cx="18"
-                  cy="18"
-                  r="18"
-                />
-                <path d="M36 18c0-9.94-8.06-18-18-18">
-                  <animateTransform
-                    attributeName="transform"
-                    type="rotate"
-                    from="0 18 18"
-                    to="360 18 18"
-                    dur="1s"
-                    repeatCount="indefinite"
-                  />
-                </path>
-              </g>
-            </g>
-          </svg> -->
+              <circle
+                cx="25"
+                cy="25"
+                r="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="4"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span class="sr-only">{{ loadingText }}</span>
+          </template>
         </template>
         <template v-else>
           {{ currentText }}
@@ -59,15 +48,8 @@
 </template>
 
 <script setup>
-  import { computed, nextTick, onMounted, ref } from 'vue'
+  import { computed, nextTick, onMounted, ref, watch } from 'vue'
 
-  /*
-    Props:
-    - status: external state of the button ("default", "loading", "success", "failure")
-    - label: the default text displayed on the button
-    - successMessage: optional success message to show when status === "success"
-    - failureMessage: optional failure message to show when status === "failure"
-  */
   const props = defineProps({
     status: {
       type: String,
@@ -85,20 +67,38 @@
     failureMessage: {
       type: String,
       default: ''
+    },
+    // NEW: control how loading is shown
+    loadingIndicator: {
+      type: String,
+      default: 'text', // 'text' | 'spinner'
+      validator: (v) => ['text', 'spinner'].includes(v)
+    },
+    // NEW: customizable loading text (used for 'text' mode and SR text for spinner)
+    loadingText: {
+      type: String,
+      default: 'Loading…'
+    },
+    // NEW: keep button width stable across states
+    preserveWidth: {
+      type: Boolean,
+      default: true
+    },
+    // NEW: optionally allow clicks during loading
+    disabledDuringLoading: {
+      type: Boolean,
+      default: true
     }
   })
 
-  // Emit the click event to let the parent trigger the async operation.
-  // The parent should also update the button’s status externally.
   const emit = defineEmits(['click'])
-  const handleClick = (event) => {
-    // Only emit if not already loading
-    if (props.status !== 'loading') {
+
+  const onClick = (event) => {
+    if (!(props.disabledDuringLoading && props.status === 'loading')) {
       emit('click', event)
     }
   }
 
-  // Compute the current text to display based on the status and optional messages.
   const currentText = computed(() => {
     if (props.status === 'success' && props.successMessage) {
       return props.successMessage
@@ -108,31 +108,36 @@
     return props.label
   })
 
-  // Reference to the button element and a reactive value to store its width.
   const buttonEl = ref(null)
   const buttonWidth = ref('')
 
-  // Measure the natural width after the component is mounted.
-  onMounted(() => {
+  const updateWidth = () => {
+    if (!props.preserveWidth) return
     nextTick(() => {
       if (buttonEl.value) {
         buttonWidth.value = buttonEl.value.offsetWidth + 'px'
       }
     })
-    console.log('buttonWidth', buttonEl.value.offsetWidth)
+  }
+
+  onMounted(() => {
+    updateWidth()
   })
+
+  // Recalculate width if the visible texts change
+  watch(
+    () => [props.label, props.successMessage, props.failureMessage],
+    () => updateWidth()
+  )
 </script>
 
 <style scoped>
-
-  /* Ensure the button is inline-block so that the fixed width is respected */
   .ep-button {
     display: inline-block;
     max-width: unset;
     text-align: center;
   }
 
-  /* Example fade transition for smooth text/loader changes */
   .fade-enter-active,
   .fade-leave-active {
     transition: opacity 0.3s;
@@ -143,38 +148,30 @@
     opacity: 0;
   }
 
-  /* Spinner styling if needed */
-  .spinner {
-    animation: rotate 2s linear infinite;
+  /* Minimal spinner styles (can be moved externally later) */
+  .ep-spinner {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    animation: ep-spin 1s linear infinite;
   }
 
-  @keyframes rotate {
-    100% {
+  @keyframes ep-spin {
+    to {
       transform: rotate(360deg);
     }
   }
 
-  .path {
-    stroke: #fff;
-    /* Adjust color as needed */
-    stroke-linecap: round;
-    animation: dash 1.5s ease-in-out infinite;
-  }
-
-  @keyframes dash {
-    0% {
-      stroke-dasharray: 1, 150;
-      stroke-dashoffset: 0;
-    }
-
-    50% {
-      stroke-dasharray: 90, 150;
-      stroke-dashoffset: -35;
-    }
-
-    100% {
-      stroke-dasharray: 90, 150;
-      stroke-dashoffset: -124;
-    }
+  /* For screen reader-only text (spinner mode) */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 </style>

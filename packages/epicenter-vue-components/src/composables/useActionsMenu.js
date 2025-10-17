@@ -37,10 +37,12 @@ export default function useActionsMenu() {
 
     return {
       size,
-      menuItems: processedMenuItems,
-      menuClass,
-      buttonProps: mergedButtonProps,
+      menuProps: {
+        menuItems: processedMenuItems,
+        menuClass,
+      },
       alignRight,
+      buttonProps: mergedButtonProps,
     }
   }
 

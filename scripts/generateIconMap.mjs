@@ -1,9 +1,12 @@
 import fs from 'fs'
-import path from 'path'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export function generateIconMap() {
-  const iconsDir = path.resolve('../packages/epicenter-icons/src/icons')
-  const outputFile = path.resolve('../packages/epicenter-icons/src/iconMap.js')
+  const iconsDir = resolve(__dirname, '../packages/epicenter-icons/src/icons')
+  const outputFile = resolve(__dirname, '../packages/epicenter-icons/src/iconMap.js')
   const files = fs.readdirSync(iconsDir)
 
   const iconMapEntries = files

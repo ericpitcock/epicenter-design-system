@@ -1,5 +1,3 @@
-@use '../mixins/_mixins' as *;
-
 .ep-button-group {
   --ep-button-group-active-text-color: var(--text-color--loud);
   --ep-button-group-inactive-text-color: var(--text-color);
@@ -22,8 +20,12 @@
       border-radius: 0;
     }
 
-    &:not(.ep-button--disabled):not(.ep-button-group--active) {
+    &:not(.ep-button--disabled):not(.ep-button-group--selected) {
       color: var(--ep-button-group-inactive-text-color);
+    }
+
+    &.ep-button-group--selected {
+      cursor: default;
     }
   }
 }

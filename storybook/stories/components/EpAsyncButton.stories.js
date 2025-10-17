@@ -9,6 +9,9 @@ export default {
   component: EpAsyncButton,
   decorators: [centeredBg],
   argTypes: {
+    status: {
+      table: { disable: true }
+    },
     label: {
       name: 'Label',
       control: { type: 'text' },
@@ -24,13 +27,34 @@ export default {
       control: { type: 'text' },
       table: { category: 'Base Props' }
     },
+    loadingIndicator: {
+      name: 'Loading Indicator',
+      options: ['text', 'spinner'],
+      control: { type: 'inline-radio' },
+      table: { category: 'Loading Props' }
+    },
+    loadingText: {
+      name: 'Loading Text',
+      control: { type: 'text' },
+      table: { category: 'Loading Props' }
+    },
+    preserveWidth: {
+      name: 'Preserve Width',
+      control: { type: 'boolean' },
+      table: { category: 'Behavior' }
+    },
+    disabledDuringLoading: {
+      name: 'Disable During Loading',
+      control: { type: 'boolean' },
+      table: { category: 'Behavior' }
+    },
   }
 }
 export const AsyncButton = (args) => ({
   components: { EpAsyncButton },
   setup() {
     const status = ref('default')
-    const handleClick = () => {
+    const onClick = () => {
       if (status.value === 'loading') return
       status.value = 'loading'
       setTimeout(() => {
@@ -38,13 +62,13 @@ export const AsyncButton = (args) => ({
         status.value = isSuccess ? 'success' : 'failure'
       }, 2000)
     }
-    return { args, status, handleClick }
+    return { args, status, onClick }
   },
   template: `
     <ep-async-button
       v-bind="args"
       :status="status"
-      @click="handleClick"
+      @click="onClick"
     />
   `
 })
@@ -52,5 +76,9 @@ export const AsyncButton = (args) => ({
 AsyncButton.args = {
   label: 'Load Data',
   successMessage: 'Loaded!',
-  failureMessage: 'Failed!'
+  failureMessage: 'Failed!',
+  loadingIndicator: 'text',
+  loadingText: 'Loading…',
+  preserveWidth: true,
+  disabledDuringLoading: true
 }

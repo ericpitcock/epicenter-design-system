@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <div
-    class="ep-code-block"
+    class="ep-code-view"
     v-html="highlightedCode"
   />
 </template>
@@ -74,7 +74,8 @@
 </script>
 
 <style lang="scss">
-  .ep-code-block pre {
+  .ep-code-view pre {
+    font-family: var(--font-family-monospace);
     white-space: pre;
 
     &.shiki.one-light {

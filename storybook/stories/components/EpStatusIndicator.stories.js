@@ -16,7 +16,12 @@ export default {
         type: 'color'
       }
     },
-    styles: { table: { disable: true } }
+    pulse: {
+      name: 'Pulse',
+      control: {
+        type: 'boolean'
+      }
+    },
   }
 }
 
@@ -45,5 +50,6 @@ export const StatusIndicator = args => ({
 })
 
 StatusIndicator.args = {
-  dotColor: '#509b0d'
+  dotColor: '#509b0d',
+  pulse: false,
 }

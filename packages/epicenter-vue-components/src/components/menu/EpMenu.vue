@@ -1,5 +1,5 @@
 <template>
-  <div class="ep-menu">
+  <div :class="['ep-menu', `ep-menu--${menuType}`]">
     <template
       v-for="(item, index) of menuItems"
       :key="item.id"
@@ -22,7 +22,21 @@
           :class="buttonClasses(item)"
           v-bind="buttonProps(item)"
           @click.stop="onClick(item)"
-        />
+        >
+          <template
+            v-if="item.iconLeft"
+            #icon-left
+          >
+            <ep-icon v-bind="item.iconLeft" />
+          </template>
+          {{ item.label }}
+          <template #icon-right>
+            <ep-icon
+              v-if="item.children"
+              name="chevron-right"
+            />
+          </template>
+        </ep-button>
         <div
           v-if="item.children"
           v-show="activeItemIndex === index"
@@ -47,6 +61,7 @@
 
   import EpButton from '../button/EpButton.vue'
   import EpDivider from '../divider/EpDivider.vue'
+  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpMenu'
@@ -93,7 +108,7 @@
   const buttonClasses = (item) => {
     return [
       'ep-button--menu-item',
-      { 'ep-button--menu-item--active': props.menuType === 'nav' && item.label === props.activeItem }
+      { 'ep-button--menu-item--selected': props.menuType === 'nav' && item.label === props.activeItem }
     ]
   }
 

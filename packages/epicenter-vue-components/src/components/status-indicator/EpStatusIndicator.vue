@@ -1,9 +1,9 @@
 <template>
-  <span
-    class="ep-status-indicator"
-    :style="styles"
-  >
-    <span class="ep-status-indicator__dot" />
+  <span class="ep-status-indicator">
+    <span
+      class="ep-status-indicator__dot"
+      :class="{ 'ep-status-indicator__dot--pulse': pulse }"
+    />
     <slot />
   </span>
 </template>
@@ -14,9 +14,9 @@
   })
 
   const props = defineProps({
-    styles: {
-      type: Object,
-      default: () => ({}),
+    pulse: {
+      type: Boolean,
+      default: false,
     },
   })
 </script>

@@ -17,14 +17,14 @@ const columns = [
     filterable: false,
   },
   {
-    label: 'Severity',
-    key: 'severity',
+    label: 'Intensity',
+    key: 'intensity',
     sortable: true,
     filterable: true,
     sorter: (a, b) => {
-      const sortMap = { Critical: 4, High: 3, Medium: 2, Low: 1 }
-      const aValue = sortMap[a.severity] || 0
-      const bValue = sortMap[b.severity] || 0
+      const sortMap = { Extreme: 4, High: 3, Medium: 2, Low: 1 }
+      const aValue = sortMap[a.intensity] || 0
+      const bValue = sortMap[b.intensity] || 0
       return aValue - bValue
     },
   },
@@ -39,7 +39,8 @@ const columns = [
         month: 'short',
         day: 'numeric',
       })
-    }
+    },
+    class: 'text--overflow-hidden',
   },
   {
     label: 'Location',
@@ -85,24 +86,16 @@ const columns = [
   },
 ]
 
-const fakeArray = length => {
-  let arr = []
+const fakeTableData = (length) =>
+  Array.from({ length }, () => ({
+    id: faker.string.uuid(),
+    intensity: faker.helpers.arrayElement(['Extreme', 'High', 'Medium', 'Low']),
+    start_date: Date.parse(faker.date.past()),
+    location: faker.location.city(),
+    type: faker.helpers.arrayElement(['VirtualRide', 'Ride']),
+    distance: faker.number.int({ min: 10000, max: 100000 }),
+    total_elevation_gain: faker.number.int({ min: 100, max: 800 }),
+    average_speed: faker.number.int({ min: 20, max: 30, precision: 0.1 }),
+  }))
 
-  for (let i = 0; i < length; i++) {
-    arr.push({
-      id: faker.string.uuid(),
-      severity: faker.helpers.arrayElement(['Critical', 'High', 'Medium', 'Low']),
-      start_date: Date.parse(faker.date.past()),
-      location: faker.location.city(),
-      // faker paragraph
-      // location: faker.lorem.paragraph(),
-      type: faker.helpers.arrayElement(['VirtualRide', 'Ride']),
-      distance: faker.number.int({ min: 10000, max: 100000 }),
-      total_elevation_gain: faker.number.int({ min: 100, max: 800 }),
-      average_speed: faker.number.int({ min: 20, max: 30, precision: 0.1 }),
-    })
-  }
-  return arr
-}
-
-export { columns, fakeArray }
+export { columns, fakeTableData }

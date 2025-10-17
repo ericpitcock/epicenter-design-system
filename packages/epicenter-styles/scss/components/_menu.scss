@@ -13,8 +13,8 @@
   --ep-button-menu-item-hover-bg-color: var(--primary-color-base);
   --ep-button-menu-item-hover-text-color: hsl(0, 0%, 100%);
   --ep-button-menu-item-hover-border-color: var(--primary-color-base);
-  --ep-button-menu-item-active-bg-color: var(--primary-color-base);
-  --ep-button-menu-item-active-text-color: hsl(0, 0%, 100%);
+  --ep-button-menu-item-selected-bg-color: var(--primary-color-base);
+  --ep-button-menu-item-selected-text-color: hsl(0, 0%, 100%);
   background: var(--ep-menu-bg-color);
   padding: var(--ep-menu-padding);
   border-width: var(--ep-menu-border-width);
@@ -22,52 +22,52 @@
   border-color: var(--ep-menu-border-color);
   border-radius: var(--ep-menu-border-radius);
   text-align: left;
+}
 
-  &__section {
-    padding: var(--ep-menu-section-padding);
-    user-select: none;
-    white-space: nowrap;
+.ep-menu__section {
+  padding: var(--ep-menu-section-padding);
+  user-select: none;
+  white-space: nowrap;
 
-    &:not(:first-of-type) {
-      margin-top: var(--ep-menu-section-margin-top);
-    }
+  &:not(:first-of-type) {
+    margin-top: var(--ep-menu-section-margin-top);
   }
+}
 
-  &__item {
-    position: relative;
+.ep-menu__item {
+  position: relative;
 
-    .ep-button--menu-item {
-      width: 100%;
-      max-width: 100%;
-      background: transparent;
-      border-color: transparent;
-      padding-right: 2rem;
-      padding-left: 2rem;
+  .ep-button--menu-item {
+    width: 100%;
+    max-width: 100%;
+    background: transparent;
+    border-color: transparent;
+    padding-right: 2rem;
+    padding-left: 2rem;
 
-      @include hover {
-        &:hover:not(.ep-button--menu-item--active) {
-          background: var(--ep-button-menu-item-hover-bg-color);
-          color: var(--ep-button-menu-item-hover-text-color);
-          border-color: var(--ep-button-menu-item-hover-border-color);
-        }
-      }
-
-      &--active {
-        background: var(--ep-button-menu-item-active-bg-color);
-        color: var(--ep-button-menu-item-active-text-color);
-        cursor: default;
+    @include hover {
+      &:not(.ep-button--menu-item--selected):hover {
+        background: var(--ep-button-menu-item-hover-bg-color);
+        color: var(--ep-button-menu-item-hover-text-color);
+        border-color: var(--ep-button-menu-item-hover-border-color);
       }
     }
 
-    &__sub-menu {
-      position: absolute;
-      top: -1rem;
-      left: calc(100% - 1rem);
+    &--selected {
+      background: var(--ep-button-menu-item-selected-bg-color);
+      color: var(--ep-button-menu-item-selected-text-color);
+      cursor: default;
     }
   }
 
-  .ep-divider {
-    --ep-divider-border-color: var(--ep-menu-divider-border-color);
-    --ep-divider-margin: 1rem 0;
+  &__sub-menu {
+    position: absolute;
+    top: -1rem;
+    left: calc(100% - 1rem);
   }
+}
+
+.ep-menu > .ep-divider {
+  --ep-divider-border-color: var(--ep-menu-divider-border-color);
+  --ep-divider-margin: 1rem 0;
 }

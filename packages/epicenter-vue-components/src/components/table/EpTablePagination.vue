@@ -8,43 +8,52 @@
         <ep-button
           :disabled="currentPage === 1"
           aria-label="Previous page"
-          :icon-left="{ name: 'chevron-left' }"
           @click="prevPage"
-        />
+        >
+          <template #icon-left>
+            <ep-icon name="chevron-left" />
+          </template>
+        </ep-button>
         <template v-if="showPages">
           <ep-button
-            label="1"
             aria-label="First page"
-            :class="{ 'active': currentPage === 1 }"
+            :class="{ 'ep-button--selected': currentPage === 1 }"
             @click="emit('pageChange', 1)"
-          />
+          >
+            1
+          </ep-button>
           <span v-if="shouldShowStartEllipsis">...</span>
           <ep-button
             v-for="page in pageRange"
             :key="page"
-            :label="page.toString()"
             aria-label="Page {{ page }}"
-            :class="{ 'active': currentPage === page }"
+            :class="{ 'ep-button--selected': currentPage === page }"
             @click="emit('pageChange', page)"
-          />
+          >
+            {{ page.toString() }}
+          </ep-button>
           <span v-if="shouldShowEndEllipsis">...</span>
           <ep-button
             v-if="totalPages > 1"
-            :label="totalPages.toString()"
             aria-label="Last page"
-            :class="{ 'active': currentPage === totalPages }"
+            :class="{ 'ep-button--selected': currentPage === totalPages }"
             @click="emit('pageChange', totalPages)"
-          />
+          >
+            {{ totalPages.toString() }}
+          </ep-button>
         </template>
         <ep-button
           aria-label="Next page"
           :disabled="currentPage === totalPages"
-          :icon-left="{ name: 'chevron-right' }"
           @click="nextPage"
-        />
+        >
+          <template #icon-right>
+            <ep-icon name="chevron-right" />
+          </template>
+        </ep-button>
       </template>
       <template #left>
-        <ep-flex class="justify-end align-center gap-10">
+        <ep-flex class="justify-end align-center gap-10 text--overflow-hidden">
           Results per page
           <ep-select
             v-model="resultsPerPage"
@@ -65,6 +74,7 @@
   import EpButton from '../button/EpButton.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
   import EpFooter from '../footer/EpFooter.vue'
+  import EpIcon from '../icon/EpIcon.vue'
   import EpSelect from '../select/EpSelect.vue'
 
   defineOptions({

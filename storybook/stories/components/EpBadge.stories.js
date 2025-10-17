@@ -38,39 +38,6 @@ export default {
         category: 'Styles'
       }
     },
-    backgroundColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-badge-bg-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Styles'
-      },
-    },
-    borderColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-badge-border-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Styles'
-      },
-    },
-    textColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-badge-text-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Styles'
-      },
-    },
-    styles: {
-      table: { disable: true }
-    },
   }
 }
 

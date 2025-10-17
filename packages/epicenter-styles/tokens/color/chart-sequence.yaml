@@ -1,78 +1,30 @@
-# chart-sequence-00:
-#   dark: 256, 32%,, 53%
-# chart-sequence-01:
-#   dark: 189, 43%,, 56%
-# chart-sequence-02:
-#   dark: 212, 57%,, 75%
-# chart-sequence-03:
-#   dark: 204, 8%,, 47%
-# chart-sequence-04:
-#   dark: 284, 41%,, 70%
-# chart-sequence-05:
-#   dark: 219, 69%,, 55%
-# chart-sequence-06:
-#   dark: 46, 84%,, 49%
-# chart-sequence-07:
-#   dark: 30, 14%,, 59%
-# chart-sequence-08:
-#   dark: 178, 100%,, 25%
-# chart-sequence-09:
-#   dark: 22, 89%,, 45%
-# chart-sequence-10:
-#   dark: 320, 53%,, 53%
-# chart-sequence-11:
-#   dark: 65, 54%,, 60%
-# chart-sequence-12:
-#   dark: 40, 40%,, 34%
-# chart-sequence-13:
-#   dark: 81, 100%,, 37%
-# chart-sequence-14:
-#   dark: 28, 100%,, 77%
-# chart-sequence-15:
-#   dark: 0, 0%,, 96%
-#   light: 0, 0%,, 28%
-# chart-sequence-16:
-#   dark: 197, 74%,, 68%
-# take two
 chart-sequence-00:
   dark: 262, 51%, 58%
-  # light: 263, 70%, 50%
 chart-sequence-01:
   dark: 199, 57%, 48%
-  # light: 199, 89%, 48%
 chart-sequence-02:
   dark: 175, 45%, 26%
-  # light: 176, 69%, 22%
 chart-sequence-03:
   dark: 329, 54%, 70%
-  # light: 336, 74%, 35%
 chart-sequence-04:
   dark: 0, 54%, 97%
-  # light: 0, 84%, 60%
 chart-sequence-05:
   dark: 0, 52%, 60%
   light: 0, 0%, 35%
 chart-sequence-06:
   dark: 142, 37%, 58%
-  # light: 142, 72%, 29%
 chart-sequence-07:
   dark: 217, 59%, 60%
-  # light: 226, 71%, 40%
 chart-sequence-08:
   dark: 333, 39%, 51%
-  # light: 330, 81%, 60%
 chart-sequence-09:
   dark: 45, 61%, 47%
-  # light: 41, 96%, 40%
 chart-sequence-10:
   dark: 173, 48%, 40%
-  # light: 175, 84%, 32%
 chart-sequence-11:
   dark: 201, 62%, 86%
   light: 202, 80%,30%
 chart-sequence-12:
   dark: 26, 58%, 37%
-  # light: 23, 82%, 31%
 chart-sequence-13:
   dark: 269, 65%, 85%
-  # light: 255, 92%, 76%

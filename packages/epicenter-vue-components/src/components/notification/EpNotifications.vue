@@ -10,9 +10,10 @@
         <template #right>
           <ep-button
             v-show="!isNotificationsEmpty"
-            label="Clear all"
             @click="emit('clear-notifications')"
-          />
+          >
+            Clear all
+          </ep-button>
         </template>
       </ep-header>
     </template>

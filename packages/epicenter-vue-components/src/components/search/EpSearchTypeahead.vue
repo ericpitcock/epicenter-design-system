@@ -35,10 +35,9 @@
 </template>
 
 <script setup>
-  import { onClickOutside } from '@vueuse/core'
+  import { onClickOutside, useDebounceFn } from '@vueuse/core'
   import { computed, ref, watch } from 'vue'
 
-  import { useDebounce } from '../../composables'
   import EpInput from '../input/EpInput.vue'
 
   defineOptions({
@@ -91,7 +90,6 @@
     emit('clear')
   }
 
-  // const resultsListRef = useTemplateRef('resultsList')
   const resultsListRef = ref(null)
 
   onClickOutside(resultsListRef, resetSearch)
@@ -125,7 +123,7 @@
     }
   }
 
-  const debouncedSearch = useDebounce((value) => emit('search', value), 200)
+  const debouncedSearch = useDebounceFn((value) => emit('search', value), 200)
 
   const onInput = () => {
     activeItemIndex.value = -1

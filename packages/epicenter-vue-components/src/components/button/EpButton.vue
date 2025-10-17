@@ -3,34 +3,32 @@
     :is="element"
     :type
     :class="['ep-button', computedClasses]"
-    :aria-label="ariaLabel ? ariaLabel : label"
+    :aria-label="ariaLabel ? ariaLabel : null"
     :disabled="disabled"
   >
     <span
-      v-if="iconLeft"
+      v-if="$slots['icon-left']"
       class="ep-button__icon ep-button__icon--left"
     >
-      <ep-icon v-bind="iconLeft" />
+      <slot name="icon-left" />
     </span>
     <span
-      v-if="label"
+      v-if="$slots.default"
       class="ep-button__label"
     >
-      {{ label }}
+      <slot />
     </span>
     <span
-      v-if="iconRight"
+      v-if="$slots['icon-right']"
       class="ep-button__icon ep-button__icon--right"
     >
-      <ep-icon v-bind="iconRight" />
+      <slot name="icon-right" />
     </span>
   </component>
 </template>
 
 <script setup>
   import { computed, useAttrs } from 'vue'
-
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpButton'
@@ -58,27 +56,6 @@
       default: ''
     },
     /**
-     * The label of the button.
-     */
-    label: {
-      type: String,
-      default: ''
-    },
-    /**
-     * The icon to display on the left side of the button.
-     */
-    iconLeft: {
-      type: Object,
-      default: undefined
-    },
-    /**
-     * The icon to display on the right side of the button.
-     */
-    iconRight: {
-      type: Object,
-      default: undefined
-    },
-    /**
      * If `true`, the button will be disabled.
      */
     disabled: {
@@ -104,9 +81,7 @@
   })
 
   const computedClasses = computed(() => ({
-    [`ep-button--${props.size}`]: props.size != 'default',
-    'ep-button--icon-right': props.iconRight,
-    'ep-button--icon-left': props.iconLeft,
+    [`ep-button--${props.size}`]: props.size !== 'default',
     'ep-button--disabled': props.disabled,
   }))
 </script>

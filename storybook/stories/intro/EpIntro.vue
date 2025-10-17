@@ -6,12 +6,27 @@
       </div>
       <div class="copy-block">
         <h1 class="font-size--jumbo">
-          Epicenter Design system
+          Epicenter Design System
         </h1>
         <p class="monospace">
           { Vue, React } = componentsForApps
         </p>
-        <ep-button v-bind="buttonProps" />
+        <ep-flex class="gap-10">
+          <ep-button
+            v-for="(btn, index) in buttons"
+            :key="index"
+            class="hero-btn"
+            v-bind="btn.props"
+          >
+            <template #icon-left>
+              <ep-icon
+                :name="btn.icon"
+                class="hero-icon"
+              />
+            </template>
+            {{ btn.props.label }}
+          </ep-button>
+        </ep-flex>
       </div>
     </div>
     <div class="content">
@@ -25,29 +40,29 @@
 </template>
 
 <script setup>
-  import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
   import EpButton from '@/components/button/EpButton.vue'
+  import EpFlex from '@/components/flexbox/EpFlex.vue'
+  import EpIcon from '@/components/icon/EpIcon.vue'
+  import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
 
-  const buttonProps = {
-    href: 'https://github.com/ericpitcock/epicenter-design-system',
-    iconLeft: {
-      name: 'f-github',
-      style: {
-        '--ep-icon-width': '2rem',
-        '--ep-icon-stroke-width': 1.5,
+  const buttons = [
+    {
+      props: {
+        href: 'https://github.com/ericpitcock/epicenter-design-system',
+        label: 'GitHub',
+        size: 'large',
       },
+      icon: 'f-github',
     },
-    label: 'GitHub',
-    size: 'large',
-    style: {
-      '--ep-button-bg-color': '#242424',
-      '--ep-button-border-color': '#242424',
-      '--ep-button-text-color': '#e6e6e6',
-      '--ep-button-hover-bg-color': 'black',
-      '--ep-button-hover-border-color': 'black',
-      '--ep-button-hover-text-color': '#e6e6e6',
+    {
+      props: {
+        href: 'https://docs.epicenter.design',
+        label: 'Docs',
+        size: 'large',
+      },
+      icon: 'f-file-text',
     },
-  }
+  ]
 </script>
 
 <style lang="scss" scoped>
@@ -107,6 +122,20 @@
           color: var(--gray-440);
           text-decoration: none;
         }
+      }
+
+      .hero-btn {
+        --ep-button-bg-color: #242424;
+        --ep-button-border-color: #242424;
+        --ep-button-text-color: #e6e6e6;
+        --ep-button-hover-bg-color: black;
+        --ep-button-hover-border-color: black;
+        --ep-button-hover-text-color: #e6e6e6;
+      }
+
+      .hero-icon {
+        --ep-icon-width: 2rem;
+        --ep-icon-stroke-width: 1.5;
       }
     }
 

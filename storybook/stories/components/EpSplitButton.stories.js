@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
-import { iconMapping,iconOptions } from '../../helpers/iconHelper.js'
+import { iconMapping, iconOptions } from '../../helpers/iconHelper.js'
 
 export default {
   title: 'Components/Button/Split Button',
@@ -99,10 +99,10 @@ export const SplitButton = args => ({
         },
         menuClass: 'ep-menu-default',
         menuItems: [
-          { label: 'Download v1.1' },
-          { label: 'Download v1.0.1' },
-          { label: 'Download v1.0' },
-          { label: 'Download v0.9' }
+          { id: '0', label: 'Download v1.1' },
+          { id: '1', label: 'Download v1.0.1' },
+          { id: '2', label: 'Download v1.0' },
+          { id: '3', label: 'Download v0.9' }
         ]
       }
     })

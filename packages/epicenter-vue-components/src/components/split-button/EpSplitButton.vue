@@ -3,7 +3,9 @@
     <ep-button
       v-bind="computedButtonProps"
       @click="$emit('button-click')"
-    />
+    >
+      {{ computedButtonProps.label }}
+    </ep-button>
     <ep-dropdown
       v-bind="computedDropdownProps"
       @click="$emit('dropdown-select', $event)"

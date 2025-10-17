@@ -3,13 +3,13 @@
     <ep-button
       v-for="(item, index) in items"
       :key="item.label"
-      :label="item.label"
       :size="size"
       :disabled="item.disabled"
-      :class="{ [`${activeClass} ep-button-group--active`]: index === activeButton && !disabled }"
-      :style="styles"
+      :class="{ [`${activeClass} ep-button-group--selected`]: index === activeButton && !item.disabled }"
       @click="onClick(item, index)"
-    />
+    >
+      {{ item.label }}
+    </ep-button>
   </div>
 </template>
 
@@ -46,9 +46,9 @@
   const activeButton = ref(props.active)
 
   const onClick = (item, index) => {
-    if (props.disabled) return
+    if (item.disabled) return
 
     activeButton.value = index
-    emit('click', item)
+    emit('click', { item, index })
   }
 </script>

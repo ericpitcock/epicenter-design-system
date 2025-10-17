@@ -10,7 +10,7 @@
       />
     </div>
     <div class="colors__content">
-      <ep-container>
+      <ep-container ref="epContainerComponent">
         <ep-table
           class="colors__table"
           :columns="tableColumns"
@@ -19,6 +19,18 @@
         >
           <template #thead="{ visibleColumns }">
             <ep-table-head :columns="visibleColumns" />
+          </template>
+          <template #cell-sample="{ row }">
+            <div
+              class="color-sample"
+              :style="{ backgroundColor: row.sample }"
+            />
+          </template>
+          <template #cell-color="{ row }">
+            <span
+              class="text--capitalize"
+              :style="{ color: row.hsl }"
+            >{{ row.color }}</span>
           </template>
           <template #cell-contrast="{ row }">
             <ep-flex class="align-center gap-3">
@@ -56,7 +68,7 @@
   import { faker } from '@faker-js/faker'
   import { useClipboard } from '@vueuse/core'
   import chroma from 'chroma-js'
-  import { computed, ref, watch } from 'vue'
+  import { computed, ref } from 'vue'
 
   import EpContainer from '@/components/container/EpContainer.vue'
   import EpFlex from '@/components/flexbox/EpFlex.vue'
@@ -114,17 +126,10 @@
     {
       label: 'Sample',
       key: 'sample',
-      formatter: (value) => {
-        return `<div class="color-sample" style="background-color: ${value};" />`
-      }
     },
     {
       label: 'Color',
       key: 'color',
-      class: 'text--capitalize',
-      formatter: (value, row) => {
-        return `<span style="color: hsl(var(${row.css}));">${value}</span>`
-      }
     },
     {
       label: 'Text Contrast',
@@ -142,83 +147,86 @@
     }
   ]
 
+  const THEME_COLORS = {
+    dark: '#1f1f1f',
+    light: '#ebebeb'
+  }
+
   const backgroundColor = computed(() => {
-    return props.theme === 'dark' ? '#1f1f1f' : '#ebebeb'
+    return THEME_COLORS[props.theme] || THEME_COLORS.dark
   })
 
-  const tableData = computed(() => {
-    let data = []
+  // Helper to extract color family from name (e.g., "red-500" → "red")
+  const getColorFamily = (name) => {
+    const match = name.match(/^([a-z]+)-/)
+    return match ? match[1] : ''
+  }
 
-    for (const [name, hsl] of Object.entries(colors)) {
-      data.push({
-        sample: `hsl(${hsl})`,
-        color: `${name.replace(/-/g, ' ')}`,
-        contrast: contrast(`hsl(${hsl})`),
+  const tableData = computed(() => {
+
+    const createColorEntry = (name, hsl, source = '') => {
+      const colorValue = `hsl(${hsl})`
+      return {
+        sample: colorValue,
+        color: name.replace(/-/g, ' '),
+        contrast: checkContrast(colorValue),
         css: `--${name}`,
-        hsl: `hsl(${hsl})`
-      })
+        hsl: colorValue,
+        source
+      }
     }
-    // get grayscale colors from tokens
-    for (const [name, hsl] of Object.entries(grayscale)) {
-      data.push({
-        sample: `hsl(${hsl})`,
-        color: `${name.replace(/-/g, ' ')}`,
-        contrast: contrast(`hsl(${hsl})`),
-        css: `--${name}`,
-        hsl: `hsl(${hsl})`
+
+    return [
+      // Base
+      ...Object.entries(colors).map(([name, hsl]) =>
+        createColorEntry(name, hsl, getColorFamily(name))
+      ),
+
+      // Grayscale
+      ...Object.entries(grayscale).map(([name, hsl]) =>
+        createColorEntry(name, hsl, 'grayscale')
+      ),
+
+      // Chart sequence
+      ...Object.entries(chartSeq).map(([name, value]) => {
+        const themeBasedValue = value[props.theme] || value.dark
+        return createColorEntry(name, themeBasedValue, 'chartsequence')
       })
-    }
-    for (const [name, value] of Object.entries(chartSeq)) {
-      // if props.theme is light, use the light value if it exists
-      // otherwise use the dark value
-      const themeBasedValue = value[props.theme] ? value[props.theme] : value.dark
-      data.push({
-        sample: `hsl(${themeBasedValue})`,
-        color: `${name.replace(/-/g, ' ')}`,
-        contrast: contrast(`hsl(${themeBasedValue})`),
-        css: `--${name}`,
-        hsl: `hsl(${themeBasedValue})`
-      })
-    }
-    return data
+    ]
   })
 
   const activeItem = ref('All')
   const filter = ref('')
 
   const filteredData = computed(() => {
-    if (filter.value === 'all') {
+    if (!filter.value || filter.value === 'all') {
       return tableData.value
-    } else {
-      return tableData.value.filter(item => item.color.includes(filter.value))
     }
+    return tableData.value.filter(item => item.color.includes(filter.value))
   })
 
   const source = ref('')
   const { copy, copied } = useClipboard({ source })
 
-  watch(() => filteredData, () => {
-    const colorTableContainer = document.querySelector('.ep-table-container')
-    colorTableContainer.scrollTop = 0
-  })
+  const epContainerComponent = ref(null)
 
   const filterColorTable = (item) => {
     activeItem.value = item.label
-    let filterr = item.label.toLowerCase()
+    let filterValue = item.label.toLowerCase()
 
     if (item.label === 'Grayscale') {
-      filterr = 'gray'
+      filterValue = 'gray'
     }
 
-    filter.value = filterr
+    filter.value = filterValue
 
-    const scrollableElement = document.querySelector('.sb-main-fullscreen')
-    if (scrollableElement) {
-      scrollableElement.scrollTo({ top: 0, behavior: 'smooth' })
+    // Reset scroll to top when filtering
+    if (epContainerComponent.value?.epContainer) {
+      epContainerComponent.value.epContainer.scrollTo({ top: 0, behavior: 'instant' })
     }
   }
 
-  const contrast = (color) => {
+  const checkContrast = (color) => {
     const background = backgroundColor.value
     const contrast = chroma.contrast(color, background)
 
@@ -235,12 +243,6 @@
     return value === '' ? 'f-alert-triangle' : 'f-check'
   }
 </script>
-
-<style>
-  html {
-    overflow: hidden;
-  }
-</style>
 
 <style lang="scss" scoped>
   .colors {
@@ -281,9 +283,7 @@
       --ep-table-container-overflow: unset;
     }
   }
-</style>
 
-<style>
   .color-sample {
     width: 5rem;
     height: 5rem;

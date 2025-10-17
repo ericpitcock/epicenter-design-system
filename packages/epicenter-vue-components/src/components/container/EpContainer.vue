@@ -38,4 +38,8 @@
   })
 
   const epContainer = useTemplateRef('epContainer')
+
+  defineExpose({
+    epContainer
+  })
 </script>

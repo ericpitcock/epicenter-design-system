@@ -1,7 +1,8 @@
-import { paddedBgOverflow } from '../../../helpers/decorators.js'
-import EpColor from './EpColor.vue'
-import { useStorybookStore } from '../../../store'
 import { computed } from 'vue'
+
+import { paddedBgOverflow } from '../../../helpers/decorators.js'
+import { useStorybookStore } from '../../../store'
+import EpColor from './EpColor.vue'
 
 export default {
   title: 'Style/Color',

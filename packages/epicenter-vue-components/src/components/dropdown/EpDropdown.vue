@@ -8,28 +8,44 @@
       @click.stop="toggleDropdown"
       @mouseover="onMouseover"
     >
-      <slot
-        v-if="$slots.trigger"
-        name="trigger"
-      />
-      <ep-button
-        v-else
-        v-bind="computedButtonProps"
-      />
+      <slot name="trigger">
+        <ep-button
+          v-bind="computedButtonProps"
+          aria-haspopup="menu"
+          :aria-expanded="dropdownVisible"
+        >
+          <template
+            v-if="computedButtonProps.iconLeft"
+            #icon-left
+          >
+            <ep-icon v-bind="computedButtonProps.iconLeft" />
+          </template>
+          <template
+            v-if="computedButtonProps.label"
+            #default
+          >
+            {{ computedButtonProps.label }}
+          </template>
+          <template
+            v-if="computedButtonProps.iconRight"
+            #icon-right
+          >
+            <ep-icon v-bind="computedButtonProps.iconRight" />
+          </template>
+        </ep-button>
+      </slot>
     </div>
     <div
       v-show="dropdownVisible"
-      :class="classes"
+      :class="containerClasses"
     >
       <div class="ep-dropdown__content">
-        <slot name="content" />
-        <ep-menu
-          v-if="!$slots.content"
-          :class="props.menuClass"
-          :menu-items="menuItems"
-          menu-type="dropdown"
-          @click="onClick"
-        />
+        <slot name="content">
+          <ep-menu
+            v-bind="computedMenuProps"
+            @click="onClick"
+          />
+        </slot>
       </div>
     </div>
   </div>
@@ -40,6 +56,7 @@
   import { computed, ref, useTemplateRef } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
+  import EpIcon from '../icon/EpIcon.vue'
   import EpMenu from '../menu/EpMenu.vue'
 
   defineOptions({
@@ -55,23 +72,9 @@
       type: Object,
       default: () => ({})
     },
-    containerProps: {
+    menuProps: {
       type: Object,
-      default: () => ({}),
-      validator: (value) => {
-        if (Object.keys(value).length !== 0) {
-          console.warn('containerProps is not allowed. Use menuClass instead.', value)
-        }
-        return true
-      }
-    },
-    menuClass: {
-      type: String,
-      default: ''
-    },
-    menuItems: {
-      type: Array,
-      default: () => []
+      default: () => ({})
     },
     alignRight: {
       type: Boolean,
@@ -80,28 +83,60 @@
     showOnHover: {
       type: Boolean,
       default: false
+    },
+    // Deprecated props - should be migrated to menuProps
+    menuClass: {
+      type: String,
+      default: ''
+    },
+    menuItems: {
+      type: Array,
+      default: () => []
     }
   })
 
   const emit = defineEmits(['click', 'close'])
 
   const dropdownVisible = ref(false)
+  const dropdownRef = useTemplateRef('dropdown')
 
   const buttonDefaults = {
     size: 'default',
-    title: '',
     label: 'Default Dropdown',
-    iconRight: { name: 'chevron-down' },
-    iconLeft: undefined
+    iconRight: { name: 'chevron-down' }
   }
 
   const computedButtonProps = computed(() => ({
-    ...(props.disabled && { disabled: true }),
     ...buttonDefaults,
     ...props.buttonProps,
+    disabled: props.disabled
   }))
 
-  const classes = computed(() => [
+  const menuDefaults = {
+    menuType: 'dropdown'
+  }
+
+  const computedMenuProps = computed(() => {
+    if (import.meta.env.NODE_ENV !== 'production') {
+      if (props.menuClass) {
+        console.warn('menuClass is deprecated. Include in menuProps instead.')
+      }
+      if (props.menuItems.length) {
+        console.warn('menuItems is deprecated. Include in menuProps instead.')
+      }
+    }
+
+    return {
+      ...menuDefaults,
+      // deprecated props
+      ...(props.menuClass && { menuClass: props.menuClass }),
+      ...(props.menuItems.length && { menuItems: props.menuItems }),
+      // override with menuProps
+      ...props.menuProps
+    }
+  })
+
+  const containerClasses = computed(() => [
     'ep-dropdown__container',
     { 'ep-dropdown__container--align-right': props.alignRight }
   ])
@@ -112,31 +147,30 @@
   }
 
   const closeDropdown = () => {
-    if (props.disabled) return
-    if (dropdownVisible.value) {
+    if (props.disabled || !dropdownVisible.value) return
+
+    dropdownVisible.value = false
+    emit('close')
+  }
+
+  const onClick = (payload) => {
+    emit('click', payload)
+    closeDropdown()
+  }
+
+  const onMouseover = () => {
+    if (!props.disabled && props.showOnHover) {
+      dropdownVisible.value = true
+    }
+  }
+
+  const onMouseleave = () => {
+    if (!props.disabled && props.showOnHover) {
       dropdownVisible.value = false
-      emit('close')
     }
   }
 
   defineExpose({ closeDropdown })
 
-  const dropdownRef = useTemplateRef('dropdown')
-
   onClickOutside(dropdownRef, closeDropdown)
-
-  const onClick = (payload) => {
-    emit('click', payload)
-    if (dropdownVisible.value) closeDropdown()
-  }
-
-  const onMouseover = () => {
-    if (props.disabled) return
-    if (props.showOnHover) dropdownVisible.value = true
-  }
-
-  const onMouseleave = () => {
-    if (props.disabled) return
-    if (props.showOnHover) dropdownVisible.value = false
-  }
 </script>

@@ -19,7 +19,7 @@
           <ep-tabs
             :items="tabs"
             :active-tab-index="activeTab"
-            @tab-click="handleClick"
+            @tab-click="setActiveTab"
           />
         </template>
         <template #right>
@@ -72,93 +72,78 @@
   </ep-container>
 </template>
 
-<script>
+<script setup>
   import { faker } from '@faker-js/faker'
+  import { ref } from 'vue'
+
   import EpButton from '@/components/button/EpButton.vue'
   import EpContainer from '@/components/container/EpContainer.vue'
   import EpHeader from '@/components/header/EpHeader.vue'
-  import EpTabs from '@/components/tabs/EpTabs.vue'
   import EpTabContent from '@/components/tabs/EpTabContent.vue'
+  import EpTabs from '@/components/tabs/EpTabs.vue'
+  import { useTabs } from '@/composables'
 
-  export default {
-    components: {
-      EpButton,
-      EpContainer,
-      EpHeader,
-      EpTabs,
-      EpTabContent
+  const { activeTab, setActiveTab } = useTabs()
+
+  const tabs = ref(['Inter Variable', 'Fira Code Variable'])
+  const typeStyles = ref([
+    {
+      name: 'Jumbo',
+      // desc: 'Page headers',
+      meta: [
+        'font-size: 2.6rem (26px)',
+        'font-weight: 300'
+      ],
+      sample: '<h1>Man walks on the moon</h1>'
     },
-    data() {
-      return {
-        activeTab: 0,
-        tabs: ['Inter Variable', 'Fira Code Variable'],
-        typeStyles: [
-          {
-            name: 'Jumbo',
-            // desc: 'Page headers',
-            meta: [
-              'font-size: 2.6rem (26px)',
-              'font-weight: 300'
-            ],
-            sample: '<h1>Man walks on the moon</h1>'
-          },
-          {
-            name: 'Large',
-            // desc: 'headers',
-            meta: [
-              'font-size: 2rem (20px)',
-              'font-weight: 300'
-            ],
-            sample: '<h2>Millions watch from around the world</h2>'
-          },
-          {
-            name: 'Body',
-            // desc: 'Blocks of text you expect people to read',
-            meta: [
-              'font-size: 1.5rem (15px)',
-              'line-height: 2.4rem (24px)',
-              'font-weight: 500',
-              'max-width: 60rem (600px)'
-            ],
-            sample: `<div class="copy-block"><p>Used for larger copy blocks to provide a nice, comfortable reading experience. ${faker.lorem.sentences(6)}</p></div>`
-          },
-          {
-            name: 'Default',
-            // desc: 'Default UI text for ',
-            meta: [
-              'font-size: 1.3rem (13px)',
-              'font-weight: 500'
-            ],
-            sample: '<div style="max-width: 350px; line-height: 1.4;">Default for most UI text strings, like tables and form fields. Also used for larger button and input variants.</div>'
-          },
-          {
-            name: 'Small',
-            // desc: 'For most UI controls and labels',
-            meta: [
-              'font-size: 1.2rem (12px)',
-              'font-weight: 540'
-            ],
-            sample: 'UI controls and labels, like buttons and menu items'
-          },
-          {
-            name: 'Tiny',
-            // desc: 'Things should be there, but "not there"',
-            meta: [
-              'font-size: 1rem (10px)',
-              'font-weight: 600'
-            ],
-            sample: '<p>Made in the USA</p>'
-          },
-        ]
-      }
+    {
+      name: 'Large',
+      // desc: 'headers',
+      meta: [
+        'font-size: 2rem (20px)',
+        'font-weight: 300'
+      ],
+      sample: '<h2>Millions watch from around the world</h2>'
     },
-    methods: {
-      handleClick(index) {
-        console.log('handleClick', index)
-        this.activeTab = index
-      }
-    }
-  }
+    {
+      name: 'Body',
+      // desc: 'Blocks of text you expect people to read',
+      meta: [
+        'font-size: 1.5rem (15px)',
+        'line-height: 2.4rem (24px)',
+        'font-weight: 500',
+        'max-width: 60rem (600px)'
+      ],
+      sample: `<div class="copy-block"><p>Used for larger copy blocks to provide a nice, comfortable reading experience. ${faker.lorem.sentences(6)}</p></div>`
+    },
+    {
+      name: 'Default',
+      // desc: 'Default UI text for ',
+      meta: [
+        'font-size: 1.3rem (13px)',
+        'font-weight: 500'
+      ],
+      sample: '<div style="max-width: 350px; line-height: 1.4;">Default for most UI text strings, like tables and form fields. Also used for larger button and input variants.</div>'
+    },
+    {
+      name: 'Small',
+      // desc: 'For most UI controls and labels',
+      meta: [
+        'font-size: 1.2rem (12px)',
+        'font-weight: 540'
+      ],
+      sample: 'UI controls and labels, like buttons and menu items'
+    },
+    {
+      name: 'Tiny',
+      // desc: 'Things should be there, but "not there"',
+      meta: [
+        'font-size: 1rem (10px)',
+        'font-weight: 600'
+      ],
+      sample: '<p>Made in the USA</p>'
+    },
+  ])
 </script>
 
 <style lang="scss" scoped>

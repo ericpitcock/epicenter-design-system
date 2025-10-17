@@ -44,7 +44,7 @@
             type="email"
             size="xlarge"
             placeholder="Email"
-            background-color="var(--interface-foreground)"
+            data-1p-ignore
             @clear="email = ''"
           />
           <ep-input
@@ -54,17 +54,18 @@
             type="password"
             size="xlarge"
             placeholder="Password"
-            background-color="var(--interface-foreground)"
             :icon-right="{ name: 'f-eye' }"
+            data-1p-ignore
             @clear="password = ''"
           />
           <ep-button
             class="ep-button-var--primary"
             type="submit"
             size="large"
-            :label="buttonLabel"
             @click="onButtonClick"
-          />
+          >
+            {{ buttonLabel }}
+          </ep-button>
         </form>
       </div>
       <template #footer>
