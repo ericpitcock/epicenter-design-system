@@ -126,8 +126,12 @@ export const NotificationCenter = args => ({
         @remove-notification="removeNotification"
         @clear-notifications="clearNotifications"
       />
-      <ep-button label="Show Toast" style="margin-top: 2rem;" @click="showToast" />
-      <ep-button label="Show Modal" style="margin-top: 2rem;" @click="showModal" />
+      <ep-button style="margin-top: 2rem;" @click="showToast">
+        Show Toast
+      </ep-button>
+      <ep-button style="margin-top: 2rem;" @click="showModal">
+        Show Modal
+      </ep-button>
       <ep-overlay
         :type="overlayType"
         backdrop-close

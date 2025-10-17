@@ -132,19 +132,19 @@ export const Tabs = args => ({
         >
         <template #tab-0>
           <div class="copy-block">
-            <h1>{{ tabItems[0] }}</h1>
+            <h1>{{ $route.name }}</h1>
             <p></p>
           </div>
         </template>
         <template #tab-1>
           <div class="copy-block">
-            <h1>{{ tabItems[1] }}</h1>
+            <h1>{{ $route.name }}</h1>
             <p></p>
           </div>
         </template>
         <template #tab-2>
           <div class="copy-block">
-            <h1>{{ tabItems[2] }}</h1>
+            <h1>{{ $route.name }}</h1>
             <p></p>
           </div>
         </template>

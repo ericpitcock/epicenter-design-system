@@ -17,15 +17,15 @@
       class="color-chip"
       :style="`background: ${primaryColor};`"
     />
+    <ep-button :style="{ background: primaryColor, borderColor: primaryColor }">
+      Button
+    </ep-button>
     <ep-button
-      label="Button"
-      :style="{ background: primaryColor, borderColor: primaryColor }"
-    />
-    <ep-button
-      label="Button"
       :outlined="true"
       :style="{ borderColor: primaryColor }"
-    />
+    >
+      Button
+    </ep-button>
     <ep-badge
       label="Badge"
       background-color=""

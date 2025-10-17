@@ -1,4 +1,4 @@
-import { onMounted,ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import EpBreadcrumbs from '@/components/breadcrumbs/EpBreadcrumbs.vue'
@@ -44,21 +44,39 @@ export const Breadcrumbs = (args) => ({
     <div v-if="ready">
       <ep-flex class="gap-60 pt-30 pr-30">
         <nav class="ep-flex flex-col gap-10 pl-30">
-          <ep-button label="Home" to="/" />
-          <ep-button label="Library" to="/library" />
+          <ep-button to="/">
+            Home
+          </ep-button>
+          <ep-button to="/library">
+            Library
+          </ep-button>
           <div class="ep-flex flex-col gap-10 pl-20" style="border-left: 1px solid var(--border-color);">
-            <ep-button label="Data" to="/library/data" />
+            <ep-button to="/library/data">
+              Data
+            </ep-button>
           <div class="ep-flex flex-col gap-10 pl-20" style="border-left: 1px solid var(--border-color);">
-            <ep-button label="Reports" to="/library/data/reports" />
+            <ep-button to="/library/data/reports">
+              Reports
+            </ep-button>
           <div class="ep-flex flex-col gap-10 pl-20" style="border-left: 1px solid var(--border-color);">
-            <ep-button label="Annual" to="/library/data/reports/annual" />
-            <ep-button label="Monthly" to="/library/data/reports/monthly" />
+            <ep-button to="/library/data/reports/annual">
+              Annual
+            </ep-button>
+            <ep-button to="/library/data/reports/monthly">
+              Monthly
+            </ep-button>
           </div>
-            <ep-button label="Stats" to="/library/data/stats" />
+            <ep-button to="/library/data/stats">
+              Stats
+            </ep-button>
           </div>
-            <ep-button label="Authors" to="/library/authors" />
+            <ep-button to="/library/authors">
+              Authors
+            </ep-button>
           </div>
-          <ep-button label="Contact" to="/contact" />
+          <ep-button to="/contact">
+            Contact
+          </ep-button>
         </nav>
         <ep-container
           :style="{

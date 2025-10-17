@@ -48,27 +48,27 @@ const stackedBarChartOptions = {
   series: [
     {
       name: 'Security Incidents',
-      data: fakeTableData(12)
+      data: fakeArray(12)
     },
     {
       name: 'Unusual Activity',
-      data: fakeTableData(12)
+      data: fakeArray(12)
     },
     {
       name: 'Policy',
-      data: fakeTableData(12)
+      data: fakeArray(12)
     },
     {
       name: 'Recon',
-      data: fakeTableData(12)
+      data: fakeArray(12)
     },
     {
       name: 'Service',
-      data: fakeTableData(12)
+      data: fakeArray(12)
     },
     {
       name: 'Other',
-      data: fakeTableData(12)
+      data: fakeArray(12)
     }
   ],
   title: {
