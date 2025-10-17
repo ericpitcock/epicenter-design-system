@@ -24,7 +24,10 @@ This component does not use events, slots.
 
 ```vue
 <template>
-  <div class="ep-image">
+  <div
+    class="ep-image"
+    ref="imageEl"
+  >
     <img
       v-if="isLoaded"
       :src="src"
@@ -41,92 +44,100 @@ This component does not use events, slots.
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'EpImage',
-    props: {
-      src: {
-        type: String,
-        required: true,
-      },
-      alt: {
-        type: String,
-        default: '',
-      },
-      width: {
-        type: [String, Number],
-        default: '100%',
-      },
-      height: {
-        type: [String, Number],
-        default: '100%',
-      },
-      className: {
-        type: String,
-        default: '',
-      },
-      placeholder: {
-        type: String,
-        default: '',
-      },
-      placeholderColor: {
-        type: String,
-        default: '#f5f5f5',
-      },
-      placeholderOpacity: {
-        type: Number,
-        default: 1,
-      },
-      lazy: {
-        type: Boolean,
-        default: true,
-      },
+<script setup>
+  import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+
+  const props = defineProps({
+    src: {
+      type: String,
+      required: true,
     },
-    data() {
-      return {
-        isLoaded: false,
-      }
+    alt: {
+      type: String,
+      default: '',
     },
-    computed: {
-      placeholderStyle() {
-        return {
-          width: this.width,
-          height: this.height,
-          backgroundColor: this.placeholderColor,
-          opacity: this.placeholderOpacity,
-          backgroundImage: this.placeholder ? `url(${this.placeholder})` : '',
-          backgroundSize: 'cover',
+    width: {
+      type: [String, Number],
+      default: '100%',
+    },
+    height: {
+      type: [String, Number],
+      default: '100%',
+    },
+    className: {
+      type: String,
+      default: '',
+    },
+    placeholder: {
+      type: String,
+      default: '',
+    },
+    placeholderColor: {
+      type: String,
+      default: '#f5f5f5',
+    },
+    placeholderOpacity: {
+      type: Number,
+      default: 1,
+    },
+    lazy: {
+      type: Boolean,
+      default: true,
+    },
+  })
+
+  const isLoaded = ref(false)
+  const imageEl = ref(null)
+  let observer = null
+
+  const placeholderStyle = computed(() => {
+    return {
+      width: props.width,
+      height: props.height,
+      backgroundColor: props.placeholderColor,
+      opacity: props.placeholderOpacity,
+      backgroundImage: props.placeholder ? `url(${props.placeholder})` : '',
+      backgroundSize: 'cover',
+    }
+  })
+
+  const addLazyLoadListener = () => {
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          loadImage()
+          observer.unobserve(entry.target)
         }
-      },
-    },
-    mounted() {
-      if (this.lazy) {
-        this.addLazyLoadListener()
-      } else {
-        this.loadImage()
-      }
-    },
-    methods: {
-      addLazyLoadListener() {
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              this.loadImage()
-              io.unobserve(this.$el)
-            }
-          })
-        })
-        io.observe(this.$el)
-      },
-      loadImage() {
-        const img = new Image()
-        img.src = this.src
-        img.onload = () => {
-          this.isLoaded = true
-        }
-      },
-    },
+      })
+    })
+
+    if (imageEl.value) {
+      observer.observe(imageEl.value)
+    }
   }
+
+  const loadImage = () => {
+    const img = new Image()
+    img.src = props.src
+    img.onload = () => {
+      isLoaded.value = true
+    }
+  }
+
+  onMounted(() => {
+    if (props.lazy) {
+      addLazyLoadListener()
+    } else {
+      loadImage()
+    }
+  })
+
+  onBeforeUnmount(() => {
+    if (observer) {
+      observer.disconnect()
+      observer = null
+    }
+  })
 </script>
 
 <style lang="scss" scoped>

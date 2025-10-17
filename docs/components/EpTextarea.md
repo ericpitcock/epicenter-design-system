@@ -53,6 +53,7 @@ This component does not use slots.
       :autocomplete="autocomplete"
       :spellcheck="spellcheck"
       :wrap="wrap"
+      v-bind="$attrs"
       @focus="onFocus"
       @blur="onBlur"
     />
@@ -73,10 +74,6 @@ This component does not use slots.
       type: String,
       default: null,
     },
-    // value: {
-    //   type: String,
-    //   default: null,
-    // },
     placeholder: {
       type: String,
       default: null,
@@ -134,10 +131,6 @@ This component does not use slots.
 
   const emit = defineEmits(['update:modelValue', 'focus', 'blur'])
 
-  // const onInput = (event) => {
-  //   emit('input', event.target.value)
-  // }
-
   const onFocus = (event) => {
     emit('focus', event)
   }
@@ -153,7 +146,6 @@ This component does not use slots.
 
 ```scss
 .ep-textarea {
-  // width and height
   --ep-textarea-width: 100%;
   --ep-textarea-min-width: 20rem;
   --ep-textarea-max-width: 70rem;
@@ -186,11 +178,6 @@ This component does not use slots.
     line-height: var(--ep-textarea-line-height);
     font-size: var(--ep-textarea-font-size);
     resize: var(--ep-textarea-resize);
-
-    &:focus {
-      outline: none;
-      border-color: var(--ep-textarea-focus-border-color);
-    }
   }
 }
 ```

@@ -39,7 +39,7 @@ This component does not use slots.
     />
     <div
       v-if="returnedSearchResults.length"
-      ref="resultsList"
+      ref="resultsListRef"
       class="ep-search-typeahead-dropdown"
     >
       <ul>
@@ -61,14 +61,14 @@ This component does not use slots.
 </template>
 
 <script setup>
+  import { onClickOutside, useDebounceFn } from '@vueuse/core'
+  import { computed, ref, watch } from 'vue'
+
+  import EpInput from '../input/EpInput.vue'
+
   defineOptions({
     name: 'EpSearchTypeahead'
   })
-
-  import EpInput from '../input/EpInput.vue'
-  import { onClickOutside } from '@vueuse/core'
-  import { useDebounce } from '../../composables'
-  import { computed, ref, useTemplateRef, watch } from 'vue'
 
   const searchQuery = ref('')
   const activeItemIndex = ref(-1)
@@ -90,7 +90,6 @@ This component does not use slots.
 
   const emit = defineEmits(['clear', 'search', 'selection'])
 
-  // watch activeItemIndex and return the value that is currently highlighted
   const activeItem = computed(() => {
     return props.returnedSearchResults[activeItemIndex.value]
   })
@@ -117,7 +116,7 @@ This component does not use slots.
     emit('clear')
   }
 
-  const resultsListRef = useTemplateRef('resultsList')
+  const resultsListRef = ref(null)
 
   onClickOutside(resultsListRef, resetSearch)
 
@@ -150,7 +149,7 @@ This component does not use slots.
     }
   }
 
-  const debouncedSearch = useDebounce((value) => emit('search', value), 200)
+  const debouncedSearch = useDebounceFn((value) => emit('search', value), 200)
 
   const onInput = () => {
     activeItemIndex.value = -1

@@ -48,8 +48,8 @@ This component does not use slots.
 </template>
 
 <script>
-  import EpFlex from '../flexbox/EpFlex.vue'
   import EpCheckbox from '../checkbox/EpCheckbox.vue'
+  import EpFlex from '../flexbox/EpFlex.vue'
 
   export default {
     name: 'EpTableCheckboxFilters',

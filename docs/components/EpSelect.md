@@ -14,7 +14,6 @@
 | `selectId` | - | `string` | `-` |
 | `size` | - | `string` | `'default'` |
 | `options` | - | `array` | `-` |
-| `modelValue` | - | `string|number` | `''` |
 | `placeholder` | - | `string` | `'Select an option'` |
 | `borderWidth` | - | `string` | `'0.1rem'` |
 | `borderStyle` | - | `string` | `'solid'` |
@@ -27,7 +26,6 @@
 |---------|-----------------------------|------------|
 | `update:modelValue` | - | - |
 | `blur` | - | - |
-| `input` | - | - |
 | `focus` | - | - |
 
 
@@ -42,9 +40,9 @@ This component does not use slots.
   <ep-input-styler v-bind="stylerProps">
     <select
       :id="computedId"
+      v-model="modelValue"
       :class="['ep-select', selectClasses]"
       :style="selectStyles"
-      :value="modelValue"
       :disabled="disabled"
       :autofocus="autofocus"
       :required="required"
@@ -70,182 +68,73 @@ This component does not use slots.
   </ep-input-styler>
 </template>
 
-<script>
+<script setup>
+  import { computed } from 'vue'
+
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
-  export default {
-    name: "EpSelect",
-    components: {
-      EpInputStyler
-    },
-    props: {
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      autofocus: {
-        type: Boolean,
-        default: false
-      },
-      readonly: {
-        type: Boolean,
-        default: false
-      },
-      required: {
-        type: Boolean,
-        default: false
-      },
-      width: {
-        type: String,
-        default: '100%'
-      },
-      iconLeft: {
-        type: Object,
-        default: null
-      },
-      selectId: {
-        type: String,
-        required: true,
-      },
-      size: {
-        type: String,
-        default: 'default'
-      },
-      options: {
-        type: Array,
-        required: true,
-      },
-      modelValue: {
-        type: [String, Number],
-        default: ''
-      },
-      placeholder: {
-        type: String,
-        default: 'Select an option'
-      },
-      borderWidth: {
-        type: String,
-        default: '0.1rem'
-      },
-      borderStyle: {
-        type: String,
-        default: 'solid'
-      },
-      borderColor: {
-        type: String,
-        default: 'var(--border-color)'
-      },
-      borderRadius: {
-        type: String,
-        default: 'var(--border-radius)'
-      },
-      backgroundColor: {
-        type: String,
-        default: 'var(--interface-foreground)'
-      },
-    },
-    emits: ['update:modelValue', 'blur', 'input', 'focus'],
-    data() {
-      return {
-        selected: '',
-        hasError: false,
-        hasInput: false,
-        hasWarning: false,
-        hasSuccess: false,
-        sizes: {
-          small: '22',
-          default: '30',
-          large: '38',
-          xlarge: '46'
-        },
-      }
-    },
-    computed: {
-      computedBackgroundColor() {
-        if (this.disabled) {
-          return 'transparent'
-        }
-        return this.backgroundColor
-      },
-      computedBorderColor() {
-        if (this.hasError) {
-          return 'red'
-        }
-        if (this.hasWarning) {
-          return 'yellow'
-        }
-        if (this.hasSuccess) {
-          return 'green'
-        }
-        if (this.disabled) {
-          return 'var(--border-color--disabled)'
-        }
-        return this.borderColor || 'var(--border-color)'
-      },
-      computedId() {
-        const generateUniqueId = () => crypto.randomUUID()
-        return this.selectId || generateUniqueId()
-      },
-      iconStyles() {
-        return {
-          flex: `0 0 ${this.height}`,
-          height: this.height,
-        }
-      },
-      selectClasses() {
-        return {
-          [`ep-select--${this.size}`]: this.size,
-          'ep-select--has-icon': this.iconLeft,
-          'ep-select--disabled': this.disabled,
-          'ep-select--error': this.hasError,
-          'ep-select--success': this.hasSuccess,
-          'ep-select--warning': this.hasWarning,
-        }
-      },
-      selectStyles() {
-        return {
-          borderStyle: this.borderStyle,
-          borderWidth: this.borderWidth,
-          borderColor: this.computedBorderColor,
-          borderRadius: this.borderRadius,
-          backgroundColor: this.computedBackgroundColor,
-          lineHeight: `${this.sizes[this.size] - 2}px`,
-        }
-      },
-      stylerProps() {
-        return {
-          id: this.computedId,
-          disabled: this.disabled,
-          width: this.width,
-          size: this.size,
-          iconLeft: this.iconLeft,
-          iconRight: { name: 'chevron-down' },
-          iconRightClickable: false,
-          iconRightVisible: true,
-        }
-      },
-    },
-    watch: {
-      modelValue: {
-        immediate: true,
-        handler(value) {
-          this.selected = value
-        }
-      }
-    },
-    methods: {
-      onBlur() {
-        this.$emit('blur')
-      },
-      onChange(event) {
-        event.target.blur()
-        this.$emit('update:modelValue', event.target.value)
-      },
-      onFocus() {
-        this.$emit('focus')
-      }
-    }
+  const props = defineProps({
+    disabled: { type: Boolean, default: false },
+    autofocus: { type: Boolean, default: false },
+    readonly: { type: Boolean, default: false },
+    required: { type: Boolean, default: false },
+    width: { type: String, default: '100%' },
+    iconLeft: { type: Object, default: null },
+    selectId: { type: String, required: true },
+    size: { type: String, default: 'default' },
+    options: { type: Array, required: true },
+    placeholder: { type: String, default: 'Select an option' },
+    borderWidth: { type: String, default: '0.1rem' },
+    borderStyle: { type: String, default: 'solid' },
+    borderColor: { type: String, default: 'var(--border-color)' },
+    borderRadius: { type: String, default: 'var(--border-radius)' },
+    backgroundColor: { type: String, default: 'var(--interface-foreground)' }
+  })
+
+  const emit = defineEmits(['update:modelValue', 'blur', 'focus'])
+  const modelValue = defineModel({ type: [String, Number], default: '' })
+
+  const sizes = { small: '22', default: '30', large: '38', xlarge: '46' }
+
+  const computedBackgroundColor = computed(() => (props.disabled ? 'transparent' : props.backgroundColor))
+  const computedBorderColor = computed(() => {
+    if (props.disabled) return 'var(--border-color--disabled)'
+    return props.borderColor || 'var(--border-color)'
+  })
+
+  const computedId = computed(() => props.selectId || crypto.randomUUID())
+  const selectClasses = computed(() => ({
+    [`ep-select--${props.size}`]: props.size,
+    'ep-select--has-icon': props.iconLeft,
+    'ep-select--disabled': props.disabled,
+  }))
+
+  const selectStyles = computed(() => ({
+    borderStyle: props.borderStyle,
+    borderWidth: props.borderWidth,
+    borderColor: computedBorderColor.value,
+    borderRadius: props.borderRadius,
+    backgroundColor: computedBackgroundColor.value,
+    lineHeight: `${sizes[props.size] - 2}px`
+  }))
+
+  const stylerProps = computed(() => ({
+    id: computedId.value,
+    disabled: props.disabled,
+    width: props.width,
+    size: props.size,
+    iconLeft: props.iconLeft,
+    iconRight: { name: 'chevron-down' },
+    iconRightClickable: false,
+    iconRightVisible: true
+  }))
+
+  const onBlur = () => emit('blur')
+  const onChange = (event) => {
+    event.target.blur()
+    modelValue.value = event.target.value
   }
+  const onFocus = () => emit('focus')
 </script>
 
 ```
@@ -265,10 +154,6 @@ select.ep-select {
     padding-left: 2.8rem;
   }
 
-  &:focus {
-    border-color: var(--primary-color-base) !important;
-  }
-
   &--small {
     padding: 0 2.5rem 0 0.8rem;
     font-size: var(--font-size--tiny);
@@ -280,7 +165,6 @@ select.ep-select {
 
   &--large {
     padding: 0 3.6rem 0 1.6rem;
-    font-size: var(--font-size--default);
 
     &.ep-select--has-icon {
       padding-left: 3.6rem;
@@ -289,7 +173,6 @@ select.ep-select {
 
   &--xlarge {
     padding: 0 4.4rem 0 1.8rem;
-    font-size: var(--font-size--body);
 
     &.ep-select--has-icon {
       padding-left: 4.4rem;

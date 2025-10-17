@@ -6,11 +6,9 @@
 
 #### `stickyHeader` vs`fixedHeader`
 
-The `stickyHeader` option works fine when `position: sticky` is sufficient—when you’re not using an overflow container. But if you want the table container to be within the viewport, like a dashboard module or something, you can use `calculateHeight: true` via `useCalculatedHeight` composable to ensure the table height is calculated correctly.
+Use `stickyHeader` when the table can rely on pure CSS `position: sticky` (no scrolling overflow ancestor breaking it).
 
-NEED TO FIX THE CALC HEIGHT ISSUE as it's hardcoded into the component. Move it out as it's an option.
-
-However, in web apps, that’s not always an option. For those cases, `fixedHeader` (paired with the `useFixedHeader` composable) is your solution for sticky headers within overflow containers. It uses `position: fixed` and JavaScript to handle positioning and ensures column widths stay in sync as data updates. Basically, if you need a sticky header with overflow scrolling, use `fixedHeader`. It will probably work in most scenarios—maybe.
+If the table lives inside a scrollable container where sticky fails, use `fixedHeader` together with the `useFixedHeader` composable. This duplicates the header and positions it with `position: fixed`, keeping column widths in sync.
 
 ## Columns
 Columns are defined in the `columns` prop. Each column can have the following properties:
@@ -249,6 +247,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
 
 <script setup>
   import { computed, useTemplateRef } from 'vue'
+
   import EpTableCell from './EpTableCell.vue'
 
   defineOptions({
@@ -362,6 +361,8 @@ The `sorter` function receives two values and should return a number: -1 for sor
 ## Styles (SCSS)
 
 ```scss
+@use '../mixins/_mixins' as *;
+
 .ep-table-container {
   --ep-table-container-width: auto;
   --ep-table-container-height: auto;
@@ -473,11 +474,13 @@ The `sorter` function receives two values and should return a number: -1 for sor
         user-select: none;
       }
 
-      tr:not(.ep-table-row--selected):hover {
-        cursor: pointer;
+      @include hover {
+        tr:not(.ep-table-row--selected):hover {
+          cursor: pointer;
 
-        td {
-          background: var(--ep-table-row-hover-bg-color);
+          td {
+            background: var(--ep-table-row-hover-bg-color);
+          }
         }
       }
 

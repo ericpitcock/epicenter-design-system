@@ -38,7 +38,7 @@ This component does not use events.
 </template>
 
 <script setup>
-  import { ref, onBeforeUnmount, computed } from 'vue'
+  import { computed, onBeforeUnmount, ref } from 'vue'
 
   defineOptions({
     name: 'EpTooltip',

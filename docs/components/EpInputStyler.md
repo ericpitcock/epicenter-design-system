@@ -14,7 +14,6 @@
 | `inputValue` | - | `string` | `''` |
 | `label` | - | `string` | `''` |
 | `disabled` | - | `boolean` | `false` |
-| `width` | - | `string` | `'100%'` |
 | `iconLeft` | - | `object` | `null` |
 | `iconRight` | - | `object` | `null` |
 | `iconRightClickable` | - | `boolean` | `false` |
@@ -43,7 +42,6 @@
       <div
         v-if="iconLeft"
         :class="['ep-input-styler__icon-left', `ep-input-styler__icon-left--${size}`]"
-        :style="iconStyles"
       >
         <ep-icon v-bind="iconLeft" />
       </div>
@@ -54,7 +52,6 @@
           `ep-input-styler__icon-right--${size}`,
           { 'ep-input-styler__icon-right--clickable': iconRightClickable }
         ]"
-        :style="iconStyles"
         @click="onClick"
       >
         <ep-icon
@@ -75,8 +72,9 @@
 </template>
 
 <script setup>
+  import { computed, ref } from 'vue'
+
   import EpIcon from '../icon/EpIcon.vue'
-  import { ref, computed } from 'vue'
 
   defineOptions({
     name: 'EpInputStyler',
@@ -106,10 +104,6 @@
     disabled: {
       type: Boolean,
       default: false
-    },
-    width: {
-      type: String,
-      default: '100%'
     },
     iconLeft: {
       type: Object,
@@ -144,14 +138,7 @@
 
   const containerStyles = computed(() => {
     return {
-      width: props.width,
       height: `${sizes.value[props.size]}px`
-    }
-  })
-
-  const iconStyles = computed(() => {
-    return {
-      cursor: 'pointer'
     }
   })
 
@@ -166,6 +153,7 @@
 
 ```scss
 .ep-input-styler {
+  width: 100%;
   position: relative;
 }
 

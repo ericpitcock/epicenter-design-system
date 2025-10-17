@@ -52,20 +52,23 @@
       <ep-button
         v-if="dissmissable"
         class="ep-button-var--ghost"
-        :icon-right="{ name: 'close' }"
         @click="dismissBanner"
-      />
+      >
+        <template #icon-right>
+          <ep-icon name="close" />
+        </template>
+      </ep-button>
     </div>
   </div>
 </template>
 
 <script setup>
+  import EpButton from '../button/EpButton.vue'
+  import EpIcon from '../icon/EpIcon.vue'
+
   defineOptions({
     name: 'EpBanner'
   })
-
-  import EpButton from '../button/EpButton.vue'
-  import EpIcon from '../icon/EpIcon.vue'
 
   const props = defineProps({
     /**

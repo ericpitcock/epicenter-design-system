@@ -52,7 +52,7 @@ This component does not use events, slots.
 </template>
 
 <script setup>
-  import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+  import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
   defineOptions({
     name: 'EpChart',

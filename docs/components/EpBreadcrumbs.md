@@ -77,6 +77,7 @@ This component does not use events.
 <script setup>
   import { computed } from 'vue'
   import { useRoute } from 'vue-router'
+
   import EpIcon from '../icon/EpIcon.vue'
 
   const props = defineProps({

@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `styles` | - | `object` | `{}` |
+| `pulse` | - | `boolean` | `false` |
 
 ## Slots
 | Name | Description |
@@ -21,11 +21,11 @@ This component does not use events.
 
 ```vue
 <template>
-  <span
-    class="ep-status-indicator"
-    :style="styles"
-  >
-    <span class="ep-status-indicator__dot" />
+  <span class="ep-status-indicator">
+    <span
+      class="ep-status-indicator__dot"
+      :class="{ 'ep-status-indicator__dot--pulse': pulse }"
+    />
     <slot />
   </span>
 </template>
@@ -36,13 +36,12 @@ This component does not use events.
   })
 
   const props = defineProps({
-    styles: {
-      type: Object,
-      default: () => ({}),
+    pulse: {
+      type: Boolean,
+      default: false,
     },
   })
 </script>
-
 ```
 
 ## Styles (SCSS)
@@ -54,14 +53,36 @@ This component does not use events.
   display: inline-flex;
   align-items: center;
   gap: 1rem;
+}
 
-  &__dot {
-    width: 0.7rem;
-    height: 0.7rem;
-    background-color: var(--ep-status-indicator-dot-bg);
-    border: 0.1rem solid var(--ep-status-indicator-dot-border);
-    border-radius: 50%;
-    box-sizing: content-box;
+.ep-status-indicator__dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: var(--ep-status-indicator-dot-bg);
+  border: 0.1rem solid var(--ep-status-indicator-dot-border);
+  border-radius: 50%;
+  box-sizing: content-box;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.ep-status-indicator__dot--pulse {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.ep-status-indicator__dot--pulse {
+  animation: pulse 1.5s infinite ease-in-out;
 }
 ```

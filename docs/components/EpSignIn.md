@@ -56,7 +56,7 @@ This component does not use props, events, slots.
             type="email"
             size="xlarge"
             placeholder="Email"
-            background-color="var(--interface-foreground)"
+            data-1p-ignore
             @clear="email = ''"
           />
           <ep-input
@@ -66,17 +66,18 @@ This component does not use props, events, slots.
             type="password"
             size="xlarge"
             placeholder="Password"
-            background-color="var(--interface-foreground)"
             :icon-right="{ name: 'f-eye' }"
+            data-1p-ignore
             @clear="password = ''"
           />
           <ep-button
             class="ep-button-var--primary"
             type="submit"
             size="large"
-            :label="buttonLabel"
             @click="onButtonClick"
-          />
+          >
+            {{ buttonLabel }}
+          </ep-button>
         </form>
       </div>
       <template #footer>
@@ -94,13 +95,14 @@ This component does not use props, events, slots.
 </template>
 
 <script setup>
+  import { computed, ref } from 'vue'
+
   import EpButton from '../button/EpButton.vue'
   import EpContainer from '../container/EpContainer.vue'
   import EpIcon from '../icon/EpIcon.vue'
   import EpInput from '../input/EpInput.vue'
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpicenterLogo from '../logo/EpicenterLogo.vue'
-  import { computed, ref } from 'vue'
 
   defineOptions({
     name: 'EpSignIn',

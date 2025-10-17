@@ -31,27 +31,26 @@ This component does not use slots.
           {{ message }}
         </p>
         <p class="ep-notification__message__timestamp">
-          {{ relativeTime(timestamp) }}
+          {{ useTimeAgo(timestamp) }}
         </p>
       </div>
       <ep-button
-        :icon-right="{ name: 'close' }"
-        :style="{
-          '--ep-button-bg-color': 'transparent',
-          '--ep-button-border-color': 'transparent',
-          '--ep-button-hover-bg-color': 'transparent',
-          '--ep-button-hover-border-color': 'transparent',
-          '--ep-button-active-bg-color': 'transparent',
-          '--ep-button-active-border-color': 'transparent',
-        }"
+        class="ep-button-var--ghost"
         @click.stop="dismissNotification"
-      />
+      >
+        <template #icon-right>
+          <ep-icon name="close" />
+        </template>
+      </ep-button>
     </div>
   </div>
 </template>
 
 <script setup>
+  import { useTimeAgo } from '@vueuse/core'
+
   import EpButton from '../button/EpButton.vue'
+  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpNotification',
@@ -80,33 +79,6 @@ This component does not use slots.
 
   const dismissNotification = () => {
     emit('dismiss')
-  }
-
-  const relativeTime = (dateString) => {
-    var units = {
-      year: 24 * 60 * 60 * 1000 * 365,
-      month: 24 * 60 * 60 * 1000 * 365 / 12,
-      day: 24 * 60 * 60 * 1000,
-      hour: 60 * 60 * 1000,
-      minute: 60 * 1000,
-      second: 1000
-    }
-
-    var rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
-
-    var getRelativeTime = (d1, d2 = new Date()) => {
-      var elapsed = d1 - d2
-
-      for (var u in units) {
-        if (Math.abs(elapsed) > units[u] || u === 'second') {
-          return rtf.format(Math.round(elapsed / units[u]), u)
-        }
-      }
-    }
-
-    const date = new Date(Date.parse(dateString))
-
-    return getRelativeTime(date)
   }
 </script>
 

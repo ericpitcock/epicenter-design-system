@@ -5,57 +5,66 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `data` | - | `object` | `-` |
-| `width` | - | `string` | `'100%'` |
+| `data` | - | `array|object` | `-` |
 | `commonKeyWidth` | - | `boolean` | `false` |
 | `sectionHeaders` | - | `boolean` | `false` |
-| `sectionHeaderClass` | - | `string` | `''` |
-| `striped` | - | `boolean` | `false` |
+| `showActionsMenu` | - | `boolean` | `false` |
+
+## Slots
+| Name | Description |
+|------|-------------|
+| `actions-menu` | No description available. |
 
 
 ::: info
-This component does not use events, slots.
+This component does not use events.
 :::
 
 ## Component Code
 
 ```vue
-<!-- eslint-disable vue/no-v-html -->
 <template>
-  <div class="ep-key-value-table-container">
+  <ep-flex class="ep-key-value-table flex-col gap-10">
     <template
-      v-for="(rows, section) in formattedData"
-      :key="section"
+      v-for="section in processedData"
+      :key="section.name"
     >
       <h3
         v-if="sectionHeaders"
-        :class="['section-headers', sectionHeaderClass]"
+        class="text-style--section"
       >
-        {{ section }}
+        {{ section.name }}
       </h3>
-      <table
-        :class="['ep-key-value-table', classes]"
-        :style="{ width: width }"
-      >
+      <table>
         <tr
-          v-for="(value, key) in rows"
+          v-for="(value, key) in section.data"
           :key="key"
         >
           <td
-            class="text--subtle text-align--right"
+            class="text--subtle"
             :style="{ width: keyColumnWidth }"
           >
             {{ key }}
           </td>
-          <td v-html="value" />
+          <td :class="{ 'ep-flex gap-5': showActionsMenu }">
+            {{ value }}
+            <template v-if="$slots['actions-menu']">
+              <slot
+                name="actions-menu"
+                v-bind="{ key, value }"
+              />
+            </template>
+          </td>
         </tr>
       </table>
     </template>
-  </div>
+  </ep-flex>
 </template>
 
 <script setup>
   import { computed } from 'vue'
+
+  import EpFlex from '../flexbox/EpFlex.vue'
 
   defineOptions({
     name: 'EpKeyValueTable'
@@ -63,12 +72,8 @@ This component does not use events, slots.
 
   const props = defineProps({
     data: {
-      type: Object,
+      type: [Array, Object],
       required: true
-    },
-    width: {
-      type: String,
-      default: '100%'
     },
     commonKeyWidth: {
       type: Boolean,
@@ -78,36 +83,18 @@ This component does not use events, slots.
       type: Boolean,
       default: false
     },
-    sectionHeaderClass: {
-      type: String,
-      default: ''
-    },
-    striped: {
+    showActionsMenu: {
       type: Boolean,
       default: false
     }
   })
 
-  const classes = computed(() => ({
-    'ep-key-value-table--striped': props.striped
-  }))
+  const processedData = computed(() => {
+    if (Array.isArray(props.data)) {
+      return props.data
+    }
 
-  const formattedData = computed(() => {
-    if (!props.data.formatter) {
-      return props.data.data
-    }
-    const formatted = {}
-    for (const [key, value] of Object.entries(props.data.data)) {
-      formatted[key] = {}
-      for (const [prop, val] of Object.entries(value)) {
-        if (props.data.formatter[prop]) {
-          formatted[key][prop] = props.data.formatter[prop](val)
-        } else {
-          formatted[key][prop] = val
-        }
-      }
-    }
-    return formatted
+    return [props.data]
   })
 
   const keyColumnWidth = computed(() => {
@@ -115,14 +102,11 @@ This component does not use events, slots.
       return 'auto'
     }
 
-    const data = formattedData.value
     let maxKeyLength = 0
 
-    for (let key of Object.keys(data)) {
-      for (let subKey in data[key]) {
-        if (subKey.length > maxKeyLength) {
-          maxKeyLength = subKey.length
-        }
+    for (const section of processedData.value) {
+      for (const key in section.data) {
+        maxKeyLength = Math.max(maxKeyLength, key.length)
       }
     }
 
@@ -135,23 +119,39 @@ This component does not use events, slots.
 ## Styles (SCSS)
 
 ```scss
-@use '../mixins/_mixins' as mixins;
-
-.ep-key-value-table-container {
-  overflow: auto;
-  @include mixins.no-scrollbar;
-}
-
 .ep-key-value-table {
+  --ep-table-row-stripe-color: var(--interface-foreground);
+
   td {
-    padding: 0.5rem 1rem;
+    padding-block: 0.5rem;
     border-bottom: 1px solid var(--border-color);
+    line-height: 1.5;
+  }
+
+  // first tr td border top
+  tr:first-child td {
+    border-top: 1px solid var(--border-color);
+  }
+
+  td:first-child {
+    padding-inline-end: 2rem;
+    white-space: nowrap;
   }
 
   &--striped {
     tr:nth-child(even) {
-      background-color: var(--table-stripe-color);
+      background-color: var(--ep-table-row-stripe-color);
     }
+  }
+
+  &--align-right {
+    td:first-child {
+      text-align: right;
+    }
+  }
+
+  table + h3 {
+    margin-top: 1.5rem;
   }
 }
 ```

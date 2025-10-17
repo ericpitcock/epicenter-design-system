@@ -58,18 +58,20 @@ This component does not use slots.
   <div class="ep-date-picker">
     <ep-input
       v-bind="computedInputProps"
+      ref="datePickerInput"
       v-model="value"
     />
   </div>
 </template>
 
 <script setup>
+  import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+
+  import EpInput from '../input/EpInput.vue'
+
   defineOptions({
     name: 'EpDatePicker'
   })
-
-  import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
-  import EpInput from '../input/EpInput.vue'
 
   const props = defineProps({
     enableCloseOnSelect: {
@@ -102,6 +104,7 @@ This component does not use slots.
 
   const datePickerInput = ref(null)
   const value = ref('')
+  let flatpickrInstance = null
 
   const inputDefaults = {
     inputId: 'dp',
@@ -119,30 +122,33 @@ This component does not use slots.
     ...props.inputProps,
   }))
 
-  let flatpickrInstance = null // Reference for dynamic import
-
   const initFlatpickr = async () => {
-    if (!flatpickrInstance) {
-      const { default: Flatpickr } = await import('flatpickr') // Dynamic import
-      flatpickrInstance = Flatpickr
-    }
+    if (!datePickerInput.value) return
 
-    flatpickrInstance('#dp', {
-      closeOnSelect: props.enableCloseOnSelect,
-      dateFormat: props.dateFormat,
-      mode: props.mode,
-      position: `${props.positionY} ${props.positionX}`,
-      onChange: onChange,
-      onOpen: onOpen,
-    })
+    if (!flatpickrInstance) {
+      const { default: Flatpickr } = await import('flatpickr')
+      flatpickrInstance = new Flatpickr(datePickerInput.value.$el, {
+        closeOnSelect: props.enableCloseOnSelect,
+        dateFormat: props.dateFormat,
+        mode: props.mode,
+        position: `${props.positionY} ${props.positionX}`,
+        onChange: onChange,
+        onOpen: onOpen,
+      })
+    }
   }
 
-  onMounted(initFlatpickr)
+  onMounted(() => {
+    initFlatpickr()
+  })
 
-  watch(
-    () => [props.mode],
-    initFlatpickr
-  )
+  watch(() => props.mode, () => {
+    if (flatpickrInstance) {
+      flatpickrInstance.destroy()
+      flatpickrInstance = null
+    }
+    initFlatpickr()
+  })
 
   const onChange = (selectedDates, dateStr) => {
     value.value = dateStr
@@ -154,8 +160,9 @@ This component does not use slots.
   }
 
   onBeforeUnmount(() => {
-    if (datePickerInput.value) {
-      datePickerInput.value.flatpickrInstance?.destroy()
+    if (flatpickrInstance) {
+      flatpickrInstance.destroy()
+      flatpickrInstance = null
     }
   })
 </script>

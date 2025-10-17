@@ -60,7 +60,7 @@ html[data-color-theme='light'] {
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/InterVariable.woff2') format('woff2');
+  src: url('../static/fonts/InterVariable.woff2') format('woff2');
 }
 
 @font-face {
@@ -68,7 +68,7 @@ html[data-color-theme='light'] {
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/InterVariable-Italic.woff2') format('woff2');
+  src: url('../static/fonts/InterVariable-Italic.woff2') format('woff2');
 }
 
 :root {
@@ -81,7 +81,7 @@ html[data-color-theme='light'] {
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
-  src: url('/fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+  src: url('../static/fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
 }
 
 .monospace {

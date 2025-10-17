@@ -98,8 +98,9 @@ This component does not use slots.
 </template>
 
 <script setup>
-  import EpIcon from '../icon/EpIcon.vue'
   import { computed, ref, watch } from 'vue'
+
+  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpMultiSearch',
@@ -309,6 +310,8 @@ This component does not use slots.
 ## Styles (SCSS)
 
 ```scss
+@use '../mixins/_mixins' as *;
+
 .ep-multi-search {
   display: flex;
   flex-flow: row nowrap;
@@ -317,6 +320,11 @@ This component does not use slots.
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-color);
+
+  &:focus-within {
+    outline: var(--ep-default-focus-outline);
+    outline-offset: var(--ep-focus-outline-offset);
+  }
 
   .queries {
     display: flex;
@@ -336,9 +344,11 @@ This component does not use slots.
       border-radius: var(--border-radius);
       color: hsl(var(--gray-0));
 
-      &:hover {
-        background-color: var(--primary-color-600);
-        cursor: pointer;
+      @include hover {
+        &:hover {
+          background-color: var(--primary-color-600);
+          cursor: pointer;
+        }
       }
 
       .query__text {
@@ -363,7 +373,9 @@ This component does not use slots.
       color: var(--text-color);
     }
 
-    &:focus {
+    &:focus-visible {
+      outline: none;
+
       &::placeholder {
         color: transparent;
       }

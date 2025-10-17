@@ -139,6 +139,10 @@ This component does not use events.
     flex-direction: column;
     gap: 0.5rem;
     color: var(--text-color--loud);
+
+    &__cta {
+      margin-top: 2rem;
+    }
   }
 }
 ```

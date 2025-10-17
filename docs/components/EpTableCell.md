@@ -17,16 +17,14 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<!-- eslint-disable vue/no-v-html -->
 <template>
-  <span
-    :class="column.class"
-    v-html="formattedCell(row, column)"
-  />
+  <span :class="column.class">
+    {{ cellContent }}
+  </span>
 </template>
 
 <script setup>
-  import DOMPurify from 'dompurify'
+  import { ref, watchEffect } from 'vue'
 
   defineOptions({
     name: 'EpTableCell'
@@ -47,10 +45,20 @@ This component does not use events, slots.
     }
   })
 
+  const cellContent = ref('')
+
   const formattedCell = (row, column) => {
-    const value = row[column.key].value || row[column.key]
+    const value = row[column.key]
     const formatter = column.formatter
-    return formatter ? DOMPurify.sanitize(formatter(value, row)) : value
+
+    if (formatter) {
+      return formatter(value, row)
+    }
+    return value
   }
+
+  watchEffect(() => {
+    cellContent.value = formattedCell(props.row, props.column)
+  })
 </script>
 ```

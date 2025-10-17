@@ -35,9 +35,10 @@ This component does not use slots.
         <template #right>
           <ep-button
             v-show="!isNotificationsEmpty"
-            label="Clear all"
             @click="emit('clear-notifications')"
-          />
+          >
+            Clear all
+          </ep-button>
         </template>
       </ep-header>
     </template>
@@ -61,6 +62,7 @@ This component does not use slots.
 
 <script setup>
   import { computed } from 'vue'
+
   import EpButton from '../button/EpButton.vue'
   import EpContainer from '../container/EpContainer.vue'
   import EpEmptyState from '../empty-state/EpEmptyState.vue'

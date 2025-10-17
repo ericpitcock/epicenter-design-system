@@ -107,6 +107,10 @@ This component does not use props, events.
   })
 
   const epContainer = useTemplateRef('epContainer')
+
+  defineExpose({
+    epContainer
+  })
 </script>
 
 ```
@@ -114,7 +118,7 @@ This component does not use props, events.
 ## Styles (SCSS)
 
 ```scss
-@use '../mixins/_mixins' as mixins;
+@use '../mixins/_mixins' as *;
 
 .ep-container {
   --ep-container-width: 100%;
@@ -159,7 +163,7 @@ This component does not use props, events.
     flex: 1 1 auto;
     height: var(--ep-container-content-height);
     padding: var(--ep-container-content-padding);
-    @include mixins.no-scrollbar;
+    @include no-scrollbar;
     z-index: var(--z-index--default);
   }
 

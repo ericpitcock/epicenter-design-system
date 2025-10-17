@@ -56,8 +56,9 @@ This component does not use slots.
 </template>
 
 <script setup>
-  import { ref, nextTick, onMounted, onBeforeUnmount, watch } from 'vue'
   import 'mapbox-gl/dist/mapbox-gl.css'
+
+  import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
   defineOptions({
     name: 'EpMap',
@@ -174,6 +175,8 @@ This component does not use slots.
     observer.disconnect()
 
     if (map.value) {
+      removeMarkers()
+
       if (map.value.getLayer('test')) map.value.removeLayer('test')
       if (map.value.getSource('test')) map.value.removeSource('test')
       map.value.remove()

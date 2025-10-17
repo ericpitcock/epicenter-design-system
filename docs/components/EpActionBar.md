@@ -2,6 +2,8 @@
 
 
 
+DEPRECATED - Just use EpButton and EpDropdown directly.
+
 `EpActionBar` is a component that renders a horizontal bar with actions in the form of buttons or dropdowns. Sure, you could create one manually, with `EpButton` and `EpDropdown`, but why not use a component that already does it for you?
 
 Below is an example array of configuration objects that can be passed to the `items` prop.

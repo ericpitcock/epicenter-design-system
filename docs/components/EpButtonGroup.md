@@ -10,9 +10,8 @@
 |------|-------------|------|---------|
 | `items` | - | `array` | `-` |
 | `active` | - | `number` | `null` |
-| `disabled` | - | `boolean` | `false` |
+| `activeClass` | - | `string` | `''` |
 | `size` | - | `string` | `'default'` |
-| `styles` | - | `object` | `{}` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -32,19 +31,20 @@ This component does not use slots.
     <ep-button
       v-for="(item, index) in items"
       :key="item.label"
-      :label="item.label"
       :size="size"
-      :disabled="disabled"
-      :class="{ 'ep-button-group--active': index === activeButton && !disabled }"
-      :style="styles"
+      :disabled="item.disabled"
+      :class="{ [`${activeClass} ep-button-group--selected`]: index === activeButton && !item.disabled }"
       @click="onClick(item, index)"
-    />
+    >
+      {{ item.label }}
+    </ep-button>
   </div>
 </template>
 
 <script setup>
-  import EpButton from '../button/EpButton.vue'
   import { ref } from 'vue'
+
+  import EpButton from '../button/EpButton.vue'
 
   defineOptions({
     name: 'EpButtonGroup'
@@ -59,18 +59,14 @@ This component does not use slots.
       type: Number,
       default: null
     },
-    disabled: {
-      type: Boolean,
-      default: false
+    activeClass: {
+      type: String,
+      default: ''
     },
     size: {
       type: String,
       default: 'default'
     },
-    styles: {
-      type: Object,
-      default: () => ({})
-    }
   })
 
   const emit = defineEmits(['click'])
@@ -78,11 +74,10 @@ This component does not use slots.
   const activeButton = ref(props.active)
 
   const onClick = (item, index) => {
-    if (props.disabled) {
-      return
-    }
+    if (item.disabled) return
+
     activeButton.value = index
-    emit('click', item)
+    emit('click', { item, index })
   }
 </script>
 ```
@@ -92,12 +87,10 @@ This component does not use slots.
 ```scss
 .ep-button-group {
   --ep-button-group-active-text-color: var(--text-color--loud);
-  --ep-button-group-inactive-text-color: var(--text-color--disabled);
+  --ep-button-group-inactive-text-color: var(--text-color);
   display: flex;
 
   .ep-button {
-
-    // border-color: var(--border-color--lighter);
     &:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
@@ -114,17 +107,12 @@ This component does not use slots.
       border-radius: 0;
     }
 
-    &:not(.ep-button--disabled):not(.ep-button-group--active) {
+    &:not(.ep-button--disabled):not(.ep-button-group--selected) {
       color: var(--ep-button-group-inactive-text-color);
     }
-  }
 
-  &--active {
-    background-color: var(--color-primary);
-    color: var(--ep-button-group-active-text-color);
-
-    &:hover {
-      background-color: var(--color-primary);
+    &.ep-button-group--selected {
+      cursor: default;
     }
   }
 }

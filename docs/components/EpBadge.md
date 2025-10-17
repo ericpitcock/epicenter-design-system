@@ -46,9 +46,11 @@ This component does not use events, slots.
   --ep-badge-bg-color: var(--interface-overlay);
   --ep-badge-border-color: var(--border-color--lighter);
   --ep-badge-text-color: var(--text-color);
+  --ep-badge-padding: 0.4rem 0.8rem;
+  --ep-badge-border-radius: var(--border-radius);
   display: inline-block;
-  padding: 0.4rem 0.8rem;
-  border-radius: var(--border-radius);
+  padding: var(--ep-badge-padding);
+  border-radius: var(--ep-badge-border-radius);
   background: var(--ep-badge-bg-color);
   border: 0.1rem solid var(--ep-badge-border-color);
   color: var(--ep-badge-text-color);

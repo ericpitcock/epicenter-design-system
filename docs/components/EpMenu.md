@@ -14,6 +14,8 @@
 | Name    | Description                 | Payload    |
 |---------|-----------------------------|------------|
 | `click` | - | - |
+| `mouseover` | - | - |
+| `mouseleave` | - | - |
 
 
 ::: info
@@ -24,10 +26,10 @@ This component does not use slots.
 
 ```vue
 <template>
-  <div class="ep-menu">
+  <div :class="['ep-menu', `ep-menu--${menuType}`]">
     <template
       v-for="(item, index) of menuItems"
-      :key="item.id || index"
+      :key="item.id"
     >
       <ep-divider v-if="item.divider" />
       <div
@@ -40,14 +42,28 @@ This component does not use slots.
         v-else
         class="ep-menu__item"
         :data-item="index"
-        @mouseover="toggleSubmenu(item, index)"
-        @mouseleave="toggleSubmenu(item)"
+        @mouseover="onMouseover(item, index)"
+        @mouseleave="onMouseleave(item)"
       >
         <ep-button
           :class="buttonClasses(item)"
           v-bind="buttonProps(item)"
           @click.stop="onClick(item)"
-        />
+        >
+          <template
+            v-if="item.iconLeft"
+            #icon-left
+          >
+            <ep-icon v-bind="item.iconLeft" />
+          </template>
+          {{ item.label }}
+          <template #icon-right>
+            <ep-icon
+              v-if="item.children"
+              name="chevron-right"
+            />
+          </template>
+        </ep-button>
         <div
           v-if="item.children"
           v-show="activeItemIndex === index"
@@ -58,6 +74,8 @@ This component does not use slots.
             :class="$attrs.class"
             :menu-items="item.children"
             @click="onClick($event)"
+            @mouseover="onChildMouseover($event)"
+            @mouseleave="onChildMouseleave($event)"
           />
         </div>
       </div>
@@ -66,9 +84,11 @@ This component does not use slots.
 </template>
 
 <script setup>
-  import EpDivider from '../divider/EpDivider.vue'
-  import EpButton from '../button/EpButton.vue'
   import { ref } from 'vue'
+
+  import EpButton from '../button/EpButton.vue'
+  import EpDivider from '../divider/EpDivider.vue'
+  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpMenu'
@@ -81,7 +101,15 @@ This component does not use slots.
     },
     menuItems: {
       type: Array,
-      default: () => []
+      default: () => [],
+      validator: (value) => {
+        value.forEach((item) => {
+          if (!item.section && !item.divider && !item.id) {
+            console.warn('EpMenu: Each menu item that is not a section or divider must have an id')
+          }
+        })
+        return true
+      }
     },
     size: {
       type: String,
@@ -93,7 +121,7 @@ This component does not use slots.
     },
   })
 
-  const emit = defineEmits(['click'])
+  const emit = defineEmits(['click', 'mouseover', 'mouseleave'])
 
   const activeItemIndex = ref(null)
 
@@ -107,13 +135,32 @@ This component does not use slots.
   const buttonClasses = (item) => {
     return [
       'ep-button--menu-item',
-      { 'ep-button--menu-item--active': props.menuType === 'nav' && item.label === props.activeItem }
+      { 'ep-button--menu-item--selected': props.menuType === 'nav' && item.label === props.activeItem }
     ]
   }
 
-  const toggleSubmenu = (item, index = null) => {
-    if (!item.children) return
-    activeItemIndex.value = index
+  const onMouseover = (item, index) => {
+    if (!item.id || activeItemIndex.value === index) return
+
+    if (item.children) {
+      activeItemIndex.value = index
+    }
+    emit('mouseover', item)
+  }
+
+  const onChildMouseover = (item) => {
+    emit('mouseover', item)
+  }
+
+  const onMouseleave = (item) => {
+    if (item.children) {
+      activeItemIndex.value = null
+    }
+    emit('mouseleave', null)
+  }
+
+  const onChildMouseleave = (item) => {
+    emit('mouseleave', item)
   }
 
   const onClick = (item) => {
@@ -126,6 +173,8 @@ This component does not use slots.
 ## Styles (SCSS)
 
 ```scss
+@use '../mixins/_mixins' as *;
+
 .ep-menu {
   --ep-menu-bg-color: var(--interface-surface);
   --ep-menu-padding: 1rem 0.5rem;
@@ -137,10 +186,10 @@ This component does not use slots.
   --ep-menu-section-margin-top: 0;
   --ep-menu-divider-border-color: var(--border-color);
   --ep-button-menu-item-hover-bg-color: var(--primary-color-base);
-  --ep-button-menu-item-hover-text-color: var(--text-color--loud);
+  --ep-button-menu-item-hover-text-color: hsl(0, 0%, 100%);
   --ep-button-menu-item-hover-border-color: var(--primary-color-base);
-  --ep-button-menu-item-active-bg-color: var(--primary-color-base);
-  --ep-button-menu-item-active-text-color: var(--text-color--loud);
+  --ep-button-menu-item-selected-bg-color: var(--primary-color-base);
+  --ep-button-menu-item-selected-text-color: hsl(0, 0%, 100%);
   background: var(--ep-menu-bg-color);
   padding: var(--ep-menu-padding);
   border-width: var(--ep-menu-border-width);
@@ -148,51 +197,53 @@ This component does not use slots.
   border-color: var(--ep-menu-border-color);
   border-radius: var(--ep-menu-border-radius);
   text-align: left;
+}
 
-  &__section {
-    padding: var(--ep-menu-section-padding);
-    user-select: none;
-    white-space: nowrap;
+.ep-menu__section {
+  padding: var(--ep-menu-section-padding);
+  user-select: none;
+  white-space: nowrap;
 
-    &:not(:first-of-type) {
-      margin-top: var(--ep-menu-section-margin-top);
-    }
+  &:not(:first-of-type) {
+    margin-top: var(--ep-menu-section-margin-top);
   }
+}
 
-  &__item {
-    position: relative;
+.ep-menu__item {
+  position: relative;
 
-    .ep-button--menu-item {
-      width: 100%;
-      max-width: 100%;
-      background: transparent;
-      border-color: transparent;
-      padding-right: 2rem;
-      padding-left: 2rem;
+  .ep-button--menu-item {
+    width: 100%;
+    max-width: 100%;
+    background: transparent;
+    border-color: transparent;
+    padding-right: 2rem;
+    padding-left: 2rem;
 
-      &:hover:not(.ep-button--menu-item--active) {
+    @include hover {
+      &:not(.ep-button--menu-item--selected):hover {
         background: var(--ep-button-menu-item-hover-bg-color);
         color: var(--ep-button-menu-item-hover-text-color);
         border-color: var(--ep-button-menu-item-hover-border-color);
       }
-
-      &--active {
-        background: var(--ep-button-menu-item-active-bg-color);
-        color: var(--ep-button-menu-item-active-text-color);
-        cursor: default;
-      }
     }
 
-    &__sub-menu {
-      position: absolute;
-      top: -1rem;
-      left: calc(100% - 1rem);
+    &--selected {
+      background: var(--ep-button-menu-item-selected-bg-color);
+      color: var(--ep-button-menu-item-selected-text-color);
+      cursor: default;
     }
   }
 
-  .ep-divider {
-    --ep-divider-border-color: var(--ep-menu-divider-border-color);
-    --ep-divider-margin: 1rem 0;
+  &__sub-menu {
+    position: absolute;
+    top: -1rem;
+    left: calc(100% - 1rem);
   }
+}
+
+.ep-menu > .ep-divider {
+  --ep-divider-border-color: var(--ep-menu-divider-border-color);
+  --ep-divider-margin: 1rem 0;
 }
 ```

@@ -21,7 +21,6 @@
 ## Events
 | Name    | Description                 | Payload    |
 |---------|-----------------------------|------------|
-| `update:modelValue` | - | - |
 | `focus` | - | - |
 | `esc` | - | - |
 | `blur` | - | - |
@@ -44,8 +43,8 @@ This component does not use slots.
     <input
       :id="computedId"
       ref="input"
+      v-model="modelValue"
       :class="['ep-input', inputClasses]"
-      :value="modelValue"
       :type="type"
       :placeholder="computedPlaceholder"
       :disabled="disabled"
@@ -53,7 +52,6 @@ This component does not use slots.
       :readonly="readonly"
       :required="required"
       v-bind="$attrs"
-      @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
       @keydown="onKeyDown"
@@ -63,17 +61,13 @@ This component does not use slots.
 </template>
 
 <script setup>
+  import { computed, ref, watch } from 'vue'
+
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
-  import { computed, ref } from 'vue'
 
   defineOptions({
     name: 'EpInput',
     inheritAttrs: false,
-  })
-
-  const computedId = computed(() => {
-    const generateUniqueId = () => crypto.randomUUID()
-    return props.inputId || generateUniqueId()
   })
 
   const props = defineProps({
@@ -127,89 +121,73 @@ This component does not use slots.
     },
   })
 
-  const emit = defineEmits([
-    'update:modelValue',
-    'focus',
-    'esc',
-    'blur',
-    'enter',
-    'clear'
-  ])
+  const emit = defineEmits(['focus', 'esc', 'blur', 'enter', 'clear'])
 
   const hasFocus = ref(false)
   const hasInput = ref(false)
   const input = ref(null)
-
-  const computedPlaceholder = computed(() => {
-    return props.placeholder || props.label
-  })
-
-  const stylerProps = computed(() => {
-    return {
-      id: computedId.value,
-      hasFocus: hasFocus.value,
-      hasInput: hasInput.value,
-      inputValue: modelValue.value,
-      label: props.label,
-      disabled: props.disabled,
-      size: props.size,
-      iconLeft: props.iconLeft,
-      iconRight: props.clearable ? { ...props.iconRight, ...{ name: 'close' } } : props.iconRight,
-      iconRightClickable: props.clearable,
-      iconRightVisible: props.clearable && hasInput.value || !!props.iconRight,
-    }
-  })
-
-  const inputClasses = computed(() => {
-    return {
-      [`ep-input--${props.size}`]: props.size,
-      'ep-input--has-icon-left': props.iconLeft,
-      'ep-input--has-icon-right': props.iconRight,
-      'ep-input--disabled': props.disabled,
-    }
-  })
 
   const modelValue = defineModel({
     type: String,
     required: true
   })
 
-  const onInput = (event) => {
-    emit('update:modelValue', event.target.value)
-    if (event.target.value) {
-      hasInput.value = true
-    } else {
-      hasInput.value = false
-    }
+  const computedId = ref(props.inputId || crypto.randomUUID())
+
+  const computedPlaceholder = computed(() => props.placeholder || props.label)
+
+  const stylerProps = computed(() => ({
+    id: computedId.value,
+    hasFocus: hasFocus.value,
+    hasInput: hasInput.value,
+    label: props.label,
+    disabled: props.disabled,
+    size: props.size,
+    iconLeft: props.iconLeft,
+    iconRight: props.clearable ? { ...props.iconRight, name: 'close' } : props.iconRight,
+    iconRightClickable: props.clearable,
+    iconRightVisible: props.clearable && hasInput.value || !!props.iconRight
+  }))
+
+  const inputClasses = computed(() => ({
+    [`ep-input--${props.size}`]: props.size,
+    'ep-input--has-icon-left': props.iconLeft,
+    'ep-input--has-icon-right': props.iconRight,
+    'ep-input--disabled': props.disabled
+  }))
+
+  watch(modelValue, (value) => {
+    hasInput.value = !!value
+  })
+
+  const onEsc = () => {
+    input.value?.blur()
+    emit('esc', modelValue.value)
   }
 
-  const onEsc = (event) => {
-    input.value.blur()
-    emit('esc', event.target.value)
-  }
-
-  const onFocus = (event) => {
+  const onFocus = () => {
     hasFocus.value = true
-    emit('focus', event.target.value)
+    emit('focus', modelValue.value)
   }
 
-  const onBlur = (event) => {
+  const onBlur = () => {
     hasFocus.value = false
-    emit('blur', event.target.value)
+    emit('blur', modelValue.value)
   }
 
   const onKeyDown = (event) => {
-    emit('enter', event.target.value)
+    if (event.key === 'Enter') {
+      emit('enter', modelValue.value)
+    }
   }
 
   const onClear = () => {
-    input.value.value = ''
+    modelValue.value = ''
     hasInput.value = false
-    input.value.focus()
+    input.value?.focus()
     emit('clear', '')
   }
 </script>
-
 ```
 
 ## Styles (SCSS)
@@ -241,14 +219,6 @@ input.ep-input {
 
   &::placeholder {
     color: var(--ep-input-placeholder-text-color);
-  }
-
-  &:focus {
-    border-color: var(--ep-input-focus-border-color) !important;
-
-    &::placeholder {
-      color: transparent;
-    }
   }
 
   &--large {
