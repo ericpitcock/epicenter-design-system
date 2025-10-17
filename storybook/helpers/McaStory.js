@@ -1,0 +1,11 @@
+export const mcaStory = [
+  "In a quiet Brooklyn neighborhood, there was a man who never sought the spotlight, though it often found him. He was the kind of guy who could command a room without raising his voice, whose words carried weight not because they were loud but because they were true. His friends used to say he had an old soul, though his spirit was restless. He spent years carving out something different, something that stood apart, never content to follow the road already paved.",
+
+  "In his younger days, he was wild—untamed energy wrapped in a sharp wit and a mischievous grin. He and his closest friends tore through the city like they owned it, flipping expectations on their heads, finding rhythm where others heard noise, making art out of rebellion. They weren’t supposed to succeed. They weren’t supposed to matter. But they did, because he made sure of it. With every rhyme, every beat, every move he made, there was a quiet intention behind the chaos.",
+
+  "As time passed, the fire inside him didn’t burn out—it refined itself. The brash confidence of youth gave way to something deeper. He began to see the world for what it was, and more importantly, for what it could be. He spoke less but said more. His restlessness turned outward, toward causes greater than himself. He walked the streets of far-off places, stood where most wouldn’t dare, and lent his voice to those who had none. And yet, he never asked for credit. If you mentioned his name, he’d just wave it off with that same quiet smile, as if to say, this isn’t about me.",
+
+  "But he was never just one thing. He was never just a poet, never just a troublemaker, never just a voice in the crowd. He was all of it, all at once. A bridge between the past and the future, between noise and meaning. He saw life as something to be explored, challenged, reshaped, and he carried that belief with him until the end.",
+
+  "And though he left too soon, his presence lingers in the echoes of a bassline, in the streets of a city that still hums with his rhythm. His friends carry him in their voices, in the things they build, in the way they refuse to let time dull the edge of what they created together. Because some spirits don’t fade. They just find new ways to be heard."
+]
