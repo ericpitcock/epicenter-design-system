@@ -309,6 +309,7 @@ export const Button = args => ({
       @click="onClick"
     >
       <template
+        v-if="args.enabledIcons && args.iconLeft != 'None'"
         #icon-left
       >
         <component :is="iconLeftComponent" />
@@ -317,7 +318,7 @@ export const Button = args => ({
       {{ args.label }}
       
       <template
-        v-if="args.enabledIcons && args.iconRight.name != 'None'"
+        v-if="args.enabledIcons && args.iconRight != 'None'"
         #icon-right
       >
         <component :is="iconRightComponent" />
@@ -331,7 +332,7 @@ Button.args = {
   size: 'large',
   disabled: false,
   classes: 'Primary',
-  enabledIcons: true,
+  enabledIcons: false,
   iconLeft: 'None',
   iconRight: 'None',
   borderRadius: 6,

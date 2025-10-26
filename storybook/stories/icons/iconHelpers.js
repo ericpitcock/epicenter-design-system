@@ -60,4 +60,7 @@ const iconNames = iconsData.map(icon => icon.name)
 // Array of component names
 const componentNames = iconNames.map(getComponentName)
 
+// add 'None' option at the start
+componentNames.unshift('None')
+
 export { componentNames }
