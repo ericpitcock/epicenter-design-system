@@ -1,31 +1,29 @@
 <template>
   <div class="icon-browser">
     <div class="controls">
-      <div class="search-wrapper">
-        <input
-          v-model="search"
-          placeholder="Search icons by name, tags, or category..."
-          class="search-input"
-          :class="{ 'search-input--active': search }"
-          @input="onSearchChange"
-        >
-      </div>
-      <select
-        v-model="selectedCategory"
-        class="category-select"
-        @change="onCategoryChange"
-      >
-        <option
-          v-for="category in categories"
-          :key="category"
-          :value="category"
-        >
-          {{ category }}
-        </option>
-      </select>
-      <p class="icon-count">
-        {{ filteredIcons.length }} of {{ iconsData.length }} icons
-      </p>
+      <ep-flex class="justify-between align-center gap-30">
+        <ep-flex class="gap-10">
+          <ep-select
+            v-model="selectedCategory"
+            select-id="icon-category-select"
+            class="category-select"
+            :options="categories"
+            size="xlarge"
+            @change="onCategoryChange"
+          />
+          <ep-input
+            v-model="search"
+            placeholder="Search icons by name, tags, or category..."
+            class="search-input"
+            :class="{ 'search-input--active': search }"
+            size="xlarge"
+            @input="onSearchChange"
+          />
+        </ep-flex>
+        <p class="icon-count">
+          {{ filteredIcons.length }} of {{ iconsData.length }} icons
+        </p>
+      </ep-flex>
     </div>
     <div class="icon-grid">
       <div
@@ -68,31 +66,36 @@
       v-if="totalPages > 1"
       class="pagination"
     >
-      <button
+      <ep-button
         :class="{ 'pagination-button--disabled': currentPage === 1 }"
         :disabled="currentPage === 1"
-        class="pagination-button"
+        class="ep-button-var--secondary"
         @click="currentPage = Math.max(1, currentPage - 1)"
       >
         Previous
-      </button>
+      </ep-button>
       <span class="pagination-info">
         Page {{ currentPage }} of {{ totalPages }}
       </span>
-      <button
+      <ep-button
         :class="{ 'pagination-button--disabled': currentPage === totalPages }"
         :disabled="currentPage === totalPages"
-        class="pagination-button"
+        class="ep-button-var--secondary"
         @click="currentPage = Math.min(totalPages, currentPage + 1)"
       >
         Next
-      </button>
+      </ep-button>
     </div>
   </div>
 </template>
 
 <script setup>
   import { computed, defineAsyncComponent, ref } from 'vue'
+
+  import EpButton from '@/components/button/EpButton.vue'
+  import EpFlex from '@/components/flexbox/EpFlex.vue'
+  import EpInput from '@/components/input/EpInput.vue'
+  import EpSelect from '@/components/select/EpSelect.vue'
 
   import iconsData from '../../../packages/epicenter-icons/icons.json'
   import { createIconImports, getComponentName } from './iconHelpers.js'
@@ -256,6 +259,7 @@
 
   const categories = computed(() =>
     ['All', ...new Set(iconsData.map(icon => icon.category))].sort()
+      .map(category => ({ label: category, value: category }))
   )
 
   const copyIconName = async (iconName) => {
@@ -282,14 +286,13 @@
 
 <style lang="scss" scoped>
   .icon-browser {
-    --border-default: 1px solid #d3d3d3;
     display: grid;
     grid-template-rows: 100px 1fr;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #f8f9fa;
+    background: var(--interface-bg);
 
     &:has(.pagination) {
       grid-template-rows: 100px 1fr 100px;
@@ -297,22 +300,27 @@
   }
 
   .controls {
-    padding: 20px;
-    background: white;
-    border-bottom: var(--border-default);
+    padding-inline: 30px;
+    background: var(--interface-surface);
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     gap: 16px;
     align-items: center;
     flex-wrap: wrap;
+
+    .ep-flex {
+      flex: 1;
+    }
   }
 
   .search-input {
     flex: 1;
     min-width: 300px;
     padding: 8px 12px;
-    border: var(--border-default);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 14px;
+    background: var(--interface-foreground);
 
     &:focus {
       outline: none;
@@ -322,17 +330,16 @@
   }
 
   .category-select {
-    padding: 8px 12px;
-    border: var(--border-default);
-    border-radius: 4px;
-    font-size: 14px;
-    background: white;
-    min-width: 150px;
+    flex: 0 0 200px;
+  }
+
+  .icon-count {
+    color: var(--text-color--subtle);
   }
 
   .icon-grid {
     overflow-y: auto;
-    padding: 20px;
+    padding: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     grid-auto-rows: max-content;
@@ -342,8 +349,8 @@
 
   .icon-card {
     position: relative;
-    background: white;
-    border: var(--border-default);
+    background: var(--interface-surface);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 16px;
     text-align: center;
@@ -381,11 +388,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-top: 8px;
+    color: var(--text-color--loud)
   }
 
   .icon-category {
     font-size: 12px;
-    color: #6c757d;
+    color: var(--text-color--subtle);
     font-weight: 500;
     word-break: break-all;
     line-height: 1.3;
@@ -409,8 +417,8 @@
 
   .pagination {
     padding: 20px;
-    background: white;
-    border-top: var(--border-default);
+    background: var(--interface-surface);
+    border-top: 1px solid var(--border-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -418,34 +426,8 @@
     flex-wrap: wrap;
   }
 
-  .pagination-button {
-    padding: 8px 16px;
-    border: var(--border-default);
-    border-radius: 4px;
-    background: white;
-    color: #495057;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    &:hover:not(:disabled) {
-      background: #f8f9fa;
-      border-color: #007bff;
-      color: #007bff;
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: default;
-      background: #f8f9fa;
-    }
-  }
-
   .pagination-info {
-    color: #6c757d;
+    color: var(--text-color--subtle);
     font-size: 14px;
     margin: 0 8px;
   }
