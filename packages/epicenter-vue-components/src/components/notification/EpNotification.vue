@@ -15,7 +15,7 @@
         @click.stop="dismissNotification"
       >
         <template #icon-right>
-          <ep-icon name="close" />
+          close icon
         </template>
       </ep-button>
     </div>
@@ -26,7 +26,6 @@
   import { useTimeAgo } from '@vueuse/core'
 
   import EpButton from '../button/EpButton.vue'
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpNotification',

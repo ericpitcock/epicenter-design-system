@@ -3,10 +3,10 @@
     <div class="ep-banner__color-strip" />
     <div class="ep-banner__body">
       <div
-        v-if="iconProps.name"
+        v-if="$slots.icon"
         class="ep-banner__body__icon"
       >
-        <ep-icon v-bind="iconProps" />
+        <slot name="icon" />
       </div>
       <div class="ep-banner__body__message">
         <div class="ep-banner__body__message__text font-size--small">
@@ -25,42 +25,17 @@
           <slot name="subtext" />
         </div>
       </div>
-      <ep-button
-        v-if="dissmissable"
-        class="ep-button-var--ghost"
-        @click="dismissBanner"
-      >
-        <template #icon-right>
-          <ep-icon name="close" />
-        </template>
-      </ep-button>
+      <slot
+        name="dismiss"
+        v-bind="{ dismissBanner }"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-  import EpButton from '../button/EpButton.vue'
-  import EpIcon from '../icon/EpIcon.vue'
-
   defineOptions({
     name: 'EpBanner'
-  })
-
-  const props = defineProps({
-    /**
-     * Whether the banner can be dismissed.
-     */
-    dissmissable: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * The icon properties.
-     */
-    iconProps: {
-      type: Object,
-      default: () => ({})
-    },
   })
 
   const emit = defineEmits([

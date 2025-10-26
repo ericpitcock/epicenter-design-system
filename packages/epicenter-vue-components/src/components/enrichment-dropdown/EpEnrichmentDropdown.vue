@@ -34,14 +34,7 @@
                 <ep-button>
                   Source
                   <template #icon-right>
-                    <ep-icon
-                      name="f-arrow-up-right"
-                      style="
-                        --ep-icon-width: 1.4rem;
-                        --ep-icon-height: 1.4rem;
-                        --ep-icon-stroke-width: 2;
-                      "
-                    />
+                    arrow up right icon
                   </template>
                 </ep-button>
               </ep-flex>
@@ -59,7 +52,6 @@
   import EpButton from '../button/EpButton.vue'
   import EpDropdown from '../dropdown/EpDropdown.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
-  import EpIcon from '../icon/EpIcon.vue'
   import EpKeyValueTable from '../key-value-table/EpKeyValueTable.vue'
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpMenu from '../menu/EpMenu.vue'

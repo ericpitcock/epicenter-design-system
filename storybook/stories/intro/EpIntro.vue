@@ -19,10 +19,7 @@
             v-bind="btn.props"
           >
             <template #icon-left>
-              <ep-icon
-                :name="btn.icon"
-                class="hero-icon"
-              />
+              button icon
             </template>
             {{ btn.props.label }}
           </ep-button>
@@ -42,7 +39,6 @@
 <script setup>
   import EpButton from '@/components/button/EpButton.vue'
   import EpFlex from '@/components/flexbox/EpFlex.vue'
-  import EpIcon from '@/components/icon/EpIcon.vue'
   import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
 
   const buttons = [

@@ -5,18 +5,13 @@
   >
     <div :class="headerClass">
       {{ column.label }}
-      <ep-icon
-        v-if="isSorted"
-        v-bind="iconProps"
-      />
+      direction icon
     </div>
   </th>
 </template>
 
 <script setup>
   import { computed } from 'vue'
-
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpTableSortableHeader'

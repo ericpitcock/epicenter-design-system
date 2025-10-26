@@ -15,8 +15,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "update-docs": "node scripts/generateDocs.mjs",
     "build-components": "node scripts/buildVueComponents.mjs",
-    "build-styles": "node scripts/buildStyles.mjs",
-    "build-icons": "node scripts/buildIcons.mjs"
+    "build-styles": "node scripts/buildStyles.mjs"
   },
   "repository": {
     "type": "git",

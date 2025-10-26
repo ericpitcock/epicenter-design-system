@@ -27,14 +27,11 @@
             v-if="item.iconLeft"
             #icon-left
           >
-            <ep-icon v-bind="item.iconLeft" />
+            icon left
           </template>
           {{ item.label }}
           <template #icon-right>
-            <ep-icon
-              v-if="item.children"
-              name="chevron-right"
-            />
+            chevron right icon
           </template>
         </ep-button>
         <div
@@ -61,7 +58,6 @@
 
   import EpButton from '../button/EpButton.vue'
   import EpDivider from '../divider/EpDivider.vue'
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpMenu'

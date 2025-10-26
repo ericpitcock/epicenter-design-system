@@ -5,3 +5,7 @@ storybook-react-static/
 docs/.vitepress/cache/
 docs/.vitepress/dist/
 packages/epicenter-vue-components/dist/
+
+# icons package
+packages/epicenter-icons/cleaned_svgs/
+packages/epicenter-icons/downloaded_svgs/

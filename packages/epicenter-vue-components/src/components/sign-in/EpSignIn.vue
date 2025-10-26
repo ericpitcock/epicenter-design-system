@@ -24,12 +24,7 @@
           v-if="state === 'message'"
           class="ep-sign-in__form__message copy-block"
         >
-          <ep-icon
-            name="f-mail"
-            :size="60"
-            weight="extra-light"
-            color="var(--color--primary)"
-          />
+          mail icon
           <p class="text-align--center">
             Please check your email for password<br> reset instructions
           </p>
@@ -87,7 +82,6 @@
 
   import EpButton from '../button/EpButton.vue'
   import EpContainer from '../container/EpContainer.vue'
-  import EpIcon from '../icon/EpIcon.vue'
   import EpInput from '../input/EpInput.vue'
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpicenterLogo from '../logo/EpicenterLogo.vue'

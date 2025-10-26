@@ -4,7 +4,7 @@
     @click="toggleTheme"
   >
     <template #icon-left>
-      <ep-icon :name="buttonIcon" />
+      theme icon
     </template>
   </ep-button>
 </template>
@@ -13,7 +13,6 @@
   import { computed } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpThemeToggle'

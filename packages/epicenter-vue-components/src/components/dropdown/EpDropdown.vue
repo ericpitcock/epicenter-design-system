@@ -18,7 +18,7 @@
             v-if="computedButtonProps.iconLeft"
             #icon-left
           >
-            <ep-icon v-bind="computedButtonProps.iconLeft" />
+            icon left
           </template>
           <template
             v-if="computedButtonProps.label"
@@ -30,7 +30,7 @@
             v-if="computedButtonProps.iconRight"
             #icon-right
           >
-            <ep-icon v-bind="computedButtonProps.iconRight" />
+            icon right
           </template>
         </ep-button>
       </slot>
@@ -56,7 +56,6 @@
   import { computed, ref, useTemplateRef } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
-  import EpIcon from '../icon/EpIcon.vue'
   import EpMenu from '../menu/EpMenu.vue'
 
   defineOptions({

@@ -17,12 +17,7 @@
         </div>
       </template>
       <template #right>
-        <ep-icon
-          name="user"
-          :style="{
-            '--ep-icon-width': '2rem',
-          }"
-        />
+        user_icon
       </template>
     </ep-header>
     <div class="image-container">
@@ -36,7 +31,6 @@
 
 <script setup>
   import EpHeader from '../header/EpHeader.vue'
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpBrowserFrame'

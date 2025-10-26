@@ -41,7 +41,7 @@
           </template>
           <template v-else>
             <span class="ep-breadcrumbs__separator--default">
-              <ep-icon name="chevron-right" />
+              chevron_right
             </span>
           </template>
         </span>
@@ -53,8 +53,6 @@
 <script setup>
   import { computed } from 'vue'
   import { useRoute } from 'vue-router'
-
-  import EpIcon from '../icon/EpIcon.vue'
 
   const props = defineProps({
     items: {
@@ -107,13 +105,6 @@
 
     &__separator {
       padding-inline: 0.5em;
-
-      .ep-icon {
-        --ep-icon-width: 1.4em;
-        position: relative;
-        top: 0.1rem;
-        left: 0.1rem;
-      }
     }
   }
 </style>

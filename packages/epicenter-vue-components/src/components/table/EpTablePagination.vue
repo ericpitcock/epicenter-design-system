@@ -11,7 +11,7 @@
           @click="prevPage"
         >
           <template #icon-left>
-            <ep-icon name="chevron-left" />
+            chevron left icon
           </template>
         </ep-button>
         <template v-if="showPages">
@@ -48,7 +48,7 @@
           @click="nextPage"
         >
           <template #icon-right>
-            <ep-icon name="chevron-right" />
+            chevron right icon
           </template>
         </ep-button>
       </template>
@@ -74,7 +74,6 @@
   import EpButton from '../button/EpButton.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
   import EpFooter from '../footer/EpFooter.vue'
-  import EpIcon from '../icon/EpIcon.vue'
   import EpSelect from '../select/EpSelect.vue'
 
   defineOptions({

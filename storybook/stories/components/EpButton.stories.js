@@ -1,10 +1,10 @@
-import { computed } from 'vue'
+// import Taco02 from '@ericpitcock/epicenter-icons/icons/Taco02'
+import { computed, defineAsyncComponent } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
-import EpIcon from '@/components/icon/EpIcon.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
-import { iconMapping, iconOptions } from '../../helpers/iconHelper.js'
+import { componentNames } from '../icons/iconHelpers.js'
 
 export default {
   title: 'Components/Button',
@@ -93,8 +93,8 @@ export default {
     iconLeft: {
       if: { arg: 'enabledIcons' },
       name: 'Icon Left',
-      options: iconOptions,
-      mapping: iconMapping,
+      options: componentNames,
+      // mapping: iconMapping,
       control: {
         type: 'select'
       },
@@ -105,8 +105,8 @@ export default {
     iconRight: {
       if: { arg: 'enabledIcons' },
       name: 'Icon Right',
-      options: iconOptions,
-      mapping: iconMapping,
+      options: componentNames,
+      // mapping: iconMapping,
       control: {
         type: 'select'
       },
@@ -254,7 +254,7 @@ export default {
 }
 
 export const Button = args => ({
-  components: { EpButton, EpIcon },
+  components: { EpButton },
   setup() {
     const buttonStyles = computed(() => ({
       '--ep-button-bg-color': args.backgroundColor,
@@ -280,11 +280,26 @@ export const Button = args => ({
       return props
     })
 
+    // Dynamic icon import
+    const iconLeftComponent = computed(() => {
+      if (args.enabledIcons && args.iconLeft && args.iconLeft !== 'None') {
+        return defineAsyncComponent(() => import(`@ericpitcock/epicenter-icons/icons/${args.iconLeft}.js`))
+      }
+      return null
+    })
+
+    const iconRightComponent = computed(() => {
+      if (args.enabledIcons && args.iconRight && args.iconRight !== 'None') {
+        return defineAsyncComponent(() => import(`@ericpitcock/epicenter-icons/icons/${args.iconRight}.js`))
+      }
+      return null
+    })
+
     const onClick = () => {
       console.log('Button clicked!')
     }
 
-    return { args, buttonProps, buttonStyles, onClick }
+    return { args, buttonProps, buttonStyles, onClick, iconLeftComponent, iconRightComponent }
   },
   template: `
     <ep-button
@@ -294,19 +309,18 @@ export const Button = args => ({
       @click="onClick"
     >
       <template
-        v-if="args.enabledIcons && args.iconLeft"
         #icon-left
       >
-        <ep-icon v-bind="args.iconLeft" />
+        <component :is="iconLeftComponent" />
       </template>
 
       {{ args.label }}
       
       <template
-        v-if="args.enabledIcons && args.iconRight"
+        v-if="args.enabledIcons && args.iconRight.name != 'None'"
         #icon-right
       >
-        <ep-icon v-bind="args.iconRight" />
+        <component :is="iconRightComponent" />
       </template>
     </ep-button>
   `
@@ -317,7 +331,7 @@ Button.args = {
   size: 'large',
   disabled: false,
   classes: 'Primary',
-  enabledIcons: false,
+  enabledIcons: true,
   iconLeft: 'None',
   iconRight: 'None',
   borderRadius: 6,

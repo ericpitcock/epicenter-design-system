@@ -8,7 +8,7 @@
         v-if="iconLeft"
         :class="['ep-input-styler__icon-left', `ep-input-styler__icon-left--${size}`]"
       >
-        <ep-icon v-bind="iconLeft" />
+        icon left
       </div>
       <div
         v-if="iconRight"
@@ -19,10 +19,7 @@
         ]"
         @click="onClick"
       >
-        <ep-icon
-          v-show="iconRightVisible"
-          v-bind="iconRight"
-        />
+        icon right
       </div>
     </div>
     <label
@@ -38,8 +35,6 @@
 
 <script setup>
   import { computed, ref } from 'vue'
-
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpInputStyler',

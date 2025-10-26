@@ -34,7 +34,7 @@
           </template>
           <template #cell-contrast="{ row }">
             <ep-flex class="align-center gap-3">
-              <ep-icon :name="contrastIcon(row.contrast)" />
+              icon span
               {{ row.contrast }}
             </ep-flex>
           </template>
@@ -72,7 +72,6 @@
 
   import EpContainer from '@/components/container/EpContainer.vue'
   import EpFlex from '@/components/flexbox/EpFlex.vue'
-  import EpIcon from '@/components/icon/EpIcon.vue'
   import EpMenu from '@/components/menu/EpMenu.vue'
   import EpTable from '@/components/table/EpTable.vue'
   import EpTableHead from '@/components/table/EpTableHead.vue'

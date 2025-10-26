@@ -9,7 +9,7 @@
       v-if="icon"
       class="ep-toggle-button__icon"
     >
-      <ep-icon v-bind="icon" />
+      icon span
     </span>
     <span
       v-if="label"
@@ -23,8 +23,6 @@
 <script setup>
   import { computed } from 'vue'
 
-  import EpIcon from '../icon/EpIcon.vue'
-
   const model = defineModel({
     type: Boolean,
     default: false
@@ -37,13 +35,6 @@
     label: {
       type: String,
       default: '',
-    },
-    /**
-     * An icon configuration object to pass to the EpIcon component.
-     */
-    icon: {
-      type: Object,
-      default: null,
     },
     /**
      * The class to apply when the button is active.

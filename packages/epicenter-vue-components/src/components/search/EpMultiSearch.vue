@@ -8,7 +8,7 @@
       class="ep-multi-search__icon"
       :style="iconStyles"
     >
-      <ep-icon v-bind="icon" />
+      icon
     </div>
     <div class="queries">
       <div
@@ -18,11 +18,7 @@
         @click="onQueryClose(item, index)"
       >
         <span class="query__text font-size--small">{{ item }}</span>
-        <ep-icon
-          name="close"
-          :style="{ '--ep-icon-width': '16px', '--ep-icon-stroke-width': 2 }"
-          class="query__close"
-        />
+        close icon
       </div>
     </div>
     <input
@@ -44,18 +40,13 @@
       :style="iconStyles"
       @click="onClear"
     >
-      <ep-icon
-        name="close"
-        :style="{ '--ep-icon-width': '24px' }"
-      />
+      close icon
     </div>
   </div>
 </template>
 
 <script setup>
   import { computed, ref, watch } from 'vue'
-
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpMultiSearch',
