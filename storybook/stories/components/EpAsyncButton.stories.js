@@ -48,6 +48,10 @@ export default {
       control: { type: 'boolean' },
       table: { category: 'Behavior' }
     },
+    // events
+    click: {
+      table: { disable: true }
+    },
   }
 }
 export const AsyncButton = (args) => ({

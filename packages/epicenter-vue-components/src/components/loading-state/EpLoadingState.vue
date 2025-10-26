@@ -47,7 +47,7 @@
     name: 'EpLoading',
   })
 
-  const props = defineProps({
+  defineProps({
     message: {
       type: Object,
       default: () => ({

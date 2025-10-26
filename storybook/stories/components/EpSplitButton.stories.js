@@ -73,6 +73,13 @@ export default {
         type: 'select'
       }
     },
+    // events
+    'button-click': {
+      table: { disable: true }
+    },
+    'dropdown-select': {
+      table: { disable: true }
+    },
   }
 }
 

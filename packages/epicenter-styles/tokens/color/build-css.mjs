@@ -1,7 +1,7 @@
-import fs from 'fs'
-import yaml from 'js-yaml'
 import chokidar from 'chokidar'
+import fs from 'fs'
 import glob from 'glob' // Corrected import for CommonJS module
+import yaml from 'js-yaml'
 import path from 'path' // Import the path module
 
 function loadYAMLFiles(pattern) {

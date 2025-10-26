@@ -30,6 +30,22 @@ export default {
           classic: 'Classic'
         }
       }
+    },
+    // storybook specific props
+    type: {
+      name: 'Type',
+      options: ['tabs', 'router-links'],
+      control: {
+        type: 'radio',
+        labels: {
+          tabs: 'Tabs',
+          'router-links': 'Router Links'
+        }
+      }
+    },
+    // events
+    ['tab-click']: {
+      table: { disable: true }
     }
   }
 }
@@ -40,19 +56,16 @@ const routerLinkItems = [
   {
     label: 'Data',
     to: '/library/data',
-    // to: '/library/data?tab=0',
     exact: true
   },
   {
     label: 'Stats',
     to: '/library/data/stats',
-    // to: '/library/data?tab=1',
     exact: true
   },
   {
     label: 'Authors',
     to: '/library/authors',
-    // to: '/library/data?tab=2',
     exact: true
   }
 ]
@@ -91,7 +104,8 @@ export const Tabs = args => ({
       headerPadding,
       setActiveTab,
       tabItems,
-      routerLinkItems
+      routerLinkItems,
+      ready
     }
   },
   template: `
@@ -118,7 +132,7 @@ export const Tabs = args => ({
           <template #left>
             <ep-tabs
               v-bind="args"
-              :items="routerLinkItems"
+              :items="args.type === 'tabs' ? tabItems : routerLinkItems"
               :active-tab-index="activeTab"
               @tab-click="setActiveTab"
             />
@@ -127,28 +141,34 @@ export const Tabs = args => ({
       </template>
       <template #default>
         <ep-tab-content
-          :items="routerLinkItems"
+          v-if="args.type === 'tabs'"
+          :items="args.type === 'tabs' ? tabItems : routerLinkItems"
           :active-tab-index="activeTab"
         >
-        <template #tab-0>
-          <div class="copy-block">
-            <h1>{{ $route.name }}</h1>
-            <p></p>
-          </div>
-        </template>
-        <template #tab-1>
-          <div class="copy-block">
-            <h1>{{ $route.name }}</h1>
-            <p></p>
-          </div>
-        </template>
-        <template #tab-2>
-          <div class="copy-block">
-            <h1>{{ $route.name }}</h1>
-            <p></p>
-          </div>
-        </template>
+          <template #tab-0>
+            <div class="copy-block">
+              <h1>Data</h1>
+              <p></p>
+            </div>
+          </template>
+          <template #tab-1>
+            <div class="copy-block">
+              <h1>Stats</h1>
+              <p></p>
+            </div>
+          </template>
+          <template #tab-2>
+            <div class="copy-block">
+              <h1>Authors</h1>
+              <p></p>
+            </div>
+          </template>
         </ep-tab-content>
+        <template v-else>
+          <div class="copy-block">
+            <h1>{{ ready ? $route.name : 'Loading...' }}</h1>
+          </div>
+        </template>
       </template>
     </ep-container>
   `
@@ -157,5 +177,6 @@ export const Tabs = args => ({
 Tabs.args = {
   activeTabIndex: 0,
   items: routerLinkItems,
-  variant: 'default'
+  variant: 'default',
+  type: 'router-links'
 }

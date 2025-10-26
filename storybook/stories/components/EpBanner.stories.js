@@ -1,4 +1,4 @@
-import { computed,ref } from 'vue'
+import { computed, ref } from 'vue'
 
 import EpBanner from '@/components/banner/EpBanner.vue'
 
@@ -151,6 +151,10 @@ export default {
       },
     },
     styles: {
+      table: { disable: true }
+    },
+    // events
+    dismissed: {
       table: { disable: true }
     },
   }

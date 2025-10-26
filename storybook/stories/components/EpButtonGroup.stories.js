@@ -29,6 +29,10 @@ export default {
         }
       }
     },
+    // events
+    click: {
+      table: { disable: true }
+    }
   }
 }
 

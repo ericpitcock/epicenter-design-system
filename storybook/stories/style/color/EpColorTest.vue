@@ -2,22 +2,24 @@
   <div class="color-test">
     <div class="copy-block">
       <p>
-        A color that works for a large background or button doesn't always work
-        for borders or
+        A color that works for backgrounds or buttons may not suit borders or
         <a
           :style="{ color: primaryColor }"
           href="#"
-        >Text links</a>, especially across dark and light themes. When you want
-        to
-        keep the colors in the same family, but
-        adjust for a particualar use case, this tool will help with that.
+          @click.prevent
+        >text links</a>
+        across themes. This tool helps you adjust colors within the same family
+        for each use case.
       </p>
     </div>
     <div
       class="color-chip"
       :style="`background: ${primaryColor};`"
     />
-    <ep-button :style="{ background: primaryColor, borderColor: primaryColor }">
+    <ep-button
+      class="ep-button-var--color-test"
+      :style="{ background: primaryColor, borderColor: primaryColor }"
+    >
       Button
     </ep-button>
     <ep-button
@@ -31,61 +33,40 @@
       background-color=""
       :style="{ borderColor: primaryColor }"
     />
-    <!-- <div class="primary-color" v-for="variant in variants" :key="variant">
-      <div class="color" :style="`background-color: var(--color--primary--${variant})`"></div>
-      <div class="name">{{ variant }}</div>
-    </div> -->
   </div>
 </template>
 
-<script>
+<script setup>
+  import { computed } from 'vue'
+
   import EpBadge from '@/components/badge/EpBadge.vue'
   import EpButton from '@/components/button/EpButton.vue'
 
-  export default {
-    name: 'EpColorTest',
-    components: {
-      EpBadge,
-      EpButton
+  const props = defineProps({
+    hue: {
+      type: Number,
+      default: 223
     },
-    props: {
-      hue: {
-        type: Number,
-        default: 223
-      },
-      saturation: {
-        type: Number,
-        default: 100
-      },
-      lightness: {
-        type: Number,
-        default: 65
-      }
+    saturation: {
+      type: Number,
+      default: 100
     },
-    data() {
-      return {
-        variants: [
-          'lightest',
-          'lighter',
-          'light',
-          'dark',
-          'darker',
-          'darkest'
-        ]
-      }
-    },
-    computed: {
-      primaryColor() {
-        return `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%)`
-      }
-    },
-    watch: {
-
+    lightness: {
+      type: Number,
+      default: 65
     }
-  }
+  })
+
+  const primaryColor = computed(() => {
+    return `hsl(${props.hue}, ${props.saturation}%, ${props.lightness}%)`
+  })
 </script>
 
 <style lang="scss" scoped>
+  .copy-block p {
+    text-wrap: balance;
+  }
+
   .color-chip {
     width: 100px;
     height: 100px;
@@ -99,5 +80,9 @@
     * + * {
       margin-top: 2rem;
     }
+  }
+
+  .ep-button-var--color-test {
+    color: #fff;
   }
 </style>

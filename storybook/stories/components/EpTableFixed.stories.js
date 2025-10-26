@@ -38,6 +38,26 @@ export default {
     showActionsMenu: {
       table: { disable: true }
     },
+    // events
+    'row-click': {
+      table: { disable: true }
+    },
+    'container-scroll': {
+      table: { disable: true }
+    },
+    // slots
+    thead: {
+      table: { disable: true }
+    },
+    'cell-${column.key}': {
+      table: { disable: true }
+    },
+    'actions-menu': {
+      table: { disable: true }
+    },
+    'thead-fixed': {
+      table: { disable: true }
+    },
   }
 }
 
