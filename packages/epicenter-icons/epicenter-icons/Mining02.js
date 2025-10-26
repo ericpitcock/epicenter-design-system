@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M11.9999 13.9998L4.99994 20.9998L2.99994 18.9998L9.99994 11.9998M15.9999 3.99979L19.9999 7.99979L14.9999 12.9998L10.9999 8.99979L15.9999 3.99979Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12.248 7.49979C10.3022 5.79452 8.21948 4.29452 5.99994 2.99979C9.28022 2.99979 12.162 3.664 14.4999 4.99242M16.4999 11.8045C18.1191 13.6908 19.6191 15.7559 20.9999 17.9998C20.9999 14.5668 20.2928 11.7231 18.9999 9.46863', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Mining02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

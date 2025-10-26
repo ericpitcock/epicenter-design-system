@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 5.5L13.0724 9.0747C13.3262 9.92066 14.1048 10.5 14.9881 10.5H20.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M2 5.5L15.0001 5.50038C15.6296 5.5004 16.2223 5.79675 16.6 6.3003L19 9.5L21.1094 10.9063C21.6658 11.2772 22 11.9017 22 12.5704V15.5004C22 16.0527 21.5523 16.5004 21 16.5004H19M3 5.50041L4 7.5C3 9.5 2 11.5 2 15.5L3.57716 16.2889C3.85522 16.428 4.16188 16.5004 4.47279 16.5002L5 16.5M9 16.5004H15', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('circle', { 'cx': '17', 'cy': '16.5', 'r': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('circle', { 'cx': '7', 'cy': '16.5', 'r': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Van',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

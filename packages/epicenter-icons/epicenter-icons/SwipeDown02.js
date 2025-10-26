@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M15.5 22V20L16.4983 17.6892C17.2055 16.2125 18.1731 13.3226 16.8209 11.9618C14.6893 9.81667 11.7081 9.42404 9.99986 9.5V3.75C9.99986 2.7835 9.21635 2 8.24986 2C7.28336 2 6.49986 2.7835 6.49986 3.75L6.5 14M6.5 22V20C6.5 20 4.6719 17.9105 4.17457 17.0914C3.53229 16.0336 2.67793 14.8916 3.12367 13.6086C3.62368 12.1694 6.5 10 6.5 10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M18.5 2L18.5 7.30303M16 5.5L18.5 8L21 5.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'SwipeDown02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

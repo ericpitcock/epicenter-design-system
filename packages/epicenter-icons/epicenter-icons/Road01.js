@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M6 21.9999H18C19.1046 21.9999 20 21.1045 20 19.9999V3.99991C20 2.89534 19.1046 1.99991 18 1.99991H6C4.89543 1.99991 4 2.89534 4 3.99991V19.9999C4 21.1045 4.89543 21.9999 6 21.9999Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12 11L12 13M12 5.5L12 7.5M12 16.5L12 18.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Road01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

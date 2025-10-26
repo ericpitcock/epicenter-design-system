@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M9 16.5L9.64223 20.0323C9.84941 21.1717 10.8418 22 12 22C13.1582 22 14.1506 21.1717 14.3578 20.0323L15 16.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12 9V3.5C12 2.67157 12.6716 2 13.5 2C14.3284 2 15 2.67157 15 3.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M9 9V7C9 6.44772 8.55229 6.00001 8 6L7 6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M15 6.5V9', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M12 17C16.0803 17 19.4471 13.9453 19.9384 9.99801C20.0066 9.44996 19.5523 9 19 9H5C4.44772 9 3.99344 9.44996 4.06165 9.99801C4.55286 13.9453 7.9197 17 12 17Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Sink02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

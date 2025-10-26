@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M4 9.50139C4 5.35849 7.58172 2 12 2C16.4183 2 20 5.35849 20 9.50139V11L18 10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M20 14.4986C20 18.6415 16.4183 22 12 22C7.58172 22 4 18.6415 4 14.4986V13L6 14', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12 11.5C11.5905 12.2758 11.0709 13.2096 11.0108 14.5C10.9719 15.3334 11.017 16.5 11.5058 17.5M11.0236 15C9.53174 13.9266 9 13.1176 9 11.7059C9 9.82353 11.4908 7.44118 13.5 6.5C14.4182 7.9947 15 10 15 11.5C15 13 13.7419 15 11.0236 15Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BiomassEnergy',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

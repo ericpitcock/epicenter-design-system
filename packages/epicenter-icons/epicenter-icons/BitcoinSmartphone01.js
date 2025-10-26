@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17.25 5V4C17.25 2.89543 16.3546 2 15.25 2H6.25C5.14543 2 4.25 2.89543 4.25 4V20C4.25 21.1046 5.14543 22 6.25 22H15.25C16.3546 22 17.25 21.1046 17.25 20V19', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M14.75 9H15.75M18.25 12H15.75M18.25 12C19.0784 12 19.75 11.3284 19.75 10.5C19.75 9.67157 19.0784 9 18.25 9H17.25M18.25 12C19.0784 12 19.75 12.6716 19.75 13.5C19.75 14.3284 19.0784 15 18.25 15H17.25M15.75 12V9M15.75 12V15M14.75 15H15.75M15.75 9H17.25M15.75 15H17.25M17.25 9V8M17.25 15V16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M10.75 19H10.7501', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M9.75 5H11.75', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BitcoinSmartphone01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

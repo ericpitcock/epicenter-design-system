@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M4.5 21L5.8199 7.80099C5.92214 6.77859 6.78247 6 7.80998 6H16.19C17.2175 6 18.0779 6.77859 18.1801 7.80099L19.5 21L17 20L14.5 22L12 20L9.5 22L7 20L4.5 21Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M11.5 10H9', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M14.5 14H9', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M3 9.5C2 9.5 2 8.24028 2 7.5V4C2 2.89543 2.89543 2 4 2H20C21.1046 2 22 2.89543 22 4V7.5C22 8.24028 22 9.5 21 9.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Invoice04',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

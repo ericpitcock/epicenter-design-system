@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M11.0007 20H6.68276C5.71045 20 4.87901 19.3007 4.71236 18.3428L3.20789 9.69497C3.08013 8.96057 3.37138 8.21607 3.96357 7.76332L10.287 2.92891C11.0041 2.38061 11.9997 2.38072 12.7168 2.92918L19.0368 7.76329C19.6288 8.21607 19.9199 8.96043 19.7922 9.69467L19.3911 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M13 16.4778C14.1488 15.5431 15.5209 15 16.9946 15C18.4729 15 19.849 15.5466 21 16.4866M19.1743 19C18.5182 18.5909 17.7779 18.3607 16.9946 18.3607C16.2152 18.3607 15.4784 18.5886 14.8248 18.9938', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M17 22H17.0064', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'HomeWifi',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

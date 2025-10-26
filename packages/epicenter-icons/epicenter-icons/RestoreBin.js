@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M19.512 5.5L19.1666 11.5M5.25 5.50098L6.13612 20.122C6.2001 21.1776 7.07488 22.001 8.13246 22.001H9.75', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M19.2646 16.2857C18.6405 14.9343 17.3013 14 15.75 14C13.7908 14 12.25 15.5 11.75 17L10.75 15M12.2353 19.7143C12.8595 21.0657 14.1987 22 15.75 22C17.7091 22 19.25 20.5 19.75 19L20.75 21', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M3.75 5.50098L8.58859 5.5M8.58859 5.5L9.75973 2.62297C9.91306 2.2463 10.2792 2 10.6859 2H14.0898C14.4965 2 14.8627 2.2463 15.016 2.62297L16.1872 5.5M8.58859 5.5H16.1872M20.75 5.50098L16.1872 5.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'RestoreBin',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 25 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

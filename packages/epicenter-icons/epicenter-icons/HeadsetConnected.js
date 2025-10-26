@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M5.51906 13.2595L6.44721 13.7236C6.786 13.893 7 14.2393 7 14.618V19.382C7 19.7607 6.786 20.107 6.44721 20.2764L5.51906 20.7405C5.19808 20.901 4.81541 20.8772 4.53212 20.6569C3.68867 20.001 2 18.5005 2 17C2 15.4995 3.68867 13.999 4.53212 13.3431C4.81541 13.1228 5.19808 13.099 5.51906 13.2595Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M4 13.5V11C4 6.58172 7.58172 3 12 3C16.4183 3 20 6.58172 20 11V13.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M19.4679 13.3431C19.1846 13.1228 18.8019 13.099 18.4809 13.2595L17.5528 13.7236C17.214 13.893 17 14.2393 17 14.618V19.382C17 19.7607 17.214 20.107 17.5528 20.2764L18.4809 20.7405C18.8019 20.901 19.1846 20.8772 19.4679 20.6569C20.3113 20.001 22 18.5005 22 17C22 15.4995 20.3113 13.999 19.4679 13.3431Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M9 16.1148C9.86163 15.4098 10.8907 15 11.9959 15C13.1047 15 14.1367 15.4123 15 16.1215M13.6307 18.5C13.1386 18.1913 12.5834 18.0177 11.9959 18.0177C11.4114 18.0177 10.8588 18.1896 10.3686 18.4954', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M12 21H12.0064', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'HeadsetConnected',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

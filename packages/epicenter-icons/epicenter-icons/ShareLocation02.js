@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 2C17.5237 2 22 6.47778 22 12C22 17.5222 17.5237 22 12 22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M9 21.5C7.81163 21.0953 6.69532 20.5107 5.72302 19.7462M5.72302 4.25385C6.69532 3.50059 7.81163 2.90473 9 2.5M2 10.2461C2.21607 9.08813 2.66019 7.96386 3.29638 6.94078M2 13.7539C2.21607 14.9119 2.66019 16.0361 3.29638 17.0592', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12 11H12.0063', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M12 7C9.79086 7 8 8.80893 8 11.0404C8 12.3163 8.5 13.3084 9.5 14.1945C10.0428 14.6756 10.9282 15.5808 11.5408 16.3557C11.7687 16.644 12.24 16.65 12.4695 16.3629C13.0869 15.5911 13.9571 14.6757 14.5 14.1945C15.5 13.3084 16 12.3163 16 11.0404C16 8.80893 14.2091 7 12 7Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'ShareLocation02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

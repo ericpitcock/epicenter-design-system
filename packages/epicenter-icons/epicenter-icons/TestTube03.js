@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14.0001 2V7.26962C17.1713 8.14486 19.5001 11.0505 19.5001 14.5C19.5001 18.6421 16.1423 22 12.0001 22C7.85798 22 4.50012 18.6421 4.50012 14.5C4.50012 11.0505 6.82893 8.14486 10.0001 7.26962V2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M9 2H15', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M5.5 11.1482C5.5 11.1482 8.5 10.2223 11 12.9998M18.5 11.6111C18.5 11.6111 17.8884 12.5903 17 13', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M10.0001 18.002L10.0088 17.9996', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M14.0001 14.002L14.0088 13.9996', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'TestTube03',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

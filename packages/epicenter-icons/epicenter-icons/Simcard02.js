@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M7 14.5H9M17 14.5H15M8 11H16C16.5523 11 17 11.4477 17 12V17C17 17.5523 16.5523 18 16 18H8C7.44772 18 7 17.5523 7 17V12C7 11.4477 7.44772 11 8 11Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M3 19V5C3 3.34315 4.34315 2 6 2H15.1716C15.702 2 16.2107 2.21071 16.5858 2.58579L20.4142 6.41421C20.7893 6.78929 21 7.29799 21 7.82843V19C21 20.6569 19.6569 22 18 22H6C4.34315 22 3 20.6569 3 19Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Simcard02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

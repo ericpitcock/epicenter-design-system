@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14 9L8 14.9996M14 15L8 9.00039', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M2 6C2 4.89543 2.89543 4 4 4H15.8915C16.5811 4 17.222 4.35524 17.5875 4.94L21.3375 10.94C21.7428 11.5885 21.7428 12.4115 21.3375 13.06L17.5875 19.06C17.222 19.6448 16.5811 20 15.8915 20H4C2.89543 20 2 19.1046 2 18V6Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Eraser01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

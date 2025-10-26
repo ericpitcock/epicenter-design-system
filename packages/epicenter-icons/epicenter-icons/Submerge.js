@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('circle', { 'cx': '12', 'cy': '14', 'r': '4', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M7 2V2.5M7 5V6M7 8.5V9.5M17 2V3M17 5.5V6M17 8.5V9.5M12 2V3M12 5.5V6.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M2 12V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M2 14.8968C4.26409 16.8667 6.1743 15.779 8.0217 14.857C9.59668 14.0709 11.126 13.4052 12.79 14.857C16.0467 17.6487 19 14 22 14', 'stroke-linecap': 'round' })
+
+export default defineComponent({
+    name: 'Submerge',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

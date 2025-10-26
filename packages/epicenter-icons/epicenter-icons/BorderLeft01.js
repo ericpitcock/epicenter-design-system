@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M6.5 2H5.5C3.84315 2 2.5 3.34315 2.5 5V18C2.5 19.6569 3.84315 21 5.5 21H6.5M10 2H14M10 21H14M17.75 21H18.5C20.1569 21 21.5 19.6569 21.5 18V17.25M21.5 9.5V13.5M21.5 5.75V5C21.5 3.34315 20.1569 2 18.5 2H17.75', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12 2V3.9M12 19.1V21M9.15 11.5H14.85M19.6 11.5H21.5M2.5 11.5H4.4M12 8.64999V14.35', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BorderLeft01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

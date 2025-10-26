@@ -1,0 +1,27 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M9.5 8.5C10.0523 8.5 10.5 8.05228 10.5 7.5C10.5 6.94772 10.0523 6.5 9.5 6.5M9.5 8.5C8.94772 8.5 8.5 8.05228 8.5 7.5C8.5 6.94772 8.94772 6.5 9.5 6.5M9.5 8.5V6.5M8 12.5H11M7 13.5V13C7 11.8954 7.89543 11 9 11H10C11.1046 11 12 11.8954 12 13V13.5H7Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M14.5 8.5C15.0523 8.5 15.5 8.05228 15.5 7.5C15.5 6.94772 15.0523 6.5 14.5 6.5M14.5 8.5C13.9477 8.5 13.5 8.05228 13.5 7.5C13.5 6.94772 13.9477 6.5 14.5 6.5M14.5 8.5V6.5M14.5 12.5H16M14.5 13.5H17V13C17 11.8954 16.1046 11 15 11H14.5V13.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M16.5 20V20.01', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M13.5 20V20.01', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M18 18H6C4.89543 18 4 18.8954 4 20C4 21.1046 4.89543 22 6 22L18 22C19.1046 22 20 21.1046 20 20C20 18.8954 19.1046 18 18 18Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M20 20V4C20 2.89543 19.1046 2 18 2H6C4.89543 2 4 2.89543 4 4V20', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'SharedDrive',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6
+        ])
+    }
+})

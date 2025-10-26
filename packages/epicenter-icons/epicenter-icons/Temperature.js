@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 15C10.8954 15 10 15.8954 10 17C10 18.1046 10.8954 19 12 19C13.1046 19 14 18.1046 14 17C14 15.8954 13.1046 15 12 15ZM12 15V8', 'stroke-linecap': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12 2C10.3431 2 9 3.34315 9 5L9 12.9996C7.78555 13.9118 7 15.3642 7 17C7 19.7614 9.23858 22 12 22C14.7614 22 17 19.7614 17 17C17 15.3643 16.2143 13.9122 15 13V5C15 3.34315 13.6569 2 12 2Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Temperature',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M8.00024 17.5C8.00024 18.6046 7.10481 19.5 6.00024 19.5C4.89567 19.5 4.00024 18.6046 4.00024 17.5C4.00024 16.3954 4.89567 15.5 6.00024 15.5C7.10481 15.5 8.00024 16.3954 8.00024 17.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M20.0002 17.5C20.0002 18.6046 19.1048 19.5 18.0002 19.5C16.8957 19.5 16.0002 18.6046 16.0002 17.5C16.0002 16.3954 16.8957 15.5 18.0002 15.5C19.1048 15.5 20.0002 16.3954 20.0002 17.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M8.00024 11.5H9.00024', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M9.00024 4.5C8.50024 5 7.00024 6.6 7.00024 9C9.00024 8.83333 13.5002 8.5 17.5002 10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M4 17.5H2C2 15.6347 2.4349 14.3131 3.0005 13.383M8 17.5H16M20 17.5H22C22 15.1584 21.6573 13.5022 21.3731 12.5314C21.1738 11.8504 20.6421 11.3466 19.9899 11.0671L17.5 10C16.6089 7.77222 13.8649 5.67678 12.4524 4.77512C12.159 4.58785 11.8169 4.5 11.4689 4.5H6.82843C6.29799 4.5 5.7805 4.7041 5.44233 5.11276C3.45234 7.51749 3.0125 10.6482 3.0005 13.383M5 11.5C4.46632 11.7668 3.64781 12.3185 3.0005 13.383', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Car04',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

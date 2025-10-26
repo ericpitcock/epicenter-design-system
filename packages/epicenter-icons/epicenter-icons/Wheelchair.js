@@ -1,0 +1,29 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 16C12 18.7614 9.76142 21 7 21C4.23858 21 2 18.7614 2 16C2 13.2386 4.23858 11 7 11C9.76142 11 12 13.2386 12 16Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M18 19.5C18 20.3284 17.3284 21 16.5 21C15.6716 21 15 20.3284 15 19.5C15 18.6716 15.6716 18 16.5 18C17.3284 18 18 18.6716 18 19.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'clip-rule': 'evenodd', 'd': 'M7.00898 16L7 16L7.00898 16Z', 'fill': 'currentColor', 'fill-rule': 'evenodd' })
+const _hoisted4 = h('path', { 'd': 'M7.00898 16L7 16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M6 11L4.65294 3.81577C4.56426 3.34281 4.15131 3.00008 3.67011 3.00006L2 3', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M5.5 7L15.5 7C16.0523 7 16.5 7.44772 16.5 8V18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted7 = h('path', { 'd': 'M12 14H17.4682C17.8029 14 18.1153 14.1674 18.3007 14.4461L19.5532 16.3285C19.814 16.7204 20.3127 16.8774 20.7508 16.7056L22 16.2158', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Wheelchair',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6,
+            _hoisted7
+        ])
+    }
+})

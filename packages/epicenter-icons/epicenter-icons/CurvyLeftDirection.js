@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M22 11H18C16.8954 11 16 11.8954 16 13V17C16 18.1046 15.1046 19 14 19C12.8954 19 12 18.1046 12 17V6.99583C12 5.89356 11.1064 5 10.0042 5C8.89865 5 8.00375 5.89865 8.00836 7.00415L8.02499 10.9916C8.02961 12.0995 7.13284 13 6.02501 13L2 13', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M4 11L2 13L4 15', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CurvyLeftDirection',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

@@ -1,0 +1,17 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14.5 8L10.5 8M10.5 8L4.25 8C3.2835 8 2.5 8.7835 2.5 9.75C2.5 10.7165 3.2835 11.5 4.25 11.5L10.5 11.5V16C10.5 17.6569 11.8431 19 13.5 19H18.5C20.1569 19 21.5 17.6569 21.5 16V9.5841C21.5 8.90785 21.1583 8.27739 20.5916 7.90829L17.6426 5.98731C16.3152 5.11571 15.7011 5.01657 15.0302 5.00083C14.7276 4.99373 14.4256 5.03246 14.1346 5.11571C13.4894 5.30031 12.9448 5.77679 11.8558 6.7297L10.5 8Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'HandPointingLeft02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1
+        ])
+    }
+})

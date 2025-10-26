@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M22 19L6 19', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M20 13.5L22 8L19.5 6.5L17.5 9L10.4588 5.34038C8.82647 4.48683 6.92061 4.17159 5.23975 4.92643C4.35106 5.32553 3.36889 5.87707 2.50248 6.62005C1.53092 7.45319 2.06313 8.87248 3.28811 9.25281L9 11L10 13.5L14.5 15L13.5 12L20 13.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'AirplaneTakeOff02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M18 6H6C3.79086 6 2 7.79086 2 10V14C2 16.2091 3.79086 18 6 18H18C20.2091 18 22 16.2091 22 14V10C22 7.79086 20.2091 6 18 6Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M17 9H15C13.8954 9 13 9.89543 13 11V13C13 14.1046 13.8954 15 15 15H17C18.1046 15 19 14.1046 19 13V11C19 9.89543 18.1046 9 17 9Z' })
+
+export default defineComponent({
+    name: 'ToggleOn',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

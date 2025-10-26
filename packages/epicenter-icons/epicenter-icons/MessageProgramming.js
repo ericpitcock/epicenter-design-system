@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M22 15V5C22 3.34315 20.6569 2 19 2H5C3.34315 2 2 3.34315 2 5V15C2 16.6569 3.34315 18 5 18H8C8.55228 18 9 18.4477 9 19V22L14.4962 18.3359C14.8247 18.1169 15.2107 18 15.6056 18H19C20.6569 18 22 16.6569 22 15Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M16 8L18 10L16 12M8 8L6 10L8 12M13 7L11 13', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'MessageProgramming',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

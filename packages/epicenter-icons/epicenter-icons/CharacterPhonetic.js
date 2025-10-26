@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 11.5H22V10C22 7.23858 19.7614 5 17 5C14.2386 5 12 7.23858 12 10V11.5ZM12 11.5V15C12 17.7614 14.2386 20 17 20H17.5C19.9853 20 22 17.9853 22 15.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12 11.5V10C12 7.23858 9.76142 5 7 5H6.5C4.01472 5 2 7.01472 2 9.5M12 11.5V14.2857C12 17.4416 9.42115 20 6.26523 20C3.91802 20 2 18.0972 2 15.75C2 13.4028 3.90279 11.5 6.25 11.5H12Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CharacterPhonetic',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

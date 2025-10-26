@@ -1,0 +1,29 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M22 22H2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M21 8H19M21 11H19M21 14H19', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M8 10C8 9.44772 8.44772 9 9 9H15C15.5523 9 16 9.44772 16 10V22H8V10Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M11 13L13 13M11 16L13 16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M3.5 16C4.32843 16 5 15.1046 5 14C5 12.8954 4.32843 12 3.5 12C2.67157 12 2 12.8954 2 14C2 15.1046 2.67157 16 3.5 16Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M3.5 16V21.8265', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted7 = h('path', { 'd': 'M13.0273 8.84752V1.98821C13.0273 1.98119 13.0344 1.97635 13.0409 1.97888L20.3871 4.81178C20.7729 4.96054 21.0273 5.33136 21.0273 5.74481V21.9736', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'RealEstate02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6,
+            _hoisted7
+        ])
+    }
+})

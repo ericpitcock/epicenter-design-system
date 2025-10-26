@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14 4L15.1784 9.89223C15.3654 10.8271 16.1862 11.5 17.1396 11.5H21.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M22 14.5L20.5 14.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M17 20C18.1046 20 19 19.1046 19 18C19 16.8954 18.1046 16 17 16C15.8954 16 15 16.8954 15 18C15 19.1046 15.8954 20 17 20Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M7 20C8.10457 20 9 19.1046 9 18C9 16.8954 8.10457 16 7 16C5.89543 16 5 16.8954 5 18C5 19.1046 5.89543 20 7 20Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M5 18H3.80278C3.60535 18 3.41234 17.9416 3.24808 17.8321L2.4453 17.2969C2.1671 17.1114 2 16.7992 2 16.4648V11.5H12M12 11.5V18M12 11.5V4H14.8232C15.5495 4 16.2188 4.39378 16.5715 5.02871L18.3257 8.18631C18.441 8.39378 18.5923 8.57908 18.7725 8.73354L20.9524 10.602C21.6173 11.172 22 12.004 22 12.8798V17C22 17.5523 21.5523 18 21 18H19M12 18H9M12 18H15', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Pickup02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

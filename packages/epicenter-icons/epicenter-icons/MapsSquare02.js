@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M4.5 21.5H19.5C20.6046 21.5 21.5 20.6046 21.5 19.5V4.5C21.5 3.39543 20.6046 2.5 19.5 2.5H4.5C3.39543 2.5 2.5 3.39543 2.5 4.5V19.5C2.5 20.6046 3.39543 21.5 4.5 21.5Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M2.5 7.5L16.5 21.5M9.5 14.5L3 21', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M14.5 6C12.567 6 11 7.62804 11 9.63632C11 11.7625 12.8362 12.8543 14.0319 14.3342C14.2663 14.6244 14.7448 14.6317 14.9837 14.3453C16.1977 12.8903 18 11.7207 18 9.63632C18 7.62804 16.433 6 14.5 6Z', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M14.5 9.5H14.509', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'MapsSquare02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

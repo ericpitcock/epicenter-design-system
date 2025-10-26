@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17.5 19.5C18.6046 19.5 19.5 18.6046 19.5 17.5V6.5C19.5 5.39543 18.6046 4.5 17.5 4.5H6.5C5.39543 4.5 4.5 5.39543 4.5 6.5V17.5C4.5 18.6046 5.39543 19.5 6.5 19.5H17.5Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M14.4002 9.24825C13.0031 8.53463 12 9.58658 12 9.58658C12 9.58658 10.9968 8.53462 9.59972 9.24824C7.90757 10.1126 7.78606 13.4974 12 15C16.2139 13.4974 16.0924 10.1126 14.4002 9.24825Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M9 22H15', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M9 2H15', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'SmartWatch03',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

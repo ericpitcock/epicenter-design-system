@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17.5 12H21.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M7.5 8.5H4.5C3.39543 8.5 2.5 9.39543 2.5 10.5V13.5C2.5 14.6046 3.39543 15.5 4.5 15.5H7.5L14.5 20V4L7.5 8.5Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'VolumeMinus',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

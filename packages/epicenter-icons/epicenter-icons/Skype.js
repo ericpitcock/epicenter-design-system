@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M15 10C15 8.89543 13.6569 8 12 8C10.3431 8 9 8.89543 9 10C9 13.2073 15 10.7927 15 14C15 15.1046 13.6569 16 12 16C10.3431 16 9 15.1046 9 14', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M8.37829 4.85419C6.4612 3.22812 4.01956 4.27991 3.24094 5.08574C1.1735 7.22548 1.8605 10.2973 4.04095 11.4592C3.32408 15.8359 8.6368 22.4241 15.4776 19.0917C16.5277 19.9875 19.5972 20.7667 21.3663 18.0711C23.0234 15.3443 21.0288 13.0628 19.9523 12.4618C20.0695 4.44678 11.8307 2.69853 8.37829 4.85419Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Skype',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

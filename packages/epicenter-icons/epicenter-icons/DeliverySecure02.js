@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M11.5 21.5001H4.5C3.39543 21.5001 2.5 20.6047 2.5 19.5001V6.50012H21.5V12.0001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M4.9 3.30012L2.5 6.50012H21.5L19.1 3.30012C18.7223 2.79651 18.1295 2.50012 17.5 2.50012H6.5C5.87049 2.50012 5.27771 2.79651 4.9 3.30012Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M16 17.0001V15.5001C16 14.3956 16.8954 13.5001 18 13.5001C19.1046 13.5001 20 14.3956 20 15.5001V17.0001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M20.5 17.0001H15.5C14.9477 17.0001 14.5 17.4478 14.5 18.0001V20.5001C14.5 21.0524 14.9477 21.5001 15.5 21.5001H20.5C21.0523 21.5001 21.5 21.0524 21.5 20.5001V18.0001C21.5 17.4478 21.0523 17.0001 20.5 17.0001Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'DeliverySecure02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

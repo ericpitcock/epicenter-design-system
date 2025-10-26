@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M10.5 18L8 17L3.31623 18.5613C2.6687 18.7771 2 18.2951 2 17.6126V5.61803C2 5.23926 2.214 4.893 2.55279 4.72361L7.58517 2.20742C7.84826 2.07587 8.15593 2.06683 8.4263 2.1827L15 5H21C21.5523 5 22 5.44772 22 6V10.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M8 2L8 17', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M15 5V9.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M17.8966 21.8023C18.9956 21.2182 22 19.3598 22 16.5C22 14.0147 19.9853 12 17.5 12C15.0147 12 13 14.0147 13 16.5C13 19.3598 16.0044 21.2182 17.1034 21.8023C17.3533 21.9351 17.6467 21.9351 17.8966 21.8023Z', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M17.5 16.5H17.509', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'MapsLocation01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

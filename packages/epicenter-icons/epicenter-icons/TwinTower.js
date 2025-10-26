@@ -1,0 +1,37 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M9 19L12 15L15 19M9 14H15', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M5.5 4V2', 'stroke-linecap': 'round' })
+const _hoisted3 = h('path', { 'd': 'M18.5 4V2', 'stroke-linecap': 'round' })
+const _hoisted4 = h('path', { 'd': 'M5.5 22V20', 'stroke-linecap': 'round' })
+const _hoisted5 = h('path', { 'd': 'M18.5 22V20', 'stroke-linecap': 'round' })
+const _hoisted6 = h('path', { 'd': 'M2 13V22H9V13C9 12.4477 8.55228 12 8 12H3C2.44772 12 2 12.4477 2 13Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted7 = h('path', { 'd': 'M15 13V22H22V13C22 12.4477 21.5523 12 21 12H16C15.4477 12 15 12.4477 15 13Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted8 = h('path', { 'd': 'M3 9V12H8V9C8 8.44772 7.55228 8 7 8H4C3.44772 8 3 8.44772 3 9Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted9 = h('path', { 'd': 'M16 9V12H21V9C21 8.44772 20.5523 8 20 8H17C16.4477 8 16 8.44772 16 9Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted10 = h('path', { 'd': 'M4 5V8H7V5C7 4.44772 6.55228 4 6 4H5C4.44772 4 4 4.44772 4 5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted11 = h('path', { 'd': 'M17 5V8H20V5C20 4.44772 19.5523 4 19 4H18C17.4477 4 17 4.44772 17 5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'TwinTower',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6,
+            _hoisted7,
+            _hoisted8,
+            _hoisted9,
+            _hoisted10,
+            _hoisted11
+        ])
+    }
+})

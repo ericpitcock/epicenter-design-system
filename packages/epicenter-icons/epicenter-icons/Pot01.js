@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M2 9.5H22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M4 9.5L4.75196 17.7716C4.89244 19.3168 6.18803 20.5 7.73964 20.5H16.2604C17.812 20.5 19.1076 19.3168 19.248 17.7716L20 9.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M4 6.5H20M9 6.5L9.77208 4.18377C9.90819 3.77543 10.2903 3.5 10.7208 3.5H13.2792C13.7097 3.5 14.0918 3.77543 14.2279 4.18377L15 6.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Pot01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

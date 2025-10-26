@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M6.96147 13.0591L4.5 20.5L2 20L3.92586 7.96144C3.97264 7.66899 4.14665 7.41233 4.401 7.2606L8.99967 4.51741V3C8.99967 2.44772 9.44739 2 9.99967 2H13.9997C14.552 2 14.9997 2.44772 14.9997 3V4.51224L19.599 7.26055C19.8529 7.41232 20.0267 7.66878 20.0734 7.96095L22 20L19.5 20.5L17.0379 13.0591', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M17 10V20C17 21.1046 16.1046 22 15 22H9C7.89543 22 7 21.1046 7 20V10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M9 5C10.8 6.33333 13.2 6.33333 15 5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'TurtleNeck',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

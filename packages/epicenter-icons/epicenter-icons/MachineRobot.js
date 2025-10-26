@@ -1,0 +1,27 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17 16V8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8V16C7 17.1046 7.89543 18 9 18H15C16.1046 18 17 17.1046 17 16Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M18 21C18 19.8954 18.8954 19 20 19C21.1046 19 22 19.8954 22 21', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M2 21C2 19.8954 2.89543 19 4 19C5.10457 19 6 19.8954 6 21', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M13.992 7.5H14.001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M10 7.5H10.009', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M20 19V13C20 11.8954 19.1046 11 18 11H6C4.89543 11 4 11.8954 4 13V19', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'MachineRobot',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6
+        ])
+    }
+})

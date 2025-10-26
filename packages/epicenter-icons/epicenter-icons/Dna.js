@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M22 7.71429C20.9286 8.78571 18.4286 8.42857 15.8393 8.16071M15.8393 8.16071C13.25 7.89286 10.5714 7.71429 9.14286 9.14286C7.71429 10.5714 7.89286 13.25 8.16071 15.8393M15.8393 8.16071C15.5714 5.57143 15.2143 3.07143 16.2857 2M15.8393 8.16071C16.1071 10.75 16.2857 13.4286 14.8571 14.8571C13.4286 16.2857 10.75 16.1071 8.16071 15.8393M8.16071 15.8393C8.42857 18.4286 8.78571 20.9286 7.71429 22M8.16071 15.8393C5.57143 15.5714 3.07143 15.2143 2 16.2857', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M11.5 8.5L15.5 12.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M16 4L20 8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M4 16L8 20', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M8.5 11.5L12.5 15.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Dna',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

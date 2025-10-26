@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M5.5 17C3.83333 17 3.66667 16 2 16L4 9.5H20L22 16C20.3333 16 20.3333 17 18.6667 17C17 17 17 16 15.3333 16C13.6667 16 13.6667 17 12 17C10.3333 17 10.3333 16 8.66667 16C7 16 7.16667 17 5.5 17Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M18 9.5C18 6.18629 15.3137 3.5 12 3.5M6 9.5C6 6.18629 8.68629 3.5 12 3.5M12 3.5V2', 'stroke-linecap': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12 17V22M12 22H14M12 22H10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'RestaurantTable',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M20 6V11.5M18 4H6M9.5 20H6M4 18V6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M22 4C22 5.10457 21.1046 6 20 6C18.8954 6 18 5.10457 18 4C18 2.89543 18.8954 2 20 2C21.1046 2 22 2.89543 22 4Z', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M6 4C6 5.10457 5.10457 6 4 6C2.89543 6 2 5.10457 2 4C2 2.89543 2.89543 2 4 2C5.10457 2 6 2.89543 6 4Z', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M6 20C6 21.1046 5.10457 22 4 22C2.89543 22 2 21.1046 2 20C2 18.8954 2.89543 18 4 18C5.10457 18 6 18.8954 6 20Z', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M22 17L20 15L18 17M18 17L19.5 18.5M18 17L15.5607 19.4393M15.5607 19.4393C15.2892 19.1679 14.9142 19 14.5 19C13.6716 19 13 19.6716 13 20.5C13 21.3284 13.6716 22 14.5 22C15.3284 22 16 21.3284 16 20.5C16 20.0858 15.8321 19.7108 15.5607 19.4393Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'AlignKeyObject',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

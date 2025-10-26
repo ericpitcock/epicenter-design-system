@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M2.5 7.5V19.5C2.5 20.6046 3.39543 21.5 4.5 21.5H13M21.5 13V7.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M4.91739 3.47101L2.5 7.5H21.5L19.0826 3.47101C18.7212 2.8686 18.0701 2.5 17.3676 2.5L6.63238 2.5C5.92986 2.5 5.27884 2.8686 4.91739 3.47101Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12 7.5V2.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M10 10.5H14', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M21.3787 21.3787L19.5 19.5M19.5 19.5C20.0429 18.9571 20.3787 18.2071 20.3787 17.3787C20.3787 15.7218 19.0355 14.3787 17.3787 14.3787C15.7218 14.3787 14.3787 15.7218 14.3787 17.3787C14.3787 19.0355 15.7218 20.3787 17.3787 20.3787C18.2071 20.3787 18.9571 20.0429 19.5 19.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'PackageSearch01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

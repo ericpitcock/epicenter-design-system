@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14.5 21.0001H2.5V19.4415C2.5 18.5807 3.05087 17.8164 3.86757 17.5442L8.49983 16.0001V14.0623C6.71899 12.6686 5.49983 11 5.49983 7.41681C5.49983 3.82696 7.45457 2 10.4921 2C12.6431 2 13.5383 3 13.5383 3C16.0768 3 16.4998 5.09719 16.4998 7.41681C16.4998 11 15.2807 12.6685 13.4998 14.0623V16.0001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M16.5 22L19 19.5M19 19.5L21.5 17M19 19.5L16.5 17M19 19.5L21.5 22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'RemoveMale',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

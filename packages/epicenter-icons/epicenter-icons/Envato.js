@@ -1,0 +1,17 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M5.498 8C5.13608 12.0419 6.99844 14.5 6.99844 14.5C7.33517 9.36245 11.0461 3 17.9981 2C19.9981 5 21.0215 8.51283 21.0016 11.5C20.9624 17.3819 17.156 22 11.4981 22C6.82261 22 3.04516 17.8758 2.99844 13.5C2.97808 11.5937 3.998 9.5 5.498 8Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Envato',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1
+        ])
+    }
+})

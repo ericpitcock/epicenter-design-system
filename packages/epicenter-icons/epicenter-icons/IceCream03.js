@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 2C9.23858 2 7 4.23858 7 7C7 7.58276 7.0997 8.14223 7.28297 8.66229C6.4854 9.01665 6 9.48565 6 10C6 11.0371 7.97335 11.449 10.5 11.4955V12.5C10.5 13.3284 11.1716 14 12 14C12.8284 14 13.5 13.3284 13.5 12.5V11.4955C16.0267 11.449 18 11.0371 18 10C18 9.48565 17.5146 9.01665 16.717 8.66229C16.9003 8.14223 17 7.58276 17 7C17 4.23858 14.7614 2 12 2Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M7.5 11L12 22L16.5 11', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'IceCream03',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

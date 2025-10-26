@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M15.5 15.0001L17.5 17.0001M16.5 11.5001C16.5 9.01483 14.4853 7.00011 12 7.00011C9.51472 7.00011 7.5 9.01483 7.5 11.5001C7.5 13.9854 9.51472 16.0001 12 16.0001C14.4853 16.0001 16.5 13.9854 16.5 11.5001Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15 2.50011H19.5C20.6046 2.50011 21.5 3.39554 21.5 4.50011V9.00011M9 2.50011H4.5C3.39543 2.50011 2.5 3.39554 2.5 4.50011V9.00011M9 21.5001H4.5C3.39543 21.5001 2.5 20.6047 2.5 19.5001V15.0001M15 21.5001H19.5C20.6046 21.5001 21.5 20.6047 21.5 19.5001V15.0001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'SearchVisual',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

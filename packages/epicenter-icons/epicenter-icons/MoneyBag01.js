@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M20.9427 16.8398C20.3794 13.4506 17.7138 9.90625 15.8466 7.87773C15.3176 7.30303 14.563 7.00439 13.7819 7.00439H10.2181C9.43699 7.00439 8.68241 7.30303 8.15342 7.87772C6.28619 9.90623 3.62059 13.4506 3.05727 16.8398C2.56893 19.7778 5.27927 22.0044 8.30832 22.0044H15.6917C18.7207 22.0044 21.4311 19.7778 20.9427 16.8398Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M9.08607 6.99999L7 3.5L8.98473 3.83079C9.62183 3.93697 10.271 3.72894 10.7277 3.27224L12 2L13.2723 3.27224C13.729 3.72894 14.3782 3.93697 15.0153 3.83079L17 3.5L14.9139 6.99999', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'MoneyBag01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

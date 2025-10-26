@@ -1,0 +1,17 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M5.5 2.02344L9 10.0234H15L18.5 2.02344L22 14.0234L12 22.0234L2 14.0234L5.5 2.02344Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Gitlab',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1
+        ])
+    }
+})

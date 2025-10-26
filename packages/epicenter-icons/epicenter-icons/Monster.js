@@ -1,0 +1,27 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 11.5H12.009', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M16.5 11.5C16.5 13.433 14.4853 15 12 15C9.51472 15 7.5 13.433 7.5 11.5C7.5 9.567 9.51472 8 12 8C14.4853 8 16.5 9.567 16.5 11.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12 4C7.30558 4 3.5 7.80558 3.5 12.5C3.5 15.0969 4.66459 17.441 6.5 19.0002V20C6.5 21.1046 7.39543 22 8.5 22H15.5C16.6046 22 17.5 21.1046 17.5 20V19.0002C19.3354 17.441 20.5 15.0969 20.5 12.5C20.5 7.80558 16.6944 4 12 4Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M14.5 18C13.8557 18.6186 12.9733 19 12 19C11.0267 19 10.1443 18.6186 9.5 18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M16 5C16.1667 4.1 17.5 2 19.5 2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M8 5C7.83333 4.1 6.5 2 4.5 2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Monster',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6
+        ])
+    }
+})

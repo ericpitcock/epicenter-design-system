@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12.5 3.052C12.1714 3.01762 11.8377 3 11.5 3C6.25329 3 2 7.25329 2 12.5C2 17.7467 6.25329 22 11.5 22C16.7467 22 21 17.7467 21 12.5C21 12.1623 20.9824 11.8286 20.948 11.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M13 11L16.0179 2C18.7908 3.00859 20.9914 5.20917 22 7.98213L13 11Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'PieChart01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

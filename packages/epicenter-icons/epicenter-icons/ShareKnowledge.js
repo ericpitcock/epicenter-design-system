@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14 21C14 21 15 19.5 17.5 19.5C20 19.5 21 21 21 21M19.5 15C19.5 16.1046 18.6046 17 17.5 17C16.3954 17 15.5 16.1046 15.5 15C15.5 13.8954 16.3954 13 17.5 13C18.6046 13 19.5 13.8954 19.5 15Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M3 11C3 11 4 9.5 6.5 9.5C9 9.5 10 11 10 11M8.5 5C8.5 6.10457 7.60457 7 6.5 7C5.39543 7 4.5 6.10457 4.5 5C4.5 3.89543 5.39543 3 6.5 3C7.60457 3 8.5 3.89543 8.5 5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M14.5 4H21M14.5 8H18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M4 14C4 17.3171 6.68286 20 10 20L9.5 18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'ShareKnowledge',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

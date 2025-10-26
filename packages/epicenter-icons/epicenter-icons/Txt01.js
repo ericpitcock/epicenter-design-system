@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M3.99988 12.9978L4.01982 3.99557C4.02226 2.89186 4.91833 1.99877 6.02204 2L12.9957 2.00776L19.9999 8.99481L19.9921 12.9978M12.9999 2.49778V6.99778C12.9999 8.10235 13.8953 8.99778 14.9999 8.99778H19.4999', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M9.99988 16L11.9999 19M11.9999 19L13.9999 22M11.9999 19L13.9999 16M11.9999 19L9.99988 22M16.4998 16H18.2498M18.2498 16H19.9998M18.2498 16V22M3.99988 16H5.74984M5.74984 16H7.49981M5.74984 16V22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Txt01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M3.875 4C3.875 2.89543 4.77043 2 5.875 2H19.875C20.9796 2 21.875 2.89543 21.875 4V20C21.875 21.1046 20.9796 22 19.875 22H5.875C4.77043 22 3.875 21.1046 3.875 20V4Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M5.125 6H2.125M5.125 12H2.125M5.125 18H2.125', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M8.875 12L10.875 10L9.375 7L8.46079 7.91421C8.08571 8.28929 7.86375 8.79945 7.91476 9.32743C8.30445 13.3613 11.5137 16.5706 15.5476 16.9602C16.0755 17.0112 16.5857 16.7893 16.9608 16.4142L17.875 15.5L14.875 14L12.875 16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Contact02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

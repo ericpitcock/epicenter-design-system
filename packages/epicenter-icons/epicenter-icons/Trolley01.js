@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M2 3H4.5L6.72878 16.8185C6.88509 17.7876 7.72163 18.5 8.70327 18.5H21', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M8.25 22C9.2165 22 10 21.2165 10 20.25C10 19.2835 9.2165 18.5 8.25 18.5C7.2835 18.5 6.5 19.2835 6.5 20.25C6.5 21.2165 7.2835 22 8.25 22Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M17.25 22C18.2165 22 19 21.2165 19 20.25C19 19.2835 18.2165 18.5 17.25 18.5C16.2835 18.5 15.5 19.2835 15.5 20.25C15.5 21.2165 16.2835 22 17.25 22Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M20 15H12C11.4477 15 11 14.5523 11 14V11.5C11 10.9477 11.4477 10.5 12 10.5H20C20.5523 10.5 21 10.9477 21 11.5V14C21 14.5523 20.5523 15 20 15Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M18 10.5H10C9.44772 10.5 9 10.0523 9 9.5V7C9 6.44772 9.44772 6 10 6H18C18.5523 6 19 6.44772 19 7V9.5C19 10.0523 18.5523 10.5 18 10.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Trolley01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M20 12L21.6641 14.4962C21.8831 14.8247 22 15.2107 22 15.6056V21C22 21.5523 21.5523 22 21 22H20C19.4477 22 19 21.5523 19 21V19H5V21C5 21.5523 4.55228 22 4 22H3C2.44772 22 2 21.5523 2 21V15.6056C2 15.2107 2.11688 14.8247 2.3359 14.4962L4 12M20 12L18 12.5H6L4 12M20 12L22 10.5M4 12L5.98718 7.23077C6.29772 6.48548 7.02593 6 7.83333 6H10M4 12L2 10.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M18 16V16.01', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M6 16V16.01', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('circle', { 'cx': '17', 'cy': '6', 'r': '4', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M17 4V6L18.5 6.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CarTime',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M4.5 12V5C4.5 4.44772 4.94772 4 5.5 4H9.58579C9.851 4 10.1054 4.10536 10.2929 4.29289L13.7071 7.70711C13.8946 7.89464 14 8.149 14 8.41421V12C14 12.5523 13.5523 13 13 13H5.5C4.94772 13 4.5 12.5523 4.5 12Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15 22H5C3.34315 22 2 20.6569 2 19C2 17.3431 3.34315 16 5 16L15 16C16.6569 16 18 17.3431 18 19C18 20.6569 16.6569 22 15 22Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M9.99551 19H10.0045M6 19H6.00897M13.991 19H14', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M13 6.5L16.7017 2.33564C16.8914 2.12215 17.1634 2 17.4491 2H20.5M20.5 4.5V5.5M20.5 7.5V8.5M20.5 11V12C21.3284 12 22 12.6716 22 13.5C22 14.3284 21.3284 15 20.5 15C19.8469 15 19.2059 14.5826 19 14', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Crane',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

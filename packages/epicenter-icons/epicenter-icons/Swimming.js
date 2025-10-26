@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M8.93229 4.83473C9.59859 4.93786 10.1681 5.36978 10.4471 5.98358L15 16C12.8333 16 12.1739 14.8356 9.91304 13.6713C8.10435 12.7398 5.75362 12.8059 5 13L7.899 10.9293C8.25623 10.6741 8.40527 10.2158 8.26644 9.79933L7.69622 8.08865C7.57603 7.7281 7.26186 7.46684 6.88544 7.41443L3.18315 6.89896C2.4987 6.77524 2 6.16907 2 5.46085C2 4.57112 2.77418 3.8881 3.63851 4.01528L8.93229 4.83473Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('circle', { 'cx': '19', 'cy': '10', 'r': '3', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M2 18.0501C3.05556 14.5206 7.7685 16.2248 11.5 18.1344C15.2315 20.044 19 21.1747 21 18.0501', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Swimming',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

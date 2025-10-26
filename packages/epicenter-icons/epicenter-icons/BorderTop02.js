@@ -1,0 +1,17 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M2.5 6.5L2.5 5.5C2.5 3.84315 3.84315 2.5 5.5 2.5L18.5 2.5C20.1569 2.5 21.5 3.84315 21.5 5.5V6.5M2.5 10L2.5 14M21.5 14V10M21.5 17.75V18.5C21.5 20.1569 20.1569 21.5 18.5 21.5H17.75M10 21.5H14M6.25 21.5H5.5C3.84315 21.5 2.5 20.1569 2.5 18.5L2.5 17.75', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BorderTop02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1
+        ])
+    }
+})

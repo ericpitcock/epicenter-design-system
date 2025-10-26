@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M7 5.00402V3C7 2.44772 7.44772 2 8 2H16.5C17.0523 2 17.5 2.44772 17.5 3V4.6416C17.5 4.87576 17.5822 5.1025 17.7322 5.28229L20 8M20 8V20.0002C20 21.1048 19.1046 22.0002 18 22.0002H10M20 8L10 8.00024M10 8.00024V22.0002M10 8.00024L7 5.00024L4 8.00024V20.0002C4 21.1048 4.89543 22.0002 6 22.0002H10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M10 13L20 17', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'MilkCarton',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

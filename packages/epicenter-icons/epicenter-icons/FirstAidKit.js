@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M4 21H20C21.1046 21 22 20.1046 22 19V8.00035C22 6.89579 21.1046 6.00037 20 6.00035L4.00004 6.00004C2.89545 6.00002 2 6.89545 2 8.00004V19C2 20.1046 2.89543 21 4 21Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M7 6V4C7 3.44772 7.44772 3 8 3H16C16.5523 3 17 3.44771 17 4V5.99992', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M8.5 13.5H15.5M12 10V17', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'FirstAidKit',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

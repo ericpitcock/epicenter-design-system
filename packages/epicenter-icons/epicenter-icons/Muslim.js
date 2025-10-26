@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M10.5 11.5V14L12.5 16L14.5 14V11.5' })
+const _hoisted2 = h('path', { 'd': 'M12.5 16V20', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M10.4983 14L4.712 16.4804C3.97672 16.7956 3.5 17.5187 3.5 18.3187V22M14.5 14L20.2863 16.4804C21.0215 16.7956 21.4983 17.5187 21.4983 18.3187V22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M9.21674 3.52486C9.92263 2.44833 11.2123 2 12.4996 2C13.7869 2 15.077 2.44833 15.7829 3.52486C16.2829 4.2874 16.4993 5.09433 16.4996 6.01197C16.4999 6.66714 16.4044 7.31882 16.2161 7.94636C15.6367 9.87779 14.9561 12 12.4996 12C10.0431 12 9.36295 9.87779 8.78352 7.94636C8.59526 7.31882 8.49975 6.66714 8.5 6.01197C8.50036 5.09433 8.71673 4.2874 9.21674 3.52486Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M8.5 6.00003L16.4986 6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Muslim',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 25 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14.4936 8.00278C13.862 7.67726 13.1907 7.50195 12.4948 7.50195C11.799 7.50195 11.1277 7.67726 10.4961 8.00278', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M7.49634 11.0029H7.50532', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M20.9981 8.50198C21.4978 8.0018 21.9975 7.06442 21.9975 5.83155C21.9975 4.26773 20.6552 3 18.9994 3C18.649 3 18.3126 3.05678 18 3.16112', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M4.01282 11.5058H2.01003C2.0045 11.5058 2.00003 11.5103 2.00003 11.5158L2 14.4836C2 14.4868 2.00159 14.4899 2.00426 14.4917L7.01853 18.0086V20.9898H9.0229L10.0191 19.4989C12.2666 20.0652 14.5592 19.8683 16.0196 19.5043L17.0179 21H19.0572L19.0081 17.9992C23.1758 14.4839 22.1585 10.8008 20.8847 8.86082C19.8356 7.26314 16.9197 4.50411 11.7626 5.07702C6.47835 5.66406 4.53833 8.96653 4.01282 11.5058Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'PiggyBank',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

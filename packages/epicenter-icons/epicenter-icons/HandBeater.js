@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M8.5 19.5C8.5 17.567 6.933 16 5 16C4.02066 16 3.13526 16.4022 2.5 17.0505L7.44949 22C8.09777 21.3647 8.5 20.4793 8.5 19.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M7.5 17L11.5 13', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M15 9.5H15.0001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M22.5 6L18.5 2C17.6537 3.41056 16.6557 4.30191 15.4934 4.92423C13.7356 5.86536 12.0916 7.1231 11.4102 8.99696L10.5 11.5L13 14L15.503 13.0898C17.3769 12.4084 18.6349 10.7645 19.5765 9.00691C20.199 7.84504 21.0906 6.84564 22.5 6Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'HandBeater',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 25 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

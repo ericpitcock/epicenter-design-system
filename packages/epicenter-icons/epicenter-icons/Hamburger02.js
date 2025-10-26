@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M20.5 11V10C20.5 6.68629 17.8137 4 14.5 4H9.5C6.18629 4 3.5 6.68629 3.5 10V11', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M20.5 15C20.5 17.7614 18.2614 20 15.5 20H8.5C5.73858 20 3.5 17.7614 3.5 15', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12 15H20C21.1046 15 22 14.1046 22 13C22 11.8954 21.1046 11 20 11H12M6 15H4C2.89543 15 2 14.1046 2 13C2 11.8954 2.89543 11 4 11H6M6 11L9 14L12 11M6 11H12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M9.00898 8L9 8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M15 7L14 8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Hamburger02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

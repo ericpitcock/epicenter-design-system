@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M8.02506 7.52663L21.2528 12.6142C21.5905 12.7441 21.5796 13.2256 21.2363 13.3401L15.4971 15.2531C15.3819 15.2915 15.2916 15.3819 15.2532 15.4971L13.3401 21.2363C13.2257 21.5795 12.7441 21.5905 12.6142 21.2528L7.52666 8.02503C7.40669 7.71313 7.71316 7.40666 8.02506 7.52663Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M13.5 4H5.50003M4.00003 5.5V13.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M5.50003 2.5H2.50003V5.5H5.50003V2.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M5.50003 13.5H2.50003V16.5H5.50003V13.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M16.5 2.5H13.5V5.5H16.5V2.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CursorEdit02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

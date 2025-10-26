@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M21.2754 6.27544L17.7071 2.70711C17.3166 2.31658 16.6834 2.31658 16.2929 2.70711L7.58579 11.4142C7.21071 11.7893 7 12.298 7 12.8284V14.5858C7 14.851 7.10536 15.1054 7.29289 15.2929L8.70711 16.7071C8.89464 16.8946 9.149 17 9.41421 17H10.7C11.2136 17 11.7074 16.8025 12.0793 16.4483L21.258 7.70668C21.6648 7.31921 21.6727 6.67271 21.2754 6.27544Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M6.92517 15L2.42971 19.4955C1.85676 20.0684 1.85676 20.9973 2.42971 21.5703C3.00266 22.1432 3.93159 22.1432 4.50454 21.5703L9 17.0748', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M6.5 20L4 17.5', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('circle', { 'cx': '2.5', 'cy': '2.5', 'r': '2.5', 'stroke-linejoin': 'round', 'transform': 'matrix(-1 0 0 1 21 16)' })
+
+export default defineComponent({
+    name: 'CricketBat',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

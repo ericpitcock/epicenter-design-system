@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M13.4893 19.0232L16.484 16.0285C16.7888 15.7237 17.2546 15.6471 17.6558 15.8047C18.214 16.0239 19.0695 16.3106 20.0021 16.4445C20.5496 16.5231 21.0001 16.9679 21.0001 17.521V20.0246C21.0001 20.5777 20.551 21.0289 19.9987 20.9987C10.8406 20.4972 3.50301 13.1597 3.00156 4.00152C2.97132 3.44926 3.42257 3.00012 3.97565 3.00012H6.47925C7.03233 3.00012 7.47709 3.45063 7.5557 3.9981C7.68962 4.93074 7.97633 5.78629 8.19556 6.34448C8.35314 6.74569 8.27654 7.21147 7.97174 7.51627L4.97709 10.5109', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M16.5001 4.00012V11.0001M20.0001 7.50012H13.0001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CallAdd',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

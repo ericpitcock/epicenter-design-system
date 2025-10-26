@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M11.9913 21.0024C17.4507 21.0024 21.8629 16.6807 22.0007 11.211C22.0007 8.0661 21.1443 5.81973 18.2447 3.24132C18.0661 3.08251 17.8343 2.99756 17.5953 2.99756H6.31774C6.11055 2.99756 5.90739 3.06057 5.7428 3.18641C3.38101 4.9922 1.99927 7.93768 1.99927 11.1365C1.99934 16.6062 6.53194 21.0024 11.9913 21.0024Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M5.99927 2.99756C5.99927 4.48737 8.49927 5.99756 11.9993 5.99756C15.4993 5.99756 17.9993 4.48737 17.9993 2.99756', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'GoogleHome',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

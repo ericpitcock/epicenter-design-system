@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M11 18C10.4477 18 10 18.4477 10 19L10 21C10 21.5523 10.4477 22 11 22H13C13.5523 22 14 21.5523 14 21V19C14 18.4477 13.5523 18 13 18L11 18Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M11 2C10.4477 2 10 2.44772 10 3L10 5C10 5.55228 10.4477 6 11 6H13C13.5523 6 14 5.55228 14 5V3C14 2.44772 13.5523 2 13 2L11 2Z', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M11 10C10.4477 10 10 10.4477 10 11L10 13C10 13.5523 10.4477 14 11 14H13C13.5523 14 14 13.5523 14 13V11C14 10.4477 13.5523 10 13 10L11 10Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'MoreVerticalSquare01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M6 20.0078C8.20914 20.0078 10 18.2161 10 16.0059C10 13.7956 8.20914 12.0039 6 12.0039C3.79086 12.0039 2 13.7956 2 16.0059C2 18.2161 3.79086 20.0078 6 20.0078Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M18 20.0078C20.2091 20.0078 22 18.2161 22 16.0059C22 13.7956 20.2091 12.0039 18 12.0039C15.7909 12.0039 14 13.7956 14 16.0059C14 18.2161 15.7909 20.0078 18 20.0078Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M6.5 16L11 16.0059L16 8.00195', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M12.5 13.5046L7 7.00146M7 7.00146L5.5 7M7 7.00146H9.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M18 15.5L15 4C17 4 19 4.5 20 6.00003', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Bicycle',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

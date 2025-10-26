@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M13.5 7.5V3C13.5 2.44772 13.0523 2 12.5 2H7.5C6.94772 2 6.5 2.44772 6.5 3V7.5M9.49805 4.5H10.498M15 10V8.5C15 7.94772 14.5523 7.5 14 7.5H6C5.44772 7.5 5 7.94772 5 8.5V17C5 19.7614 7.23858 22 10 22C10.5226 22 11.0265 21.9198 11.5 21.7711', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M19 12.5L13 18.5M19 18.5L13 12.5', 'stroke-linecap': 'round' })
+
+export default defineComponent({
+    name: 'UsbNotConnected02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

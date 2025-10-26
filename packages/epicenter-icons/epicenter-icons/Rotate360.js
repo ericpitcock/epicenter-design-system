@@ -1,0 +1,17 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17 20.5V16.8976C16.4185 17.4041 15.7945 17.8849 15.1322 18.3311C9.88883 21.8639 4.23591 21.8932 2.50604 18.3967C0.77618 14.9001 3.62444 9.20172 8.86781 5.66893C14.1112 2.13614 19.7641 2.10677 21.494 5.60332C22.4273 7.48989 22.0279 10.0175 20.6386 12.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Rotate360',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1
+        ])
+    }
+})

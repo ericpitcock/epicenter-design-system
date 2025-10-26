@@ -1,0 +1,27 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M6 10L8 12M8 10L6 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M11 10L13 12M13 10L11 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M16 10L18 12M18 10L16 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M19 7H5C3.89543 7 3 7.89543 3 9V13C3 14.1046 3.89543 15 5 15H19C20.1046 15 21 14.1046 21 13V9C21 7.89543 20.1046 7 19 7Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M5 18V20C5 21.1046 5.89543 22 7 22H17C18.1046 22 19 21.1046 19 20V18M19 4C19 2.89543 18.1046 2 17 2H7C5.89543 2 5 2.89543 5 4', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M12 19V19.01', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'SmsCode',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6
+        ])
+    }
+})

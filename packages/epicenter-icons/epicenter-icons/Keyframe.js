@@ -1,0 +1,17 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M19.5163 10.6919L13.548 3.71167C12.7367 2.76278 11.2633 2.76278 10.452 3.71167L4.48367 10.6919C3.83878 11.4461 3.83878 12.5539 4.48367 13.3081L10.452 20.2883C11.2633 21.2372 12.7367 21.2372 13.548 20.2883L19.5163 13.3081C20.1612 12.5539 20.1612 11.4461 19.5163 10.6919Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Keyframe',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1
+        ])
+    }
+})

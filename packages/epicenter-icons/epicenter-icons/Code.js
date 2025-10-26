@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M8 12H8.00897H8ZM11.9955 12H12.0045H11.9955ZM15.991 12H16H15.991Z', 'fill': 'currentColor' })
+const _hoisted2 = h('path', { 'd': 'M8 12H8.00897M11.9955 12H12.0045M15.991 12H16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M18 3H18.5C19.6046 3 20.5 3.89543 20.5 5V9.33333C20.5 9.76607 20.6404 10.1871 20.9 10.5333L22 12L20.9 13.4667C20.6404 13.8129 20.5 14.2339 20.5 14.6667V19C20.5 20.1046 19.6046 21 18.5 21H18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M6 3H5.5C4.39543 3 3.5 3.89543 3.5 5V9.33333C3.5 9.76607 3.35964 10.1871 3.1 10.5333L2 12L3.1 13.4667C3.35964 13.8129 3.5 14.2339 3.5 14.6667V19C3.5 20.1046 4.39543 21 5.5 21H6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Code',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

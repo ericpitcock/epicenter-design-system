@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M10 12L10.8106 8.75746C10.9219 8.3123 11.3219 8 11.7808 8H12.2192C12.6781 8 13.0781 8.3123 13.1894 8.75746L14 12' })
+const _hoisted2 = h('path', { 'd': 'M2.0059 3C1.90863 4.53936 2.97686 7.92057 8.05347 9.5M21.9941 3C22.0914 4.53936 21.0231 7.92057 15.9465 9.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M15.4289 12.3724C13.4331 11.3019 12 12.8799 12 12.8799C12 12.8799 10.5669 11.3019 8.57106 12.3723C6.15369 13.6689 5.9801 18.746 12 21C18.0199 18.746 17.8463 13.6689 15.4289 12.3724Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Necklace',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

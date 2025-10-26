@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 2C6.47716 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z', 'stroke-linecap': 'square' })
+const _hoisted2 = h('path', { 'd': 'M6 9.5V14.5M12 14.0002C11.6799 14.3203 11.2456 14.5002 10.7929 14.5002H10.5737C9.42842 14.5002 8.5 13.5718 8.5 12.4265V11.5739C8.5 10.4286 9.42842 9.50018 10.5737 9.50018H10.7929C11.2456 9.50018 11.6799 9.68004 12 10.0002M14.5 11.5V12.5C14.5 13.6046 15.3954 14.5 16.5 14.5C17.6046 14.5 18.5 13.6046 18.5 12.5V11.5C18.5 10.3954 17.6046 9.5 16.5 9.5C15.3954 9.5 14.5 10.3954 14.5 11.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Ico',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

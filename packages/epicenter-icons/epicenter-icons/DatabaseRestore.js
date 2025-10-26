@@ -1,0 +1,27 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('ellipse', { 'cx': '11', 'cy': '5', 'rx': '8', 'ry': '3', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M11 15C6.58172 15 3 13.6569 3 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M11 22C6.58172 22 3 20.6569 3 19V5M19 5V10.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M6 11C6.60158 11.1808 7.27434 11.3898 8 11.5', 'stroke-linecap': 'round' })
+const _hoisted5 = h('path', { 'd': 'M6 18C6.60158 18.1808 7.27434 18.3898 8 18.5', 'stroke-linecap': 'round' })
+const _hoisted6 = h('path', { 'd': 'M20.5 13.5V15.5L19.4647 14.7618C18.7894 14.2569 17.9501 13.9576 17.0404 13.9576C14.809 13.9576 13 15.7579 13 17.9788C13 20.1996 14.809 22 17.0404 22C18.9951 22 20.6256 20.6185 21 18.783', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'DatabaseRestore',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6
+        ])
+    }
+})

@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M9 13C9 14.6569 10.3431 16 12 16C13.6569 16 15 14.6569 15 13', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M11.9816 20V22M14.9744 19L16.9697 20.4999M8.98847 19L6.99316 20.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12 6.5V2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M5.6641 9.50385L4 12C4 12 6.5 13 12 13C17.5 13 20 12 20 12L18.3359 9.50385C18.1169 9.17531 17.8055 8.91896 17.441 8.7671L12 6.5L6.55897 8.7671C6.19449 8.91896 5.88312 9.17531 5.6641 9.50385Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Lamp02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

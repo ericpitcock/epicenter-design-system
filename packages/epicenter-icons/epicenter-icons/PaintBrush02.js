@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M15 2H6C4.89543 2 4 2.89543 4 4V6C4 7.10457 4.89543 8 6 8H15C16.1046 8 17 7.10457 17 6V4C17 2.89543 16.1046 2 15 2Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15 21V17C15 16.4477 14.5523 16 14 16H13C12.4477 16 12 16.4477 12 17V21C12 21.5523 12.4477 22 13 22H14C14.5523 22 15 21.5523 15 21Z', 'stroke-linecap': 'round' })
+const _hoisted3 = h('path', { 'd': 'M17.2491 5.0001L18.0005 5.00007C19.1051 5.00003 20.0006 5.89547 20.0006 7.00007V9.52281C20.0006 10.4008 19.4279 11.1762 18.5887 11.4344L14.9119 12.5656C14.0727 12.8238 13.5 13.5992 13.5001 14.4772L13.5001 16.0001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'PaintBrush02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

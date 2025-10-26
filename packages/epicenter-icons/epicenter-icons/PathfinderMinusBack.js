@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M5.5 15H4C2.89543 15 2 14.1046 2 13L2 12.5M2 4.5L2 4C2 2.89543 2.89543 2 4 2L4.5 2M12.5 2L13 2C14.1046 2 15 2.89543 15 4V5M9.5 2L7.5 2M2 9.5L2 7.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15 9L20 9C21.1046 9 22 9.89543 22 11L22 20C22 21.1046 21.1046 22 20 22L11 22C9.89543 22 9 21.1046 9 20L9 15L13 15C14.1046 15 15 14.1046 15 13L15 9Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'PathfinderMinusBack',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

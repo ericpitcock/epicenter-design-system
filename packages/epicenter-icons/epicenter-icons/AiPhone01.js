@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17 15V20C17 21.1046 16.1046 22 15 22H6C4.89543 22 4 21.1046 4 20V4C4 2.89543 4.89543 2 6 2H9', 'stroke-linecap': 'round' })
+const _hoisted2 = h('path', { 'd': 'M10.5 19H10.509', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M17.5 4H13.5C12.9477 4 12.5 4.44772 12.5 5V9C12.5 9.55228 12.9477 10 13.5 10H17.5C18.0523 10 18.5 9.55228 18.5 9V5C18.5 4.44772 18.0523 4 17.5 4Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M14 10V11.5M17 10V11.5M14 2.5V4M17 2.5V4M12.5 5.5H11M12.5 8.5H11M20 5.5H18.5M20 8.5H18.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'AiPhone01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17.0002 10C18.2117 6.73012 18.8203 5.60157 18.3297 4.3672C18.1795 3.98912 17.9639 3.64539 17.6946 3.35437C16.0233 1.54854 7.97647 1.54854 6.30519 3.35437C6.03585 3.64539 5.82029 3.98912 5.67004 4.3672C5.17947 5.60157 5.7885 6.73012 7 10', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15 16H16.5M7.5 16H9', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('circle', { 'cx': '12', 'cy': '16', 'r': '3', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M12 8C7.58172 8 4 11.5817 4 16C4 18.3894 5.5 21 7 22H17C18.5 21 20 18.3894 20 16C20 11.5817 16.4183 8 12 8Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Kettlebell',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

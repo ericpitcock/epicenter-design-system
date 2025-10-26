@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M19.006 10.5117L21.1631 10.8683C21.6459 10.9481 22 11.3656 22 11.8549V14.1515C22 14.638 21.6499 15.0539 21.1706 15.1369L19.006 15.5117', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M5.03605 20C4.53568 14.4258 9.13706 13.8065 11.1869 11.2258M11.2215 16.2171C13.8299 15.4832 15.1953 13.8829 15.8158 11.2258C16.5349 8.28561 15.012 4 12.0079 4C12.0079 4 13.0208 5.46774 12.5086 6.5C11.4417 8.84753 7.78387 7.5 6.50034 10.5C5.78758 12.166 6.12085 14.6259 7.46206 15.6933C8.30483 16.3642 9.96894 16.5695 11.2215 16.2171Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M4.9983 7H4C2.89543 7 2 7.89543 2 9V18M8.99603 19H16.9904C18.0949 19 18.9904 18.1046 18.9904 17V8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BatteryEcoCharging',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

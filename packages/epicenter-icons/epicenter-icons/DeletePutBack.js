@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M3 5.49348H8M8 5.49348L9.24003 2.60546C9.39776 2.23811 9.75913 2 10.1589 2H13.8411C14.2409 2 14.6022 2.23811 14.76 2.60546L16 5.49348M8 5.49348H16M21 5.49348H16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15.0001 13.5L12.5001 16L15.0001 18.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M4.5 5.5L5.38612 20.121C5.4501 21.1766 6.32488 22 7.38246 22L16.0254 22C19.6625 22 20.9149 15.9712 14.9571 15.9712L12.5 16M19.5 5.5L19 13', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'DeletePutBack',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M8.5 15.5C9.63349 14.3665 11.0882 13.8754 12.5 14.0267', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M5.5 12C8.51685 9.00559 11.7828 8.2405 15 9.76006', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M2 8C8.31579 2.66669 15.6842 2.66668 22 7.99989', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M16.5 15.5H15V21H22V15.5H20.5M16.5 15.5V14C16.5 12.8954 17.3954 12 18.5 12C19.6046 12 20.5 12.8954 20.5 14V15.5M16.5 15.5H20.5', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'WifiLock',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

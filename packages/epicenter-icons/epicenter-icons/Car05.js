@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M19 19V17H5V19C5 19.5523 4.55228 20 4 20H3C2.44772 20 2 19.5523 2 19V13.6056C2 13.2107 2.11688 12.8247 2.3359 12.4962L4 10L5.98718 5.23077C6.29772 4.48548 7.02593 4 7.83333 4H16.1667C16.9741 4 17.7023 4.48548 18.0128 5.23077L20 10L21.6641 12.4962C21.8831 12.8247 22 13.2107 22 13.6056V19C22 19.5523 21.5523 20 21 20H20C19.4477 20 19 19.5523 19 19Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M2 8.5L4 10L6 10.5H18L20 10L22 8.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M18 14V14.01', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M6 14V14.01', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Car05',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

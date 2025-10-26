@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 2V22', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M11.9997 18.5C10.4912 18.5 9.10269 17.9861 7.99972 17.1238M11.9997 5.5C9.10768 5.5 6.65678 7.38874 5.81322 10M5.5 13C5.59345 13.6052 5.7517 13.962 6 14.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M12 6C13.5 6 15.948 5.13281 17 3.5M20 6.5C20 6.5 19.1018 6.84956 18.5 7C16.5 7.5 14.5 8.99906 16 10.9991C17.5 12.9991 19 14.4991 17.5 16.4991C16.7608 17.4846 16 19 18 20', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'GeologyCrust',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

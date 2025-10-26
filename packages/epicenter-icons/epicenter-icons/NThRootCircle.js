@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z' })
+const _hoisted2 = h('path', { 'd': 'M8 10.5V9M8 9C8 8.17157 8.67157 7.5 9.5 7.5C10.3284 7.5 11 8.17157 11 9V10.5M8 9V7M7 14.5L7.51894 13.9811C8.00158 13.4984 8.81523 13.6305 9.12048 14.241L10.5 17L13.7236 10.5528C13.893 10.214 14.2393 10 14.618 10H18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'NThRootCircle',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

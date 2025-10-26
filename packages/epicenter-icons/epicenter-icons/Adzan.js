@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 15.6014V18.6014', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M6.5 12V21C6.5 21.5523 6.94772 22 7.5 22H16.5C17.0523 22 17.5 21.5523 17.5 21V12', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M20 14.5L21 13.5M20 17.5L21 18.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M4 14.5L3 13.5M4 17.5L3 18.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M9.44453 3.80712C10.0698 3.38857 11.0636 2.86566 12 2C12.9364 2.86566 13.9302 3.38857 14.5555 3.80712C20.7861 7.5473 17.8972 11 17.3945 11.9991H6.60549C6.10282 11 3.21394 7.5473 9.44453 3.80712Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Adzan',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

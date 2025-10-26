@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M20 8.5V19.4997C20 20.6041 19.1047 21.4995 18.0003 21.4997L15.5 21.5M4 8.5V19.4994C4 20.604 4.89543 21.4994 6 21.4994H11C11.5523 21.4994 12 21.0517 12 20.4994V18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M22 10L13.2 3.4C12.4889 2.86667 11.5111 2.86667 10.8 3.4L2 10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M10 12H8.5V14.6972C8.5 14.8946 8.55844 15.0877 8.66795 15.2519L10.2031 17.5547C10.3886 17.8329 10.7008 18 11.0352 18H12.9648C13.2992 18 13.6114 17.8329 13.7969 17.5547L15.3321 15.2519C15.4416 15.0877 15.5 14.8946 15.5 14.6972V12H14M10 12V10M10 12H14M14 12V10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'ElectricHome01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

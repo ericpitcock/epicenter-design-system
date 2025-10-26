@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M10.6016 15.3984L5 21M10 14C10.0419 14.4713 10.1813 14.9821 10.5996 15.4004C11.0179 15.8187 11.5287 15.9581 12 16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M6 10L12.5 7.5L14.6885 4.84851C15.064 4.39356 15.7497 4.36084 16.1669 4.77797L21.222 9.83314C21.6392 10.2503 21.6064 10.936 21.1515 11.3115L18.5 13.5L16 20L5 21L6 10Z', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M13 7.5L18.5 13' })
+const _hoisted4 = h('path', { 'd': 'M2 3H8', 'stroke-linecap': 'round' })
+
+export default defineComponent({
+    name: 'PenToolMinus',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

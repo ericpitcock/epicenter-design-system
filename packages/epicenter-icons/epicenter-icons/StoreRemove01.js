@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M3.5 10V19C3.5 20.1046 4.39543 21 5.5 21H12M20.5 12.5V10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M17 7.51072C16.9942 8.88649 15.8771 9.99999 14.5 9.99999C13.1193 9.99999 12 8.8807 12 7.49999C12 8.8807 10.8807 9.99999 9.5 9.99999C8.11929 9.99999 7 8.8807 7 7.49999C7 8.8807 5.82654 9.99999 4.379 9.99999C3.59983 9.99999 2.90007 9.67569 2.41999 9.16089C1.59461 8.27581 2.12559 6.97404 2.81446 5.98844L4.40067 3.8195C4.77734 3.30444 5.37718 3.00004 6.01529 3.00012L17.985 3.00172C18.6229 3.0018 19.2225 3.30619 19.5991 3.8211L21.1855 5.9903C21.8744 6.97591 22.4054 8.27768 21.58 9.16275C21.0999 9.67756 20.4001 10.0019 19.621 10.0019C18.1765 10.0019 17.005 8.88735 17 7.51072Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M15.5 16L20.5 21M15.5 21L20.5 16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'StoreRemove01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

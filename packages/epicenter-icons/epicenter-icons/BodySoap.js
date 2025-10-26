@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14 21V13C14 10.2386 11.7614 8 9 8C6.23858 8 4 10.2386 4 13V21C4 21.5523 4.44772 22 5 22H13C13.5523 22 14 21.5523 14 21Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M4 15H14', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M7 8V6C7 5.44772 7.44772 5 8 5H10C10.5523 5 11 5.44772 11 6V8', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M9 5V2M9 2H6.5M9 2H13.5L14.5 3', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M17.9033 10.9505C18.7065 10.7313 19.1716 9.84608 18.942 8.97336C18.7124 8.10063 17.001 7 17.001 7C17.001 7 15.8036 8.89454 16.0332 9.76726C16.2627 10.64 17.1 11.1697 17.9033 10.9505Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BodySoap',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

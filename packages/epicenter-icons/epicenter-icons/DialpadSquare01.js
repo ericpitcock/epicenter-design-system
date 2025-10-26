@@ -1,0 +1,33 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M3.5 3H6.5C6.77614 3 7 3.22386 7 3.5V6.5C7 6.77614 6.77614 7 6.5 7H3.5C3.22386 7 3 6.77614 3 6.5V3.5C3 3.22386 3.22386 3 3.5 3Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M10.5 3H13.5C13.7761 3 14 3.22386 14 3.5V6.5C14 6.77614 13.7761 7 13.5 7H10.5C10.2239 7 10 6.77614 10 6.5V3.5C10 3.22386 10.2239 3 10.5 3Z', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M17.5 3H20.5C20.7761 3 21 3.22386 21 3.5V6.5C21 6.77614 20.7761 7 20.5 7H17.5C17.2239 7 17 6.77614 17 6.5V3.5C17 3.22386 17.2239 3 17.5 3Z', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M3.5 10H6.5C6.77614 10 7 10.2239 7 10.5V13.5C7 13.7761 6.77614 14 6.5 14H3.5C3.22386 14 3 13.7761 3 13.5V10.5C3 10.2239 3.22386 10 3.5 10Z', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M10.5 10H13.5C13.7761 10 14 10.2239 14 10.5V13.5C14 13.7761 13.7761 14 13.5 14H10.5C10.2239 14 10 13.7761 10 13.5V10.5C10 10.2239 10.2239 10 10.5 10Z', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M17.5 10H20.5C20.7761 10 21 10.2239 21 10.5V13.5C21 13.7761 20.7761 14 20.5 14H17.5C17.2239 14 17 13.7761 17 13.5V10.5C17 10.2239 17.2239 10 17.5 10Z', 'stroke-linejoin': 'round' })
+const _hoisted7 = h('path', { 'd': 'M3.5 17H6.5C6.77614 17 7 17.2239 7 17.5V20.5C7 20.7761 6.77614 21 6.5 21H3.5C3.22386 21 3 20.7761 3 20.5V17.5C3 17.2239 3.22386 17 3.5 17Z', 'stroke-linejoin': 'round' })
+const _hoisted8 = h('path', { 'd': 'M10.5 17H13.5C13.7761 17 14 17.2239 14 17.5V20.5C14 20.7761 13.7761 21 13.5 21H10.5C10.2239 21 10 20.7761 10 20.5V17.5C10 17.2239 10.2239 17 10.5 17Z', 'stroke-linejoin': 'round' })
+const _hoisted9 = h('path', { 'd': 'M17.5 17H20.5C20.7761 17 21 17.2239 21 17.5V20.5C21 20.7761 20.7761 21 20.5 21H17.5C17.2239 21 17 20.7761 17 20.5V17.5C17 17.2239 17.2239 17 17.5 17Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'DialpadSquare01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6,
+            _hoisted7,
+            _hoisted8,
+            _hoisted9
+        ])
+    }
+})

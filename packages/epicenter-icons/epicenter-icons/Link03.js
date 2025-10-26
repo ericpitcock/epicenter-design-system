@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M10 14L15 9', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12.5 15.5C13.0523 16.0523 13.0523 16.9477 12.5 17.5L8.91422 21.0858C8.13317 21.8668 6.86684 21.8668 6.08579 21.0858L2.91422 17.9142C2.13317 17.1332 2.13317 15.8668 2.91422 15.0858L6.5 11.5C7.05229 10.9477 7.94772 10.9477 8.5 11.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M11.5 8.5C10.9477 7.94771 10.9477 7.05228 11.5 6.5L15.0858 2.91421C15.8668 2.13316 17.1331 2.13316 17.9142 2.91421L21.0858 6.08579C21.8668 6.86683 21.8668 8.13316 21.0858 8.91421L17.5 12.5C16.9477 13.0523 16.0523 13.0523 15.5 12.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Link03',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

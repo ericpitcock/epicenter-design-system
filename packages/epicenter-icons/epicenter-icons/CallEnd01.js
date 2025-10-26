@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M13.4892 19.0231L16.4839 16.0284C16.7887 15.7236 17.2544 15.647 17.6556 15.8046C18.2138 16.0239 19.0694 16.3106 20.002 16.4445C20.5495 16.5231 21 16.9679 21 17.5209V20.0245C21 20.5776 20.5509 21.0289 19.9986 20.9986C10.8404 20.4972 3.50289 13.1596 3.00144 4.00146C2.9712 3.4492 3.42245 3.00006 3.97553 3.00006H6.47913C7.03221 3.00006 7.47697 3.45057 7.55558 3.99803C7.6895 4.93067 7.97621 5.78623 8.19544 6.34442C8.35302 6.74563 8.27642 7.21141 7.97162 7.51621L4.97697 10.5109', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M20 4.00006L14 10.0001M20 10.0001L14 4.00006', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CallEnd01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

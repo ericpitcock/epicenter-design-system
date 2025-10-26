@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14 21H2.5L2.55324 19.0125C2.5772 18.1177 3.1927 17.3479 4.0602 17.1276L8.49986 16V13.845C7.21508 13.6822 6.03024 13.397 4.99986 13.0161C5.49986 12.0322 5.99986 10.5563 5.99986 7.11264C5.99986 1.20919 11.4999 1.20912 12.9999 3.17672C15.9999 2.68499 15.9999 5.14483 15.9999 8.09655C15.9999 10.4579 16.6665 12.3602 16.9999 13.0161C15.9695 13.397 14.7846 13.6822 13.4999 13.845V16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M16.5 22L19 19.5M19 19.5L21.5 17M19 19.5L16.5 17M19 19.5L21.5 22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'RemoveFemale',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

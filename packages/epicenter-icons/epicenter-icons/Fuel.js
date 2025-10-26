@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M5 6V3.5H9V6', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15 5L18 5', 'stroke-linecap': 'round' })
+const _hoisted3 = h('path', { 'd': 'M19 2H14C12.8954 2 12 2.89543 12 4V6H5C3.89543 6 3 6.89543 3 8V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V4C21 2.89543 20.1046 2 19 2Z', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M12 10.5C11.1129 11.3354 9 13.1229 9 14.5873C9 16.0231 10.136 17.5 12 17.5C13.864 17.5 15 16.0231 15 14.5873C15 13.1229 12.8871 11.3354 12 10.5Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Fuel',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

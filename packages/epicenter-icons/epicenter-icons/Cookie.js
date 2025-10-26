@@ -1,0 +1,29 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M2 12C2 17.5228 6.48759 22 12.0233 22C17.2307 22 21.5107 18.0382 22 12.9709C21.8512 12.9901 21.6995 13 21.5455 13C19.6848 13 18.1625 11.5548 18.0446 9.72818C17.7481 9.90098 17.4031 10 17.035 10C15.9278 10 15.0303 9.10457 15.0303 8C15.0303 7.39892 15.2961 6.85978 15.7168 6.49315C14.7043 5.87927 14.028 4.76843 14.028 3.5C14.028 3.05943 14.1096 2.63788 14.2585 2.24956C13.5398 2.08624 12.7916 2 12.0233 2C6.48759 2 2 6.47715 2 12Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M11.009 12L11 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M6.00898 10L6 10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M12.009 18L12 18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M10 6L9 7', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M16.5 14.5L15.5 15.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted7 = h('path', { 'd': 'M7 15L8 16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Cookie',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6,
+            _hoisted7
+        ])
+    }
+})

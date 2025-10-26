@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M16.5 5.5H15V11H22V5.5H20.5H16.5ZM16.5 5.5V4C16.5 2.89543 17.3954 2 18.5 2C19.0973 2 19.6335 2.26188 20 2.67709', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M2 17.2349C4.49328 17.2349 6.77053 19.5 6.77053 21.9996M10 21.9996C10 17.5 5.99511 14 2.04522 14', 'stroke-linecap': 'round' })
+const _hoisted3 = h('path', { 'd': 'M3 21H3.00898', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M13.5 22H20C21.1046 22 22 21.1046 22 20V14.5M3 11V8C3 6.89543 3.89543 6 5 6H11.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'RssUnlocked',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

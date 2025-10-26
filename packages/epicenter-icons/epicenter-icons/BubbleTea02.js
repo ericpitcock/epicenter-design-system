@@ -1,0 +1,29 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M18 9L16.9086 18.4585C16.7142 20.1436 16.617 20.9861 16.0482 21.4931C15.4794 22 14.6313 22 12.935 22H11.065C9.36873 22 8.52059 22 7.9518 21.4931C7.38302 20.9861 7.2858 20.1436 7.09136 18.4585L6 9', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M6 9L6.89443 7.21115C7.43234 6.13531 7.7013 5.5974 8.18461 5.2987C8.66791 5 9.26932 5 10.4721 5L13.5279 5C14.7307 5 15.3321 5 15.8154 5.2987C16.2987 5.5974 16.5677 6.13531 17.1056 7.21115L18 9', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M5 9L19 9', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M12 9V2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M6.5 13.0112C6.77548 12.5167 8.61157 11.7101 9.93388 12.1057C11.5868 12.6002 15.0207 15.4838 17.5 13.0113' })
+const _hoisted6 = h('path', { 'd': 'M10.0078 17L9.99883 17', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted7 = h('path', { 'd': 'M14.0078 19L13.9988 19', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BubbleTea02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6,
+            _hoisted7
+        ])
+    }
+})

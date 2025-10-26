@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M2 8.5C2 7.39543 2.89543 6.5 4 6.5H7.5L9.0547 4.16795C9.3329 3.75065 9.80125 3.5 10.3028 3.5H13.6972C14.1988 3.5 14.6671 3.75065 14.9453 4.16795L16.5 6.5H20C21.1046 6.5 22 7.39543 22 8.5V18.5C22 19.6046 21.1046 20.5 20 20.5H4C2.89543 20.5 2 19.6046 2 18.5V8.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M19 9.5V9.51', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M10.3311 11.0066C10.3311 10.4694 10.4479 9.95964 10.6557 9.5C9.38481 10.0746 8.5 11.3523 8.5 12.8377C8.5 14.8603 10.1397 16.5 12.1623 16.5C13.6477 16.5 14.9254 15.6152 15.5 14.3443C15.0404 14.5521 14.5306 14.6689 13.9934 14.6689C11.9708 14.6689 10.3311 13.0292 10.3311 11.0066Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CameraNightMode01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

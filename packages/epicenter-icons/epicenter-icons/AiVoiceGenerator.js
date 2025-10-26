@@ -1,0 +1,29 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17.4069 13.4036C17.6192 12.8655 18.3808 12.8655 18.5931 13.4036L18.6298 13.4969C19.1482 14.8113 20.1887 15.8518 21.5031 16.3702L21.5964 16.4069C22.1345 16.6192 22.1345 17.3808 21.5964 17.5931L21.5031 17.6298C20.1887 18.1482 19.1482 19.1887 18.6298 20.5031L18.5931 20.5964C18.3808 21.1345 17.6192 21.1345 17.4069 20.5964L17.3702 20.5031C16.8518 19.1887 15.8113 18.1482 14.4969 17.6298L14.4036 17.5931C13.8655 17.3808 13.8655 16.6192 14.4036 16.4069L14.4969 16.3702C15.8113 15.8518 16.8518 14.8113 17.3702 13.4969L17.4069 13.4036Z' })
+const _hoisted2 = h('path', { 'd': 'M22 11V5C22 3.89543 21.1046 3 20 3H4C2.89543 3 2 3.89543 2 5V13C2 14.1046 2.89543 15 4 15H11', 'stroke-linecap': 'round' })
+const _hoisted3 = h('path', { 'd': 'M6 8V10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M15 7V11', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M12 8.5V9.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M18 8.5V9.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted7 = h('path', { 'd': 'M9 7V11', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'AiVoiceGenerator',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6,
+            _hoisted7
+        ])
+    }
+})

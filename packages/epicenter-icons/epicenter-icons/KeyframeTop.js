@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M3 3L12 3M12 3L21 3M12 3V6.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M11.2041 20.6409C11.6309 21.1197 12.3691 21.1197 12.7959 20.6409L16.7203 16.238C17.0932 15.8195 17.0932 15.1805 16.7203 14.762L12.7959 10.3591C12.3691 9.8803 11.6309 9.8803 11.2041 10.3591L7.27972 14.762C6.90676 15.1805 6.90676 15.8195 7.27972 16.238L11.2041 20.6409Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'KeyframeTop',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

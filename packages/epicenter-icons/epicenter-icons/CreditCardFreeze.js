@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M2 8H22M10 19H4C2.89543 19 2 18.1046 2 17V5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V9.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M17.5 12V14M17.5 14V19.0001M17.5 14L19.1875 13.125M17.5 14L15.8125 13.125M17.5 19.0001L15.8125 19.8751M17.5 19.0001L19.1875 19.8751M17.5 19.0001L17.5 21.0001M22 16.5001L20 16.5001M20 16.5001L15 16.5001M20 16.5001L20.875 18.1876M20 16.5001L20.875 14.8126M15 16.5001L14.125 14.8126M15 16.5001L14.125 18.1876M15 16.5001L13 16.5001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CreditCardFreeze',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

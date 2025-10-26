@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M10 18V14C10 12.8954 9.10457 12 8 12H4C2.89543 12 2 12.8954 2 14V18C2 19.1046 2.89543 20 4 20H8C9.10457 20 10 19.1046 10 18Z' })
+const _hoisted2 = h('path', { 'd': 'M2 14.5V10C2 6.68629 4.68629 4 8 4', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M22 18V14C22 12.8954 21.1046 12 20 12H16C14.8954 12 14 12.8954 14 14V18C14 19.1046 14.8954 20 16 20H20C21.1046 20 22 19.1046 22 18Z', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M14 14.5V10C14 6.68629 16.6863 4 20 4', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'QuoteUp',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

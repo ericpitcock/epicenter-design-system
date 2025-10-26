@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('circle', { 'cx': '12', 'cy': '12', 'r': '10' })
+const _hoisted2 = h('path', { 'd': 'M13.5 12V15C13.5 15.5523 13.9477 16 14.5 16H16.5C17.0523 16 17.5 15.5523 17.5 15V13C17.5 12.4477 17.0523 12 16.5 12H13.5ZM13.5 12V11C13.5 9.34315 14.8431 8 16.5 8M6.5 12V15C6.5 15.5523 6.94772 16 7.5 16H9.5C10.0523 16 10.5 15.5523 10.5 15V13C10.5 12.4477 10.0523 12 9.5 12H6.5ZM6.5 12V11C6.5 9.34315 7.84315 8 9.5 8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'QuoteUpCircle',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

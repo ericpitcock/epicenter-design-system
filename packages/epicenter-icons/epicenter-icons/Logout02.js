@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M10 2.86038V21.1396C10 21.6148 9.61479 22 9.13962 22C9.04714 22 8.95527 21.9851 8.86754 21.9558L3.68377 20.2279C3.27543 20.0918 3 19.7097 3 19.2792V4.72076C3 4.29033 3.27543 3.90819 3.68377 3.77208L8.86754 2.04415C8.95527 2.01491 9.04714 2 9.13962 2C9.61479 2 10 2.38521 10 2.86038Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M10 4H15C15.5523 4 16 4.44772 16 5V7M10 20H15C15.5523 20 16 19.5523 16 19V17', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M18.5 14.5L21 12L18.5 9.5M20 12H13', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Logout02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

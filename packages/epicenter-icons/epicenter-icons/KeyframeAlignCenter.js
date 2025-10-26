@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M15.2586 11.3348L12.7143 8.33607C12.3341 7.88798 11.6659 7.88798 11.2857 8.33607L8.74141 11.3348C8.41953 11.7142 8.41953 12.2858 8.74141 12.6652L11.2857 15.6639C11.6659 16.112 12.3341 16.112 12.7143 15.6639L15.2586 12.6652C15.5805 12.2858 15.5805 11.7142 15.2586 11.3348Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M5 12L2 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M22 12L19 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M12 19L12 22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M12 2L12 5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'KeyframeAlignCenter',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M9.0257 13.9743C7.83992 12.7885 6.03756 12.6684 5 13.7059L9.29408 18C10.3316 16.9624 10.2115 15.1601 9.0257 13.9743ZM9.0257 13.9743L20 3M7.36628 16.0722L4.19835 20.6047C3.19395 21.844 1.12433 19.8672 2.40699 18.8189L6.8792 15.5851', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M14.9743 13.9743C16.1601 12.7885 17.9624 12.6684 19 13.7059L14.7059 18C13.6684 16.9624 13.7885 15.1601 14.9743 13.9743ZM14.9743 13.9743L4 3M16.6337 16.0722L19.8017 20.6047C20.806 21.844 22.8757 19.8672 21.593 18.8189L17.1208 15.5851', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Fencing',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

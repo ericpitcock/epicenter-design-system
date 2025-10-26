@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 12V21C13.8315 19.3871 16.2062 18.4966 18.6667 18.5C19.8356 18.5 20.9578 18.6963 22 19.0585V3.55847C20.9578 3.19634 19.8356 3.00001 18.6667 3.00001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12 12V21C10.1685 19.3871 7.79379 18.4966 5.33333 18.5C4.16444 18.5 3.04222 18.6963 2 19.0585V3.55847C3.04222 3.19634 4.16444 3.00001 5.33333 3.00001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M8 4.44561C8 4.44561 9.5 3.00004 12.0045 3C14.5091 2.99996 16 4.44561 16 4.44561M14.5 6.99996C14.5 6.99996 13.5091 5.99742 12.0045 5.99742C10.5 5.99742 9.5 6.99996 9.5 6.99996M12 9H12.01', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'OnlineLearning01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

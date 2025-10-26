@@ -1,0 +1,27 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M6 4C6 5.10457 5.10457 6 4 6C2.89543 6 2 5.10457 2 4C2 2.89543 2.89543 2 4 2C5.10457 2 6 2.89543 6 4Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M22 4C22 5.10457 21.1046 6 20 6C18.8954 6 18 5.10457 18 4C18 2.89543 18.8954 2 20 2C21.1046 2 22 2.89543 22 4Z', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M22 20C22 21.1046 21.1046 22 20 22C18.8954 22 18 21.1046 18 20C18 18.8954 18.8954 18 20 18C21.1046 18 22 18.8954 22 20Z', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M6 20C6 21.1046 5.10457 22 4 22C2.89543 22 2 21.1046 2 20C2 18.8954 2.89543 18 4 18C5.10457 18 6 18.8954 6 20Z', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M12.5145 7.8087L16.214 10.0284C16.57 10.242 16.57 10.758 16.214 10.9716L12.5145 13.1913C12.1978 13.3813 11.8022 13.3813 11.4855 13.1913L7.78604 10.9716C7.43 10.758 7.43 10.242 7.78604 10.0284L11.4855 7.8087C11.8022 7.61869 12.1978 7.61869 12.5145 7.8087Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M17 13.5L12.5145 16.1913C12.1978 16.3813 11.8022 16.3813 11.4855 16.1913L7 13.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'UngroupLayers',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6
+        ])
+    }
+})

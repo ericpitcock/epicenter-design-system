@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M16.5 21.4997H4.5C3.39543 21.4997 2.5 20.6043 2.5 19.4997V4.5C2.5 3.39543 3.39543 2.5 4.5 2.5H19.5C20.6046 2.5 21.5 3.39543 21.5 4.5V18.5L18.5 16.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M9.5 14.1315V9.86852C9.5 9.06982 10.3901 8.59343 11.0547 9.03647L14.2519 11.1679C14.8457 11.5638 14.8457 12.4362 14.2519 12.8321L11.0547 14.9635C10.3901 15.4066 9.5 14.9302 9.5 14.1315Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'VideoReplay',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M11.0039 10H15.0031C15.5557 10 16.0036 9.55181 16.0031 8.99922L16.0008 5.99922C16.0003 5.44724 15.5528 5 15.0008 5H11.0039C10.4516 5 10.0039 5.44772 10.0039 6V9C10.0039 9.55228 10.4516 10 11.0039 10Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M5 19H15C15.5523 19 16 18.5523 16 18V15C16 14.4477 15.5523 14 15 14H5C4.44772 14 4 14.4477 4 15V18C4 18.5523 4.44772 19 5 19Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M20.002 2V22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'AlignRight',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

@@ -1,0 +1,27 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M20 22.0002H6C4.34315 22.0002 3 20.6571 3 19.0002V6.66667C3 6.23393 3.14008 5.81161 3.44555 5.50509C4.51227 4.43467 7.5388 2 13 2V13.5002C13 13.5002 17.7114 16.0663 18.4427 16.4777C19.8594 17.4077 20.8149 17.9057 20.9759 20.9997C21.0046 21.5512 20.5523 22.0002 20 22.0002Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M3 17C3 17 5.00702 16 5.9505 16.2939C7.07883 16.6454 7.96297 17.6232 9 16.2713C10.1316 14.9447 11.9915 14 14 14', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M19.0586 17C18.0586 17.3333 16.0586 18.8 16.0586 22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M3.05859 8.5L6.55859 8.50021M3 12L6.5 12.0002', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M9.99981 6H10.0088', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M9.99981 10H10.0088', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'ArmoredBoot',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6
+        ])
+    }
+})

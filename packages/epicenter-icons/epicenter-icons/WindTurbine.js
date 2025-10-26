@@ -1,0 +1,35 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M13.5 11C13.5 11.8284 12.8284 12.5 12 12.5C11.1716 12.5 10.5 11.8284 10.5 11C10.5 10.1716 11.1716 9.5 12 9.5C12.8284 9.5 13.5 10.1716 13.5 11Z' })
+const _hoisted2 = h('path', { 'd': 'M20.9961 10C20.6683 7.33038 19.0842 4.94528 16.9961 3.5M2.99609 10C3.32392 7.33038 4.90797 4.94528 6.99609 3.5', 'stroke-linecap': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12 9.5V7' })
+const _hoisted4 = h('path', { 'd': 'M11.405 7H12.595C13.1088 7 13.5389 6.6107 13.59 6.0995L14 2H10L10.41 6.0995C10.4611 6.61071 10.8912 7 11.405 7Z', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M17.3085 12.3593C16.8468 12.1542 16.3047 12.3255 16.0448 12.7586L15.464 13.7266C15.2004 14.1661 15.3116 14.7337 15.7215 15.0411L19 17.5L21 14L17.3085 12.3593Z', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M6.69155 12.3593C7.15315 12.1542 7.69528 12.3255 7.95518 12.7586L8.53598 13.7266C8.79963 14.1661 8.68845 14.7337 8.27849 15.0411L5 17.5L3 14L6.69155 12.3593Z', 'stroke-linejoin': 'round' })
+const _hoisted7 = h('path', { 'd': 'M10.7002 11.75L8.53516 13' })
+const _hoisted8 = h('path', { 'd': 'M13.2998 11.75L15.4648 13' })
+const _hoisted9 = h('path', { 'd': 'M12 12.5V22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted10 = h('path', { 'd': 'M18 22H6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'WindTurbine',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6,
+            _hoisted7,
+            _hoisted8,
+            _hoisted9,
+            _hoisted10
+        ])
+    }
+})

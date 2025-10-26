@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M21 6.5C21 8.433 19.433 10 17.5 10C15.567 10 14 8.433 14 6.5C14 4.567 15.567 3 17.5 3C19.433 3 21 4.567 21 6.5Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M9 8.5V4.5C9 3.94772 8.55228 3.5 8 3.5H4C3.44772 3.5 3 3.94772 3 4.5V8.5C3 9.05228 3.44772 9.5 4 9.5H8C8.55228 9.5 9 9.05228 9 8.5Z', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M9 19.5V15.5C9 14.9477 8.55228 14.5 8 14.5H4C3.44772 14.5 3 14.9477 3 15.5V19.5C3 20.0523 3.44772 20.5 4 20.5H8C8.55228 20.5 9 20.0523 9 19.5Z', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M20.5 19.5V15.5C20.5 14.9477 20.0523 14.5 19.5 14.5H15.5C14.9477 14.5 14.5 14.9477 14.5 15.5V19.5C14.5 20.0523 14.9477 20.5 15.5 20.5H19.5C20.0523 20.5 20.5 20.0523 20.5 19.5Z', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M17.5 10V14M14 17.5H9M9 6.5H14', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Flow',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

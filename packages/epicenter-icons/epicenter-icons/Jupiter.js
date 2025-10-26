@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M21.2748 15.5C17.6671 15.4946 14.712 16.3604 11.5026 18.5C9.91957 19.5553 9 20 7 20.5M22 11C16.927 13.9498 14.3375 13.112 9.00256 10C6.56526 8.57824 4.5 8.5 2.5 9M21.2748 8.5C17.2142 8.5 17.5026 4.77488 12.0026 6C8.40256 6.80189 6.37063 5.16825 5.5 4.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M8 16.5C9.10457 16.5 10 15.8284 10 15C10 14.1716 9.10457 13.5 8 13.5C6.89543 13.5 6 14.1716 6 15C6 15.8284 6.89543 16.5 8 16.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('circle', { 'cx': '12', 'cy': '12', 'r': '10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Jupiter',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

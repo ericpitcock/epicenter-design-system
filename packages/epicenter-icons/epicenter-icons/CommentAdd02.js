@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M15 5.5H22M18.499 2L18.5 9', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M21.9983 11.5V15.9971C21.9983 17.1016 21.1029 17.9971 19.9983 17.9971H11.499L7.58719 20.842C6.92623 21.3227 5.99902 20.8506 5.99902 20.0333V17.9971H4C2.89543 17.9971 2 17.1016 2 15.9971V4C2 2.89543 2.89543 2 4 2H12.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CommentAdd02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

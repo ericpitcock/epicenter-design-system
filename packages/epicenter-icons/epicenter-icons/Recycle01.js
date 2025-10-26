@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M18 16C18 16 14 18 14 22M14.7132 19.3172L14.222 17.9985C14.142 17.7838 14.0769 17.5605 14.0471 17.3333C13.4504 12.7807 18.654 12 22 12C22 15.3333 21.157 20.5613 16.1616 19.6783L14.7132 19.3172Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M10 20L2 20L7 11L8 13M14 9.5L16 10L12 2L8.5 8.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Recycle01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

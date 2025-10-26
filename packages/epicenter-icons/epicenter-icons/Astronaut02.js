@@ -1,0 +1,27 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('circle', { 'cx': '12', 'cy': '10', 'r': '7', 'stroke-linecap': 'round' })
+const _hoisted2 = h('ellipse', { 'cx': '12', 'cy': '10', 'rx': '4', 'ry': '3', 'stroke-linecap': 'round' })
+const _hoisted3 = h('path', { 'd': 'M18.5 7L19.0001 7.00002C20.6569 7.00007 22 8.3432 22 10C22 11.6569 20.6569 13 19 13H18.5', 'stroke-linecap': 'round' })
+const _hoisted4 = h('path', { 'd': 'M5.5 13L4.99989 13C3.34308 12.9999 2 11.6568 2 9.99999C2 8.34314 3.34314 7 4.99999 7L5.5 7', 'stroke-linecap': 'round' })
+const _hoisted5 = h('path', { 'd': 'M20.5 7V2.5', 'stroke-linecap': 'round' })
+const _hoisted6 = h('path', { 'd': 'M15 17H9C8.07003 17 7.60504 17 7.22354 17.1022C6.18827 17.3796 5.37962 18.1883 5.10222 19.2235C5 19.605 5 20.07 5 21H19C19 20.07 19 19.605 18.8978 19.2235C18.6204 18.1883 17.8117 17.3796 16.7765 17.1022C16.395 17 15.93 17 15 17Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Astronaut02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6
+        ])
+    }
+})

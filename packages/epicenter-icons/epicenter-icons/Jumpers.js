@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17 8V18.7639C17 18.9192 16.9639 19.0723 16.8944 19.2111L16.2764 20.4472C16.107 20.786 15.7607 21 15.382 21H8.61803C8.23926 21 7.893 20.786 7.72361 20.4472L7.10557 19.2111C7.03615 19.0723 7 18.9192 7 18.7639V8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15 3L19 5L22.5 17V19L20.5 19.5L19.5 18L17 10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M9 3L5 5L1.5 17V19L3.5 19.5L4.5 18L7 10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M9 3L12 7L15 3H9Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Jumpers',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

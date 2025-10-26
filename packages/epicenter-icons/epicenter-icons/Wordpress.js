@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M2 6.5H3M3 6.5L8 20.5L10 16.5M3 6.5H6.5M6.5 6.5H7.5M6.5 6.5L10 16.5M10 16.5L12.5 11.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M10 6.5H11M11 6.5L16 20.5L18 17M11 6.5H14.5M14.5 6.5H15.5M14.5 6.5L18 17M18 17L20.5288 12.144M20.5288 12.144L21.5377 9.73491C21.9415 8.62432 22.0835 7.43739 21.9529 6.26443C21.7963 4.85795 21.1576 3.5 19.5012 3.5C17.9632 3.5 17.2101 5.22272 18.1898 6.39363C19.7701 8.28249 21.1719 10.3754 20.5288 12.144Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Wordpress',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

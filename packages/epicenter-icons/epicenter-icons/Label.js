@@ -1,0 +1,17 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M2 6.00006C2 4.89549 2.89543 4.00006 4 4.00006H16.4458C16.7905 4.00006 17.111 4.17768 17.2938 4.47006L21.3375 10.9401C21.7428 11.5886 21.7428 12.4115 21.3375 13.0601L17.2938 19.5301C17.111 19.8224 16.7905 20.0001 16.4458 20.0001H4C2.89543 20.0001 2 19.1046 2 18.0001V6.00006Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Label',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1
+        ])
+    }
+})

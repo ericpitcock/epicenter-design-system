@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M8.36876 12.6711L10.5006 14.5001L13.1017 4.50838C13.3235 3.50292 14.085 2.92631 15.0461 3.00759C16.0072 3.08886 16.7205 4.11919 16.5247 5.04808L15.2398 10.5264L18.51 11.2652C21.0721 11.7318 21.726 12.9217 21.4369 14.7276L20.5299 19.0001C20.3049 20.4679 19.4143 22.0001 17.5327 22.0001H12.1013C11.0981 22.0001 10.1613 21.4986 9.60494 20.6638L5.88928 15.0884C5.37368 14.4532 5.37024 13.5442 5.88102 12.9051C6.49495 12.137 7.62259 12.0309 8.36876 12.6711Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M5.51371 6.98458L2.50024 10M2.51779 6.98458L2.50024 9.98974H5.51371M7.50024 4.99988L10.4912 2M7.48646 2L10.5002 2L10.5 4.99041', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Maximize02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

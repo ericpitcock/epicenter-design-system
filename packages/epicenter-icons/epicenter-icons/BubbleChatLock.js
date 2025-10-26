@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M21.4999 12C21.4999 17.2467 17.2466 21.5 11.9999 21.5C10.3717 21.5 8.83928 21.0904 7.49988 20.3687C5.49988 19.5 3.49988 19.9125 2.49988 20C2.98882 19.1667 3.6091 16.8818 2.98328 15C2.66968 14.057 2.49988 13.0483 2.49988 12C2.49988 6.75329 6.75317 2.5 11.9999 2.5C17.2466 2.5 21.4999 6.75329 21.4999 12Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M9.99988 11V9.5C9.99988 8.39543 10.8953 7.5 11.9999 7.5C13.1044 7.5 13.9999 8.39543 13.9999 9.5V11', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M14.4999 11H9.49988C8.94759 11 8.49988 11.4477 8.49988 12V14.5C8.49988 15.0523 8.94759 15.5 9.49988 15.5H14.4999C15.0522 15.5 15.4999 15.0523 15.4999 14.5V12C15.4999 11.4477 15.0522 11 14.4999 11Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BubbleChatLock',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

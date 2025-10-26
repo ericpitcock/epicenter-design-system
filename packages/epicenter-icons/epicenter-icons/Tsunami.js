@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M7 12C7 12 6.99974 15 10 16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M22 21.3733C20.5547 22.1843 18.7056 22.1843 17.2604 21.3733C16.3889 20.8756 15.2412 20.8756 14.3698 21.3733C14.3698 21.3733 14.3486 21.3733 14.3486 21.3917C12.9033 22.2028 11.0542 22.2028 9.63019 21.3917C8.73752 20.894 7.61105 20.894 6.73964 21.3917M6.73964 21.3733C5.29436 22.1843 3.44527 22.1843 2 21.3733', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M22 16.5C16.7533 16.5 11 12.2467 11 7', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M2.74038 19C1.67896 15.0768 1.6053 9.13798 3.54094 6.10658C5.46413 3.09468 7.64706 2.34192 8.33512 2.23341C9.55994 1.83283 12.4285 1.67481 14.2808 4.09872C14.8039 4.92182 15.4465 6.63781 14.5606 8.02004C13.925 7.58416 12.1787 6.43926 10.5337 7.05169C8.648 7.75374 7.91244 7.60522 7 7', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Tsunami',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

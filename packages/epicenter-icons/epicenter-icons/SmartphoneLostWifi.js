@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M7.5 6L6 6C4.89543 6 4 6.89543 4 8V20C4 21.1046 4.89543 22 6 22H13C14.1046 22 15 21.1046 15 20V13.4958', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M9.5 19H9.50898', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M20 3.8472C18.564 2.67893 16.8489 2 15.0068 2C14.8367 2 14.6678 2.00579 14.5 2.01721M12.2822 7C13.03 6.5337 13.8652 6.25335 14.749 6.20752M10 3.85827C10.4716 3.47313 10.9734 3.14083 11.5 2.8681', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M11 2L18 9', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M15 10H15.0064', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'SmartphoneLostWifi',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

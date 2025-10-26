@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M10.5683 21.3613L21.3613 10.5683C22.2129 9.71674 22.2129 8.33603 21.3613 7.48443L16.5156 2.6387C15.664 1.7871 14.2833 1.7871 13.4317 2.6387L2.6387 13.4317C1.7871 14.2833 1.7871 15.664 2.6387 16.5156L7.48443 21.3613C8.33603 22.2129 9.71674 22.2129 10.5683 21.3613Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M17 10L19 12M13.5 13.5L15.5 15.5M10 17L12 19', 'stroke-linecap': 'round' })
+
+export default defineComponent({
+    name: 'Ruler',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

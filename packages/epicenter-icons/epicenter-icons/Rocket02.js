@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M9.5 8.46482V6.41327C9.5 4.94834 10.5 2.9999 12 2C13.5 3 14.5 4.94834 14.5 6.41327V8.46482C14.5 8.79917 14.6671 9.1114 14.9453 9.29687L15.5547 9.70313C15.8329 9.8886 16 10.2008 16 10.5352V12H8.00011L8.00003 10.5352C8.00001 10.2008 8.16711 9.88859 8.44533 9.70311L9.0547 9.29687C9.3329 9.1114 9.5 8.79917 9.5 8.46482Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M19.5 22C20.8807 22 22 20.8061 22 19.3333C22 17.8606 20.8807 16.6667 19.5 16.6667C19.5 15.1939 18.3807 14 17 14', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M4.5 22C3.11929 22 2 20.8061 2 19.3333C2 17.8606 3.11929 16.6667 4.5 16.6667C4.5 15.1939 5.61929 14 7 14', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M10 14.5V21', 'stroke-linecap': 'round' })
+const _hoisted5 = h('path', { 'd': 'M14 14.5V18', 'stroke-linecap': 'round' })
+
+export default defineComponent({
+    name: 'Rocket02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

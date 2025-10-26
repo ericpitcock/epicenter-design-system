@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z' })
+const _hoisted2 = h('path', { 'd': 'M9.5 8H9C8.44772 8 8 8.44772 8 9V10.1972C8 10.3946 7.94156 10.5877 7.83205 10.7519L7 12L7.83205 13.2481C7.94156 13.4123 8 13.6054 8 13.8028V15C8 15.5523 8.44772 16 9 16H9.5M14.5 8H15C15.5523 8 16 8.44772 16 9V10.1972C16 10.3946 16.0584 10.5877 16.1679 10.7519L17 12L16.1679 13.2481C16.0584 13.4123 16 13.6054 16 13.8028V15C16 15.5523 15.5523 16 15 16H14.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Num3rdBracketCircle',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

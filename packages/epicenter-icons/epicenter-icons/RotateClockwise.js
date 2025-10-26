@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M4 2.5L3.99805 6C5.82246 3.57111 8.72714 2 11.9988 2C17.5216 2 21.9988 6.47715 21.9988 12C21.9988 15.9582 19.6991 19.3793 16.3629 21', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M11.6374 22C12.0996 22 12.5545 21.9695 13 21.9106M2.26271 9C2.15144 9.38726 2.06412 9.77865 2 10.1722M2.03422 13.7496C2.10382 14.1396 2.19448 14.5258 2.30544 14.9063M3.81459 18.0963C4.05053 18.4409 4.3063 18.7726 4.58103 19.0892M7.37428 21.3767C7.72445 21.574 8.08891 21.7526 8.46695 21.9106', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'RotateClockwise',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

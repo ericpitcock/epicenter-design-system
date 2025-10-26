@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M3 15L3 16M3 19V19C3 20.6569 4.34315 22 6 22V22M21 15V16M21 19V19C21 20.6569 19.6569 22 18 22V22M10 22L14 22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M3 5C3 3.34315 4.34315 2 6 2L18 2C19.6569 2 21 3.34315 21 5V11C21 11.5523 20.5523 12 20 12L4 12C3.44772 12 3 11.5523 3 11L3 5Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'FlipTop',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 13.5V20.5M9 18.5L12 21.5L15 18.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M2.5 9L21.5 9' })
+const _hoisted3 = h('path', { 'd': 'M8.5 2.5L8.5 9M15.5 2.5L15.5 9' })
+const _hoisted4 = h('path', { 'd': 'M7 21.5H5.5C3.84315 21.5 2.5 20.1569 2.5 18.5V5.5C2.5 3.84315 3.84315 2.5 5.5 2.5H18.5C20.1569 2.5 21.5 3.84315 21.5 5.5V18.5C21.5 20.1569 20.1569 21.5 18.5 21.5H17', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'InsertRowDown',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M21.5 9.73247C21.8239 10.5272 22 11.3812 22 12.2705C22 14.3847 20.6114 16.6082 19 18V21H17L16 19.4593C14.271 19.9158 11.729 19.9158 10 19.4593L9 21H7V18C7 18 3.5 17 2 14V11H4C4.5 8.43249 7.23085 5.83732 10.0206 5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M7.5 11H7.50898', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M13 4H14M16.5 7H14M16.5 7C17.3284 7 18 6.32843 18 5.5C18 4.67157 17.3284 4 16.5 4H15.5M16.5 7C17.3284 7 18 7.67157 18 8.5C18 9.32843 17.3284 10 16.5 10H15.5M14 7V4M14 7V10M13 10H14M14 4H15.5M14 10H15.5M15.5 4V3M15.5 10V11', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BitcoinPiggyBank',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

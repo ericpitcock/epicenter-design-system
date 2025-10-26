@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12 10V12.005L13 13', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M16 6.00003L15.1894 2.75747C15.0781 2.3123 14.6781 2 14.2192 2.00001L9.78077 2.00004C9.32191 2.00004 8.92193 2.31234 8.81063 2.7575L8 6.00003', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M16 18L15.1894 21.2425C15.0781 21.6877 14.6781 22 14.2192 22L9.78077 22C9.32191 22 8.92193 21.6877 8.81063 21.2425L8 18', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Watch02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

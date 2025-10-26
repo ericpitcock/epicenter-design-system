@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17.5 8.62963C17.5 6.62504 15.0376 5 12 5C8.96243 5 6.5 6.62504 6.5 8.62963C6.5 10.6342 8 11.7407 12 11.7407C16 11.7407 18 12.7778 18 15.3704C18 17.963 15.5 19 12 19C8.5 19 6 17.5 6 15.5', 'stroke-linecap': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12 3V5M12 21V19', 'stroke-linecap': 'round' })
+
+export default defineComponent({
+    name: 'Dollar01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

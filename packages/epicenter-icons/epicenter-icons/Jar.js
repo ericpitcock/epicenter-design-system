@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M19 8H15.5M19 11.3366H15.5M19 14.6683H15.5M19 17.9878L15.5 18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M4 9.5V4.00523C4 2.89862 4.89861 2.00234 6.00522 2.00523L6.99416 2.00781M6.99416 2.00781H20.8991C20.9794 2.00781 21.0275 2.09665 20.9831 2.16317L19.4297 4.49093C19.2103 4.81962 19.0933 5.20593 19.0933 5.6011V20C19.0933 21.1046 18.1978 22 17.0933 22H8.99416C7.88959 22 6.99416 21.1046 6.99416 20V2.00781Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Jar',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 25 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

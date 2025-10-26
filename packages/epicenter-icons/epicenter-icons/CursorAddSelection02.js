@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M3.60004 3.03043L18.7175 8.84482C19.1034 8.99327 19.0909 9.54358 18.6986 9.67435L12.1395 11.8607C12.0079 11.9046 11.9046 12.0079 11.8607 12.1395L9.67435 18.6986C9.54358 19.0909 8.99327 19.1034 8.84482 18.7175L3.03043 3.60004C2.89333 3.24357 3.24357 2.89333 3.60004 3.03043Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M17.5 14V21M21 17.5L14 17.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CursorAddSelection02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

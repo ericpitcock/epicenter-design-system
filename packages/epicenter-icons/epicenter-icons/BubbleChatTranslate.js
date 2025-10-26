@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M21.5002 11.9997C21.5002 17.2464 17.247 21.4997 12.0002 21.4997C10.3721 21.4997 8.83964 21.0901 7.50024 20.3684C5.50024 19.4997 3.50024 19.9122 2.50024 19.9997C2.98918 19.1664 3.60946 16.8815 2.98365 14.9997C2.67005 14.0567 2.50024 13.048 2.50024 11.9997C2.50024 6.753 6.75354 2.49971 12.0002 2.49971C17.247 2.49971 21.5002 6.753 21.5002 11.9997Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12.0002 8.99971V7.49971M8.00024 8.99971H16.0002M9.00024 16.4997C11.7118 14.692 13.8453 12.2744 14.5002 8.99971M13.5002 14.9997C11.8885 13.7103 11.0344 12.3343 10.6763 11.4997', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BubbleChatTranslate',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

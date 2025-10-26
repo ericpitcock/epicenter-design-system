@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14.502 8.00003C14.502 5.23861 12.2634 3.00003 9.50195 3.00003C6.74053 3.00003 4.50195 5.23861 4.50195 8.00003C4.50195 10.7615 6.74053 13 9.50195 13C12.2634 13 14.502 10.7615 14.502 8.00003Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M2.50195 20C2.50195 16.134 5.63596 13 9.50195 13C10.7762 13 11.9708 13.3405 13 13.9354', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M16.2374 15.6742V14.2523C16.2374 13.2846 17.022 12.5 17.9897 12.5C18.4736 12.5 18.9117 12.6962 19.2288 13.0133M15.002 15.8926L20.9979 15.8926C21.274 15.8926 21.4979 16.1165 21.4979 16.3926L21.4979 20.4995C21.4979 20.7757 21.274 20.9995 20.9979 20.9995H15.002C14.7258 20.9995 14.502 20.7757 14.502 20.4995L14.502 16.3926C14.502 16.1165 14.7258 15.8926 15.002 15.8926Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'UserUnlock01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M3 3H5.5L7.72878 16.8185C7.88509 17.7876 8.72163 18.5 9.70327 18.5H21', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M9.25 22C10.2165 22 11 21.2165 11 20.25C11 19.2835 10.2165 18.5 9.25 18.5C8.2835 18.5 7.5 19.2835 7.5 20.25C7.5 21.2165 8.2835 22 9.25 22Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M18.25 22C19.2165 22 20 21.2165 20 20.25C20 19.2835 19.2165 18.5 18.25 18.5C17.2835 18.5 16.5 19.2835 16.5 20.25C16.5 21.2165 17.2835 22 18.25 22Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M20 15H12C11.4477 15 11 14.5523 11 14V6C11 5.44772 11.4477 5 12 5H20C20.5523 5 21 5.44772 21 6V14C21 14.5523 20.5523 15 20 15Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M15 8L17 8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Trolley02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

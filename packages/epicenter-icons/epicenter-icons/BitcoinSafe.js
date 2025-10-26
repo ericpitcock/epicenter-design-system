@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M18 22V20M6 22V20', 'stroke-linecap': 'round' })
+const _hoisted2 = h('path', { 'd': 'M20 2.00042L4.00005 2.00005C2.89546 2.00002 2 2.89546 2 4.00005V18C2 19.1046 2.89543 20 4 20H20C21.1046 20 22 19.1046 22 18V4.00042C22 2.89587 21.1046 2.00044 20 2.00042Z', 'stroke-linecap': 'round' })
+const _hoisted3 = h('path', { 'd': 'M7.5 14.5L6 13V7L7.5 6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M13 7H14M16.5 10H14M16.5 10C17.3284 10 18 9.32843 18 8.5C18 7.67157 17.3284 7 16.5 7H15.5M16.5 10C17.3284 10 18 10.6716 18 11.5C18 12.3284 17.3284 13 16.5 13H15.5M14 10V7M14 10V13M13 13H14M14 7H15.5M14 13H15.5M15.5 7V6M15.5 13V14', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BitcoinSafe',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M3.5 18.998C3.5 19.5503 3.94772 19.998 4.5 19.998H5.5C6.05228 19.998 6.5 19.5503 6.5 18.998V8.99805C6.5 8.44576 6.05228 7.99805 5.5 7.99805H4.5C3.94772 7.99805 3.5 8.44576 3.5 8.99805V18.998Z', 'stroke-linecap': 'square' })
+const _hoisted2 = h('path', { 'd': 'M10.5 18.9995C10.5 19.5518 10.9477 19.9995 11.5 19.9995H12.5C13.0523 19.9995 13.5 19.5518 13.5 18.9995V5C13.5 4.44772 13.0523 4 12.5 4H11.5C10.9477 4 10.5 4.44771 10.5 5V18.9995Z', 'stroke-linecap': 'square' })
+const _hoisted3 = h('path', { 'd': 'M17.5 18.998C17.5 19.5503 17.9477 19.998 18.5 19.998H19.5C20.0523 19.998 20.5 19.5503 20.5 18.998V11.998C20.5 11.4458 20.0523 10.998 19.5 10.998H18.5C17.9477 10.998 17.5 11.4458 17.5 11.998V18.998Z', 'stroke-linecap': 'square' })
+
+export default defineComponent({
+    name: 'Chart01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

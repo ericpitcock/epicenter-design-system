@@ -1,0 +1,31 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M4 12V3', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M19 14L16 3', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M2 3H18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('circle', { 'cx': '6', 'cy': '19', 'r': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('circle', { 'cx': '18', 'cy': '19', 'r': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M16 14L14 11M13 12L15 10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted7 = h('path', { 'd': 'M4 18.9999H3C2.44772 18.9999 2 18.5522 2 17.9999V13C2 12.4477 2.44772 12 3 12L7.80716 12C8.22393 12 8.59699 12.2585 8.74342 12.6487L9.7571 15.35C9.90352 15.7402 10.2766 15.9987 10.6933 15.9987H13.9993C14.3144 15.9987 14.6112 15.8501 14.8 15.5977L15.988 14.0099L17.9933 14.0065C20.2051 14.0029 22 15.7948 22 18.0065V18.9999H20M16 18.9999H8.00051', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted8 = h('path', { 'd': 'M4 8H4.23444C5.24308 8 6.09388 8.75107 6.21899 9.75193L6.5 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'GolfCart',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6,
+            _hoisted7,
+            _hoisted8
+        ])
+    }
+})

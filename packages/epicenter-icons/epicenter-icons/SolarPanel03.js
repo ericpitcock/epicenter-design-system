@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17.2558 12H6.74387C6.30225 12 5.91292 12.2897 5.78603 12.7127L3.38638 20.7127C3.19393 21.3543 3.67437 22 4.34422 22H19.6558C20.3256 22 20.8061 21.3543 20.6136 20.7127L18.2136 12.7127C18.0867 12.2897 17.6974 12 17.2558 12Z', 'stroke-linecap': 'square', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M12.0002 12V22M20.0002 17H4.00024' })
+const _hoisted3 = h('path', { 'd': 'M9.00024 9C9.00024 7.34315 10.3434 6 12.0002 6C13.6571 6 15.0002 7.34315 15.0002 9M12.0002 3V2M18.0002 9H19.0002M5.00024 9H6.00024M16.0002 5L17.0002 4M7.00024 4L8.00024 5', 'stroke-linecap': 'round' })
+
+export default defineComponent({
+    name: 'SolarPanel03',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M18.5 9.00098L21.5 12.001L18.5 15.001M20.5 12.001L13.5 12.001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M9 2.49902V21.499' })
+const _hoisted3 = h('path', { 'd': 'M2.5 8.49902H9M2.5 15.499H9' })
+const _hoisted4 = h('path', { 'd': 'M21.5 7.00098V5.50098C21.5 3.84412 20.1569 2.50098 18.5 2.50098H5.5C3.84315 2.50098 2.5 3.84412 2.5 5.50098V18.501C2.5 20.1578 3.84315 21.501 5.5 21.501H18.5C20.1569 21.501 21.5 20.1578 21.5 18.501V17.001', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'InsertColumnRight',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

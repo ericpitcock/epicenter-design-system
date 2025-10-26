@@ -1,0 +1,27 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14 18H5C3.89543 18 3 17.1046 3 16V8C3 6.89543 3.89543 6 5 6H14', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M13 6.00003L12 2L6 2.00004L5 6.00003', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M13 18L12 22L6 22L5 18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M20 6.5L18 8.5H15M20 7.5C19.4477 7.5 19 7.05228 19 6.5C19 5.94772 19.4477 5.5 20 5.5C20.5523 5.5 21 5.94772 21 6.5C21 7.05228 20.5523 7.5 20 7.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M20 12H12M20 13C19.4477 13 19 12.5523 19 12C19 11.4477 19.4477 11 20 11C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M20 17.5L18 15.5H15M20 16.5C19.4477 16.5 19 16.9477 19 17.5C19 18.0523 19.4477 18.5 20 18.5C20.5523 18.5 21 18.0523 21 17.5C21 16.9477 20.5523 16.5 20 16.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'AiSmartwatch',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6
+        ])
+    }
+})

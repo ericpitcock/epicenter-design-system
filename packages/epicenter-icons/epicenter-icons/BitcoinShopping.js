@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M7.5 8V6.5C7.5 4.01472 9.51472 2 12 2V2C14.4853 2 16.5 4.01472 16.5 6.5V8', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M5.25469 20.2828C5.39545 21.2681 6.23929 22 7.23459 22H16.7654C17.7607 22 18.6046 21.2681 18.7453 20.2828L20.1739 10.2828C20.346 9.07797 19.4111 8 18.194 8H5.80602C4.58892 8 3.654 9.07798 3.82612 10.2828L5.25469 20.2828Z', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M9.5 12H10.5M13 15H10.5M13 15C13.8284 15 14.5 14.3284 14.5 13.5C14.5 12.6716 13.8284 12 13 12H12M13 15C13.8284 15 14.5 15.6716 14.5 16.5C14.5 17.3284 13.8284 18 13 18H12M10.5 15V12M10.5 15V18M9.5 18H10.5M10.5 12H12M10.5 18H12M12 12V11M12 18V19', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'BitcoinShopping',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

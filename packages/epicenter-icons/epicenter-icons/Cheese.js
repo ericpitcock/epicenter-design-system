@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M16.009 8L16 8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M17.009 15L17 15', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M7 16.5C7 17.3284 7.67157 18 8.5 18C9.32843 18 10 17.3284 10 16.5C10 15.6716 9.32843 15 8.5 15C7.67157 15 7 15.6716 7 16.5Z' })
+const _hoisted4 = h('path', { 'd': 'M22 10.5V17.5013C22 18.4999 21.2214 19.3359 20.199 19.4353L17 19.7462V19.2603C17 18.1869 16.1046 17.3167 15 17.3167C13.8954 17.3167 13 18.1869 13 19.2603L13.0025 20.1346L4.19901 20.9902C3.02164 21.1046 2 20.2061 2 19.0562L2 12.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M21.9973 9.97061C21.8404 6.97517 19.0362 4.71019 16.8429 3.29318C16.2084 2.88326 15.4028 2.91043 14.7739 3.32938L13.0333 4.48879C12.7926 4.64907 12.7445 4.97921 12.8534 5.24704C12.9479 5.47945 13 5.73364 13 6C13 7.10457 12.1046 8 11 8C10.4502 8 9.95231 7.77819 9.59078 7.41919C9.38585 7.21569 9.06288 7.13343 8.82252 7.29353L2.52432 11.4887C1.6129 11.9713 1.96629 13.0525 2.99546 12.998L19.695 12.1147C20.9069 12.0506 22.063 11.2248 21.9973 9.97061Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Cheese',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M10.45 10.0228L21.7881 14.3836C22.0776 14.4949 22.0682 14.9077 21.774 15.0058L16.8546 16.6455C16.7559 16.6784 16.6784 16.7559 16.6455 16.8546L15.0058 21.774C14.9077 22.0682 14.4949 22.0776 14.3836 21.7881L10.0228 10.45C9.92 10.1827 10.1827 9.92 10.45 10.0228Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M2 8.5V11.5M11.5 2H8.5M8.5 18H9.5M18 4.5V4C18 2.89543 17.1046 2 16 2H15.5M2 4.5V4C2 2.89543 2.89543 2 4 2H4.5M4.5 18H4C2.89543 18 2 17.1046 2 16V15.5M18 9.5V8.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CursorRectangleSelection02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

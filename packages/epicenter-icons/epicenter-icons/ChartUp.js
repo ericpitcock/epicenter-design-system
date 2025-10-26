@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M19.5 21H18.5C17.9477 21 17.5 20.5523 17.5 20V10C17.5 9.44772 17.9477 9 18.5 9H19.5C20.0523 9 20.5 9.44772 20.5 10V20C20.5 20.5523 20.0523 21 19.5 21Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M16.5 3H19.5V6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M19 3.5C19 3.5 15 8.5 4.5 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M12.5 21H11.5C10.9477 21 10.5 20.5523 10.5 20V13.5C10.5 12.9477 10.9477 12.5 11.5 12.5H12.5C13.0523 12.5 13.5 12.9477 13.5 13.5V20C13.5 20.5523 13.0523 21 12.5 21Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M5.5 21H4.5C3.94772 21 3.5 20.5523 3.5 20V16C3.5 15.4477 3.94772 15 4.5 15H5.5C6.05228 15 6.5 15.4477 6.5 16V20C6.5 20.5523 6.05228 21 5.5 21Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'ChartUp',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

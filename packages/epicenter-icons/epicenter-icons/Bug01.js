@@ -1,0 +1,33 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M6 8.5L5.95918 8.4932C4.25157 8.2086 3 6.73117 3 5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M6 17.5L5.95918 17.5068C4.25157 17.7914 3 19.2688 3 21', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M18 8.5L18.0408 8.4932C19.7484 8.2086 21 6.73117 21 5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M18 17.5L18.0408 17.5068C19.7484 17.7914 21 19.2688 21 21', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M12 21V16.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted6 = h('path', { 'd': 'M9.5 7V5.5C9.5 4.11929 10.6193 3 12 3C13.3807 3 14.5 4.11929 14.5 5.5V7', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted7 = h('path', { 'd': 'M6.00199 10.1071C5.94023 8.40933 7.32528 7 9.05556 7H14.9444C16.6747 7 18.0598 8.40932 17.998 10.1071L17.8017 15.5035C17.6902 18.5704 15.1256 21 12 21C8.8744 21 6.30984 18.5704 6.19828 15.5035L6.00199 10.1071Z' })
+const _hoisted8 = h('path', { 'd': 'M6 13H3', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted9 = h('path', { 'd': 'M21 13H18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Bug01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5,
+            _hoisted6,
+            _hoisted7,
+            _hoisted8,
+            _hoisted9
+        ])
+    }
+})

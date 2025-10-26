@@ -1,0 +1,21 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M14 2H18C19.1046 2 20 2.89543 20 4V15.0145L12.9986 22.0015H6C4.89543 22.0015 4 21.1061 4 20.0015V12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M20 15H15C13.8954 15 13 15.8954 13 17V22', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M4 6.66667C4 7.95533 5.00736 9 6.25 9H10.975C12.0934 9 13 8.0598 13 6.9C13 5.7402 12.0833 4.80003 10.9649 4.80003C11.0897 3.36433 9.97992 2 8.5 2C7.20546 2 6.14305 3.03069 6.03419 4.34393C4.89279 4.45657 4 5.45349 4 6.66667Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'FileCloud',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3
+        ])
+    }
+})

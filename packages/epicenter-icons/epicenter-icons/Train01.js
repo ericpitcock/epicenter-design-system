@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M20 15V6C20 3.79086 18.2091 2 16 2H8C5.79086 2 4 3.79086 4 6V15C4 17.2091 5.79086 19 8 19H16C18.2091 19 20 17.2091 20 15Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M4 12C6.41266 12.655 9 13 11.5 13C14 13 17.5683 12.5802 20 12', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M7 19L5 22M17 19L19 22', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M6.5 16.25C6.91421 16.25 7.25 15.9142 7.25 15.5C7.25 15.0858 6.91421 14.75 6.5 14.75V16.25ZM17.5 14.75C17.0858 14.75 16.75 15.0858 16.75 15.5C16.75 15.9142 17.0858 16.25 17.5 16.25V14.75ZM4 16.25H6.5V14.75H4V16.25ZM17.5 16.25H20V14.75H17.5V16.25Z', 'fill': 'currentColor' })
+
+export default defineComponent({
+    name: 'Train01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

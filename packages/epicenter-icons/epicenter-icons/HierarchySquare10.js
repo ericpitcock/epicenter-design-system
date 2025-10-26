@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M7 21V19C7 18.4477 6.55228 18 6 18H3C2.44772 18 2 18.4477 2 19V21C2 21.5523 2.44772 22 3 22H6C6.55228 22 7 21.5523 7 21Z', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M22 21V19C22 18.4477 21.5523 18 21 18H18C17.4477 18 17 18.4477 17 19V21C17 21.5523 17.4477 22 18 22H21C21.5523 22 22 21.5523 22 21Z', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M19.499 18L19.4995 15.5004C19.4997 14.3957 18.6042 13.5 17.4995 13.5H14.4998M4.49902 18V15.5C4.49902 14.3954 5.39445 13.5 6.49902 13.5H9.49984M11.9998 7V11', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M16 6V3C16 2.44772 15.5523 2 15 2H9C8.44772 2 8 2.44772 8 3V6C8 6.55228 8.44772 7 9 7H15C15.5523 7 16 6.55228 16 6Z', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M14.5 13.5C14.5 14.8807 13.3807 16 12 16C10.6193 16 9.5 14.8807 9.5 13.5C9.5 12.1193 10.6193 11 12 11C13.3807 11 14.5 12.1193 14.5 13.5Z' })
+
+export default defineComponent({
+    name: 'HierarchySquare10',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

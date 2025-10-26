@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M13.5 3.5C13.5 4.32843 12.8284 5 12 5C11.1716 5 10.5 4.32843 10.5 3.5C10.5 2.67157 11.1716 2 12 2C12.8284 2 13.5 2.67157 13.5 3.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M19 9C18.4021 5.99819 16.2382 3.63804 13.4939 3M5 9C5.59787 5.99819 7.76178 3.63804 10.5061 3', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12 19V22M9.5 22H14.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M7 5C6.99888 9.43664 11.5 8.0222 11.5 8.0222C17 11.0444 18 6.09603 18 6.09603', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M20.0054 11C18.0288 11.6059 14.3576 12.0087 11.9471 12.0087C9.53678 12.0087 5.98053 11.6202 4.00391 11.0143C4.00352 15.8866 7.93282 19 11.9471 19C15.9614 19 19.6263 16.0855 20.0054 11Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'IceCream01',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

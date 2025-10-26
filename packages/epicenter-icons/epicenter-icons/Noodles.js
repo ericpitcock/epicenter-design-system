@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M20.5 2L14 3.37879M4 5.5L6.5 4.9697M21 6L14 6.61765M4 7.5L6.5 7.27941', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M18.5 11.5004C18.5 10.1195 17.3807 9 16 9C14.6193 9 13.5 10.1195 13.5 11.5004', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M6.5 3.5V12M9 2.5V7.5M11.5 2V7.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M8 19C6.61919 18.4256 3.06238 16.4871 3 12H21C20.9376 16.4871 17.3808 18.4256 16 19L16.576 20.6747C16.7993 21.3239 16.3169 22 15.6303 21.9999L8.38085 21.9996C7.69682 21.9995 7.21473 21.3281 7.43335 20.68L8 19Z', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Noodles',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M9 3.99951V2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15 3.99951V2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M14 15.0029C14 15.0029 16 18.0037 16 21.5045M10 15.0029C10 15.0029 8 18.0037 8 21.5045', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M9 10L7.32233 6.64467C7.12984 6.25968 7.20529 5.79471 7.50965 5.49035L9 4L12 6L15 4L16.4903 5.49035C16.7947 5.79471 16.8702 6.25968 16.6777 6.64467L15 10M9 10C7.459 11.2328 4.49317 14.6313 4.0547 18.9309C3.98686 19.5961 4.33266 20.2292 4.93749 20.5144C6.36575 21.1879 8.87835 22 12 22C15.1216 22 17.6343 21.1879 19.0625 20.5144C19.6673 20.2292 20.0131 19.5961 19.9453 18.9309C19.5068 14.6313 16.541 11.2328 15 10M9 10H15', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Dress04',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M8.5 15.4999L15.5 8.49992', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15.218 12.2633C16.2931 12.9615 16.5572 13.6143 18.2008 11.9685L21.0245 9.14103C22.656 7.50728 21.9468 6.71991 21.0245 5.79629L18.2093 2.97734C17.287 2.05371 16.502 1.34222 14.8691 2.97734L12.0454 5.80486C10.4003 7.4521 11.0015 7.72692 11.7842 8.80919', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M12.2538 15.219C12.9507 16.2919 13.6295 16.5281 11.9597 18.1957L9.13808 21.0137C7.4772 22.6724 6.72198 21.9342 5.80028 21.0137L2.98717 18.2042C2.06547 17.2837 1.32722 16.5281 2.98717 14.8709L5.80883 12.0529C7.4772 10.3868 7.72691 11.0112 8.80694 11.7922', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M21 15.9999H19M16 20.9999V18.9999', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M3 7.99992H5M8 2.99992V4.99992', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Unlink03',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

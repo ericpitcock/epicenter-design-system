@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M20 15H17C15.8954 15 15 15.8954 15 17V20', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M22 10.9951L21.0067 10.9954C20.4545 10.9955 20.007 11.4432 20.007 11.9954V18.9951C20.007 19.5474 19.5592 19.9951 19.007 19.9951H12.0045C11.4522 19.9951 11.0045 20.4428 11.0045 20.9951V22M20 7.4958L20.0039 4.41729C20.005 3.52595 18.9275 3.07862 18.297 3.70866L3.70878 18.2863C3.07844 18.9162 3.52459 19.9938 4.4157 19.9937L7.5 19.9935', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'LeftTriangle',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

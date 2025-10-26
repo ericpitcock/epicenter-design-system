@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M9.5 10.5L13.5 10.5M13.5 10.5L19.75 10.5C20.7165 10.5 21.5 11.2835 21.5 12.25C21.5 13.2165 20.7165 14 19.75 14L13.5 14V18.5C13.5 20.1569 12.1569 21.5 10.5 21.5H5.5C3.84315 21.5 2.5 20.1569 2.5 18.5V12.0841C2.5 11.4078 2.84174 10.7774 3.40838 10.4083L6.35738 8.48731C7.68485 7.61571 8.29887 7.51657 8.96984 7.50082C9.27244 7.49372 9.57436 7.53246 9.86537 7.61571C10.5106 7.80031 11.0552 8.27679 12.1442 9.2297L13.5 10.5Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M21.5 5L19 2.5M21.5 5L19 7.5M21.5 5L15.5 5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'PointingRight04',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})

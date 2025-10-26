@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M17.9998 9H6C4.89536 9 3.9999 9.89554 4 11.0002L4.00083 20.0002C4.00093 21.1047 4.89633 22 6.00083 22H17.9998C19.1044 22 19.9998 21.1046 19.9998 20V11C19.9998 9.89543 19.1044 9 17.9998 9Z', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M16.5 8.99805V6.49805C16.5 4.01277 14.4853 1.99805 12 1.99805C9.51472 1.99805 7.5 4.01277 7.5 6.49805V8.99805', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M16 15.49V15.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('path', { 'd': 'M12 15.49V15.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted5 = h('path', { 'd': 'M8 15.49V15.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'LockPassword',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4,
+            _hoisted5
+        ])
+    }
+})

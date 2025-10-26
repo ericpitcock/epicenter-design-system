@@ -1,0 +1,23 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M8.5 8H7.5C7.22386 8 7 8.22386 7 8.5V10.3486C7 10.4473 6.97078 10.5438 6.91603 10.626L6 12L6.91603 13.374C6.97078 13.4562 7 13.5527 7 13.6514V15.5C7 15.7761 7.22386 16 7.5 16H8.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M15.5 8H16.5C16.7761 8 17 8.22386 17 8.5V10.3486C17 10.4473 17.0292 10.5438 17.084 10.626L18 12L17.084 13.374C17.0292 13.4562 17 13.5527 17 13.6514V15.5C17 15.7761 16.7761 16 16.5 16H15.5', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted3 = h('path', { 'd': 'M10 12H10.009M13.991 12H14', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted4 = h('circle', { 'cx': '12', 'cy': '12', 'r': '10' })
+
+export default defineComponent({
+    name: 'CodeCircle',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2,
+            _hoisted3,
+            _hoisted4
+        ])
+    }
+})

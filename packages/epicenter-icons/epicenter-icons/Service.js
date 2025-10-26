@@ -1,0 +1,17 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M12 4.7597C12 4.7597 14.8661 1.60383 18.8578 3.74469C22.2607 5.56975 23.4406 11.1406 19.6429 15.8521M12 4.7597C12 4.7597 9.1338 1.60382 5.14211 3.74468C0.307394 6.33768 -0.0397768 16.492 12 21C15.5657 19.6649 18.045 17.8346 19.6429 15.8521M12 4.7597L8.7309 7.2052C7.76885 7.92486 7.55808 9.28132 8.2564 10.259C8.94962 11.2295 10.2879 11.4747 11.2802 10.8132L14 9L19.6429 15.8521', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'Service',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1
+        ])
+    }
+})

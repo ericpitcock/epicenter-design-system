@@ -1,0 +1,19 @@
+import { defineComponent, h } from 'vue'
+
+const _hoisted1 = h('path', { 'd': 'M7.11821 13.5311V16.6849C7.11821 17.0059 6.89502 17.2915 6.57455 17.4198C6.1287 17.5983 5.4736 17.8978 4.86193 18.3184C4.50288 18.5653 3.98943 18.5683 3.67224 18.277L2.23642 16.9587C1.91923 16.6675 1.91802 16.1934 2.25208 15.9185C7.79189 11.3602 16.2081 11.3602 21.7479 15.9185C22.082 16.1934 22.0808 16.6675 21.7636 16.9587L20.3278 18.277C20.0106 18.5683 19.4971 18.5653 19.1381 18.3184C18.5264 17.8978 17.8713 17.5983 17.4255 17.4198C17.105 17.2915 16.8818 17.0059 16.8818 16.6849L16.8818 13.5311', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+const _hoisted2 = h('path', { 'd': 'M11 4.49976H7V8.49976M7.5 4.99976L12 9.49976L17 4.49976', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
+
+export default defineComponent({
+    name: 'CallMissed02',
+    render() {
+        return h('svg', {
+            class: 'ep-icon',
+            viewBox: '0 0 24 24',
+            'aria-hidden': 'true',
+            focusable: 'false'
+        }, [
+            _hoisted1,
+            _hoisted2
+        ])
+    }
+})
