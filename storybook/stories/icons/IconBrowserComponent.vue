@@ -21,7 +21,7 @@
           />
         </ep-flex>
         <p class="icon-count">
-          {{ filteredIcons.length }} of {{ iconsData.length }} icons
+          {{ filteredIcons.length }} of {{ iconsData.length }}
         </p>
       </ep-flex>
     </div>
@@ -90,7 +90,7 @@
 </template>
 
 <script setup>
-  import { computed, defineAsyncComponent, ref } from 'vue'
+  import { computed, defineAsyncComponent, ref, watch } from 'vue'
 
   import EpButton from '@/components/button/EpButton.vue'
   import EpFlex from '@/components/flexbox/EpFlex.vue'
@@ -257,6 +257,14 @@
     Math.ceil(filteredIcons.value.length / itemsPerPage.value)
   )
 
+  // watch currentPage and scroll to the top of the icon grid when it changes
+  watch(currentPage, () => {
+    const iconGrid = document.querySelector('.icon-grid')
+    if (iconGrid) {
+      iconGrid.scrollTo({ top: 0 })
+    }
+  })
+
   const categories = computed(() =>
     ['All', ...new Set(iconsData.map(icon => icon.category))].sort()
       .map(category => ({ label: category, value: category }))
@@ -339,7 +347,7 @@
 
   .icon-grid {
     overflow-y: auto;
-    padding: 30px;
+    padding: 30px 30px 25vh 30px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     grid-auto-rows: max-content;
@@ -351,7 +359,7 @@
     position: relative;
     background: var(--interface-surface);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--border-radius--large);
     padding: 16px;
     text-align: center;
     cursor: pointer;
@@ -372,8 +380,8 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    background: #4bbb95;
-    color: white;
+    background: hsl(160, 40%, 45%);
+    color: hsl(160, 40%, 10%);
     font-size: 12px;
     padding: 4px 8px;
     border-radius: 3px;
