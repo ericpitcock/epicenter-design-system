@@ -14154,8 +14154,8 @@
     "version": "1.0.0"
   },
   {
-    "name": "image-flip -horizontal",
-    "tags": "image-flip -horizontal",
+    "name": "image-flip-horizontal",
+    "tags": "image-flip-horizontal",
     "category": "image-camera",
     "featured": false,
     "version": "1.0.12"
@@ -20041,8 +20041,8 @@
     "version": "1.0.0"
   },
   {
-    "name": "package-add-01 ",
-    "tags": "package-add-01 ",
+    "name": "package-add-01",
+    "tags": "package-add-01",
     "category": "e-commerce",
     "featured": false,
     "version": "1.0.17"
@@ -20139,8 +20139,8 @@
     "version": "1.0.0"
   },
   {
-    "name": "package-remove-01 ",
-    "tags": "package-remove-01 ",
+    "name": "package-remove-01",
+    "tags": "package-remove-01",
     "category": "e-commerce",
     "featured": false,
     "version": "1.0.17"
