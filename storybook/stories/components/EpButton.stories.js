@@ -1,10 +1,9 @@
-// import Taco02 from '@ericpitcock/epicenter-icons/icons/Taco02'
-import { computed, defineAsyncComponent } from 'vue'
+import { computed, toRef } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
-import { componentNames } from '../icons/iconHelpers.js'
+import { componentNames, useIcons } from '../icons/useIcons.js'
 
 export default {
   title: 'Components/Button',
@@ -280,20 +279,11 @@ export const Button = args => ({
       return props
     })
 
-    // Dynamic icon import
-    const iconLeftComponent = computed(() => {
-      if (args.enabledIcons && args.iconLeft && args.iconLeft !== 'None') {
-        return defineAsyncComponent(() => import(`@ericpitcock/epicenter-icons/icons/${args.iconLeft}.js`))
-      }
-      return null
-    })
-
-    const iconRightComponent = computed(() => {
-      if (args.enabledIcons && args.iconRight && args.iconRight !== 'None') {
-        return defineAsyncComponent(() => import(`@ericpitcock/epicenter-icons/icons/${args.iconRight}.js`))
-      }
-      return null
-    })
+    const { iconLeftComponent, iconRightComponent } = useIcons(
+      toRef(args, 'iconLeft'),
+      toRef(args, 'iconRight'),
+      toRef(args, 'enabledIcons')
+    )
 
     const onClick = () => {
       console.log('Button clicked!')

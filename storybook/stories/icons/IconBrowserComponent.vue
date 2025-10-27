@@ -97,8 +97,7 @@
   import EpInput from '@/components/input/EpInput.vue'
   import EpSelect from '@/components/select/EpSelect.vue'
 
-  import iconsData from '../../../packages/epicenter-icons/icons.json'
-  import { createIconImports, getComponentName } from './iconHelpers.js'
+  import { createIconImports, getComponentName, iconsData } from './useIcons.js'
 
   const PROBLEMATIC_ICONS = [
     'Access', 'Advertisiment', 'Affiliate', 'AiBook', 'AiBrain03', 'AiChat02',
