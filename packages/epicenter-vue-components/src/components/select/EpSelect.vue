@@ -1,5 +1,8 @@
 <template>
   <ep-input-styler v-bind="stylerProps">
+    <template #icon-left>
+      <slot name="icon-left" />
+    </template>
     <select
       :id="computedId"
       v-model="modelValue"
@@ -27,10 +30,14 @@
         {{ option.label }}
       </option>
     </select>
+    <template #icon-right>
+      <ArrowDown01 />
+    </template>
   </ep-input-styler>
 </template>
 
 <script setup>
+  import ArrowDown01 from '@ericpitcock/epicenter-icons/icons/ArrowDown01'
   import { computed } from 'vue'
 
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
@@ -41,7 +48,6 @@
     readonly: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
     width: { type: String, default: '100%' },
-    iconLeft: { type: Object, default: null },
     selectId: { type: String, required: true },
     size: { type: String, default: 'default' },
     options: { type: Array, required: true },
@@ -64,10 +70,8 @@
     return props.borderColor || 'var(--border-color)'
   })
 
-  const computedId = computed(() => props.selectId || crypto.randomUUID())
   const selectClasses = computed(() => ({
     [`ep-select--${props.size}`]: props.size,
-    'ep-select--has-icon': props.iconLeft,
     'ep-select--disabled': props.disabled,
   }))
 
@@ -80,13 +84,13 @@
     lineHeight: `${sizes[props.size] - 2}px`
   }))
 
+  const computedId = computed(() => props.selectId || crypto.randomUUID())
+
   const stylerProps = computed(() => ({
     id: computedId.value,
     disabled: props.disabled,
     width: props.width,
     size: props.size,
-    iconLeft: props.iconLeft,
-    iconRight: { name: 'chevron-down' },
     iconRightClickable: false,
     iconRightVisible: true
   }))

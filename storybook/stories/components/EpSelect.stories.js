@@ -1,7 +1,9 @@
+import { toRef } from 'vue'
+
 import EpSelect from '@/components/select/EpSelect.vue'
 
 import { centeredSurface } from '../../helpers/decorators.js'
-import { iconMapping,iconOptions } from '../../helpers/iconHelper.js'
+import { componentNames, useIcons } from '../icons/useIcons.js'
 
 export default {
   title: 'Components/Select',
@@ -27,12 +29,25 @@ export default {
         }
       }
     },
+    enabledIcons: {
+      name: 'Left Icon Enabled',
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        category: 'Icons'
+      }
+    },
     iconLeft: {
-      name: 'Icon',
-      options: iconOptions,
-      mapping: iconMapping,
+      if: { arg: 'enabledIcons' },
+      name: 'Left Icon',
+      options: componentNames,
+      // mapping: iconMapping,
       control: {
         type: 'select'
+      },
+      table: {
+        category: 'Icons'
       }
     },
     selectId: {
@@ -98,14 +113,26 @@ export default {
 export const Select = args => ({
   components: { EpSelect },
   setup() {
-    return { args }
+
+    const { iconLeftComponent } = useIcons(
+      toRef(args, 'iconLeft'),
+    )
+
+    return { args, iconLeftComponent }
   },
-  template: '<ep-select v-bind="args" />'
+  template: `
+    <ep-select v-bind="args">
+      <template #icon-left>
+        <component :is="iconLeftComponent" />
+      </template>
+    </ep-select>
+  `
 })
 
 Select.args = {
   selectId: 'select',
-  iconLeft: 'f-coffee',
+  enabledIcons: true,
+  iconLeft: 'Coffee02',
   width: '400px',
   size: 'xlarge',
   placeholder: 'Select your coffee type…',

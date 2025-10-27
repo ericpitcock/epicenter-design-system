@@ -5,13 +5,13 @@
   >
     <div class="ep-input-styler__inner">
       <div
-        v-if="iconLeft"
+        v-if="$slots['icon-left']"
         :class="['ep-input-styler__icon-left', `ep-input-styler__icon-left--${size}`]"
       >
-        icon left
+        <slot name="icon-left" />
       </div>
       <div
-        v-if="iconRight"
+        v-if="$slots['icon-right']"
         :class="[
           'ep-input-styler__icon-right',
           `ep-input-styler__icon-right--${size}`,
@@ -19,7 +19,7 @@
         ]"
         @click="onClick"
       >
-        icon right
+        <slot name="icon-right" />
       </div>
     </div>
     <label
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
 
   defineOptions({
     name: 'EpInputStyler',
@@ -65,14 +65,6 @@
       type: Boolean,
       default: false
     },
-    iconLeft: {
-      type: Object,
-      default: null
-    },
-    iconRight: {
-      type: Object,
-      default: null
-    },
     iconRightClickable: {
       type: Boolean,
       default: false
@@ -89,16 +81,16 @@
 
   const emit = defineEmits(['click'])
 
-  const sizes = ref({
+  const sizes = {
     small: '22',
     default: '30',
     large: '38',
     xlarge: '46'
-  })
+  }
 
   const containerStyles = computed(() => {
     return {
-      height: `${sizes.value[props.size]}px`
+      height: `${sizes[props.size]}px`
     }
   })
 

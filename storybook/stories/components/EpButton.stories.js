@@ -282,7 +282,6 @@ export const Button = args => ({
     const { iconLeftComponent, iconRightComponent } = useIcons(
       toRef(args, 'iconLeft'),
       toRef(args, 'iconRight'),
-      toRef(args, 'enabledIcons')
     )
 
     const onClick = () => {

@@ -47,8 +47,12 @@
   align-items: center;
   justify-content: center;
   width: 2.8rem;
-  height: 70%;
-  max-height: 2.4rem;
+  height: 100%;
+
+  .ep-icon {
+    --ep-icon-width: 45%;
+    --ep-icon-height: 45%;
+  }
 
   &--small {
     width: 2.5rem;
