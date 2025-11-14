@@ -4,5 +4,11 @@
       "@/*": ["./src/*"]
     }
   },
-  "exclude": ["node_modules", "dist", "packages/epicenter-icons/epicenter-icons"]
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    "storybook-static",
+    "docs/.vitepress/dist",
+    "packages/epicenter-icons/epicenter-icons"
+  ]
 }

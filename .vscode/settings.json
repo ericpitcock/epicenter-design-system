@@ -1,2 +1,14 @@
 {
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/storybook-static/**": true,
+    "**/docs/.vitepress/dist/**": true
+  },
+  "search.exclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/storybook-static/**": true,
+    "**/docs/.vitepress/dist/**": true
+  }
 }
