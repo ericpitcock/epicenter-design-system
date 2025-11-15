@@ -1,10 +1,18 @@
 select.ep-select {
+  --ep-select-border-width: 0.1rem;
+  --ep-select-border-style: solid;
+  --ep-select-border-color: var(--border-color);
+  --ep-select-border-radius: var(--border-radius);
+  --ep-select-bg-color: var(--interface-foreground);
   width: 100%;
   height: 100%;
-  background: var(--background-2);
+  background: var(--ep-select-bg-color);
   padding: 0 2.8rem 0 1.4rem;
+  border: var(--ep-select-border-width) var(--ep-select-border-style) var(--ep-select-border-color);
+  border-radius: var(--ep-select-border-radius);
   cursor: pointer;
   user-select: none;
+  align-items: center;
 
   // Apply left padding only when a real icon is present
   .ep-input-styler:has(.ep-input-styler__icon-left:not(:empty)) &,
@@ -42,6 +50,7 @@ select.ep-select {
 
   &--disabled {
     color: var(--text-color--disabled);
+    border-color: var(--border-color--disabled);
     cursor: not-allowed;
     pointer-events: none;
   }

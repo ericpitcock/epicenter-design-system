@@ -4,7 +4,7 @@ import { computed } from 'vue'
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
-import { iconMapping, iconOptions } from '../../helpers/iconHelper.js'
+import { componentNames, useIcons } from '../icons/useIcons.js'
 
 const fakeDropdownItems = [
   {
@@ -62,8 +62,7 @@ export default {
     },
     'buttonProps.iconLeft': {
       name: 'Icon Left',
-      options: iconOptions,
-      mapping: iconMapping,
+      options: componentNames,
       control: {
         type: 'select'
       }

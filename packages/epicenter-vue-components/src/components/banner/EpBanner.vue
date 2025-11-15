@@ -6,6 +6,9 @@
         v-if="$slots.icon"
         class="ep-banner__body__icon"
       >
+        <!--
+          @slot icon - The icon to display in the banner.
+        -->
         <slot name="icon" />
       </div>
       <div class="ep-banner__body__message">

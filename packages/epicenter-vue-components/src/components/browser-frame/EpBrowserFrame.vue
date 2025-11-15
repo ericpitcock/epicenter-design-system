@@ -17,7 +17,7 @@
         </div>
       </template>
       <template #right>
-        user_icon
+        <UserCircle02 />
       </template>
     </ep-header>
     <div class="image-container">
@@ -30,6 +30,8 @@
 </template>
 
 <script setup>
+  import UserCircle02 from '@ericpitcock/epicenter-icons/icons/UserCircle02'
+
   import EpHeader from '../header/EpHeader.vue'
 
   defineOptions({

@@ -2,7 +2,7 @@
   <div
     ref="rootRef"
     class="ep-dropdown"
-    @mouseleave="handleMouseleave"
+    @mouseleave="onMouseleave"
   >
     <div ref="triggerRef">
       <slot
@@ -31,10 +31,10 @@
       :id="contentId"
       ref="containerRef"
       :class="containerClasses"
-      :style="floatingStyles"
+      :style="finalFloatingStyles"
       role="menu"
-      @click="handleContentClick"
-      @focusout="handleFocusout"
+      @click="onContentClick"
+      @focusout="onFocusout"
     >
       <div class="ep-dropdown__content">
         <slot
@@ -55,24 +55,63 @@
 </template>
 
 <script setup>
-  import { autoUpdate, computePosition, flip as floatingFlip, offset as floatingOffset, shift as floatingShift } from '@floating-ui/dom'
+  import {
+    autoUpdate,
+    flip as flipMiddleware,
+    offset as offsetMiddleware,
+    shift as shiftMiddleware,
+    useFloating
+  } from '@floating-ui/vue'
   import { onClickOutside } from '@vueuse/core'
-  import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+  import { computed, nextTick, ref, watch } from 'vue'
 
   defineOptions({ name: 'EpDropdown' })
 
   const props = defineProps({
-    open: { type: Boolean, required: false },
-    disabled: { type: Boolean, default: false },
-    trigger: { type: [String, Array], default: 'click' },
-    placement: { type: String, default: 'bottom-start' },
-    offset: { type: Number, default: 4 },
-    flip: { type: Boolean, default: true },
-    shift: { type: Boolean, default: true },
-    matchTriggerWidth: { type: Boolean, default: false },
-    closeOnContentClick: { type: Boolean, default: true },
-    unmountOnClose: { type: Boolean, default: true },
-    id: { type: String, default: undefined }
+    open: {
+      type: Boolean,
+      required: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    trigger: {
+      type: [String, Array],
+      default: 'click'
+    },
+    placement: {
+      type: String,
+      default: 'bottom-start'
+    },
+    offset: {
+      type: Number,
+      default: 4
+    },
+    flip: {
+      type: Boolean,
+      default: true
+    },
+    shift: {
+      type: Boolean,
+      default: true
+    },
+    matchTriggerWidth: {
+      type: Boolean,
+      default: false
+    },
+    closeOnContentClick: {
+      type: Boolean,
+      default: true
+    },
+    unmountOnClose: {
+      type: Boolean,
+      default: true
+    },
+    id: {
+      type: String,
+      default: undefined
+    }
   })
 
   const emit = defineEmits(['update:open', 'open', 'close'])
@@ -89,14 +128,37 @@
   const triggerId = `ep-dropdown-trigger-${uniqueId}`
   const contentId = `ep-dropdown-panel-${uniqueId}`
 
-  const floatingStyles = ref({})
-  let autoUpdateCleanup = null
   let escapeListenerAttached = false
   let previousFocusedElement = null
 
   const normalizedTriggers = computed(() => {
     const value = Array.isArray(props.trigger) ? props.trigger : [props.trigger]
     return value
+  })
+
+  const containerClasses = computed(() => ['ep-dropdown__container'])
+
+  // Setup floating-ui
+  const middleware = computed(() => {
+    const list = [offsetMiddleware(props.offset)]
+    if (props.flip) list.push(flipMiddleware())
+    if (props.shift) list.push(shiftMiddleware())
+    return list
+  })
+
+  const { floatingStyles: computedFloatingStyles } = useFloating(triggerRef, containerRef, {
+    placement: computed(() => props.placement),
+    middleware,
+    whileElementsMounted: autoUpdate
+  })
+
+  // Extend floating styles with width matching if needed
+  const finalFloatingStyles = computed(() => {
+    const styles = { ...computedFloatingStyles.value }
+    if (props.matchTriggerWidth && triggerRef.value) {
+      styles.width = `${triggerRef.value.offsetWidth}px`
+    }
+    return styles
   })
 
   const triggerAttrs = computed(() => ({
@@ -107,33 +169,33 @@
     disabled: props.disabled || undefined
   }))
 
-  const handleTriggerClick = event => {
+  const onTriggerClick = event => {
     if (props.disabled) return
     if (!normalizedTriggers.value.includes('click')) return
     event.stopPropagation()
     toggleDropdown()
   }
 
-  const handleTriggerContextmenu = event => {
+  const onTriggerContextmenu = event => {
     if (props.disabled) return
     if (!normalizedTriggers.value.includes('contextmenu')) return
     event.preventDefault()
     openDropdown()
   }
 
-  const handleTriggerMouseenter = () => {
+  const onTriggerMouseenter = () => {
     if (props.disabled) return
     if (!normalizedTriggers.value.includes('hover')) return
     openDropdown()
   }
 
-  const handleTriggerMouseleave = () => {
+  const onTriggerMouseleave = () => {
     if (props.disabled) return
     if (!normalizedTriggers.value.includes('hover')) return
     closeDropdown()
   }
 
-  const handleTriggerKeydown = event => {
+  const onTriggerKeydown = event => {
     if (props.disabled) return
     const key = event.key
     if (key === 'Enter' || key === ' ') {
@@ -149,26 +211,26 @@
   }
 
   const triggerListeners = computed(() => ({
-    click: handleTriggerClick,
-    contextmenu: handleTriggerContextmenu,
-    mouseenter: handleTriggerMouseenter,
-    mouseleave: handleTriggerMouseleave,
-    keydown: handleTriggerKeydown
+    click: onTriggerClick,
+    contextmenu: onTriggerContextmenu,
+    mouseenter: onTriggerMouseenter,
+    mouseleave: onTriggerMouseleave,
+    keydown: onTriggerKeydown
   }))
 
-  const handleMouseleave = () => {
+  const onMouseleave = () => {
     if (props.disabled) return
     if (!normalizedTriggers.value.includes('hover')) return
     closeDropdown()
   }
 
-  const handleContentClick = event => {
+  const onContentClick = event => {
     if (!props.closeOnContentClick) return
     const interactiveElement = event.target
     if (interactiveElement) closeDropdown()
   }
 
-  const handleFocusout = event => {
+  const onFocusout = event => {
     const nextTarget = event.relatedTarget
     const rootElement = rootRef.value
     if (!rootElement) return
@@ -181,15 +243,22 @@
     if (isOpen.value) return
     setOpenState(true)
     await nextTick()
-    startAutoPositioning()
     moveFocusIntoContent()
+    if (!escapeListenerAttached) {
+      window.addEventListener('keydown', onWindowKeydown, true)
+      escapeListenerAttached = true
+    }
+    previousFocusedElement = document.activeElement
   }
 
   const closeDropdown = () => {
     if (!isOpen.value) return
     setOpenState(false)
-    stopAutoPositioning()
     restoreFocusToTrigger()
+    if (escapeListenerAttached) {
+      window.removeEventListener('keydown', onWindowKeydown, true)
+      escapeListenerAttached = false
+    }
   }
 
   const toggleDropdown = () => {
@@ -207,48 +276,7 @@
     else emit('close')
   }
 
-  const startAutoPositioning = () => {
-    const referenceElement = triggerRef.value
-    const floatingElement = containerRef.value
-    if (!referenceElement || !floatingElement) return
-    const middlewareList = [floatingOffset(props.offset)]
-    if (props.flip) middlewareList.push(floatingFlip())
-    if (props.shift) middlewareList.push(floatingShift())
-    const compute = () => {
-      computePosition(referenceElement, floatingElement, {
-        placement: props.placement,
-        middleware: middlewareList
-      }).then(({ x, y, strategy }) => {
-        const widthStyle = props.matchTriggerWidth ? `${referenceElement.offsetWidth}px` : undefined
-        floatingStyles.value = {
-          position: strategy,
-          left: `${x}px`,
-          top: `${y}px`,
-          minWidth: widthStyle
-        }
-      })
-    }
-    compute()
-    autoUpdateCleanup = autoUpdate(referenceElement, floatingElement, compute)
-    if (!escapeListenerAttached) {
-      window.addEventListener('keydown', handleWindowKeydown, true)
-      escapeListenerAttached = true
-    }
-    previousFocusedElement = document.activeElement
-  }
-
-  const stopAutoPositioning = () => {
-    if (autoUpdateCleanup) {
-      autoUpdateCleanup()
-      autoUpdateCleanup = null
-    }
-    if (escapeListenerAttached) {
-      window.removeEventListener('keydown', handleWindowKeydown, true)
-      escapeListenerAttached = false
-    }
-  }
-
-  const handleWindowKeydown = event => {
+  const onWindowKeydown = event => {
     if (event.key === 'Escape') {
       event.preventDefault()
       closeDropdown()
@@ -287,17 +315,6 @@
     }
   )
 
-  watch(
-    () => props.placement,
-    () => {
-      if (isOpen.value) startAutoPositioning()
-    }
-  )
-
-  onBeforeUnmount(() => {
-    stopAutoPositioning()
-  })
-
   defineExpose({
     open: openDropdown,
     close: closeDropdown,
@@ -322,17 +339,15 @@
   }
 
   .ep-dropdown__container {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 100%;
-    padding-top: var(--ep-dropdown-padding-top);
+    /* Position is set via inline styles from floating-ui */
     box-shadow: var(--box-shadow--dropdown);
     z-index: var(--z-index--dropdown);
+    background: var(--background-color, #fff);
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 6px;
   }
 
   .ep-dropdown__content {
     position: relative;
-    z-index: var(--z-index--dropdown);
   }
 </style>

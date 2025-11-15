@@ -26,7 +26,7 @@ export default {
       }
     },
     imageAlt: {
-      name: 'Image Source',
+      name: 'Image Alt Text',
       control: {
         type: 'text',
       }

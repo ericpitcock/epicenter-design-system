@@ -59,7 +59,9 @@ export const Badge = args => ({
       v-bind="args"
       :class="args.classes"
       :style="styles"
-    />
+    >
+      {{ args.label }}
+    </ep-badge>
   `
 })
 

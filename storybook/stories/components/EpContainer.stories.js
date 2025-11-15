@@ -1,11 +1,8 @@
 import { faker } from '@faker-js/faker'
 import { computed } from 'vue'
 
-import EpActionBar from '@/components/action-bar/EpActionBar.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
-
-import commonActionBarArgs from '../../helpers/commonActionBarArgs.js'
 
 const container = () => {
   return {
@@ -35,7 +32,6 @@ export default {
 
 export const Container = args => ({
   components: {
-    EpActionBar,
     EpContainer,
     EpHeader,
   },
@@ -52,7 +48,6 @@ export const Container = args => ({
 
     return {
       args,
-      commonActionBarArgs,
       faker,
       computedStyles,
     }
@@ -66,12 +61,6 @@ export const Container = args => ({
         <ep-header>
           <template #left>
             Header
-          </template>
-          <template #right>
-            <ep-action-bar
-              v-bind="commonActionBarArgs"
-              :style="{'--ep-action-bar-justify-content': 'flex-end'}"
-            />
           </template>
         </ep-header>
         </template>

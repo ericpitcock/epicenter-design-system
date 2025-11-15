@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 import EpInput from '@/components/input/EpInput.vue'
 
 import { paddedSurface } from '../../helpers/decorators.js'
-import { iconMapping, iconOptions } from '../../helpers/iconHelper.js'
+import { componentNames, useIcons } from '../icons/useIcons.js'
 
 export default {
   title: 'Components/Input',
@@ -53,8 +53,7 @@ export default {
     },
     iconLeft: {
       name: 'Icon Left',
-      options: iconOptions,
-      mapping: iconMapping,
+      options: componentNames,
       control: {
         type: 'select'
       },
@@ -64,8 +63,7 @@ export default {
     },
     iconRight: {
       name: 'Icon Right',
-      options: iconOptions,
-      mapping: iconMapping,
+      options: componentNames,
       control: {
         type: 'select'
       },

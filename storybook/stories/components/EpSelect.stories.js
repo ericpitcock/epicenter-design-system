@@ -10,12 +10,6 @@ export default {
   component: EpSelect,
   decorators: [centeredSurface],
   argTypes: {
-    width: {
-      name: 'Width',
-      control: {
-        type: 'text'
-      }
-    },
     size: {
       name: 'Size',
       options: ['small', 'default', 'large', 'xlarge'],
@@ -42,7 +36,6 @@ export default {
       if: { arg: 'enabledIcons' },
       name: 'Left Icon',
       options: componentNames,
-      // mapping: iconMapping,
       control: {
         type: 'select'
       },
@@ -75,38 +68,13 @@ export default {
         type: 'boolean'
       }
     },
-    borderWidth: {
-      name: 'Border Width',
-      control: {
-        type: 'text'
-      }
-    },
-    borderStyle: {
-      name: 'Border Style',
-      control: {
-        type: 'text'
-      }
-    },
-    borderColor: {
-      name: 'Border Color',
-      control: {
-        type: 'text'
-      }
-    },
-    borderRadius: {
-      name: 'Border Radius',
-      control: {
-        type: 'text'
-      }
-    },
-    backgroundColor: {
-      name: 'Background Color',
-      control: {
-        type: 'text'
-      }
-    },
     readonly: { table: { disable: true } },
     required: { table: { disable: true } },
+    // events
+    blur: { table: { disable: true } },
+    focus: { table: { disable: true } },
+    // slots
+    ['icon-left']: { table: { disable: true } }
   }
 }
 
@@ -133,7 +101,6 @@ Select.args = {
   selectId: 'select',
   enabledIcons: true,
   iconLeft: 'Coffee02',
-  width: '400px',
   size: 'xlarge',
   placeholder: 'Select your coffee type…',
   disabled: false,
@@ -168,9 +135,4 @@ Select.args = {
       value: 'aeropress'
     }
   ],
-  borderWidth: '0.1rem',
-  borderStyle: 'solid',
-  borderColor: 'var(--border-color)',
-  borderRadius: 'var(--border-radius)',
-  backgroundColor: 'var(--interface-foreground)'
 }

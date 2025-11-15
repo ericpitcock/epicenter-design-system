@@ -26,13 +26,6 @@
         </ep-flex>
       </div>
     </div>
-    <div class="content">
-      <div class="main">
-        <div class="copy-block">
-          <p>Note: React components are coming in the future.</p>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -77,10 +70,11 @@
 
     .hero {
       position: relative;
+      height: 100%;
       padding: 6rem 6rem 4rem 6rem;
       background: var(--gradient-bg);
       color: hsl(var(--gray-440));
-      border-radius: var(--border-radius--large) var(--border-radius--large) 0 0;
+      border-radius: var(--border-radius--large);
       overflow: hidden;
 
       .copy-block {
@@ -132,29 +126,6 @@
       .hero-icon {
         --ep-icon-width: 2rem;
         --ep-icon-stroke-width: 1.5;
-      }
-    }
-
-    .content {
-      display: flex;
-      gap: 3rem;
-      padding: 4rem 6rem;
-      background: var(--interface-surface);
-      border-radius: 0 0 var(--border-radius--large) var(--border-radius--large);
-      border: 1px solid var(--border-color);
-      border-top: none;
-
-      > *:not(:first-child) {
-        margin-top: 2rem;
-      }
-
-      .main {
-        flex: 3;
-      }
-
-      .test-sites {
-        flex: 1;
-        display: flex;
       }
     }
   }

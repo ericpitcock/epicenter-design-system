@@ -142,7 +142,9 @@ export const ChartPalette = (args) => ({
   },
   template: `
     <div :style="{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '50px', ...styles }">
-      <ep-button class="ep-button-var--primary" label="Copy styles" @click="copyStylesToClipboard" />
+      <ep-button class="ep-button-var--primary" @click="copyStylesToClipboard">
+        Copy styles
+      </ep-button>
       <div style="display: flex; gap: 50px; height: 100%;">
         <div style="display: flex; flex-direction: column;">
           <div

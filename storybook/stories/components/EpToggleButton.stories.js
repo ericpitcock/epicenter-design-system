@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import EpToggleButton from '@/components/toggle-button/EpToggleButton.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
-import { iconMapping, iconOptions } from '../../helpers/iconHelper.js'
+import { componentNames, useIcons } from '../icons/useIcons.js'
 
 export default {
   title: 'Components/Toggle Button',
@@ -42,8 +42,7 @@ export default {
     },
     icon: {
       name: 'Icon',
-      options: iconOptions,
-      mapping: iconMapping,
+      options: componentNames,
       control: { type: 'select' },
     },
   }

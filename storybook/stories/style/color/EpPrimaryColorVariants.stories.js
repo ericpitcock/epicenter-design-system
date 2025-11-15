@@ -5,9 +5,15 @@ export default {
   title: 'Style/Primary Color Variants',
   component: EpPrimaryColorVariants,
   decorators: [paddedBg],
-  argTypes: {},
+  argTypes: {
+    hue: {
+      control: { type: 'range', min: 0, max: 360, step: 1 },
+      description: 'Base hue value for the color variants',
+      defaultValue: 257
+    }
+  },
   parameters: {
-    controls: { hideNoControlsWarning: true }
+    controls: { hideNoControlsWarning: false }
   }
 }
 
@@ -16,5 +22,9 @@ export const PrimaryColorVariants = (args) => ({
   setup() {
     return { args }
   },
-  template: '<ep-primary-color-variants />'
+  template: '<ep-primary-color-variants :hue="args.hue" />'
 })
+
+PrimaryColorVariants.args = {
+  hue: 257
+}

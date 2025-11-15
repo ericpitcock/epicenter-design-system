@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 import { ref } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
-import EpDropdown from '@/components/dropdown/EpDropdown.vue'
+import EpDropdown from '@/components/dropdown/EpDropdownNew.vue'
 import EpMenu from '@/components/menu/EpMenu.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'

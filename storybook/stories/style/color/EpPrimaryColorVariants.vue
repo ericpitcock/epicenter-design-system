@@ -1,5 +1,8 @@
 <template>
-  <div class="primary-color-variants">
+  <div
+    class="primary-color-variants"
+    :style="customProperties"
+  >
     <div class="x-axis">
       <p>Tints / Shades</p>
     </div>
@@ -18,7 +21,59 @@
 </template>
 
 <script setup>
+  import { computed } from 'vue'
+
   import ColorChips from './ColorChips.vue'
+
+  const props = defineProps({
+    hue: {
+      type: Number,
+      default: 257
+    }
+  })
+
+  // Base values from app.scss
+  const baseLightness = 0.60
+  const baseChroma = 0.2
+
+  // Modifications matching the SCSS mixin
+  const modifications = {
+    'up-15': 15,
+    'up-10': 10,
+    'up-5': 5,
+    '': 0,
+    'down-5': -5,
+    'down-10': -10,
+    'down-15': -15
+  }
+
+  // Generate CSS custom properties based on hue
+  const customProperties = computed(() => {
+    const properties = {}
+
+    Object.entries(modifications).forEach(([name, offset]) => {
+      const adjustedHue = props.hue + offset
+      const prefix = name ? `--primary-color-${name}` : '--primary-color'
+
+      // Generate tints (100-500) and shades (600-1000)
+      for (let i = 1; i <= 5; i++) {
+        const tintLightness = baseLightness + (6 - i) * 0.05
+        const shadeLightness = baseLightness - i * 0.07
+
+        // Base color
+        if (i === 1) {
+          properties[`${prefix}-base`] = `oklch(${baseLightness} ${baseChroma} ${adjustedHue}deg)`
+        }
+
+        // Tints (lighter colors)
+        properties[`${prefix}-${i}00`] = `oklch(${tintLightness} ${baseChroma} ${adjustedHue}deg)`
+        // Shades (darker colors)
+        properties[`${prefix}-${i + 5}00`] = `oklch(${shadeLightness} ${baseChroma} ${adjustedHue}deg)`
+      }
+    })
+
+    return properties
+  })
 
   const variantKeys = {
     up15: [

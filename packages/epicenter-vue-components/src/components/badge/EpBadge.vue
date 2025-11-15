@@ -1,6 +1,6 @@
 <template>
   <div class="ep-badge">
-    {{ label }}
+    <slot>{{ label }}</slot>
   </div>
 </template>
 
@@ -9,13 +9,13 @@
     name: 'EpBadge'
   })
 
-  const props = defineProps({
+  defineProps({
     /**
      * The label to display in the badge.
      */
     label: {
       type: String,
-      default: 'Badge'
+      default: '',
     },
   })
 </script>

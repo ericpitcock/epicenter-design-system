@@ -1,9 +1,9 @@
-import { computed, ref } from 'vue'
+import { computed, ref, toRef } from 'vue'
 
 import EpBanner from '@/components/banner/EpBanner.vue'
 
 import { centeredSurface } from '../../helpers/decorators.js'
-import { iconOptions } from '../../helpers/iconHelper.js'
+import { componentNames, useIcons } from '../icons/useIcons.js'
 
 export default {
   title: 'Components/Banner',
@@ -25,9 +25,19 @@ export default {
       //   type: 'select'
       // }
     },
+    enabledIcons: {
+      name: 'Use Icon',
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        category: 'Icon'
+      }
+    },
     iconName: {
+      if: { arg: 'enabledIcons' },
       name: 'Name',
-      options: iconOptions,
+      options: componentNames,
       control: {
         type: 'select'
       },
@@ -35,7 +45,21 @@ export default {
         category: 'Icon'
       }
     },
+    iconSize: {
+      if: { arg: 'enabledIcons' },
+      name: 'Size',
+      control: {
+        type: 'range',
+        min: 12,
+        max: 128,
+        step: 4
+      },
+      table: {
+        category: 'Icon'
+      }
+    },
     iconColor: {
+      if: { arg: 'enabledIcons' },
       name: 'Color',
       control: {
         type: 'color'
@@ -45,6 +69,7 @@ export default {
       }
     },
     iconWeight: {
+      if: { arg: 'enabledIcons' },
       name: 'Weight',
       options: ['Light', 'Regular', 'Medium', 'Bold'],
       mapping: {
@@ -157,6 +182,19 @@ export default {
     dismissed: {
       table: { disable: true }
     },
+    // slots
+    icon: {
+      table: { disable: true }
+    },
+    message: {
+      table: { disable: true }
+    },
+    subtext: {
+      table: { disable: true }
+    },
+    dismiss: {
+      table: { disable: true }
+    },
   }
 }
 
@@ -178,15 +216,16 @@ export const Banner = args => ({
       '--ep-banner-dismiss-button-active-text-color': args.dismissButtonActiveTextColor,
     }))
 
-    const iconProps = computed(() => {
-      return {
-        name: args.iconName,
-        style: {
-          '--ep-icon-color': args.iconColor,
-          '--ep-icon-stroke-width': args.iconWeight,
-        }
-      }
-    })
+    const iconStyles = computed(() => ({
+      '--ep-icon-width': args.iconSize + 'px',
+      '--ep-icon-height': args.iconSize + 'px',
+      '--ep-icon-color': args.iconColor,
+      '--ep-icon-stroke-width': args.iconWeight,
+    }))
+
+    const { iconLeftComponent } = useIcons(
+      toRef(args, 'iconName'),
+    )
 
     const showBanner = ref(true)
 
@@ -202,17 +241,23 @@ export const Banner = args => ({
       onDismissed,
       showBanner,
       styles,
-      iconProps
+      iconLeftComponent,
+      iconStyles,
     }
   },
   template: `
     <ep-banner
       v-show="showBanner"
       v-bind="args"
-      :icon-props="iconProps"
       :style="styles"
       @dismissed="onDismissed"
     >
+      <template
+        v-if="args.enabledIcons && args.iconName != 'None'"
+        #icon
+      >
+        <component :is="iconLeftComponent" :style="iconStyles" />
+      </template>
       <template #message>
         Version 2.0 will end support for JavaDabbles and Interquibbles
       </template>
@@ -225,7 +270,9 @@ export const Banner = args => ({
 
 Banner.args = {
   dissmissable: false,
-  iconName: 'f-arrow-right',
+  enabledIcons: false,
+  iconName: 'None',
+  iconSize: 32,
   iconColor: '#FFC107',
   iconWeight: 'Regular',
   stripColor: '#FFC107',

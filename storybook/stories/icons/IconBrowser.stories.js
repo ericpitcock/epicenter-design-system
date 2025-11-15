@@ -3,7 +3,7 @@ import '../../../packages/epicenter-icons/base.scss'
 import IconBrowserComponent from './IconBrowserComponent.vue'
 
 export default {
-  title: 'Epicenter Icons/Icon Browser',
+  title: 'Icon Browser',
   parameters: {
     docs: {
       description: {
@@ -45,7 +45,7 @@ export const IconBrowser = {
   }),
   args: {
     size: 48,
-    color: '#8b50f1',
+    color: '#a57cedff',
     strokeWidth: 1,
     showProblematicOnly: false,
     hideProblematic: true,

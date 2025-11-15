@@ -93,7 +93,6 @@ export default {
       if: { arg: 'enabledIcons' },
       name: 'Icon Left',
       options: componentNames,
-      // mapping: iconMapping,
       control: {
         type: 'select'
       },
@@ -324,5 +323,5 @@ Button.args = {
   enabledIcons: false,
   iconLeft: 'None',
   iconRight: 'None',
-  borderRadius: 6,
+  borderRadius: 3,
 }

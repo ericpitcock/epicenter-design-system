@@ -23,6 +23,7 @@ export const useIcons = (leftIconName, rightIconName) => {
 
 export const getComponentName = (iconName) => {
   // Handle specific naming conflicts first
+  // map what's in icons.json to the correct component name
   const conflicts = {
     'trade-mark': 'TrademarkCircle',
     'trademark': 'TrademarkRectangle',
@@ -32,6 +33,7 @@ export const getComponentName = (iconName) => {
     'foursquare': 'FoursquareLogo',
     're:': 'ReColon',
     'c++': 'CPlusPlus',
+    'rubik\'s-cube': 'RubikQuotesCube',
   }
 
   if (conflicts[iconName]) {

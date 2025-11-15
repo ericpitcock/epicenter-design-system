@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
-import { iconMapping, iconOptions } from '../../helpers/iconHelper.js'
+import { componentNames, useIcons } from '../icons/useIcons.js'
 
 export default {
   title: 'Components/Button/Split Button',
@@ -51,24 +51,21 @@ export default {
     },
     'buttonProps.iconLeft': {
       name: 'Button Icon (Left)',
-      options: iconOptions,
-      mapping: iconMapping,
+      options: componentNames,
       control: {
         type: 'select'
       }
     },
     'buttonProps.iconRight': {
       name: 'Button Icon (Right)',
-      options: iconOptions,
-      mapping: iconMapping,
+      options: componentNames,
       control: {
         type: 'select'
       }
     },
     'dropdownProps.buttonProps.iconRight': {
       name: 'Dropdown Icon',
-      options: iconOptions,
-      mapping: iconMapping,
+      options: componentNames,
       control: {
         type: 'select'
       }
