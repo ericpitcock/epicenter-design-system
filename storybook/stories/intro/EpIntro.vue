@@ -19,7 +19,7 @@
             v-bind="btn.props"
           >
             <template #icon-left>
-              button icon
+              <component :is="btn.icon" />
             </template>
             {{ btn.props.label }}
           </ep-button>
@@ -30,6 +30,9 @@
 </template>
 
 <script setup>
+  import DocumentCode from '@ericpitcock/epicenter-icons/icons/DocumentCode'
+  import Github from '@ericpitcock/epicenter-icons/icons/Github'
+
   import EpButton from '@/components/button/EpButton.vue'
   import EpFlex from '@/components/flexbox/EpFlex.vue'
   import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
@@ -41,7 +44,7 @@
         label: 'GitHub',
         size: 'large',
       },
-      icon: 'f-github',
+      icon: Github,
     },
     {
       props: {
@@ -49,7 +52,7 @@
         label: 'Docs',
         size: 'large',
       },
-      icon: 'f-file-text',
+      icon: DocumentCode,
     },
   ]
 </script>
