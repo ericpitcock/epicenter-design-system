@@ -1,7 +1,9 @@
 import { faker } from '@faker-js/faker'
-import { computed } from 'vue'
+import { computed, ref, toRef } from 'vue'
 
+import EpButton from '@/components/button/EpButton.vue'
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
+import EpMenu from '@/components/menu/EpMenu.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
 import { componentNames, useIcons } from '../icons/useIcons.js'
@@ -47,50 +49,61 @@ export default {
         type: 'boolean'
       }
     },
-    'buttonProps.size': {
-      name: 'Size',
-      options: ['small', 'default', 'large', 'xlarge'],
-      control: {
-        type: 'radio',
-        labels: {
-          small: 'Small',
-          default: 'Default',
-          large: 'Large',
-          xlarge: 'X-Large'
-        }
-      }
-    },
-    'buttonProps.iconLeft': {
-      name: 'Icon Left',
-      options: componentNames,
-      control: {
-        type: 'select'
-      }
-    },
     alignRight: {
       name: 'Align Right',
       control: {
         type: 'boolean'
       }
     },
-    button: { table: { disable: true } },
-    buttonProps: { table: { disable: true } },
-    // containerProps: { table: { disable: true } },
-    menuItems: { table: { disable: true } },
     showOnHover: {
       name: 'Show On Hover',
       control: {
         type: 'boolean'
       }
     },
+    enabledIcons: {
+      name: 'Enable Icons',
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        category: 'Icons'
+      }
+    },
+    iconLeft: {
+      if: { arg: 'enabledIcons' },
+      name: 'Icon Left',
+      options: componentNames,
+      control: {
+        type: 'select'
+      },
+      table: {
+        category: 'Icons'
+      }
+    },
+    iconRight: {
+      if: { arg: 'enabledIcons' },
+      name: 'Icon Right',
+      options: componentNames,
+      control: {
+        type: 'select'
+      },
+      table: {
+        category: 'Icons'
+      }
+    }
   }
 }
 
 export const Dropdown = args => ({
   components: {
-    EpDropdown
+    EpButton,
+    EpDropdown,
+    EpMenu,
   },
   setup() {
+    const openState = ref(false)
+
     const buttonProps = computed(() => ({
       size: args['buttonProps.size'],
       label: 'Choose your coffee',
@@ -99,32 +112,74 @@ export const Dropdown = args => ({
       class: 'ep-button-var--primary'
     }))
 
-    const menuProps = computed(() => ({
-      menuItems: fakeDropdownItems,
-      class: 'special-class',
-    }))
+    // const menuProps = computed(() => ({
+    //   menuItems: fakeDropdownItems,
+    //   class: 'special-class',
+    // }))
 
-    const onClick = (item) => {
+    const { iconLeftComponent, iconRightComponent } = useIcons(
+      toRef(args, 'iconLeft'),
+      toRef(args, 'iconRight'),
+    )
+
+    const onSelect = (item) => {
       console.log('clicked:', item.label)
     }
 
-    return { args, buttonProps, menuProps, onClick }
+    return {
+      args,
+      buttonProps,
+      fakeDropdownItems,
+      iconLeftComponent,
+      iconRightComponent,
+      onSelect,
+      openState
+    }
   },
   template: `
     <ep-dropdown
-      :buttonProps="buttonProps"
-      :menuProps="menuProps"
+      v-model:open="openState"
       v-bind="args"
-      @click="onClick"
-      @close="() => console.log('closed')"
-    />
+    >
+      <template #trigger="{ attrs, on }">
+        <ep-button
+          v-bind="attrs"
+          v-on="on"
+          :disabled="args.disabled"
+          size="large"
+          class="ep-button-var--primary"
+        >
+          <template
+            v-if="args.enabledIcons && args.iconLeft != 'None'"
+            #icon-left
+          >
+            <component :is="iconLeftComponent" />
+          </template>
+          Choose your coffee
+          <template
+            v-if="args.enabledIcons && args.iconRight != 'None'"
+            #icon-right
+          >
+            <component :is="iconRightComponent" />
+          </template>
+        </ep-button>
+      </template>
+
+      <template #content="{ close }">
+        <ep-menu
+          :menu-items="fakeDropdownItems"
+          @click="item => { onSelect(item); close() }"
+        />
+      </template>
+    </ep-dropdown>
   `
 })
 
 Dropdown.args = {
   disabled: false,
-  'buttonProps.size': 'large',
-  'buttonProps.iconLeft': 'None',
   alignRight: false,
-  showOnHover: false
+  showOnHover: false,
+  enabledIcons: true,
+  iconLeft: 'Coffee02',
+  iconRight: 'ArrowDown01'
 }

@@ -321,33 +321,3 @@
     toggle: toggleDropdown
   })
 </script>
-
-<style scoped>
-  .ep-dropdown {
-    --ep-dropdown-padding-top: 4px;
-    position: relative;
-    width: fit-content;
-  }
-
-  .ep-dropdown__fallback-trigger {
-    font: inherit;
-    padding: 8px 12px;
-    border: 1px solid var(--border-color, #ddd);
-    background: var(--background-color, #fff);
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  .ep-dropdown__container {
-    /* Position is set via inline styles from floating-ui */
-    box-shadow: var(--box-shadow--dropdown);
-    z-index: var(--z-index--dropdown);
-    background: var(--background-color, #fff);
-    border: 1px solid var(--border-color, #ddd);
-    border-radius: 6px;
-  }
-
-  .ep-dropdown__content {
-    position: relative;
-  }
-</style>
