@@ -1,41 +1,22 @@
-import { faker } from '@faker-js/faker'
+import Coffee from '@ericpitcock/epicenter-icons/icons/Coffee02'
 import { computed, ref, toRef } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 import EpMenu from '@/components/menu/EpMenu.vue'
+import EpMenuItem from '@/components/menu/EpMenuItem.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
 import { componentNames, useIcons } from '../icons/useIcons.js'
 
 const fakeDropdownItems = [
-  {
-    section: true,
-    label: 'Cheap'
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Drip',
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'French Press',
-  },
-  {
-    divider: true
-  },
-  {
-    section: true,
-    label: 'Expensive'
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Latte',
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Espresso',
-  }
+  { type: 'section', label: 'Cheap' },
+  { type: 'item', label: 'Drip' },
+  { type: 'item', label: 'French Press' },
+  { type: 'divider' },
+  { type: 'section', label: 'Expensive' },
+  { type: 'item', label: 'Latte' },
+  { type: 'item', label: 'Espresso' }
 ]
 
 export default {
@@ -53,12 +34,34 @@ export default {
       name: 'Align Right',
       control: {
         type: 'boolean'
+      },
+      table: {
+        category: 'Options'
       }
     },
     showOnHover: {
       name: 'Show On Hover',
       control: {
         type: 'boolean'
+      },
+      table: {
+        category: 'Options'
+      }
+    },
+    size: {
+      name: 'Size',
+      options: ['small', 'default', 'large', 'xlarge'],
+      control: {
+        type: 'radio',
+        labels: {
+          small: 'Small',
+          default: 'Default',
+          large: 'Large',
+          xlarge: 'X-Large'
+        }
+      },
+      table: {
+        category: 'Button Style'
       }
     },
     enabledIcons: {
@@ -92,7 +95,7 @@ export default {
         category: 'Icons'
       }
     }
-  }
+  },
 }
 
 export const Dropdown = args => ({
@@ -100,6 +103,8 @@ export const Dropdown = args => ({
     EpButton,
     EpDropdown,
     EpMenu,
+    EpMenuItem,
+    Coffee
   },
   setup() {
     const openState = ref(false)
@@ -111,11 +116,6 @@ export const Dropdown = args => ({
       iconLeft: args['buttonProps.iconLeft'],
       class: 'ep-button-var--primary'
     }))
-
-    // const menuProps = computed(() => ({
-    //   menuItems: fakeDropdownItems,
-    //   class: 'special-class',
-    // }))
 
     const { iconLeftComponent, iconRightComponent } = useIcons(
       toRef(args, 'iconLeft'),
@@ -146,7 +146,7 @@ export const Dropdown = args => ({
           v-bind="attrs"
           v-on="on"
           :disabled="args.disabled"
-          size="large"
+          :size="args.size"
           class="ep-button-var--primary"
         >
           <template
@@ -166,10 +166,20 @@ export const Dropdown = args => ({
       </template>
 
       <template #content="{ close }">
-        <ep-menu
-          :menu-items="fakeDropdownItems"
-          @click="item => { onSelect(item); close() }"
-        />
+        <ep-menu>
+          <template v-for="(item, index) in fakeDropdownItems" :key="index">
+            <ep-menu-item :type="item.type">
+              <ep-button
+                v-if="item.type === 'item'"
+                class="ep-button--menu-item"
+                @click="() => { onSelect(item); close() }"
+              >
+                {{ item.label }}
+              </ep-button>
+              <template v-else>{{ item.label }}</template>
+            </ep-menu-item>
+          </template>
+        </ep-menu>
       </template>
     </ep-dropdown>
   `
@@ -177,6 +187,7 @@ export const Dropdown = args => ({
 
 Dropdown.args = {
   disabled: false,
+  size: 'large',
   alignRight: false,
   showOnHover: false,
   enabledIcons: true,

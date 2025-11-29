@@ -4,10 +4,6 @@
     class="ep-dropdown"
     @mouseleave="onMouseleave"
   >
-    <!-- <div
-      @click.stop="toggleDropdown"
-      @mouseover="onMouseover"
-    > -->
     <slot
       name="trigger"
       :is-open="dropdownVisible"
@@ -25,7 +21,6 @@
         Default dropdown
       </button>
     </slot>
-    <!-- </div> -->
     <div
       v-show="dropdownVisible"
       :id="contentId"
@@ -43,15 +38,11 @@
 
 <script setup>
   import { onClickOutside } from '@vueuse/core'
-  import { computed, ref, useTemplateRef } from 'vue'
+  import { computed, ref, useId, useTemplateRef } from 'vue'
 
   defineOptions({ name: 'EpDropdown' })
 
   const props = defineProps({
-    id: {
-      type: String,
-      default: undefined
-    },
     alignRight: {
       type: Boolean,
       default: false
@@ -62,7 +53,7 @@
     },
   })
 
-  const uniqueId = props.id || Math.random().toString(36).slice(2)
+  const uniqueId = useId()
   const triggerId = `ep-dropdown-trigger-${uniqueId}`
   const contentId = `ep-dropdown-panel-${uniqueId}`
 

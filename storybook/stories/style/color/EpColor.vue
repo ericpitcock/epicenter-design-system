@@ -3,11 +3,22 @@
     <div class="colors__sidebar">
       <ep-menu
         class="colors__menu"
-        :menu-items="menuItems"
         menu-type="nav"
-        :active-item="activeItem"
-        @click="filterColorTable"
-      />
+      >
+        <ep-menu-item
+          v-for="item in menuItems"
+          :key="item.id"
+          :type="item.type || 'item'"
+        >
+          <ep-button
+            v-if="!item.type || item.type === 'item'"
+            :class="['ep-button--menu-item', { 'ep-button--menu-item--selected': item.label === activeItem }]"
+            @click="filterColorTable(item)"
+          >
+            {{ item.label }}
+          </ep-button>
+        </ep-menu-item>
+      </ep-menu>
     </div>
     <div class="colors__content">
       <ep-container ref="epContainerComponent">
@@ -70,9 +81,11 @@
   import chroma from 'chroma-js'
   import { computed, ref } from 'vue'
 
+  import EpButton from '@/components/button/EpButton.vue'
   import EpContainer from '@/components/container/EpContainer.vue'
   import EpFlex from '@/components/flexbox/EpFlex.vue'
   import EpMenu from '@/components/menu/EpMenu.vue'
+  import EpMenuItem from '@/components/menu/EpMenuItem.vue'
   import EpTable from '@/components/table/EpTable.vue'
   import EpTableHead from '@/components/table/EpTableHead.vue'
   import EpTooltip from '@/components/tooltip/EpTooltip.vue'
@@ -99,7 +112,7 @@
 
   const menuItems = [
     { id: faker.string.uuid(), label: 'Chart Sequence', },
-    { divider: true },
+    { type: 'divider' },
     { id: faker.string.uuid(), label: 'All' },
     { id: faker.string.uuid(), label: 'Grayscale' },
     { id: faker.string.uuid(), label: 'Red' },
@@ -237,10 +250,6 @@
       return 'AAA'
     }
   }
-
-  const contrastIcon = (value) => {
-    return value === '' ? 'f-alert-triangle' : 'f-check'
-  }
 </script>
 
 <style lang="scss" scoped>
@@ -281,6 +290,11 @@
       --ep-table-sticky-top: 0;
       --ep-table-container-overflow: unset;
     }
+  }
+
+  .ep-menu__item {
+    --ep-button-menu-item-hover-bg-color: var(--interface-surface--accent);
+    --ep-button-menu-item-hover-border-color: var(--ep-button-menu-item-hover-bg-color);
   }
 
   .color-sample {

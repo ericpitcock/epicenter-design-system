@@ -1,143 +1,15 @@
-import { faker } from '@faker-js/faker'
+import Activity from '@ericpitcock/epicenter-icons/icons/Activity01'
+import Dashboard from '@ericpitcock/epicenter-icons/icons/Analytics01'
+import ArrowRight01 from '@ericpitcock/epicenter-icons/icons/ArrowRight01'
+import ArrowUpRight from '@ericpitcock/epicenter-icons/icons/ArrowUpRight03'
+import MapPin from '@ericpitcock/epicenter-icons/icons/Location03'
+import MenuIcon from '@ericpitcock/epicenter-icons/icons/Menu01'
 
+import EpButton from '@/components/button/EpButton.vue'
 import EpMenu from '@/components/menu/EpMenu.vue'
+import EpMenuItem from '@/components/menu/EpMenuItem.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
-
-const menuConfig = [
-  {
-    id: faker.string.uuid(),
-    label: 'Dashboard',
-    iconLeft: {
-      name: 'dashboard',
-      style: {
-        '--ep-icon-stroke-width': 1,
-      }
-    },
-    to: '/'
-  },
-  { divider: true },
-  {
-    section: true,
-    label: 'Actions'
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Google Maps',
-    iconLeft: { name: 'f-map-pin' },
-    iconRight: {
-      name: 'f-arrow-up-right',
-      style: {
-        '--ep-icon-height': '1.4rem',
-        '--ep-icon-stroke-width': 0.8,
-
-      }
-    },
-    href: 'https://www.google.com/maps'
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Track Event',
-    iconLeft: { name: 'f-activity' },
-    action: (item) => console.log('clicked', item.label)
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'More Options',
-    iconLeft: {
-      name: 'menu',
-      style: {
-        '--ep-icon-stroke-width': 1,
-      }
-    },
-    iconRight: { name: 'chevron-right' },
-    children: [
-      {
-        id: faker.string.uuid(),
-        label: 'Settings',
-        action: (item) => console.log('clicked', item.label)
-      },
-      {
-        id: faker.string.uuid(),
-        label: 'Preferences',
-        action: (item) => console.log('clicked', item.label)
-      },
-      { divider: true },
-      {
-        id: faker.string.uuid(),
-        label: 'Help Center',
-        action: (item) => console.log('clicked', item.label)
-      },
-      {
-        id: faker.string.uuid(),
-        label: 'About Us',
-        action: (item) => console.log('clicked', item.label)
-      }
-    ]
-  },
-  { divider: true },
-  {
-    section: true,
-    label: 'Shortcuts'
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Recent Files',
-    action: (item) => console.log('clicked', item.label)
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Saved Items',
-    action: (item) => console.log('clicked', item.label)
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Notifications',
-    action: (item) => console.log('clicked', item.label)
-  },
-  { divider: true },
-  {
-    section: true,
-    label: 'Navigation'
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Go Back',
-    action: (item) => console.log('clicked', item.label)
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Next Step',
-    action: (item) => console.log('clicked', item.label)
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Open Web Page',
-    action: (item) => console.log('clicked', item.label)
-  },
-  {
-    id: faker.string.uuid(),
-    label: 'Advanced Settings',
-    iconRight: { name: 'chevron-right' },
-    children: [
-      {
-        id: faker.string.uuid(),
-        label: 'Security',
-        action: (item) => console.log('clicked', item.label)
-      },
-      {
-        id: faker.string.uuid(),
-        label: 'Privacy',
-        action: (item) => console.log('clicked', item.label)
-      },
-      {
-        id: faker.string.uuid(),
-        label: 'Developer Mode',
-        action: (item) => console.log('clicked', item.label)
-      }
-    ]
-  }
-]
 
 export default {
   title: 'Components/Menu',
@@ -157,36 +29,192 @@ export default {
         }
       }
     },
-    menuItems: { table: { disable: true } },
     menuType: { table: { disable: true } },
-    activeItem: { table: { disable: true } },
   }
 }
 
 export const Menu = args => ({
-  components: { EpMenu },
-  setup() {
-    const onClick = (item) => {
-      if (item.action) item.action(item)
-    }
-
-    const onMouseover = (item) => {
-      console.log('onMouseover', item.label)
-    }
-
-    return { args, onClick, onMouseover }
+  components: {
+    EpMenu,
+    EpMenuItem,
+    EpButton,
+    Activity,
+    ArrowRight01,
+    ArrowUpRight,
+    Dashboard,
+    MapPin,
+    MenuIcon
   },
-  template: '<ep-menu v-bind="args" @click="onClick" @mouseover="onMouseover" />'
+  setup() {
+    const menuItems = [
+      {
+        type: 'item',
+        label: 'Dashboard',
+        iconLeft: Dashboard,
+        iconLeftStyle: { '--ep-icon-stroke-width': 1 },
+        to: '/',
+        onClick: () => console.log('clicked Dashboard')
+      },
+      { type: 'divider' },
+      { type: 'section', label: 'Actions' },
+      {
+        type: 'item',
+        label: 'Google Maps',
+        iconLeft: MapPin,
+        iconRight: ArrowUpRight,
+        iconRightStyle: { '--ep-icon-height': '1.4rem', '--ep-icon-stroke-width': 0.8 },
+        href: 'https://www.google.com/maps',
+        onClick: () => console.log('clicked Google Maps')
+      },
+      {
+        type: 'item',
+        label: 'Track Event',
+        iconLeft: Activity,
+        onClick: () => console.log('clicked Track Event')
+      },
+      {
+        type: 'item',
+        label: 'More Options',
+        iconLeft: MenuIcon,
+        iconLeftStyle: { '--ep-icon-stroke-width': 1.5 },
+        iconRight: ArrowRight01,
+        submenu: [
+          {
+            type: 'item',
+            label: 'Settings',
+            onClick: () => console.log('clicked Settings')
+          },
+          {
+            type: 'item',
+            label: 'Preferences',
+            onClick: () => console.log('clicked Preferences')
+          },
+          { type: 'divider' },
+          {
+            type: 'item',
+            label: 'Help Center',
+            onClick: () => console.log('clicked Help Center')
+          },
+          {
+            type: 'item',
+            label: 'About Us',
+            onClick: () => console.log('clicked About Us')
+          }
+        ]
+      },
+      { type: 'divider' },
+      { type: 'section', label: 'Shortcuts' },
+      {
+        type: 'item',
+        label: 'Recent Files',
+        onClick: () => console.log('clicked Recent Files')
+      },
+      {
+        type: 'item',
+        label: 'Saved Items',
+        onClick: () => console.log('clicked Saved Items')
+      },
+      {
+        type: 'item',
+        label: 'Notifications',
+        onClick: () => console.log('clicked Notifications')
+      },
+      { type: 'divider' },
+      { type: 'section', label: 'Navigation' },
+      {
+        type: 'item',
+        label: 'Go Back',
+        onClick: () => console.log('clicked Go Back')
+      },
+      {
+        type: 'item',
+        label: 'Next Step',
+        onClick: () => console.log('clicked Next Step')
+      },
+      {
+        type: 'item',
+        label: 'Open Web Page',
+        onClick: () => console.log('clicked Open Web Page')
+      },
+      {
+        type: 'item',
+        label: 'Advanced Settings',
+        iconRight: ArrowRight01,
+        submenu: [
+          {
+            type: 'item',
+            label: 'Security',
+            onClick: () => console.log('clicked Security')
+          },
+          {
+            type: 'item',
+            label: 'Privacy',
+            onClick: () => console.log('clicked Privacy')
+          },
+          {
+            type: 'item',
+            label: 'Developer Mode',
+            onClick: () => console.log('clicked Developer Mode')
+          }
+        ]
+      }
+    ]
+
+    return { args, menuItems }
+  },
+  template: `
+    <ep-menu v-bind="args">
+      <template v-for="(item, index) in menuItems" :key="index">
+        <ep-menu-item :type="item.type">
+          <ep-button
+            v-if="item.type === 'item'"
+            class="ep-button--menu-item"
+            :size="args.size"
+            :to="item.to"
+            :href="item.href"
+            @click="item.onClick"
+          >
+            <template v-if="item.iconLeft" #icon-left>
+              <component :is="item.iconLeft" :style="item.iconLeftStyle" />
+            </template>
+            {{ item.label }}
+            <template v-if="item.iconRight" #icon-right>
+              <component :is="item.iconRight" :style="item.iconRightStyle" />
+            </template>
+          </ep-button>
+          <template v-else>{{ item.label }}</template>
+          
+          <template v-if="item.submenu" #submenu>
+            <ep-menu :size="args.size">
+              <template v-for="(subItem, subIndex) in item.submenu" :key="subIndex">
+                <ep-menu-item :type="subItem.type">
+                  <ep-button
+                    v-if="subItem.type === 'item'"
+                    class="ep-button--menu-item"
+                    :size="args.size"
+                    :to="subItem.to"
+                    :href="subItem.href"
+                    @click="subItem.onClick"
+                  >
+                    <template v-if="subItem.iconLeft" #icon-left>
+                      <component :is="subItem.iconLeft" :style="subItem.iconLeftStyle" />
+                    </template>
+                    {{ subItem.label }}
+                    <template v-if="subItem.iconRight" #icon-right>
+                      <component :is="subItem.iconRight" :style="subItem.iconRightStyle" />
+                    </template>
+                  </ep-button>
+                  <template v-else>{{ subItem.label }}</template>
+                </ep-menu-item>
+              </template>
+            </ep-menu>
+          </template>
+        </ep-menu-item>
+      </template>
+    </ep-menu>
+  `
 })
 
 Menu.args = {
   size: 'default',
-  // containerProps: {
-  //   styles: {
-  //     '--ep-container-width': '200px',
-  //     '--ep-container-bg-color': 'var(--interface-surface)',
-  //     '--ep-container-border-width': '0.1rem',
-  //   }
-  // },
-  menuItems: menuConfig
 }

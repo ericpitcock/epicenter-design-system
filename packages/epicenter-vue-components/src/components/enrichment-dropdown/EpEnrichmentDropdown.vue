@@ -7,11 +7,18 @@
     >
       <template #content>
         <div class="ep-enrichment-content">
-          <ep-menu
-            class="ep-menu-subtle"
-            :menu-items="enrichmentOptions"
-            @mouseover="onHover"
-          />
+          <ep-menu class="ep-menu-subtle">
+            <ep-menu-item
+              v-for="(option, index) in enrichmentOptions"
+              :key="index"
+              type="item"
+              @mouseover="onHover(option)"
+            >
+              <ep-button class="ep-button--menu-item">
+                {{ option.label }}
+              </ep-button>
+            </ep-menu-item>
+          </ep-menu>
           <div
             v-if="showPreview"
             class="enrichment-preview"
@@ -55,6 +62,7 @@
   import EpKeyValueTable from '../key-value-table/EpKeyValueTable.vue'
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpMenu from '../menu/EpMenu.vue'
+  import EpMenuItem from '../menu/EpMenuItem.vue'
 
   const props = defineProps({
     label: {
