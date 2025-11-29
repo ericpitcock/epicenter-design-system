@@ -5,12 +5,15 @@
   >
     <div :class="headerClass">
       {{ column.label }}
-      direction icon
+      <ArrowUp01 v-if="isSorted && sortOrder === 'asc'" />
+      <ArrowDown01 v-if="isSorted && sortOrder === 'desc'" />
     </div>
   </th>
 </template>
 
 <script setup>
+  import ArrowDown01 from '@ericpitcock/epicenter-icons/icons/ArrowDown01'
+  import ArrowUp01 from '@ericpitcock/epicenter-icons/icons/ArrowUp01'
   import { computed } from 'vue'
 
   defineOptions({
@@ -41,12 +44,6 @@
   })
 
   const emit = defineEmits(['sort'])
-
-  const iconProps = computed(() => {
-    return {
-      name: props.sortOrder === 'asc' ? 'arrow-up' : 'arrow-down',
-    }
-  })
 
   const headerClass = computed(() => {
     return [
