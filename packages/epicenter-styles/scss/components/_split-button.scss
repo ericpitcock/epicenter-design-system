@@ -10,7 +10,7 @@
   }
 
   // target the dropdown button but not the buttons in the menu
-  > .ep-dropdown > div > .ep-button {
+  > .ep-dropdown > .ep-button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
