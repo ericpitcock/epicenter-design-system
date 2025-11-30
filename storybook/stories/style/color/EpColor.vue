@@ -44,30 +44,44 @@
             >{{ row.color }}</span>
           </template>
           <template #cell-contrast="{ row }">
-            <ep-flex class="align-center gap-3">
-              icon span
-              {{ row.contrast }}
+            <ep-flex class="align-center justify-center gap-3">
+              <Tick02
+                v-if="row.contrast === 'AA' || row.contrast === 'AAA'"
+                style="stroke: var(--icon-color--success)"
+              />
+              <Alert02
+                v-else-if="row.contrast === ''"
+                style="stroke: var(--icon-color--error)"
+              />
+              <span>{{ row.contrast }}</span>
             </ep-flex>
           </template>
           <template #cell-css="{ row }">
             <ep-tooltip>
               <template #tooltip>
-                <span v-if="!copied">Copy</span>
+                <span v-if="copiedCell !== `css-${row.css}`">Copy</span>
                 <span v-else>Copied!</span>
               </template>
               <span
                 class="clickable"
-                @click="copy(`var(${row.css})`)"
+                @click="copyToClipboard(`var(${row.css})`, `css-${row.css}`)"
               >
                 {{ `var(${row.css})` }}
               </span>
             </ep-tooltip>
           </template>
           <template #cell-hsl="{ row }">
-            <span
-              class="text--copyable"
-              @click="copy(row.hsl)"
-            >{{ row.hsl }}</span>
+            <ep-tooltip>
+              <template #tooltip>
+                <span v-if="copiedCell !== `hsl-${row.css}`">Copy</span>
+                <span v-else>Copied!</span>
+              </template>
+              <span
+                class="clickable"
+                @click="copyToClipboard(row.hsl, `hsl-${row.css}`)"
+              >{{
+                row.hsl }}</span>
+            </ep-tooltip>
           </template>
         </ep-table>
       </ep-container>
@@ -76,6 +90,8 @@
 </template>
 
 <script setup>
+  import Alert02 from '@ericpitcock/epicenter-icons/icons/Alert02'
+  import Tick02 from '@ericpitcock/epicenter-icons/icons/Tick02'
   import { faker } from '@faker-js/faker'
   import { useClipboard } from '@vueuse/core'
   import chroma from 'chroma-js'
@@ -150,12 +166,10 @@
     {
       label: 'CSS Custom Property',
       key: 'css',
-      class: 'text--copyable'
     },
     {
       label: 'HSL',
       key: 'hsl',
-      class: 'text--copyable'
     }
   ]
 
@@ -218,7 +232,16 @@
   })
 
   const source = ref('')
-  const { copy, copied } = useClipboard({ source })
+  const { copy } = useClipboard({ source })
+  const copiedCell = ref(null)
+
+  const copyToClipboard = async (text, cellId) => {
+    await copy(text)
+    copiedCell.value = cellId
+    setTimeout(() => {
+      copiedCell.value = null
+    }, 2000)
+  }
 
   const epContainerComponent = ref(null)
 
@@ -254,6 +277,8 @@
 
 <style lang="scss" scoped>
   .colors {
+    --icon-color--success: hsl(var(--emerald-400));
+    --icon-color--error: hsl(var(--rose-400));
     display: flex;
     justify-content: stretch;
     gap: 3rem;
@@ -301,5 +326,11 @@
     width: 5rem;
     height: 5rem;
     border-radius: var(--border-radius);
+  }
+
+  html[data-color-theme='light'] .colors,
+  .light-theme .colors {
+    --icon-color--success: hsl(var(--emerald-600));
+    --icon-color--error: hsl(var(--rose-600));
   }
 </style>
