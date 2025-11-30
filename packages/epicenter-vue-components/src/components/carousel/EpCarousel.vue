@@ -142,6 +142,7 @@
   const shouldLoadImages = ref(false)
   let scrollTimeout = null
   let containerObserver = null
+  let resizeObserver = null
 
   // Reset to first image when images prop changes (e.g., switching case studies)
   watch(() => props.images, () => {
@@ -275,6 +276,30 @@
       containerObserver.observe(carouselContainer.value)
     }
 
+    // Set up resize observer to re-center active image on viewport resize
+    resizeObserver = new ResizeObserver(() => {
+      // Re-center the current image without smooth scrolling
+      const item = itemRefs.value[currentIndex.value]
+      if (!item || !carouselTrack.value) return
+
+      const trackRect = carouselTrack.value.getBoundingClientRect()
+      const itemRect = item.getBoundingClientRect()
+      const scrollLeft = carouselTrack.value.scrollLeft
+
+      const itemCenter = itemRect.left - trackRect.left + itemRect.width / 2
+      const trackCenter = trackRect.width / 2
+      const scrollOffset = itemCenter - trackCenter
+
+      carouselTrack.value.scrollTo({
+        left: scrollLeft + scrollOffset,
+        behavior: 'instant'
+      })
+    })
+
+    if (carouselContainer.value) {
+      resizeObserver.observe(carouselContainer.value)
+    }
+
     nextTick(() => {
       // Scroll to first image on mount
       if (itemRefs.value[0] && carouselTrack.value) {
@@ -289,6 +314,9 @@
     }
     if (containerObserver) {
       containerObserver.disconnect()
+    }
+    if (resizeObserver) {
+      resizeObserver.disconnect()
     }
   })
 </script>
