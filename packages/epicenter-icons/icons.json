@@ -21,6 +21,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "24-hours-clock",
+    "tags": "24-hours-clock",
+    "category": "date-time",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "2nd-bracket",
     "tags": "parenthesis, bracket",
     "category": "mathematics",
@@ -152,6 +159,13 @@
     "category": "logistics",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "account-recovery",
+    "tags": "account-recovery",
+    "category": "users",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "account-setting-01",
@@ -1442,6 +1456,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "api-gateway",
+    "tags": "api-gateway",
+    "category": "programming",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "apple",
     "tags": "apple",
     "category": "logos",
@@ -1468,6 +1489,13 @@
     "category": "ai",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "apple-music",
+    "tags": "apple-music",
+    "category": "logos",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "apple-news",
@@ -1750,6 +1778,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "arrow-down-big",
+    "tags": "arrow-down-big",
+    "category": "arrows",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "arrow-down-double",
     "tags": "Arrow-down-double, Double-arrow-down, Downward-double-arrow, Dual-arrow-down, Twin-arrow-down, Dual-chevron-down, Double-pointing-down, chevron,",
     "category": "arrows",
@@ -1862,6 +1897,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "arrow-left-big",
+    "tags": "arrow-left-big",
+    "category": "arrows",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "arrow-left-double",
     "tags": "Arrow-left-double, Double-left-arrow, Backward-arrow, Reverse-arrow, Leftward-arrow, Undo-arrow, Previous-arrow, Retreat-arrow, Dual-left-arrow, Recede-arrow, Backtrack-arrow, Double-back-arrow, chevron,",
     "category": "arrows",
@@ -1967,6 +2009,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "arrow-right-big",
+    "tags": "arrow-right-big",
+    "category": "arrows",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "arrow-right-double",
     "tags": "Arrow-right-double, Double-right-arrow, Forward-double-arrow, Right-arrow-twin, Dual-arrow-right, Paired-arrow-forward, Twin-arrow-right, Double-forward-arrow, Double-arrow-to-right, Arrow-right-pair, chevron,",
     "category": "arrows",
@@ -2056,6 +2105,13 @@
     "category": "arrows",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "arrow-up-big",
+    "tags": "arrow-up-big",
+    "category": "arrows",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "arrow-up-double",
@@ -2464,6 +2520,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "aws-lambda",
+    "tags": "aws-lambda",
+    "category": "programming",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "baby-01",
     "tags": "baby-01",
     "category": "clothing",
@@ -2644,6 +2707,13 @@
     "category": "e-commerce",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "barcode-scan",
+    "tags": "barcode-scan",
+    "category": "business",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "barns",
@@ -4055,7 +4125,7 @@
   {
     "name": "brain-01",
     "tags": "brain-01",
-    "category": "education",
+    "category": "medical",
     "featured": false,
     "version": "1.0.0"
   },
@@ -4415,6 +4485,13 @@
     "category": "foods",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "bucket",
+    "tags": "bucket",
+    "category": "programming",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "bug-01",
@@ -5117,6 +5194,20 @@
     "version": "1.0.0"
   },
   {
+    "name": "call-spark-01",
+    "tags": "call-spark-01",
+    "category": "communications",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "call-spark-02",
+    "tags": "call-spark-02",
+    "category": "communications",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "call-unlocked",
     "tags": "call-unlocked",
     "category": "communications",
@@ -5356,7 +5447,7 @@
   },
   {
     "name": "canvas",
-    "tags": "drawing board, art pad, painters panel, sketch space, design slate, creative surface, illustration area, visual canvas, artwork platform, graphical stage, image board, picture space, draft surface, canvas",
+    "tags": "drawing board, art pad, painter's panel, sketch space, design slate, creative surface, illustration area, visual canvas, artwork platform, graphical stage, image board, picture space, draft surface, canvas",
     "category": "education",
     "featured": false,
     "version": "1.0.0"
@@ -7357,6 +7448,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "code-simple",
+    "tags": "code-simple",
+    "category": "programming",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "code-square",
     "tags": "code-square",
     "category": "programming",
@@ -7568,7 +7666,7 @@
   },
   {
     "name": "comment-add-03",
-    "tags": "comment add-03",
+    "tags": "comment-add-03",
     "category": "communications",
     "featured": false,
     "version": "1.0.14"
@@ -7589,7 +7687,7 @@
   },
   {
     "name": "comment-block-03",
-    "tags": "comment block-03",
+    "tags": "comment-block-03",
     "category": "communications",
     "featured": false,
     "version": "1.0.14"
@@ -7610,7 +7708,7 @@
   },
   {
     "name": "comment-remove-03",
-    "tags": "comment remove-03",
+    "tags": "comment-remove-03",
     "category": "communications",
     "featured": false,
     "version": "1.0.14"
@@ -8960,6 +9058,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "database-expand",
+    "tags": "database-expand",
+    "category": "programming",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "database-export",
     "tags": "data stack, data center,",
     "category": "programming",
@@ -8972,6 +9077,13 @@
     "category": "programming",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "database-lightning",
+    "tags": "database-lightning",
+    "category": "programming",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "database-locked",
@@ -9926,6 +10038,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "download-06",
+    "tags": "download-06",
+    "category": "download-upload",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "download-circle-01",
     "tags": "Save, Get, Fetch, Export, Store, Receive, Transfer, Downlink, Downloaded, Download, Downloader, Download Circle, Circle Download",
     "category": "download-upload",
@@ -10183,6 +10302,13 @@
     "category": "logos",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "dropdown-field-type",
+    "tags": "dropdown-field-type",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "droplet",
@@ -10542,6 +10668,20 @@
     "version": "1.0.0"
   },
   {
+    "name": "engine",
+    "tags": "engine",
+    "category": "settings",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "engine-slash",
+    "tags": "engine-slash",
+    "category": "settings",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "entering-geo-fence",
     "tags": "Location boundary, Zone-egress-alert, Zone-egress-alert, Area, Arrival Alert, Zone Entry",
     "category": "maps",
@@ -10764,6 +10904,13 @@
     "category": "gym",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "expand-paragraph",
+    "tags": "expand-paragraph",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "external-drive",
@@ -11312,11 +11459,32 @@
     "version": "1.0.0"
   },
   {
+    "name": "filter-mail",
+    "tags": "filter-mail",
+    "category": "filter-sorting",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "filter-mail-circle",
     "tags": "filter, purifier, refine, filter round",
     "category": "filter-sorting",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "filter-mail-edit",
+    "tags": "filter-mail-edit",
+    "category": "filter-sorting",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "filter-mail-remove",
+    "tags": "filter-mail-remove",
+    "category": "filter-sorting",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "filter-mail-square",
@@ -11758,6 +11926,13 @@
     "category": "files-folders",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "folder-clock",
+    "tags": "folder-clock",
+    "category": "files-folders",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "folder-cloud",
@@ -13167,6 +13342,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "hashtag",
+    "tags": "hashtag",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "hat",
     "tags": "hat",
     "category": "clothing",
@@ -14390,6 +14572,41 @@
     "category": "emojis",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "input-cursor-text",
+    "tags": "input-cursor-text",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "input-long-text",
+    "tags": "input-long-text",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "input-numeric",
+    "tags": "input-numeric",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "input-short-text",
+    "tags": "input-short-text",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "input-text",
+    "tags": "input-text",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "insert-bottom-image",
@@ -17276,6 +17493,13 @@
     "version": "1.0.14"
   },
   {
+    "name": "meal-scan",
+    "tags": "meal-scan",
+    "category": "foods",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "medal-01",
     "tags": "Reward, award, badge,",
     "category": "award",
@@ -19985,6 +20209,34 @@
     "version": "1.0.0"
   },
   {
+    "name": "orientation-image-landscape-to-potrait",
+    "tags": "orientation-image-landscape-to-potrait",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "orientation-image-potrait-to-landscape",
+    "tags": "orientation-image-potrait-to-landscape",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "orientation-landscape-to-potrait",
+    "tags": "orientation-landscape-to-potrait",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "orientation-potrait-to-landscape",
+    "tags": "orientation-potrait-to-landscape",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "orthogonal-edge",
     "tags": "orthogonal-edge",
     "category": "editing",
@@ -22155,6 +22407,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "qr-code-scan",
+    "tags": "qr-code-scan",
+    "category": "business",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "question",
     "tags": "support,",
     "category": "business",
@@ -22582,6 +22841,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "reduce-paragraph",
+    "tags": "reduce-paragraph",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "reflex",
     "tags": "reflex, Instant, prompt",
     "category": "mathematics",
@@ -22594,6 +22860,13 @@
     "category": "editing",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "refresh-01",
+    "tags": "refresh-01",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "refrigerator",
@@ -22776,6 +23049,13 @@
     "category": "programming",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "repost",
+    "tags": "repost",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "reset-password",
@@ -23450,6 +23730,27 @@
     "version": "1.0.0"
   },
   {
+    "name": "rupee",
+    "tags": "rupee",
+    "category": "business",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "rupee-circle",
+    "tags": "rupee-circle",
+    "category": "business",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "rupee-square",
+    "tags": "rupee-square",
+    "category": "business",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "sad-01",
     "tags": "frowning face, unhappy icon, sorrow symbol, teary-eyed emoticon, gloomy face, downcast smiley, melancholic symbol, upset emoji, despondent icon",
     "category": "emojis",
@@ -23672,6 +23973,13 @@
     "category": "business",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "scan-image",
+    "tags": "scan-image",
+    "category": "ai",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "scheme",
@@ -25613,6 +25921,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "sort-descending",
+    "tags": "sort-descending",
+    "category": "filter-sorting",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "sorting-01",
     "tags": "sort, sort by, sorting",
     "category": "filter-sorting",
@@ -25830,6 +26145,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "split",
+    "tags": "split",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "spoon",
     "tags": "spoon",
     "category": "kitchen",
@@ -25887,7 +26209,7 @@
   },
   {
     "name": "square-arrow-data-transfer-horizontal",
-    "tags": "square-arrow-data-transfer-horizontal",
+    "tags": "chevron,",
     "category": "arrows",
     "featured": false,
     "version": "1.0.0"
@@ -25915,7 +26237,7 @@
   },
   {
     "name": "square-arrow-down-01",
-    "tags": "square-arrow-down-01",
+    "tags": "chevron,",
     "category": "arrows",
     "featured": false,
     "version": "1.0.0"
@@ -25978,7 +26300,7 @@
   },
   {
     "name": "square-arrow-left-01",
-    "tags": "square-arrow-left-01",
+    "tags": "chevron,",
     "category": "arrows",
     "featured": false,
     "version": "1.0.0"
@@ -26069,7 +26391,7 @@
   },
   {
     "name": "square-arrow-right-01",
-    "tags": "square-arrow-right-01",
+    "tags": "chevron,",
     "category": "arrows",
     "featured": false,
     "version": "1.0.0"
@@ -28644,6 +28966,27 @@
     "version": "1.0.0"
   },
   {
+    "name": "timeline",
+    "tags": "timeline",
+    "category": "date-time",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "timeline-event",
+    "tags": "timeline-event",
+    "category": "date-time",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
+    "name": "timeline-list",
+    "tags": "timeline-list",
+    "category": "date-time",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "time-management",
     "tags": "time-management",
     "category": "hierarchy",
@@ -29316,6 +29659,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "triangle-dash",
+    "tags": "triangle-dash",
+    "category": "editing",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "trolley-01",
     "tags": "trolley",
     "category": "e-commerce",
@@ -29820,6 +30170,13 @@
     "version": "1.0.0"
   },
   {
+    "name": "upload-06",
+    "tags": "upload-06",
+    "category": "download-upload",
+    "featured": false,
+    "version": "unknown"
+  },
+  {
     "name": "upload-circle-01",
     "tags": "Send File, Submit, Transfer, Load, Dispatch, Contribute, Upload Data, Transmit, Deliver, Import, Upload, Uploader, Upload Circle",
     "category": "download-upload",
@@ -30028,6 +30385,13 @@
     "category": "users",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "user-dollar",
+    "tags": "user-dollar",
+    "category": "users",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "user-edit-01",
@@ -31113,6 +31477,13 @@
     "category": "business",
     "featured": false,
     "version": "1.0.0"
+  },
+  {
+    "name": "weight",
+    "tags": "weight",
+    "category": "gym",
+    "featured": false,
+    "version": "unknown"
   },
   {
     "name": "weight-scale",
