@@ -338,7 +338,6 @@
 
   .carousel-track {
     display: flex;
-    // align-items: center;
     gap: var(--ep-carousel-gap);
     -ms-overflow-style: none;
     overflow-x: auto;

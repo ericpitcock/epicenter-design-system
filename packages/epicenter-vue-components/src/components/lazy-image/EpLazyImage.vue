@@ -166,7 +166,7 @@
   .ep-image__img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
     animation: fadeIn 0.4s ease-in-out forwards;
