@@ -10,71 +10,58 @@ import { paddedBg } from '../../../helpers/decorators.js'
 
 // Industry-standard colorblind-safe palettes
 const colorPalettes = {
-  epicenter: null, // Will be populated from YAML
-  okabeIto: [
-    '#E69F00', // Orange
-    '#56B4E9', // Sky Blue
-    '#009E73', // Bluish Green
-    '#F0E442', // Yellow
-    '#0072B2', // Blue
-    '#D55E00', // Vermillion
-    '#CC79A7', // Reddish Purple
-    '#000000', // Black
-    '#E69F00', // Repeat for 14 colors
-    '#56B4E9',
-    '#009E73',
-    '#F0E442',
-    '#0072B2',
-    '#D55E00'
-  ],
-  paulTolBright: [
-    '#4477AA', // Blue
-    '#EE6677', // Red
-    '#228833', // Green
-    '#CCBB44', // Yellow
-    '#66CCEE', // Cyan
-    '#AA3377', // Purple
-    '#BBBBBB', // Grey
-    '#4477AA', // Repeat for 14 colors
-    '#EE6677',
-    '#228833',
-    '#CCBB44',
-    '#66CCEE',
-    '#AA3377',
-    '#BBBBBB'
-  ],
-  paulTolMuted: [
-    '#332288', // Indigo
-    '#88CCEE', // Cyan
-    '#44AA99', // Teal
-    '#117733', // Green
-    '#999933', // Olive
-    '#DDCC77', // Sand
-    '#CC6677', // Rose
-    '#882255', // Wine
-    '#AA4499', // Purple
-    '#332288', // Repeat for 14 colors
-    '#88CCEE',
-    '#44AA99',
-    '#117733',
-    '#999933'
-  ],
-  paulTolVibrant: [
-    '#EE7733', // Orange
-    '#0077BB', // Blue
-    '#33BBEE', // Cyan
-    '#EE3377', // Magenta
-    '#CC3311', // Red
-    '#009988', // Teal
-    '#BBBBBB', // Grey
-    '#EE7733', // Repeat for 14 colors
-    '#0077BB',
-    '#33BBEE',
-    '#EE3377',
-    '#CC3311',
-    '#009988',
-    '#BBBBBB'
-  ]
+  epicenter: { colors: null, count: 14 }, // Will be populated from YAML
+  okabeIto: {
+    colors: [
+      '#E69F00', // Orange
+      '#56B4E9', // Sky Blue
+      '#009E73', // Bluish Green
+      '#F0E442', // Yellow
+      '#0072B2', // Blue
+      '#D55E00', // Vermillion
+      '#CC79A7', // Reddish Purple
+      '#000000'  // Black
+    ],
+    count: 8
+  },
+  paulTolBright: {
+    colors: [
+      '#4477AA', // Blue
+      '#EE6677', // Red
+      '#228833', // Green
+      '#CCBB44', // Yellow
+      '#66CCEE', // Cyan
+      '#AA3377', // Purple
+      '#BBBBBB'  // Grey
+    ],
+    count: 7
+  },
+  paulTolMuted: {
+    colors: [
+      '#332288', // Indigo
+      '#88CCEE', // Cyan
+      '#44AA99', // Teal
+      '#117733', // Green
+      '#999933', // Olive
+      '#DDCC77', // Sand
+      '#CC6677', // Rose
+      '#882255', // Wine
+      '#AA4499'  // Purple
+    ],
+    count: 9
+  },
+  paulTolVibrant: {
+    colors: [
+      '#EE7733', // Orange
+      '#0077BB', // Blue
+      '#33BBEE', // Cyan
+      '#EE3377', // Magenta
+      '#CC3311', // Red
+      '#009988', // Teal
+      '#BBBBBB'  // Grey
+    ],
+    count: 7
+  }
 }
 
 // Helper to convert hex to HSL
@@ -244,18 +231,25 @@ export const ChartPalette = (args) => ({
       return presetMap[args.preset] || null
     }
 
+    const getColorCount = () => {
+      const activePalette = getActivePalette()
+      return activePalette ? activePalette.count : 14
+    }
+
     const getColor = (index) => {
       const paddedIndex = index < 10 ? `0${index}` : index
       const activePalette = getActivePalette()
 
       // If a preset is selected, use hex colors directly
       if (activePalette) {
-        return activePalette[index]
+        return activePalette.colors[index]
       }
 
       // Otherwise use the custom HSL values from args
       return `hsl(${args[`hue${paddedIndex}`] + args.globalHue}, ${args[`saturation${paddedIndex}`] + args.globalSaturation}%, ${args[`lightness${paddedIndex}`] + args.globalLightness}%)`
     }
+
+    const colorCount = computed(() => getColorCount())
 
     const applyColorBlindness = (color, type) => {
       if (!type) return color
@@ -264,7 +258,8 @@ export const ChartPalette = (args) => ({
 
     const getStylesForVision = (visionType) => {
       const styles = {}
-      for (let i = 0; i < 14; i++) {
+      const count = getColorCount()
+      for (let i = 0; i < count; i++) {
         const paddedIndex = i < 10 ? `0${i}` : i
         const originalColor = getColor(i)
         const transformedColor = applyColorBlindness(originalColor, visionType)
@@ -275,7 +270,8 @@ export const ChartPalette = (args) => ({
 
     const styles = computed(() => {
       const result = {}
-      for (let i = 0; i < 14; i++) {
+      const count = getColorCount()
+      for (let i = 0; i < count; i++) {
         const paddedIndex = i < 10 ? `0${i}` : i
         result[`--chart-sequence-${paddedIndex}`] = getColor(i)
       }
@@ -295,7 +291,32 @@ export const ChartPalette = (args) => ({
       copy(styleString)
     }
 
-    return { args, styles, copyStylesToClipboard, visionTypes, getStylesForVision }
+    // Generate pie chart segments dynamically
+    const getPieSegments = (count) => {
+      const segments = []
+      const anglePerSegment = 360 / count
+
+      for (let i = 0; i < count; i++) {
+        const startAngle = i * anglePerSegment - 90 // Start from top
+        const endAngle = (i + 1) * anglePerSegment - 90
+
+        const x1 = 87.11 + 87.11 * Math.cos((startAngle * Math.PI) / 180)
+        const y1 = 87.06 + 87.06 * Math.sin((startAngle * Math.PI) / 180)
+        const x2 = 87.11 + 87.11 * Math.cos((endAngle * Math.PI) / 180)
+        const y2 = 87.06 + 87.06 * Math.sin((endAngle * Math.PI) / 180)
+
+        const largeArcFlag = anglePerSegment > 180 ? 1 : 0
+
+        segments.push({
+          index: i,
+          path: `M 87.11,87.06 L ${x1},${y1} A 87.11,87.06 0 ${largeArcFlag} 1 ${x2},${y2} Z`
+        })
+      }
+
+      return segments
+    }
+
+    return { args, styles, copyStylesToClipboard, visionTypes, getStylesForVision, colorCount, getPieSegments }
   },
   template: `
     <div :style="styles">
@@ -320,7 +341,7 @@ export const ChartPalette = (args) => ({
             <div style="display: flex; gap: 20px; align-items: center;">
               <div style="display: flex; flex-direction: column; flex-shrink: 0;">
                 <div
-                  v-for="(n, index) in 14"
+                  v-for="(n, index) in colorCount"
                   :key="index"
                   :style="{ 
                     height: '20px', 
@@ -333,25 +354,21 @@ export const ChartPalette = (args) => ({
               </div>
               
               <svg xmlns="http://www.w3.org/2000/svg" width="160px" height="160px" viewBox="0 0 174.22 174.12" style="flex-shrink: 0; flex: 2; height: 100%;">
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-13'] : 'var(--chart-sequence-13)' }" d="M87.12,87.06L79.54.33c2.49-.22,5.09-.33,7.59-.33v87.06Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-12'] : 'var(--chart-sequence-12)' }" d="M87.12,87.06L72.01,1.32c2.46-.43,5.04-.77,7.53-.99l7.59,86.73Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-11'] : 'var(--chart-sequence-11)' }" d="M87.12,87.06L58.78,4.74c4.77-1.64,8.25-2.54,13.23-3.42l15.12,85.74Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-10'] : 'var(--chart-sequence-10)' }" d="M87.12,87.06L44.92,10.92c4.42-2.45,9.09-4.53,13.86-6.17l28.34,82.32Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-09'] : 'var(--chart-sequence-09)' }" d="M87.12,87.06L27.75,23.39c5.52-5.15,10.57-8.81,17.17-12.47l42.21,76.15Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-08'] : 'var(--chart-sequence-08)' }" d="M87.12,87.06L10.25,46.19c4.74-8.92,10.11-15.91,17.5-22.8l59.38,63.67Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-07'] : 'var(--chart-sequence-07)' }" d="M87.12,87.06L1.13,73.44c1.58-9.97,4.38-18.34,9.12-27.25l76.87,40.87Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-06'] : 'var(--chart-sequence-06)' }" d="M87.12,87.06L3.03,109.6c-3.27-12.22-3.87-23.66-1.89-36.15l85.99,13.62Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-05'] : 'var(--chart-sequence-05)' }" d="M87.12,87.06l-52.4,69.53c-16.17-12.18-26.46-27.44-31.7-47l84.1-22.53Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-04'] : 'var(--chart-sequence-04)' }" d="M87.12,87.06v87.06c-20.24,0-36.23-5.35-52.4-17.53l52.4-69.53Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-03'] : 'var(--chart-sequence-03)' }" d="M87.12,87.06l53.6,68.61c-15.95,12.46-33.36,18.46-53.6,18.46v-87.06Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-02'] : 'var(--chart-sequence-02)' }" d="M87.12,87.06l86.85,6.07c-1.76,25.23-13.32,46.96-33.25,62.53l-53.6-68.61Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-01'] : 'var(--chart-sequence-01)' }" d="M87.12,87.06l63.67-59.38c17.25,18.5,24.94,40.22,23.18,65.45l-86.85-6.07Z"/>
-                <path :style="{ fill: vision.transform ? getStylesForVision(vision.transform)['--chart-sequence-00'] : 'var(--chart-sequence-00)' }" d="M87.12,87.06V0c25.29,0,46.42,9.19,63.67,27.69l-63.67,59.38Z"/>
+                <path 
+                  v-for="segment in getPieSegments(colorCount)"
+                  :key="segment.index"
+                  :d="segment.path"
+                  :style="{ 
+                    fill: vision.transform 
+                      ? getStylesForVision(vision.transform)['--chart-sequence-' + (segment.index < 10 ? '0' + segment.index : segment.index)]
+                      : 'var(--chart-sequence-' + (segment.index < 10 ? '0' + segment.index : segment.index) + ')'
+                  }" 
+                />
               </svg>
               
               <div style="display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 0;">
                 <ep-status-indicator 
-                  v-for="(n, index) in 14" 
+                  v-for="(n, index) in colorCount" 
                   :key="index"
                   :style="{ 
                     '--ep-status-indicator-dot-bg': vision.transform 
