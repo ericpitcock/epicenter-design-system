@@ -15,6 +15,9 @@
     "README.md"
   ],
   "scripts": {
+    "download": "python3 scripts/download_svgs.py",
+    "clean": "python3 scripts/clean_svgs.py",
+    "generate": "python3 scripts/generate_vue_components.py",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

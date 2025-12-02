@@ -9,3 +9,4 @@ packages/epicenter-vue-components/dist/
 # icons package
 packages/epicenter-icons/cleaned_svgs/
 packages/epicenter-icons/downloaded_svgs/
+packages/epicenter-icons/scripts/download_notes.txt
