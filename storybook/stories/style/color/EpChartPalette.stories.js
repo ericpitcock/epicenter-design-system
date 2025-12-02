@@ -8,6 +8,107 @@ import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.v
 import chartSeq from '../../../../packages/epicenter-styles/tokens/color/chart-sequence.yaml'
 import { paddedBg } from '../../../helpers/decorators.js'
 
+// Industry-standard colorblind-safe palettes
+const colorPalettes = {
+  epicenter: null, // Will be populated from YAML
+  okabeIto: [
+    '#E69F00', // Orange
+    '#56B4E9', // Sky Blue
+    '#009E73', // Bluish Green
+    '#F0E442', // Yellow
+    '#0072B2', // Blue
+    '#D55E00', // Vermillion
+    '#CC79A7', // Reddish Purple
+    '#000000', // Black
+    '#E69F00', // Repeat for 14 colors
+    '#56B4E9',
+    '#009E73',
+    '#F0E442',
+    '#0072B2',
+    '#D55E00'
+  ],
+  paulTolBright: [
+    '#4477AA', // Blue
+    '#EE6677', // Red
+    '#228833', // Green
+    '#CCBB44', // Yellow
+    '#66CCEE', // Cyan
+    '#AA3377', // Purple
+    '#BBBBBB', // Grey
+    '#4477AA', // Repeat for 14 colors
+    '#EE6677',
+    '#228833',
+    '#CCBB44',
+    '#66CCEE',
+    '#AA3377',
+    '#BBBBBB'
+  ],
+  paulTolMuted: [
+    '#332288', // Indigo
+    '#88CCEE', // Cyan
+    '#44AA99', // Teal
+    '#117733', // Green
+    '#999933', // Olive
+    '#DDCC77', // Sand
+    '#CC6677', // Rose
+    '#882255', // Wine
+    '#AA4499', // Purple
+    '#332288', // Repeat for 14 colors
+    '#88CCEE',
+    '#44AA99',
+    '#117733',
+    '#999933'
+  ],
+  paulTolVibrant: [
+    '#EE7733', // Orange
+    '#0077BB', // Blue
+    '#33BBEE', // Cyan
+    '#EE3377', // Magenta
+    '#CC3311', // Red
+    '#009988', // Teal
+    '#BBBBBB', // Grey
+    '#EE7733', // Repeat for 14 colors
+    '#0077BB',
+    '#33BBEE',
+    '#EE3377',
+    '#CC3311',
+    '#009988',
+    '#BBBBBB'
+  ]
+}
+
+// Helper to convert hex to HSL
+const hexToHSL = (hex) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  if (!result) return { h: 0, s: 0, l: 0 }
+
+  let r = parseInt(result[1], 16) / 255
+  let g = parseInt(result[2], 16) / 255
+  let b = parseInt(result[3], 16) / 255
+
+  const max = Math.max(r, g, b)
+  const min = Math.min(r, g, b)
+  let h, s, l = (max + min) / 2
+
+  if (max === min) {
+    h = s = 0
+  } else {
+    const d = max - min
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break
+      case g: h = ((b - r) / d + 2) / 6; break
+      case b: h = ((r - g) / d + 4) / 6; break
+    }
+  }
+
+  return {
+    h: Math.round(h * 360),
+    s: Math.round(s * 100),
+    l: Math.round(l * 100)
+  }
+}
+
 let data = {}
 
 for (const [key, value] of Object.entries(chartSeq)) {
@@ -75,6 +176,16 @@ export default {
   title: 'Style/Chart Palette',
   decorators: [paddedBg],
   argTypes: {
+    preset: {
+      name: 'Preset Palette',
+      control: {
+        type: 'select'
+      },
+      options: ['Epicenter (Default)', 'Okabe-Ito', 'Paul Tol Bright', 'Paul Tol Muted', 'Paul Tol Vibrant'],
+      table: {
+        category: 'Presets'
+      }
+    },
     globalHue: {
       name: 'Global Hue',
       control: {
@@ -122,8 +233,27 @@ export const ChartPalette = (args) => ({
       { key: 'achromatopsia', label: 'Achromatopsia (Monochromacy)', transform: 'achromatopsia' }
     ]
 
+    // Get the active palette based on preset selection
+    const getActivePalette = () => {
+      const presetMap = {
+        'Okabe-Ito': colorPalettes.okabeIto,
+        'Paul Tol Bright': colorPalettes.paulTolBright,
+        'Paul Tol Muted': colorPalettes.paulTolMuted,
+        'Paul Tol Vibrant': colorPalettes.paulTolVibrant
+      }
+      return presetMap[args.preset] || null
+    }
+
     const getColor = (index) => {
       const paddedIndex = index < 10 ? `0${index}` : index
+      const activePalette = getActivePalette()
+
+      // If a preset is selected, use hex colors directly
+      if (activePalette) {
+        return activePalette[index]
+      }
+
+      // Otherwise use the custom HSL values from args
       return `hsl(${args[`hue${paddedIndex}`] + args.globalHue}, ${args[`saturation${paddedIndex}`] + args.globalSaturation}%, ${args[`lightness${paddedIndex}`] + args.globalLightness}%)`
     }
 
@@ -143,22 +273,14 @@ export const ChartPalette = (args) => ({
       return styles
     }
 
-    const styles = computed(() => ({
-      '--chart-sequence-00': `hsl(${args.hue00 + args.globalHue}, ${args.saturation00 + args.globalSaturation}%, ${args.lightness00 + args.globalLightness}%)`,
-      '--chart-sequence-01': `hsl(${args.hue01 + args.globalHue}, ${args.saturation01 + args.globalSaturation}%, ${args.lightness01 + args.globalLightness}%)`,
-      '--chart-sequence-02': `hsl(${args.hue02 + args.globalHue}, ${args.saturation02 + args.globalSaturation}%, ${args.lightness02 + args.globalLightness}%)`,
-      '--chart-sequence-03': `hsl(${args.hue03 + args.globalHue}, ${args.saturation03 + args.globalSaturation}%, ${args.lightness03 + args.globalLightness}%)`,
-      '--chart-sequence-04': `hsl(${args.hue04 + args.globalHue}, ${args.saturation04 + args.globalSaturation}%, ${args.lightness04 + args.globalLightness}%)`,
-      '--chart-sequence-05': `hsl(${args.hue05 + args.globalHue}, ${args.saturation05 + args.globalSaturation}%, ${args.lightness05 + args.globalLightness}%)`,
-      '--chart-sequence-06': `hsl(${args.hue06 + args.globalHue}, ${args.saturation06 + args.globalSaturation}%, ${args.lightness06 + args.globalLightness}%)`,
-      '--chart-sequence-07': `hsl(${args.hue07 + args.globalHue}, ${args.saturation07 + args.globalSaturation}%, ${args.lightness07 + args.globalLightness}%)`,
-      '--chart-sequence-08': `hsl(${args.hue08 + args.globalHue}, ${args.saturation08 + args.globalSaturation}%, ${args.lightness08 + args.globalLightness}%)`,
-      '--chart-sequence-09': `hsl(${args.hue09 + args.globalHue}, ${args.saturation09 + args.globalSaturation}%, ${args.lightness09 + args.globalLightness}%)`,
-      '--chart-sequence-10': `hsl(${args.hue10 + args.globalHue}, ${args.saturation10 + args.globalSaturation}%, ${args.lightness10 + args.globalLightness}%)`,
-      '--chart-sequence-11': `hsl(${args.hue11 + args.globalHue}, ${args.saturation11 + args.globalSaturation}%, ${args.lightness11 + args.globalLightness}%)`,
-      '--chart-sequence-12': `hsl(${args.hue12 + args.globalHue}, ${args.saturation12 + args.globalSaturation}%, ${args.lightness12 + args.globalLightness}%)`,
-      '--chart-sequence-13': `hsl(${args.hue13 + args.globalHue}, ${args.saturation13 + args.globalSaturation}%, ${args.lightness13 + args.globalLightness}%)`,
-    }))
+    const styles = computed(() => {
+      const result = {}
+      for (let i = 0; i < 14; i++) {
+        const paddedIndex = i < 10 ? `0${i}` : i
+        result[`--chart-sequence-${paddedIndex}`] = getColor(i)
+      }
+      return result
+    })
 
     const source = ref('')
     const {
@@ -178,9 +300,14 @@ export const ChartPalette = (args) => ({
   template: `
     <div :style="styles">
       <div style="display: flex; flex-direction: column; gap: 20px;">
-        <ep-button class="ep-button-var--primary" @click="copyStylesToClipboard">
-          Copy styles
-        </ep-button>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <ep-button class="ep-button-var--primary" @click="copyStylesToClipboard">
+            Copy styles
+          </ep-button>
+          <div style="font-size: 14px; color: var(--text-secondary);">
+            Active Palette: <strong>{{ args.preset }}</strong>
+          </div>
+        </div>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px;">
           <div 
@@ -247,6 +374,7 @@ export const ChartPalette = (args) => ({
 })
 
 ChartPalette.args = {
+  preset: 'Epicenter (Default)',
   globalHue: 0,
   globalSaturation: 0,
   globalLightness: 0,
