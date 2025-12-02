@@ -1,6 +1,6 @@
 import { useClipboard } from '@vueuse/core'
 import blinder from 'color-blind'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
 import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.vue'
@@ -238,14 +238,8 @@ export const ChartPalette = (args) => ({
 
     const getColor = (index) => {
       const paddedIndex = index < 10 ? `0${index}` : index
-      const activePalette = getActivePalette()
 
-      // If a preset is selected, use hex colors directly
-      if (activePalette) {
-        return activePalette.colors[index]
-      }
-
-      // Otherwise use the custom HSL values from args
+      // Always use the HSL values from args (which are populated from presets via watch)
       return `hsl(${args[`hue${paddedIndex}`] + args.globalHue}, ${args[`saturation${paddedIndex}`] + args.globalSaturation}%, ${args[`lightness${paddedIndex}`] + args.globalLightness}%)`
     }
 
@@ -315,6 +309,38 @@ export const ChartPalette = (args) => ({
 
       return segments
     }
+
+    // Watch for preset changes and update args directly
+    watch(() => args.preset, (newPreset, oldPreset) => {
+      // Only update if preset actually changed (not initial load)
+      if (oldPreset && newPreset !== oldPreset) {
+        const activePalette = getActivePalette()
+
+        if (activePalette) {
+          // Convert preset hex colors to HSL and update args directly
+          for (let i = 0; i < 14; i++) {
+            const paddedIndex = i < 10 ? `0${i}` : i
+
+            if (i < activePalette.count) {
+              const hsl = hexToHSL(activePalette.colors[i])
+              args[`hue${paddedIndex}`] = hsl.h
+              args[`saturation${paddedIndex}`] = hsl.s
+              args[`lightness${paddedIndex}`] = hsl.l
+            } else {
+              // Set unused colors to transparent/neutral
+              args[`hue${paddedIndex}`] = 0
+              args[`saturation${paddedIndex}`] = 0
+              args[`lightness${paddedIndex}`] = 0
+            }
+          }
+
+          // Reset global adjustments
+          args.globalHue = 0
+          args.globalSaturation = 0
+          args.globalLightness = 0
+        }
+      }
+    })
 
     return { args, styles, copyStylesToClipboard, visionTypes, getStylesForVision, colorCount, getPieSegments }
   },
