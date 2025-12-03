@@ -8,7 +8,7 @@
       class="ep-multi-search__icon"
       :style="iconStyles"
     >
-      icon
+      <Search01 />
     </div>
     <div class="queries">
       <div
@@ -18,7 +18,7 @@
         @click="onQueryClose(item, index)"
       >
         <span class="query__text font-size--small">{{ item }}</span>
-        close icon
+        <Cancel01 />
       </div>
     </div>
     <input
@@ -40,12 +40,14 @@
       :style="iconStyles"
       @click="onClear"
     >
-      close icon
+      <Cancel01 />
     </div>
   </div>
 </template>
 
 <script setup>
+  import Cancel01 from '@ericpitcock/epicenter-icons/icons/Cancel01'
+  import Search01 from '@ericpitcock/epicenter-icons/icons/Search01'
   import { computed, ref, watch } from 'vue'
 
   defineOptions({

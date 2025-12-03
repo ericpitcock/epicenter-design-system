@@ -1,9 +1,14 @@
+import ArrowDown01 from '@ericpitcock/epicenter-icons/icons/ArrowDown01'
+import Refresh01 from '@ericpitcock/epicenter-icons/icons/Refresh01'
 import { onMounted, ref } from 'vue'
 
+import EpButton from '@/components/button/EpButton.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
+import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpLoadingState from '@/components/loading-state/EpLoadingState.vue'
-import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
+import EpMenu from '@/components/menu/EpMenu.vue'
+import EpMenuItem from '@/components/menu/EpMenuItem.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableHead from '@/components/table/EpTableHead.vue'
 import useExclude from '@/components/table/useExclude.js'
@@ -27,53 +32,34 @@ export default {
 
 export const LoadingState = args => ({
   components: {
+    ArrowDown01,
+    EpButton,
     EpContainer,
+    EpDropdown,
     EpHeader,
-    EpSplitButton,
+    EpMenu,
+    EpMenuItem,
     EpTable,
     EpTableHead,
     EpLoadingState,
+    Refresh01,
   },
   setup() {
     const loading = ref(true)
     const messages = ref(null)
     const tableData = ref(fakeTableData(30))
     const columnsRef = ref(columns)
+    const openState = ref(false)
 
     const {
       includedColumns,
       includedData
     } = useExclude(columnsRef, tableData, ['id'])
 
-    const splitButtonProps = {
-      buttonProps: {
-        label: 'Refresh',
-        iconLeft: { name: 'refresh' },
-        class: 'ep-button-var--primary',
-      },
-      dropdownProps: {
-        buttonProps: {
-          label: '',
-          ariaLabel: 'Refresh',
-          class: 'ep-button-var--primary',
-        },
-        menuClass: 'ep-menu-default',
-        menuItems: [
-          {
-            label: 'Clear & Fetch',
-            onClick: () => {
-              refresh('clearAndFetch')
-            }
-          },
-          {
-            label: 'Destroy & Fetch',
-            onClick: () => {
-              refresh('destroyAndFetch')
-            }
-          }
-        ]
-      }
-    }
+    const menuItems = [
+      { type: 'item', label: 'Clear & Fetch' },
+      { type: 'item', label: 'Destroy & Fetch' }
+    ]
 
     const refreshStates = {
       refresh: [
@@ -94,6 +80,15 @@ export const LoadingState = args => ({
       messages.value = refreshStates[state]
       loading.value = true
       cycleMessages()
+      openState.value = false
+    }
+
+    const onMenuSelect = (item) => {
+      if (item.label === 'Clear & Fetch') {
+        refresh('clearAndFetch')
+      } else if (item.label === 'Destroy & Fetch') {
+        refresh('destroyAndFetch')
+      }
     }
 
     const done = () => {
@@ -141,8 +136,10 @@ export const LoadingState = args => ({
       messages,
       includedColumns,
       includedData,
-      splitButtonProps,
       currentMessage,
+      openState,
+      menuItems,
+      onMenuSelect,
     }
   },
   template: `
@@ -153,10 +150,47 @@ export const LoadingState = args => ({
       <template #header>
       <ep-header :style="{ '--ep-header-container-overflow': 'visible' }">
         <template #left>
-          <ep-split-button
-            v-bind="splitButtonProps"
-            @button-click="refresh('refresh')"
-          />
+          <div class="ep-split-button">
+            <ep-button
+              class="ep-button-var--primary"
+              @click="refresh('refresh')"
+            >
+              <template #icon-left>
+                <Refresh01 />
+              </template>
+              Refresh
+            </ep-button>
+            <ep-dropdown v-model:open="openState">
+              <template #trigger="{ attrs, on }">
+                <ep-button
+                  v-bind="attrs"
+                  v-on="on"
+                  class="ep-button-var--primary"
+                >
+                  <template #icon-left>
+                    <ArrowDown01 />
+                  </template>
+                </ep-button>
+              </template>
+
+              <template #content="{ close }">
+                <ep-menu>
+                  <template v-for="(item, index) in menuItems" :key="index">
+                    <ep-menu-item :type="item.type">
+                      <ep-button
+                        v-if="item.type === 'item'"
+                        class="ep-button--menu-item"
+                        @click="() => { onMenuSelect(item); close() }"
+                      >
+                        {{ item.label }}
+                      </ep-button>
+                      <template v-else>{{ item.label }}</template>
+                    </ep-menu-item>
+                  </template>
+                </ep-menu>
+              </template>
+            </ep-dropdown>
+          </div>
         </template>
         <template #right>
         </template>

@@ -1,10 +1,22 @@
 <template>
   <div class="ep-enrichment-dropdown">
     <ep-dropdown
-      :button-props="buttonProps"
       v-bind="$attrs"
       @close="showPreview = false"
     >
+      <template #trigger="{ attrs, on }">
+        <ep-button
+          size="large"
+          class="ep-button-var--ghost"
+          v-bind="attrs"
+          v-on="on"
+        >
+          {{ label }}
+          <template #icon-right>
+            <Asterisk02 class="lookup-asterisk" />
+          </template>
+        </ep-button>
+      </template>
       <template #content>
         <div class="ep-enrichment-content">
           <ep-menu class="ep-menu-subtle">
@@ -41,7 +53,7 @@
                 <ep-button>
                   Source
                   <template #icon-right>
-                    arrow up right icon
+                    <ArrowUpRight01 class="source-button-icon" />
                   </template>
                 </ep-button>
               </ep-flex>
@@ -54,7 +66,9 @@
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue'
+  import ArrowUpRight01 from '@ericpitcock/epicenter-icons/icons/ArrowUpRight01'
+  import Asterisk02 from '@ericpitcock/epicenter-icons/icons/Asterisk02'
+  import { ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
   import EpDropdown from '../dropdown/EpDropdown.vue'
@@ -82,22 +96,6 @@
   const hoveredItem = ref(null)
   const loading = ref(false)
   const showPreview = ref(false)
-
-  const buttonProps = computed(() => {
-    return {
-      label: props.label,
-      size: 'large',
-      iconLeft: {
-        name: 'f-download-cloud',
-        style: {
-          '--ep-icon-color': 'var(--primary-color-base)'
-        }
-      },
-      iconRight: undefined,
-      class: 'ep-button-var--ghost'
-    }
-  })
-
   const hasBeenHovered = []
 
   const onHover = (item) => {
@@ -139,5 +137,21 @@
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow--dropdown);
     z-index: var(--z-index--dropdown);
+  }
+
+  .lookup-asterisk {
+    --ep-icon-width: 1.5rem;
+    --ep-icon-height: 1.5rem;
+    --ep-icon-stroke-width: 2px;
+    color: var(--primary-color-up-5-200);
+    position: relative;
+    top: -5px;
+    left: -8px;
+  }
+
+  .source-button-icon {
+    --ep-icon-width: 1.4rem;
+    --ep-icon-height: 1.4rem;
+    --ep-icon-stroke-width: 2px;
   }
 </style>

@@ -44,10 +44,10 @@ export const IconBrowser = {
     template: '<IconBrowserComponent v-bind="args" />',
   }),
   args: {
-    size: 48,
+    size: 32,
     color: '#a57cedff',
     strokeWidth: 1,
     showProblematicOnly: false,
-    hideProblematic: true,
+    hideProblematic: false,
   },
 }

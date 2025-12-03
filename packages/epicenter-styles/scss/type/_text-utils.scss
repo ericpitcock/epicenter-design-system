@@ -1,36 +1,5 @@
 @use '../mixins/_mixins' as *;
 
-.text--copyable {
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-
-  @include hover {
-    &:hover {
-      background-color: var(--text-color--highlight);
-      outline: 2px solid var(--text-color--highlight);
-
-      &::before {
-        content: 'Click to copy';
-        position: absolute;
-        bottom: calc(100% + 5px);
-        margin-left: -2px;
-        background-color: var(--interface-overlay);
-        border: 1px solid var(--border-color--lighter);
-        color: var(--text-color);
-        font-size: var(--font-size--tiny);
-        text-align: center;
-        pointer-events: none;
-        white-space: nowrap;
-        padding: 5px;
-        border-radius: 3px;
-        z-index: var(--z-index--tooltip);
-        box-shadow: var(--drop-shadow);
-      }
-    }
-  }
-}
-
 .text--overflow-hidden {
   overflow: hidden;
   text-overflow: ellipsis;

@@ -1,9 +1,9 @@
-import Activity from '@ericpitcock/epicenter-icons/icons/Activity01'
 import Dashboard from '@ericpitcock/epicenter-icons/icons/Analytics01'
 import ArrowRight01 from '@ericpitcock/epicenter-icons/icons/ArrowRight01'
 import ArrowUpRight from '@ericpitcock/epicenter-icons/icons/ArrowUpRight03'
-import MapPin from '@ericpitcock/epicenter-icons/icons/Location03'
-import MenuIcon from '@ericpitcock/epicenter-icons/icons/Menu01'
+import GoogleMaps from '@ericpitcock/epicenter-icons/icons/GoogleMaps'
+import Radar01 from '@ericpitcock/epicenter-icons/icons/Radar01'
+import Settings04 from '@ericpitcock/epicenter-icons/icons/Settings04'
 
 import EpButton from '@/components/button/EpButton.vue'
 import EpMenu from '@/components/menu/EpMenu.vue'
@@ -38,12 +38,12 @@ export const Menu = args => ({
     EpMenu,
     EpMenuItem,
     EpButton,
-    Activity,
+    Radar01,
     ArrowRight01,
     ArrowUpRight,
     Dashboard,
-    MapPin,
-    MenuIcon
+    GoogleMaps,
+    Settings04
   },
   setup() {
     const menuItems = [
@@ -60,22 +60,22 @@ export const Menu = args => ({
       {
         type: 'item',
         label: 'Google Maps',
-        iconLeft: MapPin,
+        iconLeft: GoogleMaps,
         iconRight: ArrowUpRight,
-        iconRightStyle: { '--ep-icon-height': '1.4rem', '--ep-icon-stroke-width': 0.8 },
+        iconRightStyle: { '--ep-icon-height': '1.2rem', '--ep-icon-stroke-width': 1.5 },
         href: 'https://www.google.com/maps',
         onClick: () => console.log('clicked Google Maps')
       },
       {
         type: 'item',
         label: 'Track Event',
-        iconLeft: Activity,
+        iconLeft: Radar01,
         onClick: () => console.log('clicked Track Event')
       },
       {
         type: 'item',
         label: 'More Options',
-        iconLeft: MenuIcon,
+        iconLeft: Settings04,
         iconLeftStyle: { '--ep-icon-stroke-width': 1.5 },
         iconRight: ArrowRight01,
         submenu: [

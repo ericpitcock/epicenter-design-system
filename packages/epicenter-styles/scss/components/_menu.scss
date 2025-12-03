@@ -58,6 +58,14 @@
       color: var(--ep-button-menu-item-selected-text-color);
       cursor: default;
     }
+
+    // sub menu arrow icon
+    .ep-button__icon--right > svg {
+      --ep-icon-width: 1.2em;
+      --ep-icon-height: 1.2em;
+      position: relative;
+      left: 1rem;
+    }
   }
 
   &__sub-menu {

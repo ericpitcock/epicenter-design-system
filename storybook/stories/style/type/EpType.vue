@@ -26,7 +26,9 @@
           <ep-button
             label="Google Fonts"
             href="https://fonts.google.com/specimen/Inter"
-          />
+          >
+            Google Fonts
+          </ep-button>
         </template>
       </ep-header>
     </template>

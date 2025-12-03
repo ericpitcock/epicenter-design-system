@@ -3,6 +3,9 @@
     v-bind="stylerProps"
     @click="onClear"
   >
+    <template #icon-left>
+      <slot name="icon-left" />
+    </template>
     <input
       :id="computedId"
       ref="input"
@@ -20,6 +23,9 @@
       @keydown="onKeyDown"
       @keydown.esc="onEsc"
     >
+    <template #icon-right>
+      <slot name="icon-right" />
+    </template>
   </ep-input-styler>
 </template>
 

@@ -376,6 +376,7 @@
 
   .carousel-item {
     flex: 0 0 auto;
+    align-self: center;
     cursor: pointer;
     outline: none;
     scroll-snap-align: center;

@@ -78,7 +78,6 @@
     return {
       size: 'default',
       placeholder: 'Search…',
-      iconLeft: { name: 'search' },
       clearable: true,
       ...props.inputProps,
     }
