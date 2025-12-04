@@ -7,6 +7,7 @@ import EpBreadcrumbs from './breadcrumbs/EpBreadcrumbs.vue'
 import EpBrowserFrame from './browser-frame/EpBrowserFrame.vue'
 import EpButton from './button/EpButton.vue'
 import EpButtonGroup from './button-group/EpButtonGroup.vue'
+import EpCarousel from './carousel/EpCarousel.vue'
 import EpChart from './charts/EpChart.vue'
 import EpDonutChart from './charts/EpDonutChart.vue'
 import EpCheckbox from './checkbox/EpCheckbox.vue'
@@ -21,16 +22,17 @@ import EpFlex from './flexbox/EpFlex.vue'
 import EpFlexContainer from './flexbox/EpFlexContainer.vue'
 import EpFooter from './footer/EpFooter.vue'
 import EpHeader from './header/EpHeader.vue'
-import EpIcon from './icon/EpIcon.vue'
 import EpImage from './image/EpImage.vue'
 import EpInput from './input/EpInput.vue'
 import EpInputStyler from './input-styler/EpInputStyler.vue'
 import EpItemCount from './item-count/EpItemCount.vue'
 import EpKeyValueTable from './key-value-table/EpKeyValueTable.vue'
+import EpLazyImage from './lazy-image/EpLazyImage.vue'
 import EpLoadingState from './loading-state/EpLoadingState.vue'
 import EpicenterLogo from './logo/EpicenterLogo.vue'
 import EpMap from './map/EpMap.vue'
 import EpMenu from './menu/EpMenu.vue'
+import EpMenuItem from './menu/EpMenuItem.vue'
 import EpNotification from './notification/EpNotification.vue'
 import EpNotifications from './notification/EpNotifications.vue'
 import EpOverlay from './overlays/EpOverlay.vue'
@@ -70,6 +72,7 @@ export {
   EpBrowserFrame,
   EpButton,
   EpButtonGroup,
+  EpCarousel,
   EpChart,
   EpDonutChart,
   EpCheckbox,
@@ -84,16 +87,17 @@ export {
   EpFlexContainer,
   EpFooter,
   EpHeader,
-  EpIcon,
   EpImage,
   EpInput,
   EpInputStyler,
   EpItemCount,
   EpKeyValueTable,
+  EpLazyImage,
   EpLoadingState,
   EpicenterLogo,
   EpMap,
   EpMenu,
+  EpMenuItem,
   EpNotification,
   EpNotifications,
   EpOverlay,
@@ -134,6 +138,7 @@ export default {
   EpBrowserFrame,
   EpButton,
   EpButtonGroup,
+  EpCarousel,
   EpChart,
   EpDonutChart,
   EpCheckbox,
@@ -148,16 +153,17 @@ export default {
   EpFlexContainer,
   EpFooter,
   EpHeader,
-  EpIcon,
   EpImage,
   EpInput,
   EpInputStyler,
   EpItemCount,
   EpKeyValueTable,
+  EpLazyImage,
   EpLoadingState,
   EpicenterLogo,
   EpMap,
   EpMenu,
+  EpMenuItem,
   EpNotification,
   EpNotifications,
   EpOverlay,

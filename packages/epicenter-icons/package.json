@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Epicenter Icons, A comprehensive Vue 3 icon library",
   "exports": {
+    "./base.scss": "./base.scss",
     "./icons/*": {
       "import": "./epicenter-icons/*.js",
       "require": "./epicenter-icons/*.js"

@@ -17,6 +17,7 @@
             class="search-input"
             :class="{ 'search-input--active': search }"
             size="xlarge"
+            clearable
             @input="onSearchChange"
           />
         </ep-flex>

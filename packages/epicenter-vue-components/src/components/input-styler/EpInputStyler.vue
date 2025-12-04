@@ -1,6 +1,7 @@
 <template>
-  <div class="input-styler__container">
+  <div class="ep-input-styler__container">
     <label
+      v-if="label"
       class="ep-input-styler__label"
       :for="id"
     >
@@ -27,8 +28,7 @@
           v-if="$slots['icon-right']"
           :class="[
             'ep-input-styler__icon-right',
-            `ep-input-styler__icon-right--${size}`,
-            { 'ep-input-styler__icon-right--clickable': iconRightClickable }
+            `ep-input-styler__icon-right--${size}`
           ]"
         >
           <slot name="icon-right" />
