@@ -106,6 +106,7 @@ This component does not use events, slots.
   display: inline-flex;
   align-items: center;
   gap: 1rem;
+  width: fit-content;
   cursor: pointer;
 
   &__dot {

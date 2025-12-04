@@ -60,11 +60,16 @@ This component does not use slots.
       v-bind="computedInputProps"
       ref="datePickerInput"
       v-model="value"
-    />
+    >
+      <template #icon-left>
+        <Calendar01 />
+      </template>
+    </ep-input>
   </div>
 </template>
 
 <script setup>
+  import Calendar01 from '@ericpitcock/epicenter-icons/icons/Calendar01'
   import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
   import EpInput from '../input/EpInput.vue'

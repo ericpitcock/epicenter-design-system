@@ -53,7 +53,7 @@ This component does not use slots.
       class="ep-multi-search__icon"
       :style="iconStyles"
     >
-      <ep-icon v-bind="icon" />
+      <Search01 />
     </div>
     <div class="queries">
       <div
@@ -63,11 +63,7 @@ This component does not use slots.
         @click="onQueryClose(item, index)"
       >
         <span class="query__text font-size--small">{{ item }}</span>
-        <ep-icon
-          name="close"
-          :style="{ '--ep-icon-width': '16px', '--ep-icon-stroke-width': 2 }"
-          class="query__close"
-        />
+        <Cancel01 />
       </div>
     </div>
     <input
@@ -89,18 +85,15 @@ This component does not use slots.
       :style="iconStyles"
       @click="onClear"
     >
-      <ep-icon
-        name="close"
-        :style="{ '--ep-icon-width': '24px' }"
-      />
+      <Cancel01 />
     </div>
   </div>
 </template>
 
 <script setup>
+  import Cancel01 from '@ericpitcock/epicenter-icons/icons/Cancel01'
+  import Search01 from '@ericpitcock/epicenter-icons/icons/Search01'
   import { computed, ref, watch } from 'vue'
-
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpMultiSearch',

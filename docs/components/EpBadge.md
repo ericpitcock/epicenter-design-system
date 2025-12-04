@@ -5,11 +5,16 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `label` | The label to display in the badge. | `string` | `'Badge'` |
+| `label` | The label to display in the badge. | `string` | `''` |
+
+## Slots
+| Name | Description |
+|------|-------------|
+| `default` | No description available. |
 
 
 ::: info
-This component does not use events, slots.
+This component does not use events.
 :::
 
 ## Component Code
@@ -17,7 +22,7 @@ This component does not use events, slots.
 ```vue
 <template>
   <div class="ep-badge">
-    {{ label }}
+    <slot>{{ label }}</slot>
   </div>
 </template>
 
@@ -26,13 +31,13 @@ This component does not use events, slots.
     name: 'EpBadge'
   })
 
-  const props = defineProps({
+  defineProps({
     /**
      * The label to display in the badge.
      */
     label: {
       type: String,
-      default: 'Badge'
+      default: '',
     },
   })
 </script>

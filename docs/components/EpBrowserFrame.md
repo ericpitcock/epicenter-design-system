@@ -40,12 +40,7 @@ This component does not use events, slots.
         </div>
       </template>
       <template #right>
-        <ep-icon
-          name="user"
-          :style="{
-            '--ep-icon-width': '2rem',
-          }"
-        />
+        <UserCircle02 />
       </template>
     </ep-header>
     <div class="image-container">
@@ -58,8 +53,9 @@ This component does not use events, slots.
 </template>
 
 <script setup>
+  import UserCircle02 from '@ericpitcock/epicenter-icons/icons/UserCircle02'
+
   import EpHeader from '../header/EpHeader.vue'
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpBrowserFrame'

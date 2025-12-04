@@ -104,7 +104,6 @@ This component does not use slots.
     return {
       size: 'default',
       placeholder: 'Search…',
-      iconLeft: { name: 'search' },
       clearable: true,
       ...props.inputProps,
     }

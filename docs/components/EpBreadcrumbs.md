@@ -65,7 +65,7 @@ This component does not use events.
           </template>
           <template v-else>
             <span class="ep-breadcrumbs__separator--default">
-              <ep-icon name="chevron-right" />
+              chevron_right
             </span>
           </template>
         </span>
@@ -77,8 +77,6 @@ This component does not use events.
 <script setup>
   import { computed } from 'vue'
   import { useRoute } from 'vue-router'
-
-  import EpIcon from '../icon/EpIcon.vue'
 
   const props = defineProps({
     items: {
@@ -131,13 +129,6 @@ This component does not use events.
 
     &__separator {
       padding-inline: 0.5em;
-
-      .ep-icon {
-        --ep-icon-width: 1.4em;
-        position: relative;
-        top: 0.1rem;
-        left: 0.1rem;
-      }
     }
   }
 </style>

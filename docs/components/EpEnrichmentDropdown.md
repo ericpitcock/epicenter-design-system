@@ -25,17 +25,36 @@ This component does not use events.
 <template>
   <div class="ep-enrichment-dropdown">
     <ep-dropdown
-      :button-props="buttonProps"
       v-bind="$attrs"
       @close="showPreview = false"
     >
+      <template #trigger="{ attrs, on }">
+        <ep-button
+          size="large"
+          class="ep-button-var--ghost"
+          v-bind="attrs"
+          v-on="on"
+        >
+          {{ label }}
+          <template #icon-right>
+            <Asterisk02 class="lookup-asterisk" />
+          </template>
+        </ep-button>
+      </template>
       <template #content>
         <div class="ep-enrichment-content">
-          <ep-menu
-            class="ep-menu-subtle"
-            :menu-items="enrichmentOptions"
-            @mouseover="onHover"
-          />
+          <ep-menu class="ep-menu-subtle">
+            <ep-menu-item
+              v-for="(option, index) in enrichmentOptions"
+              :key="index"
+              type="item"
+              @mouseover="onHover(option)"
+            >
+              <ep-button class="ep-button--menu-item">
+                {{ option.label }}
+              </ep-button>
+            </ep-menu-item>
+          </ep-menu>
           <div
             v-if="showPreview"
             class="enrichment-preview"
@@ -58,14 +77,7 @@ This component does not use events.
                 <ep-button>
                   Source
                   <template #icon-right>
-                    <ep-icon
-                      name="f-arrow-up-right"
-                      style="
-                        --ep-icon-width: 1.4rem;
-                        --ep-icon-height: 1.4rem;
-                        --ep-icon-stroke-width: 2;
-                      "
-                    />
+                    <ArrowUpRight01 class="source-button-icon" />
                   </template>
                 </ep-button>
               </ep-flex>
@@ -78,15 +90,17 @@ This component does not use events.
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue'
+  import ArrowUpRight01 from '@ericpitcock/epicenter-icons/icons/ArrowUpRight01'
+  import Asterisk02 from '@ericpitcock/epicenter-icons/icons/Asterisk02'
+  import { ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
   import EpDropdown from '../dropdown/EpDropdown.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
-  import EpIcon from '../icon/EpIcon.vue'
   import EpKeyValueTable from '../key-value-table/EpKeyValueTable.vue'
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpMenu from '../menu/EpMenu.vue'
+  import EpMenuItem from '../menu/EpMenuItem.vue'
 
   const props = defineProps({
     label: {
@@ -106,22 +120,6 @@ This component does not use events.
   const hoveredItem = ref(null)
   const loading = ref(false)
   const showPreview = ref(false)
-
-  const buttonProps = computed(() => {
-    return {
-      label: props.label,
-      size: 'large',
-      iconLeft: {
-        name: 'f-download-cloud',
-        style: {
-          '--ep-icon-color': 'var(--primary-color-base)'
-        }
-      },
-      iconRight: undefined,
-      class: 'ep-button-var--ghost'
-    }
-  })
-
   const hasBeenHovered = []
 
   const onHover = (item) => {
@@ -163,6 +161,22 @@ This component does not use events.
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow--dropdown);
     z-index: var(--z-index--dropdown);
+  }
+
+  .lookup-asterisk {
+    --ep-icon-width: 1.5rem;
+    --ep-icon-height: 1.5rem;
+    --ep-icon-stroke-width: 2px;
+    color: var(--primary-color-up-5-200);
+    position: relative;
+    top: -5px;
+    left: -8px;
+  }
+
+  .source-button-icon {
+    --ep-icon-width: 1.4rem;
+    --ep-icon-height: 1.4rem;
+    --ep-icon-stroke-width: 2px;
   }
 </style>
 

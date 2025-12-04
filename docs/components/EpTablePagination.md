@@ -37,7 +37,7 @@ This component does not use slots.
           @click="prevPage"
         >
           <template #icon-left>
-            <ep-icon name="chevron-left" />
+            chevron left icon
           </template>
         </ep-button>
         <template v-if="showPages">
@@ -74,7 +74,7 @@ This component does not use slots.
           @click="nextPage"
         >
           <template #icon-right>
-            <ep-icon name="chevron-right" />
+            chevron right icon
           </template>
         </ep-button>
       </template>
@@ -100,7 +100,6 @@ This component does not use slots.
   import EpButton from '../button/EpButton.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
   import EpFooter from '../footer/EpFooter.vue'
-  import EpIcon from '../icon/EpIcon.vue'
   import EpSelect from '../select/EpSelect.vue'
 
   defineOptions({

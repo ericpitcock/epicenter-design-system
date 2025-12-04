@@ -26,7 +26,7 @@ This component does not use slots.
     @click="toggleTheme"
   >
     <template #icon-left>
-      <ep-icon :name="buttonIcon" />
+      theme icon
     </template>
   </ep-button>
 </template>
@@ -35,7 +35,6 @@ This component does not use slots.
   import { computed } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpThemeToggle'

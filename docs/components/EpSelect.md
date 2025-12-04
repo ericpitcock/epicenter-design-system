@@ -9,17 +9,10 @@
 | `autofocus` | - | `boolean` | `false` |
 | `readonly` | - | `boolean` | `false` |
 | `required` | - | `boolean` | `false` |
-| `width` | - | `string` | `'100%'` |
-| `iconLeft` | - | `object` | `null` |
 | `selectId` | - | `string` | `-` |
 | `size` | - | `string` | `'default'` |
 | `options` | - | `array` | `-` |
 | `placeholder` | - | `string` | `'Select an option'` |
-| `borderWidth` | - | `string` | `'0.1rem'` |
-| `borderStyle` | - | `string` | `'solid'` |
-| `borderColor` | - | `string` | `'var(--border-color)'` |
-| `borderRadius` | - | `string` | `'var(--border-radius)'` |
-| `backgroundColor` | - | `string` | `'var(--interface-foreground)'` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -28,21 +21,23 @@
 | `blur` | - | - |
 | `focus` | - | - |
 
-
-::: info
-This component does not use slots.
-:::
+## Slots
+| Name | Description |
+|------|-------------|
+| `icon-left` | No description available. |
 
 ## Component Code
 
 ```vue
 <template>
   <ep-input-styler v-bind="stylerProps">
+    <template #icon-left>
+      <slot name="icon-left" />
+    </template>
     <select
       :id="computedId"
       v-model="modelValue"
       :class="['ep-select', selectClasses]"
-      :style="selectStyles"
       :disabled="disabled"
       :autofocus="autofocus"
       :required="required"
@@ -65,10 +60,14 @@ This component does not use slots.
         {{ option.label }}
       </option>
     </select>
+    <template #icon-right>
+      <ArrowDown01 />
+    </template>
   </ep-input-styler>
 </template>
 
 <script setup>
+  import ArrowDown01 from '@ericpitcock/epicenter-icons/icons/ArrowDown01'
   import { computed } from 'vue'
 
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
@@ -78,53 +77,26 @@ This component does not use slots.
     autofocus: { type: Boolean, default: false },
     readonly: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
-    width: { type: String, default: '100%' },
-    iconLeft: { type: Object, default: null },
     selectId: { type: String, required: true },
     size: { type: String, default: 'default' },
     options: { type: Array, required: true },
     placeholder: { type: String, default: 'Select an option' },
-    borderWidth: { type: String, default: '0.1rem' },
-    borderStyle: { type: String, default: 'solid' },
-    borderColor: { type: String, default: 'var(--border-color)' },
-    borderRadius: { type: String, default: 'var(--border-radius)' },
-    backgroundColor: { type: String, default: 'var(--interface-foreground)' }
   })
 
   const emit = defineEmits(['update:modelValue', 'blur', 'focus'])
   const modelValue = defineModel({ type: [String, Number], default: '' })
 
-  const sizes = { small: '22', default: '30', large: '38', xlarge: '46' }
-
-  const computedBackgroundColor = computed(() => (props.disabled ? 'transparent' : props.backgroundColor))
-  const computedBorderColor = computed(() => {
-    if (props.disabled) return 'var(--border-color--disabled)'
-    return props.borderColor || 'var(--border-color)'
-  })
-
-  const computedId = computed(() => props.selectId || crypto.randomUUID())
   const selectClasses = computed(() => ({
     [`ep-select--${props.size}`]: props.size,
-    'ep-select--has-icon': props.iconLeft,
     'ep-select--disabled': props.disabled,
   }))
 
-  const selectStyles = computed(() => ({
-    borderStyle: props.borderStyle,
-    borderWidth: props.borderWidth,
-    borderColor: computedBorderColor.value,
-    borderRadius: props.borderRadius,
-    backgroundColor: computedBackgroundColor.value,
-    lineHeight: `${sizes[props.size] - 2}px`
-  }))
+  const computedId = computed(() => props.selectId || crypto.randomUUID())
 
   const stylerProps = computed(() => ({
     id: computedId.value,
     disabled: props.disabled,
-    width: props.width,
     size: props.size,
-    iconLeft: props.iconLeft,
-    iconRight: { name: 'chevron-down' },
     iconRightClickable: false,
     iconRightVisible: true
   }))
@@ -143,13 +115,23 @@ This component does not use slots.
 
 ```scss
 select.ep-select {
+  --ep-select-border-width: 0.1rem;
+  --ep-select-border-style: solid;
+  --ep-select-border-color: var(--border-color);
+  --ep-select-border-radius: var(--border-radius);
+  --ep-select-bg-color: var(--interface-foreground);
   width: 100%;
   height: 100%;
-  background: var(--background-2);
+  background: var(--ep-select-bg-color);
   padding: 0 2.8rem 0 1.4rem;
+  border: var(--ep-select-border-width) var(--ep-select-border-style) var(--ep-select-border-color);
+  border-radius: var(--ep-select-border-radius);
   cursor: pointer;
   user-select: none;
+  align-items: center;
 
+  // Apply left padding only when a real icon is present
+  .ep-input-styler:has(.ep-input-styler__icon-left:not(:empty)) &,
   &.ep-select--has-icon {
     padding-left: 2.8rem;
   }
@@ -158,6 +140,7 @@ select.ep-select {
     padding: 0 2.5rem 0 0.8rem;
     font-size: var(--font-size--tiny);
 
+    .ep-input-styler:has(.ep-input-styler__icon-left:not(:empty)) &,
     &.ep-select--has-icon {
       padding-left: 2.5rem;
     }
@@ -166,6 +149,7 @@ select.ep-select {
   &--large {
     padding: 0 3.6rem 0 1.6rem;
 
+    .ep-input-styler:has(.ep-input-styler__icon-left:not(:empty)) &,
     &.ep-select--has-icon {
       padding-left: 3.6rem;
     }
@@ -174,6 +158,7 @@ select.ep-select {
   &--xlarge {
     padding: 0 4.4rem 0 1.8rem;
 
+    .ep-input-styler:has(.ep-input-styler__icon-left:not(:empty)) &,
     &.ep-select--has-icon {
       padding-left: 4.4rem;
     }
@@ -181,6 +166,7 @@ select.ep-select {
 
   &--disabled {
     color: var(--text-color--disabled);
+    border-color: var(--border-color--disabled);
     cursor: not-allowed;
     pointer-events: none;
   }

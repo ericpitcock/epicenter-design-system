@@ -2,6 +2,8 @@
 
 
 
+DEPRECATED - Just wrap buttons in an .ep-button-group div and manage state in the consuming component instead.
+
 `EpButtonGroup` is special like `EpButton` — but even more so. It’s a group of icon buttons that can trigger an action or display a dropdown of more exciting actions. Useful in applications where you want to give users a set of actions to choose from.
     
 
@@ -91,16 +93,18 @@ This component does not use slots.
   display: flex;
 
   .ep-button {
+    &:not(:first-child) {
+      margin-left: -0.1rem;
+    }
+
     &:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      margin-right: -0.1rem;
     }
 
     &:last-child {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
-      margin-left: -0.1rem;
     }
 
     &:not(:first-child):not(:last-child) {
@@ -113,6 +117,8 @@ This component does not use slots.
 
     &.ep-button-group--selected {
       cursor: default;
+      position: relative;
+      z-index: var(--z-index--overlap);
     }
   }
 }

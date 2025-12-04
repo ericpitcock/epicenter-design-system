@@ -13,11 +13,8 @@
 | `hasInput` | - | `boolean` | `false` |
 | `inputValue` | - | `string` | `''` |
 | `label` | - | `string` | `''` |
+| `clearable` | - | `boolean` | `false` |
 | `disabled` | - | `boolean` | `false` |
-| `iconLeft` | - | `object` | `null` |
-| `iconRight` | - | `object` | `null` |
-| `iconRightClickable` | - | `boolean` | `false` |
-| `iconRightVisible` | - | `boolean` | `false` |
 | `size` | - | `string` | `'default'` |
 
 ## Events
@@ -28,53 +25,62 @@
 ## Slots
 | Name | Description |
 |------|-------------|
+| `icon-left` | No description available. |
+| `icon-right` | No description available. |
 | `default` | No description available. |
 
 ## Component Code
 
 ```vue
 <template>
-  <div
-    :class="['ep-input-styler', { 'ep-input-styler--disabled': disabled }]"
-    :style="containerStyles"
-  >
-    <div class="ep-input-styler__inner">
-      <div
-        v-if="iconLeft"
-        :class="['ep-input-styler__icon-left', `ep-input-styler__icon-left--${size}`]"
-      >
-        <ep-icon v-bind="iconLeft" />
-      </div>
-      <div
-        v-if="iconRight"
-        :class="[
-          'ep-input-styler__icon-right',
-          `ep-input-styler__icon-right--${size}`,
-          { 'ep-input-styler__icon-right--clickable': iconRightClickable }
-        ]"
-        @click="onClick"
-      >
-        <ep-icon
-          v-show="iconRightVisible"
-          v-bind="iconRight"
-        />
-      </div>
-    </div>
+  <div class="ep-input-styler__container">
     <label
-      v-show="label && hasInput || label && inputValue || hasFocus"
+      v-if="label"
       class="ep-input-styler__label"
       :for="id"
     >
       {{ label }}
     </label>
-    <slot />
+    <div
+      :class="[
+        'ep-input-styler',
+        { 'ep-input-styler--disabled': disabled }
+      ]"
+      :style="containerStyles"
+    >
+      <div class="ep-input-styler__inner">
+        <div
+          v-if="$slots['icon-left']"
+          :class="[
+            'ep-input-styler__icon-left',
+            `ep-input-styler__icon-left--${size}`
+          ]"
+        >
+          <slot name="icon-left" />
+        </div>
+        <div
+          v-if="$slots['icon-right']"
+          :class="[
+            'ep-input-styler__icon-right',
+            `ep-input-styler__icon-right--${size}`
+          ]"
+        >
+          <slot name="icon-right" />
+          <Cancel01
+            v-if="clearable && hasInput"
+            class="ep-input-styler__icon-right--clickable"
+            @click="$emit('click')"
+          />
+        </div>
+      </div>
+      <slot />
+    </div>
   </div>
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue'
-
-  import EpIcon from '../icon/EpIcon.vue'
+  import Cancel01 from '@ericpitcock/epicenter-icons/icons/Cancel01'
+  import { computed } from 'vue'
 
   defineOptions({
     name: 'EpInputStyler',
@@ -101,58 +107,54 @@
       type: String,
       default: ''
     },
+    clearable: {
+      type: Boolean,
+      default: false
+    },
     disabled: {
       type: Boolean,
       default: false
     },
-    iconLeft: {
-      type: Object,
-      default: null
-    },
-    iconRight: {
-      type: Object,
-      default: null
-    },
-    iconRightClickable: {
-      type: Boolean,
-      default: false
-    },
-    iconRightVisible: {
-      type: Boolean,
-      default: false
-    },
+    // iconRightClickable: {
+    //   type: Boolean,
+    //   default: false
+    // },
+    // iconRightVisible: {
+    //   type: Boolean,
+    //   default: false
+    // },
     size: {
       type: String,
       default: 'default'
     },
   })
 
-  const emit = defineEmits(['click'])
+  defineEmits(['click'])
 
-  const sizes = ref({
+  const sizes = {
     small: '22',
     default: '30',
     large: '38',
     xlarge: '46'
-  })
+  }
 
   const containerStyles = computed(() => {
     return {
-      height: `${sizes.value[props.size]}px`
+      height: `${sizes[props.size]}px`
     }
   })
 
-  const onClick = () => {
-    if (!props.iconRightVisible) return
-    emit('click')
-  }
+  // const onClick = () => {
+  //   if (!props.iconRightVisible) return
+  //   emit('click')
+  // }
 </script>
 ```
 
 ## Styles (SCSS)
 
 ```scss
-.ep-input-styler {
+.ep-input-styler__container {
   width: 100%;
   position: relative;
 }
@@ -187,12 +189,9 @@
 }
 
 .ep-input-styler__label {
-  position: absolute;
-  top: -7px;
-  left: 7px;
-  font-size: var(--font-size--small);
-  background: var(--interface-surface);
-  padding-inline: 1rem;
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--text-color--loud);
 }
 
 .ep-input-styler__icon-left,
@@ -201,8 +200,12 @@
   align-items: center;
   justify-content: center;
   width: 2.8rem;
-  height: 70%;
-  max-height: 2.4rem;
+  height: 100%;
+
+  .ep-icon {
+    --ep-icon-width: 45%;
+    --ep-icon-height: 45%;
+  }
 
   &--small {
     width: 2.5rem;
@@ -218,6 +221,7 @@
 }
 
 .ep-input-styler__icon-right--clickable {
+  cursor: pointer;
   pointer-events: auto;
 }
 ```

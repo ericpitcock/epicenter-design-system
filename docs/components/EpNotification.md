@@ -39,7 +39,7 @@ This component does not use slots.
         @click.stop="dismissNotification"
       >
         <template #icon-right>
-          <ep-icon name="close" />
+          close icon
         </template>
       </ep-button>
     </div>
@@ -50,7 +50,6 @@ This component does not use slots.
   import { useTimeAgo } from '@vueuse/core'
 
   import EpButton from '../button/EpButton.vue'
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpNotification',

@@ -2,6 +2,9 @@
 
 
 
+DEPRECATED - Just wrap a button and a dropdown .ep-split-button div and manage state in the consuming component instead.
+    
+
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
@@ -97,7 +100,7 @@ This component does not use slots.
   }
 
   // target the dropdown button but not the buttons in the menu
-  > .ep-dropdown > div > .ep-button {
+  > .ep-dropdown > .ep-button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }

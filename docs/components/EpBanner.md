@@ -2,12 +2,6 @@
 
 
 
-## Props
-| Name | Description | Type | Default |
-|------|-------------|------|---------|
-| `dissmissable` | Whether the banner can be dismissed. | `boolean` | `false` |
-| `iconProps` | The icon properties. | `object` | `{}` |
-
 ## Events
 | Name    | Description                 | Payload    |
 |---------|-----------------------------|------------|
@@ -16,8 +10,15 @@
 ## Slots
 | Name | Description |
 |------|-------------|
+| `icon` | The icon to display in the banner. |
 | `message` | The main text of the banner. |
 | `subtext` | The secondary text of the banner. |
+| `dismiss` | No description available. |
+
+
+::: info
+This component does not use props.
+:::
 
 ## Component Code
 
@@ -27,10 +28,13 @@
     <div class="ep-banner__color-strip" />
     <div class="ep-banner__body">
       <div
-        v-if="iconProps.name"
+        v-if="$slots.icon"
         class="ep-banner__body__icon"
       >
-        <ep-icon v-bind="iconProps" />
+        <!--
+          @slot icon - The icon to display in the banner.
+        -->
+        <slot name="icon" />
       </div>
       <div class="ep-banner__body__message">
         <div class="ep-banner__body__message__text font-size--small">
@@ -49,42 +53,17 @@
           <slot name="subtext" />
         </div>
       </div>
-      <ep-button
-        v-if="dissmissable"
-        class="ep-button-var--ghost"
-        @click="dismissBanner"
-      >
-        <template #icon-right>
-          <ep-icon name="close" />
-        </template>
-      </ep-button>
+      <slot
+        name="dismiss"
+        v-bind="{ dismissBanner }"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-  import EpButton from '../button/EpButton.vue'
-  import EpIcon from '../icon/EpIcon.vue'
-
   defineOptions({
     name: 'EpBanner'
-  })
-
-  const props = defineProps({
-    /**
-     * Whether the banner can be dismissed.
-     */
-    dissmissable: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * The icon properties.
-     */
-    iconProps: {
-      type: Object,
-      default: () => ({})
-    },
   })
 
   const emit = defineEmits([
@@ -132,7 +111,7 @@
     width: 100%;
     height: 100%;
     background-color: var(--ep-banner-bg-color);
-    padding: 1.2rem;
+    padding: 1.2rem 2rem;
     border: 1px solid var(--ep-banner-border-color);
     border-left: none;
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
@@ -141,8 +120,6 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      width: 2.4rem;
-      height: 2.4rem;
     }
 
     &__message {

@@ -31,18 +31,16 @@ This component does not use slots.
   >
     <div :class="headerClass">
       {{ column.label }}
-      <ep-icon
-        v-if="isSorted"
-        v-bind="iconProps"
-      />
+      <ArrowUp01 v-if="isSorted && sortOrder === 'asc'" />
+      <ArrowDown01 v-if="isSorted && sortOrder === 'desc'" />
     </div>
   </th>
 </template>
 
 <script setup>
+  import ArrowDown01 from '@ericpitcock/epicenter-icons/icons/ArrowDown01'
+  import ArrowUp01 from '@ericpitcock/epicenter-icons/icons/ArrowUp01'
   import { computed } from 'vue'
-
-  import EpIcon from '../icon/EpIcon.vue'
 
   defineOptions({
     name: 'EpTableSortableHeader'
@@ -73,12 +71,6 @@ This component does not use slots.
 
   const emit = defineEmits(['sort'])
 
-  const iconProps = computed(() => {
-    return {
-      name: props.sortOrder === 'asc' ? 'arrow-up' : 'arrow-down',
-    }
-  })
-
   const headerClass = computed(() => {
     return [
       'ep-table-sortable-header',
@@ -107,7 +99,7 @@ This component does not use slots.
   }
 
   .ep-icon {
-    --ep-icon-height: 1.7rem;
+    --ep-icon-height: 1.5rem;
     --ep-icon-stroke-width: 2;
     position: absolute;
     right: 0;
