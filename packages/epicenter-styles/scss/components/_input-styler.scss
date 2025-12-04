@@ -33,12 +33,9 @@
 }
 
 .ep-input-styler__label {
-  position: absolute;
-  top: -7px;
-  left: 7px;
-  font-size: var(--font-size--small);
-  background: var(--interface-surface);
-  padding-inline: 1rem;
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--text-color--loud);
 }
 
 .ep-input-styler__icon-left,
@@ -68,5 +65,6 @@
 }
 
 .ep-input-styler__icon-right--clickable {
+  cursor: pointer;
   pointer-events: auto;
 }

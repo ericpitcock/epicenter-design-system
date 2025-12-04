@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue'
+import { computed, ref, toRef } from 'vue'
 
 import EpInput from '@/components/input/EpInput.vue'
 
@@ -51,7 +51,17 @@ export default {
         disable: true
       }
     },
+    enabledIcons: {
+      name: 'Enable Icons',
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        category: 'Icons'
+      }
+    },
     iconLeft: {
+      if: { arg: 'enabledIcons' },
       name: 'Icon Left',
       options: componentNames,
       control: {
@@ -62,8 +72,10 @@ export default {
       }
     },
     iconRight: {
+      if: { arg: 'enabledIcons' },
       name: 'Icon Right',
       options: componentNames,
+      // mapping: iconMapping,
       control: {
         type: 'select'
       },
@@ -149,7 +161,6 @@ export default {
         type: 'color'
       }
     },
-    styles: { table: { disable: true } },
   }
 }
 
@@ -175,11 +186,18 @@ export const Input = args => ({
       }
     })
 
+    const { iconLeftComponent, iconRightComponent } = useIcons(
+      toRef(args, 'iconLeft'),
+      toRef(args, 'iconRight'),
+    )
+
     return {
       args,
       modelValue,
       clear,
       styles,
+      iconLeftComponent,
+      iconRightComponent,
     }
   },
   template: `
@@ -189,7 +207,20 @@ export const Input = args => ({
       v-model="modelValue"
       @clear="clear"
       data-1p-ignore
-    />
+    >
+      <template
+        v-if="iconLeftComponent"
+        #icon-left
+      >
+        <component :is="iconLeftComponent" />
+      </template>
+      <template
+        v-if="iconRightComponent"
+        #icon-right
+      >
+        <component :is="iconRightComponent" @click="clear" />
+      </template>
+    </ep-input>
   `
 })
 
@@ -197,9 +228,12 @@ Input.args = {
   inputId: '',
   label: 'What is your favorite word?',
   type: 'text',
-  placeholder: '',
+  placeholder: 'Enter your favorite word',
   placeholderColor: '',
-  modelValue: 'favorite',
+  modelValue: '',
+  enabledIcons: true,
+  iconLeft: 'None',
+  iconRight: 'None',
   clearable: true,
   disabled: false,
   autofocus: false,
@@ -207,6 +241,6 @@ Input.args = {
   borderWidth: '0.1rem',
   borderStyle: 'solid',
   borderColor: 'var(--border-color)',
-  borderRadius: '0.3rem',
+  borderRadius: '0.3',
   backgroundColor: 'var(--interface-foreground)',
 }

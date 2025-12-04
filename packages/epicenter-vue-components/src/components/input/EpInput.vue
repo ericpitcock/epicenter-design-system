@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-  import { computed, ref, watch } from 'vue'
+  import { computed, ref, useSlots, watch } from 'vue'
 
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
@@ -55,14 +55,6 @@
     placeholder: {
       type: String,
       default: ''
-    },
-    iconLeft: {
-      type: Object,
-      default: null
-    },
-    iconRight: {
-      type: Object,
-      default: null
     },
     clearable: {
       type: Boolean,
@@ -105,23 +97,26 @@
 
   const computedPlaceholder = computed(() => props.placeholder || props.label)
 
+  const slots = useSlots()
+  const hasIconLeft = computed(() => !!slots['icon-left'])
+  const hasIconRight = computed(() => !!slots['icon-right'])
+
   const stylerProps = computed(() => ({
     id: computedId.value,
     hasFocus: hasFocus.value,
     hasInput: hasInput.value,
     label: props.label,
+    clearable: props.clearable,
     disabled: props.disabled,
     size: props.size,
-    iconLeft: props.iconLeft,
-    iconRight: props.clearable ? { ...props.iconRight, name: 'close' } : props.iconRight,
     iconRightClickable: props.clearable,
-    iconRightVisible: props.clearable && hasInput.value || !!props.iconRight
+    iconRightVisible: props.clearable && hasInput.value || !!hasIconRight.value
   }))
 
   const inputClasses = computed(() => ({
     [`ep-input--${props.size}`]: props.size,
-    'ep-input--has-icon-left': props.iconLeft,
-    'ep-input--has-icon-right': props.iconRight,
+    'ep-input--has-icon-left': hasIconLeft.value,
+    'ep-input--has-icon-right': hasIconRight.value,
     'ep-input--disabled': props.disabled
   }))
 
