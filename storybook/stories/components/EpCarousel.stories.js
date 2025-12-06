@@ -28,28 +28,28 @@ export const Default = Template.bind({})
 Default.args = {
   images: [
     {
-      src: '/storybook/assets/img/sea-downtown-landscape.png',
+      src: '/sea-downtown-landscape.png',
       alt: 'Seattle downtown landscape view',
       aspectRatio: '3/2',
       caption: 'Seattle Downtown',
       captionPosition: 'bottom-center'
     },
     {
-      src: '/storybook/assets/img/sea-downtown-portrait.png',
+      src: '/sea-downtown-portrait.png',
       alt: 'Seattle downtown portrait view',
       aspectRatio: '2/3',
       caption: 'Downtown Portrait',
       captionPosition: 'bottom-left'
     },
     {
-      src: '/storybook/assets/img/sea-portrait-drawing.png',
+      src: '/sea-portrait-drawing.png',
       alt: 'Seattle portrait drawing',
       aspectRatio: '2/3',
       caption: 'Portrait Drawing',
       captionPosition: 'top-right'
     },
     {
-      src: '/storybook/assets/img/sea-trail-landscape.png',
+      src: '/sea-trail-landscape.png',
       alt: 'Seattle trail landscape',
       aspectRatio: '3/2',
       caption: 'Trail Landscape',

@@ -113,11 +113,7 @@
   }
 
   const loadImage = () => {
-    const img = new Image()
-    img.src = props.src
-    img.onload = () => {
-      isLoaded.value = true
-    }
+    isLoaded.value = true
   }
 
   onMounted(() => {
