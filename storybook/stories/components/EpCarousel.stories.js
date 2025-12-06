@@ -62,7 +62,7 @@ export const WithZoomAndPositioning = Template.bind({})
 WithZoomAndPositioning.args = {
   images: [
     {
-      src: '/storybook/assets/img/sea-downtown-landscape.png',
+      src: '/sea-downtown-landscape.png',
       alt: 'Seattle downtown landscape view - zoomed',
       aspectRatio: '3/2',
       zoom: 3,
@@ -72,14 +72,14 @@ WithZoomAndPositioning.args = {
       captionPosition: 'center'
     },
     {
-      src: '/storybook/assets/img/sea-downtown-portrait.png',
+      src: '/sea-downtown-portrait.png',
       alt: 'Seattle downtown portrait view',
       aspectRatio: '2/3',
       caption: 'Standard View',
       captionPosition: 'bottom-center'
     },
     {
-      src: '/storybook/assets/img/sea-portrait-drawing.png',
+      src: '/sea-portrait-drawing.png',
       alt: 'Seattle portrait drawing - zoomed',
       aspectRatio: '2/3',
       zoom: 1.3,
@@ -89,7 +89,7 @@ WithZoomAndPositioning.args = {
       captionPosition: 'top-center'
     },
     {
-      src: '/storybook/assets/img/sea-trail-landscape.png',
+      src: '/sea-trail-landscape.png',
       alt: 'Seattle trail landscape',
       aspectRatio: '3/2',
       zoom: 1.3,
