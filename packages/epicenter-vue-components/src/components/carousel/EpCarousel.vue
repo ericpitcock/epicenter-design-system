@@ -127,6 +127,10 @@
   import EpLazyImage from '../lazy-image/EpLazyImage.vue'
 
   const props = defineProps({
+    /**
+     * Array of image objects to display in the carousel.
+     * Each image object can include: src, alt, caption, aspectRatio, zoom, positionX, positionY, captionPosition
+     */
     images: {
       type: Array,
       default: () => [],

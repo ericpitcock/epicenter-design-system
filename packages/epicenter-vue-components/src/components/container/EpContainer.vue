@@ -7,24 +7,18 @@
       v-if="$slots.header"
       class="ep-container__header"
     >
-      <!-- 
-        @slot header - The header content.
-      -->
+      <!-- @slot Header content of the container -->
       <slot name="header" />
     </div>
     <div class="ep-container__content">
-      <!-- 
-        @slot The content of the container.
-      -->
+      <!-- @slot Main content of the container -->
       <slot />
     </div>
     <div
       v-if="$slots.footer"
       class="ep-container__footer"
     >
-      <!-- 
-        @slot footer - The footer content.
-      -->
+      <!-- @slot Footer content of the container -->
       <slot name="footer" />
     </div>
   </div>

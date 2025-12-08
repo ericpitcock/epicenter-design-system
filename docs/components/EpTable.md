@@ -178,10 +178,10 @@ The `sorter` function receives two values and should return a number: -1 for sor
 ## Slots
 | Name | Description |
 |------|-------------|
-| `thead` | No description available. |
-| ``cell-${column.key}`` | No description available. |
-| `actions-menu` | No description available. |
-| `thead-fixed` | No description available. |
+| `thead` | Table header slot. Use this to define your table headers with columns and sorting. |
+| ``cell-${column.key}`` | Custom cell content for a specific column. The slot name is dynamically generated as `cell-${column.key}`. |
+| `actions-menu` | Actions menu for each row. Receives the current row data. |
+| `thead-fixed` | Fixed header slot for when using fixed header mode. Syncs with the main table header. |
 
 ## Component Code
 
@@ -193,6 +193,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
     @scroll="onScroll"
   >
     <table :class="['ep-table', classes]">
+      <!-- @slot Table header slot. Use this to define your table headers with columns and sorting. -->
       <slot
         name="thead"
         v-bind="{ visibleColumns, showActionsMenu }"
@@ -208,6 +209,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
             :key="`body-${column.key}`"
           >
             <td>
+              <!-- @slot Custom cell content for a specific column. The slot name is dynamically generated as `cell-${column.key}`. -->
               <slot
                 v-if="$slots[`cell-${column.key}`]"
                 :name="`cell-${column.key}`"
@@ -224,6 +226,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
             v-if="showActionsMenu"
             class="ep-table__actions-menu"
           >
+            <!-- @slot Actions menu for each row. Receives the current row data. -->
             <slot
               name="actions-menu"
               v-bind="{ row }"
@@ -237,6 +240,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
       ref="tableFixed"
       class="ep-table ep-table--fixed-header"
     >
+      <!-- @slot Fixed header slot for when using fixed header mode. Syncs with the main table header. -->
       <slot
         name="thead-fixed"
         v-bind="{ visibleColumns, showActionsMenu }"

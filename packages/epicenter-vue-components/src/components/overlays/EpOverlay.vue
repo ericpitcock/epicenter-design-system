@@ -10,6 +10,7 @@
       :aria-modal="type === 'modal' ? 'true' : undefined"
       @click.self="onBackdropClick"
     >
+      <!-- @slot Content to display inside the overlay dialog -->
       <slot />
     </dialog>
   </Teleport>
@@ -23,22 +24,38 @@
   })
 
   const props = defineProps({
+    /**
+     * The type of overlay to display.
+     * @values 'modal', 'toast'
+     */
     type: {
       type: String,
-      default: 'modal', // modal or toast
+      default: 'modal',
     },
+    /**
+     * Controls the visibility of the overlay (use with v-model).
+     */
     modelValue: {
       type: Boolean,
       default: false,
     },
+    /**
+     * If true, automatically dismisses the overlay after the specified duration.
+     */
     autoDismiss: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Duration in milliseconds before auto-dismissing (when autoDismiss is true).
+     */
     duration: {
       type: Number,
       default: 3000,
     },
+    /**
+     * If true, clicking the backdrop will close the overlay.
+     */
     backdropClose: {
       type: Boolean,
       default: true,

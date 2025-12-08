@@ -5,19 +5,19 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `src` | - | `string` | `-` |
-| `alt` | - | `string` | `''` |
-| `width` | - | `string|number` | `'100%'` |
-| `height` | - | `string|number` | `'100%'` |
-| `aspectRatio` | - | `string` | `'16 / 10'` |
-| `objectFit` | - | `string` | `'contain'` |
-| `className` | - | `string` | `''` |
-| `placeholder` | - | `string` | `''` |
-| `placeholderColor` | - | `string` | `'#f5f5f5'` |
-| `placeholderOpacity` | - | `number` | `1` |
-| `lazy` | - | `boolean` | `true` |
-| `rounded` | - | `boolean` | `true` |
-| `rootMargin` | - | `string` | `'0px 0px 100px 0px'` |
+| `src` | The source URL of the image. | `string` | `-` |
+| `alt` | The alt text for the image. | `string` | `''` |
+| `width` | The width of the image. | `string|number` | `'100%'` |
+| `height` | The height of the image. | `string|number` | `'100%'` |
+| `aspectRatio` | The aspect ratio of the image (e.g., '16 / 9'). | `string` | `'16 / 10'` |
+| `objectFit` | How the image fits within its container. | `string` | `'contain'` |
+| `className` | Additional CSS class name for the image element. | `string` | `''` |
+| `placeholder` | URL of the placeholder image to display while loading. | `string` | `''` |
+| `placeholderColor` | The background color of the placeholder. | `string` | `'#f5f5f5'` |
+| `placeholderOpacity` | The opacity of the placeholder. | `number` | `1` |
+| `lazy` | If true, enables lazy loading using Intersection Observer. | `boolean` | `true` |
+| `rounded` | If true, applies rounded corners to the image. | `boolean` | `true` |
+| `rootMargin` | The root margin for the Intersection Observer (controls when loading starts). | `string` | `'0px 0px 100px 0px'` |
 
 
 ::: info
@@ -53,54 +53,94 @@ This component does not use events, slots.
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
   const props = defineProps({
+    /**
+     * The source URL of the image.
+     */
     src: {
       type: String,
       required: true,
     },
+    /**
+     * The alt text for the image.
+     */
     alt: {
       type: String,
       default: '',
     },
+    /**
+     * The width of the image.
+     */
     width: {
       type: [String, Number],
       default: '100%',
     },
+    /**
+     * The height of the image.
+     */
     height: {
       type: [String, Number],
       default: '100%',
     },
+    /**
+     * The aspect ratio of the image (e.g., '16 / 9').
+     */
     aspectRatio: {
       type: String,
       default: '16 / 10',
     },
+    /**
+     * How the image fits within its container.
+     * @values contain, cover, fill, none, scale-down
+     */
     objectFit: {
       type: String,
       default: 'contain',
     },
+    /**
+     * Additional CSS class name for the image element.
+     */
     className: {
       type: String,
       default: '',
     },
+    /**
+     * URL of the placeholder image to display while loading.
+     */
     placeholder: {
       type: String,
       default: '',
     },
+    /**
+     * The background color of the placeholder.
+     */
     placeholderColor: {
       type: String,
       default: '#f5f5f5',
     },
+    /**
+     * The opacity of the placeholder.
+     */
     placeholderOpacity: {
       type: Number,
       default: 1,
     },
+    /**
+     * If true, enables lazy loading using Intersection Observer.
+     */
     lazy: {
       type: Boolean,
       default: true,
     },
+    /**
+     * If true, applies rounded corners to the image.
+     */
     rounded: {
       type: Boolean,
       default: true,
     },
+    /**
+     * The root margin for the Intersection Observer (controls when loading starts).
+     */
     rootMargin: {
       type: String,
       default: '0px 0px 100px 0px',
@@ -142,11 +182,7 @@ This component does not use events, slots.
   }
 
   const loadImage = () => {
-    const img = new Image()
-    img.src = props.src
-    img.onload = () => {
-      isLoaded.value = true
-    }
+    isLoaded.value = true
   }
 
   onMounted(() => {

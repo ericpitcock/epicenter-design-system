@@ -63,39 +63,32 @@
         </div>
       </div>
     </div>
-    <div
+    <ep-pagination
       v-if="totalPages > 1"
-      class="pagination"
+      :current-page="currentPage"
+      :total-pages="totalPages"
+      button-class="ep-button-var--secondary"
+      show-pages
+      @page-change="onPageChange"
     >
-      <ep-button
-        :class="{ 'pagination-button--disabled': currentPage === 1 }"
-        :disabled="currentPage === 1"
-        class="ep-button-var--secondary"
-        @click="currentPage = Math.max(1, currentPage - 1)"
-      >
-        Previous
-      </ep-button>
-      <span class="pagination-info">
-        Page {{ currentPage }} of {{ totalPages }}
-      </span>
-      <ep-button
-        :class="{ 'pagination-button--disabled': currentPage === totalPages }"
-        :disabled="currentPage === totalPages"
-        class="ep-button-var--secondary"
-        @click="currentPage = Math.min(totalPages, currentPage + 1)"
-      >
-        Next
-      </ep-button>
-    </div>
+      <template #icon-prev>
+        <ArrowLeft01 />
+      </template>
+      <template #icon-next>
+        <ArrowRight01 />
+      </template>
+    </ep-pagination>
   </div>
 </template>
 
 <script setup>
+  import ArrowLeft01 from '@ericpitcock/epicenter-icons/icons/ArrowLeft01'
+  import ArrowRight01 from '@ericpitcock/epicenter-icons/icons/ArrowRight01'
   import { computed, defineAsyncComponent, ref, watch } from 'vue'
 
-  import EpButton from '@/components/button/EpButton.vue'
   import EpFlex from '@/components/flexbox/EpFlex.vue'
   import EpInput from '@/components/input/EpInput.vue'
+  import EpPagination from '@/components/pagination/EpPagination.vue'
   import EpSelect from '@/components/select/EpSelect.vue'
 
   import { createIconImports, getComponentName, iconsData } from './useIcons.js'
@@ -290,6 +283,10 @@
   const onCategoryChange = () => {
     currentPage.value = 1
   }
+
+  const onPageChange = (page) => {
+    currentPage.value = page
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -423,21 +420,14 @@
     font-size: 16px;
   }
 
-  .pagination {
+  :deep(.ep-pagination) {
     padding: 20px;
     background: var(--interface-surface);
     border-top: 1px solid var(--border-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
 
-  .pagination-info {
-    color: var(--text-color--subtle);
-    font-size: 14px;
-    margin: 0 8px;
+    .ep-flex {
+      justify-content: center;
+    }
   }
 
   @media (max-width: 768px) {
@@ -454,11 +444,6 @@
 
     .search-input {
       min-width: auto;
-    }
-
-    .pagination {
-      flex-direction: column;
-      gap: 12px;
     }
   }
 </style>

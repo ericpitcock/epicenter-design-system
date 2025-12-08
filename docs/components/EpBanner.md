@@ -10,10 +10,10 @@
 ## Slots
 | Name | Description |
 |------|-------------|
-| `icon` | The icon to display in the banner. |
-| `message` | The main text of the banner. |
-| `subtext` | The secondary text of the banner. |
-| `dismiss` | No description available. |
+| `icon` | Icon displayed at the start of the banner |
+| `message` | Main message content of the banner |
+| `subtext` | Secondary message or additional information |
+| `dismiss` | Dismiss button or action. Receives dismissBanner function as scoped prop. |
 
 
 ::: info
@@ -31,28 +31,23 @@ This component does not use props.
         v-if="$slots.icon"
         class="ep-banner__body__icon"
       >
-        <!--
-          @slot icon - The icon to display in the banner.
-        -->
+        <!-- @slot Icon displayed at the start of the banner -->
         <slot name="icon" />
       </div>
       <div class="ep-banner__body__message">
         <div class="ep-banner__body__message__text font-size--small">
-          <!--
-            @slot message - The main text of the banner.
-          -->
+          <!-- @slot Main message content of the banner -->
           <slot name="message" />
         </div>
         <div
           v-if="$slots.subtext"
           class="ep-banner__body__message__subtext"
         >
-          <!--
-            @slot subtext - The secondary text of the banner.
-          -->
+          <!-- @slot Secondary message or additional information -->
           <slot name="subtext" />
         </div>
       </div>
+      <!-- @slot Dismiss button or action. Receives dismissBanner function as scoped prop. -->
       <slot
         name="dismiss"
         v-bind="{ dismissBanner }"

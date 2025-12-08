@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `direction` | - | `string` | `'horizontal'` |
+| `direction` | The direction of the divider. | `string` | `'horizontal'` |
 
 
 ::: info
@@ -25,6 +25,10 @@ This component does not use events, slots.
   })
 
   const props = defineProps({
+    /**
+     * The direction of the divider.
+     * @values horizontal, vertical
+     */
     direction: {
       type: String,
       default: 'horizontal'

@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `currentTheme` | - | `string` | `-` |
+| `currentTheme` | The current theme of the application. | `string` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -26,6 +26,7 @@ This component does not use slots.
     @click="toggleTheme"
   >
     <template #icon-left>
+      <!-- @slot Icon to display for theme toggle (typically a sun or moon icon) -->
       theme icon
     </template>
   </ep-button>
@@ -41,6 +42,10 @@ This component does not use slots.
   })
 
   const props = defineProps({
+    /**
+     * The current theme of the application.
+     * @values light, dark
+     */
     currentTheme: {
       type: String,
       required: true

@@ -7,9 +7,9 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 // Paths
-const COMPONENTS_DIR = path.resolve(__dirname, '../packages/epicenter-vue-components/src/components') // Component directory
-const SCSS_DIR = path.resolve(__dirname, '../packages/epicenter-styles/scss/components') // Styles directory
-const OUTPUT_DIR = path.resolve(__dirname, '../docs/components') // Output directory for docs
+const COMPONENTS_DIR = path.resolve(__dirname, '../../packages/epicenter-vue-components/src/components') // Component directory
+const SCSS_DIR = path.resolve(__dirname, '../../packages/epicenter-styles/scss/components') // Styles directory
+const OUTPUT_DIR = path.resolve(__dirname, '../components') // Output directory for docs
 
 // Ensure output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {

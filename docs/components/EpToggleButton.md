@@ -80,6 +80,7 @@ This component does not use events, slots.
     },
     /**
      * The size of the button.
+     * @values small, default, large, xlarge
      */
     size: {
       type: String,

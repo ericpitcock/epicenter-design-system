@@ -51,40 +51,62 @@
   import { computed, nextTick, onMounted, ref, watch } from 'vue'
 
   const props = defineProps({
+    /**
+     * The current state of the button.
+     * @values 'default', 'loading', 'success', 'failure'
+     */
     status: {
       type: String,
       default: 'default',
       validator: (value) => ['default', 'loading', 'success', 'failure'].includes(value)
     },
+    /**
+     * The default button label text.
+     */
     label: {
       type: String,
       default: 'Submit'
     },
+    /**
+     * Message displayed when status is 'success'. Falls back to label if not provided.
+     */
     successMessage: {
       type: String,
       default: ''
     },
+    /**
+     * Message displayed when status is 'failure'. Falls back to label if not provided.
+     */
     failureMessage: {
       type: String,
       default: ''
     },
-    // NEW: control how loading is shown
+    /**
+     * Controls how the loading state is visually indicated.
+     * @values 'text', 'spinner'
+     */
     loadingIndicator: {
       type: String,
-      default: 'text', // 'text' | 'spinner'
+      default: 'text',
       validator: (v) => ['text', 'spinner'].includes(v)
     },
-    // NEW: customizable loading text (used for 'text' mode and SR text for spinner)
+    /**
+     * Text displayed during loading state (used for 'text' mode and screen reader text for spinner).
+     */
     loadingText: {
       type: String,
       default: 'Loading…'
     },
-    // NEW: keep button width stable across states
+    /**
+     * If true, maintains consistent button width across state changes to prevent layout shift.
+     */
     preserveWidth: {
       type: Boolean,
       default: true
     },
-    // NEW: optionally allow clicks during loading
+    /**
+     * If true, disables the button during loading state to prevent multiple clicks.
+     */
     disabledDuringLoading: {
       type: Boolean,
       default: true

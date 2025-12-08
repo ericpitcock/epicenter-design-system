@@ -5,12 +5,12 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `pulse` | - | `boolean` | `false` |
+| `pulse` | If true, the status indicator will pulse. | `boolean` | `false` |
 
 ## Slots
 | Name | Description |
 |------|-------------|
-| `default` | No description available. |
+| `default` | Default slot for label or text content next to the indicator. |
 
 
 ::: info
@@ -26,6 +26,7 @@ This component does not use events.
       class="ep-status-indicator__dot"
       :class="{ 'ep-status-indicator__dot--pulse': pulse }"
     />
+    <!-- @slot Default slot for label or text content next to the indicator. -->
     <slot />
   </span>
 </template>
@@ -36,6 +37,9 @@ This component does not use events.
   })
 
   const props = defineProps({
+    /**
+     * If true, the status indicator will pulse.
+     */
     pulse: {
       type: Boolean,
       default: false,

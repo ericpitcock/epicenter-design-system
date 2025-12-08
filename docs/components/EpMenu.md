@@ -5,13 +5,13 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `menuType` | - | `string` | `'default'` |
-| `size` | - | `string` | `'default'` |
+| `menuType` | The type/style of menu to display. | `string` | `'default'` |
+| `size` | The size of the menu items. | `string` | `'default'` |
 
 ## Slots
 | Name | Description |
 |------|-------------|
-| `default` | No description available. |
+| `default` | Default slot for menu items (EpMenuItem components). |
 
 
 ::: info
@@ -23,6 +23,7 @@ This component does not use events.
 ```vue
 <template>
   <div :class="['ep-menu', `ep-menu--${menuType}`]">
+    <!-- @slot Default slot for menu items (EpMenuItem components). -->
     <slot />
   </div>
 </template>
@@ -33,10 +34,17 @@ This component does not use events.
   })
 
   const props = defineProps({
+    /**
+     * The type/style of menu to display.
+     * @values default, dropdown, nav
+     */
     menuType: {
       type: String,
       default: 'default' // default, dropdown, nav
     },
+    /**
+     * The size of the menu items.
+     */
     size: {
       type: String,
       default: 'default'

@@ -30,12 +30,12 @@ const datePickerProps = {
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `enableCloseOnSelect` | - | `boolean` | `true` |
-| `positionX` | - | `string` | `'left'` |
-| `positionY` | - | `string` | `'auto'` |
-| `dateFormat` | - | `string` | `'m/d/Y'` |
-| `inputProps` | - | `object` | `{}` |
-| `mode` | - | `string` | `'single'` |
+| `enableCloseOnSelect` | If true, closes the date picker when a date is selected. | `boolean` | `true` |
+| `positionX` | Horizontal position of the date picker dropdown. | `string` | `'left'` |
+| `positionY` | Vertical position of the date picker dropdown. | `string` | `'auto'` |
+| `dateFormat` | Date format string for the input display (Flatpickr format). | `string` | `'m/d/Y'` |
+| `inputProps` | Props to pass through to the underlying EpInput component. | `object` | `{}` |
+| `mode` | Selection mode for the date picker. | `string` | `'single'` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -79,26 +79,48 @@ This component does not use slots.
   })
 
   const props = defineProps({
+    /**
+     * If true, closes the date picker when a date is selected.
+     */
     enableCloseOnSelect: {
       type: Boolean,
       default: true
     },
+    /**
+     * Horizontal position of the date picker dropdown.
+     * @values 'left', 'right', 'auto'
+     */
     positionX: {
       type: String,
       default: 'left'
     },
+    /**
+     * Vertical position of the date picker dropdown.
+     * @values 'auto', 'above', 'below'
+     */
     positionY: {
       type: String,
       default: 'auto'
     },
+    /**
+     * Date format string for the input display (Flatpickr format).
+     * @example 'm/d/Y', 'Y-m-d', 'd-m-Y'
+     */
     dateFormat: {
       type: String,
       default: 'm/d/Y'
     },
+    /**
+     * Props to pass through to the underlying EpInput component.
+     */
     inputProps: {
       type: Object,
       default: () => ({})
     },
+    /**
+     * Selection mode for the date picker.
+     * @values 'single', 'multiple', 'range'
+     */
     mode: {
       type: String,
       default: 'single'

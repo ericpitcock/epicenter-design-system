@@ -5,14 +5,14 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `disabled` | - | `boolean` | `false` |
-| `autofocus` | - | `boolean` | `false` |
-| `readonly` | - | `boolean` | `false` |
-| `required` | - | `boolean` | `false` |
-| `selectId` | - | `string` | `-` |
-| `size` | - | `string` | `'default'` |
-| `options` | - | `array` | `-` |
-| `placeholder` | - | `string` | `'Select an option'` |
+| `disabled` | If true, disables the select element. | `boolean` | `false` |
+| `autofocus` | If true, automatically focuses the select on mount. | `boolean` | `false` |
+| `readonly` | If true, makes the select read-only. | `boolean` | `false` |
+| `required` | If true, marks the select as a required field. | `boolean` | `false` |
+| `selectId` | The ID attribute for the select element. | `string` | `-` |
+| `size` | The size variant of the select. | `string` | `'default'` |
+| `options` | Array of option objects with 'label', 'value', and optional 'disabled' properties. | `array` | `-` |
+| `placeholder` | Placeholder text shown when no option is selected. | `string` | `'Select an option'` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -24,7 +24,7 @@
 ## Slots
 | Name | Description |
 |------|-------------|
-| `icon-left` | No description available. |
+| `icon-left` | Optional icon displayed on the left side of the select |
 
 ## Component Code
 
@@ -32,6 +32,7 @@
 <template>
   <ep-input-styler v-bind="stylerProps">
     <template #icon-left>
+      <!-- @slot Optional icon displayed on the left side of the select -->
       <slot name="icon-left" />
     </template>
     <select
@@ -73,13 +74,38 @@
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   const props = defineProps({
+    /**
+     * If true, disables the select element.
+     */
     disabled: { type: Boolean, default: false },
+    /**
+     * If true, automatically focuses the select on mount.
+     */
     autofocus: { type: Boolean, default: false },
+    /**
+     * If true, makes the select read-only.
+     */
     readonly: { type: Boolean, default: false },
+    /**
+     * If true, marks the select as a required field.
+     */
     required: { type: Boolean, default: false },
+    /**
+     * The ID attribute for the select element.
+     */
     selectId: { type: String, required: true },
+    /**
+     * The size variant of the select.
+     * @values 'small', 'default', 'large'
+     */
     size: { type: String, default: 'default' },
+    /**
+     * Array of option objects with 'label', 'value', and optional 'disabled' properties.
+     */
     options: { type: Array, required: true },
+    /**
+     * Placeholder text shown when no option is selected.
+     */
     placeholder: { type: String, default: 'Select an option' },
   })
 

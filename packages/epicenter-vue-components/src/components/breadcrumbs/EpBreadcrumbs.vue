@@ -8,6 +8,7 @@
         :class="crumb.customClass"
       >
         <template v-if="$slots.item">
+          <!-- @slot item - Custom content for each breadcrumb item. Provides crumb, index, and is-last via slot props. -->
           <slot
             name="item"
             :crumb="crumb"
@@ -34,6 +35,7 @@
           aria-hidden="true"
         >
           <template v-if="$slots.separator">
+            <!-- @slot separator - Custom separator between breadcrumb items. Provides index via slot props. -->
             <slot
               name="separator"
               :index="index"
@@ -55,10 +57,16 @@
   import { useRoute } from 'vue-router'
 
   const props = defineProps({
+    /**
+     * An array of breadcrumb items with label, to, and optional customClass properties.
+     */
     items: {
       type: Array,
       default: () => []
     },
+    /**
+     * If true, automatically generates breadcrumbs from the current route.
+     */
     auto: {
       type: Boolean,
       default: false

@@ -20,18 +20,31 @@
   })
 
   const props = defineProps({
+    /**
+     * If true, shows the toggle in the active/on state.
+     */
     isActive: {
       type: Boolean,
       default: false,
     },
+    /**
+     * If true, disables the toggle interaction.
+     */
     disabled: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Label text displayed next to the toggle.
+     */
     label: {
       type: String,
       default: '',
     },
+    /**
+     * The size variant of the toggle.
+     * @values 'small', 'default', 'large'
+     */
     size: {
       type: String,
       default: 'default',

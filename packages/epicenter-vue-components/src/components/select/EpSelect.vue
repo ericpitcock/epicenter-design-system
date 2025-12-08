@@ -1,6 +1,7 @@
 <template>
   <ep-input-styler v-bind="stylerProps">
     <template #icon-left>
+      <!-- @slot Optional icon displayed on the left side of the select -->
       <slot name="icon-left" />
     </template>
     <select
@@ -42,13 +43,38 @@
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   const props = defineProps({
+    /**
+     * If true, disables the select element.
+     */
     disabled: { type: Boolean, default: false },
+    /**
+     * If true, automatically focuses the select on mount.
+     */
     autofocus: { type: Boolean, default: false },
+    /**
+     * If true, makes the select read-only.
+     */
     readonly: { type: Boolean, default: false },
+    /**
+     * If true, marks the select as a required field.
+     */
     required: { type: Boolean, default: false },
+    /**
+     * The ID attribute for the select element.
+     */
     selectId: { type: String, required: true },
+    /**
+     * The size variant of the select.
+     * @values 'small', 'default', 'large'
+     */
     size: { type: String, default: 'default' },
+    /**
+     * Array of option objects with 'label', 'value', and optional 'disabled' properties.
+     */
     options: { type: Array, required: true },
+    /**
+     * Placeholder text shown when no option is selected.
+     */
     placeholder: { type: String, default: 'Select an option' },
   })
 

@@ -13,16 +13,24 @@
   })
 
   const props = defineProps({
-    // override or add colors beyond the default 0-13
-    // '--highcharts-color-0': 'red',
+    /**
+     * Custom color overrides for chart series (CSS custom properties).
+     * @example { '--highcharts-color-0': 'red', '--highcharts-color-1': 'blue' }
+     */
     chartColors: {
       type: Object,
       default: () => ({})
     },
+    /**
+     * Height of the chart in pixels.
+     */
     height: {
       type: Number,
       default: 400
     },
+    /**
+     * Highcharts configuration options object.
+     */
     options: {
       type: Object,
       default: () => ({})

@@ -2,6 +2,8 @@
   "scripts": {
     "docs:dev": "vitepress dev --port 3000",
     "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:preview": "vitepress preview",
+    "update-docs": "node scripts/generateDocs.mjs",
+    "generate-sidebar": "node scripts/generateSidebarConfig.mjs"
   }
 }

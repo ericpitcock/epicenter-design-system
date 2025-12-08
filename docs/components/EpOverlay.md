@@ -5,11 +5,11 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `type` | - | `string` | `'modal'` |
-| `modelValue` | - | `boolean` | `false` |
-| `autoDismiss` | - | `boolean` | `false` |
-| `duration` | - | `number` | `3000` |
-| `backdropClose` | - | `boolean` | `true` |
+| `type` | The type of overlay to display. | `string` | `'modal'` |
+| `modelValue` | Controls the visibility of the overlay (use with v-model). | `boolean` | `false` |
+| `autoDismiss` | If true, automatically dismisses the overlay after the specified duration. | `boolean` | `false` |
+| `duration` | Duration in milliseconds before auto-dismissing (when autoDismiss is true). | `number` | `3000` |
+| `backdropClose` | If true, clicking the backdrop will close the overlay. | `boolean` | `true` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -19,7 +19,7 @@
 ## Slots
 | Name | Description |
 |------|-------------|
-| `default` | No description available. |
+| `default` | Content to display inside the overlay dialog |
 
 ## Component Code
 
@@ -36,6 +36,7 @@
       :aria-modal="type === 'modal' ? 'true' : undefined"
       @click.self="onBackdropClick"
     >
+      <!-- @slot Content to display inside the overlay dialog -->
       <slot />
     </dialog>
   </Teleport>
@@ -49,22 +50,38 @@
   })
 
   const props = defineProps({
+    /**
+     * The type of overlay to display.
+     * @values 'modal', 'toast'
+     */
     type: {
       type: String,
-      default: 'modal', // modal or toast
+      default: 'modal',
     },
+    /**
+     * Controls the visibility of the overlay (use with v-model).
+     */
     modelValue: {
       type: Boolean,
       default: false,
     },
+    /**
+     * If true, automatically dismisses the overlay after the specified duration.
+     */
     autoDismiss: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Duration in milliseconds before auto-dismissing (when autoDismiss is true).
+     */
     duration: {
       type: Number,
       default: 3000,
     },
+    /**
+     * If true, clicking the backdrop will close the overlay.
+     */
     backdropClose: {
       type: Boolean,
       default: true,

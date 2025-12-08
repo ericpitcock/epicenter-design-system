@@ -27,34 +27,58 @@
   })
 
   const props = defineProps({
+    /**
+     * If true, animates the chart on initial render.
+     */
     animate: {
       type: Boolean,
       default: true,
     },
+    /**
+     * Width of the chart in pixels.
+     */
     width: {
       type: Number,
       default: 200,
     },
+    /**
+     * Height of the chart in pixels.
+     */
     height: {
       type: Number,
       default: 200,
     },
+    /**
+     * Margin around the chart in pixels.
+     */
     margin: {
       type: Number,
       default: 0,
     },
+    /**
+     * Array of numeric values for each segment of the donut chart.
+     */
     data: {
       type: Array,
       required: true,
     },
+    /**
+     * Array of label strings corresponding to each data segment.
+     */
     labels: {
       type: Array,
       required: true,
     },
+    /**
+     * Text or number to display in the center of the donut chart.
+     */
     value: {
       type: String,
       default: 'Value',
     },
+    /**
+     * CSS class for styling the center value text.
+     */
     valueTextClass: {
       type: String,
       default: 'font-size--jumbo',

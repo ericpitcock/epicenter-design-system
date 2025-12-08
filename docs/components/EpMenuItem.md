@@ -5,13 +5,13 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `type` | - | `string` | `'item'` |
+| `type` | The type of menu item to render. | `string` | `'item'` |
 
 ## Slots
 | Name | Description |
 |------|-------------|
-| `default` | No description available. |
-| `submenu` | No description available. |
+| `default` | Default slot for section label text. |
+| `submenu` | Content for a submenu that appears on hover. |
 
 
 ::: info
@@ -30,6 +30,7 @@ This component does not use events.
     v-else-if="type === 'section'"
     class="ep-menu__section text-style--section"
   >
+    <!-- @slot Default slot for section label text. -->
     <slot />
   </div>
   <div
@@ -38,12 +39,14 @@ This component does not use events.
     @mouseover="onMouseover"
     @mouseleave="onMouseleave"
   >
+    <!-- @slot Default slot for menu item content. -->
     <slot />
     <div
       v-if="$slots.submenu"
       v-show="showSubmenu"
       class="ep-menu__item__sub-menu"
     >
+      <!-- @slot submenu - Content for a submenu that appears on hover. -->
       <slot name="submenu" />
     </div>
   </div>
@@ -57,6 +60,10 @@ This component does not use events.
   })
 
   const props = defineProps({
+    /**
+     * The type of menu item to render.
+     * @values item, divider, section
+     */
     type: {
       type: String,
       default: 'item',

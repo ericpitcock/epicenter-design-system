@@ -5,6 +5,7 @@
         v-for="(column, columnIndex) in columns"
         :key="`head-${column.key}`"
       >
+        <!-- @slot Custom header content for sortable columns. Receives column, cellWidths, and columnIndex as scoped props. -->
         <slot
           v-if="$slots.header && column.sortable"
           name="header"
@@ -39,15 +40,27 @@
   })
 
   const props = defineProps({
+    /**
+     * Array of column configuration objects defining table structure.
+     */
     columns: {
       type: Array,
       required: true
     },
+    /**
+     * Array of width values for each column cell.
+     */
     cellWidths: {
       type: Array,
       default: () => []
     },
+    /**
+     * If true, enables fixed header behavior.
+     */
     fixedHeader: Boolean,
+    /**
+     * If true, shows an additional column for the actions menu.
+     */
     showActionsMenu: Boolean,
   })
 </script>

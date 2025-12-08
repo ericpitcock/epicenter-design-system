@@ -13,7 +13,6 @@
     "build-storybook:react": "storybook build -c .storybook-react -o storybook-react-static",
     "yalc:publish": "cd packages/epicenter-styles && yalc publish && cd ../epicenter-vue-components && yalc publish && cd ../epicenter-icons && yalc publish",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "update-docs": "node scripts/generateDocs.mjs",
     "build-components": "node scripts/buildVueComponents.mjs",
     "build-styles": "node scripts/buildStyles.mjs"
   },

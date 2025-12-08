@@ -10,19 +10,19 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `width` | - | `string` | `'100%'` |
-| `height` | - | `string` | `'100%'` |
-| `flexFlow` | - | `string` | `'row nowrap'` |
-| `justifyContent` | - | `string` | `'flex-start'` |
-| `alignItems` | - | `string` | `'stretch'` |
-| `alignContent` | - | `string` | `'normal'` |
-| `gap` | - | `string` | `'0'` |
-| `padding` | - | `string` | `'0'` |
+| `width` | The width of the flex container. | `string` | `'100%'` |
+| `height` | The height of the flex container. | `string` | `'100%'` |
+| `flexFlow` | Shorthand for flex-direction and flex-wrap. | `string` | `'row nowrap'` |
+| `justifyContent` | Defines how flex items are distributed along the main axis. | `string` | `'flex-start'` |
+| `alignItems` | Defines how flex items are aligned along the cross axis. | `string` | `'stretch'` |
+| `alignContent` | Aligns a flex container's lines when there is extra space on the cross axis. | `string` | `'normal'` |
+| `gap` | The gap between flex items. | `string` | `'0'` |
+| `padding` | The padding of the flex container. | `string` | `'0'` |
 
 ## Slots
 | Name | Description |
 |------|-------------|
-| `default` | No description available. |
+| `default` | Default slot for flex container content. |
 
 
 ::: info
@@ -34,6 +34,7 @@ This component does not use events.
 ```vue
 <template>
   <div :style="flexContainerStyle">
+    <!-- @slot Default slot for flex container content. -->
     <slot />
   </div>
 </template>
@@ -46,41 +47,62 @@ This component does not use events.
   })
 
   const props = defineProps({
+    /**
+     * The width of the flex container.
+     */
     width: {
       type: String,
       default: '100%'
     },
+    /**
+     * The height of the flex container.
+     */
     height: {
       type: String,
       default: '100%'
     },
-    // shorthand for flex-direction and flex-wrap
-    // flex-direction: row | row-reverse | column | column-reverse;
-    // flex-wrap: nowrap | wrap | wrap-reverse;
+    /**
+     * Shorthand for flex-direction and flex-wrap.
+     * @values row nowrap, row wrap, column nowrap, column wrap, etc.
+     */
     flexFlow: {
       type: String,
       default: 'row nowrap'
     },
-    // justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe;
+    /**
+     * Defines how flex items are distributed along the main axis.
+     * @values flex-start, flex-end, center, space-between, space-around, space-evenly
+     */
     justifyContent: {
       type: String,
       default: 'flex-start'
     },
-    // align-items: stretch | flex-start | flex-end | center | baseline | first baseline | last baseline | start | end | self-start | self-end + ... safe | unsafe;
+    /**
+     * Defines how flex items are aligned along the cross axis.
+     * @values stretch, flex-start, flex-end, center, baseline
+     */
     alignItems: {
       type: String,
       default: 'stretch'
     },
-    // align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch | start | end | baseline | first baseline | last baseline + ... safe | unsafe;
-    // Note: This property only takes effect on multi-line flexible containers, where flex-wrap is set to either wrap or wrap-reverse). A single-line flexible container (i.e. where flex-wrap is set to its default value, no-wrap) will not reflect align-content.
+    /**
+     * Aligns a flex container's lines when there is extra space on the cross axis.
+     * @values flex-start, flex-end, center, space-between, space-around, stretch, normal
+     */
     alignContent: {
       type: String,
       default: 'normal'
     },
+    /**
+     * The gap between flex items.
+     */
     gap: {
       type: String,
       default: '0'
     },
+    /**
+     * The padding of the flex container.
+     */
     padding: {
       type: String,
       default: '0'

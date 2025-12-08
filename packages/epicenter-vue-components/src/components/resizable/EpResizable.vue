@@ -5,6 +5,7 @@
       class="resizable-pane"
       :style="{ flex: computedSize }"
     >
+      <!-- @slot resizable - The content of the resizable pane. -->
       <slot name="resizable" />
       <div
         :class="['drag-handle', dragEdge]"
@@ -13,6 +14,7 @@
       />
     </div>
     <div class="content-pane">
+      <!-- @slot content - The content of the fixed (non-resizable) pane. -->
       <slot name="content" />
     </div>
   </div>
@@ -22,19 +24,32 @@
   import { computed, ref } from 'vue'
 
   const props = defineProps({
+    /**
+     * The direction of the resizable layout.
+     * @values column, row
+     */
     direction: {
       type: String,
       default: 'row',
       validator: (value) => ['column', 'row'].includes(value)
     },
+    /**
+     * The initial size of the resizable pane (e.g., '300px' or '30%').
+     */
     initialSize: {
       type: String,
       default: '300px'
     },
+    /**
+     * The minimum size in pixels for the resizable pane.
+     */
     minSize: {
       type: Number,
       default: 200
     },
+    /**
+     * The maximum size in pixels for the resizable pane.
+     */
     maxSize: {
       type: Number,
       default: 800

@@ -2,15 +2,17 @@
 
 
 
-DEPRECATED - Just wrap a button and a dropdown .ep-split-button div and manage state in the consuming component instead.
+::: warning DEPRECATED
+Just wrap a button and a dropdown in an .ep-split-button div and manage state in the consuming component instead.
+:::
     
 
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `disabled` | - | `boolean` | `false` |
-| `buttonProps` | - | `object` | `{}` |
-| `dropdownProps` | - | `object` | `{}` |
+| `disabled` | If true, both the button and dropdown are disabled. | `boolean` | `false` |
+| `buttonProps` | Props to pass to the internal EpButton component. | `object` | `{}` |
+| `dropdownProps` | Props to pass to the internal EpDropdown component. | `object` | `{}` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -52,14 +54,23 @@ This component does not use slots.
       EpDropdown
     },
     props: {
+      /**
+       * If true, both the button and dropdown are disabled.
+       */
       disabled: {
         type: Boolean,
         default: false
       },
+      /**
+       * Props to pass to the internal EpButton component.
+       */
       buttonProps: {
         type: Object,
         default: () => ({})
       },
+      /**
+       * Props to pass to the internal EpDropdown component.
+       */
       dropdownProps: {
         type: Object,
         default: () => ({})

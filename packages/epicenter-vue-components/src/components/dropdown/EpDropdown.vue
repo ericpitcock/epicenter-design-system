@@ -4,6 +4,7 @@
     class="ep-dropdown"
     @mouseleave="onMouseleave"
   >
+    <!-- @slot Trigger element that opens/closes the dropdown. Provides scoped props for custom triggers. -->
     <slot
       name="trigger"
       :is-open="dropdownVisible"
@@ -27,6 +28,7 @@
       :class="['ep-dropdown__container', { 'ep-dropdown__container--align-right': alignRight }]"
     >
       <div class="ep-dropdown__content">
+        <!-- @slot Content displayed inside the dropdown panel when open -->
         <slot
           name="content"
           :close="closeDropdown"
@@ -43,10 +45,16 @@
   defineOptions({ name: 'EpDropdown' })
 
   const props = defineProps({
+    /**
+     * If true, aligns the dropdown content to the right edge of the trigger.
+     */
     alignRight: {
       type: Boolean,
       default: false
     },
+    /**
+     * If true, opens the dropdown on hover instead of click.
+     */
     showOnHover: {
       type: Boolean,
       default: false

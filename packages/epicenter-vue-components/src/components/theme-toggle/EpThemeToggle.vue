@@ -4,6 +4,7 @@
     @click="toggleTheme"
   >
     <template #icon-left>
+      <!-- @slot Icon to display for theme toggle (typically a sun or moon icon) -->
       theme icon
     </template>
   </ep-button>
@@ -19,6 +20,10 @@
   })
 
   const props = defineProps({
+    /**
+     * The current theme of the application.
+     * @values light, dark
+     */
     currentTheme: {
       type: String,
       required: true

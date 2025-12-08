@@ -5,14 +5,14 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `items` | - | `array` | `[]` |
-| `auto` | - | `boolean` | `false` |
+| `items` | An array of breadcrumb items with label, to, and optional customClass properties. | `array` | `[]` |
+| `auto` | If true, automatically generates breadcrumbs from the current route. | `boolean` | `false` |
 
 ## Slots
 | Name | Description |
 |------|-------------|
-| `item` | No description available. |
-| `separator` | No description available. |
+| `item` | Custom content for each breadcrumb item. Provides crumb, index, and is-last via slot props. |
+| `separator` | Custom separator between breadcrumb items. Provides index via slot props. |
 
 
 ::: info
@@ -32,6 +32,7 @@ This component does not use events.
         :class="crumb.customClass"
       >
         <template v-if="$slots.item">
+          <!-- @slot item - Custom content for each breadcrumb item. Provides crumb, index, and is-last via slot props. -->
           <slot
             name="item"
             :crumb="crumb"
@@ -58,6 +59,7 @@ This component does not use events.
           aria-hidden="true"
         >
           <template v-if="$slots.separator">
+            <!-- @slot separator - Custom separator between breadcrumb items. Provides index via slot props. -->
             <slot
               name="separator"
               :index="index"
@@ -79,10 +81,16 @@ This component does not use events.
   import { useRoute } from 'vue-router'
 
   const props = defineProps({
+    /**
+     * An array of breadcrumb items with label, to, and optional customClass properties.
+     */
     items: {
       type: Array,
       default: () => []
     },
+    /**
+     * If true, automatically generates breadcrumbs from the current route.
+     */
     auto: {
       type: Boolean,
       default: false

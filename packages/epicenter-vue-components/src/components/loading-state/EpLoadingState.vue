@@ -48,6 +48,9 @@
   })
 
   defineProps({
+    /**
+     * Message object containing icon and message text to display while loading.
+     */
     message: {
       type: Object,
       default: () => ({

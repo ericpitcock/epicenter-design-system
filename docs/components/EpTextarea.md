@@ -5,20 +5,20 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `id` | - | `string` | `null` |
-| `name` | - | `string` | `null` |
-| `placeholder` | - | `string` | `null` |
-| `disabled` | - | `boolean` | `false` |
-| `required` | - | `boolean` | `false` |
-| `rows` | - | `number` | `2` |
-| `cols` | - | `number` | `20` |
-| `maxlength` | - | `number` | `null` |
-| `minlength` | - | `number` | `null` |
-| `readonly` | - | `boolean` | `false` |
-| `autofocus` | - | `boolean` | `false` |
-| `autocomplete` | - | `string` | `'on'` |
-| `spellcheck` | - | `boolean` | `false` |
-| `wrap` | - | `string` | `'soft'` |
+| `id` | The ID attribute for the textarea element. | `string` | `null` |
+| `name` | The name attribute for the textarea. | `string` | `null` |
+| `placeholder` | Placeholder text shown when textarea is empty. | `string` | `null` |
+| `disabled` | If true, disables the textarea. | `boolean` | `false` |
+| `required` | If true, marks the textarea as required. | `boolean` | `false` |
+| `rows` | Number of visible text rows. | `number` | `2` |
+| `cols` | Number of visible text columns (width). | `number` | `20` |
+| `maxlength` | Maximum character length allowed. | `number` | `null` |
+| `minlength` | Minimum character length required. | `number` | `null` |
+| `readonly` | If true, makes the textarea read-only. | `boolean` | `false` |
+| `autofocus` | If true, automatically focuses on mount. | `boolean` | `false` |
+| `autocomplete` | Controls autocomplete behavior. | `string` | `'on'` |
+| `spellcheck` | If true, enables spellcheck. | `boolean` | `false` |
+| `wrap` | Controls how text wraps. | `string` | `'soft'` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -66,58 +66,102 @@ This component does not use slots.
   })
 
   const props = defineProps({
+    /**
+     * The ID attribute for the textarea element.
+     */
     id: {
       type: String,
       default: null,
     },
+    /**
+     * The name attribute for the textarea.
+     */
     name: {
       type: String,
       default: null,
     },
+    /**
+     * Placeholder text shown when textarea is empty.
+     */
     placeholder: {
       type: String,
       default: null,
     },
+    /**
+     * If true, disables the textarea.
+     */
     disabled: {
       type: Boolean,
       default: false,
     },
+    /**
+     * If true, marks the textarea as required.
+     */
     required: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Number of visible text rows.
+     */
     rows: {
       type: Number,
       default: 2,
     },
+    /**
+     * Number of visible text columns (width).
+     */
     cols: {
       type: Number,
       default: 20,
     },
+    /**
+     * Maximum character length allowed.
+     */
     maxlength: {
       type: Number,
       default: null,
     },
+    /**
+     * Minimum character length required.
+     */
     minlength: {
       type: Number,
       default: null,
     },
+    /**
+     * If true, makes the textarea read-only.
+     */
     readonly: {
       type: Boolean,
       default: false,
     },
+    /**
+     * If true, automatically focuses on mount.
+     */
     autofocus: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Controls autocomplete behavior.
+     * @values 'on', 'off'
+     */
     autocomplete: {
       type: String,
       default: 'on',
     },
+    /**
+     * If true, enables spellcheck.
+     */
     spellcheck: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Controls how text wraps.
+     * @values 'soft', 'hard'
+     */
     wrap: {
       type: String,
       default: 'soft',

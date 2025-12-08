@@ -24,14 +24,23 @@
       EpDropdown
     },
     props: {
+      /**
+       * If true, both the button and dropdown are disabled.
+       */
       disabled: {
         type: Boolean,
         default: false
       },
+      /**
+       * Props to pass to the internal EpButton component.
+       */
       buttonProps: {
         type: Object,
         default: () => ({})
       },
+      /**
+       * Props to pass to the internal EpDropdown component.
+       */
       dropdownProps: {
         type: Object,
         default: () => ({})

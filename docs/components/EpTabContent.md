@@ -5,13 +5,13 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `activeTabIndex` | - | `number` | `0` |
-| `items` | - | `array` | `[]` |
+| `activeTabIndex` | The index of the currently active tab. | `number` | `0` |
+| `items` | An array of tab items (used to determine tab count). | `array` | `[]` |
 
 ## Slots
 | Name | Description |
 |------|-------------|
-| ``tab-${index}`` | No description available. |
+| `tab-{index}` | Content for each tab panel. Use named slots like 'tab-0', 'tab-1', etc. |
 
 
 ::: info
@@ -33,6 +33,7 @@ This component does not use events.
       :aria-labelledby="`tab-${index}`"
       :aria-hidden="index !== activeTabIndex"
     >
+      <!-- @slot tab-{index} - Content for each tab panel. Use named slots like 'tab-0', 'tab-1', etc. -->
       <slot :name="`tab-${index}`" />
     </div>
   </div>
@@ -44,10 +45,16 @@ This component does not use events.
   })
 
   const props = defineProps({
+    /**
+     * The index of the currently active tab.
+     */
     activeTabIndex: {
       type: Number,
       default: 0
     },
+    /**
+     * An array of tab items (used to determine tab count).
+     */
     items: {
       type: Array,
       default: () => []

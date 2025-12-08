@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `message` | - | `object` | `{
+| `message` | Message object containing icon and message text to display while loading. | `object` | `{
   icon: '',
   message: ''
 }` |
@@ -68,6 +68,9 @@ This component does not use events, slots.
   })
 
   defineProps({
+    /**
+     * Message object containing icon and message text to display while loading.
+     */
     message: {
       type: Object,
       default: () => ({

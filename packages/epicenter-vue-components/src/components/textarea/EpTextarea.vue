@@ -29,58 +29,102 @@
   })
 
   const props = defineProps({
+    /**
+     * The ID attribute for the textarea element.
+     */
     id: {
       type: String,
       default: null,
     },
+    /**
+     * The name attribute for the textarea.
+     */
     name: {
       type: String,
       default: null,
     },
+    /**
+     * Placeholder text shown when textarea is empty.
+     */
     placeholder: {
       type: String,
       default: null,
     },
+    /**
+     * If true, disables the textarea.
+     */
     disabled: {
       type: Boolean,
       default: false,
     },
+    /**
+     * If true, marks the textarea as required.
+     */
     required: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Number of visible text rows.
+     */
     rows: {
       type: Number,
       default: 2,
     },
+    /**
+     * Number of visible text columns (width).
+     */
     cols: {
       type: Number,
       default: 20,
     },
+    /**
+     * Maximum character length allowed.
+     */
     maxlength: {
       type: Number,
       default: null,
     },
+    /**
+     * Minimum character length required.
+     */
     minlength: {
       type: Number,
       default: null,
     },
+    /**
+     * If true, makes the textarea read-only.
+     */
     readonly: {
       type: Boolean,
       default: false,
     },
+    /**
+     * If true, automatically focuses on mount.
+     */
     autofocus: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Controls autocomplete behavior.
+     * @values 'on', 'off'
+     */
     autocomplete: {
       type: String,
       default: 'on',
     },
+    /**
+     * If true, enables spellcheck.
+     */
     spellcheck: {
       type: Boolean,
       default: false,
     },
+    /**
+     * Controls how text wraps.
+     * @values 'soft', 'hard'
+     */
     wrap: {
       type: String,
       default: 'soft',

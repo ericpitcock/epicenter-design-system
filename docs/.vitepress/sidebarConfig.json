@@ -6,6 +6,10 @@
       "link": "/components/EpActionBar"
     },
     {
+      "text": "EpAsyncButton",
+      "link": "/components/EpAsyncButton"
+    },
+    {
       "text": "EpBadge",
       "link": "/components/EpBadge"
     },
@@ -32,6 +36,10 @@
     {
       "text": "EpButton",
       "link": "/components/EpButton"
+    },
+    {
+      "text": "EpCarousel",
+      "link": "/components/EpCarousel"
     },
     {
       "text": "EpChart",
@@ -70,6 +78,10 @@
       "link": "/components/EpEmptyState"
     },
     {
+      "text": "EpEnrichmentDropdown",
+      "link": "/components/EpEnrichmentDropdown"
+    },
+    {
       "text": "EpFlex",
       "link": "/components/EpFlex"
     },
@@ -84,10 +96,6 @@
     {
       "text": "EpHeader",
       "link": "/components/EpHeader"
-    },
-    {
-      "text": "EpIcon",
-      "link": "/components/EpIcon"
     },
     {
       "text": "EpImage",
@@ -110,6 +118,10 @@
       "link": "/components/EpKeyValueTable"
     },
     {
+      "text": "EpLazyImage",
+      "link": "/components/EpLazyImage"
+    },
+    {
       "text": "EpLoadingState",
       "link": "/components/EpLoadingState"
     },
@@ -126,6 +138,10 @@
       "link": "/components/EpMenu"
     },
     {
+      "text": "EpMenuItem",
+      "link": "/components/EpMenuItem"
+    },
+    {
       "text": "EpNotification",
       "link": "/components/EpNotification"
     },
@@ -136,6 +152,10 @@
     {
       "text": "EpOverlay",
       "link": "/components/EpOverlay"
+    },
+    {
+      "text": "EpPagination",
+      "link": "/components/EpPagination"
     },
     {
       "text": "EpRadio",
@@ -224,6 +244,10 @@
     {
       "text": "EpThemeToggle",
       "link": "/components/EpThemeToggle"
+    },
+    {
+      "text": "EpToggleButton",
+      "link": "/components/EpToggleButton"
     },
     {
       "text": "EpToggle",

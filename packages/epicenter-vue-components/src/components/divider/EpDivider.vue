@@ -8,6 +8,10 @@
   })
 
   const props = defineProps({
+    /**
+     * The direction of the divider.
+     * @values horizontal, vertical
+     */
     direction: {
       type: String,
       default: 'horizontal'

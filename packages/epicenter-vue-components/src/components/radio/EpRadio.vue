@@ -31,28 +31,44 @@
   })
 
   const props = defineProps({
-    // required
+    /**
+     * The ID attribute for the radio input element.
+     */
     id: {
       type: String,
       required: true,
     },
+    /**
+     * Label text displayed next to the radio button.
+     */
     label: {
       type: String,
       required: true,
     },
+    /**
+     * The name attribute for the radio input (groups radios together).
+     */
     name: {
       type: String,
       required: true,
     },
+    /**
+     * The value for this radio option.
+     */
     value: {
       type: String,
       required: true,
     },
-    // optional
+    /**
+     * If true, disables the radio button.
+     */
     disabled: {
       type: Boolean,
       default: false,
     },
+    /**
+     * If true, marks the radio as required.
+     */
     required: {
       type: Boolean,
       default: false,

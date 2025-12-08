@@ -10,7 +10,7 @@
 ## Slots
 | Name | Description |
 |------|-------------|
-| `default` | No description available. |
+| `default` | Default slot for badge content. Falls back to label prop if not provided. |
 
 
 ::: info
@@ -22,6 +22,7 @@ This component does not use events.
 ```vue
 <template>
   <div class="ep-badge">
+    <!-- @slot Default slot for badge content. Falls back to label prop if not provided. -->
     <slot>{{ label }}</slot>
   </div>
 </template>

@@ -55,9 +55,9 @@ Use `calculateHeight: true` to dynamically assign a height to the container. Thi
 ## Slots
 | Name | Description |
 |------|-------------|
-| `header` | The header content. |
-| `default` | The content of the container. |
-| `footer` | The footer content. |
+| `header` | Header content of the container |
+| `default` | Main content of the container |
+| `footer` | Footer content of the container |
 
 
 ::: info
@@ -76,24 +76,18 @@ This component does not use props, events.
       v-if="$slots.header"
       class="ep-container__header"
     >
-      <!-- 
-        @slot header - The header content.
-      -->
+      <!-- @slot Header content of the container -->
       <slot name="header" />
     </div>
     <div class="ep-container__content">
-      <!-- 
-        @slot The content of the container.
-      -->
+      <!-- @slot Main content of the container -->
       <slot />
     </div>
     <div
       v-if="$slots.footer"
       class="ep-container__footer"
     >
-      <!-- 
-        @slot footer - The footer content.
-      -->
+      <!-- @slot Footer content of the container -->
       <slot name="footer" />
     </div>
   </div>

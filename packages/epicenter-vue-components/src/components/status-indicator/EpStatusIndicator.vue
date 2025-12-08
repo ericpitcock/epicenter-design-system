@@ -4,6 +4,7 @@
       class="ep-status-indicator__dot"
       :class="{ 'ep-status-indicator__dot--pulse': pulse }"
     />
+    <!-- @slot Default slot for label or text content next to the indicator. -->
     <slot />
   </span>
 </template>
@@ -14,6 +15,9 @@
   })
 
   const props = defineProps({
+    /**
+     * If true, the status indicator will pulse.
+     */
     pulse: {
       type: Boolean,
       default: false,

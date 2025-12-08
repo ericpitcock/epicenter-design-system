@@ -59,6 +59,7 @@
     },
     /**
      * The size of the button.
+     * @values small, default, large, xlarge
      */
     size: {
       type: String,

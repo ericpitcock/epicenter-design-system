@@ -10,18 +10,21 @@
       v-if="$slots['icon-left']"
       class="ep-button__icon ep-button__icon--left"
     >
+      <!-- @slot Icon displayed on the left side of the button label -->
       <slot name="icon-left" />
     </span>
     <span
       v-if="$slots.default"
       class="ep-button__label"
     >
+      <!-- @slot Default slot for button text/content -->
       <slot />
     </span>
     <span
       v-if="$slots['icon-right']"
       class="ep-button__icon ep-button__icon--right"
     >
+      <!-- @slot Icon displayed on the right side of the button label -->
       <slot name="icon-right" />
     </span>
   </component>

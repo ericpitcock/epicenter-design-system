@@ -5,16 +5,16 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `direction` | - | `string` | `'column'` |
-| `justify` | - | `string` | `'center'` |
+| `direction` | Layout direction of the empty state content. | `string` | `'column'` |
+| `justify` | Horizontal alignment of the content. | `string` | `'center'` |
 
 ## Slots
 | Name | Description |
 |------|-------------|
-| `img` | No description available. |
-| `default` | No description available. |
-| `subtext` | No description available. |
-| `cta` | No description available. |
+| `img` | Image or icon to display in the empty state |
+| `default` | Main content/message of the empty state |
+| `subtext` | Additional descriptive text or instructions |
+| `cta` | Call-to-action button or link |
 
 
 ::: info
@@ -30,20 +30,24 @@ This component does not use events.
       v-if="$slots.img"
       class="ep-empty-state__img"
     >
+      <!-- @slot Image or icon to display in the empty state -->
       <slot name="img" />
     </div>
     <div class="ep-empty-state__body">
+      <!-- @slot Main content/message of the empty state -->
       <slot />
       <div
         v-if="$slots.subtext"
         class="text--subtle font-size--small"
       >
+        <!-- @slot Additional descriptive text or instructions -->
         <slot name="subtext" />
       </div>
       <div
         v-if="$slots.cta"
         class="ep-empty-state__body__cta"
       >
+        <!-- @slot Call-to-action button or link -->
         <slot name="cta" />
       </div>
     </div>
@@ -58,10 +62,18 @@ This component does not use events.
   })
 
   const props = defineProps({
+    /**
+     * Layout direction of the empty state content.
+     * @values 'column', 'row'
+     */
     direction: {
       type: String,
       default: 'column'
     },
+    /**
+     * Horizontal alignment of the content.
+     * @values 'left', 'center', 'right'
+     */
     justify: {
       type: String,
       default: 'center'

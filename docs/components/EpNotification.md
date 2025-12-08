@@ -5,9 +5,9 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `id` | - | `string` | `-` |
-| `message` | - | `string` | `-` |
-| `timestamp` | - | `string` | `() => new Date().toISOString()` |
+| `id` | Unique identifier for the notification. | `string` | `-` |
+| `message` | The notification message text to display. | `string` | `-` |
+| `timestamp` | ISO 8601 timestamp string for when the notification was created. | `string` | `() => new Date().toISOString()` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -56,14 +56,23 @@ This component does not use slots.
   })
 
   const props = defineProps({
+    /**
+     * Unique identifier for the notification.
+     */
     id: {
       type: String,
       required: true
     },
+    /**
+     * The notification message text to display.
+     */
     message: {
       type: String,
       required: true
     },
+    /**
+     * ISO 8601 timestamp string for when the notification was created.
+     */
     timestamp: {
       type: String,
       default: () => new Date().toISOString(),

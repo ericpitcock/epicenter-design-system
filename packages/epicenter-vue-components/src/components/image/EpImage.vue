@@ -23,38 +23,65 @@
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
   const props = defineProps({
+    /**
+     * The source URL of the image.
+     */
     src: {
       type: String,
       required: true,
     },
+    /**
+     * The alt text for the image.
+     */
     alt: {
       type: String,
       default: '',
     },
+    /**
+     * The width of the image.
+     */
     width: {
       type: [String, Number],
       default: '100%',
     },
+    /**
+     * The height of the image.
+     */
     height: {
       type: [String, Number],
       default: '100%',
     },
+    /**
+     * Additional CSS class name for the image element.
+     */
     className: {
       type: String,
       default: '',
     },
+    /**
+     * URL of the placeholder image to display while loading.
+     */
     placeholder: {
       type: String,
       default: '',
     },
+    /**
+     * The background color of the placeholder.
+     */
     placeholderColor: {
       type: String,
       default: '#f5f5f5',
     },
+    /**
+     * The opacity of the placeholder.
+     */
     placeholderOpacity: {
       type: Number,
       default: 1,
     },
+    /**
+     * If true, enables lazy loading using Intersection Observer.
+     */
     lazy: {
       type: Boolean,
       default: true,

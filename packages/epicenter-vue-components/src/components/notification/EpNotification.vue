@@ -32,14 +32,23 @@
   })
 
   const props = defineProps({
+    /**
+     * Unique identifier for the notification.
+     */
     id: {
       type: String,
       required: true
     },
+    /**
+     * The notification message text to display.
+     */
     message: {
       type: String,
       required: true
     },
+    /**
+     * ISO 8601 timestamp string for when the notification was created.
+     */
     timestamp: {
       type: String,
       default: () => new Date().toISOString(),

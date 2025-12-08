@@ -5,12 +5,12 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `id` | - | `string` | `-` |
-| `label` | - | `string` | `-` |
-| `name` | - | `string` | `-` |
-| `value` | - | `string` | `-` |
-| `disabled` | - | `boolean` | `false` |
-| `required` | - | `boolean` | `false` |
+| `id` | The ID attribute for the radio input element. | `string` | `-` |
+| `label` | Label text displayed next to the radio button. | `string` | `-` |
+| `name` | The name attribute for the radio input (groups radios together). | `string` | `-` |
+| `value` | The value for this radio option. | `string` | `-` |
+| `disabled` | If true, disables the radio button. | `boolean` | `false` |
+| `required` | If true, marks the radio as required. | `boolean` | `false` |
 
 
 ::: info
@@ -53,28 +53,44 @@ This component does not use events, slots.
   })
 
   const props = defineProps({
-    // required
+    /**
+     * The ID attribute for the radio input element.
+     */
     id: {
       type: String,
       required: true,
     },
+    /**
+     * Label text displayed next to the radio button.
+     */
     label: {
       type: String,
       required: true,
     },
+    /**
+     * The name attribute for the radio input (groups radios together).
+     */
     name: {
       type: String,
       required: true,
     },
+    /**
+     * The value for this radio option.
+     */
     value: {
       type: String,
       required: true,
     },
-    // optional
+    /**
+     * If true, disables the radio button.
+     */
     disabled: {
       type: Boolean,
       default: false,
     },
+    /**
+     * If true, marks the radio as required.
+     */
     required: {
       type: Boolean,
       default: false,

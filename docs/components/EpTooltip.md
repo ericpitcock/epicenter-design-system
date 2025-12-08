@@ -5,14 +5,14 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `delay` | - | `number` | `0` |
-| `position` | - | `string` | `'top center'` |
+| `delay` | Delay in milliseconds before showing the tooltip on hover. | `number` | `0` |
+| `position` | Position of the tooltip relative to the trigger element. | `string` | `'top center'` |
 
 ## Slots
 | Name | Description |
 |------|-------------|
-| `tooltip` | No description available. |
-| `default` | No description available. |
+| `tooltip` | Tooltip content to display on hover |
+| `default` | Trigger element that shows the tooltip on hover |
 
 
 ::: info
@@ -31,8 +31,10 @@ This component does not use events.
     <div
       :class="['ep-tooltip', positionClass, { 'ep-tooltip--visible': visible }]"
     >
+      <!-- @slot Tooltip content to display on hover -->
       <slot name="tooltip" />
     </div>
+    <!-- @slot Trigger element that shows the tooltip on hover -->
     <slot />
   </div>
 </template>
@@ -45,10 +47,17 @@ This component does not use events.
   })
 
   const props = defineProps({
+    /**
+     * Delay in milliseconds before showing the tooltip on hover.
+     */
     delay: {
       type: Number,
       default: 0,
     },
+    /**
+     * Position of the tooltip relative to the trigger element.
+     * @values 'top left', 'top center', 'top right', 'right top', 'right center', 'right bottom', 'bottom left', 'bottom center', 'bottom right', 'left top', 'left center', 'left bottom'
+     */
     position: {
       type: String,
       default: 'top center',

@@ -5,16 +5,16 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `inputId` | - | `string` | `''` |
-| `label` | - | `string` | `''` |
-| `type` | - | `string` | `'text'` |
-| `placeholder` | - | `string` | `''` |
-| `clearable` | - | `boolean` | `false` |
-| `disabled` | - | `boolean` | `false` |
-| `autofocus` | - | `boolean` | `false` |
-| `required` | - | `boolean` | `false` |
-| `readonly` | - | `boolean` | `false` |
-| `size` | - | `string` | `'default'` |
+| `inputId` | The ID attribute for the input element. Auto-generated if not provided. | `string` | `''` |
+| `label` | Label text for the input (used as placeholder when empty). | `string` | `''` |
+| `type` | The input type attribute. | `string` | `'text'` |
+| `placeholder` | Placeholder text shown when the input is empty. | `string` | `''` |
+| `clearable` | If true, displays a clear button when input has a value. | `boolean` | `false` |
+| `disabled` | If true, disables the input element. | `boolean` | `false` |
+| `autofocus` | If true, automatically focuses the input on mount. | `boolean` | `false` |
+| `required` | If true, marks the input as required. | `boolean` | `false` |
+| `readonly` | If true, makes the input read-only. | `boolean` | `false` |
+| `size` | The size variant of the input. | `string` | `'default'` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -28,8 +28,8 @@
 ## Slots
 | Name | Description |
 |------|-------------|
-| `icon-left` | No description available. |
-| `icon-right` | No description available. |
+| `icon-left` | Optional icon displayed on the left side of the input |
+| `icon-right` | Optional icon displayed on the right side of the input (overridden by clearable button if active) |
 
 ## Component Code
 
@@ -40,6 +40,7 @@
     @click="onClear"
   >
     <template #icon-left>
+      <!-- @slot Optional icon displayed on the left side of the input -->
       <slot name="icon-left" />
     </template>
     <input
@@ -60,6 +61,7 @@
       @keydown.esc="onEsc"
     >
     <template #icon-right>
+      <!-- @slot Optional icon displayed on the right side of the input (overridden by clearable button if active) -->
       <slot name="icon-right" />
     </template>
   </ep-input-styler>
@@ -76,42 +78,74 @@
   })
 
   const props = defineProps({
+    /**
+     * The ID attribute for the input element. Auto-generated if not provided.
+     */
     inputId: {
       type: String,
       default: ''
     },
+    /**
+     * Label text for the input (used as placeholder when empty).
+     */
     label: {
       type: String,
       default: ''
     },
+    /**
+     * The input type attribute.
+     * @values 'text', 'email', 'password', 'number', 'tel', etc.
+     */
     type: {
       type: String,
       default: 'text'
     },
+    /**
+     * Placeholder text shown when the input is empty.
+     */
     placeholder: {
       type: String,
       default: ''
     },
+    /**
+     * If true, displays a clear button when input has a value.
+     */
     clearable: {
       type: Boolean,
       default: false
     },
+    /**
+     * If true, disables the input element.
+     */
     disabled: {
       type: Boolean,
       default: false
     },
+    /**
+     * If true, automatically focuses the input on mount.
+     */
     autofocus: {
       type: Boolean,
       default: false
     },
+    /**
+     * If true, marks the input as required.
+     */
     required: {
       type: Boolean,
       default: false
     },
+    /**
+     * If true, makes the input read-only.
+     */
     readonly: {
       type: Boolean,
       default: false
     },
+    /**
+     * The size variant of the input.
+     * @values 'small', 'default', 'large'
+     */
     size: {
       type: String,
       default: 'default'

@@ -23,18 +23,30 @@
   })
 
   const props = defineProps({
+    /**
+     * An array of button items with label and optional disabled properties.
+     */
     items: {
       type: Array,
       required: true
     },
+    /**
+     * The index of the initially active button.
+     */
     active: {
       type: Number,
       default: null
     },
+    /**
+     * The CSS class to apply to the active button.
+     */
     activeClass: {
       type: String,
       default: ''
     },
+    /**
+     * The size of the buttons in the group.
+     */
     size: {
       type: String,
       default: 'default'
