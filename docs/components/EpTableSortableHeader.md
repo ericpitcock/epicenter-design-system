@@ -38,8 +38,7 @@ This component does not use slots.
 </template>
 
 <script setup>
-  import ArrowDown01 from '@ericpitcock/epicenter-icons/icons/ArrowDown01'
-  import ArrowUp01 from '@ericpitcock/epicenter-icons/icons/ArrowUp01'
+  import { ArrowDown01, ArrowUp01 } from '@ericpitcock/epicenter-icons'
   import { computed } from 'vue'
 
   defineOptions({

@@ -90,8 +90,7 @@ This component does not use events.
 </template>
 
 <script setup>
-  import ArrowUpRight01 from '@ericpitcock/epicenter-icons/icons/ArrowUpRight01'
-  import Asterisk02 from '@ericpitcock/epicenter-icons/icons/Asterisk02'
+  import { ArrowUpRight01, Asterisk02 } from '@ericpitcock/epicenter-icons'
   import { ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'

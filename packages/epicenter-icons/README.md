@@ -9,11 +9,30 @@ npm install @ericpitcock/epicenter-icons
 ```
 
 ## Basic Usage
-### Individual Component Import
+
+### Destructured Import (Recommended)
+
+Import multiple icons at once using destructured imports:
 
 ```vue
 <script setup>
-  import Heart from '@ericpitcock/epicenter-icons/Heart'
+  import { Heart, Coffee02, ArrowRight01 } from '@ericpitcock/epicenter-icons'
+</script>
+
+<template>
+  <Heart />
+  <Coffee02 />
+  <ArrowRight01 />
+</template>
+```
+
+### Individual Component Import
+
+You can also import individual icons directly from their path:
+
+```vue
+<script setup>
+  import Heart from '@ericpitcock/epicenter-icons/icons/Heart'
 </script>
 
 <template>

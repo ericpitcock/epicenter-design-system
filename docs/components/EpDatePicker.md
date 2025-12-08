@@ -69,7 +69,7 @@ This component does not use slots.
 </template>
 
 <script setup>
-  import Calendar01 from '@ericpitcock/epicenter-icons/icons/Calendar01'
+  import { Calendar01 } from '@ericpitcock/epicenter-icons'
   import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
   import EpInput from '../input/EpInput.vue'

@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-  import UserCircle02 from '@ericpitcock/epicenter-icons/icons/UserCircle02'
+  import { UserCircle02 } from '@ericpitcock/epicenter-icons'
 
   import EpHeader from '../header/EpHeader.vue'
 

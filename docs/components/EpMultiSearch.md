@@ -91,8 +91,7 @@ This component does not use slots.
 </template>
 
 <script setup>
-  import Cancel01 from '@ericpitcock/epicenter-icons/icons/Cancel01'
-  import Search01 from '@ericpitcock/epicenter-icons/icons/Search01'
+  import { Cancel01, Search01 } from '@ericpitcock/epicenter-icons'
   import { computed, ref, watch } from 'vue'
 
   defineOptions({

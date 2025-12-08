@@ -90,8 +90,7 @@
 </template>
 
 <script setup>
-  import Alert02 from '@ericpitcock/epicenter-icons/icons/Alert02'
-  import Tick02 from '@ericpitcock/epicenter-icons/icons/Tick02'
+  import { Alert02, Tick02 } from '@ericpitcock/epicenter-icons'
   import { faker } from '@faker-js/faker'
   import { useClipboard } from '@vueuse/core'
   import chroma from 'chroma-js'

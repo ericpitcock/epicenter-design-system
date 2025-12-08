@@ -1,5 +1,4 @@
-import ArrowDown01 from '@ericpitcock/epicenter-icons/icons/ArrowDown01'
-import Refresh01 from '@ericpitcock/epicenter-icons/icons/Refresh01'
+import { ArrowDown01, Refresh01 } from '@ericpitcock/epicenter-icons'
 import { onMounted, ref } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'

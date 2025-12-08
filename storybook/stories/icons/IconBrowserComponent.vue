@@ -82,8 +82,7 @@
 </template>
 
 <script setup>
-  import ArrowLeft01 from '@ericpitcock/epicenter-icons/icons/ArrowLeft01'
-  import ArrowRight01 from '@ericpitcock/epicenter-icons/icons/ArrowRight01'
+  import { ArrowLeft01, ArrowRight01 } from '@ericpitcock/epicenter-icons'
   import { computed, defineAsyncComponent, ref, watch } from 'vue'
 
   import EpFlex from '@/components/flexbox/EpFlex.vue'

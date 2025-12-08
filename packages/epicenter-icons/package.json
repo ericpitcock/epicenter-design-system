@@ -2,7 +2,14 @@
   "name": "@ericpitcock/epicenter-icons",
   "version": "2.0.0-beta",
   "description": "Epicenter Icons, A comprehensive Vue 3 icon library",
+  "type": "module",
+  "main": "./index.js",
+  "module": "./index.js",
   "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.js"
+    },
     "./base.scss": "./base.scss",
     "./icons/*": {
       "import": "./epicenter-icons/*.js",
@@ -12,6 +19,7 @@
   },
   "files": [
     "epicenter-icons/",
+    "index.js",
     "base.scss",
     "README.md"
   ],
@@ -19,6 +27,8 @@
     "download": "python3 scripts/download_svgs.py",
     "clean": "python3 scripts/clean_svgs.py",
     "generate": "python3 scripts/generate_vue_components.py",
+    "generate-index": "node scripts/generate-index.mjs",
+    "build": "npm run generate && npm run generate-index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

@@ -1,4 +1,4 @@
-import Coffee from '@ericpitcock/epicenter-icons/icons/Coffee02'
+import { Coffee02 } from '@ericpitcock/epicenter-icons'
 import { computed, ref, toRef } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
@@ -104,7 +104,7 @@ export const Dropdown = args => ({
     EpDropdown,
     EpMenu,
     EpMenuItem,
-    Coffee
+    Coffee02
   },
   setup() {
     const openState = ref(false)

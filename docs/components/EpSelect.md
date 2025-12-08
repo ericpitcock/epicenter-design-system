@@ -68,7 +68,7 @@
 </template>
 
 <script setup>
-  import ArrowDown01 from '@ericpitcock/epicenter-icons/icons/ArrowDown01'
+  import { ArrowDown01 } from '@ericpitcock/epicenter-icons'
   import { computed } from 'vue'
 
   import EpInputStyler from '../input-styler/EpInputStyler.vue'

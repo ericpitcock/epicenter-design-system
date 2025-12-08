@@ -45,7 +45,7 @@
 </template>
 
 <script setup>
-  import Cancel01 from '@ericpitcock/epicenter-icons/icons/Cancel01'
+  import { Cancel01 } from '@ericpitcock/epicenter-icons'
   import { computed } from 'vue'
 
   defineOptions({

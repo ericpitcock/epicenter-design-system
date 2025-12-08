@@ -1,4 +1,4 @@
-import ArrowDown01 from '@ericpitcock/epicenter-icons/icons/ArrowDown01'
+import { ArrowDown01 } from '@ericpitcock/epicenter-icons'
 import { ref, toRef } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'

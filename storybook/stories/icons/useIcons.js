@@ -6,7 +6,7 @@ export const useIcons = (leftIconName, rightIconName) => {
   const getIconComponent = (iconName) => {
     return computed(() => {
       if (iconName.value && iconName.value !== 'None') {
-        return defineAsyncComponent(() => import(`@ericpitcock/epicenter-icons/icons/${iconName.value}.js`))
+        return defineAsyncComponent(() => import(`../../../packages/epicenter-icons/epicenter-icons/${iconName.value}.js`))
       }
       return null
     })
