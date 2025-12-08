@@ -16,10 +16,12 @@
           :class="buttonClass"
           @click="prevPage"
         >
-          <!-- @slot Custom icon for the previous page button. Defaults to '‹' -->
-          <slot name="icon-prev">
-            ‹
-          </slot>
+          <!-- @slot Custom icon for the previous page button. Defaults to <ArrowLeft01 /> -->
+          <template #icon-left>
+            <slot name="icon-prev">
+              <ArrowLeft01 />
+            </slot>
+          </template>
         </ep-button>
         <template v-if="showPages">
           <ep-button
@@ -60,10 +62,12 @@
           :class="buttonClass"
           @click="nextPage"
         >
-          <!-- @slot Custom icon for the next page button. Defaults to '›' -->
-          <slot name="icon-next">
-            ›
-          </slot>
+          <template #icon-right>
+            <!-- @slot Custom icon for the next page button. Defaults to <ArrowRight01 /> -->
+            <slot name="icon-next">
+              <ArrowRight01 />
+            </slot>
+          </template>
         </ep-button>
       </ep-flex>
       <!-- @slot Content displayed on the right side of the pagination controls -->
@@ -73,6 +77,7 @@
 </template>
 
 <script setup>
+  import { ArrowLeft01, ArrowRight01 } from '@ericpitcock/epicenter-icons'
   import { computed } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
