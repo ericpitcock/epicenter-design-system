@@ -3,7 +3,7 @@
     "docs:dev": "vitepress dev --port 3000",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview",
-    "update-docs": "node scripts/generateDocs.mjs",
+    "update-docs": "node scripts/generateDocs.mjs && node scripts/generateSidebarConfig.mjs",
     "generate-sidebar": "node scripts/generateSidebarConfig.mjs"
   }
 }

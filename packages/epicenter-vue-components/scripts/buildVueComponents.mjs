@@ -11,7 +11,7 @@ generateComponentExports()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = resolve(__filename, '..')
 
-const packageDir = resolve(__dirname, '../packages/epicenter-vue-components')
+const packageDir = resolve(__dirname, '..')
 const srcDir = resolve(packageDir, 'src')
 const distDir = resolve(packageDir, 'dist')
 

@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = resolve(__filename, '..')
 
 // Define paths the same way as in buildVueComponents.mjs
-const packageDir = resolve(__dirname, '../packages/epicenter-vue-components')
+const packageDir = resolve(__dirname, '..')
 const srcDir = resolve(packageDir, 'src')
 const componentsDir = resolve(srcDir, 'components')
 

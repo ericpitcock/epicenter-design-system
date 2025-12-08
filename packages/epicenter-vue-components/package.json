@@ -11,6 +11,10 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build-components": "node scripts/buildVueComponents.mjs",
+    "generate-exports": "node scripts/generateExports.mjs"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ericpitcock/epicenter-design-system.git"

@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = resolve(__filename, '..')
 
 // Define paths
-const packageDir = resolve(__dirname, '../packages/epicenter-styles')
+const packageDir = resolve(__dirname, '..')
 const srcFile = join(packageDir, 'index.scss')
 const distDir = join(packageDir, 'dist')
 const distCSS = join(distDir, 'epicenter-design-system.css')

@@ -36,6 +36,7 @@ import EpMenuItem from './menu/EpMenuItem.vue'
 import EpNotification from './notification/EpNotification.vue'
 import EpNotifications from './notification/EpNotifications.vue'
 import EpOverlay from './overlays/EpOverlay.vue'
+import EpPagination from './pagination/EpPagination.vue'
 import EpRadio from './radio/EpRadio.vue'
 import EpResizable from './resizable/EpResizable.vue'
 import EpMultiSearch from './search/EpMultiSearch.vue'
@@ -101,6 +102,7 @@ export {
   EpNotification,
   EpNotifications,
   EpOverlay,
+  EpPagination,
   EpRadio,
   EpResizable,
   EpMultiSearch,
@@ -167,6 +169,7 @@ export default {
   EpNotification,
   EpNotifications,
   EpOverlay,
+  EpPagination,
   EpRadio,
   EpResizable,
   EpMultiSearch,
