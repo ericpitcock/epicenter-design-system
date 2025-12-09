@@ -15,10 +15,6 @@
 
   import EpButton from '../button/EpButton.vue'
 
-  defineOptions({
-    name: 'EpThemeToggle'
-  })
-
   const props = defineProps({
     /**
      * The current theme of the application.

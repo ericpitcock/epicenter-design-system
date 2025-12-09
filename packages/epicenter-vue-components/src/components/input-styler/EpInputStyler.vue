@@ -48,10 +48,6 @@
   import { Cancel01 } from '@ericpitcock/epicenter-icons'
   import { computed } from 'vue'
 
-  defineOptions({
-    name: 'EpInputStyler',
-  })
-
   const props = defineProps({
     id: {
       type: String,

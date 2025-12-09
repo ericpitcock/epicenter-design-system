@@ -18,10 +18,6 @@
 <script setup>
   import { computed, onBeforeUnmount, ref } from 'vue'
 
-  defineOptions({
-    name: 'EpTooltip',
-  })
-
   const props = defineProps({
     /**
      * Delay in milliseconds before showing the tooltip on hover.

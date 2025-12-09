@@ -45,10 +45,6 @@
   import EpHeader from '../header/EpHeader.vue'
   import EpNotification from '../notification/EpNotification.vue'
 
-  defineOptions({
-    name: 'EpNotifications'
-  })
-
   const props = defineProps({
     emptyStateMessage: {
       type: String,

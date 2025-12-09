@@ -37,7 +37,6 @@
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   defineOptions({
-    name: 'EpInput',
     inheritAttrs: false,
   })
 

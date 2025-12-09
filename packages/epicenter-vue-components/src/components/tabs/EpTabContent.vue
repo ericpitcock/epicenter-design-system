@@ -17,10 +17,6 @@
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpTabContent',
-  })
-
   const props = defineProps({
     /**
      * The index of the currently active tab.

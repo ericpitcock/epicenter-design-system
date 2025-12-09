@@ -42,8 +42,6 @@
   import { onClickOutside } from '@vueuse/core'
   import { computed, ref, useId, useTemplateRef } from 'vue'
 
-  defineOptions({ name: 'EpDropdown' })
-
   const props = defineProps({
     /**
      * If true, aligns the dropdown content to the right edge of the trigger.

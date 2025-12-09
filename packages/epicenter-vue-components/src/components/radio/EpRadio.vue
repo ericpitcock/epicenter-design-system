@@ -20,11 +20,6 @@
 <script setup>
   import { computed } from 'vue'
 
-  defineOptions({
-    name: 'EpRadio'
-  })
-
-
   const modelValue = defineModel({
     type: String,
     required: true

@@ -18,10 +18,6 @@
 
   import EpButton from '../button/EpButton.vue'
 
-  defineOptions({
-    name: 'EpButtonGroup'
-  })
-
   const props = defineProps({
     /**
      * An array of button items with label and optional disabled properties.

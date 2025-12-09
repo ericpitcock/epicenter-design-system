@@ -6,7 +6,4 @@
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpFlex'
-  })
 </script>

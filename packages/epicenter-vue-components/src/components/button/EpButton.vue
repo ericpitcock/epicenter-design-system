@@ -33,10 +33,6 @@
 <script setup>
   import { computed, useAttrs } from 'vue'
 
-  defineOptions({
-    name: 'EpButton'
-  })
-
   const props = defineProps({
     /**
      * The size of the button.

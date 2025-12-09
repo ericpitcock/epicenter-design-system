@@ -21,10 +21,6 @@
 <script setup>
   import { computed } from 'vue'
 
-  defineOptions({
-    name: 'EpCheckbox'
-  })
-
   const modelValue = defineModel({
     type: Boolean,
     required: true

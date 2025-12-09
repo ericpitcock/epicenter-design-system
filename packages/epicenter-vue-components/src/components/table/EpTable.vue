@@ -66,10 +66,6 @@
 
   import EpTableCell from './EpTableCell.vue'
 
-  defineOptions({
-    name: 'EpTable'
-  })
-
   const props = defineProps({
     /**
      * The columns of the table.

@@ -15,10 +15,6 @@
 <script setup>
   import { computed } from 'vue'
 
-  defineOptions({
-    name: 'EpToggle',
-  })
-
   const props = defineProps({
     /**
      * If true, shows the toggle in the active/on state.

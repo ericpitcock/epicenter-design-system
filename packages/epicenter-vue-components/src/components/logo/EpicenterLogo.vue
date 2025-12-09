@@ -20,9 +20,6 @@
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpicenterLogo',
-  })
 </script>
 
 <style lang="scss" scoped>

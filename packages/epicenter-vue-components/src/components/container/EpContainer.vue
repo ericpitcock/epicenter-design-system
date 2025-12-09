@@ -27,10 +27,6 @@
 <script setup>
   import { useTemplateRef } from 'vue'
 
-  defineOptions({
-    name: 'EpContainer'
-  })
-
   const epContainer = useTemplateRef('epContainer')
 
   defineExpose({

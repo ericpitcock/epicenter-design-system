@@ -24,9 +24,6 @@
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpTextarea',
-  })
 
   const props = defineProps({
     /**

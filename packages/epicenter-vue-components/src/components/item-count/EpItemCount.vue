@@ -5,10 +5,6 @@
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpItemCount'
-  })
-
   const props = defineProps({
     /**
      * The count of items to display.

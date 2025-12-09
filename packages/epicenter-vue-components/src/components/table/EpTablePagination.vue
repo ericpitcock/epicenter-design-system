@@ -76,10 +76,6 @@
   import EpFooter from '../footer/EpFooter.vue'
   import EpSelect from '../select/EpSelect.vue'
 
-  defineOptions({
-    name: 'EpTablePagination'
-  })
-
   const props = defineProps({
     currentPage: {
       type: Number,

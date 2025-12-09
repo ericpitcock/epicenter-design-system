@@ -83,10 +83,6 @@
   import EpButton from '../button/EpButton.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
 
-  defineOptions({
-    name: 'EpPagination'
-  })
-
   const props = defineProps({
     /**
      * The current active page number.

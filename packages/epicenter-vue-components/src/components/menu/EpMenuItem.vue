@@ -32,10 +32,6 @@
 <script setup>
   import { ref } from 'vue'
 
-  defineOptions({
-    name: 'EpMenuItem'
-  })
-
   const props = defineProps({
     /**
      * The type of menu item to render.

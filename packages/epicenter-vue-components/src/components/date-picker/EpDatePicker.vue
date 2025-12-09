@@ -18,10 +18,6 @@
 
   import EpInput from '../input/EpInput.vue'
 
-  defineOptions({
-    name: 'EpDatePicker'
-  })
-
   const props = defineProps({
     /**
      * If true, closes the date picker when a date is selected.

@@ -27,7 +27,4 @@
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpHeader',
-  })
 </script>

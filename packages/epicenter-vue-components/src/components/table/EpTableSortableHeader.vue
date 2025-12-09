@@ -15,10 +15,6 @@
   import { ArrowDown01, ArrowUp01 } from '@ericpitcock/epicenter-icons'
   import { computed } from 'vue'
 
-  defineOptions({
-    name: 'EpTableSortableHeader'
-  })
-
   const props = defineProps({
     column: {
       type: Object,

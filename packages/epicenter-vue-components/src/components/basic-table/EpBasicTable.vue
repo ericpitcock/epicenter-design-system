@@ -35,10 +35,6 @@
 <script setup>
   import { computed } from 'vue'
 
-  defineOptions({
-    name: 'EpBasicTable'
-  })
-
   const props = defineProps({
     /**
      * The columns of the table.

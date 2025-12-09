@@ -49,10 +49,6 @@
   import { Cancel01, Search01 } from '@ericpitcock/epicenter-icons'
   import { computed, ref, watch } from 'vue'
 
-  defineOptions({
-    name: 'EpMultiSearch',
-  })
-
   const props = defineProps({
     placeholder: {
       type: String,

@@ -6,10 +6,6 @@
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpBadge'
-  })
-
   defineProps({
     /**
      * The label to display in the badge.

@@ -34,10 +34,6 @@
 
   import EpHeader from '../header/EpHeader.vue'
 
-  defineOptions({
-    name: 'EpBrowserFrame'
-  })
-
   const props = defineProps({
     /**
      * The width of the browser frame.
