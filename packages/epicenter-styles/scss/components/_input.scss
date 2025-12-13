@@ -18,8 +18,12 @@ input.ep-input {
   border: 1px solid var(--ep-input-border-color);
   border-radius: var(--ep-input-border-radius);
 
-  &.ep-input--has-icon-left {
+  .ep-input-styler:has(.ep-input-styler__icon-left) & {
     padding-left: 2.8rem;
+  }
+
+  .ep-input-styler:has(.ep-input-styler__icon-right) & {
+    padding-right: 2.8rem;
   }
 
   &::placeholder {
@@ -29,11 +33,11 @@ input.ep-input {
   &--large {
     padding: 0 1.6rem;
 
-    &.ep-input--has-icon-left {
+    .ep-input-styler:has(.ep-input-styler__icon-left) & {
       padding-left: 3.6rem;
     }
 
-    &.ep-input--has-icon-right {
+    .ep-input-styler:has(.ep-input-styler__icon-right) & {
       padding-right: 3.6rem;
     }
   }
@@ -41,18 +45,17 @@ input.ep-input {
   &--xlarge {
     padding: 0 1.8rem;
 
-    &.ep-input--has-icon-left {
+    .ep-input-styler:has(.ep-input-styler__icon-left) & {
       padding-left: 4.4rem;
     }
 
-    &.ep-input--has-icon-right {
+    .ep-input-styler:has(.ep-input-styler__icon-right) & {
       padding-right: 4.4rem;
     }
   }
 
   &--disabled {
     color: var(--ep-input-disabled-text-color);
-    cursor: not-allowed;
     pointer-events: none;
 
     &::placeholder {

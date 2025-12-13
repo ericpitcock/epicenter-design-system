@@ -114,49 +114,55 @@ export default {
       }
     },
     textColor: {
-      name: 'Text Color',
+      name: '--ep-input-text-color',
       control: {
         type: 'color'
       }
     },
     caretColor: {
-      name: 'Caret Color',
+      name: '--ep-input-caret-color',
       control: {
         type: 'color'
       }
     },
     borderColor: {
-      name: 'Border Color',
+      name: '--ep-input-border-color',
       control: {
         type: 'color'
       }
     },
     placeholderColor: {
-      name: 'Placeholder Color',
+      name: '--ep-input-placeholder-text-color',
       control: {
         type: 'color'
       }
     },
     focusBorderColor: {
-      name: 'Focus Border Color',
+      name: '--ep-input-focus-border-color',
       control: {
         type: 'color'
       }
     },
     disabledTextColor: {
-      name: 'Disabled Text Color',
+      name: '--ep-input-disabled-text-color',
       control: {
         type: 'color'
       }
     },
+    fontSize: {
+      name: '--ep-input-font-size (rem)',
+      control: {
+        type: 'text'
+      }
+    },
     borderRadius: {
-      name: 'Border Radius',
+      name: '--ep-input-border-radius',
       control: {
         type: 'number'
       }
     },
     backgroundColor: {
-      name: 'Background Color',
+      name: '--ep-input-bg-color',
       control: {
         type: 'color'
       }
@@ -175,11 +181,12 @@ export const Input = args => ({
 
     const styles = computed(() => {
       return {
-        // '--ep-input-font-size': var(--font-size--default);
+        '--ep-input-font-size': args.fontSize + 'rem',
         '--ep-input-text-color': args.textColor,
         '--ep-input-caret-color': args.caretColor,
         '--ep-input-border-color': args.borderColor,
-        '--ep-input-border-radius': args.borderRadius + 'px',
+        '--ep-input-bg-color': args.backgroundColor,
+        '--ep-input-border-radius': args.borderRadius + 'rem',
         '--ep-input-placeholder-text-color': args.placeholderColor,
         '--ep-input-focus-border-color': args.focusBorderColor,
         '--ep-input-disabled-text-color': args.disabledTextColor,
@@ -215,7 +222,7 @@ export const Input = args => ({
         <component :is="iconLeftComponent" />
       </template>
       <template
-        v-if="iconRightComponent"
+        v-if="iconRightComponent && !args.clearable"
         #icon-right
       >
         <component :is="iconRightComponent" @click="clear" />
@@ -228,18 +235,17 @@ Input.args = {
   inputId: '',
   label: 'What is your favorite word?',
   type: 'text',
-  placeholder: 'Enter your favorite word',
+  placeholder: 'e.g., Serendipity',
   placeholderColor: '',
   modelValue: '',
-  enabledIcons: true,
+  enabledIcons: false,
+  fontSize: '1.3',
   iconLeft: 'None',
   iconRight: 'None',
   clearable: true,
   disabled: false,
   autofocus: false,
   size: 'xlarge',
-  borderWidth: '0.1rem',
-  borderStyle: 'solid',
   borderColor: 'var(--border-color)',
   borderRadius: '0.3',
   backgroundColor: 'var(--interface-foreground)',

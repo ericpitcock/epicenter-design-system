@@ -3,7 +3,10 @@
     v-bind="stylerProps"
     @click="onClear"
   >
-    <template #icon-left>
+    <template
+      v-if="$slots['icon-left']"
+      #icon-left
+    >
       <!-- @slot Optional icon displayed on the left side of the input -->
       <slot name="icon-left" />
     </template>
@@ -24,7 +27,10 @@
       @keydown="onKeyDown"
       @keydown.esc="onEsc"
     >
-    <template #icon-right>
+    <template
+      v-if="$slots['icon-right']"
+      #icon-right
+    >
       <!-- @slot Optional icon displayed on the right side of the input (overridden by clearable button if active) -->
       <slot name="icon-right" />
     </template>
@@ -32,7 +38,7 @@
 </template>
 
 <script setup>
-  import { computed, ref, useSlots, watch } from 'vue'
+  import { computed, ref, useId, watch } from 'vue'
 
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
@@ -107,7 +113,7 @@
     },
     /**
      * The size variant of the input.
-     * @values 'small', 'default', 'large'
+     * @values 'default', 'large', 'xlarge'
      */
     size: {
       type: String,
@@ -117,8 +123,6 @@
 
   const emit = defineEmits(['focus', 'esc', 'blur', 'enter', 'clear'])
 
-  const hasFocus = ref(false)
-  const hasInput = ref(false)
   const input = ref(null)
 
   const modelValue = defineModel({
@@ -126,30 +130,22 @@
     required: true
   })
 
-  const computedId = ref(props.inputId || crypto.randomUUID())
+  const hasInput = ref(!!modelValue.value)
+  const computedId = ref(props.inputId || useId())
 
   const computedPlaceholder = computed(() => props.placeholder || props.label)
 
-  const slots = useSlots()
-  const hasIconLeft = computed(() => !!slots['icon-left'])
-  const hasIconRight = computed(() => !!slots['icon-right'])
-
   const stylerProps = computed(() => ({
     id: computedId.value,
-    hasFocus: hasFocus.value,
     hasInput: hasInput.value,
     label: props.label,
     clearable: props.clearable,
     disabled: props.disabled,
     size: props.size,
-    iconRightClickable: props.clearable,
-    iconRightVisible: props.clearable && hasInput.value || !!hasIconRight.value
   }))
 
   const inputClasses = computed(() => ({
     [`ep-input--${props.size}`]: props.size,
-    'ep-input--has-icon-left': hasIconLeft.value,
-    'ep-input--has-icon-right': hasIconRight.value,
     'ep-input--disabled': props.disabled
   }))
 
@@ -163,12 +159,10 @@
   }
 
   const onFocus = () => {
-    hasFocus.value = true
     emit('focus', modelValue.value)
   }
 
   const onBlur = () => {
-    hasFocus.value = false
     emit('blur', modelValue.value)
   }
 
@@ -180,7 +174,6 @@
 
   const onClear = () => {
     modelValue.value = ''
-    hasInput.value = false
     input.value?.focus()
     emit('clear', '')
   }

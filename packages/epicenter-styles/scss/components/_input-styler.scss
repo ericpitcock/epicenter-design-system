@@ -1,11 +1,23 @@
 .ep-input-styler__container {
+  --ep-input-height: 3rem;
   width: 100%;
+}
+
+.ep-input-styler {
   position: relative;
+  height: var(--ep-input-height);
+
+  &--large {
+    --ep-input-height: 3.8rem;
+  }
+
+  &--xlarge {
+    --ep-input-height: 4.6rem;
+  }
 }
 
 .ep-input-styler--disabled {
   color: var(--text-color--disabled);
-  pointer-events: none;
 }
 
 .ep-input-styler__inner {
@@ -49,10 +61,6 @@
   .ep-icon {
     --ep-icon-width: 45%;
     --ep-icon-height: 45%;
-  }
-
-  &--small {
-    width: 2.5rem;
   }
 
   &--large {

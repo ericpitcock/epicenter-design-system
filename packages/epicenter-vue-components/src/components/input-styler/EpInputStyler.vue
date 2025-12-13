@@ -7,13 +7,11 @@
     >
       {{ label }}
     </label>
-    <div
-      :class="[
-        'ep-input-styler',
-        { 'ep-input-styler--disabled': disabled }
-      ]"
-      :style="containerStyles"
-    >
+    <div :class="[
+      'ep-input-styler',
+      { 'ep-input-styler--disabled': disabled },
+      `ep-input-styler--${size}`
+    ]">
       <div class="ep-input-styler__inner">
         <div
           v-if="$slots['icon-left']"
@@ -25,13 +23,16 @@
           <slot name="icon-left" />
         </div>
         <div
-          v-if="$slots['icon-right']"
+          v-if="$slots['icon-right'] || clearable"
           :class="[
             'ep-input-styler__icon-right',
             `ep-input-styler__icon-right--${size}`
           ]"
         >
-          <slot name="icon-right" />
+          <slot
+            v-if="$slots['icon-right'] && !clearable"
+            name="icon-right"
+          />
           <Cancel01
             v-if="clearable && hasInput"
             class="ep-input-styler__icon-right--clickable"
@@ -45,25 +46,17 @@
 </template>
 
 <script setup>
-  import { Cancel01 } from '@ericpitcock/epicenter-icons'
-  import { computed } from 'vue'
+  import Cancel01 from '@ericpitcock/epicenter-icons/epicenter-icons/Cancel01'
+  // import { computed } from 'vue'
 
   const props = defineProps({
     id: {
       type: String,
       default: ''
     },
-    hasFocus: {
-      type: Boolean,
-      default: false
-    },
     hasInput: {
       type: Boolean,
       default: false
-    },
-    inputValue: {
-      type: String,
-      default: ''
     },
     label: {
       type: String,
@@ -77,14 +70,6 @@
       type: Boolean,
       default: false
     },
-    // iconRightClickable: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    // iconRightVisible: {
-    //   type: Boolean,
-    //   default: false
-    // },
     size: {
       type: String,
       default: 'default'
@@ -92,22 +77,4 @@
   })
 
   defineEmits(['click'])
-
-  const sizes = {
-    small: '22',
-    default: '30',
-    large: '38',
-    xlarge: '46'
-  }
-
-  const containerStyles = computed(() => {
-    return {
-      height: `${sizes[props.size]}px`
-    }
-  })
-
-  // const onClick = () => {
-  //   if (!props.iconRightVisible) return
-  //   emit('click')
-  // }
 </script>
