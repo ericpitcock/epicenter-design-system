@@ -32,7 +32,21 @@
           @clear="onSearchUpdateLocal($event)"
           @query-close="onSearchUpdateLocal($event)"
         />
-        <ep-dropdown v-bind="columnFiltersDropdownProps">
+        <ep-dropdown align-right>
+          <template #trigger="{ attrs, on }">
+            <ep-button
+              size="large"
+              aria-label="Column Filters"
+              title="Column Filters"
+              class="ep-button-var--outline"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <template #icon-left>
+                <layout2-column />
+              </template>
+            </ep-button>
+          </template>
           <template #content>
             <ep-container class="column-filter-container">
               <ep-flex class="flex-col gap-10">
@@ -88,7 +102,41 @@
             <ep-badge :label="row.intensity" />
           </template>
           <template #actions-menu="{ row }">
-            <ep-dropdown v-bind="tableActionsMenuProps(row.id)" />
+            <ep-dropdown align-right>
+              <template #trigger="{ attrs, on }">
+                <ep-button
+                  size="small"
+                  aria-label="Actions"
+                  class="ep-button-var--ghost"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  <template #icon-left>
+                    <more-vertical />
+                  </template>
+                </ep-button>
+              </template>
+              <template #content="{ close }">
+                <ep-menu>
+                  <ep-menu-item type="item">
+                    <ep-button
+                      class="ep-button--menu-item"
+                      @click="() => { onEditRow(row.id); close() }"
+                    >
+                      Edit
+                    </ep-button>
+                  </ep-menu-item>
+                  <ep-menu-item type="item">
+                    <ep-button
+                      class="ep-button--menu-item"
+                      @click="() => { onDeleteRow(row.id); close() }"
+                    >
+                      Delete
+                    </ep-button>
+                  </ep-menu-item>
+                </ep-menu>
+              </template>
+            </ep-dropdown>
           </template>
           <template
             #thead-fixed="{ visibleColumns, cellWidths, showActionsMenu }"
@@ -123,6 +171,8 @@
 </template>
 
 <script setup>
+  import Layout2Column from '@ericpitcock/epicenter-icons/epicenter-icons/Layout2Column'
+  import MoreVertical from '@ericpitcock/epicenter-icons/epicenter-icons/MoreVertical'
   import { ref } from 'vue'
 
   import EpBadge from '@/components/badge/EpBadge.vue'
@@ -132,6 +182,8 @@
   import EpDropdown from '@/components/dropdown/EpDropdown.vue'
   import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
   import EpFlex from '@/components/flexbox/EpFlex.vue'
+  import EpMenu from '@/components/menu/EpMenu.vue'
+  import EpMenuItem from '@/components/menu/EpMenuItem.vue'
   import EpMultiSearch from '@/components/search/EpMultiSearch.vue'
   import EpTable from '@/components/table/EpTable.vue'
   import EpTableCheckboxFilters from '@/components/table/EpTableCheckboxFilters.vue'
@@ -139,7 +191,6 @@
   import EpTablePagination from '@/components/table/EpTablePagination.vue'
   import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
   import {
-    useActionsMenu,
     useColumnFilters,
     useDataFilters,
     useExclude,
@@ -228,52 +279,19 @@
     console.log('Row clicked:', row)
   }
 
-  const columnFiltersDropdownProps = {
-    alignRight: true,
-    buttonProps: {
-      size: 'large',
-      label: null,
-      ariaLabel: 'Column Filters',
-      iconLeft: { name: 'f-columns' },
-      iconRight: undefined,
-      title: 'Column Filters',
-      class: 'ep-button-var--outline',
-    }
+  const onEditRow = (id) => {
+    alert(`Edit ${id}`)
   }
 
-  const { generateActionMenuProps } = useActionsMenu()
+  const onDeleteRow = (id) => {
+    alert(`Delete ${id}`)
 
-  const menuItems = [
-    (id) => ({
-      id,
-      label: 'Edit',
-      iconLeft: { name: 'f-file' },
-      onClick: () => {
-        alert(`Edit ${id}`)
-      }
-    }),
-    (id) => ({
-      id,
-      label: 'Delete',
-      iconLeft: { name: 'f-trash' },
-      onClick: () => {
-        alert(`Delete ${id}`)
-
-        const index = tableData.value.findIndex(item => item.id === id)
-        if (index !== -1) {
-          tableData.value.splice(index, 1)
-          refreshFilters()
-        }
-      }
-    }),
-  ]
-
-  const tableActionsMenuProps = (context) =>
-    generateActionMenuProps({
-      context,
-      menuItems,
-      alignRight: true,
-    })
+    const index = tableData.value.findIndex(item => item.id === id)
+    if (index !== -1) {
+      tableData.value.splice(index, 1)
+      refreshFilters()
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
