@@ -1,14 +1,11 @@
 @use '../mixins/_mixins' as *;
 
-:root {
+.ep-tabs {
   --ep-tabs-hover-border-color: var(--border-color--lighter);
   --ep-tabs-hover-text-color: var(--text-color);
   --ep-tabs-active-border-color: var(--primary-color-base);
   --ep-tabs-active-text-color: var(--text-color--loud);
   --ep-tabs-focus-outline-color: var(--ep-focus-outline-color);
-}
-
-.ep-tabs {
   display: flex;
   height: 100%;
   gap: 0 3rem;

@@ -1,13 +1,10 @@
-:root {
+.ep-radio {
   --ep-radio-checked-bg-color: var(--primary-color-base);
   --ep-radio-checked-border-color: var(--primary-color-300);
   --ep-radio-unchecked-bg-color: var(--interface-overlay);
   --ep-radio-unchecked-border-color: var(--border-color--lighter);
   --ep-radio-disabled-bg-color: transparent;
   --ep-radio-disabled-border-color: var(--border-color--disabled);
-}
-
-.ep-radio {
   position: relative;
   display: inline-flex;
   align-items: center;

@@ -18,6 +18,7 @@
 
 .ep-input-styler--disabled {
   color: var(--text-color--disabled);
+  user-select: none;
 }
 
 .ep-input-styler__inner {
@@ -48,6 +49,7 @@
   display: block;
   margin-bottom: 1rem;
   color: var(--text-color--loud);
+  user-select: none;
 }
 
 .ep-input-styler__icon-left,
@@ -78,6 +80,7 @@
 }
 
 .ep-input-styler__error-message {
+  display: var(--ep-input-error-display, block);
   margin-top: 1rem;
   font-size: var(--font-size--small);
   color: var(--error-color);

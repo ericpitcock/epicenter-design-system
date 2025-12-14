@@ -1,4 +1,4 @@
-input.ep-input {
+.ep-input {
   --ep-input-font-size: var(--font-size--default);
   --ep-input-text-color: var(--text-color--loud);
   --ep-input-caret-color: var(--primary-color-base);
@@ -57,6 +57,7 @@ input.ep-input {
   &--disabled {
     color: var(--ep-input-disabled-text-color);
     pointer-events: none;
+    user-select: none;
 
     &::placeholder {
       color: var(--ep-input-disabled-text-color);
