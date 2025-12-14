@@ -91,12 +91,9 @@ This component does not use slots.
 </template>
 
 <script setup>
-  import { Cancel01, Search01 } from '@ericpitcock/epicenter-icons'
+  import Cancel01 from '@ericpitcock/epicenter-icons/epicenter-icons/Cancel01'
+  import Search01 from '@ericpitcock/epicenter-icons/epicenter-icons/Search01'
   import { computed, ref, watch } from 'vue'
-
-  defineOptions({
-    name: 'EpMultiSearch',
-  })
 
   const props = defineProps({
     placeholder: {

@@ -21,8 +21,8 @@
 | Name | Description |
 |------|-------------|
 | `left` | Content displayed on the left side of the pagination controls |
-| `icon-prev` | Custom icon for the previous page button. Defaults to '‹' |
-| `icon-next` | Custom icon for the next page button. Defaults to '›' |
+| `icon-prev` | No description available. |
+| `icon-next` | Custom icon for the next page button. Defaults to <ArrowRight01 /> |
 | `right` | Content displayed on the right side of the pagination controls |
 
 ## Component Code
@@ -46,10 +46,12 @@
           :class="buttonClass"
           @click="prevPage"
         >
-          <!-- @slot Custom icon for the previous page button. Defaults to '‹' -->
-          <slot name="icon-prev">
-            ‹
-          </slot>
+          <!-- @slot Custom icon for the previous page button. Defaults to <ArrowLeft01 /> -->
+          <template #icon-left>
+            <slot name="icon-prev">
+              <ArrowLeft01 />
+            </slot>
+          </template>
         </ep-button>
         <template v-if="showPages">
           <ep-button
@@ -90,10 +92,12 @@
           :class="buttonClass"
           @click="nextPage"
         >
-          <!-- @slot Custom icon for the next page button. Defaults to '›' -->
-          <slot name="icon-next">
-            ›
-          </slot>
+          <template #icon-right>
+            <!-- @slot Custom icon for the next page button. Defaults to <ArrowRight01 /> -->
+            <slot name="icon-next">
+              <ArrowRight01 />
+            </slot>
+          </template>
         </ep-button>
       </ep-flex>
       <!-- @slot Content displayed on the right side of the pagination controls -->
@@ -103,14 +107,12 @@
 </template>
 
 <script setup>
+  import ArrowLeft01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowLeft01'
+  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
   import { computed } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
-
-  defineOptions({
-    name: 'EpPagination'
-  })
 
   const props = defineProps({
     /**

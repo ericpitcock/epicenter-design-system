@@ -23,9 +23,6 @@ This component does not use props, events.
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpFlex'
-  })
 </script>
 
 ```

@@ -57,10 +57,6 @@ This component does not use events.
 <script setup>
   import { computed } from 'vue'
 
-  defineOptions({
-    name: 'EpEmptyState',
-  })
-
   const props = defineProps({
     /**
      * Layout direction of the empty state content.

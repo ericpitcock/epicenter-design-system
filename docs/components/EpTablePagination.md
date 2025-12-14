@@ -102,10 +102,6 @@ This component does not use slots.
   import EpFooter from '../footer/EpFooter.vue'
   import EpSelect from '../select/EpSelect.vue'
 
-  defineOptions({
-    name: 'EpTablePagination'
-  })
-
   const props = defineProps({
     currentPage: {
       type: Number,

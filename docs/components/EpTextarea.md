@@ -61,9 +61,6 @@ This component does not use slots.
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpTextarea',
-  })
 
   const props = defineProps({
     /**

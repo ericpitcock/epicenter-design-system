@@ -45,10 +45,6 @@
 <script setup>
   import { ref, watch } from 'vue'
 
-  defineOptions({
-    name: 'EpOverlay'
-  })
-
   const props = defineProps({
     /**
      * The type of overlay to display.

@@ -147,10 +147,6 @@ This component does not use slots.
     'ep-dropdown': defineAsyncComponent(() => import('../dropdown/EpDropdown.vue')),
   }
 
-  defineOptions({
-    name: 'EpActionBar'
-  })
-
   const props = defineProps({
     /**
      * The items to display in the action bar.

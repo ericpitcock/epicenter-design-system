@@ -98,10 +98,6 @@ This component does not use events, slots.
 <script setup>
   import { computed } from 'vue'
 
-  defineOptions({
-    name: 'EpCheckbox'
-  })
-
   const modelValue = defineModel({
     type: Boolean,
     required: true

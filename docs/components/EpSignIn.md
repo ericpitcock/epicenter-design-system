@@ -98,10 +98,6 @@ This component does not use props, events, slots.
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpicenterLogo from '../logo/EpicenterLogo.vue'
 
-  defineOptions({
-    name: 'EpSignIn',
-  })
-
   const email = ref('')
   const password = ref('')
   const state = ref('signin')

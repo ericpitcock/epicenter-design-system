@@ -254,10 +254,6 @@ The `sorter` function receives two values and should return a number: -1 for sor
 
   import EpTableCell from './EpTableCell.vue'
 
-  defineOptions({
-    name: 'EpTable'
-  })
-
   const props = defineProps({
     /**
      * The columns of the table.

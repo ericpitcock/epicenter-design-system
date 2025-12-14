@@ -32,10 +32,6 @@ This component does not use events.
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpStatusIndicator',
-  })
-
   const props = defineProps({
     /**
      * If true, the status indicator will pulse.

@@ -15,6 +15,8 @@
 | `required` | If true, marks the input as required. | `boolean` | `false` |
 | `readonly` | If true, makes the input read-only. | `boolean` | `false` |
 | `size` | The size variant of the input. | `string` | `'default'` |
+| `error` | If true, displays the input in error state. | `boolean` | `false` |
+| `errorMessage` | Error message to display below the input. | `string` | `''` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -39,7 +41,10 @@
     v-bind="stylerProps"
     @click="onClear"
   >
-    <template #icon-left>
+    <template
+      v-if="$slots['icon-left']"
+      #icon-left
+    >
       <!-- @slot Optional icon displayed on the left side of the input -->
       <slot name="icon-left" />
     </template>
@@ -60,7 +65,10 @@
       @keydown="onKeyDown"
       @keydown.esc="onEsc"
     >
-    <template #icon-right>
+    <template
+      v-if="$slots['icon-right']"
+      #icon-right
+    >
       <!-- @slot Optional icon displayed on the right side of the input (overridden by clearable button if active) -->
       <slot name="icon-right" />
     </template>
@@ -68,12 +76,11 @@
 </template>
 
 <script setup>
-  import { computed, ref, useSlots, watch } from 'vue'
+  import { computed, ref, useId, watch } from 'vue'
 
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   defineOptions({
-    name: 'EpInput',
     inheritAttrs: false,
   })
 
@@ -144,18 +151,30 @@
     },
     /**
      * The size variant of the input.
-     * @values 'small', 'default', 'large'
+     * @values 'default', 'large', 'xlarge'
      */
     size: {
       type: String,
       default: 'default'
     },
+    /**
+     * If true, displays the input in error state.
+     */
+    error: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Error message to display below the input.
+     */
+    errorMessage: {
+      type: String,
+      default: ''
+    },
   })
 
   const emit = defineEmits(['focus', 'esc', 'blur', 'enter', 'clear'])
 
-  const hasFocus = ref(false)
-  const hasInput = ref(false)
   const input = ref(null)
 
   const modelValue = defineModel({
@@ -163,30 +182,24 @@
     required: true
   })
 
-  const computedId = ref(props.inputId || crypto.randomUUID())
+  const hasInput = ref(!!modelValue.value)
+  const computedId = ref(props.inputId || useId())
 
   const computedPlaceholder = computed(() => props.placeholder || props.label)
 
-  const slots = useSlots()
-  const hasIconLeft = computed(() => !!slots['icon-left'])
-  const hasIconRight = computed(() => !!slots['icon-right'])
-
   const stylerProps = computed(() => ({
     id: computedId.value,
-    hasFocus: hasFocus.value,
     hasInput: hasInput.value,
     label: props.label,
     clearable: props.clearable,
     disabled: props.disabled,
+    error: props.error,
+    errorMessage: props.errorMessage,
     size: props.size,
-    iconRightClickable: props.clearable,
-    iconRightVisible: props.clearable && hasInput.value || !!hasIconRight.value
   }))
 
   const inputClasses = computed(() => ({
-    [`ep-input--${props.size}`]: props.size,
-    'ep-input--has-icon-left': hasIconLeft.value,
-    'ep-input--has-icon-right': hasIconRight.value,
+    [`ep-input--${props.size}`]: props.size !== 'default',
     'ep-input--disabled': props.disabled
   }))
 
@@ -200,12 +213,10 @@
   }
 
   const onFocus = () => {
-    hasFocus.value = true
     emit('focus', modelValue.value)
   }
 
   const onBlur = () => {
-    hasFocus.value = false
     emit('blur', modelValue.value)
   }
 
@@ -217,7 +228,6 @@
 
   const onClear = () => {
     modelValue.value = ''
-    hasInput.value = false
     input.value?.focus()
     emit('clear', '')
   }
@@ -247,8 +257,12 @@ input.ep-input {
   border: 1px solid var(--ep-input-border-color);
   border-radius: var(--ep-input-border-radius);
 
-  &.ep-input--has-icon-left {
+  .ep-input-styler:has(.ep-input-styler__icon-left) & {
     padding-left: 2.8rem;
+  }
+
+  .ep-input-styler:has(.ep-input-styler__icon-right) & {
+    padding-right: 2.8rem;
   }
 
   &::placeholder {
@@ -258,11 +272,11 @@ input.ep-input {
   &--large {
     padding: 0 1.6rem;
 
-    &.ep-input--has-icon-left {
+    .ep-input-styler:has(.ep-input-styler__icon-left) & {
       padding-left: 3.6rem;
     }
 
-    &.ep-input--has-icon-right {
+    .ep-input-styler:has(.ep-input-styler__icon-right) & {
       padding-right: 3.6rem;
     }
   }
@@ -270,22 +284,29 @@ input.ep-input {
   &--xlarge {
     padding: 0 1.8rem;
 
-    &.ep-input--has-icon-left {
+    .ep-input-styler:has(.ep-input-styler__icon-left) & {
       padding-left: 4.4rem;
     }
 
-    &.ep-input--has-icon-right {
+    .ep-input-styler:has(.ep-input-styler__icon-right) & {
       padding-right: 4.4rem;
     }
   }
 
   &--disabled {
     color: var(--ep-input-disabled-text-color);
-    cursor: not-allowed;
     pointer-events: none;
 
     &::placeholder {
       color: var(--ep-input-disabled-text-color);
+    }
+  }
+
+  .ep-input-styler--error & {
+    border-color: var(--error-color);
+
+    &:focus-visible {
+      outline-color: var(--error-color);
     }
   }
 }

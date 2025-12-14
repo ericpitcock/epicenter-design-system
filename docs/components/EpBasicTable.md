@@ -59,10 +59,6 @@ This component does not use events, slots.
 <script setup>
   import { computed } from 'vue'
 
-  defineOptions({
-    name: 'EpBasicTable'
-  })
-
   const props = defineProps({
     /**
      * The columns of the table.

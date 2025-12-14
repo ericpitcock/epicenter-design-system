@@ -29,10 +29,6 @@ This component does not use events.
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpMenu'
-  })
-
   const props = defineProps({
     /**
      * The type/style of menu to display.

@@ -32,9 +32,6 @@ This component does not use props, events, slots.
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpicenterLogo',
-  })
 </script>
 
 <style lang="scss" scoped>

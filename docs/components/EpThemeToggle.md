@@ -37,10 +37,6 @@ This component does not use slots.
 
   import EpButton from '../button/EpButton.vue'
 
-  defineOptions({
-    name: 'EpThemeToggle'
-  })
-
   const props = defineProps({
     /**
      * The current theme of the application.

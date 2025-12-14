@@ -57,10 +57,6 @@ This component does not use props.
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpBanner'
-  })
-
   const emit = defineEmits([
     /**
      * Emitted when the banner is dismissed.

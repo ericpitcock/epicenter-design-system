@@ -69,14 +69,10 @@ This component does not use slots.
 </template>
 
 <script setup>
-  import { Calendar01 } from '@ericpitcock/epicenter-icons'
+  import Calendar01 from '@ericpitcock/epicenter-icons/epicenter-icons/Calendar01'
   import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
   import EpInput from '../input/EpInput.vue'
-
-  defineOptions({
-    name: 'EpDatePicker'
-  })
 
   const props = defineProps({
     /**

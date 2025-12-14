@@ -96,10 +96,6 @@ This component does not use props, events.
 <script setup>
   import { useTemplateRef } from 'vue'
 
-  defineOptions({
-    name: 'EpContainer'
-  })
-
   const epContainer = useTemplateRef('epContainer')
 
   defineExpose({

@@ -55,10 +55,6 @@ This component does not use slots.
 <script setup>
   import { computed, ref } from 'vue'
 
-  defineOptions({
-    name: 'EpTabs'
-  })
-
   const props = defineProps({
     /**
      * The index of the active tab.

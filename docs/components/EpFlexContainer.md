@@ -42,10 +42,6 @@ This component does not use events.
 <script setup>
   import { computed } from 'vue'
 
-  defineOptions({
-    name: 'EpFlexContainer',
-  })
-
   const props = defineProps({
     /**
      * The width of the flex container.

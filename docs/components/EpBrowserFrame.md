@@ -53,13 +53,9 @@ This component does not use events, slots.
 </template>
 
 <script setup>
-  import { UserCircle02 } from '@ericpitcock/epicenter-icons'
+  import UserCircle02 from '@ericpitcock/epicenter-icons/epicenter-icons/UserCircle02'
 
   import EpHeader from '../header/EpHeader.vue'
-
-  defineOptions({
-    name: 'EpBrowserFrame'
-  })
 
   const props = defineProps({
     /**

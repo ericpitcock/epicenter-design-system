@@ -60,10 +60,6 @@ This component does not use events.
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpTableHead'
-  })
-
   const props = defineProps({
     /**
      * Array of column configuration objects defining table structure.

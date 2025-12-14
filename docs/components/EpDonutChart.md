@@ -66,10 +66,6 @@ This component does not use events, slots.
 <script setup>
   import { computed, onMounted, ref, useTemplateRef } from 'vue'
 
-  defineOptions({
-    name: 'EpDonutChart',
-  })
-
   const props = defineProps({
     /**
      * If true, animates the chart on initial render.

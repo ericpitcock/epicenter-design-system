@@ -63,10 +63,6 @@ This component does not use events, slots.
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpLoading',
-  })
-
   defineProps({
     /**
      * Message object containing icon and message text to display while loading.

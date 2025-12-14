@@ -9,12 +9,12 @@
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
 | `id` | - | `string` | `''` |
-| `hasFocus` | - | `boolean` | `false` |
 | `hasInput` | - | `boolean` | `false` |
-| `inputValue` | - | `string` | `''` |
 | `label` | - | `string` | `''` |
 | `clearable` | - | `boolean` | `false` |
 | `disabled` | - | `boolean` | `false` |
+| `error` | - | `boolean` | `false` |
+| `errorMessage` | - | `string` | `''` |
 | `size` | - | `string` | `'default'` |
 
 ## Events
@@ -41,13 +41,7 @@
     >
       {{ label }}
     </label>
-    <div
-      :class="[
-        'ep-input-styler',
-        { 'ep-input-styler--disabled': disabled }
-      ]"
-      :style="containerStyles"
-    >
+    <div :class="['ep-input-styler', computedClasses]">
       <div class="ep-input-styler__inner">
         <div
           v-if="$slots['icon-left']"
@@ -59,13 +53,16 @@
           <slot name="icon-left" />
         </div>
         <div
-          v-if="$slots['icon-right']"
+          v-if="$slots['icon-right'] || clearable"
           :class="[
             'ep-input-styler__icon-right',
             `ep-input-styler__icon-right--${size}`
           ]"
         >
-          <slot name="icon-right" />
+          <slot
+            v-if="$slots['icon-right'] && !clearable"
+            name="icon-right"
+          />
           <Cancel01
             v-if="clearable && hasInput"
             class="ep-input-styler__icon-right--clickable"
@@ -75,33 +72,24 @@
       </div>
       <slot />
     </div>
+    <p class="ep-input-styler__error-message">
+      {{ errorMessage || '\u00A0' }}
+    </p>
   </div>
 </template>
 
 <script setup>
-  import { Cancel01 } from '@ericpitcock/epicenter-icons'
+  import Cancel01 from '@ericpitcock/epicenter-icons/epicenter-icons/Cancel01'
   import { computed } from 'vue'
-
-  defineOptions({
-    name: 'EpInputStyler',
-  })
 
   const props = defineProps({
     id: {
       type: String,
       default: ''
     },
-    hasFocus: {
-      type: Boolean,
-      default: false
-    },
     hasInput: {
       type: Boolean,
       default: false
-    },
-    inputValue: {
-      type: String,
-      default: ''
     },
     label: {
       type: String,
@@ -115,39 +103,27 @@
       type: Boolean,
       default: false
     },
-    // iconRightClickable: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    // iconRightVisible: {
-    //   type: Boolean,
-    //   default: false
-    // },
+    error: {
+      type: Boolean,
+      default: false
+    },
+    errorMessage: {
+      type: String,
+      default: ''
+    },
     size: {
       type: String,
       default: 'default'
     },
   })
 
+  const computedClasses = computed(() => ({
+    [`ep-input-styler--${props.size}`]: props.size !== 'default',
+    'ep-input-styler--disabled': props.disabled,
+    'ep-input-styler--error': props.error,
+  }))
+
   defineEmits(['click'])
-
-  const sizes = {
-    small: '22',
-    default: '30',
-    large: '38',
-    xlarge: '46'
-  }
-
-  const containerStyles = computed(() => {
-    return {
-      height: `${sizes[props.size]}px`
-    }
-  })
-
-  // const onClick = () => {
-  //   if (!props.iconRightVisible) return
-  //   emit('click')
-  // }
 </script>
 ```
 
@@ -155,13 +131,25 @@
 
 ```scss
 .ep-input-styler__container {
+  --ep-input-height: 3rem;
   width: 100%;
+}
+
+.ep-input-styler {
   position: relative;
+  height: var(--ep-input-height);
+
+  &--large {
+    --ep-input-height: 3.8rem;
+  }
+
+  &--xlarge {
+    --ep-input-height: 4.6rem;
+  }
 }
 
 .ep-input-styler--disabled {
   color: var(--text-color--disabled);
-  pointer-events: none;
 }
 
 .ep-input-styler__inner {
@@ -207,10 +195,6 @@
     --ep-icon-height: 45%;
   }
 
-  &--small {
-    width: 2.5rem;
-  }
-
   &--large {
     width: 3.6rem;
   }
@@ -223,5 +207,11 @@
 .ep-input-styler__icon-right--clickable {
   cursor: pointer;
   pointer-events: auto;
+}
+
+.ep-input-styler__error-message {
+  margin-top: 1rem;
+  font-size: var(--font-size--small);
+  color: var(--error-color);
 }
 ```

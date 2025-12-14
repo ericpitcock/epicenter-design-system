@@ -26,10 +26,6 @@ This component does not use events, slots.
 <script setup>
   import { ref, watchEffect } from 'vue'
 
-  defineOptions({
-    name: 'EpTableCell'
-  })
-
   const props = defineProps({
     row: {
       type: Object,

@@ -66,10 +66,6 @@ This component does not use events.
 
   import EpFlex from '../flexbox/EpFlex.vue'
 
-  defineOptions({
-    name: 'EpKeyValueTable'
-  })
-
   const props = defineProps({
     data: {
       type: [Array, Object],

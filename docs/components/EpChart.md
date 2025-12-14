@@ -54,10 +54,6 @@ This component does not use events, slots.
 <script setup>
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
-  defineOptions({
-    name: 'EpChart',
-  })
-
   const props = defineProps({
     /**
      * Custom color overrides for chart series (CSS custom properties).

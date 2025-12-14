@@ -48,10 +48,6 @@ This component does not use events, slots.
   import { codeToHtml } from 'shiki'
   import { onMounted, ref, watch } from 'vue'
 
-  defineOptions({
-    name: 'EpCodeView'
-  })
-
   const props = defineProps({
     /**
      * The code to display.

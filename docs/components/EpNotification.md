@@ -51,10 +51,6 @@ This component does not use slots.
 
   import EpButton from '../button/EpButton.vue'
 
-  defineOptions({
-    name: 'EpNotification',
-  })
-
   const props = defineProps({
     /**
      * Unique identifier for the notification.

@@ -20,10 +20,6 @@ This component does not use events, slots.
 </template>
 
 <script setup>
-  defineOptions({
-    name: 'EpDivider'
-  })
-
   const props = defineProps({
     /**
      * The direction of the divider.

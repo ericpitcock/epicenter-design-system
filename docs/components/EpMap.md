@@ -60,10 +60,6 @@ This component does not use slots.
 
   import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-  defineOptions({
-    name: 'EpMap',
-  })
-
   const props = defineProps({
     accessToken: {
       type: String,

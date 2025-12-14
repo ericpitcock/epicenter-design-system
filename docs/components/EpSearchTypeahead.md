@@ -66,10 +66,6 @@ This component does not use slots.
 
   import EpInput from '../input/EpInput.vue'
 
-  defineOptions({
-    name: 'EpSearchTypeahead'
-  })
-
   const searchQuery = ref('')
   const activeItemIndex = ref(-1)
 
