@@ -59,78 +59,12 @@ export default {
     data: { table: { disable: true } },
     commonKeyWidth: { name: 'Common Key Width', control: { type: 'boolean' } },
     sectionHeaders: { name: 'Section Headers', control: { type: 'boolean' } },
-    striped: { name: 'Striped', control: { type: 'boolean' } },
-    alignRight: { name: 'Align Right', control: { type: 'boolean' } },
-    showActionsMenu: { name: 'Show Actions Menu', control: { type: 'boolean' } },
   }
 }
 
 export const KeyValueTable = (args) => ({
   components: { EpContainer, EpEnrichmentDropdown, EpKeyValueTable },
   setup() {
-    // const enrichmentSources = {
-    //   'IP Address': [
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'VirusTotal'
-    //     },
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'AbuseIPDB'
-    //     },
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'IPInfo.io'
-    //     }
-    //   ],
-    //   'XFF IP Address': [
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'VirusTotal Lookup'
-    //     },
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'Shodan Search'
-    //     }
-    //   ],
-    //   'DNS Resource Name': [
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'WHOIS Lookup'
-    //     },
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'PassiveTotal Lookup'
-    //     }
-    //   ],
-    //   'Domain': [
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'VirusTotal Lookup'
-    //     },
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'Google Safe Browsing'
-    //     }
-    //   ],
-    //   'MAC Address': [
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'OUI Lookup'
-    //     }
-    //   ],
-    //   'Port': [
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'Shodan Open Ports'
-    //     },
-    //     {
-    //       id: faker.string.uuid(),
-    //       label: 'IANA Port Info'
-    //     }
-    //   ]
-    // }
-
     const sourceKeys = Object.keys(enrichmentSources)
 
     return {
@@ -151,13 +85,16 @@ export const KeyValueTable = (args) => ({
     }"
   >
     <ep-key-value-table v-bind="args">
-      <template #actions-menu="{ key, value }">
+      <template #value="{ key, value }">
         <ep-enrichment-dropdown
           v-if="sourceKeys.includes(key)"
           :enrichment-options="enrichmentSources[key]"
           :enrichment-data="getFakeEnrichmentResponse(key, value)"
-          align-right
-        />
+        >
+          <template #trigger="{ attrs, on }">
+            <span v-bind="attrs" v-on="on">{{ value }}</span>
+          </template>
+        </ep-enrichment-dropdown>
       </template>
     </ep-key-value-table>
   </ep-container>
@@ -168,7 +105,4 @@ KeyValueTable.args = {
   data: primaryData,
   commonKeyWidth: true,
   sectionHeaders: true,
-  striped: false,
-  alignRight: false,
-  showActionsMenu: true
 }

@@ -30,7 +30,7 @@
             name="icon-right"
           />
           <Cancel01
-            v-if="clearable && hasInput"
+            v-if="clearable && hasInput && !disabled"
             class="ep-input-styler__icon-right--clickable"
             @click="$emit('click')"
           />

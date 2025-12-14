@@ -21,14 +21,13 @@
           >
             {{ key }}
           </td>
-          <td :class="{ 'ep-flex gap-5': showActionsMenu }">
-            {{ value }}
-            <template v-if="$slots['actions-menu']">
-              <slot
-                name="actions-menu"
-                v-bind="{ key, value }"
-              />
-            </template>
+          <td class="ep-flex gap-5">
+            <slot
+              name="value"
+              v-bind="{ key, value }"
+            >
+              {{ value }}
+            </slot>
           </td>
         </tr>
       </table>
@@ -54,10 +53,6 @@
       type: Boolean,
       default: false
     },
-    showActionsMenu: {
-      type: Boolean,
-      default: false
-    }
   })
 
   const processedData = computed(() => {

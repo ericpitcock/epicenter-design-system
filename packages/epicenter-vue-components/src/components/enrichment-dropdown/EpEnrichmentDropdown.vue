@@ -5,17 +5,15 @@
       @close="showPreview = false"
     >
       <template #trigger="{ attrs, on }">
-        <ep-button
-          size="large"
-          class="ep-button-var--ghost"
-          v-bind="attrs"
-          v-on="on"
-        >
-          {{ label }}
-          <template #icon-right>
-            <Asterisk02 class="lookup-asterisk" />
-          </template>
-        </ep-button>
+        <div class="trigger-wrapper">
+          <slot
+            name="trigger"
+            v-bind="{ attrs, on }"
+          >
+            {{ props.label }}
+          </slot>
+          <Asterisk02 class="lookup-asterisk" />
+        </div>
       </template>
       <template #content>
         <div class="ep-enrichment-content">
@@ -116,7 +114,7 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .ep-enrichment-dropdown {
     position: relative;
     display: inline-block;
@@ -140,18 +138,29 @@
   }
 
   .lookup-asterisk {
-    --ep-icon-width: 1.5rem;
-    --ep-icon-height: 1.5rem;
+    --ep-icon-width: 1.2rem;
+    --ep-icon-height: 1.2rem;
     --ep-icon-stroke-width: 2px;
-    color: var(--primary-color-up-5-200);
-    position: relative;
-    top: -5px;
-    left: -8px;
+    color: var(--text-color--primary);
   }
 
   .source-button-icon {
     --ep-icon-width: 1.4rem;
     --ep-icon-height: 1.4rem;
     --ep-icon-stroke-width: 2px;
+  }
+
+  .trigger-wrapper {
+    display: inline-flex;
+    gap: 0.25rem;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+    text-decoration-color: hsl(from var(--text-color) h s l / 0.5);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--text-color--primary);
+    }
   }
 </style>
