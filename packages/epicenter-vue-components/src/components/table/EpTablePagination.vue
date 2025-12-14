@@ -11,7 +11,7 @@
           @click="prevPage"
         >
           <template #icon-left>
-            chevron left icon
+            <arrow-left01 />
           </template>
         </ep-button>
         <template v-if="showPages">
@@ -48,7 +48,7 @@
           @click="nextPage"
         >
           <template #icon-right>
-            chevron right icon
+            <arrow-right01 />
           </template>
         </ep-button>
       </template>
@@ -69,6 +69,8 @@
 </template>
 
 <script setup>
+  import ArrowLeft01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowLeft01'
+  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
   import { computed, ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
