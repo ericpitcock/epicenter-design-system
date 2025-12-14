@@ -1,11 +1,9 @@
-import {
-  Analytics01 as Dashboard,
-  ArrowRight01,
-  ArrowUpRight03 as ArrowUpRight,
-  GoogleMaps,
-  Radar01,
-  Settings04
-} from '@ericpitcock/epicenter-icons'
+import Dashboard from '@ericpitcock/epicenter-icons/epicenter-icons/Analytics01'
+import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
+import ArrowUpRight from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowUpRight03'
+import GoogleMaps from '@ericpitcock/epicenter-icons/epicenter-icons/GoogleMaps'
+import Radar01 from '@ericpitcock/epicenter-icons/epicenter-icons/Radar01'
+import Settings04 from '@ericpitcock/epicenter-icons/epicenter-icons/Settings04'
 
 import EpButton from '@/components/button/EpButton.vue'
 import EpMenu from '@/components/menu/EpMenu.vue'

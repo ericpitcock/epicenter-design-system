@@ -1,4 +1,4 @@
-import { Coffee02 } from '@ericpitcock/epicenter-icons'
+import Coffee02 from '@ericpitcock/epicenter-icons/epicenter-icons/Coffee02'
 import { computed, ref, toRef } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'

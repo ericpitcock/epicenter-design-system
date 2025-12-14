@@ -119,6 +119,20 @@
       type: String,
       default: 'default'
     },
+    /**
+     * If true, displays the input in error state.
+     */
+    error: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Error message to display below the input.
+     */
+    errorMessage: {
+      type: String,
+      default: ''
+    },
   })
 
   const emit = defineEmits(['focus', 'esc', 'blur', 'enter', 'clear'])
@@ -141,11 +155,13 @@
     label: props.label,
     clearable: props.clearable,
     disabled: props.disabled,
+    error: props.error,
+    errorMessage: props.errorMessage,
     size: props.size,
   }))
 
   const inputClasses = computed(() => ({
-    [`ep-input--${props.size}`]: props.size,
+    [`ep-input--${props.size}`]: props.size !== 'default',
     'ep-input--disabled': props.disabled
   }))
 

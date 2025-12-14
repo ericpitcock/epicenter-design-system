@@ -62,4 +62,12 @@ input.ep-input {
       color: var(--ep-input-disabled-text-color);
     }
   }
+
+  .ep-input-styler--error & {
+    border-color: var(--error-color);
+
+    &:focus-visible {
+      outline-color: var(--error-color);
+    }
+  }
 }

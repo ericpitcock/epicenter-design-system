@@ -77,7 +77,8 @@
 </template>
 
 <script setup>
-  import { ArrowLeft01, ArrowRight01 } from '@ericpitcock/epicenter-icons'
+  import ArrowLeft01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowLeft01'
+  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
   import { computed } from 'vue'
 
   import EpButton from '../button/EpButton.vue'

@@ -12,7 +12,8 @@
 </template>
 
 <script setup>
-  import { ArrowDown01, ArrowUp01 } from '@ericpitcock/epicenter-icons'
+  import ArrowDown01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowDown01'
+  import ArrowUp01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowUp01'
   import { computed } from 'vue'
 
   const props = defineProps({

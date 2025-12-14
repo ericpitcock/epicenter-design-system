@@ -76,3 +76,9 @@
   cursor: pointer;
   pointer-events: auto;
 }
+
+.ep-input-styler__error-message {
+  margin-top: 1rem;
+  font-size: var(--font-size--small);
+  color: var(--error-color);
+}

@@ -1,4 +1,4 @@
-import { computed, ref, toRef } from 'vue'
+import { computed, ref, toRef, watch } from 'vue'
 
 import EpInput from '@/components/input/EpInput.vue'
 
@@ -101,6 +101,18 @@ export default {
         type: 'boolean'
       }
     },
+    error: {
+      name: 'Error',
+      control: {
+        type: 'boolean'
+      }
+    },
+    errorMessage: {
+      name: 'Error Message',
+      control: {
+        type: 'text'
+      }
+    },
     size: {
       name: 'Size',
       options: ['default', 'large', 'xlarge'],
@@ -198,6 +210,14 @@ export const Input = args => ({
       toRef(args, 'iconRight'),
     )
 
+    watch(() => args.error, (newVal) => {
+      if (newVal) {
+        args.errorMessage = 'Sorry, bro, there’s been an error'
+      } else {
+        args.errorMessage = ''
+      }
+    })
+
     return {
       args,
       modelValue,
@@ -208,26 +228,28 @@ export const Input = args => ({
     }
   },
   template: `
-    <ep-input
-      v-bind="args"
-      :style="styles"
-      v-model="modelValue"
-      @clear="clear"
-      data-1p-ignore
-    >
-      <template
-        v-if="iconLeftComponent"
-        #icon-left
+    <div style="max-width: 400px;">
+      <ep-input
+        v-bind="args"
+        :style="styles"
+        v-model="modelValue"
+        @clear="clear"
+        data-1p-ignore
       >
-        <component :is="iconLeftComponent" />
-      </template>
-      <template
-        v-if="iconRightComponent && !args.clearable"
-        #icon-right
-      >
-        <component :is="iconRightComponent" @click="clear" />
-      </template>
-    </ep-input>
+        <template
+          v-if="iconLeftComponent"
+          #icon-left
+        >
+          <component :is="iconLeftComponent" />
+        </template>
+        <template
+          v-if="iconRightComponent && !args.clearable"
+          #icon-right
+        >
+          <component :is="iconRightComponent" @click="clear" />
+        </template>
+      </ep-input>
+    </div>
   `
 })
 
@@ -245,6 +267,8 @@ Input.args = {
   clearable: true,
   disabled: false,
   autofocus: false,
+  error: false,
+  errorMessage: '',
   size: 'xlarge',
   borderColor: 'var(--border-color)',
   borderRadius: '0.3',

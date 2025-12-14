@@ -75,15 +75,19 @@ export const createIconImports = () => {
   return imports
 }
 
-// Array of icon names from icons.json
-const iconNames = iconsData.map(icon => icon.name)
+// Lazy-initialized singleton for component names
+let _cachedComponentNames = null
 
-// Array of component names
-const componentNames = iconNames.map(getComponentName)
+export const getComponentNames = () => {
+  if (_cachedComponentNames === null) {
+    const iconNames = iconsData.map(icon => icon.name)
+    _cachedComponentNames = iconNames.map(getComponentName)
+    _cachedComponentNames.unshift('None')
+  }
+  return _cachedComponentNames
+}
 
-// add 'None' option at the start
-componentNames.unshift('None')
-
-export { componentNames }
+// For backward compatibility - compute on first access
+export const componentNames = getComponentNames()
 
 export { iconsData }

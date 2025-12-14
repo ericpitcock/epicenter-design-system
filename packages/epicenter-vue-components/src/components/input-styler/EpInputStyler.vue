@@ -7,11 +7,7 @@
     >
       {{ label }}
     </label>
-    <div :class="[
-      'ep-input-styler',
-      { 'ep-input-styler--disabled': disabled },
-      `ep-input-styler--${size}`
-    ]">
+    <div :class="['ep-input-styler', computedClasses]">
       <div class="ep-input-styler__inner">
         <div
           v-if="$slots['icon-left']"
@@ -42,12 +38,15 @@
       </div>
       <slot />
     </div>
+    <p class="ep-input-styler__error-message">
+      {{ errorMessage || '\u00A0' }}
+    </p>
   </div>
 </template>
 
 <script setup>
   import Cancel01 from '@ericpitcock/epicenter-icons/epicenter-icons/Cancel01'
-  // import { computed } from 'vue'
+  import { computed } from 'vue'
 
   const props = defineProps({
     id: {
@@ -70,11 +69,25 @@
       type: Boolean,
       default: false
     },
+    error: {
+      type: Boolean,
+      default: false
+    },
+    errorMessage: {
+      type: String,
+      default: ''
+    },
     size: {
       type: String,
       default: 'default'
     },
   })
+
+  const computedClasses = computed(() => ({
+    [`ep-input-styler--${props.size}`]: props.size !== 'default',
+    'ep-input-styler--disabled': props.disabled,
+    'ep-input-styler--error': props.error,
+  }))
 
   defineEmits(['click'])
 </script>
