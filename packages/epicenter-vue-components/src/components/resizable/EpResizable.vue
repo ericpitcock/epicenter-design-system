@@ -1,19 +1,19 @@
 <template>
-  <div :class="['ep-resizable-wrapper', `ep-resizable-wrapper--${direction}`]">
+  <div :class="['ep-resizable', `ep-resizable--${direction}`]">
     <div
       ref="resizablePane"
-      class="resizable-pane"
+      class="ep-resizable__resizable-pane"
       :style="{ flex: computedSize }"
     >
       <!-- @slot resizable - The content of the resizable pane. -->
       <slot name="resizable" />
       <div
-        :class="['drag-handle', dragEdge]"
+        :class="['ep-resizable__drag-handle', `ep-resizable__drag-handle--${dragEdge}`]"
         @mousedown="handleDragStart"
         @touchstart="handleDragStart"
       />
     </div>
-    <div class="content-pane">
+    <div class="ep-resizable__content-pane">
       <!-- @slot content - The content of the fixed (non-resizable) pane. -->
       <slot name="content" />
     </div>
@@ -117,77 +117,3 @@
     document.removeEventListener('touchend', handleDragEnd)
   }
 </script>
-
-<style lang="scss" scoped>
-  .ep-resizable-wrapper {
-    --ep-resizable-flex-direction: column;
-    display: flex;
-    flex-direction: var(--ep-resizable-flex-direction);
-    width: 100%;
-    height: 100%;
-    user-select: none;
-
-    &--row {
-      --ep-resizable-flex-direction: row;
-    }
-  }
-
-  .resizable-pane {
-    position: relative;
-    display: flex;
-    overflow: hidden;
-  }
-
-  .content-pane {
-    flex: 1;
-  }
-
-  .drag-handle {
-    position: absolute;
-    background: var(--interface-foreground);
-    border-width: 0;
-    border-style: solid;
-    border-color: var(--border-color);
-  }
-
-  .drag-handle:hover {
-    background: var(--primary-color-300);
-    border-color: var(--primary-color-300);
-  }
-
-  .right,
-  .left {
-    width: 5px;
-    top: 0;
-    bottom: 0;
-    border-right-width: 0.1rem;
-    border-left-width: 0.1rem;
-    cursor: ew-resize;
-  }
-
-  .right {
-    right: 0;
-  }
-
-  .left {
-    left: 0;
-  }
-
-  .top,
-  .bottom {
-    height: 5px;
-    left: 0;
-    right: 0;
-    border-top-width: 0.1rem;
-    border-bottom-width: 0.1rem;
-    cursor: ns-resize;
-  }
-
-  .top {
-    top: 0;
-  }
-
-  .bottom {
-    bottom: 0;
-  }
-</style>
