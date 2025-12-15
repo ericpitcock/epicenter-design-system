@@ -38,11 +38,15 @@
 
 <script setup>
   import ArrowDown01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowDown01'
-  import { computed } from 'vue'
+  import { computed, ref, useId } from 'vue'
 
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   const props = defineProps({
+    /**
+     * Label text for the select (used as placeholder when no option is selected).
+     */
+    label: { type: String, default: '' },
     /**
      * If true, disables the select element.
      */
@@ -65,7 +69,7 @@
     selectId: { type: String, required: true },
     /**
      * The size variant of the select.
-     * @values 'small', 'default', 'large'
+     * @values 'small', 'default', 'large', 'xlarge'
      */
     size: { type: String, default: 'default' },
     /**
@@ -76,22 +80,34 @@
      * Placeholder text shown when no option is selected.
      */
     placeholder: { type: String, default: 'Select an option' },
+    /**
+     * If true, displays the select in error state.
+     */
+    error: { type: Boolean, default: false },
+    /**
+     * Error message to display below the select.
+     */
+    errorMessage: { type: String, default: '' },
   })
 
   const emit = defineEmits(['update:modelValue', 'blur', 'focus'])
   const modelValue = defineModel({ type: [String, Number], default: '' })
 
   const selectClasses = computed(() => ({
-    [`ep-select--${props.size}`]: props.size,
+    [`ep-select--${props.size}`]: props.size !== 'default',
     'ep-select--disabled': props.disabled,
+    'ep-select--error': props.error,
   }))
 
-  const computedId = computed(() => props.selectId || crypto.randomUUID())
+  const computedId = ref(props.selectId || useId())
 
   const stylerProps = computed(() => ({
     id: computedId.value,
+    label: props.label,
     disabled: props.disabled,
     size: props.size,
+    error: props.error,
+    errorMessage: props.errorMessage,
     iconRightClickable: false,
     iconRightVisible: true
   }))

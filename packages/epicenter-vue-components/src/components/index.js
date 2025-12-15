@@ -18,6 +18,7 @@ import EpDivider from './divider/EpDivider.vue'
 import EpDropdown from './dropdown/EpDropdown.vue'
 import EpEmptyState from './empty-state/EpEmptyState.vue'
 import EpEnrichmentDropdown from './enrichment-dropdown/EpEnrichmentDropdown.vue'
+import EpFieldset from './fieldset/EpFieldset.vue'
 import EpFlex from './flexbox/EpFlex.vue'
 import EpFlexContainer from './flexbox/EpFlexContainer.vue'
 import EpFooter from './footer/EpFooter.vue'
@@ -84,6 +85,7 @@ export {
   EpDropdown,
   EpEmptyState,
   EpEnrichmentDropdown,
+  EpFieldset,
   EpFlex,
   EpFlexContainer,
   EpFooter,
@@ -151,6 +153,7 @@ export default {
   EpDropdown,
   EpEmptyState,
   EpEnrichmentDropdown,
+  EpFieldset,
   EpFlex,
   EpFlexContainer,
   EpFooter,

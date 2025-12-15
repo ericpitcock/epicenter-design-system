@@ -7,6 +7,10 @@
   position: relative;
   height: var(--ep-input-height);
 
+  &--small {
+    --ep-input-height: 2.2rem;
+  }
+
   &--large {
     --ep-input-height: 3.8rem;
   }
@@ -50,6 +54,7 @@
   margin-bottom: 1rem;
   color: var(--text-color--loud);
   user-select: none;
+  white-space: nowrap;
 }
 
 .ep-input-styler__icon-left,

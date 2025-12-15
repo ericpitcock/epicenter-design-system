@@ -1,0 +1,16 @@
+.ep-fieldset {
+  min-width: 0;
+}
+
+.ep-fieldset__legend {
+  margin-bottom: 1rem;
+  display: block;
+  width: 100%;
+  color: var(--text-color--loud);
+}
+
+.ep-fieldset__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

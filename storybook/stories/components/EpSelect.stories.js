@@ -1,14 +1,14 @@
-import { toRef } from 'vue'
+import { computed, toRef, watch } from 'vue'
 
 import EpSelect from '@/components/select/EpSelect.vue'
 
-import { centeredSurface } from '../../helpers/decorators.js'
+import { paddedSurface } from '../../helpers/decorators.js'
 import { componentNames, useIcons } from '../icons/useIcons.js'
 
 export default {
   title: 'Components/Select',
   component: EpSelect,
-  decorators: [centeredSurface],
+  decorators: [paddedSurface],
   argTypes: {
     size: {
       name: 'Size',
@@ -21,6 +21,12 @@ export default {
           large: 'Large',
           xlarge: 'X-Large'
         }
+      }
+    },
+    label: {
+      name: 'Label',
+      control: {
+        type: 'text'
       }
     },
     enabledIcons: {
@@ -68,6 +74,18 @@ export default {
         type: 'boolean'
       }
     },
+    error: {
+      name: 'Error',
+      control: {
+        type: 'boolean'
+      }
+    },
+    errorMessage: {
+      name: 'Error Message',
+      control: {
+        type: 'text'
+      }
+    },
     readonly: { table: { disable: true } },
     required: { table: { disable: true } },
     // events
@@ -86,25 +104,48 @@ export const Select = args => ({
       toRef(args, 'iconLeft'),
     )
 
-    return { args, iconLeftComponent }
+    const demoWidth = computed(() => {
+      const widths = {
+        xlarge: '300px',
+        large: '250px',
+        default: '200px',
+        small: '150px'
+      }
+      return widths[args.size] || '200px'
+    })
+
+    watch(() => args.error, (newVal) => {
+      if (newVal) {
+        args.errorMessage = 'Sorry, bro, there’s been an error'
+      } else {
+        args.errorMessage = ''
+      }
+    })
+
+    return { args, iconLeftComponent, demoWidth }
   },
   template: `
-    <ep-select v-bind="args">
-      <template #icon-left>
-        <component :is="iconLeftComponent" />
-      </template>
-    </ep-select>
+    <div :style="{ maxWidth: demoWidth }">
+      <ep-select v-bind="args">
+        <template #icon-left>
+          <component :is="iconLeftComponent" />
+        </template>
+      </ep-select>
+    </div>
   `
 })
 
 Select.args = {
   selectId: 'select',
+  label: 'What’s your favorite type of coffee?',
   enabledIcons: true,
   iconLeft: 'Coffee02',
   size: 'xlarge',
-  placeholder: 'Select your coffee type…',
+  placeholder: 'Select coffee',
   disabled: false,
   autofocus: false,
+  error: false,
+  errorMessage: '',
   options: [
     {
       label: 'Drip Coffee',
