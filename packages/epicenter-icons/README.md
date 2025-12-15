@@ -8,15 +8,15 @@ A Vue 3 icon library for Epicenter Design System.
 npm install @ericpitcock/epicenter-icons
 ```
 
-## Basic Usage
+## Usage
 
-### Destructured Import (Recommended)
-
-Import multiple icons at once using destructured imports:
+Import icons directly from their individual files for optimal performance:
 
 ```vue
 <script setup>
-  import { Heart, Coffee02, ArrowRight01 } from '@ericpitcock/epicenter-icons'
+  import Heart from '@ericpitcock/epicenter-icons/epicenter-icons/Heart'
+  import Coffee02 from '@ericpitcock/epicenter-icons/epicenter-icons/Coffee02'
+  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
 </script>
 
 <template>
@@ -26,19 +26,11 @@ Import multiple icons at once using destructured imports:
 </template>
 ```
 
-### Individual Component Import
+> **Note:** Direct imports ensure fast build times and optimal tree-shaking. Barrel imports (importing from the package root) are not supported due to performance concerns with large icon sets.
 
-You can also import individual icons directly from their path:
+## Available Icons
 
-```vue
-<script setup>
-  import Heart from '@ericpitcock/epicenter-icons/icons/Heart'
-</script>
-
-<template>
-  <Heart />
-</template>
-```
+Browse all 4,600+ icons in the [icons.json](icons.json) file or the `epicenter-icons/` directory.
 
 ## Styling & Customization
 
