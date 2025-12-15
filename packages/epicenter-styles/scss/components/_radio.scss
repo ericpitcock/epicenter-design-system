@@ -7,25 +7,25 @@
   --ep-radio-disabled-border-color: var(--border-color--disabled);
   position: relative;
   display: inline-flex;
-  align-items: center;
-  gap: 1rem;
   width: fit-content;
+  align-items: center;
   cursor: pointer;
+  gap: 1rem;
 
   &__dot {
     width: 14px;
     height: 14px;
-    background-color: var(--ep-radio-unchecked-bg-color);
     border: 1px solid var(--ep-radio-unchecked-border-color);
     border-radius: 50%;
+    background-color: var(--ep-radio-unchecked-bg-color);
   }
 
   &--checked {
     color: var(--text-color--loud);
 
     .ep-radio__dot {
-      background-color: var(--ep-radio-checked-bg-color);
       border-color: var(--ep-radio-checked-border-color);
+      background-color: var(--ep-radio-checked-bg-color);
     }
   }
 
@@ -34,14 +34,14 @@
     cursor: default;
 
     .ep-radio__dot {
-      background-color: var(--ep-radio-disabled-bg-color);
       border-color: var(--ep-radio-disabled-border-color);
+      background-color: var(--ep-radio-disabled-bg-color);
     }
   }
 }
 
 .ep-radio input {
   position: absolute;
-  opacity: 0;
   cursor: pointer;
+  opacity: 0;
 }

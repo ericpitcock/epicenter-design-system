@@ -27,24 +27,24 @@
   --ep-header-right-justify-content: flex-end;
   --ep-header-right-padding: 0;
   position: var(--ep-header-container-position);
+  z-index: var(--ep-header-container-z-index);
   top: var(--ep-header-container-top);
+  overflow: var(--ep-header-container-overflow);
   width: var(--ep-header-container-width);
   height: var(--ep-header-container-height);
   padding: var(--ep-header-container-padding);
-  margin: var(--ep-header-container-margin);
-  border-bottom: var(--ep-header-container-border-width) var(--ep-header-container-border-style) var(--ep-header-container-border-color);
   border-radius: var(--ep-header-container-border-radius);
+  border-bottom: var(--ep-header-container-border-width) var(--ep-header-container-border-style) var(--ep-header-container-border-color);
+  margin: var(--ep-header-container-margin);
   background: var(--ep-header-container-bg-color);
   box-shadow: var(--ep-header-container-box-shadow);
-  overflow: var(--ep-header-container-overflow);
-  z-index: var(--ep-header-container-z-index);
 
   &__content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--ep-header-content-gap);
     height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ep-header-content-gap);
 
     &__left,
     &__center,
@@ -56,23 +56,23 @@
 
     &__left {
       flex: var(--ep-header-left-flex);
-      gap: var(--ep-header-left-gap);
       justify-content: var(--ep-header-left-justify-content);
       padding: var(--ep-header-left-padding);
+      gap: var(--ep-header-left-gap);
     }
 
     &__center {
       flex: var(--ep-header-center-flex);
-      gap: var(--ep-header-center-gap);
       justify-content: var(--ep-header-center-justify-content);
       padding: var(--ep-header-center-padding);
+      gap: var(--ep-header-center-gap);
     }
 
     &__right {
       flex: var(--ep-header-right-flex);
-      gap: var(--ep-header-right-gap);
       justify-content: var(--ep-header-right-justify-content);
       padding: var(--ep-header-right-padding);
+      gap: var(--ep-header-right-gap);
     }
   }
 }

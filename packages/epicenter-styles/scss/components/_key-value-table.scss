@@ -2,9 +2,9 @@
   --ep-table-row-stripe-color: var(--interface-foreground);
 
   td {
-    padding-block: 0.5rem;
     border-bottom: 1px solid var(--border-color);
     line-height: 1.5;
+    padding-block: 0.5rem;
   }
 
   // first tr td border top

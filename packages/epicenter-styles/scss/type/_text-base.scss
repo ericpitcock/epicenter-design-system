@@ -1,7 +1,7 @@
 body {
+  color: var(--text-color);
   font-size: var(--font-size--default);
   font-variation-settings: var(--font-weight--default);
-  color: var(--text-color);
 
   @media (prefers-contrast: more) {
     color: var(--text-color--loud);

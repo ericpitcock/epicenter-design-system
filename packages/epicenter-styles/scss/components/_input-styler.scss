@@ -29,16 +29,11 @@
   position: absolute;
   top: 0;
   left: 0;
+  display: flex;
   width: 100%;
   height: 100%;
-  display: flex;
   align-items: center;
   pointer-events: none;
-
-  &:has(.ep-input-styler__icon-left):has(.ep-input-styler__icon-right) {
-    display: flex;
-    justify-content: space-between;
-  }
 
   &:has(.ep-input-styler__icon-left) {
     justify-content: flex-start;
@@ -46,6 +41,11 @@
 
   &:has(.ep-input-styler__icon-right) {
     justify-content: flex-end;
+  }
+
+  &:has(.ep-input-styler__icon-left):has(.ep-input-styler__icon-right) {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -60,10 +60,10 @@
 .ep-input-styler__icon-left,
 .ep-input-styler__icon-right {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 2.8rem;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 
   .ep-icon {
     --ep-icon-width: 45%;
@@ -87,6 +87,6 @@
 .ep-input-styler__error-message {
   display: var(--ep-input-error-display, block);
   margin-top: 1rem;
-  font-size: var(--font-size--small);
   color: var(--error-color);
+  font-size: var(--font-size--small);
 }

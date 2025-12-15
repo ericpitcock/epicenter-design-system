@@ -8,8 +8,8 @@
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  gap: 1rem;
   cursor: pointer;
+  gap: 1rem;
   user-select: none;
 
   &--checked,
@@ -23,50 +23,50 @@
   }
 
   input {
-    appearance: none;
+    position: relative;
     width: 14px;
     height: 14px;
-    background-color: var(--ep-checkbox-unchecked-bg-color);
     border: 1px solid var(--ep-checkbox-unchecked-border-color);
     border-radius: 2px;
+    appearance: none;
+    background-color: var(--ep-checkbox-unchecked-bg-color);
     cursor: inherit;
-    position: relative;
 
     &:checked {
-      background-color: var(--ep-checkbox-checked-bg-color);
       border-color: var(--ep-checkbox-checked-border-color);
+      background-color: var(--ep-checkbox-checked-bg-color);
 
       &::after {
-        content: '';
         position: absolute;
-        left: 4px;
         top: 1px;
+        left: 4px;
         width: 4px;
         height: 8px;
         border: solid white;
         border-width: 0 2px 2px 0;
+        content: '';
         transform: rotate(45deg);
       }
     }
 
     &:indeterminate {
-      background-color: var(--ep-checkbox-checked-bg-color);
       border-color: var(--ep-checkbox-checked-border-color);
+      background-color: var(--ep-checkbox-checked-bg-color);
 
       &::after {
-        content: '';
         position: absolute;
-        left: 2px;
         top: 5px;
+        left: 2px;
         width: 8px;
         height: 2px;
         background-color: white;
+        content: '';
       }
     }
 
     &:disabled {
-      background-color: var(--ep-checkbox-disabled-bg-color);
       border-color: var(--ep-checkbox-disabled-border-color);
+      background-color: var(--ep-checkbox-disabled-bg-color);
     }
   }
 }

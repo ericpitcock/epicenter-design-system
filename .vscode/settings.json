@@ -10,5 +10,11 @@
     "**/dist/**": true,
     "**/storybook-static/**": true,
     "**/docs/.vitepress/dist/**": true
+  },
+  "stylelint.validate": ["css", "scss"],
+  "stylelint.ignoreDisables": false,
+  "stylelint.snippet": ["css", "scss"],
+  "files.associations": {
+    "**/.stylelintignore": "ignore"
   }
 }

@@ -6,23 +6,23 @@
   }
 
   > p {
+    max-width: 60rem;
     font-size: var(--font-size--body);
     line-height: 2.4rem;
-    max-width: 60rem;
   }
 
   > ul {
+    padding-left: 2.8rem;
     font-size: var(--font-size--body);
     list-style-type: disc;
-    padding-left: 2.8rem;
 
     li {
       line-height: 2.4rem;
 
       ul {
-        list-style-type: circle;
-        margin-top: 1.4rem;
         padding-left: 2rem;
+        margin-top: 1.4rem;
+        list-style-type: circle;
       }
     }
 

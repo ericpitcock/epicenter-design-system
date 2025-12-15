@@ -4,13 +4,13 @@
 
   &::before {
     position: absolute;
-    display: block;
-    content: '';
-    width: 0.8rem;
-    height: 0.8rem;
     top: calc(50% - 0.4rem);
     left: 0;
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
     border-radius: 50%;
+    content: '';
   }
 
   &--active::before {

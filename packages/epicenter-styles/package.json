@@ -9,7 +9,9 @@
   "description": "Epicenter Design System - Styles",
   "scripts": {
     "sass:watch": "sass --watch ./index.scss ../../static/epicenter-design-system.css --style compressed",
-    "build-styles": "node scripts/buildStyles.mjs"
+    "build-styles": "node scripts/buildStyles.mjs",
+    "lint": "stylelint \"scss/**/*.scss\"",
+    "lint:fix": "stylelint \"scss/**/*.scss\" --fix"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,9 @@
     "js-yaml": "^4.1.0",
     "mapbox-gl": "^1.10.1",
     "sass": "1.82.0",
+    "stylelint": "^16.26.1",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-config-recommended-scss": "^16.0.2",
     "yaml": "^2.4.2"
   }
 }

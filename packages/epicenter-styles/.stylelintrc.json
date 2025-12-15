@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "stylelint-config-recommended-scss",
+    "stylelint-config-idiomatic-order"
+  ],
+  "ignoreFiles": [
+    "scss/_reset.scss"
+  ],
+  "rules": {
+    "block-no-empty": true,
+    "declaration-property-value-no-unknown": null,
+    "no-descending-specificity": null,
+    "scss/dollar-variable-no-missing-interpolation": null,
+    "scss/operator-no-unspaced": null
+  }
+}
