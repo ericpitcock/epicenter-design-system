@@ -18,11 +18,6 @@ export default {
   title: 'Scenarios/Forms Sandbox',
   decorators: [paddedSurface],
   argTypes: {
-    formSize: {
-      name: 'Form Size',
-      options: ['small', 'default', 'large', 'xlarge'],
-      control: { type: 'radio' }
-    },
     formDisabled: {
       name: 'Form Disabled',
       control: { type: 'boolean' }
@@ -93,7 +88,10 @@ export const FormsSandbox = args => ({
         total: 'Total',
         orderNow: 'Ordenar Ahora',
         taco: 'Taco',
-        salsa: 'Salsa'
+        salsa: 'Salsa',
+        errorRequired: 'Este campo es requerido',
+        errorEmail: 'Ingrese un correo electrónico válido',
+        errorPhone: 'Ingrese un número de teléfono válido'
       },
       english: {
         welcome: 'Welcome to Eric’s Tacos!',
@@ -142,7 +140,10 @@ export const FormsSandbox = args => ({
         total: 'Total',
         orderNow: 'Order Now',
         taco: 'Taco',
-        salsa: 'Sauce'
+        salsa: 'Sauce',
+        errorRequired: 'This field is required',
+        errorEmail: 'Please enter a valid email',
+        errorPhone: 'Please enter a valid phone number'
       }
     }
 
@@ -270,6 +271,42 @@ export const FormsSandbox = args => ({
       specialInstructions: ''
     })
 
+    const errors = ref({
+      name: false,
+      phone: false,
+      address: false,
+      city: false,
+      country: false,
+      province: false,
+      postalCode: false
+    })
+
+    const validateField = (field) => {
+      if (field === 'name' || field === 'phone') {
+        errors.value[field] = !model.value[field] || model.value[field].trim() === ''
+      } else if (isDelivery.value && (field === 'address' || field === 'city' || field === 'country' || field === 'province' || field === 'postalCode')) {
+        errors.value[field] = !model.value[field] || model.value[field].trim() === ''
+      } else {
+        errors.value[field] = false
+      }
+    }
+
+    const validateForm = () => {
+      // Validate required fields
+      validateField('name')
+      validateField('phone')
+
+      if (isDelivery.value) {
+        validateField('address')
+        validateField('city')
+        validateField('country')
+        validateField('province')
+        validateField('postalCode')
+      }
+
+      return !Object.values(errors.value).some(error => error)
+    }
+
     const quantityOptions = Array.from({ length: 10 }, (_, i) => ({
       value: i + 1,
       label: String(i + 1)
@@ -367,6 +404,10 @@ export const FormsSandbox = args => ({
     })
 
     const onSubmit = () => {
+      if (!validateForm()) {
+        console.log('Form has errors')
+        return
+      }
       console.log('Order submitted:', model.value)
       console.log('Total:', orderTotal.value)
       // add validation and submission logic here
@@ -374,7 +415,6 @@ export const FormsSandbox = args => ({
 
     const formClasses = computed(() => ({
       'ep-forms-sandbox__form': true,
-      [`ep-forms-sandbox__form--${args.formSize}`]: args.formSize !== 'default',
       'ep-forms-sandbox__form--disabled': args.formDisabled
     }))
 
@@ -382,6 +422,8 @@ export const FormsSandbox = args => ({
       language,
       t,
       model,
+      errors,
+      validateField,
       tacos,
       hotSauces,
       sides,
@@ -454,13 +496,19 @@ export const FormsSandbox = args => ({
 
             <!-- Customer Information -->
             <ep-fieldset :label="t.customerInfo" style="--ep-fieldset-legend-font-size: var(--font-size--large);">
-              <ep-flex class="flex-col">
+              <ep-flex class="flex-col gap-20">
                 <ep-input
                   v-model="model.name"
                   :label="t.name"
                   :placeholder="t.namePlaceholder"
                   :disabled="args.formDisabled"
                   size="xlarge"
+                  :error="errors.name"
+                  :errorMessage="errors.name ? t.errorRequired : ''"
+                  @blur="validateField('name')"
+                  aria-required="true"
+                  :aria-invalid="errors.name ? 'true' : 'false'"
+                  autocomplete="name"
                 />
                 <ep-input
                   v-model="model.phone"
@@ -469,6 +517,13 @@ export const FormsSandbox = args => ({
                   :disabled="args.formDisabled"
                   size="xlarge"
                   required
+                  :error="errors.phone"
+                  :errorMessage="errors.phone ? t.errorRequired : ''"
+                  @blur="validateField('phone')"
+                  aria-required="true"
+                  :aria-invalid="errors.phone ? 'true' : 'false'"
+                  autocomplete="tel"
+                  type="tel"
                 />
                 <ep-input
                   v-model="model.email"
@@ -477,19 +532,27 @@ export const FormsSandbox = args => ({
                   :disabled="args.formDisabled"
                   size="xlarge"
                   type="email"
+                  autocomplete="email"
+                  aria-required="false"
                 />
               </ep-flex>
             </ep-fieldset>
 
             <!-- Delivery Address (conditional) -->
             <ep-fieldset v-if="isDelivery" :label="t.address" style="--ep-fieldset-legend-font-size: var(--font-size--large);">
-              <ep-flex class="flex-col">
+              <ep-flex class="flex-col gap-20">
                 <ep-input
                   v-model="model.address"
                   :label="t.addressLabel"
                   :placeholder="t.addressPlaceholder"
                   :disabled="args.formDisabled"
                   size="xlarge"
+                  :error="errors.address"
+                  :errorMessage="errors.address ? t.errorRequired : ''"
+                  @blur="validateField('address')"
+                  :aria-required="isDelivery ? 'true' : 'false'"
+                  :aria-invalid="errors.address ? 'true' : 'false'"
+                  autocomplete="address-line1"
                 />
                 <ep-input
                   v-model="model.apartment"
@@ -497,6 +560,8 @@ export const FormsSandbox = args => ({
                   :placeholder="t.apartmentPlaceholder"
                   :disabled="args.formDisabled"
                   size="xlarge"
+                  autocomplete="address-line2"
+                  aria-required="false"
                 />
                 <ep-input
                   v-model="model.city"
@@ -504,6 +569,12 @@ export const FormsSandbox = args => ({
                   :placeholder="t.cityPlaceholder"
                   :disabled="args.formDisabled"
                   size="xlarge"
+                  :error="errors.city"
+                  :errorMessage="errors.city ? t.errorRequired : ''"
+                  @blur="validateField('city')"
+                  :aria-required="isDelivery ? 'true' : 'false'"
+                  :aria-invalid="errors.city ? 'true' : 'false'"
+                  autocomplete="address-level2"
                 />
                 <ep-flex class="flex-row gap-10">
                   <ep-select
@@ -519,6 +590,12 @@ export const FormsSandbox = args => ({
                     selectId="country"
                     :placeholder="t.countryPlaceholder"
                     style="flex: 0 1 auto;"
+                    :error="errors.country"
+                    :errorMessage="errors.country ? t.errorRequired : ''"
+                    @blur="validateField('country')"
+                    :aria-required="isDelivery ? 'true' : 'false'"
+                    :aria-invalid="errors.country ? 'true' : 'false'"
+                    autocomplete="country-name"
                   />
                   <ep-select
                     v-model="model.province"
@@ -533,6 +610,12 @@ export const FormsSandbox = args => ({
                     selectId="province"
                     :placeholder="t.provincePlaceholder"
                     style="flex: 0 1 auto;"
+                    :error="errors.province"
+                    :errorMessage="errors.province ? t.errorRequired : ''"
+                    @blur="validateField('province')"
+                    :aria-required="isDelivery ? 'true' : 'false'"
+                    :aria-invalid="errors.province ? 'true' : 'false'"
+                    autocomplete="address-level1"
                   />
                   <ep-input
                     v-model="model.postalCode"
@@ -541,6 +624,12 @@ export const FormsSandbox = args => ({
                     :disabled="args.formDisabled"
                     size="xlarge"
                     style="flex: 0 1 auto;"
+                    :error="errors.postalCode"
+                    :errorMessage="errors.postalCode ? t.errorRequired : ''"
+                    @blur="validateField('postalCode')"
+                    :aria-required="isDelivery ? 'true' : 'false'"
+                    :aria-invalid="errors.postalCode ? 'true' : 'false'"
+                    autocomplete="postal-code"
                   />
                 </ep-flex>
               </ep-flex>
@@ -572,11 +661,11 @@ export const FormsSandbox = args => ({
                   <ep-select
                     v-model="taco.quantity"
                     :options="quantityOptions"
-                    :size="args.formSize"
                     :disabled="args.formDisabled || !taco.checked"
                     :selectId="'quantity-' + taco.id"
                     placeholder="Qty"
                     style="--ep-input-error-display: none; flex: 0 0 60px;"
+                    :aria-label="'Quantity for ' + t[taco.id] + ' taco'"
                   />
                 </ep-flex>
               </ep-flex>
@@ -603,11 +692,11 @@ export const FormsSandbox = args => ({
                   <ep-select
                     v-model="sauce.quantity"
                     :options="quantityOptions"
-                    :size="args.formSize"
                     :disabled="args.formDisabled || !sauce.checked"
                     :selectId="'quantity-' + sauce.id"
                     placeholder="Qty"
                     style="--ep-input-error-display: none; flex: 0 0 60px;"
+                    :aria-label="'Quantity for ' + (sauce.id === 'fire' ? t.veryHot : t[sauce.id]) + ' sauce'"
                   />
                 </ep-flex>
               </ep-flex>
@@ -634,11 +723,11 @@ export const FormsSandbox = args => ({
                   <ep-select
                     v-model="side.quantity"
                     :options="quantityOptions"
-                    :size="args.formSize"
                     :disabled="args.formDisabled || !side.checked"
                     :selectId="'quantity-' + side.id"
                     placeholder="Qty"
                     style="--ep-input-error-display: none; flex: 0 0 60px;"
+                    :aria-label="'Quantity for ' + (side.id === 'chips' ? t.chipsAndSalsa : t[side.id])"
                   />
                 </ep-flex>
               </ep-flex>
@@ -650,9 +739,9 @@ export const FormsSandbox = args => ({
                 v-model="model.specialInstructions"
                 :placeholder="t.specialInstructionsPlaceholder"
                 :disabled="args.formDisabled"
-                :size="args.formSize"
                 :rows="4"
                 style="--ep-textarea-resize: none;"
+                aria-required="false"
               />
             </ep-fieldset>
           </ep-flex>
@@ -705,6 +794,5 @@ export const FormsSandbox = args => ({
 })
 
 FormsSandbox.args = {
-  formSize: 'default',
   formDisabled: false
 }
