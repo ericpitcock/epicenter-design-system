@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rye&family=Stint+Ultra+Condensed&family=Stint+Ultra+Expanded&display=swap');
+
+.forms-sandbox-container {
+  max-width: 100%;
+  width: 100%;
+
+  .forms-sandbox-header {
+    width: 100%;
+  }
+
+  .forms-sandbox-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .forms-sandbox-column {
+    min-width: 0;
+  }
+
+  .forms-sandbox-summary {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .ep-fieldset__legend {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed hsl(25 38% 49% / 0.3);
+    ;
+    margin-bottom: 2rem;
+    color: hsl(25, 38%, 49%);
+    font-family: "Rye", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .stint-ultra-condensed-regular {
+    font-family: "Stint Ultra Condensed", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .ep-header {
+    --ep-header-left-flex: 2;
+    --ep-header-right-flex: 1;
+    --ep-header-container-border-style: dashed;
+    --ep-header-container-border-color: hsl(54 42% 62% / 0.3);
+
+    h1 {
+      color: hsl(54, 42%, 62%);
+      font-family: "Rye", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+  }
+}

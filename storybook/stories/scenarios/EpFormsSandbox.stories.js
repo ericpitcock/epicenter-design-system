@@ -1,12 +1,16 @@
+import './EpFormsSandbox.stories.scss'
+
 import { computed, ref } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
-import EpDivider from '@/components/divider/EpDivider.vue'
+import EpFieldset from '@/components/fieldset/EpFieldset.vue'
 import EpFlex from '@/components/flexbox/EpFlex.vue'
+import EpHeader from '@/components/header/EpHeader.vue'
 import EpInput from '@/components/input/EpInput.vue'
 import EpRadio from '@/components/radio/EpRadio.vue'
 import EpSelect from '@/components/select/EpSelect.vue'
+import EpTextarea from '@/components/textarea/EpTextarea.vue'
 
 import { paddedSurface } from '../../helpers/decorators.js'
 
@@ -27,8 +31,123 @@ export default {
 }
 
 export const FormsSandbox = args => ({
-  components: { EpButton, EpCheckbox, EpDivider, EpFlex, EpInput, EpRadio, EpSelect },
+  components: {
+    EpButton,
+    EpCheckbox,
+    EpFieldset,
+    EpFlex,
+    EpHeader,
+    EpInput,
+    EpRadio,
+    EpSelect,
+    EpTextarea
+  },
   setup() {
+    const language = ref('spanish')
+
+    const translations = {
+      spanish: {
+        welcome: '¡Bienvenido a los Tacos de Eric!',
+        orderType: 'Tipo de Orden',
+        pickup: 'Para Llevar',
+        delivery: 'A Domicilio',
+        customerInfo: 'Información del Cliente',
+        name: 'Nombre',
+        namePlaceholder: 'Ingrese su nombre',
+        email: 'Correo electrónico (opcional)',
+        emailPlaceholder: 'Ingrese su correo electrónico',
+        phone: 'Teléfono',
+        phonePlaceholder: 'Ingrese su número de teléfono',
+        address: 'Dirección',
+        addressLabel: 'Dirección',
+        addressPlaceholder: 'Ingrese su dirección',
+        apartment: 'Apartamento, suite, etc. (opcional)',
+        apartmentPlaceholder: 'Apartamento, suite, etc.',
+        city: 'Ciudad',
+        cityPlaceholder: 'Ingrese su ciudad',
+        country: 'País',
+        countryPlaceholder: 'Seleccione país',
+        province: 'Provincia',
+        provincePlaceholder: 'Seleccione provincia',
+        postalCode: 'Código postal',
+        postalCodePlaceholder: 'Ingrese su código postal',
+        tacos: 'Tacos',
+        carnitas: 'Carnitas',
+        pollo: 'Pollo',
+        pescado: 'Pescado',
+        lingua: 'Lingua',
+        sauce: 'Salsa',
+        verde: 'Verde',
+        mild: 'Suave',
+        hot: 'Picante',
+        veryHot: 'Muy Picante',
+        extreme: 'EXTREMO',
+        sides: 'Acompañamientos',
+        guacamole: 'Guacamole',
+        chipsAndSalsa: 'Totopos y Salsa',
+        specialInstructions: 'Instrucciones Especiales',
+        specialInstructionsPlaceholder: '¿Alguna instrucción especial para su pedido?',
+        orderSummary: 'Resumen del Pedido',
+        noItems: 'No hay artículos seleccionados',
+        instructions: 'Instrucciones',
+        total: 'Total',
+        orderNow: 'Ordenar Ahora',
+        taco: 'Taco',
+        salsa: 'Salsa'
+      },
+      english: {
+        welcome: 'Welcome to Eric’s Tacos!',
+        orderType: 'Order Type',
+        pickup: 'Pickup',
+        delivery: 'Delivery',
+        customerInfo: 'Customer Information',
+        name: 'Name',
+        namePlaceholder: 'Enter your name',
+        email: 'Email (optional)',
+        emailPlaceholder: 'Enter your email',
+        phone: 'Phone',
+        phonePlaceholder: 'Enter your phone number',
+        address: 'Address',
+        addressLabel: 'Address',
+        addressPlaceholder: 'Enter your address',
+        apartment: 'Apartment, suite, etc. (optional)',
+        apartmentPlaceholder: 'Apartment, suite, etc.',
+        city: 'City',
+        cityPlaceholder: 'Enter your city',
+        country: 'Country',
+        countryPlaceholder: 'Select country',
+        province: 'Province',
+        provincePlaceholder: 'Select province',
+        postalCode: 'Postal code',
+        postalCodePlaceholder: 'Enter your postal code',
+        tacos: 'Tacos',
+        carnitas: 'Carnitas',
+        pollo: 'Chicken',
+        pescado: 'Fish',
+        lingua: 'Tongue',
+        sauce: 'Sauce',
+        verde: 'Green',
+        mild: 'Mild',
+        hot: 'Hot',
+        veryHot: 'Very Hot',
+        extreme: 'EXTREME',
+        sides: 'Sides',
+        guacamole: 'Guacamole',
+        chipsAndSalsa: 'Chips & Salsa',
+        specialInstructions: 'Special Instructions',
+        specialInstructionsPlaceholder: 'Any special instructions for your order?',
+        orderSummary: 'Order Summary',
+        noItems: 'No items selected',
+        instructions: 'Instructions',
+        total: 'Total',
+        orderNow: 'Order Now',
+        taco: 'Taco',
+        salsa: 'Sauce'
+      }
+    }
+
+    const t = computed(() => translations[language.value])
+
     const tacos = ref([
       {
         id: 'carnitas',
@@ -74,60 +193,81 @@ export const FormsSandbox = args => ({
         label: 'Verde',
         name: 'hot-sauces',
         value: 'verde',
-        checked: false
+        checked: false,
+        price: 0.99,
+        quantity: 1
       },
       {
         id: 'mild',
-        label: 'Mild',
+        label: 'Suave',
         name: 'hot-sauces',
         value: 'mild',
-        checked: false
+        checked: false,
+        price: 0.99,
+        quantity: 1
       },
       {
         id: 'hot',
-        label: 'Hot',
+        label: 'Picante',
         name: 'hot-sauces',
         value: 'hot',
-        checked: false
+        checked: false,
+        price: 1.49,
+        quantity: 1
       },
       {
         id: 'fire',
-        label: 'Fire',
+        label: 'Muy Picante',
         name: 'hot-sauces',
         value: 'fire',
-        checked: false
+        checked: false,
+        price: 1.99,
+        quantity: 1
       },
       {
         id: 'extreme',
-        label: 'EXTREME',
+        label: 'EXTREMO',
         name: 'hot-sauces',
         value: 'extreme',
-        checked: false
+        checked: false,
+        price: 2.99,
+        quantity: 1
       }
     ])
 
     const sides = ref([
       {
         id: 'guacamole',
-        label: 'Guacamole $5.99',
+        label: 'Guacamole',
         name: 'sides',
         value: 'guacamole',
         checked: false,
-        price: 5.99
+        price: 5.99,
+        quantity: 1
       },
       {
         id: 'chips',
-        label: 'Chips & Salsa $5.99',
+        label: 'Totopos y Salsa',
         name: 'sides',
         value: 'chipsAndSalsa',
         checked: false,
-        price: 5.99
+        price: 5.99,
+        quantity: 1
       }
     ])
 
     const model = ref({
-      orderType: 'pickup',
-      address: ''
+      orderType: 'delivery',
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+      apartment: '',
+      city: '',
+      country: '',
+      province: '',
+      postalCode: '',
+      specialInstructions: ''
     })
 
     const quantityOptions = Array.from({ length: 10 }, (_, i) => ({
@@ -164,10 +304,17 @@ export const FormsSandbox = args => ({
         }
       })
 
+      // Hot Sauces
+      hotSauces.value.forEach(sauce => {
+        if (sauce.checked) {
+          total += sauce.price * sauce.quantity
+        }
+      })
+
       // Sides
       sides.value.forEach(side => {
         if (side.checked) {
-          total += side.price
+          total += side.price * side.quantity
         }
       })
 
@@ -176,12 +323,13 @@ export const FormsSandbox = args => ({
 
     const orderSummary = computed(() => {
       const items = []
+      const lang = translations[language.value]
 
       // Tacos
       tacos.value.forEach(taco => {
         if (taco.checked) {
           items.push({
-            name: `${taco.label} Taco`,
+            name: `${lang[taco.id]} ${lang.taco}`,
             quantity: taco.quantity,
             price: taco.price,
             total: taco.price * taco.quantity
@@ -189,14 +337,28 @@ export const FormsSandbox = args => ({
         }
       })
 
+      // Hot Sauces
+      hotSauces.value.forEach(sauce => {
+        if (sauce.checked) {
+          const sauceName = sauce.id === 'fire' ? lang.veryHot : lang[sauce.id]
+          items.push({
+            name: `${lang.salsa} ${sauceName}`,
+            quantity: sauce.quantity,
+            price: sauce.price,
+            total: sauce.price * sauce.quantity
+          })
+        }
+      })
+
       // Sides
       sides.value.forEach(side => {
         if (side.checked) {
+          const sideName = side.id === 'chips' ? lang.chipsAndSalsa : lang[side.id]
           items.push({
-            name: side.label.replace(/\s\$[\d.]+$/, ''),
-            quantity: 1,
+            name: sideName,
+            quantity: side.quantity,
             price: side.price,
-            total: side.price
+            total: side.price * side.quantity
           })
         }
       })
@@ -204,15 +366,10 @@ export const FormsSandbox = args => ({
       return items
     })
 
-    const selectedHotSauces = computed(() => {
-      return hotSauces.value
-        .filter(sauce => sauce.checked)
-        .map(sauce => sauce.label)
-    })
-
     const onSubmit = () => {
       console.log('Order submitted:', model.value)
       console.log('Total:', orderTotal.value)
+      // add validation and submission logic here
     }
 
     const formClasses = computed(() => ({
@@ -222,6 +379,8 @@ export const FormsSandbox = args => ({
     }))
 
     return {
+      language,
+      t,
       model,
       tacos,
       hotSauces,
@@ -234,159 +393,312 @@ export const FormsSandbox = args => ({
       isDelivery,
       orderTotal,
       orderSummary,
-      selectedHotSauces,
       onSubmit,
       formClasses,
       args
     }
   },
   template: `
-    <ep-flex class="flex-row gap-20" style="align-items: flex-start;">
-      <!-- Left Column: Order Form (75%) -->
-      <form class="ep-forms-sandbox__form" :class="formClasses" @submit.prevent="onSubmit" style="flex: 3;">
-        <ep-flex class="flex-col gap-40">
-          <!-- Order Type -->
-          <div class="ep-forms-sandbox__section">
-            <h2 class="ep-forms-sandbox__heading font-size--large">Order Type</h2>
-            <ep-divider />
-            <ep-flex class="flex-row gap-20" style="margin-top: 16px;">
-              <ep-radio
-                v-model="model.orderType"
-                value="pickup"
-                label="Pickup"
-                id="order-type-pickup"
-                name="orderType"
-                :disabled="args.formDisabled"
-              />
-              <ep-radio
-                v-model="model.orderType"
-                value="delivery"
-                label="Delivery"
-                id="order-type-delivery"
-                name="orderType"
-                :disabled="args.formDisabled"
-              />
-            </ep-flex>
+    <ep-flex class="forms-sandbox-container flex-col gap-30" style="padding: 2rem 6rem;">
+      <!-- Row 1: Header spanning all columns -->
+      <ep-header class="forms-sandbox-header">
+        <template #left>
+          <h1 class="font-size--jumbo">{{ t.welcome }}</h1>
+        </template>
+        <template #right>
+          <!-- Language Selector -->
+          <div class="ep-button-group">
+            <ep-button
+              :class="{ 'ep-button-var--primary ep-button-group--selected': language === 'spanish' }"
+              @click="language = 'spanish'"
+            >
+              Español
+            </ep-button>
+            <ep-button
+              :class="{ 'ep-button-var--primary ep-button-group--selected': language === 'english' }"
+              @click="language = 'english'"
+            >
+              English
+            </ep-button>
           </div>
+        </template>
+      </ep-header>
 
-          <!-- Address (conditional) -->
-          <div v-if="isDelivery" class="ep-forms-sandbox__section">
-            <h2 class="ep-forms-sandbox__heading font-size--large">Address</h2>
-            <ep-divider />
-            <div style="margin-top: 16px;">
-              <ep-input
-                v-model="model.address"
-                label="Delivery address"
-                placeholder="Enter your delivery address"
+      <!-- Row 2: Three column layout -->
+      <div class="forms-sandbox-grid">
+        <!-- Column 1: Customer Info & Order Type -->
+        <div class="forms-sandbox-column">
+          <ep-flex class="flex-col gap-30">
+            <p class="font-size--small text-color--subtle">All fields required unless noted</p>
+            <!-- Order Type -->
+            <ep-fieldset :label="t.orderType" style="--ep-fieldset-legend-font-size: var(--font-size--large);">
+              <ep-flex class="flex-col gap-10">
+                <ep-radio
+                  v-model="model.orderType"
+                  value="pickup"
+                  :label="t.pickup"
+                  id="order-type-pickup"
+                  name="orderType"
+                  :disabled="args.formDisabled"
+                />
+                <ep-radio
+                  v-model="model.orderType"
+                  value="delivery"
+                  :label="t.delivery"
+                  id="order-type-delivery"
+                  name="orderType"
+                  :disabled="args.formDisabled"
+                />
+              </ep-flex>
+            </ep-fieldset>
+
+            <!-- Customer Information -->
+            <ep-fieldset :label="t.customerInfo" style="--ep-fieldset-legend-font-size: var(--font-size--large);">
+              <ep-flex class="flex-col">
+                <ep-input
+                  v-model="model.name"
+                  :label="t.name"
+                  :placeholder="t.namePlaceholder"
+                  :disabled="args.formDisabled"
+                  size="xlarge"
+                />
+                <ep-input
+                  v-model="model.phone"
+                  :label="t.phone"
+                  :placeholder="t.phonePlaceholder"
+                  :disabled="args.formDisabled"
+                  size="xlarge"
+                  required
+                />
+                <ep-input
+                  v-model="model.email"
+                  :label="t.email"
+                  :placeholder="t.emailPlaceholder"
+                  :disabled="args.formDisabled"
+                  size="xlarge"
+                  type="email"
+                />
+              </ep-flex>
+            </ep-fieldset>
+
+            <!-- Delivery Address (conditional) -->
+            <ep-fieldset v-if="isDelivery" :label="t.address" style="--ep-fieldset-legend-font-size: var(--font-size--large);">
+              <ep-flex class="flex-col">
+                <ep-input
+                  v-model="model.address"
+                  :label="t.addressLabel"
+                  :placeholder="t.addressPlaceholder"
+                  :disabled="args.formDisabled"
+                  size="xlarge"
+                />
+                <ep-input
+                  v-model="model.apartment"
+                  :label="t.apartment"
+                  :placeholder="t.apartmentPlaceholder"
+                  :disabled="args.formDisabled"
+                  size="xlarge"
+                />
+                <ep-input
+                  v-model="model.city"
+                  :label="t.city"
+                  :placeholder="t.cityPlaceholder"
+                  :disabled="args.formDisabled"
+                  size="xlarge"
+                />
+                <ep-flex class="flex-row gap-10">
+                  <ep-select
+                    v-model="model.country"
+                    :options="[
+                      { value: 'Canada', label: 'Canada' },
+                      { value: 'USA', label: 'USA' },
+                      { value: 'Mexico', label: 'Mexico' }
+                    ]"
+                    :label="t.country"
+                    size="xlarge"
+                    :disabled="args.formDisabled"
+                    selectId="country"
+                    :placeholder="t.countryPlaceholder"
+                    style="flex: 0 1 auto;"
+                  />
+                  <ep-select
+                    v-model="model.province"
+                    :options="[
+                      { value: 'Quebec', label: 'Quebec' },
+                      { value: 'Ontario', label: 'Ontario' },
+                      { value: 'BC', label: 'British Columbia' }
+                    ]"
+                    :label="t.province"
+                    size="xlarge"
+                    :disabled="args.formDisabled"
+                    selectId="province"
+                    :placeholder="t.provincePlaceholder"
+                    style="flex: 0 1 auto;"
+                  />
+                  <ep-input
+                    v-model="model.postalCode"
+                    :label="t.postalCode"
+                    :placeholder="t.postalCodePlaceholder"
+                    :disabled="args.formDisabled"
+                    size="xlarge"
+                    style="flex: 0 1 auto;"
+                  />
+                </ep-flex>
+              </ep-flex>
+            </ep-fieldset>
+          </ep-flex>
+        </div>
+
+        <!-- Column 2: Order Form -->
+        <form class="forms-sandbox-column ep-forms-sandbox__form" :class="formClasses" @submit.prevent="onSubmit">
+          <ep-flex class="flex-col gap-30">
+            <!-- Tacos -->
+            <ep-fieldset :label="t.tacos" style="--ep-fieldset-legend-font-size: var(--font-size--large);">
+              <ep-flex class="flex-col gap-10">
+                <ep-flex
+                  v-for="taco in tacos"
+                  :key="taco.id"
+                  class="flex-row gap-20"
+                  style="height: 30px;"
+                >
+                  <ep-checkbox
+                    v-bind="taco"
+                    :disabled="args.formDisabled"
+                    v-model="taco.checked"
+                    @update:modelValue="updateTaco($event, taco.id)"
+                    style="flex: 0 0 180px;"
+                  >
+                    {{ t[taco.id] }} <span class="text-color--subtle">{{ formatPrice(taco.price) }}</span>
+                  </ep-checkbox>
+                  <ep-select
+                    v-model="taco.quantity"
+                    :options="quantityOptions"
+                    :size="args.formSize"
+                    :disabled="args.formDisabled || !taco.checked"
+                    :selectId="'quantity-' + taco.id"
+                    placeholder="Qty"
+                    style="--ep-input-error-display: none; flex: 0 0 60px;"
+                  />
+                </ep-flex>
+              </ep-flex>
+            </ep-fieldset>
+
+            <!-- Sauce -->
+            <ep-fieldset :label="t.sauce" style="--ep-fieldset-legend-font-size: var(--font-size--large);">
+              <ep-flex class="flex-col gap-10">
+                <ep-flex
+                  v-for="sauce in hotSauces"
+                  :key="sauce.id"
+                  class="flex-row gap-20"
+                  style="height: 30px;"
+                >
+                  <ep-checkbox
+                    v-bind="sauce"
+                    :disabled="args.formDisabled"
+                    v-model="sauce.checked"
+                    @update:modelValue="updateHotSauce($event, sauce.id)"
+                    style="flex: 0 0 180px;"
+                  >
+                    {{ sauce.id === 'fire' ? t.veryHot : t[sauce.id] }} <span class="text-color--subtle">{{ formatPrice(sauce.price) }}</span>
+                  </ep-checkbox>
+                  <ep-select
+                    v-model="sauce.quantity"
+                    :options="quantityOptions"
+                    :size="args.formSize"
+                    :disabled="args.formDisabled || !sauce.checked"
+                    :selectId="'quantity-' + sauce.id"
+                    placeholder="Qty"
+                    style="--ep-input-error-display: none; flex: 0 0 60px;"
+                  />
+                </ep-flex>
+              </ep-flex>
+            </ep-fieldset>
+
+            <!-- Sides -->
+            <ep-fieldset :label="t.sides" style="--ep-fieldset-legend-font-size: var(--font-size--large);">
+              <ep-flex class="flex-col gap-10">
+                <ep-flex
+                  v-for="side in sides"
+                  :key="side.id"
+                  class="flex-row gap-20"
+                  style="height: 30px;"
+                >
+                  <ep-checkbox
+                    v-bind="side"
+                    :disabled="args.formDisabled"
+                    v-model="side.checked"
+                    @update:modelValue="updateSide($event, side.id)"
+                    style="flex: 0 0 180px;"
+                  >
+                    {{ side.id === 'chips' ? t.chipsAndSalsa : t[side.id] }} <span class="text-color--subtle">{{ formatPrice(side.price) }}</span>
+                  </ep-checkbox>
+                  <ep-select
+                    v-model="side.quantity"
+                    :options="quantityOptions"
+                    :size="args.formSize"
+                    :disabled="args.formDisabled || !side.checked"
+                    :selectId="'quantity-' + side.id"
+                    placeholder="Qty"
+                    style="--ep-input-error-display: none; flex: 0 0 60px;"
+                  />
+                </ep-flex>
+              </ep-flex>
+            </ep-fieldset>
+
+            <!-- Special Instructions -->
+            <ep-fieldset :label="t.specialInstructions" style="--ep-fieldset-legend-font-size: var(--font-size--large);">
+              <ep-textarea
+                v-model="model.specialInstructions"
+                :placeholder="t.specialInstructionsPlaceholder"
                 :disabled="args.formDisabled"
                 :size="args.formSize"
+                :rows="4"
+                style="--ep-textarea-resize: none;"
               />
-            </div>
-          </div>
-
-          <!-- Tacos -->
-          <div class="ep-forms-sandbox__section">
-            <h2 class="ep-forms-sandbox__heading font-size--large">Tacos</h2>
-            <ep-divider />
-            <ep-flex class="flex-col gap-10" style="margin-top: 16px;">
-              <ep-flex
-                v-for="taco in tacos"
-                :key="taco.id"
-                class="flex-row gap-20"
-              >
-                <ep-checkbox
-                  v-bind="taco"
-                  :label="taco.label + ' (' + formatPrice(taco.price) + ')'"
-                  v-model="taco.checked"
-                  @update:modelValue="updateTaco($event, taco.id)"
-                  style="flex: 0 0 140px;"
-                />
-                <ep-select
-                  v-model="taco.quantity"
-                  :options="quantityOptions"
-                  :size="args.formSize"
-                  :disabled="args.formDisabled || !taco.checked"
-                  :selectId="'quantity-' + taco.id"
-                  placeholder="Qty"
-                  style="--ep-input-error-display: none; flex: 0 0 60px;"
-                />
-              </ep-flex>
-            </ep-flex>
-          </div>
-
-          <!-- Hot Sauce -->
-          <ep-flex class="flex-col gap-20 ep-forms-sandbox__section">
-            <div>
-              <h2 class="ep-forms-sandbox__heading font-size--large">Hot Sauce</h2>
-            <ep-divider />
-            </div>
-            <ep-flex class="flex-col gap-10">
-              <ep-checkbox
-                v-for="sauce in hotSauces"
-                :key="sauce.id"
-                v-bind="sauce"
-                v-model="sauce.checked"
-                @update:modelValue="updateHotSauce($event, sauce.id)"
-              />
-            </ep-flex>
+            </ep-fieldset>
           </ep-flex>
+        </form>
 
-          <!-- Sides -->
-          <div class="ep-forms-sandbox__section">
-            <h2 class="ep-forms-sandbox__heading font-size--large">Sides</h2>
-            <ep-divider />
-            <ep-flex class="flex-col gap-8" style="margin-top: 16px;">
-              <ep-checkbox
-                v-for="side in sides"
-                :key="side.id"
-                v-bind="side"
-                v-model="side.checked"
-                @update:modelValue="updateSide($event, side.id)"
-              />
+        <!-- Column 3: Order Summary -->
+        <div class="forms-sandbox-column forms-sandbox-summary">
+          <div class="ep-forms-sandbox__summary" style="border: 1px solid var(--border-color); padding: 3rem; border-radius: 0.7rem; background: var(--interface-surface--accent);">
+            <ep-flex class="flex-col gap-15">
+              <h2 class="ep-forms-sandbox__heading font-size--large">{{ t.orderSummary }}</h2>
+              
+              <div v-if="orderSummary.length === 0" style="color: var(--text-secondary); padding: 16px 0;">
+                {{ t.noItems }}
+              </div>
+              
+              <div v-else class="ep-forms-sandbox__order-items">
+                <div v-for="(item, index) in orderSummary" :key="index" style="padding: 8px 0; border-bottom: 1px solid var(--border-color);">
+                  <ep-flex class="flex-row" style="justify-content: space-between;">
+                    <span>{{ item.quantity }}x {{ item.name }}</span>
+                    <span style="font-weight: 500;">\${{ item.total.toFixed(2) }}</span>
+                  </ep-flex>
+                </div>
+                
+                <div v-if="model.specialInstructions" style="padding: 8px 0;">
+                  <strong>{{ t.instructions }}:</strong> {{ model.specialInstructions }}
+                </div>
+                
+                <div style="padding: 16px 0; margin-top: 8px; border-top: 2px solid var(--border-color);">
+                  <ep-flex class="flex-row" style="justify-content: space-between; font-size: 1.25rem; font-weight: 600;">
+                    <span>{{ t.total }}</span>
+                    <span>\${{ orderTotal.toFixed(2) }}</span>
+                  </ep-flex>
+                </div>
+              </div>
+              
+              <ep-button 
+                :disabled="args.formDisabled || orderSummary.length === 0" 
+                class="ep-button-var--primary"
+                style="width: 100%; margin-top: 8px;"
+                @click="onSubmit" 
+              >
+                {{ t.orderNow }}
+              </ep-button>
             </ep-flex>
           </div>
-        </ep-flex>
-      </form>
-
-      <!-- Right Column: Order Summary (25%) -->
-      <div class="ep-forms-sandbox__summary" style="flex: 1; position: sticky; top: 20px;">
-        <ep-flex class="flex-col gap-15">
-          <h2 class="ep-forms-sandbox__heading font-size--large">Order Summary</h2>
-          <ep-divider />
-          
-          <div v-if="orderSummary.length === 0" style="color: var(--text-secondary); padding: 16px 0;">
-            No items selected
-          </div>
-          
-          <div v-else class="ep-forms-sandbox__order-items">
-            <div v-for="(item, index) in orderSummary" :key="index" style="padding: 8px 0; border-bottom: 1px solid var(--border-color);">
-              <ep-flex class="flex-row" style="justify-content: space-between;">
-                <span>{{ item.quantity }}x {{ item.name }}</span>
-                <span style="font-weight: 500;">\${{ item.total.toFixed(2) }}</span>
-              </ep-flex>
-            </div>
-            
-            <div v-if="selectedHotSauces.length > 0" style="padding: 8px 0; font-size: 0.875rem; color: var(--text-secondary);">
-              Hot sauces: {{ selectedHotSauces.join(', ') }}
-            </div>
-            
-            <div style="padding: 16px 0; margin-top: 8px; border-top: 2px solid var(--border-color);">
-              <ep-flex class="flex-row" style="justify-content: space-between; font-size: 1.25rem; font-weight: 600;">
-                <span>Total</span>
-                <span>\${{ orderTotal.toFixed(2) }}</span>
-              </ep-flex>
-            </div>
-          </div>
-          
-          <ep-button 
-            @click="onSubmit" 
-            :disabled="args.formDisabled || orderSummary.length === 0" 
-            class="ep-button-var--primary"
-            style="width: 100%; margin-top: 8px;"
-          >
-            Order Now
-          </ep-button>
-        </ep-flex>
+        </div>
       </div>
     </ep-flex>
   `
