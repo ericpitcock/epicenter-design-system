@@ -24,6 +24,7 @@ export default {
 export const WithRadioButtons = args => ({
   components: {
     EpFieldset,
+    EpFlex,
     EpRadio
   },
   setup() {
@@ -60,12 +61,14 @@ export const WithRadioButtons = args => ({
   },
   template: `
     <ep-fieldset v-bind="args">
-      <ep-radio
-        v-for="radio in radioButtons"
-        :key="radio.id"
-        v-bind="radio"
-        v-model="selectedSize"
-      />
+      <ep-flex class="flex-col gap-10">
+        <ep-radio
+          v-for="radio in radioButtons"
+          :key="radio.id"
+          v-bind="radio"
+          v-model="selectedSize"
+        />
+      </ep-flex>
     </ep-fieldset>
   `
 })
@@ -77,6 +80,7 @@ WithRadioButtons.args = {
 export const WithCheckboxes = args => ({
   components: {
     EpFieldset,
+    EpFlex,
     EpCheckbox
   },
   setup() {
@@ -122,12 +126,14 @@ export const WithCheckboxes = args => ({
   },
   template: `
     <ep-fieldset v-bind="args">
-      <ep-checkbox
-        v-for="feature in features"
-        :key="feature.id"
-        v-bind="feature"
-        @update:modelValue="updateChecked($event, feature.id)"
-      />
+      <ep-flex class="flex-col gap-10">
+        <ep-checkbox
+          v-for="feature in features"
+          :key="feature.id"
+          v-bind="feature"
+          @update:modelValue="updateChecked($event, feature.id)"
+        />
+      </ep-flex>
     </ep-fieldset>
   `
 })
@@ -203,23 +209,27 @@ export const MultipleFieldsets = args => ({
     return { args, shippingMethods, selectedShipping, notifications, updateNotification }
   },
   template: `
-    <ep-flex class="flex-col gap-20">
+    <ep-flex class="flex-col gap-40">
       <ep-fieldset label="Shipping Method">
-        <ep-radio
-          v-for="method in shippingMethods"
-          :key="method.id"
-          v-bind="method"
-          v-model="selectedShipping"
-        />
+        <ep-flex class="flex-col gap-10">
+          <ep-radio
+            v-for="method in shippingMethods"
+            :key="method.id"
+            v-bind="method"
+            v-model="selectedShipping"
+          />
+        </ep-flex>
       </ep-fieldset>
 
       <ep-fieldset label="Notification Preferences">
-        <ep-checkbox
-          v-for="notification in notifications"
-          :key="notification.id"
-          v-bind="notification"
-          @update:modelValue="updateNotification($event, notification.id)"
-        />
+        <ep-flex class="flex-col gap-10">
+          <ep-checkbox
+            v-for="notification in notifications"
+            :key="notification.id"
+            v-bind="notification"
+            @update:modelValue="updateNotification($event, notification.id)"
+          />
+        </ep-flex>
       </ep-fieldset>
     </ep-flex>
   `
@@ -228,6 +238,7 @@ export const MultipleFieldsets = args => ({
 export const NoLabel = args => ({
   components: {
     EpFieldset,
+    EpFlex,
     EpCheckbox
   },
   setup() {
@@ -259,12 +270,14 @@ export const NoLabel = args => ({
   },
   template: `
     <ep-fieldset>
-      <ep-checkbox
-        v-for="option in options"
-        :key="option.id"
-        v-bind="option"
-        @update:modelValue="updateOption($event, option.id)"
-      />
+      <ep-flex class="flex-col gap-10">
+        <ep-checkbox
+          v-for="option in options"
+          :key="option.id"
+          v-bind="option"
+          @update:modelValue="updateOption($event, option.id)"
+        />
+      </ep-flex>
     </ep-fieldset>
   `
 })

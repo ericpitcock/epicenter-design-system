@@ -14,7 +14,9 @@
       :indeterminate
       :required
     >
-    {{ label }}
+    <slot>
+      {{ props.label }}
+    </slot>
   </label>
 </template>
 

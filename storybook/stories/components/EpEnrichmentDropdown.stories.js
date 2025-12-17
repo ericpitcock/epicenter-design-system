@@ -40,7 +40,11 @@ export const ContextualLookup = (args) => ({
       v-bind="args"
       :enrichment-options="enrichmentSources['IP Address']"
       :enrichmentData="getFakeEnrichmentResponse('IP Address', '192.1.1.100')"
-    />
+    >
+      <template #trigger="{ attrs, on }">
+        <span v-bind="attrs" v-on="on">{{ args.label }}</span>
+      </template>
+    </ep-enrichment-dropdown>
   `
 })
 

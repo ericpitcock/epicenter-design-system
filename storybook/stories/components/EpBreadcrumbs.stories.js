@@ -14,16 +14,8 @@ export default {
     auto: {
       name: 'Auto Mode',
       control: { type: 'boolean' },
-      description:
-        'Enable auto mode to generate breadcrumbs based on the Vue Router route meta information.',
-      defaultValue: true,
     },
-    items: {
-      name: 'Items',
-      control: { type: 'object' },
-      description:
-        'An array of breadcrumb objects. (Not used when auto mode is enabled.)',
-    },
+    items: { table: { disable: true } },
   },
 }
 

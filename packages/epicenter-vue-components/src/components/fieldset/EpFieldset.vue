@@ -1,10 +1,10 @@
 <template>
-  <fieldset class="ep-fieldset">
+  <fieldset class="ep-fieldset ep-fieldset--horizontal">
     <legend
-      v-if="label"
+      v-if="props.label"
       class="ep-fieldset__legend"
     >
-      {{ label }}
+      {{ props.label }}
     </legend>
 
     <div class="ep-fieldset__content">
@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-  defineProps({
+  const props = defineProps({
     label: {
       type: String,
       default: ''

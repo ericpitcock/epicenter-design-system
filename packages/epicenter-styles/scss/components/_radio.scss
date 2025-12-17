@@ -38,6 +38,12 @@
       background-color: var(--ep-radio-disabled-bg-color);
     }
   }
+
+  &:is(.ep-radio--checked).ep-radio--disabled {
+    .ep-radio__dot {
+      background-color: var(--text-color--disabled);
+    }
+  }
 }
 
 .ep-radio input {

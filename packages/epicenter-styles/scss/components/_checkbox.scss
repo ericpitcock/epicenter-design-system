@@ -26,6 +26,7 @@
     position: relative;
     width: 14px;
     height: 14px;
+    flex-shrink: 0;
     border: 1px solid var(--ep-checkbox-unchecked-border-color);
     border-radius: 2px;
     appearance: none;

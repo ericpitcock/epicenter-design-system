@@ -35,6 +35,10 @@ $primary-hue: 257deg;
     --ep-badge-border-color: hsl(var(--yellow-600));
     --ep-badge-text-color: var(--text-color--loud);
   }
+
+  --error-color--border: hsl(0, 47%, 61%);
+  --error-color--bg: hsl(0, 77%, 61%);
+  --error-color--text: hsl(0, 47%, 61%);
 }
 
 html[data-color-theme='light'] {

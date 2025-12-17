@@ -449,15 +449,15 @@ export const FormsSandbox = args => ({
         </template>
         <template #right>
           <!-- Language Selector -->
-          <div class="ep-button-group">
+          <div class="ep-button-group" variant="secondary">
             <ep-button
-              :class="{ 'ep-button-var--primary ep-button-group--selected': language === 'spanish' }"
+              :class="{ 'ep-button-var--secondary ep-button-group--selected': language === 'spanish' }"
               @click="language = 'spanish'"
             >
               Español
             </ep-button>
             <ep-button
-              :class="{ 'ep-button-var--primary ep-button-group--selected': language === 'english' }"
+              :class="{ 'ep-button-var--secondary ep-button-group--selected': language === 'english' }"
               @click="language = 'english'"
             >
               English
@@ -656,7 +656,7 @@ export const FormsSandbox = args => ({
                     @update:modelValue="updateTaco($event, taco.id)"
                     style="flex: 0 0 180px;"
                   >
-                    {{ t[taco.id] }} <span class="text-color--subtle">{{ formatPrice(taco.price) }}</span>
+                    <div class="ep-checkbox__wrapper">{{ t[taco.id] }} <span class="text-color--subtle">{{ formatPrice(taco.price) }}</span></div>
                   </ep-checkbox>
                   <ep-select
                     v-model="taco.quantity"
@@ -687,7 +687,7 @@ export const FormsSandbox = args => ({
                     @update:modelValue="updateHotSauce($event, sauce.id)"
                     style="flex: 0 0 180px;"
                   >
-                    {{ sauce.id === 'fire' ? t.veryHot : t[sauce.id] }} <span class="text-color--subtle">{{ formatPrice(sauce.price) }}</span>
+                    <div class="ep-checkbox__wrapper">{{ sauce.id === 'fire' ? t.veryHot : t[sauce.id] }} <span class="text-color--subtle">{{ formatPrice(sauce.price) }}</span></div>
                   </ep-checkbox>
                   <ep-select
                     v-model="sauce.quantity"
@@ -718,7 +718,7 @@ export const FormsSandbox = args => ({
                     @update:modelValue="updateSide($event, side.id)"
                     style="flex: 0 0 180px;"
                   >
-                    {{ side.id === 'chips' ? t.chipsAndSalsa : t[side.id] }} <span class="text-color--subtle">{{ formatPrice(side.price) }}</span>
+                    <div class="ep-checkbox__wrapper">{{ side.id === 'chips' ? t.chipsAndSalsa : t[side.id] }} <span class="text-color--subtle">{{ formatPrice(side.price) }}</span></div>
                   </ep-checkbox>
                   <ep-select
                     v-model="side.quantity"

@@ -4,6 +4,23 @@
   max-width: 100%;
   width: 100%;
 
+  .ep-button-var--primary {
+    --red: hsl(0, 50%, 50%);
+    --orange: hsl(15, 50%, 50%);
+    --ep-button-primary-bg: linear-gradient(140deg, var(--red) 30%, var(--orange) 70%);
+    // --ep-button-primary-bg: var(--primary-color-base);
+    --ep-button-primary-border: var(--red);
+    --ep-button-primary-text: white;
+    --ep-button-primary-hover-bg: var(--red);
+    // --ep-button-primary-hover-bg: hsl(from var(--ep-button-primary-bg) h s calc(l - 5));
+    --ep-button-primary-hover-border: hsl(from var(--ep-button-primary-border) h s calc(l - 5));
+    --ep-button-primary-hover-text: white;
+    --ep-button-primary-active-bg: hsl(from var(--red) h s calc(l - 10));
+    // --ep-button-primary-active-bg: hsl(from var(--ep-button-primary-bg) h s calc(l - 10));
+    --ep-button-primary-active-border: hsl(from var(--ep-button-primary-border) h s calc(l - 10));
+    --ep-button-primary-active-text: white;
+  }
+
   .forms-sandbox-header {
     width: 100%;
   }
@@ -53,5 +70,12 @@
       font-weight: 400;
       font-style: normal;
     }
+  }
+
+  .ep-checkbox__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
