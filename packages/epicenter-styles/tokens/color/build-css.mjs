@@ -1,12 +1,12 @@
 import chokidar from 'chokidar'
 import fs from 'fs'
-import glob from 'glob' // Corrected import for CommonJS module
+import glob from 'glob'
 import yaml from 'js-yaml'
-import path from 'path' // Import the path module
+import path from 'path'
 
 function loadYAMLFiles(pattern) {
   const yamlData = {}
-  const files = glob.sync(pattern) // Correctly use glob.sync for CommonJS
+  const files = glob.sync(pattern)
   files.forEach(file => {
     try {
       const data = yaml.load(fs.readFileSync(file, 'utf8'))
@@ -22,6 +22,7 @@ function writeCSS(filePath, yamlData) {
   let cssOutput = `/* DO NOT EDIT DIRECTLY */\n`
 
   const fileName = path.join('..', '..', 'scss', 'color', `_${path.basename(filePath).replace('.yaml', '.scss')}`) // Construct the new file path
+  const isThemesFile = path.basename(filePath) === 'themes.yaml'
 
   const hasChildProperties = Object.values(yamlData).some(
     value => typeof value === 'object'
@@ -36,7 +37,11 @@ function writeCSS(filePath, yamlData) {
 
     cssOutput += `}\n`
   } else {
-    cssOutput += `:root {\n`
+    // Use special selectors for themes.yaml
+    const darkSelector = isThemesFile ? ':root,\n.dark-theme' : ':root'
+    const lightSelector = isThemesFile ? "html[data-color-theme='light'],\n.light-theme" : "html[data-color-theme='light']"
+
+    cssOutput += `${darkSelector} {\n`
 
     Object.entries(yamlData).forEach(([key, value]) => {
       cssOutput += `  --${key}: ${value.dark};\n`
@@ -44,7 +49,7 @@ function writeCSS(filePath, yamlData) {
 
     cssOutput += `}\n`
 
-    cssOutput += `html[data-color-theme='light'] {\n`
+    cssOutput += `${lightSelector} {\n`
 
     Object.entries(yamlData).forEach(([key, value]) => {
       cssOutput += `  --${key}: ${value.light || value.dark};\n`
@@ -73,7 +78,7 @@ const watcher = chokidar.watch('./*.yaml')
 
 watcher.on('change', () => {
   console.log('YAML file changed, regenerating SCSS...')
-  main() // Re-run the script to generate updated SCSS
+  main()
 })
 
-main() // Initial run
+main()

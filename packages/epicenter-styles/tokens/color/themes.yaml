@@ -1,0 +1,144 @@
+# Interface
+interface-bg:
+  dark: hsl(var(--gray-430))
+  light: hsl(var(--gray-50))
+interface-bg--accent:
+  dark: hsl(var(--gray-420))
+  light: hsl(var(--gray-40))
+interface-surface:
+  dark: hsl(var(--gray-440))
+  light: hsl(var(--gray-30))
+interface-surface--accent:
+  dark: hsl(var(--gray-420))
+  light: hsl(var(--gray-50))
+interface-foreground:
+  dark: hsl(var(--gray-430))
+  light: hsl(var(--gray-20))
+interface-foreground--accent:
+  dark: hsl(var(--gray-420))
+  light: hsl(var(--gray-10))
+interface-overlay:
+  dark: hsl(var(--gray-390))
+  light: hsl(var(--gray-10))
+interface-overlay--accent:
+  dark: hsl(var(--gray-380))
+  light: hsl(var(--gray-0))
+
+# Borders
+border-color:
+  dark: hsl(var(--gray-380))
+  light: hsl(0, 0%, 80%)
+border-color--lighter:
+  dark: hsl(var(--gray-340))
+  light: var(--border-color)
+border-color--disabled:
+  dark: hsl(var(--gray-400))
+  light: hsl(var(--gray-70))
+
+# Overlay
+overlay-color:
+  dark: rgba(36, 36, 36, 0.85)
+  light: rgba(255, 255, 255, 0.85)
+
+# Shadow
+box-shadow-color:
+  dark: rgba(0, 0, 0, 0.3)
+  light: rgba(0, 0, 0, 0.1)
+drop-shadow:
+  dark: 0 5px 8px rgba(0, 0, 0, 0.2)
+  light: 0 5px 8px rgba(0, 0, 0, 0.05)
+drop-shadow--large:
+  dark: 0 2px 20px rgba(0, 0, 0, 0.5)
+  light: 0 2px 20px rgba(0, 0, 0, 0.15)
+drop-shadow--large--north:
+  dark: 0 -10px 10px rgba(0, 0, 0, 0.25)
+  light: 0 -10px 10px rgba(0, 0, 0, 0.15)
+
+# Text
+text-color:
+  dark: hsl(var(--gray-150))
+  light: hsl(var(--gray-410))
+text-color--disabled:
+  dark: hsl(var(--gray-300))
+  light: hsl(var(--gray-170))
+text-color--loud:
+  dark: hsl(var(--gray-50))
+  light: hsl(var(--gray-500))
+text-color--inverse:
+  dark: var(--interface-bg)
+  light: hsl(var(--gray-0))
+text-color--highlight:
+  dark: var(--yellow-600)
+  light: var(--yellow-300)
+text-color--placeholder:
+  dark: var(--text-color--subtle)
+  light: var(--text-color--subtle)
+
+# Text Color Variants
+text-color--primary:
+  dark: hsl(var(--blue-400))
+  light: hsl(var(--blue-600))
+text-color--subtle:
+  dark: hsl(var(--gray-220))
+  light: hsl(var(--gray-270))
+text-color--link:
+  dark: var(--sky-300)
+  light: var(--sky-600)
+text-color--danger:
+  dark: var(--red-400)
+  light: var(--red-600)
+text-color--warning:
+  dark: var(--amber-500)
+  light: var(--amber-600)
+text-color--success:
+  dark: var(--green-600)
+  light: var(--green-700)
+
+# Text Selection
+text-selection:
+  dark: var(--yellow-600)
+  light: var(--yellow-300)
+
+# Table
+ep-table-row-stripe-color:
+  dark: var(--interface-foreground)
+  light: var(--interface-foreground)
+ep-table-row-hover-bg-color:
+  light: hsl(var(--gray-10))
+
+# Toggle
+toggle-track:
+  dark: hsl(var(--gray-400))
+  light: hsl(var(--gray-80))
+toggle-track-border:
+  dark: var(--border-color)
+  light: var(--border-color)
+toggle-track--active:
+  dark: var(--emerald-500)
+  light: var(--emerald-500)
+toggle-track-border--active:
+  dark: var(--emerald-500)
+  light: var(--emerald-500)
+toggle-thumb:
+  dark: hsl(var(--gray-50))
+  light: hsl(var(--gray-0))
+toggle-thumb--active:
+  dark: hsl(var(--gray-50))
+  light: hsl(var(--gray-50))
+toggle-thumb--disabled:
+  dark: hsl(var(--gray-380))
+  light: hsl(var(--gray-50))
+
+# Alert Colors
+bg-color--alert-low:
+  dark: hsl(var(--gray-300))
+  light: hsl(var(--gray-130))
+bg-color--alert-medium:
+  dark: var(--yellow-400)
+  light: var(--yellow-400)
+bg-color--alert-high:
+  dark: var(--amber-500)
+  light: var(--amber-500)
+bg-color--alert-critical:
+  dark: var(--red-500)
+  light: var(--red-500)
