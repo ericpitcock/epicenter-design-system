@@ -38,7 +38,10 @@
       </div>
       <slot />
     </div>
-    <p class="ep-input-styler__error-message">
+    <p
+      v-if="errorEnabled"
+      class="ep-input-styler__error-message"
+    >
       {{ errorMessage || '\u00A0' }}
     </p>
   </div>
@@ -66,6 +69,10 @@
       default: false
     },
     disabled: {
+      type: Boolean,
+      default: false
+    },
+    errorEnabled: {
       type: Boolean,
       default: false
     },

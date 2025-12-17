@@ -59,7 +59,6 @@
             v-model="resultsPerPage"
             select-id="resultsPerPage"
             :options="resultsPerPageOptions"
-            style="--ep-input-error-display: none"
             width="7.5rem"
             @update:model-value="onResultsPerPageChange"
           />

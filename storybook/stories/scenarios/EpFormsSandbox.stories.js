@@ -503,12 +503,13 @@ export const FormsSandbox = args => ({
                   :placeholder="t.namePlaceholder"
                   :disabled="args.formDisabled"
                   size="xlarge"
+                  error-enabled
                   :error="errors.name"
                   :errorMessage="errors.name ? t.errorRequired : ''"
-                  @blur="validateField('name')"
                   aria-required="true"
                   :aria-invalid="errors.name ? 'true' : 'false'"
                   autocomplete="name"
+                  @blur="validateField('name')"
                 />
                 <ep-input
                   v-model="model.phone"
@@ -517,13 +518,14 @@ export const FormsSandbox = args => ({
                   :disabled="args.formDisabled"
                   size="xlarge"
                   required
+                  error-enabled
                   :error="errors.phone"
                   :errorMessage="errors.phone ? t.errorRequired : ''"
-                  @blur="validateField('phone')"
                   aria-required="true"
                   :aria-invalid="errors.phone ? 'true' : 'false'"
                   autocomplete="tel"
                   type="tel"
+                  @blur="validateField('phone')"
                 />
                 <ep-input
                   v-model="model.email"
@@ -547,12 +549,13 @@ export const FormsSandbox = args => ({
                   :placeholder="t.addressPlaceholder"
                   :disabled="args.formDisabled"
                   size="xlarge"
+                  error-enabled
                   :error="errors.address"
                   :errorMessage="errors.address ? t.errorRequired : ''"
-                  @blur="validateField('address')"
                   :aria-required="isDelivery ? 'true' : 'false'"
                   :aria-invalid="errors.address ? 'true' : 'false'"
                   autocomplete="address-line1"
+                  @blur="validateField('address')"
                 />
                 <ep-input
                   v-model="model.apartment"
@@ -569,12 +572,13 @@ export const FormsSandbox = args => ({
                   :placeholder="t.cityPlaceholder"
                   :disabled="args.formDisabled"
                   size="xlarge"
+                  error-enabled
                   :error="errors.city"
                   :errorMessage="errors.city ? t.errorRequired : ''"
-                  @blur="validateField('city')"
                   :aria-required="isDelivery ? 'true' : 'false'"
                   :aria-invalid="errors.city ? 'true' : 'false'"
                   autocomplete="address-level2"
+                  @blur="validateField('city')"
                 />
                 <ep-flex class="flex-row gap-10">
                   <ep-select
@@ -590,12 +594,13 @@ export const FormsSandbox = args => ({
                     selectId="country"
                     :placeholder="t.countryPlaceholder"
                     style="flex: 0 1 auto;"
+                    error-enabled
                     :error="errors.country"
                     :errorMessage="errors.country ? t.errorRequired : ''"
-                    @blur="validateField('country')"
                     :aria-required="isDelivery ? 'true' : 'false'"
                     :aria-invalid="errors.country ? 'true' : 'false'"
                     autocomplete="country-name"
+                    @blur="validateField('country')"
                   />
                   <ep-select
                     v-model="model.province"
@@ -610,12 +615,13 @@ export const FormsSandbox = args => ({
                     selectId="province"
                     :placeholder="t.provincePlaceholder"
                     style="flex: 0 1 auto;"
+                    error-enabled
                     :error="errors.province"
                     :errorMessage="errors.province ? t.errorRequired : ''"
-                    @blur="validateField('province')"
                     :aria-required="isDelivery ? 'true' : 'false'"
                     :aria-invalid="errors.province ? 'true' : 'false'"
                     autocomplete="address-level1"
+                    @blur="validateField('province')"
                   />
                   <ep-input
                     v-model="model.postalCode"
@@ -624,12 +630,13 @@ export const FormsSandbox = args => ({
                     :disabled="args.formDisabled"
                     size="xlarge"
                     style="flex: 0 1 auto;"
+                    error-enabled
                     :error="errors.postalCode"
                     :errorMessage="errors.postalCode ? t.errorRequired : ''"
-                    @blur="validateField('postalCode')"
                     :aria-required="isDelivery ? 'true' : 'false'"
                     :aria-invalid="errors.postalCode ? 'true' : 'false'"
                     autocomplete="postal-code"
+                    @blur="validateField('postalCode')"
                   />
                 </ep-flex>
               </ep-flex>
@@ -664,7 +671,7 @@ export const FormsSandbox = args => ({
                     :disabled="args.formDisabled || !taco.checked"
                     :selectId="'quantity-' + taco.id"
                     placeholder="Qty"
-                    style="--ep-input-error-display: none; flex: 0 0 60px;"
+                    style="flex: 0 0 60px;"
                     :aria-label="'Quantity for ' + t[taco.id] + ' taco'"
                   />
                 </ep-flex>
@@ -695,7 +702,7 @@ export const FormsSandbox = args => ({
                     :disabled="args.formDisabled || !sauce.checked"
                     :selectId="'quantity-' + sauce.id"
                     placeholder="Qty"
-                    style="--ep-input-error-display: none; flex: 0 0 60px;"
+                    style="flex: 0 0 60px;"
                     :aria-label="'Quantity for ' + (sauce.id === 'fire' ? t.veryHot : t[sauce.id]) + ' sauce'"
                   />
                 </ep-flex>
@@ -726,7 +733,7 @@ export const FormsSandbox = args => ({
                     :disabled="args.formDisabled || !side.checked"
                     :selectId="'quantity-' + side.id"
                     placeholder="Qty"
-                    style="--ep-input-error-display: none; flex: 0 0 60px;"
+                    style="flex: 0 0 60px;"
                     :aria-label="'Quantity for ' + (side.id === 'chips' ? t.chipsAndSalsa : t[side.id])"
                   />
                 </ep-flex>

@@ -120,6 +120,13 @@
       default: 'default'
     },
     /**
+     * If true, enables error state styling and message display.
+     */
+    errorEnabled: {
+      type: Boolean,
+      default: false
+    },
+    /**
      * If true, displays the input in error state.
      */
     error: {
@@ -155,6 +162,7 @@
     label: props.label,
     clearable: props.clearable,
     disabled: props.disabled,
+    errorEnabled: props.errorEnabled,
     error: props.error,
     errorMessage: props.errorMessage,
     size: props.size,

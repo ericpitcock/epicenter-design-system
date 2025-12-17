@@ -81,6 +81,13 @@
      */
     placeholder: { type: String, default: 'Select an option' },
     /**
+     * If true, enables error state styling and message display.
+     */
+    errorEnabled: {
+      type: Boolean,
+      default: false
+    },
+    /**
      * If true, displays the select in error state.
      */
     error: { type: Boolean, default: false },
@@ -106,6 +113,7 @@
     label: props.label,
     disabled: props.disabled,
     size: props.size,
+    errorEnabled: props.errorEnabled,
     error: props.error,
     errorMessage: props.errorMessage,
     iconRightClickable: false,

@@ -89,7 +89,6 @@
 }
 
 .ep-input-styler__error-message {
-  display: var(--ep-input-error-display, block);
   margin-top: 0.5rem;
   color: var(--error-color--text);
   font-size: var(--font-size--small);
