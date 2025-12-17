@@ -97,7 +97,7 @@ const Bare = args => ({
     return { args, checkboxes, selectedOptions, updateChecked }
   },
   template: `
-    <ep-flex class="flex-col gap-10" style="height: 100%">
+    <ep-flex class="flex-col gap-10">
       <ep-checkbox
         v-for="checkbox in checkboxes"
         :key="checkbox.id"
@@ -105,8 +105,8 @@ const Bare = args => ({
         v-model="checkbox.checked"
         @update:modelValue="updateChecked($event, checkbox.label, checkbox.id)"
       />
+      <p style="margin-top: auto;">{{ selectedOptions }}</p>
     </ep-flex>
-    {{ selectedOptions }}
   `
 })
 

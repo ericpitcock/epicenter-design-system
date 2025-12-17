@@ -112,7 +112,6 @@ export const Tabs = args => ({
     <ep-container
       :style="{
         '--ep-container-max-width': '120rem',
-        '--ep-container-height': '100%',
         '--ep-container-bg-color': 'var(--interface-surface)',
         '--ep-container-overflow': 'visible',
         '--ep-container-padding': containerPadding,
