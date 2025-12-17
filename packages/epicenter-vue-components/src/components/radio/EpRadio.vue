@@ -13,7 +13,9 @@
       :required
     >
     <span class="ep-radio__dot" />
-    {{ label }}
+    <slot>
+      {{ props.label }}
+    </slot>
   </label>
 </template>
 

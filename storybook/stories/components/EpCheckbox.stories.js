@@ -81,8 +81,15 @@ const Bare = args => ({
       },
     ])
 
+    const customLabelCheckbox = ref(true)
+
     const selectedOptions = computed(() => {
       const checked = checkboxes.value.filter(checkbox => checkbox.checked || checkbox.indeterminate)
+      if (customLabelCheckbox.value) {
+        checked.push({
+          value: 'Custom Label'
+        })
+      }
       return checked.map(checkbox => checkbox.value)
     })
 
@@ -94,7 +101,7 @@ const Bare = args => ({
       checkbox.indeterminate = false
     }
 
-    return { args, checkboxes, selectedOptions, updateChecked }
+    return { args, checkboxes, customLabelCheckbox, selectedOptions, updateChecked }
   },
   template: `
     <ep-flex class="flex-col gap-10">
@@ -105,6 +112,15 @@ const Bare = args => ({
         v-model="checkbox.checked"
         @update:modelValue="updateChecked($event, checkbox.label, checkbox.id)"
       />
+      <ep-checkbox
+        id="checkbox5"
+        label="Custom Label"
+        name="checkboxes"
+        value="Custom Label"
+        v-model="customLabelCheckbox"
+      >
+        <p>Custom Label with <span style="display: inline-block; transform: rotate(346deg);">HTML</span></p>
+      </ep-checkbox>
       <p style="margin-top: auto;">{{ selectedOptions }}</p>
     </ep-flex>
   `

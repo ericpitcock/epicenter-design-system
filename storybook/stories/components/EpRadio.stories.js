@@ -78,6 +78,16 @@ export const Radio = args => ({
         v-model="selectedOption"
         @update:modelValue="console.log(selectedOption)"
       />
+      <ep-radio
+        id="radio5"
+        label="Custom Label"
+        name="hotsauce"
+        value="Custom Label"
+        v-model="selectedOption"
+      >
+        <p>Custom Label with <span style="display: inline-block; transform: rotate(346deg);">HTML</span></p>
+      </ep-radio>
+      <p style="margin-top: auto;">Selected Option: {{ selectedOption }}</p>
     </ep-flex>
   `
 })
