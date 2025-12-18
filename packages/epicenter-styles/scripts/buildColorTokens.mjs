@@ -24,7 +24,7 @@ function loadYAMLFiles(pattern) {
 }
 
 function writeCSS(filePath, yamlData) {
-  let cssOutput = `/* DO NOT EDIT DIRECTLY */\n`
+  let cssOutput = `/* stylelint-disable no-duplicate-selectors */\n/* DO NOT EDIT DIRECTLY */\n`
 
   const fileName = path.resolve(__dirname, '..', 'scss', 'color', `_${path.basename(filePath).replace('.yaml', '.scss')}`)
   const isThemesFile = path.basename(filePath) === 'themes.yaml'
@@ -41,10 +41,25 @@ function writeCSS(filePath, yamlData) {
     })
 
     cssOutput += `}\n`
+  } else if (isThemesFile) {
+    // Use modern color-scheme and light-dark() for themes.yaml
+    cssOutput += `:root { color-scheme: light dark; }\n`
+    cssOutput += `.dark-theme { color-scheme: dark; }\n`
+    cssOutput += `.light-theme { color-scheme: light; }\n\n`
+
+    cssOutput += `:root {\n`
+
+    Object.entries(yamlData).forEach(([key, value]) => {
+      const lightValue = value.light || value.dark
+      const darkValue = value.dark
+      cssOutput += `  --${key}: light-dark(${lightValue}, ${darkValue});\n`
+    })
+
+    cssOutput += `}\n`
   } else {
-    // Use special selectors for themes.yaml
-    const darkSelector = isThemesFile ? ':root,\n.dark-theme' : ':root'
-    const lightSelector = isThemesFile ? "html[data-color-theme='light'],\n.light-theme" : "html[data-color-theme='light']"
+    // Legacy approach for non-themes files
+    const darkSelector = '.dark-theme'
+    const lightSelector = '.light-theme'
 
     cssOutput += `${darkSelector} {\n`
 

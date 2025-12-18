@@ -1,9 +1,10 @@
 import { ref, watch } from 'vue'
 
-const theme = ref('light')
+const theme = ref('dark')
 
 watch(theme, (value) => {
-  document.documentElement.setAttribute('data-color-theme', value)
+  document.documentElement.classList.remove('light-theme', 'dark-theme')
+  document.documentElement.classList.add(`${value}-theme`)
 })
 
 const toggleTheme = () => {

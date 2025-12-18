@@ -1,3 +1,4 @@
+/* stylelint-disable no-duplicate-selectors */
 /* DO NOT EDIT DIRECTLY */
 :root {
   --chart-sequence-00: 262 51% 58%;
@@ -15,7 +16,8 @@
   --chart-sequence-12: 26 58% 37%;
   --chart-sequence-13: 269 65% 85%;
 }
-html[data-color-theme='light'] {
+
+.light-theme {
   --chart-sequence-00: 262 51% 58%;
   --chart-sequence-01: 199 57% 48%;
   --chart-sequence-02: 175 45% 26%;

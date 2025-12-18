@@ -1,12 +1,10 @@
 @use '../mixins/mixins' as *;
 
-:root,
 .dark-theme {
   --ep-table-row-stripe-color: var(--interface-foreground);
   --ep-table-row-hover-bg-color: hsl(var(--gray-450));
 }
 
-html[data-color-theme='light'],
 .light-theme {
   --ep-table-row-stripe-color: var(--interface-foreground);
   --ep-table-row-hover-bg-color: hsl(var(--gray-10));

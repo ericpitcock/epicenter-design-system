@@ -62,7 +62,7 @@
     --intro-hero-link-color: var(--text-color--inverse);
   }
 
-  html[data-color-theme='light'] {
+  .light-theme {
     --intro-hero-link-color: var(--text-color);
   }
 
@@ -102,7 +102,7 @@
         margin-top: 3rem;
         color: var(--text-color--inverse);
 
-        html[data-color-theme='light'] & {
+        .light-theme & {
           color: var(--text-color);
         }
       }

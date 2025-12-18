@@ -41,7 +41,7 @@ $primary-hue: 257deg;
   --error-color--text: hsl(0, 47%, 61%);
 }
 
-html[data-color-theme='light'] {
+.light-theme {
   .ep-table {
     --ep-table-row-hover-bg-color: hsl(var(--gray-60));
   }

@@ -331,7 +331,7 @@
     border-radius: var(--border-radius);
   }
 
-  html[data-color-theme='light'] .colors,
+  .light-theme .colors,
   .light-theme .colors {
     --icon-color--success: hsl(var(--emerald-600));
     --icon-color--error: hsl(var(--rose-600));
