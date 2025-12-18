@@ -281,7 +281,18 @@ export const FormsSandbox = args => ({
       postalCode: false
     })
 
+    const submitted = ref(false)
+
+    const onInput = (field) => {
+      errors.value[field] = false
+    }
+
     const validateField = (field) => {
+      // Only validate on blur if form has been submitted
+      if (!submitted.value) {
+        return
+      }
+
       if (field === 'name' || field === 'phone') {
         errors.value[field] = !model.value[field] || model.value[field].trim() === ''
       } else if (isDelivery.value && (field === 'address' || field === 'city' || field === 'country' || field === 'province' || field === 'postalCode')) {
@@ -292,16 +303,16 @@ export const FormsSandbox = args => ({
     }
 
     const validateForm = () => {
-      // Validate required fields
-      validateField('name')
-      validateField('phone')
+      // Always validate required fields when form is submitted
+      errors.value.name = !model.value.name || model.value.name.trim() === ''
+      errors.value.phone = !model.value.phone || model.value.phone.trim() === ''
 
       if (isDelivery.value) {
-        validateField('address')
-        validateField('city')
-        validateField('country')
-        validateField('province')
-        validateField('postalCode')
+        errors.value.address = !model.value.address || model.value.address.trim() === ''
+        errors.value.city = !model.value.city || model.value.city.trim() === ''
+        errors.value.country = !model.value.country || model.value.country.trim() === ''
+        errors.value.province = !model.value.province || model.value.province.trim() === ''
+        errors.value.postalCode = !model.value.postalCode || model.value.postalCode.trim() === ''
       }
 
       return !Object.values(errors.value).some(error => error)
@@ -404,6 +415,7 @@ export const FormsSandbox = args => ({
     })
 
     const onSubmit = () => {
+      submitted.value = true
       if (!validateForm()) {
         console.log('Form has errors')
         return
@@ -423,6 +435,7 @@ export const FormsSandbox = args => ({
       t,
       model,
       errors,
+      onInput,
       validateField,
       tacos,
       hotSauces,
@@ -509,6 +522,7 @@ export const FormsSandbox = args => ({
                   aria-required="true"
                   :aria-invalid="errors.name ? 'true' : 'false'"
                   autocomplete="name"
+                  @input="onInput('name')"
                   @blur="validateField('name')"
                 />
                 <ep-input
@@ -525,6 +539,7 @@ export const FormsSandbox = args => ({
                   :aria-invalid="errors.phone ? 'true' : 'false'"
                   autocomplete="tel"
                   type="tel"
+                  @input="onInput('phone')"
                   @blur="validateField('phone')"
                 />
                 <ep-input
@@ -555,6 +570,7 @@ export const FormsSandbox = args => ({
                   :aria-required="isDelivery ? 'true' : 'false'"
                   :aria-invalid="errors.address ? 'true' : 'false'"
                   autocomplete="address-line1"
+                  @input="onInput('address')"
                   @blur="validateField('address')"
                 />
                 <ep-input
@@ -578,6 +594,7 @@ export const FormsSandbox = args => ({
                   :aria-required="isDelivery ? 'true' : 'false'"
                   :aria-invalid="errors.city ? 'true' : 'false'"
                   autocomplete="address-level2"
+                  @input="onInput('city')"
                   @blur="validateField('city')"
                 />
                 <ep-flex class="flex-row gap-10">
@@ -600,6 +617,7 @@ export const FormsSandbox = args => ({
                     :aria-required="isDelivery ? 'true' : 'false'"
                     :aria-invalid="errors.country ? 'true' : 'false'"
                     autocomplete="country-name"
+                    @change="onInput('country')"
                     @blur="validateField('country')"
                   />
                   <ep-select
@@ -621,6 +639,7 @@ export const FormsSandbox = args => ({
                     :aria-required="isDelivery ? 'true' : 'false'"
                     :aria-invalid="errors.province ? 'true' : 'false'"
                     autocomplete="address-level1"
+                    @change="onInput('province')"
                     @blur="validateField('province')"
                   />
                   <ep-input
@@ -636,6 +655,7 @@ export const FormsSandbox = args => ({
                     :aria-required="isDelivery ? 'true' : 'false'"
                     :aria-invalid="errors.postalCode ? 'true' : 'false'"
                     autocomplete="postal-code"
+                    @input="onInput('postalCode')"
                     @blur="validateField('postalCode')"
                   />
                 </ep-flex>
