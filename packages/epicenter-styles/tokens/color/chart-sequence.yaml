@@ -1,30 +1,30 @@
 chart-sequence-00:
-  dark: 262, 51%, 58%
+  dark: 262 51% 58%
 chart-sequence-01:
-  dark: 199, 57%, 48%
+  dark: 199 57% 48%
 chart-sequence-02:
-  dark: 175, 45%, 26%
+  dark: 175 45% 26%
 chart-sequence-03:
-  dark: 329, 54%, 70%
+  dark: 329 54% 70%
 chart-sequence-04:
-  dark: 0, 54%, 97%
+  dark: 0 54% 97%
+  light: 0 0% 35%
 chart-sequence-05:
-  dark: 0, 52%, 60%
-  light: 0, 0%, 35%
+  dark: 0 52% 60%
 chart-sequence-06:
-  dark: 142, 37%, 58%
+  dark: 142 37% 58%
 chart-sequence-07:
-  dark: 217, 59%, 60%
+  dark: 217 59% 60%
 chart-sequence-08:
-  dark: 333, 39%, 51%
+  dark: 333 39% 51%
 chart-sequence-09:
-  dark: 45, 61%, 47%
+  dark: 45 61% 47%
 chart-sequence-10:
-  dark: 173, 48%, 40%
+  dark: 173 48% 40%
 chart-sequence-11:
-  dark: 201, 62%, 86%
-  light: 202, 80%,30%
+  dark: 201 62% 86%
+  light: 202 80% 30%
 chart-sequence-12:
-  dark: 26, 58%, 37%
+  dark: 26 58% 37%
 chart-sequence-13:
-  dark: 269, 65%, 85%
+  dark: 269 65% 85%

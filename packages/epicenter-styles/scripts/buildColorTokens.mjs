@@ -3,10 +3,15 @@ import fs from 'fs'
 import glob from 'glob'
 import yaml from 'js-yaml'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 function loadYAMLFiles(pattern) {
   const yamlData = {}
-  const files = glob.sync(pattern)
+  const fullPattern = path.resolve(__dirname, pattern)
+  const files = glob.sync(fullPattern)
   files.forEach(file => {
     try {
       const data = yaml.load(fs.readFileSync(file, 'utf8'))
@@ -21,7 +26,7 @@ function loadYAMLFiles(pattern) {
 function writeCSS(filePath, yamlData) {
   let cssOutput = `/* DO NOT EDIT DIRECTLY */\n`
 
-  const fileName = path.join('..', 'scss', 'color', `_${path.basename(filePath).replace('.yaml', '.scss')}`) // Construct the new file path
+  const fileName = path.resolve(__dirname, '..', 'scss', 'color', `_${path.basename(filePath).replace('.yaml', '.scss')}`)
   const isThemesFile = path.basename(filePath) === 'themes.yaml'
 
   const hasChildProperties = Object.values(yamlData).some(
@@ -74,7 +79,7 @@ function main() {
   }
 }
 
-const watcher = chokidar.watch('../tokens/color/*.yaml')
+const watcher = chokidar.watch(path.resolve(__dirname, '../tokens/color/*.yaml'))
 
 watcher.on('change', () => {
   console.log('YAML file changed, regenerating SCSS...')

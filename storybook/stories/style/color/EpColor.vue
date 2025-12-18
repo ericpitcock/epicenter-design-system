@@ -263,7 +263,10 @@
 
   const checkContrast = (color) => {
     const background = backgroundColor.value
-    const contrast = chroma.contrast(color, background)
+    // Convert modern HSL syntax to legacy comma syntax for chroma
+    // From: hsl(0 0% 100%) to hsl(0, 0%, 100%)
+    const chromaColor = color.replace(/hsl\(([\d.]+)\s+([\d.]+%)\s+([\d.]+%)\)/, 'hsl($1, $2, $3)')
+    const contrast = chroma.contrast(chromaColor, background)
 
     if (contrast < 4.5) {
       return ''

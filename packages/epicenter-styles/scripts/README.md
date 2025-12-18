@@ -61,6 +61,55 @@ This is typically run as part of the package build process before publishing.
 
 ---
 
+### buildStyles.mjs
+
+**Purpose:** Compiles and packages the Epicenter Design System styles for distribution.
+
+**What it does:**
+- Compiles `index.scss` to compressed CSS
+- Outputs to `dist/epicenter-design-system.css`
+- Copies necessary SCSS mixins to the distribution directory
+- Uses the local `sass` binary from `node_modules/.bin/`
+- Ensures dist directory exists before compilation
+
+**Usage:**
+```bash
+npm run build-styles
+```
+
+or directly:
+
+```bash
+node buildStyles.mjs
+```
+
+This is typically run before publishing the package or as part of a CI/CD pipeline.
+
+**Output structure:**
+```
+dist/
+├── epicenter-design-system.css    # Compiled and compressed CSS
+└── mixins/
+    └── _generate-color-variants.scss
+```
+
+**Build process:**
+1. Ensures dist directory exists
+2. Compiles SCSS using Sass compiler
+3. Copies specified SCSS mixins to dist for consumer use
+4. Logs progress for each step
+
+**Error handling:**
+- Logs detailed error messages if compilation fails
+- Displays stderr output from the Sass compiler
+- Rejects the build process on failure
+
+**Dependencies:**
+- `sass` - SCSS compilation
+- `fs-extra` - Enhanced file system operations
+
+---
+
 ## Development Workflow
 
 1. **Token Development:**
@@ -69,11 +118,15 @@ This is typically run as part of the package build process before publishing.
    - SCSS files are automatically generated
 
 2. **Distribution Build:**
-   - Run `buildDistribution.mjs` to compile final CSS
+   - Run `buildDistribution.mjs` or `buildStyles.mjs` to compile final CSS
    - Package is ready for publishing or consumption
+
+3. **Watch Mode (Development):**
+   - Run `npm run sass:watch` to automatically recompile on SCSS changes
 
 ## Notes
 
-- Both scripts use ESM (`.mjs` extension)
+- All scripts use ESM (`.mjs` extension)
 - Paths are relative to the script location
 - Generated files include `/* DO NOT EDIT DIRECTLY */` headers
+- The `buildDistribution.mjs` and `buildStyles.mjs` scripts perform similar functions

@@ -102,9 +102,10 @@ for (const [key, value] of Object.entries(chartSeq)) {
   // index = last two digits of key
   const index = key.slice(-2)
 
-  // Parse the HSL values
+  // Parse the HSL values (handles both "0, 0%, 100%" and "0 0% 100%" formats)
   const [hue, saturation, lightness] = value.dark
-    .split(',')
+    .split(/[,\s]+/)
+    .filter(v => v)
     .map((v) => v.trim().replace('%', ''))
     .map(Number)
 

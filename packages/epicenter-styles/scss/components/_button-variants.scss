@@ -151,3 +151,9 @@
   --ep-button-active-border-color: var(--ep-button-ghost-active-border);
   --ep-button-active-text-color: var(--ep-button-ghost-active-text);
 }
+
+.ep-button--selected {
+  --ep-button-selected-bg-color: var(--primary-color-up-15-base);
+  --ep-button-selected-border-color: var(--primary-color-base);
+  --ep-button-selected-text-color: var(--text--white);
+}

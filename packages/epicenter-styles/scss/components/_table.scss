@@ -1,5 +1,17 @@
 @use '../mixins/mixins' as *;
 
+:root,
+.dark-theme {
+  --ep-table-row-stripe-color: var(--interface-foreground);
+  --ep-table-row-hover-bg-color: hsl(var(--gray-450));
+}
+
+html[data-color-theme='light'],
+.light-theme {
+  --ep-table-row-stripe-color: var(--interface-foreground);
+  --ep-table-row-hover-bg-color: hsl(var(--gray-10));
+}
+
 .ep-table-container {
   --ep-table-container-width: auto;
   --ep-table-container-height: auto;
@@ -14,8 +26,6 @@
   // --ep-table-fixed-top: 0;
   --ep-table-head-width: auto;
   --ep-table-body-width: auto;
-  --ep-table-row-stripe-color: var(--interface-foreground);
-  --ep-table-row-hover-bg-color: hsl(var(--gray-450));
   --ep-table-cell-vertical-align: middle;
   --ep-table-cell-white-space: normal;
   overflow: var(--ep-table-container-overflow);

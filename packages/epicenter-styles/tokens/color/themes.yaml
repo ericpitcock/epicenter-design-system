@@ -99,36 +99,6 @@ text-selection:
   dark: var(--yellow-600)
   light: var(--yellow-300)
 
-# Table
-ep-table-row-stripe-color:
-  dark: var(--interface-foreground)
-  light: var(--interface-foreground)
-ep-table-row-hover-bg-color:
-  light: hsl(var(--gray-10))
-
-# Toggle
-toggle-track:
-  dark: hsl(var(--gray-400))
-  light: hsl(var(--gray-80))
-toggle-track-border:
-  dark: var(--border-color)
-  light: var(--border-color)
-toggle-track--active:
-  dark: var(--emerald-500)
-  light: var(--emerald-500)
-toggle-track-border--active:
-  dark: var(--emerald-500)
-  light: var(--emerald-500)
-toggle-thumb:
-  dark: hsl(var(--gray-50))
-  light: hsl(var(--gray-0))
-toggle-thumb--active:
-  dark: hsl(var(--gray-50))
-  light: hsl(var(--gray-50))
-toggle-thumb--disabled:
-  dark: hsl(var(--gray-380))
-  light: hsl(var(--gray-50))
-
 # Alert Colors
 bg-color--alert-low:
   dark: hsl(var(--gray-300))
