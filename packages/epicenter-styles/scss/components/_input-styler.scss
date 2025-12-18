@@ -84,8 +84,13 @@
   pointer-events: auto;
 }
 
-.ep-input-styler--error .ep-input {
+.ep-input-styler--error .ep-input,
+.ep-input-styler--error .ep-select {
   border-color: var(--error-color--border);
+
+  &:focus-visible {
+    outline-color: var(--error-color--border);
+  }
 }
 
 .ep-input-styler__error-message {

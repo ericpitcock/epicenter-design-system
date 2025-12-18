@@ -12,6 +12,7 @@ import useTabs from '../components/tabs/useTabs.js'
 import useActionsMenu from './useActionsMenu.js'
 import useCalculatedHeight from './useCalculatedHeight.js'
 import useTheme from './useTheme.js'
+import useValidation from './useValidation.js'
 
 export {
   useActionsMenu,
@@ -25,4 +26,5 @@ export {
   useSorting,
   useTabs,
   useTheme,
+  useValidation,
 }
