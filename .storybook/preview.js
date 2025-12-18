@@ -84,6 +84,22 @@ setup((app) => {
 import '../static/epicenter-design-system.css'
 import '../storybook/storybook.scss'
 
+// Determine initial theme based on localStorage or OS preference
+function getInitialStorybookTheme() {
+  const STORAGE_KEY = 'theme-preference'
+  const stored = localStorage.getItem(STORAGE_KEY)
+
+  if (stored === 'light' || stored === 'dark') {
+    return stored === 'light' ? 'Light Theme' : 'Dark Theme'
+  }
+
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    return 'Light Theme'
+  }
+
+  return 'Dark Theme'
+}
+
 const preview = {
   decorators: [
     (story, context) => {
@@ -113,7 +129,7 @@ const preview = {
     theme: {
       name: 'Choose Theme',
       description: 'Global theme for components',
-      defaultValue: 'Dark Theme',
+      defaultValue: getInitialStorybookTheme(),
       toolbar: {
         icon: '',
         items: ['Light Theme', 'Dark Theme'],
