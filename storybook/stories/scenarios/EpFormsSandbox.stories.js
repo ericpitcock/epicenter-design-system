@@ -11,6 +11,7 @@ import EpInput from '@/components/input/EpInput.vue'
 import EpRadio from '@/components/radio/EpRadio.vue'
 import EpSelect from '@/components/select/EpSelect.vue'
 import EpTextarea from '@/components/textarea/EpTextarea.vue'
+import useValidation from '@/composables/useValidation.js'
 
 import { paddedSurface } from '../../helpers/decorators.js'
 
@@ -271,52 +272,33 @@ export const FormsSandbox = args => ({
       specialInstructions: ''
     })
 
-    const errors = ref({
-      name: false,
-      phone: false,
-      address: false,
-      city: false,
-      country: false,
-      province: false,
-      postalCode: false
-    })
+    const isDelivery = computed(() => model.value.orderType === 'delivery')
 
-    const submitted = ref(false)
-
-    const onInput = (field) => {
-      errors.value[field] = false
+    // Define validation rules
+    const validationRules = {
+      name: (value) => value && value.trim() !== '',
+      phone: (value) => value && value.trim() !== ''
     }
 
-    const validateField = (field) => {
-      // Only validate on blur if form has been submitted
-      if (!submitted.value) {
-        return
+    // Define conditional validation rules for delivery
+    const conditionalRules = (modelValue) => {
+      if (modelValue.orderType === 'delivery') {
+        return {
+          address: (value) => value && value.trim() !== '',
+          city: (value) => value && value.trim() !== '',
+          country: (value) => value && value.trim() !== '',
+          province: (value) => value && value.trim() !== '',
+          postalCode: (value) => value && value.trim() !== ''
+        }
       }
-
-      if (field === 'name' || field === 'phone') {
-        errors.value[field] = !model.value[field] || model.value[field].trim() === ''
-      } else if (isDelivery.value && (field === 'address' || field === 'city' || field === 'country' || field === 'province' || field === 'postalCode')) {
-        errors.value[field] = !model.value[field] || model.value[field].trim() === ''
-      } else {
-        errors.value[field] = false
-      }
+      return {}
     }
 
-    const validateForm = () => {
-      // Always validate required fields when form is submitted
-      errors.value.name = !model.value.name || model.value.name.trim() === ''
-      errors.value.phone = !model.value.phone || model.value.phone.trim() === ''
-
-      if (isDelivery.value) {
-        errors.value.address = !model.value.address || model.value.address.trim() === ''
-        errors.value.city = !model.value.city || model.value.city.trim() === ''
-        errors.value.country = !model.value.country || model.value.country.trim() === ''
-        errors.value.province = !model.value.province || model.value.province.trim() === ''
-        errors.value.postalCode = !model.value.postalCode || model.value.postalCode.trim() === ''
-      }
-
-      return !Object.values(errors.value).some(error => error)
-    }
+    const { errors, submitted, onInput, validateField, validateForm } = useValidation(
+      model,
+      validationRules,
+      conditionalRules
+    )
 
     const quantityOptions = Array.from({ length: 10 }, (_, i) => ({
       value: i + 1,
@@ -339,8 +321,6 @@ export const FormsSandbox = args => ({
       const side = sides.value.find(s => s.id === id)
       if (side) side.checked = event
     }
-
-    const isDelivery = computed(() => model.value.orderType === 'delivery')
 
     const orderTotal = computed(() => {
       let total = 0

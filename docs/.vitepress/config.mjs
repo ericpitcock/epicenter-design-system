@@ -12,7 +12,28 @@ export default defineConfig({
         text: 'Getting Started',
         link: '/getting-started'
       },
-      sidebarConfig
+      sidebarConfig,
+      {
+        text: 'Composables',
+        items: [
+          {
+            text: 'useActionsMenu',
+            link: '/composables/useActionsMenu'
+          },
+          {
+            text: 'useCalculatedHeight',
+            link: '/composables/useCalculatedHeight'
+          },
+          {
+            text: 'useTheme',
+            link: '/composables/useTheme'
+          },
+          {
+            text: 'useValidation',
+            link: '/composables/useValidation'
+          }
+        ]
+      }
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/ericpitcock/epicenter-design-system' }
