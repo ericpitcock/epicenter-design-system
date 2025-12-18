@@ -21,7 +21,7 @@ function loadYAMLFiles(pattern) {
 function writeCSS(filePath, yamlData) {
   let cssOutput = `/* DO NOT EDIT DIRECTLY */\n`
 
-  const fileName = path.join('..', '..', 'scss', 'color', `_${path.basename(filePath).replace('.yaml', '.scss')}`) // Construct the new file path
+  const fileName = path.join('..', 'scss', 'color', `_${path.basename(filePath).replace('.yaml', '.scss')}`) // Construct the new file path
   const isThemesFile = path.basename(filePath) === 'themes.yaml'
 
   const hasChildProperties = Object.values(yamlData).some(
@@ -65,7 +65,7 @@ function writeCSS(filePath, yamlData) {
 function main() {
   console.log('Watching for changes in YAML files...')
   try {
-    const yamlFilesData = loadYAMLFiles('./*.yaml')
+    const yamlFilesData = loadYAMLFiles('../tokens/color/*.yaml')
     for (const [filePath, yamlData] of Object.entries(yamlFilesData)) {
       writeCSS(filePath, yamlData)
     }
@@ -74,7 +74,7 @@ function main() {
   }
 }
 
-const watcher = chokidar.watch('./*.yaml')
+const watcher = chokidar.watch('../tokens/color/*.yaml')
 
 watcher.on('change', () => {
   console.log('YAML file changed, regenerating SCSS...')
