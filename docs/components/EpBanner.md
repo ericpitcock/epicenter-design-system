@@ -90,44 +90,44 @@ This component does not use props.
 
   &__color-strip {
     width: .5rem;
-    background: var(--ep-banner-color-strip-bg);
     border-radius: var(--border-radius) 0 0 var(--border-radius);
+    background: var(--ep-banner-color-strip-bg);
   }
 
   &__body {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1.5rem;
     width: 100%;
     height: 100%;
-    background-color: var(--ep-banner-bg-color);
+    align-items: center;
+    justify-content: flex-start;
     padding: 1.2rem 2rem;
     border: 1px solid var(--ep-banner-border-color);
-    border-left: none;
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    border-left: none;
+    background-color: var(--ep-banner-bg-color);
+    gap: 1.5rem;
 
     &__icon {
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
 
     &__message {
       display: flex;
+      height: 100%;
       flex-direction: column;
       justify-content: center;
       gap: .25rem;
-      height: 100%;
 
       &__text {
-        line-height: var(--text-line-height--tight);
         color: var(--ep-banner-text-color);
+        line-height: var(--text-line-height--tight);
       }
 
       &__subtext {
-        font-size: var(--font-size--tiny);
         color: var(--ep-banner-subtext-color);
+        font-size: var(--font-size--tiny);
       }
     }
   }

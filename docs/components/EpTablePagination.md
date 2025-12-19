@@ -37,7 +37,7 @@ This component does not use slots.
           @click="prevPage"
         >
           <template #icon-left>
-            chevron left icon
+            <arrow-left01 />
           </template>
         </ep-button>
         <template v-if="showPages">
@@ -74,7 +74,7 @@ This component does not use slots.
           @click="nextPage"
         >
           <template #icon-right>
-            chevron right icon
+            <arrow-right01 />
           </template>
         </ep-button>
       </template>
@@ -95,6 +95,8 @@ This component does not use slots.
 </template>
 
 <script setup>
+  import ArrowLeft01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowLeft01'
+  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
   import { computed, ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
@@ -193,8 +195,8 @@ This component does not use slots.
   .ep-table-pagination {
     --ep-table-pagination-padding: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     padding: var(--ep-table-pagination-padding);
     user-select: none;
   }

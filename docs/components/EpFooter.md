@@ -292,9 +292,9 @@ This component does not use events.
 
   &__content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     height: 100%;
+    align-items: center;
+    justify-content: space-between;
 
     &__left,
     &__center,

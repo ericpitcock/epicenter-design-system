@@ -128,17 +128,14 @@ This component does not use slots.
 ## Styles (SCSS)
 
 ```scss
-@use '../mixins/_mixins' as *;
+@use '../mixins/mixins' as *;
 
-:root {
+.ep-tabs {
   --ep-tabs-hover-border-color: var(--border-color--lighter);
   --ep-tabs-hover-text-color: var(--text-color);
   --ep-tabs-active-border-color: var(--primary-color-base);
   --ep-tabs-active-text-color: var(--text-color--loud);
   --ep-tabs-focus-outline-color: var(--ep-focus-outline-color);
-}
-
-.ep-tabs {
   display: flex;
   height: 100%;
   gap: 0 3rem;
@@ -150,10 +147,10 @@ This component does not use slots.
 
     span {
       position: relative;
-      border-bottom: 3px solid transparent;
       top: 1px;
       display: inline-flex;
       align-items: center;
+      border-bottom: 3px solid transparent;
       white-space: nowrap;
     }
 
@@ -178,12 +175,12 @@ This component does not use slots.
 
     .ep-tabs__tab-item {
       span {
-        padding: 1rem 1.5rem;
         height: 4rem;
+        padding: 1rem 1.5rem;
         border: 1px solid transparent;
         border-bottom: 0;
-        border-top-right-radius: var(--border-radius);
         border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
       }
 
       @include hover {
@@ -195,9 +192,9 @@ This component does not use slots.
 
       &--active span,
       &.router-link-exact-active span {
+        border-color: var(--border-color);
         border-bottom-color: transparent;
         background: var(--interface-surface);
-        border-color: var(--border-color);
       }
     }
   }

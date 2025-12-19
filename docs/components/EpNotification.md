@@ -104,33 +104,33 @@ This component does not use slots.
 
   &__body {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
     width: 100%;
     height: 100%;
-    background-color: var(--interface-overlay);
+    align-items: center;
+    justify-content: space-between;
     padding: 1.2rem 0.5rem 1.2rem 2rem;
     border: 1px solid var(--border-color--lighter);
-    border-left: none;
     border-radius: 0 var(--border-radius--large) var(--border-radius--large) 0;
+    border-left: none;
+    background-color: var(--interface-overlay);
+    gap: 1rem;
   }
 
   &__message {
     display: flex;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
     gap: .5rem;
-    height: 100%;
 
     &__text {
-      line-height: var(--text-line-height--tight);
       color: var(--text-color--loud);
+      line-height: var(--text-line-height--tight);
     }
 
     &__timestamp {
-      font-size: var(--font-size--tiny);
       color: var(--text-color--subtle);
+      font-size: var(--font-size--tiny);
     }
   }
 }

@@ -145,8 +145,8 @@ This component does not use events.
   &__body {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
     color: var(--text-color--loud);
+    gap: 0.5rem;
 
     &__cta {
       margin-top: 2rem;

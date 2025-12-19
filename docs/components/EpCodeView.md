@@ -128,26 +128,26 @@ This component does not use events, slots.
   --ep-code-block-font-variation-settings: "wght" 400
 }
 
-html[data-color-theme=light] {
+.light-theme {
   --ep-code-block-font-variation-settings: "wght" 450
 }
 
 .ep-code-view code,
 .ep-code-view pre {
+  direction: ltr;
   font-family: var(--ep-code-block-font-family);
   font-variation-settings: var(--ep-code-block-font-variation-settings);
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
   line-height: 1.5;
   -moz-tab-size: 2;
   -o-tab-size: 2;
   tab-size: 2;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none
+  text-align: left;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal
 }
 ```

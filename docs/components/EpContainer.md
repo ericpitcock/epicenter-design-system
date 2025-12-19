@@ -108,7 +108,7 @@ This component does not use props, events.
 ## Styles (SCSS)
 
 ```scss
-@use '../mixins/_mixins' as *;
+@use '../mixins/mixins' as *;
 
 .ep-container {
   --ep-container-width: 100%;
@@ -129,20 +129,20 @@ This component does not use props, events.
   --ep-container-header-bg-color: var(--interface-surface);
   position: relative;
   display: flex;
-  flex-flow: column nowrap;
+  overflow: var(--ep-container-overflow);
   width: var(--ep-container-width);
   min-width: var(--ep-container-min-width);
   max-width: var(--ep-container-max-width);
   height: var(--ep-container-height);
   min-height: var(--ep-container-min-height);
   max-height: var(--ep-container-max-height);
+  flex-flow: column nowrap;
   padding: var(--ep-container-padding);
-  background: var(--ep-container-bg-color);
-  border-radius: var(--ep-container-border-radius);
   border-width: var(--ep-container-border-width);
   border-style: var(--ep-container-border-style);
   border-color: var(--ep-container-border-color);
-  overflow: var(--ep-container-overflow);
+  border-radius: var(--ep-container-border-radius);
+  background: var(--ep-container-bg-color);
 
   &__header {
     flex: 0 0 auto;
@@ -150,11 +150,11 @@ This component does not use props, events.
 
   &__content {
     position: relative;
-    flex: 1 1 auto;
+    z-index: var(--z-index--default);
     height: var(--ep-container-content-height);
+    flex: 1 1 auto;
     padding: var(--ep-container-content-padding);
     @include no-scrollbar;
-    z-index: var(--z-index--default);
   }
 
   &__footer {
@@ -168,9 +168,9 @@ This component does not use props, events.
 
     .ep-container__header {
       position: sticky;
+      z-index: var(--z-index--sticky);
       top: 0;
       background: var(--ep-container-header-bg-color);
-      z-index: var(--z-index--sticky);
     }
   }
 

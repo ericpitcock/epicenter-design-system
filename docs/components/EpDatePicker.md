@@ -197,40 +197,40 @@ This component does not use slots.
 // @import '~flatpickr/dist/flatpickr.css';
 // give every child of .flatpickr-calendar a red border
 .flatpickr-calendar {
-  background: transparent;
-  opacity: 0;
-  display: none;
-  text-align: center;
-  visibility: hidden;
-  padding: 1rem;
-  -webkit-animation: none;
-  animation: none;
-  direction: ltr;
-  border: 1px solid var(--border-color--lighter);
-  // font-size: 14px;
-  line-height: 24px;
-  border-radius: var(--border-radius);
   position: absolute;
+  display: none;
   width: fit-content;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  padding: 1rem;
+  border: 1px solid var(--border-color--lighter);
+  border-radius: var(--border-radius);
+  -webkit-animation: none;
+  animation: none;
+  background: transparent;
+  background: var(--interface-overlay);
+  direction: ltr;
+  // font-size: 14px;
+  line-height: 24px;
+  opacity: 0;
+  text-align: center;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  background: var(--interface-overlay);
+  visibility: hidden;
   // -webkit-box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0,0,0,0.08);
   //         box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0,0,0,0.08);
 }
 
 .flatpickr-calendar.open,
 .flatpickr-calendar.inline {
-  opacity: 1;
   max-height: 640px;
+  opacity: 1;
   visibility: visible;
 }
 
 .flatpickr-calendar.open {
-  display: inline-block;
   z-index: 99999;
+  display: inline-block;
 }
 
 .flatpickr-calendar.animate.open {
@@ -239,9 +239,9 @@ This component does not use slots.
 }
 
 .flatpickr-calendar.inline {
-  display: block;
   position: relative;
   top: 2px;
+  display: block;
 }
 
 .flatpickr-calendar.static {
@@ -267,8 +267,8 @@ This component does not use slots.
 .flatpickr-calendar .hasWeeks .dayContainer,
 .flatpickr-calendar .hasTime .dayContainer {
   border-bottom: 0;
-  border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .flatpickr-calendar .hasWeeks .dayContainer {
@@ -352,39 +352,39 @@ This component does not use slots.
 }
 
 .flatpickr-months .flatpickr-month {
+  position: relative;
+  overflow: hidden;
+  height: 34px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  flex-grow: 1;
   background: transparent;
   color: var(--text-color--loud);
   fill: rgba(0, 0, 0, 0.9);
-  height: 34px;
   line-height: 1;
   text-align: center;
-  position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  overflow: hidden;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
 .flatpickr-months .flatpickr-prev-month,
 .flatpickr-months .flatpickr-next-month {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-decoration: none;
-  cursor: pointer;
+  z-index: 3;
   // position: absolute;
   // top: 0;
   height: 34px;
   padding: 10px;
-  z-index: 3;
   color: var(--text-color--loud);
+  cursor: pointer;
   fill: var(--text-color--loud);
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .flatpickr-months .flatpickr-prev-month.flatpickr-disabled,
@@ -425,9 +425,9 @@ This component does not use slots.
 
 .flatpickr-months .flatpickr-prev-month svg path,
 .flatpickr-months .flatpickr-next-month svg path {
+  fill: inherit;
   -webkit-transition: fill 0.1s;
   transition: fill 0.1s;
-  fill: inherit;
 }
 
 .numInputWrapper {
@@ -458,14 +458,14 @@ This component does not use slots.
   position: absolute;
   right: 0;
   width: 14px;
-  padding: 0 4px 0 2px;
   height: 50%;
-  line-height: 50%;
-  opacity: 0;
-  cursor: pointer;
-  border: 1px solid rgba(57, 57, 57, 0.15);
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  padding: 0 4px 0 2px;
+  border: 1px solid rgba(57, 57, 57, 0.15);
+  cursor: pointer;
+  line-height: 50%;
+  opacity: 0;
 }
 
 .numInputWrapper span:hover {
@@ -477,9 +477,9 @@ This component does not use slots.
 }
 
 .numInputWrapper span:after {
+  position: absolute;
   display: block;
   content: "";
-  position: absolute;
 }
 
 .numInputWrapper span.arrowUp {
@@ -488,10 +488,10 @@ This component does not use slots.
 }
 
 .numInputWrapper span.arrowUp:after {
-  border-left: 4px solid transparent;
+  top: 26%;
   border-right: 4px solid transparent;
   border-bottom: 4px solid rgba(57, 57, 57, 0.6);
-  top: 26%;
+  border-left: 4px solid transparent;
 }
 
 .numInputWrapper span.arrowDown {
@@ -499,10 +499,10 @@ This component does not use slots.
 }
 
 .numInputWrapper span.arrowDown:after {
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid rgba(57, 57, 57, 0.6);
   top: 40%;
+  border-top: 4px solid rgba(57, 57, 57, 0.6);
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
 }
 
 .numInputWrapper span svg {
@@ -523,29 +523,29 @@ This component does not use slots.
 }
 
 .flatpickr-current-month {
-  // font-size: 135%;
-  line-height: inherit;
+  position: absolute;
+  left: 12.5%;
+  display: inline-block;
+  width: 75%;
+  height: 34px;
+  padding: 7.48px 0 0 0;
   // font-weight: 300;
   color: inherit;
-  position: absolute;
-  width: 75%;
-  left: 12.5%;
-  padding: 7.48px 0 0 0;
+  // font-size: 135%;
+  line-height: inherit;
   line-height: 1;
-  height: 34px;
-  display: inline-block;
   text-align: center;
   -webkit-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
 }
 
 .flatpickr-current-month span.cur-month {
-  font-family: inherit;
+  display: inline-block;
+  padding: 0;
+  margin-left: 0.5ch;
   // font-weight: 700;
   color: inherit;
-  display: inline-block;
-  margin-left: 0.5ch;
-  padding: 0;
+  font-family: inherit;
 }
 
 .flatpickr-current-month span.cur-month:hover {
@@ -553,9 +553,8 @@ This component does not use slots.
 }
 
 .flatpickr-current-month .numInputWrapper {
-  width: 6ch;
-  width: 7ch\0;
   display: inline-block;
+  width: 7ch;
 }
 
 .flatpickr-current-month .numInputWrapper span.arrowUp:after {
@@ -567,25 +566,25 @@ This component does not use slots.
 }
 
 .flatpickr-current-month input.cur-year {
-  background: transparent;
+  display: inline-block;
+  height: auto;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  color: inherit;
-  cursor: text;
   padding: 0 0 0 0.5ch;
-  margin: 0;
-  display: inline-block;
-  font-size: inherit;
-  font-family: inherit;
-  // font-weight: 300;
-  line-height: inherit;
-  height: auto;
   border: 0;
   border-radius: 0;
-  vertical-align: initial;
+  margin: 0;
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
+  background: transparent;
+  color: inherit;
+  cursor: text;
+  font-family: inherit;
+  font-size: inherit;
+  // font-weight: 300;
+  line-height: inherit;
+  vertical-align: initial;
 }
 
 .flatpickr-current-month input.cur-year:focus {
@@ -594,34 +593,34 @@ This component does not use slots.
 
 .flatpickr-current-month input.cur-year[disabled],
 .flatpickr-current-month input.cur-year[disabled]:hover {
+  background: transparent;
   // font-size: 100%;
   color: var(--text-color--loud);
-  background: transparent;
   pointer-events: none;
 }
 
 .flatpickr-current-month .flatpickr-monthDropdown-months {
-  appearance: menulist;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-sizing: border-box;
-  color: inherit;
-  cursor: pointer;
-  font-size: inherit;
-  font-family: inherit;
+  position: relative;
+  width: auto;
   // font-weight: 300;
   height: auto;
-  line-height: inherit;
-  margin: -1px 0 0 0;
-  outline: none;
-  padding: 0 0 0 0.5ch;
-  position: relative;
-  vertical-align: initial;
   -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0 0 0.5ch;
+  border: none;
+  border-radius: 0;
+  margin: -1px 0 0 0;
   -webkit-appearance: menulist;
   -moz-appearance: menulist;
-  width: auto;
+  appearance: auto;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  outline: none;
+  vertical-align: initial;
 }
 
 .flatpickr-current-month .flatpickr-monthDropdown-months:focus,
@@ -634,25 +633,24 @@ This component does not use slots.
 }
 
 .flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month {
+  padding: 0;
   background-color: transparent;
   outline: none;
-  padding: 0;
 }
 
 .flatpickr-weekdays {
-  background: transparent;
-  text-align: center;
-  overflow: hidden;
-  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
+  overflow: hidden;
+  width: 100%;
   height: 28px;
+  -webkit-align-items: center;
+  align-items: center;
+  background: transparent;
+  -ms-flex-align: center;
+  text-align: center;
 }
 
 .flatpickr-weekdays .flatpickr-weekdaycontainer {
@@ -660,25 +658,25 @@ This component does not use slots.
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  flex-grow: 1;
 }
 
 span.flatpickr-weekday {
-  cursor: default;
-  // font-size: 90%;
-  background: transparent;
-  color: var(--text-color--loud);
-  line-height: 1;
-  margin: 0;
-  text-align: center;
   display: block;
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  flex-grow: 1;
+  margin: 0;
+  // font-size: 90%;
+  background: transparent;
+  color: var(--text-color--loud);
+  cursor: default;
+  line-height: 1;
+  text-align: center;
   // font-weight: bolder;
 }
 
@@ -689,16 +687,16 @@ span.flatpickr-weekday {
 
 .flatpickr-days {
   position: relative;
-  overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-  -ms-flex-align: start;
-  align-items: flex-start;
+  overflow: hidden;
   width: 307.875px;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  align-items: start;
+  -ms-flex-align: start;
 }
 
 .flatpickr-days:focus {
@@ -706,28 +704,28 @@ span.flatpickr-weekday {
 }
 
 .dayContainer {
-  padding: 0;
-  outline: 0;
-  text-align: left;
-  width: 307.875px;
-  min-width: 307.875px;
-  max-width: 307.875px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   display: inline-block;
   display: -ms-flexbox;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
+  width: 307.875px;
+  min-width: 307.875px;
+  max-width: 307.875px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
   -ms-flex-wrap: wrap;
-  -ms-flex-pack: justify;
+  flex-wrap: wrap;
   -webkit-justify-content: space-around;
   justify-content: space-around;
+  padding: 0;
+  -ms-flex-pack: justify;
+  opacity: 1;
+  outline: 0;
+  text-align: left;
   -webkit-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
-  opacity: 1;
 }
 
 .dayContainer + .dayContainer {
@@ -736,28 +734,27 @@ span.flatpickr-weekday {
 }
 
 .flatpickr-day {
-  background: none;
-  border: 1px solid transparent;
-  border-radius: 150px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  color: var(--text-color--loud);
-  cursor: pointer;
+  position: relative;
+  display: inline-block;
   // font-weight: 400;
   width: 14.2857143%;
-  -webkit-flex-basis: 14.2857143%;
-  -ms-flex-preferred-size: 14.2857143%;
-  flex-basis: 14.2857143%;
   max-width: 39px;
   height: 39px;
-  line-height: 38px;
-  margin: 0;
-  display: inline-block;
-  position: relative;
-  -webkit-box-pack: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-flex-basis: 14.2857143%;
+  flex-basis: 14.2857143%;
   -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 150px;
+  margin: 0;
+  background: none;
+  color: var(--text-color--loud);
+  cursor: pointer;
+  -ms-flex-pack: center;
+  -ms-flex-preferred-size: 14.2857143%;
+  line-height: 38px;
   text-align: center;
 }
 
@@ -773,10 +770,10 @@ span.flatpickr-weekday {
 .flatpickr-day:focus,
 .flatpickr-day.prevMonthDay:focus,
 .flatpickr-day.nextMonthDay:focus {
+  border-color: var(--primary-color-base);
+  background: var(--primary-color-base);
   cursor: pointer;
   outline: 0;
-  background: var(--primary-color-base);
-  border-color: var(--primary-color-base);
 }
 
 .flatpickr-day.today {
@@ -808,11 +805,11 @@ span.flatpickr-weekday {
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
+  border-color: #569ff7;
   background: #569ff7;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: var(--text-color--loud);
-  border-color: #569ff7;
 }
 
 .flatpickr-day.selected.startRange,
@@ -853,16 +850,16 @@ span.flatpickr-weekday {
 .flatpickr-day.notAllowed,
 .flatpickr-day.notAllowed.prevMonthDay,
 .flatpickr-day.notAllowed.nextMonthDay {
-  color: var(--text-color--subtle);
-  background: transparent;
   border-color: transparent;
+  background: transparent;
+  color: var(--text-color--subtle);
   cursor: default;
 }
 
 .flatpickr-day.flatpickr-disabled,
 .flatpickr-day.flatpickr-disabled:hover {
-  cursor: not-allowed;
   color: var(--text-color--disabled);
+  cursor: not-allowed;
 }
 
 .flatpickr-day.week.selected {
@@ -890,8 +887,8 @@ span.flatpickr-weekday {
 }
 
 .flatpickr-weekwrapper .flatpickr-weekday {
-  float: none;
   width: 100%;
+  float: none;
   line-height: 28px;
 }
 
@@ -900,10 +897,10 @@ span.flatpickr-weekday {
   display: block;
   width: 100%;
   max-width: none;
-  color: var(--text-color--loud);
-  background: transparent;
-  cursor: default;
   border: none;
+  background: transparent;
+  color: var(--text-color--loud);
+  cursor: default;
 }
 
 .flatpickr-innerContainer {
@@ -912,47 +909,47 @@ span.flatpickr-weekday {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .flatpickr-rContainer {
   display: inline-block;
-  padding: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  padding: 0;
 }
 
 .flatpickr-time {
-  text-align: center;
-  outline: 0;
   display: block;
-  height: 0;
-  line-height: 40px;
-  max-height: 40px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  overflow: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
+  height: 0;
+  max-height: 40px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 40px;
+  outline: 0;
+  text-align: center;
 }
 
 .flatpickr-time:after {
-  content: "";
   display: table;
   clear: both;
+  content: "";
 }
 
 .flatpickr-time .numInputWrapper {
-  -webkit-box-flex: 1;
+  width: 40%;
+  height: 40px;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  width: 40%;
-  height: 40px;
+  flex-grow: 1;
   float: left;
 }
 
@@ -973,24 +970,24 @@ span.flatpickr-weekday {
 }
 
 .flatpickr-time input {
-  background: transparent;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border: 0;
-  border-radius: 0;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  height: inherit;
-  line-height: inherit;
-  color: var(--text-color--loud);
   // font-size: 14px;
   position: relative;
+  height: inherit;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
+  background: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: var(--text-color--loud);
+  line-height: inherit;
+  text-align: center;
 }
 
 .flatpickr-time input.flatpickr-hour {
@@ -1003,31 +1000,31 @@ span.flatpickr-weekday {
 }
 
 .flatpickr-time input:focus {
-  outline: 0;
   border: 0;
+  outline: 0;
 }
 
 .flatpickr-time .flatpickr-time-separator,
 .flatpickr-time .flatpickr-am-pm {
-  height: inherit;
-  float: left;
-  line-height: inherit;
-  color: var(--text-color--loud);
   // font-weight: bold;
   width: 2%;
+  height: inherit;
+  -webkit-align-self: center;
+  align-self: center;
+  color: var(--text-color--loud);
+  -ms-flex-item-align: center;
+  float: left;
+  line-height: inherit;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .flatpickr-time .flatpickr-am-pm {
-  outline: 0;
   width: 18%;
   cursor: pointer;
+  outline: 0;
   text-align: center;
   // font-weight: 400;
 }

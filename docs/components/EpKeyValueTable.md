@@ -8,12 +8,11 @@
 | `data` | - | `array|object` | `-` |
 | `commonKeyWidth` | - | `boolean` | `false` |
 | `sectionHeaders` | - | `boolean` | `false` |
-| `showActionsMenu` | - | `boolean` | `false` |
 
 ## Slots
 | Name | Description |
 |------|-------------|
-| `actions-menu` | No description available. |
+| `value` | No description available. |
 
 
 ::: info
@@ -46,14 +45,13 @@ This component does not use events.
           >
             {{ key }}
           </td>
-          <td :class="{ 'ep-flex gap-5': showActionsMenu }">
-            {{ value }}
-            <template v-if="$slots['actions-menu']">
-              <slot
-                name="actions-menu"
-                v-bind="{ key, value }"
-              />
-            </template>
+          <td class="ep-flex gap-5">
+            <slot
+              name="value"
+              v-bind="{ key, value }"
+            >
+              {{ value }}
+            </slot>
           </td>
         </tr>
       </table>
@@ -79,10 +77,6 @@ This component does not use events.
       type: Boolean,
       default: false
     },
-    showActionsMenu: {
-      type: Boolean,
-      default: false
-    }
   })
 
   const processedData = computed(() => {
@@ -119,9 +113,9 @@ This component does not use events.
   --ep-table-row-stripe-color: var(--interface-foreground);
 
   td {
-    padding-block: 0.5rem;
     border-bottom: 1px solid var(--border-color);
     line-height: 1.5;
+    padding-block: 0.5rem;
   }
 
   // first tr td border top

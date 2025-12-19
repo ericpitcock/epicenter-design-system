@@ -211,13 +211,13 @@ This component does not use slots.
     height: var(--ep-textarea-height);
     min-height: var(--ep-textarea-min-height);
     max-height: var(--ep-textarea-max-height);
+    padding: var(--ep-textarea-padding);
     border: 1px solid var(--ep-textarea-border-color);
     border-radius: var(--ep-textarea-border-radius);
     background-color: var(--ep-textarea-bg-color);
     color: var(--ep-textarea-text-color);
-    padding: var(--ep-textarea-padding);
-    line-height: var(--ep-textarea-line-height);
     font-size: var(--ep-textarea-font-size);
+    line-height: var(--ep-textarea-line-height);
     resize: var(--ep-textarea-resize);
   }
 }

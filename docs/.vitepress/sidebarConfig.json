@@ -82,6 +82,10 @@
       "link": "/components/EpEnrichmentDropdown"
     },
     {
+      "text": "EpFieldset",
+      "link": "/components/EpFieldset"
+    },
+    {
       "text": "EpFlex",
       "link": "/components/EpFlex"
     },

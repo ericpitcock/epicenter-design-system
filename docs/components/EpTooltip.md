@@ -112,20 +112,20 @@ This component does not use events.
 
 .ep-tooltip {
   position: absolute;
-  background-color: var(--ep-tooltip-bg-color);
-  color: var(--ep-tooltip-text-color);
+  z-index: var(--z-index--tooltip);
   padding: 5px;
   border-radius: 4px;
+  background-color: var(--ep-tooltip-bg-color);
+  color: var(--ep-tooltip-text-color);
   font-size: 12px;
-  white-space: nowrap;
-  visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: var(--z-index--tooltip);
+  visibility: hidden;
+  white-space: nowrap;
 
   &.ep-tooltip--visible {
-    visibility: visible;
     opacity: 1;
+    visibility: visible;
   }
 
   &.ep-tooltip--top-left {
@@ -141,8 +141,8 @@ This component does not use events.
   }
 
   &.ep-tooltip--top-right {
-    bottom: 100%;
     right: 0;
+    bottom: 100%;
     transform: translateY(calc(-1 * var(--ep-tooltip-offset)));
   }
 
@@ -195,8 +195,8 @@ This component does not use events.
   }
 
   &.ep-tooltip--left-bottom {
-    bottom: 0;
     right: 100%;
+    bottom: 0;
     transform: translateX(calc(-1 * var(--ep-tooltip-offset)));
   }
 }

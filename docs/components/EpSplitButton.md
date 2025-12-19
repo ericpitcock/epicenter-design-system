@@ -106,14 +106,14 @@ This component does not use slots.
   gap: 0.1rem;
 
   > .ep-button {
-    border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
   }
 
   // target the dropdown button but not the buttons in the menu
   > .ep-dropdown > .ep-button {
-    border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
 }
 ```

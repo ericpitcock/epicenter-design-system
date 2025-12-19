@@ -49,9 +49,9 @@ This component does not use events, slots.
   &--horizontal {
     width: var(--ep-divider-width);
     height: 0;
+    border-bottom-width: var(--ep-divider-border-width);
     border-bottom-style: var(--ep-divider-border-style);
     border-bottom-color: var(--ep-divider-border-color);
-    border-bottom-width: var(--ep-divider-border-width);
   }
 
   &--vertical {

@@ -15,6 +15,7 @@
 | `required` | If true, marks the input as required. | `boolean` | `false` |
 | `readonly` | If true, makes the input read-only. | `boolean` | `false` |
 | `size` | The size variant of the input. | `string` | `'default'` |
+| `errorEnabled` | If true, enables error state styling and message display. | `boolean` | `false` |
 | `error` | If true, displays the input in error state. | `boolean` | `false` |
 | `errorMessage` | Error message to display below the input. | `string` | `''` |
 
@@ -158,6 +159,13 @@
       default: 'default'
     },
     /**
+     * If true, enables error state styling and message display.
+     */
+    errorEnabled: {
+      type: Boolean,
+      default: false
+    },
+    /**
      * If true, displays the input in error state.
      */
     error: {
@@ -193,6 +201,7 @@
     label: props.label,
     clearable: props.clearable,
     disabled: props.disabled,
+    errorEnabled: props.errorEnabled,
     error: props.error,
     errorMessage: props.errorMessage,
     size: props.size,
@@ -237,7 +246,7 @@
 ## Styles (SCSS)
 
 ```scss
-input.ep-input {
+.ep-input {
   --ep-input-font-size: var(--font-size--default);
   --ep-input-text-color: var(--text-color--loud);
   --ep-input-caret-color: var(--primary-color-base);
@@ -250,12 +259,12 @@ input.ep-input {
   width: 100%;
   height: 100%;
   padding: 0 1.4rem;
-  caret-color: var(--ep-input-caret-color);
-  font-size: var(--ep-input-font-size);
-  color: var(--ep-input-text-color);
-  background: var(--ep-input-bg-color);
   border: 1px solid var(--ep-input-border-color);
   border-radius: var(--ep-input-border-radius);
+  background: var(--ep-input-bg-color);
+  caret-color: var(--ep-input-caret-color);
+  color: var(--ep-input-text-color);
+  font-size: var(--ep-input-font-size);
 
   .ep-input-styler:has(.ep-input-styler__icon-left) & {
     padding-left: 2.8rem;
@@ -296,6 +305,7 @@ input.ep-input {
   &--disabled {
     color: var(--ep-input-disabled-text-color);
     pointer-events: none;
+    user-select: none;
 
     &::placeholder {
       color: var(--ep-input-disabled-text-color);

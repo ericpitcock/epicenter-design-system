@@ -5,6 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
+| `label` | Label text for the select (used as placeholder when no option is selected). | `string` | `''` |
 | `disabled` | If true, disables the select element. | `boolean` | `false` |
 | `autofocus` | If true, automatically focuses the select on mount. | `boolean` | `false` |
 | `readonly` | If true, makes the select read-only. | `boolean` | `false` |
@@ -13,6 +14,9 @@
 | `size` | The size variant of the select. | `string` | `'default'` |
 | `options` | Array of option objects with 'label', 'value', and optional 'disabled' properties. | `array` | `-` |
 | `placeholder` | Placeholder text shown when no option is selected. | `string` | `'Select an option'` |
+| `errorEnabled` | If true, enables error state styling and message display. | `boolean` | `false` |
+| `error` | If true, displays the select in error state. | `boolean` | `false` |
+| `errorMessage` | Error message to display below the select. | `string` | `''` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -69,11 +73,15 @@
 
 <script setup>
   import ArrowDown01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowDown01'
-  import { computed } from 'vue'
+  import { computed, ref, useId } from 'vue'
 
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
   const props = defineProps({
+    /**
+     * Label text for the select (used as placeholder when no option is selected).
+     */
+    label: { type: String, default: '' },
     /**
      * If true, disables the select element.
      */
@@ -96,7 +104,7 @@
     selectId: { type: String, required: true },
     /**
      * The size variant of the select.
-     * @values 'small', 'default', 'large'
+     * @values 'small', 'default', 'large', 'xlarge'
      */
     size: { type: String, default: 'default' },
     /**
@@ -107,22 +115,42 @@
      * Placeholder text shown when no option is selected.
      */
     placeholder: { type: String, default: 'Select an option' },
+    /**
+     * If true, enables error state styling and message display.
+     */
+    errorEnabled: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * If true, displays the select in error state.
+     */
+    error: { type: Boolean, default: false },
+    /**
+     * Error message to display below the select.
+     */
+    errorMessage: { type: String, default: '' },
   })
 
   const emit = defineEmits(['update:modelValue', 'blur', 'focus'])
   const modelValue = defineModel({ type: [String, Number], default: '' })
 
   const selectClasses = computed(() => ({
-    [`ep-select--${props.size}`]: props.size,
+    [`ep-select--${props.size}`]: props.size !== 'default',
     'ep-select--disabled': props.disabled,
+    'ep-select--error': props.error,
   }))
 
-  const computedId = computed(() => props.selectId || crypto.randomUUID())
+  const computedId = ref(props.selectId || useId())
 
   const stylerProps = computed(() => ({
     id: computedId.value,
+    label: props.label,
     disabled: props.disabled,
     size: props.size,
+    errorEnabled: props.errorEnabled,
+    error: props.error,
+    errorMessage: props.errorMessage,
     iconRightClickable: false,
     iconRightVisible: true
   }))
@@ -140,7 +168,7 @@
 ## Styles (SCSS)
 
 ```scss
-select.ep-select {
+.ep-select {
   --ep-select-border-width: 0.1rem;
   --ep-select-border-style: solid;
   --ep-select-border-color: var(--border-color);
@@ -148,13 +176,13 @@ select.ep-select {
   --ep-select-bg-color: var(--interface-foreground);
   width: 100%;
   height: 100%;
-  background: var(--ep-select-bg-color);
+  align-items: center;
   padding: 0 2.8rem 0 1.4rem;
   border: var(--ep-select-border-width) var(--ep-select-border-style) var(--ep-select-border-color);
   border-radius: var(--ep-select-border-radius);
+  background: var(--ep-select-bg-color);
   cursor: pointer;
   user-select: none;
-  align-items: center;
 
   // Apply left padding only when a real icon is present
   .ep-input-styler:has(.ep-input-styler__icon-left:not(:empty)) &,
@@ -191,8 +219,8 @@ select.ep-select {
   }
 
   &--disabled {
-    color: var(--text-color--disabled);
     border-color: var(--border-color--disabled);
+    color: var(--text-color--disabled);
     cursor: not-allowed;
     pointer-events: none;
   }

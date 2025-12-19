@@ -13,6 +13,7 @@
 | `label` | - | `string` | `''` |
 | `clearable` | - | `boolean` | `false` |
 | `disabled` | - | `boolean` | `false` |
+| `errorEnabled` | - | `boolean` | `false` |
 | `error` | - | `boolean` | `false` |
 | `errorMessage` | - | `string` | `''` |
 | `size` | - | `string` | `'default'` |
@@ -64,7 +65,7 @@
             name="icon-right"
           />
           <Cancel01
-            v-if="clearable && hasInput"
+            v-if="clearable && hasInput && !disabled"
             class="ep-input-styler__icon-right--clickable"
             @click="$emit('click')"
           />
@@ -72,7 +73,10 @@
       </div>
       <slot />
     </div>
-    <p class="ep-input-styler__error-message">
+    <p
+      v-if="errorEnabled"
+      class="ep-input-styler__error-message"
+    >
       {{ errorMessage || '\u00A0' }}
     </p>
   </div>
@@ -100,6 +104,10 @@
       default: false
     },
     disabled: {
+      type: Boolean,
+      default: false
+    },
+    errorEnabled: {
       type: Boolean,
       default: false
     },
@@ -139,6 +147,10 @@
   position: relative;
   height: var(--ep-input-height);
 
+  &--small {
+    --ep-input-height: 2.2rem;
+  }
+
   &--large {
     --ep-input-height: 3.8rem;
   }
@@ -150,22 +162,18 @@
 
 .ep-input-styler--disabled {
   color: var(--text-color--disabled);
+  user-select: none;
 }
 
 .ep-input-styler__inner {
   position: absolute;
   top: 0;
   left: 0;
+  display: flex;
   width: 100%;
   height: 100%;
-  display: flex;
   align-items: center;
   pointer-events: none;
-
-  &:has(.ep-input-styler__icon-left):has(.ep-input-styler__icon-right) {
-    display: flex;
-    justify-content: space-between;
-  }
 
   &:has(.ep-input-styler__icon-left) {
     justify-content: flex-start;
@@ -174,21 +182,28 @@
   &:has(.ep-input-styler__icon-right) {
     justify-content: flex-end;
   }
+
+  &:has(.ep-input-styler__icon-left):has(.ep-input-styler__icon-right) {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .ep-input-styler__label {
   display: block;
   margin-bottom: 1rem;
   color: var(--text-color--loud);
+  user-select: none;
+  white-space: nowrap;
 }
 
 .ep-input-styler__icon-left,
 .ep-input-styler__icon-right {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 2.8rem;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 
   .ep-icon {
     --ep-icon-width: 45%;
@@ -209,9 +224,18 @@
   pointer-events: auto;
 }
 
+.ep-input-styler--error .ep-input,
+.ep-input-styler--error .ep-select {
+  border-color: var(--error-color--border);
+
+  &:focus-visible {
+    outline-color: var(--error-color--border);
+  }
+}
+
 .ep-input-styler__error-message {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  color: var(--error-color--text);
   font-size: var(--font-size--small);
-  color: var(--error-color);
 }
 ```

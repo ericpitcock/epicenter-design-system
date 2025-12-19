@@ -5,7 +5,9 @@
 ## Features
 
 - **Global theme state**: Single source of truth for theme across your application
-- **Automatic DOM updates**: Automatically sets `data-color-theme` attribute on document root
+- **Automatic DOM updates**: Automatically applies `.light-theme` or `.dark-theme` class to document root
+- **localStorage persistence**: Automatically saves and restores user's theme preference
+- **OS preference support**: Respects `prefers-color-scheme` when no saved preference exists
 - **Simple API**: Easy toggle and set operations
 - **Reactive**: Theme changes propagate to all components using the composable
 
@@ -84,68 +86,25 @@ const { theme, setTheme } = useTheme()
 </script>
 ```
 
-### Persist Theme Preference
+### Clear Theme Preference
 
-Save user's theme preference to localStorage:
+Reset to OS preference or default:
 
 ```vue
 <template>
-  <ep-button @click="handleToggle">
-    <icon-sun v-if="theme === 'dark'" />
-    <icon-moon v-else />
-  </ep-button>
+  <div>
+    <p>Current theme: {{ theme }}</p>
+    <ep-button @click="clearThemePreference">
+      Reset to System Preference
+    </ep-button>
+  </div>
 </template>
 
 <script setup>
-import { watch, onMounted } from 'vue'
 import useTheme from '@/composables/useTheme.js'
 import { EpButton } from '@epicenter/vue-components'
-import { IconSun, IconMoon } from '@epicenter/icons'
 
-const { theme, toggleTheme, setTheme } = useTheme()
-
-// Load saved theme on mount
-onMounted(() => {
-  const savedTheme = localStorage.getItem('theme')
-  if (savedTheme) {
-    setTheme(savedTheme)
-  }
-})
-
-// Save theme changes
-watch(theme, (newTheme) => {
-  localStorage.setItem('theme', newTheme)
-})
-
-const handleToggle = () => {
-  toggleTheme()
-}
-</script>
-```
-
-### Respect System Preference
-
-Initialize theme based on user's system preference:
-
-```vue
-<script setup>
-import { onMounted } from 'vue'
-import useTheme from '@/composables/useTheme.js'
-
-const { setTheme } = useTheme()
-
-onMounted(() => {
-  // Check for saved preference first
-  const savedTheme = localStorage.getItem('theme')
-  
-  if (savedTheme) {
-    setTheme(savedTheme)
-  } else {
-    // Fall back to system preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    setTheme(prefersDark ? 'dark' : 'light')
-  }
-})
+const { theme, clearThemePreference } = useTheme()
 </script>
 ```
 
@@ -226,6 +185,8 @@ const themeLabel = computed(() =>
 | `theme` | `Ref<string>` | Reactive reference to current theme ('light' or 'dark') |
 | `toggleTheme` | `Function` | Toggles between light and dark themes |
 | `setTheme` | `Function` | Sets a specific theme |
+| `clearThemePreference` | `Function` | Clears localStorage preference and resets to OS/default |
+| `getInitialTheme` | `Function` | Returns the initial theme based on priority logic |
 
 ### setTheme
 
@@ -258,28 +219,80 @@ const { toggleTheme } = useTheme()
 toggleTheme() // If light, becomes dark. If dark, becomes light.
 ```
 
+### clearThemePreference
+
+```typescript
+clearThemePreference(): void
+```
+
+Removes the saved theme preference from localStorage and resets to OS preference or default (dark).
+
+**Example:**
+```javascript
+const { clearThemePreference } = useTheme()
+clearThemePreference() // Clears saved preference
+```
+
+### getInitialTheme
+
+```typescript
+getInitialTheme(): 'light' | 'dark'
+```
+
+Returns the initial theme value based on priority: localStorage > OS preference > default (dark). Useful for server-side rendering or pre-initialization logic.
+
+**Example:**
+```javascript
+const { getInitialTheme } = useTheme()
+const initialTheme = getInitialTheme() // 'light' or 'dark'
+```
+
 ## How It Works
 
 The composable:
 
-1. Maintains a reactive `theme` ref with global state
-2. Watches for theme changes
-3. Automatically sets `data-color-theme` attribute on `document.documentElement`
-4. Your CSS can target this attribute for theme-specific styles:
+1. Checks for saved preference in localStorage (`theme-preference` key)
+2. Falls back to OS preference using `prefers-color-scheme` media query
+3. Defaults to 'dark' theme if no preference is found
+4. Maintains a reactive `theme` ref with global state
+5. Automatically applies `.light-theme` or `.dark-theme` class to `document.documentElement`
+6. Persists theme changes to localStorage automatically
+7. Listens for OS preference changes and updates if no manual preference is set
+
+Your CSS can target these classes for theme-specific styles:
 
 ```css
-[data-color-theme='light'] {
+.light-theme {
   --background-color: white;
   --text-color: black;
 }
 
-[data-color-theme='dark'] {
+.dark-theme {
   --background-color: #1a1a1a;
   --text-color: white;
 }
 ```
 
-## Complete Example with Persistence
+Or use CSS `light-dark()` function with `color-scheme`:
+
+```css
+:root { 
+  color-scheme: light dark; 
+}
+.dark-theme { 
+  color-scheme: dark; 
+}
+.light-theme { 
+  color-scheme: light; 
+}
+
+:root {
+  --background-color: light-dark(white, #1a1a1a);
+  --text-color: light-dark(black, white);
+}
+```
+
+## Complete Example
 
 ```vue
 <template>
@@ -302,46 +315,22 @@ The composable:
 </template>
 
 <script setup>
-import { watch, onMounted } from 'vue'
 import useTheme from '@/composables/useTheme.js'
 import { EpButton, EpHeader } from '@epicenter/vue-components'
 import { IconSun, IconMoon } from '@epicenter/icons'
 
-const { theme, toggleTheme, setTheme } = useTheme()
-
-// Initialize theme
-onMounted(() => {
-  const savedTheme = localStorage.getItem('theme')
-  
-  if (savedTheme) {
-    setTheme(savedTheme)
-  } else {
-    // Use system preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    setTheme(prefersDark ? 'dark' : 'light')
-  }
-  
-  // Listen for system preference changes
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-  mediaQuery.addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-      setTheme(e.matches ? 'dark' : 'light')
-    }
-  })
-})
-
-// Persist theme preference
-watch(theme, (newTheme) => {
-  localStorage.setItem('theme', newTheme)
-})
+const { theme, toggleTheme } = useTheme()
+// That's it! Theme persistence and OS preference support are built-in
 </script>
 ```
 
 ## Tips
 
 - The theme state is shared across all components using the composable
-- Theme changes are automatically applied to the document root
-- Combine with localStorage for persistence across sessions
-- Consider respecting `prefers-color-scheme` media query for initial theme
-- Use the `data-color-theme` attribute in your CSS for theme-specific styling
+- Theme changes are automatically applied to the document root with `.light-theme` or `.dark-theme` classes
+- localStorage persistence is built-in - no manual setup required
+- OS preference (`prefers-color-scheme`) is automatically respected on first load
+- The composable listens for OS preference changes and updates the theme if no manual preference is set
+- Use `clearThemePreference()` to let users reset to their system default
 - The composable works independently of component lifecycle - theme persists across navigation
+- Theme is initialized immediately at module load for a flash-free experience

@@ -53,7 +53,7 @@ This component does not use events.
 ## Styles (SCSS)
 
 ```scss
-@use '../mixins/_mixins' as *;
+@use '../mixins/mixins' as *;
 
 .ep-menu {
   --ep-menu-bg-color: var(--interface-surface);
@@ -70,12 +70,12 @@ This component does not use events.
   --ep-button-menu-item-hover-border-color: var(--primary-color-base);
   --ep-button-menu-item-selected-bg-color: var(--primary-color-base);
   --ep-button-menu-item-selected-text-color: hsl(0, 0%, 100%);
-  background: var(--ep-menu-bg-color);
   padding: var(--ep-menu-padding);
   border-width: var(--ep-menu-border-width);
   border-style: var(--ep-menu-border-style);
   border-color: var(--ep-menu-border-color);
   border-radius: var(--ep-menu-border-radius);
+  background: var(--ep-menu-bg-color);
   text-align: left;
 }
 
@@ -95,16 +95,16 @@ This component does not use events.
   .ep-button--menu-item {
     width: 100%;
     max-width: 100%;
-    background: transparent;
-    border-color: transparent;
     padding-right: 2rem;
     padding-left: 2rem;
+    border-color: transparent;
+    background: transparent;
 
     @include hover {
       &:not(.ep-button--menu-item--selected):hover {
+        border-color: var(--ep-button-menu-item-hover-border-color);
         background: var(--ep-button-menu-item-hover-bg-color);
         color: var(--ep-button-menu-item-hover-text-color);
-        border-color: var(--ep-button-menu-item-hover-border-color);
       }
     }
 

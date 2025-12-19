@@ -67,9 +67,14 @@
 | `indeterminate` | Whether the checkbox is indeterminate. | `boolean` | `false` |
 | `required` | Whether the checkbox is required. | `boolean` | `false` |
 
+## Slots
+| Name | Description |
+|------|-------------|
+| `default` | No description available. |
+
 
 ::: info
-This component does not use events, slots.
+This component does not use events.
 :::
 
 ## Component Code
@@ -91,7 +96,9 @@ This component does not use events, slots.
       :indeterminate
       :required
     >
-    {{ label }}
+    <slot>
+      {{ props.label }}
+    </slot>
   </label>
 </template>
 
@@ -177,11 +184,17 @@ This component does not use events, slots.
 
 ```scss
 .ep-checkbox {
+  --ep-checkbox-checked-bg-color: var(--primary-color-base);
+  --ep-checkbox-checked-border-color: var(--primary-color-300);
+  --ep-checkbox-unchecked-bg-color: var(--interface-overlay);
+  --ep-checkbox-unchecked-border-color: var(--border-color--lighter);
+  --ep-checkbox-disabled-bg-color: transparent;
+  --ep-checkbox-disabled-border-color: var(--border-color--disabled);
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  gap: 1rem;
   cursor: pointer;
+  gap: 1rem;
   user-select: none;
 
   &--checked,
@@ -195,13 +208,52 @@ This component does not use events, slots.
   }
 
   input {
-    appearance: auto;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    border: 1px solid var(--ep-checkbox-unchecked-border-color);
+    border-radius: 2px;
+    appearance: none;
+    background-color: var(--ep-checkbox-unchecked-bg-color);
     cursor: inherit;
-  }
 
-  // label {
-  //   color: inherit;
-  //   cursor: inherit;
-  // }
+    &:checked {
+      border-color: var(--ep-checkbox-checked-border-color);
+      background-color: var(--ep-checkbox-checked-bg-color);
+
+      &::after {
+        position: absolute;
+        top: 1px;
+        left: 4px;
+        width: 4px;
+        height: 8px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        content: '';
+        transform: rotate(45deg);
+      }
+    }
+
+    &:indeterminate {
+      border-color: var(--ep-checkbox-checked-border-color);
+      background-color: var(--ep-checkbox-checked-bg-color);
+
+      &::after {
+        position: absolute;
+        top: 5px;
+        left: 2px;
+        width: 8px;
+        height: 2px;
+        background-color: white;
+        content: '';
+      }
+    }
+
+    &:disabled {
+      border-color: var(--ep-checkbox-disabled-border-color);
+      background-color: var(--ep-checkbox-disabled-bg-color);
+    }
+  }
 }
 ```

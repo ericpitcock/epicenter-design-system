@@ -58,18 +58,13 @@ This component does not use events.
           class="ep-breadcrumbs__separator"
           aria-hidden="true"
         >
-          <template v-if="$slots.separator">
-            <!-- @slot separator - Custom separator between breadcrumb items. Provides index via slot props. -->
-            <slot
-              name="separator"
-              :index="index"
-            />
-          </template>
-          <template v-else>
-            <span class="ep-breadcrumbs__separator--default">
-              chevron_right
-            </span>
-          </template>
+          <!-- @slot separator - Custom separator between breadcrumb items. Provides index via slot props. -->
+          <slot
+            name="separator"
+            :index="index"
+          >
+            <ArrowRight01 />
+          </slot>
         </span>
       </li>
     </ol>
@@ -77,6 +72,7 @@ This component does not use events.
 </template>
 
 <script setup>
+  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
   import { computed } from 'vue'
   import { useRoute } from 'vue-router'
 
@@ -123,10 +119,13 @@ This component does not use events.
       display: flex;
       align-items: center;
       color: var(--text-color--subtle);
-      cursor: pointer;
 
-      &:hover {
-        color: var(--text-color--loud);
+      a {
+        cursor: pointer;
+
+        &:hover {
+          color: var(--text-color--loud);
+        }
       }
 
       &--current {
@@ -137,6 +136,13 @@ This component does not use events.
 
     &__separator {
       padding-inline: 0.5em;
+
+      .ep-icon {
+        --ep-icon-width: 1em;
+        --ep-icon-height: 1em;
+        --ep-icon-stroke-width: 3px;
+        --ep-icon-color: var(--text-color--disabled);
+      }
     }
   }
 </style>

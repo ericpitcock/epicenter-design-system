@@ -58,10 +58,10 @@ This component does not use events.
 .ep-status-indicator__dot {
   width: 0.7rem;
   height: 0.7rem;
-  background-color: var(--ep-status-indicator-dot-bg);
+  box-sizing: content-box;
   border: 0.1rem solid var(--ep-status-indicator-dot-border);
   border-radius: 50%;
-  box-sizing: content-box;
+  background-color: var(--ep-status-indicator-dot-bg);
 }
 
 @keyframes pulse {
@@ -76,10 +76,6 @@ This component does not use events.
   100% {
     transform: scale(1);
   }
-}
-
-.ep-status-indicator__dot--pulse {
-  animation: pulse 1.5s infinite ease-in-out;
 }
 
 .ep-status-indicator__dot--pulse {

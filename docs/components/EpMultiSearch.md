@@ -299,13 +299,13 @@ This component does not use slots.
 ## Styles (SCSS)
 
 ```scss
-@use '../mixins/_mixins' as *;
+@use '../mixins/mixins' as *;
 
 .ep-multi-search {
   display: flex;
+  overflow: hidden;
   flex-flow: row nowrap;
   align-items: center;
-  overflow: hidden;
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-color);
@@ -319,19 +319,19 @@ This component does not use slots.
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    gap: 0.3rem;
     padding-right: 0.6rem;
+    gap: 0.3rem;
 
     .query {
       display: flex;
+      height: 100%;
       flex-flow: row nowrap;
       align-items: center;
-      gap: 0.3rem;
-      height: 100%;
       padding: 0 0.6rem 0 1rem;
-      background-color: var(--primary-color-base);
       border-radius: var(--border-radius);
+      background-color: var(--primary-color-base);
       color: hsl(var(--gray-0));
+      gap: 0.3rem;
 
       @include hover {
         &:hover {
@@ -353,8 +353,8 @@ This component does not use slots.
   }
 
   input {
-    flex: 1;
     height: 100%;
+    flex: 1;
     padding: 0 1.2rem;
     caret-color: var(--primary-color-base);
 
@@ -380,8 +380,8 @@ This component does not use slots.
   }
 
   &--disabled {
-    color: var(--text-color--disabled);
     border-color: var(--border-color--disabled);
+    color: var(--text-color--disabled);
 
     input::placeholder {
       opacity: 0.3;
@@ -391,8 +391,8 @@ This component does not use slots.
   &__icon,
   &__clear {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 
   &__clear {

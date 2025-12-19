@@ -248,26 +248,26 @@ This component does not use events, slots.
   z-index: var(--z-index--overlap);
   &__value {
     position: absolute;
+    z-index: var(--z-index--negative);
     top: 0;
     left: 0;
+    display: flex;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: var(--z-index--negative);
+    justify-content: center;
   }
   &__tooltip {
     position: absolute;
+    z-index: var(--z-index--tooltip);
+    display: flex;
     width: 50px;
     height: 50px;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    background: var(--interface-overlay);
-    border-radius: var(--border-radius);
+    justify-content: center;
     border: 1px solid var(--border-color--lighter);
-    z-index: var(--z-index--tooltip);
+    border-radius: var(--border-radius);
+    background: var(--interface-overlay);
     // &--visible {
     //   opacity: 1;
     // }

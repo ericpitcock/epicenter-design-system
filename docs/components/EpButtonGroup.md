@@ -99,7 +99,7 @@ This component does not use slots.
 ```scss
 .ep-button-group {
   --ep-button-group-active-text-color: var(--text-color--loud);
-  --ep-button-group-inactive-text-color: var(--text-color);
+  --ep-button-group-inactive-text-color: var(--text-color--disabled);
   display: flex;
 
   .ep-button {
@@ -108,13 +108,13 @@ This component does not use slots.
     }
 
     &:first-child {
-      border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
     }
 
     &:last-child {
-      border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
     }
 
     &:not(:first-child):not(:last-child) {
@@ -126,9 +126,9 @@ This component does not use slots.
     }
 
     &.ep-button-group--selected {
-      cursor: default;
       position: relative;
       z-index: var(--z-index--overlap);
+      cursor: default;
     }
   }
 }

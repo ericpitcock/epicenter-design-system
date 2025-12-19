@@ -89,27 +89,27 @@ This component does not use events, slots.
   --ep-loading-state-bottom: 0;
   --ep-loading-state-left: 0;
   position: absolute;
+  z-index: var(--z-index--modal);
   top: var(--ep-loading-state-top);
   right: var(--ep-loading-state-right);
   bottom: var(--ep-loading-state-bottom);
   left: var(--ep-loading-state-left);
-  z-index: var(--z-index--modal);
-  backdrop-filter: blur(4px);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  justify-content: center;
   align-items: center;
-  background: var(--ep-loading-state-bg-color);
+  justify-content: center;
   border-radius: var(--ep-loading-state-border-radius);
+  backdrop-filter: blur(4px);
+  background: var(--ep-loading-state-bg-color);
+  gap: 2rem;
 
   &__icon-container {
     display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: flex-end;
     width: 100%;
     height: 100%;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: center;
 
     img {
       width: 100%;
@@ -119,11 +119,11 @@ This component does not use events, slots.
 
   &__message-container {
     display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: flex-start;
     width: 100%;
     height: 100%;
+    flex: 1;
+    align-items: flex-start;
+    justify-content: center;
   }
 }
 ```

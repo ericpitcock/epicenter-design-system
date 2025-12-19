@@ -268,12 +268,12 @@ const dropdownRef = ref(null)
 
   &__container {
     position: absolute;
+    z-index: var(--z-index--dropdown);
     top: 100%;
     left: 0;
     min-width: 100%;
     padding-top: var(--ep-dropdown-padding-top);
     box-shadow: var(--box-shadow--dropdown);
-    z-index: var(--z-index--dropdown);
 
     &--align-right {
       right: 0;

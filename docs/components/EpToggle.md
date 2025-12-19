@@ -100,23 +100,23 @@ This component does not use slots.
   --ep-toggle-thumb-bg-color: var(--text-color);
   --ep-toggle-thumb-active-bg-color: white;
   --ep-toggle-thumb-disabled-bg-color: var(--border-color);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
   position: relative;
+  display: flex;
   height: 2rem;
+  align-items: center;
   border-radius: 2rem;
   cursor: pointer;
-  user-select: none;
+  gap: 1rem;
   transition: background-color 0.1s ease;
+  user-select: none;
 
   &__track {
     position: relative;
     width: 3.6rem;
     height: 2rem;
+    border: 1px solid var(--ep-toggle-track-border-color);
     border-radius: 2rem;
     background-color: var(--ep-toggle-track-bg-color);
-    border: 1px solid var(--ep-toggle-track-border-color);
     transition: background-color 0.1s ease;
   }
 
@@ -133,8 +133,8 @@ This component does not use slots.
 
   &--active {
     .ep-toggle__track {
-      background-color: var(--ep-toggle-track-active-bg-color);
       border-color: var(--ep-toggle-track-active-border-color);
+      background-color: var(--ep-toggle-track-active-bg-color);
     }
 
     .ep-toggle__thumb {

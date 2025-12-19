@@ -361,7 +361,17 @@ The `sorter` function receives two values and should return a number: -1 for sor
 ## Styles (SCSS)
 
 ```scss
-@use '../mixins/_mixins' as *;
+@use '../mixins/mixins' as *;
+
+.dark-theme {
+  --ep-table-row-stripe-color: var(--interface-foreground);
+  --ep-table-row-hover-bg-color: hsl(var(--gray-450));
+}
+
+.light-theme {
+  --ep-table-row-stripe-color: var(--interface-foreground);
+  --ep-table-row-hover-bg-color: hsl(var(--gray-10));
+}
 
 .ep-table-container {
   --ep-table-container-width: auto;
@@ -377,14 +387,12 @@ The `sorter` function receives two values and should return a number: -1 for sor
   // --ep-table-fixed-top: 0;
   --ep-table-head-width: auto;
   --ep-table-body-width: auto;
-  --ep-table-row-stripe-color: var(--interface-foreground);
-  --ep-table-row-hover-bg-color: hsl(var(--gray-450));
   --ep-table-cell-vertical-align: middle;
   --ep-table-cell-white-space: normal;
-  width: var(--ep-table-container-width);
-  height: var(--ep-table-container-height);
-  min-width: var(--ep-table-container-min-width);
   overflow: var(--ep-table-container-overflow);
+  width: var(--ep-table-container-width);
+  min-width: var(--ep-table-container-min-width);
+  height: var(--ep-table-container-height);
   padding: var(--ep-table-container-padding);
 }
 
@@ -394,13 +402,13 @@ The `sorter` function receives two values and should return a number: -1 for sor
 
   thead {
     width: var(--ep-table-head-width);
+    color: var(--text-color--loud);
     font-variation-settings: 'wght' 600;
     user-select: none;
-    color: var(--text-color--loud);
 
     th {
-      text-align: left;
       background: var(--ep-table-header-bg-color);
+      text-align: left;
 
       &.ep-table__actions-menu {
         width: 5rem;
@@ -409,16 +417,16 @@ The `sorter` function receives two values and should return a number: -1 for sor
       div {
         position: relative;
         display: flex;
-        align-items: center;
         width: 100%;
         height: 100%;
+        align-items: center;
         padding: 1.4rem;
         border-bottom: 1px solid var(--ep-table-border-color);
 
         span.label {
-          white-space: nowrap;
-          text-overflow: ellipsis;
           flex: 1;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
     }
@@ -497,18 +505,18 @@ The `sorter` function receives two values and should return a number: -1 for sor
     thead {
       th {
         position: sticky;
-        top: var(--ep-table-sticky-top);
         z-index: var(--z-index--sticky);
+        top: var(--ep-table-sticky-top);
       }
     }
   }
 
   &--fixed-header {
-    display: block;
     position: fixed;
+    z-index: 10;
     top: 0;
     left: 0;
-    z-index: 10;
+    display: block;
     width: 100%;
   }
 

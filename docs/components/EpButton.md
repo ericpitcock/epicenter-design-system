@@ -174,7 +174,7 @@ This component does not use events.
 ## Styles (SCSS)
 
 ```scss
-@use '../mixins/_mixins' as *;
+@use '../mixins/mixins' as *;
 
 .ep-button {
   --ep-button-bg-color: var(--interface-foreground);
@@ -197,47 +197,48 @@ This component does not use events.
   --ep-button-disabled-border-color: var(--border-color--disabled);
   --ep-button-padding-inline: 1.2rem;
   display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: calc(var(--ep-button-padding-inline) / 1.5);
   max-width: max-content;
   height: 3rem;
-  border-radius: var(--ep-button-border-radius);
-  font-size: var(--font-size--small);
-  line-height: 1;
-  appearance: none;
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  vertical-align: top;
-  background: var(--ep-button-bg-color);
-  color: var(--ep-button-text-color);
-  padding-inline: var(--ep-button-padding-inline);
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
   border-width: var(--ep-button-border-width);
   border-style: var(--ep-button-border-style);
   border-color: var(--ep-button-border-color);
+  border-radius: var(--ep-button-border-radius);
+  appearance: none;
+  background: var(--ep-button-bg-color);
+  color: var(--ep-button-text-color);
+  cursor: pointer;
+  font-size: var(--font-size--small);
+  gap: calc(var(--ep-button-padding-inline) / 1.5);
+  line-height: 1;
+  padding-inline: var(--ep-button-padding-inline);
+  text-decoration: none;
+  user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
 
   @include hover {
     &:not([class$='--selected']):not(.ep-button--disabled):hover {
+      border-color: var(--ep-button-hover-border-color);
       background: var(--ep-button-hover-bg-color);
       color: var(--ep-button-hover-text-color);
-      border-color: var(--ep-button-hover-border-color);
     }
   }
 
   &:not([class$='--selected']):active {
+    border-color: var(--ep-button-active-border-color);
     background: var(--ep-button-active-bg-color);
     color: var(--ep-button-active-text-color);
-    border-color: var(--ep-button-active-border-color);
   }
 
   &--disabled {
+    border-color: var(--ep-button-disabled-border-color);
     background: var(--ep-button-disabled-bg-color);
     color: var(--ep-button-disabled-text-color);
-    border-color: var(--ep-button-disabled-border-color);
-    pointer-events: none;
     cursor: default;
+    pointer-events: none;
 
     &.ep-button--menu-item {
       border-color: transparent;
@@ -245,25 +246,25 @@ This component does not use events.
   }
 
   &--selected {
-    background: var(--ep-button-selected-bg-color);
     border-color: var(--ep-button-selected-border-color);
+    background: var(--ep-button-selected-bg-color);
     color: var(--ep-button-selected-text-color);
   }
 
   &__icon {
     display: inline-flex;
-    justify-content: center;
-    align-items: center;
     height: 70%;
     max-height: 2.4rem;
+    align-items: center;
+    justify-content: center;
     pointer-events: none;
   }
 
   &__label {
     flex: 1;
-    text-align: left;
-    pointer-events: none;
     line-height: 2rem;
+    pointer-events: none;
+    text-align: left;
   }
 
   // default 30px height
@@ -299,8 +300,8 @@ This component does not use events.
 
 // small 22px height
 .ep-button--small {
-  gap: 0.4rem;
   height: 2.2rem;
+  gap: 0.4rem;
 
   .ep-button__label {
     font-size: var(--font-size--tiny);

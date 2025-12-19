@@ -25,21 +25,21 @@
 
 ```vue
 <template>
-  <div :class="['ep-resizable-wrapper', `ep-resizable-wrapper--${direction}`]">
+  <div :class="['ep-resizable', `ep-resizable--${direction}`]">
     <div
       ref="resizablePane"
-      class="resizable-pane"
+      class="ep-resizable__resizable-pane"
       :style="{ flex: computedSize }"
     >
       <!-- @slot resizable - The content of the resizable pane. -->
       <slot name="resizable" />
       <div
-        :class="['drag-handle', dragEdge]"
+        :class="['ep-resizable__drag-handle', `ep-resizable__drag-handle--${dragEdge}`]"
         @mousedown="handleDragStart"
         @touchstart="handleDragStart"
       />
     </div>
-    <div class="content-pane">
+    <div class="ep-resizable__content-pane">
       <!-- @slot content - The content of the fixed (non-resizable) pane. -->
       <slot name="content" />
     </div>
@@ -144,77 +144,80 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  .ep-resizable-wrapper {
-    --ep-resizable-flex-direction: column;
-    display: flex;
-    flex-direction: var(--ep-resizable-flex-direction);
-    width: 100%;
-    height: 100%;
-    user-select: none;
+```
 
-    &--row {
-      --ep-resizable-flex-direction: row;
-    }
+## Styles (SCSS)
+
+```scss
+.ep-resizable {
+  --ep-resizable-flex-direction: column;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: var(--ep-resizable-flex-direction);
+  user-select: none;
+
+  &--row {
+    --ep-resizable-flex-direction: row;
   }
+}
 
-  .resizable-pane {
-    position: relative;
-    display: flex;
-    overflow: hidden;
-  }
+.ep-resizable__resizable-pane {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
 
-  .content-pane {
-    flex: 1;
-  }
+.ep-resizable__content-pane {
+  flex: 1;
+}
 
-  .drag-handle {
-    position: absolute;
-    background: var(--interface-foreground);
-    border-width: 0;
-    border-style: solid;
-    border-color: var(--border-color);
-  }
+.ep-resizable__drag-handle {
+  position: absolute;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--border-color);
+  background: var(--interface-foreground);
 
-  .drag-handle:hover {
-    background: var(--primary-color-300);
+  &:hover {
     border-color: var(--primary-color-300);
+    background: var(--primary-color-300);
   }
 
-  .right,
-  .left {
-    width: 5px;
+  &--right,
+  &--left {
     top: 0;
     bottom: 0;
+    width: 5px;
     border-right-width: 0.1rem;
     border-left-width: 0.1rem;
     cursor: ew-resize;
   }
 
-  .right {
+  &--right {
     right: 0;
   }
 
-  .left {
+  &--left {
     left: 0;
   }
 
-  .top,
-  .bottom {
+  &--top,
+  &--bottom {
+    right: 0;
+    left: 0;
     height: 5px;
-    left: 0;
-    right: 0;
     border-top-width: 0.1rem;
     border-bottom-width: 0.1rem;
     cursor: ns-resize;
   }
 
-  .top {
+  &--top {
     top: 0;
   }
 
-  .bottom {
+  &--bottom {
     bottom: 0;
   }
-</style>
+}
 ```

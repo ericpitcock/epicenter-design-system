@@ -87,8 +87,8 @@ This component does not use slots.
   --ep-table-sortable-header-active-text-color: var(--primary-color-200);
   justify-content: space-between;
   padding-right: 3rem;
-  white-space: nowrap;
   cursor: pointer;
+  white-space: nowrap;
 
   &--active {
     color: var(--ep-table-sortable-header-active-text-color);
