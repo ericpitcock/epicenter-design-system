@@ -1,11 +1,12 @@
 svg.ep-icon {
-  --ep-icon-width: 1.5em;
-  --ep-icon-height: 1.5em;
+  --ep-icon-size: 1.5em;
+  --ep-icon-width: var(--ep-icon-size);
+  --ep-icon-height: var(--ep-icon-size);
   --ep-icon-color: currentColor;
   --ep-icon-stroke-width: 1.5;
   display: inline-block;
-  width: var(--ep-icon-width);
-  height: var(--ep-icon-height);
+  width: var(--ep-icon-width, var(--ep-icon-size));
+  height: var(--ep-icon-height, var(--ep-icon-size));
   color: var(--ep-icon-color);
   vertical-align: middle;
   // Inherit to shapes by default
