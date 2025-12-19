@@ -346,8 +346,8 @@ export const ChartPalette = (args) => ({
     return { args, styles, copyStylesToClipboard, visionTypes, getStylesForVision, colorCount, getPieSegments }
   },
   template: `
-    <div :style="styles">
-      <div style="display: flex; flex-direction: column; gap: 20px;">
+    <div :style="['width: 100%', styles]">
+      <div style="width: 100%;display: flex; flex-direction: column; gap: 20px;">
         <div style="display: flex; gap: 16px; align-items: center;">
           <ep-button class="ep-button-var--primary" @click="copyStylesToClipboard">
             Copy styles
