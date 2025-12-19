@@ -101,6 +101,9 @@ export default {
         type: 'boolean'
       }
     },
+    errorEnabled: {
+      table: { disable: true }
+    },
     error: {
       name: 'Error',
       control: {
@@ -267,6 +270,7 @@ Input.args = {
   clearable: true,
   disabled: false,
   autofocus: false,
+  errorEnabled: true,
   error: false,
   errorMessage: '',
   size: 'xlarge',
