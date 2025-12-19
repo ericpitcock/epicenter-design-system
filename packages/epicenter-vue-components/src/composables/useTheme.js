@@ -78,6 +78,7 @@ const clearThemePreference = () => {
 export default function useTheme() {
   return {
     clearThemePreference,
+    getInitialTheme,
     setTheme,
     theme,
     toggleTheme,

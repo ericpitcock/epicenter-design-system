@@ -3,6 +3,7 @@ import { createRouter, createMemoryHistory } from 'vue-router'
 import { watch } from 'vue'
 import { createPinia } from 'pinia'
 import { useStorybookStore } from '../storybook/store'
+import { useTheme } from '@/composables/index.js'
 
 const routes = [
   {
@@ -84,20 +85,12 @@ setup((app) => {
 import '../static/epicenter-design-system.css'
 import '../storybook/storybook.scss'
 
-// Determine initial theme based on localStorage or OS preference
-function getInitialStorybookTheme() {
-  const STORAGE_KEY = 'theme-preference'
-  const stored = localStorage.getItem(STORAGE_KEY)
+const { getInitialTheme } = useTheme()
 
-  if (stored === 'light' || stored === 'dark') {
-    return stored === 'light' ? 'Light Theme' : 'Dark Theme'
-  }
-
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    return 'Light Theme'
-  }
-
-  return 'Dark Theme'
+// Map theme value to Storybook toolbar value
+const themeToStorybookValue = {
+  'light': 'Light Theme',
+  'dark': 'Dark Theme'
 }
 
 const preview = {
@@ -129,7 +122,7 @@ const preview = {
     theme: {
       name: 'Choose Theme',
       description: 'Global theme for components',
-      defaultValue: getInitialStorybookTheme(),
+      defaultValue: themeToStorybookValue[getInitialTheme()],
       toolbar: {
         icon: '',
         items: ['Light Theme', 'Dark Theme'],
