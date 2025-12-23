@@ -15,24 +15,10 @@
   import Sun02 from '@ericpitcock/epicenter-icons/epicenter-icons/Sun02'
   import { computed } from 'vue'
 
+  import useTheme from '../../composables/useTheme.js'
   import EpButton from '../button/EpButton.vue'
 
-  const props = defineProps({
-    /**
-     * The current theme of the application.
-     * @values light, dark
-     */
-    currentTheme: {
-      type: String,
-      required: true
-    }
-  })
+  const { theme, toggleTheme } = useTheme()
 
-  const iconComponent = computed(() => props.currentTheme === 'dark' ? Sun02 : Moon02)
-
-  const emit = defineEmits(['toggle-theme'])
-
-  const toggleTheme = () => {
-    emit('toggle-theme')
-  }
+  const iconComponent = computed(() => theme.value === 'dark' ? Sun02 : Moon02)
 </script>
