@@ -33,6 +33,12 @@ export default {
         'left bottom',
       ]
     },
+    dismissOnClick: {
+      name: 'Dismiss on Click',
+      control: {
+        type: 'boolean'
+      }
+    },
   }
 }
 
@@ -55,5 +61,6 @@ export const Tooltip = args => ({
 
 Tooltip.args = {
   delay: 0,
-  position: 'top center'
+  position: 'top center',
+  dismissOnClick: false
 }

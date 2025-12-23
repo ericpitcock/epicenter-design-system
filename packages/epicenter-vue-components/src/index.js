@@ -10,3 +10,4 @@ const Epicenter = {
 
 export default Epicenter
 export * from './components' // For tree-shakable imports
+export * from './plugins' // Export plugins

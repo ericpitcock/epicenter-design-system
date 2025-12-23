@@ -3,6 +3,7 @@
     class="ep-tooltip-wrapper"
     @mouseenter="showTooltip"
     @mouseleave="hideTooltip"
+    @click="onClick"
   >
     <div
       :class="['ep-tooltip', positionClass, { 'ep-tooltip--visible': visible }]"
@@ -49,6 +50,13 @@
           'left bottom',
         ].includes(value),
     },
+    /**
+     * Whether to dismiss the tooltip when clicked.
+     */
+    dismissOnClick: {
+      type: Boolean,
+      default: false,
+    },
   })
 
   const visible = ref(false)
@@ -67,6 +75,12 @@
   const hideTooltip = () => {
     clearTimeout(timeoutId.value)
     visible.value = false
+  }
+
+  const onClick = () => {
+    if (props.dismissOnClick) {
+      hideTooltip()
+    }
   }
 
   const positionClass = computed(() => {

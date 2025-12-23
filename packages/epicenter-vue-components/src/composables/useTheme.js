@@ -27,8 +27,9 @@ function getInitialTheme() {
   return 'dark'
 }
 
-// Initialize with the correct theme immediately
-const theme = ref(getInitialTheme())
+// Shared theme state (lazy initialization)
+let theme = null
+let isInitialized = false
 
 // Apply theme to DOM
 function applyTheme(value) {
@@ -38,44 +39,71 @@ function applyTheme(value) {
   }
 }
 
-// Apply initial theme immediately (if DOM is available)
-if (typeof document !== 'undefined') {
-  applyTheme(theme.value)
-}
+// Initialize theme system (called by plugin or manually)
+export function initializeTheme() {
+  if (isInitialized) return theme
 
-// Watch for theme changes and persist
-watch(theme, (value) => {
-  applyTheme(value)
-  localStorage.setItem(STORAGE_KEY, value)
-})
+  theme = ref(getInitialTheme())
+  isInitialized = true
 
-// Listen for OS preference changes (only if no localStorage override)
-if (window.matchMedia) {
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: light)')
-  mediaQuery.addEventListener('change', (e) => {
-    // Only update if user hasn't set a preference
-    if (!localStorage.getItem(STORAGE_KEY)) {
-      theme.value = e.matches ? 'light' : 'dark'
-    }
+  // Apply initial theme immediately (if DOM is available)
+  if (typeof document !== 'undefined') {
+    applyTheme(theme.value)
+  }
+
+  // Watch for theme changes and persist
+  watch(theme, (value) => {
+    applyTheme(value)
+    localStorage.setItem(STORAGE_KEY, value)
   })
+
+  // Listen for OS preference changes (only if no localStorage override)
+  if (window.matchMedia) {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: light)')
+    mediaQuery.addEventListener('change', (e) => {
+      // Only update if user hasn't set a preference
+      if (!localStorage.getItem(STORAGE_KEY)) {
+        theme.value = e.matches ? 'light' : 'dark'
+      }
+    })
+  }
+
+  return theme
 }
 
 const toggleTheme = () => {
+  if (!theme) {
+    console.warn('Theme system not initialized. Call initializeTheme() or use the theme plugin.')
+    return
+  }
   theme.value = theme.value === 'light' ? 'dark' : 'light'
 }
 
 const setTheme = (newTheme) => {
+  if (!theme) {
+    console.warn('Theme system not initialized. Call initializeTheme() or use the theme plugin.')
+    return
+  }
   if (newTheme === 'light' || newTheme === 'dark') {
     theme.value = newTheme
   }
 }
 
 const clearThemePreference = () => {
+  if (!theme) {
+    console.warn('Theme system not initialized. Call initializeTheme() or use the theme plugin.')
+    return
+  }
   localStorage.removeItem(STORAGE_KEY)
   theme.value = getInitialTheme()
 }
 
 export default function useTheme() {
+  // Initialize if not already done (for backwards compatibility)
+  if (!isInitialized) {
+    initializeTheme()
+  }
+
   return {
     clearThemePreference,
     getInitialTheme,

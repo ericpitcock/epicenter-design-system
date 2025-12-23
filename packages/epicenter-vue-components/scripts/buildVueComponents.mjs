@@ -27,6 +27,9 @@ await copy(join(srcDir, 'index.js'), join(distDir, 'index.js'))
 // Copy `composables/` as is
 await copy(join(srcDir, 'composables'), join(distDir, 'composables'))
 
+// Copy `plugins/` as is
+await copy(join(srcDir, 'plugins'), join(distDir, 'plugins'))
+
 // Copy `components/` while excluding specific directories and `*.notes.md`
 await copy(join(srcDir, 'components'), join(distDir, 'components'), {
   filter: (src) => {

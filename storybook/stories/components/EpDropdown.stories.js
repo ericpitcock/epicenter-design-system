@@ -126,9 +126,12 @@ export const Dropdown = args => ({
       console.log('clicked:', item.label)
     }
 
+    const dropdownRef = ref(null)
+
     return {
       args,
       buttonProps,
+      dropdownRef,
       fakeDropdownItems,
       iconLeftComponent,
       iconRightComponent,
@@ -137,7 +140,11 @@ export const Dropdown = args => ({
     }
   },
   template: `
+    <ep-button style="position: absolute; top: 10px; left: 10px;" @click="dropdownRef.openDropdown()">
+      Open from outside
+    </ep-button>
     <ep-dropdown
+      ref="dropdownRef"
       v-model:open="openState"
       v-bind="args"
     >
