@@ -39,6 +39,12 @@ export default {
         type: 'boolean'
       }
     },
+    disabled: {
+      name: 'Disabled',
+      control: {
+        type: 'boolean'
+      }
+    },
   }
 }
 
@@ -62,5 +68,6 @@ export const Tooltip = args => ({
 Tooltip.args = {
   delay: 0,
   position: 'top center',
-  dismissOnClick: false
+  dismissOnClick: false,
+  disabled: false
 }

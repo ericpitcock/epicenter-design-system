@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
+import EpTooltip from '@/components/tooltip/EpTooltip.vue'
 
 import { centeredBg } from '../../helpers/decorators.js'
 
@@ -34,14 +35,39 @@ export default {
           danger: 'Danger'
         }
       }
+    },
+    disabled: {
+      name: 'Tooltip Disabled',
+      control: 'boolean'
     }
   }
 }
 
 export const ButtonGroup = args => ({
-  components: { EpButton },
+  components: { EpButton, EpTooltip },
   setup() {
-    const buttonItems = ['Taco', 'Burrito', 'Enchilada', 'Quesadilla', 'Pupusa']
+    const buttonItems = [
+      {
+        label: 'Taco',
+        tooltip: '¡Delicious!',
+      },
+      {
+        label: 'Burrito',
+        tooltip: '¡Fantastic!',
+      },
+      {
+        label: 'Enchilada',
+        tooltip: '¡Yummy!',
+      },
+      {
+        label: 'Quesadilla',
+        tooltip: '¡Cheesy!',
+      },
+      {
+        label: 'Pupusa',
+        tooltip: '¡Savory stuffed corn tortillas from El Salvador!',
+      }
+    ]
     const activeIndex = ref(0)
 
     const setActive = (index) => {
@@ -52,20 +78,30 @@ export const ButtonGroup = args => ({
   },
   template: `
     <div class="ep-button-group">
-      <ep-button
+      <ep-tooltip
         v-for="(item, index) in buttonItems"
         :key="item"
-        :size="args.size"
-        :class="{ ['ep-button-var--' + args.variant + ' ep-button-group--selected']: activeIndex === index }"
-        @click="setActive(index)"
+        position="top center"
+        dismiss-on-click
+        :disabled="args.disabled"
       >
-        {{ item }}
-      </ep-button>
+        <template #tooltip>
+          <div>{{ item.tooltip }}</div>
+        </template>
+        <ep-button
+          :size="args.size"
+          :class="{ ['ep-button-var--' + args.variant + ' ep-button-group--selected']: activeIndex === index }"
+          @click="setActive(index)"
+        >
+          {{ item.label }}
+        </ep-button>
+      </ep-tooltip>
     </div>
   `
 })
 
 ButtonGroup.args = {
   size: 'large',
-  variant: 'primary'
+  variant: 'primary',
+  disabled: false
 }

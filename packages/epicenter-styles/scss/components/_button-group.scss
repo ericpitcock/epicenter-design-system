@@ -3,25 +3,25 @@
   --ep-button-group-inactive-text-color: var(--text-color--disabled);
   display: flex;
 
+  > :not(:first-child) .ep-button {
+    margin-left: -0.1rem;
+  }
+
+  > :first-child .ep-button {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  > :last-child .ep-button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  > :not(:first-child):not(:last-child) .ep-button {
+    border-radius: 0;
+  }
+
   .ep-button {
-    &:not(:first-child) {
-      margin-left: -0.1rem;
-    }
-
-    &:first-child {
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
-    }
-
-    &:last-child {
-      border-bottom-left-radius: 0;
-      border-top-left-radius: 0;
-    }
-
-    &:not(:first-child):not(:last-child) {
-      border-radius: 0;
-    }
-
     &:not(.ep-button--disabled):not(.ep-button-group--selected) {
       color: var(--ep-button-group-inactive-text-color);
     }

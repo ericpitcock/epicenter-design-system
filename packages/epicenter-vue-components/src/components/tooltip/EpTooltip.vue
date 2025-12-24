@@ -57,6 +57,13 @@
       type: Boolean,
       default: false,
     },
+    /**
+     * Whether the tooltip is disabled.
+     */
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   })
 
   const visible = ref(false)
@@ -67,6 +74,7 @@
   })
 
   const showTooltip = () => {
+    if (props.disabled) return
     timeoutId.value = setTimeout(() => {
       visible.value = true
     }, props.delay)
