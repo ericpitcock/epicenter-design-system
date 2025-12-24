@@ -17,7 +17,6 @@
     ref="menuItemRef"
     class="ep-menu__item"
     role="menuitem"
-    tabindex="0"
     :aria-haspopup="$slots.submenu ? 'menu' : undefined"
     :aria-expanded="$slots.submenu ? String(showSubmenu) : undefined"
     @click="onClick"
@@ -25,6 +24,7 @@
     @mouseover="onMouseover"
     @mouseleave="onMouseleave"
     @focusin="handleFocusIn"
+    @focusout="handleFocusOut"
   >
     <!-- @slot Default slot for menu item content. -->
     <slot />
@@ -122,6 +122,17 @@
       event.preventDefault()
       event.stopPropagation()
       menuItemRef.value.focus()
+    }
+  }
+
+  const handleFocusOut = (event) => {
+    // Close submenu if focus is leaving this menu item entirely
+    if (showSubmenu.value && menuItemRef.value) {
+      // Check if the new focus target is outside this menu item
+      const newFocusTarget = event.relatedTarget
+      if (!menuItemRef.value.contains(newFocusTarget)) {
+        showSubmenu.value = false
+      }
     }
   }
 

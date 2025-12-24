@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-  import { onMounted, ref, useTemplateRef } from 'vue'
+  import { onMounted, provide, ref, useTemplateRef } from 'vue'
 
   const props = defineProps({
     /**
@@ -36,6 +36,9 @@
   const menuRef = useTemplateRef('menuRef')
   const currentFocusIndex = ref(0)
 
+  // Provide the current focus index so menu items can check if they should be tabbable
+  provide('menuFocusIndex', currentFocusIndex)
+
   // Get all focusable menu items (only direct children, not nested submenus)
   const getFocusableItems = () => {
     if (!menuRef.value) return []
@@ -56,6 +59,11 @@
     // Wrap around
     if (index < 0) index = items.length - 1
     if (index >= items.length) index = 0
+
+    // Update tabindex: only the focused item should be tabbable
+    items.forEach((item, i) => {
+      item.setAttribute('tabindex', i === index ? '0' : '-1')
+    })
 
     currentFocusIndex.value = index
     items[index]?.focus()
@@ -108,9 +116,20 @@
     }
   }
 
+  const resetFocus = () => {
+    const items = getFocusableItems()
+    items.forEach((item, i) => {
+      item.setAttribute('tabindex', i === 0 ? '0' : '-1')
+    })
+    currentFocusIndex.value = 0
+  }
+
   // Sync currentFocusIndex with actual focused item on mount and when items gain focus
   onMounted(() => {
     if (!menuRef.value) return
+
+    // Initialize tabindex: only first item should be tabbable
+    resetFocus()
 
     // Listen for focus events to keep index in sync
     menuRef.value.addEventListener('focusin', (event) => {
@@ -119,9 +138,24 @@
       if (target) {
         const index = items.indexOf(target)
         if (index !== -1) {
+          // Update tabindex when focus changes
+          items.forEach((item, i) => {
+            item.setAttribute('tabindex', i === index ? '0' : '-1')
+          })
           currentFocusIndex.value = index
         }
       }
     })
+
+    // Reset to first item when menu loses all focus
+    menuRef.value.addEventListener('focusout', (event) => {
+      // Check if focus is leaving the menu entirely
+      const relatedTarget = event.relatedTarget
+      if (!menuRef.value?.contains(relatedTarget)) {
+        resetFocus()
+      }
+    })
   })
+
+  defineExpose({ resetFocus })
 </script>
