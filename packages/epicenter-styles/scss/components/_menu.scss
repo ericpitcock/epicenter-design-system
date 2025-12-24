@@ -36,6 +36,7 @@
 
 .ep-menu__item {
   position: relative;
+  border-radius: var(--border-radius);
 
   .ep-button--menu-item {
     width: 100%;

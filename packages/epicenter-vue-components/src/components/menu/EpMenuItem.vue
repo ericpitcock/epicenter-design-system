@@ -20,7 +20,7 @@
     tabindex="0"
     :aria-haspopup="$slots.submenu ? 'menu' : undefined"
     :aria-expanded="$slots.submenu ? String(showSubmenu) : undefined"
-    @click="handleClick"
+    @click="onClick"
     @keydown="handleKeydown"
     @mouseover="onMouseover"
     @mouseleave="onMouseleave"
@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-  import { nextTick, onMounted, ref } from 'vue'
+  import { inject, nextTick, onMounted, provide, ref } from 'vue'
 
   const props = defineProps({
     /**
@@ -61,15 +61,18 @@
   const menuItemRef = ref(null)
   const hasSubmenu = ref(false)
 
+  // Provide close function for child submenu items
+  provide('closeParentSubmenu', () => {
+    showSubmenu.value = false
+  })
+
+  // Inject parent's close function (if this item is in a submenu)
+  const closeParentSubmenu = inject('closeParentSubmenu', null)
+
   // Ensure interactive elements inside menu items are not separately focusable
   // This follows the WAI-ARIA menu pattern where only the menu item wrapper should be focusable
   onMounted(() => {
     if (props.type === 'item' && menuItemRef.value) {
-      // Listen for close-submenu event from child submenu items
-      menuItemRef.value.addEventListener('close-submenu', () => {
-        showSubmenu.value = false
-      })
-
       // Only process direct child buttons/links, not those in submenus
       // Use :scope > to select only immediate children of this menu item's content
       const directButtons = Array.from(menuItemRef.value.querySelectorAll('button, a')).filter(el => {
@@ -96,11 +99,13 @@
     }
   })
 
-  const handleClick = (event) => {
+  const onClick = (event) => {
     if (props.type === 'item') {
       // If this item has a submenu, don't emit select - let keyboard handle it
       if (!hasSubmenu.value) {
         emit('select', event)
+        // Close parent submenu if this item is inside one
+        closeParentSubmenu?.()
       }
     }
   }
@@ -148,18 +153,13 @@
 
     // Handle Arrow Left from within submenu - close it and return to parent
     if (key === 'ArrowLeft') {
-      const isInSubmenu = menuItemRef.value?.closest('.ep-menu__item__sub-menu')
-      if (isInSubmenu) {
-        // We're inside a submenu, find the parent menu item and close its submenu
-        const parentMenuItem = isInSubmenu.closest('.ep-menu__item')
-        if (parentMenuItem) {
-          event.preventDefault()
-          event.stopPropagation()
-          // Close submenu by setting parent's showSubmenu to false
-          // We'll dispatch a custom event that parent can listen to
-          parentMenuItem.dispatchEvent(new CustomEvent('close-submenu', { bubbles: false }))
-          parentMenuItem.focus()
-        }
+      if (closeParentSubmenu) {
+        // We're inside a submenu, close it and focus parent
+        event.preventDefault()
+        event.stopPropagation()
+        closeParentSubmenu()
+        // Focus the parent menu item
+        menuItemRef.value?.closest('.ep-menu__item__sub-menu')?.closest('.ep-menu__item')?.focus()
         return
       }
       // If we have a submenu and it's open, close it
