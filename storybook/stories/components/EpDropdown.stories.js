@@ -23,24 +23,23 @@ const fakeDropdownItems = [
     submenu: [
       {
         type: 'item',
-        label: 'Settings',
-        onClick: () => console.log('clicked Settings')
+        label: 'Whole Milk',
+        onClick: () => console.log('clicked Whole Milk')
       },
       {
         type: 'item',
-        label: 'Preferences',
-        onClick: () => console.log('clicked Preferences')
-      },
-      { type: 'divider' },
-      {
-        type: 'item',
-        label: 'Help Center',
-        onClick: () => console.log('clicked Help Center')
+        label: 'Oat Milk',
+        onClick: () => console.log('clicked Oat Milk')
       },
       {
         type: 'item',
-        label: 'About Us',
-        onClick: () => console.log('clicked About Us')
+        label: 'Almond Milk',
+        onClick: () => console.log('clicked Almond Milk')
+      },
+      {
+        type: 'item',
+        label: 'Soy Milk',
+        onClick: () => console.log('clicked Soy Milk')
       }
     ]
   },
