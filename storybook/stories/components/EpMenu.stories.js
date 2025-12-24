@@ -172,6 +172,7 @@ export const Menu = args => ({
             :size="args.size"
             :to="item.to"
             :href="item.href"
+            tabindex="-1"
             @click="item.onClick"
           >
             <template v-if="item.iconLeft" #icon-left>
@@ -194,6 +195,7 @@ export const Menu = args => ({
                     :size="args.size"
                     :to="subItem.to"
                     :href="subItem.href"
+                    tabindex="-1"
                     @click="subItem.onClick"
                   >
                     <template v-if="subItem.iconLeft" #icon-left>

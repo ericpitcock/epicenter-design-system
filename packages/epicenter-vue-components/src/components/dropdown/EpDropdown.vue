@@ -26,8 +26,13 @@
       v-show="dropdownVisible"
       :id="contentId"
       :class="['ep-dropdown__container', { 'ep-dropdown__container--align-right': alignRight }]"
+      role="region"
+      :aria-labelledby="triggerId"
     >
-      <div class="ep-dropdown__content">
+      <div
+        class="ep-dropdown__content"
+        tabindex="-1"
+      >
         <!-- @slot Content displayed inside the dropdown panel when open -->
         <slot
           name="content"
@@ -40,7 +45,7 @@
 
 <script setup>
   import { onClickOutside } from '@vueuse/core'
-  import { computed, ref, useId, useTemplateRef } from 'vue'
+  import { computed, nextTick, ref, useId, useTemplateRef, watch } from 'vue'
 
   const props = defineProps({
     /**
@@ -93,6 +98,21 @@
     dropdownVisible.value = false
     emit('close')
   }
+
+  // Focus management
+  watch(dropdownVisible, async (isOpen) => {
+    await nextTick()
+
+    if (isOpen) {
+      // Focus first menu item when opening
+      const firstMenuItem = dropdownRef.value?.querySelector('[role="menuitem"]')
+      firstMenuItem?.focus()
+    } else {
+      // Return focus to trigger when closing
+      const trigger = dropdownRef.value?.querySelector(`#${triggerId}`)
+      trigger?.focus()
+    }
+  })
 
   const toggleDropdown = () => {
     if (props.disabled || props.showOnHover) return

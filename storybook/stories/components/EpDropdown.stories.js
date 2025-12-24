@@ -1,3 +1,4 @@
+import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
 import Coffee02 from '@ericpitcock/epicenter-icons/epicenter-icons/Coffee02'
 import { computed, ref, toRef } from 'vue'
 
@@ -15,7 +16,34 @@ const fakeDropdownItems = [
   { type: 'item', label: 'French Press' },
   { type: 'divider' },
   { type: 'section', label: 'Expensive' },
-  { type: 'item', label: 'Latte' },
+  {
+    type: 'item',
+    label: 'Latte',
+    iconRight: ArrowRight01,
+    submenu: [
+      {
+        type: 'item',
+        label: 'Settings',
+        onClick: () => console.log('clicked Settings')
+      },
+      {
+        type: 'item',
+        label: 'Preferences',
+        onClick: () => console.log('clicked Preferences')
+      },
+      { type: 'divider' },
+      {
+        type: 'item',
+        label: 'Help Center',
+        onClick: () => console.log('clicked Help Center')
+      },
+      {
+        type: 'item',
+        label: 'About Us',
+        onClick: () => console.log('clicked About Us')
+      }
+    ]
+  },
   { type: 'item', label: 'Espresso' }
 ]
 
@@ -100,6 +128,7 @@ export default {
 
 export const Dropdown = args => ({
   components: {
+    ArrowRight01,
     EpButton,
     EpDropdown,
     EpMenu,
@@ -173,17 +202,41 @@ export const Dropdown = args => ({
       </template>
 
       <template #content="{ close }">
-        <ep-menu>
+        <ep-menu @escape="close" @tab-boundary="close" :size="args.size">
           <template v-for="(item, index) in fakeDropdownItems" :key="index">
             <ep-menu-item :type="item.type">
               <ep-button
                 v-if="item.type === 'item'"
                 class="ep-button--menu-item"
+                :size="args.size"
+                tabindex="-1"
                 @click="() => { onSelect(item); close() }"
               >
                 {{ item.label }}
+                <template v-if="item.iconRight" #icon-right>
+                  <component :is="item.iconRight" />
+                </template>
               </ep-button>
               <template v-else>{{ item.label }}</template>
+              
+              <template v-if="item.submenu" #submenu>
+                <ep-menu :size="args.size">
+                  <template v-for="(subItem, subIndex) in item.submenu" :key="subIndex">
+                    <ep-menu-item :type="subItem.type">
+                      <ep-button
+                        v-if="subItem.type === 'item'"
+                        class="ep-button--menu-item"
+                        :size="args.size"
+                        tabindex="-1"
+                        @click="() => { subItem.onClick?.(); close() }"
+                      >
+                        {{ subItem.label }}
+                      </ep-button>
+                      <template v-else>{{ subItem.label }}</template>
+                    </ep-menu-item>
+                  </template>
+                </ep-menu>
+              </template>
             </ep-menu-item>
           </template>
         </ep-menu>
