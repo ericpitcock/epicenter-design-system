@@ -7,6 +7,8 @@
 |------|-------------|------|---------|
 | `delay` | Delay in milliseconds before showing the tooltip on hover. | `number` | `0` |
 | `position` | Position of the tooltip relative to the trigger element. | `string` | `'top center'` |
+| `dismissOnClick` | Whether to dismiss the tooltip when clicked. | `boolean` | `false` |
+| `disabled` | Whether the tooltip is disabled. | `boolean` | `false` |
 
 ## Slots
 | Name | Description |
@@ -27,6 +29,7 @@ This component does not use events.
     class="ep-tooltip-wrapper"
     @mouseenter="showTooltip"
     @mouseleave="hideTooltip"
+    @click="onClick"
   >
     <div
       :class="['ep-tooltip', positionClass, { 'ep-tooltip--visible': visible }]"
@@ -73,6 +76,20 @@ This component does not use events.
           'left bottom',
         ].includes(value),
     },
+    /**
+     * Whether to dismiss the tooltip when clicked.
+     */
+    dismissOnClick: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Whether the tooltip is disabled.
+     */
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   })
 
   const visible = ref(false)
@@ -83,6 +100,7 @@ This component does not use events.
   })
 
   const showTooltip = () => {
+    if (props.disabled) return
     timeoutId.value = setTimeout(() => {
       visible.value = true
     }, props.delay)
@@ -91,6 +109,12 @@ This component does not use events.
   const hideTooltip = () => {
     clearTimeout(timeoutId.value)
     visible.value = false
+  }
+
+  const onClick = () => {
+    if (props.dismissOnClick) {
+      hideTooltip()
+    }
   }
 
   const positionClass = computed(() => {
