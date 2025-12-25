@@ -168,7 +168,12 @@ export const Menu = args => ({
   template: `
     <ep-menu v-bind="args">
       <template v-for="(item, index) in menuItems" :key="index">
-        <ep-menu-item :type="item.type" :disabled="item.disabled">
+        <ep-menu-item
+          :type="item.type"
+          :is-disabled="item.disabled"
+          :disabled="item.disabled"
+          @select="item.onClick"
+        >
           <ep-button
             v-if="item.type === 'item'"
             class="ep-button--menu-item"
@@ -177,7 +182,6 @@ export const Menu = args => ({
             :href="item.href"
             :disabled="item.disabled"
             tabindex="-1"
-            @click="item.onClick"
           >
             <template v-if="item.iconLeft" #icon-left>
               <component :is="item.iconLeft" :style="item.iconLeftStyle" />
@@ -192,7 +196,12 @@ export const Menu = args => ({
           <template v-if="item.submenu" #submenu>
             <ep-menu :size="args.size">
               <template v-for="(subItem, subIndex) in item.submenu" :key="subIndex">
-                <ep-menu-item :type="subItem.type" :disabled="subItem.disabled">
+                <ep-menu-item
+                  :type="subItem.type"
+                  :is-disabled="subItem.disabled"
+                  :disabled="subItem.disabled"
+                  @select="subItem.onClick"
+                >
                   <ep-button
                     v-if="subItem.type === 'item'"
                     class="ep-button--menu-item"
@@ -201,7 +210,6 @@ export const Menu = args => ({
                     :href="subItem.href"
                     :disabled="subItem.disabled"
                     tabindex="-1"
-                    @click="subItem.onClick"
                   >
                     <template v-if="subItem.iconLeft" #icon-left>
                       <component :is="subItem.iconLeft" :style="subItem.iconLeftStyle" />

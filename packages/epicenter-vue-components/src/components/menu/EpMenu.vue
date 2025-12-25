@@ -13,7 +13,7 @@
 <script setup>
   import { onMounted, ref, useTemplateRef } from 'vue'
 
-  const emit = defineEmits(['escape', 'tab-boundary'])
+  const emit = defineEmits(['escape', 'tab'])
 
   const menuRef = useTemplateRef('menuRef')
   const currentFocusIndex = ref(0)
@@ -88,9 +88,9 @@
         break
       case 'Tab':
         // Tab should exit the menu immediately, not navigate within it
-        // Emit event so parent (dropdown) can close, but don't prevent default
+        // Emit event so parent can react, but don't prevent default
         // so Tab can naturally move focus to the next element
-        emit('tab-boundary')
+        emit('tab')
         break
     }
   }

@@ -19,6 +19,7 @@
     role="menuitem"
     :aria-haspopup="$slots.submenu ? 'menu' : undefined"
     :aria-expanded="$slots.submenu ? String(showSubmenu) : undefined"
+    @mousedown="onMousedown"
     @click="onClick"
     @keydown="onKeydown"
     @mouseover="onMouseover"
@@ -47,7 +48,7 @@
     /**
      * Whether the menu item is disabled.
      */
-    disabled: {
+    isDisabled: {
       type: Boolean,
       default: false
     },
@@ -106,8 +107,21 @@
     }
   })
 
+  const onMousedown = (event) => {
+    if (props.isDisabled) {
+      // Prevent focus when clicking a disabled menu item
+      // This prevents submenus from sticking open when clicking disabled items
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
   const onClick = (event) => {
-    if (props.disabled) return
+    if (props.isDisabled) {
+      event.preventDefault()
+      event.stopPropagation()
+      return
+    }
 
     if (props.type === 'item') {
       // If this item has a submenu, don't emit select - let keyboard handle it
@@ -200,11 +214,8 @@
         openSubmenuAndFocusFirst()
       } else {
         // No submenu - activate the menu item
-        const button = menuItemRef.value?.querySelector('button, a')
-        if (button) {
-          button.click()
-        }
         emit('select', event)
+        closeParentSubmenu?.()
       }
     }
     // Arrow right to open submenu if present
