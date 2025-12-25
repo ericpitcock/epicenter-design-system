@@ -117,6 +117,7 @@ export const Menu = args => ({
       {
         type: 'item',
         label: 'Notifications',
+        disabled: true,
         onClick: () => console.log('clicked Notifications')
       },
       { type: 'divider' },
@@ -139,6 +140,7 @@ export const Menu = args => ({
       {
         type: 'item',
         label: 'Advanced Settings',
+        disabled: false,
         iconRight: ArrowRight01,
         submenu: [
           {
@@ -154,6 +156,7 @@ export const Menu = args => ({
           {
             type: 'item',
             label: 'Developer Mode',
+            disabled: true,
             onClick: () => console.log('clicked Developer Mode')
           }
         ]
@@ -165,13 +168,14 @@ export const Menu = args => ({
   template: `
     <ep-menu v-bind="args">
       <template v-for="(item, index) in menuItems" :key="index">
-        <ep-menu-item :type="item.type">
+        <ep-menu-item :type="item.type" :disabled="item.disabled">
           <ep-button
             v-if="item.type === 'item'"
             class="ep-button--menu-item"
             :size="args.size"
             :to="item.to"
             :href="item.href"
+            :disabled="item.disabled"
             tabindex="-1"
             @click="item.onClick"
           >
@@ -188,13 +192,14 @@ export const Menu = args => ({
           <template v-if="item.submenu" #submenu>
             <ep-menu :size="args.size">
               <template v-for="(subItem, subIndex) in item.submenu" :key="subIndex">
-                <ep-menu-item :type="subItem.type">
+                <ep-menu-item :type="subItem.type" :disabled="subItem.disabled">
                   <ep-button
                     v-if="subItem.type === 'item'"
                     class="ep-button--menu-item"
                     :size="args.size"
                     :to="subItem.to"
                     :href="subItem.href"
+                    :disabled="subItem.disabled"
                     tabindex="-1"
                     @click="subItem.onClick"
                   >

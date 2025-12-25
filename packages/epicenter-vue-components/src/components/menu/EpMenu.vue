@@ -1,9 +1,9 @@
 <template>
   <div
     ref="menuRef"
-    :class="['ep-menu', `ep-menu--${menuType}`]"
+    class="ep-menu"
     role="menu"
-    @keydown="handleKeydown"
+    @keydown="onKeydown"
   >
     <!-- @slot Default slot for menu items (EpMenuItem components). -->
     <slot />
@@ -11,40 +11,19 @@
 </template>
 
 <script setup>
-  import { onMounted, provide, ref, useTemplateRef } from 'vue'
-
-  const props = defineProps({
-    /**
-     * The type/style of menu to display.
-     * @values default, dropdown, nav
-     */
-    menuType: {
-      type: String,
-      default: 'default' // default, dropdown, nav
-    },
-    /**
-     * The size of the menu items.
-     */
-    size: {
-      type: String,
-      default: 'default'
-    },
-  })
+  import { onMounted, ref, useTemplateRef } from 'vue'
 
   const emit = defineEmits(['escape', 'tab-boundary'])
 
   const menuRef = useTemplateRef('menuRef')
   const currentFocusIndex = ref(0)
 
-  // Provide the current focus index so menu items can check if they should be tabbable
-  provide('menuFocusIndex', currentFocusIndex)
-
   // Get all focusable menu items (only direct children, not nested submenus)
   const getFocusableItems = () => {
     if (!menuRef.value) return []
 
     // Find all menu items that are direct children (not in submenus)
-    const allItems = menuRef.value.querySelectorAll('[role="menuitem"]:not([disabled])')
+    const allItems = menuRef.value.querySelectorAll('[role="menuitem"]:not([disabled="true"])')
     return Array.from(allItems).filter(item => {
       // Only include items whose closest .ep-menu parent is this menu
       const closestMenu = item.closest('.ep-menu')
@@ -69,7 +48,7 @@
     items[index]?.focus()
   }
 
-  const handleKeydown = (event) => {
+  const onKeydown = (event) => {
     const items = getFocusableItems()
     if (items.length === 0) return
 

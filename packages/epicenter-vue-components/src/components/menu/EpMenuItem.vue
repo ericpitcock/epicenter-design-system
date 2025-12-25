@@ -20,11 +20,11 @@
     :aria-haspopup="$slots.submenu ? 'menu' : undefined"
     :aria-expanded="$slots.submenu ? String(showSubmenu) : undefined"
     @click="onClick"
-    @keydown="handleKeydown"
+    @keydown="onKeydown"
     @mouseover="onMouseover"
     @mouseleave="onMouseleave"
-    @focusin="handleFocusIn"
-    @focusout="handleFocusOut"
+    @focusin="onFocusIn"
+    @focusout="onFocusOut"
   >
     <!-- @slot Default slot for menu item content. -->
     <slot />
@@ -44,6 +44,13 @@
   import { inject, nextTick, onMounted, provide, ref } from 'vue'
 
   const props = defineProps({
+    /**
+     * Whether the menu item is disabled.
+     */
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     /**
      * The type of menu item to render.
      * @values item, divider, section
@@ -100,6 +107,8 @@
   })
 
   const onClick = (event) => {
+    if (props.disabled) return
+
     if (props.type === 'item') {
       // If this item has a submenu, don't emit select - let keyboard handle it
       if (!hasSubmenu.value) {
@@ -110,7 +119,7 @@
     }
   }
 
-  const handleFocusIn = (event) => {
+  const onFocusIn = (event) => {
     // Don't interfere with focus if it's going to a submenu item
     const isSubmenuElement = event.target.closest('.ep-menu__item__sub-menu')
     if (isSubmenuElement) {
@@ -125,7 +134,7 @@
     }
   }
 
-  const handleFocusOut = (event) => {
+  const onFocusOut = (event) => {
     // Close submenu if focus is leaving this menu item entirely
     if (showSubmenu.value && menuItemRef.value) {
       // Check if the new focus target is outside this menu item
@@ -157,7 +166,7 @@
     }
   }
 
-  const handleKeydown = (event) => {
+  const onKeydown = (event) => {
     if (props.type !== 'item') return
 
     const key = event.key
