@@ -80,8 +80,13 @@ ${doc.description || ''}${customNotesSection}
 |------|-------------|------|---------|
 ${doc.props
           .map(
-            (prop) =>
-              `| \`${prop.name}\` | ${prop.description || '-'} | \`${prop.type?.name || '-'}\` | \`${prop.defaultValue?.value || '-'}\` |`
+            (prop) => {
+              // Escape default value to prevent multi-line content in table cells
+              const defaultValue = prop.defaultValue?.value
+                ? prop.defaultValue.value.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim()
+                : '-'
+              return `| \`${prop.name}\` | ${prop.description || '-'} | \`${prop.type?.name || '-'}\` | \`${defaultValue}\` |`
+            }
           )
           .join('\n')}
 `
@@ -111,8 +116,13 @@ ${doc.events
 |------|-------------|
 ${doc.slots
           .map(
-            (slot) =>
-              `| \`${slot.name}\` | ${slot.description || 'No description available.'} |`
+            (slot) => {
+              // Escape HTML-like content in descriptions (e.g., <ArrowRight01 />)
+              const description = (slot.description || 'No description available.')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+              return `| \`${slot.name}\` | ${description} |`
+            }
           )
           .join('\n')}
 `
