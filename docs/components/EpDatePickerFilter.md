@@ -14,24 +14,19 @@ This component is under development.
 | `filterKey` | - | `string` | `-` |
 | `columnKey` | - | `string` | `-` |
 
+## Events
+| Name    | Description                 | Payload    |
+|---------|-----------------------------|------------|
+| `update:appliedFilters` | - | - |
+
 
 ::: info
-This component does not use events, slots.
+This component does not use slots.
 :::
 
 ## Component Code
 
 ```vue
-<template>
-  <div>
-    <input
-      v-model="selectedDate"
-      type="date"
-      @change="applyFilter"
-    >
-  </div>
-</template>
-
 <script setup>
   import { ref } from 'vue'
 
@@ -50,14 +45,26 @@ This component does not use events, slots.
     }
   })
 
+  const emit = defineEmits(['update:appliedFilters'])
+
   // Initialize selected date
   const selectedDate = ref('')
 
   // Method to apply filter and emit event
   const applyFilter = () => {
     // Emit event to update applied filters in parent component
-    emit('update:appliedFilters', { [columnKey]: selectedDate.value })
+    emit('update:appliedFilters', { [props.columnKey]: selectedDate.value })
   }
 </script>
+
+<template>
+  <div>
+    <input
+      v-model="selectedDate"
+      type="date"
+      @change="applyFilter"
+    >
+  </div>
+</template>
 
 ```

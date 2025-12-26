@@ -10,6 +10,9 @@ This component does not use props, events, slots.
 ## Component Code
 
 ```vue
+<script setup>
+</script>
+
 <template>
   <svg
     x="0px"
@@ -30,9 +33,6 @@ This component does not use props, events, slots.
     />
   </svg>
 </template>
-
-<script setup>
-</script>
 
 <style lang="scss" scoped>
   svg {

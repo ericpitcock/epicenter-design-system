@@ -36,14 +36,6 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<!-- eslint-disable vue/no-v-html -->
-<template>
-  <div
-    class="ep-code-view"
-    v-html="highlightedCode"
-  />
-</template>
-
 <script setup>
   import { codeToHtml } from 'shiki'
   import { onMounted, ref, watch } from 'vue'
@@ -106,6 +98,14 @@ This component does not use events, slots.
     highlightCode()
   })
 </script>
+
+<!-- eslint-disable vue/no-v-html -->
+<template>
+  <div
+    class="ep-code-view"
+    v-html="highlightedCode"
+  />
+</template>
 
 <style lang="scss">
   .ep-code-view pre {

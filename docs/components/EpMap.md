@@ -46,18 +46,8 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<template>
-  <div
-    ref="epMapContainer"
-    class="ep-map-container"
-  >
-    <div id="ep-map" />
-  </div>
-</template>
-
 <script setup>
   import 'mapbox-gl/dist/mapbox-gl.css'
-
   import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
   const props = defineProps({
@@ -246,6 +236,15 @@ This component does not use slots.
     map.value.addLayer(layer)
   }
 </script>
+
+<template>
+  <div
+    ref="epMapContainer"
+    class="ep-map-container"
+  >
+    <div id="ep-map" />
+  </div>
+</template>
 ```
 
 ## Styles (SCSS)

@@ -122,51 +122,6 @@ const dropdownRef = ref(null)
 ## Component Code
 
 ```vue
-<template>
-  <div
-    ref="dropdown"
-    class="ep-dropdown"
-    @mouseleave="onMouseleave"
-  >
-    <!-- @slot Trigger element that opens/closes the dropdown. Provides scoped props for custom triggers. -->
-    <slot
-      name="trigger"
-      :is-open="dropdownVisible"
-      :open="openDropdown"
-      :close="closeDropdown"
-      :toggle="toggleDropdown"
-      :attrs="triggerAttrs"
-      :on="triggerListeners"
-    >
-      <button
-        type="button"
-        v-bind="triggerAttrs"
-        v-on="triggerListeners"
-      >
-        Default dropdown
-      </button>
-    </slot>
-    <div
-      v-show="dropdownVisible"
-      :id="contentId"
-      :class="['ep-dropdown__container', { 'ep-dropdown__container--align-right': alignRight }]"
-      role="region"
-      :aria-labelledby="triggerId"
-    >
-      <div
-        class="ep-dropdown__content"
-        tabindex="-1"
-      >
-        <!-- @slot Content displayed inside the dropdown panel when open -->
-        <slot
-          name="content"
-          :close="closeDropdown"
-        />
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
   import { onClickOutside } from '@vueuse/core'
   import { computed, nextTick, ref, useId, useTemplateRef, watch } from 'vue'
@@ -188,6 +143,7 @@ const dropdownRef = ref(null)
     },
   })
 
+  const emit = defineEmits(['click', 'close'])
   const uniqueId = useId()
   const triggerId = `ep-dropdown-trigger-${uniqueId}`
   const contentId = `ep-dropdown-panel-${uniqueId}`
@@ -205,8 +161,6 @@ const dropdownRef = ref(null)
     mouseover: onMouseover,
     keydown: onKeydown
   }))
-
-  const emit = defineEmits(['click', 'close'])
 
   const dropdownVisible = ref(false)
 
@@ -276,6 +230,51 @@ const dropdownRef = ref(null)
 
   defineExpose({ openDropdown, closeDropdown, toggleDropdown })
 </script>
+
+<template>
+  <div
+    ref="dropdown"
+    class="ep-dropdown"
+    @mouseleave="onMouseleave"
+  >
+    <!-- @slot Trigger element that opens/closes the dropdown. Provides scoped props for custom triggers. -->
+    <slot
+      name="trigger"
+      :is-open="dropdownVisible"
+      :open="openDropdown"
+      :close="closeDropdown"
+      :toggle="toggleDropdown"
+      :attrs="triggerAttrs"
+      :on="triggerListeners"
+    >
+      <button
+        type="button"
+        v-bind="triggerAttrs"
+        v-on="triggerListeners"
+      >
+        Default dropdown
+      </button>
+    </slot>
+    <div
+      v-show="dropdownVisible"
+      :id="contentId"
+      :class="['ep-dropdown__container', { 'ep-dropdown__container--align-right': alignRight }]"
+      role="region"
+      :aria-labelledby="triggerId"
+    >
+      <div
+        class="ep-dropdown__content"
+        tabindex="-1"
+      >
+        <!-- @slot Content displayed inside the dropdown panel when open -->
+        <slot
+          name="content"
+          :close="closeDropdown"
+        />
+      </div>
+    </div>
+  </div>
+</template>
 ```
 
 ## Styles (SCSS)

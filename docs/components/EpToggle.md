@@ -23,20 +23,6 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<template>
-  <div
-    :class="['ep-toggle', classes]"
-    @click="toggle"
-  >
-    <div class="ep-toggle__track">
-      <div class="ep-toggle__thumb" />
-    </div>
-    <div class="ep-toggle__label">
-      {{ label }}
-    </div>
-  </div>
-</template>
-
 <script setup>
   import { computed } from 'vue'
 
@@ -86,6 +72,20 @@ This component does not use slots.
     emit('toggle')
   }
 </script>
+
+<template>
+  <div
+    :class="['ep-toggle', classes]"
+    @click="toggle"
+  >
+    <div class="ep-toggle__track">
+      <div class="ep-toggle__thumb" />
+    </div>
+    <div class="ep-toggle__label">
+      {{ label }}
+    </div>
+  </div>
+</template>
 
 ```
 

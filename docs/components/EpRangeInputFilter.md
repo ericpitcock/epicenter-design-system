@@ -11,27 +11,19 @@
 | `min` | - | `number` | `-` |
 | `max` | - | `number` | `-` |
 
+## Events
+| Name    | Description                 | Payload    |
+|---------|-----------------------------|------------|
+| `update:appliedFilters` | - | - |
+
 
 ::: info
-This component does not use events, slots.
+This component does not use slots.
 :::
 
 ## Component Code
 
 ```vue
-<template>
-  <div>
-    <input
-      v-model="selectedRange"
-      type="range"
-      :min="min"
-      :max="max"
-      @input="applyFilter"
-    >
-    <span>{{ selectedRange }}</span>
-  </div>
-</template>
-
 <script setup>
   import { ref } from 'vue'
 
@@ -58,14 +50,29 @@ This component does not use events, slots.
     }
   })
 
+  const emit = defineEmits(['update:appliedFilters'])
+
   // Initialize selected range
   const selectedRange = ref(0)
 
   // Method to apply filter and emit event
   const applyFilter = () => {
     // Emit event to update applied filters in parent component
-    emit('update:appliedFilters', { [columnKey]: selectedRange.value })
+    emit('update:appliedFilters', { [props.columnKey]: selectedRange.value })
   }
 </script>
+
+<template>
+  <div>
+    <input
+      v-model="selectedRange"
+      type="range"
+      :min="min"
+      :max="max"
+      @input="applyFilter"
+    >
+    <span>{{ selectedRange }}</span>
+  </div>
+</template>
 
 ```

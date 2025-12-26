@@ -67,6 +67,16 @@ This component does not use props, events.
 ## Component Code
 
 ```vue
+<script setup>
+  import { useTemplateRef } from 'vue'
+
+  const epContainer = useTemplateRef('epContainer')
+
+  defineExpose({
+    epContainer
+  })
+</script>
+
 <template>
   <div
     ref="epContainer"
@@ -92,16 +102,6 @@ This component does not use props, events.
     </div>
   </div>
 </template>
-
-<script setup>
-  import { useTemplateRef } from 'vue'
-
-  const epContainer = useTemplateRef('epContainer')
-
-  defineExpose({
-    epContainer
-  })
-</script>
 
 ```
 

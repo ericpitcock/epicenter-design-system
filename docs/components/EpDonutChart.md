@@ -42,27 +42,6 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<template>
-  <div
-    ref="container"
-    class="ep-donut-chart"
-    :style="containerStyles"
-  >
-    <div
-      v-show="tooltipVisible"
-      ref="tooltip"
-      class="ep-donut-chart__tooltip"
-      :style="tooltipStyles"
-    >
-      {{ tooltipText }}
-    </div>
-    <div ref="ep-donut" />
-    <div :class="['ep-donut-chart__value', valueTextClass]">
-      {{ value }}
-    </div>
-  </div>
-</template>
-
 <script setup>
   import { computed, onMounted, ref, useTemplateRef } from 'vue'
 
@@ -238,6 +217,27 @@ This component does not use events, slots.
     }
   }
 </script>
+
+<template>
+  <div
+    ref="container"
+    class="ep-donut-chart"
+    :style="containerStyles"
+  >
+    <div
+      v-show="tooltipVisible"
+      ref="tooltip"
+      class="ep-donut-chart__tooltip"
+      :style="tooltipStyles"
+    >
+      {{ tooltipText }}
+    </div>
+    <div ref="ep-donut" />
+    <div :class="['ep-donut-chart__value', valueTextClass]">
+      {{ value }}
+    </div>
+  </div>
+</template>
 ```
 
 ## Styles (SCSS)

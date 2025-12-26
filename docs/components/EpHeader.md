@@ -17,6 +17,9 @@ This component does not use props, events.
 ## Component Code
 
 ```vue
+<script setup>
+</script>
+
 <template>
   <div class="ep-header">
     <div class="ep-header__content">
@@ -44,9 +47,6 @@ This component does not use props, events.
     </div>
   </div>
 </template>
-
-<script setup>
-</script>
 
 ```
 

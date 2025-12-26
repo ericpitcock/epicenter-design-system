@@ -24,36 +24,6 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<template>
-  <div :class="['ep-empty-state', classes]">
-    <div
-      v-if="$slots.img"
-      class="ep-empty-state__img"
-    >
-      <!-- @slot Image or icon to display in the empty state -->
-      <slot name="img" />
-    </div>
-    <div class="ep-empty-state__body">
-      <!-- @slot Main content/message of the empty state -->
-      <slot />
-      <div
-        v-if="$slots.subtext"
-        class="text--subtle font-size--small"
-      >
-        <!-- @slot Additional descriptive text or instructions -->
-        <slot name="subtext" />
-      </div>
-      <div
-        v-if="$slots.cta"
-        class="ep-empty-state__body__cta"
-      >
-        <!-- @slot Call-to-action button or link -->
-        <slot name="cta" />
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
   import { computed } from 'vue'
 
@@ -85,6 +55,36 @@ This component does not use events.
     }
   })
 </script>
+
+<template>
+  <div :class="['ep-empty-state', classes]">
+    <div
+      v-if="$slots.img"
+      class="ep-empty-state__img"
+    >
+      <!-- @slot Image or icon to display in the empty state -->
+      <slot name="img" />
+    </div>
+    <div class="ep-empty-state__body">
+      <!-- @slot Main content/message of the empty state -->
+      <slot />
+      <div
+        v-if="$slots.subtext"
+        class="text--subtle font-size--small"
+      >
+        <!-- @slot Additional descriptive text or instructions -->
+        <slot name="subtext" />
+      </div>
+      <div
+        v-if="$slots.cta"
+        class="ep-empty-state__body__cta"
+      >
+        <!-- @slot Call-to-action button or link -->
+        <slot name="cta" />
+      </div>
+    </div>
+  </div>
+</template>
 
 ```
 

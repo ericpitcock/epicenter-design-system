@@ -17,12 +17,6 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<template>
-  <span>
-    {{ count }} {{ count === 1 ? singular : plural }}
-  </span>
-</template>
-
 <script setup>
   const props = defineProps({
     /**
@@ -48,4 +42,10 @@ This component does not use events, slots.
     }
   })
 </script>
+
+<template>
+  <span>
+    {{ count }} {{ count === 1 ? singular : plural }}
+  </span>
+</template>
 ```

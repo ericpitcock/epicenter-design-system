@@ -15,10 +15,6 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<template>
-  <div :class="['ep-divider', `ep-divider--${direction}`]" />
-</template>
-
 <script setup>
   const props = defineProps({
     /**
@@ -31,6 +27,10 @@ This component does not use events, slots.
     },
   })
 </script>
+
+<template>
+  <div :class="['ep-divider', `ep-divider--${direction}`]" />
+</template>
 
 ```
 

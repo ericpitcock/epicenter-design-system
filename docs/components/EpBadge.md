@@ -20,13 +20,6 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<template>
-  <div class="ep-badge">
-    <!-- @slot Default slot for badge content. Falls back to label prop if not provided. -->
-    <slot>{{ label }}</slot>
-  </div>
-</template>
-
 <script setup>
   defineProps({
     /**
@@ -38,6 +31,13 @@ This component does not use events.
     },
   })
 </script>
+
+<template>
+  <div class="ep-badge">
+    <!-- @slot Default slot for badge content. Falls back to label prop if not provided. -->
+    <slot>{{ label }}</slot>
+  </div>
+</template>
 
 ```
 

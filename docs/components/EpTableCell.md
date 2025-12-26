@@ -17,12 +17,6 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<template>
-  <span :class="column.class">
-    {{ cellContent }}
-  </span>
-</template>
-
 <script setup>
   import { ref, watchEffect } from 'vue'
 
@@ -57,4 +51,10 @@ This component does not use events, slots.
     cellContent.value = formattedCell(props.row, props.column)
   })
 </script>
+
+<template>
+  <span :class="column.class">
+    {{ cellContent }}
+  </span>
+</template>
 ```

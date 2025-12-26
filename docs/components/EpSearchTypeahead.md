@@ -24,50 +24,11 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<template>
-  <div class="ep-search-typeahead">
-    <ep-input
-      v-model="searchQuery"
-      v-bind="computedInputProps"
-      spellcheck="false"
-      @update:model-value="onInput"
-      @clear="resetSearch"
-      @keydown.prevent.down="updateactiveItemIndex(1)"
-      @keydown.prevent.up="updateactiveItemIndex(-1)"
-      @keydown.enter="onEnter"
-      @keydown.esc="resetSearch"
-    />
-    <div
-      v-if="returnedSearchResults.length"
-      ref="resultsListRef"
-      class="ep-search-typeahead-dropdown"
-    >
-      <ul>
-        <li
-          v-for="(result, index) in returnedSearchResults"
-          :key="index"
-          :class="[
-            'ep-search-typeahead-dropdown__item',
-            { 'ep-search-typeahead-dropdown__item--active': index === activeItemIndex, }
-          ]"
-          @click="onSelection(result)"
-          @mouseenter="onMouseEnter(index)"
-        >
-          {{ result[resultsKey] }}
-        </li>
-      </ul>
-    </div>
-  </div>
-</template>
-
 <script setup>
   import { onClickOutside, useDebounceFn } from '@vueuse/core'
   import { computed, ref, watch } from 'vue'
 
   import EpInput from '../input/EpInput.vue'
-
-  const searchQuery = ref('')
-  const activeItemIndex = ref(-1)
 
   const props = defineProps({
     resultsKey: {
@@ -83,8 +44,9 @@ This component does not use slots.
       default: () => ({}),
     },
   })
-
   const emit = defineEmits(['clear', 'search', 'selection'])
+  const searchQuery = ref('')
+  const activeItemIndex = ref(-1)
 
   const activeItem = computed(() => {
     return props.returnedSearchResults[activeItemIndex.value]
@@ -166,6 +128,42 @@ This component does not use slots.
     emit('selection', result)
   }
 </script>
+
+<template>
+  <div class="ep-search-typeahead">
+    <ep-input
+      v-model="searchQuery"
+      v-bind="computedInputProps"
+      spellcheck="false"
+      @update:model-value="onInput"
+      @clear="resetSearch"
+      @keydown.prevent.down="updateactiveItemIndex(1)"
+      @keydown.prevent.up="updateactiveItemIndex(-1)"
+      @keydown.enter="onEnter"
+      @keydown.esc="resetSearch"
+    />
+    <div
+      v-if="returnedSearchResults.length"
+      ref="resultsListRef"
+      class="ep-search-typeahead-dropdown"
+    >
+      <ul>
+        <li
+          v-for="(result, index) in returnedSearchResults"
+          :key="index"
+          :class="[
+            'ep-search-typeahead-dropdown__item',
+            { 'ep-search-typeahead-dropdown__item--active': index === activeItemIndex, }
+          ]"
+          @click="onSelection(result)"
+          @mouseenter="onMouseEnter(index)"
+        >
+          {{ result[resultsKey] }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
 
 ```
 

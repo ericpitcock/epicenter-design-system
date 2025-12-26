@@ -21,18 +21,6 @@ This component does not use props.
 ## Component Code
 
 ```vue
-<template>
-  <div
-    ref="menuRef"
-    class="ep-menu"
-    role="menu"
-    @keydown="onKeydown"
-  >
-    <!-- @slot Default slot for menu items (EpMenuItem components). -->
-    <slot />
-  </div>
-</template>
-
 <script setup>
   import { onMounted, ref, useTemplateRef } from 'vue'
 
@@ -161,6 +149,18 @@ This component does not use props.
 
   defineExpose({ resetFocus })
 </script>
+
+<template>
+  <div
+    ref="menuRef"
+    class="ep-menu"
+    role="menu"
+    @keydown="onKeydown"
+  >
+    <!-- @slot Default slot for menu items (EpMenuItem components). -->
+    <slot />
+  </div>
+</template>
 
 ```
 

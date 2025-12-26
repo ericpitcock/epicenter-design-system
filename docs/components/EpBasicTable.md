@@ -22,40 +22,6 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<template>
-  <div class="ep-table-container">
-    <table :class="['ep-table', classes]">
-      <thead>
-        <tr>
-          <th
-            v-for="column in columns"
-            :key="column.key"
-          >
-            <div>
-              <span>
-                {{ column.label }}
-              </span>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="(row, rowIndex) in data"
-          :key="rowIndex"
-        >
-          <td
-            v-for="column in columns"
-            :key="column.key"
-          >
-            {{ row[column.key] }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
-
 <script setup>
   import { computed } from 'vue'
 
@@ -103,4 +69,38 @@ This component does not use events, slots.
     'ep-table--striped': props.striped,
   }))
 </script>
+
+<template>
+  <div class="ep-table-container">
+    <table :class="['ep-table', classes]">
+      <thead>
+        <tr>
+          <th
+            v-for="column in columns"
+            :key="column.key"
+          >
+            <div>
+              <span>
+                {{ column.label }}
+              </span>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(row, rowIndex) in data"
+          :key="rowIndex"
+        >
+          <td
+            v-for="column in columns"
+            :key="column.key"
+          >
+            {{ row[column.key] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
 ```

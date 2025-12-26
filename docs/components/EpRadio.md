@@ -25,34 +25,8 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<template>
-  <label
-    :for="id"
-    :class="['ep-radio', classes]"
-  >
-    <input
-      :id="id"
-      v-model="modelValue"
-      type="radio"
-      :name
-      :value
-      :disabled
-      :required
-    >
-    <span class="ep-radio__dot" />
-    <slot>
-      {{ props.label }}
-    </slot>
-  </label>
-</template>
-
 <script setup>
   import { computed } from 'vue'
-
-  const modelValue = defineModel({
-    type: String,
-    required: true
-  })
 
   const props = defineProps({
     /**
@@ -99,11 +73,37 @@ This component does not use events.
     },
   })
 
+  const modelValue = defineModel({
+    type: String,
+    required: true
+  })
+
   const classes = computed(() => ({
     'ep-radio--checked': modelValue.value === props.value,
     'ep-radio--disabled': props.disabled,
   }))
 </script>
+
+<template>
+  <label
+    :for="id"
+    :class="['ep-radio', classes]"
+  >
+    <input
+      :id="id"
+      v-model="modelValue"
+      type="radio"
+      :name
+      :value
+      :disabled
+      :required
+    >
+    <span class="ep-radio__dot" />
+    <slot>
+      {{ props.label }}
+    </slot>
+  </label>
+</template>
 
 ```
 
@@ -143,7 +143,7 @@ This component does not use events.
 
   &--disabled {
     color: var(--text-color--disabled);
-    cursor: default;
+    pointer-events: none;
 
     .ep-radio__dot {
       border-color: var(--ep-radio-disabled-border-color);

@@ -33,44 +33,6 @@
 ## Component Code
 
 ```vue
-<template>
-  <ep-input-styler v-bind="stylerProps">
-    <template #icon-left>
-      <!-- @slot Optional icon displayed on the left side of the select -->
-      <slot name="icon-left" />
-    </template>
-    <select
-      :id="computedId"
-      v-model="modelValue"
-      :class="['ep-select', selectClasses]"
-      :disabled="disabled"
-      :autofocus="autofocus"
-      :required="required"
-      @blur="onBlur"
-      @focus="onFocus"
-      @change="onChange"
-    >
-      <option
-        disabled
-        value=""
-      >
-        {{ placeholder }}
-      </option>
-      <option
-        v-for="option in options"
-        :key="option.value"
-        :value="option.value"
-        :disabled="option.disabled"
-      >
-        {{ option.label }}
-      </option>
-    </select>
-    <template #icon-right>
-      <ArrowDown01 />
-    </template>
-  </ep-input-styler>
-</template>
-
 <script setup>
   import ArrowDown01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowDown01'
   import { computed, ref, useId } from 'vue'
@@ -163,6 +125,45 @@
   const onFocus = () => emit('focus')
 </script>
 
+<template>
+  <ep-input-styler v-bind="stylerProps">
+    <template #icon-left>
+      <!-- @slot Optional icon displayed on the left side of the select -->
+      <slot name="icon-left" />
+    </template>
+    <select
+      :id="computedId"
+      v-model="modelValue"
+      :class="['ep-select', selectClasses]"
+      :disabled="disabled"
+      :autofocus="autofocus"
+      :required="required"
+      @blur="onBlur"
+      @focus="onFocus"
+      @change="onChange"
+    >
+      <option
+        v-if="placeholder"
+        disabled
+        value=""
+      >
+        {{ placeholder }}
+      </option>
+      <option
+        v-for="option in options"
+        :key="option.value"
+        :value="option.value"
+        :disabled="option.disabled"
+      >
+        {{ option.label }}
+      </option>
+    </select>
+    <template #icon-right>
+      <ArrowDown01 />
+    </template>
+  </ep-input-styler>
+</template>
+
 ```
 
 ## Styles (SCSS)
@@ -221,7 +222,6 @@
   &--disabled {
     border-color: var(--border-color--disabled);
     color: var(--text-color--disabled);
-    cursor: not-allowed;
     pointer-events: none;
   }
 }

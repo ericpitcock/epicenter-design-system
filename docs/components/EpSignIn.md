@@ -10,6 +10,71 @@ This component does not use props, events, slots.
 ## Component Code
 
 ```vue
+<script setup>
+  import { computed, ref } from 'vue'
+
+  import EpButton from '../button/EpButton.vue'
+  import EpContainer from '../container/EpContainer.vue'
+  import EpInput from '../input/EpInput.vue'
+  import EpLoadingState from '../loading-state/EpLoadingState.vue'
+  import EpicenterLogo from '../logo/EpicenterLogo.vue'
+
+  const email = ref('')
+  const password = ref('')
+  const state = ref('signin')
+  const loadingMessages = ref([
+    {
+      icon: 'oval',
+      message: 'Signing in…'
+    }
+  ])
+
+  const buttonLabel = computed(() => {
+    return state.value === 'signin' ? 'Sign in' : 'Send reset email'
+  })
+
+  const footerText = computed(() => {
+    switch (state.value) {
+      case 'signin':
+        return 'Reset your password'
+      case 'loading':
+        return 'Signing in…'
+      case 'message':
+        return '< Back to Sign In'
+      case 'reset':
+        return '< Back to Sign In'
+      default:
+        return ''
+    }
+  })
+
+  const signin = () => {
+    console.log('signin')
+  }
+
+  const onButtonClick = () => {
+    if (state.value === 'signin') {
+      console.log('signin')
+      state.value = 'loading'
+      setTimeout(() => {
+        state.value = 'signin'
+      }, 2000)
+    } else {
+      console.log('reset')
+      state.value = 'message'
+    }
+  }
+
+  const onFooterClick = () => {
+    state.value = state.value === 'signin' ? 'reset' : 'signin'
+  }
+
+  // const validateEmail = (email) => {
+  //   const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+  //   return emailRegex.test(email)
+  // }
+</script>
+
 <template>
   <div class="ep-sign-in">
     <ep-container
@@ -88,71 +153,6 @@ This component does not use props, events, slots.
     </ep-container>
   </div>
 </template>
-
-<script setup>
-  import { computed, ref } from 'vue'
-
-  import EpButton from '../button/EpButton.vue'
-  import EpContainer from '../container/EpContainer.vue'
-  import EpInput from '../input/EpInput.vue'
-  import EpLoadingState from '../loading-state/EpLoadingState.vue'
-  import EpicenterLogo from '../logo/EpicenterLogo.vue'
-
-  const email = ref('')
-  const password = ref('')
-  const state = ref('signin')
-  const loadingMessages = ref([
-    {
-      icon: 'oval',
-      message: 'Signing in…'
-    }
-  ])
-
-  const buttonLabel = computed(() => {
-    return state.value === 'signin' ? 'Sign in' : 'Send reset email'
-  })
-
-  const footerText = computed(() => {
-    switch (state.value) {
-      case 'signin':
-        return 'Reset your password'
-      case 'loading':
-        return 'Signing in…'
-      case 'message':
-        return '< Back to Sign In'
-      case 'reset':
-        return '< Back to Sign In'
-      default:
-        return ''
-    }
-  })
-
-  const signin = () => {
-    console.log('signin')
-  }
-
-  const onButtonClick = () => {
-    if (state.value === 'signin') {
-      console.log('signin')
-      state.value = 'loading'
-      setTimeout(() => {
-        state.value = 'signin'
-      }, 2000)
-    } else {
-      console.log('reset')
-      state.value = 'message'
-    }
-  }
-
-  const onFooterClick = () => {
-    state.value = state.value === 'signin' ? 'reset' : 'signin'
-  }
-
-  // const validateEmail = (email) => {
-  //   const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-  //   return emailRegex.test(email)
-  // }
-</script>
 
 <style lang="scss" scoped>
   .ep-sign-in {

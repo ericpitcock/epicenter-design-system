@@ -2,10 +2,6 @@
   "text": "Components",
   "items": [
     {
-      "text": "EpActionBar",
-      "link": "/components/EpActionBar"
-    },
-    {
       "text": "EpAsyncButton",
       "link": "/components/EpAsyncButton"
     },
@@ -28,10 +24,6 @@
     {
       "text": "EpBrowserFrame",
       "link": "/components/EpBrowserFrame"
-    },
-    {
-      "text": "EpButtonGroup",
-      "link": "/components/EpButtonGroup"
     },
     {
       "text": "EpButton",
@@ -88,10 +80,6 @@
     {
       "text": "EpFlex",
       "link": "/components/EpFlex"
-    },
-    {
-      "text": "EpFlexContainer",
-      "link": "/components/EpFlexContainer"
     },
     {
       "text": "EpFooter",
@@ -186,16 +174,8 @@
       "link": "/components/EpSignIn"
     },
     {
-      "text": "EpSplitButton",
-      "link": "/components/EpSplitButton"
-    },
-    {
       "text": "EpStatusIndicator",
       "link": "/components/EpStatusIndicator"
-    },
-    {
-      "text": "EpCheckboxFilter",
-      "link": "/components/EpCheckboxFilter"
     },
     {
       "text": "EpDatePickerFilter",

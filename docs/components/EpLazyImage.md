@@ -27,28 +27,6 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<template>
-  <div
-    ref="imageEl"
-    :class="['ep-image', { 'ep-image--rounded': rounded, 'ep-image--loading': !isLoaded }]"
-  >
-    <img
-      v-if="isLoaded"
-      :src="src"
-      :alt="alt"
-      :width="width"
-      :height="height"
-      :class="['ep-image__img', className]"
-      :style="{ aspectRatio: aspectRatio, objectFit: objectFit }"
-    >
-    <div
-      v-else
-      class="ep-image__placeholder"
-      :style="placeholderStyle"
-    />
-  </div>
-</template>
-
 <script setup>
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
@@ -200,6 +178,28 @@ This component does not use events, slots.
     }
   })
 </script>
+
+<template>
+  <div
+    ref="imageEl"
+    :class="['ep-image', { 'ep-image--rounded': rounded, 'ep-image--loading': !isLoaded }]"
+  >
+    <img
+      v-if="isLoaded"
+      :src="src"
+      :alt="alt"
+      :width="width"
+      :height="height"
+      :class="['ep-image__img', className]"
+      :style="{ aspectRatio: aspectRatio, objectFit: objectFit }"
+    >
+    <div
+      v-else
+      class="ep-image__placeholder"
+      :style="placeholderStyle"
+    />
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .ep-image {

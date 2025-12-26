@@ -21,6 +21,28 @@ This component does not use slots.
 ## Component Code
 
 ```vue
+<script setup>
+  import EpCheckbox from '../checkbox/EpCheckbox.vue'
+  import EpFlex from '../flexbox/EpFlex.vue'
+
+  const props = defineProps({
+    filters: {
+      type: Object,
+      required: true
+    },
+    sectionLabels: {
+      type: Boolean,
+      default: true
+    }
+  })
+
+  const emit = defineEmits(['update:filters'])
+
+  const updateCheckbox = (category, label, checked) => {
+    emit('update:filters', { category, label, checked })
+  }
+</script>
+
 <template>
   <div class="ep-table-checkbox-filters">
     <ep-flex class="flex-col gap-30">
@@ -46,35 +68,6 @@ This component does not use slots.
     </ep-flex>
   </div>
 </template>
-
-<script>
-  import EpCheckbox from '../checkbox/EpCheckbox.vue'
-  import EpFlex from '../flexbox/EpFlex.vue'
-
-  export default {
-    name: 'EpTableCheckboxFilters',
-    components: {
-      EpFlex,
-      EpCheckbox
-    },
-    props: {
-      filters: {
-        type: Object,
-        required: true
-      },
-      sectionLabels: {
-        type: Boolean,
-        default: true
-      }
-    },
-    emits: ['update:filters'],
-    methods: {
-      updateCheckbox(category, label, checked) {
-        this.$emit('update:filters', { category, label, checked })
-      }
-    }
-  }
-</script>
 
 ```
 

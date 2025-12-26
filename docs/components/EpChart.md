@@ -44,13 +44,6 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<template>
-  <div
-    :id="chartId"
-    :style="[{ height: `${height}px` }, chartColors]"
-  />
-</template>
-
 <script setup>
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
@@ -129,5 +122,12 @@ This component does not use events, slots.
     }
   })
 </script>
+
+<template>
+  <div
+    :id="chartId"
+    :style="[{ height: `${height}px` }, chartColors]"
+  />
+</template>
 
 ```

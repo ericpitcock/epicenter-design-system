@@ -2,35 +2,6 @@
 
 
 
-::: warning
-This component needs to be updated to use CSS custom properties instead of props.
-:::
-    
-
-## Props
-| Name | Description | Type | Default |
-|------|-------------|------|---------|
-| `width` | The width of the footer. | `string` | `'100%'` |
-| `height` | The height of the footer. | `string` | `'5.1rem'` |
-| `padding` | The padding of the footer. | `string` | `'0'` |
-| `margin` | The margin of the footer. | `string` | `'0'` |
-| `backgroundColor` | The background color of the footer. | `string` | `'var(--interface-surface)'` |
-| `borderRadius` | The border radius of the footer. | `string` | `'var(--border-radius--large)'` |
-| `borderWidth` | The border width of the footer. | `string` | `'0.1rem'` |
-| `borderStyle` | The border style of the footer. | `string` | `'solid'` |
-| `borderColor` | The border color of the footer. | `string` | `'var(--border-color)'` |
-| `overflow` | The overflow behavior of the footer. | `string` | `'hidden'` |
-| `itemGap` | The gap between items in the footer. | `string` | `'3rem'` |
-| `leftFlex` | The flex value for the left section. | `string` | `'1'` |
-| `leftGap` | The gap between items in the left section. | `string` | `'3rem'` |
-| `leftJustify` | The justify-content value for the left section. | `string` | `'flex-start'` |
-| `centerFlex` | The flex value for the center section. | `string` | `'1'` |
-| `centerGap` | The gap between items in the center section. | `string` | `'3rem'` |
-| `centerJustify` | The justify-content value for the center section. | `string` | `'center'` |
-| `rightFlex` | The flex value for the right section. | `string` | `'1'` |
-| `rightGap` | The gap between items in the right section. | `string` | `'3rem'` |
-| `rightJustify` | The justify-content value for the right section. | `string` | `'flex-end'` |
-
 ## Slots
 | Name | Description |
 |------|-------------|
@@ -40,25 +11,21 @@ This component needs to be updated to use CSS custom properties instead of props
 
 
 ::: info
-This component does not use events.
+This component does not use props, events.
 :::
 
 ## Component Code
 
 ```vue
+<script setup>
+</script>
+
 <template>
-  <div
-    class="ep-footer"
-    :style="containerStyles"
-  >
-    <div
-      class="ep-footer__content"
-      :style="contentStyles"
-    >
+  <div class="ep-footer">
+    <div class="ep-footer__content">
       <div
         v-if="$slots.left"
         class="ep-footer__content__left"
-        :style="getStyles('left')"
       >
         <!-- @slot Content to display on the left side of the footer -->
         <slot name="left" />
@@ -66,7 +33,6 @@ This component does not use events.
       <div
         v-if="$slots.center"
         class="ep-footer__content__center"
-        :style="getStyles('center')"
       >
         <!-- @slot Content to display in the center of the footer -->
         <slot name="center" />
@@ -74,7 +40,6 @@ This component does not use events.
       <div
         v-if="$slots.right"
         class="ep-footer__content__right"
-        :style="getStyles('right')"
       >
         <!-- @slot Content to display on the right side of the footer -->
         <slot name="right" />
@@ -83,218 +48,58 @@ This component does not use events.
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'EpFooter',
-    props: {
-      /**
-       * The width of the footer.
-       */
-      width: {
-        type: String,
-        default: '100%'
-      },
-      /**
-       * The height of the footer.
-       */
-      height: {
-        type: String,
-        default: '5.1rem'
-      },
-      /**
-       * The padding of the footer.
-       */
-      padding: {
-        type: String,
-        default: '0'
-      },
-      /**
-       * The margin of the footer.
-       */
-      margin: {
-        type: String,
-        default: '0'
-      },
-      /**
-       * The background color of the footer.
-       */
-      backgroundColor: {
-        type: String,
-        default: 'var(--interface-surface)'
-      },
-      /**
-       * The border radius of the footer.
-       */
-      borderRadius: {
-        type: String,
-        default: 'var(--border-radius--large)'
-      },
-      /**
-       * The border width of the footer.
-       */
-      borderWidth: {
-        type: String,
-        default: '0.1rem'
-      },
-      /**
-       * The border style of the footer.
-       */
-      borderStyle: {
-        type: String,
-        default: 'solid'
-      },
-      /**
-       * The border color of the footer.
-       */
-      borderColor: {
-        type: String,
-        default: 'var(--border-color)'
-      },
-      /**
-       * The overflow behavior of the footer.
-       */
-      overflow: {
-        type: String,
-        default: 'hidden'
-      },
-      /**
-       * The gap between items in the footer.
-       */
-      itemGap: {
-        type: String,
-        default: '3rem'
-      },
-      /**
-       * The flex value for the left section.
-       */
-      leftFlex: {
-        type: String,
-        default: '1'
-      },
-      /**
-       * The gap between items in the left section.
-       */
-      leftGap: {
-        type: String,
-        default: '3rem'
-      },
-      /**
-       * The justify-content value for the left section.
-       */
-      leftJustify: {
-        type: String,
-        default: 'flex-start'
-      },
-      /**
-       * The flex value for the center section.
-       */
-      centerFlex: {
-        type: String,
-        default: '1'
-      },
-      /**
-       * The gap between items in the center section.
-       */
-      centerGap: {
-        type: String,
-        default: '3rem'
-      },
-      /**
-       * The justify-content value for the center section.
-       */
-      centerJustify: {
-        type: String,
-        default: 'center'
-      },
-      /**
-       * The flex value for the right section.
-       */
-      rightFlex: {
-        type: String,
-        default: '1'
-      },
-      /**
-       * The gap between items in the right section.
-       */
-      rightGap: {
-        type: String,
-        default: '3rem'
-      },
-      /**
-       * The justify-content value for the right section.
-       */
-      rightJustify: {
-        type: String,
-        default: 'flex-end'
-      },
-    },
-    computed: {
-      // footerStyles() {
-      //   return {
-      //     height: this.height,
-      //     padding: this.padding,
-      //     margin: this.margin,
-      //     backgroundColor: this.backgroundColor,
-      //     borderTop: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`
-      //   }
-      // }
-      containerStyles() {
-        return {
-          width: this.width,
-          height: this.height,
-          padding: this.padding,
-          backgroundColor: this.backgroundColor,
-          borderTop: `${this.borderWidth} ${this.borderStyle} ${this.borderColor}`,
-        }
-      },
-      contentStyles() {
-        return {
-          gap: this.itemGap,
-        }
-      },
-      leftStyles() {
-        return {
-          flex: this.leftFlex,
-          gap: this.leftGap,
-          justifyContent: this.leftJustify,
-        }
-      },
-      centerStyles() {
-        return {
-          flex: this.centerFlex,
-          gap: this.centerGap,
-          justifyContent: this.centerJustify,
-        }
-      },
-      rightStyles() {
-        return {
-          flex: this.rightFlex,
-          gap: this.rightGap,
-          justifyContent: this.rightJustify,
-        }
-      }
-    },
-    methods: {
-      getStyles(slotName) {
-        return this[`${slotName}Styles`]
-      }
-    }
-  }
-</script>
-
 ```
 
 ## Styles (SCSS)
 
 ```scss
 .ep-footer {
-  width: 100%;
+  --ep-footer-container-position: relative;
+  --ep-footer-container-bottom: 0;
+  --ep-footer-container-width: 100%;
+  --ep-footer-container-height: 5.1rem;
+  --ep-footer-container-padding: 0;
+  --ep-footer-container-margin: 0;
+  --ep-footer-container-bg-color: var(--interface-surface);
+  --ep-footer-container-border-radius: 0;
+  --ep-footer-container-border-width: 0.1rem;
+  --ep-footer-container-border-style: solid;
+  --ep-footer-container-border-color: var(--border-color);
+  --ep-footer-container-box-shadow: none;
+  --ep-footer-container-overflow: hidden;
+  --ep-footer-container-z-index: 1;
+  --ep-footer-content-gap: 3rem;
+  --ep-footer-left-flex: 1;
+  --ep-footer-left-gap: 3rem;
+  --ep-footer-left-justify-content: flex-start;
+  --ep-footer-left-padding: 0;
+  --ep-footer-center-flex: 1;
+  --ep-footer-center-gap: 3rem;
+  --ep-footer-center-justify-content: center;
+  --ep-footer-center-padding: 0;
+  --ep-footer-right-flex: 1;
+  --ep-footer-right-gap: 3rem;
+  --ep-footer-right-justify-content: flex-end;
+  --ep-footer-right-padding: 0;
+  position: var(--ep-footer-container-position);
+  z-index: var(--ep-footer-container-z-index);
+  bottom: var(--ep-footer-container-bottom);
+  overflow: var(--ep-footer-container-overflow);
+  width: var(--ep-footer-container-width);
+  height: var(--ep-footer-container-height);
+  padding: var(--ep-footer-container-padding);
+  border-radius: var(--ep-footer-container-border-radius);
+  border-top: var(--ep-footer-container-border-width) var(--ep-footer-container-border-style) var(--ep-footer-container-border-color);
+  margin: var(--ep-footer-container-margin);
+  background: var(--ep-footer-container-bg-color);
+  box-shadow: var(--ep-footer-container-box-shadow);
 
   &__content {
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: space-between;
+    gap: var(--ep-footer-content-gap);
 
     &__left,
     &__center,
@@ -305,15 +110,24 @@ This component does not use events.
     }
 
     &__left {
-      justify-content: flex-start;
+      flex: var(--ep-footer-left-flex);
+      justify-content: var(--ep-footer-left-justify-content);
+      padding: var(--ep-footer-left-padding);
+      gap: var(--ep-footer-left-gap);
     }
 
     &__center {
-      justify-content: center;
+      flex: var(--ep-footer-center-flex);
+      justify-content: var(--ep-footer-center-justify-content);
+      padding: var(--ep-footer-center-padding);
+      gap: var(--ep-footer-center-gap);
     }
 
     &__right {
-      justify-content: flex-end;
+      flex: var(--ep-footer-right-flex);
+      justify-content: var(--ep-footer-right-justify-content);
+      padding: var(--ep-footer-right-padding);
+      gap: var(--ep-footer-right-gap);
     }
   }
 }

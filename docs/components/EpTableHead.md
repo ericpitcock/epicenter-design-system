@@ -23,6 +23,33 @@ This component does not use events.
 ## Component Code
 
 ```vue
+<script setup>
+  const props = defineProps({
+    /**
+     * Array of column configuration objects defining table structure.
+     */
+    columns: {
+      type: Array,
+      required: true
+    },
+    /**
+     * Array of width values for each column cell.
+     */
+    cellWidths: {
+      type: Array,
+      default: () => []
+    },
+    /**
+     * If true, enables fixed header behavior.
+     */
+    fixedHeader: Boolean,
+    /**
+     * If true, shows an additional column for the actions menu.
+     */
+    showActionsMenu: Boolean,
+  })
+</script>
+
 <template>
   <thead ref="tableHeadd">
     <tr>
@@ -58,31 +85,4 @@ This component does not use events.
     </tr>
   </thead>
 </template>
-
-<script setup>
-  const props = defineProps({
-    /**
-     * Array of column configuration objects defining table structure.
-     */
-    columns: {
-      type: Array,
-      required: true
-    },
-    /**
-     * Array of width values for each column cell.
-     */
-    cellWidths: {
-      type: Array,
-      default: () => []
-    },
-    /**
-     * If true, enables fixed header behavior.
-     */
-    fixedHeader: Boolean,
-    /**
-     * If true, shows an additional column for the actions menu.
-     */
-    showActionsMenu: Boolean,
-  })
-</script>
 ```

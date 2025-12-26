@@ -24,19 +24,6 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<template>
-  <th
-    :style="cellWidths[columnIndex]"
-    @click="emit('sort', column.key)"
-  >
-    <div :class="headerClass">
-      {{ column.label }}
-      <ArrowUp01 v-if="isSorted && sortOrder === 'asc'" />
-      <ArrowDown01 v-if="isSorted && sortOrder === 'desc'" />
-    </div>
-  </th>
-</template>
-
 <script setup>
   import ArrowDown01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowDown01'
   import ArrowUp01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowUp01'
@@ -78,6 +65,19 @@ This component does not use slots.
     return props.column.sortable && props.sortColumn === props.column.key
   })
 </script>
+
+<template>
+  <th
+    :style="cellWidths[columnIndex]"
+    @click="emit('sort', column.key)"
+  >
+    <div :class="headerClass">
+      {{ column.label }}
+      <ArrowUp01 v-if="isSorted && sortOrder === 'asc'" />
+      <ArrowDown01 v-if="isSorted && sortOrder === 'desc'" />
+    </div>
+  </th>
+</template>
 ```
 
 ## Styles (SCSS)

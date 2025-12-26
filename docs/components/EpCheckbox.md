@@ -80,35 +80,8 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<template>
-  <label
-    :for="id"
-    :class="['ep-checkbox', classes]"
-  >
-    <input
-      :id="id"
-      v-model="modelValue"
-      type="checkbox"
-      :name
-      :value
-      :checked
-      :disabled
-      :indeterminate
-      :required
-    >
-    <slot>
-      {{ props.label }}
-    </slot>
-  </label>
-</template>
-
 <script setup>
   import { computed } from 'vue'
-
-  const modelValue = defineModel({
-    type: Boolean,
-    required: true
-  })
 
   const props = defineProps({
     /**
@@ -169,6 +142,11 @@ This component does not use events.
     },
   })
 
+  const modelValue = defineModel({
+    type: Boolean,
+    required: true
+  })
+
   const classes = computed(() => {
     return {
       'ep-checkbox--checked': modelValue.value,
@@ -177,6 +155,28 @@ This component does not use events.
     }
   })
 </script>
+
+<template>
+  <label
+    :for="id"
+    :class="['ep-checkbox', classes]"
+  >
+    <input
+      :id="id"
+      v-model="modelValue"
+      type="checkbox"
+      :name
+      :value
+      :checked
+      :disabled
+      :indeterminate
+      :required
+    >
+    <slot>
+      {{ props.label }}
+    </slot>
+  </label>
+</template>
 
 ```
 
@@ -204,7 +204,7 @@ This component does not use events.
 
   &--disabled {
     color: var(--text-color--disabled);
-    cursor: default;
+    pointer-events: none;
   }
 
   input {

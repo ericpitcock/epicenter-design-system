@@ -98,55 +98,6 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<template>
-  <button
-    ref="buttonEl"
-    class="ep-button"
-    :disabled="disabledDuringLoading && status === 'loading'"
-    :style="preserveWidth ? { width: buttonWidth } : undefined"
-    :aria-busy="status === 'loading' ? 'true' : 'false'"
-    @click="onClick"
-  >
-    <transition
-      name="fade"
-      mode="out-in"
-    >
-      <span
-        :key="status"
-        :aria-live="status === 'loading' ? 'polite' : 'off'"
-      >
-        <template v-if="status === 'loading'">
-          <template v-if="loadingIndicator === 'text'">
-            {{ loadingText }}
-          </template>
-          <template v-else>
-            <svg
-              class="ep-spinner"
-              viewBox="0 0 50 50"
-              role="img"
-              aria-hidden="true"
-            >
-              <circle
-                cx="25"
-                cy="25"
-                r="20"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="4"
-                stroke-linecap="round"
-              />
-            </svg>
-            <span class="sr-only">{{ loadingText }}</span>
-          </template>
-        </template>
-        <template v-else>
-          {{ currentText }}
-        </template>
-      </span>
-    </transition>
-  </button>
-</template>
-
 <script setup>
   import { computed, nextTick, onMounted, ref, watch } from 'vue'
 
@@ -252,6 +203,55 @@ This component does not use slots.
     () => updateWidth()
   )
 </script>
+
+<template>
+  <button
+    ref="buttonEl"
+    class="ep-button"
+    :disabled="disabledDuringLoading && status === 'loading'"
+    :style="preserveWidth ? { width: buttonWidth } : undefined"
+    :aria-busy="status === 'loading' ? 'true' : 'false'"
+    @click="onClick"
+  >
+    <transition
+      name="fade"
+      mode="out-in"
+    >
+      <span
+        :key="status"
+        :aria-live="status === 'loading' ? 'polite' : 'off'"
+      >
+        <template v-if="status === 'loading'">
+          <template v-if="loadingIndicator === 'text'">
+            {{ loadingText }}
+          </template>
+          <template v-else>
+            <svg
+              class="ep-spinner"
+              viewBox="0 0 50 50"
+              role="img"
+              aria-hidden="true"
+            >
+              <circle
+                cx="25"
+                cy="25"
+                r="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="4"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span class="sr-only">{{ loadingText }}</span>
+          </template>
+        </template>
+        <template v-else>
+          {{ currentText }}
+        </template>
+      </span>
+    </transition>
+  </button>
+</template>
 
 <style scoped>
   .ep-button {

@@ -1,4 +1,3 @@
-import EpActionBar from './action-bar/EpActionBar.vue'
 import EpAsyncButton from './async-button/EpAsyncButton.vue'
 import EpBadge from './badge/EpBadge.vue'
 import EpBanner from './banner/EpBanner.vue'
@@ -6,7 +5,6 @@ import EpBasicTable from './basic-table/EpBasicTable.vue'
 import EpBreadcrumbs from './breadcrumbs/EpBreadcrumbs.vue'
 import EpBrowserFrame from './browser-frame/EpBrowserFrame.vue'
 import EpButton from './button/EpButton.vue'
-import EpButtonGroup from './button-group/EpButtonGroup.vue'
 import EpCarousel from './carousel/EpCarousel.vue'
 import EpChart from './charts/EpChart.vue'
 import EpDonutChart from './charts/EpDonutChart.vue'
@@ -20,7 +18,6 @@ import EpEmptyState from './empty-state/EpEmptyState.vue'
 import EpEnrichmentDropdown from './enrichment-dropdown/EpEnrichmentDropdown.vue'
 import EpFieldset from './fieldset/EpFieldset.vue'
 import EpFlex from './flexbox/EpFlex.vue'
-import EpFlexContainer from './flexbox/EpFlexContainer.vue'
 import EpFooter from './footer/EpFooter.vue'
 import EpHeader from './header/EpHeader.vue'
 import EpImage from './image/EpImage.vue'
@@ -44,7 +41,6 @@ import EpMultiSearch from './search/EpMultiSearch.vue'
 import EpSearchTypeahead from './search/EpSearchTypeahead.vue'
 import EpSelect from './select/EpSelect.vue'
 import EpSignIn from './sign-in/EpSignIn.vue'
-import EpSplitButton from './split-button/EpSplitButton.vue'
 import EpStatusIndicator from './status-indicator/EpStatusIndicator.vue'
 import EpDatePickerFilter from './table/EpDatePickerFilter.vue'
 import EpRangeInputFilter from './table/EpRangeInputFilter.vue'
@@ -64,7 +60,6 @@ import EpToggleButton from './toggle-button/EpToggleButton.vue'
 import EpTooltip from './tooltip/EpTooltip.vue'
 
 export {
-  EpActionBar,
   EpAsyncButton,
   EpBadge,
   EpBanner,
@@ -72,7 +67,6 @@ export {
   EpBreadcrumbs,
   EpBrowserFrame,
   EpButton,
-  EpButtonGroup,
   EpCarousel,
   EpChart,
   EpDonutChart,
@@ -86,7 +80,6 @@ export {
   EpEnrichmentDropdown,
   EpFieldset,
   EpFlex,
-  EpFlexContainer,
   EpFooter,
   EpHeader,
   EpImage,
@@ -110,7 +103,6 @@ export {
   EpSearchTypeahead,
   EpSelect,
   EpSignIn,
-  EpSplitButton,
   EpStatusIndicator,
   EpDatePickerFilter,
   EpRangeInputFilter,
@@ -131,7 +123,6 @@ export {
 }
 
 export default {
-  EpActionBar,
   EpAsyncButton,
   EpBadge,
   EpBanner,
@@ -139,7 +130,6 @@ export default {
   EpBreadcrumbs,
   EpBrowserFrame,
   EpButton,
-  EpButtonGroup,
   EpCarousel,
   EpChart,
   EpDonutChart,
@@ -153,7 +143,6 @@ export default {
   EpEnrichmentDropdown,
   EpFieldset,
   EpFlex,
-  EpFlexContainer,
   EpFooter,
   EpHeader,
   EpImage,
@@ -177,7 +166,6 @@ export default {
   EpSearchTypeahead,
   EpSelect,
   EpSignIn,
-  EpSplitButton,
   EpStatusIndicator,
   EpDatePickerFilter,
   EpRangeInputFilter,

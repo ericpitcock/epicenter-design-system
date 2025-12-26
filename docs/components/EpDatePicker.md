@@ -54,20 +54,6 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<template>
-  <div class="ep-date-picker">
-    <ep-input
-      v-bind="computedInputProps"
-      ref="datePickerInput"
-      v-model="value"
-    >
-      <template #icon-left>
-        <Calendar01 />
-      </template>
-    </ep-input>
-  </div>
-</template>
-
 <script setup>
   import Calendar01 from '@ericpitcock/epicenter-icons/epicenter-icons/Calendar01'
   import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
@@ -189,6 +175,20 @@ This component does not use slots.
     }
   })
 </script>
+
+<template>
+  <div class="ep-date-picker">
+    <ep-input
+      v-bind="computedInputProps"
+      ref="datePickerInput"
+      v-model="value"
+    >
+      <template #icon-left>
+        <Calendar01 />
+      </template>
+    </ep-input>
+  </div>
+</template>
 ```
 
 ## Styles (SCSS)
