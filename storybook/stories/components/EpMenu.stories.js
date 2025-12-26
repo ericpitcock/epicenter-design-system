@@ -52,8 +52,7 @@ export const Menu = args => ({
         label: 'Dashboard',
         iconLeft: Dashboard,
         iconLeftStyle: { '--ep-icon-stroke-width': 1 },
-        to: '/',
-        onClick: () => console.log('clicked Dashboard')
+        to: '/'
       },
       { type: 'divider' },
       { type: 'section', label: 'Actions' },
@@ -63,14 +62,12 @@ export const Menu = args => ({
         iconLeft: GoogleMaps,
         iconRight: ArrowUpRight,
         iconRightStyle: { '--ep-icon-height': '1.2rem', '--ep-icon-stroke-width': 1.5 },
-        href: 'https://www.google.com/maps',
-        onClick: () => console.log('clicked Google Maps')
+        href: 'https://www.google.com/maps'
       },
       {
         type: 'item',
         label: 'Track Event',
-        iconLeft: Radar01,
-        onClick: () => console.log('clicked Track Event')
+        iconLeft: Radar01
       },
       {
         type: 'item',
@@ -81,24 +78,20 @@ export const Menu = args => ({
         submenu: [
           {
             type: 'item',
-            label: 'Settings',
-            onClick: () => console.log('clicked Settings')
+            label: 'Settings'
           },
           {
             type: 'item',
-            label: 'Preferences',
-            onClick: () => console.log('clicked Preferences')
+            label: 'Preferences'
           },
           { type: 'divider' },
           {
             type: 'item',
-            label: 'Help Center',
-            onClick: () => console.log('clicked Help Center')
+            label: 'Help Center'
           },
           {
             type: 'item',
-            label: 'About Us',
-            onClick: () => console.log('clicked About Us')
+            label: 'About Us'
           }
         ]
       },
@@ -106,36 +99,30 @@ export const Menu = args => ({
       { type: 'section', label: 'Shortcuts' },
       {
         type: 'item',
-        label: 'Recent Files',
-        onClick: () => console.log('clicked Recent Files')
+        label: 'Recent Files'
       },
       {
         type: 'item',
-        label: 'Saved Items',
-        onClick: () => console.log('clicked Saved Items')
+        label: 'Saved Items'
       },
       {
         type: 'item',
         label: 'Notifications',
-        disabled: true,
-        onClick: () => console.log('clicked Notifications')
+        disabled: true
       },
       { type: 'divider' },
       { type: 'section', label: 'Navigation' },
       {
         type: 'item',
-        label: 'Go Back',
-        onClick: () => console.log('clicked Go Back')
+        label: 'Go Back'
       },
       {
         type: 'item',
-        label: 'Next Step',
-        onClick: () => console.log('clicked Next Step')
+        label: 'Next Step'
       },
       {
         type: 'item',
-        label: 'Open Web Page',
-        onClick: () => console.log('clicked Open Web Page')
+        label: 'Open Web Page'
       },
       {
         type: 'item',
@@ -145,25 +132,26 @@ export const Menu = args => ({
         submenu: [
           {
             type: 'item',
-            label: 'Security',
-            onClick: () => console.log('clicked Security')
+            label: 'Security'
           },
           {
             type: 'item',
-            label: 'Privacy',
-            onClick: () => console.log('clicked Privacy')
+            label: 'Privacy'
           },
           {
             type: 'item',
             label: 'Developer Mode',
-            disabled: true,
-            onClick: () => console.log('clicked Developer Mode')
+            disabled: true
           }
         ]
       }
     ]
 
-    return { args, menuItems }
+    const onSelect = (item) => {
+      console.log('clicked:', item.label)
+    }
+
+    return { args, menuItems, onSelect }
   },
   template: `
     <ep-menu v-bind="args">
@@ -172,7 +160,7 @@ export const Menu = args => ({
           :type="item.type"
           :is-disabled="item.disabled"
           :disabled="item.disabled"
-          @select="item.onClick"
+          @select="() => onSelect(item)"
         >
           <ep-button
             v-if="item.type === 'item'"
@@ -200,7 +188,7 @@ export const Menu = args => ({
                   :type="subItem.type"
                   :is-disabled="subItem.disabled"
                   :disabled="subItem.disabled"
-                  @select="subItem.onClick"
+                  @select="() => onSelect(subItem)"
                 >
                   <ep-button
                     v-if="subItem.type === 'item'"

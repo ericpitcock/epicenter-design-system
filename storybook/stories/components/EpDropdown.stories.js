@@ -1,6 +1,6 @@
 import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
 import Coffee02 from '@ericpitcock/epicenter-icons/epicenter-icons/Coffee02'
-import { computed, ref, toRef } from 'vue'
+import { ref, toRef } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
@@ -28,23 +28,19 @@ const fakeDropdownItems = [
       {
         type: 'item',
         label: 'Whole Milk',
-        onClick: () => console.log('clicked Whole Milk')
       },
       {
         type: 'item',
         label: 'Oat Milk',
-        onClick: () => console.log('clicked Oat Milk')
       },
       {
         type: 'item',
         label: 'Almond Milk',
         disabled: true,
-        onClick: () => console.log('clicked Almond Milk')
       },
       {
         type: 'item',
         label: 'Soy Milk',
-        onClick: () => console.log('clicked Soy Milk')
       }
     ]
   },
@@ -140,16 +136,6 @@ export const Dropdown = args => ({
     Coffee02
   },
   setup() {
-    const openState = ref(false)
-
-    const buttonProps = computed(() => ({
-      size: args['buttonProps.size'],
-      label: 'Choose your coffee',
-      iconRight: { name: 'chevron-down' },
-      iconLeft: args['buttonProps.iconLeft'],
-      class: 'ep-button-var--primary'
-    }))
-
     const { iconLeftComponent, iconRightComponent } = useIcons(
       toRef(args, 'iconLeft'),
       toRef(args, 'iconRight'),
@@ -163,22 +149,22 @@ export const Dropdown = args => ({
 
     return {
       args,
-      buttonProps,
       dropdownRef,
       fakeDropdownItems,
       iconLeftComponent,
       iconRightComponent,
       onSelect,
-      openState
     }
   },
   template: `
-    <ep-button style="position: absolute; top: 10px; left: 10px;" @click="dropdownRef.openDropdown()">
+    <ep-button
+      style="position: absolute; top: 10px; left: 10px;"
+      @click="dropdownRef.openDropdown()"
+    >
       Open from outside
     </ep-button>
     <ep-dropdown
       ref="dropdownRef"
-      v-model:open="openState"
       v-bind="args"
     >
       <template #trigger="{ attrs, on }">
@@ -206,7 +192,10 @@ export const Dropdown = args => ({
       </template>
 
       <template #content="{ close }">
-        <ep-menu @escape="close" @tab="close" :size="args.size">
+        <ep-menu
+          @escape="close"
+          @tab="close"
+        >
           <template v-for="(item, index) in fakeDropdownItems" :key="index">
             <ep-menu-item
               :type="item.type"
@@ -229,13 +218,13 @@ export const Dropdown = args => ({
               <template v-else>{{ item.label }}</template>
               
               <template v-if="item.submenu" #submenu>
-                <ep-menu :size="args.size">
+                <ep-menu>
                   <template v-for="(subItem, subIndex) in item.submenu" :key="subIndex">
                     <ep-menu-item
                       :type="subItem.type"
                       :is-disabled="subItem.disabled"
                       :disabled="subItem.disabled"
-                      @select="() => { subItem.onClick?.(); close() }"
+                      @select="() => { onSelect(subItem); close() }"
                     >
                       <ep-button
                         v-if="subItem.type === 'item'"

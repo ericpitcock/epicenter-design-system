@@ -23,6 +23,7 @@
               :key="index"
               type="item"
               @mouseover="onHover(option)"
+              @focus="onHover(option)"
             >
               <ep-button class="ep-button--menu-item">
                 {{ option.label }}

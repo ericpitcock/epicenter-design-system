@@ -16,6 +16,7 @@
       @change="onChange"
     >
       <option
+        v-if="placeholder"
         disabled
         value=""
       >

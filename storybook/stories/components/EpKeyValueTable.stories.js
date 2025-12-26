@@ -92,7 +92,7 @@ export const KeyValueTable = (args) => ({
           :enrichment-data="getFakeEnrichmentResponse(key, value)"
         >
           <template #trigger="{ attrs, on }">
-            <span v-bind="attrs" v-on="on">{{ value }}</span>
+            <button v-bind="attrs" v-on="on">{{ value }}</button>
           </template>
         </ep-enrichment-dropdown>
       </template>
