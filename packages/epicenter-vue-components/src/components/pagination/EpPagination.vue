@@ -1,89 +1,3 @@
-<template>
-  <div class="ep-pagination">
-    <ep-flex class="justify-between gap-30">
-      <!-- @slot Content displayed on the left side of the pagination controls -->
-      <slot name="left">
-        <ep-flex
-          v-if="resultsPerPage !== null"
-          class="justify-end align-center gap-10"
-        >
-          <ep-select
-            v-model="localResultsPerPage"
-            select-id="resultsPerPage"
-            :options="resultsPerPageOptions"
-            placeholder=""
-            style="--ep-input-width: fit-content;"
-            @update:model-value="onResultsPerPageChange"
-          />
-        </ep-flex>
-      </slot>
-      <ep-flex class="align-center gap-10">
-        <ep-button
-          :disabled="currentPage === 1"
-          aria-label="Previous page"
-          :class="buttonClass"
-          @click="prevPage"
-        >
-          <!-- @slot Custom icon for the previous page button. Defaults to <ArrowLeft01 /> -->
-          <template #icon-left>
-            <slot name="icon-prev">
-              <ArrowLeft01 />
-            </slot>
-          </template>
-        </ep-button>
-        <template v-if="showPages">
-          <ep-button
-            aria-label="First page"
-            :class="[buttonClass, { 'ep-button--selected': currentPage === 1 }]"
-            @click="emit('pageChange', 1)"
-          >
-            1
-          </ep-button>
-          <span v-if="shouldShowStartEllipsis">...</span>
-          <ep-button
-            v-for="page in pageRange"
-            :key="page"
-            :aria-label="`Page ${page}`"
-            :class="[buttonClass, { 'ep-button--selected': currentPage === page }]"
-            @click="emit('pageChange', page)"
-          >
-            {{ page.toString() }}
-          </ep-button>
-          <span v-if="shouldShowEndEllipsis">...</span>
-          <ep-button
-            v-if="totalPages > 1"
-            aria-label="Last page"
-            :class="[buttonClass, { 'ep-button--selected': currentPage === totalPages }]"
-            @click="emit('pageChange', totalPages)"
-          >
-            {{ totalPages.toString() }}
-          </ep-button>
-        </template>
-        <template v-else>
-          <span class="ep-pagination-info">
-            Page {{ currentPage }} of {{ totalPages }}
-          </span>
-        </template>
-        <ep-button
-          aria-label="Next page"
-          :disabled="currentPage === totalPages"
-          :class="buttonClass"
-          @click="nextPage"
-        >
-          <template #icon-right>
-            <!-- @slot Custom icon for the next page button. Defaults to <ArrowRight01 /> -->
-            <slot name="icon-next">
-              <ArrowRight01 />
-            </slot>
-          </template>
-        </ep-button>
-      </ep-flex>
-      <!-- @slot Content displayed on the right side of the pagination controls -->
-      <slot name="right" />
-    </ep-flex>
-  </div>
-</template>
-
 <script setup>
   import ArrowLeft01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowLeft01'
   import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
@@ -199,3 +113,89 @@
     return [currentPage - 1, currentPage, currentPage + 1]
   })
 </script>
+
+<template>
+  <div class="ep-pagination">
+    <ep-flex class="justify-between gap-30">
+      <!-- @slot Content displayed on the left side of the pagination controls -->
+      <slot name="left">
+        <ep-flex
+          v-if="resultsPerPage !== null"
+          class="justify-end align-center gap-10"
+        >
+          <ep-select
+            v-model="localResultsPerPage"
+            select-id="resultsPerPage"
+            :options="resultsPerPageOptions"
+            placeholder=""
+            style="--ep-input-width: fit-content;"
+            @update:model-value="onResultsPerPageChange"
+          />
+        </ep-flex>
+      </slot>
+      <ep-flex class="align-center gap-10">
+        <ep-button
+          :disabled="currentPage === 1"
+          aria-label="Previous page"
+          :class="buttonClass"
+          @click="prevPage"
+        >
+          <!-- @slot Custom icon for the previous page button. Defaults to <ArrowLeft01 /> -->
+          <template #icon-left>
+            <slot name="icon-prev">
+              <ArrowLeft01 />
+            </slot>
+          </template>
+        </ep-button>
+        <template v-if="showPages">
+          <ep-button
+            aria-label="First page"
+            :class="[buttonClass, { 'ep-button--selected': currentPage === 1 }]"
+            @click="emit('pageChange', 1)"
+          >
+            1
+          </ep-button>
+          <span v-if="shouldShowStartEllipsis">...</span>
+          <ep-button
+            v-for="page in pageRange"
+            :key="page"
+            :aria-label="`Page ${page}`"
+            :class="[buttonClass, { 'ep-button--selected': currentPage === page }]"
+            @click="emit('pageChange', page)"
+          >
+            {{ page.toString() }}
+          </ep-button>
+          <span v-if="shouldShowEndEllipsis">...</span>
+          <ep-button
+            v-if="totalPages > 1"
+            aria-label="Last page"
+            :class="[buttonClass, { 'ep-button--selected': currentPage === totalPages }]"
+            @click="emit('pageChange', totalPages)"
+          >
+            {{ totalPages.toString() }}
+          </ep-button>
+        </template>
+        <template v-else>
+          <span class="ep-pagination-info">
+            Page {{ currentPage }} of {{ totalPages }}
+          </span>
+        </template>
+        <ep-button
+          aria-label="Next page"
+          :disabled="currentPage === totalPages"
+          :class="buttonClass"
+          @click="nextPage"
+        >
+          <template #icon-right>
+            <!-- @slot Custom icon for the next page button. Defaults to <ArrowRight01 /> -->
+            <slot name="icon-next">
+              <ArrowRight01 />
+            </slot>
+          </template>
+        </ep-button>
+      </ep-flex>
+      <!-- @slot Content displayed on the right side of the pagination controls -->
+      <slot name="right" />
+    </ep-flex>
+  </div>
+</template>

@@ -1,32 +1,5 @@
-<template>
-  <label
-    :for="id"
-    :class="['ep-checkbox', classes]"
-  >
-    <input
-      :id="id"
-      v-model="modelValue"
-      type="checkbox"
-      :name
-      :value
-      :checked
-      :disabled
-      :indeterminate
-      :required
-    >
-    <slot>
-      {{ props.label }}
-    </slot>
-  </label>
-</template>
-
 <script setup>
   import { computed } from 'vue'
-
-  const modelValue = defineModel({
-    type: Boolean,
-    required: true
-  })
 
   const props = defineProps({
     /**
@@ -87,6 +60,11 @@
     },
   })
 
+  const modelValue = defineModel({
+    type: Boolean,
+    required: true
+  })
+
   const classes = computed(() => {
     return {
       'ep-checkbox--checked': modelValue.value,
@@ -95,3 +73,25 @@
     }
   })
 </script>
+
+<template>
+  <label
+    :for="id"
+    :class="['ep-checkbox', classes]"
+  >
+    <input
+      :id="id"
+      v-model="modelValue"
+      type="checkbox"
+      :name
+      :value
+      :checked
+      :disabled
+      :indeterminate
+      :required
+    >
+    <slot>
+      {{ props.label }}
+    </slot>
+  </label>
+</template>

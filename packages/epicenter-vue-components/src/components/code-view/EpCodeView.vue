@@ -1,11 +1,3 @@
-<!-- eslint-disable vue/no-v-html -->
-<template>
-  <div
-    class="ep-code-view"
-    v-html="highlightedCode"
-  />
-</template>
-
 <script setup>
   import { codeToHtml } from 'shiki'
   import { onMounted, ref, watch } from 'vue'
@@ -68,6 +60,14 @@
     highlightCode()
   })
 </script>
+
+<!-- eslint-disable vue/no-v-html -->
+<template>
+  <div
+    class="ep-code-view"
+    v-html="highlightedCode"
+  />
+</template>
 
 <style lang="scss">
   .ep-code-view pre {

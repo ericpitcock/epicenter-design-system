@@ -1,40 +1,3 @@
-<template>
-  <ep-flex class="ep-key-value-table flex-col gap-10">
-    <template
-      v-for="section in processedData"
-      :key="section.name"
-    >
-      <h3
-        v-if="sectionHeaders"
-        class="text-style--section"
-      >
-        {{ section.name }}
-      </h3>
-      <table>
-        <tr
-          v-for="(value, key) in section.data"
-          :key="key"
-        >
-          <td
-            class="text--subtle"
-            :style="{ width: keyColumnWidth }"
-          >
-            {{ key }}
-          </td>
-          <td class="ep-flex gap-5">
-            <slot
-              name="value"
-              v-bind="{ key, value }"
-            >
-              {{ value }}
-            </slot>
-          </td>
-        </tr>
-      </table>
-    </template>
-  </ep-flex>
-</template>
-
 <script setup>
   import { computed } from 'vue'
 
@@ -79,3 +42,40 @@
     return `${maxKeyLength}ch`
   })
 </script>
+
+<template>
+  <ep-flex class="ep-key-value-table flex-col gap-10">
+    <template
+      v-for="section in processedData"
+      :key="section.name"
+    >
+      <h3
+        v-if="sectionHeaders"
+        class="text-style--section"
+      >
+        {{ section.name }}
+      </h3>
+      <table>
+        <tr
+          v-for="(value, key) in section.data"
+          :key="key"
+        >
+          <td
+            class="text--subtle"
+            :style="{ width: keyColumnWidth }"
+          >
+            {{ key }}
+          </td>
+          <td class="ep-flex gap-5">
+            <slot
+              name="value"
+              v-bind="{ key, value }"
+            >
+              {{ value }}
+            </slot>
+          </td>
+        </tr>
+      </table>
+    </template>
+  </ep-flex>
+</template>

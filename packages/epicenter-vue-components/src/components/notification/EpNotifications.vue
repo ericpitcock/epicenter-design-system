@@ -1,3 +1,38 @@
+<script setup>
+  import { computed } from 'vue'
+
+  import EpButton from '../button/EpButton.vue'
+  import EpContainer from '../container/EpContainer.vue'
+  import EpEmptyState from '../empty-state/EpEmptyState.vue'
+  import EpFlex from '../flexbox/EpFlex.vue'
+  import EpHeader from '../header/EpHeader.vue'
+  import EpNotification from '../notification/EpNotification.vue'
+
+  const props = defineProps({
+    emptyStateMessage: {
+      type: String,
+      default: 'You’re all caught up!'
+    },
+    notificationsTitle: {
+      type: String,
+      default: 'Notifications'
+    },
+    notifications: {
+      type: Array,
+      default: () => []
+    }
+  })
+
+  const emit = defineEmits([
+    'remove-notification',
+    'clear-notifications'
+  ])
+
+  const isNotificationsEmpty = computed(() => {
+    return props.notifications.length === 0
+  })
+</script>
+
 <template>
   <ep-container class="ep-container-default ep-container--sticky-header">
     <template #header>
@@ -34,38 +69,3 @@
     </template>
   </ep-container>
 </template>
-
-<script setup>
-  import { computed } from 'vue'
-
-  import EpButton from '../button/EpButton.vue'
-  import EpContainer from '../container/EpContainer.vue'
-  import EpEmptyState from '../empty-state/EpEmptyState.vue'
-  import EpFlex from '../flexbox/EpFlex.vue'
-  import EpHeader from '../header/EpHeader.vue'
-  import EpNotification from '../notification/EpNotification.vue'
-
-  const props = defineProps({
-    emptyStateMessage: {
-      type: String,
-      default: 'You’re all caught up!'
-    },
-    notificationsTitle: {
-      type: String,
-      default: 'Notifications'
-    },
-    notifications: {
-      type: Array,
-      default: () => []
-    }
-  })
-
-  const emit = defineEmits([
-    'remove-notification',
-    'clear-notifications'
-  ])
-
-  const isNotificationsEmpty = computed(() => {
-    return props.notifications.length === 0
-  })
-</script>

@@ -1,9 +1,3 @@
-<template>
-  <span>
-    {{ count }} {{ count === 1 ? singular : plural }}
-  </span>
-</template>
-
 <script setup>
   const props = defineProps({
     /**
@@ -29,3 +23,9 @@
     }
   })
 </script>
+
+<template>
+  <span>
+    {{ count }} {{ count === 1 ? singular : plural }}
+  </span>
+</template>

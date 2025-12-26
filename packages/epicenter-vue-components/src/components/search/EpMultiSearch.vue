@@ -1,50 +1,3 @@
-<template>
-  <div
-    :class="['ep-multi-search', classes]"
-    :style="inputStyles"
-  >
-    <div
-      v-if="icon"
-      class="ep-multi-search__icon"
-      :style="iconStyles"
-    >
-      <Search01 />
-    </div>
-    <div class="queries">
-      <div
-        v-for="(item, index) in query"
-        :key="index"
-        :class="['query', { 'query--operator': isOperator(item) }]"
-        @click="onQueryClose(item, index)"
-      >
-        <span class="query__text font-size--small">{{ item }}</span>
-        <Cancel01 />
-      </div>
-    </div>
-    <input
-      ref="input"
-      v-model="value"
-      type="text"
-      :placeholder="placeholderValue"
-      :disabled="disabled"
-      @input="onInput"
-      @focus="onFocus"
-      @blur="onBlur"
-      @keydown.enter="onEnter"
-      @keydown.delete="onDelete"
-      @keydown.esc="onEsc"
-    >
-    <div
-      v-if="clearable"
-      class="ep-multi-search__clear"
-      :style="iconStyles"
-      @click="onClear"
-    >
-      <Cancel01 />
-    </div>
-  </div>
-</template>
-
 <script setup>
   import Cancel01 from '@ericpitcock/epicenter-icons/epicenter-icons/Cancel01'
   import Search01 from '@ericpitcock/epicenter-icons/epicenter-icons/Search01'
@@ -216,6 +169,53 @@
     return { and: andQueries, or: orQueries }
   }
 </script>
+
+<template>
+  <div
+    :class="['ep-multi-search', classes]"
+    :style="inputStyles"
+  >
+    <div
+      v-if="icon"
+      class="ep-multi-search__icon"
+      :style="iconStyles"
+    >
+      <Search01 />
+    </div>
+    <div class="queries">
+      <div
+        v-for="(item, index) in query"
+        :key="index"
+        :class="['query', { 'query--operator': isOperator(item) }]"
+        @click="onQueryClose(item, index)"
+      >
+        <span class="query__text font-size--small">{{ item }}</span>
+        <Cancel01 />
+      </div>
+    </div>
+    <input
+      ref="input"
+      v-model="value"
+      type="text"
+      :placeholder="placeholderValue"
+      :disabled="disabled"
+      @input="onInput"
+      @focus="onFocus"
+      @blur="onBlur"
+      @keydown.enter="onEnter"
+      @keydown.delete="onDelete"
+      @keydown.esc="onEsc"
+    >
+    <div
+      v-if="clearable"
+      class="ep-multi-search__clear"
+      :style="iconStyles"
+      @click="onClear"
+    >
+      <Cancel01 />
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .ep-multi-search {

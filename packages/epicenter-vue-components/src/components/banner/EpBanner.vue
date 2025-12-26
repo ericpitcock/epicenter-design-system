@@ -1,3 +1,13 @@
+<script setup>
+  const emit = defineEmits([
+    /**
+     * Emitted when the banner is dismissed.
+     */
+    'dismissed'
+  ])
+  const dismissBanner = () => emit('dismissed')
+</script>
+
 <template>
   <div class="ep-banner">
     <div class="ep-banner__color-strip" />
@@ -30,13 +40,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-  const emit = defineEmits([
-    /**
-     * Emitted when the banner is dismissed.
-     */
-    'dismissed'
-  ])
-  const dismissBanner = () => emit('dismissed')
-</script>

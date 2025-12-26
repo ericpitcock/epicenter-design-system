@@ -1,32 +1,5 @@
-<template>
-  <button
-    :class="['ep-button ep-toggle-button', computedClasses]"
-    :aria-label="ariaLabel || label"
-    :disabled="disabled"
-    @click="onClick"
-  >
-    <span
-      v-if="icon"
-      class="ep-toggle-button__icon"
-    >
-      icon span
-    </span>
-    <span
-      v-if="label"
-      class="ep-toggle-button__label"
-    >
-      {{ label }}
-    </span>
-  </button>
-</template>
-
 <script setup>
   import { computed } from 'vue'
-
-  const model = defineModel({
-    type: Boolean,
-    default: false
-  })
 
   const props = defineProps({
     /**
@@ -68,6 +41,11 @@
     },
   })
 
+  const model = defineModel({
+    type: Boolean,
+    default: false
+  })
+
   function onClick() {
     if (props.disabled) return
 
@@ -80,3 +58,25 @@
     'ep-button--disabled': props.disabled,
   }))
 </script>
+
+<template>
+  <button
+    :class="['ep-button ep-toggle-button', computedClasses]"
+    :aria-label="ariaLabel || label"
+    :disabled="disabled"
+    @click="onClick"
+  >
+    <span
+      v-if="icon"
+      class="ep-toggle-button__icon"
+    >
+      icon span
+    </span>
+    <span
+      v-if="label"
+      class="ep-toggle-button__label"
+    >
+      {{ label }}
+    </span>
+  </button>
+</template>

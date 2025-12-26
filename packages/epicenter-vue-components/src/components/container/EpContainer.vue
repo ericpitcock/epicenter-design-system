@@ -1,3 +1,13 @@
+<script setup>
+  import { useTemplateRef } from 'vue'
+
+  const epContainer = useTemplateRef('epContainer')
+
+  defineExpose({
+    epContainer
+  })
+</script>
+
 <template>
   <div
     ref="epContainer"
@@ -23,13 +33,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-  import { useTemplateRef } from 'vue'
-
-  const epContainer = useTemplateRef('epContainer')
-
-  defineExpose({
-    epContainer
-  })
-</script>

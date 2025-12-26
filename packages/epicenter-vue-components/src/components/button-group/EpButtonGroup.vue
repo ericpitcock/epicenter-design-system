@@ -1,18 +1,3 @@
-<template>
-  <div class="ep-button-group">
-    <ep-button
-      v-for="(item, index) in items"
-      :key="item.label"
-      :size="size"
-      :disabled="item.disabled"
-      :class="{ [`${activeClass} ep-button-group--selected`]: index === activeButton && !item.disabled }"
-      @click="onClick(item, index)"
-    >
-      {{ item.label }}
-    </ep-button>
-  </div>
-</template>
-
 <script setup>
   import { ref } from 'vue'
 
@@ -60,3 +45,18 @@
     emit('click', { item, index })
   }
 </script>
+
+<template>
+  <div class="ep-button-group">
+    <ep-button
+      v-for="(item, index) in items"
+      :key="item.label"
+      :size="size"
+      :disabled="item.disabled"
+      :class="{ [`${activeClass} ep-button-group--selected`]: index === activeButton && !item.disabled }"
+      @click="onClick(item, index)"
+    >
+      {{ item.label }}
+    </ep-button>
+  </div>
+</template>

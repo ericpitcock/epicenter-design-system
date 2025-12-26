@@ -1,31 +1,5 @@
-<template>
-  <label
-    :for="id"
-    :class="['ep-radio', classes]"
-  >
-    <input
-      :id="id"
-      v-model="modelValue"
-      type="radio"
-      :name
-      :value
-      :disabled
-      :required
-    >
-    <span class="ep-radio__dot" />
-    <slot>
-      {{ props.label }}
-    </slot>
-  </label>
-</template>
-
 <script setup>
   import { computed } from 'vue'
-
-  const modelValue = defineModel({
-    type: String,
-    required: true
-  })
 
   const props = defineProps({
     /**
@@ -72,8 +46,34 @@
     },
   })
 
+  const modelValue = defineModel({
+    type: String,
+    required: true
+  })
+
   const classes = computed(() => ({
     'ep-radio--checked': modelValue.value === props.value,
     'ep-radio--disabled': props.disabled,
   }))
 </script>
+
+<template>
+  <label
+    :for="id"
+    :class="['ep-radio', classes]"
+  >
+    <input
+      :id="id"
+      v-model="modelValue"
+      type="radio"
+      :name
+      :value
+      :disabled
+      :required
+    >
+    <span class="ep-radio__dot" />
+    <slot>
+      {{ props.label }}
+    </slot>
+  </label>
+</template>

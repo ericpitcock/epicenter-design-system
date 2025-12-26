@@ -1,34 +1,3 @@
-<template>
-  <div
-    class="browser-frame"
-    :style="{ width: `${width}` }"
-  >
-    <ep-header>
-      <template #left>
-        <div class="window-buttons">
-          <div class="window-button window-button--close" />
-          <div class="window-button window-button--minimize" />
-          <div class="window-button window-button--maximize" />
-        </div>
-      </template>
-      <template #center>
-        <div class="search">
-          {{ url }}
-        </div>
-      </template>
-      <template #right>
-        <UserCircle02 />
-      </template>
-    </ep-header>
-    <div class="image-container">
-      <img
-        :src="imageSrc"
-        :alt="imageAlt"
-      >
-    </div>
-  </div>
-</template>
-
 <script setup>
   import UserCircle02 from '@ericpitcock/epicenter-icons/epicenter-icons/UserCircle02'
 
@@ -65,6 +34,37 @@
     }
   })
 </script>
+
+<template>
+  <div
+    class="browser-frame"
+    :style="{ width: `${width}` }"
+  >
+    <ep-header>
+      <template #left>
+        <div class="window-buttons">
+          <div class="window-button window-button--close" />
+          <div class="window-button window-button--minimize" />
+          <div class="window-button window-button--maximize" />
+        </div>
+      </template>
+      <template #center>
+        <div class="search">
+          {{ url }}
+        </div>
+      </template>
+      <template #right>
+        <UserCircle02 />
+      </template>
+    </ep-header>
+    <div class="image-container">
+      <img
+        :src="imageSrc"
+        :alt="imageAlt"
+      >
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .browser-frame {

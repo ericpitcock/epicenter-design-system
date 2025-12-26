@@ -1,66 +1,3 @@
-<template>
-  <div
-    ref="tableContainer"
-    class="ep-table-container"
-    @scroll="onScroll"
-  >
-    <table :class="['ep-table', classes]">
-      <!-- @slot Table header slot. Use this to define your table headers with columns and sorting. -->
-      <slot
-        name="thead"
-        v-bind="{ visibleColumns, showActionsMenu }"
-      />
-      <tbody ref="tableBody">
-        <tr
-          v-for="row in data"
-          :key="row.id"
-          @click="onRowClick(row)"
-        >
-          <template
-            v-for="column in visibleColumns"
-            :key="`body-${column.key}`"
-          >
-            <td>
-              <!-- @slot Custom cell content for a specific column. The slot name is dynamically generated as `cell-${column.key}`. -->
-              <slot
-                v-if="$slots[`cell-${column.key}`]"
-                :name="`cell-${column.key}`"
-                v-bind="{ row, column }"
-              />
-              <ep-table-cell
-                v-else
-                :row="row"
-                :column="column"
-              />
-            </td>
-          </template>
-          <td
-            v-if="showActionsMenu"
-            class="ep-table__actions-menu"
-          >
-            <!-- @slot Actions menu for each row. Receives the current row data. -->
-            <slot
-              name="actions-menu"
-              v-bind="{ row }"
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table
-      v-show="fixedHeader"
-      ref="tableFixed"
-      class="ep-table ep-table--fixed-header"
-    >
-      <!-- @slot Fixed header slot for when using fixed header mode. Syncs with the main table header. -->
-      <slot
-        name="thead-fixed"
-        v-bind="{ visibleColumns, showActionsMenu }"
-      />
-    </table>
-  </div>
-</template>
-
 <script setup>
   import { computed, useTemplateRef } from 'vue'
 
@@ -139,6 +76,8 @@
     },
   })
 
+  const emit = defineEmits(['row-click', 'container-scroll'])
+
   const visibleColumns = computed(() => {
     return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
   })
@@ -155,8 +94,6 @@
     }
   })
 
-  const emit = defineEmits(['row-click', 'container-scroll'])
-
   const onRowClick = (row) => {
     if (!props.selectable) return
     emit('row-click', row)
@@ -167,3 +104,66 @@
     emit('container-scroll', tableContainer.value.scrollLeft)
   }
 </script>
+
+<template>
+  <div
+    ref="tableContainer"
+    class="ep-table-container"
+    @scroll="onScroll"
+  >
+    <table :class="['ep-table', classes]">
+      <!-- @slot Table header slot. Use this to define your table headers with columns and sorting. -->
+      <slot
+        name="thead"
+        v-bind="{ visibleColumns, showActionsMenu }"
+      />
+      <tbody ref="tableBody">
+        <tr
+          v-for="row in data"
+          :key="row.id"
+          @click="onRowClick(row)"
+        >
+          <template
+            v-for="column in visibleColumns"
+            :key="`body-${column.key}`"
+          >
+            <td>
+              <!-- @slot Custom cell content for a specific column. The slot name is dynamically generated as `cell-${column.key}`. -->
+              <slot
+                v-if="$slots[`cell-${column.key}`]"
+                :name="`cell-${column.key}`"
+                v-bind="{ row, column }"
+              />
+              <ep-table-cell
+                v-else
+                :row="row"
+                :column="column"
+              />
+            </td>
+          </template>
+          <td
+            v-if="showActionsMenu"
+            class="ep-table__actions-menu"
+          >
+            <!-- @slot Actions menu for each row. Receives the current row data. -->
+            <slot
+              name="actions-menu"
+              v-bind="{ row }"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table
+      v-show="fixedHeader"
+      ref="tableFixed"
+      class="ep-table ep-table--fixed-header"
+    >
+      <!-- @slot Fixed header slot for when using fixed header mode. Syncs with the main table header. -->
+      <slot
+        name="thead-fixed"
+        v-bind="{ visibleColumns, showActionsMenu }"
+      />
+    </table>
+  </div>
+</template>

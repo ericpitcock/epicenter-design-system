@@ -1,3 +1,18 @@
+<script setup>
+  defineProps({
+    /**
+     * Message object containing icon and message text to display while loading.
+     */
+    message: {
+      type: Object,
+      default: () => ({
+        icon: '',
+        message: ''
+      })
+    },
+  })
+</script>
+
 <template>
   <div class="ep-loading">
     <div class="ep-loading__icon-container">
@@ -41,18 +56,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-  defineProps({
-    /**
-     * Message object containing icon and message text to display while loading.
-     */
-    message: {
-      type: Object,
-      default: () => ({
-        icon: '',
-        message: ''
-      })
-    },
-  })
-</script>

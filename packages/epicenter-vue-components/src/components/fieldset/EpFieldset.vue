@@ -1,3 +1,12 @@
+<script setup>
+  const props = defineProps({
+    label: {
+      type: String,
+      default: ''
+    }
+  })
+</script>
+
 <template>
   <fieldset class="ep-fieldset ep-fieldset--horizontal">
     <legend
@@ -12,12 +21,3 @@
     </div>
   </fieldset>
 </template>
-
-<script setup>
-  const props = defineProps({
-    label: {
-      type: String,
-      default: ''
-    }
-  })
-</script>

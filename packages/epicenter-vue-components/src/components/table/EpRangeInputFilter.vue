@@ -1,16 +1,3 @@
-<template>
-  <div>
-    <input
-      v-model="selectedRange"
-      type="range"
-      :min="min"
-      :max="max"
-      @input="applyFilter"
-    >
-    <span>{{ selectedRange }}</span>
-  </div>
-</template>
-
 <script setup>
   import { ref } from 'vue'
 
@@ -37,12 +24,27 @@
     }
   })
 
+  const emit = defineEmits(['update:appliedFilters'])
+
   // Initialize selected range
   const selectedRange = ref(0)
 
   // Method to apply filter and emit event
   const applyFilter = () => {
     // Emit event to update applied filters in parent component
-    emit('update:appliedFilters', { [columnKey]: selectedRange.value })
+    emit('update:appliedFilters', { [props.columnKey]: selectedRange.value })
   }
 </script>
+
+<template>
+  <div>
+    <input
+      v-model="selectedRange"
+      type="range"
+      :min="min"
+      :max="max"
+      @input="applyFilter"
+    >
+    <span>{{ selectedRange }}</span>
+  </div>
+</template>

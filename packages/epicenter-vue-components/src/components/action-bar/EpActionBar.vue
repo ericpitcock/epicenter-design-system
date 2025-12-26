@@ -1,25 +1,5 @@
-<template>
-  <div class="ep-action-bar">
-    <template
-      v-for="(item, index) in items"
-      :key="index"
-    >
-      <component
-        :is="componentMap[item.component]"
-        v-bind="item.props"
-        @click="onClick"
-      />
-    </template>
-  </div>
-</template>
-
 <script setup>
   import { defineAsyncComponent } from 'vue'
-
-  const componentMap = {
-    'ep-button': defineAsyncComponent(() => import('../button/EpButton.vue')),
-    'ep-dropdown': defineAsyncComponent(() => import('../dropdown/EpDropdown.vue')),
-  }
 
   const props = defineProps({
     /**
@@ -39,7 +19,27 @@
     'click'
   ])
 
+  const componentMap = {
+    'ep-button': defineAsyncComponent(() => import('../button/EpButton.vue')),
+    'ep-dropdown': defineAsyncComponent(() => import('../dropdown/EpDropdown.vue')),
+  }
+
   const onClick = (item) => {
     emit('click', item)
   }
 </script>
+
+<template>
+  <div class="ep-action-bar">
+    <template
+      v-for="(item, index) in items"
+      :key="index"
+    >
+      <component
+        :is="componentMap[item.component]"
+        v-bind="item.props"
+        @click="onClick"
+      />
+    </template>
+  </div>
+</template>

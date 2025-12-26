@@ -34,90 +34,6 @@
   - --ep-case-study-carousel-border-radius: Border radius (default: 1rem)
   - --ep-case-study-carousel-caption-border-radius: Caption border radius (default: 0.5rem)
 -->
-<template>
-  <div
-    ref="carouselContainer"
-    class="ep-case-study-carousel"
-  >
-    <div
-      ref="carouselTrack"
-      class="carousel-track"
-      @scroll="handleScroll"
-    >
-      <div class="carousel-spacer" />
-      <div
-        v-for="(image, index) in images"
-        :key="image?.src ?? index"
-        :ref="el => itemRefs[index] = el"
-        class="carousel-item"
-        :class="{ 'is-active': currentIndex === index }"
-        role="button"
-        tabindex="0"
-        @click="scrollToImage(index)"
-        @keydown.enter.prevent="scrollToImage(index)"
-        @keydown.space.prevent="scrollToImage(index)"
-      >
-        <div
-          class="carousel-image-container"
-          :style="getImageContainerStyle(image)"
-        >
-          <ep-lazy-image
-            class="carousel-image"
-            :src="image.src"
-            :alt="image.alt"
-            :aspect-ratio="image.aspectRatio"
-            :lazy="!shouldLoadImages"
-            :style="getImageStyle(image)"
-          />
-          <div
-            v-if="image.caption"
-            class="carousel-caption"
-            :class="getCaptionPositionClass(image)"
-          >
-            {{ image.caption }}
-          </div>
-        </div>
-      </div>
-      <div class="carousel-spacer" />
-    </div>
-
-    <div class="carousel-navigation">
-      <ep-button
-        class="carousel-nav-button"
-        size="xlarge"
-        aria-label="Previous slide"
-        :disabled="currentIndex === 0"
-        @click="scrollToImage(currentIndex - 1)"
-      >
-        <template #icon-left>
-          <ArrowLeft01 />
-        </template>
-      </ep-button>
-      <div class="carousel-dots">
-        <button
-          v-for="(image, index) in images"
-          :key="`dot-${index}`"
-          class="carousel-dot"
-          :class="{ 'is-active': currentIndex === index }"
-          :aria-label="`Go to slide ${index + 1}`"
-          @click="scrollToImage(index)"
-        />
-      </div>
-      <ep-button
-        class="carousel-nav-button"
-        size="xlarge"
-        aria-label="Next slide"
-        :disabled="currentIndex === images.length - 1"
-        @click="scrollToImage(currentIndex + 1)"
-      >
-        <template #icon-left>
-          <ArrowRight01 />
-        </template>
-      </ep-button>
-    </div>
-  </div>
-</template>
-
 <script setup>
   import ArrowLeft01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowLeft01'
   import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
@@ -324,3 +240,87 @@
     }
   })
 </script>
+
+<template>
+  <div
+    ref="carouselContainer"
+    class="ep-case-study-carousel"
+  >
+    <div
+      ref="carouselTrack"
+      class="carousel-track"
+      @scroll="handleScroll"
+    >
+      <div class="carousel-spacer" />
+      <div
+        v-for="(image, index) in images"
+        :key="image?.src ?? index"
+        :ref="el => itemRefs[index] = el"
+        class="carousel-item"
+        :class="{ 'is-active': currentIndex === index }"
+        role="button"
+        tabindex="0"
+        @click="scrollToImage(index)"
+        @keydown.enter.prevent="scrollToImage(index)"
+        @keydown.space.prevent="scrollToImage(index)"
+      >
+        <div
+          class="carousel-image-container"
+          :style="getImageContainerStyle(image)"
+        >
+          <ep-lazy-image
+            class="carousel-image"
+            :src="image.src"
+            :alt="image.alt"
+            :aspect-ratio="image.aspectRatio"
+            :lazy="!shouldLoadImages"
+            :style="getImageStyle(image)"
+          />
+          <div
+            v-if="image.caption"
+            class="carousel-caption"
+            :class="getCaptionPositionClass(image)"
+          >
+            {{ image.caption }}
+          </div>
+        </div>
+      </div>
+      <div class="carousel-spacer" />
+    </div>
+
+    <div class="carousel-navigation">
+      <ep-button
+        class="carousel-nav-button"
+        size="xlarge"
+        aria-label="Previous slide"
+        :disabled="currentIndex === 0"
+        @click="scrollToImage(currentIndex - 1)"
+      >
+        <template #icon-left>
+          <ArrowLeft01 />
+        </template>
+      </ep-button>
+      <div class="carousel-dots">
+        <button
+          v-for="(image, index) in images"
+          :key="`dot-${index}`"
+          class="carousel-dot"
+          :class="{ 'is-active': currentIndex === index }"
+          :aria-label="`Go to slide ${index + 1}`"
+          @click="scrollToImage(index)"
+        />
+      </div>
+      <ep-button
+        class="carousel-nav-button"
+        size="xlarge"
+        aria-label="Next slide"
+        :disabled="currentIndex === images.length - 1"
+        @click="scrollToImage(currentIndex + 1)"
+      >
+        <template #icon-left>
+          <ArrowRight01 />
+        </template>
+      </ep-button>
+    </div>
+  </div>
+</template>

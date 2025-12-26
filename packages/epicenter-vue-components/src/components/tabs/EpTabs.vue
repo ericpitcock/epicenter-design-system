@@ -1,33 +1,3 @@
-<template>
-  <div
-    ref="tabList"
-    class="ep-tabs"
-    :class="{ 'ep-tabs--classic': variant === 'classic' }"
-    role="tablist"
-  >
-    <component
-      :is="item.to ? 'router-link' : 'button'"
-      v-for="(item, index) in tabs"
-      :id="`tab-${index}`"
-      :key="index"
-      :aria-controls="`tabpanel-${index}`"
-      :class="[
-        'ep-tabs__tab-item',
-        { 'ep-tabs__tab-item--active': !item.to && index === activeTabIndex }
-      ]"
-      :to="item.to ? item.to : undefined"
-      :exact="item.to ? item.exact : undefined"
-      role="tab"
-      :aria-selected="index === activeTabIndex"
-      :tabindex="index === activeTabIndex ? 0 : -1"
-      @click="onClick({ item, index })"
-      @keydown="handleKeydown(index, $event)"
-    >
-      <span>{{ item.label }}</span>
-    </component>
-  </div>
-</template>
-
 <script setup>
   import { computed, ref } from 'vue'
 
@@ -99,3 +69,33 @@
     tabElements[index]?.focus()
   }
 </script>
+
+<template>
+  <div
+    ref="tabList"
+    class="ep-tabs"
+    :class="{ 'ep-tabs--classic': variant === 'classic' }"
+    role="tablist"
+  >
+    <component
+      :is="item.to ? 'router-link' : 'button'"
+      v-for="(item, index) in tabs"
+      :id="`tab-${index}`"
+      :key="index"
+      :aria-controls="`tabpanel-${index}`"
+      :class="[
+        'ep-tabs__tab-item',
+        { 'ep-tabs__tab-item--active': !item.to && index === activeTabIndex }
+      ]"
+      :to="item.to ? item.to : undefined"
+      :exact="item.to ? item.exact : undefined"
+      role="tab"
+      :aria-selected="index === activeTabIndex"
+      :tabindex="index === activeTabIndex ? 0 : -1"
+      @click="onClick({ item, index })"
+      @keydown="handleKeydown(index, $event)"
+    >
+      <span>{{ item.label }}</span>
+    </component>
+  </div>
+</template>

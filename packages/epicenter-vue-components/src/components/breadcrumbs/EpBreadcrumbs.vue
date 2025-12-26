@@ -1,3 +1,42 @@
+<script setup>
+  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
+  import { computed } from 'vue'
+  import { useRoute } from 'vue-router'
+
+  const props = defineProps({
+    /**
+     * An array of breadcrumb items with label, to, and optional customClass properties.
+     */
+    items: {
+      type: Array,
+      default: () => []
+    },
+    /**
+     * If true, automatically generates breadcrumbs from the current route.
+     */
+    auto: {
+      type: Boolean,
+      default: false
+    }
+  })
+
+  const route = useRoute()
+
+  const breadcrumbItems = computed(() => {
+    if (props.auto) {
+      return route.matched
+        .filter(record => record.meta && record.meta.breadcrumb !== false)
+        .map(record => ({
+          label: record.meta.breadcrumb || record.name || '',
+          to: record.path,
+          customClass: record.meta.customClass || ''
+        }))
+    } else {
+      return props.items
+    }
+  })
+</script>
+
 <template>
   <nav aria-label="Breadcrumb">
     <ol class="ep-breadcrumbs">
@@ -46,45 +85,6 @@
     </ol>
   </nav>
 </template>
-
-<script setup>
-  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
-  import { computed } from 'vue'
-  import { useRoute } from 'vue-router'
-
-  const props = defineProps({
-    /**
-     * An array of breadcrumb items with label, to, and optional customClass properties.
-     */
-    items: {
-      type: Array,
-      default: () => []
-    },
-    /**
-     * If true, automatically generates breadcrumbs from the current route.
-     */
-    auto: {
-      type: Boolean,
-      default: false
-    }
-  })
-
-  const route = useRoute()
-
-  const breadcrumbItems = computed(() => {
-    if (props.auto) {
-      return route.matched
-        .filter(record => record.meta && record.meta.breadcrumb !== false)
-        .map(record => ({
-          label: record.meta.breadcrumb || record.name || '',
-          to: record.path,
-          customClass: record.meta.customClass || ''
-        }))
-    } else {
-      return props.items
-    }
-  })
-</script>
 
 <style lang="scss" scoped>
   .ep-breadcrumbs {

@@ -1,10 +1,3 @@
-<template>
-  <div
-    :id="chartId"
-    :style="[{ height: `${height}px` }, chartColors]"
-  />
-</template>
-
 <script setup>
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
@@ -83,3 +76,10 @@
     }
   })
 </script>
+
+<template>
+  <div
+    :id="chartId"
+    :style="[{ height: `${height}px` }, chartColors]"
+  />
+</template>

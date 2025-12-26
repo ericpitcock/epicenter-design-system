@@ -1,9 +1,3 @@
-<template>
-  <span :class="column.class">
-    {{ cellContent }}
-  </span>
-</template>
-
 <script setup>
   import { ref, watchEffect } from 'vue'
 
@@ -38,3 +32,9 @@
     cellContent.value = formattedCell(props.row, props.column)
   })
 </script>
+
+<template>
+  <span :class="column.class">
+    {{ cellContent }}
+  </span>
+</template>

@@ -1,21 +1,3 @@
-<template>
-  <Teleport
-    defer
-    to="#app"
-  >
-    <dialog
-      ref="dialog"
-      class="ep-dialog"
-      role="dialog"
-      :aria-modal="type === 'modal' ? 'true' : undefined"
-      @click.self="onBackdropClick"
-    >
-      <!-- @slot Content to display inside the overlay dialog -->
-      <slot />
-    </dialog>
-  </Teleport>
-</template>
-
 <script setup>
   import { ref, watch } from 'vue'
 
@@ -85,6 +67,24 @@
     dialog.value.close()
   }
 </script>
+
+<template>
+  <Teleport
+    defer
+    to="#app"
+  >
+    <dialog
+      ref="dialog"
+      class="ep-dialog"
+      role="dialog"
+      :aria-modal="type === 'modal' ? 'true' : undefined"
+      @click.self="onBackdropClick"
+    >
+      <!-- @slot Content to display inside the overlay dialog -->
+      <slot />
+    </dialog>
+  </Teleport>
+</template>
 
 <style lang="scss" scoped>
   .ep-dialog {

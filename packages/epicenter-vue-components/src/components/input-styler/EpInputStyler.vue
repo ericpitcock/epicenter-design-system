@@ -1,3 +1,56 @@
+<script setup>
+  import Cancel01 from '@ericpitcock/epicenter-icons/epicenter-icons/Cancel01'
+  import { computed } from 'vue'
+
+  const props = defineProps({
+    id: {
+      type: String,
+      default: ''
+    },
+    hasInput: {
+      type: Boolean,
+      default: false
+    },
+    label: {
+      type: String,
+      default: ''
+    },
+    clearable: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    errorEnabled: {
+      type: Boolean,
+      default: false
+    },
+    error: {
+      type: Boolean,
+      default: false
+    },
+    errorMessage: {
+      type: String,
+      default: ''
+    },
+    size: {
+      type: String,
+      default: 'default'
+    },
+  })
+
+  defineEmits(['click'])
+
+  const computedClasses = computed(() => ({
+    [`ep-input-styler--${props.size}`]: props.size !== 'default',
+    'ep-input-styler--disabled': props.disabled,
+    'ep-input-styler--error': props.error,
+  }))
+
+</script>
+
 <template>
   <div class="ep-input-styler__container">
     <label
@@ -46,55 +99,3 @@
     </p>
   </div>
 </template>
-
-<script setup>
-  import Cancel01 from '@ericpitcock/epicenter-icons/epicenter-icons/Cancel01'
-  import { computed } from 'vue'
-
-  const props = defineProps({
-    id: {
-      type: String,
-      default: ''
-    },
-    hasInput: {
-      type: Boolean,
-      default: false
-    },
-    label: {
-      type: String,
-      default: ''
-    },
-    clearable: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    errorEnabled: {
-      type: Boolean,
-      default: false
-    },
-    error: {
-      type: Boolean,
-      default: false
-    },
-    errorMessage: {
-      type: String,
-      default: ''
-    },
-    size: {
-      type: String,
-      default: 'default'
-    },
-  })
-
-  const computedClasses = computed(() => ({
-    [`ep-input-styler--${props.size}`]: props.size !== 'default',
-    'ep-input-styler--disabled': props.disabled,
-    'ep-input-styler--error': props.error,
-  }))
-
-  defineEmits(['click'])
-</script>

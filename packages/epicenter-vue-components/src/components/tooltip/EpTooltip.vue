@@ -1,21 +1,3 @@
-<template>
-  <div
-    class="ep-tooltip-wrapper"
-    @mouseenter="showTooltip"
-    @mouseleave="hideTooltip"
-    @click="onClick"
-  >
-    <div
-      :class="['ep-tooltip', positionClass, { 'ep-tooltip--visible': visible }]"
-    >
-      <!-- @slot Tooltip content to display on hover -->
-      <slot name="tooltip" />
-    </div>
-    <!-- @slot Trigger element that shows the tooltip on hover -->
-    <slot />
-  </div>
-</template>
-
 <script setup>
   import { computed, onBeforeUnmount, ref } from 'vue'
 
@@ -95,3 +77,21 @@
     return `ep-tooltip--${props.position.replace(' ', '-')}`
   })
 </script>
+
+<template>
+  <div
+    class="ep-tooltip-wrapper"
+    @mouseenter="showTooltip"
+    @mouseleave="hideTooltip"
+    @click="onClick"
+  >
+    <div
+      :class="['ep-tooltip', positionClass, { 'ep-tooltip--visible': visible }]"
+    >
+      <!-- @slot Tooltip content to display on hover -->
+      <slot name="tooltip" />
+    </div>
+    <!-- @slot Trigger element that shows the tooltip on hover -->
+    <slot />
+  </div>
+</template>

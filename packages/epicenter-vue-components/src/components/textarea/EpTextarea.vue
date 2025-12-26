@@ -1,28 +1,3 @@
-<template>
-  <div class="ep-textarea">
-    <textarea
-      :id="id"
-      v-model="modelValue"
-      :name="name"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :required="required"
-      :rows="rows"
-      :cols="cols"
-      :maxlength="maxlength"
-      :minlength="minlength"
-      :readonly="readonly"
-      :autofocus="autofocus"
-      :autocomplete="autocomplete"
-      :spellcheck="spellcheck"
-      :wrap="wrap"
-      v-bind="$attrs"
-      @focus="onFocus"
-      @blur="onBlur"
-    />
-  </div>
-</template>
-
 <script setup>
 
   const props = defineProps({
@@ -128,12 +103,12 @@
     },
   })
 
+  const emit = defineEmits(['update:modelValue', 'focus', 'blur'])
+
   const modelValue = defineModel({
     type: String,
     default: '',
   })
-
-  const emit = defineEmits(['update:modelValue', 'focus', 'blur'])
 
   const onFocus = (event) => {
     emit('focus', event)
@@ -143,3 +118,28 @@
     emit('blur', event)
   }
 </script>
+
+<template>
+  <div class="ep-textarea">
+    <textarea
+      :id="id"
+      v-model="modelValue"
+      :name="name"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :required="required"
+      :rows="rows"
+      :cols="cols"
+      :maxlength="maxlength"
+      :minlength="minlength"
+      :readonly="readonly"
+      :autofocus="autofocus"
+      :autocomplete="autocomplete"
+      :spellcheck="spellcheck"
+      :wrap="wrap"
+      v-bind="$attrs"
+      @focus="onFocus"
+      @blur="onBlur"
+    />
+  </div>
+</template>

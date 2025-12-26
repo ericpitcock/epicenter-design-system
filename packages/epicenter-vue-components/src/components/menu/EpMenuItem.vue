@@ -1,46 +1,3 @@
-<template>
-  <div
-    v-if="type === 'divider'"
-    class="ep-divider ep-divider--horizontal"
-    role="separator"
-  />
-  <div
-    v-else-if="type === 'section'"
-    class="ep-menu__section text-style--section"
-    role="presentation"
-  >
-    <!-- @slot Default slot for section label text. -->
-    <slot />
-  </div>
-  <div
-    v-else
-    ref="menuItemRef"
-    class="ep-menu__item"
-    role="menuitem"
-    :aria-haspopup="$slots.submenu ? 'menu' : undefined"
-    :aria-expanded="$slots.submenu ? String(showSubmenu) : undefined"
-    @mousedown="onMousedown"
-    @click="onClick"
-    @keydown="onKeydown"
-    @mouseover="onMouseover"
-    @mouseleave="onMouseleave"
-    @focusin="onFocusIn"
-    @focusout="onFocusOut"
-  >
-    <!-- @slot Default slot for menu item content. -->
-    <slot />
-    <div
-      v-if="$slots.submenu"
-      v-show="showSubmenu"
-      class="ep-menu__item__sub-menu"
-      role="menu"
-    >
-      <!-- @slot submenu - Content for a submenu that appears on hover. -->
-      <slot name="submenu" />
-    </div>
-  </div>
-</template>
-
 <script setup>
   import { inject, nextTick, onMounted, provide, ref } from 'vue'
 
@@ -247,3 +204,46 @@
     }
   }
 </script>
+
+<template>
+  <div
+    v-if="type === 'divider'"
+    class="ep-divider ep-divider--horizontal"
+    role="separator"
+  />
+  <div
+    v-else-if="type === 'section'"
+    class="ep-menu__section text-style--section"
+    role="presentation"
+  >
+    <!-- @slot Default slot for section label text. -->
+    <slot />
+  </div>
+  <div
+    v-else
+    ref="menuItemRef"
+    class="ep-menu__item"
+    role="menuitem"
+    :aria-haspopup="$slots.submenu ? 'menu' : undefined"
+    :aria-expanded="$slots.submenu ? String(showSubmenu) : undefined"
+    @mousedown="onMousedown"
+    @click="onClick"
+    @keydown="onKeydown"
+    @mouseover="onMouseover"
+    @mouseleave="onMouseleave"
+    @focusin="onFocusIn"
+    @focusout="onFocusOut"
+  >
+    <!-- @slot Default slot for menu item content. -->
+    <slot />
+    <div
+      v-if="$slots.submenu"
+      v-show="showSubmenu"
+      class="ep-menu__item__sub-menu"
+      role="menu"
+    >
+      <!-- @slot submenu - Content for a submenu that appears on hover. -->
+      <slot name="submenu" />
+    </div>
+  </div>
+</template>

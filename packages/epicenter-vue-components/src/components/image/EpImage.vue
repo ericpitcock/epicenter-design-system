@@ -1,24 +1,3 @@
-<template>
-  <div
-    class="ep-image"
-    ref="imageEl"
-  >
-    <img
-      v-if="isLoaded"
-      :src="src"
-      :alt="alt"
-      :width="width"
-      :height="height"
-      :class="className"
-    >
-    <div
-      v-else
-      class="image__placeholder"
-      :style="placeholderStyle"
-    />
-  </div>
-</template>
-
 <script setup>
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
@@ -141,6 +120,27 @@
     }
   })
 </script>
+
+<template>
+  <div
+    ref="imageEl"
+    class="ep-image"
+  >
+    <img
+      v-if="isLoaded"
+      :src="src"
+      :alt="alt"
+      :width="width"
+      :height="height"
+      :class="className"
+    >
+    <div
+      v-else
+      class="image__placeholder"
+      :style="placeholderStyle"
+    />
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .image {

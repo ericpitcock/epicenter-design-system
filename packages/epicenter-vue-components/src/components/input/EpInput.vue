@@ -1,50 +1,7 @@
-<template>
-  <ep-input-styler
-    v-bind="stylerProps"
-    @click="onClear"
-  >
-    <template
-      v-if="$slots['icon-left']"
-      #icon-left
-    >
-      <!-- @slot Optional icon displayed on the left side of the input -->
-      <slot name="icon-left" />
-    </template>
-    <input
-      :id="computedId"
-      ref="input"
-      v-model="modelValue"
-      :class="['ep-input', inputClasses]"
-      :type="type"
-      :placeholder="computedPlaceholder"
-      :disabled="disabled"
-      :autofocus="autofocus"
-      :readonly="readonly"
-      :required="required"
-      v-bind="$attrs"
-      @focus="onFocus"
-      @blur="onBlur"
-      @keydown="onKeyDown"
-      @keydown.esc="onEsc"
-    >
-    <template
-      v-if="$slots['icon-right']"
-      #icon-right
-    >
-      <!-- @slot Optional icon displayed on the right side of the input (overridden by clearable button if active) -->
-      <slot name="icon-right" />
-    </template>
-  </ep-input-styler>
-</template>
-
 <script setup>
   import { computed, ref, useId, watch } from 'vue'
 
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
-
-  defineOptions({
-    inheritAttrs: false,
-  })
 
   const props = defineProps({
     /**
@@ -144,12 +101,16 @@
 
   const emit = defineEmits(['focus', 'esc', 'blur', 'enter', 'clear'])
 
-  const input = ref(null)
-
   const modelValue = defineModel({
     type: String,
     required: true
   })
+
+  defineOptions({
+    inheritAttrs: false,
+  })
+
+  const input = ref(null)
 
   const hasInput = ref(!!modelValue.value)
   const computedId = ref(props.inputId || useId())
@@ -202,3 +163,42 @@
     emit('clear', '')
   }
 </script>
+
+<template>
+  <ep-input-styler
+    v-bind="stylerProps"
+    @click="onClear"
+  >
+    <template
+      v-if="$slots['icon-left']"
+      #icon-left
+    >
+      <!-- @slot Optional icon displayed on the left side of the input -->
+      <slot name="icon-left" />
+    </template>
+    <input
+      :id="computedId"
+      ref="input"
+      v-model="modelValue"
+      :class="['ep-input', inputClasses]"
+      :type="type"
+      :placeholder="computedPlaceholder"
+      :disabled="disabled"
+      :autofocus="autofocus"
+      :readonly="readonly"
+      :required="required"
+      v-bind="$attrs"
+      @focus="onFocus"
+      @blur="onBlur"
+      @keydown="onKeyDown"
+      @keydown.esc="onEsc"
+    >
+    <template
+      v-if="$slots['icon-right']"
+      #icon-right
+    >
+      <!-- @slot Optional icon displayed on the right side of the input (overridden by clearable button if active) -->
+      <slot name="icon-right" />
+    </template>
+  </ep-input-styler>
+</template>

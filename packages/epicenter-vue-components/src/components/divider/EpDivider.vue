@@ -1,7 +1,3 @@
-<template>
-  <div :class="['ep-divider', `ep-divider--${direction}`]" />
-</template>
-
 <script setup>
   const props = defineProps({
     /**
@@ -14,3 +10,7 @@
     },
   })
 </script>
+
+<template>
+  <div :class="['ep-divider', `ep-divider--${direction}`]" />
+</template>

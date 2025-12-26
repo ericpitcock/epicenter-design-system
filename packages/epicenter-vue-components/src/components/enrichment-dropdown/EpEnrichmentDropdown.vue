@@ -1,3 +1,54 @@
+<script setup>
+  import ArrowUpRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowUpRight01'
+  import Asterisk02 from '@ericpitcock/epicenter-icons/epicenter-icons/Asterisk02'
+  import { ref } from 'vue'
+
+  import EpButton from '../button/EpButton.vue'
+  import EpDropdown from '../dropdown/EpDropdown.vue'
+  import EpFlex from '../flexbox/EpFlex.vue'
+  import EpKeyValueTable from '../key-value-table/EpKeyValueTable.vue'
+  import EpLoadingState from '../loading-state/EpLoadingState.vue'
+  import EpMenu from '../menu/EpMenu.vue'
+  import EpMenuItem from '../menu/EpMenuItem.vue'
+
+  const props = defineProps({
+    label: {
+      type: String,
+      default: ''
+    },
+    enrichmentOptions: {
+      type: Array,
+      required: true
+    },
+    enrichmentData: {
+      type: Object,
+      default: null
+    }
+  })
+
+  const hoveredItem = ref(null)
+  const loading = ref(false)
+  const showPreview = ref(false)
+  const hasBeenHovered = []
+
+  const onHover = (item) => {
+    if (hasBeenHovered.includes(item.label)) {
+      hoveredItem.value = item
+      showPreview.value = true
+      return
+    }
+
+    hasBeenHovered.push(item.label)
+    hoveredItem.value = item
+    showPreview.value = true
+    loading.value = true
+
+    setTimeout(() => {
+      loading.value = false
+    }, 400)
+  }
+</script>
+
 <template>
   <div class="ep-enrichment-dropdown">
     <ep-dropdown
@@ -63,57 +114,6 @@
     </ep-dropdown>
   </div>
 </template>
-
-<script setup>
-  import ArrowUpRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowUpRight01'
-  import Asterisk02 from '@ericpitcock/epicenter-icons/epicenter-icons/Asterisk02'
-  import { ref } from 'vue'
-
-  import EpButton from '../button/EpButton.vue'
-  import EpDropdown from '../dropdown/EpDropdown.vue'
-  import EpFlex from '../flexbox/EpFlex.vue'
-  import EpKeyValueTable from '../key-value-table/EpKeyValueTable.vue'
-  import EpLoadingState from '../loading-state/EpLoadingState.vue'
-  import EpMenu from '../menu/EpMenu.vue'
-  import EpMenuItem from '../menu/EpMenuItem.vue'
-
-  const props = defineProps({
-    label: {
-      type: String,
-      default: ''
-    },
-    enrichmentOptions: {
-      type: Array,
-      required: true
-    },
-    enrichmentData: {
-      type: Object,
-      default: null
-    }
-  })
-
-  const hoveredItem = ref(null)
-  const loading = ref(false)
-  const showPreview = ref(false)
-  const hasBeenHovered = []
-
-  const onHover = (item) => {
-    if (hasBeenHovered.includes(item.label)) {
-      hoveredItem.value = item
-      showPreview.value = true
-      return
-    }
-
-    hasBeenHovered.push(item.label)
-    hoveredItem.value = item
-    showPreview.value = true
-    loading.value = true
-
-    setTimeout(() => {
-      loading.value = false
-    }, 400)
-  }
-</script>
 
 <style lang="scss" scoped>
   .ep-enrichment-dropdown {

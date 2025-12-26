@@ -1,25 +1,3 @@
-<template>
-  <div :class="['ep-resizable', `ep-resizable--${direction}`]">
-    <div
-      ref="resizablePane"
-      class="ep-resizable__resizable-pane"
-      :style="{ flex: computedSize }"
-    >
-      <!-- @slot resizable - The content of the resizable pane. -->
-      <slot name="resizable" />
-      <div
-        :class="['ep-resizable__drag-handle', `ep-resizable__drag-handle--${dragEdge}`]"
-        @mousedown="handleDragStart"
-        @touchstart="handleDragStart"
-      />
-    </div>
-    <div class="ep-resizable__content-pane">
-      <!-- @slot content - The content of the fixed (non-resizable) pane. -->
-      <slot name="content" />
-    </div>
-  </div>
-</template>
-
 <script setup>
   import { computed, ref } from 'vue'
 
@@ -56,8 +34,8 @@
     }
   })
 
-  const resizablePane = ref(null)
   const emit = defineEmits(['resize'])
+  const resizablePane = ref(null)
   const isDragging = ref(false)
   const hasBeenDragged = ref(false)
   const startPos = ref(0)
@@ -117,3 +95,25 @@
     document.removeEventListener('touchend', handleDragEnd)
   }
 </script>
+
+<template>
+  <div :class="['ep-resizable', `ep-resizable--${direction}`]">
+    <div
+      ref="resizablePane"
+      class="ep-resizable__resizable-pane"
+      :style="{ flex: computedSize }"
+    >
+      <!-- @slot resizable - The content of the resizable pane. -->
+      <slot name="resizable" />
+      <div
+        :class="['ep-resizable__drag-handle', `ep-resizable__drag-handle--${dragEdge}`]"
+        @mousedown="handleDragStart"
+        @touchstart="handleDragStart"
+      />
+    </div>
+    <div class="ep-resizable__content-pane">
+      <!-- @slot content - The content of the fixed (non-resizable) pane. -->
+      <slot name="content" />
+    </div>
+  </div>
+</template>

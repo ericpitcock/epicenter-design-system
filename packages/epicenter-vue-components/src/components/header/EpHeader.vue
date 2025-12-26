@@ -1,3 +1,6 @@
+<script setup>
+</script>
+
 <template>
   <div class="ep-header">
     <div class="ep-header__content">
@@ -25,6 +28,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-</script>
