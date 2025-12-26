@@ -46,7 +46,6 @@ import EpSelect from './select/EpSelect.vue'
 import EpSignIn from './sign-in/EpSignIn.vue'
 import EpSplitButton from './split-button/EpSplitButton.vue'
 import EpStatusIndicator from './status-indicator/EpStatusIndicator.vue'
-import EpCheckboxFilter from './table/EpCheckboxFilter.vue'
 import EpDatePickerFilter from './table/EpDatePickerFilter.vue'
 import EpRangeInputFilter from './table/EpRangeInputFilter.vue'
 import EpTable from './table/EpTable.vue'
@@ -113,7 +112,6 @@ export {
   EpSignIn,
   EpSplitButton,
   EpStatusIndicator,
-  EpCheckboxFilter,
   EpDatePickerFilter,
   EpRangeInputFilter,
   EpTable,
@@ -181,7 +179,6 @@ export default {
   EpSignIn,
   EpSplitButton,
   EpStatusIndicator,
-  EpCheckboxFilter,
   EpDatePickerFilter,
   EpRangeInputFilter,
   EpTable,
