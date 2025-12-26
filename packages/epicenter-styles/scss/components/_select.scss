@@ -51,7 +51,6 @@
   &--disabled {
     border-color: var(--border-color--disabled);
     color: var(--text-color--disabled);
-    cursor: not-allowed;
     pointer-events: none;
   }
 }

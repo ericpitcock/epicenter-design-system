@@ -61,7 +61,6 @@
     border-color: var(--ep-button-disabled-border-color);
     background: var(--ep-button-disabled-bg-color);
     color: var(--ep-button-disabled-text-color);
-    cursor: default;
     pointer-events: none;
 
     &.ep-button--menu-item {

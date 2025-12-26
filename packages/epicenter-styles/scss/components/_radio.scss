@@ -31,7 +31,7 @@
 
   &--disabled {
     color: var(--text-color--disabled);
-    cursor: default;
+    pointer-events: none;
 
     .ep-radio__dot {
       border-color: var(--ep-radio-disabled-border-color);

@@ -1,6 +1,7 @@
 .ep-input-styler__container {
+  --ep-input-width: 100%;
   --ep-input-height: 3rem;
-  width: 100%;
+  width: var(--ep-input-width);
 }
 
 .ep-input-styler {
