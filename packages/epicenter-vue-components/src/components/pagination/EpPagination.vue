@@ -1,15 +1,23 @@
 <template>
   <div class="ep-pagination">
-    <ep-flex
-      class="justify-between align-center gap-30"
-      :class="customClass"
-    >
+    <ep-flex class="justify-between gap-30">
       <!-- @slot Content displayed on the left side of the pagination controls -->
-      <slot name="left" />
-      <ep-flex
-        class="align-center gap-10"
-        :class="controlsClass"
-      >
+      <slot name="left">
+        <ep-flex
+          v-if="resultsPerPage !== null"
+          class="justify-end align-center gap-10"
+        >
+          <ep-select
+            v-model="localResultsPerPage"
+            select-id="resultsPerPage"
+            :options="resultsPerPageOptions"
+            placeholder=""
+            style="--ep-input-width: fit-content;"
+            @update:model-value="onResultsPerPageChange"
+          />
+        </ep-flex>
+      </slot>
+      <ep-flex class="align-center gap-10">
         <ep-button
           :disabled="currentPage === 1"
           aria-label="Previous page"
@@ -52,7 +60,7 @@
           </ep-button>
         </template>
         <template v-else>
-          <span class="pagination-info">
+          <span class="ep-pagination-info">
             Page {{ currentPage }} of {{ totalPages }}
           </span>
         </template>
@@ -79,10 +87,11 @@
 <script setup>
   import ArrowLeft01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowLeft01'
   import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
+  import EpSelect from '../select/EpSelect.vue'
 
   const props = defineProps({
     /**
@@ -114,19 +123,33 @@
       default: ''
     },
     /**
-     * Custom CSS class to apply to the pagination container.
+     * Number of results to display per page. When provided, shows a dropdown to change this value.
      */
-    customClass: {
-      type: String,
-      default: ''
+    resultsPerPage: {
+      type: Number,
+      default: null
     },
-    controlsClass: {
-      type: String,
-      default: ''
+    /**
+     * Options for the results per page dropdown.
+     */
+    resultsPerPageOptions: {
+      type: Array,
+      default: () => [
+        { label: '10 / page', value: 10 },
+        { label: '20 / page', value: 20 },
+        { label: '50 / page', value: 50 },
+        { label: '100 / page', value: 100 }
+      ]
     }
   })
 
-  const emit = defineEmits(['pageChange'])
+  const emit = defineEmits(['pageChange', 'update:resultsPerPage'])
+
+  const localResultsPerPage = ref(props.resultsPerPage)
+
+  const onResultsPerPageChange = (value) => {
+    emit('update:resultsPerPage', value)
+  }
 
   const prevPage = () => {
     if (props.currentPage > 1) {
@@ -176,15 +199,3 @@
     return [currentPage - 1, currentPage, currentPage + 1]
   })
 </script>
-
-<style lang="scss" scoped>
-  .ep-pagination {
-    width: 100%;
-  }
-
-  .pagination-info {
-    color: var(--text-color--subtle);
-    font-size: 14px;
-    margin: 0 8px;
-  }
-</style>

@@ -157,7 +157,7 @@
             </ep-table-head>
           </template>
         </ep-table>
-        <ep-table-pagination
+        <ep-pagination
           :current-page="currentPage"
           :total-pages="totalPages"
           :show-pages="true"
@@ -184,11 +184,11 @@
   import EpFlex from '@/components/flexbox/EpFlex.vue'
   import EpMenu from '@/components/menu/EpMenu.vue'
   import EpMenuItem from '@/components/menu/EpMenuItem.vue'
+  import EpPagination from '@/components/pagination/EpPagination.vue'
   import EpMultiSearch from '@/components/search/EpMultiSearch.vue'
   import EpTable from '@/components/table/EpTable.vue'
   import EpTableCheckboxFilters from '@/components/table/EpTableCheckboxFilters.vue'
   import EpTableHead from '@/components/table/EpTableHead.vue'
-  import EpTablePagination from '@/components/table/EpTablePagination.vue'
   import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
   import {
     useColumnFilters,

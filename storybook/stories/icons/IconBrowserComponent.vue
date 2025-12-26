@@ -67,23 +67,16 @@
       v-if="totalPages > 1"
       :current-page="currentPage"
       :total-pages="totalPages"
+      :results-per-page="resultsPerPage"
       button-class="ep-button-var--secondary"
       show-pages
       @page-change="onPageChange"
-    >
-      <template #icon-prev>
-        <ArrowLeft01 />
-      </template>
-      <template #icon-next>
-        <ArrowRight01 />
-      </template>
-    </ep-pagination>
+      @update:results-per-page="onResultsPerPageChange"
+    />
   </div>
 </template>
 
 <script setup>
-  import ArrowLeft01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowLeft01'
-  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
   import { computed, defineAsyncComponent, ref, watch } from 'vue'
 
   import EpFlex from '@/components/flexbox/EpFlex.vue'
@@ -196,7 +189,7 @@
   const search = ref('')
   const selectedCategory = ref('All')
   const currentPage = ref(1)
-  const itemsPerPage = ref(48)
+  const resultsPerPage = ref(50)
   const copiedIcon = ref('')
 
   const iconStyle = computed(() => ({
@@ -241,13 +234,13 @@
   })
 
   const paginatedIcons = computed(() => {
-    const start = (currentPage.value - 1) * itemsPerPage.value
-    const end = start + itemsPerPage.value
+    const start = (currentPage.value - 1) * resultsPerPage.value
+    const end = start + resultsPerPage.value
     return filteredIcons.value.slice(start, end)
   })
 
   const totalPages = computed(() =>
-    Math.ceil(filteredIcons.value.length / itemsPerPage.value)
+    Math.ceil(filteredIcons.value.length / resultsPerPage.value)
   )
 
   // watch currentPage and scroll to the top of the icon grid when it changes
@@ -286,6 +279,11 @@
 
   const onPageChange = (page) => {
     currentPage.value = page
+  }
+
+  const onResultsPerPageChange = (value) => {
+    resultsPerPage.value = value
+    currentPage.value = 1
   }
 </script>
 
@@ -421,13 +419,9 @@
   }
 
   :deep(.ep-pagination) {
-    padding: 20px;
+    padding: 2rem 3rem;
     background: var(--interface-surface);
     border-top: 1px solid var(--border-color);
-
-    .ep-flex {
-      justify-content: center;
-    }
   }
 
   @media (max-width: 768px) {

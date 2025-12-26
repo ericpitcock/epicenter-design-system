@@ -1,0 +1,13 @@
+.ep-pagination {
+  width: 100%;
+  user-select: none;
+
+  .ep-button--selected {
+    pointer-events: none;
+  }
+}
+
+.ep-pagination-info {
+  margin: 0 1rem;
+  color: var(--text-color--subtle);
+}
