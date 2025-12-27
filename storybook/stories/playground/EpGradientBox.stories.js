@@ -82,7 +82,7 @@ const generateStopArgTypes = (maxStops) => {
 }
 
 export default {
-  title: 'Components/Gradient Playground',
+  title: 'Playground/Gradients',
   component: GradientBox,
   argTypes: {
     gradientType: {
@@ -150,7 +150,7 @@ export default {
   }
 }
 
-export const GradientPlayground = (args) => ({
+export const Gradients = (args) => ({
   components: { GradientBox, EpButton },
   setup() {
     const gradient = computed(() => {
@@ -215,7 +215,7 @@ export const GradientPlayground = (args) => ({
 })
 
 // Default gradient: Purple to pink
-GradientPlayground.args = {
+Gradients.args = {
   gradientType: 'linear-gradient',
   angle: 90,
   radialShape: 'circle',
