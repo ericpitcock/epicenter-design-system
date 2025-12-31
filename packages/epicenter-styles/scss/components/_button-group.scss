@@ -1,6 +1,6 @@
 .ep-button-group {
   --ep-button-group-active-text-color: var(--text-color--loud);
-  --ep-button-group-inactive-text-color: var(--text-color--disabled);
+  --ep-button-group-inactive-text-color: var(--text-color--subtle);
   display: flex;
 
   > :not(:first-child) .ep-button {

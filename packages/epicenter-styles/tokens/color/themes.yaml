@@ -11,6 +11,9 @@ interface-surface:
 interface-surface--accent:
   dark: hsl(var(--gray-420))
   light: hsl(var(--gray-50))
+interface-surface--inverse:
+  dark: hsl(var(--gray-30))
+  light: hsl(var(--gray-440))
 interface-foreground:
   dark: hsl(var(--gray-430))
   light: hsl(var(--gray-20))
@@ -61,38 +64,32 @@ text-color:
 text-color--disabled:
   dark: hsl(var(--gray-300))
   light: hsl(var(--gray-170))
+text-color--subtle:
+  dark: hsl(var(--gray-220))
+  light: hsl(var(--gray-300))
 text-color--loud:
   dark: hsl(var(--gray-50))
   light: hsl(var(--gray-500))
 text-color--inverse:
-  dark: var(--interface-bg)
-  light: hsl(var(--gray-0))
-text-color--highlight:
-  dark: var(--yellow-600)
-  light: var(--yellow-300)
-text-color--placeholder:
-  dark: var(--text-color--subtle)
-  light: var(--text-color--subtle)
+  dark: hsl(var(--gray-410))
+  light: hsl(var(--gray-150))
 
 # Text Color Variants
 text-color--primary:
   dark: hsl(var(--blue-400))
   light: hsl(var(--blue-600))
-text-color--subtle:
-  dark: hsl(var(--gray-220))
-  light: hsl(var(--gray-270))
 text-color--link:
-  dark: var(--sky-300)
-  light: var(--sky-600)
+  dark: hsl(var(--sky-300))
+  light: hsl(var(--sky-600))
 text-color--danger:
-  dark: var(--red-400)
-  light: var(--red-600)
+  dark: hsl(var(--red-400))
+  light: hsl(var(--red-600))
 text-color--warning:
-  dark: var(--amber-500)
-  light: var(--amber-600)
+  dark: hsl(var(--amber-500))
+  light: hsl(var(--amber-600))
 text-color--success:
-  dark: var(--green-600)
-  light: var(--green-700)
+  dark: hsl(var(--green-600))
+  light: hsl(var(--green-700))
 
 # Text Selection
 text-selection:

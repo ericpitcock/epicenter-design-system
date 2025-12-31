@@ -431,9 +431,7 @@
       <div class="forms-sandbox-column">
         <ep-flex class="flex-col gap-30">
           <p class="font-size--small text-color--subtle">
-            All fields required
-            unless
-            noted
+            All fields required unless noted
           </p>
           <!-- Order Type -->
           <ep-fieldset
@@ -651,10 +649,10 @@
                   @update:model-value="updateTaco($event, taco.id)"
                 >
                   <div class="ep-checkbox__wrapper">
-                    {{ t[taco.id] }} <span
-                      class="text-color--subtle"
-                    >{{ formatPrice(taco.price)
-                    }}</span>
+                    {{ t[taco.id] }}
+                    <span class="text-color--subtle">
+                      {{ formatPrice(taco.price) }}
+                    </span>
                   </div>
                 </ep-checkbox>
                 <ep-select
@@ -690,11 +688,10 @@
                   @update:model-value="updateHotSauce($event, sauce.id)"
                 >
                   <div class="ep-checkbox__wrapper">
-                    {{ sauce.id === 'fire' ?
-                      t.veryHot : t[sauce.id] }} <span
-                      class="text-color--subtle"
-                    >{{
-                      formatPrice(sauce.price) }}</span>
+                    {{ sauce.id === 'fire' ? t.veryHot : t[sauce.id] }}
+                    <span class="text-color--subtle">{{
+                      formatPrice(sauce.price) }}
+                    </span>
                   </div>
                 </ep-checkbox>
                 <ep-select
@@ -730,11 +727,10 @@
                   @update:model-value="updateSide($event, side.id)"
                 >
                   <div class="ep-checkbox__wrapper">
-                    {{ side.id === 'chips' ?
-                      t.chipsAndSalsa : t[side.id] }} <span
-                      class="text-color--subtle"
-                    >{{ formatPrice(side.price)
-                    }}</span>
+                    {{ side.id === 'chips' ? t.chipsAndSalsa : t[side.id] }}
+                    <span class="text-color--subtle">
+                      {{ formatPrice(side.price) }}
+                    </span>
                   </div>
                 </ep-checkbox>
                 <ep-select
@@ -801,8 +797,9 @@
                   style="justify-content: space-between;"
                 >
                   <span>{{ item.quantity }}x {{ item.name }}</span>
-                  <span style="font-weight: 500;">${{ item.total.toFixed(2)
-                  }}</span>
+                  <span style="font-weight: 500;">
+                    ${{ item.total.toFixed(2) }}
+                  </span>
                 </ep-flex>
               </div>
 
@@ -843,7 +840,7 @@
   </ep-flex>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rye&family=Stint+Ultra+Condensed&family=Stint+Ultra+Expanded&display=swap');
 
   .forms-sandbox-container {
@@ -890,7 +887,6 @@
     .ep-fieldset__legend {
       padding-bottom: 0.5rem;
       border-bottom: 1px dashed hsl(25 38% 49% / 0.3);
-      ;
       margin-bottom: 2rem;
       color: hsl(25, 38%, 49%);
       font-family: "Rye", serif;

@@ -3,11 +3,43 @@
   --text--white: hsl(var(--gray-50));
 }
 
+.text-color--default {
+  color: var(--text-color);
+}
+
+.text-color--disabled {
+  color: var(--text-color--disabled);
+}
+
 .text-color--loud {
   color: var(--text-color--loud);
 }
 
-.text--subtle,
+// primary
+.text-color--primary {
+  color: var(--text-color--primary);
+}
+
 .text-color--subtle {
   color: var(--text-color--subtle);
+}
+
+.text-color--inverse {
+  color: var(--text-color--inverse);
+}
+
+.text-color--link {
+  color: var(--text-color--link);
+}
+
+.text-color--danger {
+  color: var(--text-color--danger);
+}
+
+.text-color--warning {
+  color: var(--text-color--warning);
+}
+
+.text-color--success {
+  color: var(--text-color--success);
 }

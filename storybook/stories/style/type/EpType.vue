@@ -1,94 +1,33 @@
-<!-- eslint-disable vue/no-v-html -->
-<template>
-  <ep-container
-    :style="{
-      '--ep-container-max-width': '120rem',
-      '--ep-container-padding': '0 3rem',
-      '--ep-container-content-padding': '3rem 0 10rem 0',
-      '--ep-container-bg-color': 'var(--interface-surface)',
-      '--ep-container-border-width': '0.1rem',
-      '--ep-container-overflow': 'auto'
-    }"
-    sticky-header
-    calculate-height
-    :calculate-height-offset="30"
-  >
-    <template #header>
-      <ep-header style="background: var(--interface-surface);">
-        <template #left>
-          <ep-tabs
-            :items="tabs"
-            :active-tab-index="activeTab"
-            @tab-click="setActiveTab"
-          />
-        </template>
-        <template #right>
-          <ep-button
-            label="Google Fonts"
-            href="https://fonts.google.com/specimen/Inter"
-          >
-            Google Fonts
-          </ep-button>
-        </template>
-      </ep-header>
-    </template>
-    <template #default>
-      <ep-tab-content
-        :items="tabs"
-        :active-tab-index="activeTab"
-      >
-        <template #tab-0>
-          <div
-            v-for="(typeStyle, index) in typeStyles"
-            :key="index"
-            class="type-style"
-          >
-            <div class="type-style__desc">
-              <div class="font-size--body text-color--loud">
-                {{ typeStyle.name }}
-              </div>
-              <template
-                v-for="(item, indexx) in typeStyle.meta"
-                :key="indexx"
-              >
-                <div class="meta font-size--small">
-                  {{ item }}
-                </div>
-              </template>
-            </div>
-            <div class="type-style__sample">
-              <div
-                :class="`font-size--${typeStyle.name.toLowerCase()}`"
-                v-html="typeStyle.sample"
-              />
-            </div>
-          </div>
-        </template>
-        <template #tab-1>
-          <div class="monospace">
-            Fira Code info coming soon
-          </div>
-        </template>
-      </ep-tab-content>
-    </template>
-  </ep-container>
-</template>
-
 <script setup>
   import { faker } from '@faker-js/faker'
   import { ref } from 'vue'
 
-  import EpButton from '@/components/button/EpButton.vue'
   import EpContainer from '@/components/container/EpContainer.vue'
+  import EpFlex from '@/components/flexbox/EpFlex.vue'
   import EpHeader from '@/components/header/EpHeader.vue'
   import EpTabContent from '@/components/tabs/EpTabContent.vue'
   import EpTabs from '@/components/tabs/EpTabs.vue'
   import { useTabs } from '@/composables'
 
-  const { activeTab, setActiveTab } = useTabs()
+  import TextColorItem from './TextColorItem.vue'
 
-  const tabs = ref(['Inter Variable', 'Fira Code Variable'])
-  const typeStyles = ref([
+  const { activeTab, setActiveTab } = useTabs(1)
+
+  const textColors = ref([
+    { variant: 'default', description: 'AAA compliant body text' },
+    { variant: 'disabled', description: 'Intentionally low contrast for disabled states' },
+    { variant: 'subtle', description: 'Supporting text, labels, and metadata' },
+    { variant: 'loud', description: 'High contrast for headings and emphasis' },
+    { variant: 'inverse', description: 'Black text in dark mode, white text in light mode' },
+    { variant: 'primary', description: 'Brand color for emphasized text' },
+    { variant: 'link', description: 'Hyperlinks and interactive text' },
+    { variant: 'danger', description: 'Errors and destructive actions' },
+    { variant: 'warning', description: 'Warnings and cautions' },
+    { variant: 'success', description: 'Success states and confirmations' },
+  ])
+
+  const tabs = ref(['Type Scale', 'Color'])
+  const typeScale = ref([
     {
       name: 'Jumbo',
       // desc: 'Page headers',
@@ -148,9 +87,134 @@
   ])
 </script>
 
+<!-- eslint-disable vue/no-v-html -->
+<template>
+  <ep-container
+    :style="{
+      '--ep-container-padding': '0',
+      '--ep-container-content-padding': '0',
+      '--ep-container-bg-color': 'var(--interface-surface)',
+      '--ep-container-border-width': '0.1rem',
+      '--ep-container-overflow': 'auto'
+    }"
+    sticky-header
+    calculate-height
+    :calculate-height-offset="30"
+  >
+    <template #header>
+      <ep-header
+        style="--ep-header-container-padding: 0 3rem; --ep-header-container-bg-color: transparent;"
+      >
+        <template #left>
+          <ep-tabs
+            :items="tabs"
+            :active-tab-index="activeTab"
+            @tab-click="setActiveTab"
+          />
+        </template>
+      </ep-header>
+    </template>
+    <template #default>
+      <ep-tab-content
+        :items="tabs"
+        :active-tab-index="activeTab"
+      >
+        <template #tab-0>
+          <div class="type-styles-container">
+            <div
+              v-for="(typeStyle, index) in typeScale"
+              :key="index"
+              class="type-style"
+            >
+              <div class="type-style__desc">
+                <div class="font-size--body text-color--loud">
+                  {{ typeStyle.name }}
+                </div>
+                <template
+                  v-for="(item, indexx) in typeStyle.meta"
+                  :key="indexx"
+                >
+                  <div class="meta font-size--small">
+                    {{ item }}
+                  </div>
+                </template>
+              </div>
+              <div class="type-style__sample">
+                <div
+                  :class="`font-size--${typeStyle.name.toLowerCase()}`"
+                  v-html="typeStyle.sample"
+                />
+              </div>
+              <div class="monospace">
+                Fira Code info coming soon
+              </div>
+            </div>
+          </div>
+        </template>
+        <template #tab-1>
+          <ep-flex>
+            <div class="dark-theme">
+              <ep-flex class="flex-col">
+                <text-color-item
+                  v-for="color in textColors"
+                  :key="color.variant"
+                  :variant="color.variant"
+                  :description="color.description"
+                />
+              </ep-flex>
+            </div>
+            <div class="light-theme">
+              <ep-flex class="flex-col">
+                <text-color-item
+                  v-for="color in textColors"
+                  :key="color.variant"
+                  :variant="color.variant"
+                  :description="color.description"
+                />
+              </ep-flex>
+            </div>
+          </ep-flex>
+        </template>
+      </ep-tab-content>
+    </template>
+  </ep-container>
+</template>
+
 <style lang="scss" scoped>
   .ep-container + .ep-container {
     margin-top: 10px;
+  }
+
+  .ep-tab-content {
+    height: 100%;
+
+    & > .ep-tab-content__tab-item .ep-flex {
+      height: 100%;
+    }
+  }
+
+  .type-styles-container {
+    padding: 3rem;
+  }
+
+  .dark-theme,
+  .light-theme {
+    flex: 1;
+    height: 100%;
+    background-color: var(--interface-surface);
+    padding: 3rem;
+  }
+
+  .dark-theme {
+    --text-color--danger: hsl(0 100% 76% / 1);
+    --text-color--warning: hsl(38 79% 60% / 1);
+    --text-color--success: hsl(122 39% 57% / 1);
+  }
+
+  .light-theme {
+    --text-color--danger: hsl(0 100% 43% / 1);
+    --text-color--warning: hsl(33 100% 32% / 1);
+    --text-color--success: hsl(142 72% 28% / 1)
   }
 
   .type-style {
