@@ -145,9 +145,6 @@
                   v-html="typeStyle.sample"
                 />
               </div>
-              <div class="monospace">
-                Fira Code info coming soon
-              </div>
             </div>
           </div>
         </template>
