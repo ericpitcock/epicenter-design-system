@@ -302,9 +302,7 @@ export const Button = args => ({
       >
         <component :is="iconLeftComponent" />
       </template>
-
       {{ args.label }}
-      
       <template
         v-if="args.enabledIcons && args.iconRight != 'None'"
         #icon-right
@@ -316,12 +314,12 @@ export const Button = args => ({
 })
 
 Button.args = {
-  label: 'Receive taco',
+  label: '',
   size: 'large',
   disabled: false,
   classes: 'Primary',
-  enabledIcons: false,
-  iconLeft: 'None',
+  enabledIcons: true,
+  iconLeft: 'Circle',
   iconRight: 'None',
   borderRadius: 3,
 }

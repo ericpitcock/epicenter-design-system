@@ -7,6 +7,7 @@ svg.ep-icon {
   display: inline-block;
   width: var(--ep-icon-width, var(--ep-icon-size));
   height: var(--ep-icon-height, var(--ep-icon-size));
+  max-height: 100%;
   color: var(--ep-icon-color);
   vertical-align: middle;
   // Inherit to shapes by default
