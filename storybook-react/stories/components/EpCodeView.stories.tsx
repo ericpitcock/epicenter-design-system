@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import { EpCodeView } from '@ericpitcock/epicenter-react-components'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpCodeView> = {
-  title: 'Components/EpCodeView',
+  title: 'Components/CodeView',
   component: EpCodeView,
   parameters: {
     layout: 'padded'

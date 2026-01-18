@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import { EpKeyValueTable } from '@ericpitcock/epicenter-react-components'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpKeyValueTable> = {
-  title: 'Components/EpKeyValueTable',
+  title: 'Components/KeyValueTable',
   component: EpKeyValueTable,
   parameters: {
     layout: 'padded'

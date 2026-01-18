@@ -1,9 +1,9 @@
+import { EpAsyncButton } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { EpAsyncButton } from '@ericpitcock/epicenter-react-components'
 
 const meta: Meta<typeof EpAsyncButton> = {
-  title: 'Components/EpAsyncButton',
+  title: 'Components/AsyncButton',
   component: EpAsyncButton,
   parameters: {
     layout: 'centered'

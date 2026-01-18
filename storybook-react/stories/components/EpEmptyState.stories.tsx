@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import { EpEmptyState, EpButton } from '@ericpitcock/epicenter-react-components'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpEmptyState> = {
-  title: 'Components/EpEmptyState',
+  title: 'Components/EmptyState',
   component: EpEmptyState,
   parameters: {
     layout: 'centered'

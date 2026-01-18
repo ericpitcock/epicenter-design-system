@@ -1,9 +1,9 @@
+import { EpNotification } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { EpNotification } from '@ericpitcock/epicenter-react-components'
 
 const meta: Meta<typeof EpNotification> = {
-  title: 'Components/EpNotification',
+  title: 'Components/Notification',
   component: EpNotification,
   parameters: {
     layout: 'centered'

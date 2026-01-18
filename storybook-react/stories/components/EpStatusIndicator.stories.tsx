@@ -1,6 +1,6 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
 import { EpStatusIndicator } from '@ericpitcock/epicenter-react-components';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
 type StatusIndicatorStoryProps = {
   pulse?: boolean;
@@ -35,7 +35,7 @@ const meta: Meta<StatusIndicatorStoryProps> = {
 export default meta;
 type Story = StoryObj<StatusIndicatorStoryProps>;
 
-export const Default: Story = {
+export const StatusIndicator: Story = {
   render: (args) => (
     <EpStatusIndicator pulse={args.pulse}>
       {args.label}

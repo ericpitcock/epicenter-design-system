@@ -1,0 +1,17 @@
+import { EpSignIn } from '@ericpitcock/epicenter-react-components';
+import type { Meta, StoryObj } from '@storybook/react';
+
+const meta = {
+  title: 'Components/SignIn',
+  component: EpSignIn,
+  parameters: {
+    layout: 'centered',
+  },
+} satisfies Meta<typeof EpSignIn>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const SignIn: Story = {
+  args: {},
+};

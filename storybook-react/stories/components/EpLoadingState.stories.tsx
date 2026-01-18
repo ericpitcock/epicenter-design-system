@@ -1,6 +1,6 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
 import { EpLoadingState } from '@ericpitcock/epicenter-react-components';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
 const meta: Meta<typeof EpLoadingState> = {
   title: 'Components/LoadingState',
@@ -21,7 +21,7 @@ const meta: Meta<typeof EpLoadingState> = {
 export default meta;
 type Story = StoryObj<typeof EpLoadingState>;
 
-export const Default: Story = {
+export const LoadingState: Story = {
   render: (args: any) => (
     <EpLoadingState message={{ message: args.message }} />
   ),

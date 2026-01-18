@@ -1,9 +1,9 @@
+import { EpBanner, EpButton } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { EpBanner, EpButton } from '@ericpitcock/epicenter-react-components'
 
 const meta: Meta<typeof EpBanner> = {
-  title: 'Components/EpBanner',
+  title: 'Components/Banner',
   component: EpBanner,
   parameters: {
     layout: 'centered'

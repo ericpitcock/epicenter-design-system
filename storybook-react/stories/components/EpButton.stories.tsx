@@ -1,6 +1,6 @@
-import React, { CSSProperties } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
 import { EpButton } from '@ericpitcock/epicenter-react-components';
+import type { Meta, StoryObj } from '@storybook/react';
+import React, { CSSProperties } from 'react';
 
 type ButtonStoryProps = {
   classes?: string;
@@ -243,26 +243,26 @@ export default meta;
 type Story = StoryObj<typeof EpButton>;
 
 interface TemplateArgs {
-  label?: string;
-  size?: 'small' | 'default' | 'large' | 'xlarge';
-  disabled?: boolean;
-  classes?: string;
-  enabledIcons?: boolean;
-  iconLeftName?: string;
-  iconRightName?: string;
-  borderRadius?: number;
-  backgroundColor?: string;
-  borderColor?: string;
-  textColor?: string;
-  hoverBackgroundColor?: string;
-  hoverBorderColor?: string;
-  hoverTextColor?: string;
   activeBackgroundColor?: string;
   activeBorderColor?: string;
   activeTextColor?: string;
+  backgroundColor?: string;
+  borderColor?: string;
+  borderRadius?: number;
+  classes?: string;
+  disabled?: boolean;
   disabledBackgroundColor?: string;
   disabledBorderColor?: string;
   disabledTextColor?: string;
+  enabledIcons?: boolean;
+  hoverBackgroundColor?: string;
+  hoverBorderColor?: string;
+  hoverTextColor?: string;
+  iconLeftName?: string;
+  iconRightName?: string;
+  label?: string;
+  size?: 'small' | 'default' | 'large' | 'xlarge';
+  textColor?: string;
 }
 
 const Template = (args: TemplateArgs) => {

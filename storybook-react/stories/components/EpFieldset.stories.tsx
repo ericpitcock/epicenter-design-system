@@ -1,7 +1,7 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
 import { EpFieldset } from '@ericpitcock/epicenter-react-components';
 import { EpCheckbox } from '@ericpitcock/epicenter-react-components';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
 const meta: Meta<typeof EpFieldset> = {
   title: 'Components/Fieldset',

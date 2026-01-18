@@ -1,9 +1,9 @@
+import { EpBasicTable } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { EpBasicTable } from '@ericpitcock/epicenter-react-components'
 
 const meta: Meta<typeof EpBasicTable> = {
-  title: 'Components/EpBasicTable',
+  title: 'Components/BasicTable',
   component: EpBasicTable,
   parameters: {
     layout: 'padded'
@@ -42,7 +42,7 @@ const data = [
   { id: 5, name: 'Charlie Brown', email: 'charlie@example.com', role: 'User', status: 'Active' }
 ]
 
-export const Default: Story = {
+export const BasicTable: Story = {
   args: {
     columns,
     data

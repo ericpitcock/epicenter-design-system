@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
 import { EpTable } from '@ericpitcock/epicenter-react-components'
 import { EpTableHead } from '@ericpitcock/epicenter-react-components'
 import { EpTableSortableHeader } from '@ericpitcock/epicenter-react-components'
+import type { Meta, StoryObj } from '@storybook/react'
+import { useState } from 'react'
 
 const meta: Meta<typeof EpTable> = {
-  title: 'Components/EpTable',
+  title: 'Components/Table',
   component: EpTable,
   parameters: {
     layout: 'padded'

@@ -6,11 +6,23 @@ module.exports = {
     'plugin:react/recommended',
     'eslint:recommended',
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
+    ecmaFeatures: {
+      jsx: true,
+    },
+    sourceType: 'module',
   },
-  plugins: ['import', 'perfectionist'],
+  plugins: ['import', 'perfectionist', '@typescript-eslint', 'react'],
   rules: {
+    // React
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    
+    // TypeScript
+    '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'varsIgnorePattern': '^props$' }],
+    
     // Existing rules
     'no-unused-vars': ['error', { 'varsIgnorePattern': '^props$' }],
 

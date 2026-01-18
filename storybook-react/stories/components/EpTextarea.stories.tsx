@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
 import { EpTextarea } from '@ericpitcock/epicenter-react-components';
+import type { Meta, StoryObj } from '@storybook/react';
+import React, { useState } from 'react';
 
 const meta: Meta<typeof EpTextarea> = {
   title: 'Components/Textarea',

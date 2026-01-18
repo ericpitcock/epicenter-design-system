@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
 import { EpOverlay } from '@ericpitcock/epicenter-react-components'
 import { EpButton } from '@ericpitcock/epicenter-react-components'
+import type { Meta, StoryObj } from '@storybook/react'
+import { useState } from 'react'
 
 const meta: Meta<typeof EpOverlay> = {
-  title: 'Components/EpOverlay',
+  title: 'Components/Overlay',
   component: EpOverlay,
   parameters: {
     layout: 'centered'

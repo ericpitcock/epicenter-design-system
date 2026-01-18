@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import { EpTooltip } from '@ericpitcock/epicenter-react-components'
 import { EpButton } from '@ericpitcock/epicenter-react-components'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpTooltip> = {
-  title: 'Components/EpTooltip',
+  title: 'Components/Tooltip',
   component: EpTooltip,
   parameters: {
     layout: 'centered'
@@ -45,7 +45,7 @@ const meta: Meta<typeof EpTooltip> = {
 export default meta
 type Story = StoryObj<typeof EpTooltip>
 
-export const Default: Story = {
+export const Tooltip: Story = {
   args: {
     tooltip: 'This is a helpful tooltip',
     position: 'top center',

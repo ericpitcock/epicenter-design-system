@@ -1,9 +1,9 @@
+import { EpResizable } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { EpResizable } from '@ericpitcock/epicenter-react-components'
 
 const meta: Meta<typeof EpResizable> = {
-  title: 'Components/EpResizable',
+  title: 'Components/Resizable',
   component: EpResizable,
   parameters: {
     layout: 'fullscreen'

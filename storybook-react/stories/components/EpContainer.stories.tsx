@@ -1,6 +1,6 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
 import { EpContainer } from '@ericpitcock/epicenter-react-components';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
 const meta: Meta<typeof EpContainer> = {
   title: 'Components/Container',

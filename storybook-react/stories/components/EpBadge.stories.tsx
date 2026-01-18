@@ -1,6 +1,6 @@
-import React, { CSSProperties } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
 import { EpBadge } from '@ericpitcock/epicenter-react-components';
+import type { Meta, StoryObj } from '@storybook/react';
+import React, { CSSProperties } from 'react';
 
 type BadgeStoryProps = {
   classes?: 'Primary' | 'Success' | 'Warning' | 'Danger' | 'Custom';

@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
 import { EpTabs } from '@ericpitcock/epicenter-react-components'
 import { EpTabContent } from '@ericpitcock/epicenter-react-components'
+import type { Meta, StoryObj } from '@storybook/react'
+import { useState } from 'react'
 
 const meta: Meta<typeof EpTabs> = {
-  title: 'Components/EpTabs',
+  title: 'Components/Tabs',
   component: EpTabs,
   parameters: {
     layout: 'centered'

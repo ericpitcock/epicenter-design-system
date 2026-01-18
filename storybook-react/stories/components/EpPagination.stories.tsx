@@ -1,9 +1,9 @@
+import { EpPagination } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { EpPagination } from '@ericpitcock/epicenter-react-components'
 
 const meta: Meta<typeof EpPagination> = {
-  title: 'Components/EpPagination',
+  title: 'Components/Pagination',
   component: EpPagination,
   parameters: {
     layout: 'centered'

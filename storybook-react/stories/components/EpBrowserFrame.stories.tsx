@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import { EpBrowserFrame } from '@ericpitcock/epicenter-react-components'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpBrowserFrame> = {
-  title: 'Components/EpBrowserFrame',
+  title: 'Components/BrowserFrame',
   component: EpBrowserFrame,
   parameters: {
     layout: 'centered'

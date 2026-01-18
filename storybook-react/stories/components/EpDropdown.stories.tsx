@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import { EpDropdown } from '@ericpitcock/epicenter-react-components'
 import { EpButton } from '@ericpitcock/epicenter-react-components'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpDropdown> = {
-  title: 'Components/EpDropdown',
+  title: 'Components/Dropdown',
   component: EpDropdown,
   parameters: {
     layout: 'centered'
@@ -27,7 +27,7 @@ const meta: Meta<typeof EpDropdown> = {
 export default meta
 type Story = StoryObj<typeof EpDropdown>
 
-export const Default: Story = {
+export const Dropdown: Story = {
   render: () => (
     <div style={{ padding: '100px' }}>
       <EpDropdown

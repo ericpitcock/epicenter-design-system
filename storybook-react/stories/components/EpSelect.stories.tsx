@@ -1,9 +1,9 @@
+import { EpSelect } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { EpSelect } from '@ericpitcock/epicenter-react-components'
 
 const meta: Meta<typeof EpSelect> = {
-  title: 'Components/EpSelect',
+  title: 'Components/Select',
   component: EpSelect,
   parameters: {
     layout: 'centered'

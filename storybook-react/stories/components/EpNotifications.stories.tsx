@@ -1,9 +1,9 @@
+import { EpNotifications, NotificationItem } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { EpNotifications, NotificationItem } from '@ericpitcock/epicenter-react-components'
 
 const meta: Meta<typeof EpNotifications> = {
-  title: 'Components/EpNotifications',
+  title: 'Components/Notifications',
   component: EpNotifications,
   parameters: {
     layout: 'fullscreen'
@@ -51,7 +51,7 @@ const generateMockNotifications = (): NotificationItem[] => [
   }
 ]
 
-export const Default: Story = {
+export const Notifications: Story = {
   render: (args) => {
     const [notifications, setNotifications] = useState<NotificationItem[]>(generateMockNotifications())
     

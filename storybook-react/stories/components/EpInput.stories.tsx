@@ -1,9 +1,9 @@
+import { EpInput } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { EpInput } from '@ericpitcock/epicenter-react-components'
 
 const meta: Meta<typeof EpInput> = {
-  title: 'Components/EpInput',
+  title: 'Components/Input',
   component: EpInput,
   parameters: {
     layout: 'centered'

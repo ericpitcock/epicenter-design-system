@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
 import { EpMenu } from '@ericpitcock/epicenter-react-components'
 import { EpMenuItem } from '@ericpitcock/epicenter-react-components'
+import type { Meta, StoryObj } from '@storybook/react'
+import { useState } from 'react'
 
 const meta: Meta<typeof EpMenu> = {
-  title: 'Components/EpMenu',
+  title: 'Components/Menu',
   component: EpMenu,
   parameters: {
     layout: 'centered'
@@ -14,7 +14,7 @@ const meta: Meta<typeof EpMenu> = {
 export default meta
 type Story = StoryObj<typeof EpMenu>
 
-export const Default: Story = {
+export const Menu: Story = {
   render: () => {
     const [lastAction, setLastAction] = useState('')
     
