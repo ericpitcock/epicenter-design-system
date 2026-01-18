@@ -1,0 +1,18 @@
+import React from 'react';
+
+const Maps = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M8 3.5L8 18M15 21V6.00001" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M2 18.6126V6.61803C2 6.23926 2.214 5.893 2.55279 5.72361L7.58517 3.20742C7.84826 3.07587 8.15593 3.06683 8.4263 3.1827L15 6H21C21.5523 6 22 6.44772 22 7V20C22 20.5523 21.5523 21 21 21H15L8 18L3.31623 19.5613C2.6687 19.7771 2 19.2951 2 18.6126Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Maps.displayName = 'Maps';
+
+export default Maps;

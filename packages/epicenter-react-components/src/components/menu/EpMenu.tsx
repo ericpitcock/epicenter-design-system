@@ -17,7 +17,7 @@ export interface EpMenuProps {
  * Implements WAI-ARIA menu pattern with arrow key navigation, Home/End support,
  * and proper focus management for nested submenus.
  */
-const EpMenu = React.forwardRef<HTMLDivElement, EpMenuProps>(
+export const EpMenu = React.forwardRef<HTMLDivElement, EpMenuProps>(
   ({ children, onEscape, onTab, className = '' }, ref) => {
     const menuRef = useRef<HTMLDivElement>(null)
     const currentFocusIndex = useRef(0)
@@ -178,5 +178,3 @@ const EpMenu = React.forwardRef<HTMLDivElement, EpMenuProps>(
 )
 
 EpMenu.displayName = 'EpMenu'
-
-export default EpMenu

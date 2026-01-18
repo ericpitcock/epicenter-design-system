@@ -1,0 +1,19 @@
+import React from 'react';
+
+const Camera01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M2 8.5C2 7.39543 2.89543 6.5 4 6.5H7.5L9.0547 4.16795C9.3329 3.75065 9.80125 3.5 10.3028 3.5H13.6972C14.1988 3.5 14.6671 3.75065 14.9453 4.16795L16.5 6.5H20C21.1046 6.5 22 7.39543 22 8.5V18.5C22 19.6046 21.1046 20.5 20 20.5H4C2.89543 20.5 2 19.6046 2 18.5V8.5Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16 13C16 15.2091 14.2091 17 12 17C9.79086 17 8 15.2091 8 13C8 10.7909 9.79086 9 12 9C14.2091 9 16 10.7909 16 13Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M19 9.5V9.51" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Camera01.displayName = 'Camera01';
+
+export default Camera01;

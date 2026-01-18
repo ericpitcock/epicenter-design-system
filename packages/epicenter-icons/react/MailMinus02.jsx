@@ -1,0 +1,19 @@
+import React from 'react';
+
+const MailMinus02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M11.5 20H4C2.89543 20 2 19.1046 2 18V6C2 4.89543 2.89543 4 4 4H20C21.1046 4 22 4.89543 22 6V14" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15 19H22" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M6 8L10.9923 10.9122C11.615 11.2754 12.385 11.2754 13.0077 10.9122L18 8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+MailMinus02.displayName = 'MailMinus02';
+
+export default MailMinus02;

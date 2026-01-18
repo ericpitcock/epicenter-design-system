@@ -1,0 +1,22 @@
+import React from 'react';
+
+const Church = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M12 2V6.99652M14 3.99826H10" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M17 12L19.8944 13.4472C20.572 13.786 21 14.4785 21 15.2361V22H17" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 12L4.10557 13.4472C3.428 13.786 3 14.4785 3 15.2361V22H7" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M10 22V18C10 16.8954 10.8954 16 12 16C13.1046 16 14 16.8954 14 18V22" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12.009 11.9922H12" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 10L12 7L17 10V22H7V10Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Church.displayName = 'Church';
+
+export default Church;

@@ -51,7 +51,7 @@ export interface EpTableProps {
  * Supports hidden columns, selectable rows, striped/bordered styling, sticky headers,
  * and custom cell rendering with slot-like props.
  */
-const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
+export const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
   (
     {
       columns,
@@ -185,5 +185,3 @@ const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
 )
 
 EpTable.displayName = 'EpTable'
-
-export default EpTable

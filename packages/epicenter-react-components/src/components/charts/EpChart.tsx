@@ -17,7 +17,7 @@ export interface EpChartProps {
  * Dynamically loads Highcharts and renders charts with styled mode enabled.
  * Provides chart reflow method for responsive resizing.
  */
-const EpChart = React.forwardRef<{ reflowChart: () => void }, EpChartProps>(
+export const EpChart = React.forwardRef<{ reflowChart: () => void }, EpChartProps>(
   ({ chartColors = {}, height = 400, options = {}, className = '' }, ref) => {
     const chartRef = useRef<any>(null)
     const [chartId] = useState(`ep-chart-${Math.random().toString(36).substring(7)}`)
@@ -89,5 +89,3 @@ const EpChart = React.forwardRef<{ reflowChart: () => void }, EpChartProps>(
 )
 
 EpChart.displayName = 'EpChart'
-
-export default EpChart

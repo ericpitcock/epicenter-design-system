@@ -15,7 +15,7 @@ export interface EpTableCellProps {
  * 
  * Renders table cell content with optional value formatting via column.formatter.
  */
-const EpTableCell: React.FC<EpTableCellProps> = ({ row, column, styles = [] }) => {
+export const EpTableCell: React.FC<EpTableCellProps> = ({ row, column, styles = [] }) => {
   const cellContent = useMemo(() => {
     const value = row[column.key]
     const formatter = column.formatter
@@ -28,5 +28,3 @@ const EpTableCell: React.FC<EpTableCellProps> = ({ row, column, styles = [] }) =
 
   return <span className={column.class}>{cellContent}</span>
 }
-
-export default EpTableCell

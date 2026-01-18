@@ -27,7 +27,7 @@ export interface EpDonutChartProps {
  * Renders an interactive donut chart using D3.js with hover tooltips
  * and optional animation on mount.
  */
-const EpDonutChart: React.FC<EpDonutChartProps> = ({
+export const EpDonutChart: React.FC<EpDonutChartProps> = ({
   animate = true,
   width = 200,
   height = 200,
@@ -167,5 +167,3 @@ const EpDonutChart: React.FC<EpDonutChartProps> = ({
     </div>
   )
 }
-
-export default EpDonutChart

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, CSSProperties } from 'react';
 
-interface EpImageProps {
+export interface EpImageProps {
   /** The source URL of the image */
   src: string;
   /** The alt text for the image */
@@ -24,7 +24,7 @@ interface EpImageProps {
 /**
  * EpImage - An image component with lazy loading and placeholder support
  */
-const EpImage: React.FC<EpImageProps> = ({
+export const EpImage: React.FC<EpImageProps> = ({
   src,
   alt = '',
   width = '100%',
@@ -102,5 +102,3 @@ const EpImage: React.FC<EpImageProps> = ({
 };
 
 EpImage.displayName = 'EpImage';
-
-export default EpImage;

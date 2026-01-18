@@ -16,7 +16,7 @@ export interface EpTableSearchInputProps {
  * 
  * Controlled input component for filtering table data.
  */
-const EpTableSearchInput: React.FC<EpTableSearchInputProps> = ({
+export const EpTableSearchInput: React.FC<EpTableSearchInputProps> = ({
   value,
   onChange,
   placeholder = 'Search...',
@@ -32,5 +32,3 @@ const EpTableSearchInput: React.FC<EpTableSearchInputProps> = ({
     />
   )
 }
-
-export default EpTableSearchInput

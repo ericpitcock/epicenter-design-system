@@ -1,0 +1,19 @@
+import React from 'react';
+
+const Book01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M20 22H6C4.89543 22 4 21.1046 4 20M4 20C4 18.8954 4.89543 18 6 18H18C19.1046 18 20 17.1046 20 16V2C20 3.10457 19.1046 4 18 4L6 4C4.89543 4 4 4.89543 4 6V20Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M18.5 18C18.5 18 17.5 18.7628 17.5 20C17.5 21.2372 18.5 22 18.5 22" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9 4V8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Book01.displayName = 'Book01';
+
+export default Book01;

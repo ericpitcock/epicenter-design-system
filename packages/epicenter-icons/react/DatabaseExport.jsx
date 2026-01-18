@@ -1,0 +1,22 @@
+import React from 'react';
+
+const DatabaseExport = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <ellipse cx="12" cy="5" rx="8" ry="3" strokeLinejoin="round" />
+    <path d="M4 12C4 13.5418 7.48993 14.8141 12 15" strokeLinecap="round" />
+    <path d="M7 11C7.60158 11.1808 8.27434 11.3898 9 11.5" strokeLinecap="round" />
+    <path d="M7 18C7.60158 18.1808 8.27434 18.3898 9 18.5" strokeLinecap="round" />
+    <path d="M12 22C7.58172 22 4 20.6569 4 19V5M20 5V11.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15 16.5L17.5 14L20 16.5M17.5 21.5V14.6088" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+DatabaseExport.displayName = 'DatabaseExport';
+
+export default DatabaseExport;

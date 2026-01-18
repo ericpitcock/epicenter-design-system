@@ -1,0 +1,19 @@
+import React from 'react';
+
+const PictureInPictureOn = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M9.5 20H4C2.89543 20 2 19.1046 2 18V6C2 4.89543 2.89543 4 4 4H19.9999C21.1045 4 21.9999 4.89543 21.9999 6V10.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M14 15C14 14.4477 14.4477 14 15 14H21C21.5523 14 22 14.4477 22 15V19C22 19.5523 21.5523 20 21 20H15C14.4477 20 14 19.5523 14 19V15Z" strokeLinejoin="round" />
+    <path d="M6 8L10.4842 12.4845M7.49813 13H10.9997L11 9.45528" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+PictureInPictureOn.displayName = 'PictureInPictureOn';
+
+export default PictureInPictureOn;

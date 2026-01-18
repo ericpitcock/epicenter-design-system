@@ -16,7 +16,7 @@ export interface EpCodeViewProps {
  * 
  * Uses Shiki for syntax highlighting with customizable themes.
  */
-const EpCodeView: React.FC<EpCodeViewProps> = ({
+export const EpCodeView: React.FC<EpCodeViewProps> = ({
   code,
   language,
   theme = 'one-dark-pro',
@@ -53,5 +53,3 @@ const EpCodeView: React.FC<EpCodeViewProps> = ({
     />
   )
 }
-
-export default EpCodeView

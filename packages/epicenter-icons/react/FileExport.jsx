@@ -1,0 +1,19 @@
+import React from 'react';
+
+const FileExport = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M19 14V9L12 2H5C3.89543 2 3 2.89543 3 4V20C3 21.1046 3.89543 22 5 22H10" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 2V7C12 8.10457 12.8954 9 14 9H19" strokeLinejoin="round" />
+    <path d="M16 22L19 19L16 16M11 19H18.3912" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+FileExport.displayName = 'FileExport';
+
+export default FileExport;

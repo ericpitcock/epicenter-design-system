@@ -22,7 +22,7 @@ export interface EpBreadcrumbsProps {
   renderItem?: (crumb: BreadcrumbItem, index: number, isLast: boolean) => ReactNode
 }
 
-const EpBreadcrumbs: React.FC<EpBreadcrumbsProps> = ({
+export const EpBreadcrumbs: React.FC<EpBreadcrumbsProps> = ({
   items = [],
   separator,
   renderItem
@@ -74,5 +74,3 @@ const EpBreadcrumbs: React.FC<EpBreadcrumbsProps> = ({
     </nav>
   )
 }
-
-export default EpBreadcrumbs

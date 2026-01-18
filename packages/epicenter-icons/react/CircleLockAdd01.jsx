@@ -1,0 +1,19 @@
+import React from 'react';
+
+const CircleLockAdd01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M17 22L17 15M13.5 18.5H20.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M10.6748 21.9979C6.64007 22.0953 3.5 18.8058 3.5 14.999C3.5 11.1335 6.69664 8 10.6399 8C13.0662 8 15.2098 9.18634 16.5 10.9995" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15 9V6.5C15 4.01472 12.9853 2 10.5 2C8.01472 2 6 4.01472 6 6.5V9.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+CircleLockAdd01.displayName = 'CircleLockAdd01';
+
+export default CircleLockAdd01;

@@ -1,0 +1,19 @@
+import React from 'react';
+
+const MailSearch01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M11 19H4C2.89543 19 2 18.1046 2 17V5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V10" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M22 6L12.8944 10.5528C12.3314 10.8343 11.6686 10.8343 11.1056 10.5528L2 6" strokeLinejoin="round" />
+    <path d="M20.017 19.0233L22 21M21.0531 16.5265C21.0531 14.5789 19.4742 13 17.5265 13C15.5789 13 14 14.5789 14 16.5265C14 18.4742 15.5789 20.0531 17.5265 20.0531C19.4742 20.0531 21.0531 18.4742 21.0531 16.5265Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+MailSearch01.displayName = 'MailSearch01';
+
+export default MailSearch01;

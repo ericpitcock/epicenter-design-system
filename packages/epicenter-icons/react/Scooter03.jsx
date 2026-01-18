@@ -1,0 +1,21 @@
+import React from 'react';
+
+const Scooter03 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <circle cx="12" cy="4" r="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M10 4H6" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M18 4H14" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15 20L16.4384 20C17.7396 20 18.6943 18.7772 18.3787 17.5149L16.3787 9.51493C16.1561 8.62459 15.3562 8 14.4384 8H9.56155C8.64382 8 7.84385 8.62459 7.62127 9.51493L5.62127 17.5149C5.30569 18.7772 6.26041 20 7.56155 20L9 20" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 18L12 22" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Scooter03.displayName = 'Scooter03';
+
+export default Scooter03;

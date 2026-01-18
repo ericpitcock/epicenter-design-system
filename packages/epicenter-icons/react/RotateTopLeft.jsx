@@ -1,0 +1,18 @@
+import React from 'react';
+
+const RotateTopLeft = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M17 10C17 8.89543 16.1046 8 15 8H5C3.89543 8 3 8.89543 3 10V20C3 21.1046 3.89543 22 5 22H15C16.1046 22 17 21.1046 17 20V10Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M13.5 2L12 4H19C20.1046 4 21 4.89543 21 6V13" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+RotateTopLeft.displayName = 'RotateTopLeft';
+
+export default RotateTopLeft;

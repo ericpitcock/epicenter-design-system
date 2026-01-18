@@ -1,0 +1,19 @@
+import React from 'react';
+
+const VerticalScrollPoint = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M8 6.99997L12 3L16 7" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16 17L12 21L8 17" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+VerticalScrollPoint.displayName = 'VerticalScrollPoint';
+
+export default VerticalScrollPoint;

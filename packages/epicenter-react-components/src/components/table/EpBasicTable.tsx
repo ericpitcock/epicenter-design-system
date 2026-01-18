@@ -21,7 +21,7 @@ export interface EpBasicTableProps {
  * 
  * A lightweight table for basic data display with optional styling variants.
  */
-const EpBasicTable: React.FC<EpBasicTableProps> = ({
+export const EpBasicTable: React.FC<EpBasicTableProps> = ({
   columns,
   data,
   bordered = false,
@@ -66,5 +66,3 @@ const EpBasicTable: React.FC<EpBasicTableProps> = ({
     </div>
   )
 }
-
-export default EpBasicTable

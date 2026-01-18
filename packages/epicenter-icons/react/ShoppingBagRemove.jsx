@@ -1,0 +1,19 @@
+import React from 'react';
+
+const ShoppingBagRemove = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M12.808 20.5L4.6962 20.5C3.03935 20.5 1.68901 19.1509 1.75213 17.4953C2.04906 9.70548 3.45593 5.3407 4.2123 3.52073C4.48191 2.872 5.12606 2.50002 5.82858 2.50002L15.6757 2.5C16.3782 2.5 17.0223 2.87198 17.292 3.52071C17.9071 5.00087 18.9525 8.16426 19.4812 13.4844" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7.7522 6.48438C7.7522 8.14123 9.09534 9.48438 10.7522 9.48438C12.4091 9.48438 13.7522 8.14123 13.7522 6.48438" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15.75 16.5L20.75 21.5M15.75 21.5L20.75 16.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+ShoppingBagRemove.displayName = 'ShoppingBagRemove';
+
+export default ShoppingBagRemove;

@@ -1,0 +1,19 @@
+import React from 'react';
+
+const CircleArrowDown03 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" strokeLinejoin="round" />
+    <path d="M14.5 11.5L12 13.9999L9.5 11.5M12 7V13.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7.99908 17H15.9991" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+CircleArrowDown03.displayName = 'CircleArrowDown03';
+
+export default CircleArrowDown03;

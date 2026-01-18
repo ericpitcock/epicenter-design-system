@@ -1,0 +1,20 @@
+import React from 'react';
+
+const Xml01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M10.5 22V16L12.5 19L14.5 16V22" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M17 16V22H20" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 16L6 19M6 19L8 22M6 19L8 16M6 19L4 22" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 12.9978L4.01994 3.99557C4.02238 2.89186 4.91845 1.99877 6.02216 2L12.9958 2.00776L20 8.99481L19.9922 12.9978M13 2.49778V6.99778C13 8.10235 13.8954 8.99778 15 8.99778H19.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Xml01.displayName = 'Xml01';
+
+export default Xml01;

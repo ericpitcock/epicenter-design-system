@@ -1,0 +1,18 @@
+import React from 'react';
+
+const AirplaneLanding01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M6 20L22 20" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M3.5 4L2 9.98552L8.74946 12.289L6 14.4747L11 15.971L13.5 13.9102L19.4344 15.9355C20.202 16.1975 21 15.6284 21 14.8192C21 11.5028 18.4934 8.72002 15.1879 8.36672L7 7.49156L6.5 4H3.5Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+AirplaneLanding01.displayName = 'AirplaneLanding01';
+
+export default AirplaneLanding01;

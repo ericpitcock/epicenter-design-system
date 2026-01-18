@@ -1,0 +1,20 @@
+import React from 'react';
+
+const AddInvoice = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M19 11.5V4C19 2.89543 18.1046 2 17 2H5C3.89543 2 3 2.89543 3 4V21.5L7 19.5L11 22L12.5 21.0625" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M11 11H7" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M17 14V22M21 18L13 18" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15 7L7 7" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+AddInvoice.displayName = 'AddInvoice';
+
+export default AddInvoice;

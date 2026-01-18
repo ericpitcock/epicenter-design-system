@@ -1,0 +1,22 @@
+import React from 'react';
+
+const PaymentSuccess01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M22 8C19.7909 8 18 6.20914 18 4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M2 8C4.20914 8 6 6.20914 6 4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M2 14C4.20914 14 6 15.7909 6 18" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M22 11V6C22 4.89543 21.1046 4 20 4H4C2.89543 4 2 4.89543 2 6V16C2 17.1046 2.89543 18 4 18H11" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15 11C15 12.6569 13.6569 14 12 14C10.3431 14 9 12.6569 9 11C9 9.34315 10.3431 8 12 8C13.6569 8 15 9.34315 15 11Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M14 18L16 20L22 14" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+PaymentSuccess01.displayName = 'PaymentSuccess01';
+
+export default PaymentSuccess01;

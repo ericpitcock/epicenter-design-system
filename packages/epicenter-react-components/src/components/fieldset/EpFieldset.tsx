@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-interface EpFieldsetProps {
+export interface EpFieldsetProps {
   /** Label for the fieldset legend */
   label?: string;
   /** Fieldset content */
@@ -12,7 +12,7 @@ interface EpFieldsetProps {
 /**
  * EpFieldset - A fieldset component for grouping form elements
  */
-const EpFieldset: React.FC<EpFieldsetProps> = ({ 
+export const EpFieldset: React.FC<EpFieldsetProps> = ({ 
   label = '', 
   children, 
   className = '' 
@@ -28,5 +28,3 @@ const EpFieldset: React.FC<EpFieldsetProps> = ({
 };
 
 EpFieldset.displayName = 'EpFieldset';
-
-export default EpFieldset;

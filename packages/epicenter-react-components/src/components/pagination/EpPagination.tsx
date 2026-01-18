@@ -1,7 +1,7 @@
 import React, { ReactNode, useMemo } from 'react'
-import EpButton from '../button/EpButton'
-import EpFlex from '../flexbox/EpFlex'
-import EpSelect from '../select/EpSelect'
+import { EpButton } from '../button/EpButton'
+import { EpFlex } from '../flexbox/EpFlex'
+import { EpSelect } from '../select/EpSelect'
 
 export interface ResultsPerPageOption {
   label: string
@@ -67,7 +67,7 @@ const defaultResultsPerPageOptions: ResultsPerPageOption[] = [
   { label: '100 / page', value: 100 }
 ]
 
-const EpPagination: React.FC<EpPaginationProps> = ({
+export const EpPagination: React.FC<EpPaginationProps> = ({
   currentPage,
   totalPages,
   showPages = false,
@@ -223,5 +223,3 @@ const EpPagination: React.FC<EpPaginationProps> = ({
     </div>
   )
 }
-
-export default EpPagination

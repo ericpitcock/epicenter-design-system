@@ -1,0 +1,18 @@
+import React from 'react';
+
+const BorderAll01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M5.5 21.5H18.5C20.1569 21.5 21.5 20.1569 21.5 18.5V5.5C21.5 3.84315 20.1569 2.5 18.5 2.5H5.5C3.84315 2.5 2.5 3.84315 2.5 5.5V18.5C2.5 20.1569 3.84315 21.5 5.5 21.5Z" strokeLinejoin="round" />
+    <path d="M12 2.5V4.4M12 19.6V21.5M9.15 12H14.85M19.6 12H21.5M2.5 12H4.4M12 9.14999V14.85" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+BorderAll01.displayName = 'BorderAll01';
+
+export default BorderAll01;

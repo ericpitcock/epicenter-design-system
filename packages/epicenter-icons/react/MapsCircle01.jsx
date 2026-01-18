@@ -1,0 +1,20 @@
+import React from 'react';
+
+const MapsCircle01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M9 15L5 19M15 21L3 9" strokeLinecap="round" />
+    <path d="M18 9.6C18 11.8075 15.8246 13.2691 14.9039 13.7888C14.6511 13.9316 14.3489 13.9316 14.0961 13.7888C13.1754 13.2691 11 11.8075 11 9.6C11 7.61177 12.567 6 14.5 6C16.433 6 18 7.61177 18 9.6Z" strokeLinejoin="round" />
+    <path d="M14.5 9.5H14.509" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" />
+  </svg>
+);
+
+MapsCircle01.displayName = 'MapsCircle01';
+
+export default MapsCircle01;

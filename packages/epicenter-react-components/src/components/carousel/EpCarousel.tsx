@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
-import EpButton from '../button/EpButton'
-import EpImage from '../image/EpImage'
+import { EpButton } from '../button/EpButton'
+import { EpImage } from '../image/EpImage'
 
 export interface CarouselImage {
   src: string
@@ -30,7 +30,7 @@ export interface EpCarouselProps {
  * Features center-aligned scrolling, clickable images, zoom/position support,
  * flexible caption positioning, and dot navigation indicators.
  */
-const EpCarousel: React.FC<EpCarouselProps> = ({
+export const EpCarousel: React.FC<EpCarouselProps> = ({
   images = [],
   onImageClick,
   onSlideChange,
@@ -291,5 +291,3 @@ const EpCarousel: React.FC<EpCarouselProps> = ({
     </div>
   )
 }
-
-export default EpCarousel

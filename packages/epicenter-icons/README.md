@@ -1,6 +1,6 @@
 # @ericpitcock/epicenter-icons
 
-A Vue 3 icon library for Epicenter Design System.
+An icon library for Epicenter Design System, available for both Vue 3 and React.
 
 ## Installation
 
@@ -8,7 +8,13 @@ A Vue 3 icon library for Epicenter Design System.
 npm install @ericpitcock/epicenter-icons
 ```
 
+## Available Icons
+
+Browse all 4,617 icons in the [icons.json](icons.json) file, the `epicenter-icons/` directory (Vue), or the `react/` directory (React).
+
 ## Usage
+
+### Vue 3
 
 Import icons directly from their individual files for optimal performance:
 
@@ -26,11 +32,39 @@ Import icons directly from their individual files for optimal performance:
 </template>
 ```
 
-> **Note:** Direct imports ensure fast build times and optimal tree-shaking. Barrel imports (importing from the package root) are not supported due to performance concerns with large icon sets.
+> **Note:** Direct imports ensure fast build times and optimal tree-shaking. Barrel imports (importing from the package root) are not supported for Vue due to performance concerns with large icon sets.
 
-## Available Icons
+### React
 
-Browse all 4,600+ icons in the [icons.json](icons.json) file or the `epicenter-icons/` directory.
+Import icons from the React directory:
+
+```jsx
+import { Heart, Coffee02, ArrowRight01 } from '@ericpitcock/epicenter-icons/react';
+
+function MyComponent() {
+  return (
+    <div>
+      <Heart />
+      <Coffee02 />
+      <ArrowRight01 />
+    </div>
+  );
+}
+```
+
+You can also pass custom props to React icons:
+
+```jsx
+<Heart 
+  width={32}
+  height={32}
+  stroke="currentColor"
+  fill="none"
+  strokeWidth={2}
+/>
+```
+
+See the [React README](./react/README.md) for detailed React usage.
 
 ## Styling & Customization
 

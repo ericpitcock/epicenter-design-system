@@ -1,0 +1,19 @@
+import React from 'react';
+
+const ImageAdd02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M2.5 16.501L7.46967 11.5313C7.80923 11.1917 8.26978 11.001 8.75 11.001C9.23022 11.001 9.69077 11.1917 10.0303 11.5313L14 15.501M15.5 17.001L14 15.501M21.5 16.501L18.5303 13.5313C18.1908 13.1917 17.7302 13.001 17.25 13.001C16.7698 13.001 16.3092 13.1917 15.9697 13.5313L14 15.501" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M21.5 10.501V19.501C21.5 20.6055 20.6046 21.501 19.5 21.501H4.5C3.39543 21.501 2.5 20.6055 2.5 19.501V4.50098C2.5 3.39641 3.39543 2.50098 4.5 2.50098H13.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M21.5 5.99902H18M18 5.99902H14.5M18 5.99902V2.49902M18 5.99902V9.49902" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+ImageAdd02.displayName = 'ImageAdd02';
+
+export default ImageAdd02;

@@ -1,0 +1,19 @@
+import React from 'react';
+
+const ImageDelete01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M10.5 2.5L4.5 2.5C3.39543 2.5 2.5 3.39543 2.5 4.5V19.5C2.5 20.6046 3.39543 21.5 4.5 21.5H19.5C20.6046 21.5 21.5 20.6046 21.5 19.5V13.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M5.5 21.5L14.3453 13.5393C15.0247 12.9278 16.0321 12.8547 16.7926 13.3617L21.5 16.5" />
+    <path d="M21.5 9.5L14.5 2.5M21.5 2.5L14.5 9.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+ImageDelete01.displayName = 'ImageDelete01';
+
+export default ImageDelete01;

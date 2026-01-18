@@ -1,0 +1,20 @@
+import React from 'react';
+
+const CalendarBlock01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M19.778 16.222L15.2424 20.7576M21 18.5C21 20.433 19.433 22 17.5 22C15.567 22 14 20.433 14 18.5C14 16.567 15.567 15 17.5 15C19.433 15 21 16.567 21 18.5Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16.5 2V6M7.5 2V6" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M21 13V6C21 4.89543 20.1046 4 19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H12" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M3 10H21" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+CalendarBlock01.displayName = 'CalendarBlock01';
+
+export default CalendarBlock01;

@@ -1,0 +1,21 @@
+import React from 'react';
+
+const BabyBed02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M12 7L12 15M16 7L16 15M8 7L8 15" strokeLinejoin="round" />
+    <path d="M22 17C19.3349 18.8671 15.8341 20 12 20C8.16586 20 4.66508 18.8671 2 17" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M20 18V5C20 4.44772 20.4477 4 21 4L21.5 4M4 18V5C4 4.44772 3.55229 4.00001 3.00001 4L2.5 4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 7H20" strokeLinejoin="round" />
+    <path d="M4 15H20" strokeLinejoin="round" />
+  </svg>
+);
+
+BabyBed02.displayName = 'BabyBed02';
+
+export default BabyBed02;

@@ -1,0 +1,21 @@
+import React from 'react';
+
+const Codesandbox = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M21 6.5L12 2L3 6.5V17L12 22L21 17V6.5Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16 4L12.4472 5.77638C12.1657 5.91714 11.8343 5.91714 11.5528 5.77638L8 4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 11.6154V22M12 11.6154L20.5 7M12 11.6154L3.5 7" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M3 12L6.44721 13.7236C6.786 13.893 7 14.2393 7 14.618V19" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M21 12L17.5528 13.7236C17.214 13.893 17 14.2393 17 14.618V19" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Codesandbox.displayName = 'Codesandbox';
+
+export default Codesandbox;

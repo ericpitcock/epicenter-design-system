@@ -1,0 +1,20 @@
+import React from 'react';
+
+const Money04 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M16 5.00098C18.7632 5.00098 20.572 5.47818 21.4264 5.77328C21.7844 5.89694 22 6.24024 22 6.61901V17.4923C22 18.2357 21.1888 18.7806 20.4671 18.6022C19.4672 18.3549 17.9782 18.1104 16 18.1104C11.1629 18.1104 10.0694 19.9822 2.75993 18.2933C2.31284 18.19 2 17.7884 2 17.3296V6.28175C2 5.63118 2.61507 5.15578 3.25078 5.29404C10.1213 6.78833 11.2733 5.00098 16 5.00098Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M14.5 12.001C14.5 13.3817 13.3807 14.501 12 14.501C10.6193 14.501 9.5 13.3817 9.5 12.001C9.5 10.6203 10.6193 9.50098 12 9.50098C13.3807 9.50098 14.5 10.6203 14.5 12.001Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M18.5 11.49V11.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M5.5 12.49V12.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Money04.displayName = 'Money04';
+
+export default Money04;

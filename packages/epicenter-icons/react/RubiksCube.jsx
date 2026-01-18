@@ -1,0 +1,21 @@
+import React from 'react';
+
+const RubiksCube = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M21 12L12 17L3 12" />
+    <path d="M21 7L12 2L3 7M21 7L12 12L3 7M21 7V17L12 22L3 17V7" />
+    <path d="M12 22V12" />
+    <path d="M16.5 19.5V9.5L7.5 4.5" />
+    <path d="M7.5 19.5V9.5L16.5 4.5" />
+  </svg>
+);
+
+RubiksCube.displayName = 'RubiksCube';
+
+export default RubiksCube;

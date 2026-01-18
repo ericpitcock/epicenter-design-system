@@ -1,0 +1,20 @@
+import React from 'react';
+
+const Teaching = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M13 14C11 20 4 14 2 20" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16 16H20.0022C21.1067 16 22.0022 15.1046 22.0022 14V6C22.0022 4.89543 21.1067 4 20.0022 4H10.0013C8.89775 4 8.00274 4.89384 8.00131 5.9974L8 7" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="8" cy="12" r="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 8H18M18 12H15.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Teaching.displayName = 'Teaching';
+
+export default Teaching;

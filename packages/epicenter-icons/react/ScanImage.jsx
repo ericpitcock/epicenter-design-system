@@ -1,0 +1,20 @@
+import React from 'react';
+
+const ScanImage = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M15.5 2.5H19.5C20.6046 2.5 21.5 3.39543 21.5 4.5V8.5M15.5 21.5H19.5C20.6046 21.5 21.5 20.6046 21.5 19.5V15.5M8.5 2.5H4.5C3.39543 2.5 2.5 3.39543 2.5 4.5V8.5M2.5 15.5V19.5C2.5 20.6046 3.39543 21.5 4.5 21.5H8.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M17 6H7C6.44772 6 6 6.44771 6 7V17C6 17.5523 6.44771 18 7 18H17C17.5523 18 18 17.5523 18 17V7C18 6.44772 17.5523 6 17 6Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M18 15L14.5 11L11 15L9 13L6 16" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M10 9.48976V9.49976" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+ScanImage.displayName = 'ScanImage';
+
+export default ScanImage;

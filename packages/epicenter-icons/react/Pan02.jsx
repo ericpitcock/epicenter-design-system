@@ -1,0 +1,19 @@
+import React from 'react';
+
+const Pan02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M21.5 13H9.5V14C9.5 16.2091 11.2909 18 13.5 18H17.4998C19.709 18 21.4999 16.209 21.4998 13.9998L21.5 13Z" strokeLinejoin="round" />
+    <path d="M9.5 13L7 10.5" strokeLinejoin="round" />
+    <path d="M2.86797 6.36797C3.35859 5.87734 4.15404 5.87734 4.64466 6.36797L7.13203 8.85534C7.62266 9.34596 7.62266 10.1414 7.13203 10.632C6.64141 11.1227 5.84596 11.1227 5.35534 10.632L2.86797 8.14466C2.37734 7.65404 2.37734 6.85859 2.86797 6.36797Z" />
+  </svg>
+);
+
+Pan02.displayName = 'Pan02';
+
+export default Pan02;

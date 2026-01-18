@@ -1,0 +1,19 @@
+import React from 'react';
+
+const Sharing = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M15 16C15 17.6569 13.6569 19 12 19C10.3431 19 9 17.6569 9 16C9 14.3431 10.3431 13 12 13C13.6569 13 15 14.3431 15 16Z" />
+    <path d="M17.5 5H22V9.5M16 11L21.5077 5.4923" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M6.5 5H2V9.5M8 11L2.50653 5.50653" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Sharing.displayName = 'Sharing';
+
+export default Sharing;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 type ButtonSize = 'small' | 'default' | 'large' | 'xlarge';
 type ButtonType = 'button' | 'submit';
 
-interface EpButtonProps {
+export interface EpButtonProps {
   /** The size of the button */
   size?: ButtonSize;
   /** The aria-label of the button */
@@ -36,7 +36,7 @@ interface EpButtonProps {
 /**
  * EpButton - A versatile button component that can render as a button, link, or router link
  */
-const EpButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, EpButtonProps>(({
+export const EpButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, EpButtonProps>(({
   size = 'default',
   ariaLabel,
   disabled = false,
@@ -129,5 +129,3 @@ const EpButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, EpButtonProps
 });
 
 EpButton.displayName = 'EpButton';
-
-export default EpButton;

@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react'
-import EpButton from '../button/EpButton'
-import EpContainer from '../container/EpContainer'
-import EpEmptyState from '../empty-state/EpEmptyState'
-import EpFlex from '../flexbox/EpFlex'
-import { EpHeader } from '../EpHeader'
-import EpNotification, { EpNotificationProps } from './EpNotification'
+import { EpButton } from '../button/EpButton'
+import { EpContainer } from '../container/EpContainer'
+import { EpEmptyState } from '../empty-state/EpEmptyState'
+import { EpFlex } from '../flexbox/EpFlex'
+import { EpHeader } from '../header/EpHeader'
+import { EpNotification } from './EpNotification'
+import type { EpNotificationProps } from './EpNotification'
 
 export interface NotificationItem extends Omit<EpNotificationProps, 'onDismiss'> {
   id: string
@@ -38,7 +39,7 @@ export interface EpNotificationsProps {
   onClearNotifications?: () => void
 }
 
-const EpNotifications: React.FC<EpNotificationsProps> = ({
+export const EpNotifications: React.FC<EpNotificationsProps> = ({
   emptyStateMessage = "You're all caught up!",
   notificationsTitle = 'Notifications',
   notifications = [],
@@ -82,5 +83,3 @@ const EpNotifications: React.FC<EpNotificationsProps> = ({
     </EpContainer>
   )
 }
-
-export default EpNotifications

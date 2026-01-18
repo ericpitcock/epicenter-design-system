@@ -1,0 +1,18 @@
+import React from 'react';
+
+const Mountain = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M16 20H2L7.11228 5.34385C7.73729 3.55205 10.2627 3.55205 10.8877 5.34385L12.5 9.96602" strokeLinejoin="round" />
+    <path d="M6 20H22L15.7033 9.93615C14.9223 8.68795 13.0777 8.68795 12.2967 9.93615L9.12837 15" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Mountain.displayName = 'Mountain';
+
+export default Mountain;

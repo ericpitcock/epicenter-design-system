@@ -1,0 +1,20 @@
+import React from 'react';
+
+const Submerge = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <circle cx="12" cy="14" r="4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 2V2.5M7 5V6M7 8.5V9.5M17 2V3M17 5.5V6M17 8.5V9.5M12 2V3M12 5.5V6.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M2 12V20C2 21.1046 2.89543 22 4 22H20C21.1046 22 22 21.1046 22 20V12" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M2 14.8968C4.26409 16.8667 6.1743 15.779 8.0217 14.857C9.59668 14.0709 11.126 13.4052 12.79 14.857C16.0467 17.6487 19 14 22 14" strokeLinecap="round" />
+  </svg>
+);
+
+Submerge.displayName = 'Submerge';
+
+export default Submerge;

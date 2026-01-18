@@ -1,5 +1,5 @@
 import React, { forwardRef, ReactNode, useId, useState, KeyboardEvent, FocusEvent, ChangeEvent } from 'react'
-import EpInputStyler from '../input-styler/EpInputStyler'
+import { EpInputStyler } from '../input-styler/EpInputStyler'
 
 export interface EpInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
   /**
@@ -101,7 +101,7 @@ export interface EpInputProps extends Omit<React.InputHTMLAttributes<HTMLInputEl
   onClear?: () => void
 }
 
-const EpInput = forwardRef<HTMLInputElement, EpInputProps>(({
+export const EpInput = forwardRef<HTMLInputElement, EpInputProps>(({
   inputId,
   label = '',
   type = 'text',
@@ -204,5 +204,3 @@ const EpInput = forwardRef<HTMLInputElement, EpInputProps>(({
 })
 
 EpInput.displayName = 'EpInput'
-
-export default EpInput

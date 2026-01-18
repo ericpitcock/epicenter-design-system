@@ -1,0 +1,22 @@
+import React from 'react';
+
+const Dumbbell03 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M6.5 3.5V10.5M17.5 3.5V10.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M6.5 13.5V20.5M17.5 13.5V20.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 7L2.5 7M20 7H21.5M6.5 7H17.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 17H2.5M20 17H21.5M6.5 17H17.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 5V9M20 5V9" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 15V19M20 15V19" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Dumbbell03.displayName = 'Dumbbell03';
+
+export default Dumbbell03;

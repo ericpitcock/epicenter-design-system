@@ -1,0 +1,18 @@
+import React from 'react';
+
+const LocationRemove01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M15.5 11H8.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M21 11C21 18 12 22 12 22C12 22 3 18 3 11C3 6.02944 7.02944 2 12 2C16.9706 2 21 6.02944 21 11Z" strokeLinejoin="round" />
+  </svg>
+);
+
+LocationRemove01.displayName = 'LocationRemove01';
+
+export default LocationRemove01;

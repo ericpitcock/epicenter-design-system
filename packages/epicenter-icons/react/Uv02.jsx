@@ -1,0 +1,20 @@
+import React from 'react';
+
+const Uv02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M17 13C17 10.2386 14.7614 8 12 8C9.23858 8 7 10.2386 7 13" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M18.999 6L17.5 7.49902M12 3V5M22 13H20M4 13H2M6.5 7.49902L5.00098 6" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M13 16L15 21H16L18 16" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M10 16V20C10 20.5523 9.55228 21 9 21H7C6.44772 21 6 20.5523 6 20V16" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Uv02.displayName = 'Uv02';
+
+export default Uv02;

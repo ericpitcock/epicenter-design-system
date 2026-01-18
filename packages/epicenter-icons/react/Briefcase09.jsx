@@ -1,0 +1,19 @@
+import React from 'react';
+
+const Briefcase09 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M15.5 6.5V4.5C15.5 3.67157 14.8284 3 14 3H10C9.17157 3 8.5 3.67157 8.5 4.5V6.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M22 19V8.5C22 7.39543 21.1046 6.5 20 6.5H4C2.89543 6.5 2 7.39543 2 8.5V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 6.5V21M17 6.5V21" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Briefcase09.displayName = 'Briefcase09';
+
+export default Briefcase09;

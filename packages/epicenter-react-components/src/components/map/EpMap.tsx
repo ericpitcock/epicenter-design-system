@@ -47,7 +47,7 @@ export interface EpMapProps {
  * Interactive map with pin markers, custom layers, and navigation controls.
  * Automatically resizes with container using ResizeObserver.
  */
-const EpMap: React.FC<EpMapProps> = ({
+export const EpMap: React.FC<EpMapProps> = ({
   accessToken,
   mapCenter = [-122.3321, 47.6062],
   mapZoom = 12,
@@ -233,5 +233,3 @@ const EpMap: React.FC<EpMapProps> = ({
     </div>
   )
 }
-
-export default EpMap

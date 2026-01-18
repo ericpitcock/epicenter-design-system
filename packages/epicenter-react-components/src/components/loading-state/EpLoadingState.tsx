@@ -5,7 +5,7 @@ interface LoadingMessage {
   message?: string;
 }
 
-interface EpLoadingStateProps {
+export interface EpLoadingStateProps {
   /** Message object containing icon and message text to display while loading */
   message?: LoadingMessage;
   /** Additional CSS classes */
@@ -15,7 +15,7 @@ interface EpLoadingStateProps {
 /**
  * EpLoadingState - A loading indicator component with optional message
  */
-const EpLoadingState: React.FC<EpLoadingStateProps> = ({ 
+export const EpLoadingState: React.FC<EpLoadingStateProps> = ({ 
   message = { icon: '', message: '' }, 
   className = '' 
 }) => {
@@ -54,5 +54,3 @@ const EpLoadingState: React.FC<EpLoadingStateProps> = ({
 };
 
 EpLoadingState.displayName = 'EpLoadingState';
-
-export default EpLoadingState;

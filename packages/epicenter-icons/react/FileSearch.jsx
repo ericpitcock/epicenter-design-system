@@ -1,0 +1,19 @@
+import React from 'react';
+
+const FileSearch = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M20 13V9L13 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H10" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M13 2V7C13 8.10457 13.8954 9 15 9H20" strokeLinejoin="round" />
+    <path d="M20 22L17.8529 19.8529M17.8529 19.8529C17.9675 19.7384 18.0739 19.6158 18.1714 19.486C18.602 18.913 18.8571 18.2006 18.8571 17.4286C18.8571 15.535 17.3221 14 15.4286 14C13.535 14 12 15.535 12 17.4286C12 19.3221 13.535 20.8571 15.4286 20.8571C16.3753 20.8571 17.2325 20.4734 17.8529 19.8529Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+FileSearch.displayName = 'FileSearch';
+
+export default FileSearch;

@@ -23,7 +23,7 @@ export interface EpBannerProps {
   onDismissed?: () => void
 }
 
-const EpBanner: React.FC<EpBannerProps> = ({
+export const EpBanner: React.FC<EpBannerProps> = ({
   icon,
   message,
   subtext,
@@ -60,5 +60,3 @@ const EpBanner: React.FC<EpBannerProps> = ({
     </div>
   )
 }
-
-export default EpBanner

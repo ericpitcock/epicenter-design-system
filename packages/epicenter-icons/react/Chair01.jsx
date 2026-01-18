@@ -1,0 +1,19 @@
+import React from 'react';
+
+const Chair01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M8 15L6 22M16 15L18 22" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 12L7.8199 3.801C7.92214 2.7786 8.78247 2.00001 9.80997 2L14.19 2C15.2175 2 16.0779 2.77859 16.1801 3.80099L17 12" strokeLinejoin="round" />
+    <path d="M6 14V15H18V14C18 13.0917 17.4538 12.2724 16.6154 11.9231C13.6615 10.6923 10.3385 10.6923 7.38462 11.9231C6.54616 12.2724 6 13.0917 6 14Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Chair01.displayName = 'Chair01';
+
+export default Chair01;

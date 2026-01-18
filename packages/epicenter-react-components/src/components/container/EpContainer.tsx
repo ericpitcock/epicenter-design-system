@@ -1,6 +1,6 @@
 import React, { ReactNode, forwardRef } from 'react';
 
-interface EpContainerProps {
+export interface EpContainerProps {
   /** Header content of the container */
   header?: ReactNode;
   /** Main content of the container */
@@ -14,7 +14,7 @@ interface EpContainerProps {
 /**
  * EpContainer - A container component with optional header and footer sections
  */
-const EpContainer = forwardRef<HTMLDivElement, EpContainerProps>(({
+export const EpContainer = forwardRef<HTMLDivElement, EpContainerProps>(({
   header,
   children,
   footer,
@@ -40,5 +40,3 @@ const EpContainer = forwardRef<HTMLDivElement, EpContainerProps>(({
 });
 
 EpContainer.displayName = 'EpContainer';
-
-export default EpContainer;

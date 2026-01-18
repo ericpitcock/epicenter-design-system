@@ -24,7 +24,7 @@ export interface EpTableHeadProps {
  * Used within EpTable to render table headers with optional custom renderers
  * for sortable columns.
  */
-const EpTableHead: React.FC<EpTableHeadProps> = ({
+export const EpTableHead: React.FC<EpTableHeadProps> = ({
   columns,
   cellWidths = [],
   fixedHeader = false,
@@ -62,5 +62,3 @@ const EpTableHead: React.FC<EpTableHeadProps> = ({
     </thead>
   )
 }
-
-export default EpTableHead

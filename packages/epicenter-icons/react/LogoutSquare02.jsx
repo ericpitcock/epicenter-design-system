@@ -1,0 +1,18 @@
+import React from 'react';
+
+const LogoutSquare02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M19.9999 7V4.5C19.9999 3.39543 19.1045 2.5 17.9999 2.5H5.99994C4.89537 2.5 3.99994 3.39543 3.99994 4.5V19.5C3.99994 20.6046 4.89537 21.5 5.99994 21.5H17.9999C19.1045 21.5 19.9999 20.6046 19.9999 19.5V17" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16 16L20 12L16 8M19 12H9" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+LogoutSquare02.displayName = 'LogoutSquare02';
+
+export default LogoutSquare02;

@@ -1,0 +1,20 @@
+import React from 'react';
+
+const HierarchySquare05 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M9 7V3C9 2.44772 8.55228 2 8 2H3C2.44772 2 2 2.44772 2 3V7C2 7.55228 2.44772 8 3 8H8C8.55228 8 9 7.55228 9 7Z" strokeLinejoin="round" />
+    <path d="M9 21V17C9 16.4477 8.55228 16 8 16H3C2.44772 16 2 16.4477 2 17V21C2 21.5523 2.44772 22 3 22H8C8.55228 22 9 21.5523 9 21Z" strokeLinejoin="round" />
+    <path d="M22 14V10C22 9.44772 21.5523 9 21 9H16C15.4477 9 15 9.44772 15 10V14C15 14.5523 15.4477 15 16 15H21C21.5523 15 22 14.5523 22 14Z" strokeLinejoin="round" />
+    <path d="M12 12.001L12 7.00001C12 5.89544 11.1046 5.00001 9.99999 5.00001L9 5.00002M12 12.001L12 17C12 18.1046 11.1046 19 10 19H9M12 12.001L15 12.001" strokeLinejoin="round" />
+  </svg>
+);
+
+HierarchySquare05.displayName = 'HierarchySquare05';
+
+export default HierarchySquare05;

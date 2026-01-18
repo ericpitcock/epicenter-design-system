@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import EpButton from '../button/EpButton'
+import { EpButton } from '../button/EpButton'
 
 export interface EpNotificationProps {
   /**
@@ -50,7 +50,7 @@ const useTimeAgo = (timestamp: string): string => {
   }, [timestamp])
 }
 
-const EpNotification: React.FC<EpNotificationProps> = ({
+export const EpNotification: React.FC<EpNotificationProps> = ({
   id,
   message,
   timestamp = new Date().toISOString(),
@@ -90,5 +90,3 @@ const EpNotification: React.FC<EpNotificationProps> = ({
     </div>
   )
 }
-
-export default EpNotification

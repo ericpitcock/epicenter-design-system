@@ -1,0 +1,19 @@
+import React from 'react';
+
+const PlayListFavourite02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M11 21H4C2.89543 21 2 20.1046 2 19V4C2 2.89543 2.89543 2 4 2H19C20.1046 2 21 2.89543 21 4V11" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9.5 13.259V9.74104C9.5 8.96925 10.3372 8.48837 11.0039 8.87726L14.0192 10.6362C14.6807 11.0221 14.6807 11.9779 14.0192 12.3638L11.0039 14.1227C10.3372 14.5116 9.5 14.0308 9.5 13.259Z" strokeLinejoin="round" />
+    <path d="M20.7431 15.2896C19.1465 14.457 18 15.6843 18 15.6843C18 15.6843 16.8535 14.457 15.2568 15.2896C13.323 16.298 13.1841 20.2469 18 22C22.816 20.2469 22.677 16.298 20.7431 15.2896Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+PlayListFavourite02.displayName = 'PlayListFavourite02';
+
+export default PlayListFavourite02;

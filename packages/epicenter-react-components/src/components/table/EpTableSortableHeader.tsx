@@ -23,7 +23,7 @@ export interface EpTableSortableHeaderProps {
  * 
  * Displays column header with sort indicators and handles sort toggle.
  */
-const EpTableSortableHeader: React.FC<EpTableSortableHeaderProps> = ({
+export const EpTableSortableHeader: React.FC<EpTableSortableHeaderProps> = ({
   column,
   cellWidths = [],
   columnIndex = 0,
@@ -62,5 +62,3 @@ const EpTableSortableHeader: React.FC<EpTableSortableHeaderProps> = ({
     </th>
   )
 }
-
-export default EpTableSortableHeader

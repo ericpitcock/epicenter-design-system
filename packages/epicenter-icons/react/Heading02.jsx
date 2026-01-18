@@ -1,0 +1,18 @@
+import React from 'react';
+
+const Heading02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M20 19H16C16 18.4046 16.1523 17.8477 16.5858 17.4142L19.3787 14.6213C19.8177 14.1823 20 13.6088 20 13C20 11.8954 19.1046 11 18 11C16.8954 11 16 11.8954 16 13" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 12H13M4 19V5M13 19V5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Heading02.displayName = 'Heading02';
+
+export default Heading02;

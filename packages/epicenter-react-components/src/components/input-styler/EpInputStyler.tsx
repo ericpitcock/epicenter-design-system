@@ -64,7 +64,7 @@ export interface EpInputStylerProps {
   children?: ReactNode
 }
 
-const EpInputStyler: React.FC<EpInputStylerProps> = ({
+export const EpInputStyler: React.FC<EpInputStylerProps> = ({
   id,
   hasInput = false,
   label,
@@ -134,5 +134,3 @@ const EpInputStyler: React.FC<EpInputStylerProps> = ({
     </div>
   )
 }
-
-export default EpInputStyler

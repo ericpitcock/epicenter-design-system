@@ -1,0 +1,20 @@
+import React from 'react';
+
+const Pavilon = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M9.5 21.5L9.90995 17.4005C9.96107 16.8893 10.3912 16.5 10.905 16.5H13.095C13.6088 16.5 14.0389 16.8893 14.09 17.4005L14.5 21.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M3 21.5H21" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M3 8.5C8.5 8.5 11.5 5 12 2.5C12.5 5 15.5 8.5 21 8.5C20.4028 10.2916 18.7262 11.5 16.8377 11.5H7.16228C5.2738 11.5 3.59719 10.2916 3 8.5Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M5.5 11.5V21.5M18.5 11.5V21.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Pavilon.displayName = 'Pavilon';
+
+export default Pavilon;

@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
-import EpButton from '../button/EpButton'
-import EpFlex from '../flexbox/EpFlex'
-import { EpFooter } from '../EpFooter'
-import EpSelect from '../select/EpSelect'
+import { EpButton } from '../button/EpButton'
+import { EpFlex } from '../flexbox/EpFlex'
+import { EpFooter } from '../footer/EpFooter'
+import { EpSelect } from '../select/EpSelect'
 
 export interface EpTablePaginationProps {
   /** Current page number */
@@ -34,7 +34,7 @@ const resultsPerPageOptions = [
  * Provides page navigation with optional page numbers, ellipsis truncation,
  * and results-per-page selector.
  */
-const EpTablePagination: React.FC<EpTablePaginationProps> = ({
+export const EpTablePagination: React.FC<EpTablePaginationProps> = ({
   currentPage,
   showPages = false,
   resultsPerPage,
@@ -160,5 +160,3 @@ const EpTablePagination: React.FC<EpTablePaginationProps> = ({
     </div>
   )
 }
-
-export default EpTablePagination

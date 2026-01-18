@@ -1,0 +1,19 @@
+import React from 'react';
+
+const Student = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M19 5L12 2L5 5L8.5 6.5V8.5C8.5 8.5 9.66667 8 12 8C14.3333 8 15.5 8.5 15.5 8.5V6.5L19 5ZM19 5V9" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16.875 22H7.125C6.22754 22 5.5 21.2725 5.5 20.375C5.5 17.6826 7.68261 15.5 10.375 15.5H13.625C16.3174 15.5 18.5 17.6826 18.5 20.375C18.5 21.2725 17.7725 22 16.875 22Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15.5 8.5V9.5C15.5 11.433 13.933 13 12 13C10.067 13 8.5 11.433 8.5 9.5V8.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Student.displayName = 'Student';
+
+export default Student;

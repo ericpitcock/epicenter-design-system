@@ -1,0 +1,18 @@
+import React from 'react';
+
+const DrawingMode = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M16 9C16 5.13401 12.866 2 9 2C5.13401 2 2 5.13401 2 9C2 12.866 5.13401 16 9 16" strokeLinejoin="round" />
+    <path d="M22 20C22 21.1046 21.1046 22 20 22L11 22C9.89543 22 9 21.1046 9 20L9 11C9 9.89543 9.89543 9 11 9L20 9C21.1046 9 22 9.89543 22 11V20Z" strokeLinejoin="round" />
+  </svg>
+);
+
+DrawingMode.displayName = 'DrawingMode';
+
+export default DrawingMode;

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, ReactNode, forwardRef } from 'react';
 
-interface EpCheckboxProps {
+export interface EpCheckboxProps {
   /** The ID of the checkbox */
   id: string;
   /** The label for the checkbox */
@@ -28,7 +28,7 @@ interface EpCheckboxProps {
 /**
  * EpCheckbox - A checkbox input component with label and various states
  */
-const EpCheckbox = forwardRef<HTMLInputElement, EpCheckboxProps>(({
+export const EpCheckbox = forwardRef<HTMLInputElement, EpCheckboxProps>(({
   id,
   label,
   name,
@@ -67,5 +67,3 @@ const EpCheckbox = forwardRef<HTMLInputElement, EpCheckboxProps>(({
 });
 
 EpCheckbox.displayName = 'EpCheckbox';
-
-export default EpCheckbox;

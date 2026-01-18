@@ -28,7 +28,7 @@ export interface EpResizableProps {
  * Two-pane layout with draggable divider for resizing.
  * Supports horizontal (row) and vertical (column) layouts.
  */
-const EpResizable: React.FC<EpResizableProps> = ({
+export const EpResizable: React.FC<EpResizableProps> = ({
   direction = 'row',
   initialSize = '300px',
   minSize = 200,
@@ -128,5 +128,3 @@ const EpResizable: React.FC<EpResizableProps> = ({
     </div>
   )
 }
-
-export default EpResizable

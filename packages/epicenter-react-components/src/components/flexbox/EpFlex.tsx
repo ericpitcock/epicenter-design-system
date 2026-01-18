@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-interface EpFlexProps {
+export interface EpFlexProps {
   /** Flex content */
   children?: ReactNode;
   /** Additional CSS classes */
@@ -10,7 +10,7 @@ interface EpFlexProps {
 /**
  * EpFlex - A flexbox container component
  */
-const EpFlex: React.FC<EpFlexProps> = ({ children, className = '' }) => {
+export const EpFlex: React.FC<EpFlexProps> = ({ children, className = '' }) => {
   return (
     <div className={`ep-flex${className ? ` ${className}` : ''}`}>
       {children}
@@ -19,5 +19,3 @@ const EpFlex: React.FC<EpFlexProps> = ({ children, className = '' }) => {
 };
 
 EpFlex.displayName = 'EpFlex';
-
-export default EpFlex;

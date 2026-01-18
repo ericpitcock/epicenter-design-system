@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-interface EpStatusIndicatorProps {
+export interface EpStatusIndicatorProps {
   /** If true, the status indicator will pulse */
   pulse?: boolean;
   /** Label or text content next to the indicator */
@@ -12,7 +12,7 @@ interface EpStatusIndicatorProps {
 /**
  * EpStatusIndicator - A status indicator component with optional pulsing animation
  */
-const EpStatusIndicator: React.FC<EpStatusIndicatorProps> = ({ 
+export const EpStatusIndicator: React.FC<EpStatusIndicatorProps> = ({ 
   pulse = false, 
   children, 
   className = '' 
@@ -31,5 +31,3 @@ const EpStatusIndicator: React.FC<EpStatusIndicatorProps> = ({
 };
 
 EpStatusIndicator.displayName = 'EpStatusIndicator';
-
-export default EpStatusIndicator;

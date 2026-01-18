@@ -26,7 +26,7 @@ const SubmenuContext = createContext<(() => void) | null>(null)
  * Can render as interactive item, divider, or section header.
  * Supports nested submenus with keyboard navigation (Arrow keys, Enter, Space).
  */
-const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
+export const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
   (
     {
       isDisabled = false,
@@ -277,5 +277,3 @@ const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
 )
 
 EpMenuItem.displayName = 'EpMenuItem'
-
-export default EpMenuItem

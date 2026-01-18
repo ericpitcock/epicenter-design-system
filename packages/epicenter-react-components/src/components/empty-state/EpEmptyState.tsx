@@ -29,7 +29,7 @@ export interface EpEmptyStateProps {
   cta?: ReactNode
 }
 
-const EpEmptyState: React.FC<EpEmptyStateProps> = ({
+export const EpEmptyState: React.FC<EpEmptyStateProps> = ({
   direction = 'column',
   justify = 'center',
   img,
@@ -68,5 +68,3 @@ const EpEmptyState: React.FC<EpEmptyStateProps> = ({
     </div>
   )
 }
-
-export default EpEmptyState

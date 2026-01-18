@@ -1,0 +1,19 @@
+import React from 'react';
+
+const Notebook01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M6 22H20C21.1046 22 22 21.1046 22 20V4C22 2.89543 21.1046 2 20 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9.5 10H17.5V6H9.5V10Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M6 6L2 6M6 12H2M6 18H2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Notebook01.displayName = 'Notebook01';
+
+export default Notebook01;

@@ -2,7 +2,7 @@ import React, { MouseEvent, ReactNode } from 'react';
 
 type ButtonSize = 'small' | 'default' | 'large' | 'xlarge';
 
-interface EpToggleButtonProps {
+export interface EpToggleButtonProps {
   /** The label to display inside the button */
   label?: string;
   /** The class to apply when the button is active */
@@ -26,7 +26,7 @@ interface EpToggleButtonProps {
 /**
  * EpToggleButton - A button component that toggles between active and inactive states
  */
-const EpToggleButton: React.FC<EpToggleButtonProps> = ({
+export const EpToggleButton: React.FC<EpToggleButtonProps> = ({
   label = '',
   activeClass = '',
   isActive = false,
@@ -63,5 +63,3 @@ const EpToggleButton: React.FC<EpToggleButtonProps> = ({
 };
 
 EpToggleButton.displayName = 'EpToggleButton';
-
-export default EpToggleButton;

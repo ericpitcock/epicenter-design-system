@@ -1,0 +1,24 @@
+import React from 'react';
+
+const Plane = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M12 8.5C8.89837 8.5 7.77572 11.1032 7.1393 13.7373C6.33194 17.0789 9.1763 18.5941 12 18.4955C14.8237 18.5941 17.6681 17.0789 16.8607 13.7373C16.2243 11.1032 15.1016 8.5 12 8.5Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M11.9998 13.5H12.0088" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 8.5L12 2.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 21H4.00898" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M20 21H20.009" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 15L2 17M17 15L22 17" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 18V16.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M20 18V16.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Plane.displayName = 'Plane';
+
+export default Plane;

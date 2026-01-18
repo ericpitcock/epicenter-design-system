@@ -1,0 +1,19 @@
+import React from 'react';
+
+const LocationUpdate01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M12.3966 16.8023C13.4956 16.2182 16.5 14.3598 16.5 11.5C16.5 9.01472 14.4853 7 12 7C9.51472 7 7.5 9.01472 7.5 11.5C7.5 14.3598 10.5044 16.2182 11.6034 16.8023C11.8533 16.9351 12.1467 16.9351 12.3966 16.8023Z" strokeLinejoin="round" />
+    <path d="M12 11.5H12.009" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M20 11.5L22 12C22 6.47715 17.5228 2 12 2C7.89936 2 4.3752 4.46819 2.83209 8M4 12.5L2 12C2 17.5228 6.47715 22 12 22C16.1006 22 19.6248 19.5318 21.1679 16" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+LocationUpdate01.displayName = 'LocationUpdate01';
+
+export default LocationUpdate01;

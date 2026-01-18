@@ -1,0 +1,20 @@
+import React from 'react';
+
+const FunctionOfX = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M14.5 14H14.882C15.2607 14 15.607 14.214 15.7764 14.5528L17.2236 17.4472C17.393 17.786 17.7393 18 18.118 18H18.5M19 14C18.3705 14 17.7777 14.2964 17.4 14.8L15.6 17.2C15.2223 17.7036 14.6295 18 14 18" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M2 18.2222C2.18866 19.0724 2.56908 20 3.56235 20C5.28118 20 5.71088 18.2222 7 12C8.28912 5.77778 8.71882 4 10.4376 4C11.4309 4 11.8113 4.92763 12 5.77778M4.5 10H10.4376" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M21 12C22.3804 15.253 22.2854 16.9808 21 20" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 12C10.6196 15.253 10.7146 16.9808 12 20" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+FunctionOfX.displayName = 'FunctionOfX';
+
+export default FunctionOfX;

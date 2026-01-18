@@ -1,0 +1,18 @@
+import React from 'react';
+
+const PointingRight03 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M21.5 5L19 2.5M21.5 5L19 7.5M21.5 5H15.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M11.829 8.37124L10 10.5051L19.75 10.5051C20.7165 10.5051 21.5 11.2886 21.5 12.2551C21.5 13.2216 20.7165 14.0051 19.75 14.0051H13.5V18.5C13.5 20.1569 12.1569 21.5 10.5 21.5H5.5C3.84315 21.5 2.5 20.1569 2.5 18.5L2.5 11.57C2.5 10.9015 2.834 10.2772 3.39013 9.90622L9.41166 5.88941C10.0469 5.37331 10.9559 5.36987 11.595 5.88114C12.3631 6.49565 12.4692 7.62437 11.829 8.37124Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+PointingRight03.displayName = 'PointingRight03';
+
+export default PointingRight03;

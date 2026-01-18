@@ -1,0 +1,21 @@
+import React from 'react';
+
+const Cashier02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M10 18.5H14" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16.5 5.5V8.5M15 2.5H18C18.5523 2.5 19 2.94772 19 3.5V4.5C19 5.05228 18.5523 5.5 18 5.5H15C14.4477 5.5 14 5.05228 14 4.5V3.5C14 2.94772 14.4477 2.5 15 2.5Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M2.55701 16.8385L5.02905 9.83436C5.31127 9.03474 6.06707 8.5 6.91503 8.5H17.085C17.9329 8.5 18.6887 9.03474 18.971 9.83436L21.443 16.8385C21.4807 16.9454 21.5 17.0579 21.5 17.1713V21.5H2.5V17.1713C2.5 17.0579 2.51928 16.9454 2.55701 16.8385Z" strokeLinejoin="round" />
+    <path d="M8 12H8.5M11.75 12H12.25M15.5 12H16" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 15H8M11.5 15H12.5M16 15H17" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Cashier02.displayName = 'Cashier02';
+
+export default Cashier02;

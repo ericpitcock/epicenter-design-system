@@ -1,0 +1,19 @@
+import React from 'react';
+
+const FileUpload = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M13 2H18C19.1046 2 20 2.89543 20 4V15.0145L12.9986 22.0015H6C4.89543 22.0015 4 21.1061 4 20.0015V12" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M20 15H15C13.8954 15 13 15.8954 13 17V22" strokeLinejoin="round" />
+    <path d="M10 5L7 2L4 5M7 10V2.60878" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+FileUpload.displayName = 'FileUpload';
+
+export default FileUpload;

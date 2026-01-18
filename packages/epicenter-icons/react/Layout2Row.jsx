@@ -1,0 +1,18 @@
+import React from 'react';
+
+const Layout2Row = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M2.5 12H21.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M5.5 21.5H18.5C20.1569 21.5 21.5 20.1569 21.5 18.5V5.5C21.5 3.84315 20.1569 2.5 18.5 2.5H5.5C3.84315 2.5 2.5 3.84315 2.5 5.5V18.5C2.5 20.1569 3.84315 21.5 5.5 21.5Z" strokeLinejoin="round" />
+  </svg>
+);
+
+Layout2Row.displayName = 'Layout2Row';
+
+export default Layout2Row;

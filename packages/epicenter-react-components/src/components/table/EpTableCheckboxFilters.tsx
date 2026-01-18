@@ -1,6 +1,6 @@
 import React from 'react'
-import EpCheckbox from '../checkbox/EpCheckbox'
-import EpFlex from '../flexbox/EpFlex'
+import { EpCheckbox } from '../checkbox/EpCheckbox'
+import { EpFlex } from '../flexbox/EpFlex'
 
 export interface CheckboxFilter {
   label: string
@@ -24,7 +24,7 @@ export interface EpTableCheckboxFiltersProps {
  * 
  * Displays categorized checkbox filters with optional section headers.
  */
-const EpTableCheckboxFilters: React.FC<EpTableCheckboxFiltersProps> = ({
+export const EpTableCheckboxFilters: React.FC<EpTableCheckboxFiltersProps> = ({
   filters,
   sectionLabels = true,
   onUpdateFilters,
@@ -60,5 +60,3 @@ const EpTableCheckboxFilters: React.FC<EpTableCheckboxFiltersProps> = ({
     </div>
   )
 }
-
-export default EpTableCheckboxFilters

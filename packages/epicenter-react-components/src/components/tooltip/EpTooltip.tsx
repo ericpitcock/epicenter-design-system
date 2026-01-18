@@ -45,7 +45,7 @@ export interface EpTooltipProps {
   children?: ReactNode
 }
 
-const EpTooltip: React.FC<EpTooltipProps> = ({
+export const EpTooltip: React.FC<EpTooltipProps> = ({
   delay = 0,
   position = 'top center',
   dismissOnClick = false,
@@ -106,5 +106,3 @@ const EpTooltip: React.FC<EpTooltipProps> = ({
     </div>
   )
 }
-
-export default EpTooltip

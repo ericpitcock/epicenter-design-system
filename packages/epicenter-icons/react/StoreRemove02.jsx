@@ -1,0 +1,20 @@
+import React from 'react';
+
+const StoreRemove02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M6.5 18H10.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M5 11.5C6.65685 11.5 8 10.1569 8 8.5C8 10.5 10.1362 11.5 12 11.5C13.8638 11.5 16 10.5 16 8.5C16 10.1569 17.3431 11.5 19 11.5C20.6569 11.5 22 10.1569 22 8.5L20 5V3.5C20 2.94772 19.5523 2.5 19 2.5H5C4.44772 2.5 4 2.94772 4 3.5V5L2 8.5C2 10.1569 3.34315 11.5 5 11.5Z" strokeLinejoin="round" />
+    <path d="M3.5 11.5V19.5C3.5 20.6046 4.39543 21.5 5.5 21.5H13M20.5 11.5V13" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16 16L21 21M16 21L21 16" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+StoreRemove02.displayName = 'StoreRemove02';
+
+export default StoreRemove02;

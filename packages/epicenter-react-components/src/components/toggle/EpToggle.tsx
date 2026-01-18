@@ -2,7 +2,7 @@ import React, { MouseEvent } from 'react';
 
 type ToggleSize = 'small' | 'default' | 'large';
 
-interface EpToggleProps {
+export interface EpToggleProps {
   /** If true, shows the toggle in the active/on state */
   isActive?: boolean;
   /** If true, disables the toggle interaction */
@@ -20,7 +20,7 @@ interface EpToggleProps {
 /**
  * EpToggle - A toggle switch component for binary on/off states
  */
-const EpToggle: React.FC<EpToggleProps> = ({
+export const EpToggle: React.FC<EpToggleProps> = ({
   isActive = false,
   disabled = false,
   label = '',
@@ -50,5 +50,3 @@ const EpToggle: React.FC<EpToggleProps> = ({
 };
 
 EpToggle.displayName = 'EpToggle';
-
-export default EpToggle;

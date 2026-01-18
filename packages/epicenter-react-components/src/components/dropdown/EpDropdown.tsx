@@ -1,11 +1,8 @@
 import React, { ReactNode, useEffect, useId, useRef, useState, KeyboardEvent, MouseEvent } from 'react'
+
 import { useClickOutside } from '../../hooks/useClickOutside'
 
 export interface EpDropdownTriggerProps {
-  isOpen: boolean
-  open: () => void
-  close: () => void
-  toggle: () => void
   attrs: {
     id: string
     'aria-haspopup': string
@@ -13,9 +10,13 @@ export interface EpDropdownTriggerProps {
     'aria-controls': string
     disabled?: boolean
   }
+  close: () => void
+  isOpen: boolean
   onClick: () => void
-  onMouseOver: () => void
   onKeyDown: (e: KeyboardEvent) => void
+  onMouseOver: () => void
+  open: () => void
+  toggle: () => void
 }
 
 export interface EpDropdownProps {
@@ -52,7 +53,7 @@ export interface EpDropdownProps {
   onClose?: () => void
 }
 
-const EpDropdown = React.forwardRef<{ openDropdown: () => void; closeDropdown: () => void; toggleDropdown: () => void }, EpDropdownProps>(({
+export const EpDropdown = React.forwardRef<{ openDropdown: () => void; closeDropdown: () => void; toggleDropdown: () => void }, EpDropdownProps>(({
   alignRight = false,
   showOnHover = false,
   disabled = false,
@@ -206,5 +207,3 @@ const EpDropdown = React.forwardRef<{ openDropdown: () => void; closeDropdown: (
 })
 
 EpDropdown.displayName = 'EpDropdown'
-
-export default EpDropdown

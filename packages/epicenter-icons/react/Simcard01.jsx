@@ -1,0 +1,18 @@
+import React from 'react';
+
+const Simcard01 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M9.5089 17.988L7.5 15.994L9.5089 14M14.5149 14.0237L16.5 15.994L14.479 18" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M3 19V5C3 3.34315 4.34315 2 6 2H15.1716C15.702 2 16.2107 2.21071 16.5858 2.58579L20.4142 6.41421C20.7893 6.78929 21 7.29799 21 7.82843V19C21 20.6569 19.6569 22 18 22H6C4.34315 22 3 20.6569 3 19Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Simcard01.displayName = 'Simcard01';
+
+export default Simcard01;

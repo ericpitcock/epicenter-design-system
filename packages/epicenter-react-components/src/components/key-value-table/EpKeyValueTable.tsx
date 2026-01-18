@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import EpFlex from '../flexbox/EpFlex'
+import { EpFlex } from '../flexbox/EpFlex'
 
 export interface KeyValueSection {
   name: string
@@ -24,7 +24,7 @@ export interface EpKeyValueTableProps {
  * 
  * Displays data as key-value pairs with optional sections and custom value rendering.
  */
-const EpKeyValueTable: React.FC<EpKeyValueTableProps> = ({
+export const EpKeyValueTable: React.FC<EpKeyValueTableProps> = ({
   data,
   commonKeyWidth = false,
   sectionHeaders = false,
@@ -83,5 +83,3 @@ const EpKeyValueTable: React.FC<EpKeyValueTableProps> = ({
     </EpFlex>
   )
 }
-
-export default EpKeyValueTable

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, ReactNode, forwardRef } from 'react';
 
-interface EpRadioProps {
+export interface EpRadioProps {
   /** The ID attribute for the radio input element */
   id: string;
   /** Label text displayed next to the radio button */
@@ -26,7 +26,7 @@ interface EpRadioProps {
 /**
  * EpRadio - A radio input component for selecting a single option from a group
  */
-const EpRadio = forwardRef<HTMLInputElement, EpRadioProps>(({
+export const EpRadio = forwardRef<HTMLInputElement, EpRadioProps>(({
   id,
   label,
   name,
@@ -64,5 +64,3 @@ const EpRadio = forwardRef<HTMLInputElement, EpRadioProps>(({
 });
 
 EpRadio.displayName = 'EpRadio';
-
-export default EpRadio;

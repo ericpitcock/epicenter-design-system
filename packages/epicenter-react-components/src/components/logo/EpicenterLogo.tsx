@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface EpicenterLogoProps {
+export interface EpicenterLogoProps {
   /** Additional CSS classes */
   className?: string;
 }
@@ -8,7 +8,7 @@ interface EpicenterLogoProps {
 /**
  * EpicenterLogo - The Epicenter Design System logo
  */
-const EpicenterLogo: React.FC<EpicenterLogoProps> = ({ className = '' }) => {
+export const EpicenterLogo: React.FC<EpicenterLogoProps> = ({ className = '' }) => {
   return (
     <svg
       className={className}
@@ -58,5 +58,3 @@ const EpicenterLogo: React.FC<EpicenterLogoProps> = ({ className = '' }) => {
 };
 
 EpicenterLogo.displayName = 'EpicenterLogo';
-
-export default EpicenterLogo;

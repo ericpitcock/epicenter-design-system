@@ -1,0 +1,19 @@
+import React from 'react';
+
+const SecurityLock = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M10 9.9996V8.4996C10 7.39503 10.8954 6.4996 12 6.4996C13.1046 6.4996 14 7.39503 14 8.4996V9.9996" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M14.5 10H9.5C8.94772 10 8.5 10.4477 8.5 11V13.5C8.5 14.0523 8.94772 14.5 9.5 14.5H14.5C15.0523 14.5 15.5 14.0523 15.5 13.5V11C15.5 10.4477 15.0523 10 14.5 10Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M21 5C18.8786 3.17002 15.6351 2 12 2C8.36494 2 5.12137 3.17002 3 5V11C3 19 12 22 12 22C12 22 21 19 21 11L21 5Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+SecurityLock.displayName = 'SecurityLock';
+
+export default SecurityLock;

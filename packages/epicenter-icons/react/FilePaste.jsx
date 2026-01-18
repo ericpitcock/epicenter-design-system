@@ -1,0 +1,19 @@
+import React from 'react';
+
+const FilePaste = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M12 2H18C19.1046 2 20 2.89543 20 4V15.0145L12.9986 22.0015H6C4.89543 22.0015 4 21.1061 4 20.0015V11" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M20 15H15C13.8954 15 13 15.8954 13 17V22" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 10V7.00016C12 5.89559 11.1046 5.00016 10 5.00016H4.50195M7 2L4 4.99625L7 7.99625" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+FilePaste.displayName = 'FilePaste';
+
+export default FilePaste;

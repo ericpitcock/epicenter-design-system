@@ -1,0 +1,18 @@
+import React from 'react';
+
+const MirroringScreen = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M4 21C4 19.8954 3.10457 19 2 19M8 21C8 17.6863 5.31371 15 2 15M12 21C12 15.4772 7.52285 11 2 11" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15.2941 20H19C20.6569 20 22 18.6569 22 17V6C22 4.34315 20.6569 3 19 3H6C4.34315 3 3 4.34315 3 6V8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+MirroringScreen.displayName = 'MirroringScreen';
+
+export default MirroringScreen;

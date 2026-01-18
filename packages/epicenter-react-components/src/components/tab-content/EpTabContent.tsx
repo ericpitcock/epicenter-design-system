@@ -16,7 +16,7 @@ export interface EpTabContentProps {
   children?: ReactNode[]
 }
 
-const EpTabContent: React.FC<EpTabContentProps> = ({
+export const EpTabContent: React.FC<EpTabContentProps> = ({
   activeTabIndex = 0,
   items,
   children
@@ -43,5 +43,3 @@ const EpTabContent: React.FC<EpTabContentProps> = ({
     </div>
   )
 }
-
-export default EpTabContent

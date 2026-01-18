@@ -1,0 +1,18 @@
+import React from 'react';
+
+const Home06 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M3 9.98834V19.5C3 20.6046 3.89543 21.5 5 21.5H19C20.1046 21.5 21 20.6046 21 19.5V9.98834C21 9.3654 20.7097 8.77803 20.2149 8.39963L12.8972 2.80373C12.6396 2.60673 12.3243 2.5 12 2.5C11.6757 2.5 11.3604 2.60673 11.1028 2.80373L3.7851 8.39963C3.29026 8.77804 3 9.3654 3 9.98834Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M18 15C18 13.8954 17.1046 13 16 13C14.8954 13 14 13.8954 14 15C14 16.1046 14.8954 17 16 17C17.1046 17 18 16.1046 18 15Z" strokeLinejoin="round" />
+  </svg>
+);
+
+Home06.displayName = 'Home06';
+
+export default Home06;

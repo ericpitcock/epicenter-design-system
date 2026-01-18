@@ -1,0 +1,20 @@
+import React from 'react';
+
+const Keyboard = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M19 7H5C3.34315 7 2 8.34315 2 10V19C2 20.6569 3.34315 22 5 22H19C20.6569 22 22 20.6569 22 19V10C22 8.34315 20.6569 7 19 7Z" strokeLinejoin="round" />
+    <path d="M12 7V5.53078C12 4.92498 12.4123 4.39693 13 4.25V4.25C13.5877 4.10307 14 3.57502 14 2.96922V2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 12L8 12M11.5 12L12.5 12M16 12L17 12" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 17L17 17" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Keyboard.displayName = 'Keyboard';
+
+export default Keyboard;

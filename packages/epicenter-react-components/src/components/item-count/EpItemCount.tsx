@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface EpItemCountProps {
+export interface EpItemCountProps {
   /** The count of items to display */
   count: number;
   /** The singular form of the item name */
@@ -14,7 +14,7 @@ interface EpItemCountProps {
 /**
  * EpItemCount - A component for displaying item counts with proper pluralization
  */
-const EpItemCount: React.FC<EpItemCountProps> = ({ 
+export const EpItemCount: React.FC<EpItemCountProps> = ({ 
   count, 
   singular, 
   plural, 
@@ -30,5 +30,3 @@ const EpItemCount: React.FC<EpItemCountProps> = ({
 };
 
 EpItemCount.displayName = 'EpItemCount';
-
-export default EpItemCount;

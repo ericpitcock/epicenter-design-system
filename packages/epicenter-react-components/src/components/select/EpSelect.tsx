@@ -1,5 +1,5 @@
 import React, { forwardRef, ReactNode, useId, ChangeEvent, FocusEvent } from 'react'
-import EpInputStyler from '../input-styler/EpInputStyler'
+import { EpInputStyler } from '../input-styler/EpInputStyler'
 
 export interface EpSelectOption {
   label: string
@@ -86,7 +86,7 @@ export interface EpSelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelec
   onFocus?: () => void
 }
 
-const EpSelect = forwardRef<HTMLSelectElement, EpSelectProps>(({
+export const EpSelect = forwardRef<HTMLSelectElement, EpSelectProps>(({
   label = '',
   disabled = false,
   autofocus = false,
@@ -189,5 +189,3 @@ const EpSelect = forwardRef<HTMLSelectElement, EpSelectProps>(({
 })
 
 EpSelect.displayName = 'EpSelect'
-
-export default EpSelect

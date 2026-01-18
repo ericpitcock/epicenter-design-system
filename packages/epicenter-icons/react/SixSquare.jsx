@@ -1,0 +1,19 @@
+import React from 'react';
+
+const SixSquare = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 25 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M11.4971 12H13.4971C14.6016 12 15.4971 12.8954 15.4971 14V15C15.4971 16.1046 14.6016 17 13.4971 17H11.4971C10.3925 17 9.49707 16.1046 9.49707 15V14C9.49707 12.8954 10.3925 12 11.4971 12Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9.49707 14.5V9C9.49707 7.89543 10.3925 7 11.4971 7H13.4971C14.6016 7 15.4971 7.89543 15.4971 9" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4.99707 21.5L19.9971 21.5C21.1016 21.5 21.9971 20.6046 21.9971 19.5V4.5C21.9971 3.39543 21.1016 2.5 19.9971 2.5H4.99707C3.8925 2.5 2.99707 3.39543 2.99707 4.5V19.5C2.99707 20.6046 3.8925 21.5 4.99707 21.5Z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+SixSquare.displayName = 'SixSquare';
+
+export default SixSquare;

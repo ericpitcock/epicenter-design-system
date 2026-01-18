@@ -1,0 +1,21 @@
+import React from 'react';
+
+const SecurityKeyUsb = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M13.5 7.5V3C13.5 2.44772 13.0523 2 12.5 2H7.5C6.94772 2 6.5 2.44772 6.5 3V7.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15 10.5V7.5H5V17C5 19.7614 7.23858 22 10 22" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M18 16.5H13C12.4477 16.5 12 16.9477 12 17.5V21C12 21.5523 12.4477 22 13 22H18C18.5523 22 19 21.5523 19 21V17.5C19 16.9477 18.5523 16.5 18 16.5Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M17.5 16.5V15C17.5 13.8954 16.6046 13 15.5 13C14.3954 13 13.5 13.8954 13.5 15V16.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9.5 4.5H10.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+SecurityKeyUsb.displayName = 'SecurityKeyUsb';
+
+export default SecurityKeyUsb;

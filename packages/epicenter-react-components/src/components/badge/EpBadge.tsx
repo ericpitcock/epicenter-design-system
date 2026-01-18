@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-interface EpBadgeProps {
+export interface EpBadgeProps {
   /** The label to display in the badge */
   label?: string;
   /** Badge content */
@@ -12,7 +12,7 @@ interface EpBadgeProps {
 /**
  * EpBadge - A badge component for displaying labels or status
  */
-const EpBadge: React.FC<EpBadgeProps> = ({ label = '', children, className = '' }) => {
+export const EpBadge: React.FC<EpBadgeProps> = ({ label = '', children, className = '' }) => {
   return (
     <div className={`ep-badge${className ? ` ${className}` : ''}`}>
       {children || label}
@@ -21,5 +21,3 @@ const EpBadge: React.FC<EpBadgeProps> = ({ label = '', children, className = '' 
 };
 
 EpBadge.displayName = 'EpBadge';
-
-export default EpBadge;

@@ -1,0 +1,18 @@
+import React from 'react';
+
+const RotateBottomRight = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M8 15C8 16.1046 8.89543 17 10 17H20C21.1046 17 22 16.1046 22 15V5C22 3.89543 21.1046 3 20 3H10C8.89543 3 8 3.89543 8 5V15Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M2 11.5L4 10V19C4 20.1046 4.89543 21 6 21H13" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+RotateBottomRight.displayName = 'RotateBottomRight';
+
+export default RotateBottomRight;

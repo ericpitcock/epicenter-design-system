@@ -1,0 +1,24 @@
+import React from 'react';
+
+const TableLamp02 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M8 2C6 2 4 3.5 4 6H12C12 3.5 10 2 8 2Z" strokeLinejoin="round" />
+    <path d="M8 6V11" strokeLinejoin="round" />
+    <path d="M11 6V7.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M5 20V22M19 20V22" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M20 11H4C2.89543 11 2 11.8954 2 13V18C2 19.1046 2.89543 20 4 20H20C21.1046 20 22 19.1046 22 18V13C22 11.8954 21.1046 11 20 11Z" strokeLinejoin="round" />
+    <path d="M12 11L12 20" strokeLinejoin="round" />
+    <path d="M16.5 15.5L17.5 15.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M6.5 15.5L7.5 15.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+TableLamp02.displayName = 'TableLamp02';
+
+export default TableLamp02;

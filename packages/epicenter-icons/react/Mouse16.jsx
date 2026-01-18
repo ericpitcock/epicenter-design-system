@@ -1,0 +1,19 @@
+import React from 'react';
+
+const Mouse16 = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M6 2V2.5C6 3.05228 6.44772 3.5 7 3.5H11C11.5523 3.5 12 3.94772 12 4.5V9" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12.5 9H11.5C10.9477 9 10.5 9.44772 10.5 10V12C10.5 12.5523 10.9477 13 11.5 13H12.5C13.0523 13 13.5 12.5523 13.5 12V10C13.5 9.44772 13.0523 9 12.5 9Z" strokeLinejoin="round" />
+    <path d="M12 22C17.2 22 18.5 18.392 18.5 14C18.5 9.60799 17.2 6 12 6C6.79994 6 5.5 9.60797 5.5 14C5.5 18.392 6.79994 22 12 22Z" strokeLinejoin="round" />
+  </svg>
+);
+
+Mouse16.displayName = 'Mouse16';
+
+export default Mouse16;

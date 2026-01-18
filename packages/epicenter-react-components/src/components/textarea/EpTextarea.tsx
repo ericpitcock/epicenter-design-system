@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FocusEvent, forwardRef } from 'react';
 
-interface EpTextareaProps {
+export interface EpTextareaProps {
   /** The ID attribute for the textarea element */
   id?: string;
   /** The name attribute for the textarea */
@@ -44,7 +44,7 @@ interface EpTextareaProps {
 /**
  * EpTextarea - A textarea input component with comprehensive configuration options
  */
-const EpTextarea = forwardRef<HTMLTextAreaElement, EpTextareaProps>(({
+export const EpTextarea = forwardRef<HTMLTextAreaElement, EpTextareaProps>(({
   id,
   name,
   placeholder,
@@ -93,5 +93,3 @@ const EpTextarea = forwardRef<HTMLTextAreaElement, EpTextareaProps>(({
 });
 
 EpTextarea.displayName = 'EpTextarea';
-
-export default EpTextarea;

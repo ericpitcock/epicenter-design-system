@@ -36,7 +36,7 @@ export interface EpOverlayProps {
   children?: ReactNode
 }
 
-const EpOverlay: React.FC<EpOverlayProps> = ({
+export const EpOverlay: React.FC<EpOverlayProps> = ({
   type = 'modal',
   visible = false,
   onClose,
@@ -94,5 +94,3 @@ const EpOverlay: React.FC<EpOverlayProps> = ({
     document.body
   )
 }
-
-export default EpOverlay

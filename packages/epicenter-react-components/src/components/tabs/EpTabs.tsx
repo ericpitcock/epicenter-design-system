@@ -28,7 +28,7 @@ export interface EpTabsProps {
   onTabClick?: (data: { item: TabItem; index: number }) => void
 }
 
-const EpTabs: React.FC<EpTabsProps> = ({
+export const EpTabs: React.FC<EpTabsProps> = ({
   activeTabIndex = 0,
   items,
   variant = 'default',
@@ -119,5 +119,3 @@ const EpTabs: React.FC<EpTabsProps> = ({
     </div>
   )
 }
-
-export default EpTabs

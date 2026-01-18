@@ -1,0 +1,18 @@
+import React from 'react';
+
+const FileCorrupt = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M13 2V7C13 8.10457 13.8954 9 15 9H20" strokeLinejoin="round" />
+    <path d="M14 22H18C19.1046 22 20 21.1046 20 20V9L13 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H9.03162C9.32841 22 9.60985 21.8682 9.79985 21.6402L12 19L9.5 16.5L12 14L10 12" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+FileCorrupt.displayName = 'FileCorrupt';
+
+export default FileCorrupt;

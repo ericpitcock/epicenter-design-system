@@ -1,0 +1,18 @@
+import React from 'react';
+
+const CurvyLeftDirection = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M22 11H18C16.8954 11 16 11.8954 16 13V17C16 18.1046 15.1046 19 14 19C12.8954 19 12 18.1046 12 17V6.99583C12 5.89356 11.1064 5 10.0042 5C8.89865 5 8.00375 5.89865 8.00836 7.00415L8.02499 10.9916C8.02961 12.0995 7.13284 13 6.02501 13L2 13" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 11L2 13L4 15" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+CurvyLeftDirection.displayName = 'CurvyLeftDirection';
+
+export default CurvyLeftDirection;

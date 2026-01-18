@@ -1,0 +1,19 @@
+import React from 'react';
+
+const Flashlight = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M16 3H8C7.44772 3 7 3.44772 7 4V6C7 7.04416 7.27249 8.07025 7.79054 8.97683L9 11V20C9 20.5523 9.44772 21 10 21H14C14.5523 21 15 20.5523 15 20V11L16.2095 8.97683C16.7275 8.07025 17 7.04416 17 6V4C17 3.44772 16.5523 3 16 3Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 6H17" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 13V15" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+Flashlight.displayName = 'Flashlight';
+
+export default Flashlight;

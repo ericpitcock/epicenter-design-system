@@ -1,0 +1,22 @@
+import React from 'react';
+
+const DatabaseLocked = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <ellipse cx="11" cy="5" rx="8" ry="3" strokeLinejoin="round" />
+    <path d="M3 12C3 13.5299 6.48993 14.8155 11 15" strokeLinecap="round" />
+    <path d="M6 11C6.60158 11.1808 7.27434 11.3898 8 11.5" strokeLinecap="round" />
+    <path d="M6 18C6.60158 18.1808 7.27434 18.3898 8 18.5" strokeLinecap="round" />
+    <path d="M11 22C6.58172 22 3 20.6569 3 19V5M19 5V10" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M15.5 16.5H14V22H21V16.5H19.5M15.5 16.5V15C15.5 13.8954 16.3954 13 17.5 13C18.6046 13 19.5 13.8954 19.5 15V16.5M15.5 16.5H19.5" strokeLinejoin="round" />
+  </svg>
+);
+
+DatabaseLocked.displayName = 'DatabaseLocked';
+
+export default DatabaseLocked;

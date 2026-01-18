@@ -47,7 +47,7 @@ export interface EpAsyncButtonProps extends Omit<React.ButtonHTMLAttributes<HTML
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const EpAsyncButton: React.FC<EpAsyncButtonProps> = ({
+export const EpAsyncButton: React.FC<EpAsyncButtonProps> = ({
   status = 'default',
   label = 'Submit',
   successMessage = '',
@@ -175,5 +175,3 @@ const EpAsyncButton: React.FC<EpAsyncButtonProps> = ({
     </button>
   )
 }
-
-export default EpAsyncButton

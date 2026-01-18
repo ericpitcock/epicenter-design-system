@@ -1,0 +1,18 @@
+import React from 'react';
+
+const NThRoot = (props) => (
+  <svg
+    className="ep-icon"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path d="M22 7.00016L12.729 7.00001C12.2946 7 11.9099 7.28044 11.7769 7.694L7.5 21L4.65365 16.1205C4.32327 15.5542 3.54636 15.4537 3.08274 15.9173L2 17.0002" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M3 9V5.57143M3 5.57143C3 4.15127 4.11929 3 5.5 3C6.88071 3 8 4.15127 8 5.57143V9M3 5.57143V3" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+NThRoot.displayName = 'NThRoot';
+
+export default NThRoot;

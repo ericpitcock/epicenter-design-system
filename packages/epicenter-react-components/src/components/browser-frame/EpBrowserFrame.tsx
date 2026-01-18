@@ -1,5 +1,5 @@
 import React from 'react'
-import { EpHeader } from '../EpHeader'
+import { EpHeader } from '../header/EpHeader'
 
 export interface EpBrowserFrameProps {
   /**
@@ -22,7 +22,7 @@ export interface EpBrowserFrameProps {
   imageAlt?: string
 }
 
-const EpBrowserFrame: React.FC<EpBrowserFrameProps> = ({
+export const EpBrowserFrame: React.FC<EpBrowserFrameProps> = ({
   width = '100%',
   url = 'http://website.com',
   imageSrc = '',
@@ -135,5 +135,3 @@ const EpBrowserFrame: React.FC<EpBrowserFrameProps> = ({
     </div>
   )
 }
-
-export default EpBrowserFrame
