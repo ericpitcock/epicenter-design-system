@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import EpFlex from '../../../packages/epicenter-react-components/src/components/flexbox/EpFlex';
+import { EpFlex } from '@ericpitcock/epicenter-react-components';
 
 const meta: Meta<typeof EpFlex> = {
   title: 'Components/Flex',

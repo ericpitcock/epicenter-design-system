@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import EpLoadingState from '../../../packages/epicenter-react-components/src/components/loading-state/EpLoadingState';
+import { EpLoadingState } from '@ericpitcock/epicenter-react-components';
 
 const meta: Meta<typeof EpLoadingState> = {
   title: 'Components/LoadingState',

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import EpImage from '../../../packages/epicenter-react-components/src/components/image/EpImage';
+import { EpImage } from '@ericpitcock/epicenter-react-components';
 
 const meta: Meta<typeof EpImage> = {
   title: 'Components/Image',

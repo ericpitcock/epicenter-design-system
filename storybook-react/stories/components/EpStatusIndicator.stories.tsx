@@ -1,8 +1,13 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import EpStatusIndicator from '../../../packages/epicenter-react-components/src/components/status-indicator/EpStatusIndicator';
+import { EpStatusIndicator } from '@ericpitcock/epicenter-react-components';
 
-const meta: Meta<typeof EpStatusIndicator> = {
+type StatusIndicatorStoryProps = {
+  pulse?: boolean;
+  label?: string;
+};
+
+const meta: Meta<StatusIndicatorStoryProps> = {
   title: 'Components/StatusIndicator',
   component: EpStatusIndicator,
   argTypes: {
@@ -28,10 +33,10 @@ const meta: Meta<typeof EpStatusIndicator> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof EpStatusIndicator>;
+type Story = StoryObj<StatusIndicatorStoryProps>;
 
 export const Default: Story = {
-  render: (args: any) => (
+  render: (args) => (
     <EpStatusIndicator pulse={args.pulse}>
       {args.label}
     </EpStatusIndicator>
@@ -43,7 +48,7 @@ export const Default: Story = {
 };
 
 export const Pulsing: Story = {
-  render: (args: any) => (
+  render: (args) => (
     <EpStatusIndicator pulse={true}>
       {args.label}
     </EpStatusIndicator>

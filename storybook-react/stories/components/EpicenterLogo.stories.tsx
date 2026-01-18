@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import EpicenterLogo from '../../../packages/epicenter-react-components/src/components/logo/EpicenterLogo';
+import { EpicenterLogo } from '@ericpitcock/epicenter-react-components';
 
 const meta: Meta<typeof EpicenterLogo> = {
   title: 'Components/EpicenterLogo',

@@ -1,8 +1,13 @@
 import React, { CSSProperties } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import EpBadge from '../../../packages/epicenter-react-components/src/components/badge/EpBadge';
+import { EpBadge } from '@ericpitcock/epicenter-react-components';
 
-const meta: Meta<typeof EpBadge> = {
+type BadgeStoryProps = {
+  classes?: 'Primary' | 'Success' | 'Warning' | 'Danger' | 'Custom';
+  label?: string;
+};
+
+const meta: Meta<BadgeStoryProps> = {
   title: 'Components/Badge',
   component: EpBadge,
   argTypes: {
@@ -29,10 +34,10 @@ const meta: Meta<typeof EpBadge> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof EpBadge>;
+type Story = StoryObj<BadgeStoryProps>;
 
 export const Badge: Story = {
-  render: (args: any) => {
+  render: (args) => {
     const variantMapping: Record<string, string> = {
       Primary: 'badge-variant-primary',
       Success: 'badge-variant-success',

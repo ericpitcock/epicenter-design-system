@@ -1,8 +1,25 @@
 import React, { CSSProperties } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import EpButton from '../../../packages/epicenter-react-components/src/components/button/EpButton';
+import { EpButton } from '@ericpitcock/epicenter-react-components';
 
-const meta: Meta<typeof EpButton> = {
+type ButtonStoryProps = {
+  classes?: string;
+  size?: 'small' | 'default' | 'large' | 'xlarge';
+  disabled?: boolean;
+  iconLeftName?: string;
+  iconRightName?: string;
+  borderWidth?: string;
+  borderRadius?: string;
+  paddingBlock?: string;
+  paddingInline?: string;
+  fontWeight?: string;
+  backgroundColor?: string;
+  borderColor?: string;
+  color?: string;
+  label?: string;
+};
+
+const meta: Meta<ButtonStoryProps> = {
   title: 'Components/Button',
   component: EpButton,
   argTypes: {

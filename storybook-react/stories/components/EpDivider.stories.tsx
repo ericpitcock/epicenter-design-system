@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import EpDivider from '../../../packages/epicenter-react-components/src/components/divider/EpDivider';
+import { EpDivider } from '@ericpitcock/epicenter-react-components';
 
 const meta: Meta<typeof EpDivider> = {
   title: 'Components/Divider',
