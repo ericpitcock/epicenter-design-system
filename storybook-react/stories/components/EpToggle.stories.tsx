@@ -7,25 +7,21 @@ const meta: Meta<typeof EpToggle> = {
   component: EpToggle,
   argTypes: {
     isActive: {
-      name: 'Is Active',
-      control: { type: 'boolean' },
-      table: { category: 'Base Props' },
+      control: 'boolean',
+      description: 'Toggle state'
     },
     disabled: {
-      name: 'Disabled',
-      control: { type: 'boolean' },
-      table: { category: 'Base Props' },
+      control: 'boolean',
+      description: 'Disables the toggle'
     },
     label: {
-      name: 'Label',
-      control: { type: 'text' },
-      table: { category: 'Base Props' },
+      control: 'text',
+      description: 'Label text'
     },
     size: {
-      name: 'Size',
+      control: 'radio',
       options: ['small', 'default', 'large'],
-      control: { type: 'radio' },
-      table: { category: 'Base Props' },
+      description: 'Size variant'
     },
   },
 };
@@ -33,7 +29,7 @@ const meta: Meta<typeof EpToggle> = {
 export default meta;
 type Story = StoryObj<typeof EpToggle>;
 
-export const Default: Story = {
+export const Toggle: Story = {
   render: (args: any) => {
     const [isActive, setIsActive] = useState(args.isActive || false);
 
@@ -51,28 +47,4 @@ export const Default: Story = {
     label: 'Enable notifications',
     size: 'default',
   },
-};
-
-export const Active: Story = {
-  render: (args: any) => {
-    const [isActive, setIsActive] = useState(true);
-
-    return (
-      <EpToggle
-        isActive={isActive}
-        label="Enabled"
-        onToggle={() => setIsActive(!isActive)}
-      />
-    );
-  },
-};
-
-export const Disabled: Story = {
-  render: () => (
-    <EpToggle
-      isActive={false}
-      disabled={true}
-      label="Disabled toggle"
-    />
-  ),
 };

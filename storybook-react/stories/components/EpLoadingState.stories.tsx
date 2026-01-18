@@ -29,7 +29,3 @@ export const Default: Story = {
     message: 'Loading data...',
   },
 };
-
-export const NoMessage: Story = {
-  render: () => <EpLoadingState />,
-};

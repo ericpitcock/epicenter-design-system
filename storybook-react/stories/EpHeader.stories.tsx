@@ -7,7 +7,6 @@ const meta = {
   parameters: {
     layout: 'fullwidth',
   },
-  tags: ['autodocs'],
 } satisfies Meta<typeof EpHeader>;
 
 export default meta;

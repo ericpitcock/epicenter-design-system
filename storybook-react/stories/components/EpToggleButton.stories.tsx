@@ -28,7 +28,7 @@ const meta: Meta<typeof EpToggleButton> = {
 export default meta;
 type Story = StoryObj<typeof EpToggleButton>;
 
-export const Default: Story = {
+export const ToggleButton: Story = {
   render: (args: any) => {
     const [isActive, setIsActive] = useState(false);
 
@@ -45,48 +45,5 @@ export const Default: Story = {
     disabled: false,
     size: 'default',
     activeClass: 'button-variant-primary',
-  },
-};
-
-export const WithIcon: Story = {
-  render: () => {
-    const [isActive, setIsActive] = useState(false);
-
-    return (
-      <EpToggleButton
-        label="Favorite"
-        icon={<span>⭐</span>}
-        isActive={isActive}
-        activeClass="button-variant-warning"
-        onClick={() => setIsActive(!isActive)}
-      />
-    );
-  },
-};
-
-export const Group: Story = {
-  render: () => {
-    const [selected, setSelected] = useState('center');
-
-    const alignments = [
-      { value: 'left', label: 'Left', icon: '⬅️' },
-      { value: 'center', label: 'Center', icon: '↔️' },
-      { value: 'right', label: 'Right', icon: '➡️' },
-    ];
-
-    return (
-      <div style={{ display: 'flex', gap: '0' }}>
-        {alignments.map(align => (
-          <EpToggleButton
-            key={align.value}
-            label={align.label}
-            icon={<span>{align.icon}</span>}
-            isActive={selected === align.value}
-            activeClass="button-variant-primary"
-            onClick={() => setSelected(align.value)}
-          />
-        ))}
-      </div>
-    );
   },
 };

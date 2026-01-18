@@ -39,17 +39,9 @@ const meta: Meta<typeof EpItemCount> = {
 export default meta;
 type Story = StoryObj<typeof EpItemCount>;
 
-export const Singular: Story = {
+export const ItemCount: Story = {
   args: {
     count: 1,
-    singular: 'item',
-    plural: 'items',
-  },
-};
-
-export const Plural: Story = {
-  args: {
-    count: 5,
     singular: 'item',
     plural: 'items',
   },

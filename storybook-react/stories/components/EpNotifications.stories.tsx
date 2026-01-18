@@ -8,7 +8,6 @@ const meta: Meta<typeof EpNotifications> = {
   parameters: {
     layout: 'fullscreen'
   },
-  tags: ['autodocs'],
   argTypes: {
     emptyStateMessage: {
       control: 'text',
@@ -78,120 +77,5 @@ export const Default: Story = {
   args: {
     notificationsTitle: 'Notifications',
     emptyStateMessage: "You're all caught up!"
-  }
-}
-
-export const Empty: Story = {
-  render: (args) => {
-    return (
-      <div style={{ height: '600px', maxWidth: '500px' }}>
-        <EpNotifications
-          {...args}
-          notifications={[]}
-          onRemoveNotification={() => {}}
-          onClearNotifications={() => {}}
-        />
-      </div>
-    )
-  },
-  args: {
-    notificationsTitle: 'Notifications',
-    emptyStateMessage: "You're all caught up!"
-  }
-}
-
-export const CustomTitle: Story = {
-  render: () => {
-    const [notifications, setNotifications] = useState<NotificationItem[]>(generateMockNotifications())
-    
-    const handleRemove = (id: string) => {
-      setNotifications(prev => prev.filter(n => n.id !== id))
-    }
-    
-    const handleClearAll = () => {
-      setNotifications([])
-    }
-    
-    return (
-      <div style={{ height: '600px', maxWidth: '500px' }}>
-        <EpNotifications
-          notificationsTitle="Recent Activity"
-          emptyStateMessage="No recent activity"
-          notifications={notifications}
-          onRemoveNotification={handleRemove}
-          onClearNotifications={handleClearAll}
-        />
-      </div>
-    )
-  }
-}
-
-export const SingleNotification: Story = {
-  render: () => {
-    const [notifications, setNotifications] = useState<NotificationItem[]>([
-      {
-        id: '1',
-        message: 'Welcome to the notification center!',
-        timestamp: new Date().toISOString()
-      }
-    ])
-    
-    const handleRemove = (id: string) => {
-      setNotifications(prev => prev.filter(n => n.id !== id))
-    }
-    
-    const handleClearAll = () => {
-      setNotifications([])
-    }
-    
-    return (
-      <div style={{ height: '600px', maxWidth: '500px' }}>
-        <EpNotifications
-          notifications={notifications}
-          onRemoveNotification={handleRemove}
-          onClearNotifications={handleClearAll}
-        />
-      </div>
-    )
-  }
-}
-
-export const Interactive: Story = {
-  render: () => {
-    const [notifications, setNotifications] = useState<NotificationItem[]>(generateMockNotifications())
-    const [nextId, setNextId] = useState(6)
-    
-    const handleRemove = (id: string) => {
-      setNotifications(prev => prev.filter(n => n.id !== id))
-    }
-    
-    const handleClearAll = () => {
-      setNotifications([])
-    }
-    
-    const addNotification = () => {
-      const newNotification: NotificationItem = {
-        id: String(nextId),
-        message: `New notification #${nextId}`,
-        timestamp: new Date().toISOString()
-      }
-      setNotifications(prev => [newNotification, ...prev])
-      setNextId(prev => prev + 1)
-    }
-    
-    return (
-      <div>
-        <div style={{ marginBottom: '20px', padding: '20px' }}>
-          <button onClick={addNotification}>Add Notification</button>
-        </div>
-        <div style={{ height: '600px', maxWidth: '500px' }}>
-          <EpNotifications
-            notifications={notifications}
-            onRemoveNotification={handleRemove}
-            onClearNotifications={handleClearAll}
-          />
-        </div>
-      </div>
-    )
   }
 }

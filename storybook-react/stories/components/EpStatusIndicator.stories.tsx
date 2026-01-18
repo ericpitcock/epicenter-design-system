@@ -46,14 +46,3 @@ export const Default: Story = {
     label: 'Online',
   },
 };
-
-export const Pulsing: Story = {
-  render: (args) => (
-    <EpStatusIndicator pulse={true}>
-      {args.label}
-    </EpStatusIndicator>
-  ),
-  args: {
-    label: 'Processing...',
-  },
-};

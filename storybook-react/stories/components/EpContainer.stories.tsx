@@ -10,22 +10,10 @@ const meta: Meta<typeof EpContainer> = {
 export default meta;
 type Story = StoryObj<typeof EpContainer>;
 
-export const Default: Story = {
+export const Container: Story = {
   render: () => (
     <EpContainer>
       <p>Main content area</p>
-    </EpContainer>
-  ),
-};
-
-export const WithHeaderAndFooter: Story = {
-  render: () => (
-    <EpContainer
-      header={<h2>Header Section</h2>}
-      footer={<p>Footer Section</p>}
-    >
-      <p>Main content area</p>
-      <p>More content...</p>
     </EpContainer>
   ),
 };

@@ -6,30 +6,28 @@ const meta: Meta<typeof EpTextarea> = {
   title: 'Components/Textarea',
   component: EpTextarea,
   argTypes: {
+    id: { table: { disable: true } },
+    name: { table: { disable: true } },
+    value: { table: { disable: true } },
     placeholder: {
-      name: 'Placeholder',
-      control: { type: 'text' },
-      table: { category: 'Base Props' },
+      control: 'text',
+      description: 'Placeholder text'
     },
     disabled: {
-      name: 'Disabled',
-      control: { type: 'boolean' },
-      table: { category: 'Base Props' },
+      control: 'boolean',
+      description: 'Disables the textarea'
     },
     required: {
-      name: 'Required',
-      control: { type: 'boolean' },
-      table: { category: 'Base Props' },
+      control: 'boolean',
+      description: 'Makes the field required'
     },
     rows: {
-      name: 'Rows',
-      control: { type: 'number' },
-      table: { category: 'Base Props' },
+      control: 'number',
+      description: 'Number of visible text rows'
     },
     maxLength: {
-      name: 'Max Length',
-      control: { type: 'number' },
-      table: { category: 'Base Props' },
+      control: 'number',
+      description: 'Maximum character length'
     },
   },
 };
@@ -37,18 +35,20 @@ const meta: Meta<typeof EpTextarea> = {
 export default meta;
 type Story = StoryObj<typeof EpTextarea>;
 
-export const Default: Story = {
+export const Textarea: Story = {
   render: (args: any) => {
     const [value, setValue] = useState('');
 
     return (
-      <div>
+      <div style={{ width: '400px' }}>
         <EpTextarea
           {...args}
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        <p style={{ marginTop: '10px' }}>Character count: {value.length}</p>
+        <p style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
+          Character count: {value.length}{args.maxLength ? ` / ${args.maxLength}` : ''}
+        </p>
       </div>
     );
   },
@@ -57,37 +57,6 @@ export const Default: Story = {
     rows: 4,
     disabled: false,
     required: false,
+    maxLength: undefined
   },
-};
-
-export const WithMaxLength: Story = {
-  render: () => {
-    const [value, setValue] = useState('');
-    const maxLength = 200;
-
-    return (
-      <div>
-        <EpTextarea
-          placeholder="Max 200 characters"
-          rows={6}
-          maxLength={maxLength}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <p style={{ marginTop: '10px' }}>
-          {value.length} / {maxLength} characters
-        </p>
-      </div>
-    );
-  },
-};
-
-export const Disabled: Story = {
-  render: () => (
-    <EpTextarea
-      placeholder="This textarea is disabled"
-      value="You cannot edit this text"
-      disabled={true}
-    />
-  ),
 };

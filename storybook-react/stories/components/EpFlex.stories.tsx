@@ -10,7 +10,7 @@ const meta: Meta<typeof EpFlex> = {
 export default meta;
 type Story = StoryObj<typeof EpFlex>;
 
-export const Default: Story = {
+export const Flex: Story = {
   render: () => (
     <EpFlex>
       <div style={{ padding: '10px', background: '#e0e0e0' }}>Item 1</div>

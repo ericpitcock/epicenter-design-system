@@ -7,7 +7,6 @@ const meta: Meta<typeof EpCodeView> = {
   parameters: {
     layout: 'padded'
   },
-  tags: ['autodocs'],
   argTypes: {
     language: {
       control: 'select',
@@ -107,58 +106,10 @@ const jsonCode = `{
   }
 }`
 
-export const JavaScript: Story = {
+export const CodeView: Story = {
   args: {
     code: javascriptCode,
     language: 'javascript',
     theme: 'one-dark-pro'
-  }
-}
-
-export const TypeScript: Story = {
-  args: {
-    code: typescriptCode,
-    language: 'typescript',
-    theme: 'one-dark-pro'
-  }
-}
-
-export const Python: Story = {
-  args: {
-    code: pythonCode,
-    language: 'python',
-    theme: 'one-dark-pro'
-  }
-}
-
-export const HTML: Story = {
-  args: {
-    code: htmlCode,
-    language: 'html',
-    theme: 'one-dark-pro'
-  }
-}
-
-export const CSS: Story = {
-  args: {
-    code: cssCode,
-    language: 'css',
-    theme: 'one-dark-pro'
-  }
-}
-
-export const JSON: Story = {
-  args: {
-    code: jsonCode,
-    language: 'json',
-    theme: 'one-dark-pro'
-  }
-}
-
-export const LightTheme: Story = {
-  args: {
-    code: typescriptCode,
-    language: 'typescript',
-    theme: 'one-light'
   }
 }

@@ -20,7 +20,7 @@ const meta: Meta<typeof EpCheckbox> = {
 export default meta;
 type Story = StoryObj<typeof EpCheckbox>;
 
-export const Checkboxes: Story = {
+export const Checkbox: Story = {
   render: () => {
     const [checkboxes, setCheckboxes] = useState([
       { id: 'checkbox1', label: 'Checked', name: 'checkboxes', value: 'checked', checked: true },

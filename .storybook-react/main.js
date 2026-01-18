@@ -3,7 +3,7 @@ const path = require('path')
 
 const config = {
   stories: [
-    '../storybook-react/stories/**/*.mdx', // docs
+    // '../storybook-react/stories/**/*.mdx', // docs
     '../storybook-react/stories/**/*.stories.tsx'
   ],
   addons: [
@@ -16,9 +16,9 @@ const config = {
     name: '@storybook/react-vite',
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
+  // docs: {
+  //   autodocs: 'tag',
+  // },
   viteFinal: async (config) => {
     return {
       ...config,

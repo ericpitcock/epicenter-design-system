@@ -39,18 +39,10 @@ const meta: Meta<typeof EpImage> = {
 export default meta;
 type Story = StoryObj<typeof EpImage>;
 
-export const Default: Story = {
+export const Image: Story = {
   args: {
     src: 'https://picsum.photos/400/300',
     alt: 'Sample image',
     lazy: false,
-  },
-};
-
-export const LazyLoaded: Story = {
-  args: {
-    src: 'https://picsum.photos/400/300',
-    alt: 'Lazy loaded image',
-    lazy: true,
   },
 };

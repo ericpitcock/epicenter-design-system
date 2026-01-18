@@ -7,7 +7,6 @@ const meta: Meta<typeof EpInputStyler> = {
   parameters: {
     layout: 'centered'
   },
-  tags: ['autodocs'],
   argTypes: {
     label: {
       control: 'text',
@@ -60,107 +59,11 @@ const userIcon = (
   </svg>
 )
 
-export const WithInput: Story = {
+export const InputStyler: Story = {
   args: {
     label: 'Username',
     children: <input className="ep-input" placeholder="Enter username" />,
     iconLeft: userIcon
-  },
-  render: (args) => (
-    <div style={{ width: '300px' }}>
-      <EpInputStyler {...args} />
-    </div>
-  )
-}
-
-export const WithClearButton: Story = {
-  args: {
-    label: 'Search',
-    clearable: true,
-    hasInput: true,
-    iconLeft: searchIcon,
-    children: <input className="ep-input" defaultValue="Sample text" />,
-    onClear: () => alert('Clear clicked!')
-  },
-  render: (args) => (
-    <div style={{ width: '300px' }}>
-      <EpInputStyler {...args} />
-    </div>
-  )
-}
-
-export const WithError: Story = {
-  args: {
-    label: 'Email',
-    errorEnabled: true,
-    error: true,
-    errorMessage: 'Please enter a valid email address',
-    children: <input className="ep-input" defaultValue="invalid@" type="email" />
-  },
-  render: (args) => (
-    <div style={{ width: '300px' }}>
-      <EpInputStyler {...args} />
-    </div>
-  )
-}
-
-export const Disabled: Story = {
-  args: {
-    label: 'Disabled Input',
-    disabled: true,
-    children: <input className="ep-input ep-input--disabled" disabled value="Cannot edit" />
-  },
-  render: (args) => (
-    <div style={{ width: '300px' }}>
-      <EpInputStyler {...args} />
-    </div>
-  )
-}
-
-export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '300px' }}>
-      <EpInputStyler
-        label="Small"
-        size="small"
-        children={<input className="ep-input ep-input--small" placeholder="Small input" />}
-      />
-      <EpInputStyler
-        label="Default"
-        size="default"
-        children={<input className="ep-input" placeholder="Default input" />}
-      />
-      <EpInputStyler
-        label="Large"
-        size="large"
-        children={<input className="ep-input ep-input--large" placeholder="Large input" />}
-      />
-      <EpInputStyler
-        label="XLarge"
-        size="xlarge"
-        children={<input className="ep-input ep-input--xlarge" placeholder="XLarge input" />}
-      />
-    </div>
-  )
-}
-
-export const WithSelect: Story = {
-  args: {
-    label: 'Country',
-    iconRight: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M7 10l5 5 5-5z" fill="currentColor"/>
-      </svg>
-    ),
-    iconRightVisible: true,
-    children: (
-      <select className="ep-select">
-        <option value="">Select a country</option>
-        <option value="us">United States</option>
-        <option value="ca">Canada</option>
-        <option value="uk">United Kingdom</option>
-      </select>
-    )
   },
   render: (args) => (
     <div style={{ width: '300px' }}>

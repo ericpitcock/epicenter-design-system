@@ -22,18 +22,8 @@ const meta: Meta<typeof EpDivider> = {
 export default meta;
 type Story = StoryObj<typeof EpDivider>;
 
-export const Horizontal: Story = {
+export const Divider: Story = {
   args: {
     direction: 'horizontal',
   },
-};
-
-export const Vertical: Story = {
-  render: () => (
-    <div style={{ display: 'flex', height: '100px', alignItems: 'center' }}>
-      <span>Left content</span>
-      <EpDivider direction="vertical" />
-      <span>Right content</span>
-    </div>
-  ),
 };
