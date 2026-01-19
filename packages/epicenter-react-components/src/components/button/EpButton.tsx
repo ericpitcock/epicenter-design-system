@@ -1,36 +1,36 @@
-import React, { useMemo, forwardRef, ReactNode, CSSProperties, MouseEvent } from 'react';
+import { useMemo, forwardRef, ReactNode, CSSProperties, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 type ButtonSize = 'small' | 'default' | 'large' | 'xlarge';
 type ButtonType = 'button' | 'submit';
 
 export interface EpButtonProps {
-  /** The size of the button */
-  size?: ButtonSize;
+  /** Additional props */
+  [key: string]: any;
   /** The aria-label of the button */
   ariaLabel?: string;
+  /** Button content */
+  children?: ReactNode;
+  /** Additional CSS classes */
+  className?: string;
   /** If true, the button will be disabled */
   disabled?: boolean;
-  /** The type of the button (only applies when rendered as button element) */
-  type?: ButtonType;
-  /** Router link destination (renders as Link when provided) */
-  to?: string;
   /** URL destination (renders as anchor when provided) */
   href?: string;
   /** Icon displayed on the left side of the button label */
   iconLeft?: ReactNode;
   /** Icon displayed on the right side of the button label */
   iconRight?: ReactNode;
-  /** Button content */
-  children?: ReactNode;
-  /** Additional CSS classes */
-  className?: string;
-  /** Inline styles */
-  style?: CSSProperties;
   /** Click handler */
   onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
-  /** Additional props */
-  [key: string]: any;
+  /** The size of the button */
+  size?: ButtonSize;
+  /** Inline styles */
+  style?: CSSProperties;
+  /** Router link destination (renders as Link when provided) */
+  to?: string;
+  /** The type of the button (only applies when rendered as button element) */
+  type?: ButtonType;
 }
 
 /**

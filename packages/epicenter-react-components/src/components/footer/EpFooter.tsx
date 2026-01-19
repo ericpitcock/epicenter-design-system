@@ -1,11 +1,11 @@
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
 export interface EpFooterProps {
-  left?: ReactNode;
+  [key: string]: any;
   center?: ReactNode;
-  right?: ReactNode;
   className?: string;
-  [key: string]: unknown;
+  left?: ReactNode;
+  right?: ReactNode;
 }
 
 export const EpFooter = forwardRef<HTMLDivElement, EpFooterProps>(

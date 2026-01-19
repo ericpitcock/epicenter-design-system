@@ -1,27 +1,67 @@
-import React, { forwardRef, ReactNode, useId, ChangeEvent, FocusEvent } from 'react'
+import React, { forwardRef, ReactNode, useId, ChangeEvent } from 'react'
+
 import { EpInputStyler } from '../input-styler/EpInputStyler'
 
 export interface EpSelectOption {
+  disabled?: boolean
   label: string
   value: string | number
-  disabled?: boolean
 }
 
 export interface EpSelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'onChange'> {
   /**
-   * Label text for the select (used as placeholder when no option is selected).
+   * If true, automatically focuses the select on mount.
+   * @default false
    */
-  label?: string
+  autofocus?: boolean
   /**
    * If true, disables the select element.
    * @default false
    */
   disabled?: boolean
   /**
-   * If true, automatically focuses the select on mount.
+   * If true, displays the select in error state.
    * @default false
    */
-  autofocus?: boolean
+  error?: boolean
+  /**
+   * If true, enables error state styling and message display.
+   * @default false
+   */
+  errorEnabled?: boolean
+  /**
+   * Error message to display below the select.
+   */
+  errorMessage?: string
+  /**
+   * Icon content for left side
+   */
+  iconLeft?: ReactNode
+  /**
+   * Label text for the select (used as placeholder when no option is selected).
+   */
+  label?: string
+  /**
+   * Handler called when select loses focus
+   */
+  onBlur?: () => void
+  /**
+   * Change handler for controlled select
+   */
+  onChange?: (value: string | number) => void
+  /**
+   * Handler called when select is focused
+   */
+  onFocus?: () => void
+  /**
+   * Array of option objects with 'label', 'value', and optional 'disabled' properties.
+   */
+  options: EpSelectOption[]
+  /**
+   * Placeholder text shown when no option is selected.
+   * @default 'Select an option'
+   */
+  placeholder?: string
   /**
    * If true, makes the select read-only.
    * @default false
@@ -42,55 +82,15 @@ export interface EpSelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelec
    */
   size?: 'small' | 'default' | 'large' | 'xlarge'
   /**
-   * Array of option objects with 'label', 'value', and optional 'disabled' properties.
-   */
-  options: EpSelectOption[]
-  /**
-   * Placeholder text shown when no option is selected.
-   * @default 'Select an option'
-   */
-  placeholder?: string
-  /**
    * Current value of the select
    */
   value?: string | number
-  /**
-   * Change handler for controlled select
-   */
-  onChange?: (value: string | number) => void
-  /**
-   * If true, enables error state styling and message display.
-   * @default false
-   */
-  errorEnabled?: boolean
-  /**
-   * If true, displays the select in error state.
-   * @default false
-   */
-  error?: boolean
-  /**
-   * Error message to display below the select.
-   */
-  errorMessage?: string
-  /**
-   * Icon content for left side
-   */
-  iconLeft?: ReactNode
-  /**
-   * Handler called when select loses focus
-   */
-  onBlur?: () => void
-  /**
-   * Handler called when select is focused
-   */
-  onFocus?: () => void
 }
 
-export const EpSelect = forwardRef<HTMLSelectElement, EpSelectProps>(({
+export const EpSelect = forwardRef<HTMLSelectElement, EpSelectProps>(({ 
   label = '',
   disabled = false,
   autofocus = false,
-  readonly = false,
   required = false,
   selectId,
   size = 'default',
@@ -121,11 +121,11 @@ export const EpSelect = forwardRef<HTMLSelectElement, EpSelectProps>(({
     onChange?.(event.target.value)
   }
 
-  const handleBlur = (event: FocusEvent<HTMLSelectElement>) => {
+  const handleBlur = () => {
     onBlur?.()
   }
 
-  const handleFocus = (event: FocusEvent<HTMLSelectElement>) => {
+  const handleFocus = () => {
     onFocus?.()
   }
 

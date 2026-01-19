@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+
 import { EpButton } from '../button/EpButton'
 
 export interface EpNotificationProps {
@@ -11,14 +12,14 @@ export interface EpNotificationProps {
    */
   message: string
   /**
+   * Handler called when the notification is dismissed
+   */
+  onDismiss?: () => void
+  /**
    * ISO 8601 timestamp string for when the notification was created.
    * @default new Date().toISOString()
    */
   timestamp?: string
-  /**
-   * Handler called when the notification is dismissed
-   */
-  onDismiss?: () => void
 }
 
 /**
@@ -51,7 +52,6 @@ const useTimeAgo = (timestamp: string): string => {
 }
 
 export const EpNotification: React.FC<EpNotificationProps> = ({
-  id,
   message,
   timestamp = new Date().toISOString(),
   onDismiss

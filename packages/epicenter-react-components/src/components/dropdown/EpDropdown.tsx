@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useId, useRef, useState, KeyboardEvent, MouseEvent } from 'react'
+import React, { ReactNode, useEffect, useId, useRef, useState, KeyboardEvent } from 'react'
 
 import { useClickOutside } from '../../hooks/useClickOutside'
 
@@ -26,23 +26,14 @@ export interface EpDropdownProps {
    */
   alignRight?: boolean
   /**
-   * If true, opens the dropdown on hover instead of click.
-   * @default false
+   * Content displayed inside the dropdown panel when open
    */
-  showOnHover?: boolean
+  children?: ReactNode | ((props: { close: () => void }) => ReactNode)
   /**
    * If true, disables the dropdown
    * @default false
    */
   disabled?: boolean
-  /**
-   * Trigger element that opens/closes the dropdown
-   */
-  trigger?: ReactNode | ((props: EpDropdownTriggerProps) => ReactNode)
-  /**
-   * Content displayed inside the dropdown panel when open
-   */
-  children?: ReactNode | ((props: { close: () => void }) => ReactNode)
   /**
    * Handler called when dropdown is clicked
    */
@@ -51,6 +42,15 @@ export interface EpDropdownProps {
    * Handler called when dropdown is closed
    */
   onClose?: () => void
+  /**
+   * If true, opens the dropdown on hover instead of click.
+   * @default false
+   */
+  showOnHover?: boolean
+  /**
+   * Trigger element that opens/closes the dropdown
+   */
+  trigger?: ReactNode | ((props: EpDropdownTriggerProps) => ReactNode)
 }
 
 export const EpDropdown = React.forwardRef<{ openDropdown: () => void; closeDropdown: () => void; toggleDropdown: () => void }, EpDropdownProps>(({
@@ -67,7 +67,6 @@ export const EpDropdown = React.forwardRef<{ openDropdown: () => void; closeDrop
   const contentId = `ep-dropdown-panel-${uniqueId}`
   
   const [dropdownVisible, setDropdownVisible] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
   const openDropdown = () => {
@@ -80,6 +79,8 @@ export const EpDropdown = React.forwardRef<{ openDropdown: () => void; closeDrop
     setDropdownVisible(false)
     onClose?.()
   }
+
+  const dropdownRef = useClickOutside<HTMLDivElement>(closeDropdown)
 
   const toggleDropdown = () => {
     if (disabled || showOnHover) return
@@ -95,7 +96,7 @@ export const EpDropdown = React.forwardRef<{ openDropdown: () => void; closeDrop
       firstMenuItem?.focus()
     } else {
       // Return focus to trigger when closing
-      const trigger = dropdownRef.current?.querySelector(`#${triggerId}`) as HTMLElement
+      const trigger = dropdownRef.current?.querySelector(`#${CSS.escape(triggerId)}`) as HTMLElement
       trigger?.focus()
     }
   }, [dropdownVisible, triggerId])
@@ -126,8 +127,6 @@ export const EpDropdown = React.forwardRef<{ openDropdown: () => void; closeDrop
       setDropdownVisible(false)
     }
   }
-
-  useClickOutside(dropdownRef, closeDropdown)
 
   // Expose methods via ref
   React.useImperativeHandle(ref, () => ({
@@ -165,7 +164,10 @@ export const EpDropdown = React.forwardRef<{ openDropdown: () => void; closeDrop
         trigger(triggerProps)
       ) : trigger ? (
         <div
-          {...triggerAttrs}
+          id={triggerAttrs.id}
+          aria-haspopup={triggerAttrs['aria-haspopup']}
+          aria-expanded={dropdownVisible}
+          aria-controls={triggerAttrs['aria-controls']}
           onClick={toggleDropdown}
           onMouseOver={handleMouseOver}
           onKeyDown={handleKeyDown}
@@ -176,6 +178,7 @@ export const EpDropdown = React.forwardRef<{ openDropdown: () => void; closeDrop
         <button
           type="button"
           {...triggerAttrs}
+          aria-expanded={dropdownVisible}
           onClick={toggleDropdown}
           onMouseOver={handleMouseOver}
           onKeyDown={handleKeyDown}

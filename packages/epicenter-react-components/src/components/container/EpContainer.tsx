@@ -1,4 +1,4 @@
-import React, { ReactNode, forwardRef } from 'react';
+import { ReactNode, forwardRef } from 'react';
 
 export interface EpContainerProps {
   /** Header content of the container */
