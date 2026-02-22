@@ -1,81 +1,3 @@
-<template>
-  <div class="icon-browser">
-    <div class="controls">
-      <ep-flex class="justify-between align-center gap-30">
-        <ep-flex class="gap-10">
-          <ep-select
-            v-model="selectedCategory"
-            select-id="icon-category-select"
-            class="category-select"
-            :options="categories"
-            size="xlarge"
-            @change="onCategoryChange"
-          />
-          <ep-input
-            v-model="search"
-            placeholder="Search icons by name, tags, or category..."
-            class="search-input"
-            :class="{ 'search-input--active': search }"
-            size="xlarge"
-            clearable
-            @input="onSearchChange"
-          />
-        </ep-flex>
-        <p class="icon-count">
-          {{ filteredIcons.length }} of {{ iconsData.length }}
-        </p>
-      </ep-flex>
-    </div>
-    <div class="icon-grid">
-      <div
-        v-for="icon in paginatedIcons"
-        :key="icon.name"
-        :class="{
-          'icon-card--copied': copiedIcon === icon.name
-        }"
-        class="icon-card"
-        @click="copyIconName(icon.name)"
-      >
-        <div class="icon-display">
-          <component
-            :is="iconComponents[getComponentName(icon.name)]"
-            v-if="iconComponents[getComponentName(icon.name)]"
-            :style="iconStyle"
-          />
-          <div
-            v-else
-            class="icon-not-found"
-          >
-            {{ getComponentName(icon.name) }} not found
-          </div>
-        </div>
-        <div class="icon-name">
-          {{ getComponentName(icon.name) }}
-        </div>
-        <div class="icon-category">
-          {{ icon.category }}
-        </div>
-        <div
-          v-if="copiedIcon === icon.name"
-          class="copied-indicator"
-        >
-          Copied!
-        </div>
-      </div>
-    </div>
-    <ep-pagination
-      v-if="totalPages > 1"
-      :current-page="currentPage"
-      :total-pages="totalPages"
-      :results-per-page="resultsPerPage"
-      button-class="ep-button-var--secondary"
-      show-pages
-      @page-change="onPageChange"
-      @update:results-per-page="onResultsPerPageChange"
-    />
-  </div>
-</template>
-
 <script setup>
   import { computed, defineAsyncComponent, ref, watch } from 'vue'
 
@@ -85,6 +7,14 @@
   import EpSelect from '@/components/select/EpSelect.vue'
 
   import { createIconImports, getComponentName, iconsData } from './useIcons.js'
+
+  const props = defineProps({
+    size: { type: Number, default: 72 },
+    color: { type: String, default: '#000000' },
+    strokeWidth: { type: Number, default: 1 },
+    showProblematicOnly: { type: Boolean, default: false },
+    hideProblematic: { type: Boolean, default: true }
+  })
 
   const PROBLEMATIC_ICONS = [
     'Access', 'Advertisiment', 'Affiliate', 'AiBook', 'AiBrain03', 'AiChat02',
@@ -140,14 +70,6 @@
     'Share02', 'Share03', 'Share04', 'Share05', 'Share06', 'Share07', 'Share08',
     'SoftwareUninstall'
   ]
-
-  const props = defineProps({
-    size: { type: Number, default: 72 },
-    color: { type: String, default: '#000000' },
-    strokeWidth: { type: Number, default: 1 },
-    showProblematicOnly: { type: Boolean, default: false },
-    hideProblematic: { type: Boolean, default: true }
-  })
 
   const iconImports = createIconImports()
   const iconComponents = {}
@@ -286,6 +208,84 @@
     currentPage.value = 1
   }
 </script>
+
+<template>
+  <div class="icon-browser">
+    <div class="controls">
+      <ep-flex class="justify-between align-center gap-30">
+        <ep-flex class="gap-10">
+          <ep-select
+            v-model="selectedCategory"
+            select-id="icon-category-select"
+            class="category-select"
+            :options="categories"
+            size="xlarge"
+            @change="onCategoryChange"
+          />
+          <ep-input
+            v-model="search"
+            placeholder="Search icons by name, tags, or category..."
+            class="search-input"
+            :class="{ 'search-input--active': search }"
+            size="xlarge"
+            clearable
+            @input="onSearchChange"
+          />
+        </ep-flex>
+        <p class="icon-count">
+          {{ filteredIcons.length }} of {{ iconsData.length }}
+        </p>
+      </ep-flex>
+    </div>
+    <div class="icon-grid">
+      <div
+        v-for="icon in paginatedIcons"
+        :key="icon.name"
+        :class="{
+          'icon-card--copied': copiedIcon === icon.name
+        }"
+        class="icon-card"
+        @click="copyIconName(icon.name)"
+      >
+        <div class="icon-display">
+          <component
+            :is="iconComponents[getComponentName(icon.name)]"
+            v-if="iconComponents[getComponentName(icon.name)]"
+            :style="iconStyle"
+          />
+          <div
+            v-else
+            class="icon-not-found"
+          >
+            {{ getComponentName(icon.name) }} not found
+          </div>
+        </div>
+        <div class="icon-name">
+          {{ getComponentName(icon.name) }}
+        </div>
+        <div class="icon-category">
+          {{ icon.category }}
+        </div>
+        <div
+          v-if="copiedIcon === icon.name"
+          class="copied-indicator"
+        >
+          Copied!
+        </div>
+      </div>
+    </div>
+    <ep-pagination
+      v-if="totalPages > 1"
+      :current-page="currentPage"
+      :total-pages="totalPages"
+      :results-per-page="resultsPerPage"
+      button-class="ep-button-var--secondary"
+      show-pages
+      @page-change="onPageChange"
+      @update:results-per-page="onResultsPerPageChange"
+    />
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .icon-browser {

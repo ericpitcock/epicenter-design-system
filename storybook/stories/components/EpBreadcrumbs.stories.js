@@ -11,11 +11,10 @@ export default {
   title: 'Components/Breadcrumbs',
   component: EpBreadcrumbs,
   argTypes: {
-    auto: {
-      name: 'Auto Mode',
-      control: { type: 'boolean' },
+    items: {
+      control: 'object',
+      description: 'Array of breadcrumb items with label, to, and optional customClass'
     },
-    items: { table: { disable: true } },
   },
 }
 
@@ -30,7 +29,12 @@ export const Breadcrumbs = (args) => ({
       ready.value = true
     })
 
-    return { args, ready }
+    const handleNavigate = ({ event, crumb }) => {
+      event.preventDefault()
+      router.push(crumb.to)
+    }
+
+    return { args, ready, handleNavigate }
   },
   template: `
     <div v-if="ready">
@@ -81,7 +85,16 @@ export const Breadcrumbs = (args) => ({
           <template #header>
             <ep-header style="--ep-header-container-height: 4.1rem; --ep-header-container-padding: 0.5rem 2rem; --ep-header-container-bg-color: var(--interface-surface--accent);">
               <template #left>
-                <ep-breadcrumbs v-bind="args" />
+                <ep-breadcrumbs v-bind="args" @navigate="handleNavigate">
+                  <template #item="{ crumb, isLast }">
+                    <router-link v-if="!isLast" :to="crumb.to">
+                      {{ crumb.label }}
+                    </router-link>
+                    <span v-else class="ep-breadcrumbs__item--current">
+                      {{ crumb.label }}
+                    </span>
+                  </template>
+                </ep-breadcrumbs>
               </template>
             </ep-header>  
           </template>
@@ -96,6 +109,11 @@ export const Breadcrumbs = (args) => ({
 })
 
 Breadcrumbs.args = {
-  auto: true,
-  // When auto is true, the component uses the route's meta data.
+  items: [
+    { label: 'Home', to: '/' },
+    { label: 'Library', to: '/library' },
+    { label: 'Data', to: '/library/data' },
+    { label: 'Reports', to: '/library/data/reports' },
+    { label: 'Annual', to: '/library/data/reports/annual' },
+  ]
 }

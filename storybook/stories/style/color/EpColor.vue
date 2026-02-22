@@ -1,94 +1,3 @@
-<template>
-  <div class="colors">
-    <div class="colors__sidebar">
-      <ep-menu
-        class="colors__menu"
-        menu-type="nav"
-      >
-        <ep-menu-item
-          v-for="item in menuItems"
-          :key="item.id"
-          :type="item.type || 'item'"
-        >
-          <ep-button
-            v-if="!item.type || item.type === 'item'"
-            :class="['ep-button--menu-item', { 'ep-button--menu-item--selected': item.label === activeItem }]"
-            @click="filterColorTable(item)"
-          >
-            {{ item.label }}
-          </ep-button>
-        </ep-menu-item>
-      </ep-menu>
-    </div>
-    <div class="colors__content">
-      <ep-container ref="epContainerComponent">
-        <ep-table
-          class="colors__table"
-          :columns="tableColumns"
-          :data="filteredData"
-          v-bind="tableProps"
-        >
-          <template #thead="{ visibleColumns }">
-            <ep-table-head :columns="visibleColumns" />
-          </template>
-          <template #cell-sample="{ row }">
-            <div
-              class="color-sample"
-              :style="{ backgroundColor: row.sample }"
-            />
-          </template>
-          <template #cell-color="{ row }">
-            <span
-              class="text--capitalize"
-              :style="{ color: row.hsl }"
-            >{{ row.color }}</span>
-          </template>
-          <template #cell-contrast="{ row }">
-            <ep-flex class="align-center justify-center gap-3">
-              <Tick02
-                v-if="row.contrast === 'AA' || row.contrast === 'AAA'"
-                style="stroke: var(--icon-color--success)"
-              />
-              <Alert02
-                v-else-if="row.contrast === ''"
-                style="stroke: var(--icon-color--error)"
-              />
-              <span>{{ row.contrast }}</span>
-            </ep-flex>
-          </template>
-          <template #cell-css="{ row }">
-            <ep-tooltip>
-              <template #tooltip>
-                <span v-if="copiedCell !== `css-${row.css}`">Copy</span>
-                <span v-else>Copied!</span>
-              </template>
-              <span
-                class="clickable"
-                @click="copyToClipboard(`var(${row.css})`, `css-${row.css}`)"
-              >
-                {{ `var(${row.css})` }}
-              </span>
-            </ep-tooltip>
-          </template>
-          <template #cell-hsl="{ row }">
-            <ep-tooltip>
-              <template #tooltip>
-                <span v-if="copiedCell !== `hsl-${row.css}`">Copy</span>
-                <span v-else>Copied!</span>
-              </template>
-              <span
-                class="clickable"
-                @click="copyToClipboard(row.hsl, `hsl-${row.css}`)"
-              >{{
-                row.hsl }}</span>
-            </ep-tooltip>
-          </template>
-        </ep-table>
-      </ep-container>
-    </div>
-  </div>
-</template>
-
 <script setup>
   import Alert02 from '@ericpitcock/epicenter-icons/epicenter-icons/Alert02'
   import Tick02 from '@ericpitcock/epicenter-icons/epicenter-icons/Tick02'
@@ -110,15 +19,15 @@
   import colors from '../../../../packages/epicenter-styles/tokens/color/color.yaml'
   import grayscale from '../../../../packages/epicenter-styles/tokens/color/grayscale.yaml'
 
-  defineOptions({
-    name: 'EpColor',
-  })
-
   const props = defineProps({
     theme: {
       type: String,
       default: 'dark'
     }
+  })
+
+  defineOptions({
+    name: 'EpColor',
   })
 
   const tableProps = {
@@ -277,6 +186,97 @@
     }
   }
 </script>
+
+<template>
+  <div class="colors">
+    <div class="colors__sidebar">
+      <ep-menu
+        class="colors__menu"
+        menu-type="nav"
+      >
+        <ep-menu-item
+          v-for="item in menuItems"
+          :key="item.id"
+          :type="item.type || 'item'"
+        >
+          <ep-button
+            v-if="!item.type || item.type === 'item'"
+            :class="['ep-button--menu-item', { 'ep-button--menu-item--selected': item.label === activeItem }]"
+            @click="filterColorTable(item)"
+          >
+            {{ item.label }}
+          </ep-button>
+        </ep-menu-item>
+      </ep-menu>
+    </div>
+    <div class="colors__content">
+      <ep-container ref="epContainerComponent">
+        <ep-table
+          class="colors__table"
+          :columns="tableColumns"
+          :data="filteredData"
+          v-bind="tableProps"
+        >
+          <template #thead="{ visibleColumns }">
+            <ep-table-head :columns="visibleColumns" />
+          </template>
+          <template #cell-sample="{ row }">
+            <div
+              class="color-sample"
+              :style="{ backgroundColor: row.sample }"
+            />
+          </template>
+          <template #cell-color="{ row }">
+            <span
+              class="text--capitalize"
+              :style="{ color: row.hsl }"
+            >{{ row.color }}</span>
+          </template>
+          <template #cell-contrast="{ row }">
+            <ep-flex class="align-center justify-center gap-3">
+              <Tick02
+                v-if="row.contrast === 'AA' || row.contrast === 'AAA'"
+                style="stroke: var(--icon-color--success)"
+              />
+              <Alert02
+                v-else-if="row.contrast === ''"
+                style="stroke: var(--icon-color--error)"
+              />
+              <span>{{ row.contrast }}</span>
+            </ep-flex>
+          </template>
+          <template #cell-css="{ row }">
+            <ep-tooltip>
+              <template #tooltip>
+                <span v-if="copiedCell !== `css-${row.css}`">Copy</span>
+                <span v-else>Copied!</span>
+              </template>
+              <span
+                class="clickable"
+                @click="copyToClipboard(`var(${row.css})`, `css-${row.css}`)"
+              >
+                {{ `var(${row.css})` }}
+              </span>
+            </ep-tooltip>
+          </template>
+          <template #cell-hsl="{ row }">
+            <ep-tooltip>
+              <template #tooltip>
+                <span v-if="copiedCell !== `hsl-${row.css}`">Copy</span>
+                <span v-else>Copied!</span>
+              </template>
+              <span
+                class="clickable"
+                @click="copyToClipboard(row.hsl, `hsl-${row.css}`)"
+              >{{
+                row.hsl }}</span>
+            </ep-tooltip>
+          </template>
+        </ep-table>
+      </ep-container>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .colors {
