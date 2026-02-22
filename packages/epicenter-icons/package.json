@@ -4,13 +4,23 @@
   "description": "Epicenter Icons, A comprehensive Vue 3 icon library",
   "type": "module",
   "sideEffects": false,
+  "types": "./react/index.d.ts",
   "exports": {
     "./base.scss": "./base.scss",
     "./epicenter-icons/*": "./epicenter-icons/*.js",
+    "./react": {
+      "types": "./react/index.d.ts",
+      "default": "./react/index.js"
+    },
+    "./react/*": {
+      "types": "./react/*.d.ts",
+      "default": "./react/*.jsx"
+    },
     "./package.json": "./package.json"
   },
   "files": [
     "epicenter-icons/",
+    "react/",
     "base.scss",
     "README.md"
   ],
@@ -18,7 +28,8 @@
     "download": "python3 scripts/download_svgs.py",
     "clean": "python3 scripts/clean_svgs.py",
     "generate": "python3 scripts/generate_vue_components.py",
-    "build": "npm run generate",
+    "generate:types": "node scripts/generate-react-types.js",
+    "build": "npm run generate && npm run generate:types",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

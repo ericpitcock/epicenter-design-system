@@ -29,6 +29,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./packages/epicenter-vue-components/src', import.meta.url)),
       // use icons directly from source
       '@ericpitcock/epicenter-icons/epicenter-icons': fileURLToPath(new URL('./packages/epicenter-icons/epicenter-icons', import.meta.url)),
+      '@ericpitcock/epicenter-icons/react': fileURLToPath(new URL('./packages/epicenter-icons/react', import.meta.url)),
       '@ericpitcock/epicenter-styles': fileURLToPath(new URL('./packages/epicenter-styles/dist', import.meta.url)),
       '@ericpitcock/epicenter-vue-components': fileURLToPath(new URL('./packages/epicenter-vue-components/dist', import.meta.url)),
     }

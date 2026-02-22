@@ -3,12 +3,12 @@ import React, { useRef, useEffect, useCallback, KeyboardEvent } from 'react'
 export interface EpMenuProps {
   /** Menu content (EpMenuItem components) */
   children: React.ReactNode
+  /** Additional CSS classes */
+  className?: string
   /** Callback when Escape key is pressed */
   onEscape?: () => void
   /** Callback when Tab key is pressed */
   onTab?: () => void
-  /** Additional CSS classes */
-  className?: string
 }
 
 /**

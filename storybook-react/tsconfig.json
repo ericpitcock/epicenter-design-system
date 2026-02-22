@@ -18,13 +18,16 @@
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
-      "@ericpitcock/epicenter-react-components": ["../packages/epicenter-react-components"]
+      "@ericpitcock/epicenter-react-components": ["../packages/epicenter-react-components"],
+      "@ericpitcock/epicenter-icons/react": ["../packages/epicenter-icons/react"],
+      "@ericpitcock/epicenter-icons/epicenter-icons": ["../packages/epicenter-icons/epicenter-icons"]
     }
   },
   "include": [
     "stories/**/*",
     "types/**/*",
-    ".storybook/**/*"
+    ".storybook/**/*",
+    "vite-env.d.ts"
   ],
   "exclude": [
     "node_modules"

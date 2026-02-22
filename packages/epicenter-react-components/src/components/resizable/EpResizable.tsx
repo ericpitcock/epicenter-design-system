@@ -4,22 +4,22 @@ export type ResizableDirection = 'column' | 'row'
 export type DragEdge = 'left' | 'right' | 'top' | 'bottom'
 
 export interface EpResizableProps {
+  /** Additional CSS classes */
+  className?: string
+  /** Content for the fixed pane */
+  content: React.ReactNode
   /** The direction of the resizable layout */
   direction?: ResizableDirection
   /** The initial size of the resizable pane */
   initialSize?: string
-  /** The minimum size in pixels for the resizable pane */
-  minSize?: number
   /** The maximum size in pixels for the resizable pane */
   maxSize?: number
-  /** Content for the resizable pane */
-  resizableContent: React.ReactNode
-  /** Content for the fixed pane */
-  content: React.ReactNode
+  /** The minimum size in pixels for the resizable pane */
+  minSize?: number
   /** Callback when resize occurs */
   onResize?: (size: number) => void
-  /** Additional CSS classes */
-  className?: string
+  /** Content for the resizable pane */
+  resizableContent: React.ReactNode
 }
 
 /**
@@ -39,7 +39,7 @@ export const EpResizable: React.FC<EpResizableProps> = ({
   className = ''
 }) => {
   const resizablePaneRef = useRef<HTMLDivElement>(null)
-  const [isDragging, setIsDragging] = useState(false)
+  const isDraggingRef = useRef(false)
   const [hasBeenDragged, setHasBeenDragged] = useState(false)
   const startPosRef = useRef(0)
   const currentSizeRef = useRef<number | null>(null)
@@ -69,7 +69,7 @@ export const EpResizable: React.FC<EpResizableProps> = ({
     }
 
     setHasBeenDragged(true)
-    setIsDragging(true)
+    isDraggingRef.current = true
     
     const clientPos = 'touches' in event ? event.touches[0] : event
     startPosRef.current = direction === 'row' ? clientPos.clientX : clientPos.clientY
@@ -81,7 +81,7 @@ export const EpResizable: React.FC<EpResizableProps> = ({
   }
 
   const handleDragging = (event: MouseEvent | TouchEvent) => {
-    if (!isDragging || currentSizeRef.current === null) return
+    if (!isDraggingRef.current || currentSizeRef.current === null) return
 
     const clientPos = 'touches' in event ? event.touches[0] : event
     const currentPos = direction === 'row' ? clientPos.clientX : clientPos.clientY
@@ -97,11 +97,16 @@ export const EpResizable: React.FC<EpResizableProps> = ({
     currentSizeRef.current = newSize
     onResize?.(newSize)
 
+    // Directly update DOM for smooth dragging (refs don't trigger re-renders)
+    if (resizablePaneRef.current) {
+      resizablePaneRef.current.style.flex = `0 0 ${newSize}px`
+    }
+
     startPosRef.current = currentPos
   }
 
   const handleDragEnd = () => {
-    setIsDragging(false)
+    isDraggingRef.current = false
     document.removeEventListener('mousemove', handleDragging)
     document.removeEventListener('mouseup', handleDragEnd)
     document.removeEventListener('touchmove', handleDragging)

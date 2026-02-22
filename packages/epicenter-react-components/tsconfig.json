@@ -17,7 +17,11 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@ericpitcock/epicenter-icons/react": ["../epicenter-icons/react/index.js"],
+      "@ericpitcock/epicenter-icons/react/*": ["../epicenter-icons/react/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

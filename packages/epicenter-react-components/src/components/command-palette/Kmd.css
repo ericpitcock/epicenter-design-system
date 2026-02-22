@@ -1,0 +1,147 @@
+/* Kmd Component Styles */
+
+.kmd-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  padding-top: 8rem;
+}
+
+.kmd-container {
+  width: 100%;
+  max-width: 42rem;
+  height: 450px;
+  background-color: rgb(24, 24, 27);
+  border: 1px solid rgb(39, 39, 42);
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.kmd-header {
+  height: 4rem;
+  border-bottom: 1px solid rgb(39, 39, 42);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.kmd-search-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.kmd-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.kmd-breadcrumb-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.kmd-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.kmd-input::placeholder {
+}
+
+.kmd-results {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.kmd-section-header {
+  /* padding: 0.75rem 1rem 0.375rem 1rem; */
+}
+
+.kmd-command-item {
+  height: 3rem;
+  /* padding: 0 1rem; */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.kmd-command-item:hover {
+  background-color: rgba(39, 39, 42, 0.5);
+}
+
+.kmd-command-item.selected {
+  background-color: rgb(39, 39, 42);
+}
+
+.kmd-command-icon {
+}
+
+.kmd-command-item.selected .kmd-command-icon {
+}
+
+.kmd-command-title {
+  flex: 1;
+}
+
+.kmd-command-chevron {
+  width: 1rem;
+  height: 1rem;
+}
+
+.kmd-shortcuts {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.kmd-shortcut-key {
+  padding: 0 0.375rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(39, 39, 42);
+  border: 1px solid rgb(63, 63, 70);
+  border-radius: 0.25rem;
+}
+
+.kmd-no-results {
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kmd-footer {
+  height: 1.75rem;
+  border-top: 1px solid rgb(39, 39, 42);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  flex-shrink: 0;
+}
+
+.kmd-footer-text {
+}
+
+.kmd-footer-hints {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}

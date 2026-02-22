@@ -153,9 +153,7 @@ def create_react_component(svg_content: str, component_name: str) -> str:
     
     children_block = '\n'.join(children_jsx)
 
-    jsx_template = f"""import React from 'react';
-
-const {component_name} = (props) => (
+    jsx_template = f"""export const {component_name} = (props) => (
   <svg
     className="ep-icon"
     viewBox="{viewbox}"
@@ -168,8 +166,6 @@ const {component_name} = (props) => (
 );
 
 {component_name}.displayName = '{component_name}';
-
-export default {component_name};
 """
     return jsx_template
 
@@ -225,7 +221,7 @@ def convert_all_svgs():
     # Create index file for easy imports
     index_content = "// Auto-generated index file for React icon components\n\n"
     for name in sorted(component_names):
-        index_content += f"export {{ default as {name} }} from './{name}.jsx';\n"
+        index_content += f"export {{ {name} }} from './{name}.jsx';\n"
     
     index_file = output_dir / "index.js"
     with open(index_file, 'w', encoding='utf-8') as f:

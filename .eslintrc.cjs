@@ -6,8 +6,9 @@ module.exports = {
     'plugin:react/recommended',
     'eslint:recommended',
   ],
-  parser: '@typescript-eslint/parser',
+  parser: 'vue-eslint-parser',
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 'latest',
     ecmaFeatures: {
       jsx: true,
@@ -19,10 +20,10 @@ module.exports = {
     // React
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
-    
+
     // TypeScript
     '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'varsIgnorePattern': '^props$' }],
-    
+
     // Existing rules
     'no-unused-vars': ['error', { 'varsIgnorePattern': '^props$' }],
 
@@ -65,6 +66,9 @@ module.exports = {
 
     // Vue - Padding between blocks
     'vue/padding-line-between-blocks': ['error', 'always'],
+
+    // Vue - Allow single-word component names for icons
+    'vue/multi-word-component-names': 'off',
 
     // Cleanup - Remove old simple-import-sort
     'import/order': 'off',

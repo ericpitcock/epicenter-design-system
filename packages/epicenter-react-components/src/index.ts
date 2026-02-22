@@ -44,12 +44,17 @@ export { EpNotifications } from './components/notification/EpNotifications';
 // Overlays
 export { EpOverlay } from './components/overlay/EpOverlay';
 export { EpDropdown } from './components/dropdown/EpDropdown';
+export { EpDropdownTrigger } from './components/dropdown/EpDropdown';
+export { EpDropdownContent } from './components/dropdown/EpDropdown';
 
 // Navigation
 export { EpTabs } from './components/tabs/EpTabs';
 export { EpTabContent } from './components/tab-content/EpTabContent';
 export { EpBreadcrumbs } from './components/breadcrumbs/EpBreadcrumbs';
 export { EpPagination } from './components/pagination/EpPagination';
+
+// Command Palette
+export { Kmd } from './components/command-palette/Kmd';
 
 // Menu
 export { EpMenu } from './components/menu/EpMenu';
@@ -127,6 +132,8 @@ export type { EpNotificationProps } from './components/notification/EpNotificati
 export type { EpNotificationsProps } from './components/notification/EpNotifications';
 export type { EpOverlayProps } from './components/overlay/EpOverlay';
 export type { EpDropdownProps } from './components/dropdown/EpDropdown';
+export type { EpDropdownTriggerProps } from './components/dropdown/EpDropdown';
+export type { EpDropdownContentProps } from './components/dropdown/EpDropdown';
 export type { EpTabsProps } from './components/tabs/EpTabs';
 export type { EpTabContentProps } from './components/tab-content/EpTabContent';
 export type { EpBreadcrumbsProps, BreadcrumbItem } from './components/breadcrumbs/EpBreadcrumbs';

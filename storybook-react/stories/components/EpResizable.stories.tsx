@@ -1,6 +1,5 @@
 import { EpResizable } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
 
 const meta: Meta<typeof EpResizable> = {
   title: 'Components/Resizable',
@@ -39,7 +38,7 @@ export const Resizable: Story = {
     minSize: 200,
     maxSize: 600,
     resizableContent: (
-      <div style={{ padding: '20px', background: '#f5f5f5', height: '100%' }}>
+      <div style={{ padding: '20px', background: '#f5f5f5', width: '100%', height: '100%' }}>
         <h3>Resizable Sidebar</h3>
         <p>Drag the handle on the right edge to resize this panel.</p>
         <ul>

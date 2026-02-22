@@ -8,6 +8,8 @@ interface DropdownContextValue {
   contentId: string
   disabled: boolean
   isOpen: boolean
+  open: () => void
+  showOnHover: boolean
   toggle: () => void
   triggerId: string
 }
@@ -27,9 +29,10 @@ export interface EpDropdownProps {
   children: ReactNode
   disabled?: boolean
   onOpenChange?: (open: boolean) => void
+  showOnHover?: boolean
 }
 
-export function EpDropdown({ children, disabled = false, onOpenChange }: EpDropdownProps) {
+export function EpDropdown({ children, disabled = false, showOnHover = false, onOpenChange }: EpDropdownProps) {
   const uniqueId = useId()
   const [isOpen, setIsOpen] = useState(false)
   const containerRef = useClickOutside<HTMLDivElement>(() => {
@@ -39,30 +42,46 @@ export function EpDropdown({ children, disabled = false, onOpenChange }: EpDropd
     }
   })
 
+  const open = () => {
+    if (disabled || isOpen) return
+    setIsOpen(true)
+    onOpenChange?.(true)
+  }
+
   const close = () => {
+    if (disabled || !isOpen) return
     setIsOpen(false)
     onOpenChange?.(false)
   }
 
   const toggle = () => {
-    if (disabled) return
+    if (disabled || showOnHover) return
     const newState = !isOpen
     setIsOpen(newState)
     onOpenChange?.(newState)
   }
 
+  const handleMouseLeave = () => {
+    if (!disabled && showOnHover) {
+      setIsOpen(false)
+      onOpenChange?.(false)
+    }
+  }
+
   return (
     <DropdownContext.Provider
       value={{
-        triggerId: `dropdown-trigger-${uniqueId}`,
-        contentId: `dropdown-content-${uniqueId}`,
+        triggerId: `ep-dropdown-trigger-${uniqueId}`,
+        contentId: `ep-dropdown-panel-${uniqueId}`,
         isOpen,
         disabled,
+        showOnHover,
+        open,
         toggle,
         close
       }}
     >
-      <div ref={containerRef} className="ep-dropdown">
+      <div ref={containerRef} className="ep-dropdown" onMouseLeave={handleMouseLeave}>
         {children}
       </div>
     </DropdownContext.Provider>
@@ -75,17 +94,27 @@ export interface EpDropdownTriggerProps {
 }
 
 export function EpDropdownTrigger({ children }: EpDropdownTriggerProps) {
-  const { triggerId, contentId, isOpen, disabled, toggle } = useDropdown()
+  const { triggerId, contentId, isOpen, disabled, showOnHover, open, toggle } = useDropdown()
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation()
     toggle()
   }
 
+  const handleMouseOver = () => {
+    if (!disabled && showOnHover) {
+      open()
+    }
+  }
+
   const handleKeyDown = (e: KeyboardEvent) => {
+    if (disabled) return
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       toggle()
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      open()
     }
   }
 
@@ -94,10 +123,11 @@ export function EpDropdownTrigger({ children }: EpDropdownTriggerProps) {
       id={triggerId}
       role="button"
       tabIndex={disabled ? -1 : 0}
-      aria-haspopup="true"
+      aria-haspopup="menu"
       aria-expanded={isOpen}
       aria-controls={contentId}
       onClick={handleClick}
+      onMouseOver={handleMouseOver}
       onKeyDown={handleKeyDown}
       style={{ cursor: disabled ? 'not-allowed' : 'pointer', display: 'inline-block' }}
     >
@@ -108,11 +138,11 @@ export function EpDropdownTrigger({ children }: EpDropdownTriggerProps) {
 
 // Content Component
 export interface EpDropdownContentProps {
-  align?: 'start' | 'end'
+  alignRight?: boolean
   children: ReactNode | ((props: { close: () => void }) => ReactNode)
 }
 
-export function EpDropdownContent({ children, align = 'start' }: EpDropdownContentProps) {
+export function EpDropdownContent({ children, alignRight = false }: EpDropdownContentProps) {
   const { contentId, triggerId, isOpen, close } = useDropdown()
   const contentRef = useRef<HTMLDivElement>(null)
 
@@ -123,17 +153,21 @@ export function EpDropdownContent({ children, align = 'start' }: EpDropdownConte
     }
   }, [isOpen])
 
-  if (!isOpen) return null
-
   return (
     <div
       id={contentId}
-      ref={contentRef}
-      role="menu"
+      className={`ep-dropdown__container${alignRight ? ' ep-dropdown__container--align-right' : ''}`}
+      role="region"
       aria-labelledby={triggerId}
-      className={`ep-dropdown__content ${align === 'end' ? 'ep-dropdown__content--align-end' : ''}`}
+      style={{ display: isOpen ? undefined : 'none' }}
     >
-      {typeof children === 'function' ? children({ close }) : children}
+      <div
+        ref={contentRef}
+        className="ep-dropdown__content"
+        tabIndex={-1}
+      >
+        {typeof children === 'function' ? children({ close }) : children}
+      </div>
     </div>
   )
 }

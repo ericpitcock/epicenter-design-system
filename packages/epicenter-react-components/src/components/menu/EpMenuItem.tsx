@@ -3,18 +3,18 @@ import React, { useRef, useState, useEffect, useCallback, createContext, useCont
 export type MenuItemType = 'item' | 'divider' | 'section'
 
 export interface EpMenuItemProps {
-  /** Whether the menu item is disabled */
-  isDisabled?: boolean
-  /** The type of menu item to render */
-  type?: MenuItemType
   /** Menu item content */
   children?: React.ReactNode
-  /** Submenu content that appears on hover/focus */
-  submenu?: React.ReactNode
-  /** Callback when menu item is selected */
-  onSelect?: (event: React.MouseEvent | KeyboardEvent) => void
   /** Additional CSS classes */
   className?: string
+  /** Whether the menu item is disabled */
+  isDisabled?: boolean
+  /** Callback when menu item is selected */
+  onSelect?: (event: React.MouseEvent | KeyboardEvent) => void
+  /** Submenu content that appears on hover/focus */
+  submenu?: React.ReactNode
+  /** The type of menu item to render */
+  type?: MenuItemType
 }
 
 // Context to provide closeParentSubmenu function
@@ -240,17 +240,19 @@ export const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
       <SubmenuContext.Provider value={closeThisSubmenu}>
         <div
           ref={(node) => {
-            menuItemRef.current = node
+            // Update local ref
+            (menuItemRef as React.MutableRefObject<HTMLDivElement | null>).current = node
+            // Forward ref
             if (typeof ref === 'function') {
               ref(node)
             } else if (ref) {
-              ref.current = node
+              (ref as React.MutableRefObject<HTMLDivElement | null>).current = node
             }
           }}
           className={`ep-menu__item${className ? ` ${className}` : ''}`}
           role="menuitem"
           aria-haspopup={hasSubmenu ? 'menu' : undefined}
-          aria-expanded={hasSubmenu ? String(showSubmenu) : undefined}
+          aria-expanded={hasSubmenu ? showSubmenu : undefined}
           tabIndex={-1}
           onMouseDown={handleMousedown}
           onClick={handleClick}
