@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PrayerRug02 = (props) => (
+export const PrayerRug02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -16,5 +14,3 @@ const PrayerRug02 = (props) => (
 );
 
 PrayerRug02.displayName = 'PrayerRug02';
-
-export default PrayerRug02;

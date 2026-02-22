@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SemiTruck = (props) => (
+export const SemiTruck = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const SemiTruck = (props) => (
 );
 
 SemiTruck.displayName = 'SemiTruck';
-
-export default SemiTruck;

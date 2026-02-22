@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Diaper = (props) => (
+export const Diaper = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Diaper = (props) => (
 );
 
 Diaper.displayName = 'Diaper';
-
-export default Diaper;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SolarPanel05 = (props) => (
+export const SolarPanel05 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SolarPanel05 = (props) => (
 );
 
 SolarPanel05.displayName = 'SolarPanel05';
-
-export default SolarPanel05;

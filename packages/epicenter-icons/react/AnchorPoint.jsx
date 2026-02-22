@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AnchorPoint = (props) => (
+export const AnchorPoint = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const AnchorPoint = (props) => (
 );
 
 AnchorPoint.displayName = 'AnchorPoint';
-
-export default AnchorPoint;

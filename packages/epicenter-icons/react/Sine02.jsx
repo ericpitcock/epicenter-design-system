@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sine02 = (props) => (
+export const Sine02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Sine02 = (props) => (
 );
 
 Sine02.displayName = 'Sine02';
-
-export default Sine02;

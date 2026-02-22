@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WorkoutKicking = (props) => (
+export const WorkoutKicking = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const WorkoutKicking = (props) => (
 );
 
 WorkoutKicking.displayName = 'WorkoutKicking';
-
-export default WorkoutKicking;

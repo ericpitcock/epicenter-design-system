@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Upwork = (props) => (
+export const Upwork = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Upwork = (props) => (
 );
 
 Upwork.displayName = 'Upwork';
-
-export default Upwork;

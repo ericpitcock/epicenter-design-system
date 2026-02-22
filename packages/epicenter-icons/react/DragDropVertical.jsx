@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DragDropVertical = (props) => (
+export const DragDropVertical = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const DragDropVertical = (props) => (
 );
 
 DragDropVertical.displayName = 'DragDropVertical';
-
-export default DragDropVertical;

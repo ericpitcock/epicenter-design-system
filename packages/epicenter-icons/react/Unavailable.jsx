@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Unavailable = (props) => (
+export const Unavailable = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -14,5 +12,3 @@ const Unavailable = (props) => (
 );
 
 Unavailable.displayName = 'Unavailable';
-
-export default Unavailable;

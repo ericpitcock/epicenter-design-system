@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DatabaseLocked = (props) => (
+export const DatabaseLocked = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const DatabaseLocked = (props) => (
 );
 
 DatabaseLocked.displayName = 'DatabaseLocked';
-
-export default DatabaseLocked;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mortarboard02 = (props) => (
+export const Mortarboard02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Mortarboard02 = (props) => (
 );
 
 Mortarboard02.displayName = 'Mortarboard02';
-
-export default Mortarboard02;

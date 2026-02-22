@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DeletePutBack = (props) => (
+export const DeletePutBack = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DeletePutBack = (props) => (
 );
 
 DeletePutBack.displayName = 'DeletePutBack';
-
-export default DeletePutBack;

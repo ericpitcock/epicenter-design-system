@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MaskLove = (props) => (
+export const MaskLove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MaskLove = (props) => (
 );
 
 MaskLove.displayName = 'MaskLove';
-
-export default MaskLove;

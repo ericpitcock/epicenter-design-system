@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DateTime = (props) => (
+export const DateTime = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DateTime = (props) => (
 );
 
 DateTime.displayName = 'DateTime';
-
-export default DateTime;

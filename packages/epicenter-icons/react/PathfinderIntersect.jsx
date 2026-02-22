@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PathfinderIntersect = (props) => (
+export const PathfinderIntersect = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PathfinderIntersect = (props) => (
 );
 
 PathfinderIntersect.displayName = 'PathfinderIntersect';
-
-export default PathfinderIntersect;

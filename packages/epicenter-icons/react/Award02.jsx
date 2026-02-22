@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Award02 = (props) => (
+export const Award02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Award02 = (props) => (
 );
 
 Award02.displayName = 'Award02';
-
-export default Award02;

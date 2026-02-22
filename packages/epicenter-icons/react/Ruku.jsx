@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ruku = (props) => (
+export const Ruku = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -15,5 +13,3 @@ const Ruku = (props) => (
 );
 
 Ruku.displayName = 'Ruku';
-
-export default Ruku;

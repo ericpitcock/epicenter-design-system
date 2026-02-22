@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MenuTwoLine = (props) => (
+export const MenuTwoLine = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MenuTwoLine = (props) => (
 );
 
 MenuTwoLine.displayName = 'MenuTwoLine';
-
-export default MenuTwoLine;

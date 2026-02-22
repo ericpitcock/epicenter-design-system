@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NotEqualSign = (props) => (
+export const NotEqualSign = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const NotEqualSign = (props) => (
 );
 
 NotEqualSign.displayName = 'NotEqualSign';
-
-export default NotEqualSign;

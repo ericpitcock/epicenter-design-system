@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VineSquare = (props) => (
+export const VineSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const VineSquare = (props) => (
 );
 
 VineSquare.displayName = 'VineSquare';
-
-export default VineSquare;

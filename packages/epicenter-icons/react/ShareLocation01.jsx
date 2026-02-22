@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShareLocation01 = (props) => (
+export const ShareLocation01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ShareLocation01 = (props) => (
 );
 
 ShareLocation01.displayName = 'ShareLocation01';
-
-export default ShareLocation01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Voucher = (props) => (
+export const Voucher = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Voucher = (props) => (
 );
 
 Voucher.displayName = 'Voucher';
-
-export default Voucher;

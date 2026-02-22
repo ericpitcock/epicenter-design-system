@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CircleArrowMoveRightDown = (props) => (
+export const CircleArrowMoveRightDown = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CircleArrowMoveRightDown = (props) => (
 );
 
 CircleArrowMoveRightDown.displayName = 'CircleArrowMoveRightDown';
-
-export default CircleArrowMoveRightDown;

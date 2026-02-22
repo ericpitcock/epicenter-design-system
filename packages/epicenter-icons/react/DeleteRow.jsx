@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DeleteRow = (props) => (
+export const DeleteRow = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DeleteRow = (props) => (
 );
 
 DeleteRow.displayName = 'DeleteRow';
-
-export default DeleteRow;

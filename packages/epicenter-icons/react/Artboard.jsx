@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Artboard = (props) => (
+export const Artboard = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Artboard = (props) => (
 );
 
 Artboard.displayName = 'Artboard';
-
-export default Artboard;

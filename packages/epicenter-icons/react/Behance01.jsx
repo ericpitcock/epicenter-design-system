@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Behance01 = (props) => (
+export const Behance01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Behance01 = (props) => (
 );
 
 Behance01.displayName = 'Behance01';
-
-export default Behance01;

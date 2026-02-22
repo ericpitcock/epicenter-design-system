@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RubberDuck = (props) => (
+export const RubberDuck = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const RubberDuck = (props) => (
 );
 
 RubberDuck.displayName = 'RubberDuck';
-
-export default RubberDuck;

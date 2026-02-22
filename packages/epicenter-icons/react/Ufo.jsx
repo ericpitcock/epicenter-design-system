@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ufo = (props) => (
+export const Ufo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Ufo = (props) => (
 );
 
 Ufo.displayName = 'Ufo';
-
-export default Ufo;

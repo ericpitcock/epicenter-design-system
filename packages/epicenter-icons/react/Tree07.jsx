@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tree07 = (props) => (
+export const Tree07 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Tree07 = (props) => (
 );
 
 Tree07.displayName = 'Tree07';
-
-export default Tree07;

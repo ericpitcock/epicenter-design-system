@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GreekHelmet = (props) => (
+export const GreekHelmet = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const GreekHelmet = (props) => (
 );
 
 GreekHelmet.displayName = 'GreekHelmet';
-
-export default GreekHelmet;

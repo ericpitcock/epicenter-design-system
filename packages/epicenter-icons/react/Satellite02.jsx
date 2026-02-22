@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Satellite02 = (props) => (
+export const Satellite02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Satellite02 = (props) => (
 );
 
 Satellite02.displayName = 'Satellite02';
-
-export default Satellite02;

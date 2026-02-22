@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextIndent = (props) => (
+export const TextIndent = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const TextIndent = (props) => (
 );
 
 TextIndent.displayName = 'TextIndent';
-
-export default TextIndent;

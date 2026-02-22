@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EquipmentWeightlifting = (props) => (
+export const EquipmentWeightlifting = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const EquipmentWeightlifting = (props) => (
 );
 
 EquipmentWeightlifting.displayName = 'EquipmentWeightlifting';
-
-export default EquipmentWeightlifting;

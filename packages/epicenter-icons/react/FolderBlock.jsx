@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderBlock = (props) => (
+export const FolderBlock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderBlock = (props) => (
 );
 
 FolderBlock.displayName = 'FolderBlock';
-
-export default FolderBlock;

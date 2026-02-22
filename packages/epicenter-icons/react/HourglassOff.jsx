@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HourglassOff = (props) => (
+export const HourglassOff = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const HourglassOff = (props) => (
 );
 
 HourglassOff.displayName = 'HourglassOff';
-
-export default HourglassOff;

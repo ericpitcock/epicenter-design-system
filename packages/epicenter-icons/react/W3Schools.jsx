@@ -1,6 +1,4 @@
-import React from 'react';
-
-const W3Schools = (props) => (
+export const W3Schools = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const W3Schools = (props) => (
 );
 
 W3Schools.displayName = 'W3Schools';
-
-export default W3Schools;

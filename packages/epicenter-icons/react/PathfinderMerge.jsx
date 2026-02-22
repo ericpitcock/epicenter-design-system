@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PathfinderMerge = (props) => (
+export const PathfinderMerge = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const PathfinderMerge = (props) => (
 );
 
 PathfinderMerge.displayName = 'PathfinderMerge';
-
-export default PathfinderMerge;

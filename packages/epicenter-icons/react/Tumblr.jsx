@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tumblr = (props) => (
+export const Tumblr = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Tumblr = (props) => (
 );
 
 Tumblr.displayName = 'Tumblr';
-
-export default Tumblr;

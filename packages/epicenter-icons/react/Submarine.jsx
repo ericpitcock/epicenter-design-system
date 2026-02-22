@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Submarine = (props) => (
+export const Submarine = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Submarine = (props) => (
 );
 
 Submarine.displayName = 'Submarine';
-
-export default Submarine;

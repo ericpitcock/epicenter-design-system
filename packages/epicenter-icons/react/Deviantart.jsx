@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Deviantart = (props) => (
+export const Deviantart = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Deviantart = (props) => (
 );
 
 Deviantart.displayName = 'Deviantart';
-
-export default Deviantart;

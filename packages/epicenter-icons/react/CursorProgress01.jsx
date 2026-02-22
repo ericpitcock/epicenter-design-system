@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CursorProgress01 = (props) => (
+export const CursorProgress01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CursorProgress01 = (props) => (
 );
 
 CursorProgress01.displayName = 'CursorProgress01';
-
-export default CursorProgress01;

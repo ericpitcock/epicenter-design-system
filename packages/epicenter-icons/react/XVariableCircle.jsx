@@ -1,6 +1,4 @@
-import React from 'react';
-
-const XVariableCircle = (props) => (
+export const XVariableCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const XVariableCircle = (props) => (
 );
 
 XVariableCircle.displayName = 'XVariableCircle';
-
-export default XVariableCircle;

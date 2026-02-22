@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Stamp = (props) => (
+export const Stamp = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Stamp = (props) => (
 );
 
 Stamp.displayName = 'Stamp';
-
-export default Stamp;

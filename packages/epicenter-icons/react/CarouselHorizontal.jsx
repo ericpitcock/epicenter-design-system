@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CarouselHorizontal = (props) => (
+export const CarouselHorizontal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CarouselHorizontal = (props) => (
 );
 
 CarouselHorizontal.displayName = 'CarouselHorizontal';
-
-export default CarouselHorizontal;

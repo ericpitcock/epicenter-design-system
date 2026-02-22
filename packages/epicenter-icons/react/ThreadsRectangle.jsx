@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ThreadsRectangle = (props) => (
+export const ThreadsRectangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ThreadsRectangle = (props) => (
 );
 
 ThreadsRectangle.displayName = 'ThreadsRectangle';
-
-export default ThreadsRectangle;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComputerVideoCall = (props) => (
+export const ComputerVideoCall = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ComputerVideoCall = (props) => (
 );
 
 ComputerVideoCall.displayName = 'ComputerVideoCall';
-
-export default ComputerVideoCall;

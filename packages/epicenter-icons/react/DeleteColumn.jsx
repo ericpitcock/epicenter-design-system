@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DeleteColumn = (props) => (
+export const DeleteColumn = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DeleteColumn = (props) => (
 );
 
 DeleteColumn.displayName = 'DeleteColumn';
-
-export default DeleteColumn;

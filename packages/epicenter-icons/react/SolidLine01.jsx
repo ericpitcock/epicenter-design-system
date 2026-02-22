@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SolidLine01 = (props) => (
+export const SolidLine01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const SolidLine01 = (props) => (
 );
 
 SolidLine01.displayName = 'SolidLine01';
-
-export default SolidLine01;

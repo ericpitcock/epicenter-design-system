@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SignalFull01 = (props) => (
+export const SignalFull01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const SignalFull01 = (props) => (
 );
 
 SignalFull01.displayName = 'SignalFull01';
-
-export default SignalFull01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArrowShrink02 = (props) => (
+export const ArrowShrink02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ArrowShrink02 = (props) => (
 );
 
 ArrowShrink02.displayName = 'ArrowShrink02';
-
-export default ArrowShrink02;

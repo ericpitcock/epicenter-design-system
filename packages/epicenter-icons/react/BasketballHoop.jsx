@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BasketballHoop = (props) => (
+export const BasketballHoop = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BasketballHoop = (props) => (
 );
 
 BasketballHoop.displayName = 'BasketballHoop';
-
-export default BasketballHoop;

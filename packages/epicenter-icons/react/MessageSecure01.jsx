@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MessageSecure01 = (props) => (
+export const MessageSecure01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MessageSecure01 = (props) => (
 );
 
 MessageSecure01.displayName = 'MessageSecure01';
-
-export default MessageSecure01;

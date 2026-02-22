@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DistributeVerticalBottom = (props) => (
+export const DistributeVerticalBottom = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DistributeVerticalBottom = (props) => (
 );
 
 DistributeVerticalBottom.displayName = 'DistributeVerticalBottom';
-
-export default DistributeVerticalBottom;

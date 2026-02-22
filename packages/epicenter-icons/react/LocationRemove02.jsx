@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LocationRemove02 = (props) => (
+export const LocationRemove02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LocationRemove02 = (props) => (
 );
 
 LocationRemove02.displayName = 'LocationRemove02';
-
-export default LocationRemove02;

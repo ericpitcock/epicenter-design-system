@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FlipTop = (props) => (
+export const FlipTop = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FlipTop = (props) => (
 );
 
 FlipTop.displayName = 'FlipTop';
-
-export default FlipTop;

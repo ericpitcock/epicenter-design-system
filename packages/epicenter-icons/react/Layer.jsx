@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Layer = (props) => (
+export const Layer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Layer = (props) => (
 );
 
 Layer.displayName = 'Layer';
-
-export default Layer;

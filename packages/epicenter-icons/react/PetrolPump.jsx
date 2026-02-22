@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PetrolPump = (props) => (
+export const PetrolPump = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PetrolPump = (props) => (
 );
 
 PetrolPump.displayName = 'PetrolPump';
-
-export default PetrolPump;

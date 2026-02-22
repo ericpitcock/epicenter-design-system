@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ThumbsDownEllipse = (props) => (
+export const ThumbsDownEllipse = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ThumbsDownEllipse = (props) => (
 );
 
 ThumbsDownEllipse.displayName = 'ThumbsDownEllipse';
-
-export default ThumbsDownEllipse;

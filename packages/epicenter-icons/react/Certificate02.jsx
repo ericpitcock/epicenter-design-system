@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Certificate02 = (props) => (
+export const Certificate02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Certificate02 = (props) => (
 );
 
 Certificate02.displayName = 'Certificate02';
-
-export default Certificate02;

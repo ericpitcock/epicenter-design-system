@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartHistogram = (props) => (
+export const ChartHistogram = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChartHistogram = (props) => (
 );
 
 ChartHistogram.displayName = 'ChartHistogram';
-
-export default ChartHistogram;

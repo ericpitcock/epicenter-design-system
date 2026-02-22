@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Keyboard = (props) => (
+export const Keyboard = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Keyboard = (props) => (
 );
 
 Keyboard.displayName = 'Keyboard';
-
-export default Keyboard;

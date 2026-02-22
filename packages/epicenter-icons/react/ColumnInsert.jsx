@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ColumnInsert = (props) => (
+export const ColumnInsert = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ColumnInsert = (props) => (
 );
 
 ColumnInsert.displayName = 'ColumnInsert';
-
-export default ColumnInsert;

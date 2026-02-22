@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StraightEdge = (props) => (
+export const StraightEdge = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const StraightEdge = (props) => (
 );
 
 StraightEdge.displayName = 'StraightEdge';
-
-export default StraightEdge;

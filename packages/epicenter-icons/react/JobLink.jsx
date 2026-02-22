@@ -1,6 +1,4 @@
-import React from 'react';
-
-const JobLink = (props) => (
+export const JobLink = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const JobLink = (props) => (
 );
 
 JobLink.displayName = 'JobLink';
-
-export default JobLink;

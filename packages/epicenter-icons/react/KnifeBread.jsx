@@ -1,6 +1,4 @@
-import React from 'react';
-
-const KnifeBread = (props) => (
+export const KnifeBread = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -13,5 +11,3 @@ const KnifeBread = (props) => (
 );
 
 KnifeBread.displayName = 'KnifeBread';
-
-export default KnifeBread;

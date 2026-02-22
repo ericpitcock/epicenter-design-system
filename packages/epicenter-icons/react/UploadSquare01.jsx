@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UploadSquare01 = (props) => (
+export const UploadSquare01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const UploadSquare01 = (props) => (
 );
 
 UploadSquare01.displayName = 'UploadSquare01';
-
-export default UploadSquare01;

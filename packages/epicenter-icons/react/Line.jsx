@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Line = (props) => (
+export const Line = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Line = (props) => (
 );
 
 Line.displayName = 'Line';
-
-export default Line;

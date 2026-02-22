@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Filter = (props) => (
+export const Filter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Filter = (props) => (
 );
 
 Filter.displayName = 'Filter';
-
-export default Filter;

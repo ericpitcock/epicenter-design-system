@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CreativeMarket = (props) => (
+export const CreativeMarket = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CreativeMarket = (props) => (
 );
 
 CreativeMarket.displayName = 'CreativeMarket';
-
-export default CreativeMarket;

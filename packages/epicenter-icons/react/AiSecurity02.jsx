@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiSecurity02 = (props) => (
+export const AiSecurity02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AiSecurity02 = (props) => (
 );
 
 AiSecurity02.displayName = 'AiSecurity02';
-
-export default AiSecurity02;

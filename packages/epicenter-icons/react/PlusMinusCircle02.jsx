@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PlusMinusCircle02 = (props) => (
+export const PlusMinusCircle02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PlusMinusCircle02 = (props) => (
 );
 
 PlusMinusCircle02.displayName = 'PlusMinusCircle02';
-
-export default PlusMinusCircle02;

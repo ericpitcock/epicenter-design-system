@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Kite = (props) => (
+export const Kite = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Kite = (props) => (
 );
 
 Kite.displayName = 'Kite';
-
-export default Kite;

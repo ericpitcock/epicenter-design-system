@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Money02 = (props) => (
+export const Money02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Money02 = (props) => (
 );
 
 Money02.displayName = 'Money02';
-
-export default Money02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SquareLockMinus02 = (props) => (
+export const SquareLockMinus02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SquareLockMinus02 = (props) => (
 );
 
 SquareLockMinus02.displayName = 'SquareLockMinus02';
-
-export default SquareLockMinus02;

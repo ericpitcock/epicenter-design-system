@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CallInternal = (props) => (
+export const CallInternal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CallInternal = (props) => (
 );
 
 CallInternal.displayName = 'CallInternal';
-
-export default CallInternal;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VerticalResize = (props) => (
+export const VerticalResize = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const VerticalResize = (props) => (
 );
 
 VerticalResize.displayName = 'VerticalResize';
-
-export default VerticalResize;

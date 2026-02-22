@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Album01 = (props) => (
+export const Album01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Album01 = (props) => (
 );
 
 Album01.displayName = 'Album01';
-
-export default Album01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Paypal = (props) => (
+export const Paypal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Paypal = (props) => (
 );
 
 Paypal.displayName = 'Paypal';
-
-export default Paypal;

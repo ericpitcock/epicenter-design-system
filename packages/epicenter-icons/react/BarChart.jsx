@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BarChart = (props) => (
+export const BarChart = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BarChart = (props) => (
 );
 
 BarChart.displayName = 'BarChart';
-
-export default BarChart;

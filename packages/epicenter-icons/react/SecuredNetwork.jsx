@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SecuredNetwork = (props) => (
+export const SecuredNetwork = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SecuredNetwork = (props) => (
 );
 
 SecuredNetwork.displayName = 'SecuredNetwork';
-
-export default SecuredNetwork;

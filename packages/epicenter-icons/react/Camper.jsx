@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Camper = (props) => (
+export const Camper = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Camper = (props) => (
 );
 
 Camper.displayName = 'Camper';
-
-export default Camper;

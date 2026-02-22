@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Corn = (props) => (
+export const Corn = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Corn = (props) => (
 );
 
 Corn.displayName = 'Corn';
-
-export default Corn;

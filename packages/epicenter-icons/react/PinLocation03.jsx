@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PinLocation03 = (props) => (
+export const PinLocation03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PinLocation03 = (props) => (
 );
 
 PinLocation03.displayName = 'PinLocation03';
-
-export default PinLocation03;

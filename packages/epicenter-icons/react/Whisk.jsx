@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Whisk = (props) => (
+export const Whisk = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Whisk = (props) => (
 );
 
 Whisk.displayName = 'Whisk';
-
-export default Whisk;

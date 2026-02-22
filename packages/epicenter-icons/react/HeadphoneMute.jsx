@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HeadphoneMute = (props) => (
+export const HeadphoneMute = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const HeadphoneMute = (props) => (
 );
 
 HeadphoneMute.displayName = 'HeadphoneMute';
-
-export default HeadphoneMute;

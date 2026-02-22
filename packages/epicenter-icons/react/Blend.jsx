@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Blend = (props) => (
+export const Blend = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Blend = (props) => (
 );
 
 Blend.displayName = 'Blend';
-
-export default Blend;

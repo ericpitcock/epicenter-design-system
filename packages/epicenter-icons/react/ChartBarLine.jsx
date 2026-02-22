@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartBarLine = (props) => (
+export const ChartBarLine = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ChartBarLine = (props) => (
 );
 
 ChartBarLine.displayName = 'ChartBarLine';
-
-export default ChartBarLine;

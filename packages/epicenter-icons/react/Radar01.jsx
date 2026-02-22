@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Radar01 = (props) => (
+export const Radar01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Radar01 = (props) => (
 );
 
 Radar01.displayName = 'Radar01';
-
-export default Radar01;

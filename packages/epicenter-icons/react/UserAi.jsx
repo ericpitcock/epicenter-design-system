@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserAi = (props) => (
+export const UserAi = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const UserAi = (props) => (
 );
 
 UserAi.displayName = 'UserAi';
-
-export default UserAi;

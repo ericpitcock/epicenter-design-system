@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Luggage02 = (props) => (
+export const Luggage02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Luggage02 = (props) => (
 );
 
 Luggage02.displayName = 'Luggage02';
-
-export default Luggage02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UnfoldLess = (props) => (
+export const UnfoldLess = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const UnfoldLess = (props) => (
 );
 
 UnfoldLess.displayName = 'UnfoldLess';
-
-export default UnfoldLess;

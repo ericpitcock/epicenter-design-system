@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RemoveFemale = (props) => (
+export const RemoveFemale = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const RemoveFemale = (props) => (
 );
 
 RemoveFemale.displayName = 'RemoveFemale';
-
-export default RemoveFemale;

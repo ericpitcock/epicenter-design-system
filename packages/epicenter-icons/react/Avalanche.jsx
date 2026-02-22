@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Avalanche = (props) => (
+export const Avalanche = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Avalanche = (props) => (
 );
 
 Avalanche.displayName = 'Avalanche';
-
-export default Avalanche;

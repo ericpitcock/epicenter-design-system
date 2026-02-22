@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlAqsaMosque = (props) => (
+export const AlAqsaMosque = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const AlAqsaMosque = (props) => (
 );
 
 AlAqsaMosque.displayName = 'AlAqsaMosque';
-
-export default AlAqsaMosque;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserIdVerification = (props) => (
+export const UserIdVerification = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const UserIdVerification = (props) => (
 );
 
 UserIdVerification.displayName = 'UserIdVerification';
-
-export default UserIdVerification;

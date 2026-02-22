@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiSheets = (props) => (
+export const AiSheets = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const AiSheets = (props) => (
 );
 
 AiSheets.displayName = 'AiSheets';
-
-export default AiSheets;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiVoiceGenerator = (props) => (
+export const AiVoiceGenerator = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const AiVoiceGenerator = (props) => (
 );
 
 AiVoiceGenerator.displayName = 'AiVoiceGenerator';
-
-export default AiVoiceGenerator;

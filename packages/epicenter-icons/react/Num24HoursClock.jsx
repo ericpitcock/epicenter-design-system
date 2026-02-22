@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Num24HoursClock = (props) => (
+export const Num24HoursClock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Num24HoursClock = (props) => (
 );
 
 Num24HoursClock.displayName = 'Num24HoursClock';
-
-export default Num24HoursClock;

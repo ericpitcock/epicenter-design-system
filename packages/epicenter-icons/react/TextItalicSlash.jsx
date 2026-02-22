@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextItalicSlash = (props) => (
+export const TextItalicSlash = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TextItalicSlash = (props) => (
 );
 
 TextItalicSlash.displayName = 'TextItalicSlash';
-
-export default TextItalicSlash;

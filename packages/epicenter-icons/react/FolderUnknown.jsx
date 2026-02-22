@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderUnknown = (props) => (
+export const FolderUnknown = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderUnknown = (props) => (
 );
 
 FolderUnknown.displayName = 'FolderUnknown';
-
-export default FolderUnknown;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mirror = (props) => (
+export const Mirror = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Mirror = (props) => (
 );
 
 Mirror.displayName = 'Mirror';
-
-export default Mirror;

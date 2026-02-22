@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Gnome = (props) => (
+export const Gnome = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 25"
@@ -15,5 +13,3 @@ const Gnome = (props) => (
 );
 
 Gnome.displayName = 'Gnome';
-
-export default Gnome;

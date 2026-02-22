@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SignLanguageC = (props) => (
+export const SignLanguageC = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const SignLanguageC = (props) => (
 );
 
 SignLanguageC.displayName = 'SignLanguageC';
-
-export default SignLanguageC;

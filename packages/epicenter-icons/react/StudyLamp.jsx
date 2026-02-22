@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StudyLamp = (props) => (
+export const StudyLamp = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const StudyLamp = (props) => (
 );
 
 StudyLamp.displayName = 'StudyLamp';
-
-export default StudyLamp;

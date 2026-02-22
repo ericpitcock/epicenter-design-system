@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TriangleDash = (props) => (
+export const TriangleDash = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const TriangleDash = (props) => (
 );
 
 TriangleDash.displayName = 'TriangleDash';
-
-export default TriangleDash;

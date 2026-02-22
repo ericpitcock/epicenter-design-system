@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Zap = (props) => (
+export const Zap = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Zap = (props) => (
 );
 
 Zap.displayName = 'Zap';
-
-export default Zap;

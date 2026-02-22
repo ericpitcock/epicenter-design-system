@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Telegram = (props) => (
+export const Telegram = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Telegram = (props) => (
 );
 
 Telegram.displayName = 'Telegram';
-
-export default Telegram;

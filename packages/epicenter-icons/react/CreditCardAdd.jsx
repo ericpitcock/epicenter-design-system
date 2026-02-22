@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CreditCardAdd = (props) => (
+export const CreditCardAdd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CreditCardAdd = (props) => (
 );
 
 CreditCardAdd.displayName = 'CreditCardAdd';
-
-export default CreditCardAdd;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SecurityLock = (props) => (
+export const SecurityLock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SecurityLock = (props) => (
 );
 
 SecurityLock.displayName = 'SecurityLock';
-
-export default SecurityLock;

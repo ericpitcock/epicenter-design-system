@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wave = (props) => (
+export const Wave = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Wave = (props) => (
 );
 
 Wave.displayName = 'Wave';
-
-export default Wave;

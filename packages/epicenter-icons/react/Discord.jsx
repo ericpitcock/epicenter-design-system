@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Discord = (props) => (
+export const Discord = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Discord = (props) => (
 );
 
 Discord.displayName = 'Discord';
-
-export default Discord;

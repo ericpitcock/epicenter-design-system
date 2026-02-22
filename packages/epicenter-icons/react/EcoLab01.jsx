@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EcoLab01 = (props) => (
+export const EcoLab01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const EcoLab01 = (props) => (
 );
 
 EcoLab01.displayName = 'EcoLab01';
-
-export default EcoLab01;

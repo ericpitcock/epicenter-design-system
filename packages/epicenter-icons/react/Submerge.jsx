@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Submerge = (props) => (
+export const Submerge = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Submerge = (props) => (
 );
 
 Submerge.displayName = 'Submerge';
-
-export default Submerge;

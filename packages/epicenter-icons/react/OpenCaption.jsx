@@ -1,6 +1,4 @@
-import React from 'react';
-
-const OpenCaption = (props) => (
+export const OpenCaption = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const OpenCaption = (props) => (
 );
 
 OpenCaption.displayName = 'OpenCaption';
-
-export default OpenCaption;

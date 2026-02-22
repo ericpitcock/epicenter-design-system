@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VolumeMute01 = (props) => (
+export const VolumeMute01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const VolumeMute01 = (props) => (
 );
 
 VolumeMute01.displayName = 'VolumeMute01';
-
-export default VolumeMute01;

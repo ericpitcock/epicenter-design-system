@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ketupat = (props) => (
+export const Ketupat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -15,5 +13,3 @@ const Ketupat = (props) => (
 );
 
 Ketupat.displayName = 'Ketupat';
-
-export default Ketupat;

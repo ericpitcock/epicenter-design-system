@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tulip = (props) => (
+export const Tulip = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Tulip = (props) => (
 );
 
 Tulip.displayName = 'Tulip';
-
-export default Tulip;

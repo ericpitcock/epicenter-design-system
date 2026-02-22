@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileLink = (props) => (
+export const FileLink = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileLink = (props) => (
 );
 
 FileLink.displayName = 'FileLink';
-
-export default FileLink;

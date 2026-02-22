@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileSync = (props) => (
+export const FileSync = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileSync = (props) => (
 );
 
 FileSync.displayName = 'FileSync';
-
-export default FileSync;

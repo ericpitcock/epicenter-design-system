@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Dna = (props) => (
+export const Dna = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Dna = (props) => (
 );
 
 Dna.displayName = 'Dna';
-
-export default Dna;

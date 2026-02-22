@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BitcoinEllipse = (props) => (
+export const BitcoinEllipse = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BitcoinEllipse = (props) => (
 );
 
 BitcoinEllipse.displayName = 'BitcoinEllipse';
-
-export default BitcoinEllipse;

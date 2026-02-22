@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PathfinderMinusFront = (props) => (
+export const PathfinderMinusFront = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PathfinderMinusFront = (props) => (
 );
 
 PathfinderMinusFront.displayName = 'PathfinderMinusFront';
-
-export default PathfinderMinusFront;

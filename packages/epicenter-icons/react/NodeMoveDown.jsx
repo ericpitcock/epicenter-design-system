@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NodeMoveDown = (props) => (
+export const NodeMoveDown = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const NodeMoveDown = (props) => (
 );
 
 NodeMoveDown.displayName = 'NodeMoveDown';
-
-export default NodeMoveDown;

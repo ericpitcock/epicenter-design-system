@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sushi03 = (props) => (
+export const Sushi03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Sushi03 = (props) => (
 );
 
 Sushi03.displayName = 'Sushi03';
-
-export default Sushi03;

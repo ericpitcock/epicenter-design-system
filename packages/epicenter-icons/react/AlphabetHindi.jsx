@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlphabetHindi = (props) => (
+export const AlphabetHindi = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const AlphabetHindi = (props) => (
 );
 
 AlphabetHindi.displayName = 'AlphabetHindi';
-
-export default AlphabetHindi;

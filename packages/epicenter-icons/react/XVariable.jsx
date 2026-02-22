@@ -1,6 +1,4 @@
-import React from 'react';
-
-const XVariable = (props) => (
+export const XVariable = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const XVariable = (props) => (
 );
 
 XVariable.displayName = 'XVariable';
-
-export default XVariable;

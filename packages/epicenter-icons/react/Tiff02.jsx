@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tiff02 = (props) => (
+export const Tiff02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Tiff02 = (props) => (
 );
 
 Tiff02.displayName = 'Tiff02';
-
-export default Tiff02;

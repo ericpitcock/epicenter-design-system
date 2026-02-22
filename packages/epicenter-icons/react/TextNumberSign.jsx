@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextNumberSign = (props) => (
+export const TextNumberSign = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TextNumberSign = (props) => (
 );
 
 TextNumberSign.displayName = 'TextNumberSign';
-
-export default TextNumberSign;

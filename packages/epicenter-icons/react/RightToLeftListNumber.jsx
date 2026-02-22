@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RightToLeftListNumber = (props) => (
+export const RightToLeftListNumber = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const RightToLeftListNumber = (props) => (
 );
 
 RightToLeftListNumber.displayName = 'RightToLeftListNumber';
-
-export default RightToLeftListNumber;

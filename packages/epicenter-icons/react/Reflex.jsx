@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Reflex = (props) => (
+export const Reflex = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Reflex = (props) => (
 );
 
 Reflex.displayName = 'Reflex';
-
-export default Reflex;

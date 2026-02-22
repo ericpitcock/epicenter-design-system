@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bathtub02 = (props) => (
+export const Bathtub02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Bathtub02 = (props) => (
 );
 
 Bathtub02.displayName = 'Bathtub02';
-
-export default Bathtub02;

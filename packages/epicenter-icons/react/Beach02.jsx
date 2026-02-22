@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Beach02 = (props) => (
+export const Beach02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Beach02 = (props) => (
 );
 
 Beach02.displayName = 'Beach02';
-
-export default Beach02;

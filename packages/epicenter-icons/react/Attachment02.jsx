@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Attachment02 = (props) => (
+export const Attachment02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Attachment02 = (props) => (
 );
 
 Attachment02.displayName = 'Attachment02';
-
-export default Attachment02;

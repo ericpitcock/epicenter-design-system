@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DistributeHorizontalLeft = (props) => (
+export const DistributeHorizontalLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DistributeHorizontalLeft = (props) => (
 );
 
 DistributeHorizontalLeft.displayName = 'DistributeHorizontalLeft';
-
-export default DistributeHorizontalLeft;

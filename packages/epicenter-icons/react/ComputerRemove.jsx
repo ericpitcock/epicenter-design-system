@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComputerRemove = (props) => (
+export const ComputerRemove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ComputerRemove = (props) => (
 );
 
 ComputerRemove.displayName = 'ComputerRemove';
-
-export default ComputerRemove;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GridView = (props) => (
+export const GridView = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const GridView = (props) => (
 );
 
 GridView.displayName = 'GridView';
-
-export default GridView;

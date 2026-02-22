@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArrangeByNumbers91 = (props) => (
+export const ArrangeByNumbers91 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ArrangeByNumbers91 = (props) => (
 );
 
 ArrangeByNumbers91.displayName = 'ArrangeByNumbers91';
-
-export default ArrangeByNumbers91;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FocusPoint = (props) => (
+export const FocusPoint = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FocusPoint = (props) => (
 );
 
 FocusPoint.displayName = 'FocusPoint';
-
-export default FocusPoint;

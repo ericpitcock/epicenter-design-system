@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AudioWave02 = (props) => (
+export const AudioWave02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const AudioWave02 = (props) => (
 );
 
 AudioWave02.displayName = 'AudioWave02';
-
-export default AudioWave02;

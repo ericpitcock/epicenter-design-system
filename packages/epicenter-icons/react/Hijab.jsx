@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hijab = (props) => (
+export const Hijab = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -16,5 +14,3 @@ const Hijab = (props) => (
 );
 
 Hijab.displayName = 'Hijab';
-
-export default Hijab;

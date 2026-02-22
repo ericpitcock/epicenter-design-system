@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Transparency = (props) => (
+export const Transparency = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Transparency = (props) => (
 );
 
 Transparency.displayName = 'Transparency';
-
-export default Transparency;

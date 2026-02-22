@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CameraMicrophone01 = (props) => (
+export const CameraMicrophone01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CameraMicrophone01 = (props) => (
 );
 
 CameraMicrophone01.displayName = 'CameraMicrophone01';
-
-export default CameraMicrophone01;

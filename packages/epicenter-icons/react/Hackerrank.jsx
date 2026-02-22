@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hackerrank = (props) => (
+export const Hackerrank = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Hackerrank = (props) => (
 );
 
 Hackerrank.displayName = 'Hackerrank';
-
-export default Hackerrank;

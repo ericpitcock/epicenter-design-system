@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderRemove = (props) => (
+export const FolderRemove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderRemove = (props) => (
 );
 
 FolderRemove.displayName = 'FolderRemove';
-
-export default FolderRemove;

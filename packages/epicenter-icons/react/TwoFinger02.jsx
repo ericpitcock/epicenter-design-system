@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TwoFinger02 = (props) => (
+export const TwoFinger02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const TwoFinger02 = (props) => (
 );
 
 TwoFinger02.displayName = 'TwoFinger02';
-
-export default TwoFinger02;

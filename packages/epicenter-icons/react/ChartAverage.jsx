@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartAverage = (props) => (
+export const ChartAverage = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChartAverage = (props) => (
 );
 
 ChartAverage.displayName = 'ChartAverage';
-
-export default ChartAverage;

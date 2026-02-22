@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BoundingBox = (props) => (
+export const BoundingBox = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const BoundingBox = (props) => (
 );
 
 BoundingBox.displayName = 'BoundingBox';
-
-export default BoundingBox;

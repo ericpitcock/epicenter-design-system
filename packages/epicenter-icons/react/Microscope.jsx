@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Microscope = (props) => (
+export const Microscope = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Microscope = (props) => (
 );
 
 Microscope.displayName = 'Microscope';
-
-export default Microscope;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ZeroCircle = (props) => (
+export const ZeroCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ZeroCircle = (props) => (
 );
 
 ZeroCircle.displayName = 'ZeroCircle';
-
-export default ZeroCircle;

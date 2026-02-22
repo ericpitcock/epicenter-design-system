@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LanguageSquare = (props) => (
+export const LanguageSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LanguageSquare = (props) => (
 );
 
 LanguageSquare.displayName = 'LanguageSquare';
-
-export default LanguageSquare;

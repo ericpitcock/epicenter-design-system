@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StructureCheck = (props) => (
+export const StructureCheck = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const StructureCheck = (props) => (
 );
 
 StructureCheck.displayName = 'StructureCheck';
-
-export default StructureCheck;

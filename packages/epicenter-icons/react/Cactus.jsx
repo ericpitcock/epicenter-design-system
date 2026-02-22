@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cactus = (props) => (
+export const Cactus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Cactus = (props) => (
 );
 
 Cactus.displayName = 'Cactus';
-
-export default Cactus;

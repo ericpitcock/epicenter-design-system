@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LiveStreaming02 = (props) => (
+export const LiveStreaming02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const LiveStreaming02 = (props) => (
 );
 
 LiveStreaming02.displayName = 'LiveStreaming02';
-
-export default LiveStreaming02;

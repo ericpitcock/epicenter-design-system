@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GarbageTruck = (props) => (
+export const GarbageTruck = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const GarbageTruck = (props) => (
 );
 
 GarbageTruck.displayName = 'GarbageTruck';
-
-export default GarbageTruck;

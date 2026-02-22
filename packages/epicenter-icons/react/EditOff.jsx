@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EditOff = (props) => (
+export const EditOff = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const EditOff = (props) => (
 );
 
 EditOff.displayName = 'EditOff';
-
-export default EditOff;

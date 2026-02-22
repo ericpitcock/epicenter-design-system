@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Keffiyeh = (props) => (
+export const Keffiyeh = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -15,5 +13,3 @@ const Keffiyeh = (props) => (
 );
 
 Keffiyeh.displayName = 'Keffiyeh';
-
-export default Keffiyeh;

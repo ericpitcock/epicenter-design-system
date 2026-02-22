@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TransitionBottom = (props) => (
+export const TransitionBottom = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TransitionBottom = (props) => (
 );
 
 TransitionBottom.displayName = 'TransitionBottom';
-
-export default TransitionBottom;

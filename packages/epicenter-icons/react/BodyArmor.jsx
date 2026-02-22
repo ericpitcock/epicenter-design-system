@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BodyArmor = (props) => (
+export const BodyArmor = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const BodyArmor = (props) => (
 );
 
 BodyArmor.displayName = 'BodyArmor';
-
-export default BodyArmor;

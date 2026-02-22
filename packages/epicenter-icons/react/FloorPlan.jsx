@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FloorPlan = (props) => (
+export const FloorPlan = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const FloorPlan = (props) => (
 );
 
 FloorPlan.displayName = 'FloorPlan';
-
-export default FloorPlan;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Camel = (props) => (
+export const Camel = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Camel = (props) => (
 );
 
 Camel.displayName = 'Camel';
-
-export default Camel;

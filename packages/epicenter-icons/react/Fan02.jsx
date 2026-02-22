@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Fan02 = (props) => (
+export const Fan02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Fan02 = (props) => (
 );
 
 Fan02.displayName = 'Fan02';
-
-export default Fan02;

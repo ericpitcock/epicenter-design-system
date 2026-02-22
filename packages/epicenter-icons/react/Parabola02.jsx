@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Parabola02 = (props) => (
+export const Parabola02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Parabola02 = (props) => (
 );
 
 Parabola02.displayName = 'Parabola02';
-
-export default Parabola02;

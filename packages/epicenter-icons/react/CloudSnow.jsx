@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CloudSnow = (props) => (
+export const CloudSnow = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CloudSnow = (props) => (
 );
 
 CloudSnow.displayName = 'CloudSnow';
-
-export default CloudSnow;

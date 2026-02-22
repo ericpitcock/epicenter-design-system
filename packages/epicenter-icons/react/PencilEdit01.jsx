@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PencilEdit01 = (props) => (
+export const PencilEdit01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PencilEdit01 = (props) => (
 );
 
 PencilEdit01.displayName = 'PencilEdit01';
-
-export default PencilEdit01;

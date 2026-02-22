@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextVerticalAlignment = (props) => (
+export const TextVerticalAlignment = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const TextVerticalAlignment = (props) => (
 );
 
 TextVerticalAlignment.displayName = 'TextVerticalAlignment';
-
-export default TextVerticalAlignment;

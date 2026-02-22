@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NanoTechnology = (props) => (
+export const NanoTechnology = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const NanoTechnology = (props) => (
 );
 
 NanoTechnology.displayName = 'NanoTechnology';
-
-export default NanoTechnology;

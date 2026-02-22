@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Horse = (props) => (
+export const Horse = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Horse = (props) => (
 );
 
 Horse.displayName = 'Horse';
-
-export default Horse;

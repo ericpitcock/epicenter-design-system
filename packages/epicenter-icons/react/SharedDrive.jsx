@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SharedDrive = (props) => (
+export const SharedDrive = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const SharedDrive = (props) => (
 );
 
 SharedDrive.displayName = 'SharedDrive';
-
-export default SharedDrive;

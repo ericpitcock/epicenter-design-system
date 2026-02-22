@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlbumNotFound02 = (props) => (
+export const AlbumNotFound02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const AlbumNotFound02 = (props) => (
 );
 
 AlbumNotFound02.displayName = 'AlbumNotFound02';
-
-export default AlbumNotFound02;

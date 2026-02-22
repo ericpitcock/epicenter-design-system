@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Minimize01 = (props) => (
+export const Minimize01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Minimize01 = (props) => (
 );
 
 Minimize01.displayName = 'Minimize01';
-
-export default Minimize01;

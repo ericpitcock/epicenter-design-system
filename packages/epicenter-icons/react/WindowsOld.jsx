@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WindowsOld = (props) => (
+export const WindowsOld = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const WindowsOld = (props) => (
 );
 
 WindowsOld.displayName = 'WindowsOld';
-
-export default WindowsOld;

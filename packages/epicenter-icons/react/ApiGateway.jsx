@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ApiGateway = (props) => (
+export const ApiGateway = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ApiGateway = (props) => (
 );
 
 ApiGateway.displayName = 'ApiGateway';
-
-export default ApiGateway;

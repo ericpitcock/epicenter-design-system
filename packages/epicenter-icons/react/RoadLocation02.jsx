@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RoadLocation02 = (props) => (
+export const RoadLocation02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const RoadLocation02 = (props) => (
 );
 
 RoadLocation02.displayName = 'RoadLocation02';
-
-export default RoadLocation02;

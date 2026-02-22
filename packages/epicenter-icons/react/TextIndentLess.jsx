@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextIndentLess = (props) => (
+export const TextIndentLess = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const TextIndentLess = (props) => (
 );
 
 TextIndentLess.displayName = 'TextIndentLess';
-
-export default TextIndentLess;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Repost = (props) => (
+export const Repost = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Repost = (props) => (
 );
 
 Repost.displayName = 'Repost';
-
-export default Repost;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PauseCircle = (props) => (
+export const PauseCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PauseCircle = (props) => (
 );
 
 PauseCircle.displayName = 'PauseCircle';
-
-export default PauseCircle;

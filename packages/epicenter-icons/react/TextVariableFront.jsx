@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextVariableFront = (props) => (
+export const TextVariableFront = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const TextVariableFront = (props) => (
 );
 
 TextVariableFront.displayName = 'TextVariableFront';
-
-export default TextVariableFront;

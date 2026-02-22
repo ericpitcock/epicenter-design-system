@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GameController01 = (props) => (
+export const GameController01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const GameController01 = (props) => (
 );
 
 GameController01.displayName = 'GameController01';
-
-export default GameController01;

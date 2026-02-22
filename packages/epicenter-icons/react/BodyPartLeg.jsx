@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BodyPartLeg = (props) => (
+export const BodyPartLeg = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BodyPartLeg = (props) => (
 );
 
 BodyPartLeg.displayName = 'BodyPartLeg';
-
-export default BodyPartLeg;

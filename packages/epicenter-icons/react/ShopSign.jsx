@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShopSign = (props) => (
+export const ShopSign = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ShopSign = (props) => (
 );
 
 ShopSign.displayName = 'ShopSign';
-
-export default ShopSign;

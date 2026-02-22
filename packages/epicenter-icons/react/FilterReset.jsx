@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FilterReset = (props) => (
+export const FilterReset = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FilterReset = (props) => (
 );
 
 FilterReset.displayName = 'FilterReset';
-
-export default FilterReset;

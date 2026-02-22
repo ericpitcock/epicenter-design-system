@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserRemove02 = (props) => (
+export const UserRemove02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const UserRemove02 = (props) => (
 );
 
 UserRemove02.displayName = 'UserRemove02';
-
-export default UserRemove02;

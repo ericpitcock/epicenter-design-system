@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wireless = (props) => (
+export const Wireless = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Wireless = (props) => (
 );
 
 Wireless.displayName = 'Wireless';
-
-export default Wireless;

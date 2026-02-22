@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Dua = (props) => (
+export const Dua = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Dua = (props) => (
 );
 
 Dua.displayName = 'Dua';
-
-export default Dua;

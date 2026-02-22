@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hold04 = (props) => (
+export const Hold04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Hold04 = (props) => (
 );
 
 Hold04.displayName = 'Hold04';
-
-export default Hold04;

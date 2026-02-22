@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hierarchy = (props) => (
+export const Hierarchy = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Hierarchy = (props) => (
 );
 
 Hierarchy.displayName = 'Hierarchy';
-
-export default Hierarchy;

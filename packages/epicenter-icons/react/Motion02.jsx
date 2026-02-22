@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Motion02 = (props) => (
+export const Motion02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Motion02 = (props) => (
 );
 
 Motion02.displayName = 'Motion02';
-
-export default Motion02;

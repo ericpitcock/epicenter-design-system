@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderFileStorage = (props) => (
+export const FolderFileStorage = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderFileStorage = (props) => (
 );
 
 FolderFileStorage.displayName = 'FolderFileStorage';
-
-export default FolderFileStorage;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SignalLowMedium = (props) => (
+export const SignalLowMedium = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const SignalLowMedium = (props) => (
 );
 
 SignalLowMedium.displayName = 'SignalLowMedium';
-
-export default SignalLowMedium;

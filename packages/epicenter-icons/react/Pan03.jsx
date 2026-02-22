@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pan03 = (props) => (
+export const Pan03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Pan03 = (props) => (
 );
 
 Pan03.displayName = 'Pan03';
-
-export default Pan03;

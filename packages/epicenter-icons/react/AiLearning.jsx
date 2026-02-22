@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiLearning = (props) => (
+export const AiLearning = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const AiLearning = (props) => (
 );
 
 AiLearning.displayName = 'AiLearning';
-
-export default AiLearning;

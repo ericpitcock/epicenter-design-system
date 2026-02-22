@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AccountRecovery = (props) => (
+export const AccountRecovery = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AccountRecovery = (props) => (
 );
 
 AccountRecovery.displayName = 'AccountRecovery';
-
-export default AccountRecovery;

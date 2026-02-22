@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Facebook01 = (props) => (
+export const Facebook01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Facebook01 = (props) => (
 );
 
 Facebook01.displayName = 'Facebook01';
-
-export default Facebook01;

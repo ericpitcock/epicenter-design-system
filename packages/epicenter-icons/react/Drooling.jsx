@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Drooling = (props) => (
+export const Drooling = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Drooling = (props) => (
 );
 
 Drooling.displayName = 'Drooling';
-
-export default Drooling;

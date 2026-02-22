@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Blood = (props) => (
+export const Blood = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Blood = (props) => (
 );
 
 Blood.displayName = 'Blood';
-
-export default Blood;

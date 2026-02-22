@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlphabetThai = (props) => (
+export const AlphabetThai = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const AlphabetThai = (props) => (
 );
 
 AlphabetThai.displayName = 'AlphabetThai';
-
-export default AlphabetThai;

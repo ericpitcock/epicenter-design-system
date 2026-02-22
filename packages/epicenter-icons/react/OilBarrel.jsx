@@ -1,6 +1,4 @@
-import React from 'react';
-
-const OilBarrel = (props) => (
+export const OilBarrel = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const OilBarrel = (props) => (
 );
 
 OilBarrel.displayName = 'OilBarrel';
-
-export default OilBarrel;

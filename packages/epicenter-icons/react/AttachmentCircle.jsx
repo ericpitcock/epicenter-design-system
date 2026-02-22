@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AttachmentCircle = (props) => (
+export const AttachmentCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AttachmentCircle = (props) => (
 );
 
 AttachmentCircle.displayName = 'AttachmentCircle';
-
-export default AttachmentCircle;

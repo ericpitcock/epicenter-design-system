@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Desert = (props) => (
+export const Desert = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Desert = (props) => (
 );
 
 Desert.displayName = 'Desert';
-
-export default Desert;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tiltify = (props) => (
+export const Tiltify = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Tiltify = (props) => (
 );
 
 Tiltify.displayName = 'Tiltify';
-
-export default Tiltify;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LeftToRightListStar = (props) => (
+export const LeftToRightListStar = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const LeftToRightListStar = (props) => (
 );
 
 LeftToRightListStar.displayName = 'LeftToRightListStar';
-
-export default LeftToRightListStar;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CloudFastWind = (props) => (
+export const CloudFastWind = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CloudFastWind = (props) => (
 );
 
 CloudFastWind.displayName = 'CloudFastWind';
-
-export default CloudFastWind;

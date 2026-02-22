@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Access = (props) => (
+export const Access = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Access = (props) => (
 );
 
 Access.displayName = 'Access';
-
-export default Access;

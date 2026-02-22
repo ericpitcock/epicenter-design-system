@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WindPower01 = (props) => (
+export const WindPower01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -22,5 +20,3 @@ const WindPower01 = (props) => (
 );
 
 WindPower01.displayName = 'WindPower01';
-
-export default WindPower01;

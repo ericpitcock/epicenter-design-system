@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Polygon = (props) => (
+export const Polygon = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Polygon = (props) => (
 );
 
 Polygon.displayName = 'Polygon';
-
-export default Polygon;

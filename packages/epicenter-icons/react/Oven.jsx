@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Oven = (props) => (
+export const Oven = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Oven = (props) => (
 );
 
 Oven.displayName = 'Oven';
-
-export default Oven;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserRoadside = (props) => (
+export const UserRoadside = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const UserRoadside = (props) => (
 );
 
 UserRoadside.displayName = 'UserRoadside';
-
-export default UserRoadside;

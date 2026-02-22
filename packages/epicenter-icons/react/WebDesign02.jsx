@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WebDesign02 = (props) => (
+export const WebDesign02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const WebDesign02 = (props) => (
 );
 
 WebDesign02.displayName = 'WebDesign02';
-
-export default WebDesign02;

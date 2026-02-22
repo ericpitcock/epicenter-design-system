@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CouponPercent = (props) => (
+export const CouponPercent = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CouponPercent = (props) => (
 );
 
 CouponPercent.displayName = 'CouponPercent';
-
-export default CouponPercent;

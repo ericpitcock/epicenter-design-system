@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShortsPants = (props) => (
+export const ShortsPants = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ShortsPants = (props) => (
 );
 
 ShortsPants.displayName = 'ShortsPants';
-
-export default ShortsPants;

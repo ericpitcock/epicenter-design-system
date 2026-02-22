@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cd = (props) => (
+export const Cd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Cd = (props) => (
 );
 
 Cd.displayName = 'Cd';
-
-export default Cd;

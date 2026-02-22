@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VideoAi = (props) => (
+export const VideoAi = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const VideoAi = (props) => (
 );
 
 VideoAi.displayName = 'VideoAi';
-
-export default VideoAi;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Digg = (props) => (
+export const Digg = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Digg = (props) => (
 );
 
 Digg.displayName = 'Digg';
-
-export default Digg;

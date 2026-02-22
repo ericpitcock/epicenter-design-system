@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PiggyBank = (props) => (
+export const PiggyBank = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PiggyBank = (props) => (
 );
 
 PiggyBank.displayName = 'PiggyBank';
-
-export default PiggyBank;

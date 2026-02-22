@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FullScreen = (props) => (
+export const FullScreen = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const FullScreen = (props) => (
 );
 
 FullScreen.displayName = 'FullScreen';
-
-export default FullScreen;

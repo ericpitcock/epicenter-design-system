@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiContentGenerator02 = (props) => (
+export const AiContentGenerator02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AiContentGenerator02 = (props) => (
 );
 
 AiContentGenerator02.displayName = 'AiContentGenerator02';
-
-export default AiContentGenerator02;

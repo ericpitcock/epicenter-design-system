@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CursorCircleSelection02 = (props) => (
+export const CursorCircleSelection02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CursorCircleSelection02 = (props) => (
 );
 
 CursorCircleSelection02.displayName = 'CursorCircleSelection02';
-
-export default CursorCircleSelection02;

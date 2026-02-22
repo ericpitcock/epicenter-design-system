@@ -1,6 +1,4 @@
-import React from 'react';
-
-const QuoteDownSquare = (props) => (
+export const QuoteDownSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const QuoteDownSquare = (props) => (
 );
 
 QuoteDownSquare.displayName = 'QuoteDownSquare';
-
-export default QuoteDownSquare;

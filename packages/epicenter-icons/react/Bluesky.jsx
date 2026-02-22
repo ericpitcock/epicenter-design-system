@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bluesky = (props) => (
+export const Bluesky = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Bluesky = (props) => (
 );
 
 Bluesky.displayName = 'Bluesky';
-
-export default Bluesky;

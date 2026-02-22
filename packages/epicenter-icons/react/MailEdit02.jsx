@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MailEdit02 = (props) => (
+export const MailEdit02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MailEdit02 = (props) => (
 );
 
 MailEdit02.displayName = 'MailEdit02';
-
-export default MailEdit02;

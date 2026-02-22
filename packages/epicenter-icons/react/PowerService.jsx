@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PowerService = (props) => (
+export const PowerService = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PowerService = (props) => (
 );
 
 PowerService.displayName = 'PowerService';
-
-export default PowerService;

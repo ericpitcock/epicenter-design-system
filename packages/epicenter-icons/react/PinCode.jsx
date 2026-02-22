@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PinCode = (props) => (
+export const PinCode = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const PinCode = (props) => (
 );
 
 PinCode.displayName = 'PinCode';
-
-export default PinCode;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pool = (props) => (
+export const Pool = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Pool = (props) => (
 );
 
 Pool.displayName = 'Pool';
-
-export default Pool;

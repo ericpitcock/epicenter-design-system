@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Prisoner = (props) => (
+export const Prisoner = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Prisoner = (props) => (
 );
 
 Prisoner.displayName = 'Prisoner';
-
-export default Prisoner;

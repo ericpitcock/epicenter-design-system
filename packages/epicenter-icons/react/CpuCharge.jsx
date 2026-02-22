@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CpuCharge = (props) => (
+export const CpuCharge = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CpuCharge = (props) => (
 );
 
 CpuCharge.displayName = 'CpuCharge';
-
-export default CpuCharge;

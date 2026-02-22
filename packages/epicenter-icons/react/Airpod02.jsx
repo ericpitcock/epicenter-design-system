@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Airpod02 = (props) => (
+export const Airpod02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Airpod02 = (props) => (
 );
 
 Airpod02.displayName = 'Airpod02';
-
-export default Airpod02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Blockchain04 = (props) => (
+export const Blockchain04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const Blockchain04 = (props) => (
 );
 
 Blockchain04.displayName = 'Blockchain04';
-
-export default Blockchain04;

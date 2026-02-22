@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Airdrop = (props) => (
+export const Airdrop = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Airdrop = (props) => (
 );
 
 Airdrop.displayName = 'Airdrop';
-
-export default Airdrop;

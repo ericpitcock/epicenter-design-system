@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ToggleOff = (props) => (
+export const ToggleOff = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ToggleOff = (props) => (
 );
 
 ToggleOff.displayName = 'ToggleOff';
-
-export default ToggleOff;

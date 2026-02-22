@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PackageProcess01 = (props) => (
+export const PackageProcess01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const PackageProcess01 = (props) => (
 );
 
 PackageProcess01.displayName = 'PackageProcess01';
-
-export default PackageProcess01;

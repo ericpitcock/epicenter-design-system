@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChairBarber = (props) => (
+export const ChairBarber = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ChairBarber = (props) => (
 );
 
 ChairBarber.displayName = 'ChairBarber';
-
-export default ChairBarber;

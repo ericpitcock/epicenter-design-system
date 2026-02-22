@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Rar02 = (props) => (
+export const Rar02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Rar02 = (props) => (
 );
 
 Rar02.displayName = 'Rar02';
-
-export default Rar02;

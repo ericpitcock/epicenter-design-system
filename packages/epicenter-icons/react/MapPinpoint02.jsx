@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MapPinpoint02 = (props) => (
+export const MapPinpoint02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MapPinpoint02 = (props) => (
 );
 
 MapPinpoint02.displayName = 'MapPinpoint02';
-
-export default MapPinpoint02;

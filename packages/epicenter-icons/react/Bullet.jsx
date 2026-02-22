@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bullet = (props) => (
+export const Bullet = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 25"
@@ -13,5 +11,3 @@ const Bullet = (props) => (
 );
 
 Bullet.displayName = 'Bullet';
-
-export default Bullet;

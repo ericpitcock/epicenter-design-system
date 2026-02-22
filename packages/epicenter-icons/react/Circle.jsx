@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Circle = (props) => (
+export const Circle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Circle = (props) => (
 );
 
 Circle.displayName = 'Circle';
-
-export default Circle;

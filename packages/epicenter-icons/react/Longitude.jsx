@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Longitude = (props) => (
+export const Longitude = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Longitude = (props) => (
 );
 
 Longitude.displayName = 'Longitude';
-
-export default Longitude;

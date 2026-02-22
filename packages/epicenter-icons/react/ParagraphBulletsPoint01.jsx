@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ParagraphBulletsPoint01 = (props) => (
+export const ParagraphBulletsPoint01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ParagraphBulletsPoint01 = (props) => (
 );
 
 ParagraphBulletsPoint01.displayName = 'ParagraphBulletsPoint01';
-
-export default ParagraphBulletsPoint01;

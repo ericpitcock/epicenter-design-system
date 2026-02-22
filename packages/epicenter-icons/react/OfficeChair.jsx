@@ -1,6 +1,4 @@
-import React from 'react';
-
-const OfficeChair = (props) => (
+export const OfficeChair = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const OfficeChair = (props) => (
 );
 
 OfficeChair.displayName = 'OfficeChair';
-
-export default OfficeChair;

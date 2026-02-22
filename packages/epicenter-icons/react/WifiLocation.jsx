@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WifiLocation = (props) => (
+export const WifiLocation = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const WifiLocation = (props) => (
 );
 
 WifiLocation.displayName = 'WifiLocation';
-
-export default WifiLocation;

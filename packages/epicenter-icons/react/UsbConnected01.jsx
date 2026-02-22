@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UsbConnected01 = (props) => (
+export const UsbConnected01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const UsbConnected01 = (props) => (
 );
 
 UsbConnected01.displayName = 'UsbConnected01';
-
-export default UsbConnected01;

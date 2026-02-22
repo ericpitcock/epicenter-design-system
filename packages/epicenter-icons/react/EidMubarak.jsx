@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EidMubarak = (props) => (
+export const EidMubarak = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -14,5 +12,3 @@ const EidMubarak = (props) => (
 );
 
 EidMubarak.displayName = 'EidMubarak';
-
-export default EidMubarak;

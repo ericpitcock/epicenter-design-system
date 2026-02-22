@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiVoice = (props) => (
+export const AiVoice = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const AiVoice = (props) => (
 );
 
 AiVoice.displayName = 'AiVoice';
-
-export default AiVoice;

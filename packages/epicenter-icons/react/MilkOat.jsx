@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MilkOat = (props) => (
+export const MilkOat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MilkOat = (props) => (
 );
 
 MilkOat.displayName = 'MilkOat';
-
-export default MilkOat;

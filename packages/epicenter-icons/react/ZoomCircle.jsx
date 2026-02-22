@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ZoomCircle = (props) => (
+export const ZoomCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ZoomCircle = (props) => (
 );
 
 ZoomCircle.displayName = 'ZoomCircle';
-
-export default ZoomCircle;

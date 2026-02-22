@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RollerSkate = (props) => (
+export const RollerSkate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const RollerSkate = (props) => (
 );
 
 RollerSkate.displayName = 'RollerSkate';
-
-export default RollerSkate;

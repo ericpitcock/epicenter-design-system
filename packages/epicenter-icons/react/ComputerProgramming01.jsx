@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComputerProgramming01 = (props) => (
+export const ComputerProgramming01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ComputerProgramming01 = (props) => (
 );
 
 ComputerProgramming01.displayName = 'ComputerProgramming01';
-
-export default ComputerProgramming01;

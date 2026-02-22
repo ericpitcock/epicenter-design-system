@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Csv01 = (props) => (
+export const Csv01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Csv01 = (props) => (
 );
 
 Csv01.displayName = 'Csv01';
-
-export default Csv01;

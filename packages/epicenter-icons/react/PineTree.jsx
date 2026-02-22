@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PineTree = (props) => (
+export const PineTree = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PineTree = (props) => (
 );
 
 PineTree.displayName = 'PineTree';
-
-export default PineTree;

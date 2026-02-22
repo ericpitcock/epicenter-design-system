@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BorderLeft01 = (props) => (
+export const BorderLeft01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BorderLeft01 = (props) => (
 );
 
 BorderLeft01.displayName = 'BorderLeft01';
-
-export default BorderLeft01;

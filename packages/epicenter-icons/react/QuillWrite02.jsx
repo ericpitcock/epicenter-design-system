@@ -1,6 +1,4 @@
-import React from 'react';
-
-const QuillWrite02 = (props) => (
+export const QuillWrite02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const QuillWrite02 = (props) => (
 );
 
 QuillWrite02.displayName = 'QuillWrite02';
-
-export default QuillWrite02;

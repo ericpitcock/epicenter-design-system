@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Redo02 = (props) => (
+export const Redo02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Redo02 = (props) => (
 );
 
 Redo02.displayName = 'Redo02';
-
-export default Redo02;

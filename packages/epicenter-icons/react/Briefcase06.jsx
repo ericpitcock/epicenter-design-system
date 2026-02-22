@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Briefcase06 = (props) => (
+export const Briefcase06 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Briefcase06 = (props) => (
 );
 
 Briefcase06.displayName = 'Briefcase06';
-
-export default Briefcase06;

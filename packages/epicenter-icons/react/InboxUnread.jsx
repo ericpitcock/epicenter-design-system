@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InboxUnread = (props) => (
+export const InboxUnread = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const InboxUnread = (props) => (
 );
 
 InboxUnread.displayName = 'InboxUnread';
-
-export default InboxUnread;

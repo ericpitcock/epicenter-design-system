@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LinkBackward = (props) => (
+export const LinkBackward = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const LinkBackward = (props) => (
 );
 
 LinkBackward.displayName = 'LinkBackward';
-
-export default LinkBackward;

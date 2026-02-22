@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RupeeSquare = (props) => (
+export const RupeeSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const RupeeSquare = (props) => (
 );
 
 RupeeSquare.displayName = 'RupeeSquare';
-
-export default RupeeSquare;

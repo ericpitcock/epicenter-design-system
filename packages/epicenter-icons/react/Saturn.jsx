@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Saturn = (props) => (
+export const Saturn = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Saturn = (props) => (
 );
 
 Saturn.displayName = 'Saturn';
-
-export default Saturn;

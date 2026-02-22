@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Crane = (props) => (
+export const Crane = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Crane = (props) => (
 );
 
 Crane.displayName = 'Crane';
-
-export default Crane;

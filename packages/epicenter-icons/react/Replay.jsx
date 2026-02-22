@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Replay = (props) => (
+export const Replay = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Replay = (props) => (
 );
 
 Replay.displayName = 'Replay';
-
-export default Replay;

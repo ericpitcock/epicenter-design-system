@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Robot01 = (props) => (
+export const Robot01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Robot01 = (props) => (
 );
 
 Robot01.displayName = 'Robot01';
-
-export default Robot01;

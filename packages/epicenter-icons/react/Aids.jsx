@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Aids = (props) => (
+export const Aids = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Aids = (props) => (
 );
 
 Aids.displayName = 'Aids';
-
-export default Aids;

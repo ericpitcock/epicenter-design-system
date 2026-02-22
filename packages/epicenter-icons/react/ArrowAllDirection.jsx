@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArrowAllDirection = (props) => (
+export const ArrowAllDirection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ArrowAllDirection = (props) => (
 );
 
 ArrowAllDirection.displayName = 'ArrowAllDirection';
-
-export default ArrowAllDirection;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Qwen = (props) => (
+export const Qwen = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Qwen = (props) => (
 );
 
 Qwen.displayName = 'Qwen';
-
-export default Qwen;

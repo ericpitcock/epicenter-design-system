@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Youtube = (props) => (
+export const Youtube = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Youtube = (props) => (
 );
 
 Youtube.displayName = 'Youtube';
-
-export default Youtube;

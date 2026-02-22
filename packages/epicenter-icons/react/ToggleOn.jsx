@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ToggleOn = (props) => (
+export const ToggleOn = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ToggleOn = (props) => (
 );
 
 ToggleOn.displayName = 'ToggleOn';
-
-export default ToggleOn;

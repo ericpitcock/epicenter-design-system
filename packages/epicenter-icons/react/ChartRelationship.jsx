@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartRelationship = (props) => (
+export const ChartRelationship = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const ChartRelationship = (props) => (
 );
 
 ChartRelationship.displayName = 'ChartRelationship';
-
-export default ChartRelationship;

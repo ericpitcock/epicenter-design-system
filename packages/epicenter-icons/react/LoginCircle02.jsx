@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LoginCircle02 = (props) => (
+export const LoginCircle02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LoginCircle02 = (props) => (
 );
 
 LoginCircle02.displayName = 'LoginCircle02';
-
-export default LoginCircle02;

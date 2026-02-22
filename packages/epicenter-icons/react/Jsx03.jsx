@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Jsx03 = (props) => (
+export const Jsx03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Jsx03 = (props) => (
 );
 
 Jsx03.displayName = 'Jsx03';
-
-export default Jsx03;

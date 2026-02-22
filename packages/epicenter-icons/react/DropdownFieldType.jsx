@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DropdownFieldType = (props) => (
+export const DropdownFieldType = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DropdownFieldType = (props) => (
 );
 
 DropdownFieldType.displayName = 'DropdownFieldType';
-
-export default DropdownFieldType;

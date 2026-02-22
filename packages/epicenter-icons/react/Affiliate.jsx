@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Affiliate = (props) => (
+export const Affiliate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Affiliate = (props) => (
 );
 
 Affiliate.displayName = 'Affiliate';
-
-export default Affiliate;

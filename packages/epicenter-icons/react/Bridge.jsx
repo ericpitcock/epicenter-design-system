@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bridge = (props) => (
+export const Bridge = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Bridge = (props) => (
 );
 
 Bridge.displayName = 'Bridge';
-
-export default Bridge;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextSubscript = (props) => (
+export const TextSubscript = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const TextSubscript = (props) => (
 );
 
 TextSubscript.displayName = 'TextSubscript';
-
-export default TextSubscript;

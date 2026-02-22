@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Leaf01 = (props) => (
+export const Leaf01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Leaf01 = (props) => (
 );
 
 Leaf01.displayName = 'Leaf01';
-
-export default Leaf01;

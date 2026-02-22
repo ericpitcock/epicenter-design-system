@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PisaTower = (props) => (
+export const PisaTower = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const PisaTower = (props) => (
 );
 
 PisaTower.displayName = 'PisaTower';
-
-export default PisaTower;

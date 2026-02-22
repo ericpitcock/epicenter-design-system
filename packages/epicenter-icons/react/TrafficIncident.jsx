@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TrafficIncident = (props) => (
+export const TrafficIncident = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TrafficIncident = (props) => (
 );
 
 TrafficIncident.displayName = 'TrafficIncident';
-
-export default TrafficIncident;

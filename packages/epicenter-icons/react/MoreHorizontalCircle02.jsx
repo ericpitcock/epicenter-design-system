@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoreHorizontalCircle02 = (props) => (
+export const MoreHorizontalCircle02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MoreHorizontalCircle02 = (props) => (
 );
 
 MoreHorizontalCircle02.displayName = 'MoreHorizontalCircle02';
-
-export default MoreHorizontalCircle02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AirplaneSeat02 = (props) => (
+export const AirplaneSeat02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const AirplaneSeat02 = (props) => (
 );
 
 AirplaneSeat02.displayName = 'AirplaneSeat02';
-
-export default AirplaneSeat02;

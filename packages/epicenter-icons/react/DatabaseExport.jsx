@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DatabaseExport = (props) => (
+export const DatabaseExport = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const DatabaseExport = (props) => (
 );
 
 DatabaseExport.displayName = 'DatabaseExport';
-
-export default DatabaseExport;

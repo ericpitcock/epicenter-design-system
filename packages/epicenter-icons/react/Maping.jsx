@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Maping = (props) => (
+export const Maping = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Maping = (props) => (
 );
 
 Maping.displayName = 'Maping';
-
-export default Maping;

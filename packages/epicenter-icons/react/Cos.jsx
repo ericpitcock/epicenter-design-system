@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cos = (props) => (
+export const Cos = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Cos = (props) => (
 );
 
 Cos.displayName = 'Cos';
-
-export default Cos;

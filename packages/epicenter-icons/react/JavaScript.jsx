@@ -1,6 +1,4 @@
-import React from 'react';
-
-const JavaScript = (props) => (
+export const JavaScript = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const JavaScript = (props) => (
 );
 
 JavaScript.displayName = 'JavaScript';
-
-export default JavaScript;

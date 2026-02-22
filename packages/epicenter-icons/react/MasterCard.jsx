@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MasterCard = (props) => (
+export const MasterCard = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MasterCard = (props) => (
 );
 
 MasterCard.displayName = 'MasterCard';
-
-export default MasterCard;

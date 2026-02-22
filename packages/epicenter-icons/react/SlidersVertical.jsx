@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SlidersVertical = (props) => (
+export const SlidersVertical = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const SlidersVertical = (props) => (
 );
 
 SlidersVertical.displayName = 'SlidersVertical';
-
-export default SlidersVertical;

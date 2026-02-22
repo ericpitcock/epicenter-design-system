@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Octagon = (props) => (
+export const Octagon = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Octagon = (props) => (
 );
 
 Octagon.displayName = 'Octagon';
-
-export default Octagon;

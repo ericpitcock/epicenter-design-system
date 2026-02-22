@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiView = (props) => (
+export const AiView = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const AiView = (props) => (
 );
 
 AiView.displayName = 'AiView';
-
-export default AiView;

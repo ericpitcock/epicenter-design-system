@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TabletConnectedBluetooth = (props) => (
+export const TabletConnectedBluetooth = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TabletConnectedBluetooth = (props) => (
 );
 
 TabletConnectedBluetooth.displayName = 'TabletConnectedBluetooth';
-
-export default TabletConnectedBluetooth;

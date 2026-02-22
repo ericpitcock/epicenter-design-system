@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextClear = (props) => (
+export const TextClear = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TextClear = (props) => (
 );
 
 TextClear.displayName = 'TextClear';
-
-export default TextClear;

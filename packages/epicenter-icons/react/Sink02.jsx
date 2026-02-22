@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sink02 = (props) => (
+export const Sink02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Sink02 = (props) => (
 );
 
 Sink02.displayName = 'Sink02';
-
-export default Sink02;

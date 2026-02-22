@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileYen = (props) => (
+export const FileYen = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileYen = (props) => (
 );
 
 FileYen.displayName = 'FileYen';
-
-export default FileYen;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PermanentJob = (props) => (
+export const PermanentJob = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PermanentJob = (props) => (
 );
 
 PermanentJob.displayName = 'PermanentJob';
-
-export default PermanentJob;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Rectangular01 = (props) => (
+export const Rectangular01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Rectangular01 = (props) => (
 );
 
 Rectangular01.displayName = 'Rectangular01';
-
-export default Rectangular01;

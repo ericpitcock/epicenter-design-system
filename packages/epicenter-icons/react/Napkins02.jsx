@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Napkins02 = (props) => (
+export const Napkins02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Napkins02 = (props) => (
 );
 
 Napkins02.displayName = 'Napkins02';
-
-export default Napkins02;

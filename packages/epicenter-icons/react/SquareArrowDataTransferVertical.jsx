@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SquareArrowDataTransferVertical = (props) => (
+export const SquareArrowDataTransferVertical = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SquareArrowDataTransferVertical = (props) => (
 );
 
 SquareArrowDataTransferVertical.displayName = 'SquareArrowDataTransferVertical';
-
-export default SquareArrowDataTransferVertical;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MapsGlobal02 = (props) => (
+export const MapsGlobal02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MapsGlobal02 = (props) => (
 );
 
 MapsGlobal02.displayName = 'MapsGlobal02';
-
-export default MapsGlobal02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Maze = (props) => (
+export const Maze = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Maze = (props) => (
 );
 
 Maze.displayName = 'Maze';
-
-export default Maze;

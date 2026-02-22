@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EuroReceive = (props) => (
+export const EuroReceive = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const EuroReceive = (props) => (
 );
 
 EuroReceive.displayName = 'EuroReceive';
-
-export default EuroReceive;

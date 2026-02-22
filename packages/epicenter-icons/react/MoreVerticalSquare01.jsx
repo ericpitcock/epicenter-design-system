@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoreVerticalSquare01 = (props) => (
+export const MoreVerticalSquare01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MoreVerticalSquare01 = (props) => (
 );
 
 MoreVerticalSquare01.displayName = 'MoreVerticalSquare01';
-
-export default MoreVerticalSquare01;

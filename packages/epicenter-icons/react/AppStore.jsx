@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AppStore = (props) => (
+export const AppStore = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const AppStore = (props) => (
 );
 
 AppStore.displayName = 'AppStore';
-
-export default AppStore;

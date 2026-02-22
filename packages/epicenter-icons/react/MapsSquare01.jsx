@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MapsSquare01 = (props) => (
+export const MapsSquare01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MapsSquare01 = (props) => (
 );
 
 MapsSquare01.displayName = 'MapsSquare01';
-
-export default MapsSquare01;

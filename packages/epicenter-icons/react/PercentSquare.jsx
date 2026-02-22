@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PercentSquare = (props) => (
+export const PercentSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PercentSquare = (props) => (
 );
 
 PercentSquare.displayName = 'PercentSquare';
-
-export default PercentSquare;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SquareArrowUpLeft = (props) => (
+export const SquareArrowUpLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SquareArrowUpLeft = (props) => (
 );
 
 SquareArrowUpLeft.displayName = 'SquareArrowUpLeft';
-
-export default SquareArrowUpLeft;

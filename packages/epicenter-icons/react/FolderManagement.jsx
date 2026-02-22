@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderManagement = (props) => (
+export const FolderManagement = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderManagement = (props) => (
 );
 
 FolderManagement.displayName = 'FolderManagement';
-
-export default FolderManagement;

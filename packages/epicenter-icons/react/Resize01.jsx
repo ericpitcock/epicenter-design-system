@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Resize01 = (props) => (
+export const Resize01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Resize01 = (props) => (
 );
 
 Resize01.displayName = 'Resize01';
-
-export default Resize01;

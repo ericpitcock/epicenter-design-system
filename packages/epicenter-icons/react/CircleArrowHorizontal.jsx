@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CircleArrowHorizontal = (props) => (
+export const CircleArrowHorizontal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CircleArrowHorizontal = (props) => (
 );
 
 CircleArrowHorizontal.displayName = 'CircleArrowHorizontal';
-
-export default CircleArrowHorizontal;

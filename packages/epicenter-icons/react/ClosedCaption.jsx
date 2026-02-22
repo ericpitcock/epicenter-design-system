@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ClosedCaption = (props) => (
+export const ClosedCaption = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ClosedCaption = (props) => (
 );
 
 ClosedCaption.displayName = 'ClosedCaption';
-
-export default ClosedCaption;

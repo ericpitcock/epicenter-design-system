@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RemovePi = (props) => (
+export const RemovePi = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const RemovePi = (props) => (
 );
 
 RemovePi.displayName = 'RemovePi';
-
-export default RemovePi;

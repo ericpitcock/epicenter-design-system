@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WeightScale01 = (props) => (
+export const WeightScale01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const WeightScale01 = (props) => (
 );
 
 WeightScale01.displayName = 'WeightScale01';
-
-export default WeightScale01;

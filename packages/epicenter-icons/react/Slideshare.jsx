@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Slideshare = (props) => (
+export const Slideshare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Slideshare = (props) => (
 );
 
 Slideshare.displayName = 'Slideshare';
-
-export default Slideshare;

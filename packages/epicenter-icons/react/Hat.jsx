@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hat = (props) => (
+export const Hat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Hat = (props) => (
 );
 
 Hat.displayName = 'Hat';
-
-export default Hat;

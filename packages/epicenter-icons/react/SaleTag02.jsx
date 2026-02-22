@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SaleTag02 = (props) => (
+export const SaleTag02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SaleTag02 = (props) => (
 );
 
 SaleTag02.displayName = 'SaleTag02';
-
-export default SaleTag02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArrangeByLettersZA = (props) => (
+export const ArrangeByLettersZA = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ArrangeByLettersZA = (props) => (
 );
 
 ArrangeByLettersZA.displayName = 'ArrangeByLettersZA';
-
-export default ArrangeByLettersZA;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PackageDimensions02 = (props) => (
+export const PackageDimensions02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const PackageDimensions02 = (props) => (
 );
 
 PackageDimensions02.displayName = 'PackageDimensions02';
-
-export default PackageDimensions02;

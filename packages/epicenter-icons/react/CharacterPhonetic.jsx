@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CharacterPhonetic = (props) => (
+export const CharacterPhonetic = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CharacterPhonetic = (props) => (
 );
 
 CharacterPhonetic.displayName = 'CharacterPhonetic';
-
-export default CharacterPhonetic;

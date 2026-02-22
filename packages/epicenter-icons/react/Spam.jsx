@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Spam = (props) => (
+export const Spam = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Spam = (props) => (
 );
 
 Spam.displayName = 'Spam';
-
-export default Spam;

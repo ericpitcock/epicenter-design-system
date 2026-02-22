@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SelfTransfer = (props) => (
+export const SelfTransfer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SelfTransfer = (props) => (
 );
 
 SelfTransfer.displayName = 'SelfTransfer';
-
-export default SelfTransfer;

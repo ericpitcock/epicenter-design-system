@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NotificationSnooze03 = (props) => (
+export const NotificationSnooze03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const NotificationSnooze03 = (props) => (
 );
 
 NotificationSnooze03.displayName = 'NotificationSnooze03';
-
-export default NotificationSnooze03;

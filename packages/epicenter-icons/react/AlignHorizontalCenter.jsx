@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlignHorizontalCenter = (props) => (
+export const AlignHorizontalCenter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AlignHorizontalCenter = (props) => (
 );
 
 AlignHorizontalCenter.displayName = 'AlignHorizontalCenter';
-
-export default AlignHorizontalCenter;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pentagon = (props) => (
+export const Pentagon = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Pentagon = (props) => (
 );
 
 Pentagon.displayName = 'Pentagon';
-
-export default Pentagon;

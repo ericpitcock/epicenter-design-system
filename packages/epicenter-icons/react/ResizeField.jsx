@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ResizeField = (props) => (
+export const ResizeField = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const ResizeField = (props) => (
 );
 
 ResizeField.displayName = 'ResizeField';
-
-export default ResizeField;

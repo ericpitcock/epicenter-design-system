@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ThumbsDownRectangle = (props) => (
+export const ThumbsDownRectangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ThumbsDownRectangle = (props) => (
 );
 
 ThumbsDownRectangle.displayName = 'ThumbsDownRectangle';
-
-export default ThumbsDownRectangle;

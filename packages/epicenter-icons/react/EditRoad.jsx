@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EditRoad = (props) => (
+export const EditRoad = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const EditRoad = (props) => (
 );
 
 EditRoad.displayName = 'EditRoad';
-
-export default EditRoad;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Perspective = (props) => (
+export const Perspective = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Perspective = (props) => (
 );
 
 Perspective.displayName = 'Perspective';
-
-export default Perspective;

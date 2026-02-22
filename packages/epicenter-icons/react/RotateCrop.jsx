@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RotateCrop = (props) => (
+export const RotateCrop = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const RotateCrop = (props) => (
 );
 
 RotateCrop.displayName = 'RotateCrop';
-
-export default RotateCrop;

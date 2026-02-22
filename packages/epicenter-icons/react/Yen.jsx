@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Yen = (props) => (
+export const Yen = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Yen = (props) => (
 );
 
 Yen.displayName = 'Yen';
-
-export default Yen;

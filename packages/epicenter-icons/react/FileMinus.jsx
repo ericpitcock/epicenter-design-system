@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileMinus = (props) => (
+export const FileMinus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileMinus = (props) => (
 );
 
 FileMinus.displayName = 'FileMinus';
-
-export default FileMinus;

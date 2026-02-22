@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Grok = (props) => (
+export const Grok = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Grok = (props) => (
 );
 
 Grok.displayName = 'Grok';
-
-export default Grok;

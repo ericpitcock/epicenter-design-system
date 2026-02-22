@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CallOutgoing02 = (props) => (
+export const CallOutgoing02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CallOutgoing02 = (props) => (
 );
 
 CallOutgoing02.displayName = 'CallOutgoing02';
-
-export default CallOutgoing02;

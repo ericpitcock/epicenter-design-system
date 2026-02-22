@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderLocked = (props) => (
+export const FolderLocked = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderLocked = (props) => (
 );
 
 FolderLocked.displayName = 'FolderLocked';
-
-export default FolderLocked;

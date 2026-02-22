@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HorizonalScrollPoint = (props) => (
+export const HorizonalScrollPoint = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const HorizonalScrollPoint = (props) => (
 );
 
 HorizonalScrollPoint.displayName = 'HorizonalScrollPoint';
-
-export default HorizonalScrollPoint;

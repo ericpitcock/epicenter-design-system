@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiChip = (props) => (
+export const AiChip = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AiChip = (props) => (
 );
 
 AiChip.displayName = 'AiChip';
-
-export default AiChip;

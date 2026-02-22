@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Encrypt = (props) => (
+export const Encrypt = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Encrypt = (props) => (
 );
 
 Encrypt.displayName = 'Encrypt';
-
-export default Encrypt;

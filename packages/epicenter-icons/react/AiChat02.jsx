@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiChat02 = (props) => (
+export const AiChat02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AiChat02 = (props) => (
 );
 
 AiChat02.displayName = 'AiChat02';
-
-export default AiChat02;

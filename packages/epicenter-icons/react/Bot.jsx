@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bot = (props) => (
+export const Bot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Bot = (props) => (
 );
 
 Bot.displayName = 'Bot';
-
-export default Bot;

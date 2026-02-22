@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Chip = (props) => (
+export const Chip = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Chip = (props) => (
 );
 
 Chip.displayName = 'Chip';
-
-export default Chip;

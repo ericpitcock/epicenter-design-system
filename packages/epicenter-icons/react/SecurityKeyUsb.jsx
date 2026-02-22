@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SecurityKeyUsb = (props) => (
+export const SecurityKeyUsb = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const SecurityKeyUsb = (props) => (
 );
 
 SecurityKeyUsb.displayName = 'SecurityKeyUsb';
-
-export default SecurityKeyUsb;

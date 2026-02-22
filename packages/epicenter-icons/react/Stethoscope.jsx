@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Stethoscope = (props) => (
+export const Stethoscope = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Stethoscope = (props) => (
 );
 
 Stethoscope.displayName = 'Stethoscope';
-
-export default Stethoscope;

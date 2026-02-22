@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Shoulder = (props) => (
+export const Shoulder = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Shoulder = (props) => (
 );
 
 Shoulder.displayName = 'Shoulder';
-
-export default Shoulder;

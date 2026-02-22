@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ScreenAddToHome = (props) => (
+export const ScreenAddToHome = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ScreenAddToHome = (props) => (
 );
 
 ScreenAddToHome.displayName = 'ScreenAddToHome';
-
-export default ScreenAddToHome;

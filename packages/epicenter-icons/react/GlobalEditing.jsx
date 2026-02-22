@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GlobalEditing = (props) => (
+export const GlobalEditing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const GlobalEditing = (props) => (
 );
 
 GlobalEditing.displayName = 'GlobalEditing';
-
-export default GlobalEditing;

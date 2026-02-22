@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TropicalStorm = (props) => (
+export const TropicalStorm = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TropicalStorm = (props) => (
 );
 
 TropicalStorm.displayName = 'TropicalStorm';
-
-export default TropicalStorm;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GoogleDoc = (props) => (
+export const GoogleDoc = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const GoogleDoc = (props) => (
 );
 
 GoogleDoc.displayName = 'GoogleDoc';
-
-export default GoogleDoc;

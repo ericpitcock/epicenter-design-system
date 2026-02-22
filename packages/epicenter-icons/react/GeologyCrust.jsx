@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GeologyCrust = (props) => (
+export const GeologyCrust = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const GeologyCrust = (props) => (
 );
 
 GeologyCrust.displayName = 'GeologyCrust';
-
-export default GeologyCrust;

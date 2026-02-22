@@ -1,6 +1,4 @@
-import React from 'react';
-
-const KeyframesDoubleRemove = (props) => (
+export const KeyframesDoubleRemove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const KeyframesDoubleRemove = (props) => (
 );
 
 KeyframesDoubleRemove.displayName = 'KeyframesDoubleRemove';
-
-export default KeyframesDoubleRemove;

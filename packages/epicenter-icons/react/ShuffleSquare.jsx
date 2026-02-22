@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShuffleSquare = (props) => (
+export const ShuffleSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ShuffleSquare = (props) => (
 );
 
 ShuffleSquare.displayName = 'ShuffleSquare';
-
-export default ShuffleSquare;

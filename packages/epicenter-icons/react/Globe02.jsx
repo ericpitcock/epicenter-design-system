@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Globe02 = (props) => (
+export const Globe02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Globe02 = (props) => (
 );
 
 Globe02.displayName = 'Globe02';
-
-export default Globe02;

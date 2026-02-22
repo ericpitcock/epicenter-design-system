@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderZip = (props) => (
+export const FolderZip = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const FolderZip = (props) => (
 );
 
 FolderZip.displayName = 'FolderZip';
-
-export default FolderZip;

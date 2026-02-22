@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Eraser01 = (props) => (
+export const Eraser01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Eraser01 = (props) => (
 );
 
 Eraser01.displayName = 'Eraser01';
-
-export default Eraser01;

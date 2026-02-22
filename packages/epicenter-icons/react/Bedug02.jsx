@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bedug02 = (props) => (
+export const Bedug02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Bedug02 = (props) => (
 );
 
 Bedug02.displayName = 'Bedug02';
-
-export default Bedug02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoonAngledRainZap = (props) => (
+export const MoonAngledRainZap = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MoonAngledRainZap = (props) => (
 );
 
 MoonAngledRainZap.displayName = 'MoonAngledRainZap';
-
-export default MoonAngledRainZap;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RootCircle = (props) => (
+export const RootCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const RootCircle = (props) => (
 );
 
 RootCircle.displayName = 'RootCircle';
-
-export default RootCircle;

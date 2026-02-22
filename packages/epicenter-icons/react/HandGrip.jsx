@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HandGrip = (props) => (
+export const HandGrip = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const HandGrip = (props) => (
 );
 
 HandGrip.displayName = 'HandGrip';
-
-export default HandGrip;

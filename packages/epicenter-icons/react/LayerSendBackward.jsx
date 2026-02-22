@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LayerSendBackward = (props) => (
+export const LayerSendBackward = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LayerSendBackward = (props) => (
 );
 
 LayerSendBackward.displayName = 'LayerSendBackward';
-
-export default LayerSendBackward;

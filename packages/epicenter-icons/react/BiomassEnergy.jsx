@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BiomassEnergy = (props) => (
+export const BiomassEnergy = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BiomassEnergy = (props) => (
 );
 
 BiomassEnergy.displayName = 'BiomassEnergy';
-
-export default BiomassEnergy;

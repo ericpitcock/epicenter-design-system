@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wardrobe01 = (props) => (
+export const Wardrobe01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Wardrobe01 = (props) => (
 );
 
 Wardrobe01.displayName = 'Wardrobe01';
-
-export default Wardrobe01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextAlignCenter = (props) => (
+export const TextAlignCenter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const TextAlignCenter = (props) => (
 );
 
 TextAlignCenter.displayName = 'TextAlignCenter';
-
-export default TextAlignCenter;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RightToLeftListDash = (props) => (
+export const RightToLeftListDash = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const RightToLeftListDash = (props) => (
 );
 
 RightToLeftListDash.displayName = 'RightToLeftListDash';
-
-export default RightToLeftListDash;

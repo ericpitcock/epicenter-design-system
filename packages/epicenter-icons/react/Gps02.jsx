@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Gps02 = (props) => (
+export const Gps02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Gps02 = (props) => (
 );
 
 Gps02.displayName = 'Gps02';
-
-export default Gps02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ear = (props) => (
+export const Ear = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Ear = (props) => (
 );
 
 Ear.displayName = 'Ear';
-
-export default Ear;

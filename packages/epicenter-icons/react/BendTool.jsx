@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BendTool = (props) => (
+export const BendTool = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BendTool = (props) => (
 );
 
 BendTool.displayName = 'BendTool';
-
-export default BendTool;

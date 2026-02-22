@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WebProgramming = (props) => (
+export const WebProgramming = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const WebProgramming = (props) => (
 );
 
 WebProgramming.displayName = 'WebProgramming';
-
-export default WebProgramming;

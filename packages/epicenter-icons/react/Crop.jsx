@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Crop = (props) => (
+export const Crop = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Crop = (props) => (
 );
 
 Crop.displayName = 'Crop';
-
-export default Crop;

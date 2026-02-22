@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MessageSearch01 = (props) => (
+export const MessageSearch01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MessageSearch01 = (props) => (
 );
 
 MessageSearch01.displayName = 'MessageSearch01';
-
-export default MessageSearch01;

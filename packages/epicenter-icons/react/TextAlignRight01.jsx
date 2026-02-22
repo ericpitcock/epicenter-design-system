@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextAlignRight01 = (props) => (
+export const TextAlignRight01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const TextAlignRight01 = (props) => (
 );
 
 TextAlignRight01.displayName = 'TextAlignRight01';
-
-export default TextAlignRight01;

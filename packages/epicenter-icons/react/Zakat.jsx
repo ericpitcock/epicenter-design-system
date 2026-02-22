@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Zakat = (props) => (
+export const Zakat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -14,5 +12,3 @@ const Zakat = (props) => (
 );
 
 Zakat.displayName = 'Zakat';
-
-export default Zakat;

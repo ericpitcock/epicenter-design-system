@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cosine01 = (props) => (
+export const Cosine01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Cosine01 = (props) => (
 );
 
 Cosine01.displayName = 'Cosine01';
-
-export default Cosine01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LogoutCircle01 = (props) => (
+export const LogoutCircle01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LogoutCircle01 = (props) => (
 );
 
 LogoutCircle01.displayName = 'LogoutCircle01';
-
-export default LogoutCircle01;

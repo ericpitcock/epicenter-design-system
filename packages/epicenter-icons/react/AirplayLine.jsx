@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AirplayLine = (props) => (
+export const AirplayLine = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AirplayLine = (props) => (
 );
 
 AirplayLine.displayName = 'AirplayLine';
-
-export default AirplayLine;

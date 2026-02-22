@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Disability01 = (props) => (
+export const Disability01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Disability01 = (props) => (
 );
 
 Disability01.displayName = 'Disability01';
-
-export default Disability01;

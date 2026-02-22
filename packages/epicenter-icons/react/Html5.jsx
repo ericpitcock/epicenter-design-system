@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Html5 = (props) => (
+export const Html5 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Html5 = (props) => (
 );
 
 Html5.displayName = 'Html5';
-
-export default Html5;

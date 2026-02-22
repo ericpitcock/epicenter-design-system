@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StrokeOutside = (props) => (
+export const StrokeOutside = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const StrokeOutside = (props) => (
 );
 
 StrokeOutside.displayName = 'StrokeOutside';
-
-export default StrokeOutside;

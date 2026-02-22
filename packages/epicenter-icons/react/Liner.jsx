@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Liner = (props) => (
+export const Liner = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Liner = (props) => (
 );
 
 Liner.displayName = 'Liner';
-
-export default Liner;

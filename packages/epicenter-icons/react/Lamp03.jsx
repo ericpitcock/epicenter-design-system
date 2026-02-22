@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Lamp03 = (props) => (
+export const Lamp03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Lamp03 = (props) => (
 );
 
 Lamp03.displayName = 'Lamp03';
-
-export default Lamp03;

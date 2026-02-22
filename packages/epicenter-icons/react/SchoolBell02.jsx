@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SchoolBell02 = (props) => (
+export const SchoolBell02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const SchoolBell02 = (props) => (
 );
 
 SchoolBell02.displayName = 'SchoolBell02';
-
-export default SchoolBell02;

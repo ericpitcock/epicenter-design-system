@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LicenseThirdParty = (props) => (
+export const LicenseThirdParty = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const LicenseThirdParty = (props) => (
 );
 
 LicenseThirdParty.displayName = 'LicenseThirdParty';
-
-export default LicenseThirdParty;

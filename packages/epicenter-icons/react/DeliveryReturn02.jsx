@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DeliveryReturn02 = (props) => (
+export const DeliveryReturn02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DeliveryReturn02 = (props) => (
 );
 
 DeliveryReturn02.displayName = 'DeliveryReturn02';
-
-export default DeliveryReturn02;

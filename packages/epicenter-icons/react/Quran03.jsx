@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Quran03 = (props) => (
+export const Quran03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -15,5 +13,3 @@ const Quran03 = (props) => (
 );
 
 Quran03.displayName = 'Quran03';
-
-export default Quran03;

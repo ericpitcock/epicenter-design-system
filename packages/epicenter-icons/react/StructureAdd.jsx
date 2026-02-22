@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StructureAdd = (props) => (
+export const StructureAdd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const StructureAdd = (props) => (
 );
 
 StructureAdd.displayName = 'StructureAdd';
-
-export default StructureAdd;

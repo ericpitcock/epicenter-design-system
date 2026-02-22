@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DishWasher = (props) => (
+export const DishWasher = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const DishWasher = (props) => (
 );
 
 DishWasher.displayName = 'DishWasher';
-
-export default DishWasher;

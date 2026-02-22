@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FourNumberSquare = (props) => (
+export const FourNumberSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -14,5 +12,3 @@ const FourNumberSquare = (props) => (
 );
 
 FourNumberSquare.displayName = 'FourNumberSquare';
-
-export default FourNumberSquare;

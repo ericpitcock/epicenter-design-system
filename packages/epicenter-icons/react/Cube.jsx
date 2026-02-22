@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cube = (props) => (
+export const Cube = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Cube = (props) => (
 );
 
 Cube.displayName = 'Cube';
-
-export default Cube;

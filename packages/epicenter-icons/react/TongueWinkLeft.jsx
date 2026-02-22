@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TongueWinkLeft = (props) => (
+export const TongueWinkLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const TongueWinkLeft = (props) => (
 );
 
 TongueWinkLeft.displayName = 'TongueWinkLeft';
-
-export default TongueWinkLeft;

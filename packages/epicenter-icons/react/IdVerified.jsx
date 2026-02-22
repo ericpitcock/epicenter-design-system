@@ -1,6 +1,4 @@
-import React from 'react';
-
-const IdVerified = (props) => (
+export const IdVerified = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const IdVerified = (props) => (
 );
 
 IdVerified.displayName = 'IdVerified';
-
-export default IdVerified;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InputCursorText = (props) => (
+export const InputCursorText = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const InputCursorText = (props) => (
 );
 
 InputCursorText.displayName = 'InputCursorText';
-
-export default InputCursorText;

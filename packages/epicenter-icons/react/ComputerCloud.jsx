@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComputerCloud = (props) => (
+export const ComputerCloud = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ComputerCloud = (props) => (
 );
 
 ComputerCloud.displayName = 'ComputerCloud';
-
-export default ComputerCloud;

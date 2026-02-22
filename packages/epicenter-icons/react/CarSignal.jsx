@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CarSignal = (props) => (
+export const CarSignal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const CarSignal = (props) => (
 );
 
 CarSignal.displayName = 'CarSignal';
-
-export default CarSignal;

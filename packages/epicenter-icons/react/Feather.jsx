@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Feather = (props) => (
+export const Feather = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Feather = (props) => (
 );
 
 Feather.displayName = 'Feather';
-
-export default Feather;

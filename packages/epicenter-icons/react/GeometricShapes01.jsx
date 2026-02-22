@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GeometricShapes01 = (props) => (
+export const GeometricShapes01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const GeometricShapes01 = (props) => (
 );
 
 GeometricShapes01.displayName = 'GeometricShapes01';
-
-export default GeometricShapes01;

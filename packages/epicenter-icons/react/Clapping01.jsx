@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Clapping01 = (props) => (
+export const Clapping01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Clapping01 = (props) => (
 );
 
 Clapping01.displayName = 'Clapping01';
-
-export default Clapping01;

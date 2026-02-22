@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hexagon01 = (props) => (
+export const Hexagon01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Hexagon01 = (props) => (
 );
 
 Hexagon01.displayName = 'Hexagon01';
-
-export default Hexagon01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Packaging = (props) => (
+export const Packaging = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Packaging = (props) => (
 );
 
 Packaging.displayName = 'Packaging';
-
-export default Packaging;

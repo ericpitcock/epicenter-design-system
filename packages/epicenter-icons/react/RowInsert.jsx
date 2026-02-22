@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RowInsert = (props) => (
+export const RowInsert = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const RowInsert = (props) => (
 );
 
 RowInsert.displayName = 'RowInsert';
-
-export default RowInsert;

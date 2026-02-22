@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MusicNote01 = (props) => (
+export const MusicNote01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MusicNote01 = (props) => (
 );
 
 MusicNote01.displayName = 'MusicNote01';
-
-export default MusicNote01;

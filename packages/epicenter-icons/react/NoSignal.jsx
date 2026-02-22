@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NoSignal = (props) => (
+export const NoSignal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const NoSignal = (props) => (
 );
 
 NoSignal.displayName = 'NoSignal';
-
-export default NoSignal;

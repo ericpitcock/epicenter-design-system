@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bootstrap = (props) => (
+export const Bootstrap = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Bootstrap = (props) => (
 );
 
 Bootstrap.displayName = 'Bootstrap';
-
-export default Bootstrap;

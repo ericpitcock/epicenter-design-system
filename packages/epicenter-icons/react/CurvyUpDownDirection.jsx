@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CurvyUpDownDirection = (props) => (
+export const CurvyUpDownDirection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CurvyUpDownDirection = (props) => (
 );
 
 CurvyUpDownDirection.displayName = 'CurvyUpDownDirection';
-
-export default CurvyUpDownDirection;

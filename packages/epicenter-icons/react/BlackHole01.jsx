@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BlackHole01 = (props) => (
+export const BlackHole01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const BlackHole01 = (props) => (
 );
 
 BlackHole01.displayName = 'BlackHole01';
-
-export default BlackHole01;

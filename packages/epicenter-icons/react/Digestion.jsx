@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Digestion = (props) => (
+export const Digestion = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Digestion = (props) => (
 );
 
 Digestion.displayName = 'Digestion';
-
-export default Digestion;

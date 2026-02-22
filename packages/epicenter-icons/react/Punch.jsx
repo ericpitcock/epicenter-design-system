@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Punch = (props) => (
+export const Punch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Punch = (props) => (
 );
 
 Punch.displayName = 'Punch';
-
-export default Punch;

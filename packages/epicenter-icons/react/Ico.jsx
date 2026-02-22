@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ico = (props) => (
+export const Ico = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Ico = (props) => (
 );
 
 Ico.displayName = 'Ico';
-
-export default Ico;

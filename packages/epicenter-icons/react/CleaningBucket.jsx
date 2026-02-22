@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CleaningBucket = (props) => (
+export const CleaningBucket = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const CleaningBucket = (props) => (
 );
 
 CleaningBucket.displayName = 'CleaningBucket';
-
-export default CleaningBucket;

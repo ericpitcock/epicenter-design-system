@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Signature = (props) => (
+export const Signature = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Signature = (props) => (
 );
 
 Signature.displayName = 'Signature';
-
-export default Signature;

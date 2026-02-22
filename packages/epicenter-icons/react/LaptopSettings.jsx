@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LaptopSettings = (props) => (
+export const LaptopSettings = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const LaptopSettings = (props) => (
 );
 
 LaptopSettings.displayName = 'LaptopSettings';
-
-export default LaptopSettings;

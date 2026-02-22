@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderOff = (props) => (
+export const FolderOff = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderOff = (props) => (
 );
 
 FolderOff.displayName = 'FolderOff';
-
-export default FolderOff;

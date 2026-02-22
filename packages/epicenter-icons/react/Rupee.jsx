@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Rupee = (props) => (
+export const Rupee = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Rupee = (props) => (
 );
 
 Rupee.displayName = 'Rupee';
-
-export default Rupee;

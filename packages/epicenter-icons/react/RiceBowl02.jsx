@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RiceBowl02 = (props) => (
+export const RiceBowl02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const RiceBowl02 = (props) => (
 );
 
 RiceBowl02.displayName = 'RiceBowl02';
-
-export default RiceBowl02;

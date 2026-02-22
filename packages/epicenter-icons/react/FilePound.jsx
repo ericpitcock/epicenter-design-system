@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FilePound = (props) => (
+export const FilePound = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FilePound = (props) => (
 );
 
 FilePound.displayName = 'FilePound';
-
-export default FilePound;

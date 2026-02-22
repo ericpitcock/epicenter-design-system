@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChickenThighs = (props) => (
+export const ChickenThighs = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ChickenThighs = (props) => (
 );
 
 ChickenThighs.displayName = 'ChickenThighs';
-
-export default ChickenThighs;

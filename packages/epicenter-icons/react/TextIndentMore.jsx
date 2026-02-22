@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextIndentMore = (props) => (
+export const TextIndentMore = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const TextIndentMore = (props) => (
 );
 
 TextIndentMore.displayName = 'TextIndentMore';
-
-export default TextIndentMore;

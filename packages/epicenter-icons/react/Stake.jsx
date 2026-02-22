@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Stake = (props) => (
+export const Stake = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Stake = (props) => (
 );
 
 Stake.displayName = 'Stake';
-
-export default Stake;

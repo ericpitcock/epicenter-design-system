@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextSuperscript = (props) => (
+export const TextSuperscript = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const TextSuperscript = (props) => (
 );
 
 TextSuperscript.displayName = 'TextSuperscript';
-
-export default TextSuperscript;

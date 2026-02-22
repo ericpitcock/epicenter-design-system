@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ServerStack03 = (props) => (
+export const ServerStack03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const ServerStack03 = (props) => (
 );
 
 ServerStack03.displayName = 'ServerStack03';
-
-export default ServerStack03;

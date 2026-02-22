@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PictureInPictureOn = (props) => (
+export const PictureInPictureOn = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PictureInPictureOn = (props) => (
 );
 
 PictureInPictureOn.displayName = 'PictureInPictureOn';
-
-export default PictureInPictureOn;

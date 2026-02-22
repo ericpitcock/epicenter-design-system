@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PassportExpired = (props) => (
+export const PassportExpired = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PassportExpired = (props) => (
 );
 
 PassportExpired.displayName = 'PassportExpired';
-
-export default PassportExpired;

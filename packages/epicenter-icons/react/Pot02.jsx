@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pot02 = (props) => (
+export const Pot02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Pot02 = (props) => (
 );
 
 Pot02.displayName = 'Pot02';
-
-export default Pot02;

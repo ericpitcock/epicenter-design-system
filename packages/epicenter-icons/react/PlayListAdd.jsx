@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PlayListAdd = (props) => (
+export const PlayListAdd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const PlayListAdd = (props) => (
 );
 
 PlayListAdd.displayName = 'PlayListAdd';
-
-export default PlayListAdd;

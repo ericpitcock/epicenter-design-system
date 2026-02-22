@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ZoomSquare = (props) => (
+export const ZoomSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ZoomSquare = (props) => (
 );
 
 ZoomSquare.displayName = 'ZoomSquare';
-
-export default ZoomSquare;

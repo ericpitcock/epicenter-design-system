@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LinkSquare02 = (props) => (
+export const LinkSquare02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LinkSquare02 = (props) => (
 );
 
 LinkSquare02.displayName = 'LinkSquare02';
-
-export default LinkSquare02;

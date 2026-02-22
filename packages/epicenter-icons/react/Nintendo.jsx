@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Nintendo = (props) => (
+export const Nintendo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Nintendo = (props) => (
 );
 
 Nintendo.displayName = 'Nintendo';
-
-export default Nintendo;

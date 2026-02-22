@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BitcoinFilter = (props) => (
+export const BitcoinFilter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BitcoinFilter = (props) => (
 );
 
 BitcoinFilter.displayName = 'BitcoinFilter';
-
-export default BitcoinFilter;

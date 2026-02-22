@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AttachmentSquare = (props) => (
+export const AttachmentSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AttachmentSquare = (props) => (
 );
 
 AttachmentSquare.displayName = 'AttachmentSquare';
-
-export default AttachmentSquare;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BowlingBall = (props) => (
+export const BowlingBall = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BowlingBall = (props) => (
 );
 
 BowlingBall.displayName = 'BowlingBall';
-
-export default BowlingBall;

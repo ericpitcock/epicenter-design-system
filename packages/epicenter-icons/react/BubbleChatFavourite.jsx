@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BubbleChatFavourite = (props) => (
+export const BubbleChatFavourite = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BubbleChatFavourite = (props) => (
 );
 
 BubbleChatFavourite.displayName = 'BubbleChatFavourite';
-
-export default BubbleChatFavourite;

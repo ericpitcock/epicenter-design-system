@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BowlingPins = (props) => (
+export const BowlingPins = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BowlingPins = (props) => (
 );
 
 BowlingPins.displayName = 'BowlingPins';
-
-export default BowlingPins;

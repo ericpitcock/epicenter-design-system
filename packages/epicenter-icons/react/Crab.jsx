@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Crab = (props) => (
+export const Crab = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Crab = (props) => (
 );
 
 Crab.displayName = 'Crab';
-
-export default Crab;

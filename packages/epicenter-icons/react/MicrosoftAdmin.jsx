@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MicrosoftAdmin = (props) => (
+export const MicrosoftAdmin = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MicrosoftAdmin = (props) => (
 );
 
 MicrosoftAdmin.displayName = 'MicrosoftAdmin';
-
-export default MicrosoftAdmin;

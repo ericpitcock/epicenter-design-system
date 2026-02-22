@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wellness = (props) => (
+export const Wellness = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Wellness = (props) => (
 );
 
 Wellness.displayName = 'Wellness';
-
-export default Wellness;

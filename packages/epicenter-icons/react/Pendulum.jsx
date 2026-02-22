@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pendulum = (props) => (
+export const Pendulum = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Pendulum = (props) => (
 );
 
 Pendulum.displayName = 'Pendulum';
-
-export default Pendulum;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CloudSavingDone01 = (props) => (
+export const CloudSavingDone01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CloudSavingDone01 = (props) => (
 );
 
 CloudSavingDone01.displayName = 'CloudSavingDone01';
-
-export default CloudSavingDone01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PenConnectBluetooth = (props) => (
+export const PenConnectBluetooth = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PenConnectBluetooth = (props) => (
 );
 
 PenConnectBluetooth.displayName = 'PenConnectBluetooth';
-
-export default PenConnectBluetooth;

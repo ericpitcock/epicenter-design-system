@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CricketBat = (props) => (
+export const CricketBat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CricketBat = (props) => (
 );
 
 CricketBat.displayName = 'CricketBat';
-
-export default CricketBat;

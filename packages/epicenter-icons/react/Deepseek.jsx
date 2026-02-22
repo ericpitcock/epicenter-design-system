@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Deepseek = (props) => (
+export const Deepseek = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Deepseek = (props) => (
 );
 
 Deepseek.displayName = 'Deepseek';
-
-export default Deepseek;

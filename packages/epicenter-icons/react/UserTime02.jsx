@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserTime02 = (props) => (
+export const UserTime02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const UserTime02 = (props) => (
 );
 
 UserTime02.displayName = 'UserTime02';
-
-export default UserTime02;

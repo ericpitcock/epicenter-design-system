@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VrGlasses = (props) => (
+export const VrGlasses = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const VrGlasses = (props) => (
 );
 
 VrGlasses.displayName = 'VrGlasses';
-
-export default VrGlasses;

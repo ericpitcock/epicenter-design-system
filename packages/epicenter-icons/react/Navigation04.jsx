@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Navigation04 = (props) => (
+export const Navigation04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Navigation04 = (props) => (
 );
 
 Navigation04.displayName = 'Navigation04';
-
-export default Navigation04;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NotificationCircle = (props) => (
+export const NotificationCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const NotificationCircle = (props) => (
 );
 
 NotificationCircle.displayName = 'NotificationCircle';
-
-export default NotificationCircle;

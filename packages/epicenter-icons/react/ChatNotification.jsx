@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChatNotification = (props) => (
+export const ChatNotification = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChatNotification = (props) => (
 );
 
 ChatNotification.displayName = 'ChatNotification';
-
-export default ChatNotification;

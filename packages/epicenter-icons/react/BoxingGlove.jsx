@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BoxingGlove = (props) => (
+export const BoxingGlove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BoxingGlove = (props) => (
 );
 
 BoxingGlove.displayName = 'BoxingGlove';
-
-export default BoxingGlove;

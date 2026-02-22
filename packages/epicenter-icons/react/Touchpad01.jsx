@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Touchpad01 = (props) => (
+export const Touchpad01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Touchpad01 = (props) => (
 );
 
 Touchpad01.displayName = 'Touchpad01';
-
-export default Touchpad01;

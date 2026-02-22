@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextUnderline = (props) => (
+export const TextUnderline = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TextUnderline = (props) => (
 );
 
 TextUnderline.displayName = 'TextUnderline';
-
-export default TextUnderline;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CheckUnread04 = (props) => (
+export const CheckUnread04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CheckUnread04 = (props) => (
 );
 
 CheckUnread04.displayName = 'CheckUnread04';
-
-export default CheckUnread04;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderMinus = (props) => (
+export const FolderMinus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderMinus = (props) => (
 );
 
 FolderMinus.displayName = 'FolderMinus';
-
-export default FolderMinus;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HydroPower = (props) => (
+export const HydroPower = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const HydroPower = (props) => (
 );
 
 HydroPower.displayName = 'HydroPower';
-
-export default HydroPower;

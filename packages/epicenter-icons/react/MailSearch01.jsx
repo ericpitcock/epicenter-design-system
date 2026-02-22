@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MailSearch01 = (props) => (
+export const MailSearch01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MailSearch01 = (props) => (
 );
 
 MailSearch01.displayName = 'MailSearch01';
-
-export default MailSearch01;

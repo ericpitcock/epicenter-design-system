@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GoogleDrive = (props) => (
+export const GoogleDrive = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const GoogleDrive = (props) => (
 );
 
 GoogleDrive.displayName = 'GoogleDrive';
-
-export default GoogleDrive;

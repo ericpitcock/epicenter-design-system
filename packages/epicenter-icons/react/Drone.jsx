@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Drone = (props) => (
+export const Drone = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Drone = (props) => (
 );
 
 Drone.displayName = 'Drone';
-
-export default Drone;

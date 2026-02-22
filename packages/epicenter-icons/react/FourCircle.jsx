@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FourCircle = (props) => (
+export const FourCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FourCircle = (props) => (
 );
 
 FourCircle.displayName = 'FourCircle';
-
-export default FourCircle;

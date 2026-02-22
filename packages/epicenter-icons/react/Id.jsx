@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Id = (props) => (
+export const Id = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Id = (props) => (
 );
 
 Id.displayName = 'Id';
-
-export default Id;

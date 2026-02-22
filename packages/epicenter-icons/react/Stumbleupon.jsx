@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Stumbleupon = (props) => (
+export const Stumbleupon = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Stumbleupon = (props) => (
 );
 
 Stumbleupon.displayName = 'Stumbleupon';
-
-export default Stumbleupon;

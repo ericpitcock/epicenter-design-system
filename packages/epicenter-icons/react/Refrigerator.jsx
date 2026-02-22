@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Refrigerator = (props) => (
+export const Refrigerator = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Refrigerator = (props) => (
 );
 
 Refrigerator.displayName = 'Refrigerator';
-
-export default Refrigerator;

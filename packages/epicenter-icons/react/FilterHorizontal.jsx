@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FilterHorizontal = (props) => (
+export const FilterHorizontal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const FilterHorizontal = (props) => (
 );
 
 FilterHorizontal.displayName = 'FilterHorizontal';
-
-export default FilterHorizontal;

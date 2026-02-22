@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FunctionSquare = (props) => (
+export const FunctionSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FunctionSquare = (props) => (
 );
 
 FunctionSquare.displayName = 'FunctionSquare';
-
-export default FunctionSquare;

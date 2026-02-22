@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cupcake02 = (props) => (
+export const Cupcake02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Cupcake02 = (props) => (
 );
 
 Cupcake02.displayName = 'Cupcake02';
-
-export default Cupcake02;

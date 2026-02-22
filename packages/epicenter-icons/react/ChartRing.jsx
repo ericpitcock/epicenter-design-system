@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartRing = (props) => (
+export const ChartRing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChartRing = (props) => (
 );
 
 ChartRing.displayName = 'ChartRing';
-
-export default ChartRing;

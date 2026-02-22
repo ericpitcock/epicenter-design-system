@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bing = (props) => (
+export const Bing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Bing = (props) => (
 );
 
 Bing.displayName = 'Bing';
-
-export default Bing;

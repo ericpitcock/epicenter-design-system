@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Umbrella = (props) => (
+export const Umbrella = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Umbrella = (props) => (
 );
 
 Umbrella.displayName = 'Umbrella';
-
-export default Umbrella;

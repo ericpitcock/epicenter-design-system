@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiGenerative = (props) => (
+export const AiGenerative = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AiGenerative = (props) => (
 );
 
 AiGenerative.displayName = 'AiGenerative';
-
-export default AiGenerative;

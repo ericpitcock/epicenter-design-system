@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Clip = (props) => (
+export const Clip = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Clip = (props) => (
 );
 
 Clip.displayName = 'Clip';
-
-export default Clip;

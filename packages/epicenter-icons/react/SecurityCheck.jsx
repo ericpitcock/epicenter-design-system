@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SecurityCheck = (props) => (
+export const SecurityCheck = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SecurityCheck = (props) => (
 );
 
 SecurityCheck.displayName = 'SecurityCheck';
-
-export default SecurityCheck;

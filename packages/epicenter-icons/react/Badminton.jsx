@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Badminton = (props) => (
+export const Badminton = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Badminton = (props) => (
 );
 
 Badminton.displayName = 'Badminton';
-
-export default Badminton;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StreetFood = (props) => (
+export const StreetFood = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const StreetFood = (props) => (
 );
 
 StreetFood.displayName = 'StreetFood';
-
-export default StreetFood;

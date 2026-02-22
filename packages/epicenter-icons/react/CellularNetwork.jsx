@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CellularNetwork = (props) => (
+export const CellularNetwork = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CellularNetwork = (props) => (
 );
 
 CellularNetwork.displayName = 'CellularNetwork';
-
-export default CellularNetwork;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WaterfallUp02 = (props) => (
+export const WaterfallUp02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const WaterfallUp02 = (props) => (
 );
 
 WaterfallUp02.displayName = 'WaterfallUp02';
-
-export default WaterfallUp02;

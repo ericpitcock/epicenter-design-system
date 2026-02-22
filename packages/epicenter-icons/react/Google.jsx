@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Google = (props) => (
+export const Google = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Google = (props) => (
 );
 
 Google.displayName = 'Google';
-
-export default Google;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LinkCircle = (props) => (
+export const LinkCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LinkCircle = (props) => (
 );
 
 LinkCircle.displayName = 'LinkCircle';
-
-export default LinkCircle;

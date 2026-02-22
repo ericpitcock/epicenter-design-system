@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FingerPrintMinus = (props) => (
+export const FingerPrintMinus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FingerPrintMinus = (props) => (
 );
 
 FingerPrintMinus.displayName = 'FingerPrintMinus';
-
-export default FingerPrintMinus;

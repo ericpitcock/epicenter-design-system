@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MarketOrder = (props) => (
+export const MarketOrder = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const MarketOrder = (props) => (
 );
 
 MarketOrder.displayName = 'MarketOrder';
-
-export default MarketOrder;

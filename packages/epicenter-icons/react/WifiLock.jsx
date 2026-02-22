@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WifiLock = (props) => (
+export const WifiLock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const WifiLock = (props) => (
 );
 
 WifiLock.displayName = 'WifiLock';
-
-export default WifiLock;

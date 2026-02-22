@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EquipmentChestPress = (props) => (
+export const EquipmentChestPress = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const EquipmentChestPress = (props) => (
 );
 
 EquipmentChestPress.displayName = 'EquipmentChestPress';
-
-export default EquipmentChestPress;

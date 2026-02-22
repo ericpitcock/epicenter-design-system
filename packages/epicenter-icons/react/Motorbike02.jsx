@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Motorbike02 = (props) => (
+export const Motorbike02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Motorbike02 = (props) => (
 );
 
 Motorbike02.displayName = 'Motorbike02';
-
-export default Motorbike02;

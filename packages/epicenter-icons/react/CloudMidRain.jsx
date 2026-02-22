@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CloudMidRain = (props) => (
+export const CloudMidRain = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CloudMidRain = (props) => (
 );
 
 CloudMidRain.displayName = 'CloudMidRain';
-
-export default CloudMidRain;

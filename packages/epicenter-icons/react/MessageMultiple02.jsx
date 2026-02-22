@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MessageMultiple02 = (props) => (
+export const MessageMultiple02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MessageMultiple02 = (props) => (
 );
 
 MessageMultiple02.displayName = 'MessageMultiple02';
-
-export default MessageMultiple02;

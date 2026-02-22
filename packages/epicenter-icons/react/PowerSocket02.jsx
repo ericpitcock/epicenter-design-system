@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PowerSocket02 = (props) => (
+export const PowerSocket02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PowerSocket02 = (props) => (
 );
 
 PowerSocket02.displayName = 'PowerSocket02';
-
-export default PowerSocket02;

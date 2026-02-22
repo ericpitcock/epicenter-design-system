@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VideoConsole = (props) => (
+export const VideoConsole = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const VideoConsole = (props) => (
 );
 
 VideoConsole.displayName = 'VideoConsole';
-
-export default VideoConsole;

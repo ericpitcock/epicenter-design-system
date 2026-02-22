@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Gem = (props) => (
+export const Gem = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Gem = (props) => (
 );
 
 Gem.displayName = 'Gem';
-
-export default Gem;

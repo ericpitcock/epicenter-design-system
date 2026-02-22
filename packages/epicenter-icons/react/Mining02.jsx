@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mining02 = (props) => (
+export const Mining02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Mining02 = (props) => (
 );
 
 Mining02.displayName = 'Mining02';
-
-export default Mining02;

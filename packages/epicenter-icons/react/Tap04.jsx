@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tap04 = (props) => (
+export const Tap04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Tap04 = (props) => (
 );
 
 Tap04.displayName = 'Tap04';
-
-export default Tap04;

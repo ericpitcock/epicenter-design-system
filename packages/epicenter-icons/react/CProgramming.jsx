@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CProgramming = (props) => (
+export const CProgramming = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CProgramming = (props) => (
 );
 
 CProgramming.displayName = 'CProgramming';
-
-export default CProgramming;

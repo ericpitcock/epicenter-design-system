@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TaskDaily01 = (props) => (
+export const TaskDaily01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const TaskDaily01 = (props) => (
 );
 
 TaskDaily01.displayName = 'TaskDaily01';
-
-export default TaskDaily01;

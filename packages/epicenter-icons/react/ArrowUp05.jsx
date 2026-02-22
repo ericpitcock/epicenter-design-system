@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArrowUp05 = (props) => (
+export const ArrowUp05 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ArrowUp05 = (props) => (
 );
 
 ArrowUp05.displayName = 'ArrowUp05';
-
-export default ArrowUp05;

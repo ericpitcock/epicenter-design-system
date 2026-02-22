@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Lock = (props) => (
+export const Lock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Lock = (props) => (
 );
 
 Lock.displayName = 'Lock';
-
-export default Lock;

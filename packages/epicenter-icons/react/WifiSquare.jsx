@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WifiSquare = (props) => (
+export const WifiSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const WifiSquare = (props) => (
 );
 
 WifiSquare.displayName = 'WifiSquare';
-
-export default WifiSquare;

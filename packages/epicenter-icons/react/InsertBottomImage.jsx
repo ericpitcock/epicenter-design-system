@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InsertBottomImage = (props) => (
+export const InsertBottomImage = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const InsertBottomImage = (props) => (
 );
 
 InsertBottomImage.displayName = 'InsertBottomImage';
-
-export default InsertBottomImage;

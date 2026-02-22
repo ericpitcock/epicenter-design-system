@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Seo = (props) => (
+export const Seo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Seo = (props) => (
 );
 
 Seo.displayName = 'Seo';
-
-export default Seo;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Fins = (props) => (
+export const Fins = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Fins = (props) => (
 );
 
 Fins.displayName = 'Fins';
-
-export default Fins;

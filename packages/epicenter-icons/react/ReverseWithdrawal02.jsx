@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ReverseWithdrawal02 = (props) => (
+export const ReverseWithdrawal02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ReverseWithdrawal02 = (props) => (
 );
 
 ReverseWithdrawal02.displayName = 'ReverseWithdrawal02';
-
-export default ReverseWithdrawal02;

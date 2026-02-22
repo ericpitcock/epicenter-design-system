@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mouse21 = (props) => (
+export const Mouse21 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Mouse21 = (props) => (
 );
 
 Mouse21.displayName = 'Mouse21';
-
-export default Mouse21;

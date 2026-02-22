@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Brain01 = (props) => (
+export const Brain01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Brain01 = (props) => (
 );
 
 Brain01.displayName = 'Brain01';
-
-export default Brain01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Complaint = (props) => (
+export const Complaint = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Complaint = (props) => (
 );
 
 Complaint.displayName = 'Complaint';
-
-export default Complaint;

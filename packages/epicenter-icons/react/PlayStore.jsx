@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PlayStore = (props) => (
+export const PlayStore = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PlayStore = (props) => (
 );
 
 PlayStore.displayName = 'PlayStore';
-
-export default PlayStore;

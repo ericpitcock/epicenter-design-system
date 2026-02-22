@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Record = (props) => (
+export const Record = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Record = (props) => (
 );
 
 Record.displayName = 'Record';
-
-export default Record;

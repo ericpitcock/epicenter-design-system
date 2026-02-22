@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FlowConnection = (props) => (
+export const FlowConnection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const FlowConnection = (props) => (
 );
 
 FlowConnection.displayName = 'FlowConnection';
-
-export default FlowConnection;

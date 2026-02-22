@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Spaghetti = (props) => (
+export const Spaghetti = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Spaghetti = (props) => (
 );
 
 Spaghetti.displayName = 'Spaghetti';
-
-export default Spaghetti;

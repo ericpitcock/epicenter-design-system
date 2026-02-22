@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Table03 = (props) => (
+export const Table03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Table03 = (props) => (
 );
 
 Table03.displayName = 'Table03';
-
-export default Table03;

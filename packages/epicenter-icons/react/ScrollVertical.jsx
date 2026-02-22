@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ScrollVertical = (props) => (
+export const ScrollVertical = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ScrollVertical = (props) => (
 );
 
 ScrollVertical.displayName = 'ScrollVertical';
-
-export default ScrollVertical;

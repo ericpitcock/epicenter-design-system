@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BookmarkOff01 = (props) => (
+export const BookmarkOff01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BookmarkOff01 = (props) => (
 );
 
 BookmarkOff01.displayName = 'BookmarkOff01';
-
-export default BookmarkOff01;

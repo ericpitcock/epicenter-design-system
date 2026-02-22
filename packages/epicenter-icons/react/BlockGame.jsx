@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BlockGame = (props) => (
+export const BlockGame = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BlockGame = (props) => (
 );
 
 BlockGame.displayName = 'BlockGame';
-
-export default BlockGame;

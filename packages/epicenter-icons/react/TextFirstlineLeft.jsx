@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextFirstlineLeft = (props) => (
+export const TextFirstlineLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const TextFirstlineLeft = (props) => (
 );
 
 TextFirstlineLeft.displayName = 'TextFirstlineLeft';
-
-export default TextFirstlineLeft;

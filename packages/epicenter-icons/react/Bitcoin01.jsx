@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bitcoin01 = (props) => (
+export const Bitcoin01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Bitcoin01 = (props) => (
 );
 
 Bitcoin01.displayName = 'Bitcoin01';
-
-export default Bitcoin01;

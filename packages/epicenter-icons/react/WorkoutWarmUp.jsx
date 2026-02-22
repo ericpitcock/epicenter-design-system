@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WorkoutWarmUp = (props) => (
+export const WorkoutWarmUp = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const WorkoutWarmUp = (props) => (
 );
 
 WorkoutWarmUp.displayName = 'WorkoutWarmUp';
-
-export default WorkoutWarmUp;

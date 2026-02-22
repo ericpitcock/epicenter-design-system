@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FilterRemove = (props) => (
+export const FilterRemove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FilterRemove = (props) => (
 );
 
 FilterRemove.displayName = 'FilterRemove';
-
-export default FilterRemove;

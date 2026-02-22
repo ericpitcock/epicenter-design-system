@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Humidity = (props) => (
+export const Humidity = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Humidity = (props) => (
 );
 
 Humidity.displayName = 'Humidity';
-
-export default Humidity;

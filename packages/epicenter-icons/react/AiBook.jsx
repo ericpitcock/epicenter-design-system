@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiBook = (props) => (
+export const AiBook = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AiBook = (props) => (
 );
 
 AiBook.displayName = 'AiBook';
-
-export default AiBook;

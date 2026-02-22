@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CashbackBitcoin = (props) => (
+export const CashbackBitcoin = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CashbackBitcoin = (props) => (
 );
 
 CashbackBitcoin.displayName = 'CashbackBitcoin';
-
-export default CashbackBitcoin;

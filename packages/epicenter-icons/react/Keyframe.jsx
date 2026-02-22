@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Keyframe = (props) => (
+export const Keyframe = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Keyframe = (props) => (
 );
 
 Keyframe.displayName = 'Keyframe';
-
-export default Keyframe;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tornado01 = (props) => (
+export const Tornado01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Tornado01 = (props) => (
 );
 
 Tornado01.displayName = 'Tornado01';
-
-export default Tornado01;

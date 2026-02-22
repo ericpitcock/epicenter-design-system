@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bed = (props) => (
+export const Bed = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Bed = (props) => (
 );
 
 Bed.displayName = 'Bed';
-
-export default Bed;

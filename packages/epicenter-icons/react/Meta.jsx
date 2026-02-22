@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Meta = (props) => (
+export const Meta = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Meta = (props) => (
 );
 
 Meta.displayName = 'Meta';
-
-export default Meta;

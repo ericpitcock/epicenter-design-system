@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VolumeOff = (props) => (
+export const VolumeOff = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const VolumeOff = (props) => (
 );
 
 VolumeOff.displayName = 'VolumeOff';
-
-export default VolumeOff;

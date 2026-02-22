@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderPin = (props) => (
+export const FolderPin = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderPin = (props) => (
 );
 
 FolderPin.displayName = 'FolderPin';
-
-export default FolderPin;

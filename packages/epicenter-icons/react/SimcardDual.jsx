@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SimcardDual = (props) => (
+export const SimcardDual = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SimcardDual = (props) => (
 );
 
 SimcardDual.displayName = 'SimcardDual';
-
-export default SimcardDual;

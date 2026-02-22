@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MessageFavourite01 = (props) => (
+export const MessageFavourite01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MessageFavourite01 = (props) => (
 );
 
 MessageFavourite01.displayName = 'MessageFavourite01';
-
-export default MessageFavourite01;

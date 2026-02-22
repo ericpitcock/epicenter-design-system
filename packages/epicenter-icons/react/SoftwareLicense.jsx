@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SoftwareLicense = (props) => (
+export const SoftwareLicense = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const SoftwareLicense = (props) => (
 );
 
 SoftwareLicense.displayName = 'SoftwareLicense';
-
-export default SoftwareLicense;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiUser = (props) => (
+export const AiUser = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AiUser = (props) => (
 );
 
 AiUser.displayName = 'AiUser';
-
-export default AiUser;

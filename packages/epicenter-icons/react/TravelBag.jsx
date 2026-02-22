@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TravelBag = (props) => (
+export const TravelBag = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const TravelBag = (props) => (
 );
 
 TravelBag.displayName = 'TravelBag';
-
-export default TravelBag;

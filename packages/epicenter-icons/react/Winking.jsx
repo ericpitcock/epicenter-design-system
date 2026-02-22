@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Winking = (props) => (
+export const Winking = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Winking = (props) => (
 );
 
 Winking.displayName = 'Winking';
-
-export default Winking;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Paragliding = (props) => (
+export const Paragliding = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Paragliding = (props) => (
 );
 
 Paragliding.displayName = 'Paragliding';
-
-export default Paragliding;

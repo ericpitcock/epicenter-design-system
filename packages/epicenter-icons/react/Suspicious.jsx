@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Suspicious = (props) => (
+export const Suspicious = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Suspicious = (props) => (
 );
 
 Suspicious.displayName = 'Suspicious';
-
-export default Suspicious;

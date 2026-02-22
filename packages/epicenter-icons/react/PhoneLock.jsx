@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PhoneLock = (props) => (
+export const PhoneLock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PhoneLock = (props) => (
 );
 
 PhoneLock.displayName = 'PhoneLock';
-
-export default PhoneLock;

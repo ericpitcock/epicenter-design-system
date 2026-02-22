@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoonCloudSnow = (props) => (
+export const MoonCloudSnow = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MoonCloudSnow = (props) => (
 );
 
 MoonCloudSnow.displayName = 'MoonCloudSnow';
-
-export default MoonCloudSnow;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Chef = (props) => (
+export const Chef = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Chef = (props) => (
 );
 
 Chef.displayName = 'Chef';
-
-export default Chef;

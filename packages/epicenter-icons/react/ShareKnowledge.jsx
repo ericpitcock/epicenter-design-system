@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShareKnowledge = (props) => (
+export const ShareKnowledge = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ShareKnowledge = (props) => (
 );
 
 ShareKnowledge.displayName = 'ShareKnowledge';
-
-export default ShareKnowledge;

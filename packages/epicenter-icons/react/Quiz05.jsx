@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Quiz05 = (props) => (
+export const Quiz05 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Quiz05 = (props) => (
 );
 
 Quiz05.displayName = 'Quiz05';
-
-export default Quiz05;

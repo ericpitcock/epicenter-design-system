@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CodeCircle = (props) => (
+export const CodeCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CodeCircle = (props) => (
 );
 
 CodeCircle.displayName = 'CodeCircle';
-
-export default CodeCircle;

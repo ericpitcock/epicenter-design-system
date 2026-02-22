@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Video01 = (props) => (
+export const Video01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Video01 = (props) => (
 );
 
 Video01.displayName = 'Video01';
-
-export default Video01;

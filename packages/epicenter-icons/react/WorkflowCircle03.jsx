@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WorkflowCircle03 = (props) => (
+export const WorkflowCircle03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const WorkflowCircle03 = (props) => (
 );
 
 WorkflowCircle03.displayName = 'WorkflowCircle03';
-
-export default WorkflowCircle03;

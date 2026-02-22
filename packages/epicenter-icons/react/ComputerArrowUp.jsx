@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComputerArrowUp = (props) => (
+export const ComputerArrowUp = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ComputerArrowUp = (props) => (
 );
 
 ComputerArrowUp.displayName = 'ComputerArrowUp';
-
-export default ComputerArrowUp;

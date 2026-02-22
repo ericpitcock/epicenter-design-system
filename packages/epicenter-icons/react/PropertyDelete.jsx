@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PropertyDelete = (props) => (
+export const PropertyDelete = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PropertyDelete = (props) => (
 );
 
 PropertyDelete.displayName = 'PropertyDelete';
-
-export default PropertyDelete;

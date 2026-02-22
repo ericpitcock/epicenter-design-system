@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Chopsticks = (props) => (
+export const Chopsticks = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Chopsticks = (props) => (
 );
 
 Chopsticks.displayName = 'Chopsticks';
-
-export default Chopsticks;

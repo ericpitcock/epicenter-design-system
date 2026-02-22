@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Niqab = (props) => (
+export const Niqab = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -16,5 +14,3 @@ const Niqab = (props) => (
 );
 
 Niqab.displayName = 'Niqab';
-
-export default Niqab;

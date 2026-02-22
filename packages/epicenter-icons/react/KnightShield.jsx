@@ -1,6 +1,4 @@
-import React from 'react';
-
-const KnightShield = (props) => (
+export const KnightShield = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const KnightShield = (props) => (
 );
 
 KnightShield.displayName = 'KnightShield';
-
-export default KnightShield;

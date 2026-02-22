@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Library = (props) => (
+export const Library = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Library = (props) => (
 );
 
 Library.displayName = 'Library';
-
-export default Library;

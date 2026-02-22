@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VegetarianFood = (props) => (
+export const VegetarianFood = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const VegetarianFood = (props) => (
 );
 
 VegetarianFood.displayName = 'VegetarianFood';
-
-export default VegetarianFood;

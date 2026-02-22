@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Unsplash = (props) => (
+export const Unsplash = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Unsplash = (props) => (
 );
 
 Unsplash.displayName = 'Unsplash';
-
-export default Unsplash;

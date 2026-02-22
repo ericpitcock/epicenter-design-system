@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DressingTable01 = (props) => (
+export const DressingTable01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const DressingTable01 = (props) => (
 );
 
 DressingTable01.displayName = 'DressingTable01';
-
-export default DressingTable01;

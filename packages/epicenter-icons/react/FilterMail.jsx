@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FilterMail = (props) => (
+export const FilterMail = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FilterMail = (props) => (
 );
 
 FilterMail.displayName = 'FilterMail';
-
-export default FilterMail;

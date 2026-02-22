@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Terrace = (props) => (
+export const Terrace = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Terrace = (props) => (
 );
 
 Terrace.displayName = 'Terrace';
-
-export default Terrace;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FireSecurity = (props) => (
+export const FireSecurity = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FireSecurity = (props) => (
 );
 
 FireSecurity.displayName = 'FireSecurity';
-
-export default FireSecurity;

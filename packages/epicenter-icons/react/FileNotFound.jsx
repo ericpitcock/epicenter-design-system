@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileNotFound = (props) => (
+export const FileNotFound = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileNotFound = (props) => (
 );
 
 FileNotFound.displayName = 'FileNotFound';
-
-export default FileNotFound;

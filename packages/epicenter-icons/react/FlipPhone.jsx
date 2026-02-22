@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FlipPhone = (props) => (
+export const FlipPhone = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const FlipPhone = (props) => (
 );
 
 FlipPhone.displayName = 'FlipPhone';
-
-export default FlipPhone;

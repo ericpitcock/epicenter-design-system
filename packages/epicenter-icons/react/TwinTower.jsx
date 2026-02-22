@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TwinTower = (props) => (
+export const TwinTower = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -23,5 +21,3 @@ const TwinTower = (props) => (
 );
 
 TwinTower.displayName = 'TwinTower';
-
-export default TwinTower;

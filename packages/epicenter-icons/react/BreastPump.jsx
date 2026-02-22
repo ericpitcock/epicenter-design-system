@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BreastPump = (props) => (
+export const BreastPump = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const BreastPump = (props) => (
 );
 
 BreastPump.displayName = 'BreastPump';
-
-export default BreastPump;

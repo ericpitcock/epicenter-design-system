@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NintendoSwitch = (props) => (
+export const NintendoSwitch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const NintendoSwitch = (props) => (
 );
 
 NintendoSwitch.displayName = 'NintendoSwitch';
-
-export default NintendoSwitch;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Dead = (props) => (
+export const Dead = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Dead = (props) => (
 );
 
 Dead.displayName = 'Dead';
-
-export default Dead;

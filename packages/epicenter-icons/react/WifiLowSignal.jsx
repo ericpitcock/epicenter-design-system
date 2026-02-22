@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WifiLowSignal = (props) => (
+export const WifiLowSignal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const WifiLowSignal = (props) => (
 );
 
 WifiLowSignal.displayName = 'WifiLowSignal';
-
-export default WifiLowSignal;

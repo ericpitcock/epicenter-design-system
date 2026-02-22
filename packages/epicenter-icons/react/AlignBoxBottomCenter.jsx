@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlignBoxBottomCenter = (props) => (
+export const AlignBoxBottomCenter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AlignBoxBottomCenter = (props) => (
 );
 
 AlignBoxBottomCenter.displayName = 'AlignBoxBottomCenter';
-
-export default AlignBoxBottomCenter;

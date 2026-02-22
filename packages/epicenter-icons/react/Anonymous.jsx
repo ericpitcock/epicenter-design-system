@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Anonymous = (props) => (
+export const Anonymous = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Anonymous = (props) => (
 );
 
 Anonymous.displayName = 'Anonymous';
-
-export default Anonymous;

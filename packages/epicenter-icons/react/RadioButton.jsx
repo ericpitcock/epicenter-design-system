@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RadioButton = (props) => (
+export const RadioButton = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const RadioButton = (props) => (
 );
 
 RadioButton.displayName = 'RadioButton';
-
-export default RadioButton;

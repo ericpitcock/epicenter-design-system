@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bread02 = (props) => (
+export const Bread02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Bread02 = (props) => (
 );
 
 Bread02.displayName = 'Bread02';
-
-export default Bread02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Skype = (props) => (
+export const Skype = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Skype = (props) => (
 );
 
 Skype.displayName = 'Skype';
-
-export default Skype;

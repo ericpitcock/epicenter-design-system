@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Angry = (props) => (
+export const Angry = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Angry = (props) => (
 );
 
 Angry.displayName = 'Angry';
-
-export default Angry;

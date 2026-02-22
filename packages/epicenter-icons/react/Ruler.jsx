@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ruler = (props) => (
+export const Ruler = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Ruler = (props) => (
 );
 
 Ruler.displayName = 'Ruler';
-
-export default Ruler;

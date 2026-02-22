@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SendToMobile = (props) => (
+export const SendToMobile = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SendToMobile = (props) => (
 );
 
 SendToMobile.displayName = 'SendToMobile';
-
-export default SendToMobile;

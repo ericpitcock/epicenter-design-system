@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ThreeFinger01 = (props) => (
+export const ThreeFinger01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const ThreeFinger01 = (props) => (
 );
 
 ThreeFinger01.displayName = 'ThreeFinger01';
-
-export default ThreeFinger01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BarCode01 = (props) => (
+export const BarCode01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const BarCode01 = (props) => (
 );
 
 BarCode01.displayName = 'BarCode01';
-
-export default BarCode01;

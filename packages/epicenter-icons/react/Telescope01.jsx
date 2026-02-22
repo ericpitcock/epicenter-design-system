@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Telescope01 = (props) => (
+export const Telescope01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Telescope01 = (props) => (
 );
 
 Telescope01.displayName = 'Telescope01';
-
-export default Telescope01;

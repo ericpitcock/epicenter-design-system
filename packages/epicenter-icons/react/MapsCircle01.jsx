@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MapsCircle01 = (props) => (
+export const MapsCircle01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MapsCircle01 = (props) => (
 );
 
 MapsCircle01.displayName = 'MapsCircle01';
-
-export default MapsCircle01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Stripe = (props) => (
+export const Stripe = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Stripe = (props) => (
 );
 
 Stripe.displayName = 'Stripe';
-
-export default Stripe;

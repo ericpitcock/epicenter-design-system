@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TvSmart = (props) => (
+export const TvSmart = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TvSmart = (props) => (
 );
 
 TvSmart.displayName = 'TvSmart';
-
-export default TvSmart;

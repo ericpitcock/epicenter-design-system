@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Champion = (props) => (
+export const Champion = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Champion = (props) => (
 );
 
 Champion.displayName = 'Champion';
-
-export default Champion;

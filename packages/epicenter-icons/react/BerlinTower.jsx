@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BerlinTower = (props) => (
+export const BerlinTower = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const BerlinTower = (props) => (
 );
 
 BerlinTower.displayName = 'BerlinTower';
-
-export default BerlinTower;

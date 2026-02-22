@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Codesandbox = (props) => (
+export const Codesandbox = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Codesandbox = (props) => (
 );
 
 Codesandbox.displayName = 'Codesandbox';
-
-export default Codesandbox;

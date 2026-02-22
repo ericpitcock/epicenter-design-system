@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Litecoin = (props) => (
+export const Litecoin = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Litecoin = (props) => (
 );
 
 Litecoin.displayName = 'Litecoin';
-
-export default Litecoin;

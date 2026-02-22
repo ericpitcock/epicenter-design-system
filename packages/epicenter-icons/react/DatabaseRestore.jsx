@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DatabaseRestore = (props) => (
+export const DatabaseRestore = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const DatabaseRestore = (props) => (
 );
 
 DatabaseRestore.displayName = 'DatabaseRestore';
-
-export default DatabaseRestore;

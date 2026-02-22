@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LassoTool01 = (props) => (
+export const LassoTool01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const LassoTool01 = (props) => (
 );
 
 LassoTool01.displayName = 'LassoTool01';
-
-export default LassoTool01;

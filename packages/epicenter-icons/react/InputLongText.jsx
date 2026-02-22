@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InputLongText = (props) => (
+export const InputLongText = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const InputLongText = (props) => (
 );
 
 InputLongText.displayName = 'InputLongText';
-
-export default InputLongText;

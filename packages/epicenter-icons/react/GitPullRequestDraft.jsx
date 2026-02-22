@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GitPullRequestDraft = (props) => (
+export const GitPullRequestDraft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const GitPullRequestDraft = (props) => (
 );
 
 GitPullRequestDraft.displayName = 'GitPullRequestDraft';
-
-export default GitPullRequestDraft;

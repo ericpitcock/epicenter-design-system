@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Monocle01 = (props) => (
+export const Monocle01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Monocle01 = (props) => (
 );
 
 Monocle01.displayName = 'Monocle01';
-
-export default Monocle01;

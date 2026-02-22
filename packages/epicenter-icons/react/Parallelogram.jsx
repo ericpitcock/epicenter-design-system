@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Parallelogram = (props) => (
+export const Parallelogram = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Parallelogram = (props) => (
 );
 
 Parallelogram.displayName = 'Parallelogram';
-
-export default Parallelogram;

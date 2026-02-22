@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sofa01 = (props) => (
+export const Sofa01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Sofa01 = (props) => (
 );
 
 Sofa01.displayName = 'Sofa01';
-
-export default Sofa01;

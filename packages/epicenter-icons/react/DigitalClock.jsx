@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DigitalClock = (props) => (
+export const DigitalClock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const DigitalClock = (props) => (
 );
 
 DigitalClock.displayName = 'DigitalClock';
-
-export default DigitalClock;

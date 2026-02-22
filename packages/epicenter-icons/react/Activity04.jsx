@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Activity04 = (props) => (
+export const Activity04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Activity04 = (props) => (
 );
 
 Activity04.displayName = 'Activity04';
-
-export default Activity04;

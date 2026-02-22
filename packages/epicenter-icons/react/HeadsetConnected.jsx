@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HeadsetConnected = (props) => (
+export const HeadsetConnected = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const HeadsetConnected = (props) => (
 );
 
 HeadsetConnected.displayName = 'HeadsetConnected';
-
-export default HeadsetConnected;

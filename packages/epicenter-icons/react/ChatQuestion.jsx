@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChatQuestion = (props) => (
+export const ChatQuestion = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChatQuestion = (props) => (
 );
 
 ChatQuestion.displayName = 'ChatQuestion';
-
-export default ChatQuestion;

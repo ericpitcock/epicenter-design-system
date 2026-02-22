@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DragDropHorizontal = (props) => (
+export const DragDropHorizontal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const DragDropHorizontal = (props) => (
 );
 
 DragDropHorizontal.displayName = 'DragDropHorizontal';
-
-export default DragDropHorizontal;

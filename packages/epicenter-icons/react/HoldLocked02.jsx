@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HoldLocked02 = (props) => (
+export const HoldLocked02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const HoldLocked02 = (props) => (
 );
 
 HoldLocked02.displayName = 'HoldLocked02';
-
-export default HoldLocked02;

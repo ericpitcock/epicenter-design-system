@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Paragraph = (props) => (
+export const Paragraph = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Paragraph = (props) => (
 );
 
 Paragraph.displayName = 'Paragraph';
-
-export default Paragraph;

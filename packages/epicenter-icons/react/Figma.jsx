@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Figma = (props) => (
+export const Figma = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Figma = (props) => (
 );
 
 Figma.displayName = 'Figma';
-
-export default Figma;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EuroSend = (props) => (
+export const EuroSend = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const EuroSend = (props) => (
 );
 
 EuroSend.displayName = 'EuroSend';
-
-export default EuroSend;

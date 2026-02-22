@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EditTable = (props) => (
+export const EditTable = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const EditTable = (props) => (
 );
 
 EditTable.displayName = 'EditTable';
-
-export default EditTable;

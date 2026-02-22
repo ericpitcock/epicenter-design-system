@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HotspotOffline = (props) => (
+export const HotspotOffline = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const HotspotOffline = (props) => (
 );
 
 HotspotOffline.displayName = 'HotspotOffline';
-
-export default HotspotOffline;

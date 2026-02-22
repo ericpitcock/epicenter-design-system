@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Belt = (props) => (
+export const Belt = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Belt = (props) => (
 );
 
 Belt.displayName = 'Belt';
-
-export default Belt;

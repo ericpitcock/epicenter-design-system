@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Xsl02 = (props) => (
+export const Xsl02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Xsl02 = (props) => (
 );
 
 Xsl02.displayName = 'Xsl02';
-
-export default Xsl02;

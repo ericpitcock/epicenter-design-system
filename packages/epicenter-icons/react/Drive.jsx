@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Drive = (props) => (
+export const Drive = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Drive = (props) => (
 );
 
 Drive.displayName = 'Drive';
-
-export default Drive;

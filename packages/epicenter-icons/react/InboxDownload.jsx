@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InboxDownload = (props) => (
+export const InboxDownload = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const InboxDownload = (props) => (
 );
 
 InboxDownload.displayName = 'InboxDownload';
-
-export default InboxDownload;

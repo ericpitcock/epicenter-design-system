@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Root3rdBracket = (props) => (
+export const Root3rdBracket = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Root3rdBracket = (props) => (
 );
 
 Root3rdBracket.displayName = 'Root3rdBracket';
-
-export default Root3rdBracket;

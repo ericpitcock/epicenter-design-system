@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Campfire = (props) => (
+export const Campfire = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Campfire = (props) => (
 );
 
 Campfire.displayName = 'Campfire';
-
-export default Campfire;

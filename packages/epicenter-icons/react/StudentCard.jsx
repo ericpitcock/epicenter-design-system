@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StudentCard = (props) => (
+export const StudentCard = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const StudentCard = (props) => (
 );
 
 StudentCard.displayName = 'StudentCard';
-
-export default StudentCard;

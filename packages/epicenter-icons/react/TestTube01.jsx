@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TestTube01 = (props) => (
+export const TestTube01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const TestTube01 = (props) => (
 );
 
 TestTube01.displayName = 'TestTube01';
-
-export default TestTube01;

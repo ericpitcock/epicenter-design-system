@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BloodPressure = (props) => (
+export const BloodPressure = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BloodPressure = (props) => (
 );
 
 BloodPressure.displayName = 'BloodPressure';
-
-export default BloodPressure;

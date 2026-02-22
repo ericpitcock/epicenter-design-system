@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Touch09 = (props) => (
+export const Touch09 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Touch09 = (props) => (
 );
 
 Touch09.displayName = 'Touch09';
-
-export default Touch09;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FrenchFries01 = (props) => (
+export const FrenchFries01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FrenchFries01 = (props) => (
 );
 
 FrenchFries01.displayName = 'FrenchFries01';
-
-export default FrenchFries01;

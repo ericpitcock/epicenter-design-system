@@ -1,6 +1,4 @@
-import React from 'react';
-
-const JusticeScale02 = (props) => (
+export const JusticeScale02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const JusticeScale02 = (props) => (
 );
 
 JusticeScale02.displayName = 'JusticeScale02';
-
-export default JusticeScale02;

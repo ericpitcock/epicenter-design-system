@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PlusSignSquare = (props) => (
+export const PlusSignSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PlusSignSquare = (props) => (
 );
 
 PlusSignSquare.displayName = 'PlusSignSquare';
-
-export default PlusSignSquare;

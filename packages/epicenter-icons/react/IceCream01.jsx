@@ -1,6 +1,4 @@
-import React from 'react';
-
-const IceCream01 = (props) => (
+export const IceCream01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const IceCream01 = (props) => (
 );
 
 IceCream01.displayName = 'IceCream01';
-
-export default IceCream01;

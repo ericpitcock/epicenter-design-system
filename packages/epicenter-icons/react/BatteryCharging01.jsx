@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BatteryCharging01 = (props) => (
+export const BatteryCharging01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BatteryCharging01 = (props) => (
 );
 
 BatteryCharging01.displayName = 'BatteryCharging01';
-
-export default BatteryCharging01;

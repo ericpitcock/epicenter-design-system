@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Poop = (props) => (
+export const Poop = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Poop = (props) => (
 );
 
 Poop.displayName = 'Poop';
-
-export default Poop;

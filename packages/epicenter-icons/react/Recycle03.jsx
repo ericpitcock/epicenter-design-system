@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Recycle03 = (props) => (
+export const Recycle03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Recycle03 = (props) => (
 );
 
 Recycle03.displayName = 'Recycle03';
-
-export default Recycle03;

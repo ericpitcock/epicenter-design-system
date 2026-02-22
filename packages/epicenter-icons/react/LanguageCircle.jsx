@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LanguageCircle = (props) => (
+export const LanguageCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LanguageCircle = (props) => (
 );
 
 LanguageCircle.displayName = 'LanguageCircle';
-
-export default LanguageCircle;

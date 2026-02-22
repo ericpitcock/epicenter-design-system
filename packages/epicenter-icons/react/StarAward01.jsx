@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StarAward01 = (props) => (
+export const StarAward01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const StarAward01 = (props) => (
 );
 
 StarAward01.displayName = 'StarAward01';
-
-export default StarAward01;

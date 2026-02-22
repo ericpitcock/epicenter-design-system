@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PoundSend = (props) => (
+export const PoundSend = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PoundSend = (props) => (
 );
 
 PoundSend.displayName = 'PoundSend';
-
-export default PoundSend;

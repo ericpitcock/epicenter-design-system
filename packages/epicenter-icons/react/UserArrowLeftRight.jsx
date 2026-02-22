@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserArrowLeftRight = (props) => (
+export const UserArrowLeftRight = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const UserArrowLeftRight = (props) => (
 );
 
 UserArrowLeftRight.displayName = 'UserArrowLeftRight';
-
-export default UserArrowLeftRight;

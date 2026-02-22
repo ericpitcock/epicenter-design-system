@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Twitch = (props) => (
+export const Twitch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Twitch = (props) => (
 );
 
 Twitch.displayName = 'Twitch';
-
-export default Twitch;

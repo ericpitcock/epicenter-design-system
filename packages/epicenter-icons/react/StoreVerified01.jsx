@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StoreVerified01 = (props) => (
+export const StoreVerified01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const StoreVerified01 = (props) => (
 );
 
 StoreVerified01.displayName = 'StoreVerified01';
-
-export default StoreVerified01;

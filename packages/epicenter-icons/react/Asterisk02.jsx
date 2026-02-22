@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Asterisk02 = (props) => (
+export const Asterisk02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Asterisk02 = (props) => (
 );
 
 Asterisk02.displayName = 'Asterisk02';
-
-export default Asterisk02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GlobalRefresh = (props) => (
+export const GlobalRefresh = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const GlobalRefresh = (props) => (
 );
 
 GlobalRefresh.displayName = 'GlobalRefresh';
-
-export default GlobalRefresh;

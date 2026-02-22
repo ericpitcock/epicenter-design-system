@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Charity = (props) => (
+export const Charity = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Charity = (props) => (
 );
 
 Charity.displayName = 'Charity';
-
-export default Charity;

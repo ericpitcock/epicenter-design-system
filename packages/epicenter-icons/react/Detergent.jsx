@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Detergent = (props) => (
+export const Detergent = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Detergent = (props) => (
 );
 
 Detergent.displayName = 'Detergent';
-
-export default Detergent;

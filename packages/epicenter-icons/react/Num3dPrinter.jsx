@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Num3dPrinter = (props) => (
+export const Num3dPrinter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const Num3dPrinter = (props) => (
 );
 
 Num3dPrinter.displayName = 'Num3dPrinter';
-
-export default Num3dPrinter;

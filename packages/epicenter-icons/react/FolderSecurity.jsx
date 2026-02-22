@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderSecurity = (props) => (
+export const FolderSecurity = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderSecurity = (props) => (
 );
 
 FolderSecurity.displayName = 'FolderSecurity';
-
-export default FolderSecurity;

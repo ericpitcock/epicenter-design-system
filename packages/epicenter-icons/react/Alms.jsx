@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Alms = (props) => (
+export const Alms = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Alms = (props) => (
 );
 
 Alms.displayName = 'Alms';
-
-export default Alms;

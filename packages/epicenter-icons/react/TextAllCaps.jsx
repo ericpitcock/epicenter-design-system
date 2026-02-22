@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextAllCaps = (props) => (
+export const TextAllCaps = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const TextAllCaps = (props) => (
 );
 
 TextAllCaps.displayName = 'TextAllCaps';
-
-export default TextAllCaps;

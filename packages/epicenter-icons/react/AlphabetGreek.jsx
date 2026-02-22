@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlphabetGreek = (props) => (
+export const AlphabetGreek = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const AlphabetGreek = (props) => (
 );
 
 AlphabetGreek.displayName = 'AlphabetGreek';
-
-export default AlphabetGreek;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sujood = (props) => (
+export const Sujood = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -14,5 +12,3 @@ const Sujood = (props) => (
 );
 
 Sujood.displayName = 'Sujood';
-
-export default Sujood;

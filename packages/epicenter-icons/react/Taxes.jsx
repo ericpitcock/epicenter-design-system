@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Taxes = (props) => (
+export const Taxes = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Taxes = (props) => (
 );
 
 Taxes.displayName = 'Taxes';
-
-export default Taxes;

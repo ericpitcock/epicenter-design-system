@@ -1,6 +1,4 @@
-import React from 'react';
-
-const KeyframeAlignCenter = (props) => (
+export const KeyframeAlignCenter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const KeyframeAlignCenter = (props) => (
 );
 
 KeyframeAlignCenter.displayName = 'KeyframeAlignCenter';
-
-export default KeyframeAlignCenter;

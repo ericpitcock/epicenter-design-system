@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EquipmentGym03 = (props) => (
+export const EquipmentGym03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const EquipmentGym03 = (props) => (
 );
 
 EquipmentGym03.displayName = 'EquipmentGym03';
-
-export default EquipmentGym03;

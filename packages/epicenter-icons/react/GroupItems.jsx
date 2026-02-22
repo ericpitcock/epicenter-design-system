@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GroupItems = (props) => (
+export const GroupItems = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const GroupItems = (props) => (
 );
 
 GroupItems.displayName = 'GroupItems';
-
-export default GroupItems;

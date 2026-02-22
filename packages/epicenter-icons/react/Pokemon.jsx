@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pokemon = (props) => (
+export const Pokemon = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Pokemon = (props) => (
 );
 
 Pokemon.displayName = 'Pokemon';
-
-export default Pokemon;

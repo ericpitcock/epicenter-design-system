@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ScooterElectric = (props) => (
+export const ScooterElectric = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ScooterElectric = (props) => (
 );
 
 ScooterElectric.displayName = 'ScooterElectric';
-
-export default ScooterElectric;

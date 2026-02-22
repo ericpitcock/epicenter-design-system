@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DiagonalScrollPoint02 = (props) => (
+export const DiagonalScrollPoint02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DiagonalScrollPoint02 = (props) => (
 );
 
 DiagonalScrollPoint02.displayName = 'DiagonalScrollPoint02';
-
-export default DiagonalScrollPoint02;

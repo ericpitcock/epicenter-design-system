@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Waste = (props) => (
+export const Waste = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -15,5 +13,3 @@ const Waste = (props) => (
 );
 
 Waste.displayName = 'Waste';
-
-export default Waste;

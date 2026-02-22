@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Discount01 = (props) => (
+export const Discount01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Discount01 = (props) => (
 );
 
 Discount01.displayName = 'Discount01';
-
-export default Discount01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArtboardTool = (props) => (
+export const ArtboardTool = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ArtboardTool = (props) => (
 );
 
 ArtboardTool.displayName = 'ArtboardTool';
-
-export default ArtboardTool;

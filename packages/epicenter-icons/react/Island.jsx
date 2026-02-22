@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Island = (props) => (
+export const Island = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Island = (props) => (
 );
 
 Island.displayName = 'Island';
-
-export default Island;

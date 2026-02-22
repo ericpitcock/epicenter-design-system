@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StructureFolderCircle = (props) => (
+export const StructureFolderCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const StructureFolderCircle = (props) => (
 );
 
 StructureFolderCircle.displayName = 'StructureFolderCircle';
-
-export default StructureFolderCircle;

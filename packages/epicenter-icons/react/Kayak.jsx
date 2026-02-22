@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Kayak = (props) => (
+export const Kayak = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Kayak = (props) => (
 );
 
 Kayak.displayName = 'Kayak';
-
-export default Kayak;

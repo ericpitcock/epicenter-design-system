@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SecurityPassword = (props) => (
+export const SecurityPassword = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SecurityPassword = (props) => (
 );
 
 SecurityPassword.displayName = 'SecurityPassword';
-
-export default SecurityPassword;

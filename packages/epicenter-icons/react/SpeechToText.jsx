@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SpeechToText = (props) => (
+export const SpeechToText = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SpeechToText = (props) => (
 );
 
 SpeechToText.displayName = 'SpeechToText';
-
-export default SpeechToText;

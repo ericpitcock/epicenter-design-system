@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TargetDollar = (props) => (
+export const TargetDollar = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TargetDollar = (props) => (
 );
 
 TargetDollar.displayName = 'TargetDollar';
-
-export default TargetDollar;

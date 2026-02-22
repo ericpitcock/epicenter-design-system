@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FingerprintScan01 = (props) => (
+export const FingerprintScan01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FingerprintScan01 = (props) => (
 );
 
 FingerprintScan01.displayName = 'FingerprintScan01';
-
-export default FingerprintScan01;

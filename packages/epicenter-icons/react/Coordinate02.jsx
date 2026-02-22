@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Coordinate02 = (props) => (
+export const Coordinate02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Coordinate02 = (props) => (
 );
 
 Coordinate02.displayName = 'Coordinate02';
-
-export default Coordinate02;

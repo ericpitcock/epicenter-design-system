@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Android = (props) => (
+export const Android = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Android = (props) => (
 );
 
 Android.displayName = 'Android';
-
-export default Android;

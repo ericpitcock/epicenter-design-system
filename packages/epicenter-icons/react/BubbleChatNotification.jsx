@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BubbleChatNotification = (props) => (
+export const BubbleChatNotification = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BubbleChatNotification = (props) => (
 );
 
 BubbleChatNotification.displayName = 'BubbleChatNotification';
-
-export default BubbleChatNotification;

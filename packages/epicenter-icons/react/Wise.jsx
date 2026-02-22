@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wise = (props) => (
+export const Wise = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Wise = (props) => (
 );
 
 Wise.displayName = 'Wise';
-
-export default Wise;

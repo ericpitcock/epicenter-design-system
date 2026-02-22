@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiVisionRecognition = (props) => (
+export const AiVisionRecognition = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AiVisionRecognition = (props) => (
 );
 
 AiVisionRecognition.displayName = 'AiVisionRecognition';
-
-export default AiVisionRecognition;

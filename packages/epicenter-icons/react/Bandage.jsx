@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bandage = (props) => (
+export const Bandage = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Bandage = (props) => (
 );
 
 Bandage.displayName = 'Bandage';
-
-export default Bandage;

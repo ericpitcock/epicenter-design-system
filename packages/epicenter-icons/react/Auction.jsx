@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Auction = (props) => (
+export const Auction = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Auction = (props) => (
 );
 
 Auction.displayName = 'Auction';
-
-export default Auction;

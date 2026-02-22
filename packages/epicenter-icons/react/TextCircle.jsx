@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextCircle = (props) => (
+export const TextCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TextCircle = (props) => (
 );
 
 TextCircle.displayName = 'TextCircle';
-
-export default TextCircle;

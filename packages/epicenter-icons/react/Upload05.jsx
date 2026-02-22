@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Upload05 = (props) => (
+export const Upload05 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Upload05 = (props) => (
 );
 
 Upload05.displayName = 'Upload05';
-
-export default Upload05;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Matrix = (props) => (
+export const Matrix = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Matrix = (props) => (
 );
 
 Matrix.displayName = 'Matrix';
-
-export default Matrix;

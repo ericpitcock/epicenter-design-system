@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CarouselVertical = (props) => (
+export const CarouselVertical = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CarouselVertical = (props) => (
 );
 
 CarouselVertical.displayName = 'CarouselVertical';
-
-export default CarouselVertical;

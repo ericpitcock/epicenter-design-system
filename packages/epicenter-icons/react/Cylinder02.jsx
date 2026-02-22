@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cylinder02 = (props) => (
+export const Cylinder02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Cylinder02 = (props) => (
 );
 
 Cylinder02.displayName = 'Cylinder02';
-
-export default Cylinder02;

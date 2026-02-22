@@ -1,6 +1,4 @@
-import React from 'react';
-
-const KeyframesMultiple = (props) => (
+export const KeyframesMultiple = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const KeyframesMultiple = (props) => (
 );
 
 KeyframesMultiple.displayName = 'KeyframesMultiple';
-
-export default KeyframesMultiple;

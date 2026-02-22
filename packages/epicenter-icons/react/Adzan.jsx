@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Adzan = (props) => (
+export const Adzan = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Adzan = (props) => (
 );
 
 Adzan.displayName = 'Adzan';
-
-export default Adzan;

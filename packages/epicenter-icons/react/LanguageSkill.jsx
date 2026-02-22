@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LanguageSkill = (props) => (
+export const LanguageSkill = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const LanguageSkill = (props) => (
 );
 
 LanguageSkill.displayName = 'LanguageSkill';
-
-export default LanguageSkill;

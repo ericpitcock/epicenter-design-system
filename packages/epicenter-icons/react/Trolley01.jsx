@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Trolley01 = (props) => (
+export const Trolley01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Trolley01 = (props) => (
 );
 
 Trolley01.displayName = 'Trolley01';
-
-export default Trolley01;

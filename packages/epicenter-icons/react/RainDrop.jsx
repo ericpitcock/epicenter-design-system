@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RainDrop = (props) => (
+export const RainDrop = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const RainDrop = (props) => (
 );
 
 RainDrop.displayName = 'RainDrop';
-
-export default RainDrop;

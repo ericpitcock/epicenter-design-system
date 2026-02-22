@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Clipboard = (props) => (
+export const Clipboard = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Clipboard = (props) => (
 );
 
 Clipboard.displayName = 'Clipboard';
-
-export default Clipboard;

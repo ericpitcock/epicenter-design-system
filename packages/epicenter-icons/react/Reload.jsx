@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Reload = (props) => (
+export const Reload = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Reload = (props) => (
 );
 
 Reload.displayName = 'Reload';
-
-export default Reload;

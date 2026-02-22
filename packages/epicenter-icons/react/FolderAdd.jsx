@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderAdd = (props) => (
+export const FolderAdd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderAdd = (props) => (
 );
 
 FolderAdd.displayName = 'FolderAdd';
-
-export default FolderAdd;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Stop = (props) => (
+export const Stop = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Stop = (props) => (
 );
 
 Stop.displayName = 'Stop';
-
-export default Stop;

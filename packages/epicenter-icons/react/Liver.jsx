@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Liver = (props) => (
+export const Liver = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Liver = (props) => (
 );
 
 Liver.displayName = 'Liver';
-
-export default Liver;

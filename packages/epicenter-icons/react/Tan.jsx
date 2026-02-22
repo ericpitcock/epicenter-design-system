@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tan = (props) => (
+export const Tan = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Tan = (props) => (
 );
 
 Tan.displayName = 'Tan';
-
-export default Tan;

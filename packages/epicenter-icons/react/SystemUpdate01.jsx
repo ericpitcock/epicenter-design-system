@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SystemUpdate01 = (props) => (
+export const SystemUpdate01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SystemUpdate01 = (props) => (
 );
 
 SystemUpdate01.displayName = 'SystemUpdate01';
-
-export default SystemUpdate01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StopCircle = (props) => (
+export const StopCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const StopCircle = (props) => (
 );
 
 StopCircle.displayName = 'StopCircle';
-
-export default StopCircle;

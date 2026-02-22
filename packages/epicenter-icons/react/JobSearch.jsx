@@ -1,6 +1,4 @@
-import React from 'react';
-
-const JobSearch = (props) => (
+export const JobSearch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const JobSearch = (props) => (
 );
 
 JobSearch.displayName = 'JobSearch';
-
-export default JobSearch;

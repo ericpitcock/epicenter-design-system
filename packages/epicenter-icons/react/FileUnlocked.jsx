@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileUnlocked = (props) => (
+export const FileUnlocked = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileUnlocked = (props) => (
 );
 
 FileUnlocked.displayName = 'FileUnlocked';
-
-export default FileUnlocked;

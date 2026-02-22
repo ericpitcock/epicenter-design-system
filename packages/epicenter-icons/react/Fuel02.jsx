@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Fuel02 = (props) => (
+export const Fuel02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Fuel02 = (props) => (
 );
 
 Fuel02.displayName = 'Fuel02';
-
-export default Fuel02;

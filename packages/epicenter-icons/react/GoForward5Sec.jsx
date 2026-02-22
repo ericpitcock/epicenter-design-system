@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GoForward5Sec = (props) => (
+export const GoForward5Sec = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const GoForward5Sec = (props) => (
 );
 
 GoForward5Sec.displayName = 'GoForward5Sec';
-
-export default GoForward5Sec;

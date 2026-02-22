@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LoveKoreanFinger = (props) => (
+export const LoveKoreanFinger = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const LoveKoreanFinger = (props) => (
 );
 
 LoveKoreanFinger.displayName = 'LoveKoreanFinger';
-
-export default LoveKoreanFinger;

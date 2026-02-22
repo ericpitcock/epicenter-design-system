@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Copyright = (props) => (
+export const Copyright = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Copyright = (props) => (
 );
 
 Copyright.displayName = 'Copyright';
-
-export default Copyright;

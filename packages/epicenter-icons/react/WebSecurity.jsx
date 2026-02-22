@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WebSecurity = (props) => (
+export const WebSecurity = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const WebSecurity = (props) => (
 );
 
 WebSecurity.displayName = 'WebSecurity';
-
-export default WebSecurity;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShieldEnergy = (props) => (
+export const ShieldEnergy = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ShieldEnergy = (props) => (
 );
 
 ShieldEnergy.displayName = 'ShieldEnergy';
-
-export default ShieldEnergy;

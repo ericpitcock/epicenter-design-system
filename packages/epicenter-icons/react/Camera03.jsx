@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Camera03 = (props) => (
+export const Camera03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Camera03 = (props) => (
 );
 
 Camera03.displayName = 'Camera03';
-
-export default Camera03;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DatabaseSync01 = (props) => (
+export const DatabaseSync01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const DatabaseSync01 = (props) => (
 );
 
 DatabaseSync01.displayName = 'DatabaseSync01';
-
-export default DatabaseSync01;

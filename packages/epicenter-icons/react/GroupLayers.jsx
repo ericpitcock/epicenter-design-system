@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GroupLayers = (props) => (
+export const GroupLayers = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const GroupLayers = (props) => (
 );
 
 GroupLayers.displayName = 'GroupLayers';
-
-export default GroupLayers;

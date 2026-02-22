@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BubbleChatTemporary = (props) => (
+export const BubbleChatTemporary = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const BubbleChatTemporary = (props) => (
 );
 
 BubbleChatTemporary.displayName = 'BubbleChatTemporary';
-
-export default BubbleChatTemporary;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Clean = (props) => (
+export const Clean = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Clean = (props) => (
 );
 
 Clean.displayName = 'Clean';
-
-export default Clean;

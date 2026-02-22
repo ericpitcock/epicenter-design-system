@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pensive = (props) => (
+export const Pensive = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Pensive = (props) => (
 );
 
 Pensive.displayName = 'Pensive';
-
-export default Pensive;

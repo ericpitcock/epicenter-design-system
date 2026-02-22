@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextCreation = (props) => (
+export const TextCreation = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const TextCreation = (props) => (
 );
 
 TextCreation.displayName = 'TextCreation';
-
-export default TextCreation;

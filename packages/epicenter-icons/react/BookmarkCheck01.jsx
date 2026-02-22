@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BookmarkCheck01 = (props) => (
+export const BookmarkCheck01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BookmarkCheck01 = (props) => (
 );
 
 BookmarkCheck01.displayName = 'BookmarkCheck01';
-
-export default BookmarkCheck01;

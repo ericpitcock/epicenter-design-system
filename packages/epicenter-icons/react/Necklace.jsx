@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Necklace = (props) => (
+export const Necklace = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Necklace = (props) => (
 );
 
 Necklace.displayName = 'Necklace';
-
-export default Necklace;

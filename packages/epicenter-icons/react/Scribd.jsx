@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Scribd = (props) => (
+export const Scribd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Scribd = (props) => (
 );
 
 Scribd.displayName = 'Scribd';
-
-export default Scribd;

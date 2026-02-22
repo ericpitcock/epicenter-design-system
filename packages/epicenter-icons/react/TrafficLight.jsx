@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TrafficLight = (props) => (
+export const TrafficLight = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const TrafficLight = (props) => (
 );
 
 TrafficLight.displayName = 'TrafficLight';
-
-export default TrafficLight;

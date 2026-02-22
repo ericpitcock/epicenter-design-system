@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Command = (props) => (
+export const Command = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Command = (props) => (
 );
 
 Command.displayName = 'Command';
-
-export default Command;

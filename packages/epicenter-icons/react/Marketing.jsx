@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Marketing = (props) => (
+export const Marketing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Marketing = (props) => (
 );
 
 Marketing.displayName = 'Marketing';
-
-export default Marketing;

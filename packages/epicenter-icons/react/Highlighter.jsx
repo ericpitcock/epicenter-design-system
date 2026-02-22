@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Highlighter = (props) => (
+export const Highlighter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Highlighter = (props) => (
 );
 
 Highlighter.displayName = 'Highlighter';
-
-export default Highlighter;

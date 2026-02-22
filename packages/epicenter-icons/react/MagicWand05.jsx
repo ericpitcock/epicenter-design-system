@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MagicWand05 = (props) => (
+export const MagicWand05 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MagicWand05 = (props) => (
 );
 
 MagicWand05.displayName = 'MagicWand05';
-
-export default MagicWand05;

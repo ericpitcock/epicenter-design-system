@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ElectricPlugs = (props) => (
+export const ElectricPlugs = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ElectricPlugs = (props) => (
 );
 
 ElectricPlugs.displayName = 'ElectricPlugs';
-
-export default ElectricPlugs;

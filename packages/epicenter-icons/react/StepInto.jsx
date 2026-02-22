@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StepInto = (props) => (
+export const StepInto = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const StepInto = (props) => (
 );
 
 StepInto.displayName = 'StepInto';
-
-export default StepInto;

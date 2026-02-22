@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoreHorizontalSquare01 = (props) => (
+export const MoreHorizontalSquare01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MoreHorizontalSquare01 = (props) => (
 );
 
 MoreHorizontalSquare01.displayName = 'MoreHorizontalSquare01';
-
-export default MoreHorizontalSquare01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CargoShip = (props) => (
+export const CargoShip = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CargoShip = (props) => (
 );
 
 CargoShip.displayName = 'CargoShip';
-
-export default CargoShip;

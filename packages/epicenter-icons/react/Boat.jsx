@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Boat = (props) => (
+export const Boat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Boat = (props) => (
 );
 
 Boat.displayName = 'Boat';
-
-export default Boat;

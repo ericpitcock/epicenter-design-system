@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ScissorRectangle = (props) => (
+export const ScissorRectangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ScissorRectangle = (props) => (
 );
 
 ScissorRectangle.displayName = 'ScissorRectangle';
-
-export default ScissorRectangle;

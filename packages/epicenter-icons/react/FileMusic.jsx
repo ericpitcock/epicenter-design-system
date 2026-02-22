@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileMusic = (props) => (
+export const FileMusic = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileMusic = (props) => (
 );
 
 FileMusic.displayName = 'FileMusic';
-
-export default FileMusic;

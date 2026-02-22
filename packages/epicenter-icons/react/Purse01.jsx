@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Purse01 = (props) => (
+export const Purse01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Purse01 = (props) => (
 );
 
 Purse01.displayName = 'Purse01';
-
-export default Purse01;

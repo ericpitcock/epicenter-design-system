@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HandSanitizer = (props) => (
+export const HandSanitizer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const HandSanitizer = (props) => (
 );
 
 HandSanitizer.displayName = 'HandSanitizer';
-
-export default HandSanitizer;

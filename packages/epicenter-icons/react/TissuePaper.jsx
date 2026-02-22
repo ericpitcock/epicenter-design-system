@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TissuePaper = (props) => (
+export const TissuePaper = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TissuePaper = (props) => (
 );
 
 TissuePaper.displayName = 'TissuePaper';
-
-export default TissuePaper;

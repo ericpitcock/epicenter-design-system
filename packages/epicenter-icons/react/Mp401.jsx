@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mp401 = (props) => (
+export const Mp401 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Mp401 = (props) => (
 );
 
 Mp401.displayName = 'Mp401';
-
-export default Mp401;

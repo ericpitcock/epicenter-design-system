@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TimeQuarter02 = (props) => (
+export const TimeQuarter02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TimeQuarter02 = (props) => (
 );
 
 TimeQuarter02.displayName = 'TimeQuarter02';
-
-export default TimeQuarter02;

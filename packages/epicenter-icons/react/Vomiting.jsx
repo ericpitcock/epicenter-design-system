@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Vomiting = (props) => (
+export const Vomiting = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Vomiting = (props) => (
 );
 
 Vomiting.displayName = 'Vomiting';
-
-export default Vomiting;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Labor = (props) => (
+export const Labor = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Labor = (props) => (
 );
 
 Labor.displayName = 'Labor';
-
-export default Labor;

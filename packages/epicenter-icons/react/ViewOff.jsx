@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ViewOff = (props) => (
+export const ViewOff = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ViewOff = (props) => (
 );
 
 ViewOff.displayName = 'ViewOff';
-
-export default ViewOff;

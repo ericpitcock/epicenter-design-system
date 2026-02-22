@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InternetAntenna03 = (props) => (
+export const InternetAntenna03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const InternetAntenna03 = (props) => (
 );
 
 InternetAntenna03.displayName = 'InternetAntenna03';
-
-export default InternetAntenna03;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FirstAidKit = (props) => (
+export const FirstAidKit = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FirstAidKit = (props) => (
 );
 
 FirstAidKit.displayName = 'FirstAidKit';
-
-export default FirstAidKit;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LaurelWreathRight03 = (props) => (
+export const LaurelWreathRight03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const LaurelWreathRight03 = (props) => (
 );
 
 LaurelWreathRight03.displayName = 'LaurelWreathRight03';
-
-export default LaurelWreathRight03;

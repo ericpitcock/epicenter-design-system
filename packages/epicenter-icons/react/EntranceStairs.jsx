@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EntranceStairs = (props) => (
+export const EntranceStairs = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const EntranceStairs = (props) => (
 );
 
 EntranceStairs.displayName = 'EntranceStairs';
-
-export default EntranceStairs;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LabelImportant = (props) => (
+export const LabelImportant = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const LabelImportant = (props) => (
 );
 
 LabelImportant.displayName = 'LabelImportant';
-
-export default LabelImportant;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MultiplicationSign = (props) => (
+export const MultiplicationSign = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const MultiplicationSign = (props) => (
 );
 
 MultiplicationSign.displayName = 'MultiplicationSign';
-
-export default MultiplicationSign;

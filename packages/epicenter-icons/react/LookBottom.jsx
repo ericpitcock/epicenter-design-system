@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LookBottom = (props) => (
+export const LookBottom = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const LookBottom = (props) => (
 );
 
 LookBottom.displayName = 'LookBottom';
-
-export default LookBottom;

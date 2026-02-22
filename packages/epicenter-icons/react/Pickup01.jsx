@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pickup01 = (props) => (
+export const Pickup01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Pickup01 = (props) => (
 );
 
 Pickup01.displayName = 'Pickup01';
-
-export default Pickup01;

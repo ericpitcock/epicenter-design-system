@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TrademarkCircle = (props) => (
+export const TrademarkCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TrademarkCircle = (props) => (
 );
 
 TrademarkCircle.displayName = 'TrademarkCircle';
-
-export default TrademarkCircle;

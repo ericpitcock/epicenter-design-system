@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CpuSettings = (props) => (
+export const CpuSettings = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CpuSettings = (props) => (
 );
 
 CpuSettings.displayName = 'CpuSettings';
-
-export default CpuSettings;

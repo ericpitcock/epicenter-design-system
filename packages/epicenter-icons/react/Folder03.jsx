@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Folder03 = (props) => (
+export const Folder03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Folder03 = (props) => (
 );
 
 Folder03.displayName = 'Folder03';
-
-export default Folder03;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const OrthogonalEdge = (props) => (
+export const OrthogonalEdge = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const OrthogonalEdge = (props) => (
 );
 
 OrthogonalEdge.displayName = 'OrthogonalEdge';
-
-export default OrthogonalEdge;

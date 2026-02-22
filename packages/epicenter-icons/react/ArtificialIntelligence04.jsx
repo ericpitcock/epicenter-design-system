@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArtificialIntelligence04 = (props) => (
+export const ArtificialIntelligence04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ArtificialIntelligence04 = (props) => (
 );
 
 ArtificialIntelligence04.displayName = 'ArtificialIntelligence04';
-
-export default ArtificialIntelligence04;

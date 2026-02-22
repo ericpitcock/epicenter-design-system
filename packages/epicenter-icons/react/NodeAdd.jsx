@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NodeAdd = (props) => (
+export const NodeAdd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const NodeAdd = (props) => (
 );
 
 NodeAdd.displayName = 'NodeAdd';
-
-export default NodeAdd;

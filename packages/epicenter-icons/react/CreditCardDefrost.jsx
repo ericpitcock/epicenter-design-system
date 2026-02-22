@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CreditCardDefrost = (props) => (
+export const CreditCardDefrost = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CreditCardDefrost = (props) => (
 );
 
 CreditCardDefrost.displayName = 'CreditCardDefrost';
-
-export default CreditCardDefrost;

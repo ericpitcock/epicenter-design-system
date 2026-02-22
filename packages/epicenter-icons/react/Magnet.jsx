@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Magnet = (props) => (
+export const Magnet = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Magnet = (props) => (
 );
 
 Magnet.displayName = 'Magnet';
-
-export default Magnet;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tram = (props) => (
+export const Tram = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Tram = (props) => (
 );
 
 Tram.displayName = 'Tram';
-
-export default Tram;

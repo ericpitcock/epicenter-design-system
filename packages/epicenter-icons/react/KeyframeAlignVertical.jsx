@@ -1,6 +1,4 @@
-import React from 'react';
-
-const KeyframeAlignVertical = (props) => (
+export const KeyframeAlignVertical = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const KeyframeAlignVertical = (props) => (
 );
 
 KeyframeAlignVertical.displayName = 'KeyframeAlignVertical';
-
-export default KeyframeAlignVertical;

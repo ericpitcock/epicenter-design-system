@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pause = (props) => (
+export const Pause = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Pause = (props) => (
 );
 
 Pause.displayName = 'Pause';
-
-export default Pause;

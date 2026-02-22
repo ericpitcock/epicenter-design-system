@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CongruentToCircle = (props) => (
+export const CongruentToCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CongruentToCircle = (props) => (
 );
 
 CongruentToCircle.displayName = 'CongruentToCircle';
-
-export default CongruentToCircle;

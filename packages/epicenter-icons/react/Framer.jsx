@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Framer = (props) => (
+export const Framer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Framer = (props) => (
 );
 
 Framer.displayName = 'Framer';
-
-export default Framer;

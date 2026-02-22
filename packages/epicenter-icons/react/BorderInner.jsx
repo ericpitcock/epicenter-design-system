@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BorderInner = (props) => (
+export const BorderInner = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BorderInner = (props) => (
 );
 
 BorderInner.displayName = 'BorderInner';
-
-export default BorderInner;

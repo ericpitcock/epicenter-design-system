@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Firewall = (props) => (
+export const Firewall = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Firewall = (props) => (
 );
 
 Firewall.displayName = 'Firewall';
-
-export default Firewall;

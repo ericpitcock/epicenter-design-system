@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BabyBottle = (props) => (
+export const BabyBottle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BabyBottle = (props) => (
 );
 
 BabyBottle.displayName = 'BabyBottle';
-
-export default BabyBottle;

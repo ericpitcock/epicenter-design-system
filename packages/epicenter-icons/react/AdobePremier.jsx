@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AdobePremier = (props) => (
+export const AdobePremier = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AdobePremier = (props) => (
 );
 
 AdobePremier.displayName = 'AdobePremier';
-
-export default AdobePremier;

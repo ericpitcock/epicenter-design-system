@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CursorEdit01 = (props) => (
+export const CursorEdit01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const CursorEdit01 = (props) => (
 );
 
 CursorEdit01.displayName = 'CursorEdit01';
-
-export default CursorEdit01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StickyNote01 = (props) => (
+export const StickyNote01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const StickyNote01 = (props) => (
 );
 
 StickyNote01.displayName = 'StickyNote01';
-
-export default StickyNote01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Accident = (props) => (
+export const Accident = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Accident = (props) => (
 );
 
 Accident.displayName = 'Accident';
-
-export default Accident;

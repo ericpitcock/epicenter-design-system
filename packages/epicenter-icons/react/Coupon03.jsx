@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Coupon03 = (props) => (
+export const Coupon03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Coupon03 = (props) => (
 );
 
 Coupon03.displayName = 'Coupon03';
-
-export default Coupon03;

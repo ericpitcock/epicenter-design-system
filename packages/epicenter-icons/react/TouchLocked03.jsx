@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TouchLocked03 = (props) => (
+export const TouchLocked03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TouchLocked03 = (props) => (
 );
 
 TouchLocked03.displayName = 'TouchLocked03';
-
-export default TouchLocked03;

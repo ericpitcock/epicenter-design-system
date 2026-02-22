@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RestoreBin = (props) => (
+export const RestoreBin = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -15,5 +13,3 @@ const RestoreBin = (props) => (
 );
 
 RestoreBin.displayName = 'RestoreBin';
-
-export default RestoreBin;

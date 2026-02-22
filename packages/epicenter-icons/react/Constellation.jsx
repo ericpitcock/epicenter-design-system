@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Constellation = (props) => (
+export const Constellation = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Constellation = (props) => (
 );
 
 Constellation.displayName = 'Constellation';
-
-export default Constellation;

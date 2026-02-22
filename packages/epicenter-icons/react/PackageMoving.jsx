@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PackageMoving = (props) => (
+export const PackageMoving = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PackageMoving = (props) => (
 );
 
 PackageMoving.displayName = 'PackageMoving';
-
-export default PackageMoving;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DimSum01 = (props) => (
+export const DimSum01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DimSum01 = (props) => (
 );
 
 DimSum01.displayName = 'DimSum01';
-
-export default DimSum01;

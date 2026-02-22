@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CommentBlock03 = (props) => (
+export const CommentBlock03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CommentBlock03 = (props) => (
 );
 
 CommentBlock03.displayName = 'CommentBlock03';
-
-export default CommentBlock03;

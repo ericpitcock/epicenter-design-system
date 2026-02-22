@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Silence = (props) => (
+export const Silence = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Silence = (props) => (
 );
 
 Silence.displayName = 'Silence';
-
-export default Silence;

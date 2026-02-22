@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Copilot = (props) => (
+export const Copilot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Copilot = (props) => (
 );
 
 Copilot.displayName = 'Copilot';
-
-export default Copilot;

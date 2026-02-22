@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PercentCircle = (props) => (
+export const PercentCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PercentCircle = (props) => (
 );
 
 PercentCircle.displayName = 'PercentCircle';
-
-export default PercentCircle;

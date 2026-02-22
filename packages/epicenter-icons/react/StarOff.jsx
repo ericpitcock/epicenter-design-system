@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StarOff = (props) => (
+export const StarOff = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const StarOff = (props) => (
 );
 
 StarOff.displayName = 'StarOff';
-
-export default StarOff;

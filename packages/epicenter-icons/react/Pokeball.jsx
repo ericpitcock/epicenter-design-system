@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pokeball = (props) => (
+export const Pokeball = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Pokeball = (props) => (
 );
 
 Pokeball.displayName = 'Pokeball';
-
-export default Pokeball;

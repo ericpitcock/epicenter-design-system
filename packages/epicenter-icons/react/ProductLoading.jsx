@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ProductLoading = (props) => (
+export const ProductLoading = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ProductLoading = (props) => (
 );
 
 ProductLoading.displayName = 'ProductLoading';
-
-export default ProductLoading;

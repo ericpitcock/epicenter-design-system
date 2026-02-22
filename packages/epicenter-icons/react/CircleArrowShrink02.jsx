@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CircleArrowShrink02 = (props) => (
+export const CircleArrowShrink02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CircleArrowShrink02 = (props) => (
 );
 
 CircleArrowShrink02.displayName = 'CircleArrowShrink02';
-
-export default CircleArrowShrink02;

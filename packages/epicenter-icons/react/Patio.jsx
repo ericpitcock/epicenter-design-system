@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Patio = (props) => (
+export const Patio = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Patio = (props) => (
 );
 
 Patio.displayName = 'Patio';
-
-export default Patio;

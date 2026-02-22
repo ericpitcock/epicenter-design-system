@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DeviceAccess = (props) => (
+export const DeviceAccess = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DeviceAccess = (props) => (
 );
 
 DeviceAccess.displayName = 'DeviceAccess';
-
-export default DeviceAccess;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Num3dRotate = (props) => (
+export const Num3dRotate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Num3dRotate = (props) => (
 );
 
 Num3dRotate.displayName = 'Num3dRotate';
-
-export default Num3dRotate;

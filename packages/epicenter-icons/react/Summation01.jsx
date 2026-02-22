@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Summation01 = (props) => (
+export const Summation01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Summation01 = (props) => (
 );
 
 Summation01.displayName = 'Summation01';
-
-export default Summation01;

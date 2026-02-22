@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cliparts = (props) => (
+export const Cliparts = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Cliparts = (props) => (
 );
 
 Cliparts.displayName = 'Cliparts';
-
-export default Cliparts;

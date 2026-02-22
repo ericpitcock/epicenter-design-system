@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Centralized = (props) => (
+export const Centralized = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Centralized = (props) => (
 );
 
 Centralized.displayName = 'Centralized';
-
-export default Centralized;

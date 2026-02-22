@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PresentationLineChart01 = (props) => (
+export const PresentationLineChart01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PresentationLineChart01 = (props) => (
 );
 
 PresentationLineChart01.displayName = 'PresentationLineChart01';
-
-export default PresentationLineChart01;

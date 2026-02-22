@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Flushed = (props) => (
+export const Flushed = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Flushed = (props) => (
 );
 
 Flushed.displayName = 'Flushed';
-
-export default Flushed;

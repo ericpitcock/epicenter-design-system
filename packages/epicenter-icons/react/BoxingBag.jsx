@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BoxingBag = (props) => (
+export const BoxingBag = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BoxingBag = (props) => (
 );
 
 BoxingBag.displayName = 'BoxingBag';
-
-export default BoxingBag;

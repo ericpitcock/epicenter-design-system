@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Potion = (props) => (
+export const Potion = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Potion = (props) => (
 );
 
 Potion.displayName = 'Potion';
-
-export default Potion;

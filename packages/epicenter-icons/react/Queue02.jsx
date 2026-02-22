@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Queue02 = (props) => (
+export const Queue02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Queue02 = (props) => (
 );
 
 Queue02.displayName = 'Queue02';
-
-export default Queue02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TrapezoidLineHorizontal = (props) => (
+export const TrapezoidLineHorizontal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TrapezoidLineHorizontal = (props) => (
 );
 
 TrapezoidLineHorizontal.displayName = 'TrapezoidLineHorizontal';
-
-export default TrapezoidLineHorizontal;

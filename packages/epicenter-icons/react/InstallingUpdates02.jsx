@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InstallingUpdates02 = (props) => (
+export const InstallingUpdates02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const InstallingUpdates02 = (props) => (
 );
 
 InstallingUpdates02.displayName = 'InstallingUpdates02';
-
-export default InstallingUpdates02;

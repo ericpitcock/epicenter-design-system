@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mentoring = (props) => (
+export const Mentoring = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Mentoring = (props) => (
 );
 
 Mentoring.displayName = 'Mentoring';
-
-export default Mentoring;

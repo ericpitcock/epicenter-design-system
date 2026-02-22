@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MealScan = (props) => (
+export const MealScan = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MealScan = (props) => (
 );
 
 MealScan.displayName = 'MealScan';
-
-export default MealScan;

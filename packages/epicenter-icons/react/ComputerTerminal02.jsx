@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComputerTerminal02 = (props) => (
+export const ComputerTerminal02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ComputerTerminal02 = (props) => (
 );
 
 ComputerTerminal02.displayName = 'ComputerTerminal02';
-
-export default ComputerTerminal02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DragLeft03 = (props) => (
+export const DragLeft03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DragLeft03 = (props) => (
 );
 
 DragLeft03.displayName = 'DragLeft03';
-
-export default DragLeft03;

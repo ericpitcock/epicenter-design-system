@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EdgeStyle = (props) => (
+export const EdgeStyle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const EdgeStyle = (props) => (
 );
 
 EdgeStyle.displayName = 'EdgeStyle';
-
-export default EdgeStyle;

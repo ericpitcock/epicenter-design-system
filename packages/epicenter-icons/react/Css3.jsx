@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Css3 = (props) => (
+export const Css3 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Css3 = (props) => (
 );
 
 Css3.displayName = 'Css3';
-
-export default Css3;

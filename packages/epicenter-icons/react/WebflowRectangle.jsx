@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WebflowRectangle = (props) => (
+export const WebflowRectangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const WebflowRectangle = (props) => (
 );
 
 WebflowRectangle.displayName = 'WebflowRectangle';
-
-export default WebflowRectangle;

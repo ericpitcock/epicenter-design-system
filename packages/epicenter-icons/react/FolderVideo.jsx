@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderVideo = (props) => (
+export const FolderVideo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderVideo = (props) => (
 );
 
 FolderVideo.displayName = 'FolderVideo';
-
-export default FolderVideo;

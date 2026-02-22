@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wudu = (props) => (
+export const Wudu = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -14,5 +12,3 @@ const Wudu = (props) => (
 );
 
 Wudu.displayName = 'Wudu';
-
-export default Wudu;

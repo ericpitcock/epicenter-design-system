@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Envato = (props) => (
+export const Envato = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Envato = (props) => (
 );
 
 Envato.displayName = 'Envato';
-
-export default Envato;

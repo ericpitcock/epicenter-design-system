@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ThreadsEllipse = (props) => (
+export const ThreadsEllipse = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ThreadsEllipse = (props) => (
 );
 
 ThreadsEllipse.displayName = 'ThreadsEllipse';
-
-export default ThreadsEllipse;

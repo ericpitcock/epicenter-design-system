@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TaskRemove01 = (props) => (
+export const TaskRemove01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const TaskRemove01 = (props) => (
 );
 
 TaskRemove01.displayName = 'TaskRemove01';
-
-export default TaskRemove01;

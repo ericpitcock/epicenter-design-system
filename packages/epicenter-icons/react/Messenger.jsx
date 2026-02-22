@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Messenger = (props) => (
+export const Messenger = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Messenger = (props) => (
 );
 
 Messenger.displayName = 'Messenger';
-
-export default Messenger;

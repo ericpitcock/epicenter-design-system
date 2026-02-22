@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CricketHelmet = (props) => (
+export const CricketHelmet = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const CricketHelmet = (props) => (
 );
 
 CricketHelmet.displayName = 'CricketHelmet';
-
-export default CricketHelmet;

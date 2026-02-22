@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FlipLeft = (props) => (
+export const FlipLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FlipLeft = (props) => (
 );
 
 FlipLeft.displayName = 'FlipLeft';
-
-export default FlipLeft;

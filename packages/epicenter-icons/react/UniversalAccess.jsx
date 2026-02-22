@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UniversalAccess = (props) => (
+export const UniversalAccess = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const UniversalAccess = (props) => (
 );
 
 UniversalAccess.displayName = 'UniversalAccess';
-
-export default UniversalAccess;

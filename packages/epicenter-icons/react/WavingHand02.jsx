@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WavingHand02 = (props) => (
+export const WavingHand02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const WavingHand02 = (props) => (
 );
 
 WavingHand02.displayName = 'WavingHand02';
-
-export default WavingHand02;

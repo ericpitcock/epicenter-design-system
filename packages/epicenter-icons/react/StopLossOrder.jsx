@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StopLossOrder = (props) => (
+export const StopLossOrder = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const StopLossOrder = (props) => (
 );
 
 StopLossOrder.displayName = 'StopLossOrder';
-
-export default StopLossOrder;

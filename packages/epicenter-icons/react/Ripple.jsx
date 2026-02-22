@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ripple = (props) => (
+export const Ripple = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Ripple = (props) => (
 );
 
 Ripple.displayName = 'Ripple';
-
-export default Ripple;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WifiConnected02 = (props) => (
+export const WifiConnected02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const WifiConnected02 = (props) => (
 );
 
 WifiConnected02.displayName = 'WifiConnected02';
-
-export default WifiConnected02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WebProtection = (props) => (
+export const WebProtection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const WebProtection = (props) => (
 );
 
 WebProtection.displayName = 'WebProtection';
-
-export default WebProtection;

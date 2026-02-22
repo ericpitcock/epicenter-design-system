@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Binoculars = (props) => (
+export const Binoculars = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Binoculars = (props) => (
 );
 
 Binoculars.displayName = 'Binoculars';
-
-export default Binoculars;

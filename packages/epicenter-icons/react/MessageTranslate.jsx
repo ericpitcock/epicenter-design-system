@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MessageTranslate = (props) => (
+export const MessageTranslate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MessageTranslate = (props) => (
 );
 
 MessageTranslate.displayName = 'MessageTranslate';
-
-export default MessageTranslate;

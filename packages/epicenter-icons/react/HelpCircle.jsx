@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HelpCircle = (props) => (
+export const HelpCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const HelpCircle = (props) => (
 );
 
 HelpCircle.displayName = 'HelpCircle';
-
-export default HelpCircle;

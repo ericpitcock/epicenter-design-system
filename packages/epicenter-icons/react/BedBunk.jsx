@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BedBunk = (props) => (
+export const BedBunk = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -23,5 +21,3 @@ const BedBunk = (props) => (
 );
 
 BedBunk.displayName = 'BedBunk';
-
-export default BedBunk;

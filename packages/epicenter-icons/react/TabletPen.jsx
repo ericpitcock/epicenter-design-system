@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TabletPen = (props) => (
+export const TabletPen = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TabletPen = (props) => (
 );
 
 TabletPen.displayName = 'TabletPen';
-
-export default TabletPen;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BitcoinPieChart = (props) => (
+export const BitcoinPieChart = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BitcoinPieChart = (props) => (
 );
 
 BitcoinPieChart.displayName = 'BitcoinPieChart';
-
-export default BitcoinPieChart;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Imo = (props) => (
+export const Imo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Imo = (props) => (
 );
 
 Imo.displayName = 'Imo';
-
-export default Imo;

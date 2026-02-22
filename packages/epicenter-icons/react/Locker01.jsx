@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Locker01 = (props) => (
+export const Locker01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Locker01 = (props) => (
 );
 
 Locker01.displayName = 'Locker01';
-
-export default Locker01;

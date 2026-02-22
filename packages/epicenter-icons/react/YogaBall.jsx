@@ -1,6 +1,4 @@
-import React from 'react';
-
-const YogaBall = (props) => (
+export const YogaBall = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const YogaBall = (props) => (
 );
 
 YogaBall.displayName = 'YogaBall';
-
-export default YogaBall;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DialpadCircle02 = (props) => (
+export const DialpadCircle02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const DialpadCircle02 = (props) => (
 );
 
 DialpadCircle02.displayName = 'DialpadCircle02';
-
-export default DialpadCircle02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BirthdayCake = (props) => (
+export const BirthdayCake = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BirthdayCake = (props) => (
 );
 
 BirthdayCake.displayName = 'BirthdayCake';
-
-export default BirthdayCake;

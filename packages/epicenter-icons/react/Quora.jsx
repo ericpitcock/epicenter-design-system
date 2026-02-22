@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Quora = (props) => (
+export const Quora = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Quora = (props) => (
 );
 
 Quora.displayName = 'Quora';
-
-export default Quora;

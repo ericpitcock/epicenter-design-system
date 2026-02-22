@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HotelBell = (props) => (
+export const HotelBell = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const HotelBell = (props) => (
 );
 
 HotelBell.displayName = 'HotelBell';
-
-export default HotelBell;

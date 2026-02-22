@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Authorized = (props) => (
+export const Authorized = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Authorized = (props) => (
 );
 
 Authorized.displayName = 'Authorized';
-
-export default Authorized;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Watermelon = (props) => (
+export const Watermelon = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Watermelon = (props) => (
 );
 
 Watermelon.displayName = 'Watermelon';
-
-export default Watermelon;

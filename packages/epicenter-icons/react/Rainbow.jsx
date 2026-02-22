@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Rainbow = (props) => (
+export const Rainbow = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Rainbow = (props) => (
 );
 
 Rainbow.displayName = 'Rainbow';
-
-export default Rainbow;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EquipmentBenchPress = (props) => (
+export const EquipmentBenchPress = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const EquipmentBenchPress = (props) => (
 );
 
 EquipmentBenchPress.displayName = 'EquipmentBenchPress';
-
-export default EquipmentBenchPress;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TennisBall = (props) => (
+export const TennisBall = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TennisBall = (props) => (
 );
 
 TennisBall.displayName = 'TennisBall';
-
-export default TennisBall;

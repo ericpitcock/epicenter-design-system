@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LessThan = (props) => (
+export const LessThan = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const LessThan = (props) => (
 );
 
 LessThan.displayName = 'LessThan';
-
-export default LessThan;

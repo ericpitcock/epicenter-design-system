@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SoftwareUninstall = (props) => (
+export const SoftwareUninstall = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SoftwareUninstall = (props) => (
 );
 
 SoftwareUninstall.displayName = 'SoftwareUninstall';
-
-export default SoftwareUninstall;

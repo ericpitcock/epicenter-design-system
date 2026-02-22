@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AspectRatio = (props) => (
+export const AspectRatio = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AspectRatio = (props) => (
 );
 
 AspectRatio.displayName = 'AspectRatio';
-
-export default AspectRatio;

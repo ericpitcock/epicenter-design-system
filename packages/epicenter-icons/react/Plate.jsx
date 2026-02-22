@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Plate = (props) => (
+export const Plate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Plate = (props) => (
 );
 
 Plate.displayName = 'Plate';
-
-export default Plate;

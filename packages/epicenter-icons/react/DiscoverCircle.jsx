@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DiscoverCircle = (props) => (
+export const DiscoverCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DiscoverCircle = (props) => (
 );
 
 DiscoverCircle.displayName = 'DiscoverCircle';
-
-export default DiscoverCircle;

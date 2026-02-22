@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SecurityWifi = (props) => (
+export const SecurityWifi = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SecurityWifi = (props) => (
 );
 
 SecurityWifi.displayName = 'SecurityWifi';
-
-export default SecurityWifi;

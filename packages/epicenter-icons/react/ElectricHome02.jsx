@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ElectricHome02 = (props) => (
+export const ElectricHome02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ElectricHome02 = (props) => (
 );
 
 ElectricHome02.displayName = 'ElectricHome02';
-
-export default ElectricHome02;

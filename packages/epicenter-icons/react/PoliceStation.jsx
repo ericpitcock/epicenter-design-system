@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PoliceStation = (props) => (
+export const PoliceStation = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const PoliceStation = (props) => (
 );
 
 PoliceStation.displayName = 'PoliceStation';
-
-export default PoliceStation;

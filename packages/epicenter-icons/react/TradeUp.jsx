@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TradeUp = (props) => (
+export const TradeUp = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TradeUp = (props) => (
 );
 
 TradeUp.displayName = 'TradeUp';
-
-export default TradeUp;

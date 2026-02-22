@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Curling = (props) => (
+export const Curling = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Curling = (props) => (
 );
 
 Curling.displayName = 'Curling';
-
-export default Curling;

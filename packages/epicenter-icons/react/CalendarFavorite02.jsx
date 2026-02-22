@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CalendarFavorite02 = (props) => (
+export const CalendarFavorite02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CalendarFavorite02 = (props) => (
 );
 
 CalendarFavorite02.displayName = 'CalendarFavorite02';
-
-export default CalendarFavorite02;

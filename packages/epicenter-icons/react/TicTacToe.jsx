@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TicTacToe = (props) => (
+export const TicTacToe = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const TicTacToe = (props) => (
 );
 
 TicTacToe.displayName = 'TicTacToe';
-
-export default TicTacToe;

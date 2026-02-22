@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PropertyEdit = (props) => (
+export const PropertyEdit = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PropertyEdit = (props) => (
 );
 
 PropertyEdit.displayName = 'PropertyEdit';
-
-export default PropertyEdit;

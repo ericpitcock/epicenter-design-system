@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShieldBlockchain = (props) => (
+export const ShieldBlockchain = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ShieldBlockchain = (props) => (
 );
 
 ShieldBlockchain.displayName = 'ShieldBlockchain';
-
-export default ShieldBlockchain;

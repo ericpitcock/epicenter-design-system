@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Balloons = (props) => (
+export const Balloons = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Balloons = (props) => (
 );
 
 Balloons.displayName = 'Balloons';
-
-export default Balloons;

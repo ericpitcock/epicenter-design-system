@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArrowReloadVertical = (props) => (
+export const ArrowReloadVertical = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ArrowReloadVertical = (props) => (
 );
 
 ArrowReloadVertical.displayName = 'ArrowReloadVertical';
-
-export default ArrowReloadVertical;

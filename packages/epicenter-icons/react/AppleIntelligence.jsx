@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AppleIntelligence = (props) => (
+export const AppleIntelligence = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const AppleIntelligence = (props) => (
 );
 
 AppleIntelligence.displayName = 'AppleIntelligence';
-
-export default AppleIntelligence;

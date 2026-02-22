@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Appointment02 = (props) => (
+export const Appointment02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Appointment02 = (props) => (
 );
 
 Appointment02.displayName = 'Appointment02';
-
-export default Appointment02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Typescript03 = (props) => (
+export const Typescript03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Typescript03 = (props) => (
 );
 
 Typescript03.displayName = 'Typescript03';
-
-export default Typescript03;

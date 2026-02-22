@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiVideo = (props) => (
+export const AiVideo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AiVideo = (props) => (
 );
 
 AiVideo.displayName = 'AiVideo';
-
-export default AiVideo;

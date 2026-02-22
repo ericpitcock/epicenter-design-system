@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlertSquare = (props) => (
+export const AlertSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AlertSquare = (props) => (
 );
 
 AlertSquare.displayName = 'AlertSquare';
-
-export default AlertSquare;

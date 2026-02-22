@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MedicalFile = (props) => (
+export const MedicalFile = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MedicalFile = (props) => (
 );
 
 MedicalFile.displayName = 'MedicalFile';
-
-export default MedicalFile;

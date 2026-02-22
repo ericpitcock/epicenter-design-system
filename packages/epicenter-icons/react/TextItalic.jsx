@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextItalic = (props) => (
+export const TextItalic = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TextItalic = (props) => (
 );
 
 TextItalic.displayName = 'TextItalic';
-
-export default TextItalic;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Senseless = (props) => (
+export const Senseless = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Senseless = (props) => (
 );
 
 Senseless.displayName = 'Senseless';
-
-export default Senseless;

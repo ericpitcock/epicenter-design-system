@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bread04 = (props) => (
+export const Bread04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Bread04 = (props) => (
 );
 
 Bread04.displayName = 'Bread04';
-
-export default Bread04;

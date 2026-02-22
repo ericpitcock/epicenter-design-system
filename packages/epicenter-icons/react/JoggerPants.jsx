@@ -1,6 +1,4 @@
-import React from 'react';
-
-const JoggerPants = (props) => (
+export const JoggerPants = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const JoggerPants = (props) => (
 );
 
 JoggerPants.displayName = 'JoggerPants';
-
-export default JoggerPants;

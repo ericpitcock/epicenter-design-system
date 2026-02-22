@@ -1,6 +1,4 @@
-import React from 'react';
-
-const JoinRound = (props) => (
+export const JoinRound = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const JoinRound = (props) => (
 );
 
 JoinRound.displayName = 'JoinRound';
-
-export default JoinRound;

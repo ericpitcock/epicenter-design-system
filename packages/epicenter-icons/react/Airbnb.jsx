@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Airbnb = (props) => (
+export const Airbnb = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Airbnb = (props) => (
 );
 
 Airbnb.displayName = 'Airbnb';
-
-export default Airbnb;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cashier02 = (props) => (
+export const Cashier02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Cashier02 = (props) => (
 );
 
 Cashier02.displayName = 'Cashier02';
-
-export default Cashier02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NewReleases = (props) => (
+export const NewReleases = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const NewReleases = (props) => (
 );
 
 NewReleases.displayName = 'NewReleases';
-
-export default NewReleases;

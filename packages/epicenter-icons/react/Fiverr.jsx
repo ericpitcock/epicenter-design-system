@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Fiverr = (props) => (
+export const Fiverr = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Fiverr = (props) => (
 );
 
 Fiverr.displayName = 'Fiverr';
-
-export default Fiverr;

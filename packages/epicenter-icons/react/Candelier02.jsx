@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Candelier02 = (props) => (
+export const Candelier02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Candelier02 = (props) => (
 );
 
 Candelier02.displayName = 'Candelier02';
-
-export default Candelier02;

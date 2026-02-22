@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Kickstarter01 = (props) => (
+export const Kickstarter01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Kickstarter01 = (props) => (
 );
 
 Kickstarter01.displayName = 'Kickstarter01';
-
-export default Kickstarter01;

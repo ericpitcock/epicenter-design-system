@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Compass01 = (props) => (
+export const Compass01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Compass01 = (props) => (
 );
 
 Compass01.displayName = 'Compass01';
-
-export default Compass01;

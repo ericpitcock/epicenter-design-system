@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SoilMoistureField = (props) => (
+export const SoilMoistureField = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const SoilMoistureField = (props) => (
 );
 
 SoilMoistureField.displayName = 'SoilMoistureField';
-
-export default SoilMoistureField;

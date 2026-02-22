@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pie = (props) => (
+export const Pie = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Pie = (props) => (
 );
 
 Pie.displayName = 'Pie';
-
-export default Pie;

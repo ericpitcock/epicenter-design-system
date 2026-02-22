@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CustomerSupport = (props) => (
+export const CustomerSupport = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CustomerSupport = (props) => (
 );
 
 CustomerSupport.displayName = 'CustomerSupport';
-
-export default CustomerSupport;

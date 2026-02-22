@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DiceFaces06 = (props) => (
+export const DiceFaces06 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const DiceFaces06 = (props) => (
 );
 
 DiceFaces06.displayName = 'DiceFaces06';
-
-export default DiceFaces06;

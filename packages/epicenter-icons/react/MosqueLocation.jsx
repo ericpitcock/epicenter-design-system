@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MosqueLocation = (props) => (
+export const MosqueLocation = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -14,5 +12,3 @@ const MosqueLocation = (props) => (
 );
 
 MosqueLocation.displayName = 'MosqueLocation';
-
-export default MosqueLocation;

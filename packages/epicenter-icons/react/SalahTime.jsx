@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SalahTime = (props) => (
+export const SalahTime = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -15,5 +13,3 @@ const SalahTime = (props) => (
 );
 
 SalahTime.displayName = 'SalahTime';
-
-export default SalahTime;

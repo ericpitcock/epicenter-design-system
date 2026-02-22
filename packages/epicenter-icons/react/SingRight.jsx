@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SingRight = (props) => (
+export const SingRight = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SingRight = (props) => (
 );
 
 SingRight.displayName = 'SingRight';
-
-export default SingRight;

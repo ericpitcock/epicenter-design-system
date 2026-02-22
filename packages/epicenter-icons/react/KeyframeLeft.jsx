@@ -1,6 +1,4 @@
-import React from 'react';
-
-const KeyframeLeft = (props) => (
+export const KeyframeLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const KeyframeLeft = (props) => (
 );
 
 KeyframeLeft.displayName = 'KeyframeLeft';
-
-export default KeyframeLeft;

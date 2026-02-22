@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WaveSquare = (props) => (
+export const WaveSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const WaveSquare = (props) => (
 );
 
 WaveSquare.displayName = 'WaveSquare';
-
-export default WaveSquare;

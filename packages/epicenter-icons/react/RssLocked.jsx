@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RssLocked = (props) => (
+export const RssLocked = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const RssLocked = (props) => (
 );
 
 RssLocked.displayName = 'RssLocked';
-
-export default RssLocked;

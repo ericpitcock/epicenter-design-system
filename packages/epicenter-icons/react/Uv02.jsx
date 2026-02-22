@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Uv02 = (props) => (
+export const Uv02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Uv02 = (props) => (
 );
 
 Uv02.displayName = 'Uv02';
-
-export default Uv02;

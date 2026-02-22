@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CodeSimple = (props) => (
+export const CodeSimple = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CodeSimple = (props) => (
 );
 
 CodeSimple.displayName = 'CodeSimple';
-
-export default CodeSimple;

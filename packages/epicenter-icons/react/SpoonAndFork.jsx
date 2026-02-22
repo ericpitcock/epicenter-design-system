@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SpoonAndFork = (props) => (
+export const SpoonAndFork = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SpoonAndFork = (props) => (
 );
 
 SpoonAndFork.displayName = 'SpoonAndFork';
-
-export default SpoonAndFork;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BinaryCode = (props) => (
+export const BinaryCode = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const BinaryCode = (props) => (
 );
 
 BinaryCode.displayName = 'BinaryCode';
-
-export default BinaryCode;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderDetailsReference = (props) => (
+export const FolderDetailsReference = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FolderDetailsReference = (props) => (
 );
 
 FolderDetailsReference.displayName = 'FolderDetailsReference';
-
-export default FolderDetailsReference;

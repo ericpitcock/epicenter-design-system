@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PolyTank = (props) => (
+export const PolyTank = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PolyTank = (props) => (
 );
 
 PolyTank.displayName = 'PolyTank';
-
-export default PolyTank;

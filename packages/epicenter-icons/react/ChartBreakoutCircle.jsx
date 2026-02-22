@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartBreakoutCircle = (props) => (
+export const ChartBreakoutCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChartBreakoutCircle = (props) => (
 );
 
 ChartBreakoutCircle.displayName = 'ChartBreakoutCircle';
-
-export default ChartBreakoutCircle;

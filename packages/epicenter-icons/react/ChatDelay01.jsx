@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChatDelay01 = (props) => (
+export const ChatDelay01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChatDelay01 = (props) => (
 );
 
 ChatDelay01.displayName = 'ChatDelay01';
-
-export default ChatDelay01;

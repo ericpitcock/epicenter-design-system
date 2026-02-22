@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FirePit = (props) => (
+export const FirePit = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FirePit = (props) => (
 );
 
 FirePit.displayName = 'FirePit';
-
-export default FirePit;

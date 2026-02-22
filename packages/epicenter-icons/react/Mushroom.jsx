@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mushroom = (props) => (
+export const Mushroom = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Mushroom = (props) => (
 );
 
 Mushroom.displayName = 'Mushroom';
-
-export default Mushroom;

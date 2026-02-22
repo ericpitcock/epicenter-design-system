@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CalendarDownload02 = (props) => (
+export const CalendarDownload02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CalendarDownload02 = (props) => (
 );
 
 CalendarDownload02.displayName = 'CalendarDownload02';
-
-export default CalendarDownload02;

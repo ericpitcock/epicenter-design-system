@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Monas = (props) => (
+export const Monas = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Monas = (props) => (
 );
 
 Monas.displayName = 'Monas';
-
-export default Monas;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RightAngle = (props) => (
+export const RightAngle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const RightAngle = (props) => (
 );
 
 RightAngle.displayName = 'RightAngle';
-
-export default RightAngle;

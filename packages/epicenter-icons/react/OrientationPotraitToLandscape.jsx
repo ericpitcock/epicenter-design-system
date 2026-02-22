@@ -1,6 +1,4 @@
-import React from 'react';
-
-const OrientationPotraitToLandscape = (props) => (
+export const OrientationPotraitToLandscape = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const OrientationPotraitToLandscape = (props) => (
 );
 
 OrientationPotraitToLandscape.displayName = 'OrientationPotraitToLandscape';
-
-export default OrientationPotraitToLandscape;

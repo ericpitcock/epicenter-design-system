@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RoadWayside = (props) => (
+export const RoadWayside = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const RoadWayside = (props) => (
 );
 
 RoadWayside.displayName = 'RoadWayside';
-
-export default RoadWayside;

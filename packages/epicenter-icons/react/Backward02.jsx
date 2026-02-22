@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Backward02 = (props) => (
+export const Backward02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Backward02 = (props) => (
 );
 
 Backward02.displayName = 'Backward02';
-
-export default Backward02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FishFood = (props) => (
+export const FishFood = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FishFood = (props) => (
 );
 
 FishFood.displayName = 'FishFood';
-
-export default FishFood;

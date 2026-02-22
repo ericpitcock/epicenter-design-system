@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ParagraphSpacing = (props) => (
+export const ParagraphSpacing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ParagraphSpacing = (props) => (
 );
 
 ParagraphSpacing.displayName = 'ParagraphSpacing';
-
-export default ParagraphSpacing;

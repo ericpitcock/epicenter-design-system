@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Backpack03 = (props) => (
+export const Backpack03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Backpack03 = (props) => (
 );
 
 Backpack03.displayName = 'Backpack03';
-
-export default Backpack03;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LayoutTop = (props) => (
+export const LayoutTop = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LayoutTop = (props) => (
 );
 
 LayoutTop.displayName = 'LayoutTop';
-
-export default LayoutTop;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DashboardBrowsing = (props) => (
+export const DashboardBrowsing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const DashboardBrowsing = (props) => (
 );
 
 DashboardBrowsing.displayName = 'DashboardBrowsing';
-
-export default DashboardBrowsing;

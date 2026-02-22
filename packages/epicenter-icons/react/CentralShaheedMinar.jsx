@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CentralShaheedMinar = (props) => (
+export const CentralShaheedMinar = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const CentralShaheedMinar = (props) => (
 );
 
 CentralShaheedMinar.displayName = 'CentralShaheedMinar';
-
-export default CentralShaheedMinar;

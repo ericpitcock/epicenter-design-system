@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AppleFinder = (props) => (
+export const AppleFinder = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const AppleFinder = (props) => (
 );
 
 AppleFinder.displayName = 'AppleFinder';
-
-export default AppleFinder;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BluetoothNotConnected = (props) => (
+export const BluetoothNotConnected = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BluetoothNotConnected = (props) => (
 );
 
 BluetoothNotConnected.displayName = 'BluetoothNotConnected';
-
-export default BluetoothNotConnected;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Taco02 = (props) => (
+export const Taco02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Taco02 = (props) => (
 );
 
 Taco02.displayName = 'Taco02';
-
-export default Taco02;

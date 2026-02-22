@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CallBlocked = (props) => (
+export const CallBlocked = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CallBlocked = (props) => (
 );
 
 CallBlocked.displayName = 'CallBlocked';
-
-export default CallBlocked;

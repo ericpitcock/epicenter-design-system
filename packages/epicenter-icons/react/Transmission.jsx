@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Transmission = (props) => (
+export const Transmission = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Transmission = (props) => (
 );
 
 Transmission.displayName = 'Transmission';
-
-export default Transmission;

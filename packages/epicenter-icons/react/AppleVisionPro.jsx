@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AppleVisionPro = (props) => (
+export const AppleVisionPro = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const AppleVisionPro = (props) => (
 );
 
 AppleVisionPro.displayName = 'AppleVisionPro';
-
-export default AppleVisionPro;

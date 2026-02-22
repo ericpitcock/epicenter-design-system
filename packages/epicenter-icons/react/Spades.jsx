@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Spades = (props) => (
+export const Spades = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Spades = (props) => (
 );
 
 Spades.displayName = 'Spades';
-
-export default Spades;

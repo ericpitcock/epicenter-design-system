@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Beta = (props) => (
+export const Beta = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Beta = (props) => (
 );
 
 Beta.displayName = 'Beta';
-
-export default Beta;

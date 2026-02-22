@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HierarchyFiles = (props) => (
+export const HierarchyFiles = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const HierarchyFiles = (props) => (
 );
 
 HierarchyFiles.displayName = 'HierarchyFiles';
-
-export default HierarchyFiles;

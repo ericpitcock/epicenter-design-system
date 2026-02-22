@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoreOrLess = (props) => (
+export const MoreOrLess = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MoreOrLess = (props) => (
 );
 
 MoreOrLess.displayName = 'MoreOrLess';
-
-export default MoreOrLess;

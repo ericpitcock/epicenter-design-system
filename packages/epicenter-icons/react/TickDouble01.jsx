@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TickDouble01 = (props) => (
+export const TickDouble01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TickDouble01 = (props) => (
 );
 
 TickDouble01.displayName = 'TickDouble01';
-
-export default TickDouble01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoonLanding = (props) => (
+export const MoonLanding = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MoonLanding = (props) => (
 );
 
 MoonLanding.displayName = 'MoonLanding';
-
-export default MoonLanding;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ZoomOutArea = (props) => (
+export const ZoomOutArea = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ZoomOutArea = (props) => (
 );
 
 ZoomOutArea.displayName = 'ZoomOutArea';
-
-export default ZoomOutArea;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StreeringWheel = (props) => (
+export const StreeringWheel = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const StreeringWheel = (props) => (
 );
 
 StreeringWheel.displayName = 'StreeringWheel';
-
-export default StreeringWheel;

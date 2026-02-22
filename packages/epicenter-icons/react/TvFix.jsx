@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TvFix = (props) => (
+export const TvFix = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TvFix = (props) => (
 );
 
 TvFix.displayName = 'TvFix';
-
-export default TvFix;

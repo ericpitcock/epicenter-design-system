@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PhoneCheck = (props) => (
+export const PhoneCheck = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PhoneCheck = (props) => (
 );
 
 PhoneCheck.displayName = 'PhoneCheck';
-
-export default PhoneCheck;

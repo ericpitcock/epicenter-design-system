@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Alert01 = (props) => (
+export const Alert01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Alert01 = (props) => (
 );
 
 Alert01.displayName = 'Alert01';
-
-export default Alert01;

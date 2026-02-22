@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Route02 = (props) => (
+export const Route02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Route02 = (props) => (
 );
 
 Route02.displayName = 'Route02';
-
-export default Route02;

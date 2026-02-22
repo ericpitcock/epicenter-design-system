@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Translate = (props) => (
+export const Translate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Translate = (props) => (
 );
 
 Translate.displayName = 'Translate';
-
-export default Translate;

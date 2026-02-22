@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wikipedia = (props) => (
+export const Wikipedia = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Wikipedia = (props) => (
 );
 
 Wikipedia.displayName = 'Wikipedia';
-
-export default Wikipedia;

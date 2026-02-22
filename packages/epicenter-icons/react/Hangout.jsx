@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hangout = (props) => (
+export const Hangout = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Hangout = (props) => (
 );
 
 Hangout.displayName = 'Hangout';
-
-export default Hangout;

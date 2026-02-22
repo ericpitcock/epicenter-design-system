@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Swimming = (props) => (
+export const Swimming = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Swimming = (props) => (
 );
 
 Swimming.displayName = 'Swimming';
-
-export default Swimming;

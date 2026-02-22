@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Monster = (props) => (
+export const Monster = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Monster = (props) => (
 );
 
 Monster.displayName = 'Monster';
-
-export default Monster;

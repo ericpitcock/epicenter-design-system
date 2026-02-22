@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AnalysisTextLink = (props) => (
+export const AnalysisTextLink = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const AnalysisTextLink = (props) => (
 );
 
 AnalysisTextLink.displayName = 'AnalysisTextLink';
-
-export default AnalysisTextLink;

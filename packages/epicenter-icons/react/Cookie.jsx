@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cookie = (props) => (
+export const Cookie = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Cookie = (props) => (
 );
 
 Cookie.displayName = 'Cookie';
-
-export default Cookie;

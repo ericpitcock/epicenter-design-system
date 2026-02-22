@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Repeat = (props) => (
+export const Repeat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Repeat = (props) => (
 );
 
 Repeat.displayName = 'Repeat';
-
-export default Repeat;

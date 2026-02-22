@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sun03 = (props) => (
+export const Sun03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Sun03 = (props) => (
 );
 
 Sun03.displayName = 'Sun03';
-
-export default Sun03;

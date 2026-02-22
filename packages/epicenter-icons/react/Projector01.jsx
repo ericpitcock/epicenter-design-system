@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Projector01 = (props) => (
+export const Projector01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Projector01 = (props) => (
 );
 
 Projector01.displayName = 'Projector01';
-
-export default Projector01;

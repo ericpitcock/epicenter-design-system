@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderOpen = (props) => (
+export const FolderOpen = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FolderOpen = (props) => (
 );
 
 FolderOpen.displayName = 'FolderOpen';
-
-export default FolderOpen;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Boxer = (props) => (
+export const Boxer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Boxer = (props) => (
 );
 
 Boxer.displayName = 'Boxer';
-
-export default Boxer;

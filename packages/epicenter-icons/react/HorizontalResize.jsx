@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HorizontalResize = (props) => (
+export const HorizontalResize = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const HorizontalResize = (props) => (
 );
 
 HorizontalResize.displayName = 'HorizontalResize';
-
-export default HorizontalResize;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SubnodeDelete = (props) => (
+export const SubnodeDelete = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SubnodeDelete = (props) => (
 );
 
 SubnodeDelete.displayName = 'SubnodeDelete';
-
-export default SubnodeDelete;

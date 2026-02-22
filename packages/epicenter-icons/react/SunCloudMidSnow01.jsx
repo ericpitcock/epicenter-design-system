@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SunCloudMidSnow01 = (props) => (
+export const SunCloudMidSnow01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SunCloudMidSnow01 = (props) => (
 );
 
 SunCloudMidSnow01.displayName = 'SunCloudMidSnow01';
-
-export default SunCloudMidSnow01;

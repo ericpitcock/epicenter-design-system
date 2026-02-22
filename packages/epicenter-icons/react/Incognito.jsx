@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Incognito = (props) => (
+export const Incognito = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Incognito = (props) => (
 );
 
 Incognito.displayName = 'Incognito';
-
-export default Incognito;

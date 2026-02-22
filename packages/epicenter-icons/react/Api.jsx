@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Api = (props) => (
+export const Api = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Api = (props) => (
 );
 
 Api.displayName = 'Api';
-
-export default Api;

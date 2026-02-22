@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChatFavourite = (props) => (
+export const ChatFavourite = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ChatFavourite = (props) => (
 );
 
 ChatFavourite.displayName = 'ChatFavourite';
-
-export default ChatFavourite;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderLibrary = (props) => (
+export const FolderLibrary = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FolderLibrary = (props) => (
 );
 
 FolderLibrary.displayName = 'FolderLibrary';
-
-export default FolderLibrary;

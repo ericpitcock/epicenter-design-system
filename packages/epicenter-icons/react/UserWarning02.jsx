@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserWarning02 = (props) => (
+export const UserWarning02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const UserWarning02 = (props) => (
 );
 
 UserWarning02.displayName = 'UserWarning02';
-
-export default UserWarning02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PackageSent = (props) => (
+export const PackageSent = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PackageSent = (props) => (
 );
 
 PackageSent.displayName = 'PackageSent';
-
-export default PackageSent;

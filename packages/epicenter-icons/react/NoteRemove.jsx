@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NoteRemove = (props) => (
+export const NoteRemove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const NoteRemove = (props) => (
 );
 
 NoteRemove.displayName = 'NoteRemove';
-
-export default NoteRemove;

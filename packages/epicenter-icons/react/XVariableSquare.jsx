@@ -1,6 +1,4 @@
-import React from 'react';
-
-const XVariableSquare = (props) => (
+export const XVariableSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const XVariableSquare = (props) => (
 );
 
 XVariableSquare.displayName = 'XVariableSquare';
-
-export default XVariableSquare;

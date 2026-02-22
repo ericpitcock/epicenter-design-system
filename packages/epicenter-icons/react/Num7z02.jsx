@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Num7z02 = (props) => (
+export const Num7z02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Num7z02 = (props) => (
 );
 
 Num7z02.displayName = 'Num7z02';
-
-export default Num7z02;

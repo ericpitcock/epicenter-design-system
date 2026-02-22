@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ImageCounterClockwise = (props) => (
+export const ImageCounterClockwise = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ImageCounterClockwise = (props) => (
 );
 
 ImageCounterClockwise.displayName = 'ImageCounterClockwise';
-
-export default ImageCounterClockwise;

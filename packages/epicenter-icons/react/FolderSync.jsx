@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderSync = (props) => (
+export const FolderSync = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderSync = (props) => (
 );
 
 FolderSync.displayName = 'FolderSync';
-
-export default FolderSync;

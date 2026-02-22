@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ImageNotFound01 = (props) => (
+export const ImageNotFound01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ImageNotFound01 = (props) => (
 );
 
 ImageNotFound01.displayName = 'ImageNotFound01';
-
-export default ImageNotFound01;

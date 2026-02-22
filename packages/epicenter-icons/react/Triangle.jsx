@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Triangle = (props) => (
+export const Triangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Triangle = (props) => (
 );
 
 Triangle.displayName = 'Triangle';
-
-export default Triangle;

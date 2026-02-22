@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MenuCircle = (props) => (
+export const MenuCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MenuCircle = (props) => (
 );
 
 MenuCircle.displayName = 'MenuCircle';
-
-export default MenuCircle;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EaseCurveControlPoints = (props) => (
+export const EaseCurveControlPoints = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const EaseCurveControlPoints = (props) => (
 );
 
 EaseCurveControlPoints.displayName = 'EaseCurveControlPoints';
-
-export default EaseCurveControlPoints;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AtomicPower = (props) => (
+export const AtomicPower = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AtomicPower = (props) => (
 );
 
 AtomicPower.displayName = 'AtomicPower';
-
-export default AtomicPower;

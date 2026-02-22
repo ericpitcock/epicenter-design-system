@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Billiard01 = (props) => (
+export const Billiard01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Billiard01 = (props) => (
 );
 
 Billiard01.displayName = 'Billiard01';
-
-export default Billiard01;

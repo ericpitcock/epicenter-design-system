@@ -1,6 +1,4 @@
-import React from 'react';
-
-const OneSquare = (props) => (
+export const OneSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const OneSquare = (props) => (
 );
 
 OneSquare.displayName = 'OneSquare';
-
-export default OneSquare;

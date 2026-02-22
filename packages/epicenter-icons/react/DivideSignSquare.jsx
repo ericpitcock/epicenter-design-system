@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DivideSignSquare = (props) => (
+export const DivideSignSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const DivideSignSquare = (props) => (
 );
 
 DivideSignSquare.displayName = 'DivideSignSquare';
-
-export default DivideSignSquare;

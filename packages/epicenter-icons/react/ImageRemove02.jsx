@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ImageRemove02 = (props) => (
+export const ImageRemove02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ImageRemove02 = (props) => (
 );
 
 ImageRemove02.displayName = 'ImageRemove02';
-
-export default ImageRemove02;

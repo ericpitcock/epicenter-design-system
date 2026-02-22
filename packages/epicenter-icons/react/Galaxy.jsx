@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Galaxy = (props) => (
+export const Galaxy = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Galaxy = (props) => (
 );
 
 Galaxy.displayName = 'Galaxy';
-
-export default Galaxy;

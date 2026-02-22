@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChangeScreenMode = (props) => (
+export const ChangeScreenMode = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ChangeScreenMode = (props) => (
 );
 
 ChangeScreenMode.displayName = 'ChangeScreenMode';
-
-export default ChangeScreenMode;

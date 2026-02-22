@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WaterPump = (props) => (
+export const WaterPump = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const WaterPump = (props) => (
 );
 
 WaterPump.displayName = 'WaterPump';
-
-export default WaterPump;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Soundcloud = (props) => (
+export const Soundcloud = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Soundcloud = (props) => (
 );
 
 Soundcloud.displayName = 'Soundcloud';
-
-export default Soundcloud;

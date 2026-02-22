@@ -1,6 +1,4 @@
-import React from 'react';
-
-const KeyframeAlignHorizontal = (props) => (
+export const KeyframeAlignHorizontal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const KeyframeAlignHorizontal = (props) => (
 );
 
 KeyframeAlignHorizontal.displayName = 'KeyframeAlignHorizontal';
-
-export default KeyframeAlignHorizontal;

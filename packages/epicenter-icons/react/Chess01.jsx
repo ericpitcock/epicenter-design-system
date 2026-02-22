@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Chess01 = (props) => (
+export const Chess01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Chess01 = (props) => (
 );
 
 Chess01.displayName = 'Chess01';
-
-export default Chess01;

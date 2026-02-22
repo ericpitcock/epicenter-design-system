@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wordpress = (props) => (
+export const Wordpress = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Wordpress = (props) => (
 );
 
 Wordpress.displayName = 'Wordpress';
-
-export default Wordpress;

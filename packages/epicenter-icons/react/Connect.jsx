@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Connect = (props) => (
+export const Connect = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Connect = (props) => (
 );
 
 Connect.displayName = 'Connect';
-
-export default Connect;

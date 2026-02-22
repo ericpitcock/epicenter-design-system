@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserCheck02 = (props) => (
+export const UserCheck02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const UserCheck02 = (props) => (
 );
 
 UserCheck02.displayName = 'UserCheck02';
-
-export default UserCheck02;

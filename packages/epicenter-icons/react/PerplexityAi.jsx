@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PerplexityAi = (props) => (
+export const PerplexityAi = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const PerplexityAi = (props) => (
 );
 
 PerplexityAi.displayName = 'PerplexityAi';
-
-export default PerplexityAi;

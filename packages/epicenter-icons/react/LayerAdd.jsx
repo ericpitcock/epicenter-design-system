@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LayerAdd = (props) => (
+export const LayerAdd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const LayerAdd = (props) => (
 );
 
 LayerAdd.displayName = 'LayerAdd';
-
-export default LayerAdd;

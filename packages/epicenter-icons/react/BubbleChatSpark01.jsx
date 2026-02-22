@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BubbleChatSpark01 = (props) => (
+export const BubbleChatSpark01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BubbleChatSpark01 = (props) => (
 );
 
 BubbleChatSpark01.displayName = 'BubbleChatSpark01';
-
-export default BubbleChatSpark01;

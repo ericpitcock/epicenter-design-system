@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mastodon = (props) => (
+export const Mastodon = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Mastodon = (props) => (
 );
 
 Mastodon.displayName = 'Mastodon';
-
-export default Mastodon;

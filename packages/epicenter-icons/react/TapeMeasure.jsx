@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TapeMeasure = (props) => (
+export const TapeMeasure = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const TapeMeasure = (props) => (
 );
 
 TapeMeasure.displayName = 'TapeMeasure';
-
-export default TapeMeasure;

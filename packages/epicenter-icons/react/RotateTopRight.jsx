@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RotateTopRight = (props) => (
+export const RotateTopRight = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const RotateTopRight = (props) => (
 );
 
 RotateTopRight.displayName = 'RotateTopRight';
-
-export default RotateTopRight;

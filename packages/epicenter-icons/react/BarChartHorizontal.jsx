@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BarChartHorizontal = (props) => (
+export const BarChartHorizontal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BarChartHorizontal = (props) => (
 );
 
 BarChartHorizontal.displayName = 'BarChartHorizontal';
-
-export default BarChartHorizontal;

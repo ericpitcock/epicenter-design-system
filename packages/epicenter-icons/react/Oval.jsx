@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Oval = (props) => (
+export const Oval = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Oval = (props) => (
 );
 
 Oval.displayName = 'Oval';
-
-export default Oval;

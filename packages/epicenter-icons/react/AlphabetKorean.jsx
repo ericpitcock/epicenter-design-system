@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlphabetKorean = (props) => (
+export const AlphabetKorean = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AlphabetKorean = (props) => (
 );
 
 AlphabetKorean.displayName = 'AlphabetKorean';
-
-export default AlphabetKorean;

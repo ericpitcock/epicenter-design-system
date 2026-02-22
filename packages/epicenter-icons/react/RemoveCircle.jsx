@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RemoveCircle = (props) => (
+export const RemoveCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const RemoveCircle = (props) => (
 );
 
 RemoveCircle.displayName = 'RemoveCircle';
-
-export default RemoveCircle;

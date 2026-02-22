@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ImageFlipVertical = (props) => (
+export const ImageFlipVertical = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ImageFlipVertical = (props) => (
 );
 
 ImageFlipVertical.displayName = 'ImageFlipVertical';
-
-export default ImageFlipVertical;

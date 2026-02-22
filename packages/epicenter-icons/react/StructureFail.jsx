@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StructureFail = (props) => (
+export const StructureFail = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const StructureFail = (props) => (
 );
 
 StructureFail.displayName = 'StructureFail';
-
-export default StructureFail;

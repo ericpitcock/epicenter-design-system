@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BiometricDevice = (props) => (
+export const BiometricDevice = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BiometricDevice = (props) => (
 );
 
 BiometricDevice.displayName = 'BiometricDevice';
-
-export default BiometricDevice;

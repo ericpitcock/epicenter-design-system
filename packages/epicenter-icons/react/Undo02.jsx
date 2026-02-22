@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Undo02 = (props) => (
+export const Undo02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Undo02 = (props) => (
 );
 
 Undo02.displayName = 'Undo02';
-
-export default Undo02;

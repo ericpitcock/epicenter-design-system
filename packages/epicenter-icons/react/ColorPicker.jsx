@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ColorPicker = (props) => (
+export const ColorPicker = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ColorPicker = (props) => (
 );
 
 ColorPicker.displayName = 'ColorPicker';
-
-export default ColorPicker;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Register = (props) => (
+export const Register = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Register = (props) => (
 );
 
 Register.displayName = 'Register';
-
-export default Register;

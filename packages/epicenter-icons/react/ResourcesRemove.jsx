@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ResourcesRemove = (props) => (
+export const ResourcesRemove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ResourcesRemove = (props) => (
 );
 
 ResourcesRemove.displayName = 'ResourcesRemove';
-
-export default ResourcesRemove;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Favourite = (props) => (
+export const Favourite = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Favourite = (props) => (
 );
 
 Favourite.displayName = 'Favourite';
-
-export default Favourite;

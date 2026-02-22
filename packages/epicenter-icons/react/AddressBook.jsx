@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AddressBook = (props) => (
+export const AddressBook = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AddressBook = (props) => (
 );
 
 AddressBook.displayName = 'AddressBook';
-
-export default AddressBook;

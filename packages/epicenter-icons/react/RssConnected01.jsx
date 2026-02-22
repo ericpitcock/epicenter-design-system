@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RssConnected01 = (props) => (
+export const RssConnected01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const RssConnected01 = (props) => (
 );
 
 RssConnected01.displayName = 'RssConnected01';
-
-export default RssConnected01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SharedWifi = (props) => (
+export const SharedWifi = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SharedWifi = (props) => (
 );
 
 SharedWifi.displayName = 'SharedWifi';
-
-export default SharedWifi;

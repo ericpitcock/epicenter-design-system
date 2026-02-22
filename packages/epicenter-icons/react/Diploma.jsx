@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Diploma = (props) => (
+export const Diploma = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Diploma = (props) => (
 );
 
 Diploma.displayName = 'Diploma';
-
-export default Diploma;

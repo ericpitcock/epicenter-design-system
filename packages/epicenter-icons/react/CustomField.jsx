@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CustomField = (props) => (
+export const CustomField = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CustomField = (props) => (
 );
 
 CustomField.displayName = 'CustomField';
-
-export default CustomField;

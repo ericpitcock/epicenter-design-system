@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CopyLink = (props) => (
+export const CopyLink = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CopyLink = (props) => (
 );
 
 CopyLink.displayName = 'CopyLink';
-
-export default CopyLink;

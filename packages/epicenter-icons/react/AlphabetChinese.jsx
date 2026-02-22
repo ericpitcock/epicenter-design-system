@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlphabetChinese = (props) => (
+export const AlphabetChinese = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AlphabetChinese = (props) => (
 );
 
 AlphabetChinese.displayName = 'AlphabetChinese';
-
-export default AlphabetChinese;

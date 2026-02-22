@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Iconjar = (props) => (
+export const Iconjar = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Iconjar = (props) => (
 );
 
 Iconjar.displayName = 'Iconjar';
-
-export default Iconjar;

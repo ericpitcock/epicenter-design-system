@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Arrange = (props) => (
+export const Arrange = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Arrange = (props) => (
 );
 
 Arrange.displayName = 'Arrange';
-
-export default Arrange;

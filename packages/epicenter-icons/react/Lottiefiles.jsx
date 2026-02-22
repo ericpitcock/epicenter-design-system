@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Lottiefiles = (props) => (
+export const Lottiefiles = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Lottiefiles = (props) => (
 );
 
 Lottiefiles.displayName = 'Lottiefiles';
-
-export default Lottiefiles;

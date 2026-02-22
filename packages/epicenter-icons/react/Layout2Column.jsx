@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Layout2Column = (props) => (
+export const Layout2Column = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Layout2Column = (props) => (
 );
 
 Layout2Column.displayName = 'Layout2Column';
-
-export default Layout2Column;

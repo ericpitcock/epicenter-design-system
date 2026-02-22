@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoreOrLessCircle = (props) => (
+export const MoreOrLessCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MoreOrLessCircle = (props) => (
 );
 
 MoreOrLessCircle.displayName = 'MoreOrLessCircle';
-
-export default MoreOrLessCircle;

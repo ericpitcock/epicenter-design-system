@@ -1,6 +1,4 @@
-import React from 'react';
-
-const OlympicTorch = (props) => (
+export const OlympicTorch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const OlympicTorch = (props) => (
 );
 
 OlympicTorch.displayName = 'OlympicTorch';
-
-export default OlympicTorch;

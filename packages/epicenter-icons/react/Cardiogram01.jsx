@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cardiogram01 = (props) => (
+export const Cardiogram01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Cardiogram01 = (props) => (
 );
 
 Cardiogram01.displayName = 'Cardiogram01';
-
-export default Cardiogram01;

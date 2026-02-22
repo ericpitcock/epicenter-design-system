@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CameraNightMode01 = (props) => (
+export const CameraNightMode01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CameraNightMode01 = (props) => (
 );
 
 CameraNightMode01.displayName = 'CameraNightMode01';
-
-export default CameraNightMode01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Versus = (props) => (
+export const Versus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Versus = (props) => (
 );
 
 Versus.displayName = 'Versus';
-
-export default Versus;

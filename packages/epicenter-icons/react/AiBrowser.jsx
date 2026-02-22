@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiBrowser = (props) => (
+export const AiBrowser = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const AiBrowser = (props) => (
 );
 
 AiBrowser.displayName = 'AiBrowser';
-
-export default AiBrowser;

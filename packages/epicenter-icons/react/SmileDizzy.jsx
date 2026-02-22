@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SmileDizzy = (props) => (
+export const SmileDizzy = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SmileDizzy = (props) => (
 );
 
 SmileDizzy.displayName = 'SmileDizzy';
-
-export default SmileDizzy;

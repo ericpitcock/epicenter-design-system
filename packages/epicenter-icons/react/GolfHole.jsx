@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GolfHole = (props) => (
+export const GolfHole = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const GolfHole = (props) => (
 );
 
 GolfHole.displayName = 'GolfHole';
-
-export default GolfHole;

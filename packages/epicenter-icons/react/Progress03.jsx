@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Progress03 = (props) => (
+export const Progress03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Progress03 = (props) => (
 );
 
 Progress03.displayName = 'Progress03';
-
-export default Progress03;

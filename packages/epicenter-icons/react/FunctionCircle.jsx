@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FunctionCircle = (props) => (
+export const FunctionCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FunctionCircle = (props) => (
 );
 
 FunctionCircle.displayName = 'FunctionCircle';
-
-export default FunctionCircle;

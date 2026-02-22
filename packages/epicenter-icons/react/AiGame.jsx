@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiGame = (props) => (
+export const AiGame = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const AiGame = (props) => (
 );
 
 AiGame.displayName = 'AiGame';
-
-export default AiGame;

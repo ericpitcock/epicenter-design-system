@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CursorRemoveSelection01 = (props) => (
+export const CursorRemoveSelection01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CursorRemoveSelection01 = (props) => (
 );
 
 CursorRemoveSelection01.displayName = 'CursorRemoveSelection01';
-
-export default CursorRemoveSelection01;

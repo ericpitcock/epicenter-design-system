@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CarAlert = (props) => (
+export const CarAlert = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const CarAlert = (props) => (
 );
 
 CarAlert.displayName = 'CarAlert';
-
-export default CarAlert;

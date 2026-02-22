@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RenewableEnergy = (props) => (
+export const RenewableEnergy = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const RenewableEnergy = (props) => (
 );
 
 RenewableEnergy.displayName = 'RenewableEnergy';
-
-export default RenewableEnergy;

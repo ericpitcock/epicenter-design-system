@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Seal = (props) => (
+export const Seal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Seal = (props) => (
 );
 
 Seal.displayName = 'Seal';
-
-export default Seal;

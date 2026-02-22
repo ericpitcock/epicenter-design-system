@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CenterFocus = (props) => (
+export const CenterFocus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CenterFocus = (props) => (
 );
 
 CenterFocus.displayName = 'CenterFocus';
-
-export default CenterFocus;

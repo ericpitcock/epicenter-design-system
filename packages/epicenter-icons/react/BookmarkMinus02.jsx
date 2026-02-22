@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BookmarkMinus02 = (props) => (
+export const BookmarkMinus02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BookmarkMinus02 = (props) => (
 );
 
 BookmarkMinus02.displayName = 'BookmarkMinus02';
-
-export default BookmarkMinus02;

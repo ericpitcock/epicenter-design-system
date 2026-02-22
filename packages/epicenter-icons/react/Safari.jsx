@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Safari = (props) => (
+export const Safari = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Safari = (props) => (
 );
 
 Safari.displayName = 'Safari';
-
-export default Safari;

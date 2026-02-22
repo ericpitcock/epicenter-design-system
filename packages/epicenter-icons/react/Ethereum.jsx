@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ethereum = (props) => (
+export const Ethereum = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Ethereum = (props) => (
 );
 
 Ethereum.displayName = 'Ethereum';
-
-export default Ethereum;

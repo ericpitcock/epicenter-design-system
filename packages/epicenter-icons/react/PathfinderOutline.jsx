@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PathfinderOutline = (props) => (
+export const PathfinderOutline = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PathfinderOutline = (props) => (
 );
 
 PathfinderOutline.displayName = 'PathfinderOutline';
-
-export default PathfinderOutline;

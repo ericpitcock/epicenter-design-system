@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tie = (props) => (
+export const Tie = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Tie = (props) => (
 );
 
 Tie.displayName = 'Tie';
-
-export default Tie;

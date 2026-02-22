@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Paella = (props) => (
+export const Paella = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -25,5 +23,3 @@ const Paella = (props) => (
 );
 
 Paella.displayName = 'Paella';
-
-export default Paella;

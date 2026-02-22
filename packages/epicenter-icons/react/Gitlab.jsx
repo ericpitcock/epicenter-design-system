@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Gitlab = (props) => (
+export const Gitlab = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Gitlab = (props) => (
 );
 
 Gitlab.displayName = 'Gitlab';
-
-export default Gitlab;

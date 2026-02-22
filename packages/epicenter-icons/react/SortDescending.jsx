@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SortDescending = (props) => (
+export const SortDescending = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SortDescending = (props) => (
 );
 
 SortDescending.displayName = 'SortDescending';
-
-export default SortDescending;

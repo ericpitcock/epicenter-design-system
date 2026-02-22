@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TelevisionTable = (props) => (
+export const TelevisionTable = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const TelevisionTable = (props) => (
 );
 
 TelevisionTable.displayName = 'TelevisionTable';
-
-export default TelevisionTable;

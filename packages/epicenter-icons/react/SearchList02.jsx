@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SearchList02 = (props) => (
+export const SearchList02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SearchList02 = (props) => (
 );
 
 SearchList02.displayName = 'SearchList02';
-
-export default SearchList02;

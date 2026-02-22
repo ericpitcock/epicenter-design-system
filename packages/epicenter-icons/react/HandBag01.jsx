@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HandBag01 = (props) => (
+export const HandBag01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const HandBag01 = (props) => (
 );
 
 HandBag01.displayName = 'HandBag01';
-
-export default HandBag01;

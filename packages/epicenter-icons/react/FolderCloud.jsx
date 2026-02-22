@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderCloud = (props) => (
+export const FolderCloud = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderCloud = (props) => (
 );
 
 FolderCloud.displayName = 'FolderCloud';
-
-export default FolderCloud;

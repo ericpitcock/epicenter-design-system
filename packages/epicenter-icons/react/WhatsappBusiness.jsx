@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WhatsappBusiness = (props) => (
+export const WhatsappBusiness = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const WhatsappBusiness = (props) => (
 );
 
 WhatsappBusiness.displayName = 'WhatsappBusiness';
-
-export default WhatsappBusiness;

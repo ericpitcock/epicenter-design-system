@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartHighLow = (props) => (
+export const ChartHighLow = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const ChartHighLow = (props) => (
 );
 
 ChartHighLow.displayName = 'ChartHighLow';
-
-export default ChartHighLow;

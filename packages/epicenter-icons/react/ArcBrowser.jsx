@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArcBrowser = (props) => (
+export const ArcBrowser = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ArcBrowser = (props) => (
 );
 
 ArcBrowser.displayName = 'ArcBrowser';
-
-export default ArcBrowser;

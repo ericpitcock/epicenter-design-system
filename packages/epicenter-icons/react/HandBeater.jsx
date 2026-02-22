@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HandBeater = (props) => (
+export const HandBeater = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -16,5 +14,3 @@ const HandBeater = (props) => (
 );
 
 HandBeater.displayName = 'HandBeater';
-
-export default HandBeater;

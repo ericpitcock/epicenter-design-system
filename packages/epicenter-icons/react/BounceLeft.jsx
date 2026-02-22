@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BounceLeft = (props) => (
+export const BounceLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BounceLeft = (props) => (
 );
 
 BounceLeft.displayName = 'BounceLeft';
-
-export default BounceLeft;

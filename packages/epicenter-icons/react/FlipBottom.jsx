@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FlipBottom = (props) => (
+export const FlipBottom = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FlipBottom = (props) => (
 );
 
 FlipBottom.displayName = 'FlipBottom';
-
-export default FlipBottom;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SearchRemove = (props) => (
+export const SearchRemove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SearchRemove = (props) => (
 );
 
 SearchRemove.displayName = 'SearchRemove';
-
-export default SearchRemove;

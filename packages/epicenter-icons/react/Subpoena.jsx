@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Subpoena = (props) => (
+export const Subpoena = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Subpoena = (props) => (
 );
 
 Subpoena.displayName = 'Subpoena';
-
-export default Subpoena;

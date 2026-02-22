@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Party = (props) => (
+export const Party = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const Party = (props) => (
 );
 
 Party.displayName = 'Party';
-
-export default Party;

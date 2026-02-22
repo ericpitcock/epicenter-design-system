@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Gpu = (props) => (
+export const Gpu = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Gpu = (props) => (
 );
 
 Gpu.displayName = 'Gpu';
-
-export default Gpu;

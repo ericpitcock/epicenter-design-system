@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SailboatOffshore = (props) => (
+export const SailboatOffshore = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SailboatOffshore = (props) => (
 );
 
 SailboatOffshore.displayName = 'SailboatOffshore';
-
-export default SailboatOffshore;

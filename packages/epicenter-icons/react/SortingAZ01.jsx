@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SortingAZ01 = (props) => (
+export const SortingAZ01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const SortingAZ01 = (props) => (
 );
 
 SortingAZ01.displayName = 'SortingAZ01';
-
-export default SortingAZ01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RockingChair = (props) => (
+export const RockingChair = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const RockingChair = (props) => (
 );
 
 RockingChair.displayName = 'RockingChair';
-
-export default RockingChair;

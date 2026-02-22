@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShoppingCart02 = (props) => (
+export const ShoppingCart02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ShoppingCart02 = (props) => (
 );
 
 ShoppingCart02.displayName = 'ShoppingCart02';
-
-export default ShoppingCart02;

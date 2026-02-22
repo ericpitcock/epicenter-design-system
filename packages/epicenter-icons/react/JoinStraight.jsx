@@ -1,6 +1,4 @@
-import React from 'react';
-
-const JoinStraight = (props) => (
+export const JoinStraight = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const JoinStraight = (props) => (
 );
 
 JoinStraight.displayName = 'JoinStraight';
-
-export default JoinStraight;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AdobeIndesign = (props) => (
+export const AdobeIndesign = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AdobeIndesign = (props) => (
 );
 
 AdobeIndesign.displayName = 'AdobeIndesign';
-
-export default AdobeIndesign;

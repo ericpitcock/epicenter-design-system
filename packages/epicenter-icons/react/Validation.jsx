@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Validation = (props) => (
+export const Validation = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Validation = (props) => (
 );
 
 Validation.displayName = 'Validation';
-
-export default Validation;

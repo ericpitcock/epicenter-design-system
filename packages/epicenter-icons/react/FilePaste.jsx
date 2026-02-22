@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FilePaste = (props) => (
+export const FilePaste = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FilePaste = (props) => (
 );
 
 FilePaste.displayName = 'FilePaste';
-
-export default FilePaste;

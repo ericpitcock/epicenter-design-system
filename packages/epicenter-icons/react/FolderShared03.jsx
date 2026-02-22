@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderShared03 = (props) => (
+export const FolderShared03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderShared03 = (props) => (
 );
 
 FolderShared03.displayName = 'FolderShared03';
-
-export default FolderShared03;

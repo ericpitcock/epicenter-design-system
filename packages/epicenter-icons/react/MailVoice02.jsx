@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MailVoice02 = (props) => (
+export const MailVoice02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MailVoice02 = (props) => (
 );
 
 MailVoice02.displayName = 'MailVoice02';
-
-export default MailVoice02;

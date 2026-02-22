@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Php = (props) => (
+export const Php = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Php = (props) => (
 );
 
 Php.displayName = 'Php';
-
-export default Php;

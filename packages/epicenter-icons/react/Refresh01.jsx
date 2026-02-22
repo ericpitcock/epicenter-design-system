@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Refresh01 = (props) => (
+export const Refresh01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Refresh01 = (props) => (
 );
 
 Refresh01.displayName = 'Refresh01';
-
-export default Refresh01;

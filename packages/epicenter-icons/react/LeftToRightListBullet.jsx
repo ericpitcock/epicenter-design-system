@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LeftToRightListBullet = (props) => (
+export const LeftToRightListBullet = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const LeftToRightListBullet = (props) => (
 );
 
 LeftToRightListBullet.displayName = 'LeftToRightListBullet';
-
-export default LeftToRightListBullet;

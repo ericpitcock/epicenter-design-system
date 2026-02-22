@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Slide = (props) => (
+export const Slide = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Slide = (props) => (
 );
 
 Slide.displayName = 'Slide';
-
-export default Slide;

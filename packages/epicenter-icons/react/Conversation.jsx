@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Conversation = (props) => (
+export const Conversation = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Conversation = (props) => (
 );
 
 Conversation.displayName = 'Conversation';
-
-export default Conversation;

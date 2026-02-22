@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ResizeFieldRectangle = (props) => (
+export const ResizeFieldRectangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ResizeFieldRectangle = (props) => (
 );
 
 ResizeFieldRectangle.displayName = 'ResizeFieldRectangle';
-
-export default ResizeFieldRectangle;

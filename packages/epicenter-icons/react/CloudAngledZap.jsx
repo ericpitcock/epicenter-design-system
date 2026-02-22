@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CloudAngledZap = (props) => (
+export const CloudAngledZap = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CloudAngledZap = (props) => (
 );
 
 CloudAngledZap.displayName = 'CloudAngledZap';
-
-export default CloudAngledZap;

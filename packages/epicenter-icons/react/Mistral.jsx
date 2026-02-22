@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mistral = (props) => (
+export const Mistral = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Mistral = (props) => (
 );
 
 Mistral.displayName = 'Mistral';
-
-export default Mistral;

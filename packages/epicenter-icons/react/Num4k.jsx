@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Num4k = (props) => (
+export const Num4k = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Num4k = (props) => (
 );
 
 Num4k.displayName = 'Num4k';
-
-export default Num4k;

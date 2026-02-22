@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Shellfish = (props) => (
+export const Shellfish = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Shellfish = (props) => (
 );
 
 Shellfish.displayName = 'Shellfish';
-
-export default Shellfish;

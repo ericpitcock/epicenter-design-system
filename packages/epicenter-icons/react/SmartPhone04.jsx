@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SmartPhone04 = (props) => (
+export const SmartPhone04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SmartPhone04 = (props) => (
 );
 
 SmartPhone04.displayName = 'SmartPhone04';
-
-export default SmartPhone04;

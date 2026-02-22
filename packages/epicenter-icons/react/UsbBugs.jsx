@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UsbBugs = (props) => (
+export const UsbBugs = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const UsbBugs = (props) => (
 );
 
 UsbBugs.displayName = 'UsbBugs';
-
-export default UsbBugs;

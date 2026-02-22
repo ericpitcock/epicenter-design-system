@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SdCard = (props) => (
+export const SdCard = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SdCard = (props) => (
 );
 
 SdCard.displayName = 'SdCard';
-
-export default SdCard;

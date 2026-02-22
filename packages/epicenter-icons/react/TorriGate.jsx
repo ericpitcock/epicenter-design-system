@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TorriGate = (props) => (
+export const TorriGate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const TorriGate = (props) => (
 );
 
 TorriGate.displayName = 'TorriGate';
-
-export default TorriGate;

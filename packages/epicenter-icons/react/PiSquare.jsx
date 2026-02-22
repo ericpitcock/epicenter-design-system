@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PiSquare = (props) => (
+export const PiSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PiSquare = (props) => (
 );
 
 PiSquare.displayName = 'PiSquare';
-
-export default PiSquare;

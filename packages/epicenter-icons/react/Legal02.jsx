@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Legal02 = (props) => (
+export const Legal02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Legal02 = (props) => (
 );
 
 Legal02.displayName = 'Legal02';
-
-export default Legal02;

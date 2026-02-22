@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlignKeyObject = (props) => (
+export const AlignKeyObject = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const AlignKeyObject = (props) => (
 );
 
 AlignKeyObject.displayName = 'AlignKeyObject';
-
-export default AlignKeyObject;

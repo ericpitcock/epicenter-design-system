@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Vynil03 = (props) => (
+export const Vynil03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Vynil03 = (props) => (
 );
 
 Vynil03.displayName = 'Vynil03';
-
-export default Vynil03;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Comet02 = (props) => (
+export const Comet02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Comet02 = (props) => (
 );
 
 Comet02.displayName = 'Comet02';
-
-export default Comet02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BitcoinSearch = (props) => (
+export const BitcoinSearch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BitcoinSearch = (props) => (
 );
 
 BitcoinSearch.displayName = 'BitcoinSearch';
-
-export default BitcoinSearch;

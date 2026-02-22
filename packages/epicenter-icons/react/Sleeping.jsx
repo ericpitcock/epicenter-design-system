@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sleeping = (props) => (
+export const Sleeping = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Sleeping = (props) => (
 );
 
 Sleeping.displayName = 'Sleeping';
-
-export default Sleeping;

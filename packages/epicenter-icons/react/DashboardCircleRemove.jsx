@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DashboardCircleRemove = (props) => (
+export const DashboardCircleRemove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DashboardCircleRemove = (props) => (
 );
 
 DashboardCircleRemove.displayName = 'DashboardCircleRemove';
-
-export default DashboardCircleRemove;

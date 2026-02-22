@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LicenseDraft = (props) => (
+export const LicenseDraft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const LicenseDraft = (props) => (
 );
 
 LicenseDraft.displayName = 'LicenseDraft';
-
-export default LicenseDraft;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FootballPitch = (props) => (
+export const FootballPitch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const FootballPitch = (props) => (
 );
 
 FootballPitch.displayName = 'FootballPitch';
-
-export default FootballPitch;

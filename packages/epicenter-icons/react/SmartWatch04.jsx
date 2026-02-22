@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SmartWatch04 = (props) => (
+export const SmartWatch04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SmartWatch04 = (props) => (
 );
 
 SmartWatch04.displayName = 'SmartWatch04';
-
-export default SmartWatch04;

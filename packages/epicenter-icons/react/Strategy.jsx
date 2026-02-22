@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Strategy = (props) => (
+export const Strategy = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Strategy = (props) => (
 );
 
 Strategy.displayName = 'Strategy';
-
-export default Strategy;

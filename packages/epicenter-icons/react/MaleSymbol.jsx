@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MaleSymbol = (props) => (
+export const MaleSymbol = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MaleSymbol = (props) => (
 );
 
 MaleSymbol.displayName = 'MaleSymbol';
-
-export default MaleSymbol;

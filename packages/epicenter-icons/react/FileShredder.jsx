@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileShredder = (props) => (
+export const FileShredder = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileShredder = (props) => (
 );
 
 FileShredder.displayName = 'FileShredder';
-
-export default FileShredder;

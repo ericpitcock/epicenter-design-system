@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UngroupItems = (props) => (
+export const UngroupItems = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const UngroupItems = (props) => (
 );
 
 UngroupItems.displayName = 'UngroupItems';
-
-export default UngroupItems;

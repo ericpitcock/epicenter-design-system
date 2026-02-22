@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DashboardCircleEdit = (props) => (
+export const DashboardCircleEdit = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DashboardCircleEdit = (props) => (
 );
 
 DashboardCircleEdit.displayName = 'DashboardCircleEdit';
-
-export default DashboardCircleEdit;

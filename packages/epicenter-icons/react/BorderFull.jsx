@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BorderFull = (props) => (
+export const BorderFull = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BorderFull = (props) => (
 );
 
 BorderFull.displayName = 'BorderFull';
-
-export default BorderFull;

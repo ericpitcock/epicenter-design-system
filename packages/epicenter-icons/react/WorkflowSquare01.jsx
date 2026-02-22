@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WorkflowSquare01 = (props) => (
+export const WorkflowSquare01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const WorkflowSquare01 = (props) => (
 );
 
 WorkflowSquare01.displayName = 'WorkflowSquare01';
-
-export default WorkflowSquare01;

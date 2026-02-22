@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Orbit01 = (props) => (
+export const Orbit01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Orbit01 = (props) => (
 );
 
 Orbit01.displayName = 'Orbit01';
-
-export default Orbit01;

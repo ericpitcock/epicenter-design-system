@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Chrome = (props) => (
+export const Chrome = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Chrome = (props) => (
 );
 
 Chrome.displayName = 'Chrome';
-
-export default Chrome;

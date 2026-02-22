@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShippingTruck02 = (props) => (
+export const ShippingTruck02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ShippingTruck02 = (props) => (
 );
 
 ShippingTruck02.displayName = 'ShippingTruck02';
-
-export default ShippingTruck02;

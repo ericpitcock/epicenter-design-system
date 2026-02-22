@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Variable = (props) => (
+export const Variable = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Variable = (props) => (
 );
 
 Variable.displayName = 'Variable';
-
-export default Variable;

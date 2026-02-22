@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Num2ndBracketCircle = (props) => (
+export const Num2ndBracketCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Num2ndBracketCircle = (props) => (
 );
 
 Num2ndBracketCircle.displayName = 'Num2ndBracketCircle';
-
-export default Num2ndBracketCircle;

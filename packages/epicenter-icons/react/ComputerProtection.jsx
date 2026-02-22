@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComputerProtection = (props) => (
+export const ComputerProtection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ComputerProtection = (props) => (
 );
 
 ComputerProtection.displayName = 'ComputerProtection';
-
-export default ComputerProtection;

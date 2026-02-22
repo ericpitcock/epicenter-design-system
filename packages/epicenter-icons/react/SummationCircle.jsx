@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SummationCircle = (props) => (
+export const SummationCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SummationCircle = (props) => (
 );
 
 SummationCircle.displayName = 'SummationCircle';
-
-export default SummationCircle;

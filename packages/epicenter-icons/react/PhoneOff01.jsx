@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PhoneOff01 = (props) => (
+export const PhoneOff01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PhoneOff01 = (props) => (
 );
 
 PhoneOff01.displayName = 'PhoneOff01';
-
-export default PhoneOff01;

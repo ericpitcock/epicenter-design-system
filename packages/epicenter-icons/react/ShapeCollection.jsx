@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShapeCollection = (props) => (
+export const ShapeCollection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ShapeCollection = (props) => (
 );
 
 ShapeCollection.displayName = 'ShapeCollection';
-
-export default ShapeCollection;

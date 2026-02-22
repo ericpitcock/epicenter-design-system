@@ -1,6 +1,4 @@
-import React from 'react';
-
-const McpServer = (props) => (
+export const McpServer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const McpServer = (props) => (
 );
 
 McpServer.displayName = 'McpServer';
-
-export default McpServer;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Diamond = (props) => (
+export const Diamond = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Diamond = (props) => (
 );
 
 Diamond.displayName = 'Diamond';
-
-export default Diamond;

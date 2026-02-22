@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Shield02 = (props) => (
+export const Shield02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Shield02 = (props) => (
 );
 
 Shield02.displayName = 'Shield02';
-
-export default Shield02;

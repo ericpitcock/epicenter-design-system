@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LockComputer = (props) => (
+export const LockComputer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const LockComputer = (props) => (
 );
 
 LockComputer.displayName = 'LockComputer';
-
-export default LockComputer;

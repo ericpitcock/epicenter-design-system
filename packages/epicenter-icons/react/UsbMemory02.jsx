@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UsbMemory02 = (props) => (
+export const UsbMemory02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const UsbMemory02 = (props) => (
 );
 
 UsbMemory02.displayName = 'UsbMemory02';
-
-export default UsbMemory02;

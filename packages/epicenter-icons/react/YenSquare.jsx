@@ -1,6 +1,4 @@
-import React from 'react';
-
-const YenSquare = (props) => (
+export const YenSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const YenSquare = (props) => (
 );
 
 YenSquare.displayName = 'YenSquare';
-
-export default YenSquare;

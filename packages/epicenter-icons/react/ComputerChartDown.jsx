@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComputerChartDown = (props) => (
+export const ComputerChartDown = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ComputerChartDown = (props) => (
 );
 
 ComputerChartDown.displayName = 'ComputerChartDown';
-
-export default ComputerChartDown;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Atm02 = (props) => (
+export const Atm02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Atm02 = (props) => (
 );
 
 Atm02.displayName = 'Atm02';
-
-export default Atm02;

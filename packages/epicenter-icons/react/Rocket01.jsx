@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Rocket01 = (props) => (
+export const Rocket01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Rocket01 = (props) => (
 );
 
 Rocket01.displayName = 'Rocket01';
-
-export default Rocket01;

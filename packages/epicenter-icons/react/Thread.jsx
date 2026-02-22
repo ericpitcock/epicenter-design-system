@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Thread = (props) => (
+export const Thread = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Thread = (props) => (
 );
 
 Thread.displayName = 'Thread';
-
-export default Thread;

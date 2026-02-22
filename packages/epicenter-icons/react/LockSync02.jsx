@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LockSync02 = (props) => (
+export const LockSync02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LockSync02 = (props) => (
 );
 
 LockSync02.displayName = 'LockSync02';
-
-export default LockSync02;

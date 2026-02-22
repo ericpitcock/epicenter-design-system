@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RecoveryMail = (props) => (
+export const RecoveryMail = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const RecoveryMail = (props) => (
 );
 
 RecoveryMail.displayName = 'RecoveryMail';
-
-export default RecoveryMail;

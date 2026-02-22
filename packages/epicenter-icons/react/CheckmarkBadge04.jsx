@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CheckmarkBadge04 = (props) => (
+export const CheckmarkBadge04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CheckmarkBadge04 = (props) => (
 );
 
 CheckmarkBadge04.displayName = 'CheckmarkBadge04';
-
-export default CheckmarkBadge04;

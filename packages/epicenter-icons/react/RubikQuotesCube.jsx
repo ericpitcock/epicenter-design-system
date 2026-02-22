@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RubikQuotesCube = (props) => (
+export const RubikQuotesCube = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const RubikQuotesCube = (props) => (
 );
 
 RubikQuotesCube.displayName = 'RubikQuotesCube';
-
-export default RubikQuotesCube;

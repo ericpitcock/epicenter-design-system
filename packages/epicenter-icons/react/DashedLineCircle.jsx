@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DashedLineCircle = (props) => (
+export const DashedLineCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const DashedLineCircle = (props) => (
 );
 
 DashedLineCircle.displayName = 'DashedLineCircle';
-
-export default DashedLineCircle;

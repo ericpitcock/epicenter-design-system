@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Percent = (props) => (
+export const Percent = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Percent = (props) => (
 );
 
 Percent.displayName = 'Percent';
-
-export default Percent;

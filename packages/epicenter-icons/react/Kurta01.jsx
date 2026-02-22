@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Kurta01 = (props) => (
+export const Kurta01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -15,5 +13,3 @@ const Kurta01 = (props) => (
 );
 
 Kurta01.displayName = 'Kurta01';
-
-export default Kurta01;

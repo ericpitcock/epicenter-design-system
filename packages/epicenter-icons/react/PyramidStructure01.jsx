@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PyramidStructure01 = (props) => (
+export const PyramidStructure01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PyramidStructure01 = (props) => (
 );
 
 PyramidStructure01.displayName = 'PyramidStructure01';
-
-export default PyramidStructure01;

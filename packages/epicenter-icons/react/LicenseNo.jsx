@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LicenseNo = (props) => (
+export const LicenseNo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LicenseNo = (props) => (
 );
 
 LicenseNo.displayName = 'LicenseNo';
-
-export default LicenseNo;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CancelCircleHalfDot = (props) => (
+export const CancelCircleHalfDot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CancelCircleHalfDot = (props) => (
 );
 
 CancelCircleHalfDot.displayName = 'CancelCircleHalfDot';
-
-export default CancelCircleHalfDot;

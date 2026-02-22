@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InboxCheck = (props) => (
+export const InboxCheck = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const InboxCheck = (props) => (
 );
 
 InboxCheck.displayName = 'InboxCheck';
-
-export default InboxCheck;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CPlusPlus = (props) => (
+export const CPlusPlus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CPlusPlus = (props) => (
 );
 
 CPlusPlus.displayName = 'CPlusPlus';
-
-export default CPlusPlus;

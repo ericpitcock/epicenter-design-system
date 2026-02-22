@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PathfinderDivide = (props) => (
+export const PathfinderDivide = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PathfinderDivide = (props) => (
 );
 
 PathfinderDivide.displayName = 'PathfinderDivide';
-
-export default PathfinderDivide;

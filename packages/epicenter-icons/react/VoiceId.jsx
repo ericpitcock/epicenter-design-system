@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VoiceId = (props) => (
+export const VoiceId = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const VoiceId = (props) => (
 );
 
 VoiceId.displayName = 'VoiceId';
-
-export default VoiceId;

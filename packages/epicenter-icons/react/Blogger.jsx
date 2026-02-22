@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Blogger = (props) => (
+export const Blogger = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Blogger = (props) => (
 );
 
 Blogger.displayName = 'Blogger';
-
-export default Blogger;

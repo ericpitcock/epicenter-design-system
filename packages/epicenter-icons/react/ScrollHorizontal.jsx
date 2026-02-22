@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ScrollHorizontal = (props) => (
+export const ScrollHorizontal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ScrollHorizontal = (props) => (
 );
 
 ScrollHorizontal.displayName = 'ScrollHorizontal';
-
-export default ScrollHorizontal;

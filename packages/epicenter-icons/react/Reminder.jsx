@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Reminder = (props) => (
+export const Reminder = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -16,5 +14,3 @@ const Reminder = (props) => (
 );
 
 Reminder.displayName = 'Reminder';
-
-export default Reminder;

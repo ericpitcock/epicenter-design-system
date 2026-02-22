@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BatteryLow = (props) => (
+export const BatteryLow = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BatteryLow = (props) => (
 );
 
 BatteryLow.displayName = 'BatteryLow';
-
-export default BatteryLow;

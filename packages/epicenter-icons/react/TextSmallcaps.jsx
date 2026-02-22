@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextSmallcaps = (props) => (
+export const TextSmallcaps = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TextSmallcaps = (props) => (
 );
 
 TextSmallcaps.displayName = 'TextSmallcaps';
-
-export default TextSmallcaps;

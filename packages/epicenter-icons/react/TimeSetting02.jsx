@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TimeSetting02 = (props) => (
+export const TimeSetting02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TimeSetting02 = (props) => (
 );
 
 TimeSetting02.displayName = 'TimeSetting02';
-
-export default TimeSetting02;

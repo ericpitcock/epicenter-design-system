@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PresentationBarChart02 = (props) => (
+export const PresentationBarChart02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PresentationBarChart02 = (props) => (
 );
 
 PresentationBarChart02.displayName = 'PresentationBarChart02';
-
-export default PresentationBarChart02;

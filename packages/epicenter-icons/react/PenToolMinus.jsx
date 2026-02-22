@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PenToolMinus = (props) => (
+export const PenToolMinus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PenToolMinus = (props) => (
 );
 
 PenToolMinus.displayName = 'PenToolMinus';
-
-export default PenToolMinus;

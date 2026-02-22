@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sakura = (props) => (
+export const Sakura = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Sakura = (props) => (
 );
 
 Sakura.displayName = 'Sakura';
-
-export default Sakura;

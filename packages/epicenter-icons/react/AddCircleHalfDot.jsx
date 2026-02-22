@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AddCircleHalfDot = (props) => (
+export const AddCircleHalfDot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AddCircleHalfDot = (props) => (
 );
 
 AddCircleHalfDot.displayName = 'AddCircleHalfDot';
-
-export default AddCircleHalfDot;

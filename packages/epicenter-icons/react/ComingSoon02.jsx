@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComingSoon02 = (props) => (
+export const ComingSoon02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ComingSoon02 = (props) => (
 );
 
 ComingSoon02.displayName = 'ComingSoon02';
-
-export default ComingSoon02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Reddit = (props) => (
+export const Reddit = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const Reddit = (props) => (
 );
 
 Reddit.displayName = 'Reddit';
-
-export default Reddit;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FitToScreen = (props) => (
+export const FitToScreen = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FitToScreen = (props) => (
 );
 
 FitToScreen.displayName = 'FitToScreen';
-
-export default FitToScreen;

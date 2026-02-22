@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiSearch02 = (props) => (
+export const AiSearch02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AiSearch02 = (props) => (
 );
 
 AiSearch02.displayName = 'AiSearch02';
-
-export default AiSearch02;

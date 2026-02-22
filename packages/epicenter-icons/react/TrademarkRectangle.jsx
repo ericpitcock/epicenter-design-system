@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TrademarkRectangle = (props) => (
+export const TrademarkRectangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TrademarkRectangle = (props) => (
 );
 
 TrademarkRectangle.displayName = 'TrademarkRectangle';
-
-export default TrademarkRectangle;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Shapes = (props) => (
+export const Shapes = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Shapes = (props) => (
 );
 
 Shapes.displayName = 'Shapes';
-
-export default Shapes;

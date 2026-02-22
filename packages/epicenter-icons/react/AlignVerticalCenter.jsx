@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlignVerticalCenter = (props) => (
+export const AlignVerticalCenter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AlignVerticalCenter = (props) => (
 );
 
 AlignVerticalCenter.displayName = 'AlignVerticalCenter';
-
-export default AlignVerticalCenter;

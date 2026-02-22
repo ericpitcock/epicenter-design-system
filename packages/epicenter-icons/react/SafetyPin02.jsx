@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SafetyPin02 = (props) => (
+export const SafetyPin02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SafetyPin02 = (props) => (
 );
 
 SafetyPin02.displayName = 'SafetyPin02';
-
-export default SafetyPin02;

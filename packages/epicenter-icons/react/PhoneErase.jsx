@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PhoneErase = (props) => (
+export const PhoneErase = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PhoneErase = (props) => (
 );
 
 PhoneErase.displayName = 'PhoneErase';
-
-export default PhoneErase;

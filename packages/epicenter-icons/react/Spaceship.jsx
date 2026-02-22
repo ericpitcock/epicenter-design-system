@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Spaceship = (props) => (
+export const Spaceship = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Spaceship = (props) => (
 );
 
 Spaceship.displayName = 'Spaceship';
-
-export default Spaceship;

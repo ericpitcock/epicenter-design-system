@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StopWatch = (props) => (
+export const StopWatch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const StopWatch = (props) => (
 );
 
 StopWatch.displayName = 'StopWatch';
-
-export default StopWatch;

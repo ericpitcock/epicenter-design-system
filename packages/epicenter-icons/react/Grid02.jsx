@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Grid02 = (props) => (
+export const Grid02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Grid02 = (props) => (
 );
 
 Grid02.displayName = 'Grid02';
-
-export default Grid02;

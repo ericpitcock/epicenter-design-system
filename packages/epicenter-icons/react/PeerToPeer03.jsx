@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PeerToPeer03 = (props) => (
+export const PeerToPeer03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const PeerToPeer03 = (props) => (
 );
 
 PeerToPeer03.displayName = 'PeerToPeer03';
-
-export default PeerToPeer03;

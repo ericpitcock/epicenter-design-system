@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PiCircle = (props) => (
+export const PiCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PiCircle = (props) => (
 );
 
 PiCircle.displayName = 'PiCircle';
-
-export default PiCircle;

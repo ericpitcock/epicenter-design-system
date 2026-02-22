@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GraduationScroll = (props) => (
+export const GraduationScroll = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const GraduationScroll = (props) => (
 );
 
 GraduationScroll.displayName = 'GraduationScroll';
-
-export default GraduationScroll;

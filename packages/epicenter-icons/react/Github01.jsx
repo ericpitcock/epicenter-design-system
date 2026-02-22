@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Github01 = (props) => (
+export const Github01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Github01 = (props) => (
 );
 
 Github01.displayName = 'Github01';
-
-export default Github01;

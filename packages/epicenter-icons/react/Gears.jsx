@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Gears = (props) => (
+export const Gears = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Gears = (props) => (
 );
 
 Gears.displayName = 'Gears';
-
-export default Gears;

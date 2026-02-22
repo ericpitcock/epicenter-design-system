@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FlowerPot = (props) => (
+export const FlowerPot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const FlowerPot = (props) => (
 );
 
 FlowerPot.displayName = 'FlowerPot';
-
-export default FlowerPot;

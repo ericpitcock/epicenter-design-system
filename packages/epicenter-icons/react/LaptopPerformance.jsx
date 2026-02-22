@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LaptopPerformance = (props) => (
+export const LaptopPerformance = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const LaptopPerformance = (props) => (
 );
 
 LaptopPerformance.displayName = 'LaptopPerformance';
-
-export default LaptopPerformance;

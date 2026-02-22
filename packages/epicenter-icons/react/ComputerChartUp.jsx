@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComputerChartUp = (props) => (
+export const ComputerChartUp = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ComputerChartUp = (props) => (
 );
 
 ComputerChartUp.displayName = 'ComputerChartUp';
-
-export default ComputerChartUp;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sunglasses = (props) => (
+export const Sunglasses = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Sunglasses = (props) => (
 );
 
 Sunglasses.displayName = 'Sunglasses';
-
-export default Sunglasses;

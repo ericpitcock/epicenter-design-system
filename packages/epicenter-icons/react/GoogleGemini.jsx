@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GoogleGemini = (props) => (
+export const GoogleGemini = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const GoogleGemini = (props) => (
 );
 
 GoogleGemini.displayName = 'GoogleGemini';
-
-export default GoogleGemini;

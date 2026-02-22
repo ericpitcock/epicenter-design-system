@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Coinbase = (props) => (
+export const Coinbase = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Coinbase = (props) => (
 );
 
 Coinbase.displayName = 'Coinbase';
-
-export default Coinbase;

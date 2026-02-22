@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Trulli = (props) => (
+export const Trulli = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Trulli = (props) => (
 );
 
 Trulli.displayName = 'Trulli';
-
-export default Trulli;

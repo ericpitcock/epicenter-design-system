@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiBrain05 = (props) => (
+export const AiBrain05 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AiBrain05 = (props) => (
 );
 
 AiBrain05.displayName = 'AiBrain05';
-
-export default AiBrain05;

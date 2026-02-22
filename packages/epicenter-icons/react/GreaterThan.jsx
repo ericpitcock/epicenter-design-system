@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GreaterThan = (props) => (
+export const GreaterThan = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const GreaterThan = (props) => (
 );
 
 GreaterThan.displayName = 'GreaterThan';
-
-export default GreaterThan;

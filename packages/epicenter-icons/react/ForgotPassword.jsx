@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ForgotPassword = (props) => (
+export const ForgotPassword = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ForgotPassword = (props) => (
 );
 
 ForgotPassword.displayName = 'ForgotPassword';
-
-export default ForgotPassword;

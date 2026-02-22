@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BubbleChatSearch = (props) => (
+export const BubbleChatSearch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BubbleChatSearch = (props) => (
 );
 
 BubbleChatSearch.displayName = 'BubbleChatSearch';
-
-export default BubbleChatSearch;

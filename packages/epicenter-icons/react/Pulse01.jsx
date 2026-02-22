@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pulse01 = (props) => (
+export const Pulse01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Pulse01 = (props) => (
 );
 
 Pulse01.displayName = 'Pulse01';
-
-export default Pulse01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Layout3Row = (props) => (
+export const Layout3Row = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Layout3Row = (props) => (
 );
 
 Layout3Row.displayName = 'Layout3Row';
-
-export default Layout3Row;

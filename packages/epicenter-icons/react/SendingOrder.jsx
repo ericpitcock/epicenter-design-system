@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SendingOrder = (props) => (
+export const SendingOrder = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SendingOrder = (props) => (
 );
 
 SendingOrder.displayName = 'SendingOrder';
-
-export default SendingOrder;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SingLeft = (props) => (
+export const SingLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SingLeft = (props) => (
 );
 
 SingLeft.displayName = 'SingLeft';
-
-export default SingLeft;

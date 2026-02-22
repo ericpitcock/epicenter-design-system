@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChatBot = (props) => (
+export const ChatBot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const ChatBot = (props) => (
 );
 
 ChatBot.displayName = 'ChatBot';
-
-export default ChatBot;

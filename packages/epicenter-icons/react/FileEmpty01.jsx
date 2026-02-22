@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileEmpty01 = (props) => (
+export const FileEmpty01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FileEmpty01 = (props) => (
 );
 
 FileEmpty01.displayName = 'FileEmpty01';
-
-export default FileEmpty01;

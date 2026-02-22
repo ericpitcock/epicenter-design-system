@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tractor = (props) => (
+export const Tractor = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const Tractor = (props) => (
 );
 
 Tractor.displayName = 'Tractor';
-
-export default Tractor;

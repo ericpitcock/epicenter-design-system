@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WifiOff02 = (props) => (
+export const WifiOff02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const WifiOff02 = (props) => (
 );
 
 WifiOff02.displayName = 'WifiOff02';
-
-export default WifiOff02;

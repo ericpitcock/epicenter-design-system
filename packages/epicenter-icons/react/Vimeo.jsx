@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Vimeo = (props) => (
+export const Vimeo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Vimeo = (props) => (
 );
 
 Vimeo.displayName = 'Vimeo';
-
-export default Vimeo;

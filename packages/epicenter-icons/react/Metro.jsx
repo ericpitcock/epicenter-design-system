@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Metro = (props) => (
+export const Metro = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Metro = (props) => (
 );
 
 Metro.displayName = 'Metro';
-
-export default Metro;

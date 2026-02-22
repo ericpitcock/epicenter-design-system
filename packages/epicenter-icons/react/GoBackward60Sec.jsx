@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GoBackward60Sec = (props) => (
+export const GoBackward60Sec = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const GoBackward60Sec = (props) => (
 );
 
 GoBackward60Sec.displayName = 'GoBackward60Sec';
-
-export default GoBackward60Sec;

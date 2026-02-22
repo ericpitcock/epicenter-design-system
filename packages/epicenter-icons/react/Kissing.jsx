@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Kissing = (props) => (
+export const Kissing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Kissing = (props) => (
 );
 
 Kissing.displayName = 'Kissing';
-
-export default Kissing;

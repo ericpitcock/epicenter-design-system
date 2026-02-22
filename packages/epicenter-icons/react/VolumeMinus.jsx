@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VolumeMinus = (props) => (
+export const VolumeMinus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const VolumeMinus = (props) => (
 );
 
 VolumeMinus.displayName = 'VolumeMinus';
-
-export default VolumeMinus;

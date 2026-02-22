@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HandPointingDown04 = (props) => (
+export const HandPointingDown04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const HandPointingDown04 = (props) => (
 );
 
 HandPointingDown04.displayName = 'HandPointingDown04';
-
-export default HandPointingDown04;

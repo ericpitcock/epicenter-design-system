@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Forward02 = (props) => (
+export const Forward02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Forward02 = (props) => (
 );
 
 Forward02.displayName = 'Forward02';
-
-export default Forward02;

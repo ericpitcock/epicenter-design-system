@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Jar = (props) => (
+export const Jar = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -14,5 +12,3 @@ const Jar = (props) => (
 );
 
 Jar.displayName = 'Jar';
-
-export default Jar;

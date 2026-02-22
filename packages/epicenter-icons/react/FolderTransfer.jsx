@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderTransfer = (props) => (
+export const FolderTransfer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const FolderTransfer = (props) => (
 );
 
 FolderTransfer.displayName = 'FolderTransfer';
-
-export default FolderTransfer;

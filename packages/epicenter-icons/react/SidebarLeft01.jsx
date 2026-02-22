@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SidebarLeft01 = (props) => (
+export const SidebarLeft01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SidebarLeft01 = (props) => (
 );
 
 SidebarLeft01.displayName = 'SidebarLeft01';
-
-export default SidebarLeft01;

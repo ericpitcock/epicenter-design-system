@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PresentationPodium = (props) => (
+export const PresentationPodium = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PresentationPodium = (props) => (
 );
 
 PresentationPodium.displayName = 'PresentationPodium';
-
-export default PresentationPodium;

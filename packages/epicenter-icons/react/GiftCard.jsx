@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GiftCard = (props) => (
+export const GiftCard = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const GiftCard = (props) => (
 );
 
 GiftCard.displayName = 'GiftCard';
-
-export default GiftCard;

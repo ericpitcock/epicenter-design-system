@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MailAtSign01 = (props) => (
+export const MailAtSign01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MailAtSign01 = (props) => (
 );
 
 MailAtSign01.displayName = 'MailAtSign01';
-
-export default MailAtSign01;

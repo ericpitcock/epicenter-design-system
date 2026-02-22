@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DatabaseLightning = (props) => (
+export const DatabaseLightning = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const DatabaseLightning = (props) => (
 );
 
 DatabaseLightning.displayName = 'DatabaseLightning';
-
-export default DatabaseLightning;

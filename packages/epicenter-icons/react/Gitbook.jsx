@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Gitbook = (props) => (
+export const Gitbook = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Gitbook = (props) => (
 );
 
 Gitbook.displayName = 'Gitbook';
-
-export default Gitbook;

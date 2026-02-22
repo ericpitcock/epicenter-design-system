@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pulley = (props) => (
+export const Pulley = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Pulley = (props) => (
 );
 
 Pulley.displayName = 'Pulley';
-
-export default Pulley;

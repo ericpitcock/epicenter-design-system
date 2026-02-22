@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Shocked = (props) => (
+export const Shocked = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Shocked = (props) => (
 );
 
 Shocked.displayName = 'Shocked';
-
-export default Shocked;

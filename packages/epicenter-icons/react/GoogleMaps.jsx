@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GoogleMaps = (props) => (
+export const GoogleMaps = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const GoogleMaps = (props) => (
 );
 
 GoogleMaps.displayName = 'GoogleMaps';
-
-export default GoogleMaps;

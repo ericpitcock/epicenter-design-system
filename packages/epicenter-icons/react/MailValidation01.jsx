@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MailValidation01 = (props) => (
+export const MailValidation01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MailValidation01 = (props) => (
 );
 
 MailValidation01.displayName = 'MailValidation01';
-
-export default MailValidation01;

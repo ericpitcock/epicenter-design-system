@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ipod = (props) => (
+export const Ipod = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Ipod = (props) => (
 );
 
 Ipod.displayName = 'Ipod';
-
-export default Ipod;

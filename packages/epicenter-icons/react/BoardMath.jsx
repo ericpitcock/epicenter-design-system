@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BoardMath = (props) => (
+export const BoardMath = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const BoardMath = (props) => (
 );
 
 BoardMath.displayName = 'BoardMath';
-
-export default BoardMath;

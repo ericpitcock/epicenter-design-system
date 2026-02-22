@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Conference = (props) => (
+export const Conference = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Conference = (props) => (
 );
 
 Conference.displayName = 'Conference';
-
-export default Conference;

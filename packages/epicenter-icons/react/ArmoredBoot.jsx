@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArmoredBoot = (props) => (
+export const ArmoredBoot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const ArmoredBoot = (props) => (
 );
 
 ArmoredBoot.displayName = 'ArmoredBoot';
-
-export default ArmoredBoot;

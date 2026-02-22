@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MilkCarton = (props) => (
+export const MilkCarton = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MilkCarton = (props) => (
 );
 
 MilkCarton.displayName = 'MilkCarton';
-
-export default MilkCarton;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Maximize01 = (props) => (
+export const Maximize01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Maximize01 = (props) => (
 );
 
 Maximize01.displayName = 'Maximize01';
-
-export default Maximize01;

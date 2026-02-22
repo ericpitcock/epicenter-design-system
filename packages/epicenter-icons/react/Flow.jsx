@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Flow = (props) => (
+export const Flow = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Flow = (props) => (
 );
 
 Flow.displayName = 'Flow';
-
-export default Flow;

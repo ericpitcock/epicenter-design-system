@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VirtualRealityVr01 = (props) => (
+export const VirtualRealityVr01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const VirtualRealityVr01 = (props) => (
 );
 
 VirtualRealityVr01.displayName = 'VirtualRealityVr01';
-
-export default VirtualRealityVr01;

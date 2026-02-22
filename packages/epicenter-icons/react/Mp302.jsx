@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mp302 = (props) => (
+export const Mp302 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Mp302 = (props) => (
 );
 
 Mp302.displayName = 'Mp302';
-
-export default Mp302;

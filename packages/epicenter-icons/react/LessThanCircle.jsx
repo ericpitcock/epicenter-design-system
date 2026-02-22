@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LessThanCircle = (props) => (
+export const LessThanCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LessThanCircle = (props) => (
 );
 
 LessThanCircle.displayName = 'LessThanCircle';
-
-export default LessThanCircle;

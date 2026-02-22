@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DentalBraces = (props) => (
+export const DentalBraces = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DentalBraces = (props) => (
 );
 
 DentalBraces.displayName = 'DentalBraces';
-
-export default DentalBraces;

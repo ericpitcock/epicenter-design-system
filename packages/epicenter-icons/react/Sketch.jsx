@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sketch = (props) => (
+export const Sketch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Sketch = (props) => (
 );
 
 Sketch.displayName = 'Sketch';
-
-export default Sketch;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CloudUpload = (props) => (
+export const CloudUpload = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CloudUpload = (props) => (
 );
 
 CloudUpload.displayName = 'CloudUpload';
-
-export default CloudUpload;

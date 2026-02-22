@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Menu11 = (props) => (
+export const Menu11 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Menu11 = (props) => (
 );
 
 Menu11.displayName = 'Menu11';
-
-export default Menu11;

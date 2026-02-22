@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FilterVertical = (props) => (
+export const FilterVertical = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const FilterVertical = (props) => (
 );
 
 FilterVertical.displayName = 'FilterVertical';
-
-export default FilterVertical;

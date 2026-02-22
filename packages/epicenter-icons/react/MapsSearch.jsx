@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MapsSearch = (props) => (
+export const MapsSearch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MapsSearch = (props) => (
 );
 
 MapsSearch.displayName = 'MapsSearch';
-
-export default MapsSearch;

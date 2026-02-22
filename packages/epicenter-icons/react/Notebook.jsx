@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Notebook = (props) => (
+export const Notebook = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Notebook = (props) => (
 );
 
 Notebook.displayName = 'Notebook';
-
-export default Notebook;

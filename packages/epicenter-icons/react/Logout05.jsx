@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Logout05 = (props) => (
+export const Logout05 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Logout05 = (props) => (
 );
 
 Logout05.displayName = 'Logout05';
-
-export default Logout05;

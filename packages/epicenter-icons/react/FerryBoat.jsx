@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FerryBoat = (props) => (
+export const FerryBoat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const FerryBoat = (props) => (
 );
 
 FerryBoat.displayName = 'FerryBoat';
-
-export default FerryBoat;

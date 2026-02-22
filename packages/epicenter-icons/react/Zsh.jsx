@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Zsh = (props) => (
+export const Zsh = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Zsh = (props) => (
 );
 
 Zsh.displayName = 'Zsh';
-
-export default Zsh;

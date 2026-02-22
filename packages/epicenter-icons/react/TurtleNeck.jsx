@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TurtleNeck = (props) => (
+export const TurtleNeck = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TurtleNeck = (props) => (
 );
 
 TurtleNeck.displayName = 'TurtleNeck';
-
-export default TurtleNeck;

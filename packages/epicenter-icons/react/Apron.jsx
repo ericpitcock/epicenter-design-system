@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Apron = (props) => (
+export const Apron = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Apron = (props) => (
 );
 
 Apron.displayName = 'Apron';
-
-export default Apron;

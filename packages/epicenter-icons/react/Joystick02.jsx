@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Joystick02 = (props) => (
+export const Joystick02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Joystick02 = (props) => (
 );
 
 Joystick02.displayName = 'Joystick02';
-
-export default Joystick02;

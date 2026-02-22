@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Agreement03 = (props) => (
+export const Agreement03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Agreement03 = (props) => (
 );
 
 Agreement03.displayName = 'Agreement03';
-
-export default Agreement03;

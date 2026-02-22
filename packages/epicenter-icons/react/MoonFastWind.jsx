@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoonFastWind = (props) => (
+export const MoonFastWind = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MoonFastWind = (props) => (
 );
 
 MoonFastWind.displayName = 'MoonFastWind';
-
-export default MoonFastWind;

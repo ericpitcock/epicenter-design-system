@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserShield02 = (props) => (
+export const UserShield02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const UserShield02 = (props) => (
 );
 
 UserShield02.displayName = 'UserShield02';
-
-export default UserShield02;

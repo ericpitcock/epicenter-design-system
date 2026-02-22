@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Vest = (props) => (
+export const Vest = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Vest = (props) => (
 );
 
 Vest.displayName = 'Vest';
-
-export default Vest;

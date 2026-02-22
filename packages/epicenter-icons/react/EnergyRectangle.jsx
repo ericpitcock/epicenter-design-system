@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EnergyRectangle = (props) => (
+export const EnergyRectangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const EnergyRectangle = (props) => (
 );
 
 EnergyRectangle.displayName = 'EnergyRectangle';
-
-export default EnergyRectangle;

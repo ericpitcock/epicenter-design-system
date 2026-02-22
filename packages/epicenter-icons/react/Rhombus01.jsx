@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Rhombus01 = (props) => (
+export const Rhombus01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Rhombus01 = (props) => (
 );
 
 Rhombus01.displayName = 'Rhombus01';
-
-export default Rhombus01;

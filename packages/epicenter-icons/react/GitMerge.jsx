@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GitMerge = (props) => (
+export const GitMerge = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const GitMerge = (props) => (
 );
 
 GitMerge.displayName = 'GitMerge';
-
-export default GitMerge;

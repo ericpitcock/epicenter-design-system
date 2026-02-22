@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Dart = (props) => (
+export const Dart = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Dart = (props) => (
 );
 
 Dart.displayName = 'Dart';
-
-export default Dart;

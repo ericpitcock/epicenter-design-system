@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HairDryer = (props) => (
+export const HairDryer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const HairDryer = (props) => (
 );
 
 HairDryer.displayName = 'HairDryer';
-
-export default HairDryer;

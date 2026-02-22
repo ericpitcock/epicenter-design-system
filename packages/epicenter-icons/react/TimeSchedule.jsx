@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TimeSchedule = (props) => (
+export const TimeSchedule = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TimeSchedule = (props) => (
 );
 
 TimeSchedule.displayName = 'TimeSchedule';
-
-export default TimeSchedule;

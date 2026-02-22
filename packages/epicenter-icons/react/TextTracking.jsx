@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextTracking = (props) => (
+export const TextTracking = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TextTracking = (props) => (
 );
 
 TextTracking.displayName = 'TextTracking';
-
-export default TextTracking;

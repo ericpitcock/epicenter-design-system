@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SlowWinds = (props) => (
+export const SlowWinds = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SlowWinds = (props) => (
 );
 
 SlowWinds.displayName = 'SlowWinds';
-
-export default SlowWinds;

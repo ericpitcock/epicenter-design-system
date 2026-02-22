@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FoursquareLogo = (props) => (
+export const FoursquareLogo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FoursquareLogo = (props) => (
 );
 
 FoursquareLogo.displayName = 'FoursquareLogo';
-
-export default FoursquareLogo;

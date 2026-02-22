@@ -1,6 +1,4 @@
-import React from 'react';
-
-const XRay = (props) => (
+export const XRay = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const XRay = (props) => (
 );
 
 XRay.displayName = 'XRay';
-
-export default XRay;

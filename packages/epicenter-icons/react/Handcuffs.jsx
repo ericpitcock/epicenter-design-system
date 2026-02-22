@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Handcuffs = (props) => (
+export const Handcuffs = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Handcuffs = (props) => (
 );
 
 Handcuffs.displayName = 'Handcuffs';
-
-export default Handcuffs;

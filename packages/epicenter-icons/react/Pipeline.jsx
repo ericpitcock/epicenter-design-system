@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pipeline = (props) => (
+export const Pipeline = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Pipeline = (props) => (
 );
 
 Pipeline.displayName = 'Pipeline';
-
-export default Pipeline;

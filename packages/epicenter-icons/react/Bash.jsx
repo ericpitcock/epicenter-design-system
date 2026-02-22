@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bash = (props) => (
+export const Bash = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Bash = (props) => (
 );
 
 Bash.displayName = 'Bash';
-
-export default Bash;

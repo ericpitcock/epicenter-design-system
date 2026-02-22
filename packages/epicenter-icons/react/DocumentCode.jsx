@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DocumentCode = (props) => (
+export const DocumentCode = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DocumentCode = (props) => (
 );
 
 DocumentCode.displayName = 'DocumentCode';
-
-export default DocumentCode;

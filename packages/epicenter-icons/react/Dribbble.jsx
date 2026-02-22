@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Dribbble = (props) => (
+export const Dribbble = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Dribbble = (props) => (
 );
 
 Dribbble.displayName = 'Dribbble';
-
-export default Dribbble;

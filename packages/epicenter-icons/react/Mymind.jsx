@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Mymind = (props) => (
+export const Mymind = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Mymind = (props) => (
 );
 
 Mymind.displayName = 'Mymind';
-
-export default Mymind;

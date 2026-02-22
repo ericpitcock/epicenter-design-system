@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Datev = (props) => (
+export const Datev = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Datev = (props) => (
 );
 
 Datev.displayName = 'Datev';
-
-export default Datev;

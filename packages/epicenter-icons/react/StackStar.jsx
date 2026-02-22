@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StackStar = (props) => (
+export const StackStar = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const StackStar = (props) => (
 );
 
 StackStar.displayName = 'StackStar';
-
-export default StackStar;

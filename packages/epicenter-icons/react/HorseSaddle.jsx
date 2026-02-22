@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HorseSaddle = (props) => (
+export const HorseSaddle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const HorseSaddle = (props) => (
 );
 
 HorseSaddle.displayName = 'HorseSaddle';
-
-export default HorseSaddle;

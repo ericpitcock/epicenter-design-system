@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EuroCircle = (props) => (
+export const EuroCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const EuroCircle = (props) => (
 );
 
 EuroCircle.displayName = 'EuroCircle';
-
-export default EuroCircle;

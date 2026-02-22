@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CallMissed01 = (props) => (
+export const CallMissed01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CallMissed01 = (props) => (
 );
 
 CallMissed01.displayName = 'CallMissed01';
-
-export default CallMissed01;

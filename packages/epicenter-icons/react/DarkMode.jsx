@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DarkMode = (props) => (
+export const DarkMode = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DarkMode = (props) => (
 );
 
 DarkMode.displayName = 'DarkMode';
-
-export default DarkMode;

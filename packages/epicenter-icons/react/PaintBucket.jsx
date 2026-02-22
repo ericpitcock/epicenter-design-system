@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PaintBucket = (props) => (
+export const PaintBucket = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PaintBucket = (props) => (
 );
 
 PaintBucket.displayName = 'PaintBucket';
-
-export default PaintBucket;

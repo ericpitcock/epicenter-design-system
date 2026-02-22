@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArrowDiagonal = (props) => (
+export const ArrowDiagonal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ArrowDiagonal = (props) => (
 );
 
 ArrowDiagonal.displayName = 'ArrowDiagonal';
-
-export default ArrowDiagonal;

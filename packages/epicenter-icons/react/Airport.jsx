@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Airport = (props) => (
+export const Airport = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Airport = (props) => (
 );
 
 Airport.displayName = 'Airport';
-
-export default Airport;

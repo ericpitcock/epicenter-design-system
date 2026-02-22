@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PropertyView = (props) => (
+export const PropertyView = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const PropertyView = (props) => (
 );
 
 PropertyView.displayName = 'PropertyView';
-
-export default PropertyView;

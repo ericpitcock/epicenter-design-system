@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Snail = (props) => (
+export const Snail = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Snail = (props) => (
 );
 
 Snail.displayName = 'Snail';
-
-export default Snail;

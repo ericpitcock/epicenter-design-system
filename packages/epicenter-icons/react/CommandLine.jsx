@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CommandLine = (props) => (
+export const CommandLine = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CommandLine = (props) => (
 );
 
 CommandLine.displayName = 'CommandLine';
-
-export default CommandLine;

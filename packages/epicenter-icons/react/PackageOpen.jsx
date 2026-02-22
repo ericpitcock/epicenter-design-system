@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PackageOpen = (props) => (
+export const PackageOpen = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PackageOpen = (props) => (
 );
 
 PackageOpen.displayName = 'PackageOpen';
-
-export default PackageOpen;

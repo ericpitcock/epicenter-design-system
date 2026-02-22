@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Toilet01 = (props) => (
+export const Toilet01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Toilet01 = (props) => (
 );
 
 Toilet01.displayName = 'Toilet01';
-
-export default Toilet01;

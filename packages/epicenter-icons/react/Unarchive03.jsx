@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Unarchive03 = (props) => (
+export const Unarchive03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Unarchive03 = (props) => (
 );
 
 Unarchive03.displayName = 'Unarchive03';
-
-export default Unarchive03;

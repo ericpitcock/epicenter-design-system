@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CashbackYen = (props) => (
+export const CashbackYen = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CashbackYen = (props) => (
 );
 
 CashbackYen.displayName = 'CashbackYen';
-
-export default CashbackYen;

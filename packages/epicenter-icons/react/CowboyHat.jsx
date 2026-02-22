@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CowboyHat = (props) => (
+export const CowboyHat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CowboyHat = (props) => (
 );
 
 CowboyHat.displayName = 'CowboyHat';
-
-export default CowboyHat;

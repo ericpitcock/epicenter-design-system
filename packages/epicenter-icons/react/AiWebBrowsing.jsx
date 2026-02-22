@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiWebBrowsing = (props) => (
+export const AiWebBrowsing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const AiWebBrowsing = (props) => (
 );
 
 AiWebBrowsing.displayName = 'AiWebBrowsing';
-
-export default AiWebBrowsing;

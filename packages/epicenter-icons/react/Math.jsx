@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Math = (props) => (
+export const Math = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Math = (props) => (
 );
 
 Math.displayName = 'Math';
-
-export default Math;

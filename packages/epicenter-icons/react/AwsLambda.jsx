@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AwsLambda = (props) => (
+export const AwsLambda = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AwsLambda = (props) => (
 );
 
 AwsLambda.displayName = 'AwsLambda';
-
-export default AwsLambda;

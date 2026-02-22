@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SecurityValidation = (props) => (
+export const SecurityValidation = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SecurityValidation = (props) => (
 );
 
 SecurityValidation.displayName = 'SecurityValidation';
-
-export default SecurityValidation;

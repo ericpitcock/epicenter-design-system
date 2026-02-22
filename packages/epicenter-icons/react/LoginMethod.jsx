@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LoginMethod = (props) => (
+export const LoginMethod = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const LoginMethod = (props) => (
 );
 
 LoginMethod.displayName = 'LoginMethod';
-
-export default LoginMethod;

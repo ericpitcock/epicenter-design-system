@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Broccoli = (props) => (
+export const Broccoli = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Broccoli = (props) => (
 );
 
 Broccoli.displayName = 'Broccoli';
-
-export default Broccoli;

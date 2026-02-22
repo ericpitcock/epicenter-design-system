@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InsertRowDown = (props) => (
+export const InsertRowDown = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const InsertRowDown = (props) => (
 );
 
 InsertRowDown.displayName = 'InsertRowDown';
-
-export default InsertRowDown;

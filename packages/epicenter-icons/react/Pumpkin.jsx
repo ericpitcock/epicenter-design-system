@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pumpkin = (props) => (
+export const Pumpkin = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Pumpkin = (props) => (
 );
 
 Pumpkin.displayName = 'Pumpkin';
-
-export default Pumpkin;

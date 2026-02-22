@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LayerMask02 = (props) => (
+export const LayerMask02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LayerMask02 = (props) => (
 );
 
 LayerMask02.displayName = 'LayerMask02';
-
-export default LayerMask02;

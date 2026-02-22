@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Glove = (props) => (
+export const Glove = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -14,5 +12,3 @@ const Glove = (props) => (
 );
 
 Glove.displayName = 'Glove';
-
-export default Glove;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PackageOutOfStock = (props) => (
+export const PackageOutOfStock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PackageOutOfStock = (props) => (
 );
 
 PackageOutOfStock.displayName = 'PackageOutOfStock';
-
-export default PackageOutOfStock;

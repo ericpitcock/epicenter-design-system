@@ -1,6 +1,4 @@
-import React from 'react';
-
-const YogaMat = (props) => (
+export const YogaMat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const YogaMat = (props) => (
 );
 
 YogaMat.displayName = 'YogaMat';
-
-export default YogaMat;

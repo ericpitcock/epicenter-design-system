@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RacingFlag = (props) => (
+export const RacingFlag = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const RacingFlag = (props) => (
 );
 
 RacingFlag.displayName = 'RacingFlag';
-
-export default RacingFlag;

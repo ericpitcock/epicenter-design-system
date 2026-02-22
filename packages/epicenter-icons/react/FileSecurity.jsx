@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileSecurity = (props) => (
+export const FileSecurity = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileSecurity = (props) => (
 );
 
 FileSecurity.displayName = 'FileSecurity';
-
-export default FileSecurity;

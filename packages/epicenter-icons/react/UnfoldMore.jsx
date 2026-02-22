@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UnfoldMore = (props) => (
+export const UnfoldMore = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const UnfoldMore = (props) => (
 );
 
 UnfoldMore.displayName = 'UnfoldMore';
-
-export default UnfoldMore;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Diameter = (props) => (
+export const Diameter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Diameter = (props) => (
 );
 
 Diameter.displayName = 'Diameter';
-
-export default Diameter;

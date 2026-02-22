@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArchiveOff03 = (props) => (
+export const ArchiveOff03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ArchiveOff03 = (props) => (
 );
 
 ArchiveOff03.displayName = 'ArchiveOff03';
-
-export default ArchiveOff03;

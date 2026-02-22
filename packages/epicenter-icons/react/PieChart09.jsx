@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PieChart09 = (props) => (
+export const PieChart09 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PieChart09 = (props) => (
 );
 
 PieChart09.displayName = 'PieChart09';
-
-export default PieChart09;

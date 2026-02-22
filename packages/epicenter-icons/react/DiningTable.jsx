@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DiningTable = (props) => (
+export const DiningTable = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const DiningTable = (props) => (
 );
 
 DiningTable.displayName = 'DiningTable';
-
-export default DiningTable;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pdf02 = (props) => (
+export const Pdf02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Pdf02 = (props) => (
 );
 
 Pdf02.displayName = 'Pdf02';
-
-export default Pdf02;

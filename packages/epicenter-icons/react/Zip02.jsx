@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Zip02 = (props) => (
+export const Zip02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Zip02 = (props) => (
 );
 
 Zip02.displayName = 'Zip02';
-
-export default Zip02;

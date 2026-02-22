@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DeliveryDelay01 = (props) => (
+export const DeliveryDelay01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DeliveryDelay01 = (props) => (
 );
 
 DeliveryDelay01.displayName = 'DeliveryDelay01';
-
-export default DeliveryDelay01;

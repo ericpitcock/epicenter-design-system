@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CapRound = (props) => (
+export const CapRound = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CapRound = (props) => (
 );
 
 CapRound.displayName = 'CapRound';
-
-export default CapRound;

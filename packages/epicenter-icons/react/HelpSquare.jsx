@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HelpSquare = (props) => (
+export const HelpSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const HelpSquare = (props) => (
 );
 
 HelpSquare.displayName = 'HelpSquare';
-
-export default HelpSquare;

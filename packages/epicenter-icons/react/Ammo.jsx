@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ammo = (props) => (
+export const Ammo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 25"
@@ -20,5 +18,3 @@ const Ammo = (props) => (
 );
 
 Ammo.displayName = 'Ammo';
-
-export default Ammo;

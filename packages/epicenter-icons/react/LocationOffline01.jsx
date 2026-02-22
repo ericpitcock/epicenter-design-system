@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LocationOffline01 = (props) => (
+export const LocationOffline01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const LocationOffline01 = (props) => (
 );
 
 LocationOffline01.displayName = 'LocationOffline01';
-
-export default LocationOffline01;

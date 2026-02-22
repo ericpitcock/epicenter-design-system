@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CottonCandy = (props) => (
+export const CottonCandy = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CottonCandy = (props) => (
 );
 
 CottonCandy.displayName = 'CottonCandy';
-
-export default CottonCandy;

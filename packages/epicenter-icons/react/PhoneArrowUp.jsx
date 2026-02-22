@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PhoneArrowUp = (props) => (
+export const PhoneArrowUp = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PhoneArrowUp = (props) => (
 );
 
 PhoneArrowUp.displayName = 'PhoneArrowUp';
-
-export default PhoneArrowUp;

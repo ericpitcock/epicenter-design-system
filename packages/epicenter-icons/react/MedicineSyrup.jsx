@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MedicineSyrup = (props) => (
+export const MedicineSyrup = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MedicineSyrup = (props) => (
 );
 
 MedicineSyrup.displayName = 'MedicineSyrup';
-
-export default MedicineSyrup;

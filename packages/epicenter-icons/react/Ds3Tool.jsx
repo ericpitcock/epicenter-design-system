@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ds3Tool = (props) => (
+export const Ds3Tool = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Ds3Tool = (props) => (
 );
 
 Ds3Tool.displayName = 'Ds3Tool';
-
-export default Ds3Tool;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderLinks = (props) => (
+export const FolderLinks = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderLinks = (props) => (
 );
 
 FolderLinks.displayName = 'FolderLinks';
-
-export default FolderLinks;

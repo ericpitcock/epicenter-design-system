@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiScan = (props) => (
+export const AiScan = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AiScan = (props) => (
 );
 
 AiScan.displayName = 'AiScan';
-
-export default AiScan;

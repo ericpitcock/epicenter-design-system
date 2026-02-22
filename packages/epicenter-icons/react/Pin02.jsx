@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pin02 = (props) => (
+export const Pin02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Pin02 = (props) => (
 );
 
 Pin02.displayName = 'Pin02';
-
-export default Pin02;

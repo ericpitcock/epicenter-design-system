@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Frisbee = (props) => (
+export const Frisbee = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Frisbee = (props) => (
 );
 
 Frisbee.displayName = 'Frisbee';
-
-export default Frisbee;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LockPassword = (props) => (
+export const LockPassword = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const LockPassword = (props) => (
 );
 
 LockPassword.displayName = 'LockPassword';
-
-export default LockPassword;

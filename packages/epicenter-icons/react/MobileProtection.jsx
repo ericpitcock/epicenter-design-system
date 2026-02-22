@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MobileProtection = (props) => (
+export const MobileProtection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MobileProtection = (props) => (
 );
 
 MobileProtection.displayName = 'MobileProtection';
-
-export default MobileProtection;

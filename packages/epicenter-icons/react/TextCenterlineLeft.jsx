@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextCenterlineLeft = (props) => (
+export const TextCenterlineLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const TextCenterlineLeft = (props) => (
 );
 
 TextCenterlineLeft.displayName = 'TextCenterlineLeft';
-
-export default TextCenterlineLeft;

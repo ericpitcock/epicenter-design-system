@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Corporate = (props) => (
+export const Corporate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Corporate = (props) => (
 );
 
 Corporate.displayName = 'Corporate';
-
-export default Corporate;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MouseScroll02 = (props) => (
+export const MouseScroll02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MouseScroll02 = (props) => (
 );
 
 MouseScroll02.displayName = 'MouseScroll02';
-
-export default MouseScroll02;

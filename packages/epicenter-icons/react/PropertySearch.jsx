@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PropertySearch = (props) => (
+export const PropertySearch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PropertySearch = (props) => (
 );
 
 PropertySearch.displayName = 'PropertySearch';
-
-export default PropertySearch;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Haji = (props) => (
+export const Haji = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -19,5 +17,3 @@ const Haji = (props) => (
 );
 
 Haji.displayName = 'Haji';
-
-export default Haji;

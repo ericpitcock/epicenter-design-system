@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RightToLeftBlockQuote = (props) => (
+export const RightToLeftBlockQuote = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const RightToLeftBlockQuote = (props) => (
 );
 
 RightToLeftBlockQuote.displayName = 'RightToLeftBlockQuote';
-
-export default RightToLeftBlockQuote;

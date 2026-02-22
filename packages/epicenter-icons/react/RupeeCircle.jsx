@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RupeeCircle = (props) => (
+export const RupeeCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const RupeeCircle = (props) => (
 );
 
 RupeeCircle.displayName = 'RupeeCircle';
-
-export default RupeeCircle;

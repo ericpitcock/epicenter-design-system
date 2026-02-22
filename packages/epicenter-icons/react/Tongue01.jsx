@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tongue01 = (props) => (
+export const Tongue01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Tongue01 = (props) => (
 );
 
 Tongue01.displayName = 'Tongue01';
-
-export default Tongue01;

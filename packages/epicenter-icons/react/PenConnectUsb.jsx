@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PenConnectUsb = (props) => (
+export const PenConnectUsb = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PenConnectUsb = (props) => (
 );
 
 PenConnectUsb.displayName = 'PenConnectUsb';
-
-export default PenConnectUsb;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WorkoutRun = (props) => (
+export const WorkoutRun = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const WorkoutRun = (props) => (
 );
 
 WorkoutRun.displayName = 'WorkoutRun';
-
-export default WorkoutRun;

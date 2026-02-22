@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Engine = (props) => (
+export const Engine = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Engine = (props) => (
 );
 
 Engine.displayName = 'Engine';
-
-export default Engine;

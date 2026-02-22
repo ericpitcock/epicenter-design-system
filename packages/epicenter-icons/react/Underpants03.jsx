@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Underpants03 = (props) => (
+export const Underpants03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Underpants03 = (props) => (
 );
 
 Underpants03.displayName = 'Underpants03';
-
-export default Underpants03;

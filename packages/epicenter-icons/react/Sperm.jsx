@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sperm = (props) => (
+export const Sperm = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Sperm = (props) => (
 );
 
 Sperm.displayName = 'Sperm';
-
-export default Sperm;

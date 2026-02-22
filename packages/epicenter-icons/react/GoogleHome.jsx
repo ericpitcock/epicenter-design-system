@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GoogleHome = (props) => (
+export const GoogleHome = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const GoogleHome = (props) => (
 );
 
 GoogleHome.displayName = 'GoogleHome';
-
-export default GoogleHome;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hologram = (props) => (
+export const Hologram = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Hologram = (props) => (
 );
 
 Hologram.displayName = 'Hologram';
-
-export default Hologram;

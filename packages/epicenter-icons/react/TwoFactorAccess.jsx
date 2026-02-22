@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TwoFactorAccess = (props) => (
+export const TwoFactorAccess = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const TwoFactorAccess = (props) => (
 );
 
 TwoFactorAccess.displayName = 'TwoFactorAccess';
-
-export default TwoFactorAccess;

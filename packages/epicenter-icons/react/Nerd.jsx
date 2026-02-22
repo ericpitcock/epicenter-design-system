@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Nerd = (props) => (
+export const Nerd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Nerd = (props) => (
 );
 
 Nerd.displayName = 'Nerd';
-
-export default Nerd;

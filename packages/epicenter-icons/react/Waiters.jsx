@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Waiters = (props) => (
+export const Waiters = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Waiters = (props) => (
 );
 
 Waiters.displayName = 'Waiters';
-
-export default Waiters;

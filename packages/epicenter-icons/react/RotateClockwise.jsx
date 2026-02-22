@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RotateClockwise = (props) => (
+export const RotateClockwise = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const RotateClockwise = (props) => (
 );
 
 RotateClockwise.displayName = 'RotateClockwise';
-
-export default RotateClockwise;

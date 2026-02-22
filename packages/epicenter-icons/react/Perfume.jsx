@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Perfume = (props) => (
+export const Perfume = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Perfume = (props) => (
 );
 
 Perfume.displayName = 'Perfume';
-
-export default Perfume;

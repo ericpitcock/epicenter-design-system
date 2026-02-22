@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CloudServer = (props) => (
+export const CloudServer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CloudServer = (props) => (
 );
 
 CloudServer.displayName = 'CloudServer';
-
-export default CloudServer;

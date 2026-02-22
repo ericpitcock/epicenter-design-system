@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ComputerDesk01 = (props) => (
+export const ComputerDesk01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ComputerDesk01 = (props) => (
 );
 
 ComputerDesk01.displayName = 'ComputerDesk01';
-
-export default ComputerDesk01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderUnlocked = (props) => (
+export const FolderUnlocked = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderUnlocked = (props) => (
 );
 
 FolderUnlocked.displayName = 'FolderUnlocked';
-
-export default FolderUnlocked;

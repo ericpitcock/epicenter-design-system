@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Lantern = (props) => (
+export const Lantern = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -21,5 +19,3 @@ const Lantern = (props) => (
 );
 
 Lantern.displayName = 'Lantern';
-
-export default Lantern;

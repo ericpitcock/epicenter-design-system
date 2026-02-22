@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CommentRemove03 = (props) => (
+export const CommentRemove03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CommentRemove03 = (props) => (
 );
 
 CommentRemove03.displayName = 'CommentRemove03';
-
-export default CommentRemove03;

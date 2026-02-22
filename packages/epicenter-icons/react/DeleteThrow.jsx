@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DeleteThrow = (props) => (
+export const DeleteThrow = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DeleteThrow = (props) => (
 );
 
 DeleteThrow.displayName = 'DeleteThrow';
-
-export default DeleteThrow;

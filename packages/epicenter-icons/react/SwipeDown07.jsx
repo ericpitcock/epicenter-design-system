@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SwipeDown07 = (props) => (
+export const SwipeDown07 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SwipeDown07 = (props) => (
 );
 
 SwipeDown07.displayName = 'SwipeDown07';
-
-export default SwipeDown07;

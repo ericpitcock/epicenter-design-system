@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BubbleTea01 = (props) => (
+export const BubbleTea01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const BubbleTea01 = (props) => (
 );
 
 BubbleTea01.displayName = 'BubbleTea01';
-
-export default BubbleTea01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EaseIn = (props) => (
+export const EaseIn = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const EaseIn = (props) => (
 );
 
 EaseIn.displayName = 'EaseIn';
-
-export default EaseIn;

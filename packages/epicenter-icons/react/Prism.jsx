@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Prism = (props) => (
+export const Prism = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Prism = (props) => (
 );
 
 Prism.displayName = 'Prism';
-
-export default Prism;

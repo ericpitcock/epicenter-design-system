@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DrawingMode = (props) => (
+export const DrawingMode = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const DrawingMode = (props) => (
 );
 
 DrawingMode.displayName = 'DrawingMode';
-
-export default DrawingMode;

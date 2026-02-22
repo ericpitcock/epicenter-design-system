@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SchoolReportCard = (props) => (
+export const SchoolReportCard = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SchoolReportCard = (props) => (
 );
 
 SchoolReportCard.displayName = 'SchoolReportCard';
-
-export default SchoolReportCard;

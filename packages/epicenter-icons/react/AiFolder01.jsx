@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiFolder01 = (props) => (
+export const AiFolder01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const AiFolder01 = (props) => (
 );
 
 AiFolder01.displayName = 'AiFolder01';
-
-export default AiFolder01;

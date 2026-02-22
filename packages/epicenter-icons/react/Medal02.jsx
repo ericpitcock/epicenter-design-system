@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Medal02 = (props) => (
+export const Medal02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Medal02 = (props) => (
 );
 
 Medal02.displayName = 'Medal02';
-
-export default Medal02;

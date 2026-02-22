@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InspectCode = (props) => (
+export const InspectCode = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const InspectCode = (props) => (
 );
 
 InspectCode.displayName = 'InspectCode';
-
-export default InspectCode;

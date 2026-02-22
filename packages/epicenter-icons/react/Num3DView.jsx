@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Num3DView = (props) => (
+export const Num3DView = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Num3DView = (props) => (
 );
 
 Num3DView.displayName = 'Num3DView';
-
-export default Num3DView;

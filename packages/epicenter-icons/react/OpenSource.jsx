@@ -1,6 +1,4 @@
-import React from 'react';
-
-const OpenSource = (props) => (
+export const OpenSource = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const OpenSource = (props) => (
 );
 
 OpenSource.displayName = 'OpenSource';
-
-export default OpenSource;

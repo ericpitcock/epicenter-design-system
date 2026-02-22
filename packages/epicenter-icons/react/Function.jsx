@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Function = (props) => (
+export const Function = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Function = (props) => (
 );
 
 Function.displayName = 'Function';
-
-export default Function;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LinkForward = (props) => (
+export const LinkForward = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const LinkForward = (props) => (
 );
 
 LinkForward.displayName = 'LinkForward';
-
-export default LinkForward;

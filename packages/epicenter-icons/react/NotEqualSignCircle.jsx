@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NotEqualSignCircle = (props) => (
+export const NotEqualSignCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const NotEqualSignCircle = (props) => (
 );
 
 NotEqualSignCircle.displayName = 'NotEqualSignCircle';
-
-export default NotEqualSignCircle;

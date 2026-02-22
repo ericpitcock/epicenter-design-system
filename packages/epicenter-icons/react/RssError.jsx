@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RssError = (props) => (
+export const RssError = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const RssError = (props) => (
 );
 
 RssError.displayName = 'RssError';
-
-export default RssError;

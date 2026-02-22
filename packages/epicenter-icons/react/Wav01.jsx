@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wav01 = (props) => (
+export const Wav01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Wav01 = (props) => (
 );
 
 Wav01.displayName = 'Wav01';
-
-export default Wav01;

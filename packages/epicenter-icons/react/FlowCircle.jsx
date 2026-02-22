@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FlowCircle = (props) => (
+export const FlowCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const FlowCircle = (props) => (
 );
 
 FlowCircle.displayName = 'FlowCircle';
-
-export default FlowCircle;

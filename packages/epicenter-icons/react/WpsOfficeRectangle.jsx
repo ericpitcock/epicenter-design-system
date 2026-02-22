@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WpsOfficeRectangle = (props) => (
+export const WpsOfficeRectangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const WpsOfficeRectangle = (props) => (
 );
 
 WpsOfficeRectangle.displayName = 'WpsOfficeRectangle';
-
-export default WpsOfficeRectangle;

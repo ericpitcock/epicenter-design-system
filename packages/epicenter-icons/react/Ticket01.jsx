@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ticket01 = (props) => (
+export const Ticket01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Ticket01 = (props) => (
 );
 
 Ticket01.displayName = 'Ticket01';
-
-export default Ticket01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TrafficJam01 = (props) => (
+export const TrafficJam01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const TrafficJam01 = (props) => (
 );
 
 TrafficJam01.displayName = 'TrafficJam01';
-
-export default TrafficJam01;

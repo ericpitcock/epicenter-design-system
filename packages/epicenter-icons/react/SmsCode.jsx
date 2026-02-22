@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SmsCode = (props) => (
+export const SmsCode = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const SmsCode = (props) => (
 );
 
 SmsCode.displayName = 'SmsCode';
-
-export default SmsCode;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChatBlocked = (props) => (
+export const ChatBlocked = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ChatBlocked = (props) => (
 );
 
 ChatBlocked.displayName = 'ChatBlocked';
-
-export default ChatBlocked;

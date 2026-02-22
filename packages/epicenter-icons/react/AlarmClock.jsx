@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlarmClock = (props) => (
+export const AlarmClock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const AlarmClock = (props) => (
 );
 
 AlarmClock.displayName = 'AlarmClock';
-
-export default AlarmClock;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Capcut = (props) => (
+export const Capcut = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Capcut = (props) => (
 );
 
 Capcut.displayName = 'Capcut';
-
-export default Capcut;

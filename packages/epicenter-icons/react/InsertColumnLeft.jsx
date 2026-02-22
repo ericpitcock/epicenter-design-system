@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InsertColumnLeft = (props) => (
+export const InsertColumnLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const InsertColumnLeft = (props) => (
 );
 
 InsertColumnLeft.displayName = 'InsertColumnLeft';
-
-export default InsertColumnLeft;

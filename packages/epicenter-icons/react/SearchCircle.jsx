@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SearchCircle = (props) => (
+export const SearchCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SearchCircle = (props) => (
 );
 
 SearchCircle.displayName = 'SearchCircle';
-
-export default SearchCircle;

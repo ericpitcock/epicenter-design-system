@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SchoolTie = (props) => (
+export const SchoolTie = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SchoolTie = (props) => (
 );
 
 SchoolTie.displayName = 'SchoolTie';
-
-export default SchoolTie;

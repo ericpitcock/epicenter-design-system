@@ -1,6 +1,4 @@
-import React from 'react';
-
-const QqPlot = (props) => (
+export const QqPlot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const QqPlot = (props) => (
 );
 
 QqPlot.displayName = 'QqPlot';
-
-export default QqPlot;

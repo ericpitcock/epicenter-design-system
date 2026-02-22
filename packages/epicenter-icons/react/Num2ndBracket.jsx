@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Num2ndBracket = (props) => (
+export const Num2ndBracket = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Num2ndBracket = (props) => (
 );
 
 Num2ndBracket.displayName = 'Num2ndBracket';
-
-export default Num2ndBracket;

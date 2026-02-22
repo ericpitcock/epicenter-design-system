@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MessageDelay01 = (props) => (
+export const MessageDelay01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MessageDelay01 = (props) => (
 );
 
 MessageDelay01.displayName = 'MessageDelay01';
-
-export default MessageDelay01;

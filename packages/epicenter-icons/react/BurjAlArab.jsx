@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BurjAlArab = (props) => (
+export const BurjAlArab = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const BurjAlArab = (props) => (
 );
 
 BurjAlArab.displayName = 'BurjAlArab';
-
-export default BurjAlArab;

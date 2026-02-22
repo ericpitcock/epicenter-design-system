@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Viber = (props) => (
+export const Viber = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Viber = (props) => (
 );
 
 Viber.displayName = 'Viber';
-
-export default Viber;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Clock01 = (props) => (
+export const Clock01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Clock01 = (props) => (
 );
 
 Clock01.displayName = 'Clock01';
-
-export default Clock01;

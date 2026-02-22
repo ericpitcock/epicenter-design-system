@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DashboardSquare03 = (props) => (
+export const DashboardSquare03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DashboardSquare03 = (props) => (
 );
 
 DashboardSquare03.displayName = 'DashboardSquare03';
-
-export default DashboardSquare03;

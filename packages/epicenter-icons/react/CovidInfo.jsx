@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CovidInfo = (props) => (
+export const CovidInfo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CovidInfo = (props) => (
 );
 
 CovidInfo.displayName = 'CovidInfo';
-
-export default CovidInfo;

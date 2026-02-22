@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NoMeetingRoom = (props) => (
+export const NoMeetingRoom = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const NoMeetingRoom = (props) => (
 );
 
 NoMeetingRoom.displayName = 'NoMeetingRoom';
-
-export default NoMeetingRoom;

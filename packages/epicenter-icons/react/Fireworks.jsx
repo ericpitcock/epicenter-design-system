@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Fireworks = (props) => (
+export const Fireworks = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -23,5 +21,3 @@ const Fireworks = (props) => (
 );
 
 Fireworks.displayName = 'Fireworks';
-
-export default Fireworks;

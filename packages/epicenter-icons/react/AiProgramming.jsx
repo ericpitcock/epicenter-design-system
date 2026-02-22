@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiProgramming = (props) => (
+export const AiProgramming = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const AiProgramming = (props) => (
 );
 
 AiProgramming.displayName = 'AiProgramming';
-
-export default AiProgramming;

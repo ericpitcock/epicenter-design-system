@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TableLamp02 = (props) => (
+export const TableLamp02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const TableLamp02 = (props) => (
 );
 
 TableLamp02.displayName = 'TableLamp02';
-
-export default TableLamp02;

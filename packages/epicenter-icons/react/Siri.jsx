@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Siri = (props) => (
+export const Siri = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Siri = (props) => (
 );
 
 Siri.displayName = 'Siri';
-
-export default Siri;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiMail01 = (props) => (
+export const AiMail01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AiMail01 = (props) => (
 );
 
 AiMail01.displayName = 'AiMail01';
-
-export default AiMail01;

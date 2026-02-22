@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bookshelf02 = (props) => (
+export const Bookshelf02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Bookshelf02 = (props) => (
 );
 
 Bookshelf02.displayName = 'Bookshelf02';
-
-export default Bookshelf02;

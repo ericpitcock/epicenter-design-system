@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Zeppelin = (props) => (
+export const Zeppelin = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Zeppelin = (props) => (
 );
 
 Zeppelin.displayName = 'Zeppelin';
-
-export default Zeppelin;

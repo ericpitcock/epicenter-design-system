@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Calculate = (props) => (
+export const Calculate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Calculate = (props) => (
 );
 
 Calculate.displayName = 'Calculate';
-
-export default Calculate;

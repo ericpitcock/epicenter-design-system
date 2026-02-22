@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GivePill = (props) => (
+export const GivePill = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const GivePill = (props) => (
 );
 
 GivePill.displayName = 'GivePill';
-
-export default GivePill;

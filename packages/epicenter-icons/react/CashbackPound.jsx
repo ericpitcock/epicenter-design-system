@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CashbackPound = (props) => (
+export const CashbackPound = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CashbackPound = (props) => (
 );
 
 CashbackPound.displayName = 'CashbackPound';
-
-export default CashbackPound;

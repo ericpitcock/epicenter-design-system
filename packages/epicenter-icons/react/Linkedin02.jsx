@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Linkedin02 = (props) => (
+export const Linkedin02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Linkedin02 = (props) => (
 );
 
 Linkedin02.displayName = 'Linkedin02';
-
-export default Linkedin02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tips = (props) => (
+export const Tips = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Tips = (props) => (
 );
 
 Tips.displayName = 'Tips';
-
-export default Tips;

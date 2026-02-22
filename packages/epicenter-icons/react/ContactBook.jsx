@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ContactBook = (props) => (
+export const ContactBook = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ContactBook = (props) => (
 );
 
 ContactBook.displayName = 'ContactBook';
-
-export default ContactBook;

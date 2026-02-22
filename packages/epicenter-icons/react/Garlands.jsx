@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Garlands = (props) => (
+export const Garlands = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const Garlands = (props) => (
 );
 
 Garlands.displayName = 'Garlands';
-
-export default Garlands;

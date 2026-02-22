@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WaterPolo = (props) => (
+export const WaterPolo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const WaterPolo = (props) => (
 );
 
 WaterPolo.displayName = 'WaterPolo';
-
-export default WaterPolo;

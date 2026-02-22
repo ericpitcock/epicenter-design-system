@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RamadhanMonth = (props) => (
+export const RamadhanMonth = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -17,5 +15,3 @@ const RamadhanMonth = (props) => (
 );
 
 RamadhanMonth.displayName = 'RamadhanMonth';
-
-export default RamadhanMonth;

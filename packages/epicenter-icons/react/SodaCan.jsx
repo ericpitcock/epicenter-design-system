@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SodaCan = (props) => (
+export const SodaCan = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const SodaCan = (props) => (
 );
 
 SodaCan.displayName = 'SodaCan';
-
-export default SodaCan;

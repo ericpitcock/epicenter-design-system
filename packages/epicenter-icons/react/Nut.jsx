@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Nut = (props) => (
+export const Nut = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Nut = (props) => (
 );
 
 Nut.displayName = 'Nut';
-
-export default Nut;

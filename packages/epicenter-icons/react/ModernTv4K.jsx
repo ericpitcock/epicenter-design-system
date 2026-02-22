@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ModernTv4K = (props) => (
+export const ModernTv4K = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ModernTv4K = (props) => (
 );
 
 ModernTv4K.displayName = 'ModernTv4K';
-
-export default ModernTv4K;

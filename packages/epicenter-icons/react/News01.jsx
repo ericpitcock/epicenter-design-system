@@ -1,6 +1,4 @@
-import React from 'react';
-
-const News01 = (props) => (
+export const News01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const News01 = (props) => (
 );
 
 News01.displayName = 'News01';
-
-export default News01;

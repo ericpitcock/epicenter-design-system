@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Celsius = (props) => (
+export const Celsius = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Celsius = (props) => (
 );
 
 Celsius.displayName = 'Celsius';
-
-export default Celsius;

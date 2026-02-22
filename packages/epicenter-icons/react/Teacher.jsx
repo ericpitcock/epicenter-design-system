@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Teacher = (props) => (
+export const Teacher = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Teacher = (props) => (
 );
 
 Teacher.displayName = 'Teacher';
-
-export default Teacher;

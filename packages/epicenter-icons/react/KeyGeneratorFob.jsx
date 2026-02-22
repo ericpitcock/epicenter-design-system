@@ -1,6 +1,4 @@
-import React from 'react';
-
-const KeyGeneratorFob = (props) => (
+export const KeyGeneratorFob = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const KeyGeneratorFob = (props) => (
 );
 
 KeyGeneratorFob.displayName = 'KeyGeneratorFob';
-
-export default KeyGeneratorFob;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GitCompare = (props) => (
+export const GitCompare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const GitCompare = (props) => (
 );
 
 GitCompare.displayName = 'GitCompare';
-
-export default GitCompare;

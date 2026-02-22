@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Towels = (props) => (
+export const Towels = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Towels = (props) => (
 );
 
 Towels.displayName = 'Towels';
-
-export default Towels;

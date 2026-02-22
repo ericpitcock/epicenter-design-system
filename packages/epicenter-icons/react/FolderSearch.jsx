@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderSearch = (props) => (
+export const FolderSearch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderSearch = (props) => (
 );
 
 FolderSearch.displayName = 'FolderSearch';
-
-export default FolderSearch;

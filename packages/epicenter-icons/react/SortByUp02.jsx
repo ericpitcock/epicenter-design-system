@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SortByUp02 = (props) => (
+export const SortByUp02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SortByUp02 = (props) => (
 );
 
 SortByUp02.displayName = 'SortByUp02';
-
-export default SortByUp02;

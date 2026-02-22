@@ -1,6 +1,4 @@
-import React from 'react';
-
-const IndiaGate = (props) => (
+export const IndiaGate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const IndiaGate = (props) => (
 );
 
 IndiaGate.displayName = 'IndiaGate';
-
-export default IndiaGate;

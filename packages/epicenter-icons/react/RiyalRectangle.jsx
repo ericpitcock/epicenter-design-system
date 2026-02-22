@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RiyalRectangle = (props) => (
+export const RiyalRectangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const RiyalRectangle = (props) => (
 );
 
 RiyalRectangle.displayName = 'RiyalRectangle';
-
-export default RiyalRectangle;

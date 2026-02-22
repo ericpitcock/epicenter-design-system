@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoneySendCircle = (props) => (
+export const MoneySendCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MoneySendCircle = (props) => (
 );
 
 MoneySendCircle.displayName = 'MoneySendCircle';
-
-export default MoneySendCircle;

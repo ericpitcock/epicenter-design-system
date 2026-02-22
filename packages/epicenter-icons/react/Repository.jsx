@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Repository = (props) => (
+export const Repository = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Repository = (props) => (
 );
 
 Repository.displayName = 'Repository';
-
-export default Repository;

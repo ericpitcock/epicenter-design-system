@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LookTop = (props) => (
+export const LookTop = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const LookTop = (props) => (
 );
 
 LookTop.displayName = 'LookTop';
-
-export default LookTop;

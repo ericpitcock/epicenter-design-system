@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Unlink01 = (props) => (
+export const Unlink01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Unlink01 = (props) => (
 );
 
 Unlink01.displayName = 'Unlink01';
-
-export default Unlink01;

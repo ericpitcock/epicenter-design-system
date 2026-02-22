@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CircleArrowRight01 = (props) => (
+export const CircleArrowRight01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CircleArrowRight01 = (props) => (
 );
 
 CircleArrowRight01.displayName = 'CircleArrowRight01';
-
-export default CircleArrowRight01;

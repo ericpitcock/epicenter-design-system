@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bone02 = (props) => (
+export const Bone02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Bone02 = (props) => (
 );
 
 Bone02.displayName = 'Bone02';
-
-export default Bone02;

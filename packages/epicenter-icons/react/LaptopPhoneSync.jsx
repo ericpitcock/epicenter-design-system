@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LaptopPhoneSync = (props) => (
+export const LaptopPhoneSync = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const LaptopPhoneSync = (props) => (
 );
 
 LaptopPhoneSync.displayName = 'LaptopPhoneSync';
-
-export default LaptopPhoneSync;

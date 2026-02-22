@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NoInternet = (props) => (
+export const NoInternet = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const NoInternet = (props) => (
 );
 
 NoInternet.displayName = 'NoInternet';
-
-export default NoInternet;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RollingPin = (props) => (
+export const RollingPin = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const RollingPin = (props) => (
 );
 
 RollingPin.displayName = 'RollingPin';
-
-export default RollingPin;

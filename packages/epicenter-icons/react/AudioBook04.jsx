@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AudioBook04 = (props) => (
+export const AudioBook04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AudioBook04 = (props) => (
 );
 
 AudioBook04.displayName = 'AudioBook04';
-
-export default AudioBook04;

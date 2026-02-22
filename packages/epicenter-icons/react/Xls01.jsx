@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Xls01 = (props) => (
+export const Xls01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Xls01 = (props) => (
 );
 
 Xls01.displayName = 'Xls01';
-
-export default Xls01;

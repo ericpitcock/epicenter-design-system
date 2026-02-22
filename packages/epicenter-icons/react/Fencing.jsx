@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Fencing = (props) => (
+export const Fencing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Fencing = (props) => (
 );
 
 Fencing.displayName = 'Fencing';
-
-export default Fencing;

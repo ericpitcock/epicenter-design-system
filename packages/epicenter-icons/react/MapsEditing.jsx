@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MapsEditing = (props) => (
+export const MapsEditing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MapsEditing = (props) => (
 );
 
 MapsEditing.displayName = 'MapsEditing';
-
-export default MapsEditing;

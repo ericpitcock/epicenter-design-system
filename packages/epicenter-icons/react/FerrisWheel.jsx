@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FerrisWheel = (props) => (
+export const FerrisWheel = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const FerrisWheel = (props) => (
 );
 
 FerrisWheel.displayName = 'FerrisWheel';
-
-export default FerrisWheel;

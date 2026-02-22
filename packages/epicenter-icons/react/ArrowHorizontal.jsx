@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArrowHorizontal = (props) => (
+export const ArrowHorizontal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ArrowHorizontal = (props) => (
 );
 
 ArrowHorizontal.displayName = 'ArrowHorizontal';
-
-export default ArrowHorizontal;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Lighthouse = (props) => (
+export const Lighthouse = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const Lighthouse = (props) => (
 );
 
 Lighthouse.displayName = 'Lighthouse';
-
-export default Lighthouse;

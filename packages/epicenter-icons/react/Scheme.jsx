@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Scheme = (props) => (
+export const Scheme = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Scheme = (props) => (
 );
 
 Scheme.displayName = 'Scheme';
-
-export default Scheme;

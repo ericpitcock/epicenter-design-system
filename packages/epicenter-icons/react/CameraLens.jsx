@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CameraLens = (props) => (
+export const CameraLens = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CameraLens = (props) => (
 );
 
 CameraLens.displayName = 'CameraLens';
-
-export default CameraLens;

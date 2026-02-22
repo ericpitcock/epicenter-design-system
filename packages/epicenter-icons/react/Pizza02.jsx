@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pizza02 = (props) => (
+export const Pizza02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Pizza02 = (props) => (
 );
 
 Pizza02.displayName = 'Pizza02';
-
-export default Pizza02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CursorHold02 = (props) => (
+export const CursorHold02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CursorHold02 = (props) => (
 );
 
 CursorHold02.displayName = 'CursorHold02';
-
-export default CursorHold02;

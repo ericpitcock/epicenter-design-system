@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Swarm = (props) => (
+export const Swarm = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Swarm = (props) => (
 );
 
 Swarm.displayName = 'Swarm';
-
-export default Swarm;

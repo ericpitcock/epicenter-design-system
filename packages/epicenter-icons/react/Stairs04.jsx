@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Stairs04 = (props) => (
+export const Stairs04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Stairs04 = (props) => (
 );
 
 Stairs04.displayName = 'Stairs04';
-
-export default Stairs04;

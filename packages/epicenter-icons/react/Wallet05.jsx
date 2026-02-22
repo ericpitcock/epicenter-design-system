@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wallet05 = (props) => (
+export const Wallet05 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Wallet05 = (props) => (
 );
 
 Wallet05.displayName = 'Wallet05';
-
-export default Wallet05;

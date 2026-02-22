@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Frameworks = (props) => (
+export const Frameworks = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const Frameworks = (props) => (
 );
 
 Frameworks.displayName = 'Frameworks';
-
-export default Frameworks;

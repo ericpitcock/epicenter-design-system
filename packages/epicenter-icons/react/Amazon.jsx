@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Amazon = (props) => (
+export const Amazon = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Amazon = (props) => (
 );
 
 Amazon.displayName = 'Amazon';
-
-export default Amazon;

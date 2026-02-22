@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Profile = (props) => (
+export const Profile = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Profile = (props) => (
 );
 
 Profile.displayName = 'Profile';
-
-export default Profile;

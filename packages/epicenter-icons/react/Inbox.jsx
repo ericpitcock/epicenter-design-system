@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Inbox = (props) => (
+export const Inbox = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Inbox = (props) => (
 );
 
 Inbox.displayName = 'Inbox';
-
-export default Inbox;

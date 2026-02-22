@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AllBookmark = (props) => (
+export const AllBookmark = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AllBookmark = (props) => (
 );
 
 AllBookmark.displayName = 'AllBookmark';
-
-export default AllBookmark;

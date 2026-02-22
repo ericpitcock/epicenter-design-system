@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChatAdd01 = (props) => (
+export const ChatAdd01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChatAdd01 = (props) => (
 );
 
 ChatAdd01.displayName = 'ChatAdd01';
-
-export default ChatAdd01;

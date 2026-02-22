@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileView = (props) => (
+export const FileView = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const FileView = (props) => (
 );
 
 FileView.displayName = 'FileView';
-
-export default FileView;

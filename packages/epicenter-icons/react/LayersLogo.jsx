@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LayersLogo = (props) => (
+export const LayersLogo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const LayersLogo = (props) => (
 );
 
 LayersLogo.displayName = 'LayersLogo';
-
-export default LayersLogo;

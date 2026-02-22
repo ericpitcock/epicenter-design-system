@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SmartphoneWifi = (props) => (
+export const SmartphoneWifi = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const SmartphoneWifi = (props) => (
 );
 
 SmartphoneWifi.displayName = 'SmartphoneWifi';
-
-export default SmartphoneWifi;

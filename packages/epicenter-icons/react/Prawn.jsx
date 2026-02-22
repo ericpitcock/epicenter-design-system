@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Prawn = (props) => (
+export const Prawn = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Prawn = (props) => (
 );
 
 Prawn.displayName = 'Prawn';
-
-export default Prawn;

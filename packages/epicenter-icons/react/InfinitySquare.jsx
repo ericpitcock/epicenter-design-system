@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InfinitySquare = (props) => (
+export const InfinitySquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const InfinitySquare = (props) => (
 );
 
 InfinitySquare.displayName = 'InfinitySquare';
-
-export default InfinitySquare;

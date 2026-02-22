@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChatGpt = (props) => (
+export const ChatGpt = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const ChatGpt = (props) => (
 );
 
 ChatGpt.displayName = 'ChatGpt';
-
-export default ChatGpt;

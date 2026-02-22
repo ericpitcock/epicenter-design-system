@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Path = (props) => (
+export const Path = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Path = (props) => (
 );
 
 Path.displayName = 'Path';
-
-export default Path;

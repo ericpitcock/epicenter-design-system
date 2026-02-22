@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShoppingBasketFavorite01 = (props) => (
+export const ShoppingBasketFavorite01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ShoppingBasketFavorite01 = (props) => (
 );
 
 ShoppingBasketFavorite01.displayName = 'ShoppingBasketFavorite01';
-
-export default ShoppingBasketFavorite01;

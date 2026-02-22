@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Printer = (props) => (
+export const Printer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Printer = (props) => (
 );
 
 Printer.displayName = 'Printer';
-
-export default Printer;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Promotion = (props) => (
+export const Promotion = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Promotion = (props) => (
 );
 
 Promotion.displayName = 'Promotion';
-
-export default Promotion;

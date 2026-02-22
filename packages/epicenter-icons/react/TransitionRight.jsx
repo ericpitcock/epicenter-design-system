@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TransitionRight = (props) => (
+export const TransitionRight = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const TransitionRight = (props) => (
 );
 
 TransitionRight.displayName = 'TransitionRight';
-
-export default TransitionRight;

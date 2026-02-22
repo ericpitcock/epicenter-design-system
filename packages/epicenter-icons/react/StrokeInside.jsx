@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StrokeInside = (props) => (
+export const StrokeInside = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const StrokeInside = (props) => (
 );
 
 StrokeInside.displayName = 'StrokeInside';
-
-export default StrokeInside;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Noodles = (props) => (
+export const Noodles = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Noodles = (props) => (
 );
 
 Noodles.displayName = 'Noodles';
-
-export default Noodles;

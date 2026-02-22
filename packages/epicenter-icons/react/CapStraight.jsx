@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CapStraight = (props) => (
+export const CapStraight = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CapStraight = (props) => (
 );
 
 CapStraight.displayName = 'CapStraight';
-
-export default CapStraight;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ReduceParagraph = (props) => (
+export const ReduceParagraph = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ReduceParagraph = (props) => (
 );
 
 ReduceParagraph.displayName = 'ReduceParagraph';
-
-export default ReduceParagraph;

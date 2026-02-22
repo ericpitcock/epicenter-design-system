@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Kanban = (props) => (
+export const Kanban = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Kanban = (props) => (
 );
 
 Kanban.displayName = 'Kanban';
-
-export default Kanban;

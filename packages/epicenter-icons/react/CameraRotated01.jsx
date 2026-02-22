@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CameraRotated01 = (props) => (
+export const CameraRotated01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CameraRotated01 = (props) => (
 );
 
 CameraRotated01.displayName = 'CameraRotated01';
-
-export default CameraRotated01;

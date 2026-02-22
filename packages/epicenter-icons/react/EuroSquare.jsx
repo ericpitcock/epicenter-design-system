@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EuroSquare = (props) => (
+export const EuroSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const EuroSquare = (props) => (
 );
 
 EuroSquare.displayName = 'EuroSquare';
-
-export default EuroSquare;

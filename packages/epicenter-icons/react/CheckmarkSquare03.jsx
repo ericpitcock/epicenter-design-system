@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CheckmarkSquare03 = (props) => (
+export const CheckmarkSquare03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CheckmarkSquare03 = (props) => (
 );
 
 CheckmarkSquare03.displayName = 'CheckmarkSquare03';
-
-export default CheckmarkSquare03;

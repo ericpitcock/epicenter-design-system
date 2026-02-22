@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderAudio = (props) => (
+export const FolderAudio = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderAudio = (props) => (
 );
 
 FolderAudio.displayName = 'FolderAudio';
-
-export default FolderAudio;

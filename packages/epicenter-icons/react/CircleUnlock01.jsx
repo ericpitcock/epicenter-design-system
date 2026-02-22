@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CircleUnlock01 = (props) => (
+export const CircleUnlock01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const CircleUnlock01 = (props) => (
 );
 
 CircleUnlock01.displayName = 'CircleUnlock01';
-
-export default CircleUnlock01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Internet = (props) => (
+export const Internet = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Internet = (props) => (
 );
 
 Internet.displayName = 'Internet';
-
-export default Internet;

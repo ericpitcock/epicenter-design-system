@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BubbleChatQuestion = (props) => (
+export const BubbleChatQuestion = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BubbleChatQuestion = (props) => (
 );
 
 BubbleChatQuestion.displayName = 'BubbleChatQuestion';
-
-export default BubbleChatQuestion;

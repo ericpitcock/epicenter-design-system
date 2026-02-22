@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Kettle = (props) => (
+export const Kettle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -17,5 +15,3 @@ const Kettle = (props) => (
 );
 
 Kettle.displayName = 'Kettle';
-
-export default Kettle;

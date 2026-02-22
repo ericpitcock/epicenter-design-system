@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wechat = (props) => (
+export const Wechat = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Wechat = (props) => (
 );
 
 Wechat.displayName = 'Wechat';
-
-export default Wechat;

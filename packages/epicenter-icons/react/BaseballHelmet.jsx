@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BaseballHelmet = (props) => (
+export const BaseballHelmet = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BaseballHelmet = (props) => (
 );
 
 BaseballHelmet.displayName = 'BaseballHelmet';
-
-export default BaseballHelmet;

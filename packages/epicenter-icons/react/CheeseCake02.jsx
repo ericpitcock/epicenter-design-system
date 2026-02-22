@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CheeseCake02 = (props) => (
+export const CheeseCake02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const CheeseCake02 = (props) => (
 );
 
 CheeseCake02.displayName = 'CheeseCake02';
-
-export default CheeseCake02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ToyTrain = (props) => (
+export const ToyTrain = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const ToyTrain = (props) => (
 );
 
 ToyTrain.displayName = 'ToyTrain';
-
-export default ToyTrain;

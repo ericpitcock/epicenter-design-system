@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Swatch = (props) => (
+export const Swatch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Swatch = (props) => (
 );
 
 Swatch.displayName = 'Swatch';
-
-export default Swatch;

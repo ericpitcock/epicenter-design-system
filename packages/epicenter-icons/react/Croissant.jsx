@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Croissant = (props) => (
+export const Croissant = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Croissant = (props) => (
 );
 
 Croissant.displayName = 'Croissant';
-
-export default Croissant;

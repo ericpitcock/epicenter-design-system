@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NotificationOff02 = (props) => (
+export const NotificationOff02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const NotificationOff02 = (props) => (
 );
 
 NotificationOff02.displayName = 'NotificationOff02';
-
-export default NotificationOff02;

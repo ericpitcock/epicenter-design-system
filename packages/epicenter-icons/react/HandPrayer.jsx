@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HandPrayer = (props) => (
+export const HandPrayer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const HandPrayer = (props) => (
 );
 
 HandPrayer.displayName = 'HandPrayer';
-
-export default HandPrayer;

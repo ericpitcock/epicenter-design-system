@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Notion01 = (props) => (
+export const Notion01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Notion01 = (props) => (
 );
 
 Notion01.displayName = 'Notion01';
-
-export default Notion01;

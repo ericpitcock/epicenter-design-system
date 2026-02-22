@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DashboardSpeed02 = (props) => (
+export const DashboardSpeed02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DashboardSpeed02 = (props) => (
 );
 
 DashboardSpeed02.displayName = 'DashboardSpeed02';
-
-export default DashboardSpeed02;

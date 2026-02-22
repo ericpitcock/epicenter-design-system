@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Spirals = (props) => (
+export const Spirals = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Spirals = (props) => (
 );
 
 Spirals.displayName = 'Spirals';
-
-export default Spirals;

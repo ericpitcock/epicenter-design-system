@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileCorrupt = (props) => (
+export const FileCorrupt = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FileCorrupt = (props) => (
 );
 
 FileCorrupt.displayName = 'FileCorrupt';
-
-export default FileCorrupt;

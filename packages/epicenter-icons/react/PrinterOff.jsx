@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PrinterOff = (props) => (
+export const PrinterOff = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PrinterOff = (props) => (
 );
 
 PrinterOff.displayName = 'PrinterOff';
-
-export default PrinterOff;

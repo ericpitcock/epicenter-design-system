@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MachineRobot = (props) => (
+export const MachineRobot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const MachineRobot = (props) => (
 );
 
 MachineRobot.displayName = 'MachineRobot';
-
-export default MachineRobot;

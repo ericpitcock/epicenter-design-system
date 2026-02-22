@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Blocked = (props) => (
+export const Blocked = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Blocked = (props) => (
 );
 
 Blocked.displayName = 'Blocked';
-
-export default Blocked;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tasbih = (props) => (
+export const Tasbih = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -21,5 +19,3 @@ const Tasbih = (props) => (
 );
 
 Tasbih.displayName = 'Tasbih';
-
-export default Tasbih;

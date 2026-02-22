@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiCloud = (props) => (
+export const AiCloud = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AiCloud = (props) => (
 );
 
 AiCloud.displayName = 'AiCloud';
-
-export default AiCloud;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Shutterstock = (props) => (
+export const Shutterstock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Shutterstock = (props) => (
 );
 
 Shutterstock.displayName = 'Shutterstock';
-
-export default Shutterstock;

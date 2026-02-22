@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiChemistry02 = (props) => (
+export const AiChemistry02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const AiChemistry02 = (props) => (
 );
 
 AiChemistry02.displayName = 'AiChemistry02';
-
-export default AiChemistry02;

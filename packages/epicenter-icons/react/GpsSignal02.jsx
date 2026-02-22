@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GpsSignal02 = (props) => (
+export const GpsSignal02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const GpsSignal02 = (props) => (
 );
 
 GpsSignal02.displayName = 'GpsSignal02';
-
-export default GpsSignal02;

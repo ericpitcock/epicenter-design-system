@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SquareLockPassword = (props) => (
+export const SquareLockPassword = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SquareLockPassword = (props) => (
 );
 
 SquareLockPassword.displayName = 'SquareLockPassword';
-
-export default SquareLockPassword;

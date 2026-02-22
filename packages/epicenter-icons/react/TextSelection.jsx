@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextSelection = (props) => (
+export const TextSelection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TextSelection = (props) => (
 );
 
 TextSelection.displayName = 'TextSelection';
-
-export default TextSelection;

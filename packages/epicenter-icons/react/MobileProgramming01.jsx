@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MobileProgramming01 = (props) => (
+export const MobileProgramming01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const MobileProgramming01 = (props) => (
 );
 
 MobileProgramming01.displayName = 'MobileProgramming01';
-
-export default MobileProgramming01;

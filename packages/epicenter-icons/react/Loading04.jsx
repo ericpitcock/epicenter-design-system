@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Loading04 = (props) => (
+export const Loading04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Loading04 = (props) => (
 );
 
 Loading04.displayName = 'Loading04';
-
-export default Loading04;

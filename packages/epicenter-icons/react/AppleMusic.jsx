@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AppleMusic = (props) => (
+export const AppleMusic = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AppleMusic = (props) => (
 );
 
 AppleMusic.displayName = 'AppleMusic';
-
-export default AppleMusic;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Plaxo = (props) => (
+export const Plaxo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Plaxo = (props) => (
 );
 
 Plaxo.displayName = 'Plaxo';
-
-export default Plaxo;

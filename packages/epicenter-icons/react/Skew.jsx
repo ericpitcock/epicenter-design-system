@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Skew = (props) => (
+export const Skew = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Skew = (props) => (
 );
 
 Skew.displayName = 'Skew';
-
-export default Skew;

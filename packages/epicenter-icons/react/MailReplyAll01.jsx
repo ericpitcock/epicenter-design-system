@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MailReplyAll01 = (props) => (
+export const MailReplyAll01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MailReplyAll01 = (props) => (
 );
 
 MailReplyAll01.displayName = 'MailReplyAll01';
-
-export default MailReplyAll01;

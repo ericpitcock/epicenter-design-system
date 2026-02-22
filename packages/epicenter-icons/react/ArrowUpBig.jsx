@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ArrowUpBig = (props) => (
+export const ArrowUpBig = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const ArrowUpBig = (props) => (
 );
 
 ArrowUpBig.displayName = 'ArrowUpBig';
-
-export default ArrowUpBig;

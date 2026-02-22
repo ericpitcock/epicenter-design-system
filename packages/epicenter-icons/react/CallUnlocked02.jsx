@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CallUnlocked02 = (props) => (
+export const CallUnlocked02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CallUnlocked02 = (props) => (
 );
 
 CallUnlocked02.displayName = 'CallUnlocked02';
-
-export default CallUnlocked02;

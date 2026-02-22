@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Steering = (props) => (
+export const Steering = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Steering = (props) => (
 );
 
 Steering.displayName = 'Steering';
-
-export default Steering;

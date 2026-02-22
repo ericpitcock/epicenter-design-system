@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Voice = (props) => (
+export const Voice = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Voice = (props) => (
 );
 
 Voice.displayName = 'Voice';
-
-export default Voice;

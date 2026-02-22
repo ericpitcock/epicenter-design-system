@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Gold = (props) => (
+export const Gold = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Gold = (props) => (
 );
 
 Gold.displayName = 'Gold';
-
-export default Gold;

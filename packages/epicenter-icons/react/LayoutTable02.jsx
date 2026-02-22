@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LayoutTable02 = (props) => (
+export const LayoutTable02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const LayoutTable02 = (props) => (
 );
 
 LayoutTable02.displayName = 'LayoutTable02';
-
-export default LayoutTable02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Timeline = (props) => (
+export const Timeline = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Timeline = (props) => (
 );
 
 Timeline.displayName = 'Timeline';
-
-export default Timeline;

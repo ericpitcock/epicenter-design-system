@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Algorithm = (props) => (
+export const Algorithm = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Algorithm = (props) => (
 );
 
 Algorithm.displayName = 'Algorithm';
-
-export default Algorithm;

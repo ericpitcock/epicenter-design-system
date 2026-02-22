@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sheriff02 = (props) => (
+export const Sheriff02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Sheriff02 = (props) => (
 );
 
 Sheriff02.displayName = 'Sheriff02';
-
-export default Sheriff02;

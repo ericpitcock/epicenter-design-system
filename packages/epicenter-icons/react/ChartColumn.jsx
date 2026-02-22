@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartColumn = (props) => (
+export const ChartColumn = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChartColumn = (props) => (
 );
 
 ChartColumn.displayName = 'ChartColumn';
-
-export default ChartColumn;

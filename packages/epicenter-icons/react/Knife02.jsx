@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Knife02 = (props) => (
+export const Knife02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -13,5 +11,3 @@ const Knife02 = (props) => (
 );
 
 Knife02.displayName = 'Knife02';
-
-export default Knife02;

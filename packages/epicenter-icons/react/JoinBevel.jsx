@@ -1,6 +1,4 @@
-import React from 'react';
-
-const JoinBevel = (props) => (
+export const JoinBevel = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const JoinBevel = (props) => (
 );
 
 JoinBevel.displayName = 'JoinBevel';
-
-export default JoinBevel;

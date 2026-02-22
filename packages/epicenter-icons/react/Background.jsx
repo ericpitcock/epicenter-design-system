@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Background = (props) => (
+export const Background = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Background = (props) => (
 );
 
 Background.displayName = 'Background';
-
-export default Background;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ParkingAreaCircle = (props) => (
+export const ParkingAreaCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ParkingAreaCircle = (props) => (
 );
 
 ParkingAreaCircle.displayName = 'ParkingAreaCircle';
-
-export default ParkingAreaCircle;

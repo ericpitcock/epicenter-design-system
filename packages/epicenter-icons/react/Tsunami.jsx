@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Tsunami = (props) => (
+export const Tsunami = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Tsunami = (props) => (
 );
 
 Tsunami.displayName = 'Tsunami';
-
-export default Tsunami;

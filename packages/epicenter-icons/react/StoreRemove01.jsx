@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StoreRemove01 = (props) => (
+export const StoreRemove01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const StoreRemove01 = (props) => (
 );
 
 StoreRemove01.displayName = 'StoreRemove01';
-
-export default StoreRemove01;

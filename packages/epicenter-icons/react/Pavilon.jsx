@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pavilon = (props) => (
+export const Pavilon = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Pavilon = (props) => (
 );
 
 Pavilon.displayName = 'Pavilon';
-
-export default Pavilon;

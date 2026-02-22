@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HighHeels02 = (props) => (
+export const HighHeels02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const HighHeels02 = (props) => (
 );
 
 HighHeels02.displayName = 'HighHeels02';
-
-export default HighHeels02;

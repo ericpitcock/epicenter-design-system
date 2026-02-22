@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Moonset = (props) => (
+export const Moonset = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Moonset = (props) => (
 );
 
 Moonset.displayName = 'Moonset';
-
-export default Moonset;

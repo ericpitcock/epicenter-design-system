@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Loom = (props) => (
+export const Loom = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Loom = (props) => (
 );
 
 Loom.displayName = 'Loom';
-
-export default Loom;

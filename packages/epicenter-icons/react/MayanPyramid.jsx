@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MayanPyramid = (props) => (
+export const MayanPyramid = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const MayanPyramid = (props) => (
 );
 
 MayanPyramid.displayName = 'MayanPyramid';
-
-export default MayanPyramid;

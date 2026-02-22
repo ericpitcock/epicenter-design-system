@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextStrikethrough = (props) => (
+export const TextStrikethrough = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TextStrikethrough = (props) => (
 );
 
 TextStrikethrough.displayName = 'TextStrikethrough';
-
-export default TextStrikethrough;

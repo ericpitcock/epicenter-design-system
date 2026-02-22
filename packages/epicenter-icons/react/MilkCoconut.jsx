@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MilkCoconut = (props) => (
+export const MilkCoconut = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MilkCoconut = (props) => (
 );
 
 MilkCoconut.displayName = 'MilkCoconut';
-
-export default MilkCoconut;

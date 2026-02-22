@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FavouriteCircle = (props) => (
+export const FavouriteCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FavouriteCircle = (props) => (
 );
 
 FavouriteCircle.displayName = 'FavouriteCircle';
-
-export default FavouriteCircle;

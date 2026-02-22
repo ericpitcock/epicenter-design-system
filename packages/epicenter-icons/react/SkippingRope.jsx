@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SkippingRope = (props) => (
+export const SkippingRope = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SkippingRope = (props) => (
 );
 
 SkippingRope.displayName = 'SkippingRope';
-
-export default SkippingRope;

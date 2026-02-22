@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NewOffice = (props) => (
+export const NewOffice = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const NewOffice = (props) => (
 );
 
 NewOffice.displayName = 'NewOffice';
-
-export default NewOffice;

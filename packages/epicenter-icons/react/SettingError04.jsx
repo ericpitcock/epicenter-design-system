@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SettingError04 = (props) => (
+export const SettingError04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SettingError04 = (props) => (
 );
 
 SettingError04.displayName = 'SettingError04';
-
-export default SettingError04;

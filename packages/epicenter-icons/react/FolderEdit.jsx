@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderEdit = (props) => (
+export const FolderEdit = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderEdit = (props) => (
 );
 
 FolderEdit.displayName = 'FolderEdit';
-
-export default FolderEdit;

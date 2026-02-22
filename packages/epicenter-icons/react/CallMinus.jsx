@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CallMinus = (props) => (
+export const CallMinus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CallMinus = (props) => (
 );
 
 CallMinus.displayName = 'CallMinus';
-
-export default CallMinus;

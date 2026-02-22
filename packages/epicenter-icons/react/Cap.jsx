@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cap = (props) => (
+export const Cap = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Cap = (props) => (
 );
 
 Cap.displayName = 'Cap';
-
-export default Cap;

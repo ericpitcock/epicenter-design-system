@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CameraAutomatically01 = (props) => (
+export const CameraAutomatically01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CameraAutomatically01 = (props) => (
 );
 
 CameraAutomatically01.displayName = 'CameraAutomatically01';
-
-export default CameraAutomatically01;

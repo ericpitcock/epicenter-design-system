@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CongruentTo = (props) => (
+export const CongruentTo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CongruentTo = (props) => (
 );
 
 CongruentTo.displayName = 'CongruentTo';
-
-export default CongruentTo;

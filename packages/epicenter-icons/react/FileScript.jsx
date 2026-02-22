@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileScript = (props) => (
+export const FileScript = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileScript = (props) => (
 );
 
 FileScript.displayName = 'FileScript';
-
-export default FileScript;

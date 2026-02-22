@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Desk02 = (props) => (
+export const Desk02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Desk02 = (props) => (
 );
 
 Desk02.displayName = 'Desk02';
-
-export default Desk02;

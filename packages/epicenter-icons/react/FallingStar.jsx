@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FallingStar = (props) => (
+export const FallingStar = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FallingStar = (props) => (
 );
 
 FallingStar.displayName = 'FallingStar';
-
-export default FallingStar;

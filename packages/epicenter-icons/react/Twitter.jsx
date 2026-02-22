@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Twitter = (props) => (
+export const Twitter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Twitter = (props) => (
 );
 
 Twitter.displayName = 'Twitter';
-
-export default Twitter;

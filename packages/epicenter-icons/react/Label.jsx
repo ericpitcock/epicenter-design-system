@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Label = (props) => (
+export const Label = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Label = (props) => (
 );
 
 Label.displayName = 'Label';
-
-export default Label;

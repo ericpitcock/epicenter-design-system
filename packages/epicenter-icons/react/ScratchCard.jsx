@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ScratchCard = (props) => (
+export const ScratchCard = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ScratchCard = (props) => (
 );
 
 ScratchCard.displayName = 'ScratchCard';
-
-export default ScratchCard;

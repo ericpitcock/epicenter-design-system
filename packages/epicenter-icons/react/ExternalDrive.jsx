@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ExternalDrive = (props) => (
+export const ExternalDrive = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ExternalDrive = (props) => (
 );
 
 ExternalDrive.displayName = 'ExternalDrive';
-
-export default ExternalDrive;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiMagic = (props) => (
+export const AiMagic = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AiMagic = (props) => (
 );
 
 AiMagic.displayName = 'AiMagic';
-
-export default AiMagic;

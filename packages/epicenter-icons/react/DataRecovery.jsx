@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DataRecovery = (props) => (
+export const DataRecovery = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const DataRecovery = (props) => (
 );
 
 DataRecovery.displayName = 'DataRecovery';
-
-export default DataRecovery;

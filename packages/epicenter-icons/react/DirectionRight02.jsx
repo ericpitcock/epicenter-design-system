@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DirectionRight02 = (props) => (
+export const DirectionRight02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DirectionRight02 = (props) => (
 );
 
 DirectionRight02.displayName = 'DirectionRight02';
-
-export default DirectionRight02;

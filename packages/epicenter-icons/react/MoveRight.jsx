@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoveRight = (props) => (
+export const MoveRight = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const MoveRight = (props) => (
 );
 
 MoveRight.displayName = 'MoveRight';
-
-export default MoveRight;

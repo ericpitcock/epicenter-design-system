@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Home02 = (props) => (
+export const Home02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Home02 = (props) => (
 );
 
 Home02.displayName = 'Home02';
-
-export default Home02;

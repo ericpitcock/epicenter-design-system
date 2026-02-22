@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StepOut = (props) => (
+export const StepOut = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const StepOut = (props) => (
 );
 
 StepOut.displayName = 'StepOut';
-
-export default StepOut;

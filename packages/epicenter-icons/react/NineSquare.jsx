@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NineSquare = (props) => (
+export const NineSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -15,5 +13,3 @@ const NineSquare = (props) => (
 );
 
 NineSquare.displayName = 'NineSquare';
-
-export default NineSquare;

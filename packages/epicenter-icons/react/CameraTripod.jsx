@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CameraTripod = (props) => (
+export const CameraTripod = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const CameraTripod = (props) => (
 );
 
 CameraTripod.displayName = 'CameraTripod';
-
-export default CameraTripod;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GitFork = (props) => (
+export const GitFork = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const GitFork = (props) => (
 );
 
 GitFork.displayName = 'GitFork';
-
-export default GitFork;

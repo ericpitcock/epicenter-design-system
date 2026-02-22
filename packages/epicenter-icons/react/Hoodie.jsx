@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hoodie = (props) => (
+export const Hoodie = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Hoodie = (props) => (
 );
 
 Hoodie.displayName = 'Hoodie';
-
-export default Hoodie;

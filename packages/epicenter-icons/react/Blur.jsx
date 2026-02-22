@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Blur = (props) => (
+export const Blur = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Blur = (props) => (
 );
 
 Blur.displayName = 'Blur';
-
-export default Blur;

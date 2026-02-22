@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Octopus = (props) => (
+export const Octopus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Octopus = (props) => (
 );
 
 Octopus.displayName = 'Octopus';
-
-export default Octopus;

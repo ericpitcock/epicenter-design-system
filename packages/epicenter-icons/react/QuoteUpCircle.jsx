@@ -1,6 +1,4 @@
-import React from 'react';
-
-const QuoteUpCircle = (props) => (
+export const QuoteUpCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const QuoteUpCircle = (props) => (
 );
 
 QuoteUpCircle.displayName = 'QuoteUpCircle';
-
-export default QuoteUpCircle;

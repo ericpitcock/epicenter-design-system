@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NThRootSquare = (props) => (
+export const NThRootSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const NThRootSquare = (props) => (
 );
 
 NThRootSquare.displayName = 'NThRootSquare';
-
-export default NThRootSquare;

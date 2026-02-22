@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GooglePhotos = (props) => (
+export const GooglePhotos = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const GooglePhotos = (props) => (
 );
 
 GooglePhotos.displayName = 'GooglePhotos';
-
-export default GooglePhotos;

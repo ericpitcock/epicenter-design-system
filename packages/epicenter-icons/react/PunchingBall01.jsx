@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PunchingBall01 = (props) => (
+export const PunchingBall01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PunchingBall01 = (props) => (
 );
 
 PunchingBall01.displayName = 'PunchingBall01';
-
-export default PunchingBall01;

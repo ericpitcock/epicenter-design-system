@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CursorRectangleSelection01 = (props) => (
+export const CursorRectangleSelection01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CursorRectangleSelection01 = (props) => (
 );
 
 CursorRectangleSelection01.displayName = 'CursorRectangleSelection01';
-
-export default CursorRectangleSelection01;

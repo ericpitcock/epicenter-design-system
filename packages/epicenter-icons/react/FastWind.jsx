@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FastWind = (props) => (
+export const FastWind = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const FastWind = (props) => (
 );
 
 FastWind.displayName = 'FastWind';
-
-export default FastWind;

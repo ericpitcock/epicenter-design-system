@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VisualStudioCode = (props) => (
+export const VisualStudioCode = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const VisualStudioCode = (props) => (
 );
 
 VisualStudioCode.displayName = 'VisualStudioCode';
-
-export default VisualStudioCode;

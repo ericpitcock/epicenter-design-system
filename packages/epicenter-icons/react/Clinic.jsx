@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Clinic = (props) => (
+export const Clinic = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Clinic = (props) => (
 );
 
 Clinic.displayName = 'Clinic';
-
-export default Clinic;

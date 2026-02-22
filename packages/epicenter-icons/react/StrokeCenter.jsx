@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StrokeCenter = (props) => (
+export const StrokeCenter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const StrokeCenter = (props) => (
 );
 
 StrokeCenter.displayName = 'StrokeCenter';
-
-export default StrokeCenter;

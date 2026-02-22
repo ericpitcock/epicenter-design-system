@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ThumbsDown = (props) => (
+export const ThumbsDown = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ThumbsDown = (props) => (
 );
 
 ThumbsDown.displayName = 'ThumbsDown';
-
-export default ThumbsDown;

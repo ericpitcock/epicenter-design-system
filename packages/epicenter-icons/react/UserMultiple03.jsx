@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserMultiple03 = (props) => (
+export const UserMultiple03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const UserMultiple03 = (props) => (
 );
 
 UserMultiple03.displayName = 'UserMultiple03';
-
-export default UserMultiple03;

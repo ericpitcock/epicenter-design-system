@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ambulance = (props) => (
+export const Ambulance = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Ambulance = (props) => (
 );
 
 Ambulance.displayName = 'Ambulance';
-
-export default Ambulance;

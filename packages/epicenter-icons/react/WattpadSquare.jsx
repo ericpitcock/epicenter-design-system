@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WattpadSquare = (props) => (
+export const WattpadSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const WattpadSquare = (props) => (
 );
 
 WattpadSquare.displayName = 'WattpadSquare';
-
-export default WattpadSquare;

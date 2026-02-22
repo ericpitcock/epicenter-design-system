@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PreferenceVertical = (props) => (
+export const PreferenceVertical = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const PreferenceVertical = (props) => (
 );
 
 PreferenceVertical.displayName = 'PreferenceVertical';
-
-export default PreferenceVertical;

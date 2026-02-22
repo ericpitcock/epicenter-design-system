@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FlowSquare = (props) => (
+export const FlowSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const FlowSquare = (props) => (
 );
 
 FlowSquare.displayName = 'FlowSquare';
-
-export default FlowSquare;

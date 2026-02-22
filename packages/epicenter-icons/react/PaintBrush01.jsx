@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PaintBrush01 = (props) => (
+export const PaintBrush01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PaintBrush01 = (props) => (
 );
 
 PaintBrush01.displayName = 'PaintBrush01';
-
-export default PaintBrush01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Python = (props) => (
+export const Python = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Python = (props) => (
 );
 
 Python.displayName = 'Python';
-
-export default Python;

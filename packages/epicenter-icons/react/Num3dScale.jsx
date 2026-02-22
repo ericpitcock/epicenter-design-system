@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Num3dScale = (props) => (
+export const Num3dScale = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Num3dScale = (props) => (
 );
 
 Num3dScale.displayName = 'Num3dScale';
-
-export default Num3dScale;

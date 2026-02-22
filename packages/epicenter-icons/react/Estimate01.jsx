@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Estimate01 = (props) => (
+export const Estimate01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const Estimate01 = (props) => (
 );
 
 Estimate01.displayName = 'Estimate01';
-
-export default Estimate01;

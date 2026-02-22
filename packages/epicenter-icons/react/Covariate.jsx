@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Covariate = (props) => (
+export const Covariate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Covariate = (props) => (
 );
 
 Covariate.displayName = 'Covariate';
-
-export default Covariate;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SettingsError02 = (props) => (
+export const SettingsError02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SettingsError02 = (props) => (
 );
 
 SettingsError02.displayName = 'SettingsError02';
-
-export default SettingsError02;

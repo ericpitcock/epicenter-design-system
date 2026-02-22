@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Crown03 = (props) => (
+export const Crown03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Crown03 = (props) => (
 );
 
 Crown03.displayName = 'Crown03';
-
-export default Crown03;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Whiteboard = (props) => (
+export const Whiteboard = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Whiteboard = (props) => (
 );
 
 Whiteboard.displayName = 'Whiteboard';
-
-export default Whiteboard;

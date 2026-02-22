@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Honey01 = (props) => (
+export const Honey01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Honey01 = (props) => (
 );
 
 Honey01.displayName = 'Honey01';
-
-export default Honey01;

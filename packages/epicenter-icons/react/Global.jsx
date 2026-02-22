@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Global = (props) => (
+export const Global = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Global = (props) => (
 );
 
 Global.displayName = 'Global';
-
-export default Global;

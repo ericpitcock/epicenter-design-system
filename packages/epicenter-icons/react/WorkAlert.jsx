@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WorkAlert = (props) => (
+export const WorkAlert = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const WorkAlert = (props) => (
 );
 
 WorkAlert.displayName = 'WorkAlert';
-
-export default WorkAlert;

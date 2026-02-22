@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FileCloud = (props) => (
+export const FileCloud = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const FileCloud = (props) => (
 );
 
 FileCloud.displayName = 'FileCloud';
-
-export default FileCloud;

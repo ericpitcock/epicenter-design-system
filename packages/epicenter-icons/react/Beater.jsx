@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Beater = (props) => (
+export const Beater = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Beater = (props) => (
 );
 
 Beater.displayName = 'Beater';
-
-export default Beater;

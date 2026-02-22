@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HospitalLocation = (props) => (
+export const HospitalLocation = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const HospitalLocation = (props) => (
 );
 
 HospitalLocation.displayName = 'HospitalLocation';
-
-export default HospitalLocation;

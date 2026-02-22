@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Slack = (props) => (
+export const Slack = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -20,5 +18,3 @@ const Slack = (props) => (
 );
 
 Slack.displayName = 'Slack';
-
-export default Slack;

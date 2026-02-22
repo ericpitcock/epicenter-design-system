@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Canvas = (props) => (
+export const Canvas = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Canvas = (props) => (
 );
 
 Canvas.displayName = 'Canvas';
-
-export default Canvas;

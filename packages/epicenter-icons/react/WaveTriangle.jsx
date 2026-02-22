@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WaveTriangle = (props) => (
+export const WaveTriangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const WaveTriangle = (props) => (
 );
 
 WaveTriangle.displayName = 'WaveTriangle';
-
-export default WaveTriangle;

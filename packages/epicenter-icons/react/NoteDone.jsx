@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NoteDone = (props) => (
+export const NoteDone = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const NoteDone = (props) => (
 );
 
 NoteDone.displayName = 'NoteDone';
-
-export default NoteDone;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Riyal = (props) => (
+export const Riyal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Riyal = (props) => (
 );
 
 Riyal.displayName = 'Riyal';
-
-export default Riyal;

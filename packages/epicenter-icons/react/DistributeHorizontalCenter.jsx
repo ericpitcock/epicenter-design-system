@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DistributeHorizontalCenter = (props) => (
+export const DistributeHorizontalCenter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const DistributeHorizontalCenter = (props) => (
 );
 
 DistributeHorizontalCenter.displayName = 'DistributeHorizontalCenter';
-
-export default DistributeHorizontalCenter;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Payoneer = (props) => (
+export const Payoneer = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Payoneer = (props) => (
 );
 
 Payoneer.displayName = 'Payoneer';
-
-export default Payoneer;

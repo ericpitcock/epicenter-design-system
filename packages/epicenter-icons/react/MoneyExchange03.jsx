@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MoneyExchange03 = (props) => (
+export const MoneyExchange03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const MoneyExchange03 = (props) => (
 );
 
 MoneyExchange03.displayName = 'MoneyExchange03';
-
-export default MoneyExchange03;

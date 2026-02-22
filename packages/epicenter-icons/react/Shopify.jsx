@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Shopify = (props) => (
+export const Shopify = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Shopify = (props) => (
 );
 
 Shopify.displayName = 'Shopify';
-
-export default Shopify;

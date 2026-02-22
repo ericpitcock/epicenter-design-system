@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartRose = (props) => (
+export const ChartRose = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ChartRose = (props) => (
 );
 
 ChartRose.displayName = 'ChartRose';
-
-export default ChartRose;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RightToLeftListTriangle = (props) => (
+export const RightToLeftListTriangle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const RightToLeftListTriangle = (props) => (
 );
 
 RightToLeftListTriangle.displayName = 'RightToLeftListTriangle';
-
-export default RightToLeftListTriangle;

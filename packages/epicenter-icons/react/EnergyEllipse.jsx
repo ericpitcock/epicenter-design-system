@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EnergyEllipse = (props) => (
+export const EnergyEllipse = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const EnergyEllipse = (props) => (
 );
 
 EnergyEllipse.displayName = 'EnergyEllipse';
-
-export default EnergyEllipse;

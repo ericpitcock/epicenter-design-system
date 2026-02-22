@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Safe = (props) => (
+export const Safe = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Safe = (props) => (
 );
 
 Safe.displayName = 'Safe';
-
-export default Safe;

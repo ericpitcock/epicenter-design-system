@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CloudLoading = (props) => (
+export const CloudLoading = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CloudLoading = (props) => (
 );
 
 CloudLoading.displayName = 'CloudLoading';
-
-export default CloudLoading;

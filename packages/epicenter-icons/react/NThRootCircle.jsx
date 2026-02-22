@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NThRootCircle = (props) => (
+export const NThRootCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const NThRootCircle = (props) => (
 );
 
 NThRootCircle.displayName = 'NThRootCircle';
-
-export default NThRootCircle;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Asteroid01 = (props) => (
+export const Asteroid01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Asteroid01 = (props) => (
 );
 
 Asteroid01.displayName = 'Asteroid01';
-
-export default Asteroid01;

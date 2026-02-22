@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HotTube = (props) => (
+export const HotTube = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const HotTube = (props) => (
 );
 
 HotTube.displayName = 'HotTube';
-
-export default HotTube;

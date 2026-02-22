@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AccountSetting02 = (props) => (
+export const AccountSetting02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const AccountSetting02 = (props) => (
 );
 
 AccountSetting02.displayName = 'AccountSetting02';
-
-export default AccountSetting02;

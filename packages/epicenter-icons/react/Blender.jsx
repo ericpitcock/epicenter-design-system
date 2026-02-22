@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Blender = (props) => (
+export const Blender = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Blender = (props) => (
 );
 
 Blender.displayName = 'Blender';
-
-export default Blender;

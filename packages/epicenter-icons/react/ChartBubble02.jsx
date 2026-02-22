@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartBubble02 = (props) => (
+export const ChartBubble02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChartBubble02 = (props) => (
 );
 
 ChartBubble02.displayName = 'ChartBubble02';
-
-export default ChartBubble02;

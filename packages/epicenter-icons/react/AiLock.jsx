@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiLock = (props) => (
+export const AiLock = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AiLock = (props) => (
 );
 
 AiLock.displayName = 'AiLock';
-
-export default AiLock;

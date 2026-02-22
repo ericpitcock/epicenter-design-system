@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LocationFavourite02 = (props) => (
+export const LocationFavourite02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const LocationFavourite02 = (props) => (
 );
 
 LocationFavourite02.displayName = 'LocationFavourite02';
-
-export default LocationFavourite02;

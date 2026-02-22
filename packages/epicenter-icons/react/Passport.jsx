@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Passport = (props) => (
+export const Passport = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Passport = (props) => (
 );
 
 Passport.displayName = 'Passport';
-
-export default Passport;

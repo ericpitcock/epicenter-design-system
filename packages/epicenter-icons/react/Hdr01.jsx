@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hdr01 = (props) => (
+export const Hdr01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Hdr01 = (props) => (
 );
 
 Hdr01.displayName = 'Hdr01';
-
-export default Hdr01;

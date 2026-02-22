@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Fire03 = (props) => (
+export const Fire03 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Fire03 = (props) => (
 );
 
 Fire03.displayName = 'Fire03';
-
-export default Fire03;

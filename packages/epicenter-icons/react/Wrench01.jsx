@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Wrench01 = (props) => (
+export const Wrench01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Wrench01 = (props) => (
 );
 
 Wrench01.displayName = 'Wrench01';
-
-export default Wrench01;

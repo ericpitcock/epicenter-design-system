@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PropertyAdd = (props) => (
+export const PropertyAdd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const PropertyAdd = (props) => (
 );
 
 PropertyAdd.displayName = 'PropertyAdd';
-
-export default PropertyAdd;

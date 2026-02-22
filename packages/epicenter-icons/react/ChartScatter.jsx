@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartScatter = (props) => (
+export const ChartScatter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const ChartScatter = (props) => (
 );
 
 ChartScatter.displayName = 'ChartScatter';
-
-export default ChartScatter;

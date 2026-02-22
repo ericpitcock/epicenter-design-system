@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HeadsetOff = (props) => (
+export const HeadsetOff = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const HeadsetOff = (props) => (
 );
 
 HeadsetOff.displayName = 'HeadsetOff';
-
-export default HeadsetOff;

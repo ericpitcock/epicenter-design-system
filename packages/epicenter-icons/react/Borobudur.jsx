@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Borobudur = (props) => (
+export const Borobudur = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Borobudur = (props) => (
 );
 
 Borobudur.displayName = 'Borobudur';
-
-export default Borobudur;

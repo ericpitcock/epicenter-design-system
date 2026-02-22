@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Zoom = (props) => (
+export const Zoom = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Zoom = (props) => (
 );
 
 Zoom.displayName = 'Zoom';
-
-export default Zoom;

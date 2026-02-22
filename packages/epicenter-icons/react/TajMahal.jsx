@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TajMahal = (props) => (
+export const TajMahal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -21,5 +19,3 @@ const TajMahal = (props) => (
 );
 
 TajMahal.displayName = 'TajMahal';
-
-export default TajMahal;

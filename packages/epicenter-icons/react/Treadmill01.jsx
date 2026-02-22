@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Treadmill01 = (props) => (
+export const Treadmill01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Treadmill01 = (props) => (
 );
 
 Treadmill01.displayName = 'Treadmill01';
-
-export default Treadmill01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Brandfetch = (props) => (
+export const Brandfetch = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Brandfetch = (props) => (
 );
 
 Brandfetch.displayName = 'Brandfetch';
-
-export default Brandfetch;

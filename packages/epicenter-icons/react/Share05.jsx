@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Share05 = (props) => (
+export const Share05 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Share05 = (props) => (
 );
 
 Share05.displayName = 'Share05';
-
-export default Share05;

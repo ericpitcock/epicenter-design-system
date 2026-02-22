@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RotateLeft02 = (props) => (
+export const RotateLeft02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const RotateLeft02 = (props) => (
 );
 
 RotateLeft02.displayName = 'RotateLeft02';
-
-export default RotateLeft02;

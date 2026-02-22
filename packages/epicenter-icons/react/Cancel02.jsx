@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Cancel02 = (props) => (
+export const Cancel02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Cancel02 = (props) => (
 );
 
 Cancel02.displayName = 'Cancel02';
-
-export default Cancel02;

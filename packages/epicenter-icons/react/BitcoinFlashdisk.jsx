@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BitcoinFlashdisk = (props) => (
+export const BitcoinFlashdisk = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BitcoinFlashdisk = (props) => (
 );
 
 BitcoinFlashdisk.displayName = 'BitcoinFlashdisk';
-
-export default BitcoinFlashdisk;

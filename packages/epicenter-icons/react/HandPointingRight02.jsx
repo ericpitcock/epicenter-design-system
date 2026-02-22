@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HandPointingRight02 = (props) => (
+export const HandPointingRight02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const HandPointingRight02 = (props) => (
 );
 
 HandPointingRight02.displayName = 'HandPointingRight02';
-
-export default HandPointingRight02;

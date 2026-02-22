@@ -1,6 +1,4 @@
-import React from 'react';
-
-const KoFi = (props) => (
+export const KoFi = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const KoFi = (props) => (
 );
 
 KoFi.displayName = 'KoFi';
-
-export default KoFi;

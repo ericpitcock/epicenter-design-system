@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PictureInPictureExit = (props) => (
+export const PictureInPictureExit = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const PictureInPictureExit = (props) => (
 );
 
 PictureInPictureExit.displayName = 'PictureInPictureExit';
-
-export default PictureInPictureExit;

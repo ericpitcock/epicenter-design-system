@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiScheduling = (props) => (
+export const AiScheduling = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const AiScheduling = (props) => (
 );
 
 AiScheduling.displayName = 'AiScheduling';
-
-export default AiScheduling;

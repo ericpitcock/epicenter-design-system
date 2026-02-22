@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DentalTooth = (props) => (
+export const DentalTooth = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const DentalTooth = (props) => (
 );
 
 DentalTooth.displayName = 'DentalTooth';
-
-export default DentalTooth;

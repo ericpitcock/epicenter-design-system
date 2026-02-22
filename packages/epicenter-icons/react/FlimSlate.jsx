@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FlimSlate = (props) => (
+export const FlimSlate = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const FlimSlate = (props) => (
 );
 
 FlimSlate.displayName = 'FlimSlate';
-
-export default FlimSlate;

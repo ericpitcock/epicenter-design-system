@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CodeFolder = (props) => (
+export const CodeFolder = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const CodeFolder = (props) => (
 );
 
 CodeFolder.displayName = 'CodeFolder';
-
-export default CodeFolder;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const EllipseSelection = (props) => (
+export const EllipseSelection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const EllipseSelection = (props) => (
 );
 
 EllipseSelection.displayName = 'EllipseSelection';
-
-export default EllipseSelection;

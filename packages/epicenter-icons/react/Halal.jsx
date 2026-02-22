@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Halal = (props) => (
+export const Halal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 25 24"
@@ -14,5 +12,3 @@ const Halal = (props) => (
 );
 
 Halal.displayName = 'Halal';
-
-export default Halal;

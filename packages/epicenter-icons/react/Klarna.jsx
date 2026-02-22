@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Klarna = (props) => (
+export const Klarna = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Klarna = (props) => (
 );
 
 Klarna.displayName = 'Klarna';
-
-export default Klarna;

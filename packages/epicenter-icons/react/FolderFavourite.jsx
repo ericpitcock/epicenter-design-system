@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FolderFavourite = (props) => (
+export const FolderFavourite = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const FolderFavourite = (props) => (
 );
 
 FolderFavourite.displayName = 'FolderFavourite';
-
-export default FolderFavourite;

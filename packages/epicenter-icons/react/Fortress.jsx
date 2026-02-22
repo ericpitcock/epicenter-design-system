@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Fortress = (props) => (
+export const Fortress = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Fortress = (props) => (
 );
 
 Fortress.displayName = 'Fortress';
-
-export default Fortress;

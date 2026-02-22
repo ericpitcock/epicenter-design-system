@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Software = (props) => (
+export const Software = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Software = (props) => (
 );
 
 Software.displayName = 'Software';
-
-export default Software;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Volleyball = (props) => (
+export const Volleyball = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Volleyball = (props) => (
 );
 
 Volleyball.displayName = 'Volleyball';
-
-export default Volleyball;

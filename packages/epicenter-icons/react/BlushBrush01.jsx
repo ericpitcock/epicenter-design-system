@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BlushBrush01 = (props) => (
+export const BlushBrush01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const BlushBrush01 = (props) => (
 );
 
 BlushBrush01.displayName = 'BlushBrush01';
-
-export default BlushBrush01;

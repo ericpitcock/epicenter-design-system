@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ImageAdd02 = (props) => (
+export const ImageAdd02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ImageAdd02 = (props) => (
 );
 
 ImageAdd02.displayName = 'ImageAdd02';
-
-export default ImageAdd02;

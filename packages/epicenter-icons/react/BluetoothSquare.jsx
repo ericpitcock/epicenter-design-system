@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BluetoothSquare = (props) => (
+export const BluetoothSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BluetoothSquare = (props) => (
 );
 
 BluetoothSquare.displayName = 'BluetoothSquare';
-
-export default BluetoothSquare;

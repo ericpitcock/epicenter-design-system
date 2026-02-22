@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WorkHistory = (props) => (
+export const WorkHistory = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const WorkHistory = (props) => (
 );
 
 WorkHistory.displayName = 'WorkHistory';
-
-export default WorkHistory;

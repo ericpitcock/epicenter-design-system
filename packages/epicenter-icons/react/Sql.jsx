@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sql = (props) => (
+export const Sql = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Sql = (props) => (
 );
 
 Sql.displayName = 'Sql';
-
-export default Sql;

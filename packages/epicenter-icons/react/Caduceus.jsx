@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Caduceus = (props) => (
+export const Caduceus = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Caduceus = (props) => (
 );
 
 Caduceus.displayName = 'Caduceus';
-
-export default Caduceus;

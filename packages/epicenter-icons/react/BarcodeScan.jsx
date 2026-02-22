@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BarcodeScan = (props) => (
+export const BarcodeScan = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const BarcodeScan = (props) => (
 );
 
 BarcodeScan.displayName = 'BarcodeScan';
-
-export default BarcodeScan;

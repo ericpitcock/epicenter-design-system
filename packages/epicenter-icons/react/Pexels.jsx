@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pexels = (props) => (
+export const Pexels = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Pexels = (props) => (
 );
 
 Pexels.displayName = 'Pexels';
-
-export default Pexels;

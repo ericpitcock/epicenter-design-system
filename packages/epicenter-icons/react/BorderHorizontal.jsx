@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BorderHorizontal = (props) => (
+export const BorderHorizontal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const BorderHorizontal = (props) => (
 );
 
 BorderHorizontal.displayName = 'BorderHorizontal';
-
-export default BorderHorizontal;

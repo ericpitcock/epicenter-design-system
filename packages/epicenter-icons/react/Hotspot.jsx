@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hotspot = (props) => (
+export const Hotspot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Hotspot = (props) => (
 );
 
 Hotspot.displayName = 'Hotspot';
-
-export default Hotspot;

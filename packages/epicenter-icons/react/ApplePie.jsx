@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ApplePie = (props) => (
+export const ApplePie = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ApplePie = (props) => (
 );
 
 ApplePie.displayName = 'ApplePie';
-
-export default ApplePie;

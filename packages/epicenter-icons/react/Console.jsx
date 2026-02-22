@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Console = (props) => (
+export const Console = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Console = (props) => (
 );
 
 Console.displayName = 'Console';
-
-export default Console;

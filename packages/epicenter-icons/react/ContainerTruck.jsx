@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ContainerTruck = (props) => (
+export const ContainerTruck = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const ContainerTruck = (props) => (
 );
 
 ContainerTruck.displayName = 'ContainerTruck';
-
-export default ContainerTruck;

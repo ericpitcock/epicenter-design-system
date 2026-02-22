@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PointingLeft05 = (props) => (
+export const PointingLeft05 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PointingLeft05 = (props) => (
 );
 
 PointingLeft05.displayName = 'PointingLeft05';
-
-export default PointingLeft05;

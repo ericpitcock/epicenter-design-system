@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LimitOrder = (props) => (
+export const LimitOrder = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const LimitOrder = (props) => (
 );
 
 LimitOrder.displayName = 'LimitOrder';
-
-export default LimitOrder;

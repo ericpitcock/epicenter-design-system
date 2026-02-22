@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AutoConversations = (props) => (
+export const AutoConversations = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const AutoConversations = (props) => (
 );
 
 AutoConversations.displayName = 'AutoConversations';
-
-export default AutoConversations;

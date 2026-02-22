@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bucket = (props) => (
+export const Bucket = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Bucket = (props) => (
 );
 
 Bucket.displayName = 'Bucket';
-
-export default Bucket;

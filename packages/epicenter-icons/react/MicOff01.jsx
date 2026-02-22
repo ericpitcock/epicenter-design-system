@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MicOff01 = (props) => (
+export const MicOff01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MicOff01 = (props) => (
 );
 
 MicOff01.displayName = 'MicOff01';
-
-export default MicOff01;

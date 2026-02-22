@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Periscope = (props) => (
+export const Periscope = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Periscope = (props) => (
 );
 
 Periscope.displayName = 'Periscope';
-
-export default Periscope;

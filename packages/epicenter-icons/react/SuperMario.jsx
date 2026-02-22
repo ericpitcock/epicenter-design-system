@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SuperMario = (props) => (
+export const SuperMario = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const SuperMario = (props) => (
 );
 
 SuperMario.displayName = 'SuperMario';
-
-export default SuperMario;

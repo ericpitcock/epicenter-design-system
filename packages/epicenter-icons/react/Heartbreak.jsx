@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Heartbreak = (props) => (
+export const Heartbreak = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Heartbreak = (props) => (
 );
 
 Heartbreak.displayName = 'Heartbreak';
-
-export default Heartbreak;

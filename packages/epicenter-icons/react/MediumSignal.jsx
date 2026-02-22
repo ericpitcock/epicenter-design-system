@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MediumSignal = (props) => (
+export const MediumSignal = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MediumSignal = (props) => (
 );
 
 MediumSignal.displayName = 'MediumSignal';
-
-export default MediumSignal;

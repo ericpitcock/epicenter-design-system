@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Hotdog = (props) => (
+export const Hotdog = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Hotdog = (props) => (
 );
 
 Hotdog.displayName = 'Hotdog';
-
-export default Hotdog;

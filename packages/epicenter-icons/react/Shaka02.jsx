@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Shaka02 = (props) => (
+export const Shaka02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Shaka02 = (props) => (
 );
 
 Shaka02.displayName = 'Shaka02';
-
-export default Shaka02;

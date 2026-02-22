@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Kettlebell = (props) => (
+export const Kettlebell = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Kettlebell = (props) => (
 );
 
 Kettlebell.displayName = 'Kettlebell';
-
-export default Kettlebell;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SpartanHelmet = (props) => (
+export const SpartanHelmet = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const SpartanHelmet = (props) => (
 );
 
 SpartanHelmet.displayName = 'SpartanHelmet';
-
-export default SpartanHelmet;

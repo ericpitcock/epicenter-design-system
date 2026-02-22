@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DoNotTouch01 = (props) => (
+export const DoNotTouch01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const DoNotTouch01 = (props) => (
 );
 
 DoNotTouch01.displayName = 'DoNotTouch01';
-
-export default DoNotTouch01;

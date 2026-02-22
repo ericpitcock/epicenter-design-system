@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Sleeveless = (props) => (
+export const Sleeveless = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Sleeveless = (props) => (
 );
 
 Sleeveless.displayName = 'Sleeveless';
-
-export default Sleeveless;

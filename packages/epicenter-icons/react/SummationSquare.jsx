@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SummationSquare = (props) => (
+export const SummationSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const SummationSquare = (props) => (
 );
 
 SummationSquare.displayName = 'SummationSquare';
-
-export default SummationSquare;

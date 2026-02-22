@@ -1,6 +1,4 @@
-import React from 'react';
-
-const QrCode01 = (props) => (
+export const QrCode01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const QrCode01 = (props) => (
 );
 
 QrCode01.displayName = 'QrCode01';
-
-export default QrCode01;

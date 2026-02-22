@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GitPullRequestClosed = (props) => (
+export const GitPullRequestClosed = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const GitPullRequestClosed = (props) => (
 );
 
 GitPullRequestClosed.displayName = 'GitPullRequestClosed';
-
-export default GitPullRequestClosed;

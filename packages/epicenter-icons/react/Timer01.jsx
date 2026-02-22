@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Timer01 = (props) => (
+export const Timer01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Timer01 = (props) => (
 );
 
 Timer01.displayName = 'Timer01';
-
-export default Timer01;

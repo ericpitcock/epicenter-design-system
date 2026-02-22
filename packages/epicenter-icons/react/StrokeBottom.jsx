@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StrokeBottom = (props) => (
+export const StrokeBottom = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const StrokeBottom = (props) => (
 );
 
 StrokeBottom.displayName = 'StrokeBottom';
-
-export default StrokeBottom;

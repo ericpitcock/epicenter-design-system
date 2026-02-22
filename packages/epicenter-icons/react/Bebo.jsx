@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bebo = (props) => (
+export const Bebo = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Bebo = (props) => (
 );
 
 Bebo.displayName = 'Bebo';
-
-export default Bebo;

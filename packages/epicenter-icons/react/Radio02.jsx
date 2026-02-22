@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Radio02 = (props) => (
+export const Radio02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Radio02 = (props) => (
 );
 
 Radio02.displayName = 'Radio02';
-
-export default Radio02;

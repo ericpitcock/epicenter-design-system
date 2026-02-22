@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserSharing = (props) => (
+export const UserSharing = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const UserSharing = (props) => (
 );
 
 UserSharing.displayName = 'UserSharing';
-
-export default UserSharing;

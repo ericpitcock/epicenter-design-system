@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Root2ndBracket = (props) => (
+export const Root2ndBracket = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Root2ndBracket = (props) => (
 );
 
 Root2ndBracket.displayName = 'Root2ndBracket';
-
-export default Root2ndBracket;

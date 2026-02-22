@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Heading04 = (props) => (
+export const Heading04 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Heading04 = (props) => (
 );
 
 Heading04.displayName = 'Heading04';
-
-export default Heading04;

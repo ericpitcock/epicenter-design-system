@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Inequality02 = (props) => (
+export const Inequality02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Inequality02 = (props) => (
 );
 
 Inequality02.displayName = 'Inequality02';
-
-export default Inequality02;

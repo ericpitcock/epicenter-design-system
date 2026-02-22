@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TextWrap = (props) => (
+export const TextWrap = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const TextWrap = (props) => (
 );
 
 TextWrap.displayName = 'TextWrap';
-
-export default TextWrap;

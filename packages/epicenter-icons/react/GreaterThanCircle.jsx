@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GreaterThanCircle = (props) => (
+export const GreaterThanCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const GreaterThanCircle = (props) => (
 );
 
 GreaterThanCircle.displayName = 'GreaterThanCircle';
-
-export default GreaterThanCircle;

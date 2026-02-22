@@ -1,6 +1,4 @@
-import React from 'react';
-
-const VolumeUp = (props) => (
+export const VolumeUp = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const VolumeUp = (props) => (
 );
 
 VolumeUp.displayName = 'VolumeUp';
-
-export default VolumeUp;

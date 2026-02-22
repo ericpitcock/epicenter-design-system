@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AddToList = (props) => (
+export const AddToList = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const AddToList = (props) => (
 );
 
 AddToList.displayName = 'AddToList';
-
-export default AddToList;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Trampoline = (props) => (
+export const Trampoline = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Trampoline = (props) => (
 );
 
 Trampoline.displayName = 'Trampoline';
-
-export default Trampoline;

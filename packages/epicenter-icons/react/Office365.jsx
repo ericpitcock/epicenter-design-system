@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Office365 = (props) => (
+export const Office365 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Office365 = (props) => (
 );
 
 Office365.displayName = 'Office365';
-
-export default Office365;

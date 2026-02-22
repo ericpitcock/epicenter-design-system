@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PathfinderExclude = (props) => (
+export const PathfinderExclude = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PathfinderExclude = (props) => (
 );
 
 PathfinderExclude.displayName = 'PathfinderExclude';
-
-export default PathfinderExclude;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Temperature = (props) => (
+export const Temperature = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Temperature = (props) => (
 );
 
 Temperature.displayName = 'Temperature';
-
-export default Temperature;

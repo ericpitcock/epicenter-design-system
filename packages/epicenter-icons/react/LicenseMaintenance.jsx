@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LicenseMaintenance = (props) => (
+export const LicenseMaintenance = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const LicenseMaintenance = (props) => (
 );
 
 LicenseMaintenance.displayName = 'LicenseMaintenance';
-
-export default LicenseMaintenance;

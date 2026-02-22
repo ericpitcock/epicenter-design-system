@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Podium = (props) => (
+export const Podium = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Podium = (props) => (
 );
 
 Podium.displayName = 'Podium';
-
-export default Podium;

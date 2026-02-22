@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SpeedTrain02 = (props) => (
+export const SpeedTrain02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const SpeedTrain02 = (props) => (
 );
 
 SpeedTrain02.displayName = 'SpeedTrain02';
-
-export default SpeedTrain02;

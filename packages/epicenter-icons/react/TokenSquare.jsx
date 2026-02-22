@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TokenSquare = (props) => (
+export const TokenSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const TokenSquare = (props) => (
 );
 
 TokenSquare.displayName = 'TokenSquare';
-
-export default TokenSquare;

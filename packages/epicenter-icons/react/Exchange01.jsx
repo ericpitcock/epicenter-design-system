@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Exchange01 = (props) => (
+export const Exchange01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -13,5 +11,3 @@ const Exchange01 = (props) => (
 );
 
 Exchange01.displayName = 'Exchange01';
-
-export default Exchange01;

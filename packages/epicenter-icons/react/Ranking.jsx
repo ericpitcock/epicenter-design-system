@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Ranking = (props) => (
+export const Ranking = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Ranking = (props) => (
 );
 
 Ranking.displayName = 'Ranking';
-
-export default Ranking;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MaximizeScreen = (props) => (
+export const MaximizeScreen = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MaximizeScreen = (props) => (
 );
 
 MaximizeScreen.displayName = 'MaximizeScreen';
-
-export default MaximizeScreen;

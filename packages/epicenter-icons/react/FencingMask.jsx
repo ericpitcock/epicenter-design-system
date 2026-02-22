@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FencingMask = (props) => (
+export const FencingMask = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const FencingMask = (props) => (
 );
 
 FencingMask.displayName = 'FencingMask';
-
-export default FencingMask;

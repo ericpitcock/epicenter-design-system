@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BalanceScale = (props) => (
+export const BalanceScale = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const BalanceScale = (props) => (
 );
 
 BalanceScale.displayName = 'BalanceScale';
-
-export default BalanceScale;

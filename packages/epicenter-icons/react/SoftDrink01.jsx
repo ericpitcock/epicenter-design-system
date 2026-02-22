@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SoftDrink01 = (props) => (
+export const SoftDrink01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const SoftDrink01 = (props) => (
 );
 
 SoftDrink01.displayName = 'SoftDrink01';
-
-export default SoftDrink01;

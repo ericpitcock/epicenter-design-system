@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ListSetting = (props) => (
+export const ListSetting = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const ListSetting = (props) => (
 );
 
 ListSetting.displayName = 'ListSetting';
-
-export default ListSetting;

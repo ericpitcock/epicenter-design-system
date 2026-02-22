@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Absolute = (props) => (
+export const Absolute = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Absolute = (props) => (
 );
 
 Absolute.displayName = 'Absolute';
-
-export default Absolute;

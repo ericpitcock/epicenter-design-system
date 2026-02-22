@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChatIncome = (props) => (
+export const ChatIncome = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ChatIncome = (props) => (
 );
 
 ChatIncome.displayName = 'ChatIncome';
-
-export default ChatIncome;

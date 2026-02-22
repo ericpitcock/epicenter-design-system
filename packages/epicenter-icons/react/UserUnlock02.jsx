@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UserUnlock02 = (props) => (
+export const UserUnlock02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const UserUnlock02 = (props) => (
 );
 
 UserUnlock02.displayName = 'UserUnlock02';
-
-export default UserUnlock02;

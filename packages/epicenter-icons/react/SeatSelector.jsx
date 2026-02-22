@@ -1,6 +1,4 @@
-import React from 'react';
-
-const SeatSelector = (props) => (
+export const SeatSelector = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const SeatSelector = (props) => (
 );
 
 SeatSelector.displayName = 'SeatSelector';
-
-export default SeatSelector;

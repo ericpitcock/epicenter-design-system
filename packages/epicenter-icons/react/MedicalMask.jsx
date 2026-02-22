@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MedicalMask = (props) => (
+export const MedicalMask = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MedicalMask = (props) => (
 );
 
 MedicalMask.displayName = 'MedicalMask';
-
-export default MedicalMask;

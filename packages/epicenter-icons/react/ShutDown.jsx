@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ShutDown = (props) => (
+export const ShutDown = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const ShutDown = (props) => (
 );
 
 ShutDown.displayName = 'ShutDown';
-
-export default ShutDown;

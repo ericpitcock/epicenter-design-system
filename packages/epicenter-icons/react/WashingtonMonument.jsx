@@ -1,6 +1,4 @@
-import React from 'react';
-
-const WashingtonMonument = (props) => (
+export const WashingtonMonument = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const WashingtonMonument = (props) => (
 );
 
 WashingtonMonument.displayName = 'WashingtonMonument';
-
-export default WashingtonMonument;

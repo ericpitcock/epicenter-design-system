@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AlignSelection = (props) => (
+export const AlignSelection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const AlignSelection = (props) => (
 );
 
 AlignSelection.displayName = 'AlignSelection';
-
-export default AlignSelection;

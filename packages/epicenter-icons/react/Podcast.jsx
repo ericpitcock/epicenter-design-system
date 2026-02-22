@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Podcast = (props) => (
+export const Podcast = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Podcast = (props) => (
 );
 
 Podcast.displayName = 'Podcast';
-
-export default Podcast;

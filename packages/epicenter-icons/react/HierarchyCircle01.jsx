@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HierarchyCircle01 = (props) => (
+export const HierarchyCircle01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const HierarchyCircle01 = (props) => (
 );
 
 HierarchyCircle01.displayName = 'HierarchyCircle01';
-
-export default HierarchyCircle01;

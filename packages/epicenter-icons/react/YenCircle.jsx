@@ -1,6 +1,4 @@
-import React from 'react';
-
-const YenCircle = (props) => (
+export const YenCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const YenCircle = (props) => (
 );
 
 YenCircle.displayName = 'YenCircle';
-
-export default YenCircle;

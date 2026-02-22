@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Analytics02 = (props) => (
+export const Analytics02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Analytics02 = (props) => (
 );
 
 Analytics02.displayName = 'Analytics02';
-
-export default Analytics02;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const RepeatOff = (props) => (
+export const RepeatOff = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const RepeatOff = (props) => (
 );
 
 RepeatOff.displayName = 'RepeatOff';
-
-export default RepeatOff;

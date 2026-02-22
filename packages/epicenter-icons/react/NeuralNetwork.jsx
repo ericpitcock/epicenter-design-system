@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NeuralNetwork = (props) => (
+export const NeuralNetwork = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const NeuralNetwork = (props) => (
 );
 
 NeuralNetwork.displayName = 'NeuralNetwork';
-
-export default NeuralNetwork;

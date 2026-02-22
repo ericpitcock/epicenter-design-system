@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GasPipe = (props) => (
+export const GasPipe = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const GasPipe = (props) => (
 );
 
 GasPipe.displayName = 'GasPipe';
-
-export default GasPipe;

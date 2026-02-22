@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Java = (props) => (
+export const Java = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Java = (props) => (
 );
 
 Java.displayName = 'Java';
-
-export default Java;

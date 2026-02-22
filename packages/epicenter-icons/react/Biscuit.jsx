@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Biscuit = (props) => (
+export const Biscuit = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Biscuit = (props) => (
 );
 
 Biscuit.displayName = 'Biscuit';
-
-export default Biscuit;

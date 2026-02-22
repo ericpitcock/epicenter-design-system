@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Jupiter = (props) => (
+export const Jupiter = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Jupiter = (props) => (
 );
 
 Jupiter.displayName = 'Jupiter';
-
-export default Jupiter;

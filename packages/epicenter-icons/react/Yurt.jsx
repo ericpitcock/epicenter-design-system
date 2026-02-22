@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Yurt = (props) => (
+export const Yurt = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const Yurt = (props) => (
 );
 
 Yurt.displayName = 'Yurt';
-
-export default Yurt;

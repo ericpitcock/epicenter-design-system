@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Pacman02 = (props) => (
+export const Pacman02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Pacman02 = (props) => (
 );
 
 Pacman02.displayName = 'Pacman02';
-
-export default Pacman02;

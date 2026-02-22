@@ -1,6 +1,4 @@
-import React from 'react';
-
-const InputText = (props) => (
+export const InputText = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const InputText = (props) => (
 );
 
 InputText.displayName = 'InputText';
-
-export default InputText;

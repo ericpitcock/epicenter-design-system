@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MailUnlock02 = (props) => (
+export const MailUnlock02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const MailUnlock02 = (props) => (
 );
 
 MailUnlock02.displayName = 'MailUnlock02';
-
-export default MailUnlock02;

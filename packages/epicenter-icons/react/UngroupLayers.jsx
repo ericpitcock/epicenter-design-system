@@ -1,6 +1,4 @@
-import React from 'react';
-
-const UngroupLayers = (props) => (
+export const UngroupLayers = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const UngroupLayers = (props) => (
 );
 
 UngroupLayers.displayName = 'UngroupLayers';
-
-export default UngroupLayers;

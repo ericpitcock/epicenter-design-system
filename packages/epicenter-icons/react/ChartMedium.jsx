@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ChartMedium = (props) => (
+export const ChartMedium = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const ChartMedium = (props) => (
 );
 
 ChartMedium.displayName = 'ChartMedium';
-
-export default ChartMedium;

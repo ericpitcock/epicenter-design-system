@@ -1,6 +1,4 @@
-import React from 'react';
-
-const BedSingle01 = (props) => (
+export const BedSingle01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const BedSingle01 = (props) => (
 );
 
 BedSingle01.displayName = 'BedSingle01';
-
-export default BedSingle01;

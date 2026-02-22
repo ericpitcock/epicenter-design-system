@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StrokeLeft = (props) => (
+export const StrokeLeft = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const StrokeLeft = (props) => (
 );
 
 StrokeLeft.displayName = 'StrokeLeft';
-
-export default StrokeLeft;

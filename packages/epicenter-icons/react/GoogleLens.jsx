@@ -1,6 +1,4 @@
-import React from 'react';
-
-const GoogleLens = (props) => (
+export const GoogleLens = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const GoogleLens = (props) => (
 );
 
 GoogleLens.displayName = 'GoogleLens';
-
-export default GoogleLens;

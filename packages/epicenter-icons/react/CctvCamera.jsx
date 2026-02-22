@@ -1,6 +1,4 @@
-import React from 'react';
-
-const CctvCamera = (props) => (
+export const CctvCamera = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const CctvCamera = (props) => (
 );
 
 CctvCamera.displayName = 'CctvCamera';
-
-export default CctvCamera;

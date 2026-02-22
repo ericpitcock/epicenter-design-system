@@ -1,6 +1,4 @@
-import React from 'react';
-
-const DashboardCircleAdd = (props) => (
+export const DashboardCircleAdd = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const DashboardCircleAdd = (props) => (
 );
 
 DashboardCircleAdd.displayName = 'DashboardCircleAdd';
-
-export default DashboardCircleAdd;

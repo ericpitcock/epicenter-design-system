@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Glasses = (props) => (
+export const Glasses = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Glasses = (props) => (
 );
 
 Glasses.displayName = 'Glasses';
-
-export default Glasses;

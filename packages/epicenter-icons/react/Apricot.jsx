@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Apricot = (props) => (
+export const Apricot = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Apricot = (props) => (
 );
 
 Apricot.displayName = 'Apricot';
-
-export default Apricot;

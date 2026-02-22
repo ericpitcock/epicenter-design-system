@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Waze = (props) => (
+export const Waze = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Waze = (props) => (
 );
 
 Waze.displayName = 'Waze';
-
-export default Waze;

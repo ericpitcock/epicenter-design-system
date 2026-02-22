@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Bomb = (props) => (
+export const Bomb = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const Bomb = (props) => (
 );
 
 Bomb.displayName = 'Bomb';
-
-export default Bomb;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const PenConnectWifi = (props) => (
+export const PenConnectWifi = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const PenConnectWifi = (props) => (
 );
 
 PenConnectWifi.displayName = 'PenConnectWifi';
-
-export default PenConnectWifi;

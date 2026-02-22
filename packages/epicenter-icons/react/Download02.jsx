@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Download02 = (props) => (
+export const Download02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Download02 = (props) => (
 );
 
 Download02.displayName = 'Download02';
-
-export default Download02;

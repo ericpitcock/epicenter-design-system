@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Scissor = (props) => (
+export const Scissor = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Scissor = (props) => (
 );
 
 Scissor.displayName = 'Scissor';
-
-export default Scissor;

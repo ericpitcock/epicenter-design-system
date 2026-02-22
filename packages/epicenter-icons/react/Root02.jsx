@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Root02 = (props) => (
+export const Root02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -15,5 +13,3 @@ const Root02 = (props) => (
 );
 
 Root02.displayName = 'Root02';
-
-export default Root02;

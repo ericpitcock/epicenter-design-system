@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Dumbbell01 = (props) => (
+export const Dumbbell01 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -17,5 +15,3 @@ const Dumbbell01 = (props) => (
 );
 
 Dumbbell01.displayName = 'Dumbbell01';
-
-export default Dumbbell01;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AiAudio = (props) => (
+export const AiAudio = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -19,5 +17,3 @@ const AiAudio = (props) => (
 );
 
 AiAudio.displayName = 'AiAudio';
-
-export default AiAudio;

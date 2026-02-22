@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MenuSquare = (props) => (
+export const MenuSquare = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -16,5 +14,3 @@ const MenuSquare = (props) => (
 );
 
 MenuSquare.displayName = 'MenuSquare';
-
-export default MenuSquare;

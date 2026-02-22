@@ -1,6 +1,4 @@
-import React from 'react';
-
-const StarCircle = (props) => (
+export const StarCircle = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const StarCircle = (props) => (
 );
 
 StarCircle.displayName = 'StarCircle';
-
-export default StarCircle;

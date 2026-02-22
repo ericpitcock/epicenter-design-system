@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Picasa = (props) => (
+export const Picasa = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Picasa = (props) => (
 );
 
 Picasa.displayName = 'Picasa';
-
-export default Picasa;

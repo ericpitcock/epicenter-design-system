@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Copy02 = (props) => (
+export const Copy02 = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -14,5 +12,3 @@ const Copy02 = (props) => (
 );
 
 Copy02.displayName = 'Copy02';
-
-export default Copy02;

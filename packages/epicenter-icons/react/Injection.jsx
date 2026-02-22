@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Injection = (props) => (
+export const Injection = (props) => (
   <svg
     className="ep-icon"
     viewBox="0 0 24 24"
@@ -18,5 +16,3 @@ const Injection = (props) => (
 );
 
 Injection.displayName = 'Injection';
-
-export default Injection;
