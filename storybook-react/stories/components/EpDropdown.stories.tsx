@@ -1,57 +1,38 @@
-import { EpDropdown, EpButton, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-react-components'
+import { EpDropdown, EpDropdownTrigger, EpDropdownContent } from '@ericpitcock/epicenter-react-components'
+import { EpButton, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-react-components'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpDropdown> = {
   title: 'Components/Dropdown',
-  component: EpDropdown,
-  parameters: {
-    layout: 'centered'
-  },
-  argTypes: {
-    alignRight: {
-      control: 'boolean',
-      description: 'Aligns dropdown to the right'
-    },
-    showOnHover: {
-      control: 'boolean',
-      description: 'Opens on hover instead of click'
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Disables the dropdown'
-    }
-  }
+  component: EpDropdown
 }
 
 export default meta
 type Story = StoryObj<typeof EpDropdown>
 
-export const Dropdown: Story = {
+export const Default: Story = {
   render: () => (
     <div style={{ padding: '100px' }}>
-      <EpDropdown
-        trigger={<EpButton>Open Menu</EpButton>}
-      >
-        {({ close }) => (
-          <EpMenu onEscape={close} onTab={close}>
-            <EpMenuItem onSelect={close}>
-              <EpButton className="ep-button--menu-item" tabIndex={-1}>
-                Item 1
-              </EpButton>
-            </EpMenuItem>
-            <EpMenuItem onSelect={close}>
-              <EpButton className="ep-button--menu-item" tabIndex={-1}>
-                Item 2
-              </EpButton>
-            </EpMenuItem>
-            <EpMenuItem type="divider" />
-            <EpMenuItem onSelect={close}>
-              <EpButton className="ep-button--menu-item" tabIndex={-1}>
-                Close Menu
-              </EpButton>
-            </EpMenuItem>
-          </EpMenu>
-        )}
+      <EpDropdown>
+        <EpDropdownTrigger>
+          <EpButton>Open Menu</EpButton>
+        </EpDropdownTrigger>
+        <EpDropdownContent>
+          {({ close }) => (
+            <EpMenu>
+              <EpMenuItem onSelect={close}>
+                <EpButton className="ep-button--menu-item">Item 1</EpButton>
+              </EpMenuItem>
+              <EpMenuItem onSelect={close}>
+                <EpButton className="ep-button--menu-item">Item 2</EpButton>
+              </EpMenuItem>
+              <EpMenuItem type="divider" />
+              <EpMenuItem onSelect={close}>
+                <EpButton className="ep-button--menu-item">Item 3</EpButton>
+              </EpMenuItem>
+            </EpMenu>
+          )}
+        </EpDropdownContent>
       </EpDropdown>
     </div>
   )
