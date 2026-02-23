@@ -10,7 +10,7 @@
     "**/dist",
     "storybook-static",
     "docs/.vitepress/dist",
-    "packages/epicenter-icons/epicenter-icons",
-    "packages/epicenter-icons/react"
+    "packages/epicenter-icons-vue",
+    "packages/epicenter-icons-react"
   ]
 }

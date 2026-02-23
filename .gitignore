@@ -6,7 +6,18 @@ docs/.vitepress/cache/
 docs/.vitepress/dist/
 packages/epicenter-vue-components/dist/
 
-# icons package
+# icons pipeline
 packages/epicenter-icons/cleaned_svgs/
 packages/epicenter-icons/downloaded_svgs/
 packages/epicenter-icons/scripts/download_notes.txt
+
+# generated icon packages (output of build pipeline)
+packages/epicenter-icons-vue/*.js
+packages/epicenter-icons-vue/*.d.ts
+packages/epicenter-icons-vue/base.scss
+packages/epicenter-icons-react/*.jsx
+packages/epicenter-icons-react/*.js
+packages/epicenter-icons-react/*.d.ts
+packages/epicenter-icons-react/base.scss
+Prompt: Convert Design System Tokens to.yaml
+interface-custom-properties-guide.md

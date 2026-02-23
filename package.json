@@ -11,7 +11,7 @@
     "build-storybook": "storybook build",
     "storybook:react": "storybook dev -p 6007 -c .storybook-react --no-open",
     "build-storybook:react": "storybook build -c .storybook-react -o storybook-react-static",
-    "yalc:publish-all": "cd packages/epicenter-styles && yalc publish && cd ../epicenter-vue-components && yalc publish && cd ../epicenter-react-components && yalc publish && cd ../epicenter-icons && yalc publish",
+    "yalc:publish-all": "cd packages/epicenter-styles && yalc publish && cd ../epicenter-vue-components && yalc publish && cd ../epicenter-react-components && yalc publish && cd ../epicenter-icons-vue && yalc publish && cd ../epicenter-icons-react && yalc publish",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "lint:vue": "eslint packages/epicenter-vue-components/src/components/**/*.vue --fix"
   },
