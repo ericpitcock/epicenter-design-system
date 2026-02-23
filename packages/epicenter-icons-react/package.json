@@ -1,0 +1,40 @@
+{
+  "name": "@ericpitcock/epicenter-icons-react",
+  "version": "1.0.0",
+  "description": "Epicenter Icons for React",
+  "type": "module",
+  "sideEffects": false,
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./*": {
+      "types": "./*.d.ts",
+      "default": "./*.jsx"
+    },
+    "./base.scss": "./base.scss",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.js",
+    "*.jsx",
+    "*.d.ts",
+    "base.scss",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "keywords": [
+    "react",
+    "icons",
+    "svg",
+    "components",
+    "epicenter",
+    "ui"
+  ],
+  "author": "Eric Pitcock",
+  "license": "MIT"
+}

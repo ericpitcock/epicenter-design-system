@@ -1,0 +1,35 @@
+{
+  "name": "@ericpitcock/epicenter-icons-vue",
+  "version": "1.0.0",
+  "description": "Epicenter Icons for Vue 3",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./*": {
+      "types": "./*.d.ts",
+      "default": "./*.js"
+    },
+    "./base.scss": "./base.scss",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.js",
+    "*.d.ts",
+    "base.scss",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "icons",
+    "svg",
+    "components",
+    "epicenter",
+    "ui"
+  ],
+  "author": "Eric Pitcock",
+  "license": "MIT"
+}
