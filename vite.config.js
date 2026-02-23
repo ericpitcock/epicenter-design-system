@@ -26,12 +26,12 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./packages/epicenter-vue-components/src', import.meta.url)),
+      '@': fileURLToPath(new URL('./packages/epicenter-components-vue/src', import.meta.url)),
       // use icons directly from source
       '@ericpitcock/epicenter-icons-vue': fileURLToPath(new URL('./packages/epicenter-icons-vue', import.meta.url)),
       '@ericpitcock/epicenter-icons-react': fileURLToPath(new URL('./packages/epicenter-icons-react', import.meta.url)),
       '@ericpitcock/epicenter-styles': fileURLToPath(new URL('./packages/epicenter-styles/dist', import.meta.url)),
-      '@ericpitcock/epicenter-vue-components': fileURLToPath(new URL('./packages/epicenter-vue-components/dist', import.meta.url)),
+      '@ericpitcock/epicenter-components-vue': fileURLToPath(new URL('./packages/epicenter-components-vue/dist', import.meta.url)),
     }
   },
 })

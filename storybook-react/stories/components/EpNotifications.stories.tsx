@@ -1,4 +1,4 @@
-import { EpNotifications, NotificationItem } from '@ericpitcock/epicenter-react-components'
+import { EpNotifications, NotificationItem } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 

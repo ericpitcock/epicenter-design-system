@@ -1,4 +1,4 @@
-import { EpContainer } from '@ericpitcock/epicenter-react-components';
+import { EpContainer } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 

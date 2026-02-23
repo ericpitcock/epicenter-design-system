@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeProvider, useTheme } from '@ericpitcock/epicenter-react-components';
+import { ThemeProvider, useTheme } from '@ericpitcock/epicenter-components-react';
 
 const meta: Meta = {
   title: 'Hooks/useTheme',

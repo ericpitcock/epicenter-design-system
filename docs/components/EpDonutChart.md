@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { EpDonutChart } from '@epicenter/vue-components'
+import { EpDonutChart } from '@ericpitcock/epicenter-components-vue'
 
 const chartProps = {
   data: [28, 33, 44, 51],

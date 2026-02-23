@@ -1,4 +1,4 @@
-import { EpFlex, EpInput, EpPagination, EpSelect } from '@ericpitcock/epicenter-react-components';
+import { EpFlex, EpInput, EpPagination, EpSelect } from '@ericpitcock/epicenter-components-react';
 import React, { useEffect, useMemo, useState } from 'react';
 
 import { getComponentName, iconsData } from './useIcons';

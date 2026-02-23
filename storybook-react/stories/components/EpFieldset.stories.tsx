@@ -1,5 +1,5 @@
-import { EpFieldset } from '@ericpitcock/epicenter-react-components';
-import { EpCheckbox } from '@ericpitcock/epicenter-react-components';
+import { EpFieldset } from '@ericpitcock/epicenter-components-react';
+import { EpCheckbox } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 

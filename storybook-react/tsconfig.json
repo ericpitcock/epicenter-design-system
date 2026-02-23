@@ -18,7 +18,7 @@
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
-      "@ericpitcock/epicenter-react-components": ["../packages/epicenter-react-components"],
+      "@ericpitcock/epicenter-components-react": ["../packages/epicenter-components-react"],
       "@ericpitcock/epicenter-icons-react": ["../packages/epicenter-icons-react"],
       "@ericpitcock/epicenter-icons-react/*": ["../packages/epicenter-icons-react/*"],
       "@ericpitcock/epicenter-icons-vue": ["../packages/epicenter-icons-vue"],

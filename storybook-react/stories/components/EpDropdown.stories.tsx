@@ -1,5 +1,5 @@
-import { EpDropdown, EpDropdownTrigger, EpDropdownContent } from '@ericpitcock/epicenter-react-components'
-import { EpButton, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-react-components'
+import { EpDropdown, EpDropdownTrigger, EpDropdownContent } from '@ericpitcock/epicenter-components-react'
+import { EpButton, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpDropdown> = {

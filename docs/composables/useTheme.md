@@ -27,7 +27,7 @@
 
 <script setup>
 import useTheme from '@/composables/useTheme.js'
-import { EpButton } from '@epicenter/vue-components'
+import { EpButton } from '@ericpitcock/epicenter-components-vue'
 
 const { theme, toggleTheme } = useTheme()
 </script>
@@ -51,7 +51,7 @@ const { theme, toggleTheme } = useTheme()
 
 <script setup>
 import useTheme from '@/composables/useTheme.js'
-import { EpButton } from '@epicenter/vue-components'
+import { EpButton } from '@ericpitcock/epicenter-components-vue'
 import { IconSun, IconMoon } from '@epicenter/icons'
 
 const { theme, toggleTheme } = useTheme()
@@ -80,7 +80,7 @@ const { theme, toggleTheme } = useTheme()
 
 <script setup>
 import useTheme from '@/composables/useTheme.js'
-import { EpButton } from '@epicenter/vue-components'
+import { EpButton } from '@ericpitcock/epicenter-components-vue'
 
 const { theme, setTheme } = useTheme()
 </script>
@@ -102,7 +102,7 @@ Reset to OS preference or default:
 
 <script setup>
 import useTheme from '@/composables/useTheme.js'
-import { EpButton } from '@epicenter/vue-components'
+import { EpButton } from '@ericpitcock/epicenter-components-vue'
 
 const { theme, clearThemePreference } = useTheme()
 </script>
@@ -165,7 +165,7 @@ const { theme } = useTheme()
 <script setup>
 import { computed } from 'vue'
 import useTheme from '@/composables/useTheme.js'
-import { EpButton, EpHeader } from '@epicenter/vue-components'
+import { EpButton, EpHeader } from '@ericpitcock/epicenter-components-vue'
 import { IconSun, IconMoon } from '@epicenter/icons'
 
 const { theme, toggleTheme } = useTheme()
@@ -316,7 +316,7 @@ Or use CSS `light-dark()` function with `color-scheme`:
 
 <script setup>
 import useTheme from '@/composables/useTheme.js'
-import { EpButton, EpHeader } from '@epicenter/vue-components'
+import { EpButton, EpHeader } from '@ericpitcock/epicenter-components-vue'
 import { IconSun, IconMoon } from '@epicenter/icons'
 
 const { theme, toggleTheme } = useTheme()

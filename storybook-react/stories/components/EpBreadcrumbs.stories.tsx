@@ -1,4 +1,4 @@
-import { EpBreadcrumbs } from '@ericpitcock/epicenter-react-components'
+import { EpBreadcrumbs } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpBreadcrumbs> = {

@@ -1,5 +1,5 @@
 {
-  "name": "@ericpitcock/epicenter-react-components",
+  "name": "@ericpitcock/epicenter-components-react",
   "version": "1.0.0",
   "description": "Epicenter Design System - React Components",
   "main": "src/index.ts",

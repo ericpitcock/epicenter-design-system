@@ -1,4 +1,4 @@
-import { EpMultiSearch } from '@ericpitcock/epicenter-react-components';
+import { EpMultiSearch } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {

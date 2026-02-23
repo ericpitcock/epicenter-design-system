@@ -11,7 +11,7 @@
   </template>
 
   <script setup>
-    import { EpCodeView } from '@epicenter/vue-components'
+    import { EpCodeView } from '@ericpitcock/epicenter-components-vue'
     import { codeExamples } from './EpCodeView.data'
   </script>
 ```

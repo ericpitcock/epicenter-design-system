@@ -1,4 +1,4 @@
-import { EpRadio } from '@ericpitcock/epicenter-react-components';
+import { EpRadio } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 

@@ -4,7 +4,7 @@ import { initializeTheme } from '../composables/useTheme.js'
  * Vue plugin for Epicenter theme management
  * 
  * Usage:
- *   import themePlugin from '@ericpitcock/epicenter-vue-components/dist/plugins/themePlugin'
+ *   import themePlugin from '@ericpitcock/epicenter-components-vue/dist/plugins/themePlugin'
  *   app.use(themePlugin)
  * 
  * Or with options:

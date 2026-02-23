@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { EpDatePicker } from '@epicenter/vue-components'
+import { EpDatePicker } from '@ericpitcock/epicenter-components-vue'
 
 const datePickerProps = {
   enableCloseOnSelect: false,

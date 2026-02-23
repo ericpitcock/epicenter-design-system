@@ -43,6 +43,6 @@ Use `calculateHeight: true` to dynamically assign a height to the container. Thi
 </template>
 
 <script setup>
-  import { EpContainer, EpHeader, EpFooter } from '@epicenter/vue-components'
+  import { EpContainer, EpHeader, EpFooter } from '@ericpitcock/epicenter-components-vue'
 </script>
 ```

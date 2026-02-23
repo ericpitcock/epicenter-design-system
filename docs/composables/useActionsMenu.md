@@ -24,7 +24,7 @@
 
 <script setup>
 import useActionsMenu from '@/composables/useActionsMenu.js'
-import { EpButton, EpDropdown } from '@epicenter/vue-components'
+import { EpButton, EpDropdown } from '@ericpitcock/epicenter-components-vue'
 
 const { generateActionMenuProps } = useActionsMenu()
 
@@ -58,7 +58,7 @@ Use functions in menu items to access row context, useful in tables:
 
 <script setup>
 import useActionsMenu from '@/composables/useActionsMenu.js'
-import { EpButton, EpDropdown, EpTable } from '@epicenter/vue-components'
+import { EpButton, EpDropdown, EpTable } from '@ericpitcock/epicenter-components-vue'
 
 const { generateActionMenuProps } = useActionsMenu()
 

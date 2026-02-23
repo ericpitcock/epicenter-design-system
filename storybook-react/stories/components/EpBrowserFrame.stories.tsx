@@ -1,4 +1,4 @@
-import { EpBrowserFrame } from '@ericpitcock/epicenter-react-components'
+import { EpBrowserFrame } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpBrowserFrame> = {

@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 // Path to the components directory
-const componentsPath = path.resolve(__dirname, '../../packages/epicenter-vue-components/src/components')
+const componentsPath = path.resolve(__dirname, '../../packages/epicenter-components-vue/src/components')
 
 // Find all .vue files in the components directory and subdirectories
 const vueFiles = glob.sync(`${componentsPath}/**/*.vue`)

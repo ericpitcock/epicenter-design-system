@@ -1,4 +1,4 @@
-import { EpSearchTypeahead } from '@ericpitcock/epicenter-react-components';
+import { EpSearchTypeahead } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {

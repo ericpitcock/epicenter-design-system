@@ -1,4 +1,4 @@
-import { EpKeyValueTable } from '@ericpitcock/epicenter-react-components'
+import { EpKeyValueTable } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpKeyValueTable> = {

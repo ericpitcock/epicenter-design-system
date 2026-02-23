@@ -4,16 +4,16 @@
   "description": "Epicenter Design System",
   "type": "module",
   "scripts": {
-    "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-vue-components && npm install && cd ../epicenter-react-components && npm install && cd .. && npm install && npm run build-storybook",
+    "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-components-vue && npm install && cd ../epicenter-components-react && npm install && cd .. && npm install && npm run build-storybook",
     "netlify-build-docs": "npm install && cd docs && npm run docs:build",
-    "install-all": "cd packages/epicenter-styles && npm install && cd ../epicenter-vue-components && npm install && cd ../epicenter-react-components && npm install && cd .. && npm install",
+    "install-all": "cd packages/epicenter-styles && npm install && cd ../epicenter-components-vue && npm install && cd ../epicenter-components-react && npm install && cd .. && npm install",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
     "storybook:react": "storybook dev -p 6007 -c .storybook-react --no-open",
     "build-storybook:react": "storybook build -c .storybook-react -o storybook-react-static",
-    "yalc:publish-all": "cd packages/epicenter-styles && yalc publish && cd ../epicenter-vue-components && yalc publish && cd ../epicenter-react-components && yalc publish && cd ../epicenter-icons-vue && yalc publish && cd ../epicenter-icons-react && yalc publish",
+    "yalc:publish-all": "cd packages/epicenter-styles && yalc publish && cd ../epicenter-components-vue && yalc publish && cd ../epicenter-components-react && yalc publish && cd ../epicenter-icons-vue && yalc publish && cd ../epicenter-icons-react && yalc publish",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "lint:vue": "eslint packages/epicenter-vue-components/src/components/**/*.vue --fix"
+    "lint:vue": "eslint packages/epicenter-components-vue/src/components/**/*.vue --fix"
   },
   "repository": {
     "type": "git",

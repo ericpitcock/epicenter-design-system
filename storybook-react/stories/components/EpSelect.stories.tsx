@@ -1,4 +1,4 @@
-import { EpSelect } from '@ericpitcock/epicenter-react-components'
+import { EpSelect } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 

@@ -1,4 +1,4 @@
-import { EpAsyncButton } from '@ericpitcock/epicenter-react-components'
+import { EpAsyncButton } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 

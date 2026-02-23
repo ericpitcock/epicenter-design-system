@@ -3,7 +3,7 @@
 ## Install via NPM
 
 ```shell
-npm install @ericpitcock/epicenter-vue-components
+npm install @ericpitcock/epicenter-components-vue
 npm install @ericpitcock/epicenter-styles
 ```
 
@@ -13,7 +13,7 @@ npm install @ericpitcock/epicenter-styles
 // main.js
 import { createApp } from 'vue'
 import App from './App.vue'
-import Epicenter from '@ericpitcock/epicenter-vue-components'
+import Epicenter from '@ericpitcock/epicenter-components-vue'
 
 import '@ericpitcock/epicenter-styles'
 // optionally import app variables and overrides
@@ -42,7 +42,7 @@ import {
   EpThemeToggle,
   EpToggle,
   EpUpsetPlot,
-} from '@ericpitcock/epicenter-vue-components'
+} from '@ericpitcock/epicenter-components-vue'
 
 const components = {
   EpButton,
@@ -80,7 +80,7 @@ app.mount('#app')
 </template>
 
 <script setup>
-  import { EpButton } from '@ericpitcock/epicenter-vue-components'
+  import { EpButton } from '@ericpitcock/epicenter-components-vue'
 
   const buttonProps = {
     label: 'Click me'

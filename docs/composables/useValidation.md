@@ -43,7 +43,7 @@
 <script setup>
 import { ref } from 'vue'
 import useValidation from '@/composables/useValidation.js'
-import { EpButton, EpInput } from '@epicenter/vue-components'
+import { EpButton, EpInput } from '@ericpitcock/epicenter-components-vue'
 
 const model = ref({
   name: '',
@@ -103,7 +103,7 @@ Use conditional rules for fields that are only required based on other form valu
 <script setup>
 import { ref } from 'vue'
 import useValidation from '@/composables/useValidation.js'
-import { EpButton, EpInput, EpRadio } from '@epicenter/vue-components'
+import { EpButton, EpInput, EpRadio } from '@ericpitcock/epicenter-components-vue'
 
 const model = ref({
   orderType: 'pickup',

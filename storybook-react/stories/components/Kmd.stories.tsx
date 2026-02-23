@@ -16,7 +16,7 @@ import { User } from '@ericpitcock/epicenter-icons-react/User.jsx';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { Kmd } from '../../../packages/epicenter-react-components/src/components/command-palette/Kmd';
+import { Kmd } from '../../../packages/epicenter-components-react/src/components/command-palette/Kmd';
 
 const meta = {
   title: 'Components/Kmd',

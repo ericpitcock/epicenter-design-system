@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-  import { EpChart } from '@epicenter/vue-components'
+  import { EpChart } from '@ericpitcock/epicenter-components-vue'
 
   const chartProps = {
     type: 'bar',

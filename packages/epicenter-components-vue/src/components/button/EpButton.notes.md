@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-  import { EpButton } from '@epicenter/vue-components'
+  import { EpButton } from '@ericpitcock/epicenter-components-vue'
 
   const handleClick = () => {
     console.log('Button clicked!')
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-  import { EpButton } from '@epicenter/vue-components'
+  import { EpButton } from '@ericpitcock/epicenter-components-vue'
   import { IconPlus, IconArrowRight } from '@epicenter/icons'
 </script>
 ```
@@ -50,6 +50,6 @@
 </template>
 
 <script setup>
-  import { EpButton } from '@epicenter/vue-components'
+  import { EpButton } from '@ericpitcock/epicenter-components-vue'
 </script>
 ```

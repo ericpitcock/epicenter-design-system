@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useValidation } from '@ericpitcock/epicenter-react-components';
+import { useValidation } from '@ericpitcock/epicenter-components-react';
 
 const meta: Meta = {
   title: 'Hooks/useValidation',

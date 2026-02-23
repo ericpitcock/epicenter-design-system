@@ -18,7 +18,7 @@
 
 <script setup>
   import { ref } from 'vue'
-  import { EpCheckbox } from '@epicenter/vue-components'
+  import { EpCheckbox } from '@ericpitcock/epicenter-components-vue'
 
   const checkboxes = ref([
       {

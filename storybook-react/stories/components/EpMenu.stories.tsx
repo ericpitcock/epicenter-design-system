@@ -1,4 +1,4 @@
-import { EpButton, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-react-components'
+import { EpButton, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 

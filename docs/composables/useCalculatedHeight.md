@@ -111,7 +111,7 @@ const { dynamicHeight } = useCalculatedHeight(mainRef)
 <script setup>
 import { ref } from 'vue'
 import useCalculatedHeight from '@/composables/useCalculatedHeight.js'
-import { EpButton, EpTable } from '@epicenter/vue-components'
+import { EpButton, EpTable } from '@ericpitcock/epicenter-components-vue'
 
 const tableWrapperRef = ref(null)
 const tableData = ref([/* data */])
@@ -248,7 +248,7 @@ const { dynamicHeight } = useCalculatedHeight(widgetBodyRef, 10)
 <script setup>
 import { ref } from 'vue'
 import useCalculatedHeight from '@/composables/useCalculatedHeight.js'
-import { EpButton, EpOverlay } from '@epicenter/vue-components'
+import { EpButton, EpOverlay } from '@ericpitcock/epicenter-components-vue'
 
 const showModal = ref(false)
 const modalBodyRef = ref(null)

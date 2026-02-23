@@ -134,7 +134,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
     EpTablePagination,
     EpTableSortableHeader,
     EpTableCheckboxFilters,
-  } from '@epicenter/vue-components'
+  } from '@ericpitcock/epicenter-components-vue'
   import {
     useExclude,
     useColumnFilters,

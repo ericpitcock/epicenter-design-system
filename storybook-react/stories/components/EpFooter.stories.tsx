@@ -1,4 +1,4 @@
-import { EpFooter } from '@ericpitcock/epicenter-react-components';
+import { EpFooter } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {

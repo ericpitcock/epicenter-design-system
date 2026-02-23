@@ -1,4 +1,4 @@
-import { EpStatusIndicator } from '@ericpitcock/epicenter-react-components';
+import { EpStatusIndicator } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 

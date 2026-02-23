@@ -1,4 +1,4 @@
-import { EpInputStyler } from '@ericpitcock/epicenter-react-components'
+import { EpInputStyler } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof EpInputStyler> = {

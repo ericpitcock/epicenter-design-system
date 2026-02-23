@@ -26,7 +26,7 @@ const config = {
         ...(config.resolve ?? {}),
         alias: {
           ...config.resolve?.alias,
-          '@ericpitcock/epicenter-react-components': path.resolve(__dirname, '../packages/epicenter-react-components/src'),
+          '@ericpitcock/epicenter-components-react': path.resolve(__dirname, '../packages/epicenter-components-react/src'),
         },
       },
     }

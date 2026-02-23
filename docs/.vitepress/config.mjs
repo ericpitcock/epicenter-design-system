@@ -42,7 +42,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('../../packages/epicenter-vue-components/src', import.meta.url)),
+        '@': fileURLToPath(new URL('../../packages/epicenter-components-vue/src', import.meta.url)),
         // use icons directly from source
         '@ericpitcock/epicenter-icons-vue': fileURLToPath(new URL('../../packages/epicenter-icons-vue', import.meta.url)),
         '@ericpitcock/epicenter-styles': fileURLToPath(new URL('../../packages/epicenter-styles', import.meta.url)),
