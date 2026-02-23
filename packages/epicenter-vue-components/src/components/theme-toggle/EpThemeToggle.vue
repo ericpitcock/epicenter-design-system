@@ -1,6 +1,6 @@
 <script setup>
-  import Moon02 from '@ericpitcock/epicenter-icons/epicenter-icons/Moon02'
-  import Sun02 from '@ericpitcock/epicenter-icons/epicenter-icons/Sun02'
+  import Moon02 from '@ericpitcock/epicenter-icons-vue/Moon02'
+  import Sun02 from '@ericpitcock/epicenter-icons-vue/Sun02'
   import { computed } from 'vue'
 
   import useTheme from '../../composables/useTheme.js'

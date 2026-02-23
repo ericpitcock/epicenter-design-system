@@ -1,5 +1,5 @@
 <script setup>
-  import Calendar01 from '@ericpitcock/epicenter-icons/epicenter-icons/Calendar01'
+  import Calendar01 from '@ericpitcock/epicenter-icons-vue/Calendar01'
   import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
   import EpInput from '../input/EpInput.vue'

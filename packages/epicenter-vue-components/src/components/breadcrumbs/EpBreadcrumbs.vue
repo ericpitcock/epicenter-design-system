@@ -1,5 +1,5 @@
 <script setup>
-  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
+  import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
 
   defineProps({
     /**
