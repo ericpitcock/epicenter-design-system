@@ -1,4 +1,4 @@
-import { ArrowRight01, Search01 } from '@ericpitcock/epicenter-icons/react';
+import { ArrowRight01, Search01 } from '@ericpitcock/epicenter-icons-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 

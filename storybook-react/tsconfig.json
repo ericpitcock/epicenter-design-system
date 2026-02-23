@@ -19,8 +19,10 @@
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
       "@ericpitcock/epicenter-react-components": ["../packages/epicenter-react-components"],
-      "@ericpitcock/epicenter-icons/react": ["../packages/epicenter-icons/react"],
-      "@ericpitcock/epicenter-icons/epicenter-icons": ["../packages/epicenter-icons/epicenter-icons"]
+      "@ericpitcock/epicenter-icons-react": ["../packages/epicenter-icons-react"],
+      "@ericpitcock/epicenter-icons-react/*": ["../packages/epicenter-icons-react/*"],
+      "@ericpitcock/epicenter-icons-vue": ["../packages/epicenter-icons-vue"],
+      "@ericpitcock/epicenter-icons-vue/*": ["../packages/epicenter-icons-vue/*"]
     }
   },
   "include": [

@@ -3,10 +3,10 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 import { getComponentName, iconsData } from './useIcons';
 
-import '../../../packages/epicenter-icons/base.scss';
+import '../../../packages/epicenter-icons-react/base.scss';
 
 // Lazy glob import — modules are loaded on demand, not at startup
-const iconModules = import.meta.glob('../../../packages/epicenter-icons/react/*.jsx');
+const iconModules = import.meta.glob('../../../packages/epicenter-icons-react/*.jsx');
 
 const PROBLEMATIC_ICONS = [
   'Access', 'Advertisiment', 'Affiliate', 'AiBook', 'AiBrain03', 'AiChat02',
