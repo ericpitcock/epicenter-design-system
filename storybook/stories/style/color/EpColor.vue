@@ -1,6 +1,6 @@
 <script setup>
-  import Alert02 from '@ericpitcock/epicenter-icons/epicenter-icons/Alert02'
-  import Tick02 from '@ericpitcock/epicenter-icons/epicenter-icons/Tick02'
+  import Alert02 from '@ericpitcock/epicenter-icons-vue/Alert02'
+  import Tick02 from '@ericpitcock/epicenter-icons-vue/Tick02'
   import { faker } from '@faker-js/faker'
   import { useClipboard } from '@vueuse/core'
   import chroma from 'chroma-js'

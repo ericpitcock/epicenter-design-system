@@ -6,7 +6,7 @@ export const useIcons = (leftIconName, rightIconName) => {
   const getIconComponent = (iconName) => {
     return computed(() => {
       if (iconName.value && iconName.value !== 'None') {
-        return defineAsyncComponent(() => import(`../../../packages/epicenter-icons/epicenter-icons/${iconName.value}.js`))
+        return defineAsyncComponent(() => import(`../../../packages/epicenter-icons-vue/${iconName.value}.js`))
       }
       return null
     })
@@ -70,7 +70,7 @@ export const createIconImports = () => {
   const imports = {}
   iconsData.forEach(icon => {
     const componentName = getComponentName(icon.name)
-    imports[componentName] = () => import(`../../../packages/epicenter-icons/epicenter-icons/${componentName}.js`)
+    imports[componentName] = () => import(`../../../packages/epicenter-icons-vue/${componentName}.js`)
   })
   return imports
 }

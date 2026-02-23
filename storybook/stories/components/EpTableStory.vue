@@ -171,8 +171,8 @@
 </template>
 
 <script setup>
-  import Layout2Column from '@ericpitcock/epicenter-icons/epicenter-icons/Layout2Column'
-  import MoreVertical from '@ericpitcock/epicenter-icons/epicenter-icons/MoreVertical'
+  import Layout2Column from '@ericpitcock/epicenter-icons-vue/Layout2Column'
+  import MoreVertical from '@ericpitcock/epicenter-icons-vue/MoreVertical'
   import { ref } from 'vue'
 
   import EpBadge from '@/components/badge/EpBadge.vue'

@@ -1,5 +1,5 @@
-import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
-import Coffee02 from '@ericpitcock/epicenter-icons/epicenter-icons/Coffee02'
+import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
+import Coffee02 from '@ericpitcock/epicenter-icons-vue/Coffee02'
 import { ref, toRef } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'

@@ -30,8 +30,8 @@
 </template>
 
 <script setup>
-  import DocumentCode from '@ericpitcock/epicenter-icons/epicenter-icons/DocumentCode'
-  import Github from '@ericpitcock/epicenter-icons/epicenter-icons/Github'
+  import DocumentCode from '@ericpitcock/epicenter-icons-vue/DocumentCode'
+  import Github from '@ericpitcock/epicenter-icons-vue/Github'
 
   import EpButton from '@/components/button/EpButton.vue'
   import EpFlex from '@/components/flexbox/EpFlex.vue'
