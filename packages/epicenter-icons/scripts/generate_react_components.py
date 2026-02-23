@@ -3,46 +3,9 @@ import re
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
+from shared import svg_filename_to_component_name
+
 XLINK_NS = "http://www.w3.org/1999/xlink"
-
-def svg_filename_to_component_name(filename):
-    """
-    Convert SVG filename to PascalCase React component name
-    Example: 1st-bracket-circle-stroke-standard.svg -> FirstBracketCircle
-    """
-    name = filename.replace('.svg', '').replace('-stroke-standard', '')
-
-    # Specific renames
-    naming_conflicts = {
-        'trade-mark': 'trademark-circle',
-        'trademark': 'trademark-rectangle',
-        'finger-print-scan': 'fingerprint-scan-01',
-        'fingerprint-scan': 'fingerprint-scan-02',
-        'four-square': 'four-number-square',
-        'foursquare': 'foursquare-logo',
-    }
-    if name in naming_conflicts:
-        name = naming_conflicts[name]
-
-    special_chars = {
-        ':': 'Colon', '.': 'Dot', '+': 'Plus', '@': 'At', '#': 'Hash',
-        '$': 'Dollar', '%': 'Percent', '&': 'And', '!': 'Exclamation',
-        '?': 'Question', '*': 'Star', '/': 'Slash', '\\': 'Backslash',
-        '|': 'Pipe', '=': 'Equals', '<': 'Less', '>': 'Greater',
-        '(': 'ParenOpen', ')': 'ParenClose', '[': 'BracketOpen',
-        ']': 'BracketClose', '{': 'BraceOpen', '}': 'BraceClose',
-        ';': 'Semicolon', ',': 'Comma', "'": 'Quote', '"': 'DoubleQuote',
-        '`': 'Backtick', '~': 'Tilde', '^': 'Caret'
-    }
-    for char, replacement in special_chars.items():
-        name = name.replace(char, f'-{replacement}')
-
-    if name and name[0].isdigit():
-        name = 'Num' + name
-
-    parts = [p for p in name.split('-') if p]
-    pascal_name = ''.join(word.capitalize() for word in parts)
-    return pascal_name
 
 # ---------- SVG -> JSX helpers ----------
 
@@ -176,7 +139,7 @@ def convert_all_svgs():
     Convert all cleaned SVG files to React components
     """
     input_dir = Path("cleaned_svgs")
-    output_dir = Path("react")
+    output_dir = Path("../epicenter-icons-react")
 
     if not input_dir.exists():
         print("Error: cleaned_svgs directory not found")
@@ -231,8 +194,8 @@ def convert_all_svgs():
     print(f"React components saved to: {output_dir.absolute()}")
     print(f"Index file created: {index_file.absolute()}")
     print("\nUsage examples:")
-    print("import { Abacus } from './react'")
-    print("import * as Icons from './react'")
+    print("import { Abacus } from '@ericpitcock/epicenter-icons-react'")
+    print("import { Abacus } from '@ericpitcock/epicenter-icons-react/Abacus'")
 
 if __name__ == "__main__":
     # Change to the parent directory (where cleaned_svgs is located)

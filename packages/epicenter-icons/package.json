@@ -1,46 +1,19 @@
 {
   "name": "@ericpitcock/epicenter-icons",
   "version": "2.0.0-beta",
-  "description": "Epicenter Icons, A comprehensive Vue 3 icon library",
+  "private": true,
+  "description": "Epicenter Icons build pipeline — generates Vue and React icon packages",
   "type": "module",
-  "sideEffects": false,
-  "types": "./react/index.d.ts",
-  "exports": {
-    "./base.scss": "./base.scss",
-    "./epicenter-icons/*": "./epicenter-icons/*.js",
-    "./react": {
-      "types": "./react/index.d.ts",
-      "default": "./react/index.js"
-    },
-    "./react/*": {
-      "types": "./react/*.d.ts",
-      "default": "./react/*.jsx"
-    },
-    "./package.json": "./package.json"
-  },
-  "files": [
-    "epicenter-icons/",
-    "react/",
-    "base.scss",
-    "README.md"
-  ],
   "scripts": {
     "download": "python3 scripts/download_svgs.py",
     "clean": "python3 scripts/clean_svgs.py",
-    "generate": "python3 scripts/generate_vue_components.py",
-    "generate:types": "node scripts/generate-react-types.js",
-    "build": "npm run generate && npm run generate:types",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate:vue": "python3 scripts/generate_vue_components.py",
+    "generate:vue-types": "node scripts/generate-vue-types.js",
+    "generate:react": "python3 scripts/generate_react_components.py",
+    "generate:react-types": "node scripts/generate-react-types.js",
+    "copy:assets": "cp base.scss ../epicenter-icons-vue/base.scss && cp base.scss ../epicenter-icons-react/base.scss",
+    "build": "npm run generate:vue && npm run generate:vue-types && npm run generate:react && npm run generate:react-types && npm run copy:assets"
   },
-  "keywords": [
-    "vue",
-    "vue3",
-    "icons",
-    "svg",
-    "components",
-    "epicenter",
-    "ui"
-  ],
   "author": "Eric Pitcock",
   "license": "MIT"
 }

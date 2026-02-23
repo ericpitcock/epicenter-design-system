@@ -4,46 +4,9 @@ import textwrap
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
+from shared import svg_filename_to_component_name
+
 XLINK_NS = "http://www.w3.org/1999/xlink"
-
-def svg_filename_to_component_name(filename):
-    """
-    Convert SVG filename to PascalCase Vue component name
-    Example: 1st-bracket-circle-stroke-standard.svg -> FirstBracketCircle
-    """
-    name = filename.replace('.svg', '').replace('-stroke-standard', '')
-
-    # Specific renames
-    naming_conflicts = {
-        'trade-mark': 'trademark-circle',
-        'trademark': 'trademark-rectangle',
-        'finger-print-scan': 'fingerprint-scan-01',
-        'fingerprint-scan': 'fingerprint-scan-02',
-        'four-square': 'four-number-square',
-        'foursquare': 'foursquare-logo',
-    }
-    if name in naming_conflicts:
-        name = naming_conflicts[name]
-
-    special_chars = {
-        ':': 'Colon', '.': 'Dot', '+': 'Plus', '@': 'At', '#': 'Hash',
-        '$': 'Dollar', '%': 'Percent', '&': 'And', '!': 'Exclamation',
-        '?': 'Question', '*': 'Star', '/': 'Slash', '\\': 'Backslash',
-        '|': 'Pipe', '=': 'Equals', '<': 'Less', '>': 'Greater',
-        '(': 'ParenOpen', ')': 'ParenClose', '[': 'BracketOpen',
-        ']': 'BracketClose', '{': 'BraceOpen', '}': 'BraceClose',
-        ';': 'Semicolon', ',': 'Comma', "'": 'Quote', '"': 'DoubleQuote',
-        '`': 'Backtick', '~': 'Tilde', '^': 'Caret'
-    }
-    for char, replacement in special_chars.items():
-        name = name.replace(char, f'-{replacement}')
-
-    if name and name[0].isdigit():
-        name = 'Num' + name
-
-    parts = [p for p in name.split('-') if p]
-    pascal_name = ''.join(word.capitalize() for word in parts)
-    return pascal_name
 
 # ---------- SVG -> h() helpers ----------
 
@@ -161,7 +124,7 @@ def convert_all_svgs():
     Convert all cleaned SVG files to Vue components
     """
     input_dir = Path("cleaned_svgs")
-    output_dir = Path("epicenter-icons")
+    output_dir = Path("../epicenter-icons-vue")
 
     if not input_dir.exists():
         print("Error: cleaned_svgs directory not found")
@@ -206,8 +169,7 @@ def convert_all_svgs():
     print(f"\nConversion complete! Successfully converted {converted_count} SVG files.")
     print(f"JS components saved to: {output_dir.absolute()}")
     print("\nUsage examples:")
-    print("import { IconName } from './epicenter-icons'")
-    print("import AllIcons from './epicenter-icons'")
+    print("import IconName from '@ericpitcock/epicenter-icons-vue/IconName'")
 
 if __name__ == "__main__":
     # Change to the parent directory (where cleaned_svgs is located)

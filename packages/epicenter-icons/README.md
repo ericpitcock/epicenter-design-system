@@ -1,112 +1,54 @@
-# @ericpitcock/epicenter-icons
+# Epicenter Icons — Build Pipeline
 
-An icon library for Epicenter Design System, available for both Vue 3 and React.
+This package contains the build pipeline that generates the published icon packages:
 
-## Installation
+- **[@ericpitcock/epicenter-icons-vue](../epicenter-icons-vue/)** — Vue 3 icon components
+- **[@ericpitcock/epicenter-icons-react](../epicenter-icons-react/)** — React icon components
+
+This package itself is **not published** to npm (`"private": true`).
+
+## Directory Structure
+
+```
+packages/epicenter-icons/
+├── scripts/
+│   ├── shared.py                      # Shared naming utilities
+│   ├── download_svgs.py               # Download SVGs from CDN
+│   ├── clean_svgs.py                  # Strip/normalize SVG attributes
+│   ├── generate_vue_components.py     # Generate Vue 3 components → ../epicenter-icons-vue/
+│   ├── generate_react_components.py   # Generate React components → ../epicenter-icons-react/
+│   ├── generate-vue-types.js          # Generate Vue .d.ts files
+│   └── generate-react-types.js        # Generate React .d.ts files
+├── icons.json                         # Icon metadata catalog (names, tags, categories)
+├── base.scss                          # Shared icon styles (copied to both packages during build)
+├── downloaded_svgs/                   # Raw SVGs (gitignored)
+└── cleaned_svgs/                      # Processed SVGs (gitignored)
+```
+
+## Build
 
 ```bash
-npm install @ericpitcock/epicenter-icons
+# Full build — generates all components, types, and copies assets
+npm run build
+
+# Individual steps
+npm run download          # Download SVGs from CDN → downloaded_svgs/
+npm run clean             # Process SVGs → cleaned_svgs/
+npm run generate:vue      # Generate Vue components → ../epicenter-icons-vue/
+npm run generate:vue-types  # Generate Vue .d.ts files
+npm run generate:react    # Generate React components → ../epicenter-icons-react/
+npm run generate:react-types  # Generate React .d.ts files
+npm run copy:assets       # Copy base.scss to both output packages
 ```
 
-## Available Icons
+## Pipeline
 
-Browse all 4,617 icons in the [icons.json](icons.json) file, the `epicenter-icons/` directory (Vue), or the `react/` directory (React).
+1. **Download** — `download_svgs.py` reads `icons.json` and fetches SVGs from `cdn.hugeicons.com` into `downloaded_svgs/`
+2. **Clean** — `clean_svgs.py` strips width/height, normalizes fill/stroke attributes, and minifies SVGs into `cleaned_svgs/`
+3. **Generate** — Framework-specific scripts convert cleaned SVGs into Vue (`defineComponent` + `h()`) and React (JSX functional components)
+4. **Types** — TypeScript declaration files are generated for both packages
+5. **Assets** — `base.scss` is copied into both output packages
 
-## Usage
+## Naming
 
-### Vue 3
-
-Import icons directly from their individual files for optimal performance:
-
-```vue
-<script setup>
-  import Heart from '@ericpitcock/epicenter-icons/epicenter-icons/Heart'
-  import Coffee02 from '@ericpitcock/epicenter-icons/epicenter-icons/Coffee02'
-  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
-</script>
-
-<template>
-  <Heart />
-  <Coffee02 />
-  <ArrowRight01 />
-</template>
-```
-
-> **Note:** Direct imports ensure fast build times and optimal tree-shaking. Barrel imports (importing from the package root) are not supported for Vue due to performance concerns with large icon sets.
-
-### React
-
-Import icons from the React directory:
-
-```jsx
-import { Heart, Coffee02, ArrowRight01 } from '@ericpitcock/epicenter-icons/react';
-
-function MyComponent() {
-  return (
-    <div>
-      <Heart />
-      <Coffee02 />
-      <ArrowRight01 />
-    </div>
-  );
-}
-```
-
-You can also pass custom props to React icons:
-
-```jsx
-<Heart 
-  width={32}
-  height={32}
-  stroke="currentColor"
-  fill="none"
-  strokeWidth={2}
-/>
-```
-
-See the [React README](./react/README.md) for detailed React usage.
-
-## Styling & Customization
-
-### CSS Custom Properties
-
-All icons support customization via CSS custom properties:
-
-```css
-.my-icon {
-  --ep-icon-width: 2rem;          /* Icon width */
-  --ep-icon-height: 2rem;         /* Icon height */
-  --ep-icon-color: #3b82f6;     /* Stroke color */
-  --ep-icon-stroke-width: 2;      /* Stroke thickness */
-}
-```
-
-### Vue Props Alternative
-
-You can also pass styles as props or use CSS classes:
-
-```vue
-<template>
-  <Heart 
-    :style="{ 
-      '--ep-icon-width': '32px',
-      '--ep-icon-color': '#ef4444'
-    }"
-  />
-</template>
-```
-
-### Global Styles
-
-Import the base styles for consistent default styling:
-
-```js
-// In your main.js or component
-import '@ericpitcock/epicenter-icons/base.scss'
-```
-
-Or in CSS:
-
-```css
-@import '@ericpitcock/epicenter-icons/base.scss';
-```
+The `shared.py` module contains `svg_filename_to_component_name()` which converts kebab-case SVG filenames to PascalCase component names. It handles numeric prefixes, special characters, and naming conflicts. Both Vue and React generation scripts use this shared function.
