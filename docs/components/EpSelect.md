@@ -34,7 +34,7 @@
 
 ```vue
 <script setup>
-  import ArrowDown01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowDown01'
+  import ArrowDown01 from '@ericpitcock/epicenter-icons-vue/ArrowDown01'
   import { computed, ref, useId } from 'vue'
 
   import EpInputStyler from '../input-styler/EpInputStyler.vue'

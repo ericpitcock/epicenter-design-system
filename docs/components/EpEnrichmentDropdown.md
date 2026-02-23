@@ -24,8 +24,8 @@ This component does not use events.
 
 ```vue
 <script setup>
-  import ArrowUpRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowUpRight01'
-  import Asterisk02 from '@ericpitcock/epicenter-icons/epicenter-icons/Asterisk02'
+  import ArrowUpRight01 from '@ericpitcock/epicenter-icons-vue/ArrowUpRight01'
+  import Asterisk02 from '@ericpitcock/epicenter-icons-vue/Asterisk02'
   import { ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'

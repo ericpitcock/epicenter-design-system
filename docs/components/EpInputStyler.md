@@ -34,7 +34,7 @@
 
 ```vue
 <script setup>
-  import Cancel01 from '@ericpitcock/epicenter-icons/epicenter-icons/Cancel01'
+  import Cancel01 from '@ericpitcock/epicenter-icons-vue/Cancel01'
   import { computed } from 'vue'
 
   const props = defineProps({

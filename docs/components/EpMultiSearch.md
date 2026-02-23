@@ -44,8 +44,8 @@ This component does not use slots.
 
 ```vue
 <script setup>
-  import Cancel01 from '@ericpitcock/epicenter-icons/epicenter-icons/Cancel01'
-  import Search01 from '@ericpitcock/epicenter-icons/epicenter-icons/Search01'
+  import Cancel01 from '@ericpitcock/epicenter-icons-vue/Cancel01'
+  import Search01 from '@ericpitcock/epicenter-icons-vue/Search01'
   import { computed, ref, watch } from 'vue'
 
   const props = defineProps({

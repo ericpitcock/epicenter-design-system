@@ -23,7 +23,7 @@ This component does not use events.
 
 ```vue
 <script setup>
-  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
+  import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
   import { computed } from 'vue'
   import { useRoute } from 'vue-router'
 

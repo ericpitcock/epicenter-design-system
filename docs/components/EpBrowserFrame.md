@@ -22,7 +22,7 @@ This component does not use events, slots.
 
 ```vue
 <script setup>
-  import UserCircle02 from '@ericpitcock/epicenter-icons/epicenter-icons/UserCircle02'
+  import UserCircle02 from '@ericpitcock/epicenter-icons-vue/UserCircle02'
 
   import EpHeader from '../header/EpHeader.vue'
 

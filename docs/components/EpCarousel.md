@@ -59,8 +59,8 @@ This component does not use slots.
   - --ep-case-study-carousel-caption-border-radius: Caption border radius (default: 0.5rem)
 -->
 <script setup>
-  import ArrowLeft01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowLeft01'
-  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
+  import ArrowLeft01 from '@ericpitcock/epicenter-icons-vue/ArrowLeft01'
+  import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
   import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
   import EpButton from '../button/EpButton.vue'

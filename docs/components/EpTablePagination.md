@@ -25,8 +25,8 @@ This component does not use slots.
 
 ```vue
 <script setup>
-  import ArrowLeft01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowLeft01'
-  import ArrowRight01 from '@ericpitcock/epicenter-icons/epicenter-icons/ArrowRight01'
+  import ArrowLeft01 from '@ericpitcock/epicenter-icons-vue/ArrowLeft01'
+  import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
   import { computed, ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
