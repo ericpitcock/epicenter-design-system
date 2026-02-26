@@ -6,7 +6,11 @@
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
 | `items` | An array of breadcrumb items with label, to, and optional customClass properties. | `array` | `[]` |
-| `auto` | If true, automatically generates breadcrumbs from the current route. | `boolean` | `false` |
+
+## Events
+| Name    | Description                 | Payload    |
+|---------|-----------------------------|------------|
+| `navigate` | - | - |
 
 ## Slots
 | Name | Description |
@@ -14,58 +18,34 @@
 | `item` | Custom content for each breadcrumb item. Provides crumb, index, and is-last via slot props. |
 | `separator` | Custom separator between breadcrumb items. Provides index via slot props. |
 
-
-::: info
-This component does not use events.
-:::
-
 ## Component Code
 
 ```vue
 <script setup>
   import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
-  import { computed } from 'vue'
-  import { useRoute } from 'vue-router'
 
-  const props = defineProps({
+  defineProps({
     /**
      * An array of breadcrumb items with label, to, and optional customClass properties.
      */
     items: {
       type: Array,
       default: () => []
-    },
-    /**
-     * If true, automatically generates breadcrumbs from the current route.
-     */
-    auto: {
-      type: Boolean,
-      default: false
     }
   })
 
-  const route = useRoute()
+  const emit = defineEmits(['navigate'])
 
-  const breadcrumbItems = computed(() => {
-    if (props.auto) {
-      return route.matched
-        .filter(record => record.meta && record.meta.breadcrumb !== false)
-        .map(record => ({
-          label: record.meta.breadcrumb || record.name || '',
-          to: record.path,
-          customClass: record.meta.customClass || ''
-        }))
-    } else {
-      return props.items
-    }
-  })
+  const handleClick = (event, crumb) => {
+    emit('navigate', { event, crumb })
+  }
 </script>
 
 <template>
   <nav aria-label="Breadcrumb">
     <ol class="ep-breadcrumbs">
       <li
-        v-for="(crumb, index) in breadcrumbItems"
+        v-for="(crumb, index) in items"
         :key="index"
         class="ep-breadcrumbs__item"
         :class="crumb.customClass"
@@ -76,16 +56,17 @@ This component does not use events.
             name="item"
             :crumb="crumb"
             :index="index"
-            :is-last="index === breadcrumbItems.length - 1"
+            :is-last="index === items.length - 1"
           />
         </template>
         <template v-else>
-          <router-link
-            v-if="index !== breadcrumbItems.length - 1"
-            :to="crumb.to"
+          <a
+            v-if="index !== items.length - 1"
+            :href="crumb.to"
+            @click="handleClick($event, crumb)"
           >
             {{ crumb.label }}
-          </router-link>
+          </a>
           <span
             v-else
             aria-current="page"
@@ -93,7 +74,7 @@ This component does not use events.
           >{{ crumb.label }}</span>
         </template>
         <span
-          v-if="index !== breadcrumbItems.length - 1"
+          v-if="index !== items.length - 1"
           class="ep-breadcrumbs__separator"
           aria-hidden="true"
         >
