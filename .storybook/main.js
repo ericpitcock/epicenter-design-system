@@ -1,9 +1,10 @@
 /** @type { import('@storybook/vue3-vite').StorybookConfig } */
+const path = require('path')
 
 const config = {
   stories: [
-    // '../storybook/stories/**/*.mdx', // docs
-    '../storybook/stories/**/*.stories.js'
+    '../packages/epicenter-components-vue/src/**/*.stories.js',
+    '../packages/epicenter-components-vue/storybook/**/*.stories.js',
   ],
 
   addons: [
@@ -23,7 +24,14 @@ const config = {
   viteFinal: async (config) => {
     return {
       ...config,
-      resolve: { ...(config.resolve ?? {}), preserveSymlinks: true },
+      resolve: {
+        ...(config.resolve ?? {}),
+        preserveSymlinks: true,
+        alias: {
+          ...config.resolve?.alias,
+          '@sb': path.resolve(__dirname, '../packages/epicenter-components-vue/storybook'),
+        },
+      },
       server: {
         ...(config.server ?? {}),
         fs: { ...(config.server?.fs ?? {}), strict: true },

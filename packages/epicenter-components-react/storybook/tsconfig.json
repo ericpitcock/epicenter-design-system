@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["dom", "dom.iterable", "ES6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "paths": {
+      "@ericpitcock/epicenter-components-react": ["../../epicenter-components-react"],
+      "@ericpitcock/epicenter-icons-react": ["../../epicenter-icons-react"],
+      "@ericpitcock/epicenter-icons-react/*": ["../../epicenter-icons-react/*"],
+      "@ericpitcock/epicenter-icons-vue": ["../../epicenter-icons-vue"],
+      "@ericpitcock/epicenter-icons-vue/*": ["../../epicenter-icons-vue/*"]
+    }
+  },
+  "include": [
+    "hooks/**/*",
+    "icons/**/*",
+    "types/**/*",
+    ".storybook/**/*",
+    "vite-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

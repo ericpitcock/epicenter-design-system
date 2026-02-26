@@ -3,8 +3,8 @@ const path = require('path')
 
 const config = {
   stories: [
-    // '../storybook-react/stories/**/*.mdx', // docs
-    '../storybook-react/stories/**/*.stories.tsx'
+    '../packages/epicenter-components-react/src/**/*.stories.tsx',
+    '../packages/epicenter-components-react/storybook/**/*.stories.tsx',
   ],
   addons: [
     '@storybook/addon-controls',

@@ -2,7 +2,7 @@ import { setup } from '@storybook/vue3'
 import { createRouter, createMemoryHistory } from 'vue-router'
 import { watch } from 'vue'
 import { createPinia } from 'pinia'
-import { useStorybookStore } from '../storybook/store'
+import { useStorybookStore } from '@sb/store'
 import { useTheme } from '@/composables/index.js'
 
 const routes = [
@@ -83,7 +83,7 @@ setup((app) => {
 
 // Global styles
 import '../static/epicenter-design-system.css'
-import '../storybook/storybook.scss'
+import '../packages/epicenter-components-vue/storybook/storybook.scss'
 
 const { getInitialTheme } = useTheme()
 

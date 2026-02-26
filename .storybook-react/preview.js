@@ -1,6 +1,6 @@
 // global styles
 import '../packages/epicenter-styles/dist/epicenter-design-system.css'
-import '../storybook/storybook.scss'
+import '../packages/epicenter-components-vue/storybook/storybook.scss'
 
 const preview = {
   // decorators: [

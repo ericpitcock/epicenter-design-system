@@ -1,0 +1,93 @@
+import { computed, defineAsyncComponent } from 'vue'
+
+import iconsData from '../../../epicenter-icons/icons.json'
+
+export const useIcons = (leftIconName, rightIconName) => {
+  const getIconComponent = (iconName) => {
+    return computed(() => {
+      if (iconName.value && iconName.value !== 'None') {
+        return defineAsyncComponent(() => import(`../../../epicenter-icons-vue/${iconName.value}.js`))
+      }
+      return null
+    })
+  }
+
+  const iconRightComponent = getIconComponent(rightIconName)
+  const iconLeftComponent = getIconComponent(leftIconName)
+
+  return {
+    iconLeftComponent,
+    iconRightComponent
+  }
+}
+
+export const getComponentName = (iconName) => {
+  // Handle specific naming conflicts first
+  // map what's in icons.json to the correct component name
+  const conflicts = {
+    'trade-mark': 'TrademarkCircle',
+    'trademark': 'TrademarkRectangle',
+    'finger-print-scan': 'FingerprintScan01',
+    'fingerprint-scan': 'FingerprintScan02',
+    'four-square': 'FourNumberSquare',
+    'foursquare': 'FoursquareLogo',
+    're:': 'ReColon',
+    'c++': 'CPlusPlus',
+    'rubik\'s-cube': 'RubikQuotesCube',
+  }
+
+  if (conflicts[iconName]) {
+    return conflicts[iconName]
+  }
+
+  // Standard conversion: kebab-case to PascalCase
+  let name = iconName
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('')
+
+  // Handle numbers at the start
+  if (/^\d/.test(name)) {
+    name = 'Num' + name
+  }
+
+  // Handle special characters
+  name = name
+    .replace(/Colon/g, 'Colon')
+    .replace(/Dot/g, 'Dot')
+    .replace(/Plus/g, 'Plus')
+
+  return name
+}
+
+// Generate all component names
+export const getAllComponentNames = () => {
+  return iconsData.map(icon => getComponentName(icon.name))
+}
+
+// Create dynamic imports object
+export const createIconImports = () => {
+  const imports = {}
+  iconsData.forEach(icon => {
+    const componentName = getComponentName(icon.name)
+    imports[componentName] = () => import(`../../../epicenter-icons-vue/${componentName}.js`)
+  })
+  return imports
+}
+
+// Lazy-initialized singleton for component names
+let _cachedComponentNames = null
+
+export const getComponentNames = () => {
+  if (_cachedComponentNames === null) {
+    const iconNames = iconsData.map(icon => icon.name)
+    _cachedComponentNames = iconNames.map(getComponentName)
+    _cachedComponentNames.unshift('None')
+  }
+  return _cachedComponentNames
+}
+
+// For backward compatibility - compute on first access
+export const componentNames = getComponentNames()
+
+export { iconsData }
