@@ -1,7 +1,8 @@
+import { surfaceOverflow } from '@sb/helpers/decorators.js'
+
 import EpTable from '@/components/table/EpTable.vue'
 
-import { surfaceOverflow } from '@sb/helpers/decorators.js'
-import EpTableFixedStory from './EpTableFixedStory.vue'
+import EpTableFixedStory from '../../../storybook/table/EpTableFixedStory.vue'
 
 export default {
   title: 'Components/Table/Fixed Header',

@@ -1,5 +1,6 @@
 import { surface } from '@sb/helpers/decorators.js'
-import EpTableStory from './EpTableStory.vue'
+
+import EpTableStory from '../../../storybook/table/EpTableStory.vue'
 
 export default {
   title: 'Components/Table',

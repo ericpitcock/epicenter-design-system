@@ -12,8 +12,7 @@
     "dist"
   ],
   "scripts": {
-    "build-components": "node scripts/buildVueComponents.mjs",
-    "generate-exports": "node scripts/generateExports.mjs"
+    "build": "node scripts/build.mjs"
   },
   "repository": {
     "type": "git",

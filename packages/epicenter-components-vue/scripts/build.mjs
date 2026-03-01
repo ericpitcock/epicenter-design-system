@@ -2,16 +2,22 @@ import fs from 'fs'
 import path, { join, resolve } from 'path'
 import { fileURLToPath } from 'url'
 
+import { copy, ensureDir, remove } from 'fs-extra'
+
 // Get __dirname equivalent in ESM
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = resolve(__filename, '..')
 
-// Define paths the same way as in buildVueComponents.mjs
 const packageDir = resolve(__dirname, '..')
 const srcDir = resolve(packageDir, 'src')
+const distDir = resolve(packageDir, 'dist')
 const componentsDir = resolve(srcDir, 'components')
 
-export function generateComponentExports() {
+// ---------------------------------------------------------------------------
+// Generate component exports
+// ---------------------------------------------------------------------------
+
+function generateComponentExports() {
   if (!fs.existsSync(componentsDir)) {
     console.error(`❌ Components directory not found at: ${componentsDir}`)
     return
@@ -55,3 +61,32 @@ export function generateComponentExports() {
 
   console.log(`✅ Export file generated at: ${outputFile}`)
 }
+
+// ---------------------------------------------------------------------------
+// Build
+// ---------------------------------------------------------------------------
+
+console.log('🚀 Building package...')
+
+// Generate component exports
+generateComponentExports()
+
+// Ensure dist is clean
+await remove(distDir)
+await ensureDir(distDir)
+
+// Copy `index.js`
+await copy(join(srcDir, 'index.js'), join(distDir, 'index.js'))
+
+// Copy `composables/` as is
+await copy(join(srcDir, 'composables'), join(distDir, 'composables'))
+
+// Copy `plugins/` as is
+await copy(join(srcDir, 'plugins'), join(distDir, 'plugins'))
+
+// Copy `components/` while excluding `*.notes.md` and `*.stories.js`
+await copy(join(srcDir, 'components'), join(distDir, 'components'), {
+  filter: (src) => !src.endsWith('.notes.md') && !src.endsWith('.stories.js')
+})
+
+console.log('✅ Build complete! Files copied to dist/')

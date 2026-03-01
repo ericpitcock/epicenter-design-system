@@ -9,8 +9,8 @@
   "description": "Epicenter Design System - Styles",
   "scripts": {
     "sass:watch": "sass --watch ./index.scss ../../static/epicenter-design-system.css --style compressed",
-    "build-styles": "node scripts/buildDistribution.mjs",
-    "build-tokens": "node scripts/buildColorTokens.mjs",
+    "build": "node scripts/build.mjs",
+    "build:watch": "node scripts/build.mjs --watch",
     "lint": "stylelint \"scss/**/*.scss\"",
     "lint:fix": "stylelint \"scss/**/*.scss\" --fix"
   },
