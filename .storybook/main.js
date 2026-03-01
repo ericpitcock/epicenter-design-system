@@ -26,6 +26,7 @@ const config = {
       ...config,
       resolve: {
         ...(config.resolve ?? {}),
+        extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json', '.vue'],
         preserveSymlinks: true,
         alias: {
           ...config.resolve?.alias,
