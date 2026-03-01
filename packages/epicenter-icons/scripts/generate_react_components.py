@@ -116,8 +116,11 @@ def create_react_component(svg_content: str, component_name: str) -> str:
     
     children_block = '\n'.join(children_jsx)
 
-    jsx_template = f"""export const {component_name} = (props) => (
+    jsx_template = f"""import {{ memo, forwardRef }} from 'react';
+
+export const {component_name} = memo(forwardRef((props, ref) => (
   <svg
+    ref={{ref}}
     className="ep-icon"
     viewBox="{viewbox}"
     aria-hidden="true"
@@ -126,7 +129,7 @@ def create_react_component(svg_content: str, component_name: str) -> str:
   >
 {children_block}
   </svg>
-);
+)));
 
 {component_name}.displayName = '{component_name}';
 """

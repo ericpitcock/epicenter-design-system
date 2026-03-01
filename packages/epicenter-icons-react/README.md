@@ -46,6 +46,20 @@ All standard SVG props are supported:
 />
 ```
 
+### Ref Forwarding
+
+All icons support `ref` forwarding for direct DOM access:
+
+```jsx
+import { useRef } from 'react';
+import { Heart } from '@ericpitcock/epicenter-icons-react';
+
+function MyComponent() {
+  const iconRef = useRef(null);
+  return <Heart ref={iconRef} />;
+}
+```
+
 ## Styling
 
 ### Base Styles
@@ -79,7 +93,7 @@ All icons support customization via CSS custom properties:
 
 ## TypeScript
 
-Full TypeScript support is included. All icons are typed as `FC<SVGProps<SVGSVGElement>>`.
+Full TypeScript support is included. All icons are typed as `ForwardRefExoticComponent` and wrapped in `memo` for optimal performance.
 
 ```tsx
 import { Heart } from '@ericpitcock/epicenter-icons-react';

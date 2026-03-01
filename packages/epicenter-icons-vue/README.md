@@ -74,6 +74,16 @@ You can also pass styles as props:
 </template>
 ```
 
+## TypeScript
+
+Full TypeScript support is included. All icons are typed as `FunctionalComponent<SVGAttributes>`.
+
+```vue
+<script setup lang="ts">
+import Heart from '@ericpitcock/epicenter-icons-vue/Heart'
+</script>
+```
+
 ## License
 
 MIT

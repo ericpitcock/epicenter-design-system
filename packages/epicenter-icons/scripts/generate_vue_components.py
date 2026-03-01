@@ -95,25 +95,26 @@ def create_js_component(svg_content: str, component_name: str) -> str:
 
     hoisted_block = "\n".join(hoisted_lines)
     children_block = ',\n'.join(hoisted_refs)
-    indented_children = textwrap.indent(children_block, INDENT * 3)
+    indented_children = textwrap.indent(children_block, '    ')
 
-    js_template = f"""import {{ defineComponent, h }} from 'vue'
+    js_template = f"""import {{ h, mergeProps }} from 'vue'
 
 {hoisted_block}
 
-export default defineComponent({{
-    name: '{component_name}',
-    render() {{
-        return h('svg', {{
-            class: 'ep-icon',
-            viewBox: '{viewbox}',
-            'aria-hidden': 'true',
-            focusable: 'false'
-        }}, [
+const {component_name} = (props, {{ attrs }}) => {{
+  return h('svg', mergeProps({{
+    class: 'ep-icon',
+    viewBox: '{viewbox}',
+    'aria-hidden': 'true',
+    focusable: 'false'
+  }}, attrs), [
 {indented_children}
-        ])
-    }}
-}})
+  ])
+}}
+
+{component_name}.displayName = '{component_name}'
+
+export default {component_name}
 """
     return js_template
 

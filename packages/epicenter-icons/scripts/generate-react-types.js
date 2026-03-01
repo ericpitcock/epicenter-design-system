@@ -19,8 +19,8 @@ const componentNames = jsxFiles.map(f => basename(f, '.jsx'))
 // 1. Generate individual Name.d.ts files
 for (const name of componentNames) {
   const dtsContent = [
-    `import { FC, SVGProps } from 'react'`,
-    `export const ${name}: FC<SVGProps<SVGSVGElement>>`,
+    `import { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react'`,
+    `export const ${name}: ForwardRefExoticComponent<SVGProps<SVGSVGElement> & RefAttributes<SVGSVGElement>>`,
     '', // trailing newline
   ].join('\n')
 
@@ -29,8 +29,8 @@ for (const name of componentNames) {
 
 // 2. Generate react/index.d.ts
 const indexLines = [
-  `import { FC, SVGProps } from 'react'`,
-  `export type IconComponent = FC<SVGProps<SVGSVGElement>>`,
+  `import { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react'`,
+  `export type IconComponent = ForwardRefExoticComponent<SVGProps<SVGSVGElement> & RefAttributes<SVGSVGElement>>`,
   '',
   ...componentNames.map(name => `export const ${name}: IconComponent`),
   '', // trailing newline

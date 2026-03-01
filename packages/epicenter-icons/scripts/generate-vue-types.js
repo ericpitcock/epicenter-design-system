@@ -18,8 +18,8 @@ const componentNames = jsFiles.map(f => basename(f, '.js'))
 // Generate individual Name.d.ts files
 for (const name of componentNames) {
   const dtsContent = [
-    `import { DefineComponent } from 'vue'`,
-    `declare const ${name}: DefineComponent<{}, {}, any>`,
+    `import { FunctionalComponent, SVGAttributes } from 'vue'`,
+    `declare const ${name}: FunctionalComponent<SVGAttributes>`,
     `export default ${name}`,
     '', // trailing newline
   ].join('\n')
