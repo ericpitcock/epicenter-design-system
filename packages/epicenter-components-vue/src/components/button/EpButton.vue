@@ -69,7 +69,12 @@
       <slot name="icon-left" />
     </span>
     <!-- @slot Default slot for button text/content -->
-    <slot />
+    <span
+      v-if="$slots.default"
+      class="ep-button__label"
+    >
+      <slot />
+    </span>
     <span
       v-if="$slots['icon-right']"
       class="ep-button__icon ep-button__icon--right"

@@ -302,7 +302,12 @@ export const Button = args => ({
       >
         <component :is="iconLeftComponent" />
       </template>
-      {{ args.label }}
+      <template
+        v-if="args.label"
+        #default
+      >
+        {{ args.label }}
+      </template>
       <template
         v-if="args.enabledIcons && args.iconRight != 'None'"
         #icon-right
@@ -314,12 +319,12 @@ export const Button = args => ({
 })
 
 Button.args = {
-  label: '',
+  label: 'Download the internet',
   size: 'large',
   disabled: false,
   classes: 'Primary',
   enabledIcons: true,
-  iconLeft: 'Circle',
+  iconLeft: 'CloudDownload',
   iconRight: 'None',
   borderRadius: 3,
 }

@@ -322,6 +322,7 @@
 
   .ep-menu__item {
     --ep-button-menu-item-hover-bg-color: var(--interface-surface--accent);
+    --ep-button-menu-item-hover-text-color: var(--text-color--loud);
     --ep-button-menu-item-hover-border-color: var(--ep-button-menu-item-hover-bg-color);
   }
 
@@ -331,7 +332,6 @@
     border-radius: var(--border-radius);
   }
 
-  .light-theme .colors,
   .light-theme .colors {
     --icon-color--success: hsl(var(--emerald-600));
     --icon-color--error: hsl(var(--rose-600));
