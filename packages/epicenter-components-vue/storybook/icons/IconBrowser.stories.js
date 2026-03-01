@@ -1,4 +1,4 @@
-import '../../../epicenter-icons-vue/base.scss'
+import '@ericpitcock/epicenter-icons-vue/base.scss'
 
 import IconBrowserComponent from './IconBrowserComponent.vue'
 
