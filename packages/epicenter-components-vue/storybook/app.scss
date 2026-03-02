@@ -64,7 +64,7 @@ $primary-hue: 257deg;
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('../static/fonts/InterVariable.woff2') format('woff2');
+  src: url('../../../static/fonts/InterVariable.woff2') format('woff2');
 }
 
 @font-face {
@@ -72,7 +72,7 @@ $primary-hue: 257deg;
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url('../static/fonts/InterVariable-Italic.woff2') format('woff2');
+  src: url('../../../static/fonts/InterVariable-Italic.woff2') format('woff2');
 }
 
 :root {
@@ -85,7 +85,7 @@ $primary-hue: 257deg;
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
-  src: url('../static/fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+  src: url('../../../static/fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
 }
 
 .monospace {
