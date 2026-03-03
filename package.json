@@ -1,11 +1,11 @@
 {
   "name": "@ericpitcock/ep-design-system",
-  "version": "2.0.0-beta",
+  "version": "2.0.0",
   "description": "Epicenter Design System",
   "type": "module",
   "scripts": {
     "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-components-vue && npm install && cd ../epicenter-components-react && npm install && cd ../.. && npm install && bash scripts/copy-icons-from-npm.sh && npm run build-storybook",
-    "netlify-build-docs": "npm install && bash scripts/copy-icons-from-npm.sh && cd docs && npm run docs:build",
+    "netlify-build-docs": "npm install && cd docs && npm run docs:build",
     "install-all": "cd packages/epicenter-styles && npm install && cd ../epicenter-components-vue && npm install && cd ../epicenter-components-react && npm install && cd .. && npm install",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
