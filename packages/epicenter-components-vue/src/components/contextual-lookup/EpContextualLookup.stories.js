@@ -1,12 +1,12 @@
-import EpEnrichmentDropdown from '@/components/enrichment-dropdown/EpEnrichmentDropdown.vue'
-import EpFlex from '@/components/flexbox/EpFlex.vue'
-
 import { enrichmentSources, getFakeEnrichmentResponse } from '@sb/data/enrichmentData.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
 
+import EpContextualLookup from '@/components/contextual-lookup/EpContextualLookup.vue'
+import EpFlex from '@/components/flexbox/EpFlex.vue'
+
 export default {
   title: 'Components/Contextual Lookup',
-  component: EpEnrichmentDropdown,
+  component: EpContextualLookup,
   decorators: [paddedBg],
   argTypes: {
     label: {
@@ -29,14 +29,14 @@ export default {
 }
 
 export const ContextualLookup = (args) => ({
-  components: { EpEnrichmentDropdown, EpFlex },
+  components: { EpContextualLookup, EpFlex },
   setup() {
     const enrichmentData = getFakeEnrichmentResponse('ip-reputation', 'example-value')
 
     return { args, enrichmentData, enrichmentSources, getFakeEnrichmentResponse }
   },
   template: `
-    <ep-enrichment-dropdown
+    <ep-contextual-lookup
       v-bind="args"
       :enrichment-options="enrichmentSources['IP Address']"
       :enrichmentData="getFakeEnrichmentResponse('IP Address', '192.1.1.100')"
@@ -44,7 +44,7 @@ export const ContextualLookup = (args) => ({
       <template #trigger="{ attrs, on }">
         <span v-bind="attrs" v-on="on">{{ args.label }}</span>
       </template>
-    </ep-enrichment-dropdown>
+    </ep-contextual-lookup>
   `
 })
 

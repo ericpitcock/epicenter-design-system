@@ -50,9 +50,10 @@
 </script>
 
 <template>
-  <div class="ep-enrichment-dropdown">
+  <div class="ep-contextual-lookup">
     <ep-dropdown
       v-bind="$attrs"
+      :auto-focus="false"
       @close="showPreview = false"
     >
       <template #trigger="{ attrs, on }">
@@ -116,7 +117,7 @@
 </template>
 
 <style lang="scss" scoped>
-  .ep-enrichment-dropdown {
+  .ep-contextual-lookup {
     position: relative;
     display: inline-block;
   }
