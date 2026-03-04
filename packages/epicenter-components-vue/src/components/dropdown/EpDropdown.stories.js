@@ -1,14 +1,13 @@
 import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
 import Coffee02 from '@ericpitcock/epicenter-icons-vue/Coffee02'
+import { centeredBg } from '@sb/helpers/decorators.js'
+import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { ref, toRef } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
 import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 import EpMenu from '@/components/menu/EpMenu.vue'
 import EpMenuItem from '@/components/menu/EpMenuItem.vue'
-
-import { centeredBg } from '@sb/helpers/decorators.js'
-import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 
 const fakeDropdownItems = [
   { type: 'section', label: 'Cheap' },
@@ -69,6 +68,15 @@ export default {
     },
     showOnHover: {
       name: 'Show On Hover',
+      control: {
+        type: 'boolean'
+      },
+      table: {
+        category: 'Options'
+      }
+    },
+    autoFocus: {
+      name: 'Auto Focus',
       control: {
         type: 'boolean'
       },
@@ -253,6 +261,7 @@ Dropdown.args = {
   size: 'large',
   alignRight: false,
   showOnHover: false,
+  autoFocus: true,
   enabledIcons: true,
   iconLeft: 'Coffee02',
   iconRight: 'ArrowDown01'

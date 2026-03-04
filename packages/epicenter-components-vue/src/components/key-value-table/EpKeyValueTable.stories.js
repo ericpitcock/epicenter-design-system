@@ -1,5 +1,5 @@
 import EpContainer from '@/components/container/EpContainer.vue'
-import EpEnrichmentDropdown from '@/components/enrichment-dropdown/EpEnrichmentDropdown.vue'
+import EpContextualLookup from '@/components/contextual-lookup/EpContextualLookup.vue'
 import EpKeyValueTable from '@/components/key-value-table/EpKeyValueTable.vue'
 
 import { enrichmentSources, getFakeEnrichmentResponse } from '@sb/data/enrichmentData.js'
@@ -63,7 +63,7 @@ export default {
 }
 
 export const KeyValueTable = (args) => ({
-  components: { EpContainer, EpEnrichmentDropdown, EpKeyValueTable },
+  components: { EpContainer, EpContextualLookup, EpKeyValueTable },
   setup() {
     const sourceKeys = Object.keys(enrichmentSources)
 
@@ -86,7 +86,7 @@ export const KeyValueTable = (args) => ({
   >
     <ep-key-value-table v-bind="args">
       <template #value="{ key, value }">
-        <ep-enrichment-dropdown
+        <ep-contextual-lookup
           v-if="sourceKeys.includes(key)"
           :enrichment-options="enrichmentSources[key]"
           :enrichment-data="getFakeEnrichmentResponse(key, value)"
@@ -94,7 +94,7 @@ export const KeyValueTable = (args) => ({
           <template #trigger="{ attrs, on }">
             <button v-bind="attrs" v-on="on">{{ value }}</button>
           </template>
-        </ep-enrichment-dropdown>
+        </ep-contextual-lookup>
       </template>
     </ep-key-value-table>
   </ep-container>

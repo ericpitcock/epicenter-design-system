@@ -17,6 +17,13 @@
       type: Boolean,
       default: false
     },
+    /**
+     * If true, automatically focuses the first menu item when the dropdown opens.
+     */
+    autoFocus: {
+      type: Boolean,
+      default: true
+    },
   })
 
   const emit = defineEmits(['click', 'close'])
@@ -59,8 +66,10 @@
 
     if (isOpen) {
       // Focus first menu item when opening
-      const firstMenuItem = dropdownRef.value?.querySelector('[role="menuitem"]')
-      firstMenuItem?.focus()
+      if (props.autoFocus) {
+        const firstMenuItem = dropdownRef.value?.querySelector('[role="menuitem"]')
+        firstMenuItem?.focus()
+      }
     } else {
       // Return focus to trigger when closing
       const trigger = dropdownRef.value?.querySelector(`#${triggerId}`)
