@@ -1,56 +1,51 @@
-<script setup>
+<script setup lang="ts">
   import { onMounted, ref, useTemplateRef } from 'vue'
 
-  const emit = defineEmits(['escape', 'tab'])
+  const emit = defineEmits<{
+    escape: []
+    tab: []
+  }>()
 
-  const menuRef = useTemplateRef('menuRef')
+  const menuRef = useTemplateRef<HTMLDivElement>('menuRef')
   const currentFocusIndex = ref(0)
 
-  // Get all focusable menu items (only direct children, not nested submenus)
-  const getFocusableItems = () => {
+  const getFocusableItems = (): Element[] => {
     if (!menuRef.value) return []
 
-    // Find all menu items that are direct children (not in submenus)
     const allItems = menuRef.value.querySelectorAll('[role="menuitem"]:not([disabled="true"])')
     return Array.from(allItems).filter(item => {
-      // Only include items whose closest .ep-menu parent is this menu
       const closestMenu = item.closest('.ep-menu')
       return closestMenu === menuRef.value
     })
   }
 
-  const focusItemAtIndex = (index) => {
+  const focusItemAtIndex = (index: number): void => {
     const items = getFocusableItems()
     if (items.length === 0) return
 
-    // Wrap around
     if (index < 0) index = items.length - 1
     if (index >= items.length) index = 0
 
-    // Update tabindex: only the focused item should be tabbable
     items.forEach((item, i) => {
       item.setAttribute('tabindex', i === index ? '0' : '-1')
     })
 
     currentFocusIndex.value = index
-    items[index]?.focus()
+      ; (items[index] as HTMLElement)?.focus()
   }
 
-  const onKeydown = (event) => {
+  const onKeydown = (event: KeyboardEvent): void => {
     const items = getFocusableItems()
     if (items.length === 0) return
 
     const key = event.key
 
-    // Only handle navigation keys if the currently focused element is a direct child of THIS menu
-    // Don't interfere with submenu navigation
     const activeElement = document.activeElement
-    const isDirectChild = items.includes(activeElement)
+    const isDirectChild = items.includes(activeElement as Element)
 
-    // For arrow keys, only handle if focused element is our direct child
     const isArrowKey = ['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)
     if (isArrowKey && !isDirectChild) {
-      return // Let the submenu's EpMenu handle this
+      return
     }
 
     switch (key) {
@@ -75,15 +70,12 @@
         emit('escape')
         break
       case 'Tab':
-        // Tab should exit the menu immediately, not navigate within it
-        // Emit event so parent can react, but don't prevent default
-        // so Tab can naturally move focus to the next element
         emit('tab')
         break
     }
   }
 
-  const resetFocus = () => {
+  const resetFocus = (): void => {
     const items = getFocusableItems()
     items.forEach((item, i) => {
       item.setAttribute('tabindex', i === 0 ? '0' : '-1')
@@ -91,21 +83,17 @@
     currentFocusIndex.value = 0
   }
 
-  // Sync currentFocusIndex with actual focused item on mount and when items gain focus
   onMounted(() => {
     if (!menuRef.value) return
 
-    // Initialize tabindex: only first item should be tabbable
     resetFocus()
 
-    // Listen for focus events to keep index in sync
-    menuRef.value.addEventListener('focusin', (event) => {
+    menuRef.value.addEventListener('focusin', (event: FocusEvent) => {
       const items = getFocusableItems()
-      const target = event.target.closest('[role="menuitem"]')
+      const target = (event.target as HTMLElement).closest('[role="menuitem"]')
       if (target) {
         const index = items.indexOf(target)
         if (index !== -1) {
-          // Update tabindex when focus changes
           items.forEach((item, i) => {
             item.setAttribute('tabindex', i === index ? '0' : '-1')
           })
@@ -114,10 +102,8 @@
       }
     })
 
-    // Reset to first item when menu loses all focus
-    menuRef.value.addEventListener('focusout', (event) => {
-      // Check if focus is leaving the menu entirely
-      const relatedTarget = event.relatedTarget
+    menuRef.value.addEventListener('focusout', (event: FocusEvent) => {
+      const relatedTarget = event.relatedTarget as Node | null
       if (!menuRef.value?.contains(relatedTarget)) {
         resetFocus()
       }

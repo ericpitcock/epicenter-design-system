@@ -1,52 +1,29 @@
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The label to display inside the button.
-     */
-    label: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The class to apply when the button is active.
-     */
-    activeClass: {
-      type: String,
-      default: ''
-    },
-    /**
-     * If true, the button is disabled.
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * The aria-label for accessibility.
-     */
-    ariaLabel: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The size of the button.
-     * @values small, default, large, xlarge
-     */
-    size: {
-      type: String,
-      default: 'default',
-      validator: (value) => ['small', 'default', 'large', 'xlarge'].includes(value)
-    },
+  type ToggleButtonSize = 'small' | 'default' | 'large' | 'xlarge'
+
+  interface EpToggleButtonProps {
+    activeClass?: string
+    ariaLabel?: string
+    disabled?: boolean
+    icon?: boolean
+    label?: string
+    size?: ToggleButtonSize
+  }
+
+  const props = withDefaults(defineProps<EpToggleButtonProps>(), {
+    activeClass: '',
+    ariaLabel: '',
+    disabled: false,
+    icon: false,
+    label: '',
+    size: 'default',
   })
 
-  const model = defineModel({
-    type: Boolean,
-    default: false
-  })
+  const model = defineModel<boolean>({ default: false })
 
-  function onClick() {
+  function onClick(): void {
     if (props.disabled) return
 
     model.value = !model.value

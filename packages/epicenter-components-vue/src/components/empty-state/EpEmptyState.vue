@@ -1,23 +1,22 @@
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
-  const props = defineProps({
+  interface EpEmptyStateProps {
     /**
      * Layout direction of the empty state content.
      * @values 'column', 'row'
      */
-    direction: {
-      type: String,
-      default: 'column'
-    },
+    direction?: string
     /**
      * Horizontal alignment of the content.
      * @values 'left', 'center', 'right'
      */
-    justify: {
-      type: String,
-      default: 'center'
-    },
+    justify?: string
+  }
+
+  const props = withDefaults(defineProps<EpEmptyStateProps>(), {
+    direction: 'column',
+    justify: 'center',
   })
 
   const classes = computed(() => {

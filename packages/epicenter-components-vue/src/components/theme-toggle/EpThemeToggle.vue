@@ -1,9 +1,9 @@
-<script setup>
+<script setup lang="ts">
   import Moon02 from '@ericpitcock/epicenter-icons-vue/Moon02'
   import Sun02 from '@ericpitcock/epicenter-icons-vue/Sun02'
   import { computed } from 'vue'
 
-  import useTheme from '../../composables/useTheme.js'
+  import useTheme from '../../composables/useTheme'
   import EpButton from '../button/EpButton.vue'
 
   const { theme, toggleTheme } = useTheme()

@@ -1,50 +1,31 @@
-<script setup>
+<script setup lang="ts">
   import { ref, watch } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The type of overlay to display.
-     * @values 'modal', 'toast'
-     */
-    type: {
-      type: String,
-      default: 'modal',
-    },
-    /**
-     * Controls the visibility of the overlay (use with v-model).
-     */
-    modelValue: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * If true, automatically dismisses the overlay after the specified duration.
-     */
-    autoDismiss: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Duration in milliseconds before auto-dismissing (when autoDismiss is true).
-     */
-    duration: {
-      type: Number,
-      default: 3000,
-    },
-    /**
-     * If true, clicking the backdrop will close the overlay.
-     */
-    backdropClose: {
-      type: Boolean,
-      default: true,
-    },
+  type OverlayType = 'modal' | 'toast'
+
+  interface EpOverlayProps {
+    autoDismiss?: boolean
+    backdropClose?: boolean
+    duration?: number
+    modelValue?: boolean
+    type?: OverlayType
+  }
+
+  const props = withDefaults(defineProps<EpOverlayProps>(), {
+    autoDismiss: false,
+    backdropClose: true,
+    duration: 3000,
+    modelValue: false,
+    type: 'modal',
   })
 
-  const emit = defineEmits(['update:modelValue'])
+  const emit = defineEmits<{
+    'update:modelValue': [value: boolean]
+  }>()
 
-  const dialog = ref(null)
+  const dialog = ref<HTMLDialogElement | null>(null)
 
-  watch(() => props.modelValue, (newVal) => {
+  watch(() => props.modelValue, (newVal: boolean) => {
     if (!dialog.value) return
 
     if (newVal === true) {
@@ -60,11 +41,11 @@
     { immediate: true }
   )
 
-  const onBackdropClick = () => {
+  const onBackdropClick = (): void => {
     if (!props.backdropClose) return
 
     emit('update:modelValue', false)
-    dialog.value.close()
+    dialog.value?.close()
   }
 </script>
 

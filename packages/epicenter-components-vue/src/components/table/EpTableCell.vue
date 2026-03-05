@@ -1,24 +1,21 @@
-<script setup>
+<script setup lang="ts">
   import { ref, watchEffect } from 'vue'
 
-  const props = defineProps({
-    row: {
-      type: Object,
-      required: true
-    },
-    column: {
-      type: Object,
-      required: true
-    },
-    styles: {
-      type: Array,
-      default: () => []
-    }
+  import type { TableColumn, TableRow } from '../../types'
+
+  interface EpTableCellProps {
+    column: TableColumn
+    row: TableRow
+    styles?: string[]
+  }
+
+  const props = withDefaults(defineProps<EpTableCellProps>(), {
+    styles: () => [],
   })
 
-  const cellContent = ref('')
+  const cellContent = ref<unknown>('')
 
-  const formattedCell = (row, column) => {
+  const formattedCell = (row: TableRow, column: TableColumn): unknown => {
     const value = row[column.key]
     const formatter = column.formatter
 

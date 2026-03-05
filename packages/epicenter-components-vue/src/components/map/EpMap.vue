@@ -1,56 +1,50 @@
-<script setup>
+<script setup lang="ts">
   import 'mapbox-gl/dist/mapbox-gl.css'
   import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-  const props = defineProps({
-    accessToken: {
-      type: String,
-      required: true
-    },
-    mapCenter: {
-      type: Array,
-      default: () => [-122.3321, 47.6062]
-    },
-    mapZoom: {
-      type: Number,
-      default: 12
-    },
-    mapStyle: {
-      type: String,
-      default: 'mapbox://styles/mapbox/streets-v11'
-    },
-    mapSource: {
-      type: Object,
-      default: null
-    },
-    mapLayer: {
-      type: Object,
-      default: null
-    },
-    pinLocations: {
-      type: Array,
-      default: () => []
-    },
-    scrollZoom: {
-      type: Boolean,
-      default: true
-    },
-    navigationControl: {
-      type: Boolean,
-      default: true
-    },
-    fitToBounds: {
-      type: Boolean,
-      default: false
-    }
+  interface MapSource {
+    id: string
+    source: Record<string, unknown>
+  }
+
+  interface EpMapProps {
+    accessToken: string
+    fitToBounds?: boolean
+    mapCenter?: [number, number]
+    mapLayer?: Record<string, unknown> | null
+    mapSource?: (MapSource & { source: { data: { geometry: { coordinates: [number, number][] } } } }) | null
+    mapStyle?: string
+    mapZoom?: number
+    navigationControl?: boolean
+    pinLocations?: [number, number][]
+    scrollZoom?: boolean
+  }
+
+  const props = withDefaults(defineProps<EpMapProps>(), {
+    fitToBounds: false,
+    mapCenter: () => [-122.3321, 47.6062],
+    mapLayer: null,
+    mapSource: null,
+    mapStyle: 'mapbox://styles/mapbox/streets-v11',
+    mapZoom: 12,
+    navigationControl: true,
+    pinLocations: () => [],
+    scrollZoom: true,
   })
 
-  const emit = defineEmits(['centerChange', 'dropPin', 'zoomChange'])
+  const emit = defineEmits<{
+    centerChange: [center: [number, number]]
+    dropPin: []
+    zoomChange: [zoom: number]
+  }>()
 
   const init = ref(true)
-  const map = ref(null)
-  const markers = ref([])
-  let mapboxgl = null
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const map = ref<any>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const markers = ref<any[]>([])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let mapboxgl: any = null
 
   watch(() => props.mapCenter, (newCenter) => {
     emit('centerChange', newCenter)
@@ -62,7 +56,7 @@
     flyTo(props.mapCenter, newZoom)
   })
 
-  watch(() => props.mapStyle, (newStyle) => {
+  watch(() => props.mapStyle, (newStyle: string) => {
     map.value.setStyle(newStyle)
   })
 
@@ -71,7 +65,7 @@
     addMarkers()
   })
 
-  watch(() => props.scrollZoom, (newScrollZoom) => {
+  watch(() => props.scrollZoom, (newScrollZoom: boolean) => {
     if (newScrollZoom) {
       map.value.scrollZoom.enable()
     } else {
@@ -79,13 +73,10 @@
     }
   })
 
-  // get a reference to the parent container
-  const epMapContainer = ref(null)
+  const epMapContainer = ref<HTMLDivElement | null>(null)
 
-  // create a new ResizeObserver instance
   const observer = new ResizeObserver(() => {
     if (map.value) {
-      // Ensure map.value is initialized before calling resize
       nextTick(() => {
         map.value.resize()
       })
@@ -94,19 +85,17 @@
 
   onMounted(() => {
     loadMap().then(() => {
-      // map layer
-      if (props.mapSource) addSource(props.mapSource, props.mapLayer)
-      // fit to bounds
-      if (props.fitToBounds) {
+      if (props.mapSource && props.mapLayer) addSource(props.mapSource, props.mapLayer)
+      if (props.fitToBounds && props.mapSource) {
         fitBounds(getBounds(props.mapSource.source.data.geometry.coordinates))
       }
-      // if pin locations exist, add them
       if (props.pinLocations.length) addMarkers()
       init.value = false
     })
 
-    // attach the observer to the container
-    observer.observe(epMapContainer.value)
+    if (epMapContainer.value) {
+      observer.observe(epMapContainer.value)
+    }
   })
 
   onBeforeUnmount(() => {
@@ -121,9 +110,8 @@
     }
   })
 
-  const loadMap = () => {
+  const loadMap = (): Promise<void> => {
     return new Promise((resolve) => {
-      // Perform the dynamic import and other async operations
       import('mapbox-gl').then((module) => {
         mapboxgl = module.default
         map.value = new mapboxgl.Map({
@@ -134,7 +122,6 @@
           style: props.mapStyle,
         })
 
-        // Various options
         if (!props.scrollZoom) map.value.scrollZoom.disable()
         if (props.navigationControl) map.value.addControl(new mapboxgl.NavigationControl())
 
@@ -144,38 +131,38 @@
     })
   }
 
-  const addMarkers = () => {
+  const addMarkers = (): void => {
     props.pinLocations.forEach((location) => {
       const marker = new mapboxgl.Marker().setLngLat(location).addTo(map.value)
       markers.value.push(marker)
     })
   }
 
-  const removeMarkers = () => {
+  const removeMarkers = (): void => {
     markers.value.forEach((marker) => marker.remove())
     markers.value = []
   }
 
-  const flyTo = (center = props.mapCenter, zoom = props.mapZoom) => {
+  const flyTo = (center: [number, number] = props.mapCenter, zoom: number = props.mapZoom): void => {
     map.value.flyTo({
       center,
       zoom
     })
   }
 
-  const onDragEnd = () => {
+  const onDragEnd = (): void => {
     const center = map.value.getCenter()
     emit('centerChange', [center.lng, center.lat])
   }
 
-  const getBounds = (coordinates) => {
+  const getBounds = (coordinates: [number, number][]): unknown => {
     return coordinates.reduce(
-      (bounds, coord) => bounds.extend(coord),
+      (bounds: unknown, coord: [number, number]) => (bounds as { extend: (c: [number, number]) => unknown }).extend(coord),
       new mapboxgl.LngLatBounds(coordinates[0], coordinates[0])
     )
   }
 
-  const fitBounds = (bounds) => {
+  const fitBounds = (bounds: unknown): void => {
     map.value.fitBounds(bounds, {
       linear: false,
       duration: 1000,
@@ -183,7 +170,7 @@
     })
   }
 
-  const addSource = (source, layer) => {
+  const addSource = (source: MapSource, layer: Record<string, unknown>): void => {
     map.value.addSource(source.id, source.source)
     map.value.addLayer(layer)
   }

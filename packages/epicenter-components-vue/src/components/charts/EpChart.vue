@@ -1,33 +1,22 @@
-<script setup>
+<script setup lang="ts">
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
-  const props = defineProps({
-    /**
-     * Custom color overrides for chart series (CSS custom properties).
-     * @example { '--highcharts-color-0': 'red', '--highcharts-color-1': 'blue' }
-     */
-    chartColors: {
-      type: Object,
-      default: () => ({})
-    },
-    /**
-     * Height of the chart in pixels.
-     */
-    height: {
-      type: Number,
-      default: 400
-    },
-    /**
-     * Highcharts configuration options object.
-     */
-    options: {
-      type: Object,
-      default: () => ({})
-    },
+  interface EpChartProps {
+    chartColors?: Record<string, string>
+    height?: number
+    options?: Record<string, unknown>
+  }
+
+  const props = withDefaults(defineProps<EpChartProps>(), {
+    chartColors: () => ({}),
+    height: 400,
+    options: () => ({}),
   })
 
-  const chart = ref(null)
-  const chartDefaults = {
+  // Highcharts chart instance
+  const chart = ref<{ reflow: () => void; destroy: () => void } | null>(null)
+
+  const chartDefaults: Record<string, unknown> = {
     accessibility: {
       enabled: false,
     },
@@ -51,12 +40,12 @@
     ...props.options
   }))
 
-  const drawChart = async () => {
+  const drawChart = async (): Promise<void> => {
     const Highcharts = (await import('highcharts')).default
     chart.value = Highcharts.chart(chartId, chartOptions.value)
   }
 
-  const reflowChart = () => {
+  const reflowChart = (): void => {
     if (chart.value) {
       chart.value.reflow()
     }

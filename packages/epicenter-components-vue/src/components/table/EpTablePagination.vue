@@ -1,56 +1,52 @@
-<script setup>
+<script setup lang="ts">
   import ArrowLeft01 from '@ericpitcock/epicenter-icons-vue/ArrowLeft01'
   import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
   import { computed, ref } from 'vue'
 
+  import type { SelectOption } from '../../types'
   import EpButton from '../button/EpButton.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
   import EpFooter from '../footer/EpFooter.vue'
   import EpSelect from '../select/EpSelect.vue'
 
-  const props = defineProps({
-    currentPage: {
-      type: Number,
-      required: true
-    },
-    showPages: {
-      type: Boolean,
-      default: false
-    },
-    resultsPerPage: {
-      type: Number,
-      required: true
-    },
-    totalPages: {
-      type: Number,
-      required: true
-    }
+  interface EpTablePaginationProps {
+    currentPage: number
+    resultsPerPage: number
+    showPages?: boolean
+    totalPages: number
+  }
+
+  const props = withDefaults(defineProps<EpTablePaginationProps>(), {
+    showPages: false,
   })
 
-  const emit = defineEmits(['pageChange', 'update:resultsPerPage'])
+  const emit = defineEmits<{
+    pageChange: [page: number]
+    'update:resultsPerPage': [value: number]
+  }>()
 
   const resultsPerPage = ref(props.resultsPerPage)
 
-  const resultsPerPageOptions = [
+  const resultsPerPageOptions: SelectOption[] = [
     { label: '10', value: 10 },
     { label: '20', value: 20 },
     { label: '50', value: 50 },
     { label: '100', value: 100 }
   ]
 
-  const onResultsPerPageChange = (value) => {
-    emit('update:resultsPerPage', value)
+  const onResultsPerPageChange = (value: unknown): void => {
+    emit('update:resultsPerPage', Number(value))
   }
 
   const showPages = ref(props.showPages)
 
-  const prevPage = () => {
+  const prevPage = (): void => {
     if (props.currentPage > 1) {
       emit('pageChange', props.currentPage - 1)
     }
   }
 
-  const nextPage = () => {
+  const nextPage = (): void => {
     if (props.currentPage < props.totalPages) {
       emit('pageChange', props.currentPage + 1)
     }
@@ -66,8 +62,8 @@
     return props.totalPages > truncationThreshold && props.currentPage < props.totalPages - 2
   })
 
-  const pageRange = computed(() => {
-    const range = []
+  const pageRange = computed((): number[] => {
+    const range: number[] = []
     if (props.totalPages <= truncationThreshold) {
       for (let i = 2; i < props.totalPages; i++) {
         range.push(i)

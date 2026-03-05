@@ -1,17 +1,30 @@
-import { initializeTheme } from '../composables/useTheme.js'
+import type { App, Plugin, Ref } from 'vue'
+
+import type { Theme } from '../types'
+import { initializeTheme } from '../composables/useTheme'
+
+export interface ThemePluginOptions {
+  exposeGlobally?: boolean
+}
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $theme?: Ref<Theme>
+  }
+}
 
 /**
  * Vue plugin for Epicenter theme management
- * 
+ *
  * Usage:
  *   import themePlugin from '@ericpitcock/epicenter-components-vue/dist/plugins/themePlugin'
  *   app.use(themePlugin)
- * 
+ *
  * Or with options:
  *   app.use(themePlugin, { exposeGlobally: true })
  */
-export default {
-  install(app, options = {}) {
+const themePlugin: Plugin = {
+  install(app: App, options: ThemePluginOptions = {}) {
     const { exposeGlobally = false } = options
 
     // Initialize the theme system
@@ -26,3 +39,5 @@ export default {
     app.provide('epicenterTheme', theme)
   }
 }
+
+export default themePlugin

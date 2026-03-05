@@ -1,11 +1,9 @@
-<script setup>
-  const emit = defineEmits([
-    /**
-     * Emitted when the banner is dismissed.
-     */
-    'dismissed'
-  ])
-  const dismissBanner = () => emit('dismissed')
+<script setup lang="ts">
+  const emit = defineEmits<{
+    dismissed: []
+  }>()
+
+  const dismissBanner = (): void => emit('dismissed')
 </script>
 
 <template>

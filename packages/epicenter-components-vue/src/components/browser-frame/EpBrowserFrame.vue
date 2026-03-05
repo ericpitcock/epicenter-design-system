@@ -1,37 +1,20 @@
-<script setup>
+<script setup lang="ts">
   import UserCircle02 from '@ericpitcock/epicenter-icons-vue/UserCircle02'
 
   import EpHeader from '../header/EpHeader.vue'
 
-  const props = defineProps({
-    /**
-     * The width of the browser frame.
-     */
-    width: {
-      type: String,
-      default: '100%'
-    },
-    /**
-     * The URL to display in the browser frame.
-     */
-    url: {
-      type: String,
-      default: 'http://website.com'
-    },
-    /**
-     * The source of the image to display in the browser frame.
-     */
-    imageSrc: {
-      type: String,
-      default: ''
-    },
-    /**
-     * The alt text for the image.
-     */
-    imageAlt: {
-      type: String,
-      default: ''
-    }
+  interface EpBrowserFrameProps {
+    imageAlt?: string
+    imageSrc?: string
+    url?: string
+    width?: string
+  }
+
+  const props = withDefaults(defineProps<EpBrowserFrameProps>(), {
+    imageAlt: '',
+    imageSrc: '',
+    url: 'http://website.com',
+    width: '100%',
   })
 </script>
 

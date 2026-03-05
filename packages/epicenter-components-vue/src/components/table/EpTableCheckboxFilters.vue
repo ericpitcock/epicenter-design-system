@@ -1,21 +1,22 @@
-<script setup>
+<script setup lang="ts">
+  import type { CheckboxFilter } from '../../types'
   import EpCheckbox from '../checkbox/EpCheckbox.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
 
-  const props = defineProps({
-    filters: {
-      type: Object,
-      required: true
-    },
-    sectionLabels: {
-      type: Boolean,
-      default: true
-    }
+  interface EpTableCheckboxFiltersProps {
+    filters: Record<string, CheckboxFilter[]>
+    sectionLabels?: boolean
+  }
+
+  const props = withDefaults(defineProps<EpTableCheckboxFiltersProps>(), {
+    sectionLabels: true,
   })
 
-  const emit = defineEmits(['update:filters'])
+  const emit = defineEmits<{
+    'update:filters': [payload: { category: string; label: string; checked: boolean }]
+  }>()
 
-  const updateCheckbox = (category, label, checked) => {
+  const updateCheckbox = (category: string, label: string, checked: boolean): void => {
     emit('update:filters', { category, label, checked })
   }
 </script>

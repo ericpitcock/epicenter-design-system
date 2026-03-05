@@ -1,19 +1,18 @@
-<script setup>
-  const props = defineProps({
+<script setup lang="ts">
+  interface EpTabContentProps {
     /**
      * The index of the currently active tab.
      */
-    activeTabIndex: {
-      type: Number,
-      default: 0
-    },
+    activeTabIndex?: number
     /**
      * An array of tab items (used to determine tab count).
      */
-    items: {
-      type: Array,
-      default: () => []
-    }
+    items?: unknown[]
+  }
+
+  const props = withDefaults(defineProps<EpTabContentProps>(), {
+    activeTabIndex: 0,
+    items: () => [],
   })
 </script>
 

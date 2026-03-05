@@ -197,7 +197,7 @@
     usePagination,
     useSearch,
     useSorting,
-  } from '@/composables/index.js'
+  } from '@/composables'
 
   import { columns, fakeTableData } from '@sb/data/tableData'
 

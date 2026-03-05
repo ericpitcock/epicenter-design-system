@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   import { computed, ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
@@ -7,21 +7,28 @@
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpicenterLogo from '../logo/EpicenterLogo.vue'
 
+  type SignInState = 'signin' | 'loading' | 'message' | 'reset'
+
+  interface LoadingMessage {
+    icon: string
+    message: string
+  }
+
   const email = ref('')
   const password = ref('')
-  const state = ref('signin')
-  const loadingMessages = ref([
+  const state = ref<SignInState>('signin')
+  const loadingMessages = ref<LoadingMessage[]>([
     {
       icon: 'oval',
       message: 'Signing in…'
     }
   ])
 
-  const buttonLabel = computed(() => {
+  const buttonLabel = computed((): string => {
     return state.value === 'signin' ? 'Sign in' : 'Send reset email'
   })
 
-  const footerText = computed(() => {
+  const footerText = computed((): string => {
     switch (state.value) {
       case 'signin':
         return 'Reset your password'
@@ -36,11 +43,11 @@
     }
   })
 
-  const signin = () => {
+  const signin = (): void => {
     console.log('signin')
   }
 
-  const onButtonClick = () => {
+  const onButtonClick = (): void => {
     if (state.value === 'signin') {
       console.log('signin')
       state.value = 'loading'
@@ -53,11 +60,11 @@
     }
   }
 
-  const onFooterClick = () => {
+  const onFooterClick = (): void => {
     state.value = state.value === 'signin' ? 'reset' : 'signin'
   }
 
-  // const validateEmail = (email) => {
+  // const validateEmail = (email: string): boolean => {
   //   const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
   //   return emailRegex.test(email)
   // }

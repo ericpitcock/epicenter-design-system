@@ -3,10 +3,10 @@
   "version": "2.0.0",
   "description": "Epicenter Design System - Vue Components",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/index.ts",
+  "module": "dist/index.ts",
   "exports": {
-    "import": "./dist/index.js"
+    "import": "./dist/index.ts"
   },
   "files": [
     "dist"

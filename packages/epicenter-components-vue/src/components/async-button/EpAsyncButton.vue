@@ -1,78 +1,42 @@
-<script setup>
+<script setup lang="ts">
   import { computed, nextTick, onMounted, ref, watch } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The current state of the button.
-     * @values 'default', 'loading', 'success', 'failure'
-     */
-    status: {
-      type: String,
-      default: 'default',
-      validator: (value) => ['default', 'loading', 'success', 'failure'].includes(value)
-    },
-    /**
-     * The default button label text.
-     */
-    label: {
-      type: String,
-      default: 'Submit'
-    },
-    /**
-     * Message displayed when status is 'success'. Falls back to label if not provided.
-     */
-    successMessage: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Message displayed when status is 'failure'. Falls back to label if not provided.
-     */
-    failureMessage: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Controls how the loading state is visually indicated.
-     * @values 'text', 'spinner'
-     */
-    loadingIndicator: {
-      type: String,
-      default: 'text',
-      validator: (v) => ['text', 'spinner'].includes(v)
-    },
-    /**
-     * Text displayed during loading state (used for 'text' mode and screen reader text for spinner).
-     */
-    loadingText: {
-      type: String,
-      default: 'Loading…'
-    },
-    /**
-     * If true, maintains consistent button width across state changes to prevent layout shift.
-     */
-    preserveWidth: {
-      type: Boolean,
-      default: true
-    },
-    /**
-     * If true, disables the button during loading state to prevent multiple clicks.
-     */
-    disabledDuringLoading: {
-      type: Boolean,
-      default: true
-    }
+  type AsyncButtonStatus = 'default' | 'loading' | 'success' | 'failure'
+  type LoadingIndicator = 'text' | 'spinner'
+
+  interface EpAsyncButtonProps {
+    disabledDuringLoading?: boolean
+    failureMessage?: string
+    label?: string
+    loadingIndicator?: LoadingIndicator
+    loadingText?: string
+    preserveWidth?: boolean
+    status?: AsyncButtonStatus
+    successMessage?: string
+  }
+
+  const props = withDefaults(defineProps<EpAsyncButtonProps>(), {
+    disabledDuringLoading: true,
+    failureMessage: '',
+    label: 'Submit',
+    loadingIndicator: 'text',
+    loadingText: 'Loading…',
+    preserveWidth: true,
+    status: 'default',
+    successMessage: '',
   })
 
-  const emit = defineEmits(['click'])
+  const emit = defineEmits<{
+    click: [event: MouseEvent]
+  }>()
 
-  const onClick = (event) => {
+  const onClick = (event: MouseEvent): void => {
     if (!(props.disabledDuringLoading && props.status === 'loading')) {
       emit('click', event)
     }
   }
 
-  const currentText = computed(() => {
+  const currentText = computed((): string => {
     if (props.status === 'success' && props.successMessage) {
       return props.successMessage
     } else if (props.status === 'failure' && props.failureMessage) {
@@ -81,10 +45,10 @@
     return props.label
   })
 
-  const buttonEl = ref(null)
+  const buttonEl = ref<HTMLButtonElement | null>(null)
   const buttonWidth = ref('')
 
-  const updateWidth = () => {
+  const updateWidth = (): void => {
     if (!props.preserveWidth) return
     nextTick(() => {
       if (buttonEl.value) {
@@ -97,7 +61,6 @@
     updateWidth()
   })
 
-  // Recalculate width if the visible texts change
   watch(
     () => [props.label, props.successMessage, props.failureMessage],
     () => updateWidth()

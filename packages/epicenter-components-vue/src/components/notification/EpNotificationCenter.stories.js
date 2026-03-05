@@ -5,7 +5,7 @@ import EpButton from '@/components/button/EpButton.vue'
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpNotification from '@/components/notification/EpNotification.vue'
 import EpNotifications from '@/components/notification/EpNotifications.vue'
-import { useNotifications } from '@/components/notification/useNotifications.js'
+import { useNotifications } from '@/components/notification/useNotifications.ts'
 import EpOverlay from '@/components/overlays/EpOverlay.vue'
 
 export default {

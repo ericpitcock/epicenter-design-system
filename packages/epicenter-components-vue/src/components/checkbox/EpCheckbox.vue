@@ -1,69 +1,33 @@
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The ID of the checkbox.
-     */
-    id: {
-      type: String,
-      required: true
-    },
-    /**
-     * The label for the checkbox.
-     */
-    label: {
-      type: String,
-      required: true
-    },
-    /**
-     * The name of the checkbox.
-     */
-    name: {
-      type: String,
-      required: true
-    },
-    /**
-     * The value of the checkbox.
-     */
-    value: {
-      type: String,
-      required: true
-    },
-    /**
-     * Whether the checkbox is checked.
-     */
-    checked: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Whether the checkbox is disabled.
-     */
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Whether the checkbox is indeterminate.
-     */
-    indeterminate: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Whether the checkbox is required.
-     */
-    required: {
-      type: Boolean,
-      default: false
-    },
+  interface EpCheckboxProps {
+    /** Whether the checkbox is checked. */
+    checked?: boolean
+    /** Whether the checkbox is disabled. */
+    disabled?: boolean
+    /** The ID of the checkbox. */
+    id: string
+    /** Whether the checkbox is indeterminate. */
+    indeterminate?: boolean
+    /** The label for the checkbox. */
+    label: string
+    /** The name of the checkbox. */
+    name: string
+    /** Whether the checkbox is required. */
+    required?: boolean
+    /** The value of the checkbox. */
+    value: string
+  }
+
+  const props = withDefaults(defineProps<EpCheckboxProps>(), {
+    checked: false,
+    disabled: false,
+    indeterminate: false,
+    required: false,
   })
 
-  const modelValue = defineModel({
-    type: Boolean,
-    required: true
-  })
+  const modelValue = defineModel<boolean>({ required: true })
 
   const classes = computed(() => {
     return {

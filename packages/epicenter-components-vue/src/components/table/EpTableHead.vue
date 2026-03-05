@@ -1,27 +1,17 @@
-<script setup>
-  const props = defineProps({
-    /**
-     * Array of column configuration objects defining table structure.
-     */
-    columns: {
-      type: Array,
-      required: true
-    },
-    /**
-     * Array of width values for each column cell.
-     */
-    cellWidths: {
-      type: Array,
-      default: () => []
-    },
-    /**
-     * If true, enables fixed header behavior.
-     */
-    fixedHeader: Boolean,
-    /**
-     * If true, shows an additional column for the actions menu.
-     */
-    showActionsMenu: Boolean,
+<script setup lang="ts">
+  import type { TableColumn } from '../../types'
+
+  interface EpTableHeadProps {
+    cellWidths?: Record<string, string>[]
+    columns: TableColumn[]
+    fixedHeader?: boolean
+    showActionsMenu?: boolean
+  }
+
+  const props = withDefaults(defineProps<EpTableHeadProps>(), {
+    cellWidths: () => [],
+    fixedHeader: false,
+    showActionsMenu: false,
   })
 </script>
 

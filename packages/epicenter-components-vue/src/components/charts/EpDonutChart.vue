@@ -1,92 +1,55 @@
-<script setup>
+<script setup lang="ts">
   import { computed, onMounted, ref, useTemplateRef } from 'vue'
 
-  const props = defineProps({
-    /**
-     * If true, animates the chart on initial render.
-     */
-    animate: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * Width of the chart in pixels.
-     */
-    width: {
-      type: Number,
-      default: 200,
-    },
-    /**
-     * Height of the chart in pixels.
-     */
-    height: {
-      type: Number,
-      default: 200,
-    },
-    /**
-     * Margin around the chart in pixels.
-     */
-    margin: {
-      type: Number,
-      default: 0,
-    },
-    /**
-     * Array of numeric values for each segment of the donut chart.
-     */
-    data: {
-      type: Array,
-      required: true,
-    },
-    /**
-     * Array of label strings corresponding to each data segment.
-     */
-    labels: {
-      type: Array,
-      required: true,
-    },
-    /**
-     * Text or number to display in the center of the donut chart.
-     */
-    value: {
-      type: String,
-      default: 'Value',
-    },
-    /**
-     * CSS class for styling the center value text.
-     */
-    valueTextClass: {
-      type: String,
-      default: 'font-size--jumbo',
-    },
+  interface EpDonutChartProps {
+    animate?: boolean
+    data: number[]
+    height?: number
+    labels: string[]
+    margin?: number
+    value?: string
+    valueTextClass?: string
+    width?: number
+  }
+
+  const props = withDefaults(defineProps<EpDonutChartProps>(), {
+    animate: true,
+    width: 200,
+    height: 200,
+    margin: 0,
+    value: 'Value',
+    valueTextClass: 'font-size--jumbo',
   })
 
-  const container = useTemplateRef('container')
-  const tooltip = useTemplateRef('tooltip')
-  const epDonut = useTemplateRef('ep-donut')
+  const container = useTemplateRef<HTMLDivElement>('container')
+  const tooltip = useTemplateRef<HTMLDivElement>('tooltip')
+  const epDonut = useTemplateRef<HTMLDivElement>('ep-donut')
 
   const tooltipVisible = ref(false)
-  const tooltipStyles = ref({
-    top: 0,
-    left: 0,
+  const tooltipStyles = ref<{ top: string; left: string }>({
+    top: '0',
+    left: '0',
   })
-  const tooltipText = ref('tooltip')
+  const tooltipText = ref<string | number>('tooltip')
 
   const containerStyles = computed(() => ({
     width: `${props.width}px`,
     height: `${props.height}px`,
   }))
 
-  let d3 = null // Reference for dynamic import
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let d3: any = null
 
   onMounted(async () => {
-    d3 = await import('d3') // Dynamically import d3
+    d3 = await import('d3')
     drawChart()
   })
 
-  const handleMouseOver = (event, d) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleMouseOver = (event: MouseEvent, d: any): void => {
     tooltipVisible.value = true
-    const containerRect = container.value.getBoundingClientRect()
-    const tooltipRect = tooltip.value.getBoundingClientRect()
+    const containerRect = container.value!.getBoundingClientRect()
+    const tooltipRect = tooltip.value!.getBoundingClientRect()
     const x = event.clientX - containerRect.left
     const y = event.clientY - containerRect.top
     let tooltipX = x + 10
@@ -108,11 +71,11 @@
     tooltipText.value = d.data
   }
 
-  const handleMouseOut = () => {
+  const handleMouseOut = (): void => {
     tooltipVisible.value = false
   }
 
-  const drawChart = () => {
+  const drawChart = (): void => {
     const data = props.data
     const width = props.width
     const height = props.height
@@ -141,7 +104,7 @@
 
     const pie = d3.pie()
       .sort(null)
-      .value((d) => d)
+      .value((d: number) => d)
 
     const arcs = g.selectAll('arc')
       .data(pie(data))
@@ -151,7 +114,8 @@
 
     arcs.append('path')
       .attr('d', arc)
-      .attr('fill', (d) => color(d.data))
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .attr('fill', (d: any) => color(d.data))
       .attr('stroke', 'var(--interface-surface)')
       .attr('stroke-width', '0.3rem')
       .on('mouseover', handleMouseOver)
@@ -163,9 +127,11 @@
         .attr('d', arc)
         .transition()
         .duration(700)
-        .attrTween('d', function(d) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .attrTween('d', function(d: any) {
           const interpolate = d3.interpolate(d.startAngle, d.endAngle)
-          return function(t) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          return function(t: number): any {
             d.endAngle = interpolate(t)
             return arc(d)
           }

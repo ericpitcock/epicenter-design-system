@@ -1,15 +1,21 @@
-<script setup>
-  defineProps({
+<script setup lang="ts">
+  interface LoadingMessage {
+    icon: string
+    message: string
+  }
+
+  interface EpLoadingStateProps {
     /**
      * Message object containing icon and message text to display while loading.
      */
-    message: {
-      type: Object,
-      default: () => ({
-        icon: '',
-        message: ''
-      })
-    },
+    message?: LoadingMessage
+  }
+
+  withDefaults(defineProps<EpLoadingStateProps>(), {
+    message: () => ({
+      icon: '',
+      message: '',
+    }),
   })
 </script>
 

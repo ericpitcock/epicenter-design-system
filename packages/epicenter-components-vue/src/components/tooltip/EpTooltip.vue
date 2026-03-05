@@ -1,73 +1,58 @@
-<script setup>
+<script setup lang="ts">
   import { computed, onBeforeUnmount, ref } from 'vue'
 
-  const props = defineProps({
-    /**
-     * Delay in milliseconds before showing the tooltip on hover.
-     */
-    delay: {
-      type: Number,
-      default: 0,
-    },
-    /**
-     * Position of the tooltip relative to the trigger element.
-     * @values 'top left', 'top center', 'top right', 'right top', 'right center', 'right bottom', 'bottom left', 'bottom center', 'bottom right', 'left top', 'left center', 'left bottom'
-     */
-    position: {
-      type: String,
-      default: 'top center',
-      validator: (value) =>
-        [
-          'top left',
-          'top center',
-          'top right',
-          'right top',
-          'right center',
-          'right bottom',
-          'bottom left',
-          'bottom center',
-          'bottom right',
-          'left top',
-          'left center',
-          'left bottom',
-        ].includes(value),
-    },
-    /**
-     * Whether to dismiss the tooltip when clicked.
-     */
-    dismissOnClick: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Whether the tooltip is disabled.
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
+  type TooltipPosition =
+    | 'top left'
+    | 'top center'
+    | 'top right'
+    | 'right top'
+    | 'right center'
+    | 'right bottom'
+    | 'bottom left'
+    | 'bottom center'
+    | 'bottom right'
+    | 'left top'
+    | 'left center'
+    | 'left bottom'
+
+  interface EpTooltipProps {
+    /** Delay in milliseconds before showing the tooltip on hover. */
+    delay?: number
+    /** Whether the tooltip is disabled. */
+    disabled?: boolean
+    /** Whether to dismiss the tooltip when clicked. */
+    dismissOnClick?: boolean
+    /** Position of the tooltip relative to the trigger element. */
+    position?: TooltipPosition
+  }
+
+  const props = withDefaults(defineProps<EpTooltipProps>(), {
+    delay: 0,
+    disabled: false,
+    dismissOnClick: false,
+    position: 'top center',
   })
 
-  const visible = ref(false)
-  const timeoutId = ref(null)
+  const visible = ref<boolean>(false)
+  const timeoutId = ref<ReturnType<typeof setTimeout> | null>(null)
 
   onBeforeUnmount(() => {
-    clearTimeout(timeoutId.value)
+    if (timeoutId.value !== null) clearTimeout(timeoutId.value)
   })
 
-  const showTooltip = () => {
+  const showTooltip = (): void => {
     if (props.disabled) return
     timeoutId.value = setTimeout(() => {
       visible.value = true
     }, props.delay)
   }
 
-  const hideTooltip = () => {
-    clearTimeout(timeoutId.value)
+  const hideTooltip = (): void => {
+    if (timeoutId.value !== null) clearTimeout(timeoutId.value)
     visible.value = false
   }
 
-  const onClick = () => {
+  const onClick = (): void => {
     if (props.dismissOnClick) {
       hideTooltip()
     }

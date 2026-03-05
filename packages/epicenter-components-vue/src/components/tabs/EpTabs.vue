@@ -1,49 +1,40 @@
-<script setup>
+<script setup lang="ts">
   import { computed, ref } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The index of the active tab.
-     */
-    activeTabIndex: {
-      type: Number,
-      default: 0
-    },
-    /**
-     * The tabs to display.
-     */
-    items: {
-      type: Array,
-      default: () => []
-    },
-    /**
-     * The variant of the tabs, default or classic.
-     */
-    variant: {
-      type: String,
-      default: 'default'
-    }
+  interface TabItem {
+    exact?: boolean
+    label: string
+    to?: string
+  }
+
+  interface EpTabsProps {
+    activeTabIndex?: number
+    items?: (string | TabItem)[]
+    variant?: string
+  }
+
+  const props = withDefaults(defineProps<EpTabsProps>(), {
+    activeTabIndex: 0,
+    items: () => [],
+    variant: 'default',
   })
 
-  const emit = defineEmits([
-    /**
-     * Emitted when a tab is clicked.
-     */
-    'tab-click'
-  ])
+  const emit = defineEmits<{
+    'tab-click': [payload: { item: TabItem; index: number } | number]
+  }>()
 
-  const tabs = computed(() => {
+  const tabs = computed((): TabItem[] => {
     return props.items.map(item => (typeof item === 'object' ? item : { label: item }))
   })
 
-  const onClick = ({ item, index }) => {
+  const onClick = ({ item, index }: { item: TabItem; index: number }): void => {
     if (!item.to) {
       emit('tab-click', { item, index })
     }
   }
 
-  const handleKeydown = (index, event) => {
-    const keyActions = {
+  const handleKeydown = (index: number, event: KeyboardEvent): void => {
+    const keyActions: Record<string, () => void> = {
       ArrowRight: () => focusTab((index + 1) % tabs.value.length),
       ArrowLeft: () => focusTab((index - 1 + tabs.value.length) % tabs.value.length),
       Home: () => focusTab(0),
@@ -57,16 +48,11 @@
     }
   }
 
-  const tabList = ref(null)
+  const tabList = ref<HTMLDivElement | null>(null)
 
-  const focusTab = (index) => {
-    // Programmatically move focus to the new tab
-    // const tabElements = document.querySelectorAll('[role="tab"]')
-    // tabElements[index]?.focus()
-
-    // Query only within this component's tab list
+  const focusTab = (index: number): void => {
     const tabElements = tabList.value?.querySelectorAll('[role="tab"]') || []
-    tabElements[index]?.focus()
+      ; (tabElements[index] as HTMLElement)?.focus()
   }
 </script>
 

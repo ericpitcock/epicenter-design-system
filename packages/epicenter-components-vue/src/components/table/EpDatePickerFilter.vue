@@ -1,28 +1,23 @@
-<script setup>
+<script setup lang="ts">
   import { ref } from 'vue'
 
-  const props = defineProps({
-    appliedFilters: {
-      type: Object,
-      required: true
-    },
-    filterKey: {
-      type: String,
-      required: true
-    },
-    columnKey: {
-      type: String,
-      required: true
-    }
-  })
+  interface EpDatePickerFilterProps {
+    appliedFilters: Record<string, unknown>
+    columnKey: string
+    filterKey: string
+  }
 
-  const emit = defineEmits(['update:appliedFilters'])
+  const props = defineProps<EpDatePickerFilterProps>()
+
+  const emit = defineEmits<{
+    'update:appliedFilters': [value: Record<string, string>]
+  }>()
 
   // Initialize selected date
-  const selectedDate = ref('')
+  const selectedDate = ref<string>('')
 
   // Method to apply filter and emit event
-  const applyFilter = () => {
+  const applyFilter = (): void => {
     // Emit event to update applied filters in parent component
     emit('update:appliedFilters', { [props.columnKey]: selectedDate.value })
   }

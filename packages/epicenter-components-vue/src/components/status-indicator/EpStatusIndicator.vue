@@ -1,12 +1,13 @@
-<script setup>
-  const props = defineProps({
+<script setup lang="ts">
+  interface EpStatusIndicatorProps {
     /**
      * If true, the status indicator will pulse.
      */
-    pulse: {
-      type: Boolean,
-      default: false,
-    },
+    pulse?: boolean
+  }
+
+  const props = withDefaults(defineProps<EpStatusIndicatorProps>(), {
+    pulse: false,
   })
 </script>
 

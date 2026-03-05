@@ -1,34 +1,20 @@
-<script setup>
+<script setup lang="ts">
   import { codeToHtml } from 'shiki'
   import { onMounted, ref, watch } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The code to display.
-     */
-    code: {
-      type: String,
-      required: true
-    },
-    /**
-     * The language of the code.
-     */
-    language: {
-      type: String,
-      required: true
-    },
-    /**
-     * The theme to use for highlighting.
-     */
-    theme: {
-      type: String,
-      default: 'one-dark-pro'
-    }
+  interface EpCodeViewProps {
+    code: string
+    language: string
+    theme?: string
+  }
+
+  const props = withDefaults(defineProps<EpCodeViewProps>(), {
+    theme: 'one-dark-pro',
   })
 
   const highlightedCode = ref('')
 
-  const highlightCode = async () => {
+  const highlightCode = async (): Promise<void> => {
     try {
       highlightedCode.value = await codeToHtml(props.code, {
         lang: props.language,
@@ -39,7 +25,6 @@
       })
     } catch (error) {
       console.error('Error highlighting code:', error)
-      // Fallback to plain text
       highlightedCode.value = props.code
     }
   }

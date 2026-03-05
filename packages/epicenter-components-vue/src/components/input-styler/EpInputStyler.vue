@@ -1,54 +1,42 @@
-<script setup>
+<script setup lang="ts">
   import Cancel01 from '@ericpitcock/epicenter-icons-vue/Cancel01'
   import { computed } from 'vue'
 
-  const props = defineProps({
-    id: {
-      type: String,
-      default: ''
-    },
-    hasInput: {
-      type: Boolean,
-      default: false
-    },
-    label: {
-      type: String,
-      default: ''
-    },
-    clearable: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    errorEnabled: {
-      type: Boolean,
-      default: false
-    },
-    error: {
-      type: Boolean,
-      default: false
-    },
-    errorMessage: {
-      type: String,
-      default: ''
-    },
-    size: {
-      type: String,
-      default: 'default'
-    },
+  import type { Size } from '../../types'
+
+  interface EpInputStylerProps {
+    clearable?: boolean
+    disabled?: boolean
+    error?: boolean
+    errorEnabled?: boolean
+    errorMessage?: string
+    hasInput?: boolean
+    id?: string
+    label?: string
+    size?: Size
+  }
+
+  const props = withDefaults(defineProps<EpInputStylerProps>(), {
+    clearable: false,
+    disabled: false,
+    error: false,
+    errorEnabled: false,
+    errorMessage: '',
+    hasInput: false,
+    id: '',
+    label: '',
+    size: 'default',
   })
 
-  defineEmits(['click'])
+  defineEmits<{
+    click: []
+  }>()
 
   const computedClasses = computed(() => ({
     [`ep-input-styler--${props.size}`]: props.size !== 'default',
     'ep-input-styler--disabled': props.disabled,
     'ep-input-styler--error': props.error,
   }))
-
 </script>
 
 <template>

@@ -1,39 +1,27 @@
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
-  const props = defineProps({
-    /**
-     * If true, shows the toggle in the active/on state.
-     */
-    isActive: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * If true, disables the toggle interaction.
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Label text displayed next to the toggle.
-     */
-    label: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The size variant of the toggle.
-     * @values 'small', 'default', 'large'
-     */
-    size: {
-      type: String,
-      default: 'default',
-    },
+  interface EpToggleProps {
+    /** If true, disables the toggle interaction. */
+    disabled?: boolean
+    /** If true, shows the toggle in the active/on state. */
+    isActive?: boolean
+    /** Label text displayed next to the toggle. */
+    label?: string
+    /** The size variant of the toggle. */
+    size?: 'small' | 'default' | 'large'
+  }
+
+  const props = withDefaults(defineProps<EpToggleProps>(), {
+    disabled: false,
+    isActive: false,
+    label: '',
+    size: 'default',
   })
 
-  const emit = defineEmits(['toggle'])
+  const emit = defineEmits<{
+    toggle: []
+  }>()
 
   const classes = computed(() => {
     return {
@@ -42,7 +30,7 @@
     }
   })
 
-  const toggle = () => {
+  const toggle = (): void => {
     if (props.disabled) return
     emit('toggle')
   }

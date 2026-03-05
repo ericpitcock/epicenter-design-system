@@ -1,24 +1,25 @@
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
   import EpFlex from '../flexbox/EpFlex.vue'
 
-  const props = defineProps({
-    data: {
-      type: [Array, Object],
-      required: true
-    },
-    commonKeyWidth: {
-      type: Boolean,
-      default: false
-    },
-    sectionHeaders: {
-      type: Boolean,
-      default: false
-    },
+  interface KeyValueSection {
+    data: Record<string, unknown>
+    name: string
+  }
+
+  interface EpKeyValueTableProps {
+    commonKeyWidth?: boolean
+    data: KeyValueSection | KeyValueSection[]
+    sectionHeaders?: boolean
+  }
+
+  const props = withDefaults(defineProps<EpKeyValueTableProps>(), {
+    commonKeyWidth: false,
+    sectionHeaders: false,
   })
 
-  const processedData = computed(() => {
+  const processedData = computed<KeyValueSection[]>(() => {
     if (Array.isArray(props.data)) {
       return props.data
     }
@@ -26,7 +27,7 @@
     return [props.data]
   })
 
-  const keyColumnWidth = computed(() => {
+  const keyColumnWidth = computed<string>(() => {
     if (!props.commonKeyWidth) {
       return 'auto'
     }

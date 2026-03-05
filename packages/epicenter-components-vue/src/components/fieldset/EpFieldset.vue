@@ -1,9 +1,10 @@
-<script setup>
-  const props = defineProps({
-    label: {
-      type: String,
-      default: ''
-    }
+<script setup lang="ts">
+  interface EpFieldsetProps {
+    label?: string
+  }
+
+  const props = withDefaults(defineProps<EpFieldsetProps>(), {
+    label: '',
   })
 </script>
 

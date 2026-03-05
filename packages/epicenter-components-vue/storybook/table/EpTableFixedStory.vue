@@ -59,7 +59,7 @@
   import EpTable from '@/components/table/EpTable.vue'
   import EpTableHead from '@/components/table/EpTableHead.vue'
   import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
-  import { useFixedHeader, useSorting } from '@/composables/index.js'
+  import { useFixedHeader, useSorting } from '@/composables'
 
   import { columns, fakeTableData } from '@sb/data/tableData'
 

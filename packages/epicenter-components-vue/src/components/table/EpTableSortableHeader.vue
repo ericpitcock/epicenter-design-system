@@ -1,32 +1,26 @@
-<script setup>
+<script setup lang="ts">
   import ArrowDown01 from '@ericpitcock/epicenter-icons-vue/ArrowDown01'
   import ArrowUp01 from '@ericpitcock/epicenter-icons-vue/ArrowUp01'
   import { computed } from 'vue'
 
-  const props = defineProps({
-    column: {
-      type: Object,
-      required: true
-    },
-    cellWidths: {
-      type: Array,
-      default: () => []
-    },
-    columnIndex: {
-      type: Number,
-      default: null
-    },
-    sortColumn: {
-      type: String,
-      required: true
-    },
-    sortOrder: {
-      type: String,
-      required: true
-    }
+  import type { TableColumn, SortOrder } from '../../types'
+
+  interface EpTableSortableHeaderProps {
+    cellWidths?: Record<string, string>[]
+    column: TableColumn
+    columnIndex?: number | null
+    sortColumn: string
+    sortOrder: SortOrder
+  }
+
+  const props = withDefaults(defineProps<EpTableSortableHeaderProps>(), {
+    cellWidths: () => [],
+    columnIndex: null,
   })
 
-  const emit = defineEmits(['sort'])
+  const emit = defineEmits<{
+    sort: [key: string]
+  }>()
 
   const headerClass = computed(() => {
     return [
@@ -42,7 +36,7 @@
 
 <template>
   <th
-    :style="cellWidths[columnIndex]"
+    :style="columnIndex != null ? cellWidths[columnIndex] : undefined"
     @click="emit('sort', column.key)"
   >
     <div :class="headerClass">

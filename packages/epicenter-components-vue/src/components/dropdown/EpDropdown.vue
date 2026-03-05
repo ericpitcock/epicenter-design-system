@@ -1,40 +1,34 @@
-<script setup>
+<script setup lang="ts">
   import { onClickOutside } from '@vueuse/core'
   import { computed, nextTick, ref, useId, useTemplateRef, watch } from 'vue'
 
-  const props = defineProps({
-    /**
-     * If true, aligns the dropdown content to the right edge of the trigger.
-     */
-    alignRight: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, opens the dropdown on hover instead of click.
-     */
-    showOnHover: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, automatically focuses the first menu item when the dropdown opens.
-     */
-    autoFocus: {
-      type: Boolean,
-      default: true
-    },
+  interface EpDropdownProps {
+    alignRight?: boolean
+    autoFocus?: boolean
+    disabled?: boolean
+    showOnHover?: boolean
+  }
+
+  const props = withDefaults(defineProps<EpDropdownProps>(), {
+    alignRight: false,
+    autoFocus: true,
+    disabled: false,
+    showOnHover: false,
   })
 
-  const emit = defineEmits(['click', 'close'])
+  const emit = defineEmits<{
+    click: []
+    close: []
+  }>()
+
   const uniqueId = useId()
   const triggerId = `ep-dropdown-trigger-${uniqueId}`
   const contentId = `ep-dropdown-panel-${uniqueId}`
 
   const triggerAttrs = computed(() => ({
     id: triggerId,
-    'aria-haspopup': 'menu',
-    'aria-expanded': String(dropdownVisible.value),
+    'aria-haspopup': 'menu' as const,
+    'aria-expanded': dropdownVisible.value,
     'aria-controls': contentId,
     disabled: props.disabled || undefined
   }))
@@ -47,13 +41,13 @@
 
   const dropdownVisible = ref(false)
 
-  const openDropdown = () => {
+  const openDropdown = (): void => {
     if (props.disabled || dropdownVisible.value) return
 
     dropdownVisible.value = true
   }
 
-  const closeDropdown = () => {
+  const closeDropdown = (): void => {
     if (props.disabled || !dropdownVisible.value) return
 
     dropdownVisible.value = false
@@ -61,29 +55,27 @@
   }
 
   // Focus management
-  watch(dropdownVisible, async (isOpen) => {
+  watch(dropdownVisible, async (isOpen: boolean) => {
     await nextTick()
 
     if (isOpen) {
-      // Focus first menu item when opening
       if (props.autoFocus) {
-        const firstMenuItem = dropdownRef.value?.querySelector('[role="menuitem"]')
+        const firstMenuItem = dropdownRef.value?.querySelector('[role="menuitem"]') as HTMLElement | null
         firstMenuItem?.focus()
       }
     } else {
-      // Return focus to trigger when closing
-      const trigger = dropdownRef.value?.querySelector(`#${triggerId}`)
+      const trigger = dropdownRef.value?.querySelector(`#${triggerId}`) as HTMLElement | null
       trigger?.focus()
     }
   })
 
-  const toggleDropdown = () => {
+  const toggleDropdown = (): void => {
     if (props.disabled || props.showOnHover) return
 
     dropdownVisible.value = !dropdownVisible.value
   }
 
-  const onKeydown = event => {
+  const onKeydown = (event: KeyboardEvent): void => {
     if (props.disabled) return
     const key = event.key
     if (key === 'Enter' || key === ' ') {
@@ -98,19 +90,19 @@
     }
   }
 
-  const onMouseover = () => {
+  const onMouseover = (): void => {
     if (!props.disabled && props.showOnHover) {
       dropdownVisible.value = true
     }
   }
 
-  const onMouseleave = () => {
+  const onMouseleave = (): void => {
     if (!props.disabled && props.showOnHover) {
       dropdownVisible.value = false
     }
   }
 
-  const dropdownRef = useTemplateRef('dropdown')
+  const dropdownRef = useTemplateRef<HTMLDivElement>('dropdown')
   onClickOutside(dropdownRef, closeDropdown)
 
   defineExpose({ openDropdown, closeDropdown, toggleDropdown })

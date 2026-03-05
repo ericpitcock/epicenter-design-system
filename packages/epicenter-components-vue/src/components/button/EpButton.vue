@@ -1,45 +1,24 @@
-<script setup>
+<script setup lang="ts">
   import { computed, useAttrs } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The size of the button.
-     */
-    size: {
-      type: String,
-      default: 'default',
-      validator: (value) => [
-        'small',
-        'default',
-        'large',
-        'xlarge',
-      ].includes(value)
-    },
-    /**
-     * The aria-label of the button.
-     */
-    ariaLabel: {
-      type: String,
-      default: ''
-    },
-    /**
-     * If `true`, the button will be disabled.
-     */
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * The  type of the button.
-     */
-    type: {
-      type: String,
-      default: 'button',
-      validator: (value) => [
-        'button',
-        'submit',
-      ].includes(value)
-    },
+  import type { ButtonType, Size } from '../../types'
+
+  interface EpButtonProps {
+    /** The aria-label of the button. */
+    ariaLabel?: string
+    /** If `true`, the button will be disabled. */
+    disabled?: boolean
+    /** The size of the button. */
+    size?: Size
+    /** The type of the button. */
+    type?: ButtonType
+  }
+
+  const props = withDefaults(defineProps<EpButtonProps>(), {
+    size: 'default',
+    ariaLabel: '',
+    disabled: false,
+    type: 'button',
   })
 
   const element = computed(() => {

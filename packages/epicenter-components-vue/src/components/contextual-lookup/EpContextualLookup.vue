@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   import ArrowUpRight01 from '@ericpitcock/epicenter-icons-vue/ArrowUpRight01'
   import Asterisk02 from '@ericpitcock/epicenter-icons-vue/Asterisk02'
   import { ref } from 'vue'
@@ -11,27 +11,28 @@
   import EpMenu from '../menu/EpMenu.vue'
   import EpMenuItem from '../menu/EpMenuItem.vue'
 
-  const props = defineProps({
-    label: {
-      type: String,
-      default: ''
-    },
-    enrichmentOptions: {
-      type: Array,
-      required: true
-    },
-    enrichmentData: {
-      type: Object,
-      default: null
-    }
+  interface EnrichmentOption {
+    [key: string]: unknown
+    label: string
+  }
+
+  interface EpContextualLookupProps {
+    enrichmentData?: Record<string, unknown> | null
+    enrichmentOptions: EnrichmentOption[]
+    label?: string
+  }
+
+  const props = withDefaults(defineProps<EpContextualLookupProps>(), {
+    label: '',
+    enrichmentData: null,
   })
 
-  const hoveredItem = ref(null)
+  const hoveredItem = ref<EnrichmentOption | null>(null)
   const loading = ref(false)
   const showPreview = ref(false)
-  const hasBeenHovered = []
+  const hasBeenHovered: string[] = []
 
-  const onHover = (item) => {
+  const onHover = (item: EnrichmentOption): void => {
     if (hasBeenHovered.includes(item.label)) {
       hoveredItem.value = item
       showPreview.value = true
@@ -91,11 +92,11 @@
               :message="{ icon: 'oval', message: 'Fetching data…' }"
             />
             <ep-flex
-              v-if="enrichmentData"
+              v-if="enrichmentData && hoveredItem"
               class="flex-col gap-10"
             >
               <ep-key-value-table
-                :data="enrichmentData[hoveredItem.label]"
+                :data="(enrichmentData[hoveredItem.label] as any)"
                 section-headers
               />
               <ep-flex class="gap-10">

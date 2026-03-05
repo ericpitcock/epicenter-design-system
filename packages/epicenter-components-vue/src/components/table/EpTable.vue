@@ -1,88 +1,44 @@
-<script setup>
+<script setup lang="ts">
   import { computed, useTemplateRef } from 'vue'
+
+  import type { TableColumn, TableRow } from '../../types'
 
   import EpTableCell from './EpTableCell.vue'
 
-  const props = defineProps({
-    /**
-     * The columns of the table.
-     */
-    columns: {
-      type: Array,
-      required: true
-    },
-    /**
-     * The data of the table.
-     */
-    data: {
-      type: Array,
-      required: true
-    },
-    /**
-     * Columns to hide, but not filter from the data. An ID, for example, can be hidden, but still accessible to the app.
-     */
-    hiddenColumns: {
-      type: Array,
-      default: () => []
-    },
-    /**
-     * Compact rows in a single line table scenario.
-     */
-    compact: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Gives borders to your table rows. Helpful for tables with a lot of data.
-     */
-    bordered: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Selectable rows
-     */
-    selectable: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Background colors for every other row. Helpful for tables with a lot of data.
-     */
-    striped: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Sticky header or nah
-     */
-    stickyHeader: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Whether to use a fixed header or not (requires useFixedHeader composable)
-     */
-    fixedHeader: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Enable actions menu
-     */
-    showActionsMenu: {
-      type: Boolean,
-      default: false
-    },
+  interface EpTableProps {
+    bordered?: boolean
+    columns: TableColumn[]
+    compact?: boolean
+    data: TableRow[]
+    fixedHeader?: boolean
+    hiddenColumns?: string[]
+    selectable?: boolean
+    showActionsMenu?: boolean
+    stickyHeader?: boolean
+    striped?: boolean
+  }
+
+  const props = withDefaults(defineProps<EpTableProps>(), {
+    bordered: false,
+    compact: false,
+    fixedHeader: false,
+    hiddenColumns: () => [],
+    selectable: false,
+    showActionsMenu: false,
+    stickyHeader: false,
+    striped: false,
   })
 
-  const emit = defineEmits(['row-click', 'container-scroll'])
+  const emit = defineEmits<{
+    'row-click': [row: TableRow]
+    'container-scroll': [scrollLeft: number]
+  }>()
 
   const visibleColumns = computed(() => {
     return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
   })
 
-  const tableContainer = useTemplateRef('tableContainer')
+  const tableContainer = useTemplateRef<HTMLDivElement>('tableContainer')
 
   const classes = computed(() => {
     return {
@@ -94,13 +50,13 @@
     }
   })
 
-  const onRowClick = (row) => {
+  const onRowClick = (row: TableRow): void => {
     if (!props.selectable) return
     emit('row-click', row)
   }
 
-  const onScroll = () => {
-    if (!props.fixedHeader) return
+  const onScroll = (): void => {
+    if (!props.fixedHeader || !tableContainer.value) return
     emit('container-scroll', tableContainer.value.scrollLeft)
   }
 </script>
@@ -120,7 +76,7 @@
       <tbody ref="tableBody">
         <tr
           v-for="row in data"
-          :key="row.id"
+          :key="(row.id as PropertyKey)"
           @click="onRowClick(row)"
         >
           <template

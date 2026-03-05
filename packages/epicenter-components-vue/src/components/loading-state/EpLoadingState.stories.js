@@ -11,7 +11,7 @@ import EpMenu from '@/components/menu/EpMenu.vue'
 import EpMenuItem from '@/components/menu/EpMenuItem.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableHead from '@/components/table/EpTableHead.vue'
-import useExclude from '@/components/table/useExclude.js'
+import useExclude from '@/components/table/useExclude.ts'
 
 import { columns, fakeTableData } from '@sb/data/tableData.js'
 import { paddedBg } from '@sb/helpers/decorators.js'

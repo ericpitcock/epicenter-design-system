@@ -1,116 +1,56 @@
-<script setup>
+<script setup lang="ts">
   import { computed, ref, useId, watch } from 'vue'
 
+  import type { Size } from '../../types'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
-  const props = defineProps({
-    /**
-     * The ID attribute for the input element. Auto-generated if not provided.
-     */
-    inputId: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Label text for the input (used as placeholder when empty).
-     */
-    label: {
-      type: String,
-      default: ''
-    },
-    /**
-     * The input type attribute.
-     * @values 'text', 'email', 'password', 'number', 'tel', etc.
-     */
-    type: {
-      type: String,
-      default: 'text'
-    },
-    /**
-     * Placeholder text shown when the input is empty.
-     */
-    placeholder: {
-      type: String,
-      default: ''
-    },
-    /**
-     * If true, displays a clear button when input has a value.
-     */
-    clearable: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, disables the input element.
-     */
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, automatically focuses the input on mount.
-     */
-    autofocus: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, marks the input as required.
-     */
-    required: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, makes the input read-only.
-     */
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * The size variant of the input.
-     * @values 'default', 'large', 'xlarge'
-     */
-    size: {
-      type: String,
-      default: 'default'
-    },
-    /**
-     * If true, enables error state styling and message display.
-     */
-    errorEnabled: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, displays the input in error state.
-     */
-    error: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Error message to display below the input.
-     */
-    errorMessage: {
-      type: String,
-      default: ''
-    },
+  interface EpInputProps {
+    autofocus?: boolean
+    clearable?: boolean
+    disabled?: boolean
+    error?: boolean
+    errorEnabled?: boolean
+    errorMessage?: string
+    inputId?: string
+    label?: string
+    placeholder?: string
+    readonly?: boolean
+    required?: boolean
+    size?: Size
+    type?: string
+  }
+
+  const props = withDefaults(defineProps<EpInputProps>(), {
+    autofocus: false,
+    clearable: false,
+    disabled: false,
+    error: false,
+    errorEnabled: false,
+    errorMessage: '',
+    inputId: '',
+    label: '',
+    placeholder: '',
+    readonly: false,
+    required: false,
+    size: 'default',
+    type: 'text',
   })
 
-  const emit = defineEmits(['focus', 'esc', 'blur', 'enter', 'clear'])
+  const emit = defineEmits<{
+    focus: [value: string]
+    esc: [value: string]
+    blur: [value: string]
+    enter: [value: string]
+    clear: [value: string]
+  }>()
 
-  const modelValue = defineModel({
-    type: String,
-    required: true
-  })
+  const modelValue = defineModel<string>({ required: true })
 
   defineOptions({
     inheritAttrs: false,
   })
 
-  const input = ref(null)
+  const input = ref<HTMLInputElement | null>(null)
 
   const hasInput = ref(!!modelValue.value)
   const computedId = ref(props.inputId || useId())
@@ -138,26 +78,26 @@
     hasInput.value = !!value
   })
 
-  const onEsc = () => {
+  const onEsc = (): void => {
     input.value?.blur()
     emit('esc', modelValue.value)
   }
 
-  const onFocus = () => {
+  const onFocus = (): void => {
     emit('focus', modelValue.value)
   }
 
-  const onBlur = () => {
+  const onBlur = (): void => {
     emit('blur', modelValue.value)
   }
 
-  const onKeyDown = (event) => {
+  const onKeyDown = (event: KeyboardEvent): void => {
     if (event.key === 'Enter') {
       emit('enter', modelValue.value)
     }
   }
 
-  const onClear = () => {
+  const onClear = (): void => {
     modelValue.value = ''
     input.value?.focus()
     emit('clear', '')

@@ -23,8 +23,8 @@ function generateComponentExports() {
     return
   }
 
-  // Output file (index.js in components directory)
-  const outputFile = join(componentsDir, 'index.js')
+  // Output file (index.ts in components directory)
+  const outputFile = join(componentsDir, 'index.ts')
 
   // Helper function to recursively find all .vue files
   const findVueFiles = (dir) => {
@@ -75,14 +75,17 @@ generateComponentExports()
 await remove(distDir)
 await ensureDir(distDir)
 
-// Copy `index.js`
-await copy(join(srcDir, 'index.js'), join(distDir, 'index.js'))
+// Copy `index.ts`
+await copy(join(srcDir, 'index.ts'), join(distDir, 'index.ts'))
 
 // Copy `composables/` as is
 await copy(join(srcDir, 'composables'), join(distDir, 'composables'))
 
 // Copy `plugins/` as is
 await copy(join(srcDir, 'plugins'), join(distDir, 'plugins'))
+
+// Copy `types/` as is
+await copy(join(srcDir, 'types'), join(distDir, 'types'))
 
 // Copy `components/` while excluding `*.notes.md` and `*.stories.js`
 await copy(join(srcDir, 'components'), join(distDir, 'components'), {

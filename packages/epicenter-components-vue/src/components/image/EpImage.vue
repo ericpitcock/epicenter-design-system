@@ -1,75 +1,32 @@
-<script setup>
+<script setup lang="ts">
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The source URL of the image.
-     */
-    src: {
-      type: String,
-      required: true,
-    },
-    /**
-     * The alt text for the image.
-     */
-    alt: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The width of the image.
-     */
-    width: {
-      type: [String, Number],
-      default: '100%',
-    },
-    /**
-     * The height of the image.
-     */
-    height: {
-      type: [String, Number],
-      default: '100%',
-    },
-    /**
-     * Additional CSS class name for the image element.
-     */
-    className: {
-      type: String,
-      default: '',
-    },
-    /**
-     * URL of the placeholder image to display while loading.
-     */
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The background color of the placeholder.
-     */
-    placeholderColor: {
-      type: String,
-      default: '#f5f5f5',
-    },
-    /**
-     * The opacity of the placeholder.
-     */
-    placeholderOpacity: {
-      type: Number,
-      default: 1,
-    },
-    /**
-     * If true, enables lazy loading using Intersection Observer.
-     */
-    lazy: {
-      type: Boolean,
-      default: true,
-    },
+  interface EpImageProps {
+    alt?: string
+    className?: string
+    height?: string | number
+    lazy?: boolean
+    placeholder?: string
+    placeholderColor?: string
+    placeholderOpacity?: number
+    src: string
+    width?: string | number
+  }
+
+  const props = withDefaults(defineProps<EpImageProps>(), {
+    alt: '',
+    className: '',
+    height: '100%',
+    lazy: true,
+    placeholder: '',
+    placeholderColor: '#f5f5f5',
+    placeholderOpacity: 1,
+    width: '100%',
   })
 
   const isLoaded = ref(false)
-  const imageEl = ref(null)
-  let observer = null
+  const imageEl = ref<HTMLElement | null>(null)
+  let observer: IntersectionObserver | null = null
 
   const placeholderStyle = computed(() => {
     return {
@@ -82,12 +39,12 @@
     }
   })
 
-  const addLazyLoadListener = () => {
+  const addLazyLoadListener = (): void => {
     observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           loadImage()
-          observer.unobserve(entry.target)
+          observer?.unobserve(entry.target)
         }
       })
     })
@@ -97,7 +54,7 @@
     }
   }
 
-  const loadImage = () => {
+  const loadImage = (): void => {
     const img = new Image()
     img.src = props.src
     img.onload = () => {

@@ -1,104 +1,53 @@
-<script setup>
+<script setup lang="ts">
   import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The source URL of the image.
-     */
-    src: {
-      type: String,
-      required: true,
-    },
-    /**
-     * The alt text for the image.
-     */
-    alt: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The width of the image.
-     */
-    width: {
-      type: [String, Number],
-      default: '100%',
-    },
-    /**
-     * The height of the image.
-     */
-    height: {
-      type: [String, Number],
-      default: '100%',
-    },
-    /**
-     * The aspect ratio of the image (e.g., '16 / 9').
-     */
-    aspectRatio: {
-      type: String,
-      default: '16 / 10',
-    },
-    /**
-     * How the image fits within its container.
-     * @values contain, cover, fill, none, scale-down
-     */
-    objectFit: {
-      type: String,
-      default: 'contain',
-    },
-    /**
-     * Additional CSS class name for the image element.
-     */
-    className: {
-      type: String,
-      default: '',
-    },
-    /**
-     * URL of the placeholder image to display while loading.
-     */
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The background color of the placeholder.
-     */
-    placeholderColor: {
-      type: String,
-      default: '#f5f5f5',
-    },
-    /**
-     * The opacity of the placeholder.
-     */
-    placeholderOpacity: {
-      type: Number,
-      default: 1,
-    },
-    /**
-     * If true, enables lazy loading using Intersection Observer.
-     */
-    lazy: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * If true, applies rounded corners to the image.
-     */
-    rounded: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * The root margin for the Intersection Observer (controls when loading starts).
-     */
-    rootMargin: {
-      type: String,
-      default: '0px 0px 100px 0px',
-    },
+  interface EpLazyImageProps {
+    /** The alt text for the image. */
+    alt?: string
+    /** The aspect ratio of the image (e.g., '16 / 9'). */
+    aspectRatio?: string
+    /** Additional CSS class name for the image element. */
+    className?: string
+    /** The height of the image. */
+    height?: string | number
+    /** If true, enables lazy loading using Intersection Observer. */
+    lazy?: boolean
+    /** How the image fits within its container. */
+    objectFit?: string
+    /** URL of the placeholder image to display while loading. */
+    placeholder?: string
+    /** The background color of the placeholder. */
+    placeholderColor?: string
+    /** The opacity of the placeholder. */
+    placeholderOpacity?: number
+    /** The root margin for the Intersection Observer (controls when loading starts). */
+    rootMargin?: string
+    /** If true, applies rounded corners to the image. */
+    rounded?: boolean
+    /** The source URL of the image. */
+    src: string
+    /** The width of the image. */
+    width?: string | number
+  }
+
+  const props = withDefaults(defineProps<EpLazyImageProps>(), {
+    alt: '',
+    aspectRatio: '16 / 10',
+    className: '',
+    height: '100%',
+    lazy: true,
+    objectFit: 'contain',
+    placeholder: '',
+    placeholderColor: '#f5f5f5',
+    placeholderOpacity: 1,
+    rootMargin: '0px 0px 100px 0px',
+    rounded: true,
+    width: '100%',
   })
 
-  const isLoaded = ref(false)
-  const imageEl = ref(null)
-  let observer = null
+  const isLoaded = ref<boolean>(false)
+  const imageEl = ref<HTMLDivElement | null>(null)
+  let observer: IntersectionObserver | null = null
 
   const placeholderStyle = computed(() => {
     return {
@@ -112,12 +61,12 @@
     }
   })
 
-  const addLazyLoadListener = () => {
+  const addLazyLoadListener = (): void => {
     observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           loadImage()
-          observer.unobserve(entry.target)
+          observer!.unobserve(entry.target)
         }
       })
     }, {
@@ -130,7 +79,7 @@
     }
   }
 
-  const loadImage = () => {
+  const loadImage = (): void => {
     isLoaded.value = true
   }
 
@@ -162,7 +111,7 @@
       :width="width"
       :height="height"
       :class="['ep-image__img', className]"
-      :style="{ aspectRatio: aspectRatio, objectFit: objectFit }"
+      :style="({ aspectRatio, objectFit } as any)"
     >
     <div
       v-else

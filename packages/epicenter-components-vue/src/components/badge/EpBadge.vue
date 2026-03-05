@@ -1,12 +1,13 @@
-<script setup>
-  defineProps({
+<script setup lang="ts">
+  interface EpBadgeProps {
     /**
      * The label to display in the badge.
      */
-    label: {
-      type: String,
-      default: '',
-    },
+    label?: string
+  }
+
+  withDefaults(defineProps<EpBadgeProps>(), {
+    label: '',
   })
 </script>
 

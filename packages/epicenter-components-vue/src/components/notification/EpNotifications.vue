@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
@@ -8,25 +8,28 @@
   import EpHeader from '../header/EpHeader.vue'
   import EpNotification from '../notification/EpNotification.vue'
 
-  const props = defineProps({
-    emptyStateMessage: {
-      type: String,
-      default: 'You’re all caught up!'
-    },
-    notificationsTitle: {
-      type: String,
-      default: 'Notifications'
-    },
-    notifications: {
-      type: Array,
-      default: () => []
-    }
+  interface NotificationItem {
+    id: string
+    message: string
+    timestamp?: string
+  }
+
+  interface EpNotificationsProps {
+    emptyStateMessage?: string
+    notifications?: NotificationItem[]
+    notificationsTitle?: string
+  }
+
+  const props = withDefaults(defineProps<EpNotificationsProps>(), {
+    emptyStateMessage: 'You\u2019re all caught up!',
+    notifications: () => [],
+    notificationsTitle: 'Notifications',
   })
 
-  const emit = defineEmits([
-    'remove-notification',
-    'clear-notifications'
-  ])
+  const emit = defineEmits<{
+    'remove-notification': [id: string]
+    'clear-notifications': []
+  }>()
 
   const isNotificationsEmpty = computed(() => {
     return props.notifications.length === 0

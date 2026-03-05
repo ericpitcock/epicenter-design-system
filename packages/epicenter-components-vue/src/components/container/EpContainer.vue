@@ -1,7 +1,7 @@
-<script setup>
+<script setup lang="ts">
   import { useTemplateRef } from 'vue'
 
-  const epContainer = useTemplateRef('epContainer')
+  const epContainer = useTemplateRef<HTMLDivElement>('epContainer')
 
   defineExpose({
     epContainer

@@ -1,64 +1,50 @@
-<script setup>
+<script setup lang="ts">
   import { computed, ref } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The direction of the resizable layout.
-     * @values column, row
-     */
-    direction: {
-      type: String,
-      default: 'row',
-      validator: (value) => ['column', 'row'].includes(value)
-    },
-    /**
-     * The initial size of the resizable pane (e.g., '300px' or '30%').
-     */
-    initialSize: {
-      type: String,
-      default: '300px'
-    },
-    /**
-     * The minimum size in pixels for the resizable pane.
-     */
-    minSize: {
-      type: Number,
-      default: 200
-    },
-    /**
-     * The maximum size in pixels for the resizable pane.
-     */
-    maxSize: {
-      type: Number,
-      default: 800
-    }
+  import type { ResizeDirection } from '../../types'
+
+  interface EpResizableProps {
+    direction?: ResizeDirection
+    initialSize?: string
+    maxSize?: number
+    minSize?: number
+  }
+
+  const props = withDefaults(defineProps<EpResizableProps>(), {
+    direction: 'row',
+    initialSize: '300px',
+    maxSize: 800,
+    minSize: 200,
   })
 
-  const emit = defineEmits(['resize'])
-  const resizablePane = ref(null)
+  const emit = defineEmits<{
+    resize: [size: number]
+  }>()
+
+  const resizablePane = ref<HTMLDivElement | null>(null)
   const isDragging = ref(false)
   const hasBeenDragged = ref(false)
   const startPos = ref(0)
-  const currentSize = ref(null)
+  const currentSize = ref<number | null>(null)
 
-  // Dynamically determine the correct drag edge
-  const dragEdge = computed(() => (props.direction === 'row' ? 'right' : 'bottom'))
+  type ResizeEdge = 'left' | 'right' | 'top' | 'bottom'
+  const dragEdge = computed<ResizeEdge>(() => (props.direction === 'row' ? 'right' : 'bottom'))
 
-  // Maintain initialSize until first drag, then convert to px
   const computedSize = computed(() => hasBeenDragged.value ? `0 0 ${currentSize.value}px` : `0 0 ${props.initialSize}`)
 
-  const handleDragStart = (event) => {
-    if (!hasBeenDragged.value) {
-      // Convert initialSize to px on first drag
+  const handleDragStart = (event: MouseEvent | TouchEvent): void => {
+    if (!hasBeenDragged.value && resizablePane.value) {
       const { width, height } = resizablePane.value.getBoundingClientRect()
       currentSize.value = props.direction === 'row' ? width : height
     }
 
     hasBeenDragged.value = true
     isDragging.value = true
+
+    const touch = 'touches' in event ? event.touches[0] : null
     startPos.value = props.direction === 'row'
-      ? (event.touches ? event.touches[0].clientX : event.clientX)
-      : (event.touches ? event.touches[0].clientY : event.clientY)
+      ? (touch ? touch.clientX : (event as MouseEvent).clientX)
+      : (touch ? touch.clientY : (event as MouseEvent).clientY)
 
     document.addEventListener('mousemove', handleDragging)
     document.addEventListener('mouseup', handleDragEnd)
@@ -66,19 +52,19 @@
     document.addEventListener('touchend', handleDragEnd)
   }
 
-  const handleDragging = (event) => {
-    if (!isDragging.value) return
+  const handleDragging = (event: MouseEvent | TouchEvent): void => {
+    if (!isDragging.value || currentSize.value === null) return
 
+    const touch = 'touches' in event ? event.touches[0] : null
     const currentPos = props.direction === 'row'
-      ? (event.touches ? event.touches[0].clientX : event.clientX)
-      : (event.touches ? event.touches[0].clientY : event.clientY)
+      ? (touch ? touch.clientX : (event as MouseEvent).clientX)
+      : (touch ? touch.clientY : (event as MouseEvent).clientY)
 
     let delta = currentPos - startPos.value
     if (dragEdge.value === 'left' || dragEdge.value === 'top') delta = -delta
 
     let newSize = currentSize.value + delta
 
-    // Enforce min/max constraints
     newSize = Math.max(props.minSize, Math.min(props.maxSize, newSize))
 
     currentSize.value = newSize
@@ -87,7 +73,7 @@
     startPos.value = currentPos
   }
 
-  const handleDragEnd = () => {
+  const handleDragEnd = (): void => {
     isDragging.value = false
     document.removeEventListener('mousemove', handleDragging)
     document.removeEventListener('mouseup', handleDragEnd)

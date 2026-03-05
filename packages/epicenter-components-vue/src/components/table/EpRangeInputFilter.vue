@@ -1,36 +1,25 @@
-<script setup>
+<script setup lang="ts">
   import { ref } from 'vue'
 
-  const props = defineProps({
-    appliedFilters: {
-      type: Object,
-      required: true
-    },
-    filterKey: {
-      type: String,
-      required: true
-    },
-    columnKey: {
-      type: String,
-      required: true
-    },
-    min: {
-      type: Number,
-      required: true
-    },
-    max: {
-      type: Number,
-      required: true
-    }
-  })
+  interface EpRangeInputFilterProps {
+    appliedFilters: Record<string, unknown>
+    columnKey: string
+    filterKey: string
+    max: number
+    min: number
+  }
 
-  const emit = defineEmits(['update:appliedFilters'])
+  const props = defineProps<EpRangeInputFilterProps>()
+
+  const emit = defineEmits<{
+    'update:appliedFilters': [value: Record<string, number>]
+  }>()
 
   // Initialize selected range
-  const selectedRange = ref(0)
+  const selectedRange = ref<number>(0)
 
   // Method to apply filter and emit event
-  const applyFilter = () => {
+  const applyFilter = (): void => {
     // Emit event to update applied filters in parent component
     emit('update:appliedFilters', { [props.columnKey]: selectedRange.value })
   }

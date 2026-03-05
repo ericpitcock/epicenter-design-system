@@ -1,55 +1,27 @@
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The ID attribute for the radio input element.
-     */
-    id: {
-      type: String,
-      required: true,
-    },
-    /**
-     * Label text displayed next to the radio button.
-     */
-    label: {
-      type: String,
-      required: true,
-    },
-    /**
-     * The name attribute for the radio input (groups radios together).
-     */
-    name: {
-      type: String,
-      required: true,
-    },
-    /**
-     * The value for this radio option.
-     */
-    value: {
-      type: String,
-      required: true,
-    },
-    /**
-     * If true, disables the radio button.
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * If true, marks the radio as required.
-     */
-    required: {
-      type: Boolean,
-      default: false,
-    },
+  interface EpRadioProps {
+    /** If true, disables the radio button. */
+    disabled?: boolean
+    /** The ID attribute for the radio input element. */
+    id: string
+    /** Label text displayed next to the radio button. */
+    label: string
+    /** The name attribute for the radio input (groups radios together). */
+    name: string
+    /** If true, marks the radio as required. */
+    required?: boolean
+    /** The value for this radio option. */
+    value: string
+  }
+
+  const props = withDefaults(defineProps<EpRadioProps>(), {
+    disabled: false,
+    required: false,
   })
 
-  const modelValue = defineModel({
-    type: String,
-    required: true
-  })
+  const modelValue = defineModel<string>({ required: true })
 
   const classes = computed(() => ({
     'ep-radio--checked': modelValue.value === props.value,

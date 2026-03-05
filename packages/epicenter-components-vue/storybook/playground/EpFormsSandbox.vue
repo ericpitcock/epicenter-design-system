@@ -10,7 +10,7 @@
   import EpRadio from '@/components/radio/EpRadio.vue'
   import EpSelect from '@/components/select/EpSelect.vue'
   import EpTextarea from '@/components/textarea/EpTextarea.vue'
-  import useValidation from '@/composables/useValidation.js'
+  import useValidation from '@/composables/useValidation.ts'
 
   const props = defineProps({
     formDisabled: {
