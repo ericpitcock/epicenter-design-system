@@ -1,0 +1,50 @@
+<template>
+  <svg
+    class="ep-loader ep-loader--bounce"
+    viewBox="0 0 60 20"
+    aria-hidden="true"
+  >
+    <circle
+      cx="10"
+      cy="10"
+      r="5"
+      fill="currentColor"
+    >
+      <animate
+        attributeName="cy"
+        values="10;4;10"
+        dur="0.6s"
+        repeatCount="indefinite"
+        begin="0s"
+      />
+    </circle>
+    <circle
+      cx="30"
+      cy="10"
+      r="5"
+      fill="currentColor"
+    >
+      <animate
+        attributeName="cy"
+        values="10;4;10"
+        dur="0.6s"
+        repeatCount="indefinite"
+        begin="0.15s"
+      />
+    </circle>
+    <circle
+      cx="50"
+      cy="10"
+      r="5"
+      fill="currentColor"
+    >
+      <animate
+        attributeName="cy"
+        values="10;4;10"
+        dur="0.6s"
+        repeatCount="indefinite"
+        begin="0.3s"
+      />
+    </circle>
+  </svg>
+</template>

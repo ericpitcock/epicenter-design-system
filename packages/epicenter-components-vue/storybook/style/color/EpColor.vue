@@ -296,7 +296,7 @@
     &__menu {
       --ep-menu-bg-color: var(--interface-surface);
       --ep-menu-border-radius: var(--border-radius--large);
-      height: calc(100vh - 60px);
+      height: fit-content;
       overflow: auto;
     }
 

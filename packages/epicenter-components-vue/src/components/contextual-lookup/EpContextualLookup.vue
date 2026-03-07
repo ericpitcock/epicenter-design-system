@@ -1,53 +1,100 @@
 <script setup lang="ts">
   import ArrowUpRight01 from '@ericpitcock/epicenter-icons-vue/ArrowUpRight01'
   import Asterisk02 from '@ericpitcock/epicenter-icons-vue/Asterisk02'
-  import { ref } from 'vue'
+  import { computed, ref, watch } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
   import EpDropdown from '../dropdown/EpDropdown.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
   import EpKeyValueTable from '../key-value-table/EpKeyValueTable.vue'
-  import EpLoadingState from '../loading-state/EpLoadingState.vue'
+  import EpLoaderSquares from '../loaders/EpLoaderSquares.vue'
   import EpMenu from '../menu/EpMenu.vue'
   import EpMenuItem from '../menu/EpMenuItem.vue'
 
-  interface EnrichmentOption {
+  export interface EnrichmentOption {
     [key: string]: unknown
     label: string
   }
 
+  export interface EnrichmentResult {
+    data: Record<string, unknown>
+    name: string
+  }
+
+  export interface EnrichmentError {
+    error: string
+  }
+
+  export type EnrichmentEntry = EnrichmentResult | EnrichmentError
+
   interface EpContextualLookupProps {
-    enrichmentData?: Record<string, unknown> | null
+    enrichmentData?: Record<string, EnrichmentEntry> | null
     enrichmentOptions: EnrichmentOption[]
     label?: string
+    value?: string
   }
 
   const props = withDefaults(defineProps<EpContextualLookupProps>(), {
     label: '',
     enrichmentData: null,
+    value: '',
   })
 
+  const emit = defineEmits<{
+    lookup: [source: EnrichmentOption, value: string]
+  }>()
+
   const hoveredItem = ref<EnrichmentOption | null>(null)
-  const loading = ref(false)
   const showPreview = ref(false)
-  const hasBeenHovered: string[] = []
+  const requestedSources = ref(new Set<string>())
+
+  const resolvedValue = computed(() => props.value || props.label)
+
+  const currentSourceData = computed<EnrichmentEntry | undefined>(() => {
+    if (!hoveredItem.value || !props.enrichmentData) return undefined
+    return props.enrichmentData[hoveredItem.value.label]
+  })
+
+  const getSourceStatus = (option: EnrichmentOption): 'default' | 'loading' => {
+    const data = props.enrichmentData?.[option.label]
+    if (requestedSources.value.has(option.label) && !data) return 'loading'
+    return 'default'
+  }
+
+  const hasError = computed(() => {
+    return currentSourceData.value != null && 'error' in currentSourceData.value
+  })
+
+  const displayData = computed<EnrichmentResult | undefined>(() => {
+    if (!currentSourceData.value || hasError.value) return undefined
+    return currentSourceData.value as EnrichmentResult
+  })
 
   const onHover = (item: EnrichmentOption): void => {
-    if (hasBeenHovered.includes(item.label)) {
-      hoveredItem.value = item
-      showPreview.value = true
-      return
-    }
-
-    hasBeenHovered.push(item.label)
     hoveredItem.value = item
     showPreview.value = true
-    loading.value = true
 
-    setTimeout(() => {
-      loading.value = false
-    }, 400)
+    if (props.enrichmentData?.[item.label]) return
+    if (requestedSources.value.has(item.label)) return
+
+    requestedSources.value.add(item.label)
+    emit('lookup', item, resolvedValue.value)
   }
+
+  const onRetry = (): void => {
+    if (!hoveredItem.value) return
+    const label = hoveredItem.value.label
+    requestedSources.value.delete(label)
+    requestedSources.value.add(label)
+    emit('lookup', hoveredItem.value, resolvedValue.value)
+  }
+
+  // Reset cache when the enriched value changes
+  watch(resolvedValue, () => {
+    requestedSources.value.clear()
+    hoveredItem.value = null
+    showPreview.value = false
+  })
 </script>
 
 <template>
@@ -79,24 +126,39 @@
               @focus="onHover(option)"
             >
               <ep-button class="ep-button--menu-item">
-                {{ option.label }}
+                <span
+                  :class="['ep-button__async-label', { 'ep-button__async-label--loading': getSourceStatus(option) === 'loading' }]"
+                >
+                  <span class="ep-button__async-text">{{ option.label }}</span>
+                  <span
+                    v-if="getSourceStatus(option) === 'loading'"
+                    class="ep-button__async-loader"
+                  >
+                    <EpLoaderSquares />
+                  </span>
+                </span>
               </ep-button>
             </ep-menu-item>
           </ep-menu>
           <div
-            v-if="showPreview"
+            v-if="showPreview && (hasError || displayData)"
             class="enrichment-preview"
           >
-            <ep-loading-state
-              v-if="loading"
-              :message="{ icon: 'oval', message: 'Fetching data…' }"
-            />
             <ep-flex
-              v-if="enrichmentData && hoveredItem"
+              v-if="hasError"
+              class="flex-col gap-10 enrichment-error"
+            >
+              <span>Failed to load enrichment data.</span>
+              <ep-button @click="onRetry">
+                Retry
+              </ep-button>
+            </ep-flex>
+            <ep-flex
+              v-else-if="displayData"
               class="flex-col gap-10"
             >
               <ep-key-value-table
-                :data="(enrichmentData[hoveredItem.label] as any)"
+                :data="displayData"
                 section-headers
               />
               <ep-flex class="gap-10">

@@ -1,194 +1,95 @@
-# EpEnrichmentDropdown
+# EpContextualLookup
 
 
 
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `label` | - | `string` | `''` |
-| `enrichmentOptions` | - | `array` | `-` |
-| `enrichmentData` | - | `object` | `null` |
+| `label` | Display text for the trigger | `string` | `''` |
+| `value` | The string to enrich (e.g., an IP address). Defaults to `label` if not provided. | `string` | `''` |
+| `enrichmentOptions` | Array of enrichment sources to display in the dropdown menu | `EnrichmentOption[]` | `-` |
+| `enrichmentData` | Reactive object of enrichment results keyed by source label | `Record<string, EnrichmentEntry> \| null` | `null` |
+
+## Events
+| Name | Payload | Description |
+|------|---------|-------------|
+| `lookup` | `(source: EnrichmentOption, value: string)` | Emitted when a source is hovered and data has not yet been fetched. The parent should fetch enrichment data and update the `enrichmentData` prop. |
 
 ## Slots
 | Name | Description |
 |------|-------------|
-| `trigger` | No description available. |
-| `action` | No description available. |
+| `trigger` | Custom trigger element. Receives scoped `{ attrs, on }` for accessibility and interaction. |
+| `action` | Custom action button(s) displayed in the enrichment preview footer. |
 
+## Types
 
-::: info
-This component does not use events.
-:::
+```ts
+interface EnrichmentOption {
+  label: string
+  [key: string]: unknown
+}
 
-## Component Code
+interface EnrichmentResult {
+  name: string
+  data: Record<string, unknown>
+}
+
+interface EnrichmentError {
+  error: string
+}
+
+type EnrichmentEntry = EnrichmentResult | EnrichmentError
+```
+
+## Usage
 
 ```vue
-<script setup>
-  import ArrowUpRight01 from '@ericpitcock/epicenter-icons-vue/ArrowUpRight01'
-  import Asterisk02 from '@ericpitcock/epicenter-icons-vue/Asterisk02'
-  import { ref } from 'vue'
-
-  import EpButton from '../button/EpButton.vue'
-  import EpDropdown from '../dropdown/EpDropdown.vue'
-  import EpFlex from '../flexbox/EpFlex.vue'
-  import EpKeyValueTable from '../key-value-table/EpKeyValueTable.vue'
-  import EpLoadingState from '../loading-state/EpLoadingState.vue'
-  import EpMenu from '../menu/EpMenu.vue'
-  import EpMenuItem from '../menu/EpMenuItem.vue'
-
-  const props = defineProps({
-    label: {
-      type: String,
-      default: ''
-    },
-    enrichmentOptions: {
-      type: Array,
-      required: true
-    },
-    enrichmentData: {
-      type: Object,
-      default: null
-    }
-  })
-
-  const hoveredItem = ref(null)
-  const loading = ref(false)
-  const showPreview = ref(false)
-  const hasBeenHovered = []
-
-  const onHover = (item) => {
-    if (hasBeenHovered.includes(item.label)) {
-      hoveredItem.value = item
-      showPreview.value = true
-      return
-    }
-
-    hasBeenHovered.push(item.label)
-    hoveredItem.value = item
-    showPreview.value = true
-    loading.value = true
-
-    setTimeout(() => {
-      loading.value = false
-    }, 400)
-  }
-</script>
-
 <template>
-  <div class="ep-enrichment-dropdown">
-    <ep-dropdown
-      v-bind="$attrs"
-      @close="showPreview = false"
-    >
-      <template #trigger="{ attrs, on }">
-        <div class="trigger-wrapper">
-          <slot
-            name="trigger"
-            v-bind="{ attrs, on }"
-          >
-            {{ props.label }}
-          </slot>
-          <Asterisk02 class="lookup-asterisk" />
-        </div>
-      </template>
-      <template #content>
-        <div class="ep-enrichment-content">
-          <ep-menu class="ep-menu-subtle">
-            <ep-menu-item
-              v-for="(option, index) in enrichmentOptions"
-              :key="index"
-              type="item"
-              @mouseover="onHover(option)"
-              @focus="onHover(option)"
-            >
-              <ep-button class="ep-button--menu-item">
-                {{ option.label }}
-              </ep-button>
-            </ep-menu-item>
-          </ep-menu>
-          <div
-            v-if="showPreview"
-            class="enrichment-preview"
-          >
-            <ep-loading-state
-              v-if="loading"
-              :message="{ icon: 'oval', message: 'Fetching data…' }"
-            />
-            <ep-flex
-              v-if="enrichmentData"
-              class="flex-col gap-10"
-            >
-              <ep-key-value-table
-                :data="enrichmentData[hoveredItem.label]"
-                section-headers
-              />
-              <ep-flex class="gap-10">
-                <!-- slot for "action" button -->
-                <slot name="action" />
-                <ep-button>
-                  Source
-                  <template #icon-right>
-                    <ArrowUpRight01 class="source-button-icon" />
-                  </template>
-                </ep-button>
-              </ep-flex>
-            </ep-flex>
-          </div>
-        </div>
-      </template>
-    </ep-dropdown>
-  </div>
+  <ep-contextual-lookup
+    label="192.1.1.100"
+    value="192.1.1.100"
+    :enrichment-options="sources"
+    :enrichment-data="enrichmentData"
+    @lookup="onLookup"
+  >
+    <template #trigger="{ attrs, on }">
+      <span v-bind="attrs" v-on="on">192.1.1.100</span>
+    </template>
+  </ep-contextual-lookup>
 </template>
 
-<style lang="scss" scoped>
-  .ep-enrichment-dropdown {
-    position: relative;
-    display: inline-block;
-  }
+<script setup>
+  import { ref } from 'vue'
 
-  .ep-enrichment-content {
-    position: relative;
-  }
+  const sources = [
+    { label: 'VirusTotal' },
+    { label: 'AbuseIPDB' },
+  ]
 
-  .enrichment-preview {
-    position: absolute;
-    top: 0;
-    left: calc(100% + 0.5rem);
-    min-width: 40rem;
-    padding: 2rem;
-    background: var(--interface-foreground);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow--dropdown);
-    z-index: var(--z-index--dropdown);
-  }
+  const enrichmentData = ref({})
 
-  .lookup-asterisk {
-    --ep-icon-width: 1.2rem;
-    --ep-icon-height: 1.2rem;
-    --ep-icon-stroke-width: 2px;
-    color: var(--text-color--primary);
-  }
-
-  .source-button-icon {
-    --ep-icon-width: 1.4rem;
-    --ep-icon-height: 1.4rem;
-    --ep-icon-stroke-width: 2px;
-  }
-
-  .trigger-wrapper {
-    display: inline-flex;
-    gap: 0.25rem;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-underline-offset: 2px;
-    text-decoration-color: hsl(from var(--text-color) h s l / 0.5);
-    cursor: pointer;
-
-    &:hover {
-      color: var(--text-color--primary);
+  const onLookup = async (source, value) => {
+    try {
+      const result = await fetchEnrichment(source.label, value)
+      enrichmentData.value = {
+        ...enrichmentData.value,
+        [source.label]: { name: source.label, data: result }
+      }
+    } catch (err) {
+      enrichmentData.value = {
+        ...enrichmentData.value,
+        [source.label]: { error: err.message }
+      }
     }
   }
-</style>
-
+</script>
 ```
+
+## Behavior
+
+- **On hover**: When a user hovers a source in the menu, a `lookup` event is emitted if data hasn't been fetched yet.
+- **Caching**: The component tracks which sources have been requested. Re-hovering a source with existing data renders it immediately without re-emitting.
+- **Loading state**: A loading indicator is shown until the parent provides data for the hovered source via the `enrichmentData` prop.
+- **Error state**: If the parent provides an entry with an `error` property, an inline error message with a retry button is displayed.
+- **Retry**: Clicking retry clears the failed source from the cache and re-emits the `lookup` event.
+- **Value change**: When `value` changes, the internal cache is cleared so all sources are re-fetched for the new value.

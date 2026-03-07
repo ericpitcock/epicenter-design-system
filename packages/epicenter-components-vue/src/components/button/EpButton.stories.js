@@ -1,9 +1,31 @@
-import { computed, toRef } from 'vue'
-
-import EpButton from '@/components/button/EpButton.vue'
-
 import { centeredBg } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
+import { computed, ref, toRef } from 'vue'
+
+import EpButton from '@/components/button/EpButton.vue'
+import EpLoaderBars from '@/components/loaders/EpLoaderBars.vue'
+import EpLoaderBounce from '@/components/loaders/EpLoaderBounce.vue'
+import EpLoaderDots from '@/components/loaders/EpLoaderDots.vue'
+import EpLoaderDualRing from '@/components/loaders/EpLoaderDualRing.vue'
+import EpLoaderFade from '@/components/loaders/EpLoaderFade.vue'
+import EpLoaderOrbit from '@/components/loaders/EpLoaderOrbit.vue'
+import EpLoaderPulse from '@/components/loaders/EpLoaderPulse.vue'
+import EpLoaderScale from '@/components/loaders/EpLoaderScale.vue'
+import EpLoaderSpin from '@/components/loaders/EpLoaderSpin.vue'
+import EpLoaderSquares from '@/components/loaders/EpLoaderSquares.vue'
+
+const loaderComponents = {
+  Dots: EpLoaderDots,
+  Spin: EpLoaderSpin,
+  Pulse: EpLoaderPulse,
+  Bounce: EpLoaderBounce,
+  Bars: EpLoaderBars,
+  'Dual Ring': EpLoaderDualRing,
+  Fade: EpLoaderFade,
+  Scale: EpLoaderScale,
+  Orbit: EpLoaderOrbit,
+  Squares: EpLoaderSquares,
+}
 
 export default {
   title: 'Components/Button',
@@ -327,4 +349,80 @@ Button.args = {
   iconLeft: 'CloudDownload',
   iconRight: 'None',
   borderRadius: 3,
+}
+
+export const LoadingButton = args => ({
+  components: {
+    EpButton,
+    ...loaderComponents,
+  },
+  setup() {
+    const isLoading = ref(false)
+
+    const loaderComponent = computed(() => loaderComponents[args.loader])
+
+    const onClick = () => {
+      if (isLoading.value) return
+      isLoading.value = true
+      setTimeout(() => {
+        isLoading.value = false
+      }, 2000)
+    }
+
+    return { args, isLoading, loaderComponent, onClick }
+  },
+  template: `
+    <ep-button
+      :class="args.classes"
+      :size="args.size"
+      :aria-disabled="isLoading ? 'true' : null"
+      :style="isLoading ? { 'pointer-events': 'none' } : undefined"
+      @click="onClick"
+    >
+      <span :class="['ep-button__async-label', { 'ep-button__async-label--loading': isLoading }]">
+        <span class="ep-button__async-text">{{ args.label }}</span>
+        <span v-if="isLoading" class="ep-button__async-loader">
+          <component :is="loaderComponent" />
+        </span>
+      </span>
+    </ep-button>
+  `
+})
+
+LoadingButton.args = {
+  label: 'Submit',
+  size: 'large',
+  classes: 'Primary',
+  loader: 'Dots',
+}
+
+LoadingButton.argTypes = {
+  label: {
+    name: 'Label',
+    control: { type: 'text' },
+  },
+  size: {
+    name: 'Size',
+    options: ['small', 'default', 'large', 'xlarge'],
+    control: { type: 'radio' },
+  },
+  classes: {
+    name: 'Style',
+    options: ['Primary', 'Secondary', 'Success', 'Warning', 'Danger', 'Outline', 'Ghost'],
+    mapping: {
+      Primary: { 'ep-button-var--primary': true },
+      Secondary: { 'ep-button-var--secondary': true },
+      Success: { 'ep-button-var--success': true },
+      Warning: { 'ep-button-var--warning': true },
+      Danger: { 'ep-button-var--danger': true },
+      Outline: { 'ep-button-var--outline': true },
+      Ghost: { 'ep-button-var--ghost': true },
+    },
+    control: { type: 'radio' },
+  },
+  loader: {
+    name: 'Loader',
+    options: Object.keys(loaderComponents),
+    control: { type: 'radio' },
+  },
 }

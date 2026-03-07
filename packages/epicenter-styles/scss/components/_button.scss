@@ -214,3 +214,28 @@
     --ep-button-padding-inline: 1.2rem;
   }
 }
+
+// async/loading button pattern
+.ep-button__async-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ep-button__async-label--loading > .ep-button__async-text {
+  visibility: hidden;
+}
+
+.ep-button__async-loader {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inset: 0;
+}
+
+.ep-loader {
+  width: 1em;
+  height: 1em;
+}
