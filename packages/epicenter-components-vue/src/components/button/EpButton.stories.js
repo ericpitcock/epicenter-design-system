@@ -351,7 +351,7 @@ Button.args = {
   borderRadius: 3,
 }
 
-export const LoadingButton = args => ({
+export const AsLoading = args => ({
   components: {
     EpButton,
     ...loaderComponents,
@@ -389,7 +389,7 @@ export const LoadingButton = args => ({
   `
 })
 
-LoadingButton.args = {
+AsLoading.args = {
   label: 'Submit',
   size: 'large',
   disabled: false,
@@ -401,7 +401,7 @@ LoadingButton.args = {
   loader: 'Dots',
 }
 
-LoadingButton.argTypes = {
+AsLoading.argTypes = {
   label: {
     name: 'Label',
     control: { type: 'text' },
@@ -429,5 +429,93 @@ LoadingButton.argTypes = {
     name: 'Loader',
     options: Object.keys(loaderComponents),
     control: { type: 'radio' },
+  },
+}
+
+export const AsToggle = args => ({
+  components: { EpButton },
+  setup() {
+    const isActive = ref(false)
+
+    const { iconLeftComponent } = useIcons(
+      toRef(args, 'iconLeft'),
+      toRef(args, 'iconRight'),
+    )
+
+    const onClick = () => {
+      if (args.disabled) return
+      isActive.value = !isActive.value
+    }
+
+    return { args, isActive, iconLeftComponent, onClick }
+  },
+  template: `
+    <div style="width: 200px;">
+      <ep-button
+        :class="[args.classes, { 'ep-button--selected': isActive }]"
+        :size="args.size"
+        :disabled="args.disabled"
+        @click="onClick"
+      >
+        <template v-if="args.enabledIcons && args.iconLeft !== 'None'" #icon-left>
+          <component :is="iconLeftComponent" />
+        </template>
+        <template v-if="args.label" #default>
+          {{ args.label }}
+        </template>
+      </ep-button>
+      <p style="margin-top: 1rem;">Toggle state: {{ isActive }}</p>
+    </div>
+  `
+})
+
+AsToggle.args = {
+  label: 'Aa',
+  size: 'default',
+  disabled: false,
+  classes: 'Secondary',
+  enabledIcons: false,
+  iconLeft: 'None',
+  iconRight: 'None',
+  borderRadius: 3,
+}
+
+AsToggle.argTypes = {
+  label: {
+    name: 'Label',
+    control: { type: 'text' },
+  },
+  size: {
+    name: 'Size',
+    options: ['small', 'default', 'large', 'xlarge'],
+    control: { type: 'radio' },
+  },
+  classes: {
+    name: 'Active Style',
+    options: ['Primary', 'Secondary', 'Success', 'Warning', 'Danger', 'Outline', 'Ghost'],
+    mapping: {
+      Primary: { 'ep-button-var--primary': true },
+      Secondary: { 'ep-button-var--secondary': true },
+      Success: { 'ep-button-var--success': true },
+      Warning: { 'ep-button-var--warning': true },
+      Danger: { 'ep-button-var--danger': true },
+      Outline: { 'ep-button-var--outline': true },
+      Ghost: { 'ep-button-var--ghost': true },
+    },
+    control: { type: 'radio' },
+  },
+  disabled: {
+    name: 'Disabled',
+    control: { type: 'boolean' },
+  },
+  enabledIcons: {
+    name: 'Enable Icons',
+    control: { type: 'boolean' },
+  },
+  iconLeft: {
+    if: { arg: 'enabledIcons' },
+    name: 'Icon',
+    options: componentNames,
+    control: { type: 'select' },
   },
 }
