@@ -2,11 +2,19 @@ import { computed, defineAsyncComponent } from 'vue'
 
 import iconsData from '../../../epicenter-icons/icons.json'
 
+const componentCache = new Map()
+
 export const useIcons = (leftIconName, rightIconName) => {
   const getIconComponent = (iconName) => {
     return computed(() => {
       if (iconName.value && iconName.value !== 'None') {
-        return defineAsyncComponent(() => import(`../../../epicenter-icons-vue/${iconName.value}.js`))
+        if (!componentCache.has(iconName.value)) {
+          componentCache.set(
+            iconName.value,
+            defineAsyncComponent(() => import(`../../../epicenter-icons-vue/${iconName.value}.js`))
+          )
+        }
+        return componentCache.get(iconName.value)
       }
       return null
     })

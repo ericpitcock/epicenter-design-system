@@ -1,4 +1,4 @@
-import { addons } from '@storybook/preview-api'
+import { addons } from 'storybook/preview-api'
 import { computed, watch } from 'vue'
 
 import EpThemeToggle from '@/components/theme-toggle/EpThemeToggle.vue'

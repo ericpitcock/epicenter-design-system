@@ -12,6 +12,7 @@ import EpChart from './charts/EpChart.vue'
 import EpDonutChart from './charts/EpDonutChart.vue'
 import EpCheckbox from './checkbox/EpCheckbox.vue'
 import EpCodeView from './code-view/EpCodeView.vue'
+import EpColorRandomizer from './color-randomizer/EpColorRandomizer.vue'
 import EpContainer from './container/EpContainer.vue'
 import EpContextualLookup from './contextual-lookup/EpContextualLookup.vue'
 import EpDatePicker from './date-picker/EpDatePicker.vue'
@@ -28,6 +29,16 @@ import EpInputStyler from './input-styler/EpInputStyler.vue'
 import EpItemCount from './item-count/EpItemCount.vue'
 import EpKeyValueTable from './key-value-table/EpKeyValueTable.vue'
 import EpLazyImage from './lazy-image/EpLazyImage.vue'
+import EpLoaderBars from './loaders/EpLoaderBars.vue'
+import EpLoaderBounce from './loaders/EpLoaderBounce.vue'
+import EpLoaderDots from './loaders/EpLoaderDots.vue'
+import EpLoaderDualRing from './loaders/EpLoaderDualRing.vue'
+import EpLoaderFade from './loaders/EpLoaderFade.vue'
+import EpLoaderOrbit from './loaders/EpLoaderOrbit.vue'
+import EpLoaderPulse from './loaders/EpLoaderPulse.vue'
+import EpLoaderScale from './loaders/EpLoaderScale.vue'
+import EpLoaderSpin from './loaders/EpLoaderSpin.vue'
+import EpLoaderSquares from './loaders/EpLoaderSquares.vue'
 import EpLoadingState from './loading-state/EpLoadingState.vue'
 import EpicenterLogo from './logo/EpicenterLogo.vue'
 import EpMap from './map/EpMap.vue'
@@ -58,7 +69,6 @@ import EpTabs from './tabs/EpTabs.vue'
 import EpTextarea from './textarea/EpTextarea.vue'
 import EpThemeToggle from './theme-toggle/EpThemeToggle.vue'
 import EpToggle from './toggle/EpToggle.vue'
-import EpToggleButton from './toggle-button/EpToggleButton.vue'
 import EpTooltip from './tooltip/EpTooltip.vue'
 
 export {
@@ -73,6 +83,7 @@ export {
   EpDonutChart,
   EpCheckbox,
   EpCodeView,
+  EpColorRandomizer,
   EpContainer,
   EpContextualLookup,
   EpDatePicker,
@@ -89,6 +100,16 @@ export {
   EpItemCount,
   EpKeyValueTable,
   EpLazyImage,
+  EpLoaderBars,
+  EpLoaderBounce,
+  EpLoaderDots,
+  EpLoaderDualRing,
+  EpLoaderFade,
+  EpLoaderOrbit,
+  EpLoaderPulse,
+  EpLoaderScale,
+  EpLoaderSpin,
+  EpLoaderSquares,
   EpLoadingState,
   EpicenterLogo,
   EpMap,
@@ -119,7 +140,6 @@ export {
   EpTextarea,
   EpThemeToggle,
   EpToggle,
-  EpToggleButton,
   EpTooltip
 }
 
@@ -135,6 +155,7 @@ export default {
   EpDonutChart,
   EpCheckbox,
   EpCodeView,
+  EpColorRandomizer,
   EpContainer,
   EpContextualLookup,
   EpDatePicker,
@@ -151,6 +172,16 @@ export default {
   EpItemCount,
   EpKeyValueTable,
   EpLazyImage,
+  EpLoaderBars,
+  EpLoaderBounce,
+  EpLoaderDots,
+  EpLoaderDualRing,
+  EpLoaderFade,
+  EpLoaderOrbit,
+  EpLoaderPulse,
+  EpLoaderScale,
+  EpLoaderSpin,
+  EpLoaderSquares,
   EpLoadingState,
   EpicenterLogo,
   EpMap,
@@ -181,6 +212,5 @@ export default {
   EpTextarea,
   EpThemeToggle,
   EpToggle,
-  EpToggleButton,
   EpTooltip
 }
