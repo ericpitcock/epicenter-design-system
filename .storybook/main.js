@@ -1,5 +1,10 @@
+import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 /** @type { import('@storybook/vue3-vite').StorybookConfig } */
-const path = require('path')
 
 const config = {
   stories: [
@@ -7,12 +12,7 @@ const config = {
     '../packages/epicenter-components-vue/storybook/**/*.stories.js',
   ],
 
-  addons: [
-    '@storybook/addon-controls',
-    // '@storybook/addon-docs',
-    '@storybook/addon-toolbars',
-    '@storybook/addon-a11y',
-  ],
+  addons: ['@storybook/addon-a11y'],
 
   staticDirs: ['../static'],
 
@@ -30,7 +30,7 @@ const config = {
         preserveSymlinks: true,
         alias: {
           ...config.resolve?.alias,
-          '@sb': path.resolve(__dirname, '../packages/epicenter-components-vue/storybook'),
+          '@sb': resolve(__dirname, '../packages/epicenter-components-vue/storybook'),
         },
       },
       server: {

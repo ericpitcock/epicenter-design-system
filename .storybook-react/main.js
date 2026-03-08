@@ -1,5 +1,10 @@
+import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 /** @type { import('@storybook/react-vite').StorybookConfig } */
-const path = require('path')
 
 const config = {
   stories: [
@@ -26,7 +31,7 @@ const config = {
         ...(config.resolve ?? {}),
         alias: {
           ...config.resolve?.alias,
-          '@ericpitcock/epicenter-components-react': path.resolve(__dirname, '../packages/epicenter-components-react/src'),
+          '@ericpitcock/epicenter-components-react': resolve(__dirname, '../packages/epicenter-components-react/src'),
         },
       },
     }

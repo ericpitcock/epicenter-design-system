@@ -1,4 +1,4 @@
-import { setup } from '@storybook/vue3'
+import { setup } from '@storybook/vue3-vite'
 import { createRouter, createMemoryHistory } from 'vue-router'
 import { watch } from 'vue'
 import { createPinia } from 'pinia'
@@ -133,7 +133,7 @@ const preview = {
   },
   parameters: {
     a11y: {
-      element: '#storybook-root',
+      context: '#storybook-root',
       config: {},
       options: {},
     },

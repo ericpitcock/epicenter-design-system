@@ -1,5 +1,5 @@
 // https://storybook.js.org/docs/configure/features-and-behavior
-import { addons } from '@storybook/manager-api'
+import { addons } from 'storybook/manager-api'
 import EpTheme from './EpTheme'
 
 addons.setConfig({

@@ -5,6 +5,7 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'plugin:react/recommended',
     'eslint:recommended',
+    'plugin:storybook/recommended'
   ],
   parser: 'vue-eslint-parser',
   parserOptions: {
