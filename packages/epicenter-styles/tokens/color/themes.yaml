@@ -76,8 +76,8 @@ text-color--inverse:
 
 # Text Color Variants
 text-color--primary:
-  dark: hsl(var(--blue-400))
-  light: hsl(var(--blue-600))
+  dark: var(--primary-color-200)
+  light: var(--primary-color-700)
 text-color--link:
   dark: hsl(var(--sky-300))
   light: hsl(var(--sky-600))

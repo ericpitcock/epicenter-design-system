@@ -27,7 +27,7 @@
   --text-color--subtle: light-dark(hsl(var(--gray-300)), hsl(var(--gray-220)));
   --text-color--loud: light-dark(hsl(var(--gray-500)), hsl(var(--gray-50)));
   --text-color--inverse: light-dark(hsl(var(--gray-150)), hsl(var(--gray-410)));
-  --text-color--primary: light-dark(hsl(var(--blue-600)), hsl(var(--blue-400)));
+  --text-color--primary: light-dark(var(--primary-color-700), var(--primary-color-200));
   --text-color--link: light-dark(hsl(var(--sky-600)), hsl(var(--sky-300)));
   --text-color--danger: light-dark(hsl(var(--red-600)), hsl(var(--red-400)));
   --text-color--warning: light-dark(hsl(var(--amber-600)), hsl(var(--amber-500)));

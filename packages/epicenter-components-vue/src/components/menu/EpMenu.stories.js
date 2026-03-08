@@ -4,12 +4,11 @@ import ArrowUpRight from '@ericpitcock/epicenter-icons-vue/ArrowUpRight03'
 import GoogleMaps from '@ericpitcock/epicenter-icons-vue/GoogleMaps'
 import Radar01 from '@ericpitcock/epicenter-icons-vue/Radar01'
 import Settings04 from '@ericpitcock/epicenter-icons-vue/Settings04'
+import { centeredBg } from '@sb/helpers/decorators.js'
 
 import EpButton from '@/components/button/EpButton.vue'
 import EpMenu from '@/components/menu/EpMenu.vue'
 import EpMenuItem from '@/components/menu/EpMenuItem.vue'
-
-import { centeredBg } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Menu',

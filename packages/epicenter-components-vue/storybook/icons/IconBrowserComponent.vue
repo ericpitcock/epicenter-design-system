@@ -1,12 +1,11 @@
 <script setup>
+  import { createIconImports, getComponentName, iconsData } from '@sb/helpers/useIcons.js'
   import { computed, defineAsyncComponent, ref, watch } from 'vue'
 
   import EpFlex from '@/components/flexbox/EpFlex.vue'
   import EpInput from '@/components/input/EpInput.vue'
   import EpPagination from '@/components/pagination/EpPagination.vue'
   import EpSelect from '@/components/select/EpSelect.vue'
-
-  import { createIconImports, getComponentName, iconsData } from '@sb/helpers/useIcons.js'
 
   const props = defineProps({
     size: { type: Number, default: 72 },
@@ -369,6 +368,14 @@
     &:hover {
       border-color: #007bff;
     }
+  }
+
+  .icon-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    width: 100%;
   }
 
   .copied-indicator {

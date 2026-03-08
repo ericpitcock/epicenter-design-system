@@ -223,8 +223,12 @@
   justify-content: center;
 }
 
+.ep-button__async-text {
+  transition: opacity 0.6s ease;
+}
+
 .ep-button__async-label--loading > .ep-button__async-text {
-  visibility: hidden;
+  opacity: 0;
 }
 
 .ep-button__async-loader {

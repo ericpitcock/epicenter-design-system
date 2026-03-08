@@ -1,25 +1,3 @@
-<template>
-  <div
-    class="primary-color-variants"
-    :style="customProperties"
-  >
-    <div class="x-axis">
-      <p>Tints / Shades</p>
-    </div>
-    <div class="y-axis">
-      <p>Hue Shifts</p>
-    </div>
-    <div class="color-chips-container">
-      <color-chips
-        v-for="variant in variantKeys"
-        :key="variant"
-        :colors="variant"
-        class="color-chips"
-      />
-    </div>
-  </div>
-</template>
-
 <script setup>
   import { computed } from 'vue'
 
@@ -169,6 +147,28 @@
     ],
   }
 </script>
+
+<template>
+  <div
+    class="primary-color-variants"
+    :style="customProperties"
+  >
+    <div class="x-axis">
+      <p>Tints / Shades</p>
+    </div>
+    <div class="y-axis">
+      <p>Hue Shifts</p>
+    </div>
+    <div class="color-chips-container">
+      <color-chips
+        v-for="variant in variantKeys"
+        :key="variant"
+        :colors="variant"
+        class="color-chips"
+      />
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
   .primary-color-variants {

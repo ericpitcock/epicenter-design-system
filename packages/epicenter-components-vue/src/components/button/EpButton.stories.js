@@ -392,7 +392,12 @@ export const LoadingButton = args => ({
 LoadingButton.args = {
   label: 'Submit',
   size: 'large',
+  disabled: false,
   classes: 'Primary',
+  enabledIcons: false,
+  iconLeft: 'None',
+  iconRight: 'None',
+  borderRadius: 3,
   loader: 'Dots',
 }
 
