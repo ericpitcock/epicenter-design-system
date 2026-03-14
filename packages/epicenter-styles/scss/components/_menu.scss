@@ -15,13 +15,16 @@
   --ep-button-menu-item-hover-border-color: var(--primary-color-base);
   --ep-button-menu-item-selected-bg-color: var(--primary-color-base);
   --ep-button-menu-item-selected-text-color: hsl(0, 0%, 100%);
-  padding: var(--ep-menu-padding);
   border-width: var(--ep-menu-border-width);
   border-style: var(--ep-menu-border-style);
   border-color: var(--ep-menu-border-color);
   border-radius: var(--ep-menu-border-radius);
   background: var(--ep-menu-bg-color);
   text-align: left;
+}
+
+.ep-menu__items {
+  padding: var(--ep-menu-padding);
 }
 
 .ep-menu__section {
@@ -85,4 +88,22 @@
 .ep-menu > .ep-divider {
   --ep-divider-border-color: var(--ep-menu-divider-border-color);
   --ep-divider-margin: 1rem 0;
+}
+
+.ep-menu__items > .ep-divider {
+  --ep-divider-border-color: var(--ep-menu-divider-border-color);
+  --ep-divider-margin: 1rem 0;
+}
+
+.ep-menu__header,
+.ep-menu__footer {
+  padding: var(--ep-menu-padding);
+}
+
+.ep-menu__header {
+  border-bottom: var(--ep-menu-border-width) var(--ep-menu-border-style) var(--ep-menu-divider-border-color);
+}
+
+.ep-menu__footer {
+  border-top: var(--ep-menu-border-width) var(--ep-menu-border-style) var(--ep-menu-divider-border-color);
 }

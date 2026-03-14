@@ -1,28 +1,3 @@
-<template>
-  <div class="color-chips">
-    <div
-      v-for="name in colors"
-      :key="name"
-      class="color-chip"
-      :style="{ backgroundColor: `var(${name})` }"
-      :data-color-name="name"
-    >
-      <ep-tooltip>
-        <template #tooltip>
-          <span v-if="copiedCell !== name">Copy</span>
-          <span v-else>Copied!</span>
-        </template>
-        <p
-          class="name"
-          @click="copyToClipboard(name)"
-        >
-          {{ sanitizeColorName(name) }}
-        </p>
-      </ep-tooltip>
-    </div>
-  </div>
-</template>
-
 <script setup>
   import { useClipboard } from '@vueuse/core'
   import { ref } from 'vue'
@@ -53,15 +28,57 @@
   }
 </script>
 
+<template>
+  <div class="color-chips">
+    <div
+      v-for="name in colors"
+      :key="name"
+      class="color-chip-wrapper"
+    >
+      <ep-tooltip>
+        <template #tooltip>
+          <span v-if="copiedCell !== name">Copy</span>
+          <span v-else>Copied!</span>
+        </template>
+        <div
+          class="color-chip"
+          :style="{ backgroundColor: `var(${name})` }"
+          :data-color-name="name"
+          @click="copyToClipboard(name)"
+        >
+          <p class="name">
+            {{ sanitizeColorName(name) }}
+          </p>
+        </div>
+      </ep-tooltip>
+    </div>
+  </div>
+</template>
+
 <style lang="scss" scoped>
+  .ep-tooltip-wrapper {
+    --ep-tooltip-bg-color: hsl(0 0% 100% / 0.2);
+    --ep-tooltip-text-color: white;
+    --ep-tooltip-offset-y: 40px;
+  }
+
   .color-chips {
     flex: 1;
     display: flex;
     gap: 0.5rem;
   }
 
-  .color-chip {
+  .color-chip-wrapper {
     flex: 1;
+
+    :deep(.ep-tooltip-wrapper) {
+      display: block;
+      height: 100%;
+    }
+  }
+
+  .color-chip {
+    aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;

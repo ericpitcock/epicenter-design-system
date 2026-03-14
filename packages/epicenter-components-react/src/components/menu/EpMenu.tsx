@@ -28,7 +28,7 @@ export const EpMenu = React.forwardRef<HTMLDivElement, EpMenuProps>(
 
       // Find all menu items that are direct children (not in submenus)
       const allItems = menuRef.current.querySelectorAll<HTMLElement>(
-        '[role="menuitem"]:not([disabled="true"])'
+        '[role="menuitem"]:not([aria-disabled="true"])'
       )
       return Array.from(allItems).filter((item) => {
         // Only include items whose closest .ep-menu parent is this menu

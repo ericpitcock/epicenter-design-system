@@ -14,12 +14,12 @@
     type?: ButtonType
   }
 
-  const props = withDefaults(defineProps<EpButtonProps>(), {
-    size: 'default',
-    ariaLabel: '',
-    disabled: false,
-    type: 'button',
-  })
+  const {
+    size = 'default',
+    ariaLabel = '',
+    disabled = false,
+    type = 'button',
+  } = defineProps<EpButtonProps>()
 
   const element = computed(() => {
     const { to, href } = useAttrs()
@@ -27,8 +27,8 @@
   })
 
   const computedClasses = computed(() => ({
-    [`ep-button--${props.size}`]: props.size !== 'default',
-    'ep-button--disabled': props.disabled,
+    [`ep-button--${size}`]: size !== 'default',
+    'ep-button--disabled': disabled,
   }))
 </script>
 

@@ -16,16 +16,17 @@
     totalPages: number
   }
 
-  const props = withDefaults(defineProps<EpTablePaginationProps>(), {
-    showPages: false,
-  })
+  const {
+    resultsPerPage,
+    currentPage,
+    totalPages,
+    showPages = false,
+  } = defineProps<EpTablePaginationProps>()
 
   const emit = defineEmits<{
     pageChange: [page: number]
     'update:resultsPerPage': [value: number]
   }>()
-
-  const resultsPerPage = ref(props.resultsPerPage)
 
   const resultsPerPageOptions: SelectOption[] = [
     { label: '10', value: 10 },
@@ -38,47 +39,45 @@
     emit('update:resultsPerPage', Number(value))
   }
 
-  const showPages = ref(props.showPages)
-
   const prevPage = (): void => {
-    if (props.currentPage > 1) {
-      emit('pageChange', props.currentPage - 1)
+    if (currentPage > 1) {
+      emit('pageChange', currentPage - 1)
     }
   }
 
   const nextPage = (): void => {
-    if (props.currentPage < props.totalPages) {
-      emit('pageChange', props.currentPage + 1)
+    if (currentPage < totalPages) {
+      emit('pageChange', currentPage + 1)
     }
   }
 
   const truncationThreshold = 9
 
   const shouldShowStartEllipsis = computed(() => {
-    return props.totalPages > truncationThreshold && props.currentPage > 3
+    return totalPages > truncationThreshold && currentPage > 3
   })
 
   const shouldShowEndEllipsis = computed(() => {
-    return props.totalPages > truncationThreshold && props.currentPage < props.totalPages - 2
+    return totalPages > truncationThreshold && currentPage < totalPages - 2
   })
 
   const pageRange = computed((): number[] => {
     const range: number[] = []
-    if (props.totalPages <= truncationThreshold) {
-      for (let i = 2; i < props.totalPages; i++) {
+    if (totalPages <= truncationThreshold) {
+      for (let i = 2; i < totalPages; i++) {
         range.push(i)
       }
     } else {
-      if (props.currentPage <= 3) {
+      if (currentPage <= 3) {
         for (let i = 2; i <= 4; i++) {
           range.push(i)
         }
-      } else if (props.currentPage >= props.totalPages - 2) {
-        for (let i = props.totalPages - 3; i < props.totalPages; i++) {
+      } else if (currentPage >= totalPages - 2) {
+        for (let i = totalPages - 3; i < totalPages; i++) {
           range.push(i)
         }
       } else {
-        for (let i = props.currentPage - 1; i <= props.currentPage + 1; i++) {
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
           range.push(i)
         }
       }

@@ -14,21 +14,22 @@
     sectionHeaders?: boolean
   }
 
-  const props = withDefaults(defineProps<EpKeyValueTableProps>(), {
-    commonKeyWidth: false,
-    sectionHeaders: false,
-  })
+  const {
+    data,
+    commonKeyWidth = false,
+    sectionHeaders = false,
+  } = defineProps<EpKeyValueTableProps>()
 
   const processedData = computed<KeyValueSection[]>(() => {
-    if (Array.isArray(props.data)) {
-      return props.data
+    if (Array.isArray(data)) {
+      return data
     }
 
-    return [props.data]
+    return [data]
   })
 
   const keyColumnWidth = computed<string>(() => {
-    if (!props.commonKeyWidth) {
+    if (!commonKeyWidth) {
       return 'auto'
     }
 

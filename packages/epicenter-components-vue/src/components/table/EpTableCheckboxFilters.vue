@@ -8,9 +8,9 @@
     sectionLabels?: boolean
   }
 
-  const props = withDefaults(defineProps<EpTableCheckboxFiltersProps>(), {
-    sectionLabels: true,
-  })
+  const {
+    sectionLabels = true,
+  } = defineProps<EpTableCheckboxFiltersProps>()
 
   const emit = defineEmits<{
     'update:filters': [payload: { category: string; label: string; checked: boolean }]

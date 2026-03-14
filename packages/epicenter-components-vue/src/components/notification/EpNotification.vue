@@ -12,9 +12,9 @@
     timestamp?: string
   }
 
-  const props = withDefaults(defineProps<EpNotificationProps>(), {
-    timestamp: () => new Date().toISOString(),
-  })
+  const {
+    timestamp = new Date().toISOString(),
+  } = defineProps<EpNotificationProps>()
 
   const emit = defineEmits<{
     dismiss: []

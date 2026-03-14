@@ -8,11 +8,11 @@
     showActionsMenu?: boolean
   }
 
-  const props = withDefaults(defineProps<EpTableHeadProps>(), {
-    cellWidths: () => [],
-    fixedHeader: false,
-    showActionsMenu: false,
-  })
+  const {
+    cellWidths = [],
+    fixedHeader = false,
+    showActionsMenu = false,
+  } = defineProps<EpTableHeadProps>()
 </script>
 
 <template>

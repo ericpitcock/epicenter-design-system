@@ -20,21 +20,21 @@
     type?: string
   }
 
-  const props = withDefaults(defineProps<EpInputProps>(), {
-    autofocus: false,
-    clearable: false,
-    disabled: false,
-    error: false,
-    errorEnabled: false,
-    errorMessage: '',
-    inputId: '',
-    label: '',
-    placeholder: '',
-    readonly: false,
-    required: false,
-    size: 'default',
-    type: 'text',
-  })
+  const {
+    autofocus = false,
+    clearable = false,
+    disabled = false,
+    error = false,
+    errorEnabled = false,
+    errorMessage = '',
+    inputId = '',
+    label = '',
+    placeholder = '',
+    readonly = false,
+    required = false,
+    size = 'default',
+    type = 'text',
+  } = defineProps<EpInputProps>()
 
   const emit = defineEmits<{
     focus: [value: string]
@@ -53,25 +53,25 @@
   const input = ref<HTMLInputElement | null>(null)
 
   const hasInput = ref(!!modelValue.value)
-  const computedId = ref(props.inputId || useId())
+  const computedId = ref(inputId || useId())
 
-  const computedPlaceholder = computed(() => props.placeholder || props.label)
+  const computedPlaceholder = computed(() => placeholder || label)
 
   const stylerProps = computed(() => ({
     id: computedId.value,
     hasInput: hasInput.value,
-    label: props.label,
-    clearable: props.clearable,
-    disabled: props.disabled,
-    errorEnabled: props.errorEnabled,
-    error: props.error,
-    errorMessage: props.errorMessage,
-    size: props.size,
+    label: label,
+    clearable: clearable,
+    disabled: disabled,
+    errorEnabled: errorEnabled,
+    error: error,
+    errorMessage: errorMessage,
+    size: size,
   }))
 
   const inputClasses = computed(() => ({
-    [`ep-input--${props.size}`]: props.size !== 'default',
-    'ep-input--disabled': props.disabled
+    [`ep-input--${size}`]: size !== 'default',
+    'ep-input--disabled': disabled
   }))
 
   watch(modelValue, (value) => {

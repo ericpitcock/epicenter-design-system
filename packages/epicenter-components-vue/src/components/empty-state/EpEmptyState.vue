@@ -14,17 +14,17 @@
     justify?: string
   }
 
-  const props = withDefaults(defineProps<EpEmptyStateProps>(), {
-    direction: 'column',
-    justify: 'center',
-  })
+  const {
+    direction = 'column',
+    justify = 'center',
+  } = defineProps<EpEmptyStateProps>()
 
   const classes = computed(() => {
     return {
-      'ep-empty-state--column': props.direction === 'column',
-      'ep-empty-state--row': props.direction === 'row',
-      'ep-empty-state--justify-left': props.justify === 'left',
-      'ep-empty-state--justify-right': props.justify === 'right',
+      'ep-empty-state--column': direction === 'column',
+      'ep-empty-state--row': direction === 'row',
+      'ep-empty-state--justify-left': justify === 'left',
+      'ep-empty-state--justify-right': justify === 'right',
     }
   })
 </script>

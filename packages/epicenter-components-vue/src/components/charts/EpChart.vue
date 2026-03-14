@@ -7,11 +7,7 @@
     options?: Record<string, unknown>
   }
 
-  const props = withDefaults(defineProps<EpChartProps>(), {
-    chartColors: () => ({}),
-    height: 400,
-    options: () => ({}),
-  })
+  const { chartColors = {}, height = 400, options = {} } = defineProps<EpChartProps>()
 
   // Highcharts chart instance
   const chart = ref<{ reflow: () => void; destroy: () => void } | null>(null)
@@ -37,7 +33,7 @@
 
   const chartOptions = computed(() => ({
     ...chartDefaults,
-    ...props.options
+    ...options
   }))
 
   const drawChart = async (): Promise<void> => {

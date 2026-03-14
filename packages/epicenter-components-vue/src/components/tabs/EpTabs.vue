@@ -13,18 +13,14 @@
     variant?: string
   }
 
-  const props = withDefaults(defineProps<EpTabsProps>(), {
-    activeTabIndex: 0,
-    items: () => [],
-    variant: 'default',
-  })
+  const { activeTabIndex = 0, items = [], variant = 'default' } = defineProps<EpTabsProps>()
 
   const emit = defineEmits<{
     'tab-click': [payload: { item: TabItem; index: number } | number]
   }>()
 
   const tabs = computed((): TabItem[] => {
-    return props.items.map(item => (typeof item === 'object' ? item : { label: item }))
+    return items.map(item => (typeof item === 'object' ? item : { label: item }))
   })
 
   const onClick = ({ item, index }: { item: TabItem; index: number }): void => {

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback, createContext, useContext, KeyboardEvent } from 'react'
+import React, { useRef, useState, useCallback, createContext, useContext, KeyboardEvent } from 'react'
 
 export type MenuItemType = 'item' | 'divider' | 'section'
 
@@ -8,7 +8,7 @@ export interface EpMenuItemProps {
   /** Additional CSS classes */
   className?: string
   /** Whether the menu item is disabled */
-  isDisabled?: boolean
+  disabled?: boolean
   /** Callback when menu item is selected */
   onSelect?: (event: React.MouseEvent | KeyboardEvent) => void
   /** Submenu content that appears on hover/focus */
@@ -29,7 +29,7 @@ const SubmenuContext = createContext<(() => void) | null>(null)
 export const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
   (
     {
-      isDisabled = false,
+      disabled = false,
       type = 'item',
       children,
       submenu,
@@ -50,35 +50,8 @@ export const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
       setShowSubmenu(false)
     }, [])
 
-    // Ensure interactive elements inside menu items are not separately focusable
-    // This follows the WAI-ARIA menu pattern where only the menu item wrapper should be focusable
-    useEffect(() => {
-      if (type === 'item' && menuItemRef.current) {
-        // Only process direct child buttons/links, not those in submenus
-        const directButtons = Array.from(
-          menuItemRef.current.querySelectorAll<HTMLElement>('button, a')
-        ).filter((el) => {
-          // Check if this element's parent chain includes a submenu BEFORE reaching this menu item
-          let current = el.parentElement
-          while (current && current !== menuItemRef.current) {
-            if (current.classList.contains('ep-menu__item__sub-menu')) {
-              return false // This element is inside a submenu, skip it
-            }
-            current = current.parentElement
-          }
-          return true // This is a direct child button/link
-        })
-
-        directButtons.forEach((el) => {
-          if (el.getAttribute('tabindex') !== '-1') {
-            el.setAttribute('tabindex', '-1')
-          }
-        })
-      }
-    }, [type, children])
-
     const handleMousedown = (event: React.MouseEvent) => {
-      if (isDisabled) {
+      if (disabled) {
         // Prevent focus when clicking a disabled menu item
         // This prevents submenus from sticking open when clicking disabled items
         event.preventDefault()
@@ -87,7 +60,7 @@ export const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
     }
 
     const handleClick = (event: React.MouseEvent) => {
-      if (isDisabled) {
+      if (disabled) {
         event.preventDefault()
         event.stopPropagation()
         return
@@ -251,6 +224,7 @@ export const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
           }}
           className={`ep-menu__item${className ? ` ${className}` : ''}`}
           role="menuitem"
+          aria-disabled={disabled || undefined}
           aria-haspopup={hasSubmenu ? 'menu' : undefined}
           aria-expanded={hasSubmenu ? showSubmenu : undefined}
           tabIndex={-1}

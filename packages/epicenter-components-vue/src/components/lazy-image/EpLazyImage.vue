@@ -30,20 +30,20 @@
     width?: string | number
   }
 
-  const props = withDefaults(defineProps<EpLazyImageProps>(), {
-    alt: '',
-    aspectRatio: '16 / 10',
-    className: '',
-    height: '100%',
-    lazy: true,
-    objectFit: 'contain',
-    placeholder: '',
-    placeholderColor: '#f5f5f5',
-    placeholderOpacity: 1,
-    rootMargin: '0px 0px 100px 0px',
-    rounded: true,
-    width: '100%',
-  })
+  const {
+    alt = '',
+    aspectRatio = '16 / 10',
+    className = '',
+    height = '100%',
+    lazy = true,
+    objectFit = 'contain',
+    placeholder = '',
+    placeholderColor = '#f5f5f5',
+    placeholderOpacity = 1,
+    rootMargin = '0px 0px 100px 0px',
+    rounded = true,
+    width = '100%',
+  } = defineProps<EpLazyImageProps>()
 
   const isLoaded = ref<boolean>(false)
   const imageEl = ref<HTMLDivElement | null>(null)
@@ -51,12 +51,12 @@
 
   const placeholderStyle = computed(() => {
     return {
-      width: props.width,
-      height: props.height,
-      aspectRatio: props.aspectRatio,
-      backgroundColor: props.placeholderColor,
-      opacity: props.placeholderOpacity,
-      backgroundImage: props.placeholder ? `url(${props.placeholder})` : '',
+      width: width,
+      height: height,
+      aspectRatio: aspectRatio,
+      backgroundColor: placeholderColor,
+      opacity: placeholderOpacity,
+      backgroundImage: placeholder ? `url(${placeholder})` : '',
       backgroundSize: 'cover',
     }
   })
@@ -70,7 +70,7 @@
         }
       })
     }, {
-      rootMargin: props.rootMargin,
+      rootMargin: rootMargin,
       threshold: 0.1,
     })
 
@@ -84,7 +84,7 @@
   }
 
   onMounted(() => {
-    if (props.lazy) {
+    if (lazy) {
       addLazyLoadListener()
     } else {
       loadImage()

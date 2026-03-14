@@ -34,11 +34,11 @@
     value?: string
   }
 
-  const props = withDefaults(defineProps<EpContextualLookupProps>(), {
-    label: '',
-    enrichmentData: null,
-    value: '',
-  })
+  const {
+    label = '',
+    enrichmentData = null,
+    value = '',
+  } = defineProps<EpContextualLookupProps>()
 
   const emit = defineEmits<{
     lookup: [source: EnrichmentOption, value: string]
@@ -48,15 +48,15 @@
   const showPreview = ref(false)
   const requestedSources = ref(new Set<string>())
 
-  const resolvedValue = computed(() => props.value || props.label)
+  const resolvedValue = computed(() => value || label)
 
   const currentSourceData = computed<EnrichmentEntry | undefined>(() => {
-    if (!hoveredItem.value || !props.enrichmentData) return undefined
-    return props.enrichmentData[hoveredItem.value.label]
+    if (!hoveredItem.value || !enrichmentData) return undefined
+    return enrichmentData[hoveredItem.value.label]
   })
 
   const getSourceStatus = (option: EnrichmentOption): 'default' | 'loading' => {
-    const data = props.enrichmentData?.[option.label]
+    const data = enrichmentData?.[option.label]
     if (requestedSources.value.has(option.label) && !data) return 'loading'
     return 'default'
   }
@@ -74,7 +74,7 @@
     hoveredItem.value = item
     showPreview.value = true
 
-    if (props.enrichmentData?.[item.label]) return
+    if (enrichmentData?.[item.label]) return
     if (requestedSources.value.has(item.label)) return
 
     requestedSources.value.add(item.label)
@@ -110,7 +110,7 @@
             name="trigger"
             v-bind="{ attrs, on }"
           >
-            {{ props.label }}
+            {{ label }}
           </slot>
           <Asterisk02 class="lookup-asterisk" />
         </div>

@@ -1,6 +1,6 @@
-import EpTooltip from '@/components/tooltip/EpTooltip.vue'
-
 import { centeredBg } from '@sb/helpers/decorators.js'
+
+import EpTooltip from '@/components/tooltip/EpTooltip.vue'
 
 export default {
   title: 'Components/Tooltip',
@@ -45,6 +45,18 @@ export default {
         type: 'boolean'
       }
     },
+    offsetX: {
+      name: 'Offset X',
+      control: {
+        type: 'text'
+      }
+    },
+    offsetY: {
+      name: 'Offset Y',
+      control: {
+        type: 'text'
+      }
+    },
   }
 }
 
@@ -54,7 +66,13 @@ export const Tooltip = args => ({
     return { args }
   },
   template: `
-    <ep-tooltip v-bind="args">
+    <ep-tooltip
+      v-bind="args"
+      :style="{
+        '--ep-tooltip-offset-x': args.offsetX,
+        '--ep-tooltip-offset-y': args.offsetY,
+      }"
+    >
       <template #tooltip>
         <div>
           <p>Tooltip content</p>
@@ -69,5 +87,7 @@ Tooltip.args = {
   delay: 0,
   position: 'top center',
   dismissOnClick: false,
-  disabled: false
+  disabled: false,
+  offsetX: '0px',
+  offsetY: '0px',
 }

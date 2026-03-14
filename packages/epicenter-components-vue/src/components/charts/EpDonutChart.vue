@@ -12,14 +12,15 @@
     width?: number
   }
 
-  const props = withDefaults(defineProps<EpDonutChartProps>(), {
-    animate: true,
-    width: 200,
-    height: 200,
-    margin: 0,
-    value: 'Value',
-    valueTextClass: 'font-size--jumbo',
-  })
+  const {
+    data,
+    animate = true,
+    width = 200,
+    height = 200,
+    margin = 0,
+    value = 'Value',
+    valueTextClass = 'font-size--jumbo',
+  } = defineProps<EpDonutChartProps>()
 
   const container = useTemplateRef<HTMLDivElement>('container')
   const tooltip = useTemplateRef<HTMLDivElement>('tooltip')
@@ -33,8 +34,8 @@
   const tooltipText = ref<string | number>('tooltip')
 
   const containerStyles = computed(() => ({
-    width: `${props.width}px`,
-    height: `${props.height}px`,
+    width: `${width}px`,
+    height: `${height}px`,
   }))
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -76,10 +77,6 @@
   }
 
   const drawChart = (): void => {
-    const data = props.data
-    const width = props.width
-    const height = props.height
-    const margin = props.margin
     const radius = Math.min(width, height) / 2 - margin
 
     const svg = d3.select(epDonut.value)
@@ -122,7 +119,7 @@
       .on('mousemove', handleMouseOver)
       .on('mouseout', handleMouseOut)
 
-    if (props.animate) {
+    if (animate) {
       arcs.select('path')
         .attr('d', arc)
         .transition()

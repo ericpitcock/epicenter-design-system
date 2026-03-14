@@ -6,9 +6,7 @@
     pulse?: boolean
   }
 
-  const props = withDefaults(defineProps<EpStatusIndicatorProps>(), {
-    pulse: false,
-  })
+  const { pulse = false } = defineProps<EpStatusIndicatorProps>()
 </script>
 
 <template>

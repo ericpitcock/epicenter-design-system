@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `isDisabled` | Whether the menu item is disabled. | `boolean` | `false` |
+| `disabled` | Whether the menu item is disabled. | `boolean` | `false` |
 | `type` | The type of menu item to render. | `string` | `'item'` |
 
 ## Events

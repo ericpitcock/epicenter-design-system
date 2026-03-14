@@ -13,10 +13,12 @@
     sortOrder: SortOrder
   }
 
-  const props = withDefaults(defineProps<EpTableSortableHeaderProps>(), {
-    cellWidths: () => [],
-    columnIndex: null,
-  })
+  const {
+    sortColumn,
+    column,
+    cellWidths = [],
+    columnIndex = null,
+  } = defineProps<EpTableSortableHeaderProps>()
 
   const emit = defineEmits<{
     sort: [key: string]
@@ -25,12 +27,12 @@
   const headerClass = computed(() => {
     return [
       'ep-table-sortable-header',
-      { 'ep-table-sortable-header--active': props.sortColumn === props.column.key }
+      { 'ep-table-sortable-header--active': sortColumn === column.key }
     ]
   })
 
   const isSorted = computed(() => {
-    return props.column.sortable && props.sortColumn === props.column.key
+    return column.sortable && sortColumn === column.key
   })
 </script>
 

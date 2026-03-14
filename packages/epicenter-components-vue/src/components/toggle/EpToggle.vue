@@ -12,12 +12,12 @@
     size?: 'small' | 'default' | 'large'
   }
 
-  const props = withDefaults(defineProps<EpToggleProps>(), {
-    disabled: false,
-    isActive: false,
-    label: '',
-    size: 'default',
-  })
+  const {
+    disabled = false,
+    isActive = false,
+    label = '',
+    size = 'default',
+  } = defineProps<EpToggleProps>()
 
   const emit = defineEmits<{
     toggle: []
@@ -25,13 +25,13 @@
 
   const classes = computed(() => {
     return {
-      'ep-toggle--active': props.isActive,
-      'ep-toggle--disabled': props.disabled,
+      'ep-toggle--active': isActive,
+      'ep-toggle--disabled': disabled,
     }
   })
 
   const toggle = (): void => {
-    if (props.disabled) return
+    if (disabled) return
     emit('toggle')
   }
 </script>

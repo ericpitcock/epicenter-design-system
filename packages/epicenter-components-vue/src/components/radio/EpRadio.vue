@@ -16,16 +16,13 @@
     value: string
   }
 
-  const props = withDefaults(defineProps<EpRadioProps>(), {
-    disabled: false,
-    required: false,
-  })
+  const { value, disabled = false, required = false } = defineProps<EpRadioProps>()
 
   const modelValue = defineModel<string>({ required: true })
 
   const classes = computed(() => ({
-    'ep-radio--checked': modelValue.value === props.value,
-    'ep-radio--disabled': props.disabled,
+    'ep-radio--checked': modelValue.value === value,
+    'ep-radio--disabled': disabled,
   }))
 </script>
 
@@ -45,7 +42,7 @@
     >
     <span class="ep-radio__dot" />
     <slot>
-      {{ props.label }}
+      {{ label }}
     </slot>
   </label>
 </template>

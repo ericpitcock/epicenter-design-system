@@ -3,18 +3,16 @@
     label?: string
   }
 
-  const props = withDefaults(defineProps<EpFieldsetProps>(), {
-    label: '',
-  })
+  const { label = '' } = defineProps<EpFieldsetProps>()
 </script>
 
 <template>
   <fieldset class="ep-fieldset ep-fieldset--horizontal">
     <legend
-      v-if="props.label"
+      v-if="label"
       class="ep-fieldset__legend"
     >
-      {{ props.label }}
+      {{ label }}
     </legend>
 
     <div class="ep-fieldset__content">

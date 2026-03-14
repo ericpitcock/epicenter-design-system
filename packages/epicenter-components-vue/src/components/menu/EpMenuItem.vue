@@ -1,25 +1,26 @@
 <script setup lang="ts">
-  import { inject, nextTick, onMounted, provide, ref } from 'vue'
+  import { computed, inject, nextTick, provide, ref, useSlots } from 'vue'
 
   type MenuItemType = 'item' | 'divider' | 'section'
 
   interface EpMenuItemProps {
-    isDisabled?: boolean
+    /** Whether the menu item is disabled. */
+    disabled?: boolean
+    /** The type of menu item to render. */
     type?: MenuItemType
   }
 
-  const props = withDefaults(defineProps<EpMenuItemProps>(), {
-    isDisabled: false,
-    type: 'item',
-  })
+  const { disabled = false, type = 'item' } = defineProps<EpMenuItemProps>()
 
   const emit = defineEmits<{
     select: [event: Event]
   }>()
 
+  const slots = useSlots()
+
   const showSubmenu = ref(false)
   const menuItemRef = ref<HTMLDivElement | null>(null)
-  const hasSubmenu = ref(false)
+  const hasSubmenu = computed(() => !!slots.submenu)
 
   provide('closeParentSubmenu', () => {
     showSubmenu.value = false
@@ -27,45 +28,21 @@
 
   const closeParentSubmenu = inject<(() => void) | null>('closeParentSubmenu', null)
 
-  onMounted(() => {
-    if (props.type === 'item' && menuItemRef.value) {
-      const directButtons = Array.from(menuItemRef.value.querySelectorAll('button, a')).filter((el) => {
-        let current = el.parentElement
-        while (current && current !== menuItemRef.value) {
-          if (current.classList.contains('ep-menu__item__sub-menu')) {
-            return false
-          }
-          current = current.parentElement
-        }
-        return true
-      })
-
-      directButtons.forEach(el => {
-        if (el.getAttribute('tabindex') !== '-1') {
-          el.setAttribute('tabindex', '-1')
-        }
-      })
-
-      const submenuElement = menuItemRef.value.querySelector('.ep-menu__item__sub-menu')
-      hasSubmenu.value = !!submenuElement
-    }
-  })
-
   const onMousedown = (event: MouseEvent): void => {
-    if (props.isDisabled) {
+    if (disabled) {
       event.preventDefault()
       event.stopPropagation()
     }
   }
 
   const onClick = (event: MouseEvent): void => {
-    if (props.isDisabled) {
+    if (disabled) {
       event.preventDefault()
       event.stopPropagation()
       return
     }
 
-    if (props.type === 'item') {
+    if (type === 'item') {
       if (!hasSubmenu.value) {
         emit('select', event)
         closeParentSubmenu?.()
@@ -115,7 +92,7 @@
   }
 
   const onKeydown = (event: KeyboardEvent): void => {
-    if (props.type !== 'item') return
+    if (type !== 'item') return
 
     const key = event.key
 
@@ -190,8 +167,9 @@
     ref="menuItemRef"
     class="ep-menu__item"
     role="menuitem"
-    :aria-haspopup="$slots.submenu ? 'menu' : undefined"
-    :aria-expanded="$slots.submenu ? showSubmenu : undefined"
+    :aria-disabled="disabled || undefined"
+    :aria-haspopup="hasSubmenu ? 'menu' : undefined"
+    :aria-expanded="hasSubmenu ? showSubmenu : undefined"
     @mousedown="onMousedown"
     @click="onClick"
     @keydown="onKeydown"

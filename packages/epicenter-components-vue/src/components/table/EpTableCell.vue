@@ -9,9 +9,7 @@
     styles?: string[]
   }
 
-  const props = withDefaults(defineProps<EpTableCellProps>(), {
-    styles: () => [],
-  })
+  const { row, column, styles = [] } = defineProps<EpTableCellProps>()
 
   const cellContent = ref<unknown>('')
 
@@ -26,7 +24,7 @@
   }
 
   watchEffect(() => {
-    cellContent.value = formattedCell(props.row, props.column)
+    cellContent.value = formattedCell(row, column)
   })
 </script>
 

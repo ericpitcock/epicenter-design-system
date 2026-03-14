@@ -18,16 +18,17 @@
     striped?: boolean
   }
 
-  const props = withDefaults(defineProps<EpTableProps>(), {
-    bordered: false,
-    compact: false,
-    fixedHeader: false,
-    hiddenColumns: () => [],
-    selectable: false,
-    showActionsMenu: false,
-    stickyHeader: false,
-    striped: false,
-  })
+  const {
+    columns,
+    bordered = false,
+    compact = false,
+    fixedHeader = false,
+    hiddenColumns = [],
+    selectable = false,
+    showActionsMenu = false,
+    stickyHeader = false,
+    striped = false,
+  } = defineProps<EpTableProps>()
 
   const emit = defineEmits<{
     'row-click': [row: TableRow]
@@ -35,28 +36,28 @@
   }>()
 
   const visibleColumns = computed(() => {
-    return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
+    return columns.filter(column => !hiddenColumns.includes(column.key))
   })
 
   const tableContainer = useTemplateRef<HTMLDivElement>('tableContainer')
 
   const classes = computed(() => {
     return {
-      'ep-table--bordered': props.bordered,
-      'ep-table--compact': props.compact,
-      'ep-table--selectable': props.selectable,
-      'ep-table--sticky': props.stickyHeader,
-      'ep-table--striped': props.striped,
+      'ep-table--bordered': bordered,
+      'ep-table--compact': compact,
+      'ep-table--selectable': selectable,
+      'ep-table--sticky': stickyHeader,
+      'ep-table--striped': striped,
     }
   })
 
   const onRowClick = (row: TableRow): void => {
-    if (!props.selectable) return
+    if (!selectable) return
     emit('row-click', row)
   }
 
   const onScroll = (): void => {
-    if (!props.fixedHeader || !tableContainer.value) return
+    if (!fixedHeader || !tableContainer.value) return
     emit('container-scroll', tableContainer.value.scrollLeft)
   }
 </script>

@@ -1,3 +1,4 @@
+import { paddedBg } from '@sb/helpers/decorators.js'
 import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -6,8 +7,6 @@ import EpHeader from '@/components/header/EpHeader.vue'
 import EpTabContent from '@/components/tabs/EpTabContent.vue'
 import EpTabs from '@/components/tabs/EpTabs.vue'
 import { useTabs } from '@/composables'
-
-import { paddedBg } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Tabs',
@@ -117,6 +116,7 @@ export const Tabs = args => ({
         '--ep-container-padding': containerPadding,
         '--ep-container-border-width': '0.1rem',
         '--ep-container-content-padding': contentPadding,
+        'flex': '1 1 auto'
       }"
     >
       <template #header>

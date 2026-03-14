@@ -12,9 +12,7 @@
     items?: BreadcrumbItem[]
   }
 
-  withDefaults(defineProps<EpBreadcrumbsProps>(), {
-    items: () => [],
-  })
+  const { items = [] } = defineProps<EpBreadcrumbsProps>()
 
   const emit = defineEmits<{
     navigate: [payload: { event: MouseEvent; crumb: BreadcrumbItem }]

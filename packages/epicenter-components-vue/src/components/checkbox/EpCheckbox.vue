@@ -20,20 +20,20 @@
     value: string
   }
 
-  const props = withDefaults(defineProps<EpCheckboxProps>(), {
-    checked: false,
-    disabled: false,
-    indeterminate: false,
-    required: false,
-  })
+  const {
+    checked = false,
+    disabled = false,
+    indeterminate = false,
+    required = false,
+  } = defineProps<EpCheckboxProps>()
 
   const modelValue = defineModel<boolean>({ required: true })
 
   const classes = computed(() => {
     return {
       'ep-checkbox--checked': modelValue.value,
-      'ep-checkbox--disabled': props.disabled,
-      'ep-checkbox--indeterminate': props.indeterminate,
+      'ep-checkbox--disabled': disabled,
+      'ep-checkbox--indeterminate': indeterminate,
     }
   })
 </script>
@@ -55,7 +55,7 @@
       :required
     >
     <slot>
-      {{ props.label }}
+      {{ label }}
     </slot>
   </label>
 </template>

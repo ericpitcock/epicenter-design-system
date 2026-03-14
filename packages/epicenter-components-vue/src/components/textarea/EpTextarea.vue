@@ -17,22 +17,22 @@
     wrap?: string
   }
 
-  const props = withDefaults(defineProps<EpTextareaProps>(), {
-    autocomplete: 'on',
-    autofocus: false,
-    cols: 20,
-    disabled: false,
-    id: undefined,
-    maxlength: undefined,
-    minlength: undefined,
-    name: undefined,
-    placeholder: undefined,
-    readonly: false,
-    required: false,
-    rows: 2,
-    spellcheck: false,
-    wrap: 'soft',
-  })
+  const {
+    autocomplete = 'on',
+    autofocus = false,
+    cols = 20,
+    disabled = false,
+    id = undefined,
+    maxlength = undefined,
+    minlength = undefined,
+    name = undefined,
+    placeholder = undefined,
+    readonly = false,
+    required = false,
+    rows = 2,
+    spellcheck = false,
+    wrap = 'soft',
+  } = defineProps<EpTextareaProps>()
 
   const emit = defineEmits<{
     'update:modelValue': [value: string]

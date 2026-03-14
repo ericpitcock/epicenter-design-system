@@ -10,10 +10,7 @@
     items?: unknown[]
   }
 
-  const props = withDefaults(defineProps<EpTabContentProps>(), {
-    activeTabIndex: 0,
-    items: () => [],
-  })
+  const { activeTabIndex = 0, items = [] } = defineProps<EpTabContentProps>()
 </script>
 
 <template>

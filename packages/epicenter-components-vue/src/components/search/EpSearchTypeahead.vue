@@ -11,10 +11,11 @@
     returnedSearchResults: Record<string, unknown>[]
   }
 
-  const props = withDefaults(defineProps<EpSearchTypeaheadProps>(), {
-    inputProps: () => ({}),
-    resultsKey: '',
-  })
+  const {
+    returnedSearchResults,
+    inputProps = {},
+    resultsKey = '',
+  } = defineProps<EpSearchTypeaheadProps>()
 
   const emit = defineEmits<{
     clear: []
@@ -26,12 +27,12 @@
   const activeItemIndex = ref(-1)
 
   const activeItem = computed(() => {
-    return props.returnedSearchResults[activeItemIndex.value]
+    return returnedSearchResults[activeItemIndex.value]
   })
 
   watch(activeItem, (newValue) => {
     if (newValue) {
-      searchQuery.value = newValue[props.resultsKey] as string
+      searchQuery.value = newValue[resultsKey] as string
     }
   })
 
@@ -40,7 +41,7 @@
       size: 'default' as Size,
       placeholder: 'Search…',
       clearable: true,
-      ...props.inputProps,
+      ...inputProps,
     }
   })
 
@@ -57,7 +58,7 @@
   const updateactiveItemIndex = (delta: number): void => {
     const newIndex = activeItemIndex.value + delta
 
-    if (props.returnedSearchResults.length === 0 || newIndex < 0 || newIndex >= props.returnedSearchResults.length) {
+    if (returnedSearchResults.length === 0 || newIndex < 0 || newIndex >= returnedSearchResults.length) {
       return
     }
 
@@ -92,10 +93,10 @@
   }
 
   const onEnter = (): void => {
-    if (props.returnedSearchResults.length === 0) {
+    if (returnedSearchResults.length === 0) {
       return
     }
-    onSelection(props.returnedSearchResults[activeItemIndex.value])
+    onSelection(returnedSearchResults[activeItemIndex.value])
   }
 
   const onMouseEnter = (index: number): void => {

@@ -183,7 +183,7 @@ const renderMenuItem = (item: MenuItem, index: number, onSelect: (label: string)
     <EpMenuItem
       key={index}
       type="item"
-      isDisabled={item.disabled}
+      disabled={item.disabled}
       onSelect={() => onSelect(item.label || '')}
       submenu={item.submenu ? (
         <EpMenu>

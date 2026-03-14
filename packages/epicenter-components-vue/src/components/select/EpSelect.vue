@@ -20,18 +20,19 @@
     size?: Size
   }
 
-  const props = withDefaults(defineProps<EpSelectProps>(), {
-    autofocus: false,
-    disabled: false,
-    error: false,
-    errorEnabled: false,
-    errorMessage: '',
-    label: '',
-    placeholder: 'Select an option',
-    readonly: false,
-    required: false,
-    size: 'default',
-  })
+  const {
+    selectId,
+    autofocus = false,
+    disabled = false,
+    error = false,
+    errorEnabled = false,
+    errorMessage = '',
+    label = '',
+    placeholder = 'Select an option',
+    readonly = false,
+    required = false,
+    size = 'default',
+  } = defineProps<EpSelectProps>()
 
   const emit = defineEmits<{
     'update:modelValue': [value: string | number]
@@ -42,21 +43,21 @@
   const modelValue = defineModel<string | number>({ default: '' })
 
   const selectClasses = computed(() => ({
-    [`ep-select--${props.size}`]: props.size !== 'default',
-    'ep-select--disabled': props.disabled,
-    'ep-select--error': props.error,
+    [`ep-select--${size}`]: size !== 'default',
+    'ep-select--disabled': disabled,
+    'ep-select--error': error,
   }))
 
-  const computedId = ref(props.selectId || useId())
+  const computedId = ref(selectId || useId())
 
   const stylerProps = computed(() => ({
     id: computedId.value,
-    label: props.label,
-    disabled: props.disabled,
-    size: props.size,
-    errorEnabled: props.errorEnabled,
-    error: props.error,
-    errorMessage: props.errorMessage,
+    label: label,
+    disabled: disabled,
+    size: size,
+    errorEnabled: errorEnabled,
+    error: error,
+    errorMessage: errorMessage,
     iconRightClickable: false,
     iconRightVisible: true
   }))

@@ -16,16 +16,12 @@
     striped?: boolean
   }
 
-  const props = withDefaults(defineProps<EpBasicTableProps>(), {
-    bordered: false,
-    compact: false,
-    striped: false,
-  })
+  const { bordered = false, compact = false, striped = false } = defineProps<EpBasicTableProps>()
 
   const classes = computed(() => ({
-    'ep-table--bordered': props.bordered,
-    'ep-table--compact': props.compact,
-    'ep-table--striped': props.striped,
+    'ep-table--bordered': bordered,
+    'ep-table--compact': compact,
+    'ep-table--striped': striped,
   }))
 </script>
 

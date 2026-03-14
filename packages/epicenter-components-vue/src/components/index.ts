@@ -24,6 +24,7 @@ import EpFlex from './flexbox/EpFlex.vue'
 import EpFooter from './footer/EpFooter.vue'
 import EpHeader from './header/EpHeader.vue'
 import EpImage from './image/EpImage.vue'
+import EpInlineEdit from './inline-edit/EpInlineEdit.vue'
 import EpInput from './input/EpInput.vue'
 import EpInputStyler from './input-styler/EpInputStyler.vue'
 import EpItemCount from './item-count/EpItemCount.vue'
@@ -95,6 +96,7 @@ export {
   EpFooter,
   EpHeader,
   EpImage,
+  EpInlineEdit,
   EpInput,
   EpInputStyler,
   EpItemCount,
@@ -167,6 +169,7 @@ export default {
   EpFooter,
   EpHeader,
   EpImage,
+  EpInlineEdit,
   EpInput,
   EpInputStyler,
   EpItemCount,

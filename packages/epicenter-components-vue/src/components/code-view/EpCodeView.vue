@@ -8,36 +8,38 @@
     theme?: string
   }
 
-  const props = withDefaults(defineProps<EpCodeViewProps>(), {
-    theme: 'one-dark-pro',
-  })
+  const {
+    code,
+    language,
+    theme = 'one-dark-pro',
+  } = defineProps<EpCodeViewProps>()
 
   const highlightedCode = ref('')
 
   const highlightCode = async (): Promise<void> => {
     try {
-      highlightedCode.value = await codeToHtml(props.code, {
-        lang: props.language,
-        theme: props.theme,
+      highlightedCode.value = await codeToHtml(code, {
+        lang: language,
+        theme: theme,
         colorReplacements: {
           '#282c34': 'var(--interface-surface)',
         }
       })
     } catch (error) {
       console.error('Error highlighting code:', error)
-      highlightedCode.value = props.code
+      highlightedCode.value = code
     }
   }
 
-  watch(() => props.code, () => {
+  watch(() => code, () => {
     highlightCode()
   })
 
-  watch(() => props.language, () => {
+  watch(() => language, () => {
     highlightCode()
   })
 
-  watch(() => props.theme, () => {
+  watch(() => theme, () => {
     highlightCode()
   })
 

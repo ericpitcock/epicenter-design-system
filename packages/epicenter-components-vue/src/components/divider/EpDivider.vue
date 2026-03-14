@@ -9,9 +9,9 @@
     direction?: Direction
   }
 
-  const props = withDefaults(defineProps<EpDividerProps>(), {
-    direction: 'horizontal',
-  })
+  const {
+    direction = 'horizontal',
+  } = defineProps<EpDividerProps>()
 </script>
 
 <template>

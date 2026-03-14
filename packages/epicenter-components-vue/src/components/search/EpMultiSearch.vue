@@ -23,20 +23,20 @@
     width?: string
   }
 
-  const props = withDefaults(defineProps<EpMultiSearchProps>(), {
-    autofocus: false,
-    backgroundColor: 'var(--interface-foreground)',
-    borderColor: 'var(--border-color)',
-    borderRadius: 'var(--border-radius)',
-    borderStyle: 'solid',
-    borderWidth: '0.1rem',
-    color: 'var(--text-color)',
-    disabled: false,
-    height: '5rem',
-    icon: () => ({}),
-    placeholder: '',
-    width: '100%',
-  })
+  const {
+    autofocus = false,
+    backgroundColor = 'var(--interface-foreground)',
+    borderColor = 'var(--border-color)',
+    borderRadius = 'var(--border-radius)',
+    borderStyle = 'solid',
+    borderWidth = '0.1rem',
+    color = 'var(--text-color)',
+    disabled = false,
+    height = '5rem',
+    icon = {},
+    placeholder = '',
+    width = '100%',
+  } = defineProps<EpMultiSearchProps>()
 
   const emit = defineEmits<{
     input: [value: string]
@@ -55,28 +55,28 @@
   const query = ref<string[]>([])
 
   const classes = computed(() => ({
-    'ep-multi-search--has-icon': props.icon,
+    'ep-multi-search--has-icon': icon,
     'ep-multi-search--focus': hasFocus.value,
-    'ep-multi-search--disabled': props.disabled,
+    'ep-multi-search--disabled': disabled,
   }))
 
   const clearable = computed(() => query.value.length > 0 || value.value.length > 0)
 
   const iconStyles = computed(() => ({
-    flex: `0 0 ${props.height}`,
-    height: props.height,
+    flex: `0 0 ${height}`,
+    height: height,
   }))
 
   const inputStyles = computed(() => ({
-    width: props.width,
-    height: props.height,
-    borderRadius: props.borderRadius,
-    backgroundColor: props.backgroundColor,
-    color: props.color
+    width: width,
+    height: height,
+    borderRadius: borderRadius,
+    backgroundColor: backgroundColor,
+    color: color
   }))
 
   const placeholderValue = computed(() => {
-    return value.value === '' && query.value.length === 0 ? props.placeholder : '+ Add to your search'
+    return value.value === '' && query.value.length === 0 ? placeholder : '+ Add to your search'
   })
 
   watch(query, () => {

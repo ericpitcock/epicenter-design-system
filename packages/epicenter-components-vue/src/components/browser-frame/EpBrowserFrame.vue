@@ -10,12 +10,12 @@
     width?: string
   }
 
-  const props = withDefaults(defineProps<EpBrowserFrameProps>(), {
-    imageAlt: '',
-    imageSrc: '',
-    url: 'http://website.com',
-    width: '100%',
-  })
+  const {
+    imageAlt = '',
+    imageSrc = '',
+    url = 'http://website.com',
+    width = '100%',
+  } = defineProps<EpBrowserFrameProps>()
 </script>
 
 <template>

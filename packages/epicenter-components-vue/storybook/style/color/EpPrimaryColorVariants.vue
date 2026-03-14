@@ -173,9 +173,8 @@
 <style lang="scss" scoped>
   .primary-color-variants {
     display: grid;
-    height: 100%;
-    grid-template-columns: 50px 1fr;
-    grid-template-rows: 50px 1fr;
+    grid-template-columns: 50px 1fr 50px;
+    grid-template-rows: 50px 1fr 50px;
 
     .x-axis,
     .y-axis {

@@ -16,26 +16,26 @@
     size?: Size
   }
 
-  const props = withDefaults(defineProps<EpInputStylerProps>(), {
-    clearable: false,
-    disabled: false,
-    error: false,
-    errorEnabled: false,
-    errorMessage: '',
-    hasInput: false,
-    id: '',
-    label: '',
-    size: 'default',
-  })
+  const {
+    clearable = false,
+    disabled = false,
+    error = false,
+    errorEnabled = false,
+    errorMessage = '',
+    hasInput = false,
+    id = '',
+    label = '',
+    size = 'default',
+  } = defineProps<EpInputStylerProps>()
 
   defineEmits<{
     click: []
   }>()
 
   const computedClasses = computed(() => ({
-    [`ep-input-styler--${props.size}`]: props.size !== 'default',
-    'ep-input-styler--disabled': props.disabled,
-    'ep-input-styler--error': props.error,
+    [`ep-input-styler--${size}`]: size !== 'default',
+    'ep-input-styler--disabled': disabled,
+    'ep-input-styler--error': error,
   }))
 </script>
 

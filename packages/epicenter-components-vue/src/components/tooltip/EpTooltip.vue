@@ -26,12 +26,12 @@
     position?: TooltipPosition
   }
 
-  const props = withDefaults(defineProps<EpTooltipProps>(), {
-    delay: 0,
-    disabled: false,
-    dismissOnClick: false,
-    position: 'top center',
-  })
+  const {
+    delay = 0,
+    disabled = false,
+    dismissOnClick = false,
+    position = 'top center',
+  } = defineProps<EpTooltipProps>()
 
   const visible = ref<boolean>(false)
   const timeoutId = ref<ReturnType<typeof setTimeout> | null>(null)
@@ -41,10 +41,10 @@
   })
 
   const showTooltip = (): void => {
-    if (props.disabled) return
+    if (disabled) return
     timeoutId.value = setTimeout(() => {
       visible.value = true
-    }, props.delay)
+    }, delay)
   }
 
   const hideTooltip = (): void => {
@@ -53,13 +53,13 @@
   }
 
   const onClick = (): void => {
-    if (props.dismissOnClick) {
+    if (dismissOnClick) {
       hideTooltip()
     }
   }
 
   const positionClass = computed(() => {
-    return `ep-tooltip--${props.position.replace(' ', '-')}`
+    return `ep-tooltip--${position.replace(' ', '-')}`
   })
 </script>
 

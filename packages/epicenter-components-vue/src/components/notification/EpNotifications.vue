@@ -20,11 +20,11 @@
     notificationsTitle?: string
   }
 
-  const props = withDefaults(defineProps<EpNotificationsProps>(), {
-    emptyStateMessage: 'You\u2019re all caught up!',
-    notifications: () => [],
-    notificationsTitle: 'Notifications',
-  })
+  const {
+    emptyStateMessage = 'You\u2019re all caught up!',
+    notifications = [],
+    notificationsTitle = 'Notifications',
+  } = defineProps<EpNotificationsProps>()
 
   const emit = defineEmits<{
     'remove-notification': [id: string]
@@ -32,7 +32,7 @@
   }>()
 
   const isNotificationsEmpty = computed(() => {
-    return props.notifications.length === 0
+    return notifications.length === 0
   })
 </script>
 

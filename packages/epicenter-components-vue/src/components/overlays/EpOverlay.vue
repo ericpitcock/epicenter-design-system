@@ -11,13 +11,13 @@
     type?: OverlayType
   }
 
-  const props = withDefaults(defineProps<EpOverlayProps>(), {
-    autoDismiss: false,
-    backdropClose: true,
-    duration: 3000,
-    modelValue: false,
-    type: 'modal',
-  })
+  const {
+    autoDismiss = false,
+    backdropClose = true,
+    duration = 3000,
+    modelValue = false,
+    type = 'modal',
+  } = defineProps<EpOverlayProps>()
 
   const emit = defineEmits<{
     'update:modelValue': [value: boolean]
@@ -25,11 +25,11 @@
 
   const dialog = ref<HTMLDialogElement | null>(null)
 
-  watch(() => props.modelValue, (newVal: boolean) => {
+  watch(() => modelValue, (newVal: boolean) => {
     if (!dialog.value) return
 
     if (newVal === true) {
-      if (props.type === 'modal') {
+      if (type === 'modal') {
         dialog.value.showModal()
       } else {
         dialog.value.show()
@@ -42,7 +42,7 @@
   )
 
   const onBackdropClick = (): void => {
-    if (!props.backdropClose) return
+    if (!backdropClose) return
 
     emit('update:modelValue', false)
     dialog.value?.close()

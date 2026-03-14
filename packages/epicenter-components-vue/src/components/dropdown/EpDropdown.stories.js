@@ -207,7 +207,6 @@ export const Dropdown = args => ({
           <template v-for="(item, index) in fakeDropdownItems" :key="index">
             <ep-menu-item
               :type="item.type"
-              :is-disabled="item.disabled"
               :disabled="item.disabled"
               @select="() => { onSelect(item); close() }"
             >
@@ -230,7 +229,6 @@ export const Dropdown = args => ({
                   <template v-for="(subItem, subIndex) in item.submenu" :key="subIndex">
                     <ep-menu-item
                       :type="subItem.type"
-                      :is-disabled="subItem.disabled"
                       :disabled="subItem.disabled"
                       @select="() => { onSelect(subItem); close() }"
                     >

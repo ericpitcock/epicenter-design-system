@@ -9,12 +9,12 @@
     showOnHover?: boolean
   }
 
-  const props = withDefaults(defineProps<EpDropdownProps>(), {
-    alignRight: false,
-    autoFocus: true,
-    disabled: false,
-    showOnHover: false,
-  })
+  const {
+    alignRight = false,
+    autoFocus = true,
+    disabled = false,
+    showOnHover = false,
+  } = defineProps<EpDropdownProps>()
 
   const emit = defineEmits<{
     click: []
@@ -30,7 +30,7 @@
     'aria-haspopup': 'menu' as const,
     'aria-expanded': dropdownVisible.value,
     'aria-controls': contentId,
-    disabled: props.disabled || undefined
+    disabled: disabled || undefined
   }))
 
   const triggerListeners = computed(() => ({
@@ -42,13 +42,13 @@
   const dropdownVisible = ref(false)
 
   const openDropdown = (): void => {
-    if (props.disabled || dropdownVisible.value) return
+    if (disabled || dropdownVisible.value) return
 
     dropdownVisible.value = true
   }
 
   const closeDropdown = (): void => {
-    if (props.disabled || !dropdownVisible.value) return
+    if (disabled || !dropdownVisible.value) return
 
     dropdownVisible.value = false
     emit('close')
@@ -59,7 +59,7 @@
     await nextTick()
 
     if (isOpen) {
-      if (props.autoFocus) {
+      if (autoFocus) {
         const firstMenuItem = dropdownRef.value?.querySelector('[role="menuitem"]') as HTMLElement | null
         firstMenuItem?.focus()
       }
@@ -70,13 +70,13 @@
   })
 
   const toggleDropdown = (): void => {
-    if (props.disabled || props.showOnHover) return
+    if (disabled || showOnHover) return
 
     dropdownVisible.value = !dropdownVisible.value
   }
 
   const onKeydown = (event: KeyboardEvent): void => {
-    if (props.disabled) return
+    if (disabled) return
     const key = event.key
     if (key === 'Enter' || key === ' ') {
       event.preventDefault()
@@ -91,13 +91,13 @@
   }
 
   const onMouseover = (): void => {
-    if (!props.disabled && props.showOnHover) {
+    if (!disabled && showOnHover) {
       dropdownVisible.value = true
     }
   }
 
   const onMouseleave = (): void => {
-    if (!props.disabled && props.showOnHover) {
+    if (!disabled && showOnHover) {
       dropdownVisible.value = false
     }
   }

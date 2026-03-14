@@ -10,12 +10,12 @@
     minSize?: number
   }
 
-  const props = withDefaults(defineProps<EpResizableProps>(), {
-    direction: 'row',
-    initialSize: '300px',
-    maxSize: 800,
-    minSize: 200,
-  })
+  const {
+    direction = 'row',
+    initialSize = '300px',
+    maxSize = 800,
+    minSize = 200,
+  } = defineProps<EpResizableProps>()
 
   const emit = defineEmits<{
     resize: [size: number]
@@ -28,21 +28,21 @@
   const currentSize = ref<number | null>(null)
 
   type ResizeEdge = 'left' | 'right' | 'top' | 'bottom'
-  const dragEdge = computed<ResizeEdge>(() => (props.direction === 'row' ? 'right' : 'bottom'))
+  const dragEdge = computed<ResizeEdge>(() => (direction === 'row' ? 'right' : 'bottom'))
 
-  const computedSize = computed(() => hasBeenDragged.value ? `0 0 ${currentSize.value}px` : `0 0 ${props.initialSize}`)
+  const computedSize = computed(() => hasBeenDragged.value ? `0 0 ${currentSize.value}px` : `0 0 ${initialSize}`)
 
   const handleDragStart = (event: MouseEvent | TouchEvent): void => {
     if (!hasBeenDragged.value && resizablePane.value) {
       const { width, height } = resizablePane.value.getBoundingClientRect()
-      currentSize.value = props.direction === 'row' ? width : height
+      currentSize.value = direction === 'row' ? width : height
     }
 
     hasBeenDragged.value = true
     isDragging.value = true
 
     const touch = 'touches' in event ? event.touches[0] : null
-    startPos.value = props.direction === 'row'
+    startPos.value = direction === 'row'
       ? (touch ? touch.clientX : (event as MouseEvent).clientX)
       : (touch ? touch.clientY : (event as MouseEvent).clientY)
 
@@ -56,7 +56,7 @@
     if (!isDragging.value || currentSize.value === null) return
 
     const touch = 'touches' in event ? event.touches[0] : null
-    const currentPos = props.direction === 'row'
+    const currentPos = direction === 'row'
       ? (touch ? touch.clientX : (event as MouseEvent).clientX)
       : (touch ? touch.clientY : (event as MouseEvent).clientY)
 
@@ -65,7 +65,7 @@
 
     let newSize = currentSize.value + delta
 
-    newSize = Math.max(props.minSize, Math.min(props.maxSize, newSize))
+    newSize = Math.max(minSize, Math.min(maxSize, newSize))
 
     currentSize.value = newSize
     emit('resize', newSize)

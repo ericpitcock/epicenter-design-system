@@ -20,17 +20,18 @@
     scrollZoom?: boolean
   }
 
-  const props = withDefaults(defineProps<EpMapProps>(), {
-    fitToBounds: false,
-    mapCenter: () => [-122.3321, 47.6062],
-    mapLayer: null,
-    mapSource: null,
-    mapStyle: 'mapbox://styles/mapbox/streets-v11',
-    mapZoom: 12,
-    navigationControl: true,
-    pinLocations: () => [],
-    scrollZoom: true,
-  })
+  const {
+    accessToken,
+    fitToBounds = false,
+    mapCenter = [-122.3321, 47.6062],
+    mapLayer = null,
+    mapSource = null,
+    mapStyle = 'mapbox://styles/mapbox/streets-v11',
+    mapZoom = 12,
+    navigationControl = true,
+    pinLocations = [],
+    scrollZoom = true,
+  } = defineProps<EpMapProps>()
 
   const emit = defineEmits<{
     centerChange: [center: [number, number]]
@@ -46,26 +47,26 @@
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let mapboxgl: any = null
 
-  watch(() => props.mapCenter, (newCenter) => {
+  watch(() => mapCenter, (newCenter) => {
     emit('centerChange', newCenter)
-    flyTo(newCenter, props.mapZoom)
+    flyTo(newCenter, mapZoom)
   })
 
-  watch(() => props.mapZoom, (newZoom) => {
+  watch(() => mapZoom, (newZoom) => {
     emit('zoomChange', newZoom)
-    flyTo(props.mapCenter, newZoom)
+    flyTo(mapCenter, newZoom)
   })
 
-  watch(() => props.mapStyle, (newStyle: string) => {
+  watch(() => mapStyle, (newStyle: string) => {
     map.value.setStyle(newStyle)
   })
 
-  watch(() => props.pinLocations, () => {
+  watch(() => pinLocations, () => {
     removeMarkers()
     addMarkers()
   })
 
-  watch(() => props.scrollZoom, (newScrollZoom: boolean) => {
+  watch(() => scrollZoom, (newScrollZoom: boolean) => {
     if (newScrollZoom) {
       map.value.scrollZoom.enable()
     } else {
@@ -85,11 +86,11 @@
 
   onMounted(() => {
     loadMap().then(() => {
-      if (props.mapSource && props.mapLayer) addSource(props.mapSource, props.mapLayer)
-      if (props.fitToBounds && props.mapSource) {
-        fitBounds(getBounds(props.mapSource.source.data.geometry.coordinates))
+      if (mapSource && mapLayer) addSource(mapSource, mapLayer)
+      if (fitToBounds && mapSource) {
+        fitBounds(getBounds(mapSource.source.data.geometry.coordinates))
       }
-      if (props.pinLocations.length) addMarkers()
+      if (pinLocations.length) addMarkers()
       init.value = false
     })
 
@@ -115,15 +116,15 @@
       import('mapbox-gl').then((module) => {
         mapboxgl = module.default
         map.value = new mapboxgl.Map({
-          accessToken: props.accessToken,
+          accessToken: accessToken,
           container: 'ep-map',
-          center: props.mapCenter,
-          zoom: props.mapZoom,
-          style: props.mapStyle,
+          center: mapCenter,
+          zoom: mapZoom,
+          style: mapStyle,
         })
 
-        if (!props.scrollZoom) map.value.scrollZoom.disable()
-        if (props.navigationControl) map.value.addControl(new mapboxgl.NavigationControl())
+        if (!scrollZoom) map.value.scrollZoom.disable()
+        if (navigationControl) map.value.addControl(new mapboxgl.NavigationControl())
 
         map.value.on('load', () => resolve())
         map.value.on('dragend', onDragEnd)
@@ -132,7 +133,7 @@
   }
 
   const addMarkers = (): void => {
-    props.pinLocations.forEach((location) => {
+    pinLocations.forEach((location) => {
       const marker = new mapboxgl.Marker().setLngLat(location).addTo(map.value)
       markers.value.push(marker)
     })
@@ -143,7 +144,7 @@
     markers.value = []
   }
 
-  const flyTo = (center: [number, number] = props.mapCenter, zoom: number = props.mapZoom): void => {
+  const flyTo = (center: [number, number] = mapCenter, zoom: number = mapZoom): void => {
     map.value.flyTo({
       center,
       zoom

@@ -13,16 +13,17 @@
     width?: string | number
   }
 
-  const props = withDefaults(defineProps<EpImageProps>(), {
-    alt: '',
-    className: '',
-    height: '100%',
-    lazy: true,
-    placeholder: '',
-    placeholderColor: '#f5f5f5',
-    placeholderOpacity: 1,
-    width: '100%',
-  })
+  const {
+    src,
+    alt = '',
+    className = '',
+    height = '100%',
+    lazy = true,
+    placeholder = '',
+    placeholderColor = '#f5f5f5',
+    placeholderOpacity = 1,
+    width = '100%',
+  } = defineProps<EpImageProps>()
 
   const isLoaded = ref(false)
   const imageEl = ref<HTMLElement | null>(null)
@@ -30,11 +31,11 @@
 
   const placeholderStyle = computed(() => {
     return {
-      width: props.width,
-      height: props.height,
-      backgroundColor: props.placeholderColor,
-      opacity: props.placeholderOpacity,
-      backgroundImage: props.placeholder ? `url(${props.placeholder})` : '',
+      width: width,
+      height: height,
+      backgroundColor: placeholderColor,
+      opacity: placeholderOpacity,
+      backgroundImage: placeholder ? `url(${placeholder})` : '',
       backgroundSize: 'cover',
     }
   })
@@ -56,14 +57,14 @@
 
   const loadImage = (): void => {
     const img = new Image()
-    img.src = props.src
+    img.src = src
     img.onload = () => {
       isLoaded.value = true
     }
   }
 
   onMounted(() => {
-    if (props.lazy) {
+    if (lazy) {
       addLazyLoadListener()
     } else {
       loadImage()

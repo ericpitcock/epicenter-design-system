@@ -57,9 +57,7 @@
     images?: CarouselImage[]
   }
 
-  const props = withDefaults(defineProps<EpCarouselProps>(), {
-    images: () => [],
-  })
+  const { images = [] } = defineProps<EpCarouselProps>()
 
   const emit = defineEmits<{
     'image-click': [payload: { image: CarouselImage; index: number }]
@@ -75,7 +73,7 @@
   let containerObserver: IntersectionObserver | null = null
   let resizeObserver: ResizeObserver | null = null
 
-  watch(() => props.images, () => {
+  watch(() => images, () => {
     currentIndex.value = 0
     nextTick(() => {
       if (itemRefs.value[0] && carouselTrack.value) {
@@ -117,7 +115,7 @@
 
     if (currentIndex.value !== closestIndex) {
       currentIndex.value = closestIndex
-      emit('slide-change', { index: closestIndex, image: props.images[closestIndex] })
+      emit('slide-change', { index: closestIndex, image: images[closestIndex] })
     }
   }
 
@@ -139,7 +137,7 @@
     })
 
     currentIndex.value = index
-    emit('image-click', { image: props.images[index], index })
+    emit('image-click', { image: images[index], index })
   }
 
   const getImageContainerStyle = (image: CarouselImage): Record<string, string> => {

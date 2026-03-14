@@ -7,6 +7,7 @@ import Settings04 from '@ericpitcock/epicenter-icons-vue/Settings04'
 import { centeredBg } from '@sb/helpers/decorators.js'
 
 import EpButton from '@/components/button/EpButton.vue'
+import EpInput from '@/components/input/EpInput.vue'
 import EpMenu from '@/components/menu/EpMenu.vue'
 import EpMenuItem from '@/components/menu/EpMenuItem.vue'
 
@@ -28,6 +29,14 @@ export default {
         }
       }
     },
+    showHeader: {
+      name: 'Show Header',
+      control: { type: 'boolean' }
+    },
+    showFooter: {
+      name: 'Show Footer',
+      control: { type: 'boolean' }
+    },
     menuType: { table: { disable: true } },
   }
 }
@@ -37,6 +46,7 @@ export const Menu = args => ({
     EpMenu,
     EpMenuItem,
     EpButton,
+    EpInput,
     Radar01,
     ArrowRight01,
     ArrowUpRight,
@@ -154,10 +164,12 @@ export const Menu = args => ({
   },
   template: `
     <ep-menu v-bind="args">
+      <template v-if="args.showHeader" #header>
+        <ep-input placeholder="Search..." size="small" />
+      </template>
       <template v-for="(item, index) in menuItems" :key="index">
         <ep-menu-item
           :type="item.type"
-          :is-disabled="item.disabled"
           :disabled="item.disabled"
           @select="() => onSelect(item)"
         >
@@ -185,7 +197,6 @@ export const Menu = args => ({
               <template v-for="(subItem, subIndex) in item.submenu" :key="subIndex">
                 <ep-menu-item
                   :type="subItem.type"
-                  :is-disabled="subItem.disabled"
                   :disabled="subItem.disabled"
                   @select="() => onSelect(subItem)"
                 >
@@ -213,10 +224,15 @@ export const Menu = args => ({
           </template>
         </ep-menu-item>
       </template>
+      <template v-if="args.showFooter" #footer>
+        <ep-button size="small" style="width: 100%;">See all results</ep-button>
+      </template>
     </ep-menu>
   `
 })
 
 Menu.args = {
   size: 'default',
+  showHeader: false,
+  showFooter: false,
 }

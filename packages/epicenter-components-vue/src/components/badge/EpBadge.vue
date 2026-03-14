@@ -6,9 +6,7 @@
     label?: string
   }
 
-  withDefaults(defineProps<EpBadgeProps>(), {
-    label: '',
-  })
+  const { label = '' } = defineProps<EpBadgeProps>()
 </script>
 
 <template>

@@ -12,7 +12,7 @@
   const getFocusableItems = (): Element[] => {
     if (!menuRef.value) return []
 
-    const allItems = menuRef.value.querySelectorAll('[role="menuitem"]:not([disabled="true"])')
+    const allItems = menuRef.value.querySelectorAll('[role="menuitem"]:not([aria-disabled="true"])')
     return Array.from(allItems).filter(item => {
       const closestMenu = item.closest('.ep-menu')
       return closestMenu === menuRef.value
@@ -117,10 +117,28 @@
   <div
     ref="menuRef"
     class="ep-menu"
-    role="menu"
     @keydown="onKeydown"
   >
-    <!-- @slot Default slot for menu items (EpMenuItem components). -->
-    <slot />
+    <div
+      v-if="$slots.header"
+      class="ep-menu__header"
+    >
+      <!-- @slot Header content rendered above the menu items, outside keyboard navigation. -->
+      <slot name="header" />
+    </div>
+    <div
+      role="menu"
+      class="ep-menu__items"
+    >
+      <!-- @slot Default slot for menu items (EpMenuItem components). -->
+      <slot />
+    </div>
+    <div
+      v-if="$slots.footer"
+      class="ep-menu__footer"
+    >
+      <!-- @slot Footer content rendered below the menu items, outside keyboard navigation. -->
+      <slot name="footer" />
+    </div>
   </div>
 </template>

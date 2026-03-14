@@ -27,72 +27,72 @@
   &.ep-tooltip--top-left {
     bottom: 100%;
     left: 0;
-    transform: translateY(calc(-1 * var(--ep-tooltip-offset)));
+    transform: translateX(var(--ep-tooltip-offset-x, 0px)) translateY(calc(var(--ep-tooltip-offset-y, 0px) - var(--ep-tooltip-offset)));
   }
 
   &.ep-tooltip--top-center {
     bottom: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(calc(-1 * var(--ep-tooltip-offset)));
+    transform: translateX(calc(-50% + var(--ep-tooltip-offset-x, 0px))) translateY(calc(var(--ep-tooltip-offset-y, 0px) - var(--ep-tooltip-offset)));
   }
 
   &.ep-tooltip--top-right {
     right: 0;
     bottom: 100%;
-    transform: translateY(calc(-1 * var(--ep-tooltip-offset)));
+    transform: translateX(var(--ep-tooltip-offset-x, 0px)) translateY(calc(var(--ep-tooltip-offset-y, 0px) - var(--ep-tooltip-offset)));
   }
 
   &.ep-tooltip--right-top {
     top: 0;
     left: 100%;
-    transform: translateX(var(--ep-tooltip-offset));
+    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) + var(--ep-tooltip-offset))) translateY(var(--ep-tooltip-offset-y, 0px));
   }
 
   &.ep-tooltip--right-center {
     top: 50%;
     left: 100%;
-    transform: translateX(var(--ep-tooltip-offset)) translateY(-50%);
+    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) + var(--ep-tooltip-offset))) translateY(calc(-50% + var(--ep-tooltip-offset-y, 0px)));
   }
 
   &.ep-tooltip--right-bottom {
     bottom: 0;
     left: 100%;
-    transform: translateX(var(--ep-tooltip-offset));
+    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) + var(--ep-tooltip-offset))) translateY(var(--ep-tooltip-offset-y, 0px));
   }
 
   &.ep-tooltip--bottom-left {
     top: 100%;
     left: 0;
-    transform: translateY(var(--ep-tooltip-offset));
+    transform: translateX(var(--ep-tooltip-offset-x, 0px)) translateY(calc(var(--ep-tooltip-offset-y, 0px) + var(--ep-tooltip-offset)));
   }
 
   &.ep-tooltip--bottom-center {
     top: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(var(--ep-tooltip-offset));
+    transform: translateX(calc(-50% + var(--ep-tooltip-offset-x, 0px))) translateY(calc(var(--ep-tooltip-offset-y, 0px) + var(--ep-tooltip-offset)));
   }
 
   &.ep-tooltip--bottom-right {
     top: 100%;
     right: 0;
-    transform: translateY(var(--ep-tooltip-offset));
+    transform: translateX(var(--ep-tooltip-offset-x, 0px)) translateY(calc(var(--ep-tooltip-offset-y, 0px) + var(--ep-tooltip-offset)));
   }
 
   &.ep-tooltip--left-top {
     top: 0;
     right: 100%;
-    transform: translateX(calc(-1 * var(--ep-tooltip-offset)));
+    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) - var(--ep-tooltip-offset))) translateY(var(--ep-tooltip-offset-y, 0px));
   }
 
   &.ep-tooltip--left-center {
     top: 50%;
     right: 100%;
-    transform: translateX(calc(-1 * var(--ep-tooltip-offset))) translateY(-50%);
+    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) - var(--ep-tooltip-offset))) translateY(calc(-50% + var(--ep-tooltip-offset-y, 0px)));
   }
 
   &.ep-tooltip--left-bottom {
     right: 100%;
     bottom: 0;
-    transform: translateX(calc(-1 * var(--ep-tooltip-offset)));
+    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) - var(--ep-tooltip-offset))) translateY(var(--ep-tooltip-offset-y, 0px));
   }
 }

@@ -12,6 +12,8 @@
 | Name | Description |
 |------|-------------|
 | `default` | Default slot for menu items (EpMenuItem components). |
+| `header` | Header content rendered above the menu items, outside keyboard navigation. |
+| `footer` | Footer content rendered below the menu items, outside keyboard navigation. |
 
 
 ::: info

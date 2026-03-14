@@ -11,12 +11,12 @@
     message?: LoadingMessage
   }
 
-  withDefaults(defineProps<EpLoadingStateProps>(), {
-    message: () => ({
+  const {
+    message = {
       icon: '',
       message: '',
-    }),
-  })
+    },
+  } = defineProps<EpLoadingStateProps>()
 </script>
 
 <template>

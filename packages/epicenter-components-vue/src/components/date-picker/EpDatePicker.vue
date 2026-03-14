@@ -16,14 +16,14 @@
     positionY?: string
   }
 
-  const props = withDefaults(defineProps<EpDatePickerProps>(), {
-    dateFormat: 'm/d/Y',
-    enableCloseOnSelect: true,
-    inputProps: () => ({}),
-    mode: 'single',
-    positionX: 'left',
-    positionY: 'auto',
-  })
+  const {
+    dateFormat = 'm/d/Y',
+    enableCloseOnSelect = true,
+    inputProps = {},
+    mode = 'single',
+    positionX = 'left',
+    positionY = 'auto',
+  } = defineProps<EpDatePickerProps>()
 
   const emit = defineEmits<{
     input: []
@@ -50,7 +50,7 @@
 
   const computedInputProps = computed(() => ({
     ...inputDefaults,
-    ...props.inputProps,
+    ...inputProps,
   }))
 
   const initFlatpickr = async (): Promise<void> => {
@@ -59,10 +59,10 @@
     if (!flatpickrInstance) {
       const { default: Flatpickr } = await import('flatpickr')
       flatpickrInstance = new (Flatpickr as any)(datePickerInput.value.$el as HTMLElement, {
-        closeOnSelect: props.enableCloseOnSelect,
-        dateFormat: props.dateFormat,
-        mode: props.mode,
-        position: `${props.positionY} ${props.positionX}`,
+        closeOnSelect: enableCloseOnSelect,
+        dateFormat: dateFormat,
+        mode: mode,
+        position: `${positionY} ${positionX}`,
         onChange: onChange,
         onOpen: onOpen,
       })
@@ -73,7 +73,7 @@
     initFlatpickr()
   })
 
-  watch(() => props.mode, () => {
+  watch(() => mode, () => {
     if (flatpickrInstance) {
       flatpickrInstance.destroy()
       flatpickrInstance = null
