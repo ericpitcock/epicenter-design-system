@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import ArrowLeft01 from '@ericpitcock/epicenter-icons-vue/ArrowLeft01'
   import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
 
   import type { SelectOption } from '../../types'
   import EpButton from '../button/EpButton.vue'
@@ -144,7 +144,7 @@
         <ep-flex class="justify-end align-center gap-10 text--overflow-hidden">
           Results per page
           <ep-select
-            v-model="resultsPerPage"
+            :model-value="resultsPerPage"
             select-id="resultsPerPage"
             :options="resultsPerPageOptions"
             width="7.5rem"

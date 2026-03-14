@@ -1,8 +1,7 @@
+import { paddedBg } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
 import EpHeader from '@/components/header/EpHeader.vue'
-
-import { paddedBg } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Container/Header',

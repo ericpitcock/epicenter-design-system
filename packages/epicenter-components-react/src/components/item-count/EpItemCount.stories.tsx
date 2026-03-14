@@ -1,6 +1,5 @@
 import { EpItemCount } from '@ericpitcock/epicenter-components-react';
-import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof EpItemCount> = {
   title: 'Components/ItemCount',

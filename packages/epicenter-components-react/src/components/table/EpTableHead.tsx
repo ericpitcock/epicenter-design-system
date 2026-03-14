@@ -1,21 +1,22 @@
 import React from 'react'
+
 import type { Column } from './EpTable'
 
 export interface EpTableHeadProps {
-  /** Array of column configuration objects defining table structure */
-  columns: Column[]
   /** Array of width values for each column cell */
   cellWidths?: React.CSSProperties[]
+  /** Array of column configuration objects defining table structure */
+  columns: Column[]
   /** If true, enables fixed header behavior */
   fixedHeader?: boolean
-  /** If true, shows an additional column for the actions menu */
-  showActionsMenu?: boolean
   /** Custom header renderer for sortable columns */
   renderHeader?: (props: {
     column: Column
     cellWidths: React.CSSProperties[]
     columnIndex: number
   }) => React.ReactNode
+  /** If true, shows an additional column for the actions menu */
+  showActionsMenu?: boolean
 }
 
 /**
@@ -27,7 +28,6 @@ export interface EpTableHeadProps {
 export const EpTableHead: React.FC<EpTableHeadProps> = ({
   columns,
   cellWidths = [],
-  fixedHeader = false,
   showActionsMenu = false,
   renderHeader
 }) => {

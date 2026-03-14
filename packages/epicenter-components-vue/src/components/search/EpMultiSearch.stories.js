@@ -1,9 +1,8 @@
+import { paddedSurface } from '@sb/helpers/decorators.js'
 import { computed,ref } from 'vue'
 
 import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpMultiSearch from '@/components/search/EpMultiSearch.vue'
-
-import { paddedSurface } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Search/Multisearch',

@@ -1,6 +1,6 @@
-import EpCarousel from '@/components/carousel/EpCarousel.vue'
-
 import { centeredSurface } from '@sb/helpers/decorators.js'
+
+import EpCarousel from '@/components/carousel/EpCarousel.vue'
 
 export default {
   title: 'Components/Carousel',

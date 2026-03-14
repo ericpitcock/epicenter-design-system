@@ -1,4 +1,5 @@
 import React, { forwardRef, useState, ReactNode } from 'react';
+
 import { EpButton } from '../button/EpButton';
 import { EpDropdown } from '../dropdown/EpDropdown';
 import { EpFlex } from '../flexbox/EpFlex';
@@ -21,18 +22,18 @@ const Asterisk02 = () => (
 );
 
 export interface EnrichmentOption {
-  label: string;
   [key: string]: unknown;
+  label: string;
 }
 
 export interface EpEnrichmentDropdownProps {
-  label?: string;
-  enrichmentOptions: EnrichmentOption[];
-  enrichmentData?: Record<string, unknown> | null;
-  trigger?: ReactNode;
+  [key: string]: unknown;
   action?: ReactNode;
   className?: string;
-  [key: string]: unknown;
+  enrichmentData?: Record<string, unknown> | null;
+  enrichmentOptions: EnrichmentOption[];
+  label?: string;
+  trigger?: ReactNode;
 }
 
 export const EpEnrichmentDropdown = forwardRef<

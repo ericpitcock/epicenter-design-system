@@ -1,27 +1,28 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
+
 import { EpButton } from '../button/EpButton'
 import { EpImage } from '../image/EpImage'
 
 export interface CarouselImage {
-  src: string
   alt?: string
-  caption?: string
   aspectRatio?: string
-  zoom?: number
+  caption?: string
+  captionPosition?: 'top-left' | 'top-center' | 'top-right' | 'left-center' | 'center' | 'right-center' | 'bottom-left' | 'bottom-center' | 'bottom-right'
   positionX?: string
   positionY?: string
-  captionPosition?: 'top-left' | 'top-center' | 'top-right' | 'left-center' | 'center' | 'right-center' | 'bottom-left' | 'bottom-center' | 'bottom-right'
+  src: string
+  zoom?: number
 }
 
 export interface EpCarouselProps {
+  /** Additional CSS classes */
+  className?: string
   /** Array of image objects to display in the carousel */
   images: CarouselImage[]
   /** Callback when image is clicked */
   onImageClick?: (params: { image: CarouselImage; index: number }) => void
   /** Callback when slide changes */
   onSlideChange?: (params: { image: CarouselImage; index: number }) => void
-  /** Additional CSS classes */
-  className?: string
 }
 
 /**
@@ -40,8 +41,8 @@ export const EpCarousel: React.FC<EpCarouselProps> = ({
   const carouselTrackRef = useRef<HTMLDivElement>(null)
   const itemRefsRef = useRef<(HTMLDivElement | null)[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [shouldLoadImages, setShouldLoadImages] = useState(false)
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const [, setShouldLoadImages] = useState(false)
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   // Reset to first image when images prop changes
   useEffect(() => {

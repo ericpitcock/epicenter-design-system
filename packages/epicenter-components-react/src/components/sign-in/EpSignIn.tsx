@@ -1,7 +1,8 @@
 import React, { forwardRef, useState, FormEvent } from 'react';
+
+import { EpButton } from '../button/EpButton';
 import { EpContainer } from '../container/EpContainer';
 import { EpInput } from '../input/EpInput';
-import { EpButton } from '../button/EpButton';
 import { EpLoadingState } from '../loading-state/EpLoadingState';
 import { EpicenterLogo } from '../logo/EpicenterLogo';
 
@@ -16,11 +17,11 @@ const Eye = () => (
 );
 
 export interface EpSignInProps {
-  onSignIn?: (email: string, password: string) => void;
-  onReset?: (email: string) => void;
-  containerProps?: React.ComponentProps<typeof EpContainer>;
-  className?: string;
   [key: string]: unknown;
+  className?: string;
+  containerProps?: React.ComponentProps<typeof EpContainer>;
+  onReset?: (email: string) => void;
+  onSignIn?: (email: string, password: string) => void;
 }
 
 export const EpSignIn = forwardRef<HTMLDivElement, EpSignInProps>(

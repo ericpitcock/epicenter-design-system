@@ -24,12 +24,8 @@
   }
 
   const {
-    autofocus = false,
     backgroundColor = 'var(--interface-foreground)',
-    borderColor = 'var(--border-color)',
     borderRadius = 'var(--border-radius)',
-    borderStyle = 'solid',
-    borderWidth = '0.1rem',
     color = 'var(--text-color)',
     disabled = false,
     height = '5rem',

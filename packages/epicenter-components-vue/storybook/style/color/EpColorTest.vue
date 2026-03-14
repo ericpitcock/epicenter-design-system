@@ -1,3 +1,29 @@
+<script setup>
+  import { computed } from 'vue'
+
+  import EpBadge from '@/components/badge/EpBadge.vue'
+  import EpButton from '@/components/button/EpButton.vue'
+
+  const props = defineProps({
+    hue: {
+      type: Number,
+      default: 223
+    },
+    saturation: {
+      type: Number,
+      default: 100
+    },
+    lightness: {
+      type: Number,
+      default: 65
+    }
+  })
+
+  const primaryColor = computed(() => {
+    return `hsl(${props.hue}, ${props.saturation}%, ${props.lightness}%)`
+  })
+</script>
+
 <template>
   <div class="color-test">
     <div class="copy-block">
@@ -35,32 +61,6 @@
     />
   </div>
 </template>
-
-<script setup>
-  import { computed } from 'vue'
-
-  import EpBadge from '@/components/badge/EpBadge.vue'
-  import EpButton from '@/components/button/EpButton.vue'
-
-  const props = defineProps({
-    hue: {
-      type: Number,
-      default: 223
-    },
-    saturation: {
-      type: Number,
-      default: 100
-    },
-    lightness: {
-      type: Number,
-      default: 65
-    }
-  })
-
-  const primaryColor = computed(() => {
-    return `hsl(${props.hue}, ${props.saturation}%, ${props.lightness}%)`
-  })
-</script>
 
 <style lang="scss" scoped>
   .copy-block p {

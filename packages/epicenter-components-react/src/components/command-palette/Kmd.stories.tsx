@@ -13,7 +13,7 @@ import { Settings01 } from '@ericpitcock/epicenter-icons-react/Settings01.jsx';
 import { Sun01 } from '@ericpitcock/epicenter-icons-react/Sun01.jsx';
 import { Upload01 } from '@ericpitcock/epicenter-icons-react/Upload01.jsx';
 import { User } from '@ericpitcock/epicenter-icons-react/User.jsx';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
 import { Kmd } from './Kmd';

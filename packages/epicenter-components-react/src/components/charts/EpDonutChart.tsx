@@ -3,22 +3,22 @@ import React, { useEffect, useRef, useState } from 'react'
 export interface EpDonutChartProps {
   /** If true, animates the chart on initial render */
   animate?: boolean
-  /** Width of the chart in pixels */
-  width?: number
-  /** Height of the chart in pixels */
-  height?: number
-  /** Margin around the chart in pixels */
-  margin?: number
+  /** Additional CSS classes */
+  className?: string
   /** Array of numeric values for each segment */
   data: number[]
+  /** Height of the chart in pixels */
+  height?: number
   /** Array of label strings corresponding to each data segment */
   labels: string[]
+  /** Margin around the chart in pixels */
+  margin?: number
   /** Text or number to display in the center */
   value?: string
   /** CSS class for styling the center value text */
   valueTextClass?: string
-  /** Additional CSS classes */
-  className?: string
+  /** Width of the chart in pixels */
+  width?: number
 }
 
 /**

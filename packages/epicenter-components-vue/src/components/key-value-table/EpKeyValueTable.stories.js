@@ -1,9 +1,9 @@
+import { enrichmentSources, getFakeEnrichmentResponse } from '@sb/data/enrichmentData.js'
+import { paddedBg } from '@sb/helpers/decorators.js'
+
 import EpContainer from '@/components/container/EpContainer.vue'
 import EpContextualLookup from '@/components/contextual-lookup/EpContextualLookup.vue'
 import EpKeyValueTable from '@/components/key-value-table/EpKeyValueTable.vue'
-
-import { enrichmentSources, getFakeEnrichmentResponse } from '@sb/data/enrichmentData.js'
-import { paddedBg } from '@sb/helpers/decorators.js'
 
 const primaryData = [{
   name: 'Primary',

@@ -1,15 +1,15 @@
 import React, { forwardRef, useState, ChangeEvent } from 'react';
 
 export interface EpRangeInputFilterProps {
-  appliedFilters: Record<string, unknown>;
-  filterKey: string;
-  columnKey: string;
-  min: number;
-  max: number;
-  value?: number;
-  onChange?: (filters: Record<string, number>) => void;
-  className?: string;
   [key: string]: unknown;
+  appliedFilters: Record<string, unknown>;
+  className?: string;
+  columnKey: string;
+  filterKey: string;
+  max: number;
+  min: number;
+  onChange?: (filters: Record<string, number>) => void;
+  value?: number;
 }
 
 export const EpRangeInputFilter = forwardRef<
@@ -18,8 +18,6 @@ export const EpRangeInputFilter = forwardRef<
 >(
   (
     {
-      appliedFilters,
-      filterKey,
       columnKey,
       min,
       max,

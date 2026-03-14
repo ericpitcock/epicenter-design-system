@@ -12,16 +12,16 @@ import type {
 
 /** Return type of the useDataFilters composable */
 export interface UseDataFiltersReturn {
-  /** Generated checkbox filters keyed by column */
-  filters: Ref<Filters>
   /** Data after applying all active filters */
   filteredData: ComputedRef<TableRow[]>
+  /** Generated checkbox filters keyed by column */
+  filters: Ref<Filters>
   /** Toggle a single filter checkbox */
   onFilterUpdate: (payload: FilterUpdatePayload) => void
-  /** Reset all filters to their default checked state */
-  resetFilters: () => void
   /** Manually regenerate filter options (e.g., after data changes) */
   refreshFilters: () => void
+  /** Reset all filters to their default checked state */
+  resetFilters: () => void
 }
 
 /**

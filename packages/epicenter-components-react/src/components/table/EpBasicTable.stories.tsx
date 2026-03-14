@@ -1,6 +1,5 @@
 import { EpBasicTable } from '@ericpitcock/epicenter-components-react'
-import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof EpBasicTable> = {
   title: 'Components/BasicTable',

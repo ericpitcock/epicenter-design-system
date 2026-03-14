@@ -1,4 +1,6 @@
 import ArrowDown01 from '@ericpitcock/epicenter-icons-vue/ArrowDown01'
+import { centeredBg } from '@sb/helpers/decorators.js'
+import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { ref, toRef } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
@@ -6,9 +8,6 @@ import EpDropdown from '@/components/dropdown/EpDropdown.vue'
 // import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 import EpMenu from '@/components/menu/EpMenu.vue'
 import EpMenuItem from '@/components/menu/EpMenuItem.vue'
-
-import { centeredBg } from '@sb/helpers/decorators.js'
-import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 
 export default {
   title: 'Components/Button/Split Button',

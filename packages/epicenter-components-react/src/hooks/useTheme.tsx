@@ -5,10 +5,10 @@ type Theme = 'light' | 'dark';
 const STORAGE_KEY = 'theme-preference';
 
 interface ThemeContextValue {
+  clearThemePreference: () => void;
+  setTheme: (newTheme: Theme) => void;
   theme: Theme;
   toggleTheme: () => void;
-  setTheme: (newTheme: Theme) => void;
-  clearThemePreference: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);

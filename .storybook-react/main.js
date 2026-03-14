@@ -12,9 +12,7 @@ const config = {
     '../packages/epicenter-components-react/storybook/**/*.stories.tsx',
   ],
   addons: [
-    '@storybook/addon-controls',
     '@storybook/addon-docs',
-    '@storybook/addon-toolbars',
   ],
   staticDirs: ['../static'],
   framework: {

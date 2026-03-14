@@ -1,32 +1,13 @@
-import React, { forwardRef, ReactNode, useId, useState, KeyboardEvent, FocusEvent, ChangeEvent } from 'react'
+import React, { forwardRef, ReactNode, useId, KeyboardEvent, FocusEvent, ChangeEvent } from 'react'
+
 import { EpInputStyler } from '../input-styler/EpInputStyler'
 
 export interface EpInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
   /**
-   * The ID attribute for the input element. Auto-generated if not provided.
+   * If true, automatically focuses the input on mount.
+   * @default false
    */
-  inputId?: string
-  /**
-   * Label text for the input (used as placeholder when empty).
-   */
-  label?: string
-  /**
-   * The input type attribute.
-   * @default 'text'
-   */
-  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search'
-  /**
-   * Placeholder text shown when the input is empty.
-   */
-  placeholder?: string
-  /**
-   * Current value of the input
-   */
-  value?: string
-  /**
-   * Change handler for controlled input
-   */
-  onChange?: (value: string) => void
+  autofocus?: boolean
   /**
    * If true, displays a clear button when input has a value.
    * @default false
@@ -38,35 +19,15 @@ export interface EpInputProps extends Omit<React.InputHTMLAttributes<HTMLInputEl
    */
   disabled?: boolean
   /**
-   * If true, automatically focuses the input on mount.
+   * If true, displays the input in error state.
    * @default false
    */
-  autofocus?: boolean
-  /**
-   * If true, marks the input as required.
-   * @default false
-   */
-  required?: boolean
-  /**
-   * If true, makes the input read-only.
-   * @default false
-   */
-  readonly?: boolean
-  /**
-   * The size variant of the input.
-   * @default 'default'
-   */
-  size?: 'default' | 'large' | 'xlarge'
+  error?: boolean
   /**
    * If true, enables error state styling and message display.
    * @default false
    */
   errorEnabled?: boolean
-  /**
-   * If true, displays the input in error state.
-   * @default false
-   */
-  error?: boolean
   /**
    * Error message to display below the input.
    */
@@ -80,25 +41,65 @@ export interface EpInputProps extends Omit<React.InputHTMLAttributes<HTMLInputEl
    */
   iconRight?: ReactNode
   /**
-   * Handler called when input is focused
+   * The ID attribute for the input element. Auto-generated if not provided.
    */
-  onFocus?: (value: string) => void
+  inputId?: string
+  /**
+   * Label text for the input (used as placeholder when empty).
+   */
+  label?: string
   /**
    * Handler called when input loses focus
    */
   onBlur?: (value: string) => void
   /**
-   * Handler called when Escape key is pressed
+   * Change handler for controlled input
    */
-  onEsc?: (value: string) => void
+  onChange?: (value: string) => void
+  /**
+   * Handler called when clear button is clicked
+   */
+  onClear?: () => void
   /**
    * Handler called when Enter key is pressed
    */
   onEnter?: (value: string) => void
   /**
-   * Handler called when clear button is clicked
+   * Handler called when Escape key is pressed
    */
-  onClear?: () => void
+  onEsc?: (value: string) => void
+  /**
+   * Handler called when input is focused
+   */
+  onFocus?: (value: string) => void
+  /**
+   * Placeholder text shown when the input is empty.
+   */
+  placeholder?: string
+  /**
+   * If true, makes the input read-only.
+   * @default false
+   */
+  readonly?: boolean
+  /**
+   * If true, marks the input as required.
+   * @default false
+   */
+  required?: boolean
+  /**
+   * The size variant of the input.
+   * @default 'default'
+   */
+  size?: 'default' | 'large' | 'xlarge'
+  /**
+   * The input type attribute.
+   * @default 'text'
+   */
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search'
+  /**
+   * Current value of the input
+   */
+  value?: string
 }
 
 export const EpInput = forwardRef<HTMLInputElement, EpInputProps>(({

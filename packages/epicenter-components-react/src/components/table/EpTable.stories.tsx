@@ -1,8 +1,5 @@
 import { EpTable } from '@ericpitcock/epicenter-components-react'
-import { EpTableHead } from '@ericpitcock/epicenter-components-react'
-import { EpTableSortableHeader } from '@ericpitcock/epicenter-components-react'
-import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof EpTable> = {
   title: 'Components/Table',

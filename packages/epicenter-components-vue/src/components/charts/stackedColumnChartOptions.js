@@ -28,7 +28,7 @@ const fakeArrayOfNumbers = (length) => {
 const stackedColumnSeries = () => {
   let array = []
 
-  categories.forEach((category, index) => {
+  categories.forEach((category) => {
     array.push({
       name: category,
       data: fakeArrayOfNumbers(8)

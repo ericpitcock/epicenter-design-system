@@ -1,4 +1,32 @@
 <!-- eslint-disable vue/no-template-shadow -->
+<script setup>
+  import { columns, fakeTableData } from '@sb/data/tableData'
+  import { ref } from 'vue'
+
+  import EpTable from '@/components/table/EpTable.vue'
+  import EpTableHead from '@/components/table/EpTableHead.vue'
+  import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
+  import { useFixedHeader, useSorting } from '@/composables'
+
+  const tableColumnsRef = ref(columns)
+  const tableDataRef = ref(fakeTableData(60))
+
+  const {
+    sortedData,
+    onSortChange,
+    sortColumn,
+    sortOrder
+  } = useSorting(tableColumnsRef, tableDataRef, 'intensity', 'desc')
+
+  const {
+    fixedHeader,
+    cellWidths,
+    tableComponent,
+    tableHead,
+    updateAndSync,
+  } = useFixedHeader(window, true, 100, 0)
+</script>
+
 <template>
   <div>
     <div class="story-header">
@@ -19,11 +47,13 @@
           :columns="visibleColumns"
           :show-actions-menu="showActionsMenu"
         >
-          <template #header="{ column, cellWidths, columnIndex }">
+          <template
+            #header="{ column, cellWidths: slotCellWidths, columnIndex }"
+          >
             <ep-table-sortable-header
               :column="column"
               :column-index="columnIndex"
-              :cell-widths="cellWidths"
+              :cell-widths="slotCellWidths"
               :sort-column="sortColumn"
               :sort-order="sortOrder"
               @sort="onSortChange"
@@ -37,11 +67,13 @@
           :cell-widths="cellWidths"
           :show-actions-menu="showActionsMenu"
         >
-          <template #header="{ column, cellWidths, columnIndex }">
+          <template
+            #header="{ column, cellWidths: slotCellWidths, columnIndex }"
+          >
             <ep-table-sortable-header
               :column="column"
               :column-index="columnIndex"
-              :cell-widths="cellWidths"
+              :cell-widths="slotCellWidths"
               :sort-column="sortColumn"
               :sort-order="sortOrder"
               @sort="onSortChange"
@@ -52,35 +84,6 @@
     </ep-table>
   </div>
 </template>
-
-<script setup>
-  import { ref } from 'vue'
-
-  import EpTable from '@/components/table/EpTable.vue'
-  import EpTableHead from '@/components/table/EpTableHead.vue'
-  import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
-  import { useFixedHeader, useSorting } from '@/composables'
-
-  import { columns, fakeTableData } from '@sb/data/tableData'
-
-  const tableColumnsRef = ref(columns)
-  const tableDataRef = ref(fakeTableData(60))
-
-  const {
-    sortedData,
-    onSortChange,
-    sortColumn,
-    sortOrder
-  } = useSorting(tableColumnsRef, tableDataRef, 'intensity', 'desc')
-
-  const {
-    fixedHeader,
-    cellWidths,
-    tableComponent,
-    tableHead,
-    updateAndSync,
-  } = useFixedHeader(window, true, 100, 0)
-</script>
 
 <style scoped>
   .story-header {

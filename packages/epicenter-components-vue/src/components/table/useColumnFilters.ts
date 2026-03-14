@@ -1,18 +1,19 @@
 import { type ComputedRef, type Ref, computed, ref } from 'vue'
 
 import type { CheckboxFilter, TableColumn, TableRow } from '../../types'
+
 import useExclude from './useExclude'
 
 /** Return type of the useColumnFilters composable */
 export interface UseColumnFiltersReturn {
   /** Checkbox filter items derived from filterable columns */
   columnFilters: ComputedRef<CheckboxFilter[]>
+  /** Toggle a column filter on or off */
+  onFilterToggle: (checked: boolean, filterId: string) => void
   /** Columns visible after applying column filters */
   visibleColumns: ComputedRef<TableColumn[]>
   /** Row data with hidden columns removed */
   visibleData: ComputedRef<TableRow[]>
-  /** Toggle a column filter on or off */
-  onFilterToggle: (checked: boolean, filterId: string) => void
 }
 
 /**

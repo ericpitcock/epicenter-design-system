@@ -1,3 +1,4 @@
+import { paddedBg } from '@sb/helpers/decorators.js'
 import { useClipboard } from '@vueuse/core'
 import blinder from 'color-blind'
 import { computed, ref, watch } from 'vue'
@@ -6,7 +7,6 @@ import EpButton from '@/components/button/EpButton.vue'
 import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.vue'
 
 import chartSeq from '../../../../epicenter-styles/tokens/color/chart-sequence.yaml'
-import { paddedBg } from '@sb/helpers/decorators.js'
 
 // Industry-standard colorblind-safe palettes
 const colorPalettes = {

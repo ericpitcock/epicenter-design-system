@@ -1,178 +1,8 @@
 <!-- eslint-disable vue/no-template-shadow -->
-<template>
-  <ep-flex class="flex-row gap-30">
-    <div
-      class="sidebar"
-      style="position: fixed; flex: 0 0 140px;"
-    >
-      <ep-flex class="flex-col gap-30">
-        <ep-table-checkbox-filters
-          :filters="filters"
-          @update:filters="onFilterUpdate"
-        />
-        <ep-button
-          class="ep-button-var--outline"
-          @click="resetFilters"
-        >
-          Reset
-        </ep-button>
-      </ep-flex>
-    </div>
-    <ep-flex class="flex-col main-content">
-      <ep-flex
-        class="flex-row gap-10"
-        style="height: 50px;"
-      >
-        <ep-multi-search
-          height="3.8rem"
-          placeholder="Search"
-          :icon="{ name: 'search', styles: { '--ep-icon-width': '24px' } }"
-          @enter="onSearchUpdateLocal($event)"
-          @delete="onSearchUpdateLocal($event)"
-          @clear="onSearchUpdateLocal($event)"
-          @query-close="onSearchUpdateLocal($event)"
-        />
-        <ep-dropdown align-right>
-          <template #trigger="{ attrs, on }">
-            <ep-button
-              size="large"
-              aria-label="Column Filters"
-              title="Column Filters"
-              class="ep-button-var--outline"
-              v-bind="attrs"
-              v-on="on"
-            >
-              <template #icon-left>
-                <layout2-column />
-              </template>
-            </ep-button>
-          </template>
-          <template #content>
-            <ep-container class="column-filter-container">
-              <ep-flex class="flex-col gap-10">
-                <ep-checkbox
-                  v-for="filter in columnFilters"
-                  :key="filter.id"
-                  v-bind="filter"
-                  v-model="filter.checked"
-                  @update:model-value="onFilterToggle($event, filter.id)"
-                />
-              </ep-flex>
-            </ep-container>
-          </template>
-        </ep-dropdown>
-      </ep-flex>
-      <ep-empty-state v-if="!paginatedData.length">
-        <p>No matching data</p>
-        <template #subtext>
-          <p>
-            Try <span
-              class="clickable-text"
-              @click="resetFilters"
-            >resetting</span> your filters
-          </p>
-        </template>
-      </ep-empty-state>
-      <template v-else>
-        <ep-table
-          ref="tableComponent"
-          :columns="visibleColumns"
-          :data="paginatedData"
-          class="table"
-          v-bind="$attrs"
-          @row-click="onRowClick"
-        >
-          <template #thead="{ visibleColumns, cellWidths, showActionsMenu }">
-            <ep-table-head
-              :columns="visibleColumns"
-              :cell-widths="cellWidths"
-              :show-actions-menu="showActionsMenu"
-            >
-              <template #header="{ column }">
-                <ep-table-sortable-header
-                  :column="column"
-                  :sort-column="sortColumn"
-                  :sort-order="sortOrder"
-                  @sort="onSortChange"
-                />
-              </template>
-            </ep-table-head>
-          </template>
-          <template #cell-intensity="{ row }">
-            <ep-badge :label="row.intensity" />
-          </template>
-          <template #actions-menu="{ row }">
-            <ep-dropdown align-right>
-              <template #trigger="{ attrs, on }">
-                <ep-button
-                  size="small"
-                  aria-label="Actions"
-                  class="ep-button-var--ghost"
-                  v-bind="attrs"
-                  v-on="on"
-                >
-                  <template #icon-left>
-                    <more-vertical />
-                  </template>
-                </ep-button>
-              </template>
-              <template #content="{ close }">
-                <ep-menu>
-                  <ep-menu-item type="item">
-                    <ep-button
-                      class="ep-button--menu-item"
-                      @click="() => { onEditRow(row.id); close() }"
-                    >
-                      Edit
-                    </ep-button>
-                  </ep-menu-item>
-                  <ep-menu-item type="item">
-                    <ep-button
-                      class="ep-button--menu-item"
-                      @click="() => { onDeleteRow(row.id); close() }"
-                    >
-                      Delete
-                    </ep-button>
-                  </ep-menu-item>
-                </ep-menu>
-              </template>
-            </ep-dropdown>
-          </template>
-          <template
-            #thead-fixed="{ visibleColumns, cellWidths, showActionsMenu }"
-          >
-            <ep-table-head
-              :columns="visibleColumns"
-              :cell-widths="cellWidths"
-              :show-actions-menu="showActionsMenu"
-            >
-              <template #header="{ column }">
-                <ep-table-sortable-header
-                  :column="column"
-                  :sort-column="sortColumn"
-                  :sort-order="sortOrder"
-                  @sort="onSortChange"
-                />
-              </template>
-            </ep-table-head>
-          </template>
-        </ep-table>
-        <ep-pagination
-          :current-page="currentPage"
-          :total-pages="totalPages"
-          :show-pages="true"
-          :results-per-page="pageSize"
-          @page-change="onPageNavigate"
-          @update:results-per-page="onPageSizeUpdate"
-        />
-      </template>
-    </ep-flex>
-  </ep-flex>
-</template>
-
 <script setup>
   import Layout2Column from '@ericpitcock/epicenter-icons-vue/Layout2Column'
   import MoreVertical from '@ericpitcock/epicenter-icons-vue/MoreVertical'
+  import { columns, fakeTableData } from '@sb/data/tableData'
   import { ref } from 'vue'
 
   import EpBadge from '@/components/badge/EpBadge.vue'
@@ -198,8 +28,6 @@
     useSearch,
     useSorting,
   } from '@/composables'
-
-  import { columns, fakeTableData } from '@sb/data/tableData'
 
   const tableData = ref(fakeTableData(340))
   const columnsRef = ref(columns)
@@ -293,6 +121,179 @@
     }
   }
 </script>
+
+<template>
+  <ep-flex class="flex-row gap-30">
+    <div
+      class="sidebar"
+      style="position: fixed; flex: 0 0 140px;"
+    >
+      <ep-flex class="flex-col gap-30">
+        <ep-table-checkbox-filters
+          :filters="filters"
+          @update:filters="onFilterUpdate"
+        />
+        <ep-button
+          class="ep-button-var--outline"
+          @click="resetFilters"
+        >
+          Reset
+        </ep-button>
+      </ep-flex>
+    </div>
+    <ep-flex class="flex-col main-content">
+      <ep-flex
+        class="flex-row gap-10"
+        style="height: 50px;"
+      >
+        <ep-multi-search
+          height="3.8rem"
+          placeholder="Search"
+          :icon="{ name: 'search', styles: { '--ep-icon-width': '24px' } }"
+          @enter="onSearchUpdateLocal($event)"
+          @delete="onSearchUpdateLocal($event)"
+          @clear="onSearchUpdateLocal($event)"
+          @query-close="onSearchUpdateLocal($event)"
+        />
+        <ep-dropdown align-right>
+          <template #trigger="{ attrs, on }">
+            <ep-button
+              size="large"
+              aria-label="Column Filters"
+              title="Column Filters"
+              class="ep-button-var--outline"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <template #icon-left>
+                <layout2-column />
+              </template>
+            </ep-button>
+          </template>
+          <template #content>
+            <ep-container class="column-filter-container">
+              <ep-flex class="flex-col gap-10">
+                <ep-checkbox
+                  v-for="filter in columnFilters"
+                  :key="filter.id"
+                  v-bind="filter"
+                  v-model="filter.checked"
+                  @update:model-value="onFilterToggle($event, filter.id)"
+                />
+              </ep-flex>
+            </ep-container>
+          </template>
+        </ep-dropdown>
+      </ep-flex>
+      <ep-empty-state v-if="!paginatedData.length">
+        <p>No matching data</p>
+        <template #subtext>
+          <p>
+            Try <span
+              class="clickable-text"
+              @click="resetFilters"
+            >resetting</span> your filters
+          </p>
+        </template>
+      </ep-empty-state>
+      <template v-else>
+        <ep-table
+          ref="tableComponent"
+          :columns="visibleColumns"
+          :data="paginatedData"
+          class="table"
+          v-bind="$attrs"
+          @row-click="onRowClick"
+        >
+          <template
+            #thead="{ visibleColumns: slotColumns, cellWidths, showActionsMenu }"
+          >
+            <ep-table-head
+              :columns="slotColumns"
+              :cell-widths="cellWidths"
+              :show-actions-menu="showActionsMenu"
+            >
+              <template #header="{ column }">
+                <ep-table-sortable-header
+                  :column="column"
+                  :sort-column="sortColumn"
+                  :sort-order="sortOrder"
+                  @sort="onSortChange"
+                />
+              </template>
+            </ep-table-head>
+          </template>
+          <template #cell-intensity="{ row }">
+            <ep-badge :label="row.intensity" />
+          </template>
+          <template #actions-menu="{ row }">
+            <ep-dropdown align-right>
+              <template #trigger="{ attrs, on }">
+                <ep-button
+                  size="small"
+                  aria-label="Actions"
+                  class="ep-button-var--ghost"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  <template #icon-left>
+                    <more-vertical />
+                  </template>
+                </ep-button>
+              </template>
+              <template #content="{ close }">
+                <ep-menu>
+                  <ep-menu-item type="item">
+                    <ep-button
+                      class="ep-button--menu-item"
+                      @click="() => { onEditRow(row.id); close() }"
+                    >
+                      Edit
+                    </ep-button>
+                  </ep-menu-item>
+                  <ep-menu-item type="item">
+                    <ep-button
+                      class="ep-button--menu-item"
+                      @click="() => { onDeleteRow(row.id); close() }"
+                    >
+                      Delete
+                    </ep-button>
+                  </ep-menu-item>
+                </ep-menu>
+              </template>
+            </ep-dropdown>
+          </template>
+          <template
+            #thead-fixed="{ visibleColumns: slotColumns, cellWidths, showActionsMenu }"
+          >
+            <ep-table-head
+              :columns="slotColumns"
+              :cell-widths="cellWidths"
+              :show-actions-menu="showActionsMenu"
+            >
+              <template #header="{ column }">
+                <ep-table-sortable-header
+                  :column="column"
+                  :sort-column="sortColumn"
+                  :sort-order="sortOrder"
+                  @sort="onSortChange"
+                />
+              </template>
+            </ep-table-head>
+          </template>
+        </ep-table>
+        <ep-pagination
+          :current-page="currentPage"
+          :total-pages="totalPages"
+          :show-pages="true"
+          :results-per-page="pageSize"
+          @page-change="onPageNavigate"
+          @update:results-per-page="onPageSizeUpdate"
+        />
+      </template>
+    </ep-flex>
+  </ep-flex>
+</template>
 
 <style lang="scss" scoped>
   .table {

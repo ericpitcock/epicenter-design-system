@@ -2,9 +2,9 @@ import React, { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
 export interface BreadcrumbItem {
+  customClass?: string
   label: string
   to?: string
-  customClass?: string
 }
 
 export interface EpBreadcrumbsProps {
@@ -13,13 +13,13 @@ export interface EpBreadcrumbsProps {
    */
   items?: BreadcrumbItem[]
   /**
-   * Custom separator between breadcrumb items
-   */
-  separator?: ReactNode
-  /**
    * Custom render function for breadcrumb items
    */
   renderItem?: (crumb: BreadcrumbItem, index: number, isLast: boolean) => ReactNode
+  /**
+   * Custom separator between breadcrumb items
+   */
+  separator?: ReactNode
 }
 
 export const EpBreadcrumbs: React.FC<EpBreadcrumbsProps> = ({

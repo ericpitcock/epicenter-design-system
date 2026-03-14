@@ -1,4 +1,5 @@
 import { paddedBg } from '@sb/helpers/decorators.js'
+
 import EpType from './EpType.vue'
 
 export default {

@@ -1,21 +1,22 @@
 import React, { useMemo } from 'react'
+
 import type { Column } from './EpTable'
 
 export type SortOrder = 'asc' | 'desc'
 
 export interface EpTableSortableHeaderProps {
-  /** Column configuration */
-  column: Column
   /** Array of width values for each column cell */
   cellWidths?: React.CSSProperties[]
+  /** Column configuration */
+  column: Column
   /** Column index */
   columnIndex?: number
+  /** Callback when header is clicked for sorting */
+  onSort: (columnKey: string) => void
   /** Currently sorted column key */
   sortColumn: string
   /** Current sort order */
   sortOrder: SortOrder
-  /** Callback when header is clicked for sorting */
-  onSort: (columnKey: string) => void
 }
 
 /**

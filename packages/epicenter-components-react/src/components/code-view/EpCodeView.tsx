@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export interface EpCodeViewProps {
+  /** Additional CSS classes */
+  className?: string
   /** The code to display */
   code: string
   /** The language of the code */
   language: string
   /** The theme to use for highlighting */
   theme?: string
-  /** Additional CSS classes */
-  className?: string
 }
 
 /**

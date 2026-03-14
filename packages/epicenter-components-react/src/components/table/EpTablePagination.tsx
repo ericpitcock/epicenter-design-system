@@ -1,24 +1,25 @@
 import React, { useMemo } from 'react'
+
 import { EpButton } from '../button/EpButton'
 import { EpFlex } from '../flexbox/EpFlex'
 import { EpFooter } from '../footer/EpFooter'
 import { EpSelect } from '../select/EpSelect'
 
 export interface EpTablePaginationProps {
+  /** Additional CSS classes */
+  className?: string
   /** Current page number */
   currentPage: number
-  /** Show individual page buttons */
-  showPages?: boolean
-  /** Results per page */
-  resultsPerPage: number
-  /** Total number of pages */
-  totalPages: number
   /** Callback when page changes */
   onPageChange: (page: number) => void
   /** Callback when results per page changes */
   onResultsPerPageChange: (value: number) => void
-  /** Additional CSS classes */
-  className?: string
+  /** Results per page */
+  resultsPerPage: number
+  /** Show individual page buttons */
+  showPages?: boolean
+  /** Total number of pages */
+  totalPages: number
 }
 
 const resultsPerPageOptions = [

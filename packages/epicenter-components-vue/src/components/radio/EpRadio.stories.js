@@ -1,9 +1,8 @@
+import { paddedSurface } from '@sb/helpers/decorators.js'
 import { ref } from 'vue'
 
 import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpRadio from '@/components/radio/EpRadio.vue'
-
-import { paddedSurface } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Radio',

@@ -1,4 +1,5 @@
 import React, { ReactNode, useMemo } from 'react'
+
 import { EpButton } from '../button/EpButton'
 import { EpFlex } from '../flexbox/EpFlex'
 import { EpSelect } from '../select/EpSelect'
@@ -10,22 +11,33 @@ export interface ResultsPerPageOption {
 
 export interface EpPaginationProps {
   /**
+   * Custom CSS class to apply to pagination buttons.
+   */
+  buttonClass?: string
+  /**
    * The current active page number.
    */
   currentPage: number
   /**
-   * Total number of pages available.
+   * Custom icon for the next page button
    */
-  totalPages: number
+  iconNext?: ReactNode
   /**
-   * If true, displays individual page number buttons instead of just prev/next.
-   * @default false
+   * Custom icon for the previous page button
    */
-  showPages?: boolean
+  iconPrev?: ReactNode
   /**
-   * Custom CSS class to apply to pagination buttons.
+   * Content displayed on the left side of the pagination controls
    */
-  buttonClass?: string
+  leftContent?: ReactNode
+  /**
+   * Handler called when page changes
+   */
+  onPageChange?: (page: number) => void
+  /**
+   * Handler called when results per page changes
+   */
+  onResultsPerPageChange?: (value: number) => void
   /**
    * Number of results to display per page. When provided, shows a dropdown to change this value.
    */
@@ -35,29 +47,18 @@ export interface EpPaginationProps {
    */
   resultsPerPageOptions?: ResultsPerPageOption[]
   /**
-   * Custom icon for the previous page button
-   */
-  iconPrev?: ReactNode
-  /**
-   * Custom icon for the next page button
-   */
-  iconNext?: ReactNode
-  /**
-   * Content displayed on the left side of the pagination controls
-   */
-  leftContent?: ReactNode
-  /**
    * Content displayed on the right side of the pagination controls
    */
   rightContent?: ReactNode
   /**
-   * Handler called when page changes
+   * If true, displays individual page number buttons instead of just prev/next.
+   * @default false
    */
-  onPageChange?: (page: number) => void
+  showPages?: boolean
   /**
-   * Handler called when results per page changes
+   * Total number of pages available.
    */
-  onResultsPerPageChange?: (value: number) => void
+  totalPages: number
 }
 
 const defaultResultsPerPageOptions: ResultsPerPageOption[] = [

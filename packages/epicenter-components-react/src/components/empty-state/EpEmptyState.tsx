@@ -2,31 +2,31 @@ import React, { ReactNode } from 'react'
 
 export interface EpEmptyStateProps {
   /**
+   * Main content/message of the empty state
+   */
+  children?: ReactNode
+  /**
+   * Call-to-action button or link
+   */
+  cta?: ReactNode
+  /**
    * Layout direction of the empty state content.
    * @default 'column'
    */
   direction?: 'column' | 'row'
+  /**
+   * Image or icon to display in the empty state
+   */
+  img?: ReactNode
   /**
    * Horizontal alignment of the content.
    * @default 'center'
    */
   justify?: 'left' | 'center' | 'right'
   /**
-   * Image or icon to display in the empty state
-   */
-  img?: ReactNode
-  /**
-   * Main content/message of the empty state
-   */
-  children?: ReactNode
-  /**
    * Additional descriptive text or instructions
    */
   subtext?: ReactNode
-  /**
-   * Call-to-action button or link
-   */
-  cta?: ReactNode
 }
 
 export const EpEmptyState: React.FC<EpEmptyStateProps> = ({

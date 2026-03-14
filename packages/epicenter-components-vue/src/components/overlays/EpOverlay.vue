@@ -12,9 +12,7 @@
   }
 
   const {
-    autoDismiss = false,
     backdropClose = true,
-    duration = 3000,
     modelValue = false,
     type = 'modal',
   } = defineProps<EpOverlayProps>()

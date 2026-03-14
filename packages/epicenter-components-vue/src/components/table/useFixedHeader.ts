@@ -2,22 +2,22 @@ import { type ComponentPublicInstance, type Ref, onBeforeUnmount, onMounted, ref
 
 /** Return type of the useFixedHeader composable */
 export interface UseFixedHeaderReturn {
+  /** Measured widths for each header cell (used to sync fixed header) */
+  cellWidths: Ref<{ width: string }[]>
   /** Whether the fixed header is currently visible */
   fixedHeader: Ref<boolean>
   /** Scroll offset at which the fixed header activates */
   fixedHeaderOffset: Ref<number>
-  /** Measured widths for each header cell (used to sync fixed header) */
-  cellWidths: Ref<{ width: string }[]>
+  /** Sync the fixed header position with the table body */
+  syncTablePosition: () => void
   /** Template ref for the EpTable component instance */
   tableComponent: Readonly<Ref<ComponentPublicInstance | null>>
   /** Ref to the EpTableHead component instance */
   tableHead: Ref<ComponentPublicInstance | null>
-  /** Recalculate cell widths and fixed-header visibility */
-  updateCellWidths: () => void
-  /** Sync the fixed header position with the table body */
-  syncTablePosition: () => void
   /** Combined update + sync */
   updateAndSync: () => void
+  /** Recalculate cell widths and fixed-header visibility */
+  updateCellWidths: () => void
 }
 
 /**

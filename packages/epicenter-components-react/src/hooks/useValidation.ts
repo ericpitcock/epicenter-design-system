@@ -8,14 +8,14 @@ interface ValidationErrors {
   [key: string]: boolean;
 }
 
-interface UseValidationReturn<T> {
+interface UseValidationReturn {
   errors: ValidationErrors;
-  submitted: boolean;
   onInput: (field: string) => void;
-  validateField: (field: string) => void;
-  validateForm: () => boolean;
   resetValidation: () => void;
   setSubmitted: (value: boolean) => void;
+  submitted: boolean;
+  validateField: (field: string) => void;
+  validateForm: () => boolean;
 }
 
 /**
@@ -29,7 +29,7 @@ export function useValidation<T extends Record<string, any>>(
   model: T,
   rules: ValidationRules<T>,
   conditionalRules?: (model: T) => ValidationRules<T>
-): UseValidationReturn<T> {
+): UseValidationReturn {
   // Initialize errors object based on rules
   const initialErrors = Object.keys(rules).reduce<ValidationErrors>((acc, field) => {
     acc[field] = false;

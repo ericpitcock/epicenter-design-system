@@ -1,14 +1,14 @@
 import React from 'react';
 
 export interface EpItemCountProps {
-  /** The count of items to display */
-  count: number;
-  /** The singular form of the item name */
-  singular: string;
-  /** The plural form of the item name */
-  plural: string;
   /** Additional CSS classes */
   className?: string;
+  /** The count of items to display */
+  count: number;
+  /** The plural form of the item name */
+  plural: string;
+  /** The singular form of the item name */
+  singular: string;
 }
 
 /**

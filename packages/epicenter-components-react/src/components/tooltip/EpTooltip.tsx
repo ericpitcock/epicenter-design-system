@@ -16,33 +16,33 @@ export type TooltipPosition =
 
 export interface EpTooltipProps {
   /**
+   * Trigger element that shows the tooltip on hover
+   */
+  children?: ReactNode
+  /**
    * Delay in milliseconds before showing the tooltip on hover.
    * @default 0
    */
   delay?: number
-  /**
-   * Position of the tooltip relative to the trigger element.
-   * @default 'top center'
-   */
-  position?: TooltipPosition
-  /**
-   * Whether to dismiss the tooltip when clicked.
-   * @default false
-   */
-  dismissOnClick?: boolean
   /**
    * Whether the tooltip is disabled.
    * @default false
    */
   disabled?: boolean
   /**
+   * Whether to dismiss the tooltip when clicked.
+   * @default false
+   */
+  dismissOnClick?: boolean
+  /**
+   * Position of the tooltip relative to the trigger element.
+   * @default 'top center'
+   */
+  position?: TooltipPosition
+  /**
    * Tooltip content to display on hover
    */
   tooltip?: ReactNode
-  /**
-   * Trigger element that shows the tooltip on hover
-   */
-  children?: ReactNode
 }
 
 export const EpTooltip: React.FC<EpTooltipProps> = ({
@@ -54,7 +54,7 @@ export const EpTooltip: React.FC<EpTooltipProps> = ({
   children
 }) => {
   const [visible, setVisible] = useState(false)
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     return () => {

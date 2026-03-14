@@ -1,24 +1,24 @@
 import React, { useState, useRef, useEffect, CSSProperties } from 'react';
 
 export interface EpImageProps {
-  /** The source URL of the image */
-  src: string;
   /** The alt text for the image */
   alt?: string;
-  /** The width of the image */
-  width?: string | number;
-  /** The height of the image */
-  height?: string | number;
   /** Additional CSS class name for the image element */
   className?: string;
+  /** The height of the image */
+  height?: string | number;
+  /** If true, enables lazy loading using Intersection Observer */
+  lazy?: boolean;
   /** URL of the placeholder image to display while loading */
   placeholder?: string;
   /** The background color of the placeholder */
   placeholderColor?: string;
   /** The opacity of the placeholder */
   placeholderOpacity?: number;
-  /** If true, enables lazy loading using Intersection Observer */
-  lazy?: boolean;
+  /** The source URL of the image */
+  src: string;
+  /** The width of the image */
+  width?: string | number;
 }
 
 /**

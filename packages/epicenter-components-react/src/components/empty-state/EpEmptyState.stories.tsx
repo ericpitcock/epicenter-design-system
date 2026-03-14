@@ -1,5 +1,5 @@
 import { EpEmptyState, EpButton } from '@ericpitcock/epicenter-components-react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof EpEmptyState> = {
   title: 'Components/EmptyState',

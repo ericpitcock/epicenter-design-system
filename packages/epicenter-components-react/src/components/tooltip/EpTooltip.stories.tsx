@@ -1,6 +1,6 @@
 import { EpTooltip } from '@ericpitcock/epicenter-components-react'
 import { EpButton } from '@ericpitcock/epicenter-components-react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof EpTooltip> = {
   title: 'Components/Tooltip',

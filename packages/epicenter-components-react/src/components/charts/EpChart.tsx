@@ -3,12 +3,12 @@ import React, { useEffect, useRef, useState } from 'react'
 export interface EpChartProps {
   /** Custom color overrides for chart series (CSS custom properties) */
   chartColors?: React.CSSProperties
+  /** Additional CSS classes */
+  className?: string
   /** Height of the chart in pixels */
   height?: number
   /** Highcharts configuration options object */
   options?: any
-  /** Additional CSS classes */
-  className?: string
 }
 
 /**

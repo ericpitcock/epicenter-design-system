@@ -10,7 +10,6 @@
 
   const {
     cellWidths = [],
-    fixedHeader = false,
     showActionsMenu = false,
   } = defineProps<EpTableHeadProps>()
 </script>

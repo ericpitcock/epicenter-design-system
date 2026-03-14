@@ -2,17 +2,9 @@ import React, { ReactNode } from 'react'
 
 export interface EpInputStylerProps {
   /**
-   * The ID to associate with the input/select element
+   * Input/select element to wrap
    */
-  id?: string
-  /**
-   * Whether the input has a value
-   */
-  hasInput?: boolean
-  /**
-   * Label text displayed above the input
-   */
-  label?: string
+  children?: ReactNode
   /**
    * If true, shows clear button when input has value
    */
@@ -22,22 +14,21 @@ export interface EpInputStylerProps {
    */
   disabled?: boolean
   /**
-   * If true, enables error state and message display
-   */
-  errorEnabled?: boolean
-  /**
    * If true, applies error styling
    */
   error?: boolean
+  /**
+   * If true, enables error state and message display
+   */
+  errorEnabled?: boolean
   /**
    * Error message displayed below the input
    */
   errorMessage?: string
   /**
-   * Size variant
-   * @default 'default'
+   * Whether the input has a value
    */
-  size?: 'small' | 'default' | 'large' | 'xlarge'
+  hasInput?: boolean
   /**
    * Icon content for left side
    */
@@ -47,21 +38,30 @@ export interface EpInputStylerProps {
    */
   iconRight?: ReactNode
   /**
+   * If true, makes right icon clickable
+   */
+  iconRightClickable?: boolean
+  /**
    * If true, shows right icon even when clearable
    */
   iconRightVisible?: boolean
   /**
-   * If true, makes right icon clickable
+   * The ID to associate with the input/select element
    */
-  iconRightClickable?: boolean
+  id?: string
+  /**
+   * Label text displayed above the input
+   */
+  label?: string
   /**
    * Handler for clear button click
    */
   onClear?: () => void
   /**
-   * Input/select element to wrap
+   * Size variant
+   * @default 'default'
    */
-  children?: ReactNode
+  size?: 'small' | 'default' | 'large' | 'xlarge'
 }
 
 export const EpInputStyler: React.FC<EpInputStylerProps> = ({
@@ -77,7 +77,6 @@ export const EpInputStyler: React.FC<EpInputStylerProps> = ({
   iconLeft,
   iconRight,
   iconRightVisible = false,
-  iconRightClickable = false,
   onClear,
   children
 }) => {

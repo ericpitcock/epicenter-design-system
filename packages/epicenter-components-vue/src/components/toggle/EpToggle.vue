@@ -16,7 +16,6 @@
     disabled = false,
     isActive = false,
     label = '',
-    size = 'default',
   } = defineProps<EpToggleProps>()
 
   const emit = defineEmits<{

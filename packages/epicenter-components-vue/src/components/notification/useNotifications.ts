@@ -4,14 +4,14 @@ import type { NotificationItem } from '../../types'
 
 /** Return type of the useNotifications composable */
 export interface UseNotificationsReturn {
-  /** Reactive list of notifications */
-  notifications: Ref<NotificationItem[]>
   /** Add a notification to the list */
   addNotification: (notification: NotificationItem) => void
-  /** Remove a notification by id */
-  removeNotification: (id: string) => void
   /** Clear all notifications with a staggered animation delay */
   clearNotifications: () => void
+  /** Reactive list of notifications */
+  notifications: Ref<NotificationItem[]>
+  /** Remove a notification by id */
+  removeNotification: (id: string) => void
 }
 
 /**

@@ -1,5 +1,5 @@
 import { EpToggle } from '@ericpitcock/epicenter-components-react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useState } from 'react';
 
 const meta: Meta<typeof EpToggle> = {

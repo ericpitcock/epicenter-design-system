@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
 import { useValidation } from '@ericpitcock/epicenter-components-react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import React, { useState } from 'react';
 
 const meta: Meta = {
   title: 'Hooks/useValidation',
@@ -17,9 +17,9 @@ export default meta;
 type Story = StoryObj;
 
 interface FormModel {
+  confirmPassword: string;
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
 function ValidationDemo() {

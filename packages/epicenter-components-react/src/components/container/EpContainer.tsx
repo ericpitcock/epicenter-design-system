@@ -1,14 +1,14 @@
 import { ReactNode, forwardRef } from 'react';
 
 export interface EpContainerProps {
-  /** Header content of the container */
-  header?: ReactNode;
   /** Main content of the container */
   children?: ReactNode;
-  /** Footer content of the container */
-  footer?: ReactNode;
   /** Additional CSS classes */
   className?: string;
+  /** Footer content of the container */
+  footer?: ReactNode;
+  /** Header content of the container */
+  header?: ReactNode;
 }
 
 /**

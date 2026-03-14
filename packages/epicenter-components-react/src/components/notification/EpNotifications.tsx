@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react'
+
 import { EpButton } from '../button/EpButton'
 import { EpContainer } from '../container/EpContainer'
 import { EpEmptyState } from '../empty-state/EpEmptyState'
 import { EpFlex } from '../flexbox/EpFlex'
 import { EpHeader } from '../header/EpHeader'
+
 import { EpNotification } from './EpNotification'
 import type { EpNotificationProps } from './EpNotification'
 
@@ -20,23 +22,23 @@ export interface EpNotificationsProps {
    */
   emptyStateMessage?: string
   /**
-   * Title for the notifications panel
-   * @default 'Notifications'
-   */
-  notificationsTitle?: string
-  /**
    * Array of notification items
    * @default []
    */
   notifications?: NotificationItem[]
   /**
-   * Handler called when a notification is removed
+   * Title for the notifications panel
+   * @default 'Notifications'
    */
-  onRemoveNotification?: (id: string) => void
+  notificationsTitle?: string
   /**
    * Handler called when all notifications are cleared
    */
   onClearNotifications?: () => void
+  /**
+   * Handler called when a notification is removed
+   */
+  onRemoveNotification?: (id: string) => void
 }
 
 export const EpNotifications: React.FC<EpNotificationsProps> = ({

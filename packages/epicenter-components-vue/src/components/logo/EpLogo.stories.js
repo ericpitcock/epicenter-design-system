@@ -1,8 +1,7 @@
+import { centeredCyanBlueGradient } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
 import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
-
-import { centeredCyanBlueGradient } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Logo',

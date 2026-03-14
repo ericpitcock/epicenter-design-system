@@ -1,7 +1,7 @@
 import type { App, Plugin, Ref } from 'vue'
 
-import type { Theme } from '../types'
 import { initializeTheme } from '../composables/useTheme'
+import type { Theme } from '../types'
 
 export interface ThemePluginOptions {
   exposeGlobally?: boolean

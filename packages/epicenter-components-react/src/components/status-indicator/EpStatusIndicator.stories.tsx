@@ -1,5 +1,5 @@
 import { EpStatusIndicator } from '@ericpitcock/epicenter-components-react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 
 type StatusIndicatorStoryProps = {

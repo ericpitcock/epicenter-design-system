@@ -3,10 +3,10 @@ import React from 'react';
 type DividerDirection = 'horizontal' | 'vertical';
 
 export interface EpDividerProps {
-  /** The direction of the divider */
-  direction?: DividerDirection;
   /** Additional CSS classes */
   className?: string;
+  /** The direction of the divider */
+  direction?: DividerDirection;
 }
 
 /**

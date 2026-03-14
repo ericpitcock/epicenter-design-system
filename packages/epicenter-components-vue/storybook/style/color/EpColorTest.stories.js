@@ -1,4 +1,5 @@
 import { paddedBg } from '@sb/helpers/decorators.js'
+
 import EpColorTest from './EpColorTest.vue'
 
 export default {

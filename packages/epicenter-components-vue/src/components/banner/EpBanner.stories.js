@@ -1,9 +1,8 @@
+import { centeredSurface } from '@sb/helpers/decorators.js'
+import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { computed, ref, toRef } from 'vue'
 
 import EpBanner from '@/components/banner/EpBanner.vue'
-
-import { centeredSurface } from '@sb/helpers/decorators.js'
-import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 
 export default {
   title: 'Components/Banner',

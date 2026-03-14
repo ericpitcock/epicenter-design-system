@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 export interface PinLocation {
-  lng: number
   lat: number
+  lng: number
 }
 
 export interface MapSource {
@@ -13,32 +13,32 @@ export interface MapSource {
 export interface EpMapProps {
   /** Mapbox access token (required) */
   accessToken: string
+  /** Additional CSS classes */
+  className?: string
+  /** Fit map to bounds of source data */
+  fitToBounds?: boolean
   /** Map center coordinates [lng, lat] */
   mapCenter?: [number, number]
-  /** Map zoom level */
-  mapZoom?: number
-  /** Mapbox style URL */
-  mapStyle?: string
-  /** Map source configuration */
-  mapSource?: MapSource | null
   /** Map layer configuration */
   mapLayer?: any
+  /** Map source configuration */
+  mapSource?: MapSource | null
+  /** Mapbox style URL */
+  mapStyle?: string
+  /** Map zoom level */
+  mapZoom?: number
+  /** Show navigation control */
+  navigationControl?: boolean
+  /** Callback when center changes */
+  onCenterChange?: (center: [number, number]) => void
+  /** Callback when pin is dropped */
+  onDropPin?: (location: PinLocation) => void
+  /** Callback when zoom changes */
+  onZoomChange?: (zoom: number) => void
   /** Array of pin locations to display */
   pinLocations?: PinLocation[]
   /** Enable scroll zoom */
   scrollZoom?: boolean
-  /** Show navigation control */
-  navigationControl?: boolean
-  /** Fit map to bounds of source data */
-  fitToBounds?: boolean
-  /** Callback when center changes */
-  onCenterChange?: (center: [number, number]) => void
-  /** Callback when zoom changes */
-  onZoomChange?: (zoom: number) => void
-  /** Callback when pin is dropped */
-  onDropPin?: (location: PinLocation) => void
-  /** Additional CSS classes */
-  className?: string
 }
 
 /**
@@ -60,7 +60,6 @@ export const EpMap: React.FC<EpMapProps> = ({
   fitToBounds = false,
   onCenterChange,
   onZoomChange,
-  onDropPin,
   className = ''
 }) => {
   const mapContainerRef = useRef<HTMLDivElement>(null)

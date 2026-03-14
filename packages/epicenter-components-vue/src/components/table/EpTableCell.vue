@@ -9,7 +9,7 @@
     styles?: string[]
   }
 
-  const { row, column, styles = [] } = defineProps<EpTableCellProps>()
+  const { row, column } = defineProps<EpTableCellProps>()
 
   const cellContent = ref<unknown>('')
 

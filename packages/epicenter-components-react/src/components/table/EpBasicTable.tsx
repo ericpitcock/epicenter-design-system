@@ -1,19 +1,20 @@
 import React from 'react'
+
 import type { Column } from './EpTable'
 
 export interface EpBasicTableProps {
-  /** The columns of the table */
-  columns: Column[]
-  /** The data of the table */
-  data: any[]
   /** Gives borders to your table rows */
   bordered?: boolean
-  /** Compact rows in a single line table scenario */
-  compact?: boolean
-  /** Background colors for every other row */
-  striped?: boolean
   /** Additional CSS classes */
   className?: string
+  /** The columns of the table */
+  columns: Column[]
+  /** Compact rows in a single line table scenario */
+  compact?: boolean
+  /** The data of the table */
+  data: any[]
+  /** Background colors for every other row */
+  striped?: boolean
 }
 
 /**

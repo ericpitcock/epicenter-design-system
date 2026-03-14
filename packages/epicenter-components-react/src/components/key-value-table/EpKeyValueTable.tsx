@@ -1,22 +1,23 @@
 import React, { useMemo } from 'react'
+
 import { EpFlex } from '../flexbox/EpFlex'
 
 export interface KeyValueSection {
-  name: string
   data: Record<string, any>
+  name: string
 }
 
 export interface EpKeyValueTableProps {
-  /** Table data - either a single object or array of section objects */
-  data: Record<string, any> | KeyValueSection[]
-  /** Use common width for all key columns based on longest key */
-  commonKeyWidth?: boolean
-  /** Show section headers */
-  sectionHeaders?: boolean
-  /** Custom value renderer */
-  renderValue?: (key: string, value: any) => React.ReactNode
   /** Additional CSS classes */
   className?: string
+  /** Use common width for all key columns based on longest key */
+  commonKeyWidth?: boolean
+  /** Table data - either a single object or array of section objects */
+  data: Record<string, any> | KeyValueSection[]
+  /** Custom value renderer */
+  renderValue?: (key: string, value: any) => React.ReactNode
+  /** Show section headers */
+  sectionHeaders?: boolean
 }
 
 /**

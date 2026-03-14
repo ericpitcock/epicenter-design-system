@@ -6,10 +6,10 @@ interface LoadingMessage {
 }
 
 export interface EpLoadingStateProps {
-  /** Message object containing icon and message text to display while loading */
-  message?: LoadingMessage;
   /** Additional CSS classes */
   className?: string;
+  /** Message object containing icon and message text to display while loading */
+  message?: LoadingMessage;
 }
 
 /**

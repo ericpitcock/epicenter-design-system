@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useTheme } from '../../hooks/useTheme';
 
 // Placeholder icons - replace with actual icons when available
@@ -16,8 +17,8 @@ const Moon02 = () => (
 );
 
 export interface EpThemeToggleProps {
-  className?: string;
   [key: string]: unknown;
+  className?: string;
 }
 
 export const EpThemeToggle: React.FC<EpThemeToggleProps> = ({

@@ -1,6 +1,6 @@
-import EpBrowserFrame from '@/components/browser-frame/EpBrowserFrame.vue'
-
 import { paddedBg } from '@sb/helpers/decorators.js'
+
+import EpBrowserFrame from '@/components/browser-frame/EpBrowserFrame.vue'
 
 export default {
   title: 'Components/Browser Frame',

@@ -1,5 +1,7 @@
 import ArrowDown01 from '@ericpitcock/epicenter-icons-vue/ArrowDown01'
 import Refresh01 from '@ericpitcock/epicenter-icons-vue/Refresh01'
+import { columns, fakeTableData } from '@sb/data/tableData.js'
+import { paddedBg } from '@sb/helpers/decorators.js'
 import { onMounted, ref } from 'vue'
 
 import EpButton from '@/components/button/EpButton.vue'
@@ -12,9 +14,6 @@ import EpMenuItem from '@/components/menu/EpMenuItem.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableHead from '@/components/table/EpTableHead.vue'
 import useExclude from '@/components/table/useExclude.ts'
-
-import { columns, fakeTableData } from '@sb/data/tableData.js'
-import { paddedBg } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Loading State',

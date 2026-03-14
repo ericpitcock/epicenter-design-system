@@ -4,7 +4,8 @@
   "description": "Epicenter Design System",
   "type": "module",
   "scripts": {
-    "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-components-vue && npm install && cd ../epicenter-components-react && npm install && cd ../.. && npm install && bash scripts/copy-icons-from-npm.sh && npm run build-storybook",
+    "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-components-vue && npm install && cd ../.. && npm install && bash scripts/copy-icons-from-npm.sh && npm run build-storybook",
+    "netlify:react": "cd packages/epicenter-styles && npm install && cd ../epicenter-components-react && npm install && cd ../.. && npm install && bash scripts/copy-icons-from-npm.sh && npm run build-storybook:react",
     "netlify-build-docs": "npm install && cd docs && npm run docs:build",
     "install-all": "cd packages/epicenter-styles && npm install && cd ../epicenter-components-vue && npm install && cd ../epicenter-components-react && npm install && cd .. && npm install",
     "storybook": "storybook dev -p 6006 --no-open",

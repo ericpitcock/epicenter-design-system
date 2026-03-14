@@ -1,9 +1,8 @@
+import { paddedSurface } from '@sb/helpers/decorators.js'
+import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { computed, ref, toRef, watch } from 'vue'
 
 import EpInput from '@/components/input/EpInput.vue'
-
-import { paddedSurface } from '@sb/helpers/decorators.js'
-import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 
 export default {
   title: 'Components/Input',

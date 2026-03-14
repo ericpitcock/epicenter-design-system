@@ -1,22 +1,23 @@
 import React from 'react'
+
 import { EpCheckbox } from '../checkbox/EpCheckbox'
 import { EpFlex } from '../flexbox/EpFlex'
 
 export interface CheckboxFilter {
-  label: string
   checked: boolean
+  label: string
   value?: any
 }
 
 export interface EpTableCheckboxFiltersProps {
-  /** Object with category keys and arrays of checkbox filter objects */
-  filters: Record<string, CheckboxFilter[]>
-  /** Whether to show section labels */
-  sectionLabels?: boolean
-  /** Callback when checkbox state changes */
-  onUpdateFilters: (params: { category: string; label: string; checked: boolean }) => void
   /** Additional CSS classes */
   className?: string
+  /** Object with category keys and arrays of checkbox filter objects */
+  filters: Record<string, CheckboxFilter[]>
+  /** Callback when checkbox state changes */
+  onUpdateFilters: (params: { category: string; label: string; checked: boolean }) => void
+  /** Whether to show section labels */
+  sectionLabels?: boolean
 }
 
 /**

@@ -29,7 +29,6 @@
     errorMessage = '',
     label = '',
     placeholder = 'Select an option',
-    readonly = false,
     required = false,
     size = 'default',
   } = defineProps<EpSelectProps>()

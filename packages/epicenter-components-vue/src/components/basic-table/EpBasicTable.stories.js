@@ -1,6 +1,6 @@
-import EpBasicTable from '@/components/basic-table/EpBasicTable.vue'
-
 import { paddedSurface } from '@sb/helpers/decorators.js'
+
+import EpBasicTable from '@/components/basic-table/EpBasicTable.vue'
 
 export default {
   title: 'Components/Table/Basic Table',

@@ -1,11 +1,10 @@
+import { paddedSurface } from '@sb/helpers/decorators.js'
 import { ref } from 'vue'
 
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import EpFieldset from '@/components/fieldset/EpFieldset.vue'
 import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpRadio from '@/components/radio/EpRadio.vue'
-
-import { paddedSurface } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Fieldset',

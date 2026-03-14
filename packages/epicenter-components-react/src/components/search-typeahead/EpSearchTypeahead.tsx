@@ -4,8 +4,8 @@ import React, {
   useRef,
   useEffect,
   KeyboardEvent,
-  ChangeEvent,
 } from 'react';
+
 import { EpInput } from '../input/EpInput';
 
 export interface SearchResult {
@@ -13,15 +13,15 @@ export interface SearchResult {
 }
 
 export interface EpSearchTypeaheadProps {
-  resultsKey: string;
-  returnedSearchResults: SearchResult[];
+  [key: string]: unknown;
+  className?: string;
   inputProps?: React.ComponentProps<typeof EpInput>;
-  value?: string;
   onClear?: () => void;
   onSearch?: (query: string) => void;
   onSelection?: (result: SearchResult) => void;
-  className?: string;
-  [key: string]: unknown;
+  resultsKey: string;
+  returnedSearchResults: SearchResult[];
+  value?: string;
 }
 
 export const EpSearchTypeahead = forwardRef<HTMLDivElement, EpSearchTypeaheadProps>(
@@ -42,7 +42,7 @@ export const EpSearchTypeahead = forwardRef<HTMLDivElement, EpSearchTypeaheadPro
     const [searchQuery, setSearchQuery] = useState(controlledValue || '');
     const [activeItemIndex, setActiveItemIndex] = useState(-1);
     const resultsListRef = useRef<HTMLDivElement>(null);
-    const debounceTimerRef = useRef<NodeJS.Timeout>();
+    const debounceTimerRef = useRef<ReturnType<typeof setTimeout>>();
 
     // Update search query when controlled value changes
     useEffect(() => {

@@ -1,26 +1,26 @@
 import React, { ChangeEvent, ReactNode, forwardRef } from 'react';
 
 export interface EpRadioProps {
+  /** Whether this radio is selected */
+  checked?: boolean;
+  /** Optional children to override label */
+  children?: ReactNode;
+  /** Additional CSS classes */
+  className?: string;
+  /** If true, disables the radio button */
+  disabled?: boolean;
   /** The ID attribute for the radio input element */
   id: string;
   /** Label text displayed next to the radio button */
   label: string;
   /** The name attribute for the radio input (groups radios together) */
   name: string;
-  /** The value for this radio option */
-  value: string;
-  /** Whether this radio is selected */
-  checked?: boolean;
-  /** If true, disables the radio button */
-  disabled?: boolean;
-  /** If true, marks the radio as required */
-  required?: boolean;
   /** Callback when radio selection changes */
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  /** Additional CSS classes */
-  className?: string;
-  /** Optional children to override label */
-  children?: ReactNode;
+  /** If true, marks the radio as required */
+  required?: boolean;
+  /** The value for this radio option */
+  value: string;
 }
 
 /**

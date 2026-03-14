@@ -2,6 +2,10 @@ import React, { ReactNode } from 'react'
 
 export interface EpBannerProps {
   /**
+   * Dismiss button or action
+   */
+  dismiss?: ReactNode
+  /**
    * Icon displayed at the start of the banner
    */
   icon?: ReactNode
@@ -10,17 +14,13 @@ export interface EpBannerProps {
    */
   message?: ReactNode
   /**
-   * Secondary message or additional information
-   */
-  subtext?: ReactNode
-  /**
-   * Dismiss button or action
-   */
-  dismiss?: ReactNode
-  /**
    * Handler called when the banner is dismissed
    */
   onDismissed?: () => void
+  /**
+   * Secondary message or additional information
+   */
+  subtext?: ReactNode
 }
 
 export const EpBanner: React.FC<EpBannerProps> = ({

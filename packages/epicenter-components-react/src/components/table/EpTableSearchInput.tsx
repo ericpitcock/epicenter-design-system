@@ -1,14 +1,14 @@
 import React from 'react'
 
 export interface EpTableSearchInputProps {
-  /** Current search value */
-  value: string
+  /** Additional CSS classes */
+  className?: string
   /** Callback when search value changes */
   onChange: (value: string) => void
   /** Placeholder text */
   placeholder?: string
-  /** Additional CSS classes */
-  className?: string
+  /** Current search value */
+  value: string
 }
 
 /**

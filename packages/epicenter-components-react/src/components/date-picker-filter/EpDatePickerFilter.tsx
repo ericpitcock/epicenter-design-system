@@ -1,13 +1,13 @@
 import React, { forwardRef, ChangeEvent } from 'react';
 
 export interface EpDatePickerFilterProps {
-  appliedFilters: Record<string, unknown>;
-  filterKey: string;
-  columnKey: string;
-  value?: string;
-  onChange?: (filters: Record<string, string>) => void;
-  className?: string;
   [key: string]: unknown;
+  appliedFilters: Record<string, unknown>;
+  className?: string;
+  columnKey: string;
+  filterKey: string;
+  onChange?: (filters: Record<string, string>) => void;
+  value?: string;
 }
 
 export const EpDatePickerFilter = forwardRef<
@@ -17,7 +17,6 @@ export const EpDatePickerFilter = forwardRef<
   (
     {
       appliedFilters,
-      filterKey,
       columnKey,
       value = '',
       onChange,

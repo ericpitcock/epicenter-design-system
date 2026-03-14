@@ -1,12 +1,3 @@
-<template>
-  <div
-    class="gradient-box"
-    :style="{ background: gradient }"
-  >
-    <slot></slot>
-  </div>
-</template>
-
 <script>
   export default {
     props: {
@@ -17,6 +8,15 @@
     },
   }
 </script>
+
+<template>
+  <div
+    class="gradient-box"
+    :style="{ background: gradient }"
+  >
+    <slot />
+  </div>
+</template>
 
 <style scoped>
   .gradient-box {

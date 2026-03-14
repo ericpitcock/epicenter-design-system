@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 
 export interface EpStatusIndicatorProps {
-  /** If true, the status indicator will pulse */
-  pulse?: boolean;
   /** Label or text content next to the indicator */
   children?: ReactNode;
   /** Additional CSS classes */
   className?: string;
+  /** If true, the status indicator will pulse */
+  pulse?: boolean;
 }
 
 /**

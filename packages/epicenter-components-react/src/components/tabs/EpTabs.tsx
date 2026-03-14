@@ -2,9 +2,9 @@ import React, { useRef, KeyboardEvent } from 'react'
 import { Link } from 'react-router-dom'
 
 export interface TabItem {
+  exact?: boolean
   label: string
   to?: string
-  exact?: boolean
 }
 
 export interface EpTabsProps {
@@ -18,14 +18,14 @@ export interface EpTabsProps {
    */
   items: (string | TabItem)[]
   /**
+   * Handler called when a tab is clicked
+   */
+  onTabClick?: (data: { item: TabItem; index: number }) => void
+  /**
    * The variant of the tabs, default or classic.
    * @default 'default'
    */
   variant?: 'default' | 'classic'
-  /**
-   * Handler called when a tab is clicked
-   */
-  onTabClick?: (data: { item: TabItem; index: number }) => void
 }
 
 export const EpTabs: React.FC<EpTabsProps> = ({

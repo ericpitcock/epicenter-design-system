@@ -3,24 +3,24 @@ import React, { MouseEvent, ReactNode } from 'react';
 type ButtonSize = 'small' | 'default' | 'large' | 'xlarge';
 
 export interface EpToggleButtonProps {
-  /** The label to display inside the button */
-  label?: string;
   /** The class to apply when the button is active */
   activeClass?: string;
-  /** If true, the button is active/selected */
-  isActive?: boolean;
-  /** If true, the button is disabled */
-  disabled?: boolean;
   /** The aria-label for accessibility */
   ariaLabel?: string;
-  /** The size of the button */
-  size?: ButtonSize;
-  /** Icon to display (ReactNode for flexibility) */
-  icon?: ReactNode;
-  /** Callback when button is clicked */
-  onClick?: () => void;
   /** Additional CSS classes */
   className?: string;
+  /** If true, the button is disabled */
+  disabled?: boolean;
+  /** Icon to display (ReactNode for flexibility) */
+  icon?: ReactNode;
+  /** If true, the button is active/selected */
+  isActive?: boolean;
+  /** The label to display inside the button */
+  label?: string;
+  /** Callback when button is clicked */
+  onClick?: () => void;
+  /** The size of the button */
+  size?: ButtonSize;
 }
 
 /**
@@ -44,7 +44,7 @@ export const EpToggleButton: React.FC<EpToggleButtonProps> = ({
   if (disabled) classes.push('ep-button--disabled');
   if (className) classes.push(className);
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = () => {
     if (disabled) return;
     if (onClick) onClick();
   };

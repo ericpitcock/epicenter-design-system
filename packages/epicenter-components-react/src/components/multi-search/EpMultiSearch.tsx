@@ -27,30 +27,30 @@ interface ParsedQuery {
 }
 
 export interface EpMultiSearchProps {
-  placeholder?: string;
-  icon?: boolean;
-  disabled?: boolean;
+  [key: string]: unknown;
   autofocus?: boolean;
-  width?: string;
-  height?: string;
-  borderWidth?: string;
-  borderStyle?: string;
+  backgroundColor?: string;
   borderColor?: string;
   borderRadius?: string;
-  backgroundColor?: string;
+  borderStyle?: string;
+  borderWidth?: string;
+  className?: string;
   color?: string;
-  value?: string;
-  queries?: string[];
-  onInput?: (value: string) => void;
-  onFocus?: (query: ParsedQuery) => void;
+  disabled?: boolean;
+  height?: string;
+  icon?: boolean;
   onBlur?: (query: ParsedQuery) => void;
+  onClear?: (query: ParsedQuery) => void;
+  onDelete?: (query: ParsedQuery) => void;
   onEnter?: (query: ParsedQuery) => void;
   onEsc?: (query: ParsedQuery) => void;
-  onClear?: (query: ParsedQuery) => void;
+  onFocus?: (query: ParsedQuery) => void;
+  onInput?: (value: string) => void;
   onQueryClose?: (query: ParsedQuery) => void;
-  onDelete?: (query: ParsedQuery) => void;
-  className?: string;
-  [key: string]: unknown;
+  placeholder?: string;
+  queries?: string[];
+  value?: string;
+  width?: string;
 }
 
 export const EpMultiSearch = forwardRef<HTMLDivElement, EpMultiSearchProps>(
@@ -62,9 +62,6 @@ export const EpMultiSearch = forwardRef<HTMLDivElement, EpMultiSearchProps>(
       autofocus = false,
       width = '100%',
       height = '5rem',
-      borderWidth = '0.1rem',
-      borderStyle = 'solid',
-      borderColor = 'var(--border-color)',
       borderRadius = 'var(--border-radius)',
       backgroundColor = 'var(--interface-foreground)',
       color = 'var(--text-color)',
@@ -166,7 +163,7 @@ export const EpMultiSearch = forwardRef<HTMLDivElement, EpMultiSearchProps>(
       onBlur?.(parseQuery(query));
     };
 
-    const handleEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    const handleEnter = (_e: KeyboardEvent<HTMLInputElement>) => {
       const trimmedValue = value.trim();
       if (!trimmedValue) return;
 
@@ -183,7 +180,7 @@ export const EpMultiSearch = forwardRef<HTMLDivElement, EpMultiSearchProps>(
       setValue('');
     };
 
-    const handleDelete = (e: KeyboardEvent<HTMLInputElement>) => {
+    const handleDelete = (_e: KeyboardEvent<HTMLInputElement>) => {
       if (value === '') {
         const newQuery = [...query];
         newQuery.pop();

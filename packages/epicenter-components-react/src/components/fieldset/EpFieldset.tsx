@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 
 export interface EpFieldsetProps {
-  /** Label for the fieldset legend */
-  label?: string;
   /** Fieldset content */
   children?: ReactNode;
   /** Additional CSS classes */
   className?: string;
+  /** Label for the fieldset legend */
+  label?: string;
 }
 
 /**

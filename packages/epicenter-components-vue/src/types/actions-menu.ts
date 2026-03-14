@@ -10,37 +10,37 @@ export interface IconProps {
 
 /** Button configuration for action menu trigger buttons */
 export interface ActionMenuButtonProps {
-  label?: string
   ariaLabel?: string
+  class?: string[]
   iconLeft?: IconProps | null
   iconRight?: IconProps | null
-  class?: string[]
+  label?: string
   size?: string
 }
 
 /** Configuration input for generating action menu props via useActionsMenu */
 export interface ActionMenuConfig {
+  /** Whether the menu opens aligned to the right */
+  alignRight?: boolean
+  /** Partial button props to override defaults */
+  buttonProps?: Partial<ActionMenuButtonProps>
   /** Context object passed to dynamic menu item functions */
   context?: unknown
+  /** CSS class applied to the menu container */
+  menuClass?: string
   /** Static menu items or functions that receive context and return a MenuItem */
   menuItems?: (MenuItem | ((context: unknown) => MenuItem))[]
   /** Button/menu size */
   size?: string
-  /** CSS class applied to the menu container */
-  menuClass?: string
-  /** Partial button props to override defaults */
-  buttonProps?: Partial<ActionMenuButtonProps>
-  /** Whether the menu opens aligned to the right */
-  alignRight?: boolean
 }
 
 /** Resolved props object returned by generateActionMenuProps */
 export interface ActionMenuProps {
-  size: string
+  alignRight: boolean
+  buttonProps: ActionMenuButtonProps
   menuProps: {
     menuItems: MenuItem[]
     menuClass: string
   }
-  alignRight: boolean
-  buttonProps: ActionMenuButtonProps
+  size: string
 }

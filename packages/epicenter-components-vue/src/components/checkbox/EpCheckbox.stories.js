@@ -1,9 +1,8 @@
+import { paddedSurface } from '@sb/helpers/decorators.js'
 import { computed, ref } from 'vue'
 
 import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
 import EpFlex from '@/components/flexbox/EpFlex.vue'
-
-import { paddedSurface } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Checkbox',

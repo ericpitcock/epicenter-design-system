@@ -6,16 +6,16 @@ import type { ConditionalRules, ValidationErrors, ValidationRules } from '../typ
 export interface UseValidationReturn {
   /** Reactive map of field names to error state (true = invalid) */
   errors: Ref<ValidationErrors>
-  /** Whether the form has been submitted at least once */
-  submitted: Ref<boolean>
   /** Clear the error for a specific field (call on input) */
   onInput: (field: string) => void
+  /** Reset all errors and the submitted flag */
+  resetValidation: () => void
+  /** Whether the form has been submitted at least once */
+  submitted: Ref<boolean>
   /** Validate a single field (call on blur) — only fires after first submit */
   validateField: (field: string) => void
   /** Validate the entire form; returns `true` if all fields pass */
   validateForm: () => boolean
-  /** Reset all errors and the submitted flag */
-  resetValidation: () => void
 }
 
 /**

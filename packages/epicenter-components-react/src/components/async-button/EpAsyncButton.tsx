@@ -4,23 +4,19 @@ export type AsyncButtonStatus = 'default' | 'loading' | 'success' | 'failure'
 
 export interface EpAsyncButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
   /**
-   * The current state of the button.
-   * @default 'default'
+   * If true, disables the button during loading state to prevent multiple clicks.
+   * @default true
    */
-  status?: AsyncButtonStatus
+  disabledDuringLoading?: boolean
+  /**
+   * Message displayed when status is 'failure'. Falls back to label if not provided.
+   */
+  failureMessage?: string
   /**
    * The default button label text.
    * @default 'Submit'
    */
   label?: string
-  /**
-   * Message displayed when status is 'success'. Falls back to label if not provided.
-   */
-  successMessage?: string
-  /**
-   * Message displayed when status is 'failure'. Falls back to label if not provided.
-   */
-  failureMessage?: string
   /**
    * Controls how the loading state is visually indicated.
    * @default 'text'
@@ -32,19 +28,23 @@ export interface EpAsyncButtonProps extends Omit<React.ButtonHTMLAttributes<HTML
    */
   loadingText?: string
   /**
+   * Handler called when button is clicked
+   */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /**
    * If true, maintains consistent button width across state changes to prevent layout shift.
    * @default true
    */
   preserveWidth?: boolean
   /**
-   * If true, disables the button during loading state to prevent multiple clicks.
-   * @default true
+   * The current state of the button.
+   * @default 'default'
    */
-  disabledDuringLoading?: boolean
+  status?: AsyncButtonStatus
   /**
-   * Handler called when button is clicked
+   * Message displayed when status is 'success'. Falls back to label if not provided.
    */
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  successMessage?: string
 }
 
 export const EpAsyncButton: React.FC<EpAsyncButtonProps> = ({

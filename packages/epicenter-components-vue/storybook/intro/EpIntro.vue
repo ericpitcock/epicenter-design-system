@@ -1,3 +1,31 @@
+<script setup>
+  import DocumentCode from '@ericpitcock/epicenter-icons-vue/DocumentCode'
+  import Github from '@ericpitcock/epicenter-icons-vue/Github'
+
+  import EpButton from '@/components/button/EpButton.vue'
+  import EpFlex from '@/components/flexbox/EpFlex.vue'
+  import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
+
+  const buttons = [
+    {
+      props: {
+        href: 'https://github.com/ericpitcock/epicenter-design-system',
+        label: 'GitHub',
+        size: 'large',
+      },
+      icon: Github,
+    },
+    {
+      props: {
+        href: 'https://docs.epicenter.design',
+        label: 'Docs',
+        size: 'large',
+      },
+      icon: DocumentCode,
+    },
+  ]
+</script>
+
 <template>
   <div class="intro">
     <div class="hero">
@@ -28,34 +56,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-  import DocumentCode from '@ericpitcock/epicenter-icons-vue/DocumentCode'
-  import Github from '@ericpitcock/epicenter-icons-vue/Github'
-
-  import EpButton from '@/components/button/EpButton.vue'
-  import EpFlex from '@/components/flexbox/EpFlex.vue'
-  import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
-
-  const buttons = [
-    {
-      props: {
-        href: 'https://github.com/ericpitcock/epicenter-design-system',
-        label: 'GitHub',
-        size: 'large',
-      },
-      icon: Github,
-    },
-    {
-      props: {
-        href: 'https://docs.epicenter.design',
-        label: 'Docs',
-        size: 'large',
-      },
-      icon: DocumentCode,
-    },
-  ]
-</script>
 
 <style lang="scss" scoped>
   :root {

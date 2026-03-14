@@ -1,48 +1,48 @@
 import React, { useRef } from 'react'
 
 export interface Column {
+  class?: string
+  formatter?: (value: any, row: any) => any
   key: string
   label: string
   sortable?: boolean
-  formatter?: (value: any, row: any) => any
-  class?: string
 }
 
 export interface EpTableProps {
-  /** The columns of the table */
-  columns: Column[]
-  /** The data of the table */
-  data: any[]
-  /** Columns to hide, but not filter from the data */
-  hiddenColumns?: string[]
-  /** Compact rows in a single line table scenario */
-  compact?: boolean
   /** Gives borders to your table rows */
   bordered?: boolean
-  /** Selectable rows */
-  selectable?: boolean
-  /** Background colors for every other row */
-  striped?: boolean
-  /** Sticky header or nah */
-  stickyHeader?: boolean
-  /** Whether to use a fixed header or not */
-  fixedHeader?: boolean
-  /** Enable actions menu */
-  showActionsMenu?: boolean
-  /** Custom header renderer */
-  renderHeader?: (props: { visibleColumns: Column[]; showActionsMenu: boolean }) => React.ReactNode
-  /** Custom fixed header renderer */
-  renderFixedHeader?: (props: { visibleColumns: Column[]; showActionsMenu: boolean }) => React.ReactNode
-  /** Custom cell renderer for specific column */
-  renderCell?: (column: Column, row: any) => React.ReactNode
-  /** Actions menu renderer for each row */
-  renderActionsMenu?: (row: any) => React.ReactNode
-  /** Callback when row is clicked */
-  onRowClick?: (row: any) => void
-  /** Callback when container scrolls */
-  onContainerScroll?: (scrollLeft: number) => void
   /** Additional CSS classes */
   className?: string
+  /** The columns of the table */
+  columns: Column[]
+  /** Compact rows in a single line table scenario */
+  compact?: boolean
+  /** The data of the table */
+  data: any[]
+  /** Whether to use a fixed header or not */
+  fixedHeader?: boolean
+  /** Columns to hide, but not filter from the data */
+  hiddenColumns?: string[]
+  /** Callback when container scrolls */
+  onContainerScroll?: (scrollLeft: number) => void
+  /** Callback when row is clicked */
+  onRowClick?: (row: any) => void
+  /** Actions menu renderer for each row */
+  renderActionsMenu?: (row: any) => React.ReactNode
+  /** Custom cell renderer for specific column */
+  renderCell?: (column: Column, row: any) => React.ReactNode
+  /** Custom fixed header renderer */
+  renderFixedHeader?: (props: { visibleColumns: Column[]; showActionsMenu: boolean }) => React.ReactNode
+  /** Custom header renderer */
+  renderHeader?: (props: { visibleColumns: Column[]; showActionsMenu: boolean }) => React.ReactNode
+  /** Selectable rows */
+  selectable?: boolean
+  /** Enable actions menu */
+  showActionsMenu?: boolean
+  /** Sticky header or nah */
+  stickyHeader?: boolean
+  /** Background colors for every other row */
+  striped?: boolean
 }
 
 /**

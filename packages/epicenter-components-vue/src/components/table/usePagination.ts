@@ -6,16 +6,16 @@ import type { TableRow } from '../../types'
 export interface UsePaginationReturn {
   /** Current page number (1-based) */
   currentPage: Ref<number>
-  /** Number of rows per page */
-  pageSize: Ref<number>
-  /** Total number of pages based on data length and page size */
-  totalPages: ComputedRef<number>
-  /** Slice of data for the current page */
-  paginatedData: ComputedRef<TableRow[]>
   /** Navigate to a specific page and scroll the table container to top */
   onPageNavigate: (page: number) => void
   /** Update the page size (accepts string or number for select compatibility) */
   onPageSizeUpdate: (size: string | number) => void
+  /** Number of rows per page */
+  pageSize: Ref<number>
+  /** Slice of data for the current page */
+  paginatedData: ComputedRef<TableRow[]>
+  /** Total number of pages based on data length and page size */
+  totalPages: ComputedRef<number>
 }
 
 /**

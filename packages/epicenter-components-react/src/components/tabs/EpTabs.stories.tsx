@@ -1,6 +1,6 @@
 import { EpTabs } from '@ericpitcock/epicenter-components-react'
 import { EpTabContent } from '@ericpitcock/epicenter-components-react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 
 const meta: Meta<typeof EpTabs> = {

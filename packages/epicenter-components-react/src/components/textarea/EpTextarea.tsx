@@ -1,44 +1,44 @@
 import React, { ChangeEvent, FocusEvent, forwardRef } from 'react';
 
 export interface EpTextareaProps {
-  /** The ID attribute for the textarea element */
-  id?: string;
-  /** The name attribute for the textarea */
-  name?: string;
-  /** Placeholder text shown when textarea is empty */
-  placeholder?: string;
-  /** The value of the textarea */
-  value?: string;
-  /** If true, disables the textarea */
-  disabled?: boolean;
-  /** If true, marks the textarea as required */
-  required?: boolean;
-  /** Number of visible text rows */
-  rows?: number;
+  /** Controls autocomplete behavior */
+  autoComplete?: 'on' | 'off';
+  /** If true, automatically focuses on mount */
+  autoFocus?: boolean;
+  /** Additional CSS classes */
+  className?: string;
   /** Number of visible text columns (width) */
   cols?: number;
+  /** If true, disables the textarea */
+  disabled?: boolean;
+  /** The ID attribute for the textarea element */
+  id?: string;
   /** Maximum character length allowed */
   maxLength?: number;
   /** Minimum character length required */
   minLength?: number;
-  /** If true, makes the textarea read-only */
-  readOnly?: boolean;
-  /** If true, automatically focuses on mount */
-  autoFocus?: boolean;
-  /** Controls autocomplete behavior */
-  autoComplete?: 'on' | 'off';
-  /** If true, enables spellcheck */
-  spellCheck?: boolean;
-  /** Controls how text wraps */
-  wrap?: 'soft' | 'hard';
+  /** The name attribute for the textarea */
+  name?: string;
+  /** Callback when textarea loses focus */
+  onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void;
   /** Callback when value changes */
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   /** Callback when textarea receives focus */
   onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void;
-  /** Callback when textarea loses focus */
-  onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void;
-  /** Additional CSS classes */
-  className?: string;
+  /** Placeholder text shown when textarea is empty */
+  placeholder?: string;
+  /** If true, makes the textarea read-only */
+  readOnly?: boolean;
+  /** If true, marks the textarea as required */
+  required?: boolean;
+  /** Number of visible text rows */
+  rows?: number;
+  /** If true, enables spellcheck */
+  spellCheck?: boolean;
+  /** The value of the textarea */
+  value?: string;
+  /** Controls how text wraps */
+  wrap?: 'soft' | 'hard';
 }
 
 /**

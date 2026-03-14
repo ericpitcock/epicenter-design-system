@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react'
+
 import type { Column } from './EpTable'
 
 export interface EpTableCellProps {
-  /** Row data object */
-  row: any
   /** Column configuration */
   column: Column
+  /** Row data object */
+  row: any
   /** Additional styles */
   styles?: React.CSSProperties[]
 }
@@ -15,7 +16,7 @@ export interface EpTableCellProps {
  * 
  * Renders table cell content with optional value formatting via column.formatter.
  */
-export const EpTableCell: React.FC<EpTableCellProps> = ({ row, column, styles = [] }) => {
+export const EpTableCell: React.FC<EpTableCellProps> = ({ row, column }) => {
   const cellContent = useMemo(() => {
     const value = row[column.key]
     const formatter = column.formatter

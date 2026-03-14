@@ -4,12 +4,12 @@ import type { SearchTerms, TableColumn, TableRow } from '../../types'
 
 /** Return type of the useSearch composable */
 export interface UseSearchReturn {
+  /** Update search terms (pass null to clear) */
+  onSearchUpdate: (terms: SearchTerms | null) => void
   /** Filtered data matching the current search terms */
   searchedData: ComputedRef<TableRow[]>
   /** Current AND/OR search terms */
   searchTerms: Ref<SearchTerms>
-  /** Update search terms (pass null to clear) */
-  onSearchUpdate: (terms: SearchTerms | null) => void
 }
 
 /**

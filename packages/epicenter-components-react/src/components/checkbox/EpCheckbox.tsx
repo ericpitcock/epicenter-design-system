@@ -1,28 +1,28 @@
 import React, { ChangeEvent, ReactNode, forwardRef } from 'react';
 
 export interface EpCheckboxProps {
+  /** Whether the checkbox is checked */
+  checked?: boolean;
+  /** Optional children to override label */
+  children?: ReactNode;
+  /** Additional CSS classes */
+  className?: string;
+  /** Whether the checkbox is disabled */
+  disabled?: boolean;
   /** The ID of the checkbox */
   id: string;
+  /** Whether the checkbox is indeterminate */
+  indeterminate?: boolean;
   /** The label for the checkbox */
   label: string;
   /** The name of the checkbox */
   name: string;
-  /** The value of the checkbox */
-  value: string;
-  /** Whether the checkbox is checked */
-  checked?: boolean;
-  /** Whether the checkbox is disabled */
-  disabled?: boolean;
-  /** Whether the checkbox is indeterminate */
-  indeterminate?: boolean;
-  /** Whether the checkbox is required */
-  required?: boolean;
   /** Callback when checkbox state changes */
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  /** Additional CSS classes */
-  className?: string;
-  /** Optional children to override label */
-  children?: ReactNode;
+  /** Whether the checkbox is required */
+  required?: boolean;
+  /** The value of the checkbox */
+  value: string;
 }
 
 /**

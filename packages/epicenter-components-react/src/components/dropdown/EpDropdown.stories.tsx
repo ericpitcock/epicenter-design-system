@@ -1,6 +1,6 @@
 import { EpDropdown, EpDropdownTrigger, EpDropdownContent } from '@ericpitcock/epicenter-components-react'
 import { EpButton, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-components-react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof EpDropdown> = {
   title: 'Components/Dropdown',

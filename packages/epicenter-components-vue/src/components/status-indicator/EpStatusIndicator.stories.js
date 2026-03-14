@@ -1,9 +1,8 @@
+import { centeredSurface } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
 import EpStatusIndicator from '@/components/status-indicator/EpStatusIndicator.vue'
 import EpTooltip from '@/components/tooltip/EpTooltip.vue'
-
-import { centeredSurface } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Status Indicator',

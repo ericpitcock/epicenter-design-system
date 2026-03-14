@@ -16,16 +16,16 @@ type FlatpickrInstance = {
 
 export interface EpDatePickerProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
-  value?: string | string[];
-  onChange?: (dates: Date[], dateStr: string) => void;
-  onOpen?: () => void;
-  mode?: 'single' | 'multiple' | 'range';
+  className?: string;
   dateFormat?: string;
-  positionX?: 'auto' | 'left' | 'right';
-  positionY?: 'auto' | 'above' | 'below';
   enableCloseOnSelect?: boolean;
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
-  className?: string;
+  mode?: 'single' | 'multiple' | 'range';
+  onChange?: (dates: Date[], dateStr: string) => void;
+  onOpen?: () => void;
+  positionX?: 'auto' | 'left' | 'right';
+  positionY?: 'auto' | 'above' | 'below';
+  value?: string | string[];
 }
 
 export interface EpDatePickerRef {
@@ -59,7 +59,6 @@ export const EpDatePicker = forwardRef<EpDatePickerRef, EpDatePickerProps>(
     }));
 
     useEffect(() => {
-      let flatpickrModule: typeof import('flatpickr') | null = null;
 
       const initFlatpickr = async () => {
         if (!inputRef.current) return;
@@ -67,7 +66,6 @@ export const EpDatePicker = forwardRef<EpDatePickerRef, EpDatePickerProps>(
         try {
           // Dynamic import of Flatpickr
           const module = await import('flatpickr');
-          flatpickrModule = module;
           const flatpickr = module.default;
 
           // Import Flatpickr CSS

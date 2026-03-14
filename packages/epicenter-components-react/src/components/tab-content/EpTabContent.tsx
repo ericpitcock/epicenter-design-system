@@ -7,13 +7,13 @@ export interface EpTabContentProps {
    */
   activeTabIndex?: number
   /**
-   * An array of tab items (used to determine tab count).
-   */
-  items: unknown[]
-  /**
    * Array of content for each tab panel
    */
   children?: ReactNode[]
+  /**
+   * An array of tab items (used to determine tab count).
+   */
+  items: unknown[]
 }
 
 export const EpTabContent: React.FC<EpTabContentProps> = ({

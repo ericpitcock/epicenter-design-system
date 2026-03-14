@@ -1,10 +1,9 @@
+import { mcaStory } from '@sb/helpers/McaStory.js'
 import { computed, ref } from 'vue'
 
 import EpBadge from '@/components/badge/EpBadge.vue'
 import EpFlex from '@/components/flexbox/EpFlex.vue'
 import EpResizable from '@/components/resizable/EpResizable.vue'
-
-import { mcaStory } from '@sb/helpers/McaStory.js'
 
 export default {
   title: 'Components/Resizable',

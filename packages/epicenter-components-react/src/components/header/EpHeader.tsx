@@ -1,11 +1,11 @@
 import React, { forwardRef, ReactNode } from 'react';
 
 export interface EpHeaderProps {
-  left?: ReactNode;
-  center?: ReactNode;
-  right?: ReactNode;
-  className?: string;
   [key: string]: unknown;
+  center?: ReactNode;
+  className?: string;
+  left?: ReactNode;
+  right?: ReactNode;
 }
 
 export const EpHeader = forwardRef<HTMLDivElement, EpHeaderProps>(

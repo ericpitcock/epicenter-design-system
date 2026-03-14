@@ -1,25 +1,26 @@
 import React from 'react'
+
 import { EpHeader } from '../header/EpHeader'
 
 export interface EpBrowserFrameProps {
   /**
-   * The width of the browser frame.
-   * @default '100%'
+   * The alt text for the image.
    */
-  width?: string
+  imageAlt?: string
+  /**
+   * The source of the image to display in the browser frame.
+   */
+  imageSrc?: string
   /**
    * The URL to display in the browser frame.
    * @default 'http://website.com'
    */
   url?: string
   /**
-   * The source of the image to display in the browser frame.
+   * The width of the browser frame.
+   * @default '100%'
    */
-  imageSrc?: string
-  /**
-   * The alt text for the image.
-   */
-  imageAlt?: string
+  width?: string
 }
 
 export const EpBrowserFrame: React.FC<EpBrowserFrameProps> = ({

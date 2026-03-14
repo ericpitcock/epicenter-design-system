@@ -4,12 +4,12 @@ import type { SortOrder, TableColumn, TableRow } from '../../types'
 
 /** Return type of the useSorting composable */
 export interface UseSortingReturn {
-  /** Sorted copy of the data array */
-  sortedData: ComputedRef<TableRow[]>
   /** Toggle or change the sort column */
   onSortChange: (columnKey: string) => void
   /** Currently sorted column key */
   sortColumn: Ref<string>
+  /** Sorted copy of the data array */
+  sortedData: ComputedRef<TableRow[]>
   /** Current sort direction */
   sortOrder: Ref<SortOrder>
 }
