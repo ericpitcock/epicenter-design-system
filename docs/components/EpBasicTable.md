@@ -8,11 +8,11 @@ Just a basic table when you don’t need any special features. Supports styling 
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `columns` | The columns of the table. | `array` | `-` |
-| `data` | The data of the table. | `array` | `-` |
-| `bordered` | Gives borders to your table rows. Helpful for tables with a lot of data. | `boolean` | `false` |
-| `compact` | Compact rows in a single line table scenario. | `boolean` | `false` |
-| `striped` | Background colors for every other row. Helpful for tables with a lot of data. | `boolean` | `false` |
+| `bordered` | Gives borders to your table rows. Helpful for tables with a lot of data. | `boolean` | `-` |
+| `columns` | The columns of the table. | `Array` | `-` |
+| `compact` | Compact rows in a single line table scenario. | `boolean` | `-` |
+| `data` | The data of the table. | `Array` | `-` |
+| `striped` | Background colors for every other row. Helpful for tables with a lot of data. | `boolean` | `-` |
 
 
 ::: info
@@ -22,51 +22,30 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The columns of the table.
-     */
-    columns: {
-      type: Array,
-      required: true
-    },
-    /**
-     * The data of the table.
-     */
-    data: {
-      type: Array,
-      required: true
-    },
-    /**
-     * Gives borders to your table rows. Helpful for tables with a lot of data.
-     */
-    bordered: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Compact rows in a single line table scenario.
-     */
-    compact: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Background colors for every other row. Helpful for tables with a lot of data.
-     */
-    striped: {
-      type: Boolean,
-      default: false
-    }
-  })
+  import type { TableColumn, TableRow } from '../../types'
+
+  interface EpBasicTableProps {
+    /** Gives borders to your table rows. Helpful for tables with a lot of data. */
+    bordered?: boolean
+    /** The columns of the table. */
+    columns: TableColumn[]
+    /** Compact rows in a single line table scenario. */
+    compact?: boolean
+    /** The data of the table. */
+    data: TableRow[]
+    /** Background colors for every other row. Helpful for tables with a lot of data. */
+    striped?: boolean
+  }
+
+  const { bordered = false, compact = false, striped = false } = defineProps<EpBasicTableProps>()
 
   const classes = computed(() => ({
-    'ep-table--bordered': props.bordered,
-    'ep-table--compact': props.compact,
-    'ep-table--striped': props.striped,
+    'ep-table--bordered': bordered,
+    'ep-table--compact': compact,
+    'ep-table--striped': striped,
   }))
 </script>
 

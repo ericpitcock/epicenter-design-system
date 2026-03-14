@@ -5,9 +5,9 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `row` | - | `object` | `-` |
-| `column` | - | `object` | `-` |
-| `styles` | - | `array` | `[]` |
+| `column` | - | `TableColumn` | `-` |
+| `row` | - | `TableRow` | `-` |
+| `styles` | - | `Array` | `-` |
 
 
 ::: info
@@ -17,27 +17,22 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { ref, watchEffect } from 'vue'
 
-  const props = defineProps({
-    row: {
-      type: Object,
-      required: true
-    },
-    column: {
-      type: Object,
-      required: true
-    },
-    styles: {
-      type: Array,
-      default: () => []
-    }
-  })
+  import type { TableColumn, TableRow } from '../../types'
 
-  const cellContent = ref('')
+  interface EpTableCellProps {
+    column: TableColumn
+    row: TableRow
+    styles?: string[]
+  }
 
-  const formattedCell = (row, column) => {
+  const { row, column, styles = [] } = defineProps<EpTableCellProps>()
+
+  const cellContent = ref<unknown>('')
+
+  const formattedCell = (row: TableRow, column: TableColumn): unknown => {
     const value = row[column.key]
     const formatter = column.formatter
 
@@ -48,7 +43,7 @@ This component does not use events, slots.
   }
 
   watchEffect(() => {
-    cellContent.value = formattedCell(props.row, props.column)
+    cellContent.value = formattedCell(row, column)
   })
 </script>
 

@@ -1,0 +1,86 @@
+# EpLoaderSquares
+
+
+
+
+::: info
+This component does not use props, events, slots.
+:::
+
+## Component Code
+
+```vue
+<template>
+  <svg
+    class="ep-loader ep-loader--squares"
+    viewBox="0 0 50 50"
+    aria-hidden="true"
+  >
+    <rect
+      x="3"
+      y="3"
+      width="18"
+      height="18"
+      rx="2"
+      fill="currentColor"
+    >
+      <animate
+        attributeName="opacity"
+        values="1;0.3;0.3;1"
+        dur="1.6s"
+        begin="0s"
+        repeatCount="indefinite"
+      />
+    </rect>
+    <rect
+      x="29"
+      y="3"
+      width="18"
+      height="18"
+      rx="2"
+      fill="currentColor"
+    >
+      <animate
+        attributeName="opacity"
+        values="0.3;1;0.3;0.3"
+        dur="1.6s"
+        begin="0s"
+        repeatCount="indefinite"
+      />
+    </rect>
+    <rect
+      x="29"
+      y="29"
+      width="18"
+      height="18"
+      rx="2"
+      fill="currentColor"
+    >
+      <animate
+        attributeName="opacity"
+        values="0.3;0.3;1;0.3"
+        dur="1.6s"
+        begin="0s"
+        repeatCount="indefinite"
+      />
+    </rect>
+    <rect
+      x="3"
+      y="29"
+      width="18"
+      height="18"
+      rx="2"
+      fill="currentColor"
+    >
+      <animate
+        attributeName="opacity"
+        values="0.3;0.3;0.3;1"
+        dur="1.6s"
+        begin="0s"
+        repeatCount="indefinite"
+      />
+    </rect>
+  </svg>
+</template>
+
+```

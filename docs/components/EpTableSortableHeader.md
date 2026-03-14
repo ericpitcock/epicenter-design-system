@@ -5,11 +5,11 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `column` | - | `object` | `-` |
-| `cellWidths` | - | `array` | `[]` |
-| `columnIndex` | - | `number` | `null` |
+| `cellWidths` | - | `Array` | `-` |
+| `column` | - | `TableColumn` | `-` |
+| `columnIndex` | - | `union` | `-` |
 | `sortColumn` | - | `string` | `-` |
-| `sortOrder` | - | `string` | `-` |
+| `sortOrder` | - | `SortOrder` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -24,51 +24,47 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import ArrowDown01 from '@ericpitcock/epicenter-icons-vue/ArrowDown01'
   import ArrowUp01 from '@ericpitcock/epicenter-icons-vue/ArrowUp01'
   import { computed } from 'vue'
 
-  const props = defineProps({
-    column: {
-      type: Object,
-      required: true
-    },
-    cellWidths: {
-      type: Array,
-      default: () => []
-    },
-    columnIndex: {
-      type: Number,
-      default: null
-    },
-    sortColumn: {
-      type: String,
-      required: true
-    },
-    sortOrder: {
-      type: String,
-      required: true
-    }
-  })
+  import type { TableColumn, SortOrder } from '../../types'
 
-  const emit = defineEmits(['sort'])
+  interface EpTableSortableHeaderProps {
+    cellWidths?: Record<string, string>[]
+    column: TableColumn
+    columnIndex?: number | null
+    sortColumn: string
+    sortOrder: SortOrder
+  }
+
+  const {
+    sortColumn,
+    column,
+    cellWidths = [],
+    columnIndex = null,
+  } = defineProps<EpTableSortableHeaderProps>()
+
+  const emit = defineEmits<{
+    sort: [key: string]
+  }>()
 
   const headerClass = computed(() => {
     return [
       'ep-table-sortable-header',
-      { 'ep-table-sortable-header--active': props.sortColumn === props.column.key }
+      { 'ep-table-sortable-header--active': sortColumn === column.key }
     ]
   })
 
   const isSorted = computed(() => {
-    return props.column.sortable && props.sortColumn === props.column.key
+    return column.sortable && sortColumn === column.key
   })
 </script>
 
 <template>
   <th
-    :style="cellWidths[columnIndex]"
+    :style="columnIndex != null ? cellWidths[columnIndex] : undefined"
     @click="emit('sort', column.key)"
   >
     <div :class="headerClass">

@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `items` | An array of breadcrumb items with label, to, and optional customClass properties. | `array` | `[]` |
+| `items` | An array of breadcrumb items with label, to, and optional customClass properties. | `Array` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -21,22 +21,27 @@
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
 
-  defineProps({
-    /**
-     * An array of breadcrumb items with label, to, and optional customClass properties.
-     */
-    items: {
-      type: Array,
-      default: () => []
-    }
-  })
+  interface BreadcrumbItem {
+    customClass?: string
+    label: string
+    to?: string
+  }
 
-  const emit = defineEmits(['navigate'])
+  interface EpBreadcrumbsProps {
+    /** An array of breadcrumb items with label, to, and optional customClass properties. */
+    items?: BreadcrumbItem[]
+  }
 
-  const handleClick = (event, crumb) => {
+  const { items = [] } = defineProps<EpBreadcrumbsProps>()
+
+  const emit = defineEmits<{
+    navigate: [payload: { event: MouseEvent; crumb: BreadcrumbItem }]
+  }>()
+
+  const handleClick = (event: MouseEvent, crumb: BreadcrumbItem): void => {
     emit('navigate', { event, crumb })
   }
 </script>

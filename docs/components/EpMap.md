@@ -21,15 +21,15 @@ This is because Vite does not pre-bundle `mapbox-gl` by default, which can cause
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
 | `accessToken` | - | `string` | `-` |
-| `mapCenter` | - | `array` | `[-122.3321, 47.6062]` |
-| `mapZoom` | - | `number` | `12` |
-| `mapStyle` | - | `string` | `'mapbox://styles/mapbox/streets-v11'` |
-| `mapSource` | - | `object` | `null` |
-| `mapLayer` | - | `object` | `null` |
-| `pinLocations` | - | `array` | `[]` |
-| `scrollZoom` | - | `boolean` | `true` |
-| `navigationControl` | - | `boolean` | `true` |
-| `fitToBounds` | - | `boolean` | `false` |
+| `fitToBounds` | - | `boolean` | `-` |
+| `mapCenter` | - | `tuple` | `-` |
+| `mapLayer` | - | `union` | `-` |
+| `mapSource` | - | `union` | `-` |
+| `mapStyle` | - | `string` | `-` |
+| `mapZoom` | - | `number` | `-` |
+| `navigationControl` | - | `boolean` | `-` |
+| `pinLocations` | - | `Array` | `-` |
+| `scrollZoom` | - | `boolean` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -46,80 +46,75 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import 'mapbox-gl/dist/mapbox-gl.css'
-  import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+  import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 
-  const props = defineProps({
-    accessToken: {
-      type: String,
-      required: true
-    },
-    mapCenter: {
-      type: Array,
-      default: () => [-122.3321, 47.6062]
-    },
-    mapZoom: {
-      type: Number,
-      default: 12
-    },
-    mapStyle: {
-      type: String,
-      default: 'mapbox://styles/mapbox/streets-v11'
-    },
-    mapSource: {
-      type: Object,
-      default: null
-    },
-    mapLayer: {
-      type: Object,
-      default: null
-    },
-    pinLocations: {
-      type: Array,
-      default: () => []
-    },
-    scrollZoom: {
-      type: Boolean,
-      default: true
-    },
-    navigationControl: {
-      type: Boolean,
-      default: true
-    },
-    fitToBounds: {
-      type: Boolean,
-      default: false
-    }
-  })
+  interface MapSource {
+    id: string
+    source: Record<string, unknown>
+  }
 
-  const emit = defineEmits(['centerChange', 'dropPin', 'zoomChange'])
+  interface EpMapProps {
+    accessToken: string
+    fitToBounds?: boolean
+    mapCenter?: [number, number]
+    mapLayer?: Record<string, unknown> | null
+    mapSource?: (MapSource & { source: { data: { geometry: { coordinates: [number, number][] } } } }) | null
+    mapStyle?: string
+    mapZoom?: number
+    navigationControl?: boolean
+    pinLocations?: [number, number][]
+    scrollZoom?: boolean
+  }
+
+  const {
+    accessToken,
+    fitToBounds = false,
+    mapCenter = [-122.3321, 47.6062],
+    mapLayer = null,
+    mapSource = null,
+    mapStyle = 'mapbox://styles/mapbox/streets-v11',
+    mapZoom = 12,
+    navigationControl = true,
+    pinLocations = [],
+    scrollZoom = true,
+  } = defineProps<EpMapProps>()
+
+  const emit = defineEmits<{
+    centerChange: [center: [number, number]]
+    dropPin: []
+    zoomChange: [zoom: number]
+  }>()
 
   const init = ref(true)
-  const map = ref(null)
-  const markers = ref([])
-  let mapboxgl = null
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const map = ref<any>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const markers = ref<any[]>([])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let mapboxgl: any = null
 
-  watch(() => props.mapCenter, (newCenter) => {
+  watch(() => mapCenter, (newCenter) => {
     emit('centerChange', newCenter)
-    flyTo(newCenter, props.mapZoom)
+    flyTo(newCenter, mapZoom)
   })
 
-  watch(() => props.mapZoom, (newZoom) => {
+  watch(() => mapZoom, (newZoom) => {
     emit('zoomChange', newZoom)
-    flyTo(props.mapCenter, newZoom)
+    flyTo(mapCenter, newZoom)
   })
 
-  watch(() => props.mapStyle, (newStyle) => {
+  watch(() => mapStyle, (newStyle: string) => {
     map.value.setStyle(newStyle)
   })
 
-  watch(() => props.pinLocations, () => {
+  watch(() => pinLocations, () => {
     removeMarkers()
     addMarkers()
   })
 
-  watch(() => props.scrollZoom, (newScrollZoom) => {
+  watch(() => scrollZoom, (newScrollZoom: boolean) => {
     if (newScrollZoom) {
       map.value.scrollZoom.enable()
     } else {
@@ -127,13 +122,10 @@ This component does not use slots.
     }
   })
 
-  // get a reference to the parent container
-  const epMapContainer = ref(null)
+  const epMapContainer = useTemplateRef<HTMLDivElement>('epMapContainer')
 
-  // create a new ResizeObserver instance
   const observer = new ResizeObserver(() => {
     if (map.value) {
-      // Ensure map.value is initialized before calling resize
       nextTick(() => {
         map.value.resize()
       })
@@ -142,19 +134,17 @@ This component does not use slots.
 
   onMounted(() => {
     loadMap().then(() => {
-      // map layer
-      if (props.mapSource) addSource(props.mapSource, props.mapLayer)
-      // fit to bounds
-      if (props.fitToBounds) {
-        fitBounds(getBounds(props.mapSource.source.data.geometry.coordinates))
+      if (mapSource && mapLayer) addSource(mapSource, mapLayer)
+      if (fitToBounds && mapSource) {
+        fitBounds(getBounds(mapSource.source.data.geometry.coordinates))
       }
-      // if pin locations exist, add them
-      if (props.pinLocations.length) addMarkers()
+      if (pinLocations.length) addMarkers()
       init.value = false
     })
 
-    // attach the observer to the container
-    observer.observe(epMapContainer.value)
+    if (epMapContainer.value) {
+      observer.observe(epMapContainer.value)
+    }
   })
 
   onBeforeUnmount(() => {
@@ -169,22 +159,20 @@ This component does not use slots.
     }
   })
 
-  const loadMap = () => {
+  const loadMap = (): Promise<void> => {
     return new Promise((resolve) => {
-      // Perform the dynamic import and other async operations
       import('mapbox-gl').then((module) => {
         mapboxgl = module.default
         map.value = new mapboxgl.Map({
-          accessToken: props.accessToken,
+          accessToken: accessToken,
           container: 'ep-map',
-          center: props.mapCenter,
-          zoom: props.mapZoom,
-          style: props.mapStyle,
+          center: mapCenter,
+          zoom: mapZoom,
+          style: mapStyle,
         })
 
-        // Various options
-        if (!props.scrollZoom) map.value.scrollZoom.disable()
-        if (props.navigationControl) map.value.addControl(new mapboxgl.NavigationControl())
+        if (!scrollZoom) map.value.scrollZoom.disable()
+        if (navigationControl) map.value.addControl(new mapboxgl.NavigationControl())
 
         map.value.on('load', () => resolve())
         map.value.on('dragend', onDragEnd)
@@ -192,38 +180,38 @@ This component does not use slots.
     })
   }
 
-  const addMarkers = () => {
-    props.pinLocations.forEach((location) => {
+  const addMarkers = (): void => {
+    pinLocations.forEach((location) => {
       const marker = new mapboxgl.Marker().setLngLat(location).addTo(map.value)
       markers.value.push(marker)
     })
   }
 
-  const removeMarkers = () => {
+  const removeMarkers = (): void => {
     markers.value.forEach((marker) => marker.remove())
     markers.value = []
   }
 
-  const flyTo = (center = props.mapCenter, zoom = props.mapZoom) => {
+  const flyTo = (center: [number, number] = mapCenter, zoom: number = mapZoom): void => {
     map.value.flyTo({
       center,
       zoom
     })
   }
 
-  const onDragEnd = () => {
+  const onDragEnd = (): void => {
     const center = map.value.getCenter()
     emit('centerChange', [center.lng, center.lat])
   }
 
-  const getBounds = (coordinates) => {
+  const getBounds = (coordinates: [number, number][]): unknown => {
     return coordinates.reduce(
-      (bounds, coord) => bounds.extend(coord),
+      (bounds: unknown, coord: [number, number]) => (bounds as { extend: (c: [number, number]) => unknown }).extend(coord),
       new mapboxgl.LngLatBounds(coordinates[0], coordinates[0])
     )
   }
 
-  const fitBounds = (bounds) => {
+  const fitBounds = (bounds: unknown): void => {
     map.value.fitBounds(bounds, {
       linear: false,
       duration: 1000,
@@ -231,7 +219,7 @@ This component does not use slots.
     })
   }
 
-  const addSource = (source, layer) => {
+  const addSource = (source: MapSource, layer: Record<string, unknown>): void => {
     map.value.addSource(source.id, source.source)
     map.value.addLayer(layer)
   }

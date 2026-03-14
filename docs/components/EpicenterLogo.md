@@ -10,7 +10,7 @@ This component does not use props, events, slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
 </script>
 
 <template>

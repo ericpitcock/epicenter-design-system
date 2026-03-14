@@ -1,5 +1,5 @@
 import fs from 'fs'
-import glob from 'glob'
+import { globSync } from 'glob'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename)
 const componentsPath = path.resolve(__dirname, '../../packages/epicenter-components-vue/src/components')
 
 // Find all .vue files in the components directory and subdirectories
-const vueFiles = glob.sync(`${componentsPath}/**/*.vue`)
+const vueFiles = globSync(`${componentsPath}/**/*.vue`)
 
 // Generate sidebar items dynamically
 const sidebarItems = vueFiles

@@ -59,7 +59,7 @@ export default function useFixedHeader(
     if (!fixedHeader.value) return
 
     const tableHeadInstance = tableHead.value as (ComponentPublicInstance & { $refs: Record<string, HTMLElement | undefined> }) | null
-    const tableHeadEl = tableHeadInstance?.$refs.tableHeadd as HTMLElement | undefined
+    const tableHeadEl = tableHeadInstance?.$refs.thead as HTMLElement | undefined
     const tableHeadCells = tableHeadEl?.querySelectorAll('th')
     if (!tableHeadCells) return
 

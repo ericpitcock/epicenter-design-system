@@ -5,15 +5,15 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `src` | The source URL of the image. | `string` | `-` |
-| `alt` | The alt text for the image. | `string` | `''` |
-| `width` | The width of the image. | `string|number` | `'100%'` |
-| `height` | The height of the image. | `string|number` | `'100%'` |
-| `className` | Additional CSS class name for the image element. | `string` | `''` |
-| `placeholder` | URL of the placeholder image to display while loading. | `string` | `''` |
-| `placeholderColor` | The background color of the placeholder. | `string` | `'#f5f5f5'` |
-| `placeholderOpacity` | The opacity of the placeholder. | `number` | `1` |
-| `lazy` | If true, enables lazy loading using Intersection Observer. | `boolean` | `true` |
+| `alt` | - | `string` | `-` |
+| `className` | - | `string` | `-` |
+| `height` | - | `union` | `-` |
+| `lazy` | - | `boolean` | `-` |
+| `placeholder` | - | `string` | `-` |
+| `placeholderColor` | - | `string` | `-` |
+| `placeholderOpacity` | - | `number` | `-` |
+| `src` | - | `string` | `-` |
+| `width` | - | `union` | `-` |
 
 
 ::: info
@@ -23,96 +23,54 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<script setup>
-  import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+<script setup lang="ts">
+  import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The source URL of the image.
-     */
-    src: {
-      type: String,
-      required: true,
-    },
-    /**
-     * The alt text for the image.
-     */
-    alt: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The width of the image.
-     */
-    width: {
-      type: [String, Number],
-      default: '100%',
-    },
-    /**
-     * The height of the image.
-     */
-    height: {
-      type: [String, Number],
-      default: '100%',
-    },
-    /**
-     * Additional CSS class name for the image element.
-     */
-    className: {
-      type: String,
-      default: '',
-    },
-    /**
-     * URL of the placeholder image to display while loading.
-     */
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The background color of the placeholder.
-     */
-    placeholderColor: {
-      type: String,
-      default: '#f5f5f5',
-    },
-    /**
-     * The opacity of the placeholder.
-     */
-    placeholderOpacity: {
-      type: Number,
-      default: 1,
-    },
-    /**
-     * If true, enables lazy loading using Intersection Observer.
-     */
-    lazy: {
-      type: Boolean,
-      default: true,
-    },
-  })
+  interface EpImageProps {
+    alt?: string
+    className?: string
+    height?: string | number
+    lazy?: boolean
+    placeholder?: string
+    placeholderColor?: string
+    placeholderOpacity?: number
+    src: string
+    width?: string | number
+  }
+
+  const {
+    src,
+    alt = '',
+    className = '',
+    height = '100%',
+    lazy = true,
+    placeholder = '',
+    placeholderColor = '#f5f5f5',
+    placeholderOpacity = 1,
+    width = '100%',
+  } = defineProps<EpImageProps>()
 
   const isLoaded = ref(false)
-  const imageEl = ref(null)
-  let observer = null
+  const imageEl = useTemplateRef<HTMLElement>('imageEl')
+  let observer: IntersectionObserver | null = null
 
   const placeholderStyle = computed(() => {
     return {
-      width: props.width,
-      height: props.height,
-      backgroundColor: props.placeholderColor,
-      opacity: props.placeholderOpacity,
-      backgroundImage: props.placeholder ? `url(${props.placeholder})` : '',
+      width: width,
+      height: height,
+      backgroundColor: placeholderColor,
+      opacity: placeholderOpacity,
+      backgroundImage: placeholder ? `url(${placeholder})` : '',
       backgroundSize: 'cover',
     }
   })
 
-  const addLazyLoadListener = () => {
+  const addLazyLoadListener = (): void => {
     observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           loadImage()
-          observer.unobserve(entry.target)
+          observer?.unobserve(entry.target)
         }
       })
     })
@@ -122,16 +80,16 @@ This component does not use events, slots.
     }
   }
 
-  const loadImage = () => {
+  const loadImage = (): void => {
     const img = new Image()
-    img.src = props.src
+    img.src = src
     img.onload = () => {
       isLoaded.value = true
     }
   }
 
   onMounted(() => {
-    if (props.lazy) {
+    if (lazy) {
       addLazyLoadListener()
     } else {
       loadImage()

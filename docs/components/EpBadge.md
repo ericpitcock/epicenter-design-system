@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `label` | The label to display in the badge. | `string` | `''` |
+| `label` | The label to display in the badge. | `string` | `-` |
 
 ## Slots
 | Name | Description |
@@ -20,16 +20,15 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<script setup>
-  defineProps({
+<script setup lang="ts">
+  interface EpBadgeProps {
     /**
      * The label to display in the badge.
      */
-    label: {
-      type: String,
-      default: '',
-    },
-  })
+    label?: string
+  }
+
+  const { label = '' } = defineProps<EpBadgeProps>()
 </script>
 
 <template>

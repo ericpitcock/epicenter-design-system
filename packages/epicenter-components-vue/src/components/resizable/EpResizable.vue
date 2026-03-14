@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed, ref, useTemplateRef } from 'vue'
 
   import type { ResizeDirection } from '../../types'
 
@@ -21,7 +21,7 @@
     resize: [size: number]
   }>()
 
-  const resizablePane = ref<HTMLDivElement | null>(null)
+  const resizablePane = useTemplateRef<HTMLDivElement>('resizablePane')
   const isDragging = ref(false)
   const hasBeenDragged = ref(false)
   const startPos = ref(0)

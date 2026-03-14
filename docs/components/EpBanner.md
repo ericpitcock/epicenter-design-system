@@ -5,7 +5,7 @@
 ## Events
 | Name    | Description                 | Payload    |
 |---------|-----------------------------|------------|
-| `dismissed` | Emitted when the banner is dismissed. | - |
+| `dismissed` | - | - |
 
 ## Slots
 | Name | Description |
@@ -23,14 +23,12 @@ This component does not use props.
 ## Component Code
 
 ```vue
-<script setup>
-  const emit = defineEmits([
-    /**
-     * Emitted when the banner is dismissed.
-     */
-    'dismissed'
-  ])
-  const dismissBanner = () => emit('dismissed')
+<script setup lang="ts">
+  const emit = defineEmits<{
+    dismissed: []
+  }>()
+
+  const dismissBanner = (): void => emit('dismissed')
 </script>
 
 <template>

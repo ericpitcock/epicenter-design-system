@@ -11,8 +11,8 @@
 ## Slots
 | Name | Description |
 |------|-------------|
-| `default` | Default slot for menu items (EpMenuItem components). |
 | `header` | Header content rendered above the menu items, outside keyboard navigation. |
+| `default` | Default slot for menu items (EpMenuItem components). |
 | `footer` | Footer content rendered below the menu items, outside keyboard navigation. |
 
 
@@ -23,59 +23,54 @@ This component does not use props.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { onMounted, ref, useTemplateRef } from 'vue'
 
-  const emit = defineEmits(['escape', 'tab'])
+  const emit = defineEmits<{
+    escape: []
+    tab: []
+  }>()
 
-  const menuRef = useTemplateRef('menuRef')
+  const menuRef = useTemplateRef<HTMLDivElement>('menuRef')
   const currentFocusIndex = ref(0)
 
-  // Get all focusable menu items (only direct children, not nested submenus)
-  const getFocusableItems = () => {
+  const getFocusableItems = (): Element[] => {
     if (!menuRef.value) return []
 
-    // Find all menu items that are direct children (not in submenus)
-    const allItems = menuRef.value.querySelectorAll('[role="menuitem"]:not([disabled="true"])')
+    const allItems = menuRef.value.querySelectorAll('[role="menuitem"]:not([aria-disabled="true"])')
     return Array.from(allItems).filter(item => {
-      // Only include items whose closest .ep-menu parent is this menu
       const closestMenu = item.closest('.ep-menu')
       return closestMenu === menuRef.value
     })
   }
 
-  const focusItemAtIndex = (index) => {
+  const focusItemAtIndex = (index: number): void => {
     const items = getFocusableItems()
     if (items.length === 0) return
 
-    // Wrap around
     if (index < 0) index = items.length - 1
     if (index >= items.length) index = 0
 
-    // Update tabindex: only the focused item should be tabbable
     items.forEach((item, i) => {
       item.setAttribute('tabindex', i === index ? '0' : '-1')
     })
 
     currentFocusIndex.value = index
-    items[index]?.focus()
+      ; (items[index] as HTMLElement)?.focus()
   }
 
-  const onKeydown = (event) => {
+  const onKeydown = (event: KeyboardEvent): void => {
     const items = getFocusableItems()
     if (items.length === 0) return
 
     const key = event.key
 
-    // Only handle navigation keys if the currently focused element is a direct child of THIS menu
-    // Don't interfere with submenu navigation
     const activeElement = document.activeElement
-    const isDirectChild = items.includes(activeElement)
+    const isDirectChild = items.includes(activeElement as Element)
 
-    // For arrow keys, only handle if focused element is our direct child
     const isArrowKey = ['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)
     if (isArrowKey && !isDirectChild) {
-      return // Let the submenu's EpMenu handle this
+      return
     }
 
     switch (key) {
@@ -100,15 +95,12 @@ This component does not use props.
         emit('escape')
         break
       case 'Tab':
-        // Tab should exit the menu immediately, not navigate within it
-        // Emit event so parent can react, but don't prevent default
-        // so Tab can naturally move focus to the next element
         emit('tab')
         break
     }
   }
 
-  const resetFocus = () => {
+  const resetFocus = (): void => {
     const items = getFocusableItems()
     items.forEach((item, i) => {
       item.setAttribute('tabindex', i === 0 ? '0' : '-1')
@@ -116,21 +108,17 @@ This component does not use props.
     currentFocusIndex.value = 0
   }
 
-  // Sync currentFocusIndex with actual focused item on mount and when items gain focus
   onMounted(() => {
     if (!menuRef.value) return
 
-    // Initialize tabindex: only first item should be tabbable
     resetFocus()
 
-    // Listen for focus events to keep index in sync
-    menuRef.value.addEventListener('focusin', (event) => {
+    menuRef.value.addEventListener('focusin', (event: FocusEvent) => {
       const items = getFocusableItems()
-      const target = event.target.closest('[role="menuitem"]')
+      const target = (event.target as HTMLElement).closest('[role="menuitem"]')
       if (target) {
         const index = items.indexOf(target)
         if (index !== -1) {
-          // Update tabindex when focus changes
           items.forEach((item, i) => {
             item.setAttribute('tabindex', i === index ? '0' : '-1')
           })
@@ -139,10 +127,8 @@ This component does not use props.
       }
     })
 
-    // Reset to first item when menu loses all focus
-    menuRef.value.addEventListener('focusout', (event) => {
-      // Check if focus is leaving the menu entirely
-      const relatedTarget = event.relatedTarget
+    menuRef.value.addEventListener('focusout', (event: FocusEvent) => {
+      const relatedTarget = event.relatedTarget as Node | null
       if (!menuRef.value?.contains(relatedTarget)) {
         resetFocus()
       }
@@ -156,11 +142,29 @@ This component does not use props.
   <div
     ref="menuRef"
     class="ep-menu"
-    role="menu"
     @keydown="onKeydown"
   >
-    <!-- @slot Default slot for menu items (EpMenuItem components). -->
-    <slot />
+    <div
+      v-if="$slots.header"
+      class="ep-menu__header"
+    >
+      <!-- @slot Header content rendered above the menu items, outside keyboard navigation. -->
+      <slot name="header" />
+    </div>
+    <div
+      role="menu"
+      class="ep-menu__items"
+    >
+      <!-- @slot Default slot for menu items (EpMenuItem components). -->
+      <slot />
+    </div>
+    <div
+      v-if="$slots.footer"
+      class="ep-menu__footer"
+    >
+      <!-- @slot Footer content rendered below the menu items, outside keyboard navigation. -->
+      <slot name="footer" />
+    </div>
   </div>
 </template>
 
@@ -177,7 +181,7 @@ This component does not use props.
   --ep-menu-border-width: 0.1rem;
   --ep-menu-border-style: solid;
   --ep-menu-border-color: var(--border-color);
-  --ep-menu-border-radius: var(--border-radius);
+  --ep-menu-border-radius: var(--border-radius--large);
   --ep-menu-section-padding: 0.8rem 2.2rem;
   --ep-menu-section-margin-top: 0;
   --ep-menu-divider-border-color: var(--border-color);
@@ -186,13 +190,16 @@ This component does not use props.
   --ep-button-menu-item-hover-border-color: var(--primary-color-base);
   --ep-button-menu-item-selected-bg-color: var(--primary-color-base);
   --ep-button-menu-item-selected-text-color: hsl(0, 0%, 100%);
-  padding: var(--ep-menu-padding);
   border-width: var(--ep-menu-border-width);
   border-style: var(--ep-menu-border-style);
   border-color: var(--ep-menu-border-color);
   border-radius: var(--ep-menu-border-radius);
   background: var(--ep-menu-bg-color);
   text-align: left;
+}
+
+.ep-menu__items {
+  padding: var(--ep-menu-padding);
 }
 
 .ep-menu__section {
@@ -230,13 +237,19 @@ This component does not use props.
       color: var(--ep-button-menu-item-selected-text-color);
       cursor: default;
     }
+  }
 
-    // sub menu arrow icon
-    .ep-button__icon--right > svg {
-      --ep-icon-width: 1.2em;
-      --ep-icon-height: 1.2em;
-      position: relative;
-      left: 1rem;
+  // styling the chevron when the menu item has a sub menu
+  &:has(.ep-menu__item__sub-menu) {
+    .ep-button__icon--right {
+      margin-left: auto;
+
+      & > .ep-icon {
+        --ep-icon-width: 1.2em;
+        --ep-icon-height: 1.2em;
+        position: relative;
+        left: 1rem;
+      }
     }
   }
 
@@ -250,5 +263,23 @@ This component does not use props.
 .ep-menu > .ep-divider {
   --ep-divider-border-color: var(--ep-menu-divider-border-color);
   --ep-divider-margin: 1rem 0;
+}
+
+.ep-menu__items > .ep-divider {
+  --ep-divider-border-color: var(--ep-menu-divider-border-color);
+  --ep-divider-margin: 1rem 0;
+}
+
+.ep-menu__header,
+.ep-menu__footer {
+  padding: var(--ep-menu-padding);
+}
+
+.ep-menu__header {
+  border-bottom: var(--ep-menu-border-width) var(--ep-menu-border-style) var(--ep-menu-divider-border-color);
+}
+
+.ep-menu__footer {
+  border-top: var(--ep-menu-border-width) var(--ep-menu-border-style) var(--ep-menu-divider-border-color);
 }
 ```

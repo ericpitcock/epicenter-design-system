@@ -30,12 +30,12 @@ const datePickerProps = {
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `enableCloseOnSelect` | If true, closes the date picker when a date is selected. | `boolean` | `true` |
-| `positionX` | Horizontal position of the date picker dropdown. | `string` | `'left'` |
-| `positionY` | Vertical position of the date picker dropdown. | `string` | `'auto'` |
-| `dateFormat` | Date format string for the input display (Flatpickr format). | `string` | `'m/d/Y'` |
-| `inputProps` | Props to pass through to the underlying EpInput component. | `object` | `{}` |
-| `mode` | Selection mode for the date picker. | `string` | `'single'` |
+| `dateFormat` | - | `string` | `-` |
+| `enableCloseOnSelect` | - | `boolean` | `-` |
+| `inputProps` | - | `Record` | `-` |
+| `mode` | - | `DatePickerMode` | `-` |
+| `positionX` | - | `string` | `-` |
+| `positionY` | - | `string` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -54,66 +54,44 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import Calendar01 from '@ericpitcock/epicenter-icons-vue/Calendar01'
-  import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+  import type { ComponentPublicInstance } from 'vue'
+  import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 
   import EpInput from '../input/EpInput.vue'
 
-  const props = defineProps({
-    /**
-     * If true, closes the date picker when a date is selected.
-     */
-    enableCloseOnSelect: {
-      type: Boolean,
-      default: true
-    },
-    /**
-     * Horizontal position of the date picker dropdown.
-     * @values 'left', 'right', 'auto'
-     */
-    positionX: {
-      type: String,
-      default: 'left'
-    },
-    /**
-     * Vertical position of the date picker dropdown.
-     * @values 'auto', 'above', 'below'
-     */
-    positionY: {
-      type: String,
-      default: 'auto'
-    },
-    /**
-     * Date format string for the input display (Flatpickr format).
-     * @example 'm/d/Y', 'Y-m-d', 'd-m-Y'
-     */
-    dateFormat: {
-      type: String,
-      default: 'm/d/Y'
-    },
-    /**
-     * Props to pass through to the underlying EpInput component.
-     */
-    inputProps: {
-      type: Object,
-      default: () => ({})
-    },
-    /**
-     * Selection mode for the date picker.
-     * @values 'single', 'multiple', 'range'
-     */
-    mode: {
-      type: String,
-      default: 'single'
-    }
-  })
+  type DatePickerMode = 'single' | 'multiple' | 'range'
 
-  const emit = defineEmits(['input', 'change', 'focus', 'blur', 'keydown'])
+  interface EpDatePickerProps {
+    dateFormat?: string
+    enableCloseOnSelect?: boolean
+    inputProps?: Record<string, unknown>
+    mode?: DatePickerMode
+    positionX?: string
+    positionY?: string
+  }
 
-  const datePickerInput = ref(null)
+  const {
+    dateFormat = 'm/d/Y',
+    enableCloseOnSelect = true,
+    inputProps = {},
+    mode = 'single',
+    positionX = 'left',
+    positionY = 'auto',
+  } = defineProps<EpDatePickerProps>()
+
+  const emit = defineEmits<{
+    input: []
+    change: [selectedDates: Date[], dateStr: string]
+    focus: []
+    blur: []
+    keydown: []
+  }>()
+
+  const datePickerInput = useTemplateRef<ComponentPublicInstance>('datePickerInput')
   const value = ref('')
-  let flatpickrInstance = null
+  let flatpickrInstance: { destroy: () => void } | null = null
 
   const inputDefaults = {
     inputId: 'dp',
@@ -128,19 +106,19 @@ This component does not use slots.
 
   const computedInputProps = computed(() => ({
     ...inputDefaults,
-    ...props.inputProps,
+    ...inputProps,
   }))
 
-  const initFlatpickr = async () => {
+  const initFlatpickr = async (): Promise<void> => {
     if (!datePickerInput.value) return
 
     if (!flatpickrInstance) {
       const { default: Flatpickr } = await import('flatpickr')
-      flatpickrInstance = new Flatpickr(datePickerInput.value.$el, {
-        closeOnSelect: props.enableCloseOnSelect,
-        dateFormat: props.dateFormat,
-        mode: props.mode,
-        position: `${props.positionY} ${props.positionX}`,
+      flatpickrInstance = new (Flatpickr as any)(datePickerInput.value.$el as HTMLElement, {
+        closeOnSelect: enableCloseOnSelect,
+        dateFormat: dateFormat,
+        mode: mode,
+        position: `${positionY} ${positionX}`,
         onChange: onChange,
         onOpen: onOpen,
       })
@@ -151,7 +129,7 @@ This component does not use slots.
     initFlatpickr()
   })
 
-  watch(() => props.mode, () => {
+  watch(() => mode, () => {
     if (flatpickrInstance) {
       flatpickrInstance.destroy()
       flatpickrInstance = null
@@ -159,12 +137,12 @@ This component does not use slots.
     initFlatpickr()
   })
 
-  const onChange = (selectedDates, dateStr) => {
+  const onChange = (selectedDates: Date[], dateStr: string): void => {
     value.value = dateStr
     emit('change', selectedDates, dateStr)
   }
 
-  const onOpen = () => {
+  const onOpen = (): void => {
     value.value = ''
   }
 

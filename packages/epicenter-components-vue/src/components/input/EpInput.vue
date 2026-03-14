@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, ref, useId, watch } from 'vue'
+  import { computed, ref, useId, useTemplateRef, watch } from 'vue'
 
   import type { Size } from '../../types'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
@@ -50,7 +50,7 @@
     inheritAttrs: false,
   })
 
-  const input = ref<HTMLInputElement | null>(null)
+  const input = useTemplateRef<HTMLInputElement>('input')
 
   const hasInput = ref(!!modelValue.value)
   const computedId = ref(inputId || useId())

@@ -5,9 +5,9 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `data` | - | `array|object` | `-` |
-| `commonKeyWidth` | - | `boolean` | `false` |
-| `sectionHeaders` | - | `boolean` | `false` |
+| `commonKeyWidth` | - | `boolean` | `-` |
+| `data` | - | `union` | `-` |
+| `sectionHeaders` | - | `boolean` | `-` |
 
 ## Slots
 | Name | Description |
@@ -22,36 +22,38 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
   import EpFlex from '../flexbox/EpFlex.vue'
 
-  const props = defineProps({
-    data: {
-      type: [Array, Object],
-      required: true
-    },
-    commonKeyWidth: {
-      type: Boolean,
-      default: false
-    },
-    sectionHeaders: {
-      type: Boolean,
-      default: false
-    },
-  })
+  interface KeyValueSection {
+    data: Record<string, unknown>
+    name: string
+  }
 
-  const processedData = computed(() => {
-    if (Array.isArray(props.data)) {
-      return props.data
+  interface EpKeyValueTableProps {
+    commonKeyWidth?: boolean
+    data: KeyValueSection | KeyValueSection[]
+    sectionHeaders?: boolean
+  }
+
+  const {
+    data,
+    commonKeyWidth = false,
+    sectionHeaders = false,
+  } = defineProps<EpKeyValueTableProps>()
+
+  const processedData = computed<KeyValueSection[]>(() => {
+    if (Array.isArray(data)) {
+      return data
     }
 
-    return [props.data]
+    return [data]
   })
 
-  const keyColumnWidth = computed(() => {
-    if (!props.commonKeyWidth) {
+  const keyColumnWidth = computed<string>(() => {
+    if (!commonKeyWidth) {
       return 'auto'
     }
 

@@ -5,14 +5,14 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `activeTabIndex` | The index of the active tab. | `number` | `0` |
-| `items` | The tabs to display. | `array` | `[]` |
-| `variant` | The variant of the tabs, default or classic. | `string` | `'default'` |
+| `activeTabIndex` | - | `number` | `-` |
+| `items` | - | `Array` | `-` |
+| `variant` | - | `string` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
 |---------|-----------------------------|------------|
-| `tab-click` | Emitted when a tab is clicked. | - |
+| `tab-click` | - | - |
 
 
 ::: info
@@ -22,52 +22,39 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
-  import { computed, ref } from 'vue'
+<script setup lang="ts">
+  import { computed, useTemplateRef } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The index of the active tab.
-     */
-    activeTabIndex: {
-      type: Number,
-      default: 0
-    },
-    /**
-     * The tabs to display.
-     */
-    items: {
-      type: Array,
-      default: () => []
-    },
-    /**
-     * The variant of the tabs, default or classic.
-     */
-    variant: {
-      type: String,
-      default: 'default'
-    }
+  interface TabItem {
+    exact?: boolean
+    label: string
+    to?: string
+  }
+
+  interface EpTabsProps {
+    activeTabIndex?: number
+    items?: (string | TabItem)[]
+    variant?: string
+  }
+
+  const { activeTabIndex = 0, items = [], variant = 'default' } = defineProps<EpTabsProps>()
+
+  const emit = defineEmits<{
+    'tab-click': [payload: { item: TabItem; index: number } | number]
+  }>()
+
+  const tabs = computed((): TabItem[] => {
+    return items.map(item => (typeof item === 'object' ? item : { label: item }))
   })
 
-  const emit = defineEmits([
-    /**
-     * Emitted when a tab is clicked.
-     */
-    'tab-click'
-  ])
-
-  const tabs = computed(() => {
-    return props.items.map(item => (typeof item === 'object' ? item : { label: item }))
-  })
-
-  const onClick = ({ item, index }) => {
+  const onClick = ({ item, index }: { item: TabItem; index: number }): void => {
     if (!item.to) {
       emit('tab-click', { item, index })
     }
   }
 
-  const handleKeydown = (index, event) => {
-    const keyActions = {
+  const handleKeydown = (index: number, event: KeyboardEvent): void => {
+    const keyActions: Record<string, () => void> = {
       ArrowRight: () => focusTab((index + 1) % tabs.value.length),
       ArrowLeft: () => focusTab((index - 1 + tabs.value.length) % tabs.value.length),
       Home: () => focusTab(0),
@@ -81,16 +68,11 @@ This component does not use slots.
     }
   }
 
-  const tabList = ref(null)
+  const tabList = useTemplateRef<HTMLDivElement>('tabList')
 
-  const focusTab = (index) => {
-    // Programmatically move focus to the new tab
-    // const tabElements = document.querySelectorAll('[role="tab"]')
-    // tabElements[index]?.focus()
-
-    // Query only within this component's tab list
+  const focusTab = (index: number): void => {
     const tabElements = tabList.value?.querySelectorAll('[role="tab"]') || []
-    tabElements[index]?.focus()
+      ; (tabElements[index] as HTMLElement)?.focus()
   }
 </script>
 

@@ -5,9 +5,9 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `resultsKey` | - | `string` | `''` |
-| `returnedSearchResults` | - | `array` | `-` |
-| `inputProps` | - | `object` | `{}` |
+| `inputProps` | - | `Record` | `-` |
+| `resultsKey` | - | `string` | `-` |
+| `returnedSearchResults` | - | `Array` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -24,63 +24,67 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { onClickOutside, useDebounceFn } from '@vueuse/core'
-  import { computed, ref, watch } from 'vue'
+  import { computed, ref, useTemplateRef, watch } from 'vue'
 
+  import type { Size } from '../../types'
   import EpInput from '../input/EpInput.vue'
 
-  const props = defineProps({
-    resultsKey: {
-      type: String,
-      default: '',
-    },
-    returnedSearchResults: {
-      type: Array,
-      required: true,
-    },
-    inputProps: {
-      type: Object,
-      default: () => ({}),
-    },
-  })
-  const emit = defineEmits(['clear', 'search', 'selection'])
+  interface EpSearchTypeaheadProps {
+    inputProps?: Record<string, unknown>
+    resultsKey?: string
+    returnedSearchResults: Record<string, unknown>[]
+  }
+
+  const {
+    returnedSearchResults,
+    inputProps = {},
+    resultsKey = '',
+  } = defineProps<EpSearchTypeaheadProps>()
+
+  const emit = defineEmits<{
+    clear: []
+    search: [query: string]
+    selection: [result: Record<string, unknown>]
+  }>()
+
   const searchQuery = ref('')
   const activeItemIndex = ref(-1)
 
   const activeItem = computed(() => {
-    return props.returnedSearchResults[activeItemIndex.value]
+    return returnedSearchResults[activeItemIndex.value]
   })
 
   watch(activeItem, (newValue) => {
     if (newValue) {
-      searchQuery.value = newValue[props.resultsKey]
+      searchQuery.value = newValue[resultsKey] as string
     }
   })
 
   const computedInputProps = computed(() => {
     return {
-      size: 'default',
+      size: 'default' as Size,
       placeholder: 'Search…',
       clearable: true,
-      ...props.inputProps,
+      ...inputProps,
     }
   })
 
-  const resetSearch = () => {
+  const resetSearch = (): void => {
     searchQuery.value = ''
     activeItemIndex.value = -1
     emit('clear')
   }
 
-  const resultsListRef = ref(null)
+  const resultsListRef = useTemplateRef<HTMLDivElement>('resultsListRef')
 
   onClickOutside(resultsListRef, resetSearch)
 
-  const updateactiveItemIndex = (delta) => {
+  const updateactiveItemIndex = (delta: number): void => {
     const newIndex = activeItemIndex.value + delta
 
-    if (props.returnedSearchResults.length === 0 || newIndex < 0 || newIndex >= props.returnedSearchResults.length) {
+    if (returnedSearchResults.length === 0 || newIndex < 0 || newIndex >= returnedSearchResults.length) {
       return
     }
 
@@ -89,9 +93,10 @@ This component does not use slots.
     scrollToSelectedItem()
   }
 
-  const scrollToSelectedItem = () => {
-    const list = resultsListRef.value.children[0]
-    const selectedItem = list.children[activeItemIndex.value]
+  const scrollToSelectedItem = (): void => {
+    if (!resultsListRef.value) return
+    const list = resultsListRef.value.children[0] as HTMLElement
+    const selectedItem = list.children[activeItemIndex.value] as HTMLElement
 
     if (!selectedItem) return
 
@@ -106,25 +111,25 @@ This component does not use slots.
     }
   }
 
-  const debouncedSearch = useDebounceFn((value) => emit('search', value), 200)
+  const debouncedSearch = useDebounceFn((value: string) => emit('search', value), 200)
 
-  const onInput = () => {
+  const onInput = (): void => {
     activeItemIndex.value = -1
     debouncedSearch(searchQuery.value)
   }
 
-  const onEnter = () => {
-    if (props.returnedSearchResults.length === 0) {
+  const onEnter = (): void => {
+    if (returnedSearchResults.length === 0) {
       return
     }
-    onSelection(props.returnedSearchResults[activeItemIndex.value])
+    onSelection(returnedSearchResults[activeItemIndex.value])
   }
 
-  const onMouseEnter = (index) => {
+  const onMouseEnter = (index: number): void => {
     activeItemIndex.value = index
   }
 
-  const onSelection = (result) => {
+  const onSelection = (result: Record<string, unknown>): void => {
     emit('selection', result)
   }
 </script>

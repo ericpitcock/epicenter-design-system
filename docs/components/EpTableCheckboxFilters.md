@@ -5,8 +5,8 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `filters` | - | `object` | `-` |
-| `sectionLabels` | - | `boolean` | `true` |
+| `filters` | - | `Record` | `-` |
+| `sectionLabels` | - | `boolean` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -21,24 +21,25 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
+  import type { CheckboxFilter } from '../../types'
   import EpCheckbox from '../checkbox/EpCheckbox.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
 
-  const props = defineProps({
-    filters: {
-      type: Object,
-      required: true
-    },
-    sectionLabels: {
-      type: Boolean,
-      default: true
-    }
-  })
+  interface EpTableCheckboxFiltersProps {
+    filters: Record<string, CheckboxFilter[]>
+    sectionLabels?: boolean
+  }
 
-  const emit = defineEmits(['update:filters'])
+  const {
+    sectionLabels = true,
+  } = defineProps<EpTableCheckboxFiltersProps>()
 
-  const updateCheckbox = (category, label, checked) => {
+  const emit = defineEmits<{
+    'update:filters': [payload: { category: string; label: string; checked: boolean }]
+  }>()
+
+  const updateCheckbox = (category: string, label: string, checked: boolean): void => {
     emit('update:filters', { category, label, checked })
   }
 </script>

@@ -1,3 +1,25 @@
+# EpInlineEdit
+
+
+
+## Props
+| Name | Description | Type | Default |
+|------|-------------|------|---------|
+| `disabled` | If true, disables editing. | `boolean` | `-` |
+
+## Events
+| Name    | Description                 | Payload    |
+|---------|-----------------------------|------------|
+| `save` | - | - |
+
+## Slots
+| Name | Description |
+|------|-------------|
+| `icon-left` | Optional icon displayed on the left side of the editable text |
+
+## Component Code
+
+```vue
 <script setup lang="ts">
   import ArrowTurnBackward from '@ericpitcock/epicenter-icons-vue/ArrowTurnBackward'
   import { ref, useTemplateRef, watch } from 'vue'
@@ -164,3 +186,67 @@
     </ep-flex>
   </div>
 </template>
+
+```
+
+## Styles (SCSS)
+
+```scss
+.ep-inline-edit {
+  --yellow: hsl(32, 68%, 83%);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: text;
+  gap: 2rem;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-style: dashed;
+  text-underline-offset: 4px;
+  transition: background-color 0.15s, border-color 0.15s;
+
+  &:hover:not(.ep-inline-edit--editing):not(.ep-inline-edit--disabled) {
+    cursor: pointer;
+    text-decoration-color: var(--yellow);
+  }
+
+  &--editing {
+    text-decoration-color: var(--yellow);
+  }
+
+  &--disabled {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+  }
+
+  &__content {
+    overflow: hidden;
+    min-width: 4rem;
+    outline: none;
+    white-space: pre;
+  }
+
+  &__actions {
+    position: absolute;
+    top: calc(100% + 0.4rem);
+    left: 0;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+    border: 1px solid var(--border-color--lighter);
+    border-radius: var(--border-radius);
+    background-color: var(--interface-overlay);
+    font-size: var(--font-size--tiny);
+    gap: 0.25rem;
+  }
+}
+```

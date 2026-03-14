@@ -5,10 +5,10 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `isActive` | If true, shows the toggle in the active/on state. | `boolean` | `false` |
-| `disabled` | If true, disables the toggle interaction. | `boolean` | `false` |
-| `label` | Label text displayed next to the toggle. | `string` | `''` |
-| `size` | The size variant of the toggle. | `string` | `'default'` |
+| `disabled` | If true, disables the toggle interaction. | `boolean` | `-` |
+| `isActive` | If true, shows the toggle in the active/on state. | `boolean` | `-` |
+| `label` | Label text displayed next to the toggle. | `string` | `-` |
+| `size` | The size variant of the toggle. | `union` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -23,52 +23,40 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
-  const props = defineProps({
-    /**
-     * If true, shows the toggle in the active/on state.
-     */
-    isActive: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * If true, disables the toggle interaction.
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Label text displayed next to the toggle.
-     */
-    label: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The size variant of the toggle.
-     * @values 'small', 'default', 'large'
-     */
-    size: {
-      type: String,
-      default: 'default',
-    },
-  })
+  interface EpToggleProps {
+    /** If true, disables the toggle interaction. */
+    disabled?: boolean
+    /** If true, shows the toggle in the active/on state. */
+    isActive?: boolean
+    /** Label text displayed next to the toggle. */
+    label?: string
+    /** The size variant of the toggle. */
+    size?: 'small' | 'default' | 'large'
+  }
 
-  const emit = defineEmits(['toggle'])
+  const {
+    disabled = false,
+    isActive = false,
+    label = '',
+    size = 'default',
+  } = defineProps<EpToggleProps>()
+
+  const emit = defineEmits<{
+    toggle: []
+  }>()
 
   const classes = computed(() => {
     return {
-      'ep-toggle--active': props.isActive,
-      'ep-toggle--disabled': props.disabled,
+      'ep-toggle--active': isActive,
+      'ep-toggle--disabled': disabled,
     }
   })
 
-  const toggle = () => {
-    if (props.disabled) return
+  const toggle = (): void => {
+    if (disabled) return
     emit('toggle')
   }
 </script>

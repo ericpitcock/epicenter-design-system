@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import Cancel01 from '@ericpitcock/epicenter-icons-vue/Cancel01'
   import Search01 from '@ericpitcock/epicenter-icons-vue/Search01'
-  import { computed, ref, watch } from 'vue'
+  import { computed, ref, useTemplateRef, watch } from 'vue'
 
   interface ParsedQuery {
     and: string[]
@@ -49,7 +49,7 @@
     delete: [query: ParsedQuery]
   }>()
 
-  const input = ref<HTMLInputElement | null>(null)
+  const input = useTemplateRef<HTMLInputElement>('input')
   const hasFocus = ref(false)
   const value = ref('')
   const query = ref<string[]>([])

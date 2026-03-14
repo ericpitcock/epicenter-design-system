@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+  import { computed, onBeforeUnmount, onMounted, ref, useId } from 'vue'
 
   interface EpChartProps {
     chartColors?: Record<string, string>
@@ -29,7 +29,7 @@
       enabled: false
     },
   }
-  const chartId = `ep-chart-${Math.random().toString(36).substring(7)}`
+  const chartId = `ep-chart-${useId()}`
 
   const chartOptions = computed(() => ({
     ...chartDefaults,

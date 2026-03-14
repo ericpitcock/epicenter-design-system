@@ -158,16 +158,16 @@ The `sorter` function receives two values and should return a number: -1 for sor
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `columns` | The columns of the table. | `array` | `-` |
-| `data` | The data of the table. | `array` | `-` |
-| `hiddenColumns` | Columns to hide, but not filter from the data. An ID, for example, can be hidden, but still accessible to the app. | `array` | `[]` |
-| `compact` | Compact rows in a single line table scenario. | `boolean` | `false` |
-| `bordered` | Gives borders to your table rows. Helpful for tables with a lot of data. | `boolean` | `false` |
-| `selectable` | Selectable rows | `boolean` | `false` |
-| `striped` | Background colors for every other row. Helpful for tables with a lot of data. | `boolean` | `false` |
-| `stickyHeader` | Sticky header or nah | `boolean` | `false` |
-| `fixedHeader` | Whether to use a fixed header or not (requires useFixedHeader composable) | `boolean` | `false` |
-| `showActionsMenu` | Enable actions menu | `boolean` | `false` |
+| `bordered` | - | `boolean` | `-` |
+| `columns` | - | `Array` | `-` |
+| `compact` | - | `boolean` | `-` |
+| `data` | - | `Array` | `-` |
+| `fixedHeader` | - | `boolean` | `-` |
+| `hiddenColumns` | - | `Array` | `-` |
+| `selectable` | - | `boolean` | `-` |
+| `showActionsMenu` | - | `boolean` | `-` |
+| `stickyHeader` | - | `boolean` | `-` |
+| `striped` | - | `boolean` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -186,109 +186,66 @@ The `sorter` function receives two values and should return a number: -1 for sor
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { computed, useTemplateRef } from 'vue'
+
+  import type { TableColumn, TableRow } from '../../types'
 
   import EpTableCell from './EpTableCell.vue'
 
-  const props = defineProps({
-    /**
-     * The columns of the table.
-     */
-    columns: {
-      type: Array,
-      required: true
-    },
-    /**
-     * The data of the table.
-     */
-    data: {
-      type: Array,
-      required: true
-    },
-    /**
-     * Columns to hide, but not filter from the data. An ID, for example, can be hidden, but still accessible to the app.
-     */
-    hiddenColumns: {
-      type: Array,
-      default: () => []
-    },
-    /**
-     * Compact rows in a single line table scenario.
-     */
-    compact: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Gives borders to your table rows. Helpful for tables with a lot of data.
-     */
-    bordered: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Selectable rows
-     */
-    selectable: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Background colors for every other row. Helpful for tables with a lot of data.
-     */
-    striped: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Sticky header or nah
-     */
-    stickyHeader: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Whether to use a fixed header or not (requires useFixedHeader composable)
-     */
-    fixedHeader: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Enable actions menu
-     */
-    showActionsMenu: {
-      type: Boolean,
-      default: false
-    },
-  })
+  interface EpTableProps {
+    bordered?: boolean
+    columns: TableColumn[]
+    compact?: boolean
+    data: TableRow[]
+    fixedHeader?: boolean
+    hiddenColumns?: string[]
+    selectable?: boolean
+    showActionsMenu?: boolean
+    stickyHeader?: boolean
+    striped?: boolean
+  }
 
-  const emit = defineEmits(['row-click', 'container-scroll'])
+  const {
+    columns,
+    bordered = false,
+    compact = false,
+    fixedHeader = false,
+    hiddenColumns = [],
+    selectable = false,
+    showActionsMenu = false,
+    stickyHeader = false,
+    striped = false,
+  } = defineProps<EpTableProps>()
+
+  const emit = defineEmits<{
+    'row-click': [row: TableRow]
+    'container-scroll': [scrollLeft: number]
+  }>()
 
   const visibleColumns = computed(() => {
-    return props.columns.filter(column => !props.hiddenColumns.includes(column.key))
+    return columns.filter(column => !hiddenColumns.includes(column.key))
   })
 
-  const tableContainer = useTemplateRef('tableContainer')
+  const tableContainer = useTemplateRef<HTMLDivElement>('tableContainer')
 
   const classes = computed(() => {
     return {
-      'ep-table--bordered': props.bordered,
-      'ep-table--compact': props.compact,
-      'ep-table--selectable': props.selectable,
-      'ep-table--sticky': props.stickyHeader,
-      'ep-table--striped': props.striped,
+      'ep-table--bordered': bordered,
+      'ep-table--compact': compact,
+      'ep-table--selectable': selectable,
+      'ep-table--sticky': stickyHeader,
+      'ep-table--striped': striped,
     }
   })
 
-  const onRowClick = (row) => {
-    if (!props.selectable) return
+  const onRowClick = (row: TableRow): void => {
+    if (!selectable) return
     emit('row-click', row)
   }
 
-  const onScroll = () => {
-    if (!props.fixedHeader) return
+  const onScroll = (): void => {
+    if (!fixedHeader || !tableContainer.value) return
     emit('container-scroll', tableContainer.value.scrollLeft)
   }
 </script>
@@ -308,7 +265,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
       <tbody ref="tableBody">
         <tr
           v-for="row in data"
-          :key="row.id"
+          :key="(row.id as PropertyKey)"
           @click="onRowClick(row)"
         >
           <template

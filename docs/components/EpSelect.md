@@ -5,18 +5,18 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `label` | Label text for the select (used as placeholder when no option is selected). | `string` | `''` |
-| `disabled` | If true, disables the select element. | `boolean` | `false` |
-| `autofocus` | If true, automatically focuses the select on mount. | `boolean` | `false` |
-| `readonly` | If true, makes the select read-only. | `boolean` | `false` |
-| `required` | If true, marks the select as a required field. | `boolean` | `false` |
-| `selectId` | The ID attribute for the select element. | `string` | `-` |
-| `size` | The size variant of the select. | `string` | `'default'` |
-| `options` | Array of option objects with 'label', 'value', and optional 'disabled' properties. | `array` | `-` |
-| `placeholder` | Placeholder text shown when no option is selected. | `string` | `'Select an option'` |
-| `errorEnabled` | If true, enables error state styling and message display. | `boolean` | `false` |
-| `error` | If true, displays the select in error state. | `boolean` | `false` |
-| `errorMessage` | Error message to display below the select. | `string` | `''` |
+| `autofocus` | - | `boolean` | `-` |
+| `disabled` | - | `boolean` | `-` |
+| `error` | - | `boolean` | `-` |
+| `errorEnabled` | - | `boolean` | `-` |
+| `errorMessage` | - | `string` | `-` |
+| `label` | - | `string` | `-` |
+| `options` | - | `Array` | `-` |
+| `placeholder` | - | `string` | `-` |
+| `readonly` | - | `boolean` | `-` |
+| `required` | - | `boolean` | `-` |
+| `selectId` | - | `string` | `-` |
+| `size` | - | `Size` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -33,96 +33,77 @@
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import ArrowDown01 from '@ericpitcock/epicenter-icons-vue/ArrowDown01'
   import { computed, ref, useId } from 'vue'
 
+  import type { SelectOption, Size } from '../../types'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
-  const props = defineProps({
-    /**
-     * Label text for the select (used as placeholder when no option is selected).
-     */
-    label: { type: String, default: '' },
-    /**
-     * If true, disables the select element.
-     */
-    disabled: { type: Boolean, default: false },
-    /**
-     * If true, automatically focuses the select on mount.
-     */
-    autofocus: { type: Boolean, default: false },
-    /**
-     * If true, makes the select read-only.
-     */
-    readonly: { type: Boolean, default: false },
-    /**
-     * If true, marks the select as a required field.
-     */
-    required: { type: Boolean, default: false },
-    /**
-     * The ID attribute for the select element.
-     */
-    selectId: { type: String, required: true },
-    /**
-     * The size variant of the select.
-     * @values 'small', 'default', 'large', 'xlarge'
-     */
-    size: { type: String, default: 'default' },
-    /**
-     * Array of option objects with 'label', 'value', and optional 'disabled' properties.
-     */
-    options: { type: Array, required: true },
-    /**
-     * Placeholder text shown when no option is selected.
-     */
-    placeholder: { type: String, default: 'Select an option' },
-    /**
-     * If true, enables error state styling and message display.
-     */
-    errorEnabled: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, displays the select in error state.
-     */
-    error: { type: Boolean, default: false },
-    /**
-     * Error message to display below the select.
-     */
-    errorMessage: { type: String, default: '' },
-  })
+  interface EpSelectProps {
+    autofocus?: boolean
+    disabled?: boolean
+    error?: boolean
+    errorEnabled?: boolean
+    errorMessage?: string
+    label?: string
+    options: SelectOption[]
+    placeholder?: string
+    readonly?: boolean
+    required?: boolean
+    selectId: string
+    size?: Size
+  }
 
-  const emit = defineEmits(['update:modelValue', 'blur', 'focus'])
-  const modelValue = defineModel({ type: [String, Number], default: '' })
+  const {
+    selectId,
+    autofocus = false,
+    disabled = false,
+    error = false,
+    errorEnabled = false,
+    errorMessage = '',
+    label = '',
+    placeholder = 'Select an option',
+    readonly = false,
+    required = false,
+    size = 'default',
+  } = defineProps<EpSelectProps>()
+
+  const emit = defineEmits<{
+    'update:modelValue': [value: string | number]
+    blur: []
+    focus: []
+  }>()
+
+  const modelValue = defineModel<string | number>({ default: '' })
 
   const selectClasses = computed(() => ({
-    [`ep-select--${props.size}`]: props.size !== 'default',
-    'ep-select--disabled': props.disabled,
-    'ep-select--error': props.error,
+    [`ep-select--${size}`]: size !== 'default',
+    'ep-select--disabled': disabled,
+    'ep-select--error': error,
   }))
 
-  const computedId = ref(props.selectId || useId())
+  const computedId = ref(selectId || useId())
 
   const stylerProps = computed(() => ({
     id: computedId.value,
-    label: props.label,
-    disabled: props.disabled,
-    size: props.size,
-    errorEnabled: props.errorEnabled,
-    error: props.error,
-    errorMessage: props.errorMessage,
+    label: label,
+    disabled: disabled,
+    size: size,
+    errorEnabled: errorEnabled,
+    error: error,
+    errorMessage: errorMessage,
     iconRightClickable: false,
     iconRightVisible: true
   }))
 
-  const onBlur = () => emit('blur')
-  const onChange = (event) => {
-    event.target.blur()
-    modelValue.value = event.target.value
+  const onBlur = (): void => emit('blur')
+  const onChange = (event: Event): void => {
+    const target = event.target as HTMLSelectElement
+    target.blur()
+    modelValue.value = target.value
   }
-  const onFocus = () => emit('focus')
+  const onFocus = (): void => emit('focus')
 </script>
 
 <template>

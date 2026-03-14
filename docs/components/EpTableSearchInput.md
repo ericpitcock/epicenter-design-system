@@ -10,11 +10,8 @@ This component does not use props, events, slots.
 ## Component Code
 
 ```vue
-<script setup>
-  const modelValue = defineModel({
-    type: String,
-    required: true
-  })
+<script setup lang="ts">
+  const modelValue = defineModel<string>({ required: true })
 </script>
 
 <template>

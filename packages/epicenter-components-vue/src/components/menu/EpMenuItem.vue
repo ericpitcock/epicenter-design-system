@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, inject, nextTick, provide, ref, useSlots } from 'vue'
+  import { computed, inject, nextTick, provide, ref, useSlots, useTemplateRef } from 'vue'
 
   type MenuItemType = 'item' | 'divider' | 'section'
 
@@ -19,7 +19,7 @@
   const slots = useSlots()
 
   const showSubmenu = ref(false)
-  const menuItemRef = ref<HTMLDivElement | null>(null)
+  const menuItemRef = useTemplateRef<HTMLDivElement>('menuItemRef')
   const hasSubmenu = computed(() => !!slots.submenu)
 
   provide('closeParentSubmenu', () => {

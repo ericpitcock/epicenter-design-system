@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { onClickOutside, useDebounceFn } from '@vueuse/core'
-  import { computed, ref, watch } from 'vue'
+  import { computed, ref, useTemplateRef, watch } from 'vue'
 
   import type { Size } from '../../types'
   import EpInput from '../input/EpInput.vue'
@@ -51,7 +51,7 @@
     emit('clear')
   }
 
-  const resultsListRef = ref<HTMLDivElement | null>(null)
+  const resultsListRef = useTemplateRef<HTMLDivElement>('resultsListRef')
 
   onClickOutside(resultsListRef, resetSearch)
 

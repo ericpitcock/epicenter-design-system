@@ -8,15 +8,15 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `id` | - | `string` | `''` |
-| `hasInput` | - | `boolean` | `false` |
-| `label` | - | `string` | `''` |
-| `clearable` | - | `boolean` | `false` |
-| `disabled` | - | `boolean` | `false` |
-| `errorEnabled` | - | `boolean` | `false` |
-| `error` | - | `boolean` | `false` |
-| `errorMessage` | - | `string` | `''` |
-| `size` | - | `string` | `'default'` |
+| `clearable` | - | `boolean` | `-` |
+| `disabled` | - | `boolean` | `-` |
+| `error` | - | `boolean` | `-` |
+| `errorEnabled` | - | `boolean` | `-` |
+| `errorMessage` | - | `string` | `-` |
+| `hasInput` | - | `boolean` | `-` |
+| `id` | - | `string` | `-` |
+| `label` | - | `string` | `-` |
+| `size` | - | `Size` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -33,57 +33,45 @@
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import Cancel01 from '@ericpitcock/epicenter-icons-vue/Cancel01'
   import { computed } from 'vue'
 
-  const props = defineProps({
-    id: {
-      type: String,
-      default: ''
-    },
-    hasInput: {
-      type: Boolean,
-      default: false
-    },
-    label: {
-      type: String,
-      default: ''
-    },
-    clearable: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    errorEnabled: {
-      type: Boolean,
-      default: false
-    },
-    error: {
-      type: Boolean,
-      default: false
-    },
-    errorMessage: {
-      type: String,
-      default: ''
-    },
-    size: {
-      type: String,
-      default: 'default'
-    },
-  })
+  import type { Size } from '../../types'
 
-  defineEmits(['click'])
+  interface EpInputStylerProps {
+    clearable?: boolean
+    disabled?: boolean
+    error?: boolean
+    errorEnabled?: boolean
+    errorMessage?: string
+    hasInput?: boolean
+    id?: string
+    label?: string
+    size?: Size
+  }
+
+  const {
+    clearable = false,
+    disabled = false,
+    error = false,
+    errorEnabled = false,
+    errorMessage = '',
+    hasInput = false,
+    id = '',
+    label = '',
+    size = 'default',
+  } = defineProps<EpInputStylerProps>()
+
+  defineEmits<{
+    click: []
+  }>()
 
   const computedClasses = computed(() => ({
-    [`ep-input-styler--${props.size}`]: props.size !== 'default',
-    'ep-input-styler--disabled': props.disabled,
-    'ep-input-styler--error': props.error,
+    [`ep-input-styler--${size}`]: size !== 'default',
+    'ep-input-styler--disabled': disabled,
+    'ep-input-styler--error': error,
   }))
-
 </script>
 
 <template>

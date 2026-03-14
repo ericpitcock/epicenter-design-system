@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import Calendar01 from '@ericpitcock/epicenter-icons-vue/Calendar01'
   import type { ComponentPublicInstance } from 'vue'
-  import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+  import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 
   import EpInput from '../input/EpInput.vue'
 
@@ -33,7 +33,7 @@
     keydown: []
   }>()
 
-  const datePickerInput = ref<ComponentPublicInstance | null>(null)
+  const datePickerInput = useTemplateRef<ComponentPublicInstance>('datePickerInput')
   const value = ref('')
   let flatpickrInstance: { destroy: () => void } | null = null
 

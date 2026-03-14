@@ -25,14 +25,14 @@ const chartProps = {
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `animate` | If true, animates the chart on initial render. | `boolean` | `true` |
-| `width` | Width of the chart in pixels. | `number` | `200` |
-| `height` | Height of the chart in pixels. | `number` | `200` |
-| `margin` | Margin around the chart in pixels. | `number` | `0` |
-| `data` | Array of numeric values for each segment of the donut chart. | `array` | `-` |
-| `labels` | Array of label strings corresponding to each data segment. | `array` | `-` |
-| `value` | Text or number to display in the center of the donut chart. | `string` | `'Value'` |
-| `valueTextClass` | CSS class for styling the center value text. | `string` | `'font-size--jumbo'` |
+| `animate` | - | `boolean` | `-` |
+| `data` | - | `Array` | `-` |
+| `height` | - | `number` | `-` |
+| `labels` | - | `Array` | `-` |
+| `margin` | - | `number` | `-` |
+| `value` | - | `string` | `-` |
+| `valueTextClass` | - | `string` | `-` |
+| `width` | - | `number` | `-` |
 
 
 ::: info
@@ -42,95 +42,59 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { computed, onMounted, ref, useTemplateRef } from 'vue'
 
-  const props = defineProps({
-    /**
-     * If true, animates the chart on initial render.
-     */
-    animate: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * Width of the chart in pixels.
-     */
-    width: {
-      type: Number,
-      default: 200,
-    },
-    /**
-     * Height of the chart in pixels.
-     */
-    height: {
-      type: Number,
-      default: 200,
-    },
-    /**
-     * Margin around the chart in pixels.
-     */
-    margin: {
-      type: Number,
-      default: 0,
-    },
-    /**
-     * Array of numeric values for each segment of the donut chart.
-     */
-    data: {
-      type: Array,
-      required: true,
-    },
-    /**
-     * Array of label strings corresponding to each data segment.
-     */
-    labels: {
-      type: Array,
-      required: true,
-    },
-    /**
-     * Text or number to display in the center of the donut chart.
-     */
-    value: {
-      type: String,
-      default: 'Value',
-    },
-    /**
-     * CSS class for styling the center value text.
-     */
-    valueTextClass: {
-      type: String,
-      default: 'font-size--jumbo',
-    },
-  })
+  interface EpDonutChartProps {
+    animate?: boolean
+    data: number[]
+    height?: number
+    labels: string[]
+    margin?: number
+    value?: string
+    valueTextClass?: string
+    width?: number
+  }
 
-  const container = useTemplateRef('container')
-  const tooltip = useTemplateRef('tooltip')
-  const epDonut = useTemplateRef('ep-donut')
+  const {
+    data,
+    animate = true,
+    width = 200,
+    height = 200,
+    margin = 0,
+    value = 'Value',
+    valueTextClass = 'font-size--jumbo',
+  } = defineProps<EpDonutChartProps>()
+
+  const container = useTemplateRef<HTMLDivElement>('container')
+  const tooltip = useTemplateRef<HTMLDivElement>('tooltip')
+  const epDonut = useTemplateRef<HTMLDivElement>('ep-donut')
 
   const tooltipVisible = ref(false)
-  const tooltipStyles = ref({
-    top: 0,
-    left: 0,
+  const tooltipStyles = ref<{ top: string; left: string }>({
+    top: '0',
+    left: '0',
   })
-  const tooltipText = ref('tooltip')
+  const tooltipText = ref<string | number>('tooltip')
 
   const containerStyles = computed(() => ({
-    width: `${props.width}px`,
-    height: `${props.height}px`,
+    width: `${width}px`,
+    height: `${height}px`,
   }))
 
-  let d3 = null // Reference for dynamic import
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let d3: any = null
 
   onMounted(async () => {
-    d3 = await import('d3') // Dynamically import d3
+    d3 = await import('d3')
     drawChart()
   })
 
-  const handleMouseOver = (event, d) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleMouseOver = (event: MouseEvent, d: any): void => {
     tooltipVisible.value = true
-    const containerRect = container.value.getBoundingClientRect()
-    const tooltipRect = tooltip.value.getBoundingClientRect()
+    const containerRect = container.value!.getBoundingClientRect()
+    const tooltipRect = tooltip.value!.getBoundingClientRect()
     const x = event.clientX - containerRect.left
     const y = event.clientY - containerRect.top
     let tooltipX = x + 10
@@ -152,15 +116,11 @@ This component does not use events, slots.
     tooltipText.value = d.data
   }
 
-  const handleMouseOut = () => {
+  const handleMouseOut = (): void => {
     tooltipVisible.value = false
   }
 
-  const drawChart = () => {
-    const data = props.data
-    const width = props.width
-    const height = props.height
-    const margin = props.margin
+  const drawChart = (): void => {
     const radius = Math.min(width, height) / 2 - margin
 
     const svg = d3.select(epDonut.value)
@@ -185,7 +145,7 @@ This component does not use events, slots.
 
     const pie = d3.pie()
       .sort(null)
-      .value((d) => d)
+      .value((d: number) => d)
 
     const arcs = g.selectAll('arc')
       .data(pie(data))
@@ -195,21 +155,24 @@ This component does not use events, slots.
 
     arcs.append('path')
       .attr('d', arc)
-      .attr('fill', (d) => color(d.data))
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .attr('fill', (d: any) => color(d.data))
       .attr('stroke', 'var(--interface-surface)')
       .attr('stroke-width', '0.3rem')
       .on('mouseover', handleMouseOver)
       .on('mousemove', handleMouseOver)
       .on('mouseout', handleMouseOut)
 
-    if (props.animate) {
+    if (animate) {
       arcs.select('path')
         .attr('d', arc)
         .transition()
         .duration(700)
-        .attrTween('d', function(d) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .attrTween('d', function(d: any) {
           const interpolate = d3.interpolate(d.startAngle, d.endAngle)
-          return function(t) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          return function(t: number): any {
             d.endAngle = interpolate(t)
             return arc(d)
           }

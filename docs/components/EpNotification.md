@@ -7,7 +7,7 @@
 |------|-------------|------|---------|
 | `id` | Unique identifier for the notification. | `string` | `-` |
 | `message` | The notification message text to display. | `string` | `-` |
-| `timestamp` | ISO 8601 timestamp string for when the notification was created. | `string` | `() => new Date().toISOString()` |
+| `timestamp` | ISO 8601 timestamp string for when the notification was created. | `string` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -22,42 +22,29 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { useTimeAgo } from '@vueuse/core'
 
   import EpButton from '../button/EpButton.vue'
 
-  const props = defineProps({
-    /**
-     * Unique identifier for the notification.
-     */
-    id: {
-      type: String,
-      required: true
-    },
-    /**
-     * The notification message text to display.
-     */
-    message: {
-      type: String,
-      required: true
-    },
-    /**
-     * ISO 8601 timestamp string for when the notification was created.
-     */
-    timestamp: {
-      type: String,
-      default: () => new Date().toISOString(),
-      validator: (value) => {
-        const date = new Date(value)
-        return !isNaN(date.getTime()) && value === date.toISOString()
-      }
-    },
-  })
+  interface EpNotificationProps {
+    /** Unique identifier for the notification. */
+    id: string
+    /** The notification message text to display. */
+    message: string
+    /** ISO 8601 timestamp string for when the notification was created. */
+    timestamp?: string
+  }
 
-  const emit = defineEmits(['dismiss'])
+  const {
+    timestamp = new Date().toISOString(),
+  } = defineProps<EpNotificationProps>()
 
-  const dismissNotification = () => {
+  const emit = defineEmits<{
+    dismiss: []
+  }>()
+
+  const dismissNotification = (): void => {
     emit('dismiss')
   }
 </script>

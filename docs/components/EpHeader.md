@@ -17,7 +17,7 @@ This component does not use props, events.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
 </script>
 
 <template>

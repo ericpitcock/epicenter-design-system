@@ -2,96 +2,180 @@
   "text": "Components",
   "items": [
     {
-      "text": "EpAsyncButton",
-      "link": "/components/EpAsyncButton"
+      "text": "EpTooltip",
+      "link": "/components/EpTooltip"
     },
     {
-      "text": "EpBadge",
-      "link": "/components/EpBadge"
+      "text": "EpToggle",
+      "link": "/components/EpToggle"
     },
     {
-      "text": "EpBanner",
-      "link": "/components/EpBanner"
+      "text": "EpThemeToggle",
+      "link": "/components/EpThemeToggle"
     },
     {
-      "text": "EpBasicTable",
-      "link": "/components/EpBasicTable"
+      "text": "EpTextarea",
+      "link": "/components/EpTextarea"
     },
     {
-      "text": "EpBreadcrumbs",
-      "link": "/components/EpBreadcrumbs"
+      "text": "EpTabs",
+      "link": "/components/EpTabs"
     },
     {
-      "text": "EpBrowserFrame",
-      "link": "/components/EpBrowserFrame"
+      "text": "EpTabContent",
+      "link": "/components/EpTabContent"
     },
     {
-      "text": "EpButton",
-      "link": "/components/EpButton"
+      "text": "EpTableSortableHeader",
+      "link": "/components/EpTableSortableHeader"
     },
     {
-      "text": "EpCarousel",
-      "link": "/components/EpCarousel"
+      "text": "EpTableSearchInput",
+      "link": "/components/EpTableSearchInput"
     },
     {
-      "text": "EpChart",
-      "link": "/components/EpChart"
+      "text": "EpTablePagination",
+      "link": "/components/EpTablePagination"
     },
     {
-      "text": "EpDonutChart",
-      "link": "/components/EpDonutChart"
+      "text": "EpTableHead",
+      "link": "/components/EpTableHead"
     },
     {
-      "text": "EpCheckbox",
-      "link": "/components/EpCheckbox"
+      "text": "EpTableCheckboxFilters",
+      "link": "/components/EpTableCheckboxFilters"
     },
     {
-      "text": "EpCodeView",
-      "link": "/components/EpCodeView"
+      "text": "EpTableCell",
+      "link": "/components/EpTableCell"
     },
     {
-      "text": "EpContainer",
-      "link": "/components/EpContainer"
+      "text": "EpTable",
+      "link": "/components/EpTable"
     },
     {
-      "text": "EpDatePicker",
-      "link": "/components/EpDatePicker"
+      "text": "EpRangeInputFilter",
+      "link": "/components/EpRangeInputFilter"
     },
     {
-      "text": "EpDivider",
-      "link": "/components/EpDivider"
+      "text": "EpDatePickerFilter",
+      "link": "/components/EpDatePickerFilter"
     },
     {
-      "text": "EpDropdown",
-      "link": "/components/EpDropdown"
+      "text": "EpStatusIndicator",
+      "link": "/components/EpStatusIndicator"
     },
     {
-      "text": "EpEmptyState",
-      "link": "/components/EpEmptyState"
+      "text": "EpSignIn",
+      "link": "/components/EpSignIn"
     },
     {
-      "text": "EpEnrichmentDropdown",
-      "link": "/components/EpEnrichmentDropdown"
+      "text": "EpSelect",
+      "link": "/components/EpSelect"
     },
     {
-      "text": "EpFieldset",
-      "link": "/components/EpFieldset"
+      "text": "EpSearchTypeahead",
+      "link": "/components/EpSearchTypeahead"
     },
     {
-      "text": "EpFlex",
-      "link": "/components/EpFlex"
+      "text": "EpMultiSearch",
+      "link": "/components/EpMultiSearch"
     },
     {
-      "text": "EpFooter",
-      "link": "/components/EpFooter"
+      "text": "EpResizable",
+      "link": "/components/EpResizable"
     },
     {
-      "text": "EpHeader",
-      "link": "/components/EpHeader"
+      "text": "EpRadio",
+      "link": "/components/EpRadio"
     },
     {
-      "text": "EpImage",
-      "link": "/components/EpImage"
+      "text": "EpPagination",
+      "link": "/components/EpPagination"
+    },
+    {
+      "text": "EpOverlay",
+      "link": "/components/EpOverlay"
+    },
+    {
+      "text": "EpNotifications",
+      "link": "/components/EpNotifications"
+    },
+    {
+      "text": "EpNotification",
+      "link": "/components/EpNotification"
+    },
+    {
+      "text": "EpMenuItem",
+      "link": "/components/EpMenuItem"
+    },
+    {
+      "text": "EpMenu",
+      "link": "/components/EpMenu"
+    },
+    {
+      "text": "EpMap",
+      "link": "/components/EpMap"
+    },
+    {
+      "text": "EpicenterLogo",
+      "link": "/components/EpicenterLogo"
+    },
+    {
+      "text": "EpLoadingState",
+      "link": "/components/EpLoadingState"
+    },
+    {
+      "text": "EpLoaderSquares",
+      "link": "/components/EpLoaderSquares"
+    },
+    {
+      "text": "EpLoaderSpin",
+      "link": "/components/EpLoaderSpin"
+    },
+    {
+      "text": "EpLoaderScale",
+      "link": "/components/EpLoaderScale"
+    },
+    {
+      "text": "EpLoaderPulse",
+      "link": "/components/EpLoaderPulse"
+    },
+    {
+      "text": "EpLoaderOrbit",
+      "link": "/components/EpLoaderOrbit"
+    },
+    {
+      "text": "EpLoaderFade",
+      "link": "/components/EpLoaderFade"
+    },
+    {
+      "text": "EpLoaderDualRing",
+      "link": "/components/EpLoaderDualRing"
+    },
+    {
+      "text": "EpLoaderDots",
+      "link": "/components/EpLoaderDots"
+    },
+    {
+      "text": "EpLoaderBounce",
+      "link": "/components/EpLoaderBounce"
+    },
+    {
+      "text": "EpLoaderBars",
+      "link": "/components/EpLoaderBars"
+    },
+    {
+      "text": "EpLazyImage",
+      "link": "/components/EpLazyImage"
+    },
+    {
+      "text": "EpKeyValueTable",
+      "link": "/components/EpKeyValueTable"
+    },
+    {
+      "text": "EpItemCount",
+      "link": "/components/EpItemCount"
     },
     {
       "text": "EpInputStyler",
@@ -102,144 +186,100 @@
       "link": "/components/EpInput"
     },
     {
-      "text": "EpItemCount",
-      "link": "/components/EpItemCount"
+      "text": "EpInlineEdit",
+      "link": "/components/EpInlineEdit"
     },
     {
-      "text": "EpKeyValueTable",
-      "link": "/components/EpKeyValueTable"
+      "text": "EpImage",
+      "link": "/components/EpImage"
     },
     {
-      "text": "EpLazyImage",
-      "link": "/components/EpLazyImage"
+      "text": "EpHeader",
+      "link": "/components/EpHeader"
     },
     {
-      "text": "EpLoadingState",
-      "link": "/components/EpLoadingState"
+      "text": "EpFooter",
+      "link": "/components/EpFooter"
     },
     {
-      "text": "EpicenterLogo",
-      "link": "/components/EpicenterLogo"
+      "text": "EpFlex",
+      "link": "/components/EpFlex"
     },
     {
-      "text": "EpMap",
-      "link": "/components/EpMap"
+      "text": "EpFieldset",
+      "link": "/components/EpFieldset"
     },
     {
-      "text": "EpMenu",
-      "link": "/components/EpMenu"
+      "text": "EpEmptyState",
+      "link": "/components/EpEmptyState"
     },
     {
-      "text": "EpMenuItem",
-      "link": "/components/EpMenuItem"
+      "text": "EpDropdown",
+      "link": "/components/EpDropdown"
     },
     {
-      "text": "EpNotification",
-      "link": "/components/EpNotification"
+      "text": "EpDivider",
+      "link": "/components/EpDivider"
     },
     {
-      "text": "EpNotifications",
-      "link": "/components/EpNotifications"
+      "text": "EpDatePicker",
+      "link": "/components/EpDatePicker"
     },
     {
-      "text": "EpOverlay",
-      "link": "/components/EpOverlay"
+      "text": "EpContextualLookup",
+      "link": "/components/EpContextualLookup"
     },
     {
-      "text": "EpPagination",
-      "link": "/components/EpPagination"
+      "text": "EpContainer",
+      "link": "/components/EpContainer"
     },
     {
-      "text": "EpRadio",
-      "link": "/components/EpRadio"
+      "text": "EpColorRandomizer",
+      "link": "/components/EpColorRandomizer"
     },
     {
-      "text": "EpResizable",
-      "link": "/components/EpResizable"
+      "text": "EpCodeView",
+      "link": "/components/EpCodeView"
     },
     {
-      "text": "EpMultiSearch",
-      "link": "/components/EpMultiSearch"
+      "text": "EpCheckbox",
+      "link": "/components/EpCheckbox"
     },
     {
-      "text": "EpSearchTypeahead",
-      "link": "/components/EpSearchTypeahead"
+      "text": "EpDonutChart",
+      "link": "/components/EpDonutChart"
     },
     {
-      "text": "EpSelect",
-      "link": "/components/EpSelect"
+      "text": "EpChart",
+      "link": "/components/EpChart"
     },
     {
-      "text": "EpSignIn",
-      "link": "/components/EpSignIn"
+      "text": "EpCarousel",
+      "link": "/components/EpCarousel"
     },
     {
-      "text": "EpStatusIndicator",
-      "link": "/components/EpStatusIndicator"
+      "text": "EpButton",
+      "link": "/components/EpButton"
     },
     {
-      "text": "EpDatePickerFilter",
-      "link": "/components/EpDatePickerFilter"
+      "text": "EpBrowserFrame",
+      "link": "/components/EpBrowserFrame"
     },
     {
-      "text": "EpRangeInputFilter",
-      "link": "/components/EpRangeInputFilter"
+      "text": "EpBreadcrumbs",
+      "link": "/components/EpBreadcrumbs"
     },
     {
-      "text": "EpTable",
-      "link": "/components/EpTable"
+      "text": "EpBasicTable",
+      "link": "/components/EpBasicTable"
     },
     {
-      "text": "EpTableCell",
-      "link": "/components/EpTableCell"
+      "text": "EpBanner",
+      "link": "/components/EpBanner"
     },
     {
-      "text": "EpTableCheckboxFilters",
-      "link": "/components/EpTableCheckboxFilters"
-    },
-    {
-      "text": "EpTableHead",
-      "link": "/components/EpTableHead"
-    },
-    {
-      "text": "EpTablePagination",
-      "link": "/components/EpTablePagination"
-    },
-    {
-      "text": "EpTableSearchInput",
-      "link": "/components/EpTableSearchInput"
-    },
-    {
-      "text": "EpTableSortableHeader",
-      "link": "/components/EpTableSortableHeader"
-    },
-    {
-      "text": "EpTabContent",
-      "link": "/components/EpTabContent"
-    },
-    {
-      "text": "EpTabs",
-      "link": "/components/EpTabs"
-    },
-    {
-      "text": "EpTextarea",
-      "link": "/components/EpTextarea"
-    },
-    {
-      "text": "EpThemeToggle",
-      "link": "/components/EpThemeToggle"
-    },
-    {
-      "text": "EpToggleButton",
-      "link": "/components/EpToggleButton"
-    },
-    {
-      "text": "EpToggle",
-      "link": "/components/EpToggle"
-    },
-    {
-      "text": "EpTooltip",
-      "link": "/components/EpTooltip"
+      "text": "EpBadge",
+      "link": "/components/EpBadge"
     }
   ]
 }

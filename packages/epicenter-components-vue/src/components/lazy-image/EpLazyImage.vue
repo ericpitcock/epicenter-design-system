@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+  import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 
   interface EpLazyImageProps {
     /** The alt text for the image. */
@@ -46,7 +46,7 @@
   } = defineProps<EpLazyImageProps>()
 
   const isLoaded = ref<boolean>(false)
-  const imageEl = ref<HTMLDivElement | null>(null)
+  const imageEl = useTemplateRef<HTMLDivElement>('imageEl')
   let observer: IntersectionObserver | null = null
 
   const placeholderStyle = computed(() => {

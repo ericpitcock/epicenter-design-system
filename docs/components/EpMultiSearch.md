@@ -10,18 +10,18 @@ This component needs to be updated to use CSS custom properties instead of props
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `placeholder` | - | `string` | `''` |
-| `icon` | - | `object` | `{}` |
-| `disabled` | - | `boolean` | `false` |
-| `autofocus` | - | `boolean` | `false` |
-| `width` | - | `string` | `'100%'` |
-| `height` | - | `string` | `'5rem'` |
-| `borderWidth` | - | `string` | `'0.1rem'` |
-| `borderStyle` | - | `string` | `'solid'` |
-| `borderColor` | - | `string` | `'var(--border-color)'` |
-| `borderRadius` | - | `string` | `'var(--border-radius)'` |
-| `backgroundColor` | - | `string` | `'var(--interface-foreground)'` |
-| `color` | - | `string` | `'var(--text-color)'` |
+| `autofocus` | - | `boolean` | `-` |
+| `backgroundColor` | - | `string` | `-` |
+| `borderColor` | - | `string` | `-` |
+| `borderRadius` | - | `string` | `-` |
+| `borderStyle` | - | `string` | `-` |
+| `borderWidth` | - | `string` | `-` |
+| `color` | - | `string` | `-` |
+| `disabled` | - | `boolean` | `-` |
+| `height` | - | `string` | `-` |
+| `icon` | - | `Record` | `-` |
+| `placeholder` | - | `string` | `-` |
+| `width` | - | `string` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -43,132 +43,124 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import Cancel01 from '@ericpitcock/epicenter-icons-vue/Cancel01'
   import Search01 from '@ericpitcock/epicenter-icons-vue/Search01'
-  import { computed, ref, watch } from 'vue'
+  import { computed, ref, useTemplateRef, watch } from 'vue'
 
-  const props = defineProps({
-    placeholder: {
-      type: String,
-      default: ''
-    },
-    icon: {
-      type: Object,
-      default: () => ({})
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    autofocus: {
-      type: Boolean,
-      default: false
-    },
-    width: {
-      type: String,
-      default: '100%'
-    },
-    height: {
-      type: String,
-      default: '5rem'
-    },
-    borderWidth: {
-      type: String,
-      default: '0.1rem'
-    },
-    borderStyle: {
-      type: String,
-      default: 'solid'
-    },
-    borderColor: {
-      type: String,
-      default: 'var(--border-color)'
-    },
-    borderRadius: {
-      type: String,
-      default: 'var(--border-radius)'
-    },
-    backgroundColor: {
-      type: String,
-      default: 'var(--interface-foreground)'
-    },
-    color: {
-      type: String,
-      default: 'var(--text-color)'
-    }
-  })
+  interface ParsedQuery {
+    and: string[]
+    or: string[]
+  }
 
-  const emit = defineEmits(['input', 'focus', 'esc', 'blur', 'enter', 'clear', 'query-close', 'delete'])
+  interface EpMultiSearchProps {
+    autofocus?: boolean
+    backgroundColor?: string
+    borderColor?: string
+    borderRadius?: string
+    borderStyle?: string
+    borderWidth?: string
+    color?: string
+    disabled?: boolean
+    height?: string
+    icon?: Record<string, unknown>
+    placeholder?: string
+    width?: string
+  }
 
-  const input = ref(null)
+  const {
+    autofocus = false,
+    backgroundColor = 'var(--interface-foreground)',
+    borderColor = 'var(--border-color)',
+    borderRadius = 'var(--border-radius)',
+    borderStyle = 'solid',
+    borderWidth = '0.1rem',
+    color = 'var(--text-color)',
+    disabled = false,
+    height = '5rem',
+    icon = {},
+    placeholder = '',
+    width = '100%',
+  } = defineProps<EpMultiSearchProps>()
+
+  const emit = defineEmits<{
+    input: [value: string]
+    focus: [query: ParsedQuery]
+    esc: [query: ParsedQuery]
+    blur: [query: ParsedQuery]
+    enter: [query: ParsedQuery]
+    clear: [query: ParsedQuery]
+    'query-close': [query: ParsedQuery]
+    delete: [query: ParsedQuery]
+  }>()
+
+  const input = useTemplateRef<HTMLInputElement>('input')
   const hasFocus = ref(false)
   const value = ref('')
-  const query = ref([])
+  const query = ref<string[]>([])
 
   const classes = computed(() => ({
-    'ep-multi-search--has-icon': props.icon,
+    'ep-multi-search--has-icon': icon,
     'ep-multi-search--focus': hasFocus.value,
-    'ep-multi-search--disabled': props.disabled,
+    'ep-multi-search--disabled': disabled,
   }))
 
   const clearable = computed(() => query.value.length > 0 || value.value.length > 0)
 
   const iconStyles = computed(() => ({
-    flex: `0 0 ${props.height}`,
-    height: props.height,
+    flex: `0 0 ${height}`,
+    height: height,
   }))
 
   const inputStyles = computed(() => ({
-    width: props.width,
-    height: props.height,
-    borderRadius: props.borderRadius,
-    backgroundColor: props.backgroundColor,
-    color: props.color
+    width: width,
+    height: height,
+    borderRadius: borderRadius,
+    backgroundColor: backgroundColor,
+    color: color
   }))
 
   const placeholderValue = computed(() => {
-    return value.value === '' && query.value.length === 0 ? props.placeholder : '+ Add to your search'
+    return value.value === '' && query.value.length === 0 ? placeholder : '+ Add to your search'
   })
 
   watch(query, () => {
     console.log('query', query.value)
   })
 
-  const isOperator = (term) => term === 'AND' || term === 'OR'
+  const isOperator = (term: string): boolean => term === 'AND' || term === 'OR'
 
-  const onQueryClose = (item, index) => {
+  const onQueryClose = (item: string, index: number): void => {
     query.value.splice(index, 1)
     emit('query-close', parseQuery(query.value))
   }
 
-  const onInput = (event) => {
-    emit('input', event.target.value)
+  const onInput = (event: Event): void => {
+    emit('input', (event.target as HTMLInputElement).value)
   }
 
-  const onEsc = () => {
-    input.value.blur()
+  const onEsc = (): void => {
+    input.value?.blur()
     emit('esc', parseQuery(query.value))
   }
 
-  const onFocus = () => {
+  const onFocus = (): void => {
     hasFocus.value = true
     emit('focus', parseQuery(query.value))
   }
 
-  const onBlur = () => {
+  const onBlur = (): void => {
     hasFocus.value = false
     emit('blur', parseQuery(query.value))
   }
 
-  const onEnter = () => {
+  const onEnter = (): void => {
     const trimmedValue = value.value.trim()
     if (!trimmedValue) return
 
     const lastQueryItem = query.value[query.value.length - 1]
 
     if (isOperator(trimmedValue)) {
-      // Prevent consecutive operators (e.g., "AND AND")
       if (!query.value.length || isOperator(lastQueryItem)) return
     }
 
@@ -177,27 +169,24 @@ This component does not use slots.
     value.value = ''
   }
 
-  const onDelete = () => {
+  const onDelete = (): void => {
     if (value.value === '') {
       query.value.pop()
       emit('delete', parseQuery(query.value))
     }
   }
 
-  const onClear = () => {
+  const onClear = (): void => {
     query.value = []
     value.value = ''
-    input.value.focus()
+    input.value?.focus()
     emit('clear', parseQuery(query.value))
   }
 
-  /**
-   * Parses the query, ensuring AND/OR logic is correctly handled
-   */
-  const parseQuery = (queries) => {
-    const andQueries = []
-    const orQueries = []
-    let currentOperator = 'OR' // Default behavior is OR unless AND is explicitly added
+  const parseQuery = (queries: string[]): ParsedQuery => {
+    const andQueries: string[] = []
+    const orQueries: string[] = []
+    let currentOperator = 'OR'
 
     queries.forEach(q => {
       if (isOperator(q)) {
@@ -206,7 +195,7 @@ This component does not use slots.
         if (currentOperator === 'AND') {
           andQueries.push(q)
         } else {
-          orQueries.push(q) // Default is OR
+          orQueries.push(q)
         }
       }
     })

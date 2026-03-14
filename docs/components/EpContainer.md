@@ -67,10 +67,10 @@ This component does not use props, events.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { useTemplateRef } from 'vue'
 
-  const epContainer = useTemplateRef('epContainer')
+  const epContainer = useTemplateRef<HTMLDivElement>('epContainer')
 
   defineExpose({
     epContainer

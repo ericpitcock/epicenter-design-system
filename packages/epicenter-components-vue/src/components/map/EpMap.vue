@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import 'mapbox-gl/dist/mapbox-gl.css'
-  import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+  import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 
   interface MapSource {
     id: string
@@ -74,7 +74,7 @@
     }
   })
 
-  const epMapContainer = ref<HTMLDivElement | null>(null)
+  const epMapContainer = useTemplateRef<HTMLDivElement>('epMapContainer')
 
   const observer = new ResizeObserver(() => {
     if (map.value) {

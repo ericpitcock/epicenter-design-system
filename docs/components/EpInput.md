@@ -5,19 +5,19 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `inputId` | The ID attribute for the input element. Auto-generated if not provided. | `string` | `''` |
-| `label` | Label text for the input (used as placeholder when empty). | `string` | `''` |
-| `type` | The input type attribute. | `string` | `'text'` |
-| `placeholder` | Placeholder text shown when the input is empty. | `string` | `''` |
-| `clearable` | If true, displays a clear button when input has a value. | `boolean` | `false` |
-| `disabled` | If true, disables the input element. | `boolean` | `false` |
-| `autofocus` | If true, automatically focuses the input on mount. | `boolean` | `false` |
-| `required` | If true, marks the input as required. | `boolean` | `false` |
-| `readonly` | If true, makes the input read-only. | `boolean` | `false` |
-| `size` | The size variant of the input. | `string` | `'default'` |
-| `errorEnabled` | If true, enables error state styling and message display. | `boolean` | `false` |
-| `error` | If true, displays the input in error state. | `boolean` | `false` |
-| `errorMessage` | Error message to display below the input. | `string` | `''` |
+| `autofocus` | - | `boolean` | `-` |
+| `clearable` | - | `boolean` | `-` |
+| `disabled` | - | `boolean` | `-` |
+| `error` | - | `boolean` | `-` |
+| `errorEnabled` | - | `boolean` | `-` |
+| `errorMessage` | - | `string` | `-` |
+| `inputId` | - | `string` | `-` |
+| `label` | - | `string` | `-` |
+| `placeholder` | - | `string` | `-` |
+| `readonly` | - | `boolean` | `-` |
+| `required` | - | `boolean` | `-` |
+| `size` | - | `Size` | `-` |
+| `type` | - | `string` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -37,166 +37,106 @@
 ## Component Code
 
 ```vue
-<script setup>
-  import { computed, ref, useId, watch } from 'vue'
+<script setup lang="ts">
+  import { computed, ref, useId, useTemplateRef, watch } from 'vue'
 
+  import type { Size } from '../../types'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
-  const props = defineProps({
-    /**
-     * The ID attribute for the input element. Auto-generated if not provided.
-     */
-    inputId: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Label text for the input (used as placeholder when empty).
-     */
-    label: {
-      type: String,
-      default: ''
-    },
-    /**
-     * The input type attribute.
-     * @values 'text', 'email', 'password', 'number', 'tel', etc.
-     */
-    type: {
-      type: String,
-      default: 'text'
-    },
-    /**
-     * Placeholder text shown when the input is empty.
-     */
-    placeholder: {
-      type: String,
-      default: ''
-    },
-    /**
-     * If true, displays a clear button when input has a value.
-     */
-    clearable: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, disables the input element.
-     */
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, automatically focuses the input on mount.
-     */
-    autofocus: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, marks the input as required.
-     */
-    required: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, makes the input read-only.
-     */
-    readonly: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * The size variant of the input.
-     * @values 'default', 'large', 'xlarge'
-     */
-    size: {
-      type: String,
-      default: 'default'
-    },
-    /**
-     * If true, enables error state styling and message display.
-     */
-    errorEnabled: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * If true, displays the input in error state.
-     */
-    error: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Error message to display below the input.
-     */
-    errorMessage: {
-      type: String,
-      default: ''
-    },
-  })
+  interface EpInputProps {
+    autofocus?: boolean
+    clearable?: boolean
+    disabled?: boolean
+    error?: boolean
+    errorEnabled?: boolean
+    errorMessage?: string
+    inputId?: string
+    label?: string
+    placeholder?: string
+    readonly?: boolean
+    required?: boolean
+    size?: Size
+    type?: string
+  }
 
-  const emit = defineEmits(['focus', 'esc', 'blur', 'enter', 'clear'])
+  const {
+    autofocus = false,
+    clearable = false,
+    disabled = false,
+    error = false,
+    errorEnabled = false,
+    errorMessage = '',
+    inputId = '',
+    label = '',
+    placeholder = '',
+    readonly = false,
+    required = false,
+    size = 'default',
+    type = 'text',
+  } = defineProps<EpInputProps>()
 
-  const modelValue = defineModel({
-    type: String,
-    required: true
-  })
+  const emit = defineEmits<{
+    focus: [value: string]
+    esc: [value: string]
+    blur: [value: string]
+    enter: [value: string]
+    clear: [value: string]
+  }>()
+
+  const modelValue = defineModel<string>({ required: true })
 
   defineOptions({
     inheritAttrs: false,
   })
 
-  const input = ref(null)
+  const input = useTemplateRef<HTMLInputElement>('input')
 
   const hasInput = ref(!!modelValue.value)
-  const computedId = ref(props.inputId || useId())
+  const computedId = ref(inputId || useId())
 
-  const computedPlaceholder = computed(() => props.placeholder || props.label)
+  const computedPlaceholder = computed(() => placeholder || label)
 
   const stylerProps = computed(() => ({
     id: computedId.value,
     hasInput: hasInput.value,
-    label: props.label,
-    clearable: props.clearable,
-    disabled: props.disabled,
-    errorEnabled: props.errorEnabled,
-    error: props.error,
-    errorMessage: props.errorMessage,
-    size: props.size,
+    label: label,
+    clearable: clearable,
+    disabled: disabled,
+    errorEnabled: errorEnabled,
+    error: error,
+    errorMessage: errorMessage,
+    size: size,
   }))
 
   const inputClasses = computed(() => ({
-    [`ep-input--${props.size}`]: props.size !== 'default',
-    'ep-input--disabled': props.disabled
+    [`ep-input--${size}`]: size !== 'default',
+    'ep-input--disabled': disabled
   }))
 
   watch(modelValue, (value) => {
     hasInput.value = !!value
   })
 
-  const onEsc = () => {
+  const onEsc = (): void => {
     input.value?.blur()
     emit('esc', modelValue.value)
   }
 
-  const onFocus = () => {
+  const onFocus = (): void => {
     emit('focus', modelValue.value)
   }
 
-  const onBlur = () => {
+  const onBlur = (): void => {
     emit('blur', modelValue.value)
   }
 
-  const onKeyDown = (event) => {
+  const onKeyDown = (event: KeyboardEvent): void => {
     if (event.key === 'Enter') {
       emit('enter', modelValue.value)
     }
   }
 
-  const onClear = () => {
+  const onClear = (): void => {
     modelValue.value = ''
     input.value?.focus()
     emit('clear', '')

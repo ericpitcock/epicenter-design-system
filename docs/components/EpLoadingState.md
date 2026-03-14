@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `message` | Message object containing icon and message text to display while loading. | `object` | `{ icon: '', message: '' }` |
+| `message` | Message object containing icon and message text to display while loading. | `LoadingMessage` | `-` |
 
 
 ::: info
@@ -15,19 +15,25 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<script setup>
-  defineProps({
+<script setup lang="ts">
+  interface LoadingMessage {
+    icon: string
+    message: string
+  }
+
+  interface EpLoadingStateProps {
     /**
      * Message object containing icon and message text to display while loading.
      */
-    message: {
-      type: Object,
-      default: () => ({
-        icon: '',
-        message: ''
-      })
+    message?: LoadingMessage
+  }
+
+  const {
+    message = {
+      icon: '',
+      message: '',
     },
-  })
+  } = defineProps<EpLoadingStateProps>()
 </script>
 
 <template>

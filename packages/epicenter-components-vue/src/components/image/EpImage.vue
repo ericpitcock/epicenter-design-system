@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+  import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 
   interface EpImageProps {
     alt?: string
@@ -26,7 +26,7 @@
   } = defineProps<EpImageProps>()
 
   const isLoaded = ref(false)
-  const imageEl = ref<HTMLElement | null>(null)
+  const imageEl = useTemplateRef<HTMLElement>('imageEl')
   let observer: IntersectionObserver | null = null
 
   const placeholderStyle = computed(() => {

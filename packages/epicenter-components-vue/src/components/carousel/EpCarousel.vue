@@ -37,7 +37,7 @@
 <script setup lang="ts">
   import ArrowLeft01 from '@ericpitcock/epicenter-icons-vue/ArrowLeft01'
   import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
-  import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+  import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
   import EpLazyImage from '../lazy-image/EpLazyImage.vue'
@@ -64,8 +64,8 @@
     'slide-change': [payload: { image: CarouselImage; index: number }]
   }>()
 
-  const carouselContainer = ref<HTMLDivElement | null>(null)
-  const carouselTrack = ref<HTMLDivElement | null>(null)
+  const carouselContainer = useTemplateRef<HTMLDivElement>('carouselContainer')
+  const carouselTrack = useTemplateRef<HTMLDivElement>('carouselTrack')
   const itemRefs = ref<(HTMLDivElement | null)[]>([])
   const currentIndex = ref(0)
   const shouldLoadImages = ref(false)

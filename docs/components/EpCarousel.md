@@ -5,8 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `images` | Array of image objects to display in the carousel.
-Each image object can include: src, alt, caption, aspectRatio, zoom, positionX, positionY, captionPosition | `array` | `[]` |
+| `images` | - | `Array` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -58,38 +57,46 @@ This component does not use slots.
   - --ep-case-study-carousel-border-radius: Border radius (default: 1rem)
   - --ep-case-study-carousel-caption-border-radius: Caption border radius (default: 0.5rem)
 -->
-<script setup>
+<script setup lang="ts">
   import ArrowLeft01 from '@ericpitcock/epicenter-icons-vue/ArrowLeft01'
   import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
-  import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+  import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
   import EpLazyImage from '../lazy-image/EpLazyImage.vue'
 
-  const props = defineProps({
-    /**
-     * Array of image objects to display in the carousel.
-     * Each image object can include: src, alt, caption, aspectRatio, zoom, positionX, positionY, captionPosition
-     */
-    images: {
-      type: Array,
-      default: () => [],
-    }
-  })
+  interface CarouselImage {
+    alt?: string
+    aspectRatio?: string
+    caption?: string
+    captionPosition?: string
+    positionX?: string
+    positionY?: string
+    src: string
+    zoom?: number
+  }
 
-  const emit = defineEmits(['image-click', 'slide-change'])
+  interface EpCarouselProps {
+    images?: CarouselImage[]
+  }
 
-  const carouselContainer = ref(null)
-  const carouselTrack = ref(null)
-  const itemRefs = ref([])
+  const { images = [] } = defineProps<EpCarouselProps>()
+
+  const emit = defineEmits<{
+    'image-click': [payload: { image: CarouselImage; index: number }]
+    'slide-change': [payload: { image: CarouselImage; index: number }]
+  }>()
+
+  const carouselContainer = useTemplateRef<HTMLDivElement>('carouselContainer')
+  const carouselTrack = useTemplateRef<HTMLDivElement>('carouselTrack')
+  const itemRefs = ref<(HTMLDivElement | null)[]>([])
   const currentIndex = ref(0)
   const shouldLoadImages = ref(false)
-  let scrollTimeout = null
-  let containerObserver = null
-  let resizeObserver = null
+  let scrollTimeout: ReturnType<typeof setTimeout> | null = null
+  let containerObserver: IntersectionObserver | null = null
+  let resizeObserver: ResizeObserver | null = null
 
-  // Reset to first image when images prop changes (e.g., switching case studies)
-  watch(() => props.images, () => {
+  watch(() => images, () => {
     currentIndex.value = 0
     nextTick(() => {
       if (itemRefs.value[0] && carouselTrack.value) {
@@ -98,8 +105,7 @@ This component does not use slots.
     })
   })
 
-  const handleScroll = () => {
-    // Debounce scroll handling
+  const handleScroll = (): void => {
     if (scrollTimeout) {
       clearTimeout(scrollTimeout)
     }
@@ -109,7 +115,7 @@ This component does not use slots.
     }, 100)
   }
 
-  const updateCurrentIndex = () => {
+  const updateCurrentIndex = (): void => {
     if (!carouselTrack.value) return
 
     const trackRect = carouselTrack.value.getBoundingClientRect()
@@ -132,11 +138,11 @@ This component does not use slots.
 
     if (currentIndex.value !== closestIndex) {
       currentIndex.value = closestIndex
-      emit('slide-change', { index: closestIndex, image: props.images[closestIndex] })
+      emit('slide-change', { index: closestIndex, image: images[closestIndex] })
     }
   }
 
-  const scrollToImage = (index) => {
+  const scrollToImage = (index: number): void => {
     const item = itemRefs.value[index]
     if (!item || !carouselTrack.value) return
 
@@ -144,7 +150,6 @@ This component does not use slots.
     const itemRect = item.getBoundingClientRect()
     const scrollLeft = carouselTrack.value.scrollLeft
 
-    // Calculate the offset needed to center the item
     const itemCenter = itemRect.left - trackRect.left + itemRect.width / 2
     const trackCenter = trackRect.width / 2
     const scrollOffset = itemCenter - trackCenter
@@ -155,27 +160,23 @@ This component does not use slots.
     })
 
     currentIndex.value = index
-    emit('image-click', { image: props.images[index], index })
+    emit('image-click', { image: images[index], index })
   }
 
-  const getImageContainerStyle = (image) => {
+  const getImageContainerStyle = (image: CarouselImage): Record<string, string> => {
     const aspectRatio = image.aspectRatio || '16/9'
 
-    // Parse aspect ratio (e.g., "16/9" or "16 / 9")
     const [width, height] = aspectRatio.split('/').map(v => parseFloat(v.trim()))
     const ratio = width / height
 
-    // Calculate width based on carousel height and aspect ratio
-    // This ensures the container has the correct dimensions before the image loads
     return {
       aspectRatio: aspectRatio,
-      // height: 'var(--ep-carousel-height)',
       width: `calc(var(--ep-carousel-height) * ${ratio})`,
     }
   }
 
-  const getImageStyle = (image) => {
-    const styles = {}
+  const getImageStyle = (image: CarouselImage): Record<string, string> => {
+    const styles: Record<string, string> = {}
 
     if (image.zoom) {
       styles.transform = `scale(${image.zoom})`
@@ -190,27 +191,22 @@ This component does not use slots.
     return styles
   }
 
-  const getCaptionPositionClass = (image) => {
+  const getCaptionPositionClass = (image: CarouselImage): string => {
     const position = image.captionPosition || 'bottom-center'
     return `caption-${position}`
   }
 
   onMounted(() => {
-    // Set up intersection observer for the carousel container
-    // This will trigger image loading before the carousel enters the viewport
     containerObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Carousel is about to enter viewport, start loading images
             shouldLoadImages.value = true
-            // Once triggered, we don't need the observer anymore
-            containerObserver.disconnect()
+            containerObserver!.disconnect()
           }
         })
       },
       {
-        // Start loading when carousel is 500px away from viewport
         rootMargin: '500px 0px 500px 0px',
         threshold: 0
       }
@@ -220,9 +216,7 @@ This component does not use slots.
       containerObserver.observe(carouselContainer.value)
     }
 
-    // Set up resize observer to re-center active image on viewport resize
     resizeObserver = new ResizeObserver(() => {
-      // Re-center the current image without smooth scrolling
       const item = itemRefs.value[currentIndex.value]
       if (!item || !carouselTrack.value) return
 
@@ -245,7 +239,6 @@ This component does not use slots.
     }
 
     nextTick(() => {
-      // Scroll to first image on mount
       if (itemRefs.value[0] && carouselTrack.value) {
         scrollToImage(0)
       }
@@ -279,7 +272,7 @@ This component does not use slots.
       <div
         v-for="(image, index) in images"
         :key="image?.src ?? index"
-        :ref="el => itemRefs[index] = el"
+        :ref="el => itemRefs[index] = (el as HTMLDivElement | null)"
         class="carousel-item"
         :class="{ 'is-active': currentIndex === index }"
         role="button"

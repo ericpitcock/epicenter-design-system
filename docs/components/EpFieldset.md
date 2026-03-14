@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `label` | - | `string` | `''` |
+| `label` | - | `string` | `-` |
 
 ## Slots
 | Name | Description |
@@ -20,22 +20,21 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<script setup>
-  const props = defineProps({
-    label: {
-      type: String,
-      default: ''
-    }
-  })
+<script setup lang="ts">
+  interface EpFieldsetProps {
+    label?: string
+  }
+
+  const { label = '' } = defineProps<EpFieldsetProps>()
 </script>
 
 <template>
   <fieldset class="ep-fieldset ep-fieldset--horizontal">
     <legend
-      v-if="props.label"
+      v-if="label"
       class="ep-fieldset__legend"
     >
-      {{ props.label }}
+      {{ label }}
     </legend>
 
     <div class="ep-fieldset__content">

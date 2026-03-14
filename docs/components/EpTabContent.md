@@ -5,8 +5,8 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `activeTabIndex` | The index of the currently active tab. | `number` | `0` |
-| `items` | An array of tab items (used to determine tab count). | `array` | `[]` |
+| `activeTabIndex` | The index of the currently active tab. | `number` | `-` |
+| `items` | An array of tab items (used to determine tab count). | `Array` | `-` |
 
 ## Slots
 | Name | Description |
@@ -21,23 +21,19 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<script setup>
-  const props = defineProps({
+<script setup lang="ts">
+  interface EpTabContentProps {
     /**
      * The index of the currently active tab.
      */
-    activeTabIndex: {
-      type: Number,
-      default: 0
-    },
+    activeTabIndex?: number
     /**
      * An array of tab items (used to determine tab count).
      */
-    items: {
-      type: Array,
-      default: () => []
-    }
-  })
+    items?: unknown[]
+  }
+
+  const { activeTabIndex = 0, items = [] } = defineProps<EpTabContentProps>()
 </script>
 
 <template>

@@ -5,8 +5,8 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `direction` | Layout direction of the empty state content. | `string` | `'column'` |
-| `justify` | Horizontal alignment of the content. | `string` | `'center'` |
+| `direction` | Layout direction of the empty state content. | `string` | `-` |
+| `justify` | Horizontal alignment of the content. | `string` | `-` |
 
 ## Slots
 | Name | Description |
@@ -24,34 +24,33 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
-  const props = defineProps({
+  interface EpEmptyStateProps {
     /**
      * Layout direction of the empty state content.
      * @values 'column', 'row'
      */
-    direction: {
-      type: String,
-      default: 'column'
-    },
+    direction?: string
     /**
      * Horizontal alignment of the content.
      * @values 'left', 'center', 'right'
      */
-    justify: {
-      type: String,
-      default: 'center'
-    },
-  })
+    justify?: string
+  }
+
+  const {
+    direction = 'column',
+    justify = 'center',
+  } = defineProps<EpEmptyStateProps>()
 
   const classes = computed(() => {
     return {
-      'ep-empty-state--column': props.direction === 'column',
-      'ep-empty-state--row': props.direction === 'row',
-      'ep-empty-state--justify-left': props.justify === 'left',
-      'ep-empty-state--justify-right': props.justify === 'right',
+      'ep-empty-state--column': direction === 'column',
+      'ep-empty-state--row': direction === 'row',
+      'ep-empty-state--justify-left': justify === 'left',
+      'ep-empty-state--justify-right': justify === 'right',
     }
   })
 </script>

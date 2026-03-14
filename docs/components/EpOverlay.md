@@ -5,11 +5,11 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `type` | The type of overlay to display. | `string` | `'modal'` |
-| `modelValue` | Controls the visibility of the overlay (use with v-model). | `boolean` | `false` |
-| `autoDismiss` | If true, automatically dismisses the overlay after the specified duration. | `boolean` | `false` |
-| `duration` | Duration in milliseconds before auto-dismissing (when autoDismiss is true). | `number` | `3000` |
-| `backdropClose` | If true, clicking the backdrop will close the overlay. | `boolean` | `true` |
+| `autoDismiss` | - | `boolean` | `-` |
+| `backdropClose` | - | `boolean` | `-` |
+| `duration` | - | `number` | `-` |
+| `modelValue` | - | `boolean` | `-` |
+| `type` | - | `OverlayType` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -24,57 +24,38 @@
 ## Component Code
 
 ```vue
-<script setup>
-  import { ref, watch } from 'vue'
+<script setup lang="ts">
+  import { useTemplateRef, watch } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The type of overlay to display.
-     * @values 'modal', 'toast'
-     */
-    type: {
-      type: String,
-      default: 'modal',
-    },
-    /**
-     * Controls the visibility of the overlay (use with v-model).
-     */
-    modelValue: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * If true, automatically dismisses the overlay after the specified duration.
-     */
-    autoDismiss: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Duration in milliseconds before auto-dismissing (when autoDismiss is true).
-     */
-    duration: {
-      type: Number,
-      default: 3000,
-    },
-    /**
-     * If true, clicking the backdrop will close the overlay.
-     */
-    backdropClose: {
-      type: Boolean,
-      default: true,
-    },
-  })
+  type OverlayType = 'modal' | 'toast'
 
-  const emit = defineEmits(['update:modelValue'])
+  interface EpOverlayProps {
+    autoDismiss?: boolean
+    backdropClose?: boolean
+    duration?: number
+    modelValue?: boolean
+    type?: OverlayType
+  }
 
-  const dialog = ref(null)
+  const {
+    autoDismiss = false,
+    backdropClose = true,
+    duration = 3000,
+    modelValue = false,
+    type = 'modal',
+  } = defineProps<EpOverlayProps>()
 
-  watch(() => props.modelValue, (newVal) => {
+  const emit = defineEmits<{
+    'update:modelValue': [value: boolean]
+  }>()
+
+  const dialog = useTemplateRef<HTMLDialogElement>('dialog')
+
+  watch(() => modelValue, (newVal: boolean) => {
     if (!dialog.value) return
 
     if (newVal === true) {
-      if (props.type === 'modal') {
+      if (type === 'modal') {
         dialog.value.showModal()
       } else {
         dialog.value.show()
@@ -86,11 +67,11 @@
     { immediate: true }
   )
 
-  const onBackdropClick = () => {
-    if (!props.backdropClose) return
+  const onBackdropClick = (): void => {
+    if (!backdropClose) return
 
     emit('update:modelValue', false)
-    dialog.value.close()
+    dialog.value?.close()
   }
 </script>
 

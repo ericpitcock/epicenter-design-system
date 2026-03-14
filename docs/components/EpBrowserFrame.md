@@ -8,10 +8,10 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `width` | The width of the browser frame. | `string` | `'100%'` |
-| `url` | The URL to display in the browser frame. | `string` | `'http://website.com'` |
-| `imageSrc` | The source of the image to display in the browser frame. | `string` | `''` |
-| `imageAlt` | The alt text for the image. | `string` | `''` |
+| `imageAlt` | - | `string` | `-` |
+| `imageSrc` | - | `string` | `-` |
+| `url` | - | `string` | `-` |
+| `width` | - | `string` | `-` |
 
 
 ::: info
@@ -21,41 +21,24 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import UserCircle02 from '@ericpitcock/epicenter-icons-vue/UserCircle02'
 
   import EpHeader from '../header/EpHeader.vue'
 
-  const props = defineProps({
-    /**
-     * The width of the browser frame.
-     */
-    width: {
-      type: String,
-      default: '100%'
-    },
-    /**
-     * The URL to display in the browser frame.
-     */
-    url: {
-      type: String,
-      default: 'http://website.com'
-    },
-    /**
-     * The source of the image to display in the browser frame.
-     */
-    imageSrc: {
-      type: String,
-      default: ''
-    },
-    /**
-     * The alt text for the image.
-     */
-    imageAlt: {
-      type: String,
-      default: ''
-    }
-  })
+  interface EpBrowserFrameProps {
+    imageAlt?: string
+    imageSrc?: string
+    url?: string
+    width?: string
+  }
+
+  const {
+    imageAlt = '',
+    imageSrc = '',
+    url = 'http://website.com',
+    width = '100%',
+  } = defineProps<EpBrowserFrameProps>()
 </script>
 
 <template>

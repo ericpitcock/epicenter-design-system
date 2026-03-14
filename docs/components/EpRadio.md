@@ -5,12 +5,12 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
+| `disabled` | If true, disables the radio button. | `boolean` | `-` |
 | `id` | The ID attribute for the radio input element. | `string` | `-` |
 | `label` | Label text displayed next to the radio button. | `string` | `-` |
 | `name` | The name attribute for the radio input (groups radios together). | `string` | `-` |
+| `required` | If true, marks the radio as required. | `boolean` | `-` |
 | `value` | The value for this radio option. | `string` | `-` |
-| `disabled` | If true, disables the radio button. | `boolean` | `false` |
-| `required` | If true, marks the radio as required. | `boolean` | `false` |
 
 ## Slots
 | Name | Description |
@@ -25,62 +25,31 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The ID attribute for the radio input element.
-     */
-    id: {
-      type: String,
-      required: true,
-    },
-    /**
-     * Label text displayed next to the radio button.
-     */
-    label: {
-      type: String,
-      required: true,
-    },
-    /**
-     * The name attribute for the radio input (groups radios together).
-     */
-    name: {
-      type: String,
-      required: true,
-    },
-    /**
-     * The value for this radio option.
-     */
-    value: {
-      type: String,
-      required: true,
-    },
-    /**
-     * If true, disables the radio button.
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * If true, marks the radio as required.
-     */
-    required: {
-      type: Boolean,
-      default: false,
-    },
-  })
+  interface EpRadioProps {
+    /** If true, disables the radio button. */
+    disabled?: boolean
+    /** The ID attribute for the radio input element. */
+    id: string
+    /** Label text displayed next to the radio button. */
+    label: string
+    /** The name attribute for the radio input (groups radios together). */
+    name: string
+    /** If true, marks the radio as required. */
+    required?: boolean
+    /** The value for this radio option. */
+    value: string
+  }
 
-  const modelValue = defineModel({
-    type: String,
-    required: true
-  })
+  const { value, disabled = false, required = false } = defineProps<EpRadioProps>()
+
+  const modelValue = defineModel<string>({ required: true })
 
   const classes = computed(() => ({
-    'ep-radio--checked': modelValue.value === props.value,
-    'ep-radio--disabled': props.disabled,
+    'ep-radio--checked': modelValue.value === value,
+    'ep-radio--disabled': disabled,
   }))
 </script>
 
@@ -100,7 +69,7 @@ This component does not use events.
     >
     <span class="ep-radio__dot" />
     <slot>
-      {{ props.label }}
+      {{ label }}
     </slot>
   </label>
 </template>

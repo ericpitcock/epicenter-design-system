@@ -5,10 +5,10 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `columns` | Array of column configuration objects defining table structure. | `array` | `-` |
-| `cellWidths` | Array of width values for each column cell. | `array` | `[]` |
-| `fixedHeader` | If true, enables fixed header behavior. | `boolean` | `-` |
-| `showActionsMenu` | If true, shows an additional column for the actions menu. | `boolean` | `-` |
+| `cellWidths` | - | `Array` | `-` |
+| `columns` | - | `Array` | `-` |
+| `fixedHeader` | - | `boolean` | `-` |
+| `showActionsMenu` | - | `boolean` | `-` |
 
 ## Slots
 | Name | Description |
@@ -23,35 +23,25 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<script setup>
-  const props = defineProps({
-    /**
-     * Array of column configuration objects defining table structure.
-     */
-    columns: {
-      type: Array,
-      required: true
-    },
-    /**
-     * Array of width values for each column cell.
-     */
-    cellWidths: {
-      type: Array,
-      default: () => []
-    },
-    /**
-     * If true, enables fixed header behavior.
-     */
-    fixedHeader: Boolean,
-    /**
-     * If true, shows an additional column for the actions menu.
-     */
-    showActionsMenu: Boolean,
-  })
+<script setup lang="ts">
+  import type { TableColumn } from '../../types'
+
+  interface EpTableHeadProps {
+    cellWidths?: Record<string, string>[]
+    columns: TableColumn[]
+    fixedHeader?: boolean
+    showActionsMenu?: boolean
+  }
+
+  const {
+    cellWidths = [],
+    fixedHeader = false,
+    showActionsMenu = false,
+  } = defineProps<EpTableHeadProps>()
 </script>
 
 <template>
-  <thead ref="tableHeadd">
+  <thead ref="thead">
     <tr>
       <template
         v-for="(column, columnIndex) in columns"

@@ -5,9 +5,9 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `emptyStateMessage` | - | `string` | `'You’re all caught up!'` |
-| `notificationsTitle` | - | `string` | `'Notifications'` |
-| `notifications` | - | `array` | `[]` |
+| `emptyStateMessage` | - | `string` | `-` |
+| `notifications` | - | `Array` | `-` |
+| `notificationsTitle` | - | `string` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -23,7 +23,7 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
@@ -33,28 +33,31 @@ This component does not use slots.
   import EpHeader from '../header/EpHeader.vue'
   import EpNotification from '../notification/EpNotification.vue'
 
-  const props = defineProps({
-    emptyStateMessage: {
-      type: String,
-      default: 'You’re all caught up!'
-    },
-    notificationsTitle: {
-      type: String,
-      default: 'Notifications'
-    },
-    notifications: {
-      type: Array,
-      default: () => []
-    }
-  })
+  interface NotificationItem {
+    id: string
+    message: string
+    timestamp?: string
+  }
 
-  const emit = defineEmits([
-    'remove-notification',
-    'clear-notifications'
-  ])
+  interface EpNotificationsProps {
+    emptyStateMessage?: string
+    notifications?: NotificationItem[]
+    notificationsTitle?: string
+  }
+
+  const {
+    emptyStateMessage = 'You\u2019re all caught up!',
+    notifications = [],
+    notificationsTitle = 'Notifications',
+  } = defineProps<EpNotificationsProps>()
+
+  const emit = defineEmits<{
+    'remove-notification': [id: string]
+    'clear-notifications': []
+  }>()
 
   const isNotificationsEmpty = computed(() => {
-    return props.notifications.length === 0
+    return notifications.length === 0
   })
 </script>
 

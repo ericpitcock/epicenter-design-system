@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `direction` | The direction of the divider. | `string` | `'horizontal'` |
+| `direction` | The direction of the divider. | `Direction` | `-` |
 
 
 ::: info
@@ -15,17 +15,20 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<script setup>
-  const props = defineProps({
+<script setup lang="ts">
+  import type { Direction } from '../../types'
+
+  interface EpDividerProps {
     /**
      * The direction of the divider.
      * @values horizontal, vertical
      */
-    direction: {
-      type: String,
-      default: 'horizontal'
-    },
-  })
+    direction?: Direction
+  }
+
+  const {
+    direction = 'horizontal',
+  } = defineProps<EpDividerProps>()
 </script>
 
 <template>

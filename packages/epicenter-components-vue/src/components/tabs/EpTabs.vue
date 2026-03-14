@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed, useTemplateRef } from 'vue'
 
   interface TabItem {
     exact?: boolean
@@ -44,7 +44,7 @@
     }
   }
 
-  const tabList = ref<HTMLDivElement | null>(null)
+  const tabList = useTemplateRef<HTMLDivElement>('tabList')
 
   const focusTab = (index: number): void => {
     const tabElements = tabList.value?.querySelectorAll('[role="tab"]') || []

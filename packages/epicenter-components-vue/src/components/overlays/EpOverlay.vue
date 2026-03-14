@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import { useTemplateRef, watch } from 'vue'
 
   type OverlayType = 'modal' | 'toast'
 
@@ -23,7 +23,7 @@
     'update:modelValue': [value: boolean]
   }>()
 
-  const dialog = ref<HTMLDialogElement | null>(null)
+  const dialog = useTemplateRef<HTMLDialogElement>('dialog')
 
   watch(() => modelValue, (newVal: boolean) => {
     if (!dialog.value) return

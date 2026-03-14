@@ -16,7 +16,7 @@
 </script>
 
 <template>
-  <thead ref="tableHeadd">
+  <thead ref="thead">
     <tr>
       <template
         v-for="(column, columnIndex) in columns"

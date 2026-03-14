@@ -62,16 +62,16 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `size` | The size of the button. | `string` | `'default'` |
-| `ariaLabel` | The aria-label of the button. | `string` | `''` |
-| `disabled` | If `true`, the button will be disabled. | `boolean` | `false` |
-| `type` | The  type of the button. | `string` | `'button'` |
+| `ariaLabel` | The aria-label of the button. | `string` | `-` |
+| `disabled` | If `true`, the button will be disabled. | `boolean` | `-` |
+| `size` | The size of the button. | `Size` | `-` |
+| `type` | The type of the button. | `ButtonType` | `-` |
 
 ## Slots
 | Name | Description |
 |------|-------------|
 | `icon-left` | Icon displayed on the left side of the button label |
-| `default` | Default slot for button text/content |
+| `default` | No description available. |
 | `icon-right` | Icon displayed on the right side of the button label |
 
 
@@ -82,49 +82,28 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { computed, useAttrs } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The size of the button.
-     */
-    size: {
-      type: String,
-      default: 'default',
-      validator: (value) => [
-        'small',
-        'default',
-        'large',
-        'xlarge',
-      ].includes(value)
-    },
-    /**
-     * The aria-label of the button.
-     */
-    ariaLabel: {
-      type: String,
-      default: ''
-    },
-    /**
-     * If `true`, the button will be disabled.
-     */
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * The  type of the button.
-     */
-    type: {
-      type: String,
-      default: 'button',
-      validator: (value) => [
-        'button',
-        'submit',
-      ].includes(value)
-    },
-  })
+  import type { ButtonType, Size } from '../../types'
+
+  interface EpButtonProps {
+    /** The aria-label of the button. */
+    ariaLabel?: string
+    /** If `true`, the button will be disabled. */
+    disabled?: boolean
+    /** The size of the button. */
+    size?: Size
+    /** The type of the button. */
+    type?: ButtonType
+  }
+
+  const {
+    size = 'default',
+    ariaLabel = '',
+    disabled = false,
+    type = 'button',
+  } = defineProps<EpButtonProps>()
 
   const element = computed(() => {
     const { to, href } = useAttrs()
@@ -132,8 +111,8 @@ This component does not use events.
   })
 
   const computedClasses = computed(() => ({
-    [`ep-button--${props.size}`]: props.size !== 'default',
-    'ep-button--disabled': props.disabled,
+    [`ep-button--${size}`]: size !== 'default',
+    'ep-button--disabled': disabled,
   }))
 </script>
 
@@ -153,7 +132,12 @@ This component does not use events.
       <slot name="icon-left" />
     </span>
     <!-- @slot Default slot for button text/content -->
-    <slot />
+    <span
+      v-if="$slots.default"
+      class="ep-button__label"
+    >
+      <slot />
+    </span>
     <span
       v-if="$slots['icon-right']"
       class="ep-button__icon ep-button__icon--right"
@@ -174,6 +158,7 @@ This component does not use events.
 .ep-button {
   --ep-button-bg-color: var(--interface-foreground);
   --ep-button-text-color: var(--text-color--loud);
+  --ep-button-font-size: var(--font-size--small);
   --ep-button-border-width: 0.1rem;
   --ep-button-border-style: solid;
   --ep-button-border-color: var(--border-color);
@@ -191,12 +176,12 @@ This component does not use events.
   --ep-button-disabled-text-color: var(--text-color--disabled);
   --ep-button-disabled-border-color: var(--border-color--disabled);
   --ep-button-padding-inline: 1.2rem;
+  --ep-button-gap: 0.6rem;
   display: inline-flex;
   max-width: max-content;
   height: 3rem;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
   border-width: var(--ep-button-border-width);
   border-style: var(--ep-button-border-style);
   border-color: var(--ep-button-border-color);
@@ -205,8 +190,8 @@ This component does not use events.
   background: var(--ep-button-bg-color);
   color: var(--ep-button-text-color);
   cursor: pointer;
-  font-size: var(--font-size--small);
-  gap: calc(var(--ep-button-padding-inline) / 1.5);
+  font-size: var(--ep-button-font-size);
+  gap: var(--ep-button-gap);
   line-height: 1;
   padding-inline: var(--ep-button-padding-inline);
   text-decoration: none;
@@ -233,10 +218,6 @@ This component does not use events.
     background: var(--ep-button-disabled-bg-color);
     color: var(--ep-button-disabled-text-color);
     pointer-events: none;
-
-    &.ep-button--menu-item {
-      border-color: transparent;
-    }
   }
 
   &--selected {
@@ -262,153 +243,159 @@ This component does not use events.
   }
 
   // default 30px height
-  // has only one child
-  &:has(:only-child) {
-
-    // and it's an icon
-    &:has(.ep-button__icon) {
-      --ep-button-padding-inline: 0.8rem;
-    }
-
-    // and it's a label
-    &:has(.ep-button__label) {
-      --ep-button-padding-inline: 1.2rem;
-    }
+  // icon only (no label)
+  &:not(:has(.ep-button__label)) {
+    --ep-button-padding-inline: 0.8rem;
   }
 
-  // has two children, one icon left and one label
-  &:has(.ep-button__icon--left, .ep-button__label) {
+  // label only (no icons)
+  &:has(.ep-button__label):not(:has(.ep-button__icon)) {
+    --ep-button-padding-inline: 1.2rem;
+  }
+
+  // icon left and label
+  &:has(.ep-button__label):has(.ep-button__icon--left):not(:has(.ep-button__icon--right)) {
     --ep-button-padding-inline: 0.8rem 1.2rem;
   }
 
-  // has two children, one icon right and one label
-  &:has(.ep-button__icon--right, .ep-button__label) {
+  // icon right and label
+  &:has(.ep-button__label):has(.ep-button__icon--right):not(:has(.ep-button__icon--left)) {
     --ep-button-padding-inline: 1.2rem 0.8rem;
   }
 
-  // has icon left, icon right, and label
-  &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
+  // icon left, icon right, and label
+  &:has(.ep-button__label):has(.ep-button__icon--left):has(.ep-button__icon--right) {
     --ep-button-padding-inline: 0.8rem;
   }
 }
 
 // small 22px height
 .ep-button--small {
+  --ep-button-font-size: var(--font-size--tiny);
+  --ep-button-gap: 0.4rem;
   height: 2.2rem;
-  gap: 0.4rem;
-
-  .ep-button__label {
-    font-size: var(--font-size--tiny);
-  }
 
   // padding
-  // has only one child
-  &:has(:only-child) {
-
-    // and it's an icon
-    &:has(.ep-button__icon) {
-      --ep-button-padding-inline: 0.3rem;
-    }
-
-    // and it's a label
-    &:has(.ep-button__label) {
-      --ep-button-padding-inline: 0.6rem;
-    }
+  // icon only (no label)
+  &:not(:has(.ep-button__label)) {
+    --ep-button-padding-inline: 0.3rem;
   }
 
-  // has two children, one icon left and one label
-  &:has(.ep-button__icon--left, .ep-button__label) {
+  // label only (no icons)
+  &:has(.ep-button__label):not(:has(.ep-button__icon)) {
+    --ep-button-padding-inline: 0.6rem;
+  }
+
+  // icon left and label
+  &:has(.ep-button__label):has(.ep-button__icon--left):not(:has(.ep-button__icon--right)) {
     --ep-button-padding-inline: 0.3rem 0.6rem;
   }
 
-  // has two children, one icon right and one label
-  &:has(.ep-button__icon--right, .ep-button__label) {
+  // icon right and label
+  &:has(.ep-button__label):has(.ep-button__icon--right):not(:has(.ep-button__icon--left)) {
     --ep-button-padding-inline: 0.6rem 0.3rem;
   }
 
-  // has icon left, icon right, and label
-  &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
-    --ep-button-padding-inline: 0.6rem;
+  // icon left, icon right, and label
+  &:has(.ep-button__label):has(.ep-button__icon--left):has(.ep-button__icon--right) {
+    --ep-button-padding-inline: 0.3rem;
   }
 }
 
 // large 38px height
 .ep-button--large {
+  --ep-button-font-size: var(--font-size--default);
+  --ep-button-gap: 0.8rem;
   // max-height: 3.8rem;
   height: 3.8rem;
 
-  .ep-button__label {
-    font-size: var(--font-size--default);
-  }
-
   // padding
-  // has only one child
-  &:has(:only-child) {
-
-    // and it's an icon
-    &:has(.ep-button__icon) {
-      --ep-button-padding-inline: 1rem;
-    }
-
-    // and it's a label
-    &:has(.ep-button__label) {
-      --ep-button-padding-inline: 1.5rem;
-    }
+  // icon only (no label)
+  &:not(:has(.ep-button__label)) {
+    --ep-button-padding-inline: 1rem;
   }
 
-  // has two children, one icon left and one label
-  &:has(.ep-button__icon--left, .ep-button__label) {
-    --ep-button-padding-inline: 0.8rem 1.5rem;
+  // label only (no icons)
+  &:has(.ep-button__label):not(:has(.ep-button__icon)) {
+    --ep-button-padding-inline: 1.4rem;
   }
 
-  // has two children, one icon right and one label
-  &:has(.ep-button__icon--right, .ep-button__label) {
-    --ep-button-padding-inline: 1.5rem 0.8rem;
+  // icon left and label
+  &:has(.ep-button__label):has(.ep-button__icon--left):not(:has(.ep-button__icon--right)) {
+    --ep-button-padding-inline: 1rem 1.4rem;
   }
 
-  // has icon left, icon right, and label
-  &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
-    --ep-button-padding-inline: 0.8rem;
+  // icon right and label
+  &:has(.ep-button__label):has(.ep-button__icon--right):not(:has(.ep-button__icon--left)) {
+    --ep-button-padding-inline: 1.4rem 1rem;
+  }
+
+  // icon left, icon right, and label
+  &:has(.ep-button__label):has(.ep-button__icon--left):has(.ep-button__icon--right) {
+    --ep-button-padding-inline: 1rem;
   }
 }
 
 // xlarge 46px height
 .ep-button--xlarge {
+  --ep-button-font-size: var(--font-size--body);
+  --ep-button-gap: 1rem;
   // max-height: 4.6rem;
   height: 4.6rem;
 
-  .ep-button__label {
-    font-size: var(--font-size--default);
-  }
-
   // padding
-  // has only one child
-  &:has(:only-child) {
-
-    // and it's an icon
-    &:has(.ep-button__icon) {
-      --ep-button-padding-inline: 1.2rem;
-    }
-
-    // and it's a label
-    &:has(.ep-button__label) {
-      --ep-button-padding-inline: 1.8rem;
-    }
+  // icon only (no label)
+  &:not(:has(.ep-button__label)) {
+    --ep-button-padding-inline: 1.2rem;
   }
 
-  // has two children, one icon left and one label
-  &:has(.ep-button__icon--left, .ep-button__label) {
+  // label only (no icons)
+  &:has(.ep-button__label):not(:has(.ep-button__icon)) {
+    --ep-button-padding-inline: 1.8rem;
+  }
+
+  // icon left and label
+  &:has(.ep-button__label):has(.ep-button__icon--left):not(:has(.ep-button__icon--right)) {
     --ep-button-padding-inline: 1.2rem 1.8rem;
   }
 
-  // has two children, one icon right and one label
-  &:has(.ep-button__icon--right, .ep-button__label) {
+  // icon right and label
+  &:has(.ep-button__label):has(.ep-button__icon--right):not(:has(.ep-button__icon--left)) {
     --ep-button-padding-inline: 1.8rem 1.2rem;
   }
 
-  // has icon left, icon right, and label
-  &:has(.ep-button__icon--left, .ep-button__icon--right, .ep-button__label) {
-    --ep-button-padding-inline: 1.8rem;
+  // icon left, icon right, and label
+  &:has(.ep-button__label):has(.ep-button__icon--left):has(.ep-button__icon--right) {
+    --ep-button-padding-inline: 1.2rem;
   }
+}
+
+// async/loading button pattern
+.ep-button__async-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ep-button__async-text {
+  transition: opacity 0.6s ease;
+}
+
+.ep-button__async-label--loading > .ep-button__async-text {
+  opacity: 0;
+}
+
+.ep-button__async-loader {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inset: 0;
+}
+
+.ep-loader {
+  width: 1em;
+  height: 1em;
 }
 ```

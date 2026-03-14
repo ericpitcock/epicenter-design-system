@@ -24,9 +24,9 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `code` | The code to display. | `string` | `-` |
-| `language` | The language of the code. | `string` | `-` |
-| `theme` | The theme to use for highlighting. | `string` | `'one-dark-pro'` |
+| `code` | - | `string` | `-` |
+| `language` | - | `string` | `-` |
+| `theme` | - | `string` | `-` |
 
 
 ::: info
@@ -36,61 +36,48 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { codeToHtml } from 'shiki'
   import { onMounted, ref, watch } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The code to display.
-     */
-    code: {
-      type: String,
-      required: true
-    },
-    /**
-     * The language of the code.
-     */
-    language: {
-      type: String,
-      required: true
-    },
-    /**
-     * The theme to use for highlighting.
-     */
-    theme: {
-      type: String,
-      default: 'one-dark-pro'
-    }
-  })
+  interface EpCodeViewProps {
+    code: string
+    language: string
+    theme?: string
+  }
+
+  const {
+    code,
+    language,
+    theme = 'one-dark-pro',
+  } = defineProps<EpCodeViewProps>()
 
   const highlightedCode = ref('')
 
-  const highlightCode = async () => {
+  const highlightCode = async (): Promise<void> => {
     try {
-      highlightedCode.value = await codeToHtml(props.code, {
-        lang: props.language,
-        theme: props.theme,
+      highlightedCode.value = await codeToHtml(code, {
+        lang: language,
+        theme: theme,
         colorReplacements: {
           '#282c34': 'var(--interface-surface)',
         }
       })
     } catch (error) {
       console.error('Error highlighting code:', error)
-      // Fallback to plain text
-      highlightedCode.value = props.code
+      highlightedCode.value = code
     }
   }
 
-  watch(() => props.code, () => {
+  watch(() => code, () => {
     highlightCode()
   })
 
-  watch(() => props.language, () => {
+  watch(() => language, () => {
     highlightCode()
   })
 
-  watch(() => props.theme, () => {
+  watch(() => theme, () => {
     highlightCode()
   })
 

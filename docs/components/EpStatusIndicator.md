@@ -5,7 +5,7 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `pulse` | If true, the status indicator will pulse. | `boolean` | `false` |
+| `pulse` | If true, the status indicator will pulse. | `boolean` | `-` |
 
 ## Slots
 | Name | Description |
@@ -20,16 +20,15 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<script setup>
-  const props = defineProps({
+<script setup lang="ts">
+  interface EpStatusIndicatorProps {
     /**
      * If true, the status indicator will pulse.
      */
-    pulse: {
-      type: Boolean,
-      default: false,
-    },
-  })
+    pulse?: boolean
+  }
+
+  const { pulse = false } = defineProps<EpStatusIndicatorProps>()
 </script>
 
 <template>

@@ -32,9 +32,9 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `chartColors` | Custom color overrides for chart series (CSS custom properties). | `object` | `{}` |
-| `height` | Height of the chart in pixels. | `number` | `400` |
-| `options` | Highcharts configuration options object. | `object` | `{}` |
+| `chartColors` | - | `Record` | `-` |
+| `height` | - | `number` | `-` |
+| `options` | - | `Record` | `-` |
 
 
 ::: info
@@ -44,36 +44,21 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<script setup>
-  import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+<script setup lang="ts">
+  import { computed, onBeforeUnmount, onMounted, ref, useId } from 'vue'
 
-  const props = defineProps({
-    /**
-     * Custom color overrides for chart series (CSS custom properties).
-     * @example { '--highcharts-color-0': 'red', '--highcharts-color-1': 'blue' }
-     */
-    chartColors: {
-      type: Object,
-      default: () => ({})
-    },
-    /**
-     * Height of the chart in pixels.
-     */
-    height: {
-      type: Number,
-      default: 400
-    },
-    /**
-     * Highcharts configuration options object.
-     */
-    options: {
-      type: Object,
-      default: () => ({})
-    },
-  })
+  interface EpChartProps {
+    chartColors?: Record<string, string>
+    height?: number
+    options?: Record<string, unknown>
+  }
 
-  const chart = ref(null)
-  const chartDefaults = {
+  const { chartColors = {}, height = 400, options = {} } = defineProps<EpChartProps>()
+
+  // Highcharts chart instance
+  const chart = ref<{ reflow: () => void; destroy: () => void } | null>(null)
+
+  const chartDefaults: Record<string, unknown> = {
     accessibility: {
       enabled: false,
     },
@@ -90,19 +75,19 @@ This component does not use events, slots.
       enabled: false
     },
   }
-  const chartId = `ep-chart-${Math.random().toString(36).substring(7)}`
+  const chartId = `ep-chart-${useId()}`
 
   const chartOptions = computed(() => ({
     ...chartDefaults,
-    ...props.options
+    ...options
   }))
 
-  const drawChart = async () => {
+  const drawChart = async (): Promise<void> => {
     const Highcharts = (await import('highcharts')).default
     chart.value = Highcharts.chart(chartId, chartOptions.value)
   }
 
-  const reflowChart = () => {
+  const reflowChart = (): void => {
     if (chart.value) {
       chart.value.reflow()
     }

@@ -1,5 +1,5 @@
 import fs from 'fs'
-import glob from 'glob'
+import { globSync } from 'glob'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { parse } from 'vue-docgen-api'
@@ -36,7 +36,7 @@ function getScssContent(fileName) {
 }
 
 // Find all .vue files in the components directory and subdirectories
-const vueFiles = glob.sync(`${COMPONENTS_DIR}/**/*.vue`)
+const vueFiles = globSync(`${COMPONENTS_DIR}/**/*.vue`)
 
 // Process each .vue file
 vueFiles.forEach(async (filePath) => {

@@ -58,14 +58,14 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
+| `checked` | Whether the checkbox is checked. | `boolean` | `-` |
+| `disabled` | Whether the checkbox is disabled. | `boolean` | `-` |
 | `id` | The ID of the checkbox. | `string` | `-` |
+| `indeterminate` | Whether the checkbox is indeterminate. | `boolean` | `-` |
 | `label` | The label for the checkbox. | `string` | `-` |
 | `name` | The name of the checkbox. | `string` | `-` |
+| `required` | Whether the checkbox is required. | `boolean` | `-` |
 | `value` | The value of the checkbox. | `string` | `-` |
-| `checked` | Whether the checkbox is checked. | `boolean` | `false` |
-| `disabled` | Whether the checkbox is disabled. | `boolean` | `false` |
-| `indeterminate` | Whether the checkbox is indeterminate. | `boolean` | `false` |
-| `required` | Whether the checkbox is required. | `boolean` | `false` |
 
 ## Slots
 | Name | Description |
@@ -80,78 +80,42 @@ This component does not use events.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import { computed } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The ID of the checkbox.
-     */
-    id: {
-      type: String,
-      required: true
-    },
-    /**
-     * The label for the checkbox.
-     */
-    label: {
-      type: String,
-      required: true
-    },
-    /**
-     * The name of the checkbox.
-     */
-    name: {
-      type: String,
-      required: true
-    },
-    /**
-     * The value of the checkbox.
-     */
-    value: {
-      type: String,
-      required: true
-    },
-    /**
-     * Whether the checkbox is checked.
-     */
-    checked: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Whether the checkbox is disabled.
-     */
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Whether the checkbox is indeterminate.
-     */
-    indeterminate: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Whether the checkbox is required.
-     */
-    required: {
-      type: Boolean,
-      default: false
-    },
-  })
+  interface EpCheckboxProps {
+    /** Whether the checkbox is checked. */
+    checked?: boolean
+    /** Whether the checkbox is disabled. */
+    disabled?: boolean
+    /** The ID of the checkbox. */
+    id: string
+    /** Whether the checkbox is indeterminate. */
+    indeterminate?: boolean
+    /** The label for the checkbox. */
+    label: string
+    /** The name of the checkbox. */
+    name: string
+    /** Whether the checkbox is required. */
+    required?: boolean
+    /** The value of the checkbox. */
+    value: string
+  }
 
-  const modelValue = defineModel({
-    type: Boolean,
-    required: true
-  })
+  const {
+    checked = false,
+    disabled = false,
+    indeterminate = false,
+    required = false,
+  } = defineProps<EpCheckboxProps>()
+
+  const modelValue = defineModel<boolean>({ required: true })
 
   const classes = computed(() => {
     return {
       'ep-checkbox--checked': modelValue.value,
-      'ep-checkbox--disabled': props.disabled,
-      'ep-checkbox--indeterminate': props.indeterminate,
+      'ep-checkbox--disabled': disabled,
+      'ep-checkbox--indeterminate': indeterminate,
     }
   })
 </script>
@@ -173,7 +137,7 @@ This component does not use events.
       :required
     >
     <slot>
-      {{ props.label }}
+      {{ label }}
     </slot>
   </label>
 </template>

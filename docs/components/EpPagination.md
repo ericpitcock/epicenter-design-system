@@ -5,12 +5,12 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
+| `buttonClass` | Custom CSS class to apply to pagination buttons. | `string` | `-` |
 | `currentPage` | The current active page number. | `number` | `-` |
+| `resultsPerPage` | Number of results to display per page. When provided, shows a dropdown to change this value. | `union` | `-` |
+| `resultsPerPageOptions` | Options for the results per page dropdown. | `Array` | `-` |
+| `showPages` | If true, displays individual page number buttons instead of just prev/next. | `boolean` | `-` |
 | `totalPages` | Total number of pages available. | `number` | `-` |
-| `showPages` | If true, displays individual page number buttons instead of just prev/next. | `boolean` | `false` |
-| `buttonClass` | Custom CSS class to apply to pagination buttons. | `string` | `''` |
-| `resultsPerPage` | Number of results to display per page. When provided, shows a dropdown to change this value. | `number` | `null` |
-| `resultsPerPageOptions` | Options for the results per page dropdown. | `array` | `[ { label: '10 / page', value: 10 }, { label: '20 / page', value: 20 }, { label: '50 / page', value: 50 }, { label: '100 / page', value: 100 } ]` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -29,98 +29,80 @@
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
   import ArrowLeft01 from '@ericpitcock/epicenter-icons-vue/ArrowLeft01'
   import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
   import { computed, ref } from 'vue'
 
+  import type { SelectOption } from '../../types'
   import EpButton from '../button/EpButton.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
   import EpSelect from '../select/EpSelect.vue'
 
-  const props = defineProps({
-    /**
-     * The current active page number.
-     */
-    currentPage: {
-      type: Number,
-      required: true
-    },
-    /**
-     * Total number of pages available.
-     */
-    totalPages: {
-      type: Number,
-      required: true
-    },
-    /**
-     * If true, displays individual page number buttons instead of just prev/next.
-     */
-    showPages: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * Custom CSS class to apply to pagination buttons.
-     */
-    buttonClass: {
-      type: String,
-      default: ''
-    },
-    /**
-     * Number of results to display per page. When provided, shows a dropdown to change this value.
-     */
-    resultsPerPage: {
-      type: Number,
-      default: null
-    },
-    /**
-     * Options for the results per page dropdown.
-     */
-    resultsPerPageOptions: {
-      type: Array,
-      default: () => [
-        { label: '10 / page', value: 10 },
-        { label: '20 / page', value: 20 },
-        { label: '50 / page', value: 50 },
-        { label: '100 / page', value: 100 }
-      ]
-    }
-  })
-
-  const emit = defineEmits(['pageChange', 'update:resultsPerPage'])
-
-  const localResultsPerPage = ref(props.resultsPerPage)
-
-  const onResultsPerPageChange = (value) => {
-    emit('update:resultsPerPage', value)
+  interface EpPaginationProps {
+    /** Custom CSS class to apply to pagination buttons. */
+    buttonClass?: string
+    /** The current active page number. */
+    currentPage: number
+    /** Number of results to display per page. When provided, shows a dropdown to change this value. */
+    resultsPerPage?: number | null
+    /** Options for the results per page dropdown. */
+    resultsPerPageOptions?: SelectOption[]
+    /** If true, displays individual page number buttons instead of just prev/next. */
+    showPages?: boolean
+    /** Total number of pages available. */
+    totalPages: number
   }
 
-  const prevPage = () => {
-    if (props.currentPage > 1) {
-      emit('pageChange', props.currentPage - 1)
+  const {
+    currentPage,
+    totalPages,
+    buttonClass = '',
+    resultsPerPage = null,
+    resultsPerPageOptions = [
+      { label: '10 / page', value: 10 },
+      { label: '20 / page', value: 20 },
+      { label: '50 / page', value: 50 },
+      { label: '100 / page', value: 100 },
+    ],
+    showPages = false,
+  } = defineProps<EpPaginationProps>()
+
+  const emit = defineEmits<{
+    pageChange: [page: number]
+    'update:resultsPerPage': [value: number]
+  }>()
+
+  const localResultsPerPage = ref<string | number>(resultsPerPage ?? 10)
+
+  const onResultsPerPageChange = (value: unknown): void => {
+    emit('update:resultsPerPage', Number(value))
+  }
+
+  const prevPage = (): void => {
+    if (currentPage > 1) {
+      emit('pageChange', currentPage - 1)
     }
   }
 
-  const nextPage = () => {
-    if (props.currentPage < props.totalPages) {
-      emit('pageChange', props.currentPage + 1)
+  const nextPage = (): void => {
+    if (currentPage < totalPages) {
+      emit('pageChange', currentPage + 1)
     }
   }
 
   const truncationThreshold = 9
 
   const shouldShowStartEllipsis = computed(() => {
-    return props.totalPages > truncationThreshold && props.currentPage > 3
+    return totalPages > truncationThreshold && currentPage > 3
   })
 
   const shouldShowEndEllipsis = computed(() => {
-    return props.totalPages > truncationThreshold && props.currentPage < props.totalPages - 2
+    return totalPages > truncationThreshold && currentPage < totalPages - 2
   })
 
-  const pageRange = computed(() => {
-    const range = []
-    const { totalPages, currentPage } = props
+  const pageRange = computed<number[]>(() => {
+    const range: number[] = []
 
     // Show all pages if under threshold
     if (totalPages <= truncationThreshold) {

@@ -5,20 +5,20 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| `id` | The ID attribute for the textarea element. | `string` | `null` |
-| `name` | The name attribute for the textarea. | `string` | `null` |
-| `placeholder` | Placeholder text shown when textarea is empty. | `string` | `null` |
-| `disabled` | If true, disables the textarea. | `boolean` | `false` |
-| `required` | If true, marks the textarea as required. | `boolean` | `false` |
-| `rows` | Number of visible text rows. | `number` | `2` |
-| `cols` | Number of visible text columns (width). | `number` | `20` |
-| `maxlength` | Maximum character length allowed. | `number` | `null` |
-| `minlength` | Minimum character length required. | `number` | `null` |
-| `readonly` | If true, makes the textarea read-only. | `boolean` | `false` |
-| `autofocus` | If true, automatically focuses on mount. | `boolean` | `false` |
-| `autocomplete` | Controls autocomplete behavior. | `string` | `'on'` |
-| `spellcheck` | If true, enables spellcheck. | `boolean` | `false` |
-| `wrap` | Controls how text wraps. | `string` | `'soft'` |
+| `autocomplete` | - | `string` | `-` |
+| `autofocus` | - | `boolean` | `-` |
+| `cols` | - | `number` | `-` |
+| `disabled` | - | `boolean` | `-` |
+| `id` | - | `string` | `-` |
+| `maxlength` | - | `number` | `-` |
+| `minlength` | - | `number` | `-` |
+| `name` | - | `string` | `-` |
+| `placeholder` | - | `string` | `-` |
+| `readonly` | - | `boolean` | `-` |
+| `required` | - | `boolean` | `-` |
+| `rows` | - | `number` | `-` |
+| `spellcheck` | - | `boolean` | `-` |
+| `wrap` | - | `string` | `-` |
 
 ## Events
 | Name    | Description                 | Payload    |
@@ -35,123 +35,55 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<script setup>
+<script setup lang="ts">
 
-  const props = defineProps({
-    /**
-     * The ID attribute for the textarea element.
-     */
-    id: {
-      type: String,
-      default: null,
-    },
-    /**
-     * The name attribute for the textarea.
-     */
-    name: {
-      type: String,
-      default: null,
-    },
-    /**
-     * Placeholder text shown when textarea is empty.
-     */
-    placeholder: {
-      type: String,
-      default: null,
-    },
-    /**
-     * If true, disables the textarea.
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * If true, marks the textarea as required.
-     */
-    required: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Number of visible text rows.
-     */
-    rows: {
-      type: Number,
-      default: 2,
-    },
-    /**
-     * Number of visible text columns (width).
-     */
-    cols: {
-      type: Number,
-      default: 20,
-    },
-    /**
-     * Maximum character length allowed.
-     */
-    maxlength: {
-      type: Number,
-      default: null,
-    },
-    /**
-     * Minimum character length required.
-     */
-    minlength: {
-      type: Number,
-      default: null,
-    },
-    /**
-     * If true, makes the textarea read-only.
-     */
-    readonly: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * If true, automatically focuses on mount.
-     */
-    autofocus: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Controls autocomplete behavior.
-     * @values 'on', 'off'
-     */
-    autocomplete: {
-      type: String,
-      default: 'on',
-    },
-    /**
-     * If true, enables spellcheck.
-     */
-    spellcheck: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Controls how text wraps.
-     * @values 'soft', 'hard'
-     */
-    wrap: {
-      type: String,
-      default: 'soft',
-    },
-  })
+  interface EpTextareaProps {
+    autocomplete?: string
+    autofocus?: boolean
+    cols?: number
+    disabled?: boolean
+    id?: string
+    maxlength?: number
+    minlength?: number
+    name?: string
+    placeholder?: string
+    readonly?: boolean
+    required?: boolean
+    rows?: number
+    spellcheck?: boolean
+    wrap?: string
+  }
 
-  const emit = defineEmits(['update:modelValue', 'focus', 'blur'])
+  const {
+    autocomplete = 'on',
+    autofocus = false,
+    cols = 20,
+    disabled = false,
+    id = undefined,
+    maxlength = undefined,
+    minlength = undefined,
+    name = undefined,
+    placeholder = undefined,
+    readonly = false,
+    required = false,
+    rows = 2,
+    spellcheck = false,
+    wrap = 'soft',
+  } = defineProps<EpTextareaProps>()
 
-  const modelValue = defineModel({
-    type: String,
-    default: '',
-  })
+  const emit = defineEmits<{
+    'update:modelValue': [value: string]
+    focus: [event: FocusEvent]
+    blur: [event: FocusEvent]
+  }>()
 
-  const onFocus = (event) => {
+  const modelValue = defineModel<string>({ default: '' })
+
+  const onFocus = (event: FocusEvent): void => {
     emit('focus', event)
   }
 
-  const onBlur = (event) => {
+  const onBlur = (event: FocusEvent): void => {
     emit('blur', event)
   }
 </script>

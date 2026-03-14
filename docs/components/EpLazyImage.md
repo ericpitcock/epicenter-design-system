@@ -5,19 +5,19 @@
 ## Props
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
+| `alt` | The alt text for the image. | `string` | `-` |
+| `aspectRatio` | The aspect ratio of the image (e.g., '16 / 9'). | `string` | `-` |
+| `className` | Additional CSS class name for the image element. | `string` | `-` |
+| `height` | The height of the image. | `union` | `-` |
+| `lazy` | If true, enables lazy loading using Intersection Observer. | `boolean` | `-` |
+| `objectFit` | How the image fits within its container. | `string` | `-` |
+| `placeholder` | URL of the placeholder image to display while loading. | `string` | `-` |
+| `placeholderColor` | The background color of the placeholder. | `string` | `-` |
+| `placeholderOpacity` | The opacity of the placeholder. | `number` | `-` |
+| `rootMargin` | The root margin for the Intersection Observer (controls when loading starts). | `string` | `-` |
+| `rounded` | If true, applies rounded corners to the image. | `boolean` | `-` |
 | `src` | The source URL of the image. | `string` | `-` |
-| `alt` | The alt text for the image. | `string` | `''` |
-| `width` | The width of the image. | `string|number` | `'100%'` |
-| `height` | The height of the image. | `string|number` | `'100%'` |
-| `aspectRatio` | The aspect ratio of the image (e.g., '16 / 9'). | `string` | `'16 / 10'` |
-| `objectFit` | How the image fits within its container. | `string` | `'contain'` |
-| `className` | Additional CSS class name for the image element. | `string` | `''` |
-| `placeholder` | URL of the placeholder image to display while loading. | `string` | `''` |
-| `placeholderColor` | The background color of the placeholder. | `string` | `'#f5f5f5'` |
-| `placeholderOpacity` | The opacity of the placeholder. | `number` | `1` |
-| `lazy` | If true, enables lazy loading using Intersection Observer. | `boolean` | `true` |
-| `rounded` | If true, applies rounded corners to the image. | `boolean` | `true` |
-| `rootMargin` | The root margin for the Intersection Observer (controls when loading starts). | `string` | `'0px 0px 100px 0px'` |
+| `width` | The width of the image. | `union` | `-` |
 
 
 ::: info
@@ -27,130 +27,79 @@ This component does not use events, slots.
 ## Component Code
 
 ```vue
-<script setup>
-  import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+<script setup lang="ts">
+  import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 
-  const props = defineProps({
-    /**
-     * The source URL of the image.
-     */
-    src: {
-      type: String,
-      required: true,
-    },
-    /**
-     * The alt text for the image.
-     */
-    alt: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The width of the image.
-     */
-    width: {
-      type: [String, Number],
-      default: '100%',
-    },
-    /**
-     * The height of the image.
-     */
-    height: {
-      type: [String, Number],
-      default: '100%',
-    },
-    /**
-     * The aspect ratio of the image (e.g., '16 / 9').
-     */
-    aspectRatio: {
-      type: String,
-      default: '16 / 10',
-    },
-    /**
-     * How the image fits within its container.
-     * @values contain, cover, fill, none, scale-down
-     */
-    objectFit: {
-      type: String,
-      default: 'contain',
-    },
-    /**
-     * Additional CSS class name for the image element.
-     */
-    className: {
-      type: String,
-      default: '',
-    },
-    /**
-     * URL of the placeholder image to display while loading.
-     */
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    /**
-     * The background color of the placeholder.
-     */
-    placeholderColor: {
-      type: String,
-      default: '#f5f5f5',
-    },
-    /**
-     * The opacity of the placeholder.
-     */
-    placeholderOpacity: {
-      type: Number,
-      default: 1,
-    },
-    /**
-     * If true, enables lazy loading using Intersection Observer.
-     */
-    lazy: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * If true, applies rounded corners to the image.
-     */
-    rounded: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * The root margin for the Intersection Observer (controls when loading starts).
-     */
-    rootMargin: {
-      type: String,
-      default: '0px 0px 100px 0px',
-    },
-  })
+  interface EpLazyImageProps {
+    /** The alt text for the image. */
+    alt?: string
+    /** The aspect ratio of the image (e.g., '16 / 9'). */
+    aspectRatio?: string
+    /** Additional CSS class name for the image element. */
+    className?: string
+    /** The height of the image. */
+    height?: string | number
+    /** If true, enables lazy loading using Intersection Observer. */
+    lazy?: boolean
+    /** How the image fits within its container. */
+    objectFit?: string
+    /** URL of the placeholder image to display while loading. */
+    placeholder?: string
+    /** The background color of the placeholder. */
+    placeholderColor?: string
+    /** The opacity of the placeholder. */
+    placeholderOpacity?: number
+    /** The root margin for the Intersection Observer (controls when loading starts). */
+    rootMargin?: string
+    /** If true, applies rounded corners to the image. */
+    rounded?: boolean
+    /** The source URL of the image. */
+    src: string
+    /** The width of the image. */
+    width?: string | number
+  }
 
-  const isLoaded = ref(false)
-  const imageEl = ref(null)
-  let observer = null
+  const {
+    alt = '',
+    aspectRatio = '16 / 10',
+    className = '',
+    height = '100%',
+    lazy = true,
+    objectFit = 'contain',
+    placeholder = '',
+    placeholderColor = '#f5f5f5',
+    placeholderOpacity = 1,
+    rootMargin = '0px 0px 100px 0px',
+    rounded = true,
+    width = '100%',
+  } = defineProps<EpLazyImageProps>()
+
+  const isLoaded = ref<boolean>(false)
+  const imageEl = useTemplateRef<HTMLDivElement>('imageEl')
+  let observer: IntersectionObserver | null = null
 
   const placeholderStyle = computed(() => {
     return {
-      width: props.width,
-      height: props.height,
-      aspectRatio: props.aspectRatio,
-      backgroundColor: props.placeholderColor,
-      opacity: props.placeholderOpacity,
-      backgroundImage: props.placeholder ? `url(${props.placeholder})` : '',
+      width: width,
+      height: height,
+      aspectRatio: aspectRatio,
+      backgroundColor: placeholderColor,
+      opacity: placeholderOpacity,
+      backgroundImage: placeholder ? `url(${placeholder})` : '',
       backgroundSize: 'cover',
     }
   })
 
-  const addLazyLoadListener = () => {
+  const addLazyLoadListener = (): void => {
     observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           loadImage()
-          observer.unobserve(entry.target)
+          observer!.unobserve(entry.target)
         }
       })
     }, {
-      rootMargin: props.rootMargin,
+      rootMargin: rootMargin,
       threshold: 0.1,
     })
 
@@ -159,12 +108,12 @@ This component does not use events, slots.
     }
   }
 
-  const loadImage = () => {
+  const loadImage = (): void => {
     isLoaded.value = true
   }
 
   onMounted(() => {
-    if (props.lazy) {
+    if (lazy) {
       addLazyLoadListener()
     } else {
       loadImage()
@@ -191,7 +140,7 @@ This component does not use events, slots.
       :width="width"
       :height="height"
       :class="['ep-image__img', className]"
-      :style="{ aspectRatio: aspectRatio, objectFit: objectFit }"
+      :style="({ aspectRatio, objectFit } as any)"
     >
     <div
       v-else
