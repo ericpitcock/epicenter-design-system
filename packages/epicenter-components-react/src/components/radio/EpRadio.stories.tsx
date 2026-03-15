@@ -1,10 +1,12 @@
 import { EpRadio } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useState } from 'react';
+import { paddedSurface } from '../../../storybook/helpers/decorators';
 
 const meta: Meta<typeof EpRadio> = {
   title: 'Components/Radio',
   component: EpRadio,
+  decorators: [paddedSurface],
   argTypes: {
     id: { table: { disable: true } },
     label: { table: { disable: true } },

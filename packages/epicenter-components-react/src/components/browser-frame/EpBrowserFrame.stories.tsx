@@ -1,9 +1,11 @@
 import { EpBrowserFrame } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { paddedBg } from '../../../storybook/helpers/decorators'
 
 const meta: Meta<typeof EpBrowserFrame> = {
   title: 'Components/BrowserFrame',
   component: EpBrowserFrame,
+  decorators: [paddedBg],
   parameters: {
     layout: 'centered'
   },

@@ -1,10 +1,12 @@
 import { EpToggle } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useState } from 'react';
+import { centeredSurface } from '../../../storybook/helpers/decorators';
 
 const meta: Meta<typeof EpToggle> = {
   title: 'Components/Toggle',
   component: EpToggle,
+  decorators: [centeredSurface],
   argTypes: {
     isActive: {
       control: 'boolean',

@@ -2,9 +2,13 @@ import { EpSelect } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 
+import { componentNames, useIconComponent } from '../../../storybook/helpers/useIcons'
+import { paddedSurface } from '../../../storybook/helpers/decorators'
+
 const meta: Meta<typeof EpSelect> = {
   title: 'Components/Select',
   component: EpSelect,
+  decorators: [paddedSurface],
   parameters: {
     layout: 'centered'
   },
@@ -48,7 +52,13 @@ const meta: Meta<typeof EpSelect> = {
     errorMessage: {
       control: 'text',
       description: 'Error message to display'
-    }
+    },
+    iconLeftName: {
+      name: 'Icon Left',
+      options: componentNames,
+      control: { type: 'select' },
+      table: { category: 'Icons' },
+    },
   }
 }
 
@@ -64,8 +74,10 @@ const sampleOptions = [
 ]
 
 export const Select: Story = {
-  render: (args) => {
+  render: (args: any) => {
     const [value, setValue] = useState('')
+    const IconLeft = useIconComponent(args.iconLeftName)
+
     return (
       <div style={{ width: '300px' }}>
         <EpSelect
@@ -73,6 +85,7 @@ export const Select: Story = {
           options={sampleOptions}
           value={value}
           onChange={setValue}
+          iconLeft={IconLeft ? <IconLeft /> : undefined}
         />
       </div>
     )
@@ -84,6 +97,7 @@ export const Select: Story = {
     disabled: false,
     errorEnabled: true,
     error: false,
-    errorMessage: ''
+    errorMessage: '',
+    iconLeftName: 'None',
   }
 }

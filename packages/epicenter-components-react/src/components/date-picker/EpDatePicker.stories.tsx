@@ -1,9 +1,11 @@
 import { EpDatePicker } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { paddedSurface } from '../../../storybook/helpers/decorators';
 
 const meta = {
   title: 'Components/DatePicker',
   component: EpDatePicker,
+  decorators: [paddedSurface],
   parameters: {
     layout: 'centered',
   },

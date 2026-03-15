@@ -25,10 +25,12 @@ export const EpToggle: React.FC<EpToggleProps> = ({
   disabled = false,
   label = '',
   onToggle,
+  size = 'default',
   className = '',
 }) => {
   const classes = ['ep-toggle'];
   
+  if (size !== 'default') classes.push(`ep-toggle--${size}`);
   if (isActive) classes.push('ep-toggle--active');
   if (disabled) classes.push('ep-toggle--disabled');
   if (className) classes.push(className);

@@ -2,9 +2,13 @@ import { EpBanner, EpButton } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 
+import { componentNames, useIconComponent } from '../../../storybook/helpers/useIcons'
+import { centeredSurface } from '../../../storybook/helpers/decorators'
+
 const meta: Meta<typeof EpBanner> = {
   title: 'Components/Banner',
   component: EpBanner,
+  decorators: [centeredSurface],
   parameters: {
     layout: 'centered'
   },
@@ -20,6 +24,12 @@ const meta: Meta<typeof EpBanner> = {
     icon: {
       table: { disable: true }
     },
+    iconName: {
+      name: 'Icon',
+      options: componentNames,
+      control: { type: 'select' },
+      table: { category: 'Icons' },
+    },
     dismiss: {
       table: { disable: true }
     }
@@ -29,15 +39,10 @@ const meta: Meta<typeof EpBanner> = {
 export default meta
 type Story = StoryObj<typeof EpBanner>
 
-const infoIcon = (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/>
-  </svg>
-)
-
 export const Banner: Story = {
-  render: (args) => {
+  render: (args: any) => {
     const [visible, setVisible] = useState(true)
+    const IconComponent = useIconComponent(args.iconName)
     
     if (!visible) {
       return (
@@ -52,7 +57,7 @@ export const Banner: Story = {
       <div style={{ width: '600px' }}>
         <EpBanner
           {...args}
-          icon={infoIcon}
+          icon={IconComponent ? <IconComponent /> : undefined}
           dismiss={<EpButton>Dismiss</EpButton>}
           onDismissed={() => setVisible(false)}
         />
@@ -61,6 +66,7 @@ export const Banner: Story = {
   },
   args: {
     message: 'This is an informational banner message',
-    subtext: ''
+    subtext: '',
+    iconName: 'InformationCircle',
   }
 }

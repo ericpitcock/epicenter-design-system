@@ -1,10 +1,12 @@
 import { EpTooltip } from '@ericpitcock/epicenter-components-react'
 import { EpButton } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { centeredBg } from '../../../storybook/helpers/decorators'
 
 const meta: Meta<typeof EpTooltip> = {
   title: 'Components/Tooltip',
   component: EpTooltip,
+  decorators: [centeredBg],
   parameters: {
     layout: 'centered'
   },

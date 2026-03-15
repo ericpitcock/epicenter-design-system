@@ -1,10 +1,12 @@
 import { EpNotification } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
+import { centeredSurface } from '../../../storybook/helpers/decorators'
 
 const meta: Meta<typeof EpNotification> = {
   title: 'Components/Notification',
   component: EpNotification,
+  decorators: [centeredSurface],
   parameters: {
     layout: 'centered'
   }

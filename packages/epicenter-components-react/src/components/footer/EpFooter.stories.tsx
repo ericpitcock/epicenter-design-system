@@ -1,9 +1,11 @@
 import { EpFooter } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { paddedBg } from '../../../storybook/helpers/decorators';
 
 const meta = {
   title: 'Components/Footer',
   component: EpFooter,
+  decorators: [paddedBg],
   parameters: {
     layout: 'fullwidth',
   },

@@ -1,5 +1,6 @@
 import { EpThemeToggle, ThemeProvider } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { centeredSurface } from '../../../storybook/helpers/decorators';
 
 const meta = {
   title: 'Components/ThemeToggle',
@@ -8,6 +9,7 @@ const meta = {
     layout: 'centered',
   },
   decorators: [
+    centeredSurface,
     (Story) => (
       <ThemeProvider>
         <Story />

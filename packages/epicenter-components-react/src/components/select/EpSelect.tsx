@@ -1,3 +1,4 @@
+import { ArrowDown01 } from '@ericpitcock/epicenter-icons-react/ArrowDown01.jsx'
 import React, { forwardRef, ReactNode, useId, ChangeEvent } from 'react'
 
 import { EpInputStyler } from '../input-styler/EpInputStyler'
@@ -129,19 +130,6 @@ export const EpSelect = forwardRef<HTMLSelectElement, EpSelectProps>(({
     onFocus?.()
   }
 
-  // Arrow down icon
-  const arrowDownIcon = (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M7 10l5 5 5-5z" fill="currentColor"/>
-    </svg>
-  )
-
   return (
     <EpInputStyler
       id={computedId}
@@ -152,7 +140,7 @@ export const EpSelect = forwardRef<HTMLSelectElement, EpSelectProps>(({
       error={error}
       errorMessage={errorMessage}
       iconLeft={iconLeft}
-      iconRight={arrowDownIcon}
+      iconRight={<ArrowDown01 />}
       iconRightVisible={true}
       iconRightClickable={false}
     >

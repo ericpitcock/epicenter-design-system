@@ -1,9 +1,11 @@
 import { EpBasicTable } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { paddedSurface } from '../../../storybook/helpers/decorators'
 
 const meta: Meta<typeof EpBasicTable> = {
   title: 'Components/BasicTable',
   component: EpBasicTable,
+  decorators: [paddedSurface],
   parameters: {
     layout: 'padded'
   },

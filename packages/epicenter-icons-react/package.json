@@ -4,12 +4,7 @@
   "description": "Epicenter Icons for React",
   "type": "module",
   "sideEffects": false,
-  "types": "./index.d.ts",
   "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "default": "./index.js"
-    },
     "./*": {
       "types": "./*.d.ts",
       "default": "./*.jsx"

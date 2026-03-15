@@ -2,10 +2,12 @@ import { EpTabs } from '@ericpitcock/epicenter-components-react'
 import { EpTabContent } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
+import { paddedBg } from '../../../storybook/helpers/decorators'
 
 const meta: Meta<typeof EpTabs> = {
   title: 'Components/Tabs',
   component: EpTabs,
+  decorators: [paddedBg],
   parameters: {
     layout: 'centered'
   },

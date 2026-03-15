@@ -19,7 +19,6 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@ericpitcock/epicenter-icons-react": ["../epicenter-icons-react/index.js"],
       "@ericpitcock/epicenter-icons-react/*": ["../epicenter-icons-react/*"]
     }
   },

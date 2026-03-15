@@ -1,10 +1,12 @@
 import { EpFlex } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
+import { paddedSurface } from '../../../storybook/helpers/decorators';
 
 const meta: Meta<typeof EpFlex> = {
   title: 'Components/Flex',
   component: EpFlex,
+  decorators: [paddedSurface],
 };
 
 export default meta;

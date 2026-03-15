@@ -1,10 +1,12 @@
 import { EpButton, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
+import { centeredBg } from '../../../storybook/helpers/decorators'
 
 const meta: Meta<typeof EpMenu> = {
   title: 'Components/Menu',
   component: EpMenu,
+  decorators: [centeredBg],
   parameters: {
     layout: 'centered'
   }

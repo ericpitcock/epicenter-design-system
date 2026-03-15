@@ -1,9 +1,11 @@
 import { EpDivider } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { paddedSurface } from '../../../storybook/helpers/decorators';
 
 const meta: Meta<typeof EpDivider> = {
   title: 'Components/Divider',
   component: EpDivider,
+  decorators: [paddedSurface],
   argTypes: {
     direction: {
       name: 'Direction',

@@ -1,9 +1,11 @@
 import { EpTable } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { surface } from '../../../storybook/helpers/decorators'
 
 const meta: Meta<typeof EpTable> = {
   title: 'Components/Table',
   component: EpTable,
+  decorators: [surface],
   parameters: {
     layout: 'padded'
   },

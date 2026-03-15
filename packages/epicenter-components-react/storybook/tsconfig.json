@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -19,13 +19,13 @@
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
       "@ericpitcock/epicenter-components-react": ["../../epicenter-components-react"],
-      "@ericpitcock/epicenter-icons-react": ["../../epicenter-icons-react"],
       "@ericpitcock/epicenter-icons-react/*": ["../../epicenter-icons-react/*"],
       "@ericpitcock/epicenter-icons-vue": ["../../epicenter-icons-vue"],
       "@ericpitcock/epicenter-icons-vue/*": ["../../epicenter-icons-vue/*"]
     }
   },
   "include": [
+    "helpers/**/*",
     "hooks/**/*",
     "icons/**/*",
     "types/**/*",

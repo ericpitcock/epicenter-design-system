@@ -184,21 +184,10 @@ def convert_all_svgs():
         except Exception as e:
             print(f"Error processing {svg_file.name}: {e}")
 
-    # Create index file for easy imports
-    index_content = "// Auto-generated index file for React icon components\n\n"
-    for name in sorted(component_names):
-        index_content += f"export {{ {name} }} from './{name}.jsx';\n"
-    
-    index_file = output_dir / "index.js"
-    with open(index_file, 'w', encoding='utf-8') as f:
-        f.write(index_content)
-
     print(f"\nConversion complete! Successfully converted {converted_count} SVG files.")
     print(f"React components saved to: {output_dir.absolute()}")
-    print(f"Index file created: {index_file.absolute()}")
-    print("\nUsage examples:")
-    print("import { Abacus } from '@ericpitcock/epicenter-icons-react'")
-    print("import { Abacus } from '@ericpitcock/epicenter-icons-react/Abacus'")
+    print("\nUsage example:")
+    print("import { Abacus } from '@ericpitcock/epicenter-icons-react/Abacus.jsx'")
 
 if __name__ == "__main__":
     # Change to the parent directory (where cleaned_svgs is located)

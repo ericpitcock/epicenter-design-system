@@ -4,6 +4,7 @@ export { EpDivider } from './components/divider/EpDivider';
 export { EpStatusIndicator } from './components/status-indicator/EpStatusIndicator';
 export { EpItemCount } from './components/item-count/EpItemCount';
 export { EpLoadingState } from './components/loading-state/EpLoadingState';
+export { EpColorRandomizer } from './components/color-randomizer/EpColorRandomizer';
 
 // Layout
 export { EpContainer } from './components/container/EpContainer';
@@ -14,6 +15,7 @@ export { EpFooter } from './components/footer/EpFooter';
 // Media
 export { EpicenterLogo } from './components/logo/EpicenterLogo';
 export { EpImage } from './components/image/EpImage';
+export { EpLazyImage } from './components/lazy-image/EpLazyImage';
 export { EpBrowserFrame } from './components/browser-frame/EpBrowserFrame';
 
 // Form Inputs
@@ -24,6 +26,7 @@ export { EpToggleButton } from './components/toggle-button/EpToggleButton';
 export { EpFieldset } from './components/fieldset/EpFieldset';
 export { EpTextarea } from './components/textarea/EpTextarea';
 export { EpInput } from './components/input/EpInput';
+export { EpInlineEdit } from './components/inline-edit/EpInlineEdit';
 export { EpSelect } from './components/select/EpSelect';
 export { EpInputStyler } from './components/input-styler/EpInputStyler';
 export { EpDatePicker } from './components/date-picker/EpDatePicker';
@@ -89,6 +92,20 @@ export { EpSignIn } from './components/sign-in/EpSignIn';
 
 // Theme
 export { EpThemeToggle } from './components/theme-toggle/EpThemeToggle';
+
+// Loaders
+export {
+  EpLoaderBars,
+  EpLoaderBounce,
+  EpLoaderDots,
+  EpLoaderDualRing,
+  EpLoaderFade,
+  EpLoaderOrbit,
+  EpLoaderPulse,
+  EpLoaderScale,
+  EpLoaderSpin,
+  EpLoaderSquares,
+} from './components/loaders';
 
 // Hooks
 export { useTheme, ThemeProvider } from './hooks/useTheme';
@@ -160,3 +177,6 @@ export type { EpMultiSearchProps } from './components/multi-search/EpMultiSearch
 export type { EpEnrichmentDropdownProps, EnrichmentOption } from './components/enrichment-dropdown/EpEnrichmentDropdown';
 export type { EpSignInProps } from './components/sign-in/EpSignIn';
 export type { EpThemeToggleProps } from './components/theme-toggle/EpThemeToggle';
+export type { EpColorRandomizerProps } from './components/color-randomizer/EpColorRandomizer';
+export type { EpInlineEditProps } from './components/inline-edit/EpInlineEdit';
+export type { EpLazyImageProps } from './components/lazy-image/EpLazyImage';

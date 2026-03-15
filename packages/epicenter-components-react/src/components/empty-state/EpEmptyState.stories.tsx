@@ -1,9 +1,11 @@
 import { EpEmptyState, EpButton } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { paddedBg } from '../../../storybook/helpers/decorators'
 
 const meta: Meta<typeof EpEmptyState> = {
   title: 'Components/EmptyState',
   component: EpEmptyState,
+  decorators: [paddedBg],
   parameters: {
     layout: 'centered'
   },

@@ -1,9 +1,11 @@
 import { EpCodeView } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { surfaceOverflow } from '../../../storybook/helpers/decorators'
 
 const meta: Meta<typeof EpCodeView> = {
   title: 'Components/CodeView',
   component: EpCodeView,
+  decorators: [surfaceOverflow],
   parameters: {
     layout: 'padded'
   },

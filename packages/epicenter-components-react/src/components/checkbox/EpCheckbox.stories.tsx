@@ -1,10 +1,12 @@
 import { EpCheckbox } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useState } from 'react';
+import { paddedSurface } from '../../../storybook/helpers/decorators';
 
 const meta: Meta<typeof EpCheckbox> = {
   title: 'Components/Checkbox',
   component: EpCheckbox,
+  decorators: [paddedSurface],
   argTypes: {
     id: { table: { disable: true } },
     name: { table: { disable: true } },

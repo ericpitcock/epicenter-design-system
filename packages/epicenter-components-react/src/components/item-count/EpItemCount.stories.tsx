@@ -1,9 +1,11 @@
 import { EpItemCount } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { centeredSurface } from '../../../storybook/helpers/decorators';
 
 const meta: Meta<typeof EpItemCount> = {
   title: 'Components/ItemCount',
   component: EpItemCount,
+  decorators: [centeredSurface],
   argTypes: {
     count: {
       name: 'Count',

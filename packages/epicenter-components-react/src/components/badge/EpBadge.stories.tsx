@@ -1,6 +1,7 @@
 import { EpBadge } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
+import { centeredSurface } from '../../../storybook/helpers/decorators';
 
 type BadgeStoryProps = {
   classes?: 'Primary' | 'Success' | 'Warning' | 'Danger' | 'Custom';
@@ -10,6 +11,7 @@ type BadgeStoryProps = {
 const meta: Meta<BadgeStoryProps> = {
   title: 'Components/Badge',
   component: EpBadge,
+  decorators: [centeredSurface],
   argTypes: {
     classes: {
       name: 'Style',

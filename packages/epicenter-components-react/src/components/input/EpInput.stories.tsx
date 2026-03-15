@@ -2,9 +2,13 @@ import { EpInput } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 
+import { componentNames, useIconComponent } from '../../../storybook/helpers/useIcons'
+import { paddedSurface } from '../../../storybook/helpers/decorators'
+
 const meta: Meta<typeof EpInput> = {
   title: 'Components/Input',
   component: EpInput,
+  decorators: [paddedSurface],
   parameters: {
     layout: 'centered'
   },
@@ -58,7 +62,19 @@ const meta: Meta<typeof EpInput> = {
     errorMessage: {
       control: 'text',
       description: 'Error message to display'
-    }
+    },
+    iconLeftName: {
+      name: 'Icon Left',
+      options: componentNames,
+      control: { type: 'select' },
+      table: { category: 'Icons' },
+    },
+    iconRightName: {
+      name: 'Icon Right',
+      options: componentNames,
+      control: { type: 'select' },
+      table: { category: 'Icons' },
+    },
   }
 }
 
@@ -66,14 +82,19 @@ export default meta
 type Story = StoryObj<typeof EpInput>
 
 export const Input: Story = {
-  render: (args) => {
+  render: (args: any) => {
     const [value, setValue] = useState('')
+    const IconLeft = useIconComponent(args.iconLeftName)
+    const IconRight = useIconComponent(args.iconRightName)
+
     return (
       <div style={{ width: '400px' }}>
         <EpInput
           {...args}
           value={value}
           onChange={setValue}
+          iconLeft={IconLeft ? <IconLeft /> : undefined}
+          iconRight={IconRight ? <IconRight /> : undefined}
         />
       </div>
     )
@@ -88,6 +109,8 @@ export const Input: Story = {
     autofocus: false,
     errorEnabled: true,
     error: false,
-    errorMessage: ''
+    errorMessage: '',
+    iconLeftName: 'None',
+    iconRightName: 'None',
   }
 }

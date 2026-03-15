@@ -13,6 +13,7 @@ const config = {
   ],
   addons: [
     '@storybook/addon-docs',
+    '@storybook/addon-a11y',
   ],
   staticDirs: ['../static'],
   framework: {
@@ -30,6 +31,27 @@ const config = {
         alias: {
           ...config.resolve?.alias,
           '@ericpitcock/epicenter-components-react': resolve(__dirname, '../packages/epicenter-components-react/src'),
+          '@sb': resolve(__dirname, '../packages/epicenter-components-react/storybook'),
+        },
+      },
+      optimizeDeps: {
+        ...config.optimizeDeps,
+        include: [
+          ...(config.optimizeDeps?.include ?? []),
+          'react',
+          'react-dom',
+          'react-router-dom',
+        ],
+      },
+      server: {
+        ...config.server,
+        fs: {
+          ...config.server?.fs,
+          strict: true,
+        },
+        watch: {
+          ...config.server?.watch,
+          ignored: ['**/node_modules/**', '**/.git/**', '**/dist/**'],
         },
       },
     }

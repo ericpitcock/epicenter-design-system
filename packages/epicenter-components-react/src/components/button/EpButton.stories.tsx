@@ -1,27 +1,40 @@
 import { EpButton } from '@ericpitcock/epicenter-components-react';
+import type { EpButtonProps } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 
-type ButtonStoryProps = {
+import { componentNames, useIconComponent } from '../../../storybook/helpers/useIcons';
+import { centeredBg } from '../../../storybook/helpers/decorators';
+
+type ButtonStoryProps = EpButtonProps & {
   classes?: string;
-  size?: 'small' | 'default' | 'large' | 'xlarge';
-  disabled?: boolean;
+  enabledIcons?: boolean;
   iconLeftName?: string;
   iconRightName?: string;
   borderWidth?: string;
-  borderRadius?: string;
+  borderRadius?: number;
   paddingBlock?: string;
   paddingInline?: string;
   fontWeight?: string;
   backgroundColor?: string;
   borderColor?: string;
-  color?: string;
+  textColor?: string;
   label?: string;
+  hoverBackgroundColor?: string;
+  hoverBorderColor?: string;
+  hoverTextColor?: string;
+  activeBackgroundColor?: string;
+  activeBorderColor?: string;
+  activeTextColor?: string;
+  disabledBackgroundColor?: string;
+  disabledBorderColor?: string;
+  disabledTextColor?: string;
 };
 
 const meta: Meta<ButtonStoryProps> = {
   title: 'Components/Button',
   component: EpButton,
+  decorators: [centeredBg],
   argTypes: {
     classes: {
       name: 'Style',
@@ -90,8 +103,9 @@ const meta: Meta<ButtonStoryProps> = {
     iconLeftName: {
       if: { arg: 'enabledIcons' },
       name: 'Icon Left',
+      options: componentNames,
       control: {
-        type: 'text',
+        type: 'select',
       },
       table: {
         category: 'Icons',
@@ -100,8 +114,9 @@ const meta: Meta<ButtonStoryProps> = {
     iconRightName: {
       if: { arg: 'enabledIcons' },
       name: 'Icon Right',
+      options: componentNames,
       control: {
-        type: 'text',
+        type: 'select',
       },
       table: {
         category: 'Icons',
@@ -240,32 +255,9 @@ const meta: Meta<ButtonStoryProps> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof EpButton>;
+type Story = StoryObj<ButtonStoryProps>;
 
-interface TemplateArgs {
-  activeBackgroundColor?: string;
-  activeBorderColor?: string;
-  activeTextColor?: string;
-  backgroundColor?: string;
-  borderColor?: string;
-  borderRadius?: number;
-  classes?: string;
-  disabled?: boolean;
-  disabledBackgroundColor?: string;
-  disabledBorderColor?: string;
-  disabledTextColor?: string;
-  enabledIcons?: boolean;
-  hoverBackgroundColor?: string;
-  hoverBorderColor?: string;
-  hoverTextColor?: string;
-  iconLeftName?: string;
-  iconRightName?: string;
-  label?: string;
-  size?: 'small' | 'default' | 'large' | 'xlarge';
-  textColor?: string;
-}
-
-const Template = (args: TemplateArgs) => {
+const Template = (args: ButtonStoryProps) => {
   const styles: CSSProperties = {
     '--ep-button-bg-color': args.backgroundColor,
     '--ep-button-border-color': args.borderColor,
@@ -295,21 +287,16 @@ const Template = (args: TemplateArgs) => {
 
   const variantClass = args.classes ? variantMapping[args.classes] || '' : '';
 
-  // Create icon placeholders if names are provided
-  const iconLeft = args.enabledIcons && args.iconLeftName && args.iconLeftName !== 'None' 
-    ? <span>{args.iconLeftName}</span>
-    : null;
-  const iconRight = args.enabledIcons && args.iconRightName && args.iconRightName !== 'None' 
-    ? <span>{args.iconRightName}</span>
-    : null;
+  const IconLeft = useIconComponent(args.enabledIcons ? args.iconLeftName : undefined);
+  const IconRight = useIconComponent(args.enabledIcons ? args.iconRightName : undefined);
 
   return (
     <EpButton
       size={args.size}
       disabled={args.disabled}
       className={variantClass}
-      iconLeft={iconLeft}
-      iconRight={iconRight}
+      iconLeft={IconLeft ? <IconLeft /> : undefined}
+      iconRight={IconRight ? <IconRight /> : undefined}
       style={styles}
       onClick={() => console.log('Button clicked!')}
     >
@@ -321,12 +308,12 @@ const Template = (args: TemplateArgs) => {
 export const Button: Story = {
   render: Template,
   args: {
-    label: '',
+    label: 'Download the internet',
     size: 'large',
     disabled: false,
     classes: 'Primary',
     enabledIcons: true,
-    iconLeftName: '⭕',
+    iconLeftName: 'CloudDownload',
     iconRightName: 'None',
     borderRadius: 3,
   },

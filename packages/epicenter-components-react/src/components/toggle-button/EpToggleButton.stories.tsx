@@ -2,6 +2,8 @@ import { EpToggleButton } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useState } from 'react';
 
+import { componentNames, useIconComponent } from '../../../storybook/helpers/useIcons';
+
 const meta: Meta<typeof EpToggleButton> = {
   title: 'Components/ToggleButton',
   component: EpToggleButton,
@@ -22,6 +24,12 @@ const meta: Meta<typeof EpToggleButton> = {
       control: { type: 'radio' },
       table: { category: 'Base Props' },
     },
+    iconName: {
+      name: 'Icon',
+      options: componentNames,
+      control: { type: 'select' },
+      table: { category: 'Icons' },
+    },
   },
 };
 
@@ -31,10 +39,12 @@ type Story = StoryObj<typeof EpToggleButton>;
 export const ToggleButton: Story = {
   render: (args: any) => {
     const [isActive, setIsActive] = useState(false);
+    const IconComponent = useIconComponent(args.iconName);
 
     return (
       <EpToggleButton
         {...args}
+        icon={IconComponent ? <IconComponent /> : undefined}
         isActive={isActive}
         onClick={() => setIsActive(!isActive)}
       />
@@ -45,5 +55,6 @@ export const ToggleButton: Story = {
     disabled: false,
     size: 'default',
     activeClass: 'button-variant-primary',
+    iconName: 'None',
   },
 };

@@ -1,6 +1,7 @@
 import { EpStatusIndicator } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
+import { centeredSurface } from '../../../storybook/helpers/decorators';
 
 type StatusIndicatorStoryProps = {
   pulse?: boolean;
@@ -10,6 +11,7 @@ type StatusIndicatorStoryProps = {
 const meta: Meta<StatusIndicatorStoryProps> = {
   title: 'Components/StatusIndicator',
   component: EpStatusIndicator,
+  decorators: [centeredSurface],
   argTypes: {
     pulse: {
       name: 'Pulse',

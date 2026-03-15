@@ -1,8 +1,8 @@
 import { EpFlex, EpInput, EpPagination, EpSelect } from '@ericpitcock/epicenter-components-react';
 import React, { useEffect, useMemo, useState } from 'react';
 
-import { getComponentName, iconsData } from './useIcons';
-
+import { getComponentName, iconsData } from '../helpers/useIcons';
+import '../../../storybook-shared/icon-browser.css'
 import '../../../epicenter-icons-react/base.scss';
 
 // Lazy glob import — modules are loaded on demand, not at startup
@@ -247,18 +247,18 @@ export const IconBrowserComponent: React.FC<IconBrowserComponentProps> = ({
       <div className="controls">
         <EpFlex className="justify-between align-center gap-30">
           <EpFlex className="gap-10">
-            <EpSelect
-              value={selectedCategory}
-              selectId="icon-category-select"
-              className="category-select"
-              options={categories}
-              size="xlarge"
-              onChange={(value) => handleCategoryChange(value as string)}
-            />
+            <div className="category-select">
+              <EpSelect
+                value={selectedCategory}
+                selectId="icon-category-select"
+                options={categories}
+                size="xlarge"
+                onChange={(value) => handleCategoryChange(value as string)}
+              />
+            </div>
             <EpInput
               value={search}
               placeholder="Search icons by name, tags, or category..."
-              className={`search-input ${search ? 'search-input--active' : ''}`}
               size="xlarge"
               clearable
               onChange={(value) => handleSearchChange(value as string)}
@@ -272,7 +272,8 @@ export const IconBrowserComponent: React.FC<IconBrowserComponentProps> = ({
       <div className="icon-grid">
         {paginatedIcons.map((icon: IconData) => {
           const componentName = getComponentName(icon.name);
-          const IconComponent = loadedIcons[componentName] || NotFoundIcon;
+          const isLoaded = componentName in loadedIcons;
+          const IconComponent = isLoaded ? loadedIcons[componentName] : null;
 
           return (
             <div
@@ -281,7 +282,7 @@ export const IconBrowserComponent: React.FC<IconBrowserComponentProps> = ({
               onClick={() => copyIconName(icon.name)}
             >
               <div className="icon-display">
-                <IconComponent style={iconStyle} />
+                {IconComponent ? <IconComponent style={iconStyle} /> : null}
               </div>
               <div className="icon-name">{componentName}</div>
               <div className="icon-category">{icon.category}</div>
@@ -303,150 +304,6 @@ export const IconBrowserComponent: React.FC<IconBrowserComponentProps> = ({
           onResultsPerPageChange={handleResultsPerPageChange}
         />
       )}
-      <style>{`
-        .icon-browser {
-          display: grid;
-          grid-template-rows: 100px 1fr;
-          width: 100vw;
-          height: 100vh;
-          overflow: hidden;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          background: var(--interface-bg);
-        }
-
-        .icon-browser:has(.ep-pagination) {
-          grid-template-rows: 100px 1fr 100px;
-        }
-
-        .controls {
-          padding-inline: 30px;
-          background: var(--interface-surface);
-          border-bottom: 1px solid var(--border-color);
-          display: flex;
-          gap: 16px;
-          align-items: center;
-          flex-wrap: wrap;
-        }
-
-        .controls .ep-flex {
-          flex: 1;
-        }
-
-        .search-input {
-          flex: 1;
-          min-width: 300px;
-          padding: 8px 12px;
-          border: 1px solid var(--border-color);
-          border-radius: 4px;
-          font-size: 14px;
-          background: var(--interface-foreground);
-        }
-
-        .search-input:focus {
-          outline: none;
-          border-color: #007bff;
-          box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-        }
-
-        .category-select {
-          flex: 0 0 200px;
-        }
-
-        .icon-count {
-          color: var(--text-color--subtle);
-        }
-
-        .icon-grid {
-          overflow-y: auto;
-          padding: 30px 30px 25vh 30px;
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-          grid-auto-rows: max-content;
-          gap: 16px;
-          align-content: start;
-        }
-
-        .icon-card {
-          position: relative;
-          background: var(--interface-surface);
-          border: 1px solid var(--border-color);
-          border-radius: var(--border-radius--large);
-          padding: 16px;
-          text-align: center;
-          cursor: pointer;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: fit-content;
-          min-height: 120px;
-          max-height: 180px;
-        }
-
-        .icon-card:hover {
-          border-color: #007bff;
-        }
-
-        .copied-indicator {
-          position: absolute;
-          top: 8px;
-          right: 8px;
-          background: hsl(160, 40%, 45%);
-          color: hsl(160, 40%, 10%);
-          font-size: 12px;
-          padding: 4px 8px;
-          border-radius: 3px;
-          font-weight: 500;
-        }
-
-        .icon-name {
-          font-weight: 500;
-          line-height: 1.3;
-          width: 100%;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          margin-top: 8px;
-          color: var(--text-color--loud);
-        }
-
-        .icon-category {
-          font-size: 12px;
-          color: var(--text-color--subtle);
-          font-weight: 500;
-          word-break: break-all;
-          line-height: 1.3;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          margin-top: 4px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        .ep-pagination {
-          padding: 2rem 3rem;
-          background: var(--interface-surface);
-          border-top: 1px solid var(--border-color);
-        }
-
-        @media (max-width: 768px) {
-          .icon-grid {
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 12px;
-            padding: 16px;
-          }
-
-          .controls {
-            flex-direction: column;
-            align-items: stretch;
-          }
-
-          .search-input {
-            min-width: auto;
-          }
-        }
-      `}</style>
     </div>
   );
 };

@@ -1,10 +1,12 @@
 import { EpFieldset } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
+import { paddedSurface } from '../../../storybook/helpers/decorators';
 
 const meta: Meta<typeof EpFieldset> = {
   title: 'Components/Fieldset',
   component: EpFieldset,
+  decorators: [paddedSurface],
   argTypes: {
     label: {
       name: 'Label',
