@@ -147,9 +147,15 @@
       </div>
       <div class="copy-block">
         <h1>Epicenter Design System</h1>
-        <p class="tagline">{ <a href="https://vue.epicenter.design">Vue</a>, <a href="https://react.epicenter.design">React</a> } = componentsForApps</p>
+        <p class="tagline">{ <a id="vue-link" href="https://vue.epicenter.design">Vue</a>, <a id="react-link" href="https://react.epicenter.design">React</a> } = componentsForApps</p>
       </div>
     </div>
   </div>
+  <script>
+    if (location.hostname.endsWith('.test')) {
+      document.getElementById('vue-link').href = 'https://vue.epicenter.test';
+      document.getElementById('react-link').href = 'https://react.epicenter.test';
+    }
+  </script>
 </body>
 </html>
