@@ -17,7 +17,7 @@
     },
     {
       props: {
-        href: 'https://docs.epicenter.design',
+        href: '/docs',
         label: 'Docs',
         size: 'large',
       },

@@ -4,6 +4,7 @@ import sidebarConfig from './sidebarConfig.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/docs/',
   title: 'Epicenter Docs',
   description: '',
   themeConfig: {

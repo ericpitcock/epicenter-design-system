@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epicenter Design System</title>
+  <style>
+    @font-face {
+      font-family: 'InterVariable';
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+      src: url('fonts/InterVariable.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Fira Code';
+      font-weight: 300 700;
+      font-style: normal;
+      font-display: swap;
+      src: url('fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      font-size: 62.5%;
+    }
+
+    body {
+      font-family: 'InterVariable', sans-serif;
+      background-color: #1c1c1c;
+      color: #e6e6e6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .intro {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 6rem;
+      background:
+        radial-gradient(circle 200px at -5% -10%, hsl(60, 100%, 50%), transparent),
+        linear-gradient(130deg, hsl(164, 93%, 50%) 0%, oklch(60% 0.2 257deg) 79%);
+      overflow: hidden;
+    }
+
+    .logo-container {
+      position: relative;
+      z-index: 1;
+      width: 8rem;
+    }
+
+    .logo-container svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .logo-container polygon,
+    .logo-container path {
+      stroke: hsl(0, 0%, 0%);
+      stroke-width: 4;
+      stroke-linejoin: round;
+      stroke-miterlimit: 5;
+    }
+
+    .logo-shadow {
+      fill: hsl(0, 0%, 0%);
+    }
+
+    .logo-highlight {
+      fill: hsl(0, 0%, 100%);
+    }
+
+    .logo-face {
+      fill: #fff16c;
+    }
+
+    .copy-block {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 1;
+    }
+
+    h1 {
+      margin-top: 3rem;
+      font-size: 2.6rem;
+      font-variation-settings: 'wght' 300;
+      color: hsl(0, 0%, 12%);
+    }
+
+    .tagline {
+      font-family: 'Fira Code', monospace;
+      font-variation-settings: 'wght' 430;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: hsl(0, 0%, 12%);
+    }
+
+    .tagline a {
+      color: hsl(0, 0%, 12%);
+      text-decoration: underline;
+      text-underline-offset: 0.3rem;
+    }
+
+    .tagline a:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="intro">
+    <div class="hero">
+      <div class="logo-container">
+        <svg x="0px" y="0px" viewBox="0 0 160.7 215.87">
+          <path
+            class="logo-shadow"
+            d="m78.95,214.37L1.5,195.34l46.81-26.1,94.12,26.88-63.47,18.25ZM112.03,52.88l-3.65,25.81,23.54,9.59,23.88-16.21-43.77-19.19Zm-12.77,90.43l13.23,4.38,34.69-17.48-43.82-16-4.1,29.1Z"
+          />
+          <polygon
+            class="logo-highlight"
+            points="48.31 169.24 77.31 1.5 28.45 61.12 1.5 195.34 48.31 169.24"
+          />
+          <polygon
+            class="logo-face"
+            points="112.03 52.88 108.38 78.68 150.93 96.02 147.19 130.2 103.37 114.2 99.26 143.3 146.44 158.91 142.43 196.12 48.31 169.24 77.31 1.5 159.2 40.63 155.8 72.06 112.03 52.88"
+          />
+        </svg>
+      </div>
+      <div class="copy-block">
+        <h1>Epicenter Design System</h1>
+        <p class="tagline">{ <a href="https://vue.epicenter.design">Vue</a>, <a href="https://react.epicenter.design">React</a> } = componentsForApps</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
