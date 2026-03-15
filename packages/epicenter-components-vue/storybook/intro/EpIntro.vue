@@ -34,10 +34,10 @@
       </div>
       <div class="copy-block">
         <h1 class="font-size--jumbo">
-          Epicenter Design System
+          Epicenter Design System: Vue
         </h1>
         <p class="monospace">
-          { Vue, React } = componentsForApps
+          { Vue } = componentsForApps
         </p>
         <ep-flex class="gap-10">
           <ep-button

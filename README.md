@@ -2,12 +2,14 @@
 // Epicenter Design System
 
 { Vue, React } = componentsForApps
+
+'Vue and React components, styles, and icons for web apps.'
 ```
+## Vue
+[Vue Storybook](https://vue.epicenter.design)
 
-## Epicenter Design System
+[Vue Docs](https://vue.epicenter.design/docs)
 
-A collection of Vue 3 (and soon, React) components and styles for web apps.
+## React
 
-[Storybook](https://epicenter.design)
-
-[Docs](https://docs.epicenter.design)
+[React Storybook](https://react.epicenter.design)
