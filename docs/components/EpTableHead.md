@@ -35,7 +35,6 @@ This component does not use events.
 
   const {
     cellWidths = [],
-    fixedHeader = false,
     showActionsMenu = false,
   } = defineProps<EpTableHeadProps>()
 </script>

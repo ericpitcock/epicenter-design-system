@@ -1,7 +1,8 @@
 import fs from 'fs'
-import { globSync } from 'glob'
 import path from 'path'
 import { fileURLToPath } from 'url'
+
+import { globSync } from 'glob'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -23,6 +24,7 @@ const sidebarItems = vueFiles
     }
   })
   .filter(Boolean) // Remove null values
+  .sort((a, b) => a.text.localeCompare(b.text))
 
 // Sidebar configuration
 const sidebarConfig = {

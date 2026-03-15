@@ -28,7 +28,7 @@ This component does not use events, slots.
     styles?: string[]
   }
 
-  const { row, column, styles = [] } = defineProps<EpTableCellProps>()
+  const { row, column } = defineProps<EpTableCellProps>()
 
   const cellContent = ref<unknown>('')
 

@@ -113,13 +113,15 @@
 </script>
 
 <template>
-  <div :class="[
-    'ep-inline-edit',
-    {
-      'ep-inline-edit--editing': isEditing,
-      'ep-inline-edit--disabled': disabled,
-    }
-  ]">
+  <div
+    :class="[
+      'ep-inline-edit',
+      {
+        'ep-inline-edit--editing': isEditing,
+        'ep-inline-edit--disabled': disabled,
+      }
+    ]"
+  >
     <span
       v-if="$slots['icon-left']"
       class="ep-inline-edit__icon"
