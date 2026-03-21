@@ -1,0 +1,74 @@
+:root {
+  --intro-hero-link-color: var(--text-color--inverse);
+}
+
+.light-theme {
+  --intro-hero-link-color: var(--text-color);
+}
+
+.intro {
+  max-width: 120rem;
+  height: 100%;
+  padding: 3rem;
+
+  .hero {
+    position: relative;
+    height: 100%;
+    padding: 6rem 6rem 4rem 6rem;
+    background: var(--gradient-bg);
+    color: hsl(var(--gray-440));
+    border-radius: var(--border-radius--large);
+    overflow: hidden;
+
+    .copy-block {
+      position: relative;
+      z-index: var(--z-index--overlap);
+
+      p {
+        font-variation-settings: "wght" 430;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .logo-container {
+      position: relative;
+      z-index: var(--z-index--overlap);
+      width: 8rem;
+    }
+
+    h1 {
+      position: relative;
+      z-index: var(--z-index--overlap);
+      margin-top: 3rem;
+      color: var(--text-color--inverse);
+
+      .light-theme & {
+        color: var(--text-color);
+      }
+    }
+
+    .hero-link {
+      color: var(--intro-hero-link-color);
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--gray-440);
+        text-decoration: none;
+      }
+    }
+
+    .hero-btn {
+      --ep-button-bg-color: #242424;
+      --ep-button-border-color: #242424;
+      --ep-button-text-color: #e6e6e6;
+      --ep-button-hover-bg-color: black;
+      --ep-button-hover-border-color: black;
+      --ep-button-hover-text-color: #e6e6e6;
+    }
+
+    .hero-icon {
+      --ep-icon-width: 2rem;
+      --ep-icon-stroke-width: 1.5;
+    }
+  }
+}
