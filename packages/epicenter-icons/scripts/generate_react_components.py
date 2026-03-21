@@ -118,10 +118,10 @@ def create_react_component(svg_content: str, component_name: str) -> str:
 
     jsx_template = f"""import {{ memo, forwardRef }} from 'react';
 
-export const {component_name} = memo(forwardRef((props, ref) => (
+export const {component_name} = memo(forwardRef(({{ className, ...props }}, ref) => (
   <svg
     ref={{ref}}
-    className="ep-icon"
+    className={{className ? `ep-icon ${{className}}` : 'ep-icon'}}
     viewBox="{viewbox}"
     aria-hidden="true"
     focusable="false"

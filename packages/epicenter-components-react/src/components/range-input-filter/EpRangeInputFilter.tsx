@@ -24,6 +24,7 @@ export const EpRangeInputFilter = forwardRef<
       value,
       onChange,
       className = '',
+      style,
       ...props
     },
     ref
@@ -37,7 +38,7 @@ export const EpRangeInputFilter = forwardRef<
     };
 
     return (
-      <div className={`ep-range-input-filter ${className}`.trim()}>
+      <div className={`ep-range-input-filter ${className}`.trim()} style={style as React.CSSProperties}>
         <input
           ref={ref}
           type="range"

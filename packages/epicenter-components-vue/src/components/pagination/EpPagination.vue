@@ -105,14 +105,15 @@
           v-if="resultsPerPage !== null"
           class="justify-end align-center gap-10"
         >
-          <ep-select
-            v-model="localResultsPerPage"
-            select-id="resultsPerPage"
-            :options="resultsPerPageOptions"
-            placeholder=""
-            style="--ep-input-width: fit-content;"
-            @update:model-value="onResultsPerPageChange"
-          />
+          <div style="--ep-input-width: fit-content;">
+            <ep-select
+              v-model="localResultsPerPage"
+              select-id="resultsPerPage"
+              :options="resultsPerPageOptions"
+              placeholder=""
+              @update:model-value="onResultsPerPageChange"
+            />
+          </div>
         </ep-flex>
       </slot>
       <ep-flex class="align-center gap-10">

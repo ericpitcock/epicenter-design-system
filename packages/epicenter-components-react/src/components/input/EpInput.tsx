@@ -2,7 +2,7 @@ import React, { forwardRef, ReactNode, useId, KeyboardEvent, FocusEvent, ChangeE
 
 import { EpInputStyler } from '../input-styler/EpInputStyler'
 
-export interface EpInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
+export interface EpInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange' | 'onFocus' | 'onBlur'> {
   /**
    * If true, automatically focuses the input on mount.
    * @default false

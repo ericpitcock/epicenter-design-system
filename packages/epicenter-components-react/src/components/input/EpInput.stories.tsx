@@ -1,11 +1,16 @@
 import { EpInput } from '@ericpitcock/epicenter-components-react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
-import { componentNames, useIconComponent } from '../../../storybook/helpers/useIcons'
 import { paddedSurface } from '../../../storybook/helpers/decorators'
+import { componentNames, useIconComponent } from '../../../storybook/helpers/useIcons'
 
-const meta: Meta<typeof EpInput> = {
+type InputStoryArgs = React.ComponentProps<typeof EpInput> & {
+  iconLeftName: string
+  iconRightName: string
+}
+
+const meta: Meta<InputStoryArgs> = {
   title: 'Components/Input',
   component: EpInput,
   decorators: [paddedSurface],
@@ -79,18 +84,19 @@ const meta: Meta<typeof EpInput> = {
 }
 
 export default meta
-type Story = StoryObj<typeof EpInput>
+type Story = StoryObj<InputStoryArgs>
 
 export const Input: Story = {
   render: (args: any) => {
     const [value, setValue] = useState('')
-    const IconLeft = useIconComponent(args.iconLeftName)
-    const IconRight = useIconComponent(args.iconRightName)
+    const { iconLeftName, iconRightName, ...inputProps } = args
+    const IconLeft = useIconComponent(iconLeftName)
+    const IconRight = useIconComponent(iconRightName)
 
     return (
       <div style={{ width: '400px' }}>
         <EpInput
-          {...args}
+          {...inputProps}
           value={value}
           onChange={setValue}
           iconLeft={IconLeft ? <IconLeft /> : undefined}

@@ -41,6 +41,10 @@
 
   const modelValue = defineModel<string | number>({ default: '' })
 
+  defineOptions({
+    inheritAttrs: false,
+  })
+
   const selectClasses = computed(() => ({
     [`ep-select--${size}`]: size !== 'default',
     'ep-select--disabled': disabled,
@@ -83,6 +87,7 @@
       :disabled="disabled"
       :autofocus="autofocus"
       :required="required"
+      v-bind="$attrs"
       @blur="onBlur"
       @focus="onFocus"
       @change="onChange"

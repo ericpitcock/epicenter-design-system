@@ -34,9 +34,9 @@ export const getComponentName = (iconName: string): string => {
 
   // Handle special characters
   name = name
-    .replace(/Colon/g, 'Colon')
-    .replace(/Dot/g, 'Dot')
-    .replace(/Plus/g, 'Plus');
+    .replace(/:/g, 'Colon')
+    .replace(/\./g, 'Dot')
+    .replace(/\+/g, 'Plus');
 
   return name;
 };

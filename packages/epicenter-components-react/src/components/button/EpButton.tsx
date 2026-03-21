@@ -1,14 +1,13 @@
-import { useMemo, forwardRef, ReactNode, CSSProperties, MouseEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { type ReactNode, type ElementType, type Ref, type MouseEvent, type HTMLAttributes } from 'react';
 
 type ButtonSize = 'small' | 'default' | 'large' | 'xlarge';
 type ButtonType = 'button' | 'submit';
 
-export interface EpButtonProps {
-  /** Additional props */
-  [key: string]: any;
+export type EpButtonProps = {
   /** The aria-label of the button */
   ariaLabel?: string;
+  /** Custom component to render as (e.g., a router Link component) */
+  as?: ElementType;
   /** Button content */
   children?: ReactNode;
   /** Additional CSS classes */
@@ -23,20 +22,21 @@ export interface EpButtonProps {
   iconRight?: ReactNode;
   /** Click handler */
   onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  /** Ref forwarded to the root element */
+  ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
   /** The size of the button */
   size?: ButtonSize;
-  /** Inline styles */
-  style?: CSSProperties;
-  /** Router link destination (renders as Link when provided) */
+  /** Destination path (used with the `as` prop for router links) */
   to?: string;
   /** The type of the button (only applies when rendered as button element) */
   type?: ButtonType;
-}
+} & Omit<HTMLAttributes<HTMLElement>, 'type'>;
 
 /**
  * EpButton - A versatile button component that can render as a button, link, or router link
  */
-export const EpButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, EpButtonProps>(({
+export function EpButton({
+  as,
   size = 'default',
   ariaLabel,
   disabled = false,
@@ -47,68 +47,42 @@ export const EpButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, EpButt
   iconRight,
   children,
   className = '',
+  onClick,
+  ref,
   ...rest
-}, ref) => {
-  // Determine the element type based on props (matching Vue logic)
-  const Element = useMemo(() => {
-    if (to) return Link;
-    if (href) return 'a';
-    return 'button';
-  }, [to, href]) as any;
+}: EpButtonProps) {
+  const Element: ElementType = as ?? (href ? 'a' : 'button');
 
-  // Compute dynamic classes (matching Vue computed classes)
-  const computedClasses = useMemo(() => {
-    const classes = ['ep-button'];
-    
-    if (size !== 'default') {
-      classes.push(`ep-button--${size}`);
-    }
-    
-    if (disabled) {
-      classes.push('ep-button--disabled');
-    }
-    
-    if (className) {
-      classes.push(className);
-    }
-    
-    return classes.join(' ');
-  }, [size, disabled, className]);
+  const computedClasses = [
+    'ep-button',
+    size !== 'default' && `ep-button--${size}`,
+    disabled && 'ep-button--disabled',
+    className,
+  ].filter(Boolean).join(' ');
 
-  // Props specific to different element types
-  const elementProps: any = {
+  const handleClick = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    if (disabled && Element !== 'button') {
+      e.preventDefault();
+      return;
+    }
+    onClick?.(e);
+  };
+
+  const elementProps: Record<string, unknown> = {
     className: computedClasses,
     ref,
+    onClick: handleClick,
+    'aria-label': ariaLabel || undefined,
     ...rest,
   };
 
-  // Add button-specific props
   if (Element === 'button') {
     elementProps.type = type;
     elementProps.disabled = disabled;
-  }
-
-  // Add link-specific props
-  if (Element === 'a') {
-    elementProps.href = href;
-    if (disabled) {
-      elementProps['aria-disabled'] = true;
-      elementProps.onClick = (e: MouseEvent<HTMLAnchorElement>) => e.preventDefault();
-    }
-  }
-
-  // Add router-link-specific props
-  if (Element === Link) {
-    elementProps.to = to;
-    if (disabled) {
-      elementProps['aria-disabled'] = true;
-      elementProps.onClick = (e: MouseEvent<HTMLAnchorElement>) => e.preventDefault();
-    }
-  }
-
-  // Add aria-label if provided
-  if (ariaLabel) {
-    elementProps['aria-label'] = ariaLabel;
+  } else {
+    if (href) elementProps.href = href;
+    if (to) elementProps.to = to;
+    if (disabled) elementProps['aria-disabled'] = true;
   }
 
   return (
@@ -118,7 +92,9 @@ export const EpButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, EpButt
           {iconLeft}
         </span>
       )}
-      {children}
+      {children && (
+        <span className="ep-button__label">{children}</span>
+      )}
       {iconRight && (
         <span className="ep-button__icon ep-button__icon--right">
           {iconRight}
@@ -126,6 +102,4 @@ export const EpButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, EpButt
       )}
     </Element>
   );
-});
-
-EpButton.displayName = 'EpButton';
+}

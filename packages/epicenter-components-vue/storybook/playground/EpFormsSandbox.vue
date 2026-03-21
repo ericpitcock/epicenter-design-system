@@ -556,50 +556,52 @@
                 @blur="validateField('city')"
               />
               <ep-flex class="flex-row gap-10">
-                <ep-select
-                  v-model="model.country"
-                  :options="[
-                    { value: 'Canada', label: 'Canada' },
-                    { value: 'USA', label: 'USA' },
-                    { value: 'Mexico', label: 'Mexico' }
-                  ]"
-                  :label="t.country"
-                  size="xlarge"
-                  :disabled="formDisabled"
-                  select-id="country"
-                  :placeholder="t.countryPlaceholder"
-                  style="flex: 0 1 auto;"
-                  error-enabled
-                  :error="errors.country"
-                  :error-message="errors.country ? t.errorRequired : ''"
-                  :aria-required="isDelivery ? 'true' : 'false'"
-                  :aria-invalid="errors.country ? 'true' : 'false'"
-                  autocomplete="country-name"
-                  @change="onInput('country')"
-                  @blur="validateField('country')"
-                />
-                <ep-select
-                  v-model="model.province"
-                  :options="[
-                    { value: 'Quebec', label: 'Quebec' },
-                    { value: 'Ontario', label: 'Ontario' },
-                    { value: 'BC', label: 'British Columbia' }
-                  ]"
-                  :label="t.province"
-                  size="xlarge"
-                  :disabled="formDisabled"
-                  select-id="province"
-                  :placeholder="t.provincePlaceholder"
-                  style="flex: 0 1 auto;"
-                  error-enabled
-                  :error="errors.province"
-                  :error-message="errors.province ? t.errorRequired : ''"
-                  :aria-required="isDelivery ? 'true' : 'false'"
-                  :aria-invalid="errors.province ? 'true' : 'false'"
-                  autocomplete="address-level1"
-                  @change="onInput('province')"
-                  @blur="validateField('province')"
-                />
+                <div style="flex: 0 1 auto;">
+                  <ep-select
+                    v-model="model.country"
+                    :options="[
+                      { value: 'Canada', label: 'Canada' },
+                      { value: 'USA', label: 'USA' },
+                      { value: 'Mexico', label: 'Mexico' }
+                    ]"
+                    :label="t.country"
+                    size="xlarge"
+                    :disabled="formDisabled"
+                    select-id="country"
+                    :placeholder="t.countryPlaceholder"
+                    error-enabled
+                    :error="errors.country"
+                    :error-message="errors.country ? t.errorRequired : ''"
+                    :aria-required="isDelivery ? 'true' : 'false'"
+                    :aria-invalid="errors.country ? 'true' : 'false'"
+                    autocomplete="country-name"
+                    @change="onInput('country')"
+                    @blur="validateField('country')"
+                  />
+                </div>
+                <div style="flex: 0 1 auto;">
+                  <ep-select
+                    v-model="model.province"
+                    :options="[
+                      { value: 'Quebec', label: 'Quebec' },
+                      { value: 'Ontario', label: 'Ontario' },
+                      { value: 'BC', label: 'British Columbia' }
+                    ]"
+                    :label="t.province"
+                    size="xlarge"
+                    :disabled="formDisabled"
+                    select-id="province"
+                    :placeholder="t.provincePlaceholder"
+                    error-enabled
+                    :error="errors.province"
+                    :error-message="errors.province ? t.errorRequired : ''"
+                    :aria-required="isDelivery ? 'true' : 'false'"
+                    :aria-invalid="errors.province ? 'true' : 'false'"
+                    autocomplete="address-level1"
+                    @change="onInput('province')"
+                    @blur="validateField('province')"
+                  />
+                </div>
                 <ep-input
                   v-model="model.postalCode"
                   :label="t.postalCode"
@@ -655,15 +657,16 @@
                     </span>
                   </div>
                 </ep-checkbox>
-                <ep-select
-                  v-model="taco.quantity"
-                  :options="quantityOptions"
-                  :disabled="formDisabled || !taco.checked"
-                  :select-id="'quantity-' + taco.id"
-                  placeholder="Qty"
-                  style="flex: 0 0 60px;"
-                  :aria-label="'Quantity for ' + t[taco.id] + ' taco'"
-                />
+                <div style="flex: 0 0 60px;">
+                  <ep-select
+                    v-model="taco.quantity"
+                    :options="quantityOptions"
+                    :disabled="formDisabled || !taco.checked"
+                    :select-id="'quantity-' + taco.id"
+                    placeholder="Qty"
+                    :aria-label="'Quantity for ' + t[taco.id] + ' taco'"
+                  />
+                </div>
               </ep-flex>
             </ep-flex>
           </ep-fieldset>
@@ -694,15 +697,16 @@
                     </span>
                   </div>
                 </ep-checkbox>
-                <ep-select
-                  v-model="sauce.quantity"
-                  :options="quantityOptions"
-                  :disabled="formDisabled || !sauce.checked"
-                  :select-id="'quantity-' + sauce.id"
-                  placeholder="Qty"
-                  style="flex: 0 0 60px;"
-                  :aria-label="'Quantity for ' + (sauce.id === 'fire' ? t.veryHot : t[sauce.id]) + ' sauce'"
-                />
+                <div style="flex: 0 0 60px;">
+                  <ep-select
+                    v-model="sauce.quantity"
+                    :options="quantityOptions"
+                    :disabled="formDisabled || !sauce.checked"
+                    :select-id="'quantity-' + sauce.id"
+                    placeholder="Qty"
+                    :aria-label="'Quantity for ' + (sauce.id === 'fire' ? t.veryHot : t[sauce.id]) + ' sauce'"
+                  />
+                </div>
               </ep-flex>
             </ep-flex>
           </ep-fieldset>
@@ -733,15 +737,16 @@
                     </span>
                   </div>
                 </ep-checkbox>
-                <ep-select
-                  v-model="side.quantity"
-                  :options="quantityOptions"
-                  :disabled="formDisabled || !side.checked"
-                  :select-id="'quantity-' + side.id"
-                  placeholder="Qty"
-                  style="flex: 0 0 60px;"
-                  :aria-label="'Quantity for ' + (side.id === 'chips' ? t.chipsAndSalsa : t[side.id])"
-                />
+                <div style="flex: 0 0 60px;">
+                  <ep-select
+                    v-model="side.quantity"
+                    :options="quantityOptions"
+                    :disabled="formDisabled || !side.checked"
+                    :select-id="'quantity-' + side.id"
+                    placeholder="Qty"
+                    :aria-label="'Quantity for ' + (side.id === 'chips' ? t.chipsAndSalsa : t[side.id])"
+                  />
+                </div>
               </ep-flex>
             </ep-flex>
           </ep-fieldset>

@@ -95,13 +95,14 @@ export const EpTablePagination: React.FC<EpTablePaginationProps> = ({
       <EpFooter rightGap="1rem" leftFlex="0 1 40rem">
         <EpFlex className="justify-end align-center gap-10 text--overflow-hidden" slot="left">
           Results per page
-          <EpSelect
-            value={resultsPerPage}
-            selectId="resultsPerPage"
-            options={resultsPerPageOptions}
-            width="7.5rem"
-            onChange={onResultsPerPageChange}
-          />
+          <div style={{ '--ep-input-width': '7.5rem' } as React.CSSProperties}>
+            <EpSelect
+              value={resultsPerPage}
+              selectId="resultsPerPage"
+              options={resultsPerPageOptions}
+              onChange={onResultsPerPageChange}
+            />
+          </div>
         </EpFlex>
         <EpFlex slot="right">
           <EpButton

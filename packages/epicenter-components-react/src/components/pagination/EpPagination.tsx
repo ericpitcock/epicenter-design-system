@@ -1,3 +1,5 @@
+import { ArrowLeft01 } from '@ericpitcock/epicenter-icons-react/ArrowLeft01.jsx'
+import { ArrowRight01 } from '@ericpitcock/epicenter-icons-react/ArrowRight01.jsx'
 import React, { ReactNode, useMemo } from 'react'
 
 import { EpButton } from '../button/EpButton'
@@ -129,17 +131,8 @@ export const EpPagination: React.FC<EpPaginationProps> = ({
     }
   }
 
-  const defaultIconPrev = iconPrev || (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-
-  const defaultIconNext = iconNext || (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
+  const defaultIconPrev = iconPrev || <ArrowLeft01 />
+  const defaultIconNext = iconNext || <ArrowRight01 />
 
   return (
     <div className="ep-pagination">
@@ -147,14 +140,15 @@ export const EpPagination: React.FC<EpPaginationProps> = ({
         {leftContent || (
           resultsPerPage !== null ? (
             <EpFlex className="justify-end align-center gap-10">
-              <EpSelect
-                selectId="resultsPerPage"
-                options={resultsPerPageOptions}
-                value={resultsPerPage}
-                onChange={(value) => onResultsPerPageChange?.(Number(value))}
-                placeholder=""
-                style={{ '--ep-input-width': 'fit-content' } as React.CSSProperties}
-              />
+              <div style={{ '--ep-input-width': 'fit-content' } as React.CSSProperties}>
+                <EpSelect
+                  selectId="resultsPerPage"
+                  options={resultsPerPageOptions}
+                  value={resultsPerPage}
+                  onChange={(value) => onResultsPerPageChange?.(Number(value))}
+                  placeholder=""
+                />
+              </div>
             </EpFlex>
           ) : null
         )}

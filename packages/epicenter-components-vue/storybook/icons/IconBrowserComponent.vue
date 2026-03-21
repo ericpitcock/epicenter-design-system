@@ -214,14 +214,15 @@
     <div class="controls">
       <ep-flex class="justify-between align-center gap-30">
         <ep-flex class="gap-10">
-          <ep-select
-            v-model="selectedCategory"
-            select-id="icon-category-select"
-            class="category-select"
-            :options="categories"
-            size="xlarge"
-            @change="onCategoryChange"
-          />
+          <div class="category-select">
+            <ep-select
+              v-model="selectedCategory"
+              select-id="icon-category-select"
+              :options="categories"
+              size="xlarge"
+              @change="onCategoryChange"
+            />
+          </div>
           <ep-input
             v-model="search"
             placeholder="Search icons by name, tags, or category..."

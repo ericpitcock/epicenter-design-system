@@ -45,6 +45,7 @@ export const EpDatePicker = forwardRef<EpDatePickerRef, EpDatePickerProps>(
       enableCloseOnSelect = true,
       inputProps = {},
       className = '',
+      style,
       ...props
     },
     ref
@@ -132,7 +133,7 @@ export const EpDatePicker = forwardRef<EpDatePickerRef, EpDatePickerProps>(
     };
 
     return (
-      <div className={`ep-date-picker ${className}`.trim()}>
+      <div className={`ep-date-picker ${className}`.trim()} style={style}>
         <input
           ref={inputRef}
           type="text"

@@ -230,7 +230,7 @@ export const Input = args => ({
     }
   },
   template: `
-    <div style="max-width: 400px;">
+    <div style="width: 400px;">
       <ep-input
         v-bind="args"
         :style="styles"

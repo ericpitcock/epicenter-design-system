@@ -21,6 +21,7 @@ export const EpDatePickerFilter = forwardRef<
       value = '',
       onChange,
       className = '',
+      style,
       ...props
     },
     ref
@@ -31,7 +32,7 @@ export const EpDatePickerFilter = forwardRef<
     };
 
     return (
-      <div className={`ep-date-picker-filter ${className}`.trim()}>
+      <div className={`ep-date-picker-filter ${className}`.trim()} style={style as React.CSSProperties}>
         <input
           ref={ref}
           type="date"

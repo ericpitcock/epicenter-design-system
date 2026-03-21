@@ -1,6 +1,7 @@
-import { exec } from 'child_process'
+import { execFile } from 'child_process'
 import fs from 'fs'
 import path, { join, resolve } from 'path'
+import process from 'process'
 import { fileURLToPath } from 'url'
 import { promisify } from 'util'
 
@@ -9,7 +10,7 @@ import glob from 'glob'
 import yaml from 'js-yaml'
 
 const { ensureDir, copyFile } = fsExtra
-const execAsync = promisify(exec)
+const execFileAsync = promisify(execFile)
 
 // Get __dirname equivalent in ESM
 const __filename = fileURLToPath(import.meta.url)
@@ -131,7 +132,7 @@ async function compileSass() {
   console.log('🎨 Compiling SCSS...')
   await ensureDir(distDir)
   try {
-    await execAsync(`${sassCmd} ${srcFile} ${distCSS} --style compressed`)
+    await execFileAsync(sassCmd, [srcFile, distCSS, '--style', 'compressed'])
     console.log(`✅ SCSS compiled: ${distCSS}`)
   } catch (error) {
     console.error('❌ SCSS compilation failed:', error.stderr || error)
