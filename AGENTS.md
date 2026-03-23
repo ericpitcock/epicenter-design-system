@@ -6,26 +6,26 @@ When removing a file, first check if it is tracked by version control (`git ls-f
 
 # Vue 3 Component Generator
 
-Generate Vue 3 components following strict conventions: Composition API with script setup, Vapor Mode,
+Generate Vue 3 components following strict conventions: Composition API with script setup,
 Reactive Props Destructuring, defineModel(), Pinia 3 setup stores, scoped SCSS with locally-scoped
 CSS variables, arrow functions only, and full TypeScript strictness. Use this skill whenever the user
 asks to create, scaffold, or generate a Vue component, composable, Pinia store, or any .vue file —
 even if they don't mention conventions explicitly. Also trigger when the user mentions Vue patterns
-like "script setup", "composable", "defineProps", "defineModel", "Vapor Mode", or asks for help
+like "script setup", "composable", "defineProps", "defineModel", or asks for help
 structuring a Vue feature module.
 
 This skill produces Vue 3 components, composables, and Pinia stores that follow a specific, modern set of conventions. Every piece of code you generate under this skill should feel like it came from the same codebase — consistent patterns, no guesswork.
 
 ## Why these conventions matter
 
-These aren't arbitrary rules. Reactive Props Destructuring keeps component APIs clean and avoids the verbosity of `withDefaults`. Vapor Mode on UI components eliminates vDOM overhead where it matters most. Scoped SCSS with locally-scoped CSS variables gives you encapsulation without specificity wars or global scope pollution. Arrow functions and consistent naming conventions make the codebase scannable — you can tell what a function does and when it fires just from its signature. The goal is a codebase that's fast, type-safe, and pleasant to maintain.
+These aren't arbitrary rules. Reactive Props Destructuring keeps component APIs clean and avoids the verbosity of `withDefaults`. Scoped SCSS with locally-scoped CSS variables gives you encapsulation without specificity wars or global scope pollution. Arrow functions and consistent naming conventions make the codebase scannable — you can tell what a function does and when it fires just from its signature. The goal is a codebase that's fast, type-safe, and pleasant to maintain.
 
 ## Component anatomy
 
 Every `.vue` component follows this structure, in this order. Note the indentation: all content inside `<script>` and `<style>` blocks is indented one level from the tag.
 
 ```vue
-<script setup vapor lang="ts">
+<script setup lang="ts">
   import type { SomeType } from './types'
 
   // 1. Options (defineOptions) — always include for devtools
@@ -98,10 +98,6 @@ All event handler functions use the `on` prefix.
   const onSearch = (query: string) => { ... }
   const onSelect = (item: T) => { ... }
 ```
-
-## Vapor Mode: the default for UI components
-
-Use `<script setup vapor lang="ts">` on every component unless it specifically needs features that Vapor doesn't support (transition groups, suspense boundaries, teleport).
 
 ## Props: Reactive Props Destructuring
 
@@ -190,7 +186,7 @@ export const useCartStore = defineStore('cart', () => {
 - Use `generic` attribute for collection-based components:
 
 ```vue
-<script setup vapor lang="ts" generic="T extends { id: string }">
+<script setup lang="ts" generic="T extends { id: string }">
 ```
 
 ## Accessibility baseline
