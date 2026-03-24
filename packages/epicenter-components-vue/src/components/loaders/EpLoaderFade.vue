@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  defineOptions({ name: 'EpLoaderFade' })
+</script>
+
 <template>
   <svg
     class="ep-loader ep-loader--fade"

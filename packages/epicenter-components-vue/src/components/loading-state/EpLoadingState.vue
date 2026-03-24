@@ -4,10 +4,8 @@
     message: string
   }
 
-  interface EpLoadingStateProps {
-    /**
-     * Message object containing icon and message text to display while loading.
-     */
+  interface Props {
+    /** Message object containing icon and message text to display while loading. */
     message?: LoadingMessage
   }
 
@@ -16,7 +14,9 @@
       icon: '',
       message: '',
     },
-  } = defineProps<EpLoadingStateProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpLoadingState' })
 </script>
 
 <template>

@@ -14,7 +14,7 @@
     timestamp?: string
   }
 
-  interface EpNotificationsProps {
+  interface Props {
     emptyStateMessage?: string
     notifications?: NotificationItem[]
     notificationsTitle?: string
@@ -24,16 +24,16 @@
     emptyStateMessage = 'You\u2019re all caught up!',
     notifications = [],
     notificationsTitle = 'Notifications',
-  } = defineProps<EpNotificationsProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     'remove-notification': [id: string]
     'clear-notifications': []
   }>()
 
-  const isNotificationsEmpty = computed(() => {
-    return notifications.length === 0
-  })
+  defineOptions({ name: 'EpNotifications' })
+
+  const isNotificationsEmpty = computed(() => notifications.length === 0)
 </script>
 
 <template>

@@ -17,7 +17,7 @@ export interface UseActionsMenuReturn {
  * const menuProps = generateActionMenuProps({ menuItems: [...], size: 'small' })
  * ```
  */
-export default function useActionsMenu(): UseActionsMenuReturn {
+export const useActionsMenu = (): UseActionsMenuReturn => {
   const generateActionMenuProps = ({
     context = null,
     menuItems = [],

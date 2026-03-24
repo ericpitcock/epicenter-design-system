@@ -1,13 +1,15 @@
 <script setup lang="ts">
   import { computed, onBeforeUnmount, onMounted, ref, useId } from 'vue'
 
-  interface EpChartProps {
+  interface Props {
     chartColors?: Record<string, string>
     height?: number
     options?: Record<string, unknown>
   }
 
-  const { chartColors = {}, height = 400, options = {} } = defineProps<EpChartProps>()
+  const { chartColors = {}, height = 400, options = {} } = defineProps<Props>()
+
+  defineOptions({ name: 'EpChart' })
 
   // Highcharts chart instance
   const chart = ref<{ reflow: () => void; destroy: () => void } | null>(null)

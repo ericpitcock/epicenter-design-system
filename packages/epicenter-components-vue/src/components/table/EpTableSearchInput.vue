@@ -1,5 +1,8 @@
 <script setup lang="ts">
   const modelValue = defineModel<string>({ required: true })
+
+  defineOptions({ name: 'EpTableSearchInput' })
+
 </script>
 
 <template>

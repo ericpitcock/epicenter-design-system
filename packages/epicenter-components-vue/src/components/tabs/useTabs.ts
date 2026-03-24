@@ -13,7 +13,7 @@ export interface UseTabsReturn {
  *
  * @param defaultActiveTab - Initial active tab index (default 0)
  */
-export default function useTabs(defaultActiveTab = 0): UseTabsReturn {
+export const useTabs = (defaultActiveTab = 0): UseTabsReturn => {
   const activeTab = ref(defaultActiveTab)
 
   const setActiveTab = ({ index }: { index: number }): void => {

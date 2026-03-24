@@ -17,11 +17,11 @@ export interface UseExcludeReturn {
  * @param data - Reactive array of table row data
  * @param exclude - Column keys to exclude (reactive or static array)
  */
-export default function useExclude(
+export const useExclude = (
   columns: Ref<TableColumn[]>,
   data: Ref<TableRow[]>,
   exclude: Ref<string[]> | string[] = []
-): UseExcludeReturn {
+): UseExcludeReturn => {
   const excludeRef = isRef(exclude) ? exclude : ref(exclude)
 
   const includedColumns = computed(() => {

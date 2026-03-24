@@ -2,7 +2,7 @@ import { type ComputedRef, type Ref, computed, ref } from 'vue'
 
 import type { CheckboxFilter, TableColumn, TableRow } from '../../types'
 
-import useExclude from './useExclude'
+import { useExclude } from './useExclude'
 
 /** Return type of the useColumnFilters composable */
 export interface UseColumnFiltersReturn {
@@ -24,11 +24,11 @@ export interface UseColumnFiltersReturn {
  * @param data - Reactive row data
  * @param disabledColumns - Initial list of column keys that start hidden
  */
-export default function useColumnFilters(
+export const useColumnFilters = (
   columns: Ref<TableColumn[]>,
   data: Ref<TableRow[]>,
   disabledColumns: string[]
-): UseColumnFiltersReturn {
+): UseColumnFiltersReturn => {
   const disabledColumnsRef = ref(disabledColumns)
 
   const columnFilters = computed<CheckboxFilter[]>(() => {

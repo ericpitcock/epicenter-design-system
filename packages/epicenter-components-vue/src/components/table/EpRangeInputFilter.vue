@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
 
-  interface EpRangeInputFilterProps {
+  interface Props {
     appliedFilters: Record<string, unknown>
     columnKey: string
     filterKey: string
@@ -9,11 +9,13 @@
     min: number
   }
 
-  const props = defineProps<EpRangeInputFilterProps>()
+  const props = defineProps<Props>()
 
   const emit = defineEmits<{
     'update:appliedFilters': [value: Record<string, number>]
   }>()
+
+  defineOptions({ name: 'EpRangeInputFilter' })
 
   // Initialize selected range
   const selectedRange = ref<number>(0)

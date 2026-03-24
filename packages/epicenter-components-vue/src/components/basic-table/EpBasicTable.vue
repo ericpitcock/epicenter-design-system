@@ -3,7 +3,7 @@
 
   import type { TableColumn, TableRow } from '../../types'
 
-  interface EpBasicTableProps {
+  interface Props {
     /** Gives borders to your table rows. Helpful for tables with a lot of data. */
     bordered?: boolean
     /** The columns of the table. */
@@ -16,7 +16,9 @@
     striped?: boolean
   }
 
-  const { bordered = false, compact = false, striped = false } = defineProps<EpBasicTableProps>()
+  const { bordered = false, compact = false, striped = false } = defineProps<Props>()
+
+  defineOptions({ name: 'EpBasicTable' })
 
   const classes = computed(() => ({
     'ep-table--bordered': bordered,

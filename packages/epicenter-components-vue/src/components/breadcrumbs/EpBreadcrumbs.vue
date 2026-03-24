@@ -1,24 +1,26 @@
 <script setup lang="ts">
   import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
 
+  interface Props {
+    /** An array of breadcrumb items with label, to, and optional customClass properties. */
+    items?: BreadcrumbItem[]
+  }
+
   interface BreadcrumbItem {
     customClass?: string
     label: string
     to?: string
   }
 
-  interface EpBreadcrumbsProps {
-    /** An array of breadcrumb items with label, to, and optional customClass properties. */
-    items?: BreadcrumbItem[]
-  }
-
-  const { items = [] } = defineProps<EpBreadcrumbsProps>()
+  const { items = [] } = defineProps<Props>()
 
   const emit = defineEmits<{
     navigate: [payload: { event: MouseEvent; crumb: BreadcrumbItem }]
   }>()
 
-  const handleClick = (event: MouseEvent, crumb: BreadcrumbItem): void => {
+  defineOptions({ name: 'EpBreadcrumbs' })
+
+  const onBreadcrumbClick = (event: MouseEvent, crumb: BreadcrumbItem): void => {
     emit('navigate', { event, crumb })
   }
 </script>
@@ -45,7 +47,7 @@
           <a
             v-if="index !== items.length - 1"
             :href="crumb.to"
-            @click="handleClick($event, crumb)"
+            @click="onBreadcrumbClick($event, crumb)"
           >
             {{ crumb.label }}
           </a>

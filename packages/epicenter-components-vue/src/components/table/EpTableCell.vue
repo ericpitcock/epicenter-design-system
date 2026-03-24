@@ -3,13 +3,15 @@
 
   import type { TableColumn, TableRow } from '../../types'
 
-  interface EpTableCellProps {
+  interface Props {
     column: TableColumn
     row: TableRow
     styles?: string[]
   }
 
-  const { row, column } = defineProps<EpTableCellProps>()
+  const { row, column } = defineProps<Props>()
+
+  defineOptions({ name: 'EpTableCell' })
 
   const cellContent = ref<unknown>('')
 

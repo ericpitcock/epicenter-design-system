@@ -3,7 +3,7 @@
 
   import EpButton from '../button/EpButton.vue'
 
-  interface EpNotificationProps {
+  interface Props {
     /** Unique identifier for the notification. */
     id: string
     /** The notification message text to display. */
@@ -12,17 +12,13 @@
     timestamp?: string
   }
 
-  const {
-    timestamp = new Date().toISOString(),
-  } = defineProps<EpNotificationProps>()
+  const { timestamp = new Date().toISOString() } = defineProps<Props>()
 
-  const emit = defineEmits<{
-    dismiss: []
-  }>()
+  const emit = defineEmits<{ dismiss: [] }>()
 
-  const dismissNotification = (): void => {
-    emit('dismiss')
-  }
+  defineOptions({ name: 'EpNotification' })
+
+  const dismissNotification = (): void => { emit('dismiss') }
 </script>
 
 <template>

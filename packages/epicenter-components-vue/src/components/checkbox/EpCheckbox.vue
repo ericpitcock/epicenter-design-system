@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
 
-  interface EpCheckboxProps {
+  interface Props {
     /** Whether the checkbox is checked. */
     checked?: boolean
     /** Whether the checkbox is disabled. */
@@ -25,9 +25,11 @@
     disabled = false,
     indeterminate = false,
     required = false,
-  } = defineProps<EpCheckboxProps>()
+  } = defineProps<Props>()
 
   const modelValue = defineModel<boolean>({ required: true })
+
+  defineOptions({ name: 'EpCheckbox' })
 
   const classes = computed(() => {
     return {

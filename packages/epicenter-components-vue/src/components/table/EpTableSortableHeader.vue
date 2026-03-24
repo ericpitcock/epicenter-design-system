@@ -5,7 +5,7 @@
 
   import type { TableColumn, SortOrder } from '../../types'
 
-  interface EpTableSortableHeaderProps {
+  interface Props {
     cellWidths?: Record<string, string>[]
     column: TableColumn
     columnIndex?: number | null
@@ -18,11 +18,13 @@
     column,
     cellWidths = [],
     columnIndex = null,
-  } = defineProps<EpTableSortableHeaderProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     sort: [key: string]
   }>()
+
+  defineOptions({ name: 'EpTableSortableHeader' })
 
   const headerClass = computed(() => {
     return [

@@ -4,6 +4,8 @@
   }>()
 
   const dismissBanner = (): void => emit('dismissed')
+
+  defineOptions({ name: 'EpBanner' })
 </script>
 
 <template>

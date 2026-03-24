@@ -1,14 +1,14 @@
 <script setup lang="ts">
   import Cancel01 from '@ericpitcock/epicenter-icons-vue/Cancel01'
   import Search01 from '@ericpitcock/epicenter-icons-vue/Search01'
-  import { computed, ref, useTemplateRef, watch } from 'vue'
+  import { computed, ref, useTemplateRef } from 'vue'
 
   interface ParsedQuery {
     and: string[]
     or: string[]
   }
 
-  interface EpMultiSearchProps {
+  interface Props {
     autofocus?: boolean
     backgroundColor?: string
     borderColor?: string
@@ -32,7 +32,7 @@
     icon = {},
     placeholder = '',
     width = '100%',
-  } = defineProps<EpMultiSearchProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     input: [value: string]
@@ -44,6 +44,8 @@
     'query-close': [query: ParsedQuery]
     delete: [query: ParsedQuery]
   }>()
+
+  defineOptions({ name: 'EpMultiSearch' })
 
   const input = useTemplateRef<HTMLInputElement>('input')
   const hasFocus = ref(false)
@@ -73,10 +75,6 @@
 
   const placeholderValue = computed(() => {
     return value.value === '' && query.value.length === 0 ? placeholder : '+ Add to your search'
-  })
-
-  watch(query, () => {
-    console.log('query', query.value)
   })
 
   const isOperator = (term: string): boolean => term === 'AND' || term === 'OR'

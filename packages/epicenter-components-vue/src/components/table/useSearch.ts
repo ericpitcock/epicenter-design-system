@@ -19,10 +19,10 @@ export interface UseSearchReturn {
  * @param data - Reactive array of table row data
  * @param columns - Optional reactive columns (used to apply formatters during search)
  */
-export default function useSearch(
+export const useSearch = (
   data: Ref<TableRow[]>,
   columns?: Ref<TableColumn[]>
-): UseSearchReturn {
+): UseSearchReturn => {
   const searchTerms = ref<SearchTerms>({ and: [], or: [] })
 
   const searchedData = computed(() => {

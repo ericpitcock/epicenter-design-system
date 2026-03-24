@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-  interface EpTextareaProps {
+  interface Props {
     autocomplete?: string
     autofocus?: boolean
     cols?: number
@@ -32,7 +31,7 @@
     rows = 2,
     spellcheck = false,
     wrap = 'soft',
-  } = defineProps<EpTextareaProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     'update:modelValue': [value: string]
@@ -41,6 +40,8 @@
   }>()
 
   const modelValue = defineModel<string>({ default: '' })
+
+  defineOptions({ name: 'EpTextarea' })
 
   const onFocus = (event: FocusEvent): void => {
     emit('focus', event)

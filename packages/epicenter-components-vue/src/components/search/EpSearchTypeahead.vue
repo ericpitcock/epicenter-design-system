@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import { onClickOutside, useDebounceFn } from '@vueuse/core'
-  import { computed, ref, useTemplateRef, watch } from 'vue'
+  import { computed, ref, useTemplateRef } from 'vue'
 
   import type { Size } from '../../types'
   import EpInput from '../input/EpInput.vue'
 
-  interface EpSearchTypeaheadProps {
+  interface Props {
     inputProps?: Record<string, unknown>
     resultsKey?: string
     returnedSearchResults: Record<string, unknown>[]
@@ -15,7 +15,7 @@
     returnedSearchResults,
     inputProps = {},
     resultsKey = '',
-  } = defineProps<EpSearchTypeaheadProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     clear: []
@@ -23,17 +23,13 @@
     selection: [result: Record<string, unknown>]
   }>()
 
+  defineOptions({ name: 'EpSearchTypeahead' })
+
   const searchQuery = ref('')
   const activeItemIndex = ref(-1)
 
   const activeItem = computed(() => {
     return returnedSearchResults[activeItemIndex.value]
-  })
-
-  watch(activeItem, (newValue) => {
-    if (newValue) {
-      searchQuery.value = newValue[resultsKey] as string
-    }
   })
 
   const computedInputProps = computed(() => {
@@ -55,7 +51,14 @@
 
   onClickOutside(resultsListRef, resetSearch)
 
-  const updateactiveItemIndex = (delta: number): void => {
+  const syncSearchQueryToActiveItem = (): void => {
+    const selectedResult = activeItem.value
+    if (selectedResult) {
+      searchQuery.value = selectedResult[resultsKey] as string
+    }
+  }
+
+  const onActiveItemIndexUpdate = (delta: number): void => {
     const newIndex = activeItemIndex.value + delta
 
     if (returnedSearchResults.length === 0 || newIndex < 0 || newIndex >= returnedSearchResults.length) {
@@ -63,6 +66,7 @@
     }
 
     activeItemIndex.value = newIndex
+    syncSearchQueryToActiveItem()
 
     scrollToSelectedItem()
   }
@@ -101,6 +105,7 @@
 
   const onMouseEnter = (index: number): void => {
     activeItemIndex.value = index
+    syncSearchQueryToActiveItem()
   }
 
   const onSelection = (result: Record<string, unknown>): void => {
@@ -116,8 +121,8 @@
       spellcheck="false"
       @update:model-value="onInput"
       @clear="resetSearch"
-      @keydown.prevent.down="updateactiveItemIndex(1)"
-      @keydown.prevent.up="updateactiveItemIndex(-1)"
+      @keydown.prevent.down="onActiveItemIndexUpdate(1)"
+      @keydown.prevent.up="onActiveItemIndexUpdate(-1)"
       @keydown.enter="onEnter"
       @keydown.esc="resetSearch"
     />

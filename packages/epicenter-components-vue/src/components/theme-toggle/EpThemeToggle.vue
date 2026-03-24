@@ -3,8 +3,10 @@
   import Sun02 from '@ericpitcock/epicenter-icons-vue/Sun02'
   import { computed } from 'vue'
 
-  import useTheme from '../../composables/useTheme'
+  import { useTheme } from '../../composables/useTheme'
   import EpButton from '../button/EpButton.vue'
+
+  defineOptions({ name: 'EpThemeToggle' })
 
   const { theme, toggleTheme } = useTheme()
 

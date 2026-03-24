@@ -15,7 +15,7 @@
     | 'left center'
     | 'left bottom'
 
-  interface EpTooltipProps {
+  interface Props {
     /** Delay in milliseconds before showing the tooltip on hover. */
     delay?: number
     /** Whether the tooltip is disabled. */
@@ -31,7 +31,9 @@
     disabled = false,
     dismissOnClick = false,
     position = 'top center',
-  } = defineProps<EpTooltipProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpTooltip' })
 
   const visible = ref<boolean>(false)
   const timeoutId = ref<ReturnType<typeof setTimeout> | null>(null)

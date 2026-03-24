@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  defineOptions({ name: 'EpLoaderDots' })
+</script>
+
 <template>
   <svg
     class="ep-loader ep-loader--dots"

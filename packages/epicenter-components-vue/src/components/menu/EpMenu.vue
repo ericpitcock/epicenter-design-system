@@ -6,6 +6,8 @@
     tab: []
   }>()
 
+  defineOptions({ name: 'EpMenu' })
+
   const menuRef = useTemplateRef<HTMLDivElement>('menuRef')
   const currentFocusIndex = ref(0)
 

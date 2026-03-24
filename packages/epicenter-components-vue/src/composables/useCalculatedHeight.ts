@@ -13,10 +13,10 @@ export interface UseCalculatedHeightReturn {
  * @param element - Template ref of the element whose position determines the height
  * @param calculateHeightOffset - Additional pixel offset to subtract (e.g., for footers)
  */
-export default function useCalculatedHeight(
+export const useCalculatedHeight = (
   element: Ref<HTMLElement | null>,
   calculateHeightOffset = 0
-): UseCalculatedHeightReturn {
+): UseCalculatedHeightReturn => {
   const dynamicHeight = ref(0)
 
   const calculateHeight = (): void => {

@@ -29,12 +29,12 @@ export interface UseFixedHeaderReturn {
  * @param initialFixedHeaderOffset - Scroll offset threshold
  * @param fixedTop - CSS top position for the fixed header in pixels
  */
-export default function useFixedHeader(
+export const useFixedHeader = (
   scrollElement?: HTMLElement | Window,
   initialFixedHeader = false,
   initialFixedHeaderOffset = 0,
   fixedTop = 0,
-): UseFixedHeaderReturn {
+): UseFixedHeaderReturn => {
   const tableComponent = useTemplateRef<ComponentPublicInstance>('tableComponent')
   const tableContainer = ref<HTMLElement | null>(null)
   const tableFixed = ref<HTMLElement | null>(null)

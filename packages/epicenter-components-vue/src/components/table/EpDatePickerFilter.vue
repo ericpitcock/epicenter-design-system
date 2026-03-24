@@ -1,17 +1,19 @@
 <script setup lang="ts">
   import { ref } from 'vue'
 
-  interface EpDatePickerFilterProps {
+  interface Props {
     appliedFilters: Record<string, unknown>
     columnKey: string
     filterKey: string
   }
 
-  const props = defineProps<EpDatePickerFilterProps>()
+  const props = defineProps<Props>()
 
   const emit = defineEmits<{
     'update:appliedFilters': [value: Record<string, string>]
   }>()
+
+  defineOptions({ name: 'EpDatePickerFilter' })
 
   // Initialize selected date
   const selectedDate = ref<string>('')

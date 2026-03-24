@@ -1,9 +1,11 @@
 <script setup lang="ts">
-  interface EpFieldsetProps {
+  interface Props {
     label?: string
   }
 
-  const { label = '' } = defineProps<EpFieldsetProps>()
+  const { label = '' } = defineProps<Props>()
+
+  defineOptions({ name: 'EpFieldset' })
 </script>
 
 <template>

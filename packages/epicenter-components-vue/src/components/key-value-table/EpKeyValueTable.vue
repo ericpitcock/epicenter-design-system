@@ -8,7 +8,7 @@
     name: string
   }
 
-  interface EpKeyValueTableProps {
+  interface Props {
     commonKeyWidth?: boolean
     data: KeyValueSection | KeyValueSection[]
     sectionHeaders?: boolean
@@ -18,7 +18,9 @@
     data,
     commonKeyWidth = false,
     sectionHeaders = false,
-  } = defineProps<EpKeyValueTableProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpKeyValueTable' })
 
   const processedData = computed<KeyValueSection[]>(() => {
     if (Array.isArray(data)) {

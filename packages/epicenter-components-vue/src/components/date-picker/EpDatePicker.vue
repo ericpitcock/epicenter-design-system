@@ -1,17 +1,15 @@
 <script setup lang="ts">
   import Calendar01 from '@ericpitcock/epicenter-icons-vue/Calendar01'
   import type { ComponentPublicInstance } from 'vue'
-  import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
+  import { computed, onBeforeUnmount, onMounted, onUpdated, ref, useTemplateRef } from 'vue'
 
   import EpInput from '../input/EpInput.vue'
 
-  type DatePickerMode = 'single' | 'multiple' | 'range'
-
-  interface EpDatePickerProps {
+  interface Props {
     dateFormat?: string
     enableCloseOnSelect?: boolean
     inputProps?: Record<string, unknown>
-    mode?: DatePickerMode
+    mode?: 'single' | 'multiple' | 'range'
     positionX?: string
     positionY?: string
   }
@@ -23,7 +21,7 @@
     mode = 'single',
     positionX = 'left',
     positionY = 'auto',
-  } = defineProps<EpDatePickerProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     input: []
@@ -32,6 +30,8 @@
     blur: []
     keydown: []
   }>()
+
+  defineOptions({ name: 'EpDatePicker' })
 
   const datePickerInput = useTemplateRef<ComponentPublicInstance>('datePickerInput')
   const value = ref('')
@@ -52,6 +52,8 @@
     ...inputDefaults,
     ...inputProps,
   }))
+  const flatpickrConfigSignature = computed(() => `${mode}::${dateFormat}::${enableCloseOnSelect}::${positionX}::${positionY}`)
+  const previousConfigSignature = ref('')
 
   const initFlatpickr = async (): Promise<void> => {
     if (!datePickerInput.value) return
@@ -69,16 +71,25 @@
     }
   }
 
-  onMounted(() => {
-    initFlatpickr()
-  })
-
-  watch(() => mode, () => {
+  const resetFlatpickr = async (): Promise<void> => {
     if (flatpickrInstance) {
       flatpickrInstance.destroy()
       flatpickrInstance = null
     }
-    initFlatpickr()
+
+    await initFlatpickr()
+  }
+
+  onMounted(() => {
+    previousConfigSignature.value = flatpickrConfigSignature.value
+    void initFlatpickr()
+  })
+
+  onUpdated(() => {
+    if (previousConfigSignature.value === flatpickrConfigSignature.value) return
+
+    previousConfigSignature.value = flatpickrConfigSignature.value
+    void resetFlatpickr()
   })
 
   const onChange = (selectedDates: Date[], dateStr: string): void => {

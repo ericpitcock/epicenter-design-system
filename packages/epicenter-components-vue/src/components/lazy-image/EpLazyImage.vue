@@ -1,32 +1,32 @@
 <script setup lang="ts">
   import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 
-  interface EpLazyImageProps {
-    /** The alt text for the image. */
+  interface Props {
+    /** Alternative text for the image element. */
     alt?: string
-    /** The aspect ratio of the image (e.g., '16 / 9'). */
+    /** CSS aspect-ratio value applied to the image and placeholder. */
     aspectRatio?: string
-    /** Additional CSS class name for the image element. */
+    /** Additional CSS class names applied to the rendered image element. */
     className?: string
-    /** The height of the image. */
+    /** The rendered height of the image or placeholder. */
     height?: string | number
-    /** If true, enables lazy loading using Intersection Observer. */
+    /** If true, defers loading the image until it enters the viewport. */
     lazy?: boolean
-    /** How the image fits within its container. */
+    /** CSS object-fit value used for the image element. */
     objectFit?: string
-    /** URL of the placeholder image to display while loading. */
+    /** Optional placeholder image URL shown before the main image loads. */
     placeholder?: string
-    /** The background color of the placeholder. */
+    /** Background color used for the placeholder state. */
     placeholderColor?: string
-    /** The opacity of the placeholder. */
+    /** Opacity applied to the placeholder state. */
     placeholderOpacity?: number
-    /** The root margin for the Intersection Observer (controls when loading starts). */
+    /** Intersection observer root margin used to trigger lazy loading early. */
     rootMargin?: string
-    /** If true, applies rounded corners to the image. */
+    /** If true, applies the component's rounded corner style. */
     rounded?: boolean
-    /** The source URL of the image. */
+    /** The source URL for the image. */
     src: string
-    /** The width of the image. */
+    /** The rendered width of the image or placeholder. */
     width?: string | number
   }
 
@@ -43,7 +43,9 @@
     rootMargin = '0px 0px 100px 0px',
     rounded = true,
     width = '100%',
-  } = defineProps<EpLazyImageProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpLazyImage' })
 
   const isLoaded = ref<boolean>(false)
   const imageEl = useTemplateRef<HTMLDivElement>('imageEl')

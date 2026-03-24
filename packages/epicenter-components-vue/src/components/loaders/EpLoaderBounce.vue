@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  defineOptions({ name: 'EpLoaderBounce' })
+</script>
+
 <template>
   <svg
     class="ep-loader ep-loader--bounce"

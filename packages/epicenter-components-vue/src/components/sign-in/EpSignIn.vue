@@ -7,6 +7,8 @@
   import EpLoadingState from '../loading-state/EpLoadingState.vue'
   import EpicenterLogo from '../logo/EpicenterLogo.vue'
 
+  defineOptions({ name: 'EpSignIn' })
+
   type SignInState = 'signin' | 'loading' | 'message' | 'reset'
 
   interface LoadingMessage {

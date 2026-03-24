@@ -174,7 +174,7 @@ export const useCartStore = defineStore('cart', () => {
 
 ## Styling
 
-- `<style scoped lang="scss">` on every component.
+- `<style scoped lang="scss">` on every component that contains styles, even if it's just a few lines.
 - Component tokens scoped to root class, never `:root` inside scoped blocks.
 - CSS variables for state changes preferred over toggling classes.
 - `rem` for spacing/typography. No Tailwind. All CSS inside `<style>` indented one level.

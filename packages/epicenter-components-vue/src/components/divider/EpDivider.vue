@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import type { Direction } from '../../types'
 
-  interface EpDividerProps {
+  interface Props {
     /**
      * The direction of the divider.
      * @values horizontal, vertical
@@ -11,7 +11,9 @@
 
   const {
     direction = 'horizontal',
-  } = defineProps<EpDividerProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpDivider' })
 </script>
 
 <template>

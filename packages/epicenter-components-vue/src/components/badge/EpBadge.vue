@@ -1,12 +1,14 @@
 <script setup lang="ts">
-  interface EpBadgeProps {
+  interface Props {
     /**
      * The label to display in the badge.
      */
     label?: string
   }
 
-  const { label = '' } = defineProps<EpBadgeProps>()
+  const { label = '' } = defineProps<Props>()
+
+  defineOptions({ name: 'EpBadge' })
 </script>
 
 <template>

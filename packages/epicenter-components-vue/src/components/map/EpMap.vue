@@ -1,13 +1,13 @@
 <script setup lang="ts">
   import 'mapbox-gl/dist/mapbox-gl.css'
-  import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
+  import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref, useTemplateRef } from 'vue'
 
   interface MapSource {
     id: string
     source: Record<string, unknown>
   }
 
-  interface EpMapProps {
+  interface Props {
     accessToken: string
     fitToBounds?: boolean
     mapCenter?: [number, number]
@@ -31,13 +31,15 @@
     navigationControl = true,
     pinLocations = [],
     scrollZoom = true,
-  } = defineProps<EpMapProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     centerChange: [center: [number, number]]
     dropPin: []
     zoomChange: [zoom: number]
   }>()
+
+  defineOptions({ name: 'EpMap' })
 
   const init = ref(true)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -46,33 +48,14 @@
   const markers = ref<any[]>([])
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let mapboxgl: any = null
-
-  watch(() => mapCenter, (newCenter) => {
-    emit('centerChange', newCenter)
-    flyTo(newCenter, mapZoom)
-  })
-
-  watch(() => mapZoom, (newZoom) => {
-    emit('zoomChange', newZoom)
-    flyTo(mapCenter, newZoom)
-  })
-
-  watch(() => mapStyle, (newStyle: string) => {
-    map.value.setStyle(newStyle)
-  })
-
-  watch(() => pinLocations, () => {
-    removeMarkers()
-    addMarkers()
-  })
-
-  watch(() => scrollZoom, (newScrollZoom: boolean) => {
-    if (newScrollZoom) {
-      map.value.scrollZoom.enable()
-    } else {
-      map.value.scrollZoom.disable()
-    }
-  })
+  const mapStateSignature = computed(() => JSON.stringify({
+    mapCenter,
+    mapZoom,
+    mapStyle,
+    pinLocations,
+    scrollZoom,
+  }))
+  const previousMapStateSignature = ref('')
 
   const epMapContainer = useTemplateRef<HTMLDivElement>('epMapContainer')
 
@@ -92,10 +75,53 @@
       }
       if (pinLocations.length) addMarkers()
       init.value = false
+      previousMapStateSignature.value = mapStateSignature.value
     })
 
     if (epMapContainer.value) {
       observer.observe(epMapContainer.value)
+    }
+  })
+
+  onUpdated(() => {
+    if (!map.value || init.value) return
+    if (previousMapStateSignature.value === mapStateSignature.value) return
+
+    const previousState = JSON.parse(previousMapStateSignature.value || '{}') as {
+      mapCenter?: [number, number]
+      mapStyle?: string
+      mapZoom?: number
+      pinLocations?: [number, number][]
+      scrollZoom?: boolean
+    }
+
+    previousMapStateSignature.value = mapStateSignature.value
+
+    if (JSON.stringify(previousState.mapCenter) !== JSON.stringify(mapCenter)) {
+      emit('centerChange', mapCenter)
+      flyTo(mapCenter, mapZoom)
+    }
+
+    if (previousState.mapZoom !== mapZoom) {
+      emit('zoomChange', mapZoom)
+      flyTo(mapCenter, mapZoom)
+    }
+
+    if (previousState.mapStyle !== mapStyle) {
+      map.value.setStyle(mapStyle)
+    }
+
+    if (JSON.stringify(previousState.pinLocations) !== JSON.stringify(pinLocations)) {
+      removeMarkers()
+      addMarkers()
+    }
+
+    if (previousState.scrollZoom !== scrollZoom) {
+      if (scrollZoom) {
+        map.value.scrollZoom.enable()
+      } else {
+        map.value.scrollZoom.disable()
+      }
     }
   })
 

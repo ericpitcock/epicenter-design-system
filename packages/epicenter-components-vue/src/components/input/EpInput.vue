@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import { computed, ref, useId, useTemplateRef, watch } from 'vue'
+  import { computed, ref, useId, useTemplateRef } from 'vue'
 
   import type { Size } from '../../types'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
-  interface EpInputProps {
+  interface Props {
     autofocus?: boolean
     clearable?: boolean
     disabled?: boolean
@@ -34,7 +34,7 @@
     required = false,
     size = 'default',
     type = 'text',
-  } = defineProps<EpInputProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     focus: [value: string]
@@ -47,13 +47,14 @@
   const modelValue = defineModel<string>({ required: true })
 
   defineOptions({
+    name: 'EpInput',
     inheritAttrs: false,
   })
 
   const input = useTemplateRef<HTMLInputElement>('input')
 
-  const hasInput = ref(!!modelValue.value)
   const computedId = ref(inputId || useId())
+  const hasInput = computed(() => !!modelValue.value)
 
   const computedPlaceholder = computed(() => placeholder || label)
 
@@ -73,10 +74,6 @@
     [`ep-input--${size}`]: size !== 'default',
     'ep-input--disabled': disabled
   }))
-
-  watch(modelValue, (value) => {
-    hasInput.value = !!value
-  })
 
   const onEsc = (): void => {
     input.value?.blur()

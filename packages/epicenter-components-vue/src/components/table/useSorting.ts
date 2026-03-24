@@ -22,12 +22,12 @@ export interface UseSortingReturn {
  * @param initialSortColumn - Column key to sort by initially
  * @param initialSortOrder - Initial sort direction (default 'asc')
  */
-export default function useSorting(
+export const useSorting = (
   columns: Ref<TableColumn[]>,
   data: Ref<TableRow[]>,
   initialSortColumn: string,
   initialSortOrder: SortOrder = 'asc'
-): UseSortingReturn {
+): UseSortingReturn => {
   const sortColumn = ref(initialSortColumn)
   const sortOrder = ref<SortOrder>(initialSortOrder)
 

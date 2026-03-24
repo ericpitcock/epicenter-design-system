@@ -9,7 +9,7 @@
   import EpFooter from '../footer/EpFooter.vue'
   import EpSelect from '../select/EpSelect.vue'
 
-  interface EpTablePaginationProps {
+  interface Props {
     currentPage: number
     resultsPerPage: number
     showPages?: boolean
@@ -21,12 +21,14 @@
     currentPage,
     totalPages,
     showPages = false,
-  } = defineProps<EpTablePaginationProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     pageChange: [page: number]
     'update:resultsPerPage': [value: number]
   }>()
+
+  defineOptions({ name: 'EpTablePagination' })
 
   const resultsPerPageOptions: SelectOption[] = [
     { label: '10', value: 10 },

@@ -1,4 +1,4 @@
-import { type Ref, ref, watch } from 'vue'
+import { customRef, type Ref } from 'vue'
 
 import type { Theme } from '../types'
 
@@ -7,7 +7,7 @@ const STORAGE_KEY = 'theme-preference'
 const isBrowser = typeof window !== 'undefined'
 
 /** Get initial theme based on priority: localStorage > OS preference > default (dark) */
-function getInitialTheme(): Theme {
+const getInitialTheme = (): Theme => {
   if (!isBrowser) return 'dark'
 
   const stored = localStorage.getItem(STORAGE_KEY)
@@ -27,7 +27,7 @@ let theme: Ref<Theme> | null = null
 let isInitialized = false
 
 /** Apply theme to DOM */
-function applyTheme(value: Theme): void {
+const applyTheme = (value: Theme): void => {
   if (typeof document !== 'undefined') {
     document.documentElement.classList.remove('light-theme', 'dark-theme')
     document.documentElement.classList.add(`${value}-theme`)
@@ -38,20 +38,29 @@ function applyTheme(value: Theme): void {
  * Initialize the theme system. Called by the theme plugin or manually.
  * Safe to call multiple times — subsequent calls return the existing ref.
  */
-export function initializeTheme(): Ref<Theme> {
+export const initializeTheme = (): Ref<Theme> => {
   if (isInitialized && theme) return theme
 
-  theme = ref<Theme>(getInitialTheme())
+  let themeValue = getInitialTheme()
+
+  theme = customRef<Theme>((track, trigger) => ({
+    get() {
+      track()
+      return themeValue
+    },
+    set(value) {
+      themeValue = value
+      applyTheme(value)
+      if (isBrowser) localStorage.setItem(STORAGE_KEY, value)
+      trigger()
+    }
+  }))
+
   isInitialized = true
 
   if (typeof document !== 'undefined') {
     applyTheme(theme.value)
   }
-
-  watch(theme, (value: Theme) => {
-    applyTheme(value)
-    if (isBrowser) localStorage.setItem(STORAGE_KEY, value)
-  })
 
   if (isBrowser && window.matchMedia) {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: light)')
@@ -114,7 +123,7 @@ const clearThemePreference = (): void => {
  * const { theme, toggleTheme } = useTheme()
  * ```
  */
-export default function useTheme(): UseThemeReturn {
+export const useTheme = (): UseThemeReturn => {
   if (!isInitialized) {
     initializeTheme()
   }

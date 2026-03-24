@@ -3,18 +3,20 @@
   import EpCheckbox from '../checkbox/EpCheckbox.vue'
   import EpFlex from '../flexbox/EpFlex.vue'
 
-  interface EpTableCheckboxFiltersProps {
+  interface Props {
     filters: Record<string, CheckboxFilter[]>
     sectionLabels?: boolean
   }
 
   const {
     sectionLabels = true,
-  } = defineProps<EpTableCheckboxFiltersProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     'update:filters': [payload: { category: string; label: string; checked: boolean }]
   }>()
+
+  defineOptions({ name: 'EpTableCheckboxFilters' })
 
   const updateCheckbox = (category: string, label: string, checked: boolean): void => {
     emit('update:filters', { category, label, checked })

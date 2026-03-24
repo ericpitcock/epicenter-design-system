@@ -3,7 +3,7 @@
 
   import type { ButtonType, Size } from '../../types'
 
-  interface EpButtonProps {
+  interface Props {
     /** The aria-label of the button. */
     ariaLabel?: string
     /** If `true`, the button will be disabled. */
@@ -19,7 +19,9 @@
     ariaLabel = '',
     disabled = false,
     type = 'button',
-  } = defineProps<EpButtonProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpButton' })
 
   const element = computed(() => {
     const { to, href } = useAttrs()

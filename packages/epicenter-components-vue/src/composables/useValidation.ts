@@ -25,11 +25,11 @@ export interface UseValidationReturn {
  * @param rules - Validation rules keyed by field name
  * @param conditionalRules - Optional function returning extra rules based on current model state
  */
-export default function useValidation<T extends Record<string, unknown>>(
+export const useValidation = <T extends Record<string, unknown>>(
   model: Ref<T>,
   rules: ValidationRules<T>,
   conditionalRules: ConditionalRules<T> | null = null
-): UseValidationReturn {
+): UseValidationReturn => {
   // Initialize errors object based on rules
   const errors: Ref<ValidationErrors> = ref(
     Object.keys(rules).reduce<ValidationErrors>((acc, field) => {

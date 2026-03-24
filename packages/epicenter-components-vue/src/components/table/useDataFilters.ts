@@ -36,7 +36,7 @@ export interface UseDataFiltersReturn {
  * @param showCount - Whether to append match counts to filter labels
  * @param columnRangeCategories - Range-category predicates per column
  */
-export default function useDataFilters(
+export const useDataFilters = (
   columns: Ref<TableColumn[]>,
   data: Ref<TableRow[]>,
   columnsToFilter: string[],
@@ -44,7 +44,7 @@ export default function useDataFilters(
   customSortOrder: CustomSortOrder = {},
   showCount = false,
   columnRangeCategories: ColumnRangeCategories = {},
-): UseDataFiltersReturn {
+): UseDataFiltersReturn => {
   const filters = ref<Filters>({})
 
   const generateFilters = (): void => {

@@ -5,7 +5,7 @@
 
   import EpTableCell from './EpTableCell.vue'
 
-  interface EpTableProps {
+  interface Props {
     bordered?: boolean
     columns: TableColumn[]
     compact?: boolean
@@ -28,12 +28,14 @@
     showActionsMenu = false,
     stickyHeader = false,
     striped = false,
-  } = defineProps<EpTableProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     'row-click': [row: TableRow]
     'container-scroll': [scrollLeft: number]
   }>()
+
+  defineOptions({ name: 'EpTable' })
 
   const visibleColumns = computed(() => {
     return columns.filter(column => !hiddenColumns.includes(column.key))

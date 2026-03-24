@@ -1,4 +1,4 @@
-import { type ComputedRef, type Ref, computed, ref, watch } from 'vue'
+import { type ComputedRef, type Ref, computed, ref } from 'vue'
 
 import type { TableRow } from '../../types'
 
@@ -25,27 +25,30 @@ export interface UsePaginationReturn {
  * @param initialPage - Starting page number (default 1)
  * @param initialPageSize - Starting page size (default 10)
  */
-export default function usePagination(
+export const usePagination = (
   data: Ref<TableRow[]>,
   initialPage = 1,
   initialPageSize = 10
-): UsePaginationReturn {
-  const currentPage = ref(initialPage)
+): UsePaginationReturn => {
+  const currentPageState = ref(initialPage)
   const pageSize = ref(initialPageSize)
 
   const totalPages = computed(() => {
     return Math.ceil(data.value.length / pageSize.value)
   })
 
-  // Clamp currentPage when totalPages changes (e.g. after filtering)
-  watch(totalPages, (max) => {
-    if (currentPage.value > max) {
-      currentPage.value = Math.max(1, max)
+  const currentPage = computed({
+    get: () => {
+      const maxPage = Math.max(1, totalPages.value)
+      return Math.max(1, Math.min(currentPageState.value, maxPage))
+    },
+    set: (page: number) => {
+      currentPageState.value = page
     }
   })
 
   const paginatedData = computed(() => {
-    const page = Math.max(1, Math.min(currentPage.value, totalPages.value))
+    const page = currentPage.value
     const startIndex = (page - 1) * pageSize.value
     return data.value.slice(startIndex, startIndex + pageSize.value)
   })

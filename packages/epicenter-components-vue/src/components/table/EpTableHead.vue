@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import type { TableColumn } from '../../types'
 
-  interface EpTableHeadProps {
+  interface Props {
     cellWidths?: Record<string, string>[]
     columns: TableColumn[]
     fixedHeader?: boolean
@@ -11,7 +11,10 @@
   const {
     cellWidths = [],
     showActionsMenu = false,
-  } = defineProps<EpTableHeadProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpTableHead' })
+
 </script>
 
 <template>
