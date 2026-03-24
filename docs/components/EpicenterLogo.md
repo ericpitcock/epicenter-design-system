@@ -11,6 +11,8 @@ This component does not use props, events, slots.
 
 ```vue
 <script setup lang="ts">
+  defineOptions({ name: 'EpicenterLogo' })
+
 </script>
 
 <template>

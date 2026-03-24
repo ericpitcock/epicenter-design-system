@@ -40,7 +40,7 @@
   import type { SelectOption, Size } from '../../types'
   import EpInputStyler from '../input-styler/EpInputStyler.vue'
 
-  interface EpSelectProps {
+  interface Props {
     autofocus?: boolean
     disabled?: boolean
     error?: boolean
@@ -66,7 +66,7 @@
     placeholder = 'Select an option',
     required = false,
     size = 'default',
-  } = defineProps<EpSelectProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     'update:modelValue': [value: string | number]
@@ -75,6 +75,11 @@
   }>()
 
   const modelValue = defineModel<string | number>({ default: '' })
+
+  defineOptions({
+    name: 'EpSelect',
+    inheritAttrs: false,
+  })
 
   const selectClasses = computed(() => ({
     [`ep-select--${size}`]: size !== 'default',
@@ -118,6 +123,7 @@
       :disabled="disabled"
       :autofocus="autofocus"
       :required="required"
+      v-bind="$attrs"
       @blur="onBlur"
       @focus="onFocus"
       @change="onChange"

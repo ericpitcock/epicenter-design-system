@@ -39,7 +39,7 @@
   import EpFlex from '../flexbox/EpFlex.vue'
   import EpSelect from '../select/EpSelect.vue'
 
-  interface EpPaginationProps {
+  interface Props {
     /** Custom CSS class to apply to pagination buttons. */
     buttonClass?: string
     /** The current active page number. */
@@ -66,12 +66,14 @@
       { label: '100 / page', value: 100 },
     ],
     showPages = false,
-  } = defineProps<EpPaginationProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     pageChange: [page: number]
     'update:resultsPerPage': [value: number]
   }>()
+
+  defineOptions({ name: 'EpPagination' })
 
   const localResultsPerPage = ref<string | number>(resultsPerPage ?? 10)
 
@@ -136,14 +138,15 @@
           v-if="resultsPerPage !== null"
           class="justify-end align-center gap-10"
         >
-          <ep-select
-            v-model="localResultsPerPage"
-            select-id="resultsPerPage"
-            :options="resultsPerPageOptions"
-            placeholder=""
-            style="--ep-input-width: fit-content;"
-            @update:model-value="onResultsPerPageChange"
-          />
+          <div style="--ep-input-width: fit-content;">
+            <ep-select
+              v-model="localResultsPerPage"
+              select-id="resultsPerPage"
+              :options="resultsPerPageOptions"
+              placeholder=""
+              @update:model-value="onResultsPerPageChange"
+            />
+          </div>
         </ep-flex>
       </slot>
       <ep-flex class="align-center gap-10">

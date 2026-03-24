@@ -16,6 +16,8 @@ This component does not use props, events.
 
 ```vue
 <script setup lang="ts">
+  defineOptions({ name: 'EpFlex' })
+
 </script>
 
 <template>

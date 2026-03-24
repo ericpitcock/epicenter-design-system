@@ -27,18 +27,20 @@
 
   type MenuItemType = 'item' | 'divider' | 'section'
 
-  interface EpMenuItemProps {
+  interface Props {
     /** Whether the menu item is disabled. */
     disabled?: boolean
     /** The type of menu item to render. */
     type?: MenuItemType
   }
 
-  const { disabled = false, type = 'item' } = defineProps<EpMenuItemProps>()
+  const { disabled = false, type = 'item' } = defineProps<Props>()
 
   const emit = defineEmits<{
     select: [event: Event]
   }>()
+
+  defineOptions({ name: 'EpMenuItem' })
 
   const slots = useSlots()
 

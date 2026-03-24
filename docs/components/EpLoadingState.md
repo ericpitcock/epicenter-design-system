@@ -21,10 +21,8 @@ This component does not use events, slots.
     message: string
   }
 
-  interface EpLoadingStateProps {
-    /**
-     * Message object containing icon and message text to display while loading.
-     */
+  interface Props {
+    /** Message object containing icon and message text to display while loading. */
     message?: LoadingMessage
   }
 
@@ -33,7 +31,9 @@ This component does not use events, slots.
       icon: '',
       message: '',
     },
-  } = defineProps<EpLoadingStateProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpLoadingState' })
 </script>
 
 <template>

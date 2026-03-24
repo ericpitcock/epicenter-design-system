@@ -26,19 +26,22 @@ This component does not use events, slots.
 
   import EpHeader from '../header/EpHeader.vue'
 
-  interface EpBrowserFrameProps {
+  const {
+    imageAlt = '',
+    imageSrc = '',
+    url = 'http://website.com',
+    width = '100%',
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpBrowserFrame' })
+
+  interface Props {
     imageAlt?: string
     imageSrc?: string
     url?: string
     width?: string
   }
 
-  const {
-    imageAlt = '',
-    imageSrc = '',
-    url = 'http://website.com',
-    width = '100%',
-  } = defineProps<EpBrowserFrameProps>()
 </script>
 
 <template>

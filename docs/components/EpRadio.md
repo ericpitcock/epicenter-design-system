@@ -28,7 +28,7 @@ This component does not use events.
 <script setup lang="ts">
   import { computed } from 'vue'
 
-  interface EpRadioProps {
+  interface Props {
     /** If true, disables the radio button. */
     disabled?: boolean
     /** The ID attribute for the radio input element. */
@@ -43,9 +43,15 @@ This component does not use events.
     value: string
   }
 
-  const { value, disabled = false, required = false } = defineProps<EpRadioProps>()
+  const {
+    value,
+    disabled = false,
+    required = false,
+  } = defineProps<Props>()
 
   const modelValue = defineModel<string>({ required: true })
+
+  defineOptions({ name: 'EpRadio' })
 
   const classes = computed(() => ({
     'ep-radio--checked': modelValue.value === value,

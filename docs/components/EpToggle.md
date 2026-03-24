@@ -26,7 +26,7 @@ This component does not use slots.
 <script setup lang="ts">
   import { computed } from 'vue'
 
-  interface EpToggleProps {
+  interface Props {
     /** If true, disables the toggle interaction. */
     disabled?: boolean
     /** If true, shows the toggle in the active/on state. */
@@ -41,11 +41,13 @@ This component does not use slots.
     disabled = false,
     isActive = false,
     label = '',
-  } = defineProps<EpToggleProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     toggle: []
   }>()
+
+  defineOptions({ name: 'EpToggle' })
 
   const classes = computed(() => {
     return {

@@ -31,17 +31,19 @@ This component does not use slots.
     to?: string
   }
 
-  interface EpTabsProps {
+  interface Props {
     activeTabIndex?: number
     items?: (string | TabItem)[]
     variant?: string
   }
 
-  const { activeTabIndex = 0, items = [], variant = 'default' } = defineProps<EpTabsProps>()
+  const { activeTabIndex = 0, items = [], variant = 'default' } = defineProps<Props>()
 
   const emit = defineEmits<{
     'tab-click': [payload: { item: TabItem; index: number } | number]
   }>()
+
+  defineOptions({ name: 'EpTabs' })
 
   const tabs = computed((): TabItem[] => {
     return items.map(item => (typeof item === 'object' ? item : { label: item }))
@@ -53,7 +55,7 @@ This component does not use slots.
     }
   }
 
-  const handleKeydown = (index: number, event: KeyboardEvent): void => {
+  const onTabKeydown = (index: number, event: KeyboardEvent): void => {
     const keyActions: Record<string, () => void> = {
       ArrowRight: () => focusTab((index + 1) % tabs.value.length),
       ArrowLeft: () => focusTab((index - 1 + tabs.value.length) % tabs.value.length),
@@ -99,7 +101,7 @@ This component does not use slots.
       :aria-selected="index === activeTabIndex"
       :tabindex="index === activeTabIndex ? 0 : -1"
       @click="onClick({ item, index })"
-      @keydown="handleKeydown(index, $event)"
+      @keydown="onTabKeydown(index, $event)"
     >
       <span>{{ item.label }}</span>
     </component>

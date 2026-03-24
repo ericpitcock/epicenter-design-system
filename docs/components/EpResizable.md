@@ -29,7 +29,7 @@
 
   import type { ResizeDirection } from '../../types'
 
-  interface EpResizableProps {
+  interface Props {
     direction?: ResizeDirection
     initialSize?: string
     maxSize?: number
@@ -41,11 +41,13 @@
     initialSize = '300px',
     maxSize = 800,
     minSize = 200,
-  } = defineProps<EpResizableProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     resize: [size: number]
   }>()
+
+  defineOptions({ name: 'EpResizable' })
 
   const resizablePane = useTemplateRef<HTMLDivElement>('resizablePane')
   const isDragging = ref(false)
@@ -58,7 +60,7 @@
 
   const computedSize = computed(() => hasBeenDragged.value ? `0 0 ${currentSize.value}px` : `0 0 ${initialSize}`)
 
-  const handleDragStart = (event: MouseEvent | TouchEvent): void => {
+  const onDragStart = (event: MouseEvent | TouchEvent): void => {
     if (!hasBeenDragged.value && resizablePane.value) {
       const { width, height } = resizablePane.value.getBoundingClientRect()
       currentSize.value = direction === 'row' ? width : height
@@ -72,13 +74,13 @@
       ? (touch ? touch.clientX : (event as MouseEvent).clientX)
       : (touch ? touch.clientY : (event as MouseEvent).clientY)
 
-    document.addEventListener('mousemove', handleDragging)
-    document.addEventListener('mouseup', handleDragEnd)
-    document.addEventListener('touchmove', handleDragging)
-    document.addEventListener('touchend', handleDragEnd)
+    document.addEventListener('mousemove', onDragging)
+    document.addEventListener('mouseup', onDragEnd)
+    document.addEventListener('touchmove', onDragging)
+    document.addEventListener('touchend', onDragEnd)
   }
 
-  const handleDragging = (event: MouseEvent | TouchEvent): void => {
+  const onDragging = (event: MouseEvent | TouchEvent): void => {
     if (!isDragging.value || currentSize.value === null) return
 
     const touch = 'touches' in event ? event.touches[0] : null
@@ -99,12 +101,12 @@
     startPos.value = currentPos
   }
 
-  const handleDragEnd = (): void => {
+  const onDragEnd = (): void => {
     isDragging.value = false
-    document.removeEventListener('mousemove', handleDragging)
-    document.removeEventListener('mouseup', handleDragEnd)
-    document.removeEventListener('touchmove', handleDragging)
-    document.removeEventListener('touchend', handleDragEnd)
+    document.removeEventListener('mousemove', onDragging)
+    document.removeEventListener('mouseup', onDragEnd)
+    document.removeEventListener('touchmove', onDragging)
+    document.removeEventListener('touchend', onDragEnd)
   }
 </script>
 
@@ -119,8 +121,8 @@
       <slot name="resizable" />
       <div
         :class="['ep-resizable__drag-handle', `ep-resizable__drag-handle--${dragEdge}`]"
-        @mousedown="handleDragStart"
-        @touchstart="handleDragStart"
+        @mousedown="onDragStart"
+        @touchstart="onDragStart"
       />
     </div>
     <div class="ep-resizable__content-pane">

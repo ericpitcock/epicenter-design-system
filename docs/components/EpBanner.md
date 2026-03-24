@@ -29,6 +29,8 @@ This component does not use props.
   }>()
 
   const dismissBanner = (): void => emit('dismissed')
+
+  defineOptions({ name: 'EpBanner' })
 </script>
 
 <template>

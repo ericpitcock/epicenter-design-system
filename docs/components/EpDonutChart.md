@@ -45,7 +45,7 @@ This component does not use events, slots.
 <script setup lang="ts">
   import { computed, onMounted, ref, useTemplateRef } from 'vue'
 
-  interface EpDonutChartProps {
+  interface Props {
     animate?: boolean
     data: number[]
     height?: number
@@ -64,7 +64,9 @@ This component does not use events, slots.
     margin = 0,
     value = 'Value',
     valueTextClass = 'font-size--jumbo',
-  } = defineProps<EpDonutChartProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpDonutChart' })
 
   const container = useTemplateRef<HTMLDivElement>('container')
   const tooltip = useTemplateRef<HTMLDivElement>('tooltip')
@@ -91,7 +93,7 @@ This component does not use events, slots.
   })
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleMouseOver = (event: MouseEvent, d: any): void => {
+  const onMouseOver = (event: MouseEvent, d: any): void => {
     tooltipVisible.value = true
     const containerRect = container.value!.getBoundingClientRect()
     const tooltipRect = tooltip.value!.getBoundingClientRect()
@@ -116,7 +118,7 @@ This component does not use events, slots.
     tooltipText.value = d.data
   }
 
-  const handleMouseOut = (): void => {
+  const onMouseOut = (): void => {
     tooltipVisible.value = false
   }
 
@@ -159,9 +161,9 @@ This component does not use events, slots.
       .attr('fill', (d: any) => color(d.data))
       .attr('stroke', 'var(--interface-surface)')
       .attr('stroke-width', '0.3rem')
-      .on('mouseover', handleMouseOver)
-      .on('mousemove', handleMouseOver)
-      .on('mouseout', handleMouseOut)
+      .on('mouseover', onMouseOver)
+      .on('mousemove', onMouseOver)
+      .on('mouseout', onMouseOut)
 
     if (animate) {
       arcs.select('path')

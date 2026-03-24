@@ -18,7 +18,7 @@ This component does not use events, slots.
 
 ```vue
 <script setup lang="ts">
-  interface EpItemCountProps {
+  interface Props {
     /** The count of items to display. */
     count: number
     /** The plural form of the item name. */
@@ -27,7 +27,9 @@ This component does not use events, slots.
     singular: string
   }
 
-  const props = defineProps<EpItemCountProps>()
+  const props = defineProps<Props>()
+
+  defineOptions({ name: 'EpItemCount' })
 </script>
 
 <template>

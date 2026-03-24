@@ -18,6 +18,8 @@ This component does not use props, events.
 
 ```vue
 <script setup lang="ts">
+  defineOptions({ name: 'EpHeader' })
+
 </script>
 
 <template>

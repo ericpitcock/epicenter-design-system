@@ -27,7 +27,7 @@ This component does not use events.
 <script setup lang="ts">
   import { computed } from 'vue'
 
-  interface EpEmptyStateProps {
+  interface Props {
     /**
      * Layout direction of the empty state content.
      * @values 'column', 'row'
@@ -43,7 +43,9 @@ This component does not use events.
   const {
     direction = 'column',
     justify = 'center',
-  } = defineProps<EpEmptyStateProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpEmptyState' })
 
   const classes = computed(() => {
     return {

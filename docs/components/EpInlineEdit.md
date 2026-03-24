@@ -22,16 +22,16 @@
 ```vue
 <script setup lang="ts">
   import ArrowTurnBackward from '@ericpitcock/epicenter-icons-vue/ArrowTurnBackward'
-  import { ref, useTemplateRef, watch } from 'vue'
+  import { onUpdated, ref, useTemplateRef } from 'vue'
 
   import EpFlex from '../flexbox/EpFlex.vue'
 
-  interface EpInlineEditProps {
+  interface Props {
     /** If true, disables editing. */
     disabled?: boolean
   }
 
-  const { disabled = false } = defineProps<EpInlineEditProps>()
+  const { disabled = false } = defineProps<Props>()
 
   const emit = defineEmits<{
     save: [value: string]
@@ -39,11 +39,14 @@
 
   const modelValue = defineModel<string>({ required: true })
 
+  defineOptions({ name: 'EpInlineEdit' })
+
   const contentRef = useTemplateRef<HTMLDivElement>('contentRef')
   const isEditing = ref(false)
   const originalValue = ref('')
   const cancelled = ref(false)
   const hasChanged = ref(false)
+  const previousModelValue = ref(modelValue.value)
 
   const onFocus = (): void => {
     isEditing.value = true
@@ -104,24 +107,25 @@
     contentRef.value?.blur()
   }
 
-  // Sync contenteditable text when modelValue changes externally
-  watch(modelValue, (newVal) => {
-    if (contentRef.value && contentRef.value.textContent !== newVal) {
-      contentRef.value.textContent = newVal
+  onUpdated(() => {
+    if (previousModelValue.value === modelValue.value) return
+
+    previousModelValue.value = modelValue.value
+
+    if (contentRef.value && contentRef.value.textContent !== modelValue.value) {
+      contentRef.value.textContent = modelValue.value
     }
   })
 </script>
 
 <template>
-  <div
-    :class="[
-      'ep-inline-edit',
-      {
-        'ep-inline-edit--editing': isEditing,
-        'ep-inline-edit--disabled': disabled,
-      }
-    ]"
-  >
+  <div :class="[
+    'ep-inline-edit',
+    {
+      'ep-inline-edit--editing': isEditing,
+      'ep-inline-edit--disabled': disabled,
+    }
+  ]">
     <span
       v-if="$slots['icon-left']"
       class="ep-inline-edit__icon"

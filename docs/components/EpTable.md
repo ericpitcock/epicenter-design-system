@@ -193,7 +193,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
 
   import EpTableCell from './EpTableCell.vue'
 
-  interface EpTableProps {
+  interface Props {
     bordered?: boolean
     columns: TableColumn[]
     compact?: boolean
@@ -216,12 +216,14 @@ The `sorter` function receives two values and should return a number: -1 for sor
     showActionsMenu = false,
     stickyHeader = false,
     striped = false,
-  } = defineProps<EpTableProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     'row-click': [row: TableRow]
     'container-scroll': [scrollLeft: number]
   }>()
+
+  defineOptions({ name: 'EpTable' })
 
   const visibleColumns = computed(() => {
     return columns.filter(column => !hiddenColumns.includes(column.key))

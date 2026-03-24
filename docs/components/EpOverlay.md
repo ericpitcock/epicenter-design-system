@@ -25,11 +25,11 @@
 
 ```vue
 <script setup lang="ts">
-  import { useTemplateRef, watch } from 'vue'
+  import { onMounted, onUpdated, ref, useTemplateRef } from 'vue'
 
   type OverlayType = 'modal' | 'toast'
 
-  interface EpOverlayProps {
+  interface Props {
     autoDismiss?: boolean
     backdropClose?: boolean
     duration?: number
@@ -41,29 +41,37 @@
     backdropClose = true,
     modelValue = false,
     type = 'modal',
-  } = defineProps<EpOverlayProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     'update:modelValue': [value: boolean]
   }>()
 
-  const dialog = useTemplateRef<HTMLDialogElement>('dialog')
+  defineOptions({ name: 'EpOverlay' })
 
-  watch(() => modelValue, (newVal: boolean) => {
+  const dialog = useTemplateRef<HTMLDialogElement>('dialog')
+  const lastOpenState = ref<boolean | null>(null)
+
+  const syncDialogState = (): void => {
     if (!dialog.value) return
 
-    if (newVal === true) {
+    if (lastOpenState.value === modelValue) return
+
+    lastOpenState.value = modelValue
+
+    if (modelValue === true) {
       if (type === 'modal') {
         dialog.value.showModal()
       } else {
         dialog.value.show()
       }
-    } else if (newVal === false) {
+    } else {
       dialog.value.close()
     }
-  },
-    { immediate: true }
-  )
+  }
+
+  onMounted(syncDialogState)
+  onUpdated(syncDialogState)
 
   const onBackdropClick = (): void => {
     if (!backdropClose) return

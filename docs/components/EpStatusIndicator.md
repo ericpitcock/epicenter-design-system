@@ -21,14 +21,16 @@ This component does not use events.
 
 ```vue
 <script setup lang="ts">
-  interface EpStatusIndicatorProps {
+  interface Props {
     /**
      * If true, the status indicator will pulse.
      */
     pulse?: boolean
   }
 
-  const { pulse = false } = defineProps<EpStatusIndicatorProps>()
+  const { pulse = false } = defineProps<Props>()
+
+  defineOptions({ name: 'EpStatusIndicator' })
 </script>
 
 <template>

@@ -21,49 +21,17 @@ This component does not use slots.
 ## Component Code
 
 ```vue
-<!--
-  EpCaseStudyCarousel - A feature-rich carousel component with center-snap behavior
-  
-  Features:
-  1. First image begins in the center of the viewport
-  2. Smooth scrolling with snap-to-center behavior
-  3. Adjacent images are always visible on the edges
-  4. Clickable images to navigate
-  5. Rounded corner containers that clip images
-  6. Image zoom and positioning support
-  7. Flexible caption positioning (9 positions)
-  8. Dot navigation indicators
-  
-  Image Object Properties:
-  - src: string (required) - Image source URL
-  - alt: string - Alt text for accessibility
-  - caption: string - Caption text to display
-  - aspectRatio: string - e.g., "16/9", "4/3"
-  - zoom: number - Scale factor (e.g., 1.5 for 150%)
-  - positionX: string - Horizontal position (e.g., "50%", "left", "right")
-  - positionY: string - Vertical position (e.g., "50%", "top", "bottom")
-  - captionPosition: string - One of:
-      "top-left", "top-center", "top-right",
-      "left-center", "center", "right-center",
-      "bottom-left", "bottom-center", "bottom-right"
-  
-  Events:
-  - @image-click: Emitted when an image is clicked { image, index }
-  - @slide-change: Emitted when the active slide changes { image, index }
-  
-  CSS Custom Properties:
-  - --ep-case-study-carousel-height: Carousel height (default: 50vh)
-  - --ep-case-study-carousel-gap: Gap between images (default: 2rem)
-  - --ep-case-study-carousel-border-radius: Border radius (default: 1rem)
-  - --ep-case-study-carousel-caption-border-radius: Caption border radius (default: 0.5rem)
--->
 <script setup lang="ts">
   import ArrowLeft01 from '@ericpitcock/epicenter-icons-vue/ArrowLeft01'
   import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
-  import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
+  import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref, useTemplateRef } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
   import EpLazyImage from '../lazy-image/EpLazyImage.vue'
+
+  interface Props {
+    images?: CarouselImage[]
+  }
 
   interface CarouselImage {
     alt?: string
@@ -76,36 +44,27 @@ This component does not use slots.
     zoom?: number
   }
 
-  interface EpCarouselProps {
-    images?: CarouselImage[]
-  }
-
-  const { images = [] } = defineProps<EpCarouselProps>()
+  const { images = [] } = defineProps<Props>()
 
   const emit = defineEmits<{
     'image-click': [payload: { image: CarouselImage; index: number }]
     'slide-change': [payload: { image: CarouselImage; index: number }]
   }>()
 
+  defineOptions({ name: 'EpCarousel' })
+
   const carouselContainer = useTemplateRef<HTMLDivElement>('carouselContainer')
   const carouselTrack = useTemplateRef<HTMLDivElement>('carouselTrack')
-  const itemRefs = ref<(HTMLDivElement | null)[]>([])
+  const itemRefs = ref<(HTMLElement | null)[]>([])
   const currentIndex = ref(0)
   const shouldLoadImages = ref(false)
+  const imagesSignature = computed(() => JSON.stringify(images))
+  const previousImagesSignature = ref(imagesSignature.value)
   let scrollTimeout: ReturnType<typeof setTimeout> | null = null
   let containerObserver: IntersectionObserver | null = null
   let resizeObserver: ResizeObserver | null = null
 
-  watch(() => images, () => {
-    currentIndex.value = 0
-    nextTick(() => {
-      if (itemRefs.value[0] && carouselTrack.value) {
-        scrollToImage(0)
-      }
-    })
-  })
-
-  const handleScroll = (): void => {
+  const onScroll = (): void => {
     if (scrollTimeout) {
       clearTimeout(scrollTimeout)
     }
@@ -245,6 +204,19 @@ This component does not use slots.
     })
   })
 
+  onUpdated(() => {
+    if (previousImagesSignature.value === imagesSignature.value) return
+
+    previousImagesSignature.value = imagesSignature.value
+    currentIndex.value = 0
+
+    nextTick(() => {
+      if (itemRefs.value[0] && carouselTrack.value) {
+        scrollToImage(0)
+      }
+    })
+  })
+
   onBeforeUnmount(() => {
     if (scrollTimeout) {
       clearTimeout(scrollTimeout)
@@ -266,20 +238,17 @@ This component does not use slots.
     <div
       ref="carouselTrack"
       class="carousel-track"
-      @scroll="handleScroll"
+      @scroll="onScroll"
     >
       <div class="carousel-spacer" />
-      <div
+      <button
         v-for="(image, index) in images"
         :key="image?.src ?? index"
-        :ref="el => itemRefs[index] = (el as HTMLDivElement | null)"
+        :ref="el => itemRefs[index] = (el as HTMLElement | null)"
+        type="button"
         class="carousel-item"
         :class="{ 'is-active': currentIndex === index }"
-        role="button"
-        tabindex="0"
         @click="scrollToImage(index)"
-        @keydown.enter.prevent="scrollToImage(index)"
-        @keydown.space.prevent="scrollToImage(index)"
       >
         <div
           class="carousel-image-container"
@@ -301,7 +270,7 @@ This component does not use slots.
             {{ image.caption }}
           </div>
         </div>
-      </div>
+      </button>
       <div class="carousel-spacer" />
     </div>
 

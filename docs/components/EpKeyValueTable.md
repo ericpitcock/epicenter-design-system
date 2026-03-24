@@ -32,7 +32,7 @@ This component does not use events.
     name: string
   }
 
-  interface EpKeyValueTableProps {
+  interface Props {
     commonKeyWidth?: boolean
     data: KeyValueSection | KeyValueSection[]
     sectionHeaders?: boolean
@@ -42,7 +42,9 @@ This component does not use events.
     data,
     commonKeyWidth = false,
     sectionHeaders = false,
-  } = defineProps<EpKeyValueTableProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpKeyValueTable' })
 
   const processedData = computed<KeyValueSection[]>(() => {
     if (Array.isArray(data)) {

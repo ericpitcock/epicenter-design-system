@@ -35,7 +35,7 @@ This component does not use slots.
   import EpFooter from '../footer/EpFooter.vue'
   import EpSelect from '../select/EpSelect.vue'
 
-  interface EpTablePaginationProps {
+  interface Props {
     currentPage: number
     resultsPerPage: number
     showPages?: boolean
@@ -47,12 +47,14 @@ This component does not use slots.
     currentPage,
     totalPages,
     showPages = false,
-  } = defineProps<EpTablePaginationProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     pageChange: [page: number]
     'update:resultsPerPage': [value: number]
   }>()
+
+  defineOptions({ name: 'EpTablePagination' })
 
   const resultsPerPageOptions: SelectOption[] = [
     { label: '10', value: 10 },
@@ -169,13 +171,14 @@ This component does not use slots.
       <template #left>
         <ep-flex class="justify-end align-center gap-10 text--overflow-hidden">
           Results per page
-          <ep-select
-            :model-value="resultsPerPage"
-            select-id="resultsPerPage"
-            :options="resultsPerPageOptions"
-            width="7.5rem"
-            @update:model-value="onResultsPerPageChange"
-          />
+          <div style="--ep-input-width: 7.5rem;">
+            <ep-select
+              :model-value="resultsPerPage"
+              select-id="resultsPerPage"
+              :options="resultsPerPageOptions"
+              @update:model-value="onResultsPerPageChange"
+            />
+          </div>
         </ep-flex>
       </template>
     </ep-footer>

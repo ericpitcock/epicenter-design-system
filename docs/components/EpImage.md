@@ -26,7 +26,7 @@ This component does not use events, slots.
 <script setup lang="ts">
   import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 
-  interface EpImageProps {
+  interface Props {
     alt?: string
     className?: string
     height?: string | number
@@ -48,7 +48,9 @@ This component does not use events, slots.
     placeholderColor = '#f5f5f5',
     placeholderOpacity = 1,
     width = '100%',
-  } = defineProps<EpImageProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpImage' })
 
   const isLoaded = ref(false)
   const imageEl = useTemplateRef<HTMLElement>('imageEl')

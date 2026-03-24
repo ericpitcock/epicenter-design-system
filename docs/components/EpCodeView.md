@@ -38,9 +38,9 @@ This component does not use events, slots.
 ```vue
 <script setup lang="ts">
   import { codeToHtml } from 'shiki'
-  import { onMounted, ref, watch } from 'vue'
+  import { computed, onMounted, onUpdated, ref } from 'vue'
 
-  interface EpCodeViewProps {
+  interface Props {
     code: string
     language: string
     theme?: string
@@ -50,11 +50,21 @@ This component does not use events, slots.
     code,
     language,
     theme = 'one-dark-pro',
-  } = defineProps<EpCodeViewProps>()
+  } = defineProps<Props>()
+
+  defineOptions({ name: 'EpCodeView' })
 
   const highlightedCode = ref('')
+  const highlightedSignature = ref('')
+  const highlightSignature = computed(() => `${language}::${theme}::${code}`)
 
   const highlightCode = async (): Promise<void> => {
+    const signature = highlightSignature.value
+
+    if (highlightedSignature.value === signature) return
+
+    highlightedSignature.value = signature
+
     try {
       highlightedCode.value = await codeToHtml(code, {
         lang: language,
@@ -69,20 +79,12 @@ This component does not use events, slots.
     }
   }
 
-  watch(() => code, () => {
-    highlightCode()
-  })
-
-  watch(() => language, () => {
-    highlightCode()
-  })
-
-  watch(() => theme, () => {
-    highlightCode()
-  })
-
   onMounted(() => {
-    highlightCode()
+    void highlightCode()
+  })
+
+  onUpdated(() => {
+    void highlightCode()
   })
 </script>
 
@@ -94,7 +96,7 @@ This component does not use events, slots.
   />
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
   .ep-code-view pre {
     font-family: var(--font-family-monospace);
     white-space: pre;

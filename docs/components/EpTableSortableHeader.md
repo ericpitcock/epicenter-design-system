@@ -31,7 +31,7 @@ This component does not use slots.
 
   import type { TableColumn, SortOrder } from '../../types'
 
-  interface EpTableSortableHeaderProps {
+  interface Props {
     cellWidths?: Record<string, string>[]
     column: TableColumn
     columnIndex?: number | null
@@ -44,11 +44,13 @@ This component does not use slots.
     column,
     cellWidths = [],
     columnIndex = null,
-  } = defineProps<EpTableSortableHeaderProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     sort: [key: string]
   }>()
+
+  defineOptions({ name: 'EpTableSortableHeader' })
 
   const headerClass = computed(() => {
     return [

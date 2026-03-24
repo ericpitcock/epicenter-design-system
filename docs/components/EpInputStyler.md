@@ -39,7 +39,7 @@
 
   import type { Size } from '../../types'
 
-  interface EpInputStylerProps {
+  interface Props {
     clearable?: boolean
     disabled?: boolean
     error?: boolean
@@ -61,11 +61,13 @@
     id = '',
     label = '',
     size = 'default',
-  } = defineProps<EpInputStylerProps>()
+  } = defineProps<Props>()
 
   defineEmits<{
     click: []
   }>()
+
+  defineOptions({ name: 'EpInputStyler' })
 
   const computedClasses = computed(() => ({
     [`ep-input-styler--${size}`]: size !== 'default',

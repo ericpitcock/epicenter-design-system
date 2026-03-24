@@ -126,9 +126,9 @@ const dropdownRef = ref(null)
 ```vue
 <script setup lang="ts">
   import { onClickOutside } from '@vueuse/core'
-  import { computed, nextTick, ref, useId, useTemplateRef, watch } from 'vue'
+  import { computed, nextTick, ref, useId, useTemplateRef } from 'vue'
 
-  interface EpDropdownProps {
+  interface Props {
     alignRight?: boolean
     autoFocus?: boolean
     disabled?: boolean
@@ -140,12 +140,14 @@ const dropdownRef = ref(null)
     autoFocus = true,
     disabled = false,
     showOnHover = false,
-  } = defineProps<EpDropdownProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     click: []
     close: []
   }>()
+
+  defineOptions({ name: 'EpDropdown' })
 
   const uniqueId = useId()
   const triggerId = `ep-dropdown-trigger-${uniqueId}`
@@ -167,10 +169,27 @@ const dropdownRef = ref(null)
 
   const dropdownVisible = ref(false)
 
+  const focusFirstMenuItem = async (): Promise<void> => {
+    await nextTick()
+
+    if (!autoFocus) return
+
+    const firstMenuItem = dropdownRef.value?.querySelector('[role="menuitem"]') as HTMLElement | null
+    firstMenuItem?.focus()
+  }
+
+  const focusTrigger = async (): Promise<void> => {
+    await nextTick()
+
+    const trigger = dropdownRef.value?.querySelector(`#${triggerId}`) as HTMLElement | null
+    trigger?.focus()
+  }
+
   const openDropdown = (): void => {
     if (disabled || dropdownVisible.value) return
 
     dropdownVisible.value = true
+    void focusFirstMenuItem()
   }
 
   const closeDropdown = (): void => {
@@ -178,27 +197,17 @@ const dropdownRef = ref(null)
 
     dropdownVisible.value = false
     emit('close')
+    void focusTrigger()
   }
-
-  // Focus management
-  watch(dropdownVisible, async (isOpen: boolean) => {
-    await nextTick()
-
-    if (isOpen) {
-      if (autoFocus) {
-        const firstMenuItem = dropdownRef.value?.querySelector('[role="menuitem"]') as HTMLElement | null
-        firstMenuItem?.focus()
-      }
-    } else {
-      const trigger = dropdownRef.value?.querySelector(`#${triggerId}`) as HTMLElement | null
-      trigger?.focus()
-    }
-  })
 
   const toggleDropdown = (): void => {
     if (disabled || showOnHover) return
 
-    dropdownVisible.value = !dropdownVisible.value
+    if (dropdownVisible.value) {
+      closeDropdown()
+    } else {
+      openDropdown()
+    }
   }
 
   const onKeydown = (event: KeyboardEvent): void => {
@@ -218,13 +227,13 @@ const dropdownRef = ref(null)
 
   const onMouseover = (): void => {
     if (!disabled && showOnHover) {
-      dropdownVisible.value = true
+      openDropdown()
     }
   }
 
   const onMouseleave = (): void => {
     if (!disabled && showOnHover) {
-      dropdownVisible.value = false
+      closeDropdown()
     }
   }
 

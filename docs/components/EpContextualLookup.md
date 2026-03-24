@@ -27,7 +27,7 @@
 <script setup lang="ts">
   import ArrowUpRight01 from '@ericpitcock/epicenter-icons-vue/ArrowUpRight01'
   import Asterisk02 from '@ericpitcock/epicenter-icons-vue/Asterisk02'
-  import { computed, ref, watch } from 'vue'
+  import { computed, onUpdated, ref } from 'vue'
 
   import EpButton from '../button/EpButton.vue'
   import EpDropdown from '../dropdown/EpDropdown.vue'
@@ -37,24 +37,18 @@
   import EpMenu from '../menu/EpMenu.vue'
   import EpMenuItem from '../menu/EpMenuItem.vue'
 
-  export interface EnrichmentOption {
+  interface EnrichmentOption {
     [key: string]: unknown
     label: string
   }
 
-  export interface EnrichmentResult {
+  interface EnrichmentResult {
     data: Record<string, unknown>
     name: string
   }
 
-  export interface EnrichmentError {
-    error: string
-  }
-
-  export type EnrichmentEntry = EnrichmentResult | EnrichmentError
-
-  interface EpContextualLookupProps {
-    enrichmentData?: Record<string, EnrichmentEntry> | null
+  interface Props {
+    enrichmentData?: Record<string, EnrichmentResult | { error: string }> | null
     enrichmentOptions: EnrichmentOption[]
     label?: string
     value?: string
@@ -64,19 +58,22 @@
     label = '',
     enrichmentData = null,
     value = '',
-  } = defineProps<EpContextualLookupProps>()
+  } = defineProps<Props>()
 
   const emit = defineEmits<{
     lookup: [source: EnrichmentOption, value: string]
   }>()
+
+  defineOptions({ name: 'EpContextualLookup' })
 
   const hoveredItem = ref<EnrichmentOption | null>(null)
   const showPreview = ref(false)
   const requestedSources = ref(new Set<string>())
 
   const resolvedValue = computed(() => value || label)
+  const previousResolvedValue = ref(resolvedValue.value)
 
-  const currentSourceData = computed<EnrichmentEntry | undefined>(() => {
+  const currentSourceData = computed<EnrichmentResult | { error: string } | undefined>(() => {
     if (!hoveredItem.value || !enrichmentData) return undefined
     return enrichmentData[hoveredItem.value.label]
   })
@@ -115,8 +112,10 @@
     emit('lookup', hoveredItem.value, resolvedValue.value)
   }
 
-  // Reset cache when the enriched value changes
-  watch(resolvedValue, () => {
+  onUpdated(() => {
+    if (previousResolvedValue.value === resolvedValue.value) return
+
+    previousResolvedValue.value = resolvedValue.value
     requestedSources.value.clear()
     hoveredItem.value = null
     showPreview.value = false

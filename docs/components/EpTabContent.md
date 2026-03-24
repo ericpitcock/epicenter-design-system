@@ -22,7 +22,7 @@ This component does not use events.
 
 ```vue
 <script setup lang="ts">
-  interface EpTabContentProps {
+  interface Props {
     /**
      * The index of the currently active tab.
      */
@@ -33,7 +33,9 @@ This component does not use events.
     items?: unknown[]
   }
 
-  const { activeTabIndex = 0, items = [] } = defineProps<EpTabContentProps>()
+  const { activeTabIndex = 0, items = [] } = defineProps<Props>()
+
+  defineOptions({ name: 'EpTabContent' })
 </script>
 
 <template>

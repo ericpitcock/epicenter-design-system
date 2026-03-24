@@ -10,6 +10,10 @@ This component does not use props, events, slots.
 ## Component Code
 
 ```vue
+<script setup lang="ts">
+  defineOptions({ name: 'EpLoaderOrbit' })
+</script>
+
 <template>
   <svg
     class="ep-loader ep-loader--orbit"
