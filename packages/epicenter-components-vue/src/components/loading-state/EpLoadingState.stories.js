@@ -13,7 +13,7 @@ import EpMenu from '@/components/menu/EpMenu.vue'
 import EpMenuItem from '@/components/menu/EpMenuItem.vue'
 import EpTable from '@/components/table/EpTable.vue'
 import EpTableHead from '@/components/table/EpTableHead.vue'
-import useExclude from '@/components/table/useExclude.ts'
+import { useExclude } from '@/components/table/useExclude.ts'
 
 export default {
   title: 'Components/Loading State',
