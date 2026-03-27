@@ -6,10 +6,6 @@
   import EpButton from '../button/EpButton.vue'
   import EpLazyImage from '../lazy-image/EpLazyImage.vue'
 
-  interface Props {
-    images?: CarouselImage[]
-  }
-
   interface CarouselImage {
     alt?: string
     aspectRatio?: string
@@ -19,6 +15,10 @@
     positionY?: string
     src: string
     zoom?: number
+  }
+
+  interface Props {
+    images?: CarouselImage[]
   }
 
   const { images = [] } = defineProps<Props>()

@@ -1,15 +1,15 @@
 <script setup lang="ts">
   import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
 
-  interface Props {
-    /** An array of breadcrumb items with label, to, and optional customClass properties. */
-    items?: BreadcrumbItem[]
-  }
-
   interface BreadcrumbItem {
     customClass?: string
     label: string
     to?: string
+  }
+
+  interface Props {
+    /** An array of breadcrumb items with label, to, and optional customClass properties. */
+    items?: BreadcrumbItem[]
   }
 
   const { items = [] } = defineProps<Props>()

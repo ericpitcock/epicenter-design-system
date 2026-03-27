@@ -3,6 +3,13 @@
 
   import EpHeader from '../header/EpHeader.vue'
 
+  interface Props {
+    imageAlt?: string
+    imageSrc?: string
+    url?: string
+    width?: string
+  }
+
   const {
     imageAlt = '',
     imageSrc = '',
@@ -11,13 +18,6 @@
   } = defineProps<Props>()
 
   defineOptions({ name: 'EpBrowserFrame' })
-
-  interface Props {
-    imageAlt?: string
-    imageSrc?: string
-    url?: string
-    width?: string
-  }
 
 </script>
 
