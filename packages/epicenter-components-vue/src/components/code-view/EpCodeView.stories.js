@@ -7,7 +7,7 @@ import EpContainer from '@/components/container/EpContainer.vue'
 import EpHeader from '@/components/header/EpHeader.vue'
 import EpTabContent from '@/components/tabs/EpTabContent.vue'
 import EpTabs from '@/components/tabs/EpTabs.vue'
-import useTabs from '@/components/tabs/useTabs'
+import { useTabs } from '@/components/tabs/useTabs'
 
 export default {
   title: 'Components/Code View',
