@@ -1,8 +1,7 @@
 <script setup>
+  import { EpTooltip } from '@ericpitcock/epicenter-components-vue'
   import { useClipboard } from '@vueuse/core'
   import { ref } from 'vue'
-
-  import { EpTooltip } from '@ericpitcock/epicenter-components-vue'
 
   const props = defineProps({
     colors: {

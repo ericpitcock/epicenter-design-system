@@ -1,9 +1,8 @@
+import { EpThemeToggle } from '@ericpitcock/epicenter-components-vue'
 import { centeredSurface } from '@sb/helpers/decorators.js'
 import { useStorybookStore } from '@sb/store'
 import { addons } from 'storybook/preview-api'
 import { computed, watch } from 'vue'
-
-import { EpThemeToggle } from '@ericpitcock/epicenter-components-vue'
 const channel = addons.getChannel()
 
 export default {

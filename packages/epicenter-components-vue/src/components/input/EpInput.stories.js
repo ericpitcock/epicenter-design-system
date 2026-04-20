@@ -1,8 +1,7 @@
+import { EpInput } from '@ericpitcock/epicenter-components-vue'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { computed, ref, toRef, watch } from 'vue'
-
-import { EpInput } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Input',

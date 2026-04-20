@@ -1,8 +1,7 @@
 <script setup>
+  import { EpContainer, EpFlex, EpHeader, EpTabContent, EpTabs, useTabs } from '@ericpitcock/epicenter-components-vue'
   import { faker } from '@faker-js/faker'
   import { ref } from 'vue'
-
-  import { EpContainer, EpFlex, EpHeader, EpTabContent, EpTabs, useTabs } from '@ericpitcock/epicenter-components-vue'
 
   import TextColorItem from './TextColorItem.vue'
 

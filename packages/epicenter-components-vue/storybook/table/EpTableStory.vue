@@ -1,11 +1,10 @@
 <!-- eslint-disable vue/no-template-shadow -->
 <script setup>
+  import { EpBadge, EpButton, EpCheckbox, EpContainer, EpDropdown, EpEmptyState, EpFlex, EpMenu, EpMenuItem, EpPagination, EpMultiSearch, EpTable, EpTableCheckboxFilters, EpTableHead, EpTableSortableHeader, useColumnFilters, useDataFilters, useExclude, usePagination, useSearch, useSorting } from '@ericpitcock/epicenter-components-vue'
   import Layout2Column from '@ericpitcock/epicenter-icons-vue/Layout2Column'
   import MoreVertical from '@ericpitcock/epicenter-icons-vue/MoreVertical'
   import { columns, fakeTableData } from '@sb/data/tableData'
   import { ref } from 'vue'
-
-  import { EpBadge, EpButton, EpCheckbox, EpContainer, EpDropdown, EpEmptyState, EpFlex, EpMenu, EpMenuItem, EpPagination, EpMultiSearch, EpTable, EpTableCheckboxFilters, EpTableHead, EpTableSortableHeader, useColumnFilters, useDataFilters, useExclude, usePagination, useSearch, useSorting } from '@ericpitcock/epicenter-components-vue'
 
   const tableData = ref(fakeTableData(340))
   const columnsRef = ref(columns)

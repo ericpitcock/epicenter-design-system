@@ -1,9 +1,8 @@
+import { EpButton, EpStatusIndicator } from '@ericpitcock/epicenter-components-vue'
 import { paddedBg } from '@sb/helpers/decorators.js'
 import { useClipboard } from '@vueuse/core'
 import blinder from 'color-blind'
 import { computed, ref, watch } from 'vue'
-
-import { EpButton, EpStatusIndicator } from '@ericpitcock/epicenter-components-vue'
 
 import chartSeq from '../../../../epicenter-styles/tokens/color/chart-sequence.yaml'
 

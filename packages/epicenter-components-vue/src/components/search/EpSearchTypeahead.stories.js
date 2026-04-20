@@ -1,7 +1,6 @@
+import { EpSearchTypeahead } from '@ericpitcock/epicenter-components-vue'
 import webColors from '@sb/data/webColors.json'
 import { ref } from 'vue'
-
-import { EpSearchTypeahead } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Search/Typeahead',

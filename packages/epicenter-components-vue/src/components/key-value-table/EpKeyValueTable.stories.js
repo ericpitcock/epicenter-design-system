@@ -1,7 +1,6 @@
+import { EpContainer, EpContextualLookup, EpKeyValueTable } from '@ericpitcock/epicenter-components-vue'
 import { enrichmentSources, getFakeEnrichmentResponse } from '@sb/data/enrichmentData.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
-
-import { EpContainer, EpContextualLookup, EpKeyValueTable } from '@ericpitcock/epicenter-components-vue'
 
 const primaryData = [{
   name: 'Primary',

@@ -1,7 +1,6 @@
+import { EpButton } from '@ericpitcock/epicenter-components-vue'
 import { useClipboard } from '@vueuse/core'
 import { computed, ref } from 'vue'
-
-import { EpButton } from '@ericpitcock/epicenter-components-vue'
 
 import GradientBox from './GradientBox.vue'
 

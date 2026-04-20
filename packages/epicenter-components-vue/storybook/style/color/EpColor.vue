@@ -1,12 +1,11 @@
 <script setup>
+  import { EpButton, EpContainer, EpFlex, EpMenu, EpMenuItem, EpTable, EpTableHead, EpTooltip } from '@ericpitcock/epicenter-components-vue'
   import Alert02 from '@ericpitcock/epicenter-icons-vue/Alert02'
   import Tick02 from '@ericpitcock/epicenter-icons-vue/Tick02'
   import { faker } from '@faker-js/faker'
   import { useClipboard } from '@vueuse/core'
   import chroma from 'chroma-js'
   import { computed, ref } from 'vue'
-
-  import { EpButton, EpContainer, EpFlex, EpMenu, EpMenuItem, EpTable, EpTableHead, EpTooltip } from '@ericpitcock/epicenter-components-vue'
 
   import chartSeq from '../../../../epicenter-styles/tokens/color/chart-sequence.yaml'
   import colors from '../../../../epicenter-styles/tokens/color/color.yaml'

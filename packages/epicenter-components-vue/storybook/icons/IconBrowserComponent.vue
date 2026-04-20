@@ -1,9 +1,8 @@
 <script setup>
   import '../../../storybook-shared/icon-browser.css'
+  import { EpFlex, EpInput, EpPagination, EpSelect } from '@ericpitcock/epicenter-components-vue'
   import { createIconImports, getComponentName, iconsData } from '@sb/helpers/useIcons.js'
   import { computed, defineAsyncComponent, ref, watch } from 'vue'
-
-  import { EpFlex, EpInput, EpPagination, EpSelect } from '@ericpitcock/epicenter-components-vue'
 
   const props = defineProps({
     size: { type: Number, default: 72 },

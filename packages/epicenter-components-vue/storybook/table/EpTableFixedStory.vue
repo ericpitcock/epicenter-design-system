@@ -1,9 +1,8 @@
 <!-- eslint-disable vue/no-template-shadow -->
 <script setup>
+  import { EpTable, EpTableHead, EpTableSortableHeader, useFixedHeader, useSorting } from '@ericpitcock/epicenter-components-vue'
   import { columns, fakeTableData } from '@sb/data/tableData'
   import { ref } from 'vue'
-
-  import { EpTable, EpTableHead, EpTableSortableHeader, useFixedHeader, useSorting } from '@ericpitcock/epicenter-components-vue'
 
   const tableColumnsRef = ref(columns)
   const tableDataRef = ref(fakeTableData(60))

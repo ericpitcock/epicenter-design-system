@@ -1,6 +1,5 @@
-import { centeredBg } from '@sb/helpers/decorators.js'
-
 import { EpTooltip } from '@ericpitcock/epicenter-components-vue'
+import { centeredBg } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Tooltip',

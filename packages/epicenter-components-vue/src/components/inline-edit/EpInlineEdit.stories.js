@@ -1,8 +1,7 @@
+import { EpInlineEdit } from '@ericpitcock/epicenter-components-vue'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { ref, toRef } from 'vue'
-
-import { EpInlineEdit } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Inline Edit',

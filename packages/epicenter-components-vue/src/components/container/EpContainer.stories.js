@@ -1,7 +1,6 @@
+import { EpContainer, EpHeader } from '@ericpitcock/epicenter-components-vue'
 import { faker } from '@faker-js/faker'
 import { computed } from 'vue'
-
-import { EpContainer, EpHeader } from '@ericpitcock/epicenter-components-vue'
 
 const container = () => {
   return {

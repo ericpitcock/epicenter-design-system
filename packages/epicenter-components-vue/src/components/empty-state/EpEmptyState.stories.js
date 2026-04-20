@@ -1,6 +1,5 @@
-import { paddedBg } from '@sb/helpers/decorators.js'
-
 import { EpButton, EpContainer, EpEmptyState } from '@ericpitcock/epicenter-components-vue'
+import { paddedBg } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Empty State',

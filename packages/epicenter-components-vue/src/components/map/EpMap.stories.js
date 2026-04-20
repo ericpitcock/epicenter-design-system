@@ -1,6 +1,5 @@
-import { watch } from 'vue'
-
 import { EpMap } from '@ericpitcock/epicenter-components-vue'
+import { watch } from 'vue'
 
 const mapStyles = {
   'Dark (Ep)': 'mapbox://styles/ericpitcock/cke3hfy27072i1bmzjovpgvph',

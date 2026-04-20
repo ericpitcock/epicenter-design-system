@@ -1,7 +1,6 @@
+import { EpFlex, EpMultiSearch } from '@ericpitcock/epicenter-components-vue'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { computed,ref } from 'vue'
-
-import { EpFlex, EpMultiSearch } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Search/Multisearch',

@@ -1,8 +1,7 @@
+import { EpContextualLookup, EpFlex } from '@ericpitcock/epicenter-components-vue'
 import { enrichmentSources, getFakeEnrichmentResponse } from '@sb/data/enrichmentData.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
 import { ref } from 'vue'
-
-import { EpContextualLookup, EpFlex } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Contextual Lookup',

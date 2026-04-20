@@ -1,7 +1,6 @@
+import { EpBadge, EpFlex, EpResizable } from '@ericpitcock/epicenter-components-vue'
 import { mcaStory } from '@sb/helpers/McaStory.js'
 import { computed, ref } from 'vue'
-
-import { EpBadge, EpFlex, EpResizable } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Resizable',

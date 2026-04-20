@@ -1,7 +1,6 @@
+import { EpBadge } from '@ericpitcock/epicenter-components-vue'
 import { centeredSurface } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
-
-import { EpBadge } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Badge',

@@ -1,8 +1,7 @@
+import { EpContainer, EpHeader, EpTabContent, EpTabs, useTabs } from '@ericpitcock/epicenter-components-vue'
 import { paddedBg } from '@sb/helpers/decorators.js'
 import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-
-import { EpContainer, EpHeader, EpTabContent, EpTabs, useTabs } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Tabs',

@@ -1,8 +1,7 @@
+import { EpNotification } from '@ericpitcock/epicenter-components-vue'
 import { faker } from '@faker-js/faker'
 import { centeredSurface } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
-
-import { EpNotification } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Notifications/Notification',

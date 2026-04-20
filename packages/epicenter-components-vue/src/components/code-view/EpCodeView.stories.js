@@ -1,8 +1,7 @@
+import { EpCodeView, EpContainer, EpHeader, EpTabContent, EpTabs, useTabs } from '@ericpitcock/epicenter-components-vue'
 import { codeExamples } from '@sb/helpers/codeExamples.js'
 import { surfaceOverflow } from '@sb/helpers/decorators.js'
 import { watch } from 'vue'
-
-import { EpCodeView, EpContainer, EpHeader, EpTabContent, EpTabs, useTabs } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Code View',

@@ -1,7 +1,6 @@
+import { EpFlex, EpRadio } from '@ericpitcock/epicenter-components-vue'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { ref } from 'vue'
-
-import { EpFlex, EpRadio } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Radio',

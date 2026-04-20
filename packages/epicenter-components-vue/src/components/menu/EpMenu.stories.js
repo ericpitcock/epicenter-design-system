@@ -1,3 +1,4 @@
+import { EpButton, EpInput, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-components-vue'
 import Dashboard from '@ericpitcock/epicenter-icons-vue/Analytics01'
 import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
 import ArrowUpRight from '@ericpitcock/epicenter-icons-vue/ArrowUpRight03'
@@ -5,8 +6,6 @@ import GoogleMaps from '@ericpitcock/epicenter-icons-vue/GoogleMaps'
 import Radar01 from '@ericpitcock/epicenter-icons-vue/Radar01'
 import Settings04 from '@ericpitcock/epicenter-icons-vue/Settings04'
 import { centeredBg } from '@sb/helpers/decorators.js'
-
-import { EpButton, EpInput, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Menu',

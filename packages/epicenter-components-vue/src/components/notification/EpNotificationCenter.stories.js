@@ -1,7 +1,6 @@
+import { EpButton, EpContainer, EpNotification, EpNotifications, useNotifications, EpOverlay } from '@ericpitcock/epicenter-components-vue'
 import { faker } from '@faker-js/faker'
 import { ref } from 'vue'
-
-import { EpButton, EpContainer, EpNotification, EpNotifications, useNotifications, EpOverlay } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Notifications/Notification Center',

@@ -1,8 +1,7 @@
+import { EpSelect } from '@ericpitcock/epicenter-components-vue'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { computed, toRef, watch } from 'vue'
-
-import { EpSelect } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Select',

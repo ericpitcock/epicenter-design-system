@@ -1,7 +1,6 @@
+import { EpCheckbox, EpFlex } from '@ericpitcock/epicenter-components-vue'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { computed, ref } from 'vue'
-
-import { EpCheckbox, EpFlex } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Checkbox',

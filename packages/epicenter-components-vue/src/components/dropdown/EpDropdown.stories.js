@@ -1,10 +1,9 @@
+import { EpButton, EpDropdown, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-components-vue'
 import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
 import Coffee02 from '@ericpitcock/epicenter-icons-vue/Coffee02'
 import { centeredBg } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { ref, toRef } from 'vue'
-
-import { EpButton, EpDropdown, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-components-vue'
 
 const fakeDropdownItems = [
   { type: 'section', label: 'Cheap' },
