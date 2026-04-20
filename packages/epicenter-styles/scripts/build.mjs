@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 import { promisify } from 'util'
 
 import fsExtra from 'fs-extra'
-import glob from 'glob'
+import { glob } from 'glob'
 import yaml from 'js-yaml'
 
 const { ensureDir, copyFile } = fsExtra
