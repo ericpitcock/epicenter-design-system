@@ -1,196 +1,98 @@
 # Agents
 
+## Overview
+
+Epicenter Design System — a multi-framework (Vue 3 + React 18) component library for enterprise applications. Monorepo with shared styles, 45+ components per framework, 4000+ icons, and documentation via Storybook and VitePress.
+
+## Repository Structure
+
+```
+packages/
+├── epicenter-styles/          # SCSS + YAML design tokens → CSS custom properties
+├── epicenter-components-vue/  # Vue 3 components (Composition API, script setup, TS)
+├── epicenter-components-react/ # React 18 components (TypeScript, TSX)
+├── epicenter-icons/           # Icon build pipeline (source SVGs → framework components)
+├── epicenter-icons-vue/       # Generated Vue icon components (do NOT edit manually)
+├── epicenter-icons-react/     # Generated React icon components (do NOT edit manually)
+└── storybook-shared/          # Shared Storybook helpers
+docs/                          # VitePress documentation site
+.storybook/                    # Vue Storybook config
+.storybook-react/              # React Storybook config
+```
+
+## Commands
+
+| Task | Command |
+|---|---|
+| Vue Storybook (dev) | `npm run storybook` (port 6006) |
+| React Storybook (dev) | `npm run storybook:react` (port 6007) |
+| Build styles | `cd packages/epicenter-styles && npm run build` |
+| Lint | `npm run lint` |
+| Lint Vue only | `npm run lint:vue` |
+| VitePress docs | `cd docs && npm run docs:dev` |
+| Install all packages | `npm run install-all` |
+| Local publish (yalc) | `npm run yalc:publish-all` |
+
+## Framework Parity
+
+When adding or modifying a component, check if the change should apply to **both** Vue and React versions. Maintain consistent prop names, event signatures, and behavior across frameworks.
+
+## Naming Conventions
+
+- All components prefixed with `Ep` (e.g., `EpButton`, `EpTable`)
+- Vue: PascalCase SFCs (`EpButton.vue`) in `packages/epicenter-components-vue/src/components/<name>/`
+- React: PascalCase TSX (`EpButton.tsx`) in `packages/epicenter-components-react/src/components/<name>/`
+- CSS classes: modified BEM (`.ep-button`, `.ep-button--large`, `.ep-button__icon`)
+
+## Styles & Theming
+
+- Design tokens defined as YAML in `packages/epicenter-styles/tokens/color/`
+- Build pipeline (`packages/epicenter-styles/scripts/build.mjs`) converts YAML → SCSS → `dist/epicenter-design-system.css`
+- Themes: `html.light-theme` / `html.dark-theme` classes; uses CSS `light-dark()` function
+- Interface-level custom properties: see [interface-custom-properties-guide.md](interface-custom-properties-guide.md)
+- Component SCSS lives in `packages/epicenter-styles/scss/components/`
+
+## Icons
+
+Generated from `packages/epicenter-icons/icons.json`. **Never manually edit** files in `epicenter-icons-vue` or `epicenter-icons-react`. Import from the framework package:
+- Vue: `@ericpitcock/epicenter-icons-vue/ArrowDown01`
+- React: `@ericpitcock/epicenter-icons-react/ArrowDown01`
+
+## Storybook
+
+Every component **must** have a story file:
+- Vue: `.stories.js` alongside the component
+- React: `.stories.tsx` alongside the component
+
 ## File Removal
 
-When removing a file, first check if it is tracked by version control (`git ls-files <file>`). If the file is tracked, use `git rm` instead of `rm` so the deletion is properly staged.
+Check if the file is tracked by version control (`git ls-files <file>`). If tracked, use `git rm` instead of `rm`.
 
-# Vue 3 Component Generator
+## Vue Component Conventions
 
-Generate Vue 3 components following strict conventions: Composition API with script setup,
-Reactive Props Destructuring, defineModel(), Pinia 3 setup stores, scoped SCSS with locally-scoped
-CSS variables, arrow functions only, and full TypeScript strictness. Use this skill whenever the user
-asks to create, scaffold, or generate a Vue component, composable, Pinia store, or any .vue file —
-even if they don't mention conventions explicitly. Also trigger when the user mentions Vue patterns
-like "script setup", "composable", "defineProps", "defineModel", or asks for help
-structuring a Vue feature module.
+Full Vue 3 component generator: [vue-component.prompt.md](.github/prompts/vue-component.prompt.md). Key points:
 
-This skill produces Vue 3 components, composables, and Pinia stores that follow a specific, modern set of conventions. Every piece of code you generate under this skill should feel like it came from the same codebase — consistent patterns, no guesswork.
+- `<script setup lang="ts">` with content indented one level
+- `defineOptions({ name: 'ComponentName' })` on every component
+- `interface Props {}` + destructured `defineProps<Props>()` with inline defaults
+- `defineModel()` for all v-model bindings — never manual emits
+- Arrow functions only (`const onFoo = () => {}`)
+- Event handlers prefixed with `on` (`onSelect`, `onClear`, `onToggle`)
+- `<style scoped lang="scss">` with component-scoped CSS variables
+- Composables in `packages/epicenter-components-vue/src/composables/`
 
-## Why these conventions matter
+## React Component Conventions
 
-These aren't arbitrary rules. Reactive Props Destructuring keeps component APIs clean and avoids the verbosity of `withDefaults`. Scoped SCSS with locally-scoped CSS variables gives you encapsulation without specificity wars or global scope pollution. Arrow functions and consistent naming conventions make the codebase scannable — you can tell what a function does and when it fires just from its signature. The goal is a codebase that's fast, type-safe, and pleasant to maintain.
+- Functional components with TypeScript
+- Props type exported from component file (`export type EpButtonProps = { ... }`)
+- Arrow functions for handlers and utilities
+- Polymorphic rendering via `as` prop pattern
+- `children` + specific slot props (`iconLeft`, `iconRight`) instead of Vue's named slots
+- `@floating-ui/react` for positioning, `framer-motion` for animation
 
-## Component anatomy
+## Linting
 
-Every `.vue` component follows this structure, in this order. Note the indentation: all content inside `<script>` and `<style>` blocks is indented one level from the tag.
-
-```vue
-<script setup lang="ts">
-  import type { SomeType } from './types'
-
-  // 1. Options (defineOptions) — always include for devtools
-  defineOptions({
-    name: 'ComponentName',
-  })
-
-  // 2. Type interfaces
-  interface Props {
-    title: string
-    count?: number
-  }
-
-  // 3. Props (Reactive Props Destructuring)
-  const { title, count = 0 } = defineProps<Props>()
-
-  // 4. Models (defineModel) — no manual emits for v-model
-  const modelValue = defineModel<string>({ required: true })
-
-  // 5. Slots (defineSlots) — if needed
-  // 6. Emits (defineEmits) — only for non-v-model events
-  // 7. Composables and injections
-  // 8. Local state (ref, shallowRef, computed)
-  // 9. Event handlers and methods (arrow functions, `on` prefix)
-  // 10. Lifecycle hooks
-</script>
-
-<template>
-  <!-- Semantic HTML, accessible markup -->
-</template>
-
-<style scoped lang="scss">
-  .component-name {
-    // component-scoped design tokens here, NOT on :root
-    --component-bg: var(--color-surface, #ffffff);
-    --component-border: var(--color-border, #e5e7eb);
-
-    background: var(--component-bg);
-    border: 1px solid var(--component-border);
-  }
-</style>
-```
-
-## Function style: arrow functions only
-
-All functions in components, composables, and stores use `const` arrow function syntax. No `function` declarations.
-
-```typescript
-  // Correct
-  const onClear = () => {
-    modelValue.value = ''
-  }
-
-  const formatPrice = (cents: number): string => {
-    return (cents / 100).toFixed(2)
-  }
-
-  // Wrong — never use function declarations
-  function onClear() { ... }
-  function formatPrice(cents: number) { ... }
-```
-
-## Event handler naming: `on` prefix
-
-All event handler functions use the `on` prefix.
-
-```typescript
-  const onClear = () => { ... }
-  const onToggle = () => { ... }
-  const onSearch = (query: string) => { ... }
-  const onSelect = (item: T) => { ... }
-```
-
-## Props: Reactive Props Destructuring
-
-Always define a `Props` interface and destructure with defaults inline. No `withDefaults`, no runtime prop declarations.
-
-```typescript
-  interface Props {
-    title: string
-    count?: number
-    variant?: 'primary' | 'secondary'
-  }
-
-  const { title, count = 0, variant = 'primary' } = defineProps<Props>()
-```
-
-## Two-way binding: defineModel — the only pattern
-
-For any component that supports `v-model`, use `defineModel()`. Never define manual emits for v-model updates.
-
-```typescript
-  const modelValue = defineModel<string>({ required: true })
-  // Named models:
-  const selected = defineModel<string>('selected')
-```
-
-For debounce/transform, use a computed setter or custom ref composable — never `watch` to sync local state.
-
-## Component metadata: defineOptions — always include
-
-```typescript
-  defineOptions({
-    name: 'SearchInput',
-  })
-```
-
-## Typed slots: defineSlots
-
-```typescript
-  const slots = defineSlots<{
-    default(props: { item: Product }): any
-    header(): any
-  }>()
-```
-
-## Reactivity
-
-- Primitives: `ref()`. Large/nested objects: `shallowRef()`. Derived values: `computed()`.
-- Never destructure `reactive()` — breaks reactivity.
-- Pass reactive state to composables as getter functions: `() => value`.
-- Never use `watch` to sync local state with props or model values.
-
-## Pinia stores (Setup Store syntax)
-
-```typescript
-export const useCartStore = defineStore('cart', () => {
-  const items = ref<CartItem[]>([])
-
-  const total = computed(() =>
-    items.value.reduce((sum, item) => sum + item.price * item.quantity, 0),
-  )
-
-  const addItem = (product: Product, quantity = 1) => {
-    const existing = items.value.find(i => i.productId === product.id)
-    if (existing) {
-      existing.quantity += quantity
-    } else {
-      items.value.push({ productId: product.id, price: product.price, quantity })
-    }
-  }
-
-  return { items: readonly(items), total, addItem }
-})
-```
-
-## Styling
-
-- `<style scoped lang="scss">` on every component that contains styles, even if it's just a few lines.
-- Component tokens scoped to root class, never `:root` inside scoped blocks.
-- CSS variables for state changes preferred over toggling classes.
-- `rem` for spacing/typography. No Tailwind. All CSS inside `<style>` indented one level.
-
-## TypeScript
-
-- `strict: true` in `tsconfig.json`.
-- Explicit interfaces for all Props, Emits, Slots, and API response shapes.
-- Use `generic` attribute for collection-based components:
-
-```vue
-<script setup lang="ts" generic="T extends { id: string }">
-```
-
-## Accessibility baseline
-
-- Semantic HTML elements (`button`, `nav`, `dialog` — not `div` with click handlers).
-- `aria-label` or `aria-labelledby` when semantics aren't sufficient.
-- Keyboard navigation for all interactive elements.
+ESLint config in `.eslintrc.cjs`:
+- `plugin:vue/vue3-recommended` + `plugin:react/recommended`
+- `plugin:perfectionist` for import sorting (natural, ascending)
+- TypeScript: unused vars flagged (ignores `_` prefix)
