@@ -2,9 +2,7 @@
   import DocumentCode from '@ericpitcock/epicenter-icons-vue/DocumentCode'
   import Github from '@ericpitcock/epicenter-icons-vue/Github'
 
-  import EpButton from '@/components/button/EpButton.vue'
-  import EpFlex from '@/components/flexbox/EpFlex.vue'
-  import EpicenterLogo from '@/components/logo/EpicenterLogo.vue'
+  import { EpButton, EpFlex, EpicenterLogo } from '@ericpitcock/epicenter-components-vue'
 
   const buttons = [
     {

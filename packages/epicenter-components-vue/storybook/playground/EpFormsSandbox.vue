@@ -1,16 +1,7 @@
 <script setup>
   import { computed, ref } from 'vue'
 
-  import EpButton from '@/components/button/EpButton.vue'
-  import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
-  import EpFieldset from '@/components/fieldset/EpFieldset.vue'
-  import EpFlex from '@/components/flexbox/EpFlex.vue'
-  import EpHeader from '@/components/header/EpHeader.vue'
-  import EpInput from '@/components/input/EpInput.vue'
-  import EpRadio from '@/components/radio/EpRadio.vue'
-  import EpSelect from '@/components/select/EpSelect.vue'
-  import EpTextarea from '@/components/textarea/EpTextarea.vue'
-  import { useValidation } from '@/composables/useValidation.ts'
+  import { EpButton, EpCheckbox, EpFieldset, EpFlex, EpHeader, EpInput, EpRadio, EpSelect, EpTextarea, useValidation } from '@ericpitcock/epicenter-components-vue'
 
   const props = defineProps({
     formDisabled: {

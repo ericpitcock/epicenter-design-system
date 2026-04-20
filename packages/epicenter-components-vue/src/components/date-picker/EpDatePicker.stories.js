@@ -1,6 +1,6 @@
 import { paddedSurface } from '@sb/helpers/decorators.js'
 
-import EpDatePicker from '@/components/date-picker/EpDatePicker.vue'
+import { EpDatePicker } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Date Picker',

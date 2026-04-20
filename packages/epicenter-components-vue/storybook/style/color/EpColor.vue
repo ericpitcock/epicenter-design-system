@@ -6,14 +6,7 @@
   import chroma from 'chroma-js'
   import { computed, ref } from 'vue'
 
-  import EpButton from '@/components/button/EpButton.vue'
-  import EpContainer from '@/components/container/EpContainer.vue'
-  import EpFlex from '@/components/flexbox/EpFlex.vue'
-  import EpMenu from '@/components/menu/EpMenu.vue'
-  import EpMenuItem from '@/components/menu/EpMenuItem.vue'
-  import EpTable from '@/components/table/EpTable.vue'
-  import EpTableHead from '@/components/table/EpTableHead.vue'
-  import EpTooltip from '@/components/tooltip/EpTooltip.vue'
+  import { EpButton, EpContainer, EpFlex, EpMenu, EpMenuItem, EpTable, EpTableHead, EpTooltip } from '@ericpitcock/epicenter-components-vue'
 
   import chartSeq from '../../../../epicenter-styles/tokens/color/chart-sequence.yaml'
   import colors from '../../../../epicenter-styles/tokens/color/color.yaml'

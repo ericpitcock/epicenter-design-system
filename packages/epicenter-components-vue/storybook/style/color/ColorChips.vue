@@ -2,7 +2,7 @@
   import { useClipboard } from '@vueuse/core'
   import { ref } from 'vue'
 
-  import EpTooltip from '@/components/tooltip/EpTooltip.vue'
+  import { EpTooltip } from '@ericpitcock/epicenter-components-vue'
 
   const props = defineProps({
     colors: {

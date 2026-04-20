@@ -3,7 +3,7 @@ import { createRouter, createMemoryHistory } from 'vue-router'
 import { watch } from 'vue'
 import { createPinia } from 'pinia'
 import { useStorybookStore } from '@sb/store'
-import { useTheme } from '@/composables'
+import { useTheme } from '@ericpitcock/epicenter-components-vue'
 
 const routes = [
   {

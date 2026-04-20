@@ -3,10 +3,7 @@
   import { createIconImports, getComponentName, iconsData } from '@sb/helpers/useIcons.js'
   import { computed, defineAsyncComponent, ref, watch } from 'vue'
 
-  import EpFlex from '@/components/flexbox/EpFlex.vue'
-  import EpInput from '@/components/input/EpInput.vue'
-  import EpPagination from '@/components/pagination/EpPagination.vue'
-  import EpSelect from '@/components/select/EpSelect.vue'
+  import { EpFlex, EpInput, EpPagination, EpSelect } from '@ericpitcock/epicenter-components-vue'
 
   const props = defineProps({
     size: { type: Number, default: 72 },

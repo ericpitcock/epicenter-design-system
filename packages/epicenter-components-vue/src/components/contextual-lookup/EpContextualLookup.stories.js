@@ -2,8 +2,7 @@ import { enrichmentSources, getFakeEnrichmentResponse } from '@sb/data/enrichmen
 import { paddedBg } from '@sb/helpers/decorators.js'
 import { ref } from 'vue'
 
-import EpContextualLookup from '@/components/contextual-lookup/EpContextualLookup.vue'
-import EpFlex from '@/components/flexbox/EpFlex.vue'
+import { EpContextualLookup, EpFlex } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Contextual Lookup',

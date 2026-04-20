@@ -1,6 +1,6 @@
 import { surfaceOverflow } from '@sb/helpers/decorators.js'
 
-import EpTable from '@/components/table/EpTable.vue'
+import { EpTable } from '@ericpitcock/epicenter-components-vue'
 
 import EpTableFixedStory from '../../../storybook/table/EpTableFixedStory.vue'
 

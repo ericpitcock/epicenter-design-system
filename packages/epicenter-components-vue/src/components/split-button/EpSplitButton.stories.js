@@ -3,11 +3,9 @@ import { centeredBg } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { ref, toRef } from 'vue'
 
-import EpButton from '@/components/button/EpButton.vue'
-import EpDropdown from '@/components/dropdown/EpDropdown.vue'
+import { EpButton, EpDropdown, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-components-vue'
+
 // import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
-import EpMenu from '@/components/menu/EpMenu.vue'
-import EpMenuItem from '@/components/menu/EpMenuItem.vue'
 
 export default {
   title: 'Components/Button/Split Button',

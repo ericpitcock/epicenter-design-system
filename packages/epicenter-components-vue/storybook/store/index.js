@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import { useTheme } from '@/composables'
+import { useTheme } from '@ericpitcock/epicenter-components-vue'
 
 export const useStorybookStore = defineStore('storybook', () => {
   const { theme, toggleTheme } = useTheme()

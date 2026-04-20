@@ -2,17 +2,7 @@ import { centeredBg } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { computed, ref, toRef } from 'vue'
 
-import EpButton from '@/components/button/EpButton.vue'
-import EpLoaderBars from '@/components/loaders/EpLoaderBars.vue'
-import EpLoaderBounce from '@/components/loaders/EpLoaderBounce.vue'
-import EpLoaderDots from '@/components/loaders/EpLoaderDots.vue'
-import EpLoaderDualRing from '@/components/loaders/EpLoaderDualRing.vue'
-import EpLoaderFade from '@/components/loaders/EpLoaderFade.vue'
-import EpLoaderOrbit from '@/components/loaders/EpLoaderOrbit.vue'
-import EpLoaderPulse from '@/components/loaders/EpLoaderPulse.vue'
-import EpLoaderScale from '@/components/loaders/EpLoaderScale.vue'
-import EpLoaderSpin from '@/components/loaders/EpLoaderSpin.vue'
-import EpLoaderSquares from '@/components/loaders/EpLoaderSquares.vue'
+import { EpButton, EpLoaderBars, EpLoaderBounce, EpLoaderDots, EpLoaderDualRing, EpLoaderFade, EpLoaderOrbit, EpLoaderPulse, EpLoaderScale, EpLoaderSpin, EpLoaderSquares } from '@ericpitcock/epicenter-components-vue'
 
 const loaderComponents = {
   Dots: EpLoaderDots,

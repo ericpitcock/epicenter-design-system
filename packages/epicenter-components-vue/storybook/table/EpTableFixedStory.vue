@@ -3,10 +3,7 @@
   import { columns, fakeTableData } from '@sb/data/tableData'
   import { ref } from 'vue'
 
-  import EpTable from '@/components/table/EpTable.vue'
-  import EpTableHead from '@/components/table/EpTableHead.vue'
-  import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
-  import { useFixedHeader, useSorting } from '@/composables'
+  import { EpTable, EpTableHead, EpTableSortableHeader, useFixedHeader, useSorting } from '@ericpitcock/epicenter-components-vue'
 
   const tableColumnsRef = ref(columns)
   const tableDataRef = ref(fakeTableData(60))

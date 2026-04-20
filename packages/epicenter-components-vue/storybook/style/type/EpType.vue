@@ -2,12 +2,7 @@
   import { faker } from '@faker-js/faker'
   import { ref } from 'vue'
 
-  import EpContainer from '@/components/container/EpContainer.vue'
-  import EpFlex from '@/components/flexbox/EpFlex.vue'
-  import EpHeader from '@/components/header/EpHeader.vue'
-  import EpTabContent from '@/components/tabs/EpTabContent.vue'
-  import EpTabs from '@/components/tabs/EpTabs.vue'
-  import { useTabs } from '@/composables'
+  import { EpContainer, EpFlex, EpHeader, EpTabContent, EpTabs, useTabs } from '@ericpitcock/epicenter-components-vue'
 
   import TextColorItem from './TextColorItem.vue'
 

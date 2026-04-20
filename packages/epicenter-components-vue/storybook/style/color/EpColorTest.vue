@@ -1,8 +1,7 @@
 <script setup>
   import { computed } from 'vue'
 
-  import EpBadge from '@/components/badge/EpBadge.vue'
-  import EpButton from '@/components/button/EpButton.vue'
+  import { EpBadge, EpButton } from '@ericpitcock/epicenter-components-vue'
 
   const props = defineProps({
     hue: {

@@ -1,8 +1,7 @@
 import { centeredBg } from '@sb/helpers/decorators.js'
 import { ref } from 'vue'
 
-import EpButton from '@/components/button/EpButton.vue'
-import EpTooltip from '@/components/tooltip/EpTooltip.vue'
+import { EpButton, EpTooltip } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Button/Button Group',

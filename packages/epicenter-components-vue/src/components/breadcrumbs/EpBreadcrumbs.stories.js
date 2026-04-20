@@ -1,11 +1,6 @@
+import { EpBreadcrumbs, EpButton, EpContainer, EpFlex, EpHeader } from '@ericpitcock/epicenter-components-vue'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-
-import EpBreadcrumbs from '@/components/breadcrumbs/EpBreadcrumbs.vue'
-import EpButton from '@/components/button/EpButton.vue'
-import EpContainer from '@/components/container/EpContainer.vue'
-import EpFlex from '@/components/flexbox/EpFlex.vue'
-import EpHeader from '@/components/header/EpHeader.vue'
 
 export default {
   title: 'Components/Breadcrumbs',

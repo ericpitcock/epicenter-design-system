@@ -1,7 +1,7 @@
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
-import EpFlex from '@/components/flexbox/EpFlex.vue'
+import { EpFlex } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Flex',

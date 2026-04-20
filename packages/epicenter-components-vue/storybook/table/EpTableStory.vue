@@ -5,29 +5,7 @@
   import { columns, fakeTableData } from '@sb/data/tableData'
   import { ref } from 'vue'
 
-  import EpBadge from '@/components/badge/EpBadge.vue'
-  import EpButton from '@/components/button/EpButton.vue'
-  import EpCheckbox from '@/components/checkbox/EpCheckbox.vue'
-  import EpContainer from '@/components/container/EpContainer.vue'
-  import EpDropdown from '@/components/dropdown/EpDropdown.vue'
-  import EpEmptyState from '@/components/empty-state/EpEmptyState.vue'
-  import EpFlex from '@/components/flexbox/EpFlex.vue'
-  import EpMenu from '@/components/menu/EpMenu.vue'
-  import EpMenuItem from '@/components/menu/EpMenuItem.vue'
-  import EpPagination from '@/components/pagination/EpPagination.vue'
-  import EpMultiSearch from '@/components/search/EpMultiSearch.vue'
-  import EpTable from '@/components/table/EpTable.vue'
-  import EpTableCheckboxFilters from '@/components/table/EpTableCheckboxFilters.vue'
-  import EpTableHead from '@/components/table/EpTableHead.vue'
-  import EpTableSortableHeader from '@/components/table/EpTableSortableHeader.vue'
-  import {
-    useColumnFilters,
-    useDataFilters,
-    useExclude,
-    usePagination,
-    useSearch,
-    useSorting,
-  } from '@/composables'
+  import { EpBadge, EpButton, EpCheckbox, EpContainer, EpDropdown, EpEmptyState, EpFlex, EpMenu, EpMenuItem, EpPagination, EpMultiSearch, EpTable, EpTableCheckboxFilters, EpTableHead, EpTableSortableHeader, useColumnFilters, useDataFilters, useExclude, usePagination, useSearch, useSorting } from '@ericpitcock/epicenter-components-vue'
 
   const tableData = ref(fakeTableData(340))
   const columnsRef = ref(columns)

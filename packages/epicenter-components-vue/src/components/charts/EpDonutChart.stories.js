@@ -1,6 +1,6 @@
 import { centeredSurface } from '@sb/helpers/decorators.js'
 
-import EpDonutChart from '@/components/charts/EpDonutChart.vue'
+import { EpDonutChart } from '@ericpitcock/epicenter-components-vue'
 
 export default {
   title: 'Components/Charts/Donut Chart',
