@@ -29,10 +29,6 @@ This component does not use slots.
   import EpButton from '../button/EpButton.vue'
   import EpLazyImage from '../lazy-image/EpLazyImage.vue'
 
-  interface Props {
-    images?: CarouselImage[]
-  }
-
   interface CarouselImage {
     alt?: string
     aspectRatio?: string
@@ -42,6 +38,10 @@ This component does not use slots.
     positionY?: string
     src: string
     zoom?: number
+  }
+
+  interface Props {
+    images?: CarouselImage[]
   }
 
   const { images = [] } = defineProps<Props>()
