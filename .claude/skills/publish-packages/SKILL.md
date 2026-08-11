@@ -172,14 +172,33 @@ Then verify each one:
 zsh -c '. ~/.zprofile && npm view @ericpitcock/epicenter-components-vue dist-tags --registry=https://npm.pkg.github.com/'
 ```
 
-A package's **first** publish always gets `latest` regardless of `--tag` — that
-is npm's behavior, not a mistake. Use `npm dist-tag rm <pkg> latest` if you want
-a brand-new package to have no `latest`.
-
-Final smoke test, in a scratch dir outside the repo:
+**`npm view` lies here.** Bare `npm view <pkg>` prints *nothing at all* for a
+package whose only releases are prereleases — it resolves `latest` first, and
+there isn't one. That is not a failed publish. Ask the registry directly:
 
 ```bash
-zsh -c '. ~/.zprofile && npm install @ericpitcock/epicenter-components-vue@beta'
+zsh -c '. ~/.zprofile && curl -s -H "Authorization: Bearer $VITE_APP_GITHUB_TOKEN" \
+  "https://npm.pkg.github.com/@ericpitcock%2fepicenter-components-vue" \
+  | node -e "let d=\"\";process.stdin.on(\"data\",c=>d+=c).on(\"end\",()=>{const j=JSON.parse(d);console.log(Object.keys(j.versions),j[\"dist-tags\"])})"'
+```
+
+**A first publish under `--tag beta` gets no `latest` tag.** Consequence: bare
+`npm install @ericpitcock/epicenter-components-vue` fails outright — consumers
+must write `@beta`. If a package's first-ever release is a prerelease and you
+want plain installs to work, set the tag explicitly:
+
+```bash
+zsh -c '. ~/.zprofile && npm dist-tag add @ericpitcock/epicenter-components-vue@2.0.0-beta.1 latest'
+```
+
+Final smoke test, in a scratch dir outside the repo. **`--min-release-age=0` is
+required** — `~/.npmrc` sets `min-release-age=3`, so npm refuses to install
+anything published in the last three days and reports it as
+`ENOVERSIONS: No versions available` or `ETARGET: No matching version … with a
+date before <date>`. That looks exactly like a broken publish and is not one:
+
+```bash
+zsh -c '. ~/.zprofile && npm install --min-release-age=0 @ericpitcock/epicenter-components-vue@beta'
 ```
 
 ## Commits and tags
@@ -203,3 +222,6 @@ with `origin` on GitHub — pushing to the wrong one is easy.
 | Tarball has `storybook/`, `tsconfig.json`, stray junk | `files` field absent | add one; every publishable package should have `files` |
 | Icon package publishes with ~2 files | generated content isn't on disk (it's gitignored) | `bash scripts/copy-icons-from-npm.sh`, or regenerate from `packages/epicenter-icons` |
 | A renamed component still exports under the old name | `src/components/index.ts` is generated from filenames | rename the `.vue` file itself, then rebuild |
+| `ENOVERSIONS` / `ETARGET … with a date before <date>` right after a successful publish | `min-release-age=3` in `~/.npmrc` blocks anything published in the last 3 days | add `--min-release-age=0` to the verifying install; the publish is fine |
+| `npm view <pkg>` prints nothing, exit code 0 | the package has no `latest` tag (prerelease-only), and bare `npm view` resolves `latest` | query the packument with curl, or `npm view <pkg>@beta` |
+| Bare `npm install <pkg>` fails but `<pkg>@beta` works | no `latest` dist-tag — expected for a package whose only release is a prerelease | `npm dist-tag add <pkg>@<version> latest` if plain installs should work |
