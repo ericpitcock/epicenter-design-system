@@ -1,4 +1,5 @@
 export * from './common'
+export * from './image'
 export * from './table'
 export * from './menu'
 export * from './form'

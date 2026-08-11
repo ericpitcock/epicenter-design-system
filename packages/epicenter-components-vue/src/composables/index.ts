@@ -14,6 +14,7 @@ import { useNotifications } from '../components/notification/useNotifications'
 // helpers
 import { useActionsMenu } from './useActionsMenu'
 import { useCalculatedHeight } from './useCalculatedHeight'
+import { useImageLoad } from './useImageLoad'
 import { useTheme } from './useTheme'
 import { useValidation } from './useValidation'
 
@@ -24,6 +25,7 @@ export {
   useDataFilters,
   useExclude,
   useFixedHeader,
+  useImageLoad,
   useNotifications,
   usePagination,
   useSearch,
