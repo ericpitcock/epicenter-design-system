@@ -12,7 +12,11 @@
     "build": "node scripts/build.mjs",
     "build:watch": "node scripts/build.mjs --watch",
     "lint": "stylelint \"scss/**/*.scss\"",
-    "lint:fix": "stylelint \"scss/**/*.scss\" --fix"
+    "lint:fix": "stylelint \"scss/**/*.scss\" --fix",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",

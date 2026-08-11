@@ -21,3 +21,5 @@ packages/epicenter-icons-react/*.d.ts
 packages/epicenter-icons-react/base.scss
 Prompt: Convert Design System Tokens to.yaml
 interface-custom-properties-guide.md
+
+.claude/settings.local.json

@@ -2,6 +2,7 @@
   "name": "@ericpitcock/ep-design-system",
   "version": "2.0.0",
   "description": "Epicenter Design System",
+  "private": true,
   "type": "module",
   "scripts": {
     "netlify": "cd packages/epicenter-styles && npm install && cd ../epicenter-components-vue && npm install && cd ../.. && npm install && bash scripts/copy-icons-from-npm.sh && npm run build-storybook",
@@ -13,7 +14,7 @@
     "build-storybook": "storybook build",
     "storybook:react": "storybook dev -p 6007 -c .storybook-react --no-open",
     "build-storybook:react": "storybook build -c .storybook-react -o storybook-react-static",
-    "yalc:publish-all": "cd packages/epicenter-styles && yalc publish && cd ../epicenter-components-vue && yalc publish && cd ../epicenter-components-react && yalc publish && cd ../epicenter-icons-vue && yalc publish && cd ../epicenter-icons-react && yalc publish",
+    "yalc:publish-all": "cd packages/epicenter-styles && npm run build && yalc publish && cd ../epicenter-components-vue && npm run build && yalc publish && cd ../epicenter-components-react && yalc publish && cd ../epicenter-icons-vue && yalc publish && cd ../epicenter-icons-react && yalc publish",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "lint:vue": "eslint packages/epicenter-components-vue/src/components/**/*.vue --fix"
   },

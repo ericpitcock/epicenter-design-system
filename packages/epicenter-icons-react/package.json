@@ -19,6 +19,9 @@
     "base.scss",
     "README.md"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0"
   },

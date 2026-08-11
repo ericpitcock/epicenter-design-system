@@ -18,6 +18,9 @@
     "base.scss",
     "README.md"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "peerDependencies": {
     "vue": "^3.0.0"
   },
