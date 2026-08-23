@@ -524,6 +524,41 @@ for (const [name, sites] of declarations) {
 }
 
 // ---------------------------------------------------------------------------
+// Cross-package contract: the icons packages
+// ---------------------------------------------------------------------------
+//
+// --ep-icon-* is declared and consumed by @ericpitcock/epicenter-icons-*, which
+// ships its own base.scss. Components here only *set* those properties, so a
+// name this package writes that base.scss never reads is a silent no-op — the
+// icon renders at its default and nothing errors.
+//
+// That is exactly how a rename slipped through: the styles package moved to
+// --ep-icon-text-color while base.scss still read --ep-icon-color.
+
+const iconBase = resolve(repoRoot, 'packages/epicenter-icons/base.scss')
+
+if (fs.existsSync(iconBase)) {
+  const source = fs.readFileSync(iconBase, 'utf8')
+  const readByBase = referencedProperties(source)
+
+  const setHere = new Map()
+  for (const [name, sites] of declarations) {
+    if (name.startsWith('--ep-icon-')) setHere.set(name, sites)
+  }
+
+  for (const [name, sites] of setHere) {
+    if (readByBase.has(name)) continue
+    issues.undeclared.push({
+      file: sites[0].file,
+      line: sites[0].line,
+      detail: `${name} is set here but packages/epicenter-icons/base.scss never reads it — the icon will silently keep its default`
+    })
+  }
+} else {
+  console.warn('⚠ packages/epicenter-icons/base.scss not found — skipping the icon contract check\n')
+}
+
+// ---------------------------------------------------------------------------
 // Emit the property API
 // ---------------------------------------------------------------------------
 
