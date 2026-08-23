@@ -282,7 +282,7 @@
   .column-filter-container {
     --ep-container-min-width: max-content;
     --ep-container-bg-color: var(--interface-overlay);
-    --ep-container-border-radius: var(--border-radius);
+    --ep-container-border-radius: var(--border-radius--default);
     --ep-container-border-width: 0.1rem;
     --ep-container-border-color: var(--border-color--lighter);
     --ep-container-padding: 2rem;

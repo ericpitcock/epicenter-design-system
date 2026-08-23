@@ -1,4 +1,9 @@
+// Border radius scale.
+// Every step is suffixed, including the default, so the family reads
+// consistently with --font-size--*, --z-index--* and the rest of Layer 3.
 :root {
-  --border-radius: 0.3rem;
+  --border-radius--small: 0.2rem;
+  --border-radius--default: 0.3rem;
   --border-radius--large: 0.6rem;
+  --border-radius--full: 999rem;
 }

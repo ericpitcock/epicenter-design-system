@@ -107,7 +107,7 @@
           v-if="resultsPerPage !== null"
           class="justify-end align-center gap-10"
         >
-          <div style="--ep-input-width: fit-content;">
+          <div style="--ep-input-styler-width: fit-content;">
             <ep-select
               v-model="localResultsPerPage"
               select-id="resultsPerPage"

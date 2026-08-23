@@ -350,7 +350,7 @@ export const ChartPalette = (args) => ({
           <ep-button class="ep-button-var--primary" @click="copyStylesToClipboard">
             Copy styles
           </ep-button>
-          <div style="font-size: 14px; color: var(--text-secondary);">
+          <div style="font-size: 14px; color: var(--text-color--subtle);">
             Active Palette: <strong>{{ args.preset }}</strong>
           </div>
         </div>
@@ -359,7 +359,7 @@ export const ChartPalette = (args) => ({
           <div 
             v-for="vision in visionTypes" 
             :key="vision.key"
-            style="display: flex; flex-direction: column; gap: 16px; padding: 20px; background: var(--surface-1); border-radius: 8px;"
+            style="display: flex; flex-direction: column; gap: 16px; padding: 20px; background: var(--interface-surface); border-radius: 8px;"
           >
             <h3 style="margin: 0; font-size: 16px; font-weight: 600;">{{ vision.label }}</h3>
             
@@ -396,10 +396,10 @@ export const ChartPalette = (args) => ({
                   v-for="(n, index) in colorCount" 
                   :key="index"
                   :style="{ 
-                    '--ep-status-indicator-dot-bg': vision.transform 
+                    '--ep-status-indicator-dot-bg-color': vision.transform 
                       ? getStylesForVision(vision.transform)['--chart-sequence-' + (index < 10 ? '0' + index : index)]
                       : 'var(--chart-sequence-' + (index < 10 ? '0' + index : index) + ')',
-                    '--ep-status-indicator-dot-border': vision.transform 
+                    '--ep-status-indicator-dot-border-color': vision.transform 
                       ? getStylesForVision(vision.transform)['--chart-sequence-' + (index < 10 ? '0' + index : index)]
                       : 'var(--chart-sequence-' + (index < 10 ? '0' + index : index) + ')'
                   }"

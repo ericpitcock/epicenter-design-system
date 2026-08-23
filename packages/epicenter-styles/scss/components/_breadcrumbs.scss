@@ -1,0 +1,49 @@
+// This file previously targeted `.ep-breadcrumb ol`, but both frameworks render
+// `<ol class="ep-breadcrumbs">` — so none of it ever matched. The rules below
+// are the ones that were living in the Vue SFC's scoped block, which is where
+// they had to be for anything to render at all.
+.ep-breadcrumbs {
+  --ep-breadcrumbs-gap: 0.5rem;
+  --ep-breadcrumbs-item-text-color: var(--text-color--subtle);
+  --ep-breadcrumbs-item-hover-text-color: var(--text-color--loud);
+  --ep-breadcrumbs-item-selected-text-color: var(--text-color--loud);
+  --ep-breadcrumbs-separator-padding-inline: 0.5em;
+  --ep-breadcrumbs-separator-size: 1em;
+  --ep-breadcrumbs-separator-stroke-width: 0.3rem;
+  --ep-breadcrumbs-separator-text-color: var(--text-color--disabled);
+
+  display: flex;
+  gap: var(--ep-breadcrumbs-gap);
+  list-style: none;
+  white-space: nowrap;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    color: var(--ep-breadcrumbs-item-text-color);
+
+    a {
+      cursor: pointer;
+
+      &:hover {
+        color: var(--ep-breadcrumbs-item-hover-text-color);
+      }
+    }
+
+    &--current {
+      color: var(--ep-breadcrumbs-item-selected-text-color);
+      cursor: default;
+    }
+  }
+
+  &__separator {
+    padding-inline: var(--ep-breadcrumbs-separator-padding-inline);
+
+    .ep-icon {
+      --ep-icon-width: var(--ep-breadcrumbs-separator-size);
+      --ep-icon-height: var(--ep-breadcrumbs-separator-size);
+      --ep-icon-stroke-width: var(--ep-breadcrumbs-separator-stroke-width);
+      --ep-icon-text-color: var(--ep-breadcrumbs-separator-text-color);
+    }
+  }
+}

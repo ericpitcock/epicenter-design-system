@@ -1,0 +1,30 @@
+// Motion tokens.
+// Transitions were previously inline literals ranging from 0.1s to 0.6s with no
+// rationale. Three durations and two curves cover every animation in the system.
+:root {
+  --duration--fast: 0.15s;
+  --duration--default: 0.3s;
+  --duration--slow: 0.5s;
+
+  --ease--out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease--in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+// Collapsing the durations rather than disabling animation keeps state changes
+// instant while leaving transitionend/animationend handlers firing as normal.
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration--fast: 0.01ms;
+    --duration--default: 0.01ms;
+    --duration--slow: 0.01ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

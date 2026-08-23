@@ -1,10 +1,11 @@
 import { EpButton, EpContainer, EpEmptyState } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Empty State',
   component: EpEmptyState,
-  decorators: [paddedBg],
+  decorators: [withCssProps('empty-state'), paddedBg],
   argTypes: {
     justify: {
       name: 'Justify',
@@ -29,6 +30,8 @@ export default {
         }
       }
     },
+  
+    ...cssPropArgTypes('empty-state'),
   }
 }
 

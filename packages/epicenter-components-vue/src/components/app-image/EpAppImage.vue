@@ -160,16 +160,16 @@
   )
 
   const rootStyle = computed(() => ({
-    '--image-aspect-ratio': typeof aspectRatio === 'number' ? String(aspectRatio) : aspectRatio,
-    '--image-scale': String(clampedZoom.value),
-    '--image-x': translateX.value,
-    '--image-y': translateY.value,
-    '--image-origin': resolvedOrigin.value,
-    '--image-fade': `${fadeDuration}ms`,
-    ...(radius != null ? { '--image-radius': toCssLength(radius) } : {}),
+    '--ep-app-image-aspect-ratio': typeof aspectRatio === 'number' ? String(aspectRatio) : aspectRatio,
+    '--ep-app-image-scale': String(clampedZoom.value),
+    '--ep-app-image-translate-x': translateX.value,
+    '--ep-app-image-translate-y': translateY.value,
+    '--ep-app-image-transform-origin': resolvedOrigin.value,
+    '--ep-app-image-duration': `${fadeDuration}ms`,
+    ...(radius != null ? { '--ep-app-image-border-radius': toCssLength(radius) } : {}),
     ...(mode === 'fit'
-      ? { '--image-object-fit': fit, '--image-object-position': anchor }
-      : { '--image-inset': freeLayout.value.inset }),
+      ? { '--ep-app-image-object-fit': fit, '--ep-app-image-object-position': anchor }
+      : { '--ep-app-image-inset': freeLayout.value.inset }),
   }))
 
   if (import.meta.env.DEV) {
@@ -242,68 +242,3 @@
   </div>
 </template>
 
-<style scoped lang="scss">
-  .ep-app-image {
-    --image-radius: var(--radius-md, 0.5rem);
-    position: relative;
-    aspect-ratio: var(--image-aspect-ratio, auto);
-    border-radius: var(--image-radius);
-    corner-shape: var(--image-corner-shape, round);
-    /* `clip`, never `hidden` — `hidden` creates a scroll container that a
-       stray focus/scrollIntoView can scroll, silently displacing the image,
-       and it breaks position: sticky on descendants. */
-    overflow: clip;
-    /* Load-bearing WebKit fix: rounded clips fail on composited (transformed)
-       children unless the container has its own stacking context. Do not
-       replace with translateZ(0)/will-change (forces a raster layer) or
-       clip-path (clips box-shadow and focus outlines). */
-    isolation: isolate;
-
-    &[data-state='loaded'] .ep-app-image__img {
-      opacity: 1;
-    }
-  }
-
-  .ep-app-image__img {
-    display: block;
-    transform-origin: var(--image-origin, center);
-    translate: var(--image-x, 0) var(--image-y, 0);
-    scale: var(--image-scale, 1);
-    opacity: 0;
-    transition: opacity var(--image-fade, 200ms) ease;
-
-    &--fit {
-      width: 100%;
-      height: 100%;
-      object-fit: var(--image-object-fit, cover);
-      object-position: var(--image-object-position, center);
-    }
-
-    &--free {
-      position: absolute;
-      inset: var(--image-inset, 0);
-      /* Free mode sizes from the intrinsic or width/height attribute size —
-         defeat global `img { max-width: 100% }` resets. */
-      max-width: none;
-    }
-  }
-
-  .ep-app-image__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    /* Overlays never eat clicks by default; consumers re-enable per child. */
-    pointer-events: none;
-  }
-
-  .ep-app-image__error {
-    position: absolute;
-    inset: 0;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .ep-app-image__img {
-      transition-duration: 0ms;
-    }
-  }
-</style>

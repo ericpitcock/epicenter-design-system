@@ -26,6 +26,39 @@
 | `icon-next` | Custom icon for the next page button. Defaults to &lt;ArrowRight01 /&gt; |
 | `right` | Content displayed on the right side of the pagination controls |
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-pagination` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-pagination {
+  --ep-pagination-info-margin-inline: /* … */;
+}
+```
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-pagination-info-margin-inline` | `1rem` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-pagination-info-text-color` | `var(--text-color--subtle)` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-pagination-width` | `100%` | — |
+
 ## Component Code
 
 ```vue
@@ -138,7 +171,7 @@
           v-if="resultsPerPage !== null"
           class="justify-end align-center gap-10"
         >
-          <div style="--ep-input-width: fit-content;">
+          <div style="--ep-input-styler-width: fit-content;">
             <ep-select
               v-model="localResultsPerPage"
               select-id="resultsPerPage"
@@ -221,7 +254,11 @@
 
 ```scss
 .ep-pagination {
-  width: 100%;
+  --ep-pagination-width: 100%;
+  --ep-pagination-info-margin-inline: 1rem;
+  --ep-pagination-info-text-color: var(--text-color--subtle);
+
+  width: var(--ep-pagination-width);
   user-select: none;
 
   .ep-button--selected {
@@ -229,8 +266,11 @@
   }
 }
 
+// Carries its own block-level class but renders inside .ep-pagination, so it
+// inherits the properties declared above.
 .ep-pagination-info {
-  margin: 0 1rem;
-  color: var(--text-color--subtle);
+  color: var(--ep-pagination-info-text-color);
+  margin-inline: var(--ep-pagination-info-margin-inline);
 }
+
 ```

@@ -4,13 +4,18 @@
   "main": "dist/epicenter-design-system.css",
   "style": "dist/epicenter-design-system.css",
   "files": [
-    "dist"
+    "dist",
+    "scripts/codemod-v2.mjs",
+    "rename-map.json",
+    "NAMING.md",
+    "MIGRATION-v2.md"
   ],
   "description": "Epicenter Design System - Styles",
   "scripts": {
-    "sass:watch": "sass --watch ./index.scss ../../static/epicenter-design-system.css --style compressed",
     "build": "node scripts/build.mjs",
     "build:watch": "node scripts/build.mjs --watch",
+    "validate": "node scripts/validate-properties.mjs",
+    "validate:strict": "node scripts/validate-properties.mjs --strict",
     "lint": "stylelint \"scss/**/*.scss\"",
     "lint:fix": "stylelint \"scss/**/*.scss\" --fix",
     "prepublishOnly": "npm run build"
@@ -26,9 +31,13 @@
   "license": "MIT",
   "devDependencies": {
     "chokidar": "^3.6.0",
+    "fs-extra": "^11.2.0",
+    "glob": "^13.0.6",
     "highcharts": "^12.0.2",
     "js-yaml": "^4.1.0",
     "mapbox-gl": "^1.10.1",
+    "postcss": "^8.5.6",
+    "postcss-scss": "^4.0.9",
     "sass": "1.82.0",
     "stylelint": "^16.26.1",
     "stylelint-config-idiomatic-order": "^10.0.0",

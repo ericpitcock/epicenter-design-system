@@ -55,13 +55,13 @@ packages/
 
 Themes use the CSS `light-dark()` function, toggled via `html.light-theme` / `html.dark-theme`. After editing any YAML token, run the styles build.
 
-Component SCSS lives in `packages/epicenter-styles/scss/components/` as `_component-name.scss` (no `ep-` prefix on the filename) and must be registered in `_index.scss` via `@use`. Styles are **shared across Vue and React** — not duplicated inside each framework package. Vue SFCs use `<style scoped>` only for component-instance-scoped CSS variables, referencing the global classes by name.
+Component SCSS lives in `packages/epicenter-styles/scss/components/` as `_component-name.scss` (no `ep-` prefix on the filename) and must be registered in `_index.scss` via `@use`. Styles are **shared across Vue and React** — not duplicated inside each framework package. Vue SFCs carry **no `<style>` block at all**: scoped CSS compiles to `[data-v-hash]` selectors that consumers cannot override without `:deep()`.
 
 ### Framework parity
 
 When changing a component, apply the change to **both** `epicenter-components-vue` and `epicenter-components-react`. Keep prop names, event signatures, and behavior aligned. The frameworks intentionally diverge on idiom only:
 
-- Vue: `defineModel()` for v-model; named `<slot>`s; `<style scoped lang="scss">`
+- Vue: `defineModel()` for v-model; named `<slot>`s; no `<style>` block
 - React: controlled props + callbacks; `children` + specific `ReactNode` props (`iconLeft`, `iconRight`); no per-component SCSS — styles come from `epicenter-styles`
 
 ### Icons
@@ -72,7 +72,7 @@ Never edit files in `epicenter-icons-vue/` or `epicenter-icons-react/` — regen
 
 - Component prefix: `Ep` (e.g. `EpButton`, `EpTable`)
 - CSS: modified BEM — `.ep-button`, `.ep-button--large`, `.ep-button__icon`
-- Component custom properties scoped as `--ep-component-name-*`, referencing theme tokens (`--interface-*`, `--text-color`, `--border-color`) — never raw color values
+- Component custom properties follow `--ep-<block>[-<part>][-<state>]-<property>` and are enforced by `npm run validate` in `packages/epicenter-styles`. The full contract is [NAMING.md](packages/epicenter-styles/NAMING.md) — read it before adding a property
 - Every component must ship a story: `.stories.js` (Vue) or `.stories.tsx` (React) alongside the component
 
 ## File removal

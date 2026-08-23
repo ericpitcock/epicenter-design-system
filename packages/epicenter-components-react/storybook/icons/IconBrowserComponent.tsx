@@ -134,7 +134,7 @@ export const IconBrowserComponent: React.FC<IconBrowserComponentProps> = ({
   const iconStyle = useMemo(() => ({
     '--ep-icon-width': `${size || 24}px`,
     '--ep-icon-height': `${size || 24}px`,
-    '--ep-icon-color': color || '#000000',
+    '--ep-icon-text-color': color || '#000000',
     '--ep-icon-stroke-width': (strokeWidth || 1.5).toString(),
   } as React.CSSProperties), [size, color, strokeWidth]);
 

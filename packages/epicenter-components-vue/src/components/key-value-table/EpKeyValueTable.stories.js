@@ -1,5 +1,6 @@
 import { EpContainer, EpContextualLookup, EpKeyValueTable } from '@ericpitcock/epicenter-components-vue'
 import { enrichmentSources, getFakeEnrichmentResponse } from '@sb/data/enrichmentData.js'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
 
 const primaryData = [{
@@ -51,11 +52,13 @@ const primaryData = [{
 export default {
   title: 'Components/Table/Key Value Table',
   component: EpKeyValueTable,
-  decorators: [paddedBg],
+  decorators: [withCssProps('key-value-table'), paddedBg],
   argTypes: {
     data: { table: { disable: true } },
     commonKeyWidth: { name: 'Common Key Width', control: { type: 'boolean' } },
     sectionHeaders: { name: 'Section Headers', control: { type: 'boolean' } },
+  
+    ...cssPropArgTypes('key-value-table'),
   }
 }
 

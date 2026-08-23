@@ -1,10 +1,11 @@
 import { EpButton, EpTooltip } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredBg } from '@sb/helpers/decorators.js'
 import { ref } from 'vue'
 
 export default {
   title: 'Components/Button/Button Group',
-  decorators: [centeredBg],
+  decorators: [withCssProps('button-group'), centeredBg],
   argTypes: {
     size: {
       name: 'Size',
@@ -37,6 +38,8 @@ export default {
       name: 'Tooltip Disabled',
       control: 'boolean'
     }
+  ,
+    ...cssPropArgTypes('button-group'),
   }
 }
 

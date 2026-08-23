@@ -1,11 +1,12 @@
 import { EpFlex, EpMultiSearch } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { computed,ref } from 'vue'
 
 export default {
   title: 'Components/Search/Multisearch',
   component: EpMultiSearch,
-  decorators: [paddedSurface],
+  decorators: [withCssProps('multi-search', { except: ['--ep-multi-search-border-color', '--ep-multi-search-border-radius', '--ep-multi-search-border-style', '--ep-multi-search-border-width', '--ep-multi-search-height', '--ep-multi-search-width'] }), paddedSurface],
   argTypes: {
     placeholder: { name: 'Placeholder', control: { type: 'text' } },
     icon: { name: 'Icon', control: { type: 'object' } },
@@ -19,6 +20,8 @@ export default {
     borderRadius: { name: 'Border Radius', control: { type: 'text' } },
     backgroundColor: { name: 'Background Color', control: { type: 'text' } },
     color: { name: 'Color', control: { type: 'text' } },
+  
+    ...cssPropArgTypes('multi-search', { except: ['--ep-multi-search-border-color', '--ep-multi-search-border-radius', '--ep-multi-search-border-style', '--ep-multi-search-border-width', '--ep-multi-search-height', '--ep-multi-search-width'] }),
   },
 }
 

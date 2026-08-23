@@ -1,0 +1,39 @@
+// The logo's colours were declared inside EpicenterLogo.vue on a bare `svg`
+// selector, which meant the component's own declaration always beat a consumer's
+// — the properties were effectively write-only.
+// Note the two framework packages use different inner class names for the SVG
+// parts, so this file styles the Vue markup. React's logo carries its own inline
+// <defs><style>.
+.ep-logo {
+  --ep-logo-width: 100%;
+  --ep-logo-height: 100%;
+  --ep-logo-face-fill-color: rgb(255 241 108);
+  --ep-logo-highlight-fill-color: hsl(var(--gray-0));
+  --ep-logo-shadow-fill-color: hsl(var(--gray-500));
+  --ep-logo-stroke-color: hsl(var(--gray-500));
+  --ep-logo-stroke-width: 3;
+
+  display: block;
+  width: var(--ep-logo-width);
+  height: var(--ep-logo-height);
+
+  polygon,
+  path {
+    stroke: var(--ep-logo-stroke-color);
+    stroke-linejoin: round;
+    stroke-miterlimit: 5;
+    stroke-width: var(--ep-logo-stroke-width);
+  }
+
+  .shadow {
+    fill: var(--ep-logo-shadow-fill-color);
+  }
+
+  .highlight {
+    fill: var(--ep-logo-highlight-fill-color);
+  }
+
+  .face {
+    fill: var(--ep-logo-face-fill-color);
+  }
+}

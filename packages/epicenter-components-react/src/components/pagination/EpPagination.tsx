@@ -140,7 +140,7 @@ export const EpPagination: React.FC<EpPaginationProps> = ({
         {leftContent || (
           resultsPerPage !== null ? (
             <EpFlex className="justify-end align-center gap-10">
-              <div style={{ '--ep-input-width': 'fit-content' } as React.CSSProperties}>
+              <div style={{ '--ep-input-styler-width': 'fit-content' } as React.CSSProperties}>
                 <EpSelect
                   selectId="resultsPerPage"
                   options={resultsPerPageOptions}

@@ -1,21 +1,29 @@
+// Base styles for every icon component.
+//
+// Note what is NOT here: --ep-icon-width, --ep-icon-height, --ep-icon-text-color
+// and --ep-icon-stroke-width are deliberately *not* declared. They are read with
+// a fallback instead.
+//
+// Declaring them would set them on the icon element itself, which shadows any
+// value a consuming component sets — and because this file ships unlayered while
+// a design system's CSS is typically in a cascade layer, that shadow would win
+// regardless of specificity. Reading with a fallback keeps the icon configurable
+// from the outside, which is the whole point of the custom properties.
 svg.ep-icon {
   --ep-icon-size: 1.5em;
-  --ep-icon-width: var(--ep-icon-size);
-  --ep-icon-height: var(--ep-icon-size);
-  --ep-icon-color: currentColor;
-  --ep-icon-stroke-width: 1.5;
+
   display: inline-block;
   width: var(--ep-icon-width, var(--ep-icon-size));
   height: var(--ep-icon-height, var(--ep-icon-size));
   max-height: 100%;
-  color: var(--ep-icon-color);
+  color: var(--ep-icon-text-color, currentColor);
   vertical-align: middle;
   // Inherit to shapes by default
   stroke: currentColor;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: var(--ep-icon-stroke-width);
+  stroke-width: var(--ep-icon-stroke-width, 1.5);
 }
 
 // Explicitly filled shapes

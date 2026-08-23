@@ -127,7 +127,7 @@ export const EpInlineEdit: React.FC<EpInlineEditProps> = ({
             onMouseDown={(e) => { e.preventDefault(); onSaveClick(); }}
           >
             Save
-            <ArrowTurnBackward style={{ '--ep-icon-size': '1.4rem' } as React.CSSProperties} />
+            <ArrowTurnBackward style={{ '--ep-icon-width': '1.4rem', '--ep-icon-height': '1.4rem' } as React.CSSProperties} />
           </div>
           <div
             className="ep-flex gap-6 align-center"

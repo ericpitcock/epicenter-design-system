@@ -1,0 +1,18 @@
+@use '../mixins/generate-color-variants' as *;
+
+// Brand axis.
+// --primary-color-* is referenced by roughly a third of the component layer, so
+// the package ships a working default rather than requiring every consumer to
+// invoke the mixin before anything renders.
+// To rebrand, either re-invoke the mixin with your own values:
+//   @use '@ericpitcock/epicenter-styles/mixins/generate-color-variants' as *;
+//   :root { @include generate-color-variants(0.55, 0.18, 210deg); }
+// or, without any SCSS at all, override the properties you care about:
+//   :root { --primary-color-base: #4f46e5; }
+$primary-lightness: 0.6;
+$primary-chroma: 0.2;
+$primary-hue: 257deg;
+
+:root {
+  @include generate-color-variants($primary-lightness, $primary-chroma, $primary-hue);
+}

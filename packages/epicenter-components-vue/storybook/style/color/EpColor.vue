@@ -313,15 +313,15 @@
   }
 
   .ep-menu__item {
-    --ep-button-menu-item-hover-bg-color: var(--interface-surface--accent);
-    --ep-button-menu-item-hover-text-color: var(--text-color--loud);
-    --ep-button-menu-item-hover-border-color: var(--ep-button-menu-item-hover-bg-color);
+    --ep-menu-item-hover-bg-color: var(--interface-surface--accent);
+    --ep-menu-item-hover-text-color: var(--text-color--loud);
+    --ep-menu-item-hover-border-color: var(--ep-menu-item-hover-bg-color);
   }
 
   .color-sample {
     width: 5rem;
     height: 5rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius--default);
   }
 
   .light-theme .colors {

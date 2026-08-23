@@ -6,7 +6,7 @@ mode: agent
 # Vue 3 Component Generator
 
 Generate Vue 3 components following strict conventions: Composition API with script setup,
-Reactive Props Destructuring, defineModel(), scoped SCSS with locally-scoped
+Reactive Props Destructuring, defineModel(), shared SCSS with component-scoped
 CSS variables, arrow functions only, and full TypeScript strictness.
 
 ## Component anatomy
@@ -46,15 +46,22 @@ Every `.vue` component follows this structure, in this order. All content inside
   <!-- Semantic HTML, accessible markup -->
 </template>
 
-<style scoped lang="scss">
-  .component-name {
-    --component-bg: var(--color-surface, #ffffff);
-    --component-border: var(--color-border, #e5e7eb);
+<!-- No <style> block. Component CSS lives in
+     packages/epicenter-styles/scss/components/_component-name.scss: -->
+```
 
-    background: var(--component-bg);
-    border: 1px solid var(--component-border);
-  }
-</style>
+```scss
+.ep-component-name {
+  --ep-component-name-bg-color: var(--interface-surface);
+  --ep-component-name-border-width: var(--border-width--hairline);
+  --ep-component-name-border-style: solid;
+  --ep-component-name-border-color: var(--border-color);
+
+  background: var(--ep-component-name-bg-color);
+  border-width: var(--ep-component-name-border-width);
+  border-style: var(--ep-component-name-border-style);
+  border-color: var(--ep-component-name-border-color);
+}
 ```
 
 ## Rules
@@ -66,6 +73,8 @@ Every `.vue` component follows this structure, in this order. All content inside
 - `defineOptions({ name: 'ComponentName' })` on every component
 - Primitives: `ref()`. Large objects: `shallowRef()`. Derived: `computed()`
 - Never destructure `reactive()` — breaks reactivity
-- `<style scoped lang="scss">` — component tokens scoped to root class, never `:root`
+- **No `<style>` block.** Component CSS goes in `packages/epicenter-styles/scss/components/`,
+  so it is shared with the React package and reachable by consumers without `:deep()`.
+  Naming and structure: [NAMING.md](../../packages/epicenter-styles/NAMING.md)
 - `rem` for spacing/typography. No Tailwind
 - Semantic HTML elements, `aria-label` when needed, keyboard navigation for interactive elements

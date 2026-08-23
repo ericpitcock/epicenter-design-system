@@ -1,14 +1,18 @@
 import { EpSearchTypeahead } from '@ericpitcock/epicenter-components-vue'
 import webColors from '@sb/data/webColors.json'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { ref } from 'vue'
 
 export default {
   title: 'Components/Search/Typeahead',
   component: EpSearchTypeahead,
+  decorators: [withCssProps('search-typeahead')],
   argTypes: {
     resultsKey: { table: { disable: true } },
     returnedSearchResults: { table: { disable: true } },
     inputProps: { table: { disable: true } },
+  
+    ...cssPropArgTypes('search-typeahead'),
   },
 }
 

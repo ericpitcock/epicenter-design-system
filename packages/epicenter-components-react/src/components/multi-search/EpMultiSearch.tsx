@@ -62,7 +62,7 @@ export const EpMultiSearch = forwardRef<HTMLDivElement, EpMultiSearchProps>(
       autofocus = false,
       width = '100%',
       height = '5rem',
-      borderRadius = 'var(--border-radius)',
+      borderRadius = 'var(--border-radius--default)',
       backgroundColor = 'var(--interface-foreground)',
       color = 'var(--text-color)',
       value: controlledValue,

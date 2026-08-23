@@ -1,4 +1,5 @@
 import { EpInlineEdit } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { ref, toRef } from 'vue'
@@ -6,7 +7,7 @@ import { ref, toRef } from 'vue'
 export default {
   title: 'Components/Inline Edit',
   component: EpInlineEdit,
-  decorators: [paddedSurface],
+  decorators: [withCssProps('inline-edit'), paddedSurface],
   argTypes: {
     modelValue: {
       table: { disable: true }
@@ -37,6 +38,8 @@ export default {
         category: 'Icons'
       }
     },
+  
+    ...cssPropArgTypes('inline-edit'),
   }
 }
 

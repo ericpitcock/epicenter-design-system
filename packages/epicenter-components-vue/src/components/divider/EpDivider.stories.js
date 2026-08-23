@@ -1,11 +1,12 @@
 import { EpDivider } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
 export default {
   title: 'Components/Divider',
   component: EpDivider,
-  decorators: [paddedSurface],
+  decorators: [withCssProps('divider', { except: ['--ep-divider-border-color', '--ep-divider-border-style'] }), paddedSurface],
   argTypes: {
     direction: {
       name: 'Direction',
@@ -39,6 +40,8 @@ export default {
     styles: {
       table: { disable: true }
     },
+  
+    ...cssPropArgTypes('divider', { except: ['--ep-divider-border-color', '--ep-divider-border-style'] }),
   }
 }
 

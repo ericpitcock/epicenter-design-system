@@ -1,8 +1,11 @@
+// Focus ring.
+// These are system tokens, so they carry no --ep- prefix: that namespace belongs
+// to component properties only.
 :root {
-  --ep-focus-outline-color: var(--primary-color-base);
-  --ep-focus-outline-width: 2px;
-  --ep-focus-outline-offset: 2px;
-  --ep-default-focus-outline: var(--ep-focus-outline-width) solid var(--ep-focus-outline-color);
+  --focus-outline-color: var(--primary-color-base);
+  --focus-outline-width: var(--border-width--thick);
+  --focus-outline-offset: 0.2rem;
+  --focus-outline: var(--focus-outline-width) solid var(--focus-outline-color);
 }
 
 input,
@@ -16,12 +19,12 @@ summary,
 [role="link"],
 [role="menuitem"] {
   &:focus-visible {
-    outline: var(--ep-default-focus-outline);
-    outline-offset: var(--ep-focus-outline-offset);
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
   }
 }
 
 details[open] > summary:focus-visible {
-  outline: var(--ep-default-focus-outline);
-  outline-offset: var(--ep-focus-outline-offset);
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }

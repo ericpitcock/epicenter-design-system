@@ -1,0 +1,7 @@
+// Border width scale.
+// Settles the 1px vs 0.1rem split that ran through the component layer — eight
+// files used one, eight used the other, for the same visual hairline.
+:root {
+  --border-width--hairline: 0.1rem;
+  --border-width--thick: 0.2rem;
+}

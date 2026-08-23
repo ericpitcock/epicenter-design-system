@@ -1,4 +1,5 @@
 import { EpButton, EpLoaderBars, EpLoaderBounce, EpLoaderDots, EpLoaderDualRing, EpLoaderFade, EpLoaderOrbit, EpLoaderPulse, EpLoaderScale, EpLoaderSpin, EpLoaderSquares } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredBg } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { computed, ref, toRef } from 'vue'
@@ -19,7 +20,7 @@ const loaderComponents = {
 export default {
   title: 'Components/Button',
   component: EpButton,
-  decorators: [centeredBg],
+  decorators: [withCssProps('button', { if: { arg: 'classes', eq: 'Custom' } }), centeredBg],
   argTypes: {
     classes: {
       name: 'Style',
@@ -123,135 +124,7 @@ export default {
         category: 'Icons'
       }
     },
-    backgroundColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-bg-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Base Styles'
-      },
-    },
-    borderColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-border-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Base Styles'
-      },
-    },
-    textColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-text-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Base Styles'
-      },
-    },
-    borderRadius: {
-      name: '--ep-button-border-radius',
-      control: {
-        type: 'number'
-      },
-      table: {
-        category: 'Base Props'
-      },
-    },
-    hoverBackgroundColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-hover-bg-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Hover Styles'
-      },
-    },
-    hoverBorderColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-hover-border-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Hover Styles'
-      },
-    },
-    hoverTextColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-hover-text-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Hover Styles'
-      },
-    },
-    activeBackgroundColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-active-bg-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Active Styles'
-      },
-    },
-    activeBorderColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-active-border-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Active Styles'
-      },
-    },
-    activeTextColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-active-text-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Active Styles'
-      },
-    },
-    disabledBackgroundColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-disabled-bg-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Disabled Styles'
-      },
-    },
-    disabledBorderColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-disabled-border-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Disabled Styles'
-      },
-    },
-    disabledTextColor: {
-      if: { arg: 'classes', eq: 'Custom' },
-      name: '--ep-button-disabled-text-color',
-      control: {
-        type: 'color'
-      },
-      table: {
-        category: 'Disabled Styles'
-      },
-    },
+    ...cssPropArgTypes('button', { if: { arg: 'classes', eq: 'Custom' } }),
     styles: {
       table: { disable: true }
     },
@@ -265,22 +138,6 @@ export default {
 export const Button = args => ({
   components: { EpButton },
   setup() {
-    const buttonStyles = computed(() => ({
-      '--ep-button-bg-color': args.backgroundColor,
-      '--ep-button-border-color': args.borderColor,
-      '--ep-button-border-radius': args.borderRadius + 'px',
-      '--ep-button-text-color': args.textColor,
-      '--ep-button-hover-bg-color': args.hoverBackgroundColor,
-      '--ep-button-hover-border-color': args.hoverBorderColor,
-      '--ep-button-hover-text-color': args.hoverTextColor,
-      '--ep-button-active-bg-color': args.activeBackgroundColor,
-      '--ep-button-active-border-color': args.activeBorderColor,
-      '--ep-button-active-text-color': args.activeTextColor,
-      '--ep-button-disabled-bg-color': args.disabledBackgroundColor,
-      '--ep-button-disabled-border-color': args.disabledBorderColor,
-      '--ep-button-disabled-text-color': args.disabledTextColor,
-    }))
-
     const buttonProps = computed(() => {
       const props = {}
       if (args.size && args.size !== 'default') props.size = args.size
@@ -298,12 +155,11 @@ export const Button = args => ({
       console.log('Button clicked!')
     }
 
-    return { args, buttonProps, buttonStyles, onClick, iconLeftComponent, iconRightComponent }
+    return { args, buttonProps, onClick, iconLeftComponent, iconRightComponent }
   },
   template: `
     <ep-button
       v-bind="buttonProps"
-      :style="buttonStyles"
       :class="args.classes"
       @click="onClick"
     >
@@ -337,7 +193,7 @@ Button.args = {
   enabledIcons: true,
   iconLeft: 'CloudDownload',
   iconRight: 'None',
-  borderRadius: 3,
+  borderRadius: '0.3rem',
 }
 
 export const AsLoading = args => ({
@@ -386,7 +242,7 @@ AsLoading.args = {
   enabledIcons: false,
   iconLeft: 'None',
   iconRight: 'None',
-  borderRadius: 3,
+  borderRadius: '0.3rem',
   loader: 'Dots',
 }
 
@@ -466,7 +322,7 @@ AsToggle.args = {
   enabledIcons: false,
   iconLeft: 'None',
   iconRight: 'None',
-  borderRadius: 3,
+  borderRadius: '0.3rem',
 }
 
 AsToggle.argTypes = {

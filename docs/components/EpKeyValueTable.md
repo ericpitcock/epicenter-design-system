@@ -19,6 +19,49 @@
 This component does not use events.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-key-value-table` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-key-value-table {
+  --ep-key-value-table-border-color: /* … */;
+}
+```
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-key-value-table-border-color` | `var(--border-color)` | — |
+| `--ep-key-value-table-border-style` | `solid` | — |
+| `--ep-key-value-table-border-width` | `var(--border-width--hairline)` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-key-value-table-cell-padding-block` | `0.5rem` | — |
+| `--ep-key-value-table-heading-margin-block-start` | `1.5rem` | — |
+| `--ep-key-value-table-key-padding-inline-end` | `var(--space--5)` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-key-value-table-line-height` | `var(--text-line-height--normal)` | — |
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-key-value-table-row-stripe-bg-color` | `var(--interface-foreground)` | — |
+
 ## Component Code
 
 ```vue
@@ -113,28 +156,36 @@ This component does not use events.
 ## Styles (SCSS)
 
 ```scss
+// @block key-value-table
+// @root .ep-key-value-table
 .ep-key-value-table {
-  --ep-table-row-stripe-color: var(--interface-foreground);
+  --ep-key-value-table-border-width: var(--border-width--hairline);
+  --ep-key-value-table-border-style: solid;
+  --ep-key-value-table-border-color: var(--border-color);
+  --ep-key-value-table-cell-padding-block: 0.5rem;
+  --ep-key-value-table-key-padding-inline-end: var(--space--5);
+  --ep-key-value-table-line-height: var(--text-line-height--normal);
+  --ep-key-value-table-heading-margin-block-start: 1.5rem;
+  --ep-key-value-table-row-stripe-bg-color: var(--interface-foreground);
 
   td {
-    border-bottom: 1px solid var(--border-color);
-    line-height: 1.5;
-    padding-block: 0.5rem;
+    border-bottom: var(--ep-key-value-table-border-width) var(--ep-key-value-table-border-style) var(--ep-key-value-table-border-color);
+    line-height: var(--ep-key-value-table-line-height);
+    padding-block: var(--ep-key-value-table-cell-padding-block);
   }
 
-  // first tr td border top
   tr:first-child td {
-    border-top: 1px solid var(--border-color);
+    border-top: var(--ep-key-value-table-border-width) var(--ep-key-value-table-border-style) var(--ep-key-value-table-border-color);
   }
 
   td:first-child {
-    padding-inline-end: 2rem;
+    padding-inline-end: var(--ep-key-value-table-key-padding-inline-end);
     white-space: nowrap;
   }
 
   &--striped {
     tr:nth-child(even) {
-      background-color: var(--ep-table-row-stripe-color);
+      background-color: var(--ep-key-value-table-row-stripe-bg-color);
     }
   }
 
@@ -145,7 +196,8 @@ This component does not use events.
   }
 
   table + h3 {
-    margin-top: 1.5rem;
+    margin-block-start: var(--ep-key-value-table-heading-margin-block-start);
   }
 }
+
 ```

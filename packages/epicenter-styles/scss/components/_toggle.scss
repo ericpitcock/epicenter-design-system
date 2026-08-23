@@ -1,40 +1,65 @@
 .ep-toggle {
+  // Box
+  --ep-toggle-height: 2rem;
+  --ep-toggle-gap: 1rem;
+  --ep-toggle-track-width: 3.6rem;
+  --ep-toggle-track-height: var(--ep-toggle-height);
+  --ep-toggle-thumb-size: 1.6rem;
+  --ep-toggle-thumb-top: 0.1rem;
+  --ep-toggle-thumb-left: 0.1rem;
+  --ep-toggle-thumb-offset: 1.6rem;
+
+  // Surface
   --ep-toggle-track-bg-color: var(--interface-overlay);
-  --ep-toggle-track-border-color: var(--border-color);
+  // TODO: `green` is the CSS keyword, not a token — carried over verbatim so the
+  // on-state keeps its current colour. Likely wants --status-success-border-color.
   --ep-toggle-track-active-bg-color: green;
-  --ep-toggle-track-active-border-color: green;
   --ep-toggle-thumb-bg-color: var(--text-color);
-  --ep-toggle-thumb-active-bg-color: white;
+  --ep-toggle-thumb-active-bg-color: hsl(var(--gray-0));
   --ep-toggle-thumb-disabled-bg-color: var(--border-color);
+  --ep-toggle-track-disabled-bg-color: transparent;
+
+  // Border
+  --ep-toggle-border-width: var(--border-width--hairline);
+  --ep-toggle-border-radius: var(--border-radius--full);
+  --ep-toggle-track-border-color: var(--border-color);
+  --ep-toggle-track-active-border-color: var(--ep-toggle-track-active-bg-color);
+
+  // Text
+  --ep-toggle-label-font-size: var(--font-size--small);
+
+  // Motion
+  --ep-toggle-transition: var(--duration--fast) ease;
+
   position: relative;
   display: flex;
-  height: 2rem;
+  height: var(--ep-toggle-height);
   align-items: center;
-  border-radius: 2rem;
+  border-radius: var(--ep-toggle-border-radius);
   cursor: pointer;
-  gap: 1rem;
-  transition: background-color 0.1s ease;
+  gap: var(--ep-toggle-gap);
+  transition: background-color var(--ep-toggle-transition);
   user-select: none;
 
   &__track {
     position: relative;
-    width: 3.6rem;
-    height: 2rem;
-    border: 1px solid var(--ep-toggle-track-border-color);
-    border-radius: 2rem;
+    width: var(--ep-toggle-track-width);
+    height: var(--ep-toggle-track-height);
+    border: var(--ep-toggle-border-width) solid var(--ep-toggle-track-border-color);
+    border-radius: var(--ep-toggle-border-radius);
     background-color: var(--ep-toggle-track-bg-color);
-    transition: background-color 0.1s ease;
+    transition: background-color var(--ep-toggle-transition);
   }
 
   &__thumb {
     position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 1.6rem;
-    height: 1.6rem;
-    border-radius: 50%;
+    top: var(--ep-toggle-thumb-top);
+    left: var(--ep-toggle-thumb-left);
+    width: var(--ep-toggle-thumb-size);
+    height: var(--ep-toggle-thumb-size);
+    border-radius: var(--ep-toggle-border-radius);
     background-color: var(--ep-toggle-thumb-bg-color);
-    transition: transform 0.2s ease;
+    transition: transform var(--ep-toggle-transition);
   }
 
   &--active {
@@ -45,23 +70,25 @@
 
     .ep-toggle__thumb {
       background-color: var(--ep-toggle-thumb-active-bg-color);
-      transform: translateX(1.6rem);
+      transform: translateX(var(--ep-toggle-thumb-offset));
     }
   }
 
   &__label {
-    font-size: var(--font-size--small);
+    font-size: var(--ep-toggle-label-font-size);
     white-space: nowrap;
   }
 
   &--disabled {
     cursor: not-allowed;
 
-    .toggle__track {
-      background-color: transparent;
+    // These two selectors were written without the `ep-` prefix, so the disabled
+    // state never applied to anything.
+    .ep-toggle__track {
+      background-color: var(--ep-toggle-track-disabled-bg-color);
     }
 
-    .toggle__thumb {
+    .ep-toggle__thumb {
       background-color: var(--ep-toggle-thumb-disabled-bg-color);
     }
   }

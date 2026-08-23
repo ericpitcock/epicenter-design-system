@@ -1,0 +1,14 @@
+// Theme switching.
+// Every theme-aware token is a light-dark() pair, so switching themes is just a
+// matter of pinning color-scheme. With no class applied the OS preference wins.
+:root {
+  color-scheme: light dark;
+}
+
+.light-theme {
+  color-scheme: light;
+}
+
+.dark-theme {
+  color-scheme: dark;
+}

@@ -1,3 +1,4 @@
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { surface } from '@sb/helpers/decorators.js'
 
 import EpTableStory from '../../../storybook/table/EpTableStory.vue'
@@ -5,7 +6,7 @@ import EpTableStory from '../../../storybook/table/EpTableStory.vue'
 export default {
   title: 'Components/Table',
   component: EpTableStory,
-  decorators: [surface],
+  decorators: [withCssProps('table'), surface],
   argTypes: {
     columns: {
       table: { disable: true }
@@ -55,6 +56,8 @@ export default {
         type: 'boolean'
       }
     },
+  
+    ...cssPropArgTypes('table'),
   }
 }
 

@@ -75,39 +75,3 @@
   </nav>
 </template>
 
-<style lang="scss" scoped>
-  .ep-breadcrumbs {
-    list-style: none;
-    display: flex;
-
-    &__item {
-      display: flex;
-      align-items: center;
-      color: var(--text-color--subtle);
-
-      a {
-        cursor: pointer;
-
-        &:hover {
-          color: var(--text-color--loud);
-        }
-      }
-
-      &--current {
-        color: var(--text-color--loud);
-        cursor: default;
-      }
-    }
-
-    &__separator {
-      padding-inline: 0.5em;
-
-      .ep-icon {
-        --ep-icon-width: 1em;
-        --ep-icon-height: 1em;
-        --ep-icon-stroke-width: 3px;
-        --ep-icon-color: var(--text-color--disabled);
-      }
-    }
-  }
-</style>

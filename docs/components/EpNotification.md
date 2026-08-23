@@ -19,6 +19,61 @@
 This component does not use slots.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-notification` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-notification {
+  --ep-notification-bg-color: /* … */;
+}
+```
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-notification-bg-color` | `var(--interface-overlay)` | — |
+| `--ep-notification-strip-bg-color` | `var(--primary-color-base)` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-notification-body-gap` | `1rem` | — |
+| `--ep-notification-body-padding` | `1.2rem 0.5rem 1.2rem 2rem` | — |
+| `--ep-notification-message-gap` | `0.5rem` | — |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-notification-border-color` | `var(--border-color--lighter)` | — |
+| `--ep-notification-border-radius` | `var(--border-radius--large)` | — |
+| `--ep-notification-border-style` | `solid` | — |
+| `--ep-notification-border-width` | `var(--border-width--hairline)` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-notification-line-height` | `var(--text-line-height--tight)` | — |
+| `--ep-notification-text-color` | `var(--text-color--loud)` | — |
+| `--ep-notification-timestamp-font-size` | `var(--font-size--tiny)` | — |
+| `--ep-notification-timestamp-text-color` | `var(--text-color--subtle)` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-notification-strip-width` | `0.5rem` | — |
+| `--ep-notification-width` | `30rem` | — |
+
 ## Component Code
 
 ```vue
@@ -75,14 +130,31 @@ This component does not use slots.
 
 ```scss
 .ep-notification {
-  --ep-notification-strip-color: var(--primary-color-base);
+  --ep-notification-width: 30rem;
+  --ep-notification-strip-width: 0.5rem;
+  --ep-notification-strip-bg-color: var(--primary-color-base);
+  --ep-notification-border-radius: var(--border-radius--large);
+
+  --ep-notification-body-padding: 1.2rem 0.5rem 1.2rem 2rem;
+  --ep-notification-body-gap: 1rem;
+  --ep-notification-bg-color: var(--interface-overlay);
+  --ep-notification-border-width: var(--border-width--hairline);
+  --ep-notification-border-style: solid;
+  --ep-notification-border-color: var(--border-color--lighter);
+
+  --ep-notification-message-gap: 0.5rem;
+  --ep-notification-text-color: var(--text-color--loud);
+  --ep-notification-line-height: var(--text-line-height--tight);
+  --ep-notification-timestamp-text-color: var(--text-color--subtle);
+  --ep-notification-timestamp-font-size: var(--font-size--tiny);
+
   display: flex;
-  width: 30rem;
+  width: var(--ep-notification-width);
 
   &__color-strip {
-    width: .5rem;
-    border-radius: var(--border-radius--large) 0 0 var(--border-radius--large);
-    background: var(--ep-notification-strip-color);
+    width: var(--ep-notification-strip-width);
+    border-radius: var(--ep-notification-border-radius) 0 0 var(--ep-notification-border-radius);
+    background: var(--ep-notification-strip-bg-color);
   }
 
   &__body {
@@ -91,12 +163,14 @@ This component does not use slots.
     height: 100%;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 0.5rem 1.2rem 2rem;
-    border: 1px solid var(--border-color--lighter);
-    border-radius: 0 var(--border-radius--large) var(--border-radius--large) 0;
+    padding: var(--ep-notification-body-padding);
+    border-width: var(--ep-notification-border-width);
+    border-style: var(--ep-notification-border-style);
+    border-color: var(--ep-notification-border-color);
+    border-radius: 0 var(--ep-notification-border-radius) var(--ep-notification-border-radius) 0;
     border-left: none;
-    background-color: var(--interface-overlay);
-    gap: 1rem;
+    background-color: var(--ep-notification-bg-color);
+    gap: var(--ep-notification-body-gap);
   }
 
   &__message {
@@ -104,27 +178,28 @@ This component does not use slots.
     height: 100%;
     flex-direction: column;
     justify-content: center;
-    gap: .5rem;
+    gap: var(--ep-notification-message-gap);
 
     &__text {
-      color: var(--text-color--loud);
-      line-height: var(--text-line-height--tight);
+      color: var(--ep-notification-text-color);
+      line-height: var(--ep-notification-line-height);
     }
 
     &__timestamp {
-      color: var(--text-color--subtle);
-      font-size: var(--font-size--tiny);
+      color: var(--ep-notification-timestamp-text-color);
+      font-size: var(--ep-notification-timestamp-font-size);
     }
   }
 }
 
 .notification-enter-active,
 .notification-leave-active {
-  transition: transform .5s;
+  transition: transform var(--duration--slow);
 }
 
 .notification-enter,
 .notification-leave-to {
   transform: translateY(-200%);
 }
+
 ```

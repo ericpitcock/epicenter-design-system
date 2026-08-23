@@ -1,10 +1,11 @@
 import { EpTooltip } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredBg } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Tooltip',
   component: EpTooltip,
-  decorators: [centeredBg],
+  decorators: [withCssProps('tooltip', { except: ['--ep-tooltip-offset-x', '--ep-tooltip-offset-y'] }), centeredBg],
   argTypes: {
     delay: {
       name: 'Delay',
@@ -56,6 +57,8 @@ export default {
         type: 'text'
       }
     },
+  
+    ...cssPropArgTypes('tooltip', { except: ['--ep-tooltip-offset-x', '--ep-tooltip-offset-y'] }),
   }
 }
 

@@ -1,13 +1,18 @@
-.ep-map-container {
+// Mapbox's own stylesheet is loaded unlayered (a JS import inside the
+// component), and unlayered CSS beats every layer regardless of specificity —
+// `.mapboxgl-map { position: relative }` therefore wins over anything declared
+// here. So the canvas is sized rather than pinned with `inset`, and the block
+// keeps its own `position: relative` as the anchor for overlays.
+.ep-map {
+  --ep-map-width: 100%;
+  --ep-map-height: 100%;
+
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: var(--ep-map-width);
+  height: var(--ep-map-height);
 }
 
-#ep-map {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+.ep-map__canvas {
+  width: 100%;
+  height: 100%;
 }

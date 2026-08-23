@@ -1,26 +1,39 @@
-@use '../mixins/mixins' as *;
-
 .ep-menu {
-  --ep-menu-bg-color: var(--interface-surface);
   --ep-menu-padding: 1rem 0.5rem;
-  --ep-menu-border-width: 0.1rem;
+  --ep-menu-bg-color: var(--interface-surface);
+  --ep-menu-border-width: var(--border-width--hairline);
   --ep-menu-border-style: solid;
   --ep-menu-border-color: var(--border-color);
   --ep-menu-border-radius: var(--border-radius--large);
+  --ep-menu-text-align: left;
+
   --ep-menu-section-padding: 0.8rem 2.2rem;
-  --ep-menu-section-margin-top: 0;
+  --ep-menu-section-margin-block-start: 0;
+
   --ep-menu-divider-border-color: var(--border-color);
-  --ep-button-menu-item-hover-bg-color: var(--primary-color-base);
-  --ep-button-menu-item-hover-text-color: hsl(0, 0%, 100%);
-  --ep-button-menu-item-hover-border-color: var(--primary-color-base);
-  --ep-button-menu-item-selected-bg-color: var(--primary-color-base);
-  --ep-button-menu-item-selected-text-color: hsl(0, 0%, 100%);
+  --ep-menu-divider-margin: 1rem 0;
+
+  --ep-menu-item-padding-inline: var(--space--5);
+  --ep-menu-item-border-radius: var(--border-radius--default);
+  --ep-menu-item-bg-color: transparent;
+  --ep-menu-item-border-color: transparent;
+  --ep-menu-item-hover-bg-color: var(--primary-color-base);
+  --ep-menu-item-hover-text-color: hsl(var(--gray-0));
+  --ep-menu-item-hover-border-color: var(--primary-color-base);
+  --ep-menu-item-selected-bg-color: var(--primary-color-base);
+  --ep-menu-item-selected-text-color: hsl(var(--gray-0));
+
+  --ep-menu-sub-menu-top: -1rem;
+  --ep-menu-sub-menu-offset: 1rem;
+  --ep-menu-chevron-size: 1.2em;
+  --ep-menu-chevron-left: 1rem;
+
   border-width: var(--ep-menu-border-width);
   border-style: var(--ep-menu-border-style);
   border-color: var(--ep-menu-border-color);
   border-radius: var(--ep-menu-border-radius);
   background: var(--ep-menu-bg-color);
-  text-align: left;
+  text-align: var(--ep-menu-text-align);
 }
 
 .ep-menu__items {
@@ -33,66 +46,64 @@
   white-space: nowrap;
 
   &:not(:first-of-type) {
-    margin-top: var(--ep-menu-section-margin-top);
+    margin-block-start: var(--ep-menu-section-margin-block-start);
   }
 }
 
 .ep-menu__item {
   position: relative;
-  border-radius: var(--border-radius);
+  border-radius: var(--ep-menu-item-border-radius);
 
+  // The menu configures its buttons by reassigning the button's own properties
+  // rather than overriding them with longhand. That keeps .ep-button's hover and
+  // selected rules in charge — and means a consumer restyling menu items only
+  // has to set --ep-menu-item-*, not out-specify this selector.
   .ep-button--menu-item {
+    --ep-button-padding-inline-start: var(--ep-menu-item-padding-inline);
+    --ep-button-padding-inline-end: var(--ep-menu-item-padding-inline);
+    --ep-button-bg-color: var(--ep-menu-item-bg-color);
+    --ep-button-border-color: var(--ep-menu-item-border-color);
+    --ep-button-hover-bg-color: var(--ep-menu-item-hover-bg-color);
+    --ep-button-hover-border-color: var(--ep-menu-item-hover-border-color);
+    --ep-button-hover-text-color: var(--ep-menu-item-hover-text-color);
+
     width: 100%;
     max-width: 100%;
-    padding-right: 2rem;
-    padding-left: 2rem;
-    border-color: transparent;
-    background: transparent;
 
-    @include hover {
-      &:not(.ep-button--menu-item--selected):hover {
-        border-color: var(--ep-button-menu-item-hover-border-color);
-        background: var(--ep-button-menu-item-hover-bg-color);
-        color: var(--ep-button-menu-item-hover-text-color);
-      }
-    }
-
+    // .ep-button already excludes any class ending in --selected from its hover
+    // rule, which this class does, so no extra guard is needed here.
     &--selected {
-      background: var(--ep-button-menu-item-selected-bg-color);
-      color: var(--ep-button-menu-item-selected-text-color);
+      --ep-button-bg-color: var(--ep-menu-item-selected-bg-color);
+      --ep-button-text-color: var(--ep-menu-item-selected-text-color);
       cursor: default;
     }
   }
 
-  // styling the chevron when the menu item has a sub menu
+  // The chevron shown when a menu item opens a sub-menu.
   &:has(.ep-menu__item__sub-menu) {
     .ep-button__icon--right {
-      margin-left: auto;
+      margin-inline-start: auto;
 
       & > .ep-icon {
-        --ep-icon-width: 1.2em;
-        --ep-icon-height: 1.2em;
+        --ep-icon-width: var(--ep-menu-chevron-size);
+        --ep-icon-height: var(--ep-menu-chevron-size);
         position: relative;
-        left: 1rem;
+        left: var(--ep-menu-chevron-left);
       }
     }
   }
 
   &__sub-menu {
     position: absolute;
-    top: -1rem;
-    left: calc(100% - 1rem);
+    top: var(--ep-menu-sub-menu-top);
+    left: calc(100% - var(--ep-menu-sub-menu-offset));
   }
 }
 
-.ep-menu > .ep-divider {
-  --ep-divider-border-color: var(--ep-menu-divider-border-color);
-  --ep-divider-margin: 1rem 0;
-}
-
+.ep-menu > .ep-divider,
 .ep-menu__items > .ep-divider {
   --ep-divider-border-color: var(--ep-menu-divider-border-color);
-  --ep-divider-margin: 1rem 0;
+  --ep-divider-margin: var(--ep-menu-divider-margin);
 }
 
 .ep-menu__header,

@@ -1,14 +1,15 @@
 import { EpFooter } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
 export default {
   title: 'Components/Container/Footer',
   component: EpFooter,
-  decorators: [paddedBg],
+  decorators: [withCssProps('footer', { except: ['--ep-footer-border-color', '--ep-footer-border-radius', '--ep-footer-border-style', '--ep-footer-border-width', '--ep-footer-center-flex', '--ep-footer-center-gap', '--ep-footer-center-padding', '--ep-footer-height', '--ep-footer-left-flex', '--ep-footer-left-gap', '--ep-footer-left-padding', '--ep-footer-margin', '--ep-footer-overflow', '--ep-footer-padding', '--ep-footer-right-flex', '--ep-footer-right-gap', '--ep-footer-right-padding', '--ep-footer-width'] }), paddedBg],
   argTypes: {
     sticky: {
-      name: '--ep-footer-container-position: sticky',
+      name: '--ep-footer-position: sticky',
       control: {
         type: 'boolean'
       },
@@ -17,7 +18,7 @@ export default {
       },
     },
     stickyBottom: {
-      name: '--ep-footer-container-bottom',
+      name: '--ep-footer-bottom',
       control: {
         type: 'text'
       },
@@ -26,7 +27,7 @@ export default {
       },
     },
     width: {
-      name: '--ep-footer-container-width',
+      name: '--ep-footer-width',
       control: {
         type: 'text'
       },
@@ -35,7 +36,7 @@ export default {
       },
     },
     height: {
-      name: '--ep-footer-container-height',
+      name: '--ep-footer-height',
       control: {
         type: 'text'
       },
@@ -44,7 +45,7 @@ export default {
       },
     },
     padding: {
-      name: '--ep-footer-container-padding',
+      name: '--ep-footer-padding',
       control: {
         type: 'text'
       },
@@ -53,7 +54,7 @@ export default {
       },
     },
     margin: {
-      name: '--ep-footer-container-margin',
+      name: '--ep-footer-margin',
       control: {
         type: 'text'
       },
@@ -62,7 +63,7 @@ export default {
       },
     },
     backgroundColor: {
-      name: '--ep-footer-container-bg-color',
+      name: '--ep-footer-bg-color',
       control: {
         type: 'color'
       },
@@ -71,7 +72,7 @@ export default {
       },
     },
     borderRadius: {
-      name: '--ep-footer-container-border-radius',
+      name: '--ep-footer-border-radius',
       control: {
         type: 'text'
       },
@@ -80,7 +81,7 @@ export default {
       },
     },
     borderWidth: {
-      name: '--ep-footer-container-border-width',
+      name: '--ep-footer-border-width',
       control: {
         type: 'text'
       },
@@ -89,7 +90,7 @@ export default {
       },
     },
     borderStyle: {
-      name: '--ep-footer-container-border-style',
+      name: '--ep-footer-border-style',
       options: [
         'solid',
         'dotted',
@@ -103,7 +104,7 @@ export default {
       },
     },
     borderColor: {
-      name: '--ep-footer-container-border-color',
+      name: '--ep-footer-border-color',
       control: {
         type: 'color'
       },
@@ -112,7 +113,7 @@ export default {
       },
     },
     shadowed: {
-      name: '--ep-footer-container-box-shadow',
+      name: '--ep-footer-shadow',
       control: {
         type: 'boolean'
       },
@@ -121,7 +122,7 @@ export default {
       },
     },
     overflow: {
-      name: '--ep-footer-container-overflow',
+      name: '--ep-footer-overflow',
       options: [
         'visible',
         'hidden',
@@ -277,6 +278,8 @@ export default {
       },
     },
     styles: { table: { disable: true } },
+  
+    ...cssPropArgTypes('footer', { except: ['--ep-footer-border-color', '--ep-footer-border-radius', '--ep-footer-border-style', '--ep-footer-border-width', '--ep-footer-center-flex', '--ep-footer-center-gap', '--ep-footer-center-padding', '--ep-footer-height', '--ep-footer-left-flex', '--ep-footer-left-gap', '--ep-footer-left-padding', '--ep-footer-margin', '--ep-footer-overflow', '--ep-footer-padding', '--ep-footer-right-flex', '--ep-footer-right-gap', '--ep-footer-right-padding', '--ep-footer-width'] }),
   }
 }
 
@@ -284,19 +287,19 @@ export const Footer = args => ({
   components: { EpFooter },
   setup() {
     const styles = computed(() => ({
-      '--ep-footer-container-position': args.sticky ? 'sticky' : 'relative',
-      '--ep-footer-container-bottom': args.sticky ? args.stickyBottom : 'auto',
-      '--ep-footer-container-width': args.width,
-      '--ep-footer-container-height': args.height,
-      '--ep-footer-container-padding': args.padding,
-      '--ep-footer-container-margin': args.margin,
-      '--ep-footer-container-bg-color': args.backgroundColor,
-      '--ep-footer-container-border-radius': args.borderRadius,
-      '--ep-footer-container-border-width': args.borderWidth,
-      '--ep-footer-container-border-style': args.borderStyle,
-      '--ep-footer-container-border-color': args.borderColor,
-      '--ep-footer-container-box-shadow': args.shadowed ? '0 -2px 4px rgba(0, 0, 0, 0.1)' : 'none',
-      // '--ep-footer-container-z-index':
+      '--ep-footer-position': args.sticky ? 'sticky' : 'relative',
+      '--ep-footer-bottom': args.sticky ? args.stickyBottom : 'auto',
+      '--ep-footer-width': args.width,
+      '--ep-footer-height': args.height,
+      '--ep-footer-padding': args.padding,
+      '--ep-footer-margin': args.margin,
+      '--ep-footer-bg-color': args.backgroundColor,
+      '--ep-footer-border-radius': args.borderRadius,
+      '--ep-footer-border-width': args.borderWidth,
+      '--ep-footer-border-style': args.borderStyle,
+      '--ep-footer-border-color': args.borderColor,
+      '--ep-footer-shadow': args.shadowed ? '0 -2px 4px rgba(0, 0, 0, 0.1)' : 'none',
+      // '--ep-footer-z-index':
       '--ep-footer-content-gap': args.itemGap,
       '--ep-footer-left-flex': args.leftFlex,
       '--ep-footer-left-gap': args.leftGap,

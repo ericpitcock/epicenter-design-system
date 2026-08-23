@@ -1,34 +1,18 @@
 /* stylelint-disable no-duplicate-selectors */
 /* DO NOT EDIT DIRECTLY */
-.dark-theme {
-  --chart-sequence-00: 262 51% 58%;
-  --chart-sequence-01: 199 57% 48%;
-  --chart-sequence-02: 175 45% 26%;
-  --chart-sequence-03: 329 54% 70%;
-  --chart-sequence-04: 0 54% 97%;
-  --chart-sequence-05: 0 52% 60%;
-  --chart-sequence-06: 142 37% 58%;
-  --chart-sequence-07: 217 59% 60%;
-  --chart-sequence-08: 333 39% 51%;
-  --chart-sequence-09: 45 61% 47%;
-  --chart-sequence-10: 173 48% 40%;
-  --chart-sequence-11: 201 62% 86%;
-  --chart-sequence-12: 26 58% 37%;
-  --chart-sequence-13: 269 65% 85%;
-}
-.light-theme {
-  --chart-sequence-00: 262 51% 58%;
-  --chart-sequence-01: 199 57% 48%;
-  --chart-sequence-02: 175 45% 26%;
-  --chart-sequence-03: 329 54% 70%;
-  --chart-sequence-04: 0 0% 35%;
-  --chart-sequence-05: 0 52% 60%;
-  --chart-sequence-06: 142 37% 58%;
-  --chart-sequence-07: 217 59% 60%;
-  --chart-sequence-08: 333 39% 51%;
-  --chart-sequence-09: 45 61% 47%;
-  --chart-sequence-10: 173 48% 40%;
-  --chart-sequence-11: 202 80% 30%;
-  --chart-sequence-12: 26 58% 37%;
-  --chart-sequence-13: 269 65% 85%;
+:root {
+  --chart-sequence-00: light-dark(262 51% 58%, 262 51% 58%);
+  --chart-sequence-01: light-dark(199 57% 48%, 199 57% 48%);
+  --chart-sequence-02: light-dark(175 45% 26%, 175 45% 26%);
+  --chart-sequence-03: light-dark(329 54% 70%, 329 54% 70%);
+  --chart-sequence-04: light-dark(0 0% 35%, 0 54% 97%);
+  --chart-sequence-05: light-dark(0 52% 60%, 0 52% 60%);
+  --chart-sequence-06: light-dark(142 37% 58%, 142 37% 58%);
+  --chart-sequence-07: light-dark(217 59% 60%, 217 59% 60%);
+  --chart-sequence-08: light-dark(333 39% 51%, 333 39% 51%);
+  --chart-sequence-09: light-dark(45 61% 47%, 45 61% 47%);
+  --chart-sequence-10: light-dark(173 48% 40%, 173 48% 40%);
+  --chart-sequence-11: light-dark(202 80% 30%, 201 62% 86%);
+  --chart-sequence-12: light-dark(26 58% 37%, 26 58% 37%);
+  --chart-sequence-13: light-dark(269 65% 85%, 269 65% 85%);
 }

@@ -1,0 +1,78 @@
+// Moved out of EpAppImage.vue and renamed from --image-* to --ep-app-image-*.
+// The values marked "set by the component" are written by EpAppImage's computed
+// style from its props — this is the case where a prop legitimately becomes a
+// custom property, because the value cannot be enumerated as a modifier class.
+// The rest are free to override in CSS.
+.ep-app-image {
+  --ep-app-image-aspect-ratio: auto;
+  --ep-app-image-border-radius: var(--border-radius--large);
+
+  // Progressive enhancement: ignored by browsers without corner-shape support.
+  --ep-app-image-border-corner-shape: round;
+
+  // Set by the component from props.
+  --ep-app-image-transform-origin: center;
+  --ep-app-image-translate-x: 0;
+  --ep-app-image-translate-y: 0;
+  --ep-app-image-scale: 1;
+  --ep-app-image-duration: 200ms;
+  --ep-app-image-object-fit: cover;
+  --ep-app-image-object-position: center;
+  --ep-app-image-inset: 0;
+  --ep-app-image-overlay-z-index: var(--z-index--overlap);
+
+  position: relative;
+  // `clip`, never `hidden` — `hidden` creates a scroll container that a stray
+  // focus/scrollIntoView can scroll, silently displacing the image, and it
+  // breaks position: sticky on descendants.
+  overflow: clip;
+  border-radius: var(--ep-app-image-border-radius);
+  aspect-ratio: var(--ep-app-image-aspect-ratio);
+  corner-shape: var(--ep-app-image-border-corner-shape);
+  // Load-bearing WebKit fix: rounded clips fail on composited (transformed)
+  // children unless the container has its own stacking context. Do not replace
+  // with translateZ(0)/will-change (forces a raster layer) or clip-path (clips
+  // box-shadow and focus outlines).
+  isolation: isolate;
+
+  &[data-state='loaded'] .ep-app-image__img {
+    opacity: 1;
+  }
+}
+
+.ep-app-image__img {
+  display: block;
+  opacity: 0;
+  scale: var(--ep-app-image-scale);
+  transform-origin: var(--ep-app-image-transform-origin);
+  transition: opacity var(--ep-app-image-duration) ease;
+  translate: var(--ep-app-image-translate-x) var(--ep-app-image-translate-y);
+
+  &--fit {
+    width: 100%;
+    height: 100%;
+    object-fit: var(--ep-app-image-object-fit);
+    object-position: var(--ep-app-image-object-position);
+  }
+
+  &--free {
+    position: absolute;
+    // Free mode sizes from the intrinsic or width/height attribute size —
+    // defeat global `img { max-width: 100% }` resets.
+    max-width: none;
+    inset: var(--ep-app-image-inset);
+  }
+}
+
+.ep-app-image__overlay {
+  position: absolute;
+  z-index: var(--ep-app-image-overlay-z-index);
+  inset: 0;
+  // Overlays never eat clicks by default; consumers re-enable per child.
+  pointer-events: none;
+}
+
+.ep-app-image__error {
+  position: absolute;
+  inset: 0;
+}

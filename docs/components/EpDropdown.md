@@ -121,6 +121,36 @@ const dropdownRef = ref(null)
 | `trigger` | Trigger element that opens/closes the dropdown. Provides scoped props for custom triggers. |
 | `content` | Content displayed inside the dropdown panel when open |
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-dropdown` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-dropdown {
+  --ep-dropdown-min-width: /* … */;
+}
+```
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-dropdown-min-width` | `100%` | — |
+| `--ep-dropdown-width` | `fit-content` | — |
+
+### Layout
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-dropdown-offset` | `0.4rem` | — |
+| `--ep-dropdown-top` | `100%` | — |
+| `--ep-dropdown-z-index` | `var(--z-index--dropdown)` | — |
+
 ## Component Code
 
 ```vue
@@ -293,18 +323,22 @@ const dropdownRef = ref(null)
 
 ```scss
 .ep-dropdown {
-  --ep-dropdown-padding-top: 4px;
+  --ep-dropdown-width: fit-content;
+  --ep-dropdown-offset: 0.4rem;
+  --ep-dropdown-top: 100%;
+  --ep-dropdown-min-width: 100%;
+  --ep-dropdown-z-index: var(--z-index--dropdown);
+
   position: relative;
-  width: fit-content;
+  width: var(--ep-dropdown-width);
 
   &__container {
     position: absolute;
-    z-index: var(--z-index--dropdown);
-    top: 100%;
+    z-index: var(--ep-dropdown-z-index);
+    top: var(--ep-dropdown-top);
     left: 0;
-    min-width: 100%;
-    padding-top: var(--ep-dropdown-padding-top);
-    box-shadow: var(--box-shadow--dropdown);
+    min-width: var(--ep-dropdown-min-width);
+    padding-top: var(--ep-dropdown-offset);
 
     &--align-right {
       right: 0;
@@ -314,7 +348,8 @@ const dropdownRef = ref(null)
 
   &__content {
     position: relative;
-    z-index: var(--z-index--dropdown);
+    z-index: var(--ep-dropdown-z-index);
   }
 }
+
 ```

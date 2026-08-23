@@ -1,0 +1,10 @@
+// Elevation scale.
+// Named for the role each elevation plays, matching the --z-index--* steps, so
+// a component that sits at --z-index--dropdown casts --shadow--dropdown.
+:root {
+  --shadow--modal: 0 1rem 1rem var(--box-shadow-color);
+  --shadow--tooltip: 0 0.5rem 1rem var(--box-shadow-color);
+  --shadow--dropdown: 0 0.5rem 1rem var(--box-shadow-color);
+  --shadow--sticky: 0 0.2rem 1rem var(--box-shadow-color);
+  --shadow--overlap: 0 0.2rem 0.5rem var(--box-shadow-color);
+}

@@ -1,10 +1,12 @@
 import { EpBadge, EpFlex, EpResizable } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { mcaStory } from '@sb/helpers/McaStory.js'
 import { computed, ref } from 'vue'
 
 export default {
   title: 'Components/Resizable',
   component: EpResizable,
+  decorators: [withCssProps('resizable')],
   argTypes: {
     direction: {
       name: 'Direction',
@@ -27,6 +29,8 @@ export default {
       name: 'Max Size',
       control: { type: 'number' },
     }
+  ,
+    ...cssPropArgTypes('resizable'),
   }
 }
 

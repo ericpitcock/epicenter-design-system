@@ -1,0 +1,71 @@
+.ep-contextual-lookup {
+  --ep-contextual-lookup-preview-offset: 0.5rem;
+  --ep-contextual-lookup-preview-min-width: 40rem;
+  --ep-contextual-lookup-preview-padding: var(--space--5);
+  --ep-contextual-lookup-preview-bg-color: var(--interface-foreground);
+  --ep-contextual-lookup-preview-border-width: var(--border-width--hairline);
+  --ep-contextual-lookup-preview-border-style: solid;
+  --ep-contextual-lookup-preview-border-color: var(--border-color);
+  --ep-contextual-lookup-preview-border-radius: var(--border-radius--default);
+  --ep-contextual-lookup-preview-shadow: var(--shadow--dropdown);
+  --ep-contextual-lookup-preview-z-index: var(--z-index--dropdown);
+
+  --ep-contextual-lookup-asterisk-size: 1.2rem;
+  --ep-contextual-lookup-asterisk-text-color: var(--text-color--primary);
+  --ep-contextual-lookup-icon-size: 1.4rem;
+  --ep-contextual-lookup-icon-stroke-width: 0.2rem;
+
+  --ep-contextual-lookup-trigger-gap: 0.25rem;
+  --ep-contextual-lookup-trigger-text-decoration-color: hsl(from var(--text-color) h s l / 0.5);
+  --ep-contextual-lookup-trigger-text-underline-offset: 0.2rem;
+  --ep-contextual-lookup-trigger-hover-text-color: var(--text-color--primary);
+
+  position: relative;
+  display: inline-block;
+
+  .ep-enrichment-content {
+    position: relative;
+  }
+
+  .enrichment-preview {
+    position: absolute;
+    z-index: var(--ep-contextual-lookup-preview-z-index);
+    top: 0;
+    left: calc(100% + var(--ep-contextual-lookup-preview-offset));
+    min-width: var(--ep-contextual-lookup-preview-min-width);
+    padding: var(--ep-contextual-lookup-preview-padding);
+    border-width: var(--ep-contextual-lookup-preview-border-width);
+    border-style: var(--ep-contextual-lookup-preview-border-style);
+    border-color: var(--ep-contextual-lookup-preview-border-color);
+    border-radius: var(--ep-contextual-lookup-preview-border-radius);
+    background: var(--ep-contextual-lookup-preview-bg-color);
+    box-shadow: var(--ep-contextual-lookup-preview-shadow);
+  }
+
+  .lookup-asterisk {
+    --ep-icon-width: var(--ep-contextual-lookup-asterisk-size);
+    --ep-icon-height: var(--ep-contextual-lookup-asterisk-size);
+    --ep-icon-stroke-width: var(--ep-contextual-lookup-icon-stroke-width);
+    color: var(--ep-contextual-lookup-asterisk-text-color);
+  }
+
+  .source-button-icon {
+    --ep-icon-width: var(--ep-contextual-lookup-icon-size);
+    --ep-icon-height: var(--ep-contextual-lookup-icon-size);
+    --ep-icon-stroke-width: var(--ep-contextual-lookup-icon-stroke-width);
+  }
+
+  .trigger-wrapper {
+    display: inline-flex;
+    cursor: pointer;
+    gap: var(--ep-contextual-lookup-trigger-gap);
+    text-decoration: underline;
+    text-decoration-color: var(--ep-contextual-lookup-trigger-text-decoration-color);
+    text-decoration-style: dotted;
+    text-underline-offset: var(--ep-contextual-lookup-trigger-text-underline-offset);
+
+    &:hover {
+      color: var(--ep-contextual-lookup-trigger-hover-text-color);
+    }
+  }
+}

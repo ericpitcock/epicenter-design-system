@@ -1,10 +1,13 @@
 .ep-checkbox-filter {
+  --ep-checkbox-filter-gap: 1rem;
+  --ep-checkbox-filter-horizontal-gap: var(--space--5);
+
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--ep-checkbox-filter-gap);
 
   &--horizontal {
     flex-direction: row;
-    gap: 2rem;
+    gap: var(--ep-checkbox-filter-horizontal-gap);
   }
 }

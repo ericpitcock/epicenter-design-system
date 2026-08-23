@@ -1,0 +1,7 @@
+// The inline spinner an async button swaps in for its label.
+.ep-loader {
+  --ep-loader-size: 1em;
+
+  width: var(--ep-loader-size);
+  height: var(--ep-loader-size);
+}

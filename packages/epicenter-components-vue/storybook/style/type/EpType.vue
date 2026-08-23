@@ -97,7 +97,7 @@
   >
     <template #header>
       <ep-header
-        style="--ep-header-container-padding: 0 3rem; --ep-header-container-bg-color: transparent;"
+        style="--ep-header-padding: 0 3rem; --ep-header-bg-color: transparent;"
       >
         <template #left>
           <ep-tabs

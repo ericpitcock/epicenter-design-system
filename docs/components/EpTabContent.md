@@ -18,6 +18,27 @@
 This component does not use events.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-tab-content` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-tab-content {
+  --ep-tab-content-height: /* … */;
+}
+```
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tab-content-height` | `100%` | — |
+
 ## Component Code
 
 ```vue
@@ -61,13 +82,16 @@ This component does not use events.
 
 ```scss
 .ep-tab-content {
+  --ep-tab-content-height: 100%;
+
   &__tab-item {
     display: none;
-    height: 100%;
+    height: var(--ep-tab-content-height);
 
     &--active {
       display: block;
     }
   }
 }
+
 ```

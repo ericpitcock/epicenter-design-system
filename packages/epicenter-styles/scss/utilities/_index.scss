@@ -1,11 +1,15 @@
 @use './accessibility';
 @use './border-radius';
+@use './border-width';
 @use './box-model';
-@use './box-shadow';
 @use './color';
 @use './components';
+@use './control-size';
 @use './flexbox';
 @use './interactions';
 @use './list';
+@use './motion';
+@use './shadow';
+@use './space';
 @use './transitions';
 @use './z-index';

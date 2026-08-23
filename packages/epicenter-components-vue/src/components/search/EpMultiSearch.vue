@@ -11,10 +11,7 @@
   interface Props {
     autofocus?: boolean
     backgroundColor?: string
-    borderColor?: string
     borderRadius?: string
-    borderStyle?: string
-    borderWidth?: string
     color?: string
     disabled?: boolean
     height?: string
@@ -25,7 +22,7 @@
 
   const {
     backgroundColor = 'var(--interface-foreground)',
-    borderRadius = 'var(--border-radius)',
+    borderRadius = 'var(--border-radius--default)',
     color = 'var(--text-color)',
     disabled = false,
     height = '5rem',
@@ -60,17 +57,12 @@
 
   const clearable = computed(() => query.value.length > 0 || value.value.length > 0)
 
-  const iconStyles = computed(() => ({
-    flex: `0 0 ${height}`,
-    height: height,
-  }))
-
-  const inputStyles = computed(() => ({
-    width: width,
-    height: height,
-    borderRadius: borderRadius,
-    backgroundColor: backgroundColor,
-    color: color
+  const rootStyle = computed(() => ({
+    '--ep-multi-search-width': width,
+    '--ep-multi-search-height': height,
+    '--ep-multi-search-border-radius': borderRadius,
+    '--ep-multi-search-bg-color': backgroundColor,
+    '--ep-multi-search-text-color': color,
   }))
 
   const placeholderValue = computed(() => {
@@ -156,12 +148,11 @@
 <template>
   <div
     :class="['ep-multi-search', classes]"
-    :style="inputStyles"
+    :style="rootStyle"
   >
     <div
       v-if="icon"
       class="ep-multi-search__icon"
-      :style="iconStyles"
     >
       <Search01 />
     </div>
@@ -192,7 +183,6 @@
     <div
       v-if="clearable"
       class="ep-multi-search__clear"
-      :style="iconStyles"
       @click="onClear"
     >
       <Cancel01 />
@@ -200,35 +190,3 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-  .ep-multi-search {
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 0.5rem;
-    gap: 0.5rem;
-  }
-
-  .queries {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .query {
-    display: flex;
-    align-items: center;
-    background-color: var(--interface-surface);
-    border: 1px solid var(--border-color);
-    padding: 0.3rem 0.6rem;
-    border-radius: var(--border-radius);
-    font-size: 0.9rem;
-  }
-
-  .query--operator {
-    background-color: var(--highlight-color, #ffcc00);
-    color: black;
-    font-weight: bold;
-  }
-</style>

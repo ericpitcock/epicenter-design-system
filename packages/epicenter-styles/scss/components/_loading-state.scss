@@ -1,24 +1,33 @@
+// The component is EpLoadingState but the class it renders is .ep-loading, so
+// the block is declared explicitly rather than inferred from the filename.
+// @block loading
+// @root .ep-loading
 .ep-loading {
-  --ep-loading-state-bg-color: var(--interface-surface);
-  --ep-loading-state-border-radius: var(--border-radius--large);
-  --ep-loading-state-top: 0;
-  --ep-loading-state-right: 0;
-  --ep-loading-state-bottom: 0;
-  --ep-loading-state-left: 0;
+  --ep-loading-top: 0;
+  --ep-loading-right: 0;
+  --ep-loading-bottom: 0;
+  --ep-loading-left: 0;
+  --ep-loading-gap: var(--space--5);
+  --ep-loading-z-index: var(--z-index--modal);
+  --ep-loading-bg-color: var(--interface-surface);
+  --ep-loading-backdrop-filter: blur(0.4rem);
+  --ep-loading-border-radius: var(--border-radius--large);
+  --ep-loading-icon-height: 4rem;
+
   position: absolute;
-  z-index: var(--z-index--modal);
-  top: var(--ep-loading-state-top);
-  right: var(--ep-loading-state-right);
-  bottom: var(--ep-loading-state-bottom);
-  left: var(--ep-loading-state-left);
+  z-index: var(--ep-loading-z-index);
+  top: var(--ep-loading-top);
+  right: var(--ep-loading-right);
+  bottom: var(--ep-loading-bottom);
+  left: var(--ep-loading-left);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: var(--ep-loading-state-border-radius);
-  backdrop-filter: blur(4px);
-  background: var(--ep-loading-state-bg-color);
-  gap: 2rem;
+  border-radius: var(--ep-loading-border-radius);
+  backdrop-filter: var(--ep-loading-backdrop-filter);
+  background: var(--ep-loading-bg-color);
+  gap: var(--ep-loading-gap);
 
   &__icon-container {
     display: flex;
@@ -30,7 +39,7 @@
 
     img {
       width: 100%;
-      height: 40px;
+      height: var(--ep-loading-icon-height);
     }
   }
 

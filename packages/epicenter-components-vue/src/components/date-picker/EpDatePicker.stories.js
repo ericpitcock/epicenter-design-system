@@ -1,10 +1,11 @@
 import { EpDatePicker } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Date Picker',
   component: EpDatePicker,
-  decorators: [paddedSurface],
+  decorators: [withCssProps('date-picker'), paddedSurface],
   argTypes: {
     enableCloseOnSelect: {
       name: 'Close on Select',
@@ -57,6 +58,8 @@ export default {
         }
       }
     },
+  
+    ...cssPropArgTypes('date-picker'),
   }
 }
 

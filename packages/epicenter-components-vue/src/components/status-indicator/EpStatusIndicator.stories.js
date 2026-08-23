@@ -1,11 +1,12 @@
 import { EpStatusIndicator, EpTooltip } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredSurface } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
 export default {
   title: 'Components/Status Indicator',
   component: EpStatusIndicator,
-  decorators: [centeredSurface],
+  decorators: [withCssProps('status-indicator'), centeredSurface],
   argTypes: {
     dotColor: {
       name: 'Dot Color',
@@ -19,6 +20,8 @@ export default {
         type: 'boolean'
       }
     },
+  
+    ...cssPropArgTypes('status-indicator'),
   }
 }
 
@@ -26,8 +29,8 @@ export const StatusIndicator = args => ({
   components: { EpStatusIndicator, EpTooltip },
   setup() {
     const styles = computed(() => ({
-      '--ep-status-indicator-dot-bg': args.dotColor,
-      '--ep-status-indicator-dot-border': args.dotColor,
+      '--ep-status-indicator-dot-bg-color': args.dotColor,
+      '--ep-status-indicator-dot-border-color': args.dotColor,
     }))
 
     return { args, styles }

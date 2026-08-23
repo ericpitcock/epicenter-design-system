@@ -20,7 +20,7 @@
     height = '100%',
     lazy = true,
     placeholder = '',
-    placeholderColor = '#f5f5f5',
+    placeholderColor = 'var(--interface-surface)',
     placeholderOpacity = 1,
     width = '100%',
   } = defineProps<Props>()
@@ -102,23 +102,3 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-  .image {
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .image__placeholder {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-  }
-</style>

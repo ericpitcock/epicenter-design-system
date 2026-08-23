@@ -2,6 +2,10 @@
   "text": "Components",
   "items": [
     {
+      "text": "EpAppImage",
+      "link": "/components/EpAppImage"
+    },
+    {
       "text": "EpBadge",
       "link": "/components/EpBadge"
     },

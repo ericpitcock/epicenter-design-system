@@ -64,6 +64,66 @@ Use `calculateHeight: true` to dynamically assign a height to the container. Thi
 This component does not use props, events.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-container` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-container {
+  --ep-container-bg-color: /* … */;
+}
+```
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-container-bg-color` | `transparent` | — |
+| `--ep-container-header-bg-color` | `var(--interface-surface)` | — |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-container-border-color` | `var(--border-color)` | — |
+| `--ep-container-border-radius` | `var(--border-radius--large)` | — |
+| `--ep-container-border-style` | `solid` | — |
+| `--ep-container-border-width` | `0` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-container-content-height` | `auto` | — |
+| `--ep-container-framed-height` | `100vh` | — |
+| `--ep-container-height` | `auto` | — |
+| `--ep-container-max-height` | `none` | — |
+| `--ep-container-max-width` | `none` | — |
+| `--ep-container-min-height` | `0` | — |
+| `--ep-container-min-width` | `0` | — |
+| `--ep-container-width` | `100%` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-container-content-padding` | `0` | — |
+| `--ep-container-padding` | `0` | — |
+
+### Layout
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-container-framed-offset` | `0` | — |
+| `--ep-container-header-z-index` | `var(--z-index--sticky)` | — |
+| `--ep-container-overflow` | `visible` | — |
+| `--ep-container-z-index` | `var(--z-index--default)` | — |
+
 ## Component Code
 
 ```vue
@@ -122,13 +182,23 @@ This component does not use props, events.
   --ep-container-padding: 0;
   --ep-container-content-height: auto;
   --ep-container-content-padding: 0;
-  --ep-container-bg-color: none;
+  // `none` is not a valid background colour; transparent is what was intended
+  // and what the browser was already falling back to.
+  --ep-container-bg-color: transparent;
   --ep-container-border-radius: var(--border-radius--large);
   --ep-container-border-width: 0;
   --ep-container-border-style: solid;
   --ep-container-border-color: var(--border-color);
   --ep-container-overflow: visible;
+  --ep-container-z-index: var(--z-index--default);
   --ep-container-header-bg-color: var(--interface-surface);
+  --ep-container-header-z-index: var(--z-index--sticky);
+
+  // Only consumed by .ep-container--framed, but declared here so the property
+  // exists whether or not that modifier is applied.
+  --ep-container-framed-height: 100vh;
+  --ep-container-framed-offset: 0;
+
   position: relative;
   display: flex;
   overflow: var(--ep-container-overflow);
@@ -152,7 +222,7 @@ This component does not use props, events.
 
   &__content {
     position: relative;
-    z-index: var(--z-index--default);
+    z-index: var(--ep-container-z-index);
     height: var(--ep-container-content-height);
     flex: 1 1 auto;
     padding: var(--ep-container-content-padding);
@@ -170,15 +240,13 @@ This component does not use props, events.
 
     .ep-container__header {
       position: sticky;
-      z-index: var(--z-index--sticky);
+      z-index: var(--ep-container-header-z-index);
       top: 0;
       background: var(--ep-container-header-bg-color);
     }
   }
 
   &--framed {
-    --ep-container-framed-height: 100vh;
-    --ep-container-framed-offset: 0;
     --ep-container-height: calc(var(--ep-container-framed-height) - var(--ep-container-framed-offset));
     --ep-container-overflow: auto;
   }

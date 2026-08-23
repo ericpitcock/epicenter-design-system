@@ -58,6 +58,7 @@
   const previousMapStateSignature = ref('')
 
   const epMapContainer = useTemplateRef<HTMLDivElement>('epMapContainer')
+  const epMapCanvas = useTemplateRef<HTMLDivElement>('epMapCanvas')
 
   const observer = new ResizeObserver(() => {
     if (map.value) {
@@ -139,11 +140,13 @@
 
   const loadMap = (): Promise<void> => {
     return new Promise((resolve) => {
+      if (!epMapCanvas.value) return
+
       import('mapbox-gl').then((module) => {
         mapboxgl = module.default
         map.value = new mapboxgl.Map({
           accessToken: accessToken,
-          container: 'ep-map',
+          container: epMapCanvas.value as HTMLDivElement,
           center: mapCenter,
           zoom: mapZoom,
           style: mapStyle,
@@ -206,8 +209,11 @@
 <template>
   <div
     ref="epMapContainer"
-    class="ep-map-container"
+    class="ep-map"
   >
-    <div id="ep-map" />
+    <div
+      ref="epMapCanvas"
+      class="ep-map__canvas"
+    />
   </div>
 </template>

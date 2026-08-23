@@ -21,6 +21,27 @@
 This component does not use slots.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-table-pagination` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-table-pagination {
+  --ep-table-pagination-padding: /* … */;
+}
+```
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-table-pagination-padding` | `0` | — |
+
 ## Component Code
 
 ```vue
@@ -171,7 +192,7 @@ This component does not use slots.
       <template #left>
         <ep-flex class="justify-end align-center gap-10 text--overflow-hidden">
           Results per page
-          <div style="--ep-input-width: 7.5rem;">
+          <div style="--ep-input-styler-width: 7.5rem;">
             <ep-select
               :model-value="resultsPerPage"
               select-id="resultsPerPage"

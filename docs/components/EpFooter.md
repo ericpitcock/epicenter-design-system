@@ -14,6 +14,78 @@
 This component does not use props, events.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-footer` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-footer {
+  --ep-footer-bg-color: /* … */;
+}
+```
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-footer-bg-color` | `var(--interface-surface)` | — |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-footer-border-color` | `var(--border-color)` | — |
+| `--ep-footer-border-radius` | `0` | — |
+| `--ep-footer-border-style` | `solid` | — |
+| `--ep-footer-border-width` | `0.1rem` | — |
+
+### Layout
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-footer-bottom` | `0` | — |
+| `--ep-footer-center-flex` | `1` | — |
+| `--ep-footer-center-justify-content` | `center` | — |
+| `--ep-footer-left-flex` | `1` | — |
+| `--ep-footer-left-justify-content` | `flex-start` | — |
+| `--ep-footer-overflow` | `hidden` | — |
+| `--ep-footer-position` | `relative` | — |
+| `--ep-footer-right-flex` | `1` | — |
+| `--ep-footer-right-justify-content` | `flex-end` | — |
+| `--ep-footer-z-index` | `1` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-footer-center-gap` | `3rem` | — |
+| `--ep-footer-center-padding` | `0` | — |
+| `--ep-footer-content-gap` | `3rem` | — |
+| `--ep-footer-left-gap` | `3rem` | — |
+| `--ep-footer-left-padding` | `0` | — |
+| `--ep-footer-margin` | `0` | — |
+| `--ep-footer-padding` | `0` | — |
+| `--ep-footer-right-gap` | `3rem` | — |
+| `--ep-footer-right-padding` | `0` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-footer-height` | `5.1rem` | — |
+| `--ep-footer-width` | `100%` | — |
+
+### Effect
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-footer-shadow` | `none` | — |
+
 ## Component Code
 
 ```vue
@@ -56,20 +128,20 @@ This component does not use props, events.
 
 ```scss
 .ep-footer {
-  --ep-footer-container-position: relative;
-  --ep-footer-container-bottom: 0;
-  --ep-footer-container-width: 100%;
-  --ep-footer-container-height: 5.1rem;
-  --ep-footer-container-padding: 0;
-  --ep-footer-container-margin: 0;
-  --ep-footer-container-bg-color: var(--interface-surface);
-  --ep-footer-container-border-radius: 0;
-  --ep-footer-container-border-width: 0.1rem;
-  --ep-footer-container-border-style: solid;
-  --ep-footer-container-border-color: var(--border-color);
-  --ep-footer-container-box-shadow: none;
-  --ep-footer-container-overflow: hidden;
-  --ep-footer-container-z-index: 1;
+  --ep-footer-position: relative;
+  --ep-footer-bottom: 0;
+  --ep-footer-width: 100%;
+  --ep-footer-height: 5.1rem;
+  --ep-footer-padding: 0;
+  --ep-footer-margin: 0;
+  --ep-footer-bg-color: var(--interface-surface);
+  --ep-footer-border-radius: 0;
+  --ep-footer-border-width: 0.1rem;
+  --ep-footer-border-style: solid;
+  --ep-footer-border-color: var(--border-color);
+  --ep-footer-shadow: none;
+  --ep-footer-overflow: hidden;
+  --ep-footer-z-index: 1;
   --ep-footer-content-gap: 3rem;
   --ep-footer-left-flex: 1;
   --ep-footer-left-gap: 3rem;
@@ -83,18 +155,18 @@ This component does not use props, events.
   --ep-footer-right-gap: 3rem;
   --ep-footer-right-justify-content: flex-end;
   --ep-footer-right-padding: 0;
-  position: var(--ep-footer-container-position);
-  z-index: var(--ep-footer-container-z-index);
-  bottom: var(--ep-footer-container-bottom);
-  overflow: var(--ep-footer-container-overflow);
-  width: var(--ep-footer-container-width);
-  height: var(--ep-footer-container-height);
-  padding: var(--ep-footer-container-padding);
-  border-radius: var(--ep-footer-container-border-radius);
-  border-top: var(--ep-footer-container-border-width) var(--ep-footer-container-border-style) var(--ep-footer-container-border-color);
-  margin: var(--ep-footer-container-margin);
-  background: var(--ep-footer-container-bg-color);
-  box-shadow: var(--ep-footer-container-box-shadow);
+  position: var(--ep-footer-position);
+  z-index: var(--ep-footer-z-index);
+  bottom: var(--ep-footer-bottom);
+  overflow: var(--ep-footer-overflow);
+  width: var(--ep-footer-width);
+  height: var(--ep-footer-height);
+  padding: var(--ep-footer-padding);
+  border-radius: var(--ep-footer-border-radius);
+  border-top: var(--ep-footer-border-width) var(--ep-footer-border-style) var(--ep-footer-border-color);
+  margin: var(--ep-footer-margin);
+  background: var(--ep-footer-bg-color);
+  box-shadow: var(--ep-footer-shadow);
 
   &__content {
     display: flex;

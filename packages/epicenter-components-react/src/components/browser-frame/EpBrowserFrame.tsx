@@ -74,8 +74,8 @@ export const EpBrowserFrame: React.FC<EpBrowserFrameProps> = ({
         .browser-frame .ep-header {
           flex: 1 1 5rem;
           max-height: 5rem;
-          --ep-header-container-padding: 0 2rem;
-          --ep-header-container-bg-color: var(--interface-foreground);
+          --ep-header-padding: 0 2rem;
+          --ep-header-bg-color: var(--interface-foreground);
           --ep-header-left-flex: 0;
           --ep-header-center-flex: 3;
           --ep-header-right-flex: 0;

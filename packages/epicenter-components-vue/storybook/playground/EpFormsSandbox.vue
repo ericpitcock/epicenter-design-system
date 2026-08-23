@@ -773,7 +773,7 @@
 
             <div
               v-if="orderSummary.length === 0"
-              style="color: var(--text-secondary); padding: 16px 0;"
+              style="color: var(--text-color--subtle); padding: 16px 0;"
             >
               {{ t.noItems }}
             </div>
@@ -843,20 +843,17 @@
     width: 100%;
 
     .ep-button-var--primary {
-      --red: hsl(0, 50%, 50%);
-      --orange: hsl(15, 50%, 50%);
-      --ep-button-primary-bg: linear-gradient(140deg, var(--red) 30%, var(--orange) 70%);
-      // --ep-button-primary-bg: var(--primary-color-base);
-      --ep-button-primary-border: var(--red);
-      --ep-button-primary-text: white;
-      --ep-button-primary-hover-bg: var(--red);
-      // --ep-button-primary-hover-bg: hsl(from var(--ep-button-primary-bg) h s calc(l - 5));
-      --ep-button-primary-hover-border: hsl(from var(--ep-button-primary-border) h s calc(l - 5));
-      --ep-button-primary-hover-text: white;
-      --ep-button-primary-active-bg: hsl(from var(--red) h s calc(l - 10));
-      // --ep-button-primary-active-bg: hsl(from var(--ep-button-primary-bg) h s calc(l - 10));
-      --ep-button-primary-active-border: hsl(from var(--ep-button-primary-border) h s calc(l - 10));
-      --ep-button-primary-active-text: white;
+      --brand-red: hsl(0, 50%, 50%);
+      --brand-orange: hsl(15, 50%, 50%);
+      --ep-button-bg-color: linear-gradient(140deg, var(--brand-red) 30%, var(--brand-orange) 70%);
+      --ep-button-border-color: var(--brand-red);
+      --ep-button-text-color: hsl(var(--gray-0));
+      --ep-button-hover-bg-color: var(--brand-red);
+      --ep-button-hover-border-color: hsl(from var(--brand-red) h s calc(l - 5));
+      --ep-button-hover-text-color: hsl(var(--gray-0));
+      --ep-button-active-bg-color: hsl(from var(--brand-red) h s calc(l - 10));
+      --ep-button-active-border-color: hsl(from var(--brand-red) h s calc(l - 10));
+      --ep-button-active-text-color: hsl(var(--gray-0));
     }
 
     .forms-sandbox-header {
@@ -898,8 +895,8 @@
     .ep-header {
       --ep-header-left-flex: 2;
       --ep-header-right-flex: 1;
-      --ep-header-container-border-style: dashed;
-      --ep-header-container-border-color: hsl(54 42% 62% / 0.3);
+      --ep-header-border-style: dashed;
+      --ep-header-border-color: hsl(54 42% 62% / 0.3);
 
       h1 {
         color: hsl(54, 42%, 62%);

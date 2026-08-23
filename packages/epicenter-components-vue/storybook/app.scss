@@ -11,9 +11,9 @@ $primary-hue: 257deg;
   --text-selection-text-color: hsl(var(--gray-0));
 
   .ep-button-var--primary {
-    --ep-button-primary-bg: linear-gradient(140deg, var(--primary-color-base) 30%, var(--primary-color-up-15-base) 70%);
-    --ep-button-primary-hover-bg: linear-gradient(140deg, var(--primary-color-600) 30%, var(--primary-color-up-15-600) 70%);
-    --ep-button-primary-active-bg: linear-gradient(140deg, var(--primary-color-700) 30%, var(--primary-color-up-15-700) 70%);
+    --ep-button-bg-color: linear-gradient(140deg, var(--primary-color-base) 30%, var(--primary-color-up-15-base) 70%);
+    --ep-button-hover-bg-color: linear-gradient(140deg, var(--primary-color-600) 30%, var(--primary-color-up-15-600) 70%);
+    --ep-button-active-bg-color: linear-gradient(140deg, var(--primary-color-700) 30%, var(--primary-color-up-15-700) 70%);
 
     .ep-button__label {
       text-shadow: 0 0.1rem 0.75rem var(--primary-color-800);
@@ -35,10 +35,6 @@ $primary-hue: 257deg;
     --ep-badge-border-color: hsl(var(--yellow-600));
     --ep-badge-text-color: var(--text-color--loud);
   }
-
-  --error-color--border: hsl(0, 47%, 61%);
-  --error-color--bg: hsl(0, 77%, 61%);
-  --error-color--text: hsl(0, 47%, 61%);
 }
 
 .light-theme {
@@ -103,7 +99,7 @@ h6 {
 }
 
 .badge-variant-primary {
-  --ep-badge-bg-color: var(--primary-gradient);
+  --ep-badge-bg-color: linear-gradient(140deg, var(--primary-color-base) 30%, var(--primary-color-up-15-base) 70%);
   --ep-badge-border-color: var(--primary-color-600);
   --ep-badge-text-color: var(--text-color--loud);
 }
@@ -137,13 +133,13 @@ h6 {
 .ep-menu-default {
   --ep-menu-bg-color: var(--interface-overlay);
   --ep-menu-border-color: var(--border-color--lighter);
-  --ep-menu-border-radius: var(--border-radius);
+  --ep-menu-border-radius: var(--border-radius--default);
   --ep-menu-divider-border-color: var(--border-color--lighter);
 }
 
 .ep-menu-subtle {
   --ep-menu-bg-color: var(--interface-foreground);
   --ep-menu-border-color: var(--border-color);
-  --ep-menu-border-radius: var(--border-radius);
+  --ep-menu-border-radius: var(--border-radius--default);
   --ep-menu-divider-border-color: var(--border-color);
 }

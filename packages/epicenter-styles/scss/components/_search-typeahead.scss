@@ -1,30 +1,51 @@
 .ep-search-typeahead {
+  --ep-search-typeahead-offset: 0.4rem;
+  --ep-search-typeahead-max-height: 50vh;
+  --ep-search-typeahead-padding: 1rem;
+  --ep-search-typeahead-bg-color: var(--interface-overlay);
+  --ep-search-typeahead-border-width: var(--border-width--hairline);
+  --ep-search-typeahead-border-style: solid;
+  --ep-search-typeahead-border-color: var(--border-color--lighter);
+  --ep-search-typeahead-border-radius: var(--border-radius--default);
+  --ep-search-typeahead-z-index: var(--z-index--dropdown);
+
+  --ep-search-typeahead-item-padding: 0.9rem 1.4rem;
+  --ep-search-typeahead-item-border-radius: var(--border-radius--default);
+  --ep-search-typeahead-item-font-size: var(--font-size--small);
+  --ep-search-typeahead-item-line-height: 1;
+  --ep-search-typeahead-item-selected-bg-color: var(--primary-color-base);
+  --ep-search-typeahead-item-selected-text-color: var(--text-color--loud);
+
   position: relative;
 }
 
+// The dropdown carries its own block-level class but is rendered inside
+// .ep-search-typeahead, so it inherits the properties declared above.
 .ep-search-typeahead-dropdown {
   position: absolute;
-  z-index: var(--z-index--dropdown);
-  top: calc(100% + 0.4rem);
+  z-index: var(--ep-search-typeahead-z-index);
+  top: calc(100% + var(--ep-search-typeahead-offset));
   left: 0;
   width: 100%;
-  max-height: 50vh;
-  padding: 1rem;
-  border: 1px solid var(--border-color--lighter);
-  border-radius: var(--border-radius);
-  background-color: var(--interface-overlay);
+  max-height: var(--ep-search-typeahead-max-height);
+  padding: var(--ep-search-typeahead-padding);
+  border-width: var(--ep-search-typeahead-border-width);
+  border-style: var(--ep-search-typeahead-border-style);
+  border-color: var(--ep-search-typeahead-border-color);
+  border-radius: var(--ep-search-typeahead-border-radius);
+  background-color: var(--ep-search-typeahead-bg-color);
   overflow-y: auto;
 
   &__item {
-    padding: 0.9rem 1.4rem;
-    border-radius: var(--border-radius);
+    padding: var(--ep-search-typeahead-item-padding);
+    border-radius: var(--ep-search-typeahead-item-border-radius);
     cursor: pointer;
-    font-size: var(--font-size--small);
-    line-height: 1;
+    font-size: var(--ep-search-typeahead-item-font-size);
+    line-height: var(--ep-search-typeahead-item-line-height);
 
     &--active {
-      background-color: var(--primary-color-base);
-      color: var(--text-color--loud);
+      background-color: var(--ep-search-typeahead-item-selected-bg-color);
+      color: var(--ep-search-typeahead-item-selected-text-color);
     }
   }
 }

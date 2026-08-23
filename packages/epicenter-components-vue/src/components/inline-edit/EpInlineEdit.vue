@@ -135,7 +135,7 @@
         @mousedown.prevent="onSaveClick"
       >
         Save
-        <ArrowTurnBackward style="--ep-icon-size: 1.4rem;" />
+        <ArrowTurnBackward style="--ep-icon-width: 1.4rem; --ep-icon-height: 1.4rem;" />
       </ep-flex>
       <ep-flex
         class="gap-6 align-center"

@@ -58,13 +58,3 @@
   />
 </template>
 
-<style scoped lang="scss">
-  .ep-code-view pre {
-    font-family: var(--font-family-monospace);
-    white-space: pre;
-
-    &.shiki.one-light {
-      background-color: var(--interface-surface) !important;
-    }
-  }
-</style>

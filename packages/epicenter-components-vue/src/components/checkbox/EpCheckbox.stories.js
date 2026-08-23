@@ -1,11 +1,12 @@
 import { EpCheckbox, EpFlex } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { computed, ref } from 'vue'
 
 export default {
   title: 'Components/Checkbox',
   component: EpCheckbox,
-  decorators: [paddedSurface],
+  decorators: [withCssProps('checkbox'), paddedSurface],
   argTypes: {
     id: {
       table: { disable: true }
@@ -43,6 +44,8 @@ export default {
     command: {
       table: { disable: true }
     }
+  ,
+    ...cssPropArgTypes('checkbox'),
   }
 }
 

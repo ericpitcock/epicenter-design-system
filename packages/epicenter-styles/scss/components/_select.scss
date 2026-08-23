@@ -1,56 +1,76 @@
 .ep-select {
-  --ep-select-border-width: 0.1rem;
+  // Box
+  --ep-select-width: 100%;
+  --ep-select-height: 100%;
+
+  // A select always reserves room for its chevron on the trailing edge, and for
+  // a leading icon only when one is present. Same two-source-value shape as the
+  // button, so sizes reassign the sources rather than every permutation.
+  --ep-select-icon-padding-inline: var(--control-icon-width--default);
+  --ep-select-padding-inline: var(--control-padding-inline--default);
+  --ep-select-padding-inline-start: var(--ep-select-padding-inline);
+  --ep-select-padding-inline-end: var(--ep-select-icon-padding-inline);
+
+  // Surface
+  --ep-select-bg-color: var(--interface-foreground);
+
+  // Border
+  --ep-select-border-width: var(--border-width--hairline);
   --ep-select-border-style: solid;
   --ep-select-border-color: var(--border-color);
-  --ep-select-border-radius: var(--border-radius);
-  --ep-select-bg-color: var(--interface-foreground);
-  width: 100%;
-  height: 100%;
+  --ep-select-border-radius: var(--border-radius--default);
+  --ep-select-focus-border-color: var(--primary-color-base);
+  --ep-select-disabled-border-color: var(--border-color--disabled);
+
+  // Text
+  --ep-select-font-size: inherit;
+  --ep-select-text-color: inherit;
+  --ep-select-disabled-text-color: var(--text-color--disabled);
+
+  width: var(--ep-select-width);
+  height: var(--ep-select-height);
   align-items: center;
-  padding: 0 2.8rem 0 1.4rem;
   border: var(--ep-select-border-width) var(--ep-select-border-style) var(--ep-select-border-color);
   border-radius: var(--ep-select-border-radius);
   background: var(--ep-select-bg-color);
+  color: var(--ep-select-text-color);
   cursor: pointer;
+  font-size: var(--ep-select-font-size);
+  padding-block: 0;
+  padding-inline: var(--ep-select-padding-inline-start) var(--ep-select-padding-inline-end);
   user-select: none;
 
-  // Apply left padding only when a real icon is present
+  // Apply leading padding only when a real icon is present.
   .ep-input-styler:has(.ep-input-styler__icon-left:not(:empty)) &,
   &.ep-select--has-icon {
-    padding-left: 2.8rem;
+    --ep-select-padding-inline-start: var(--ep-select-icon-padding-inline);
   }
 
-  &--small {
-    padding: 0 2.5rem 0 0.8rem;
-    font-size: var(--font-size--tiny);
-
-    .ep-input-styler:has(.ep-input-styler__icon-left:not(:empty)) &,
-    &.ep-select--has-icon {
-      padding-left: 2.5rem;
-    }
-  }
-
-  &--large {
-    padding: 0 3.6rem 0 1.6rem;
-
-    .ep-input-styler:has(.ep-input-styler__icon-left:not(:empty)) &,
-    &.ep-select--has-icon {
-      padding-left: 3.6rem;
-    }
-  }
-
-  &--xlarge {
-    padding: 0 4.4rem 0 1.8rem;
-
-    .ep-input-styler:has(.ep-input-styler__icon-left:not(:empty)) &,
-    &.ep-select--has-icon {
-      padding-left: 4.4rem;
-    }
+  &:focus-visible {
+    border-color: var(--ep-select-focus-border-color);
   }
 
   &--disabled {
-    border-color: var(--border-color--disabled);
-    color: var(--text-color--disabled);
+    border-color: var(--ep-select-disabled-border-color);
+    color: var(--ep-select-disabled-text-color);
     pointer-events: none;
   }
+}
+
+.ep-select--small {
+  // Small is the one step off the shared ladder: a select this short needs a
+  // tighter chevron gutter than a 2.2rem input's icon slot would give it.
+  --ep-select-icon-padding-inline: 2.5rem;
+  --ep-select-padding-inline: var(--space--2);
+  --ep-select-font-size: var(--font-size--tiny);
+}
+
+.ep-select--large {
+  --ep-select-icon-padding-inline: var(--control-icon-width--large);
+  --ep-select-padding-inline: var(--control-padding-inline--large);
+}
+
+.ep-select--xlarge {
+  --ep-select-icon-padding-inline: var(--control-icon-width--xlarge);
+  --ep-select-padding-inline: var(--control-padding-inline--xlarge);
 }

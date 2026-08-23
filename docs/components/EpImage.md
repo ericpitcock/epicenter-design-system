@@ -20,6 +20,54 @@
 This component does not use events, slots.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-image` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-image {
+  --ep-image-border-radius: /* … */;
+}
+```
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-image-border-radius` | `var(--border-radius--large)` | — |
+
+### Effect
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-image-fade-duration` | `0.4s` | — |
+| `--ep-image-shimmer-angle` | `90deg` | — |
+| `--ep-image-shimmer-duration` | `1.5s` | — |
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-image-loading-bg-color` | `var(--interface-surface)` | loading |
+| `--ep-image-shimmer-bg-color` | `light-dark(hsl(0 0% 0% / 0.06), hsl(0 0% 100% / 0.2))` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-image-max-width` | `100%` | — |
+
+### Layout
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-image-object-fit` | `cover` | — |
+
 ## Component Code
 
 ```vue
@@ -45,7 +93,7 @@ This component does not use events, slots.
     height = '100%',
     lazy = true,
     placeholder = '',
-    placeholderColor = '#f5f5f5',
+    placeholderColor = 'var(--interface-surface)',
     placeholderOpacity = 1,
     width = '100%',
   } = defineProps<Props>()
@@ -127,24 +175,85 @@ This component does not use events, slots.
   </div>
 </template>
 
-<style lang="scss" scoped>
-  .image {
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
 
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+```
 
-    .image__placeholder {
+## Styles (SCSS)
+
+```scss
+// Shared by EpImage and EpLazyImage, which both render `.ep-image`.
+.ep-image {
+  --ep-image-max-width: 100%;
+  --ep-image-border-radius: var(--border-radius--large);
+  --ep-image-object-fit: cover;
+  --ep-image-loading-bg-color: var(--interface-surface);
+  --ep-image-shimmer-bg-color: light-dark(hsl(0 0% 0% / 0.06), hsl(0 0% 100% / 0.2));
+  --ep-image-shimmer-duration: 1.5s;
+  --ep-image-shimmer-angle: 90deg;
+  --ep-image-fade-duration: 0.4s;
+
+  position: relative;
+  display: block;
+  overflow: hidden;
+  max-width: var(--ep-image-max-width);
+
+  &--rounded {
+    border-radius: var(--ep-image-border-radius);
+  }
+
+  &--loading {
+    background: var(--ep-image-loading-bg-color);
+
+    &::after {
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
+      animation: ep-image-shimmer var(--ep-image-shimmer-duration) infinite;
+      background: linear-gradient(var(--ep-image-shimmer-angle), transparent, var(--ep-image-shimmer-bg-color), transparent);
+      content: '';
     }
   }
-</style>
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: var(--ep-image-object-fit);
+  }
+}
+
+.ep-image__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: ep-image-fade-in var(--ep-image-fade-duration) ease-in-out forwards;
+  opacity: 0;
+  transition: opacity var(--ep-image-fade-duration) ease-in-out;
+}
+
+.ep-image__placeholder,
+.image__placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes ep-image-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ep-image-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 ```

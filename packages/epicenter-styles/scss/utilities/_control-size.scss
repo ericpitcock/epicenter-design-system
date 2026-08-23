@@ -1,0 +1,24 @@
+// Control size ladder.
+// Buttons, inputs, selects and textareas all share one ladder so they line up
+// when placed side by side. Before these tokens existed the same four heights
+// and three icon-slot widths were repeated as literals across five component
+// files, and the small size had no icon-slot width of its own at all.
+:root {
+  --control-height--small: 2.2rem;
+  --control-height--default: 3rem;
+  --control-height--large: 3.8rem;
+  --control-height--xlarge: 4.6rem;
+
+  // Horizontal padding inside a control.
+  --control-padding-inline--small: 1.4rem;
+  --control-padding-inline--default: 1.4rem;
+  --control-padding-inline--large: 1.6rem;
+  --control-padding-inline--xlarge: 1.8rem;
+
+  // Width of the icon slot at either end of a control, and therefore the
+  // padding the field itself needs so text clears the icon.
+  --control-icon-width--small: 2.8rem;
+  --control-icon-width--default: 2.8rem;
+  --control-icon-width--large: 3.6rem;
+  --control-icon-width--xlarge: 4.4rem;
+}

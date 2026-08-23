@@ -21,6 +21,51 @@
 | `resizable` | The content of the resizable pane. |
 | `content` | The content of the fixed (non-resizable) pane. |
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-resizable` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-resizable {
+  --ep-resizable-flex-direction: /* … */;
+}
+```
+
+### Layout
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-resizable-flex-direction` | `column` | — |
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-resizable-handle-bg-color` | `var(--interface-foreground)` | — |
+| `--ep-resizable-handle-hover-bg-color` | `var(--primary-color-300)` | hover |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-resizable-handle-border-color` | `var(--border-color)` | — |
+| `--ep-resizable-handle-border-style` | `solid` | — |
+| `--ep-resizable-handle-border-width` | `var(--border-width--hairline)` | — |
+| `--ep-resizable-handle-hover-border-color` | `var(--primary-color-300)` | hover |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-resizable-handle-size` | `0.5rem` | — |
+| `--ep-resizable-height` | `100%` | — |
+| `--ep-resizable-width` | `100%` | — |
+
 ## Component Code
 
 ```vue
@@ -138,10 +183,22 @@
 
 ```scss
 .ep-resizable {
+  --ep-resizable-width: 100%;
+  --ep-resizable-height: 100%;
   --ep-resizable-flex-direction: column;
+
+  // The drag handle straddling two panes.
+  --ep-resizable-handle-size: 0.5rem;
+  --ep-resizable-handle-border-width: var(--border-width--hairline);
+  --ep-resizable-handle-border-style: solid;
+  --ep-resizable-handle-border-color: var(--border-color);
+  --ep-resizable-handle-bg-color: var(--interface-foreground);
+  --ep-resizable-handle-hover-border-color: var(--primary-color-300);
+  --ep-resizable-handle-hover-bg-color: var(--primary-color-300);
+
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: var(--ep-resizable-width);
+  height: var(--ep-resizable-height);
   flex-direction: var(--ep-resizable-flex-direction);
   user-select: none;
 
@@ -163,22 +220,22 @@
 .ep-resizable__drag-handle {
   position: absolute;
   border-width: 0;
-  border-style: solid;
-  border-color: var(--border-color);
-  background: var(--interface-foreground);
+  border-style: var(--ep-resizable-handle-border-style);
+  border-color: var(--ep-resizable-handle-border-color);
+  background: var(--ep-resizable-handle-bg-color);
 
   &:hover {
-    border-color: var(--primary-color-300);
-    background: var(--primary-color-300);
+    border-color: var(--ep-resizable-handle-hover-border-color);
+    background: var(--ep-resizable-handle-hover-bg-color);
   }
 
   &--right,
   &--left {
     top: 0;
     bottom: 0;
-    width: 5px;
-    border-right-width: 0.1rem;
-    border-left-width: 0.1rem;
+    width: var(--ep-resizable-handle-size);
+    border-right-width: var(--ep-resizable-handle-border-width);
+    border-left-width: var(--ep-resizable-handle-border-width);
     cursor: ew-resize;
   }
 
@@ -194,9 +251,9 @@
   &--bottom {
     right: 0;
     left: 0;
-    height: 5px;
-    border-top-width: 0.1rem;
-    border-bottom-width: 0.1rem;
+    height: var(--ep-resizable-handle-size);
+    border-top-width: var(--ep-resizable-handle-border-width);
+    border-bottom-width: var(--ep-resizable-handle-border-width);
     cursor: ns-resize;
   }
 
@@ -208,4 +265,5 @@
     bottom: 0;
   }
 }
+
 ```

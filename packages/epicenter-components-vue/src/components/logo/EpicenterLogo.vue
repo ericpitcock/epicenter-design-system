@@ -5,6 +5,7 @@
 
 <template>
   <svg
+    class="ep-logo"
     x="0px"
     y="0px"
     viewBox="0 0 160.7 215.87"
@@ -24,36 +25,3 @@
   </svg>
 </template>
 
-<style lang="scss" scoped>
-  svg {
-    --logo-face-color: #fff16c;
-    --logo-hightlight-color: hsl(var(--gray-0));
-    --logo-shadow-color: hsl(var(--gray-500));
-    --logo-stroke-color: hsl(var(--gray-500));
-    --logo-stroke-width: 3;
-    display: block;
-    // scales with container
-    width: 100%;
-    height: 100%;
-  }
-
-  polygon,
-  path {
-    stroke: var(--logo-stroke-color);
-    stroke-width: var(--logo-stroke-width);
-    stroke-linejoin: round;
-    stroke-miterlimit: 5;
-  }
-
-  .shadow {
-    fill: var(--logo-shadow-color);
-  }
-
-  .highlight {
-    fill: var(--logo-hightlight-color);
-  }
-
-  .face {
-    fill: var(--logo-face-color);
-  }
-</style>

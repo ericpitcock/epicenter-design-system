@@ -1,15 +1,17 @@
 .ep-split-button {
+  --ep-split-button-gap: var(--border-width--hairline);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.1rem;
+  gap: var(--ep-split-button-gap);
 
   > .ep-button {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
   }
 
-  // target the dropdown button but not the buttons in the menu
+  // Target the dropdown's own trigger button, not the buttons inside its menu.
   > .ep-dropdown > .ep-button {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;

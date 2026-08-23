@@ -1,4 +1,5 @@
 import { EpInput } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { computed, ref, toRef, watch } from 'vue'
@@ -6,7 +7,7 @@ import { computed, ref, toRef, watch } from 'vue'
 export default {
   title: 'Components/Input',
   component: EpInput,
-  decorators: [paddedSurface],
+  decorators: [withCssProps('input', { except: ['--ep-input-border-color', '--ep-input-border-radius', '--ep-input-caret-color', '--ep-input-disabled-text-color', '--ep-input-focus-border-color', '--ep-input-font-size', '--ep-input-text-color'] }), paddedSurface],
   argTypes: {
     inputId: {
       table: { disable: true }
@@ -180,6 +181,8 @@ export default {
         type: 'color'
       }
     },
+  
+    ...cssPropArgTypes('input', { except: ['--ep-input-border-color', '--ep-input-border-radius', '--ep-input-caret-color', '--ep-input-disabled-text-color', '--ep-input-focus-border-color', '--ep-input-font-size', '--ep-input-text-color'] }),
   }
 }
 

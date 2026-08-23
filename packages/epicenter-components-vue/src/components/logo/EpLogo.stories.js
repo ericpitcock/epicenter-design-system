@@ -1,11 +1,12 @@
 import { EpicenterLogo } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredCyanBlueGradient } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
 export default {
   title: 'Components/Logo',
   component: EpicenterLogo,
-  decorators: [centeredCyanBlueGradient],
+  decorators: [withCssProps('logo', { except: ['--ep-logo-stroke-color', '--ep-logo-stroke-width'] }), centeredCyanBlueGradient],
   argTypes: {
     size: {
       name: 'Size',
@@ -52,6 +53,8 @@ export default {
         type: 'color'
       }
     }
+  ,
+    ...cssPropArgTypes('logo', { except: ['--ep-logo-stroke-color', '--ep-logo-stroke-width'] }),
   }
 }
 

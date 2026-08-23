@@ -1,5 +1,6 @@
 import { EpContainer, EpHeader } from '@ericpitcock/epicenter-components-vue'
 import { faker } from '@faker-js/faker'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { computed } from 'vue'
 
 const container = () => {
@@ -12,7 +13,7 @@ const container = () => {
 export default {
   title: 'Components/Container/Container',
   component: EpContainer,
-  decorators: [container],
+  decorators: [withCssProps('container'), container],
   argTypes: {
     layout: {
       name: 'Layout',
@@ -25,6 +26,8 @@ export default {
         'Full Page': 'fullPage',
       }
     }
+  ,
+    ...cssPropArgTypes('container'),
   },
 }
 

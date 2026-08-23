@@ -1,15 +1,19 @@
 import { EpBreadcrumbs, EpButton, EpContainer, EpFlex, EpHeader } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default {
   title: 'Components/Breadcrumbs',
   component: EpBreadcrumbs,
+  decorators: [withCssProps('breadcrumbs')],
   argTypes: {
     items: {
       control: 'object',
       description: 'Array of breadcrumb items with label, to, and optional customClass'
     },
+  
+    ...cssPropArgTypes('breadcrumbs'),
   },
 }
 
@@ -78,7 +82,7 @@ export const Breadcrumbs = (args) => ({
             '--ep-container-overflow': 'hidden',
           }">
           <template #header>
-            <ep-header style="--ep-header-container-height: 4.1rem; --ep-header-container-padding: 0.5rem 2rem; --ep-header-container-bg-color: var(--interface-surface--accent);">
+            <ep-header style="--ep-header-height: 4.1rem; --ep-header-padding: 0.5rem 2rem; --ep-header-bg-color: var(--interface-surface--accent);">
               <template #left>
                 <ep-breadcrumbs v-bind="args" @navigate="handleNavigate">
                   <template #item="{ crumb, isLast }">

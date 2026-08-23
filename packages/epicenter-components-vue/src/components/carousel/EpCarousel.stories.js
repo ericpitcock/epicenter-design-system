@@ -1,15 +1,18 @@
 import { EpCarousel } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredSurface } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Carousel',
   component: EpCarousel,
-  decorators: [centeredSurface],
+  decorators: [withCssProps('carousel'), centeredSurface],
   argTypes: {
     images: {
       control: 'object',
       description: 'Array of image objects with src, alt, caption, aspectRatio, zoom, positionX, positionY, and captionPosition properties'
     }
+  ,
+    ...cssPropArgTypes('carousel'),
   }
 }
 

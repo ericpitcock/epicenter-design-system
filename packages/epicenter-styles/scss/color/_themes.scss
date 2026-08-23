@@ -1,9 +1,5 @@
 /* stylelint-disable no-duplicate-selectors */
 /* DO NOT EDIT DIRECTLY */
-:root { color-scheme: light dark; }
-.dark-theme { color-scheme: dark; }
-.light-theme { color-scheme: light; }
-
 :root {
   --interface-bg: light-dark(hsl(var(--gray-50)), hsl(var(--gray-430)));
   --interface-bg--accent: light-dark(hsl(var(--gray-40)), hsl(var(--gray-420)));
@@ -14,7 +10,7 @@
   --interface-foreground--accent: light-dark(hsl(var(--gray-10)), hsl(var(--gray-420)));
   --interface-overlay: light-dark(hsl(var(--gray-10)), hsl(var(--gray-390)));
   --interface-overlay--accent: light-dark(hsl(var(--gray-0)), hsl(var(--gray-380)));
-  --border-color: light-dark(hsl(0, 0%, 80%), hsl(var(--gray-380)));
+  --border-color: light-dark(hsl(var(--gray-100)), hsl(var(--gray-380)));
   --border-color--lighter: light-dark(var(--border-color), hsl(var(--gray-340)));
   --border-color--disabled: light-dark(hsl(var(--gray-70)), hsl(var(--gray-400)));
   --overlay-color: light-dark(rgba(255, 255, 255, 0.85), rgba(36, 36, 36, 0.85));
@@ -32,9 +28,22 @@
   --text-color--danger: light-dark(hsl(var(--red-600)), hsl(var(--red-400)));
   --text-color--warning: light-dark(hsl(var(--amber-600)), hsl(var(--amber-500)));
   --text-color--success: light-dark(hsl(var(--green-700)), hsl(var(--green-600)));
-  --text-selection: light-dark(var(--yellow-300), var(--yellow-600));
+  --text-selection-bg-color: light-dark(var(--primary-color-base), var(--primary-color-base));
+  --text-selection-text-color: light-dark(hsl(var(--gray-0)), hsl(var(--gray-0)));
+  --status-danger-bg-color: light-dark(hsl(var(--red-50)), hsl(var(--red-900)));
+  --status-danger-border-color: light-dark(hsl(var(--red-500)), hsl(var(--red-400)));
+  --status-danger-text-color: light-dark(hsl(var(--red-600)), hsl(var(--red-400)));
+  --status-warning-bg-color: light-dark(hsl(var(--amber-50)), hsl(var(--amber-900)));
+  --status-warning-border-color: light-dark(hsl(var(--amber-500)), hsl(var(--amber-500)));
+  --status-warning-text-color: light-dark(hsl(var(--amber-600)), hsl(var(--amber-500)));
+  --status-success-bg-color: light-dark(hsl(var(--green-50)), hsl(var(--green-900)));
+  --status-success-border-color: light-dark(hsl(var(--green-600)), hsl(var(--green-600)));
+  --status-success-text-color: light-dark(hsl(var(--green-700)), hsl(var(--green-600)));
+  --status-info-bg-color: light-dark(hsl(var(--sky-50)), hsl(var(--sky-900)));
+  --status-info-border-color: light-dark(hsl(var(--sky-500)), hsl(var(--sky-300)));
+  --status-info-text-color: light-dark(hsl(var(--sky-600)), hsl(var(--sky-300)));
   --bg-color--alert-low: light-dark(hsl(var(--gray-130)), hsl(var(--gray-300)));
-  --bg-color--alert-medium: light-dark(var(--yellow-400), var(--yellow-400));
-  --bg-color--alert-high: light-dark(var(--amber-500), var(--amber-500));
-  --bg-color--alert-critical: light-dark(var(--red-500), var(--red-500));
+  --bg-color--alert-medium: light-dark(hsl(var(--yellow-400)), hsl(var(--yellow-400)));
+  --bg-color--alert-high: light-dark(hsl(var(--amber-500)), hsl(var(--amber-500)));
+  --bg-color--alert-critical: light-dark(hsl(var(--red-500)), hsl(var(--red-500)));
 }

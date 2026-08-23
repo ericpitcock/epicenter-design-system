@@ -1,11 +1,12 @@
 import { EpFlex, EpRadio } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { ref } from 'vue'
 
 export default {
   title: 'Components/Radio',
   component: EpRadio,
-  decorators: [paddedSurface],
+  decorators: [withCssProps('radio'), paddedSurface],
   argTypes: {
     id: {
       table: { disable: true }
@@ -25,6 +26,8 @@ export default {
     required: {
       table: { disable: true }
     },
+  
+    ...cssPropArgTypes('radio'),
   }
 }
 

@@ -1,10 +1,11 @@
 .ep-button-group {
-  --ep-button-group-active-text-color: var(--text-color--loud);
-  --ep-button-group-inactive-text-color: var(--text-color--subtle);
+  --ep-button-group-margin-inline-start: calc(var(--border-width--hairline) * -1);
+  --ep-button-group-selected-text-color: var(--text-color--loud);
+  --ep-button-group-text-color: var(--text-color--subtle);
   display: flex;
 
   > :not(:first-child) .ep-button {
-    margin-left: -0.1rem;
+    margin-inline-start: var(--ep-button-group-margin-inline-start);
   }
 
   > :first-child .ep-button {
@@ -23,12 +24,15 @@
 
   .ep-button {
     &:not(.ep-button--disabled):not(.ep-button-group--selected) {
-      color: var(--ep-button-group-inactive-text-color);
+      color: var(--ep-button-group-text-color);
     }
 
+    // Previously declared but never consumed. Its default matches .ep-button's
+    // own text colour, so wiring it changes nothing until a consumer sets it.
     &.ep-button-group--selected {
       position: relative;
       z-index: var(--z-index--overlap);
+      color: var(--ep-button-group-selected-text-color);
       cursor: default;
     }
   }

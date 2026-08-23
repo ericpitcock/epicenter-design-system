@@ -7,6 +7,43 @@
 This component does not use props, events, slots.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-sign-in` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-sign-in {
+  --ep-sign-in-footer-border-color: /* … */;
+}
+```
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-sign-in-footer-border-color` | `var(--border-color)` | — |
+| `--ep-sign-in-footer-border-style` | `solid` | — |
+| `--ep-sign-in-footer-border-width` | `var(--border-width--hairline)` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-sign-in-footer-height` | `5.6rem` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-sign-in-footer-padding` | `var(--space--5)` | — |
+| `--ep-sign-in-form-gap` | `var(--space--5)` | — |
+| `--ep-sign-in-header-padding` | `6rem` | — |
+
 ## Component Code
 
 ```vue
@@ -163,45 +200,58 @@ This component does not use props, events, slots.
   </div>
 </template>
 
-<style lang="scss" scoped>
-  .ep-sign-in {
-    &__header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 6rem;
-    }
 
-    &__form {
+```
+
+## Styles (SCSS)
+
+```scss
+.ep-sign-in {
+  --ep-sign-in-header-padding: 6rem;
+  --ep-sign-in-form-gap: var(--space--5);
+  --ep-sign-in-footer-height: 5.6rem;
+  --ep-sign-in-footer-padding: var(--space--5);
+  --ep-sign-in-footer-border-width: var(--border-width--hairline);
+  --ep-sign-in-footer-border-style: solid;
+  --ep-sign-in-footer-border-color: var(--border-color);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--ep-sign-in-header-padding);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    > form {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-      & > form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        & > * + * {
-          margin-top: 2rem;
-        }
-      }
-
-      &__message {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      > * + * {
+        margin-block-start: var(--ep-sign-in-form-gap);
       }
     }
 
-    &__footer {
-      height: 56px;
+    &__message {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      border-top: 1px solid var(--border-color);
-      padding: 2rem;
     }
   }
-</style>
+
+  &__footer {
+    display: flex;
+    height: var(--ep-sign-in-footer-height);
+    align-items: center;
+    justify-content: center;
+    padding: var(--ep-sign-in-footer-padding);
+    border-top: var(--ep-sign-in-footer-border-width) var(--ep-sign-in-footer-border-style) var(--ep-sign-in-footer-border-color);
+  }
+}
+
 ```

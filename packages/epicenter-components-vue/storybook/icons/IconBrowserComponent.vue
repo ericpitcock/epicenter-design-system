@@ -113,7 +113,7 @@
   const iconStyle = computed(() => ({
     '--ep-icon-width': `${props.size || 24}px`,
     '--ep-icon-height': `${props.size || 24}px`,
-    '--ep-icon-color': props.color || '#000000',
+    '--ep-icon-text-color': props.color || '#000000',
     '--ep-icon-stroke-width': (props.strokeWidth || 1.5).toString(),
   }))
 

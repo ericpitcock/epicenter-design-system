@@ -1,11 +1,11 @@
 import { EpBadge } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredSurface } from '@sb/helpers/decorators.js'
-import { computed } from 'vue'
 
 export default {
   title: 'Components/Badge',
   component: EpBadge,
-  decorators: [centeredSurface],
+  decorators: [withCssProps('badge', { if: { arg: 'classes', eq: 'Custom' } }), centeredSurface],
   argTypes: {
     label: {
       name: 'Label',
@@ -36,6 +36,7 @@ export default {
         category: 'Styles'
       }
     },
+    ...cssPropArgTypes('badge', { if: { arg: 'classes', eq: 'Custom' } }),
   }
 }
 
@@ -44,19 +45,12 @@ export const Badge = args => ({
     EpBadge
   },
   setup() {
-    const styles = computed(() => ({
-      '--ep-badge-bg-color': args.backgroundColor,
-      '--ep-badge-border-color': args.borderColor,
-      '--ep-badge-text-color': args.textColor,
-    }))
-
-    return { args, styles }
+    return { args }
   },
   template: `
     <ep-badge
       v-bind="args"
       :class="args.classes"
-      :style="styles"
     >
       {{ args.label }}
     </ep-badge>

@@ -34,6 +34,57 @@
 | `icon-left` | Optional icon displayed on the left side of the input |
 | `icon-right` | Optional icon displayed on the right side of the input (overridden by clearable button if active) |
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-input` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-input {
+  --ep-input-bg-color: /* … */;
+}
+```
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-input-bg-color` | `var(--interface-foreground)` | — |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-input-border-color` | `var(--border-color)` | — |
+| `--ep-input-border-radius` | `var(--border-radius--default)` | — |
+| `--ep-input-border-style` | `solid` | — |
+| `--ep-input-border-width` | `var(--border-width--hairline)` | — |
+| `--ep-input-error-border-color` | `var(--status-danger-border-color)` | error |
+| `--ep-input-focus-border-color` | `var(--primary-color-base)` | focus |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-input-caret-color` | `var(--primary-color-base)` | — |
+| `--ep-input-disabled-text-color` | `var(--text-color--disabled)` | disabled |
+| `--ep-input-font-size` | `var(--font-size--default)` | — |
+| `--ep-input-placeholder-text-color` | `var(--text-color--subtle)` | — |
+| `--ep-input-text-color` | `var(--text-color--loud)` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-input-icon-padding-inline` | `var(--control-icon-width--default)` | — |
+| `--ep-input-padding-inline` | `var(--control-padding-inline--default)` | — |
+| `--ep-input-padding-inline-end` | `var(--ep-input-padding-inline)` | — |
+| `--ep-input-padding-inline-start` | `var(--ep-input-padding-inline)` | — |
+
 ## Component Code
 
 ```vue
@@ -184,59 +235,74 @@
 
 ```scss
 .ep-input {
+  // The field fills its styler wrapper, which owns the control's outer size, so
+  // width and height are not exposed here. In v1 those names lived on this block
+  // and meant the outer dimensions; they now belong to the styler, and reusing
+  // them for the inner field would collide with the migration.
+
+  // Leading and trailing padding are picked independently: an icon slot on a
+  // side widens the padding on that side to the icon slot's own width.
+  --ep-input-icon-padding-inline: var(--control-icon-width--default);
+  --ep-input-padding-inline: var(--control-padding-inline--default);
+  --ep-input-padding-inline-start: var(--ep-input-padding-inline);
+  --ep-input-padding-inline-end: var(--ep-input-padding-inline);
+
+  // Surface
+  --ep-input-bg-color: var(--interface-foreground);
+
+  // Border
+  --ep-input-border-width: var(--border-width--hairline);
+  --ep-input-border-style: solid;
+  --ep-input-border-color: var(--border-color);
+  --ep-input-border-radius: var(--border-radius--default);
+  --ep-input-focus-border-color: var(--primary-color-base);
+  --ep-input-error-border-color: var(--status-danger-border-color);
+
+  // Text
   --ep-input-font-size: var(--font-size--default);
   --ep-input-text-color: var(--text-color--loud);
   --ep-input-caret-color: var(--primary-color-base);
-  --ep-input-border-color: var(--border-color);
-  --ep-input-bg-color: var(--interface-foreground);
-  --ep-input-border-radius: var(--border-radius);
   --ep-input-placeholder-text-color: var(--text-color--subtle);
-  --ep-input-focus-border-color: var(--primary-color-base);
   --ep-input-disabled-text-color: var(--text-color--disabled);
+
   width: 100%;
   height: 100%;
-  padding: 0 1.4rem;
-  border: 1px solid var(--ep-input-border-color);
+  border-width: var(--ep-input-border-width);
+  border-style: var(--ep-input-border-style);
+  border-color: var(--ep-input-border-color);
   border-radius: var(--ep-input-border-radius);
   background: var(--ep-input-bg-color);
   caret-color: var(--ep-input-caret-color);
   color: var(--ep-input-text-color);
   font-size: var(--ep-input-font-size);
+  padding-block: 0;
+  padding-inline: var(--ep-input-padding-inline-start) var(--ep-input-padding-inline-end);
 
   .ep-input-styler:has(.ep-input-styler__icon-left) & {
-    padding-left: 2.8rem;
+    --ep-input-padding-inline-start: var(--ep-input-icon-padding-inline);
   }
 
   .ep-input-styler:has(.ep-input-styler__icon-right) & {
-    padding-right: 2.8rem;
+    --ep-input-padding-inline-end: var(--ep-input-icon-padding-inline);
   }
 
   &::placeholder {
     color: var(--ep-input-placeholder-text-color);
   }
 
+  // Previously declared but never consumed, so setting it did nothing.
+  &:focus-visible {
+    border-color: var(--ep-input-focus-border-color);
+  }
+
   &--large {
-    padding: 0 1.6rem;
-
-    .ep-input-styler:has(.ep-input-styler__icon-left) & {
-      padding-left: 3.6rem;
-    }
-
-    .ep-input-styler:has(.ep-input-styler__icon-right) & {
-      padding-right: 3.6rem;
-    }
+    --ep-input-icon-padding-inline: var(--control-icon-width--large);
+    --ep-input-padding-inline: var(--control-padding-inline--large);
   }
 
   &--xlarge {
-    padding: 0 1.8rem;
-
-    .ep-input-styler:has(.ep-input-styler__icon-left) & {
-      padding-left: 4.4rem;
-    }
-
-    .ep-input-styler:has(.ep-input-styler__icon-right) & {
-      padding-right: 4.4rem;
-    }
+    --ep-input-icon-padding-inline: var(--control-icon-width--xlarge);
+    --ep-input-padding-inline: var(--control-padding-inline--xlarge);
   }
 
   &--disabled {
@@ -250,11 +316,13 @@
   }
 
   .ep-input-styler--error & {
-    border-color: var(--error-color);
+    border-color: var(--ep-input-error-border-color);
 
     &:focus-visible {
-      outline-color: var(--error-color);
+      border-color: var(--ep-input-error-border-color);
+      outline-color: var(--ep-input-error-border-color);
     }
   }
 }
+
 ```

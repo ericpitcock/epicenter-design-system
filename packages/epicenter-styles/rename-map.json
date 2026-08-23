@@ -1,0 +1,88 @@
+{
+  "$comment": "Old -> new custom property names for the v2 contract. Applied by scripts/codemod-v2.mjs, which consumers can run against their own CSS/SCSS/Vue/TSX. Longest keys are matched first, so a prefix never shadows a longer name.",
+
+  "--box-shadow--modal": "--shadow--modal",
+  "--box-shadow--tooltip": "--shadow--tooltip",
+  "--box-shadow--dropdown": "--shadow--dropdown",
+  "--box-shadow--sticky": "--shadow--sticky",
+  "--box-shadow--overlap": "--shadow--overlap",
+
+  "--border-radius": "--border-radius--default",
+
+  "--ep-default-focus-outline": "--focus-outline",
+  "--ep-focus-outline-color": "--focus-outline-color",
+  "--ep-focus-outline-width": "--focus-outline-width",
+  "--ep-focus-outline-offset": "--focus-outline-offset",
+
+  "--error-color--border": "--status-danger-border-color",
+  "--error-color--text": "--status-danger-text-color",
+  "--error-color--bg": "--status-danger-bg-color",
+  "--error-color": "--status-danger-border-color",
+
+  "--ep-code-block-font-family": "--ep-code-view-font-family",
+  "--ep-code-block-font-variation-settings": "--ep-code-view-font-variation-settings",
+
+  "--ep-loading-state-bg-color": "--ep-loading-bg-color",
+  "--ep-loading-state-border-radius": "--ep-loading-border-radius",
+  "--ep-loading-state-top": "--ep-loading-top",
+  "--ep-loading-state-right": "--ep-loading-right",
+  "--ep-loading-state-bottom": "--ep-loading-bottom",
+  "--ep-loading-state-left": "--ep-loading-left",
+
+  "--ep-button-menu-item-hover-bg-color": "--ep-menu-item-hover-bg-color",
+  "--ep-button-menu-item-hover-text-color": "--ep-menu-item-hover-text-color",
+  "--ep-button-menu-item-hover-border-color": "--ep-menu-item-hover-border-color",
+  "--ep-button-menu-item-selected-bg-color": "--ep-menu-item-selected-bg-color",
+  "--ep-button-menu-item-selected-text-color": "--ep-menu-item-selected-text-color",
+  "--ep-button-menu-item-selected-border-color": "--ep-menu-item-selected-border-color",
+
+  "--ep-input-width": "--ep-input-styler-width",
+  "--ep-input-height": "--ep-input-styler-height",
+
+  "--ep-banner-color-strip-bg": "--ep-banner-strip-bg-color",
+  "--ep-banner-subtext-color": "--ep-banner-subtext-text-color",
+  "--ep-banner-dismiss-button-color": "--ep-banner-dismiss-button-text-color",
+  "--ep-notification-strip-color": "--ep-notification-strip-bg-color",
+
+  "--ep-status-indicator-dot-bg": "--ep-status-indicator-dot-bg-color",
+  "--ep-status-indicator-dot-border": "--ep-status-indicator-dot-border-color",
+
+  "--ep-table-row-stripe-color": "--ep-table-row-stripe-bg-color",
+
+  "--ep-icon-color": "--ep-icon-text-color",
+
+  "--ep-button-group-active-text-color": "--ep-button-group-selected-text-color",
+  "--ep-button-group-inactive-text-color": "--ep-button-group-text-color",
+
+  "$comment-header-footer": "The `container` infix described the root element itself, not a distinct part — unlike --ep-table-container-*, where a real wrapper exists. It accounted for 34 of the 54 header/footer properties.",
+
+  "--ep-header-container-box-shadow": "--ep-header-shadow",
+  "--ep-header-container-bg-color": "--ep-header-bg-color",
+  "--ep-header-container-border-color": "--ep-header-border-color",
+  "--ep-header-container-border-radius": "--ep-header-border-radius",
+  "--ep-header-container-border-style": "--ep-header-border-style",
+  "--ep-header-container-border-width": "--ep-header-border-width",
+  "--ep-header-container-height": "--ep-header-height",
+  "--ep-header-container-margin": "--ep-header-margin",
+  "--ep-header-container-overflow": "--ep-header-overflow",
+  "--ep-header-container-padding": "--ep-header-padding",
+  "--ep-header-container-position": "--ep-header-position",
+  "--ep-header-container-top": "--ep-header-top",
+  "--ep-header-container-width": "--ep-header-width",
+  "--ep-header-container-z-index": "--ep-header-z-index",
+
+  "--ep-footer-container-box-shadow": "--ep-footer-shadow",
+  "--ep-footer-container-bg-color": "--ep-footer-bg-color",
+  "--ep-footer-container-border-color": "--ep-footer-border-color",
+  "--ep-footer-container-border-radius": "--ep-footer-border-radius",
+  "--ep-footer-container-border-style": "--ep-footer-border-style",
+  "--ep-footer-container-border-width": "--ep-footer-border-width",
+  "--ep-footer-container-bottom": "--ep-footer-bottom",
+  "--ep-footer-container-height": "--ep-footer-height",
+  "--ep-footer-container-margin": "--ep-footer-margin",
+  "--ep-footer-container-overflow": "--ep-footer-overflow",
+  "--ep-footer-container-padding": "--ep-footer-padding",
+  "--ep-footer-container-position": "--ep-footer-position",
+  "--ep-footer-container-width": "--ep-footer-width",
+  "--ep-footer-container-z-index": "--ep-footer-z-index"
+}

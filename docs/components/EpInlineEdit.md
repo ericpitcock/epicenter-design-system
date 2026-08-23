@@ -17,6 +17,72 @@
 |------|-------------|
 | `icon-left` | Optional icon displayed on the left side of the editable text |
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-inline-edit` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-inline-edit {
+  --ep-inline-edit-actions-bg-color: /* … */;
+}
+```
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-inline-edit-actions-bg-color` | `var(--interface-overlay)` | — |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-inline-edit-actions-border-color` | `var(--border-color--lighter)` | — |
+| `--ep-inline-edit-actions-border-radius` | `var(--border-radius--default)` | — |
+| `--ep-inline-edit-actions-border-style` | `solid` | — |
+| `--ep-inline-edit-actions-border-width` | `var(--border-width--hairline)` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-inline-edit-actions-font-size` | `var(--font-size--tiny)` | — |
+| `--ep-inline-edit-line-height` | `var(--text-line-height--normal)` | — |
+| `--ep-inline-edit-text-decoration-color` | `hsl(32, 68%, 83%)` | — |
+| `--ep-inline-edit-text-underline-offset` | `0.4rem` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-inline-edit-actions-gap` | `0.25rem` | — |
+| `--ep-inline-edit-actions-padding` | `0.25rem 0.5rem 0.25rem 0.75rem` | — |
+| `--ep-inline-edit-gap` | `var(--space--5)` | — |
+
+### Layout
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-inline-edit-actions-offset` | `0.4rem` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-inline-edit-content-min-width` | `4rem` | — |
+
+### Effect
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-inline-edit-disabled-opacity` | `0.5` | disabled |
+| `--ep-inline-edit-transition` | `var(--duration--fast)` | — |
+
 ## Component Code
 
 ```vue
@@ -157,7 +223,7 @@
         @mousedown.prevent="onSaveClick"
       >
         Save
-        <ArrowTurnBackward style="--ep-icon-size: 1.4rem;" />
+        <ArrowTurnBackward style="--ep-icon-width: 1.4rem; --ep-icon-height: 1.4rem;" />
       </ep-flex>
       <ep-flex
         class="gap-6 align-center"
@@ -201,31 +267,56 @@
 
 ```scss
 .ep-inline-edit {
-  --yellow: hsl(32, 68%, 83%);
+  // Box
+  --ep-inline-edit-gap: var(--space--5);
+  --ep-inline-edit-line-height: var(--text-line-height--normal);
+  --ep-inline-edit-content-min-width: 4rem;
+
+  // The dashed underline that marks the field as editable.
+  --ep-inline-edit-text-decoration-color: hsl(32, 68%, 83%);
+  --ep-inline-edit-text-underline-offset: 0.4rem;
+  --ep-inline-edit-disabled-opacity: 0.5;
+
+  // Motion
+  --ep-inline-edit-transition: var(--duration--fast);
+
+  // The action bar that appears below while editing.
+  --ep-inline-edit-actions-offset: 0.4rem;
+  --ep-inline-edit-actions-padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+  --ep-inline-edit-actions-gap: 0.25rem;
+  --ep-inline-edit-actions-bg-color: var(--interface-overlay);
+  --ep-inline-edit-actions-border-width: var(--border-width--hairline);
+  --ep-inline-edit-actions-border-style: solid;
+  --ep-inline-edit-actions-border-color: var(--border-color--lighter);
+  --ep-inline-edit-actions-border-radius: var(--border-radius--default);
+  --ep-inline-edit-actions-font-size: var(--font-size--tiny);
+
   position: relative;
   display: inline-flex;
   align-items: center;
   cursor: text;
-  gap: 2rem;
-  line-height: 1.5;
+  gap: var(--ep-inline-edit-gap);
+  line-height: var(--ep-inline-edit-line-height);
   text-decoration: underline;
   text-decoration-color: transparent;
   text-decoration-style: dashed;
-  text-underline-offset: 4px;
-  transition: background-color 0.15s, border-color 0.15s;
+  text-underline-offset: var(--ep-inline-edit-text-underline-offset);
+  transition:
+    background-color var(--ep-inline-edit-transition),
+    border-color var(--ep-inline-edit-transition);
 
   &:hover:not(.ep-inline-edit--editing):not(.ep-inline-edit--disabled) {
     cursor: pointer;
-    text-decoration-color: var(--yellow);
+    text-decoration-color: var(--ep-inline-edit-text-decoration-color);
   }
 
   &--editing {
-    text-decoration-color: var(--yellow);
+    text-decoration-color: var(--ep-inline-edit-text-decoration-color);
   }
 
   &--disabled {
     cursor: default;
-    opacity: 0.5;
+    opacity: var(--ep-inline-edit-disabled-opacity);
     pointer-events: none;
   }
 
@@ -237,24 +328,27 @@
 
   &__content {
     overflow: hidden;
-    min-width: 4rem;
+    min-width: var(--ep-inline-edit-content-min-width);
     outline: none;
     white-space: pre;
   }
 
   &__actions {
     position: absolute;
-    top: calc(100% + 0.4rem);
+    top: calc(100% + var(--ep-inline-edit-actions-offset));
     left: 0;
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;
-    padding: 0.25rem 0.5rem 0.25rem 0.75rem;
-    border: 1px solid var(--border-color--lighter);
-    border-radius: var(--border-radius);
-    background-color: var(--interface-overlay);
-    font-size: var(--font-size--tiny);
-    gap: 0.25rem;
+    padding: var(--ep-inline-edit-actions-padding);
+    border-width: var(--ep-inline-edit-actions-border-width);
+    border-style: var(--ep-inline-edit-actions-border-style);
+    border-color: var(--ep-inline-edit-actions-border-color);
+    border-radius: var(--ep-inline-edit-actions-border-radius);
+    background-color: var(--ep-inline-edit-actions-bg-color);
+    font-size: var(--ep-inline-edit-actions-font-size);
+    gap: var(--ep-inline-edit-actions-gap);
   }
 }
+
 ```

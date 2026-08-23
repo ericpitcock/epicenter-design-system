@@ -12,10 +12,7 @@ This component needs to be updated to use CSS custom properties instead of props
 |------|-------------|------|---------|
 | `autofocus` | - | `boolean` | `-` |
 | `backgroundColor` | - | `string` | `-` |
-| `borderColor` | - | `string` | `-` |
 | `borderRadius` | - | `string` | `-` |
-| `borderStyle` | - | `string` | `-` |
-| `borderWidth` | - | `string` | `-` |
 | `color` | - | `string` | `-` |
 | `disabled` | - | `boolean` | `-` |
 | `height` | - | `string` | `-` |
@@ -40,6 +37,75 @@ This component needs to be updated to use CSS custom properties instead of props
 This component does not use slots.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-multi-search` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-multi-search {
+  --ep-multi-search-bg-color: /* … */;
+}
+```
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-multi-search-bg-color` | `var(--interface-foreground)` | — |
+| `--ep-multi-search-operator-bg-color` | `hsl(var(--amber-300))` | — |
+| `--ep-multi-search-query-bg-color` | `var(--primary-color-base)` | — |
+| `--ep-multi-search-query-hover-bg-color` | `var(--primary-color-600)` | hover |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-multi-search-border-color` | `var(--border-color)` | — |
+| `--ep-multi-search-border-radius` | `var(--border-radius--default)` | — |
+| `--ep-multi-search-border-style` | `solid` | — |
+| `--ep-multi-search-border-width` | `var(--border-width--hairline)` | — |
+| `--ep-multi-search-disabled-border-color` | `var(--border-color--disabled)` | disabled |
+| `--ep-multi-search-focus-border-color` | `var(--primary-color-base)` | focus |
+| `--ep-multi-search-query-border-radius` | `var(--border-radius--default)` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-multi-search-caret-color` | `var(--primary-color-base)` | — |
+| `--ep-multi-search-disabled-text-color` | `var(--text-color--disabled)` | disabled |
+| `--ep-multi-search-operator-text-color` | `hsl(var(--gray-500))` | — |
+| `--ep-multi-search-query-line-height` | `2rem` | — |
+| `--ep-multi-search-query-text-color` | `hsl(var(--gray-0))` | — |
+| `--ep-multi-search-text-color` | `var(--text-color)` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-multi-search-height` | `5rem` | — |
+| `--ep-multi-search-width` | `100%` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-multi-search-padding-inline` | `var(--space--3)` | — |
+| `--ep-multi-search-queries-padding-inline-end` | `0.6rem` | — |
+| `--ep-multi-search-query-gap` | `0.3rem` | — |
+| `--ep-multi-search-query-padding` | `0 0.6rem 0 1rem` | — |
+
+### Effect
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-multi-search-placeholder-disabled-opacity` | `0.3` | disabled |
+
 ## Component Code
 
 ```vue
@@ -56,10 +122,7 @@ This component does not use slots.
   interface Props {
     autofocus?: boolean
     backgroundColor?: string
-    borderColor?: string
     borderRadius?: string
-    borderStyle?: string
-    borderWidth?: string
     color?: string
     disabled?: boolean
     height?: string
@@ -70,7 +133,7 @@ This component does not use slots.
 
   const {
     backgroundColor = 'var(--interface-foreground)',
-    borderRadius = 'var(--border-radius)',
+    borderRadius = 'var(--border-radius--default)',
     color = 'var(--text-color)',
     disabled = false,
     height = '5rem',
@@ -105,17 +168,12 @@ This component does not use slots.
 
   const clearable = computed(() => query.value.length > 0 || value.value.length > 0)
 
-  const iconStyles = computed(() => ({
-    flex: `0 0 ${height}`,
-    height: height,
-  }))
-
-  const inputStyles = computed(() => ({
-    width: width,
-    height: height,
-    borderRadius: borderRadius,
-    backgroundColor: backgroundColor,
-    color: color
+  const rootStyle = computed(() => ({
+    '--ep-multi-search-width': width,
+    '--ep-multi-search-height': height,
+    '--ep-multi-search-border-radius': borderRadius,
+    '--ep-multi-search-bg-color': backgroundColor,
+    '--ep-multi-search-text-color': color,
   }))
 
   const placeholderValue = computed(() => {
@@ -201,12 +259,11 @@ This component does not use slots.
 <template>
   <div
     :class="['ep-multi-search', classes]"
-    :style="inputStyles"
+    :style="rootStyle"
   >
     <div
       v-if="icon"
       class="ep-multi-search__icon"
-      :style="iconStyles"
     >
       <Search01 />
     </div>
@@ -237,7 +294,6 @@ This component does not use slots.
     <div
       v-if="clearable"
       class="ep-multi-search__clear"
-      :style="iconStyles"
       @click="onClear"
     >
       <Cancel01 />
@@ -245,38 +301,7 @@ This component does not use slots.
   </div>
 </template>
 
-<style lang="scss" scoped>
-  .ep-multi-search {
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 0.5rem;
-    gap: 0.5rem;
-  }
 
-  .queries {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .query {
-    display: flex;
-    align-items: center;
-    background-color: var(--interface-surface);
-    border: 1px solid var(--border-color);
-    padding: 0.3rem 0.6rem;
-    border-radius: var(--border-radius);
-    font-size: 0.9rem;
-  }
-
-  .query--operator {
-    background-color: var(--highlight-color, #ffcc00);
-    color: black;
-    font-weight: bold;
-  }
-</style>
 ```
 
 ## Styles (SCSS)
@@ -285,64 +310,109 @@ This component does not use slots.
 @use '../mixins/mixins' as *;
 
 .ep-multi-search {
+  // Box
+  --ep-multi-search-width: 100%;
+  --ep-multi-search-height: 5rem;
+  --ep-multi-search-padding-inline: var(--space--3);
+
+  // Surface
+  --ep-multi-search-bg-color: var(--interface-foreground);
+
+  // Border
+  --ep-multi-search-border-width: var(--border-width--hairline);
+  --ep-multi-search-border-style: solid;
+  --ep-multi-search-border-color: var(--border-color);
+  --ep-multi-search-border-radius: var(--border-radius--default);
+  --ep-multi-search-focus-border-color: var(--primary-color-base);
+  --ep-multi-search-disabled-border-color: var(--border-color--disabled);
+
+  // Text
+  --ep-multi-search-text-color: var(--text-color);
+  --ep-multi-search-caret-color: var(--primary-color-base);
+  --ep-multi-search-disabled-text-color: var(--text-color--disabled);
+  --ep-multi-search-placeholder-disabled-opacity: 0.3;
+
+  // The pills representing committed queries.
+  --ep-multi-search-query-gap: 0.3rem;
+  --ep-multi-search-query-padding: 0 0.6rem 0 1rem;
+  --ep-multi-search-query-border-radius: var(--border-radius--default);
+  --ep-multi-search-query-bg-color: var(--primary-color-base);
+  --ep-multi-search-query-text-color: hsl(var(--gray-0));
+  --ep-multi-search-query-hover-bg-color: var(--primary-color-600);
+  --ep-multi-search-query-line-height: 2rem;
+  --ep-multi-search-operator-bg-color: hsl(var(--amber-300));
+  --ep-multi-search-operator-text-color: hsl(var(--gray-500));
+  --ep-multi-search-queries-padding-inline-end: 0.6rem;
+
   display: flex;
   overflow: hidden;
+  width: var(--ep-multi-search-width);
+  height: var(--ep-multi-search-height);
   flex-flow: row nowrap;
   align-items: center;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--border-color);
+  border-width: var(--ep-multi-search-border-width);
+  border-style: var(--ep-multi-search-border-style);
+  border-color: var(--ep-multi-search-border-color);
+  border-radius: var(--ep-multi-search-border-radius);
+  background: var(--ep-multi-search-bg-color);
+  color: var(--ep-multi-search-text-color);
 
   &:focus-within {
-    outline: var(--ep-default-focus-outline);
-    outline-offset: var(--ep-focus-outline-offset);
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
   }
 
   .queries {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    padding-right: 0.6rem;
-    gap: 0.3rem;
+    gap: var(--ep-multi-search-query-gap);
+    padding-inline-end: var(--ep-multi-search-queries-padding-inline-end);
 
     .query {
       display: flex;
       height: 100%;
       flex-flow: row nowrap;
       align-items: center;
-      padding: 0 0.6rem 0 1rem;
-      border-radius: var(--border-radius);
-      background-color: var(--primary-color-base);
-      color: hsl(var(--gray-0));
-      gap: 0.3rem;
+      padding: var(--ep-multi-search-query-padding);
+      border-radius: var(--ep-multi-search-query-border-radius);
+      background-color: var(--ep-multi-search-query-bg-color);
+      color: var(--ep-multi-search-query-text-color);
+      gap: var(--ep-multi-search-query-gap);
 
       @include hover {
         &:hover {
-          background-color: var(--primary-color-600);
+          background-color: var(--ep-multi-search-query-hover-bg-color);
           cursor: pointer;
         }
       }
 
       .query__text {
-        line-height: 2rem;
+        line-height: var(--ep-multi-search-query-line-height);
       }
 
       .query__close {
-        // background-color: red;
-        // margin-left: 0.8rem;
         cursor: pointer;
       }
+    }
+
+    // Operator pills (AND / OR) read differently from term pills.
+    .query--operator {
+      background-color: var(--ep-multi-search-operator-bg-color);
+      color: var(--ep-multi-search-operator-text-color);
     }
   }
 
   input {
     height: 100%;
     flex: 1;
-    padding: 0 1.2rem;
-    caret-color: var(--primary-color-base);
+    background: none;
+    caret-color: var(--ep-multi-search-caret-color);
+    color: inherit;
+    padding-inline: var(--ep-multi-search-padding-inline);
 
     &::placeholder {
-      color: var(--text-color);
+      color: var(--ep-multi-search-text-color);
     }
 
     &:focus-visible {
@@ -355,25 +425,27 @@ This component does not use slots.
   }
 
   &--has-icon input {
-    padding-left: 0;
+    padding-inline-start: 0;
   }
 
   &--focus {
-    border-color: var(--primary-color-base);
+    border-color: var(--ep-multi-search-focus-border-color);
   }
 
   &--disabled {
-    border-color: var(--border-color--disabled);
-    color: var(--text-color--disabled);
+    border-color: var(--ep-multi-search-disabled-border-color);
+    color: var(--ep-multi-search-disabled-text-color);
 
     input::placeholder {
-      opacity: 0.3;
+      opacity: var(--ep-multi-search-placeholder-disabled-opacity);
     }
   }
 
   &__icon,
   &__clear {
     display: flex;
+    height: 100%;
+    flex: 0 0 var(--ep-multi-search-height);
     align-items: center;
     justify-content: center;
   }
@@ -382,4 +454,5 @@ This component does not use slots.
     cursor: pointer;
   }
 }
+
 ```

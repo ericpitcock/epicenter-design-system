@@ -30,7 +30,10 @@ interface-overlay--accent:
 # Borders
 border-color:
   dark: hsl(var(--gray-380))
-  light: hsl(0, 0%, 80%)
+  light: hsl(var(--gray-100))
+# TODO: in the light theme this resolves to --border-color, so it is not actually
+# lighter — the name only holds in dark. Left as-is deliberately: changing it
+# shifts every component that uses it. Revisit as a design decision, not a fix.
 border-color--lighter:
   dark: hsl(var(--gray-340))
   light: var(--border-color)
@@ -92,20 +95,65 @@ text-color--success:
   light: hsl(var(--green-700))
 
 # Text Selection
-text-selection:
-  dark: var(--yellow-600)
-  light: var(--yellow-300)
+text-selection-bg-color:
+  dark: var(--primary-color-base)
+  light: var(--primary-color-base)
+text-selection-text-color:
+  dark: hsl(var(--gray-0))
+  light: hsl(var(--gray-0))
+
+# Status
+# One family per status, each with a background, a border and a text colour, so
+# error/warning/success surfaces are built from a single vocabulary. Replaces the
+# --error-color / --error-color--border / --error-color--text trio, which named
+# one concept three ways and was never declared by this package.
+status-danger-bg-color:
+  dark: hsl(var(--red-900))
+  light: hsl(var(--red-50))
+status-danger-border-color:
+  dark: hsl(var(--red-400))
+  light: hsl(var(--red-500))
+status-danger-text-color:
+  dark: hsl(var(--red-400))
+  light: hsl(var(--red-600))
+status-warning-bg-color:
+  dark: hsl(var(--amber-900))
+  light: hsl(var(--amber-50))
+status-warning-border-color:
+  dark: hsl(var(--amber-500))
+  light: hsl(var(--amber-500))
+status-warning-text-color:
+  dark: hsl(var(--amber-500))
+  light: hsl(var(--amber-600))
+status-success-bg-color:
+  dark: hsl(var(--green-900))
+  light: hsl(var(--green-50))
+status-success-border-color:
+  dark: hsl(var(--green-600))
+  light: hsl(var(--green-600))
+status-success-text-color:
+  dark: hsl(var(--green-600))
+  light: hsl(var(--green-700))
+status-info-bg-color:
+  dark: hsl(var(--sky-900))
+  light: hsl(var(--sky-50))
+status-info-border-color:
+  dark: hsl(var(--sky-300))
+  light: hsl(var(--sky-500))
+status-info-text-color:
+  dark: hsl(var(--sky-300))
+  light: hsl(var(--sky-600))
 
 # Alert Colors
 bg-color--alert-low:
   dark: hsl(var(--gray-300))
   light: hsl(var(--gray-130))
 bg-color--alert-medium:
-  dark: var(--yellow-400)
-  light: var(--yellow-400)
+  dark: hsl(var(--yellow-400))
+  light: hsl(var(--yellow-400))
 bg-color--alert-high:
-  dark: var(--amber-500)
-  light: var(--amber-500)
+  dark: hsl(var(--amber-500))
+  light: hsl(var(--amber-500))
 bg-color--alert-critical:
-  dark: var(--red-500)
-  light: var(--red-500)
+  dark: hsl(var(--red-500))
+  light: hsl(var(--red-500))

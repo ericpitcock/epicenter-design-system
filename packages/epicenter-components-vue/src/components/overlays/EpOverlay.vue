@@ -73,15 +73,3 @@
   </Teleport>
 </template>
 
-<style lang="scss" scoped>
-  .ep-dialog {
-    position: absolute;
-    top: 3rem;
-    right: 3rem;
-
-    &::backdrop {
-      background: var(--overlay-color);
-      cursor: pointer;
-    }
-  }
-</style>

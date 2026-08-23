@@ -22,6 +22,60 @@
 This component does not use events.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-radio` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-radio {
+  --ep-radio-border-radius: /* … */;
+}
+```
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-radio-border-radius` | `var(--border-radius--full)` | — |
+| `--ep-radio-border-width` | `var(--border-width--hairline)` | — |
+| `--ep-radio-checked-border-color` | `var(--primary-color-300)` | checked |
+| `--ep-radio-disabled-border-color` | `var(--border-color--disabled)` | disabled |
+| `--ep-radio-unchecked-border-color` | `var(--border-color--lighter)` | — |
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-radio-checked-bg-color` | `var(--primary-color-base)` | checked |
+| `--ep-radio-checked-disabled-bg-color` | `var(--text-color--disabled)` | checked-disabled |
+| `--ep-radio-disabled-bg-color` | `transparent` | disabled |
+| `--ep-radio-unchecked-bg-color` | `var(--interface-overlay)` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-radio-checked-text-color` | `var(--text-color--loud)` | checked |
+| `--ep-radio-disabled-text-color` | `var(--text-color--disabled)` | disabled |
+| `--ep-radio-text-color` | `inherit` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-radio-gap` | `1rem` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-radio-size` | `1.4rem` | — |
+
 ## Component Code
 
 ```vue
@@ -86,29 +140,46 @@ This component does not use events.
 
 ```scss
 .ep-radio {
+  // Box
+  --ep-radio-size: 1.4rem;
+  --ep-radio-gap: 1rem;
+
+  // Surface
   --ep-radio-checked-bg-color: var(--primary-color-base);
-  --ep-radio-checked-border-color: var(--primary-color-300);
   --ep-radio-unchecked-bg-color: var(--interface-overlay);
-  --ep-radio-unchecked-border-color: var(--border-color--lighter);
   --ep-radio-disabled-bg-color: transparent;
+  --ep-radio-checked-disabled-bg-color: var(--text-color--disabled);
+
+  // Border
+  --ep-radio-border-width: var(--border-width--hairline);
+  --ep-radio-border-radius: var(--border-radius--full);
+  --ep-radio-checked-border-color: var(--primary-color-300);
+  --ep-radio-unchecked-border-color: var(--border-color--lighter);
   --ep-radio-disabled-border-color: var(--border-color--disabled);
+
+  // Text
+  --ep-radio-text-color: inherit;
+  --ep-radio-checked-text-color: var(--text-color--loud);
+  --ep-radio-disabled-text-color: var(--text-color--disabled);
+
   position: relative;
   display: inline-flex;
   width: fit-content;
   align-items: center;
+  color: var(--ep-radio-text-color);
   cursor: pointer;
-  gap: 1rem;
+  gap: var(--ep-radio-gap);
 
   &__dot {
-    width: 14px;
-    height: 14px;
-    border: 1px solid var(--ep-radio-unchecked-border-color);
-    border-radius: 50%;
+    width: var(--ep-radio-size);
+    height: var(--ep-radio-size);
+    border: var(--ep-radio-border-width) solid var(--ep-radio-unchecked-border-color);
+    border-radius: var(--ep-radio-border-radius);
     background-color: var(--ep-radio-unchecked-bg-color);
   }
 
   &--checked {
-    color: var(--text-color--loud);
+    color: var(--ep-radio-checked-text-color);
 
     .ep-radio__dot {
       border-color: var(--ep-radio-checked-border-color);
@@ -117,7 +188,7 @@ This component does not use events.
   }
 
   &--disabled {
-    color: var(--text-color--disabled);
+    color: var(--ep-radio-disabled-text-color);
     pointer-events: none;
 
     .ep-radio__dot {
@@ -128,7 +199,7 @@ This component does not use events.
 
   &:is(.ep-radio--checked).ep-radio--disabled {
     .ep-radio__dot {
-      background-color: var(--text-color--disabled);
+      background-color: var(--ep-radio-checked-disabled-bg-color);
     }
   }
 }
@@ -138,4 +209,5 @@ This component does not use events.
   cursor: pointer;
   opacity: 0;
 }
+
 ```

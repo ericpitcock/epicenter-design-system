@@ -1,4 +1,5 @@
 import { EpImage } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredSurface } from '@sb/helpers/decorators.js'
 
 const imageLabels = {
@@ -11,7 +12,7 @@ const imageLabels = {
 export default {
   title: 'Components/Image',
   component: EpImage,
-  decorators: [centeredSurface],
+  decorators: [withCssProps('image'), centeredSurface],
   argTypes: {
     src: {
       options: Object.keys(imageLabels),
@@ -62,6 +63,8 @@ export default {
       },
       description: 'Opacity of the placeholder',
     },
+  
+    ...cssPropArgTypes('image'),
   },
 }
 

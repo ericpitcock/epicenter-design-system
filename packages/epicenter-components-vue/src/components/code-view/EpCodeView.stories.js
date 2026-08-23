@@ -1,12 +1,13 @@
 import { EpCodeView, EpContainer, EpHeader, EpTabContent, EpTabs, useTabs } from '@ericpitcock/epicenter-components-vue'
 import { codeExamples } from '@sb/helpers/codeExamples.js'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { surfaceOverflow } from '@sb/helpers/decorators.js'
 import { watch } from 'vue'
 
 export default {
   title: 'Components/Code View',
   component: EpCodeView,
-  decorators: [surfaceOverflow],
+  decorators: [withCssProps('code-view'), surfaceOverflow],
   argTypes: {
     code: {
       table: { disable: true }
@@ -33,6 +34,8 @@ export default {
     theme: {
       table: { disable: true }
     },
+  
+    ...cssPropArgTypes('code-view'),
   }
 }
 
@@ -68,7 +71,7 @@ export const CodeView = args => ({
         }"
       >
         <template #header>
-          <ep-header style="--ep-header-container-bg-color: var(--interface-surface);">
+          <ep-header style="--ep-header-bg-color: var(--interface-surface);">
             <template #left>   
               <ep-tabs
                 :items="tabItems"

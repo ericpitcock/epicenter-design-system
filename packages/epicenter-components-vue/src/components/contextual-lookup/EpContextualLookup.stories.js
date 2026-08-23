@@ -1,12 +1,13 @@
 import { EpContextualLookup, EpFlex } from '@ericpitcock/epicenter-components-vue'
 import { enrichmentSources, getFakeEnrichmentResponse } from '@sb/data/enrichmentData.js'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
 import { ref } from 'vue'
 
 export default {
   title: 'Components/Contextual Lookup',
   component: EpContextualLookup,
-  decorators: [paddedBg],
+  decorators: [withCssProps('contextual-lookup'), paddedBg],
   argTypes: {
     label: {
       name: 'Label',
@@ -30,6 +31,8 @@ export default {
         disable: true
       }
     }
+  ,
+    ...cssPropArgTypes('contextual-lookup'),
   }
 }
 

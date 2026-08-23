@@ -43,6 +43,28 @@ This is because Vite does not pre-bundle `mapbox-gl` by default, which can cause
 This component does not use slots.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-map` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-map {
+  --ep-map-height: /* … */;
+}
+```
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-map-height` | `100%` | — |
+| `--ep-map-width` | `100%` | — |
+
 ## Component Code
 
 ```vue
@@ -106,6 +128,7 @@ This component does not use slots.
   const previousMapStateSignature = ref('')
 
   const epMapContainer = useTemplateRef<HTMLDivElement>('epMapContainer')
+  const epMapCanvas = useTemplateRef<HTMLDivElement>('epMapCanvas')
 
   const observer = new ResizeObserver(() => {
     if (map.value) {
@@ -187,11 +210,13 @@ This component does not use slots.
 
   const loadMap = (): Promise<void> => {
     return new Promise((resolve) => {
+      if (!epMapCanvas.value) return
+
       import('mapbox-gl').then((module) => {
         mapboxgl = module.default
         map.value = new mapboxgl.Map({
           accessToken: accessToken,
-          container: 'ep-map',
+          container: epMapCanvas.value as HTMLDivElement,
           center: mapCenter,
           zoom: mapZoom,
           style: mapStyle,
@@ -254,9 +279,12 @@ This component does not use slots.
 <template>
   <div
     ref="epMapContainer"
-    class="ep-map-container"
+    class="ep-map"
   >
-    <div id="ep-map" />
+    <div
+      ref="epMapCanvas"
+      class="ep-map__canvas"
+    />
   </div>
 </template>
 ```
@@ -264,17 +292,23 @@ This component does not use slots.
 ## Styles (SCSS)
 
 ```scss
-.ep-map-container {
+// Mapbox's own stylesheet is loaded unlayered (a JS import inside the
+// component), and unlayered CSS beats every layer regardless of specificity —
+// `.mapboxgl-map { position: relative }` therefore wins over anything declared
+// here. So the canvas is sized rather than pinned with `inset`, and the block
+// keeps its own `position: relative` as the anchor for overlays.
+.ep-map {
+  --ep-map-width: 100%;
+  --ep-map-height: 100%;
+
   position: relative;
+  width: var(--ep-map-width);
+  height: var(--ep-map-height);
+}
+
+.ep-map__canvas {
   width: 100%;
   height: 100%;
 }
 
-#ep-map {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
 ```

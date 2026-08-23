@@ -183,6 +183,79 @@ The `sorter` function receives two values and should return a number: -1 for sor
 | `actions-menu` | Actions menu for each row. Receives the current row data. |
 | `thead-fixed` | Fixed header slot for when using fixed header mode. Syncs with the main table header. |
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-table-container` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-table-container {
+  --ep-table-actions-menu-width: /* … */;
+}
+```
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-table-actions-menu-width` | `5rem` | — |
+| `--ep-table-body-width` | `auto` | — |
+| `--ep-table-cell-min-width` | `0.1rem` | — |
+| `--ep-table-container-height` | `auto` | — |
+| `--ep-table-container-min-width` | `0` | — |
+| `--ep-table-container-width` | `auto` | — |
+| `--ep-table-head-width` | `auto` | — |
+| `--ep-table-min-width` | `0` | — |
+| `--ep-table-width` | `auto` | — |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-table-border-color` | `var(--border-color)` | — |
+| `--ep-table-border-style` | `solid` | — |
+| `--ep-table-border-width` | `var(--border-width--hairline)` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-table-cell-padding` | `1.4rem` | — |
+| `--ep-table-container-padding` | `0` | — |
+
+### Layout
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-table-cell-vertical-align` | `middle` | — |
+| `--ep-table-container-overflow` | `auto` | — |
+| `--ep-table-fixed-top` | `0` | — |
+| `--ep-table-fixed-z-index` | `10` | — |
+| `--ep-table-sticky-top` | `0` | — |
+| `--ep-table-sticky-z-index` | `var(--z-index--sticky)` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-table-cell-white-space` | `normal` | — |
+| `--ep-table-header-font-variation-settings` | `var(--font-weight--semi-bold)` | — |
+| `--ep-table-header-text-color` | `var(--text-color--loud)` | — |
+| `--ep-table-row-selected-text-color` | `var(--text--white)` | selected |
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-table-header-bg-color` | `var(--interface-surface)` | — |
+| `--ep-table-row-hover-bg-color` | `light-dark(hsl(var(--gray-10)), hsl(var(--gray-450)))` | hover |
+| `--ep-table-row-selected-bg-color` | `var(--primary-color-base)` | selected |
+| `--ep-table-row-stripe-bg-color` | `var(--interface-foreground)` | — |
+
 ## Component Code
 
 ```vue
@@ -322,32 +395,57 @@ The `sorter` function receives two values and should return a number: -1 for sor
 ```scss
 @use '../mixins/mixins' as *;
 
-.dark-theme {
-  --ep-table-row-stripe-color: var(--interface-foreground);
-  --ep-table-row-hover-bg-color: hsl(var(--gray-450));
-}
-
-.light-theme {
-  --ep-table-row-stripe-color: var(--interface-foreground);
-  --ep-table-row-hover-bg-color: hsl(var(--gray-10));
-}
-
+// @block table
+// @root .ep-table-container
 .ep-table-container {
+  // Container box
   --ep-table-container-width: auto;
   --ep-table-container-height: auto;
   --ep-table-container-min-width: 0;
   --ep-table-container-overflow: auto;
   --ep-table-container-padding: 0;
-  --ep-table-header-bg-color: var(--interface-surface);
-  --ep-table-border-color: var(--border-color);
+
+  // Table box
   --ep-table-width: auto;
   --ep-table-min-width: 0;
-  --ep-table-sticky-top: 0;
-  // --ep-table-fixed-top: 0;
   --ep-table-head-width: auto;
   --ep-table-body-width: auto;
+
+  // Surface
+  --ep-table-header-bg-color: var(--interface-surface);
+
+  // These were previously declared under .dark-theme / .light-theme, which meant
+  // they did not exist at all unless a theme class was applied. As light-dark()
+  // pairs they work off the OS preference too, like every other themed value.
+  --ep-table-row-stripe-bg-color: var(--interface-foreground);
+  --ep-table-row-hover-bg-color: light-dark(hsl(var(--gray-10)), hsl(var(--gray-450)));
+  --ep-table-row-selected-bg-color: var(--primary-color-base);
+  // Was var(--white), which nothing declares — selected rows had no text colour.
+  --ep-table-row-selected-text-color: var(--text--white);
+
+  // Border
+  --ep-table-border-width: var(--border-width--hairline);
+  --ep-table-border-style: solid;
+  --ep-table-border-color: var(--border-color);
+
+  // Cells
+  --ep-table-cell-padding: 1.4rem;
+  // Lets a cell shrink below its content width when the table is constrained.
+  --ep-table-cell-min-width: 0.1rem;
   --ep-table-cell-vertical-align: middle;
   --ep-table-cell-white-space: normal;
+  --ep-table-actions-menu-width: 5rem;
+
+  // Text
+  --ep-table-header-text-color: var(--text-color--loud);
+  --ep-table-header-font-variation-settings: var(--font-weight--semi-bold);
+
+  // Stacking
+  --ep-table-sticky-top: 0;
+  --ep-table-sticky-z-index: var(--z-index--sticky);
+  --ep-table-fixed-top: 0;
+  --ep-table-fixed-z-index: 10;
+
   overflow: var(--ep-table-container-overflow);
   width: var(--ep-table-container-width);
   min-width: var(--ep-table-container-min-width);
@@ -361,8 +459,8 @@ The `sorter` function receives two values and should return a number: -1 for sor
 
   thead {
     width: var(--ep-table-head-width);
-    color: var(--text-color--loud);
-    font-variation-settings: 'wght' 600;
+    color: var(--ep-table-header-text-color);
+    font-variation-settings: var(--ep-table-header-font-variation-settings);
     user-select: none;
 
     th {
@@ -370,7 +468,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
       text-align: left;
 
       &.ep-table__actions-menu {
-        width: 5rem;
+        width: var(--ep-table-actions-menu-width);
       }
 
       div {
@@ -379,8 +477,8 @@ The `sorter` function receives two values and should return a number: -1 for sor
         width: 100%;
         height: 100%;
         align-items: center;
-        padding: 1.4rem;
-        border-bottom: 1px solid var(--ep-table-border-color);
+        padding: var(--ep-table-cell-padding);
+        border-bottom: var(--ep-table-border-width) var(--ep-table-border-style) var(--ep-table-border-color);
 
         span.label {
           flex: 1;
@@ -402,13 +500,13 @@ The `sorter` function receives two values and should return a number: -1 for sor
       }
 
       td {
-        min-width: 1px;
-        padding: 1.4rem;
+        min-width: var(--ep-table-cell-min-width);
+        padding: var(--ep-table-cell-padding);
         vertical-align: var(--ep-table-cell-vertical-align);
         white-space: var(--ep-table-cell-white-space);
 
         &.ep-table__actions-menu {
-          width: 5rem;
+          width: var(--ep-table-actions-menu-width);
           padding: 0;
         }
       }
@@ -417,18 +515,15 @@ The `sorter` function receives two values and should return a number: -1 for sor
 
   &--bordered {
     tbody tr {
-      border: 1px solid var(--ep-table-border-color);
+      border: var(--ep-table-border-width) var(--ep-table-border-style) var(--ep-table-border-color);
       border-right: 0;
       border-left: 0;
     }
   }
 
+  // Density is one property, not a second set of padding rules.
   &--compact {
-
-    thead tr th div,
-    tbody tr td {
-      padding: 0.8rem 1.2rem;
-    }
+    --ep-table-cell-padding: 0.8rem 1.2rem;
   }
 
   &--layout-fixed {
@@ -453,8 +548,8 @@ The `sorter` function receives two values and should return a number: -1 for sor
 
       tr.ep-table-row--selected {
         td {
-          background: var(--primary-color-base);
-          color: var(--white);
+          background: var(--ep-table-row-selected-bg-color);
+          color: var(--ep-table-row-selected-text-color);
         }
       }
     }
@@ -464,7 +559,7 @@ The `sorter` function receives two values and should return a number: -1 for sor
     thead {
       th {
         position: sticky;
-        z-index: var(--z-index--sticky);
+        z-index: var(--ep-table-sticky-z-index);
         top: var(--ep-table-sticky-top);
       }
     }
@@ -472,8 +567,8 @@ The `sorter` function receives two values and should return a number: -1 for sor
 
   &--fixed-header {
     position: fixed;
-    z-index: 10;
-    top: 0;
+    z-index: var(--ep-table-fixed-z-index);
+    top: var(--ep-table-fixed-top);
     left: 0;
     display: block;
     width: 100%;
@@ -481,8 +576,9 @@ The `sorter` function receives two values and should return a number: -1 for sor
 
   &--striped {
     tbody tr:nth-child(even) {
-      background-color: var(--ep-table-row-stripe-color);
+      background-color: var(--ep-table-row-stripe-bg-color);
     }
   }
 }
+
 ```

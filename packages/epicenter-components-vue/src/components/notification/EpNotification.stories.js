@@ -1,12 +1,13 @@
 import { EpNotification } from '@ericpitcock/epicenter-components-vue'
 import { faker } from '@faker-js/faker'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredSurface } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
 export default {
   title: 'Components/Notifications/Notification',
   component: EpNotification,
-  decorators: [centeredSurface],
+  decorators: [withCssProps('notification'), centeredSurface],
   argTypes: {
     id: { table: { disable: true } },
     message: {
@@ -28,6 +29,8 @@ export default {
       }
     },
     styles: { table: { disable: true } },
+  
+    ...cssPropArgTypes('notification'),
   }
 }
 
@@ -38,7 +41,7 @@ export const Notification = args => ({
   setup() {
     const styles = computed(() => {
       return {
-        '--ep-notification-strip-color': args.stripColor
+        '--ep-notification-strip-bg-color': args.stripColor
       }
     })
     return { args, styles }

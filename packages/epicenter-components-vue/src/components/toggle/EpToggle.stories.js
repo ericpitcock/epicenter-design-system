@@ -1,10 +1,11 @@
 import { EpToggle } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredSurface } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Toggle',
   component: EpToggle,
-  decorators: [centeredSurface],
+  decorators: [withCssProps('toggle'), centeredSurface],
   argTypes: {
     isActive: { control: 'boolean' },
     disabled: { control: 'boolean' },
@@ -19,6 +20,8 @@ export default {
         type: 'select',
       }
     },
+  
+    ...cssPropArgTypes('toggle'),
   }
 }
 

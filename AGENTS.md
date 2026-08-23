@@ -49,6 +49,7 @@ When adding or modifying a component, check if the change should apply to **both
 - Design tokens defined as YAML in `packages/epicenter-styles/tokens/color/`
 - Build pipeline (`packages/epicenter-styles/scripts/build.mjs`) converts YAML → SCSS → `dist/epicenter-design-system.css`
 - Themes: `html.light-theme` / `html.dark-theme` classes; uses CSS `light-dark()` function
+- Custom property contract: see [packages/epicenter-styles/NAMING.md](packages/epicenter-styles/NAMING.md)
 - Interface-level custom properties: see [interface-custom-properties-guide.md](interface-custom-properties-guide.md)
 - Component SCSS lives in `packages/epicenter-styles/scss/components/`
 
@@ -78,7 +79,7 @@ Full Vue 3 component generator: [vue-component.prompt.md](.github/prompts/vue-co
 - `defineModel()` for all v-model bindings — never manual emits
 - Arrow functions only (`const onFoo = () => {}`)
 - Event handlers prefixed with `on` (`onSelect`, `onClear`, `onToggle`)
-- `<style scoped lang="scss">` with component-scoped CSS variables
+- No `<style>` block — component CSS lives in `packages/epicenter-styles/scss/components/`
 - Composables in `packages/epicenter-components-vue/src/composables/`
 
 ## React Component Conventions

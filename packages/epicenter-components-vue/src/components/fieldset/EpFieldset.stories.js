@@ -1,11 +1,12 @@
 import { EpCheckbox, EpFieldset, EpFlex, EpRadio } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { ref } from 'vue'
 
 export default {
   title: 'Components/Fieldset',
   component: EpFieldset,
-  decorators: [paddedSurface],
+  decorators: [withCssProps('fieldset'), paddedSurface],
   argTypes: {
     label: {
       name: 'Label',
@@ -13,6 +14,8 @@ export default {
         type: 'text'
       }
     }
+  ,
+    ...cssPropArgTypes('fieldset'),
   }
 }
 

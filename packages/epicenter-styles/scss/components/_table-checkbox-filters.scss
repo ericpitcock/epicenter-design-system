@@ -1,8 +1,9 @@
 .ep-table-checkbox-filters {
   --ep-table-checkbox-filters-gap: 1rem;
+  --ep-table-checkbox-filters-heading-margin-block-end: 0.5rem;
 
   h3 {
-    margin-bottom: 0.5rem;
+    margin-block-end: var(--ep-table-checkbox-filters-heading-margin-block-end);
   }
 
   &__container {

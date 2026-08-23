@@ -4,13 +4,70 @@
     "stylelint-config-idiomatic-order"
   ],
   "ignoreFiles": [
-    "scss/_reset.scss"
+    "scss/_reset.scss",
+    "scss/vendor/**/*.scss"
   ],
   "rules": {
     "block-no-empty": true,
     "declaration-property-value-no-unknown": null,
     "no-descending-specificity": null,
     "scss/dollar-variable-no-missing-interpolation": null,
-    "scss/operator-no-unspaced": null
-  }
+    "scss/operator-no-unspaced": null,
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": [
+          "corner-shape"
+        ],
+        "severity": "error"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "scss/components/**/*.scss"
+      ],
+      "rules": {
+        "color-no-hex": [
+          true,
+          {
+            "severity": "warning",
+            "message": "Components must not hardcode color. Declare an --ep-* property that references a theme token."
+          }
+        ],
+        "unit-disallowed-list": [
+          [
+            "px"
+          ],
+          {
+            "severity": "warning",
+            "message": "Use rem, or --border-width--hairline for hairlines. See NAMING.md.",
+            "ignoreMediaFeatureNames": {
+              "px": [
+                "min-width",
+                "max-width",
+                "min-height",
+                "max-height",
+                "width",
+                "height"
+              ]
+            }
+          }
+        ],
+        "declaration-property-value-disallowed-list": [
+          {
+            "/^(background|background-color|color|border-color|fill|stroke|outline-color)$/": [
+              "/^(rgb|rgba|hsl|hsla|oklch|oklab)\\(/",
+              "/^(white|black|red|green|blue|yellow|orange|purple|gray|grey)$/"
+            ]
+          },
+          {
+            "severity": "warning",
+            "message": "Components must not hardcode color. Declare an --ep-* property that references a theme token."
+          }
+        ]
+      }
+    }
+  ]
 }

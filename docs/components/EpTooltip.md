@@ -21,6 +21,63 @@
 This component does not use events.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-tooltip-wrapper` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-tooltip-wrapper {
+  --ep-tooltip-bg-color: /* … */;
+}
+```
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tooltip-bg-color` | `var(--interface-overlay)` | — |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tooltip-border-radius` | `var(--border-radius--default)` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tooltip-font-size` | `var(--font-size--small)` | — |
+| `--ep-tooltip-text-color` | `var(--text-color)` | — |
+
+### Layout
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tooltip-offset` | `0.5rem` | — |
+| `--ep-tooltip-offset-x` | `0rem` | — |
+| `--ep-tooltip-offset-y` | `0rem` | — |
+| `--ep-tooltip-z-index` | `var(--z-index--tooltip)` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tooltip-padding` | `0.5rem` | — |
+
+### Effect
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tooltip-transition` | `opacity var(--duration--default) ease` | — |
+| `--ep-tooltip-translate-x` | `0rem` | — |
+| `--ep-tooltip-translate-y` | `0rem` | — |
+
 ## Component Code
 
 ```vue
@@ -113,24 +170,50 @@ This component does not use events.
 ## Styles (SCSS)
 
 ```scss
+// @block tooltip
+// @root .ep-tooltip-wrapper
 .ep-tooltip-wrapper {
+  --ep-tooltip-padding: 0.5rem;
   --ep-tooltip-bg-color: var(--interface-overlay);
   --ep-tooltip-text-color: var(--text-color);
+  --ep-tooltip-border-radius: var(--border-radius--default);
+  --ep-tooltip-font-size: var(--font-size--small);
+  --ep-tooltip-z-index: var(--z-index--tooltip);
+  --ep-tooltip-transition: opacity var(--duration--default) ease;
+
+  // Gap between the tooltip and its trigger.
   --ep-tooltip-offset: 0.5rem;
+
+  // Consumer nudge on either axis. Previously these existed only as var()
+  // fallbacks, so there was nothing to discover and nothing to override.
+  --ep-tooltip-offset-x: 0rem;
+  --ep-tooltip-offset-y: 0rem;
+
+  // Set by the placement modifiers below. A placement's main axis and its cross
+  // axis are always different axes, so one pair covers both: `top-center` sets Y
+  // to clear the trigger and X to centre. That is what collapses twelve
+  // placements into two independent rule groups.
+  --ep-tooltip-translate-x: 0rem;
+  --ep-tooltip-translate-y: 0rem;
+
   position: relative;
   display: inline-block;
 }
 
 .ep-tooltip {
   position: absolute;
-  z-index: var(--z-index--tooltip);
-  padding: 5px;
-  border-radius: 4px;
+  z-index: var(--ep-tooltip-z-index);
+  padding: var(--ep-tooltip-padding);
+  border-radius: var(--ep-tooltip-border-radius);
   background-color: var(--ep-tooltip-bg-color);
   color: var(--ep-tooltip-text-color);
-  font-size: 12px;
+  font-size: var(--ep-tooltip-font-size);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transform: translate(
+    calc(var(--ep-tooltip-translate-x) + var(--ep-tooltip-offset-x)),
+    calc(var(--ep-tooltip-translate-y) + var(--ep-tooltip-offset-y))
+  );
+  transition: var(--ep-tooltip-transition);
   visibility: hidden;
   white-space: nowrap;
 
@@ -139,76 +222,67 @@ This component does not use events.
     visibility: visible;
   }
 
-  &.ep-tooltip--top-left {
+  // Main axis — which side of the trigger the tooltip sits on.
+  &--top-left,
+  &--top-center,
+  &--top-right {
     bottom: 100%;
+    --ep-tooltip-translate-y: calc(var(--ep-tooltip-offset) * -1);
+  }
+
+  &--bottom-left,
+  &--bottom-center,
+  &--bottom-right {
+    top: 100%;
+    --ep-tooltip-translate-y: var(--ep-tooltip-offset);
+  }
+
+  &--left-top,
+  &--left-center,
+  &--left-bottom {
+    right: 100%;
+    --ep-tooltip-translate-x: calc(var(--ep-tooltip-offset) * -1);
+  }
+
+  &--right-top,
+  &--right-center,
+  &--right-bottom {
+    left: 100%;
+    --ep-tooltip-translate-x: var(--ep-tooltip-offset);
+  }
+
+  // Cross axis — how it lines up along that side.
+  &--top-left,
+  &--bottom-left {
     left: 0;
-    transform: translateX(var(--ep-tooltip-offset-x, 0px)) translateY(calc(var(--ep-tooltip-offset-y, 0px) - var(--ep-tooltip-offset)));
   }
 
-  &.ep-tooltip--top-center {
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(calc(-50% + var(--ep-tooltip-offset-x, 0px))) translateY(calc(var(--ep-tooltip-offset-y, 0px) - var(--ep-tooltip-offset)));
-  }
-
-  &.ep-tooltip--top-right {
+  &--top-right,
+  &--bottom-right {
     right: 0;
-    bottom: 100%;
-    transform: translateX(var(--ep-tooltip-offset-x, 0px)) translateY(calc(var(--ep-tooltip-offset-y, 0px) - var(--ep-tooltip-offset)));
   }
 
-  &.ep-tooltip--right-top {
-    top: 0;
-    left: 100%;
-    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) + var(--ep-tooltip-offset))) translateY(var(--ep-tooltip-offset-y, 0px));
-  }
-
-  &.ep-tooltip--right-center {
-    top: 50%;
-    left: 100%;
-    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) + var(--ep-tooltip-offset))) translateY(calc(-50% + var(--ep-tooltip-offset-y, 0px)));
-  }
-
-  &.ep-tooltip--right-bottom {
-    bottom: 0;
-    left: 100%;
-    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) + var(--ep-tooltip-offset))) translateY(var(--ep-tooltip-offset-y, 0px));
-  }
-
-  &.ep-tooltip--bottom-left {
-    top: 100%;
-    left: 0;
-    transform: translateX(var(--ep-tooltip-offset-x, 0px)) translateY(calc(var(--ep-tooltip-offset-y, 0px) + var(--ep-tooltip-offset)));
-  }
-
-  &.ep-tooltip--bottom-center {
-    top: 100%;
+  &--top-center,
+  &--bottom-center {
     left: 50%;
-    transform: translateX(calc(-50% + var(--ep-tooltip-offset-x, 0px))) translateY(calc(var(--ep-tooltip-offset-y, 0px) + var(--ep-tooltip-offset)));
+    --ep-tooltip-translate-x: -50%;
   }
 
-  &.ep-tooltip--bottom-right {
-    top: 100%;
-    right: 0;
-    transform: translateX(var(--ep-tooltip-offset-x, 0px)) translateY(calc(var(--ep-tooltip-offset-y, 0px) + var(--ep-tooltip-offset)));
-  }
-
-  &.ep-tooltip--left-top {
+  &--left-top,
+  &--right-top {
     top: 0;
-    right: 100%;
-    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) - var(--ep-tooltip-offset))) translateY(var(--ep-tooltip-offset-y, 0px));
   }
 
-  &.ep-tooltip--left-center {
-    top: 50%;
-    right: 100%;
-    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) - var(--ep-tooltip-offset))) translateY(calc(-50% + var(--ep-tooltip-offset-y, 0px)));
-  }
-
-  &.ep-tooltip--left-bottom {
-    right: 100%;
+  &--left-bottom,
+  &--right-bottom {
     bottom: 0;
-    transform: translateX(calc(var(--ep-tooltip-offset-x, 0px) - var(--ep-tooltip-offset))) translateY(var(--ep-tooltip-offset-y, 0px));
+  }
+
+  &--left-center,
+  &--right-center {
+    top: 50%;
+    --ep-tooltip-translate-y: -50%;
   }
 }
+
 ```

@@ -39,6 +39,50 @@ const chartProps = {
 This component does not use events, slots.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-donut-chart` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-donut-chart {
+  --ep-donut-chart-tooltip-bg-color: /* … */;
+}
+```
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-donut-chart-tooltip-bg-color` | `var(--interface-overlay)` | — |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-donut-chart-tooltip-border-color` | `var(--border-color--lighter)` | — |
+| `--ep-donut-chart-tooltip-border-radius` | `var(--border-radius--default)` | — |
+| `--ep-donut-chart-tooltip-border-style` | `solid` | — |
+| `--ep-donut-chart-tooltip-border-width` | `var(--border-width--hairline)` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-donut-chart-tooltip-size` | `5rem` | — |
+
+### Layout
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-donut-chart-tooltip-z-index` | `var(--z-index--tooltip)` | — |
+| `--ep-donut-chart-value-z-index` | `var(--z-index--negative)` | — |
+| `--ep-donut-chart-z-index` | `var(--z-index--overlap)` | — |
+
 ## Component Code
 
 ```vue
@@ -209,11 +253,22 @@ This component does not use events, slots.
 
 ```scss
 .ep-donut-chart {
+  --ep-donut-chart-z-index: var(--z-index--overlap);
+  --ep-donut-chart-value-z-index: var(--z-index--negative);
+  --ep-donut-chart-tooltip-size: 5rem;
+  --ep-donut-chart-tooltip-z-index: var(--z-index--tooltip);
+  --ep-donut-chart-tooltip-bg-color: var(--interface-overlay);
+  --ep-donut-chart-tooltip-border-width: var(--border-width--hairline);
+  --ep-donut-chart-tooltip-border-style: solid;
+  --ep-donut-chart-tooltip-border-color: var(--border-color--lighter);
+  --ep-donut-chart-tooltip-border-radius: var(--border-radius--default);
+
   position: relative;
-  z-index: var(--z-index--overlap);
+  z-index: var(--ep-donut-chart-z-index);
+
   &__value {
     position: absolute;
-    z-index: var(--z-index--negative);
+    z-index: var(--ep-donut-chart-value-z-index);
     top: 0;
     left: 0;
     display: flex;
@@ -222,29 +277,21 @@ This component does not use events, slots.
     align-items: center;
     justify-content: center;
   }
+
   &__tooltip {
     position: absolute;
-    z-index: var(--z-index--tooltip);
+    z-index: var(--ep-donut-chart-tooltip-z-index);
     display: flex;
-    width: 50px;
-    height: 50px;
+    width: var(--ep-donut-chart-tooltip-size);
+    height: var(--ep-donut-chart-tooltip-size);
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--border-color--lighter);
-    border-radius: var(--border-radius);
-    background: var(--interface-overlay);
-    // &--visible {
-    //   opacity: 1;
-    // }
-    // &__value {
-    //   font-size: var(--font-size--large);
-    //   font-weight: var(--font-weight--bold);
-    //   color: var(--text-color--primary);
-    // }
-    // &__label {
-    //   font-size: var(--font-size--small);
-    //   color: var(--text-color--secondary);
-    // }
+    border-width: var(--ep-donut-chart-tooltip-border-width);
+    border-style: var(--ep-donut-chart-tooltip-border-style);
+    border-color: var(--ep-donut-chart-tooltip-border-color);
+    border-radius: var(--ep-donut-chart-tooltip-border-radius);
+    background: var(--ep-donut-chart-tooltip-bg-color);
   }
 }
+
 ```

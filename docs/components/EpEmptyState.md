@@ -21,6 +21,44 @@
 This component does not use events.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-empty-state` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-empty-state {
+  --ep-empty-state-body-gap: /* … */;
+}
+```
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-empty-state-body-gap` | `0.5rem` | — |
+| `--ep-empty-state-column-gap` | `var(--space--5)` | — |
+| `--ep-empty-state-cta-margin-block-start` | `var(--space--5)` | — |
+| `--ep-empty-state-row-gap` | `3rem` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-empty-state-body-text-color` | `var(--text-color--loud)` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-empty-state-height` | `100%` | — |
+| `--ep-empty-state-image-max-width` | `10rem` | — |
+| `--ep-empty-state-width` | `100%` | — |
+
 ## Component Code
 
 ```vue
@@ -93,19 +131,28 @@ This component does not use events.
 
 ```scss
 .ep-empty-state {
+  --ep-empty-state-width: 100%;
+  --ep-empty-state-height: 100%;
+  --ep-empty-state-column-gap: var(--space--5);
+  --ep-empty-state-row-gap: 3rem;
+  --ep-empty-state-image-max-width: 10rem;
+  --ep-empty-state-body-gap: 0.5rem;
+  --ep-empty-state-body-text-color: var(--text-color--loud);
+  --ep-empty-state-cta-margin-block-start: var(--space--5);
+
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: var(--ep-empty-state-width);
+  height: var(--ep-empty-state-height);
 
   img {
-    max-width: 10rem;
+    max-width: var(--ep-empty-state-image-max-width);
   }
 
   &--column {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: var(--ep-empty-state-column-gap);
 
     .ep-empty-state__body {
       text-align: center;
@@ -132,7 +179,7 @@ This component does not use events.
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: var(--ep-empty-state-row-gap);
 
     &.ep-empty-state--justify-left {
       justify-content: flex-start;
@@ -146,12 +193,13 @@ This component does not use events.
   &__body {
     display: flex;
     flex-direction: column;
-    color: var(--text-color--loud);
-    gap: 0.5rem;
+    color: var(--ep-empty-state-body-text-color);
+    gap: var(--ep-empty-state-body-gap);
 
     &__cta {
-      margin-top: 2rem;
+      margin-block-start: var(--ep-empty-state-cta-margin-block-start);
     }
   }
 }
+
 ```

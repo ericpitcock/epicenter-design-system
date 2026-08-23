@@ -5,12 +5,13 @@ import ArrowUpRight from '@ericpitcock/epicenter-icons-vue/ArrowUpRight03'
 import GoogleMaps from '@ericpitcock/epicenter-icons-vue/GoogleMaps'
 import Radar01 from '@ericpitcock/epicenter-icons-vue/Radar01'
 import Settings04 from '@ericpitcock/epicenter-icons-vue/Settings04'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredBg } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Menu',
   component: EpMenu,
-  decorators: [centeredBg],
+  decorators: [withCssProps('menu'), centeredBg],
   argTypes: {
     size: {
       name: 'Size',
@@ -34,6 +35,8 @@ export default {
       control: { type: 'boolean' }
     },
     menuType: { table: { disable: true } },
+  
+    ...cssPropArgTypes('menu'),
   }
 }
 

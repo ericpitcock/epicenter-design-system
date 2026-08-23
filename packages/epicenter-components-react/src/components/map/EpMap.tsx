@@ -227,8 +227,8 @@ export const EpMap: React.FC<EpMapProps> = ({
   }
 
   return (
-    <div className={`ep-map-container${className ? ` ${className}` : ''}`}>
-      <div ref={mapContainerRef} id="ep-map" style={{ width: '100%', height: '100%' }} />
+    <div className={`ep-map${className ? ` ${className}` : ''}`}>
+      <div ref={mapContainerRef} className="ep-map__canvas" />
     </div>
   )
 }

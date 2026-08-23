@@ -1,5 +1,9 @@
 .ep-pagination {
-  width: 100%;
+  --ep-pagination-width: 100%;
+  --ep-pagination-info-margin-inline: 1rem;
+  --ep-pagination-info-text-color: var(--text-color--subtle);
+
+  width: var(--ep-pagination-width);
   user-select: none;
 
   .ep-button--selected {
@@ -7,7 +11,9 @@
   }
 }
 
+// Carries its own block-level class but renders inside .ep-pagination, so it
+// inherits the properties declared above.
 .ep-pagination-info {
-  margin: 0 1rem;
-  color: var(--text-color--subtle);
+  color: var(--ep-pagination-info-text-color);
+  margin-inline: var(--ep-pagination-info-margin-inline);
 }

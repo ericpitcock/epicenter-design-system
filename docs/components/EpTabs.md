@@ -19,6 +19,72 @@
 This component does not use slots.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-tabs` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-tabs {
+  --ep-tabs-active-border-color: /* … */;
+}
+```
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tabs-active-border-color` | `var(--primary-color-base)` | active |
+| `--ep-tabs-classic-active-border-color` | `var(--border-color)` | active |
+| `--ep-tabs-classic-border-radius` | `var(--border-radius--default)` | — |
+| `--ep-tabs-classic-border-width` | `var(--border-width--hairline)` | — |
+| `--ep-tabs-hover-border-color` | `var(--border-color--lighter)` | hover |
+| `--ep-tabs-item-border-color` | `transparent` | — |
+| `--ep-tabs-item-border-width` | `0.3rem` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tabs-active-text-color` | `var(--text-color--loud)` | active |
+| `--ep-tabs-hover-text-color` | `var(--text-color)` | hover |
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tabs-classic-active-bg-color` | `var(--interface-surface)` | active |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tabs-classic-height` | `4rem` | — |
+| `--ep-tabs-height` | `100%` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tabs-classic-padding` | `1rem 1.5rem` | — |
+| `--ep-tabs-gap` | `0 3rem` | — |
+
+### Effect
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tabs-focus-outline-color` | `var(--focus-outline-color)` | focus |
+
+### Layout
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-tabs-item-top` | `0.1rem` | — |
+
 ## Component Code
 
 ```vue
@@ -115,14 +181,31 @@ This component does not use slots.
 @use '../mixins/mixins' as *;
 
 .ep-tabs {
+  // Box
+  --ep-tabs-height: 100%;
+  --ep-tabs-gap: 0 3rem;
+
+  // Underline tabs
+  --ep-tabs-item-border-width: 0.3rem;
+  --ep-tabs-item-border-color: transparent;
+  --ep-tabs-item-top: 0.1rem;
   --ep-tabs-hover-border-color: var(--border-color--lighter);
   --ep-tabs-hover-text-color: var(--text-color);
   --ep-tabs-active-border-color: var(--primary-color-base);
   --ep-tabs-active-text-color: var(--text-color--loud);
-  --ep-tabs-focus-outline-color: var(--ep-focus-outline-color);
+  --ep-tabs-focus-outline-color: var(--focus-outline-color);
+
+  // Classic (folder) tabs
+  --ep-tabs-classic-height: 4rem;
+  --ep-tabs-classic-padding: 1rem 1.5rem;
+  --ep-tabs-classic-border-width: var(--border-width--hairline);
+  --ep-tabs-classic-border-radius: var(--border-radius--default);
+  --ep-tabs-classic-active-border-color: var(--border-color);
+  --ep-tabs-classic-active-bg-color: var(--interface-surface);
+
   display: flex;
-  height: 100%;
-  gap: 0 3rem;
+  height: var(--ep-tabs-height);
+  gap: var(--ep-tabs-gap);
   user-select: none;
 
   &__tab-item {
@@ -131,11 +214,16 @@ This component does not use slots.
 
     span {
       position: relative;
-      top: 1px;
+      top: var(--ep-tabs-item-top);
       display: inline-flex;
       align-items: center;
-      border-bottom: 3px solid transparent;
+      border-bottom: var(--ep-tabs-item-border-width) solid var(--ep-tabs-item-border-color);
       white-space: nowrap;
+    }
+
+    // Previously declared but never consumed, so setting it did nothing.
+    &:focus-visible {
+      outline-color: var(--ep-tabs-focus-outline-color);
     }
 
     @include hover {
@@ -159,12 +247,12 @@ This component does not use slots.
 
     .ep-tabs__tab-item {
       span {
-        height: 4rem;
-        padding: 1rem 1.5rem;
-        border: 1px solid transparent;
+        height: var(--ep-tabs-classic-height);
+        padding: var(--ep-tabs-classic-padding);
+        border: var(--ep-tabs-classic-border-width) solid transparent;
         border-bottom: 0;
-        border-top-left-radius: var(--border-radius);
-        border-top-right-radius: var(--border-radius);
+        border-top-left-radius: var(--ep-tabs-classic-border-radius);
+        border-top-right-radius: var(--ep-tabs-classic-border-radius);
       }
 
       @include hover {
@@ -176,11 +264,12 @@ This component does not use slots.
 
       &--active span,
       &.router-link-exact-active span {
-        border-color: var(--border-color);
+        border-color: var(--ep-tabs-classic-active-border-color);
         border-bottom-color: transparent;
-        background: var(--interface-surface);
+        background: var(--ep-tabs-classic-active-bg-color);
       }
     }
   }
 }
+
 ```

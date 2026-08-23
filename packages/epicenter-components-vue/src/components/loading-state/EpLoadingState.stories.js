@@ -2,13 +2,14 @@ import { EpButton, EpContainer, EpDropdown, EpHeader, EpLoadingState, EpMenu, Ep
 import ArrowDown01 from '@ericpitcock/epicenter-icons-vue/ArrowDown01'
 import Refresh01 from '@ericpitcock/epicenter-icons-vue/Refresh01'
 import { columns, fakeTableData } from '@sb/data/tableData.js'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
 import { onMounted, ref } from 'vue'
 
 export default {
   title: 'Components/Loading State',
   component: EpLoadingState,
-  decorators: [paddedBg],
+  decorators: [withCssProps('loading'), paddedBg],
   argTypes: {
     message: {
       name: 'Message',
@@ -16,6 +17,8 @@ export default {
         type: 'array'
       }
     },
+  
+    ...cssPropArgTypes('loading'),
   }
 }
 
@@ -137,7 +140,7 @@ export const LoadingState = args => ({
       style="--ep-container-framed-offset: 60px; --ep-container-content-padding: 0 0 10rem 0;"
     >
       <template #header>
-      <ep-header :style="{ '--ep-header-container-overflow': 'visible' }">
+      <ep-header :style="{ '--ep-header-overflow': 'visible' }">
         <template #left>
           <div class="ep-split-button">
             <ep-button

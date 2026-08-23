@@ -18,6 +18,28 @@
 This component does not use slots.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-table-checkbox-filters` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-table-checkbox-filters {
+  --ep-table-checkbox-filters-gap: /* … */;
+}
+```
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-table-checkbox-filters-gap` | `1rem` | — |
+| `--ep-table-checkbox-filters-heading-margin-block-end` | `0.5rem` | — |
+
 ## Component Code
 
 ```vue
@@ -79,13 +101,15 @@ This component does not use slots.
 ```scss
 .ep-table-checkbox-filters {
   --ep-table-checkbox-filters-gap: 1rem;
+  --ep-table-checkbox-filters-heading-margin-block-end: 0.5rem;
 
   h3 {
-    margin-bottom: 0.5rem;
+    margin-block-end: var(--ep-table-checkbox-filters-heading-margin-block-end);
   }
 
   &__container {
     gap: var(--ep-table-checkbox-filters-gap);
   }
 }
+
 ```

@@ -1,0 +1,27 @@
+// @block overlay
+// @root .ep-dialog
+// Moved out of EpOverlay.vue's scoped block, where `top: 3rem; right: 3rem` was
+// baked in — every modal in every consuming app was pinned to the top right with
+// no way out short of :deep(). The default is now centred, which is what a
+// dialog without explicit positioning should be.
+.ep-dialog {
+  --ep-overlay-top: 50%;
+  --ep-overlay-right: auto;
+  --ep-overlay-bottom: auto;
+  --ep-overlay-left: 50%;
+  --ep-overlay-translate-x: -50%;
+  --ep-overlay-translate-y: -50%;
+  --ep-overlay-backdrop-bg-color: var(--overlay-color);
+
+  position: absolute;
+  top: var(--ep-overlay-top);
+  right: var(--ep-overlay-right);
+  bottom: var(--ep-overlay-bottom);
+  left: var(--ep-overlay-left);
+  transform: translate(var(--ep-overlay-translate-x), var(--ep-overlay-translate-y));
+
+  &::backdrop {
+    background: var(--ep-overlay-backdrop-bg-color);
+    cursor: pointer;
+  }
+}

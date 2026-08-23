@@ -1,0 +1,16 @@
+// Spacing scale.
+// The document root is 62.5%, so 1rem = 10px and every step below is a round
+// pixel value. Component padding, gap and margin reference these rather than
+// literals, so density can be retuned in one place.
+:root {
+  --space--1: 0.4rem;  // 4px
+  --space--2: 0.8rem;  // 8px
+  --space--3: 1.2rem;  // 12px
+  --space--4: 1.6rem;  // 16px
+  --space--5: 2rem;    // 20px
+  --space--6: 2.4rem;  // 24px
+  --space--7: 3.2rem;  // 32px
+  --space--8: 4rem;    // 40px
+  --space--9: 4.8rem;  // 48px
+  --space--10: 6.4rem; // 64px
+}

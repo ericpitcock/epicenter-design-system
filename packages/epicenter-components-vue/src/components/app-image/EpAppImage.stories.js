@@ -1,4 +1,5 @@
 import { EpAppImage } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredSurface } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
@@ -24,6 +25,7 @@ const anchorOptions = [
 export default {
   title: 'Components/Ep App Image',
   component: EpAppImage,
+  decorators: [withCssProps('app-image', { except: ['--ep-app-image-aspect-ratio', '--ep-app-image-inset'] })],
   // Decorators are applied per-story, not here — SplitViewport needs a
   // full-bleed stage, and story decorators add to meta decorators rather
   // than replacing them.
@@ -143,6 +145,8 @@ export default {
       control: 'boolean',
       description: 'Renders alt="" for purely decorative images',
     },
+  
+    ...cssPropArgTypes('app-image', { except: ['--ep-app-image-aspect-ratio', '--ep-app-image-inset'] }),
   },
 }
 

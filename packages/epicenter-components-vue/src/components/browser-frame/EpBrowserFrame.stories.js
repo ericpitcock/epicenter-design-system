@@ -1,10 +1,11 @@
 import { EpBrowserFrame } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Browser Frame',
   component: EpBrowserFrame,
-  decorators: [paddedBg],
+  decorators: [withCssProps('browser-frame'), paddedBg],
   argTypes: {
     width: {
       name: 'Width',
@@ -30,6 +31,8 @@ export default {
         type: 'text',
       }
     },
+  
+    ...cssPropArgTypes('browser-frame'),
   },
 }
 

@@ -1,6 +1,7 @@
 import { EpButton, EpDropdown, EpMenu, EpMenuItem } from '@ericpitcock/epicenter-components-vue'
 import ArrowRight01 from '@ericpitcock/epicenter-icons-vue/ArrowRight01'
 import Coffee02 from '@ericpitcock/epicenter-icons-vue/Coffee02'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredBg } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { ref, toRef } from 'vue'
@@ -45,7 +46,7 @@ const fakeDropdownItems = [
 export default {
   title: 'Components/Dropdown',
   component: EpDropdown,
-  decorators: [centeredBg],
+  decorators: [withCssProps('dropdown'), centeredBg],
   argTypes: {
     disabled: {
       name: 'Disabled',
@@ -127,6 +128,8 @@ export default {
         category: 'Icons'
       }
     }
+  ,
+    ...cssPropArgTypes('dropdown'),
   },
 }
 

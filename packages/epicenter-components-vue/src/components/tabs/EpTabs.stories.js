@@ -1,4 +1,5 @@
 import { EpContainer, EpHeader, EpTabContent, EpTabs, useTabs } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
 import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -6,7 +7,7 @@ import { useRouter } from 'vue-router'
 export default {
   title: 'Components/Tabs',
   component: EpTabs,
-  decorators: [paddedBg],
+  decorators: [withCssProps('tabs'), paddedBg],
   argTypes: {
     activeTabIndex: {
       table: { disable: true }
@@ -41,6 +42,8 @@ export default {
     ['tab-click']: {
       table: { disable: true }
     }
+  ,
+    ...cssPropArgTypes('tabs'),
   }
 }
 
@@ -117,10 +120,10 @@ export const Tabs = args => ({
       <template #header>
         <ep-header
           :style="{
-            '--ep-header-container-height': headerHeight,
-            '--ep-header-container-bg-color': headerBgColor,
-            '--ep-header-container-padding': headerPadding,
-            '--ep-header-container-overflow': 'visible'
+            '--ep-header-height': headerHeight,
+            '--ep-header-bg-color': headerBgColor,
+            '--ep-header-padding': headerPadding,
+            '--ep-header-overflow': 'visible'
           }"
         >
           <template #left>

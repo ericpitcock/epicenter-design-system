@@ -1,4 +1,5 @@
 import { EpSelect } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
 import { computed, toRef, watch } from 'vue'
@@ -6,7 +7,7 @@ import { computed, toRef, watch } from 'vue'
 export default {
   title: 'Components/Select',
   component: EpSelect,
-  decorators: [paddedSurface],
+  decorators: [withCssProps('select'), paddedSurface],
   argTypes: {
     size: {
       name: 'Size',
@@ -94,6 +95,8 @@ export default {
     focus: { table: { disable: true } },
     // slots
     ['icon-left']: { table: { disable: true } }
+  ,
+    ...cssPropArgTypes('select'),
   }
 }
 

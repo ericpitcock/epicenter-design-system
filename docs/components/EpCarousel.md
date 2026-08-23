@@ -18,6 +18,77 @@
 This component does not use slots.
 :::
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-case-study-carousel` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-case-study-carousel {
+  --ep-carousel-border-radius: /* … */;
+}
+```
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-carousel-border-radius` | `1rem` | — |
+| `--ep-carousel-caption-border-radius` | `var(--border-radius--default)` | — |
+
+### Surface
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-carousel-caption-bg-color` | `hsla(0, 0%, 100%, 0.5)` | — |
+| `--ep-carousel-dot-bg-color` | `hsl(from var(--primary-color-base) h s l / 0.3)` | — |
+| `--ep-carousel-dot-hover-bg-color` | `hsl(from var(--primary-color-base) h s l / 0.6)` | hover |
+| `--ep-carousel-dot-selected-bg-color` | `var(--primary-color-base)` | selected |
+| `--ep-carousel-image-bg-color` | `hsl(0 0% 0% / 0.05)` | — |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-carousel-caption-padding` | `0.75rem 1.5rem` | — |
+| `--ep-carousel-dots-gap` | `1rem` | — |
+| `--ep-carousel-dots-padding` | `1rem` | — |
+| `--ep-carousel-gap` | `var(--space--5)` | — |
+| `--ep-carousel-margin-inline-start` | `calc(-50vw + 50%)` | — |
+| `--ep-carousel-nav-gap` | `var(--space--5)` | — |
+| `--ep-carousel-track-padding-block` | `var(--space--5)` | — |
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-carousel-caption-text-color` | `hsl(var(--gray-440))` | — |
+
+### Effect
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-carousel-dot-hover-scale` | `1.2` | hover |
+| `--ep-carousel-dot-selected-scale` | `1.5` | selected |
+| `--ep-carousel-image-focus-outline-color` | `var(--primary-color-base)` | focus |
+| `--ep-carousel-image-focus-outline-width` | `0.3rem` | focus |
+| `--ep-carousel-nav-button-hover-scale` | `1.1` | hover |
+| `--ep-carousel-transition` | `var(--duration--default) ease` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-carousel-dot-size` | `1rem` | — |
+| `--ep-carousel-height` | `75vh` | — |
+| `--ep-carousel-image-max-width` | `90vw` | — |
+| `--ep-carousel-spacer-min-width` | `var(--space--5)` | — |
+| `--ep-carousel-width` | `100vw` | — |
+
 ## Component Code
 
 ```vue
@@ -316,15 +387,52 @@ This component does not use slots.
 ## Styles (SCSS)
 
 ```scss
+// @block carousel
+// @root .ep-case-study-carousel
+// The child classes here are not `ep-`-prefixed (.carousel-track, .carousel-dot,
+// …). Renaming them would break both framework packages, so they are left alone;
+// the properties below are the supported way to restyle them.
 .ep-case-study-carousel {
-  --ep-carousel-height: var(--ep-case-study-carousel-height, 75vh);
-  --ep-carousel-gap: var(--ep-case-study-carousel-gap, 2rem);
-  --ep-carousel-border-radius: var(--ep-case-study-carousel-border-radius, 1rem);
-  --ep-carousel-caption-border-radius: var(--ep-case-study-carousel-caption-border-radius, 0.3rem);
-  --ep-carousel-peek-width: var(--ep-case-study-carousel-peek-width, 10vw);
+  // Box
+  --ep-carousel-height: 75vh;
+  --ep-carousel-gap: var(--space--5);
+  --ep-carousel-width: 100vw;
+  // Full-bleed: pull the carousel out of its container to the viewport edges.
+  --ep-carousel-margin-inline-start: calc(-50vw + 50%);
+  --ep-carousel-track-padding-block: var(--space--5);
+  --ep-carousel-spacer-min-width: var(--space--5);
+
+  // Image
+  --ep-carousel-border-radius: 1rem;
+  --ep-carousel-image-max-width: 90vw;
+  --ep-carousel-image-bg-color: hsl(0 0% 0% / 0.05);
+  --ep-carousel-image-focus-outline-width: 0.3rem;
+  --ep-carousel-image-focus-outline-color: var(--primary-color-base);
+
+  // Caption
+  --ep-carousel-caption-border-radius: var(--border-radius--default);
+  --ep-carousel-caption-padding: 0.75rem 1.5rem;
+  --ep-carousel-caption-bg-color: hsla(0, 0%, 100%, 0.5);
+  --ep-carousel-caption-text-color: hsl(var(--gray-440));
+
+  // Navigation
+  --ep-carousel-nav-gap: var(--space--5);
+  --ep-carousel-nav-button-hover-scale: 1.1;
+  --ep-carousel-dots-padding: 1rem;
+  --ep-carousel-dots-gap: 1rem;
+  --ep-carousel-dot-size: 1rem;
+  --ep-carousel-dot-bg-color: hsl(from var(--primary-color-base) h s l / 0.3);
+  --ep-carousel-dot-hover-bg-color: hsl(from var(--primary-color-base) h s l / 0.6);
+  --ep-carousel-dot-selected-bg-color: var(--primary-color-base);
+  --ep-carousel-dot-hover-scale: 1.2;
+  --ep-carousel-dot-selected-scale: 1.5;
+
+  // Motion
+  --ep-carousel-transition: var(--duration--default) ease;
+
   position: relative;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: var(--ep-carousel-width);
+  margin-inline-start: var(--ep-carousel-margin-inline-start);
 }
 
 .carousel-track {
@@ -334,7 +442,7 @@ This component does not use slots.
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
-  padding-block: 2rem;
+  padding-block: var(--ep-carousel-track-padding-block);
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -345,7 +453,7 @@ This component does not use slots.
 }
 
 .carousel-spacer {
-  min-width: 2rem;
+  min-width: var(--ep-carousel-spacer-min-width);
   flex: 0 0 50vw;
 }
 
@@ -353,11 +461,11 @@ This component does not use slots.
   position: relative;
   display: flex;
   overflow: hidden;
-  max-width: 90vw;
+  max-width: var(--ep-carousel-image-max-width);
   max-height: var(--ep-carousel-height);
   border-radius: var(--ep-carousel-border-radius);
-  background-color: hsl(0 0% 0% / 0.05);
-  transition: box-shadow 0.2s ease;
+  background-color: var(--ep-carousel-image-bg-color);
+  transition: box-shadow var(--ep-carousel-transition);
 }
 
 .carousel-item {
@@ -367,7 +475,7 @@ This component does not use slots.
   outline: none;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity var(--ep-carousel-transition), transform var(--ep-carousel-transition);
 
   &.is-active {
     cursor: default;
@@ -375,7 +483,7 @@ This component does not use slots.
 
   &:focus-visible {
     .carousel-image-container {
-      box-shadow: 0 0 0 3px var(--primary-color-base);
+      box-shadow: 0 0 0 var(--ep-carousel-image-focus-outline-width) var(--ep-carousel-image-focus-outline-color);
     }
   }
 }
@@ -385,14 +493,14 @@ This component does not use slots.
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform var(--ep-carousel-transition);
 }
 
 .carousel-caption {
   position: absolute;
-  padding: 0.75rem 1.5rem;
-  background-color: hsla(0, 0%, 100%, 0.5);
-  color: hsl(var(--gray-440));
+  padding: var(--ep-carousel-caption-padding);
+  background-color: var(--ep-carousel-caption-bg-color);
+  color: var(--ep-carousel-caption-text-color);
   text-align: center;
   text-wrap: balance;
 
@@ -461,7 +569,7 @@ This component does not use slots.
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: var(--ep-carousel-nav-gap);
 }
 
 .carousel-nav-button {
@@ -478,48 +586,48 @@ This component does not use slots.
   align-items: center;
   justify-content: center;
   padding: 0;
-  border-radius: 50%;
+  border-radius: var(--border-radius--full);
   aspect-ratio: 1 / 1;
-  transition: all 0.3s ease;
+  transition: all var(--ep-carousel-transition);
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(var(--ep-carousel-nav-button-hover-scale));
   }
 }
 
 .carousel-dots {
   display: flex;
-  min-height: calc(0.75rem + 2rem);
+  min-height: calc(0.75rem + var(--ep-carousel-dots-padding) * 2);
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  gap: 1rem;
+  padding: var(--ep-carousel-dots-padding);
+  gap: var(--ep-carousel-dots-gap);
 }
 
 .carousel-dot {
-  width: 1rem;
-  height: 1rem;
+  width: var(--ep-carousel-dot-size);
+  height: var(--ep-carousel-dot-size);
   padding: 0;
   border: none;
-  border-radius: 50%;
-  background-color: hsl(from var(--primary-color-base) h s l / 0.3);
+  border-radius: var(--border-radius--full);
+  background-color: var(--ep-carousel-dot-bg-color);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--ep-carousel-transition);
 
   &:focus-visible {
-    outline: 2px solid var(--primary-color-base);
-    outline-offset: 2px;
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
   }
 
   &:not(.is-active):hover {
-    background-color: hsl(from var(--primary-color-base) h s l / 0.6);
-    transform: scale(1.2);
+    background-color: var(--ep-carousel-dot-hover-bg-color);
+    transform: scale(var(--ep-carousel-dot-hover-scale));
   }
 
   &.is-active {
-    background-color: var(--primary-color-base);
+    background-color: var(--ep-carousel-dot-selected-bg-color);
     cursor: default;
-    transform: scale(1.5);
+    transform: scale(var(--ep-carousel-dot-selected-scale));
   }
 }
 

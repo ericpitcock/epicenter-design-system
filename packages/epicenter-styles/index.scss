@@ -1,6 +1,11 @@
 // styles entry point
+//
+// This entry compiles the whole system unlayered. The published stylesheet is
+// built by scripts/build.mjs, which compiles each group below into its own CSS
+// cascade layer — see LAYERS there. Sass forbids `@use` inside `@layer`, so the
+// layer structure cannot live in this file.
 @use 'scss/reset';
-@use 'scss/utilities';
 @use 'scss/color';
 @use 'scss/type';
 @use 'scss/components';
+@use 'scss/utilities';

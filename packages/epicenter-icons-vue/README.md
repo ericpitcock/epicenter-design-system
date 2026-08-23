@@ -46,7 +46,7 @@ All icons support customization via CSS custom properties:
 .my-icon {
   --ep-icon-width: 2rem;
   --ep-icon-height: 2rem;
-  --ep-icon-color: #3b82f6;
+  --ep-icon-text-color: #3b82f6;
   --ep-icon-stroke-width: 2;
 }
 ```
@@ -56,7 +56,7 @@ All icons support customization via CSS custom properties:
 | `--ep-icon-size` | `1.5em` | Base size (width and height) |
 | `--ep-icon-width` | `var(--ep-icon-size)` | Icon width |
 | `--ep-icon-height` | `var(--ep-icon-size)` | Icon height |
-| `--ep-icon-color` | `currentColor` | Stroke color |
+| `--ep-icon-text-color` | `currentColor` | Stroke color |
 | `--ep-icon-stroke-width` | `1.5` | Stroke thickness |
 
 ### Props
@@ -68,7 +68,7 @@ You can also pass styles as props:
   <Heart
     :style="{
       '--ep-icon-width': '32px',
-      '--ep-icon-color': '#ef4444'
+      '--ep-icon-text-color': '#ef4444'
     }"
   />
 </template>

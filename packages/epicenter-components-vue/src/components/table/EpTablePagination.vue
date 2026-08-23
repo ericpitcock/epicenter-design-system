@@ -145,7 +145,7 @@
       <template #left>
         <ep-flex class="justify-end align-center gap-10 text--overflow-hidden">
           Results per page
-          <div style="--ep-input-width: 7.5rem;">
+          <div style="--ep-input-styler-width: 7.5rem;">
             <ep-select
               :model-value="resultsPerPage"
               select-id="resultsPerPage"

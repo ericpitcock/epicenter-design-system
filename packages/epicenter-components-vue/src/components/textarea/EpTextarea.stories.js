@@ -1,10 +1,11 @@
 import { EpTextarea } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'
 
 export default {
   title: 'Components/Textarea',
   component: EpTextarea,
-  decorators: [paddedSurface],
+  decorators: [withCssProps('textarea'), paddedSurface],
   argTypes: {
     id: {
       name: 'id',
@@ -101,6 +102,8 @@ export default {
         type: 'string',
       }
     },
+  
+    ...cssPropArgTypes('textarea'),
   }
 }
 

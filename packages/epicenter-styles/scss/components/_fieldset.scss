@@ -1,13 +1,16 @@
 .ep-fieldset {
   --ep-fieldset-legend-font-size: var(--font-size--body);
+  --ep-fieldset-legend-text-color: var(--text-color--loud);
+  --ep-fieldset-legend-margin-block: 0 1rem;
+
   display: block;
   min-width: 0;
 
   &__legend {
     display: block;
     width: 100%;
-    margin-bottom: 1rem;
-    color: var(--text-color--loud);
+    color: var(--ep-fieldset-legend-text-color);
     font-size: var(--ep-fieldset-legend-font-size);
+    margin-block: var(--ep-fieldset-legend-margin-block);
   }
 }

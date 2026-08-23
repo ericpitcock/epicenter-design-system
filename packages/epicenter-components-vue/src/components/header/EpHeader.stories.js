@@ -1,14 +1,15 @@
 import { EpHeader } from '@ericpitcock/epicenter-components-vue'
+import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedBg } from '@sb/helpers/decorators.js'
 import { computed } from 'vue'
 
 export default {
   title: 'Components/Container/Header',
   component: EpHeader,
-  decorators: [paddedBg],
+  decorators: [withCssProps('header', { except: ['--ep-header-border-color', '--ep-header-border-radius', '--ep-header-border-style', '--ep-header-border-width', '--ep-header-center-flex', '--ep-header-center-gap', '--ep-header-center-padding', '--ep-header-height', '--ep-header-left-flex', '--ep-header-left-gap', '--ep-header-left-padding', '--ep-header-margin', '--ep-header-overflow', '--ep-header-padding', '--ep-header-right-flex', '--ep-header-right-gap', '--ep-header-right-padding', '--ep-header-width'] }), paddedBg],
   argTypes: {
     sticky: {
-      name: '--ep-header-container-position: sticky',
+      name: '--ep-header-position: sticky',
       control: {
         type: 'boolean'
       },
@@ -17,7 +18,7 @@ export default {
       },
     },
     stickyTop: {
-      name: '--ep-header-container-top',
+      name: '--ep-header-top',
       control: {
         type: 'text'
       },
@@ -26,7 +27,7 @@ export default {
       },
     },
     width: {
-      name: '--ep-header-container-width',
+      name: '--ep-header-width',
       control: {
         type: 'text'
       },
@@ -35,7 +36,7 @@ export default {
       },
     },
     height: {
-      name: '--ep-header-container-height',
+      name: '--ep-header-height',
       control: {
         type: 'text'
       },
@@ -44,7 +45,7 @@ export default {
       },
     },
     padding: {
-      name: '--ep-header-container-padding',
+      name: '--ep-header-padding',
       control: {
         type: 'text'
       },
@@ -53,7 +54,7 @@ export default {
       },
     },
     margin: {
-      name: '--ep-header-container-margin',
+      name: '--ep-header-margin',
       control: {
         type: 'text'
       },
@@ -62,7 +63,7 @@ export default {
       },
     },
     backgroundColor: {
-      name: '--ep-header-container-bg-color',
+      name: '--ep-header-bg-color',
       control: {
         type: 'color'
       },
@@ -71,7 +72,7 @@ export default {
       },
     },
     borderRadius: {
-      name: '--ep-header-container-border-radius',
+      name: '--ep-header-border-radius',
       control: {
         type: 'text'
       },
@@ -80,7 +81,7 @@ export default {
       },
     },
     borderWidth: {
-      name: '--ep-header-container-border-width',
+      name: '--ep-header-border-width',
       control: {
         type: 'text'
       },
@@ -89,7 +90,7 @@ export default {
       },
     },
     borderStyle: {
-      name: '--ep-header-container-border-style',
+      name: '--ep-header-border-style',
       options: [
         'solid',
         'dotted',
@@ -103,7 +104,7 @@ export default {
       },
     },
     borderColor: {
-      name: '--ep-header-container-border-color',
+      name: '--ep-header-border-color',
       control: {
         type: 'color'
       },
@@ -112,7 +113,7 @@ export default {
       },
     },
     shadowed: {
-      name: '--ep-header-container-box-shadow',
+      name: '--ep-header-shadow',
       control: {
         type: 'boolean'
       },
@@ -121,7 +122,7 @@ export default {
       },
     },
     overflow: {
-      name: '--ep-header-container-overflow',
+      name: '--ep-header-overflow',
       options: [
         'visible',
         'hidden',
@@ -277,6 +278,8 @@ export default {
       },
     },
     styles: { table: { disable: true } },
+  
+    ...cssPropArgTypes('header', { except: ['--ep-header-border-color', '--ep-header-border-radius', '--ep-header-border-style', '--ep-header-border-width', '--ep-header-center-flex', '--ep-header-center-gap', '--ep-header-center-padding', '--ep-header-height', '--ep-header-left-flex', '--ep-header-left-gap', '--ep-header-left-padding', '--ep-header-margin', '--ep-header-overflow', '--ep-header-padding', '--ep-header-right-flex', '--ep-header-right-gap', '--ep-header-right-padding', '--ep-header-width'] }),
   }
 }
 
@@ -284,19 +287,19 @@ export const Header = args => ({
   components: { EpHeader },
   setup() {
     const styles = computed(() => ({
-      '--ep-header-container-position': args.sticky ? 'sticky' : 'relative',
-      '--ep-header-container-top': args.sticky ? args.stickyTop : 'auto',
-      '--ep-header-container-width': args.width,
-      '--ep-header-container-height': args.height,
-      '--ep-header-container-padding': args.padding,
-      '--ep-header-container-margin': args.margin,
-      '--ep-header-container-bg-color': args.backgroundColor,
-      '--ep-header-container-border-radius': args.borderRadius,
-      '--ep-header-container-border-width': args.borderWidth,
-      '--ep-header-container-border-style': args.borderStyle,
-      '--ep-header-container-border-color': args.borderColor,
-      '--ep-header-container-box-shadow': args.shadowed ? '0 2px 4px rgba(0, 0, 0, 0.1)' : 'none',
-      // '--ep-header-container-z-index':
+      '--ep-header-position': args.sticky ? 'sticky' : 'relative',
+      '--ep-header-top': args.sticky ? args.stickyTop : 'auto',
+      '--ep-header-width': args.width,
+      '--ep-header-height': args.height,
+      '--ep-header-padding': args.padding,
+      '--ep-header-margin': args.margin,
+      '--ep-header-bg-color': args.backgroundColor,
+      '--ep-header-border-radius': args.borderRadius,
+      '--ep-header-border-width': args.borderWidth,
+      '--ep-header-border-style': args.borderStyle,
+      '--ep-header-border-color': args.borderColor,
+      '--ep-header-shadow': args.shadowed ? '0 2px 4px rgba(0, 0, 0, 0.1)' : 'none',
+      // '--ep-header-z-index':
       '--ep-header-content-gap': args.itemGap,
       '--ep-header-left-flex': args.leftFlex,
       '--ep-header-left-gap': args.leftGap,

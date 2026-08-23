@@ -30,6 +30,52 @@
 | `icon-right` | No description available. |
 | `default` | No description available. |
 
+## CSS Custom Properties
+
+Set any of these with a selector that matches `.ep-input-styler__container` itself. The published
+stylesheet is wrapped in a cascade layer, so a plain selector in your own CSS wins —
+no `!important`, no `:deep()`, no need to out-specify.
+
+Target the component's own element, not an ancestor: the component declares these
+defaults on its root class, and a declaration on the element beats an inherited one.
+
+```css
+.my-app .ep-input-styler__container {
+  --ep-input-styler-disabled-text-color: /* … */;
+}
+```
+
+### Text
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-input-styler-disabled-text-color` | `var(--text-color--disabled)` | disabled |
+| `--ep-input-styler-error-font-size` | `var(--font-size--small)` | error |
+| `--ep-input-styler-error-text-color` | `var(--status-danger-text-color)` | error |
+| `--ep-input-styler-label-text-color` | `var(--text-color--loud)` | — |
+
+### Border
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-input-styler-error-border-color` | `var(--status-danger-border-color)` | error |
+
+### Spacing
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-input-styler-error-margin-block` | `0.5rem 0` | error |
+| `--ep-input-styler-label-margin-block` | `0 1rem` | — |
+
+### Box
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-input-styler-height` | `var(--control-height--default)` | — |
+| `--ep-input-styler-icon-size` | `45%` | — |
+| `--ep-input-styler-icon-width` | `var(--control-icon-width--default)` | — |
+| `--ep-input-styler-width` | `100%` | — |
+
 ## Component Code
 
 ```vue
@@ -129,31 +175,47 @@
 ## Styles (SCSS)
 
 ```scss
+// The wrapper every input and select renders inside. It owns the control's
+// outer size and the icon slots; the field itself owns its border and text.
+// @root .ep-input-styler__container
 .ep-input-styler__container {
-  --ep-input-width: 100%;
-  --ep-input-height: 3rem;
-  width: var(--ep-input-width);
+  --ep-input-styler-width: 100%;
+  --ep-input-styler-height: var(--control-height--default);
+  --ep-input-styler-icon-width: var(--control-icon-width--default);
+  --ep-input-styler-icon-size: 45%;
+  --ep-input-styler-label-margin-block: 0 1rem;
+  --ep-input-styler-label-text-color: var(--text-color--loud);
+  --ep-input-styler-disabled-text-color: var(--text-color--disabled);
+  --ep-input-styler-error-text-color: var(--status-danger-text-color);
+  --ep-input-styler-error-border-color: var(--status-danger-border-color);
+  --ep-input-styler-error-margin-block: 0.5rem 0;
+  --ep-input-styler-error-font-size: var(--font-size--small);
+
+  width: var(--ep-input-styler-width);
 }
 
 .ep-input-styler {
   position: relative;
-  height: var(--ep-input-height);
+  height: var(--ep-input-styler-height);
 
   &--small {
-    --ep-input-height: 2.2rem;
+    --ep-input-styler-height: var(--control-height--small);
+    --ep-input-styler-icon-width: var(--control-icon-width--small);
   }
 
   &--large {
-    --ep-input-height: 3.8rem;
+    --ep-input-styler-height: var(--control-height--large);
+    --ep-input-styler-icon-width: var(--control-icon-width--large);
   }
 
   &--xlarge {
-    --ep-input-height: 4.6rem;
+    --ep-input-styler-height: var(--control-height--xlarge);
+    --ep-input-styler-icon-width: var(--control-icon-width--xlarge);
   }
 }
 
 .ep-input-styler--disabled {
-  color: var(--text-color--disabled);
+  color: var(--ep-input-styler-disabled-text-color);
   user-select: none;
 }
 
@@ -183,8 +245,8 @@
 
 .ep-input-styler__label {
   display: block;
-  margin-bottom: 1rem;
-  color: var(--text-color--loud);
+  color: var(--ep-input-styler-label-text-color);
+  margin-block: var(--ep-input-styler-label-margin-block);
   user-select: none;
   white-space: nowrap;
 }
@@ -192,22 +254,24 @@
 .ep-input-styler__icon-left,
 .ep-input-styler__icon-right {
   display: flex;
-  width: 2.8rem;
+  width: var(--ep-input-styler-icon-width);
   height: 100%;
   align-items: center;
   justify-content: center;
 
   .ep-icon {
-    --ep-icon-width: 45%;
-    --ep-icon-height: 45%;
+    --ep-icon-width: var(--ep-input-styler-icon-size);
+    --ep-icon-height: var(--ep-input-styler-icon-size);
   }
 
+  // The size modifier lands on the icon element itself as well as the wrapper,
+  // so both routes to a width are kept.
   &--large {
-    width: 3.6rem;
+    --ep-input-styler-icon-width: var(--control-icon-width--large);
   }
 
   &--xlarge {
-    width: 4.4rem;
+    --ep-input-styler-icon-width: var(--control-icon-width--xlarge);
   }
 }
 
@@ -218,16 +282,17 @@
 
 .ep-input-styler--error .ep-input,
 .ep-input-styler--error .ep-select {
-  border-color: var(--error-color--border);
+  border-color: var(--ep-input-styler-error-border-color);
 
   &:focus-visible {
-    outline-color: var(--error-color--border);
+    outline-color: var(--ep-input-styler-error-border-color);
   }
 }
 
 .ep-input-styler__error-message {
-  margin-top: 0.5rem;
-  color: var(--error-color--text);
-  font-size: var(--font-size--small);
+  color: var(--ep-input-styler-error-text-color);
+  font-size: var(--ep-input-styler-error-font-size);
+  margin-block: var(--ep-input-styler-error-margin-block);
 }
+
 ```

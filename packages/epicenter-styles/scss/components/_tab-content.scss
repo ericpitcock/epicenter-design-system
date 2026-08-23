@@ -1,7 +1,9 @@
 .ep-tab-content {
+  --ep-tab-content-height: 100%;
+
   &__tab-item {
     display: none;
-    height: 100%;
+    height: var(--ep-tab-content-height);
 
     &--active {
       display: block;
