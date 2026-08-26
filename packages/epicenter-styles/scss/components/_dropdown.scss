@@ -50,6 +50,18 @@
       @starting-style {
         opacity: 0;
       }
+
+      // Safari (detectable as no `overlay` support) glitches popover ENTRY
+      // animations two ways: a discrete display transition blanks the panel
+      // for one frame at transition end, and on the first open after a page
+      // load even a plain opacity fade re-runs — fade in, collapse for a
+      // frame, fade in again. Transitions read from the destination state, so
+      // `none` here makes only the entry instant (native macOS menus open the
+      // same way); the exit keeps the base fade — its end-of-transition
+      // artifacts land at opacity 0, where they are invisible.
+      @supports not (overlay: auto) {
+        transition: none;
+      }
     }
 
     &--align-right {
