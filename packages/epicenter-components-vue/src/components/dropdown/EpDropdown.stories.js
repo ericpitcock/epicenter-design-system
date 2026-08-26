@@ -263,3 +263,73 @@ Dropdown.args = {
   iconLeft: 'Coffee02',
   iconRight: 'ArrowDown01'
 }
+
+export const ViewportEdges = () => ({
+  components: {
+    EpButton,
+    EpDropdown,
+    EpMenu,
+    EpMenuItem
+  },
+  setup() {
+    // Centering uses inset + auto margins, not transforms: Safari resolves
+    // anchor positioning against the anchor's untransformed layout box, so a
+    // translate-centered trigger gets a panel offset by the translate amount.
+    const positions = [
+      { label: 'Top left', style: 'top: 1rem; left: 1rem;' },
+      { label: 'Top center', style: 'top: 1rem; left: 0; right: 0; margin-inline: auto;' },
+      { label: 'Top right', style: 'top: 1rem; right: 1rem;' },
+      { label: 'Middle left', style: 'top: 0; bottom: 0; margin-block: auto; height: fit-content; left: 1rem;' },
+      { label: 'Middle right', style: 'top: 0; bottom: 0; margin-block: auto; height: fit-content; right: 1rem;' },
+      { label: 'Bottom left', style: 'bottom: 1rem; left: 1rem;' },
+      { label: 'Bottom center', style: 'bottom: 1rem; left: 0; right: 0; margin-inline: auto;' },
+      { label: 'Bottom right', style: 'bottom: 1rem; right: 1rem;' },
+    ]
+
+    const menuItems = ['Drip', 'French Press', 'Latte', 'Espresso', 'Cortado', 'Flat White']
+
+    return { menuItems, positions }
+  },
+  template: `
+    <ep-dropdown
+      v-for="position in positions"
+      :key="position.label"
+      :style="'position: fixed; ' + position.style"
+      :auto-focus="false"
+    >
+      <template #trigger="{ attrs, on }">
+        <ep-button
+          v-bind="attrs"
+          v-on="on"
+        >
+          {{ position.label }}
+        </ep-button>
+      </template>
+
+      <template #content="{ close }">
+        <ep-menu
+          @escape="close"
+          @tab="close"
+        >
+          <ep-menu-item
+            v-for="item in menuItems"
+            :key="item"
+            type="item"
+            @select="close"
+          >
+            <ep-button
+              class="ep-button--menu-item"
+              tabindex="-1"
+            >
+              {{ item }}
+            </ep-button>
+          </ep-menu-item>
+        </ep-menu>
+      </template>
+    </ep-dropdown>
+  `
+})
+
+ViewportEdges.parameters = {
+  controls: { disable: true }
+}

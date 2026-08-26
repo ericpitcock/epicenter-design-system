@@ -41,7 +41,6 @@ export const LoadingState = args => ({
     const messages = ref(null)
     const tableData = ref(fakeTableData(30))
     const columnsRef = ref(columns)
-    const openState = ref(false)
 
     const {
       includedColumns,
@@ -72,7 +71,6 @@ export const LoadingState = args => ({
       messages.value = refreshStates[state]
       loading.value = true
       cycleMessages()
-      openState.value = false
     }
 
     const onMenuSelect = (item) => {
@@ -129,7 +127,6 @@ export const LoadingState = args => ({
       includedColumns,
       includedData,
       currentMessage,
-      openState,
       menuItems,
       onMenuSelect,
     }
@@ -152,7 +149,7 @@ export const LoadingState = args => ({
               </template>
               Refresh
             </ep-button>
-            <ep-dropdown v-model:open="openState">
+            <ep-dropdown>
               <template #trigger="{ attrs, on }">
                 <ep-button
                   v-bind="attrs"

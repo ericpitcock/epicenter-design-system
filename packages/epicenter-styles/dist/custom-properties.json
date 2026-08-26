@@ -4918,7 +4918,7 @@
       "properties": [
         {
           "name": "--ep-dropdown-min-width",
-          "default": "100%",
+          "default": "anchor-size(width)",
           "group": "box",
           "part": null,
           "state": null,
@@ -4933,12 +4933,28 @@
           "property": "offset"
         },
         {
-          "name": "--ep-dropdown-top",
-          "default": "100%",
+          "name": "--ep-dropdown-position-area",
+          "default": "block-end span-inline-end",
           "group": "layout",
           "part": null,
           "state": null,
-          "property": "top"
+          "property": "position-area"
+        },
+        {
+          "name": "--ep-dropdown-position-try-fallbacks",
+          "default": "flip-block, flip-inline, flip-block flip-inline",
+          "group": "layout",
+          "part": null,
+          "state": null,
+          "property": "position-try-fallbacks"
+        },
+        {
+          "name": "--ep-dropdown-transition",
+          "default": "opacity var(--duration--fast) ease,\n    display var(--duration--fast) allow-discrete,\n    overlay var(--duration--fast) allow-discrete",
+          "group": "effect",
+          "part": null,
+          "state": null,
+          "property": "transition"
         },
         {
           "name": "--ep-dropdown-width",
@@ -4947,14 +4963,6 @@
           "part": null,
           "state": null,
           "property": "width"
-        },
-        {
-          "name": "--ep-dropdown-z-index",
-          "default": "var(--z-index--dropdown)",
-          "group": "layout",
-          "part": null,
-          "state": null,
-          "property": "z-index"
         }
       ]
     },

@@ -576,7 +576,11 @@ const componentApi = [...components.values()]
   .map(component => ({
     ...component,
     properties: component.properties
-      .map(({ declaredInRoot, ...property }) => property)
+      .map(property => {
+        const publicProperty = { ...property }
+        delete publicProperty.declaredInRoot
+        return publicProperty
+      })
       .sort((a, b) => a.name.localeCompare(b.name))
   }))
   .sort((a, b) => a.block.localeCompare(b.block))
