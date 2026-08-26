@@ -85,7 +85,7 @@ export { EpResizable } from './components/resizable/EpResizable';
 // Search & Filters
 export { EpSearchTypeahead } from './components/search-typeahead/EpSearchTypeahead';
 export { EpMultiSearch } from './components/multi-search/EpMultiSearch';
-export { EpEnrichmentDropdown } from './components/enrichment-dropdown/EpEnrichmentDropdown';
+export { EpContextualLookup, EpEnrichmentDropdown } from './components/contextual-lookup/EpContextualLookup';
 
 // Auth
 export { EpSignIn } from './components/sign-in/EpSignIn';
@@ -174,7 +174,7 @@ export type { EpCodeViewProps } from './components/code-view/EpCodeView';
 export type { EpResizableProps } from './components/resizable/EpResizable';
 export type { EpSearchTypeaheadProps, SearchResult } from './components/search-typeahead/EpSearchTypeahead';
 export type { EpMultiSearchProps } from './components/multi-search/EpMultiSearch';
-export type { EpEnrichmentDropdownProps, EnrichmentOption } from './components/enrichment-dropdown/EpEnrichmentDropdown';
+export type { EpContextualLookupProps, EpEnrichmentDropdownProps, EnrichmentOption, EnrichmentResult } from './components/contextual-lookup/EpContextualLookup';
 export type { EpSignInProps } from './components/sign-in/EpSignIn';
 export type { EpThemeToggleProps } from './components/theme-toggle/EpThemeToggle';
 export type { EpColorRandomizerProps } from './components/color-randomizer/EpColorRandomizer';
