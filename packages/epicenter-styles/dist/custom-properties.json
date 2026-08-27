@@ -8045,6 +8045,261 @@
       ]
     },
     {
+      "block": "timeline",
+      "class": ".ep-timeline",
+      "file": "packages/epicenter-styles/scss/components/_timeline.scss",
+      "properties": [
+        {
+          "name": "--ep-timeline-body-gap",
+          "default": "var(--space--1)",
+          "group": "spacing",
+          "part": "body",
+          "state": null,
+          "property": "gap"
+        },
+        {
+          "name": "--ep-timeline-date-font-size",
+          "default": "var(--font-size--tiny)",
+          "group": "text",
+          "part": "date",
+          "state": null,
+          "property": "font-size"
+        },
+        {
+          "name": "--ep-timeline-date-font-variation-settings",
+          "default": "var(--font-weight--medium)",
+          "group": "text",
+          "part": "date",
+          "state": null,
+          "property": "font-variation-settings"
+        },
+        {
+          "name": "--ep-timeline-date-letter-spacing",
+          "default": "0.1rem",
+          "group": "text",
+          "part": "date",
+          "state": null,
+          "property": "letter-spacing"
+        },
+        {
+          "name": "--ep-timeline-date-text-color",
+          "default": "var(--text-color--subtle)",
+          "group": "text",
+          "part": "date",
+          "state": null,
+          "property": "text-color"
+        },
+        {
+          "name": "--ep-timeline-date-text-transform",
+          "default": "uppercase",
+          "group": "text",
+          "part": "date",
+          "state": null,
+          "property": "text-transform"
+        },
+        {
+          "name": "--ep-timeline-description-font-size",
+          "default": "var(--font-size--small)",
+          "group": "text",
+          "part": "description",
+          "state": null,
+          "property": "font-size"
+        },
+        {
+          "name": "--ep-timeline-description-line-height",
+          "default": "var(--text-line-height--normal)",
+          "group": "text",
+          "part": "description",
+          "state": null,
+          "property": "line-height"
+        },
+        {
+          "name": "--ep-timeline-description-max-width",
+          "default": "68ch",
+          "group": "box",
+          "part": "description",
+          "state": null,
+          "property": "max-width"
+        },
+        {
+          "name": "--ep-timeline-description-text-color",
+          "default": "var(--text-color--subtle)",
+          "group": "text",
+          "part": "description",
+          "state": null,
+          "property": "text-color"
+        },
+        {
+          "name": "--ep-timeline-item-column-gap",
+          "default": "var(--space--4)",
+          "group": "spacing",
+          "part": "item",
+          "state": null,
+          "property": "column-gap"
+        },
+        {
+          "name": "--ep-timeline-item-gap",
+          "default": "var(--space--6)",
+          "group": "spacing",
+          "part": "item",
+          "state": null,
+          "property": "gap"
+        },
+        {
+          "name": "--ep-timeline-marker-bg-color",
+          "default": "var(--interface-bg)",
+          "group": "surface",
+          "part": "marker",
+          "state": null,
+          "property": "bg-color"
+        },
+        {
+          "name": "--ep-timeline-marker-border-color",
+          "default": "var(--border-color)",
+          "group": "border",
+          "part": "marker",
+          "state": null,
+          "property": "border-color"
+        },
+        {
+          "name": "--ep-timeline-marker-border-radius",
+          "default": "var(--border-radius--full)",
+          "group": "border",
+          "part": "marker",
+          "state": null,
+          "property": "border-radius"
+        },
+        {
+          "name": "--ep-timeline-marker-border-style",
+          "default": "solid",
+          "group": "border",
+          "part": "marker",
+          "state": null,
+          "property": "border-style"
+        },
+        {
+          "name": "--ep-timeline-marker-border-width",
+          "default": "var(--border-width--thick)",
+          "group": "border",
+          "part": "marker",
+          "state": null,
+          "property": "border-width"
+        },
+        {
+          "name": "--ep-timeline-marker-size",
+          "default": "var(--space--3)",
+          "group": "box",
+          "part": "marker",
+          "state": null,
+          "property": "size"
+        },
+        {
+          "name": "--ep-timeline-rail-bg-color",
+          "default": "var(--border-color--lighter)",
+          "group": "surface",
+          "part": "rail",
+          "state": null,
+          "property": "bg-color"
+        },
+        {
+          "name": "--ep-timeline-rail-width",
+          "default": "var(--border-width--hairline)",
+          "group": "box",
+          "part": "rail",
+          "state": null,
+          "property": "width"
+        },
+        {
+          "name": "--ep-timeline-tag-bg-color",
+          "default": "var(--interface-surface)",
+          "group": "surface",
+          "part": "tag",
+          "state": null,
+          "property": "bg-color"
+        },
+        {
+          "name": "--ep-timeline-tag-border-color",
+          "default": "var(--border-color--lighter)",
+          "group": "border",
+          "part": "tag",
+          "state": null,
+          "property": "border-color"
+        },
+        {
+          "name": "--ep-timeline-tag-font-size",
+          "default": "var(--font-size--tiny)",
+          "group": "text",
+          "part": "tag",
+          "state": null,
+          "property": "font-size"
+        },
+        {
+          "name": "--ep-timeline-tag-text-color",
+          "default": "var(--text-color--subtle)",
+          "group": "text",
+          "part": "tag",
+          "state": null,
+          "property": "text-color"
+        },
+        {
+          "name": "--ep-timeline-tags-gap",
+          "default": "var(--space--1)",
+          "group": "spacing",
+          "part": "tags",
+          "state": null,
+          "property": "gap"
+        },
+        {
+          "name": "--ep-timeline-tags-margin-block-start",
+          "default": "var(--space--2)",
+          "group": "spacing",
+          "part": "tags",
+          "state": null,
+          "property": "margin-block-start"
+        },
+        {
+          "name": "--ep-timeline-title-font-size",
+          "default": "var(--font-size--default)",
+          "group": "text",
+          "part": "title",
+          "state": null,
+          "property": "font-size"
+        },
+        {
+          "name": "--ep-timeline-title-font-variation-settings",
+          "default": "var(--font-weight--semi-bold)",
+          "group": "text",
+          "part": "title",
+          "state": null,
+          "property": "font-variation-settings"
+        },
+        {
+          "name": "--ep-timeline-title-hover-text-color",
+          "default": "var(--text-color--link)",
+          "group": "text",
+          "part": "title",
+          "state": "hover",
+          "property": "text-color"
+        },
+        {
+          "name": "--ep-timeline-title-line-height",
+          "default": "var(--text-line-height--tight)",
+          "group": "text",
+          "part": "title",
+          "state": null,
+          "property": "line-height"
+        },
+        {
+          "name": "--ep-timeline-title-text-color",
+          "default": "var(--text-color--loud)",
+          "group": "text",
+          "part": "title",
+          "state": null,
+          "property": "text-color"
+        }
+      ]
+    },
+    {
       "block": "toggle",
       "class": ".ep-toggle",
       "file": "packages/epicenter-styles/scss/components/_toggle.scss",
