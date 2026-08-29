@@ -12,9 +12,9 @@
     "build:components-vue": "npm --prefix packages/epicenter-components-vue run build",
     "install-all": "cd packages/epicenter-styles && npm install && cd ../epicenter-components-vue && npm install && cd ../epicenter-components-react && npm install && cd .. && npm install && npm run build:components-vue",
     "storybook": "storybook dev -p 6006 --no-open",
-    "build-storybook": "storybook build",
+    "build-storybook": "NODE_OPTIONS=--max-old-space-size=4096 storybook build",
     "storybook:react": "storybook dev -p 6007 -c .storybook-react --no-open",
-    "build-storybook:react": "storybook build -c .storybook-react -o storybook-react-static",
+    "build-storybook:react": "NODE_OPTIONS=--max-old-space-size=4096 storybook build -c .storybook-react -o storybook-react-static",
     "yalc:publish-all": "cd packages/epicenter-styles && npm run build && yalc publish && cd ../epicenter-components-vue && npm run build && yalc publish && cd ../epicenter-components-react && yalc publish && cd ../epicenter-icons-vue && yalc publish && cd ../epicenter-icons-react && yalc publish",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "lint:vue": "eslint packages/epicenter-components-vue/src/components/**/*.vue --fix"

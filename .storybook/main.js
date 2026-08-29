@@ -49,6 +49,13 @@ const config = {
 
     return {
       ...config,
+      build: {
+        ...(config.build ?? {}),
+        // Gzipping every chunk just to print a size column costs a few hundred MB
+        // of heap at the end of the build. The number is nice to have; the build
+        // completing on a memory-capped CI box is better.
+        reportCompressedSize: false,
+      },
       resolve: {
         ...(config.resolve ?? {}),
         extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json', '.vue'],

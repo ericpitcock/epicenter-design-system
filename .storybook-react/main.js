@@ -26,6 +26,13 @@ const config = {
   viteFinal: async (config) => {
     return {
       ...config,
+      build: {
+        ...(config.build ?? {}),
+        // Gzipping every chunk just to print a size column costs a few hundred MB
+        // of heap at the end of the build, which is what tipped Netlify over into
+        // an OOM. The number is nice to have; the build completing is better.
+        reportCompressedSize: false,
+      },
       resolve: {
         ...(config.resolve ?? {}),
         // netlify:react installs in packages/epicenter-components-react AND at the
