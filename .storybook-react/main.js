@@ -28,6 +28,12 @@ const config = {
       ...config,
       resolve: {
         ...(config.resolve ?? {}),
+        // netlify:react installs in packages/epicenter-components-react AND at the
+        // root, so react-router exists twice in the tree. The dev server happens to
+        // collapse them; a production build does not, and two copies mean two React
+        // contexts — <Link> inside a component cannot see the <MemoryRouter> in
+        // preview.jsx, which fails as "Cannot destructure property 'basename'".
+        dedupe: ['react', 'react-dom', 'react-router', 'react-router-dom'],
         alias: {
           ...config.resolve?.alias,
           '@ericpitcock/epicenter-components-react': resolve(__dirname, '../packages/epicenter-components-react/src'),
