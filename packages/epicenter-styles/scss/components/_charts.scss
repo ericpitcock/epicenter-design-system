@@ -1,20 +1,45 @@
+@use 'sass:list';
+@use '../color/chart-sequence';
 @use '../../node_modules/highcharts/css/highcharts.css';
 
+// Highcharts in styled mode paints a series through two hooks: a
+// `--highcharts-color-N` custom property holding the colour, and a
+// `.highcharts-color-N` class on the element that reads it. It ships ten of
+// each. Our palette is longer, so both are regenerated here by walking
+// `chart-sequence.$names` — the token list the build writes straight out of
+// chart-sequence.yaml. The YAML is the only place the palette is spelled out, so
+// adding a colour there widens the loop with no second edit and no chance of an
+// index pointing at a token that does not exist.
+
+// Two layers, each with a job. `--chart-sequence-NN` is the design token.
+// `--highcharts-color-N` is Highcharts' own name for slot N, which doubles as
+// the per-chart override hook: EpChart's `chartColors` prop sets these on the
+// wrapper element, and the wrapper is nearer than :root, so it wins.
+
+// The tokens are whole colours — `light-dark(hsl(…), hsl(…))` — so nothing here
+// wraps them in hsl(). Doing so was the old bug: `hsl(light-dark(…))` is invalid,
+// and an invalid fill is not an error, it is black.
+
 :root {
-  --highcharts-color-0: hsl(var(--chart-sequence-00));
-  --highcharts-color-1: hsl(var(--chart-sequence-01));
-  --highcharts-color-2: hsl(var(--chart-sequence-02));
-  --highcharts-color-3: hsl(var(--chart-sequence-03));
-  --highcharts-color-4: hsl(var(--chart-sequence-04));
-  --highcharts-color-5: hsl(var(--chart-sequence-05));
-  --highcharts-color-6: hsl(var(--chart-sequence-06));
-  --highcharts-color-7: hsl(var(--chart-sequence-07));
-  --highcharts-color-8: hsl(var(--chart-sequence-08));
-  --highcharts-color-9: hsl(var(--chart-sequence-09));
-  --highcharts-color-10: hsl(var(--chart-sequence-10));
-  --highcharts-color-11: hsl(var(--chart-sequence-11));
-  --highcharts-color-12: hsl(var(--chart-sequence-12));
-  --highcharts-color-13: hsl(var(--chart-sequence-13));
+  // Highcharts cycles series colours modulo `chart.colorCount`, and EpDonutChart
+  // indexes its arcs the same way. Both read this so the cycle length is the
+  // palette length by construction.
+  --chart-sequence-count: #{list.length(chart-sequence.$names)};
+
+  @each $name in chart-sequence.$names {
+    $slot: list.index(chart-sequence.$names, $name) - 1;
+
+    --highcharts-color-#{$slot}: var(--#{$name});
+  }
+}
+
+@each $name in chart-sequence.$names {
+  $slot: list.index(chart-sequence.$names, $name) - 1;
+
+  .highcharts-color-#{$slot} {
+    fill: var(--highcharts-color-#{$slot});
+    stroke: var(--highcharts-color-#{$slot});
+  }
 }
 
 .highcharts-container {
@@ -42,18 +67,6 @@
 
   .highcharts-bar-series rect.highcharts-point {
     stroke: var(--highcharts-background-color);
-  }
-}
-
-.highcharts-color-0 {
-  fill: var(--highcharts-color-0);
-  stroke: var(--highcharts-color-0);
-}
-
-@for $i from 1 through 17 {
-  .highcharts-color-#{$i} {
-    fill: var(--highcharts-color-#{$i});
-    stroke: var(--highcharts-color-#{$i});
   }
 }
 

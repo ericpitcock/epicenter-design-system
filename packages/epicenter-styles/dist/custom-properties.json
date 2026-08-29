@@ -218,87 +218,93 @@
     },
     {
       "name": "--chart-sequence-00",
-      "default": "light-dark(262 51% 58%, 262 51% 58%)",
+      "default": "light-dark(hsl(262 51% 58%), hsl(262 51% 58%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-01",
-      "default": "light-dark(199 57% 48%, 199 57% 48%)",
+      "default": "light-dark(hsl(199 57% 48%), hsl(199 57% 48%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-02",
-      "default": "light-dark(175 45% 26%, 175 45% 26%)",
+      "default": "light-dark(hsl(175 45% 26%), hsl(175 45% 26%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-03",
-      "default": "light-dark(329 54% 70%, 329 54% 70%)",
+      "default": "light-dark(hsl(329 54% 70%), hsl(329 54% 70%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-04",
-      "default": "light-dark(0 0% 35%, 0 54% 97%)",
+      "default": "light-dark(hsl(0 0% 35%), hsl(0 54% 97%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-05",
-      "default": "light-dark(0 52% 60%, 0 52% 60%)",
+      "default": "light-dark(hsl(0 52% 60%), hsl(0 52% 60%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-06",
-      "default": "light-dark(142 37% 58%, 142 37% 58%)",
+      "default": "light-dark(hsl(142 37% 58%), hsl(142 37% 58%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-07",
-      "default": "light-dark(217 59% 60%, 217 59% 60%)",
+      "default": "light-dark(hsl(217 59% 60%), hsl(217 59% 60%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-08",
-      "default": "light-dark(333 39% 51%, 333 39% 51%)",
+      "default": "light-dark(hsl(333 39% 51%), hsl(333 39% 51%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-09",
-      "default": "light-dark(45 61% 47%, 45 61% 47%)",
+      "default": "light-dark(hsl(45 61% 47%), hsl(45 61% 47%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-10",
-      "default": "light-dark(173 48% 40%, 173 48% 40%)",
+      "default": "light-dark(hsl(173 48% 40%), hsl(173 48% 40%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-11",
-      "default": "light-dark(202 80% 30%, 201 62% 86%)",
+      "default": "light-dark(hsl(202 80% 30%), hsl(201 62% 86%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-12",
-      "default": "light-dark(26 58% 37%, 26 58% 37%)",
+      "default": "light-dark(hsl(26 58% 37%), hsl(26 58% 37%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-13",
-      "default": "light-dark(269 65% 85%, 269 65% 85%)",
+      "default": "light-dark(hsl(269 65% 85%), hsl(269 65% 85%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
+    },
+    {
+      "name": "--chart-sequence-count",
+      "default": "#{list.length(chart-sequence.$names)}",
+      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "themeAware": false
     },
     {
       "name": "--control-height--default",
@@ -1159,87 +1165,93 @@
       "themeAware": false
     },
     {
-      "name": "--highcharts-color-0",
-      "default": "hsl(var(--chart-sequence-00))",
+      "name": "--highcharts-color-#{$slot}",
+      "default": "var(--#{$name})",
       "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "themeAware": false
+    },
+    {
+      "name": "--highcharts-color-0",
+      "default": "#2caffe",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-1",
-      "default": "hsl(var(--chart-sequence-01))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#544fc5",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-10",
-      "default": "hsl(var(--chart-sequence-10))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "var(--chart-sequence-10)",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-11",
-      "default": "hsl(var(--chart-sequence-11))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "var(--chart-sequence-11)",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-12",
-      "default": "hsl(var(--chart-sequence-12))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "var(--chart-sequence-12)",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-13",
-      "default": "hsl(var(--chart-sequence-13))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "var(--chart-sequence-13)",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-2",
-      "default": "hsl(var(--chart-sequence-02))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#00e272",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-3",
-      "default": "hsl(var(--chart-sequence-03))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#fe6a35",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-4",
-      "default": "hsl(var(--chart-sequence-04))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#6b8abc",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-5",
-      "default": "hsl(var(--chart-sequence-05))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#d568fb",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-6",
-      "default": "hsl(var(--chart-sequence-06))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#2ee0ca",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-7",
-      "default": "hsl(var(--chart-sequence-07))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#fa4b42",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-8",
-      "default": "hsl(var(--chart-sequence-08))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#feb56a",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-9",
-      "default": "hsl(var(--chart-sequence-09))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#91e8e1",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {

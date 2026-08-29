@@ -100,8 +100,9 @@ for (const [key, value] of Object.entries(chartSeq)) {
   // index = last two digits of key
   const index = key.slice(-2)
 
-  // Parse the HSL values (handles both "0, 0%, 100%" and "0 0% 100%" formats)
+  // Parse the HSL values (handles "0, 0%, 100%", "0 0% 100%" and "hsl(0 0% 100%)")
   const [hue, saturation, lightness] = value.dark
+    .replace(/^\s*hsla?\(|\)\s*$/g, '')
     .split(/[,\s]+/)
     .filter(v => v)
     .map((v) => v.trim().replace('%', ''))

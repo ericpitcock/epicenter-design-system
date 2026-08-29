@@ -54,19 +54,42 @@ function loadYAMLFiles(pattern) {
 // without an hsl() wrapper produces an invalid value that fails silently.
 const RAMP_TOKEN = /var\(\s*--(?:gray|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-\d+\s*\)/
 
-function assertWrappedInHsl(key, value, filePath) {
+// `262 51% 58%` standing on its own is an HSL triplet, not a colour. Ramp tokens
+// are stored that way on purpose so they can be reused inside hsl(), but a themed
+// token is substituted into light-dark(), which takes colours — so a bare triplet
+// there produces a declaration the browser drops. Nothing errors; the element just
+// falls back to its initial value, which for an SVG fill is black.
+const BARE_TRIPLET = /(?:^|[\s,])-?[\d.]+(?:deg)?\s+-?[\d.]+%\s+-?[\d.]+%/
+
+function assertIsColor(key, value, filePath) {
   // Anything already inside an hsl() call is fine; strip those and see what is left.
   const bare = String(value).replace(/hsla?\([^()]*(\([^()]*\))?[^()]*\)/g, ' ')
-  if (!RAMP_TOKEN.test(bare)) return
 
-  throw new Error(
-    `${path.basename(filePath)}: "${key}: ${value}" references a raw HSL triplet ` +
-    'without an hsl() wrapper — the resulting value is invalid. Write hsl(var(--…)).'
-  )
+  if (RAMP_TOKEN.test(bare)) {
+    throw new Error(
+      `${path.basename(filePath)}: "${key}: ${value}" references a raw HSL triplet ` +
+      'without an hsl() wrapper — the resulting value is invalid. Write hsl(var(--…)).'
+    )
+  }
+
+  if (BARE_TRIPLET.test(bare)) {
+    throw new Error(
+      `${path.basename(filePath)}: "${key}: ${value}" is a bare HSL triplet, but a ` +
+      'themed token becomes an argument to light-dark(), which takes colours. ' +
+      'Write hsl(…).'
+    )
+  }
 }
 
 function writeCSS(filePath, yamlData) {
   let cssOutput = `/* stylelint-disable no-duplicate-selectors */\n/* DO NOT EDIT DIRECTLY */\n`
+
+  // Stylesheets that walk a token family in order — the Highcharts palette bridge
+  // in _charts.scss is the one that does — need the names, not just the count.
+  // Exporting them from the generated partial keeps the YAML the single place the
+  // family is written down, so a loop over it cannot fall out of step with it.
+  const names = Object.keys(yamlData).map(key => `'${key}'`).join(', ')
+  cssOutput += `$names: (${names});\n\n`
 
   const fileName = resolve(__dirname, '..', 'scss', 'color', `_${path.basename(filePath).replace('.yaml', '.scss')}`)
 
@@ -86,8 +109,8 @@ function writeCSS(filePath, yamlData) {
 
     const darkValue = value.dark ?? value.light
     const lightValue = value.light ?? value.dark
-    assertWrappedInHsl(key, darkValue, filePath)
-    assertWrappedInHsl(key, lightValue, filePath)
+    assertIsColor(key, darkValue, filePath)
+    assertIsColor(key, lightValue, filePath)
     cssOutput += `  --${key}: light-dark(${lightValue}, ${darkValue});\n`
   })
 

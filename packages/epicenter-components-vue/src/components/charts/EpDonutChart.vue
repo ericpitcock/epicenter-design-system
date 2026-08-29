@@ -89,13 +89,14 @@
     const g = svg.append('g')
       .attr('transform', `translate(${width / 2}, ${height / 2})`)
 
-    const color = d3.scaleOrdinal()
-      .range([
-        'hsl(var(--chart-sequence-00))',
-        'hsl(var(--chart-sequence-01))',
-        'hsl(var(--chart-sequence-02))',
-        'hsl(var(--chart-sequence-03))',
-      ])
+    // The palette lives in CSS: _donut-chart.scss defines one arc class per
+    // --chart-sequence-NN token and publishes how many there are. Reading the
+    // count is all this needs to know to wrap around, and the colours stay
+    // overridable and theme-aware because they never leave the stylesheet.
+    const paletteSize = Number.parseInt(
+      getComputedStyle(container.value!).getPropertyValue('--chart-sequence-count'),
+      10
+    ) || 1
 
     const arc = d3.arc()
       .innerRadius(radius - 26)
@@ -113,8 +114,7 @@
 
     arcs.append('path')
       .attr('d', arc)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('fill', (d: any) => color(d.data))
+      .attr('class', (_d: unknown, i: number) => `ep-donut-chart__arc--${i % paletteSize}`)
       .attr('stroke', 'var(--interface-surface)')
       .attr('stroke-width', '0.3rem')
       .on('mouseover', onMouseOver)

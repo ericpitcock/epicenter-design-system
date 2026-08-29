@@ -1,3 +1,6 @@
+@use 'sass:list';
+@use '../color/chart-sequence';
+
 .ep-donut-chart {
   --ep-donut-chart-z-index: var(--z-index--overlap);
   --ep-donut-chart-value-z-index: var(--z-index--negative);
@@ -37,5 +40,17 @@
     border-color: var(--ep-donut-chart-tooltip-border-color);
     border-radius: var(--ep-donut-chart-tooltip-border-radius);
     background: var(--ep-donut-chart-tooltip-bg-color);
+  }
+}
+
+// The donut is drawn by d3, not Highcharts, but it eats from the same palette.
+// Colouring by class rather than by a fill attribute keeps the value in CSS,
+// where a theme switch can repaint it and a consumer can override it; the
+// component only decides which slot each arc lands in.
+@each $name in chart-sequence.$names {
+  $slot: list.index(chart-sequence.$names, $name) - 1;
+
+  .ep-donut-chart__arc--#{$slot} {
+    fill: var(--#{$name});
   }
 }

@@ -1,7 +1,5 @@
 const pieChartOptions = {
   chart: {
-    colorCount: 14,
-    styledMode: true,
     type: 'pie'
   },
   plotOptions: {
