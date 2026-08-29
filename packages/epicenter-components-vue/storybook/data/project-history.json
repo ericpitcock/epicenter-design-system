@@ -1,0 +1,368 @@
+[
+  {
+    "date": "2020-08-18",
+    "title": "Initial commit",
+    "description": "Vue 2.6.11, Storybook 5, webpack. At this point it is a canvas playground and a Mapbox experiment more than a design system.",
+    "tags": [
+      "Vue"
+    ],
+    "variant": "primary",
+    "commit": "b62c5592"
+  },
+  {
+    "date": "2020-09-02",
+    "title": "First dark theme",
+    "description": "Dark theme variables and a real set of button classes — the first hint of a system rather than a sandbox.",
+    "tags": [
+      "Styles"
+    ],
+    "commit": "cf8836d0"
+  },
+  {
+    "date": "2021-02-06",
+    "title": "Storybook 6",
+    "description": "Upgrade lands and every story is rewritten against the new format.",
+    "tags": [
+      "Tooling"
+    ],
+    "commit": "bfabe919"
+  },
+  {
+    "date": "2021-06-12",
+    "title": "Tailwind experiment",
+    "description": "Tried, and quietly dropped. The token approach won instead.",
+    "tags": [
+      "Styles"
+    ],
+    "variant": "warning",
+    "commit": "1590e2f4"
+  },
+  {
+    "date": "2021-11-15",
+    "title": "Vue 2 → Vue 3",
+    "description": "\"i guess i'm sticking with vue 3.\" Twenty components make the jump.",
+    "tags": [
+      "Vue"
+    ],
+    "variant": "primary",
+    "commit": "9dc5106d"
+  },
+  {
+    "date": "2021-12-10",
+    "title": "Charts arrive",
+    "description": "Highcharts wired in, with a stacked-bar and sequence palette to match.",
+    "tags": [
+      "Components"
+    ],
+    "commit": "a72815e9"
+  },
+  {
+    "date": "2021-12-16",
+    "title": "\"tokens!\"",
+    "description": "The design-token era begins — the idea the whole styles package is eventually built on.",
+    "tags": [
+      "Styles"
+    ],
+    "variant": "success",
+    "commit": "99b73741"
+  },
+  {
+    "date": "2023-01-04",
+    "title": "Atomic design, day one",
+    "description": "Components reorganised into atoms, molecules and organisms.",
+    "tags": [
+      "Structure"
+    ],
+    "commit": "0a36d9b7"
+  },
+  {
+    "date": "2023-01-10",
+    "title": "Atomic design, day six",
+    "description": "\"it's a no to atomic design LOL\" — and then, in the very next commit, \"removed all traces of atomic design.\"",
+    "tags": [
+      "Structure"
+    ],
+    "variant": "danger",
+    "commit": "2937f775"
+  },
+  {
+    "date": "2023-01-13",
+    "title": "Notifications",
+    "description": "A store-backed notification system with a notification center, built over about a week of steady iteration.",
+    "tags": [
+      "Components"
+    ],
+    "commit": "2083c3da"
+  },
+  {
+    "date": "2023-02-16",
+    "title": "Split into packages",
+    "description": "\"major movements done, working.\" The repo becomes a multi-package workspace. Forty components at this point.",
+    "tags": [
+      "Structure"
+    ],
+    "variant": "primary",
+    "commit": "4477d7cf"
+  },
+  {
+    "date": "2023-02-20",
+    "title": "epicenter-styles",
+    "description": "Tokens and SCSS split into their own package — one source of truth, compiled to CSS.",
+    "tags": [
+      "Styles"
+    ],
+    "variant": "success",
+    "commit": "b958c4ca"
+  },
+  {
+    "date": "2023-02-26",
+    "title": "Docs separated",
+    "description": "Documentation moves out of the component package and into its own tree.",
+    "tags": [
+      "Docs"
+    ],
+    "commit": "3c086872"
+  },
+  {
+    "date": "2023-05-03",
+    "title": "v1.0.3",
+    "description": "Forty-six components, forty-six stories. Every component finally has one.",
+    "tags": [
+      "Release"
+    ],
+    "variant": "success",
+    "commit": "e383d617"
+  },
+  {
+    "date": "2024-05-06",
+    "title": "Storybook 8 + Vite",
+    "description": "Off webpack. The dev loop gets dramatically faster, which sets up the month that follows.",
+    "tags": [
+      "Tooling"
+    ],
+    "variant": "primary",
+    "commit": "f07b69cc"
+  },
+  {
+    "date": "2024-05-11",
+    "title": "Color rebuilt on chroma.js",
+    "description": "The palette stops being hand-picked hex values and starts being generated.",
+    "tags": [
+      "Styles"
+    ],
+    "commit": "eff82755"
+  },
+  {
+    "date": "2024-05-26",
+    "title": "VitePress docs",
+    "description": "A real documentation site, alongside Storybook rather than inside it.",
+    "tags": [
+      "Docs"
+    ],
+    "commit": "39f06edb"
+  },
+  {
+    "date": "2024-05-27",
+    "title": "The script setup sweep",
+    "description": "Components converted to Composition API one at a time across May — 207 commits, the busiest month in the project's history.",
+    "tags": [
+      "Vue"
+    ],
+    "variant": "primary",
+    "commit": "63d0bf2a"
+  },
+  {
+    "date": "2024-12-04",
+    "title": "React starts",
+    "description": "A second Storybook on port 6007 and three .tsx files. More intent than implementation.",
+    "tags": [
+      "React"
+    ],
+    "variant": "info",
+    "commit": "b7e35674"
+  },
+  {
+    "date": "2024-12-07",
+    "title": "Icon pipeline",
+    "description": "icons.json drives an SVG download, clean and generate step that emits framework components.",
+    "tags": [
+      "Tooling"
+    ],
+    "commit": "a86535a2"
+  },
+  {
+    "date": "2025-02-03",
+    "title": "Docs generate themselves",
+    "description": "vue-docgen-api reads props, slots and events straight from source. An accessibility addon lands two days later.",
+    "tags": [
+      "Docs"
+    ],
+    "variant": "success",
+    "commit": "67d06832"
+  },
+  {
+    "date": "2025-02-05",
+    "title": "React goes quiet",
+    "description": "The React Storybook's build step is removed. Still three .tsx files — and it stays that way for fourteen months.",
+    "tags": [
+      "React"
+    ],
+    "variant": "warning",
+    "commit": "a453c2e2"
+  },
+  {
+    "date": "2025-04-05",
+    "title": "useTheme",
+    "description": "Theme switching becomes a composable instead of scattered logic.",
+    "tags": [
+      "Vue"
+    ],
+    "commit": "cc1cf5a8"
+  },
+  {
+    "date": "2025-10-26",
+    "title": "Icons v1 deleted",
+    "description": "The old icon component and its build script are removed; per-icon components replace the icon map entirely.",
+    "tags": [
+      "Tooling"
+    ],
+    "variant": "danger",
+    "commit": "73fab12d"
+  },
+  {
+    "date": "2025-12-04",
+    "title": "2.0.0-beta opens",
+    "description": "The version line that the current library still sits on.",
+    "tags": [
+      "Release"
+    ],
+    "commit": "1fba0394"
+  },
+  {
+    "date": "2025-12-18",
+    "title": "light-dark()",
+    "description": "Theming rebuilt on the CSS light-dark() function — both themes defined in one declaration instead of two.",
+    "tags": [
+      "Styles"
+    ],
+    "variant": "success",
+    "commit": "b6c84c74"
+  },
+  {
+    "date": "2026-01-18",
+    "title": "React restarts",
+    "description": "The package is re-initialised from scratch and the old React icon component dropped. Second attempt, in earnest this time.",
+    "tags": [
+      "React"
+    ],
+    "variant": "info",
+    "commit": "0c02ea77"
+  },
+  {
+    "date": "2026-01-18",
+    "title": "TypeScript",
+    "description": "The component packages convert to TypeScript.",
+    "tags": [
+      "Tooling"
+    ],
+    "variant": "primary",
+    "commit": "49dd7359"
+  },
+  {
+    "date": "2026-02-22",
+    "title": "Two frameworks, officially",
+    "description": "Renamed to epicenter-components-<framework>, icons split into -vue and -react. React goes from 3 files to 110 inside a week.",
+    "tags": [
+      "React",
+      "Structure"
+    ],
+    "variant": "info",
+    "commit": "38eea8ee"
+  },
+  {
+    "date": "2026-02-26",
+    "title": "\"initial move complete\"",
+    "description": "The React port reaches feature coverage with Vue.",
+    "tags": [
+      "React"
+    ],
+    "variant": "info",
+    "commit": "0d21446c"
+  },
+  {
+    "date": "2026-03-08",
+    "title": "Storybook 10",
+    "description": "Both instances upgraded together — the first upgrade that had to account for two frameworks.",
+    "tags": [
+      "Tooling"
+    ],
+    "commit": "290a66f6"
+  },
+  {
+    "date": "2026-03-14",
+    "title": "Landing page and shared helpers",
+    "description": "A landing site, plus storybook-shared for the helpers both Storybooks now need.",
+    "tags": [
+      "Tooling"
+    ],
+    "commit": "b1fa0c6c"
+  },
+  {
+    "date": "2026-03-21",
+    "title": "React gets its own intro",
+    "description": "The React Storybook stops being the second-class instance and gets a front door of its own.",
+    "tags": [
+      "React"
+    ],
+    "variant": "info",
+    "commit": "f7a6ddc7"
+  },
+  {
+    "date": "2026-04-19",
+    "title": "Conventions written down",
+    "description": "AGENTS.md and then CLAUDE.md capture the rules that had been living in one person's head — including the Vue/React parity requirement.",
+    "tags": [
+      "Docs"
+    ],
+    "commit": "31ff4ae1"
+  },
+  {
+    "date": "2026-08-10",
+    "title": "v2.0.0-beta.1 published",
+    "description": "The packages ship to GitHub Packages. Both frameworks release together.",
+    "tags": [
+      "Release"
+    ],
+    "variant": "success",
+    "commit": "00068855"
+  },
+  {
+    "date": "2026-08-23",
+    "title": "The custom property contract",
+    "description": "Tokens, a naming grammar and a validator that fails the build. The styles package stops relying on discipline and starts enforcing.",
+    "tags": [
+      "Styles"
+    ],
+    "variant": "success",
+    "commit": "f5d4ce00"
+  },
+  {
+    "date": "2026-08-25",
+    "title": "Dropdown on native popover",
+    "description": "Rebuilt on the popover API and CSS anchor positioning — then patched around three Safari paint bugs.",
+    "tags": [
+      "Components"
+    ],
+    "commit": "e75b4d38"
+  },
+  {
+    "date": "2026-08-25",
+    "title": "Parity, in practice",
+    "description": "EpEnrichmentDropdown repaired and EpContextualLookup ported to match Vue. 126 React files, and the two frameworks moving together.",
+    "tags": [
+      "React"
+    ],
+    "variant": "info",
+    "commit": "a1ee9277"
+  }
+]

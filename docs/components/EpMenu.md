@@ -343,6 +343,10 @@ defaults on its root class, and a declaration on the element beats an inherited 
     position: absolute;
     top: var(--ep-menu-sub-menu-top);
     left: calc(100% - var(--ep-menu-sub-menu-offset));
+    // Own compositing layer: Safari clips repaints of a popover's descendants
+    // to the popover's border box, so hover/focus styles on the part of a
+    // submenu hanging outside the panel never repainted without this.
+    transform: translateZ(0);
   }
 }
 

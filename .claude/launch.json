@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "storybook"],
       "port": 6006
+    },
+    {
+      "name": "storybook-react",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "storybook:react"],
+      "port": 6007
     }
   ]
 }

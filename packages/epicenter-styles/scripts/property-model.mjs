@@ -51,6 +51,9 @@ export const PROPERTY_GROUPS = {
     // Distance a thing is pushed from its anchor — tooltips from their trigger,
     // a framed container from the viewport edge.
     'offset', 'offset-x', 'offset-y',
+    // CSS anchor positioning: where an anchored panel sits relative to its
+    // anchor, and which flip tactics apply when it would overflow the viewport.
+    'position-area', 'position-try-fallbacks',
     'stroke-width', 'stroke-color', 'fill-color',
     'cursor', 'vertical-align', 'object-fit', 'object-position'
   ]

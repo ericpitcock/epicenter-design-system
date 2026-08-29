@@ -12,3 +12,20 @@
 .dark-theme {
   color-scheme: dark;
 }
+
+// Safari intermittently resolves an inherited color-scheme as `normal` for
+// elements in the top layer, which flips every light-dark() token in an open
+// popover to the light palette — a white panel flashing in a dark UI.
+// Declaring the scheme directly on popover elements leaves nothing to
+// inherit across the top-layer boundary.
+[popover] {
+  color-scheme: light dark;
+}
+
+.light-theme [popover] {
+  color-scheme: light;
+}
+
+.dark-theme [popover] {
+  color-scheme: dark;
+}

@@ -70,6 +70,7 @@ import EpTabContent from './tabs/EpTabContent.vue'
 import EpTabs from './tabs/EpTabs.vue'
 import EpTextarea from './textarea/EpTextarea.vue'
 import EpThemeToggle from './theme-toggle/EpThemeToggle.vue'
+import EpTimeline from './timeline/EpTimeline.vue'
 import EpToggle from './toggle/EpToggle.vue'
 import EpTooltip from './tooltip/EpTooltip.vue'
 
@@ -143,6 +144,7 @@ export {
   EpTabs,
   EpTextarea,
   EpThemeToggle,
+  EpTimeline,
   EpToggle,
   EpTooltip
 }
@@ -217,6 +219,7 @@ export default {
   EpTabs,
   EpTextarea,
   EpThemeToggle,
+  EpTimeline,
   EpToggle,
   EpTooltip
 }

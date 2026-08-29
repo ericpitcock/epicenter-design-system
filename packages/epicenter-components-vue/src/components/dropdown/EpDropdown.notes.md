@@ -81,16 +81,42 @@ const dropdownRef = ref(null)
 </script>
 ```
 
+### Positioning
+
+The dropdown panel is a native popover rendered in the browser's top layer and
+tethered to the trigger with CSS anchor positioning. That means:
+
+- It is never clipped by ancestor `overflow: hidden`/`auto` containers (tables,
+  scrolling containers, headers) and needs no z-index management.
+- It flips automatically at every viewport edge: near the bottom it opens
+  above, near the right edge it aligns right, and corners flip both axes.
+- Placement is customizable through CSS custom properties:
+  `--ep-dropdown-position-area` (default `block-end span-inline-end`) sets the
+  preferred side/alignment, and `--ep-dropdown-position-try-fallbacks`
+  (default `flip-block, flip-inline, flip-block flip-inline`) controls the
+  flip behavior when space runs out.
+
+### Browser Support
+
+Positioning relies on CSS anchor positioning and `showPopover({ source })`,
+which are Baseline 2026: Chrome/Edge 137+, Safari 26+, Firefox 147+. There is
+no fallback for older browsers — in an unsupported browser the panel still
+opens and light-dismisses, but appears centered in the viewport instead of
+attached to the trigger.
+
 ### Accessibility Features
 
 - Automatic ARIA attributes for screen readers
 - Keyboard navigation (Enter, Space, Arrow keys, Escape)
-- Click-outside detection to close dropdown
+- ArrowDown on the trigger always moves focus to the first enabled menu item —
+  opening the dropdown first if needed — even when `autoFocus` is `false`
+  (`autoFocus` only controls whether opening by click moves focus)
+- Native light dismiss: clicking outside or pressing Escape closes the popover
 - Focus management
 
 ### Important Considerations
 
-- The dropdown closes automatically when clicking outside
+- The dropdown closes automatically when clicking outside (native popover
+  light dismiss — no JavaScript listeners involved)
 - Use the `close` function provided in the content slot to close after selection
-- The dropdown content is positioned absolutely, so ensure proper container context
 - Keyboard navigation is built-in for accessibility

@@ -146,7 +146,7 @@ const preview = {
     layout: 'fullscreen',
     options: {
       storySort: {
-        order: ['Intro', 'Components', 'Style'],
+        order: ['Intro', 'History', 'Components', 'Style'],
       },
     },
   },

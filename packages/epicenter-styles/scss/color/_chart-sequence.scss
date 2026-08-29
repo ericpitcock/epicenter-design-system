@@ -1,18 +1,20 @@
 /* stylelint-disable no-duplicate-selectors */
 /* DO NOT EDIT DIRECTLY */
+$names: ('chart-sequence-00', 'chart-sequence-01', 'chart-sequence-02', 'chart-sequence-03', 'chart-sequence-04', 'chart-sequence-05', 'chart-sequence-06', 'chart-sequence-07', 'chart-sequence-08', 'chart-sequence-09', 'chart-sequence-10', 'chart-sequence-11', 'chart-sequence-12', 'chart-sequence-13');
+
 :root {
-  --chart-sequence-00: light-dark(262 51% 58%, 262 51% 58%);
-  --chart-sequence-01: light-dark(199 57% 48%, 199 57% 48%);
-  --chart-sequence-02: light-dark(175 45% 26%, 175 45% 26%);
-  --chart-sequence-03: light-dark(329 54% 70%, 329 54% 70%);
-  --chart-sequence-04: light-dark(0 0% 35%, 0 54% 97%);
-  --chart-sequence-05: light-dark(0 52% 60%, 0 52% 60%);
-  --chart-sequence-06: light-dark(142 37% 58%, 142 37% 58%);
-  --chart-sequence-07: light-dark(217 59% 60%, 217 59% 60%);
-  --chart-sequence-08: light-dark(333 39% 51%, 333 39% 51%);
-  --chart-sequence-09: light-dark(45 61% 47%, 45 61% 47%);
-  --chart-sequence-10: light-dark(173 48% 40%, 173 48% 40%);
-  --chart-sequence-11: light-dark(202 80% 30%, 201 62% 86%);
-  --chart-sequence-12: light-dark(26 58% 37%, 26 58% 37%);
-  --chart-sequence-13: light-dark(269 65% 85%, 269 65% 85%);
+  --chart-sequence-00: light-dark(hsl(262 51% 58%), hsl(262 51% 58%));
+  --chart-sequence-01: light-dark(hsl(199 57% 48%), hsl(199 57% 48%));
+  --chart-sequence-02: light-dark(hsl(175 45% 26%), hsl(175 45% 26%));
+  --chart-sequence-03: light-dark(hsl(329 54% 70%), hsl(329 54% 70%));
+  --chart-sequence-04: light-dark(hsl(0 0% 35%), hsl(0 54% 97%));
+  --chart-sequence-05: light-dark(hsl(0 52% 60%), hsl(0 52% 60%));
+  --chart-sequence-06: light-dark(hsl(142 37% 58%), hsl(142 37% 58%));
+  --chart-sequence-07: light-dark(hsl(217 59% 60%), hsl(217 59% 60%));
+  --chart-sequence-08: light-dark(hsl(333 39% 51%), hsl(333 39% 51%));
+  --chart-sequence-09: light-dark(hsl(45 61% 47%), hsl(45 61% 47%));
+  --chart-sequence-10: light-dark(hsl(173 48% 40%), hsl(173 48% 40%));
+  --chart-sequence-11: light-dark(hsl(202 80% 30%), hsl(201 62% 86%));
+  --chart-sequence-12: light-dark(hsl(26 58% 37%), hsl(26 58% 37%));
+  --chart-sequence-13: light-dark(hsl(269 65% 85%), hsl(269 65% 85%));
 }

@@ -40,14 +40,28 @@ export const EpChart = React.forwardRef<{ reflowChart: () => void }, EpChartProp
       }
     }
 
-    const chartOptions = {
-      ...chartDefaults,
-      ...options
+    // Styled mode cycles series colours modulo colorCount, so a chart with more
+    // series than that repeats a colour. The stylesheet publishes how many
+    // --chart-sequence-NN tokens exist; reading it here means the cycle is the
+    // palette, and stays so when the palette grows.
+    const paletteSize = (element: HTMLElement) => {
+      const declared = getComputedStyle(element).getPropertyValue('--chart-sequence-count')
+      return Number.parseInt(declared, 10) || 10
     }
 
     const drawChart = async () => {
       const Highcharts = (await import('highcharts')).default
-      chartRef.current = Highcharts.chart(chartId, chartOptions)
+      const element = document.getElementById(chartId)
+      if (!element) return
+
+      // A shallow spread would let an options object that names `chart` drop
+      // styledMode with it, which turns every series black — the defaults have to
+      // merge deeply. Caller options come last so they still win.
+      chartRef.current = Highcharts.chart(chartId, Highcharts.merge(
+        chartDefaults,
+        { chart: { colorCount: paletteSize(element) } },
+        options
+      ))
     }
 
     const reflowChart = () => {

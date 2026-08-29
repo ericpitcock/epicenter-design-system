@@ -62,7 +62,7 @@ EpComponent.displayName = 'EpComponent'
 - Arrow functions for all handlers and utilities
 - Polymorphic rendering via `as` prop pattern (see EpButton for reference)
 - Icons as `ReactNode` props (`iconLeft`, `iconRight`) — NOT named slots
-- Use `@floating-ui/react` for positioning (dropdowns, tooltips, popovers)
+- Floating panels (dropdowns, tooltips, popovers) use the native Popover API (`popover="auto"` + `showPopover({ source })`) with CSS anchor positioning from `epicenter-styles` (`anchor-name`/`anchor-scope` on the component root, `position-area` + `position-try-fallbacks` on the panel) — no JS positioning libraries
 - Use `framer-motion` for animation
 - No inline styles except for dynamic values (width, position calculations)
 - Semantic HTML, `aria-*` attributes, keyboard event handlers

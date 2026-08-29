@@ -147,6 +147,8 @@ These were broken, not merely renamed — check whether you have workarounds for
 | `--image-*` (EpAppImage) | `--ep-app-image-*` |
 | `--logo-*` (EpicenterLogo) | `--ep-logo-*`, declared on a new `.ep-logo` root class. Note `--logo-hightlight-color` was misspelled; it is `--ep-logo-highlight-fill-color`. |
 | `--ep-dropdown-padding-top` | `--ep-dropdown-offset` |
+| `--ep-dropdown-top` | `--ep-dropdown-position-area` — the panel is anchor-positioned now, not offset from the top of a relative wrapper. |
+| `--ep-dropdown-z-index` | Nothing. The panel is a popover in the browser's top layer, which stacks above all z-indexed content. |
 | `--ep-tooltip-offset-x` / `-y` as fallback-only | Now really declared, so they are discoverable and overridable. |
 
 ## 7. Behaviour changes to check
@@ -165,6 +167,14 @@ These were broken, not merely renamed — check whether you have workarounds for
   `borderColor`, `borderStyle` and `borderWidth` props were never consumed and are gone.
 - **`prefers-reduced-motion` is honoured globally.** Transitions and animations collapse
   to near-zero for users who ask for it.
+- **`EpDropdown` uses the Popover API + CSS anchor positioning.** The panel renders in
+  the browser's top layer: it is never clipped by ancestor `overflow` containers, needs
+  no z-index, flips automatically at every viewport edge
+  (`--ep-dropdown-position-try-fallbacks`), and light-dismisses natively on outside
+  click and Escape. `--ep-dropdown-min-width` now defaults to `anchor-size(width)`
+  instead of `100%` (same result — at least trigger width — new mechanism). Requires
+  Chrome/Edge 137+, Safari 26+, Firefox 147+ (Baseline 2026); there is no fallback for
+  older browsers.
 
 ## 8. Writing new overrides
 

@@ -278,6 +278,10 @@
       "link": "/components/EpThemeToggle"
     },
     {
+      "text": "EpTimeline",
+      "link": "/components/EpTimeline"
+    },
+    {
       "text": "EpToggle",
       "link": "/components/EpToggle"
     },

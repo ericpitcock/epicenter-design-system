@@ -1,5 +1,7 @@
 /* stylelint-disable no-duplicate-selectors */
 /* DO NOT EDIT DIRECTLY */
+$names: ('interface-bg', 'interface-bg--accent', 'interface-surface', 'interface-surface--accent', 'interface-surface--inverse', 'interface-foreground', 'interface-foreground--accent', 'interface-overlay', 'interface-overlay--accent', 'border-color', 'border-color--lighter', 'border-color--disabled', 'overlay-color', 'box-shadow-color', 'drop-shadow', 'drop-shadow--large', 'drop-shadow--large--north', 'text-color', 'text-color--disabled', 'text-color--subtle', 'text-color--loud', 'text-color--inverse', 'text-color--primary', 'text-color--link', 'text-color--danger', 'text-color--warning', 'text-color--success', 'text-selection-bg-color', 'text-selection-text-color', 'status-danger-bg-color', 'status-danger-border-color', 'status-danger-text-color', 'status-warning-bg-color', 'status-warning-border-color', 'status-warning-text-color', 'status-success-bg-color', 'status-success-border-color', 'status-success-text-color', 'status-info-bg-color', 'status-info-border-color', 'status-info-text-color', 'bg-color--alert-low', 'bg-color--alert-medium', 'bg-color--alert-high', 'bg-color--alert-critical');
+
 :root {
   --interface-bg: light-dark(hsl(var(--gray-50)), hsl(var(--gray-430)));
   --interface-bg--accent: light-dark(hsl(var(--gray-40)), hsl(var(--gray-420)));

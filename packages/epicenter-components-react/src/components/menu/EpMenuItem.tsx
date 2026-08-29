@@ -9,6 +9,10 @@ export interface EpMenuItemProps {
   className?: string
   /** Whether the menu item is disabled */
   disabled?: boolean
+  /** Callback when the item receives focus. Vue gets this via attribute fallthrough; declared explicitly here. */
+  onFocus?: React.FocusEventHandler<HTMLDivElement>
+  /** Callback when the pointer moves over the item. Composes with the internal submenu hover handling. */
+  onMouseOver?: React.MouseEventHandler<HTMLDivElement>
   /** Callback when menu item is selected */
   onSelect?: (event: React.MouseEvent | KeyboardEvent) => void
   /** Submenu content that appears on hover/focus */
@@ -33,6 +37,8 @@ export const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
       type = 'item',
       children,
       submenu,
+      onFocus,
+      onMouseOver,
       onSelect,
       className = ''
     },
@@ -180,10 +186,11 @@ export const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
       }
     }
 
-    const handleMouseover = () => {
+    const handleMouseover = (event: React.MouseEvent<HTMLDivElement>) => {
       if (hasSubmenu) {
         setShowSubmenu(true)
       }
+      onMouseOver?.(event)
     }
 
     const handleMouseleave = () => {
@@ -233,6 +240,7 @@ export const EpMenuItem = React.forwardRef<HTMLDivElement, EpMenuItemProps>(
           onKeyDown={handleKeydown}
           onMouseOver={handleMouseover}
           onMouseLeave={handleMouseleave}
+          onFocus={onFocus}
           onFocusCapture={handleFocusIn}
           onBlur={handleFocusOut}
         >

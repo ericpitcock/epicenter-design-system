@@ -37,27 +37,14 @@ const stackedColumnSeries = () => {
   return array
 }
 
-const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color')
-
 const stackedColumnChartOptions = {
   chart: {
-    backgroundColor: undefined,
-    style: {
-      fontFamily: 'Proxima Nova, sans-serif'
-    },
-    styledMode: true,
     type: 'column'
-  },
-  colors: ['#915ce0', '#ec93b8', '#7fcc93', '#b29124', '#9c511c', '#52aae0'],
-  credits: {
-    enabled: false
   },
   plotOptions: {
     column: {
       dataLabels: {
         enabled: false,
-        // color: textColor,
-        // position: 'left',
         verticalAlign: 'top'
       }
     },
@@ -84,10 +71,6 @@ const stackedColumnChartOptions = {
           day: 'numeric',
           year: 'numeric'
         })
-      },
-      style: {
-        color: textColor,
-        fontSize: '12px'
       }
     },
     type: 'datetime'
@@ -95,17 +78,7 @@ const stackedColumnChartOptions = {
   yAxis: {
     min: 0,
     title: {
-      text: 'Total Incidents',
-      style: {
-        color: textColor,
-        fontSize: '12px'
-      }
-    },
-    labels: {
-      style: {
-        color: textColor,
-        fontSize: '12px'
-      }
+      text: 'Total Incidents'
     },
     reversedStacks: false
   }

@@ -1,29 +1,77 @@
 .ep-dropdown {
   --ep-dropdown-width: fit-content;
   --ep-dropdown-offset: 0.4rem;
-  --ep-dropdown-top: 100%;
-  --ep-dropdown-min-width: 100%;
-  --ep-dropdown-z-index: var(--z-index--dropdown);
+  --ep-dropdown-min-width: anchor-size(width);
+  --ep-dropdown-position-area: block-end span-inline-end;
+  --ep-dropdown-position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+  --ep-dropdown-transition:
+    opacity var(--duration--fast) ease,
+    display var(--duration--fast) allow-discrete,
+    overlay var(--duration--fast) allow-discrete;
 
   position: relative;
   width: var(--ep-dropdown-width);
+  anchor-name: --ep-dropdown-anchor;
+  anchor-scope: --ep-dropdown-anchor;
 
+  // The panel is a [popover]: it renders in the top layer (never clipped by
+  // ancestor overflow, no z-index needed) and is anchor-positioned back onto
+  // the .ep-dropdown root, which wraps the trigger at fit-content width.
   &__container {
-    position: absolute;
-    z-index: var(--ep-dropdown-z-index);
-    top: var(--ep-dropdown-top);
-    left: 0;
+    // overflow/padding/border/margin/background/color/inset reset the UA
+    // [popover] sheet. overflow must be visible: submenus and the enrichment
+    // preview hang outside the panel box.
+    overflow: visible;
+    // position must be declared here, not inherited from the UA [popover]
+    // sheet: Safari only applies the UA position while the popover is open,
+    // so during the allow-discrete close fade the panel would fall into
+    // normal flow — a ghost panel that shoves the layout until display flips.
+    position: fixed;
     min-width: var(--ep-dropdown-min-width);
-    padding-top: var(--ep-dropdown-offset);
+    padding: 0;
+    border: 0;
+    margin: 0;
+    background: transparent;
+    color: inherit;
+    inset: auto;
+    // The gap must be margin, not padding: position-try flip tactics mirror
+    // margins to the opposite side, so it stays between trigger and panel
+    // when the panel flips above.
+    margin-block-start: var(--ep-dropdown-offset);
+    opacity: 0;
+    position-anchor: --ep-dropdown-anchor;
+    position-area: var(--ep-dropdown-position-area);
+    position-try-fallbacks: var(--ep-dropdown-position-try-fallbacks);
+    transition: var(--ep-dropdown-transition);
+
+    &:popover-open {
+      opacity: 1;
+
+      @starting-style {
+        opacity: 0;
+      }
+
+      // Safari (detectable as no `overlay` support) glitches popover ENTRY
+      // animations two ways: a discrete display transition blanks the panel
+      // for one frame at transition end, and on the first open after a page
+      // load even a plain opacity fade re-runs — fade in, collapse for a
+      // frame, fade in again. Transitions read from the destination state, so
+      // `none` here makes only the entry instant (native macOS menus open the
+      // same way); the exit keeps the base fade — its end-of-transition
+      // artifacts land at opacity 0, where they are invisible.
+      @supports not (overlay: auto) {
+        transition: none;
+      }
+    }
 
     &--align-right {
-      right: 0;
-      left: auto;
+      --ep-dropdown-position-area: block-end span-inline-start;
     }
   }
 
   &__content {
+    // Containing block for absolutely positioned flyouts nested in the panel
+    // (.ep-menu__item__sub-menu, .enrichment-preview).
     position: relative;
-    z-index: var(--ep-dropdown-z-index);
   }
 }

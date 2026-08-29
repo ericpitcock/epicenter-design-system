@@ -218,87 +218,93 @@
     },
     {
       "name": "--chart-sequence-00",
-      "default": "light-dark(262 51% 58%, 262 51% 58%)",
+      "default": "light-dark(hsl(262 51% 58%), hsl(262 51% 58%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-01",
-      "default": "light-dark(199 57% 48%, 199 57% 48%)",
+      "default": "light-dark(hsl(199 57% 48%), hsl(199 57% 48%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-02",
-      "default": "light-dark(175 45% 26%, 175 45% 26%)",
+      "default": "light-dark(hsl(175 45% 26%), hsl(175 45% 26%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-03",
-      "default": "light-dark(329 54% 70%, 329 54% 70%)",
+      "default": "light-dark(hsl(329 54% 70%), hsl(329 54% 70%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-04",
-      "default": "light-dark(0 0% 35%, 0 54% 97%)",
+      "default": "light-dark(hsl(0 0% 35%), hsl(0 54% 97%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-05",
-      "default": "light-dark(0 52% 60%, 0 52% 60%)",
+      "default": "light-dark(hsl(0 52% 60%), hsl(0 52% 60%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-06",
-      "default": "light-dark(142 37% 58%, 142 37% 58%)",
+      "default": "light-dark(hsl(142 37% 58%), hsl(142 37% 58%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-07",
-      "default": "light-dark(217 59% 60%, 217 59% 60%)",
+      "default": "light-dark(hsl(217 59% 60%), hsl(217 59% 60%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-08",
-      "default": "light-dark(333 39% 51%, 333 39% 51%)",
+      "default": "light-dark(hsl(333 39% 51%), hsl(333 39% 51%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-09",
-      "default": "light-dark(45 61% 47%, 45 61% 47%)",
+      "default": "light-dark(hsl(45 61% 47%), hsl(45 61% 47%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-10",
-      "default": "light-dark(173 48% 40%, 173 48% 40%)",
+      "default": "light-dark(hsl(173 48% 40%), hsl(173 48% 40%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-11",
-      "default": "light-dark(202 80% 30%, 201 62% 86%)",
+      "default": "light-dark(hsl(202 80% 30%), hsl(201 62% 86%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-12",
-      "default": "light-dark(26 58% 37%, 26 58% 37%)",
+      "default": "light-dark(hsl(26 58% 37%), hsl(26 58% 37%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
     },
     {
       "name": "--chart-sequence-13",
-      "default": "light-dark(269 65% 85%, 269 65% 85%)",
+      "default": "light-dark(hsl(269 65% 85%), hsl(269 65% 85%))",
       "file": "packages/epicenter-styles/scss/color/_chart-sequence.scss",
       "themeAware": true
+    },
+    {
+      "name": "--chart-sequence-count",
+      "default": "#{list.length(chart-sequence.$names)}",
+      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "themeAware": false
     },
     {
       "name": "--control-height--default",
@@ -1159,87 +1165,93 @@
       "themeAware": false
     },
     {
-      "name": "--highcharts-color-0",
-      "default": "hsl(var(--chart-sequence-00))",
+      "name": "--highcharts-color-#{$slot}",
+      "default": "var(--#{$name})",
       "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "themeAware": false
+    },
+    {
+      "name": "--highcharts-color-0",
+      "default": "#2caffe",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-1",
-      "default": "hsl(var(--chart-sequence-01))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#544fc5",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-10",
-      "default": "hsl(var(--chart-sequence-10))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "var(--chart-sequence-10)",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-11",
-      "default": "hsl(var(--chart-sequence-11))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "var(--chart-sequence-11)",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-12",
-      "default": "hsl(var(--chart-sequence-12))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "var(--chart-sequence-12)",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-13",
-      "default": "hsl(var(--chart-sequence-13))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "var(--chart-sequence-13)",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-2",
-      "default": "hsl(var(--chart-sequence-02))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#00e272",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-3",
-      "default": "hsl(var(--chart-sequence-03))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#fe6a35",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-4",
-      "default": "hsl(var(--chart-sequence-04))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#6b8abc",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-5",
-      "default": "hsl(var(--chart-sequence-05))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#d568fb",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-6",
-      "default": "hsl(var(--chart-sequence-06))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#2ee0ca",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-7",
-      "default": "hsl(var(--chart-sequence-07))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#fa4b42",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-8",
-      "default": "hsl(var(--chart-sequence-08))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#feb56a",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
       "name": "--highcharts-color-9",
-      "default": "hsl(var(--chart-sequence-09))",
-      "file": "packages/epicenter-styles/scss/components/_charts.scss",
+      "default": "#91e8e1",
+      "file": "dist/epicenter-design-system.css",
       "themeAware": false
     },
     {
@@ -4918,7 +4930,7 @@
       "properties": [
         {
           "name": "--ep-dropdown-min-width",
-          "default": "100%",
+          "default": "anchor-size(width)",
           "group": "box",
           "part": null,
           "state": null,
@@ -4933,12 +4945,28 @@
           "property": "offset"
         },
         {
-          "name": "--ep-dropdown-top",
-          "default": "100%",
+          "name": "--ep-dropdown-position-area",
+          "default": "block-end span-inline-end",
           "group": "layout",
           "part": null,
           "state": null,
-          "property": "top"
+          "property": "position-area"
+        },
+        {
+          "name": "--ep-dropdown-position-try-fallbacks",
+          "default": "flip-block, flip-inline, flip-block flip-inline",
+          "group": "layout",
+          "part": null,
+          "state": null,
+          "property": "position-try-fallbacks"
+        },
+        {
+          "name": "--ep-dropdown-transition",
+          "default": "opacity var(--duration--fast) ease,\n    display var(--duration--fast) allow-discrete,\n    overlay var(--duration--fast) allow-discrete",
+          "group": "effect",
+          "part": null,
+          "state": null,
+          "property": "transition"
         },
         {
           "name": "--ep-dropdown-width",
@@ -4947,14 +4975,6 @@
           "part": null,
           "state": null,
           "property": "width"
-        },
-        {
-          "name": "--ep-dropdown-z-index",
-          "default": "var(--z-index--dropdown)",
-          "group": "layout",
-          "part": null,
-          "state": null,
-          "property": "z-index"
         }
       ]
     },
@@ -8033,6 +8053,261 @@
           "part": null,
           "state": null,
           "property": "width"
+        }
+      ]
+    },
+    {
+      "block": "timeline",
+      "class": ".ep-timeline",
+      "file": "packages/epicenter-styles/scss/components/_timeline.scss",
+      "properties": [
+        {
+          "name": "--ep-timeline-body-gap",
+          "default": "var(--space--1)",
+          "group": "spacing",
+          "part": "body",
+          "state": null,
+          "property": "gap"
+        },
+        {
+          "name": "--ep-timeline-date-font-size",
+          "default": "var(--font-size--tiny)",
+          "group": "text",
+          "part": "date",
+          "state": null,
+          "property": "font-size"
+        },
+        {
+          "name": "--ep-timeline-date-font-variation-settings",
+          "default": "var(--font-weight--medium)",
+          "group": "text",
+          "part": "date",
+          "state": null,
+          "property": "font-variation-settings"
+        },
+        {
+          "name": "--ep-timeline-date-letter-spacing",
+          "default": "0.1rem",
+          "group": "text",
+          "part": "date",
+          "state": null,
+          "property": "letter-spacing"
+        },
+        {
+          "name": "--ep-timeline-date-text-color",
+          "default": "var(--text-color--subtle)",
+          "group": "text",
+          "part": "date",
+          "state": null,
+          "property": "text-color"
+        },
+        {
+          "name": "--ep-timeline-date-text-transform",
+          "default": "uppercase",
+          "group": "text",
+          "part": "date",
+          "state": null,
+          "property": "text-transform"
+        },
+        {
+          "name": "--ep-timeline-description-font-size",
+          "default": "var(--font-size--small)",
+          "group": "text",
+          "part": "description",
+          "state": null,
+          "property": "font-size"
+        },
+        {
+          "name": "--ep-timeline-description-line-height",
+          "default": "var(--text-line-height--normal)",
+          "group": "text",
+          "part": "description",
+          "state": null,
+          "property": "line-height"
+        },
+        {
+          "name": "--ep-timeline-description-max-width",
+          "default": "68ch",
+          "group": "box",
+          "part": "description",
+          "state": null,
+          "property": "max-width"
+        },
+        {
+          "name": "--ep-timeline-description-text-color",
+          "default": "var(--text-color--subtle)",
+          "group": "text",
+          "part": "description",
+          "state": null,
+          "property": "text-color"
+        },
+        {
+          "name": "--ep-timeline-item-column-gap",
+          "default": "var(--space--4)",
+          "group": "spacing",
+          "part": "item",
+          "state": null,
+          "property": "column-gap"
+        },
+        {
+          "name": "--ep-timeline-item-gap",
+          "default": "var(--space--6)",
+          "group": "spacing",
+          "part": "item",
+          "state": null,
+          "property": "gap"
+        },
+        {
+          "name": "--ep-timeline-marker-bg-color",
+          "default": "var(--interface-bg)",
+          "group": "surface",
+          "part": "marker",
+          "state": null,
+          "property": "bg-color"
+        },
+        {
+          "name": "--ep-timeline-marker-border-color",
+          "default": "var(--border-color)",
+          "group": "border",
+          "part": "marker",
+          "state": null,
+          "property": "border-color"
+        },
+        {
+          "name": "--ep-timeline-marker-border-radius",
+          "default": "var(--border-radius--full)",
+          "group": "border",
+          "part": "marker",
+          "state": null,
+          "property": "border-radius"
+        },
+        {
+          "name": "--ep-timeline-marker-border-style",
+          "default": "solid",
+          "group": "border",
+          "part": "marker",
+          "state": null,
+          "property": "border-style"
+        },
+        {
+          "name": "--ep-timeline-marker-border-width",
+          "default": "var(--border-width--thick)",
+          "group": "border",
+          "part": "marker",
+          "state": null,
+          "property": "border-width"
+        },
+        {
+          "name": "--ep-timeline-marker-size",
+          "default": "var(--space--3)",
+          "group": "box",
+          "part": "marker",
+          "state": null,
+          "property": "size"
+        },
+        {
+          "name": "--ep-timeline-rail-bg-color",
+          "default": "var(--border-color--lighter)",
+          "group": "surface",
+          "part": "rail",
+          "state": null,
+          "property": "bg-color"
+        },
+        {
+          "name": "--ep-timeline-rail-width",
+          "default": "var(--border-width--hairline)",
+          "group": "box",
+          "part": "rail",
+          "state": null,
+          "property": "width"
+        },
+        {
+          "name": "--ep-timeline-tag-bg-color",
+          "default": "var(--interface-surface)",
+          "group": "surface",
+          "part": "tag",
+          "state": null,
+          "property": "bg-color"
+        },
+        {
+          "name": "--ep-timeline-tag-border-color",
+          "default": "var(--border-color--lighter)",
+          "group": "border",
+          "part": "tag",
+          "state": null,
+          "property": "border-color"
+        },
+        {
+          "name": "--ep-timeline-tag-font-size",
+          "default": "var(--font-size--tiny)",
+          "group": "text",
+          "part": "tag",
+          "state": null,
+          "property": "font-size"
+        },
+        {
+          "name": "--ep-timeline-tag-text-color",
+          "default": "var(--text-color--subtle)",
+          "group": "text",
+          "part": "tag",
+          "state": null,
+          "property": "text-color"
+        },
+        {
+          "name": "--ep-timeline-tags-gap",
+          "default": "var(--space--1)",
+          "group": "spacing",
+          "part": "tags",
+          "state": null,
+          "property": "gap"
+        },
+        {
+          "name": "--ep-timeline-tags-margin-block-start",
+          "default": "var(--space--2)",
+          "group": "spacing",
+          "part": "tags",
+          "state": null,
+          "property": "margin-block-start"
+        },
+        {
+          "name": "--ep-timeline-title-font-size",
+          "default": "var(--font-size--default)",
+          "group": "text",
+          "part": "title",
+          "state": null,
+          "property": "font-size"
+        },
+        {
+          "name": "--ep-timeline-title-font-variation-settings",
+          "default": "var(--font-weight--semi-bold)",
+          "group": "text",
+          "part": "title",
+          "state": null,
+          "property": "font-variation-settings"
+        },
+        {
+          "name": "--ep-timeline-title-hover-text-color",
+          "default": "var(--text-color--link)",
+          "group": "text",
+          "part": "title",
+          "state": "hover",
+          "property": "text-color"
+        },
+        {
+          "name": "--ep-timeline-title-line-height",
+          "default": "var(--text-line-height--tight)",
+          "group": "text",
+          "part": "title",
+          "state": null,
+          "property": "line-height"
+        },
+        {
+          "name": "--ep-timeline-title-text-color",
+          "default": "var(--text-color--loud)",
+          "group": "text",
+          "part": "title",
+          "state": null,
+          "property": "text-color"
         }
       ]
     },

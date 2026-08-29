@@ -16,29 +16,9 @@ const fakeCitiesArray = length => {
   return arr
 }
 
-const textColor = getComputedStyle(document.documentElement).getPropertyValue(
-  '--text-color'
-)
-
 const stackedBarChartOptions = {
   chart: {
-    backgroundColor: undefined,
-    style: {
-      fontFamily: 'Proxima Nova, sans-serif'
-    },
-    styledMode: true,
     type: 'bar'
-  },
-  // colors: [
-  //   '#915ce0',
-  //   '#ec93b8',
-  //   '#7fcc93',
-  //   '#b29124',
-  //   '#9c511c',
-  //   '#52aae0'
-  // ],
-  credits: {
-    enabled: false
   },
   plotOptions: {
     series: {
@@ -75,28 +55,12 @@ const stackedBarChartOptions = {
     text: undefined
   },
   xAxis: {
-    categories: fakeCitiesArray(12),
-    labels: {
-      style: {
-        color: textColor,
-        fontSize: '12px'
-      }
-    }
+    categories: fakeCitiesArray(12)
   },
   yAxis: {
     min: 0,
     title: {
-      text: 'Total Incidents',
-      style: {
-        color: textColor,
-        fontSize: '12px'
-      }
-    },
-    labels: {
-      style: {
-        color: textColor,
-        fontSize: '12px'
-      }
+      text: 'Total Incidents'
     },
     reversedStacks: false
   }

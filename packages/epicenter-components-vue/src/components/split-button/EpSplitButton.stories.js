@@ -2,7 +2,7 @@ import { EpButton, EpDropdown, EpMenu, EpMenuItem } from '@ericpitcock/epicenter
 import ArrowDown01 from '@ericpitcock/epicenter-icons-vue/ArrowDown01'
 import { centeredBg } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
-import { ref, toRef } from 'vue'
+import { toRef } from 'vue'
 
 // import EpSplitButton from '@/components/split-button/EpSplitButton.vue'
 
@@ -141,8 +141,6 @@ export const SplitButton = args => ({
     //   }
     // })
 
-    const openState = ref(false)
-
     const menuItems = [
       { type: 'section', label: 'Prev Versions' },
       { type: 'item', label: 'v1.1' },
@@ -165,7 +163,6 @@ export const SplitButton = args => ({
       iconLeftComponent,
       iconRightComponent,
       onSelect,
-      openState,
       menuItems,
     }
   },
@@ -190,7 +187,7 @@ export const SplitButton = args => ({
           <component :is="iconRightComponent" />
         </template>
       </ep-button>
-      <ep-dropdown v-model:open="openState" :disabled="args.disabled">
+      <ep-dropdown :disabled="args.disabled">
         <template #trigger="{ attrs, on }">
           <ep-button
             v-bind="attrs"
