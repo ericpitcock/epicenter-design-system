@@ -38,7 +38,9 @@ const preview = {
 
       return (
         <ThemeProvider>
-          <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          {/* react-router 7 makes the old v7_* future flags the default, so the
+              opt-ins that belonged here under v6 are gone. */}
+          <MemoryRouter>
             <Story />
           </MemoryRouter>
         </ThemeProvider>
