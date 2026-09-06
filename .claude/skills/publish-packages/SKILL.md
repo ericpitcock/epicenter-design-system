@@ -36,7 +36,7 @@ tracked, and the env var indirection is deliberate (Netlify supplies it in CI).
 |---|---|---|---|
 | `@ericpitcock/epicenter-styles` | `packages/epicenter-styles` | yes | `dist/` is git-tracked |
 | `@ericpitcock/epicenter-components-vue` | `packages/epicenter-components-vue` | yes | `dist/` is gitignored |
-| `@ericpitcock/epicenter-components-react` | `packages/epicenter-components-react` | no | ships raw `src/` |
+| `@ericpitcock/epicenter-components-react` | `packages/epicenter-components-react` | yes | `dist/` is gitignored |
 | `@ericpitcock/epicenter-icons-vue` | `packages/epicenter-icons-vue` | generated | ~9,200 files |
 | `@ericpitcock/epicenter-icons-react` | `packages/epicenter-icons-react` | generated | ~9,200 files |
 
@@ -71,21 +71,22 @@ zsh -c '. ~/.zprofile && npm view @ericpitcock/epicenter-styles versions --regis
 
 ## Builds, and the stale-dist trap
 
-`epicenter-styles` and `epicenter-components-vue` both have a `build` script and
-both now have `prepublishOnly: npm run build`, so `npm publish` and
-`yalc publish` rebuild automatically. Do not remove those — before they existed
-it was entirely possible to publish a `dist/` from days ago.
+`epicenter-styles`, `epicenter-components-vue` and `epicenter-components-react`
+all have a `build` script and a `prepublishOnly: npm run build`, so `npm publish`
+and `yalc publish` rebuild automatically. Do not remove those — before they
+existed it was entirely possible to publish a `dist/` from days ago.
 
-The vue build (`packages/epicenter-components-vue/scripts/build.mjs`) is a **file
-copy, not a compilation**. Two consequences:
+Both component builds are real Vite library builds that emit `.mjs` plus `.d.ts`
+(`vue-tsc` for Vue, `tsc` for React) and end with `scripts/verify-dist.mjs`. That
+verifier is the gate that used to be `build-storybook` resolving to `dist/`: it
+fails on leaked source, a missing declaration, a `.d.ts` still naming a `.vue`
+file, an inlined dependency stylesheet, or an `exports` path that resolves to
+nothing. A type error now fails the build instead of shipping silently.
 
-- It regenerates `src/components/index.ts` by globbing every `.vue` file and
-  deriving the export name from the **filename**. Renaming a component's export
-  means renaming its file and rebuilding — never hand-edit that index, it carries
-  a "do not edit directly" header.
-- Nothing type-checks. `tsconfig.json` is IDE-only; there is no `vue-tsc` step
-  anywhere in the repo. A type error ships silently and only surfaces in a
-  consuming app.
+The Vue build still regenerates `src/components/index.ts` by globbing every
+`.vue` file and deriving the export name from the **filename**. Renaming a
+component's export means renaming its file and rebuilding — never hand-edit that
+index, it carries a "do not edit directly" header.
 
 ## The generated icon packages
 
@@ -123,10 +124,9 @@ There is **no unit test suite** — Storybook is the validation environment.
    ```bash
    npm pack --dry-run
    ```
-   Expect: styles → `dist/` only; components-vue → `dist/` only and **no
-   `.stories.js`**; components-react → `src/` only (no `storybook/`, no
-   `tsconfig.json`); icon packages → thousands of files plus `base.scss` and
-   `README.md`.
+   Expect: styles → `dist/` only; both component packages → `dist/` only, with
+   **no `.vue`/`.tsx` source and no `.stories.*`**; icon packages → thousands of
+   files plus `base.scss` and `README.md`.
 5. Visual: `npm run storybook` (Vue, :6006) / `npm run storybook:react` (:6007)
    and look at whatever changed.
 
@@ -223,5 +223,7 @@ with `origin` on GitHub — pushing to the wrong one is easy.
 | Icon package publishes with ~2 files | generated content isn't on disk (it's gitignored) | `bash scripts/copy-icons-from-npm.sh`, or regenerate from `packages/epicenter-icons` |
 | A renamed component still exports under the old name | `src/components/index.ts` is generated from filenames | rename the `.vue` file itself, then rebuild |
 | `ENOVERSIONS` / `ETARGET … with a date before <date>` right after a successful publish | `min-release-age=3` in `~/.npmrc` blocks anything published in the last 3 days | add `--min-release-age=0` to the verifying install; the publish is fine |
+| Optional peers (`d3`, `highcharts`, `mapbox-gl`, `shiki`, `flatpickr`) install anyway | GitHub Packages strips `peerDependenciesMeta`, `exports`, `sideEffects` and `type` from the packument; npm resolves peers from the packument, so `optional: true` is invisible to it | not fixable from here. Note that only *peer resolution* is affected — `exports`/`sideEffects` are read from the installed tarball, which is intact |
+| A `file:`-installed tarball omits the optional peers but a registry install pulls them in | `file:` deps read `peerDependenciesMeta` straight from the tarball; registry installs read the packument | test optional-peer behaviour against the **registry**, never `file:` — `file:` gives a false negative |
 | `npm view <pkg>` prints nothing, exit code 0 | the package has no `latest` tag (prerelease-only), and bare `npm view` resolves `latest` | query the packument with curl, or `npm view <pkg>@beta` |
 | Bare `npm install <pkg>` fails but `<pkg>@beta` works | no `latest` dist-tag — expected for a package whose only release is a prerelease | `npm dist-tag add <pkg>@<version> latest` if plain installs should work |
