@@ -1,4 +1,5 @@
 import { EpBanner, EpButton } from '@ericpitcock/epicenter-components-react'
+import { Cancel01 } from '@ericpitcock/epicenter-icons-react/Cancel01.jsx'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 
@@ -13,6 +14,10 @@ const meta: Meta<typeof EpBanner> = {
     layout: 'centered'
   },
   argTypes: {
+    dismissable: {
+      name: 'Dismissable',
+      control: { type: 'boolean' }
+    },
     message: {
       control: 'text',
       description: 'Main message text'
@@ -58,13 +63,16 @@ export const Banner: Story = {
         <EpBanner
           {...args}
           icon={IconComponent ? <IconComponent /> : undefined}
-          dismiss={<EpButton>Dismiss</EpButton>}
+          dismiss={args.dismissable
+            ? <EpButton ariaLabel="Dismiss" iconLeft={<Cancel01 />} />
+            : undefined}
           onDismissed={() => setVisible(false)}
         />
       </div>
     )
   },
   args: {
+    dismissable: true,
     message: 'This is an informational banner message',
     subtext: '',
     iconName: 'InformationCircle',

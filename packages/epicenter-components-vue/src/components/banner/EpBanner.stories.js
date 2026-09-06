@@ -1,4 +1,5 @@
-import { EpBanner } from '@ericpitcock/epicenter-components-vue'
+import { EpBanner, EpButton } from '@ericpitcock/epicenter-components-vue'
+import Cancel01 from '@ericpitcock/epicenter-icons-vue/Cancel01'
 import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { centeredSurface } from '@sb/helpers/decorators.js'
 import { componentNames, useIcons } from '@sb/helpers/useIcons.js'
@@ -9,8 +10,8 @@ export default {
   component: EpBanner,
   decorators: [withCssProps('banner'), centeredSurface],
   argTypes: {
-    dissmissable: {
-      name: 'Dissmissable',
+    dismissable: {
+      name: 'Dismissable',
       control: {
         type: 'boolean'
       }
@@ -70,15 +71,23 @@ export default {
     iconWeight: {
       if: { arg: 'enabledIcons' },
       name: 'Weight',
-      options: ['Light', 'Regular', 'Medium', 'Bold'],
-      mapping: {
-        'Light': 0.5,
-        'Regular': 1,
-        'Medium': 1.5,
-        'Bold': 2,
-      },
+      options: ['Light', 'Regular', 'Medium', 'Bold', 'Custom'],
       control: {
         type: 'radio'
+      },
+      table: {
+        category: 'Icon'
+      }
+    },
+    // custom icon weight
+    iconWeightCustom: {
+      if: { arg: 'iconWeight', eq: 'Custom' },
+      name: 'Custom Weight',
+      control: {
+        type: 'range',
+        min: 0.5,
+        max: 4,
+        step: 0.1
       },
       table: {
         category: 'Icon'
@@ -110,14 +119,25 @@ export default {
 
 export const Banner = args => ({
   components: {
-    EpBanner
+    Cancel01,
+    EpBanner,
+    EpButton
   },
   setup() {
+    const strokeWidths = {
+      Light: 0.5,
+      Regular: 1,
+      Medium: 1.5,
+      Bold: 2
+    }
+
     const iconStyles = computed(() => ({
       '--ep-icon-width': args.iconSize + 'px',
       '--ep-icon-height': args.iconSize + 'px',
       '--ep-icon-text-color': args.iconColor,
-      '--ep-icon-stroke-width': args.iconWeight,
+      '--ep-icon-stroke-width': args.iconWeight === 'Custom'
+        ? args.iconWeightCustom
+        : strokeWidths[args.iconWeight]
     }))
 
     const { iconLeftComponent } = useIcons(
@@ -144,7 +164,6 @@ export const Banner = args => ({
   template: `
     <ep-banner
       v-show="showBanner"
-      v-bind="args"
       @dismissed="onDismissed"
     >
       <template
@@ -159,15 +178,29 @@ export const Banner = args => ({
       <template #subtext>
         Our boss made us do it
       </template>
+      <template
+        v-if="args.dismissable"
+        #dismiss="{ dismissBanner }"
+      >
+        <ep-button
+          aria-label="Dismiss"
+          @click="dismissBanner"
+        >
+          <template #icon-left>
+            <cancel-01 />
+          </template>
+        </ep-button>
+      </template>
     </ep-banner>
   `
 })
 
 Banner.args = {
-  dissmissable: false,
+  dismissable: true,
   enabledIcons: false,
   iconName: 'None',
   iconSize: 32,
   iconColor: '#FFC107',
   iconWeight: 'Regular',
+  iconWeightCustom: 1,
 }
