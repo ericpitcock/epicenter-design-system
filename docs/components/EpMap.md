@@ -2,8 +2,41 @@
 
 
 
+`EpMap` wraps Mapbox GL.
+
+## Install mapbox-gl and import its stylesheet
+
+`mapbox-gl` is an **optional peer dependency** — it is not installed for you, and the
+component does not import its stylesheet. Both are your app's job:
+
+```shell
+npm install mapbox-gl
+```
+
+```js
+// main.js — anywhere that runs once, before the map renders
+import 'mapbox-gl/dist/mapbox-gl.css'
+```
+
 ::: warning
-In order to use `EpMap` in a Vite app, you must add this to `vite.config.js`:
+Without the stylesheet the map will not lay out — the canvas collapses and the controls
+are unstyled. This is not optional polish.
+:::
+
+The library used to import the stylesheet for you. It cannot any more: a bundler
+resolving this package can handle the bare `mapbox-gl` specifier when you have not
+installed it, but not a **subpath** of it. Vite rewrites `mapbox-gl/dist/mapbox-gl.css`
+to a `__vite-optional-peer-dep:` specifier that its own import-analysis then refuses,
+static or dynamic. Because the component sits in the package barrel's graph, that one
+import broke the dev server of every app using the design system — including apps with
+no map on any screen.
+
+`_map.scss` is written for this arrangement: mapbox's stylesheet arrives unlayered, so
+`.mapboxgl-map { position: relative }` outranks anything the design system declares in a
+cascade layer. The block is sized rather than pinned with `inset` for that reason.
+
+::: warning
+In a Vite app you may also need this in `vite.config.js`:
 :::
 
 ```js
@@ -12,9 +45,10 @@ optimizeDeps: {
 },
 ```
 
-This is because Vite does not pre-bundle `mapbox-gl` by default, which can cause import issues*.
+Vite does not pre-bundle `mapbox-gl` by default, which can cause import issues*.
 
 *Headaches galore
+
     
 
 ## Props
@@ -69,7 +103,6 @@ defaults on its root class, and a declaration on the element beats an inherited 
 
 ```vue
 <script setup lang="ts">
-  import 'mapbox-gl/dist/mapbox-gl.css'
   import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref, useTemplateRef } from 'vue'
 
   interface MapSource {
@@ -212,6 +245,15 @@ defaults on its root class, and a declaration on the element beats an inherited 
     return new Promise((resolve) => {
       if (!epMapCanvas.value) return
 
+      // The stylesheet is deliberately not imported here — consumers import
+      // 'mapbox-gl/dist/mapbox-gl.css' themselves, as mapbox's own docs
+      // instruct. mapbox-gl is an optional peer, and a bundler resolving this
+      // package cannot resolve a *subpath* of one it has not installed: Vite
+      // rewrites it to a `__vite-optional-peer-dep:` stub that its
+      // import-analysis then refuses, static or dynamic. Because this chunk
+      // sits in the barrel's graph, that broke every consumer's dev server —
+      // including apps that never render a map. The bare specifier below is
+      // fine; only subpaths are affected.
       import('mapbox-gl').then((module) => {
         mapboxgl = module.default
         map.value = new mapboxgl.Map({
@@ -292,8 +334,10 @@ defaults on its root class, and a declaration on the element beats an inherited 
 ## Styles (SCSS)
 
 ```scss
-// Mapbox's own stylesheet is loaded unlayered (a JS import inside the
-// component), and unlayered CSS beats every layer regardless of specificity —
+// Mapbox's own stylesheet is loaded unlayered (the consuming app imports
+// 'mapbox-gl/dist/mapbox-gl.css' — the component cannot, because a bundler
+// cannot resolve a subpath of an optional peer), and unlayered CSS beats every
+// layer regardless of specificity —
 // `.mapboxgl-map { position: relative }` therefore wins over anything declared
 // here. So the canvas is sized rather than pinned with `inset`, and the block
 // keeps its own `position: relative` as the anchor for overlays.

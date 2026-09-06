@@ -302,7 +302,9 @@ defaults on its root class, and a declaration on the element beats an inherited 
 // where a theme switch can repaint it and a consumer can override it; the
 // component only decides which slot each arc lands in.
 @each $name in chart-sequence.$names {
-  .ep-donut-chart__arc--#{list.index(chart-sequence.$names, $name) - 1} {
+  $slot: list.index(chart-sequence.$names, $name) - 1;
+
+  .ep-donut-chart__arc--#{$slot} {
     fill: var(--#{$name});
   }
 }

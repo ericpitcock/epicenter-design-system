@@ -118,26 +118,52 @@ React dropped on the floor — the browser-frame window buttons and the notifica
 title/"Clear all" button never rendered. They now do. If you were compensating for their
 absence in your own CSS, remove it.
 
-## 7. Import the optional peers' stylesheets yourself
+## 7. Stylesheet changes
 
-The library used to import `mapbox-gl/dist/mapbox-gl.css` and
-`flatpickr/dist/flatpickr.min.css` on your behalf. It no longer can.
+The library no longer imports any third-party stylesheet on your behalf. Two components
+are affected, and they need **opposite** things — this is the whole list:
 
-A bundler resolving this package can handle the *bare* specifier of an optional peer you
-have not installed — Vite substitutes a stub that only throws if the code actually runs,
-which is the right behaviour for rendering `EpMap` without `mapbox-gl`. It cannot do that
-for a **subpath**: Vite rewrites `mapbox-gl/dist/mapbox-gl.css` to a
-`__vite-optional-peer-dep:` specifier that its own import-analysis then refuses, static or
-dynamic. Since these chunks sit in the barrel's graph, one such import broke every
-consumer's dev server.
+| Component | What changed | What you do |
+|---|---|---|
+| `EpMap` | stopped importing `mapbox-gl/dist/mapbox-gl.css` | **add `import 'mapbox-gl/dist/mapbox-gl.css'` to your app** |
+| `EpDatePicker` (React only) | stopped importing `flatpickr/dist/flatpickr.min.css` | **nothing — and do not add it back** |
 
-So if you render either component, add its stylesheet to your app — which is what
-mapbox's and flatpickr's own docs tell you to do anyway:
+Nothing else moved. `EpChart`, `EpDonutChart` and `EpCodeView` never needed a stylesheet
+(Highcharts styles its own SVG, d3 ships none, Shiki emits inline styles), the Vue package
+emits no CSS at all, and React's own `Kmd.css` still ships inside the package and is still
+imported for you.
+
+### EpMap — you must add it
+
+Without `mapbox-gl/dist/mapbox-gl.css` the map does not lay out: the canvas collapses and
+the controls are unstyled.
 
 ```js
-import 'mapbox-gl/dist/mapbox-gl.css'      // if you use EpMap
-import 'flatpickr/dist/flatpickr.min.css'  // if you use EpDatePicker
+import 'mapbox-gl/dist/mapbox-gl.css'
 ```
 
+A bundler resolving this package can handle the *bare* specifier of an optional peer you
+have not installed — Vite substitutes a stub that only throws if the code runs, which is
+right for rendering `EpMap` without `mapbox-gl`. It cannot do that for a **subpath**:
+Vite rewrites `mapbox-gl/dist/mapbox-gl.css` to a `__vite-optional-peer-dep:` specifier
+that its own import-analysis then refuses, static or dynamic. Since these chunks sit in
+the barrel's graph, that one import broke every consumer's dev server — which is what
+beta.5 shipped.
+
+The cascade behaviour is unchanged: mapbox's stylesheet still arrives unlayered from your
+app, so `.mapboxgl-map { position: relative }` still outranks the design system's layered
+rules, which is what `_map.scss` is written around.
+
+### EpDatePicker — do not add it back
+
+React's `EpDatePicker` was importing `flatpickr/dist/flatpickr.min.css`. Vue's never did,
+and Vue was the correct one: `epicenter-styles` ships a complete tokenized replacement
+(`scss/vendor/_flatpickr.scss`) that is already in the stylesheet you import. flatpickr's
+own CSS arrives unlayered and beats every cascade layer, so importing it reverts the
+calendar to flatpickr's default light theme — visibly wrong in dark mode.
+
+So removing it is a fix, and it brings React in line with Vue. If a date picker renders as
+a white calendar on a dark page, something in your app is importing that stylesheet.
+
 `scripts/verify-dist.mjs` now fails the build if any published module imports a subpath of
-an optional peer, so this cannot regress.
+an optional peer, so neither case can regress.

@@ -1,5 +1,3 @@
-// The library no longer imports its optional peers' stylesheets — consumers do.
-import 'flatpickr/dist/flatpickr.min.css'
 import { EpDatePicker } from '@ericpitcock/epicenter-components-vue'
 import { cssPropArgTypes, withCssProps } from '@sb/helpers/cssProperties.js'
 import { paddedSurface } from '@sb/helpers/decorators.js'

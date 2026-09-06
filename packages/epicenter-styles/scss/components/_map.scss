@@ -1,5 +1,7 @@
-// Mapbox's own stylesheet is loaded unlayered (a JS import inside the
-// component), and unlayered CSS beats every layer regardless of specificity —
+// Mapbox's own stylesheet is loaded unlayered (the consuming app imports
+// 'mapbox-gl/dist/mapbox-gl.css' — the component cannot, because a bundler
+// cannot resolve a subpath of an optional peer), and unlayered CSS beats every
+// layer regardless of specificity —
 // `.mapboxgl-map { position: relative }` therefore wins over anything declared
 // here. So the canvas is sized rather than pinned with `inset`, and the block
 // keeps its own `position: relative` as the anchor for overlays.

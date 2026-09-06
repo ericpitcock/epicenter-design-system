@@ -282,6 +282,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
       ref="input"
       v-model="value"
       type="text"
+      data-focus-ring="none"
       :placeholder="placeholderValue"
       :disabled="disabled"
       @input="onInput"
@@ -415,12 +416,10 @@ defaults on its root class, and a declaration on the element beats an inherited 
       color: var(--ep-multi-search-text-color);
     }
 
-    &:focus-visible {
-      outline: none;
-
-      &::placeholder {
-        color: transparent;
-      }
+    // The wrapper owns the focus ring, so the input opts out of the global one
+    // with data-focus-ring="none" (see utilities/_accessibility.scss).
+    &:focus-visible::placeholder {
+      color: transparent;
     }
   }
 
