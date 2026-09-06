@@ -46,10 +46,14 @@ gone. Anything still using it will fail at build time, not silently.
 
 > **Caveat on GitHub Packages.** The registry drops `peerDependenciesMeta` from its
 > package metadata, and npm resolves peers from that metadata rather than from the
-> tarball. So npm still installs all five even though they are marked optional. What you
-> *do* get is the bundle benefit: every one of them is behind a dynamic `import()`, so an
-> app that never renders a chart or a map ships none of their code. Measured on a real
-> consumer, the main chunk dropped from 282 kB to 211 kB.
+> tarball, so npm installs all five regardless of the `optional` flag. Marking them
+> optional is still the correct contract — it just does not shrink an `npm install`
+> against this registry today.
+>
+> Bundle size is a separate question and largely unchanged: four of the five were already
+> behind a dynamic `import()` before this release, so they were already split out.
+> `shiki` was the exception — `EpCodeView` imported it statically — and is now dynamic
+> too.
 
 Install the ones your app needs:
 
