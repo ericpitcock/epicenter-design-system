@@ -1,6 +1,6 @@
 {
   "name": "@ericpitcock/epicenter-components-react",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0-beta.5",
   "description": "Epicenter Design System - React Components",
   "type": "module",
   "sideEffects": [
@@ -41,7 +41,7 @@
   "author": "Eric Pitcock",
   "license": "MIT",
   "dependencies": {
-    "@ericpitcock/epicenter-icons-react": "^2.0.0-beta.4"
+    "@ericpitcock/epicenter-icons-react": "^2.0.0-beta.5"
   },
   "peerDependencies": {
     "d3": "^7.9.0",

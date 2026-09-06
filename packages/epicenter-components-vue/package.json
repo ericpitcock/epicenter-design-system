@@ -1,6 +1,6 @@
 {
   "name": "@ericpitcock/epicenter-components-vue",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0-beta.5",
   "description": "Epicenter Design System - Vue Components",
   "type": "module",
   "sideEffects": false,
@@ -51,7 +51,7 @@
   "author": "Eric Pitcock",
   "license": "MIT",
   "dependencies": {
-    "@ericpitcock/epicenter-icons-vue": "^2.0.0-beta.4",
+    "@ericpitcock/epicenter-icons-vue": "^2.0.0-beta.5",
     "@vueuse/core": "^12.2.0"
   },
   "peerDependencies": {
