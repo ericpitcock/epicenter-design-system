@@ -1,7 +1,7 @@
-import React, { forwardRef, useState, ChangeEvent } from 'react';
+import React, { forwardRef, useState, ChangeEvent, CSSProperties } from 'react';
 
 export interface EpRangeInputFilterProps {
-  [key: string]: unknown;
+  style?: CSSProperties;
   appliedFilters: Record<string, unknown>;
   className?: string;
   columnKey: string;

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FocusEvent, forwardRef } from 'react';
+import { ChangeEvent, FocusEvent, forwardRef } from 'react';
 
 export interface EpTextareaProps {
   /** Controls autocomplete behavior */

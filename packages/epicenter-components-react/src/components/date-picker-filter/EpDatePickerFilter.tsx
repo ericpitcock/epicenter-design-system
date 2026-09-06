@@ -1,7 +1,7 @@
-import React, { forwardRef, ChangeEvent } from 'react';
+import React, { forwardRef, ChangeEvent, CSSProperties } from 'react';
 
 export interface EpDatePickerFilterProps {
-  [key: string]: unknown;
+  style?: CSSProperties;
   appliedFilters: Record<string, unknown>;
   className?: string;
   columnKey: string;

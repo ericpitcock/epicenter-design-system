@@ -13,7 +13,6 @@ export interface SearchResult {
 }
 
 export interface EpSearchTypeaheadProps {
-  [key: string]: unknown;
   className?: string;
   inputProps?: React.ComponentProps<typeof EpInput>;
   onClear?: () => void;

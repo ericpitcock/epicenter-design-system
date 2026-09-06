@@ -54,19 +54,16 @@ export const EpNotifications: React.FC<EpNotificationsProps> = ({
 
   return (
     <EpContainer className="ep-container-default ep-container--sticky-header">
-      <EpHeader slot="header">
-        <h2 slot="left">
-          {notificationsTitle}
-        </h2>
-        {!isNotificationsEmpty && (
-          <EpButton
-            slot="right"
-            onClick={onClearNotifications}
-          >
-            Clear all
-          </EpButton>
-        )}
-      </EpHeader>
+      <EpHeader
+        left={<h2>{notificationsTitle}</h2>}
+        right={
+          !isNotificationsEmpty && (
+            <EpButton onClick={onClearNotifications}>
+              Clear all
+            </EpButton>
+          )
+        }
+      />
       {isNotificationsEmpty ? (
         <EpEmptyState>
           {emptyStateMessage}

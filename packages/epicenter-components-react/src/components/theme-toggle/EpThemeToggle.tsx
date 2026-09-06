@@ -17,7 +17,6 @@ const Moon02 = () => (
 );
 
 export interface EpThemeToggleProps {
-  [key: string]: unknown;
   className?: string;
 }
 

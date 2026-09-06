@@ -41,19 +41,17 @@ export const EpBrowserFrame: React.FC<EpBrowserFrameProps> = ({
       className="browser-frame"
       style={{ width }}
     >
-      <EpHeader>
-        <div slot="left" className="window-buttons">
-          <div className="window-button window-button--close" />
-          <div className="window-button window-button--minimize" />
-          <div className="window-button window-button--maximize" />
-        </div>
-        <div slot="center" className="search">
-          {url}
-        </div>
-        <div slot="right">
-          {userIcon}
-        </div>
-      </EpHeader>
+      <EpHeader
+        left={
+          <div className="window-buttons">
+            <div className="window-button window-button--close" />
+            <div className="window-button window-button--minimize" />
+            <div className="window-button window-button--maximize" />
+          </div>
+        }
+        center={<div className="search">{url}</div>}
+        right={userIcon}
+      />
       <div className="image-container">
         <img
           src={imageSrc}

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { codeToHtml } from 'shiki'
   import { computed, onMounted, onUpdated, ref } from 'vue'
 
   interface Props {
@@ -28,6 +27,10 @@
     highlightedSignature.value = signature
 
     try {
+      // shiki is an optional peer — importing it lazily keeps it out of every
+      // consumer's install and bundle, not just out of the initial chunk.
+      const { codeToHtml } = await import('shiki')
+
       highlightedCode.value = await codeToHtml(code, {
         lang: language,
         theme: theme,

@@ -3,12 +3,14 @@ import React from 'react';
 export interface EpicenterLogoProps {
   /** Additional CSS classes */
   className?: string;
+  /** Explicit width; defaults to filling the container */
+  width?: string | number;
 }
 
 /**
  * EpicenterLogo - The Epicenter Design System logo
  */
-export const EpicenterLogo: React.FC<EpicenterLogoProps> = ({ className = '' }) => {
+export const EpicenterLogo: React.FC<EpicenterLogoProps> = ({ className = '', width = '100%' }) => {
   return (
     <svg
       className={className}
@@ -17,7 +19,7 @@ export const EpicenterLogo: React.FC<EpicenterLogoProps> = ({ className = '' }) 
       viewBox="0 0 160.7 215.87"
       style={{
         display: 'block',
-        width: '100%',
+        width,
         height: '100%',
       }}
     >

@@ -74,7 +74,7 @@ export const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
     },
     ref
   ) => {
-    const tableContainerRef = useRef<HTMLDivElement>(null)
+    const tableContainerRef = useRef<HTMLDivElement | null>(null)
 
     const visibleColumns = columns.filter(
       (column) => !hiddenColumns.includes(column.key)

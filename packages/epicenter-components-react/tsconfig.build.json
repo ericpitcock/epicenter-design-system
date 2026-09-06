@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // `allowImportingTsExtensions` is only legal alongside `noEmit`, and this
+    // config exists precisely to emit.
+    "allowImportingTsExtensions": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
+  ]
+}

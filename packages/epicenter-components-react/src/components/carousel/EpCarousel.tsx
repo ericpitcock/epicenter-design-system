@@ -267,7 +267,7 @@ export const EpCarousel: React.FC<EpCarouselProps> = ({
           }
         />
         <div className="carousel-dots">
-          {images.map((image, index) => (
+          {images.map((_image, index) => (
             <button
               key={`dot-${index}`}
               className={`carousel-dot${currentIndex === index ? ' is-active' : ''}`}

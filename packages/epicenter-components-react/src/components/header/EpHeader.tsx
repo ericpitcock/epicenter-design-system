@@ -1,7 +1,6 @@
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
 export interface EpHeaderProps {
-  [key: string]: unknown;
   center?: ReactNode;
   className?: string;
   left?: ReactNode;

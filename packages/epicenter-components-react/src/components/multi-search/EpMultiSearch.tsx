@@ -1,4 +1,4 @@
-import React, {
+import {
   forwardRef,
   useState,
   useRef,
@@ -27,7 +27,6 @@ interface ParsedQuery {
 }
 
 export interface EpMultiSearchProps {
-  [key: string]: unknown;
   autofocus?: boolean;
   backgroundColor?: string;
   borderColor?: string;
@@ -135,7 +134,7 @@ export const EpMultiSearch = forwardRef<HTMLDivElement, EpMultiSearchProps>(
     const placeholderValue =
       value === '' && query.length === 0 ? placeholder : '+ Add to your search';
 
-    const handleQueryClose = (item: string, index: number) => {
+    const handleQueryClose = (index: number) => {
       const newQuery = [...query];
       newQuery.splice(index, 1);
       setQuery(newQuery);
@@ -225,7 +224,7 @@ export const EpMultiSearch = forwardRef<HTMLDivElement, EpMultiSearchProps>(
             <div
               key={index}
               className={`query ${isOperator(item) ? 'query--operator' : ''}`}
-              onClick={() => handleQueryClose(item, index)}
+              onClick={() => handleQueryClose(index)}
             >
               <span className="query__text font-size--small">{item}</span>
               <Cancel01 />

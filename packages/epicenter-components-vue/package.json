@@ -3,10 +3,36 @@
   "version": "2.0.0-beta.4",
   "description": "Epicenter Design System - Vue Components",
   "type": "module",
-  "main": "dist/index.ts",
-  "module": "dist/index.ts",
+  "sideEffects": false,
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
-    "import": "./dist/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.mjs"
+    },
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "import": "./dist/components/*.mjs"
+    },
+    "./composables": {
+      "types": "./dist/composables/index.d.ts",
+      "import": "./dist/composables/index.mjs"
+    },
+    "./plugins": {
+      "types": "./dist/plugins/index.d.ts",
+      "import": "./dist/plugins/index.mjs"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.mjs"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist"
@@ -25,14 +51,44 @@
   "author": "Eric Pitcock",
   "license": "MIT",
   "dependencies": {
-    "@vueuse/core": "^12.2.0",
+    "@ericpitcock/epicenter-icons-vue": "^2.0.0-beta.4",
+    "@vueuse/core": "^12.2.0"
+  },
+  "peerDependencies": {
     "d3": "^7.8.2",
     "flatpickr": "^4.6.13",
     "highcharts": "^12.0.2",
     "mapbox-gl": "^3.29.0",
-    "shiki": "^2.5.0"
-  },
-  "peerDependencies": {
+    "shiki": "^2.5.0",
     "vue": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "d3": {
+      "optional": true
+    },
+    "flatpickr": {
+      "optional": true
+    },
+    "highcharts": {
+      "optional": true
+    },
+    "mapbox-gl": {
+      "optional": true
+    },
+    "shiki": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "d3": "^7.8.2",
+    "flatpickr": "^4.6.13",
+    "highcharts": "^12.0.2",
+    "mapbox-gl": "^3.29.0",
+    "shiki": "^2.5.0",
+    "typescript": "^5.9.3",
+    "vite": "^5.2.8",
+    "vue": "^3.5.41",
+    "vue-tsc": "^2.2.0"
   }
 }

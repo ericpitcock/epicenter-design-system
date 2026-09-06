@@ -1,4 +1,4 @@
-import React, { MouseEvent, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 type ButtonSize = 'small' | 'default' | 'large' | 'xlarge';
 

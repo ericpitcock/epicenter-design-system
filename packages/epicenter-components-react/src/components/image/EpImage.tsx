@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect, CSSProperties } from 'react';
 export interface EpImageProps {
   /** The alt text for the image */
   alt?: string;
+  /** CSS aspect-ratio applied to the image box */
+  aspectRatio?: string;
   /** Additional CSS class name for the image element */
   className?: string;
   /** The height of the image */
@@ -17,6 +19,8 @@ export interface EpImageProps {
   placeholderOpacity?: number;
   /** The source URL of the image */
   src: string;
+  /** Inline styles merged over the computed box styles */
+  style?: CSSProperties;
   /** The width of the image */
   width?: string | number;
 }
@@ -27,6 +31,8 @@ export interface EpImageProps {
 export const EpImage: React.FC<EpImageProps> = ({
   src,
   alt = '',
+  aspectRatio,
+  style,
   width = '100%',
   height = '100%',
   className = '',
@@ -71,6 +77,8 @@ export const EpImage: React.FC<EpImageProps> = ({
     backgroundImage: placeholder ? `url(${placeholder})` : undefined,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    aspectRatio,
+    ...style,
   };
 
   const imageStyle: CSSProperties = {

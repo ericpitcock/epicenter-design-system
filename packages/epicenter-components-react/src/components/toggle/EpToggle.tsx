@@ -1,4 +1,3 @@
-import React, { MouseEvent } from 'react';
 
 type ToggleSize = 'small' | 'default' | 'large';
 

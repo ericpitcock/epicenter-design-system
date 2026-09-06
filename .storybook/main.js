@@ -21,31 +21,29 @@ const config = {
     options: {},
   },
 
-  viteFinal: async (config, { configType }) => {
+  viteFinal: async (config) => {
     /**
-     * Dev resolves the Vue package to src/; the static build leaves it on the
-     * published dist/.
+     * Both dev and the static build resolve the Vue package to src/, matching
+     * .storybook-react/main.js.
      *
-     * dist/ is a plain copy of src/ (scripts/build.mjs — no compile step), so
-     * both load identical bytes. But dist/ is excluded by the watch ignore
-     * list below, and the build `remove()`s the directory before recopying,
-     * which drops chokidar's watch on it. Resolving there during dev meant
-     * every component edit needed `npm run build:components-vue` *and* a
-     * dev-server restart — and a half-stale server would serve fresh CSS
-     * against cached markup, which looks exactly like a broken change.
+     * The static build used to resolve to dist/ instead, on the grounds that it
+     * then exercised the artifact that actually gets published. That worked only
+     * because dist/ was a verbatim copy of src/. It is a real Vite library build
+     * now, so dist/ holds compiled .mjs with no .vue files in it — and
+     * vue-docgen needs SFC source to produce the autodocs prop tables. Pointing
+     * the docs build at dist/ would publish a Storybook with every prop table
+     * blank.
      *
-     * Keeping the static build on dist/ means `build-storybook` still exercises
-     * the artifact that actually gets published, so a broken copy step fails
-     * there rather than silently at publish time.
+     * What dist/ gets instead is its own check: the package build runs
+     * scripts/verify-dist.mjs, which fails on missing declarations, leaked
+     * source, or an exports path that resolves to nothing.
      */
-    const devAliases = configType === 'DEVELOPMENT'
-      ? {
-        '@ericpitcock/epicenter-components-vue': resolve(
-          __dirname,
-          '../packages/epicenter-components-vue/src/index.ts'
-        ),
-      }
-      : {}
+    const sourceAliases = {
+      '@ericpitcock/epicenter-components-vue': resolve(
+        __dirname,
+        '../packages/epicenter-components-vue/src/index.ts'
+      ),
+    }
 
     return {
       ...config,
@@ -62,7 +60,7 @@ const config = {
         preserveSymlinks: true,
         alias: {
           ...config.resolve?.alias,
-          ...devAliases,
+          ...sourceAliases,
           '@sb': resolve(__dirname, '../packages/epicenter-components-vue/storybook'),
         },
       },

@@ -90,75 +90,85 @@ export const EpTablePagination: React.FC<EpTablePaginationProps> = ({
     }
   }
 
+  const resultsPerPageControl = (
+    <EpFlex className="justify-end align-center gap-10 text--overflow-hidden">
+      Results per page
+      <div style={{ '--ep-input-styler-width': '7.5rem' } as React.CSSProperties}>
+        <EpSelect
+          value={resultsPerPage}
+          selectId="resultsPerPage"
+          options={resultsPerPageOptions}
+          onChange={(value) => onResultsPerPageChange(Number(value))}
+        />
+      </div>
+    </EpFlex>
+  )
+
+  const pageControls = (
+    <EpFlex>
+      <EpButton
+        disabled={currentPage === 1}
+        aria-label="Previous page"
+        onClick={prevPage}
+        iconLeft={
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10 12l-4-4 4-4" stroke="currentColor" strokeWidth="2" fill="none" />
+          </svg>
+        }
+      />
+      {showPages && (
+        <>
+          <EpButton
+            aria-label="First page"
+            className={currentPage === 1 ? 'ep-button--selected' : ''}
+            onClick={() => onPageChange(1)}
+          >
+            1
+          </EpButton>
+          {shouldShowStartEllipsis && <span>...</span>}
+          {pageRange.map((page) => (
+            <EpButton
+              key={page}
+              aria-label={`Page ${page}`}
+              className={currentPage === page ? 'ep-button--selected' : ''}
+              onClick={() => onPageChange(page)}
+            >
+              {page.toString()}
+            </EpButton>
+          ))}
+          {shouldShowEndEllipsis && <span>...</span>}
+          {totalPages > 1 && (
+            <EpButton
+              aria-label="Last page"
+              className={currentPage === totalPages ? 'ep-button--selected' : ''}
+              onClick={() => onPageChange(totalPages)}
+            >
+              {totalPages.toString()}
+            </EpButton>
+          )}
+        </>
+      )}
+      <EpButton
+        aria-label="Next page"
+        disabled={currentPage === totalPages}
+        onClick={nextPage}
+        iconRight={
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M6 12l4-4-4-4" stroke="currentColor" strokeWidth="2" fill="none" />
+          </svg>
+        }
+      />
+    </EpFlex>
+  )
+
   return (
     <div className={`ep-table-pagination${className ? ` ${className}` : ''}`}>
-      <EpFooter rightGap="1rem" leftFlex="0 1 40rem">
-        <EpFlex className="justify-end align-center gap-10 text--overflow-hidden" slot="left">
-          Results per page
-          <div style={{ '--ep-input-styler-width': '7.5rem' } as React.CSSProperties}>
-            <EpSelect
-              value={resultsPerPage}
-              selectId="resultsPerPage"
-              options={resultsPerPageOptions}
-              onChange={onResultsPerPageChange}
-            />
-          </div>
-        </EpFlex>
-        <EpFlex slot="right">
-          <EpButton
-            disabled={currentPage === 1}
-            aria-label="Previous page"
-            onClick={prevPage}
-            iconLeft={
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M10 12l-4-4 4-4" stroke="currentColor" strokeWidth="2" fill="none" />
-              </svg>
-            }
-          />
-          {showPages && (
-            <>
-              <EpButton
-                aria-label="First page"
-                className={currentPage === 1 ? 'ep-button--selected' : ''}
-                onClick={() => onPageChange(1)}
-              >
-                1
-              </EpButton>
-              {shouldShowStartEllipsis && <span>...</span>}
-              {pageRange.map((page) => (
-                <EpButton
-                  key={page}
-                  aria-label={`Page ${page}`}
-                  className={currentPage === page ? 'ep-button--selected' : ''}
-                  onClick={() => onPageChange(page)}
-                >
-                  {page.toString()}
-                </EpButton>
-              ))}
-              {shouldShowEndEllipsis && <span>...</span>}
-              {totalPages > 1 && (
-                <EpButton
-                  aria-label="Last page"
-                  className={currentPage === totalPages ? 'ep-button--selected' : ''}
-                  onClick={() => onPageChange(totalPages)}
-                >
-                  {totalPages.toString()}
-                </EpButton>
-              )}
-            </>
-          )}
-          <EpButton
-            aria-label="Next page"
-            disabled={currentPage === totalPages}
-            onClick={nextPage}
-            iconRight={
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M6 12l4-4-4-4" stroke="currentColor" strokeWidth="2" fill="none" />
-              </svg>
-            }
-          />
-        </EpFlex>
-      </EpFooter>
+      <EpFooter
+        rightGap="1rem"
+        leftFlex="0 1 40rem"
+        left={resultsPerPageControl}
+        right={pageControls}
+      />
     </div>
   )
 }

@@ -5,6 +5,10 @@ storybook-react-static/
 docs/.vitepress/cache/
 docs/.vitepress/dist/
 packages/epicenter-components-vue/dist/
+packages/epicenter-components-react/dist/
+
+# Each packages/* installs independently; only the root lockfile is tracked
+packages/*/package-lock.json
 
 # icons pipeline
 packages/epicenter-icons/cleaned_svgs/

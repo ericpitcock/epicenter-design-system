@@ -17,7 +17,6 @@ const Eye = () => (
 );
 
 export interface EpSignInProps {
-  [key: string]: unknown;
   className?: string;
   containerProps?: React.ComponentProps<typeof EpContainer>;
   onReset?: (email: string) => void;

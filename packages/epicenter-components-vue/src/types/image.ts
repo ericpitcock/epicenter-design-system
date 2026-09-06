@@ -23,7 +23,10 @@ export interface ImageInset {
 
 export type ImageState = 'loading' | 'loaded' | 'error'
 
-interface BaseProps {
+// Exported because `EpAppImageProps` is built on it: a declaration that
+// references a private name cannot be emitted, and vue-tsc drops the whole SFC
+// rather than reporting it.
+export interface BaseProps {
   // --- source ---
   src: string
   srcset?: string

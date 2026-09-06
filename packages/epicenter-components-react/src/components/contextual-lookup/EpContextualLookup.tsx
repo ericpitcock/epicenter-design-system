@@ -12,7 +12,6 @@ import { EpMenu } from '../menu/EpMenu';
 import { EpMenuItem } from '../menu/EpMenuItem';
 
 export interface EnrichmentOption {
-  [key: string]: unknown;
   label: string;
 }
 

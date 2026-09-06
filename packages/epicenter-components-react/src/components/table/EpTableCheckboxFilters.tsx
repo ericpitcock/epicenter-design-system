@@ -48,10 +48,13 @@ export const EpTableCheckboxFilters: React.FC<EpTableCheckboxFiltersProps> = ({
             {filterSet.map((checkbox) => (
               <EpCheckbox
                 key={checkbox.label}
+                id={`${category}-${checkbox.label}`}
+                name={category}
+                value={String(checkbox.value ?? checkbox.label)}
                 label={checkbox.label}
                 checked={checkbox.checked}
-                onChange={(checked) =>
-                  handleCheckboxChange(category, checkbox.label, checked)
+                onChange={(event) =>
+                  handleCheckboxChange(category, checkbox.label, event.target.checked)
                 }
               />
             ))}

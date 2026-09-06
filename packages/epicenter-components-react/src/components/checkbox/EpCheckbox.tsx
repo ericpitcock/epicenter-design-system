@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactNode, forwardRef } from 'react';
+import { ChangeEvent, ReactNode, forwardRef } from 'react';
 
 export interface EpCheckboxProps {
   /** Whether the checkbox is checked */

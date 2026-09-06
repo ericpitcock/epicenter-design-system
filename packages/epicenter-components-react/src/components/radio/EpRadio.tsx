@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactNode, forwardRef } from 'react';
+import { ChangeEvent, ReactNode, forwardRef } from 'react';
 
 export interface EpRadioProps {
   /** Whether this radio is selected */
