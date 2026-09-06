@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import 'mapbox-gl/dist/mapbox-gl.css'
   import { computed, nextTick, onBeforeUnmount, onMounted, onUpdated, ref, useTemplateRef } from 'vue'
 
   interface MapSource {
@@ -142,6 +141,15 @@
     return new Promise((resolve) => {
       if (!epMapCanvas.value) return
 
+      // The stylesheet is deliberately not imported here — consumers import
+      // 'mapbox-gl/dist/mapbox-gl.css' themselves, as mapbox's own docs
+      // instruct. mapbox-gl is an optional peer, and a bundler resolving this
+      // package cannot resolve a *subpath* of one it has not installed: Vite
+      // rewrites it to a `__vite-optional-peer-dep:` stub that its
+      // import-analysis then refuses, static or dynamic. Because this chunk
+      // sits in the barrel's graph, that broke every consumer's dev server —
+      // including apps that never render a map. The bare specifier below is
+      // fine; only subpaths are affected.
       import('mapbox-gl').then((module) => {
         mapboxgl = module.default
         map.value = new mapboxgl.Map({

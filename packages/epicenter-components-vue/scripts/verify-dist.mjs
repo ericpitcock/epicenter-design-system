@@ -90,6 +90,33 @@ for (const [subpath, target] of Object.entries(pkg.exports ?? {})) {
   }
 }
 
+// --- No optional peer subpath is imported at all -----------------------------
+
+// A consumer's bundler can resolve the bare specifier of an optional peer it has
+// not installed — Vite hands back a stub that throws only if the code actually
+// runs, which is what should happen when someone renders EpMap without
+// mapbox-gl. It cannot do the same for a *subpath*: Vite rewrites
+// `mapbox-gl/dist/mapbox-gl.css` to a `__vite-optional-peer-dep:` specifier that
+// its own import-analysis then refuses to resolve, whether the import is static
+// or dynamic. These chunks sit in the barrel's graph, so one such import breaks
+// every consumer's dev server — including apps that never render the component.
+// Stylesheets of optional peers are therefore the consumer's to import.
+const optionalPeers = Object.entries(pkg.peerDependenciesMeta ?? {})
+  .filter(([, meta]) => meta?.optional)
+  .map(([name]) => name)
+
+for (const module of modules) {
+  const contents = fs.readFileSync(module, 'utf8')
+
+  for (const peer of optionalPeers) {
+    const subpathImport = new RegExp(`['"]${peer}/[^'"]+['"]`)
+    const match = contents.match(subpathImport)
+    if (match) {
+      fail(`${rel(module)} imports ${match[0]} — a subpath of the optional peer "${peer}" cannot be resolved by a consumer that has not installed it`)
+    }
+  }
+}
+
 // --- Report ----------------------------------------------------------------
 
 if (failures.length > 0) {

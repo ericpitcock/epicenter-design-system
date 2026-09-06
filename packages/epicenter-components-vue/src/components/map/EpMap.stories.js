@@ -1,3 +1,5 @@
+// The library no longer imports its optional peers' stylesheets — consumers do.
+import 'mapbox-gl/dist/mapbox-gl.css'
 import { EpMap } from '@ericpitcock/epicenter-components-vue'
 import { watch } from 'vue'
 

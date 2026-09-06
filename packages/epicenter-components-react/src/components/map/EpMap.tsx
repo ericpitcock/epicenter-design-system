@@ -72,7 +72,9 @@ export const EpMap: React.FC<EpMapProps> = ({
   useEffect(() => {
     const loadMap = async () => {
       const mapboxgl = (await import('mapbox-gl')).default
-      await import('mapbox-gl/dist/mapbox-gl.css')
+      // Stylesheet intentionally left to the consumer — a consumer's bundler cannot
+      // resolve a *subpath* of an optional peer it has not installed. See the Vue
+      // EpMap note for the full reasoning.
       mapboxglRef.current = mapboxgl
 
       if (!mapContainerRef.current) return

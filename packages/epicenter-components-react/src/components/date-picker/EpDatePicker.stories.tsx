@@ -1,3 +1,6 @@
+// The library no longer imports its optional peers' stylesheets — consumers do.
+import 'flatpickr/dist/flatpickr.min.css';
+
 import { EpDatePicker } from '@ericpitcock/epicenter-components-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { paddedSurface } from '../../../storybook/helpers/decorators';

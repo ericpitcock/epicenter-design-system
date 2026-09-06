@@ -69,8 +69,9 @@ export const EpDatePicker = forwardRef<EpDatePickerRef, EpDatePickerProps>(
           const module = await import('flatpickr');
           const flatpickr = module.default;
 
-          // Import Flatpickr CSS
-          await import('flatpickr/dist/flatpickr.min.css');
+          // Stylesheet intentionally left to the consumer — a consumer's bundler cannot
+          // resolve a *subpath* of an optional peer it has not installed. See the Vue
+          // EpMap note for the full reasoning.
 
           // Determine position
           let position: 'auto' | 'above' | 'below' | 'auto left' | 'auto right' | 'above left' | 'above right' | 'below left' | 'below right' = 'auto';
