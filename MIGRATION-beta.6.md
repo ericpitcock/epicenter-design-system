@@ -1,4 +1,10 @@
-# Migrating to 2.0.0-beta.5
+# Migrating to 2.0.0-beta.6
+
+> beta.5 is broken — do not use it. A static `import 'mapbox-gl/dist/mapbox-gl.css'`
+> inside `EpMap` compiled into a chunk that the barrel pulls in, so **every** consumer's
+> dev server failed to start with `Failed to resolve import
+> "__vite-optional-peer-dep:mapbox-gl/dist/mapbox-gl.css:..."`, including apps that never
+> render a map. Fixed in beta.6 by section 7 below.
 
 `@ericpitcock/epicenter-components-vue` and `@ericpitcock/epicenter-components-react` now
 publish **compiled ESM with type declarations** instead of raw source. This is a breaking
@@ -111,3 +117,27 @@ and `EpNotifications` were passing Vue-style `<div slot="left">` children into i
 React dropped on the floor — the browser-frame window buttons and the notifications
 title/"Clear all" button never rendered. They now do. If you were compensating for their
 absence in your own CSS, remove it.
+
+## 7. Import the optional peers' stylesheets yourself
+
+The library used to import `mapbox-gl/dist/mapbox-gl.css` and
+`flatpickr/dist/flatpickr.min.css` on your behalf. It no longer can.
+
+A bundler resolving this package can handle the *bare* specifier of an optional peer you
+have not installed — Vite substitutes a stub that only throws if the code actually runs,
+which is the right behaviour for rendering `EpMap` without `mapbox-gl`. It cannot do that
+for a **subpath**: Vite rewrites `mapbox-gl/dist/mapbox-gl.css` to a
+`__vite-optional-peer-dep:` specifier that its own import-analysis then refuses, static or
+dynamic. Since these chunks sit in the barrel's graph, one such import broke every
+consumer's dev server.
+
+So if you render either component, add its stylesheet to your app — which is what
+mapbox's and flatpickr's own docs tell you to do anyway:
+
+```js
+import 'mapbox-gl/dist/mapbox-gl.css'      // if you use EpMap
+import 'flatpickr/dist/flatpickr.min.css'  // if you use EpDatePicker
+```
+
+`scripts/verify-dist.mjs` now fails the build if any published module imports a subpath of
+an optional peer, so this cannot regress.
