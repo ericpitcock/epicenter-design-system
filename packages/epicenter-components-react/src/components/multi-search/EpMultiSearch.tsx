@@ -235,6 +235,7 @@ export const EpMultiSearch = forwardRef<HTMLDivElement, EpMultiSearchProps>(
         <input
           ref={inputRef}
           type="text"
+          data-focus-ring="none"
           value={value}
           placeholder={placeholderValue}
           disabled={disabled}

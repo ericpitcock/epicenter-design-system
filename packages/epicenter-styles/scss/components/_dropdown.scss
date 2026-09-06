@@ -8,7 +8,6 @@
     opacity var(--duration--fast) ease,
     display var(--duration--fast) allow-discrete,
     overlay var(--duration--fast) allow-discrete;
-
   position: relative;
   width: var(--ep-dropdown-width);
   anchor-name: --ep-dropdown-anchor;
@@ -18,15 +17,15 @@
   // ancestor overflow, no z-index needed) and is anchor-positioned back onto
   // the .ep-dropdown root, which wraps the trigger at fit-content width.
   &__container {
-    // overflow/padding/border/margin/background/color/inset reset the UA
-    // [popover] sheet. overflow must be visible: submenus and the enrichment
-    // preview hang outside the panel box.
-    overflow: visible;
     // position must be declared here, not inherited from the UA [popover]
     // sheet: Safari only applies the UA position while the popover is open,
     // so during the allow-discrete close fade the panel would fall into
     // normal flow — a ghost panel that shoves the layout until display flips.
     position: fixed;
+    // overflow/padding/border/margin/background/color/inset reset the UA
+    // [popover] sheet. overflow must be visible: submenus and the enrichment
+    // preview hang outside the panel box.
+    overflow: visible;
     min-width: var(--ep-dropdown-min-width);
     padding: 0;
     border: 0;

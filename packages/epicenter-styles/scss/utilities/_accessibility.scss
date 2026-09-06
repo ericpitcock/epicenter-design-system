@@ -24,6 +24,15 @@ summary,
   }
 }
 
+// Composite controls draw the focus ring on their wrapper. The inner control
+// opts out with this attribute so the two rings don't stack. It has to live
+// here, next to the rule it cancels: `epicenter.utilities` outranks
+// `epicenter.components`, so a component stylesheet cannot switch the ring off
+// on its own no matter how specific its selector is.
+[data-focus-ring="none"]:focus-visible {
+  outline: none;
+}
+
 details[open] > summary:focus-visible {
   outline: var(--focus-outline);
   outline-offset: var(--focus-outline-offset);

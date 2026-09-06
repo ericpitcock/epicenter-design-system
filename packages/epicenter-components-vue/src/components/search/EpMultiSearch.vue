@@ -171,6 +171,7 @@
       ref="input"
       v-model="value"
       type="text"
+      data-focus-ring="none"
       :placeholder="placeholderValue"
       :disabled="disabled"
       @input="onInput"
