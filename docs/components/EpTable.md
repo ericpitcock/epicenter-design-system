@@ -18,6 +18,37 @@ const { fixedHeader, cellWidths, tableComponent, tableHead } = useFixedHeader()
 
 The copy's horizontal offset is a CSS scroll-driven animation whose timeline is the container's scroll, so the browser interpolates it on the compositor and it cannot fall behind the body. Column widths are measured by a `ResizeObserver`, and nothing runs on scroll at all. Where `animation-timeline` is unsupported the composable falls back to a `requestAnimationFrame`-coalesced transform.
 
+##### What a consumer has to provide
+
+`fixedHeader` has real requirements, and all but the last fail *silently*.
+
+**1. `.ep-table-container` must be the element that scrolls sideways.** This is the one that bites. The pinned copy is bound to that container's scroll, so if something else scrolls instead there is nothing for it to follow and the copy sits still while the body moves.
+
+The container needs a **definite** inline size. `width: 100%` is not enough on its own — a percentage only resolves if every ancestor up to a definite size resolves too, and a single shrink-to-fit ancestor sizes the whole chain by the table instead. The container then grows past the viewport and some ancestor scrolls in its place. The usual culprits:
+
+- a flex item left at the default `min-width: auto` (its automatic minimum size is its content, which overrides `width: 100%`)
+- a column flex container with `align-items` other than `stretch`
+- an `inline-block`, a grid item at `min-width: auto`, or a table cell
+
+`useFixedHeader` logs a one-time warning when it detects this.
+
+**2. The header component must expose its `<thead>` as a template ref named `thead`.** Widths are measured off the real header's cells. `EpTableHead` does this; a custom header rendered into the `thead` slot must too.
+
+**3. Both headers must render the same cells in the same order.** Widths are copied positionally, and `.ep-table--fixed-header` is `table-layout: fixed`, so the copy honours them exactly.
+
+**4. `--ep-table-fixed-top` is an offset from the top of the viewport,** because the copy is `position: fixed`. Passing a `scrollElement` other than `window` changes *when* the header pins, not *where* it sits.
+
+Interactive controls in the pinned copy are not clickable — it is `inert` and `aria-hidden`, being a duplicate of a header that is still in the DOM. Sorting from a pinned header is a known gap.
+
+##### Troubleshooting
+
+| Symptom | Cause |
+|---|---|
+| Header pins, but does not move when scrolling sideways | The container is not the horizontal scroller — see requirement 1. Check `el.scrollWidth > el.clientWidth` on `.ep-table-container`. |
+| Header never appears | The `thead` ref is missing, so nothing is being observed. |
+| Columns misaligned | The two headers render different cells, or a custom header does not reproduce `th > div > span.label`. |
+| Header appears in the wrong place | An ancestor with `transform`, `filter`, `perspective`, `backdrop-filter` or `contain: paint` makes itself the containing block for `position: fixed`. |
+
 ##### Migrating from 2.0.0-beta.6
 
 `useFixedHeader` now takes a single options object — `{ fixedTop?, scrollElement? }` — instead of four positional arguments, and returns `{ cellWidths, fixedHeader, measure, tableComponent, tableHead }`.
@@ -258,6 +289,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-table-container-overflow` | `auto` | — |
 | `--ep-table-fixed-box-shadow` | `0 0.2rem 1.1rem var(--box-shadow-color)` | — |
 | `--ep-table-fixed-offset` | `0` | — |
+| `--ep-table-pin-sentinel-size` | `0.1rem` | — |
 | `--ep-table-fixed-top` | `0` | — |
 | `--ep-table-fixed-z-index` | `10` | — |
 | `--ep-table-sticky-top` | `0` | — |
@@ -358,6 +390,18 @@ defaults on its root class, and a declaration on the element beats an inherited 
     class="ep-table-container"
     @scroll="onScroll"
   >
+    <!--
+      Marks the top edge of the header for useFixedHeader's IntersectionObserver.
+      A zero-height marker rather than the header itself: an observer can only
+      report the header leaving the viewport, which happens a full header-height
+      after its top reaches the line. Sticky on the inline axis so scrolling the
+      table sideways cannot carry it out of view and read as "scrolled away".
+    -->
+    <div
+      ref="tablePinSentinel"
+      class="ep-table__pin-sentinel"
+      aria-hidden="true"
+    />
     <table
       ref="tableElement"
       :class="['ep-table', classes]"
@@ -498,6 +542,9 @@ defaults on its root class, and a declaration on the element beats an inherited 
   // useFixedHeader on layout change — never while scrolling — and read by the
   // `ep-table-track-x` keyframes, which the container's scroll timeline drives.
   --ep-table-fixed-offset: 0;
+  // The pin marker's box. Small but not zero: a zero-area target is unreliable
+  // for an IntersectionObserver. Not a design knob.
+  --ep-table-pin-sentinel-size: 0.1rem;
 
   overflow: var(--ep-table-container-overflow);
   width: var(--ep-table-container-width);
@@ -516,6 +563,19 @@ defaults on its root class, and a declaration on the element beats an inherited 
 .ep-table {
   width: var(--ep-table-width);
   min-width: var(--ep-table-min-width);
+
+  // Sits at the top edge of the header and is watched by useFixedHeader.
+  // `sticky` on the inline axis keeps it in view when the table is scrolled
+  // sideways; the negative margin keeps it out of the layout entirely.
+  &__pin-sentinel {
+    position: sticky;
+    left: 0;
+    width: var(--ep-table-pin-sentinel-size);
+    height: var(--ep-table-pin-sentinel-size);
+    margin-bottom: calc(-1 * var(--ep-table-pin-sentinel-size));
+    pointer-events: none;
+    visibility: hidden;
+  }
 
   thead {
     width: var(--ep-table-head-width);

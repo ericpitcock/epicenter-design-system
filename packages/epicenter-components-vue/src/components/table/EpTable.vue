@@ -72,6 +72,18 @@
     class="ep-table-container"
     @scroll="onScroll"
   >
+    <!--
+      Marks the top edge of the header for useFixedHeader's IntersectionObserver.
+      A zero-height marker rather than the header itself: an observer can only
+      report the header leaving the viewport, which happens a full header-height
+      after its top reaches the line. Sticky on the inline axis so scrolling the
+      table sideways cannot carry it out of view and read as "scrolled away".
+    -->
+    <div
+      ref="tablePinSentinel"
+      class="ep-table__pin-sentinel"
+      aria-hidden="true"
+    />
     <table
       ref="tableElement"
       :class="['ep-table', classes]"

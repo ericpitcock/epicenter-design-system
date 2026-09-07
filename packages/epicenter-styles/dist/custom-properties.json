@@ -7676,6 +7676,14 @@
           "property": "min-width"
         },
         {
+          "name": "--ep-table-pin-sentinel-size",
+          "default": "0.1rem",
+          "group": "box",
+          "part": "pin-sentinel",
+          "state": null,
+          "property": "size"
+        },
+        {
           "name": "--ep-table-row-hover-bg-color",
           "default": "light-dark(hsl(var(--gray-10)), hsl(var(--gray-450)))",
           "group": "surface",

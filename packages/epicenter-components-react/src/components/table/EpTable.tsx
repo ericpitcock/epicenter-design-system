@@ -78,6 +78,7 @@ export const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
     const tableElementRef = useRef<HTMLTableElement | null>(null)
     const tableFixedViewportRef = useRef<HTMLDivElement | null>(null)
     const tableFixedRef = useRef<HTMLTableElement | null>(null)
+    const tablePinSentinelRef = useRef<HTMLDivElement | null>(null)
 
     const visibleColumns = columns.filter(
       (column) => !hiddenColumns.includes(column.key)
@@ -128,6 +129,17 @@ export const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
         className="ep-table-container"
         onScroll={handleScroll}
       >
+        {/*
+          Marks the top edge of the header for a consumer's pin detection. A
+          zero-height marker rather than the header itself: an observer can only
+          report the header leaving the viewport, which happens a full
+          header-height after its top reaches the line.
+        */}
+        <div
+          ref={tablePinSentinelRef}
+          className="ep-table__pin-sentinel"
+          aria-hidden="true"
+        />
         <table
           ref={tableElementRef}
           className={tableClasses}

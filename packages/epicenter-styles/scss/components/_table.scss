@@ -55,6 +55,9 @@
   // useFixedHeader on layout change — never while scrolling — and read by the
   // `ep-table-track-x` keyframes, which the container's scroll timeline drives.
   --ep-table-fixed-offset: 0;
+  // The pin marker's box. Small but not zero: a zero-area target is unreliable
+  // for an IntersectionObserver. Not a design knob.
+  --ep-table-pin-sentinel-size: 0.1rem;
 
   overflow: var(--ep-table-container-overflow);
   width: var(--ep-table-container-width);
@@ -73,6 +76,19 @@
 .ep-table {
   width: var(--ep-table-width);
   min-width: var(--ep-table-min-width);
+
+  // Sits at the top edge of the header and is watched by useFixedHeader.
+  // `sticky` on the inline axis keeps it in view when the table is scrolled
+  // sideways; the negative margin keeps it out of the layout entirely.
+  &__pin-sentinel {
+    position: sticky;
+    left: 0;
+    width: var(--ep-table-pin-sentinel-size);
+    height: var(--ep-table-pin-sentinel-size);
+    margin-bottom: calc(-1 * var(--ep-table-pin-sentinel-size));
+    pointer-events: none;
+    visibility: hidden;
+  }
 
   thead {
     width: var(--ep-table-head-width);

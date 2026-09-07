@@ -28,9 +28,15 @@
  *    layout.
  *  - Column widths are measured by a ResizeObserver watching the real header
  *    cells, and written only when a width actually changed.
- *  - Whether the clone shows at all is an IntersectionObserver on the real
- *    header, which replaces both the window scroll listener and the caller-side
- *    offset measurement the old `fixedHeaderOffset` forced on every consumer.
+ *  - Whether the copy shows at all is an IntersectionObserver on a marker at
+ *    the top edge of the real header, replacing both the window scroll listener
+ *    and the caller-side offset measurement `fixedHeaderOffset` forced on every
+ *    consumer.
+ *
+ * The table's own container has to be the element that scrolls sideways. That
+ * is what the scroll timeline binds to, so a container with no bounded inline
+ * size — one that grows to fit the table while an ancestor scrolls instead —
+ * leaves the copy with nothing to follow. See `warnIfContainerIsNotTheScroller`.
  */
 import { type ComponentPublicInstance, type Ref, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 
@@ -90,7 +96,8 @@ export const useFixedHeader = (options: UseFixedHeaderOptions = {}): UseFixedHea
   let resizeObserver: ResizeObserver | null = null
   let intersectionObserver: IntersectionObserver | null = null
   let observedCells: HTMLElement[] = []
-  let observedRootKey = ''
+  let sentinel: HTMLElement | null = null
+  let warnedAboutScroller = false
 
   /** The real header's `<thead>`, which the head component exposes by ref. */
   const realThead = (): HTMLElement | null => {
@@ -144,50 +151,72 @@ export const useFixedHeader = (options: UseFixedHeaderOptions = {}): UseFixedHea
     for (const cell of cells) resizeObserver.observe(cell)
   }
 
-  const rootHeight = (): number =>
-    scrollElement instanceof HTMLElement ? scrollElement.clientHeight : window.innerHeight
-
-  const scrollExtent = (): number =>
-    scrollElement instanceof HTMLElement ? scrollElement.scrollHeight : document.documentElement.scrollHeight
-
   /**
-   * Arm the pin observer against the half-plane *above* the pin line, so that
-   * "the header overlaps the root" and "the header should be pinned" are the
-   * same statement. The header pins the instant its top edge reaches the line,
-   * rather than a full header-height later when its bottom clears.
+   * Watch the marker at the top edge of the real header.
    *
-   * The shape matters, not just the maths. An IntersectionObserver only calls
-   * back when the intersecting/not-intersecting answer flips, so the condition
-   * has to *be* that flip. Watching a thin band on the line instead — the
-   * obvious first try — leaves "above" and "below" both reading as no
-   * intersection, so a scroll long enough to leap the band in one frame, which
-   * any fling is, produces no callback and strands the header pinned.
+   * The pinned state is `the marker has scrolled above the line`, and an
+   * IntersectionObserver reports exactly that: the marker is either inside the
+   * scrollport or above it. Two things this deliberately does NOT do, both
+   * because they were tried and fail:
    *
-   * Extending the root upward by the scroller's whole extent is what keeps the
-   * header from ever leaving it going up. Both that and the line's depth are
-   * baked into rootMargin when the observer is built, so they are recomputed
-   * when the scroller resizes or the content grows.
+   * Watching the header itself only reports it *leaving* the scrollport, which
+   * does not happen until its bottom edge clears the line — a full
+   * header-height after its top arrives, with the real header sliding away
+   * under nothing.
+   *
+   * Watching a band on the line, or extending the root upward past the line,
+   * both fail because an observer intersects the target's *visible* rect. Once
+   * the header scrolls out of any clipping ancestor — the surrounding page, or
+   * the frame the document is in — that rect is empty, so "above the line" and
+   * "below the fold" become indistinguishable and the callback never fires.
+   * That is why `root` is left implicit here rather than being widened.
    */
-  const watchHeader = (): void => {
-    const thead = realThead()
-    if (!thead) return
+  const watchSentinel = (): void => {
+    if (!sentinel || intersectionObserver) return
 
-    const height = rootHeight()
-    const extent = scrollExtent()
-    const key = `${height}/${extent}`
-    if (intersectionObserver && key === observedRootKey) return
-    observedRootKey = key
-
-    intersectionObserver?.disconnect()
     intersectionObserver = new IntersectionObserver(([entry]) => {
       if (!entry) return
-      fixedHeader.value = entry.isIntersecting
+      // `boundingClientRect` is the marker's own box, so this stays right even
+      // when the marker itself is clipped out of view.
+      fixedHeader.value = !entry.isIntersecting && entry.boundingClientRect.top < fixedTop
     }, {
       root: scrollElement instanceof HTMLElement ? scrollElement : null,
-      rootMargin: `${extent}px 0px ${-(height - fixedTop)}px 0px`,
+      rootMargin: `${-fixedTop}px 0px 0px 0px`,
       threshold: 0,
     })
-    intersectionObserver.observe(thead)
+    intersectionObserver.observe(sentinel)
+  }
+
+  /**
+   * The pinned header only tracks the body if the container is the thing that
+   * scrolls sideways. A container with no bounded inline size grows to fit the
+   * table instead, and some ancestor scrolls in its place — at which point
+   * there is no scroll range to bind to and the header sits still. It fails
+   * silently, so say so once.
+   */
+  const warnIfContainerIsNotTheScroller = (): void => {
+    if (warnedAboutScroller || !container) return
+
+    // Compared against the page's scrollport rather than the container's parent:
+    // when the chain is blown out, the parent is blown out with it and can never
+    // be the reference.
+    const viewportWidth = scrollElement instanceof HTMLElement
+      ? scrollElement.clientWidth
+      : document.documentElement.clientWidth
+    const grewInsteadOfScrolling = container.scrollWidth <= container.clientWidth
+      && container.getBoundingClientRect().width > viewportWidth + 1
+
+    if (!grewInsteadOfScrolling) return
+
+    warnedAboutScroller = true
+    console.warn(
+      '[useFixedHeader] .ep-table-container is wider than the viewport instead of scrolling, '
+      + 'so the pinned header has no scroll to follow. It needs a definite inline size: a '
+      + 'percentage width only resolves if every ancestor does too, and one shrink-to-fit '
+      + 'ancestor — a flex item with the default `min-width: auto`, a column flex container '
+      + 'with `align-items` other than `stretch`, an inline-block, a grid item — is enough to '
+      + 'size the chain by the table instead. See docs/components/EpTable.md.',
+    )
   }
 
   const measure = (): void => {
@@ -217,7 +246,8 @@ export const useFixedHeader = (options: UseFixedHeaderOptions = {}): UseFixedHea
     if (changed) cellWidths.value = next.map(width => ({ width }))
 
     observeCells(cells)
-    watchHeader()
+    watchSentinel()
+    warnIfContainerIsNotTheScroller()
     track()
   }
 
@@ -234,6 +264,7 @@ export const useFixedHeader = (options: UseFixedHeaderOptions = {}): UseFixedHea
       viewport = component.$refs.tableFixedViewport ?? null
       clone = component.$refs.tableFixed ?? null
       bodyTable = component.$refs.tableElement ?? null
+      sentinel = component.$refs.tablePinSentinel ?? null
     }
 
     // Nothing here observes the elements measure() writes to, so a measure
@@ -241,8 +272,6 @@ export const useFixedHeader = (options: UseFixedHeaderOptions = {}): UseFixedHea
     resizeObserver = new ResizeObserver(() => measure())
     if (container) resizeObserver.observe(container)
     if (bodyTable) resizeObserver.observe(bodyTable)
-
-    watchHeader()
 
     if (!usingScrollTimeline && container) {
       container.addEventListener('scroll', onContainerScroll, { passive: true })
