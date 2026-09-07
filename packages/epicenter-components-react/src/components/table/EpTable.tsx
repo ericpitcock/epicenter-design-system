@@ -75,6 +75,10 @@ export const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
     ref
   ) => {
     const tableContainerRef = useRef<HTMLDivElement | null>(null)
+    const tableElementRef = useRef<HTMLTableElement | null>(null)
+    const tableFixedViewportRef = useRef<HTMLDivElement | null>(null)
+    const tableFixedRef = useRef<HTMLTableElement | null>(null)
+    const tablePinSentinelRef = useRef<HTMLDivElement | null>(null)
 
     const visibleColumns = columns.filter(
       (column) => !hiddenColumns.includes(column.key)
@@ -125,7 +129,21 @@ export const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
         className="ep-table-container"
         onScroll={handleScroll}
       >
-        <table className={tableClasses}>
+        {/*
+          Marks the top edge of the header for a consumer's pin detection. A
+          zero-height marker rather than the header itself: an observer can only
+          report the header leaving the viewport, which happens a full
+          header-height after its top reaches the line.
+        */}
+        <div
+          ref={tablePinSentinelRef}
+          className="ep-table__pin-sentinel"
+          aria-hidden="true"
+        />
+        <table
+          ref={tableElementRef}
+          className={tableClasses}
+        >
           {renderHeader ? (
             renderHeader({ visibleColumns, showActionsMenu })
           ) : (
@@ -172,12 +190,32 @@ export const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
           </tbody>
         </table>
         {fixedHeader && (
-          <table
-            className="ep-table ep-table--fixed-header"
-            style={{ display: fixedHeader ? undefined : 'none' }}
+          /*
+           * The pinned header is `position: fixed`, so the container's
+           * `overflow` does not clip it — scrolled right it would hang off the
+           * container's leading edge. This wrapper is the fixed, clipping box;
+           * the table inside is what translates, driven by the container's
+           * scroll timeline in CSS.
+           *
+           * There is no React equivalent of Vue's `useFixedHeader` yet, so a
+           * consumer still owns the measuring: size this wrapper over the
+           * container's scrollport, copy the header cell widths, and set
+           * `--ep-table-fixed-offset` on the table to
+           * `-(scrollWidth - clientWidth)px`. None of that belongs on a scroll
+           * handler — the CSS animation reads the scroll position itself.
+           */
+          <div
+            ref={tableFixedViewportRef}
+            className="ep-table-fixed-viewport"
+            aria-hidden="true"
           >
-            {renderFixedHeader?.({ visibleColumns, showActionsMenu })}
-          </table>
+            <table
+              ref={tableFixedRef}
+              className="ep-table ep-table--fixed-header"
+            >
+              {renderFixedHeader?.({ visibleColumns, showActionsMenu })}
+            </table>
+          </div>
         )}
       </div>
     )

@@ -58,6 +58,8 @@
     emit('row-click', row)
   }
 
+  // Informational for consumers only: useFixedHeader binds the pinned header to
+  // this container's scroll itself rather than being driven by this event.
   const onScroll = (): void => {
     if (!fixedHeader || !tableContainer.value) return
     emit('container-scroll', tableContainer.value.scrollLeft)
@@ -70,13 +72,28 @@
     class="ep-table-container"
     @scroll="onScroll"
   >
-    <table :class="['ep-table', classes]">
+    <!--
+      Marks the top edge of the header for useFixedHeader's IntersectionObserver.
+      A zero-height marker rather than the header itself: an observer can only
+      report the header leaving the viewport, which happens a full header-height
+      after its top reaches the line. Sticky on the inline axis so scrolling the
+      table sideways cannot carry it out of view and read as "scrolled away".
+    -->
+    <div
+      ref="tablePinSentinel"
+      class="ep-table__pin-sentinel"
+      aria-hidden="true"
+    />
+    <table
+      ref="tableElement"
+      :class="['ep-table', classes]"
+    >
       <!-- @slot Table header slot. Use this to define your table headers with columns and sorting. -->
       <slot
         name="thead"
         v-bind="{ visibleColumns, showActionsMenu }"
       />
-      <tbody ref="tableBody">
+      <tbody>
         <tr
           v-for="row in data"
           :key="(row.id as PropertyKey)"
@@ -113,16 +130,36 @@
         </tr>
       </tbody>
     </table>
-    <table
+    <!--
+      The pinned header is `position: fixed`, so the container's `overflow` does
+      not clip it — scrolled right, it would hang off the container's leading
+      edge. This wrapper is the fixed, clipping box, sized over the container by
+      useFixedHeader; the table inside is what translates, so the element being
+      animated owns no positional properties of its own.
+
+      `aria-hidden` but NOT `inert`: while pinned this is the only header on
+      screen, so it has to stay clickable — sorting from it is the point. That
+      is safe as long as the header slot holds no focusable elements, which is
+      the one thing `aria-hidden` must never hide. Table semantics are unharmed
+      either way: the real header never leaves the DOM, so screen readers still
+      announce column headers per cell from it.
+    -->
+    <div
       v-show="fixedHeader"
-      ref="tableFixed"
-      class="ep-table ep-table--fixed-header"
+      ref="tableFixedViewport"
+      class="ep-table-fixed-viewport"
+      aria-hidden="true"
     >
-      <!-- @slot Fixed header slot for when using fixed header mode. Syncs with the main table header. -->
-      <slot
-        name="thead-fixed"
-        v-bind="{ visibleColumns, showActionsMenu }"
-      />
-    </table>
+      <table
+        ref="tableFixed"
+        class="ep-table ep-table--fixed-header"
+      >
+        <!-- @slot Fixed header slot for when using fixed header mode. Syncs with the main table header. -->
+        <slot
+          name="thead-fixed"
+          v-bind="{ visibleColumns, showActionsMenu }"
+        />
+      </table>
+    </div>
   </div>
 </template>

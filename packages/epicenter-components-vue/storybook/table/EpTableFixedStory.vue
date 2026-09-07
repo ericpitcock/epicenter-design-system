@@ -14,17 +14,25 @@
     sortOrder
   } = useSorting(tableColumnsRef, tableDataRef, 'intensity', 'desc')
 
+  // No arguments: the composable watches the real header to decide when to pin,
+  // and binds the pinned header to the table container's own scroll. The 100px
+  // offset this used to pass was compensating for the old default pinning on the
+  // first pixel of scroll — that is derived from the header's position now.
   const {
     fixedHeader,
     cellWidths,
     tableComponent,
     tableHead,
-    updateAndSync,
-  } = useFixedHeader(window, true, 100, 0)
+  } = useFixedHeader()
 </script>
 
 <template>
-  <div>
+  <!-- `min-width: 0` is load-bearing, not cosmetic. This is a flex item of the
+       decorator, so its automatic minimum size is its content — the full width
+       of the table — which overrides `width: 100%` and blows the whole chain
+       out past the viewport. The table container then grows to fit rather than
+       scrolling, and a pinned header has no scroll to follow. -->
+  <div class="fixed-header-story">
     <div class="story-header">
       Header
     </div>
@@ -35,7 +43,6 @@
       v-bind="$attrs"
       class="fixed-header-table"
       :fixed-header="fixedHeader"
-      @container-scroll="updateAndSync"
     >
       <template #thead="{ visibleColumns, showActionsMenu }">
         <ep-table-head
@@ -82,6 +89,16 @@
 </template>
 
 <style scoped>
+  .fixed-header-story {
+    width: 100%;
+    /* Clamped to the viewport, not just `width: 100%`. Every ancestor up to the
+       body is sized by its content here, so a percentage resolves against the
+       table's own width and the container grows instead of scrolling. A
+       definite size is the only thing that bounds it. */
+    max-width: 100dvw;
+    min-width: 0;
+  }
+
   .story-header {
     display: grid;
     place-items: center;

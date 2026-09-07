@@ -1,10 +1,69 @@
 `EpTable` is built for data-rich apps, with all the features you need: sorting, filtering, pagination, search, column visibility, and more.
 
-#### `stickyHeader` vs`fixedHeader`
+#### `stickyHeader` vs `fixedHeader`
 
-Use `stickyHeader` when the table can rely on pure CSS `position: sticky` (no scrolling overflow ancestor breaking it).
+Use `stickyHeader` when the table can rely on pure CSS `position: sticky`.
 
-If the table lives inside a scrollable container where sticky fails, use `fixedHeader` together with the `useFixedHeader` composable. This duplicates the header and positions it with `position: fixed`, keeping column widths in sync.
+Reach for `fixedHeader` when it cannot. The usual case is a table that scrolls horizontally inside its container while the *page* scrolls vertically: giving the container inline overflow makes it a scrollport on both axes, so a sticky header inside it has nothing left to stick to. `fixedHeader` duplicates the header, pins the copy to the viewport, and keeps its columns locked to the body.
+
+Pair it with the `useFixedHeader` composable, which needs no arguments — it watches the real header to decide when to pin, and binds the copy to the container's own scroll:
+
+```js
+const { fixedHeader, cellWidths, tableComponent, tableHead } = useFixedHeader()
+```
+
+The copy's horizontal offset is a CSS scroll-driven animation whose timeline is the container's scroll, so the browser interpolates it on the compositor and it cannot fall behind the body. Column widths are measured by a `ResizeObserver`, and nothing runs on scroll at all. Where `animation-timeline` is unsupported the composable falls back to a `requestAnimationFrame`-coalesced transform.
+
+##### What a consumer has to provide
+
+`fixedHeader` has real requirements, and all but the last fail *silently*.
+
+**1. `.ep-table-container` must be the element that scrolls sideways.** This is the one that bites. The pinned copy is bound to that container's scroll, so if something else scrolls instead there is nothing for it to follow and the copy sits still while the body moves.
+
+The container needs a **definite** inline size. `width: 100%` is not enough on its own — a percentage only resolves if every ancestor up to a definite size resolves too, and a single shrink-to-fit ancestor sizes the whole chain by the table instead. The container then grows past the viewport and some ancestor scrolls in its place. The usual culprits:
+
+- a flex item left at the default `min-width: auto` (its automatic minimum size is its content, which overrides `width: 100%`)
+- a column flex container with `align-items` other than `stretch`
+- an `inline-block`, a grid item at `min-width: auto`, or a table cell
+
+`useFixedHeader` logs a one-time warning when it detects this.
+
+**2. The header component must expose its `<thead>` as a template ref named `thead`.** Widths are measured off the real header's cells. `EpTableHead` does this; a custom header rendered into the `thead` slot must too.
+
+**3. Both headers must render the same cells in the same order.** Widths are copied positionally, and `.ep-table--fixed-header` is `table-layout: fixed`, so the copy honours them exactly.
+
+**4. `--ep-table-fixed-top` is an offset from the top of the viewport,** because the copy is `position: fixed`. Passing a `scrollElement` other than `window` changes *when* the header pins, not *where* it sits.
+
+**5. Nothing in the `thead-fixed` slot may be focusable.** The pinned copy is clickable — sorting from it is the point, and while pinned it is the only header on screen. It is also `aria-hidden`, so that a screen reader hears one set of column headers rather than two; the real header never leaves the DOM, so table semantics come from it as usual.
+
+That pairing is only safe while the copy holds no focusable elements, since `aria-hidden` must never hide something reachable by keyboard. `EpTableHead` and `EpTableSortableHeader` satisfy this today — the sortable header is a `<th>` with a click handler, not a button. If you put a `<button>`, link or input in a header, drop `aria-hidden` from the copy and accept the duplicate announcement, because the alternative is a WCAG 4.1.2 failure.
+
+Worth knowing: because sorting is a click handler on a `<th>` rather than a button, it is not keyboard-operable in *either* header. That is a pre-existing gap in `EpTableSortableHeader`, not something the pinned copy introduces.
+
+##### Troubleshooting
+
+| Symptom | Cause |
+|---|---|
+| Header pins, but does not move when scrolling sideways | The container is not the horizontal scroller — see requirement 1. Check `el.scrollWidth > el.clientWidth` on `.ep-table-container`. |
+| Header never appears | The `thead` ref is missing, so nothing is being observed. |
+| Columns misaligned | The two headers render different cells, or a custom header does not reproduce `th > div > span.label`. |
+| Header appears in the wrong place | An ancestor with `transform`, `filter`, `perspective`, `backdrop-filter` or `contain: paint` makes itself the containing block for `position: fixed`. |
+| Clicks on the pinned header do nothing | Something is intercepting them — check for `inert` or `pointer-events: none` on an ancestor of `.ep-table-fixed-viewport`. |
+
+##### Migrating from 2.0.0-beta.6
+
+`useFixedHeader` now takes a single options object — `{ fixedTop?, scrollElement? }` — instead of four positional arguments, and returns `{ cellWidths, fixedHeader, measure, tableComponent, tableHead }`.
+
+| Removed | Replacement |
+|---|---|
+| `fixedHeaderOffset` | Nothing. An `IntersectionObserver` derives the activation point from the header's own position, so there is no offset to measure or pass. Callers that measured one can delete that code. |
+| `updateAndSync` | Nothing. Drop `@container-scroll="updateAndSync"` — the composable listens to the container itself. |
+| `updateCellWidths` | `measure()`, for a layout change the observers cannot see. |
+| `syncTablePosition` | `measure()`. |
+
+`initialFixedHeader` is gone too; the observer settles the pinned state within a frame of mount.
+
+`EpTable` now wraps the duplicate header in `<div class="ep-table-fixed-viewport">`, which is the fixed, clipping box. It also renames its internal `tableBody` ref to `tableElement` and adds `tableFixedViewport`.
 
 ## Columns
 Columns are defined in the `columns` prop. Each column can have the following properties:
