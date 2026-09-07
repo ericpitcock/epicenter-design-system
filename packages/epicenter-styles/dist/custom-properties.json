@@ -7781,7 +7781,7 @@
     },
     {
       "block": "table-sortable-header",
-      "class": ".ep-table thead th div.ep-table-sortable-header",
+      "class": ".ep-table thead th > div.ep-table-sortable-header",
       "file": "packages/epicenter-styles/scss/components/_table-sortable-header.scss",
       "properties": [
         {
@@ -8524,12 +8524,36 @@
           "property": "border-radius"
         },
         {
+          "name": "--ep-tooltip-box-shadow",
+          "default": "var(--shadow--tooltip)",
+          "group": "effect",
+          "part": "box",
+          "state": null,
+          "property": "shadow"
+        },
+        {
+          "name": "--ep-tooltip-duration",
+          "default": "var(--duration--default)",
+          "group": "effect",
+          "part": null,
+          "state": null,
+          "property": "duration"
+        },
+        {
           "name": "--ep-tooltip-font-size",
           "default": "var(--font-size--small)",
           "group": "text",
           "part": null,
           "state": null,
           "property": "font-size"
+        },
+        {
+          "name": "--ep-tooltip-font-variation-settings",
+          "default": "var(--font-weight--regular)",
+          "group": "text",
+          "part": null,
+          "state": null,
+          "property": "font-variation-settings"
         },
         {
           "name": "--ep-tooltip-offset",
@@ -8573,7 +8597,7 @@
         },
         {
           "name": "--ep-tooltip-transition",
-          "default": "opacity var(--duration--default) ease",
+          "default": "opacity var(--ep-tooltip-duration) ease",
           "group": "effect",
           "part": null,
           "state": null,

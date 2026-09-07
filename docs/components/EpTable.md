@@ -269,6 +269,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-table-container-width` | `auto` | — |
 | `--ep-table-head-width` | `auto` | — |
 | `--ep-table-min-width` | `0` | — |
+| `--ep-table-pin-sentinel-size` | `0.1rem` | — |
 | `--ep-table-width` | `auto` | — |
 
 ### Border
@@ -292,9 +293,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 |---|---|---|
 | `--ep-table-cell-vertical-align` | `middle` | — |
 | `--ep-table-container-overflow` | `auto` | — |
-| `--ep-table-fixed-box-shadow` | `0 0.2rem 1.1rem var(--box-shadow-color)` | — |
 | `--ep-table-fixed-offset` | `0` | — |
-| `--ep-table-pin-sentinel-size` | `0.1rem` | — |
 | `--ep-table-fixed-top` | `0` | — |
 | `--ep-table-fixed-z-index` | `10` | — |
 | `--ep-table-sticky-top` | `0` | — |
@@ -308,6 +307,12 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-table-header-font-variation-settings` | `var(--font-weight--semi-bold)` | — |
 | `--ep-table-header-text-color` | `var(--text-color--loud)` | — |
 | `--ep-table-row-selected-text-color` | `var(--text--white)` | selected |
+
+### Effect
+
+| Property | Default | State |
+|---|---|---|
+| `--ep-table-fixed-box-shadow` | `0 0.2rem 1.1rem var(--box-shadow-color)` | — |
 
 ### Surface
 
@@ -486,6 +491,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
     </div>
   </div>
 </template>
+
 ```
 
 ## Styles (SCSS)
@@ -597,7 +603,11 @@ defaults on its root class, and a declaration on the element beats an inherited 
         width: var(--ep-table-actions-menu-width);
       }
 
-      div {
+      // The cell's own box, matched as a direct child. A header cell may
+      // contain divs it does not own — a tooltip wrapper, a dropdown — and as a
+      // descendant selector this handed every one of them the cell's flex
+      // layout, full width and height, cell padding and bottom border.
+      > div {
         position: relative;
         display: flex;
         width: 100%;
@@ -763,4 +773,5 @@ defaults on its root class, and a declaration on the element beats an inherited 
   overflow-x: clip;
   overflow-y: visible;
 }
+
 ```

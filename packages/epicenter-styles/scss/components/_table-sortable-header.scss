@@ -1,7 +1,7 @@
 // The sortable header only ever renders inside a table head cell, so its root
 // selector is a descendant rather than a bare class.
-// @root .ep-table thead th div.ep-table-sortable-header
-.ep-table thead th div.ep-table-sortable-header {
+// @root .ep-table thead th > div.ep-table-sortable-header
+.ep-table thead th > div.ep-table-sortable-header {
   --ep-table-sortable-header-active-text-color: var(--primary-color-200);
   --ep-table-sortable-header-padding-inline-end: 3rem;
   justify-content: space-between;

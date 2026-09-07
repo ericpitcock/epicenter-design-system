@@ -104,7 +104,11 @@
         width: var(--ep-table-actions-menu-width);
       }
 
-      div {
+      // The cell's own box, matched as a direct child. A header cell may
+      // contain divs it does not own — a tooltip wrapper, a dropdown — and as a
+      // descendant selector this handed every one of them the cell's flex
+      // layout, full width and height, cell padding and bottom border.
+      > div {
         position: relative;
         display: flex;
         width: 100%;

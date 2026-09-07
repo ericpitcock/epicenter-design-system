@@ -6,8 +6,20 @@
   --ep-tooltip-text-color: var(--text-color);
   --ep-tooltip-border-radius: var(--border-radius--default);
   --ep-tooltip-font-size: var(--font-size--small);
+
+  // The bubble is its own surface, so it sets its own weight rather than
+  // inheriting the trigger's. Without this a tooltip on a table header or any
+  // other bold element came out bold.
+  --ep-tooltip-font-variation-settings: var(--font-weight--regular);
+
+  // --shadow--tooltip has existed since the shadow scale was written and was
+  // wired to nothing, so a tooltip had no edge at all: --interface-overlay sits
+  // two steps from --interface-surface in both themes, and with no border and
+  // no shadow the bubble read as text printed onto whatever was behind it.
+  --ep-tooltip-box-shadow: var(--shadow--tooltip);
   --ep-tooltip-z-index: var(--z-index--tooltip);
-  --ep-tooltip-transition: opacity var(--duration--default) ease;
+  --ep-tooltip-duration: var(--duration--default);
+  --ep-tooltip-transition: opacity var(--ep-tooltip-duration) ease;
 
   // Gap between the tooltip and its trigger.
   --ep-tooltip-offset: 0.5rem;
@@ -31,23 +43,42 @@
 .ep-tooltip {
   position: absolute;
   z-index: var(--ep-tooltip-z-index);
+  // An idle bubble is not laid out at all. This was `visibility: hidden`, which
+  // hides the paint but keeps the box — and an absolutely positioned box inside
+  // a scroll container counts toward that container's scrollable overflow, so
+  // every idle tooltip in a scrolling region added scroll distance nobody could
+  // see the cause of. `display` is the only property that removes the box, and
+  // `visibility` was only ever standing in for it because `display` could not
+  // be transitioned. `allow-discrete` now flips it at the right end of each
+  // transition — on entry immediately, on exit once the fade has finished —
+  // which is exactly the behaviour `visibility` was chosen for.
+  display: none;
   padding: var(--ep-tooltip-padding);
   border-radius: var(--ep-tooltip-border-radius);
   background-color: var(--ep-tooltip-bg-color);
+  box-shadow: var(--ep-tooltip-box-shadow);
   color: var(--ep-tooltip-text-color);
   font-size: var(--ep-tooltip-font-size);
+  font-variation-settings: var(--ep-tooltip-font-variation-settings);
   opacity: 0;
   transform: translate(
     calc(var(--ep-tooltip-translate-x) + var(--ep-tooltip-offset-x)),
     calc(var(--ep-tooltip-translate-y) + var(--ep-tooltip-offset-y))
   );
-  transition: var(--ep-tooltip-transition);
-  visibility: hidden;
+  transition: var(--ep-tooltip-transition), display var(--ep-tooltip-duration) allow-discrete;
   white-space: nowrap;
 
   &.ep-tooltip--visible {
+    display: block;
     opacity: 1;
-    visibility: visible;
+
+    // An element that was not being rendered has no previous value to
+    // transition from, so without a starting style it would appear at full
+    // opacity on the first show. Browsers without @starting-style or
+    // allow-discrete simply skip the fade; the tooltip still shows and hides.
+    @starting-style {
+      opacity: 0;
+    }
   }
 
   // Main axis — which side of the trigger the tooltip sits on.
