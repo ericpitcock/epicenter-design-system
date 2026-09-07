@@ -208,7 +208,6 @@ export const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
             ref={tableFixedViewportRef}
             className="ep-table-fixed-viewport"
             aria-hidden="true"
-            inert
           >
             <table
               ref={tableFixedRef}

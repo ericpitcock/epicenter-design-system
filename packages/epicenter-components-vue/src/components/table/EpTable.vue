@@ -137,17 +137,18 @@
       useFixedHeader; the table inside is what translates, so the element being
       animated owns no positional properties of its own.
 
-      `aria-hidden` alone would leave focusable duplicates hidden from assistive
-      tech, which is worse than either state on its own — `inert` takes them out
-      of the tab order and out of hit testing to match. The real header never
-      leaves the DOM, so nothing is lost.
+      `aria-hidden` but NOT `inert`: while pinned this is the only header on
+      screen, so it has to stay clickable — sorting from it is the point. That
+      is safe as long as the header slot holds no focusable elements, which is
+      the one thing `aria-hidden` must never hide. Table semantics are unharmed
+      either way: the real header never leaves the DOM, so screen readers still
+      announce column headers per cell from it.
     -->
     <div
       v-show="fixedHeader"
       ref="tableFixedViewport"
       class="ep-table-fixed-viewport"
       aria-hidden="true"
-      inert
     >
       <table
         ref="tableFixed"

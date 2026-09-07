@@ -38,7 +38,11 @@ The container needs a **definite** inline size. `width: 100%` is not enough on i
 
 **4. `--ep-table-fixed-top` is an offset from the top of the viewport,** because the copy is `position: fixed`. Passing a `scrollElement` other than `window` changes *when* the header pins, not *where* it sits.
 
-Interactive controls in the pinned copy are not clickable — it is `inert` and `aria-hidden`, being a duplicate of a header that is still in the DOM. Sorting from a pinned header is a known gap.
+**5. Nothing in the `thead-fixed` slot may be focusable.** The pinned copy is clickable — sorting from it is the point, and while pinned it is the only header on screen. It is also `aria-hidden`, so that a screen reader hears one set of column headers rather than two; the real header never leaves the DOM, so table semantics come from it as usual.
+
+That pairing is only safe while the copy holds no focusable elements, since `aria-hidden` must never hide something reachable by keyboard. `EpTableHead` and `EpTableSortableHeader` satisfy this today — the sortable header is a `<th>` with a click handler, not a button. If you put a `<button>`, link or input in a header, drop `aria-hidden` from the copy and accept the duplicate announcement, because the alternative is a WCAG 4.1.2 failure.
+
+Worth knowing: because sorting is a click handler on a `<th>` rather than a button, it is not keyboard-operable in *either* header. That is a pre-existing gap in `EpTableSortableHeader`, not something the pinned copy introduces.
 
 ##### Troubleshooting
 
@@ -48,6 +52,7 @@ Interactive controls in the pinned copy are not clickable — it is `inert` and 
 | Header never appears | The `thead` ref is missing, so nothing is being observed. |
 | Columns misaligned | The two headers render different cells, or a custom header does not reproduce `th > div > span.label`. |
 | Header appears in the wrong place | An ancestor with `transform`, `filter`, `perspective`, `backdrop-filter` or `contain: paint` makes itself the containing block for `position: fixed`. |
+| Clicks on the pinned header do nothing | Something is intercepting them — check for `inert` or `pointer-events: none` on an ancestor of `.ep-table-fixed-viewport`. |
 
 ##### Migrating from 2.0.0-beta.6
 
@@ -455,17 +460,18 @@ defaults on its root class, and a declaration on the element beats an inherited 
       useFixedHeader; the table inside is what translates, so the element being
       animated owns no positional properties of its own.
 
-      `aria-hidden` alone would leave focusable duplicates hidden from assistive
-      tech, which is worse than either state on its own — `inert` takes them out
-      of the tab order and out of hit testing to match. The real header never
-      leaves the DOM, so nothing is lost.
+      `aria-hidden` but NOT `inert`: while pinned this is the only header on
+      screen, so it has to stay clickable — sorting from it is the point. That
+      is safe as long as the header slot holds no focusable elements, which is
+      the one thing `aria-hidden` must never hide. Table semantics are unharmed
+      either way: the real header never leaves the DOM, so screen readers still
+      announce column headers per cell from it.
     -->
     <div
       v-show="fixedHeader"
       ref="tableFixedViewport"
       class="ep-table-fixed-viewport"
       aria-hidden="true"
-      inert
     >
       <table
         ref="tableFixed"
