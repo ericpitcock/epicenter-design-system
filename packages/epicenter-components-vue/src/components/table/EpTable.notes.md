@@ -1,10 +1,33 @@
 `EpTable` is built for data-rich apps, with all the features you need: sorting, filtering, pagination, search, column visibility, and more.
 
-#### `stickyHeader` vs`fixedHeader`
+#### `stickyHeader` vs `fixedHeader`
 
-Use `stickyHeader` when the table can rely on pure CSS `position: sticky` (no scrolling overflow ancestor breaking it).
+Use `stickyHeader` when the table can rely on pure CSS `position: sticky`.
 
-If the table lives inside a scrollable container where sticky fails, use `fixedHeader` together with the `useFixedHeader` composable. This duplicates the header and positions it with `position: fixed`, keeping column widths in sync.
+Reach for `fixedHeader` when it cannot. The usual case is a table that scrolls horizontally inside its container while the *page* scrolls vertically: giving the container inline overflow makes it a scrollport on both axes, so a sticky header inside it has nothing left to stick to. `fixedHeader` duplicates the header, pins the copy to the viewport, and keeps its columns locked to the body.
+
+Pair it with the `useFixedHeader` composable, which needs no arguments — it watches the real header to decide when to pin, and binds the copy to the container's own scroll:
+
+```js
+const { fixedHeader, cellWidths, tableComponent, tableHead } = useFixedHeader()
+```
+
+The copy's horizontal offset is a CSS scroll-driven animation whose timeline is the container's scroll, so the browser interpolates it on the compositor and it cannot fall behind the body. Column widths are measured by a `ResizeObserver`, and nothing runs on scroll at all. Where `animation-timeline` is unsupported the composable falls back to a `requestAnimationFrame`-coalesced transform.
+
+##### Migrating from 2.0.0-beta.6
+
+`useFixedHeader` now takes a single options object — `{ fixedTop?, scrollElement? }` — instead of four positional arguments, and returns `{ cellWidths, fixedHeader, measure, tableComponent, tableHead }`.
+
+| Removed | Replacement |
+|---|---|
+| `fixedHeaderOffset` | Nothing. An `IntersectionObserver` derives the activation point from the header's own position, so there is no offset to measure or pass. Callers that measured one can delete that code. |
+| `updateAndSync` | Nothing. Drop `@container-scroll="updateAndSync"` — the composable listens to the container itself. |
+| `updateCellWidths` | `measure()`, for a layout change the observers cannot see. |
+| `syncTablePosition` | `measure()`. |
+
+`initialFixedHeader` is gone too; the observer settles the pinned state within a frame of mount.
+
+`EpTable` now wraps the duplicate header in `<div class="ep-table-fixed-viewport">`, which is the fixed, clipping box. It also renames its internal `tableBody` ref to `tableElement` and adds `tableFixedViewport`.
 
 ## Columns
 Columns are defined in the `columns` prop. Each column can have the following properties:

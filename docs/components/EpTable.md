@@ -4,11 +4,34 @@
 
 `EpTable` is built for data-rich apps, with all the features you need: sorting, filtering, pagination, search, column visibility, and more.
 
-#### `stickyHeader` vs`fixedHeader`
+#### `stickyHeader` vs `fixedHeader`
 
-Use `stickyHeader` when the table can rely on pure CSS `position: sticky` (no scrolling overflow ancestor breaking it).
+Use `stickyHeader` when the table can rely on pure CSS `position: sticky`.
 
-If the table lives inside a scrollable container where sticky fails, use `fixedHeader` together with the `useFixedHeader` composable. This duplicates the header and positions it with `position: fixed`, keeping column widths in sync.
+Reach for `fixedHeader` when it cannot. The usual case is a table that scrolls horizontally inside its container while the *page* scrolls vertically: giving the container inline overflow makes it a scrollport on both axes, so a sticky header inside it has nothing left to stick to. `fixedHeader` duplicates the header, pins the copy to the viewport, and keeps its columns locked to the body.
+
+Pair it with the `useFixedHeader` composable, which needs no arguments — it watches the real header to decide when to pin, and binds the copy to the container's own scroll:
+
+```js
+const { fixedHeader, cellWidths, tableComponent, tableHead } = useFixedHeader()
+```
+
+The copy's horizontal offset is a CSS scroll-driven animation whose timeline is the container's scroll, so the browser interpolates it on the compositor and it cannot fall behind the body. Column widths are measured by a `ResizeObserver`, and nothing runs on scroll at all. Where `animation-timeline` is unsupported the composable falls back to a `requestAnimationFrame`-coalesced transform.
+
+##### Migrating from 2.0.0-beta.6
+
+`useFixedHeader` now takes a single options object — `{ fixedTop?, scrollElement? }` — instead of four positional arguments, and returns `{ cellWidths, fixedHeader, measure, tableComponent, tableHead }`.
+
+| Removed | Replacement |
+|---|---|
+| `fixedHeaderOffset` | Nothing. An `IntersectionObserver` derives the activation point from the header's own position, so there is no offset to measure or pass. Callers that measured one can delete that code. |
+| `updateAndSync` | Nothing. Drop `@container-scroll="updateAndSync"` — the composable listens to the container itself. |
+| `updateCellWidths` | `measure()`, for a layout change the observers cannot see. |
+| `syncTablePosition` | `measure()`. |
+
+`initialFixedHeader` is gone too; the observer settles the pinned state within a frame of mount.
+
+`EpTable` now wraps the duplicate header in `<div class="ep-table-fixed-viewport">`, which is the fixed, clipping box. It also renames its internal `tableBody` ref to `tableElement` and adds `tableFixedViewport`.
 
 ## Columns
 Columns are defined in the `columns` prop. Each column can have the following properties:
@@ -233,6 +256,8 @@ defaults on its root class, and a declaration on the element beats an inherited 
 |---|---|---|
 | `--ep-table-cell-vertical-align` | `middle` | — |
 | `--ep-table-container-overflow` | `auto` | — |
+| `--ep-table-fixed-box-shadow` | `0 0.2rem 1.1rem var(--box-shadow-color)` | — |
+| `--ep-table-fixed-offset` | `0` | — |
 | `--ep-table-fixed-top` | `0` | — |
 | `--ep-table-fixed-z-index` | `10` | — |
 | `--ep-table-sticky-top` | `0` | — |
@@ -319,6 +344,8 @@ defaults on its root class, and a declaration on the element beats an inherited 
     emit('row-click', row)
   }
 
+  // Informational for consumers only: useFixedHeader binds the pinned header to
+  // this container's scroll itself rather than being driven by this event.
   const onScroll = (): void => {
     if (!fixedHeader || !tableContainer.value) return
     emit('container-scroll', tableContainer.value.scrollLeft)
@@ -331,13 +358,16 @@ defaults on its root class, and a declaration on the element beats an inherited 
     class="ep-table-container"
     @scroll="onScroll"
   >
-    <table :class="['ep-table', classes]">
+    <table
+      ref="tableElement"
+      :class="['ep-table', classes]"
+    >
       <!-- @slot Table header slot. Use this to define your table headers with columns and sorting. -->
       <slot
         name="thead"
         v-bind="{ visibleColumns, showActionsMenu }"
       />
-      <tbody ref="tableBody">
+      <tbody>
         <tr
           v-for="row in data"
           :key="(row.id as PropertyKey)"
@@ -374,20 +404,38 @@ defaults on its root class, and a declaration on the element beats an inherited 
         </tr>
       </tbody>
     </table>
-    <table
+    <!--
+      The pinned header is `position: fixed`, so the container's `overflow` does
+      not clip it — scrolled right, it would hang off the container's leading
+      edge. This wrapper is the fixed, clipping box, sized over the container by
+      useFixedHeader; the table inside is what translates, so the element being
+      animated owns no positional properties of its own.
+
+      `aria-hidden` alone would leave focusable duplicates hidden from assistive
+      tech, which is worse than either state on its own — `inert` takes them out
+      of the tab order and out of hit testing to match. The real header never
+      leaves the DOM, so nothing is lost.
+    -->
+    <div
       v-show="fixedHeader"
-      ref="tableFixed"
-      class="ep-table ep-table--fixed-header"
+      ref="tableFixedViewport"
+      class="ep-table-fixed-viewport"
+      aria-hidden="true"
+      inert
     >
-      <!-- @slot Fixed header slot for when using fixed header mode. Syncs with the main table header. -->
-      <slot
-        name="thead-fixed"
-        v-bind="{ visibleColumns, showActionsMenu }"
-      />
-    </table>
+      <table
+        ref="tableFixed"
+        class="ep-table ep-table--fixed-header"
+      >
+        <!-- @slot Fixed header slot for when using fixed header mode. Syncs with the main table header. -->
+        <slot
+          name="thead-fixed"
+          v-bind="{ visibleColumns, showActionsMenu }"
+        />
+      </table>
+    </div>
   </div>
 </template>
-
 ```
 
 ## Styles (SCSS)
@@ -445,12 +493,24 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-table-sticky-z-index: var(--z-index--sticky);
   --ep-table-fixed-top: 0;
   --ep-table-fixed-z-index: 10;
+  --ep-table-fixed-box-shadow: 0 0.2rem 1.1rem var(--box-shadow-color);
+  // How far the pinned header is translated along the inline axis. Written by
+  // useFixedHeader on layout change — never while scrolling — and read by the
+  // `ep-table-track-x` keyframes, which the container's scroll timeline drives.
+  --ep-table-fixed-offset: 0;
 
   overflow: var(--ep-table-container-overflow);
   width: var(--ep-table-container-width);
   min-width: var(--ep-table-container-min-width);
   height: var(--ep-table-container-height);
   padding: var(--ep-table-container-padding);
+
+  // Names this element's inline scroll as a timeline the pinned header animates
+  // against. Declared rather than looked up with `scroll(nearest)`: the pinned
+  // header is out of flow, and `nearest` is ambiguous between the DOM chain and
+  // the containing-block chain for an out-of-flow box.
+  scroll-timeline-axis: inline;
+  scroll-timeline-name: --ep-table-scroll-x;
 }
 
 .ep-table {
@@ -481,6 +541,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
         border-bottom: var(--ep-table-border-width) var(--ep-table-border-style) var(--ep-table-border-color);
 
         span.label {
+          overflow: hidden;
           flex: 1;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -565,13 +626,34 @@ defaults on its root class, and a declaration on the element beats an inherited 
     }
   }
 
+  // The duplicate header shown while the real one is scrolled away. It owns no
+  // positional properties: `.ep-table-fixed-viewport` places and clips it, and
+  // its horizontal offset is a transform bound to the container's scroll.
+  // `table-layout: fixed` makes the widths useFixedHeader copies off the real
+  // header authoritative rather than a hint an auto layout may talk itself out
+  // of, and drops the layout cost from O(cells) to O(columns).
   &--fixed-header {
-    position: fixed;
-    z-index: var(--ep-table-fixed-z-index);
-    top: var(--ep-table-fixed-top);
-    left: 0;
-    display: block;
-    width: 100%;
+    display: table;
+    table-layout: fixed;
+    will-change: transform;
+
+    // Bind the offset to the container's scroll. The browser interpolates this
+    // on the compositor from the scroll position itself, so the header moves in
+    // the same frame as the body and cannot fall behind — which is what it did
+    // when the offset was written from a scroll handler. useFixedHeader only
+    // supplies the distance, and falls back to a scroll listener where this
+    // @supports fails.
+    // Longhands, not the `animation` shorthand: the shorthand resets
+    // `animation-timeline` to `auto`. These rules are inside
+    // `@layer epicenter.components`, so any unlayered `animation:` declaration
+    // in a consumer's CSS would win and silently unbind the header.
+    @supports (animation-timeline: --x) {
+      animation-duration: auto;
+      animation-fill-mode: both;
+      animation-name: ep-table-track-x;
+      animation-timeline: --ep-table-scroll-x;
+      animation-timing-function: linear;
+    }
   }
 
   &--striped {
@@ -581,4 +663,38 @@ defaults on its root class, and a declaration on the element beats an inherited 
   }
 }
 
+// Spans the container's whole scrollable distance, so timeline progress maps
+// straight onto the offset. `--ep-table-fixed-offset` is written by
+// useFixedHeader whenever layout changes, never while scrolling.
+@keyframes ep-table-track-x {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(var(--ep-table-fixed-offset));
+  }
+}
+
+// The pinned header's clipping box, sized over `.ep-table-container`'s
+// scrollport by useFixedHeader. The header is wider than the container whenever
+// the table overflows, and being fixed it is not clipped by the container's own
+// `overflow`.
+// `position: fixed` pins to the VIEWPORT, so `--ep-table-fixed-top` is an offset
+// from the top of the window. Passing a `scrollElement` other than `window` to
+// useFixedHeader changes when the header pins, not where.
+.ep-table-fixed-viewport {
+  // `clip`, not `hidden`: `hidden` would make this a scroll container, and
+  // though nothing could scroll it by hand, focusing a control in the pinned
+  // header or a `scrollIntoView` would — leaving it permanently offset with
+  // nothing to reset it. Clipping only the inline axis lets a menu opened from
+  // a pinned header still escape downward.
+  position: fixed;
+  z-index: var(--ep-table-fixed-z-index);
+  top: var(--ep-table-fixed-top);
+  left: 0;
+  box-shadow: var(--ep-table-fixed-box-shadow);
+  overflow-x: clip;
+  overflow-y: visible;
+}
 ```

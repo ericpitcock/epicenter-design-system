@@ -50,12 +50,24 @@
   --ep-table-sticky-z-index: var(--z-index--sticky);
   --ep-table-fixed-top: 0;
   --ep-table-fixed-z-index: 10;
+  --ep-table-fixed-box-shadow: 0 0.2rem 1.1rem var(--box-shadow-color);
+  // How far the pinned header is translated along the inline axis. Written by
+  // useFixedHeader on layout change — never while scrolling — and read by the
+  // `ep-table-track-x` keyframes, which the container's scroll timeline drives.
+  --ep-table-fixed-offset: 0;
 
   overflow: var(--ep-table-container-overflow);
   width: var(--ep-table-container-width);
   min-width: var(--ep-table-container-min-width);
   height: var(--ep-table-container-height);
   padding: var(--ep-table-container-padding);
+
+  // Names this element's inline scroll as a timeline the pinned header animates
+  // against. Declared rather than looked up with `scroll(nearest)`: the pinned
+  // header is out of flow, and `nearest` is ambiguous between the DOM chain and
+  // the containing-block chain for an out-of-flow box.
+  scroll-timeline-axis: inline;
+  scroll-timeline-name: --ep-table-scroll-x;
 }
 
 .ep-table {
@@ -86,6 +98,7 @@
         border-bottom: var(--ep-table-border-width) var(--ep-table-border-style) var(--ep-table-border-color);
 
         span.label {
+          overflow: hidden;
           flex: 1;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -170,13 +183,34 @@
     }
   }
 
+  // The duplicate header shown while the real one is scrolled away. It owns no
+  // positional properties: `.ep-table-fixed-viewport` places and clips it, and
+  // its horizontal offset is a transform bound to the container's scroll.
+  // `table-layout: fixed` makes the widths useFixedHeader copies off the real
+  // header authoritative rather than a hint an auto layout may talk itself out
+  // of, and drops the layout cost from O(cells) to O(columns).
   &--fixed-header {
-    position: fixed;
-    z-index: var(--ep-table-fixed-z-index);
-    top: var(--ep-table-fixed-top);
-    left: 0;
-    display: block;
-    width: 100%;
+    display: table;
+    table-layout: fixed;
+    will-change: transform;
+
+    // Bind the offset to the container's scroll. The browser interpolates this
+    // on the compositor from the scroll position itself, so the header moves in
+    // the same frame as the body and cannot fall behind — which is what it did
+    // when the offset was written from a scroll handler. useFixedHeader only
+    // supplies the distance, and falls back to a scroll listener where this
+    // @supports fails.
+    // Longhands, not the `animation` shorthand: the shorthand resets
+    // `animation-timeline` to `auto`. These rules are inside
+    // `@layer epicenter.components`, so any unlayered `animation:` declaration
+    // in a consumer's CSS would win and silently unbind the header.
+    @supports (animation-timeline: --x) {
+      animation-duration: auto;
+      animation-fill-mode: both;
+      animation-name: ep-table-track-x;
+      animation-timeline: --ep-table-scroll-x;
+      animation-timing-function: linear;
+    }
   }
 
   &--striped {
@@ -184,4 +218,39 @@
       background-color: var(--ep-table-row-stripe-bg-color);
     }
   }
+}
+
+// Spans the container's whole scrollable distance, so timeline progress maps
+// straight onto the offset. `--ep-table-fixed-offset` is written by
+// useFixedHeader whenever layout changes, never while scrolling.
+@keyframes ep-table-track-x {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(var(--ep-table-fixed-offset));
+  }
+}
+
+// The pinned header's clipping box, sized over `.ep-table-container`'s
+// scrollport by useFixedHeader. The header is wider than the container whenever
+// the table overflows, and being fixed it is not clipped by the container's own
+// `overflow`.
+// `position: fixed` pins to the VIEWPORT, so `--ep-table-fixed-top` is an offset
+// from the top of the window. Passing a `scrollElement` other than `window` to
+// useFixedHeader changes when the header pins, not where.
+.ep-table-fixed-viewport {
+  // `clip`, not `hidden`: `hidden` would make this a scroll container, and
+  // though nothing could scroll it by hand, focusing a control in the pinned
+  // header or a `scrollIntoView` would — leaving it permanently offset with
+  // nothing to reset it. Clipping only the inline axis lets a menu opened from
+  // a pinned header still escape downward.
+  position: fixed;
+  z-index: var(--ep-table-fixed-z-index);
+  top: var(--ep-table-fixed-top);
+  left: 0;
+  box-shadow: var(--ep-table-fixed-box-shadow);
+  overflow-x: clip;
+  overflow-y: visible;
 }

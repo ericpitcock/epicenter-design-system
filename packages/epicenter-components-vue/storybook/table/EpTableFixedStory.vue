@@ -14,13 +14,16 @@
     sortOrder
   } = useSorting(tableColumnsRef, tableDataRef, 'intensity', 'desc')
 
+  // No arguments: the composable watches the real header to decide when to pin,
+  // and binds the pinned header to the table container's own scroll. The 100px
+  // offset this used to pass was compensating for the old default pinning on the
+  // first pixel of scroll — that is derived from the header's position now.
   const {
     fixedHeader,
     cellWidths,
     tableComponent,
     tableHead,
-    updateAndSync,
-  } = useFixedHeader(window, true, 100, 0)
+  } = useFixedHeader()
 </script>
 
 <template>
@@ -35,7 +38,6 @@
       v-bind="$attrs"
       class="fixed-header-table"
       :fixed-header="fixedHeader"
-      @container-scroll="updateAndSync"
     >
       <template #thead="{ visibleColumns, showActionsMenu }">
         <ep-table-head

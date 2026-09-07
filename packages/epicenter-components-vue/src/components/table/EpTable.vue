@@ -58,6 +58,8 @@
     emit('row-click', row)
   }
 
+  // Informational for consumers only: useFixedHeader binds the pinned header to
+  // this container's scroll itself rather than being driven by this event.
   const onScroll = (): void => {
     if (!fixedHeader || !tableContainer.value) return
     emit('container-scroll', tableContainer.value.scrollLeft)
@@ -70,13 +72,16 @@
     class="ep-table-container"
     @scroll="onScroll"
   >
-    <table :class="['ep-table', classes]">
+    <table
+      ref="tableElement"
+      :class="['ep-table', classes]"
+    >
       <!-- @slot Table header slot. Use this to define your table headers with columns and sorting. -->
       <slot
         name="thead"
         v-bind="{ visibleColumns, showActionsMenu }"
       />
-      <tbody ref="tableBody">
+      <tbody>
         <tr
           v-for="row in data"
           :key="(row.id as PropertyKey)"
@@ -113,16 +118,35 @@
         </tr>
       </tbody>
     </table>
-    <table
+    <!--
+      The pinned header is `position: fixed`, so the container's `overflow` does
+      not clip it — scrolled right, it would hang off the container's leading
+      edge. This wrapper is the fixed, clipping box, sized over the container by
+      useFixedHeader; the table inside is what translates, so the element being
+      animated owns no positional properties of its own.
+
+      `aria-hidden` alone would leave focusable duplicates hidden from assistive
+      tech, which is worse than either state on its own — `inert` takes them out
+      of the tab order and out of hit testing to match. The real header never
+      leaves the DOM, so nothing is lost.
+    -->
+    <div
       v-show="fixedHeader"
-      ref="tableFixed"
-      class="ep-table ep-table--fixed-header"
+      ref="tableFixedViewport"
+      class="ep-table-fixed-viewport"
+      aria-hidden="true"
+      inert
     >
-      <!-- @slot Fixed header slot for when using fixed header mode. Syncs with the main table header. -->
-      <slot
-        name="thead-fixed"
-        v-bind="{ visibleColumns, showActionsMenu }"
-      />
-    </table>
+      <table
+        ref="tableFixed"
+        class="ep-table ep-table--fixed-header"
+      >
+        <!-- @slot Fixed header slot for when using fixed header mode. Syncs with the main table header. -->
+        <slot
+          name="thead-fixed"
+          v-bind="{ visibleColumns, showActionsMenu }"
+        />
+      </table>
+    </div>
   </div>
 </template>

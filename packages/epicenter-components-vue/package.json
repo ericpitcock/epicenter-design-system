@@ -1,6 +1,6 @@
 {
   "name": "@ericpitcock/epicenter-components-vue",
-  "version": "2.0.0-beta.6",
+  "version": "2.0.0-beta.7",
   "description": "Epicenter Design System - Vue Components",
   "type": "module",
   "sideEffects": false,

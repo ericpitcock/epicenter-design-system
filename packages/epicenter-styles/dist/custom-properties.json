@@ -7604,6 +7604,22 @@
           "property": "width"
         },
         {
+          "name": "--ep-table-fixed-box-shadow",
+          "default": "0 0.2rem 1.1rem var(--box-shadow-color)",
+          "group": "effect",
+          "part": "fixed-box",
+          "state": null,
+          "property": "shadow"
+        },
+        {
+          "name": "--ep-table-fixed-offset",
+          "default": "0",
+          "group": "layout",
+          "part": "fixed",
+          "state": null,
+          "property": "offset"
+        },
+        {
           "name": "--ep-table-fixed-top",
           "default": "0",
           "group": "layout",
