@@ -21,7 +21,8 @@
   &--overflow {
     display: flex;
     flex-direction: column;
-    height: max-content;
+    width: fit-content;
+    height: fit-content;
   }
 
   &--surface {
