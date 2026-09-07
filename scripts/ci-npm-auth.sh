@@ -1,27 +1,42 @@
 #!/usr/bin/env bash
-# Point npm at GitHub Packages for the @ericpitcock scope, in CI.
+# Make sure npm can reach GitHub Packages for the @ericpitcock scope, then get
+# out of the way. Safe to run anywhere: CI, a developer machine, the test server.
 #
-# This writes the token to the USER config (~/.npmrc) rather than to a project
-# .npmrc, and that is the whole point. npm resolves project config from the
-# current directory only — it does not walk up — so the `netlify` and
-# `install-all` scripts, which `cd packages/<pkg> && npm install`, never see the
-# repo root's config. The previous fix was a .npmrc per package carrying
-# `_authToken=${VITE_APP_GITHUB_TOKEN}`, which worked in CI and broke every
+# Why this exists rather than an _authToken in a project .npmrc:
+#
+# npm resolves project config from the current directory only — it does not walk
+# up — so the build scripts, which `cd packages/<pkg> && npm install`, never see
+# the repo root's config. The previous fix was a .npmrc per package carrying
+# `_authToken=${VITE_APP_GITHUB_TOKEN}`. That worked in CI and broke every
 # developer machine: with the variable unset the substitution resolves to an
 # empty string, and an empty token in project config outranks the real one in
-# ~/.npmrc. Publishing and installing both 401 from those directories.
+# ~/.npmrc, so publish and install both 401. Writing to the USER config instead
+# fixes that — it is read from any working directory, so one call covers every
+# `cd` a build makes.
 #
-# The user config is read from any working directory, so setting it once here
-# covers every `cd` the build does, and leaves a developer's own credentials
-# alone.
+# The three cases, in order:
+#   1. Token in the environment (CI)      -> write it to the user config.
+#   2. No token, but auth already works   -> leave the developer's setup alone.
+#   3. No token and no working auth       -> fail loudly, before a confusing 401.
 set -euo pipefail
 
-if [ -z "${VITE_APP_GITHUB_TOKEN:-}" ]; then
-  echo "ci-npm-auth: VITE_APP_GITHUB_TOKEN is not set." >&2
-  echo "  Every @ericpitcock package would 401. Set it in the Netlify UI." >&2
-  exit 1
+REGISTRY="https://npm.pkg.github.com/"
+
+if [ -n "${VITE_APP_GITHUB_TOKEN:-}" ]; then
+  npm config set @ericpitcock:registry="$REGISTRY"
+  npm config set "//npm.pkg.github.com/:_authToken=${VITE_APP_GITHUB_TOKEN}"
+  echo "ci-npm-auth: npm user config points at GitHub Packages for @ericpitcock"
+  exit 0
 fi
 
-npm config set @ericpitcock:registry=https://npm.pkg.github.com/
-npm config set //npm.pkg.github.com/:_authToken="${VITE_APP_GITHUB_TOKEN}"
-echo "ci-npm-auth: npm user config points at GitHub Packages for @ericpitcock"
+if npm whoami --registry="$REGISTRY" >/dev/null 2>&1; then
+  echo "ci-npm-auth: VITE_APP_GITHUB_TOKEN unset, but existing npm auth works — leaving it alone"
+  exit 0
+fi
+
+echo "ci-npm-auth: cannot authenticate to $REGISTRY" >&2
+echo "  Every @ericpitcock package will 401." >&2
+echo "  CI: set VITE_APP_GITHUB_TOKEN (Netlify UI, or the deploy hook's exports)." >&2
+echo "  Local: put a token with read:packages in ~/.npmrc, e.g." >&2
+echo "    npm config set //npm.pkg.github.com/:_authToken=<token>" >&2
+exit 1
