@@ -201,7 +201,13 @@ export const EpTable = React.forwardRef<HTMLDivElement, EpTableProps>(
            * consumer still owns the measuring: size this wrapper over the
            * container's scrollport, copy the header cell widths, and set
            * `--ep-table-fixed-offset` on the table to
-           * `-(scrollWidth - clientWidth)px`. None of that belongs on a scroll
+           * `-(scrollWidth - clientWidth + 1)px`. The extra pixel is not a
+           * fudge — it matches the `animation-range-end: calc(100% + 1px)` in
+           * `_table.scss`, and the two cancel so the far right still lands on
+           * exactly `-(scrollWidth - clientWidth)`. What it buys is that the
+           * animation never sits at progress 1, which Chrome will not run on
+           * the compositor if the animation was created there. Leave it at `0`
+           * when the table does not overflow. None of this belongs on a scroll
            * handler — the CSS animation reads the scroll position itself.
            */
           <div

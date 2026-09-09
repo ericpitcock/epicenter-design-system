@@ -112,6 +112,16 @@ export const useFixedHeader = (options: UseFixedHeaderOptions = {}): UseFixedHea
    * clone moves in the same frame as the body with no main-thread work at all.
    * `animation-fill-mode: both` holds the offset while the clone is hidden, so
    * it is already in the right place the moment it is pinned mid-scroll.
+   *
+   * The published offset is one pixel LONGER than the scroll distance, matching
+   * the `animation-range-end: calc(100% + 1px)` in `_table.scss`. The two
+   * cancel — at the far right, progress is `distance / (distance + 1)` and the
+   * transform is exactly `-distance` — and in exchange the animation can never
+   * sit at progress 1. Chrome will not start a scroll-driven animation on the
+   * compositor if it is created while already finished, and this one is created
+   * when the header pins, so pinning at the right edge otherwise leaves it
+   * ticking on the main thread, a frame behind the body, permanently. A table
+   * that does not overflow gets no slack: one pixel would be the entire range.
    */
   const track = (): void => {
     if (!container || !clone) return
@@ -120,7 +130,7 @@ export const useFixedHeader = (options: UseFixedHeaderOptions = {}): UseFixedHea
     if (distance === trackedDistance) return
     trackedDistance = distance
 
-    clone.style.setProperty('--ep-table-fixed-offset', `${-distance}px`)
+    clone.style.setProperty('--ep-table-fixed-offset', distance > 0 ? `${-(distance + 1)}px` : '0px')
 
     // The fallback owns the transform outright; without a scroll-driven
     // animation the property above is inert.

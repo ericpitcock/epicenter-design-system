@@ -12,7 +12,7 @@ Pair it with the `useFixedHeader` composable, which needs no arguments — it wa
 const { fixedHeader, cellWidths, tableComponent, tableHead } = useFixedHeader()
 ```
 
-The copy's horizontal offset is a CSS scroll-driven animation whose timeline is the container's scroll, so the browser interpolates it on the compositor and it cannot fall behind the body. Column widths are measured by a `ResizeObserver`, and nothing runs on scroll at all. Where `animation-timeline` is unsupported the composable falls back to a `requestAnimationFrame`-coalesced transform.
+The copy's horizontal offset is a CSS scroll-driven animation whose timeline is the container's scroll, so the browser interpolates it on the compositor and it cannot fall behind the body. Its range runs one pixel past the end of the scroll, with `--ep-table-fixed-offset` carrying the same extra pixel so the two cancel: the animation never reaches progress 1, which Chrome refuses to composite when the animation was created there — as it is whenever the header pins while the table sits at its right edge. Column widths are measured by a `ResizeObserver`, and nothing runs on scroll at all. Where `animation-timeline` is unsupported the composable falls back to a `requestAnimationFrame`-coalesced transform.
 
 ##### What a consumer has to provide
 

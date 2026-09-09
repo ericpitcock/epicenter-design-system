@@ -16,7 +16,7 @@ Pair it with the `useFixedHeader` composable, which needs no arguments — it wa
 const { fixedHeader, cellWidths, tableComponent, tableHead } = useFixedHeader()
 ```
 
-The copy's horizontal offset is a CSS scroll-driven animation whose timeline is the container's scroll, so the browser interpolates it on the compositor and it cannot fall behind the body. Column widths are measured by a `ResizeObserver`, and nothing runs on scroll at all. Where `animation-timeline` is unsupported the composable falls back to a `requestAnimationFrame`-coalesced transform.
+The copy's horizontal offset is a CSS scroll-driven animation whose timeline is the container's scroll, so the browser interpolates it on the compositor and it cannot fall behind the body. Its range runs one pixel past the end of the scroll, with `--ep-table-fixed-offset` carrying the same extra pixel so the two cancel: the animation never reaches progress 1, which Chrome refuses to composite when the animation was created there — as it is whenever the header pins while the table sits at its right edge. Column widths are measured by a `ResizeObserver`, and nothing runs on scroll at all. Where `animation-timeline` is unsupported the composable falls back to a `requestAnimationFrame`-coalesced transform.
 
 ##### What a consumer has to provide
 
@@ -553,6 +553,8 @@ defaults on its root class, and a declaration on the element beats an inherited 
   // How far the pinned header is translated along the inline axis. Written by
   // useFixedHeader on layout change — never while scrolling — and read by the
   // `ep-table-track-x` keyframes, which the container's scroll timeline drives.
+  // It is the scroll distance PLUS ONE PIXEL, to match `animation-range-end`
+  // below; see the note there for why the range overshoots the scroll.
   --ep-table-fixed-offset: 0;
   // The pin marker's box. Small but not zero: a zero-area target is unreliable
   // for an IntersectionObserver. Not a design knob.
@@ -723,10 +725,24 @@ defaults on its root class, and a declaration on the element beats an inherited 
     // `animation-timeline` to `auto`. These rules are inside
     // `@layer epicenter.components`, so any unlayered `animation:` declaration
     // in a consumer's CSS would win and silently unbind the header.
+    // The range deliberately ends one pixel PAST the end of the scroll range,
+    // and `--ep-table-fixed-offset` carries that extra pixel too, so the two
+    // cancel: at the far right the progress is `distance / (distance + 1)` and
+    // the transform is still exactly `-distance`. What the slack buys is that
+    // progress can never reach exactly 1. Chrome refuses to run a scroll-driven
+    // animation on the compositor if the animation is CREATED while already
+    // finished, and the pinned header's animation is created the moment it is
+    // pinned — so pinning while the table sat at its right edge produced a
+    // header that ticked on the main thread and trailed the body by a frame for
+    // the rest of its life. Restarting it does not help; only never finishing
+    // does. `px`, not `rem`: useFixedHeader adds a literal `1` to the offset it
+    // publishes, and the two only cancel if this is the same unit.
     @supports (animation-timeline: --x) {
       animation-duration: auto;
       animation-fill-mode: both;
       animation-name: ep-table-track-x;
+      /* stylelint-disable-next-line unit-disallowed-list */
+      animation-range-end: calc(100% + 1px);
       animation-timeline: --ep-table-scroll-x;
       animation-timing-function: linear;
     }
@@ -739,9 +755,11 @@ defaults on its root class, and a declaration on the element beats an inherited 
   }
 }
 
-// Spans the container's whole scrollable distance, so timeline progress maps
-// straight onto the offset. `--ep-table-fixed-offset` is written by
-// useFixedHeader whenever layout changes, never while scrolling.
+// Spans the container's scrollable distance plus the one pixel of slack
+// `animation-range-end` adds, so timeline progress maps straight onto the
+// offset and the far right still lands on exactly `-distance`.
+// `--ep-table-fixed-offset` is written by useFixedHeader whenever layout
+// changes, never while scrolling.
 @keyframes ep-table-track-x {
   from {
     transform: translateX(0);
