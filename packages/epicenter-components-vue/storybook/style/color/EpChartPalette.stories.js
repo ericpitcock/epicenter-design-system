@@ -30,7 +30,7 @@ const colorPalettes = {
       '#CCBB44', // Yellow
       '#66CCEE', // Cyan
       '#AA3377', // Purple
-      '#BBBBBB'  // Grey
+      '#BBBBBB'  // Gray
     ],
     count: 7
   },
@@ -56,7 +56,7 @@ const colorPalettes = {
       '#EE3377', // Magenta
       '#CC3311', // Red
       '#009988', // Teal
-      '#BBBBBB'  // Grey
+      '#BBBBBB'  // Gray
     ],
     count: 7
   }

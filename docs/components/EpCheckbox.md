@@ -98,7 +98,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 |---|---|---|
 | `--ep-checkbox-border-radius` | `var(--border-radius--small)` | — |
 | `--ep-checkbox-border-width` | `var(--border-width--hairline)` | — |
-| `--ep-checkbox-checked-border-color` | `var(--primary-color-300)` | checked |
+| `--ep-checkbox-checked-border-color` | `var(--primary-color--300)` | checked |
 | `--ep-checkbox-disabled-border-color` | `var(--border-color--disabled)` | disabled |
 | `--ep-checkbox-unchecked-border-color` | `var(--border-color--lighter)` | — |
 
@@ -106,9 +106,9 @@ defaults on its root class, and a declaration on the element beats an inherited 
 
 | Property | Default | State |
 |---|---|---|
-| `--ep-checkbox-checked-bg-color` | `var(--primary-color-base)` | checked |
+| `--ep-checkbox-checked-bg-color` | `var(--primary-color)` | checked |
 | `--ep-checkbox-disabled-bg-color` | `transparent` | disabled |
-| `--ep-checkbox-mark-bg-color` | `hsl(var(--gray-0))` | — |
+| `--ep-checkbox-mark-bg-color` | `var(--primary-color--contrast)` | — |
 | `--ep-checkbox-unchecked-bg-color` | `var(--interface-overlay)` | — |
 
 ### Text
@@ -209,14 +209,14 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-checkbox-gap: 1rem;
 
   // Surface
-  --ep-checkbox-checked-bg-color: var(--primary-color-base);
+  --ep-checkbox-checked-bg-color: var(--primary-color);
   --ep-checkbox-unchecked-bg-color: var(--interface-overlay);
   --ep-checkbox-disabled-bg-color: transparent;
 
   // Border
   --ep-checkbox-border-width: var(--border-width--hairline);
   --ep-checkbox-border-radius: var(--border-radius--small);
-  --ep-checkbox-checked-border-color: var(--primary-color-300);
+  --ep-checkbox-checked-border-color: var(--primary-color--300);
   --ep-checkbox-unchecked-border-color: var(--border-color--lighter);
   --ep-checkbox-disabled-border-color: var(--border-color--disabled);
 
@@ -226,7 +226,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-checkbox-disabled-text-color: var(--text-color--disabled);
 
   // The tick itself
-  --ep-checkbox-mark-bg-color: hsl(var(--gray-0));
+  --ep-checkbox-mark-bg-color: var(--primary-color--contrast);
 
   display: inline-flex;
   width: fit-content;

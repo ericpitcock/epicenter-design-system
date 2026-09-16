@@ -10,7 +10,7 @@
   --ep-container-padding: 0;
   --ep-container-content-height: auto;
   --ep-container-content-padding: 0;
-  // `none` is not a valid background colour; transparent is what was intended
+  // `none` is not a valid background color; transparent is what was intended
   // and what the browser was already falling back to.
   --ep-container-bg-color: transparent;
   --ep-container-border-radius: var(--border-radius--large);

@@ -1,0 +1,28 @@
+// Brand ramp.
+// Derived at runtime from --primary-color with relative color syntax, so a
+// consumer rebrands by setting one property in plain CSS — no SCSS, no build
+// step. The arithmetic is the one the retired generate-color-variants() mixin
+// used: tints step +0.05 L, shades step -0.07 L, both in OKLCH.
+// A seed written in any color space works: oklch(from …) converts the origin
+// first. Lightness outside 0–1 and negative chroma are clamped by the browser,
+// so an extreme seed degrades to white or black rather than to an invalid value.
+:root {
+  --primary-color--100: oklch(from var(--primary-color) calc(l + 0.25) c h);
+  --primary-color--200: oklch(from var(--primary-color) calc(l + 0.2) c h);
+  --primary-color--300: oklch(from var(--primary-color) calc(l + 0.15) c h);
+  --primary-color--400: oklch(from var(--primary-color) calc(l + 0.1) c h);
+  --primary-color--500: oklch(from var(--primary-color) calc(l + 0.05) c h);
+  --primary-color--600: oklch(from var(--primary-color) calc(l - 0.07) c h);
+  --primary-color--700: oklch(from var(--primary-color) calc(l - 0.14) c h);
+  --primary-color--800: oklch(from var(--primary-color) calc(l - 0.21) c h);
+  --primary-color--900: oklch(from var(--primary-color) calc(l - 0.28) c h);
+  --primary-color--1000: oklch(from var(--primary-color) calc(l - 0.35) c h);
+
+  // Accent: the brand hue rotated by --accent-hue-shift. Its steps derive from
+  // --accent-color rather than from --primary-color, which is only safe because
+  // --accent-color is registered with @property: a registered <color> computes
+  // to a resolved color, so this does not textually nest two relative-color
+  // functions.
+  --accent-color--600: oklch(from var(--accent-color) calc(l - 0.07) c h);
+  --accent-color--700: oklch(from var(--accent-color) calc(l - 0.14) c h);
+}

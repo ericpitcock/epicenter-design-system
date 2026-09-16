@@ -4,14 +4,14 @@
   --ep-checkbox-gap: 1rem;
 
   // Surface
-  --ep-checkbox-checked-bg-color: var(--primary-color-base);
+  --ep-checkbox-checked-bg-color: var(--primary-color);
   --ep-checkbox-unchecked-bg-color: var(--interface-overlay);
   --ep-checkbox-disabled-bg-color: transparent;
 
   // Border
   --ep-checkbox-border-width: var(--border-width--hairline);
   --ep-checkbox-border-radius: var(--border-radius--small);
-  --ep-checkbox-checked-border-color: var(--primary-color-300);
+  --ep-checkbox-checked-border-color: var(--primary-color--300);
   --ep-checkbox-unchecked-border-color: var(--border-color--lighter);
   --ep-checkbox-disabled-border-color: var(--border-color--disabled);
 
@@ -21,7 +21,7 @@
   --ep-checkbox-disabled-text-color: var(--text-color--disabled);
 
   // The tick itself
-  --ep-checkbox-mark-bg-color: hsl(var(--gray-0));
+  --ep-checkbox-mark-bg-color: var(--primary-color--contrast);
 
   display: inline-flex;
   width: fit-content;

@@ -179,7 +179,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 
     // The palette lives in CSS: _donut-chart.scss defines one arc class per
     // --chart-sequence-NN token and publishes how many there are. Reading the
-    // count is all this needs to know to wrap around, and the colours stay
+    // count is all this needs to know to wrap around, and the colors stay
     // overridable and theme-aware because they never leave the stylesheet.
     const paletteSize = Number.parseInt(
       getComputedStyle(container.value!).getPropertyValue('--chart-sequence-count'),
@@ -298,7 +298,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 }
 
 // The donut is drawn by d3, not Highcharts, but it eats from the same palette.
-// Colouring by class rather than by a fill attribute keeps the value in CSS,
+// Coloring by class rather than by a fill attribute keeps the value in CSS,
 // where a theme switch can repaint it and a consumer can override it; the
 // component only decides which slot each arc lands in.
 @each $name in chart-sequence.$names {

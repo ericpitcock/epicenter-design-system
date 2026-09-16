@@ -61,7 +61,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-textarea-border-radius` | `var(--border-radius--default)` | — |
 | `--ep-textarea-border-style` | `solid` | — |
 | `--ep-textarea-border-width` | `var(--border-width--hairline)` | — |
-| `--ep-textarea-focus-border-color` | `var(--primary-color-base)` | focus |
+| `--ep-textarea-focus-border-color` | `var(--primary-color)` | focus |
 
 ### Text
 
@@ -200,7 +200,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-textarea-border-style: solid;
   --ep-textarea-border-color: var(--border-color);
   --ep-textarea-border-radius: var(--border-radius--default);
-  --ep-textarea-focus-border-color: var(--primary-color-base);
+  --ep-textarea-focus-border-color: var(--primary-color);
 
   // Text
   --ep-textarea-text-color: var(--text-color);

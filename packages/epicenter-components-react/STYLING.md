@@ -133,7 +133,7 @@ it, and three of them will now **double-apply** against stylesheets that v2 adde
 
 ## 4. When a prop becomes a property
 
-Same rule as Vue: **only when the value cannot be enumerated.** An arbitrary colour
+Same rule as Vue: **only when the value cannot be enumerated.** An arbitrary color
 from data or a computed dimension becomes a custom property; anything with a fixed
 set of values stays a BEM modifier class.
 

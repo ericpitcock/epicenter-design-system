@@ -18,7 +18,7 @@
   --ep-carousel-image-max-width: 90vw;
   --ep-carousel-image-bg-color: hsl(0 0% 0% / 0.05);
   --ep-carousel-image-focus-outline-width: 0.3rem;
-  --ep-carousel-image-focus-outline-color: var(--primary-color-base);
+  --ep-carousel-image-focus-outline-color: var(--primary-color);
 
   // Caption
   --ep-carousel-caption-border-radius: var(--border-radius--default);
@@ -32,9 +32,9 @@
   --ep-carousel-dots-padding: 1rem;
   --ep-carousel-dots-gap: 1rem;
   --ep-carousel-dot-size: 1rem;
-  --ep-carousel-dot-bg-color: hsl(from var(--primary-color-base) h s l / 0.3);
-  --ep-carousel-dot-hover-bg-color: hsl(from var(--primary-color-base) h s l / 0.6);
-  --ep-carousel-dot-selected-bg-color: var(--primary-color-base);
+  --ep-carousel-dot-bg-color: hsl(from var(--primary-color) h s l / 0.3);
+  --ep-carousel-dot-hover-bg-color: hsl(from var(--primary-color) h s l / 0.6);
+  --ep-carousel-dot-selected-bg-color: var(--primary-color);
   --ep-carousel-dot-hover-scale: 1.2;
   --ep-carousel-dot-selected-scale: 1.5;
 

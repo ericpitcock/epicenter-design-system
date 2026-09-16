@@ -1,0 +1,111 @@
+# Theme seeds.
+#
+# The inputs every themed token derives from. A consumer rebrands by setting
+# these — usually only --primary-color — in a plain CSS file loaded after the
+# package stylesheet. Nothing here needs SCSS.
+#
+# scripts/build.mjs turns this file into three things that must never drift:
+#   scss/theme/_seeds.scss   the shipped defaults, in the epicenter.tokens layer
+#   an @property preamble    unlayered, so a bad consumer value falls back to the
+#                            initial-value instead of invalidating every token
+#                            derived from it
+#   dist/theme.css           the starter a consumer copies
+#
+# Per seed:
+#   value     the :root declaration (any color space; derivations use
+#             oklch(from …), which converts the origin first)
+#   property  optional @property syntax — registers the seed
+#   initial   @property initial-value; required when value contains var()
+#   comment   emitted into theme.css above the declaration
+
+- group: Brand
+  intro: |
+    The one color the interface hangs off. Every --primary-color--100 … --1000
+    step, the focus ring, selection, checked controls and the selected button
+    state derive from it at runtime, so this is usually the only line to change.
+  seeds:
+    primary-color:
+      value: oklch(0.6 0.2 257)
+      property: '<color>'
+    primary-color--contrast:
+      value: hsl(0 0% 100%)
+      property: '<color>'
+      comment: |
+        Text and icons on a --primary-color fill. A seed rather than
+        contrast-color(var(--primary-color)) — that function is not yet
+        Baseline. Set it dark for a light brand color.
+    accent-hue-shift:
+      value: '15'
+      property: '<number>'
+      comment: |
+        Degrees --accent-color sits from --primary-color around the hue wheel.
+    accent-color:
+      value: oklch(from var(--primary-color) l c calc(h + var(--accent-hue-shift)))
+      property: '<color>'
+      initial: oklch(0.6 0.2 272)
+      comment: |
+        The rotated brand hue used by the selected button state and by
+        two-tone gradients. Override to break the link with --primary-color.
+
+- group: Neutral
+  intro: |
+    Every interface surface, border and text color is derived from this seed's
+    chroma and hue — the lightness ladder is fixed. Chroma 0 keeps the grays pure.
+    For a tinted UI, add chroma: 0.005–0.02 is a subtle warmth or coolness,
+    0.02–0.04 is clearly tinted, above 0.05 the interface reads as colored.
+  seeds:
+    neutral-color:
+      value: oklch(0.5 0 0)
+      property: '<color>'
+
+- group: Status
+  intro: |
+    One seed per status. Each --status-<name>-bg-color / -border-color /
+    -text-color trio (banners, badges, form errors) and the matching
+    --text-color--<name> derive from it in both light and dark. The seed is the
+    light-mode border color; the rest of the trio steps off it.
+    Solid button variants keep their own palette and are not driven by these.
+  seeds:
+    status-danger-color:
+      value: hsl(0 84% 60%)
+      property: '<color>'
+    status-warning-color:
+      value: hsl(38 92% 50%)
+      property: '<color>'
+    status-success-color:
+      value: hsl(142 76% 36%)
+      property: '<color>'
+    status-info-color:
+      value: hsl(199 89% 48%)
+      property: '<color>'
+
+- group: Links
+  intro: |
+    Link text. A light-dark() pair by default; a single color works too.
+  seeds:
+    link-color:
+      value: light-dark(hsl(var(--sky-600)), hsl(var(--sky-300)))
+      property: '<color>'
+      initial: hsl(200 98% 39%)
+
+- group: Typography
+  intro: |
+    Font stacks only. Load your own @font-face rules; the package ships no fonts.
+  seeds:
+    font-family:
+      value: sans-serif
+    font-family--mono:
+      value: '"Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace'
+
+- group: Shape
+  intro: |
+    The radius ladder every component corner reads from.
+  seeds:
+    border-radius--small:
+      value: 0.2rem
+    border-radius--default:
+      value: 0.3rem
+    border-radius--large:
+      value: 0.6rem
+    border-radius--full:
+      value: 999rem

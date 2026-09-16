@@ -1,0 +1,14 @@
+/* Storybook's theme.
+ *
+ * The documented consumer setup, verbatim: a copy of dist/theme.css trimmed to
+ * the seeds that differ from the package defaults, loaded after the package
+ * stylesheet and before anything else. Both Storybooks import this file.
+ * Everything else Storybook styles — gradients, badge variants, decorators —
+ * is ordinary consumer CSS and lives in app.scss.
+ */
+:root {
+  --primary-color: oklch(0.6 0.2 257);
+  --accent-hue-shift: 15;
+  --font-family: 'InterVariable', sans-serif;
+  --font-family--mono: 'Fira Code', monospace;
+}

@@ -9,6 +9,8 @@
  *   placement   a --ep-* property declared somewhere other than its root class,
  *               or a modifier introducing a name the root block never declares
  *   literals    a raw number or color in scss/components/ that should be a property
+ *   seeds       a theme seed in tokens/theme.yaml missing from the generated
+ *               _seeds.scss or from dist/theme.css — the three must not drift
  *
  * Each check is gated separately by GATE below. A check that is gated off is
  * still reported, it just does not fail the build. Flip each flag to true as the
@@ -26,6 +28,7 @@ import process from 'process'
 import { fileURLToPath } from 'url'
 
 import { glob } from 'glob'
+import yaml from 'js-yaml'
 import scssParser from 'postcss-scss'
 
 import {
@@ -43,6 +46,9 @@ const repoRoot = resolve(packageDir, '../..')
 const scssDir = join(packageDir, 'scss')
 const componentsDir = join(scssDir, 'components')
 const distDir = join(packageDir, 'dist')
+const themeYAML = join(packageDir, 'tokens/theme.yaml')
+const seedsSCSS = join(scssDir, 'theme/_seeds.scss')
+const themeCSS = join(distDir, 'theme.css')
 
 const strict = process.argv.includes('--strict')
 const asJson = process.argv.includes('--json')
@@ -58,6 +64,7 @@ const GATE = {
   unused: true,
   placement: true,
   literals: true,
+  seeds: true,
 
   // Advisory by design: a component property's default may legitimately be a
   // literal when no global token carries that value. See findLiterals.
@@ -214,6 +221,7 @@ const issues = {
   unused: [],
   placement: [],
   literals: [],
+  seeds: [],
   literalDefaults: []
 }
 
@@ -559,17 +567,57 @@ if (fs.existsSync(iconBase)) {
 }
 
 // ---------------------------------------------------------------------------
+// Theme seeds — tokens/theme.yaml is generated into scss/theme/_seeds.scss and
+// dist/theme.css. A starter file that drifts from the shipped defaults is worse
+// than no starter file, and the drift would be silent, so all three are compared.
+// ---------------------------------------------------------------------------
+
+const seeds = new Map() // name -> { value, property }
+
+if (fs.existsSync(themeYAML)) {
+  for (const group of yaml.load(fs.readFileSync(themeYAML, 'utf8'))) {
+    for (const [name, seed] of Object.entries(group.seeds)) {
+      seeds.set(`--${name}`, { value: String(seed.value), property: seed.property ?? null })
+    }
+  }
+
+  const seedsSource = fs.existsSync(seedsSCSS) ? fs.readFileSync(seedsSCSS, 'utf8') : ''
+  const starterSource = fs.existsSync(themeCSS) ? fs.readFileSync(themeCSS, 'utf8') : ''
+  const relYAML = relative(repoRoot, themeYAML)
+
+  for (const [name, seed] of seeds) {
+    const declaration = `${name}: ${seed.value};`
+    if (!seedsSource.includes(declaration)) {
+      issues.seeds.push({ file: relYAML, line: 0, detail: `${name} is not declared as "${seed.value}" in scss/theme/_seeds.scss — rebuild` })
+    }
+    if (!starterSource.includes(declaration)) {
+      issues.seeds.push({ file: relYAML, line: 0, detail: `${name} is not listed as "${seed.value}" in dist/theme.css — rebuild` })
+    }
+  }
+} else {
+  console.warn('⚠ tokens/theme.yaml not found — skipping the seed drift check\n')
+}
+
+// ---------------------------------------------------------------------------
 // Emit the property API
 // ---------------------------------------------------------------------------
 
 const globals = [...declarations.entries()]
   .filter(([name]) => !name.startsWith('--ep-'))
-  .map(([name, sites]) => ({
-    name,
-    default: sites[sites.length - 1].value,
-    file: sites[0].file,
-    themeAware: sites.some(site => site.value.includes('light-dark('))
-  }))
+  .map(([name, sites]) => {
+    const entry = {
+      name,
+      default: sites[sites.length - 1].value,
+      file: sites[0].file,
+      themeAware: sites.some(site => site.value.includes('light-dark('))
+    }
+    const seed = seeds.get(name)
+    if (seed) {
+      entry.seed = true
+      if (seed.property) entry.registered = seed.property
+    }
+    return entry
+  })
   .sort((a, b) => a.name.localeCompare(b.name))
 
 const componentApi = [...components.values()]
@@ -595,13 +643,14 @@ fs.writeFileSync(
 // Report
 // ---------------------------------------------------------------------------
 
-const ORDER = ['undeclared', 'grammar', 'placement', 'unused', 'literals', 'literalDefaults']
+const ORDER = ['undeclared', 'grammar', 'placement', 'unused', 'literals', 'seeds', 'literalDefaults']
 const LABEL = {
   undeclared: 'Referenced but never declared',
   grammar: 'Does not satisfy the Layer 4 grammar',
   placement: 'Declared in the wrong place',
   unused: 'Declared but never consumed',
   literals: 'Raw literal in a rule — no property controls this value',
+  seeds: 'Theme seed out of step with its generated outputs',
   literalDefaults: 'Property default is a literal where a global token may fit (advisory)'
 }
 

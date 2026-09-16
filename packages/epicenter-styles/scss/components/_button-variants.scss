@@ -4,15 +4,15 @@
 // Variants only reassign the public --ep-button-* properties; there is no private
 // per-variant namespace. That has a useful consequence: because hover and active
 // are derived from --ep-button-bg-color rather than from a variant-private copy,
-// a consumer who overrides just the base colour gets matching states for free.
+// a consumer who overrides just the base color gets matching states for free.
 //   .checkout .ep-button-var--primary { --ep-button-bg-color: rebeccapurple; }
 // still hovers and depresses correctly.
 
 // Solid fills, darkened by `shade` percentage points on hover and 2× on active.
 $solid-variants: (
   primary: (
-    bg: var(--primary-color-base),
-    text: hsl(var(--gray-0)),
+    bg: var(--primary-color),
+    text: var(--primary-color--contrast),
     shade: 5
   ),
   success: (

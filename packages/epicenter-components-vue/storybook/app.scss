@@ -1,22 +1,21 @@
-@use '@ericpitcock/epicenter-styles/mixins/_generate-color-variants.scss' as *;
-$primary-lightness: 0.60;
-$primary-chroma: 0.2;
-$primary-hue: 257deg;
-
+// Storybook's own styling, as a consumer would write it.
+// The theme seeds are NOT here — they live in theme.css next to this file,
+// which the previews load straight after the package stylesheet. Everything
+// below is ordinary configuration on top of a themed system: gradients built
+// from the derived ramp, badge variants, fonts.
 :root {
-  @include generate-color-variants($primary-lightness, $primary-chroma, $primary-hue);
   --gradient-bg: radial-gradient(circle 200px at -5% -10%, hsl(60, 100%, 50%), transparent),
-    linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--primary-color-base) 79%);
-  --text-selection-bg-color: var(--primary-color-base);
-  --text-selection-text-color: hsl(var(--gray-0));
+    linear-gradient(130deg, hsl(164, 93%, 50%) 0%, var(--primary-color) 79%);
+  --text-selection-bg-color: var(--primary-color);
+  --text-selection-text-color: var(--primary-color--contrast);
 
   .ep-button-var--primary {
-    --ep-button-bg-color: linear-gradient(140deg, var(--primary-color-base) 30%, var(--primary-color-up-15-base) 70%);
-    --ep-button-hover-bg-color: linear-gradient(140deg, var(--primary-color-600) 30%, var(--primary-color-up-15-600) 70%);
-    --ep-button-active-bg-color: linear-gradient(140deg, var(--primary-color-700) 30%, var(--primary-color-up-15-700) 70%);
+    --ep-button-bg-color: linear-gradient(140deg, var(--primary-color) 30%, var(--accent-color) 70%);
+    --ep-button-hover-bg-color: linear-gradient(140deg, var(--primary-color--600) 30%, var(--accent-color--600) 70%);
+    --ep-button-active-bg-color: linear-gradient(140deg, var(--primary-color--700) 30%, var(--accent-color--700) 70%);
 
     .ep-button__label {
-      text-shadow: 0 0.1rem 0.75rem var(--primary-color-800);
+      text-shadow: 0 0.1rem 0.75rem var(--primary-color--800);
     }
 
     &.ep-button--disabled .ep-button__label {
@@ -72,7 +71,6 @@ $primary-hue: 257deg;
 }
 
 :root {
-  font-family: 'InterVariable', sans-serif;
   font-optical-sizing: auto;
 }
 
@@ -85,7 +83,7 @@ $primary-hue: 257deg;
 }
 
 .monospace {
-  font-family: 'Fira Code', monospace;
+  font-family: var(--font-family--mono);
   font-variation-settings: 'wght' 500;
 }
 
@@ -99,8 +97,8 @@ h6 {
 }
 
 .badge-variant-primary {
-  --ep-badge-bg-color: linear-gradient(140deg, var(--primary-color-base) 30%, var(--primary-color-up-15-base) 70%);
-  --ep-badge-border-color: var(--primary-color-600);
+  --ep-badge-bg-color: linear-gradient(140deg, var(--primary-color) 30%, var(--accent-color) 70%);
+  --ep-badge-border-color: var(--primary-color--600);
   --ep-badge-text-color: var(--text-color--loud);
 }
 

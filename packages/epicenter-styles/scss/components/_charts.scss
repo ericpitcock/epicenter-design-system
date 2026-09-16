@@ -3,12 +3,12 @@
 @use '../../node_modules/highcharts/css/highcharts.css';
 
 // Highcharts in styled mode paints a series through two hooks: a
-// `--highcharts-color-N` custom property holding the colour, and a
+// `--highcharts-color-N` custom property holding the color, and a
 // `.highcharts-color-N` class on the element that reads it. It ships ten of
 // each. Our palette is longer, so both are regenerated here by walking
 // `chart-sequence.$names` — the token list the build writes straight out of
 // chart-sequence.yaml. The YAML is the only place the palette is spelled out, so
-// adding a colour there widens the loop with no second edit and no chance of an
+// adding a color there widens the loop with no second edit and no chance of an
 // index pointing at a token that does not exist.
 
 // Two layers, each with a job. `--chart-sequence-NN` is the design token.
@@ -16,12 +16,12 @@
 // the per-chart override hook: EpChart's `chartColors` prop sets these on the
 // wrapper element, and the wrapper is nearer than :root, so it wins.
 
-// The tokens are whole colours — `light-dark(hsl(…), hsl(…))` — so nothing here
+// The tokens are whole colors — `light-dark(hsl(…), hsl(…))` — so nothing here
 // wraps them in hsl(). Doing so was the old bug: `hsl(light-dark(…))` is invalid,
 // and an invalid fill is not an error, it is black.
 
 :root {
-  // Highcharts cycles series colours modulo `chart.colorCount`, and EpDonutChart
+  // Highcharts cycles series colors modulo `chart.colorCount`, and EpDonutChart
   // indexes its arcs the same way. Both read this so the cycle length is the
   // palette length by construction.
   --chart-sequence-count: #{list.length(chart-sequence.$names)};
@@ -44,7 +44,7 @@
 
 .highcharts-container {
   --highcharts-background-color: transparent;
-  --highcharts-font-family: 'InterVariable', sans-serif;
+  --highcharts-font-family: var(--font-family);
   --highcharts-neutral-color-10: var(--border-color);
   --highcharts-neutral-color-80: var(--border-color);
   --highcharts-highlight-color-20: var(--border-color);

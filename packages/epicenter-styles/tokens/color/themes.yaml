@@ -1,52 +1,61 @@
+# Semantic theme tokens. Each is a { light, dark } pair the build turns into a
+# light-dark() declaration.
+#
+# neutral(N) is the lightness of gray-ramp step gray-N applied to the chroma and
+# hue of the --neutral-color seed (see tokens/theme.yaml). With the default seed
+# it resolves to exactly the gray the ramp holds; give the seed some chroma and
+# every surface, border and text color below tints together.
+
 # Interface
 interface-bg:
-  dark: hsl(var(--gray-430))
-  light: hsl(var(--gray-50))
+  dark: neutral(430)
+  light: neutral(50)
 interface-bg--accent:
-  dark: hsl(var(--gray-420))
-  light: hsl(var(--gray-40))
+  dark: neutral(420)
+  light: neutral(40)
 interface-surface:
-  dark: hsl(var(--gray-440))
-  light: hsl(var(--gray-30))
+  dark: neutral(440)
+  light: neutral(30)
 interface-surface--accent:
-  dark: hsl(var(--gray-420))
-  light: hsl(var(--gray-50))
+  dark: neutral(420)
+  light: neutral(50)
 interface-surface--inverse:
-  dark: hsl(var(--gray-30))
-  light: hsl(var(--gray-440))
+  dark: neutral(30)
+  light: neutral(440)
 interface-foreground:
-  dark: hsl(var(--gray-430))
-  light: hsl(var(--gray-20))
+  dark: neutral(430)
+  light: neutral(20)
 interface-foreground--accent:
-  dark: hsl(var(--gray-420))
-  light: hsl(var(--gray-10))
+  dark: neutral(420)
+  light: neutral(10)
 interface-overlay:
-  dark: hsl(var(--gray-390))
-  light: hsl(var(--gray-10))
+  dark: neutral(390)
+  light: neutral(10)
 interface-overlay--accent:
-  dark: hsl(var(--gray-380))
-  light: hsl(var(--gray-0))
+  dark: neutral(380)
+  light: neutral(0)
 
 # Borders
 border-color:
-  dark: hsl(var(--gray-380))
-  light: hsl(var(--gray-100))
+  dark: neutral(380)
+  light: neutral(100)
 # TODO: in the light theme this resolves to --border-color, so it is not actually
 # lighter — the name only holds in dark. Left as-is deliberately: changing it
 # shifts every component that uses it. Revisit as a design decision, not a fix.
 border-color--lighter:
-  dark: hsl(var(--gray-340))
+  dark: neutral(340)
   light: var(--border-color)
 border-color--disabled:
-  dark: hsl(var(--gray-400))
-  light: hsl(var(--gray-70))
+  dark: neutral(400)
+  light: neutral(70)
 
 # Overlay
 overlay-color:
-  dark: rgba(36, 36, 36, 0.85)
-  light: rgba(255, 255, 255, 0.85)
+  dark: neutral(430, 0.85)
+  light: neutral(0, 0.85)
 
 # Shadow
+# A shadow is an absence of light, not a surface, so these stay untinted.
 box-shadow-color:
   dark: rgba(0, 0, 0, 0.3)
   light: rgba(0, 0, 0, 0.1)
@@ -62,92 +71,100 @@ drop-shadow--large--north:
 
 # Text
 text-color:
-  dark: hsl(var(--gray-150))
-  light: hsl(var(--gray-410))
+  dark: neutral(150)
+  light: neutral(410)
 text-color--disabled:
-  dark: hsl(var(--gray-300))
-  light: hsl(var(--gray-170))
+  dark: neutral(300)
+  light: neutral(170)
 text-color--subtle:
-  dark: hsl(var(--gray-220))
-  light: hsl(var(--gray-300))
+  dark: neutral(220)
+  light: neutral(300)
 text-color--loud:
-  dark: hsl(var(--gray-50))
-  light: hsl(var(--gray-500))
+  dark: neutral(50)
+  light: neutral(500)
 text-color--inverse:
-  dark: hsl(var(--gray-410))
-  light: hsl(var(--gray-150))
+  dark: neutral(410)
+  light: neutral(150)
 
 # Text Color Variants
 text-color--primary:
-  dark: var(--primary-color-200)
-  light: var(--primary-color-700)
+  dark: var(--primary-color--200)
+  light: var(--primary-color--700)
 text-color--link:
-  dark: hsl(var(--sky-300))
-  light: hsl(var(--sky-600))
+  dark: var(--link-color)
+  light: var(--link-color)
 text-color--danger:
-  dark: hsl(var(--red-400))
-  light: hsl(var(--red-600))
+  dark: var(--status-danger-text-color)
+  light: var(--status-danger-text-color)
 text-color--warning:
-  dark: hsl(var(--amber-500))
-  light: hsl(var(--amber-600))
+  dark: var(--status-warning-text-color)
+  light: var(--status-warning-text-color)
 text-color--success:
-  dark: hsl(var(--green-600))
-  light: hsl(var(--green-700))
+  dark: var(--status-success-text-color)
+  light: var(--status-success-text-color)
 
 # Text Selection
 text-selection-bg-color:
-  dark: var(--primary-color-base)
-  light: var(--primary-color-base)
+  dark: var(--primary-color)
+  light: var(--primary-color)
 text-selection-text-color:
-  dark: hsl(var(--gray-0))
-  light: hsl(var(--gray-0))
+  dark: var(--primary-color--contrast)
+  light: var(--primary-color--contrast)
 
 # Status
-# One family per status, each with a background, a border and a text colour, so
-# error/warning/success surfaces are built from a single vocabulary. Replaces the
-# --error-color / --error-color--border / --error-color--text trio, which named
-# one concept three ways and was never declared by this package.
+# One family per status, each with a background, a border and a text color, so
+# error/warning/success surfaces are built from a single vocabulary.
+#
+# Every family derives from its --status-<name>-color seed with one shared
+# ladder. The seed is the light border verbatim; the rest step off it in OKLCH:
+#   light bg     L 0.975, a tenth of the chroma — a wash, not a fill
+#   light text   0.08 darker than the seed
+#   dark bg      L 0.40 at 60% chroma
+#   dark border  0.08 lighter than the seed at 85% chroma; dark text the same
+# Change the ladder here and all four statuses move together.
 status-danger-bg-color:
-  dark: hsl(var(--red-900))
-  light: hsl(var(--red-50))
+  dark: oklch(from var(--status-danger-color) 0.4 calc(c * 0.6) h)
+  light: oklch(from var(--status-danger-color) 0.975 calc(c * 0.1) h)
 status-danger-border-color:
-  dark: hsl(var(--red-400))
-  light: hsl(var(--red-500))
+  dark: oklch(from var(--status-danger-color) calc(l + 0.08) calc(c * 0.85) h)
+  light: var(--status-danger-color)
 status-danger-text-color:
-  dark: hsl(var(--red-400))
-  light: hsl(var(--red-600))
+  dark: oklch(from var(--status-danger-color) calc(l + 0.08) calc(c * 0.85) h)
+  light: oklch(from var(--status-danger-color) calc(l - 0.08) c h)
 status-warning-bg-color:
-  dark: hsl(var(--amber-900))
-  light: hsl(var(--amber-50))
+  dark: oklch(from var(--status-warning-color) 0.4 calc(c * 0.6) h)
+  light: oklch(from var(--status-warning-color) 0.975 calc(c * 0.1) h)
 status-warning-border-color:
-  dark: hsl(var(--amber-500))
-  light: hsl(var(--amber-500))
+  dark: oklch(from var(--status-warning-color) calc(l + 0.08) calc(c * 0.85) h)
+  light: var(--status-warning-color)
 status-warning-text-color:
-  dark: hsl(var(--amber-500))
-  light: hsl(var(--amber-600))
+  dark: oklch(from var(--status-warning-color) calc(l + 0.08) calc(c * 0.85) h)
+  light: oklch(from var(--status-warning-color) calc(l - 0.08) c h)
 status-success-bg-color:
-  dark: hsl(var(--green-900))
-  light: hsl(var(--green-50))
+  dark: oklch(from var(--status-success-color) 0.4 calc(c * 0.6) h)
+  light: oklch(from var(--status-success-color) 0.975 calc(c * 0.1) h)
 status-success-border-color:
-  dark: hsl(var(--green-600))
-  light: hsl(var(--green-600))
+  dark: oklch(from var(--status-success-color) calc(l + 0.08) calc(c * 0.85) h)
+  light: var(--status-success-color)
 status-success-text-color:
-  dark: hsl(var(--green-600))
-  light: hsl(var(--green-700))
+  dark: oklch(from var(--status-success-color) calc(l + 0.08) calc(c * 0.85) h)
+  light: oklch(from var(--status-success-color) calc(l - 0.08) c h)
 status-info-bg-color:
-  dark: hsl(var(--sky-900))
-  light: hsl(var(--sky-50))
+  dark: oklch(from var(--status-info-color) 0.4 calc(c * 0.6) h)
+  light: oklch(from var(--status-info-color) 0.975 calc(c * 0.1) h)
 status-info-border-color:
-  dark: hsl(var(--sky-300))
-  light: hsl(var(--sky-500))
+  dark: oklch(from var(--status-info-color) calc(l + 0.08) calc(c * 0.85) h)
+  light: var(--status-info-color)
 status-info-text-color:
-  dark: hsl(var(--sky-300))
-  light: hsl(var(--sky-600))
+  dark: oklch(from var(--status-info-color) calc(l + 0.08) calc(c * 0.85) h)
+  light: oklch(from var(--status-info-color) calc(l - 0.08) c h)
 
 # Alert Colors
+# A severity scale, not the status palette: pointing these at the status seeds
+# would collapse "high" and "critical" onto one hue. Fixed on purpose.
 bg-color--alert-low:
-  dark: hsl(var(--gray-300))
-  light: hsl(var(--gray-130))
+  dark: neutral(300)
+  light: neutral(130)
 bg-color--alert-medium:
   dark: hsl(var(--yellow-400))
   light: hsl(var(--yellow-400))

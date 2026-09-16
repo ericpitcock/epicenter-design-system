@@ -4,6 +4,7 @@ import { watch } from 'vue'
 import { createPinia } from 'pinia'
 import { useStorybookStore } from '@sb/store'
 import { useTheme } from '@ericpitcock/epicenter-components-vue'
+import { PRESETS, applySeeds } from '../packages/storybook-shared/theme-presets.js'
 
 const routes = [
   {
@@ -83,6 +84,8 @@ setup((app) => {
 
 // Global styles
 import '../static/epicenter-design-system.css'
+// The consumer theme setup: seeds in a plain CSS file loaded right after the package.
+import '../packages/epicenter-components-vue/storybook/theme.css'
 import '../packages/epicenter-components-vue/storybook/storybook.scss'
 
 const { getInitialTheme } = useTheme()
@@ -110,6 +113,14 @@ const preview = {
         { immediate: true }
       )
 
+      // Brand presets write theme seeds onto <html>, the same thing a consumer's
+      // theme.css does to :root, so every story re-derives from the new seeds.
+      watch(
+        () => context.globals.brand,
+        brand => applySeeds(PRESETS[brand] ?? {}),
+        { immediate: true }
+      )
+
       return {
         template: '<story/>',
         setup() {
@@ -126,6 +137,17 @@ const preview = {
       toolbar: {
         icon: '',
         items: ['Light Theme', 'Dark Theme'],
+        showName: true,
+        dynamicTitle: true,
+      },
+    },
+    brand: {
+      name: 'Brand',
+      description: 'Theme seeds applied to every story',
+      defaultValue: 'Indigo (default)',
+      toolbar: {
+        icon: 'paintbrush',
+        items: Object.keys(PRESETS),
         showName: true,
         dynamicTitle: true,
       },

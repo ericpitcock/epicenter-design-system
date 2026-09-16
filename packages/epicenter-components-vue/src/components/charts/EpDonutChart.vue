@@ -91,7 +91,7 @@
 
     // The palette lives in CSS: _donut-chart.scss defines one arc class per
     // --chart-sequence-NN token and publishes how many there are. Reading the
-    // count is all this needs to know to wrap around, and the colours stay
+    // count is all this needs to know to wrap around, and the colors stay
     // overridable and theme-aware because they never leave the stylesheet.
     const paletteSize = Number.parseInt(
       getComputedStyle(container.value!).getPropertyValue('--chart-sequence-count'),

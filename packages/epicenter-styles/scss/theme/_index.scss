@@ -1,0 +1,4 @@
+// Theme layer: the seeds a consumer sets, and the ramps derived from them.
+// _seeds.scss is generated from tokens/theme.yaml; _primary.scss is hand-written.
+@use './seeds';
+@use './primary';

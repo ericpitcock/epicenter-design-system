@@ -41,7 +41,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | Property | Default | State |
 |---|---|---|
 | `--ep-search-typeahead-bg-color` | `var(--interface-overlay)` | — |
-| `--ep-search-typeahead-item-selected-bg-color` | `var(--primary-color-base)` | selected |
+| `--ep-search-typeahead-item-selected-bg-color` | `var(--primary-color)` | selected |
 
 ### Border
 
@@ -255,7 +255,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-search-typeahead-item-border-radius: var(--border-radius--default);
   --ep-search-typeahead-item-font-size: var(--font-size--small);
   --ep-search-typeahead-item-line-height: 1;
-  --ep-search-typeahead-item-selected-bg-color: var(--primary-color-base);
+  --ep-search-typeahead-item-selected-bg-color: var(--primary-color);
   --ep-search-typeahead-item-selected-text-color: var(--text-color--loud);
 
   position: relative;

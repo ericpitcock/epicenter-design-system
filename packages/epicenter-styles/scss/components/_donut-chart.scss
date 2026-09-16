@@ -44,7 +44,7 @@
 }
 
 // The donut is drawn by d3, not Highcharts, but it eats from the same palette.
-// Colouring by class rather than by a fill attribute keeps the value in CSS,
+// Coloring by class rather than by a fill attribute keeps the value in CSS,
 // where a theme switch can repaint it and a consumer can override it; the
 // component only decides which slot each arc lands in.
 @each $name in chart-sequence.$names {

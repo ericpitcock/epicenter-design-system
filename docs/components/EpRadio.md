@@ -43,7 +43,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 |---|---|---|
 | `--ep-radio-border-radius` | `var(--border-radius--full)` | — |
 | `--ep-radio-border-width` | `var(--border-width--hairline)` | — |
-| `--ep-radio-checked-border-color` | `var(--primary-color-300)` | checked |
+| `--ep-radio-checked-border-color` | `var(--primary-color--300)` | checked |
 | `--ep-radio-disabled-border-color` | `var(--border-color--disabled)` | disabled |
 | `--ep-radio-unchecked-border-color` | `var(--border-color--lighter)` | — |
 
@@ -51,7 +51,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 
 | Property | Default | State |
 |---|---|---|
-| `--ep-radio-checked-bg-color` | `var(--primary-color-base)` | checked |
+| `--ep-radio-checked-bg-color` | `var(--primary-color)` | checked |
 | `--ep-radio-checked-disabled-bg-color` | `var(--text-color--disabled)` | checked-disabled |
 | `--ep-radio-disabled-bg-color` | `transparent` | disabled |
 | `--ep-radio-unchecked-bg-color` | `var(--interface-overlay)` | — |
@@ -145,7 +145,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-radio-gap: 1rem;
 
   // Surface
-  --ep-radio-checked-bg-color: var(--primary-color-base);
+  --ep-radio-checked-bg-color: var(--primary-color);
   --ep-radio-unchecked-bg-color: var(--interface-overlay);
   --ep-radio-disabled-bg-color: transparent;
   --ep-radio-checked-disabled-bg-color: var(--text-color--disabled);
@@ -153,7 +153,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
   // Border
   --ep-radio-border-width: var(--border-width--hairline);
   --ep-radio-border-radius: var(--border-radius--full);
-  --ep-radio-checked-border-color: var(--primary-color-300);
+  --ep-radio-checked-border-color: var(--primary-color--300);
   --ep-radio-unchecked-border-color: var(--border-color--lighter);
   --ep-radio-disabled-border-color: var(--border-color--disabled);
 

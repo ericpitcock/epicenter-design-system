@@ -93,7 +93,7 @@
 
     // Ramp families (colors, grayscale) store bare HSL triplets so they can be
     // composed inside hsl(); themed families like chart-sequence store whole
-    // colours, because they end up as light-dark() arguments. Accept either.
+    // colors, because they end up as light-dark() arguments. Accept either.
     const toColor = value => (/^[a-z-]+\(/i.test(String(value).trim()) ? String(value) : `hsl(${value})`)
 
     const createColorEntry = (name, hsl, source = '') => {

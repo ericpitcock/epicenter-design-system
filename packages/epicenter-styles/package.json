@@ -3,12 +3,20 @@
   "version": "2.0.0-beta.9",
   "main": "dist/epicenter-design-system.css",
   "style": "dist/epicenter-design-system.css",
+  "exports": {
+    ".": "./dist/epicenter-design-system.css",
+    "./theme.css": "./dist/theme.css",
+    "./custom-properties.json": "./dist/custom-properties.json",
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist",
     "scripts/codemod-v2.mjs",
     "rename-map.json",
     "NAMING.md",
-    "MIGRATION-v2.md"
+    "MIGRATION-v2.md",
+    "THEMING.md"
   ],
   "description": "Epicenter Design System - Styles",
   "scripts": {

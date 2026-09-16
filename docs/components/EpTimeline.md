@@ -321,9 +321,9 @@ defaults on its root class, and a declaration on the element beats an inherited 
     border-radius: var(--ep-timeline-marker-border-radius);
     background: var(--ep-timeline-marker-bg-color);
 
-    // Variants reassign the marker's colour only — they declare nothing new.
+    // Variants reassign the marker's color only — they declare nothing new.
     &--primary {
-      --ep-timeline-marker-border-color: var(--primary-color-base);
+      --ep-timeline-marker-border-color: var(--primary-color);
     }
 
     &--success {

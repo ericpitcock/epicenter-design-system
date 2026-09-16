@@ -60,7 +60,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-select-border-style` | `solid` | — |
 | `--ep-select-border-width` | `var(--border-width--hairline)` | — |
 | `--ep-select-disabled-border-color` | `var(--border-color--disabled)` | disabled |
-| `--ep-select-focus-border-color` | `var(--primary-color-base)` | focus |
+| `--ep-select-focus-border-color` | `var(--primary-color)` | focus |
 
 ### Text
 
@@ -232,7 +232,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-select-border-style: solid;
   --ep-select-border-color: var(--border-color);
   --ep-select-border-radius: var(--border-radius--default);
-  --ep-select-focus-border-color: var(--primary-color-base);
+  --ep-select-focus-border-color: var(--primary-color);
   --ep-select-disabled-border-color: var(--border-color--disabled);
 
   // Text

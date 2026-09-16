@@ -40,7 +40,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 
 | Property | Default | State |
 |---|---|---|
-| `--ep-table-sortable-header-active-text-color` | `var(--primary-color-200)` | active |
+| `--ep-table-sortable-header-active-text-color` | `var(--primary-color--200)` | active |
 
 ### Spacing
 
@@ -112,7 +112,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 // selector is a descendant rather than a bare class.
 // @root .ep-table thead th > div.ep-table-sortable-header
 .ep-table thead th > div.ep-table-sortable-header {
-  --ep-table-sortable-header-active-text-color: var(--primary-color-200);
+  --ep-table-sortable-header-active-text-color: var(--primary-color--200);
   --ep-table-sortable-header-padding-inline-end: 3rem;
   justify-content: space-between;
   cursor: pointer;

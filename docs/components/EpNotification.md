@@ -39,7 +39,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | Property | Default | State |
 |---|---|---|
 | `--ep-notification-bg-color` | `var(--interface-overlay)` | — |
-| `--ep-notification-strip-bg-color` | `var(--primary-color-base)` | — |
+| `--ep-notification-strip-bg-color` | `var(--primary-color)` | — |
 
 ### Spacing
 
@@ -132,7 +132,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 .ep-notification {
   --ep-notification-width: 30rem;
   --ep-notification-strip-width: 0.5rem;
-  --ep-notification-strip-bg-color: var(--primary-color-base);
+  --ep-notification-strip-bg-color: var(--primary-color);
   --ep-notification-border-radius: var(--border-radius--large);
 
   --ep-notification-body-padding: 1.2rem 0.5rem 1.2rem 2rem;

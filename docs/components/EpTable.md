@@ -320,7 +320,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 |---|---|---|
 | `--ep-table-header-bg-color` | `var(--interface-surface)` | — |
 | `--ep-table-row-hover-bg-color` | `light-dark(hsl(var(--gray-10)), hsl(var(--gray-450)))` | hover |
-| `--ep-table-row-selected-bg-color` | `var(--primary-color-base)` | selected |
+| `--ep-table-row-selected-bg-color` | `var(--primary-color)` | selected |
 | `--ep-table-row-stripe-bg-color` | `var(--interface-foreground)` | — |
 
 ## Component Code
@@ -523,8 +523,8 @@ defaults on its root class, and a declaration on the element beats an inherited 
   // pairs they work off the OS preference too, like every other themed value.
   --ep-table-row-stripe-bg-color: var(--interface-foreground);
   --ep-table-row-hover-bg-color: light-dark(hsl(var(--gray-10)), hsl(var(--gray-450)));
-  --ep-table-row-selected-bg-color: var(--primary-color-base);
-  // Was var(--white), which nothing declares — selected rows had no text colour.
+  --ep-table-row-selected-bg-color: var(--primary-color);
+  // Was var(--white), which nothing declares — selected rows had no text color.
   --ep-table-row-selected-text-color: var(--text--white);
 
   // Border

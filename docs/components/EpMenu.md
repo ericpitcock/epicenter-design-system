@@ -41,8 +41,8 @@ defaults on its root class, and a declaration on the element beats an inherited 
 |---|---|---|
 | `--ep-menu-bg-color` | `var(--interface-surface)` | — |
 | `--ep-menu-item-bg-color` | `transparent` | — |
-| `--ep-menu-item-hover-bg-color` | `var(--primary-color-base)` | hover |
-| `--ep-menu-item-selected-bg-color` | `var(--primary-color-base)` | selected |
+| `--ep-menu-item-hover-bg-color` | `var(--primary-color)` | hover |
+| `--ep-menu-item-selected-bg-color` | `var(--primary-color)` | selected |
 
 ### Border
 
@@ -55,7 +55,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-menu-divider-border-color` | `var(--border-color)` | — |
 | `--ep-menu-item-border-color` | `transparent` | — |
 | `--ep-menu-item-border-radius` | `var(--border-radius--default)` | — |
-| `--ep-menu-item-hover-border-color` | `var(--primary-color-base)` | hover |
+| `--ep-menu-item-hover-border-color` | `var(--primary-color)` | hover |
 
 ### Layout
 
@@ -85,8 +85,8 @@ defaults on its root class, and a declaration on the element beats an inherited 
 
 | Property | Default | State |
 |---|---|---|
-| `--ep-menu-item-hover-text-color` | `hsl(var(--gray-0))` | hover |
-| `--ep-menu-item-selected-text-color` | `hsl(var(--gray-0))` | selected |
+| `--ep-menu-item-hover-text-color` | `var(--primary-color--contrast)` | hover |
+| `--ep-menu-item-selected-text-color` | `var(--primary-color--contrast)` | selected |
 | `--ep-menu-text-align` | `left` | — |
 
 ## Component Code
@@ -263,11 +263,11 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-menu-item-border-radius: var(--border-radius--default);
   --ep-menu-item-bg-color: transparent;
   --ep-menu-item-border-color: transparent;
-  --ep-menu-item-hover-bg-color: var(--primary-color-base);
-  --ep-menu-item-hover-text-color: hsl(var(--gray-0));
-  --ep-menu-item-hover-border-color: var(--primary-color-base);
-  --ep-menu-item-selected-bg-color: var(--primary-color-base);
-  --ep-menu-item-selected-text-color: hsl(var(--gray-0));
+  --ep-menu-item-hover-bg-color: var(--primary-color);
+  --ep-menu-item-hover-text-color: var(--primary-color--contrast);
+  --ep-menu-item-hover-border-color: var(--primary-color);
+  --ep-menu-item-selected-bg-color: var(--primary-color);
+  --ep-menu-item-selected-text-color: var(--primary-color--contrast);
 
   --ep-menu-sub-menu-top: -1rem;
   --ep-menu-sub-menu-offset: 1rem;

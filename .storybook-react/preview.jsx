@@ -1,9 +1,12 @@
 import React from 'react'
 import { ThemeProvider } from '@ericpitcock/epicenter-components-react'
 import { MemoryRouter } from 'react-router-dom'
+import { PRESETS, applySeeds } from '../packages/storybook-shared/theme-presets.js'
 
 // global styles
 import '../packages/epicenter-styles/dist/epicenter-design-system.css'
+// The consumer theme setup: seeds in a plain CSS file loaded right after the package.
+import '../packages/epicenter-components-vue/storybook/theme.css'
 import '../packages/epicenter-components-react/storybook/storybook.scss'
 
 // Read initial theme from localStorage or default to dark
@@ -36,6 +39,10 @@ const preview = {
       document.documentElement.classList.add(`${theme}-theme`)
       localStorage.setItem('theme-preference', theme)
 
+      // Brand presets write theme seeds onto <html>, the same thing a consumer's
+      // theme.css does to :root, so every story re-derives from the new seeds.
+      applySeeds(PRESETS[context.globals.brand] ?? {})
+
       return (
         <ThemeProvider>
           {/* react-router 7 makes the old v7_* future flags the default, so the
@@ -55,6 +62,17 @@ const preview = {
       toolbar: {
         icon: '',
         items: ['Light Theme', 'Dark Theme'],
+        showName: true,
+        dynamicTitle: true,
+      },
+    },
+    brand: {
+      name: 'Brand',
+      description: 'Theme seeds applied to every story',
+      defaultValue: 'Indigo (default)',
+      toolbar: {
+        icon: 'paintbrush',
+        items: Object.keys(PRESETS),
         showName: true,
         dynamicTitle: true,
       },

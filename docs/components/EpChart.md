@@ -79,8 +79,8 @@ This component does not use events, slots.
   }
   const chartId = `ep-chart-${useId()}`
 
-  // Styled mode cycles series colours modulo colorCount, so a chart with more
-  // series than that repeats a colour. The stylesheet publishes how many
+  // Styled mode cycles series colors modulo colorCount, so a chart with more
+  // series than that repeats a color. The stylesheet publishes how many
   // --chart-sequence-NN tokens exist; reading it here means the cycle is the
   // palette, and stays so when the palette grows.
   const paletteSize = (element: HTMLElement): number => {

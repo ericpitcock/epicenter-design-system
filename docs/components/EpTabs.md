@@ -38,7 +38,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 
 | Property | Default | State |
 |---|---|---|
-| `--ep-tabs-active-border-color` | `var(--primary-color-base)` | active |
+| `--ep-tabs-active-border-color` | `var(--primary-color)` | active |
 | `--ep-tabs-classic-active-border-color` | `var(--border-color)` | active |
 | `--ep-tabs-classic-border-radius` | `var(--border-radius--default)` | — |
 | `--ep-tabs-classic-border-width` | `var(--border-width--hairline)` | — |
@@ -191,7 +191,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-tabs-item-top: 0.1rem;
   --ep-tabs-hover-border-color: var(--border-color--lighter);
   --ep-tabs-hover-text-color: var(--text-color);
-  --ep-tabs-active-border-color: var(--primary-color-base);
+  --ep-tabs-active-border-color: var(--primary-color);
   --ep-tabs-active-text-color: var(--text-color--loud);
   --ep-tabs-focus-outline-color: var(--focus-outline-color);
 

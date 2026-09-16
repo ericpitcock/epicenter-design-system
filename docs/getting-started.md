@@ -57,6 +57,36 @@ itself — so npm installs all five regardless of the `optional` flag. Marking t
 optional is still the correct contract; it just does not shrink an `npm install` against
 this registry today.
 
+## Theming
+
+The stylesheet works as-is. To rebrand it, copy the starter theme, edit it, and load it
+**after** the package stylesheet:
+
+```shell
+cp node_modules/@ericpitcock/epicenter-styles/dist/theme.css src/theme.css
+```
+
+```js
+import '@ericpitcock/epicenter-styles'
+import './theme.css'
+```
+
+The starter lists every seed with its default and a note on what it drives. It is
+unlayered, so each line in it beats the package defaults with no `!important` — delete
+what you do not change. The smallest useful theme is one line:
+
+```css
+:root { --primary-color: oklch(0.55 0.22 145); }
+```
+
+Every `--primary-color--100 … --1000` step, the focus ring, selection and checked
+controls derive from that one value at runtime. Any color space works. `--neutral-color`
+tints every surface, border and text color; the four `--status-*-color` seeds drive
+banners, badges and form errors; `--font-family` and `--border-radius--*` do what they
+say. Light and dark are not separate themes — one set of seeds covers both. The full
+guide, with recipes, ships in the package as
+[THEMING.md](https://github.com/ericpitcock/epicenter-design-system/blob/master/packages/epicenter-styles/THEMING.md).
+
 ## Import _all_ components globally
 
 ```js

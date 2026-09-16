@@ -58,8 +58,8 @@ defaults on its root class, and a declaration on the element beats an inherited 
 |---|---|---|
 | `--ep-multi-search-bg-color` | `var(--interface-foreground)` | — |
 | `--ep-multi-search-operator-bg-color` | `hsl(var(--amber-300))` | — |
-| `--ep-multi-search-query-bg-color` | `var(--primary-color-base)` | — |
-| `--ep-multi-search-query-hover-bg-color` | `var(--primary-color-600)` | hover |
+| `--ep-multi-search-query-bg-color` | `var(--primary-color)` | — |
+| `--ep-multi-search-query-hover-bg-color` | `var(--primary-color--600)` | hover |
 
 ### Border
 
@@ -70,18 +70,18 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-multi-search-border-style` | `solid` | — |
 | `--ep-multi-search-border-width` | `var(--border-width--hairline)` | — |
 | `--ep-multi-search-disabled-border-color` | `var(--border-color--disabled)` | disabled |
-| `--ep-multi-search-focus-border-color` | `var(--primary-color-base)` | focus |
+| `--ep-multi-search-focus-border-color` | `var(--primary-color)` | focus |
 | `--ep-multi-search-query-border-radius` | `var(--border-radius--default)` | — |
 
 ### Text
 
 | Property | Default | State |
 |---|---|---|
-| `--ep-multi-search-caret-color` | `var(--primary-color-base)` | — |
+| `--ep-multi-search-caret-color` | `var(--primary-color)` | — |
 | `--ep-multi-search-disabled-text-color` | `var(--text-color--disabled)` | disabled |
 | `--ep-multi-search-operator-text-color` | `hsl(var(--gray-500))` | — |
 | `--ep-multi-search-query-line-height` | `2rem` | — |
-| `--ep-multi-search-query-text-color` | `hsl(var(--gray-0))` | — |
+| `--ep-multi-search-query-text-color` | `var(--primary-color--contrast)` | — |
 | `--ep-multi-search-text-color` | `var(--text-color)` | — |
 
 ### Box
@@ -324,12 +324,12 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-multi-search-border-style: solid;
   --ep-multi-search-border-color: var(--border-color);
   --ep-multi-search-border-radius: var(--border-radius--default);
-  --ep-multi-search-focus-border-color: var(--primary-color-base);
+  --ep-multi-search-focus-border-color: var(--primary-color);
   --ep-multi-search-disabled-border-color: var(--border-color--disabled);
 
   // Text
   --ep-multi-search-text-color: var(--text-color);
-  --ep-multi-search-caret-color: var(--primary-color-base);
+  --ep-multi-search-caret-color: var(--primary-color);
   --ep-multi-search-disabled-text-color: var(--text-color--disabled);
   --ep-multi-search-placeholder-disabled-opacity: 0.3;
 
@@ -337,9 +337,9 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-multi-search-query-gap: 0.3rem;
   --ep-multi-search-query-padding: 0 0.6rem 0 1rem;
   --ep-multi-search-query-border-radius: var(--border-radius--default);
-  --ep-multi-search-query-bg-color: var(--primary-color-base);
-  --ep-multi-search-query-text-color: hsl(var(--gray-0));
-  --ep-multi-search-query-hover-bg-color: var(--primary-color-600);
+  --ep-multi-search-query-bg-color: var(--primary-color);
+  --ep-multi-search-query-text-color: var(--primary-color--contrast);
+  --ep-multi-search-query-hover-bg-color: var(--primary-color--600);
   --ep-multi-search-query-line-height: 2rem;
   --ep-multi-search-operator-bg-color: hsl(var(--amber-300));
   --ep-multi-search-operator-text-color: hsl(var(--gray-500));

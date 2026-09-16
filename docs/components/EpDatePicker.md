@@ -91,7 +91,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 |---|---|---|
 | `--ep-date-picker-bg-color` | `var(--interface-overlay)` | — |
 | `--ep-date-picker-day-hover-bg-color` | `var(--interface-foreground--accent)` | hover |
-| `--ep-date-picker-day-selected-bg-color` | `var(--primary-color-base)` | selected |
+| `--ep-date-picker-day-selected-bg-color` | `var(--primary-color)` | selected |
 
 ### Border
 
@@ -102,7 +102,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-date-picker-border-style` | `solid` | — |
 | `--ep-date-picker-border-width` | `var(--border-width--hairline)` | — |
 | `--ep-date-picker-day-border-radius` | `var(--border-radius--default)` | — |
-| `--ep-date-picker-day-selected-border-color` | `var(--primary-color-base)` | selected |
+| `--ep-date-picker-day-selected-border-color` | `var(--primary-color)` | selected |
 
 ### Text
 
@@ -296,9 +296,9 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-date-picker-day-text-color: var(--text-color);
   --ep-date-picker-day-hover-bg-color: var(--interface-foreground--accent);
   --ep-date-picker-day-hover-text-color: var(--text-color--loud);
-  --ep-date-picker-day-selected-bg-color: var(--primary-color-base);
+  --ep-date-picker-day-selected-bg-color: var(--primary-color);
   --ep-date-picker-day-selected-text-color: var(--text--white);
-  --ep-date-picker-day-selected-border-color: var(--primary-color-base);
+  --ep-date-picker-day-selected-border-color: var(--primary-color);
   --ep-date-picker-day-disabled-text-color: var(--text-color--disabled);
 
   z-index: var(--ep-date-picker-z-index);

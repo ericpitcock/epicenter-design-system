@@ -1,7 +1,7 @@
 // @block browser-frame
 // @root .browser-frame
 // Moved out of EpBrowserFrame.vue's scoped block. Scoped CSS compiles to
-// [data-v-hash] selectors, so the traffic-light colours below could not be
+// [data-v-hash] selectors, so the traffic-light colors below could not be
 // changed by a consumer without :deep().
 .browser-frame {
   --ep-browser-frame-bg-color: var(--interface-surface);

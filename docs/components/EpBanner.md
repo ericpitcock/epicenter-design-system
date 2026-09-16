@@ -43,7 +43,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-banner-dismiss-button-active-bg-color` | `transparent` | active |
 | `--ep-banner-dismiss-button-bg-color` | `transparent` | — |
 | `--ep-banner-dismiss-button-hover-bg-color` | `transparent` | hover |
-| `--ep-banner-strip-bg-color` | `var(--primary-color-base)` | — |
+| `--ep-banner-strip-bg-color` | `var(--primary-color)` | — |
 
 ### Spacing
 
@@ -144,7 +144,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-banner-strip-width: 0.5rem;
   // Was var(--color--primary), which nothing in the system declares — the strip
   // has been rendering with no background at all.
-  --ep-banner-strip-bg-color: var(--primary-color-base);
+  --ep-banner-strip-bg-color: var(--primary-color);
 
   --ep-banner-body-padding: 1.2rem 2rem;
   --ep-banner-body-gap: 1.5rem;

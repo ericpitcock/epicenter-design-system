@@ -17,11 +17,11 @@
   --ep-menu-item-border-radius: var(--border-radius--default);
   --ep-menu-item-bg-color: transparent;
   --ep-menu-item-border-color: transparent;
-  --ep-menu-item-hover-bg-color: var(--primary-color-base);
-  --ep-menu-item-hover-text-color: hsl(var(--gray-0));
-  --ep-menu-item-hover-border-color: var(--primary-color-base);
-  --ep-menu-item-selected-bg-color: var(--primary-color-base);
-  --ep-menu-item-selected-text-color: hsl(var(--gray-0));
+  --ep-menu-item-hover-bg-color: var(--primary-color);
+  --ep-menu-item-hover-text-color: var(--primary-color--contrast);
+  --ep-menu-item-hover-border-color: var(--primary-color);
+  --ep-menu-item-selected-bg-color: var(--primary-color);
+  --ep-menu-item-selected-text-color: var(--primary-color--contrast);
 
   --ep-menu-sub-menu-top: -1rem;
   --ep-menu-sub-menu-offset: 1rem;

@@ -64,8 +64,8 @@
 }
 
 .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+2) .flatpickr-day.inRange:nth-child(7n+1) {
-  -webkit-box-shadow: -2px 0 0 var(--primary-color-base), 5px 0 0 var(--primary-color-base);
-  box-shadow: -2px 0 0 var(--primary-color-base), 5px 0 0 var(--primary-color-base);
+  -webkit-box-shadow: -2px 0 0 var(--primary-color), 5px 0 0 var(--primary-color);
+  box-shadow: -2px 0 0 var(--primary-color), 5px 0 0 var(--primary-color);
 }
 
 .flatpickr-calendar .hasWeeks .dayContainer,
@@ -574,8 +574,8 @@ span.flatpickr-weekday {
 .flatpickr-day:focus,
 .flatpickr-day.prevMonthDay:focus,
 .flatpickr-day.nextMonthDay:focus {
-  border-color: var(--primary-color-base);
-  background: var(--primary-color-base);
+  border-color: var(--primary-color);
+  background: var(--primary-color);
   cursor: pointer;
   outline: 0;
 }
@@ -643,8 +643,8 @@ span.flatpickr-weekday {
 
 .flatpickr-day.inRange {
   border-radius: 0;
-  -webkit-box-shadow: -5px 0 0 var(--primary-color-base), 5px 0 0 var(--primary-color-base);
-  box-shadow: -5px 0 0 var(--primary-color-base), 5px 0 0 var(--primary-color-base);
+  -webkit-box-shadow: -5px 0 0 var(--primary-color), 5px 0 0 var(--primary-color);
+  box-shadow: -5px 0 0 var(--primary-color), 5px 0 0 var(--primary-color);
 }
 
 .flatpickr-day.flatpickr-disabled,

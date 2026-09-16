@@ -12,7 +12,7 @@
   // Surface
   --ep-toggle-track-bg-color: var(--interface-overlay);
   // TODO: `green` is the CSS keyword, not a token — carried over verbatim so the
-  // on-state keeps its current colour. Likely wants --status-success-border-color.
+  // on-state keeps its current color. Likely wants --status-success-border-color.
   --ep-toggle-track-active-bg-color: green;
   --ep-toggle-thumb-bg-color: var(--text-color);
   --ep-toggle-thumb-active-bg-color: hsl(var(--gray-0));

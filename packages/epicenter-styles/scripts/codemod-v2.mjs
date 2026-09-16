@@ -68,6 +68,12 @@ let filesChanged = 0
 let totalReplacements = 0
 const perProperty = new Map()
 
+// Names with no replacement — the hue-shifted brand families that went with the
+// generate-color-variants() mixin. Mapping them onto a nearest surviving step
+// would silently change colors, so they are reported rather than rewritten.
+const REMOVED = /--primary-color-(?:up|down)-\d+-[a-z0-9]+/g
+const leftBehind = new Map()
+
 for (const target of targets.length ? targets : [process.cwd()]) {
   if (!fs.existsSync(target)) {
     console.error(`✖ no such path: ${target}`)
@@ -89,6 +95,11 @@ for (const target of targets.length ? targets : [process.cwd()]) {
       perProperty.set(from, (perProperty.get(from) ?? 0) + count)
     }
 
+    for (const name of new Set(updated.match(REMOVED) ?? [])) {
+      if (!leftBehind.has(name)) leftBehind.set(name, [])
+      leftBehind.get(name).push(path.relative(process.cwd(), file))
+    }
+
     if (!fileReplacements) continue
 
     filesChanged += 1
@@ -106,5 +117,12 @@ if (perProperty.size) {
   console.log('\nBy property:')
   for (const [name, count] of [...perProperty].sort((a, b) => b[1] - a[1])) {
     console.log(`  ${count.toString().padStart(4)}  ${name}`)
+  }
+}
+if (leftBehind.size) {
+  console.log('\n⚠ Removed with no replacement — see $removed in rename-map.json:')
+  for (const [name, files] of [...leftBehind].sort()) {
+    console.log(`  ${name}`)
+    for (const file of files) console.log(`        ${file}`)
   }
 }

@@ -28,7 +28,7 @@
     }
 
     // Previously declared but never consumed. Its default matches .ep-button's
-    // own text colour, so wiring it changes nothing until a consumer sets it.
+    // own text color, so wiring it changes nothing until a consumer sets it.
     &.ep-button-group--selected {
       position: relative;
       z-index: var(--z-index--overlap);

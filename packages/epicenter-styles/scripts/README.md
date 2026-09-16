@@ -9,9 +9,13 @@ This directory contains the build script for the Epicenter Design System styles 
 **Purpose:** Builds the complete styles package — generates color tokens from YAML, compiles SCSS to CSS, and copies assets to dist.
 
 **What it does:**
-1. Converts YAML design tokens in `../tokens/color/` to SCSS files in `../scss/color/`
-2. Compiles `index.scss` to compressed CSS at `dist/epicenter-design-system.css`
-3. Copies essential SCSS mixins to `dist/mixins/`
+1. Reads the theme seeds in `../tokens/theme.yaml` and writes `../scss/theme/_seeds.scss`,
+   the `@property` registrations, and the consumer starter `dist/theme.css`
+2. Converts YAML design tokens in `../tokens/color/` to SCSS files in `../scss/color/`
+   (`neutral(N)` values become `oklch(from var(--neutral-color) …)` with the lightness of `gray-N`)
+3. Compiles each layer group to compressed CSS, wrapped in cascade layers, at `dist/epicenter-design-system.css`
+4. Validates the custom-property contract and writes `dist/custom-properties.json`
+5. Copies the shared SCSS mixins to `dist/mixins/`
 
 **Usage:**
 ```bash
@@ -26,14 +30,17 @@ npm run build:watch
 ```
 dist/
 ├── epicenter-design-system.css
+├── theme.css
+├── custom-properties.json
 └── mixins/
-    └── _generate-color-variants.scss
+    └── _mixins.scss
 ```
 
 **Token file format:**
 - Simple properties: `property-name: value`
-- Theme-specific: `property-name: { dark: value1, light: value2 }`
-- Special handling for `themes.yaml` using modern `light-dark()` syntax
+- Theme-specific: `property-name: { dark: value1, light: value2 }` — any file with that shape becomes `light-dark()` pairs
+- `neutral(N)` / `neutral(N, alpha)` in a themed value: the lightness of `gray-N` on the `--neutral-color` seed
+- Relative-color derivations must originate from a seed declared in `tokens/theme.yaml`; the build fails otherwise
 
 **Dependencies:**
 - `chokidar` - File watching (loaded only in watch mode)

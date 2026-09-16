@@ -1,7 +1,7 @@
 /**
  * Sample Highcharts option sets for the EpChart stories.
  *
- * These carry data and chart type only. Styled mode, colour count, credits and
+ * These carry data and chart type only. Styled mode, color count, credits and
  * the rest come from EpChart's own defaults, which it merges deeply — so an
  * options object here can name `chart` without dropping them.
  */

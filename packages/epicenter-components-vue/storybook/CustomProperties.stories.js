@@ -67,7 +67,7 @@ export const Contract = {
           <h2 class="text-style--section">Custom property contract</h2>
           <p>
             {{ componentCount }} components, {{ total }} properties.
-            Each row lists the colour, border and radius properties that block exposes.
+            Each row lists the color, border and radius properties that block exposes.
           </p>
         </div>
         <table class="ep-table">
@@ -124,8 +124,8 @@ export const OverrideFromOutside = {
         <div class="contract-demo">
           <p>
             Under <code>.contract-demo .ep-button</code>, which sets four properties and
-            nothing else. Hover the primary button: its hover colour is <em>derived</em>
-            from the base colour, so it follows without being set.
+            nothing else. Hover the primary button: its hover color is <em>derived</em>
+            from the base color, so it follows without being set.
           </p>
           <div style="display:flex; gap:1rem; margin-top:1rem;">
             <button class="ep-button ep-button-var--primary"><span class="ep-button__label">Primary</span></button>

@@ -1,4 +1,4 @@
-// The logo's colours were declared inside EpicenterLogo.vue on a bare `svg`
+// The logo's colors were declared inside EpicenterLogo.vue on a bare `svg`
 // selector, which meant the component's own declaration always beat a consumer's
 // — the properties were effectively write-only.
 // Note the two framework packages use different inner class names for the SVG

@@ -25,7 +25,7 @@ type Story = StoryObj<typeof EpChart>;
 export const PieChart: Story = {
   args: {
     options: pieChartOptions,
-    // Series colours come from the --chart-sequence-NN tokens. Setting a
+    // Series colors come from the --chart-sequence-NN tokens. Setting a
     // --highcharts-color-N here overrides that slot for this chart alone:
     // chartColors: { '--highcharts-color-0': 'red' },
     chartColors: {},

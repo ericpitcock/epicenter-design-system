@@ -64,13 +64,13 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-input-border-style` | `solid` | — |
 | `--ep-input-border-width` | `var(--border-width--hairline)` | — |
 | `--ep-input-error-border-color` | `var(--status-danger-border-color)` | error |
-| `--ep-input-focus-border-color` | `var(--primary-color-base)` | focus |
+| `--ep-input-focus-border-color` | `var(--primary-color)` | focus |
 
 ### Text
 
 | Property | Default | State |
 |---|---|---|
-| `--ep-input-caret-color` | `var(--primary-color-base)` | — |
+| `--ep-input-caret-color` | `var(--primary-color)` | — |
 | `--ep-input-disabled-text-color` | `var(--text-color--disabled)` | disabled |
 | `--ep-input-font-size` | `var(--font-size--default)` | — |
 | `--ep-input-placeholder-text-color` | `var(--text-color--subtle)` | — |
@@ -255,13 +255,13 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-input-border-style: solid;
   --ep-input-border-color: var(--border-color);
   --ep-input-border-radius: var(--border-radius--default);
-  --ep-input-focus-border-color: var(--primary-color-base);
+  --ep-input-focus-border-color: var(--primary-color);
   --ep-input-error-border-color: var(--status-danger-border-color);
 
   // Text
   --ep-input-font-size: var(--font-size--default);
   --ep-input-text-color: var(--text-color--loud);
-  --ep-input-caret-color: var(--primary-color-base);
+  --ep-input-caret-color: var(--primary-color);
   --ep-input-placeholder-text-color: var(--text-color--subtle);
   --ep-input-disabled-text-color: var(--text-color--disabled);
 

@@ -58,7 +58,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 
 | Property | Default | State |
 |---|---|---|
-| `--ep-code-view-font-family` | `"Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace` | — |
+| `--ep-code-view-font-family` | `var(--font-family--mono)` | — |
 | `--ep-code-view-font-variation-settings` | `light-dark("wght" 450, "wght" 400)` | — |
 | `--ep-code-view-line-height` | `var(--text-line-height--normal)` | — |
 
@@ -137,7 +137,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 .ep-code-view {
   --ep-code-view-line-height: var(--text-line-height--normal);
   --ep-code-view-bg-color: var(--interface-surface);
-  --ep-code-view-font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --ep-code-view-font-family: var(--font-family--mono);
   // The lighter theme needs slightly more weight to hold the same optical
   // density, so this one is a light-dark() pair rather than a single value.
   --ep-code-view-font-variation-settings: light-dark("wght" 450, "wght" 400);

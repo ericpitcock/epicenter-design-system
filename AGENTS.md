@@ -48,7 +48,7 @@ When adding or modifying a component, check if the change should apply to **both
 
 - Design tokens defined as YAML in `packages/epicenter-styles/tokens/color/`
 - Build pipeline (`packages/epicenter-styles/scripts/build.mjs`) converts YAML → SCSS → `dist/epicenter-design-system.css`
-- Themes: `html.light-theme` / `html.dark-theme` classes; uses CSS `light-dark()` function
+- Themes: `html.light-theme` / `html.dark-theme` classes; uses CSS `light-dark()` function. Brand theming is seed-based (`tokens/theme.yaml` → `dist/theme.css`): set `--primary-color` and friends in plain CSS, the ramps derive at runtime
 - Custom property contract: see [packages/epicenter-styles/NAMING.md](packages/epicenter-styles/NAMING.md)
 - Interface-level custom properties: see [interface-custom-properties-guide.md](interface-custom-properties-guide.md)
 - Component SCSS lives in `packages/epicenter-styles/scss/components/`

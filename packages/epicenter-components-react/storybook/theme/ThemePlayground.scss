@@ -1,0 +1,101 @@
+// Storybook-only demo; not a shipped component. Mirrors the scoped block in the
+// Vue playground so the two stories look the same.
+.theme-playground {
+  display: grid;
+  grid-template-columns: 26rem 1fr;
+  gap: var(--space--8);
+  padding: var(--space--6);
+  color: var(--text-color);
+  font-size: var(--font-size--default);
+
+  h3 {
+    margin: var(--space--5) 0 var(--space--3);
+    color: var(--text-color--loud);
+    font-size: var(--font-size--default);
+    font-variation-settings: var(--font-weight--semi-bold);
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    small {
+      margin-left: var(--space--2);
+      color: var(--text-color--subtle);
+      font-variation-settings: var(--font-weight--regular);
+    }
+  }
+
+  &__controls label {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 var(--space--2);
+    margin-bottom: var(--space--3);
+    text-transform: capitalize;
+
+    span {
+      color: var(--text-color--subtle);
+      font-variant-numeric: tabular-nums;
+    }
+
+    input[type='range'] {
+      grid-column: 1 / -1;
+      width: 100%;
+      accent-color: var(--primary-color);
+    }
+  }
+
+  &__color {
+    align-items: center;
+
+    input[type='color'] {
+      width: 4rem;
+      height: 2.4rem;
+      padding: 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius--default);
+      background: none;
+    }
+  }
+
+  &__swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+    gap: var(--space--2);
+  }
+
+  &__swatch {
+    display: flex;
+    align-items: flex-end;
+    height: 6rem;
+    padding: var(--space--1) var(--space--2);
+    border-radius: var(--border-radius--default);
+    color: var(--primary-color--contrast);
+    font-size: var(--font-size--tiny);
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space--3);
+    margin-bottom: var(--space--3);
+  }
+
+  &__status {
+    padding: var(--space--2) var(--space--4);
+    border: 1px solid;
+    border-radius: var(--border-radius--default);
+    text-transform: capitalize;
+  }
+
+  &__css {
+    margin-bottom: var(--space--3);
+    white-space: pre;
+    padding: var(--space--3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius--default);
+    background: var(--interface-surface);
+    font-family: var(--font-family--mono);
+    font-size: var(--font-size--small);
+  }
+}

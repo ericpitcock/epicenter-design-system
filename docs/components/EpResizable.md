@@ -47,7 +47,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | Property | Default | State |
 |---|---|---|
 | `--ep-resizable-handle-bg-color` | `var(--interface-foreground)` | — |
-| `--ep-resizable-handle-hover-bg-color` | `var(--primary-color-300)` | hover |
+| `--ep-resizable-handle-hover-bg-color` | `var(--primary-color--300)` | hover |
 
 ### Border
 
@@ -56,7 +56,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-resizable-handle-border-color` | `var(--border-color)` | — |
 | `--ep-resizable-handle-border-style` | `solid` | — |
 | `--ep-resizable-handle-border-width` | `var(--border-width--hairline)` | — |
-| `--ep-resizable-handle-hover-border-color` | `var(--primary-color-300)` | hover |
+| `--ep-resizable-handle-hover-border-color` | `var(--primary-color--300)` | hover |
 
 ### Box
 
@@ -193,8 +193,8 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-resizable-handle-border-style: solid;
   --ep-resizable-handle-border-color: var(--border-color);
   --ep-resizable-handle-bg-color: var(--interface-foreground);
-  --ep-resizable-handle-hover-border-color: var(--primary-color-300);
-  --ep-resizable-handle-hover-bg-color: var(--primary-color-300);
+  --ep-resizable-handle-hover-border-color: var(--primary-color--300);
+  --ep-resizable-handle-hover-bg-color: var(--primary-color--300);
 
   display: flex;
   width: var(--ep-resizable-width);

@@ -24,6 +24,39 @@ a global token; component properties never contain one.
 
 ---
 
+## Layer 0 — Theme seeds
+
+`--<concept>` — `--primary-color`, `--neutral-color`, `--status-danger-color`, `--link-color`
+
+The inputs everything themed derives from, declared in `tokens/theme.yaml` and shipped
+with working defaults in the tokens layer. Consumer-facing guide: [THEMING.md](THEMING.md). A consumer rebrands by setting them in a plain
+CSS file loaded after the package (`dist/theme.css` is the starter). The full list:
+
+| Seed | Drives |
+|---|---|
+| `--primary-color` | `--primary-color--100` … `--1000` (relative color, in `scss/theme/_primary.scss`), focus ring, selection, checked controls |
+| `--primary-color--contrast` | text and icons on a primary fill |
+| `--accent-hue-shift`, `--accent-color` | the rotated brand hue: `--accent-color--600`, `--700`; the selected button state |
+| `--neutral-color` | every `--interface-*`, `--border-color*`, `--text-color*` and `--overlay-color` — chroma and hue only; the lightness ladder is fixed |
+| `--status-<name>-color` | the `--status-<name>-bg-color` / `-border-color` / `-text-color` trio and `--text-color--<name>` |
+| `--link-color` | `--text-color--link` |
+| `--font-family`, `--font-family--mono` | the root font and code |
+| `--border-radius--*` | every component corner |
+
+Seeds are inputs; Layer 2 tokens are outputs. A derivation is always
+`oklch(from var(--seed) …)` — the origin must be a seed, and the build fails if it is not.
+Color seeds are registered with `@property` (`<color>`, inherits, literal initial value)
+so a malformed consumer value falls back to the default instead of invalidating every
+token derived from it. The registrations are emitted **unlayered**, before the first
+`@layer` block. Derived tokens are never registered: their values are `light-dark()`
+pairs, which cannot be an `initial-value`.
+
+Two naming shapes coexist. `--primary-color` is a **scale** — its steps are
+`--primary-color--300`, its variant `--primary-color--contrast` — while the status
+families are **concepts with a property suffix**: `--status-danger-color` alongside the
+existing `--status-danger-bg-color`. Both follow the dash rule; pick the one the
+family already uses.
+
 ## Layer 1 — Primitives
 
 `--<family>-<step>` — `--red-500`, `--gray-430`
@@ -35,7 +68,12 @@ These hold **unwrapped HSL channel triplets**, so they must always be wrapped:
 `hsl(var(--red-500))`, never `var(--red-500)`. The build fails if a themed token
 references one without the wrapper.
 
-> **Known wart:** the grayscale ramp runs 0–500 in steps of 10 while the colour
+The `--gray-*` ramp still ships for direct use, but the `--interface-*`,
+`--border-color*` and `--text-color*` tokens no longer point at it: they derive from
+`--neutral-color` with the lightness of the gray step they used to reference, written
+in `themes.yaml` as `neutral(430)`. With the default seed the result is the same gray.
+
+> **Known wart:** the grayscale ramp runs 0–500 in steps of 10 while the color
 > ramps run 50–1000. So `--gray-500` is black but `--red-500` is a mid-tone. The two
 > schemes are incompatible and renaming touches nearly every token reference, so it
 > is left alone. Check the step scheme before reaching for a number.
@@ -48,7 +86,7 @@ Theme-aware, declared on `:root` as `light-dark()` pairs, generated from
 `tokens/color/themes.yaml`. Adding a `{ light, dark }` pair to that file is all it
 takes; the build detects the shape.
 
-Pick by layer, not by colour: `bg` → `surface` → `foreground` → `overlay`, furthest
+Pick by layer, not by color: `bg` → `surface` → `foreground` → `overlay`, furthest
 back to closest to the viewer.
 
 ## Layer 3 — Global scales
@@ -103,8 +141,8 @@ The three that matter most, because they were previously written three ways each
 | Concept | Use | Not |
 |---|---|---|
 | background | `-bg-color` | `-bg` |
-| text colour | `-text-color` | `-text`, bare `-color` |
-| border colour | `-border-color` | `-border` |
+| text color | `-text-color` | `-text`, bare `-color` |
+| border color | `-border-color` | `-border` |
 
 ---
 
@@ -203,7 +241,9 @@ The exception is a property a component declares but does not consume itself —
 descendants. Those follow normal inheritance.
 
 Sass forbids `@use` inside `@layer`, so the layers are applied by
-`scripts/build.mjs`, not by `index.scss`. See `LAYERS` there.
+`scripts/build.mjs`, not by `index.scss`. See `LAYERS` there. The one thing outside
+every layer is the `@property` preamble that registers the theme seeds — registration
+is not cascaded, so it has no layer to belong to.
 
 ---
 
@@ -215,7 +255,7 @@ scoped CSS compiles to `[data-v-hash]` selectors that a consumer cannot override
 without `:deep()`, which is the exact problem this contract exists to remove.
 
 Props become custom properties **only when the value cannot be enumerated** — an
-arbitrary colour from data, a computed dimension. Anything with a fixed set of
+arbitrary color from data, a computed dimension. Anything with a fixed set of
 values (`size`, `kind`, `direction`) is a BEM modifier class.
 
 ```js
@@ -234,7 +274,7 @@ const rootStyle = computed(() => ({
 cd packages/epicenter-styles
 npm run build      # compiles, then validates; fails on a contract violation
 npm run validate   # validate only, with a full report
-npm run lint       # stylelint: colour and px warnings in the component layer
+npm run lint       # stylelint: color and px warnings in the component layer
 ```
 
 `npm run validate` also writes `dist/custom-properties.json`, the machine-readable

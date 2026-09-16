@@ -8,12 +8,27 @@ applyTo: packages/epicenter-styles/**
 ## Build pipeline
 
 `npm run build` (in `packages/epicenter-styles/`) runs `scripts/build.mjs`:
-1. Reads YAML token files from `tokens/color/*.yaml`
-2. Generates SCSS partials in `scss/color/` (these are **generated** — do not edit)
-3. Compiles `index.scss` → `dist/epicenter-design-system.css` (compressed)
-4. Copies mixins to `dist/mixins/`
+1. Reads the theme seeds from `tokens/theme.yaml` → `scss/theme/_seeds.scss` (**generated** — do not edit), the `@property` preamble, and the consumer starter `dist/theme.css`
+2. Reads YAML token files from `tokens/color/*.yaml`
+3. Generates SCSS partials in `scss/color/` (**generated** — do not edit)
+4. Compiles each layer group → `dist/epicenter-design-system.css` (compressed, wrapped in cascade layers)
+5. Validates the custom-property contract → `dist/custom-properties.json`
+6. Copies `_mixins.scss` to `dist/mixins/`
 
-After changing any YAML token file, run the build to regenerate CSS.
+After changing any YAML file, run the build to regenerate CSS.
+
+## Theme seeds
+
+`tokens/theme.yaml` declares the inputs everything themed derives from: `--primary-color`
+(+ `--primary-color--contrast`, `--accent-hue-shift`, `--accent-color`), `--neutral-color`,
+`--status-danger/warning/success/info-color`, `--link-color`, `--font-family`,
+`--font-family--mono`, `--border-radius--*`. Consumers set them in plain CSS loaded after
+the package; `dist/theme.css` is the starter. Color seeds are registered with `@property`.
+
+Derived ramps use relative color syntax and live in the tokens layer:
+`scss/theme/_primary.scss` holds `--primary-color--100 … --1000` as
+`oklch(from var(--primary-color) calc(l ± …) c h)`. A relative-color origin must be a
+seed; the build fails on anything else. There is no SCSS mixin for theming any more.
 
 ## Token format
 
@@ -36,15 +51,20 @@ Grayscale uses the same format with `gray-0` (white) through `gray-500` (black) 
 
 ```yaml
 interface-bg:
-  dark: hsl(var(--gray-430))
-  light: hsl(var(--gray-50))
+  dark: neutral(430)
+  light: neutral(50)
+status-danger-text-color:
+  dark: oklch(from var(--status-danger-color) calc(l + 0.08) calc(c * 0.85) h)
+  light: oklch(from var(--status-danger-color) calc(l - 0.08) c h)
 ```
 
-The build converts these to CSS using `light-dark()`:
+`neutral(N)` is the lightness of gray step `gray-N` applied to the chroma and hue of
+`--neutral-color` (computed at build time — the sRGB→OKLCH curve is not linear). The
+build converts pairs to `light-dark()`:
 
 ```css
 :root { color-scheme: light dark; }
-:root { --interface-bg: light-dark(hsl(var(--gray-50)), hsl(var(--gray-430))); }
+:root { --interface-bg: light-dark(oklch(from var(--neutral-color) 0.9234 c h), oklch(from var(--neutral-color) 0.2591 c h)); }
 ```
 
 Theme is activated via `html.light-theme` or `html.dark-theme` classes.

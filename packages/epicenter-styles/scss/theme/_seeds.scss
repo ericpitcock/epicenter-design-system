@@ -1,0 +1,20 @@
+/* stylelint-disable */
+/* DO NOT EDIT DIRECTLY — generated from tokens/theme.yaml */
+:root {
+  --primary-color: oklch(0.6 0.2 257);
+  --primary-color--contrast: hsl(0 0% 100%);
+  --accent-hue-shift: 15;
+  --accent-color: oklch(from var(--primary-color) l c calc(h + var(--accent-hue-shift)));
+  --neutral-color: oklch(0.5 0 0);
+  --status-danger-color: hsl(0 84% 60%);
+  --status-warning-color: hsl(38 92% 50%);
+  --status-success-color: hsl(142 76% 36%);
+  --status-info-color: hsl(199 89% 48%);
+  --link-color: light-dark(hsl(var(--sky-600)), hsl(var(--sky-300)));
+  --font-family: sans-serif;
+  --font-family--mono: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --border-radius--small: 0.2rem;
+  --border-radius--default: 0.3rem;
+  --border-radius--large: 0.6rem;
+  --border-radius--full: 999rem;
+}

@@ -102,7 +102,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-button-bg-color` | `var(--interface-foreground)` | — |
 | `--ep-button-disabled-bg-color` | `var(--interface-foreground)` | disabled |
 | `--ep-button-hover-bg-color` | `var(--interface-foreground)` | hover |
-| `--ep-button-selected-bg-color` | `var(--primary-color-up-15-base)` | selected |
+| `--ep-button-selected-bg-color` | `var(--accent-color)` | selected |
 
 ### Border
 
@@ -115,7 +115,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
 | `--ep-button-border-width` | `var(--border-width--hairline)` | — |
 | `--ep-button-disabled-border-color` | `var(--border-color--disabled)` | disabled |
 | `--ep-button-hover-border-color` | `var(--border-color)` | hover |
-| `--ep-button-selected-border-color` | `var(--primary-color-base)` | selected |
+| `--ep-button-selected-border-color` | `var(--primary-color)` | selected |
 
 ### Text
 
@@ -244,7 +244,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-button-bg-color: var(--interface-foreground);
   --ep-button-hover-bg-color: var(--interface-foreground);
   --ep-button-active-bg-color: var(--interface-foreground);
-  --ep-button-selected-bg-color: var(--primary-color-up-15-base);
+  --ep-button-selected-bg-color: var(--accent-color);
   --ep-button-disabled-bg-color: var(--interface-foreground);
 
   // Border
@@ -254,7 +254,7 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-button-border-color: var(--border-color);
   --ep-button-hover-border-color: var(--border-color);
   --ep-button-active-border-color: var(--border-color);
-  --ep-button-selected-border-color: var(--primary-color-base);
+  --ep-button-selected-border-color: var(--primary-color);
   --ep-button-disabled-border-color: var(--border-color--disabled);
 
   // Text
@@ -263,8 +263,8 @@ defaults on its root class, and a declaration on the element beats an inherited 
   --ep-button-text-color: var(--text-color--loud);
   --ep-button-hover-text-color: var(--text-color--loud);
   --ep-button-active-text-color: var(--text-color);
-  // Selected sits on a primary-coloured fill in both themes, so it takes the
-  // fixed light text rather than the theme's loud text colour.
+  // Selected sits on a primary-colored fill in both themes, so it takes the
+  // fixed light text rather than the theme's loud text color.
   --ep-button-selected-text-color: var(--text--white);
   --ep-button-disabled-text-color: var(--text-color--disabled);
 

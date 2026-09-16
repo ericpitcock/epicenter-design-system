@@ -10,6 +10,7 @@ Additional conventions are already documented in repo files — read these when 
 - [.github/instructions/epicenter-styles.instructions.md](.github/instructions/epicenter-styles.instructions.md) — token format, build pipeline, SCSS conventions for `packages/epicenter-styles`
 - [.github/prompts/vue-component.prompt.md](.github/prompts/vue-component.prompt.md) — Vue 3 component anatomy and rules
 - [.github/prompts/react-component.prompt.md](.github/prompts/react-component.prompt.md) — React component anatomy, polymorphic `as` pattern, story template
+- [packages/epicenter-styles/THEMING.md](packages/epicenter-styles/THEMING.md) — consumer theming guide: seeds, `theme.css`, recipes
 - [interface-custom-properties-guide.md](interface-custom-properties-guide.md) — semantic surface layering (`--interface-bg`, `--interface-surface`, etc.)
 
 ## Commands
@@ -48,12 +49,13 @@ packages/
 
 ### Styles pipeline (`packages/epicenter-styles/scripts/build.mjs`)
 
-1. YAML tokens in `tokens/color/*.yaml` (HSL triplets like `red-500: 0 84% 60%`) →
-2. Generated SCSS partials in `scss/color/` (generated, do not edit) →
-3. `index.scss` compiled to `dist/epicenter-design-system.css` →
-4. Also written to `static/epicenter-design-system.css` for the landing site
+1. Theme seeds in `tokens/theme.yaml` → generated `scss/theme/_seeds.scss` (do not edit), an unlayered `@property` preamble, and the consumer starter `dist/theme.css`
+2. YAML tokens in `tokens/color/*.yaml` (HSL triplets like `red-500: 0 84% 60%`; themed pairs may use `neutral(430)`) →
+3. Generated SCSS partials in `scss/color/` (generated, do not edit) →
+4. Each layer group compiled and wrapped in cascade layers into `dist/epicenter-design-system.css` →
+5. Also written to `static/` for the landing site
 
-Themes use the CSS `light-dark()` function, toggled via `html.light-theme` / `html.dark-theme`. After editing any YAML token, run the styles build.
+Themes use the CSS `light-dark()` function, toggled via `html.light-theme` / `html.dark-theme`. Brand theming is seed-based: consumers set `--primary-color`, `--neutral-color`, `--status-*-color` etc. in plain CSS and every ramp derives at runtime with `oklch(from …)` (see `scss/theme/_primary.scss`). There is no theming mixin. After editing any YAML file, run the styles build.
 
 Component SCSS lives in `packages/epicenter-styles/scss/components/` as `_component-name.scss` (no `ep-` prefix on the filename) and must be registered in `_index.scss` via `@use`. Styles are **shared across Vue and React** — not duplicated inside each framework package. Vue SFCs carry **no `<style>` block at all**: scoped CSS compiles to `[data-v-hash]` selectors that consumers cannot override without `:deep()`.
 

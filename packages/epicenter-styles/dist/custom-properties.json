@@ -1,6 +1,34 @@
 {
   "globals": [
     {
+      "name": "--accent-color",
+      "default": "oklch(from var(--primary-color) l c calc(h + var(--accent-hue-shift)))",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true,
+      "registered": "<color>"
+    },
+    {
+      "name": "--accent-color--600",
+      "default": "oklch(from var(--accent-color) calc(l - 0.07) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
+      "themeAware": false
+    },
+    {
+      "name": "--accent-color--700",
+      "default": "oklch(from var(--accent-color) calc(l - 0.14) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
+      "themeAware": false
+    },
+    {
+      "name": "--accent-hue-shift",
+      "default": "15",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true,
+      "registered": "<number>"
+    },
+    {
       "name": "--amber-100",
       "default": "48 96% 89%",
       "file": "packages/epicenter-styles/scss/color/_color.scss",
@@ -80,7 +108,7 @@
     },
     {
       "name": "--bg-color--alert-low",
-      "default": "light-dark(hsl(var(--gray-130)), hsl(var(--gray-300)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.7974 c h), oklch(from var(--neutral-color) 0.5103 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
@@ -158,45 +186,49 @@
     },
     {
       "name": "--border-color",
-      "default": "light-dark(hsl(var(--gray-100)), hsl(var(--gray-380)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.8452 c h), oklch(from var(--neutral-color) 0.3608 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--border-color--disabled",
-      "default": "light-dark(hsl(var(--gray-70)), hsl(var(--gray-400)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.8923 c h), oklch(from var(--neutral-color) 0.3211 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--border-color--lighter",
-      "default": "light-dark(var(--border-color), hsl(var(--gray-340)))",
+      "default": "light-dark(var(--border-color), oklch(from var(--neutral-color) 0.4371 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--border-radius--default",
       "default": "0.3rem",
-      "file": "packages/epicenter-styles/scss/utilities/_border-radius.scss",
-      "themeAware": false
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true
     },
     {
       "name": "--border-radius--full",
       "default": "999rem",
-      "file": "packages/epicenter-styles/scss/utilities/_border-radius.scss",
-      "themeAware": false
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true
     },
     {
       "name": "--border-radius--large",
       "default": "0.6rem",
-      "file": "packages/epicenter-styles/scss/utilities/_border-radius.scss",
-      "themeAware": false
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true
     },
     {
       "name": "--border-radius--small",
       "default": "0.2rem",
-      "file": "packages/epicenter-styles/scss/utilities/_border-radius.scss",
-      "themeAware": false
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true
     },
     {
       "name": "--border-width--hairline",
@@ -566,7 +598,7 @@
     },
     {
       "name": "--focus-outline-color",
-      "default": "var(--primary-color-base)",
+      "default": "var(--primary-color)",
       "file": "packages/epicenter-styles/scss/utilities/_accessibility.scss",
       "themeAware": false
     },
@@ -581,6 +613,20 @@
       "default": "var(--border-width--thick)",
       "file": "packages/epicenter-styles/scss/utilities/_accessibility.scss",
       "themeAware": false
+    },
+    {
+      "name": "--font-family",
+      "default": "sans-serif",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true
+    },
+    {
+      "name": "--font-family--mono",
+      "default": "\"Fira Code\", \"Fira Mono\", Menlo, Consolas, \"DejaVu Sans Mono\", monospace",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true
     },
     {
       "name": "--font-size--body",
@@ -1256,7 +1302,7 @@
     },
     {
       "name": "--highcharts-font-family",
-      "default": "'InterVariable', sans-serif",
+      "default": "var(--font-family)",
       "file": "packages/epicenter-styles/scss/components/_charts.scss",
       "themeAware": false
     },
@@ -1424,55 +1470,55 @@
     },
     {
       "name": "--interface-bg",
-      "default": "light-dark(hsl(var(--gray-50)), hsl(var(--gray-430)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.9234 c h), oklch(from var(--neutral-color) 0.2591 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--interface-bg--accent",
-      "default": "light-dark(hsl(var(--gray-40)), hsl(var(--gray-420)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.9389 c h), oklch(from var(--neutral-color) 0.2801 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--interface-foreground",
-      "default": "light-dark(hsl(var(--gray-20)), hsl(var(--gray-430)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.9696 c h), oklch(from var(--neutral-color) 0.2591 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--interface-foreground--accent",
-      "default": "light-dark(hsl(var(--gray-10)), hsl(var(--gray-420)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.9848 c h), oklch(from var(--neutral-color) 0.2801 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--interface-overlay",
-      "default": "light-dark(hsl(var(--gray-10)), hsl(var(--gray-390)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.9848 c h), oklch(from var(--neutral-color) 0.3411 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--interface-overlay--accent",
-      "default": "light-dark(hsl(var(--gray-0)), hsl(var(--gray-380)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 1 c h), oklch(from var(--neutral-color) 0.3608 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--interface-surface",
-      "default": "light-dark(hsl(var(--gray-30)), hsl(var(--gray-440)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.9542 c h), oklch(from var(--neutral-color) 0.2376 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--interface-surface--accent",
-      "default": "light-dark(hsl(var(--gray-50)), hsl(var(--gray-420)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.9234 c h), oklch(from var(--neutral-color) 0.2801 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--interface-surface--inverse",
-      "default": "light-dark(hsl(var(--gray-440)), hsl(var(--gray-30)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.2376 c h), oklch(from var(--neutral-color) 0.9542 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
@@ -1543,6 +1589,22 @@
       "themeAware": false
     },
     {
+      "name": "--link-color",
+      "default": "light-dark(hsl(var(--sky-600)), hsl(var(--sky-300)))",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": true,
+      "seed": true,
+      "registered": "<color>"
+    },
+    {
+      "name": "--neutral-color",
+      "default": "oklch(0.5 0 0)",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true,
+      "registered": "<color>"
+    },
+    {
       "name": "--orange-100",
       "default": "34 100% 92%",
       "file": "packages/epicenter-styles/scss/color/_color.scss",
@@ -1610,7 +1672,7 @@
     },
     {
       "name": "--overlay-color",
-      "default": "light-dark(rgba(255, 255, 255, 0.85), rgba(36, 36, 36, 0.85))",
+      "default": "light-dark(oklch(from var(--neutral-color) 1 c h / 0.85), oklch(from var(--neutral-color) 0.2591 c h / 0.85))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
@@ -1681,484 +1743,80 @@
       "themeAware": false
     },
     {
-      "name": "--primary-#{$name}-#{$i + 5}00",
-      "default": "#{oklch($shade-lightness $base-chroma $adjusted-hue)}",
-      "file": "packages/epicenter-styles/scss/mixins/_generate-color-variants.scss",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-#{$name}-#{$i}00",
-      "default": "#{oklch($tint-lightness $base-chroma $adjusted-hue)}",
-      "file": "packages/epicenter-styles/scss/mixins/_generate-color-variants.scss",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-#{$name}-base",
-      "default": "#{oklch($base-lightness $base-chroma $adjusted-hue)}",
-      "file": "packages/epicenter-styles/scss/mixins/_generate-color-variants.scss",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-100",
-      "default": "oklch(85% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-1000",
-      "default": "oklch(25% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-200",
-      "default": "oklch(80% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-300",
-      "default": "oklch(75% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-400",
-      "default": "oklch(70% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-500",
-      "default": "oklch(65% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-600",
-      "default": "oklch(53% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-700",
-      "default": "oklch(46% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-800",
-      "default": "oklch(39% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-900",
-      "default": "oklch(32% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-base",
-      "default": "oklch(60% 0.2 257deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-100",
-      "default": "oklch(85% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-1000",
-      "default": "oklch(25% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-200",
-      "default": "oklch(80% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-300",
-      "default": "oklch(75% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-400",
-      "default": "oklch(70% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-500",
-      "default": "oklch(65% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-600",
-      "default": "oklch(53% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-700",
-      "default": "oklch(46% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-800",
-      "default": "oklch(39% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-900",
-      "default": "oklch(32% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-10-base",
-      "default": "oklch(60% 0.2 247deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-15-100",
-      "default": "oklch(85% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-15-1000",
-      "default": "oklch(25% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-15-200",
-      "default": "oklch(80% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-15-300",
-      "default": "oklch(75% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-15-400",
-      "default": "oklch(70% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-15-500",
-      "default": "oklch(65% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-15-600",
-      "default": "oklch(53% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-15-700",
-      "default": "oklch(46% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-15-800",
-      "default": "oklch(39% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-15-900",
-      "default": "oklch(32% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
+      "name": "--primary-color",
+      "default": "oklch(0.6 0.2 257)",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true,
+      "registered": "<color>"
     },
     {
-      "name": "--primary-color-down-15-base",
-      "default": "oklch(60% 0.2 242deg)",
-      "file": "dist/epicenter-design-system.css",
+      "name": "--primary-color--100",
+      "default": "oklch(from var(--primary-color) calc(l + 0.25) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
       "themeAware": false
     },
     {
-      "name": "--primary-color-down-5-100",
-      "default": "oklch(85% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
+      "name": "--primary-color--1000",
+      "default": "oklch(from var(--primary-color) calc(l - 0.35) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
       "themeAware": false
     },
     {
-      "name": "--primary-color-down-5-1000",
-      "default": "oklch(25% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
+      "name": "--primary-color--200",
+      "default": "oklch(from var(--primary-color) calc(l + 0.2) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
       "themeAware": false
     },
     {
-      "name": "--primary-color-down-5-200",
-      "default": "oklch(80% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
+      "name": "--primary-color--300",
+      "default": "oklch(from var(--primary-color) calc(l + 0.15) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
       "themeAware": false
     },
     {
-      "name": "--primary-color-down-5-300",
-      "default": "oklch(75% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
+      "name": "--primary-color--400",
+      "default": "oklch(from var(--primary-color) calc(l + 0.1) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
       "themeAware": false
     },
     {
-      "name": "--primary-color-down-5-400",
-      "default": "oklch(70% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
+      "name": "--primary-color--500",
+      "default": "oklch(from var(--primary-color) calc(l + 0.05) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
       "themeAware": false
     },
     {
-      "name": "--primary-color-down-5-500",
-      "default": "oklch(65% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
+      "name": "--primary-color--600",
+      "default": "oklch(from var(--primary-color) calc(l - 0.07) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
       "themeAware": false
     },
     {
-      "name": "--primary-color-down-5-600",
-      "default": "oklch(53% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
+      "name": "--primary-color--700",
+      "default": "oklch(from var(--primary-color) calc(l - 0.14) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
       "themeAware": false
     },
     {
-      "name": "--primary-color-down-5-700",
-      "default": "oklch(46% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
+      "name": "--primary-color--800",
+      "default": "oklch(from var(--primary-color) calc(l - 0.21) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
       "themeAware": false
     },
     {
-      "name": "--primary-color-down-5-800",
-      "default": "oklch(39% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
+      "name": "--primary-color--900",
+      "default": "oklch(from var(--primary-color) calc(l - 0.28) c h)",
+      "file": "packages/epicenter-styles/scss/theme/_primary.scss",
       "themeAware": false
     },
     {
-      "name": "--primary-color-down-5-900",
-      "default": "oklch(32% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-down-5-base",
-      "default": "oklch(60% 0.2 252deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-100",
-      "default": "oklch(85% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-1000",
-      "default": "oklch(25% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-200",
-      "default": "oklch(80% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-300",
-      "default": "oklch(75% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-400",
-      "default": "oklch(70% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-500",
-      "default": "oklch(65% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-600",
-      "default": "oklch(53% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-700",
-      "default": "oklch(46% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-800",
-      "default": "oklch(39% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-900",
-      "default": "oklch(32% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-10-base",
-      "default": "oklch(60% 0.2 267deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-100",
-      "default": "oklch(85% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-1000",
-      "default": "oklch(25% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-200",
-      "default": "oklch(80% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-300",
-      "default": "oklch(75% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-400",
-      "default": "oklch(70% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-500",
-      "default": "oklch(65% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-600",
-      "default": "oklch(53% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-700",
-      "default": "oklch(46% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-800",
-      "default": "oklch(39% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-900",
-      "default": "oklch(32% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-15-base",
-      "default": "oklch(60% 0.2 272deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-100",
-      "default": "oklch(85% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-1000",
-      "default": "oklch(25% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-200",
-      "default": "oklch(80% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-300",
-      "default": "oklch(75% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-400",
-      "default": "oklch(70% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-500",
-      "default": "oklch(65% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-600",
-      "default": "oklch(53% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-700",
-      "default": "oklch(46% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-800",
-      "default": "oklch(39% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-900",
-      "default": "oklch(32% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
-    },
-    {
-      "name": "--primary-color-up-5-base",
-      "default": "oklch(60% 0.2 262deg)",
-      "file": "dist/epicenter-design-system.css",
-      "themeAware": false
+      "name": "--primary-color--contrast",
+      "default": "hsl(0 0% 100%)",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true,
+      "registered": "<color>"
     },
     {
       "name": "--purple-100",
@@ -2516,73 +2174,105 @@
     },
     {
       "name": "--status-danger-bg-color",
-      "default": "light-dark(hsl(var(--red-50)), hsl(var(--red-900)))",
+      "default": "light-dark(oklch(from var(--status-danger-color) 0.975 calc(c * 0.1) h), oklch(from var(--status-danger-color) 0.4 calc(c * 0.6) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--status-danger-border-color",
-      "default": "light-dark(hsl(var(--red-500)), hsl(var(--red-400)))",
+      "default": "light-dark(var(--status-danger-color), oklch(from var(--status-danger-color) calc(l + 0.08) calc(c * 0.85) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
+      "name": "--status-danger-color",
+      "default": "hsl(0 84% 60%)",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true,
+      "registered": "<color>"
+    },
+    {
       "name": "--status-danger-text-color",
-      "default": "light-dark(hsl(var(--red-600)), hsl(var(--red-400)))",
+      "default": "light-dark(oklch(from var(--status-danger-color) calc(l - 0.08) c h), oklch(from var(--status-danger-color) calc(l + 0.08) calc(c * 0.85) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--status-info-bg-color",
-      "default": "light-dark(hsl(var(--sky-50)), hsl(var(--sky-900)))",
+      "default": "light-dark(oklch(from var(--status-info-color) 0.975 calc(c * 0.1) h), oklch(from var(--status-info-color) 0.4 calc(c * 0.6) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--status-info-border-color",
-      "default": "light-dark(hsl(var(--sky-500)), hsl(var(--sky-300)))",
+      "default": "light-dark(var(--status-info-color), oklch(from var(--status-info-color) calc(l + 0.08) calc(c * 0.85) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
+      "name": "--status-info-color",
+      "default": "hsl(199 89% 48%)",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true,
+      "registered": "<color>"
+    },
+    {
       "name": "--status-info-text-color",
-      "default": "light-dark(hsl(var(--sky-600)), hsl(var(--sky-300)))",
+      "default": "light-dark(oklch(from var(--status-info-color) calc(l - 0.08) c h), oklch(from var(--status-info-color) calc(l + 0.08) calc(c * 0.85) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--status-success-bg-color",
-      "default": "light-dark(hsl(var(--green-50)), hsl(var(--green-900)))",
+      "default": "light-dark(oklch(from var(--status-success-color) 0.975 calc(c * 0.1) h), oklch(from var(--status-success-color) 0.4 calc(c * 0.6) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--status-success-border-color",
-      "default": "light-dark(hsl(var(--green-600)), hsl(var(--green-600)))",
+      "default": "light-dark(var(--status-success-color), oklch(from var(--status-success-color) calc(l + 0.08) calc(c * 0.85) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
+      "name": "--status-success-color",
+      "default": "hsl(142 76% 36%)",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true,
+      "registered": "<color>"
+    },
+    {
       "name": "--status-success-text-color",
-      "default": "light-dark(hsl(var(--green-700)), hsl(var(--green-600)))",
+      "default": "light-dark(oklch(from var(--status-success-color) calc(l - 0.08) c h), oklch(from var(--status-success-color) calc(l + 0.08) calc(c * 0.85) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--status-warning-bg-color",
-      "default": "light-dark(hsl(var(--amber-50)), hsl(var(--amber-900)))",
+      "default": "light-dark(oklch(from var(--status-warning-color) 0.975 calc(c * 0.1) h), oklch(from var(--status-warning-color) 0.4 calc(c * 0.6) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--status-warning-border-color",
-      "default": "light-dark(hsl(var(--amber-500)), hsl(var(--amber-500)))",
+      "default": "light-dark(var(--status-warning-color), oklch(from var(--status-warning-color) calc(l + 0.08) calc(c * 0.85) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
+      "name": "--status-warning-color",
+      "default": "hsl(38 92% 50%)",
+      "file": "packages/epicenter-styles/scss/theme/_seeds.scss",
+      "themeAware": false,
+      "seed": true,
+      "registered": "<color>"
+    },
+    {
       "name": "--status-warning-text-color",
-      "default": "light-dark(hsl(var(--amber-600)), hsl(var(--amber-500)))",
+      "default": "light-dark(oklch(from var(--status-warning-color) calc(l - 0.08) c h), oklch(from var(--status-warning-color) calc(l + 0.08) calc(c * 0.85) h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
@@ -2666,61 +2356,61 @@
     },
     {
       "name": "--text-color",
-      "default": "light-dark(hsl(var(--gray-410)), hsl(var(--gray-150)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.3008 c h), oklch(from var(--neutral-color) 0.7652 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--text-color--danger",
-      "default": "light-dark(hsl(var(--red-600)), hsl(var(--red-400)))",
+      "default": "light-dark(var(--status-danger-text-color), var(--status-danger-text-color))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--text-color--disabled",
-      "default": "light-dark(hsl(var(--gray-170)), hsl(var(--gray-300)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.7326 c h), oklch(from var(--neutral-color) 0.5103 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--text-color--inverse",
-      "default": "light-dark(hsl(var(--gray-150)), hsl(var(--gray-410)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.7652 c h), oklch(from var(--neutral-color) 0.3008 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--text-color--link",
-      "default": "light-dark(hsl(var(--sky-600)), hsl(var(--sky-300)))",
+      "default": "light-dark(var(--link-color), var(--link-color))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--text-color--loud",
-      "default": "light-dark(hsl(var(--gray-500)), hsl(var(--gray-50)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0 c h), oklch(from var(--neutral-color) 0.9234 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--text-color--primary",
-      "default": "light-dark(var(--primary-color-700), var(--primary-color-200))",
+      "default": "light-dark(var(--primary-color--700), var(--primary-color--200))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--text-color--subtle",
-      "default": "light-dark(hsl(var(--gray-300)), hsl(var(--gray-220)))",
+      "default": "light-dark(oklch(from var(--neutral-color) 0.5103 c h), oklch(from var(--neutral-color) 0.6494 c h))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--text-color--success",
-      "default": "light-dark(hsl(var(--green-700)), hsl(var(--green-600)))",
+      "default": "light-dark(var(--status-success-text-color), var(--status-success-text-color))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--text-color--warning",
-      "default": "light-dark(hsl(var(--amber-600)), hsl(var(--amber-500)))",
+      "default": "light-dark(var(--status-warning-text-color), var(--status-warning-text-color))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
@@ -2744,13 +2434,13 @@
     },
     {
       "name": "--text-selection-bg-color",
-      "default": "light-dark(var(--primary-color-base), var(--primary-color-base))",
+      "default": "light-dark(var(--primary-color), var(--primary-color))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
     {
       "name": "--text-selection-text-color",
-      "default": "light-dark(hsl(var(--gray-0)), hsl(var(--gray-0)))",
+      "default": "light-dark(var(--primary-color--contrast), var(--primary-color--contrast))",
       "file": "packages/epicenter-styles/scss/color/_themes.scss",
       "themeAware": true
     },
@@ -3348,7 +3038,7 @@
         },
         {
           "name": "--ep-banner-strip-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": "strip",
           "state": null,
@@ -3849,7 +3539,7 @@
         },
         {
           "name": "--ep-button-selected-bg-color",
-          "default": "var(--primary-color-up-15-base)",
+          "default": "var(--accent-color)",
           "group": "surface",
           "part": null,
           "state": "selected",
@@ -3857,7 +3547,7 @@
         },
         {
           "name": "--ep-button-selected-border-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "border",
           "part": null,
           "state": "selected",
@@ -3965,7 +3655,7 @@
         },
         {
           "name": "--ep-carousel-dot-bg-color",
-          "default": "hsl(from var(--primary-color-base) h s l / 0.3)",
+          "default": "hsl(from var(--primary-color) h s l / 0.3)",
           "group": "surface",
           "part": "dot",
           "state": null,
@@ -3973,7 +3663,7 @@
         },
         {
           "name": "--ep-carousel-dot-hover-bg-color",
-          "default": "hsl(from var(--primary-color-base) h s l / 0.6)",
+          "default": "hsl(from var(--primary-color) h s l / 0.6)",
           "group": "surface",
           "part": "dot",
           "state": "hover",
@@ -3989,7 +3679,7 @@
         },
         {
           "name": "--ep-carousel-dot-selected-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": "dot",
           "state": "selected",
@@ -4053,7 +3743,7 @@
         },
         {
           "name": "--ep-carousel-image-focus-outline-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "effect",
           "part": "image",
           "state": "focus",
@@ -4162,7 +3852,7 @@
         },
         {
           "name": "--ep-checkbox-checked-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": null,
           "state": "checked",
@@ -4170,7 +3860,7 @@
         },
         {
           "name": "--ep-checkbox-checked-border-color",
-          "default": "var(--primary-color-300)",
+          "default": "var(--primary-color--300)",
           "group": "border",
           "part": null,
           "state": "checked",
@@ -4218,7 +3908,7 @@
         },
         {
           "name": "--ep-checkbox-mark-bg-color",
-          "default": "hsl(var(--gray-0))",
+          "default": "var(--primary-color--contrast)",
           "group": "surface",
           "part": "mark",
           "state": null,
@@ -4296,7 +3986,7 @@
         },
         {
           "name": "--ep-code-view-font-family",
-          "default": "\"Fira Code\", \"Fira Mono\", Menlo, Consolas, \"DejaVu Sans Mono\", monospace",
+          "default": "var(--font-family--mono)",
           "group": "text",
           "part": null,
           "state": null,
@@ -4717,7 +4407,7 @@
         },
         {
           "name": "--ep-date-picker-day-selected-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": "day",
           "state": "selected",
@@ -4725,7 +4415,7 @@
         },
         {
           "name": "--ep-date-picker-day-selected-border-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "border",
           "part": "day",
           "state": "selected",
@@ -5785,7 +5475,7 @@
         },
         {
           "name": "--ep-input-caret-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "text",
           "part": null,
           "state": null,
@@ -5809,7 +5499,7 @@
         },
         {
           "name": "--ep-input-focus-border-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "border",
           "part": null,
           "state": "focus",
@@ -6330,7 +6020,7 @@
         },
         {
           "name": "--ep-menu-item-hover-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": "item",
           "state": "hover",
@@ -6338,7 +6028,7 @@
         },
         {
           "name": "--ep-menu-item-hover-border-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "border",
           "part": "item",
           "state": "hover",
@@ -6346,7 +6036,7 @@
         },
         {
           "name": "--ep-menu-item-hover-text-color",
-          "default": "hsl(var(--gray-0))",
+          "default": "var(--primary-color--contrast)",
           "group": "text",
           "part": "item",
           "state": "hover",
@@ -6362,7 +6052,7 @@
         },
         {
           "name": "--ep-menu-item-selected-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": "item",
           "state": "selected",
@@ -6370,7 +6060,7 @@
         },
         {
           "name": "--ep-menu-item-selected-text-color",
-          "default": "hsl(var(--gray-0))",
+          "default": "var(--primary-color--contrast)",
           "group": "text",
           "part": "item",
           "state": "selected",
@@ -6473,7 +6163,7 @@
         },
         {
           "name": "--ep-multi-search-caret-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "text",
           "part": null,
           "state": null,
@@ -6497,7 +6187,7 @@
         },
         {
           "name": "--ep-multi-search-focus-border-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "border",
           "part": null,
           "state": "focus",
@@ -6553,7 +6243,7 @@
         },
         {
           "name": "--ep-multi-search-query-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": "query",
           "state": null,
@@ -6577,7 +6267,7 @@
         },
         {
           "name": "--ep-multi-search-query-hover-bg-color",
-          "default": "var(--primary-color-600)",
+          "default": "var(--primary-color--600)",
           "group": "surface",
           "part": "query",
           "state": "hover",
@@ -6601,7 +6291,7 @@
         },
         {
           "name": "--ep-multi-search-query-text-color",
-          "default": "hsl(var(--gray-0))",
+          "default": "var(--primary-color--contrast)",
           "group": "text",
           "part": "query",
           "state": null,
@@ -6704,7 +6394,7 @@
         },
         {
           "name": "--ep-notification-strip-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": "strip",
           "state": null,
@@ -6869,7 +6559,7 @@
         },
         {
           "name": "--ep-radio-checked-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": null,
           "state": "checked",
@@ -6877,7 +6567,7 @@
         },
         {
           "name": "--ep-radio-checked-border-color",
-          "default": "var(--primary-color-300)",
+          "default": "var(--primary-color--300)",
           "group": "border",
           "part": null,
           "state": "checked",
@@ -7012,7 +6702,7 @@
         },
         {
           "name": "--ep-resizable-handle-hover-bg-color",
-          "default": "var(--primary-color-300)",
+          "default": "var(--primary-color--300)",
           "group": "surface",
           "part": "handle",
           "state": "hover",
@@ -7020,7 +6710,7 @@
         },
         {
           "name": "--ep-resizable-handle-hover-border-color",
-          "default": "var(--primary-color-300)",
+          "default": "var(--primary-color--300)",
           "group": "border",
           "part": "handle",
           "state": "hover",
@@ -7131,7 +6821,7 @@
         },
         {
           "name": "--ep-search-typeahead-item-selected-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": "item",
           "state": "selected",
@@ -7242,7 +6932,7 @@
         },
         {
           "name": "--ep-select-focus-border-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "border",
           "part": null,
           "state": "focus",
@@ -7693,7 +7383,7 @@
         },
         {
           "name": "--ep-table-row-selected-bg-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "surface",
           "part": "row",
           "state": "selected",
@@ -7786,7 +7476,7 @@
       "properties": [
         {
           "name": "--ep-table-sortable-header-active-text-color",
-          "default": "var(--primary-color-200)",
+          "default": "var(--primary-color--200)",
           "group": "text",
           "part": null,
           "state": "active",
@@ -7809,7 +7499,7 @@
       "properties": [
         {
           "name": "--ep-tabs-active-border-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "border",
           "part": null,
           "state": "active",
@@ -7984,7 +7674,7 @@
         },
         {
           "name": "--ep-textarea-focus-border-color",
-          "default": "var(--primary-color-base)",
+          "default": "var(--primary-color)",
           "group": "border",
           "part": null,
           "state": "focus",
