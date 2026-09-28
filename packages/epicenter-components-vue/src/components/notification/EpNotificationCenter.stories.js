@@ -5,7 +5,6 @@ import { ref } from 'vue'
 export default {
   title: 'Components/Notifications/Notification Center',
   component: EpNotifications,
-  decorators: [() => ({ template: '<div id="app"><story /></div>' })],
   argTypes: {
     emptyStateMessage: {
       name: 'Empty State Message',

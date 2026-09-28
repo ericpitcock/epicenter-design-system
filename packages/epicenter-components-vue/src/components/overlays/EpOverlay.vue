@@ -53,13 +53,32 @@
     emit('update:modelValue', false)
     dialog.value?.close()
   }
+
+  /*
+   * The dialog is teleported to the body, as the React component's portal does
+   * — not to `#app`.
+   *
+   * `#app` was an assumption about the consumer: that their mount element has
+   * that id. It is also usually the element the app itself renders into, which
+   * made every dialog a sibling of the consumer's own root. In an app whose root
+   * is a bare <router-view>, that put a dialog next to the routed page; on a
+   * route change Vue took it as the place to insert the next page, it left with
+   * the old page, and `insertBefore` threw — a blank page, in production builds
+   * only. Nothing an app renders is a direct child of <body>, so there the
+   * dialog can never be anyone's insertion anchor.
+   *
+   * No `defer` on the Teleport: that was there to wait for `#app` to exist. The
+   * body always does.
+   *
+   * This note is in the script rather than the template on purpose. A comment at
+   * the template root survives in dev builds and is stripped in production, so
+   * it changes the rendered tree between the two — which is how the bug above
+   * stayed hidden in the app that found it.
+   */
 </script>
 
 <template>
-  <Teleport
-    defer
-    to="#app"
-  >
+  <Teleport to="body">
     <dialog
       ref="dialog"
       class="ep-dialog"
