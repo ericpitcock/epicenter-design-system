@@ -1,5 +1,6 @@
 import React, {
   forwardRef,
+  useId,
   useState,
   useRef,
   useEffect,
@@ -40,8 +41,26 @@ export const EpSearchTypeahead = forwardRef<HTMLDivElement, EpSearchTypeaheadPro
   ) => {
     const [searchQuery, setSearchQuery] = useState(controlledValue || '');
     const [activeItemIndex, setActiveItemIndex] = useState(-1);
+    const rootRef = useRef<HTMLDivElement | null>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
     const resultsListRef = useRef<HTMLDivElement>(null);
     const debounceTimerRef = useRef<ReturnType<typeof setTimeout>>();
+
+    const id = useId();
+    const listboxId = `${id}-listbox`;
+    const optionId = (index: number) => `${id}-option-${index}`;
+
+    const isOpen = returnedSearchResults.length > 0;
+    const activeItem: SearchResult | undefined = returnedSearchResults[activeItemIndex];
+
+    const setRootRef = (node: HTMLDivElement | null) => {
+      rootRef.current = node;
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    };
 
     // Update search query when controlled value changes
     useEffect(() => {
@@ -50,18 +69,23 @@ export const EpSearchTypeahead = forwardRef<HTMLDivElement, EpSearchTypeaheadPro
       }
     }, [controlledValue]);
 
-    // Update search query when active item changes
-    useEffect(() => {
-      if (activeItemIndex >= 0 && returnedSearchResults[activeItemIndex]) {
-        const activeItem = returnedSearchResults[activeItemIndex];
-        setSearchQuery(String(activeItem[resultsKey] || ''));
+    const cancelPendingSearch = () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
       }
-    }, [activeItemIndex, returnedSearchResults, resultsKey]);
+    };
 
     const resetSearch = () => {
+      cancelPendingSearch();
       setSearchQuery('');
       setActiveItemIndex(-1);
       onClear?.();
+    };
+
+    const syncSearchQueryToResult = (result?: SearchResult) => {
+      if (result) {
+        setSearchQuery(String(result[resultsKey] || ''));
+      }
     };
 
     const updateActiveItemIndex = (delta: number) => {
@@ -76,6 +100,7 @@ export const EpSearchTypeahead = forwardRef<HTMLDivElement, EpSearchTypeaheadPro
       }
 
       setActiveItemIndex(newIndex);
+      syncSearchQueryToResult(returnedSearchResults[newIndex]);
       scrollToSelectedItem(newIndex);
     };
 
@@ -100,9 +125,7 @@ export const EpSearchTypeahead = forwardRef<HTMLDivElement, EpSearchTypeaheadPro
     };
 
     const debouncedSearch = (query: string) => {
-      if (debounceTimerRef.current) {
-        clearTimeout(debounceTimerRef.current);
-      }
+      cancelPendingSearch();
       debounceTimerRef.current = setTimeout(() => {
         onSearch?.(query);
       }, 200);
@@ -126,18 +149,20 @@ export const EpSearchTypeahead = forwardRef<HTMLDivElement, EpSearchTypeaheadPro
           break;
         case 'Enter':
           e.preventDefault();
-          if (returnedSearchResults.length > 0 && activeItemIndex >= 0) {
-            handleSelection(returnedSearchResults[activeItemIndex]);
+          if (activeItem) {
+            handleSelection(activeItem);
           }
           break;
         case 'Escape':
           e.preventDefault();
+          e.currentTarget.blur();
           resetSearch();
           break;
       }
     };
 
     const handleSelection = (result: SearchResult) => {
+      syncSearchQueryToResult(result);
       onSelection?.(result);
     };
 
@@ -152,14 +177,18 @@ export const EpSearchTypeahead = forwardRef<HTMLDivElement, EpSearchTypeaheadPro
       ...inputProps,
     };
 
+    // The listener outlives the render that attached it; read the latest
+    // resetSearch so a changed onClear is never stale.
+    const resetSearchRef = useRef(resetSearch);
+    resetSearchRef.current = resetSearch;
+
     // Click outside handler
     useEffect(() => {
+      if (!isOpen) return;
+
       const handleClickOutside = (e: MouseEvent) => {
-        if (
-          resultsListRef.current &&
-          !resultsListRef.current.contains(e.target as Node)
-        ) {
-          resetSearch();
+        if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+          resetSearchRef.current();
         }
       };
 
@@ -167,7 +196,7 @@ export const EpSearchTypeahead = forwardRef<HTMLDivElement, EpSearchTypeaheadPro
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
       };
-    }, []);
+    }, [isOpen]);
 
     // Cleanup debounce timer
     useEffect(() => {
@@ -179,26 +208,41 @@ export const EpSearchTypeahead = forwardRef<HTMLDivElement, EpSearchTypeaheadPro
     }, []);
 
     return (
-      <div ref={ref} className={`ep-search-typeahead ${className}`.trim()} {...props}>
+      <div ref={setRootRef} className={`ep-search-typeahead ${className}`.trim()} {...props}>
         <EpInput
           {...mergedInputProps}
+          ref={inputRef}
           value={searchQuery}
           onChange={handleInput}
           onClear={resetSearch}
           onKeyDown={handleKeyDown}
           spellCheck={false}
+          autoComplete="off"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-expanded={isOpen}
+          aria-controls={isOpen ? listboxId : undefined}
+          aria-activedescendant={activeItem ? optionId(activeItemIndex) : undefined}
         />
-        {returnedSearchResults.length > 0 && (
+        {isOpen && (
           <div ref={resultsListRef} className="ep-search-typeahead-dropdown">
-            <ul>
+            <ul
+              id={listboxId}
+              role="listbox"
+              aria-label={mergedInputProps.label || mergedInputProps.placeholder}
+            >
               {returnedSearchResults.map((result, index) => (
                 <li
                   key={index}
+                  id={optionId(index)}
+                  role="option"
+                  aria-selected={index === activeItemIndex}
                   className={`ep-search-typeahead-dropdown__item ${
                     index === activeItemIndex
                       ? 'ep-search-typeahead-dropdown__item--active'
                       : ''
                   }`}
+                  onMouseDown={(e) => e.preventDefault()}
                   onClick={() => handleSelection(result)}
                   onMouseEnter={() => handleMouseEnter(index)}
                 >

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import { onClickOutside, useDebounceFn } from '@vueuse/core'
-  import { computed, ref, useTemplateRef } from 'vue'
+  import { onClickOutside } from '@vueuse/core'
+  import { computed, onBeforeUnmount, ref, useId, useTemplateRef } from 'vue'
 
   import type { Size } from '../../types'
   import EpInput from '../input/EpInput.vue'
@@ -28,6 +28,12 @@
   const searchQuery = ref('')
   const activeItemIndex = ref(-1)
 
+  const id = useId()
+  const listboxId = `${id}-listbox`
+  const optionId = (index: number): string => `${id}-option-${index}`
+
+  const isOpen = computed(() => returnedSearchResults.length > 0)
+
   const activeItem = computed(() => {
     return returnedSearchResults[activeItemIndex.value]
   })
@@ -41,20 +47,41 @@
     }
   })
 
+  const listboxLabel = computed(() => {
+    const { label, placeholder } = computedInputProps.value as Record<string, unknown>
+    return (label || placeholder) as string
+  })
+
+  let debounceTimer: ReturnType<typeof setTimeout> | undefined
+
+  const cancelPendingSearch = (): void => {
+    clearTimeout(debounceTimer)
+  }
+
+  const debouncedSearch = (value: string): void => {
+    cancelPendingSearch()
+    debounceTimer = setTimeout(() => emit('search', value), 200)
+  }
+
+  onBeforeUnmount(cancelPendingSearch)
+
   const resetSearch = (): void => {
+    cancelPendingSearch()
     searchQuery.value = ''
     activeItemIndex.value = -1
     emit('clear')
   }
 
+  const rootRef = useTemplateRef<HTMLDivElement>('rootRef')
   const resultsListRef = useTemplateRef<HTMLDivElement>('resultsListRef')
 
-  onClickOutside(resultsListRef, resetSearch)
+  onClickOutside(rootRef, () => {
+    if (isOpen.value) resetSearch()
+  })
 
-  const syncSearchQueryToActiveItem = (): void => {
-    const selectedResult = activeItem.value
-    if (selectedResult) {
-      searchQuery.value = selectedResult[resultsKey] as string
+  const syncSearchQueryToResult = (result?: Record<string, unknown>): void => {
+    if (result) {
+      searchQuery.value = result[resultsKey] as string
     }
   }
 
@@ -66,7 +93,7 @@
     }
 
     activeItemIndex.value = newIndex
-    syncSearchQueryToActiveItem()
+    syncSearchQueryToResult(activeItem.value)
 
     scrollToSelectedItem()
   }
@@ -89,36 +116,43 @@
     }
   }
 
-  const debouncedSearch = useDebounceFn((value: string) => emit('search', value), 200)
-
   const onInput = (): void => {
     activeItemIndex.value = -1
     debouncedSearch(searchQuery.value)
   }
 
   const onEnter = (): void => {
-    if (returnedSearchResults.length === 0) {
+    if (!activeItem.value) {
       return
     }
-    onSelection(returnedSearchResults[activeItemIndex.value])
+    onSelection(activeItem.value)
   }
 
   const onMouseEnter = (index: number): void => {
     activeItemIndex.value = index
-    syncSearchQueryToActiveItem()
   }
 
   const onSelection = (result: Record<string, unknown>): void => {
+    syncSearchQueryToResult(result)
     emit('selection', result)
   }
 </script>
 
 <template>
-  <div class="ep-search-typeahead">
+  <div
+    ref="rootRef"
+    class="ep-search-typeahead"
+  >
     <ep-input
       v-model="searchQuery"
       v-bind="computedInputProps"
       spellcheck="false"
+      autocomplete="off"
+      role="combobox"
+      aria-autocomplete="list"
+      :aria-expanded="isOpen"
+      :aria-controls="isOpen ? listboxId : undefined"
+      :aria-activedescendant="activeItem ? optionId(activeItemIndex) : undefined"
       @update:model-value="onInput"
       @clear="resetSearch"
       @keydown.prevent.down="onActiveItemIndexUpdate(1)"
@@ -127,18 +161,26 @@
       @keydown.esc="resetSearch"
     />
     <div
-      v-if="returnedSearchResults.length"
+      v-if="isOpen"
       ref="resultsListRef"
       class="ep-search-typeahead-dropdown"
     >
-      <ul>
+      <ul
+        :id="listboxId"
+        role="listbox"
+        :aria-label="listboxLabel"
+      >
         <li
           v-for="(result, index) in returnedSearchResults"
+          :id="optionId(index)"
           :key="index"
+          role="option"
+          :aria-selected="index === activeItemIndex"
           :class="[
             'ep-search-typeahead-dropdown__item',
             { 'ep-search-typeahead-dropdown__item--active': index === activeItemIndex, }
           ]"
+          @mousedown.prevent
           @click="onSelection(result)"
           @mouseenter="onMouseEnter(index)"
         >
